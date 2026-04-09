@@ -1,0 +1,87 @@
+# ============================================================
+# CONFIG SITE — poussettes
+# Duplique ce fichier pour chaque nouvelle niche
+# ============================================================
+
+site:
+  slug: poussettes
+  name: "Comparatif Poussettes"
+  domain: "https://www.cadeauclic.com"
+  base_path: "/comparatif-poussettes"
+  logo_text: "Cadeau"
+  logo_accent: "Clic"
+  tagline: "Comparatifs poussettes 2026"
+  year: 2026
+  # Google Sheets CSV public (File > Share > Publish to web > CSV)
+  sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTME0FHxMGhf6OloQTGMz4b7ST3X_2REAKQWr3ddYp2NvnJvSxEF9JYRQVc1kf_D4spfoNR_HbmrpkG/pub?output=csv"
+  analytics_clicky: "101434361"
+
+theme:
+  accent: "#E8410A"
+  accent2: "#FF6B3D"
+  bg: "#F7F4EF"
+  ink: "#1A1714"
+  surface: "#FFFFFF"
+  font_title: "DM Serif Display"
+  font_body: "Outfit"
+  google_fonts: "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap"
+
+# Critères comparatifs (ordre d'affichage dans le tableau)
+# field = clé dans products.yaml
+# type: text | stars | tag | bool | price
+criteria:
+  - label: "Prix indicatif"
+    field: prix
+    type: price
+  - label: "Type"
+    field: type
+    type: tag
+  - label: "Poids"
+    field: poids
+    type: text
+    suffix: " kg"
+  - label: "Format pliage"
+    field: format_pliage
+    type: text
+  - label: "Âge recommandé"
+    field: age
+    type: text
+  - label: "Maniabilité"
+    field: note_manip
+    type: stars
+  - label: "Confort bébé"
+    field: note_confort
+    type: stars
+  - label: "Facilité pliage"
+    field: note_pliage
+    type: stars
+  - label: "Siège auto"
+    field: siege_auto
+    type: bool
+  - label: "Avis Amazon"
+    field: note_amazon
+    type: text
+    suffix: "/5"
+
+# Classes CSS pour les tags de type
+tag_classes:
+  citadine: "tag-citadine"
+  trio: "tag-trio"
+  compact: "tag-compact"
+  premium: "tag-premium"
+  double: "tag-double"
+  sport: "tag-sport"
+
+# Textes SEO réutilisables
+seo:
+  title_pattern: "Poussette {A} vs {B} : comparatif + avis {year}"
+  meta_pattern: "Comparatif complet {A} vs {B} : prix, avis, confort. Découvrez la meilleure poussette pour votre bébé en {year}."
+  h1_pattern: "Poussette <em>{A}</em> vs <em>{B}</em> :<br>laquelle choisir en {year} ?"
+  eyebrow: "⚖️ Comparatif poussettes {year}"
+  intro_pattern: >
+    Vous hésitez entre la <strong>{A}</strong> ({prix_a}) et la <strong>{B}</strong>
+    ({prix_b}) ? Ce comparatif complet analyse les deux modèles sur tous les critères
+    qui comptent : poids, confort bébé, maniabilité, pliage et rapport qualité/prix.
+    Objectif : vous aider à choisir en 5 minutes.
+  category_label: "Comparatifs poussettes"
+  category_url: "index.html#comparatifs"

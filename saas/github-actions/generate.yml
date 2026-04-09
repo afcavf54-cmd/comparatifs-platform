@@ -1,0 +1,92 @@
+# ============================================================
+# .github/workflows/generate.yml
+# Déclenché par le dashboard via repository_dispatch
+# ============================================================
+
+name: Generate site
+
+on:
+  repository_dispatch:
+    types: [generate]          # POST /repos/{owner}/{repo}/dispatches
+  push:
+    paths:
+      - 'sites/*/products.yaml'
+      - 'sites/*/config.yaml'
+      - 'templates/**'
+      - 'scripts/generate.py'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install jinja2 pyyaml
+
+      - name: Get site to generate
+        id: params
+        run: |
+          SITE="${{ github.event.client_payload.site || '--all' }}"
+          echo "site=$SITE" >> $GITHUB_OUTPUT
+          echo "Generating: $SITE"
+
+      - name: Generate
+        run: |
+          if [ "${{ steps.params.outputs.site }}" = "--all" ]; then
+            python scripts/generate.py --all
+          else
+            python scripts/generate.py --site "${{ steps.params.outputs.site }}"
+          fi
+
+      - name: Report pages count
+        run: |
+          COUNT=$(find sites/*/output -name "*.html" | wc -l)
+          echo "Pages générées : $COUNT"
+          echo "pages_count=$COUNT" >> $GITHUB_ENV
+
+      - name: Commit output
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add sites/*/output/
+          git diff --cached --quiet || git commit -m "build: generate ${{ steps.params.outputs.site }} — ${{ env.pages_count }} pages"
+          git push
+
+      - name: Notify Supabase build success
+        if: success()
+        run: |
+          curl -s -X POST "${{ secrets.SUPABASE_URL }}/rest/v1/builds" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "site_id": "${{ github.event.client_payload.site_id }}",
+              "status": "success",
+              "trigger": "${{ github.event.client_payload.trigger || 'push' }}",
+              "pages_built": ${{ env.pages_count }},
+              "gh_run_id": "${{ github.run_id }}"
+            }'
+
+      - name: Notify Supabase build error
+        if: failure()
+        run: |
+          curl -s -X POST "${{ secrets.SUPABASE_URL }}/rest/v1/builds" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "site_id": "${{ github.event.client_payload.site_id }}",
+              "status": "error",
+              "trigger": "${{ github.event.client_payload.trigger || 'push' }}",
+              "gh_run_id": "${{ github.run_id }}"
+            }'

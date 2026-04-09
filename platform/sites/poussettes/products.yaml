@@ -1,0 +1,674 @@
+# ============================================================
+# PRODUITS — poussettes
+# Chaque produit = une entrée. Le slug doit correspondre
+# exactement à la valeur dans Google Sheets (colonne "slug").
+# ============================================================
+
+products:
+
+  - slug: yoyo-2
+    nom: "Yoyo 2"
+    marque: "Babyzen"
+    prix: 549
+    poids: 6.2
+    type: compact
+    format_pliage: ultra-compact
+    age: "0–4 ans"
+    note_manip: 5
+    note_confort: 4
+    note_pliage: 5
+    siege_auto: true
+    note_amazon: "4.6"
+    description: >
+      Le Babyzen Yoyo 2 est la référence des poussettes compactes, plébiscitée
+      par les parents voyageurs. Son poids de 6,2 kg et son format avion (entre
+      dans les coffres de cabine) en font un choix unique. La suspension 4 roues
+      et le siège réversible garantissent un confort quotidien sans compromis.
+
+      Points forts : légèreté record, compatible cabine avion, pliage 1 seconde,
+      finitions premium, vaste choix d'accessoires. Nacelle disponible en option.
+
+      Points faibles : prix élevé, nacelle non incluse d'origine, coffre de
+      rangement minimal, roues moins robustes en tout-terrain.
+
+      Idéale pour : les city-parents, les grands voyageurs, les foyers avec
+      plusieurs voitures ou petits coffres.
+    points_forts:
+      - "Poids ultra léger (6,2 kg)"
+      - "Compatible cabine avion"
+      - "Pliage en 1 seconde"
+      - "Compatible siège auto"
+    points_faibles:
+      - "Prix élevé : 549€"
+      - "Nacelle en option"
+      - "Coffre minimal"
+    verdict_si:
+      - "Le plus léger du marché"
+      - "Vous voyagez souvent"
+      - "Pliage ultra compact prioritaire"
+
+  - slug: yoyo-3
+    nom: "Yoyo3"
+    marque: "Babyzen"
+    prix: 599
+    poids: 7.1
+    type: compact
+    format_pliage: ultra-compact
+    age: "0–4 ans"
+    note_manip: 5
+    note_confort: 5
+    note_pliage: 5
+    siege_auto: true
+    note_amazon: "4.7"
+    description: >
+      Le Yoyo3 est la version 2024 du best-seller Babyzen, avec un siège
+      plus grand, une canopy étendue et un châssis légèrement renforcé.
+      Il conserve la compatibilité cabine avion et gagne en confort bébé.
+
+      Points forts : tout ce qui fait le Yoyo2, avec un espace siège agrandi
+      (+15%), une protection UV50+ améliorée et un nouveau mécanisme de pliage
+      encore plus fluide.
+
+      Points faibles : légèrement plus lourd (7,1 kg), prix en hausse, accessoires
+      Yoyo2 partiellement compatibles.
+
+      Idéale pour : les parents qui veulent le meilleur Babyzen, les naissances
+      de 2024 et après.
+    points_forts:
+      - "Siège plus grand que Yoyo2"
+      - "UV50+ canopy étendue"
+      - "Compatible cabine avion"
+      - "Finitions premium"
+    points_faibles:
+      - "Prix : 599€"
+      - "7,1 kg (plus lourd que Yoyo2)"
+      - "Accessoires Yoyo2 non tous compatibles"
+    verdict_si:
+      - "Vous voulez le meilleur Babyzen"
+      - "Bébé à naître en 2024-2025"
+      - "Budget premium accepté"
+
+  - slug: cybex-balios-s
+    nom: "Cybex Balios S"
+    marque: "Cybex"
+    prix: 749
+    poids: 9.9
+    type: citadine
+    format_pliage: compact
+    age: "0–4 ans"
+    note_manip: 4
+    note_confort: 5
+    note_pliage: 4
+    siege_auto: true
+    note_amazon: "4.5"
+    description: >
+      La Cybex Balios S est une poussette citadine haut de gamme, conçue pour
+      les parents urbains qui refusent de faire des compromis sur le confort.
+      Son châssis aluminium léger (9,9 kg) absorbe les vibrations des pavés
+      et trottoirs en toute fluidité. La nacelle réversible permet de garder
+      bébé face aux parents ou face au monde selon l'humeur.
+
+      Points forts : confort exceptionnel, roues suspendues 4 roues, nacelle
+      réversible, compatible siège auto Cybex et nombreuses autres marques via
+      adaptateurs. La capote extensible offre une protection solaire optimale.
+
+      Points faibles : prix élevé pour ce segment, encombrement moyen une fois
+      pliée, pas idéale pour les petits coffres. Le poids reste raisonnable
+      mais se fait sentir dans les escaliers.
+
+      Idéale pour : les familles citadines, les parents qui marchent beaucoup
+      en ville, ceux qui veulent un seul châssis de la naissance à 4 ans.
+    points_forts:
+      - "Qualité Cybex reconnue"
+      - "Confort bébé 5/5"
+      - "Maniabilité 4/5"
+      - "Compatible siège auto"
+    points_faibles:
+      - "Prix : 749€"
+      - "Poids : 9,9 kg"
+      - "Format pliage : compact"
+    verdict_si:
+      - "Plus légère que les trios"
+      - "Meilleur confort bébé"
+      - "Qualité Cybex reconnue"
+
+  - slug: cybex-mios
+    nom: "Cybex Mios"
+    marque: "Cybex"
+    prix: 649
+    poids: 7.8
+    type: citadine
+    format_pliage: compact
+    age: "0–4 ans"
+    note_manip: 5
+    note_confort: 4
+    note_pliage: 4
+    siege_auto: true
+    note_amazon: "4.4"
+    description: >
+      La Cybex Mios est la poussette citadine légère de Cybex, pensée pour
+      la ville avec ses 7,8 kg et son pliage one-touch. Moins volumineuse
+      que la Balios S, elle reste très maniable dans les transports et
+      les commerces.
+    points_forts:
+      - "7,8 kg — légère pour Cybex"
+      - "Pliage one-touch"
+      - "Maniabilité 5/5"
+      - "Compatible siège auto"
+    points_faibles:
+      - "Prix : 649€"
+      - "Confort légèrement inférieur à Balios S"
+      - "Coffre plus petit"
+    verdict_si:
+      - "Vous voulez la légèreté Cybex"
+      - "Transports en commun fréquents"
+      - "Pliage ultra facile prioritaire"
+
+  - slug: cybex-priam
+    nom: "Cybex Priam"
+    marque: "Cybex"
+    prix: 1099
+    poids: 12.0
+    type: premium
+    format_pliage: moyen
+    age: "Naissance–4 ans"
+    note_manip: 4
+    note_confort: 5
+    note_pliage: 3
+    siege_auto: true
+    note_amazon: "4.5"
+    description: >
+      Le Cybex Priam est le flagship Cybex — la poussette de luxe qui ne fait
+      aucun compromis sur le confort ou le style. Son châssis carbone optionnel,
+      ses suspensions haut de gamme et ses finitions premium en font l'une des
+      meilleures poussettes du marché, à un prix en conséquence.
+    points_forts:
+      - "Confort bébé exceptionnel"
+      - "Finitions luxe"
+      - "Suspensions premium"
+      - "Compatible siège auto"
+    points_faibles:
+      - "Prix : 1099€"
+      - "Poids : 12 kg"
+      - "Encombrement important"
+    verdict_si:
+      - "Budget illimité"
+      - "Confort maximal prioritaire"
+      - "Usage quotidien intensif"
+
+  - slug: cybex-libelle
+    nom: "Cybex Libelle"
+    marque: "Cybex"
+    prix: 449
+    poids: 6.3
+    type: compact
+    format_pliage: ultra-compact
+    age: "6 mois–4 ans"
+    note_manip: 4
+    note_confort: 3
+    note_pliage: 5
+    siege_auto: false
+    note_amazon: "4.2"
+    description: >
+      La Cybex Libelle est la poussette compacte abordable de Cybex, avec
+      un format de pliage ultra-compact similaire au Yoyo mais à prix réduit.
+      Elle convient dès 6 mois et offre un excellent rapport qualité/prix
+      pour les budgets plus serrés.
+    points_forts:
+      - "Ultra-compact plié"
+      - "6,3 kg"
+      - "Prix plus abordable que Yoyo"
+      - "Finitions Cybex"
+    points_faibles:
+      - "Dès 6 mois seulement"
+      - "Siège auto non compatible"
+      - "Confort inférieur aux grandes Cybex"
+    verdict_si:
+      - "Budget limité pour du compact"
+      - "Deuxième poussette compacte"
+      - "Enfant de plus de 6 mois"
+
+  - slug: cybex-eezy-s-twist
+    nom: "Cybex Eezy S Twist"
+    marque: "Cybex"
+    prix: 499
+    poids: 9.1
+    type: citadine
+    format_pliage: compact
+    age: "Naissance–4 ans"
+    note_manip: 4
+    note_confort: 4
+    note_pliage: 4
+    siege_auto: true
+    note_amazon: "4.3"
+    description: >
+      La Cybex Eezy S Twist se distingue par son siège pivotant à 360° en
+      un seul geste — pratique pour monter/descendre bébé sans se baisser.
+      Un excellent rapport qualité/prix dans la gamme Cybex.
+    points_forts:
+      - "Siège pivotant 360°"
+      - "Naissance à 4 ans"
+      - "Compatible siège auto"
+      - "Prix raisonnable pour Cybex"
+    points_faibles:
+      - "Prix : 499€"
+      - "9,1 kg"
+      - "Coffre moyen"
+    verdict_si:
+      - "Siège pivotant prioritaire"
+      - "Utilisation quotidienne urbaine"
+      - "Budget intermédiaire"
+
+  - slug: chicco-trio
+    nom: "Chicco Trio"
+    marque: "Chicco"
+    prix: 399
+    poids: 13.5
+    type: trio
+    format_pliage: compact
+    age: "Naissance–4 ans"
+    note_manip: 3
+    note_confort: 4
+    note_pliage: 3
+    siege_auto: true
+    note_amazon: "4.2"
+    description: >
+      Le Chicco Trio est la valeur sûre des trios : robuste, fiable, complet.
+      Il intègre nacelle, siège et cosy dans un ensemble cohérent. La marque
+      italienne est reconnue pour la sécurité de ses sièges auto.
+    points_forts:
+      - "Ensemble complet dès la naissance"
+      - "Fiabilité Chicco"
+      - "Siège auto bien testé"
+      - "Prix accessible"
+    points_faibles:
+      - "13,5 kg"
+      - "Maniabilité basique"
+      - "Encombrement important plié"
+    verdict_si:
+      - "Budget serré, solution complète"
+      - "Fiabilité Chicco rassurante"
+      - "Primo-parents qui veulent tout"
+
+  - slug: chicco-trio-activ3
+    nom: "Chicco Trio Activ3"
+    marque: "Chicco"
+    prix: 449
+    poids: 13.9
+    type: trio
+    format_pliage: compact
+    age: "Naissance–4 ans"
+    note_manip: 4
+    note_confort: 4
+    note_pliage: 4
+    siege_auto: true
+    note_amazon: "4.3"
+    description: >
+      Le Chicco Trio Activ3 est un trio complet avec roues avant pivotantes
+      pour une maniabilité améliorée par rapport aux trios classiques. Chicco
+      est une marque italienne reconnue pour sa fiabilité et sa longévité.
+
+      Points forts : maniabilité améliorée pour un trio grâce aux roues
+      pivotantes, pliage compact (une fois le siège auto retiré), robustesse
+      reconnue de la marque Chicco, siège auto Key2Fit bien testé aux
+      crash-tests. Bon rapport qualité/prix.
+
+      Points faibles : poids de 13,9 kg dans la moyenne haute des trios,
+      finitions moins luxueuses que Cybex ou Nuna, compatibilité siège auto
+      limitée aux modèles Chicco (principalement).
+
+      Idéale pour : les parents qui veulent la fiabilité Chicco dans un trio
+      maniable, avec un siège auto bien sécurisé.
+    points_forts:
+      - "Qualité Chicco reconnue"
+      - "Confort bébé 4/5"
+      - "Maniabilité 4/5"
+      - "Compatible siège auto"
+    points_faibles:
+      - "Prix : 449€"
+      - "Poids : 13,9 kg"
+      - "Format pliage : compact"
+    verdict_si:
+      - "Prix plus bas"
+      - "Solution complète dès la naissance (trio)"
+      - "Qualité Chicco reconnue"
+
+  - slug: joie-chrome
+    nom: "Joie Chrome"
+    marque: "Joie"
+    prix: 329
+    poids: 12.8
+    type: trio
+    format_pliage: compact
+    age: "Naissance–4 ans"
+    note_manip: 3
+    note_confort: 4
+    note_pliage: 3
+    siege_auto: true
+    note_amazon: "4.3"
+    description: >
+      Le Joie Chrome est le trio abordable par excellence. La marque Joie
+      (groupe Britax) propose ici un rapport qualité/prix imbattable pour
+      les familles à petit budget.
+    points_forts:
+      - "Prix très accessible"
+      - "Ensemble complet"
+      - "Marque Joie fiable"
+      - "Compatible siège auto"
+    points_faibles:
+      - "12,8 kg"
+      - "Finitions basiques"
+      - "Maniabilité standard"
+    verdict_si:
+      - "Budget minimal"
+      - "Premier enfant, pas de référence"
+      - "Fiabilité sans luxe"
+
+  - slug: joie-finiti
+    nom: "Joie Finiti"
+    marque: "Joie"
+    prix: 379
+    poids: 11.2
+    type: trio
+    format_pliage: compact
+    age: "Naissance–4 ans"
+    note_manip: 4
+    note_confort: 4
+    note_pliage: 4
+    siege_auto: true
+    note_amazon: "4.4"
+    description: >
+      Le Joie Finiti améliore le Chrome avec un poids réduit et une meilleure
+      maniabilité. Il reste dans les prix accessibles Joie tout en offrant
+      plus de confort au quotidien.
+    points_forts:
+      - "Plus léger que le Chrome"
+      - "Maniabilité améliorée"
+      - "Bon rapport qualité/prix"
+      - "Compatible siège auto"
+    points_faibles:
+      - "379€"
+      - "11,2 kg"
+      - "Finitions milieu de gamme"
+    verdict_si:
+      - "Budget serré mais maniabilité souhaitée"
+      - "Joie Chrome trop basique"
+      - "Premier enfant"
+
+  - slug: joie-signature
+    nom: "Joie Signature"
+    marque: "Joie"
+    prix: 449
+    poids: 10.5
+    type: citadine
+    format_pliage: compact
+    age: "Naissance–4 ans"
+    note_manip: 4
+    note_confort: 4
+    note_pliage: 4
+    siege_auto: true
+    note_amazon: "4.4"
+    description: >
+      Le Joie Signature est le haut de gamme Joie — finitions premium,
+      matières recyclées, design soigné. Il propose une expérience proche
+      des grandes marques pour un prix raisonnable.
+    points_forts:
+      - "Finitions premium pour le prix"
+      - "Matières éco-responsables"
+      - "10,5 kg"
+      - "Compatible siège auto"
+    points_faibles:
+      - "449€"
+      - "Joie moins prestigious que Cybex/Nuna"
+      - ""
+    verdict_si:
+      - "Budget intermédiaire, finitions soignées"
+      - "Sensibilité éco-responsable"
+      - "Alternative aux marques premium"
+
+  - slug: joie-versatrax
+    nom: "Joie Versatrax"
+    marque: "Joie"
+    prix: 399
+    poids: 11.5
+    type: trio
+    format_pliage: compact
+    age: "Naissance–4 ans"
+    note_manip: 4
+    note_confort: 4
+    note_pliage: 4
+    siege_auto: true
+    note_amazon: "4.3"
+    description: >
+      Le Joie Versatrax est un trio polyvalent avec siège réversible — rare
+      dans la catégorie. Il offre une grande flexibilité d'utilisation pour
+      les parents qui veulent garder bébé face à eux.
+    points_forts:
+      - "Siège réversible (rare en trio)"
+      - "Polyvalent naissance–4 ans"
+      - "Compatible siège auto"
+      - "Bon prix"
+    points_faibles:
+      - "11,5 kg"
+      - "399€"
+      - "Coffre moyen"
+    verdict_si:
+      - "Vous voulez le siège réversible en trio"
+      - "Polyvalence maximale"
+      - "Budget intermédiaire"
+
+  - slug: kinderkraft-3-en-1
+    nom: "Kinderkraft 3 en 1"
+    marque: "Kinderkraft"
+    prix: 299
+    poids: 13.0
+    type: trio
+    format_pliage: compact
+    age: "Naissance–4 ans"
+    note_manip: 3
+    note_confort: 3
+    note_pliage: 3
+    siege_auto: true
+    note_amazon: "4.1"
+    description: >
+      Le Kinderkraft 3 en 1 est l'option trio la plus abordable du marché.
+      Parfait pour les budgets contraints, il reste fonctionnel et complet
+      même si les finitions sont basiques.
+    points_forts:
+      - "Prix très bas"
+      - "Ensemble complet"
+      - "Compatible siège auto inclus"
+      - "Accessible"
+    points_faibles:
+      - "Finitions basiques"
+      - "13 kg"
+      - "Maniabilité limitée"
+    verdict_si:
+      - "Budget très serré"
+      - "Usage occasionnel"
+      - "Deuxième poussette"
+
+  - slug: kinderkraft-trio
+    nom: "Kinderkraft Trio"
+    marque: "Kinderkraft"
+    prix: 349
+    poids: 12.5
+    type: trio
+    format_pliage: compact
+    age: "Naissance–4 ans"
+    note_manip: 3
+    note_confort: 3
+    note_pliage: 3
+    siege_auto: true
+    note_amazon: "4.1"
+    description: >
+      Le Kinderkraft Trio est une version améliorée du 3 en 1, avec quelques
+      finitions supplémentaires. Il reste dans la catégorie budget et convient
+      aux familles qui cherchent le prix avant tout.
+    points_forts:
+      - "Prix abordable"
+      - "Ensemble trio"
+      - "Compatible siège auto"
+    points_faibles:
+      - "Qualité de finition basique"
+      - "12,5 kg"
+      - "Maniabilité standard"
+    verdict_si:
+      - "Prix avant tout"
+      - "Usage quotidien limité"
+      - "Cadeau de naissance"
+
+  - slug: maxi-cosi-leona
+    nom: "Maxi-Cosi Leona"
+    marque: "Maxi-Cosi"
+    prix: 499
+    poids: 10.2
+    type: citadine
+    format_pliage: compact
+    age: "Naissance–4 ans"
+    note_manip: 4
+    note_confort: 5
+    note_pliage: 4
+    siege_auto: true
+    note_amazon: "4.5"
+    description: >
+      La Maxi-Cosi Leona est une poussette citadine premium avec une nacelle
+      plate intégrée (Lie-Flat) — bébé peut dormir à plat de la naissance.
+      Maxi-Cosi bénéficie d'une excellente réputation pour ses sièges auto.
+    points_forts:
+      - "Position Lie-Flat dès la naissance"
+      - "10,2 kg"
+      - "Confort bébé 5/5"
+      - "Compatible siège auto Maxi-Cosi"
+    points_faibles:
+      - "499€"
+      - "Compatibilité siège auto principalement Maxi-Cosi"
+      - "Coffre moyen"
+    verdict_si:
+      - "Position allongée plate prioritaire"
+      - "Vous avez déjà un siège Maxi-Cosi"
+      - "Budget intermédiaire-premium"
+
+  - slug: maxi-cosi-lila
+    nom: "Maxi-Cosi Lila"
+    marque: "Maxi-Cosi"
+    prix: 549
+    poids: 10.8
+    type: citadine
+    format_pliage: compact
+    age: "Naissance–4 ans"
+    note_manip: 4
+    note_confort: 5
+    note_pliage: 4
+    siege_auto: true
+    note_amazon: "4.5"
+    description: >
+      La Maxi-Cosi Lila est la grande citadine de Maxi-Cosi avec un châssis
+      robuste et des finitions premium. Elle partage l'ADN Lie-Flat de la Leona
+      avec un peu plus de stabilité et d'espace coffre.
+    points_forts:
+      - "Lie-Flat dès la naissance"
+      - "Châssis robuste"
+      - "Confort bébé 5/5"
+      - "Coffre généreux"
+    points_faibles:
+      - "549€"
+      - "10,8 kg"
+      - "Encombrement un peu plus grand"
+    verdict_si:
+      - "Vous voulez plus de coffre que la Leona"
+      - "Robustesse prioritaire"
+      - "Budget premium"
+
+  - slug: maxi-cosi-zelia
+    nom: "Maxi-Cosi Zelia"
+    marque: "Maxi-Cosi"
+    prix: 449
+    poids: 9.5
+    type: citadine
+    format_pliage: compact
+    age: "Naissance–4 ans"
+    note_manip: 4
+    note_confort: 4
+    note_pliage: 4
+    siege_auto: true
+    note_amazon: "4.3"
+    description: >
+      La Maxi-Cosi Zelia est une poussette tout-en-un avec cosy intégré
+      dans le siège — pas besoin d'adaptateurs. Simple et pratique pour
+      les familles qui veulent aller vite.
+    points_forts:
+      - "Cosy intégré sans adaptateurs"
+      - "9,5 kg"
+      - "Compatible siège auto Maxi-Cosi"
+      - "Usage simplifié"
+    points_faibles:
+      - "449€"
+      - "Cosy intégré = moins de flexibilité de siège auto"
+      - "Design moins premium que Lila"
+    verdict_si:
+      - "Vous voulez la simplicité maximale"
+      - "Cosy intégré sans achat supplémentaire"
+      - "Pas de contraintes de compatibilité"
+
+  - slug: nuna-mixx
+    nom: "Nuna Mixx"
+    marque: "Nuna"
+    prix: 699
+    poids: 9.7
+    type: citadine
+    format_pliage: compact
+    age: "Naissance–4 ans"
+    note_manip: 5
+    note_confort: 5
+    note_pliage: 4
+    siege_auto: true
+    note_amazon: "4.6"
+    description: >
+      La Nuna Mixx est l'une des meilleures poussettes du marché, avec une
+      maniabilité 5/5 et un confort bébé exceptionnel. La marque néerlandaise
+      est reconnue pour la qualité de ses produits et leur durabilité.
+    points_forts:
+      - "Maniabilité 5/5"
+      - "Confort bébé 5/5"
+      - "Qualité Nuna premium"
+      - "Compatible siège auto"
+    points_faibles:
+      - "699€"
+      - "9,7 kg"
+      - "Prix élevé"
+    verdict_si:
+      - "Vous voulez la meilleure maniabilité"
+      - "Budget premium sans contrainte"
+      - "Qualité hollandaise longue durée"
+
+  - slug: nuna-triv-next
+    nom: "Nuna Triv Next"
+    marque: "Nuna"
+    prix: 799
+    poids: 8.5
+    type: citadine
+    format_pliage: compact
+    age: "Naissance–4 ans"
+    note_manip: 5
+    note_confort: 5
+    note_pliage: 5
+    siege_auto: true
+    note_amazon: "4.7"
+    description: >
+      La Nuna Triv Next est le summum de la poussette citadine : légère
+      (8,5 kg), pliage 5/5, maniabilité 5/5, confort 5/5. C'est la poussette
+      que les parents ne revendent jamais.
+    points_forts:
+      - "8,5 kg — légère pour une citadine premium"
+      - "Pliage 5/5"
+      - "Maniabilité 5/5"
+      - "Compatible siège auto"
+    points_faibles:
+      - "799€ — prix très élevé"
+      - "Budget haut de gamme requis"
+      - ""
+    verdict_si:
+      - "Le meilleur compromis poids/confort/maniabilité"
+      - "Budget illimité"
+      - "Vous gardez une poussette 4 ans"

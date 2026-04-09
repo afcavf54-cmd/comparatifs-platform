@@ -1,0 +1,39 @@
+# ============================================================
+# NETLIFY CONFIG — plateforme comparatifs
+# Un site Netlify par niche (ou un seul repo multi-sites)
+# ============================================================
+
+[build]
+  # Commande lancée à chaque push GitHub
+  command = "pip install jinja2 pyyaml && python scripts/generate.py --site poussettes"
+  # Dossier publié
+  publish = "sites/poussettes/output"
+
+[build.environment]
+  PYTHON_VERSION = "3.11"
+
+# Redirects clean URLs : /comparatif-poussettes/yoyo-2-vs-cybex-balios-s
+#                      → /yoyo-2-vs-cybex-balios-s.html
+[[redirects]]
+  from = "/:page"
+  to   = "/:page.html"
+  status = 200
+  conditions = {Language = ["fr"]}
+
+# Cache long sur les assets statiques
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+
+# ── Pour ajouter un deuxième site (matelas) : ────────────────
+# Créer un second site Netlify pointant sur le même repo, avec :
+#   command = "pip install jinja2 pyyaml && python scripts/generate.py --site matelas"
+#   publish = "sites/matelas/output"
