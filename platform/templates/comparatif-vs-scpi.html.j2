@@ -625,8 +625,6 @@
   }
 
   {% if prod_a.geo and prod_b.geo and prod_a.geo != 'None' and prod_b.geo != 'None' %}
-  console.log('geo_a:', '{{ prod_a.geo | replace("'", "\\'") }}');
-  console.log('geo_b:', '{{ prod_b.geo | replace("'", "\\'") }}');
   var geoA=parseData('{{ prod_a.geo | replace("'", "\\'") }}');
   var geoB=parseData('{{ prod_b.geo | replace("'", "\\'") }}');
   if(geoA.labels.length > 0 && geoB.labels.length > 0){
