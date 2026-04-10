@@ -15,7 +15,9 @@ import argparse
 import csv
 import io
 import itertools
+import json
 import math
+import os
 import shutil
 import sys
 import urllib.request
@@ -234,9 +236,6 @@ def generate_editorial(prod_a: dict, prod_b: dict) -> dict:
     pour chaque paire de SCPI. Retourne description_a, description_b,
     points_forts_a/b, points_faibles_a/b, verdict_si_a/b.
     """
-    import json
-    import urllib.request
-
     api_key = os.environ.get("ANTHROPIC_API_KEY", "")
     if not api_key:
         return {}
