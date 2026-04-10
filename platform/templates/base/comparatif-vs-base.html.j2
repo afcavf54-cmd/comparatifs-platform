@@ -221,7 +221,7 @@ footer a{color:rgba(255,255,255,.4)}
         {% if prod.logo_url is defined and prod.logo_url %}
         <img src="{{ prod.logo_url }}" alt="Logo {{ prod.nom }}" style="width:100%;height:auto;border-radius:12px;object-fit:contain;max-height:160px">
         {% else %}
-        <img src="assets/logos/{{ prod.slug }}.png" alt="Logo {{ prod.nom }}"
+        <img src="{{ prod.slug }}.png" alt="Logo {{ prod.nom }}"
              style="width:100%;height:auto;border-radius:12px;object-fit:contain;max-height:160px;padding:16px;background:#fff;border:1px solid var(--border)"
              onerror="this.style.display='none';document.getElementById('placeholder-{{ idx }}').style.display='flex'">
         <div class="model-photo-placeholder" id="placeholder-{{ idx }}" style="display:none">
