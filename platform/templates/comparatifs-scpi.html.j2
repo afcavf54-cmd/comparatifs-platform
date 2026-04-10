@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tous les comparatifs SCPI {{ site.year }} | {{ site.name }}</title>
+<meta name="description" content="Retrouvez tous nos comparatifs SCPI {{ site.year }} : {{ total_pairs }} analyses détaillées pour vous aider à choisir la meilleure SCPI selon votre profil.">
+<link rel="canonical" href="{{ site.domain }}{{ site.base_path }}/comparatifs-scpi.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="{{ theme.google_fonts }}" rel="stylesheet">
+<style>
+:root{
+  --bg:{{ theme.bg }};--surface:#FFFFFF;--ink:{{ theme.ink }};--ink2:#4A5568;--ink3:#718096;
+  --accent:{{ theme.accent }};--accent2:{{ theme.accent2 }};--border:#E2E8F0;--r:12px;--r2:20px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'{{ theme.font_body }}',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.7}
+a{color:inherit;text-decoration:none}
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:20px;color:#fff;display:flex;align-items:center;gap:10px}
+.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;gap:28px}.nav-links a{color:rgba(255,255,255,.6);font-size:13px;font-weight:500;transition:.15s}.nav-links a:hover{color:#fff}
+.page-header{background:var(--ink);padding:48px 5vw 40px;color:#fff}
+.page-header h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4vw,48px);font-weight:400;letter-spacing:-.02em;margin-bottom:10px}
+.page-header p{color:rgba(255,255,255,.6);font-size:16px}
+main{max-width:1200px;margin:0 auto;padding:48px 5vw}
+.search-bar{width:100%;padding:12px 18px;border:1.5px solid var(--border);border-radius:var(--r);font-size:15px;font-family:'{{ theme.font_body }}',sans-serif;margin-bottom:32px;outline:none;transition:.15s}
+.search-bar:focus{border-color:var(--accent)}
+.scpi-section{margin-bottom:48px}
+.scpi-section-title{font-family:'{{ theme.font_title }}',serif;font-size:24px;font-weight:400;margin-bottom:4px;display:flex;align-items:center;gap:12px}
+.scpi-section-title img{width:32px;height:32px;object-fit:contain;border-radius:6px;border:1px solid var(--border);background:#fff;padding:2px}
+.scpi-section-count{font-size:13px;color:var(--ink3);margin-bottom:16px}
+.comp-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.comp-item{display:flex;align-items:center;justify-content:space-between;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;font-size:14px;font-weight:500;transition:.15s}
+.comp-item:hover{border-color:var(--accent);color:var(--accent);transform:translateX(2px)}
+.comp-item-arrow{color:var(--accent);font-size:16px;flex-shrink:0;margin-left:8px}
+.disclaimer-bar{background:#FFF8E6;border-top:1px solid #FAC775;padding:14px 5vw;text-align:center;font-size:12px;color:#633806;line-height:1.6}
+.disclaimer-inner{max-width:860px;margin:0 auto}
+footer{background:var(--ink);color:rgba(255,255,255,.45);text-align:center;padding:40px 5vw;font-size:13px}
+footer .footer-logo{font-family:'{{ theme.font_title }}',serif;font-size:20px;color:#fff;margin-bottom:12px}
+footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:center;gap:24px;margin-top:12px}
+@media(max-width:640px){.comp-list{grid-template-columns:1fr}.nav-links{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="8" fill="{{ theme.accent }}"/><path d="M7 14h4l3-7 4 14 3-7h4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    {{ site.logo_text }}<span>{{ site.logo_accent }}</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#comparateur">Comparateur</a>
+    <a href="comparatifs-scpi.html" style="color:#fff">Comparatifs SCPI</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>Tous les comparatifs SCPI {{ site.year }}</h1>
+  <p>{{ total_pairs }} analyses détaillées pour choisir la meilleure SCPI selon votre profil</p>
+</div>
+
+<main>
+  <input type="text" class="search-bar" id="search" placeholder="Rechercher une SCPI... (ex: Iroko, Corum, Remake)" oninput="filterComps()">
+
+  {% for prod in products %}
+  {% set slug_a = prod.slug %}
+  <section class="scpi-section" data-scpi="{{ prod.nom | lower }}">
+    <div class="scpi-section-title">
+      <img src="{{ slug_a }}.png" alt="{{ prod.nom }}" onerror="this.style.display='none'">
+      {{ prod.nom }}
+    </div>
+    <div class="scpi-section-count">{{ loop.index }}e SCPI, TD {{ prod.td }}%{% if prod.frais_souscription == 0 %}, 0% frais{% endif %}</div>
+    <div class="comp-list">
+      {% for other in products %}
+      {% if other.slug != prod.slug %}
+      {% set slugs = [prod.slug, other.slug] | sort %}
+      <a href="{{ slugs[0] }}-vs-{{ slugs[1] }}.html" class="comp-item" data-label="{{ prod.nom | lower }} {{ other.nom | lower }}">
+        <span>{{ prod.nom }} vs {{ other.nom }}</span>
+        <span class="comp-item-arrow">→</span>
+      </a>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endfor %}
+</main>
+
+<div class="disclaimer-bar">
+  <div class="disclaimer-inner">⚠️ Ce site est fourni à titre informatif uniquement et ne constitue pas un conseil en investissement. Investir en SCPI comporte des risques dont la perte en capital. Les performances passées ne préjugent pas des performances futures. Consultez un CGP agréé AMF avant tout investissement.</div>
+</div>
+
+<footer>
+  <div class="footer-logo">{{ site.logo_text }}{{ site.logo_accent }}</div>
+  <div>Comparatif SCPI {{ site.year }}, Données actualisées</div>
+  <div class="footer-links">
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="politique-confidentialite.html">Confidentialité</a>
+  </div>
+</footer>
+
+<script>
+function filterComps() {
+  var q = document.getElementById('search').value.toLowerCase().trim();
+  document.querySelectorAll('.comp-item').forEach(function(item) {
+    item.style.display = !q || item.dataset.label.includes(q) ? '' : 'none';
+  });
+  document.querySelectorAll('.scpi-section').forEach(function(sec) {
+    var visible = Array.from(sec.querySelectorAll('.comp-item')).some(function(i) { return i.style.display !== 'none'; });
+    sec.style.display = !q || visible ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
