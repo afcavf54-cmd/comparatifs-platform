@@ -156,7 +156,14 @@
 .verdict-box li{counter-increment:verdict-counter}
 .verdict-box li::before{content:counter(verdict-counter) ". ";color:var(--accent2);font-weight:600}
 .verdict-box ul{counter-reset:verdict-counter}
-@media(max-width:600px){.perf-grid{grid-template-columns:1fr}}
+.disclaimer{background:#FFF8E6;border:1px solid #FAC775;border-radius:var(--r2);padding:20px 24px;margin:24px auto;max-width:900px}
+.disclaimer-title{font-size:13px;font-weight:600;color:#633806;margin-bottom:8px}
+.disclaimer p{font-size:13px;color:#633806;line-height:1.65;margin:0}
+@media(max-width:600px){
+  .perf-grid{grid-template-columns:1fr}
+  .donut-grid{grid-template-columns:1fr !important}
+  .disclaimer{margin:24px 0}
+}
 {% endblock %}
 
 {% block cta_label scoped %}→ Investir dans {{ prod.nom }}{% endblock %}
@@ -188,10 +195,10 @@
 
   {# CTA rapport trimestriel #}
   <div style="display:flex;gap:12px;margin:16px 0;flex-wrap:wrap">
-    <a href="#" data-amz-a class="cta-amz cta-amz-primary" rel="nofollow" style="font-size:13px;padding:10px 18px">
+    <a href="#" data-amz-a class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="font-size:13px;padding:10px 18px">
       📄 Rapport trimestriel {{ prod_a.nom }}
     </a>
-    <a href="#" data-amz-b class="cta-amz cta-amz-primary" rel="nofollow" style="font-size:13px;padding:10px 18px">
+    <a href="#" data-amz-b class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="font-size:13px;padding:10px 18px">
       📄 Rapport trimestriel {{ prod_b.nom }}
     </a>
   </div>
@@ -321,11 +328,11 @@
   {% if prod_a.type is defined and prod_b.type is defined %}
   <h3>🏢 Thématique sectorielle</h3>
   <p style="color:var(--ink2);font-size:18px;line-height:1.75">
-    <strong>{{ prod_a.nom }}</strong> est de type <span class="tag tag-{{ prod_a.type }}">{{ prod_a.type }}</span> — <strong>{{ prod_b.nom }}</strong> est positionnée <span class="tag tag-{{ prod_b.type }}">{{ prod_b.type }}</span>.
-    {% if prod_a.type != prod_b.type %}
-    Des thématiques différentes qui peuvent être complémentaires dans un portefeuille diversifié.
-    {% else %}
+    <strong>{{ prod_a.nom }}</strong> est une SCPI de type <strong>{{ prod_a.type }}</strong> tandis que <strong>{{ prod_b.nom }}</strong> est positionnée <strong>{{ prod_b.type }}</strong>.
+    {% if prod_a.type == prod_b.type %}
     Même thématique — la différenciation se joue sur la géographie, les frais et la stratégie de gestion.
+    {% else %}
+    Des thématiques différentes qui peuvent être complémentaires dans un portefeuille diversifié.
     {% endif %}
   </p>
   {% endif %}
@@ -341,7 +348,7 @@
 
   {# ── GRAPHIQUES DONUTS ── #}
   {% if (prod_a.geo is defined and prod_b.geo is defined) or (prod_a.secteurs is defined and prod_b.secteurs is defined) %}
-  <div style="display:grid;grid-template-columns:{% if prod_a.geo is defined and prod_b.geo is defined and prod_a.secteurs is defined and prod_b.secteurs is defined %}1fr 1fr{% else %}1fr{% endif %};gap:16px;margin:24px 0">
+  <div style="display:grid;grid-template-columns:{% if prod_a.geo is defined and prod_b.geo is defined and prod_a.secteurs is defined and prod_b.secteurs is defined %}1fr 1fr{% else %}1fr{% endif %};gap:16px;margin:24px 0" class="donut-grid">
 
     {% if prod_a.geo is defined and prod_b.geo is defined %}
     <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px">
