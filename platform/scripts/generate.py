@@ -196,98 +196,16 @@ def load_products_from_sheet(csv_url: str) -> list | None:
 
 
 # ── Génération éditoriale batch ────────────────────────────────────────────────
-def generate_all_editorials(products: list) -> dict:
-    """
-    Génère tous les textes éditoriaux en appels API par batch de 15 paires.
-    """
-    api_key = os.environ.get("ANTHROPIC_API_KEY", "")
-    if not api_key:
-        print("  ⚠ ANTHROPIC_API_KEY manquant — textes fallback")
-        return {}
-
-    pairs    = list(itertools.combinations(sorted([p["slug"] for p in products]), 2))
-    prod_map = {p["slug"]: p for p in products}
-
-    def fmt(p):
-        return {
-            "nom": p.get("nom", ""), "marque": p.get("marque", ""),
-            "type": p.get("type", ""), "td": p.get("td", ""),
-            "tri": p.get("tri", ""), "tri_horizon": p.get("tri_horizon", ""),
-            "frais_souscription": p.get("frais_souscription", ""),
-            "frais_gestion": p.get("frais_gestion", ""),
-            "prix_achat": p.get("prix_achat", ""), "tof": p.get("tof", ""),
-            "endettement": p.get("endettement", ""),
-            "capitalisation": p.get("capitalisation", ""),
-            "delai_jouissance": p.get("delai_jouissance", ""),
-            "pays": p.get("pays", ""), "geo": p.get("geo", ""),
-            "secteurs": p.get("secteurs", ""),
-        }
-
-    def call_api(batch):
-        pairs_data = [{"key": f"{a}-vs-{b}", "a": fmt(prod_map[a]), "b": fmt(prod_map[b])} for a, b in batch]
-        prompt = f"""Expert SCPI et rédacteur SEO. Génère des textes éditoriaux UNIQUES pour {len(batch)} pages comparatifs SCPI.
-
-Chaque texte doit être SPÉCIFIQUE à la paire — pas générique. Met en avant ce qui distingue ces deux SCPI l'une par rapport à l'autre dans CE contexte précis.
-
-Paires :
-{json.dumps(pairs_data, ensure_ascii=False)}
-
-Réponds UNIQUEMENT en JSON valide :
-{{
-  "cle-paire": {{
-    "description_a": "2 paragraphes contextuels sur SCPI A vs B",
-    "description_b": "2 paragraphes contextuels sur SCPI B vs A",
-    "points_forts_a": ["point 1", "point 2", "point 3", "point 4"],
-    "points_faibles_a": ["point 1", "point 2", "point 3"],
-    "points_forts_b": ["point 1", "point 2", "point 3", "point 4"],
-    "points_faibles_b": ["point 1", "point 2", "point 3"],
-    "verdict_si_a": ["profil 1", "profil 2", "profil 3"],
-    "verdict_si_b": ["profil 1", "profil 2", "profil 3"]
-  }}
-}}
-
-Textes contextuels à la paire, français expert et concis."""
-
-        payload = json.dumps({
-            "model": "claude-sonnet-4-20250514",
-            "max_tokens": 4000,
-            "messages": [{"role": "user", "content": prompt}]
-        }).encode("utf-8")
-
-        req = urllib.request.Request(
-            "https://api.anthropic.com/v1/messages",
-            data=payload,
-            headers={
-                "x-api-key": api_key,
-                "anthropic-version": "2023-06-01",
-                "content-type": "application/json",
-            }
-        )
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-
-        text = data["content"][0]["text"].strip()
-        if text.startswith("```"):
-            text = "\n".join(text.split("\n")[1:])
-        if text.endswith("```"):
-            text = "\n".join(text.split("\n")[:-1])
-        return json.loads(text)
-
-    # Découpe en chunks de 5
-    CHUNK_SIZE = 5
-    chunks = [pairs[i:i+CHUNK_SIZE] for i in range(0, len(pairs), CHUNK_SIZE)]
-    result = {}
-
-    for i, chunk in enumerate(chunks):
-        try:
-            print(f"  🤖 Batch {i+1}/{len(chunks)} : {len(chunk)} paires...")
-            result.update(call_api(chunk))
-            print(f"  ✓ Batch {i+1} OK")
-        except Exception as e:
-            print(f"  ⚠ Batch {i+1} échoué : {e} — textes fallback pour ce batch")
-
-    print(f"  ✅ {len(result)}/{len(pairs)} paires avec textes AI")
-    return result
+def load_editorial(site_dir: Path) -> dict:
+    """Charge editorial.json depuis le dossier du site."""
+    editorial_path = site_dir / "editorial.json"
+    if editorial_path.exists():
+        with open(editorial_path, encoding="utf-8") as f:
+            data = json.load(f)
+        print(f"  ✓ editorial.json : {len(data)} paires chargées")
+        return data
+    print("  ⚠ editorial.json absent — textes fallback")
+    return {}
 
 
 # ── SEO ────────────────────────────────────────────────────────────────────────
@@ -401,10 +319,8 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     if filter_pair:
         all_pairs = [p for p in all_pairs if set(p) == set(filter_pair)]
 
-    # ── Génération éditoriale batch (un seul appel API) ──────────────────
-    editorials = {}
-    if not dry_run and site.get("ai_editorial", True):
-        editorials = generate_all_editorials(products)
+    # ── Chargement éditorial depuis editorial.json ───────────────────────
+    editorials = load_editorial(site_dir)
 
     generated = 0
     skipped   = 0
