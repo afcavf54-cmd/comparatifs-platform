@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-generate.py — Générateur de sites comparatifs statiques
+generate.py, Générateur de sites comparatifs statiques
 Source données : Google Sheets CSV (priorité) ou products.yaml (fallback)
 Textes éditoriaux : API Claude (un seul appel batch pour toutes les paires)
 """
@@ -64,20 +64,20 @@ NUMERIC_FIELDS = [
 EDITORIAL_TEXTS = {
     "wemo-one": {
         "description": "Wemo One est la SCPI phare de Wemo Reim, lancée en 2024 avec une philosophie radicalement différente : investir uniquement dans des actifs \"small caps\" européens (moins de 5 M€ par bien), là où les grands institutionnels ne vont pas. Cette approche granulaire offre des marges de négociation supérieures et une diversification naturelle du risque locataire.\n\nCe qui distingue vraiment Wemo One, c'est l'alignement d'intérêts : chaque associé de Wemo Reim est également investisseur dans la SCPI. En 2025, cette stratégie a porté ses fruits avec un taux de distribution exceptionnel de 15,27%, le meilleur du marché.",
-        "points_forts": ["TD 2025 exceptionnel : 15,27% — meilleur du marché", "Stratégie small caps : actifs < 5 M€", "TOF à 100%", "85% hors France — avantage fiscal TMI 30%+", "Gérants co-investisseurs dans leur propre SCPI"],
-        "points_faibles": ["SCPI récente (2024) — track record limité", "Frais de souscription de 10%", "Délai de jouissance de 6 mois", "Capitalisation encore modeste (75 M€)"],
+        "points_forts": ["TD 2025 exceptionnel : 15,27%, meilleur du marché", "Stratégie small caps : actifs < 5 M€", "TOF à 100%", "85% hors France, avantage fiscal TMI 30%+", "Gérants co-investisseurs dans leur propre SCPI"],
+        "points_faibles": ["SCPI récente (2024), track record limité", "Frais de souscription de 10%", "Délai de jouissance de 6 mois", "Capitalisation encore modeste (75 M€)"],
         "verdict_si": ["Vous cherchez le TD le plus élevé du marché", "TMI à 30% ou plus", "Vous croyez à l'immobilier small cap européen", "Vous acceptez les frais d'entrée pour un rendement exceptionnel"]
     },
     "iroko-zen": {
         "description": "Iroko Zen a révolutionné le marché SCPI en supprimant totalement les frais de souscription dès 2020. Résultat : 100% du capital investi travaille immédiatement. Labellisée ISR, elle affiche un TRI de 7,49% sur 5 ans et une capitalisation de 1,35 milliard d'euros.\n\nSon portefeuille diversifié couvre commerces, bureaux, logistique et santé dans six pays européens, avec une durée d'engagement ferme des locataires de 7,3 ans à fin 2025.",
-        "points_forts": ["0% de frais de souscription", "TRI 5 ans de 7,49%", "Label ISR", "Capitalisation de 1,35 Md€ — liquidité solide", "Délai de jouissance de 3 mois"],
-        "points_faibles": ["Ticket minimum : 5 100€ (25 parts)", "Frais de gestion de 14,4%", "Endettement de 26%", "29% France — avantage fiscal partiel"],
+        "points_forts": ["0% de frais de souscription", "TRI 5 ans de 7,49%", "Label ISR", "Capitalisation de 1,35 Md€, liquidité solide", "Délai de jouissance de 3 mois"],
+        "points_faibles": ["Ticket minimum : 5 100€ (25 parts)", "Frais de gestion de 14,4%", "Endettement de 26%", "29% France, avantage fiscal partiel"],
         "verdict_si": ["Investissement minimum de 5 100€", "TRI prime sur TD annuel", "ISR est un critère important", "Horizon 8 ans et plus"]
     },
     "comete": {
         "description": "Comète est la SCPI internationale d'Alderan, lancée en décembre 2023. Elle investit exclusivement hors France, avec une concentration au Royaume-Uni (47%), en Espagne (15%) et en Italie (12%).\n\nSa stratégie opportuniste sur marchés décotés lui a permis d'afficher un TD de 9% en 2025, parmi les meilleurs du marché. Elle cible les zones urbaines dynamiques et les pôles tertiaires à forte demande locative.",
         "points_forts": ["TD 2025 de 9%", "100% international hors France", "Stratégie opportuniste sur marchés décotés", "Diversification : UK, Espagne, Italie, Pays-Bas", "TRI cible 10 ans de 6,5%"],
-        "points_faibles": ["SCPI récente (2023)", "Frais de souscription de 10%", "Exposition GBP (47% UK) — risque de change", "Capitalisation modeste"],
+        "points_faibles": ["SCPI récente (2023)", "Frais de souscription de 10%", "Exposition GBP (47% UK), risque de change", "Capitalisation modeste"],
         "verdict_si": ["Exposition internationale maximale", "TD élevé avec diversification géo", "Acceptez le risque de change UK", "Portefeuille déjà exposé à la zone euro"]
     },
     "corum-origin": {
@@ -87,39 +87,39 @@ EDITORIAL_TEXTS = {
         "verdict_si": ["Long historique de performance", "Régularité prime sur niveau du rendement", "Horizon 10 ans minimum", "Zéro endettement souhaité"]
     },
     "remake-live": {
-        "description": "Remake Live est la SCPI sans frais de souscription de Remake AM, lancée en 2022. Avec 78% hors France, elle offre un avantage fiscal majeur pour les TMI élevées. À fin 2025, son TOF atteint 98,86% et le prix de part reste stable.\n\nL'absence totale de frais d'entrée en fait la SCPI idéale pour les versements programmés mensuels dès 204€ — un ticket d'entrée parmi les plus accessibles du marché.",
+        "description": "Remake Live est la SCPI sans frais de souscription de Remake AM, lancée en 2022. Avec 78% hors France, elle offre un avantage fiscal majeur pour les TMI élevées. À fin 2025, son TOF atteint 98,86% et le prix de part reste stable.\n\nL'absence totale de frais d'entrée en fait la SCPI idéale pour les versements programmés mensuels dès 204€, un ticket d'entrée parmi les plus accessibles du marché.",
         "points_forts": ["0% de frais de souscription", "TD 2025 de 7,05%", "78% hors France", "TOF de 98,86%", "Ticket minimum : 204€"],
-        "points_faibles": ["Frais de gestion de 18% TTC", "SCPI récente (2022)", "TRI cible 7% — non encore démontré sur la durée"],
+        "points_faibles": ["Frais de gestion de 18% TTC", "SCPI récente (2022)", "TRI cible 7%, non encore démontré sur la durée"],
         "verdict_si": ["Versements programmés dès 204€/mois", "TMI à 30% ou plus", "0% frais d'entrée sans compromis sur rendement", "Débutant en SCPI"]
     },
     "iroko-atlas": {
         "description": "Iroko Atlas est la petite sœur d'Iroko Zen, lancée en 2025 avec une ambition encore plus internationale : 100% hors de France. Même modèle sans frais, même approche ISR. En quelques mois, elle a constitué 12 actifs dans 6 pays européens.\n\nSa répartition actuelle : Royaume-Uni (31%), Pays-Bas (29%), Espagne (13%). Forte orientation commerces (56%). TRI cible de 7% sur 10 ans.",
         "points_forts": ["0% de frais de souscription", "100% hors de France", "TOF à 100%", "TRI cible 10 ans de 7%", "Même équipe qu'Iroko Zen"],
-        "points_faibles": ["SCPI très récente (2025) — aucun track record", "Capitalisation faible (77,4 M€)", "Délai de jouissance de 5 mois", "Risque de change GBP (31% UK)"],
-        "verdict_si": ["Confiance en l'équipe Iroko", "Exposition 100% internationale", "TMI élevée — optimisation fiscale", "Acceptez le risque d'une SCPI naissante"]
+        "points_faibles": ["SCPI très récente (2025), aucun track record", "Capitalisation faible (77,4 M€)", "Délai de jouissance de 5 mois", "Risque de change GBP (31% UK)"],
+        "verdict_si": ["Confiance en l'équipe Iroko", "Exposition 100% internationale", "TMI élevée, optimisation fiscale", "Acceptez le risque d'une SCPI naissante"]
     },
     "log-in": {
         "description": "Log In est la seule SCPI exclusivement logistique et industrielle à l'échelle européenne, gérée par Theoreim en partenariat avec Principal Real Estate Europe. Elle s'inscrit dans la vague de réindustrialisation européenne.\n\nSon portefeuille est concentré en Italie (29%), Espagne (27%) et Royaume-Uni (24%), avec une répartition sectorielle dominée par les locaux d'activité (70%) et la logistique (24%).",
-        "points_forts": ["Thématique unique : logistique 100% européenne", "Réindustrialisation européenne — tendance structurelle", "TOF à 100%", "PGA de 8,21%", "Double expertise Theoreim + Principal Real Estate"],
-        "points_faibles": ["TRI cible 10 ans de 5% — modeste", "Frais de souscription de 10%", "Ticket minimum de 1 020€", "Secteur cyclique"],
+        "points_forts": ["Thématique unique : logistique 100% européenne", "Réindustrialisation européenne, tendance structurelle", "TOF à 100%", "PGA de 8,21%", "Double expertise Theoreim + Principal Real Estate"],
+        "points_faibles": ["TRI cible 10 ans de 5%, modeste", "Frais de souscription de 10%", "Ticket minimum de 1 020€", "Secteur cyclique"],
         "verdict_si": ["Conviction sur la logistique en Europe", "Exposition sectorielle différenciante", "Complément d'un portefeuille diversifié", "Horizon long terme sur thématique industrielle"]
     },
     "transitions-europe": {
         "description": "Transitions Europe est la SCPI d'Arkéa REIM pensée pour capter les mutations de l'immobilier européen. 100% hors France, elle investit dans les actifs des nouveaux usages : bureaux repensés, logistique urbaine, commerces de proximité.\n\nEspagne (36%), Allemagne (21%) et Pays-Bas (15%) constituent son cœur de portefeuille. TD de 7,60% en 2025 grâce à des acquisitions sur marchés corrigés.",
-        "points_forts": ["TD 2025 de 7,60%", "100% hors de France", "Marchés décotés — potentiel de revalorisation", "Frais de gestion compétitifs : 10% TTC", "Diversification sectorielle complète"],
+        "points_forts": ["TD 2025 de 7,60%", "100% hors de France", "Marchés décotés, potentiel de revalorisation", "Frais de gestion compétitifs : 10% TTC", "Diversification sectorielle complète"],
         "points_faibles": ["Prix de retrait < prix d'achat (181,80€ vs 202€)", "Frais de souscription de 10%", "Pas de TRI communiqué"],
         "verdict_si": ["TD élevé + exposition 100% européenne", "Rebond immobilier européen post-correction", "Frais de gestion compétitifs", "Construction d'un portefeuille diversifié"]
     },
     "principal-inside": {
-        "description": "Principal Inside est la première SCPI à investir des deux côtés de l'Atlantique, gérée par Principal Real Estate (600 Md$ d'actifs). SCPI récente en phase de déploiement, avec 100% USA pour l'instant.\n\nThématique santé (58%) — secteur défensif porté par le vieillissement démographique. La diversification Europe viendra progressivement. Cashback de 5% via Louveinvest.",
-        "points_forts": ["Exposition unique aux États-Unis", "Gestionnaire mondial : 600 Md$ d'AUM", "Thématique santé (58%) — défensif", "TRI cible 10 ans de 6,50%", "Cashback de 5% via Louveinvest"],
-        "points_faibles": ["Aucun track record de distribution", "100% USA — risque de change USD/EUR", "Frais de souscription de 10%", "TD cible 6% — en dessous de la moyenne", "Diversification Europe à venir"],
+        "description": "Principal Inside est la première SCPI à investir des deux côtés de l'Atlantique, gérée par Principal Real Estate (600 Md$ d'actifs). SCPI récente en phase de déploiement, avec 100% USA pour l'instant.\n\nThématique santé (58%), secteur défensif porté par le vieillissement démographique. La diversification Europe viendra progressivement. Cashback de 5% via Louveinvest.",
+        "points_forts": ["Exposition unique aux États-Unis", "Gestionnaire mondial : 600 Md$ d'AUM", "Thématique santé (58%), défensif", "TRI cible 10 ans de 6,50%", "Cashback de 5% via Louveinvest"],
+        "points_faibles": ["Aucun track record de distribution", "100% USA, risque de change USD/EUR", "Frais de souscription de 10%", "TD cible 6%, en dessous de la moyenne", "Diversification Europe à venir"],
         "verdict_si": ["Exposition aux États-Unis recherchée", "Confiance en un gestionnaire mondial", "Thématique santé convaincante", "Horizon 10 ans minimum"]
     },
     "upeka": {
-        "description": "Upêka est la SCPI value-add d'Axipit Real Estate Partners (2023). Stratégie opportuniste : acquérir des actifs décotés à fort potentiel, les repositionner. 0% de frais de souscription, frais de sortie dégressifs (disparus après 6 ans).\n\nTD de 5,71% en 2025 — modeste — mais le potentiel de revalorisation est le vrai argument. Cashback de 3% via Louveinvest.",
-        "points_forts": ["0% de frais de souscription", "Frais de sortie dégressifs — disparus après 6 ans", "Stratégie value-add — potentiel de plus-value", "TRI cible 10 ans de 6,50%", "Cashback de 3% via Louveinvest"],
-        "points_faibles": ["TD 2025 de 5,71% — en dessous des meilleures SCPI", "Frais de gestion de 18% TTC", "SCPI récente (2023)", "Rendement différé dans le temps"],
+        "description": "Upêka est la SCPI value-add d'Axipit Real Estate Partners (2023). Stratégie opportuniste : acquérir des actifs décotés à fort potentiel, les repositionner. 0% de frais de souscription, frais de sortie dégressifs (disparus après 6 ans).\n\nTD de 5,71% en 2025, modeste, mais le potentiel de revalorisation est le vrai argument. Cashback de 3% via Louveinvest.",
+        "points_forts": ["0% de frais de souscription", "Frais de sortie dégressifs, disparus après 6 ans", "Stratégie value-add, potentiel de plus-value", "TRI cible 10 ans de 6,50%", "Cashback de 3% via Louveinvest"],
+        "points_faibles": ["TD 2025 de 5,71%, en dessous des meilleures SCPI", "Frais de gestion de 18% TTC", "SCPI récente (2023)", "Rendement différé dans le temps"],
         "verdict_si": ["Valorisation du capital à long terme", "0% frais avec gestionnaire actif", "Value-add sur marché immobilier baissier", "Horizon 8 ans minimum"]
     }
 }
@@ -204,7 +204,7 @@ def load_editorial(site_dir: Path) -> dict:
             data = json.load(f)
         print(f"  ✓ editorial.json : {len(data)} paires chargées")
         return data
-    print("  ⚠ editorial.json absent — textes fallback")
+    print("  ⚠ editorial.json absent, textes fallback")
     return {}
 
 
