@@ -142,6 +142,8 @@ footer a{color:rgba(255,255,255,.4)}
     <p class="intro">{{ seo.intro | safe }}</p>
   </div>
 
+  <h2>Comparaison détaillée : {{ prod_a.nom }} vs {{ prod_b.nom }}</h2>
+
   <!-- TABLEAU COMPARATIF -->
   <div class="comp-block">
     <div class="comp-block-header">
@@ -257,7 +259,6 @@ footer a{color:rgba(255,255,255,.4)}
   {% endfor %}
 
   <!-- COMPARAISON DÉTAILLÉE, surchargée par chaque template niche -->
-  <h2>Comparaison détaillée : {{ prod_a.nom }} vs {{ prod_b.nom }}</h2>
   {% block comparaison_detail %}
   <p style="color:var(--ink2);font-size:18px;line-height:1.75">
     Consultez le tableau comparatif ci-dessus pour une analyse complète des deux produits.
