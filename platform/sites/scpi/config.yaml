@@ -1,0 +1,91 @@
+# ============================================================
+# CONFIG SITE — scpi
+# ============================================================
+
+site:
+  slug: scpi
+  name: "UTL Peipin"
+  domain: "https://www.utl-peipin.fr"
+  base_path: "/comparatif-scpi"
+  logo_text: "UTL"
+  logo_accent: "Peipin"
+  tagline: "Comparatifs SCPI 2026"
+  year: 2026
+  sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTSv0469bN0_2nPikgVhe825g74RbMjaVZFvjJnDSydA-C98NcrCJJiHZdX8-V9xeMW-cklNBRou3vK/pub?gid=0&single=true&output=csv"
+  template: "comparatif-vs-scpi.html.j2"
+  index_template: "index-scpi.html.j2"
+  analytics_clicky: ""
+
+theme:
+  accent: "#1B4FD8"
+  accent2: "#3B6FEF"
+  bg: "#F4F6FB"
+  ink: "#0F1A2E"
+  surface: "#FFFFFF"
+  font_title: "DM Serif Display"
+  font_body: "Outfit"
+  google_fonts: "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap"
+
+criteria:
+  - label: "TD 2025"
+    field: td
+    type: text
+    suffix: "%"
+  - label: "TRI"
+    field: tri
+    type: text
+    suffix: "%"
+  - label: "Prix de la part"
+    field: prix_achat
+    type: text
+    suffix: "€"
+  - label: "Prix de retrait"
+    field: prix_retrait
+    type: text
+    suffix: "€"
+  - label: "Investissement min."
+    field: investissement_min
+    type: text
+  - label: "Frais de souscription"
+    field: frais_souscription
+    type: text
+    suffix: "%"
+  - label: "Frais de gestion"
+    field: frais_gestion
+    type: text
+    suffix: "% TTC"
+  - label: "TOF"
+    field: tof
+    type: text
+    suffix: "%"
+  - label: "Endettement"
+    field: endettement
+    type: text
+    suffix: "%"
+  - label: "Délai de jouissance"
+    field: delai_jouissance
+    type: text
+    suffix: " mois"
+  - label: "Pays"
+    field: pays
+    type: text
+
+tag_classes:
+  rendement: "tag-rendement"
+  diversifiee: "tag-diversifiee"
+  specialisee: "tag-specialisee"
+  europeenne: "tag-europeenne"
+
+seo:
+  title_pattern: "SCPI {A} vs {B} : comparatif + avis {year}"
+  meta_pattern: "Comparatif complet SCPI {A} vs {B} : TD, TRI, frais, capitalisation. Trouvez la meilleure SCPI pour votre investissement en {year}."
+  h1_pattern: "SCPI <em>{A}</em> vs <em>{B}</em> :<br>laquelle choisir en {year} ?"
+  eyebrow: "⚖️ Comparatif SCPI {year}"
+  intro_pattern: >
+    Vous hésitez entre la SCPI <strong>{A}</strong> (prix d'achat {prix_a}) et
+    <strong>{B}</strong> (prix d'achat {prix_b}) ? Ce comparatif complet analyse
+    les deux SCPI sur tous les critères essentiels : taux de distribution, TRI,
+    frais, capitalisation et délai de jouissance. Objectif : vous aider à choisir
+    en 5 minutes.
+  category_label: "Comparatifs SCPI"
+  category_url: "index.html#comparatifs"
