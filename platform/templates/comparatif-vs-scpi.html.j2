@@ -176,21 +176,46 @@
 
   {# ── PILIER 1 : Performance & rendement ── #}
   <h2>Performance et stratégie de rendement</h2>
-  <div class="perf-grid">
-    <div class="perf-card">
-      <div class="perf-card-title">{{ prod_a.nom }}</div>
-      {% if prod_a.td is defined %}<div class="perf-stat"><span class="perf-label">Taux de distribution 2025</span><span class="perf-val good">{{ prod_a.td }}%</span></div>{% endif %}
-      {% if prod_a.tri is defined %}<div class="perf-stat"><span class="perf-label">TRI {{ prod_a.tri_horizon | default('objectif') }}</span><span class="perf-val">{{ prod_a.tri }}%</span></div>{% endif %}
-      {% if prod_a.pga is defined %}<div class="perf-stat"><span class="perf-label">PGA</span><span class="perf-val">{{ prod_a.pga }}%</span></div>{% endif %}
-      {% if prod_a.tof is defined %}<div class="perf-stat"><span class="perf-label">TOF</span><span class="perf-val {% if prod_a.tof >= 90 %}good{% elif prod_a.tof < 80 %}warn{% endif %}">{{ prod_a.tof }}%</span></div>{% endif %}
-    </div>
-    <div class="perf-card">
-      <div class="perf-card-title">{{ prod_b.nom }}</div>
-      {% if prod_b.td is defined %}<div class="perf-stat"><span class="perf-label">Taux de distribution 2025</span><span class="perf-val good">{{ prod_b.td }}%</span></div>{% endif %}
-      {% if prod_b.tri is defined %}<div class="perf-stat"><span class="perf-label">TRI {{ prod_b.tri_horizon | default('objectif') }}</span><span class="perf-val">{{ prod_b.tri }}%</span></div>{% endif %}
-      {% if prod_b.pga is defined %}<div class="perf-stat"><span class="perf-label">PGA</span><span class="perf-val">{{ prod_b.pga }}%</span></div>{% endif %}
-      {% if prod_b.tof is defined %}<div class="perf-stat"><span class="perf-label">TOF</span><span class="perf-val {% if prod_b.tof >= 90 %}good{% elif prod_b.tof < 80 %}warn{% endif %}">{{ prod_b.tof }}%</span></div>{% endif %}
-    </div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin:16px 0">
+    <table style="width:100%;border-collapse:collapse;font-size:15px">
+      <thead>
+        <tr style="background:var(--bg)">
+          <th style="padding:12px 18px;text-align:left;font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;width:40%">Critère</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:var(--ink)">{{ prod_a.nom }}</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:var(--ink)">{{ prod_b.nom }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if prod_a.td is defined and prod_b.td is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Taux de distribution 2025</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:700;color:{% if prod_a.td >= prod_b.td %}var(--green){% else %}var(--ink){% endif %}">{{ prod_a.td }}%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:700;color:{% if prod_b.td >= prod_a.td %}var(--green){% else %}var(--ink){% endif %}">{{ prod_b.td }}%</td>
+        </tr>
+        {% endif %}
+        {% if prod_a.tri is defined and prod_b.tri is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">TRI {{ prod_a.tri_horizon | default('objectif') }}</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_a.tri }}%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.tri }}%</td>
+        </tr>
+        {% endif %}
+        {% if prod_a.pga is defined and prod_b.pga is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">PGA</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_a.pga }}%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.pga }}%</td>
+        </tr>
+        {% endif %}
+        {% if prod_a.tof is defined and prod_b.tof is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">TOF</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_a.tof >= 90 %}var(--green){% elif prod_a.tof < 80 %}#C0392B{% else %}var(--ink){% endif %}">{{ prod_a.tof }}%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_b.tof >= 90 %}var(--green){% elif prod_b.tof < 80 %}#C0392B{% else %}var(--ink){% endif %}">{{ prod_b.tof }}%</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
   </div>
 
   {# CTA rapport trimestriel #}
