@@ -1,0 +1,60 @@
+name: Générer et déployer SCPI
+
+on:
+  # Déclenchement manuel depuis le dashboard ou GitHub
+  workflow_dispatch:
+    inputs:
+      site:
+        description: 'Site à générer (ex: scpi, all)'
+        required: false
+        default: 'scpi'
+
+  # Déclenchement automatique à chaque push sur main
+  push:
+    branches: [main]
+    paths:
+      - 'platform/sites/**'
+      - 'platform/templates/**'
+      - 'platform/scripts/**'
+
+jobs:
+  generate-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Installer dépendances
+        run: |
+          pip install jinja2 pyyaml
+
+      - name: Générer le site
+        run: |
+          SITE="${{ github.event.inputs.site || 'scpi' }}"
+          if [ "$SITE" = "all" ]; then
+            python platform/scripts/generate.py --all
+          else
+            python platform/scripts/generate.py --site "$SITE"
+          fi
+
+      - name: Vérifier les fichiers générés
+        run: |
+          echo "=== Fichiers générés ==="
+          ls -la platform/sites/scpi/output/ | head -20
+          echo "=== Total pages ==="
+          ls platform/sites/scpi/output/*.html | wc -l
+
+      - name: Déployer sur Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy platform/sites/scpi/output --project-name=utl-peipin-scpi --branch=main
