@@ -195,10 +195,10 @@
 
   {# CTA rapport trimestriel #}
   <div style="display:flex;gap:12px;margin:16px 0;flex-wrap:wrap">
-    <a href="#" data-amz-a class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="font-size:13px;padding:10px 18px">
+    <a href="{{ prod_a.url_affiliation if prod_a.url_affiliation else "#" }}" class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="font-size:13px;padding:10px 18px">
       📄 Rapport trimestriel {{ prod_a.nom }}
     </a>
-    <a href="#" data-amz-b class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="font-size:13px;padding:10px 18px">
+    <a href="{{ prod_b.url_affiliation if prod_b.url_affiliation else "#" }}" class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="font-size:13px;padding:10px 18px">
       📄 Rapport trimestriel {{ prod_b.nom }}
     </a>
   </div>
