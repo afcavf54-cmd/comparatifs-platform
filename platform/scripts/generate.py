@@ -250,7 +250,7 @@ Textes contextuels à la paire, français expert et concis."""
 
         payload = json.dumps({
             "model": "claude-sonnet-4-20250514",
-            "max_tokens": 8000,
+            "max_tokens": 4000,
             "messages": [{"role": "user", "content": prompt}]
         }).encode("utf-8")
 
@@ -263,7 +263,7 @@ Textes contextuels à la paire, français expert et concis."""
                 "content-type": "application/json",
             }
         )
-        with urllib.request.urlopen(req, timeout=90) as resp:
+        with urllib.request.urlopen(req, timeout=60) as resp:
             data = json.loads(resp.read().decode("utf-8"))
 
         text = data["content"][0]["text"].strip()
@@ -273,8 +273,8 @@ Textes contextuels à la paire, français expert et concis."""
             text = "\n".join(text.split("\n")[:-1])
         return json.loads(text)
 
-    # Découpe en chunks de 15
-    CHUNK_SIZE = 15
+    # Découpe en chunks de 5
+    CHUNK_SIZE = 5
     chunks = [pairs[i:i+CHUNK_SIZE] for i in range(0, len(pairs), CHUNK_SIZE)]
     result = {}
 
