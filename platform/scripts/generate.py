@@ -92,6 +92,25 @@ def load_products_from_sheet(csv_url: str) -> list | None:
                     except (ValueError, TypeError):
                         pass
 
+            # Construit verdict_si depuis les colonnes verdict_si_1/2/3
+            # ou génère un fallback automatique si absent
+            if "verdict_si" not in prod or not prod["verdict_si"]:
+                vs = []
+                for i in range(1, 4):
+                    v = prod.get(f"verdict_si_{i}")
+                    if v and str(v).strip():
+                        vs.append(str(v).strip())
+                if not vs:
+                    # Fallback automatique basé sur les données disponibles
+                    if prod.get("frais_souscription") == 0:
+                        vs.append("Vous souhaitez éviter les frais d'entrée")
+                    if prod.get("td") and float(prod.get("td", 0)) >= 7:
+                        vs.append("Vous cherchez un rendement élevé")
+                    if prod.get("delai_jouissance") and float(prod.get("delai_jouissance", 6)) <= 3:
+                        vs.append("Vous voulez percevoir vos loyers rapidement")
+                    vs.append("Vous souhaitez diversifier votre patrimoine immobilier")
+                prod["verdict_si"] = vs
+
         return products
 
     except Exception as e:
