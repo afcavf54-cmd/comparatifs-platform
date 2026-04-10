@@ -37,6 +37,8 @@ jobs:
           pip install jinja2 pyyaml
 
       - name: Générer le site
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           SITE="${{ github.event.inputs.site || 'scpi' }}"
           if [ "$SITE" = "all" ]; then
