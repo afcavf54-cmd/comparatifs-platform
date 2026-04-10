@@ -309,8 +309,7 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
           {% endif %}
         </div>
         <div class="scpi-card-links" onclick="event.stopPropagation()">
-          <a href="{{ prod.slug }}-vs-remake-live.html" class="scpi-link scpi-link-secondary">Comparer</a>
-          <a href="#comparateur" onclick="preselectA('{{ prod.slug }}')" class="scpi-link scpi-link-primary">Analyser →</a>
+          <a href="#comparateur" onclick="preselectA('{{ prod.slug }}')" class="scpi-link scpi-link-primary" style="text-align:center">⚖️ Comparer</a>
         </div>
       </div>
       {% endfor %}
