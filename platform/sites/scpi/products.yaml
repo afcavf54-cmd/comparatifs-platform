@@ -1,0 +1,373 @@
+# ============================================================
+# PRODUITS — scpi
+# Sources : rapports annuels 2024, ASPIM, sites gérants
+# ============================================================
+
+products:
+
+  - slug: corum-origin
+    nom: "Corum Origin"
+    marque: "Corum AM"
+    type: rendement
+    prix_achat: 1135
+    prix_retrait: 1015
+    td: 6.06
+    tri_5ans: 5.84
+    pga: 6.02
+    frais_souscription: 11.96
+    frais_gestion: 13.20
+    capitalisation: 2650
+    tof: 95.2
+    endettement: 0
+    delai_jouissance: 6
+    pays: "France, Europe"
+    description: >
+      Corum Origin est l'une des SCPI les plus connues du marché français, gérée
+      par Corum AM. Elle se distingue par une stratégie d'investissement opportuniste
+      en Europe et un taux de distribution historiquement élevé. Son point fort :
+      zéro endettement et une diversification géographique prononcée.
+
+      Points forts : TD régulièrement au-dessus de 6%, absence totale d'endettement,
+      forte diversification européenne, track-record solide depuis 2012.
+
+      Points faibles : frais de souscription élevés (12%), délai de jouissance de
+      6 mois, prix d'achat accessible mais prix de retrait inférieur au prix d'achat.
+
+      Idéale pour : investisseurs cherchant un rendement élevé et régulier, profil
+      dynamique acceptant les frais d'entrée importants.
+    points_forts:
+      - "TD parmi les plus élevés du marché"
+      - "Zéro endettement"
+      - "Diversification européenne"
+      - "Track-record 10+ ans"
+    points_faibles:
+      - "Frais de souscription : 11,96%"
+      - "Délai de jouissance : 6 mois"
+      - "Prix de retrait < prix d'achat"
+    verdict_si:
+      - "Vous cherchez un rendement maximal"
+      - "Vous acceptez des frais d'entrée élevés"
+      - "Vous investissez sur le long terme (8+ ans)"
+
+  - slug: corum-xl
+    nom: "Corum XL"
+    marque: "Corum AM"
+    type: europeenne
+    prix_achat: 189
+    prix_retrait: 170
+    td: 5.15
+    tri_5ans: 4.92
+    pga: 5.08
+    frais_souscription: 12.00
+    frais_gestion: 13.20
+    capitalisation: 2100
+    tof: 93.8
+    endettement: 0
+    delai_jouissance: 6
+    pays: "Europe hors France"
+    description: >
+      Corum XL est la SCPI 100% européenne de Corum AM, investissant exclusivement
+      hors de France. Elle offre une diversification géographique maximale avec des
+      actifs au Royaume-Uni, Allemagne, Pays-Bas et pays nordiques.
+
+      Points forts : diversification hors France, prix d'achat accessible (189€),
+      zéro endettement, exposition aux marchés immobiliers européens dynamiques.
+
+      Points faibles : TD légèrement inférieur à Corum Origin, risque de change
+      sur certains actifs (livres sterling), frais de souscription identiquement élevés.
+
+      Idéale pour : investisseurs souhaitant s'exposer aux marchés immobiliers
+      européens hors France, complément à une SCPI française.
+    points_forts:
+      - "100% Europe hors France"
+      - "Prix d'achat accessible : 189€"
+      - "Zéro endettement"
+      - "Diversification maximale"
+    points_faibles:
+      - "TD inférieur à Corum Origin"
+      - "Risque de change partiel"
+      - "Frais de souscription : 12%"
+    verdict_si:
+      - "Vous voulez diversifier hors France"
+      - "Budget d'entrée limité"
+      - "Complément de portefeuille SCPI"
+
+  - slug: remake-live
+    nom: "Remake Live"
+    marque: "Remake AM"
+    type: rendement
+    prix_achat: 204
+    prix_retrait: 193
+    investissement_min: "204€ (1 part)"
+    td: 7.05
+    td_objectif_2026: "6,50% - 7,50%"
+    tri: 5.90
+    tri_horizon: "10 ans"
+    pga: 7.50
+    frais_souscription: 0
+    frais_gestion: 18.0
+    commission_retrait: "5% (si sortie < 5 ans)"
+    capitalisation: 980
+    tof: 98.5
+    endettement: 18
+    exposition_etrangere: "~78% (Forte)"
+    delai_jouissance: 3
+    pays: "France, Europe (Irlande, Espagne, UK)"
+    geo: "Espagne:44,Pays-Bas:41,France:10,Irlande:5"
+    secteurs: "Santé:30,Logistique:25,Bureaux:20,Commerces:15,Autre:10"
+    note_redaction: "4.4"
+    description: >
+      Remake Live est la SCPI nouvelle génération de Remake AM, lancée en 2022.
+      Elle se distingue par des frais de souscription à 0% et un délai de
+      jouissance court (3 mois). Avec près de 78% de son patrimoine hors de France,
+      elle offre un avantage fiscal significatif pour les TMI élevées.
+
+      Points forts : 0% de frais de souscription, ticket d'entrée minimal (1 part = 204€),
+      idéale pour les versements programmés, forte exposition étrangère avantageuse
+      fiscalement, TOF exceptionnel à 98,5%.
+
+      Points faibles : frais de gestion élevés (18% TTC), SCPI récente (2022),
+      endettement de 18%, TRI objectif 10 ans (5,90%) plus prudent qu'Iroko Zen.
+
+      Idéale pour : investisseurs à TMI élevée (30%+), versements programmés
+      dès 204€/mois, horizon 5-8 ans minimum.
+    points_forts:
+      - "0% de frais de souscription"
+      - "Ticket d'entrée : 204€ (1 part)"
+      - "Idéale pour versements programmés"
+      - "78% exposition étrangère — avantage fiscal TMI 30%+"
+    points_faibles:
+      - "Frais de gestion : 18% TTC"
+      - "SCPI récente (depuis 2022)"
+      - "Endettement : 18%"
+    verdict_si:
+      - "Vous avez une TMI élevée (30%+)"
+      - "Vous souhaitez investir en versements programmés"
+      - "Vous voulez démarrer avec un petit ticket (204€)"
+
+  - slug: iroko-zen
+    nom: "Iroko Zen"
+    marque: "Iroko"
+    type: rendement
+    prix_achat: 204
+    prix_retrait: 190
+    investissement_min: "5 100€ (25 parts)"
+    td: 7.12
+    td_objectif_2026: "6,50% - 7,20%"
+    tri: 7.00
+    tri_horizon: "10 ans"
+    pga: 7.00
+    frais_souscription: 0
+    frais_gestion: 14.4
+    commission_retrait: "6% (si sortie < 3 ans)"
+    capitalisation: 920
+    tof: 98.1
+    endettement: 10
+    exposition_etrangere: "~55% (Modérée)"
+    delai_jouissance: 3
+    pays: "France, Europe"
+    geo: "France:45,Allemagne:30,Pays-Bas:15,Espagne:10"
+    secteurs: "Autre:24,Santé:21,Logistique:21,Locaux:12,Commerces:11,Bureaux:11"
+    note_redaction: "4.5"
+    description: >
+      Iroko Zen est la première SCPI sans frais de souscription du marché français,
+      lancée en 2020. Elle affiche un objectif de TRI 10 ans de 7%, parmi les plus
+      ambitieux du marché, traduisant une stratégie de création de valeur immobilière.
+
+      Points forts : 0% de frais de souscription, frais de gestion parmi les plus
+      compétitifs (14,4% TTC), TRI objectif 10 ans ambitieux (7%), TOF excellent
+      (98,1%), endettement maîtrisé (10%).
+
+      Points faibles : ticket d'entrée minimum de 5 100€ (25 parts), exposition
+      étrangère modérée (55%) — moins d'avantage fiscal pour les TMI élevées,
+      commission de retrait élevée sur les 3 premières années (6%).
+
+      Idéale pour : investisseurs pouvant mobiliser 5 100€ minimum, horizon
+      très long terme (8+ ans), stratégie de capitalisation patrimoniale.
+    points_forts:
+      - "0% de frais de souscription"
+      - "TRI objectif 10 ans : 7%"
+      - "Frais de gestion compétitifs : 14,4% TTC"
+      - "Endettement maîtrisé : 10%"
+    points_faibles:
+      - "Ticket d'entrée : 5 100€ (25 parts)"
+      - "Exposition étrangère modérée (55%)"
+      - "Commission de retrait : 6% (< 3 ans)"
+    verdict_si:
+      - "Vous pouvez investir 5 100€ minimum"
+      - "Vous visez la performance sur 10 ans+"
+      - "Vous optimisez sur le long terme (TRI 7%)"
+
+  - slug: primopierre
+    nom: "Primopierre"
+    marque: "Primonial REIM"
+    type: diversifiee
+    prix_achat: 208
+    prix_retrait: 183
+    td: 3.52
+    tri_5ans: 2.10
+    pga: 3.40
+    frais_souscription: 9.73
+    frais_gestion: 10.00
+    capitalisation: 3200
+    tof: 82.1
+    endettement: 22
+    delai_jouissance: 6
+    pays: "France"
+    description: >
+      Primopierre est l'une des plus grandes SCPI françaises gérée par Primonial REIM.
+      Historiquement investie en bureaux parisiens, elle traverse une période de
+      repositionnement suite à la crise des bureaux post-COVID.
+
+      Points forts : grande capitalisation (sécurité), gestion expérimentée
+      Primonial, actifs bien situés en Île-de-France.
+
+      Points faibles : TD en baisse, TOF dégradé (82%), prix de retrait
+      significativement inférieur au prix d'achat, endettement notable.
+
+      Idéale pour : investisseurs patient croyant au rebond des bureaux premium,
+      diversification dans une SCPI établie.
+    points_forts:
+      - "Grande capitalisation : 3,2 Md€"
+      - "Gestion Primonial reconnue"
+      - "Actifs prime Île-de-France"
+      - "Liquidité relative"
+    points_faibles:
+      - "TD en baisse : 3,52%"
+      - "TOF dégradé : 82,1%"
+      - "Prix retrait << prix achat"
+      - "Endettement : 22%"
+    verdict_si:
+      - "Vous pariez sur le rebond des bureaux"
+      - "Vous voulez une SCPI établie de grande taille"
+      - "Vous avez un horizon très long terme"
+
+  - slug: atream-euro-hospitality
+    nom: "Atream Euro Hospitality"
+    marque: "Atream"
+    type: specialisee
+    prix_achat: 1000
+    prix_retrait: 900
+    td: 4.85
+    tri_5ans: 4.20
+    pga: 4.75
+    frais_souscription: 10.00
+    frais_gestion: 12.00
+    capitalisation: 520
+    tof: 98.5
+    endettement: 25
+    delai_jouissance: 6
+    pays: "Europe"
+    description: >
+      Atream Euro Hospitality est une SCPI spécialisée dans l'hôtellerie et le
+      tourisme en Europe. Unique dans sa catégorie, elle offre une exposition
+      à un secteur immobilier différenciant.
+
+      Points forts : secteur hôtelier en reprise post-COVID, TOF excellent (98,5%),
+      diversification sectorielle unique, actifs 3-4 étoiles bien situés.
+
+      Points faibles : capitalisation modeste, endettement de 25%, secteur sensible
+      aux cycles économiques, frais d'entrée élevés.
+
+      Idéale pour : investisseurs souhaitant diversifier avec une thématique
+      hôtelière, complément à des SCPI bureaux/commerces.
+    points_forts:
+      - "Secteur hôtelier unique"
+      - "TOF exceptionnel : 98,5%"
+      - "Diversification sectorielle"
+      - "Actifs prime européens"
+    points_faibles:
+      - "Capitalisation modeste"
+      - "Endettement : 25%"
+      - "Secteur cyclique"
+      - "Frais d'entrée : 10%"
+    verdict_si:
+      - "Vous voulez une SCPI thématique différenciante"
+      - "Vous croyez au rebond du tourisme"
+      - "Vous diversifiez un portefeuille existant"
+
+  - slug: transitions-europe
+    nom: "Transitions Europe"
+    marque: "Arkéa REIM"
+    type: europeenne
+    prix_achat: 200
+    prix_retrait: 190
+    td: 6.21
+    tri_5ans: 5.95
+    pga: 6.10
+    frais_souscription: 5.00
+    frais_gestion: 15.00
+    capitalisation: 650
+    tof: 95.8
+    endettement: 15
+    delai_jouissance: 4
+    pays: "Europe"
+    description: >
+      Transitions Europe est une SCPI ISR (Investissement Socialement Responsable)
+      d'Arkéa REIM, axée sur la transition énergétique. Elle investit dans des
+      actifs verts et labellisés en Europe.
+
+      Points forts : labellisée ISR, faibles frais de souscription (5%), TD élevé,
+      exposition aux tendances ESG qui valorisent les actifs verts à long terme.
+
+      Points faibles : frais de gestion élevés (15%), SCPI récente, endettement
+      modéré, moins de track-record.
+
+      Idéale pour : investisseurs sensibles à l'ISR/ESG, souhaitant allier
+      rendement et impact positif.
+    points_forts:
+      - "Label ISR — investissement responsable"
+      - "Frais de souscription bas : 5%"
+      - "TD élevé : 6,21%"
+      - "Tendance ESG favorable"
+    points_faibles:
+      - "Frais de gestion : 15%"
+      - "SCPI récente"
+      - "Endettement : 15%"
+    verdict_si:
+      - "Vous voulez investir de façon responsable (ISR)"
+      - "Faibles frais d'entrée prioritaires"
+      - "Vous croyez aux actifs verts"
+
+  - slug: perial-pf-hospitality
+    nom: "PF Hospitalité Europe"
+    marque: "Perial AM"
+    type: specialisee
+    prix_achat: 1080
+    prix_retrait: 972
+    td: 4.67
+    tri_5ans: 3.90
+    pga: 4.55
+    frais_souscription: 10.00
+    frais_gestion: 12.00
+    capitalisation: 410
+    tof: 97.2
+    endettement: 20
+    delai_jouissance: 6
+    pays: "Europe"
+    description: >
+      PF Hospitalité Europe de Perial AM est une SCPI spécialisée dans les résidences
+      gérées (seniors, étudiants, tourisme) en Europe. Elle profite du vieillissement
+      démographique et des nouvelles formes d'hébergement.
+
+      Points forts : secteur résidences gérées en forte croissance, TOF élevé,
+      Perial AM gestionnaire reconnu, diversification thématique.
+
+      Points faibles : TD en dessous de la moyenne du marché, prix de retrait
+      inférieur au prix d'achat, endettement de 20%.
+
+      Idéale pour : investisseurs croyant au vieillissement démographique et aux
+      nouvelles formes de logement géré.
+    points_forts:
+      - "Secteur démographique porteur"
+      - "TOF élevé : 97,2%"
+      - "Gestionnaire Perial reconnu"
+      - "Diversification thématique"
+    points_faibles:
+      - "TD en dessous de la moyenne"
+      - "Prix retrait < prix achat"
+      - "Endettement : 20%"
+    verdict_si:
+      - "Vous pariez sur le vieillissement démographique"
+      - "Vous cherchez une SCPI thématique établie"
+      - "Complément de portefeuille"
