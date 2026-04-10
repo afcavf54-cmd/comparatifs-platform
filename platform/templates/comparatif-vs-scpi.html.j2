@@ -347,51 +347,45 @@
   {% endif %}
 
   {# ── GRAPHIQUES DONUTS ── #}
-  {% if (prod_a.geo is defined and prod_b.geo is defined) or (prod_a.secteurs is defined and prod_b.secteurs is defined) %}
-  <div style="display:grid;grid-template-columns:{% if prod_a.geo is defined and prod_b.geo is defined and prod_a.secteurs is defined and prod_b.secteurs is defined %}1fr 1fr{% else %}1fr{% endif %};gap:16px;margin:24px 0" class="donut-grid">
-
-    {% if prod_a.geo is defined and prod_b.geo is defined %}
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px">
-      <div style="font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:16px">Répartition géographique</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:center">
-        <div style="position:relative;width:100%;aspect-ratio:1">
-          <canvas id="geo-a-{{ slug_a }}" role="img" aria-label="Répartition géographique {{ prod_a.nom }}">{{ prod_a.geo }}</canvas>
-          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
-            <span style="font-size:11px;color:var(--ink3);text-align:center">{{ prod_a.nom }}</span>
-          </div>
-        </div>
-        <div style="position:relative;width:100%;aspect-ratio:1">
-          <canvas id="geo-b-{{ slug_b }}" role="img" aria-label="Répartition géographique {{ prod_b.nom }}">{{ prod_b.geo }}</canvas>
-          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
-            <span style="font-size:11px;color:var(--ink3);text-align:center">{{ prod_b.nom }}</span>
-          </div>
+  {% if prod_a.geo and prod_b.geo and prod_a.geo != 'None' and prod_b.geo != 'None' %}
+  <h2>Répartition géographique : {{ prod_a.nom }} vs {{ prod_b.nom }}</h2>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px;margin:0 0 24px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center" class="donut-grid">
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink2);text-align:center;margin-bottom:12px">{{ prod_a.nom }}</div>
+        <div style="position:relative;width:100%;max-width:220px;margin:0 auto;aspect-ratio:1">
+          <canvas id="geo-a-{{ slug_a }}" role="img" aria-label="Répartition géographique {{ prod_a.nom }}"></canvas>
         </div>
       </div>
-      <div id="legend-geo-{{ slug_a }}" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;font-size:12px;color:var(--ink2)"></div>
-    </div>
-    {% endif %}
-
-    {% if prod_a.secteurs is defined and prod_b.secteurs is defined %}
-    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px">
-      <div style="font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:16px">Répartition sectorielle</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:center">
-        <div style="position:relative;width:100%;aspect-ratio:1">
-          <canvas id="sec-a-{{ slug_a }}" role="img" aria-label="Répartition sectorielle {{ prod_a.nom }}">{{ prod_a.secteurs }}</canvas>
-          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
-            <span style="font-size:11px;color:var(--ink3);text-align:center">{{ prod_a.nom }}</span>
-          </div>
-        </div>
-        <div style="position:relative;width:100%;aspect-ratio:1">
-          <canvas id="sec-b-{{ slug_b }}" role="img" aria-label="Répartition sectorielle {{ prod_b.nom }}">{{ prod_b.secteurs }}</canvas>
-          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
-            <span style="font-size:11px;color:var(--ink3);text-align:center">{{ prod_b.nom }}</span>
-          </div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink2);text-align:center;margin-bottom:12px">{{ prod_b.nom }}</div>
+        <div style="position:relative;width:100%;max-width:220px;margin:0 auto;aspect-ratio:1">
+          <canvas id="geo-b-{{ slug_b }}" role="img" aria-label="Répartition géographique {{ prod_b.nom }}"></canvas>
         </div>
       </div>
-      <div id="legend-sec-{{ slug_a }}" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;font-size:12px;color:var(--ink2)"></div>
     </div>
-    {% endif %}
+    <div id="legend-geo-{{ slug_a }}" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;font-size:12px;color:var(--ink2);justify-content:center"></div>
+  </div>
+  {% endif %}
 
+  {% if prod_a.secteurs and prod_b.secteurs and prod_a.secteurs != 'None' and prod_b.secteurs != 'None' %}
+  <h2>Répartition sectorielle : {{ prod_a.nom }} vs {{ prod_b.nom }}</h2>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px;margin:0 0 24px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center" class="donut-grid">
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink2);text-align:center;margin-bottom:12px">{{ prod_a.nom }}</div>
+        <div style="position:relative;width:100%;max-width:220px;margin:0 auto;aspect-ratio:1">
+          <canvas id="sec-a-{{ slug_a }}" role="img" aria-label="Répartition sectorielle {{ prod_a.nom }}"></canvas>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink2);text-align:center;margin-bottom:12px">{{ prod_b.nom }}</div>
+        <div style="position:relative;width:100%;max-width:220px;margin:0 auto;aspect-ratio:1">
+          <canvas id="sec-b-{{ slug_b }}" role="img" aria-label="Répartition sectorielle {{ prod_b.nom }}"></canvas>
+        </div>
+      </div>
+    </div>
+    <div id="legend-sec-{{ slug_a }}" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;font-size:12px;color:var(--ink2);justify-content:center"></div>
   </div>
   {% endif %}
   <h2>Frais et liquidité : les points de vigilance</h2>
