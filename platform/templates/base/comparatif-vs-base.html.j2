@@ -49,7 +49,7 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 main{max-width:1200px;margin:0 auto;padding:0 5vw 64px}
 .hero-vs{text-align:left;padding:16px 0 0}
 .eyebrow{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:16px}
-h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4.5vw,58px);font-weight:400;line-height:1.08;letter-spacing:-.02em;margin-bottom:16px}
+h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4.5vw,58px);font-weight:400;line-height:1.08;letter-spacing:-.02em;margin-bottom:16px;max-width:100%}
 h1 em{font-style:italic;color:var(--accent)}
 .intro{font-size:18px;color:var(--ink2);max-width:100%;line-height:1.75;margin:30px 0}
 .comp-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:32px 0}
@@ -64,10 +64,6 @@ td.crit-label{width:220px;padding:14px 24px;font-size:12px;font-weight:600;color
 table.comp td{padding:14px 16px;font-size:18px;font-weight:400;text-align:center;vertical-align:middle}
 .stars{color:var(--accent)}
 .tag{display:inline-block;padding:3px 9px;border-radius:6px;font-size:11px;font-weight:600}
-.tag-compact{background:#EAF3DE;color:#1A5C2A}
-.tag-trio{background:#E6F1FB;color:#0C447C}
-.tag-citadine{background:#FAEEDA;color:#633806}
-.tag-premium{background:#F5E6FB;color:#5B2185}
 .tag-rendement{background:#EAF3DE;color:#1A5C2A}
 .tag-diversifiee{background:#E6F1FB;color:#0C447C}
 .tag-specialisee{background:#FAEEDA;color:#633806}
@@ -92,9 +88,10 @@ h3{font-family:'{{ theme.font_title }}',serif;font-size:24px;font-weight:400;mar
 .verdict{background:var(--ink);border-radius:var(--r2);padding:32px;margin:32px 0;color:#fff}
 .verdict h2{color:#fff;margin-top:0;text-align:center}
 .verdict-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px}
-.verdict-box{background:rgba(255,255,255,.08);border-radius:var(--r);padding:18px;display:flex;flex-direction:column}
+.verdict-box{background:rgba(255,255,255,.08);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;justify-content:space-between}
 .verdict-box h3{color:var(--accent2);font-size:19px;margin-top:0;margin-bottom:14px;display:flex;justify-content:center;align-items:center;gap:6px}
 .verdict-box li{font-size:18px;color:rgba(255,255,255,.8);margin-bottom:8px;line-height:1.75;text-align:center;list-style:none}
+.verdict-box .verdict-cta{margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)}
 .rel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:12px}
 .rel-link{display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;font-size:16px;font-weight:500;transition:.15s}
 .rel-link:hover{border-color:var(--accent);color:var(--accent)}
@@ -107,7 +104,7 @@ h3{font-family:'{{ theme.font_title }}',serif;font-size:24px;font-weight:400;mar
 .faq-a{font-size:17px;color:var(--ink2);line-height:1.75;margin-top:12px}
 footer{background:var(--ink);color:rgba(255,255,255,.5);text-align:center;padding:32px;font-size:13px}
 footer a{color:rgba(255,255,255,.4)}
-.aff-notice{font-size:11px;color:var(--ink3);text-align:center;padding:16px 5vw;line-height:1.6}
+.aff-notice{font-size:13px;color:var(--ink3);text-align:center;padding:20px 5vw;line-height:1.6;max-width:900px;margin:0 auto}
 {% block extra_css %}{% endblock %}
 @media(max-width:600px){
   .comp-block-header{grid-template-columns:100px 1fr 1fr;gap:8px}
@@ -118,6 +115,7 @@ footer a{color:rgba(255,255,255,.4)}
   .nav-links{display:none}
   .model-body{flex-direction:column}
   .model-photo-wrap{width:100%}
+  .aff-notice{padding:20px 16px}
 }
 </style>
 </head>
@@ -319,19 +317,23 @@ footer a{color:rgba(255,255,255,.4)}
     </p>
     <div class="verdict-grid">
       <div class="verdict-box">
-        <h3>👉 Choisissez {{ prod_a.nom }} si :</h3>
-        <ul>{% for si in prod_a.verdict_si %}<li>{{ si }}</li>{% endfor %}</ul>
-        <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)">
-          <a href="#" data-amz-a class="cta-amz cta-amz-primary" rel="nofollow sponsored" style="width:100%;justify-content:center;font-size:15px">
+        <div>
+          <h3>👉 Choisissez {{ prod_a.nom }} si :</h3>
+          <ul>{% for si in prod_a.verdict_si %}<li>{{ si }}</li>{% endfor %}</ul>
+        </div>
+        <div class="verdict-cta">
+          <a href="#" data-amz-a class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="width:100%;justify-content:center;font-size:15px">
             {% block verdict_cta_a %}→ Voir {{ prod_a.nom }}{% endblock %}
           </a>
         </div>
       </div>
       <div class="verdict-box">
-        <h3>👉 Choisissez {{ prod_b.nom }} si :</h3>
-        <ul>{% for si in prod_b.verdict_si %}<li>{{ si }}</li>{% endfor %}</ul>
-        <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)">
-          <a href="#" data-amz-b class="cta-amz cta-amz-primary" rel="nofollow sponsored" style="width:100%;justify-content:center;font-size:15px">
+        <div>
+          <h3>👉 Choisissez {{ prod_b.nom }} si :</h3>
+          <ul>{% for si in prod_b.verdict_si %}<li>{{ si }}</li>{% endfor %}</ul>
+        </div>
+        <div class="verdict-cta">
+          <a href="#" data-amz-b class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="width:100%;justify-content:center;font-size:15px">
             {% block verdict_cta_b %}→ Voir {{ prod_b.nom }}{% endblock %}
           </a>
         </div>
