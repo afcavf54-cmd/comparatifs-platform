@@ -69,8 +69,7 @@ table.comp td{padding:14px 16px;font-size:18px;font-weight:400;text-align:center
 .tag-specialisee{background:#FAEEDA;color:#633806}
 .tag-europeenne{background:#F5E6FB;color:#5B2185}
 .cta-amz{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:var(--r);font-size:14px;font-weight:600;transition:.15s;cursor:pointer;border:none}
-.cta-amz-primary{background:var(--accent);color:#fff}.cta-amz-primary:hover{background:var(--accent2)}
-h2{font-family:'{{ theme.font_title }}',serif;font-size:32px;font-weight:400;letter-spacing:-.01em;margin:40px 0 16px}
+.cta-amz-primary{background:#E8410A;color:#fff}.cta-amz-primary:hover{background:#c93508}h2{font-family:'{{ theme.font_title }}',serif;font-size:32px;font-weight:400;letter-spacing:-.01em;margin:40px 0 16px}
 h3{font-family:'{{ theme.font_title }}',serif;font-size:24px;font-weight:400;margin:24px 0 12px;display:flex;align-items:center;gap:8px}
 .model-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px;margin:16px 0}
 .model-price{font-size:24px;font-weight:700;color:var(--accent)}
@@ -89,9 +88,10 @@ h3{font-family:'{{ theme.font_title }}',serif;font-size:24px;font-weight:400;mar
 .verdict h2{color:#fff;margin-top:0;text-align:center}
 .verdict-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px}
 .verdict-box{background:rgba(255,255,255,.08);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;justify-content:space-between}
-.verdict-box h3{color:var(--accent2);font-size:19px;margin-top:0;margin-bottom:14px;display:flex;justify-content:center;align-items:center;gap:6px}
+.verdict-box h3{color:#fff;font-size:19px;font-weight:700;margin-top:0;margin-bottom:14px;display:flex;justify-content:center;align-items:center;gap:6px}
 .verdict-box li{font-size:18px;color:rgba(255,255,255,.8);margin-bottom:8px;line-height:1.75;text-align:center;list-style:none}
 .verdict-box .verdict-cta{margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)}
+.cta-amz-primary{background:#E8410A;color:#fff}.cta-amz-primary:hover{background:#c93508}
 .rel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:12px}
 .rel-link{display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;font-size:16px;font-weight:500;transition:.15s}
 .rel-link:hover{border-color:var(--accent);color:var(--accent)}
@@ -125,13 +125,13 @@ footer a{color:rgba(255,255,255,.4)}
   <a href="index.html" class="nav-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></a>
   <div class="nav-links">
     <a href="index.html#comparateur">Comparateur</a>
-    <a href="index.html#comparatifs">Tous les comparatifs</a>
+    <a href="comparatifs-scpi.html">Comparatifs SCPI</a>
   </div>
 </nav>
 
 <div class="crumb">
   <a href="index.html">Accueil</a> ›
-  <a href="index.html#comparatifs">{{ site.seo.category_label }}</a> ›
+  <a href="comparatifs-scpi.html">{{ site.seo.category_label }}</a> ›
   {{ prod_a.nom }} vs {{ prod_b.nom }}
 </div>
 
@@ -360,7 +360,7 @@ footer a{color:rgba(255,255,255,.4)}
       {% for rel in related_pages %}
       <a href="{{ rel.url }}" class="rel-link">{{ rel.label }} →</a>
       {% endfor %}
-      <a href="index.html#comparatifs" class="rel-link">← Tous les comparatifs</a>
+      <a href="comparatifs-scpi.html" class="rel-link">← Comparatifs SCPI</a>
     </div>
   </div>
 
