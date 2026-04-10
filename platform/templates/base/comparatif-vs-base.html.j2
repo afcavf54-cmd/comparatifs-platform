@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ seo.title }}</title>
+<meta name="description" content="{{ seo.meta }}">
+<link rel="canonical" href="{{ site.domain }}{{ site.base_path }}/{{ slug_a }}-vs-{{ slug_b }}.html">
+<meta property="og:title" content="{{ seo.title }}">
+<meta property="og:description" content="{{ seo.meta }}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ site.domain }}{{ site.base_path }}/{{ slug_a }}-vs-{{ slug_b }}.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="{{ theme.google_fonts }}" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ prod_a.nom }} vs {{ prod_b.nom }} : comparatif {{ site.year }}",
+  "description": "{{ seo.meta }}",
+  "url": "{{ site.domain }}{{ site.base_path }}/{{ slug_a }}-vs-{{ slug_b }}.html",
+  "dateModified": "{{ build_date }}",
+  "publisher": {"@type": "Organization", "name": "{{ site.name }}"}
+}
+</script>
+{% block extra_head %}{% endblock %}
+<style>
+:root{
+  --bg:{{ theme.bg }};
+  --surface:#FFFFFF;
+  --surface2:#F0ECE5;
+  --ink:{{ theme.ink }};
+  --ink2:#6B6560;
+  --ink3:#A09890;
+  --accent:{{ theme.accent }};
+  --accent2:{{ theme.accent2 }};
+  --border:#E2DDD6;
+  --r:12px;
+  --r2:20px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'{{ theme.font_body }}',sans-serif;background:var(--bg);color:var(--ink);font-size:18px;line-height:1.75}
+a{color:inherit;text-decoration:none}
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:17px;color:#fff}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;gap:24px}.nav-links a{color:rgba(255,255,255,.6);font-size:13px}.nav-links a:hover{color:#fff}
+.crumb{max-width:1200px;margin:0 auto;padding:8px 5vw;font-size:12px;color:var(--ink3)}
+.crumb a{color:var(--accent)}
+main{max-width:1200px;margin:0 auto;padding:0 5vw 64px}
+.hero-vs{text-align:left;padding:16px 0 0}
+.eyebrow{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:16px}
+h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4.5vw,58px);font-weight:400;line-height:1.08;letter-spacing:-.02em;margin-bottom:16px}
+h1 em{font-style:italic;color:var(--accent)}
+.intro{font-size:18px;color:var(--ink2);max-width:100%;line-height:1.75;margin:30px 0}
+.comp-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:32px 0}
+.comp-block-header{background:var(--ink);padding:20px 24px;display:grid;grid-template-columns:220px 1fr 1fr;gap:16px;align-items:center}
+.comp-block-header .col-title{font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:20px;color:#fff;text-align:center;display:block}
+.comp-block-header .col-brand{font-size:13px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.05em;text-align:center;display:block}
+.col-label{font-size:15px;color:rgba(255,255,255,.7);font-weight:500;text-align:center}
+table.comp{width:100%;border-collapse:collapse;table-layout:fixed}
+table.comp tr{border-bottom:1px solid var(--border);transition:.1s}
+table.comp tr:hover{background:var(--surface2)}
+td.crit-label{width:220px;padding:14px 24px;font-size:12px;font-weight:600;color:#6B6560;text-transform:uppercase;letter-spacing:.05em;text-align:left;white-space:nowrap}
+table.comp td{padding:14px 16px;font-size:18px;font-weight:400;text-align:center;vertical-align:middle}
+.stars{color:var(--accent)}
+.tag{display:inline-block;padding:3px 9px;border-radius:6px;font-size:11px;font-weight:600}
+.tag-compact{background:#EAF3DE;color:#1A5C2A}
+.tag-trio{background:#E6F1FB;color:#0C447C}
+.tag-citadine{background:#FAEEDA;color:#633806}
+.tag-premium{background:#F5E6FB;color:#5B2185}
+.tag-rendement{background:#EAF3DE;color:#1A5C2A}
+.tag-diversifiee{background:#E6F1FB;color:#0C447C}
+.tag-specialisee{background:#FAEEDA;color:#633806}
+.tag-europeenne{background:#F5E6FB;color:#5B2185}
+.cta-amz{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:var(--r);font-size:14px;font-weight:600;transition:.15s;cursor:pointer;border:none}
+.cta-amz-primary{background:var(--accent);color:#fff}.cta-amz-primary:hover{background:var(--accent2)}
+h2{font-family:'{{ theme.font_title }}',serif;font-size:32px;font-weight:400;letter-spacing:-.01em;margin:40px 0 16px}
+h3{font-family:'{{ theme.font_title }}',serif;font-size:24px;font-weight:400;margin:24px 0 12px;display:flex;align-items:center;gap:8px}
+.model-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px;margin:16px 0}
+.model-price{font-size:24px;font-weight:700;color:var(--accent)}
+.model-price span{font-size:13px;font-weight:400;color:var(--ink3)}
+.model-body{display:flex;gap:24px;align-items:flex-start;margin-bottom:16px}
+.model-photo-wrap{flex-shrink:0;width:200px;text-align:center}
+.model-photo-wrap img{width:100%;height:auto;border-radius:12px;object-fit:contain}
+.model-photo-placeholder{width:200px;height:200px;border-radius:12px;border:2px dashed var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--ink3);font-size:12px;background:var(--surface2)}
+.model-text{flex:1;font-size:18px;color:var(--ink2);line-height:1.75;white-space:pre-line}
+.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}
+.pros,.cons{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;text-align:center}
+.pros h3{color:#1A7A4A;font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;text-align:center;display:block}
+.cons h3{color:#A32D2D;font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;text-align:center;display:block}
+.pros li,.cons li{font-size:17px;line-height:1.8;margin-bottom:6px;text-align:center;list-style:none}
+.verdict{background:var(--ink);border-radius:var(--r2);padding:32px;margin:32px 0;color:#fff}
+.verdict h2{color:#fff;margin-top:0;text-align:center}
+.verdict-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px}
+.verdict-box{background:rgba(255,255,255,.08);border-radius:var(--r);padding:18px;display:flex;flex-direction:column}
+.verdict-box h3{color:var(--accent2);font-size:19px;margin-top:0;margin-bottom:14px;display:flex;justify-content:center;align-items:center;gap:6px}
+.verdict-box li{font-size:18px;color:rgba(255,255,255,.8);margin-bottom:8px;line-height:1.75;text-align:center;list-style:none}
+.rel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:12px}
+.rel-link{display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;font-size:16px;font-weight:500;transition:.15s}
+.rel-link:hover{border-color:var(--accent);color:var(--accent)}
+.avis-block{background:var(--surface);border-radius:var(--r2);border:1px solid var(--border);padding:24px;margin:24px 0}
+.avis-score{font-size:32px;font-weight:700;color:var(--accent);display:inline-block;margin-right:8px}
+.faq{margin:40px 0}
+.faq-item{border-bottom:1px solid var(--border);padding:16px 0}
+.faq-q{font-size:18px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-size:24px;color:var(--accent);font-weight:300}
+.faq-a{font-size:17px;color:var(--ink2);line-height:1.75;margin-top:12px}
+footer{background:var(--ink);color:rgba(255,255,255,.5);text-align:center;padding:32px;font-size:13px}
+footer a{color:rgba(255,255,255,.4)}
+.aff-notice{font-size:11px;color:var(--ink3);text-align:center;padding:16px 5vw;line-height:1.6}
+{% block extra_css %}{% endblock %}
+@media(max-width:600px){
+  .comp-block-header{grid-template-columns:100px 1fr 1fr;gap:8px}
+  td.crit-label{width:130px;padding:10px 12px;font-size:13px;white-space:normal}
+  table.comp td{padding:10px 10px;font-size:15px}
+  .pros-cons{grid-template-columns:1fr}
+  .verdict-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .model-body{flex-direction:column}
+  .model-photo-wrap{width:100%}
+}
+</style>
+</head>
+<body>
+
+<div id="sheet-loader" style="display:none;position:fixed;bottom:20px;right:20px;background:#1A1714;color:#fff;padding:10px 16px;border-radius:10px;font-size:12px;align-items:center;gap:8px;z-index:999">
+  <span style="display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite"></span>
+  Mise à jour des données…
+</div>
+<style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+
+<nav>
+  <a href="index.html" class="nav-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></a>
+  <div class="nav-links">
+    <a href="index.html#comparateur">Comparateur</a>
+    <a href="index.html#comparatifs">Tous les comparatifs</a>
+  </div>
+</nav>
+
+<div class="crumb">
+  <a href="index.html">Accueil</a> ›
+  <a href="index.html#comparatifs">{{ site.seo.category_label }}</a> ›
+  {{ prod_a.nom }} vs {{ prod_b.nom }}
+</div>
+
+<main>
+  <div class="hero-vs">
+    <div class="eyebrow">{{ site.seo.eyebrow | replace('{year}', site.year|string) }}</div>
+    <h1>{{ seo.h1 | safe }}</h1>
+    <p class="intro">{{ seo.intro | safe }}</p>
+  </div>
+
+  <!-- TABLEAU COMPARATIF -->
+  <div class="comp-block">
+    <div class="comp-block-header">
+      <div class="col-label">Critère</div>
+      <div style="text-align:center">
+        <div class="col-brand">{{ prod_a.marque }}</div>
+        <div class="col-title">{{ prod_a.nom }}</div>
+      </div>
+      <div style="text-align:center">
+        <div class="col-brand">{{ prod_b.marque }}</div>
+        <div class="col-title">{{ prod_b.nom }}</div>
+      </div>
+    </div>
+    <table class="comp">
+      <colgroup>
+        <col style="width:220px">
+        <col style="width:calc(50% - 110px)">
+        <col style="width:calc(50% - 110px)">
+      </colgroup>
+      <tbody>
+        {% for crit in criteria %}
+        <tr>
+          <td class="crit-label">{{ crit.label }}</td>
+          {% set val_a = prod_a[crit.field] if crit.field in prod_a else '—' %}
+          {% set val_b = prod_b[crit.field] if crit.field in prod_b else '—' %}
+          {% if crit.type == 'price' %}
+            <td>{{ val_a }}€</td><td>{{ val_b }}€</td>
+          {% elif crit.type == 'stars' %}
+            <td><span class="stars">{{ '★' * val_a|int }}{{ '☆' * (5 - val_a|int) }}</span></td>
+            <td><span class="stars">{{ '★' * val_b|int }}{{ '☆' * (5 - val_b|int) }}</span></td>
+          {% elif crit.type == 'tag' %}
+            <td><span class="tag tag-{{ val_a }}">{{ val_a|capitalize }}</span></td>
+            <td><span class="tag tag-{{ val_b }}">{{ val_b|capitalize }}</span></td>
+          {% elif crit.type == 'bool' %}
+            <td>{{ 'Oui' if val_a else 'Non' }}</td>
+            <td>{{ 'Oui' if val_b else 'Non' }}</td>
+          {% else %}
+            <td>{{ val_a }}{{ crit.suffix if crit.suffix is defined else '' }}</td>
+            <td>{{ val_b }}{{ crit.suffix if crit.suffix is defined else '' }}</td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FICHES PRODUITS -->
+  {% for prod, idx in [(prod_a, 'a'), (prod_b, 'b')] %}
+  <div class="model-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)">
+      <div>
+        <h2 style="font-size:26px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px;margin-top:0">
+          Notre avis sur {{ prod.nom }}
+        </h2>
+        <div style="display:flex;align-items:center;gap:8px">
+          {% if prod.note_confort is defined %}
+          <span style="font-size:22px;color:var(--accent)">{{ '★' * prod.note_confort|int }}{{ '☆' * (5 - prod.note_confort|int) }}</span>
+          {% endif %}
+          {% if prod.note_amazon is defined %}
+          <span style="font-size:16px;font-weight:600;color:var(--ink2)" data-note-{{ idx }}>{{ prod.note_amazon }}</span>
+          <span style="font-size:14px;color:var(--ink3)">/5</span>
+          {% endif %}
+        </div>
+      </div>
+      <div style="text-align:right">
+        {% set prix = prod.prix if prod.prix is defined else prod.prix_achat if prod.prix_achat is defined else '' %}
+        <div class="model-price" id="model-price-{{ idx }}">{{ prix }}{% if prix %}€{% endif %} <span>prix indicatif</span></div>
+        <div style="font-size:13px;color:var(--ink3)">
+          {% if prod.poids is defined %}{{ prod.poids }} kg{% endif %}
+          {% if prod.poids is defined and prod.age is defined %} · {% endif %}
+          {% if prod.age is defined %}{{ prod.age }}{% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="model-body">
+      <div class="model-photo-wrap">
+        <img data-photo-{{ idx }} src="" alt="{{ prod.nom }}" style="display:none">
+        <div class="model-photo-placeholder" id="placeholder-{{ idx }}">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Visuel à venir</span>
+        </div>
+      </div>
+      <div class="model-text">{{ prod.description }}</div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h3>✓ Points forts</h3><ul>{% for p in prod.points_forts %}<li>{{ p }}</li>{% endfor %}</ul></div>
+      <div class="cons"><h3>✗ Points faibles</h3><ul>{% for p in prod.points_faibles %}<li>{{ p }}</li>{% endfor %}</ul></div>
+    </div>
+    <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border)">
+      <a href="#" data-amz-{{ idx }} class="cta-amz cta-amz-primary" rel="nofollow sponsored" style="width:100%;justify-content:center">
+        {% block cta_label scoped %}→ Voir {{ prod.nom }}{% endblock %}
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+
+  <!-- COMPARAISON DÉTAILLÉE — surchargée par chaque template niche -->
+  <h2>Comparaison détaillée : {{ prod_a.nom }} vs {{ prod_b.nom }}</h2>
+  {% block comparaison_detail %}
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    Consultez le tableau comparatif ci-dessus pour une analyse complète des deux produits.
+  </p>
+  {% endblock %}
+
+  <!-- AVIS — surchargé par template niche si nécessaire -->
+  {% block section_avis %}
+  {% if prod_a.note_amazon is defined or prod_b.note_amazon is defined %}
+  <h2>Avis clients : {{ prod_a.nom }} vs {{ prod_b.nom }}</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    {% for prod, idx in [(prod_a, 'a'), (prod_b, 'b')] %}
+    <div class="avis-block">
+      <div style="margin-bottom:8px"><span style="font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em">{{ prod.marque }}</span> · {{ prod.nom }}</div>
+      {% if prod.note_amazon is defined %}
+      <span class="avis-score">{{ prod.note_amazon }}</span>
+      <span class="stars" style="font-size:18px">{{ '★' * prod.note_amazon|float|int }}{{ '☆' * (5 - prod.note_amazon|float|int) }}</span>
+      <span style="color:var(--ink3);font-size:13px">/5</span>
+      {% endif %}
+      <p style="font-size:13px;color:var(--ink2);margin-top:10px">
+        {% block avis_text scoped %}Les utilisateurs apprécient la qualité et la fiabilité du produit.{% endblock %}
+      </p>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% endblock %}
+
+  <!-- FAQ — surchargée par template niche -->
+  <h2>Questions fréquentes</h2>
+  {% set prix_a = prod_a.prix if prod_a.prix is defined else prod_a.prix_achat if prod_a.prix_achat is defined else '' %}
+  {% set prix_b = prod_b.prix if prod_b.prix is defined else prod_b.prix_achat if prod_b.prix_achat is defined else '' %}
+  <div class="faq">
+    {% block faq_schema %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"{{ prod_a.nom }} ou {{ prod_b.nom }} : lequel choisir ?","acceptedAnswer":{"@type":"Answer","text":"Cela dépend de vos priorités. {{ prod_a.nom }} est idéal si {{ prod_a.verdict_si[0]|lower }}. {{ prod_b.nom }} convient mieux si {{ prod_b.verdict_si[0]|lower }}."}},
+        {"@type":"Question","name":"Quelle différence entre {{ prod_a.nom }} et {{ prod_b.nom }} ?","acceptedAnswer":{"@type":"Answer","text":"{{ prod_a.nom }} et {{ prod_b.nom }} se distinguent sur plusieurs critères clés. Consultez notre tableau comparatif pour une analyse détaillée."}}
+      ]
+    }
+    </script>
+    {% endblock %}
+    {% block faq_items %}
+    <div class="faq-item">
+      <div class="faq-q">{{ prod_a.nom }} ou {{ prod_b.nom }} : lequel choisir ?</div>
+      <div class="faq-a"><strong>{{ prod_a.nom }}</strong> est idéal si {{ prod_a.verdict_si[0]|lower }}. <strong>{{ prod_b.nom }}</strong> convient mieux si {{ prod_b.verdict_si[0]|lower }}.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Quelle est la différence de prix ?</div>
+      <div class="faq-a">
+        {% if prix_a and prix_b %}<strong>{{ prod_a.nom }}</strong> à <strong>{{ prix_a }}€</strong> · <strong>{{ prod_b.nom }}</strong> à <strong>{{ prix_b }}€</strong>.
+        {% else %}Consultez les prix actuels directement auprès des vendeurs.{% endif %}
+      </div>
+    </div>
+    {% endblock %}
+  </div>
+
+  <!-- VERDICT -->
+  <div class="verdict">
+    <h2>{% block verdict_title %}Que choisir entre {{ prod_a.nom }} et {{ prod_b.nom }} ?{% endblock %}</h2>
+    <p style="color:rgba(255,255,255,.7);font-size:18px;line-height:1.75;margin-bottom:16px;text-align:center">
+      {% block verdict_subtitle %}Notre verdict basé sur les données et notre analyse comparative.{% endblock %}
+    </p>
+    <div class="verdict-grid">
+      <div class="verdict-box">
+        <h3>👉 Choisissez {{ prod_a.nom }} si :</h3>
+        <ul>{% for si in prod_a.verdict_si %}<li>{{ si }}</li>{% endfor %}</ul>
+        <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)">
+          <a href="#" data-amz-a class="cta-amz cta-amz-primary" rel="nofollow sponsored" style="width:100%;justify-content:center;font-size:15px">
+            {% block verdict_cta_a %}→ Voir {{ prod_a.nom }}{% endblock %}
+          </a>
+        </div>
+      </div>
+      <div class="verdict-box">
+        <h3>👉 Choisissez {{ prod_b.nom }} si :</h3>
+        <ul>{% for si in prod_b.verdict_si %}<li>{{ si }}</li>{% endfor %}</ul>
+        <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)">
+          <a href="#" data-amz-b class="cta-amz cta-amz-primary" rel="nofollow sponsored" style="width:100%;justify-content:center;font-size:15px">
+            {% block verdict_cta_b %}→ Voir {{ prod_b.nom }}{% endblock %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAILLAGE INTERNE -->
+  <div style="margin:24px 0 0">
+    <h2 style="font-size:32px;font-family:'{{ theme.font_title }}',serif;font-weight:400;letter-spacing:-.01em;margin-bottom:16px">
+      Comparatifs similaires
+    </h2>
+    <div class="rel-grid">
+      {% for rel in related_pages %}
+      <a href="{{ rel.url }}" class="rel-link">{{ rel.label }} →</a>
+      {% endfor %}
+      <a href="index.html#comparatifs" class="rel-link">← Tous les comparatifs</a>
+    </div>
+  </div>
+
+</main>
+
+<p class="aff-notice">{% block aff_notice %}Ce site peut percevoir une commission sur les achats effectués via les liens présents. Nos recommandations restent indépendantes.{% endblock %}</p>
+
+<footer>
+  <div style="font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:16px;color:#fff;margin-bottom:8px">
+    {{ site.logo_text }}{{ site.logo_accent }}
+  </div>
+  © {{ site.year }} {{ site.domain | replace('https://www.', '') }} —
+  <a href="#">Mentions légales</a>
+</footer>
+
+{% if site.analytics_clicky %}
+<script async data-id="{{ site.analytics_clicky }}" src="//static.getclicky.com/js"></script>
+{% endif %}
+<script src="sheets.js"></script>
+<script>
+(async()=>{
+  showLoader();
+  const d = await loadSheetData();
+  hideLoader();
+  applyToComparePage(d, '{{ slug_a }}', '{{ slug_b }}');
+})();
+</script>
+<script>
+(function(){
+  function showPhoto(attr,pid){
+    var img=document.querySelector('['+attr+']'),ph=document.getElementById(pid);
+    if(!img)return;
+    new MutationObserver(function(){
+      if(img.src&&img.src!==location.href){img.style.display='block';if(ph)ph.style.display='none';}
+    }).observe(img,{attributes:true,attributeFilter:['src']});
+    if(img.src&&img.src!==location.href){img.style.display='block';if(ph)ph.style.display='none';}
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    showPhoto('data-photo-a','placeholder-a');
+    showPhoto('data-photo-b','placeholder-b');
+  });
+})();
+</script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

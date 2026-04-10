@@ -1,0 +1,199 @@
+{% extends "base/comparatif-vs-base.html.j2" %}
+
+{# ============================================================
+   comparatif-vs-poussettes.html.j2
+   Niche : poussettes bébé
+   Surcharge : comparaison détaillée, FAQ, CTA, avis
+   ============================================================ #}
+
+{% block cta_label scoped %}🛒 Voir {{ prod.nom }} sur Amazon →{% endblock %}
+{% block verdict_cta_a %}🛒 Voir {{ prod_a.nom }} sur Amazon →{% endblock %}
+{% block verdict_cta_b %}🛒 Voir {{ prod_b.nom }} sur Amazon →{% endblock %}
+
+{% block verdict_title %}Quelle poussette choisir en {{ site.year }} ?{% endblock %}
+{% block verdict_subtitle %}Notre verdict basé sur les données, les avis parents et notre analyse comparative.{% endblock %}
+
+{% block aff_notice %}
+En tant que partenaire Amazon, nous percevons une commission sur les achats éligibles via nos liens.
+Cela ne modifie pas nos recommandations — notre comparatif est basé sur des données objectives.
+{% endblock %}
+
+{% block comparaison_detail %}
+  {% if prod_a.note_confort is defined and prod_b.note_confort is defined %}
+  <h3>🍼 Confort bébé</h3>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    La <strong>{{ prod_a.nom }}</strong> obtient <strong>{{ prod_a.note_confort }}/5</strong> en confort
+    contre <strong>{{ prod_b.note_confort }}/5</strong> pour la <strong>{{ prod_b.nom }}</strong>.
+    {% if prod_a.note_confort > prod_b.note_confort %}
+    La {{ prod_a.nom }} prend l'avantage sur la qualité du couchage et les suspensions.
+    {% elif prod_b.note_confort > prod_a.note_confort %}
+    La {{ prod_b.nom }} prend l'avantage sur la qualité du couchage et les suspensions.
+    {% else %}
+    Les deux modèles offrent un confort équivalent pour bébé.
+    {% endif %}
+    Les deux proposent une position adaptée aux nouveau-nés, critère fondamental dès la naissance.
+  </p>
+  {% endif %}
+
+  {% if prod_a.poids is defined and prod_b.poids is defined %}
+  <h3>🚗 Poids & transport</h3>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    La <strong>{{ prod_a.nom }}</strong> pèse <strong>{{ prod_a.poids }} kg</strong>
+    {% if prod_a.format_pliage is defined %}avec un pliage {{ prod_a.format_pliage }},{% endif %}
+    contre <strong>{{ prod_b.poids }} kg</strong>
+    {% if prod_b.format_pliage is defined %}en format {{ prod_b.format_pliage }}{% endif %}
+    pour la <strong>{{ prod_b.nom }}</strong>.
+    {% if prod_a.poids < prod_b.poids %}
+    Avantage à la {{ prod_a.nom }}, plus légère de {{ (prod_b.poids - prod_a.poids)|round(1) }} kg.
+    Si vous prenez souvent les transports ou l'avion, c'est un critère décisif.
+    {% elif prod_b.poids < prod_a.poids %}
+    Avantage à la {{ prod_b.nom }}, plus légère de {{ (prod_a.poids - prod_b.poids)|round(1) }} kg.
+    {% else %}
+    Elles pèsent le même poids — le critère poids ne départage pas ici.
+    {% endif %}
+  </p>
+  {% endif %}
+
+  {% if prod_a.siege_auto is defined and prod_b.siege_auto is defined %}
+  <h3>🚙 Compatibilité siège auto</h3>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    {% if prod_a.siege_auto and prod_b.siege_auto %}
+    La <strong>{{ prod_a.nom }}</strong> et la <strong>{{ prod_b.nom }}</strong> sont toutes deux
+    compatibles avec un siège auto. Vérifiez les adaptateurs disponibles selon votre siège.
+    {% elif prod_a.siege_auto %}
+    Seule la <strong>{{ prod_a.nom }}</strong> est compatible siège auto — avantage important
+    pour les familles qui souhaitent un trio complet.
+    {% elif prod_b.siege_auto %}
+    Seule la <strong>{{ prod_b.nom }}</strong> est compatible siège auto.
+    {% else %}
+    Aucune des deux n'est compatible siège auto — vérifiez si ce critère est important pour vous.
+    {% endif %}
+  </p>
+  {% endif %}
+
+  <h3>🏙️ Usage quotidien</h3>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    {% if prod_a.type is defined %}
+    La <strong>{{ prod_a.nom }}</strong> est une poussette de type
+    <strong>{{ prod_a.type }}</strong>{% if prod_a.type == 'compact' %}, idéale pour les transports et voyages{% elif prod_a.type == 'trio' %}, solution complète dès la naissance{% elif prod_a.type == 'citadine' %}, optimisée pour l'usage urbain quotidien{% elif prod_a.type == 'premium' %}, positionnée haut de gamme{% endif %}.
+    {% endif %}
+    {% if prod_b.type is defined %}
+    La <strong>{{ prod_b.nom }}</strong> est {% if prod_b.type == 'compact' %}un modèle compact, parfaite pour les petits espaces{% elif prod_b.type == 'trio' %}un trio qui inclut nacelle et cosy dès la naissance{% elif prod_b.type == 'citadine' %}une citadine maniable au quotidien{% elif prod_b.type == 'premium' %}une poussette premium sans compromis{% endif %}.
+    {% endif %}
+    Pour la meilleure poussette {{ site.year }} selon votre mode de vie, lisez notre verdict ci-dessous.
+  </p>
+
+  <h3>💰 Rapport qualité/prix</h3>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    {% set px_a = prod_a.prix if prod_a.prix is defined else '' %}
+    {% set px_b = prod_b.prix if prod_b.prix is defined else '' %}
+    {% if px_a and px_b %}
+    À <strong data-table-price-a>{{ px_a }}€</strong>, la <strong>{{ prod_a.nom }}</strong>
+    {% if px_a > px_b %}
+    se positionne plus chère que la <strong>{{ prod_b.nom }}</strong> à <strong data-table-price-b>{{ px_b }}€</strong>.
+    La différence de {{ px_a - px_b }}€ se justifie si vous valorisez les critères où elle excelle.
+    {% elif px_a < px_b %}
+    est moins chère que la <strong>{{ prod_b.nom }}</strong> à <strong data-table-price-b>{{ px_b }}€</strong>.
+    Une économie de {{ px_b - px_a }}€ sans forcément sacrifier la qualité.
+    {% else %}
+    est au même prix que la <strong>{{ prod_b.nom }}</strong> (<strong data-table-price-b>{{ px_b }}€</strong>).
+    Le choix se fait donc sur d'autres critères.
+    {% endif %}
+    N'oubliez pas de vérifier les offres actuelles sur Amazon — les prix varient souvent.
+    {% endif %}
+  </p>
+{% endblock %}
+
+{% block avis_text scoped %}
+Les parents soulignent la <strong>qualité de fabrication</strong> et le confort du bébé.
+Quelques retours mentionnent le poids et l'encombrement à l'usage.
+{% endblock %}
+
+{% block faq_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "{{ prod_a.nom }} ou {{ prod_b.nom }} : quelle poussette choisir ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cela dépend de votre usage. La {{ prod_a.nom }} est idéale si {{ prod_a.verdict_si[0]|lower }}. La {{ prod_b.nom }} convient mieux si {{ prod_b.verdict_si[0]|lower }}."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quelle est la différence de prix entre {{ prod_a.nom }} et {{ prod_b.nom }} ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{% if prod_a.prix is defined and prod_b.prix is defined %}La {{ prod_a.nom }} est à {{ prod_a.prix }}€ et la {{ prod_b.nom }} à {{ prod_b.prix }}€, soit une différence de {{ (prod_a.prix - prod_b.prix)|abs }}€. Les prix varient selon les offres Amazon.{% endif %}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Laquelle est la plus légère : {{ prod_a.nom }} ou {{ prod_b.nom }} ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{% if prod_a.poids is defined and prod_b.poids is defined %}{% if prod_a.poids < prod_b.poids %}La {{ prod_a.nom }} est plus légère avec {{ prod_a.poids }} kg contre {{ prod_b.poids }} kg pour la {{ prod_b.nom }}.{% elif prod_b.poids < prod_a.poids %}La {{ prod_b.nom }} est plus légère avec {{ prod_b.poids }} kg contre {{ prod_a.poids }} kg pour la {{ prod_a.nom }}.{% else %}Même poids : {{ prod_a.poids }} kg.{% endif %}{% endif %}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "La {{ prod_a.nom }} est-elle compatible avec un siège auto ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{% if prod_a.siege_auto is defined %}{% if prod_a.siege_auto %}Oui, la {{ prod_a.nom }} est compatible siège auto via adaptateurs.{% else %}Non, la {{ prod_a.nom }} n'est pas compatible siège auto.{% endif %}{% endif %}"
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block faq_items %}
+<div class="faq-item">
+  <div class="faq-q">{{ prod_a.nom }} ou {{ prod_b.nom }} : quelle poussette choisir ?</div>
+  <div class="faq-a">
+    Cela dépend de votre usage. La <strong>{{ prod_a.nom }}</strong>
+    est idéale si {{ prod_a.verdict_si[0]|lower }}.
+    La <strong>{{ prod_b.nom }}</strong>
+    convient mieux si {{ prod_b.verdict_si[0]|lower }}.
+  </div>
+</div>
+{% if prod_a.prix is defined and prod_b.prix is defined %}
+<div class="faq-item">
+  <div class="faq-q">Quelle est la différence de prix ?</div>
+  <div class="faq-a">
+    La <strong>{{ prod_a.nom }}</strong> est à <strong>{{ prod_a.prix }}€</strong>
+    et la <strong>{{ prod_b.nom }}</strong> à <strong>{{ prod_b.prix }}€</strong>,
+    soit <strong>{{ (prod_a.prix - prod_b.prix)|abs }}€</strong> de différence.
+    Vérifiez les offres actuelles sur Amazon.
+  </div>
+</div>
+{% endif %}
+{% if prod_a.poids is defined and prod_b.poids is defined %}
+<div class="faq-item">
+  <div class="faq-q">Laquelle est la plus légère ?</div>
+  <div class="faq-a">
+    {% if prod_a.poids < prod_b.poids %}
+    La <strong>{{ prod_a.nom }}</strong> est plus légère avec <strong>{{ prod_a.poids }} kg</strong>
+    contre {{ prod_b.poids }} kg pour la {{ prod_b.nom }}.
+    {% elif prod_b.poids < prod_a.poids %}
+    La <strong>{{ prod_b.nom }}</strong> est plus légère avec <strong>{{ prod_b.poids }} kg</strong>
+    contre {{ prod_a.poids }} kg pour la {{ prod_a.nom }}.
+    {% else %}
+    Même poids : <strong>{{ prod_a.poids }} kg</strong>.
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+<div class="faq-item">
+  <div class="faq-q">Dès quel âge peut-on utiliser ces poussettes ?</div>
+  <div class="faq-a">
+    {% if prod_a.age is defined %}La <strong>{{ prod_a.nom }}</strong> est recommandée de {{ prod_a.age }}.{% endif %}
+    {% if prod_b.age is defined %}La <strong>{{ prod_b.nom }}</strong> convient de {{ prod_b.age }}.{% endif %}
+  </div>
+</div>
+{% endblock %}

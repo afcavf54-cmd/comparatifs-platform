@@ -203,17 +203,17 @@ footer a{color:rgba(255,255,255,.4)}
     <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)">
       <div>
         <h2 style="font-size:26px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px;margin-top:0">
-          Notre avis sur la poussette {{ prod_a.nom }}
+          Notre avis sur {{ prod_a.nom }}
         </h2>
         <div style="display:flex;align-items:center;gap:8px">
-          <span style="font-size:22px;color:var(--accent);letter-spacing:1px">{{ '★' * prod_a.note_confort | int }}{{ '☆' * (5 - prod_a.note_confort | int) }}</span>
-          <span style="font-size:16px;font-weight:600;color:var(--ink2)" data-note-a>{{ prod_a.note_amazon }}</span>
+          {% if prod_a.note_confort is defined %}<span style="font-size:22px;color:var(--accent);letter-spacing:1px">{{ '★' * prod_a.note_confort | int }}{{ '☆' * (5 - prod_a.note_confort | int) }}</span>{% endif %}
+          <span style="font-size:16px;font-weight:600;color:var(--ink2)" data-note-a>{{ prod_a.note_amazon if prod_a.note_amazon is defined else '' }}</span>
           <span style="font-size:14px;color:var(--ink3)">/5</span>
         </div>
       </div>
       <div style="text-align:right">
-        <div class="model-price" id="model-price-a">{{ prod_a.prix }}€ <span>prix indicatif</span></div>
-        <div style="font-size:13px;color:var(--ink3)">{{ prod_a.poids }} kg · {{ prod_a.age }}</div>
+        <div class="model-price" id="model-price-a">{{ prod_a.prix if prod_a.prix is defined else prod_a.prix_achat if prod_a.prix_achat is defined else '' }}€ <span>prix indicatif</span></div>
+        <div style="font-size:13px;color:var(--ink3)">{% if prod_a.poids is defined %}{{ prod_a.poids }} kg · {% endif %}{% if prod_a.age is defined %}{{ prod_a.age }}{% endif %}</div>
       </div>
     </div>
     <div class="model-body">
@@ -255,17 +255,17 @@ footer a{color:rgba(255,255,255,.4)}
     <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)">
       <div>
         <h2 style="font-size:26px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px;margin-top:0">
-          Notre avis sur la poussette {{ prod_b.nom }}
+          Notre avis sur {{ prod_b.nom }}
         </h2>
         <div style="display:flex;align-items:center;gap:8px">
-          <span style="font-size:22px;color:var(--accent);letter-spacing:1px">{{ '★' * prod_b.note_confort | int }}{{ '☆' * (5 - prod_b.note_confort | int) }}</span>
-          <span style="font-size:16px;font-weight:600;color:var(--ink2)" data-note-b>{{ prod_b.note_amazon }}</span>
+          {% if prod_b.note_confort is defined %}<span style="font-size:22px;color:var(--accent);letter-spacing:1px">{{ '★' * prod_b.note_confort | int }}{{ '☆' * (5 - prod_b.note_confort | int) }}</span>{% endif %}
+          <span style="font-size:16px;font-weight:600;color:var(--ink2)" data-note-b>{{ prod_b.note_amazon if prod_b.note_amazon is defined else '' }}</span>
           <span style="font-size:14px;color:var(--ink3)">/5</span>
         </div>
       </div>
       <div style="text-align:right">
-        <div class="model-price" id="model-price-b">{{ prod_b.prix }}€ <span>prix indicatif</span></div>
-        <div style="font-size:13px;color:var(--ink3)">{{ prod_b.poids }} kg · {{ prod_b.age }}</div>
+        <div class="model-price" id="model-price-b">{{ prod_b.prix if prod_b.prix is defined else prod_b.prix_achat if prod_b.prix_achat is defined else '' }}€ <span>prix indicatif</span></div>
+        <div style="font-size:13px;color:var(--ink3)">{% if prod_b.poids is defined %}{{ prod_b.poids }} kg · {% endif %}{% if prod_b.age is defined %}{{ prod_b.age }}{% endif %}</div>
       </div>
     </div>
     <div class="model-body">
@@ -305,94 +305,100 @@ footer a{color:rgba(255,255,255,.4)}
   <!-- COMPARAISON DÉTAILLÉE -->
   <h2>Comparaison détaillée : {{ prod_a.nom }} vs {{ prod_b.nom }}</h2>
 
-  <h3>🍼 Confort bébé</h3>
+  {% if prod_a.note_confort is defined and prod_b.note_confort is defined %}
+  <h3>⭐ Qualité & confort</h3>
   <p style="color:var(--ink2);font-size:18px;line-height:1.75">
-    La <strong>{{ prod_a.nom }}</strong> obtient {{ prod_a.note_confort }}/5 en confort
-    contre {{ prod_b.note_confort }}/5 pour la <strong>{{ prod_b.nom }}</strong>.
-    {% if prod_a.note_confort > prod_b.note_confort %}
-    La {{ prod_a.nom }} prend l'avantage sur la qualité du couchage et la suspension.
-    {% elif prod_b.note_confort > prod_a.note_confort %}
-    La {{ prod_b.nom }} prend l'avantage sur la qualité du couchage et la suspension.
-    {% else %}
-    Les deux modèles offrent un confort équivalent.
-    {% endif %}
-    Les deux poussettes proposent une position adaptée aux nouveau-nés, critère
-    fondamental pour les premières semaines.
+    <strong>{{ prod_a.nom }}</strong> obtient {{ prod_a.note_confort }}/5
+    contre {{ prod_b.note_confort }}/5 pour <strong>{{ prod_b.nom }}</strong>.
+    {% if prod_a.note_confort > prod_b.note_confort %}{{ prod_a.nom }} prend l'avantage.
+    {% elif prod_b.note_confort > prod_a.note_confort %}{{ prod_b.nom }} prend l'avantage.
+    {% else %}Les deux sont équivalents sur ce critère.{% endif %}
   </p>
+  {% endif %}
 
-  <h3>🚗 Transport et pliage</h3>
+  {% if prod_a.poids is defined and prod_b.poids is defined %}
+  <h3>⚖️ Poids & format</h3>
   <p style="color:var(--ink2);font-size:18px;line-height:1.75">
-    La <strong>{{ prod_a.nom }}</strong> pèse <strong>{{ prod_a.poids }} kg</strong>
-    avec un pliage {{ prod_a.format_pliage }}, contre <strong>{{ prod_b.poids }} kg</strong>
-    en format {{ prod_b.format_pliage }} pour la <strong>{{ prod_b.nom }}</strong>.
-    {% if prod_a.poids < prod_b.poids %}
-    Avantage à la {{ prod_a.nom }} qui est plus légère de {{ (prod_b.poids - prod_a.poids) | round(1) }} kg.
-    {% elif prod_b.poids < prod_a.poids %}
-    Avantage à la {{ prod_b.nom }} qui est plus légère de {{ (prod_a.poids - prod_b.poids) | round(1) }} kg.
-    {% else %}
-    Elles pèsent le même poids.
-    {% endif %}
-    Si vous prenez souvent les transports en commun ou l'avion, c'est un critère
-    décisif pour choisir votre prochaine poussette légère.
+    <strong>{{ prod_a.nom }}</strong> pèse <strong>{{ prod_a.poids }} kg</strong>
+    contre <strong>{{ prod_b.poids }} kg</strong> pour <strong>{{ prod_b.nom }}</strong>.
+    {% if prod_a.poids < prod_b.poids %}Avantage à {{ prod_a.nom }}, plus légère de {{ (prod_b.poids - prod_a.poids) | round(1) }} kg.
+    {% elif prod_b.poids < prod_a.poids %}Avantage à {{ prod_b.nom }}, plus légère de {{ (prod_a.poids - prod_b.poids) | round(1) }} kg.
+    {% else %}Même poids.{% endif %}
   </p>
+  {% endif %}
 
-  <h3>🏙️ Usage ville, voyage, quotidien</h3>
+  {% if prod_a.td is defined and prod_b.td is defined %}
+  <h3>📈 Taux de distribution (TD)</h3>
   <p style="color:var(--ink2);font-size:18px;line-height:1.75">
-    La <strong>{{ prod_a.nom }}</strong> est une poussette {{ prod_a.type }} optimisée pour
-    l'usage {{ prod_a.type | replace('trio', 'familial complet') | replace('citadine', 'citadin polyvalent') | replace('compact', 'voyageur et urbain') | replace('premium', 'quotidien haut de gamme') }}.
-    La <strong>{{ prod_b.nom }}</strong>,
-    {% if prod_b.type == 'trio' %}trio, convient mieux à une utilisation familiale complète.
-    {% elif prod_b.type == 'compact' %}modèle compact, est idéale pour les transports et voyages.
-    {% else %}{{ prod_b.type }}, correspond à un usage {{ prod_b.type | replace('citadine', 'citadin quotidien') }}.
-    {% endif %}
-    Pour la meilleure poussette {{ site.year }} selon votre mode de vie, lisez notre verdict ci-dessous.
+    <strong>{{ prod_a.nom }}</strong> affiche un TD de <strong>{{ prod_a.td }}%</strong>
+    contre <strong>{{ prod_b.td }}%</strong> pour <strong>{{ prod_b.nom }}</strong>.
+    {% if prod_a.td > prod_b.td %}{{ prod_a.nom }} distribue davantage à ses associés.
+    {% elif prod_b.td > prod_a.td %}{{ prod_b.nom }} distribue davantage à ses associés.
+    {% else %}TD identique pour les deux SCPI.{% endif %}
+    Le TD seul ne suffit pas — pensez à analyser le TRI sur 5 ans pour mesurer la performance globale.
   </p>
+  {% endif %}
+
+  {% if prod_a.frais_souscription is defined and prod_b.frais_souscription is defined %}
+  <h3>💸 Frais de souscription</h3>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    <strong>{{ prod_a.nom }}</strong> applique <strong>{{ prod_a.frais_souscription }}%</strong> de frais d'entrée
+    contre <strong>{{ prod_b.frais_souscription }}%</strong> pour <strong>{{ prod_b.nom }}</strong>.
+    {% if prod_a.frais_souscription < prod_b.frais_souscription %}{{ prod_a.nom }} est plus accessible à l'entrée.
+    {% elif prod_b.frais_souscription < prod_a.frais_souscription %}{{ prod_b.nom }} est plus accessible à l'entrée.
+    {% else %}Frais identiques.{% endif %}
+    Les frais de souscription s'amortissent sur la durée de détention — prévoyez un minimum de 8 ans.
+  </p>
+  {% endif %}
 
   <h3>💰 Rapport qualité/prix</h3>
   <p style="color:var(--ink2);font-size:18px;line-height:1.75">
-    À <strong data-table-price-a>{{ prod_a.prix }}€</strong>, la <strong>{{ prod_a.nom }}</strong>
-    {% if prod_a.prix > prod_b.prix %}
-    se positionne plus chère que la <strong>{{ prod_b.nom }}</strong> à <strong data-table-price-b>{{ prod_b.prix }}€</strong>.
-    La différence de {{ prod_a.prix - prod_b.prix }}€ se justifie si vous valorisez les critères où la {{ prod_a.nom }} excelle.
-    {% elif prod_a.prix < prod_b.prix %}
-    est moins chère que la <strong>{{ prod_b.nom }}</strong> à <strong data-table-price-b>{{ prod_b.prix }}€</strong>.
-    Une économie de {{ prod_b.prix - prod_a.prix }}€ sans forcément sacrifier la qualité.
+    {% set prix_a = prod_a.prix if prod_a.prix is defined else prod_a.prix_achat if prod_a.prix_achat is defined else 0 %}
+    {% set prix_b = prod_b.prix if prod_b.prix is defined else prod_b.prix_achat if prod_b.prix_achat is defined else 0 %}
+    <strong>{{ prod_a.nom }}</strong> est à <strong data-table-price-a>{{ prix_a }}€</strong>
+    {% if prix_a > prix_b %}
+    contre <strong data-table-price-b>{{ prix_b }}€</strong> pour <strong>{{ prod_b.nom }}</strong>.
+    {% elif prix_a < prix_b %}
+    contre <strong data-table-price-b>{{ prix_b }}€</strong> pour <strong>{{ prod_b.nom }}</strong>.
     {% else %}
-    est au même prix que la <strong>{{ prod_b.nom }}</strong> à <strong data-table-price-b>{{ prod_b.prix }}€</strong>.
-    Le choix se fait donc sur d'autres critères.
+    et <strong data-table-price-b>{{ prix_b }}€</strong> pour <strong>{{ prod_b.nom }}</strong> — même prix.
     {% endif %}
-    N'oubliez pas de vérifier les offres actuelles sur Amazon, les prix varient régulièrement.
+    N'oubliez pas de vérifier les conditions actuelles auprès des sociétés de gestion, les prix évoluent régulièrement.
   </p>
 
   <!-- AVIS CLIENTS -->
-  <h2>Avis clients Amazon : {{ prod_a.nom }} vs {{ prod_b.nom }}</h2>
+  {% if prod_a.note_amazon is defined or prod_b.note_amazon is defined %}
+  <h2>Avis clients : {{ prod_a.nom }} vs {{ prod_b.nom }}</h2>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
     <div class="avis-block">
       <div style="margin-bottom:8px"><span style="font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em">{{ prod_a.marque }}</span> · {{ prod_a.nom }}</div>
+      {% if prod_a.note_amazon is defined %}
       <span class="avis-score">{{ prod_a.note_amazon }}</span>
       <span class="stars" style="font-size:18px">{{ '★' * prod_a.note_amazon | float | int }}{{ '☆' * (5 - prod_a.note_amazon | float | int) }}</span>
       <span style="color:var(--ink3);font-size:13px">/5</span>
+      {% endif %}
       <p style="font-size:13px;color:var(--ink2);margin-top:10px">
-        Les parents soulignent la <strong>qualité de fabrication</strong> et le confort du bébé.
-        Quelques retours mentionnent le poids et l'encombrement à l'usage.
-        Note globale très satisfaisante sur Amazon France.
+        Les utilisateurs soulignent la <strong>qualité</strong> et la fiabilité du produit.
       </p>
     </div>
     <div class="avis-block">
       <div style="margin-bottom:8px"><span style="font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em">{{ prod_b.marque }}</span> · {{ prod_b.nom }}</div>
+      {% if prod_b.note_amazon is defined %}
       <span class="avis-score">{{ prod_b.note_amazon }}</span>
       <span class="stars" style="font-size:18px">{{ '★' * prod_b.note_amazon | float | int }}{{ '☆' * (5 - prod_b.note_amazon | float | int) }}</span>
       <span style="color:var(--ink3);font-size:13px">/5</span>
+      {% endif %}
       <p style="font-size:13px;color:var(--ink2);margin-top:10px">
         Les utilisateurs apprécient la <strong>praticité et la polyvalence</strong>.
-        Quelques commentaires négatifs portent sur la livraison.
-        Rapport qualité/prix bien noté dans l'ensemble.
       </p>
     </div>
   </div>
+  {% endif %}
 
   <!-- FAQ SCHEMA.ORG -->
   <h2>Questions fréquentes</h2>
+  {% set prix_a = prod_a.prix if prod_a.prix is defined else prod_a.prix_achat if prod_a.prix_achat is defined else '' %}
+  {% set prix_b = prod_b.prix if prod_b.prix is defined else prod_b.prix_achat if prod_b.prix_achat is defined else '' %}
   <div class="faq">
     <script type="application/ld+json">
     {
@@ -401,91 +407,88 @@ footer a{color:rgba(255,255,255,.4)}
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "{{ prod_a.nom }} ou {{ prod_b.nom }} : laquelle est la meilleure ?",
+          "name": "{{ prod_a.nom }} ou {{ prod_b.nom }} : lequel choisir ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Cela dépend de votre usage. La {{ prod_a.nom }} ({{ prod_a.prix }}€, {{ prod_a.poids }} kg) est idéale si {{ prod_a.verdict_si[0] | lower }}. La {{ prod_b.nom }} ({{ prod_b.prix }}€, {{ prod_b.poids }} kg) convient mieux si {{ prod_b.verdict_si[0] | lower }}."
+            "text": "Cela dépend de vos priorités. {{ prod_a.nom }} est idéal si {{ prod_a.verdict_si[0] | lower }}. {{ prod_b.nom }} convient mieux si {{ prod_b.verdict_si[0] | lower }}."
           }
         },
         {
           "@type": "Question",
-          "name": "Quelle est la différence de prix entre {{ prod_a.nom }} et {{ prod_b.nom }} ?",
+          "name": "Quelle est la différence entre {{ prod_a.nom }} et {{ prod_b.nom }} ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "La {{ prod_a.nom }} est vendue {{ prod_a.prix }}€ et la {{ prod_b.nom }} {{ prod_b.prix }}€, soit une différence de {{ (prod_a.prix - prod_b.prix) | abs }}€. Les prix peuvent varier selon les promotions Amazon."
+            "text": "{{ prod_a.nom }} et {{ prod_b.nom }} se distinguent sur plusieurs critères clés. Consultez notre tableau comparatif complet ci-dessus pour une analyse détaillée."
           }
         },
         {
           "@type": "Question",
-          "name": "{{ prod_a.nom }} ou {{ prod_b.nom }} est-elle plus légère ?",
+          "name": "{{ prod_a.nom }} ou {{ prod_b.nom }} : lequel est le moins cher ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "{% if prod_a.poids < prod_b.poids %}La {{ prod_a.nom }} est plus légère avec {{ prod_a.poids }} kg contre {{ prod_b.poids }} kg pour la {{ prod_b.nom }}.{% elif prod_b.poids < prod_a.poids %}La {{ prod_b.nom }} est plus légère avec {{ prod_b.poids }} kg contre {{ prod_a.poids }} kg pour la {{ prod_a.nom }}.{% else %}Elles ont le même poids : {{ prod_a.poids }} kg.{% endif %}"
+            "text": "{% if prix_a and prix_b %}{% if prix_a < prix_b %}{{ prod_a.nom }} est moins cher à {{ prix_a }}€ contre {{ prix_b }}€ pour {{ prod_b.nom }}.{% elif prix_b < prix_a %}{{ prod_b.nom }} est moins cher à {{ prix_b }}€ contre {{ prix_a }}€ pour {{ prod_a.nom }}.{% else %}Même prix : {{ prix_a }}€.{% endif %}{% else %}Consultez les prix actuels sur les sites des gestionnaires.{% endif %}"
           }
         }
       ]
     }
     </script>
     <div class="faq-item">
-      <div class="faq-q">{{ prod_a.nom }} ou {{ prod_b.nom }} : laquelle est la meilleure ?</div>
+      <div class="faq-q">{{ prod_a.nom }} ou {{ prod_b.nom }} : lequel choisir ?</div>
       <div class="faq-a">
-        Cela dépend de votre usage. La <strong>{{ prod_a.nom }}</strong> ({{ prod_a.prix }}€, {{ prod_a.poids }} kg)
-        est idéale si {{ prod_a.verdict_si[0] | lower }}.
-        La <strong>{{ prod_b.nom }}</strong> ({{ prod_b.prix }}€, {{ prod_b.poids }} kg)
+        Cela dépend de vos priorités. <strong>{{ prod_a.nom }}</strong>
+        est idéal si {{ prod_a.verdict_si[0] | lower }}.
+        <strong>{{ prod_b.nom }}</strong>
         convient mieux si {{ prod_b.verdict_si[0] | lower }}.
       </div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Quelle est la différence de prix ?</div>
       <div class="faq-a">
-        La {{ prod_a.nom }} est vendue <strong>{{ prod_a.prix }}€</strong> et la {{ prod_b.nom }}
-        <strong>{{ prod_b.prix }}€</strong>, soit une différence de
-        <strong>{{ (prod_a.prix - prod_b.prix) | abs }}€</strong>.
-        Les prix varient selon les offres Amazon du moment.
-      </div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Laquelle est la plus légère ?</div>
-      <div class="faq-a">
-        {% if prod_a.poids < prod_b.poids %}
-        La <strong>{{ prod_a.nom }}</strong> est plus légère avec <strong>{{ prod_a.poids }} kg</strong>
-        contre {{ prod_b.poids }} kg pour la {{ prod_b.nom }}.
-        {% elif prod_b.poids < prod_a.poids %}
-        La <strong>{{ prod_b.nom }}</strong> est plus légère avec <strong>{{ prod_b.poids }} kg</strong>
-        contre {{ prod_a.poids }} kg pour la {{ prod_a.nom }}.
+        {% if prix_a and prix_b %}
+        <strong>{{ prod_a.nom }}</strong> est à <strong>{{ prix_a }}€</strong> et
+        <strong>{{ prod_b.nom }}</strong> à <strong>{{ prix_b }}€</strong>.
         {% else %}
-        Elles ont le même poids : <strong>{{ prod_a.poids }} kg</strong>.
+        Consultez les prix actuels directement auprès des gestionnaires.
         {% endif %}
       </div>
     </div>
+    <div class="faq-item">
+      <div class="faq-q">Lequel a le meilleur rapport qualité/prix ?</div>
+      <div class="faq-a">
+        {{ prod_a.nom }} et {{ prod_b.nom }} ont chacun leurs points forts.
+        Consultez notre verdict complet ci-dessus pour une recommandation personnalisée
+        selon votre profil.
+      </div>
+    </div>
+  </div>
   </div>
 
   <!-- VERDICT -->
   <div class="verdict">
-    <h2>Quelle poussette choisir ?</h2>
+    <h2>Que choisir entre {{ prod_a.nom }} et {{ prod_b.nom }} ?</h2>
     <p style="color:rgba(255,255,255,.7);font-size:18px;line-height:1.75;margin-bottom:0;text-align:center">
-      Notre verdict basé sur les données, les avis clients et notre analyse comparative.
+      Notre verdict basé sur les données et notre analyse comparative.
     </p>
     <div class="verdict-grid">
       <div class="verdict-box">
-        <h3>👉 Choisissez la {{ prod_a.nom }} si :</h3>
+        <h3>👉 Choisissez {{ prod_a.nom }} si :</h3>
         <ul>
           {% for si in prod_a.verdict_si %}<li>{{ si }}</li>{% endfor %}
         </ul>
         <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)">
           <a href="#" data-amz-a class="cta-amz cta-amz-primary" rel="nofollow sponsored" style="width:100%;justify-content:center;font-size:15px">
-            🛒 Voir {{ prod_a.nom }} sur Amazon →
+            → En savoir plus sur {{ prod_a.nom }}
           </a>
         </div>
       </div>
       <div class="verdict-box">
-        <h3>👉 Choisissez la {{ prod_b.nom }} si :</h3>
+        <h3>👉 Choisissez {{ prod_b.nom }} si :</h3>
         <ul>
           {% for si in prod_b.verdict_si %}<li>{{ si }}</li>{% endfor %}
         </ul>
         <div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)">
           <a href="#" data-amz-b class="cta-amz cta-amz-primary" rel="nofollow sponsored" style="width:100%;justify-content:center;font-size:15px">
-            🛒 Voir {{ prod_b.nom }} sur Amazon →
+            → En savoir plus sur {{ prod_b.nom }}
           </a>
         </div>
       </div>
