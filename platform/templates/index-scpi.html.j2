@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Comparatif SCPI {{ site.year }} — Trouvez la meilleure SCPI | {{ site.name }}</title>
+<title>Comparatif SCPI {{ site.year }}, Trouvez la meilleure SCPI | {{ site.name }}</title>
 <meta name="description" content="Comparez les meilleures SCPI {{ site.year }} : taux de distribution, frais, TRI, TOF. Outil de comparaison gratuit pour trouver la SCPI adaptée à votre profil d'investisseur.">
 <link rel="canonical" href="{{ site.domain }}{{ site.base_path }}/">
-<meta property="og:title" content="Comparatif SCPI {{ site.year }} — {{ site.name }}">
+<meta property="og:title" content="Comparatif SCPI {{ site.year }}, {{ site.name }}">
 <meta property="og:description" content="Comparez les SCPI sur tous les critères : TD, TRI, frais, TOF, délai de jouissance.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ site.domain }}{{ site.base_path }}/">
@@ -18,7 +18,7 @@
   "@type": "WebSite",
   "name": "{{ site.name }}",
   "url": "{{ site.domain }}{{ site.base_path }}/",
-  "description": "Comparatif des meilleures SCPI {{ site.year }} — taux de distribution, frais, TRI, TOF",
+  "description": "Comparatif des meilleures SCPI {{ site.year }}, taux de distribution, frais, TRI, TOF",
   "publisher": {
     "@type": "Organization",
     "name": "{{ site.name }}",
@@ -37,7 +37,7 @@
       "@type": "ListItem",
       "position": {{ loop.index }},
       "name": "{{ prod.nom }}",
-      "description": "SCPI {{ prod.type }} — TD {{ prod.td }}%{% if prod.frais_souscription == 0 %} — 0% de frais{% endif %}"
+      "description": "SCPI {{ prod.type }}, TD {{ prod.td }}%{% if prod.frais_souscription == 0 %}, 0% de frais{% endif %}"
     }{% if not loop.last %},{% endif %}
     {% endfor %}
   ]
@@ -81,7 +81,7 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-stat-label{font-size:12px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
 
 /* COMPARATEUR */
-.comparator{max-width:860px;margin:-10px auto 0;padding:0 5vw;position:relative;z-index:2}
+.comparator{max-width:1100px;margin:-10px auto 0;padding:0 5vw;position:relative;z-index:2}
 .comp-card{background:var(--surface);border-radius:24px;box-shadow:0 8px 40px rgba(0,0,0,.12);overflow:hidden}
 .comp-header{background:var(--ink);padding:20px 28px;display:flex;align-items:center;justify-content:space-between}
 .comp-header-title{font-family:'{{ theme.font_title }}',serif;font-size:18px;color:#fff;font-weight:400}
@@ -155,6 +155,7 @@ h2.section-title{font-family:'{{ theme.font_title }}',serif;font-size:36px;font-
 
 /* DISCLAIMER */
 .disclaimer-bar{background:#FFF8E6;border-top:1px solid #FAC775;padding:14px 5vw;text-align:center;font-size:12px;color:#633806;line-height:1.6}
+.disclaimer-inner{max-width:860px;margin:0 auto}
 
 /* FOOTER */
 footer{background:var(--ink);color:rgba(255,255,255,.45);text-align:center;padding:40px 5vw;font-size:13px}
@@ -181,8 +182,7 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
   </div>
   <div class="nav-links">
     <a href="#comparateur">Comparateur</a>
-    <a href="#scpi">Toutes les SCPI</a>
-    <a href="#comparatifs">Comparatifs</a>
+    <a href="comparatifs-scpi.html">Comparatifs SCPI</a>
   </div>
 </nav>
 
@@ -225,7 +225,7 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
           <select class="comp-select" id="scpi-a" onchange="updateComparator()">
             <option value="">-- Choisir une SCPI --</option>
             {% for prod in products %}
-            <option value="{{ prod.slug }}" data-td="{{ prod.td }}" data-frais="{{ prod.frais_souscription }}" data-min="{{ prod.investissement_min | default(prod.prix_achat ~ '€') }}" data-nom="{{ prod.nom }}">{{ prod.nom }} — TD {{ prod.td }}%</option>
+            <option value="{{ prod.slug }}" data-td="{{ prod.td }}" data-frais="{{ prod.frais_souscription }}" data-min="{{ prod.investissement_min | default(prod.prix_achat ~ '€') }}" data-nom="{{ prod.nom }}">{{ prod.nom }}</option>
             {% endfor %}
           </select>
         </div>
@@ -235,7 +235,7 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
           <select class="comp-select" id="scpi-b" onchange="updateComparator()">
             <option value="">-- Choisir une SCPI --</option>
             {% for prod in products %}
-            <option value="{{ prod.slug }}" data-td="{{ prod.td }}" data-frais="{{ prod.frais_souscription }}" data-min="{{ prod.investissement_min | default(prod.prix_achat ~ '€') }}" data-nom="{{ prod.nom }}">{{ prod.nom }} — TD {{ prod.td }}%</option>
+            <option value="{{ prod.slug }}" data-td="{{ prod.td }}" data-frais="{{ prod.frais_souscription }}" data-min="{{ prod.investissement_min | default(prod.prix_achat ~ '€') }}" data-nom="{{ prod.nom }}">{{ prod.nom }}</option>
             {% endfor %}
           </select>
         </div>
@@ -257,7 +257,7 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
 <main>
   <section id="scpi">
     <h2 class="section-title">Toutes les SCPI analysées</h2>
-    <p class="section-sub">Données {{ site.year }} — Cliquez sur une SCPI pour accéder à sa fiche détaillée</p>
+    <p class="section-sub">Données {{ site.year }}, Cliquez sur une SCPI pour accéder à sa fiche détaillée</p>
 
     <div class="filters">
       <button class="filter-btn active" onclick="filterSCPI('all', this)">Toutes</button>
@@ -284,11 +284,11 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
             <div class="scpi-metric-label">TD {{ site.year }}</div>
           </div>
           <div class="scpi-metric">
-            <div class="scpi-metric-val">{{ prod.tri if prod.tri is defined else '—' }}%</div>
+            <div class="scpi-metric-val">{{ prod.tri if prod.tri is defined else 'N/A' }}%</div>
             <div class="scpi-metric-label">TRI {{ prod.tri_horizon if prod.tri_horizon is defined else 'objectif' }}</div>
           </div>
           <div class="scpi-metric">
-            <div class="scpi-metric-val">{{ prod.tof if prod.tof is defined else '—' }}%</div>
+            <div class="scpi-metric-val">{{ prod.tof if prod.tof is defined else 'N/A' }}%</div>
             <div class="scpi-metric-label">TOF</div>
           </div>
         </div>
@@ -355,25 +355,23 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
 </main>
 
 <div class="disclaimer-bar">
-  ⚠️ Ce site est fourni à titre informatif uniquement et ne constitue pas un conseil en investissement. Investir en SCPI comporte des risques dont la perte en capital. Les performances passées ne préjugent pas des performances futures. Consultez un CGP agréé AMF avant tout investissement.
+  <div class="disclaimer-inner">⚠️ Ce site est fourni à titre informatif uniquement et ne constitue pas un conseil en investissement. Investir en SCPI comporte des risques dont la perte en capital. Les performances passées ne préjugent pas des performances futures. Consultez un CGP agréé AMF avant tout investissement.</div>
 </div>
 
 <footer>
   <div class="footer-logo">{{ site.logo_text }}{{ site.logo_accent }}</div>
-  <div>Comparatif SCPI {{ site.year }} — Données actualisées</div>
+  <div>Comparatif SCPI {{ site.year }}, Données actualisées</div>
   <div class="footer-links">
     <a href="mentions-legales.html">Mentions légales</a>
     <a href="politique-confidentialite.html">Confidentialité</a>
     <a href="#">Contact</a>
   </div>
-  <div style="margin-top:16px;font-size:11px;opacity:.5">© {{ site.year }} {{ site.domain | replace('https://www.', '') }} — Tous droits réservés</div>
+  <div style="margin-top:16px;font-size:11px;opacity:.5">© {{ site.year }} {{ site.domain | replace('https://www.', '') }}, Tous droits réservés</div>
 </footer>
 
 {% if site.analytics_clicky %}
 <script async data-id="{{ site.analytics_clicky }}" src="//static.getclicky.com/js"></script>
 {% endif %}
-<script src="sheets.js"></script>
-
 <script>
 const SCPI_DATA = {
   {% for prod in products %}
@@ -383,8 +381,8 @@ const SCPI_DATA = {
     td: '{{ prod.td }}',
     frais: {{ prod.frais_souscription }},
     min: '{{ prod.investissement_min | default(prod.prix_achat ~ "€") }}',
-    tof: '{{ prod.tof | default("—") }}',
-    tri: '{{ prod.tri | default("—") }}'
+    tof: '{{ prod.tof | default('N/A') }}',
+    tri: '{{ prod.tri | default('N/A') }}'
   }{% if not loop.last %},{% endif %}
   {% endfor %}
 };
@@ -412,15 +410,19 @@ function updateComparator() {
 }
 
 function renderPreview(id, d) {
-  document.getElementById(id).innerHTML =
-    '<div class="cpcard-name">' + d.nom + '</div>' +
-    '<div style="font-size:11px;color:var(--ink3);margin-bottom:8px">' + d.marque + '</div>' +
-    '<div class="cpcard-stats">' +
-    '<div class="cpcard-stat">TD <strong>' + d.td + '%</strong></div>' +
-    (d.frais == 0 ? '<div class="cpcard-stat"><strong style="color:#1A7A4A">0% frais</strong></div>' : '<div class="cpcard-stat">Frais <strong>' + d.frais + '%</strong></div>') +
-    '<div class="cpcard-stat">Dès <strong>' + d.min + '</strong></div>' +
-    (d.tof !== '—' ? '<div class="cpcard-stat">TOF <strong>' + d.tof + '%</strong></div>' : '') +
-    '</div>';
+  var rows = [
+    ['TD 2025', d.td + '%'],
+    ['Frais entrée', d.frais == 0 ? '0% ✓' : d.frais + '%'],
+    ['Invest. min.', d.min],
+    ['TOF', d.tof !== 'N/A' ? d.tof + '%' : 'N/A'],
+    ['TRI', d.tri !== 'N/A' ? d.tri + '%' : 'N/A'],
+  ];
+  var html = '<div class="cpcard-name">' + d.nom + '</div><table style="width:100%;border-collapse:collapse;margin-top:8px;font-size:13px">';
+  rows.forEach(function(r) {
+    html += '<tr style="border-bottom:1px solid var(--border)"><td style="padding:6px 4px;color:var(--ink3)">' + r[0] + '</td><td style="padding:6px 4px;font-weight:600;text-align:right">' + r[1] + '</td></tr>';
+  });
+  html += '</table>';
+  document.getElementById(id).innerHTML = html;
 }
 
 function goCompare() {
@@ -452,12 +454,7 @@ function filterSCPI(type, btn) {
   });
 }
 
-// Sync Sheets data (prix, url)
-(async () => {
-  const d = await loadSheetData();
-  if (!d) return;
-  // Met à jour les liens "Investir" si url_fiche disponible
-})();
+
 </script>
 </body>
 </html>
