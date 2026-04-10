@@ -64,13 +64,25 @@ def load_products_from_sheet(csv_url: str) -> list | None:
         with urllib.request.urlopen(req, timeout=15) as resp:
             text = resp.read().decode("utf-8")
 
+        # Champs à ne PAS caster (contiennent des virgules intentionnelles)
+        STRING_FIELDS = {'geo', 'secteurs', 'pays', 'investissement_min',
+                         'tri_horizon', 'nom', 'marque', 'type', 'slug',
+                         'description', 'url_affiliation', 'verdict_si_1',
+                         'verdict_si_2', 'verdict_si_3'}
+
         reader   = csv.DictReader(io.StringIO(text))
         products = []
         for row in reader:
             slug = row.get("slug", "").strip()
             if not slug:
                 continue
-            prod = {k.strip(): cast(v.strip()) for k, v in row.items() if k.strip()}
+            prod = {}
+            for k, v in row.items():
+                k = k.strip()
+                if not k:
+                    continue
+                v = v.strip()
+                prod[k] = v if k in STRING_FIELDS else cast(v)
             if str(prod.get("disponible", "1")) == "0":
                 continue
             products.append(prod)
