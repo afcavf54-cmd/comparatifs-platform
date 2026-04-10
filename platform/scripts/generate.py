@@ -76,6 +76,22 @@ def load_products_from_sheet(csv_url: str) -> list | None:
             products.append(prod)
 
         print(f"  ✓ Sheet : {len(products)} produits chargés")
+
+        # Normalise les champs numériques (le CSV renvoie tout en string)
+        NUMERIC_FIELDS = [
+            "prix_achat", "prix_retrait", "td", "tri", "pga", "tof",
+            "frais_souscription", "frais_gestion", "delai_jouissance",
+            "endettement", "capitalisation", "disponible", "note_redaction"
+        ]
+        for prod in products:
+            for field in NUMERIC_FIELDS:
+                val = prod.get(field)
+                if val is not None and val != "":
+                    try:
+                        prod[field] = float(str(val).replace(",", "."))
+                    except (ValueError, TypeError):
+                        pass
+
         return products
 
     except Exception as e:
