@@ -457,6 +457,15 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         generate_sitemap(site, all_pairs, output_dir)
         copy_shared_assets(output_dir, site_dir)
 
+        # ── Copie assets locaux (logos, images) ──────────────────────────
+        assets_src = site_dir / "assets"
+        if assets_src.exists():
+            assets_dst = output_dir / "assets"
+            if assets_dst.exists():
+                shutil.rmtree(assets_dst)
+            shutil.copytree(assets_src, assets_dst)
+            print(f"  ✓ assets/ copié ({len(list(assets_src.rglob('*')))} fichiers)")
+
         # Home
         index_tpl = site.get("index_template", f"index-{site_slug}.html.j2")
         if (TEMPLATES_DIR / index_tpl).exists():
