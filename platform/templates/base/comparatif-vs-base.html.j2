@@ -165,8 +165,8 @@ footer a{color:rgba(255,255,255,.4)}
         {% for crit in criteria %}
         <tr>
           <td class="crit-label">{{ crit.label }}</td>
-          {% set val_a = prod_a[crit.field] if crit.field in prod_a else '—' %}
-          {% set val_b = prod_b[crit.field] if crit.field in prod_b else '—' %}
+          {% set val_a = prod_a[crit.field] if crit.field in prod_a else 'N/A' %}
+          {% set val_b = prod_b[crit.field] if crit.field in prod_b else 'N/A' %}
           {% if crit.type == 'price' %}
             <td>{{ val_a }}€</td><td>{{ val_b }}€</td>
           {% elif crit.type == 'stars' %}
@@ -208,7 +208,8 @@ footer a{color:rgba(255,255,255,.4)}
       </div>
       <div style="text-align:right">
         {% set prix = prod.prix if prod.prix is defined else prod.prix_achat if prod.prix_achat is defined else '' %}
-        <div class="model-price" id="model-price-{{ idx }}">{{ prix }}{% if prix %}€{% endif %} <span>prix indicatif</span></div>
+        {% set prix_display = prix | string | replace('.0', '') if prix else '' %}
+        <div class="model-price" id="model-price-{{ idx }}">{{ prix_display }}{% if prix_display %}€{% endif %} <span>prix indicatif</span></div>
         <div style="font-size:13px;color:var(--ink3)">
           {% if prod.poids is defined %}{{ prod.poids }} kg{% endif %}
           {% if prod.poids is defined and prod.age is defined %} · {% endif %}
@@ -247,7 +248,7 @@ footer a{color:rgba(255,255,255,.4)}
   </div>
   {% endfor %}
 
-  <!-- COMPARAISON DÉTAILLÉE — surchargée par chaque template niche -->
+  <!-- COMPARAISON DÉTAILLÉE, surchargée par chaque template niche -->
   <h2>Comparaison détaillée : {{ prod_a.nom }} vs {{ prod_b.nom }}</h2>
   {% block comparaison_detail %}
   <p style="color:var(--ink2);font-size:18px;line-height:1.75">
@@ -255,7 +256,7 @@ footer a{color:rgba(255,255,255,.4)}
   </p>
   {% endblock %}
 
-  <!-- AVIS — surchargé par template niche si nécessaire -->
+  <!-- AVIS, surchargé par template niche si nécessaire -->
   {% block section_avis %}
   {% if prod_a.note_amazon is defined or prod_b.note_amazon is defined %}
   <h2>Avis clients : {{ prod_a.nom }} vs {{ prod_b.nom }}</h2>
@@ -277,7 +278,7 @@ footer a{color:rgba(255,255,255,.4)}
   {% endif %}
   {% endblock %}
 
-  <!-- FAQ — surchargée par template niche -->
+  <!-- FAQ, surchargée par template niche -->
   <h2>Questions fréquentes</h2>
   {% set prix_a = prod_a.prix if prod_a.prix is defined else prod_a.prix_achat if prod_a.prix_achat is defined else '' %}
   {% set prix_b = prod_b.prix if prod_b.prix is defined else prod_b.prix_achat if prod_b.prix_achat is defined else '' %}
@@ -362,7 +363,7 @@ footer a{color:rgba(255,255,255,.4)}
   <div style="font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:16px;color:#fff;margin-bottom:8px">
     {{ site.logo_text }}{{ site.logo_accent }}
   </div>
-  © {{ site.year }} {{ site.domain | replace('https://www.', '') }} —
+  © {{ site.year }} {{ site.domain | replace('https://www.', '') }}
   <a href="#">Mentions légales</a>
 </footer>
 
