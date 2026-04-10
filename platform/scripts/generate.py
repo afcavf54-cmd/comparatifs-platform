@@ -198,15 +198,14 @@ def load_products_from_sheet(csv_url: str) -> list | None:
 # ── Génération éditoriale batch ────────────────────────────────────────────────
 def generate_all_editorials(products: list) -> dict:
     """
-    Génère tous les textes éditoriaux en UN SEUL appel API Claude.
-    Retourne { "slug_a-vs-slug_b": { description_a, points_forts_a, ... } }
+    Génère tous les textes éditoriaux en appels API par batch de 15 paires.
     """
     api_key = os.environ.get("ANTHROPIC_API_KEY", "")
     if not api_key:
         print("  ⚠ ANTHROPIC_API_KEY manquant — textes fallback")
         return {}
 
-    pairs = list(itertools.combinations(sorted([p["slug"] for p in products]), 2))
+    pairs    = list(itertools.combinations(sorted([p["slug"] for p in products]), 2))
     prod_map = {p["slug"]: p for p in products}
 
     def fmt(p):
@@ -224,20 +223,20 @@ def generate_all_editorials(products: list) -> dict:
             "secteurs": p.get("secteurs", ""),
         }
 
-    pairs_data = [{"key": f"{a}-vs-{b}", "a": fmt(prod_map[a]), "b": fmt(prod_map[b])} for a, b in pairs]
+    def call_api(batch):
+        pairs_data = [{"key": f"{a}-vs-{b}", "a": fmt(prod_map[a]), "b": fmt(prod_map[b])} for a, b in batch]
+        prompt = f"""Expert SCPI et rédacteur SEO. Génère des textes éditoriaux UNIQUES pour {len(batch)} pages comparatifs SCPI.
 
-    prompt = f"""Expert SCPI et rédacteur SEO. Génère des textes éditoriaux UNIQUES pour {len(pairs)} pages comparatifs SCPI.
+Chaque texte doit être SPÉCIFIQUE à la paire — pas générique. Met en avant ce qui distingue ces deux SCPI l'une par rapport à l'autre dans CE contexte précis.
 
-Chaque texte doit être SPÉCIFIQUE à la paire — pas générique. Met en avant ce qui distingue ces deux SCPI l'une par rapport à l'autre dans CE contexte précis. Utilise tes connaissances du marché SCPI 2025-2026.
-
-Paires à traiter :
+Paires :
 {json.dumps(pairs_data, ensure_ascii=False)}
 
 Réponds UNIQUEMENT en JSON valide :
 {{
   "cle-paire": {{
-    "description_a": "2 paragraphes sur SCPI A vs B spécifiquement",
-    "description_b": "2 paragraphes sur SCPI B vs A spécifiquement",
+    "description_a": "2 paragraphes contextuels sur SCPI A vs B",
+    "description_b": "2 paragraphes contextuels sur SCPI B vs A",
     "points_forts_a": ["point 1", "point 2", "point 3", "point 4"],
     "points_faibles_a": ["point 1", "point 2", "point 3"],
     "points_forts_b": ["point 1", "point 2", "point 3", "point 4"],
@@ -247,13 +246,11 @@ Réponds UNIQUEMENT en JSON valide :
   }}
 }}
 
-Règles : textes contextuels à la paire, pas de répétition des chiffres du tableau, français expert et concis."""
+Textes contextuels à la paire, français expert et concis."""
 
-    try:
-        print(f"  🤖 Génération éditoriale batch : {len(pairs)} paires...")
         payload = json.dumps({
             "model": "claude-sonnet-4-20250514",
-            "max_tokens": 16000,
+            "max_tokens": 8000,
             "messages": [{"role": "user", "content": prompt}]
         }).encode("utf-8")
 
@@ -266,7 +263,7 @@ Règles : textes contextuels à la paire, pas de répétition des chiffres du ta
                 "content-type": "application/json",
             }
         )
-        with urllib.request.urlopen(req, timeout=120) as resp:
+        with urllib.request.urlopen(req, timeout=90) as resp:
             data = json.loads(resp.read().decode("utf-8"))
 
         text = data["content"][0]["text"].strip()
@@ -274,14 +271,23 @@ Règles : textes contextuels à la paire, pas de répétition des chiffres du ta
             text = "\n".join(text.split("\n")[1:])
         if text.endswith("```"):
             text = "\n".join(text.split("\n")[:-1])
+        return json.loads(text)
 
-        result = json.loads(text)
-        print(f"  ✅ {len(result)} paires générées")
-        return result
+    # Découpe en chunks de 15
+    CHUNK_SIZE = 15
+    chunks = [pairs[i:i+CHUNK_SIZE] for i in range(0, len(pairs), CHUNK_SIZE)]
+    result = {}
 
-    except Exception as e:
-        print(f"  ⚠ Erreur API batch : {e} — textes fallback")
-        return {}
+    for i, chunk in enumerate(chunks):
+        try:
+            print(f"  🤖 Batch {i+1}/{len(chunks)} : {len(chunk)} paires...")
+            result.update(call_api(chunk))
+            print(f"  ✓ Batch {i+1} OK")
+        except Exception as e:
+            print(f"  ⚠ Batch {i+1} échoué : {e} — textes fallback pour ce batch")
+
+    print(f"  ✅ {len(result)}/{len(pairs)} paires avec textes AI")
+    return result
 
 
 # ── SEO ────────────────────────────────────────────────────────────────────────
