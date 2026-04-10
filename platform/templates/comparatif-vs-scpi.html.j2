@@ -277,21 +277,32 @@
 
   {% if prod_a.investissement_min is defined or prod_b.investissement_min is defined %}
   <h3>2. L'accessibilité, qui peut investir ?</h3>
-  <div class="perf-grid">
-    {% if prod_a.investissement_min is defined %}
-    <div class="perf-card">
-      <div class="perf-card-title">{{ prod_a.nom }}</div>
-      <div class="perf-stat"><span class="perf-label">Ticket minimum</span><span class="perf-val good">{{ prod_a.investissement_min }}</span></div>
-      {% if prod_a.prix_achat is defined %}<div class="perf-stat"><span class="perf-label">Prix de la part</span><span class="perf-val">{{ prod_a.prix_achat }}€</span></div>{% endif %}
-    </div>
-    {% endif %}
-    {% if prod_b.investissement_min is defined %}
-    <div class="perf-card">
-      <div class="perf-card-title">{{ prod_b.nom }}</div>
-      <div class="perf-stat"><span class="perf-label">Ticket minimum</span><span class="perf-val">{{ prod_b.investissement_min }}</span></div>
-      {% if prod_b.prix_achat is defined %}<div class="perf-stat"><span class="perf-label">Prix de la part</span><span class="perf-val">{{ prod_b.prix_achat }}€</span></div>{% endif %}
-    </div>
-    {% endif %}
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin:16px 0">
+    <table style="width:100%;border-collapse:collapse;font-size:15px">
+      <thead>
+        <tr style="background:var(--bg)">
+          <th style="padding:12px 18px;text-align:left;font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;width:40%">Critère</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:var(--ink)">{{ prod_a.nom }}</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:var(--ink)">{{ prod_b.nom }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if prod_a.investissement_min is defined and prod_b.investissement_min is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Ticket minimum</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:var(--green)">{{ prod_a.investissement_min }}</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.investissement_min }}</td>
+        </tr>
+        {% endif %}
+        {% if prod_a.prix_achat is defined and prod_b.prix_achat is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Prix de la part</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_a.prix_achat | string | replace('.0','') }}€</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.prix_achat | string | replace('.0','') }}€</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
   </div>
   <div class="expert-note">
     💡 La différence d'accessibilité est souvent la plus visible pour l'investisseur débutant.
@@ -414,45 +425,64 @@
   </div>
   {% endif %}
   <h2>Frais et liquidité : les points de vigilance</h2>
-  <div class="perf-grid">
-    <div class="perf-card">
-      <div class="perf-card-title">{{ prod_a.nom }}</div>
-      {% if prod_a.prix_achat is defined %}<div class="perf-stat"><span class="perf-label">Prix d'achat</span><span class="perf-val">{{ prod_a.prix_achat }}€</span></div>{% endif %}
-      {% if prod_a.prix_retrait is defined %}
-      <div class="perf-stat">
-        <span class="perf-label">Prix de retrait</span>
-        <span class="perf-val {% if prod_a.prix_retrait < prod_a.prix_achat %}warn{% endif %}">
-          {{ prod_a.prix_retrait }}€
-          {% if prod_a.prix_achat is defined and prod_a.prix_retrait < prod_a.prix_achat %}
-          <span style="font-size:11px;font-weight:400;color:var(--ink3)">(−{{ prod_a.prix_achat - prod_a.prix_retrait }}€)</span>
-          {% endif %}
-        </span>
-      </div>
-      {% endif %}
-      {% if prod_a.frais_souscription is defined %}<div class="perf-stat"><span class="perf-label">Frais de souscription</span><span class="perf-val {% if prod_a.frais_souscription == 0 %}good{% endif %}">{% if prod_a.frais_souscription == 0 %}0% ✓{% else %}{{ prod_a.frais_souscription }}%{% endif %}</span></div>{% endif %}
-      {% if prod_a.frais_gestion is defined %}<div class="perf-stat"><span class="perf-label">Frais de gestion</span><span class="perf-val">{{ prod_a.frais_gestion }}%/an</span></div>{% endif %}
-      {% if prod_a.delai_jouissance is defined %}<div class="perf-stat"><span class="perf-label">Délai de jouissance</span><span class="perf-val">{{ prod_a.delai_jouissance }} mois</span></div>{% endif %}
-      {% if prod_a.endettement is defined %}<div class="perf-stat"><span class="perf-label">Endettement</span><span class="perf-val {% if prod_a.endettement == 0 %}good{% elif prod_a.endettement > 30 %}warn{% endif %}">{{ prod_a.endettement }}%</span></div>{% endif %}
-    </div>
-    <div class="perf-card">
-      <div class="perf-card-title">{{ prod_b.nom }}</div>
-      {% if prod_b.prix_achat is defined %}<div class="perf-stat"><span class="perf-label">Prix d'achat</span><span class="perf-val">{{ prod_b.prix_achat }}€</span></div>{% endif %}
-      {% if prod_b.prix_retrait is defined %}
-      <div class="perf-stat">
-        <span class="perf-label">Prix de retrait</span>
-        <span class="perf-val {% if prod_b.prix_retrait < prod_b.prix_achat %}warn{% endif %}">
-          {{ prod_b.prix_retrait }}€
-          {% if prod_b.prix_achat is defined and prod_b.prix_retrait < prod_b.prix_achat %}
-          <span style="font-size:11px;font-weight:400;color:var(--ink3)">(−{{ prod_b.prix_achat - prod_b.prix_retrait }}€)</span>
-          {% endif %}
-        </span>
-      </div>
-      {% endif %}
-      {% if prod_b.frais_souscription is defined %}<div class="perf-stat"><span class="perf-label">Frais de souscription</span><span class="perf-val {% if prod_b.frais_souscription == 0 %}good{% endif %}">{% if prod_b.frais_souscription == 0 %}0% ✓{% else %}{{ prod_b.frais_souscription }}%{% endif %}</span></div>{% endif %}
-      {% if prod_b.frais_gestion is defined %}<div class="perf-stat"><span class="perf-label">Frais de gestion</span><span class="perf-val">{{ prod_b.frais_gestion }}%/an</span></div>{% endif %}
-      {% if prod_b.delai_jouissance is defined %}<div class="perf-stat"><span class="perf-label">Délai de jouissance</span><span class="perf-val">{{ prod_b.delai_jouissance }} mois</span></div>{% endif %}
-      {% if prod_b.endettement is defined %}<div class="perf-stat"><span class="perf-label">Endettement</span><span class="perf-val {% if prod_b.endettement == 0 %}good{% elif prod_b.endettement > 30 %}warn{% endif %}">{{ prod_b.endettement }}%</span></div>{% endif %}
-    </div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin:16px 0">
+    <table style="width:100%;border-collapse:collapse;font-size:15px">
+      <thead>
+        <tr style="background:var(--bg)">
+          <th style="padding:12px 18px;text-align:left;font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;width:40%">Critère</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:var(--ink)">{{ prod_a.nom }}</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:var(--ink)">{{ prod_b.nom }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if prod_a.prix_achat is defined and prod_b.prix_achat is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Prix d'achat</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_a.prix_achat | string | replace('.0','') }}€</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.prix_achat | string | replace('.0','') }}€</td>
+        </tr>
+        {% endif %}
+        {% if prod_a.prix_retrait is defined and prod_b.prix_retrait is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Prix de retrait</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_a.prix_retrait < prod_a.prix_achat %}#C0392B{% else %}var(--ink){% endif %}">
+            {{ prod_a.prix_retrait | string | replace('.0','') }}€{% if prod_a.prix_retrait < prod_a.prix_achat %} <span style="font-size:11px;font-weight:400">(−{{ (prod_a.prix_achat - prod_a.prix_retrait) | string | replace('.0','') }}€)</span>{% endif %}
+          </td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_b.prix_retrait < prod_b.prix_achat %}#C0392B{% else %}var(--ink){% endif %}">
+            {{ prod_b.prix_retrait | string | replace('.0','') }}€{% if prod_b.prix_retrait < prod_b.prix_achat %} <span style="font-size:11px;font-weight:400">(−{{ (prod_b.prix_achat - prod_b.prix_retrait) | string | replace('.0','') }}€)</span>{% endif %}
+          </td>
+        </tr>
+        {% endif %}
+        {% if prod_a.frais_souscription is defined and prod_b.frais_souscription is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Frais de souscription</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_a.frais_souscription == 0 %}var(--green){% else %}var(--ink){% endif %}">{% if prod_a.frais_souscription == 0 %}0% ✓{% else %}{{ prod_a.frais_souscription | string | replace('.0','') }}%{% endif %}</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_b.frais_souscription == 0 %}var(--green){% else %}var(--ink){% endif %}">{% if prod_b.frais_souscription == 0 %}0% ✓{% else %}{{ prod_b.frais_souscription | string | replace('.0','') }}%{% endif %}</td>
+        </tr>
+        {% endif %}
+        {% if prod_a.frais_gestion is defined and prod_b.frais_gestion is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Frais de gestion</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_a.frais_gestion | string | replace('.0','') }}% TTC</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.frais_gestion | string | replace('.0','') }}% TTC</td>
+        </tr>
+        {% endif %}
+        {% if prod_a.delai_jouissance is defined and prod_b.delai_jouissance is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Délai de jouissance</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_a.delai_jouissance | string | replace('.0','') }} mois</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.delai_jouissance | string | replace('.0','') }} mois</td>
+        </tr>
+        {% endif %}
+        {% if prod_a.endettement is defined and prod_b.endettement is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Endettement</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_a.endettement == 0 %}var(--green){% elif prod_a.endettement > 30 %}#C0392B{% else %}var(--ink){% endif %}">{{ prod_a.endettement | string | replace('.0','') }}%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_b.endettement == 0 %}var(--green){% elif prod_b.endettement > 30 %}#C0392B{% else %}var(--ink){% endif %}">{{ prod_b.endettement | string | replace('.0','') }}%</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
   </div>
 
   {# Analyse décote prix retrait #}
