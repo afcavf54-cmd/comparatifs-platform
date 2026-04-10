@@ -121,12 +121,6 @@ footer a{color:rgba(255,255,255,.4)}
 </head>
 <body>
 
-<div id="sheet-loader" style="display:none;position:fixed;bottom:20px;right:20px;background:#1A1714;color:#fff;padding:10px 16px;border-radius:10px;font-size:12px;align-items:center;gap:8px;z-index:999">
-  <span style="display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite"></span>
-  Mise à jour des données…
-</div>
-<style>@keyframes spin{to{transform:rotate(360deg)}}</style>
-
 <nav>
   <a href="index.html" class="nav-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></a>
   <div class="nav-links">
@@ -240,7 +234,7 @@ footer a{color:rgba(255,255,255,.4)}
       <div class="cons"><h3>✗ Points faibles</h3><ul>{% for p in prod.points_faibles %}<li>{{ p }}</li>{% endfor %}</ul></div>
     </div>
     <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border)">
-      <a href="#" data-amz-{{ idx }} class="cta-amz cta-amz-primary" rel="nofollow sponsored" style="width:100%;justify-content:center">
+      <a href="{{ prod.url_affiliation if prod.url_affiliation else '#' }}" class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="width:100%;justify-content:center">
         {% block cta_label scoped %}→ Voir {{ prod.nom }}{% endblock %}
       </a>
     </div>
@@ -322,7 +316,7 @@ footer a{color:rgba(255,255,255,.4)}
           <ul>{% for si in prod_a.verdict_si %}<li>{{ si }}</li>{% endfor %}</ul>
         </div>
         <div class="verdict-cta">
-          <a href="#" data-amz-a class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="width:100%;justify-content:center;font-size:15px">
+          <a href="{{ prod_a.url_affiliation if prod_a.url_affiliation else "#" }}" class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="width:100%;justify-content:center;font-size:15px">
             {% block verdict_cta_a %}→ Voir {{ prod_a.nom }}{% endblock %}
           </a>
         </div>
@@ -333,7 +327,7 @@ footer a{color:rgba(255,255,255,.4)}
           <ul>{% for si in prod_b.verdict_si %}<li>{{ si }}</li>{% endfor %}</ul>
         </div>
         <div class="verdict-cta">
-          <a href="#" data-amz-b class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="width:100%;justify-content:center;font-size:15px">
+          <a href="{{ prod_b.url_affiliation if prod_b.url_affiliation else "#" }}" class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="width:100%;justify-content:center;font-size:15px">
             {% block verdict_cta_b %}→ Voir {{ prod_b.nom }}{% endblock %}
           </a>
         </div>
@@ -369,30 +363,13 @@ footer a{color:rgba(255,255,255,.4)}
 {% if site.analytics_clicky %}
 <script async data-id="{{ site.analytics_clicky }}" src="//static.getclicky.com/js"></script>
 {% endif %}
-<script src="sheets.js"></script>
 <script>
-(async()=>{
-  showLoader();
-  const d = await loadSheetData();
-  hideLoader();
-  applyToComparePage(d, '{{ slug_a }}', '{{ slug_b }}');
-})();
-</script>
-<script>
-(function(){
-  function showPhoto(attr,pid){
-    var img=document.querySelector('['+attr+']'),ph=document.getElementById(pid);
-    if(!img)return;
-    new MutationObserver(function(){
-      if(img.src&&img.src!==location.href){img.style.display='block';if(ph)ph.style.display='none';}
-    }).observe(img,{attributes:true,attributeFilter:['src']});
-    if(img.src&&img.src!==location.href){img.style.display='block';if(ph)ph.style.display='none';}
-  }
-  document.addEventListener('DOMContentLoaded',function(){
-    showPhoto('data-photo-a','placeholder-a');
-    showPhoto('data-photo-b','placeholder-b');
+document.querySelectorAll('.faq-q').forEach(function(q){
+  q.addEventListener('click',function(){
+    var a=this.nextElementSibling;
+    if(a){a.style.display=a.style.display==='block'?'none':'block';}
   });
-})();
+});
 </script>
 {% block extra_js %}{% endblock %}
 </body>
