@@ -491,13 +491,15 @@
   {% set decote_b = prod_b.prix_achat - prod_b.prix_retrait %}
   {% set pct_a = ((decote_a / prod_a.prix_achat) * 100) | round(1) %}
   {% set pct_b = ((decote_b / prod_b.prix_achat) * 100) | round(1) %}
+  {% set decote_a_r = decote_a | round(2) %}
+  {% set decote_b_r = decote_b | round(2) %}
   <p style="color:var(--ink2);font-size:18px;line-height:1.75">
     <strong>Décote à la sortie :</strong>
-    <strong>{{ prod_a.nom }}</strong> : {{ prod_a.prix_achat }}€ → {{ prod_a.prix_retrait }}€
-    {% if decote_a > 0 %}(perte de <strong>{{ decote_a }}€ par part</strong>, soit {{ pct_a }}%)
+    <strong>{{ prod_a.nom }}</strong> : {{ prod_a.prix_achat | string | replace(".0","") }}€ → {{ prod_a.prix_retrait | string | replace(".0","") }}€
+    {% if decote_a > 0 %}(perte de <strong>{{ decote_a_r }}€ par part</strong>, soit {{ pct_a }}%)
     {% else %}(pas de décote, prix de retrait égal au prix d'achat){% endif %}.
-    <strong>{{ prod_b.nom }}</strong> : {{ prod_b.prix_achat }}€ → {{ prod_b.prix_retrait }}€
-    {% if decote_b > 0 %}(perte de <strong>{{ decote_b }}€ par part</strong>, soit {{ pct_b }}%)
+    <strong>{{ prod_b.nom }}</strong> : {{ prod_b.prix_achat | string | replace(".0","") }}€ → {{ prod_b.prix_retrait | string | replace(".0","") }}€
+    {% if decote_b > 0 %}(perte de <strong>{{ decote_b_r }}€ par part</strong>, soit {{ pct_b }}%)
     {% else %}(pas de décote){% endif %}.
     {% if decote_a < decote_b %}
     {{ prod_a.nom }} est plus avantageuse à la sortie.
