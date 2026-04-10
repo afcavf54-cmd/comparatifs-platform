@@ -218,14 +218,20 @@ footer a{color:rgba(255,255,255,.4)}
     </div>
     <div class="model-body">
       <div class="model-photo-wrap">
-        <img data-photo-{{ idx }} src="" alt="{{ prod.nom }}" style="display:none">
-        <div class="model-photo-placeholder" id="placeholder-{{ idx }}">
+        {% if prod.logo_url is defined and prod.logo_url %}
+        <img src="{{ prod.logo_url }}" alt="Logo {{ prod.nom }}" style="width:100%;height:auto;border-radius:12px;object-fit:contain;max-height:160px">
+        {% else %}
+        <img src="assets/logos/{{ prod.slug }}.png" alt="Logo {{ prod.nom }}"
+             style="width:100%;height:auto;border-radius:12px;object-fit:contain;max-height:160px;padding:16px;background:#fff;border:1px solid var(--border)"
+             onerror="this.style.display='none';document.getElementById('placeholder-{{ idx }}').style.display='flex'">
+        <div class="model-photo-placeholder" id="placeholder-{{ idx }}" style="display:none">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/>
             <path d="M21 15l-5-5L5 21"/>
           </svg>
-          <span>Visuel à venir</span>
+          <span>{{ prod.nom }}</span>
         </div>
+        {% endif %}
       </div>
       <div class="model-text">{{ prod.description }}</div>
     </div>
