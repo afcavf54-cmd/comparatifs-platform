@@ -383,7 +383,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         # Home
         index_tpl = site.get("index_template", f"index-{site_slug}.html.j2")
         if (TEMPLATES_DIR / index_tpl).exists():
-            zero_frais = sum(1 for p in products if str(p.get("frais_souscription", "99")) == "0")
+            zero_frais = sum(1 for p in products if str(p.get("frais_souscription", 99)).replace('.0','') == "0")
             top_pairs  = [{"url": f"{a}-vs-{b}.html", "label": f"{products_by_slug(products, a)['nom']} vs {products_by_slug(products, b)['nom']}"} for a, b in all_pairs[:8]]
             html = env.get_template(index_tpl).render(
                 site={**site, "seo": config.get("seo", {})}, theme=theme, products=products,
@@ -399,6 +399,15 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 html = env.get_template(tpl_name).render(site={**site, "seo": config.get("seo", {})}, theme=theme, build_date=date.today().isoformat())
                 (output_dir / out_name).write_text(html, encoding="utf-8")
                 print(f"  ✓ {out_name}")
+
+        # Page comparatifs-scpi.html
+        if (TEMPLATES_DIR / "comparatifs-scpi.html.j2").exists():
+            html = env.get_template("comparatifs-scpi.html.j2").render(
+                site={**site, "seo": config.get("seo", {})}, theme=theme,
+                products=products, total_pairs=len(all_pairs)
+            )
+            (output_dir / "comparatifs-scpi.html").write_text(html, encoding="utf-8")
+            print(f"  ✓ comparatifs-scpi.html ({len(all_pairs)} comparatifs)")
 
     print(f"\n  {'[DRY] ' if dry_run else ''}✅ {generated} pages générées, {skipped} ignorées")
     if not dry_run:
