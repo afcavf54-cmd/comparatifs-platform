@@ -197,7 +197,15 @@ footer a{color:rgba(255,255,255,.4)}
           Notre avis sur {{ prod.nom }}
         </h2>
         <div style="display:flex;align-items:center;gap:8px">
-          {% if prod.note_confort is defined %}
+          {% if prod.note_redaction is defined and prod.note_redaction %}
+          {% set note = prod.note_redaction | float %}
+          <span style="font-size:22px;color:#F5A623;letter-spacing:2px">
+            {%- for i in range(5) -%}
+              {%- if i < note | int -%}★{%- else -%}☆{%- endif -%}
+            {%- endfor -%}
+          </span>
+          <span style="font-size:15px;font-weight:600;color:var(--ink2)">{{ note }}/5</span>
+          {% elif prod.note_confort is defined %}
           <span style="font-size:22px;color:var(--accent)">{{ '★' * prod.note_confort|int }}{{ '☆' * (5 - prod.note_confort|int) }}</span>
           {% endif %}
           {% if prod.note_amazon is defined %}
