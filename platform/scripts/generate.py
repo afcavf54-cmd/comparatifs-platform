@@ -1,98 +1,121 @@
 #!/usr/bin/env python3
 """
 generate.py — Générateur de sites comparatifs statiques
-Plateforme : GitHub + Netlify · Source : Google Sheets CSV · Templates : Jinja2
+Source données : Google Sheets CSV (priorité) ou products.yaml (fallback)
+Templates : Jinja2 · Deploy : Cloudflare Pages via GitHub Actions
 
 Usage :
-    python scripts/generate.py --site poussettes
-    python scripts/generate.py --site poussettes --dry-run
-    python scripts/generate.py --site poussettes --pair yoyo-2,cybex-balios-s
-    python scripts/generate.py --all   # génère tous les sites
-
-Architecture fichiers :
-    platform/
-    ├── scripts/generate.py         ← ce fichier
-    ├── templates/
-    │   └── comparatif-vs.html.j2   ← template partagé
-    └── sites/{niche}/
-        ├── config.yaml             ← config site + thème + SEO
-        ├── products.yaml           ← catalogue produits
-        └── output/                 ← HTML généré (gitignored ou Netlify publish)
+    python scripts/generate.py --site scpi
+    python scripts/generate.py --site scpi --dry-run
+    python scripts/generate.py --site scpi --pair remake-live,iroko-zen
+    python scripts/generate.py --all
 """
 
 import argparse
+import csv
+import io
 import itertools
-import os
-import sys
 import math
+import shutil
+import sys
+import urllib.request
 from datetime import date
 from pathlib import Path
 
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-# ── Chemins ─────────────────────────────────────────────────────────────────
-ROOT = Path(__file__).parent.parent
+# ── Chemins ───────────────────────────────────────────────────────────────────
+ROOT          = Path(__file__).parent.parent
 TEMPLATES_DIR = ROOT / "templates"
-SITES_DIR = ROOT / "sites"
-SHARED_DIR = ROOT / "sites" / "_shared"
+SITES_DIR     = ROOT / "sites"
+SHARED_DIR    = ROOT / "sites" / "_shared"
 
 
-# ── Helpers ──────────────────────────────────────────────────────────────────
+# ── Helpers ───────────────────────────────────────────────────────────────────
 def load_yaml(path: Path) -> dict:
     with open(path, encoding="utf-8") as f:
         return yaml.safe_load(f)
 
 
-def slugify(s: str) -> str:
-    """Convertit un nom en slug URL (sans librairie externe)."""
-    import unicodedata
-    s = unicodedata.normalize("NFD", s.lower())
-    s = "".join(c for c in s if unicodedata.category(c) != "Mn")
-    s = s.replace(" ", "-").replace("'", "").replace(".", "")
-    return "".join(c for c in s if c.isalnum() or c == "-")
+def cast(val: str):
+    """Convertit une string CSV en int/float si possible, sinon str."""
+    if val == "" or val is None:
+        return None
+    try:
+        return int(val)
+    except ValueError:
+        pass
+    try:
+        return float(val)
+    except ValueError:
+        pass
+    return val
 
 
-def stars_html(n: float) -> str:
-    full = int(n)
-    empty = 5 - full
-    return "★" * full + "☆" * empty
+def load_products_from_sheet(csv_url: str) -> list | None:
+    """Charge les produits depuis Google Sheet CSV. Retourne None si indisponible."""
+    try:
+        print("  📥 Chargement Sheet CSV…")
+        req = urllib.request.Request(
+            csv_url,
+            headers={"User-Agent": "Mozilla/5.0 (compatible; SCPI-Generator/1.0)"}
+        )
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            text = resp.read().decode("utf-8")
+
+        reader   = csv.DictReader(io.StringIO(text))
+        products = []
+        for row in reader:
+            slug = row.get("slug", "").strip()
+            if not slug:
+                continue
+            prod = {k.strip(): cast(v.strip()) for k, v in row.items() if k.strip()}
+            if str(prod.get("disponible", "1")) == "0":
+                continue
+            products.append(prod)
+
+        print(f"  ✓ Sheet : {len(products)} produits chargés")
+        return products
+
+    except Exception as e:
+        print(f"  ⚠ Sheet indisponible ({e}) → fallback products.yaml")
+        return None
 
 
 def build_seo(site: dict, seo_config: dict, prod_a: dict, prod_b: dict) -> dict:
     year = site["year"]
     return {
         "title": seo_config["title_pattern"]
-            .replace("{A}", prod_a["nom"])
-            .replace("{B}", prod_b["nom"])
+            .replace("{A}", str(prod_a["nom"]))
+            .replace("{B}", str(prod_b["nom"]))
             .replace("{year}", str(year)),
         "meta": seo_config["meta_pattern"]
-            .replace("{A}", prod_a["nom"])
-            .replace("{B}", prod_b["nom"])
+            .replace("{A}", str(prod_a["nom"]))
+            .replace("{B}", str(prod_b["nom"]))
             .replace("{year}", str(year)),
         "h1": seo_config["h1_pattern"]
-            .replace("{A}", prod_a["nom"])
-            .replace("{B}", prod_b["nom"])
+            .replace("{A}", str(prod_a["nom"]))
+            .replace("{B}", str(prod_b["nom"]))
             .replace("{year}", str(year)),
         "intro": seo_config["intro_pattern"]
-            .replace("{A}", prod_a["nom"])
-            .replace("{B}", prod_b["nom"])
-            .replace("{prix_a}", f"{prod_a['prix']}€")
-            .replace("{prix_b}", f"{prod_b['prix']}€"),
+            .replace("{A}", str(prod_a["nom"]))
+            .replace("{B}", str(prod_b["nom"]))
+            .replace("{prix_a}", f"{prod_a.get('prix', prod_a.get('prix_achat', ''))}€")
+            .replace("{prix_b}", f"{prod_b.get('prix', prod_b.get('prix_achat', ''))}€"),
     }
 
 
 def build_related_pages(slug_a: str, slug_b: str, products: list, max_items: int = 8) -> list:
-    """Génère les liens de maillage interne pour la page A vs B."""
     related = []
     for p in products:
         s = p["slug"]
         if s in (slug_a, slug_b):
             continue
-        # Liens depuis A vers les autres
-        url = f"{slug_a}-vs-{s}.html"
-        label = f"{products_by_slug(products, slug_a)['nom']} vs {p['nom']}"
-        related.append({"url": url, "label": label})
+        related.append({
+            "url":   f"{slug_a}-vs-{s}.html",
+            "label": f"{products_by_slug(products, slug_a)['nom']} vs {p['nom']}"
+        })
         if len(related) >= max_items:
             break
     return related
@@ -104,89 +127,93 @@ def products_by_slug(products: list, slug: str) -> dict:
 
 def generate_sitemap(site: dict, pairs: list, output_dir: Path) -> None:
     domain = site["domain"]
-    base = site["base_path"].rstrip("/")
-    today = date.today().isoformat()
-
-    lines = ['<?xml version="1.0" encoding="UTF-8"?>']
-    lines.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
-    lines.append(f'  <url><loc>{domain}{base}/</loc><priority>1.0</priority></url>')
-
+    base   = site["base_path"].rstrip("/")
+    today  = date.today().isoformat()
+    lines  = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        f'  <url><loc>{domain}{base}/</loc><priority>1.0</priority></url>',
+    ]
     for slug_a, slug_b in pairs:
-        url = f"{domain}{base}/{slug_a}-vs-{slug_b}"
         lines.append(
-            f'  <url><loc>{url}</loc>'
+            f'  <url><loc>{domain}{base}/{slug_a}-vs-{slug_b}</loc>'
             f'<lastmod>{today}</lastmod>'
             f'<changefreq>monthly</changefreq>'
             f'<priority>0.8</priority></url>'
         )
-
     lines.append("</urlset>")
-    sitemap_path = output_dir / "sitemap.xml"
-    sitemap_path.write_text("\n".join(lines), encoding="utf-8")
+    (output_dir / "sitemap.xml").write_text("\n".join(lines), encoding="utf-8")
     print(f"  ✓ sitemap.xml ({len(pairs)} URLs)")
 
 
 def copy_shared_assets(output_dir: Path, site_dir: Path) -> None:
-    """Copie sheets.js vers le dossier output."""
-    # Cherche sheets.js dans site_dir d'abord, puis _shared
     for source_dir in [site_dir, SHARED_DIR]:
         js_src = source_dir / "sheets.js"
         if js_src.exists():
-            import shutil
             shutil.copy2(js_src, output_dir / "sheets.js")
             print(f"  ✓ sheets.js copié depuis {source_dir.name}/")
             return
-    print("  ⚠ sheets.js introuvable — à copier manuellement")
+    print("  ⚠ sheets.js introuvable")
 
 
-# ── Générateur principal ──────────────────────────────────────────────────────
+# ── Générateur principal ───────────────────────────────────────────────────────
 def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = None) -> None:
     site_dir = SITES_DIR / site_slug
     if not site_dir.exists():
         print(f"❌ Site introuvable : {site_dir}")
         sys.exit(1)
 
-    # Chargement config + produits
-    config = load_yaml(site_dir / "config.yaml")
-    products_data = load_yaml(site_dir / "products.yaml")
+    config        = load_yaml(site_dir / "config.yaml")
+    products_yaml = load_yaml(site_dir / "products.yaml")
 
-    site = config["site"]
-    theme = config["theme"]
+    site     = config["site"]
+    theme    = config["theme"]
     criteria = config["criteria"]
-    products = products_data["products"]
 
     print(f"\n🚀 Génération site : {site_slug}")
+
+    # ── Produits : Sheet CSV en priorité, YAML en fallback ──────────────────
+    sheet_url = site.get("sheet_csv_url", "")
+    products  = None
+
+    if sheet_url and not dry_run:
+        products = load_products_from_sheet(sheet_url)
+
+    if products is None:
+        products = products_yaml.get("products", [])
+        src = "products.yaml" if not sheet_url else "products.yaml (fallback)"
+        print(f"  📦 {len(products)} produits depuis {src}")
+
     print(f"   {len(products)} produits → {math.comb(len(products), 2)} paires")
 
-    # Setup Jinja2
+    # ── Jinja2 ──────────────────────────────────────────────────────────────
     env = Environment(
         loader=FileSystemLoader(str(TEMPLATES_DIR)),
         autoescape=select_autoescape(["html"]),
         trim_blocks=True,
         lstrip_blocks=True,
     )
-    # Filtre personnalisé capitalize
     env.filters["capitalize"] = lambda s: s.capitalize() if s else ""
 
-    template = env.get_template("comparatif-vs.html.j2")
+    template_file = site.get("template", "comparatif-vs.html.j2")
+    template      = env.get_template(template_file)
+    print(f"  Template : {template_file}")
 
-    # Output dir
     output_dir = site_dir / "output"
     if not dry_run:
         output_dir.mkdir(exist_ok=True)
 
-    # Toutes les paires ordonnées (A, B) avec A < B alphabétiquement
+    # ── Paires ──────────────────────────────────────────────────────────────
     all_slugs = [p["slug"] for p in products]
-    pairs = list(itertools.combinations(all_slugs, 2))
+    all_pairs = list(itertools.combinations(sorted(all_slugs), 2))
 
     if filter_pair:
-        pairs = [p for p in pairs if set(p) == set(filter_pair)]
-        print(f"   Filtre : {filter_pair}")
+        all_pairs = [p for p in all_pairs if set(p) == set(filter_pair)]
 
     generated = 0
-    skipped = 0
+    skipped   = 0
 
-    for slug_a, slug_b in pairs:
+    for slug_a, slug_b in all_pairs:
         prod_a = products_by_slug(products, slug_a)
         prod_b = products_by_slug(products, slug_b)
 
@@ -195,39 +222,73 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             skipped += 1
             continue
 
-        filename = f"{slug_a}-vs-{slug_b}.html"
-        seo_config = config["seo"]
-        seo = build_seo(site, seo_config, prod_a, prod_b)
+        seo     = build_seo(site, config["seo"], prod_a, prod_b)
         related = build_related_pages(slug_a, slug_b, products)
 
         context = {
-            "site": {**site, "seo": config.get("seo", site.get("seo", {}))},
-            "theme": theme,
-            "criteria": criteria,
-            "prod_a": prod_a,
-            "prod_b": prod_b,
-            "slug_a": slug_a,
-            "slug_b": slug_b,
-            "seo": seo,
+            "site":          {**site, "seo": config.get("seo", {})},
+            "theme":         theme,
+            "criteria":      criteria,
+            "prod_a":        prod_a,
+            "prod_b":        prod_b,
+            "slug_a":        slug_a,
+            "slug_b":        slug_b,
+            "seo":           seo,
             "related_pages": related,
-            "build_date": date.today().isoformat(),
+            "build_date":    date.today().isoformat(),
         }
 
         if dry_run:
-            print(f"  [DRY] {filename}")
+            print(f"  [DRY] {slug_a}-vs-{slug_b}.html")
             generated += 1
             continue
 
         html = template.render(**context)
-        out_path = output_dir / filename
-        out_path.write_text(html, encoding="utf-8")
+        (output_dir / f"{slug_a}-vs-{slug_b}.html").write_text(html, encoding="utf-8")
         generated += 1
 
     if not dry_run:
-        # Sitemap
-        generate_sitemap(site, pairs, output_dir)
-        # Assets partagés
+        generate_sitemap(site, all_pairs, output_dir)
         copy_shared_assets(output_dir, site_dir)
+
+        # ── Home ──────────────────────────────────────────────────────────
+        index_tpl_name = site.get("index_template", f"index-{site_slug}.html.j2")
+        if (TEMPLATES_DIR / index_tpl_name).exists():
+            zero_frais = sum(1 for p in products if str(p.get("frais_souscription", "99")) == "0")
+            top_pairs  = [
+                {
+                    "url":   f"{a}-vs-{b}.html",
+                    "label": f"{products_by_slug(products, a)['nom']} vs {products_by_slug(products, b)['nom']}"
+                }
+                for a, b in all_pairs[:8]
+            ]
+            html = env.get_template(index_tpl_name).render(
+                site={**site, "seo": config.get("seo", {})},
+                theme=theme,
+                products=products,
+                total_pairs=len(all_pairs),
+                zero_frais_count=zero_frais,
+                top_pairs=top_pairs,
+                build_date=date.today().isoformat(),
+            )
+            (output_dir / "index.html").write_text(html, encoding="utf-8")
+            print(f"  ✓ index.html ({len(products)} produits, {len(all_pairs)} comparatifs)")
+        else:
+            print(f"  ⚠ Template index introuvable : {index_tpl_name}")
+
+        # ── Légales ───────────────────────────────────────────────────────
+        for tpl_name, out_name in [
+            ("mentions-legales.html.j2",         "mentions-legales.html"),
+            ("politique-confidentialite.html.j2", "politique-confidentialite.html"),
+        ]:
+            if (TEMPLATES_DIR / tpl_name).exists():
+                html = env.get_template(tpl_name).render(
+                    site={**site, "seo": config.get("seo", {})},
+                    theme=theme,
+                    build_date=date.today().isoformat(),
+                )
+                (output_dir / out_name).write_text(html, encoding="utf-8")
+                print(f"  ✓ {out_name}")
 
     status = "[DRY RUN] " if dry_run else ""
     print(f"\n  {status}✅ {generated} pages générées, {skipped} ignorées")
@@ -237,27 +298,18 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
 
 # ── CLI ───────────────────────────────────────────────────────────────────────
 def main():
-    parser = argparse.ArgumentParser(
-        description="Générateur de sites comparatifs statiques"
-    )
-    parser.add_argument("--site", help="Slug du site à générer (ex: poussettes)")
-    parser.add_argument("--all", action="store_true", help="Générer tous les sites")
-    parser.add_argument(
-        "--dry-run", action="store_true",
-        help="Affiche les pages qui seraient générées sans écrire de fichiers"
-    )
-    parser.add_argument(
-        "--pair", help="Générer une seule paire (ex: yoyo-2,cybex-balios-s)"
-    )
+    parser = argparse.ArgumentParser(description="Générateur comparatifs statiques")
+    parser.add_argument("--site",    help="Slug du site (ex: scpi)")
+    parser.add_argument("--all",     action="store_true", help="Génère tous les sites")
+    parser.add_argument("--dry-run", action="store_true", help="Simule sans écrire")
+    parser.add_argument("--pair",    help="Filtre une paire (ex: remake-live,iroko-zen)")
     args = parser.parse_args()
 
     filter_pair = None
     if args.pair:
         parts = args.pair.split(",")
-        if len(parts) != 2:
-            print("❌ --pair doit contenir exactement 2 slugs séparés par une virgule")
-            sys.exit(1)
-        filter_pair = tuple(sorted(parts))
+        if len(parts) == 2:
+            filter_pair = tuple(p.strip() for p in parts)
 
     if args.all:
         for site_dir in sorted(SITES_DIR.iterdir()):
@@ -267,7 +319,6 @@ def main():
         generate_site(args.site, dry_run=args.dry_run, filter_pair=filter_pair)
     else:
         parser.print_help()
-        sys.exit(1)
 
 
 if __name__ == "__main__":
