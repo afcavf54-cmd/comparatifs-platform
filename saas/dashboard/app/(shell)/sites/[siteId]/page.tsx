@@ -1,0 +1,248 @@
+'use client'
+import { useEffect, useState } from 'react'
+import { useParams, useRouter } from 'next/navigation'
+import Link from 'next/link'
+
+interface Site {
+  id: string; name: string; niche: string; domain: string
+  status: string; created_at: string; last_deployed?: string
+  pages_count?: number; products_count?: number; description?: string
+  sheet_csv_url?: string; cloudflare_project?: string
+}
+
+const TABS = [
+  { id: 'overview', label: '📊 Vue d\'ensemble', href: '' },
+  { id: 'templates', label: '📄 Templates', href: '/templates' },
+  { id: 'data', label: '🗂 Données', href: '/data' },
+  { id: 'editorial', label: '✍️ Éditorial', href: '/editorial' },
+  { id: 'deploy', label: '🚀 Déploiement', href: '/deploy' },
+  { id: 'settings', label: '⚙️ Paramètres', href: '/settings' },
+]
+
+const STATUS_COLORS: Record<string, string> = {
+  live: '#00D4AA', draft: '#8B9CB0', building: '#F6AD55', error: '#FC8181'
+}
+
+export default function SiteDetailPage() {
+  const { siteId } = useParams()
+  const router = useRouter()
+  const [site, setSite] = useState<Site | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [deploying, setDeploying] = useState(false)
+  const [deployMsg, setDeployMsg] = useState('')
+  const [runs, setRuns] = useState<any[]>([])
+  const [sheetData, setSheetData] = useState<any>(null)
+
+  useEffect(() => {
+    fetch(`/api/sites/${siteId}`).then(r => r.json()).then(d => {
+      setSite(d)
+      setLoading(false)
+      if (d.sheet_csv_url) loadSheet(d.sheet_csv_url)
+    }).catch(() => setLoading(false))
+
+    fetch('/api/deploy').then(r => r.json()).then(d => {
+      if (Array.isArray(d)) setRuns(d.slice(0, 5))
+    })
+  }, [siteId])
+
+  async function loadSheet(url: string) {
+    try {
+      const r = await fetch('/api/sheet', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url }) })
+      const d = await r.json()
+      if (!d.error) setSheetData(d)
+    } catch {}
+  }
+
+  async function deploy() {
+    setDeploying(true)
+    setDeployMsg('')
+    try {
+      const r = await fetch('/api/deploy', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ siteId, workflowFile: 'generate-scpi.yml' })
+      })
+      const d = await r.json()
+      if (d.ok) {
+        setDeployMsg('✓ Workflow déclenché — déploiement en cours (~3 min)')
+        const updated = { ...site!, status: 'building', last_deployed: new Date().toISOString() }
+        setSite(updated)
+        await fetch(`/api/sites/${siteId}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ status: 'building', last_deployed: new Date().toISOString() }) })
+      } else {
+        setDeployMsg('✗ ' + (d.error || 'Erreur inconnue'))
+      }
+    } catch { setDeployMsg('✗ Erreur réseau') }
+    setDeploying(false)
+  }
+
+  if (loading) return <div style={{ color: '#8B9CB0', textAlign: 'center', padding: 60 }}>Chargement...</div>
+  if (!site) return <div style={{ color: '#FC8181', textAlign: 'center', padding: 60 }}>Site introuvable</div>
+
+  return (
+    <div>
+      {/* Breadcrumb */}
+      <div style={{ marginBottom: 24, fontSize: 13, color: '#8B9CB0' }}>
+        <Link href="/sites" style={{ color: '#8B9CB0', textDecoration: 'none' }}>Sites</Link>
+        <span style={{ margin: '0 8px' }}>›</span>
+        <span style={{ color: '#fff' }}>{site.name}</span>
+      </div>
+
+      {/* Header */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 28 }}>
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 6 }}>
+            <h1 style={{ fontSize: 26, fontWeight: 700, color: '#fff', margin: 0 }}>{site.name}</h1>
+            <span style={{ fontSize: 12, fontWeight: 600, padding: '3px 10px', borderRadius: 20, color: STATUS_COLORS[site.status] || '#8B9CB0', background: `${STATUS_COLORS[site.status]}20` }}>
+              ● {site.status}
+            </span>
+          </div>
+          <div style={{ fontSize: 13, color: '#8B9CB0' }}>
+            <a href={`https://${site.domain}`} target="_blank" rel="noopener noreferrer" style={{ color: '#00D4AA', textDecoration: 'none' }}>
+              {site.domain} ↗
+            </a>
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: 10 }}>
+          <a href={`https://${site.domain}`} target="_blank" rel="noopener noreferrer" style={{
+            padding: '10px 18px', borderRadius: 10, background: '#1E2D3D',
+            color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 600
+          }}>🌐 Voir le site</a>
+          <button onClick={deploy} disabled={deploying} style={{
+            padding: '10px 20px', borderRadius: 10, border: 'none',
+            background: deploying ? '#1E2D3D' : 'linear-gradient(135deg, #00D4AA, #0090FF)',
+            color: deploying ? '#4A5568' : '#fff', cursor: deploying ? 'not-allowed' : 'pointer',
+            fontWeight: 600, fontSize: 13
+          }}>
+            {deploying ? '⏳ En cours...' : '🚀 Déployer'}
+          </button>
+        </div>
+      </div>
+
+      {deployMsg && (
+        <div style={{ marginBottom: 20, padding: '10px 16px', borderRadius: 10, background: deployMsg.startsWith('✓') ? 'rgba(0,212,170,0.1)' : 'rgba(252,129,129,0.1)', color: deployMsg.startsWith('✓') ? '#00D4AA' : '#FC8181', fontSize: 13 }}>
+          {deployMsg}
+        </div>
+      )}
+
+      {/* Tabs */}
+      <div style={{ display: 'flex', gap: 4, marginBottom: 28, borderBottom: '1px solid #1E2D3D', paddingBottom: 0 }}>
+        {TABS.map(tab => (
+          <Link key={tab.id} href={`/sites/${siteId}${tab.href}`} style={{
+            padding: '10px 16px', fontSize: 13, fontWeight: tab.id === 'overview' ? 600 : 400,
+            color: tab.id === 'overview' ? '#fff' : '#8B9CB0',
+            textDecoration: 'none', borderBottom: tab.id === 'overview' ? '2px solid #00D4AA' : '2px solid transparent',
+            marginBottom: -1
+          }}>{tab.label}</Link>
+        ))}
+      </div>
+
+      {/* Stats */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 28 }}>
+        {[
+          { label: 'Pages générées', value: site.pages_count || 0, icon: '📄', color: '#0090FF' },
+          { label: 'Produits', value: sheetData?.count || site.products_count || 0, icon: '📦', color: '#00D4AA' },
+          { label: 'Comparatifs', value: (() => { const n = sheetData?.count || 0; return Math.floor(n * (n - 1) / 2) })(), icon: '⚖️', color: '#F6AD55' },
+          { label: 'Dernière MAJ', value: site.last_deployed ? new Date(site.last_deployed).toLocaleDateString('fr') : '—', icon: '🕐', color: '#8B9CB0' },
+        ].map(stat => (
+          <div key={stat.label} style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 12, padding: '18px 20px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+              <span style={{ fontSize: 20 }}>{stat.icon}</span>
+              <span style={{ fontSize: 22, fontWeight: 700, color: stat.color }}>{stat.value}</span>
+            </div>
+            <div style={{ fontSize: 11, color: '#4A5568', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{stat.label}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Body grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+        {/* Quick actions */}
+        <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24 }}>
+          <h3 style={{ color: '#fff', margin: '0 0 16px', fontSize: 15, fontWeight: 600 }}>Actions rapides</h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {[
+              { icon: '📄', label: 'Éditer les templates', href: `/sites/${siteId}/templates` },
+              { icon: '🗂', label: 'Voir les données', href: `/sites/${siteId}/data` },
+              { icon: '✍️', label: 'Gérer l\'éditorial', href: `/sites/${siteId}/editorial` },
+              { icon: '⚙️', label: 'Paramètres du site', href: `/sites/${siteId}/settings` },
+            ].map(action => (
+              <Link key={action.href} href={action.href} style={{
+                display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px',
+                borderRadius: 10, background: '#0A0E1A', border: '1px solid #1E2D3D',
+                color: '#fff', textDecoration: 'none', fontSize: 13, transition: 'all 0.15s'
+              }}
+              onMouseEnter={e => (e.currentTarget.style.borderColor = '#00D4AA')}
+              onMouseLeave={e => (e.currentTarget.style.borderColor = '#1E2D3D')}
+              >
+                <span>{action.icon}</span>{action.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Recent deploys */}
+        <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24 }}>
+          <h3 style={{ color: '#fff', margin: '0 0 16px', fontSize: 15, fontWeight: 600 }}>Déploiements récents</h3>
+          {runs.length === 0 ? (
+            <div style={{ color: '#4A5568', fontSize: 13 }}>Aucun déploiement</div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {runs.map(run => (
+                <a key={run.id} href={run.html_url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                  <div style={{ padding: '10px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div>
+                      <div style={{ fontSize: 12, color: '#fff', marginBottom: 2 }}>
+                        {run.head_commit?.message?.slice(0, 40) || run.name}
+                      </div>
+                      <div style={{ fontSize: 11, color: '#4A5568' }}>
+                        {new Date(run.created_at).toLocaleString('fr')}
+                      </div>
+                    </div>
+                    <span style={{
+                      fontSize: 10, fontWeight: 600, padding: '2px 8px', borderRadius: 20,
+                      color: run.conclusion === 'success' ? '#00D4AA' : run.status === 'in_progress' ? '#F6AD55' : '#FC8181',
+                      background: run.conclusion === 'success' ? 'rgba(0,212,170,0.12)' : run.status === 'in_progress' ? 'rgba(246,173,85,0.12)' : 'rgba(252,129,129,0.12)'
+                    }}>
+                      {run.conclusion || run.status}
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Sheet preview */}
+        {sheetData && (
+          <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24, gridColumn: '1 / -1' }}>
+            <h3 style={{ color: '#fff', margin: '0 0 16px', fontSize: 15, fontWeight: 600 }}>
+              Données Sheet — {sheetData.count} produits détectés
+            </h3>
+            <div style={{ overflowX: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+                <thead>
+                  <tr>
+                    {sheetData.headers.slice(0, 8).map((h: string) => (
+                      <th key={h} style={{ padding: '8px 12px', textAlign: 'left', color: '#8B9CB0', borderBottom: '1px solid #1E2D3D', whiteSpace: 'nowrap' }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {sheetData.rows.slice(0, 5).map((row: any, i: number) => (
+                    <tr key={i}>
+                      {sheetData.headers.slice(0, 8).map((h: string) => (
+                        <td key={h} style={{ padding: '8px 12px', color: '#fff', borderBottom: '1px solid #1E2D3D', maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          {row[h] || '—'}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {sheetData.count > 5 && <div style={{ color: '#4A5568', fontSize: 11, padding: '8px 12px' }}>+ {sheetData.count - 5} autres produits</div>}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
