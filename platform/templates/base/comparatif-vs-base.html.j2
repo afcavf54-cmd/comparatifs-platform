@@ -244,13 +244,11 @@ footer a{color:rgba(255,255,255,.4)}
           <span>{{ prod.nom }}</span>
         </div>
         {% endif %}
-      </div>
-      <div class="model-text">{{ prod.description | safe }}</div>
-      <div style="margin-top:12px">
-        <a href="avis-{{ prod.slug }}.html" style="font-size:14px;color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px">
+        <a href="avis-{{ prod.slug }}.html" style="display:block;margin-top:10px;font-size:13px;color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-align:center">
           → Notre avis sur {{ prod.nom }}
         </a>
       </div>
+      <div class="model-text">{{ prod.description | safe }}</div>
     </div>
     <div class="pros-cons">
       <div class="pros"><h3>✓ Points forts</h3><ul>{% for p in prod.points_forts %}<li>{{ p }}</li>{% endfor %}</ul></div>
