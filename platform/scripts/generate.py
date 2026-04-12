@@ -410,6 +410,15 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             (output_dir / "comparatifs-scpi.html").write_text(html, encoding="utf-8")
             print(f"  ✓ comparatifs-scpi.html ({len(all_pairs)} comparatifs)")
 
+        # Page liste avis
+        if (TEMPLATES_DIR / f"liste-avis-{site_slug}.html.j2").exists():
+            html = env.get_template(f"liste-avis-{site_slug}.html.j2").render(
+                site={**site, "seo": config.get("seo", {})}, theme=theme,
+                products=products, build_date=date.today().isoformat(),
+            )
+            (output_dir / "avis-scpi.html").write_text(html, encoding="utf-8")
+            print(f"  ✓ avis-scpi.html ({len(products)} SCPI)")
+
         # ── Pages AVIS ──────────────────────────────────────────────────────
         avis_tpl_name = f"avis-{site_slug}.html.j2"
         if (TEMPLATES_DIR / avis_tpl_name).exists():
