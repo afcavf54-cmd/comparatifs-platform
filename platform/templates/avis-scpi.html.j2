@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avis {{ prod.nom }} {{ site.year }} : Notre analyse complète | {{ site.name }}</title>
+<meta name="description" content="Notre avis sur {{ prod.nom }} {{ site.year }} : taux de distribution, frais, points forts et faibles. Analyse indépendante pour investir en SCPI.">
+<link rel="canonical" href="{{ site.domain }}{{ site.base_path }}/avis-{{ prod.slug }}.html">
+<meta property="og:title" content="Avis {{ prod.nom }} {{ site.year }} | {{ site.name }}">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="{{ theme.google_fonts }}" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "FinancialProduct",
+    "name": "{{ prod.nom }}",
+    "description": "SCPI {{ prod.type | default('') }} gérée par {{ prod.marque }}",
+    "brand": { "@type": "Organization", "name": "{{ prod.marque }}" }
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "{{ prod.note_redaction | default(4) }}",
+    "bestRating": "5"
+  },
+  "author": { "@type": "Organization", "name": "{{ site.name }}" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Qu'est-ce que {{ prod.nom }} ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "{{ prod.nom }} est une SCPI {{ prod.type | default('') }} gérée par {{ prod.marque }}{% if prod.td is defined %}, affichant un taux de distribution de {{ prod.td }}% en {{ site.year }}{% endif %}." }
+    },
+    {
+      "@type": "Question",
+      "name": "Quels sont les frais de {{ prod.nom }} ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "{% if prod.frais_souscription is defined %}Les frais de souscription sont de {{ prod.frais_souscription | string | replace('.0','') }}%{% if prod.frais_souscription == 0 %}, c'est une SCPI sans frais d'entrée{% endif %}.{% if prod.frais_gestion is defined %} Les frais de gestion annuels sont de {{ prod.frais_gestion | string | replace('.0','') }}% TTC.{% endif %}{% else %}Consultez la fiche officielle.{% endif %}" }
+    },
+    {
+      "@type": "Question",
+      "name": "Quel est le rendement de {{ prod.nom }} ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "{% if prod.td is defined %}{{ prod.nom }} affiche un taux de distribution de {{ prod.td }}% en {{ site.year }}.{% if prod.tri is defined %} Son TRI {{ prod.tri_horizon | default('objectif') }} est de {{ prod.tri }}%.{% endif %}{% else %}Consultez la fiche officielle.{% endif %}" }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment investir dans {{ prod.nom }} ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "{% if prod.prix_achat is defined %}Le prix d'une part est de {{ prod.prix_achat | string | replace('.0','') }}€.{% endif %} Vous pouvez souscrire via un conseiller en gestion de patrimoine agréé AMF." }
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:{{ theme.bg }};--surface:#FFFFFF;--surface2:#EEF2FF;--ink:{{ theme.ink }};--ink2:#6B6560;--ink3:#A09890;--accent:{{ theme.accent }};--accent2:{{ theme.accent2 }};--border:#E2DDD6;--green:#1A7A4A;--r:12px;--r2:20px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'{{ theme.font_body }}',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.7}
+a{color:inherit;text-decoration:none}
+h2{font-family:'{{ theme.font_title }}',serif;font-size:28px;font-weight:400;letter-spacing:-.01em;margin:40px 0 16px}
+h3{font-family:'{{ theme.font_title }}',serif;font-size:22px;font-weight:400;margin:24px 0 12px}
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:17px;color:#fff}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;gap:24px}.nav-links a{color:rgba(255,255,255,.6);font-size:13px}.nav-links a:hover{color:#fff}
+.crumb{padding:12px 5vw;font-size:13px;color:var(--ink3);max-width:960px;margin:0 auto;width:100%}
+.crumb a{color:var(--ink3)}.crumb a:hover{color:var(--accent)}
+.hero{background:var(--ink);padding:40px 5vw 36px;color:#fff}
+.hero-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.hero-logo{width:90px;height:90px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;padding:10px;flex-shrink:0}
+.hero-logo img{width:100%;height:100%;object-fit:contain}
+.hero-title{font-family:'{{ theme.font_title }}',serif;font-size:clamp(26px,4vw,42px);font-weight:400;margin:0 0 6px;letter-spacing:-.02em;color:#fff}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.6);margin:0}
+.hero-rating{display:flex;align-items:center;gap:8px;margin-top:10px}
+.stars{font-size:20px;color:#F5A623;letter-spacing:2px}
+.hero-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.badge{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8)}
+.badge-green{background:rgba(0,200,100,.15);color:#00D464}
+.cta-primary{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--r);background:#E8410A;color:#fff;font-weight:600;font-size:14px;transition:.15s;flex-shrink:0}
+.cta-primary:hover{background:#c93508}
+.main{max-width:900px;margin:0 auto;padding:40px 5vw}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin:0 0 32px}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px;text-align:center}
+.kpi-val{font-size:24px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:4px}
+.kpi-val.green{color:var(--green)}
+.kpi-label{font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em}
+.data-table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface);border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.data-table tr{border-bottom:1px solid var(--border)}
+.data-table td{padding:11px 16px}.data-table td:first-child{color:var(--ink3);width:50%}
+.data-table td:last-child{font-weight:600}
+.pros{background:#F0FBF4;border:1px solid #C0DDB0;border-radius:var(--r);padding:20px}
+.cons{background:#FBF0F0;border:1px solid #DDB0B0;border-radius:var(--r);padding:20px}
+.pros h3{color:#1A7A4A;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:0 0 12px;font-family:'{{ theme.font_body }}',sans-serif}
+.cons h3{color:#A32D2D;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:0 0 12px;font-family:'{{ theme.font_body }}',sans-serif}
+.pros li,.cons li{font-size:15px;line-height:1.65;margin-bottom:6px;color:var(--ink2)}
+.verdict-block{background:var(--surface2);border-radius:var(--r2);padding:24px;margin:16px 0}
+.verdict-block li{padding:8px 0;border-bottom:1px solid var(--border);font-size:16px;color:var(--ink2);display:flex;align-items:flex-start;gap:10px;list-style:none}
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-top:16px}
+.comp-item{display:flex;align-items:center;justify-content:space-between;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:12px 16px;font-size:14px;font-weight:500;color:var(--ink);transition:.15s}
+.comp-item:hover{border-color:var(--accent);color:var(--accent)}
+.faq-item{border-bottom:1px solid var(--border);padding:16px 0}
+.faq-q{font-size:17px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--ink)}
+.faq-a{display:none;font-size:16px;color:var(--ink2);padding-top:10px;line-height:1.75}
+.disclaimer{background:#FFF8E6;border:1px solid #FAC775;border-radius:var(--r2);padding:20px 24px;margin:24px auto;max-width:900px;font-size:12px;color:#633806;line-height:1.6}
+footer{background:var(--ink);color:rgba(255,255,255,.45);text-align:center;padding:40px 5vw;font-size:13px}
+footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:center;gap:24px;margin-top:12px}
+@media(max-width:640px){.hero-inner{flex-direction:column}.nav-links{display:none}.kpi-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></a>
+  <div class="nav-links">
+    <a href="/#comparateur">Comparateur</a>
+    <a href="/comparatifs-scpi.html">Comparatifs SCPI</a>
+  </div>
+</nav>
+
+<div class="crumb">
+  <a href="/">Accueil</a> ›
+  <a href="/comparatifs-scpi.html">Comparatifs SCPI</a> ›
+  Avis {{ prod.nom }}
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-inner" style="max-width:900px;margin:0 auto">
+    <div class="hero-logo">
+      <img src="{{ prod.slug }}.png" alt="Logo {{ prod.nom }}" onerror="this.parentElement.innerHTML='🏢'">
+    </div>
+    <div style="flex:1">
+      <h1 class="hero-title">Avis {{ prod.nom }} {{ site.year }}</h1>
+      <p class="hero-sub">{{ prod.marque }}{% if prod.type is defined %} · SCPI {{ prod.type }}{% endif %}{% if prod.td is defined %} · TD {{ prod.td }}% en {{ site.year }}{% endif %}</p>
+      <div class="hero-rating">
+        {% if prod.note_redaction is defined and prod.note_redaction %}
+        {% set note = prod.note_redaction | float %}
+        <span class="stars">{%- for i in range(5) -%}{%- if i < note | int -%}★{%- else -%}☆{%- endif -%}{%- endfor -%}</span>
+        <span style="font-size:14px;font-weight:600;color:#fff">{{ note }}/5</span>
+        {% endif %}
+      </div>
+      <div class="hero-badges">
+        {% if prod.frais_souscription is defined and prod.frais_souscription == 0 %}<span class="badge badge-green">✓ 0% frais d'entrée</span>{% endif %}
+        {% if prod.endettement is defined and prod.endettement == 0 %}<span class="badge badge-green">✓ Zéro endettement</span>{% endif %}
+        {% if prod.tof is defined and prod.tof >= 98 %}<span class="badge badge-green">✓ TOF {{ prod.tof }}%</span>{% endif %}
+        {% if prod.td is defined %}<span class="badge">TD {{ prod.td }}% ({{ site.year }})</span>{% endif %}
+      </div>
+    </div>
+    {% if prod.url_affiliation is defined and prod.url_affiliation %}
+    <a href="{{ prod.url_affiliation }}" rel="nofollow" target="_blank" class="cta-primary">→ Investir dans {{ prod.nom }}</a>
+    {% endif %}
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- KPIs -->
+  <div class="kpi-grid">
+    {% if prod.td is defined %}<div class="kpi"><div class="kpi-val green">{{ prod.td }}%</div><div class="kpi-label">TD {{ site.year }}</div></div>{% endif %}
+    {% if prod.tri is defined %}<div class="kpi"><div class="kpi-val">{{ prod.tri }}%</div><div class="kpi-label">TRI {{ prod.tri_horizon | default('objectif') }}</div></div>{% endif %}
+    {% if prod.tof is defined %}<div class="kpi"><div class="kpi-val {% if prod.tof >= 95 %}green{% endif %}">{{ prod.tof }}%</div><div class="kpi-label">TOF</div></div>{% endif %}
+    {% if prod.prix_achat is defined %}<div class="kpi"><div class="kpi-val" style="font-size:18px">{{ prod.prix_achat | string | replace('.0','') }}€</div><div class="kpi-label">Prix de la part</div></div>{% endif %}
+    {% if prod.frais_souscription is defined %}<div class="kpi"><div class="kpi-val {% if prod.frais_souscription == 0 %}green{% endif %}" style="font-size:18px">{{ prod.frais_souscription | string | replace('.0','') }}%</div><div class="kpi-label">Frais d'entrée</div></div>{% endif %}
+    {% if prod.capitalisation is defined %}<div class="kpi"><div class="kpi-val" style="font-size:16px">{{ prod.capitalisation }} M€</div><div class="kpi-label">Capitalisation</div></div>{% endif %}
+  </div>
+
+  <!-- Description -->
+  <h2>Notre avis sur {{ prod.nom }}</h2>
+  {% if prod.description is defined and prod.description %}
+  <div style="font-size:17px;color:var(--ink2);line-height:1.85">{{ prod.description | safe }}</div>
+  {% endif %}
+
+  <!-- Points forts / faibles -->
+  {% if prod.points_forts is defined or prod.points_faibles is defined %}
+  <h2>Points forts et points faibles</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px">
+    {% if prod.points_forts is defined %}<div class="pros"><h3>✓ Points forts</h3><ul>{% for p in prod.points_forts %}<li>{{ p }}</li>{% endfor %}</ul></div>{% endif %}
+    {% if prod.points_faibles is defined %}<div class="cons"><h3>✗ Points faibles</h3><ul>{% for p in prod.points_faibles %}<li>{{ p }}</li>{% endfor %}</ul></div>{% endif %}
+  </div>
+  {% endif %}
+
+  <!-- Données complètes -->
+  <h2>Données complètes {{ prod.nom }} {{ site.year }}</h2>
+  <table class="data-table" style="margin-bottom:32px">
+    {% if prod.td is defined %}<tr><td>Taux de distribution {{ site.year }}</td><td>{{ prod.td }}%</td></tr>{% endif %}
+    {% if prod.tri is defined %}<tr><td>TRI {{ prod.tri_horizon | default('objectif') }}</td><td>{{ prod.tri }}%</td></tr>{% endif %}
+    {% if prod.pga is defined %}<tr><td>PGA</td><td>{{ prod.pga }}%</td></tr>{% endif %}
+    {% if prod.tof is defined %}<tr><td>TOF</td><td>{{ prod.tof }}%</td></tr>{% endif %}
+    {% if prod.prix_achat is defined %}<tr><td>Prix d'achat</td><td>{{ prod.prix_achat | string | replace('.0','') }}€</td></tr>{% endif %}
+    {% if prod.prix_retrait is defined %}<tr><td>Prix de retrait</td><td>{{ prod.prix_retrait | string | replace('.0','') }}€</td></tr>{% endif %}
+    {% if prod.investissement_min is defined %}<tr><td>Investissement minimum</td><td>{{ prod.investissement_min }}</td></tr>{% endif %}
+    {% if prod.frais_souscription is defined %}<tr><td>Frais de souscription</td><td>{{ prod.frais_souscription | string | replace('.0','') }}%{% if prod.frais_souscription == 0 %} ✓{% endif %}</td></tr>{% endif %}
+    {% if prod.frais_gestion is defined %}<tr><td>Frais de gestion</td><td>{{ prod.frais_gestion | string | replace('.0','') }}% TTC</td></tr>{% endif %}
+    {% if prod.endettement is defined %}<tr><td>Endettement</td><td>{{ prod.endettement | string | replace('.0','') }}%</td></tr>{% endif %}
+    {% if prod.delai_jouissance is defined %}<tr><td>Délai de jouissance</td><td>{{ prod.delai_jouissance | string | replace('.0','') }} mois</td></tr>{% endif %}
+    {% if prod.capitalisation is defined %}<tr><td>Capitalisation</td><td>{{ prod.capitalisation }} M€</td></tr>{% endif %}
+    {% if prod.pays is defined %}<tr><td>Pays d'investissement</td><td>{{ prod.pays }}</td></tr>{% endif %}
+  </table>
+
+  <!-- Pour qui -->
+  {% if prod.verdict_si is defined and prod.verdict_si %}
+  <h2>{{ prod.nom }} est fait pour vous si...</h2>
+  <div class="verdict-block">
+    <ul>{% for item in prod.verdict_si %}<li><span style="color:var(--green);font-weight:700;flex-shrink:0">✓</span>{{ item }}</li>{% endfor %}</ul>
+  </div>
+  {% endif %}
+
+  <!-- FAQ -->
+  <h2>Questions fréquentes sur {{ prod.nom }}</h2>
+  <div style="margin-bottom:32px">
+    <div class="faq-item">
+      <div class="faq-q">Qu'est-ce que {{ prod.nom }} ?<span style="color:var(--accent);font-size:20px;font-weight:400">+</span></div>
+      <div class="faq-a">{{ prod.nom }} est une SCPI {{ prod.type | default('') }} gérée par {{ prod.marque }}{% if prod.td is defined %}, affichant un taux de distribution de {{ prod.td }}% en {{ site.year }}{% endif %}. {% if prod.description is defined %}{{ prod.description | safe | truncate(200) }}{% endif %}</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Quels sont les frais de {{ prod.nom }} ?<span style="color:var(--accent);font-size:20px;font-weight:400">+</span></div>
+      <div class="faq-a">{% if prod.frais_souscription is defined %}Les frais de souscription de {{ prod.nom }} sont de {{ prod.frais_souscription | string | replace('.0','') }}%{% if prod.frais_souscription == 0 %}, ce qui en fait une SCPI sans frais d'entrée{% endif %}.{% endif %} {% if prod.frais_gestion is defined %}Les frais de gestion annuels sont de {{ prod.frais_gestion | string | replace('.0','') }}% TTC.{% endif %}</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Quel est le rendement de {{ prod.nom }} ?<span style="color:var(--accent);font-size:20px;font-weight:400">+</span></div>
+      <div class="faq-a">{% if prod.td is defined %}{{ prod.nom }} affiche un taux de distribution de {{ prod.td }}% en {{ site.year }}.{% if prod.tri is defined %} Son TRI {{ prod.tri_horizon | default('objectif') }} est de {{ prod.tri }}%.{% endif %}{% endif %}</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Comment investir dans {{ prod.nom }} ?<span style="color:var(--accent);font-size:20px;font-weight:400">+</span></div>
+      <div class="faq-a">{% if prod.investissement_min is defined %}L'investissement minimum dans {{ prod.nom }} est de {{ prod.investissement_min }}.{% elif prod.prix_achat is defined %}Le prix d'une part de {{ prod.nom }} est de {{ prod.prix_achat | string | replace('.0','') }}€.{% endif %} Vous pouvez souscrire via un conseiller en gestion de patrimoine agréé AMF ou une plateforme spécialisée.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">{{ prod.nom }} est-elle une bonne SCPI ?<span style="color:var(--accent);font-size:20px;font-weight:400">+</span></div>
+      <div class="faq-a">{% if prod.points_forts is defined %}Parmi les points forts de {{ prod.nom }} : {{ prod.points_forts[0] | default('') }}{% if prod.points_forts | length > 1 %}, {{ prod.points_forts[1] }}{% endif %}. {% endif %}Consultez notre analyse complète ci-dessus pour une vue d'ensemble de {{ prod.nom }}.</div>
+    </div>
+  </div>
+
+  <!-- Maillage comparatifs -->
+  <h2>Comparer {{ prod.nom }} avec d'autres SCPI</h2>
+  <p style="color:var(--ink3);font-size:15px;margin-bottom:0">Tous nos comparatifs impliquant {{ prod.nom }}</p>
+  <div class="comp-grid">
+    {% for pair_url, pair_label in related_comparatifs %}
+    <a href="{{ pair_url }}" class="comp-item">
+      <span>{{ pair_label }}</span>
+      <span style="color:var(--accent)">→</span>
+    </a>
+    {% endfor %}
+  </div>
+
+</div>
+
+<div class="disclaimer">
+  ⚠️ Cet avis est fourni à titre informatif uniquement et ne constitue pas un conseil en investissement. Investir en SCPI comporte des risques dont la perte en capital. Les performances passées ne préjugent pas des performances futures. Consultez un CGP agréé AMF avant tout investissement.
+</div>
+
+<footer>
+  <div style="font-family:'{{ theme.font_title }}',serif;font-size:18px;color:#fff;margin-bottom:10px">{{ site.logo_text }}{{ site.logo_accent }}</div>
+  <div>Comparatif SCPI {{ site.year }}, Données actualisées</div>
+  <div class="footer-links">
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="politique-confidentialite.html">Confidentialité</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(function(q){
+  q.addEventListener('click',function(){
+    var a=this.nextElementSibling;
+    var btn=this.querySelector('span:last-child');
+    if(a){var open=a.style.display==='block';a.style.display=open?'none':'block';if(btn)btn.textContent=open?'+':'−';}
+  });
+});
+</script>
+</body>
+</html>
