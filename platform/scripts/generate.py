@@ -358,6 +358,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             "slug_a": slug_a, "slug_b": slug_b,
             "seo": seo, "related_pages": related,
             "build_date": date.today().isoformat(),
+            "editorial": editorials.get(pair_key, {}),
         }
 
         if dry_run:
@@ -408,6 +409,53 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             )
             (output_dir / "comparatifs-scpi.html").write_text(html, encoding="utf-8")
             print(f"  ✓ comparatifs-scpi.html ({len(all_pairs)} comparatifs)")
+
+        # ── Pages AVIS ──────────────────────────────────────────────────────
+        avis_tpl_name = f"avis-{site_slug}.html.j2"
+        if (TEMPLATES_DIR / avis_tpl_name).exists():
+            avis_count = 0
+            prod_map = {p["slug"]: p for p in products}
+            for prod in products:
+                slug = prod["slug"]
+                # Récupère la description canonique depuis editorial.json
+                # Prend la première paire où ce produit apparaît en position A
+                avis_prod = dict(prod)
+                for pair_key, ed in editorials.items():
+                    parts = pair_key.split("-vs-")
+                    if len(parts) == 2 and parts[0] == slug:
+                        avis_prod["description"]    = ed.get("description_a", prod.get("description", ""))
+                        avis_prod["points_forts"]   = ed.get("points_forts_a", prod.get("points_forts", []))
+                        avis_prod["points_faibles"] = ed.get("points_faibles_a", prod.get("points_faibles", []))
+                        avis_prod["verdict_si"]     = ed.get("verdict_si_a", prod.get("verdict_si", []))
+                        break
+                    elif len(parts) == 2 and parts[1] == slug:
+                        avis_prod["description"]    = ed.get("description_b", prod.get("description", ""))
+                        avis_prod["points_forts"]   = ed.get("points_forts_b", prod.get("points_forts", []))
+                        avis_prod["points_faibles"] = ed.get("points_faibles_b", prod.get("points_faibles", []))
+                        avis_prod["verdict_si"]     = ed.get("verdict_si_b", prod.get("verdict_si", []))
+                        break
+
+                # Tous les comparatifs impliquant ce produit
+                related_comparatifs = []
+                for a, b in all_pairs:
+                    if a == slug or b == slug:
+                        other = b if a == slug else a
+                        other_prod = prod_map.get(other)
+                        if other_prod:
+                            url = f"{a}-vs-{b}.html"
+                            label = f"{prod_map[a]['nom']} vs {prod_map[b]['nom']}"
+                            related_comparatifs.append((url, label))
+
+                html = env.get_template(avis_tpl_name).render(
+                    site={**site, "seo": config.get("seo", {})},
+                    theme=theme,
+                    prod=avis_prod,
+                    related_comparatifs=related_comparatifs,
+                    build_date=date.today().isoformat(),
+                )
+                (output_dir / f"avis-{slug}.html").write_text(html, encoding="utf-8")
+                avis_count += 1
+            print(f"  ✓ {avis_count} pages avis générées")
 
     print(f"\n  {'[DRY] ' if dry_run else ''}✅ {generated} pages générées, {skipped} ignorées")
     if not dry_run:
