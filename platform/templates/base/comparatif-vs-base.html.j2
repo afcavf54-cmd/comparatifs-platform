@@ -140,6 +140,10 @@ footer a{color:rgba(255,255,255,.4)}
   <div class="hero-vs">
     <div class="eyebrow">{{ site.seo.eyebrow | replace('{year}', site.year|string) }}</div>
     <h1>{{ seo.h1 | safe }}</h1>
+    <div style="font-size:13px;color:var(--ink3);margin:-10px 0 20px;display:flex;align-items:center;gap:6px">
+      <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green)"></span>
+      Mis à jour le {{ build_date | replace('-', '/') }}
+    </div>
     <p class="intro">{{ seo.intro | safe }}</p>
   </div>
 
