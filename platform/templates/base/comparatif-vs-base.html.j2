@@ -244,7 +244,7 @@ footer a{color:rgba(255,255,255,.4)}
         </div>
         {% endif %}
       </div>
-      <div class="model-text">{{ prod.description }}</div>
+      <div class="model-text">{{ prod.description | safe }}</div>
     </div>
     <div class="pros-cons">
       <div class="pros"><h3>✓ Points forts</h3><ul>{% for p in prod.points_forts %}<li>{{ p }}</li>{% endfor %}</ul></div>
@@ -357,6 +357,9 @@ footer a{color:rgba(255,255,255,.4)}
       Comparatifs similaires
     </h2>
     <div class="rel-grid">
+      <!-- Liens vers pages avis -->
+      <a href="avis-{{ slug_a }}.html" class="rel-link" style="background:var(--surface2)">📋 Avis complet {{ prod_a.nom }} →</a>
+      <a href="avis-{{ slug_b }}.html" class="rel-link" style="background:var(--surface2)">📋 Avis complet {{ prod_b.nom }} →</a>
       {% for rel in related_pages %}
       <a href="{{ rel.url }}" class="rel-link">{{ rel.label }} →</a>
       {% endfor %}
