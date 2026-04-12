@@ -204,6 +204,10 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
     </div>
     <div style="flex:1">
       <h1 class="hero-title">Avis {{ prod.nom }} : Faut-il investir en {{ site.year }} ?</h1>
+      <div style="display:inline-flex;align-items:center;gap:6px;background:#EAF3DE;color:#27500A;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;margin:6px 0 10px">
+        <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#27500A"></span>
+        Mis à jour le {{ build_date | replace("-", "/") }}
+      </div>
       <p class="hero-sub">{{ prod.marque }}{% if prod.type is defined %} · SCPI {{ prod.type }}{% endif %}{% if prod.td is defined %} · TD {{ prod.td }}% en {{ site.year }}{% endif %}</p>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
         {% if prod.note_redaction is defined and prod.note_redaction %}
@@ -218,7 +222,7 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
         {% if prod.tof is defined and prod.tof >= 98 %}<span class="badge badge-green">✓ TOF {{ prod.tof }}%</span>{% endif %}
         {% if prod.td is defined %}<span class="badge">TD {{ prod.td }}% ({{ site.year }})</span>{% endif %}
       </div>
-      <div class="hero-meta">Analyse et données mises à jour le {{ build_date | replace('-', '/') }}</div>
+
     </div>
     {% if prod.url_affiliation is defined and prod.url_affiliation %}
     <div>
@@ -230,7 +234,7 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
 
 <div class="main">
 
-  <div class="update-badge">🕐 Mis à jour le {{ build_date | replace('-', '/') }}</div>
+
 
   <!-- TABLEAU DE BORD -->
   <div class="dashboard">
