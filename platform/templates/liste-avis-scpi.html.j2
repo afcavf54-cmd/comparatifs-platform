@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avis SCPI {{ site.year }} : Toutes nos analyses | {{ site.name }}</title>
+<meta name="description" content="Retrouvez tous nos avis SCPI {{ site.year }} : analyses indépendantes de {{ products | length }} SCPI avec rendements, frais, points forts et verdict.">
+<link rel="canonical" href="{{ site.domain }}{{ site.base_path }}/avis-scpi.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="{{ theme.google_fonts }}" rel="stylesheet">
+<style>
+:root{--bg:{{ theme.bg }};--surface:#fff;--ink:{{ theme.ink }};--ink2:#6B6560;--ink3:#A09890;--accent:{{ theme.accent }};--accent2:{{ theme.accent2 }};--border:#E2DDD6;--green:#1A7A4A;--r:12px;--r2:20px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'{{ theme.font_body }}',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.7}
+a{color:inherit;text-decoration:none}
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:17px;color:#fff}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;gap:24px}.nav-links a{color:rgba(255,255,255,.6);font-size:13px}.nav-links a:hover{color:#fff}
+.nav-links a.active{color:#fff;font-weight:600}
+.hero{background:var(--ink);padding:48px 5vw 40px;color:#fff}
+.hero-inner{max-width:960px;margin:0 auto}
+h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4vw,48px);font-weight:400;letter-spacing:-.02em;margin:0 0 12px}
+.hero-sub{font-size:17px;color:rgba(255,255,255,.6);max-width:600px}
+.main{max-width:960px;margin:0 auto;padding:40px 5vw}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.filter-btn{padding:7px 16px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--ink2);font-size:13px;cursor:pointer;transition:.15s}
+.filter-btn.active,.filter-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.search-box{width:100%;padding:12px 16px;border-radius:var(--r);border:1px solid var(--border);background:var(--surface);font-size:14px;color:var(--ink);outline:none;margin-bottom:20px;font-family:inherit}
+.search-box:focus{border-color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px;transition:.15s;display:flex;flex-direction:column}
+.card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.card-top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.card-logo{width:52px;height:52px;border-radius:10px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;padding:6px;flex-shrink:0}
+.card-logo img{width:100%;height:100%;object-fit:contain}
+.card-name{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.card-type{font-size:12px;color:var(--ink3)}
+.card-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.kpi{background:var(--bg);border-radius:8px;padding:8px;text-align:center}
+.kpi-val{font-size:16px;font-weight:700;color:var(--accent)}
+.kpi-val.green{color:var(--green)}
+.kpi-label{font-size:9px;color:var(--ink3);text-transform:uppercase;letter-spacing:.04em}
+.stars{font-size:13px;color:#F5A623;letter-spacing:1px}
+.card-badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.badge{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600;background:rgba(26,122,74,.1);color:var(--green)}
+.card-cta{display:flex;align-items:center;justify-content:center;padding:10px;border-radius:var(--r);background:var(--accent);color:#fff;font-size:13px;font-weight:600;margin-top:auto;transition:.15s}
+.card-cta:hover{background:var(--accent2)}
+.stats-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px;text-align:center}
+.stat-val{font-size:28px;font-weight:700;color:var(--accent)}
+.stat-label{font-size:11px;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;margin-top:4px}
+.disclaimer{background:#FFF8E6;border:1px solid #FAC775;border-radius:var(--r2);padding:18px 22px;margin:32px 0;font-size:12px;color:#633806;line-height:1.6}
+footer{background:var(--ink);color:rgba(255,255,255,.45);text-align:center;padding:40px 5vw;font-size:13px;margin-top:40px}
+footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:center;gap:24px;margin-top:12px}
+@media(max-width:640px){.nav-links{display:none}.stats-bar{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></a>
+  <div class="nav-links">
+    <a href="/#comparateur">Comparateur</a>
+    <a href="comparatifs-scpi.html">Comparatifs SCPI</a>
+    <a href="avis-scpi.html" class="active">Avis SCPI</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <h1>Avis SCPI {{ site.year }}</h1>
+    <p class="hero-sub">{{ products | length }} analyses indépendantes pour choisir la meilleure SCPI selon votre profil.</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-val">{{ products | length }}</div>
+      <div class="stat-label">SCPI analysées</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">{{ products | selectattr('frais_souscription', 'equalto', 0) | list | length }}</div>
+      <div class="stat-label">Sans frais d'entrée</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">{{ site.year }}</div>
+      <div class="stat-label">Données actualisées</div>
+    </div>
+  </div>
+
+  <!-- Filtres -->
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterCards('all', this)">Toutes ({{ products | length }})</button>
+    <button class="filter-btn" onclick="filterCards('zero-frais', this)">0% frais</button>
+    <button class="filter-btn" onclick="filterCards('haut-rendement', this)">Haut rendement</button>
+    <button class="filter-btn" onclick="filterCards('europe', this)">Hors France</button>
+  </div>
+
+  <!-- Recherche -->
+  <input type="text" class="search-box" placeholder="Rechercher une SCPI..." id="search-input" oninput="searchCards(this.value)">
+
+  <!-- Grille des SCPI -->
+  <div class="grid" id="scpi-grid">
+    {% for prod in products %}
+    <a href="avis-{{ prod.slug }}.html" class="card"
+       data-nom="{{ prod.nom | lower }}"
+       data-type="{{ prod.type | default('') | lower }}"
+       data-frais="{{ prod.frais_souscription | default(99) }}"
+       data-td="{{ prod.td | default(0) }}"
+       data-pays="{{ prod.pays | default('') | lower }}">
+
+      <div class="card-top">
+        <div class="card-logo">
+          <img src="{{ prod.slug }}.png" alt="{{ prod.nom }}" onerror="this.parentElement.textContent='🏢'">
+        </div>
+        <div>
+          <div class="card-name">{{ prod.nom }}</div>
+          <div class="card-type">{{ prod.marque }}{% if prod.type is defined %} · {{ prod.type }}{% endif %}</div>
+          {% if prod.note_redaction is defined and prod.note_redaction %}
+          {% set note = prod.note_redaction | float %}
+          <div class="stars">{%- for i in range(5) -%}{%- if i < note | int -%}★{%- else -%}☆{%- endif -%}{%- endfor -%}</div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="card-kpis">
+        {% if prod.td is defined %}
+        <div class="kpi"><div class="kpi-val green">{{ prod.td }}%</div><div class="kpi-label">TD {{ site.year }}</div></div>
+        {% endif %}
+        {% if prod.tri is defined %}
+        <div class="kpi"><div class="kpi-val">{{ prod.tri }}%</div><div class="kpi-label">TRI</div></div>
+        {% endif %}
+        {% if prod.tof is defined %}
+        <div class="kpi"><div class="kpi-val">{{ prod.tof }}%</div><div class="kpi-label">TOF</div></div>
+        {% elif prod.frais_souscription is defined %}
+        <div class="kpi"><div class="kpi-val {% if prod.frais_souscription == 0 %}green{% endif %}">{{ prod.frais_souscription | string | replace('.0','') }}%</div><div class="kpi-label">Frais entrée</div></div>
+        {% endif %}
+      </div>
+
+      <div class="card-badges">
+        {% if prod.frais_souscription is defined and prod.frais_souscription == 0 %}<span class="badge">0% frais</span>{% endif %}
+        {% if prod.endettement is defined and prod.endettement == 0 %}<span class="badge">Zéro endettement</span>{% endif %}
+        {% if prod.investissement_min is defined %}<span class="badge" style="background:rgba(27,79,216,.08);color:var(--accent)">Dès {{ prod.investissement_min }}</span>{% endif %}
+      </div>
+
+      <div class="card-cta">→ Lire notre avis</div>
+    </a>
+    {% endfor %}
+  </div>
+
+  <div class="disclaimer">
+    ⚠️ Ces avis sont fournis à titre informatif uniquement. Investir en SCPI comporte des risques dont la perte en capital. Les performances passées ne préjugent pas des performances futures. Consultez un CGP agréé AMF avant tout investissement.
+  </div>
+
+</div>
+
+<footer>
+  <div style="font-family:'{{ theme.font_title }}',serif;font-size:18px;color:#fff;margin-bottom:10px">{{ site.logo_text }}{{ site.logo_accent }}</div>
+  <div>Comparatif SCPI {{ site.year }}, Données actualisées</div>
+  <div class="footer-links">
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="politique-confidentialite.html">Confidentialité</a>
+  </div>
+</footer>
+
+<script>
+function filterCards(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.card').forEach(function(c) {
+    var show = true;
+    if (type === 'zero-frais') show = parseFloat(c.dataset.frais) === 0;
+    else if (type === 'haut-rendement') show = parseFloat(c.dataset.td) >= 7;
+    else if (type === 'europe') show = c.dataset.pays && c.dataset.pays !== 'france';
+    c.style.display = show ? '' : 'none';
+  });
+}
+function searchCards(val) {
+  var v = val.toLowerCase();
+  document.querySelectorAll('.card').forEach(function(c) {
+    c.style.display = (c.dataset.nom.includes(v) || c.dataset.type.includes(v)) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
