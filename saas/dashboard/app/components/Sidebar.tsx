@@ -6,7 +6,7 @@ const NAV = [
   { href: '/sites', icon: '🌐', label: 'Sites' },
   { href: '/sites/new', icon: '➕', label: 'Nouveau site' },
   { href: '/deploy', icon: '🚀', label: 'Déploiements' },
-  { href: '/templates', icon: '📄', label: 'Templates' },
+
 ]
 
 export default function Sidebar() {
