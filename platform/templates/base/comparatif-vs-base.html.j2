@@ -126,6 +126,7 @@ footer a{color:rgba(255,255,255,.4)}
   <div class="nav-links">
     <a href="/#comparateur">Comparateur</a>
     <a href="comparatifs-scpi.html">Comparatifs SCPI</a>
+    <a href="avis-scpi.html">Avis SCPI</a>
   </div>
 </nav>
 
@@ -245,6 +246,11 @@ footer a{color:rgba(255,255,255,.4)}
         {% endif %}
       </div>
       <div class="model-text">{{ prod.description | safe }}</div>
+      <div style="margin-top:12px">
+        <a href="avis-{{ prod.slug }}.html" style="font-size:14px;color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px">
+          → Notre avis sur {{ prod.nom }}
+        </a>
+      </div>
     </div>
     <div class="pros-cons">
       <div class="pros"><h3>✓ Points forts</h3><ul>{% for p in prod.points_forts %}<li>{{ p }}</li>{% endfor %}</ul></div>
