@@ -345,21 +345,13 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
     <h2 class="section-title">Pourquoi comparer les SCPI ?</h2>
     <p class="section-sub">Un écart de 1% sur les frais représente des milliers d'euros sur 10 ans</p>
     <div class="why-grid">
+{% for card in site_editorial.why_cards %}
       <div class="why-card">
-        <div class="why-icon">📊</div>
-        <div class="why-title">Données officielles</div>
-        <div class="why-text">Toutes nos données proviennent des rapports annuels et bulletins trimestriels des sociétés de gestion. Actualisées régulièrement.</div>
+        <div class="why-icon">{{ card.icon }}</div>
+        <div class="why-title">{{ card.title }}</div>
+        <div class="why-text">{{ card.text }}</div>
       </div>
-      <div class="why-card">
-        <div class="why-icon">🔍</div>
-        <div class="why-title">Analyse indépendante</div>
-        <div class="why-text">Nos comparatifs sont réalisés de façon indépendante. Nous analysons les frais réels, le TRI sur 5 et 10 ans, et la fiscalité selon votre TMI.</div>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">💡</div>
-        <div class="why-title">Conseil fiscal inclus</div>
-        <div class="why-text">Chaque comparatif intègre un point sur la fiscalité : prélèvements sociaux 17,2%, TMI, avantage des SCPI européennes. L'essentiel pour calculer votre rendement net-net.</div>
-      </div>
+      {% endfor %}
     </div>
   </section>
 </main>
