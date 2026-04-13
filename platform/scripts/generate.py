@@ -254,15 +254,22 @@ def products_by_slug(products: list, slug: str) -> dict:
     return next((p for p in products if p["slug"] == slug), None)
 
 
-def generate_sitemap(site: dict, pairs: list, output_dir: Path) -> None:
+def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path) -> None:
     domain = site["domain"]
     base   = site["base_path"].rstrip("/")
     today  = date.today().isoformat()
     lines  = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-        f'  <url><loc>{domain}{base}/</loc><priority>1.0</priority></url>',
+        f'  <url><loc>{domain}{base}/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>',
+        f'  <url><loc>{domain}{base}/comparatifs-scpi</loc><lastmod>{today}</lastmod><priority>0.9</priority><changefreq>weekly</changefreq></url>',
+        f'  <url><loc>{domain}{base}/avis-scpi</loc><lastmod>{today}</lastmod><priority>0.9</priority><changefreq>weekly</changefreq></url>',
     ]
+    for prod in products:
+        lines.append(
+            f'  <url><loc>{domain}{base}/avis-{prod["slug"]}</loc>'
+            f'<lastmod>{today}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>'
+        )
     for slug_a, slug_b in pairs:
         lines.append(
             f'  <url><loc>{domain}{base}/{slug_a}-vs-{slug_b}</loc>'
@@ -270,7 +277,7 @@ def generate_sitemap(site: dict, pairs: list, output_dir: Path) -> None:
         )
     lines.append("</urlset>")
     (output_dir / "sitemap.xml").write_text("\n".join(lines), encoding="utf-8")
-    print(f"  ✓ sitemap.xml ({len(pairs)} URLs)")
+    print(f"  ✓ sitemap.xml ({len(pairs)} comparatifs + {len(products)} avis + pages liste)")
 
 
 def copy_shared_assets(output_dir: Path, site_dir: Path) -> None:
@@ -381,7 +388,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         generated += 1
 
     if not dry_run:
-        generate_sitemap(site, all_pairs, output_dir)
+        generate_sitemap(site, all_pairs, products, output_dir)
         copy_shared_assets(output_dir, site_dir)
 
         # ── Copie logos PNG ───────────────────────────────────────────────
