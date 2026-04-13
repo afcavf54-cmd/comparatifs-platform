@@ -1,0 +1,25 @@
+site:
+  name: "Meilleures SCPI"
+  domain: "https://meilleures-scpi.fr"
+  base_path: ""
+  logo_text: "Meilleures"
+  logo_accent: "SCPI"
+  year: 2026
+niche: "comparatif"
+sheet_csv_url: ""
+theme:
+  bg: "#F7F4EF"
+  ink: "#1A1714"
+  accent: "#1B4FD8"
+  accent2: "#E8410A"
+  font_title: "DM Serif Display"
+  font_body: "Inter"
+  google_fonts: "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap"
+seo:
+  category_label: "Comparatifs"
+  eyebrow: "⚖️ Comparatif 2026"
+  title_pattern: "{A} vs {B} {year}"
+  meta_pattern: "Comparatif {A} vs {B} {year}"
+  h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
+  intro_pattern: "Comparatif {A} vs {B} - notre analyse."
+ai_editorial: false
