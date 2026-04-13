@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan du site — {{ site.name }}</title>
+<meta name="description" content="Plan du site {{ site.name }} : toutes les pages, comparatifs SCPI et avis disponibles.">
+<link rel="canonical" href="{{ site.domain }}/plan-du-site">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="{{ theme.google_fonts }}" rel="stylesheet">
+<style>
+:root{--bg:{{ theme.bg }};--surface:#fff;--ink:{{ theme.ink }};--ink2:#4A5568;--ink3:#718096;--accent:{{ theme.accent }};--accent2:{{ theme.accent2 }};--border:#E2E8F0;--r:12px;--r2:20px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'{{ theme.font_body }}',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+main{max-width:1200px;margin:0 auto;padding:56px 5vw 80px}
+h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);font-weight:400;letter-spacing:-.02em;margin-bottom:8px}
+.subtitle{font-size:16px;color:var(--ink3);margin-bottom:48px}
+.sitemap-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.sitemap-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px}
+.sitemap-section h2{font-family:'{{ theme.font_title }}',serif;font-size:20px;font-weight:400;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);color:var(--ink)}
+.sitemap-section ul{list-style:none}
+.sitemap-section li{padding:7px 0;border-bottom:0.5px solid var(--border);font-size:15px}
+.sitemap-section li:last-child{border-bottom:none}
+.sitemap-section a{color:var(--ink2);display:flex;align-items:center;gap:8px;transition:.15s}
+.sitemap-section a:hover{color:var(--accent);text-decoration:none}
+.sitemap-section a::before{content:"→";color:var(--accent);font-size:12px;flex-shrink:0}
+.sitemap-full{grid-column:1/-1}
+.scpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
+.scpi-grid a{font-size:14px}
+@media(max-width:768px){.sitemap-grid{grid-template-columns:1fr}.scpi-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+{% include "base/_nav.html.j2" %}
+
+<main>
+  <h1>Plan du site</h1>
+  <p class="subtitle">{{ site.name }} — toutes les pages disponibles</p>
+
+  <div class="sitemap-grid">
+
+    <div class="sitemap-section">
+      <h2>🏠 Pages principales</h2>
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/comparatifs-scpi.html">Tous les comparatifs SCPI</a></li>
+        <li><a href="/avis-scpi.html">Tous les avis SCPI</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/mentions-legales.html">Mentions légales</a></li>
+        <li><a href="/politique-confidentialite.html">Politique de confidentialité</a></li>
+      </ul>
+    </div>
+
+    <div class="sitemap-section">
+      <h2>📝 Avis SCPI</h2>
+      <ul>
+        {% for prod in products %}
+        <li><a href="/avis-{{ prod.slug }}.html">Avis {{ prod.nom }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="sitemap-section sitemap-full">
+      <h2>⚖️ Comparatifs SCPI ({{ total_pairs }} analyses)</h2>
+      <div class="scpi-grid">
+        {% for prod in products %}
+        {% set slug_a = prod.slug %}
+        {% for other in products %}
+        {% if other.slug != prod.slug %}
+        {% set slugs = [prod.slug, other.slug] | sort %}
+        {% if slugs[0] == prod.slug %}
+        <a href="/{{ slugs[0] }}-vs-{{ slugs[1] }}.html">{{ prod.nom }} vs {{ other.nom }}</a>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</main>
+
+{% include "base/_footer.html.j2" %}
+
+</body>
+</html>
