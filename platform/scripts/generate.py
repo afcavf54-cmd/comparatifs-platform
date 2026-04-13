@@ -422,7 +422,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             print(f"  ✓ index.html ({len(products)} produits, {len(all_pairs)} comparatifs)")
 
         # Légales
-        for tpl_name, out_name in [("mentions-legales.html.j2", "mentions-legales.html"), ("politique-confidentialite.html.j2", "politique-confidentialite.html")]:
+        for tpl_name, out_name in [("mentions-legales.html.j2", "mentions-legales.html"), ("politique-confidentialite.html.j2", "politique-confidentialite.html"), ("contact.html.j2", "contact.html")]:
             if (TEMPLATES_DIR / tpl_name).exists():
                 html = env.get_template(tpl_name).render(site={**site, "seo": config.get("seo", {})}, theme=theme, build_date=date.today().isoformat())
                 (output_dir / out_name).write_text(html, encoding="utf-8")
