@@ -349,6 +349,27 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     # ── Chargement éditorial depuis editorial.json ───────────────────────
     editorials = load_editorial(site_dir)
 
+    # ── Chargement products_editorial.json ──────────────────────────────
+    products_editorial_path = site_dir / "products_editorial.json"
+    if products_editorial_path.exists():
+        with open(products_editorial_path, encoding="utf-8") as _f:
+            products_editorial = json.load(_f)
+        for prod in products:
+            slug = prod["slug"]
+            if slug in products_editorial:
+                for k, v in products_editorial[slug].items():
+                    if v:
+                        prod[k] = v
+        print(f"  ✓ products_editorial.json : {len(products_editorial)} produits")
+
+    # ── Chargement site_editorial.json ──────────────────────────────────
+    site_editorial = {}
+    site_editorial_path = site_dir / "site_editorial.json"
+    if site_editorial_path.exists():
+        with open(site_editorial_path, encoding="utf-8") as _f:
+            site_editorial = json.load(_f)
+        print(f"  ✓ site_editorial.json chargé")
+
     generated = 0
     skipped   = 0
 
@@ -417,14 +438,15 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 site={**site, "seo": config.get("seo", {})}, theme=theme, products=products,
                 total_pairs=len(all_pairs), zero_frais_count=zero_frais,
                 top_pairs=top_pairs, build_date=date.today().isoformat(),
+                site_editorial=site_editorial,
             )
             (output_dir / "index.html").write_text(html, encoding="utf-8")
             print(f"  ✓ index.html ({len(products)} produits, {len(all_pairs)} comparatifs)")
 
         # Légales
-        for tpl_name, out_name in [("mentions-legales.html.j2", "mentions-legales.html"), ("politique-confidentialite.html.j2", "politique-confidentialite.html"), ("contact.html.j2", "contact.html")]:
+        for tpl_name, out_name in [("mentions-legales.html.j2", "mentions-legales.html"), ("politique-confidentialite.html.j2", "politique-confidentialite.html"), ("contact.html.j2", "contact.html"), ("sitemap-html.html.j2", "plan-du-site.html")]:
             if (TEMPLATES_DIR / tpl_name).exists():
-                html = env.get_template(tpl_name).render(site={**site, "seo": config.get("seo", {})}, theme=theme, build_date=date.today().isoformat())
+                html = env.get_template(tpl_name).render(site={**site, "seo": config.get("seo", {})}, theme=theme, build_date=date.today().isoformat(), products=products, total_pairs=len(all_pairs))
                 (output_dir / out_name).write_text(html, encoding="utf-8")
                 print(f"  ✓ {out_name}")
 
