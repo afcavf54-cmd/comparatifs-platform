@@ -204,9 +204,9 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
     </div>
     <div style="flex:1">
       <h1 class="hero-title">Avis {{ prod.nom }} : Faut-il investir en {{ site.year }} ?</h1>
-      <div style="display:inline-flex;align-items:center;gap:6px;background:#EAF3DE;color:#27500A;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;margin:6px 0 10px">
+      <div style="display:inline-flex;align-items:center;gap:6px;background:#EAF3DE;color:#27500A;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;margin:8px 0 12px">
         <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#27500A"></span>
-        Mis à jour le {{ build_date | replace("-", "/") }}
+        Mis à jour le {{ build_date | replace('-', '/') }}
       </div>
       <p class="hero-sub">{{ prod.marque }}{% if prod.type is defined %} · SCPI {{ prod.type }}{% endif %}{% if prod.td is defined %} · TD {{ prod.td }}% en {{ site.year }}{% endif %}</p>
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
