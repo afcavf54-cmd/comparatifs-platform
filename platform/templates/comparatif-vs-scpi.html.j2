@@ -498,8 +498,8 @@ main h3{margin-top:1.8em;margin-bottom:0.5em}
   {% set decote_b = prod_b.prix_achat - prod_b.prix_retrait %}
   {% set pct_a = ((decote_a / prod_a.prix_achat) * 100) | round(1) %}
   {% set pct_b = ((decote_b / prod_b.prix_achat) * 100) | round(1) %}
-  {% set decote_a_r = decote_a | round(2) %}
-  {% set decote_b_r = decote_b | round(2) %}
+  {% set decote_a_r = "%.2f" % decote_a %}
+  {% set decote_b_r = "%.2f" % decote_b %}
   <p style="color:var(--ink2);font-size:18px;line-height:1.75">
     <strong>Décote à la sortie :</strong>
     <strong>{{ prod_a.nom }}</strong> : {{ prod_a.prix_achat | string | replace(".0","") }}€ → {{ prod_a.prix_retrait | string | replace(".0","") }}€
