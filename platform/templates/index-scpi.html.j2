@@ -194,10 +194,9 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
 
 {% include "base/_nav.html.j2" %}<!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow">⭐ Comparatif SCPI {{ site.year }}</div>
   <h1>Trouvez la <em>meilleure SCPI</em><br>pour votre profil</h1>
   <p class="hero-sub">Comparez {{ products|length }} SCPI sur tous les critères qui comptent : taux de distribution, frais, TRI, TOF et délai de jouissance.</p>
-  <div class="hero-stats">
+  <div class="hero-stats" style="margin-top:20px">
     <div class="hero-stat">
       <div class="hero-stat-val">{{ products|length }}</div>
       <div class="hero-stat-label">SCPI analysées</div>
