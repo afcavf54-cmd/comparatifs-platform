@@ -63,10 +63,24 @@ body{font-family:'{{ theme.font_body }}',sans-serif;background:var(--bg);color:v
 a{color:inherit;text-decoration:none}
 
 /* NAV */
-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
-.nav-logo{font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:20px;color:#fff;display:flex;align-items:center;gap:10px}
-.nav-logo span{color:var(--accent2)}
-.nav-links{display:flex;gap:28px}.nav-links a{color:rgba(255,255,255,.6);font-size:13px;font-weight:500;transition:.15s}.nav-links a:hover{color:#fff}
+nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.nav-logo{font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.1)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--accent2);color:#fff;font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
+.nav-cta:hover{opacity:.88}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;font-weight:500;padding:12px 16px;border-radius:10px;transition:.15s}
+.nav-mobile a:hover,.nav-mobile a.active{color:#fff;background:rgba(255,255,255,.08)}
+.nav-mobile .nav-cta{margin-top:8px;justify-content:center;border-radius:12px}
 
 /* HERO */
 .hero{background:var(--ink);padding:72px 5vw 0;text-align:center;position:relative;overflow:hidden}
@@ -162,7 +176,10 @@ footer{background:var(--ink);color:rgba(255,255,255,.45);text-align:center;paddi
 footer .footer-logo{font-family:'{{ theme.font_title }}',serif;font-size:20px;color:#fff;margin-bottom:12px}
 footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:center;gap:24px;margin-top:12px}
 
-@media(max-width:640px){
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .nav-burger{display:flex}
+
   .comp-selects{grid-template-columns:1fr}
   .comp-vs{display:none}
   .comp-preview{grid-template-columns:1fr}
@@ -175,19 +192,7 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo">
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="8" fill="{{ theme.accent }}"/><path d="M7 14h4l3-7 4 14 3-7h4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    {{ site.logo_text }}<span>{{ site.logo_accent }}</span>
-  </div>
-  <div class="nav-links">
-    <a href="/#comparateur">Comparateur</a>
-    <a href="comparatifs-scpi.html">Comparatifs SCPI</a>
-    <a href="avis-scpi.html">Avis SCPI</a>
-  </div>
-</nav>
-
-<!-- HERO -->
+{% include "base/_nav.html.j2" %}<!-- HERO -->
 <div class="hero">
   <div class="hero-eyebrow">⭐ Comparatif SCPI {{ site.year }}</div>
   <h1>Trouvez la <em>meilleure SCPI</em><br>pour votre profil</h1>
