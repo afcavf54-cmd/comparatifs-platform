@@ -1,6 +1,12 @@
 """
 Règles éditoriales centralisées — appliquées à tous les sites.
 Modifier ce fichier suffit pour changer le formatage sur toute la plateforme.
+
+RÈGLES DE STYLE GLOBALES (valables pour tous les sites et la génération IA) :
+- Pas de tiret long (—) ni demi-tiret (–) dans les textes ou titres
+- Utiliser le pipe (|) ou la virgule comme séparateur dans les titres
+- Paragraphes de 3 lignes max
+- Chiffres en gras automatique
 """
 import re
 import json
@@ -27,7 +33,12 @@ BOLD_PATTERNS = [
     r'\b(0\s*%|zéro frais|sans frais d\'entrée|sans frais)\b',
 ]
 
-FIELDS_TO_FORMAT = {"description_a", "description_b", "mix_text", "description"}
+FIELDS_TO_FORMAT = {
+    "description_a", "description_b", "mix_text", "description",
+    "intro_edito", "td_analyse", "verdict_text", "concurrents_text",
+    "expert_performance", "expert_fiscalite", "expert_frais", "expert_decote",
+    "risk_note", "short_desc",
+}
 
 
 def format_text(text: str, product_names: list = None) -> str:
@@ -35,8 +46,8 @@ def format_text(text: str, product_names: list = None) -> str:
     if not text or not isinstance(text, str):
         return text
 
-    # 1. Nettoie tirets longs
-    text = text.replace("—", " ").replace("–", "-")
+    # 1. Nettoie tirets longs (règle globale : pas de — sur le site)
+    text = text.replace("—", " ").replace("–", "-").replace(" | ", ", ")
 
     # 2. Split en blocs existants
     parts = re.split(r'<br\s*/?>\s*<br\s*/?>', text)
@@ -65,7 +76,7 @@ def format_text(text: str, product_names: list = None) -> str:
 
     # 4. Rejoint en paragraphes HTML
     text = "\n\n".join(
-        f'<p style="margin-bottom:1.1em">{p}</p>' if not p.startswith("<p") else p
+        f"<p>{p}</p>" if not p.startswith("<p") else p
         for p in new_parts if p
     )
 
