@@ -125,14 +125,25 @@ footer a{color:rgba(255,255,255,.4)}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .comp-block-header{grid-template-columns:100px 1fr 1fr;gap:8px}
-  td.crit-label{width:130px;padding:10px 12px;font-size:13px;white-space:normal}
-  table.comp td{padding:10px 10px;font-size:15px}
+  .comp-block{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .comp-block-header{grid-template-columns:90px 1fr 1fr;gap:6px;padding:12px}
+  .comp-block-header .col-title{font-size:14px}
+  .comp-block-header .col-brand{font-size:10px}
+  td.crit-label{width:90px;min-width:90px;padding:10px 8px;font-size:10px;white-space:normal;word-break:break-word}
+  table.comp{table-layout:fixed;width:100%}
+  table.comp td{padding:10px 8px;font-size:13px;word-break:break-word;overflow-wrap:break-word}
+  colgroup col:first-child{width:90px}
+  colgroup col{width:calc((100% - 90px) / 2)}
   .pros-cons{grid-template-columns:1fr}
   .verdict-grid{grid-template-columns:1fr}
   .model-body{flex-direction:column}
   .model-photo-wrap{width:100%}
   .aff-notice{padding:20px 16px}
+  /* Fix tous les tableaux inline (frais, performance, accessibilité) */
+  table{width:100%!important;table-layout:fixed}
+  table td,table th{word-break:break-word;overflow-wrap:break-word;hyphens:auto;font-size:13px!important;padding:9px 8px!important}
+  table td:first-child,table th:first-child{width:40%!important;font-size:11px!important}
+  table td:not(:first-child),table th:not(:first-child){width:30%!important;text-align:center}
 }
 </style>
 </head>
@@ -172,8 +183,9 @@ footer a{color:rgba(255,255,255,.4)}
     </div>
     <table class="comp">
       <colgroup>
-        <col style="width:220px">
-        <col style="width:calc(50% - 110px)">
+        <col style="width:200px;min-width:90px">
+        <col>
+        <col>
         <col style="width:calc(50% - 110px)">
       </colgroup>
       <tbody>
