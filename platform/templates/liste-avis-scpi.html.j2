@@ -166,14 +166,7 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
 
 </div>
 
-<footer>
-  <div style="font-family:'{{ theme.font_title }}',serif;font-size:18px;color:#fff;margin-bottom:10px">{{ site.logo_text }}{{ site.logo_accent }}</div>
-  <div>Comparatif SCPI {{ site.year }}, Données actualisées</div>
-  <div class="footer-links">
-    <a href="mentions-legales.html">Mentions légales</a>
-    <a href="politique-confidentialite.html">Confidentialité</a>
-  </div>
-</footer>
+{% include "base/_footer.html.j2" %}
 
 <script>
 function filterCards(type, btn) {
