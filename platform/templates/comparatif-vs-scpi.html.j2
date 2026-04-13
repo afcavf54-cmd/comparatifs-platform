@@ -89,8 +89,8 @@
     "name": "{{ site.name }}",
     "url": "{{ site.domain }}"
   },
-  "datePublished": "{{ build_date | fr_date }}",
-  "dateModified": "{{ build_date | fr_date }}",
+  "datePublished": "{{ build_date }}",
+  "dateModified": "{{ build_date }}",
   "itemReviewed": {
     "@type": "Product",
     "name": "Comparatif {{ prod_a.nom }} vs {{ prod_b.nom }}"
@@ -248,7 +248,7 @@ main h3{margin-top:1.8em;margin-bottom:0.5em}
     {% endif %}
   </p>
   <div class="expert-note">
-    💡 <strong>L'avis de l'expert :</strong> Un TD élevé peut masquer une érosion du prix de part. Analysez toujours le TRI sur la durée disponible. Une SCPI à 5% de TD stable vaut souvent mieux qu'une SCPI à 7% avec un prix de part en baisse.
+    💡 <strong>L'avis de l'expert :</strong> {{ editorial.expert_performance }}
   </div>
   {% endif %}
 
@@ -279,7 +279,7 @@ main h3{margin-top:1.8em;margin-bottom:0.5em}
     {% endif %}
   </p>
   <div class="expert-note">
-    💡 Si vous avez une TMI à 30%, 41% ou plus, la part d'actifs hors de France est cruciale. Les loyers européens (Irlande, Espagne, UK...) échappent aux 17,2% de prélèvements sociaux français. C'est le "rendement net-net" qui compte, pas seulement le TD brut affiché.
+    💡 {{ editorial.expert_fiscalite }}
   </div>
   {% endif %}
 
@@ -313,7 +313,7 @@ main h3{margin-top:1.8em;margin-bottom:0.5em}
     </table>
   </div>
   <div class="expert-note">
-    💡 La différence d'accessibilité est souvent la plus visible pour l'investisseur débutant.
+    💡 {{ editorial.expert_frais }}
     {% if prod_a.investissement_min is defined and prod_b.investissement_min is defined %}
     {% if '1 part' in prod_a.investissement_min or '204' in prod_a.investissement_min %}
     <strong>{{ prod_a.nom }}</strong> est imbattable pour les versements programmés, vous pouvez investir part par part chaque mois. <strong>{{ prod_b.nom }}</strong> impose un ticket plus conséquent, adapté aux placements de capital établis.
@@ -338,8 +338,7 @@ main h3{margin-top:1.8em;margin-bottom:0.5em}
     {% endif %}
   </p>
   <div class="expert-note">
-    💡 Comparez le coût total sur 10 ans, pas seulement les frais d'entrée.
-    Une SCPI avec 1% de moins en frais de gestion, c'est environ 1 000€ économisés sur 10 ans pour 100 000€ investis.
+    💡 Comparez le coût total sur 10 ans : frais de souscription + frais de gestion annuels. Une SCPI avec 1% de moins en frais de gestion, c'est environ 1 000€ économisés pour 100 000€ investis.
   </div>
   {% endif %}
 
@@ -516,7 +515,7 @@ main h3{margin-top:1.8em;margin-bottom:0.5em}
     {% endif %}
   </p>
   <div class="expert-note">
-    💡 <strong>L'avis de l'expert :</strong> La décote entre prix d'achat et prix de retrait représente le coût réel de sortie pour les SCPI à capital variable. C'est l'équivalent des frais de souscription pour les SCPI à capital fixe. Sur 100 parts à {{ prod_a.prix_achat }}€, une décote de {{ pct_a }}% représente {{ (decote_a * 100)|int }}€ perdus si vous revendez immédiatement.
+    💡 <strong>L'avis de l'expert :</strong> {{ editorial.expert_decote }} C'est l'équivalent des frais de souscription pour les SCPI à capital fixe. Sur 100 parts à {{ prod_a.prix_achat }}€, une décote de {{ pct_a }}% représente {{ (decote_a * 100)|int }}€ perdus si vous revendez immédiatement.
   </div>
   {% endif %}
 
@@ -532,9 +531,7 @@ main h3{margin-top:1.8em;margin-bottom:0.5em}
     Frais de souscription : <strong>{{ prod_a.frais_souscription }}%</strong> pour {{ prod_a.nom }} et <strong>{{ prod_b.frais_souscription }}%</strong> pour {{ prod_b.nom }}. Horizon recommandé : 8 ans minimum pour les amortir.
     {% endif %}
   </p>
-  <div class="expert-note">
-    💡 <strong>L'avis de l'expert :</strong> Comparez le coût total sur 10 ans, frais de souscription + frais de gestion annuels + décote prix de retrait. Une SCPI sans frais d'entrée n'est pas forcément moins chère sur le long terme si sa décote est importante.
-  </div>
+
   {% endif %}
 
   {# ── PILIER 4 : Mixer les deux ── #}
@@ -581,6 +578,14 @@ main h3{margin-top:1.8em;margin-bottom:0.5em}
 {% endblock %}
 
 {% block faq_items %}
+{% if editorial.faq_vs is defined and editorial.faq_vs %}
+  {% for item in editorial.faq_vs %}
+  <div class="faq-item">
+    <div class="faq-q">{{ item.q }}</div>
+    <div class="faq-a">{{ item.a }}</div>
+  </div>
+  {% endfor %}
+{% else %}
 <div class="faq-item">
   <div class="faq-q">{{ prod_a.nom }} ou {{ prod_b.nom }} : laquelle choisir en {{ site.year }} ?</div>
   <div class="faq-a"><strong>{{ prod_a.nom }}</strong> est recommandée si {{ prod_a.verdict_si[0]|lower }}. <strong>{{ prod_b.nom }}</strong> convient mieux si {{ prod_b.verdict_si[0]|lower }}. Les deux peuvent être complémentaires, voir la section "mixer les deux" ci-dessus.</div>
@@ -618,6 +623,7 @@ main h3{margin-top:1.8em;margin-bottom:0.5em}
   <div class="faq-q">Le démembrement est-il possible sur ces SCPI ?</div>
   <div class="faq-a">Le démembrement (nue-propriété / usufruit) dépend des conditions proposées par <strong>{{ prod_a.marque }}</strong> et <strong>{{ prod_b.marque }}</strong>. Consultez directement les sociétés de gestion ou votre conseiller en gestion de patrimoine.</div>
 </div>
+{% endif %}
 {% endblock %}
 
 {% block aff_notice %}
