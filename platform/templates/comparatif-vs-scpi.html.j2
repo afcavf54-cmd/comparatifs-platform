@@ -453,10 +453,10 @@ main h3{margin-top:1.8em;margin-bottom:0.5em}
         <tr style="border-top:1px solid var(--border)">
           <td style="padding:12px 18px;color:var(--ink2)">Prix de retrait</td>
           <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_a.prix_retrait < prod_a.prix_achat %}#C0392B{% else %}var(--ink){% endif %}">
-            {{ prod_a.prix_retrait | string | replace('.0','') }}€{% if prod_a.prix_retrait < prod_a.prix_achat %} <span style="font-size:11px;font-weight:400">(−{{ (prod_a.prix_achat - prod_a.prix_retrait) | string | replace('.0','') }}€)</span>{% endif %}
+            {{ prod_a.prix_retrait | string | replace('.0','') }}€{% if prod_a.prix_retrait < prod_a.prix_achat %} <span style="font-size:11px;font-weight:400">(−{{ "%.2f" % (prod_a.prix_achat - prod_a.prix_retrait) }}€)</span>{% endif %}
           </td>
           <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_b.prix_retrait < prod_b.prix_achat %}#C0392B{% else %}var(--ink){% endif %}">
-            {{ prod_b.prix_retrait | string | replace('.0','') }}€{% if prod_b.prix_retrait < prod_b.prix_achat %} <span style="font-size:11px;font-weight:400">(−{{ (prod_b.prix_achat - prod_b.prix_retrait) | string | replace('.0','') }}€)</span>{% endif %}
+            {{ prod_b.prix_retrait | string | replace('.0','') }}€{% if prod_b.prix_retrait < prod_b.prix_achat %} <span style="font-size:11px;font-weight:400">(−{{ "%.2f" % (prod_b.prix_achat - prod_b.prix_retrait) }}€)</span>{% endif %}
           </td>
         </tr>
         {% endif %}
