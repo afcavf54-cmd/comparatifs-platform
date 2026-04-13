@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mentions légales — {{ site.name }}</title>
 <meta name="description" content="Mentions légales du site {{ site.name }} — éditeur, hébergeur, propriété intellectuelle, avertissement financier.">
-<link rel="canonical" href="{{ site.domain }}{{ site.base_path }}/mentions-legales.html">
+<link rel="canonical" href="{{ site.domain }}/mentions-legales">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="{{ theme.google_fonts }}" rel="stylesheet">
 <style>
@@ -15,7 +15,7 @@ body{font-family:'{{ theme.font_body }}',sans-serif;background:var(--bg);color:v
 a{color:var(--accent);text-decoration:none}
 nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;height:60px}
 .nav-logo{font-family:'{{ theme.font_title }}',serif;font-size:18px;color:#fff}.nav-logo span{color:var(--accent)}
-main{max-width:800px;margin:0 auto;padding:48px 5vw 80px}
+main{max-width:1200px;margin:0 auto;padding:48px 5vw 80px}
 h1{font-family:'{{ theme.font_title }}',serif;font-size:36px;font-weight:400;margin-bottom:8px}
 .last-update{font-size:13px;color:var(--ink3);margin-bottom:40px}
 h2{font-family:'{{ theme.font_title }}',serif;font-size:22px;font-weight:400;margin:36px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
@@ -30,7 +30,7 @@ footer a{color:rgba(255,255,255,.4)}
 <body>
 {% include "base/_nav.html.j2" %}<main>
   <h1>Mentions légales</h1>
-  <p class="last-update">Dernière mise à jour : {{ build_date }}</p>
+  <p class="last-update">Dernière mise à jour : {{ build_date | fr_date }}</p>
 
   <h2>1. Éditeur du site</h2>
   <p>Le site <strong>{{ site.domain | replace('https://www.', '') }}</strong> est édité par :</p>
@@ -79,7 +79,7 @@ footer a{color:rgba(255,255,255,.4)}
   <p>Certains liens sont des liens d'affiliation. En cliquant sur ces liens, {{ site.name }} peut percevoir une commission. Cela n'influence pas nos analyses ni nos recommandations éditoriales.</p>
 
   <h2>8. Données personnelles</h2>
-  <p>Ce site ne collecte pas directement de données personnelles via des formulaires. Pour toute question relative à la protection de vos données, consultez notre <a href="politique-confidentialite.html">politique de confidentialité</a>.</p>
+  <p>Ce site ne collecte pas directement de données personnelles via des formulaires. Pour toute question relative à la protection de vos données, consultez notre <a href="politique-confidentialite">politique de confidentialité</a>.</p>
 
   <h2>9. Cookies</h2>
   <p>Ce site utilise des cookies de mesure d'audience anonymisés (Clicky Analytics) et des cookies techniques nécessaires au fonctionnement du site. Aucun cookie publicitaire ou de ciblage n'est utilisé.</p>
@@ -92,12 +92,6 @@ footer a{color:rgba(255,255,255,.4)}
   Email : <a href="mailto:contact@{{ site.domain | replace('https://www.', '') }}">contact@{{ site.domain | replace('https://www.', '') }}</a></p>
 </main>
 
-<footer>
-  <div>© {{ site.year }} {{ site.domain | replace('https://www.', '') }}</div>
-  <div style="margin-top:8px">
-    <a href="index.html">Accueil</a> ·
-    <a href="politique-confidentialite.html">Confidentialité</a>
-  </div>
-</footer>
+{% include "base/_footer.html.j2" %}
 </body>
 </html>
