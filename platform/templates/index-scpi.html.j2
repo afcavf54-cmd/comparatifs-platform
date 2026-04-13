@@ -449,9 +449,7 @@ function preselectA(slug) {
 }
 
 function goFiche(slug) {
-  document.getElementById('scpi-a').value = slug;
-  updateComparator();
-  document.getElementById('comparateur').scrollIntoView({behavior:'smooth'});
+  window.location.href = 'avis-' + slug + '.html';
 }
 
 function filterSCPI(type, btn) {
