@@ -280,13 +280,13 @@ def generate_pairs(products: list, site_dir: Path, year: int) -> None:
                 editorial[key] = data
                 save_json(editorial_path, editorial)
                 print("✓")
-            time.sleep(1)  # Pause entre appels pour éviter 529
             else:
                 print("⚠ JSON vide")
                 failures.append(key)
         except Exception as e:
             print(f"❌ {e}")
             failures.append(key)
+        time.sleep(1)  # Pause entre appels pour éviter 529
 
     if failures:
         print(f"  ❌ {len(failures)} paires échouées : {failures}")
