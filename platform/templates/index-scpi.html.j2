@@ -134,23 +134,25 @@ h2.section-title{font-family:'{{ theme.font_title }}',serif;font-size:36px;font-
 .scpi-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px;transition:.2s;cursor:pointer}
 .scpi-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .scpi-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
-.scpi-name{font-family:'{{ theme.font_title }}',serif;font-size:20px;font-weight:400;margin-bottom:2px}
-.scpi-manager{font-size:12px;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em}
-.scpi-tag{display:inline-block;padding:3px 9px;border-radius:6px;font-size:10px;font-weight:600}
+.scpi-card-top-left{display:flex;align-items:center;gap:12px}
+.scpi-card-logo{width:44px;height:44px;border-radius:8px;border:1px solid var(--border);background:#fff;padding:4px;object-fit:contain;flex-shrink:0}
+.scpi-name{font-family:'{{ theme.font_title }}',serif;font-size:24px;font-weight:400;margin-bottom:2px}
+.scpi-manager{font-size:14px;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em}
+.scpi-tag{display:inline-block;padding:3px 9px;border-radius:6px;font-size:11px;font-weight:600}
 .tag-rendement{background:#EAF3DE;color:#27500A}
 .tag-diversifiee{background:#E6F1FB;color:#0C447C}
 .tag-specialisee{background:#FAEEDA;color:#633806}
 .tag-europeenne{background:#F5E6FB;color:#5B2185}
 .scpi-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
 .scpi-metric{background:var(--bg);border-radius:8px;padding:10px 12px;text-align:center}
-.scpi-metric-val{font-size:20px;font-weight:700;color:var(--ink);line-height:1}
+.scpi-metric-val{font-size:24px;font-weight:700;color:var(--ink);line-height:1}
 .scpi-metric-val.accent{color:var(--accent)}
-.scpi-metric-label{font-size:10px;color:var(--ink3);margin-top:3px;text-transform:uppercase;letter-spacing:.04em}
+.scpi-metric-label{font-size:12px;color:var(--ink3);margin-top:3px;text-transform:uppercase;letter-spacing:.04em}
 .scpi-badges{display:flex;gap:6px;flex-wrap:wrap}
-.badge-zero{background:#EAF3DE;color:#27500A;font-size:10px;font-weight:600;padding:3px 8px;border-radius:5px}
-.badge-info{background:var(--surface2);color:var(--accent);font-size:10px;font-weight:500;padding:3px 8px;border-radius:5px}
+.badge-zero{background:#EAF3DE;color:#27500A;font-size:12px;font-weight:600;padding:3px 8px;border-radius:5px}
+.badge-info{background:var(--surface2);color:var(--accent);font-size:12px;font-weight:500;padding:3px 8px;border-radius:5px}
 .scpi-card-links{display:flex;gap:8px;margin-top:14px;padding-top:14px;border-top:0.5px solid var(--border)}
-.scpi-link{flex:1;padding:8px;text-align:center;border-radius:8px;font-size:12px;font-weight:600;transition:.15s}
+.scpi-link{flex:1;padding:10px;text-align:center;border-radius:8px;font-size:15px;font-weight:600;transition:.15s}
 .scpi-link-primary{background:var(--accent);color:#fff}.scpi-link-primary:hover{background:var(--accent2)}
 .scpi-link-secondary{background:var(--surface2);color:var(--accent)}.scpi-link-secondary:hover{background:var(--border)}
 
@@ -277,9 +279,12 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
       {% for prod in products %}
       <div class="scpi-card" data-type="{{ prod.type }}" data-frais="{{ prod.frais_souscription }}" onclick="goFiche('{{ prod.slug }}')">
         <div class="scpi-card-top">
-          <div>
-            <div class="scpi-name">{{ prod.nom }}</div>
-            <div class="scpi-manager">{{ prod.marque }}</div>
+          <div class="scpi-card-top-left">
+            <img src="{{ prod.slug }}.png" alt="Logo {{ prod.nom }}" class="scpi-card-logo" onerror="this.style.display='none'">
+            <div>
+              <div class="scpi-name">{{ prod.nom }}</div>
+              <div class="scpi-manager">{{ prod.marque }}</div>
+            </div>
           </div>
           <span class="scpi-tag tag-{{ prod.type }}">{{ prod.type }}</span>
         </div>
@@ -314,7 +319,7 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
           {% endif %}
         </div>
         <div class="scpi-card-links" onclick="event.stopPropagation()">
-          <a href="#comparateur" onclick="preselectA('{{ prod.slug }}')" class="scpi-link scpi-link-primary" style="text-align:center">⚖️ Comparer</a>
+          <a href="avis-{{ prod.slug }}.html" class="scpi-link scpi-link-primary">📖 Avis {{ prod.nom }}</a>
         </div>
       </div>
       {% endfor %}
