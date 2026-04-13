@@ -19,7 +19,7 @@
   "headline": "{{ prod_a.nom }} vs {{ prod_b.nom }} : comparatif {{ site.year }}",
   "description": "{{ seo.meta }}",
   "url": "{{ site.domain }}/{{ slug_a }}-vs-{{ slug_b }}",
-  "dateModified": "{{ build_date }}",
+  "dateModified": "{{ build_date | fr_date }}",
   "publisher": {"@type": "Organization", "name": "{{ site.name }}"}
 }
 </script>
@@ -166,7 +166,7 @@ footer a{color:rgba(255,255,255,.4)}
     <div style="display:flex;justify-content:center;margin:-10px 0 20px">
       <div style="display:inline-flex;align-items:center;gap:6px;background:#EAF3DE;color:#27500A;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;border:none">
         <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#27500A"></span>
-        Mis à jour le {{ build_date | replace('-', '/') }}
+        Mis à jour le {{ build_date | fr_date }}
       </div>
     </div>
     <p class="intro">{{ seo.intro | safe }}</p>
@@ -404,13 +404,7 @@ footer a{color:rgba(255,255,255,.4)}
 
 <p class="aff-notice" style="margin-top:70px">{% block aff_notice %}Ce site peut percevoir une commission sur les achats effectués via les liens présents. Nos recommandations restent indépendantes.{% endblock %}</p>
 
-<footer>
-  <div style="font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:16px;color:#fff;margin-bottom:8px">
-    {{ site.logo_text }}{{ site.logo_accent }}
-  </div>
-  © {{ site.year }} {{ site.domain | replace('https://www.', '') }}
-  <a href="#">Mentions légales</a>
-</footer>
+{% include "base/_footer.html.j2" %}
 
 {% if site.analytics_clicky %}
 <script async data-id="{{ site.analytics_clicky }}" src="//static.getclicky.com/js"></script>
