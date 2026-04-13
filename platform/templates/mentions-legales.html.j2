@@ -28,10 +28,7 @@ footer a{color:rgba(255,255,255,.4)}
 </style>
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></a>
-</nav>
-<main>
+{% include "base/_nav.html.j2" %}<main>
   <h1>Mentions légales</h1>
   <p class="last-update">Dernière mise à jour : {{ build_date }}</p>
 
