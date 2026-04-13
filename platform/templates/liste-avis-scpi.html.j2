@@ -155,7 +155,7 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
         {% if prod.investissement_min is defined %}<span class="badge" style="background:rgba(27,79,216,.08);color:var(--accent)">Dès {{ prod.investissement_min }}</span>{% endif %}
       </div>
 
-      <div class="card-cta">→ Lire notre avis</div>
+      <div class="card-cta">→ Avis {{ prod.nom }}</div>
     </a>
     {% endfor %}
   </div>
