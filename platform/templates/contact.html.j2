@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — {{ site.name }}</title>
+<meta name="description" content="Contactez {{ site.name }} pour toute question sur nos comparatifs SCPI, signalement d'erreur ou demande de partenariat.">
+<link rel="canonical" href="{{ site.domain }}/contact">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="{{ theme.google_fonts }}" rel="stylesheet">
+<style>
+:root{--bg:{{ theme.bg }};--surface:#fff;--ink:{{ theme.ink }};--ink2:#4A5568;--ink3:#718096;--accent:{{ theme.accent }};--accent2:{{ theme.accent2 }};--border:#E2E8F0;--green:#1A7A4A;--r:12px;--r2:20px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'{{ theme.font_body }}',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
+a{color:var(--accent);text-decoration:none}
+main{max-width:1200px;margin:0 auto;padding:56px 5vw 80px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
+h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);font-weight:400;letter-spacing:-.02em;margin-bottom:12px}
+.page-intro{font-size:18px;color:var(--ink2);line-height:1.75;max-width:600px}
+.contact-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:32px}
+.contact-card h2{font-family:'{{ theme.font_title }}',serif;font-size:22px;font-weight:400;margin-bottom:8px}
+.contact-card p{font-size:15px;color:var(--ink2);margin-bottom:20px;line-height:1.7}
+.contact-card a.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:12px 24px;border-radius:var(--r);font-size:15px;font-weight:600;transition:.15s}
+.contact-card a.btn:hover{background:var(--accent2)}
+.contact-card a.btn-outline{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+.contact-card a.btn-outline:hover{background:var(--accent);color:#fff}
+.info-block{margin-top:12px;font-size:14px;color:var(--ink3);line-height:1.8}
+.info-block strong{color:var(--ink2)}
+.disclaimer{background:#FFF8E6;border:1px solid #FAC775;border-radius:var(--r2);padding:20px 24px;margin-top:48px;font-size:13px;color:#633806;line-height:1.6}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+{% include "base/_nav.html.j2" %}
+
+<main>
+  <h1>Contact</h1>
+  <p class="page-intro">Une question sur un comparatif, une donnée à corriger ou une demande de partenariat ? Nous vous répondons sous 48h.</p>
+
+  <div class="contact-grid">
+
+    <div class="contact-card">
+      <h2>✉️ Nous écrire</h2>
+      <p>Pour toute question, signalement d'erreur dans les données ou demande d'information sur nos analyses.</p>
+      <a href="mailto:contact@{{ site.domain | replace('https://www.', '') | replace('https://', '') }}" class="btn">
+        Envoyer un email
+      </a>
+      <div class="info-block">
+        <strong>Email :</strong> contact@{{ site.domain | replace('https://www.', '') | replace('https://', '') }}<br>
+        <strong>Délai de réponse :</strong> 48h ouvrées
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <h2>🤝 Partenariat & affiliation</h2>
+      <p>Vous êtes une société de gestion ou une plateforme d'investissement et souhaitez être référencé ou corriger vos données ?</p>
+      <a href="mailto:contact@{{ site.domain | replace('https://www.', '') | replace('https://', '') }}?subject=Partenariat" class="btn btn-outline">
+        Demande de partenariat
+      </a>
+      <div class="info-block">
+        <strong>Note :</strong> Nos analyses restent indépendantes. Les partenariats n'influencent pas nos notations.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="disclaimer">
+    ⚠️ <strong>Rappel :</strong> {{ site.name }} est un site d'information et de comparaison. Nous ne fournissons pas de conseil en investissement personnalisé. Pour toute décision d'investissement en SCPI, consultez un conseiller en gestion de patrimoine (CGP) agréé AMF.
+  </div>
+</main>
+
+{% include "base/_footer.html.j2" %}
+
+</body>
+</html>
