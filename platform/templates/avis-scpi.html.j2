@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Avis {{ prod.nom }} {{ site.year }} : Faut-il investir ? Analyse et Rendements | {{ site.name }}</title>
-<meta name="description" content="Notre avis complet sur {{ prod.nom }} {{ site.year }} : rendements, frais, points forts et risques. Analyse indépendante mise à jour {{ build_date[:7] | replace('-', '/') }}.">
+<meta name="description" content="Notre avis complet sur {{ prod.nom }} {{ site.year }} : rendements, frais, points forts et risques. Analyse indépendante mise à jour {{ build_date | fr_date }}.">
 <link rel="canonical" href="{{ site.domain }}/avis-{{ prod.slug }}">
 <meta property="og:title" content="Avis {{ prod.nom }} {{ site.year }} | {{ site.name }}">
 <meta property="og:type" content="article">
@@ -221,7 +221,7 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
 
     <div style="display:inline-flex;align-items:center;gap:6px;background:#EAF3DE;color:#27500A;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;margin:0 0 12px">
       <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#27500A"></span>
-      Mis à jour le {{ build_date | replace('-', '/') }}
+      Mis à jour le {{ build_date | fr_date }}
     </div>
 
     <p class="hero-sub">{{ prod.marque }}{% if prod.type is defined %} · SCPI {{ prod.type }}{% endif %}{% if prod.td is defined %} · TD {{ prod.td }}% en {{ site.year }}{% endif %}</p>
@@ -314,6 +314,9 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
     {% if prod.td is defined %}En {{ site.year }}, <strong>{{ prod.nom }}</strong> affiche un taux de distribution de <strong>{{ prod.td }}%</strong>.{% if prod.tri is defined %} Sur la durée, son TRI {{ prod.tri_horizon | default('objectif') }} est de <strong>{{ prod.tri }}%</strong>, ce qui intègre à la fois les revenus distribués et l'évolution de la valeur des parts.{% endif %}{% endif %}
   </p>
 
+  {% if prod.td_analyse is defined and prod.td_analyse %}
+  <div class="expert-note">💡 {{ prod.td_analyse }}</div>
+  {% endif %}
   <h3>Évolution de la valeur de la part</h3>
   <p style="color:var(--ink2);font-size:16px;line-height:1.75;margin-bottom:24px">
     {% if prod.prix_achat is defined %}Le prix de souscription actuel de <strong>{{ prod.nom }}</strong> est de <strong>{{ prod.prix_achat | string | replace('.0','') }}€</strong> par part.{% if prod.prix_retrait is defined %} Le prix de retrait est de <strong>{{ prod.prix_retrait | string | replace('.0','') }}€</strong>{% if prod.prix_retrait < prod.prix_achat %}, soit une décote de {{ (prod.prix_achat - prod.prix_retrait) | round(2) }}€ par rapport au prix de souscription{% endif %}.{% endif %}{% endif %}
@@ -359,6 +362,9 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
 
   <!-- H2 : Verdict -->
   <h2>Verdict : Notre avis sur {{ prod.nom }} pour votre portefeuille</h2>
+  {% if prod.verdict_text is defined and prod.verdict_text %}
+  <p style="font-size:17px;color:var(--ink2);line-height:1.8;margin-bottom:20px">{{ prod.verdict_text }}</p>
+  {% endif %}
 
   <!-- Bloc expert -->
   <div class="expert-block">
@@ -373,7 +379,7 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
         {% endif %}
       </p>
       <div class="expert-name">Équipe éditoriale {{ site.name }}</div>
-      <div class="expert-title">Analyse basée sur les données officielles · Actualisé le {{ build_date | replace('-', '/') }}</div>
+      <div class="expert-title">Analyse basée sur les données officielles · Actualisé le {{ build_date | fr_date }}</div>
     </div>
   </div>
 
@@ -402,7 +408,13 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
   <!-- H2 : FAQ -->
   <h2>FAQ : Tout savoir sur {{ prod.nom }}</h2>
   <div style="margin-bottom:32px">
+  {% for item in prod.faq_avis %}
     <div class="faq-item">
+      <div class="faq-q">{{ item.q }}<span class="faq-icon">+</span></div>
+      <div class="faq-a">{{ item.a }}</div>
+    </div>
+    {% endfor %}
+  <div class="faq-item" style="display:none">
       <div class="faq-q">Qu'est-ce que {{ prod.nom }} ?<span class="faq-icon">+</span></div>
       <div class="faq-a">{{ prod.nom }} est une SCPI {{ prod.type | default('') }} gérée par {{ prod.marque }}{% if prod.td is defined %}, affichant un taux de distribution de {{ prod.td }}% en {{ site.year }}{% endif %}. {% if prod.description is defined and prod.description %}{{ prod.description | safe | striptags | truncate(250) }}{% endif %}</div>
     </div>
@@ -425,6 +437,11 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
   </div>
 
   <!-- Maillage : comparatifs -->
+  {% if prod.concurrents_text is defined and prod.concurrents_text %}
+  <div class="expert-note" style="margin-bottom:24px">
+    💡 <strong>Comment choisir entre {{ prod.nom }} et ses concurrentes ?</strong><br>{{ prod.concurrents_text }}
+  </div>
+  {% endif %}
   <h2>Comparer {{ prod.nom }} avec d'autres SCPI</h2>
   <p style="color:var(--ink3);font-size:15px;margin-bottom:0">Tous nos comparatifs impliquant {{ prod.nom }}</p>
   <div class="comp-grid">
@@ -442,14 +459,7 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
   ⚠️ Cet avis est fourni à titre informatif uniquement et ne constitue pas un conseil en investissement. Investir en SCPI comporte des risques dont la perte en capital. Les performances passées ne préjugent pas des performances futures. Les données présentées sont issues des rapports officiels des sociétés de gestion. Consultez un CGP agréé AMF avant tout investissement.
 </div>
 
-<footer style="margin-top:40px">
-  <div style="font-family:'{{ theme.font_title }}',serif;font-size:18px;color:#fff;margin-bottom:10px">{{ site.logo_text }}{{ site.logo_accent }}</div>
-  <div>Comparatif SCPI {{ site.year }}, Données actualisées</div>
-  <div class="footer-links">
-    <a href="mentions-legales.html">Mentions légales</a>
-    <a href="politique-confidentialite.html">Confidentialité</a>
-  </div>
-</footer>
+{% include "base/_footer.html.j2" %}
 
 <!-- Chart.js pour les donuts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
