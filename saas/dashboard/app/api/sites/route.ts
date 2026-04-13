@@ -125,15 +125,18 @@ seo:
   category_url: "index.html#comparatifs"
 `
 
-  const results = await Promise.all([
-    putFile(`platform/sites/${id}/config.yaml`, configYaml, `HUB: Create site ${name}`),
-    putFile(`platform/sites/${id}/editorial.json`, '{}', `HUB: Init editorial ${name}`),
-    putFile(`platform/sites/${id}/products_editorial.json`, '{}', `HUB: Init products_editorial ${name}`),
-    putFile(`platform/sites/${id}/site_editorial.json`, '{}', `HUB: Init site_editorial ${name}`),
-  ])
+  const files = [
+    [`platform/sites/${id}/config.yaml`, configYaml, `HUB: Create site ${name}`],
+    [`platform/sites/${id}/editorial.json`, '{}', `HUB: Init editorial ${name}`],
+    [`platform/sites/${id}/products_editorial.json`, '{}', `HUB: Init products_editorial ${name}`],
+    [`platform/sites/${id}/site_editorial.json`, '{}', `HUB: Init site_editorial ${name}`],
+  ] as [string, string, string][]
 
-  if (results.some(r => !r))
-    return NextResponse.json({ error: 'Erreur creation fichiers GitHub' }, { status: 500 })
+  for (const [path, content, msg] of files) {
+    const ok = await putFile(path, content, msg)
+    if (!ok) return NextResponse.json({ error: `Erreur GitHub : impossible d ecrire ${path}. Verifiez GITHUB_TOKEN, GITHUB_OWNER, GITHUB_REPO dans les variables Vercel.` }, { status: 500 })
+    await new Promise(r => setTimeout(r, 300))
+  }
 
   const newSite = {
     id, name, niche: niche || 'comparatif',
