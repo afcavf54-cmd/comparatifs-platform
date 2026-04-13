@@ -194,7 +194,7 @@ def prompt_product(prod: dict, year: int) -> str:
 
 DONNÉES : {prod_summary(prod)}
 
-RÈGLES : style direct, chiffres concrets, paragraphes séparés par \\n\\n, listes courtes (max 15 mots/item).
+RÈGLES : style direct, chiffres concrets, paragraphes séparés par \\n\\n, listes courtes (max 15 mots/item). INTERDIT : tiret long (—) et demi-tiret (–) partout.
 
 Réponds UNIQUEMENT avec le JSON suivant, sans markdown, sans preamble :
 {{
