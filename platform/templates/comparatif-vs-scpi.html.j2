@@ -130,7 +130,10 @@
 
 {% block extra_css %}
 .update-badge{display:inline-flex;align-items:center;gap:6px;background:#EAF3DE;color:#27500A;font-size:12px;font-weight:500;padding:4px 12px;border-radius:20px;margin-bottom:12px}
-.expert-note{background:#F0F4FF;border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;margin:16px 0;font-style:italic;font-size:16px;color:var(--ink2);line-height:1.7}
+.expert-note{background:#F0F4FF;border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;margin:24px 0 28px;font-style:italic;font-size:16px;color:var(--ink2);line-height:1.7}
+main p[style]{margin-bottom:20px !important;margin-top:0 !important}
+main h2{margin-top:2.2em;margin-bottom:0.6em}
+main h3{margin-top:1.8em;margin-bottom:0.5em}
 .mix-block{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px;margin:24px 0}
 .mix-block h3{color:var(--accent);margin-top:0;font-size:22px}
 .author-block{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px 24px;margin:32px 0}
@@ -159,19 +162,15 @@
 .disclaimer{background:#FFF8E6;border:1px solid #FAC775;border-radius:var(--r2);padding:20px 24px;margin:24px auto;max-width:900px}
 .disclaimer-title{font-size:13px;font-weight:600;color:#633806;margin-bottom:8px}
 .disclaimer p{font-size:13px;color:#633806;line-height:1.65;margin:0}
-/* Centrage global des tableaux comparatif */
-table[style] td:not(:first-child){text-align:center!important;vertical-align:middle!important}
-table[style] th:not(:first-child){text-align:center!important}
-table[style] td:first-child{text-align:left!important;vertical-align:middle!important}
-
 @media(max-width:768px){
   .perf-grid{grid-template-columns:1fr}
   .donut-grid{grid-template-columns:1fr !important}
   .disclaimer{margin:24px 0}
+  /* Tableaux inline (Performance, Frais, Accessibilité) */
   table[style]{width:100%!important;table-layout:fixed!important}
   table[style] td,table[style] th{word-break:break-word;overflow-wrap:break-word;font-size:12px!important;padding:9px 8px!important}
-  table[style] th:first-child,table[style] td:first-child{width:40%!important;font-size:11px!important}
-  table[style] th:not(:first-child),table[style] td:not(:first-child){width:30%!important}
+  table[style] th:first-child,table[style] td:first-child{width:40%!important;font-size:11px!important;text-align:left!important}
+  table[style] th:not(:first-child),table[style] td:not(:first-child){width:30%!important;text-align:center!important}
 }
 {% endblock %}
 
@@ -186,42 +185,41 @@ table[style] td:first-child{text-align:left!important;vertical-align:middle!impo
   {# ── PILIER 1 : Performance & rendement ── #}
   <h2>Performance et stratégie de rendement</h2>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin:16px 0">
-    <table style="width:100%;border-collapse:collapse;font-size:15px;table-layout:fixed">
-      <colgroup><col style="width:40%"><col style="width:30%"><col style="width:30%"></colgroup>
+    <table style="width:100%;border-collapse:collapse;font-size:15px">
       <thead>
-        <tr style="background:var(--bg)">
-          <th style="padding:12px 18px;text-align:left;font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;width:40%">Critère</th>
-          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:var(--ink)">{{ prod_a.nom }}</th>
-          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:var(--ink)">{{ prod_b.nom }}</th>
+        <tr style="background:var(--ink)">
+          <th style="padding:12px 18px;text-align:left;font-size:12px;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;width:40%">Critère</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:#fff">{{ prod_a.nom }}</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:#fff">{{ prod_b.nom }}</th>
         </tr>
       </thead>
       <tbody>
         {% if prod_a.td is defined and prod_b.td is defined %}
         <tr style="border-top:1px solid var(--border)">
-          <td style="padding:12px 18px;color:var(--ink2);vertical-align:middle">Taux de distribution 2025</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:700;color:{% if prod_a.td >= prod_b.td %}var(--green){% else %}var(--ink){% endif %}">{{ prod_a.td }}%</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:700;color:{% if prod_b.td >= prod_a.td %}var(--green){% else %}var(--ink){% endif %}">{{ prod_b.td }}%</td>
+          <td style="padding:12px 18px;color:var(--ink2)">Taux de distribution 2025</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:700;color:{% if prod_a.td >= prod_b.td %}var(--green){% else %}var(--ink){% endif %}">{{ prod_a.td }}%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:700;color:{% if prod_b.td >= prod_a.td %}var(--green){% else %}var(--ink){% endif %}">{{ prod_b.td }}%</td>
         </tr>
         {% endif %}
         {% if prod_a.tri is defined and prod_b.tri is defined %}
         <tr style="border-top:1px solid var(--border)">
-          <td style="padding:12px 18px;color:var(--ink2);vertical-align:middle">TRI {{ prod_a.tri_horizon | default('objectif') }}</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600">{{ prod_a.tri }}%</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600">{{ prod_b.tri }}%</td>
+          <td style="padding:12px 18px;color:var(--ink2)">TRI {{ prod_a.tri_horizon | default('objectif') }}</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_a.tri }}%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.tri }}%</td>
         </tr>
         {% endif %}
         {% if prod_a.pga is defined and prod_b.pga is defined %}
         <tr style="border-top:1px solid var(--border)">
-          <td style="padding:12px 18px;color:var(--ink2);vertical-align:middle">PGA</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600">{{ prod_a.pga }}%</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600">{{ prod_b.pga }}%</td>
+          <td style="padding:12px 18px;color:var(--ink2)">PGA</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_a.pga }}%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.pga }}%</td>
         </tr>
         {% endif %}
         {% if prod_a.tof is defined and prod_b.tof is defined %}
         <tr style="border-top:1px solid var(--border)">
-          <td style="padding:12px 18px;color:var(--ink2);vertical-align:middle">TOF</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600;color:{% if prod_a.tof >= 90 %}var(--green){% elif prod_a.tof < 80 %}#C0392B{% else %}var(--ink){% endif %}">{{ prod_a.tof }}%</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600;color:{% if prod_b.tof >= 90 %}var(--green){% elif prod_b.tof < 80 %}#C0392B{% else %}var(--ink){% endif %}">{{ prod_b.tof }}%</td>
+          <td style="padding:12px 18px;color:var(--ink2)">TOF</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_a.tof >= 90 %}var(--green){% elif prod_a.tof < 80 %}#C0392B{% else %}var(--ink){% endif %}">{{ prod_a.tof }}%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_b.tof >= 90 %}var(--green){% elif prod_b.tof < 80 %}#C0392B{% else %}var(--ink){% endif %}">{{ prod_b.tof }}%</td>
         </tr>
         {% endif %}
       </tbody>
@@ -288,28 +286,27 @@ table[style] td:first-child{text-align:left!important;vertical-align:middle!impo
   {% if prod_a.investissement_min is defined or prod_b.investissement_min is defined %}
   <h3>2. L'accessibilité, qui peut investir ?</h3>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin:16px 0">
-    <table style="width:100%;border-collapse:collapse;font-size:15px;table-layout:fixed">
-      <colgroup><col style="width:40%"><col style="width:30%"><col style="width:30%"></colgroup>
+    <table style="width:100%;border-collapse:collapse;font-size:15px">
       <thead>
-        <tr style="background:var(--bg)">
-          <th style="padding:12px 18px;text-align:left;font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;width:40%">Critère</th>
-          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:var(--ink)">{{ prod_a.nom }}</th>
-          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:var(--ink)">{{ prod_b.nom }}</th>
+        <tr style="background:var(--ink)">
+          <th style="padding:12px 18px;text-align:left;font-size:12px;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;width:40%">Critère</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:#fff">{{ prod_a.nom }}</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:#fff">{{ prod_b.nom }}</th>
         </tr>
       </thead>
       <tbody>
         {% if prod_a.investissement_min is defined and prod_b.investissement_min is defined %}
         <tr style="border-top:1px solid var(--border)">
-          <td style="padding:12px 18px;color:var(--ink2);vertical-align:middle">Ticket minimum</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600;color:var(--green)">{{ prod_a.investissement_min }}</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600">{{ prod_b.investissement_min }}</td>
+          <td style="padding:12px 18px;color:var(--ink2)">Ticket minimum</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:var(--green)">{{ prod_a.investissement_min }}</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.investissement_min }}</td>
         </tr>
         {% endif %}
         {% if prod_a.prix_achat is defined and prod_b.prix_achat is defined %}
         <tr style="border-top:1px solid var(--border)">
-          <td style="padding:12px 18px;color:var(--ink2);vertical-align:middle">Prix de la part</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600">{{ prod_a.prix_achat | string | replace('.0','') }}€</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600">{{ prod_b.prix_achat | string | replace('.0','') }}€</td>
+          <td style="padding:12px 18px;color:var(--ink2)">Prix de la part</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_a.prix_achat | string | replace('.0','') }}€</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.prix_achat | string | replace('.0','') }}€</td>
         </tr>
         {% endif %}
       </tbody>
@@ -437,60 +434,59 @@ table[style] td:first-child{text-align:left!important;vertical-align:middle!impo
   {% endif %}
   <h2>Frais et liquidité : les points de vigilance</h2>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin:16px 0">
-    <table style="width:100%;border-collapse:collapse;font-size:15px;table-layout:fixed">
-      <colgroup><col style="width:40%"><col style="width:30%"><col style="width:30%"></colgroup>
+    <table style="width:100%;border-collapse:collapse;font-size:15px">
       <thead>
-        <tr style="background:var(--bg)">
-          <th style="padding:12px 18px;text-align:left;font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;width:40%">Critère</th>
-          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:var(--ink)">{{ prod_a.nom }}</th>
-          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:var(--ink)">{{ prod_b.nom }}</th>
+        <tr style="background:var(--ink)">
+          <th style="padding:12px 18px;text-align:left;font-size:12px;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;width:40%">Critère</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:#fff">{{ prod_a.nom }}</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:#fff">{{ prod_b.nom }}</th>
         </tr>
       </thead>
       <tbody>
         {% if prod_a.prix_achat is defined and prod_b.prix_achat is defined %}
         <tr style="border-top:1px solid var(--border)">
-          <td style="padding:12px 18px;color:var(--ink2);vertical-align:middle">Prix d'achat</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600">{{ prod_a.prix_achat | string | replace('.0','') }}€</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600">{{ prod_b.prix_achat | string | replace('.0','') }}€</td>
+          <td style="padding:12px 18px;color:var(--ink2)">Prix d'achat</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_a.prix_achat | string | replace('.0','') }}€</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.prix_achat | string | replace('.0','') }}€</td>
         </tr>
         {% endif %}
         {% if prod_a.prix_retrait is defined and prod_b.prix_retrait is defined %}
         <tr style="border-top:1px solid var(--border)">
-          <td style="padding:12px 18px;color:var(--ink2);vertical-align:middle">Prix de retrait</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600;color:{% if prod_a.prix_retrait < prod_a.prix_achat %}#C0392B{% else %}var(--ink){% endif %}">
+          <td style="padding:12px 18px;color:var(--ink2)">Prix de retrait</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_a.prix_retrait < prod_a.prix_achat %}#C0392B{% else %}var(--ink){% endif %}">
             {{ prod_a.prix_retrait | string | replace('.0','') }}€{% if prod_a.prix_retrait < prod_a.prix_achat %} <span style="font-size:11px;font-weight:400">(−{{ (prod_a.prix_achat - prod_a.prix_retrait) | string | replace('.0','') }}€)</span>{% endif %}
           </td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600;color:{% if prod_b.prix_retrait < prod_b.prix_achat %}#C0392B{% else %}var(--ink){% endif %}">
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_b.prix_retrait < prod_b.prix_achat %}#C0392B{% else %}var(--ink){% endif %}">
             {{ prod_b.prix_retrait | string | replace('.0','') }}€{% if prod_b.prix_retrait < prod_b.prix_achat %} <span style="font-size:11px;font-weight:400">(−{{ (prod_b.prix_achat - prod_b.prix_retrait) | string | replace('.0','') }}€)</span>{% endif %}
           </td>
         </tr>
         {% endif %}
         {% if prod_a.frais_souscription is defined and prod_b.frais_souscription is defined %}
         <tr style="border-top:1px solid var(--border)">
-          <td style="padding:12px 18px;color:var(--ink2);vertical-align:middle">Frais de souscription</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600;color:{% if prod_a.frais_souscription == 0 %}var(--green){% else %}var(--ink){% endif %}">{% if prod_a.frais_souscription == 0 %}0% ✓{% else %}{{ prod_a.frais_souscription | string | replace('.0','') }}%{% endif %}</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600;color:{% if prod_b.frais_souscription == 0 %}var(--green){% else %}var(--ink){% endif %}">{% if prod_b.frais_souscription == 0 %}0% ✓{% else %}{{ prod_b.frais_souscription | string | replace('.0','') }}%{% endif %}</td>
+          <td style="padding:12px 18px;color:var(--ink2)">Frais de souscription</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_a.frais_souscription == 0 %}var(--green){% else %}var(--ink){% endif %}">{% if prod_a.frais_souscription == 0 %}0% ✓{% else %}{{ prod_a.frais_souscription | string | replace('.0','') }}%{% endif %}</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_b.frais_souscription == 0 %}var(--green){% else %}var(--ink){% endif %}">{% if prod_b.frais_souscription == 0 %}0% ✓{% else %}{{ prod_b.frais_souscription | string | replace('.0','') }}%{% endif %}</td>
         </tr>
         {% endif %}
         {% if prod_a.frais_gestion is defined and prod_b.frais_gestion is defined %}
         <tr style="border-top:1px solid var(--border)">
-          <td style="padding:12px 18px;color:var(--ink2);vertical-align:middle">Frais de gestion</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600">{{ prod_a.frais_gestion | string | replace('.0','') }}% TTC</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600">{{ prod_b.frais_gestion | string | replace('.0','') }}% TTC</td>
+          <td style="padding:12px 18px;color:var(--ink2)">Frais de gestion</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_a.frais_gestion | string | replace('.0','') }}% TTC</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.frais_gestion | string | replace('.0','') }}% TTC</td>
         </tr>
         {% endif %}
         {% if prod_a.delai_jouissance is defined and prod_b.delai_jouissance is defined %}
         <tr style="border-top:1px solid var(--border)">
-          <td style="padding:12px 18px;color:var(--ink2);vertical-align:middle">Délai de jouissance</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600">{{ prod_a.delai_jouissance | string | replace('.0','') }} mois</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600">{{ prod_b.delai_jouissance | string | replace('.0','') }} mois</td>
+          <td style="padding:12px 18px;color:var(--ink2)">Délai de jouissance</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_a.delai_jouissance | string | replace('.0','') }} mois</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.delai_jouissance | string | replace('.0','') }} mois</td>
         </tr>
         {% endif %}
         {% if prod_a.endettement is defined and prod_b.endettement is defined %}
         <tr style="border-top:1px solid var(--border)">
-          <td style="padding:12px 18px;color:var(--ink2);vertical-align:middle">Endettement</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600;color:{% if prod_a.endettement == 0 %}var(--green){% elif prod_a.endettement > 30 %}#C0392B{% else %}var(--ink){% endif %}">{{ prod_a.endettement | string | replace('.0','') }}%</td>
-          <td style="padding:12px 18px;text-align:center;vertical-align:middle;font-weight:600;color:{% if prod_b.endettement == 0 %}var(--green){% elif prod_b.endettement > 30 %}#C0392B{% else %}var(--ink){% endif %}">{{ prod_b.endettement | string | replace('.0','') }}%</td>
+          <td style="padding:12px 18px;color:var(--ink2)">Endettement</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_a.endettement == 0 %}var(--green){% elif prod_a.endettement > 30 %}#C0392B{% else %}var(--ink){% endif %}">{{ prod_a.endettement | string | replace('.0','') }}%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_b.endettement == 0 %}var(--green){% elif prod_b.endettement > 30 %}#C0392B{% else %}var(--ink){% endif %}">{{ prod_b.endettement | string | replace('.0','') }}%</td>
         </tr>
         {% endif %}
       </tbody>
