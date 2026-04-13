@@ -78,8 +78,8 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
       {{ prod.nom }}
     </h2>
     <div class="scpi-section-count">{{ loop.index }}e SCPI, TD {{ prod.td }}%{% if prod.frais_souscription == 0 %}, 0% frais{% endif %}</div>
-    {% if prod.description is defined and prod.description %}
-    <p class="scpi-section-desc">{{ prod.description | striptags | truncate(320, true, '…') }}</p>
+    {% if prod.short_desc is defined and prod.short_desc %}
+    <p class="scpi-section-desc">{{ prod.short_desc }}</p>
     {% endif %}
     <div class="comp-list">
       {% for other in products %}
