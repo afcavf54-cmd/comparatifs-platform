@@ -27,6 +27,14 @@ TEMPLATES_DIR = ROOT / "templates"
 SITES_DIR     = ROOT / "sites"
 SHARED_DIR    = ROOT / "sites" / "_shared"
 
+# ── Règles éditoriales centralisées ──────────────────────────────────────────
+sys.path.insert(0, str(TEMPLATES_DIR / "base"))
+try:
+    from _editorial_rules import format_editorial, format_text
+except ImportError:
+    def format_editorial(ed): return ed
+    def format_text(t): return t
+
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 def load_yaml(path: Path) -> dict:
@@ -197,11 +205,13 @@ def load_products_from_sheet(csv_url: str) -> list | None:
 
 # ── Génération éditoriale batch ────────────────────────────────────────────────
 def load_editorial(site_dir: Path) -> dict:
-    """Charge editorial.json depuis le dossier du site."""
+    """Charge editorial.json depuis le dossier du site et applique les règles éditoriales."""
     editorial_path = site_dir / "editorial.json"
     if editorial_path.exists():
         with open(editorial_path, encoding="utf-8") as f:
             data = json.load(f)
+        # Applique les règles éditoriales centralisées (paragraphes, gras...)
+        data = {k: format_editorial(v) for k, v in data.items()}
         print(f"  ✓ editorial.json : {len(data)} paires chargées")
         return data
     print("  ⚠ editorial.json absent, textes fallback")
