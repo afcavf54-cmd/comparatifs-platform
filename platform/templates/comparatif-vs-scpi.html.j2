@@ -159,10 +159,15 @@
 .disclaimer{background:#FFF8E6;border:1px solid #FAC775;border-radius:var(--r2);padding:20px 24px;margin:24px auto;max-width:900px}
 .disclaimer-title{font-size:13px;font-weight:600;color:#633806;margin-bottom:8px}
 .disclaimer p{font-size:13px;color:#633806;line-height:1.65;margin:0}
-@media(max-width:600px){
+@media(max-width:768px){
   .perf-grid{grid-template-columns:1fr}
   .donut-grid{grid-template-columns:1fr !important}
   .disclaimer{margin:24px 0}
+  /* Tableaux inline (Performance, Frais, Accessibilité) */
+  table[style]{width:100%!important;table-layout:fixed!important}
+  table[style] td,table[style] th{word-break:break-word;overflow-wrap:break-word;font-size:12px!important;padding:9px 8px!important}
+  table[style] th:first-child,table[style] td:first-child{width:40%!important;font-size:11px!important;text-align:left!important}
+  table[style] th:not(:first-child),table[style] td:not(:first-child){width:30%!important;text-align:center!important}
 }
 {% endblock %}
 
@@ -533,16 +538,13 @@
   <div class="mix-block">
     <h3>🔀 Et si vous investissez dans les deux ?</h3>
     <p style="font-size:17px;color:var(--ink2);line-height:1.75;margin:0">
-      La diversification entre plusieurs SCPI est souvent la stratégie la plus pertinente.
-      {% if prod_a.type is defined and prod_b.type is defined and prod_a.type != prod_b.type %}
-      Associer <strong>{{ prod_a.nom }}</strong> ({{ prod_a.type }}) et <strong>{{ prod_b.nom }}</strong> ({{ prod_b.type }}) permet de combiner thématiques différentes et de lisser le risque sectoriel.
+      {% if editorial.mix_text is defined and editorial.mix_text %}
+      {{ editorial.mix_text | safe }}
       {% else %}
+      La diversification entre plusieurs SCPI est souvent la stratégie la plus pertinente.
       Associer <strong>{{ prod_a.nom }}</strong> et <strong>{{ prod_b.nom }}</strong> permet de bénéficier des points forts de chacune tout en limitant l'exposition à un seul gestionnaire.
-      {% endif %}
-      {% if prod_a.pays is defined and prod_b.pays is defined and prod_a.pays != prod_b.pays %}
-      La diversification géographique entre {{ prod_a.pays }} et {{ prod_b.pays }} réduit le risque de concentration.
-      {% endif %}
       Consultez un conseiller en gestion de patrimoine pour déterminer la répartition optimale selon votre fiscalité et vos objectifs.
+      {% endif %}
     </p>
   </div>
 
