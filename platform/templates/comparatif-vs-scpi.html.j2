@@ -186,7 +186,8 @@ table[style] td:first-child{text-align:left!important;vertical-align:middle!impo
   {# ── PILIER 1 : Performance & rendement ── #}
   <h2>Performance et stratégie de rendement</h2>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin:16px 0">
-    <table style="width:100%;border-collapse:collapse;font-size:15px">
+    <table style="width:100%;border-collapse:collapse;font-size:15px;table-layout:fixed">
+      <colgroup><col style="width:40%"><col style="width:30%"><col style="width:30%"></colgroup>
       <thead>
         <tr style="background:var(--bg)">
           <th style="padding:12px 18px;text-align:left;font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;width:40%">Critère</th>
@@ -287,7 +288,8 @@ table[style] td:first-child{text-align:left!important;vertical-align:middle!impo
   {% if prod_a.investissement_min is defined or prod_b.investissement_min is defined %}
   <h3>2. L'accessibilité, qui peut investir ?</h3>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin:16px 0">
-    <table style="width:100%;border-collapse:collapse;font-size:15px">
+    <table style="width:100%;border-collapse:collapse;font-size:15px;table-layout:fixed">
+      <colgroup><col style="width:40%"><col style="width:30%"><col style="width:30%"></colgroup>
       <thead>
         <tr style="background:var(--bg)">
           <th style="padding:12px 18px;text-align:left;font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;width:40%">Critère</th>
@@ -435,7 +437,8 @@ table[style] td:first-child{text-align:left!important;vertical-align:middle!impo
   {% endif %}
   <h2>Frais et liquidité : les points de vigilance</h2>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin:16px 0">
-    <table style="width:100%;border-collapse:collapse;font-size:15px">
+    <table style="width:100%;border-collapse:collapse;font-size:15px;table-layout:fixed">
+      <colgroup><col style="width:40%"><col style="width:30%"><col style="width:30%"></colgroup>
       <thead>
         <tr style="background:var(--bg)">
           <th style="padding:12px 18px;text-align:left;font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;width:40%">Critère</th>
