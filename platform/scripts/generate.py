@@ -323,6 +323,16 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     )
     env.filters["capitalize"] = lambda s: s.capitalize() if s else ""
 
+    MOIS_FR = ["janvier","février","mars","avril","mai","juin",
+               "juillet","août","septembre","octobre","novembre","décembre"]
+    def fr_date(d):
+        try:
+            parts = str(d).split("-")
+            return f"{int(parts[2])} {MOIS_FR[int(parts[1])-1]} {parts[0]}"
+        except Exception:
+            return d
+    env.filters["fr_date"] = fr_date
+
     template_file = site.get("template", "comparatif-vs.html.j2")
     template      = env.get_template(template_file)
     print(f"  Template : {template_file}")
