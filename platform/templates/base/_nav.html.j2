@@ -1,5 +1,5 @@
 <style>
-nav{background:var(--ink);padding:0 5vw;position:sticky;top:0;z-index:100;height:72px;display:flex;align-items:center}
+nav{background:var(--ink);padding:20px 5vw;position:sticky;top:0;z-index:100;display:flex;align-items:center}
 .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:center;position:relative}
 .nav-box{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:40px;padding:8px 12px 8px 10px}
 .nav-box-logo{font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:18px;color:#fff;padding:8px 18px;white-space:nowrap}
@@ -15,7 +15,7 @@ nav{background:var(--ink);padding:0 5vw;position:sticky;top:0;z-index:100;height
 .nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-burger.open span:nth-child(2){opacity:0}
 .nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.nav-mobile{display:none;position:absolute;top:72px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile{display:none;position:absolute;top:calc(100% + 0px);left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
 .nav-mobile.open{display:flex}
 .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;font-weight:500;padding:12px 16px;border-radius:10px;transition:.15s}
 .nav-mobile a:hover{color:#fff;background:rgba(255,255,255,.08)}
