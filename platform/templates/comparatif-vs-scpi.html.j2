@@ -159,15 +159,19 @@
 .disclaimer{background:#FFF8E6;border:1px solid #FAC775;border-radius:var(--r2);padding:20px 24px;margin:24px auto;max-width:900px}
 .disclaimer-title{font-size:13px;font-weight:600;color:#633806;margin-bottom:8px}
 .disclaimer p{font-size:13px;color:#633806;line-height:1.65;margin:0}
+/* Centrage global des tableaux comparatif */
+table[style] td:not(:first-child){text-align:center!important;vertical-align:middle!important}
+table[style] th:not(:first-child){text-align:center!important}
+table[style] td:first-child{text-align:left!important;vertical-align:middle!important}
+
 @media(max-width:768px){
   .perf-grid{grid-template-columns:1fr}
   .donut-grid{grid-template-columns:1fr !important}
   .disclaimer{margin:24px 0}
-  /* Tableaux inline (Performance, Frais, Accessibilité) */
   table[style]{width:100%!important;table-layout:fixed!important}
   table[style] td,table[style] th{word-break:break-word;overflow-wrap:break-word;font-size:12px!important;padding:9px 8px!important}
-  table[style] th:first-child,table[style] td:first-child{width:40%!important;font-size:11px!important;text-align:left!important}
-  table[style] th:not(:first-child),table[style] td:not(:first-child){width:30%!important;text-align:center!important}
+  table[style] th:first-child,table[style] td:first-child{width:40%!important;font-size:11px!important}
+  table[style] th:not(:first-child),table[style] td:not(:first-child){width:30%!important}
 }
 {% endblock %}
 
