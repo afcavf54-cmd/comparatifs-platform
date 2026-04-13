@@ -29,7 +29,7 @@ export default function DeployPage() {
     setMsg('')
     const r = await fetch('/api/deploy', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ siteId, workflowFile: 'generate-scpi.yml' })
+      body: JSON.stringify({ siteId, workflowFile: 'generate-site.yml' })
     })
     const d = await r.json()
     if (d.ok) {
