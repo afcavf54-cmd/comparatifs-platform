@@ -4,13 +4,19 @@ on:
   workflow_dispatch:
     inputs:
       site:
-        description: 'Site slug (ex: scpi, meilleures-scpi)'
+        description: 'Site slug (ex: scpi, comparateur-scpi)'
         required: true
         type: string
+      schedule:
+        description: 'Heure de lancement HH:MM en UTC (ex: 01:00 pour 3h du matin en France). Laisser vide pour démarrer immédiatement.'
+        required: false
+        type: string
+        default: ''
 
 jobs:
   generate:
     runs-on: ubuntu-latest
+    timeout-minutes: 360
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,7 +30,12 @@ jobs:
         run: pip install pyyaml jinja2 requests
 
       - name: Generate AI editorial content
-        run: python platform/scripts/enrich_editorial.py --site ${{ inputs.site }}
+        run: |
+          if [ -n "${{ inputs.schedule }}" ]; then
+            python platform/scripts/enrich_editorial.py --site ${{ inputs.site }} --schedule ${{ inputs.schedule }}
+          else
+            python platform/scripts/enrich_editorial.py --site ${{ inputs.site }}
+          fi
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
