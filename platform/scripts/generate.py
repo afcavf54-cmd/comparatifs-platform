@@ -297,7 +297,8 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         sys.exit(1)
 
     config        = load_yaml(site_dir / "config.yaml")
-    products_yaml = load_yaml(site_dir / "products.yaml")
+    products_yaml_path = site_dir / "products.yaml"
+    products_yaml = load_yaml(products_yaml_path) if products_yaml_path.exists() else {"products": []}
     site          = config["site"]
     theme         = config["theme"]
     criteria      = config["criteria"]
