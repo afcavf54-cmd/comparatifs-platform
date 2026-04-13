@@ -29,10 +29,7 @@ footer a{color:rgba(255,255,255,.4)}
 </style>
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></a>
-</nav>
-<main>
+{% include "base/_nav.html.j2" %}<main>
   <h1>Politique de confidentialité</h1>
   <p class="last-update">Dernière mise à jour : {{ build_date }}</p>
   <p>Cette politique décrit comment {{ site.name }} (<a href="{{ site.domain }}">{{ site.domain }}</a>) collecte, utilise et protège vos données personnelles, conformément au Règlement Général sur la Protection des Données (RGPD — UE 2016/679) et à la loi Informatique et Libertés.</p>
