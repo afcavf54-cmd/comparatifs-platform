@@ -261,18 +261,18 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path) 
     lines  = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-        f'  <url><loc>{domain}{base}/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>',
-        f'  <url><loc>{domain}{base}/comparatifs-scpi</loc><lastmod>{today}</lastmod><priority>0.9</priority><changefreq>weekly</changefreq></url>',
-        f'  <url><loc>{domain}{base}/avis-scpi</loc><lastmod>{today}</lastmod><priority>0.9</priority><changefreq>weekly</changefreq></url>',
+        f'  <url><loc>{domain}/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>',
+        f'  <url><loc>{domain}/comparatifs-scpi</loc><lastmod>{today}</lastmod><priority>0.9</priority><changefreq>weekly</changefreq></url>',
+        f'  <url><loc>{domain}/avis-scpi</loc><lastmod>{today}</lastmod><priority>0.9</priority><changefreq>weekly</changefreq></url>',
     ]
     for prod in products:
         lines.append(
-            f'  <url><loc>{domain}{base}/avis-{prod["slug"]}</loc>'
+            f'  <url><loc>{domain}/avis-{prod["slug"]}</loc>'
             f'<lastmod>{today}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>'
         )
     for slug_a, slug_b in pairs:
         lines.append(
-            f'  <url><loc>{domain}{base}/{slug_a}-vs-{slug_b}</loc>'
+            f'  <url><loc>{domain}/{slug_a}-vs-{slug_b}</loc>'
             f'<lastmod>{today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>'
         )
     lines.append("</urlset>")
