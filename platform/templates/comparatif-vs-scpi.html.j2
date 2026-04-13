@@ -1,121 +1,707 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tous les comparatifs SCPI {{ site.year }} | {{ site.name }}</title>
-<meta name="description" content="Retrouvez tous nos comparatifs SCPI {{ site.year }} : {{ total_pairs }} analyses détaillées pour vous aider à choisir la meilleure SCPI selon votre profil.">
-<link rel="canonical" href="{{ site.domain }}{{ site.base_path }}/comparatifs-scpi">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="{{ theme.google_fonts }}" rel="stylesheet">
-<style>
-:root{
-  --bg:{{ theme.bg }};--surface:#FFFFFF;--ink:{{ theme.ink }};--ink2:#4A5568;--ink3:#718096;
-  --accent:{{ theme.accent }};--accent2:{{ theme.accent2 }};--border:#E2E8F0;--r:12px;--r2:20px;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'{{ theme.font_body }}',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.7}
-a{color:inherit;text-decoration:none}
-nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;position:sticky;top:0;z-index:100}
-.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
-.nav-logo{font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
-.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px}
-.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
-.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.1)}
-.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--accent2);color:#fff;font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
-.nav-cta:hover{opacity:.88}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
-.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
-.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.nav-burger.open span:nth-child(2){opacity:0}
-.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
-.nav-mobile.open{display:flex}
-.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;font-weight:500;padding:12px 16px;border-radius:10px;transition:.15s}
-.nav-mobile a:hover,.nav-mobile a.active{color:#fff;background:rgba(255,255,255,.08)}
-.nav-mobile .nav-cta{margin-top:8px;justify-content:center;border-radius:12px}
-.page-header{background:var(--ink);padding:48px 5vw 40px;color:#fff;text-align:center}
-.page-header h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4vw,48px);font-weight:400;letter-spacing:-.02em;margin-bottom:10px;text-align:center}
-.page-header p{color:rgba(255,255,255,.6);font-size:16px;text-align:center}
-main{max-width:1200px;margin:0 auto;padding:48px 5vw}
-.search-bar{width:100%;padding:12px 18px;border:1.5px solid var(--border);border-radius:var(--r);font-size:15px;font-family:'{{ theme.font_body }}',sans-serif;margin-bottom:32px;outline:none;transition:.15s}
-.search-bar:focus{border-color:var(--accent)}
-.scpi-section{margin-bottom:48px}
-.scpi-section-title{font-family:'{{ theme.font_title }}',serif;font-size:24px;font-weight:400;margin-bottom:4px;display:flex;align-items:center;gap:12px}
-.scpi-section-title img{width:32px;height:32px;object-fit:contain;border-radius:6px;border:1px solid var(--border);background:#fff;padding:2px}
-.scpi-section-count{font-size:13px;color:var(--ink3);margin-bottom:16px}
-.comp-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
-.comp-item{display:flex;align-items:center;justify-content:space-between;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;font-size:14px;font-weight:500;transition:.15s}
-.comp-item:hover{border-color:var(--accent);color:var(--accent);transform:translateX(2px)}
-.comp-item-arrow{color:var(--accent);font-size:16px;flex-shrink:0;margin-left:8px}
-.disclaimer-bar{background:#FFF8E6;border-top:1px solid #FAC775;padding:14px 5vw;text-align:center;font-size:12px;color:#633806;line-height:1.6}
-.disclaimer-inner{max-width:860px;margin:0 auto}
-footer{background:var(--ink);color:rgba(255,255,255,.45);text-align:center;padding:40px 5vw;font-size:13px}
-footer .footer-logo{font-family:'{{ theme.font_title }}',serif;font-size:20px;color:#fff;margin-bottom:12px}
-footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:center;gap:24px;margin-top:12px}
-@media(max-width:768px){
-  .nav-links,.nav-cta{display:none}
-  .nav-burger{display:flex}
-.comp-list{grid-template-columns:1fr}.nav-links{display:none}}
-</style>
-</head>
-<body>
+{% extends "base/comparatif-vs-base.html.j2" %}
 
-{% include "base/_nav.html.j2" %}<div class="page-header">
-  <h1>Tous les comparatifs SCPI {{ site.year }}</h1>
-  <p>{{ total_pairs }} analyses détaillées pour choisir la meilleure SCPI selon votre profil</p>
-</div>
+{# ============================================================
+   comparatif-vs-scpi.html.j2, v3
+   Schemas : Product x2 + Review + FAQPage
+   SEO : Position 0, Featured Snippet, Rich Snippets, E-E-A-T
+   Structure : Header → Tableau → 4 Piliers → Verdict (ol) → FAQ
+   ============================================================ #}
 
-<main>
-  <input type="text" class="search-bar" id="search" placeholder="Rechercher une SCPI... (ex: Iroko, Corum, Remake)" oninput="filterComps()">
-
-  {% for prod in products %}
-  {% set slug_a = prod.slug %}
-  <section class="scpi-section" data-scpi="{{ prod.nom | lower }}">
-    <div class="scpi-section-title">
-      <img src="{{ slug_a }}.png" alt="{{ prod.nom }}" onerror="this.style.display='none'">
-      {{ prod.nom }}
-    </div>
-    <div class="scpi-section-count">{{ loop.index }}e SCPI, TD {{ prod.td }}%{% if prod.frais_souscription == 0 %}, 0% frais{% endif %}</div>
-    <div class="comp-list">
-      {% for other in products %}
-      {% if other.slug != prod.slug %}
-      {% set slugs = [prod.slug, other.slug] | sort %}
-      <a href="{{ slugs[0] }}-vs-{{ slugs[1] }}.html" class="comp-item" data-label="{{ prod.nom | lower }} {{ other.nom | lower }}">
-        <span>{{ prod.nom }} vs {{ other.nom }}</span>
-        <span class="comp-item-arrow">→</span>
-      </a>
-      {% endif %}
-      {% endfor %}
-    </div>
-  </section>
-  {% endfor %}
-</main>
-
-<div class="disclaimer-bar">
-  <div class="disclaimer-inner">⚠️ Ce site est fourni à titre informatif uniquement et ne constitue pas un conseil en investissement. Investir en SCPI comporte des risques dont la perte en capital. Les performances passées ne préjugent pas des performances futures. Consultez un CGP agréé AMF avant tout investissement.</div>
-</div>
-
-<footer>
-  <div class="footer-logo">{{ site.logo_text }}{{ site.logo_accent }}</div>
-  <div>Comparatif SCPI {{ site.year }}, Données actualisées</div>
-  <div class="footer-links">
-    <a href="mentions-legales.html">Mentions légales</a>
-    <a href="politique-confidentialite.html">Confidentialité</a>
-  </div>
-</footer>
-
-<script>
-function filterComps() {
-  var q = document.getElementById('search').value.toLowerCase().trim();
-  document.querySelectorAll('.comp-item').forEach(function(item) {
-    item.style.display = !q || item.dataset.label.includes(q) ? '' : 'none';
-  });
-  document.querySelectorAll('.scpi-section').forEach(function(sec) {
-    var visible = Array.from(sec.querySelectorAll('.comp-item')).some(function(i) { return i.style.display !== 'none'; });
-    sec.style.display = !q || visible ? '' : 'none';
-  });
+{% block extra_head %}
+{# ── Schema Product SCPI A ─────────────────────────────────── #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "{{ prod_a.nom }}",
+  "description": "SCPI {{ prod_a.type }} gérée par {{ prod_a.marque }}{% if prod_a.td is defined %}, taux de distribution {{ prod_a.td }}%{% endif %}{% if prod_a.pays is defined %}, investie en {{ prod_a.pays }}{% endif %}.",
+  "brand": {
+    "@type": "Brand",
+    "name": "{{ prod_a.marque }}"
+  },
+  {% if prod_a.prix_achat is defined %}
+  "offers": {
+    "@type": "Offer",
+    "price": "{{ prod_a.prix_achat }}",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "url": "{{ site.domain }}{{ site.base_path }}/{{ slug_a }}-vs-{{ slug_b }}"
+  },
+  {% endif %}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ prod_a.note_redaction | default('4.2') }}",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "1"
+  }
 }
 </script>
-</body>
-</html>
+
+{# ── Schema Product SCPI B ─────────────────────────────────── #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "{{ prod_b.nom }}",
+  "description": "SCPI {{ prod_b.type }} gérée par {{ prod_b.marque }}{% if prod_b.td is defined %}, taux de distribution {{ prod_b.td }}%{% endif %}{% if prod_b.pays is defined %}, investie en {{ prod_b.pays }}{% endif %}.",
+  "brand": {
+    "@type": "Brand",
+    "name": "{{ prod_b.marque }}"
+  },
+  {% if prod_b.prix_achat is defined %}
+  "offers": {
+    "@type": "Offer",
+    "price": "{{ prod_b.prix_achat }}",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "url": "{{ site.domain }}{{ site.base_path }}/{{ slug_a }}-vs-{{ slug_b }}"
+  },
+  {% endif %}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ prod_b.note_redaction | default('4.2') }}",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "1"
+  }
+}
+</script>
+
+{# ── Schema Review + FAQPage imbriquée ────────────────────── #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Review",
+  "name": "{{ prod_a.nom }} vs {{ prod_b.nom }} : comparatif {{ site.year }}",
+  "reviewBody": "Analyse comparative complète de {{ prod_a.nom }} et {{ prod_b.nom }} sur les critères de performance, frais, diversification et profil investisseur.",
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "4.8",
+    "bestRating": "5"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "{{ site.name }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ site.name }}",
+    "url": "{{ site.domain }}"
+  },
+  "datePublished": "{{ build_date }}",
+  "dateModified": "{{ build_date }}",
+  "itemReviewed": {
+    "@type": "Product",
+    "name": "Comparatif {{ prod_a.nom }} vs {{ prod_b.nom }}"
+  },
+  "mainEntity": {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "{{ prod_a.nom }} ou {{ prod_b.nom }} : laquelle a le meilleur rendement en {{ site.year }} ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "{% if prod_a.td is defined and prod_b.td is defined %}{% if prod_a.td >= prod_b.td %}{{ prod_a.nom }} affiche {{ prod_a.td }}% de taux de distribution contre {{ prod_b.td }}% pour {{ prod_b.nom }}.{% else %}{{ prod_b.nom }} affiche {{ prod_b.td }}% de taux de distribution contre {{ prod_a.td }}% pour {{ prod_a.nom }}.{% endif %} Sur le TRI{% if prod_a.tri_horizon is defined %} ({{ prod_a.tri_horizon }}){% endif %}{% if prod_a.tri is defined and prod_b.tri is defined %}, {% if prod_a.tri >= prod_b.tri %}{{ prod_a.nom }} prend l'avantage avec {{ prod_a.tri }}%.{% else %}{{ prod_b.nom }} prend l'avantage avec {{ prod_b.tri }}%.{% endif %}{% endif %}{% endif %}"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quelle SCPI a les frais les plus bas entre {{ prod_a.nom }} et {{ prod_b.nom }} ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "{% if prod_a.frais_souscription is defined and prod_b.frais_souscription is defined %}{% if prod_a.frais_souscription == 0 and prod_b.frais_souscription == 0 %}Les deux SCPI {{ prod_a.nom }} et {{ prod_b.nom }} affichent 0% de frais de souscription.{% elif prod_a.frais_souscription < prod_b.frais_souscription %}{{ prod_a.nom }} a les frais les plus bas avec {{ prod_a.frais_souscription }}% contre {{ prod_b.frais_souscription }}% pour {{ prod_b.nom }}.{% else %}{{ prod_b.nom }} a les frais les plus bas avec {{ prod_b.frais_souscription }}% contre {{ prod_a.frais_souscription }}% pour {{ prod_a.nom }}.{% endif %}{% endif %}"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Peut-on combiner {{ prod_a.nom }} et {{ prod_b.nom }} dans un portefeuille ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui, diversifier entre {{ prod_a.nom }} et {{ prod_b.nom }} est souvent pertinent. {% if prod_a.type is defined and prod_b.type is defined and prod_a.type != prod_b.type %}Associer une SCPI {{ prod_a.type }} et une SCPI {{ prod_b.type }} permet de lisser le risque sectoriel.{% else %}Répartir son investissement entre deux gestionnaires réduit le risque de concentration.{% endif %}"
+        }
+      }
+    ]
+  }
+}
+</script>
+{% endblock %}
+
+{% block extra_css %}
+.update-badge{display:inline-flex;align-items:center;gap:6px;background:#EAF3DE;color:#27500A;font-size:12px;font-weight:500;padding:4px 12px;border-radius:20px;margin-bottom:12px}
+.expert-note{background:#F0F4FF;border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;margin:24px 0 28px;font-style:italic;font-size:16px;color:var(--ink2);line-height:1.7}
+main p[style]{margin-bottom:20px !important;margin-top:0 !important}
+main h2{margin-top:2.2em;margin-bottom:0.6em}
+main h3{margin-top:1.8em;margin-bottom:0.5em}
+.mix-block{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px;margin:24px 0}
+.mix-block h3{color:var(--accent);margin-top:0;font-size:22px}
+.author-block{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px 24px;margin:32px 0}
+.author-avatar{width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:700;flex-shrink:0}
+.author-name{font-size:15px;font-weight:600;margin-bottom:2px}
+.author-title{font-size:13px;color:var(--ink2)}
+.disclaimer{background:#FFF8E6;border:1px solid #FAC775;border-radius:var(--r2);padding:20px 24px;margin:24px 0}
+.disclaimer-title{font-size:13px;font-weight:600;color:#633806;margin-bottom:8px}
+.disclaimer p{font-size:13px;color:#633806;line-height:1.65;margin:0}
+.perf-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.perf-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px}
+.perf-card-title{font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px}
+.perf-stat{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:0.5px solid var(--border);font-size:15px}
+.perf-stat:last-child{border-bottom:none}
+.perf-label{color:var(--ink2)}
+.perf-val{font-weight:600}
+.perf-val.good{color:#1A7A4A}
+.perf-val.warn{color:#E8410A}
+.tag-rendement{background:#EAF3DE;color:#27500A}
+.tag-diversifiee{background:#E6F1FB;color:#0C447C}
+.tag-specialisee{background:#FAEEDA;color:#633806}
+.tag-europeenne{background:#F5E6FB;color:#5B2185}
+.verdict-box li{counter-increment:verdict-counter}
+.verdict-box li::before{content:counter(verdict-counter) ". ";color:var(--accent2);font-weight:600}
+.verdict-box ul{counter-reset:verdict-counter}
+.disclaimer{background:#FFF8E6;border:1px solid #FAC775;border-radius:var(--r2);padding:20px 24px;margin:24px auto;max-width:900px}
+.disclaimer-title{font-size:13px;font-weight:600;color:#633806;margin-bottom:8px}
+.disclaimer p{font-size:13px;color:#633806;line-height:1.65;margin:0}
+@media(max-width:768px){
+  .perf-grid{grid-template-columns:1fr}
+  .donut-grid{grid-template-columns:1fr !important}
+  .disclaimer{margin:24px 0}
+  /* Tableaux inline (Performance, Frais, Accessibilité) */
+  table[style]{width:100%!important;table-layout:fixed!important}
+  table[style] td,table[style] th{word-break:break-word;overflow-wrap:break-word;font-size:12px!important;padding:9px 8px!important}
+  table[style] th:first-child,table[style] td:first-child{width:40%!important;font-size:11px!important;text-align:left!important}
+  table[style] th:not(:first-child),table[style] td:not(:first-child){width:30%!important;text-align:center!important}
+}
+{% endblock %}
+
+{% block cta_label scoped %}→ Investir dans {{ prod.nom }}{% endblock %}
+{% block verdict_cta_a %}→ Investir dans {{ prod_a.nom }}{% endblock %}
+{% block verdict_cta_b %}→ Investir dans {{ prod_b.nom }}{% endblock %}
+{% block verdict_title %}Quelle SCPI choisir selon votre profil ?{% endblock %}
+{% block verdict_subtitle %}Notre analyse basée sur les données officielles des sociétés de gestion.{% endblock %}
+
+{% block comparaison_detail %}
+
+  {# ── PILIER 1 : Performance & rendement ── #}
+  <h2>Performance et stratégie de rendement</h2>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin:16px 0">
+    <table style="width:100%;border-collapse:collapse;font-size:15px">
+      <thead>
+        <tr style="background:var(--ink)">
+          <th style="padding:12px 18px;text-align:left;font-size:12px;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;width:40%">Critère</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:#fff">{{ prod_a.nom }}</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:#fff">{{ prod_b.nom }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if prod_a.td is defined and prod_b.td is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Taux de distribution 2025</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:700;color:{% if prod_a.td >= prod_b.td %}var(--green){% else %}var(--ink){% endif %}">{{ prod_a.td }}%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:700;color:{% if prod_b.td >= prod_a.td %}var(--green){% else %}var(--ink){% endif %}">{{ prod_b.td }}%</td>
+        </tr>
+        {% endif %}
+        {% if prod_a.tri is defined and prod_b.tri is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">TRI {{ prod_a.tri_horizon | default('objectif') }}</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_a.tri }}%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.tri }}%</td>
+        </tr>
+        {% endif %}
+        {% if prod_a.pga is defined and prod_b.pga is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">PGA</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_a.pga }}%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.pga }}%</td>
+        </tr>
+        {% endif %}
+        {% if prod_a.tof is defined and prod_b.tof is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">TOF</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_a.tof >= 90 %}var(--green){% elif prod_a.tof < 80 %}#C0392B{% else %}var(--ink){% endif %}">{{ prod_a.tof }}%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_b.tof >= 90 %}var(--green){% elif prod_b.tof < 80 %}#C0392B{% else %}var(--ink){% endif %}">{{ prod_b.tof }}%</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+
+  {# CTA rapport trimestriel #}
+  <div style="display:flex;gap:12px;margin:16px 0;flex-wrap:wrap">
+    <a href="{{ prod_a.url_affiliation if prod_a.url_affiliation else "#" }}" class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="font-size:13px;padding:10px 18px">
+      📄 Rapport trimestriel {{ prod_a.nom }}
+    </a>
+    <a href="{{ prod_b.url_affiliation if prod_b.url_affiliation else "#" }}" class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="font-size:13px;padding:10px 18px">
+      📄 Rapport trimestriel {{ prod_b.nom }}
+    </a>
+  </div>
+  {% if prod_a.td is defined and prod_b.td is defined %}
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    {% if prod_a.td > prod_b.td %}
+    <strong>{{ prod_a.nom }}</strong> distribue davantage avec <strong>{{ prod_a.td }}%</strong> contre <strong>{{ prod_b.td }}%</strong> pour {{ prod_b.nom }}.
+    {% else %}
+    <strong>{{ prod_b.nom }}</strong> distribue davantage avec <strong>{{ prod_b.td }}%</strong> contre <strong>{{ prod_a.td }}%</strong> pour {{ prod_a.nom }}.
+    {% endif %}
+    Mais le taux de distribution seul ne raconte pas toute l'histoire.
+    {% if prod_a.tri is defined and prod_b.tri is defined %}
+    Sur la performance globale (TRI {{ prod_a.tri_horizon | default(prod_b.tri_horizon | default('objectif')) }}), {% if prod_a.tri >= prod_b.tri %}<strong>{{ prod_a.nom }}</strong> prend l'avantage avec <strong>{{ prod_a.tri }}%</strong>.{% else %}<strong>{{ prod_b.nom }}</strong> prend l'avantage avec <strong>{{ prod_b.tri }}%</strong>.{% endif %}
+    {% endif %}
+  </p>
+  <div class="expert-note">
+    💡 <strong>L'avis de l'expert :</strong> Un TD élevé peut masquer une érosion du prix de part. Analysez toujours le TRI sur la durée disponible. Une SCPI à 5% de TD stable vaut souvent mieux qu'une SCPI à 7% avec un prix de part en baisse.
+  </div>
+  {% endif %}
+
+  {# ── PILIER 2 : Patrimoine & diversification ── #}
+  <h2>Composition du patrimoine et diversification</h2>
+
+  {# Calcul automatique exposition étrangère depuis geo #}
+  {% macro etranger_pct(prod) %}
+    {%- set france = namespace(v=0) -%}
+    {%- if prod.geo is defined -%}
+      {%- for item in prod.geo.split(',') -%}
+        {%- if 'France' in item -%}
+          {%- set france.v = item.split(':')[1] | float -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+    {{- (100 - france.v) | round(0) | int -}}
+  {%- endmacro %}
+
+  {% if prod_a.geo is defined or prod_b.geo is defined %}
+  <h3>1. La fiscalité, l'argument décisif pour les TMI élevées</h3>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    {% if prod_a.geo is defined %}
+    <strong>{{ prod_a.nom }}</strong> : <strong>{{ etranger_pct(prod_a) }}% d'exposition étrangère</strong>.
+    {% endif %}
+    {% if prod_b.geo is defined %}
+    <strong>{{ prod_b.nom }}</strong> : <strong>{{ etranger_pct(prod_b) }}% d'exposition étrangère</strong>.
+    {% endif %}
+  </p>
+  <div class="expert-note">
+    💡 Si vous avez une TMI à 30%, 41% ou plus, la part d'actifs hors de France est cruciale. Les loyers européens (Irlande, Espagne, UK...) échappent aux 17,2% de prélèvements sociaux français. C'est le "rendement net-net" qui compte, pas seulement le TD brut affiché.
+  </div>
+  {% endif %}
+
+  {% if prod_a.investissement_min is defined or prod_b.investissement_min is defined %}
+  <h3>2. L'accessibilité, qui peut investir ?</h3>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin:16px 0">
+    <table style="width:100%;border-collapse:collapse;font-size:15px">
+      <thead>
+        <tr style="background:var(--ink)">
+          <th style="padding:12px 18px;text-align:left;font-size:12px;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;width:40%">Critère</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:#fff">{{ prod_a.nom }}</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:#fff">{{ prod_b.nom }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if prod_a.investissement_min is defined and prod_b.investissement_min is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Ticket minimum</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:var(--green)">{{ prod_a.investissement_min }}</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.investissement_min }}</td>
+        </tr>
+        {% endif %}
+        {% if prod_a.prix_achat is defined and prod_b.prix_achat is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Prix de la part</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_a.prix_achat | string | replace('.0','') }}€</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.prix_achat | string | replace('.0','') }}€</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+  <div class="expert-note">
+    💡 La différence d'accessibilité est souvent la plus visible pour l'investisseur débutant.
+    {% if prod_a.investissement_min is defined and prod_b.investissement_min is defined %}
+    {% if '1 part' in prod_a.investissement_min or '204' in prod_a.investissement_min %}
+    <strong>{{ prod_a.nom }}</strong> est imbattable pour les versements programmés, vous pouvez investir part par part chaque mois. <strong>{{ prod_b.nom }}</strong> impose un ticket plus conséquent, adapté aux placements de capital établis.
+    {% else %}
+    <strong>{{ prod_b.nom }}</strong> est imbattable pour les versements programmés. <strong>{{ prod_a.nom }}</strong> impose un ticket plus conséquent.
+    {% endif %}
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if prod_a.frais_gestion is defined and prod_b.frais_gestion is defined %}
+  <h3>3. La structure des frais, un équilibre différent</h3>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    <strong>{{ prod_a.nom }}</strong> applique <strong>{{ prod_a.frais_gestion }}% TTC</strong> de frais de gestion annuels
+    contre <strong>{{ prod_b.frais_gestion }}% TTC</strong> pour <strong>{{ prod_b.nom }}</strong>.
+    {% if prod_a.frais_gestion < prod_b.frais_gestion %}
+    <strong>{{ prod_a.nom }}</strong> est plus économique sur la gestion annuelle, avantage cumulatif sur le long terme.
+    {% elif prod_b.frais_gestion < prod_a.frais_gestion %}
+    <strong>{{ prod_b.nom }}</strong> est plus économique sur la gestion annuelle.
+    {% else %}
+    Les deux SCPI appliquent les mêmes frais de gestion.
+    {% endif %}
+  </p>
+  <div class="expert-note">
+    💡 Comparez le coût total sur 10 ans, pas seulement les frais d'entrée.
+    Une SCPI avec 1% de moins en frais de gestion, c'est environ 1 000€ économisés sur 10 ans pour 100 000€ investis.
+  </div>
+  {% endif %}
+
+  {% if prod_a.tri is defined or prod_b.tri is defined %}
+  <h3>4. Le TRI et la stratégie, rendement vs capitalisation</h3>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    {% if prod_a.tri is defined %}<strong>{{ prod_a.nom }}</strong> vise un TRI de <strong>{{ prod_a.tri }}%</strong> sur {{ prod_a.tri_horizon | default('la durée disponible') }}.{% endif %}
+    {% if prod_b.tri is defined %} <strong>{{ prod_b.nom }}</strong> affiche un objectif de <strong>{{ prod_b.tri }}%</strong> sur {{ prod_b.tri_horizon | default('la durée disponible') }}.{% endif %}
+    {% if prod_a.tri is defined and prod_b.tri is defined %}
+    {% if prod_a.tri > prod_b.tri %}
+    L'objectif de TRI de <strong>{{ prod_a.nom }}</strong> ({{ prod_a.tri }}%) est plus ambitieux, cela traduit une volonté de capter de la création de valeur immobilière pure. <strong>{{ prod_b.nom }}</strong> joue une carte plus prudente mais potentiellement plus stable.
+    {% else %}
+    L'objectif de TRI de <strong>{{ prod_b.nom }}</strong> ({{ prod_b.tri }}%) est plus ambitieux, cela traduit une stratégie de création de valeur immobilière. <strong>{{ prod_a.nom }}</strong> joue une carte légèrement plus prudente mais très stable sur la distribution.
+    {% endif %}
+    {% endif %}
+  </p>
+  <div class="expert-note">
+    💡 Un TRI élevé est extrêmement ambitieux et implique une stratégie active de valorisation des actifs. Cela peut se concrétiser ou non selon les conditions de marché. Interrogez-vous : voulez-vous du revenu régulier (TD élevé) ou de la capitalisation à terme (TRI élevé) ?
+  </div>
+  {% endif %}
+
+  {% if prod_a.pays is defined or prod_b.pays is defined %}
+  <h3>🌍 Zones géographiques</h3>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    {% if prod_a.pays is defined %}<strong>{{ prod_a.nom }}</strong> : {{ prod_a.pays }}.{% endif %}
+    {% if prod_b.pays is defined %} <strong>{{ prod_b.nom }}</strong> : {{ prod_b.pays }}.{% endif %}
+  </p>
+  {% endif %}
+
+  {% if prod_a.type is defined and prod_b.type is defined %}
+  <h3>🏢 Thématique sectorielle</h3>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    <strong>{{ prod_a.nom }}</strong> est une SCPI de type <strong>{{ prod_a.type }}</strong> tandis que <strong>{{ prod_b.nom }}</strong> est positionnée <strong>{{ prod_b.type }}</strong>.
+    {% if prod_a.type == prod_b.type %}
+    Même thématique, la différenciation se joue sur la géographie, les frais et la stratégie de gestion.
+    {% else %}
+    Des thématiques différentes qui peuvent être complémentaires dans un portefeuille diversifié.
+    {% endif %}
+  </p>
+  {% endif %}
+
+  {% if prod_a.capitalisation is defined and prod_b.capitalisation is defined %}
+  <h3>📐 Taille et liquidité</h3>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    <strong>{{ prod_a.nom }}</strong> : <strong>{{ prod_a.capitalisation }} M€</strong> de capitalisation · <strong>{{ prod_b.nom }}</strong> : <strong>{{ prod_b.capitalisation }} M€</strong>.
+    {% if prod_a.capitalisation > prod_b.capitalisation %}{{ prod_a.nom }} est plus grande, meilleure liquidité secondaire potentielle.
+    {% else %}{{ prod_b.nom }} est plus grande.{% endif %}
+  </p>
+  {% endif %}
+
+  {# ── GRAPHIQUES DONUTS ── #}
+  {% if prod_a.geo and prod_b.geo and prod_a.geo != 'None' and prod_b.geo != 'None' %}
+  <h2>Répartition géographique : {{ prod_a.nom }} vs {{ prod_b.nom }}</h2>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px;margin:0 0 24px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center" class="donut-grid">
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink2);text-align:center;margin-bottom:12px">{{ prod_a.nom }}</div>
+        <div style="position:relative;width:100%;max-width:220px;margin:0 auto;aspect-ratio:1">
+          <canvas id="geo-a-{{ slug_a }}" role="img" aria-label="Répartition géographique {{ prod_a.nom }}"></canvas>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink2);text-align:center;margin-bottom:12px">{{ prod_b.nom }}</div>
+        <div style="position:relative;width:100%;max-width:220px;margin:0 auto;aspect-ratio:1">
+          <canvas id="geo-b-{{ slug_b }}" role="img" aria-label="Répartition géographique {{ prod_b.nom }}"></canvas>
+        </div>
+      </div>
+    </div>
+    <div id="legend-geo-{{ slug_a }}" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;font-size:12px;color:var(--ink2);justify-content:center"></div>
+  </div>
+  {% endif %}
+
+  {% if prod_a.secteurs and prod_b.secteurs and prod_a.secteurs != 'None' and prod_b.secteurs != 'None' %}
+  <h2>Répartition sectorielle : {{ prod_a.nom }} vs {{ prod_b.nom }}</h2>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px;margin:0 0 24px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center" class="donut-grid">
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink2);text-align:center;margin-bottom:12px">{{ prod_a.nom }}</div>
+        <div style="position:relative;width:100%;max-width:220px;margin:0 auto;aspect-ratio:1">
+          <canvas id="sec-a-{{ slug_a }}" role="img" aria-label="Répartition sectorielle {{ prod_a.nom }}"></canvas>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink2);text-align:center;margin-bottom:12px">{{ prod_b.nom }}</div>
+        <div style="position:relative;width:100%;max-width:220px;margin:0 auto;aspect-ratio:1">
+          <canvas id="sec-b-{{ slug_b }}" role="img" aria-label="Répartition sectorielle {{ prod_b.nom }}"></canvas>
+        </div>
+      </div>
+    </div>
+    <div id="legend-sec-{{ slug_a }}" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;font-size:12px;color:var(--ink2);justify-content:center"></div>
+  </div>
+  {% endif %}
+  <h2>Frais et liquidité : les points de vigilance</h2>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin:16px 0">
+    <table style="width:100%;border-collapse:collapse;font-size:15px">
+      <thead>
+        <tr style="background:var(--ink)">
+          <th style="padding:12px 18px;text-align:left;font-size:12px;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;width:40%">Critère</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:#fff">{{ prod_a.nom }}</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:#fff">{{ prod_b.nom }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if prod_a.prix_achat is defined and prod_b.prix_achat is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Prix d'achat</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_a.prix_achat | string | replace('.0','') }}€</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.prix_achat | string | replace('.0','') }}€</td>
+        </tr>
+        {% endif %}
+        {% if prod_a.prix_retrait is defined and prod_b.prix_retrait is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Prix de retrait</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_a.prix_retrait < prod_a.prix_achat %}#C0392B{% else %}var(--ink){% endif %}">
+            {{ prod_a.prix_retrait | string | replace('.0','') }}€{% if prod_a.prix_retrait < prod_a.prix_achat %} <span style="font-size:11px;font-weight:400">(−{{ (prod_a.prix_achat - prod_a.prix_retrait) | string | replace('.0','') }}€)</span>{% endif %}
+          </td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_b.prix_retrait < prod_b.prix_achat %}#C0392B{% else %}var(--ink){% endif %}">
+            {{ prod_b.prix_retrait | string | replace('.0','') }}€{% if prod_b.prix_retrait < prod_b.prix_achat %} <span style="font-size:11px;font-weight:400">(−{{ (prod_b.prix_achat - prod_b.prix_retrait) | string | replace('.0','') }}€)</span>{% endif %}
+          </td>
+        </tr>
+        {% endif %}
+        {% if prod_a.frais_souscription is defined and prod_b.frais_souscription is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Frais de souscription</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_a.frais_souscription == 0 %}var(--green){% else %}var(--ink){% endif %}">{% if prod_a.frais_souscription == 0 %}0% ✓{% else %}{{ prod_a.frais_souscription | string | replace('.0','') }}%{% endif %}</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_b.frais_souscription == 0 %}var(--green){% else %}var(--ink){% endif %}">{% if prod_b.frais_souscription == 0 %}0% ✓{% else %}{{ prod_b.frais_souscription | string | replace('.0','') }}%{% endif %}</td>
+        </tr>
+        {% endif %}
+        {% if prod_a.frais_gestion is defined and prod_b.frais_gestion is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Frais de gestion</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_a.frais_gestion | string | replace('.0','') }}% TTC</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.frais_gestion | string | replace('.0','') }}% TTC</td>
+        </tr>
+        {% endif %}
+        {% if prod_a.delai_jouissance is defined and prod_b.delai_jouissance is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Délai de jouissance</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_a.delai_jouissance | string | replace('.0','') }} mois</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">{{ prod_b.delai_jouissance | string | replace('.0','') }} mois</td>
+        </tr>
+        {% endif %}
+        {% if prod_a.endettement is defined and prod_b.endettement is defined %}
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Endettement</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_a.endettement == 0 %}var(--green){% elif prod_a.endettement > 30 %}#C0392B{% else %}var(--ink){% endif %}">{{ prod_a.endettement | string | replace('.0','') }}%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:{% if prod_b.endettement == 0 %}var(--green){% elif prod_b.endettement > 30 %}#C0392B{% else %}var(--ink){% endif %}">{{ prod_b.endettement | string | replace('.0','') }}%</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+
+  {# Analyse décote prix retrait #}
+  {% if prod_a.prix_retrait is defined and prod_a.prix_achat is defined and prod_b.prix_retrait is defined and prod_b.prix_achat is defined %}
+  {% set decote_a = prod_a.prix_achat - prod_a.prix_retrait %}
+  {% set decote_b = prod_b.prix_achat - prod_b.prix_retrait %}
+  {% set pct_a = ((decote_a / prod_a.prix_achat) * 100) | round(1) %}
+  {% set pct_b = ((decote_b / prod_b.prix_achat) * 100) | round(1) %}
+  {% set decote_a_r = decote_a | round(2) %}
+  {% set decote_b_r = decote_b | round(2) %}
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    <strong>Décote à la sortie :</strong>
+    <strong>{{ prod_a.nom }}</strong> : {{ prod_a.prix_achat | string | replace(".0","") }}€ → {{ prod_a.prix_retrait | string | replace(".0","") }}€
+    {% if decote_a > 0 %}(perte de <strong>{{ decote_a_r }}€ par part</strong>, soit {{ pct_a }}%)
+    {% else %}(pas de décote, prix de retrait égal au prix d'achat){% endif %}.
+    <strong>{{ prod_b.nom }}</strong> : {{ prod_b.prix_achat | string | replace(".0","") }}€ → {{ prod_b.prix_retrait | string | replace(".0","") }}€
+    {% if decote_b > 0 %}(perte de <strong>{{ decote_b_r }}€ par part</strong>, soit {{ pct_b }}%)
+    {% else %}(pas de décote){% endif %}.
+    {% if decote_a < decote_b %}
+    {{ prod_a.nom }} est plus avantageuse à la sortie.
+    {% elif decote_b < decote_a %}
+    {{ prod_b.nom }} est plus avantageuse à la sortie.
+    {% endif %}
+  </p>
+  <div class="expert-note">
+    💡 <strong>L'avis de l'expert :</strong> La décote entre prix d'achat et prix de retrait représente le coût réel de sortie pour les SCPI à capital variable. C'est l'équivalent des frais de souscription pour les SCPI à capital fixe. Sur 100 parts à {{ prod_a.prix_achat }}€, une décote de {{ pct_a }}% représente {{ (decote_a * 100)|int }}€ perdus si vous revendez immédiatement.
+  </div>
+  {% endif %}
+
+  {% if prod_a.frais_souscription is defined and prod_b.frais_souscription is defined %}
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    {% if prod_a.frais_souscription == 0 and prod_b.frais_souscription == 0 %}
+    Les deux SCPI sont <strong>sans frais de souscription</strong>, capital intégralement investi dès le départ. Les frais de gestion annuels deviennent le critère principal à surveiller.
+    {% elif prod_a.frais_souscription == 0 %}
+    <strong>{{ prod_a.nom }} est sans frais d'entrée</strong>. Sur 10 000€, vous économisez {{ (prod_b.frais_souscription * 100)|int }}€ vs {{ prod_b.nom }}. Attention : les SCPI sans frais compensent parfois par des frais de gestion plus élevés.
+    {% elif prod_b.frais_souscription == 0 %}
+    <strong>{{ prod_b.nom }} est sans frais d'entrée</strong>. Sur 10 000€, vous économisez {{ (prod_a.frais_souscription * 100)|int }}€ vs {{ prod_a.nom }}.
+    {% else %}
+    Frais de souscription : <strong>{{ prod_a.frais_souscription }}%</strong> pour {{ prod_a.nom }} et <strong>{{ prod_b.frais_souscription }}%</strong> pour {{ prod_b.nom }}. Horizon recommandé : 8 ans minimum pour les amortir.
+    {% endif %}
+  </p>
+  <div class="expert-note">
+    💡 <strong>L'avis de l'expert :</strong> Comparez le coût total sur 10 ans, frais de souscription + frais de gestion annuels + décote prix de retrait. Une SCPI sans frais d'entrée n'est pas forcément moins chère sur le long terme si sa décote est importante.
+  </div>
+  {% endif %}
+
+  {# ── PILIER 4 : Mixer les deux ── #}
+  <div class="mix-block">
+    <h3>🔀 Et si vous investissez dans les deux ?</h3>
+    <p style="font-size:17px;color:var(--ink2);line-height:1.75;margin:0">
+      {% if editorial.mix_text is defined and editorial.mix_text %}
+      {{ editorial.mix_text | safe }}
+      {% else %}
+      La diversification entre plusieurs SCPI est souvent la stratégie la plus pertinente.
+      Associer <strong>{{ prod_a.nom }}</strong> et <strong>{{ prod_b.nom }}</strong> permet de bénéficier des points forts de chacune tout en limitant l'exposition à un seul gestionnaire.
+      Consultez un conseiller en gestion de patrimoine pour déterminer la répartition optimale selon votre fiscalité et vos objectifs.
+      {% endif %}
+    </p>
+  </div>
+
+{% endblock %}
+
+{% block section_avis %}
+<div class="author-block">
+  <div class="author-avatar">E</div>
+  <div>
+    <div class="author-name">Équipe éditoriale {{ site.name }}</div>
+    <div class="author-title">Analyse basée sur les données officielles des sociétés de gestion · Actualisé le {{ build_date }}</div>
+  </div>
+</div>
+{% endblock %}
+
+{% block faq_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"{{ prod_a.nom }} ou {{ prod_b.nom }} : laquelle choisir en {{ site.year }} ?","acceptedAnswer":{"@type":"Answer","text":"{{ prod_a.nom }} est recommandée si {{ prod_a.verdict_si[0]|lower }}. {{ prod_b.nom }} convient mieux si {{ prod_b.verdict_si[0]|lower }}. Les deux peuvent être complémentaires dans un portefeuille SCPI diversifié."}},
+    {% if prod_a.td is defined and prod_b.td is defined %}{"@type":"Question","name":"Quel est le taux de distribution de {{ prod_a.nom }} vs {{ prod_b.nom }} ?","acceptedAnswer":{"@type":"Answer","text":"{{ prod_a.nom }} affiche {{ prod_a.td }}% et {{ prod_b.nom }} {{ prod_b.td }}% sur le dernier exercice. Analysez aussi le TRI sur 5 ans pour une performance globale."}},{% endif %}
+    {% if prod_a.frais_souscription is defined and prod_b.frais_souscription is defined %}{"@type":"Question","name":"Quels sont les frais de souscription ?","acceptedAnswer":{"@type":"Answer","text":"{% if prod_a.frais_souscription == 0 %}{{ prod_a.nom }} : 0% (sans frais).{% else %}{{ prod_a.nom }} : {{ prod_a.frais_souscription }}%.{% endif %} {% if prod_b.frais_souscription == 0 %}{{ prod_b.nom }} : 0% (sans frais).{% else %}{{ prod_b.nom }} : {{ prod_b.frais_souscription }}%.{% endif %}"}},{% endif %}
+    {"@type":"Question","name":"Peut-on investir en assurance-vie ?","acceptedAnswer":{"@type":"Answer","text":"Cela dépend de votre contrat. Renseignez-vous auprès de votre assureur ou CGP."}},
+    {"@type":"Question","name":"Quel est le risque de perte en capital ?","acceptedAnswer":{"@type":"Answer","text":"Comme toute SCPI, {{ prod_a.nom }} et {{ prod_b.nom }} présentent un risque de perte en capital. Les performances passées ne préjugent pas des performances futures."}},
+    {"@type":"Question","name":"Le démembrement est-il possible ?","acceptedAnswer":{"@type":"Answer","text":"Le démembrement dépend des conditions proposées par {{ prod_a.marque }} et {{ prod_b.marque }}. Consultez votre CGP pour les modalités."}}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block faq_items %}
+<div class="faq-item">
+  <div class="faq-q">{{ prod_a.nom }} ou {{ prod_b.nom }} : laquelle choisir en {{ site.year }} ?</div>
+  <div class="faq-a"><strong>{{ prod_a.nom }}</strong> est recommandée si {{ prod_a.verdict_si[0]|lower }}. <strong>{{ prod_b.nom }}</strong> convient mieux si {{ prod_b.verdict_si[0]|lower }}. Les deux peuvent être complémentaires, voir la section "mixer les deux" ci-dessus.</div>
+</div>
+{% if prod_a.td is defined and prod_b.td is defined %}
+<div class="faq-item">
+  <div class="faq-q">Quel est le meilleur taux de distribution ?</div>
+  <div class="faq-a"><strong>{{ prod_a.nom }}</strong> : <strong>{{ prod_a.td }}%</strong> · <strong>{{ prod_b.nom }}</strong> : <strong>{{ prod_b.td }}%</strong>. Analysez aussi le TRI sur 5 ans, il mesure la performance réelle incluant l'évolution du prix de part.</div>
+</div>
+{% endif %}
+{% if prod_a.frais_souscription is defined and prod_b.frais_souscription is defined %}
+<div class="faq-item">
+  <div class="faq-q">Quels sont les frais d'entrée ?</div>
+  <div class="faq-a">
+    <strong>{{ prod_a.nom }}</strong> : {% if prod_a.frais_souscription == 0 %}<strong>0%, sans frais</strong>{% else %}<strong>{{ prod_a.frais_souscription }}%</strong>{% endif %} ·
+    <strong>{{ prod_b.nom }}</strong> : {% if prod_b.frais_souscription == 0 %}<strong>0%, sans frais</strong>{% else %}<strong>{{ prod_b.frais_souscription }}%</strong>{% endif %}. Horizon recommandé : 8 ans minimum.
+  </div>
+</div>
+{% endif %}
+{% if prod_a.delai_jouissance is defined and prod_b.delai_jouissance is defined %}
+<div class="faq-item">
+  <div class="faq-q">Quand perçoit-on les premiers loyers ?</div>
+  <div class="faq-a"><strong>{{ prod_a.nom }}</strong> : <strong>{{ prod_a.delai_jouissance }} mois</strong> · <strong>{{ prod_b.nom }}</strong> : <strong>{{ prod_b.delai_jouissance }} mois</strong>. Plus ce délai est court, plus vite votre capital commence à travailler.</div>
+</div>
+{% endif %}
+<div class="faq-item">
+  <div class="faq-q">Peut-on investir en assurance-vie ?</div>
+  <div class="faq-a">Cela dépend de votre contrat d'assurance-vie. Renseignez-vous auprès de votre assureur ou conseiller en gestion de patrimoine pour vérifier si ces SCPI sont référencées.</div>
+</div>
+<div class="faq-item">
+  <div class="faq-q">Quel est le risque de perte en capital ?</div>
+  <div class="faq-a">Comme toute SCPI, <strong>{{ prod_a.nom }}</strong> et <strong>{{ prod_b.nom }}</strong> présentent un risque de perte en capital. La valeur des parts peut évoluer à la hausse comme à la baisse. Les performances passées ne préjugent pas des performances futures.</div>
+</div>
+<div class="faq-item">
+  <div class="faq-q">Le démembrement est-il possible sur ces SCPI ?</div>
+  <div class="faq-a">Le démembrement (nue-propriété / usufruit) dépend des conditions proposées par <strong>{{ prod_a.marque }}</strong> et <strong>{{ prod_b.marque }}</strong>. Consultez directement les sociétés de gestion ou votre conseiller en gestion de patrimoine.</div>
+</div>
+{% endblock %}
+
+{% block aff_notice %}
+<div class="disclaimer">
+  <div class="disclaimer-title">⚠️ Avertissement financier et réglementaire</div>
+  <p>Ce comparatif est fourni à titre informatif uniquement et ne constitue pas un conseil en investissement personnalisé au sens de la directive MiFID II. Investir en SCPI comporte des risques, dont la perte partielle ou totale du capital investi. La liquidité n'est pas garantie. Les rendements affichés sont ceux des exercices passés et ne préjugent pas des performances futures. Avant tout investissement, consultez un conseiller en gestion de patrimoine (CGP) agréé par l'AMF. Les données sont actualisées à la date de publication, vérifiez toujours les informations directement auprès des sociétés de gestion.</p>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{% if (prod_a.geo is defined and prod_b.geo is defined) or (prod_a.secteurs is defined and prod_b.secteurs is defined) %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+(function(){
+  var GEO_COLORS=['#185FA5','#378ADD','#85B7EB','#B5D4F4','#E6F1FB','#0C447C'];
+  var SEC_COLORS=['#1D9E75','#5DCAA5','#9FE1CB','#3B6D11','#639922','#97C459'];
+
+  function parseData(str){
+    if(!str || str === 'None' || str === '') return {labels:[],data:[]};
+    // Nettoie les guillemets éventuels
+    str = str.replace(/^["']|["']$/g, '').trim();
+    var labels=[],data=[];
+    str.split(',').forEach(function(s){
+      var p=s.trim().split(':');
+      if(p.length===2 && p[0].trim() && !isNaN(parseFloat(p[1]))){
+        labels.push(p[0].trim());
+        data.push(parseFloat(p[1]));
+      }
+    });
+    return {labels:labels,data:data};
+  }
+
+  function makeDonut(id,d,colors){
+    var el=document.getElementById(id);
+    if(!el) return;
+    new Chart(el,{
+      type:'doughnut',
+      data:{
+        labels:d.labels,
+        datasets:[{data:d.data,backgroundColor:colors.slice(0,d.data.length),borderWidth:2,borderColor:'transparent',hoverOffset:6}]
+      },
+      options:{
+        responsive:true,maintainAspectRatio:true,cutout:'62%',
+        plugins:{
+          legend:{display:false},
+          tooltip:{callbacks:{label:function(c){return ' '+c.label+' : '+c.parsed+'%';}}}
+        }
+      }
+    });
+  }
+
+  function makeLegend(id,labels,colors){
+    var el=document.getElementById(id);
+    if(!el) return;
+    labels.forEach(function(l,i){
+      var s=document.createElement('span');
+      s.style.cssText='display:flex;align-items:center;gap:4px;';
+      s.innerHTML='<span style="width:10px;height:10px;border-radius:2px;background:'+colors[i]+'"></span>'+l;
+      el.appendChild(s);
+    });
+  }
+
+  {% if prod_a.geo and prod_b.geo and prod_a.geo != 'None' and prod_b.geo != 'None' %}
+  var geoA=parseData('{{ prod_a.geo | replace("'", "\\'") }}');
+  var geoB=parseData('{{ prod_b.geo | replace("'", "\\'") }}');
+  if(geoA.labels.length > 0 && geoB.labels.length > 0){
+    makeDonut('geo-a-{{ slug_a }}',geoA,GEO_COLORS);
+    makeDonut('geo-b-{{ slug_b }}',geoB,GEO_COLORS);
+    var allGeoLabels=[...new Set([...geoA.labels,...geoB.labels])];
+    makeLegend('legend-geo-{{ slug_a }}',allGeoLabels,GEO_COLORS);
+  }
+  {% endif %}
+
+  {% if prod_a.secteurs and prod_b.secteurs and prod_a.secteurs != 'None' and prod_b.secteurs != 'None' %}
+  var secA=parseData('{{ prod_a.secteurs | replace("'", "\\'") }}');
+  var secB=parseData('{{ prod_b.secteurs | replace("'", "\\'") }}');
+  if(secA.labels.length > 0 && secB.labels.length > 0){
+    makeDonut('sec-a-{{ slug_a }}',secA,SEC_COLORS);
+    makeDonut('sec-b-{{ slug_b }}',secB,SEC_COLORS);
+    var allSecLabels=[...new Set([...secA.labels,...secB.labels])];
+    makeLegend('legend-sec-{{ slug_a }}',allSecLabels,SEC_COLORS);
+  }
+  {% endif %}
+})();
+</script>
+{% endif %}
+{% endblock %}
