@@ -26,8 +26,8 @@ ROOT      = Path(__file__).parent.parent
 SITES_DIR = ROOT / "sites"
 MODEL     = "claude-sonnet-4-20250514"
 MAX_TOKENS = 4096
-MAX_RETRIES = 3
-RETRY_DELAY = 3  # secondes
+MAX_RETRIES = 5
+RETRY_DELAY = 10  # secondes
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 if not ANTHROPIC_API_KEY:
@@ -59,7 +59,11 @@ def call_claude(prompt: str) -> str:
                 return data["content"][0]["text"]
 
         except Exception as e:
-            wait = RETRY_DELAY * (2 ** attempt)
+            err_str = str(e)
+            # 529 = API surchargée, attendre plus longtemps
+            is_529 = '529' in err_str
+            wait = (30 if is_529 else RETRY_DELAY) * (2 ** attempt)
+            wait = min(wait, 120)  # max 2 minutes
             print(f"    ⚠ Tentative {attempt+1}/{MAX_RETRIES} échouée : {e}")
             if attempt < MAX_RETRIES - 1:
                 print(f"    ⏳ Nouvelle tentative dans {wait}s...")
@@ -71,16 +75,21 @@ def call_claude(prompt: str) -> str:
 
 
 def parse_json(text: str, context: str = "") -> dict:
-    """Parse JSON depuis la réponse Claude (enlève les backticks markdown si présents)."""
+    """Parse JSON depuis la réponse Claude."""
+    import re
     text = text.strip()
+    # Enlève les backticks markdown
     if text.startswith("```"):
         lines = text.split("\n")
-        # Trouve le début et la fin du bloc
         start = 1
         end = len(lines) - 1
         if lines[-1].strip() == "```":
             end = len(lines) - 1
         text = "\n".join(lines[start:end])
+    # Nettoie le markdown DANS les valeurs JSON (** bold **)
+    # Remplace **"valeur"** par "valeur" dans les strings JSON
+    text = re.sub(r'\*\*"([^"]*)"\*\*', r'"\1"', text)
+    text = re.sub(r'\*\*([^*"]+)\*\*', r'\1', text)
     try:
         return json.loads(text)
     except json.JSONDecodeError as e:
@@ -271,6 +280,7 @@ def generate_pairs(products: list, site_dir: Path, year: int) -> None:
                 editorial[key] = data
                 save_json(editorial_path, editorial)
                 print("✓")
+            time.sleep(1)  # Pause entre appels pour éviter 529
             else:
                 print("⚠ JSON vide")
                 failures.append(key)
