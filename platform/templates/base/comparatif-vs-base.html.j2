@@ -41,9 +41,25 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'{{ theme.font_body }}',sans-serif;background:var(--bg);color:var(--ink);font-size:18px;line-height:1.75}
 a{color:inherit;text-decoration:none}
-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
-.nav-logo{font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:17px;color:#fff}.nav-logo span{color:var(--accent2)}
-.nav-links{display:flex;gap:24px}.nav-links a{color:rgba(255,255,255,.6);font-size:13px}.nav-links a:hover{color:#fff}
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav-logo{font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-links a.active{color:#fff;font-weight:600}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--accent2);color:#fff;font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
+.nav-cta:hover{opacity:.88}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;font-weight:500;padding:12px 16px;border-radius:10px;transition:.15s}
+.nav-mobile a:hover,.nav-mobile a.active{color:#fff;background:rgba(255,255,255,.08)}
+.nav-mobile .nav-cta{margin-top:8px;justify-content:center;border-radius:12px}
 .crumb{max-width:1200px;margin:0 auto;padding:8px 5vw;font-size:12px;color:var(--ink3)}
 .crumb a{color:var(--accent)}
 main{max-width:1200px;margin:0 auto;padding:0 5vw 64px}
@@ -106,13 +122,14 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);text-align:center;paddin
 footer a{color:rgba(255,255,255,.4)}
 .aff-notice{font-size:13px;color:var(--ink3);text-align:center;padding:20px 5vw;line-height:1.6;max-width:900px;margin:0 auto}
 {% block extra_css %}{% endblock %}
-@media(max-width:600px){
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .nav-burger{display:flex}
   .comp-block-header{grid-template-columns:100px 1fr 1fr;gap:8px}
   td.crit-label{width:130px;padding:10px 12px;font-size:13px;white-space:normal}
   table.comp td{padding:10px 10px;font-size:15px}
   .pros-cons{grid-template-columns:1fr}
   .verdict-grid{grid-template-columns:1fr}
-  .nav-links{display:none}
   .model-body{flex-direction:column}
   .model-photo-wrap{width:100%}
   .aff-notice{padding:20px 16px}
@@ -121,16 +138,7 @@ footer a{color:rgba(255,255,255,.4)}
 </head>
 <body>
 
-<nav>
-  <a href="/" class="nav-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></a>
-  <div class="nav-links">
-    <a href="/#comparateur">Comparateur</a>
-    <a href="comparatifs-scpi.html">Comparatifs SCPI</a>
-    <a href="avis-scpi.html">Avis SCPI</a>
-  </div>
-</nav>
-
-<div class="crumb">
+{% include "base/_nav.html.j2" %}<div class="crumb">
   <a href="/">Accueil</a> ›
   <a href="comparatifs-scpi.html">{{ site.seo.category_label }}</a> ›
   {{ prod_a.nom }} vs {{ prod_b.nom }}
@@ -399,5 +407,20 @@ document.querySelectorAll('.faq-q').forEach(function(q){
 });
 </script>
 {% block extra_js %}{% endblock %}
+<script>
+function toggleMenu(){
+  var m=document.getElementById('nav-mobile');
+  var b=document.getElementById('burger');
+  m.classList.toggle('open');
+  b.classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  var m=document.getElementById('nav-mobile');
+  var b=document.getElementById('burger');
+  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){
+    m.classList.remove('open');b.classList.remove('open');
+  }
+});
+</script>
 </body>
 </html>
