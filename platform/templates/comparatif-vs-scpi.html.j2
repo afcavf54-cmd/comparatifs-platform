@@ -89,8 +89,8 @@
     "name": "{{ site.name }}",
     "url": "{{ site.domain }}"
   },
-  "datePublished": "{{ build_date }}",
-  "dateModified": "{{ build_date }}",
+  "datePublished": "{{ build_date | fr_date }}",
+  "dateModified": "{{ build_date | fr_date }}",
   "itemReviewed": {
     "@type": "Product",
     "name": "Comparatif {{ prod_a.nom }} vs {{ prod_b.nom }}"
@@ -558,7 +558,7 @@ main h3{margin-top:1.8em;margin-bottom:0.5em}
   <div class="author-avatar">E</div>
   <div>
     <div class="author-name">Équipe éditoriale {{ site.name }}</div>
-    <div class="author-title">Analyse basée sur les données officielles des sociétés de gestion · Actualisé le {{ build_date }}</div>
+    <div class="author-title">Analyse basée sur les données officielles des sociétés de gestion · Actualisé le {{ build_date | fr_date }}</div>
   </div>
 </div>
 {% endblock %}
