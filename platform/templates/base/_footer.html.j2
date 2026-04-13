@@ -1,0 +1,71 @@
+<style>
+.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .footer-logo{font-family:'{{ theme.font_title }}',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px}
+.footer-brand .footer-logo span{color:var(--accent2)}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;max-width:260px}
+.footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
+.footer-bottom-right{display:flex;gap:20px}
+.footer-bottom-right a{font-size:12px;color:rgba(255,255,255,.3);transition:.15s}
+.footer-bottom-right a:hover{color:rgba(255,255,255,.7)}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-brand{grid-column:1/-1}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+}
+</style>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="footer-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></div>
+        <p>Comparatifs SCPI indépendants. {{ total_pairs | default(45) }} analyses détaillées pour choisir la meilleure SCPI selon votre profil.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Comparatifs</h4>
+        <a href="/comparatifs-scpi.html">Tous les comparatifs</a>
+        {% for prod in products | default([]) %}
+        <a href="/avis-{{ prod.slug }}.html">{{ prod.nom }}</a>
+        {% endfor %}
+      </div>
+
+      <div class="footer-col">
+        <h4>Plan du site</h4>
+        <a href="/">Accueil</a>
+        <a href="/comparatifs-scpi.html">Comparatifs SCPI</a>
+        <a href="/avis-scpi.html">Avis SCPI</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/mentions-legales.html">Mentions légales</a>
+        <a href="/politique-confidentialite.html">Confidentialité</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>À propos</h4>
+        <a href="/mentions-legales.html">Qui sommes-nous ?</a>
+        <a href="/contact.html">Nous contacter</a>
+        <a href="/politique-confidentialite.html">Données personnelles</a>
+        <a href="/sitemap.xml" target="_blank">Sitemap XML</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        © {{ site.year }} {{ site.domain | replace('https://www.', '') | replace('https://', '') }} — Données actualisées le {{ build_date | fr_date }}. Les performances passées ne préjugent pas des performances futures.
+      </div>
+      <div class="footer-bottom-right">
+        <a href="/mentions-legales.html">Mentions légales</a>
+        <a href="/politique-confidentialite.html">Confidentialité</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
