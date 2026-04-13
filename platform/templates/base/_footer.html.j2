@@ -1,7 +1,7 @@
 <style>
 .footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
 .footer-inner{max-width:1200px;margin:0 auto}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
 .footer-brand .footer-logo{font-family:'{{ theme.font_title }}',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px}
 .footer-brand .footer-logo span{color:var(--accent2)}
 .footer-brand p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;max-width:260px}
@@ -30,19 +30,9 @@
       </div>
 
       <div class="footer-col">
-        <h4>Comparatifs</h4>
-        <a href="/comparatifs-scpi.html">Tous les comparatifs</a>
-        {% for prod in products | default([]) %}
-        <a href="/avis-{{ prod.slug }}.html">{{ prod.nom }}</a>
-        {% endfor %}
-      </div>
-
-      <div class="footer-col">
-        <h4>Plan du site</h4>
-        <a href="/">Accueil</a>
+        <h4>Navigation</h4>
         <a href="/comparatifs-scpi.html">Comparatifs SCPI</a>
         <a href="/avis-scpi.html">Avis SCPI</a>
-        <a href="/contact.html">Contact</a>
         <a href="/mentions-legales.html">Mentions légales</a>
         <a href="/politique-confidentialite.html">Confidentialité</a>
       </div>
@@ -52,7 +42,6 @@
         <a href="/mentions-legales.html">Qui sommes-nous ?</a>
         <a href="/contact.html">Nous contacter</a>
         <a href="/politique-confidentialite.html">Données personnelles</a>
-        <a href="/sitemap.xml" target="_blank">Sitemap XML</a>
       </div>
 
     </div>
