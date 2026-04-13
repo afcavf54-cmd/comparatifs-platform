@@ -1,96 +1,112 @@
 """
 Règles éditoriales centralisées — appliquées à tous les sites.
-Modifier ce fichier = applicable à tous les futurs sites.
+Modifier ce fichier suffit pour changer le formatage sur toute la plateforme.
 """
-
 import re
+import json
+from pathlib import Path
 
-def format_text(text: str) -> str:
-    """
-    Applique les règles éditoriales à un bloc de texte HTML :
-    - Coupe après 3 phrases max → nouveau paragraphe
-    - Ajoute du gras sur les chiffres clés et termes importants
-    - Nettoie les tirets longs
-    """
-    if not text:
+# Charge les règles depuis editorial-rules.json si disponible
+_rules_path = Path(__file__).parent.parent.parent / "editorial-rules.json"
+_rules = {}
+if _rules_path.exists():
+    with open(_rules_path, encoding="utf-8") as f:
+        _rules = json.load(f)
+
+# ── Paramètres ──────────────────────────────────────────────────────────────
+MAX_CHARS_PER_PARA = (
+    _rules.get("text_formatting", {}).get("chars_per_line_estimate", 80) *
+    _rules.get("text_formatting", {}).get("max_lines_per_paragraph", 3)
+)  # ~240 chars = 3 lignes de 80 chars
+
+BOLD_PATTERNS = [
+    r'\b(\d+[,.]?\d*\s*%)',
+    r'\b(\d+[,.]?\d*\s*€)',
+    r'\b(\d+[,.]?\d*\s*M€)',
+    r'\b(TD|TRI|TOF|PGA|CGP|AMF|ISR)\b',
+    r'\b(0\s*%|zéro frais|sans frais d\'entrée|sans frais)\b',
+]
+
+FIELDS_TO_FORMAT = {"description_a", "description_b", "mix_text", "description"}
+
+
+def format_text(text: str, product_names: list = None) -> str:
+    """Formate un texte HTML : paragraphes 3 lignes max + gras automatique."""
+    if not text or not isinstance(text, str):
         return text
 
-    # 1. Nettoie les tirets longs
-    text = text.replace('—', '-').replace('–', '-')
+    # 1. Nettoie tirets longs
+    text = text.replace("—", " ").replace("–", "-")
 
-    # 2. Si le texte est déjà en HTML avec <p>, on respecte la structure
-    if '<p>' in text:
-        return _bold_keywords(text)
+    # 2. Split en blocs existants
+    parts = re.split(r'<br\s*/?>\s*<br\s*/?>', text)
+    if len(parts) == 1:
+        parts = re.split(r'\n{2,}', text)
 
-    # 3. Découpe en phrases
-    sentences = re.split(r'(?<=[.!?])\s+', text.strip())
+    # 3. Redécoupe les blocs trop longs aux phrases
+    new_parts = []
+    for part in parts:
+        part = part.strip()
+        if not part:
+            continue
+        if len(part) > MAX_CHARS_PER_PARA:
+            sentences = re.split(r'(?<=[.!?])\s+', part)
+            chunk = ""
+            for s in sentences:
+                if len(chunk) + len(s) > MAX_CHARS_PER_PARA and chunk:
+                    new_parts.append(chunk.strip())
+                    chunk = s
+                else:
+                    chunk = (chunk + " " + s).strip() if chunk else s
+            if chunk:
+                new_parts.append(chunk.strip())
+        else:
+            new_parts.append(part)
 
-    # 4. Regroupe par blocs de 3 phrases max
-    paragraphs = []
-    for i in range(0, len(sentences), 3):
-        chunk = ' '.join(sentences[i:i+3])
-        if chunk:
-            paragraphs.append(chunk)
-
-    # 5. Reconstruit en HTML avec <p>
-    html = '\n'.join(f'<p>{p}</p>' for p in paragraphs if p.strip())
-
-    # 6. Ajoute le gras
-    html = _bold_keywords(html)
-
-    return html
-
-
-def _bold_keywords(text: str) -> str:
-    """
-    Met en gras :
-    - Les chiffres avec % ou € (ex: 9%, 250€, 7,5%)
-    - Les chiffres importants (ex: 10 ans, 5 000€)
-    - Certains mots clés financiers/stratégiques
-    Ne double pas les <strong> déjà présents.
-    """
-    # Ne pas re-bolde ce qui est déjà en gras
-    if text.count('<strong>') > 5:
-        return text
-
-    # Chiffres avec unités
-    text = re.sub(
-        r'(?<!</strong>)(?<!>)(\d+[\.,]?\d*\s*(?:%|€|M€|milliards?|millions?|ans?|mois|parts?))',
-        r'<strong>\1</strong>',
-        text
+    # 4. Rejoint en paragraphes HTML
+    text = "\n\n".join(
+        f'<p style="margin-bottom:1.1em">{p}</p>' if not p.startswith("<p") else p
+        for p in new_parts if p
     )
 
-    # Mots clés financiers importants (seulement si pas déjà dans un tag)
-    KEYWORDS = [
-        'sans frais d\'entrée', '0% de frais', 'zéro frais',
-        'taux de distribution', 'hors France', '100% hors France',
-        'label ISR', 'track record', 'zéro endettement',
-        'capital variable', 'capital fixe',
-        'diversification', 'rendement', 'performance',
-    ]
-    for kw in KEYWORDS:
-        # Évite de bolde dans les attributs HTML
-        text = re.sub(
-            r'(?<!["\'/=>])(' + re.escape(kw) + r')(?!["\'/])',
-            r'<strong>\1</strong>',
-            text, flags=re.IGNORECASE, count=1
-        )
+    # 5. Gras automatique sur patterns clés
+    def add_bold(t: str, pattern: str) -> str:
+        result = []
+        last = 0
+        for m in re.finditer(pattern, t, flags=re.IGNORECASE):
+            before = t[last:m.start()]
+            # Ne pas doubler le gras
+            if t[max(0, m.start()-8):m.start()].endswith('<strong>'):
+                result.append(before + m.group(0))
+            else:
+                result.append(before + f"<strong>{m.group(0)}</strong>")
+            last = m.end()
+        result.append(t[last:])
+        return "".join(result)
 
-    # Nettoie les doubles strong imbriqués
-    text = re.sub(r'<strong><strong>', '<strong>', text)
-    text = re.sub(r'</strong></strong>', '</strong>', text)
-    text = re.sub(r'<strong>([^<]*)</strong>(\s*)<strong>', r'<strong>\1\2', text)
+    for pattern in BOLD_PATTERNS:
+        text = add_bold(text, pattern)
+
+    # 6. Gras sur noms de produits
+    if product_names:
+        for name in sorted(product_names, key=len, reverse=True):
+            if len(name) > 3:
+                escaped = re.escape(name)
+                text = re.sub(
+                    rf'(?<!<strong>)\b({escaped})\b(?!</strong>)',
+                    r'<strong>\1</strong>',
+                    text
+                )
 
     return text
 
 
-def format_editorial(editorial: dict) -> dict:
-    """
-    Applique format_text à tous les champs textuels d'un dict éditorial.
-    """
-    text_fields = ['description_a', 'description_b', 'mix_text']
-    result = dict(editorial)
-    for field in text_fields:
-        if field in result and result[field]:
-            result[field] = format_text(result[field])
+def format_editorial(ed: dict, product_names: list = None) -> dict:
+    """Applique format_text sur tous les champs texte d'un dict éditorial."""
+    result = {}
+    for key, value in ed.items():
+        if key in FIELDS_TO_FORMAT and isinstance(value, str):
+            result[key] = format_text(value, product_names)
+        else:
+            result[key] = value
     return result
