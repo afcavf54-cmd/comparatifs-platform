@@ -63,11 +63,11 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .crumb{max-width:1200px;margin:0 auto;padding:8px 5vw;font-size:12px;color:var(--ink3)}
 .crumb a{color:var(--accent)}
 main{max-width:1200px;margin:0 auto;padding:0 5vw 64px}
-.hero-vs{text-align:left;padding:16px 0 0}
+.hero-vs{text-align:center;padding:16px 0 0}
 .eyebrow{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:16px}
 h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(38px,5.5vw,72px);font-weight:400;line-height:1.05;letter-spacing:-.025em;margin-bottom:16px;max-width:100%;width:100%}
 h1 em{font-style:italic;color:var(--accent)}
-.intro{font-size:18px;color:var(--ink2);max-width:100%;line-height:1.75;margin:30px 0}
+.intro{font-size:18px;color:var(--ink2);max-width:100%;line-height:1.75;margin:30px 0;text-align:center}
 .comp-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:32px 0}
 .comp-block-header{background:var(--ink);padding:20px 24px;display:grid;grid-template-columns:220px 1fr 1fr;gap:16px;align-items:center}
 .comp-block-header .col-title{font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:20px;color:#fff;text-align:center;display:block}
@@ -131,7 +131,7 @@ footer a{color:rgba(255,255,255,.4)}
   .comp-block-header .col-brand{font-size:10px}
   td.crit-label{width:90px;min-width:90px;padding:10px 8px;font-size:10px;white-space:normal;word-break:break-word}
   table.comp{table-layout:fixed;width:100%}
-  table.comp td{padding:10px 8px;font-size:13px;word-break:break-word;overflow-wrap:break-word}
+  table.comp td{padding:10px 8px;font-size:13px;word-break:break-word;overflow-wrap:break-word;text-align:center}
   colgroup col:first-child{width:90px}
   colgroup col{width:calc((100% - 90px) / 2)}
   .pros-cons{grid-template-columns:1fr}
@@ -183,10 +183,9 @@ footer a{color:rgba(255,255,255,.4)}
     </div>
     <table class="comp">
       <colgroup>
-        <col style="width:200px;min-width:90px">
+        <col style="width:220px;min-width:90px">
         <col>
         <col>
-        <col style="width:calc(50% - 110px)">
       </colgroup>
       <tbody>
         {% for crit in criteria %}
@@ -195,19 +194,19 @@ footer a{color:rgba(255,255,255,.4)}
           {% set val_a = prod_a[crit.field] if crit.field in prod_a else 'N/A' %}
           {% set val_b = prod_b[crit.field] if crit.field in prod_b else 'N/A' %}
           {% if crit.type == 'price' %}
-            <td>{{ val_a }}€</td><td>{{ val_b }}€</td>
+            <td style="text-align:center">{{ val_a }}€</td><td style="text-align:center">{{ val_b }}€</td>
           {% elif crit.type == 'stars' %}
-            <td><span class="stars">{{ '★' * val_a|int }}{{ '☆' * (5 - val_a|int) }}</span></td>
-            <td><span class="stars">{{ '★' * val_b|int }}{{ '☆' * (5 - val_b|int) }}</span></td>
+            <td style="text-align:center"><span class="stars">{{ '★' * val_a|int }}{{ '☆' * (5 - val_a|int) }}</span></td>
+            <td style="text-align:center"><span class="stars">{{ '★' * val_b|int }}{{ '☆' * (5 - val_b|int) }}</span></td>
           {% elif crit.type == 'tag' %}
-            <td><span class="tag tag-{{ val_a }}">{{ val_a|capitalize }}</span></td>
-            <td><span class="tag tag-{{ val_b }}">{{ val_b|capitalize }}</span></td>
+            <td style="text-align:center"><span class="tag tag-{{ val_a }}">{{ val_a|capitalize }}</span></td>
+            <td style="text-align:center"><span class="tag tag-{{ val_b }}">{{ val_b|capitalize }}</span></td>
           {% elif crit.type == 'bool' %}
-            <td>{{ 'Oui' if val_a else 'Non' }}</td>
-            <td>{{ 'Oui' if val_b else 'Non' }}</td>
+            <td style="text-align:center">{{ 'Oui' if val_a else 'Non' }}</td>
+            <td style="text-align:center">{{ 'Oui' if val_b else 'Non' }}</td>
           {% else %}
-            <td>{{ val_a }}{{ crit.suffix if crit.suffix is defined else '' }}</td>
-            <td>{{ val_b }}{{ crit.suffix if crit.suffix is defined else '' }}</td>
+            <td style="text-align:center">{{ val_a }}{{ crit.suffix if crit.suffix is defined else '' }}</td>
+            <td style="text-align:center">{{ val_b }}{{ crit.suffix if crit.suffix is defined else '' }}</td>
           {% endif %}
         </tr>
         {% endfor %}
