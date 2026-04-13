@@ -368,16 +368,7 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
   <div class="disclaimer-inner">⚠️ Ce site est fourni à titre informatif uniquement et ne constitue pas un conseil en investissement. Investir en SCPI comporte des risques dont la perte en capital. Les performances passées ne préjugent pas des performances futures. Consultez un CGP agréé AMF avant tout investissement.</div>
 </div>
 
-<footer>
-  <div class="footer-logo">{{ site.logo_text }}{{ site.logo_accent }}</div>
-  <div>Comparatif SCPI {{ site.year }}, Données actualisées</div>
-  <div class="footer-links">
-    <a href="mentions-legales.html">Mentions légales</a>
-    <a href="politique-confidentialite.html">Confidentialité</a>
-    <a href="#">Contact</a>
-  </div>
-  <div style="margin-top:16px;font-size:11px;opacity:.5">© {{ site.year }} {{ site.domain | replace('https://www.', '') }}, Tous droits réservés</div>
-</footer>
+{% include "base/_footer.html.j2" %}
 
 {% if site.analytics_clicky %}
 <script async data-id="{{ site.analytics_clicky }}" src="//static.getclicky.com/js"></script>
