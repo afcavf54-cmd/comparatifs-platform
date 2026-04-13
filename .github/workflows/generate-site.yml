@@ -1,0 +1,51 @@
+name: Generate Site
+
+on:
+  workflow_dispatch:
+    inputs:
+      site:
+        description: 'Site slug (ex: scpi, meilleures-scpi)'
+        required: true
+        type: string
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install pyyaml jinja2 requests
+
+      - name: Generate AI editorial content
+        run: python platform/scripts/enrich_editorial.py --site ${{ inputs.site }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Generate static site
+        run: python platform/scripts/generate.py --site ${{ inputs.site }}
+
+      - name: Commit generated files
+        run: |
+          git config user.name "Viseoweb HUB"
+          git config user.email "hub@viseoweb.com"
+          git add platform/sites/${{ inputs.site }}/
+          git diff --cached --quiet || git commit -m "Generated: ${{ inputs.site }} [$(date +%Y-%m-%d)]"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ inputs.site }}
+          directory: platform/sites/${{ inputs.site }}/output
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
