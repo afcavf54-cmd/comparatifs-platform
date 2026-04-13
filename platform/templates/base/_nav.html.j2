@@ -5,6 +5,9 @@ nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;posit
 .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px}
 .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
 .nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.1)}
+.nav-logo-inline{font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:16px;color:#fff!important;padding:6px 14px;border-radius:24px}
+.nav-logo-inline span{color:var(--accent2)}
+.nav-logo-inline:hover{background:rgba(255,255,255,.1)!important}
 .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--accent2);color:#fff;font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
 .nav-cta:hover{opacity:.88}
 .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
@@ -22,22 +25,20 @@ nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;posit
 
 <nav>
   <div class="nav-inner">
-    <a href="/" class="nav-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></a>
     <div class="nav-links">
-      <a href="/#comparateur">Comparateur</a>
+      <a href="/" class="nav-logo-inline">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></a>
       <a href="/comparatifs-scpi.html">Comparatifs SCPI</a>
       <a href="/avis-scpi.html">Avis SCPI</a>
     </div>
-    <a href="/#comparateur" class="nav-cta">Comparer →</a>
+    <a href="/contact.html" class="nav-cta">Contact →</a>
     <button class="nav-burger" id="burger" aria-label="Menu" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-mobile" id="nav-mobile">
-    <a href="/#comparateur">Comparateur</a>
     <a href="/comparatifs-scpi.html">Comparatifs SCPI</a>
     <a href="/avis-scpi.html">Avis SCPI</a>
-    <a href="/#comparateur" class="nav-cta">Comparer →</a>
+    <a href="/contact.html" class="nav-cta">Contact →</a>
   </div>
 </nav>
 
