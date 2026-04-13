@@ -24,7 +24,7 @@ from pathlib import Path
 # ── Config ────────────────────────────────────────────────────────────────────
 ROOT      = Path(__file__).parent.parent
 SITES_DIR = ROOT / "sites"
-MODEL     = "claude-sonnet-4-20250514"
+MODEL     = "claude-haiku-4-5-20251001"
 MAX_TOKENS = 4096
 MAX_RETRIES = 5
 RETRY_DELAY = 10  # secondes
@@ -286,7 +286,7 @@ def generate_pairs(products: list, site_dir: Path, year: int) -> None:
         except Exception as e:
             print(f"❌ {e}")
             failures.append(key)
-        time.sleep(1)  # Pause entre appels pour éviter 529
+        time.sleep(5)  # Pause entre appels pour éviter 529
 
     if failures:
         print(f"  ❌ {len(failures)} paires échouées : {failures}")
@@ -354,7 +354,21 @@ def main():
     parser.add_argument("--site", required=True, help="Slug du site (ex: scpi)")
     parser.add_argument("--only", choices=["pairs", "products", "site"],
                         help="Générer seulement une catégorie")
+    parser.add_argument("--schedule", help="Heure de lancement au format HH:MM (ex: 02:00)")
     args = parser.parse_args()
+
+    # Attendre l'heure programmée si --schedule est spécifié
+    if args.schedule:
+        from datetime import datetime, timedelta
+        target_h, target_m = map(int, args.schedule.split(":"))
+        now = datetime.now()
+        target = now.replace(hour=target_h, minute=target_m, second=0, microsecond=0)
+        if target <= now:
+            target += timedelta(days=1)  # Demain si l'heure est déjà passée
+        wait_sec = (target - now).total_seconds()
+        print(f"  ⏰ Démarrage programmé à {args.schedule} (dans {int(wait_sec//3600)}h{int((wait_sec%3600)//60)}min)")
+        time.sleep(wait_sec)
+        print(f"  🚀 Démarrage !")
 
     site_dir = SITES_DIR / args.site
     if not site_dir.exists():
