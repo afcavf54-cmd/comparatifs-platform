@@ -1,0 +1,191 @@
+name: Nightly Site Generation
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # Chaque nuit à 1h UTC (3h France)
+  workflow_dispatch:      # Déclenchement manuel possible aussi
+
+jobs:
+  generate-pending:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install pyyaml jinja2 requests
+
+      - name: Find and process pending sites
+        run: |
+          python3 << 'PYEOF'
+          import json, subprocess, sys
+          from pathlib import Path
+
+          hub_path = Path("hub.config.json")
+          if not hub_path.exists():
+              print("Aucun hub.config.json trouvé")
+              sys.exit(0)
+
+          with open(hub_path) as f:
+              hub = json.load(f)
+
+          pending = [s for s in hub.get("sites", [])
+                     if s.get("status") in ("building", "pending_generation", "generation_incomplete")]
+
+          if not pending:
+              print("Aucun site en attente de génération")
+              sys.exit(0)
+
+          print(f"{len(pending)} site(s) à traiter : {[s['id'] for s in pending]}")
+
+          for site in pending:
+              site_id = site["id"]
+              print(f"\n{'='*50}")
+              print(f"Traitement : {site_id}")
+
+              # Lance enrich_editorial avec skip-existing (retente seulement les manquants)
+              result = subprocess.run(
+                  ["python3", "platform/scripts/enrich_editorial.py",
+                   "--site", site_id, "--skip-existing"],
+                  capture_output=False
+              )
+
+              # Vérifie si tout est complet
+              status_file = Path(f"platform/sites/{site_id}/generation_status.json")
+              if status_file.exists():
+                  with open(status_file) as f:
+                      status = json.load(f)
+                  pairs_ok = status.get("pairs_complete", False)
+                  products_ok = status.get("products_complete", False)
+                  site_ok = Path(f"platform/sites/{site_id}/site_editorial.json").exists()
+
+                  if pairs_ok and products_ok and site_ok:
+                      print(f"✅ {site_id} : génération complète → lancement du build")
+                      # Lance le build et le deploy
+                      subprocess.run(
+                          ["python3", "platform/scripts/generate.py", "--site", site_id]
+                      )
+                      # Met à jour le statut dans hub.config.json
+                      for s in hub["sites"]:
+                          if s["id"] == site_id:
+                              s["status"] = "deploying"
+                              break
+                  else:
+                      done_pairs = status.get("pairs_done", 0)
+                      total_pairs = status.get("pairs_total", 45)
+                      print(f"⏳ {site_id} : {done_pairs}/{total_pairs} paires — sera retenté demain")
+                      for s in hub["sites"]:
+                          if s["id"] == site_id:
+                              s["status"] = "generation_incomplete"
+                              s["generation_progress"] = f"{done_pairs}/{total_pairs}"
+                              break
+
+          # Sauvegarde hub.config.json mis à jour
+          with open(hub_path, "w") as f:
+              json.dump(hub, f, indent=2, ensure_ascii=False)
+          PYEOF
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Commit generated files
+        run: |
+          git config user.name "Viseoweb HUB"
+          git config user.email "hub@viseoweb.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git add platform/sites/ hub.config.json
+          git diff --cached --quiet || git commit -m "Nightly generation [$(date +%Y-%m-%d)]"
+          git pull --rebase origin main
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy completed sites
+        run: |
+          python3 << 'PYEOF'
+          import json, subprocess
+          from pathlib import Path
+
+          hub_path = Path("hub.config.json")
+          with open(hub_path) as f:
+              hub = json.load(f)
+
+          to_deploy = [s for s in hub.get("sites", []) if s.get("status") == "deploying"]
+
+          for site in to_deploy:
+              site_id = site["id"]
+              output_dir = f"platform/sites/{site_id}/output"
+
+              if not Path(output_dir).exists():
+                  print(f"⚠ Pas d'output pour {site_id}")
+                  continue
+
+              print(f"Deploy {site_id}...")
+              # Le deploy est fait via wrangler dans le step suivant
+              print(f"✅ {site_id} prêt pour deploy")
+          PYEOF
+
+      - name: Deploy to Cloudflare Pages
+        run: |
+          python3 << 'PYEOF'
+          import json, subprocess, os
+          from pathlib import Path
+
+          hub_path = Path("hub.config.json")
+          with open(hub_path) as f:
+              hub = json.load(f)
+
+          to_deploy = [s for s in hub.get("sites", []) if s.get("status") == "deploying"]
+          if not to_deploy:
+              print("Aucun site à déployer")
+              exit(0)
+
+          account_id = os.environ["CLOUDFLARE_ACCOUNT_ID"]
+          api_token = os.environ["CLOUDFLARE_API_TOKEN"]
+
+          for site in to_deploy:
+              site_id = site["id"]
+              output_dir = f"platform/sites/{site_id}/output"
+              if not Path(output_dir).exists():
+                  continue
+
+              print(f"Deploy {site_id} → Cloudflare Pages...")
+              subprocess.run([
+                  "npx", "wrangler", "pages", "deploy", output_dir,
+                  f"--project-name={site_id}",
+                  "--branch=main",
+                  "--commit-dirty=true"
+              ], env={**os.environ, "CLOUDFLARE_API_TOKEN": api_token, "CLOUDFLARE_ACCOUNT_ID": account_id})
+
+              # Met à jour le statut
+              for s in hub["sites"]:
+                  if s["id"] == site_id:
+                      s["status"] = "live"
+                      from datetime import datetime
+                      s["last_deployed"] = datetime.now().isoformat()
+                      break
+
+          with open(hub_path, "w") as f:
+              json.dump(hub, f, indent=2, ensure_ascii=False)
+          PYEOF
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Final commit with deploy status
+        run: |
+          git config user.name "Viseoweb HUB"
+          git config user.email "hub@viseoweb.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git add hub.config.json
+          git diff --cached --quiet || git commit -m "Deploy status update [$(date +%Y-%m-%d)]"
+          git pull --rebase origin main
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
