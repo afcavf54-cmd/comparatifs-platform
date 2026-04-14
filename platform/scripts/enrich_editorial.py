@@ -355,9 +355,16 @@ def generate_pairs(products: list, site_dir: Path, year: int, skip_existing: boo
             failures.append(key)
         time.sleep(5)  # Pause entre appels pour éviter 529
 
+    # Sauvegarde le statut (paires manquantes)
+    status = load_json(site_dir / "generation_status.json")
+    status["pairs_total"] = len(pairs)
+    status["pairs_done"] = len(editorial)
+    status["pairs_failed"] = failures
+    status["pairs_complete"] = len(failures) == 0
+    save_json(site_dir / "generation_status.json", status)
+
     if failures:
-        print(f"  ❌ {len(failures)} paires échouées : {failures}")
-        sys.exit(1)
+        print(f"  ⚠ {len(failures)} paires incomplètes (seront retentées) : {failures}")
     print(f"  ✅ {len(editorial)}/{len(pairs)} paires générées → editorial.json")
 
 
@@ -391,9 +398,15 @@ def generate_products(products: list, site_dir: Path, year: int, skip_existing: 
             print(f"❌ {e}")
             failures.append(slug)
 
+    status = load_json(site_dir / "generation_status.json")
+    status["products_total"] = len(products)
+    status["products_done"] = len(products_editorial)
+    status["products_failed"] = failures
+    status["products_complete"] = len(failures) == 0
+    save_json(site_dir / "generation_status.json", status)
+
     if failures:
-        print(f"  ❌ {len(failures)} produits échoués : {failures}")
-        sys.exit(1)
+        print(f"  ⚠ {len(failures)} produits incomplets (seront retentés)")
     print(f"  ✅ {len(products_editorial)}/{len(products)} produits générés → products_editorial.json")
 
 
@@ -410,11 +423,20 @@ def generate_site(site_config: dict, site_dir: Path) -> None:
             save_json(site_editorial_path, data)
             print("✓ → site_editorial.json")
         else:
-            print("⚠ JSON vide")
-            sys.exit(1)
+            print("⚠ JSON vide, sera retenté")
     except Exception as e:
-        print(f"❌ {e}")
-        sys.exit(1)
+        print(f"⚠ Erreur site editorial : {e}, sera retenté")
+
+
+def is_generation_complete(site_dir: Path) -> bool:
+    """Vérifie si tous les textes sont générés."""
+    status = load_json(site_dir / "generation_status.json")
+    return (
+        status.get("pairs_complete", False) and
+        status.get("products_complete", False) and
+        (site_dir / "site_editorial.json").exists() and
+        load_json(site_dir / "site_editorial.json") != {}
+    )
 
 
 # ── CLI ───────────────────────────────────────────────────────────────────────
