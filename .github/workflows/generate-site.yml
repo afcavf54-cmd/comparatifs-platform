@@ -12,6 +12,11 @@ on:
         required: false
         type: string
         default: ''
+      skip_existing:
+        description: 'Sauter les textes déjà générés (économise les tokens API)'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   generate:
@@ -31,11 +36,14 @@ jobs:
 
       - name: Generate AI editorial content
         run: |
+          CMD="python platform/scripts/enrich_editorial.py --site ${{ inputs.site }}"
           if [ -n "${{ inputs.schedule }}" ]; then
-            python platform/scripts/enrich_editorial.py --site ${{ inputs.site }} --schedule ${{ inputs.schedule }}
-          else
-            python platform/scripts/enrich_editorial.py --site ${{ inputs.site }}
+            CMD="$CMD --schedule ${{ inputs.schedule }}"
           fi
+          if [ "${{ inputs.skip_existing }}" = "true" ]; then
+            CMD="$CMD --skip-existing"
+          fi
+          $CMD
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
