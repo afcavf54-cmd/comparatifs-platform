@@ -141,7 +141,7 @@ seo:
   const newSite = {
     id, name, niche: niche || 'comparatif',
     domain: domainClean, sheet_csv_url: sheet_csv_url || '',
-    description: description || '', status: 'building',
+    description: description || '', status: 'pending_generation',
     created_at: new Date().toISOString(),
   }
   hubConfig.sites.push(newSite)
