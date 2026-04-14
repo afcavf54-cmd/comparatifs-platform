@@ -7,16 +7,16 @@ on:
         description: 'Site slug (ex: scpi, comparateur-scpi)'
         required: true
         type: string
-      schedule:
-        description: 'Heure de lancement HH:MM en UTC (ex: 01:00 pour 3h du matin en France). Laisser vide pour démarrer immédiatement.'
-        required: false
-        type: string
-        default: ''
-      skip_existing:
-        description: 'Sauter les textes déjà générés (économise les tokens API)'
+      skip_enrich:
+        description: 'Sauter la génération IA (utilise les textes déjà générés)'
         required: false
         type: boolean
         default: false
+      schedule:
+        description: 'Heure de lancement HH:MM UTC (ex: 01:00 = 3h du matin France)'
+        required: false
+        type: string
+        default: ''
 
 jobs:
   generate:
@@ -35,13 +35,11 @@ jobs:
         run: pip install pyyaml jinja2 requests
 
       - name: Generate AI editorial content
+        if: ${{ inputs.skip_enrich == false }}
         run: |
-          CMD="python platform/scripts/enrich_editorial.py --site ${{ inputs.site }}"
+          CMD="python platform/scripts/enrich_editorial.py --site ${{ inputs.site }} --skip-existing"
           if [ -n "${{ inputs.schedule }}" ]; then
             CMD="$CMD --schedule ${{ inputs.schedule }}"
-          fi
-          if [ "${{ inputs.skip_existing }}" = "true" ]; then
-            CMD="$CMD --skip-existing"
           fi
           $CMD
         env:
