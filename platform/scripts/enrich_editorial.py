@@ -258,10 +258,10 @@ def load_json(path: Path) -> dict:
 
 
 # ── Génération ────────────────────────────────────────────────────────────────
-def generate_pairs(products: list, site_dir: Path, year: int) -> None:
+def generate_pairs(products: list, site_dir: Path, year: int, skip_existing: bool = False) -> None:
     """Génère editorial.json — un appel par paire."""
     editorial_path = site_dir / "editorial.json"
-    editorial = {}  # On repart de zéro à chaque run
+    editorial = load_json(editorial_path) if skip_existing else {}  # Charge existants si skip_existing
 
     slugs = [p["slug"] for p in products]
     pairs = list(itertools.combinations(sorted(slugs), 2))
@@ -275,6 +275,10 @@ def generate_pairs(products: list, site_dir: Path, year: int) -> None:
         pb = prod_map[slug_b]
         key = f"{slug_a}-vs-{slug_b}"
         print(f"  [{i:02d}/{len(pairs)}] {pa['nom']} vs {pb['nom']}...", end=" ", flush=True)
+
+        if skip_existing and key in editorial:
+            print("⏭ déjà généré")
+            continue
 
         try:
             response = call_claude(prompt_pair(pa, pb, year))
@@ -297,10 +301,10 @@ def generate_pairs(products: list, site_dir: Path, year: int) -> None:
     print(f"  ✅ {len(editorial)}/{len(pairs)} paires générées → editorial.json")
 
 
-def generate_products(products: list, site_dir: Path, year: int) -> None:
+def generate_products(products: list, site_dir: Path, year: int, skip_existing: bool = False) -> None:
     """Génère products_editorial.json — un appel par produit."""
     products_editorial_path = site_dir / "products_editorial.json"
-    products_editorial = {}
+    products_editorial = load_json(products_editorial_path) if skip_existing else {}
 
     print(f"\n  👤 Génération produits ({len(products)} appels API)...")
 
@@ -308,6 +312,10 @@ def generate_products(products: list, site_dir: Path, year: int) -> None:
     for i, prod in enumerate(products, 1):
         slug = prod["slug"]
         print(f"  [{i:02d}/{len(products)}] {prod['nom']}...", end=" ", flush=True)
+
+        if skip_existing and slug in products_editorial:
+            print("⏭ déjà généré")
+            continue
 
         try:
             response = call_claude(prompt_product(prod, year))
@@ -357,6 +365,8 @@ def main():
     parser.add_argument("--site", required=True, help="Slug du site (ex: scpi)")
     parser.add_argument("--only", choices=["pairs", "products", "site"],
                         help="Générer seulement une catégorie")
+    parser.add_argument("--skip-existing", action="store_true",
+                        help="Saute les entrées déjà générées (économise les tokens)")
     parser.add_argument("--schedule", help="Heure de lancement au format HH:MM (ex: 02:00)")
     args = parser.parse_args()
 
@@ -399,10 +409,10 @@ def main():
         generate_site(site_config, site_dir)
 
     if only in (None, "products"):
-        generate_products(products, site_dir, year)
+        generate_products(products, site_dir, year, skip_existing=args.skip_existing)
 
     if only in (None, "pairs"):
-        generate_pairs(products, site_dir, year)
+        generate_pairs(products, site_dir, year, skip_existing=args.skip_existing)
 
     print(f"\n✅ Enrichissement terminé pour {args.site}")
 
