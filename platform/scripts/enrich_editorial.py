@@ -24,7 +24,7 @@ from pathlib import Path
 # ── Config ────────────────────────────────────────────────────────────────────
 ROOT      = Path(__file__).parent.parent
 SITES_DIR = ROOT / "sites"
-MODEL     = "claude-haiku-4-5-20251001"
+MODEL     = "claude-sonnet-4-20250514"
 MAX_TOKENS = 4096
 MAX_RETRIES = 5
 RETRY_DELAY = 10  # secondes
