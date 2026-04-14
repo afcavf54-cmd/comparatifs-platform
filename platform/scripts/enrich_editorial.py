@@ -74,30 +74,90 @@ def call_claude(prompt: str) -> str:
     return ""
 
 
-def parse_json(text: str, context: str = "") -> dict:
-    """Parse JSON depuis la réponse Claude."""
+def clean_json_text(text: str) -> str:
+    """Nettoie le texte avant parsing JSON."""
     import re
+    # Enlève backticks markdown
     text = text.strip()
-    # Enlève les backticks markdown
     if text.startswith("```"):
         lines = text.split("\n")
         start = 1
         end = len(lines) - 1
         if lines[-1].strip() == "```":
             end = len(lines) - 1
-        text = "\n".join(lines[start:end])
-    # Nettoie le markdown DANS les valeurs JSON (** bold **)
-    # Remplace **"valeur"** par "valeur" dans les strings JSON
-    text = re.sub(r'\*\*"([^"]*)"\*\*', r'"\1"', text)
-    text = re.sub(r'\*\*([^*"]+)\*\*', r'\1', text)
-    # Remplace les guillemets français « » par des guillemets droits
-    text = text.replace('«', '"').replace('»', '"')
-    text = text.replace('\u00ab', '"').replace('\u00bb', '"')
+        text = "\n".join(lines[start:end]).strip()
+    # Guillemets français
+    text = text.replace("«", "").replace("»", "")
+    text = text.replace("\u00ab", "").replace("\u00bb", "")
+    # Markdown bold
+    text = re.sub(r"\*\*([^\*]*)\*\*", r"\1", text)
+    return text
+
+
+def fix_inner_quotes(text: str) -> str:
+    """
+    Répare les guillemets droits DANS les valeurs de string JSON.
+    Haiku écrit : "intro": "valeur " 9 % " suite"
+    On doit produire : "intro": "valeur 9 % suite"
+    """
+    import re
+    result = []
+    i = 0
+    in_string = False
+    escape_next = False
+    string_start = -1
+
+    while i < len(text):
+        ch = text[i]
+        if escape_next:
+            result.append(ch)
+            escape_next = False
+            i += 1
+            continue
+        if ch == "\\":
+            result.append(ch)
+            escape_next = True
+            i += 1
+            continue
+        if ch == '"' and not in_string:
+            in_string = True
+            string_start = i
+            result.append(ch)
+            i += 1
+            continue
+        if ch == '"' and in_string:
+            # Vérifie si c'est une vraie fin de string ou un guillemet intérieur parasite
+            # Fin de string = suivi de : , } ] \n ou espace+:
+            rest = text[i+1:].lstrip()
+            if rest and rest[0] in (',', '}', ']', '\n', ':'):
+                in_string = False
+                result.append(ch)
+            else:
+                # C'est un guillemet parasite à l'intérieur — on le remplace par rien
+                result.append(' ')
+            i += 1
+            continue
+        result.append(ch)
+        i += 1
+
+    return "".join(result)
+
+
+def parse_json(text: str, context: str = "") -> dict:
+    """Parse JSON depuis la réponse Claude avec nettoyage agressif."""
+    text = clean_json_text(text)
+    # Essai 1 : direct
     try:
         return json.loads(text)
+    except json.JSONDecodeError:
+        pass
+    # Essai 2 : fix guillemets intérieurs
+    try:
+        fixed = fix_inner_quotes(text)
+        return json.loads(fixed)
     except json.JSONDecodeError as e:
         print(f"    ⚠ JSON invalide ({context}) : {e}")
-        print(f"    Réponse brute : {text[:300]}...")
+        print(f"    Réponse brute : {text[:200]}...")
         return {}
 
 
