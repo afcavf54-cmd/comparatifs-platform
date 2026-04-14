@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page introuvable — {{ site.name }}</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="{{ theme.google_fonts }}" rel="stylesheet">
+<style>
+:root{--bg:{{ theme.bg }};--ink:{{ theme.ink }};--accent:{{ theme.accent }};--accent2:{{ theme.accent2 }};--border:#E2E8F0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'{{ theme.font_body }}',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 5vw;text-align:center}
+.code{font-family:'{{ theme.font_title }}',serif;font-size:clamp(80px,15vw,160px);font-weight:400;color:var(--accent);line-height:1;margin-bottom:16px;opacity:.15}
+h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(24px,4vw,40px);font-weight:400;margin-bottom:12px}
+p{font-size:17px;color:#718096;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;background:var(--accent);color:#fff;font-size:16px;font-weight:600;text-decoration:none;transition:.15s}
+.btn:hover{background:var(--accent2)}
+.links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.link-sec{color:var(--accent);font-size:14px;text-decoration:none;padding:8px 16px;border-radius:8px;border:1px solid var(--border)}
+.link-sec:hover{background:var(--border)}
+</style>
+</head>
+<body>
+{% include "base/_nav.html.j2" %}
+<main>
+  <div>
+    <div class="code">404</div>
+    <h1>Page introuvable</h1>
+    <p>La page que vous recherchez n'existe pas ou a été déplacée. Revenez à l'accueil pour trouver votre comparatif SCPI.</p>
+    <a href="/" class="btn">← Retour à l'accueil</a>
+    <div class="links">
+      <a href="/comparatifs-scpi.html" class="link-sec">Comparatifs SCPI</a>
+      <a href="/avis-scpi.html" class="link-sec">Avis SCPI</a>
+    </div>
+  </div>
+</main>
+{% include "base/_footer.html.j2" %}
+</body>
+</html>
