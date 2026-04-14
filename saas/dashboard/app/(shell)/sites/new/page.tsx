@@ -17,6 +17,7 @@ export default function NewSitePage() {
     name: '', domain: '', sheet_csv_url: '', description: '',
     logo_text: '', logo_accent: '',
     accent: '#1B4FD8', accent2: '#E8410A', bg: '#F4F6FB',
+    www_preference: 'www',
   })
 
   const set = (k: string, v: string) => {
@@ -111,7 +112,7 @@ export default function NewSitePage() {
                 {inp('Ex: UTL', 'logo_text')}
               </div>
               <div>
-                {label('Logo accent (couleur)')}
+                {label('Deuxieme mot du logo (couleur accent)')}
                 {inp('Ex: Peipin', 'logo_accent')}
               </div>
             </div>
@@ -132,6 +133,22 @@ export default function NewSitePage() {
             <h2 style={{ color: '#fff', fontSize: 18, fontWeight: 600, marginBottom: 24, marginTop: 0 }}>Source de donnees et domaine</h2>
             {label('Domaine *')}
             {inp('mon-domaine.fr', 'domain')}
+            {label('Version canonique')}
+            <div style={{ display: 'flex', gap: 10, marginBottom: 12 }}>
+              {[
+                { val: 'www', label: 'www.monsite.fr', desc: 'Recommandé' },
+                { val: 'naked', label: 'monsite.fr', desc: 'Sans www' },
+              ].map(opt => (
+                <div key={opt.val} onClick={() => set('www_preference', opt.val)} style={{
+                  flex: 1, padding: '12px 16px', borderRadius: 10, cursor: 'pointer',
+                  border: form.www_preference === opt.val ? '2px solid #00D4AA' : '2px solid #1E2D3D',
+                  background: form.www_preference === opt.val ? 'rgba(0,212,170,0.08)' : 'transparent',
+                }}>
+                  <div style={{ fontSize: 14, fontWeight: 600, color: '#fff' }}>{opt.label}</div>
+                  <div style={{ fontSize: 11, color: '#8B9CB0', marginTop: 2 }}>{opt.desc}</div>
+                </div>
+              ))}
+            </div>
 
             {label('URL Google Sheet (CSV publie)')}
             <div style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
@@ -207,6 +224,7 @@ export default function NewSitePage() {
               { label: 'Logo', value: `${form.logo_text} ${form.logo_accent}`.trim() },
               { label: 'Google Sheet', value: form.sheet_csv_url ? '✓ Configure' : 'Non configure' },
               { label: 'Couleurs', value: `${form.accent} / ${form.accent2}` },
+              { label: 'URL canonique', value: form.www_preference === 'www' ? `www.${form.domain}` : form.domain },
             ].map(row => (
               <div key={row.label} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid #1E2D3D', fontSize: 14 }}>
                 <span style={{ color: '#8B9CB0' }}>{row.label}</span>
