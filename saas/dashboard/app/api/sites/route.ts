@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
   const {
     name, niche, domain, sheet_csv_url, description,
     accent = '#1B4FD8', accent2 = '#E8410A', bg = '#F4F6FB',
-    logo_text, logo_accent,
+    logo_text, logo_accent, www_preference = 'www',
   } = body
 
   if (!name || !domain) return NextResponse.json({ error: 'name et domain requis' }, { status: 400 })
@@ -50,7 +50,7 @@ site:
   logo_accent: "${logoAccent}"
   tagline: "Comparatifs ${name} ${year}"
   year: ${year}
-  sheet_csv_url: "${sheet_csv_url || ''}"
+  sheet_csv_url: "${sheet_csv_url || ''}"\n  www_preference: "${www_preference}"
   template: "comparatif-vs-scpi.html.j2"
   index_template: "index-scpi.html.j2"
   analytics_clicky: ""
