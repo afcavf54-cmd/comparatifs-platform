@@ -90,6 +90,9 @@ def parse_json(text: str, context: str = "") -> dict:
     # Remplace **"valeur"** par "valeur" dans les strings JSON
     text = re.sub(r'\*\*"([^"]*)"\*\*', r'"\1"', text)
     text = re.sub(r'\*\*([^*"]+)\*\*', r'\1', text)
+    # Remplace les guillemets français « » par des guillemets droits
+    text = text.replace('«', '"').replace('»', '"')
+    text = text.replace('\u00ab', '"').replace('\u00bb', '"')
     try:
         return json.loads(text)
     except json.JSONDecodeError as e:
