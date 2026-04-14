@@ -49,6 +49,7 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add platform/sites/${{ inputs.site }}/
           git diff --cached --quiet || git commit -m "Generated: ${{ inputs.site }} [$(date +%Y-%m-%d)]"
+          git pull --rebase origin main
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
