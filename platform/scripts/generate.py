@@ -421,6 +421,19 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
 
     if not dry_run:
         generate_sitemap(site, all_pairs, products, output_dir)
+
+        # ── Fichier _redirects pour Cloudflare Pages ──────────────────────
+        www_preference = site.get("www_preference", "www")  # "www" ou "naked"
+        domain_raw = site.get("domain", "").replace("https://", "").replace("http://", "").replace("www.", "").rstrip("/")
+        if domain_raw:
+            if www_preference == "www":
+                # Redirige naked → www
+                redirects = f"https://{domain_raw}/* https://www.{domain_raw}/:splat 301\n"
+            else:
+                # Redirige www → naked
+                redirects = f"https://www.{domain_raw}/* https://{domain_raw}/:splat 301\n"
+            (output_dir / "_redirects").write_text(redirects, encoding="utf-8")
+            print(f"  ✓ _redirects ({www_preference})")
         copy_shared_assets(output_dir, site_dir)
 
         # ── Copie logos PNG ───────────────────────────────────────────────
@@ -445,7 +458,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             print(f"  ✓ index.html ({len(products)} produits, {len(all_pairs)} comparatifs)")
 
         # Légales
-        for tpl_name, out_name in [("mentions-legales.html.j2", "mentions-legales.html"), ("politique-confidentialite.html.j2", "politique-confidentialite.html"), ("contact.html.j2", "contact.html"), ("sitemap-html.html.j2", "plan-du-site.html")]:
+        for tpl_name, out_name in [("mentions-legales.html.j2", "mentions-legales.html"), ("politique-confidentialite.html.j2", "politique-confidentialite.html"), ("contact.html.j2", "contact.html"), ("sitemap-html.html.j2", "plan-du-site.html"), ("404.html.j2", "404.html")]:
             if (TEMPLATES_DIR / tpl_name).exists():
                 html = env.get_template(tpl_name).render(site={**site, "seo": config.get("seo", {})}, theme=theme, build_date=date.today().isoformat(), products=products, total_pairs=len(all_pairs))
                 (output_dir / out_name).write_text(html, encoding="utf-8")
