@@ -119,7 +119,7 @@ def main():
 
     rule_result = cf_request(
         "PUT",
-        f"{base}/zones/{zone_id}/rulesets/phases/http_request_redirect/entrypoint",
+        f"{base}/zones/{zone_id}/rulesets/phases/http_request_dynamic_redirect/entrypoint",
         api_token,
         rule_payload
     )
