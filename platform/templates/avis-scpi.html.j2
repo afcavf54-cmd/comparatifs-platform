@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{% if avis_title is defined and avis_title %}{{ avis_title }}{% else %}Avis {{ prod.nom }} {{ site.year }} : Faut-il investir ? Analyse et Rendements | {{ site.name }}</title>
+<title>{% if avis_title is defined and avis_title %}{{ avis_title }}{% else %}Avis {{ prod.nom }} {{ site.year }} : Faut-il investir ? Analyse et Rendements | {{ site.name }}{% endif %}</title>
 <meta name="description" content="{% if avis_meta is defined and avis_meta %}{{ avis_meta }}{% else %}Notre avis complet sur {{ prod.nom }} {{ site.year }} : rendements, frais, points forts et risques. Analyse indépendante mise à jour {{ build_date | fr_date }}.{% endif %}">
 <link rel="canonical" href="{{ site.domain }}/avis-{{ prod.slug }}.html">
 <meta property="og:title" content="Avis {{ prod.nom }} {{ site.year }} | {{ site.name }}">
