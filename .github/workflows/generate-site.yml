@@ -1,4 +1,4 @@
-name: Générer et déployer SCPI
+name: Generate Site
 
 on:
   workflow_dispatch:
@@ -6,7 +6,6 @@ on:
       site:
         description: 'Site slug (ex: scpi, comparateur-scpi)'
         required: true
-        default: 'scpi'
         type: string
       skip_enrich:
         description: 'Sauter la génération IA (utilise les textes déjà générés)'
@@ -14,7 +13,7 @@ on:
         type: boolean
         default: false
       schedule:
-        description: 'Heure de lancement HH:MM UTC (ex: 01:00). Vide = immediat.'
+        description: 'Heure de lancement HH:MM UTC (ex: 01:00 = 3h du matin France)'
         required: false
         type: string
         default: ''
@@ -63,30 +62,33 @@ jobs:
 
       - name: Deploy to Cloudflare Pages
         run: |
+          ACCOUNT_ID="${{ secrets.CLOUDFLARE_ACCOUNT_ID }}"
+          API_TOKEN="${{ secrets.CLOUDFLARE_API_TOKEN }}"
           PROJECT="${{ inputs.site }}"
+
+          # Crée le projet si il n'existe pas
           STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
-            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
-            "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/pages/projects/$PROJECT")
+            -H "Authorization: Bearer $API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/pages/projects/$PROJECT")
+
           if [ "$STATUS" = "404" ]; then
+            echo "Création du projet Cloudflare Pages..."
             curl -s -X POST \
-              -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+              -H "Authorization: Bearer $API_TOKEN" \
               -H "Content-Type: application/json" \
               -d "{\"name\":\"$PROJECT\",\"production_branch\":\"main\"}" \
-              "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/pages/projects"
+              "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/pages/projects"
             sleep 3
           fi
+
+          # Deploy via wrangler
           npm install -g wrangler
           wrangler pages deploy platform/sites/${{ inputs.site }}/output \
             --project-name=$PROJECT \
             --branch=main \
             --commit-dirty=true
+          # Association domaines + règle 301
+          python3 platform/scripts/setup_domain.py ${{ inputs.site }} $ACCOUNT_ID $API_TOKEN
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-
-      - name: Setup domains and redirects
-        run: |
-          python3 platform/scripts/setup_domain.py \
-            ${{ inputs.site }} \
-            ${{ secrets.CLOUDFLARE_ACCOUNT_ID }} \
-            ${{ secrets.CLOUDFLARE_API_TOKEN }}
