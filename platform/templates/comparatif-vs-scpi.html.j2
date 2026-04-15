@@ -19,6 +19,7 @@
     "@type": "Brand",
     "name": "{{ prod_a.marque }}"
   },
+  "image": "{{ site.domain }}/{{ prod_a.slug }}.png",
   {% if prod_a.prix_achat is defined %}
   "offers": {
     "@type": "Offer",
@@ -49,6 +50,7 @@
     "@type": "Brand",
     "name": "{{ prod_b.marque }}"
   },
+  "image": "{{ site.domain }}/{{ prod_b.slug }}.png",
   {% if prod_b.prix_achat is defined %}
   "offers": {
     "@type": "Offer",
@@ -95,34 +97,9 @@
     "@type": "Product",
     "name": "Comparatif {{ prod_a.nom }} vs {{ prod_b.nom }}"
   },
-  "mainEntity": {
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "{{ prod_a.nom }} ou {{ prod_b.nom }} : laquelle a le meilleur rendement en {{ site.year }} ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "{% if prod_a.td is defined and prod_b.td is defined %}{% if prod_a.td >= prod_b.td %}{{ prod_a.nom }} affiche {{ prod_a.td }}% de taux de distribution contre {{ prod_b.td }}% pour {{ prod_b.nom }}.{% else %}{{ prod_b.nom }} affiche {{ prod_b.td }}% de taux de distribution contre {{ prod_a.td }}% pour {{ prod_a.nom }}.{% endif %} Sur le TRI{% if prod_a.tri_horizon is defined %} ({{ prod_a.tri_horizon }}){% endif %}{% if prod_a.tri is defined and prod_b.tri is defined %}, {% if prod_a.tri >= prod_b.tri %}{{ prod_a.nom }} prend l'avantage avec {{ prod_a.tri }}%.{% else %}{{ prod_b.nom }} prend l'avantage avec {{ prod_b.tri }}%.{% endif %}{% endif %}{% endif %}"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quelle SCPI a les frais les plus bas entre {{ prod_a.nom }} et {{ prod_b.nom }} ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "{% if prod_a.frais_souscription is defined and prod_b.frais_souscription is defined %}{% if prod_a.frais_souscription == 0 and prod_b.frais_souscription == 0 %}Les deux SCPI {{ prod_a.nom }} et {{ prod_b.nom }} affichent 0% de frais de souscription.{% elif prod_a.frais_souscription < prod_b.frais_souscription %}{{ prod_a.nom }} a les frais les plus bas avec {{ prod_a.frais_souscription }}% contre {{ prod_b.frais_souscription }}% pour {{ prod_b.nom }}.{% else %}{{ prod_b.nom }} a les frais les plus bas avec {{ prod_b.frais_souscription }}% contre {{ prod_a.frais_souscription }}% pour {{ prod_a.nom }}.{% endif %}{% endif %}"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Peut-on combiner {{ prod_a.nom }} et {{ prod_b.nom }} dans un portefeuille ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Oui, diversifier entre {{ prod_a.nom }} et {{ prod_b.nom }} est souvent pertinent. {% if prod_a.type is defined and prod_b.type is defined and prod_a.type != prod_b.type %}Associer une SCPI {{ prod_a.type }} et une SCPI {{ prod_b.type }} permet de lisser le risque sectoriel.{% else %}Répartir son investissement entre deux gestionnaires réduit le risque de concentration.{% endif %}"
-        }
-      }
-    ]
+  "itemReviewed": {
+    "@type": "Product",
+    "name": "Comparatif {{ prod_a.nom }} vs {{ prod_b.nom }}"
   }
 }
 </script>
