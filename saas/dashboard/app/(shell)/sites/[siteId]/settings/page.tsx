@@ -21,6 +21,7 @@ export default function SettingsPage() {
   })
   const [saving, setSaving] = useState(false)
   const [savingSeo, setSavingSeo] = useState(false)
+  const [deployingSeo, setDeployingSeo] = useState(false)
   const [deleting, setDeleting] = useState(false)
   const [msg, setMsg] = useState('')
   const [msgSeo, setMsgSeo] = useState('')
@@ -61,6 +62,32 @@ export default function SettingsPage() {
     const d = await r.json()
     setMsgSeo(d.success ? '✓ SEO sauvegardé' : '✗ Erreur')
     setSavingSeo(false)
+  }
+
+  async function saveSeoAndDeploy() {
+    setDeployingSeo(true); setMsgSeo('')
+    try {
+      // 1. Sauvegarde le config
+      const r = await fetch(`/api/sites/${siteId}/config`, {
+        method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(seoForm)
+      })
+      const d = await r.json()
+      if (!d.success) throw new Error(d.error || 'Erreur sauvegarde')
+
+      // 2. Déclenche le workflow GitHub Actions
+      const wr = await fetch(`/api/sites/${siteId}/deploy`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ skip_enrich: true })
+      })
+      const wd = await wr.json()
+      if (!wd.success) throw new Error(wd.error || 'Erreur déclenchement workflow')
+
+      setMsgSeo('✓ SEO sauvegardé et redéploiement lancé')
+    } catch (e: any) {
+      setMsgSeo('✗ ' + e.message)
+    } finally {
+      setDeployingSeo(false)
+    }
   }
 
   async function deleteSite() {
@@ -170,6 +197,9 @@ export default function SettingsPage() {
         {msgSeo && <div style={{ fontSize: 13, color: msgSeo.startsWith('✓') ? '#00D4AA' : '#FC8181', marginBottom: 12 }}>{msgSeo}</div>}
         <button onClick={saveSeo} disabled={savingSeo} style={{ padding: '11px 24px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
           {savingSeo ? 'Sauvegarde...' : '💾 Sauvegarder SEO'}
+        </button>
+        <button onClick={saveSeoAndDeploy} disabled={deployingSeo} style={{ marginLeft: 10, padding: '11px 24px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #9F7AEA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
+          {deployingSeo ? '🚀 Déploiement...' : '🚀 Sauvegarder et redéployer'}
         </button>
       </div>
 
