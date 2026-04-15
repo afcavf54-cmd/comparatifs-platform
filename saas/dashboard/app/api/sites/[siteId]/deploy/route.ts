@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN!
-const REPO = process.env.GITHUB_REPO || 'afcavf54-cmd/comparatifs-platform'
+import { triggerWorkflow } from '../../../../../lib/github'
 
 type Params = { params: Promise<{ siteId: string }> }
 
@@ -10,30 +8,12 @@ export async function POST(req: NextRequest, { params }: Params) {
   const body = await req.json()
   const skip_enrich = body.skip_enrich ?? true
 
-  const res = await fetch(
-    `https://api.github.com/repos/${REPO}/actions/workflows/generate-scpi.yml/dispatches`,
-    {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${GITHUB_TOKEN}`,
-        Accept: 'application/vnd.github.v3+json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        ref: 'main',
-        inputs: {
-          site: siteId,
-          skip_enrich: skip_enrich.toString(),
-          schedule: ''
-        }
-      })
-    }
-  )
+  const ok = await triggerWorkflow('generate-scpi.yml', {
+    site: siteId,
+    skip_enrich: skip_enrich.toString(),
+    schedule: ''
+  })
 
-  if (res.status === 204) {
-    return NextResponse.json({ success: true })
-  }
-
-  const data = await res.json().catch(() => ({}))
-  return NextResponse.json({ error: data.message || 'Erreur GitHub Actions' }, { status: 500 })
+  if (ok) return NextResponse.json({ success: true })
+  return NextResponse.json({ error: 'Erreur déclenchement workflow' }, { status: 500 })
 }
