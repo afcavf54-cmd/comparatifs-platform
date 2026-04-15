@@ -3,7 +3,6 @@ import { getFile, putFile } from '../../../../../lib/github'
 
 type Params = { params: Promise<{ siteId: string }> }
 
-// GET — lit le config.yaml du site
 export async function GET(_: NextRequest, { params }: Params) {
   const { siteId } = await params
   const file = await getFile(`platform/sites/${siteId}/config.yaml`)
@@ -12,7 +11,7 @@ export async function GET(_: NextRequest, { params }: Params) {
   const yaml = file.content
 
   const get = (key: string) => {
-    const match = yaml.match(new RegExp(`^  ${key}:\\s*["']?(.+?)["']?\\s*$`, 'm'))
+    const match = yaml.match(new RegExp(`^    ${key}:\\s*["']?(.+?)["']?\\s*$`, 'm'))
     return match ? match[1].trim() : ''
   }
 
@@ -31,7 +30,6 @@ export async function GET(_: NextRequest, { params }: Params) {
   })
 }
 
-// PATCH — met à jour les champs SEO dans config.yaml
 export async function PATCH(req: NextRequest, { params }: Params) {
   const { siteId } = await params
   const body = await req.json()
@@ -40,20 +38,17 @@ export async function PATCH(req: NextRequest, { params }: Params) {
 
   let yaml = file.content
 
-  // Met à jour un champ sous site: (4 espaces d'indentation)
   const updateSiteField = (key: string, val: string) => {
     const re = new RegExp(`^(    ${key}:\\s*)["']?.*?["']?\\s*$`, 'm')
     const line = `    ${key}: "${val}"`
     if (re.test(yaml)) {
       yaml = yaml.replace(re, line)
     } else {
-      // Insère avant la ligne "theme:" 
       yaml = yaml.replace(/^theme:/m, `    ${key}: "${val}"\ntheme:`)
     }
   }
 
-  // Met à jour un champ sous seo: (4 espaces d'indentation)
-  const update = (key: string, val: string) => {
+  const updateSeoField = (key: string, val: string) => {
     const re = new RegExp(`^(    ${key}:\\s*)["']?.*?["']?\\s*$`, 'm')
     const line = `    ${key}: "${val}"`
     if (re.test(yaml)) {
@@ -66,12 +61,12 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   updateSiteField('home_title', body.home_title || '')
   updateSiteField('home_description', body.home_description || '')
   updateSiteField('www_preference', body.www_preference || 'www')
-  update('title_pattern', body.seo_vs_title || '')
-  update('meta_pattern', body.seo_vs_meta || '')
-  update('avis_title_pattern', body.seo_avis_title || '')
-  update('avis_meta_pattern', body.seo_avis_meta || '')
-  update('liste_comp_title', body.seo_liste_comp_title || '')
-  update('liste_avis_title', body.seo_liste_avis_title || '')
+  updateSeoField('title_pattern', body.seo_vs_title || '')
+  updateSeoField('meta_pattern', body.seo_vs_meta || '')
+  updateSeoField('avis_title_pattern', body.seo_avis_title || '')
+  updateSeoField('avis_meta_pattern', body.seo_avis_meta || '')
+  updateSeoField('liste_comp_title', body.seo_liste_comp_title || '')
+  updateSeoField('liste_avis_title', body.seo_liste_avis_title || '')
 
   const saved = await putFile(
     `platform/sites/${siteId}/config.yaml`,
