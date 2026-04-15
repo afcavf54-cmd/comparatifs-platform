@@ -2,7 +2,7 @@ name: Nightly Site Generation
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Toutes les heures
+    - cron: '0 2 * * *'  # Toutes les heures
   workflow_dispatch:      # Déclenchement manuel possible aussi
 
 jobs:
