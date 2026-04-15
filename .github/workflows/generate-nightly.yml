@@ -2,11 +2,7 @@ name: Nightly Site Generation
 
 on:
   schedule:
-    - cron: '0 1 * * *'   # 1h UTC = 3h France (génération principale)
-    - cron: '0 6 * * *'   # 6h UTC = 8h France
-    - cron: '0 10 * * *'  # 10h UTC = 12h France
-    - cron: '0 14 * * *'  # 14h UTC = 16h France
-    - cron: '0 18 * * *'  # 18h UTC = 20h France
+    - cron: '0 * * * *'  # Toutes les heures
   workflow_dispatch:      # Déclenchement manuel possible aussi
 
 jobs:
