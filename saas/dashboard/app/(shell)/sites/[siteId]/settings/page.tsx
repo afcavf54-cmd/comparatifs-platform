@@ -8,9 +8,22 @@ export default function SettingsPage() {
   const router = useRouter()
   const [site, setSite] = useState<any>(null)
   const [form, setForm] = useState<any>({})
+  const [seoForm, setSeoForm] = useState({
+    home_title: '',
+    home_description: '',
+    seo_vs_title: '{A} vs {B} : comparatif {year}',
+    seo_vs_meta: 'Comparatif complet {A} vs {B} {year} : rendements, frais, avis.',
+    seo_avis_title: 'Avis {nom} {year} : faut-il investir ?',
+    seo_avis_meta: 'Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques.',
+    seo_liste_comp_title: 'Tous les comparatifs {site_name} {year}',
+    seo_liste_avis_title: 'Avis {site_name} {year} : analyses independantes',
+    www_preference: 'www',
+  })
   const [saving, setSaving] = useState(false)
+  const [savingSeo, setSavingSeo] = useState(false)
   const [deleting, setDeleting] = useState(false)
   const [msg, setMsg] = useState('')
+  const [msgSeo, setMsgSeo] = useState('')
   const [confirmDelete, setConfirmDelete] = useState('')
 
   useEffect(() => {
@@ -18,15 +31,36 @@ export default function SettingsPage() {
       setSite(d)
       setForm({ name: d.name, domain: d.domain, cloudflare_project: d.cloudflare_project, description: d.description || '', status: d.status, sheet_csv_url: d.sheet_csv_url || '' })
     })
+    fetch(`/api/sites/${siteId}/config`).then(r => r.json()).then(d => {
+      if (d) setSeoForm(f => ({
+        ...f,
+        home_title: d.home_title || '',
+        home_description: d.home_description || '',
+        seo_vs_title: d.seo?.title_pattern || f.seo_vs_title,
+        seo_vs_meta: d.seo?.meta_pattern || f.seo_vs_meta,
+        seo_avis_title: d.seo?.avis_title_pattern || f.seo_avis_title,
+        seo_avis_meta: d.seo?.avis_meta_pattern || f.seo_avis_meta,
+        seo_liste_comp_title: d.seo?.liste_comp_title || f.seo_liste_comp_title,
+        seo_liste_avis_title: d.seo?.liste_avis_title || f.seo_liste_avis_title,
+        www_preference: d.www_preference || 'www',
+      }))
+    }).catch(() => {})
   }, [siteId])
 
   async function save() {
-    setSaving(true)
-    setMsg('')
+    setSaving(true); setMsg('')
     const r = await fetch(`/api/sites/${siteId}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) })
     const d = await r.json()
     setMsg(d.id ? '✓ Paramètres sauvegardés' : '✗ Erreur')
     setSaving(false)
+  }
+
+  async function saveSeo() {
+    setSavingSeo(true); setMsgSeo('')
+    const r = await fetch(`/api/sites/${siteId}/config`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(seoForm) })
+    const d = await r.json()
+    setMsgSeo(d.success ? '✓ SEO sauvegardé' : '✗ Erreur')
+    setSavingSeo(false)
   }
 
   async function deleteSite() {
@@ -40,9 +74,19 @@ export default function SettingsPage() {
 
   const inp = (label: string, key: string, type = 'text') => (
     <div style={{ marginBottom: 16 }}>
-      <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 6 }}>{label}</div>
+      <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 6 }}>{label}</div>
       <input type={type} value={form[key] || ''} onChange={e => setForm((f: any) => ({ ...f, [key]: e.target.value }))}
-        style={{ width: '100%', padding: '11px 14px', borderRadius: 10, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' }} />
+        style={{ width: '100%', padding: '11px 14px', borderRadius: 10, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+    </div>
+  )
+
+  const seoInp = (label: string, key: string, hint = '') => (
+    <div style={{ marginBottom: 14 }}>
+      <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, marginBottom: 4 }}>
+        {label} {hint && <span style={{ color: '#4A5568', fontWeight: 400 }}>{hint}</span>}
+      </div>
+      <input value={(seoForm as any)[key] || ''} onChange={e => setSeoForm(f => ({ ...f, [key]: e.target.value }))}
+        style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, fontFamily: 'monospace', outline: 'none', boxSizing: 'border-box' as const }} />
     </div>
   )
 
@@ -60,7 +104,7 @@ export default function SettingsPage() {
 
       <h1 style={{ fontSize: 22, fontWeight: 700, color: '#fff', marginBottom: 28 }}>Paramètres</h1>
 
-      {/* General */}
+      {/* Informations générales */}
       <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24, marginBottom: 20 }}>
         <h3 style={{ color: '#fff', margin: '0 0 20px', fontSize: 15, fontWeight: 600 }}>Informations générales</h3>
         {inp('Nom du site', 'name')}
@@ -68,15 +112,16 @@ export default function SettingsPage() {
         {inp('Projet Cloudflare Pages', 'cloudflare_project')}
         {inp('URL Google Sheet CSV', 'sheet_csv_url')}
         <div style={{ marginBottom: 16 }}>
-          <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 6 }}>Description</div>
+          <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 6 }}>Description</div>
           <textarea value={form.description || ''} onChange={e => setForm((f: any) => ({ ...f, description: e.target.value }))} rows={3}
-            style={{ width: '100%', padding: '11px 14px', borderRadius: 10, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box', resize: 'vertical', fontFamily: 'inherit' }} />
+            style={{ width: '100%', padding: '11px 14px', borderRadius: 10, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const, resize: 'vertical', fontFamily: 'inherit' }} />
         </div>
         <div style={{ marginBottom: 20 }}>
-          <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 6 }}>Statut</div>
+          <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 6 }}>Statut</div>
           <select value={form.status || 'draft'} onChange={e => setForm((f: any) => ({ ...f, status: e.target.value }))}
             style={{ width: '100%', padding: '11px 14px', borderRadius: 10, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none' }}>
             <option value="draft">Draft</option>
+            <option value="pending_generation">En attente génération</option>
             <option value="live">Live</option>
             <option value="building">Building</option>
           </select>
@@ -84,6 +129,47 @@ export default function SettingsPage() {
         {msg && <div style={{ fontSize: 13, color: msg.startsWith('✓') ? '#00D4AA' : '#FC8181', marginBottom: 12 }}>{msg}</div>}
         <button onClick={save} disabled={saving} style={{ padding: '11px 24px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
           {saving ? 'Sauvegarde...' : '💾 Sauvegarder'}
+        </button>
+      </div>
+
+      {/* SEO */}
+      <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24, marginBottom: 20 }}>
+        <h3 style={{ color: '#fff', margin: '0 0 8px', fontSize: 15, fontWeight: 600 }}>SEO</h3>
+        <div style={{ fontSize: 11, color: '#4A5568', marginBottom: 16 }}>
+          Variables : <code style={{ color: '#00D4AA' }}>{'{A}'}</code> <code style={{ color: '#00D4AA' }}>{'{B}'}</code> <code style={{ color: '#00D4AA' }}>{'{nom}'}</code> <code style={{ color: '#00D4AA' }}>{'{td}'}</code> <code style={{ color: '#00D4AA' }}>{'{year}'}</code> <code style={{ color: '#00D4AA' }}>{'{site_name}'}</code>
+        </div>
+
+        <div style={{ fontSize: 12, color: '#00D4AA', fontWeight: 600, marginBottom: 10 }}>Page d'accueil</div>
+        {seoInp('Meta title', 'home_title')}
+        {seoInp('Meta description', 'home_description')}
+
+        <div style={{ fontSize: 12, color: '#0090FF', fontWeight: 600, margin: '16px 0 10px' }}>Pages comparatifs (A vs B)</div>
+        {seoInp('Title pattern', 'seo_vs_title')}
+        {seoInp('Meta pattern', 'seo_vs_meta')}
+
+        <div style={{ fontSize: 12, color: '#9F7AEA', fontWeight: 600, margin: '16px 0 10px' }}>Pages avis</div>
+        {seoInp('Title pattern', 'seo_avis_title', '— {td} = rendement%')}
+        {seoInp('Meta pattern', 'seo_avis_meta')}
+
+        <div style={{ fontSize: 12, color: '#F6AD55', fontWeight: 600, margin: '16px 0 10px' }}>Pages listes</div>
+        {seoInp('Title liste comparatifs', 'seo_liste_comp_title')}
+        {seoInp('Title liste avis', 'seo_liste_avis_title')}
+
+        <div style={{ fontSize: 12, color: '#8B9CB0', fontWeight: 600, margin: '16px 0 10px' }}>URL canonique</div>
+        <div style={{ display: 'flex', gap: 10, marginBottom: 16 }}>
+          {[{ val: 'www', label: 'www.monsite.fr' }, { val: 'naked', label: 'monsite.fr' }].map(opt => (
+            <div key={opt.val} onClick={() => setSeoForm(f => ({ ...f, www_preference: opt.val }))} style={{
+              flex: 1, padding: '10px', borderRadius: 8, cursor: 'pointer', textAlign: 'center' as const,
+              border: seoForm.www_preference === opt.val ? '2px solid #00D4AA' : '2px solid #1E2D3D',
+              background: seoForm.www_preference === opt.val ? 'rgba(0,212,170,0.08)' : 'transparent',
+              color: '#fff', fontSize: 13
+            }}>{opt.label}</div>
+          ))}
+        </div>
+
+        {msgSeo && <div style={{ fontSize: 13, color: msgSeo.startsWith('✓') ? '#00D4AA' : '#FC8181', marginBottom: 12 }}>{msgSeo}</div>}
+        <button onClick={saveSeo} disabled={savingSeo} style={{ padding: '11px 24px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
+          {savingSeo ? 'Sauvegarde...' : '💾 Sauvegarder SEO'}
         </button>
       </div>
 
@@ -96,7 +182,7 @@ export default function SettingsPage() {
         <div style={{ marginBottom: 12 }}>
           <div style={{ fontSize: 12, color: '#8B9CB0', marginBottom: 6 }}>Tapez <strong style={{ color: '#fff' }}>{site.name}</strong> pour confirmer</div>
           <input value={confirmDelete} onChange={e => setConfirmDelete(e.target.value)} placeholder={site.name}
-            style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid rgba(252,129,129,0.3)', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' }} />
+            style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid rgba(252,129,129,0.3)', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
         </div>
         <button onClick={deleteSite} disabled={deleting || confirmDelete !== site.name} style={{
           padding: '10px 20px', borderRadius: 10, border: 'none', fontWeight: 600, fontSize: 13,
