@@ -73,6 +73,23 @@ def call_claude(prompt: str) -> str:
     return ""
 
 
+def clean_quotes_in_values(obj):
+    """Supprime les guillemets autour des chiffres dans les valeurs texte.
+    Ex: 'taux de "5,71%"' → 'taux de 5,71%'
+    """
+    import re
+    if isinstance(obj, dict):
+        return {k: clean_quotes_in_values(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [clean_quotes_in_values(i) for i in obj]
+    elif isinstance(obj, str):
+        # Supprime les guillemets autour des nombres/pourcentages
+        import re as _re
+        obj = _re.sub('"(\\d[\\d\\s,.€%M ]*)"', lambda m: m.group(1), obj)
+        return obj
+    return obj
+
+
 def clean_json_text(text: str) -> str:
     """Nettoie le texte avant parsing JSON."""
     import re
@@ -147,13 +164,15 @@ def parse_json(text: str, context: str = "") -> dict:
     text = clean_json_text(text)
     # Essai 1 : direct
     try:
-        return json.loads(text)
+        result = json.loads(text)
+        return clean_quotes_in_values(result)
     except json.JSONDecodeError:
         pass
     # Essai 2 : fix guillemets intérieurs
     try:
         fixed = fix_inner_quotes(text)
-        return json.loads(fixed)
+        result = json.loads(fixed)
+        return clean_quotes_in_values(result)
     except json.JSONDecodeError as e:
         print(f"    ⚠ JSON invalide ({context}) : {e}")
         print(f"    Réponse brute : {text[:200]}...")
