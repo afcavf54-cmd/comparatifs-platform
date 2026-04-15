@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Avis SCPI {{ site.year }} : Toutes nos analyses | {{ site.name }}</title>
+<title>{% if site.seo.liste_avis_title is defined and site.seo.liste_avis_title %}{{ site.seo.liste_avis_title | replace("{site_name}", site.name) | replace("{year}", site.year|string) }}{% else %}Avis SCPI {{ site.year }} : Toutes nos analyses | {{ site.name }}{% endif %}</title>
 <meta name="description" content="Retrouvez tous nos avis SCPI {{ site.year }} : analyses indépendantes de {{ products | length }} SCPI avec rendements, frais, points forts et verdict.">
 <link rel="canonical" href="{{ site.domain }}/avis-scpi">
 <link rel="preconnect" href="https://fonts.googleapis.com">
