@@ -46,11 +46,11 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);fon
       <h2>🏠 Pages principales</h2>
       <ul>
         <li><a href="/">Accueil</a></li>
-        <li><a href="/comparatifs-scpi.html">Tous les comparatifs SCPI</a></li>
-        <li><a href="/avis-scpi.html">Tous les avis SCPI</a></li>
-        <li><a href="/contact.html">Contact</a></li>
-        <li><a href="/mentions-legales.html">Mentions légales</a></li>
-        <li><a href="/politique-confidentialite.html">Politique de confidentialité</a></li>
+        <li><a href="/comparatifs-scpi">Tous les comparatifs SCPI</a></li>
+        <li><a href="/avis-scpi">Tous les avis SCPI</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/mentions-legales">Mentions légales</a></li>
+        <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
       </ul>
     </div>
 
@@ -58,7 +58,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);fon
       <h2>📝 Avis SCPI</h2>
       <ul>
         {% for prod in products %}
-        <li><a href="/avis-{{ prod.slug }}.html">Avis {{ prod.nom }}</a></li>
+        <li><a href="/avis-{{ prod.slug }}">Avis {{ prod.nom }}</a></li>
         {% endfor %}
       </ul>
     </div>
@@ -72,7 +72,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);fon
         {% if other.slug != prod.slug %}
         {% set slugs = [prod.slug, other.slug] | sort %}
         {% if slugs[0] == prod.slug %}
-        <a href="/{{ slugs[0] }}-vs-{{ slugs[1] }}.html">{{ prod.nom }} vs {{ other.nom }}</a>
+        <a href="/{{ slugs[0] }}-vs-{{ slugs[1] }}">{{ prod.nom }} vs {{ other.nom }}</a>
         {% endif %}
         {% endif %}
         {% endfor %}
