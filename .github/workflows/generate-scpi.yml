@@ -89,10 +89,11 @@ jobs:
             --commit-dirty=true
 
           # Association domaines custom (www + naked)
+          SITE_SLUG="${{ inputs.site }}"
           DOMAIN=$(python3 -c "
 import yaml, sys
 try:
-    with open('platform/sites/${{ inputs.site }}/config.yaml') as f:
+    with open('platform/sites/$SITE_SLUG/config.yaml') as f:
         cfg = yaml.safe_load(f)
     d = cfg.get('site', {}).get('domain', '')
     d = d.replace('https://www.', '').replace('https://', '').replace('http://', '').strip('/')
@@ -121,7 +122,7 @@ except: sys.exit(0)
             # Règle 301 naked → www
             WWW_PREF=$(python3 -c "
 import yaml
-with open('platform/sites/${{ inputs.site }}/config.yaml') as f:
+with open('platform/sites/$SITE_SLUG/config.yaml') as f:
     cfg = yaml.safe_load(f)
 print(cfg.get('site', {}).get('www_preference', 'www'))
 " 2>/dev/null || echo "www")
