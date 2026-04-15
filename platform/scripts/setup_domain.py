@@ -91,45 +91,35 @@ def main():
 
     zone_id = zones[0]["id"]
 
-    # ── 3. Crée la règle de redirection 301 ──────────────────────────────────
+    # ── 3. Crée la règle de redirection 301 via Page Rules ───────────────────
     if www_pref == "www":
-        expression = f'(http.host eq "{raw_domain}")'
-        target     = f"https://www.{raw_domain}"
+        match_url  = f"http://{raw_domain}/*"
+        target_url = f"https://www.{raw_domain}/$1"
+        match_https = f"https://{raw_domain}/*"
     else:
-        expression = f'(http.host eq "www.{raw_domain}")'
-        target     = f"https://{raw_domain}"
+        match_url  = f"http://www.{raw_domain}/*"
+        target_url = f"https://{raw_domain}/$1"
+        match_https = f"https://www.{raw_domain}/*"
 
-    rule_payload = {
-        "rules": [{
-            "description": "www redirect",
-            "expression": expression,
-            "action": "redirect",
-            "action_parameters": {
-                "from_value": {
-                    "status_code": 301,
-                    "target_url": {
-                        "expression": f'concat("{target}", http.request.uri.path)'
-                    },
-                    "preserve_query_string": True
-                }
-            },
-            "enabled": True
-        }]
-    }
-
-    rule_result = cf_request(
-        "PUT",
-        f"{base}/zones/{zone_id}/rulesets/phases/http_request_dynamic_redirect/entrypoint",
-        api_token,
-        rule_payload
-    )
-
-    if rule_result.get("success"):
-        src = raw_domain if www_pref == "www" else f"www.{raw_domain}"
-        dst = f"www.{raw_domain}" if www_pref == "www" else raw_domain
-        print(f"  ✓ Règle 301 : {src} → {dst}")
-    else:
-        print(f"  ⚠ Règle 301 : {rule_result.get('errors', '')}")
+    for pattern in [match_url, match_https]:
+        rule_payload = {
+            "targets": [{"target": "url", "constraint": {"operator": "matches", "value": pattern}}],
+            "actions": [{"id": "forwarding_url", "value": {"url": target_url, "status_code": 301}}],
+            "status": "active",
+            "priority": 1
+        }
+        rule_result = cf_request(
+            "POST",
+            f"{base}/zones/{zone_id}/pagerules",
+            api_token,
+            rule_payload
+        )
+        if rule_result.get("success"):
+            print(f"  ✓ Page Rule 301 : {pattern} → {target_url}")
+        elif any("already exists" in str(e) for e in rule_result.get("errors", [])):
+            print(f"  ✓ Page Rule déjà existante : {pattern}")
+        else:
+            print(f"  ⚠ Page Rule : {rule_result.get('errors', '')}")
 
 
 if __name__ == "__main__":
