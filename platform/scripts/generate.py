@@ -443,6 +443,20 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         if logos:
             print(f"  ✓ {len(logos)} logos copiés")
 
+        # Copie favicon si présent (site-specific ou shared, tous formats)
+        import shutil as _shutil
+        favicon_copied = False
+        for ext in ['svg', 'png', 'ico']:
+            for src_dir in [site_dir, SHARED_DIR]:
+                favicon_src = src_dir / f"favicon.{ext}"
+                if favicon_src.exists():
+                    _shutil.copy2(favicon_src, output_dir / f"favicon.{ext}")
+                    print(f"  ✓ favicon.{ext} copié")
+                    favicon_copied = True
+                    break
+            if favicon_copied:
+                break
+
         # Home
         index_tpl = site.get("index_template", f"index-{site_slug}.html.j2")
         if (TEMPLATES_DIR / index_tpl).exists():
