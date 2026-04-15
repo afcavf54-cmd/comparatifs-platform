@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
-const STEPS = ['Infos generales', 'Source de donnees', 'Configuration', 'Recapitulatif']
+const STEPS = ['Infos generales', 'Source de donnees', 'SEO', 'Configuration', 'Recapitulatif']
 
 export default function NewSitePage() {
   const router = useRouter()
@@ -18,6 +18,14 @@ export default function NewSitePage() {
     logo_text: '', logo_accent: '',
     accent: '#1B4FD8', accent2: '#E8410A', bg: '#F4F6FB',
     www_preference: 'www',
+    home_title: '',
+    home_description: '',
+    seo_vs_title: '{A} vs {B} : comparatif {year}',
+    seo_vs_meta: 'Comparatif complet {A} vs {B} {year} : rendements, frais, avis.',
+    seo_avis_title: 'Avis {nom} {year} : faut-il investir ?',
+    seo_avis_meta: 'Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques.',
+    seo_liste_comp_title: 'Tous les comparatifs {site_name} {year}',
+    seo_liste_avis_title: 'Avis {site_name} {year} : analyses indépendantes',
   })
 
   const set = (k: string, v: string) => {
@@ -181,7 +189,7 @@ export default function NewSitePage() {
         )}
 
         {/* Step 2 — Theme */}
-        {step === 2 && (
+        {step === 4 && (
           <div>
             <h2 style={{ color: '#fff', fontSize: 18, fontWeight: 600, marginBottom: 24, marginTop: 0 }}>Configuration visuelle</h2>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
@@ -252,7 +260,7 @@ export default function NewSitePage() {
           {step < STEPS.length - 1 ? (
             <button onClick={() => {
               if (step === 0 && !form.name) { setError('Le nom est requis'); return }
-              if (step === 1 && !form.domain) { setError('Le domaine est requis'); return }
+              if (step === 2 && !form.domain) { setError('Le domaine est requis'); return }
               setError('')
               setStep(s => s + 1)
             }} style={{
