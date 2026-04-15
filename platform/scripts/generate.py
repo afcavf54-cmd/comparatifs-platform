@@ -448,11 +448,14 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         if (TEMPLATES_DIR / index_tpl).exists():
             zero_frais = sum(1 for p in products if str(p.get("frais_souscription", 99)).replace('.0','') == "0")
             top_pairs  = [{"url": f"{a}-vs-{b}.html", "label": f"{products_by_slug(products, a)['nom']} vs {products_by_slug(products, b)['nom']}"} for a, b in all_pairs[:8]]
+            home_title = site.get("home_title") or f"{site.get('name', '')} | Comparatifs {site.get('year', '')}"
+            home_desc = site.get("home_description", "")
             html = env.get_template(index_tpl).render(
                 site={**site, "seo": config.get("seo", {})}, theme=theme, products=products,
                 total_pairs=len(all_pairs), zero_frais_count=zero_frais,
                 top_pairs=top_pairs, build_date=date.today().isoformat(),
                 site_editorial=site_editorial,
+                home_title=home_title, home_description=home_desc,
             )
             (output_dir / "index.html").write_text(html, encoding="utf-8")
             print(f"  ✓ index.html ({len(products)} produits, {len(all_pairs)} comparatifs)")
@@ -466,9 +469,12 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
 
         # Page comparatifs-scpi.html
         if (TEMPLATES_DIR / "comparatifs-scpi.html.j2").exists():
+            seo_cfg = config.get("seo", {})
+            liste_comp_title = seo_cfg.get("liste_comp_title", "Tous les comparatifs {site_name} {year}")                 .replace("{site_name}", site.get("name", ""))                 .replace("{year}", str(site.get("year", "")))                 .replace("{total}", str(len(all_pairs)))
             html = env.get_template("comparatifs-scpi.html.j2").render(
                 site={**site, "seo": config.get("seo", {})}, theme=theme,
-                products=products, total_pairs=len(all_pairs)
+                products=products, total_pairs=len(all_pairs),
+                liste_comp_title=liste_comp_title,
             )
             (output_dir / "comparatifs-scpi.html").write_text(html, encoding="utf-8")
             print(f"  ✓ comparatifs-scpi.html ({len(all_pairs)} comparatifs)")
@@ -518,12 +524,17 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                             label = f"{prod_map[a]['nom']} vs {prod_map[b]['nom']}"
                             related_comparatifs.append((url, label))
 
+                seo_cfg = config.get("seo", {})
+                avis_title = seo_cfg.get("avis_title_pattern", "Avis {nom} {year}")                     .replace("{nom}", avis_prod.get("nom", ""))                     .replace("{marque}", avis_prod.get("marque", ""))                     .replace("{td}", str(avis_prod.get("td", "")))                     .replace("{year}", str(site.get("year", "")))
+                avis_meta = seo_cfg.get("avis_meta_pattern", "")                     .replace("{nom}", avis_prod.get("nom", ""))                     .replace("{marque}", avis_prod.get("marque", ""))                     .replace("{td}", str(avis_prod.get("td", "")))                     .replace("{year}", str(site.get("year", "")))
                 html = env.get_template(avis_tpl_name).render(
                     site={**site, "seo": config.get("seo", {})},
                     theme=theme,
                     prod=avis_prod,
                     related_comparatifs=related_comparatifs,
                     build_date=date.today().isoformat(),
+                    avis_title=avis_title,
+                    avis_meta=avis_meta,
                 )
                 (output_dir / f"avis-{slug}.html").write_text(html, encoding="utf-8")
                 avis_count += 1
