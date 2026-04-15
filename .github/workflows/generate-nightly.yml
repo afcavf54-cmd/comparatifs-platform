@@ -162,6 +162,29 @@ jobs:
                   "--branch=main",
                   "--commit-dirty=true"
               ], env={**os.environ, "CLOUDFLARE_API_TOKEN": api_token, "CLOUDFLARE_ACCOUNT_ID": account_id})
+              # Association domaines custom
+              try:
+                  import yaml
+                  with open(f"platform/sites/{site_id}/config.yaml") as cf:
+                      scfg = yaml.safe_load(cf)
+                  raw_domain = scfg.get("site", {}).get("domain", "")
+                  raw_domain = raw_domain.replace("https://www.", "").replace("https://", "").replace("http://", "").strip("/")
+                  if raw_domain:
+                      for variant in [raw_domain, f"www.{raw_domain}"]:
+                          r = subprocess.run([
+                              "curl", "-s", "-X", "POST",
+                              "-H", f"Authorization: Bearer {api_token}",
+                              "-H", "Content-Type: application/json",
+                              "-d", json.dumps({"name": variant}),
+                              f"https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{site_id}/domains"
+                          ], capture_output=True, text=True)
+                          result = json.loads(r.stdout)
+                          if result.get("success"):
+                              print(f"  ✓ Domaine associé : {variant}")
+                          elif any(e.get("code") == 8000037 for e in result.get("errors", [])):
+                              print(f"  ✓ Domaine déjà associé : {variant}")
+              except Exception as de:
+                  print(f"  ⚠ Domaine : {de}")
 
               # Met à jour le statut
               for s in hub["sites"]:
