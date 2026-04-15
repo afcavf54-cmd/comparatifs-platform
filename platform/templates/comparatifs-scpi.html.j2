@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{% if liste_comp_title is defined and liste_comp_title %}{{ liste_comp_title }}{% else %}Tous les comparatifs SCPI {{ site.year }} | {{ site.name }}{% endif %}</title>
 <meta name="description" content="Retrouvez tous nos comparatifs SCPI {{ site.year }} : {{ total_pairs }} analyses détaillées pour vous aider à choisir la meilleure SCPI selon votre profil.">
-<link rel="canonical" href="{{ site.domain }}/comparatifs-scpi.html">
+<link rel="canonical" href="{{ site.domain }}/comparatifs-scpi">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="{{ theme.google_fonts }}" rel="stylesheet">
 <style>
@@ -85,7 +85,7 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
       {% for other in products %}
       {% if other.slug != prod.slug %}
       {% set slugs = [prod.slug, other.slug] | sort %}
-      <a href="{{ slugs[0] }}-vs-{{ slugs[1] }}.html" class="comp-item" data-label="{{ prod.nom | lower }} {{ other.nom | lower }}">
+      <a href="{{ slugs[0] }}-vs-{{ slugs[1] }}" class="comp-item" data-label="{{ prod.nom | lower }} {{ other.nom | lower }}">
         <span>{{ prod.nom }} vs {{ other.nom }}</span>
         <span class="comp-item-arrow">→</span>
       </a>
