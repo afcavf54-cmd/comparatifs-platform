@@ -26,8 +26,8 @@ ROOT      = Path(__file__).parent.parent
 SITES_DIR = ROOT / "sites"
 MODEL     = "claude-sonnet-4-20250514"
 MAX_TOKENS = 4096
-MAX_RETRIES = 6
-RETRY_DELAYS = [30, 60, 300, 900, 1800, 3600]  # 30s, 1min, 5min, 15min, 30min, 1h
+MAX_RETRIES = 100
+RETRY_CYCLE = [30, 60, 300, 900, 1800, 3600]  # pattern cyclique : 30s, 1min, 5min, 15min, 30min, 1h
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 if not ANTHROPIC_API_KEY:
@@ -61,11 +61,11 @@ def call_claude(prompt: str) -> str:
         except Exception as e:
             print(f"    ⚠ Tentative {attempt+1}/{MAX_RETRIES} échouée : {e}")
             if attempt < MAX_RETRIES - 1:
-                wait = RETRY_DELAYS[attempt]
+                wait = RETRY_CYCLE[attempt % len(RETRY_CYCLE)]
                 mins = wait // 60
                 secs = wait % 60
                 wait_str = f"{mins}min {secs}s" if mins > 0 else f"{secs}s"
-                print(f"    ⏳ Nouvelle tentative dans {wait_str}...")
+                print(f"    ⏳ Nouvelle tentative dans {wait_str}... ({attempt+1}/{MAX_RETRIES})")
                 time.sleep(wait)
             else:
                 print(f"    ❌ Échec définitif après {MAX_RETRIES} tentatives")
