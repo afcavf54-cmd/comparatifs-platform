@@ -33,11 +33,11 @@ footer a{color:rgba(255,255,255,.4)}
   <p class="last-update">Dernière mise à jour : {{ build_date | fr_date }}</p>
 
   <h2>1. Éditeur du site</h2>
-  <p>Le site <strong>{{ site.domain | replace('https://www.', '') }}</strong> est édité par :</p>
+  <p>Le site <strong>{{ site.domain | replace('https://www.', '') | replace('https://', '') | replace('http://', '') | replace('/', '') }}</strong> est édité par :</p>
   <p>
     <strong>{{ site.name }}</strong><br>
     Site web : <a href="{{ site.domain }}">{{ site.domain }}</a><br>
-    Email : contact@{{ site.domain | replace('https://www.', '') }}
+    Email : contact@{{ site.domain | replace('https://www.', '') | replace('https://', '') | replace('http://', '') | replace('/', '') }}
   </p>
 
   <h2>2. Directeur de la publication</h2>
@@ -89,7 +89,7 @@ footer a{color:rgba(255,255,255,.4)}
 
   <h2>11. Contact</h2>
   <p>Pour toute question, réclamation ou signalement d'erreur dans les données publiées :<br>
-  Email : <a href="mailto:contact@{{ site.domain | replace('https://www.', '') }}">contact@{{ site.domain | replace('https://www.', '') }}</a></p>
+  Email : <a href="mailto:contact@{{ site.domain | replace('https://www.', '') | replace('https://', '') | replace('http://', '') | replace('/', '') }}">contact@{{ site.domain | replace('https://www.', '') | replace('https://', '') | replace('http://', '') | replace('/', '') }}</a></p>
 </main>
 
 {% include "base/_footer.html.j2" %}
