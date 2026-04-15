@@ -43,11 +43,11 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);fon
     <div class="contact-card">
       <h2>✉️ Nous écrire</h2>
       <p>Pour toute question, signalement d'erreur dans les données ou demande d'information sur nos analyses.</p>
-      <a href="mailto:contact@{{ site.domain | replace('https://www.', '') | replace('https://', '') }}" class="btn">
+      <a href="mailto:contact@{{ site.domain | replace('https://www.', '') | replace('https://', '') | replace('http://', '') | replace('/', '') | replace('https://', '') }}" class="btn">
         Envoyer un email
       </a>
       <div class="info-block">
-        <strong>Email :</strong> contact@{{ site.domain | replace('https://www.', '') | replace('https://', '') }}<br>
+        <strong>Email :</strong> contact@{{ site.domain | replace('https://www.', '') | replace('https://', '') | replace('http://', '') | replace('/', '') | replace('https://', '') }}<br>
         <strong>Délai de réponse :</strong> 48h ouvrées
       </div>
     </div>
@@ -55,7 +55,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);fon
     <div class="contact-card">
       <h2>🤝 Partenariat & affiliation</h2>
       <p>Vous êtes une société de gestion ou une plateforme d'investissement et souhaitez être référencé ou corriger vos données ?</p>
-      <a href="mailto:contact@{{ site.domain | replace('https://www.', '') | replace('https://', '') }}?subject=Partenariat" class="btn btn-outline">
+      <a href="mailto:contact@{{ site.domain | replace('https://www.', '') | replace('https://', '') | replace('http://', '') | replace('/', '') | replace('https://', '') }}?subject=Partenariat" class="btn btn-outline">
         Demande de partenariat
       </a>
       <div class="info-block">
