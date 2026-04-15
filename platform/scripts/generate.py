@@ -242,7 +242,7 @@ def build_related_pages(slug_a: str, slug_b: str, products: list, max_items: int
         if s in (slug_a, slug_b):
             continue
         related.append({
-            "url":   f"{slug_a}-vs-{s}.html",
+            "url":   f"{slug_a}-vs-{s}",
             "label": f"{products_by_slug(products, slug_a)['nom']} vs {p['nom']}"
         })
         if len(related) >= max_items:
@@ -461,7 +461,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         index_tpl = site.get("index_template", f"index-{site_slug}.html.j2")
         if (TEMPLATES_DIR / index_tpl).exists():
             zero_frais = sum(1 for p in products if str(p.get("frais_souscription", 99)).replace('.0','') == "0")
-            top_pairs  = [{"url": f"{a}-vs-{b}.html", "label": f"{products_by_slug(products, a)['nom']} vs {products_by_slug(products, b)['nom']}"} for a, b in all_pairs[:8]]
+            top_pairs  = [{"url": f"{a}-vs-{b}", "label": f"{products_by_slug(products, a)['nom']} vs {products_by_slug(products, b)['nom']}"} for a, b in all_pairs[:8]]
             home_title = site.get("home_title") or f"{site.get('name', '')} | Comparatifs {site.get('year', '')}"
             home_desc = site.get("home_description", "")
             html = env.get_template(index_tpl).render(
@@ -539,7 +539,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                         other = b if a == slug else a
                         other_prod = prod_map.get(other)
                         if other_prod:
-                            url = f"{a}-vs-{b}.html"
+                            url = f"{a}-vs-{b}"
                             label = f"{prod_map[a]['nom']} vs {prod_map[b]['nom']}"
                             related_comparatifs.append((url, label))
 
