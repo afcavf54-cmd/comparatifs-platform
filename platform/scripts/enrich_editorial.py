@@ -26,8 +26,8 @@ ROOT      = Path(__file__).parent.parent
 SITES_DIR = ROOT / "sites"
 MODEL     = "claude-sonnet-4-20250514"
 MAX_TOKENS = 4096
-MAX_RETRIES = 5
-RETRY_DELAY = 10  # secondes
+MAX_RETRIES = 6
+RETRY_DELAYS = [30, 60, 300, 900, 1800, 3600]  # 30s, 1min, 5min, 15min, 30min, 1h
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 if not ANTHROPIC_API_KEY:
@@ -59,14 +59,13 @@ def call_claude(prompt: str) -> str:
                 return data["content"][0]["text"]
 
         except Exception as e:
-            err_str = str(e)
-            # 529 = API surchargée, attendre plus longtemps
-            is_529 = '529' in err_str
-            wait = (30 if is_529 else RETRY_DELAY) * (2 ** attempt)
-            wait = min(wait, 120)  # max 2 minutes
             print(f"    ⚠ Tentative {attempt+1}/{MAX_RETRIES} échouée : {e}")
             if attempt < MAX_RETRIES - 1:
-                print(f"    ⏳ Nouvelle tentative dans {wait}s...")
+                wait = RETRY_DELAYS[attempt]
+                mins = wait // 60
+                secs = wait % 60
+                wait_str = f"{mins}min {secs}s" if mins > 0 else f"{secs}s"
+                print(f"    ⏳ Nouvelle tentative dans {wait_str}...")
                 time.sleep(wait)
             else:
                 print(f"    ❌ Échec définitif après {MAX_RETRIES} tentatives")
