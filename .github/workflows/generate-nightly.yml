@@ -186,6 +186,56 @@ jobs:
               except Exception as de:
                   print(f"  ⚠ Domaine : {de}")
 
+              # Règle de redirection naked → www (ou www → naked)
+              try:
+                  www_pref = scfg.get("site", {}).get("www_preference", "www") if 'scfg' in dir() else "www"
+                  zone_r = subprocess.run([
+                      "curl", "-s",
+                      "-H", f"Authorization: Bearer {api_token}",
+                      f"https://api.cloudflare.com/client/v4/zones?name={raw_domain}"
+                  ], capture_output=True, text=True)
+                  zone_data = json.loads(zone_r.stdout)
+                  zones = zone_data.get("result", [])
+                  if zones:
+                      zone_id = zones[0]["id"]
+                      if www_pref == "www":
+                          src = f"https://{raw_domain}/*"
+                          dst = f"https://www.{raw_domain}/$1"
+                      else:
+                          src = f"https://www.{raw_domain}/*"
+                          dst = f"https://{raw_domain}/$1"
+                      rule_payload = {
+                          "rules": [{
+                              "description": "www redirect",
+                              "expression": f'(http.host eq "{raw_domain if www_pref == "www" else "www." + raw_domain}")',
+                              "action": "redirect",
+                              "action_parameters": {
+                                  "from_value": {
+                                      "status_code": 301,
+                                      "target_url": {
+                                          "expression": f'concat("https://{"www." if www_pref == "www" else ""}{raw_domain}", http.request.uri.path)'
+                                      },
+                                      "preserve_query_string": True
+                                  }
+                              },
+                              "enabled": True
+                          }]
+                      }
+                      rr = subprocess.run([
+                          "curl", "-s", "-X", "PUT",
+                          "-H", f"Authorization: Bearer {api_token}",
+                          "-H", "Content-Type: application/json",
+                          "-d", json.dumps(rule_payload),
+                          f"https://api.cloudflare.com/client/v4/zones/{zone_id}/rulesets/phases/http_request_redirect/entrypoint"
+                      ], capture_output=True, text=True)
+                      rr_data = json.loads(rr.stdout)
+                      if rr_data.get("success"):
+                          print(f"  ✓ Règle 301 créée : {raw_domain} → {'www.' if www_pref == 'www' else ''}{raw_domain}")
+                      else:
+                          print(f"  ⚠ Règle 301 : {rr_data.get('errors', '')}")
+              except Exception as re:
+                  print(f"  ⚠ Redirect rule : {re}")
+
               # Met à jour le statut
               for s in hub["sites"]:
                   if s["id"] == site_id:
