@@ -423,7 +423,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         generate_sitemap(site, all_pairs, products, output_dir)
 
         # ── Fichier _redirects pour Cloudflare Pages ──────────────────────
-        www_preference = site.get("www_preference", "www")  # "www" ou "naked"
+        www_preference = site.get("www_preference") or config.get("www_preference", "www")
         domain_raw = site.get("domain", "").replace("https://", "").replace("http://", "").replace("www.", "").rstrip("/")
         if domain_raw:
             if www_preference == "www":
@@ -480,8 +480,11 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             print(f"  ✓ comparatifs-scpi.html ({len(all_pairs)} comparatifs)")
 
         # Page liste avis
-        if (TEMPLATES_DIR / f"liste-avis-{site_slug}.html.j2").exists():
-            html = env.get_template(f"liste-avis-{site_slug}.html.j2").render(
+        liste_avis_tpl = f"liste-avis-{site_slug}.html.j2"
+        if not (TEMPLATES_DIR / liste_avis_tpl).exists():
+            liste_avis_tpl = "liste-avis-scpi.html.j2"
+        if (TEMPLATES_DIR / liste_avis_tpl).exists():
+            html = env.get_template(liste_avis_tpl).render(
                 site={**site, "seo": config.get("seo", {})}, theme=theme,
                 products=products, build_date=date.today().isoformat(),
             )
@@ -490,6 +493,8 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
 
         # ── Pages AVIS ──────────────────────────────────────────────────────
         avis_tpl_name = f"avis-{site_slug}.html.j2"
+        if not (TEMPLATES_DIR / avis_tpl_name).exists():
+            avis_tpl_name = "avis-scpi.html.j2"  # fallback template générique
         if (TEMPLATES_DIR / avis_tpl_name).exists():
             avis_count = 0
             prod_map = {p["slug"]: p for p in products}
