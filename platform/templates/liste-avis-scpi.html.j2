@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Avis SCPI {{ site.year }} : Toutes nos analyses | {{ site.name }}</title>
 <meta name="description" content="Retrouvez tous nos avis SCPI {{ site.year }} : analyses indépendantes de {{ products | length }} SCPI avec rendements, frais, points forts et verdict.">
-<link rel="canonical" href="{{ site.domain }}/avis-scpi.html">
+<link rel="canonical" href="{{ site.domain }}/avis-scpi">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="{{ theme.google_fonts }}" rel="stylesheet">
 <style>
@@ -114,7 +114,7 @@ footer a{color:rgba(255,255,255,.4)}.footer-links{display:flex;justify-content:c
   <!-- Grille des SCPI -->
   <div class="grid" id="scpi-grid">
     {% for prod in products %}
-    <a href="avis-{{ prod.slug }}.html" class="card"
+    <a href="avis-{{ prod.slug }}" class="card"
        data-nom="{{ prod.nom | lower }}"
        data-type="{{ prod.type | default('') | lower }}"
        data-frais="{{ prod.frais_souscription | default(99) }}"
