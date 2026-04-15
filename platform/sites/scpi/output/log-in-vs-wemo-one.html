@@ -1,579 +1,1085 @@
-#!/usr/bin/env python3
-"""
-generate.py, Générateur de sites comparatifs statiques
-Source données : Google Sheets CSV (priorité) ou products.yaml (fallback)
-Textes éditoriaux : API Claude (un seul appel batch pour toutes les paires)
-"""
-
-import argparse
-import csv
-import io
-import itertools
-import json
-import math
-import os
-import shutil
-import sys
-import urllib.request
-from datetime import date
-from pathlib import Path
-
-import yaml
-from jinja2 import Environment, FileSystemLoader, select_autoescape
-
-# ── Chemins ───────────────────────────────────────────────────────────────────
-ROOT          = Path(__file__).parent.parent
-TEMPLATES_DIR = ROOT / "templates"
-SITES_DIR     = ROOT / "sites"
-SHARED_DIR    = ROOT / "sites" / "_shared"
-
-# ── Règles éditoriales centralisées ──────────────────────────────────────────
-sys.path.insert(0, str(TEMPLATES_DIR / "base"))
-try:
-    from _editorial_rules import format_editorial, format_text
-except ImportError:
-    def format_editorial(ed): return ed
-    def format_text(t): return t
-
-
-# ── Helpers ───────────────────────────────────────────────────────────────────
-def load_yaml(path: Path) -> dict:
-    with open(path, encoding="utf-8") as f:
-        return yaml.safe_load(f)
-
-
-def cast(val: str):
-    if val == "" or val is None:
-        return None
-    try:
-        return int(val)
-    except ValueError:
-        pass
-    try:
-        return float(val)
-    except ValueError:
-        pass
-    return val
-
-
-# ── Chargement Sheet CSV ───────────────────────────────────────────────────────
-STRING_FIELDS = {
-    'geo', 'secteurs', 'pays', 'investissement_min', 'tri_horizon',
-    'nom', 'marque', 'type', 'slug', 'description', 'url_affiliation',
-    'verdict_si_1', 'verdict_si_2', 'verdict_si_3'
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCPI Log In vs Wemo One : comparatif + avis 2026</title>
+<meta name="description" content="Comparatif complet SCPI Log In vs Wemo One : TD, TRI, frais, capitalisation. Trouvez la meilleure SCPI pour votre investissement en 2026.">
+<link rel="canonical" href="https://www.utl-peipin.fr/log-in-vs-wemo-one">
+<meta property="og:title" content="SCPI Log In vs Wemo One : comparatif + avis 2026">
+<meta property="og:description" content="Comparatif complet SCPI Log In vs Wemo One : TD, TRI, frais, capitalisation. Trouvez la meilleure SCPI pour votre investissement en 2026.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.utl-peipin.fr/log-in-vs-wemo-one">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Log In vs Wemo One : comparatif 2026",
+  "description": "Comparatif complet SCPI Log In vs Wemo One : TD, TRI, frais, capitalisation. Trouvez la meilleure SCPI pour votre investissement en 2026.",
+  "url": "https://www.utl-peipin.fr/log-in-vs-wemo-one",
+  "dateModified": "2026-04-15",
+  "publisher": {"@type": "Organization", "name": "UTL Peipin"}
 }
-
-NUMERIC_FIELDS = [
-    "prix_achat", "prix_retrait", "td", "tri", "pga", "tof",
-    "frais_souscription", "frais_gestion", "delai_jouissance",
-    "endettement", "capitalisation", "disponible", "note_redaction"
-]
-
-EDITORIAL_TEXTS = {
-    "wemo-one": {
-        "description": "Wemo One est la SCPI phare de Wemo Reim, lancée en 2024 avec une philosophie radicalement différente : investir uniquement dans des actifs \"small caps\" européens (moins de 5 M€ par bien), là où les grands institutionnels ne vont pas. Cette approche granulaire offre des marges de négociation supérieures et une diversification naturelle du risque locataire.\n\nCe qui distingue vraiment Wemo One, c'est l'alignement d'intérêts : chaque associé de Wemo Reim est également investisseur dans la SCPI. En 2025, cette stratégie a porté ses fruits avec un taux de distribution exceptionnel de 15,27%, le meilleur du marché.",
-        "points_forts": ["TD 2025 exceptionnel : 15,27%, meilleur du marché", "Stratégie small caps : actifs < 5 M€", "TOF à 100%", "85% hors France, avantage fiscal TMI 30%+", "Gérants co-investisseurs dans leur propre SCPI"],
-        "points_faibles": ["SCPI récente (2024), track record limité", "Frais de souscription de 10%", "Délai de jouissance de 6 mois", "Capitalisation encore modeste (75 M€)"],
-        "verdict_si": ["Vous cherchez le TD le plus élevé du marché", "TMI à 30% ou plus", "Vous croyez à l'immobilier small cap européen", "Vous acceptez les frais d'entrée pour un rendement exceptionnel"]
-    },
-    "iroko-zen": {
-        "description": "Iroko Zen a révolutionné le marché SCPI en supprimant totalement les frais de souscription dès 2020. Résultat : 100% du capital investi travaille immédiatement. Labellisée ISR, elle affiche un TRI de 7,49% sur 5 ans et une capitalisation de 1,35 milliard d'euros.\n\nSon portefeuille diversifié couvre commerces, bureaux, logistique et santé dans six pays européens, avec une durée d'engagement ferme des locataires de 7,3 ans à fin 2025.",
-        "points_forts": ["0% de frais de souscription", "TRI 5 ans de 7,49%", "Label ISR", "Capitalisation de 1,35 Md€, liquidité solide", "Délai de jouissance de 3 mois"],
-        "points_faibles": ["Ticket minimum : 5 100€ (25 parts)", "Frais de gestion de 14,4%", "Endettement de 26%", "29% France, avantage fiscal partiel"],
-        "verdict_si": ["Investissement minimum de 5 100€", "TRI prime sur TD annuel", "ISR est un critère important", "Horizon 8 ans et plus"]
-    },
-    "comete": {
-        "description": "Comète est la SCPI internationale d'Alderan, lancée en décembre 2023. Elle investit exclusivement hors France, avec une concentration au Royaume-Uni (47%), en Espagne (15%) et en Italie (12%).\n\nSa stratégie opportuniste sur marchés décotés lui a permis d'afficher un TD de 9% en 2025, parmi les meilleurs du marché. Elle cible les zones urbaines dynamiques et les pôles tertiaires à forte demande locative.",
-        "points_forts": ["TD 2025 de 9%", "100% international hors France", "Stratégie opportuniste sur marchés décotés", "Diversification : UK, Espagne, Italie, Pays-Bas", "TRI cible 10 ans de 6,5%"],
-        "points_faibles": ["SCPI récente (2023)", "Frais de souscription de 10%", "Exposition GBP (47% UK), risque de change", "Capitalisation modeste"],
-        "verdict_si": ["Exposition internationale maximale", "TD élevé avec diversification géo", "Acceptez le risque de change UK", "Portefeuille déjà exposé à la zone euro"]
-    },
-    "corum-origin": {
-        "description": "Corum Origin est une référence du marché depuis 2012. Pionnière de l'investissement SCPI européen, elle maintient depuis 12 ans un TD régulier grâce à une stratégie opportuniste dans des marchés profonds : Pays-Bas (27%), Portugal (15%), Estonie (13%).\n\nAvec zéro endettement et un TRI 10 ans de 6,75%, c'est la SCPI de référence pour un rendement élevé et stable sur le long terme.",
-        "points_forts": ["12 ans de track record", "TRI 10 ans de 6,75%", "Zéro endettement", "Diversification 15 pays européens", "TD constant depuis 2012"],
-        "points_faibles": ["Frais de souscription de 11,96%", "Prix de retrait < prix d'achat (999€ vs 1 135€)", "Délai de jouissance de 6 mois", "Prix de part élevé : 1 135€"],
-        "verdict_si": ["Long historique de performance", "Régularité prime sur niveau du rendement", "Horizon 10 ans minimum", "Zéro endettement souhaité"]
-    },
-    "remake-live": {
-        "description": "Remake Live est la SCPI sans frais de souscription de Remake AM, lancée en 2022. Avec 78% hors France, elle offre un avantage fiscal majeur pour les TMI élevées. À fin 2025, son TOF atteint 98,86% et le prix de part reste stable.\n\nL'absence totale de frais d'entrée en fait la SCPI idéale pour les versements programmés mensuels dès 204€, un ticket d'entrée parmi les plus accessibles du marché.",
-        "points_forts": ["0% de frais de souscription", "TD 2025 de 7,05%", "78% hors France", "TOF de 98,86%", "Ticket minimum : 204€"],
-        "points_faibles": ["Frais de gestion de 18% TTC", "SCPI récente (2022)", "TRI cible 7%, non encore démontré sur la durée"],
-        "verdict_si": ["Versements programmés dès 204€/mois", "TMI à 30% ou plus", "0% frais d'entrée sans compromis sur rendement", "Débutant en SCPI"]
-    },
-    "iroko-atlas": {
-        "description": "Iroko Atlas est la petite sœur d'Iroko Zen, lancée en 2025 avec une ambition encore plus internationale : 100% hors de France. Même modèle sans frais, même approche ISR. En quelques mois, elle a constitué 12 actifs dans 6 pays européens.\n\nSa répartition actuelle : Royaume-Uni (31%), Pays-Bas (29%), Espagne (13%). Forte orientation commerces (56%). TRI cible de 7% sur 10 ans.",
-        "points_forts": ["0% de frais de souscription", "100% hors de France", "TOF à 100%", "TRI cible 10 ans de 7%", "Même équipe qu'Iroko Zen"],
-        "points_faibles": ["SCPI très récente (2025), aucun track record", "Capitalisation faible (77,4 M€)", "Délai de jouissance de 5 mois", "Risque de change GBP (31% UK)"],
-        "verdict_si": ["Confiance en l'équipe Iroko", "Exposition 100% internationale", "TMI élevée, optimisation fiscale", "Acceptez le risque d'une SCPI naissante"]
-    },
-    "log-in": {
-        "description": "Log In est la seule SCPI exclusivement logistique et industrielle à l'échelle européenne, gérée par Theoreim en partenariat avec Principal Real Estate Europe. Elle s'inscrit dans la vague de réindustrialisation européenne.\n\nSon portefeuille est concentré en Italie (29%), Espagne (27%) et Royaume-Uni (24%), avec une répartition sectorielle dominée par les locaux d'activité (70%) et la logistique (24%).",
-        "points_forts": ["Thématique unique : logistique 100% européenne", "Réindustrialisation européenne, tendance structurelle", "TOF à 100%", "PGA de 8,21%", "Double expertise Theoreim + Principal Real Estate"],
-        "points_faibles": ["TRI cible 10 ans de 5%, modeste", "Frais de souscription de 10%", "Ticket minimum de 1 020€", "Secteur cyclique"],
-        "verdict_si": ["Conviction sur la logistique en Europe", "Exposition sectorielle différenciante", "Complément d'un portefeuille diversifié", "Horizon long terme sur thématique industrielle"]
-    },
-    "transitions-europe": {
-        "description": "Transitions Europe est la SCPI d'Arkéa REIM pensée pour capter les mutations de l'immobilier européen. 100% hors France, elle investit dans les actifs des nouveaux usages : bureaux repensés, logistique urbaine, commerces de proximité.\n\nEspagne (36%), Allemagne (21%) et Pays-Bas (15%) constituent son cœur de portefeuille. TD de 7,60% en 2025 grâce à des acquisitions sur marchés corrigés.",
-        "points_forts": ["TD 2025 de 7,60%", "100% hors de France", "Marchés décotés, potentiel de revalorisation", "Frais de gestion compétitifs : 10% TTC", "Diversification sectorielle complète"],
-        "points_faibles": ["Prix de retrait < prix d'achat (181,80€ vs 202€)", "Frais de souscription de 10%", "Pas de TRI communiqué"],
-        "verdict_si": ["TD élevé + exposition 100% européenne", "Rebond immobilier européen post-correction", "Frais de gestion compétitifs", "Construction d'un portefeuille diversifié"]
-    },
-    "principal-inside": {
-        "description": "Principal Inside est la première SCPI à investir des deux côtés de l'Atlantique, gérée par Principal Real Estate (600 Md$ d'actifs). SCPI récente en phase de déploiement, avec 100% USA pour l'instant.\n\nThématique santé (58%), secteur défensif porté par le vieillissement démographique. La diversification Europe viendra progressivement. Cashback de 5% via Louveinvest.",
-        "points_forts": ["Exposition unique aux États-Unis", "Gestionnaire mondial : 600 Md$ d'AUM", "Thématique santé (58%), défensif", "TRI cible 10 ans de 6,50%", "Cashback de 5% via Louveinvest"],
-        "points_faibles": ["Aucun track record de distribution", "100% USA, risque de change USD/EUR", "Frais de souscription de 10%", "TD cible 6%, en dessous de la moyenne", "Diversification Europe à venir"],
-        "verdict_si": ["Exposition aux États-Unis recherchée", "Confiance en un gestionnaire mondial", "Thématique santé convaincante", "Horizon 10 ans minimum"]
-    },
-    "upeka": {
-        "description": "Upêka est la SCPI value-add d'Axipit Real Estate Partners (2023). Stratégie opportuniste : acquérir des actifs décotés à fort potentiel, les repositionner. 0% de frais de souscription, frais de sortie dégressifs (disparus après 6 ans).\n\nTD de 5,71% en 2025, modeste, mais le potentiel de revalorisation est le vrai argument. Cashback de 3% via Louveinvest.",
-        "points_forts": ["0% de frais de souscription", "Frais de sortie dégressifs, disparus après 6 ans", "Stratégie value-add, potentiel de plus-value", "TRI cible 10 ans de 6,50%", "Cashback de 3% via Louveinvest"],
-        "points_faibles": ["TD 2025 de 5,71%, en dessous des meilleures SCPI", "Frais de gestion de 18% TTC", "SCPI récente (2023)", "Rendement différé dans le temps"],
-        "verdict_si": ["Valorisation du capital à long terme", "0% frais avec gestionnaire actif", "Value-add sur marché immobilier baissier", "Horizon 8 ans minimum"]
-    }
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Log In",
+  "description": "SCPI specialisee gérée par Theoreim / Principal RE, taux de distribution 6.21%, investie en Europe (logistique).",
+  "brand": {
+    "@type": "Brand",
+    "name": "Theoreim / Principal RE"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "255.0",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.utl-peipin.fr/log-in-vs-wemo-one"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.5",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "1"
+  }
 }
+</script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Wemo One",
+  "description": "SCPI diversifiee gérée par Wemo Reim, taux de distribution 15.27%, investie en France, Europe.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Wemo Reim"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "210.0",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "url": "https://www.utl-peipin.fr/log-in-vs-wemo-one"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "1"
+  }
+}
+</script>
 
-def load_products_from_sheet(csv_url: str) -> list | None:
-    try:
-        print("  📥 Chargement Sheet CSV...")
-        req = urllib.request.Request(
-            csv_url,
-            headers={"User-Agent": "Mozilla/5.0 (compatible; SCPI-Generator/1.0)"}
-        )
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            text = resp.read().decode("utf-8")
-
-        reader   = csv.DictReader(io.StringIO(text))
-        products = []
-        for row in reader:
-            slug = row.get("slug", "").strip()
-            if not slug:
-                continue
-            prod = {}
-            for k, v in row.items():
-                k = k.strip()
-                if not k:
-                    continue
-                v = v.strip()
-                prod[k] = v if k in STRING_FIELDS else cast(v)
-            if str(prod.get("disponible", "1")) == "0":
-                continue
-            products.append(prod)
-
-        print(f"  ✓ Sheet : {len(products)} produits chargés")
-
-        for prod in products:
-            for field in NUMERIC_FIELDS:
-                val = prod.get(field)
-                if val is not None and val != "":
-                    try:
-                        prod[field] = float(str(val).replace(",", "."))
-                    except (ValueError, TypeError):
-                        pass
-
-            # Injecte textes éditoriaux fallback (seront remplacés par AI si disponible)
-            slug = prod.get("slug", "")
-            if slug in EDITORIAL_TEXTS:
-                ed = EDITORIAL_TEXTS[slug]
-                if not prod.get("description"):
-                    prod["description"] = ed["description"]
-                if not prod.get("points_forts"):
-                    prod["points_forts"] = ed["points_forts"]
-                if not prod.get("points_faibles"):
-                    prod["points_faibles"] = ed["points_faibles"]
-
-            # verdict_si
-            if not prod.get("verdict_si"):
-                vs = [prod.get(f"verdict_si_{i}") for i in range(1, 4)]
-                vs = [v for v in vs if v and str(v).strip()]
-                if not vs and slug in EDITORIAL_TEXTS:
-                    vs = EDITORIAL_TEXTS[slug].get("verdict_si", [])
-                if not vs:
-                    if prod.get("frais_souscription") == 0:
-                        vs.append("Vous souhaitez éviter les frais d'entrée")
-                    if prod.get("td") and float(prod.get("td", 0)) >= 7:
-                        vs.append("Vous cherchez un rendement élevé")
-                    vs.append("Vous souhaitez diversifier votre patrimoine immobilier")
-                prod["verdict_si"] = vs
-
-        return products
-
-    except Exception as e:
-        print(f"  ⚠ Sheet indisponible ({e}) → fallback products.yaml")
-        return None
-
-
-# ── Génération éditoriale batch ────────────────────────────────────────────────
-def load_editorial(site_dir: Path) -> dict:
-    """Charge editorial.json depuis le dossier du site et applique les règles éditoriales."""
-    editorial_path = site_dir / "editorial.json"
-    if editorial_path.exists():
-        with open(editorial_path, encoding="utf-8") as f:
-            data = json.load(f)
-        # Applique les règles éditoriales centralisées (paragraphes, gras...)
-        data = {k: format_editorial(v) for k, v in data.items()}
-        print(f"  ✓ editorial.json : {len(data)} paires chargées")
-        return data
-    print("  ⚠ editorial.json absent, textes fallback")
-    return {}
-
-
-# ── SEO ────────────────────────────────────────────────────────────────────────
-def build_seo(site: dict, seo_config: dict, prod_a: dict, prod_b: dict) -> dict:
-    year = site["year"]
-    return {
-        "title": seo_config["title_pattern"]
-            .replace("{A}", str(prod_a["nom"])).replace("{B}", str(prod_b["nom"])).replace("{year}", str(year)),
-        "meta": seo_config["meta_pattern"]
-            .replace("{A}", str(prod_a["nom"])).replace("{B}", str(prod_b["nom"])).replace("{year}", str(year)),
-        "h1": seo_config["h1_pattern"]
-            .replace("{A}", str(prod_a["nom"])).replace("{B}", str(prod_b["nom"])).replace("{year}", str(year)),
-        "intro": seo_config["intro_pattern"]
-            .replace("{A}", str(prod_a["nom"])).replace("{B}", str(prod_b["nom"]))
-            .replace("{prix_a}", f"{prod_a.get('prix_achat', '')}€")
-            .replace("{prix_b}", f"{prod_b.get('prix_achat', '')}€"),
-    }
-
-
-def build_related_pages(slug_a: str, slug_b: str, products: list, max_items: int = 8) -> list:
-    related = []
-    for p in products:
-        s = p["slug"]
-        if s in (slug_a, slug_b):
-            continue
-        related.append({
-            "url":   f"{slug_a}-vs-{s}.html",
-            "label": f"{products_by_slug(products, slug_a)['nom']} vs {p['nom']}"
-        })
-        if len(related) >= max_items:
-            break
-    return related
-
-
-def products_by_slug(products: list, slug: str) -> dict:
-    return next((p for p in products if p["slug"] == slug), None)
-
-
-def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path) -> None:
-    domain = site["domain"]
-    base   = site["base_path"].rstrip("/")
-    today  = date.today().isoformat()
-    lines  = [
-        '<?xml version="1.0" encoding="UTF-8"?>',
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-        f'  <url><loc>{domain}/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>',
-        f'  <url><loc>{domain}/comparatifs-scpi.html</loc><lastmod>{today}</lastmod><priority>0.9</priority><changefreq>weekly</changefreq></url>',
-        f'  <url><loc>{domain}/avis-scpi.html</loc><lastmod>{today}</lastmod><priority>0.9</priority><changefreq>weekly</changefreq></url>',
-    ]
-    for prod in products:
-        lines.append(
-            f'  <url><loc>{domain}/avis-{prod["slug"]}.html</loc>'
-            f'<lastmod>{today}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>'
-        )
-    for slug_a, slug_b in pairs:
-        lines.append(
-            f'  <url><loc>{domain}/{slug_a}-vs-{slug_b}.html</loc>'
-            f'<lastmod>{today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>'
-        )
-    lines.append("</urlset>")
-    (output_dir / "sitemap.xml").write_text("\n".join(lines), encoding="utf-8")
-    print(f"  ✓ sitemap.xml ({len(pairs)} comparatifs + {len(products)} avis + pages liste)")
-
-
-def copy_shared_assets(output_dir: Path, site_dir: Path) -> None:
-    for source_dir in [site_dir, SHARED_DIR]:
-        js_src = source_dir / "sheets.js"
-        if js_src.exists():
-            shutil.copy2(js_src, output_dir / "sheets.js")
-            print(f"  ✓ sheets.js copié depuis {source_dir.name}/")
-            return
-
-
-# ── Générateur principal ───────────────────────────────────────────────────────
-def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = None) -> None:
-    site_dir = SITES_DIR / site_slug
-    if not site_dir.exists():
-        print(f"❌ Site introuvable : {site_dir}")
-        sys.exit(1)
-
-    config        = load_yaml(site_dir / "config.yaml")
-    products_yaml_path = site_dir / "products.yaml"
-    products_yaml = load_yaml(products_yaml_path) if products_yaml_path.exists() else {"products": []}
-    site          = config["site"]
-    theme         = config["theme"]
-    criteria      = config["criteria"]
-
-    print(f"\n🚀 Génération site : {site_slug}")
-
-    # Chargement produits
-    sheet_url = site.get("sheet_csv_url", "")
-    products  = None
-    if sheet_url and not dry_run:
-        products = load_products_from_sheet(sheet_url)
-    if products is None:
-        products = products_yaml.get("products", [])
-        print(f"  📦 {len(products)} produits depuis products.yaml")
-
-    print(f"   {len(products)} produits → {math.comb(len(products), 2)} paires")
-
-    # Jinja2
-    env = Environment(
-        loader=FileSystemLoader(str(TEMPLATES_DIR)),
-        autoescape=select_autoescape(["html"]),
-        trim_blocks=True, lstrip_blocks=True,
-    )
-    env.filters["capitalize"] = lambda s: s.capitalize() if s else ""
-
-    MOIS_FR = ["janvier","février","mars","avril","mai","juin",
-               "juillet","août","septembre","octobre","novembre","décembre"]
-    def fr_date(d):
-        try:
-            parts = str(d).split("-")
-            return f"{int(parts[2])} {MOIS_FR[int(parts[1])-1]} {parts[0]}"
-        except Exception:
-            return d
-    env.filters["fr_date"] = fr_date
-
-    template_file = site.get("template", "comparatif-vs.html.j2")
-    template      = env.get_template(template_file)
-    print(f"  Template : {template_file}")
-
-    output_dir = site_dir / "output"
-    if not dry_run:
-        output_dir.mkdir(exist_ok=True)
-
-    all_slugs = [p["slug"] for p in products]
-    all_pairs = list(itertools.combinations(sorted(all_slugs), 2))
-    if filter_pair:
-        all_pairs = [p for p in all_pairs if set(p) == set(filter_pair)]
-
-    # ── Chargement éditorial depuis editorial.json ───────────────────────
-    editorials = load_editorial(site_dir)
-
-    # ── Chargement products_editorial.json ──────────────────────────────
-    products_editorial_path = site_dir / "products_editorial.json"
-    if products_editorial_path.exists():
-        with open(products_editorial_path, encoding="utf-8") as _f:
-            products_editorial = json.load(_f)
-        for prod in products:
-            slug = prod["slug"]
-            if slug in products_editorial:
-                for k, v in products_editorial[slug].items():
-                    if v:
-                        prod[k] = v
-        print(f"  ✓ products_editorial.json : {len(products_editorial)} produits")
-
-    # ── Chargement site_editorial.json ──────────────────────────────────
-    site_editorial = {}
-    site_editorial_path = site_dir / "site_editorial.json"
-    if site_editorial_path.exists():
-        with open(site_editorial_path, encoding="utf-8") as _f:
-            site_editorial = json.load(_f)
-        print(f"  ✓ site_editorial.json chargé")
-
-    generated = 0
-    skipped   = 0
-
-    for slug_a, slug_b in all_pairs:
-        prod_a = products_by_slug(products, slug_a)
-        prod_b = products_by_slug(products, slug_b)
-
-        if not prod_a or not prod_b:
-            skipped += 1
-            continue
-
-        # Injecte les textes uniques générés par l'API
-        pair_key = f"{slug_a}-vs-{slug_b}"
-        if pair_key in editorials:
-            ed = editorials[pair_key]
-            prod_a = dict(prod_a)
-            prod_b = dict(prod_b)
-            prod_a["description"]    = ed.get("description_a",   prod_a.get("description", ""))
-            prod_a["points_forts"]   = ed.get("points_forts_a",  prod_a.get("points_forts", []))
-            prod_a["points_faibles"] = ed.get("points_faibles_a",prod_a.get("points_faibles", []))
-            prod_a["verdict_si"]     = ed.get("verdict_si_a",    prod_a.get("verdict_si", []))
-            prod_b["description"]    = ed.get("description_b",   prod_b.get("description", ""))
-            prod_b["points_forts"]   = ed.get("points_forts_b",  prod_b.get("points_forts", []))
-            prod_b["points_faibles"] = ed.get("points_faibles_b",prod_b.get("points_faibles", []))
-            prod_b["verdict_si"]     = ed.get("verdict_si_b",    prod_b.get("verdict_si", []))
-
-        seo     = build_seo(site, config["seo"], prod_a, prod_b)
-        related = build_related_pages(slug_a, slug_b, products)
-
-        context = {
-            "site": {**site, "seo": config.get("seo", {})},
-            "theme": theme, "criteria": criteria,
-            "prod_a": prod_a, "prod_b": prod_b,
-            "slug_a": slug_a, "slug_b": slug_b,
-            "seo": seo, "related_pages": related,
-            "build_date": date.today().isoformat(),
-            "editorial": editorials.get(pair_key, {}),
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Review",
+  "name": "Log In vs Wemo One : comparatif 2026",
+  "reviewBody": "Analyse comparative complète de Log In et Wemo One sur les critères de performance, frais, diversification et profil investisseur.",
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "4.8",
+    "bestRating": "5"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "UTL Peipin"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "UTL Peipin",
+    "url": "https://www.utl-peipin.fr"
+  },
+  "datePublished": "2026-04-15",
+  "dateModified": "2026-04-15",
+  "itemReviewed": {
+    "@type": "Product",
+    "name": "Comparatif Log In vs Wemo One"
+  },
+  "mainEntity": {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Log In ou Wemo One : laquelle a le meilleur rendement en 2026 ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wemo One affiche 15.27% de taux de distribution contre 6.21% pour Log In. Sur le TRI (10 ans), Wemo One prend l'avantage avec 7.5%."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Quelle SCPI a les frais les plus bas entre Log In et Wemo One ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wemo One a les frais les plus bas avec 10.0% contre 10.0% pour Log In."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Peut-on combiner Log In et Wemo One dans un portefeuille ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui, diversifier entre Log In et Wemo One est souvent pertinent. Associer une SCPI specialisee et une SCPI diversifiee permet de lisser le risque sectoriel."
+        }
+      }
+    ]
+  }
+}
+</script>
+<style>
+:root{
+  --bg:#F4F6FB;
+  --surface:#FFFFFF;
+  --surface2:#F0ECE5;
+  --ink:#0F1A2E;
+  --ink2:#6B6560;
+  --ink3:#A09890;
+  --accent:#1B4FD8;
+  --accent2:#3B6FEF;
+  --border:#E2DDD6;
+  --r:12px;
+  --r2:20px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-size:18px;line-height:1.75}
+a{color:inherit;text-decoration:none}
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-links a.active{color:#fff;font-weight:600}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--accent2);color:#fff;font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
+.nav-cta:hover{opacity:.88}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;font-weight:500;padding:12px 16px;border-radius:10px;transition:.15s}
+.nav-mobile a:hover,.nav-mobile a.active{color:#fff;background:rgba(255,255,255,.08)}
+.nav-mobile .nav-cta{margin-top:8px;justify-content:center;border-radius:12px}
+.crumb{max-width:1200px;margin:0 auto;padding:8px 5vw;font-size:12px;color:var(--ink3)}
+.crumb a{color:var(--accent)}
+main{max-width:1200px;margin:0 auto;padding:0 5vw 16px}
+.hero-vs{text-align:center;padding:16px 0 0}
+.eyebrow{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:16px}
+h1{font-family:'DM Serif Display',serif;font-size:clamp(38px,5.5vw,72px);font-weight:400;line-height:1.05;letter-spacing:-.025em;margin-bottom:16px;max-width:100%;width:100%}
+h1 em{font-style:italic;color:var(--accent)}
+.intro{font-size:18px;color:var(--ink2);max-width:100%;line-height:1.75;margin:30px 0 40px;text-align:center}
+.comp-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:32px 0}
+.comp-block-header{background:var(--ink);padding:20px 24px;display:grid;grid-template-columns:220px 1fr 1fr;gap:16px;align-items:center}
+.comp-block-header .col-title{font-family:'DM Serif Display',serif;font-weight:400;font-size:20px;color:#fff;text-align:center;display:block}
+.comp-block-header .col-brand{font-size:13px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.05em;text-align:center;display:block}
+.col-label{font-size:15px;color:rgba(255,255,255,.7);font-weight:500;text-align:center}
+table.comp{width:100%;border-collapse:collapse;table-layout:fixed}
+table.comp tr{border-bottom:1px solid var(--border);transition:.1s}
+table.comp tr:hover{background:var(--surface2)}
+td.crit-label{width:220px;padding:14px 24px;font-size:12px;font-weight:600;color:#6B6560;text-transform:uppercase;letter-spacing:.05em;text-align:left;white-space:nowrap}
+table.comp td{padding:14px 16px;font-size:18px;font-weight:400;text-align:center;vertical-align:middle}
+.stars{color:var(--accent)}
+.tag{display:inline-block;padding:3px 9px;border-radius:6px;font-size:11px;font-weight:600}
+.tag-rendement{background:#EAF3DE;color:#1A5C2A}
+.tag-diversifiee{background:#E6F1FB;color:#0C447C}
+.tag-specialisee{background:#FAEEDA;color:#633806}
+.tag-europeenne{background:#F5E6FB;color:#5B2185}
+.cta-amz{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:var(--r);font-size:14px;font-weight:600;transition:.15s;cursor:pointer;border:none}
+.cta-amz-primary{background:#E8410A;color:#fff}.cta-amz-primary:hover{background:#c93508}h2{font-family:'DM Serif Display',serif;font-size:32px;font-weight:400;letter-spacing:-.01em;margin:40px 0 16px}
+h3{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;margin:24px 0 12px;display:flex;align-items:center;gap:8px}
+.model-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px;margin:16px 0}
+.model-price{font-size:24px;font-weight:700;color:var(--accent)}
+.model-price span{font-size:13px;font-weight:400;color:var(--ink3)}
+.model-body{display:flex;gap:24px;align-items:flex-start;margin-bottom:16px}
+.model-photo-wrap{flex-shrink:0;width:200px;text-align:center}
+.model-photo-wrap img{width:100%;height:auto;border-radius:12px;object-fit:contain}
+.model-photo-placeholder{width:200px;height:200px;border-radius:12px;border:2px dashed var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--ink3);font-size:12px;background:var(--surface2)}
+.model-text{flex:1;font-size:18px;color:var(--ink2);line-height:1.75}
+.model-text p{margin:0 0 20px}
+.model-text p:last-child{margin-bottom:0}
+.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}
+.pros,.cons{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;text-align:center}
+.pros h3{color:#1A7A4A;font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;text-align:center;display:block}
+.cons h3{color:#A32D2D;font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;text-align:center;display:block}
+.pros li,.cons li{font-size:16px;line-height:1.7;margin-bottom:8px;text-align:left;list-style:none;padding-left:22px;position:relative}
+.pros li::before{content:"→";position:absolute;left:0;color:#1A7A4A;font-weight:700}
+.cons li::before{content:"→";position:absolute;left:0;color:#A32D2D;font-weight:700}
+.verdict{background:var(--ink);border-radius:var(--r2);padding:32px;margin:32px 0;color:#fff}
+.verdict h2{color:#fff;margin-top:0;text-align:center}
+.verdict-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px}
+.verdict-box{background:rgba(255,255,255,.08);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;justify-content:space-between}
+.verdict-box h3{color:#fff;font-size:19px;font-weight:700;margin-top:0;margin-bottom:14px;display:flex;justify-content:center;align-items:center;gap:6px}
+.verdict-box li{font-size:18px;color:rgba(255,255,255,.8);margin-bottom:8px;line-height:1.75;text-align:center;list-style:none}
+.verdict-box .verdict-cta{margin-top:auto;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)}
+.cta-amz-primary{background:#E8410A;color:#fff}.cta-amz-primary:hover{background:#c93508}
+.rel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:12px}
+.rel-link{display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;font-size:16px;font-weight:500;transition:.15s}
+.rel-link:hover{border-color:var(--accent);color:var(--accent)}
+.avis-block{background:var(--surface);border-radius:var(--r2);border:1px solid var(--border);padding:24px;margin:24px 0}
+.avis-score{font-size:32px;font-weight:700;color:var(--accent);display:inline-block;margin-right:8px}
+.faq{margin:40px 0}
+.faq-item{border-bottom:1px solid var(--border);padding:16px 0}
+.faq-q{font-size:18px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-size:24px;color:var(--accent);font-weight:300}
+.faq-a{font-size:17px;color:var(--ink2);line-height:1.75;margin-top:12px}
+footer{background:var(--ink);color:rgba(255,255,255,.5);text-align:center;padding:32px;font-size:13px}
+footer a{color:rgba(255,255,255,.4)}
+.aff-notice{font-size:13px;color:var(--ink3);text-align:center;padding:20px 5vw;line-height:1.6;max-width:900px;margin:0 auto}
+.update-badge{display:inline-flex;align-items:center;gap:6px;background:#EAF3DE;color:#27500A;font-size:12px;font-weight:500;padding:4px 12px;border-radius:20px;margin-bottom:12px}
+.expert-note{background:#F0F4FF;border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;margin:24px 0 28px;font-style:italic;font-size:16px;color:var(--ink2);line-height:1.7}
+main p[style]{margin-bottom:20px !important;margin-top:0 !important}
+main h2{margin-top:2.2em;margin-bottom:0.6em}
+main h3{margin-top:1.8em;margin-bottom:0.5em}
+.mix-block{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px;margin:24px 0}
+.mix-block h3{color:var(--accent);margin-top:0;font-size:22px}
+.author-block{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px 24px;margin:32px 0}
+.author-avatar{width:56px;height:56px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:700;flex-shrink:0}
+.author-name{font-size:15px;font-weight:600;margin-bottom:2px}
+.author-title{font-size:13px;color:var(--ink2)}
+.disclaimer{background:#FFF8E6;border:1px solid #FAC775;border-radius:var(--r2);padding:20px 24px;margin:24px 0}
+.disclaimer-title{font-size:13px;font-weight:600;color:#633806;margin-bottom:8px}
+.disclaimer p{font-size:13px;color:#633806;line-height:1.65;margin:0}
+.perf-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.perf-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px}
+.perf-card-title{font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px}
+.perf-stat{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:0.5px solid var(--border);font-size:15px}
+.perf-stat:last-child{border-bottom:none}
+.perf-label{color:var(--ink2)}
+.perf-val{font-weight:600}
+.perf-val.good{color:#1A7A4A}
+.perf-val.warn{color:#E8410A}
+.tag-rendement{background:#EAF3DE;color:#27500A}
+.tag-diversifiee{background:#E6F1FB;color:#0C447C}
+.tag-specialisee{background:#FAEEDA;color:#633806}
+.tag-europeenne{background:#F5E6FB;color:#5B2185}
+.verdict-box li{counter-increment:verdict-counter}
+.verdict-box li::before{content:counter(verdict-counter) ". ";color:var(--accent2);font-weight:600}
+.verdict-box ul{counter-reset:verdict-counter}
+.disclaimer{background:#FFF8E6;border:1px solid #FAC775;border-radius:var(--r2);padding:20px 24px;margin:24px auto;max-width:900px}
+.disclaimer-title{font-size:13px;font-weight:600;color:#633806;margin-bottom:8px}
+.disclaimer p{font-size:13px;color:#633806;line-height:1.65;margin:0}
+@media(max-width:768px){
+  .perf-grid{grid-template-columns:1fr}
+  .donut-grid{grid-template-columns:1fr !important}
+  .disclaimer{margin:24px 0}
+  /* Tableaux inline (Performance, Frais, Accessibilité) */
+  table[style]{width:100%!important;table-layout:fixed!important}
+  table[style] td,table[style] th{word-break:break-word;overflow-wrap:break-word;font-size:12px!important;padding:9px 8px!important}
+  table[style] th:first-child,table[style] td:first-child{width:40%!important;font-size:11px!important;text-align:left!important}
+  table[style] th:not(:first-child),table[style] td:not(:first-child){width:30%!important;text-align:center!important}
+}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .nav-burger{display:flex}
+  .comp-block{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .comp-block-header{grid-template-columns:90px 1fr 1fr;gap:6px;padding:12px}
+  .comp-block-header .col-title{font-size:14px}
+  .comp-block-header .col-brand{font-size:10px}
+  td.crit-label{width:90px;min-width:90px;padding:10px 8px;font-size:10px;white-space:normal;word-break:break-word}
+  table.comp{table-layout:fixed;width:100%}
+  table.comp td{padding:10px 8px;font-size:13px;word-break:break-word;overflow-wrap:break-word;text-align:center}
+  colgroup col:first-child{width:90px}
+  colgroup col{width:calc((100% - 90px) / 2)}
+  .pros-cons{grid-template-columns:1fr}
+  .verdict-grid{grid-template-columns:1fr}
+  .model-body{flex-direction:column}
+  .model-photo-wrap{width:100%}
+  .aff-notice{padding:20px 16px}
+  /* Fix tous les tableaux inline (frais, performance, accessibilité) */
+  table{width:100%!important;table-layout:fixed}
+  table td,table th{word-break:break-word;overflow-wrap:break-word;hyphens:auto;font-size:13px!important;padding:9px 8px!important}
+  table td:first-child,table th:first-child{width:40%!important;font-size:11px!important}
+  table td:not(:first-child),table th:not(:first-child){width:30%!important;text-align:center}
+}
+</style>
+</head>
+<body>
 
-        if dry_run:
-            print(f"  [DRY] {slug_a}-vs-{slug_b}.html")
-            generated += 1
-            continue
+<style>
+nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:28px}
+.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:25px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;margin:0 8px}
+.nav-links a{color:rgba(255,255,255,.65);font-size:18px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.1)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--accent2);color:#fff;font-size:18px;font-weight:700;transition:.15s;flex-shrink:0}
+.nav-cta:hover{opacity:.88}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;font-weight:500;padding:12px 16px;border-radius:10px;transition:.15s}
+.nav-mobile a:hover,.nav-mobile a.active{color:#fff;background:rgba(255,255,255,.08)}
+.nav-mobile .nav-cta{margin-top:8px;justify-content:center;border-radius:12px}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+</style>
 
-        html = template.render(**context)
-        (output_dir / f"{slug_a}-vs-{slug_b}.html").write_text(html, encoding="utf-8")
-        generated += 1
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">UTL<span>Peipin</span></a>
+    <div class="nav-links">
+      <a href="/comparatifs-scpi">Comparatifs SCPI</a>
+      <a href="/avis-scpi">Avis SCPI</a>
+    </div>
+    <a href="/#comparateur" class="nav-cta">Comparer →</a>
+    <button class="nav-burger" id="burger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="/comparatifs-scpi">Comparatifs SCPI</a>
+    <a href="/avis-scpi">Avis SCPI</a>
+    <a href="/#comparateur" class="nav-cta">Comparer →</a>
+  </div>
+</nav>
 
-    if not dry_run:
-        generate_sitemap(site, all_pairs, products, output_dir)
+<script>
+function toggleMenu(){
+  var m=document.getElementById('nav-mobile');
+  var b=document.getElementById('burger');
+  m.classList.toggle('open');b.classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  var m=document.getElementById('nav-mobile');var b=document.getElementById('burger');
+  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');b.classList.remove('open');}
+});
+</script><div class="crumb">
+  <a href="/">Accueil</a> ›
+  <a href="comparatifs-scpi">Comparatifs SCPI</a> ›
+  Log In vs Wemo One
+</div>
 
-        # ── Fichier _redirects pour Cloudflare Pages ──────────────────────
-        www_preference = site.get("www_preference") or config.get("www_preference", "www")
-        domain_raw = site.get("domain", "").replace("https://", "").replace("http://", "").replace("www.", "").rstrip("/")
-        if domain_raw:
-            if www_preference == "www":
-                # Redirige naked → www
-                redirects = f"https://{domain_raw}/* https://www.{domain_raw}/:splat 301\n"
-            else:
-                # Redirige www → naked
-                redirects = f"https://www.{domain_raw}/* https://{domain_raw}/:splat 301\n"
-            (output_dir / "_redirects").write_text(redirects, encoding="utf-8")
-            print(f"  ✓ _redirects ({www_preference})")
-        copy_shared_assets(output_dir, site_dir)
+<main>
+  <div class="hero-vs">
+    <div class="eyebrow">⚖️ Comparatif SCPI 2026</div>
+    <h1>SCPI <em>Log In</em> vs <em>Wemo One</em> : laquelle choisir en 2026 ?</h1>
+    <div style="display:flex;justify-content:center;margin:-10px 0 20px">
+      <div style="display:inline-flex;align-items:center;gap:6px;background:#EAF3DE;color:#27500A;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;border:none">
+        <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#27500A"></span>
+        Mis à jour le 15 avril 2026
+      </div>
+    </div>
+    <p class="intro"></p>
+  </div>
 
-        # ── Copie logos PNG ───────────────────────────────────────────────
-        for logo in site_dir.glob("*.png"):
-            shutil.copy2(logo, output_dir / logo.name)
-        logos = list(site_dir.glob("*.png"))
-        if logos:
-            print(f"  ✓ {len(logos)} logos copiés")
+  <h2 style="margin-top:0">Comparaison détaillée : Log In vs Wemo One</h2>
 
-        # Home
-        index_tpl = site.get("index_template", f"index-{site_slug}.html.j2")
-        if (TEMPLATES_DIR / index_tpl).exists():
-            zero_frais = sum(1 for p in products if str(p.get("frais_souscription", 99)).replace('.0','') == "0")
-            top_pairs  = [{"url": f"{a}-vs-{b}.html", "label": f"{products_by_slug(products, a)['nom']} vs {products_by_slug(products, b)['nom']}"} for a, b in all_pairs[:8]]
-            home_title = site.get("home_title") or f"{site.get('name', '')} | Comparatifs {site.get('year', '')}"
-            home_desc = site.get("home_description", "")
-            html = env.get_template(index_tpl).render(
-                site={**site, "seo": config.get("seo", {})}, theme=theme, products=products,
-                total_pairs=len(all_pairs), zero_frais_count=zero_frais,
-                top_pairs=top_pairs, build_date=date.today().isoformat(),
-                site_editorial=site_editorial,
-                home_title=home_title, home_description=home_desc,
-            )
-            (output_dir / "index.html").write_text(html, encoding="utf-8")
-            print(f"  ✓ index.html ({len(products)} produits, {len(all_pairs)} comparatifs)")
+  <!-- TABLEAU COMPARATIF -->
+  <div class="comp-block">
+    <div class="comp-block-header">
+      <div class="col-label">Critère</div>
+      <div style="text-align:center">
+        <div class="col-brand">Theoreim / Principal RE</div>
+        <div class="col-title">Log In</div>
+      </div>
+      <div style="text-align:center">
+        <div class="col-brand">Wemo Reim</div>
+        <div class="col-title">Wemo One</div>
+      </div>
+    </div>
+    <table class="comp">
+      <colgroup>
+        <col style="width:220px;min-width:90px">
+        <col>
+        <col>
+      </colgroup>
+      <tbody>
+        <tr>
+          <td class="crit-label">TD 2025</td>
+            <td style="text-align:center">6.21%</td>
+            <td style="text-align:center">15.27%</td>
+        </tr>
+        <tr>
+          <td class="crit-label">TRI</td>
+            <td style="text-align:center">5.0%</td>
+            <td style="text-align:center">7.5%</td>
+        </tr>
+        <tr>
+          <td class="crit-label">Prix de la part</td>
+            <td style="text-align:center">255.0€</td>
+            <td style="text-align:center">210.0€</td>
+        </tr>
+        <tr>
+          <td class="crit-label">Prix de retrait</td>
+            <td style="text-align:center">229.5€</td>
+            <td style="text-align:center">189.0€</td>
+        </tr>
+        <tr>
+          <td class="crit-label">Investissement min.</td>
+            <td style="text-align:center">1 020€ (4 parts)</td>
+            <td style="text-align:center">210€ (1 part)</td>
+        </tr>
+        <tr>
+          <td class="crit-label">Frais de souscription</td>
+            <td style="text-align:center">10.0%</td>
+            <td style="text-align:center">10.0%</td>
+        </tr>
+        <tr>
+          <td class="crit-label">Frais de gestion</td>
+            <td style="text-align:center">14.4% TTC</td>
+            <td style="text-align:center">11.0% TTC</td>
+        </tr>
+        <tr>
+          <td class="crit-label">TOF</td>
+            <td style="text-align:center">100.0%</td>
+            <td style="text-align:center">100.0%</td>
+        </tr>
+        <tr>
+          <td class="crit-label">Endettement</td>
+            <td style="text-align:center">4.8%</td>
+            <td style="text-align:center">11.2%</td>
+        </tr>
+        <tr>
+          <td class="crit-label">Délai de jouissance</td>
+            <td style="text-align:center">5.0 mois</td>
+            <td style="text-align:center">6.0 mois</td>
+        </tr>
+        <tr>
+          <td class="crit-label">Pays</td>
+            <td style="text-align:center">Europe (logistique)</td>
+            <td style="text-align:center">France, Europe</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-        # Légales
-        for tpl_name, out_name in [("mentions-legales.html.j2", "mentions-legales.html"), ("politique-confidentialite.html.j2", "politique-confidentialite.html"), ("contact.html.j2", "contact.html"), ("sitemap-html.html.j2", "plan-du-site.html"), ("404.html.j2", "404.html")]:
-            if (TEMPLATES_DIR / tpl_name).exists():
-                html = env.get_template(tpl_name).render(site={**site, "seo": config.get("seo", {})}, theme=theme, build_date=date.today().isoformat(), products=products, total_pairs=len(all_pairs))
-                (output_dir / out_name).write_text(html, encoding="utf-8")
-                print(f"  ✓ {out_name}")
+  <!-- FICHES PRODUITS -->
+  <div class="model-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)">
+      <div>
+        <h2 style="font-size:26px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px;margin-top:0">
+          Notre avis sur Log In
+        </h2>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:22px;color:#F5A623;letter-spacing:2px">★★★★☆</span>
+          <span style="font-size:15px;font-weight:600;color:var(--ink2)">4.5/5</span>
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div class="model-price" id="model-price-a">255€ <span>prix indicatif</span></div>
+        <div style="font-size:13px;color:var(--ink3)">
+        </div>
+      </div>
+    </div>
+    <div class="model-body">
+      <div class="model-photo-wrap">
+        <img src="log-in.png" alt="Logo Log In"
+             style="width:100%;height:auto;border-radius:12px;object-fit:contain;max-height:160px;padding:16px;background:#fff;border:1px solid var(--border)"
+             onerror="this.style.display='none';document.getElementById('placeholder-a').style.display='flex'">
+        <div class="model-photo-placeholder" id="placeholder-a" style="display:none">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Log In</span>
+        </div>
+        <a href="avis-log-in" style="display:block;margin-top:10px;font-size:13px;color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-align:center">
+          → Notre avis sur Log In
+        </a>
+      </div>
+      <div class="model-text"><p>Log In est une SCPI unique dans son positionnement : elle est la seule SCPI exclusivement logistique et industrielle à l'échelle européenne.</p>
 
-        # Page comparatifs-scpi.html
-        if (TEMPLATES_DIR / "comparatifs-scpi.html.j2").exists():
-            seo_cfg = config.get("seo", {})
-            liste_comp_title = seo_cfg.get("liste_comp_title", "Tous les comparatifs {site_name} {year}")                 .replace("{site_name}", site.get("name", ""))                 .replace("{year}", str(site.get("year", "")))                 .replace("{total}", str(len(all_pairs)))
-            html = env.get_template("comparatifs-scpi.html.j2").render(
-                site={**site, "seo": config.get("seo", {})}, theme=theme,
-                products=products, total_pairs=len(all_pairs),
-                liste_comp_title=liste_comp_title,
-            )
-            (output_dir / "comparatifs-scpi.html").write_text(html, encoding="utf-8")
-            print(f"  ✓ comparatifs-scpi.html ({len(all_pairs)} comparatifs)")
+<p>Gérée par Theoreim en partenariat avec Principal Real Estate Europe, elle s'inscrit dans la vague de réindustrialisation du continent, un mouvement politique et économique soutenu par les politiques industrielles de l'UE depuis 2023.</p>
 
-        # Page liste avis
-        liste_avis_tpl = f"liste-avis-{site_slug}.html.j2"
-        if not (TEMPLATES_DIR / liste_avis_tpl).exists():
-            liste_avis_tpl = "liste-avis-scpi.html.j2"
-        if (TEMPLATES_DIR / liste_avis_tpl).exists():
-            html = env.get_template(liste_avis_tpl).render(
-                site={**site, "seo": config.get("seo", {})}, theme=theme,
-                products=products, build_date=date.today().isoformat(),
-            )
-            (output_dir / "avis-scpi.html").write_text(html, encoding="utf-8")
-            print(f"  ✓ avis-scpi.html ({len(products)} SCPI)")
+<p>Son portefeuille est concentré sur des actifs productifs : locaux d'activité (<strong>70%</strong>), logistique pure (<strong>24%</strong>) et santé (<strong>6%</strong>).</p>
 
-        # ── Pages AVIS ──────────────────────────────────────────────────────
-        avis_tpl_name = f"avis-{site_slug}.html.j2"
-        if not (TEMPLATES_DIR / avis_tpl_name).exists():
-            avis_tpl_name = "avis-scpi.html.j2"  # fallback template générique
-        if (TEMPLATES_DIR / avis_tpl_name).exists():
-            avis_count = 0
-            prod_map = {p["slug"]: p for p in products}
-            for prod in products:
-                slug = prod["slug"]
-                # Récupère la description canonique depuis editorial.json
-                # Prend la première paire où ce produit apparaît en position A
-                avis_prod = dict(prod)
-                for pair_key, ed in editorials.items():
-                    parts = pair_key.split("-vs-")
-                    if len(parts) == 2 and parts[0] == slug:
-                        avis_prod["description"]    = ed.get("description_a", prod.get("description", ""))
-                        avis_prod["points_forts"]   = ed.get("points_forts_a", prod.get("points_forts", []))
-                        avis_prod["points_faibles"] = ed.get("points_faibles_a", prod.get("points_faibles", []))
-                        avis_prod["verdict_si"]     = ed.get("verdict_si_a", prod.get("verdict_si", []))
-                        break
-                    elif len(parts) == 2 and parts[1] == slug:
-                        avis_prod["description"]    = ed.get("description_b", prod.get("description", ""))
-                        avis_prod["points_forts"]   = ed.get("points_forts_b", prod.get("points_forts", []))
-                        avis_prod["points_faibles"] = ed.get("points_faibles_b", prod.get("points_faibles", []))
-                        avis_prod["verdict_si"]     = ed.get("verdict_si_b", prod.get("verdict_si", []))
-                        break
+<p>Géographiquement, elle couvre l'Italie (<strong>29%</strong>), l'Espagne (<strong>27%</strong>), le Royaume-Uni (<strong>24%</strong>), l'Allemagne (<strong>13%</strong>) et l'Irlande (<strong>4%</strong>).</p>
 
-                # Tous les comparatifs impliquant ce produit
-                related_comparatifs = []
-                for a, b in all_pairs:
-                    if a == slug or b == slug:
-                        other = b if a == slug else a
-                        other_prod = prod_map.get(other)
-                        if other_prod:
-                            url = f"{a}-vs-{b}.html"
-                            label = f"{prod_map[a]['nom']} vs {prod_map[b]['nom']}"
-                            related_comparatifs.append((url, label))
+<p>Cette diversification sur les grandes économies industrielles européennes lui confère une résilience face aux chocs sectoriels locaux.</p>
 
-                seo_cfg = config.get("seo", {})
-                avis_title = seo_cfg.get("avis_title_pattern", "Avis {nom} {year}")                     .replace("{nom}", avis_prod.get("nom", ""))                     .replace("{marque}", avis_prod.get("marque", ""))                     .replace("{td}", str(avis_prod.get("td", "")))                     .replace("{year}", str(site.get("year", "")))
-                avis_meta = seo_cfg.get("avis_meta_pattern", "")                     .replace("{nom}", avis_prod.get("nom", ""))                     .replace("{marque}", avis_prod.get("marque", ""))                     .replace("{td}", str(avis_prod.get("td", "")))                     .replace("{year}", str(site.get("year", "")))
-                html = env.get_template(avis_tpl_name).render(
-                    site={**site, "seo": config.get("seo", {})},
-                    theme=theme,
-                    prod=avis_prod,
-                    related_comparatifs=related_comparatifs,
-                    build_date=date.today().isoformat(),
-                    avis_title=avis_title,
-                    avis_meta=avis_meta,
-                )
-                (output_dir / f"avis-{slug}.html").write_text(html, encoding="utf-8")
-                avis_count += 1
-            print(f"  ✓ {avis_count} pages avis générées")
+<p>Le partenariat entre Theoreim et Principal Real Estate Europe est une force : Theoreim apporte la connaissance du marché européen et la gestion SCPI française, Principal Real Estate apporte l'expertise immobilière industrielle mondiale et le réseau d'acquisition international.</p>
 
-    print(f"\n  {'[DRY] ' if dry_run else ''}✅ {generated} pages générées, {skipped} ignorées")
-    if not dry_run:
-        print(f"  📁 Output : {output_dir}")
+<p>Cette complémentarité permet d'identifier des opportunités d'acquisition que les gestionnaires locaux seuls ne verraient pas.</p>
+
+<p>Le <strong>TOF</strong> à <strong>100%</strong> et le <strong>PGA</strong> de <strong>8,21%</strong> témoignent de la solidité locative du portefeuille. Notre réserve concerne le <strong>TRI</strong> cible de <strong>5%</strong> sur 10 ans, le plus bas du marché.</p>
+
+<p>Cela reflète honnêtement le profil rendement/risque d'une SCPI industrielle : moins volatile, mais moins rentable que les SCPI diversifiées opportunistes. Log In est une SCPI de complément, pas de cœur de portefeuille.</p></div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h3>✓ Points forts</h3><ul><li>Thématique logistique/industrie unique</li><li>TOF 100%</li><li>PGA 8,21%</li><li>TRI cible 5%, fiable et conservateur</li></ul></div>
+      <div class="cons"><h3>✗ Points faibles</h3><ul><li>TD 6,21% vs 15,27% pour Wemo One</li><li>TRI cible 5% vs 7,5%</li><li>Ticket minimum 1 020€ vs 210€</li></ul></div>
+    </div>
+    <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border)">
+      <a href="https://app.louveinvest.com/signup?promoCode=MONELOR&utm_source=monelor&utm_medium=partenariat" class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="width:100%;justify-content:center">
+→ Investir dans Log In      </a>
+    </div>
+  </div>
+  <div class="model-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)">
+      <div>
+        <h2 style="font-size:26px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px;margin-top:0">
+          Notre avis sur Wemo One
+        </h2>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:22px;color:#F5A623;letter-spacing:2px">★★★★☆</span>
+          <span style="font-size:15px;font-weight:600;color:var(--ink2)">4.9/5</span>
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div class="model-price" id="model-price-b">210€ <span>prix indicatif</span></div>
+        <div style="font-size:13px;color:var(--ink3)">
+        </div>
+      </div>
+    </div>
+    <div class="model-body">
+      <div class="model-photo-wrap">
+        <img src="wemo-one.png" alt="Logo Wemo One"
+             style="width:100%;height:auto;border-radius:12px;object-fit:contain;max-height:160px;padding:16px;background:#fff;border:1px solid var(--border)"
+             onerror="this.style.display='none';document.getElementById('placeholder-b').style.display='flex'">
+        <div class="model-photo-placeholder" id="placeholder-b" style="display:none">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Wemo One</span>
+        </div>
+        <a href="avis-wemo-one" style="display:block;margin-top:10px;font-size:13px;color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-align:center">
+          → Notre avis sur Wemo One
+        </a>
+      </div>
+      <div class="model-text"><p>Wemo One est sans conteste la surprise du marché SCPI 2025.</p>
+
+<p>Lancée en 2024 par Wemo Reim, cette SCPI affiche un taux de distribution de <strong>15,27%</strong>, un niveau inédit sur le marché français qui a attiré l'attention de nombreux investisseurs en quête de rendement maximal.</p>
+
+<p>La stratégie repose sur un principe simple mais puissant : investir uniquement dans des actifs "small caps", c'est-à-dire des biens immobiliers de moins de 5 millions d'euros.</p>
+
+<p>Ces actifs, délaissés par les grands fonds institutionnels, offrent des rendements locatifs supérieurs et des marges de négociation bien meilleures. C'est une niche que Wemo Reim exploite avec expertise depuis son lancement.</p>
+
+<p>Géographiquement, Wemo One est résolument tournée vers l'Europe du Sud : Italie (<strong>51%</strong>), Espagne (<strong>35%</strong>) et France (<strong>14%</strong>).</p>
+
+<p>Cette concentration sur des marchés immobiliers méditerranéens, en pleine croissance locative en 2025, explique en grande partie la performance exceptionnelle.</p>
+
+<p>Le portefeuille, composé de 28 actifs à fin 2025, est dominé par les commerces (<strong>74%</strong>) avec des baux fermes de longue durée.</p>
+
+<p>Ce qui distingue vraiment Wemo One, c'est l'alignement d'intérêts : chaque associé de Wemo Reim investit personnellement dans la SCPI. Un signal fort de conviction que peu de sociétés de gestion peuvent afficher.</p>
+
+<p>Le <strong>TOF</strong> à <strong>100%</strong> confirme qu'aucun loyer n'est perdu. Notre avis : une SCPI exceptionnelle sur le rendement courant, à intégrer en complément d'un portefeuille pour les investisseurs cherchant à maximiser leurs revenus locatifs.</p></div>
+    </div>
+    <div class="pros-cons">
+      <div class="pros"><h3>✓ Points forts</h3><ul><li>TD 15,27%, exceptionnel</li><li>TRI cible 7,5% vs 5%</li><li>Stratégie small caps unique</li><li>Ticket minimum 210€ vs 1 020€</li></ul></div>
+      <div class="cons"><h3>✗ Points faibles</h3><ul><li>1 an de track record vs Log In</li><li>Concentration commerces 74%</li><li>Capitalisation 75 M€</li></ul></div>
+    </div>
+    <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border)">
+      <a href="https://app.louveinvest.com/signup?promoCode=MONELOR&utm_source=monelor&utm_medium=partenariat" class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="width:100%;justify-content:center">
+→ Investir dans Wemo One      </a>
+    </div>
+  </div>
+
+  <!-- COMPARAISON DÉTAILLÉE, surchargée par chaque template niche -->
+
+  <h2>Performance et stratégie de rendement</h2>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin:16px 0">
+    <table style="width:100%;border-collapse:collapse;font-size:15px">
+      <thead>
+        <tr style="background:var(--ink)">
+          <th style="padding:12px 18px;text-align:left;font-size:12px;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;width:40%">Critère</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:#fff">Log In</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:#fff">Wemo One</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Taux de distribution 2025</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:700;color:var(--ink)">6.21%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:700;color:var(--green)">15.27%</td>
+        </tr>
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">TRI 10 ans</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">5.0%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">7.5%</td>
+        </tr>
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">PGA</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">8.21%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">15.27%</td>
+        </tr>
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">TOF</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:var(--green)">100.0%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:var(--green)">100.0%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="display:flex;gap:12px;margin:16px 0;flex-wrap:wrap">
+    <a href="https://app.louveinvest.com/signup?promoCode=MONELOR&utm_source=monelor&utm_medium=partenariat" class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="font-size:13px;padding:10px 18px">
+      📄 Rapport trimestriel Log In
+    </a>
+    <a href="https://app.louveinvest.com/signup?promoCode=MONELOR&utm_source=monelor&utm_medium=partenariat" class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="font-size:13px;padding:10px 18px">
+      📄 Rapport trimestriel Wemo One
+    </a>
+  </div>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    <strong>Wemo One</strong> distribue davantage avec <strong>15.27%</strong> contre <strong>6.21%</strong> pour Log In.
+    Mais le taux de distribution seul ne raconte pas toute l'histoire.
+    Sur la performance globale (TRI 10 ans), <strong>Wemo One</strong> prend l'avantage avec <strong>7.5%</strong>.  </p>
+  <div class="expert-note">
+    💡 <strong>L'avis de l'expert :</strong> 
+  </div>
+
+  <h2>Composition du patrimoine et diversification</h2>
 
 
-# ── CLI ───────────────────────────────────────────────────────────────────────
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--site")
-    parser.add_argument("--all", action="store_true")
-    parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--pair")
-    args = parser.parse_args()
+  <h3>1. La fiscalité, l'argument décisif pour les TMI élevées</h3>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    <strong>Log In</strong> : <strong>100% d'exposition étrangère</strong>.
+    <strong>Wemo One</strong> : <strong>86% d'exposition étrangère</strong>.
+  </p>
+  <div class="expert-note">
+    💡 
+  </div>
 
-    filter_pair = None
-    if args.pair:
-        parts = args.pair.split(",")
-        if len(parts) == 2:
-            filter_pair = tuple(p.strip() for p in parts)
+  <h3>2. L'accessibilité, qui peut investir ?</h3>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin:16px 0">
+    <table style="width:100%;border-collapse:collapse;font-size:15px">
+      <thead>
+        <tr style="background:var(--ink)">
+          <th style="padding:12px 18px;text-align:left;font-size:12px;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;width:40%">Critère</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:#fff">Log In</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:#fff">Wemo One</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Ticket minimum</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:var(--green)">1 020€ (4 parts)</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">210€ (1 part)</td>
+        </tr>
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Prix de la part</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">255€</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">210€</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="expert-note">
+    💡 
+    <strong>Wemo One</strong> est imbattable pour les versements programmés. <strong>Log In</strong> impose un ticket plus conséquent.
+  </div>
 
-    if args.all:
-        for site_dir in sorted(SITES_DIR.iterdir()):
-            if site_dir.is_dir() and not site_dir.name.startswith("_"):
-                generate_site(site_dir.name, dry_run=args.dry_run, filter_pair=filter_pair)
-    elif args.site:
-        generate_site(args.site, dry_run=args.dry_run, filter_pair=filter_pair)
-    else:
-        parser.print_help()
+  <h3>3. La structure des frais, un équilibre différent</h3>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    <strong>Log In</strong> applique <strong>14.4% TTC</strong> de frais de gestion annuels
+    contre <strong>11.0% TTC</strong> pour <strong>Wemo One</strong>.
+    <strong>Wemo One</strong> est plus économique sur la gestion annuelle.
+  </p>
+  <div class="expert-note">
+    💡 Comparez le coût total sur 10 ans : frais de souscription + frais de gestion annuels. Une SCPI avec 1% de moins en frais de gestion, c'est environ 1 000€ économisés pour 100 000€ investis.
+  </div>
+
+  <h3>4. Le TRI et la stratégie, rendement vs capitalisation</h3>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+<strong>Log In</strong> vise un TRI de <strong>5.0%</strong> sur 10 ans. <strong>Wemo One</strong> affiche un objectif de <strong>7.5%</strong> sur 8 ans.    L'objectif de TRI de <strong>Wemo One</strong> (7.5%) est plus ambitieux, cela traduit une stratégie de création de valeur immobilière. <strong>Log In</strong> joue une carte légèrement plus prudente mais très stable sur la distribution.
+  </p>
+  <div class="expert-note">
+    💡 Un TRI élevé est extrêmement ambitieux et implique une stratégie active de valorisation des actifs. Cela peut se concrétiser ou non selon les conditions de marché. Interrogez-vous : voulez-vous du revenu régulier (TD élevé) ou de la capitalisation à terme (TRI élevé) ?
+  </div>
+
+  <h3>🌍 Zones géographiques</h3>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+<strong>Log In</strong> : Europe (logistique). <strong>Wemo One</strong> : France, Europe.  </p>
+
+  <h3>🏢 Thématique sectorielle</h3>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    <strong>Log In</strong> est une SCPI de type <strong>specialisee</strong> tandis que <strong>Wemo One</strong> est positionnée <strong>diversifiee</strong>.
+    Des thématiques différentes qui peuvent être complémentaires dans un portefeuille diversifié.
+  </p>
+
+  <h3>📐 Taille et liquidité</h3>
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    <strong>Log In</strong> : <strong>234.2 M€</strong> de capitalisation · <strong>Wemo One</strong> : <strong>75.0 M€</strong>.
+Log In est plus grande, meilleure liquidité secondaire potentielle.
+  </p>
+
+  <h2>Répartition géographique : Log In vs Wemo One</h2>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px;margin:0 0 24px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center" class="donut-grid">
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink2);text-align:center;margin-bottom:12px">Log In</div>
+        <div style="position:relative;width:100%;max-width:220px;margin:0 auto;aspect-ratio:1">
+          <canvas id="geo-a-log-in" role="img" aria-label="Répartition géographique Log In"></canvas>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink2);text-align:center;margin-bottom:12px">Wemo One</div>
+        <div style="position:relative;width:100%;max-width:220px;margin:0 auto;aspect-ratio:1">
+          <canvas id="geo-b-wemo-one" role="img" aria-label="Répartition géographique Wemo One"></canvas>
+        </div>
+      </div>
+    </div>
+    <div id="legend-geo-log-in" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;font-size:12px;color:var(--ink2);justify-content:center"></div>
+  </div>
+
+  <h2>Répartition sectorielle : Log In vs Wemo One</h2>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px;margin:0 0 24px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center" class="donut-grid">
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink2);text-align:center;margin-bottom:12px">Log In</div>
+        <div style="position:relative;width:100%;max-width:220px;margin:0 auto;aspect-ratio:1">
+          <canvas id="sec-a-log-in" role="img" aria-label="Répartition sectorielle Log In"></canvas>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--ink2);text-align:center;margin-bottom:12px">Wemo One</div>
+        <div style="position:relative;width:100%;max-width:220px;margin:0 auto;aspect-ratio:1">
+          <canvas id="sec-b-wemo-one" role="img" aria-label="Répartition sectorielle Wemo One"></canvas>
+        </div>
+      </div>
+    </div>
+    <div id="legend-sec-log-in" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;font-size:12px;color:var(--ink2);justify-content:center"></div>
+  </div>
+  <h2>Frais et liquidité : les points de vigilance</h2>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin:16px 0">
+    <table style="width:100%;border-collapse:collapse;font-size:15px">
+      <thead>
+        <tr style="background:var(--ink)">
+          <th style="padding:12px 18px;text-align:left;font-size:12px;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em;width:40%">Critère</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:#fff">Log In</th>
+          <th style="padding:12px 18px;text-align:center;font-size:13px;font-weight:700;color:#fff">Wemo One</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Prix d'achat</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">255€</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">210€</td>
+        </tr>
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Prix de retrait</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:#C0392B">
+            229.5€ <span style="font-size:11px;font-weight:400">(−25.50€)</span>          </td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:#C0392B">
+            189€ <span style="font-size:11px;font-weight:400">(−21.00€)</span>          </td>
+        </tr>
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Frais de souscription</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:var(--ink)">10%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:var(--ink)">10%</td>
+        </tr>
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Frais de gestion</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">14.4% TTC</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">11% TTC</td>
+        </tr>
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Délai de jouissance</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">5 mois</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600">6 mois</td>
+        </tr>
+        <tr style="border-top:1px solid var(--border)">
+          <td style="padding:12px 18px;color:var(--ink2)">Endettement</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:var(--ink)">4.8%</td>
+          <td style="padding:12px 18px;text-align:center;font-weight:600;color:var(--ink)">11.2%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    <strong>Décote à la sortie :</strong>
+    <strong>Log In</strong> : 255€ → 229.5€
+(perte de <strong>25.50€ par part</strong>, soit 10.0%)
+.
+    <strong>Wemo One</strong> : 210€ → 189€
+(perte de <strong>21.00€ par part</strong>, soit 10.0%)
+.
+    Wemo One est plus avantageuse à la sortie.
+  </p>
+  <div class="expert-note">
+    💡 <strong>L'avis de l'expert :</strong>  C'est l'équivalent des frais de souscription pour les SCPI à capital fixe. Sur 100 parts à 255.0€, une décote de 10.0% représente 2550€ perdus si vous revendez immédiatement.
+  </div>
+
+  <p style="color:var(--ink2);font-size:18px;line-height:1.75">
+    Frais de souscription : <strong>10.0%</strong> pour Log In et <strong>10.0%</strong> pour Wemo One. Horizon recommandé : 8 ans minimum pour les amortir.
+  </p>
 
 
-if __name__ == "__main__":
-    main()
+  <div class="mix-block">
+    <h3>🔀 Et si vous investissez dans les deux ?</h3>
+    <p style="font-size:17px;color:var(--ink2);line-height:1.75;margin:0">
+      La diversification entre plusieurs SCPI est souvent la stratégie la plus pertinente.
+      Associer <strong>Log In</strong> et <strong>Wemo One</strong> permet de bénéficier des points forts de chacune tout en limitant l'exposition à un seul gestionnaire.
+      Consultez un conseiller en gestion de patrimoine pour déterminer la répartition optimale selon votre fiscalité et vos objectifs.
+    </p>
+  </div>
+
+
+  <!-- AVIS, surchargé par template niche si nécessaire -->
+<div class="author-block">
+  <div class="author-avatar">E</div>
+  <div>
+    <div class="author-name">Équipe éditoriale UTL Peipin</div>
+    <div class="author-title">Analyse basée sur les données officielles des sociétés de gestion · Actualisé le 15 avril 2026</div>
+  </div>
+</div>
+
+  <!-- FAQ, surchargée par template niche -->
+  <h2>Questions fréquentes</h2>
+  <div class="faq">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Log In ou Wemo One : laquelle choisir en 2026 ?","acceptedAnswer":{"@type":"Answer","text":"Log In est recommandée si vous avez déjà un portefeuille scpi diversifié à compléter. Wemo One convient mieux si vous voulez le td maximum du marché. Les deux peuvent être complémentaires dans un portefeuille SCPI diversifié."}},
+{"@type":"Question","name":"Quel est le taux de distribution de Log In vs Wemo One ?","acceptedAnswer":{"@type":"Answer","text":"Log In affiche 6.21% et Wemo One 15.27% sur le dernier exercice. Analysez aussi le TRI sur 5 ans pour une performance globale."}},{"@type":"Question","name":"Quels sont les frais de souscription ?","acceptedAnswer":{"@type":"Answer","text":"Log In : 10.0%. Wemo One : 10.0%."}},    {"@type":"Question","name":"Peut-on investir en assurance-vie ?","acceptedAnswer":{"@type":"Answer","text":"Cela dépend de votre contrat. Renseignez-vous auprès de votre assureur ou CGP."}},
+    {"@type":"Question","name":"Quel est le risque de perte en capital ?","acceptedAnswer":{"@type":"Answer","text":"Comme toute SCPI, Log In et Wemo One présentent un risque de perte en capital. Les performances passées ne préjugent pas des performances futures."}},
+    {"@type":"Question","name":"Le démembrement est-il possible ?","acceptedAnswer":{"@type":"Answer","text":"Le démembrement dépend des conditions proposées par Theoreim / Principal RE et Wemo Reim. Consultez votre CGP pour les modalités."}}
+  ]
+}
+</script>
+<div class="faq-item">
+  <div class="faq-q">Log In ou Wemo One : laquelle choisir en 2026 ?</div>
+  <div class="faq-a"><strong>Log In</strong> est recommandée si vous avez déjà un portefeuille scpi diversifié à compléter. <strong>Wemo One</strong> convient mieux si vous voulez le td maximum du marché. Les deux peuvent être complémentaires, voir la section "mixer les deux" ci-dessus.</div>
+</div>
+<div class="faq-item">
+  <div class="faq-q">Quel est le meilleur taux de distribution ?</div>
+  <div class="faq-a"><strong>Log In</strong> : <strong>6.21%</strong> · <strong>Wemo One</strong> : <strong>15.27%</strong>. Analysez aussi le TRI sur 5 ans, il mesure la performance réelle incluant l'évolution du prix de part.</div>
+</div>
+<div class="faq-item">
+  <div class="faq-q">Quels sont les frais d'entrée ?</div>
+  <div class="faq-a">
+    <strong>Log In</strong> : <strong>10.0%</strong> ·
+    <strong>Wemo One</strong> : <strong>10.0%</strong>. Horizon recommandé : 8 ans minimum.
+  </div>
+</div>
+<div class="faq-item">
+  <div class="faq-q">Quand perçoit-on les premiers loyers ?</div>
+  <div class="faq-a"><strong>Log In</strong> : <strong>5.0 mois</strong> · <strong>Wemo One</strong> : <strong>6.0 mois</strong>. Plus ce délai est court, plus vite votre capital commence à travailler.</div>
+</div>
+<div class="faq-item">
+  <div class="faq-q">Peut-on investir en assurance-vie ?</div>
+  <div class="faq-a">Cela dépend de votre contrat d'assurance-vie. Renseignez-vous auprès de votre assureur ou conseiller en gestion de patrimoine pour vérifier si ces SCPI sont référencées.</div>
+</div>
+<div class="faq-item">
+  <div class="faq-q">Quel est le risque de perte en capital ?</div>
+  <div class="faq-a">Comme toute SCPI, <strong>Log In</strong> et <strong>Wemo One</strong> présentent un risque de perte en capital. La valeur des parts peut évoluer à la hausse comme à la baisse. Les performances passées ne préjugent pas des performances futures.</div>
+</div>
+<div class="faq-item">
+  <div class="faq-q">Le démembrement est-il possible sur ces SCPI ?</div>
+  <div class="faq-a">Le démembrement (nue-propriété / usufruit) dépend des conditions proposées par <strong>Theoreim / Principal RE</strong> et <strong>Wemo Reim</strong>. Consultez directement les sociétés de gestion ou votre conseiller en gestion de patrimoine.</div>
+</div>
+  </div>
+
+  <!-- VERDICT -->
+  <div class="verdict">
+    <h2>Quelle SCPI choisir selon votre profil ?</h2>
+    <p style="color:rgba(255,255,255,.7);font-size:18px;line-height:1.75;margin-bottom:16px;text-align:center">
+Notre analyse basée sur les données officielles des sociétés de gestion.    </p>
+    <div class="verdict-grid">
+      <div class="verdict-box">
+        <div>
+          <h3>👉 Choisissez Log In si :</h3>
+          <ul><li>Vous avez déjà un portefeuille SCPI diversifié à compléter</li><li>Thématique industrielle comme conviction</li><li>TRI cible conservateur préféré</li></ul>
+        </div>
+        <div class="verdict-cta">
+          <a href="https://app.louveinvest.com/signup?promoCode=MONELOR&utm_source=monelor&utm_medium=partenariat" class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="width:100%;justify-content:center;font-size:15px">
+→ Investir dans Log In          </a>
+        </div>
+      </div>
+      <div class="verdict-box">
+        <div>
+          <h3>👉 Choisissez Wemo One si :</h3>
+          <ul><li>Vous voulez le TD maximum du marché</li><li>Ticket accessible (210€ vs 1 020€)</li><li>Stratégie small caps convaincante</li></ul>
+        </div>
+        <div class="verdict-cta">
+          <a href="https://app.louveinvest.com/signup?promoCode=MONELOR&utm_source=monelor&utm_medium=partenariat" class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="width:100%;justify-content:center;font-size:15px">
+→ Investir dans Wemo One          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAILLAGE INTERNE -->
+  <div style="margin:24px 0 0">
+    <h2 style="font-size:32px;font-family:'DM Serif Display',serif;font-weight:400;letter-spacing:-.01em;margin-bottom:16px">
+      Comparatifs similaires
+    </h2>
+    <div class="rel-grid">
+      <!-- Liens vers pages avis -->
+      <a href="avis-log-in" class="rel-link" style="background:var(--surface2)">📋 Avis complet Log In →</a>
+      <a href="avis-wemo-one" class="rel-link" style="background:var(--surface2)">📋 Avis complet Wemo One →</a>
+      <a href="log-in-vs-iroko-zen.html" class="rel-link">Log In vs Iroko Zen →</a>
+      <a href="log-in-vs-comete.html" class="rel-link">Log In vs Comète →</a>
+      <a href="log-in-vs-corum-origin.html" class="rel-link">Log In vs Corum Origin →</a>
+      <a href="log-in-vs-remake-live.html" class="rel-link">Log In vs Remake Live →</a>
+      <a href="log-in-vs-iroko-atlas.html" class="rel-link">Log In vs Iroko Atlas →</a>
+      <a href="log-in-vs-transitions-europe.html" class="rel-link">Log In vs Transitions Europe →</a>
+      <a href="log-in-vs-principal-inside.html" class="rel-link">Log In vs Principal Inside →</a>
+      <a href="log-in-vs-upeka.html" class="rel-link">Log In vs Upêka →</a>
+      <a href="comparatifs-scpi" class="rel-link">← Comparatifs SCPI</a>
+    </div>
+  </div>
+
+</main>
+
+<p class="aff-notice" style="margin-top:0"><div class="disclaimer">
+  <div class="disclaimer-title">⚠️ Avertissement financier et réglementaire</div>
+  <p>Ce comparatif est fourni à titre informatif uniquement et ne constitue pas un conseil en investissement personnalisé au sens de la directive MiFID II. Investir en SCPI comporte des risques, dont la perte partielle ou totale du capital investi. La liquidité n'est pas garantie. Les rendements affichés sont ceux des exercices passés et ne préjugent pas des performances futures. Avant tout investissement, consultez un conseiller en gestion de patrimoine (CGP) agréé par l'AMF. Les données sont actualisées à la date de publication, vérifiez toujours les informations directement auprès des sociétés de gestion.</p>
+</div>
+</p>
+
+<style>
+.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
+.footer-brand .footer-logo span{color:var(--accent2)}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;max-width:260px;margin:0;padding:0}
+.footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
+.footer-bottom-right{display:flex;gap:20px}
+.footer-bottom-right a{font-size:12px;color:rgba(255,255,255,.3);transition:.15s}
+.footer-bottom-right a:hover{color:rgba(255,255,255,.7)}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-brand{grid-column:1/-1}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+}
+</style>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="footer-logo">UTL<span>Peipin</span></div>
+        <p>Comparatifs SCPI indépendants. 45 analyses détaillées pour choisir la meilleure SCPI selon votre profil.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="/comparatifs-scpi">Comparatifs SCPI</a>
+        <a href="/avis-scpi">Avis SCPI</a>
+        <a href="/plan-du-site">Plan du site</a>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/politique-confidentialite">Confidentialité</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>À propos</h4>
+        <a href="/contact">Nous contacter</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        © 2026 utl-peipin.fr — Données actualisées le 15 avril 2026. Les performances passées ne préjugent pas des performances futures.
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+document.querySelectorAll('.faq-q').forEach(function(q){
+  q.addEventListener('click',function(){
+    var a=this.nextElementSibling;
+    if(a){a.style.display=a.style.display==='block'?'none':'block';}
+  });
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+(function(){
+  var GEO_COLORS=['#185FA5','#378ADD','#85B7EB','#B5D4F4','#E6F1FB','#0C447C'];
+  var SEC_COLORS=['#1D9E75','#5DCAA5','#9FE1CB','#3B6D11','#639922','#97C459'];
+
+  function parseData(str){
+    if(!str || str === 'None' || str === '') return {labels:[],data:[]};
+    // Nettoie les guillemets éventuels
+    str = str.replace(/^["']|["']$/g, '').trim();
+    var labels=[],data=[];
+    str.split(',').forEach(function(s){
+      var p=s.trim().split(':');
+      if(p.length===2 && p[0].trim() && !isNaN(parseFloat(p[1]))){
+        labels.push(p[0].trim());
+        data.push(parseFloat(p[1]));
+      }
+    });
+    return {labels:labels,data:data};
+  }
+
+  function makeDonut(id,d,colors){
+    var el=document.getElementById(id);
+    if(!el) return;
+    new Chart(el,{
+      type:'doughnut',
+      data:{
+        labels:d.labels,
+        datasets:[{data:d.data,backgroundColor:colors.slice(0,d.data.length),borderWidth:2,borderColor:'transparent',hoverOffset:6}]
+      },
+      options:{
+        responsive:true,maintainAspectRatio:true,cutout:'62%',
+        plugins:{
+          legend:{display:false},
+          tooltip:{callbacks:{label:function(c){return ' '+c.label+' : '+c.parsed+'%';}}}
+        }
+      }
+    });
+  }
+
+  function makeLegend(id,labels,colors){
+    var el=document.getElementById(id);
+    if(!el) return;
+    labels.forEach(function(l,i){
+      var s=document.createElement('span');
+      s.style.cssText='display:flex;align-items:center;gap:4px;';
+      s.innerHTML='<span style="width:10px;height:10px;border-radius:2px;background:'+colors[i]+'"></span>'+l;
+      el.appendChild(s);
+    });
+  }
+
+  var geoA=parseData('Italie:29,Espagne:27,Gde Bretagne:24,Allemagne:13,Irlande:4,Pologne:3');
+  var geoB=parseData('Italie:51,Espagne:35,France:14');
+  if(geoA.labels.length > 0 && geoB.labels.length > 0){
+    makeDonut('geo-a-log-in',geoA,GEO_COLORS);
+    makeDonut('geo-b-wemo-one',geoB,GEO_COLORS);
+    var allGeoLabels=[...new Set([...geoA.labels,...geoB.labels])];
+    makeLegend('legend-geo-log-in',allGeoLabels,GEO_COLORS);
+  }
+
+  var secA=parseData('Locaux d\'activités:70,Logistique:24,Santé:6');
+  var secB=parseData('Commerces:74,Locaux d\'activité:15,Éducation:7,Bureaux:4');
+  if(secA.labels.length > 0 && secB.labels.length > 0){
+    makeDonut('sec-a-log-in',secA,SEC_COLORS);
+    makeDonut('sec-b-wemo-one',secB,SEC_COLORS);
+    var allSecLabels=[...new Set([...secA.labels,...secB.labels])];
+    makeLegend('legend-sec-log-in',allSecLabels,SEC_COLORS);
+  }
+})();
+</script>
+<script>
+function toggleMenu(){
+  var m=document.getElementById('nav-mobile');
+  var b=document.getElementById('burger');
+  m.classList.toggle('open');
+  b.classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  var m=document.getElementById('nav-mobile');
+  var b=document.getElementById('burger');
+  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){
+    m.classList.remove('open');b.classList.remove('open');
+  }
+});
+</script>
+</body>
+</html>
