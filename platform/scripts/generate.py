@@ -241,8 +241,10 @@ def build_related_pages(slug_a: str, slug_b: str, products: list, max_items: int
         s = p["slug"]
         if s in (slug_a, slug_b):
             continue
+        # Trier les slugs pour correspondre au nom de fichier réel
+        pair = sorted([slug_a, s])
         related.append({
-            "url":   f"{slug_a}-vs-{s}",
+            "url":   f"{pair[0]}-vs-{pair[1]}",
             "label": f"{products_by_slug(products, slug_a)['nom']} vs {p['nom']}"
         })
         if len(related) >= max_items:
