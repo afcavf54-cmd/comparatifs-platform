@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Comparatif SCPI {{ site.year }}, Trouvez la meilleure SCPI | {{ site.name }}</title>
+<title>{% if home_title is defined and home_title %}{{ home_title }}{% else %}Comparatif SCPI {{ site.year }}, Trouvez la meilleure SCPI | {{ site.name }}{% endif %}</title>
 <meta name="description" content="Comparez les meilleures SCPI {{ site.year }} : taux de distribution, frais, TRI, TOF. Outil de comparaison gratuit pour trouver la SCPI adaptée à votre profil d'investisseur.">
 <link rel="canonical" href="{{ site.domain }}/index">
 <meta property="og:title" content="Comparatif SCPI {{ site.year }}, {{ site.name }}">
