@@ -358,20 +358,30 @@ def generate_pairs(products: list, site_dir: Path, year: int, skip_existing: boo
             print("⏭ déjà généré")
             continue
 
-        try:
-            response = call_claude(prompt_pair(pa, pb, year))
-            data = parse_json(response, key)
-            if data:
-                editorial[key] = data
-                save_json(editorial_path, editorial)
-                print("✓")
-            else:
-                print("⚠ JSON vide")
-                failures.append(key)
-        except Exception as e:
-            print(f"❌ {e}")
+        success = False
+        for json_attempt in range(5):
+            try:
+                response = call_claude(prompt_pair(pa, pb, year))
+                data = parse_json(response, key)
+                if data:
+                    editorial[key] = data
+                    save_json(editorial_path, editorial)
+                    print("✓" if json_attempt == 0 else f"✓ (retry JSON {json_attempt})")
+                    success = True
+                    break
+                else:
+                    if json_attempt < 4:
+                        wait = [5, 15, 30, 60][json_attempt]
+                        print(f"\n    ⚠ JSON vide, retry {json_attempt+1}/4 dans {wait}s...", end=" ", flush=True)
+                        time.sleep(wait)
+                    else:
+                        print("\n    ⚠ JSON vide après 4 retries")
+            except Exception as e:
+                print(f"\n    ❌ {e}")
+                break
+        if not success:
             failures.append(key)
-        time.sleep(5)  # Pause entre appels pour éviter 529
+        time.sleep(3)  # Pause entre appels pour éviter 529
 
     # Sauvegarde le statut (paires manquantes)
     status = load_json(site_dir / "generation_status.json")
