@@ -1,7 +1,6 @@
 # ============================================================
 # CONFIG SITE -- comparateur-scpi
 # ============================================================
-
 site:
   slug: comparateur-scpi
   name: "Comparateur SCPI"
@@ -16,7 +15,8 @@ site:
   template: "comparatif-vs-scpi.html.j2"
   index_template: "index-scpi.html.j2"
   analytics_clicky: ""
-
+  home_title: "Comparateur SCPI 2026 : comparez les meilleures SCPI"
+  home_description: "Comparez les meilleures SCPI en 2026 : rendements, frais, avis independants."
 theme:
   accent: "#400000"
   accent2: "#E8410A"
@@ -26,7 +26,6 @@ theme:
   font_title: "DM Serif Display"
   font_body: "Outfit"
   google_fonts: "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap"
-
 criteria:
   - label: "TD 2026"
     field: td
@@ -70,13 +69,11 @@ criteria:
   - label: "Pays"
     field: pays
     type: text
-
 tag_classes:
   rendement: "tag-rendement"
   diversifiee: "tag-diversifiee"
   specialisee: "tag-specialisee"
   europeenne: "tag-europeenne"
-
 seo:
   title_pattern: "{A} vs {B} : comparatif {year}"
   meta_pattern: "Comparatif complet {A} vs {B} {year} : rendements, frais, avis."
@@ -85,8 +82,6 @@ seo:
   intro_pattern: "Comparatif {A} vs {B} - analyse complete."
   category_label: "Comparatifs"
   category_url: "index.html#comparatifs"
-  home_title: "Comparateur SCPI"
-  home_description: """
   avis_title_pattern: "Avis {nom} {year} : faut-il investir ?"
   avis_meta_pattern: "Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques."
   liste_comp_title: "Tous les comparatifs {site_name} {year}"
