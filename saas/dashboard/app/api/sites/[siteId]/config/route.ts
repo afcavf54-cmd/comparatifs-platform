@@ -40,19 +40,32 @@ export async function PATCH(req: NextRequest, { params }: Params) {
 
   let yaml = file.content
 
-  const update = (key: string, val: string) => {
-    const re = new RegExp(`^(  ${key}:\\s*)["']?.*?["']?\\s*$`, 'm')
-    const line = `  ${key}: "${val}"`
+  // Met à jour un champ sous site: (4 espaces d'indentation)
+  const updateSiteField = (key: string, val: string) => {
+    const re = new RegExp(`^(    ${key}:\\s*)["']?.*?["']?\\s*$`, 'm')
+    const line = `    ${key}: "${val}"`
     if (re.test(yaml)) {
       yaml = yaml.replace(re, line)
     } else {
-      yaml = yaml.trimEnd() + `\n  ${key}: "${val}"\n`
+      // Insère avant la ligne "theme:" 
+      yaml = yaml.replace(/^theme:/m, `    ${key}: "${val}"\ntheme:`)
     }
   }
 
-  update('home_title', body.home_title || '')
-  update('home_description', body.home_description || '')
-  update('www_preference', body.www_preference || 'www')
+  // Met à jour un champ sous seo: (4 espaces d'indentation)
+  const update = (key: string, val: string) => {
+    const re = new RegExp(`^(    ${key}:\\s*)["']?.*?["']?\\s*$`, 'm')
+    const line = `    ${key}: "${val}"`
+    if (re.test(yaml)) {
+      yaml = yaml.replace(re, line)
+    } else {
+      yaml = yaml.trimEnd() + `\n    ${key}: "${val}"\n`
+    }
+  }
+
+  updateSiteField('home_title', body.home_title || '')
+  updateSiteField('home_description', body.home_description || '')
+  updateSiteField('www_preference', body.www_preference || 'www')
   update('title_pattern', body.seo_vs_title || '')
   update('meta_pattern', body.seo_vs_meta || '')
   update('avis_title_pattern', body.seo_avis_title || '')
