@@ -22,6 +22,13 @@ export async function POST(req: NextRequest) {
     name, niche, domain, sheet_csv_url, description,
     accent = '#1B4FD8', accent2 = '#E8410A', bg = '#F4F6FB',
     logo_text, logo_accent, www_preference = 'www',
+    home_title = '', home_description = '',
+    seo_vs_title = '{A} vs {B} : comparatif {year}',
+    seo_vs_meta = 'Comparatif complet {A} vs {B} {year} : rendements, frais, avis.',
+    seo_avis_title = 'Avis {nom} {year} : faut-il investir ?',
+    seo_avis_meta = 'Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques.',
+    seo_liste_comp_title = 'Tous les comparatifs {site_name} {year}',
+    seo_liste_avis_title = 'Avis {site_name} {year} : analyses independantes',
   } = body
 
   if (!name || !domain) return NextResponse.json({ error: 'name et domain requis' }, { status: 400 })
@@ -51,6 +58,8 @@ site:
   tagline: "Comparatifs ${name} ${year}"
   year: ${year}
   sheet_csv_url: "${sheet_csv_url || ''}"\n  www_preference: "${www_preference}"
+  home_title: "${home_title || name + ' | Comparatifs ' + year}"
+  home_description: "${home_description}"
   template: "comparatif-vs-scpi.html.j2"
   index_template: "index-scpi.html.j2"
   analytics_clicky: ""
@@ -116,7 +125,12 @@ tag_classes:
   europeenne: "tag-europeenne"
 
 seo:
-  title_pattern: "{A} vs {B} : comparatif {year}"
+  title_pattern: "${seo_vs_title}"
+  meta_pattern: "${seo_vs_meta}"
+  avis_title_pattern: "${seo_avis_title}"
+  avis_meta_pattern: "${seo_avis_meta}"
+  liste_comp_title: "${seo_liste_comp_title}"
+  liste_avis_title: "${seo_liste_avis_title}"
   meta_pattern: "Comparatif complet {A} vs {B} {year} : rendements, frais, avis."
   h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
   eyebrow: "Comparatif {year}"
