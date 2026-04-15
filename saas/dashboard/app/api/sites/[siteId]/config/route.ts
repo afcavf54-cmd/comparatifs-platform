@@ -9,10 +9,9 @@ export async function GET(_: NextRequest, { params }: Params) {
   if (!file) return NextResponse.json({ error: 'Config introuvable' }, { status: 404 })
 
   const yaml = file.content
-
   const get = (key: string) => {
-    const match = yaml.match(new RegExp(`^    ${key}:\\s*["']?(.+?)["']?\\s*$`, 'm'))
-    return match ? match[1].trim() : ''
+    const match = yaml.match(new RegExp(`^[ ]*${key}:\\s*["']?(.+?)["']?\\s*$`, 'm'))
+    return match ? match[1].trim().replace(/^["']|["']$/g, '') : ''
   }
 
   return NextResponse.json({
@@ -38,35 +37,25 @@ export async function PATCH(req: NextRequest, { params }: Params) {
 
   let yaml = file.content
 
-  const updateSiteField = (key: string, val: string) => {
-    const re = new RegExp(`^(    ${key}:\\s*)["']?.*?["']?\\s*$`, 'm')
-    const line = `    ${key}: "${val}"`
+  // Remplace UNE occurrence d'une clé (peu importe l'indentation)
+  // Si la clé existe déjà → remplace, sinon → insère au bon endroit
+  const replaceKey = (key: string, val: string, indent: string) => {
+    const re = new RegExp(`^([ ]*)${key}:(.*?)$`, 'm')
     if (re.test(yaml)) {
-      yaml = yaml.replace(re, line)
-    } else {
-      yaml = yaml.replace(/^theme:/m, `    ${key}: "${val}"\ntheme:`)
+      yaml = yaml.replace(re, `${indent}${key}: "${val}"`)
     }
+    // Ne PAS ajouter si absent — évite les doublons
   }
 
-  const updateSeoField = (key: string, val: string) => {
-    const re = new RegExp(`^(    ${key}:\\s*)["']?.*?["']?\\s*$`, 'm')
-    const line = `    ${key}: "${val}"`
-    if (re.test(yaml)) {
-      yaml = yaml.replace(re, line)
-    } else {
-      yaml = yaml.trimEnd() + `\n    ${key}: "${val}"\n`
-    }
-  }
-
-  updateSiteField('home_title', body.home_title || '')
-  updateSiteField('home_description', body.home_description || '')
-  updateSiteField('www_preference', body.www_preference || 'www')
-  updateSeoField('title_pattern', body.seo_vs_title || '')
-  updateSeoField('meta_pattern', body.seo_vs_meta || '')
-  updateSeoField('avis_title_pattern', body.seo_avis_title || '')
-  updateSeoField('avis_meta_pattern', body.seo_avis_meta || '')
-  updateSeoField('liste_comp_title', body.seo_liste_comp_title || '')
-  updateSeoField('liste_avis_title', body.seo_liste_avis_title || '')
+  replaceKey('home_title', body.home_title || '', '  ')
+  replaceKey('home_description', body.home_description || '', '  ')
+  replaceKey('www_preference', body.www_preference || 'www', '  ')
+  replaceKey('title_pattern', body.seo_vs_title || '', '  ')
+  replaceKey('meta_pattern', body.seo_vs_meta || '', '  ')
+  replaceKey('avis_title_pattern', body.seo_avis_title || '', '  ')
+  replaceKey('avis_meta_pattern', body.seo_avis_meta || '', '  ')
+  replaceKey('liste_comp_title', body.seo_liste_comp_title || '', '  ')
+  replaceKey('liste_avis_title', body.seo_liste_avis_title || '', '  ')
 
   const saved = await putFile(
     `platform/sites/${siteId}/config.yaml`,
