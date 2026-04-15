@@ -155,7 +155,7 @@ footer a{color:rgba(255,255,255,.4)}
 
 {% include "base/_nav.html.j2" %}<div class="crumb">
   <a href="/">Accueil</a> ›
-  <a href="comparatifs-scpi.html">{{ site.seo.category_label }}</a> ›
+  <a href="comparatifs-scpi">{{ site.seo.category_label }}</a> ›
   {{ prod_a.nom }} vs {{ prod_b.nom }}
 </div>
 
@@ -273,7 +273,7 @@ footer a{color:rgba(255,255,255,.4)}
           <span>{{ prod.nom }}</span>
         </div>
         {% endif %}
-        <a href="avis-{{ prod.slug }}.html" style="display:block;margin-top:10px;font-size:13px;color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-align:center">
+        <a href="avis-{{ prod.slug }}" style="display:block;margin-top:10px;font-size:13px;color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px;text-align:center">
           → Notre avis sur {{ prod.nom }}
         </a>
       </div>
@@ -391,12 +391,12 @@ footer a{color:rgba(255,255,255,.4)}
     </h2>
     <div class="rel-grid">
       <!-- Liens vers pages avis -->
-      <a href="avis-{{ slug_a }}.html" class="rel-link" style="background:var(--surface2)">📋 Avis complet {{ prod_a.nom }} →</a>
-      <a href="avis-{{ slug_b }}.html" class="rel-link" style="background:var(--surface2)">📋 Avis complet {{ prod_b.nom }} →</a>
+      <a href="avis-{{ slug_a }}" class="rel-link" style="background:var(--surface2)">📋 Avis complet {{ prod_a.nom }} →</a>
+      <a href="avis-{{ slug_b }}" class="rel-link" style="background:var(--surface2)">📋 Avis complet {{ prod_b.nom }} →</a>
       {% for rel in related_pages %}
       <a href="{{ rel.url }}" class="rel-link">{{ rel.label }} →</a>
       {% endfor %}
-      <a href="comparatifs-scpi.html" class="rel-link">← Comparatifs SCPI</a>
+      <a href="comparatifs-scpi" class="rel-link">← Comparatifs SCPI</a>
     </div>
   </div>
 
