@@ -15,8 +15,8 @@ site:
   index_template: "index-scpi.html.j2"
   analytics_clicky: ""
   www_preference: "www"
-  home_title: "Trouvez la meilleure SCPI 2026 !"
-  home_description: "UTL Peipin, le spécialiste des SCPi vous guide pour trouver la meilleure SCPI."
+  home_title: "Comparatif SCPI 2026 | UTL Peipin"
+  home_description: "Comparez les meilleures SCPI en 2026 : rendements, frais, avis independants."
 theme:
   accent: "#1B4FD8"
   accent2: "#3B6FEF"
@@ -87,7 +87,7 @@ seo:
     en 5 minutes.
   category_label: "Comparatifs SCPI"
   category_url: "index.html#comparatifs"
-  avis_title_pattern: "Avis {nom} {year} : faut-il investir dans cette SCPI?"
+  avis_title_pattern: "Avis {nom} {year} : faut-il investir ?"
   avis_meta_pattern: "Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques."
-  liste_comp_title: "Tous les comparatifs {site_name} {year}"
-  liste_avis_title: "Avis {site_name} {year} : analyses independantes"
+  liste_comp_title: "Tous les comparatifs SCPI {year}"
+  liste_avis_title: "Avis SCPI {year} : analyses independantes"
