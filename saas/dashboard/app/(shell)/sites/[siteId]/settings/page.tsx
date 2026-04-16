@@ -9,25 +9,48 @@ export default function SettingsPage() {
   const [site, setSite] = useState<any>(null)
   const [form, setForm] = useState<any>({})
   const [seoForm, setSeoForm] = useState({ home_title: '', home_description: '', seo_vs_title: '{A} vs {B} : comparatif {year}', seo_vs_meta: 'Comparatif complet {A} vs {B} {year} : rendements, frais, avis.', seo_avis_title: 'Avis {nom} {year} : faut-il investir ?', seo_avis_meta: 'Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques.', seo_liste_comp_title: 'Tous les comparatifs {site_name} {year}', seo_liste_avis_title: 'Avis {site_name} {year} : analyses independantes', www_preference: 'www' })
+  const [pageTypes, setPageTypes] = useState<Record<string, string>>({})
+  const [availableSchemas, setAvailableSchemas] = useState<any[]>([])
   const [saving, setSaving] = useState(false)
   const [savingSeo, setSavingSeo] = useState(false)
   const [deployingSeo, setDeployingSeo] = useState(false)
+  const [savingPageTypes, setSavingPageTypes] = useState(false)
   const [deleting, setDeleting] = useState(false)
   const [faviconFile, setFaviconFile] = useState<File | null>(null)
   const [uploadingFavicon, setUploadingFavicon] = useState(false)
   const [msg, setMsg] = useState('')
   const [msgSeo, setMsgSeo] = useState('')
+  const [msgPageTypes, setMsgPageTypes] = useState('')
   const [msgFavicon, setMsgFavicon] = useState('')
   const [confirmDelete, setConfirmDelete] = useState('')
 
   useEffect(() => {
-    fetch(`/api/sites/${siteId}`).then(r => r.json()).then(d => { setSite(d); setForm({ name: d.name, domain: d.domain, cloudflare_project: d.cloudflare_project, description: d.description || '', status: d.status, sheet_csv_url: d.sheet_csv_url || '' }) })
-    fetch(`/api/sites/${siteId}/config`).then(r => r.json()).then(d => { if (d) setSeoForm(f => ({ ...f, home_title: d.home_title || '', home_description: d.home_description || '', seo_vs_title: d.seo?.title_pattern || f.seo_vs_title, seo_vs_meta: d.seo?.meta_pattern || f.seo_vs_meta, seo_avis_title: d.seo?.avis_title_pattern || f.seo_avis_title, seo_avis_meta: d.seo?.avis_meta_pattern || f.seo_avis_meta, seo_liste_comp_title: d.seo?.liste_comp_title || f.seo_liste_comp_title, seo_liste_avis_title: d.seo?.liste_avis_title || f.seo_liste_avis_title, www_preference: d.www_preference || 'www' })) }).catch(() => {})
+    fetch(`/api/sites/${siteId}`).then(r => r.json()).then(d => {
+      setSite(d)
+      setForm({ name: d.name, domain: d.domain, cloudflare_project: d.cloudflare_project, description: d.description || '', status: d.status, sheet_csv_url: d.sheet_csv_url || '' })
+    })
+    fetch(`/api/sites/${siteId}/config`).then(r => r.json()).then(d => {
+      if (d) {
+        setSeoForm(f => ({ ...f, home_title: d.home_title || '', home_description: d.home_description || '', seo_vs_title: d.seo?.title_pattern || f.seo_vs_title, seo_vs_meta: d.seo?.meta_pattern || f.seo_vs_meta, seo_avis_title: d.seo?.avis_title_pattern || f.seo_avis_title, seo_avis_meta: d.seo?.avis_meta_pattern || f.seo_avis_meta, seo_liste_comp_title: d.seo?.liste_comp_title || f.seo_liste_comp_title, seo_liste_avis_title: d.seo?.liste_avis_title || f.seo_liste_avis_title, www_preference: d.www_preference || 'www' }))
+        if (d.page_types) setPageTypes(d.page_types)
+      }
+    }).catch(() => {})
+
+    fetch('/api/github?path=platform/schemas').then(r => r.json()).then(async (files) => {
+      if (!Array.isArray(files)) return
+      const schemas = await Promise.all(files.filter((f: any) => f.name.endsWith('.json')).map(async (f: any) => {
+        const r = await fetch(`/api/github?path=${encodeURIComponent(f.path)}`)
+        const d = await r.json()
+        try { return { ...JSON.parse(d.content), filename: f.name.replace('.json', '') } } catch { return null }
+      }))
+      setAvailableSchemas(schemas.filter(Boolean))
+    }).catch(() => {})
   }, [siteId])
 
   async function save() { setSaving(true); setMsg(''); const r = await fetch(`/api/sites/${siteId}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) }); const d = await r.json(); setMsg(d.id ? '✓ Paramètres sauvegardés' : '✗ Erreur'); setSaving(false) }
   async function saveSeo() { setSavingSeo(true); setMsgSeo(''); const r = await fetch(`/api/sites/${siteId}/config`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(seoForm) }); const d = await r.json(); setMsgSeo(d.success ? '✓ SEO sauvegardé' : '✗ Erreur'); setSavingSeo(false) }
   async function saveSeoAndDeploy() { setDeployingSeo(true); setMsgSeo(''); try { const r = await fetch(`/api/sites/${siteId}/config`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(seoForm) }); const d = await r.json(); if (!d.success) throw new Error(d.error || 'Erreur sauvegarde'); const wr = await fetch(`/api/sites/${siteId}/deploy`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ skip_enrich: true }) }); const wd = await wr.json(); if (!wd.success) throw new Error(wd.error || 'Erreur workflow'); setMsgSeo('✓ SEO sauvegardé et redéploiement lancé') } catch (e: any) { setMsgSeo('✗ ' + e.message) } finally { setDeployingSeo(false) } }
+  async function savePageTypes() { setSavingPageTypes(true); setMsgPageTypes(''); const r = await fetch(`/api/sites/${siteId}/config`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...seoForm, page_types: pageTypes }) }); const d = await r.json(); setMsgPageTypes(d.success ? '✓ Types de pages sauvegardés' : '✗ Erreur'); setSavingPageTypes(false) }
   async function uploadFavicon() { if (!faviconFile) return; setUploadingFavicon(true); setMsgFavicon(''); const fd = new FormData(); fd.append('favicon', faviconFile); const r = await fetch(`/api/sites/${siteId}/favicon`, { method: 'POST', body: fd }); const d = await r.json(); setMsgFavicon(d.success ? "✓ Favicon uploadé — relancez un déploiement pour l'appliquer" : '✗ ' + (d.error || 'Erreur')); setUploadingFavicon(false) }
   async function deleteSite() { if (confirmDelete !== site?.name) return; setDeleting(true); const r = await fetch(`/api/sites/${siteId}`, { method: 'DELETE' }); const d = await r.json(); if (d.ok) router.push('/sites'); else { setMsg('✗ Erreur suppression'); setDeleting(false) } }
 
@@ -45,6 +68,7 @@ export default function SettingsPage() {
       </div>
       <h1 style={{ fontSize: 22, fontWeight: 700, color: '#fff', marginBottom: 28 }}>Paramètres</h1>
 
+      {/* Infos générales */}
       <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24, marginBottom: 20 }}>
         <h3 style={{ color: '#fff', margin: '0 0 20px', fontSize: 15, fontWeight: 600 }}>Informations générales</h3>
         {inp('Nom du site', 'name')}{inp('Domaine', 'domain')}{inp('Projet Cloudflare Pages', 'cloudflare_project')}{inp('URL Google Sheet CSV', 'sheet_csv_url')}
@@ -54,6 +78,7 @@ export default function SettingsPage() {
         <button onClick={save} disabled={saving} style={{ padding: '11px 24px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>{saving ? 'Sauvegarde...' : '💾 Sauvegarder'}</button>
       </div>
 
+      {/* SEO */}
       <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24, marginBottom: 20 }}>
         <h3 style={{ color: '#fff', margin: '0 0 8px', fontSize: 15, fontWeight: 600 }}>SEO</h3>
         <div style={{ fontSize: 11, color: '#4A5568', marginBottom: 16 }}>Variables : <code style={{ color: '#00D4AA' }}>{'{A}'}</code> <code style={{ color: '#00D4AA' }}>{'{B}'}</code> <code style={{ color: '#00D4AA' }}>{'{nom}'}</code> <code style={{ color: '#00D4AA' }}>{'{td}'}</code> <code style={{ color: '#00D4AA' }}>{'{year}'}</code> <code style={{ color: '#00D4AA' }}>{'{site_name}'}</code></div>
@@ -76,6 +101,27 @@ export default function SettingsPage() {
         <button onClick={saveSeoAndDeploy} disabled={deployingSeo} style={{ marginLeft: 10, padding: '11px 24px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #9F7AEA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>{deployingSeo ? '🚀 Déploiement...' : '🚀 Sauvegarder et redéployer'}</button>
       </div>
 
+      {/* Types de pages */}
+      <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24, marginBottom: 20 }}>
+        <h3 style={{ color: '#fff', margin: '0 0 8px', fontSize: 15, fontWeight: 600 }}>📐 Types de pages</h3>
+        <p style={{ color: '#8B9CB0', fontSize: 12, marginBottom: 16, lineHeight: 1.6 }}>Associez un modèle de page à chaque type. Les modèles définissent la structure et les prompts de génération.</p>
+        {['avis', 'vs', 'local', 'classement'].map(type => (
+          <div key={type} style={{ marginBottom: 12 }}>
+            <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 6 }}>{type}</div>
+            <select value={pageTypes[type] || ''} onChange={e => setPageTypes(prev => ({ ...prev, [type]: e.target.value }))}
+              style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: pageTypes[type] ? '#fff' : '#4A5568', fontSize: 13, outline: 'none' }}>
+              <option value=''>— Non utilisé —</option>
+              {availableSchemas.filter(s => s.type === type).map(s => (
+                <option key={s.filename} value={s.filename}>{s.label} ({s.filename})</option>
+              ))}
+            </select>
+          </div>
+        ))}
+        {msgPageTypes && <div style={{ fontSize: 13, color: msgPageTypes.startsWith('✓') ? '#00D4AA' : '#FC8181', marginBottom: 12 }}>{msgPageTypes}</div>}
+        <button onClick={savePageTypes} disabled={savingPageTypes} style={{ padding: '11px 24px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>{savingPageTypes ? 'Sauvegarde...' : '💾 Sauvegarder les types'}</button>
+      </div>
+
+      {/* Favicon */}
       <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24, marginBottom: 20 }}>
         <h3 style={{ color: '#fff', margin: '0 0 8px', fontSize: 15, fontWeight: 600 }}>🖼 Favicon</h3>
         <p style={{ color: '#8B9CB0', fontSize: 12, marginBottom: 16, lineHeight: 1.6 }}>Formats acceptés : SVG, PNG, ICO. Recommandé : SVG ou PNG 32×32.<br/>Après upload, relancez un déploiement pour l'appliquer.</p>
@@ -85,6 +131,7 @@ export default function SettingsPage() {
         <button onClick={uploadFavicon} disabled={uploadingFavicon || !faviconFile} style={{ padding: '11px 24px', borderRadius: 10, border: 'none', fontWeight: 600, fontSize: 13, background: faviconFile ? 'linear-gradient(135deg, #00D4AA, #0090FF)' : '#1E2D3D', color: faviconFile ? '#fff' : '#4A5568', cursor: faviconFile ? 'pointer' : 'not-allowed' }}>{uploadingFavicon ? 'Upload...' : '⬆ Uploader le favicon'}</button>
       </div>
 
+      {/* Danger zone */}
       <div style={{ background: '#0D1117', border: '1px solid rgba(252,129,129,0.3)', borderRadius: 16, padding: 24 }}>
         <h3 style={{ color: '#FC8181', margin: '0 0 12px', fontSize: 15, fontWeight: 600 }}>⚠️ Zone dangereuse</h3>
         <p style={{ color: '#8B9CB0', fontSize: 13, marginBottom: 16 }}>Supprimer ce site le retire du HUB. Les fichiers GitHub et le site Cloudflare ne sont pas supprimés automatiquement.</p>
