@@ -29,6 +29,7 @@ export async function POST(req: NextRequest) {
     seo_avis_meta = 'Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques.',
     seo_liste_comp_title = 'Tous les comparatifs {site_name} {year}',
     seo_liste_avis_title = 'Avis {site_name} {year} : analyses independantes',
+    page_types = {},
   } = body
 
   if (!name || !domain) return NextResponse.json({ error: 'name et domain requis' }, { status: 400 })
@@ -42,7 +43,14 @@ export async function POST(req: NextRequest) {
   const hubFile = await getFile(HUB_CONFIG_PATH)
   let hubConfig: any = hubFile ? JSON.parse(hubFile.content) : { sites: [], version: '2.0', updated_at: new Date().toISOString() }
   if (hubConfig.sites.find((s: any) => s.id === id))
-    return NextResponse.json({ error: 'Un site avec ce nom existe deja' }, { status: 400 })
+    return NextResponse.json({ error: 'Un site avec ce nom existe déjà' }, { status: 400 })
+
+  // Bloc page_types YAML
+  const pageTypesBlock = Object.entries(page_types as Record<string, string>)
+    .filter(([, v]) => v)
+    .map(([k, v]) => `  ${k}: ${v}`)
+    .join('\n')
+  const pageTypesYaml = pageTypesBlock ? `page_types:\n${pageTypesBlock}\n\n` : ''
 
   const configYaml = `# ============================================================
 # CONFIG SITE -- ${id}
@@ -57,14 +65,15 @@ site:
   logo_accent: "${logoAccent}"
   tagline: "Comparatifs ${name} ${year}"
   year: ${year}
-  sheet_csv_url: "${sheet_csv_url || ''}"\n  www_preference: "${www_preference}"
+  sheet_csv_url: "${sheet_csv_url || ''}"
+  www_preference: "${www_preference}"
   home_title: "${home_title || name + ' | Comparatifs ' + year}"
   home_description: "${home_description}"
   template: "comparatif-vs-scpi.html.j2"
   index_template: "index-scpi.html.j2"
   analytics_clicky: ""
 
-theme:
+${pageTypesYaml}theme:
   accent: "${accent}"
   accent2: "${accent2}"
   bg: "${bg}"
@@ -131,7 +140,6 @@ seo:
   avis_meta_pattern: "${seo_avis_meta}"
   liste_comp_title: "${seo_liste_comp_title}"
   liste_avis_title: "${seo_liste_avis_title}"
-  meta_pattern: "Comparatif complet {A} vs {B} {year} : rendements, frais, avis."
   h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
   eyebrow: "Comparatif {year}"
   intro_pattern: "Comparatif {A} vs {B} - analyse complete."
@@ -148,7 +156,7 @@ seo:
 
   for (const [path, content, msg] of files) {
     const ok = await putFile(path, content, msg)
-    if (!ok) return NextResponse.json({ error: `Erreur GitHub : impossible d ecrire ${path}. Verifiez GITHUB_TOKEN, GITHUB_OWNER, GITHUB_REPO dans les variables Vercel.` }, { status: 500 })
+    if (!ok) return NextResponse.json({ error: `Erreur GitHub : impossible d'écrire ${path}.` }, { status: 500 })
     await new Promise(r => setTimeout(r, 300))
   }
 
@@ -157,6 +165,7 @@ seo:
     domain: domainClean, sheet_csv_url: sheet_csv_url || '',
     description: description || '', status: 'pending_generation',
     created_at: new Date().toISOString(),
+    page_types: Object.fromEntries(Object.entries(page_types as Record<string, string>).filter(([, v]) => v)),
   }
   hubConfig.sites.push(newSite)
   hubConfig.updated_at = new Date().toISOString()
