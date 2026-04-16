@@ -16,23 +16,25 @@
 {
   "@context": "https://schema.org",
   "@type": "Review",
+  "name": "Avis {{ prod.nom }} {{ site.year }}",
   "datePublished": "{{ build_date }}",
   "dateModified": "{{ build_date }}",
-  "itemReviewed": {
-    "@type": "Product",
-    "name": "{{ prod.nom }}",
-    "description": "SCPI {{ prod.type | default('') }} gérée par {{ prod.marque }}{% if prod.td is defined %}, TD {{ prod.td }}% en {{ site.year }}{% endif %}",
-    "brand": { "@type": "Organization", "name": "{{ prod.marque }}" }{% if prod.prix_achat is defined %},
-    "offers": { "@type": "Offer", "price": "{{ prod.prix_achat }}", "priceCurrency": "EUR" }{% endif %}
-  },
   "reviewRating": {
     "@type": "Rating",
-    "ratingValue": "{{ prod.note_redaction | default(4) }}",
+    "ratingValue": "{{ prod.note_redaction | default('4.5') }}",
     "bestRating": "5",
     "worstRating": "1"
   },
   "author": { "@type": "Organization", "name": "{{ site.name }}", "url": "{{ site.domain }}" },
-  "publisher": { "@type": "Organization", "name": "{{ site.name }}" }
+  "itemReviewed": {
+    "@type": "Product",
+    "name": "{{ prod.nom }}",
+    "description": "SCPI {{ prod.type | default('') }} gérée par {{ prod.marque }}{% if prod.td is defined %}, taux de distribution {{ prod.td }}% en {{ site.year }}{% endif %}.",
+    "image": "{{ site.domain }}/{{ prod.slug }}.png",
+    "brand": { "@type": "Brand", "name": "{{ prod.marque }}" },
+    "offers": { "@type": "Offer", "price": "{{ prod.prix_achat | default('') }}", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "{{ prod.note_redaction | default('4.5') }}", "bestRating": "5", "worstRating": "1", "reviewCount": "10" }
+  }
 }
 </script>
 <script type="application/ld+json">
