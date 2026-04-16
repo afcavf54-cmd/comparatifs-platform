@@ -57,7 +57,14 @@
   "reviewRating": { "@type": "Rating", "ratingValue": "4.8", "bestRating": "5", "worstRating": "1" },
   "author": { "@type": "Organization", "name": "{{ site.name }}", "url": "{{ site.domain }}" },
   "datePublished": "{{ build_date }}",
-  "dateModified": "{{ build_date }}"
+  "dateModified": "{{ build_date }}",
+  "itemReviewed": {
+    "@type": "ItemList",
+    "itemListElement": [
+      { "@type": "Product", "name": "{{ prod_a.nom }}" },
+      { "@type": "Product", "name": "{{ prod_b.nom }}" }
+    ]
+  }
 }
 </script>
 {% endblock %}
