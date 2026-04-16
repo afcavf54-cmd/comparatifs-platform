@@ -66,11 +66,14 @@ export default function EditorialPage() {
       loadFile(editorialPath),
       loadFile(productsPath),
       loadFile(sitePath),
-      loadSchema(`vs-${siteId}`),
-      loadSchema(`avis-${siteId}`),
-    ]).then(([ed, prod, site, vs, avis]) => {
+    ]).then(async ([ed, prod, site]) => {
       setEditorial(ed); setProductsEditorial(prod); setSiteEditorial(site)
-      setVsSchema(vs); setAvisSchema(avis)
+      // Charger les schemas via config page_types
+      const configRes = await fetch(`/api/sites/${siteId}/config`)
+      const config = await configRes.json()
+      const pt = config.page_types || {}
+      if (pt.vs) { const s = await loadSchema(pt.vs); setVsSchema(s) }
+      if (pt.avis) { const s = await loadSchema(pt.avis); setAvisSchema(s) }
       setLoading(false)
     })
   }, [siteId])
@@ -87,13 +90,13 @@ export default function EditorialPage() {
   }
 
   // Régénère un bloc spécifique
-  async function regenerateBlock(templateId: string, blockId: string, field: string, variables: Record<string, any>, isPair: boolean) {
+  async function regenerateBlock(pageType: string, blockId: string, field: string, variables: Record<string, any>, isPair: boolean) {
     const key = `${blockId}-${isPair ? selectedPair : selectedProduct}`
     setRegenerating(prev => ({ ...prev, [key]: true }))
     try {
       const r = await fetch(`/api/sites/${siteId}/regenerate-block`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ templateId, blockId, variables })
+        body: JSON.stringify({ pageType, blockId, variables })
       })
       const d = await r.json()
       if (d.success) {
@@ -119,7 +122,7 @@ export default function EditorialPage() {
 
     for (const block of schema.blocks || []) {
       const vars = isPair ? getPairVariables(selected) : getProductVariables(selected)
-      await regenerateBlock(schema.template, block.id, block.field, vars, isPair)
+      await regenerateBlock(isPair ? 'vs' : 'avis', block.id, block.field, vars, isPair)
       await new Promise(r => setTimeout(r, 500))
     }
     setMsg('✓ Tous les blocs régénérés')
@@ -163,7 +166,7 @@ export default function EditorialPage() {
     if (!block) return null
     const vars = isPair ? (selectedPair ? getPairVariables(selectedPair) : {}) : (selectedProduct ? getProductVariables(selectedProduct) : {})
     return (
-      <button onClick={() => regenerateBlock(schema.template, blockId, field, vars, isPair)} disabled={isLoading}
+      <button onClick={() => regenerateBlock(isPair ? 'vs' : 'avis', blockId, field, vars, isPair)} disabled={isLoading}
         style={{ padding: '4px 10px', borderRadius: 6, border: '1px solid #1E2D3D', background: isLoading ? '#1E2D3D' : 'transparent', color: isLoading ? '#4A5568' : '#F6AD55', cursor: isLoading ? 'not-allowed' : 'pointer', fontSize: 11, fontWeight: 600 }}>
         {isLoading ? '⏳' : '🔄'}
       </button>
