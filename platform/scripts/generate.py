@@ -282,6 +282,62 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path) 
     print(f"  ✓ sitemap.xml ({len(pairs)} comparatifs + {len(products)} avis + pages liste)")
 
 
+def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, all_pairs: list) -> None:
+    """Supprime les fichiers HTML et entrées editorial.json des produits supprimés."""
+    current_slugs = {p["slug"] for p in products}
+
+    # Fichiers HTML attendus
+    expected_files = set()
+    expected_files.add("index.html")
+    expected_files.add("sitemap.xml")
+    expected_files.add("_redirects")
+    expected_files.add("sheets.js")
+    expected_files.add("favicon.svg")
+    expected_files.add("favicon.png")
+    expected_files.add("favicon.ico")
+    expected_files.add("comparatifs-scpi.html")
+    expected_files.add("avis-scpi.html")
+    expected_files.add("plan-du-site.html")
+    expected_files.add("mentions-legales.html")
+    expected_files.add("politique-confidentialite.html")
+    expected_files.add("contact.html")
+    expected_files.add("404.html")
+    for slug in current_slugs:
+        expected_files.add(f"avis-{slug}.html")
+        expected_files.add(f"{slug}.png")
+    for slug_a, slug_b in all_pairs:
+        expected_files.add(f"{slug_a}-vs-{slug_b}.html")
+
+    # Supprimer les fichiers HTML orphelins
+    removed = []
+    for f in output_dir.glob("*.html"):
+        if f.name not in expected_files:
+            f.unlink()
+            removed.append(f.name)
+    for f in output_dir.glob("*.png"):
+        if f.name not in expected_files and f.name not in {f"{s}.png" for s in current_slugs}:
+            f.unlink()
+            removed.append(f.name)
+
+    if removed:
+        print(f"  🧹 {len(removed)} fichiers orphelins supprimés : {removed}")
+
+    # Nettoyer editorial.json
+    editorial_path = site_dir / "editorial.json"
+    if editorial_path.exists():
+        import json
+        with open(editorial_path, encoding="utf-8") as ef:
+            editorial = json.load(ef)
+        valid_keys = {f"{a}-vs-{b}" for a, b in all_pairs}
+        orphan_keys = [k for k in editorial if k not in valid_keys]
+        if orphan_keys:
+            for k in orphan_keys:
+                del editorial[k]
+            with open(editorial_path, "w", encoding="utf-8") as ef:
+                json.dump(editorial, ef, ensure_ascii=False, indent=2)
+            print(f"  🧹 {len(orphan_keys)} paires supprimées de editorial.json")
+
+
 def copy_shared_assets(output_dir: Path, site_dir: Path) -> None:
     for source_dir in [site_dir, SHARED_DIR]:
         js_src = source_dir / "sheets.js"
@@ -423,6 +479,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
 
     if not dry_run:
         generate_sitemap(site, all_pairs, products, output_dir)
+        cleanup_removed_products(output_dir, site_dir, products, all_pairs)
 
         # ── Fichier _redirects pour Cloudflare Pages ──────────────────────
         www_preference = site.get("www_preference") or config.get("www_preference", "www")
