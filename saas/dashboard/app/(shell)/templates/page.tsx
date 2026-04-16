@@ -21,10 +21,18 @@ export default function TemplatesPage() {
     }).catch(() => setLoading(false))
   }, [])
 
-  const byNiche = schemas.reduce((acc: any, s) => {
-    const niche = s.niche || 'autres'
-    if (!acc[niche]) acc[niche] = []
-    acc[niche].push(s)
+  const TYPE_LABELS: Record<string, string> = {
+    avis: 'Pages Avis',
+    vs: 'Pages Marque vs Marque',
+    local: 'Pages Locales',
+    classement: 'Pages Classement',
+    autres: 'Autres',
+  }
+
+  const byType = schemas.reduce((acc: any, s) => {
+    const type = s.type || 'autres'
+    if (!acc[type]) acc[type] = []
+    acc[type].push(s)
     return acc
   }, {})
 
@@ -58,10 +66,10 @@ export default function TemplatesPage() {
           <div style={{ fontSize: 13 }}>Créez votre premier modèle ou uploadez les schemas SCPI sur GitHub</div>
         </div>
       ) : (
-        Object.entries(byNiche).map(([niche, templates]: [string, any]) => (
-          <div key={niche} style={{ marginBottom: 32 }}>
+        Object.entries(byType).map(([type, templates]: [string, any]) => (
+          <div key={type} style={{ marginBottom: 32 }}>
             <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>
-              {niche}
+              {TYPE_LABELS[type] || type}
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 16 }}>
               {templates.map((schema: any) => (
