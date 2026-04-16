@@ -1,40 +1,29 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-
 const NAV = [
   { href: '/sites', icon: '🌐', label: 'Sites' },
   { href: '/sites/new', icon: '➕', label: 'Nouveau site' },
+  { href: '/templates', icon: '📐', label: 'Modèles de pages' },
   { href: '/deploy', icon: '🚀', label: 'Déploiements' },
-
 ]
-
 export default function Sidebar() {
   const path = usePathname()
-
   return (
     <aside style={{
       width: 220, minHeight: '100vh', background: '#0D1117',
       borderRight: '1px solid #1E2D3D', display: 'flex',
       flexDirection: 'column', position: 'fixed', top: 0, left: 0, zIndex: 100
     }}>
-      {/* Logo */}
       <div style={{ padding: '20px 20px 16px', borderBottom: '1px solid #1E2D3D' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{
-            width: 32, height: 32, borderRadius: 8,
-            background: 'linear-gradient(135deg, #00D4AA, #0090FF)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 16
-          }}>⚡</div>
+          <div style={{ width: 32, height: 32, borderRadius: 8, background: 'linear-gradient(135deg, #00D4AA, #0090FF)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16 }}>⚡</div>
           <div>
             <div style={{ fontWeight: 700, fontSize: 14, color: '#fff', letterSpacing: '-0.01em' }}>Viseoweb</div>
             <div style={{ fontSize: 10, color: '#00D4AA', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>HUB</div>
           </div>
         </div>
       </div>
-
-      {/* Nav */}
       <nav style={{ padding: '12px 10px', flex: 1 }}>
         {NAV.map(item => {
           const active = item.href === '/sites'
@@ -56,8 +45,6 @@ export default function Sidebar() {
           )
         })}
       </nav>
-
-      {/* Footer */}
       <div style={{ padding: '16px 20px', borderTop: '1px solid #1E2D3D', fontSize: 11, color: '#4A5568' }}>
         v2.0 · Viseoweb HUB
       </div>
