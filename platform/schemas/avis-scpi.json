@@ -1,0 +1,73 @@
+{
+  "template": "avis-scpi",
+  "label": "Avis SCPI",
+  "type": "avis",
+  "niche": "scpi",
+  "description": "Page d'avis complète pour une SCPI",
+  "variables": ["nom", "marque", "td", "tri", "frais_souscription", "frais_gestion", "tof", "year", "site_name"],
+  "blocks": [
+    {
+      "id": "hero_title",
+      "type": "h1",
+      "label": "Titre H1",
+      "field": "hero_title",
+      "prompt": "Génère un titre H1 SEO accrocheur pour une page avis sur la SCPI {nom} gérée par {marque}. Inclure l'année {year}. Max 70 caractères. Pas de tiret long. Exemples : 'Avis {nom} {year} : faut-il investir ?' ou 'Avis {nom} {year} : notre analyse complète'. Réponds uniquement avec le titre, sans guillemets."
+    },
+    {
+      "id": "intro",
+      "type": "paragraph",
+      "label": "Introduction",
+      "field": "intro",
+      "prompt": "Rédige une introduction de 3 courts paragraphes HTML pour une page avis sur la SCPI {nom} ({marque}). TD {year} : {td}%. Frais de souscription : {frais_souscription}%. Accroche sur ce qui distingue vraiment cette SCPI. Utilise <strong> sur les chiffres clés. Aucun tiret long. 3 paragraphes séparés par des balises <p>."
+    },
+    {
+      "id": "expert_performance",
+      "type": "expert-box",
+      "label": "Encadré Expert — Performance",
+      "field": "expert_performance",
+      "prompt": "Rédige un encadré expert de 2 phrases sur la performance de la SCPI {nom}. TD {year} : {td}%. TRI : {tri}%. TOF : {tof}%. Analyse factuelle et nuancée. Commence par '💡' et utilise <strong> sur les chiffres. Aucun tiret long."
+    },
+    {
+      "id": "expert_frais",
+      "type": "expert-box",
+      "label": "Encadré Expert — Frais",
+      "field": "expert_frais",
+      "prompt": "Rédige un encadré expert de 2 phrases sur la structure tarifaire de la SCPI {nom}. Frais souscription : {frais_souscription}%. Frais gestion : {frais_gestion}%. Contextualise par rapport au marché. Commence par '💡'. Aucun tiret long."
+    },
+    {
+      "id": "description",
+      "type": "paragraph",
+      "label": "Description détaillée",
+      "field": "description",
+      "prompt": "Rédige une description détaillée en 4 paragraphes HTML sur la SCPI {nom} gérée par {marque}. Couvre : stratégie d'investissement, zones géographiques, secteurs, track record. Utilise <strong> sur les éléments clés. 3 lignes max par paragraphe. Aucun tiret long. Aucun markdown."
+    },
+    {
+      "id": "points_forts",
+      "type": "list",
+      "label": "Points forts",
+      "field": "points_forts",
+      "prompt": "Liste 4 points forts de la SCPI {nom}. TD {year} : {td}%. Frais souscription : {frais_souscription}%. TOF : {tof}%. Chaque point = 1 phrase courte et factuelle avec un chiffre clé. Réponds en JSON : [\"point1\", \"point2\", \"point3\", \"point4\"]. Aucun tiret long."
+    },
+    {
+      "id": "points_faibles",
+      "type": "list",
+      "label": "Points faibles",
+      "field": "points_faibles",
+      "prompt": "Liste 3 points faibles ou risques de la SCPI {nom}. Frais souscription : {frais_souscription}%. Sois factuel et équilibré. Chaque point = 1 phrase courte. Réponds en JSON : [\"point1\", \"point2\", \"point3\"]. Aucun tiret long."
+    },
+    {
+      "id": "verdict_si",
+      "type": "list",
+      "label": "Verdict — Pour qui ?",
+      "field": "verdict_si",
+      "prompt": "Liste 4 profils d'investisseurs pour qui la SCPI {nom} est adaptée. Commence chaque item par 'Vous...' ou un profil spécifique. Réponds en JSON : [\"profil1\", \"profil2\", \"profil3\", \"profil4\"]. Aucun tiret long."
+    },
+    {
+      "id": "faq",
+      "type": "faq",
+      "label": "FAQ",
+      "field": "faq",
+      "prompt": "Génère 4 questions/réponses FAQ sur la SCPI {nom} ({marque}). Questions concrètes qu'un investisseur se poserait. Réponses courtes et factuelles. Réponds en JSON : [{\"q\": \"question\", \"a\": \"réponse\"}, ...]. Aucun tiret long."
+    }
+  ]
+}
