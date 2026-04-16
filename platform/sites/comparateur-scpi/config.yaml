@@ -4,7 +4,7 @@
 site:
   slug: comparateur-scpi
   name: "Comparateur SCPI"
-  domain: "https://www.comparateur-scpi.eu"
+  domain: "https://comparateur-scpi.eu"
   www_preference: "www"
   base_path: ""
   logo_text: "Comparateur"
@@ -17,6 +17,9 @@ site:
   analytics_clicky: ""
   home_title: "Comparateur SCPI 2026 : comparez les meilleures SCPI"
   home_description: "Comparez les meilleures SCPI en 2026 : rendements, frais, avis independants."
+page_types:
+  avis: avis-scpi
+  vs: vs-scpi
 theme:
   accent: "#400000"
   accent2: "#E8410A"
@@ -75,14 +78,14 @@ tag_classes:
   specialisee: "tag-specialisee"
   europeenne: "tag-europeenne"
 seo:
-  title_pattern: "{A} vs {B} : comparatif SCPI- MAJ {year}"
+  title_pattern: "{A} vs {B} : comparatif {year}"
   meta_pattern: "Comparatif complet {A} vs {B} {year} : rendements, frais, avis."
   h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
   eyebrow: "Comparatif {year}"
   intro_pattern: "Comparatif {A} vs {B} - analyse complete."
   category_label: "Comparatifs"
   category_url: "index.html#comparatifs"
-  avis_title_pattern: "Avis {nom} {year} : faut-il investir dans cette SCPI ?"
+  avis_title_pattern: "Avis {nom} {year} : faut-il investir ?"
   avis_meta_pattern: "Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques."
   liste_comp_title: "Tous les comparatifs {site_name} {year}"
   liste_avis_title: "Avis {site_name} {year} : analyses independantes"
