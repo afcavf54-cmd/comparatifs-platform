@@ -252,10 +252,21 @@ export default function EditorialPage() {
                       <textarea value={value} rows={4} onChange={e => setSiteEditorial(prev => ({ ...prev, [key]: e.target.value }))}
                         style={{ width: '100%', padding: 12, borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, resize: 'vertical' as const, outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box' as const }} />
                     ) : Array.isArray(value) ? (
-                      <textarea value={value.join('\n')} rows={4} onChange={e => setSiteEditorial(prev => ({ ...prev, [key]: e.target.value.split('\n') }))}
-                        style={{ width: '100%', padding: 12, borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, resize: 'vertical' as const, outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box' as const }} />
+                      // Tableau de strings
+                      Array.isArray(value) && typeof value[0] === 'string' ? (
+                        <textarea value={(value as string[]).join('\n')} rows={4} onChange={e => setSiteEditorial(prev => ({ ...prev, [key]: e.target.value.split('\n') }))}
+                          style={{ width: '100%', padding: 12, borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, resize: 'vertical' as const, outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box' as const }} />
+                      ) : (
+                        // Tableau d'objets → JSON éditable
+                        <textarea value={JSON.stringify(value, null, 2)} rows={8} onChange={e => { try { setSiteEditorial(prev => ({ ...prev, [key]: JSON.parse(e.target.value) })) } catch {} }}
+                          style={{ width: '100%', padding: 12, borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#E2E8F0', fontSize: 12, lineHeight: 1.6, resize: 'vertical' as const, outline: 'none', fontFamily: 'monospace', boxSizing: 'border-box' as const }} />
+                      )
+                    ) : typeof value === 'object' && value !== null ? (
+                      // Objet → JSON éditable
+                      <textarea value={JSON.stringify(value, null, 2)} rows={8} onChange={e => { try { setSiteEditorial(prev => ({ ...prev, [key]: JSON.parse(e.target.value) })) } catch {} }}
+                        style={{ width: '100%', padding: 12, borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#E2E8F0', fontSize: 12, lineHeight: 1.6, resize: 'vertical' as const, outline: 'none', fontFamily: 'monospace', boxSizing: 'border-box' as const }} />
                     ) : (
-                      <div style={{ color: '#4A5568', fontSize: 12 }}>{JSON.stringify(value)}</div>
+                      <div style={{ color: '#4A5568', fontSize: 12 }}>{String(value)}</div>
                     )}
                   </div>
                 ))
