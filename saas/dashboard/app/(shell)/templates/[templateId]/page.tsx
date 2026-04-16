@@ -10,6 +10,51 @@ export default function TemplateDetailPage() {
   const [editingBlock, setEditingBlock] = useState<string | null>(null)
   const [saving, setSaving] = useState(false)
   const [msg, setMsg] = useState('')
+  const [showPreview, setShowPreview] = useState(false)
+
+  // Données fictives pour l'aperçu
+  const MOCK_VARS: Record<string, string> = {
+    nom: 'Iroko Zen', nom_a: 'Iroko Zen', nom_b: 'Wemo One',
+    marque: 'Iroko', marque_a: 'Iroko', marque_b: 'Wemo Reim',
+    td: '7,14', td_a: '7,14', td_b: '15,27',
+    tri: '7,49', tri_a: '7,49', tri_b: '6,5',
+    tof: '98', tof_a: '98', tof_b: '100',
+    frais_souscription: '0', frais_souscription_a: '0', frais_souscription_b: '10',
+    frais_gestion: '14,4', frais_gestion_a: '14,4', frais_gestion_b: '12',
+    year: '2026', site_name: 'Comparateur SCPI',
+  }
+
+  function applyMockVars(prompt: string) {
+    let result = prompt
+    for (const [k, v] of Object.entries(MOCK_VARS)) {
+      result = result.replace(new RegExp(`\{${k}\}`, 'g'), v)
+    }
+    return result
+  }
+
+  function buildPreviewHtml() {
+    if (!schema) return ''
+    const blocks = schema.blocks || []
+    const blockTypeIcon: Record<string, string> = { h1: 'H1', h2: 'H2', paragraph: '¶', 'expert-box': '💡', list: '☰', faq: '❓', verdict: '✅' }
+    const html = blocks.map((b: any) => {
+      const preview = applyMockVars(b.prompt || '')
+      return \`<div style="margin-bottom:20px;padding:16px;border:1px solid #e2e8f0;border-radius:10px;background:#fff">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#a0aec0;margin-bottom:8px;display:flex;align-items:center;gap:6px">
+          <span style="background:#f0f4ff;padding:2px 6px;border-radius:4px">\${blockTypeIcon[b.type] || b.type}</span>
+          \${b.label}
+        </div>
+        <div style="font-size:13px;color:#4a5568;line-height:1.6;font-style:italic;background:#f8fafc;padding:10px;border-radius:6px;border-left:3px solid #e2e8f0">
+          📝 <em>\${preview.length > 200 ? preview.substring(0, 200) + '...' : preview}</em>
+        </div>
+      </div>\`
+    }).join('')
+    return \`<div style="font-family:system-ui,sans-serif;max-width:700px;margin:0 auto;padding:24px;background:#f8fafc;min-height:100vh">
+      <div style="background:#0f1a2e;color:#00d4aa;padding:8px 16px;border-radius:6px;font-size:11px;font-weight:700;margin-bottom:20px;display:inline-block">
+        📐 Aperçu · \${schema.label} · données fictives
+      </div>
+      \${html}
+    </div>\`
+  }
 
   const schemaPath = `platform/schemas/${templateId}.json`
 
@@ -62,6 +107,9 @@ export default function TemplateDetailPage() {
         </div>
         <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
           {msg && <span style={{ fontSize: 12, color: msg.startsWith('✓') ? '#00D4AA' : '#FC8181' }}>{msg}</span>}
+          <button onClick={() => setShowPreview(p => !p)} style={{ padding: '9px 16px', borderRadius: 10, border: '1px solid #1E2D3D', background: showPreview ? 'rgba(0,212,170,0.1)' : 'transparent', color: showPreview ? '#00D4AA' : '#8B9CB0', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
+            {showPreview ? '✕ Fermer aperçu' : '👁 Aperçu'}
+          </button>
           <button onClick={save} disabled={saving} style={{ padding: '9px 20px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
             {saving ? '...' : '💾 Sauvegarder'}
           </button>
@@ -78,6 +126,8 @@ export default function TemplateDetailPage() {
         </div>
       </div>
 
+      <div style={{ display: 'flex', gap: 20 }}>
+      <div style={{ flex: showPreview ? '0 0 420px' : 1 }}>
       {/* Blocs */}
       <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 12 }}>
         Structure de la page ({schema.blocks?.length} blocs)
@@ -127,6 +177,18 @@ export default function TemplateDetailPage() {
           )}
         </div>
       ))}
+
+      </div>
+      {showPreview && (
+        <div style={{ flex: 1, position: 'sticky', top: 0, maxHeight: '90vh', overflow: 'hidden', borderRadius: 12, border: '1px solid #1E2D3D' }}>
+          <iframe
+            srcDoc={buildPreviewHtml()}
+            style={{ width: '100%', height: '100%', minHeight: '80vh', border: 'none', borderRadius: 12 }}
+            title="Aperçu template"
+          />
+        </div>
+      )}
+      </div>
 
       {/* Ajouter un bloc */}
       <button onClick={() => {
