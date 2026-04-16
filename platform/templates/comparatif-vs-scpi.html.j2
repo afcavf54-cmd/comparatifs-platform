@@ -8,63 +8,61 @@
    ============================================================ #}
 
 {% block extra_head %}
-{# ── Schema ItemList : comparatif des 2 produits ─────────── #}
+{# ── Schema Review SCPI A ─────────────────────────────────── #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Review",
+  "name": "Avis {{ prod_a.nom }} {{ site.year }}",
+  "datePublished": "{{ build_date }}",
+  "dateModified": "{{ build_date }}",
+  "author": { "@type": "Organization", "name": "{{ site.name }}", "url": "{{ site.domain }}" },
+  "reviewRating": { "@type": "Rating", "ratingValue": "{{ prod_a.note_redaction | default('4.2') }}", "bestRating": "5", "worstRating": "1" },
+  "itemReviewed": {
+    "@type": "Product",
+    "name": "{{ prod_a.nom }}",
+    "description": "SCPI {{ prod_a.type | default('') }} gérée par {{ prod_a.marque }}{% if prod_a.td is defined %}, taux de distribution {{ prod_a.td }}%{% endif %}.",
+    "image": "{{ site.domain }}/{{ prod_a.slug }}.png",
+    "brand": { "@type": "Brand", "name": "{{ prod_a.marque }}" },
+    "offers": { "@type": "Offer", "price": "{{ prod_a.prix_achat | default('') }}", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "{{ prod_a.note_redaction | default('4.2') }}", "bestRating": "5", "worstRating": "1", "reviewCount": "12" }
+  }
+}
+</script>
+
+{# ── Schema Review SCPI B ─────────────────────────────────── #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Review",
+  "name": "Avis {{ prod_b.nom }} {{ site.year }}",
+  "datePublished": "{{ build_date }}",
+  "dateModified": "{{ build_date }}",
+  "author": { "@type": "Organization", "name": "{{ site.name }}", "url": "{{ site.domain }}" },
+  "reviewRating": { "@type": "Rating", "ratingValue": "{{ prod_b.note_redaction | default('4.0') }}", "bestRating": "5", "worstRating": "1" },
+  "itemReviewed": {
+    "@type": "Product",
+    "name": "{{ prod_b.nom }}",
+    "description": "SCPI {{ prod_b.type | default('') }} gérée par {{ prod_b.marque }}{% if prod_b.td is defined %}, taux de distribution {{ prod_b.td }}%{% endif %}.",
+    "image": "{{ site.domain }}/{{ prod_b.slug }}.png",
+    "brand": { "@type": "Brand", "name": "{{ prod_b.marque }}" },
+    "offers": { "@type": "Offer", "price": "{{ prod_b.prix_achat | default('') }}", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "{{ prod_b.note_redaction | default('4.0') }}", "bestRating": "5", "worstRating": "1", "reviewCount": "8" }
+  }
+}
+</script>
+
+{# ── Schema ItemList comparatif ───────────────────────────── #}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
   "@type": "ItemList",
   "name": "Comparatif {{ prod_a.nom }} vs {{ prod_b.nom }} {{ site.year }}",
-  "description": "Comparatif complet {{ prod_a.nom }} vs {{ prod_b.nom }} : rendements, frais, diversification.",
   "url": "{{ site.domain }}/{{ slug_a }}-vs-{{ slug_b }}",
   "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "item": {
-        "@type": "Product",
-        "name": "{{ prod_a.nom }}",
-        "description": "SCPI {{ prod_a.type | default('') }} gérée par {{ prod_a.marque }}{% if prod_a.td is defined %}, taux de distribution {{ prod_a.td }}%{% endif %}.",
-        "image": "{{ site.domain }}/{{ prod_a.slug }}.png",
-        "brand": { "@type": "Brand", "name": "{{ prod_a.marque }}" },
-        "offers": { "@type": "Offer", "price": "{{ prod_a.prix_achat | default('') }}", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
-        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "{{ prod_a.note_redaction | default('4.2') }}", "bestRating": "5", "worstRating": "1", "reviewCount": "12" }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Product",
-        "name": "{{ prod_b.nom }}",
-        "description": "SCPI {{ prod_b.type | default('') }} gérée par {{ prod_b.marque }}{% if prod_b.td is defined %}, taux de distribution {{ prod_b.td }}%{% endif %}.",
-        "image": "{{ site.domain }}/{{ prod_b.slug }}.png",
-        "brand": { "@type": "Brand", "name": "{{ prod_b.marque }}" },
-        "offers": { "@type": "Offer", "price": "{{ prod_b.prix_achat | default('') }}", "priceCurrency": "EUR", "availability": "https://schema.org/InStock" },
-        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "{{ prod_b.note_redaction | default('4.0') }}", "bestRating": "5", "worstRating": "1", "reviewCount": "8" }
-      }
-    }
+    { "@type": "ListItem", "position": 1, "item": { "@type": "Product", "name": "{{ prod_a.nom }}", "image": "{{ site.domain }}/{{ prod_a.slug }}.png" } },
+    { "@type": "ListItem", "position": 2, "item": { "@type": "Product", "name": "{{ prod_b.nom }}", "image": "{{ site.domain }}/{{ prod_b.slug }}.png" } }
   ]
-}
-</script>
-
-{# ── Schema Review de la page comparatif ─────────────────── #}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org/",
-  "@type": "Review",
-  "name": "{{ prod_a.nom }} vs {{ prod_b.nom }} : comparatif {{ site.year }}",
-  "reviewBody": "Analyse comparative complète de {{ prod_a.nom }} et {{ prod_b.nom }} sur les critères de performance, frais, diversification et profil investisseur.",
-  "reviewRating": { "@type": "Rating", "ratingValue": "4.8", "bestRating": "5", "worstRating": "1" },
-  "author": { "@type": "Organization", "name": "{{ site.name }}", "url": "{{ site.domain }}" },
-  "datePublished": "{{ build_date }}",
-  "dateModified": "{{ build_date }}",
-  "itemReviewed": {
-    "@type": "ItemList",
-    "itemListElement": [
-      { "@type": "Product", "name": "{{ prod_a.nom }}" },
-      { "@type": "Product", "name": "{{ prod_b.nom }}" }
-    ]
-  }
 }
 </script>
 {% endblock %}
