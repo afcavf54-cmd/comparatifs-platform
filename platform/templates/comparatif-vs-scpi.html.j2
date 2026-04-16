@@ -60,8 +60,8 @@
   "name": "Comparatif {{ prod_a.nom }} vs {{ prod_b.nom }} {{ site.year }}",
   "url": "{{ site.domain }}/{{ slug_a }}-vs-{{ slug_b }}",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "item": { "@type": "Product", "name": "{{ prod_a.nom }}", "image": "{{ site.domain }}/{{ prod_a.slug }}.png" } },
-    { "@type": "ListItem", "position": 2, "item": { "@type": "Product", "name": "{{ prod_b.nom }}", "image": "{{ site.domain }}/{{ prod_b.slug }}.png" } }
+    { "@type": "ListItem", "position": 1, "item": { "@type": "Thing", "name": "{{ prod_a.nom }}" } },
+    { "@type": "ListItem", "position": 2, "item": { "@type": "Thing", "name": "{{ prod_b.nom }}" } }
   ]
 }
 </script>
