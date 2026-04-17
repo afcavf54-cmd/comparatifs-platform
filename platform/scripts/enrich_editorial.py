@@ -485,10 +485,13 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
 
         print(f"  [{cat}] {len(cat_products)} produits...", end=" ", flush=True)
 
-        # Génère intro, en_bref, criteres_choix, fonctionnalites, faq pour cette catégorie
+        # Niche du premier produit pour contextualiser
+        niche = cat_products[0].get("niche", "") if cat_products else ""
+        niche_context = f" (niche : {niche})" if niche else ""
+
         produits_str = ", ".join([p.get("nom", "") for p in cat_products[:8]])
 
-        prompt = f"""Expert en logiciels et rédacteur SEO. Génère les textes éditoriaux pour une page classement des meilleurs logiciels de {cat} en {year}.
+        prompt = f"""Expert en logiciels et rédacteur SEO. Génère les textes éditoriaux pour une page classement des meilleurs {cat}{niche_context} en {year}.
 
 Produits à classer : {produits_str}
 
@@ -539,7 +542,9 @@ Réponds UNIQUEMENT en JSON valide sans backticks :
             marque = prod.get("marque", "")
             print(f"  [desc {nom}]...", end=" ", flush=True)
 
-            prompt = f"""Expert rédacteur SEO. Génère les textes pour la fiche du logiciel {nom} ({marque}) dans un classement des meilleurs logiciels de {cat}.
+            niche_prod = prod.get("niche", "")
+            niche_prod_ctx = f" ({niche_prod})" if niche_prod else ""
+            prompt = f"""Expert rédacteur SEO. Génère les textes pour la fiche du logiciel {nom} ({marque}) dans un classement des meilleurs {cat}{niche_prod_ctx}.
 
 Réponds UNIQUEMENT en JSON valide sans backticks :
 {{
