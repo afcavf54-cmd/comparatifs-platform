@@ -456,6 +456,116 @@ def generate_site(site_config: dict, site_dir: Path) -> None:
         print(f"⚠ Erreur site editorial : {e}, sera retenté")
 
 
+def generate_classement(products: list, site_dir: Path, year: int, skip_existing: bool = False) -> None:
+    """Génère les textes éditoriaux pour les pages classement (groupées par catégorie)."""
+    editorial_path = site_dir / "editorial.json"
+    editorial = load_json(editorial_path) if editorial_path.exists() else {}
+
+    # Grouper par catégorie
+    categories: dict = {}
+    for prod in products:
+        cat = prod.get("categorie", "").strip()
+        if cat:
+            if cat not in categories:
+                categories[cat] = []
+            categories[cat].append(prod)
+
+    if not categories:
+        return
+
+    print(f"\n  📊 Génération classements ({len(categories)} catégories)...")
+
+    for cat, cat_products in categories.items():
+        cat_slug = cat.lower().replace(" ", "-").replace("_", "-")
+        key = f"classement-{cat_slug}"
+
+        if skip_existing and key in editorial:
+            print(f"  [{cat}] ⏭ déjà généré")
+            continue
+
+        print(f"  [{cat}] {len(cat_products)} produits...", end=" ", flush=True)
+
+        # Génère intro, en_bref, criteres_choix, fonctionnalites, faq pour cette catégorie
+        produits_str = ", ".join([p.get("nom", "") for p in cat_products[:8]])
+
+        prompt = f"""Expert en logiciels et rédacteur SEO. Génère les textes éditoriaux pour une page classement des meilleurs logiciels de {cat} en {year}.
+
+Produits à classer : {produits_str}
+
+Règles : paragraphes 3 lignes max, <strong> sur les chiffres/mots clés, aucun tiret long (— ou –), aucun markdown.
+
+Réponds UNIQUEMENT en JSON valide sans backticks :
+{{
+  "intro": "3 paragraphes HTML sur les enjeux du choix d'un logiciel de {cat}",
+  "en_bref": "<ul> avec 5 items logiciel + profil cible idéal",
+  "criteres_choix": "3 paragraphes HTML sur les critères de sélection",
+  "fonctionnalites": "3 paragraphes HTML sur les fonctionnalités indispensables",
+  "faq": [{{"q": "question", "a": "réponse"}}, ...]
+}}"""
+
+        success = False
+        for attempt in range(5):
+            try:
+                response = call_claude(prompt)
+                data = parse_json(response, key)
+                if data:
+                    editorial[key] = data
+                    save_json(editorial_path, editorial)
+                    print(f"✓" if attempt == 0 else f"✓ (retry {attempt})")
+                    success = True
+                    break
+                else:
+                    if attempt < 4:
+                        wait = [5, 15, 30, 60][attempt]
+                        print(f"\n    ⚠ JSON vide, retry {attempt+1}/4 dans {wait}s...", end=" ", flush=True)
+                        time.sleep(wait)
+            except Exception as e:
+                print(f"\n    ❌ {e}")
+                break
+
+        if not success:
+            print(f"⚠ Échec {key}")
+        time.sleep(3)
+
+    # Génère aussi la description de chaque produit dans sa catégorie
+    for cat, cat_products in categories.items():
+        for prod in cat_products:
+            slug = prod.get("slug", "")
+            prod_key = f"classement-prod-{slug}"
+            if skip_existing and prod_key in editorial:
+                continue
+
+            nom = prod.get("nom", "")
+            marque = prod.get("marque", "")
+            print(f"  [desc {nom}]...", end=" ", flush=True)
+
+            prompt = f"""Expert rédacteur SEO. Génère les textes pour la fiche du logiciel {nom} ({marque}) dans un classement des meilleurs logiciels de {cat}.
+
+Réponds UNIQUEMENT en JSON valide sans backticks :
+{{
+  "description": "3 paragraphes HTML de 200 mots sur {nom}, ses fonctionnalités clés, sa cible, ce qui le différencie. <strong> sur les points clés. Aucun tiret long.",
+  "points_forts": ["point fort 1", "point fort 2", "point fort 3", "point fort 4"],
+  "points_faibles": ["point faible 1", "point faible 2", "point faible 3"]
+}}"""
+
+            for attempt in range(5):
+                try:
+                    response = call_claude(prompt)
+                    data = parse_json(response, prod_key)
+                    if data:
+                        editorial[prod_key] = data
+                        save_json(editorial_path, editorial)
+                        print("✓")
+                        break
+                    else:
+                        if attempt < 4:
+                            time.sleep([5, 15, 30, 60][attempt])
+                except Exception as e:
+                    print(f"❌ {e}")
+                    break
+            time.sleep(2)
+
+
 def is_generation_complete(site_dir: Path) -> bool:
     """Vérifie si tous les textes sont générés."""
     status = load_json(site_dir / "generation_status.json")
