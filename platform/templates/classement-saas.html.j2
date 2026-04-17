@@ -1,0 +1,304 @@
+{% extends "base/comparatif-vs-base.html.j2" %}
+
+{# ============================================================
+   classement-saas.html.j2
+   Structure : Intro → En bref → Classement détaillé → Tableau → Critères → FAQ
+   Schema : ItemList + SoftwareApplication + FAQPage
+   ============================================================ #}
+
+{% block extra_head %}
+{# ── Schema ItemList ───────────────────────────────────────── #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "ItemList",
+  "name": "{{ seo.title }}",
+  "description": "{{ seo.meta }}",
+  "url": "{{ site.domain }}/{{ page_slug }}",
+  "itemListElement": [
+    {% for prod in products %}
+    {
+      "@type": "ListItem",
+      "position": {{ loop.index }},
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "{{ prod.nom }}",
+        "applicationCategory": "BusinessApplication",
+        {% if prod.prix_achat is defined and prod.prix_achat %}"offers": { "@type": "Offer", "price": "{{ prod.prix_achat }}", "priceCurrency": "EUR" },{% endif %}
+        {% if prod.note_redaction is defined and prod.note_redaction %}"aggregateRating": { "@type": "AggregateRating", "ratingValue": "{{ prod.note_redaction }}", "bestRating": "5", "worstRating": "1", "reviewCount": "10" }{% endif %}
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+
+{# ── Schema FAQPage ─────────────────────────────────────────── #}
+{% if editorial.faq is defined and editorial.faq %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for item in editorial.faq %}
+    { "@type": "Question", "name": "{{ item.q }}", "acceptedAnswer": { "@type": "Answer", "text": "{{ item.a }}" } }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+{% endblock %}
+
+{% block extra_css %}
+.classement-intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 32px;text-align:left}
+.en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 40px}
+.en-bref-title{font-family:'{{ theme.font_title }}',serif;font-size:22px;font-weight:400;color:var(--ink);margin:0 0 8px}
+.en-bref-subtitle{font-size:14px;color:var(--ink2);margin:0 0 16px}
+.en-bref ul{list-style:none;margin:0;padding:0}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:16px;color:var(--ink2);display:flex;align-items:flex-start;gap:10px}
+.en-bref li:last-child{border-bottom:none}
+.en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+.logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 40px}
+.logiciel-card-header{background:var(--ink);padding:20px 28px;display:flex;align-items:center;gap:16px}
+.logiciel-rank{width:40px;height:40px;border-radius:50%;background:var(--accent2);color:#fff;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logiciel-name{font-family:'{{ theme.font_title }}',serif;font-size:24px;font-weight:400;color:#fff}
+.logiciel-tagline{font-size:13px;color:rgba(255,255,255,.55);margin-top:2px}
+.logiciel-body{padding:24px 28px}
+.logiciel-screenshot{width:100%;height:200px;object-fit:cover;border-radius:var(--r);margin:0 0 20px;border:1px solid var(--border);background:var(--surface2)}
+.logiciel-screenshot-placeholder{width:100%;height:160px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 20px}
+.logiciel-desc{font-size:17px;color:var(--ink2);line-height:1.75;margin:0 0 20px}
+.avantages-table{width:100%;border-collapse:collapse;margin:0 0 20px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table th{padding:10px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;background:var(--ink);color:#fff}
+.avantages-table td{padding:11px 16px;font-size:15px;border-top:1px solid var(--border);vertical-align:top}
+.avantages-table td:first-child{color:#1A7A4A}
+.avantages-table td:first-child::before{content:"✓ ";font-weight:700}
+.avantages-table td:last-child{color:#A32D2D}
+.avantages-table td:last-child::before{content:"✗ ";font-weight:700}
+.logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:var(--r);background:var(--accent2);color:#fff;font-size:15px;font-weight:700;text-decoration:none;transition:.15s;margin-top:8px}
+.logiciel-cta:hover{opacity:.88}
+.note-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;font-size:13px;font-weight:600;padding:4px 12px;border-radius:20px}
+.tableau-comparatif{width:100%;border-collapse:collapse;margin:0 0 32px;font-size:14px}
+.tableau-comparatif th{background:var(--ink);color:#fff;padding:12px 16px;text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.tableau-comparatif td{padding:11px 16px;border-bottom:1px solid var(--border)}
+.tableau-comparatif tr:hover td{background:var(--surface2)}
+.check{color:#1A7A4A;font-weight:700}
+.cross{color:#A32D2D}
+.criteres-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:0 0 32px}
+@media(max-width:768px){
+  .logiciel-card-header{padding:16px}
+  .logiciel-body{padding:16px}
+  .avantages-table th,.avantages-table td{padding:8px 10px;font-size:13px}
+  .tableau-comparatif{display:block;overflow-x:auto}
+}
+{% endblock %}
+
+{% block comparaison_detail %}
+
+{# ── INTRODUCTION ────────────────────────────────────────────── #}
+<div class="classement-intro">
+  {% if editorial.intro is defined and editorial.intro %}
+    {{ editorial.intro | safe }}
+  {% else %}
+  <p>Découvrez notre sélection des meilleurs logiciels de {{ site.theme_label | default('cette catégorie') }} en {{ site.year }}.</p>
+  {% endif %}
+</div>
+
+{# ── EN BREF ─────────────────────────────────────────────────── #}
+<div class="en-bref">
+  <div class="en-bref-title">⚡ En bref</div>
+  <div class="en-bref-subtitle">Si vous avez la flemme de parcourir notre comparatif détaillé, voici nos recommandations ❤️</div>
+  {% if editorial.en_bref is defined and editorial.en_bref %}
+    {{ editorial.en_bref | safe }}
+  {% else %}
+  <ul>
+    {% for prod in products[:5] %}
+    <li><strong>{{ prod.nom }}</strong> — {{ prod.tagline | default('solution recommandée') }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+
+{# ── CLASSEMENT DÉTAILLÉ ────────────────────────────────────── #}
+<h2>Analyse détaillée des meilleurs {{ site.theme_label | default('logiciels') }} en {{ site.year }}</h2>
+
+{% for prod in products %}
+<div class="logiciel-card" id="logiciel-{{ prod.slug }}">
+  <div class="logiciel-card-header">
+    <div class="logiciel-rank">#{{ loop.index }}</div>
+    <div>
+      <div class="logiciel-name">{{ prod.nom }}</div>
+      <div class="logiciel-tagline">
+        {% if prod.tagline is defined and prod.tagline %}{{ prod.tagline }}
+        {% elif prod.note_redaction is defined %}Note : {{ prod.note_redaction }}/5
+        {% endif %}
+      </div>
+    </div>
+    {% if prod.note_redaction is defined and prod.note_redaction %}
+    <div style="margin-left:auto">
+      <div class="note-badge">★ {{ prod.note_redaction }}/5</div>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="logiciel-body">
+    {# Screenshot / logo #}
+    {% if prod.logo_url is defined and prod.logo_url %}
+    <img src="{{ prod.logo_url }}" alt="Interface {{ prod.nom }}" class="logiciel-screenshot">
+    {% else %}
+    <div class="logiciel-screenshot-placeholder">
+      <span>📸 Capture d'écran {{ prod.nom }}</span>
+    </div>
+    {% endif %}
+
+    {# Description #}
+    <div class="logiciel-desc">
+      {% set prod_key = prod.slug %}
+      {% if editorial[prod_key] is defined and editorial[prod_key].description is defined %}
+        {{ editorial[prod_key].description | safe }}
+      {% elif prod.description is defined and prod.description %}
+        {{ prod.description | safe }}
+      {% else %}
+        <p><strong>{{ prod.nom }}</strong> est une solution {{ prod.type | default('SaaS') }} développée par <strong>{{ prod.marque | default(prod.nom) }}</strong>.</p>
+      {% endif %}
+    </div>
+
+    {# Tableau Avantages / Inconvénients #}
+    <table class="avantages-table">
+      <thead>
+        <tr>
+          <th>✅ Avantages</th>
+          <th>❌ Inconvénients</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% set points_forts = editorial[prod.slug].points_forts if editorial[prod.slug] is defined and editorial[prod.slug].points_forts is defined else prod.points_forts | default([]) %}
+        {% set points_faibles = editorial[prod.slug].points_faibles if editorial[prod.slug] is defined and editorial[prod.slug].points_faibles is defined else prod.points_faibles | default([]) %}
+        {% set max_rows = [points_forts | length, points_faibles | length] | max %}
+        {% for i in range(max_rows) %}
+        <tr>
+          <td>{{ points_forts[i] if i < points_forts | length else '' }}</td>
+          <td>{{ points_faibles[i] if i < points_faibles | length else '' }}</td>
+        </tr>
+        {% endfor %}
+        {% if max_rows == 0 %}
+        <tr><td>À compléter</td><td>À compléter</td></tr>
+        {% endif %}
+      </tbody>
+    </table>
+
+    {# Prix #}
+    {% if prod.prix_achat is defined and prod.prix_achat %}
+    <div style="font-size:15px;color:var(--ink2);margin-bottom:16px">
+      💰 À partir de <strong style="color:var(--accent);font-size:18px">{{ prod.prix_achat | string | replace('.0','') }}€</strong>/mois
+      {% if prod.essai_gratuit is defined and prod.essai_gratuit %} · <span style="color:#1A7A4A;font-weight:600">Essai gratuit disponible</span>{% endif %}
+    </div>
+    {% endif %}
+
+    {# CTA #}
+    {% if prod.url_affiliation is defined and prod.url_affiliation %}
+    <a href="{{ prod.url_affiliation }}" class="logiciel-cta" rel="nofollow" target="_blank">
+      → Essayer {{ prod.nom }} gratuitement
+    </a>
+    {% endif %}
+
+    {# Lien vers page avis #}
+    <a href="/avis-{{ prod.slug }}" style="display:inline-flex;align-items:center;gap:6px;margin-left:12px;font-size:14px;color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px">
+      📖 Lire notre avis complet →
+    </a>
+  </div>
+</div>
+{% endfor %}
+
+{# ── TABLEAU COMPARATIF RÉCAPITULATIF ───────────────────────── #}
+<h2>Tableau comparatif récapitulatif {{ site.year }}</h2>
+<div style="overflow-x:auto;margin:0 0 40px">
+  <table class="tableau-comparatif">
+    <thead>
+      <tr>
+        <th>Logiciel</th>
+        <th>Note</th>
+        <th>Prix dès</th>
+        <th>Essai gratuit</th>
+        {% for crit in criteria[:4] %}
+        <th>{{ crit.label }}</th>
+        {% endfor %}
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for prod in products %}
+      <tr>
+        <td><strong>{{ prod.nom }}</strong><br><span style="font-size:12px;color:var(--ink3)">{{ prod.marque | default('') }}</span></td>
+        <td>{% if prod.note_redaction is defined %}<span class="note-badge" style="font-size:12px;padding:2px 8px">★ {{ prod.note_redaction }}</span>{% else %}—{% endif %}</td>
+        <td>{% if prod.prix_achat is defined and prod.prix_achat %}{{ prod.prix_achat | string | replace('.0','') }}€{% else %}Sur devis{% endif %}</td>
+        <td>{% if prod.essai_gratuit is defined and prod.essai_gratuit %}<span class="check">✓</span>{% else %}<span class="cross">✗</span>{% endif %}</td>
+        {% for crit in criteria[:4] %}
+        <td>{% set val = prod[crit.field] if crit.field in prod else '—' %}{{ val }}{% if val != '—' and crit.suffix is defined %} {{ crit.suffix }}{% endif %}</td>
+        {% endfor %}
+        <td>{% if prod.url_affiliation is defined and prod.url_affiliation %}<a href="{{ prod.url_affiliation }}" rel="nofollow" target="_blank" style="color:var(--accent2);font-weight:600;font-size:13px">Essayer →</a>{% else %}—{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{# ── COMMENT CHOISIR ────────────────────────────────────────── #}
+{% if editorial.criteres_choix is defined and editorial.criteres_choix %}
+<h2>Comment choisir son logiciel de {{ site.theme_label | default('cette catégorie') }} ?</h2>
+<div class="criteres-section">
+  {{ editorial.criteres_choix | safe }}
+</div>
+{% endif %}
+
+{# ── FONCTIONNALITÉS ─────────────────────────────────────────── #}
+{% if editorial.fonctionnalites is defined and editorial.fonctionnalites %}
+<h2>Les fonctionnalités indispensables à surveiller</h2>
+<div class="criteres-section">
+  {{ editorial.fonctionnalites | safe }}
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block faq_schema %}
+{% if editorial.faq is defined and editorial.faq %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for item in editorial.faq %}
+    {"@type":"Question","name":"{{ item.q }}","acceptedAnswer":{"@type":"Answer","text":"{{ item.a }}"}}{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+{% endblock %}
+
+{% block faq_items %}
+{% if editorial.faq is defined and editorial.faq %}
+  {% for item in editorial.faq %}
+  <div class="faq-item">
+    <div class="faq-q">{{ item.q }}</div>
+    <div class="faq-a">{{ item.a }}</div>
+  </div>
+  {% endfor %}
+{% else %}
+<div class="faq-item">
+  <div class="faq-q">Quel est le meilleur logiciel de {{ site.theme_label | default('cette catégorie') }} en {{ site.year }} ?</div>
+  <div class="faq-a">{{ products[0].nom if products else 'Notre top 1' }} est notre recommandation principale. Consultez notre classement détaillé pour trouver la solution adaptée à votre profil.</div>
+</div>
+<div class="faq-item">
+  <div class="faq-q">Existe-t-il un logiciel gratuit ?</div>
+  <div class="faq-a">Plusieurs solutions proposent un essai gratuit ou un plan freemium. Consultez notre tableau comparatif pour identifier les options sans engagement.</div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block aff_notice %}
+<div class="disclaimer">
+  <div class="disclaimer-title">ℹ️ Information sur les liens</div>
+  <p>Certains liens de cet article sont des liens affiliés. Si vous cliquez dessus et souscrivez un abonnement, nous percevons une commission sans frais supplémentaires pour vous. Nos recommandations restent indépendantes et basées sur notre analyse.</p>
+</div>
+{% endblock %}
