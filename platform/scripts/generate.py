@@ -60,7 +60,7 @@ def cast(val: str):
 STRING_FIELDS = {
     'geo', 'secteurs', 'pays', 'investissement_min', 'tri_horizon',
     'nom', 'marque', 'type', 'slug', 'description', 'url_affiliation',
-    'verdict_si_1', 'verdict_si_2', 'verdict_si_3'
+    'verdict_si_1', 'verdict_si_2', 'verdict_si_3', 'categorie', 'tagline', 'essai_gratuit'
 }
 
 NUMERIC_FIELDS = [
@@ -277,6 +277,18 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path) 
             f'  <url><loc>{domain}/{slug_a}-vs-{slug_b}</loc>'
             f'<lastmod>{today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>'
         )
+
+    # Pages classement
+    categories_seen = set()
+    for prod in products:
+        cat = prod.get("categorie", "").strip()
+        if cat and cat not in categories_seen:
+            cat_slug = cat.lower().replace(" ", "-").replace("_", "-")
+            lines.append(
+                f'  <url><loc>{domain}/meilleur-{cat_slug}</loc>'
+                f'<lastmod>{today}</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>'
+            )
+            categories_seen.add(cat)
     lines.append("</urlset>")
     (output_dir / "sitemap.xml").write_text("\n".join(lines), encoding="utf-8")
     print(f"  ✓ sitemap.xml ({len(pairs)} comparatifs + {len(products)} avis + pages liste)")
