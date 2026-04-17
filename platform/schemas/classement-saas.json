@@ -1,0 +1,45 @@
+{
+  "template": "classement-saas",
+  "label": "Classement SaaS / Logiciels",
+  "type": "classement",
+  "niche": "saas",
+  "description": "Page de classement pour comparer les meilleurs logiciels d'une catégorie",
+  "variables": ["theme", "year", "site_name", "produits"],
+  "blocks": [
+    {
+      "id": "intro",
+      "type": "paragraph",
+      "label": "Introduction",
+      "field": "intro",
+      "prompt": "Rédige une introduction de 3 paragraphes HTML pour un classement des meilleurs logiciels de {theme} en {year}. Commence par 'Vous n'avez que 2 minutes ? Voici notre sélection.' puis présente les enjeux du choix d'un logiciel de {theme}. Utilise <strong> sur les éléments clés. Aucun tiret long. 3 lignes max par paragraphe."
+    },
+    {
+      "id": "en_bref",
+      "type": "paragraph",
+      "label": "Box En bref (Top 5)",
+      "field": "en_bref",
+      "prompt": "Rédige le contenu HTML de la box 'En bref' pour les meilleurs logiciels de {theme}. Format : 'Si vous avez la flemme de parcourir notre comparatif détaillé, voici nos recommandations ❤️ :' suivi d'une liste <ul> avec 5 logiciels fictifs et leur profil cible idéal. Aucun tiret long."
+    },
+    {
+      "id": "criteres_choix",
+      "type": "paragraph",
+      "label": "Comment choisir ?",
+      "field": "criteres_choix",
+      "prompt": "Rédige 3 paragraphes HTML sur les critères pour choisir un logiciel de {theme} en {year}. Critères essentiels, questions à se poser, pièges à éviter. Utilise <strong>. Aucun tiret long. Adapte au contexte réglementaire français si pertinent."
+    },
+    {
+      "id": "fonctionnalites",
+      "type": "paragraph",
+      "label": "Fonctionnalités indispensables",
+      "field": "fonctionnalites",
+      "prompt": "Rédige 3 paragraphes HTML sur les fonctionnalités indispensables à surveiller pour un logiciel de {theme} en {year}. Focus sur ce qui différencie les outils pros des outils amateurs. Mentionne les enjeux réglementaires français si pertinents ({theme}). Utilise <strong>. Aucun tiret long."
+    },
+    {
+      "id": "faq",
+      "type": "faq",
+      "label": "FAQ",
+      "field": "faq",
+      "prompt": "Génère 5 questions/réponses FAQ pour une page classement des meilleurs logiciels de {theme} en {year}. Questions du type 'Quel est le logiciel le moins cher ?', 'Existe-t-il un logiciel gratuit ?', 'Comment migrer ?'. Réponses courtes et factuelles. Réponds en JSON : [{\"q\": \"question\", \"a\": \"réponse\"}, ...]. Aucun tiret long."
+    }
+  ]
+}
