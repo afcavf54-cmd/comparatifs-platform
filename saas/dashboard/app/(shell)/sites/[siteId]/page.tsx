@@ -10,15 +10,6 @@ interface Site {
   sheet_csv_url?: string; cloudflare_project?: string
 }
 
-const TABS = [
-  { id: 'overview', label: '📊 Vue d\'ensemble', href: '' },
-  { id: 'templates', label: '📄 Templates', href: '/templates' },
-  { id: 'data', label: '🗂 Données', href: '/data' },
-  { id: 'editorial', label: '✍️ Éditorial', href: '/editorial' },
-  { id: 'deploy', label: '🚀 Déploiement', href: '/deploy' },
-  { id: 'settings', label: '⚙️ Paramètres', href: '/settings' },
-]
-
 const STATUS_COLORS: Record<string, string> = {
   live: '#00D4AA', draft: '#8B9CB0', building: '#F6AD55', error: '#FC8181'
 }
@@ -32,6 +23,7 @@ export default function SiteDetailPage() {
   const [deployMsg, setDeployMsg] = useState('')
   const [runs, setRuns] = useState<any[]>([])
   const [sheetData, setSheetData] = useState<any>(null)
+  const [pageTypes, setPageTypes] = useState<Record<string, string>>({})
 
   useEffect(() => {
     fetch(`/api/sites/${siteId}`).then(r => r.json()).then(d => {
@@ -43,6 +35,10 @@ export default function SiteDetailPage() {
     fetch('/api/deploy').then(r => r.json()).then(d => {
       if (Array.isArray(d)) setRuns(d.slice(0, 5))
     })
+
+    fetch(`/api/sites/${siteId}/config`).then(r => r.json()).then(d => {
+      if (d.page_types) setPageTypes(d.page_types)
+    }).catch(() => {})
   }, [siteId])
 
   async function loadSheet(url: string) {
@@ -54,8 +50,7 @@ export default function SiteDetailPage() {
   }
 
   async function deploy() {
-    setDeploying(true)
-    setDeployMsg('')
+    setDeploying(true); setDeployMsg('')
     try {
       const r = await fetch('/api/deploy', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -74,19 +69,28 @@ export default function SiteDetailPage() {
     setDeploying(false)
   }
 
+  // Onglets dynamiques selon page_types
+  const tabs = [
+    { id: 'overview', label: '📊 Vue d\'ensemble', href: '' },
+    { id: 'templates', label: '📄 Templates', href: '/templates' },
+    { id: 'data', label: '🗂 Données', href: '/data' },
+    { id: 'editorial', label: '✍️ Éditorial', href: '/editorial' },
+    ...(pageTypes.classement ? [{ id: 'classements', label: '📊 Classements', href: '/classements' }] : []),
+    { id: 'deploy', label: '🚀 Déploiement', href: '/deploy' },
+    { id: 'settings', label: '⚙️ Paramètres', href: '/settings' },
+  ]
+
   if (loading) return <div style={{ color: '#8B9CB0', textAlign: 'center', padding: 60 }}>Chargement...</div>
   if (!site) return <div style={{ color: '#FC8181', textAlign: 'center', padding: 60 }}>Site introuvable</div>
 
   return (
     <div>
-      {/* Breadcrumb */}
       <div style={{ marginBottom: 24, fontSize: 13, color: '#8B9CB0' }}>
         <Link href="/sites" style={{ color: '#8B9CB0', textDecoration: 'none' }}>Sites</Link>
         <span style={{ margin: '0 8px' }}>›</span>
         <span style={{ color: '#fff' }}>{site.name}</span>
       </div>
 
-      {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 28 }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 6 }}>
@@ -102,16 +106,8 @@ export default function SiteDetailPage() {
           </div>
         </div>
         <div style={{ display: 'flex', gap: 10 }}>
-          <a href={`https://${site.domain}`} target="_blank" rel="noopener noreferrer" style={{
-            padding: '10px 18px', borderRadius: 10, background: '#1E2D3D',
-            color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 600
-          }}>🌐 Voir le site</a>
-          <button onClick={deploy} disabled={deploying} style={{
-            padding: '10px 20px', borderRadius: 10, border: 'none',
-            background: deploying ? '#1E2D3D' : 'linear-gradient(135deg, #00D4AA, #0090FF)',
-            color: deploying ? '#4A5568' : '#fff', cursor: deploying ? 'not-allowed' : 'pointer',
-            fontWeight: 600, fontSize: 13
-          }}>
+          <a href={`https://${site.domain}`} target="_blank" rel="noopener noreferrer" style={{ padding: '10px 18px', borderRadius: 10, background: '#1E2D3D', color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 600 }}>🌐 Voir le site</a>
+          <button onClick={deploy} disabled={deploying} style={{ padding: '10px 20px', borderRadius: 10, border: 'none', background: deploying ? '#1E2D3D' : 'linear-gradient(135deg, #00D4AA, #0090FF)', color: deploying ? '#4A5568' : '#fff', cursor: deploying ? 'not-allowed' : 'pointer', fontWeight: 600, fontSize: 13 }}>
             {deploying ? '⏳ En cours...' : '🚀 Déployer'}
           </button>
         </div>
@@ -125,7 +121,7 @@ export default function SiteDetailPage() {
 
       {/* Tabs */}
       <div style={{ display: 'flex', gap: 4, marginBottom: 28, borderBottom: '1px solid #1E2D3D', paddingBottom: 0 }}>
-        {TABS.map(tab => (
+        {tabs.map(tab => (
           <Link key={tab.id} href={`/sites/${siteId}${tab.href}`} style={{
             padding: '10px 16px', fontSize: 13, fontWeight: tab.id === 'overview' ? 600 : 400,
             color: tab.id === 'overview' ? '#fff' : '#8B9CB0',
@@ -155,7 +151,6 @@ export default function SiteDetailPage() {
 
       {/* Body grid */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-        {/* Quick actions */}
         <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24 }}>
           <h3 style={{ color: '#fff', margin: '0 0 16px', fontSize: 15, fontWeight: 600 }}>Actions rapides</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -163,23 +158,18 @@ export default function SiteDetailPage() {
               { icon: '📄', label: 'Éditer les templates', href: `/sites/${siteId}/templates` },
               { icon: '🗂', label: 'Voir les données', href: `/sites/${siteId}/data` },
               { icon: '✍️', label: 'Gérer l\'éditorial', href: `/sites/${siteId}/editorial` },
+              ...(pageTypes.classement ? [{ icon: '📊', label: 'Gérer les classements', href: `/sites/${siteId}/classements` }] : []),
               { icon: '⚙️', label: 'Paramètres du site', href: `/sites/${siteId}/settings` },
             ].map(action => (
-              <Link key={action.href} href={action.href} style={{
-                display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px',
-                borderRadius: 10, background: '#0A0E1A', border: '1px solid #1E2D3D',
-                color: '#fff', textDecoration: 'none', fontSize: 13, transition: 'all 0.15s'
-              }}
-              onMouseEnter={e => (e.currentTarget.style.borderColor = '#00D4AA')}
-              onMouseLeave={e => (e.currentTarget.style.borderColor = '#1E2D3D')}
-              >
+              <Link key={action.href} href={action.href} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 10, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', textDecoration: 'none', fontSize: 13, transition: 'all 0.15s' }}
+                onMouseEnter={e => (e.currentTarget.style.borderColor = '#00D4AA')}
+                onMouseLeave={e => (e.currentTarget.style.borderColor = '#1E2D3D')}>
                 <span>{action.icon}</span>{action.label}
               </Link>
             ))}
           </div>
         </div>
 
-        {/* Recent deploys */}
         <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24 }}>
           <h3 style={{ color: '#fff', margin: '0 0 16px', fontSize: 15, fontWeight: 600 }}>Déploiements récents</h3>
           {runs.length === 0 ? (
@@ -190,18 +180,10 @@ export default function SiteDetailPage() {
                 <a key={run.id} href={run.html_url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
                   <div style={{ padding: '10px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div>
-                      <div style={{ fontSize: 12, color: '#fff', marginBottom: 2 }}>
-                        {run.head_commit?.message?.slice(0, 40) || run.name}
-                      </div>
-                      <div style={{ fontSize: 11, color: '#4A5568' }}>
-                        {new Date(run.created_at).toLocaleString('fr')}
-                      </div>
+                      <div style={{ fontSize: 12, color: '#fff', marginBottom: 2 }}>{run.head_commit?.message?.slice(0, 40) || run.name}</div>
+                      <div style={{ fontSize: 11, color: '#4A5568' }}>{new Date(run.created_at).toLocaleString('fr')}</div>
                     </div>
-                    <span style={{
-                      fontSize: 10, fontWeight: 600, padding: '2px 8px', borderRadius: 20,
-                      color: run.conclusion === 'success' ? '#00D4AA' : run.status === 'in_progress' ? '#F6AD55' : '#FC8181',
-                      background: run.conclusion === 'success' ? 'rgba(0,212,170,0.12)' : run.status === 'in_progress' ? 'rgba(246,173,85,0.12)' : 'rgba(252,129,129,0.12)'
-                    }}>
+                    <span style={{ fontSize: 10, fontWeight: 600, padding: '2px 8px', borderRadius: 20, color: run.conclusion === 'success' ? '#00D4AA' : run.status === 'in_progress' ? '#F6AD55' : '#FC8181', background: run.conclusion === 'success' ? 'rgba(0,212,170,0.12)' : run.status === 'in_progress' ? 'rgba(246,173,85,0.12)' : 'rgba(252,129,129,0.12)' }}>
                       {run.conclusion || run.status}
                     </span>
                   </div>
@@ -211,30 +193,17 @@ export default function SiteDetailPage() {
           )}
         </div>
 
-        {/* Sheet preview */}
         {sheetData && (
           <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24, gridColumn: '1 / -1' }}>
-            <h3 style={{ color: '#fff', margin: '0 0 16px', fontSize: 15, fontWeight: 600 }}>
-              Données Sheet — {sheetData.count} produits détectés
-            </h3>
+            <h3 style={{ color: '#fff', margin: '0 0 16px', fontSize: 15, fontWeight: 600 }}>Données Sheet — {sheetData.count} produits détectés</h3>
             <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
                 <thead>
-                  <tr>
-                    {sheetData.headers.slice(0, 8).map((h: string) => (
-                      <th key={h} style={{ padding: '8px 12px', textAlign: 'left', color: '#8B9CB0', borderBottom: '1px solid #1E2D3D', whiteSpace: 'nowrap' }}>{h}</th>
-                    ))}
-                  </tr>
+                  <tr>{sheetData.headers.slice(0, 8).map((h: string) => (<th key={h} style={{ padding: '8px 12px', textAlign: 'left', color: '#8B9CB0', borderBottom: '1px solid #1E2D3D', whiteSpace: 'nowrap' }}>{h}</th>))}</tr>
                 </thead>
                 <tbody>
                   {sheetData.rows.slice(0, 5).map((row: any, i: number) => (
-                    <tr key={i}>
-                      {sheetData.headers.slice(0, 8).map((h: string) => (
-                        <td key={h} style={{ padding: '8px 12px', color: '#fff', borderBottom: '1px solid #1E2D3D', maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                          {row[h] || '—'}
-                        </td>
-                      ))}
-                    </tr>
+                    <tr key={i}>{sheetData.headers.slice(0, 8).map((h: string) => (<td key={h} style={{ padding: '8px 12px', color: '#fff', borderBottom: '1px solid #1E2D3D', maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{row[h] || '—'}</td>))}</tr>
                   ))}
                 </tbody>
               </table>
