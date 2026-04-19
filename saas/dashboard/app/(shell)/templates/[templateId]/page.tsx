@@ -17,6 +17,8 @@ export default function TemplateDetailPage() {
 
   // Keywords state
   const [selectedGroup, setSelectedGroup] = useState<string | null>(null)
+  const [syncing, setSyncing] = useState<Record<string, boolean>>({})
+  const [newGroupSheetUrl, setNewGroupSheetUrl] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [newGroupName, setNewGroupName] = useState('')
   const [newCategoryName, setNewCategoryName] = useState('')
@@ -104,15 +106,41 @@ export default function TemplateDetailPage() {
     updateCategoryField(group, cat, 'prompt_custom', value)
   }
 
+  async function syncGroup(group: string) {
+    const groupData = schema.keywords[group] || {}
+    const sheetUrl = groupData.__sheet_url
+    if (!sheetUrl) return
+    setSyncing(prev => ({ ...prev, [group]: true }))
+    try {
+      const r = await fetch('/api/sheet', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: sheetUrl }) })
+      const d = await r.json()
+      if (d.error) { setMsg('✗ ' + d.error); return }
+      // Récupérer les catégories uniques depuis la colonne "categorie"
+      const cats = [...new Set(d.rows.map((row: any) => row.categorie).filter(Boolean))] as string[]
+      setSchema((prev: any) => {
+        const newGroup = { ...prev.keywords[group] }
+        cats.forEach((cat: string) => {
+          if (!newGroup[cat]) newGroup[cat] = { prompt_custom: '', sheet_url: '' }
+        })
+        return { ...prev, keywords: { ...prev.keywords, [group]: newGroup } }
+      })
+      setMsg(`✓ ${cats.length} catégorie(s) synchronisées`)
+    } catch { setMsg('✗ Erreur synchronisation') }
+    setSyncing(prev => ({ ...prev, [group]: false }))
+  }
+
   function addGroup() {
     if (!newGroupName.trim()) return
+    const groupInit: Record<string, any> = {}
+    if (newGroupSheetUrl.trim()) groupInit.__sheet_url = newGroupSheetUrl.trim()
     setSchema((prev: any) => ({
       ...prev,
-      keywords: { ...prev.keywords, [newGroupName.trim()]: {} }
+      keywords: { ...prev.keywords, [newGroupName.trim()]: groupInit }
     }))
     setSelectedGroup(newGroupName.trim())
     setSelectedCategory(null)
     setNewGroupName('')
+    setNewGroupSheetUrl('')
   }
 
   function addCategory() {
@@ -293,10 +321,14 @@ export default function TemplateDetailPage() {
                   </div>
                 </div>
               ))}
-              <div style={{ padding: '10px 14px', display: 'flex', gap: 8 }}>
-                <input value={newGroupName} onChange={e => setNewGroupName(e.target.value)} placeholder="Nouveau groupe..." onKeyDown={e => e.key === 'Enter' && addGroup()}
-                  style={{ flex: 1, padding: '6px 10px', borderRadius: 6, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none' }} />
-                <button onClick={addGroup} style={{ padding: '6px 10px', borderRadius: 6, border: 'none', background: '#1E2D3D', color: '#00D4AA', cursor: 'pointer', fontSize: 13, fontWeight: 700 }}>+</button>
+              <div style={{ padding: '10px 14px', borderTop: '1px solid #1E2D3D' }}>
+                <input value={newGroupName} onChange={e => setNewGroupName(e.target.value)} placeholder="Nom du groupe..." onKeyDown={e => e.key === 'Enter' && addGroup()}
+                  style={{ width: '100%', padding: '6px 10px', borderRadius: 6, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none', marginBottom: 6, boxSizing: 'border-box' as const }} />
+                <div style={{ display: 'flex', gap: 6 }}>
+                  <input value={newGroupSheetUrl} onChange={e => setNewGroupSheetUrl(e.target.value)} placeholder="URL Sheet CSV (optionnel)"
+                    style={{ flex: 1, padding: '6px 10px', borderRadius: 6, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 11, outline: 'none' }} />
+                  <button onClick={addGroup} style={{ padding: '6px 10px', borderRadius: 6, border: 'none', background: '#1E2D3D', color: '#00D4AA', cursor: 'pointer', fontSize: 13, fontWeight: 700 }}>+</button>
+                </div>
               </div>
             </div>
 
@@ -306,7 +338,23 @@ export default function TemplateDetailPage() {
                 <div style={{ padding: '10px 14px', borderBottom: '1px solid #1E2D3D', fontSize: 11, color: '#F6AD55', fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.06em' }}>
                   {selectedGroup}
                 </div>
-                {selectedGroupCats.map(cat => (
+                {/* Sheet URL + Sync */}
+                <div style={{ padding: '10px 14px', borderBottom: '1px solid #1E2D3D', background: '#0A0E1A' }}>
+                  <div style={{ fontSize: 10, color: '#4A5568', marginBottom: 6 }}>URL SHEET DU GROUPE</div>
+                  <div style={{ display: 'flex', gap: 6 }}>
+                    <input
+                      value={schema.keywords[selectedGroup]?.__sheet_url || ''}
+                      onChange={e => setSchema((prev: any) => ({ ...prev, keywords: { ...prev.keywords, [selectedGroup]: { ...prev.keywords[selectedGroup], __sheet_url: e.target.value } } }))}
+                      placeholder="https://docs.google.com/..."
+                      style={{ flex: 1, padding: '6px 10px', borderRadius: 6, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 11, outline: 'none' }}
+                    />
+                    <button onClick={() => syncGroup(selectedGroup)} disabled={syncing[selectedGroup] || !schema.keywords[selectedGroup]?.__sheet_url}
+                      style={{ padding: '6px 10px', borderRadius: 6, border: 'none', background: schema.keywords[selectedGroup]?.__sheet_url ? '#1E2D3D' : '#0A0E1A', color: schema.keywords[selectedGroup]?.__sheet_url ? '#00D4AA' : '#4A5568', cursor: schema.keywords[selectedGroup]?.__sheet_url ? 'pointer' : 'not-allowed', fontSize: 11, fontWeight: 600, whiteSpace: 'nowrap' as const }}>
+                      {syncing[selectedGroup] ? '⏳' : '🔄 Sync'}
+                    </button>
+                  </div>
+                </div>
+                {selectedGroupCats.filter(cat => cat !== '__sheet_url').map(cat => (
                   <div key={cat} onClick={() => setSelectedCategory(cat)}
                     style={{ padding: '10px 14px', cursor: 'pointer', fontSize: 12, display: 'flex', justifyContent: 'space-between', alignItems: 'center',
                       background: selectedCategory === cat ? 'rgba(246,173,85,0.1)' : 'transparent',
