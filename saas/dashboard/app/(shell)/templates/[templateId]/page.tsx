@@ -19,6 +19,7 @@ export default function TemplateDetailPage() {
   const [selectedGroup, setSelectedGroup] = useState<string | null>(null)
   const [syncing, setSyncing] = useState<Record<string, boolean>>({})
   const [newGroupSheetUrl, setNewGroupSheetUrl] = useState('')
+  const [showAddGroup, setShowAddGroup] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [newGroupName, setNewGroupName] = useState('')
   const [newCategoryName, setNewCategoryName] = useState('')
@@ -129,19 +130,7 @@ export default function TemplateDetailPage() {
     setSyncing(prev => ({ ...prev, [group]: false }))
   }
 
-  function addGroup() {
-    if (!newGroupName.trim()) return
-    const groupInit: Record<string, any> = {}
-    if (newGroupSheetUrl.trim()) groupInit.__sheet_url = newGroupSheetUrl.trim()
-    setSchema((prev: any) => ({
-      ...prev,
-      keywords: { ...prev.keywords, [newGroupName.trim()]: groupInit }
-    }))
-    setSelectedGroup(newGroupName.trim())
-    setSelectedCategory(null)
-    setNewGroupName('')
-    setNewGroupSheetUrl('')
-  }
+
 
   function addCategory() {
     if (!newCategoryName.trim() || !selectedGroup) return
@@ -322,13 +311,49 @@ export default function TemplateDetailPage() {
                 </div>
               ))}
               <div style={{ padding: '10px 14px', borderTop: '1px solid #1E2D3D' }}>
-                <input value={newGroupName} onChange={e => setNewGroupName(e.target.value)} placeholder="Nom du groupe..." onKeyDown={e => e.key === 'Enter' && addGroup()}
-                  style={{ width: '100%', padding: '6px 10px', borderRadius: 6, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none', marginBottom: 6, boxSizing: 'border-box' as const }} />
-                <div style={{ display: 'flex', gap: 6 }}>
-                  <input value={newGroupSheetUrl} onChange={e => setNewGroupSheetUrl(e.target.value)} placeholder="URL Sheet CSV (optionnel)"
-                    style={{ flex: 1, padding: '6px 10px', borderRadius: 6, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 11, outline: 'none' }} />
-                  <button onClick={addGroup} style={{ padding: '6px 10px', borderRadius: 6, border: 'none', background: '#1E2D3D', color: '#00D4AA', cursor: 'pointer', fontSize: 13, fontWeight: 700 }}>+</button>
-                </div>
+                {!showAddGroup ? (
+                  <button onClick={() => setShowAddGroup(true)} style={{ width: '100%', padding: '8px', borderRadius: 8, border: '1px dashed #1E2D3D', background: 'transparent', color: '#00D4AA', cursor: 'pointer', fontSize: 12, fontWeight: 600 }}>
+                    ➕ Ajouter un groupe
+                  </button>
+                ) : (
+                  <div>
+                    <div style={{ fontSize: 10, color: '#8B9CB0', marginBottom: 6 }}>NOM DU GROUPE</div>
+                    <input value={newGroupName} onChange={e => setNewGroupName(e.target.value)} placeholder="Ex: Compta, Finance..."
+                      style={{ width: '100%', padding: '6px 10px', borderRadius: 6, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none', marginBottom: 8, boxSizing: 'border-box' as const }} />
+                    <div style={{ fontSize: 10, color: '#8B9CB0', marginBottom: 6 }}>URL SHEET CSV</div>
+                    <input value={newGroupSheetUrl} onChange={e => setNewGroupSheetUrl(e.target.value)} placeholder="https://docs.google.com/..."
+                      style={{ width: '100%', padding: '6px 10px', borderRadius: 6, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 11, outline: 'none', marginBottom: 8, boxSizing: 'border-box' as const }} />
+                    <div style={{ display: 'flex', gap: 6 }}>
+                      <button onClick={async () => {
+                        if (!newGroupName.trim()) return
+                        const groupInit: Record<string, any> = {}
+                        if (newGroupSheetUrl.trim()) groupInit.__sheet_url = newGroupSheetUrl.trim()
+                        // Si URL fournie → sync immédiat
+                        if (newGroupSheetUrl.trim()) {
+                          try {
+                            const r = await fetch('/api/sheet', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: newGroupSheetUrl.trim() }) })
+                            const d = await r.json()
+                            if (!d.error) {
+                              const cats = [...new Set(d.rows.map((row: any) => row.categorie).filter(Boolean))] as string[]
+                              cats.forEach((cat: string) => { groupInit[cat] = { prompt_custom: '', sheet_url: '' } })
+                              setMsg(`✓ ${cats.length} catégorie(s) importées`)
+                            }
+                          } catch {}
+                        }
+                        setSchema((prev: any) => ({ ...prev, keywords: { ...prev.keywords, [newGroupName.trim()]: groupInit } }))
+                        setSelectedGroup(newGroupName.trim())
+                        setSelectedCategory(null)
+                        setNewGroupName(''); setNewGroupSheetUrl(''); setShowAddGroup(false)
+                      }} style={{ flex: 1, padding: '7px', borderRadius: 6, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontSize: 12, fontWeight: 600 }}>
+                        ✓ Créer et importer
+                      </button>
+                      <button onClick={() => { setShowAddGroup(false); setNewGroupName(''); setNewGroupSheetUrl('') }}
+                        style={{ padding: '7px 10px', borderRadius: 6, border: 'none', background: '#1E2D3D', color: '#8B9CB0', cursor: 'pointer', fontSize: 12 }}>
+                        ✕
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
