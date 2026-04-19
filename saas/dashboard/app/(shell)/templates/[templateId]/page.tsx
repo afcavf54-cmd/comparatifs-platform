@@ -87,17 +87,21 @@ export default function TemplateDetailPage() {
     }))
   }
 
-  function updateCategoryPrompt(group: string, cat: string, value: string) {
+  function updateCategoryField(group: string, cat: string, field: string, value: string) {
     setSchema((prev: any) => ({
       ...prev,
       keywords: {
         ...prev.keywords,
         [group]: {
           ...prev.keywords[group],
-          [cat]: { ...(prev.keywords[group]?.[cat] || {}), prompt_custom: value }
+          [cat]: { ...(prev.keywords[group]?.[cat] || {}), [field]: value }
         }
       }
     }))
+  }
+
+  function updateCategoryPrompt(group: string, cat: string, value: string) {
+    updateCategoryField(group, cat, 'prompt_custom', value)
   }
 
   function addGroup() {
@@ -338,6 +342,29 @@ export default function TemplateDetailPage() {
                   <span style={{ color: '#4A5568' }}>›</span>
                   <h3 style={{ color: '#F6AD55', margin: 0, fontSize: 15, fontWeight: 600 }}>{selectedCategory}</h3>
                   {selectedCatData.prompt_custom && <span style={{ fontSize: 11, padding: '2px 8px', borderRadius: 4, background: 'rgba(0,212,170,0.15)', color: '#00D4AA' }}>✓ prompt défini</span>}
+                </div>
+
+                <div style={{ marginBottom: 20 }}>
+                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>
+                    URL Google Sheet
+                  </div>
+                  <div style={{ fontSize: 12, color: '#4A5568', marginBottom: 8 }}>
+                    Sheet CSV qui alimente les produits pour cette catégorie.
+                  </div>
+                  <div style={{ display: 'flex', gap: 8 }}>
+                    <input
+                      value={selectedCatData.sheet_url || ''}
+                      onChange={e => updateCategoryField(selectedGroup!, selectedCategory!, 'sheet_url', e.target.value)}
+                      placeholder="https://docs.google.com/spreadsheets/d/e/.../pub?output=csv"
+                      style={{ flex: 1, padding: '10px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }}
+                    />
+                    {selectedCatData.sheet_url && (
+                      <a href={selectedCatData.sheet_url} target="_blank" rel="noopener noreferrer"
+                        style={{ padding: '10px 14px', borderRadius: 8, background: '#1E2D3D', color: '#00D4AA', fontSize: 13, textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                        ↗
+                      </a>
+                    )}
+                  </div>
                 </div>
 
                 <div style={{ marginBottom: 16 }}>
