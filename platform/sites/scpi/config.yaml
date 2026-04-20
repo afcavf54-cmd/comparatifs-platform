@@ -15,8 +15,14 @@ site:
   index_template: "index-scpi.html.j2"
   analytics_clicky: ""
   www_preference: "www"
+  author_name: "Julie Fontaine"
   home_title: "Comparatif SCPI 2026 | UTL Peipin"
   home_description: "Comparez les meilleures SCPI en 2026 : rendements, frais, avis independants."
+
+page_types:
+  avis: avis-scpi
+  vs: vs-scpi
+
 theme:
   accent: "#1B4FD8"
   accent2: "#3B6FEF"
@@ -26,6 +32,7 @@ theme:
   font_title: "DM Serif Display"
   font_body: "Outfit"
   google_fonts: "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap"
+
 criteria:
   - label: "TD 2025"
     field: td
@@ -69,11 +76,13 @@ criteria:
   - label: "Pays"
     field: pays
     type: text
+
 tag_classes:
   rendement: "tag-rendement"
   diversifiee: "tag-diversifiee"
   specialisee: "tag-specialisee"
   europeenne: "tag-europeenne"
+
 seo:
   title_pattern: "SCPI {A} vs {B} : Comparatif {year} !"
   meta_pattern: "Comparatif complet SCPI {A} vs {B} : TD, TRI, frais, capitalisation. Trouvez la meilleure SCPI pour votre investissement en {year}."
