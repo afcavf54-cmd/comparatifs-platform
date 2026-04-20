@@ -529,7 +529,7 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
         prompt_faq = keyword_data.get('prompt_faq', '').replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
 
         if prompt_intro or prompt_contenu:
-            # Génération en 4 appels séparés avec prompts custom
+            # Génération avec prompts custom
             print(f"\n    → prompts custom détectés")
             result = {}
 
@@ -549,20 +549,17 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
                             clean = response.replace('```json', '').replace('```', '').strip()
                             try:
                                 result[section_key] = json.loads(clean)
-                                print("✓")
-                                break
+                                print("✓"); break
                             except:
-                                if attempt < 4: time.sleep([5,15,30,60][attempt])
+                                if attempt < 4: time.sleep([5, 15, 30, 60][attempt])
                         else:
                             result[section_key] = response.strip()
-                            print("✓")
-                            break
+                            print("✓"); break
                     except Exception as e:
-                        print(f"❌ {e}")
-                        break
+                        print(f"❌ {e}"); break
                 time.sleep(2)
 
-            # Génération classement produit par produit
+            # Descriptions produit par produit
             if prompt_classement:
                 descriptions = {}
                 for prod in cat_products:
@@ -573,29 +570,25 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
                         try:
                             response = call_claude(p_prompt)
                             descriptions[prod.get('slug', nom)] = response.strip()
-                            print("✓")
-                            break
+                            print("✓"); break
                         except Exception as e:
-                            print(f"❌ {e}")
-                            break
+                            print(f"❌ {e}"); break
                     time.sleep(2)
                 result['descriptions_produits'] = descriptions
 
             editorial[key] = result
             save_json(editorial_path, editorial)
             print(f"  ✓ {cat} généré")
-            success = True
 
         else:
             # Fallback : prompt générique
             niche = cat_products[0].get("niche", "") if cat_products else ""
             niche_context = f" (niche : {niche})" if niche else ""
-
-            prompt = f"""Expert en logiciels et rédacteur SEO. Génère les textes éditoriaux pour une page classement des meilleurs {cat}{niche_context} en {year}.
+            prompt_generic = f"""Expert en logiciels et rédacteur SEO. Génère les textes éditoriaux pour une page classement des meilleurs {cat}{niche_context} en {year}.
 
 Produits à classer : {produits_str}
 
-Règles : paragraphes 3 lignes max, <strong> sur les chiffres/mots clés, aucun tiret long (— ou –), aucun markdown.
+Règles : paragraphes 3 lignes max, <strong> sur les chiffres/mots clés, aucun tiret long.
 
 Réponds UNIQUEMENT en JSON valide sans backticks :
 {{
@@ -605,29 +598,21 @@ Réponds UNIQUEMENT en JSON valide sans backticks :
   "fonctionnalites": "3 paragraphes HTML sur les fonctionnalités indispensables",
   "faq": [{{"q": "question", "a": "réponse"}}, ...]
 }}"""
+            for attempt in range(5):
+                try:
+                    response = call_claude(prompt_generic)
+                    data = parse_json(response, key)
+                    if data:
+                        editorial[key] = data
+                        save_json(editorial_path, editorial)
+                        print(f"✓" if attempt == 0 else f"✓ (retry {attempt})")
+                        break
+                    else:
+                        if attempt < 4:
+                            time.sleep([5, 15, 30, 60][attempt])
+                except Exception as e:
+                    print(f"\n    ❌ {e}"); break
 
-        success = False
-        for attempt in range(5):
-            try:
-                response = call_claude(prompt)
-                data = parse_json(response, key)
-                if data:
-                    editorial[key] = data
-                    save_json(editorial_path, editorial)
-                    print(f"✓" if attempt == 0 else f"✓ (retry {attempt})")
-                    success = True
-                    break
-                else:
-                    if attempt < 4:
-                        wait = [5, 15, 30, 60][attempt]
-                        print(f"\n    ⚠ JSON vide, retry {attempt+1}/4 dans {wait}s...", end=" ", flush=True)
-                        time.sleep(wait)
-            except Exception as e:
-                print(f"\n    ❌ {e}")
-                break
-
-        if not success:
-            print(f"⚠ Échec {key}")
         time.sleep(3)
 
     # Génère aussi la description de chaque produit dans sa catégorie
@@ -745,6 +730,11 @@ def main():
 
     if only in (None, "pairs"):
         generate_pairs(products, site_dir, year, skip_existing=args.skip_existing)
+
+    # Génération classements (sites SaaS)
+    page_types = config.get("page_types", {})
+    if page_types.get("classement") and only in (None, "classement"):
+        generate_classement(products, site_dir, year, skip_existing=args.skip_existing)
 
     print(f"\n✅ Enrichissement terminé pour {args.site}")
 
