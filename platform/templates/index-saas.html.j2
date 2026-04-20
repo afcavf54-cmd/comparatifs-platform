@@ -169,7 +169,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 <!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">{{ site.tagline }}</div>
-  <h1 id="hero-title">{{ site.name }} : <em id="hero-tagline">le comparateur qui compare vraiment</em></h1>
+  <h1>{% if site.home_h1 is defined and site.home_h1 %}{{ site.home_h1 | safe }}{% else %}{{ site.name }} : <em>le comparateur qui compare vraiment</em>{% endif %}</h1>
   <p class="hero-desc">{{ home_description | default('Trouvez le logiciel professionnel qui correspond exactement à vos besoins, votre budget et votre secteur.') }}</p>
 
   <!-- Moteur de recherche -->
@@ -310,16 +310,6 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 {% endif %}
 
 <script>
-// Taglines aléatoires
-const TAGLINES = [
-  "l'expert qui trouve votre logiciel professionnel",
-  "le comparateur qui compare VRAIMENT",
-  "votre guide pour choisir le bon logiciel",
-  "les vrais avis pour décider en confiance",
-  "le comparatif indépendant des pros",
-];
-document.getElementById('hero-tagline').textContent = TAGLINES[Math.floor(Math.random() * TAGLINES.length)];
-
 // Données de recherche (chargées en JS après DOM pour éviter footprint)
 const ALL_CATEGORIES = [
   {% for prod in products %}
