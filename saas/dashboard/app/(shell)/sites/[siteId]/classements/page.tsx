@@ -11,15 +11,14 @@ export default function ClassementsPage() {
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [regenerating, setRegenerating] = useState<Record<string, boolean>>({})
+  const [deploying, setDeploying] = useState(false)
   const [msg, setMsg] = useState('')
-  const [sheetUrl, setSheetUrl] = useState('')
 
   const editorialPath = `platform/sites/${siteId}/editorial.json`
 
   useEffect(() => {
     fetch(`/api/sites/${siteId}`).then(r => r.json()).then(async d => {
       if (d.sheet_csv_url) {
-        setSheetUrl(d.sheet_csv_url)
         const r = await fetch('/api/sheet', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: d.sheet_csv_url }) })
         const sd = await r.json()
         if (!sd.error) setProducts(sd.rows || [])
@@ -29,7 +28,6 @@ export default function ClassementsPage() {
       if (d.content) {
         try {
           const all = JSON.parse(d.content)
-          // Filtrer uniquement les clés classement-*
           const cls: Record<string, any> = {}
           for (const [k, v] of Object.entries(all)) {
             if (k.startsWith('classement-')) cls[k] = v
@@ -42,7 +40,6 @@ export default function ClassementsPage() {
     }).catch(() => setLoading(false))
   }, [siteId])
 
-  // Catégories détectées depuis le Sheet
   const categories = [...new Set(products.map(p => p.categorie).filter(Boolean))] as string[]
   const categoriesWithoutContent = categories.filter(cat => {
     const slug = cat.toLowerCase().replace(/ /g, '-').replace(/_/g, '-')
@@ -51,12 +48,10 @@ export default function ClassementsPage() {
 
   async function save() {
     setSaving(true); setMsg('')
-    // Charger editorial.json complet pour ne pas écraser les paires VS
     const r = await fetch(`/api/github?path=${encodeURIComponent(editorialPath)}`)
     const d = await r.json()
     let allEditorial: Record<string, any> = {}
     if (d.content) { try { allEditorial = JSON.parse(d.content) } catch {} }
-    // Merger les classements
     const merged = { ...allEditorial, ...classements }
     const wr = await fetch('/api/github', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -67,43 +62,52 @@ export default function ClassementsPage() {
     setSaving(false)
   }
 
-  async function regenerate(catKey: string) {
-    const data = classements[catKey]
-    const prompt = data?.prompt_custom
-    if (!prompt) { setMsg('✗ Aucun prompt défini'); return }
-
+  // Régénère une page : supprime la clé dans editorial.json et relance le déploiement
+  async function regeneratePage(catKey: string) {
     setRegenerating(prev => ({ ...prev, [catKey]: true })); setMsg('')
+    try {
+      // 1. Charger editorial.json complet
+      const r = await fetch(`/api/github?path=${encodeURIComponent(editorialPath)}`)
+      const d = await r.json()
+      let allEditorial: Record<string, any> = {}
+      if (d.content) { try { allEditorial = JSON.parse(d.content) } catch {} }
 
-    const r = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 2000,
-        system: 'Tu es un expert rédacteur SEO. Génère du contenu HTML de qualité. Aucun tiret long. Aucun markdown. Utilise <strong> sur les éléments clés.',
-        messages: [{ role: 'user', content: prompt }]
+      // 2. Supprimer la clé de ce classement
+      delete allEditorial[catKey]
+
+      // 3. Sauvegarder sur GitHub
+      const wr = await fetch('/api/github', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path: editorialPath, content: JSON.stringify(allEditorial, null, 2), message: `HUB: Reset classement ${catKey} for regeneration` })
       })
-    })
-    const apiData = await r.json()
-    const text = apiData.content?.[0]?.text?.trim() || ''
+      const wd = await wr.json()
+      if (!wd.ok) { setMsg('✗ Erreur sauvegarde'); return }
 
-    if (text) {
-      setClassements(prev => ({
-        ...prev,
-        [catKey]: { ...prev[catKey], contenu_custom: text }
-      }))
-      setMsg('✓ Contenu régénéré — pensez à sauvegarder')
-    } else {
-      setMsg('✗ Échec génération')
+      // 4. Mettre à jour le state local
+      setClassements(prev => {
+        const next = { ...prev }
+        delete next[catKey]
+        return next
+      })
+      if (selected === catKey) setSelected(null)
+
+      // 5. Lancer le déploiement
+      setDeploying(true)
+      const dr = await fetch(`/api/sites/${siteId}/deploy`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ skip_enrich: false })
+      })
+      const dd = await dr.json()
+      setMsg(dd.success ? '✓ Régénération lancée (~3 min)' : '✗ Erreur déploiement')
+    } catch (e: any) {
+      setMsg('✗ ' + e.message)
     }
     setRegenerating(prev => ({ ...prev, [catKey]: false }))
+    setDeploying(false)
   }
 
   function updateField(catKey: string, field: string, value: string) {
-    setClassements(prev => ({
-      ...prev,
-      [catKey]: { ...prev[catKey], [field]: value }
-    }))
+    setClassements(prev => ({ ...prev, [catKey]: { ...prev[catKey], [field]: value } }))
   }
 
   function addClassement(cat: string) {
@@ -113,8 +117,6 @@ export default function ClassementsPage() {
       ...prev,
       [key]: {
         categorie: cat,
-        prompt_custom: '',
-        contenu_custom: '',
         h1: `Meilleur ${cat} 2026 : Top ${products.filter(p => p.categorie === cat).length}`,
         meta_title: `Meilleur ${cat} 2026 : comparatif et avis`,
         meta_description: `Comparez les meilleurs ${cat} en 2026 : prix, fonctionnalités, avis.`,
@@ -147,7 +149,7 @@ export default function ClassementsPage() {
           <p style={{ color: '#8B9CB0', fontSize: 13, margin: '4px 0 0' }}>{Object.keys(classements).length} page{Object.keys(classements).length > 1 ? 's' : ''} · {categories.length} catégorie{categories.length > 1 ? 's' : ''} dans le Sheet</p>
         </div>
         <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-          {msg && <span style={{ fontSize: 12, color: msg.startsWith('✓') ? '#00D4AA' : '#FC8181' }}>{msg}</span>}
+          {msg && <span style={{ fontSize: 12, color: msg.startsWith('✓') ? '#00D4AA' : '#FC8181', maxWidth: 280 }}>{msg}</span>}
           <button onClick={save} disabled={saving} style={{ padding: '9px 16px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
             {saving ? '...' : '💾 Sauvegarder'}
           </button>
@@ -171,9 +173,18 @@ export default function ClassementsPage() {
                   color: selected === key ? '#fff' : '#8B9CB0',
                   borderBottom: '1px solid #1E2D3D'
                 }}>
-                  <div>{classements[key]?.categorie || key.replace('classement-', '')}</div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div>{classements[key]?.categorie || key.replace('classement-', '')}</div>
+                    <button
+                      onClick={e => { e.stopPropagation(); regeneratePage(key) }}
+                      disabled={regenerating[key] || deploying}
+                      title="Régénérer cette page"
+                      style={{ padding: '2px 6px', borderRadius: 4, border: 'none', background: 'transparent', color: regenerating[key] ? '#4A5568' : '#F6AD55', cursor: 'pointer', fontSize: 13 }}>
+                      {regenerating[key] ? '⏳' : '🔄'}
+                    </button>
+                  </div>
                   <div style={{ fontSize: 10, color: '#4A5568', marginTop: 2 }}>
-                    {classements[key]?.contenu_custom ? '✓ Contenu généré' : '⚠ Sans contenu'}
+                    {classements[key]?.intro || classements[key]?.contenu_custom ? '✓ Contenu généré' : '⚠ Sans contenu'}
                   </div>
                 </div>
               ))}
@@ -220,21 +231,27 @@ export default function ClassementsPage() {
                   <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                     <span style={{ fontSize: 11, color: '#4A5568' }}>{catProducts.length} produit{catProducts.length > 1 ? 's' : ''}</span>
                     {catProducts.length > 0 && (
-                      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' as const }}>
                         {catProducts.map(p => (
                           <span key={p.slug} style={{ fontSize: 10, padding: '2px 8px', borderRadius: 4, background: '#1E2D3D', color: '#8B9CB0' }}>{p.nom}</span>
                         ))}
                       </div>
                     )}
+                    <button onClick={() => regeneratePage(selected)} disabled={regenerating[selected] || deploying}
+                      style={{ padding: '6px 14px', borderRadius: 8, border: '1px solid #F6AD55', background: 'transparent', color: '#F6AD55', cursor: 'pointer', fontWeight: 600, fontSize: 12 }}>
+                      {regenerating[selected] ? '⏳ En cours...' : '🔄 Régénérer cette page'}
+                    </button>
                   </div>
                 </div>
 
+                {/* Info régénération */}
+                <div style={{ padding: 12, background: 'rgba(246,173,85,0.06)', border: '1px solid rgba(246,173,85,0.2)', borderRadius: 8, fontSize: 12, color: '#8B9CB0', marginBottom: 20, lineHeight: 1.6 }}>
+                  🔄 <strong style={{ color: '#F6AD55' }}>Régénérer</strong> supprime le contenu existant et relance Sonnet avec les prompts définis dans <Link href={`/templates/classement-saas`} style={{ color: '#00D4AA', textDecoration: 'none' }}>Modèles → classement-saas</Link>.
+                </div>
+
                 {/* SEO */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 20 }}>
-                  {[
-                    { label: 'H1', field: 'h1' },
-                    { label: 'Meta title', field: 'meta_title' },
-                  ].map(({ label, field }) => (
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 16 }}>
+                  {[{ label: 'H1', field: 'h1' }, { label: 'Meta title', field: 'meta_title' }].map(({ label, field }) => (
                     <div key={field}>
                       <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 6 }}>{label}</div>
                       <input value={selectedData[field] || ''} onChange={e => updateField(selected, field, e.target.value)}
@@ -248,33 +265,36 @@ export default function ClassementsPage() {
                     style={{ width: '100%', padding: '10px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
                 </div>
 
-                {/* Prompt custom */}
-                <div style={{ marginBottom: 16 }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                    <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>
-                      Prompt de génération
+                {/* Aperçu contenu généré */}
+                {(selectedData.intro || selectedData.contenu_custom) && (
+                  <div style={{ marginBottom: 16 }}>
+                    <div style={{ fontSize: 11, color: '#00D4AA', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>
+                      ✓ Contenu généré
                     </div>
-                    <button onClick={() => regenerate(selected)} disabled={regenerating[selected] || !selectedData.prompt_custom}
-                      style={{ padding: '6px 14px', borderRadius: 8, border: '1px solid #F6AD55', background: 'transparent', color: selectedData.prompt_custom ? '#F6AD55' : '#4A5568', cursor: selectedData.prompt_custom ? 'pointer' : 'not-allowed', fontWeight: 600, fontSize: 12 }}>
-                      {regenerating[selected] ? '⏳ Génération...' : '🔄 Régénérer le contenu'}
-                    </button>
+                    {selectedData.intro && (
+                      <div style={{ marginBottom: 12 }}>
+                        <div style={{ fontSize: 11, color: '#8B9CB0', marginBottom: 4 }}>INTRO</div>
+                        <div style={{ padding: 12, borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', fontSize: 12, color: '#8B9CB0', lineHeight: 1.6, maxHeight: 80, overflow: 'hidden' }}
+                          dangerouslySetInnerHTML={{ __html: selectedData.intro }} />
+                      </div>
+                    )}
+                    {selectedData.contenu_custom && (
+                      <div>
+                        <div style={{ fontSize: 11, color: '#8B9CB0', marginBottom: 4 }}>CONTENU EXPERT</div>
+                        <div style={{ padding: 12, borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', fontSize: 12, color: '#8B9CB0', lineHeight: 1.6, maxHeight: 80, overflow: 'hidden' }}
+                          dangerouslySetInnerHTML={{ __html: selectedData.contenu_custom }} />
+                      </div>
+                    )}
                   </div>
-                  <textarea value={selectedData.prompt_custom || ''} rows={10}
-                    onChange={e => updateField(selected, 'prompt_custom', e.target.value)}
-                    placeholder="Collez ici votre prompt complet pour générer le contenu de cette page...&#10;&#10;Exemple : Contexte : Tu es un expert en logiciels de paie...&#10;Génère 4 sections H3 segmentées par profil..."
-                    style={{ width: '100%', padding: 12, borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, resize: 'vertical' as const, outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box' as const }} />
-                </div>
+                )}
 
-                {/* Contenu généré */}
-                <div style={{ marginBottom: 16 }}>
-                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>
-                    Contenu généré {selectedData.contenu_custom ? <span style={{ color: '#00D4AA' }}>✓</span> : <span style={{ color: '#4A5568' }}>— vide</span>}
+                {!selectedData.intro && !selectedData.contenu_custom && (
+                  <div style={{ padding: 20, textAlign: 'center', color: '#4A5568', border: '1px dashed #1E2D3D', borderRadius: 8 }}>
+                    <div style={{ fontSize: 24, marginBottom: 8 }}>⚠</div>
+                    <div style={{ fontSize: 13 }}>Aucun contenu généré.</div>
+                    <div style={{ fontSize: 12, marginTop: 4 }}>Vérifiez que les prompts sont définis dans Modèles → classement-saas → Mots clés puis cliquez 🔄 Régénérer.</div>
                   </div>
-                  <textarea value={selectedData.contenu_custom || ''} rows={12}
-                    onChange={e => updateField(selected, 'contenu_custom', e.target.value)}
-                    placeholder="Le contenu généré par Sonnet apparaîtra ici. Vous pouvez aussi le modifier manuellement."
-                    style={{ width: '100%', padding: 12, borderRadius: 8, background: '#0A0E1A', border: `1px solid ${selectedData.contenu_custom ? '#00D4AA44' : '#1E2D3D'}`, color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, resize: 'vertical' as const, outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box' as const }} />
-                </div>
+                )}
               </div>
             )}
           </div>
