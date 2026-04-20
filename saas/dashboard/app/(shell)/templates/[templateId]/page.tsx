@@ -24,44 +24,6 @@ export default function TemplateDetailPage() {
 
   const schemaPath = `platform/schemas/${templateId}.json`
 
-  const MOCK_VARS: Record<string, string> = {
-    nom: 'Iroko Zen', nom_a: 'Iroko Zen', nom_b: 'Wemo One',
-    marque: 'Iroko', marque_a: 'Iroko', marque_b: 'Wemo Reim',
-    td: '7,14', td_a: '7,14', td_b: '15,27',
-    tri: '7,49', frais_souscription: '0', frais_gestion: '14,4',
-    year: '2026', site_name: 'Comparateur SCPI',
-    theme: 'logiciel de paie',
-  }
-
-  function applyMockVars(prompt: string) {
-    let result = prompt
-    for (const [k, v] of Object.entries(MOCK_VARS)) {
-      result = result.replace(new RegExp(`\\{${k}\\}`, 'g'), v)
-    }
-    return result
-  }
-
-  function buildPreviewHtml() {
-    if (!schema) return ''
-      const html = (schema.blocks || []).map((b: any) => {
-      const preview = applyMockVars(b.prompt || '')
-      return `<div style="margin-bottom:20px;padding:16px;border:1px solid #e2e8f0;border-radius:10px;background:#fff">
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#a0aec0;margin-bottom:8px;display:flex;align-items:center;gap:6px">
-          <span style="background:#f0f4ff;padding:2px 6px;border-radius:4px">${blockTypeIcon[b.type] || b.type}</span>
-          ${b.label}
-        </div>
-        <div style="font-size:13px;color:#4a5568;line-height:1.6;font-style:italic;background:#f8fafc;padding:10px;border-radius:6px;border-left:3px solid #e2e8f0">
-          📝 <em>${preview.length > 200 ? preview.substring(0, 200) + '...' : preview}</em>
-        </div>
-      </div>`
-    }).join('')
-    return `<div style="font-family:system-ui,sans-serif;max-width:700px;margin:0 auto;padding:24px;background:#f8fafc;min-height:100vh">
-      <div style="background:#0f1a2e;color:#00d4aa;padding:8px 16px;border-radius:6px;font-size:11px;font-weight:700;margin-bottom:20px;display:inline-block">
-        📐 Aperçu · ${schema?.label} · données fictives
-      </div>
-      ${html}
-    </div>`
-  }
 
   useEffect(() => {
     fetch(`/api/github?path=${encodeURIComponent(schemaPath)}`).then(r => r.json()).then(d => {
@@ -181,7 +143,7 @@ export default function TemplateDetailPage() {
   const selectedCatData = (selectedGroup && selectedCategory) ? keywords[selectedGroup]?.[selectedCategory] : null
 
   return (
-    <div style={{ maxWidth: showPreview ? '100%' : 800 }}>
+    <div style={{ maxWidth: 800 }}>
       <div style={{ marginBottom: 24, fontSize: 13, color: '#8B9CB0' }}>
         <Link href="/templates" style={{ color: '#8B9CB0', textDecoration: 'none' }}>Modèles</Link>
         <span style={{ margin: '0 8px' }}>›</span>
