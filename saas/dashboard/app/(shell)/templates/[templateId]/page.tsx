@@ -435,3 +435,6 @@ export default function TemplateDetailPage() {
           </div>
         </div>
       )}
+    </div>
+  )
+}
