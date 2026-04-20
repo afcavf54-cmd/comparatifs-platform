@@ -60,6 +60,13 @@ def call_claude_fast(prompt: str, system: str = None, max_retries: int = 3) -> s
             with urllib.request.urlopen(req, timeout=120) as resp:
                 data = json.loads(resp.read())
                 return data["content"][0]["text"]
+        except urllib.error.HTTPError as e:
+            body = e.read().decode('utf-8', errors='replace')
+            print(f"    ⚠ Tentative {attempt+1}/{max_retries} : HTTP {e.code} — {body[:300]}")
+            if attempt < max_retries - 1:
+                time.sleep([10, 30, 60][attempt])
+            else:
+                raise
         except Exception as e:
             print(f"    ⚠ Tentative {attempt+1}/{max_retries} : {e}")
             if attempt < max_retries - 1:
