@@ -16,7 +16,7 @@
   "name": "Avis {{ prod_a.nom }} {{ site.year }}",
   "datePublished": "{{ build_date }}",
   "dateModified": "{{ build_date }}",
-  "author": { "@type": "Organization", "name": "{{ site.name }}", "url": "{{ site.domain }}" },
+  "author": { "@type": "Organization", "name": "{{ site.author_name | default(site.name) }}", "url": "{{ site.domain }}" },
   "reviewRating": { "@type": "Rating", "ratingValue": "{{ prod_a.note_redaction | default('4.2') }}", "bestRating": "5", "worstRating": "1" },
   "itemReviewed": {
     "@type": "Product",
@@ -38,7 +38,7 @@
   "name": "Avis {{ prod_b.nom }} {{ site.year }}",
   "datePublished": "{{ build_date }}",
   "dateModified": "{{ build_date }}",
-  "author": { "@type": "Organization", "name": "{{ site.name }}", "url": "{{ site.domain }}" },
+  "author": { "@type": "Organization", "name": "{{ site.author_name | default(site.name) }}", "url": "{{ site.domain }}" },
   "reviewRating": { "@type": "Rating", "ratingValue": "{{ prod_b.note_redaction | default('4.0') }}", "bestRating": "5", "worstRating": "1" },
   "itemReviewed": {
     "@type": "Product",
