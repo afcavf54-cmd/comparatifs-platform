@@ -292,178 +292,139 @@ export default function TemplateDetailPage() {
       {/* ── MOTS CLÉS ── */}
       {tab === 'keywords' && (
         <div style={{ display: 'flex', gap: 16 }}>
-          {/* Sidebar groupes + catégories */}
-          <div style={{ width: 260, flexShrink: 0 }}>
-            {/* Groupes */}
-            <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 12, overflow: 'hidden', marginBottom: 16 }}>
-              <div style={{ padding: '10px 14px', borderBottom: '1px solid #1E2D3D', fontSize: 11, color: '#8B9CB0', fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.06em' }}>Groupes</div>
-              {groups.map(group => (
-                <div key={group} onClick={() => { setSelectedGroup(group); setSelectedCategory(null) }}
+
+          {/* Sidebar types */}
+          <div style={{ width: 240, flexShrink: 0, background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 12, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ padding: '10px 14px', borderBottom: '1px solid #1E2D3D', fontSize: 11, color: '#8B9CB0', fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.06em' }}>
+              Types de logiciels
+            </div>
+            <div style={{ flex: 1, overflowY: 'auto' }}>
+              {Object.keys(schema.keywords || {}).map(type => (
+                <div key={type} onClick={() => { setSelectedGroup(type); setSelectedCategory(null) }}
                   style={{ padding: '10px 14px', cursor: 'pointer', fontSize: 13, display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                    background: selectedGroup === group ? 'rgba(0,212,170,0.1)' : 'transparent',
-                    borderLeft: selectedGroup === group ? '2px solid #00D4AA' : '2px solid transparent',
-                    color: selectedGroup === group ? '#fff' : '#8B9CB0', borderBottom: '1px solid #1E2D3D' }}>
-                  <span style={{ fontWeight: 600 }}>{group}</span>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span style={{ fontSize: 11, color: '#4A5568' }}>{Object.keys(keywords[group] || {}).length}</span>
-                    <span onClick={e => { e.stopPropagation(); removeGroup(group) }} style={{ color: '#FC8181', cursor: 'pointer', fontSize: 16, lineHeight: 1 }}>×</span>
+                    background: selectedGroup === type ? 'rgba(0,212,170,0.1)' : 'transparent',
+                    borderLeft: selectedGroup === type ? '2px solid #00D4AA' : '2px solid transparent',
+                    color: selectedGroup === type ? '#fff' : '#8B9CB0',
+                    borderBottom: '1px solid #1E2D3D' }}>
+                  <div>
+                    <div>{type}</div>
+                    <div style={{ fontSize: 10, color: '#4A5568', marginTop: 2 }}>
+                      {schema.keywords[type]?.__products?.length ? `${schema.keywords[type].__products.length} produits` : 'Non synchronisé'}
+                    </div>
                   </div>
+                  <span onClick={e => { e.stopPropagation(); removeGroup(type) }} style={{ color: '#FC8181', cursor: 'pointer', fontSize: 16 }}>×</span>
                 </div>
               ))}
-              <div style={{ padding: '10px 14px', borderTop: '1px solid #1E2D3D' }}>
-                {!showAddGroup ? (
-                  <button onClick={() => setShowAddGroup(true)} style={{ width: '100%', padding: '8px', borderRadius: 8, border: '1px dashed #1E2D3D', background: 'transparent', color: '#00D4AA', cursor: 'pointer', fontSize: 12, fontWeight: 600 }}>
-                    ➕ Ajouter un groupe
-                  </button>
-                ) : (
-                  <div>
-                    <div style={{ fontSize: 10, color: '#8B9CB0', marginBottom: 6 }}>NOM DU GROUPE</div>
-                    <input value={newGroupName} onChange={e => setNewGroupName(e.target.value)} placeholder="Ex: Compta, Finance..."
-                      style={{ width: '100%', padding: '6px 10px', borderRadius: 6, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none', marginBottom: 8, boxSizing: 'border-box' as const }} />
-                    <div style={{ fontSize: 10, color: '#8B9CB0', marginBottom: 6 }}>URL SHEET CSV</div>
-                    <input value={newGroupSheetUrl} onChange={e => setNewGroupSheetUrl(e.target.value)} placeholder="https://docs.google.com/..."
-                      style={{ width: '100%', padding: '6px 10px', borderRadius: 6, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 11, outline: 'none', marginBottom: 8, boxSizing: 'border-box' as const }} />
-                    <div style={{ display: 'flex', gap: 6 }}>
-                      <button onClick={async () => {
-                        if (!newGroupName.trim()) return
-                        const groupInit: Record<string, any> = {}
-                        if (newGroupSheetUrl.trim()) groupInit.__sheet_url = newGroupSheetUrl.trim()
-                        // Si URL fournie → sync immédiat
-                        if (newGroupSheetUrl.trim()) {
-                          try {
-                            const r = await fetch('/api/sheet', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: newGroupSheetUrl.trim() }) })
-                            const d = await r.json()
-                            if (!d.error) {
-                              const cats = [...new Set(d.rows.map((row: any) => row.categorie).filter(Boolean))] as string[]
-                              cats.forEach((cat: string) => { groupInit[cat] = { prompt_custom: '', sheet_url: '' } })
-                              setMsg(`✓ ${cats.length} catégorie(s) importées`)
-                            }
-                          } catch {}
-                        }
-                        setSchema((prev: any) => ({ ...prev, keywords: { ...prev.keywords, [newGroupName.trim()]: groupInit } }))
-                        setSelectedGroup(newGroupName.trim())
-                        setSelectedCategory(null)
-                        setNewGroupName(''); setNewGroupSheetUrl(''); setShowAddGroup(false)
-                      }} style={{ flex: 1, padding: '7px', borderRadius: 6, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontSize: 12, fontWeight: 600 }}>
-                        ✓ Créer et importer
-                      </button>
-                      <button onClick={() => { setShowAddGroup(false); setNewGroupName(''); setNewGroupSheetUrl('') }}
-                        style={{ padding: '7px 10px', borderRadius: 6, border: 'none', background: '#1E2D3D', color: '#8B9CB0', cursor: 'pointer', fontSize: 12 }}>
-                        ✕
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
+              {Object.keys(schema.keywords || {}).length === 0 && (
+                <div style={{ color: '#4A5568', padding: 16, fontSize: 12, textAlign: 'center' }}>Aucun type</div>
+              )}
             </div>
 
-            {/* Catégories du groupe sélectionné */}
-            {selectedGroup && (
-              <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 12, overflow: 'hidden' }}>
-                <div style={{ padding: '10px 14px', borderBottom: '1px solid #1E2D3D', fontSize: 11, color: '#F6AD55', fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.06em' }}>
-                  {selectedGroup}
-                </div>
-                {/* Sheet URL + Sync */}
-                <div style={{ padding: '10px 14px', borderBottom: '1px solid #1E2D3D', background: '#0A0E1A' }}>
-                  <div style={{ fontSize: 10, color: '#4A5568', marginBottom: 6 }}>URL SHEET DU GROUPE</div>
+            {/* Ajouter un type */}
+            <div style={{ padding: '10px 14px', borderTop: '1px solid #1E2D3D' }}>
+              {!showAddGroup ? (
+                <button onClick={() => setShowAddGroup(true)} style={{ width: '100%', padding: '8px', borderRadius: 8, border: '1px dashed #1E2D3D', background: 'transparent', color: '#00D4AA', cursor: 'pointer', fontSize: 12, fontWeight: 600 }}>
+                  ➕ Ajouter un type
+                </button>
+              ) : (
+                <div>
+                  <input value={newGroupName} onChange={e => setNewGroupName(e.target.value)} placeholder="Ex: logiciel de paie"
+                    style={{ width: '100%', padding: '8px 10px', borderRadius: 6, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none', marginBottom: 8, boxSizing: 'border-box' as const }} />
                   <div style={{ display: 'flex', gap: 6 }}>
-                    <input
-                      value={schema.keywords[selectedGroup]?.__sheet_url || ''}
-                      onChange={e => setSchema((prev: any) => ({ ...prev, keywords: { ...prev.keywords, [selectedGroup]: { ...prev.keywords[selectedGroup], __sheet_url: e.target.value } } }))}
-                      placeholder="https://docs.google.com/..."
-                      style={{ flex: 1, padding: '6px 10px', borderRadius: 6, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 11, outline: 'none' }}
-                    />
-                    <button onClick={() => syncGroup(selectedGroup)} disabled={syncing[selectedGroup] || !schema.keywords[selectedGroup]?.__sheet_url}
-                      style={{ padding: '6px 10px', borderRadius: 6, border: 'none', background: schema.keywords[selectedGroup]?.__sheet_url ? '#1E2D3D' : '#0A0E1A', color: schema.keywords[selectedGroup]?.__sheet_url ? '#00D4AA' : '#4A5568', cursor: schema.keywords[selectedGroup]?.__sheet_url ? 'pointer' : 'not-allowed', fontSize: 11, fontWeight: 600, whiteSpace: 'nowrap' as const }}>
-                      {syncing[selectedGroup] ? '⏳' : '🔄 Sync'}
+                    <button onClick={() => {
+                      if (!newGroupName.trim()) return
+                      setSchema((prev: any) => ({ ...prev, keywords: { ...(prev.keywords || {}), [newGroupName.trim()]: { __sheet_url: '', __products: [], prompt_intro: '', prompt_classement: '', prompt_contenu: '', prompt_faq: '' } } }))
+                      setSelectedGroup(newGroupName.trim())
+                      setNewGroupName(''); setShowAddGroup(false)
+                    }} style={{ flex: 1, padding: '7px', borderRadius: 6, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontSize: 12, fontWeight: 600 }}>
+                      ✓ Créer
                     </button>
+                    <button onClick={() => { setShowAddGroup(false); setNewGroupName('') }}
+                      style={{ padding: '7px 10px', borderRadius: 6, border: 'none', background: '#1E2D3D', color: '#8B9CB0', cursor: 'pointer', fontSize: 12 }}>✕</button>
                   </div>
                 </div>
-                {selectedGroupCats.filter(cat => cat !== '__sheet_url').map(cat => (
-                  <div key={cat} onClick={() => setSelectedCategory(cat)}
-                    style={{ padding: '10px 14px', cursor: 'pointer', fontSize: 12, display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                      background: selectedCategory === cat ? 'rgba(246,173,85,0.1)' : 'transparent',
-                      borderLeft: selectedCategory === cat ? '2px solid #F6AD55' : '2px solid transparent',
-                      color: selectedCategory === cat ? '#fff' : '#8B9CB0', borderBottom: '1px solid #1E2D3D' }}>
-                    <span>{cat}</span>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                      {keywords[selectedGroup][cat]?.prompt_custom && <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#00D4AA', display: 'inline-block' }} />}
-                      <span onClick={e => { e.stopPropagation(); removeCategory(selectedGroup, cat) }} style={{ color: '#FC8181', cursor: 'pointer', fontSize: 16, lineHeight: 1 }}>×</span>
-                    </div>
-                  </div>
-                ))}
-                <div style={{ padding: '10px 14px', display: 'flex', gap: 8 }}>
-                  <input value={newCategoryName} onChange={e => setNewCategoryName(e.target.value)} placeholder="Ex: logiciel de paie" onKeyDown={e => e.key === 'Enter' && addCategory()}
-                    style={{ flex: 1, padding: '6px 10px', borderRadius: 6, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none' }} />
-                  <button onClick={addCategory} style={{ padding: '6px 10px', borderRadius: 6, border: 'none', background: '#1E2D3D', color: '#F6AD55', cursor: 'pointer', fontSize: 13, fontWeight: 700 }}>+</button>
-                </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
 
-          {/* Éditeur de la catégorie sélectionnée */}
-          <div style={{ flex: 1, background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 12, overflow: 'hidden' }}>
-            {!selectedCategory || !selectedCatData ? (
+          {/* Éditeur du type sélectionné */}
+          <div style={{ flex: 1, background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 12, overflow: 'auto' }}>
+            {!selectedGroup ? (
               <div style={{ padding: 40, textAlign: 'center', color: '#4A5568' }}>
                 <div style={{ fontSize: 32, marginBottom: 12 }}>🏷</div>
-                <div>{selectedGroup ? 'Sélectionnez ou créez une catégorie' : 'Sélectionnez ou créez un groupe'}</div>
+                <div>Sélectionnez ou créez un type de logiciel</div>
               </div>
             ) : (
               <div style={{ padding: 24 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
-                  <span style={{ fontSize: 11, color: '#8B9CB0' }}>{selectedGroup}</span>
-                  <span style={{ color: '#4A5568' }}>›</span>
-                  <h3 style={{ color: '#F6AD55', margin: 0, fontSize: 15, fontWeight: 600 }}>{selectedCategory}</h3>
-                  {selectedCatData.prompt_custom && <span style={{ fontSize: 11, padding: '2px 8px', borderRadius: 4, background: 'rgba(0,212,170,0.15)', color: '#00D4AA' }}>✓ prompt défini</span>}
-                </div>
+                <h3 style={{ color: '#00D4AA', margin: '0 0 20px', fontSize: 16, fontWeight: 600 }}>{selectedGroup}</h3>
 
-                <div style={{ marginBottom: 20 }}>
+                {/* Sheet URL + Sync */}
+                <div style={{ background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 10, padding: 16, marginBottom: 24 }}>
                   <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>
-                    URL Google Sheet
+                    Google Sheet — Produits
                   </div>
-                  <div style={{ fontSize: 12, color: '#4A5568', marginBottom: 8 }}>
-                    Sheet CSV qui alimente les produits pour cette catégorie.
-                  </div>
-                  <div style={{ display: 'flex', gap: 8 }}>
+                  <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
                     <input
-                      value={selectedCatData.sheet_url || ''}
-                      onChange={e => updateCategoryField(selectedGroup!, selectedCategory!, 'sheet_url', e.target.value)}
+                      value={schema.keywords[selectedGroup]?.__sheet_url || ''}
+                      onChange={e => setSchema((prev: any) => ({ ...prev, keywords: { ...prev.keywords, [selectedGroup]: { ...prev.keywords[selectedGroup], __sheet_url: e.target.value } } }))}
                       placeholder="https://docs.google.com/spreadsheets/d/e/.../pub?output=csv"
-                      style={{ flex: 1, padding: '10px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }}
+                      style={{ flex: 1, padding: '9px 12px', borderRadius: 8, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none' }}
                     />
-                    {selectedCatData.sheet_url && (
-                      <a href={selectedCatData.sheet_url} target="_blank" rel="noopener noreferrer"
-                        style={{ padding: '10px 14px', borderRadius: 8, background: '#1E2D3D', color: '#00D4AA', fontSize: 13, textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                        ↗
-                      </a>
-                    )}
+                    <button onClick={async () => {
+                      const url = schema.keywords[selectedGroup]?.__sheet_url
+                      if (!url) return
+                      setSyncing(prev => ({ ...prev, [selectedGroup]: true }))
+                      try {
+                        const r = await fetch('/api/sheet', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url }) })
+                        const d = await r.json()
+                        if (d.error) { setMsg('✗ ' + d.error); return }
+                        setSchema((prev: any) => ({ ...prev, keywords: { ...prev.keywords, [selectedGroup]: { ...prev.keywords[selectedGroup], __products: d.rows } } }))
+                        setMsg(`✓ ${d.rows.length} produits synchronisés`)
+                      } catch { setMsg('✗ Erreur') }
+                      setSyncing(prev => ({ ...prev, [selectedGroup]: false }))
+                    }} disabled={syncing[selectedGroup] || !schema.keywords[selectedGroup]?.__sheet_url}
+                      style={{ padding: '9px 16px', borderRadius: 8, border: 'none', background: '#1E2D3D', color: '#00D4AA', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
+                      {syncing[selectedGroup] ? '⏳' : '🔄 Sync'}
+                    </button>
                   </div>
+
+                  {/* Produits synchronisés */}
+                  {schema.keywords[selectedGroup]?.__products?.length > 0 && (
+                    <div>
+                      <div style={{ fontSize: 11, color: '#4A5568', marginBottom: 8 }}>{schema.keywords[selectedGroup].__products.length} produits</div>
+                      <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 6 }}>
+                        {schema.keywords[selectedGroup].__products.map((p: any) => (
+                          <span key={p.slug} style={{ fontSize: 11, padding: '3px 10px', borderRadius: 6, background: '#1E2D3D', color: '#8B9CB0', display: 'flex', alignItems: 'center', gap: 6 }}>
+                            {p.logo_url && <img src={p.logo_url} alt="" style={{ width: 14, height: 14, borderRadius: 2, objectFit: 'contain' }} />}
+                            {p.nom}
+                            {p.note_redaction && <span style={{ color: '#F6AD55' }}>★{p.note_redaction}</span>}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                <div style={{ marginBottom: 16 }}>
-                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>
-                    Prompt de génération du contenu
+                {/* Prompts */}
+                {[
+                  { key: 'prompt_intro', label: 'Prompt — Introduction', placeholder: 'Rédige une introduction pour une page classement des meilleurs {type}...' },
+                  { key: 'prompt_classement', label: 'Prompt — Classement détaillé', placeholder: 'Pour chaque logiciel de la liste, génère une fiche détaillée...' },
+                  { key: 'prompt_contenu', label: 'Prompt — Contenu expert', placeholder: 'Contexte : Tu es un expert en {type}. Génère 4 sections H3 segmentées par profil...' },
+                  { key: 'prompt_faq', label: 'Prompt — FAQ', placeholder: 'Génère 5 questions/réponses FAQ sur les {type}...' },
+                ].map(({ key, label, placeholder }) => (
+                  <div key={key} style={{ marginBottom: 20 }}>
+                    <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>{label}</div>
+                    <textarea
+                      value={schema.keywords[selectedGroup]?.[key] || ''}
+                      rows={5}
+                      onChange={e => setSchema((prev: any) => ({ ...prev, keywords: { ...prev.keywords, [selectedGroup]: { ...prev.keywords[selectedGroup], [key]: e.target.value } } }))}
+                      placeholder={placeholder}
+                      style={{ width: '100%', padding: 12, borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, resize: 'vertical' as const, outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box' as const }}
+                    />
                   </div>
-                  <div style={{ fontSize: 12, color: '#4A5568', marginBottom: 10, lineHeight: 1.6 }}>
-                    Ce prompt sera utilisé pour générer la section de contenu spécifique à <strong style={{ color: '#F6AD55' }}>{selectedCategory}</strong>.<br/>
-                    Il remplace le prompt générique du template pour cette catégorie.
-                  </div>
-                  <textarea
-                    value={selectedCatData.prompt_custom || ''}
-                    rows={14}
-                    onChange={e => updateCategoryPrompt(selectedGroup!, selectedCategory!, e.target.value)}
-                    placeholder={`Contexte : Tu es un expert en ${selectedCategory}.\n\nTâche : Génère 4 sections H3 segmentées par profil...\n\nMots-clés à intégrer : "${selectedCategory} gratuit", "meilleur ${selectedCategory}"...\n\nLogiciels à recommander : {produits}`}
-                    style={{ width: '100%', padding: 14, borderRadius: 10, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#E2E8F0', fontSize: 13, lineHeight: 1.7, resize: 'vertical' as const, outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box' as const }}
-                  />
-                  <div style={{ fontSize: 11, color: '#4A5568', marginTop: 8 }}>
-                    Variable disponible : <code style={{ color: '#00D4AA' }}>{'{produits}'}</code> → liste des logiciels de cette catégorie
-                  </div>
-                </div>
+                ))}
               </div>
             )}
           </div>
         </div>
       )}
-    </div>
-  )
-}
