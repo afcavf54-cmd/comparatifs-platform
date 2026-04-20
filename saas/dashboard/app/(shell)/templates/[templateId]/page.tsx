@@ -22,7 +22,6 @@ export default function TemplateDetailPage() {
   const [newCategoryName, setNewCategoryName] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [newGroupName, setNewGroupName] = useState('')
-  const [newCategoryName, setNewCategoryName] = useState('')
 
   const schemaPath = `platform/schemas/${templateId}.json`
 
