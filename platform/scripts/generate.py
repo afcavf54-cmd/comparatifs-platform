@@ -540,7 +540,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 total_pairs=len(all_pairs), zero_frais_count=zero_frais,
                 top_pairs=top_pairs, build_date=date.today().isoformat(),
                 site_editorial=site_editorial,
-                home_title=home_title, home_description=home_desc,
+                home_title=home_title, home_description=home_desc, home_h1=site.get('home_h1', ''),
             )
             (output_dir / "index.html").write_text(html, encoding="utf-8")
             print(f"  ✓ index.html ({len(products)} produits, {len(all_pairs)} comparatifs)")
