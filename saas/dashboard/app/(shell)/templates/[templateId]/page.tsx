@@ -3,17 +3,15 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
 
-type Tab = 'blocs' | 'keywords'
+type Tab = 'keywords'
 
 export default function TemplateDetailPage() {
   const { templateId } = useParams()
   const [schema, setSchema] = useState<any>(null)
   const [loading, setLoading] = useState(true)
-  const [tab, setTab] = useState<Tab>('blocs')
-  const [editingBlock, setEditingBlock] = useState<string | null>(null)
+  const [tab, setTab] = useState<Tab>('keywords')
   const [saving, setSaving] = useState(false)
   const [msg, setMsg] = useState('')
-  const [showPreview, setShowPreview] = useState(false)
 
   // Keywords state
   const [selectedGroup, setSelectedGroup] = useState<string | null>(null)
@@ -45,8 +43,7 @@ export default function TemplateDetailPage() {
 
   function buildPreviewHtml() {
     if (!schema) return ''
-    const blockTypeIcon: Record<string, string> = { h1: 'H1', h2: 'H2', paragraph: '¶', 'expert-box': '💡', list: '☰', faq: '❓', verdict: '✅' }
-    const html = (schema.blocks || []).map((b: any) => {
+      const html = (schema.blocks || []).map((b: any) => {
       const preview = applyMockVars(b.prompt || '')
       return `<div style="margin-bottom:20px;padding:16px;border:1px solid #e2e8f0;border-radius:10px;background:#fff">
         <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#a0aec0;margin-bottom:8px;display:flex;align-items:center;gap:6px">
@@ -82,13 +79,6 @@ export default function TemplateDetailPage() {
       setLoading(false)
     }).catch(() => setLoading(false))
   }, [templateId])
-
-  function updateBlock(blockId: string, field: string, value: string) {
-    setSchema((prev: any) => ({
-      ...prev,
-      blocks: prev.blocks.map((b: any) => b.id === blockId ? { ...b, [field]: value } : b)
-    }))
-  }
 
   function updateCategoryField(group: string, cat: string, field: string, value: string) {
     setSchema((prev: any) => ({
@@ -180,13 +170,7 @@ export default function TemplateDetailPage() {
   }
 
   const typeColors: Record<string, string> = { avis: '#00D4AA', vs: '#0090FF', local: '#F6AD55', classement: '#9F7AEA' }
-  const blockTypeIcon: Record<string, string> = { h1: 'H1', h2: 'H2', paragraph: '¶', 'expert-box': '💡', list: '☰', faq: '❓', verdict: '✅' }
 
-  const tabStyle = (t: Tab) => ({
-    padding: '8px 18px', borderRadius: 8, border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: 13,
-    background: tab === t ? 'rgba(0,212,170,0.15)' : 'transparent',
-    color: tab === t ? '#00D4AA' : '#8B9CB0',
-  })
 
   if (loading) return <div style={{ color: '#8B9CB0', textAlign: 'center', padding: 60 }}>Chargement...</div>
   if (!schema) return <div style={{ color: '#FC8181', textAlign: 'center', padding: 60 }}>Modèle introuvable</div>
@@ -214,80 +198,15 @@ export default function TemplateDetailPage() {
         </div>
         <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
           {msg && <span style={{ fontSize: 12, color: msg.startsWith('✓') ? '#00D4AA' : '#FC8181' }}>{msg}</span>}
-          {tab === 'blocs' && (
-            <button onClick={() => setShowPreview(p => !p)} style={{ padding: '9px 16px', borderRadius: 10, border: '1px solid #1E2D3D', background: showPreview ? 'rgba(0,212,170,0.1)' : 'transparent', color: showPreview ? '#00D4AA' : '#8B9CB0', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
-              {showPreview ? '✕ Fermer aperçu' : '👁 Aperçu'}
-            </button>
-          )}
+
           <button onClick={save} disabled={saving} style={{ padding: '9px 20px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
             {saving ? '...' : '💾 Sauvegarder'}
           </button>
         </div>
       </div>
 
-      {/* Tabs */}
-      <div style={{ display: 'flex', gap: 4, marginBottom: 24 }}>
-        <button style={tabStyle('blocs')} onClick={() => setTab('blocs')}>🧱 Structure ({schema.blocks?.length} blocs)</button>
-        <button style={tabStyle('keywords')} onClick={() => setTab('keywords')}>🏷 Mots clés ({groups.length} groupes)</button>
-      </div>
 
-      {/* ── BLOCS ── */}
-      {tab === 'blocs' && (
-        <div style={{ display: 'flex', gap: 20 }}>
-          <div style={{ flex: showPreview ? '0 0 420px' : 1 }}>
-            {/* Variables */}
-            <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 12, padding: 16, marginBottom: 20 }}>
-              <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.06em', marginBottom: 10 }}>Variables disponibles</div>
-              <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: 6 }}>
-                {(schema.variables || []).map((v: string) => (
-                  <code key={v} style={{ padding: '3px 8px', borderRadius: 4, background: 'rgba(0,212,170,0.1)', color: '#00D4AA', fontSize: 12 }}>{`{${v}}`}</code>
-                ))}
-              </div>
-            </div>
 
-            {(schema.blocks || []).map((block: any) => (
-              <div key={block.id} style={{ background: '#0D1117', border: `1px solid ${editingBlock === block.id ? '#00D4AA' : '#1E2D3D'}`, borderRadius: 12, marginBottom: 10, overflow: 'hidden' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 18px', cursor: 'pointer' }}
-                  onClick={() => setEditingBlock(editingBlock === block.id ? null : block.id)}>
-                  <div style={{ width: 28, height: 28, borderRadius: 6, background: '#1E2D3D', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 700, color: '#8B9CB0', flexShrink: 0 }}>
-                    {blockTypeIcon[block.type] || block.type}
-                  </div>
-                  <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: 13, fontWeight: 600, color: '#fff' }}>{block.label}</div>
-                    <div style={{ fontSize: 11, color: '#4A5568', marginTop: 2 }}>champ: <code style={{ color: '#8B9CB0' }}>{block.field}</code> · type: {block.type}</div>
-                  </div>
-                  <div style={{ fontSize: 18, color: '#4A5568' }}>{editingBlock === block.id ? '▲' : '▼'}</div>
-                </div>
-                {editingBlock === block.id && (
-                  <div style={{ padding: '0 18px 18px', borderTop: '1px solid #1E2D3D' }}>
-                    <div style={{ paddingTop: 14 }}>
-                      <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>Prompt</div>
-                      <textarea value={block.prompt || ''} rows={6} onChange={e => updateBlock(block.id, 'prompt', e.target.value)}
-                        style={{ width: '100%', padding: 12, borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, resize: 'vertical' as const, outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box' as const }} />
-                      <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginTop: 12, marginBottom: 6 }}>Label</div>
-                      <input value={block.label || ''} onChange={e => updateBlock(block.id, 'label', e.target.value)}
-                        style={{ width: '100%', padding: '8px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-            <button onClick={() => {
-              const id = `block_${Date.now()}`
-              setSchema((prev: any) => ({ ...prev, blocks: [...(prev.blocks || []), { id, type: 'paragraph', label: 'Nouveau bloc', field: id, prompt: '' }] }))
-              setEditingBlock(id)
-            }} style={{ width: '100%', padding: '12px', borderRadius: 10, border: '1px dashed #1E2D3D', background: 'transparent', color: '#4A5568', cursor: 'pointer', fontSize: 13, marginTop: 8 }}>
-              ➕ Ajouter un bloc
-            </button>
-          </div>
-
-          {showPreview && (
-            <div style={{ flex: 1, position: 'sticky', top: 0, maxHeight: '90vh', overflow: 'hidden', borderRadius: 12, border: '1px solid #1E2D3D' }}>
-              <iframe srcDoc={buildPreviewHtml()} style={{ width: '100%', height: '100%', minHeight: '80vh', border: 'none', borderRadius: 12 }} title="Aperçu template" />
-            </div>
-          )}
-        </div>
-      )}
 
       {/* ── MOTS CLÉS ── */}
       {tab === 'keywords' && (
