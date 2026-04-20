@@ -169,7 +169,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 <!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">Comparateur de logiciels professionnels 2026</div>
-  <h1 id="hero-title">Entreprendre Pour Apprendre : <em id="hero-tagline">le comparateur qui compare vraiment</em></h1>
+  <h1>Entreprendre Pour Apprendre : <em>le comparateur qui compare vraiment</em></h1>
   <p class="hero-desc">Comparez les meilleurs logiciels professionnels en 2026 : comptabilité, paie, facturation, CRM. Avis indépendants, prix et fonctionnalités.</p>
 
   <!-- Moteur de recherche -->
@@ -184,7 +184,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
   <!-- Stats bar -->
   <div class="stats-bar" style="margin-top:48px;border-radius:var(--r2)">
     <div class="stat-item">
-      <div class="stat-value" id="stat-logiciels">0+</div>
+      <div class="stat-value" id="stat-logiciels">5+</div>
       <div class="stat-label">Logiciels analysés</div>
     </div>
     <div class="stat-item">
@@ -213,6 +213,41 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
   </section>
 
   <!-- TOP LOGICIELS -->
+  <section class="top-section">
+    <h2>Logiciels en vedette</h2>
+    <div class="top-grid">
+      <a href="/avis-legalplace" class="top-card">
+        <div class="top-card-logo" style="display:flex;align-items:center;justify-content:center;font-size:24px">💼</div>
+        <div class="top-card-name">LegalPlace</div>
+        <div class="top-card-cat">Création d’entreprise en ligne</div>
+        <div class="top-card-note">★ 5.0/5</div>
+      </a>
+      <a href="/avis-legalstart" class="top-card">
+        <div class="top-card-logo" style="display:flex;align-items:center;justify-content:center;font-size:24px">💼</div>
+        <div class="top-card-name">Legal Start</div>
+        <div class="top-card-cat">Création d’entreprise en ligne</div>
+        <div class="top-card-note">★ 4.0/5</div>
+      </a>
+      <a href="/avis-dougs" class="top-card">
+        <div class="top-card-logo" style="display:flex;align-items:center;justify-content:center;font-size:24px">💼</div>
+        <div class="top-card-name">Dougs</div>
+        <div class="top-card-cat">Création d’entreprise en ligne</div>
+        <div class="top-card-note">★ 3.0/5</div>
+      </a>
+      <a href="/avis-qonto" class="top-card">
+        <div class="top-card-logo" style="display:flex;align-items:center;justify-content:center;font-size:24px">💼</div>
+        <div class="top-card-name">Qonto</div>
+        <div class="top-card-cat">Création d’entreprise en ligne</div>
+        <div class="top-card-note">★ 4.4/5</div>
+      </a>
+      <a href="/avis-swapn" class="top-card">
+        <div class="top-card-logo" style="display:flex;align-items:center;justify-content:center;font-size:24px">💼</div>
+        <div class="top-card-name">Swapn</div>
+        <div class="top-card-cat">Création d’entreprise en ligne</div>
+        <div class="top-card-note">★ 4.1/5</div>
+      </a>
+    </div>
+  </section>
 
 </main>
 
@@ -233,18 +268,13 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 
 
 <script>
-// Taglines aléatoires
-const TAGLINES = [
-  "l'expert qui trouve votre logiciel professionnel",
-  "le comparateur qui compare VRAIMENT",
-  "votre guide pour choisir le bon logiciel",
-  "les vrais avis pour décider en confiance",
-  "le comparatif indépendant des pros",
-];
-document.getElementById('hero-tagline').textContent = TAGLINES[Math.floor(Math.random() * TAGLINES.length)];
-
 // Données de recherche (chargées en JS après DOM pour éviter footprint)
 const ALL_CATEGORIES = [
+  { label: "Création d’entreprise en ligne", slug: "meilleur-création-d’entreprise-en-ligne" },
+  { label: "Création d’entreprise en ligne", slug: "meilleur-création-d’entreprise-en-ligne" },
+  { label: "Création d’entreprise en ligne", slug: "meilleur-création-d’entreprise-en-ligne" },
+  { label: "Création d’entreprise en ligne", slug: "meilleur-création-d’entreprise-en-ligne" },
+  { label: "Création d’entreprise en ligne", slug: "meilleur-création-d’entreprise-en-ligne" },
 ].filter((v,i,a) => a.findIndex(t=>t.label===v.label)===i);
 
 const searchInput = document.getElementById('search-input');
