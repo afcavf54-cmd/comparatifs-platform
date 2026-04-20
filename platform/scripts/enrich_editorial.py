@@ -721,20 +721,27 @@ def main():
         sys.exit(1)
 
     only = args.only
-
-    if only in (None, "site"):
-        generate_site(site_config, site_dir)
-
-    if only in (None, "products"):
-        generate_products(products, site_dir, year, skip_existing=args.skip_existing)
-
-    if only in (None, "pairs"):
-        generate_pairs(products, site_dir, year, skip_existing=args.skip_existing)
-
-    # Génération classements (sites SaaS)
     page_types = config.get("page_types", {})
-    if page_types.get("classement") and only in (None, "classement"):
+    is_classement_site = bool(page_types.get("classement")) and not page_types.get("vs") and not page_types.get("avis")
+
+    if is_classement_site:
+        # Site classement SaaS — uniquement generate_classement
+        print(f"  📊 Site classement détecté — génération classements uniquement")
         generate_classement(products, site_dir, year, skip_existing=args.skip_existing)
+    else:
+        # Site comparatif SCPI — pipeline normal
+        if only in (None, "site"):
+            generate_site(site_config, site_dir)
+
+        if only in (None, "products"):
+            generate_products(products, site_dir, year, skip_existing=args.skip_existing)
+
+        if only in (None, "pairs"):
+            generate_pairs(products, site_dir, year, skip_existing=args.skip_existing)
+
+        # Génération classements si aussi configurés
+        if page_types.get("classement") and only in (None, "classement"):
+            generate_classement(products, site_dir, year, skip_existing=args.skip_existing)
 
     print(f"\n✅ Enrichissement terminé pour {args.site}")
 
