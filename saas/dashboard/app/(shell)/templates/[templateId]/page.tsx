@@ -331,11 +331,18 @@ export default function TemplateDetailPage() {
                   <input value={newGroupName} onChange={e => setNewGroupName(e.target.value)} placeholder="Ex: logiciel de paie"
                     style={{ width: '100%', padding: '8px 10px', borderRadius: 6, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none', marginBottom: 8, boxSizing: 'border-box' as const }} />
                   <div style={{ display: 'flex', gap: 6 }}>
-                    <button onClick={() => {
+                    <button onClick={async () => {
                       if (!newGroupName.trim()) return
-                      setSchema((prev: any) => ({ ...prev, keywords: { ...(prev.keywords || {}), [newGroupName.trim()]: { __sheet_url: '', __products: [], prompt_intro: '', prompt_classement: '', prompt_contenu: '', prompt_faq: '' } } }))
+                      const newSchema = { ...schema, keywords: { ...(schema.keywords || {}), [newGroupName.trim()]: { __sheet_url: '', __products: [], prompt_intro: '', prompt_classement: '', prompt_contenu: '', prompt_faq: '' } } }
+                      setSchema(newSchema)
                       setSelectedGroup(newGroupName.trim())
                       setNewGroupName(''); setShowAddGroup(false)
+                      // Sauvegarde immédiate
+                      setSaving(true)
+                      const r = await fetch('/api/github', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ path: schemaPath, content: JSON.stringify(newSchema, null, 2), message: `HUB: Add keyword type ${newGroupName.trim()}` }) })
+                      const d = await r.json()
+                      setMsg(d.ok ? '✓ Type créé et sauvegardé' : '✗ Erreur')
+                      setSaving(false)
                     }} style={{ flex: 1, padding: '7px', borderRadius: 6, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontSize: 12, fontWeight: 600 }}>
                       ✓ Créer
                     </button>
