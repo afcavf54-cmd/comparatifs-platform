@@ -9,6 +9,26 @@ function slugify(str: string): string {
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 }
 
+function randomAuthorName(): string {
+  const firstNames = [
+    "Thomas", "Julie", "Nicolas", "Marie", "Pierre", "Sophie", "Antoine",
+    "Claire", "Julien", "Emma", "Alexandre", "Léa", "Maxime", "Camille",
+    "François", "Laura", "Romain", "Sarah", "Baptiste", "Charlotte",
+    "Guillaume", "Inès", "Théo", "Manon", "Hugo", "Lucie", "Axel",
+    "Pauline", "Lucas", "Mathilde", "Clément", "Elisa", "Arthur", "Marine"
+  ]
+  const lastNames = [
+    "Martin", "Bernard", "Dubois", "Thomas", "Robert", "Richard", "Petit",
+    "Durand", "Leroy", "Moreau", "Simon", "Laurent", "Lefebvre", "Michel",
+    "Garcia", "David", "Bertrand", "Roux", "Vincent", "Fournier", "Morel",
+    "Girard", "André", "Lefevre", "Mercier", "Dupont", "Lambert", "Bonnet",
+    "François", "Martinez", "Legrand", "Garnier", "Faure", "Rousseau"
+  ]
+  const first = firstNames[Math.floor(Math.random() * firstNames.length)]
+  const last = lastNames[Math.floor(Math.random() * lastNames.length)]
+  return `${first} ${last}`
+}
+
 export async function GET() {
   const file = await getFile(HUB_CONFIG_PATH)
   if (!file) return NextResponse.json({ sites: [], version: '2.0', updated_at: new Date().toISOString() })
@@ -39,6 +59,7 @@ export async function POST(req: NextRequest) {
   const domainClean = domain.replace(/^https?:\/\//, '').replace(/\/$/, '')
   const logoText = logo_text || name.split(' ')[0]
   const logoAccent = logo_accent || name.split(' ').slice(1).join(' ')
+  const authorName = randomAuthorName()
 
   const hubFile = await getFile(HUB_CONFIG_PATH)
   let hubConfig: any = hubFile ? JSON.parse(hubFile.content) : { sites: [], version: '2.0', updated_at: new Date().toISOString() }
@@ -67,6 +88,7 @@ site:
   year: ${year}
   sheet_csv_url: "${sheet_csv_url || ''}"
   www_preference: "${www_preference}"
+  author_name: "${authorName}"
   home_title: "${home_title || name + ' | Comparatifs ' + year}"
   home_description: "${home_description}"
   template: "comparatif-vs-scpi.html.j2"
