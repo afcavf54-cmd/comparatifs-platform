@@ -35,13 +35,16 @@ if not ANTHROPIC_API_KEY:
     sys.exit(1)
 
 # ── API Claude ────────────────────────────────────────────────────────────────
-def call_claude(prompt: str) -> str:
+def call_claude(prompt: str, system: str = None) -> str:
     """Appel API Claude avec retry et backoff exponentiel."""
-    payload = json.dumps({
+    body: dict = {
         "model": MODEL,
         "max_tokens": MAX_TOKENS,
         "messages": [{"role": "user", "content": prompt}]
-    }).encode("utf-8")
+    }
+    if system:
+        body["system"] = system
+    payload = json.dumps(body).encode("utf-8")
 
     for attempt in range(MAX_RETRIES):
         try:
@@ -456,10 +459,35 @@ def generate_site(site_config: dict, site_dir: Path) -> None:
         print(f"⚠ Erreur site editorial : {e}, sera retenté")
 
 
+def load_schema_keywords(site_dir: Path) -> dict:
+    """Charge les keywords (types de logiciels + prompts) depuis le schema classement."""
+    # Chercher le schema via config.yaml
+    config_path = site_dir / "config.yaml"
+    if not config_path.exists():
+        return {}
+    import yaml
+    with open(config_path, encoding='utf-8') as f:
+        config = yaml.safe_load(f)
+    page_types = config.get('page_types', {})
+    schema_name = page_types.get('classement', '')
+    if not schema_name:
+        return {}
+    schema_path = site_dir.parent.parent / 'schemas' / f'{schema_name}.json'
+    if not schema_path.exists():
+        return {}
+    import json
+    with open(schema_path, encoding='utf-8') as f:
+        schema = json.load(f)
+    return schema.get('keywords', {})
+
+
 def generate_classement(products: list, site_dir: Path, year: int, skip_existing: bool = False) -> None:
     """Génère les textes éditoriaux pour les pages classement (groupées par catégorie)."""
     editorial_path = site_dir / "editorial.json"
     editorial = load_json(editorial_path) if editorial_path.exists() else {}
+
+    # Charger les keywords et prompts custom depuis le schema
+    schema_keywords = load_schema_keywords(site_dir)
 
     # Grouper par catégorie
     categories: dict = {}
@@ -485,13 +513,85 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
 
         print(f"  [{cat}] {len(cat_products)} produits...", end=" ", flush=True)
 
-        # Niche du premier produit pour contextualiser
-        niche = cat_products[0].get("niche", "") if cat_products else ""
-        niche_context = f" (niche : {niche})" if niche else ""
-
         produits_str = ", ".join([p.get("nom", "") for p in cat_products[:8]])
 
-        prompt = f"""Expert en logiciels et rédacteur SEO. Génère les textes éditoriaux pour une page classement des meilleurs {cat}{niche_context} en {year}.
+        # Chercher le keyword correspondant dans le schema (correspondance par nom)
+        keyword_data = {}
+        for kw_name, kw_data in schema_keywords.items():
+            if kw_name.lower() == cat.lower() or cat.lower() in kw_name.lower() or kw_name.lower() in cat.lower():
+                keyword_data = kw_data
+                break
+
+        # Utiliser les prompts custom si disponibles, sinon fallback générique
+        prompt_intro = keyword_data.get('prompt_intro', '').replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
+        prompt_classement = keyword_data.get('prompt_classement', '').replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
+        prompt_contenu = keyword_data.get('prompt_contenu', '').replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
+        prompt_faq = keyword_data.get('prompt_faq', '').replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
+
+        if prompt_intro or prompt_contenu:
+            # Génération en 4 appels séparés avec prompts custom
+            print(f"\n    → prompts custom détectés")
+            result = {}
+
+            for section_key, section_prompt, is_json in [
+                ('intro', prompt_intro, False),
+                ('contenu_custom', prompt_contenu, False),
+                ('faq', prompt_faq, True),
+            ]:
+                if not section_prompt:
+                    continue
+                print(f"    [{section_key}]...", end=" ", flush=True)
+                sys_prompt = 'Tu es un expert rédacteur SEO. Réponds UNIQUEMENT en JSON valide sans backticks, sans preamble.' if is_json else 'Tu es un expert rédacteur SEO. Aucun tiret long (— ou –). Aucun markdown. Réponds uniquement avec le contenu HTML demandé.'
+                for attempt in range(5):
+                    try:
+                        response = call_claude(section_prompt, system=sys_prompt)
+                        if is_json:
+                            clean = response.replace('```json', '').replace('```', '').strip()
+                            try:
+                                result[section_key] = json.loads(clean)
+                                print("✓")
+                                break
+                            except:
+                                if attempt < 4: time.sleep([5,15,30,60][attempt])
+                        else:
+                            result[section_key] = response.strip()
+                            print("✓")
+                            break
+                    except Exception as e:
+                        print(f"❌ {e}")
+                        break
+                time.sleep(2)
+
+            # Génération classement produit par produit
+            if prompt_classement:
+                descriptions = {}
+                for prod in cat_products:
+                    nom = prod.get('nom', '')
+                    p_prompt = prompt_classement.replace('[NOM DU SITE]', nom).replace('{nom}', nom)
+                    print(f"    [desc {nom}]...", end=" ", flush=True)
+                    for attempt in range(5):
+                        try:
+                            response = call_claude(p_prompt)
+                            descriptions[prod.get('slug', nom)] = response.strip()
+                            print("✓")
+                            break
+                        except Exception as e:
+                            print(f"❌ {e}")
+                            break
+                    time.sleep(2)
+                result['descriptions_produits'] = descriptions
+
+            editorial[key] = result
+            save_json(editorial_path, editorial)
+            print(f"  ✓ {cat} généré")
+            success = True
+
+        else:
+            # Fallback : prompt générique
+            niche = cat_products[0].get("niche", "") if cat_products else ""
+            niche_context = f" (niche : {niche})" if niche else ""
+
+            prompt = f"""Expert en logiciels et rédacteur SEO. Génère les textes éditoriaux pour une page classement des meilleurs {cat}{niche_context} en {year}.
 
 Produits à classer : {produits_str}
 
@@ -499,7 +599,7 @@ Règles : paragraphes 3 lignes max, <strong> sur les chiffres/mots clés, aucun 
 
 Réponds UNIQUEMENT en JSON valide sans backticks :
 {{
-  "intro": "3 paragraphes HTML sur les enjeux du choix d'un logiciel de {cat}",
+  "intro": "3 paragraphes HTML sur les enjeux du choix",
   "en_bref": "<ul> avec 5 items logiciel + profil cible idéal",
   "criteres_choix": "3 paragraphes HTML sur les critères de sélection",
   "fonctionnalites": "3 paragraphes HTML sur les fonctionnalités indispensables",
