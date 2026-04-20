@@ -1,0 +1,97 @@
+# ============================================================
+# CONFIG SITE -- entreprendre-pour-apprendre
+# ============================================================
+
+site:
+  slug: entreprendre-pour-apprendre
+  name: "Entreprendre pour Apprendre"
+  domain: "https://entreprendrepourapprendre.org"
+  base_path: ""
+  logo_text: "Entreprendre"
+  logo_accent: "pour Apprendre"
+  tagline: "Comparatifs Entreprendre pour Apprendre 2026"
+  year: 2026
+  sheet_csv_url: ""
+  www_preference: "www"
+  author_name: "Julie Simon"
+  home_title: "Entreprendre Pour Apprendre - Comparateur de Logiciels pour les Professionnels"
+  home_description: ""
+  template: "comparatif-vs-scpi.html.j2"
+  index_template: "index-scpi.html.j2"
+  analytics_clicky: ""
+
+page_types:
+  classement: classement-saas
+
+theme:
+  accent: "#000080"
+  accent2: "#ff8000"
+  bg: "#ffffff"
+  ink: "#0F1A2E"
+  surface: "#FFFFFF"
+  font_title: "DM Serif Display"
+  font_body: "Outfit"
+  google_fonts: "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap"
+
+criteria:
+  - label: "TD 2026"
+    field: td
+    type: text
+    suffix: "%"
+  - label: "TRI"
+    field: tri
+    type: text
+    suffix: "%"
+  - label: "Prix de la part"
+    field: prix_achat
+    type: text
+    suffix: "EUR"
+  - label: "Prix de retrait"
+    field: prix_retrait
+    type: text
+    suffix: "EUR"
+  - label: "Investissement min."
+    field: investissement_min
+    type: text
+  - label: "Frais de souscription"
+    field: frais_souscription
+    type: text
+    suffix: "%"
+  - label: "Frais de gestion"
+    field: frais_gestion
+    type: text
+    suffix: "% TTC"
+  - label: "TOF"
+    field: tof
+    type: text
+    suffix: "%"
+  - label: "Endettement"
+    field: endettement
+    type: text
+    suffix: "%"
+  - label: "Delai de jouissance"
+    field: delai_jouissance
+    type: text
+    suffix: " mois"
+  - label: "Pays"
+    field: pays
+    type: text
+
+tag_classes:
+  rendement: "tag-rendement"
+  diversifiee: "tag-diversifiee"
+  specialisee: "tag-specialisee"
+  europeenne: "tag-europeenne"
+
+seo:
+  title_pattern: "{A} vs {B} : comparatif {year}"
+  meta_pattern: "Comparatif complet {A} vs {B} {year} : rendements, frais, avis."
+  avis_title_pattern: "Avis {nom} {year} : faut-il investir ?"
+  avis_meta_pattern: "Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques."
+  liste_comp_title: "Tous les comparatifs {site_name} {year}"
+  liste_avis_title: "Avis {site_name} {year} : analyses indépendantes"
+  h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
+  eyebrow: "Comparatif {year}"
+  intro_pattern: "Comparatif {A} vs {B} - analyse complete."
+  category_label: "Comparatifs"
+  category_url: "index.html#comparatifs"
