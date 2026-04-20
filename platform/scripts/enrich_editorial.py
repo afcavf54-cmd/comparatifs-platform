@@ -625,6 +625,13 @@ def main():
 
     products = load_products(site_dir, config)
     if not products:
+        # Site classement sans sheet global — pas d'erreur
+        page_types = config.get("page_types", {})
+        sheet_url = site_config.get("sheet_csv_url", "")
+        if page_types.get("classement") and not sheet_url:
+            print("ℹ️ Site classement sans sheet global — génération ignorée")
+            print("  Configurez les sheets par catégorie dans le dashboard Modèles → Mots clés")
+            sys.exit(0)
         print("❌ Aucun produit chargé")
         sys.exit(1)
 
