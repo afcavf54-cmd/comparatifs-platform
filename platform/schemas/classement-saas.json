@@ -4,7 +4,12 @@
   "type": "classement",
   "niche": "saas",
   "description": "Page de classement pour comparer les meilleurs logiciels d'une catégorie",
-  "variables": ["theme", "year", "site_name", "produits"],
+  "variables": [
+    "theme",
+    "year",
+    "site_name",
+    "produits"
+  ],
   "blocks": [
     {
       "id": "intro",
@@ -42,5 +47,14 @@
       "prompt": "Génère 5 questions/réponses FAQ pour une page classement des meilleurs logiciels de {theme} en {year}. Réponds en JSON : [{\"q\": \"question\", \"a\": \"réponse\"}, ...]. Aucun tiret long."
     }
   ],
-  "keywords": {}
+  "keywords": {
+    "1": {
+      "__sheet_url": "",
+      "__products": [],
+      "prompt_intro": "",
+      "prompt_classement": "",
+      "prompt_contenu": "",
+      "prompt_faq": ""
+    }
+  }
 }
