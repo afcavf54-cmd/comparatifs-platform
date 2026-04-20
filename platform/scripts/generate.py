@@ -60,7 +60,7 @@ def cast(val: str):
 STRING_FIELDS = {
     'geo', 'secteurs', 'pays', 'investissement_min', 'tri_horizon',
     'nom', 'marque', 'type', 'slug', 'description', 'url_affiliation',
-    'verdict_si_1', 'verdict_si_2', 'verdict_si_3', 'categorie', 'niche', 'tagline', 'essai_gratuit'
+    'verdict_si_1', 'verdict_si_2', 'verdict_si_3', 'categorie', 'niche', 'tagline', 'essai_gratuit', 'author_name'
 }
 
 NUMERIC_FIELDS = [
