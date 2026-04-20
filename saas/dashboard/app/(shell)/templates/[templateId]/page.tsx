@@ -18,6 +18,8 @@ export default function TemplateDetailPage() {
   const [syncing, setSyncing] = useState<Record<string, boolean>>({})
   const [newGroupSheetUrl, setNewGroupSheetUrl] = useState('')
   const [showAddGroup, setShowAddGroup] = useState(false)
+  const [availableCategories, setAvailableCategories] = useState<string[]>([])
+  const [newCategoryName, setNewCategoryName] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [newGroupName, setNewGroupName] = useState('')
   const [newCategoryName, setNewCategoryName] = useState('')
@@ -37,6 +39,13 @@ export default function TemplateDetailPage() {
           const cats = Object.keys(s.keywords[groups[0]] || {})
           if (cats.length > 0) setSelectedCategory(cats[0])
         }
+        // Extraire les catégories uniques déjà définies
+        const cats = [...new Set(
+          Object.values(s.keywords || {})
+            .map((v: any) => v.__categorie)
+            .filter(Boolean)
+        )] as string[]
+        setAvailableCategories(cats)
       } catch {}
       setLoading(false)
     }).catch(() => setLoading(false))
@@ -244,7 +253,65 @@ export default function TemplateDetailPage() {
               </div>
             ) : (
               <div style={{ padding: 24 }}>
-                <h3 style={{ color: '#00D4AA', margin: '0 0 20px', fontSize: 16, fontWeight: 600 }}>{selectedGroup}</h3>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+                  <h3 style={{ color: '#00D4AA', margin: 0, fontSize: 16, fontWeight: 600 }}>{selectedGroup}</h3>
+                </div>
+
+                {/* Catégorie parente */}
+                <div style={{ background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 10, padding: 16, marginBottom: 20 }}>
+                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 10 }}>
+                    Catégorie parente
+                  </div>
+                  <div style={{ fontSize: 12, color: '#4A5568', marginBottom: 10 }}>
+                    Regroupe ce type dans une catégorie pour la page d'accueil (ex: Comptabilité & Finance)
+                  </div>
+                  <select
+                    value={schema.keywords[selectedGroup]?.__categorie || ''}
+                    onChange={e => {
+                      const val = e.target.value
+                      setSchema((prev: any) => ({
+                        ...prev,
+                        keywords: { ...prev.keywords, [selectedGroup]: { ...prev.keywords[selectedGroup], __categorie: val } }
+                      }))
+                      if (val && !availableCategories.includes(val)) {
+                        setAvailableCategories(prev => [...prev, val])
+                      }
+                    }}
+                    style={{ width: '100%', padding: '9px 12px', borderRadius: 8, background: '#0D1117', border: '1px solid #1E2D3D', color: schema.keywords[selectedGroup]?.__categorie ? '#fff' : '#4A5568', fontSize: 13, outline: 'none', marginBottom: 8 }}>
+                    <option value=''>— Sans catégorie —</option>
+                    {availableCategories.map(cat => (
+                      <option key={cat} value={cat}>{cat}</option>
+                    ))}
+                  </select>
+                  <div style={{ display: 'flex', gap: 8 }}>
+                    <input value={newCategoryName} onChange={e => setNewCategoryName(e.target.value)}
+                      placeholder="Nouvelle catégorie..."
+                      onKeyDown={e => {
+                        if (e.key === 'Enter' && newCategoryName.trim()) {
+                          const cat = newCategoryName.trim()
+                          if (!availableCategories.includes(cat)) setAvailableCategories(prev => [...prev, cat])
+                          setSchema((prev: any) => ({
+                            ...prev,
+                            keywords: { ...prev.keywords, [selectedGroup]: { ...prev.keywords[selectedGroup], __categorie: cat } }
+                          }))
+                          setNewCategoryName('')
+                        }
+                      }}
+                      style={{ flex: 1, padding: '8px 12px', borderRadius: 8, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none' }} />
+                    <button onClick={() => {
+                      if (!newCategoryName.trim()) return
+                      const cat = newCategoryName.trim()
+                      if (!availableCategories.includes(cat)) setAvailableCategories(prev => [...prev, cat])
+                      setSchema((prev: any) => ({
+                        ...prev,
+                        keywords: { ...prev.keywords, [selectedGroup]: { ...prev.keywords[selectedGroup], __categorie: cat } }
+                      }))
+                      setNewCategoryName('')
+                    }} style={{ padding: '8px 14px', borderRadius: 8, border: 'none', background: '#1E2D3D', color: '#00D4AA', cursor: 'pointer', fontSize: 12, fontWeight: 600 }}>
+                      + Créer
+                    </button>
+                  </div>
+                </div>
 
                 {/* Sheet URL + Sync */}
                 <div style={{ background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 10, padding: 16, marginBottom: 24 }}>
