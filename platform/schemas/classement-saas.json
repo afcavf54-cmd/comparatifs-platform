@@ -4,12 +4,7 @@
   "type": "classement",
   "niche": "saas",
   "description": "Page de classement pour comparer les meilleurs logiciels d'une catégorie",
-  "variables": [
-    "theme",
-    "year",
-    "site_name",
-    "produits"
-  ],
+  "variables": ["theme", "year", "site_name", "produits"],
   "blocks": [
     {
       "id": "intro",
@@ -23,38 +18,29 @@
       "type": "paragraph",
       "label": "Box En bref (Top 5)",
       "field": "en_bref",
-      "prompt": "Rédige le contenu HTML de la box 'En bref' pour les meilleurs logiciels de {theme}. Format : 'Si vous avez la flemme de parcourir notre comparatif détaillé, voici nos recommandations ❤️ :' suivi d'une liste <ul> avec 5 logiciels fictifs et leur profil cible idéal. Aucun tiret long."
+      "prompt": "Rédige le contenu HTML de la box 'En bref' pour les meilleurs logiciels de {theme}. Format : 'Si vous avez la flemme de parcourir notre comparatif détaillé, voici nos recommandations ❤️ :' suivi d'une liste <ul> avec 5 logiciels et leur profil cible idéal. Aucun tiret long."
     },
     {
       "id": "criteres_choix",
       "type": "paragraph",
       "label": "Comment choisir ?",
       "field": "criteres_choix",
-      "prompt": "Rédige 3 paragraphes HTML sur les critères pour choisir un logiciel de {theme} en {year}. Critères essentiels, questions à se poser, pièges à éviter. Utilise <strong>. Aucun tiret long. Adapte au contexte réglementaire français si pertinent."
+      "prompt": "Rédige 3 paragraphes HTML sur les critères pour choisir un logiciel de {theme} en {year}. Critères essentiels, questions à se poser, pièges à éviter. Utilise <strong>. Aucun tiret long."
     },
     {
       "id": "fonctionnalites",
       "type": "paragraph",
       "label": "Fonctionnalités indispensables",
       "field": "fonctionnalites",
-      "prompt": "Rédige 3 paragraphes HTML sur les fonctionnalités indispensables à surveiller pour un logiciel de {theme} en {year}. Focus sur ce qui différencie les outils pros des outils amateurs. Mentionne les enjeux réglementaires français si pertinents ({theme}). Utilise <strong>. Aucun tiret long."
+      "prompt": "Rédige 3 paragraphes HTML sur les fonctionnalités indispensables pour un logiciel de {theme} en {year}. Utilise <strong>. Aucun tiret long."
     },
     {
       "id": "faq",
       "type": "faq",
       "label": "FAQ",
       "field": "faq",
-      "prompt": "Génère 5 questions/réponses FAQ pour une page classement des meilleurs logiciels de {theme} en {year}. Questions du type 'Quel est le logiciel le moins cher ?', 'Existe-t-il un logiciel gratuit ?', 'Comment migrer ?'. Réponses courtes et factuelles. Réponds en JSON : [{\"q\": \"question\", \"a\": \"réponse\"}, ...]. Aucun tiret long."
+      "prompt": "Génère 5 questions/réponses FAQ pour une page classement des meilleurs logiciels de {theme} en {year}. Réponds en JSON : [{\"q\": \"question\", \"a\": \"réponse\"}, ...]. Aucun tiret long."
     }
   ],
-  "keywords": {
-    "1": {
-      "10": {
-        "prompt_custom": ""
-      },
-      "11": {
-        "prompt_custom": ""
-      }
-    }
-  }
+  "keywords": {}
 }
