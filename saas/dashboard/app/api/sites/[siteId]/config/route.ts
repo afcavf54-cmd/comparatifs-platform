@@ -27,6 +27,7 @@ export async function GET(_: NextRequest, { params }: Params) {
   return NextResponse.json({
     home_title: get('home_title'),
     home_description: get('home_description'),
+    home_h1: get('home_h1'),
     www_preference: get('www_preference') || 'www',
     page_types: pageTypes,
     seo: {
@@ -57,6 +58,7 @@ export async function PATCH(req: NextRequest, { params }: Params) {
 
   replaceKey('home_title', body.home_title || '')
   replaceKey('home_description', body.home_description || '')
+  replaceKey('home_h1', body.home_h1 || '')
   replaceKey('www_preference', body.www_preference || 'www')
   replaceKey('title_pattern', body.seo_vs_title || '')
   replaceKey('meta_pattern', body.seo_vs_meta || '')
