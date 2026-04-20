@@ -35,6 +35,40 @@ if not ANTHROPIC_API_KEY:
     sys.exit(1)
 
 # ── API Claude ────────────────────────────────────────────────────────────────
+def call_claude_fast(prompt: str, system: str = None, max_retries: int = 3) -> str:
+    """Appel API Claude avec peu de retries — pour génération classement."""
+    body: dict = {
+        "model": MODEL,
+        "max_tokens": MAX_TOKENS,
+        "messages": [{"role": "user", "content": prompt}]
+    }
+    if system:
+        body["system"] = system
+    payload = json.dumps(body).encode("utf-8")
+
+    for attempt in range(max_retries):
+        try:
+            req = urllib.request.Request(
+                "https://api.anthropic.com/v1/messages",
+                data=payload,
+                headers={
+                    "Content-Type": "application/json",
+                    "x-api-key": ANTHROPIC_API_KEY,
+                    "anthropic-version": "2023-06-01",
+                }
+            )
+            with urllib.request.urlopen(req, timeout=120) as resp:
+                data = json.loads(resp.read())
+                return data["content"][0]["text"]
+        except Exception as e:
+            print(f"    ⚠ Tentative {attempt+1}/{max_retries} : {e}")
+            if attempt < max_retries - 1:
+                time.sleep([10, 30, 60][attempt])
+            else:
+                raise
+    return ""
+
+
 def call_claude(prompt: str, system: str = None) -> str:
     """Appel API Claude avec retry et backoff exponentiel."""
     body: dict = {
@@ -542,9 +576,9 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
                     continue
                 print(f"    [{section_key}]...", end=" ", flush=True)
                 sys_prompt = 'Tu es un expert rédacteur SEO. Réponds UNIQUEMENT en JSON valide sans backticks, sans preamble.' if is_json else 'Tu es un expert rédacteur SEO. Aucun tiret long (— ou –). Aucun markdown. Réponds uniquement avec le contenu HTML demandé.'
-                for attempt in range(5):
+                for attempt in range(3):
                     try:
-                        response = call_claude(section_prompt, system=sys_prompt)
+                        response = call_claude_fast(section_prompt, system=sys_prompt)
                         if is_json:
                             clean = response.replace('```json', '').replace('```', '').strip()
                             try:
@@ -566,9 +600,9 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
                     nom = prod.get('nom', '')
                     p_prompt = prompt_classement.replace('[NOM DU SITE]', nom).replace('{nom}', nom)
                     print(f"    [desc {nom}]...", end=" ", flush=True)
-                    for attempt in range(5):
+                    for attempt in range(3):
                         try:
-                            response = call_claude(p_prompt)
+                            response = call_claude_fast(p_prompt)
                             descriptions[prod.get('slug', nom)] = response.strip()
                             print("✓"); break
                         except Exception as e:
@@ -598,9 +632,9 @@ Réponds UNIQUEMENT en JSON valide sans backticks :
   "fonctionnalites": "3 paragraphes HTML sur les fonctionnalités indispensables",
   "faq": [{{"q": "question", "a": "réponse"}}, ...]
 }}"""
-            for attempt in range(5):
+            for attempt in range(3):
                 try:
-                    response = call_claude(prompt_generic)
+                    response = call_claude_fast(prompt_generic)
                     data = parse_json(response, key)
                     if data:
                         editorial[key] = data
