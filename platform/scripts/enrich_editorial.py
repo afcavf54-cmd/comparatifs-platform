@@ -587,7 +587,7 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
             for section_key, section_prompt, is_json in [
                 ('intro', prompt_intro, False),
                 ('contenu_custom', prompt_contenu, False),
-                ('faq', prompt_faq, True),
+                ('faq', prompt_faq + '\n\nIMPORTANT: Réponds UNIQUEMENT avec un tableau JSON simple : [{"q": "question", "a": "réponse"}, ...]. Pas de structure imbriquée, pas de clé "faq" parent.', True),
             ]:
                 if not section_prompt:
                     continue
