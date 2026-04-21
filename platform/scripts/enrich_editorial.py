@@ -24,6 +24,7 @@ import urllib.request
 from pathlib import Path
 
 def slugify_cat(s: str) -> str:
+    s = s.replace('’', ' ').replace('‘', ' ').replace("'", ' ').replace("'", ' ')
     s = _unicodedata.normalize('NFD', s)
     s = s.encode('ascii', 'ignore').decode('ascii')
     s = s.lower()
