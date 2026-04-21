@@ -81,10 +81,10 @@ main{max-width:1200px;margin:0 auto;padding:48px 5vw 80px}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
-.logiciel-rank{width:36px;height:36px;border-radius:50%;background:var(--accent2);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
 .logiciel-name{font-family:'{{ theme.font_title }}',serif;font-size:22px;font-weight:400;color:#fff}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
-.note-badge{margin-left:auto;background:var(--accent);color:#fff;font-size:12px;font-weight:600;padding:3px 10px;border-radius:16px}
+
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
 .logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
@@ -165,16 +165,12 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
   {% for prod in products %}
   <div class="logiciel-card" id="{{ prod.slug }}">
     <div class="logiciel-header">
-      <div class="logiciel-rank">#{{ loop.index }}</div>
       <div>
         <div class="logiciel-name">{{ prod.nom }}</div>
         {% if prod.tagline is defined and prod.tagline %}
         <div class="logiciel-tagline">{{ prod.tagline }}</div>
         {% endif %}
       </div>
-      {% if prod.note_redaction is defined and prod.note_redaction %}
-      <div class="note-badge">★ {{ prod.note_redaction }}/5</div>
-      {% endif %}
     </div>
     <div class="logiciel-body">
       {% if prod.logo_url is defined and prod.logo_url %}
@@ -208,13 +204,14 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
         {% endif %}
       </div>
 
+      {% set pf = prod.points_forts if (prod.points_forts is defined and prod.points_forts) else [] %}
+      {% set pfa = prod.points_faibles if (prod.points_faibles is defined and prod.points_faibles) else [] %}
+      {% if pf or pfa %}
       <table class="avantages-table">
         <thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead>
         <tbody>
-          {% set pf = prod.points_forts if prod.points_forts is defined else [] %}
-          {% set pfa = prod.points_faibles if prod.points_faibles is defined else [] %}
           {% set maxr = [pf | length, pfa | length] | max %}
-          {% for i in range(maxr if maxr > 0 else 1) %}
+          {% for i in range(maxr) %}
           <tr>
             <td>{{ pf[i] if i < pf | length else '' }}</td>
             <td>{{ pfa[i] if i < pfa | length else '' }}</td>
@@ -222,6 +219,9 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
           {% endfor %}
         </tbody>
       </table>
+      {% else %}
+      <p style="font-size:13px;color:var(--ink3);font-style:italic">Analyse en cours...</p>
+      {% endif %}
 
       {% if prod.prix_achat is defined and prod.prix_achat %}
       <div class="logiciel-prix">
