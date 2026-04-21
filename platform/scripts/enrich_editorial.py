@@ -16,10 +16,19 @@ import io
 import itertools
 import json
 import os
+import re as _re
 import sys
 import time
+import unicodedata as _unicodedata
 import urllib.request
 from pathlib import Path
+
+def slugify_cat(s: str) -> str:
+    s = _unicodedata.normalize('NFD', s)
+    s = s.encode('ascii', 'ignore').decode('ascii')
+    s = s.lower()
+    s = _re.sub(r"[^a-z0-9]+", '-', s)
+    return s.strip('-')
 
 # ── Config ────────────────────────────────────────────────────────────────────
 ROOT      = Path(__file__).parent.parent
@@ -545,7 +554,7 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
     print(f"\n  📊 Génération classements ({len(categories)} catégories)...")
 
     for cat, cat_products in categories.items():
-        cat_slug = cat.lower().replace(" ", "-").replace("_", "-")
+        cat_slug = slugify_cat(cat)
         key = f"classement-{cat_slug}"
 
         if skip_existing and key in editorial:
