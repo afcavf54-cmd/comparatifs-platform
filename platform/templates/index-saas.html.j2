@@ -114,16 +114,7 @@ main{max-width:1200px;margin:0 auto;padding:64px 5vw 80px}
 .cat-card-arrow{color:var(--accent);font-size:18px;opacity:0;transition:.15s}
 .cat-card:hover .cat-card-arrow{opacity:1}
 
-/* ── TOP LOGICIELS ── */
-.top-section{margin-bottom:56px}
-.top-section h2{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,3.5vw,40px);font-weight:400;letter-spacing:-.02em;margin-bottom:32px}
-.top-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
-.top-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px;text-align:center;transition:.15s}
-.top-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
-.top-card-logo{width:56px;height:56px;border-radius:12px;margin:0 auto 12px;object-fit:contain;background:#f8f8f8;padding:8px}
-.top-card-name{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px}
-.top-card-cat{font-size:11px;color:var(--ink3)}
-.top-card-note{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--accent);margin-top:8px}
+
 
 /* ── FOOTER ── */
 footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-size:13px}
@@ -218,7 +209,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
     {% if categories | length > 0 %}
     <div class="cat-cards">
       {% for cat in categories %}
-        {% set cat_slug = cat | lower | replace(' ', '-') | replace('é', 'e') | replace('è', 'e') | replace('ê', 'e') | replace('à', 'a') | replace('â', 'a') | replace('ù', 'u') | replace('û', 'u') | replace('î', 'i') | replace('ï', 'i') | replace('ô', 'o') | replace('ç', 'c') | replace("'", '-') | replace("'", '-') %}
+        {% set cat_slug = cat | lower | replace('’', '-') | replace('‘', '-') | replace("'", '-') | replace(' ', '-') | replace('é', 'e') | replace('è', 'e') | replace('ê', 'e') | replace('à', 'a') | replace('â', 'a') | replace('ù', 'u') | replace('û', 'u') | replace('î', 'i') | replace('ï', 'i') | replace('ô', 'o') | replace('ç', 'c') %}
         {% set count = products | selectattr('categorie', 'equalto', cat) | list | length %}
         <a href="/meilleur-{{ cat_slug }}" class="cat-card">
           <div class="cat-card-left">
