@@ -416,6 +416,8 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     )
     env.filters["capitalize"] = lambda s: s.capitalize() if s else ""
 
+    env.filters["md_to_html"] = lambda s: s
+
     MOIS_FR = ["janvier","février","mars","avril","mai","juin",
                "juillet","août","septembre","octobre","novembre","décembre"]
     def fr_date(d):
