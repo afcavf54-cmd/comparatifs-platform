@@ -41,7 +41,8 @@ import unicodedata as _unicodedata
 import re as _re
 
 def slugify_cat(s: str) -> str:
-    """Slugifie une catégorie en ASCII pur."""
+    """Slugifie une catégorie en ASCII pur (gère accents et apostrophes)."""
+    s = s.replace('\u2019', ' ').replace('\u2018', ' ').replace("'", ' ').replace("'", ' ')
     s = _unicodedata.normalize('NFD', s)
     s = s.encode('ascii', 'ignore').decode('ascii')
     s = s.lower()
