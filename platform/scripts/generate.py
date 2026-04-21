@@ -363,7 +363,7 @@ def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, a
         with open(editorial_path, encoding="utf-8") as ef:
             editorial = json.load(ef)
         valid_keys = {f"{a}-vs-{b}" for a, b in all_pairs}
-        orphan_keys = [k for k in editorial if k not in valid_keys]
+        orphan_keys = [k for k in editorial if k not in valid_keys and not k.startswith('classement-')]
         if orphan_keys:
             for k in orphan_keys:
                 del editorial[k]
