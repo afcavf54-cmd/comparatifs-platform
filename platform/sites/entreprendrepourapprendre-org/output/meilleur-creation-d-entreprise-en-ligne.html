@@ -84,9 +84,9 @@ main{max-width:1200px;margin:0 auto;padding:48px 5vw 80px}
 .avantages-table th{padding:9px 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;background:var(--ink);color:#fff}
 .avantages-table td{padding:10px 14px;font-size:14px;border-top:1px solid var(--border);vertical-align:top}
 .avantages-table td:first-child{color:var(--green)}
-.avantages-table td:first-child::before{content:"✓ ";font-weight:700}
+.avantages-table td:first-child:not(:empty)::before{content:"✓ ";font-weight:700}
 .avantages-table td:last-child{color:#A32D2D}
-.avantages-table td:last-child::before{content:"✗ ";font-weight:700}
+.avantages-table td:last-child:not(:empty)::before{content:"✗ ";font-weight:700}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
