@@ -564,8 +564,8 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 (output_dir / out_name).write_text(html, encoding="utf-8")
                 print(f"  ✓ {out_name}")
 
-        # Page comparatifs-scpi.html
-        if (TEMPLATES_DIR / "comparatifs-scpi.html.j2").exists():
+        # Page comparatifs-scpi.html (seulement pour sites non-classement)
+        if not is_classement_template and (TEMPLATES_DIR / "comparatifs-scpi.html.j2").exists():
             seo_cfg = config.get("seo", {})
             liste_comp_title = seo_cfg.get("liste_comp_title", "Tous les comparatifs {site_name} {year}")                 .replace("{site_name}", site.get("name", ""))                 .replace("{year}", str(site.get("year", "")))                 .replace("{total}", str(len(all_pairs)))
             html = env.get_template("comparatifs-scpi.html.j2").render(
@@ -576,23 +576,24 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             (output_dir / "comparatifs-scpi.html").write_text(html, encoding="utf-8")
             print(f"  ✓ comparatifs-scpi.html ({len(all_pairs)} comparatifs)")
 
-        # Page liste avis
-        liste_avis_tpl = f"liste-avis-{site_slug}.html.j2"
-        if not (TEMPLATES_DIR / liste_avis_tpl).exists():
-            liste_avis_tpl = "liste-avis-scpi.html.j2"
-        if (TEMPLATES_DIR / liste_avis_tpl).exists():
-            html = env.get_template(liste_avis_tpl).render(
-                site={**site, "seo": config.get("seo", {})}, theme=theme,
-                products=products, build_date=date.today().isoformat(),
-            )
-            (output_dir / "avis-scpi.html").write_text(html, encoding="utf-8")
-            print(f"  ✓ avis-scpi.html ({len(products)} SCPI)")
+        # Page liste avis + pages avis (seulement pour sites non-classement)
+        if not is_classement_template:
+            liste_avis_tpl = f"liste-avis-{site_slug}.html.j2"
+            if not (TEMPLATES_DIR / liste_avis_tpl).exists():
+                liste_avis_tpl = "liste-avis-scpi.html.j2"
+            if (TEMPLATES_DIR / liste_avis_tpl).exists():
+                html = env.get_template(liste_avis_tpl).render(
+                    site={**site, "seo": config.get("seo", {})}, theme=theme,
+                    products=products, build_date=date.today().isoformat(),
+                )
+                (output_dir / "avis-scpi.html").write_text(html, encoding="utf-8")
+                print(f"  ✓ avis-scpi.html ({len(products)} SCPI)")
 
-        # ── Pages AVIS ──────────────────────────────────────────────────────
+        # ── Pages AVIS (seulement pour sites non-classement) ────────────────
         avis_tpl_name = f"avis-{site_slug}.html.j2"
         if not (TEMPLATES_DIR / avis_tpl_name).exists():
-            avis_tpl_name = "avis-scpi.html.j2"  # fallback template générique
-        if (TEMPLATES_DIR / avis_tpl_name).exists():
+            avis_tpl_name = "avis-scpi.html.j2"
+        if not is_classement_template and (TEMPLATES_DIR / avis_tpl_name).exists():
             avis_count = 0
             prod_map = {p["slug"]: p for p in products}
             for prod in products:
