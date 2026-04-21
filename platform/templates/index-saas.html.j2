@@ -237,28 +237,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
     {% endif %}
   </section>
 
-  <!-- TOP LOGICIELS -->
-  {% if products %}
-  <section class="top-section">
-    <h2>Logiciels en vedette</h2>
-    <div class="top-grid">
-      {% for prod in products[:8] %}
-      <a href="/avis-{{ prod.slug }}" class="top-card">
-        {% if prod.logo_url is defined and prod.logo_url %}
-        <img src="{{ prod.logo_url }}" alt="{{ prod.nom }}" class="top-card-logo">
-        {% else %}
-        <div class="top-card-logo" style="display:flex;align-items:center;justify-content:center;font-size:24px">💼</div>
-        {% endif %}
-        <div class="top-card-name">{{ prod.nom }}</div>
-        <div class="top-card-cat">{{ prod.categorie | default(prod.niche | default('')) }}</div>
-        {% if prod.note_redaction is defined and prod.note_redaction %}
-        <div class="top-card-note">★ {{ prod.note_redaction }}/5</div>
-        {% endif %}
-      </a>
-      {% endfor %}
-    </div>
-  </section>
-  {% endif %}
+
 
 </main>
 
