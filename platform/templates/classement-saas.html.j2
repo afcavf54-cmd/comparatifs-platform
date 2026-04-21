@@ -245,13 +245,33 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 
   {% if editorial.faq is defined and editorial.faq %}
   <h2 class="section-title">Questions fréquentes</h2>
-  {% for item in editorial.faq %}
+
+  {# Gérer les différentes structures possibles de FAQ #}
+  {% set faq_items = [] %}
+  {% if editorial.faq is iterable and editorial.faq is not mapping %}
+    {# Cas normal : liste de {q, a} #}
+    {% set faq_items = editorial.faq %}
+  {% elif editorial.faq is mapping %}
+    {% if editorial.faq.faq is defined %}
+      {# Cas imbriqué : {faq: {questions: [...]}} #}
+      {% if editorial.faq.faq.questions is defined %}
+        {% set faq_items = editorial.faq.faq.questions %}
+      {% endif %}
+    {% elif editorial.faq.questions is defined %}
+      {% set faq_items = editorial.faq.questions %}
+    {% endif %}
+  {% endif %}
+
+  {% for item in faq_items %}
   <div class="faq-item">
     {% if item is mapping %}
-    <div class="faq-q">{{ item.q }}</div>
-    <div class="faq-a">{{ item.a }}</div>
-    {% else %}
-    <div class="faq-q">{{ item }}</div>
+      {% if item.q is defined %}
+      <div class="faq-q">{{ item.q }}</div>
+      <div class="faq-a">{{ item.a }}</div>
+      {% elif item.question is defined %}
+      <div class="faq-q">{{ item.question }}</div>
+      <div class="faq-a">{{ item.answer }}</div>
+      {% endif %}
     {% endif %}
   </div>
   {% endfor %}
