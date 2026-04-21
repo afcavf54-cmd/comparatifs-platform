@@ -40,6 +40,36 @@ except ImportError:
 import unicodedata as _unicodedata
 import re as _re
 
+def md_to_html(text):
+    if not text: return text
+    import re as _re2
+    lines = text.split('\n')
+    result = []; in_list = False
+    for line in lines:
+        ls = line.strip()
+        if not ls:
+            if in_list: result.append('</ul>'); in_list = False
+            continue
+        if '[' in ls and ']' in ls: continue
+        if ls.startswith('### '): 
+            if in_list: result.append('</ul>'); in_list = False
+            result.append('<h4>' + ls[4:] + '</h4>')
+        elif ls.startswith('## ') or ls.startswith('# '):
+            if in_list: result.append('</ul>'); in_list = False
+            result.append('<h3>' + ls.lstrip('#').strip() + '</h3>')
+        elif ls.startswith('- ') or ls.startswith('* '):
+            if not in_list: result.append('<ul>'); in_list = True
+            item = _re2.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', ls[2:])
+            result.append('<li>' + item + '</li>')
+        else:
+            if in_list: result.append('</ul>'); in_list = False
+            para = _re2.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', ls)
+            para = _re2.sub(r'\*(.+?)\*', r'<em>\1</em>', para)
+            result.append('<p>' + para + '</p>')
+    if in_list: result.append('</ul>')
+    return '\n'.join(result)
+
+
 def slugify_cat(s: str) -> str:
     """Slugifie une catégorie en ASCII pur (gère accents et apostrophes)."""
     s = s.replace('\u2019', ' ').replace('\u2018', ' ').replace("'", ' ').replace("'", ' ')
@@ -704,6 +734,9 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                             p["points_faibles"] = prod_ed["points_faibles"]
                         if not p.get("description") and prod_ed.get("description"):
                             p["description"] = prod_ed["description"]
+                    # Convertir markdown en HTML pour la description
+                    if p.get("description"):
+                        p["description"] = md_to_html(p["description"])
                     enriched_products.append(p)
                 html = classement_tpl.render(
                     site={**site, "seo": config.get("seo", {})},
