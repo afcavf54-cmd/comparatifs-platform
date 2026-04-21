@@ -690,10 +690,20 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 enriched_products = []
                 for prod in cat_products:
                     p = dict(prod)
-                    if "descriptions_produits" in cat_editorial:
-                        slug = prod.get("slug", "")
-                        if slug in cat_editorial["descriptions_produits"]:
-                            p["description"] = cat_editorial["descriptions_produits"][slug]
+                    slug = prod.get("slug", "")
+                    # Description depuis descriptions_produits dans l'editorial classement
+                    if "descriptions_produits" in cat_editorial and slug in cat_editorial["descriptions_produits"]:
+                        p["description"] = cat_editorial["descriptions_produits"][slug]
+                    # Points forts/faibles depuis classement-prod-{slug}
+                    prod_ed_key = f"classement-prod-{slug}"
+                    if prod_ed_key in editorials_fresh:
+                        prod_ed = editorials_fresh[prod_ed_key]
+                        if not p.get("points_forts") and prod_ed.get("points_forts"):
+                            p["points_forts"] = prod_ed["points_forts"]
+                        if not p.get("points_faibles") and prod_ed.get("points_faibles"):
+                            p["points_faibles"] = prod_ed["points_faibles"]
+                        if not p.get("description") and prod_ed.get("description"):
+                            p["description"] = prod_ed["description"]
                     enriched_products.append(p)
                 html = classement_tpl.render(
                     site={**site, "seo": config.get("seo", {})},
