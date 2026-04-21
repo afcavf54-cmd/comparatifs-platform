@@ -37,6 +37,17 @@ except ImportError:
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
+import unicodedata as _unicodedata
+import re as _re
+
+def slugify_cat(s: str) -> str:
+    """Slugifie une catégorie en ASCII pur."""
+    s = _unicodedata.normalize('NFD', s)
+    s = s.encode('ascii', 'ignore').decode('ascii')
+    s = s.lower()
+    s = _re.sub(r"[^a-z0-9]+", '-', s)
+    return s.strip('-')
+
 def load_yaml(path: Path) -> dict:
     with open(path, encoding="utf-8") as f:
         return yaml.safe_load(f)
@@ -283,7 +294,7 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path) 
     for prod in products:
         cat = prod.get("categorie", "").strip()
         if cat and cat not in categories_seen:
-            cat_slug = cat.lower().replace(" ", "-").replace("_", "-")
+            cat_slug = slugify_cat(cat)
             lines.append(
                 f'  <url><loc>{domain}/meilleur-{cat_slug}</loc>'
                 f'<lastmod>{today}</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>'
