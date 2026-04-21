@@ -665,6 +665,46 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 avis_count += 1
             print(f"  ✓ {avis_count} pages avis générées")
 
+    # ── Pages CLASSEMENT par catégorie ─────────────────────────────────
+    if not dry_run and is_classement_template:
+        editorials_fresh = load_editorial(site_dir)
+        classement_tpl = env.get_template(template_file)
+        categories: dict = {}
+        for prod in products:
+            cat = prod.get("categorie", "").strip()
+            if cat:
+                if cat not in categories:
+                    categories[cat] = []
+                categories[cat].append(prod)
+        if categories:
+            classement_count = 0
+            for cat, cat_products in categories.items():
+                cat_slug = slugify_cat(cat)
+                page_slug = f"meilleur-{cat_slug}"
+                seo_cfg = config.get("seo", {})
+                classement_title = seo_cfg.get("classement_title_pattern", "Meilleur {categorie} {year} : Top {count}")                     .replace("{categorie}", cat).replace("{year}", str(site.get("year", ""))).replace("{count}", str(len(cat_products)))
+                classement_meta = seo_cfg.get("classement_meta_pattern", "Comparez les meilleurs {categorie} en {year}.")                     .replace("{categorie}", cat).replace("{year}", str(site.get("year", "")))
+                cat_editorial = editorials_fresh.get(f"classement-{cat_slug}", {})
+                enriched_products = []
+                for prod in cat_products:
+                    p = dict(prod)
+                    if "descriptions_produits" in cat_editorial:
+                        slug = prod.get("slug", "")
+                        if slug in cat_editorial["descriptions_produits"]:
+                            p["description"] = cat_editorial["descriptions_produits"][slug]
+                    enriched_products.append(p)
+                html = classement_tpl.render(
+                    site={**site, "seo": config.get("seo", {})},
+                    theme=theme, products=enriched_products, criteria=criteria,
+                    page_slug=page_slug,
+                    seo={"title": classement_title, "meta": classement_meta, "h1": classement_title},
+                    editorial=cat_editorial, build_date=date.today().isoformat(),
+                )
+                (output_dir / f"{page_slug}.html").write_text(html, encoding="utf-8")
+                classement_count += 1
+                print(f"  ✓ {page_slug}.html")
+            print(f"  ✓ {classement_count} pages classement générées")
+
     print(f"\n  {'[DRY] ' if dry_run else ''}✅ {generated} pages générées, {skipped} ignorées")
     if not dry_run:
         print(f"  📁 Output : {output_dir}")
