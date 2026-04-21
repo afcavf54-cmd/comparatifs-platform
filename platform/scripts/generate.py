@@ -325,6 +325,16 @@ def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, a
     expected_files.add("politique-confidentialite.html")
     expected_files.add("contact.html")
     expected_files.add("404.html")
+    # Pages classement
+    for prod in products:
+        cat = prod.get("categorie", "").strip()
+        if cat:
+            from pathlib import Path as _P
+            import unicodedata as _u, re as _r
+            def _sc(s):
+                s = _u.normalize('NFD', s); s = s.encode('ascii','ignore').decode('ascii')
+                s = s.lower(); s = _r.sub(r"[^a-z0-9]+",'- ',s); return s.strip('-').replace(' ','-')
+            expected_files.add(f"meilleur-{_sc(cat)}.html")
     for slug in current_slugs:
         expected_files.add(f"avis-{slug}.html")
         expected_files.add(f"{slug}.png")
