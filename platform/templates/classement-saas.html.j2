@@ -184,8 +184,27 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
       {% endif %}
 
       <div class="logiciel-desc">
-        {% if prod.description is defined and prod.description %}{{ prod.description | safe }}
-        {% else %}<p><strong>{{ prod.nom }}</strong> est une solution développée par <strong>{{ prod.marque | default(prod.nom) }}</strong>.</p>
+        {% if prod.description is defined and prod.description %}
+          {% set desc = prod.description %}
+          {% if '##' in desc or '**' in desc or '- ' in desc %}
+            {# Markdown détecté - convertir #}
+            {% for line in desc.split('
+') %}
+              {% if line.startswith('## ') or line.startswith('# ') %}
+                <h3 style="font-family:'{{ theme.font_title }}',serif;font-size:18px;font-weight:400;margin:16px 0 8px">{{ line.replace('## ','').replace('# ','') }}</h3>
+              {% elif line.startswith('### ') %}
+                <h4 style="font-size:16px;font-weight:600;margin:12px 0 6px">{{ line.replace('### ','') }}</h4>
+              {% elif line.startswith('- ') %}
+                <li style="margin-left:20px;margin-bottom:4px">{{ line[2:] | replace('**','') }}</li>
+              {% elif line.strip() %}
+                <p style="margin-bottom:10px">{{ line | replace('**','') | replace('*','') }}</p>
+              {% endif %}
+            {% endfor %}
+          {% else %}
+            {{ desc | safe }}
+          {% endif %}
+        {% else %}
+          <p><strong>{{ prod.nom }}</strong> est une solution développée par <strong>{{ prod.marque | default(prod.nom) }}</strong>.</p>
         {% endif %}
       </div>
 
@@ -228,8 +247,12 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
   <h2 class="section-title">Questions fréquentes</h2>
   {% for item in editorial.faq %}
   <div class="faq-item">
+    {% if item is mapping %}
     <div class="faq-q">{{ item.q }}</div>
     <div class="faq-a">{{ item.a }}</div>
+    {% else %}
+    <div class="faq-q">{{ item }}</div>
+    {% endif %}
   </div>
   {% endfor %}
   {% endif %}
