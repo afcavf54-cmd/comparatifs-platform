@@ -1,13 +1,19 @@
-{% extends "base/comparatif-vs-base.html.j2" %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ seo.title }}</title>
+<meta name="description" content="{{ seo.meta }}">
+<link rel="canonical" href="{{ site.domain }}/{{ page_slug }}">
+<meta property="og:title" content="{{ seo.title }}">
+<meta property="og:description" content="{{ seo.meta }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.domain }}/{{ page_slug }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">
 
-{# ============================================================
-   classement-saas.html.j2
-   Structure : Intro → En bref → Classement détaillé → Tableau → Critères → FAQ
-   Schema : ItemList + SoftwareApplication + FAQPage
-   ============================================================ #}
-
-{% block extra_head %}
-{# ── Schema ItemList ───────────────────────────────────────── #}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
@@ -15,25 +21,15 @@
   "name": "{{ seo.title }}",
   "description": "{{ seo.meta }}",
   "url": "{{ site.domain }}/{{ page_slug }}",
+  "author": { "@type": "Organization", "name": "{{ site.author_name | default(site.name) }}" },
   "itemListElement": [
     {% for prod in products %}
-    {
-      "@type": "ListItem",
-      "position": {{ loop.index }},
-      "item": {
-        "@type": "SoftwareApplication",
-        "name": "{{ prod.nom }}",
-        "applicationCategory": "BusinessApplication",
-        {% if prod.prix_achat is defined and prod.prix_achat %}"offers": { "@type": "Offer", "price": "{{ prod.prix_achat }}", "priceCurrency": "EUR" },{% endif %}
-        {% if prod.note_redaction is defined and prod.note_redaction %}"aggregateRating": { "@type": "AggregateRating", "ratingValue": "{{ prod.note_redaction }}", "bestRating": "5", "worstRating": "1", "reviewCount": "10" }{% endif %}
-      }
-    }{% if not loop.last %},{% endif %}
+    { "@type": "ListItem", "position": {{ loop.index }}, "item": { "@type": "SoftwareApplication", "name": "{{ prod.nom }}", "applicationCategory": "BusinessApplication"{% if prod.prix_achat is defined and prod.prix_achat %}, "offers": { "@type": "Offer", "price": "{{ prod.prix_achat }}", "priceCurrency": "EUR" }{% endif %} } }{% if not loop.last %},{% endif %}
     {% endfor %}
   ]
 }
 </script>
 
-{# ── Schema FAQPage ─────────────────────────────────────────── #}
 {% if editorial.faq is defined and editorial.faq %}
 <script type="application/ld+json">
 {
@@ -47,258 +43,220 @@
 }
 </script>
 {% endif %}
-{% endblock %}
 
-{% block extra_css %}
-.classement-intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 32px;text-align:left}
+<style>
+:root{
+  --bg:{{ theme.bg }};--surface:#fff;--surface2:#F0ECE5;--ink:{{ theme.ink }};
+  --ink2:#6B6560;--ink3:#A09890;--accent:{{ theme.accent }};--accent2:{{ theme.accent2 }};
+  --border:#E2DDD6;--r:12px;--r2:20px;--green:#1A7A4A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'{{ theme.font_body }}',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
+a{color:inherit;text-decoration:none}
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav-logo{font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--accent2);color:#fff;font-size:13px;font-weight:700;transition:.15s}
+.nav-cta:hover{opacity:.88}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+.hero{background:var(--ink);padding:48px 5vw 40px;text-align:center}
+.hero h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4vw,48px);font-weight:400;color:#fff;line-height:1.15;letter-spacing:-.02em;max-width:800px;margin:0 auto 16px}
+.hero h1 em{font-style:italic;color:var(--accent2)}
+.hero-meta{font-size:14px;color:rgba(255,255,255,.5);margin-top:8px}
+main{max-width:900px;margin:0 auto;padding:48px 5vw 80px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 32px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 40px}
-.en-bref-title{font-family:'{{ theme.font_title }}',serif;font-size:22px;font-weight:400;color:var(--ink);margin:0 0 8px}
-.en-bref-subtitle{font-size:14px;color:var(--ink2);margin:0 0 16px}
+.en-bref-title{font-family:'{{ theme.font_title }}',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
+.en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:16px;color:var(--ink2);display:flex;align-items:flex-start;gap:10px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
-.logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 40px}
-.logiciel-card-header{background:var(--ink);padding:20px 28px;display:flex;align-items:center;gap:16px}
-.logiciel-rank{width:40px;height:40px;border-radius:50%;background:var(--accent2);color:#fff;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.logiciel-name{font-family:'{{ theme.font_title }}',serif;font-size:24px;font-weight:400;color:#fff}
-.logiciel-tagline{font-size:13px;color:rgba(255,255,255,.55);margin-top:2px}
-.logiciel-body{padding:24px 28px}
-.logiciel-screenshot{width:100%;height:200px;object-fit:cover;border-radius:var(--r);margin:0 0 20px;border:1px solid var(--border);background:var(--surface2)}
-.logiciel-screenshot-placeholder{width:100%;height:160px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 20px}
-.logiciel-desc{font-size:17px;color:var(--ink2);line-height:1.75;margin:0 0 20px}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 20px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
-.avantages-table th{padding:10px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;background:var(--ink);color:#fff}
-.avantages-table td{padding:11px 16px;font-size:15px;border-top:1px solid var(--border);vertical-align:top}
-.avantages-table td:first-child{color:#1A7A4A}
+.logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
+.logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
+.logiciel-rank{width:36px;height:36px;border-radius:50%;background:var(--accent2);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logiciel-name{font-family:'{{ theme.font_title }}',serif;font-size:22px;font-weight:400;color:#fff}
+.logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
+.note-badge{margin-left:auto;background:var(--accent);color:#fff;font-size:12px;font-weight:600;padding:3px 10px;border-radius:16px}
+.logiciel-body{padding:20px 24px}
+.logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
+.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table th{padding:9px 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;background:var(--ink);color:#fff}
+.avantages-table td{padding:10px 14px;font-size:14px;border-top:1px solid var(--border);vertical-align:top}
+.avantages-table td:first-child{color:var(--green)}
 .avantages-table td:first-child::before{content:"✓ ";font-weight:700}
 .avantages-table td:last-child{color:#A32D2D}
 .avantages-table td:last-child::before{content:"✗ ";font-weight:700}
-.logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:var(--r);background:var(--accent2);color:#fff;font-size:15px;font-weight:700;text-decoration:none;transition:.15s;margin-top:8px}
+.logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
+.logiciel-prix strong{color:var(--accent);font-size:18px}
+.logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
+.logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:var(--r);background:var(--accent2);color:#fff;font-size:14px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
-.note-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;font-size:13px;font-weight:600;padding:4px 12px;border-radius:20px}
-.tableau-comparatif{width:100%;border-collapse:collapse;margin:0 0 32px;font-size:14px}
-.tableau-comparatif th{background:var(--ink);color:#fff;padding:12px 16px;text-align:left;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
-.tableau-comparatif td{padding:11px 16px;border-bottom:1px solid var(--border)}
-.tableau-comparatif tr:hover td{background:var(--surface2)}
-.check{color:#1A7A4A;font-weight:700}
-.cross{color:#A32D2D}
-.criteres-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:0 0 32px}
+.section-title{font-family:'{{ theme.font_title }}',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
+.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom h2{font-family:'{{ theme.font_title }}',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
+.content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
+.faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+.faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
+.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-size:13px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.footer-logo{font-family:'{{ theme.font_title }}',serif;font-size:16px;color:#fff}.footer-logo span{color:var(--accent2)}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-links a{color:rgba(255,255,255,.4);transition:.15s}.footer-links a:hover{color:#fff}
+.footer-copy{color:rgba(255,255,255,.25);font-size:12px;width:100%;text-align:center;margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.06)}
 @media(max-width:768px){
-  .logiciel-card-header{padding:16px}
-  .logiciel-body{padding:16px}
-  .avantages-table th,.avantages-table td{padding:8px 10px;font-size:13px}
-  .tableau-comparatif{display:block;overflow-x:auto}
+  .nav-links,.nav-cta{display:none}
+  .nav-burger{display:flex}
+  .avantages-table{display:block;overflow-x:auto}
+  .footer-inner{flex-direction:column;text-align:center}
 }
-{% endblock %}
+</style>
+</head>
+<body>
 
-{% block comparaison_detail %}
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></a>
+    <div class="nav-links">
+      <a href="/">Accueil</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <a href="/contact" class="nav-cta">Nous contacter</a>
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="/">Accueil</a>
+    <a href="/contact">Contact</a>
+  </div>
+</nav>
 
-{# ── INTRODUCTION ────────────────────────────────────────────── #}
-<div class="classement-intro">
+<div class="hero">
+  <h1>{{ seo.h1 | safe }}</h1>
+  <div class="hero-meta">Mis à jour le {{ build_date }} · {{ products | length }} logiciels analysés</div>
+</div>
+
+<main>
+
   {% if editorial.intro is defined and editorial.intro %}
-    {{ editorial.intro | safe }}
-  {% else %}
-  <p>Découvrez notre sélection des meilleurs logiciels de {{ site.theme_label | default('cette catégorie') }} en {{ site.year }}.</p>
+  <div class="intro">{{ editorial.intro | safe }}</div>
   {% endif %}
-</div>
 
-{# ── EN BREF ─────────────────────────────────────────────────── #}
-<div class="en-bref">
-  <div class="en-bref-title">⚡ En bref</div>
-  <div class="en-bref-subtitle">Si vous avez la flemme de parcourir notre comparatif détaillé, voici nos recommandations ❤️</div>
   {% if editorial.en_bref is defined and editorial.en_bref %}
+  <div class="en-bref">
+    <div class="en-bref-title">⚡ En bref</div>
+    <div class="en-bref-sub">Si vous avez la flemme de parcourir notre comparatif détaillé, voici nos recommandations ❤️</div>
     {{ editorial.en_bref | safe }}
-  {% else %}
-  <ul>
-    {% for prod in products[:5] %}
-    <li><strong>{{ prod.nom }}</strong> — {{ prod.tagline | default('solution recommandée') }}</li>
-    {% endfor %}
-  </ul>
+  </div>
   {% endif %}
-</div>
 
-{# ── CLASSEMENT DÉTAILLÉ ────────────────────────────────────── #}
-<h2>Analyse détaillée des meilleurs {{ site.theme_label | default('logiciels') }} en {{ site.year }}</h2>
+  <h2 class="section-title">Analyse détaillée</h2>
 
-{% for prod in products %}
-<div class="logiciel-card" id="logiciel-{{ prod.slug }}">
-  <div class="logiciel-card-header">
-    <div class="logiciel-rank">#{{ loop.index }}</div>
-    <div>
-      <div class="logiciel-name">{{ prod.nom }}</div>
-      <div class="logiciel-tagline">
-        {% if prod.tagline is defined and prod.tagline %}{{ prod.tagline }}
-        {% elif prod.note_redaction is defined %}Note : {{ prod.note_redaction }}/5
+  {% for prod in products %}
+  <div class="logiciel-card" id="{{ prod.slug }}">
+    <div class="logiciel-header">
+      <div class="logiciel-rank">#{{ loop.index }}</div>
+      <div>
+        <div class="logiciel-name">{{ prod.nom }}</div>
+        {% if prod.tagline is defined and prod.tagline %}
+        <div class="logiciel-tagline">{{ prod.tagline }}</div>
         {% endif %}
       </div>
-    </div>
-    {% if prod.note_redaction is defined and prod.note_redaction %}
-    <div style="margin-left:auto">
+      {% if prod.note_redaction is defined and prod.note_redaction %}
       <div class="note-badge">★ {{ prod.note_redaction }}/5</div>
-    </div>
-    {% endif %}
-  </div>
-
-  <div class="logiciel-body">
-    {# Screenshot / logo #}
-    {% if prod.logo_url is defined and prod.logo_url %}
-    <img src="{{ prod.logo_url }}" alt="Interface {{ prod.nom }}" class="logiciel-screenshot">
-    {% else %}
-    <div class="logiciel-screenshot-placeholder">
-      <span>📸 Capture d'écran {{ prod.nom }}</span>
-    </div>
-    {% endif %}
-
-    {# Description #}
-    <div class="logiciel-desc">
-      {% set prod_key = prod.slug %}
-      {% if editorial[prod_key] is defined and editorial[prod_key].description is defined %}
-        {{ editorial[prod_key].description | safe }}
-      {% elif prod.description is defined and prod.description %}
-        {{ prod.description | safe }}
-      {% else %}
-        <p><strong>{{ prod.nom }}</strong> est une solution {{ prod.type | default('SaaS') }} développée par <strong>{{ prod.marque | default(prod.nom) }}</strong>.</p>
       {% endif %}
     </div>
+    <div class="logiciel-body">
+      {% if prod.logo_url is defined and prod.logo_url %}
+      <img src="{{ prod.logo_url }}" alt="{{ prod.nom }}" style="width:100%;height:160px;object-fit:cover;border-radius:var(--r);margin:0 0 16px;border:1px solid var(--border)">
+      {% else %}
+      <div class="logiciel-placeholder">📸 {{ prod.nom }}</div>
+      {% endif %}
 
-    {# Tableau Avantages / Inconvénients #}
-    <table class="avantages-table">
-      <thead>
-        <tr>
-          <th>✅ Avantages</th>
-          <th>❌ Inconvénients</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% set points_forts = editorial[prod.slug].points_forts if editorial[prod.slug] is defined and editorial[prod.slug].points_forts is defined else prod.points_forts | default([]) %}
-        {% set points_faibles = editorial[prod.slug].points_faibles if editorial[prod.slug] is defined and editorial[prod.slug].points_faibles is defined else prod.points_faibles | default([]) %}
-        {% set max_rows = [points_forts | length, points_faibles | length] | max %}
-        {% for i in range(max_rows) %}
-        <tr>
-          <td>{{ points_forts[i] if i < points_forts | length else '' }}</td>
-          <td>{{ points_faibles[i] if i < points_faibles | length else '' }}</td>
-        </tr>
-        {% endfor %}
-        {% if max_rows == 0 %}
-        <tr><td>À compléter</td><td>À compléter</td></tr>
+      <div class="logiciel-desc">
+        {% if prod.description is defined and prod.description %}{{ prod.description | safe }}
+        {% else %}<p><strong>{{ prod.nom }}</strong> est une solution développée par <strong>{{ prod.marque | default(prod.nom) }}</strong>.</p>
         {% endif %}
-      </tbody>
-    </table>
+      </div>
 
-    {# Prix #}
-    {% if prod.prix_achat is defined and prod.prix_achat %}
-    <div style="font-size:15px;color:var(--ink2);margin-bottom:16px">
-      💰 À partir de <strong style="color:var(--accent);font-size:18px">{{ prod.prix_achat | string | replace('.0','') }}€</strong>/mois
-      {% if prod.essai_gratuit is defined and prod.essai_gratuit %} · <span style="color:#1A7A4A;font-weight:600">Essai gratuit disponible</span>{% endif %}
+      <table class="avantages-table">
+        <thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead>
+        <tbody>
+          {% set pf = prod.points_forts if prod.points_forts is defined else [] %}
+          {% set pfa = prod.points_faibles if prod.points_faibles is defined else [] %}
+          {% set maxr = [pf | length, pfa | length] | max %}
+          {% for i in range(maxr if maxr > 0 else 1) %}
+          <tr>
+            <td>{{ pf[i] if i < pf | length else '' }}</td>
+            <td>{{ pfa[i] if i < pfa | length else '' }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      {% if prod.prix_achat is defined and prod.prix_achat %}
+      <div class="logiciel-prix">
+        À partir de <strong>{{ prod.prix_achat | string | replace('.0','') }}€</strong>/mois
+        {% if prod.essai_gratuit is defined and prod.essai_gratuit %}<span class="essai">· Essai gratuit</span>{% endif %}
+      </div>
+      {% endif %}
+
+      {% if prod.url_affiliation is defined and prod.url_affiliation %}
+      <a href="{{ prod.url_affiliation }}" class="logiciel-cta" rel="nofollow" target="_blank">
+        → Essayer {{ prod.nom }}
+      </a>
+      {% endif %}
     </div>
-    {% endif %}
-
-    {# CTA #}
-    {% if prod.url_affiliation is defined and prod.url_affiliation %}
-    <a href="{{ prod.url_affiliation }}" class="logiciel-cta" rel="nofollow" target="_blank">
-      → Essayer {{ prod.nom }} gratuitement
-    </a>
-    {% endif %}
-
-    {# Lien vers page avis #}
-    <a href="/avis-{{ prod.slug }}" style="display:inline-flex;align-items:center;gap:6px;margin-left:12px;font-size:14px;color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px">
-      📖 Lire notre avis complet →
-    </a>
   </div>
-</div>
-{% endfor %}
+  {% endfor %}
 
-{# ── TABLEAU COMPARATIF RÉCAPITULATIF ───────────────────────── #}
-<h2>Tableau comparatif récapitulatif {{ site.year }}</h2>
-<div style="overflow-x:auto;margin:0 0 40px">
-  <table class="tableau-comparatif">
-    <thead>
-      <tr>
-        <th>Logiciel</th>
-        <th>Note</th>
-        <th>Prix dès</th>
-        <th>Essai gratuit</th>
-        {% for crit in criteria[:4] %}
-        <th>{{ crit.label }}</th>
-        {% endfor %}
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for prod in products %}
-      <tr>
-        <td><strong>{{ prod.nom }}</strong><br><span style="font-size:12px;color:var(--ink3)">{{ prod.marque | default('') }}</span></td>
-        <td>{% if prod.note_redaction is defined %}<span class="note-badge" style="font-size:12px;padding:2px 8px">★ {{ prod.note_redaction }}</span>{% else %}—{% endif %}</td>
-        <td>{% if prod.prix_achat is defined and prod.prix_achat %}{{ prod.prix_achat | string | replace('.0','') }}€{% else %}Sur devis{% endif %}</td>
-        <td>{% if prod.essai_gratuit is defined and prod.essai_gratuit %}<span class="check">✓</span>{% else %}<span class="cross">✗</span>{% endif %}</td>
-        {% for crit in criteria[:4] %}
-        <td>{% set val = prod[crit.field] if crit.field in prod else '—' %}{{ val }}{% if val != '—' and crit.suffix is defined %} {{ crit.suffix }}{% endif %}</td>
-        {% endfor %}
-        <td>{% if prod.url_affiliation is defined and prod.url_affiliation %}<a href="{{ prod.url_affiliation }}" rel="nofollow" target="_blank" style="color:var(--accent2);font-weight:600;font-size:13px">Essayer →</a>{% else %}—{% endif %}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
+  {% if editorial.contenu_custom is defined and editorial.contenu_custom %}
+  <div class="content-custom">{{ editorial.contenu_custom | safe }}</div>
+  {% endif %}
 
-{# ── COMMENT CHOISIR ────────────────────────────────────────── #}
-{% if editorial.criteres_choix is defined and editorial.criteres_choix %}
-<h2>Comment choisir son logiciel de {{ site.theme_label | default('cette catégorie') }} ?</h2>
-<div class="criteres-section">
-  {{ editorial.criteres_choix | safe }}
-</div>
-{% endif %}
-
-{# ── FONCTIONNALITÉS ─────────────────────────────────────────── #}
-{% if editorial.fonctionnalites is defined and editorial.fonctionnalites %}
-<h2>Les fonctionnalités indispensables à surveiller</h2>
-<div class="criteres-section">
-  {{ editorial.fonctionnalites | safe }}
-</div>
-{% endif %}
-
-{% endblock %}
-
-{% block faq_schema %}
-{% if editorial.faq is defined and editorial.faq %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {% for item in editorial.faq %}
-    {"@type":"Question","name":"{{ item.q }}","acceptedAnswer":{"@type":"Answer","text":"{{ item.a }}"}}{% if not loop.last %},{% endif %}
-    {% endfor %}
-  ]
-}
-</script>
-{% endif %}
-{% endblock %}
-
-{% block faq_items %}
-{% if editorial.faq is defined and editorial.faq %}
+  {% if editorial.faq is defined and editorial.faq %}
+  <h2 class="section-title">Questions fréquentes</h2>
   {% for item in editorial.faq %}
   <div class="faq-item">
     <div class="faq-q">{{ item.q }}</div>
     <div class="faq-a">{{ item.a }}</div>
   </div>
   {% endfor %}
-{% else %}
-<div class="faq-item">
-  <div class="faq-q">Quel est le meilleur logiciel de {{ site.theme_label | default('cette catégorie') }} en {{ site.year }} ?</div>
-  <div class="faq-a">{{ products[0].nom if products else 'Notre top 1' }} est notre recommandation principale. Consultez notre classement détaillé pour trouver la solution adaptée à votre profil.</div>
-</div>
-<div class="faq-item">
-  <div class="faq-q">Existe-t-il un logiciel gratuit ?</div>
-  <div class="faq-a">Plusieurs solutions proposent un essai gratuit ou un plan freemium. Consultez notre tableau comparatif pour identifier les options sans engagement.</div>
-</div>
-{% endif %}
-{% endblock %}
+  {% endif %}
 
-{% block aff_notice %}
-<div class="disclaimer">
-  <div class="disclaimer-title">ℹ️ Information sur les liens</div>
-  <p>Certains liens de cet article sont des liens affiliés. Si vous cliquez dessus et souscrivez un abonnement, nous percevons une commission sans frais supplémentaires pour vous. Nos recommandations restent indépendantes et basées sur notre analyse.</p>
-</div>
-{% endblock %}
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></div>
+    <div class="footer-links">
+      <a href="/">Accueil</a>
+      <a href="/contact">Contact</a>
+      <a href="/mentions-legales">Mentions légales</a>
+      <a href="/politique-confidentialite">Confidentialité</a>
+    </div>
+    <div class="footer-copy">© {{ site.year }} {{ site.name }} · Tous droits réservés</div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById('nav-mobile').classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  var m=document.getElementById('nav-mobile'),b=document.getElementById('burger');
+  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');}
+});
+</script>
+</body>
+</html>
