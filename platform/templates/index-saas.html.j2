@@ -151,18 +151,17 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
   <div class="nav-inner">
     <a href="/" class="nav-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></a>
     <div class="nav-links">
-      <a href="/comparatifs-scpi" class="active">Comparateurs</a>
-      <a href="/avis-scpi">Avis</a>
+      <a href="/" class="active">Accueil</a>
+      <a href="/contact">Contact</a>
     </div>
-    <a href="/contact" class="nav-cta">Contact</a>
+    <a href="/contact" class="nav-cta">Nous contacter</a>
     <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-mobile" id="nav-mobile">
-    <a href="/comparatifs-scpi">Comparateurs</a>
-    <a href="/avis-scpi">Avis</a>
-    <a href="/contact" class="nav-cta">Contact</a>
+    <a href="/">Accueil</a>
+    <a href="/contact">Contact</a>
   </div>
 </nav>
 
@@ -206,56 +205,35 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
     <h2>Nos comparateurs</h2>
     <p class="comparateurs-subtitle">Trouvez le meilleur logiciel selon votre métier et vos besoins</p>
 
-    {% set categories_seen = namespace(groups={}) %}
+    {# Grouper produits par categorie #}
+    {% set categories = [] %}
     {% for prod in products %}
-      {% if prod.niche is defined and prod.niche and prod.categorie is defined and prod.categorie %}
-        {% set niche = prod.niche %}
-        {% set cat = prod.categorie %}
-      {% endif %}
-    {% endfor %}
-
-    {# Grouper produits par niche puis categorie #}
-    {% set niches = [] %}
-    {% for prod in products %}
-      {% if prod.niche is defined and prod.niche %}
-        {% if prod.niche not in niches %}
-          {% set _ = niches.append(prod.niche) %}
+      {% if prod.categorie is defined and prod.categorie %}
+        {% if prod.categorie not in categories %}
+          {% set _ = categories.append(prod.categorie) %}
         {% endif %}
       {% endif %}
     {% endfor %}
 
-    {% for niche in niches %}
-    <div class="cat-group">
-      <div class="cat-group-title">{{ niche }}</div>
-      <div class="cat-cards">
-        {% set cats_in_niche = [] %}
-        {% for prod in products %}
-          {% if prod.niche == niche and prod.categorie is defined and prod.categorie %}
-            {% if prod.categorie not in cats_in_niche %}
-              {% set _ = cats_in_niche.append(prod.categorie) %}
-            {% endif %}
-          {% endif %}
-        {% endfor %}
-        {% for cat in cats_in_niche %}
-          {% set cat_slug = cat | lower | replace(' ', '-') %}
-          {% set count = products | selectattr('categorie', 'equalto', cat) | list | length %}
-          <a href="/meilleur-{{ cat_slug }}" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">{{ cat | capitalize }}</div>
-                <div class="cat-card-count">{{ count }} logiciel{{ 's' if count > 1 else '' }}</div>
-              </div>
+    {% if categories | length > 0 %}
+    <div class="cat-cards">
+      {% for cat in categories %}
+        {% set cat_slug = cat | lower | replace(' ', '-') %}
+        {% set count = products | selectattr('categorie', 'equalto', cat) | list | length %}
+        <a href="/meilleur-{{ cat_slug }}" class="cat-card">
+          <div class="cat-card-left">
+            <div class="cat-card-icon">💻</div>
+            <div>
+              <div class="cat-card-name">{{ cat | capitalize }}</div>
+              <div class="cat-card-count">{{ count }} logiciel{{ 's' if count > 1 else '' }}</div>
             </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-        {% endfor %}
-      </div>
+          </div>
+          <span class="cat-card-arrow">→</span>
+        </a>
+      {% endfor %}
     </div>
-    {% endfor %}
-
-    {% if niches | length == 0 %}
-    <div style="color:var(--ink3);font-size:14px;padding:20px 0">Ajoutez des colonnes <code>niche</code> et <code>categorie</code> dans votre Google Sheet pour afficher les comparateurs.</div>
+    {% else %}
+    <div style="color:var(--ink3);font-size:14px;padding:20px 0">Ajoutez une colonne <code>categorie</code> dans votre Google Sheet pour afficher les comparateurs.</div>
     {% endif %}
   </section>
 
@@ -289,8 +267,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
   <div class="footer-inner">
     <div class="footer-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></div>
     <div class="footer-links">
-      <a href="/comparatifs-scpi">Comparateurs</a>
-      <a href="/avis-scpi">Avis</a>
+      <a href="/">Accueil</a>
       {% if site.footer_pages is defined %}
         {% for page in site.footer_pages %}
         <a href="/{{ page.slug }}">{{ page.label }}</a>
