@@ -411,6 +411,40 @@ export default function ClassementsPage() {
                   />
                 </div>
 
+                {/* Ordre des marques */}
+                {catProducts.length > 0 && (
+                  <div style={{ marginBottom: 20 }}>
+                    <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 10 }}>🔢 Ordre du classement</div>
+                    <div style={{ fontSize: 12, color: '#4A5568', marginBottom: 10 }}>Par défaut : trié par note. Entrez un numéro pour forcer la position.</div>
+                    <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 6 }}>
+                      {catProducts.map((prod: any) => {
+                        const orderMap = selectedData.products_order || {}
+                        const currentOrder = orderMap[prod.slug] ?? ''
+                        return (
+                          <div key={prod.slug} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 12px', background: '#0A0E1A', borderRadius: 8, border: '1px solid #1E2D3D' }}>
+                            <input
+                              type="number" min="1" max="99"
+                              value={currentOrder}
+                              placeholder="Auto"
+                              onChange={e => {
+                                const val = e.target.value
+                                const newOrder = { ...(selectedData.products_order || {}) }
+                                if (val === '') delete newOrder[prod.slug]
+                                else newOrder[prod.slug] = parseInt(val)
+                                updateField(selected, 'products_order', newOrder)
+                              }}
+                              style={{ width: 60, padding: '5px 8px', borderRadius: 6, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', textAlign: 'center' }}
+                            />
+                            <span style={{ fontSize: 13, color: currentOrder !== '' ? '#00D4AA' : '#8B9CB0', fontWeight: currentOrder !== '' ? 600 : 400 }}>{prod.nom}</span>
+                            {prod.note_redaction && <span style={{ fontSize: 11, color: '#4A5568', marginLeft: 'auto' }}>★ {prod.note_redaction}</span>}
+                            {currentOrder !== '' && <span style={{ fontSize: 10, color: '#00D4AA' }}>Position forcée</span>}
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )}
+
                 {/* Contenu des marques */}
                 {catProducts.length > 0 && (
                   <div style={{ marginBottom: 20 }}>
