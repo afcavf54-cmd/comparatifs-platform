@@ -124,6 +124,7 @@ export default function TemplateDetailPage() {
   const [availableCategories, setAvailableCategories] = useState<string[]>([])
   const [newCategoryName, setNewCategoryName] = useState('')
   const [newGroupName, setNewGroupName] = useState('')
+  const [confirmDelete, setConfirmDelete] = useState<string | null>(null)
   const [uploadingImg, setUploadingImg] = useState<Record<string, boolean>>({})
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -229,6 +230,33 @@ export default function TemplateDetailPage() {
 
   return (
     <div style={{ maxWidth: 900 }}>
+      {/* Popup confirmation suppression */}
+      {confirmDelete && (
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.7)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 14, padding: 28, maxWidth: 400, width: '90%' }}>
+            <div style={{ fontSize: 18, fontWeight: 700, color: '#fff', marginBottom: 12 }}>Supprimer ce type ?</div>
+            <div style={{ fontSize: 14, color: '#8B9CB0', marginBottom: 24, lineHeight: 1.6 }}>
+              Le type <strong style={{ color: '#fff' }}>{confirmDelete}</strong> et tous ses prompts seront supprimés. Cette action est irréversible.
+            </div>
+            <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end' }}>
+              <button onClick={() => setConfirmDelete(null)}
+                style={{ padding: '9px 18px', borderRadius: 8, border: '1px solid #1E2D3D', background: 'transparent', color: '#8B9CB0', cursor: 'pointer', fontSize: 14 }}>
+                Annuler
+              </button>
+              <button onClick={() => {
+                const type = confirmDelete
+                setSchema((prev: any) => { const k = { ...prev.keywords }; delete k[type]; return { ...prev, keywords: k } })
+                if (selectedGroup === type) setSelectedGroup(null)
+                setConfirmDelete(null)
+              }}
+                style={{ padding: '9px 18px', borderRadius: 8, border: 'none', background: '#FC8181', color: '#fff', cursor: 'pointer', fontSize: 14, fontWeight: 600 }}>
+                🗑 Supprimer
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Input file caché */}
       <input ref={fileInputRef} type="file" accept="image/*" style={{ display: 'none' }}
         onChange={e => {
@@ -282,7 +310,7 @@ export default function TemplateDetailPage() {
                     {keywords[type]?.__products?.length ? `${keywords[type].__products.length} produits` : 'Non synchronisé'}
                   </div>
                 </div>
-                <span onClick={e => { e.stopPropagation(); if (window.confirm(`Supprimer le type "${type}" ? Cette action est irréversible.`)) { setSchema((prev: any) => { const k = { ...prev.keywords }; delete k[type]; return { ...prev, keywords: k } }); if (selectedGroup === type) setSelectedGroup(null) } }}
+                <span onClick={e => { e.stopPropagation(); setConfirmDelete(type) }}
                   style={{ color: '#FC8181', cursor: 'pointer', fontSize: 16 }}>×</span>
               </div>
             ))}
