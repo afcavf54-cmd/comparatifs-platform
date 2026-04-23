@@ -8,26 +8,32 @@ export async function POST(req: NextRequest) {
   try {
     const { path, content, message, sha } = await req.json()
     if (!path || !content) return NextResponse.json({ ok: false, error: 'path and content required' })
-
     const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`
     const body: any = { message: message || `Upload: ${path}`, content }
     if (sha) body.sha = sha
-
     const r = await fetch(url, {
       method: 'PUT',
-      headers: {
-        Authorization: `Bearer ${GITHUB_TOKEN}`,
-        'Content-Type': 'application/json',
-        Accept: 'application/vnd.github+json',
-      },
+      headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, 'Content-Type': 'application/json', Accept: 'application/vnd.github+json' },
       body: JSON.stringify(body),
     })
+    if (!r.ok) { const err = await r.json(); return NextResponse.json({ ok: false, error: err.message }) }
+    return NextResponse.json({ ok: true })
+  } catch (e: any) {
+    return NextResponse.json({ ok: false, error: e.message })
+  }
+}
 
-    if (!r.ok) {
-      const err = await r.json()
-      return NextResponse.json({ ok: false, error: err.message })
-    }
-
+export async function DELETE(req: NextRequest) {
+  try {
+    const { path, sha, message } = await req.json()
+    if (!path || !sha) return NextResponse.json({ ok: false, error: 'path and sha required' })
+    const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`
+    const r = await fetch(url, {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${GITHUB_TOKEN}`, 'Content-Type': 'application/json', Accept: 'application/vnd.github+json' },
+      body: JSON.stringify({ message: message || `Delete: ${path}`, sha }),
+    })
+    if (!r.ok) { const err = await r.json(); return NextResponse.json({ ok: false, error: err.message }) }
     return NextResponse.json({ ok: true })
   } catch (e: any) {
     return NextResponse.json({ ok: false, error: e.message })
