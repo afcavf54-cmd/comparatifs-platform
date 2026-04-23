@@ -749,10 +749,28 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                             p["points_faibles"] = prod_ed["points_faibles"]
                         if not p.get("description") and prod_ed.get("description"):
                             p["description"] = prod_ed["description"]
+                    # Données éditées manuellement via dashboard (prod_{slug})
+                    manual_key = f"prod_{slug}"
+                    if manual_key in cat_editorial:
+                        manual = cat_editorial[manual_key]
+                        if manual.get("description"):
+                            p["description"] = manual["description"]
+                        if manual.get("points_forts"):
+                            p["points_forts"] = manual["points_forts"]
+                        if manual.get("points_faibles"):
+                            p["points_faibles"] = manual["points_faibles"]
                     # Convertir markdown en HTML pour la description
                     if p.get("description"):
                         p["description"] = md_to_html(p["description"])
                     enriched_products.append(p)
+
+                # Convertir markdown en HTML pour intro et contenu_custom
+                if cat_editorial.get("intro"):
+                    cat_editorial = dict(cat_editorial)
+                    cat_editorial["intro"] = md_to_html(cat_editorial["intro"])
+                if cat_editorial.get("contenu_custom"):
+                    cat_editorial = dict(cat_editorial)
+                    cat_editorial["contenu_custom"] = md_to_html(cat_editorial["contenu_custom"])
                 html = classement_tpl.render(
                     site={**site, "seo": config.get("seo", {})},
                     theme=theme, products=enriched_products, criteria=criteria,
