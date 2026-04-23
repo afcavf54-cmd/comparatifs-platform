@@ -20,7 +20,6 @@ export default function TemplateDetailPage() {
   const [newGroupName, setNewGroupName] = useState('')
   const [uploadingImg, setUploadingImg] = useState<Record<string, boolean>>({})
   const fileInputRef = useRef<HTMLInputElement>(null)
-  const [pendingUpload, setPendingUpload] = useState<{ slug: string, type: 'logo' | 'screenshot' } | null>(null)
 
   const schemaPath = `platform/schemas/${templateId}.json`
   const imagesBasePath = `platform/schemas/images/${templateId}`
@@ -107,8 +106,10 @@ export default function TemplateDetailPage() {
     }
   }
 
+  const pendingRef = useRef<{ slug: string, type: 'logo' | 'screenshot' } | null>(null)
+
   function triggerUpload(slug: string, imgType: 'logo' | 'screenshot') {
-    setPendingUpload({ slug, imgType })
+    pendingRef.current = { slug, type: imgType }
     fileInputRef.current?.click()
   }
 
@@ -125,9 +126,10 @@ export default function TemplateDetailPage() {
       <input ref={fileInputRef} type="file" accept="image/*" style={{ display: 'none' }}
         onChange={e => {
           const file = e.target.files?.[0]
-          if (file && pendingUpload) {
-            uploadImage(file, pendingUpload.slug, pendingUpload.type)
-            setPendingUpload(null)
+          const p = pendingRef.current
+          if (file && p) {
+            uploadImage(file, p.slug, p.type)
+            pendingRef.current = null
           }
           if (fileInputRef.current) fileInputRef.current.value = ''
         }} />
