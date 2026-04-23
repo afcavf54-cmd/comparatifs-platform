@@ -5,46 +5,47 @@ import Link from 'next/link'
 
 type Tab = 'keywords'
 
-// ── HtmlEditor inline ──────────────────────────────────────────────────────
+// ── HtmlEditor inline ────────────────────────────────────────────────────
 function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string, onChange: (v: string) => void, rows?: number, placeholder?: string }) {
   const taRef = useRef<HTMLTextAreaElement>(null)
   function wrap(before: string, after: string) {
     const ta = taRef.current; if (!ta) return
-    const start = ta.selectionStart; const end = ta.selectionEnd
-    const newVal = value.slice(0, start) + before + value.slice(start, end) + after + value.slice(end)
-    onChange(newVal)
-    setTimeout(() => { ta.focus(); ta.setSelectionRange(start + before.length, end + before.length) }, 0)
+    const s = ta.selectionStart, e = ta.selectionEnd
+    onChange(value.slice(0, s) + before + value.slice(s, e) + after + value.slice(e))
+    setTimeout(() => { ta.focus(); ta.setSelectionRange(s + before.length, e + before.length) }, 0)
   }
-  function insertBlock(tag: string) {
+  function block(tag: string) {
     const ta = taRef.current; if (!ta) return
-    const start = ta.selectionStart; const end = ta.selectionEnd
-    const selected = value.slice(start, end) || 'Titre'
-    onChange(value.slice(0, start) + `<${tag}>${selected}</${tag}>
-` + value.slice(end))
+    const s = ta.selectionStart, e = ta.selectionEnd
+    const sel = value.slice(s, e) || 'Titre'
+    const open = '<' + tag + '>'; const close = '</' + tag + '>'
+    onChange(value.slice(0, s) + open + sel + close + '\n' + value.slice(e))
   }
-  const btn = { padding: '3px 9px', borderRadius: 5, border: '1px solid #1E2D3D', background: '#0A0E1A', color: '#8B9CB0', cursor: 'pointer', fontSize: 12, fontWeight: 600 }
+  function li() {
+    const p = taRef.current?.selectionStart || 0
+    onChange(value.slice(0, p) + '<li></li>\n' + value.slice(p))
+  }
+  const btn: React.CSSProperties = { padding: '3px 9px', borderRadius: 5, border: '1px solid #1E2D3D', background: '#0A0E1A', color: '#8B9CB0', cursor: 'pointer', fontSize: 12, fontWeight: 600 }
   return (
     <div style={{ border: '1px solid #1E2D3D', borderRadius: 8, overflow: 'hidden' }}>
       <div style={{ display: 'flex', gap: 4, padding: '5px 8px', background: '#0A0E1A', borderBottom: '1px solid #1E2D3D', flexWrap: 'wrap' as const }}>
-        {([['<strong>','</strong>','B'],['<em>','</em>','I']] as [string,string,string][]).map(([b,a,l]) => <button key={l} style={btn} onClick={() => wrap(b,a)}><span style={{fontWeight:l==='B'?700:400,fontStyle:l==='I'?'italic':'normal'}}>{l}</span></button>)}
-        <span style={{width:1,background:'#1E2D3D',margin:'0 2px'}}/>
-        {(['h2','h3','h4'] as string[]).map(t => <button key={t} style={btn} onClick={() => insertBlock(t)}>{t.toUpperCase()}</button>)}
-        <span style={{width:1,background:'#1E2D3D',margin:'0 2px'}}/>
-        <button style={btn} onClick={() => wrap('<p>','</p>
-')}>¶</button>
-        <button style={btn} onClick={() => wrap('<ul>
-<li>','</li>
-</ul>
-')}>ul</button>
-        <button style={btn} onClick={() => { const p = taRef.current?.selectionStart||0; onChange(value.slice(0,p)+'<li></li>
-'+value.slice(p)) }}>li</button>
+        <button style={btn} onClick={() => wrap('<strong>', '</strong>')}><b>B</b></button>
+        <button style={btn} onClick={() => wrap('<em>', '</em>')}><i>I</i></button>
+        <span style={{ width: 1, background: '#1E2D3D', margin: '0 2px' }} />
+        <button style={btn} onClick={() => block('h2')}>H2</button>
+        <button style={btn} onClick={() => block('h3')}>H3</button>
+        <button style={btn} onClick={() => block('h4')}>H4</button>
+        <span style={{ width: 1, background: '#1E2D3D', margin: '0 2px' }} />
+        <button style={btn} onClick={() => wrap('<p>', '</p>\n')}>¶</button>
+        <button style={btn} onClick={() => wrap('<ul>\n', '\n</ul>\n')}>ul</button>
+        <button style={btn} onClick={li}>li</button>
       </div>
       <textarea ref={taRef} value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder}
-        style={{ width:'100%', padding:12, background:'#0D1117', border:'none', color:'#E2E8F0', fontSize:13, lineHeight:1.6, outline:'none', fontFamily:'monospace', resize:'vertical', minHeight:`${rows*22}px`, boxSizing:'border-box' as const, display:'block' }} />
+        style={{ width: '100%', padding: 12, background: '#0D1117', border: 'none', color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, outline: 'none', fontFamily: 'monospace', resize: 'vertical', minHeight: (rows * 22) + 'px', boxSizing: 'border-box' as const, display: 'block' }} />
     </div>
   )
 }
-// ── fin HtmlEditor ──────────────────────────────────────────────────────────
+// ── fin HtmlEditor ────────────────────────────────────────────────────────
 
 export default function TemplateDetailPage() {
   const { templateId } = useParams()
