@@ -155,8 +155,18 @@ export default function ClassementsPage() {
         try {
           const all = JSON.parse(d.content)
           const cls: Record<string, any> = {}
+          const prods: Record<string, any> = {}
           for (const [k, v] of Object.entries(all)) {
-            if (k.startsWith('classement-')) cls[k] = v
+            if (k.startsWith('classement-prod-')) prods[k] = v
+            else if (k.startsWith('classement-')) cls[k] = v
+          }
+          // Injecter les données produits dans chaque classement
+          for (const [clsKey, clsVal] of Object.entries(cls)) {
+            const cat_slug = clsKey.replace('classement-', '')
+            for (const [prodKey, prodVal] of Object.entries(prods)) {
+              const slug = prodKey.replace('classement-prod-', '')
+              ;(cls[clsKey] as any)[`prod_${slug}`] = prodVal
+            }
           }
           setClassements(cls)
           if (Object.keys(cls).length > 0) setSelected(Object.keys(cls)[0])
