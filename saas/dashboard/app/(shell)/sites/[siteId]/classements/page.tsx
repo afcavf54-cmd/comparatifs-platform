@@ -2,7 +2,7 @@
 import React from 'react'
 import { useEffect, useState, useRef } from 'react'
 import { useParams } from 'next/navigation'
-import Link from 'next/link'
+import Link from 'nex-t/link'
 
 
 
@@ -182,6 +182,22 @@ export default function ClassementsPage() {
     return !classements[`classement-${slug}`]
   })
 
+  async function deploy() {
+    setDeploying(true); setMsg('')
+    const r = await fetch(`/api/sites/${siteId}/deploy`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ skip_enrich: true })
+    })
+    const d = await r.json()
+    setMsg(d.success ? '✓ Déploiement lancé' : '✗ Erreur déploiement')
+    setDeploying(false)
+  }
+
+  async function saveAndDeploy() {
+    await save()
+    await deploy()
+  }
+
   async function save() {
     setSaving(true); setMsg('')
     const r = await fetch(`/api/github?path=${encodeURIComponent(editorialPath)}`)
@@ -290,8 +306,11 @@ export default function ClassementsPage() {
         </div>
         <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
           {msg && <span style={{ fontSize: 12, color: msg.startsWith('✓') ? '#00D4AA' : '#FC8181', maxWidth: 280 }}>{msg}</span>}
-          <button onClick={save} disabled={saving} style={{ padding: '9px 16px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
+          <button onClick={save} disabled={saving} style={{ padding: '9px 16px', borderRadius: 10, border: '1px solid #1E2D3D', background: '#0D1117', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
             {saving ? '...' : '💾 Sauvegarder'}
+          </button>
+          <button onClick={saveAndDeploy} disabled={saving || deploying} style={{ padding: '9px 16px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
+            {deploying ? '⏳ Déploiement...' : '🚀 Sauvegarder & Déployer'}
           </button>
         </div>
       </div>
