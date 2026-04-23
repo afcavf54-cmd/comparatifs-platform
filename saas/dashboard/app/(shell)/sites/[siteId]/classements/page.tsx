@@ -234,9 +234,13 @@ export default function ClassementsPage() {
   }
 
   const selectedData = selected ? classements[selected] : null
+  function slugifyCat(s: string) {
+    return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+      .replace(/[\u2019\u2018']/g, '-').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+  }
   const catProducts = selectedData
     ? products.filter(p => {
-        const slug = (p.categorie || '').toLowerCase().replace(/ /g, '-').replace(/_/g, '-')
+        const slug = slugifyCat(p.categorie || '')
         return `classement-${slug}` === selected
       })
     : []
