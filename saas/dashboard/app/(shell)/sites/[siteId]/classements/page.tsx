@@ -132,6 +132,24 @@ export default function ClassementsPage() {
         if (!sd.error) setProducts(sd.rows || [])
       }
     })
+    // Aussi essayer de charger depuis le schema du template
+    fetch(`/api/github?path=${encodeURIComponent(`platform/sites/${siteId}/config.yaml`)}`).then(r => r.json()).then(async cfg => {
+      if (!cfg.content) return
+      const classementMatch = cfg.content.match(/classement:\s*(\S+)/)
+      if (!classementMatch) return
+      const schemaName = classementMatch[1]
+      const sr = await fetch(`/api/github?path=${encodeURIComponent(`platform/schemas/${schemaName}.json`)}`)
+      const sd = await sr.json()
+      if (!sd.content) return
+      try {
+        const schema = JSON.parse(sd.content)
+        const allProducts: any[] = []
+        Object.values(schema.keywords || {}).forEach((kw: any) => {
+          if (Array.isArray(kw.__products)) allProducts.push(...kw.__products)
+        })
+        if (allProducts.length > 0) setProducts(prev => prev.length > 0 ? prev : allProducts)
+      } catch {}
+    }).catch(() => {})
     fetch(`/api/github?path=${encodeURIComponent(editorialPath)}`).then(r => r.json()).then(d => {
       if (d.content) {
         try {
