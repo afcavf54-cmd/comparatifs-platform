@@ -558,9 +558,17 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
         cat_slug = slugify_cat(cat)
         key = f"classement-{cat_slug}"
 
-        if skip_existing and key in editorial:
-            print(f"  [{cat}] ⏭ déjà généré")
+        # Vérifier si au moins un produit nouveau est à générer
+        existing = editorial.get(key, {})
+        existing_descs = existing.get("descriptions_produits", {})
+        new_products = [p for p in cat_products if p.get("slug","") not in existing_descs]
+
+        if skip_existing and key in editorial and not new_products:
+            print(f"  [{cat}] ⏭ déjà généré ({len(cat_products)} produits)")
             continue
+
+        if skip_existing and key in editorial and new_products:
+            print(f"  [{cat}] {len(new_products)} nouveau(x) produit(s) à générer...")
 
         print(f"  [{cat}] {len(cat_products)} produits...", end=" ", flush=True)
 
@@ -610,10 +618,11 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
                         print(f"❌ {e}"); break
                 time.sleep(2)
 
-            # Descriptions produit par produit
+            # Descriptions produit par produit (skip les déjà générés)
             if prompt_classement:
-                descriptions = {}
-                for prod in cat_products:
+                descriptions = dict(existing_descs)  # Partir des descriptions existantes
+                products_to_generate = new_products if (skip_existing and existing_descs) else cat_products
+                for prod in products_to_generate:
                     nom = prod.get('nom', '')
                     p_prompt = prompt_classement.replace('[NOM DU SITE]', nom).replace('{nom}', nom)
                     print(f"    [desc {nom}]...", end=" ", flush=True)
@@ -627,7 +636,15 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
                     time.sleep(2)
                 result['descriptions_produits'] = descriptions
 
-            editorial[key] = result
+            # Merger avec l'existant si skip_existing (ne pas écraser intro/contenu si déjà générés)
+            if skip_existing and key in editorial:
+                merged = dict(editorial[key])
+                for k, v in result.items():
+                    if v:  # Ne remplacer que si la nouvelle valeur n'est pas vide
+                        merged[k] = v
+                editorial[key] = merged
+            else:
+                editorial[key] = result
             save_json(editorial_path, editorial)
             print(f"  ✓ {cat} généré")
 
