@@ -1,46 +1,111 @@
 'use client'
+import React from 'react'
 import { useEffect, useState, useRef } from 'react'
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
 
 
-// ── HtmlEditor inline ────────────────────────────────────────────────────
+
+// ── HtmlEditor v2 (visuel + source) ─────────────────────────────────────
 function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string, onChange: (v: string) => void, rows?: number, placeholder?: string }) {
-  const taRef = useRef<HTMLTextAreaElement>(null)
-  function wrap(before: string, after: string) {
+  const [mode, setMode] = React.useState<'visual'|'source'>('visual')
+  const editorRef = React.useRef<HTMLDivElement>(null)
+  const taRef = React.useRef<HTMLTextAreaElement>(null)
+
+  // Sync visuel → HTML
+  function onVisualInput() {
+    if (editorRef.current) onChange(editorRef.current.innerHTML)
+  }
+
+  // Sync HTML → visuel au changement de mode
+  function switchMode(m: 'visual'|'source') {
+    if (m === 'visual' && editorRef.current) {
+      editorRef.current.innerHTML = value
+    }
+    setMode(m)
+  }
+
+  function exec(cmd: string, val?: string) {
+    editorRef.current?.focus()
+    document.execCommand(cmd, false, val)
+    setTimeout(() => { if (editorRef.current) onChange(editorRef.current.innerHTML) }, 0)
+  }
+
+  function wrapSource(before: string, after: string) {
     const ta = taRef.current; if (!ta) return
     const s = ta.selectionStart, e = ta.selectionEnd
     onChange(value.slice(0, s) + before + value.slice(s, e) + after + value.slice(e))
     setTimeout(() => { ta.focus(); ta.setSelectionRange(s + before.length, e + before.length) }, 0)
   }
-  function block(tag: string) {
+
+  function blockSource(tag: string) {
     const ta = taRef.current; if (!ta) return
     const s = ta.selectionStart, e = ta.selectionEnd
     const sel = value.slice(s, e) || 'Titre'
     const open = '<' + tag + '>'; const close = '</' + tag + '>'
     onChange(value.slice(0, s) + open + sel + close + '\n' + value.slice(e))
   }
-  function li() {
-    const p = taRef.current?.selectionStart || 0
-    onChange(value.slice(0, p) + '<li></li>\n' + value.slice(p))
-  }
+
+  const tabBtn = (m: 'visual'|'source', label: string) => ({
+    padding: '4px 12px', borderRadius: '6px 6px 0 0', border: 'none', cursor: 'pointer', fontSize: 12, fontWeight: 600,
+    background: mode === m ? '#0D1117' : '#0A0E1A',
+    color: mode === m ? '#00D4AA' : '#4A5568',
+    borderBottom: mode === m ? '2px solid #00D4AA' : '2px solid transparent'
+  })
   const btn: React.CSSProperties = { padding: '3px 9px', borderRadius: 5, border: '1px solid #1E2D3D', background: '#0A0E1A', color: '#8B9CB0', cursor: 'pointer', fontSize: 12, fontWeight: 600 }
+
   return (
     <div style={{ border: '1px solid #1E2D3D', borderRadius: 8, overflow: 'hidden' }}>
-      <div style={{ display: 'flex', gap: 4, padding: '5px 8px', background: '#0A0E1A', borderBottom: '1px solid #1E2D3D', flexWrap: 'wrap' as const }}>
-        <button style={btn} onClick={() => wrap('<strong>', '</strong>')}><b>B</b></button>
-        <button style={btn} onClick={() => wrap('<em>', '</em>')}><i>I</i></button>
-        <span style={{ width: 1, background: '#1E2D3D', margin: '0 2px' }} />
-        <button style={btn} onClick={() => block('h2')}>H2</button>
-        <button style={btn} onClick={() => block('h3')}>H3</button>
-        <button style={btn} onClick={() => block('h4')}>H4</button>
-        <span style={{ width: 1, background: '#1E2D3D', margin: '0 2px' }} />
-        <button style={btn} onClick={() => wrap('<p>', '</p>\n')}>¶</button>
-        <button style={btn} onClick={() => wrap('<ul>\n', '\n</ul>\n')}>ul</button>
-        <button style={btn} onClick={li}>li</button>
+      {/* Tabs */}
+      <div style={{ display: 'flex', background: '#0A0E1A', borderBottom: '1px solid #1E2D3D', padding: '0 8px', gap: 4 }}>
+        <button style={tabBtn('visual','Visuel')} onClick={() => switchMode('visual')}>✏️ Visuel</button>
+        <button style={tabBtn('source','HTML')} onClick={() => switchMode('source')}>{'</>'} HTML</button>
       </div>
-      <textarea ref={taRef} value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder}
-        style={{ width: '100%', padding: 12, background: '#0D1117', border: 'none', color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, outline: 'none', fontFamily: 'monospace', resize: 'vertical', minHeight: (rows * 22) + 'px', boxSizing: 'border-box' as const, display: 'block' }} />
+
+      {/* Toolbar */}
+      <div style={{ display: 'flex', gap: 4, padding: '5px 8px', background: '#0A0E1A', borderBottom: '1px solid #1E2D3D', flexWrap: 'wrap' as const }}>
+        {mode === 'visual' ? (<>
+          <button style={btn} onClick={() => exec('bold')}><b>B</b></button>
+          <button style={btn} onClick={() => exec('italic')}><i>I</i></button>
+          <span style={{ width: 1, background: '#1E2D3D', margin: '0 2px' }} />
+          <button style={btn} onClick={() => exec('formatBlock', 'h2')}>H2</button>
+          <button style={btn} onClick={() => exec('formatBlock', 'h3')}>H3</button>
+          <button style={btn} onClick={() => exec('formatBlock', 'p')}>¶</button>
+          <span style={{ width: 1, background: '#1E2D3D', margin: '0 2px' }} />
+          <button style={btn} onClick={() => exec('insertUnorderedList')}>ul</button>
+          <button style={btn} onClick={() => exec('removeFormat')}>✕ Format</button>
+        </>) : (<>
+          <button style={btn} onClick={() => wrapSource('<strong>', '</strong>')}><b>B</b></button>
+          <button style={btn} onClick={() => wrapSource('<em>', '</em>')}><i>I</i></button>
+          <span style={{ width: 1, background: '#1E2D3D', margin: '0 2px' }} />
+          <button style={btn} onClick={() => blockSource('h2')}>H2</button>
+          <button style={btn} onClick={() => blockSource('h3')}>H3</button>
+          <button style={btn} onClick={() => wrapSource('<p>', '</p>\n')}>¶</button>
+          <button style={btn} onClick={() => wrapSource('<ul>\n', '\n</ul>\n')}>ul</button>
+          <button style={btn} onClick={() => wrapSource('<li>', '</li>')}>li</button>
+        </>)}
+      </div>
+
+      {/* Éditeur visuel */}
+      {mode === 'visual' && (
+        <div
+          ref={editorRef}
+          contentEditable
+          suppressContentEditableWarning
+          onInput={onVisualInput}
+          dangerouslySetInnerHTML={{ __html: value }}
+          style={{
+            minHeight: (rows * 22) + 'px', padding: 14, background: '#0D1117', color: '#E2E8F0',
+            fontSize: 14, lineHeight: 1.7, outline: 'none', fontFamily: 'inherit'
+          }}
+        />
+      )}
+
+      {/* Éditeur source */}
+      {mode === 'source' && (
+        <textarea ref={taRef} value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder}
+          style={{ width: '100%', padding: 12, background: '#0D1117', border: 'none', color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, outline: 'none', fontFamily: 'monospace', resize: 'vertical', minHeight: (rows * 22) + 'px', boxSizing: 'border-box' as const, display: 'block' }} />
+      )}
     </div>
   )
 }
@@ -323,6 +388,58 @@ export default function ClassementsPage() {
                     onChange={val => updateField(selected, 'faq', val)}
                   />
                 </div>
+
+                {/* Contenu des marques */}
+                {catProducts.length > 0 && (
+                  <div style={{ marginBottom: 20 }}>
+                    <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 12 }}>
+                      🏷 Contenu des marques
+                    </div>
+                    {catProducts.map((prod: any) => {
+                      const prodKey = prod.slug
+                      const prodData = selectedData[`prod_${prodKey}`] || {}
+                      return (
+                        <div key={prodKey} style={{ marginBottom: 16, background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 10, overflow: 'hidden' }}>
+                          <div style={{ padding: '10px 14px', background: '#0D1117', borderBottom: '1px solid #1E2D3D', display: 'flex', alignItems: 'center', gap: 10 }}>
+                            <span style={{ fontSize: 14, fontWeight: 600, color: '#fff' }}>{prod.nom}</span>
+                            <span style={{ fontSize: 11, color: '#4A5568' }}>{prod.slug}</span>
+                          </div>
+                          <div style={{ padding: 14 }}>
+                            <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 6 }}>Description</div>
+                            <HtmlEditor
+                              value={prodData.description || ''}
+                              rows={6}
+                              placeholder={`Description de ${prod.nom}...`}
+                              onChange={val => updateField(selected, `prod_${prodKey}`, { ...prodData, description: val })}
+                            />
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginTop: 12 }}>
+                              <div>
+                                <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 6 }}>✅ Avantages</div>
+                                <textarea
+                                  value={Array.isArray(prodData.points_forts) ? prodData.points_forts.join('\n') : (prodData.points_forts || '')}
+                                  rows={4}
+                                  placeholder="Un avantage par ligne"
+                                  onChange={e => updateField(selected, 'prod_' + prodKey, { ...prodData, points_forts: e.target.value.split('\n').filter(Boolean) })}
+                                  style={{ width: '100%', padding: 10, borderRadius: 8, background: '#0D1117', border: '1px solid #1E2D3D', color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, resize: 'vertical', outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box' as const }}
+                                />
+                              </div>
+                              <div>
+                                <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 6 }}>❌ Inconvénients</div>
+                                <textarea
+                                  value={Array.isArray(prodData.points_faibles) ? prodData.points_faibles.join('\n') : (prodData.points_faibles || '')}
+                                  rows={4}
+                                  placeholder="Un inconvénient par ligne"
+                                  onChange={e => updateField(selected, 'prod_' + prodKey, { ...prodData, points_faibles: e.target.value.split('\n').filter(Boolean) })}
+                                  style={{ width: '100%', padding: 10, borderRadius: 8, background: '#0D1117', border: '1px solid #1E2D3D', color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, resize: 'vertical', outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box' as const }}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
 
                 {!selectedData.intro && !selectedData.contenu_custom && (
                   <div style={{ padding: 20, textAlign: 'center', color: '#4A5568', border: '1px dashed #1E2D3D', borderRadius: 8, marginTop: 8 }}>
