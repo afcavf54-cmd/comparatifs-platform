@@ -771,6 +771,20 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 if cat_editorial.get("contenu_custom"):
                     cat_editorial = dict(cat_editorial)
                     cat_editorial["contenu_custom"] = md_to_html(cat_editorial["contenu_custom"])
+                # Trier les produits : ordre manuel si défini, sinon par note
+                order_map = cat_editorial.get("products_order", {})
+                def sort_key(p):
+                    slug = p.get("slug", "")
+                    if slug in order_map:
+                        return (0, order_map[slug])  # Ordre manuel en priorité
+                    note = p.get("note_redaction", 0) or 0
+                    try:
+                        note = float(note)
+                    except:
+                        note = 0
+                    return (1, -note)  # Sinon par note décroissante
+                enriched_products.sort(key=sort_key)
+
                 html = classement_tpl.render(
                     site={**site, "seo": config.get("seo", {})},
                     theme=theme, products=enriched_products, criteria=criteria,
