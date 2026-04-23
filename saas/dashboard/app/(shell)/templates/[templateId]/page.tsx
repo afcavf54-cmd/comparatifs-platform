@@ -107,6 +107,7 @@ export default function TemplateDetailPage() {
   }
 
   const pendingRef = useRef<{ slug: string, type: 'logo' | 'screenshot' } | null>(null)
+  const [imgPreviews, setImgPreviews] = useState<Record<string, string>>({})
 
   function triggerUpload(slug: string, imgType: 'logo' | 'screenshot') {
     pendingRef.current = { slug, type: imgType }
