@@ -181,9 +181,17 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
     <div class="logiciel-body">
       {% set screenshot_file = prod.slug ~ "-screenshot.png" %}
       {% set logo_file = prod.slug ~ "-logo.png" %}
+      {% if prod.url_affiliation is defined and prod.url_affiliation %}
+      <a href="{{ prod.url_affiliation }}" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
+        <img src="/{{ screenshot_file }}" alt="Aperçu {{ prod.nom }}"
+          style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);border:1px solid var(--border)"
+          onerror="this.style.display='none'">
+      </a>
+      {% else %}
       <img src="/{{ screenshot_file }}" alt="Aperçu {{ prod.nom }}"
         style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);margin:0 0 16px;border:1px solid var(--border)"
         onerror="this.style.display='none'">
+      {% endif %}
 
       <div class="logiciel-desc">
         {% if prod.description is defined and prod.description %}
