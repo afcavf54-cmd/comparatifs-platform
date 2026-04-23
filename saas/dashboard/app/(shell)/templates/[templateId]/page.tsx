@@ -2,6 +2,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
+import HtmlEditor from '@/components/HtmlEditor'
 
 type Tab = 'keywords'
 
@@ -176,7 +177,7 @@ export default function TemplateDetailPage() {
                     {keywords[type]?.__products?.length ? `${keywords[type].__products.length} produits` : 'Non synchronisé'}
                   </div>
                 </div>
-                <span onClick={e => { e.stopPropagation(); setSchema((prev: any) => { const k = { ...prev.keywords }; delete k[type]; return { ...prev, keywords: k } }); if (selectedGroup === type) setSelectedGroup(null) }}
+                <span onClick={e => { e.stopPropagation(); if (window.confirm(`Supprimer le type "${type}" ? Cette action est irréversible.`)) { setSchema((prev: any) => { const k = { ...prev.keywords }; delete k[type]; return { ...prev, keywords: k } }); if (selectedGroup === type) setSelectedGroup(null) } }}
                   style={{ color: '#FC8181', cursor: 'pointer', fontSize: 16 }}>×</span>
               </div>
             ))}
@@ -340,10 +341,12 @@ export default function TemplateDetailPage() {
               ].map(({ key, label, placeholder }) => (
                 <div key={key} style={{ marginBottom: 20 }}>
                   <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>{label}</div>
-                  <textarea value={schema.keywords[selectedGroup]?.[key] || ''} rows={5}
-                    onChange={e => setSchema((prev: any) => ({ ...prev, keywords: { ...prev.keywords, [selectedGroup]: { ...prev.keywords[selectedGroup], [key]: e.target.value } } }))}
+                  <HtmlEditor
+                    value={schema.keywords[selectedGroup]?.[key] || ''}
+                    rows={6}
                     placeholder={placeholder}
-                    style={{ width: '100%', padding: 12, borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, resize: 'vertical' as const, outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box' as const }} />
+                    onChange={val => setSchema((prev: any) => ({ ...prev, keywords: { ...prev.keywords, [selectedGroup]: { ...prev.keywords[selectedGroup], [key]: val } } }))}
+                  />
                 </div>
               ))}
             </div>
