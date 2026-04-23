@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
+import HtmlEditor from '@/components/HtmlEditor'
 
 export default function ClassementsPage() {
   const { siteId } = useParams()
@@ -224,75 +225,67 @@ export default function ClassementsPage() {
               </div>
             ) : (
               <div style={{ flex: 1, overflowY: 'auto', padding: 24 }}>
+                {/* Header */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
                   <h3 style={{ color: '#00D4AA', margin: 0, fontSize: 15 }}>
                     {selectedData.categorie || selected.replace('classement-', '')}
                   </h3>
                   <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                    <span style={{ fontSize: 11, color: '#4A5568' }}>{catProducts.length} produit{catProducts.length > 1 ? 's' : ''}</span>
-                    {catProducts.length > 0 && (
-                      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' as const }}>
-                        {catProducts.map(p => (
-                          <span key={p.slug} style={{ fontSize: 10, padding: '2px 8px', borderRadius: 4, background: '#1E2D3D', color: '#8B9CB0' }}>{p.nom}</span>
-                        ))}
-                      </div>
-                    )}
+                    {catProducts.length > 0 && <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' as const }}>{catProducts.map(p => <span key={p.slug} style={{ fontSize: 10, padding: '2px 8px', borderRadius: 4, background: '#1E2D3D', color: '#8B9CB0' }}>{p.nom}</span>)}</div>}
                     <button onClick={() => regeneratePage(selected)} disabled={regenerating[selected] || deploying}
                       style={{ padding: '6px 14px', borderRadius: 8, border: '1px solid #F6AD55', background: 'transparent', color: '#F6AD55', cursor: 'pointer', fontWeight: 600, fontSize: 12 }}>
-                      {regenerating[selected] ? '⏳ En cours...' : '🔄 Régénérer cette page'}
+                      {regenerating[selected] ? '⏳...' : '🔄 Régénérer'}
                     </button>
                   </div>
                 </div>
 
-                {/* Info régénération */}
-                <div style={{ padding: 12, background: 'rgba(246,173,85,0.06)', border: '1px solid rgba(246,173,85,0.2)', borderRadius: 8, fontSize: 12, color: '#8B9CB0', marginBottom: 20, lineHeight: 1.6 }}>
-                  🔄 <strong style={{ color: '#F6AD55' }}>Régénérer</strong> supprime le contenu existant et relance Sonnet avec les prompts définis dans <Link href={`/templates/classement-saas`} style={{ color: '#00D4AA', textDecoration: 'none' }}>Modèles → classement-saas</Link>.
-                </div>
-
                 {/* SEO */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 16 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 12 }}>
                   {[{ label: 'H1', field: 'h1' }, { label: 'Meta title', field: 'meta_title' }].map(({ label, field }) => (
                     <div key={field}>
-                      <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 6 }}>{label}</div>
+                      <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5 }}>{label}</div>
                       <input value={selectedData[field] || ''} onChange={e => updateField(selected, field, e.target.value)}
-                        style={{ width: '100%', padding: '10px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+                        style={{ width: '100%', padding: '9px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
                     </div>
                   ))}
                 </div>
                 <div style={{ marginBottom: 20 }}>
-                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 6 }}>Meta description</div>
+                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5 }}>Meta description</div>
                   <input value={selectedData.meta_description || ''} onChange={e => updateField(selected, 'meta_description', e.target.value)}
-                    style={{ width: '100%', padding: '10px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+                    style={{ width: '100%', padding: '9px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
                 </div>
 
-                {/* Aperçu contenu généré */}
-                {(selectedData.intro || selectedData.contenu_custom) && (
-                  <div style={{ marginBottom: 16 }}>
-                    <div style={{ fontSize: 11, color: '#00D4AA', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>
-                      ✓ Contenu généré
-                    </div>
-                    {selectedData.intro && (
-                      <div style={{ marginBottom: 12 }}>
-                        <div style={{ fontSize: 11, color: '#8B9CB0', marginBottom: 4 }}>INTRO</div>
-                        <div style={{ padding: 12, borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', fontSize: 12, color: '#8B9CB0', lineHeight: 1.6, maxHeight: 80, overflow: 'hidden' }}
-                          dangerouslySetInnerHTML={{ __html: selectedData.intro }} />
-                      </div>
-                    )}
-                    {selectedData.contenu_custom && (
-                      <div>
-                        <div style={{ fontSize: 11, color: '#8B9CB0', marginBottom: 4 }}>CONTENU EXPERT</div>
-                        <div style={{ padding: 12, borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', fontSize: 12, color: '#8B9CB0', lineHeight: 1.6, maxHeight: 80, overflow: 'hidden' }}
-                          dangerouslySetInnerHTML={{ __html: selectedData.contenu_custom }} />
-                      </div>
-                    )}
+                {/* Sections éditables */}
+                {[
+                  { key: 'intro', label: '📝 Introduction', rows: 8 },
+                  { key: 'contenu_custom', label: '📖 Contenu expert', rows: 14 },
+                ].map(({ key, label, rows }) => (
+                  <div key={key} style={{ marginBottom: 20 }}>
+                    <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 8 }}>{label}</div>
+                    <HtmlEditor
+                      value={selectedData[key] || ''}
+                      rows={rows}
+                      placeholder={`Contenu ${label} — généré par Sonnet ou saisi manuellement`}
+                      onChange={val => updateField(selected, key, val)}
+                    />
                   </div>
-                )}
+                ))}
+
+                {/* FAQ */}
+                <div style={{ marginBottom: 20 }}>
+                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 8 }}>❓ FAQ (JSON)</div>
+                  <HtmlEditor
+                    value={typeof selectedData.faq === 'string' ? selectedData.faq : JSON.stringify(selectedData.faq || [], null, 2)}
+                    rows={10}
+                    placeholder={'[{"q": "Question ?", "a": "Réponse."}]'}
+                    onChange={val => updateField(selected, 'faq', val)}
+                  />
+                </div>
 
                 {!selectedData.intro && !selectedData.contenu_custom && (
-                  <div style={{ padding: 20, textAlign: 'center', color: '#4A5568', border: '1px dashed #1E2D3D', borderRadius: 8 }}>
+                  <div style={{ padding: 20, textAlign: 'center', color: '#4A5568', border: '1px dashed #1E2D3D', borderRadius: 8, marginTop: 8 }}>
                     <div style={{ fontSize: 24, marginBottom: 8 }}>⚠</div>
-                    <div style={{ fontSize: 13 }}>Aucun contenu généré.</div>
-                    <div style={{ fontSize: 12, marginTop: 4 }}>Vérifiez que les prompts sont définis dans Modèles → classement-saas → Mots clés puis cliquez 🔄 Régénérer.</div>
+                    <div style={{ fontSize: 13 }}>Aucun contenu. Cliquez 🔄 Régénérer ou saisissez manuellement.</div>
                   </div>
                 )}
               </div>
