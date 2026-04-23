@@ -573,12 +573,27 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             print(f"  ✓ _redirects ({www_preference})")
         copy_shared_assets(output_dir, site_dir)
 
-        # ── Copie logos PNG ───────────────────────────────────────────────
+        # ── Copie logos PNG du site ──────────────────────────────────────
         for logo in site_dir.glob("*.png"):
             shutil.copy2(logo, output_dir / logo.name)
         logos = list(site_dir.glob("*.png"))
         if logos:
             print(f"  ✓ {len(logos)} logos copiés")
+
+        # ── Copie images partagées du schema (classement) ─────────────────
+        if is_classement_template:
+            page_types_cfg = config.get("page_types", {})
+            schema_name = page_types_cfg.get("classement", "")
+            if schema_name:
+                images_dir = ROOT / "schemas" / "images" / schema_name
+                if images_dir.exists():
+                    img_count = 0
+                    for img in images_dir.iterdir():
+                        if img.suffix.lower() in [".png", ".jpg", ".jpeg", ".webp", ".svg"]:
+                            shutil.copy2(img, output_dir / img.name)
+                            img_count += 1
+                    if img_count:
+                        print(f"  ✓ {img_count} images schema copiées ({schema_name})")
 
         # Copie favicon si présent (site-specific ou shared, tous formats)
         import shutil as _shutil
