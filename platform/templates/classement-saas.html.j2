@@ -179,11 +179,11 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
       {% endif %}
     </div>
     <div class="logiciel-body">
-      {% if prod.logo_url is defined and prod.logo_url %}
-      <img src="{{ prod.logo_url }}" alt="{{ prod.nom }}" style="width:100%;height:160px;object-fit:cover;border-radius:var(--r);margin:0 0 16px;border:1px solid var(--border)">
-      {% else %}
-      <div class="logiciel-placeholder">📸 {{ prod.nom }}</div>
-      {% endif %}
+      {% set screenshot_file = prod.slug ~ "-screenshot.png" %}
+      {% set logo_file = prod.slug ~ "-logo.png" %}
+      <img src="/{{ screenshot_file }}" alt="Aperçu {{ prod.nom }}"
+        style="width:100%;height:180px;object-fit:cover;border-radius:var(--r);margin:0 0 16px;border:1px solid var(--border)"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
         {% if prod.description is defined and prod.description %}
