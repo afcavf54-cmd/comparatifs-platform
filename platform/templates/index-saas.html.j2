@@ -257,16 +257,14 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
   </div>
 </footer>
 
-{% if site.analytics_clicky %}
-{{ site.analytics_clicky | safe }}
-{% endif %}
+
 
 <script>
 // Données de recherche (chargées en JS après DOM pour éviter footprint)
 const ALL_CATEGORIES = [
   {% for prod in products %}
   {% if prod.categorie is defined and prod.categorie %}
-  { label: "{{ prod.categorie }}", slug: "meilleur-{{ prod.categorie | lower | replace(' ', '-') }}" },
+  { label: "{{ prod.categorie }}", slug: "meilleur-{{ prod.categorie | lower | replace(' ', '-') | replace('é', 'e') | replace('è', 'e') | replace('ê', 'e') | replace('à', 'a') | replace('â', 'a') | replace('ç', 'c') | replace('’', '-') | replace('‘', '-') | replace("'", '-') }}" },
   {% endif %}
   {% endfor %}
 ].filter((v,i,a) => a.findIndex(t=>t.label===v.label)===i);
