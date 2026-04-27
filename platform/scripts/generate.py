@@ -789,7 +789,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     site={**site, "seo": config.get("seo", {})},
                     theme=theme, products=enriched_products, criteria=criteria,
                     page_slug=page_slug,
-                    seo={"title": classement_title, "meta": classement_meta, "h1": classement_title},
+                    seo={"title": classement_title, "meta": classement_meta, "h1": classement_h1},
                     editorial=cat_editorial, build_date=date.today().isoformat(),
                 )
                 (output_dir / f"{page_slug}.html").write_text(html, encoding="utf-8")
