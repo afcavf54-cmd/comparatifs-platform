@@ -128,6 +128,8 @@ export default function ClassementsPage() {
   const [showAddBrand, setShowAddBrand] = useState(false)
   const [newBrand, setNewBrand] = useState({ nom: '', slug: '', description: '', points_forts: '', points_faibles: '' })
   const [generatingBrand, setGeneratingBrand] = useState(false)
+  const [schemaPrompts, setSchemaPrompts] = useState<Record<string, string>>({})
+  const [generatingSections, setGeneratingSections] = useState<Record<string, boolean>>({})
   const [msg, setMsg] = useState('')
 
   const editorialPath = `platform/sites/${siteId}/editorial.json`
@@ -458,7 +460,15 @@ export default function ClassementsPage() {
                 {[
                   { key: 'intro', label: '📝 Introduction', rows: 8, prompt: `Génère une introduction HTML engageante (150-200 mots) pour une page de classement des meilleurs ${selectedData.categorie || ''} en ${new Date().getFullYear()}. Paragraphes <p>, gras <strong>. Aucun tiret long.` },
                   { key: 'contenu_custom', label: '📖 Contenu expert', rows: 14, prompt: `Génère un guide expert HTML (500-800 mots) pour aider à choisir parmi les meilleurs ${selectedData.categorie || ''} en ${new Date().getFullYear()}. Utilise des <h2>, <h3>, <p>, <strong>. Aucun tiret long.` },
-                ].map(({ key, label, rows, prompt }) => (
+                ].map(({ key, label, rows, prompt }) => {
+                  // Chercher le prompt dans le schema pour la catégorie sélectionnée
+                  const cat = selectedData.categorie || selected.replace('classement-', '')
+                  const kwData = Object.entries(schemaPrompts).find(([k]) => k.toLowerCase() === cat.toLowerCase() || cat.toLowerCase().includes(k.toLowerCase()))?.[1] as any
+                  const promptKey = key === 'intro' ? 'prompt_intro' : key === 'contenu_custom' ? 'prompt_contenu' : null
+                  const schemaPrompt = promptKey && kwData ? (kwData[promptKey] || '') : ''
+                  const finalPrompt = schemaPrompt || prompt
+                  const isGenerating = generatingSections[key] || false
+                  return (
                   <div key={key} style={{ marginBottom: 8 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                       <div onClick={() => toggleSection(key)} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', flex: 1 }}>
@@ -467,14 +477,16 @@ export default function ClassementsPage() {
                         <span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} />
                       </div>
                       <button onClick={async () => {
+                        setGeneratingSections(p => ({ ...p, [key]: true }))
                         const r = await fetch('/api/generate-text', {
                           method: 'POST', headers: { 'Content-Type': 'application/json' },
-                          body: JSON.stringify({ max_tokens: 1500, system: 'Tu es un expert rédacteur SEO. Réponds uniquement avec le contenu HTML demandé, sans preamble.', prompt })
+                          body: JSON.stringify({ max_tokens: 2000, system: 'Tu es un expert rédacteur SEO. Réponds uniquement avec le contenu HTML demandé, sans preamble, sans markdown.', prompt: finalPrompt })
                         })
                         const d = await r.json()
                         if (d.text) { updateField(selected, key, d.text); setExpandedSections(p => ({ ...p, [key]: true })) }
-                      }} style={{ padding: '3px 10px', borderRadius: 6, border: '1px solid #9F7AEA', background: 'transparent', color: '#9F7AEA', cursor: 'pointer', fontSize: 11, fontWeight: 600, flexShrink: 0 }}>
-                        ✨ Régénérer
+                        setGeneratingSections(p => ({ ...p, [key]: false }))
+                      }} disabled={isGenerating} style={{ padding: '3px 10px', borderRadius: 6, border: '1px solid #9F7AEA', background: 'transparent', color: isGenerating ? '#4A5568' : '#9F7AEA', cursor: isGenerating ? 'not-allowed' : 'pointer', fontSize: 11, fontWeight: 600, flexShrink: 0 }}>
+                        {isGenerating ? '⏳...' : '✨ Régénérer'}
                       </button>
                     </div>
                     {expandedSections[key] && <div style={{ marginBottom: 12 }}>
@@ -486,7 +498,7 @@ export default function ClassementsPage() {
                       />
                     </div>}
                   </div>
-                ))}
+                )})}
 
                 {/* FAQ */}
                 <div style={{ marginBottom: 8 }}>
