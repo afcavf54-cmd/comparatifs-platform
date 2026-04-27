@@ -120,6 +120,7 @@ export default function ClassementsPage() {
   const [saving, setSaving] = useState(false)
   const [regenerating, setRegenerating] = useState<Record<string, boolean>>({})
   const [deploying, setDeploying] = useState(false)
+  const [generatingMeta, setGeneratingMeta] = useState(false)
   const [msg, setMsg] = useState('')
 
   const editorialPath = `platform/sites/${siteId}/editorial.json`
@@ -408,9 +409,40 @@ export default function ClassementsPage() {
                   ))}
                 </div>
                 <div style={{ marginBottom: 20 }}>
-                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5 }}>Meta description</div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 5 }}>
+                    <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const }}>Meta description</div>
+                    <button onClick={async () => {
+                      setGeneratingMeta(true)
+                      const cat = selectedData.categorie || selected.replace('classement-', '')
+                      const count = catProducts.length
+                      try {
+                        const r = await fetch('https://api.anthropic.com/v1/messages', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({
+                            model: 'claude-sonnet-4-20250514',
+                            max_tokens: 200,
+                            system: 'Tu es un expert SEO. Réponds uniquement avec la meta description, sans guillemets, sans preamble. Maximum 155 caractères.',
+                            messages: [{ role: 'user', content: `Écris une meta description SEO optimisée pour une page de classement des meilleurs ${cat} en 2026. ${count} logiciels comparés. Inclure un call-to-action. Maximum 155 caractères.` }]
+                          })
+                        })
+                        const d = await r.json()
+                        const text = d.content?.[0]?.text?.trim()
+                        if (text) updateField(selected, 'meta_description', text)
+                      } catch {}
+                      setGeneratingMeta(false)
+                    }} disabled={generatingMeta}
+                      style={{ padding: '4px 10px', borderRadius: 6, border: '1px solid #9F7AEA', background: 'transparent', color: generatingMeta ? '#4A5568' : '#9F7AEA', cursor: generatingMeta ? 'not-allowed' : 'pointer', fontSize: 11, fontWeight: 600 }}>
+                      {generatingMeta ? '⏳...' : '✨ Générer'}
+                    </button>
+                  </div>
                   <input value={selectedData.meta_description || ''} onChange={e => updateField(selected, 'meta_description', e.target.value)}
                     style={{ width: '100%', padding: '9px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+                  {selectedData.meta_description && (
+                    <div style={{ fontSize: 11, color: selectedData.meta_description.length > 155 ? '#FC8181' : '#4A5568', marginTop: 4 }}>
+                      {selectedData.meta_description.length}/155 caractères
+                    </div>
+                  )}
                 </div>
 
                 {/* Sections éditables */}
