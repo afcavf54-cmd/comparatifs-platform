@@ -729,9 +729,10 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 cat_slug = slugify_cat(cat)
                 page_slug = f"meilleur-{cat_slug}"
                 seo_cfg = config.get("seo", {})
-                classement_title = seo_cfg.get("classement_title_pattern", "Meilleur {categorie} {year} : Top {count}")                     .replace("{categorie}", cat).replace("{year}", str(site.get("year", ""))).replace("{count}", str(len(cat_products)))
-                classement_meta = seo_cfg.get("classement_meta_pattern", "Comparez les meilleurs {categorie} en {year}.")                     .replace("{categorie}", cat).replace("{year}", str(site.get("year", "")))
                 cat_editorial = editorials_fresh.get(f"classement-{cat_slug}", {})
+                classement_title = cat_editorial.get("meta_title") or seo_cfg.get("classement_title_pattern", "Meilleur {categorie} {year} : Top {count}").replace("{categorie}", cat).replace("{year}", str(site.get("year", ""))).replace("{count}", str(len(cat_products)))
+                classement_meta = cat_editorial.get("meta_description") or seo_cfg.get("classement_meta_pattern", "Comparez les meilleurs {categorie} en {year}.").replace("{categorie}", cat).replace("{year}", str(site.get("year", "")))
+                classement_h1 = cat_editorial.get("h1") or classement_title
                 enriched_products = []
                 for prod in cat_products:
                     p = dict(prod)
