@@ -467,7 +467,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
 
     # Charger les produits des sheets individuels des keywords (classement)
     if is_classement_template:
-        _schema_name = page_types.get("classement", "")
+        _schema_name = config.get("page_types", {}).get("classement", "")
         if _schema_name:
             _schema_path = ROOT / "schemas" / f"{_schema_name}.json"
             if _schema_path.exists():
