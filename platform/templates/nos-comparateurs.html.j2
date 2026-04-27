@@ -60,6 +60,12 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 .footer-copy{color:rgba(255,255,255,.25);font-size:12px;width:100%;text-align:center;margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.06)}
 @media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}.cat-grid{grid-template-columns:1fr}}
 </style>
+{% if site.google_site_verification is defined and site.google_site_verification %}
+<meta name="google-site-verification" content="{{ site.google_site_verification }}">
+{% endif %}
+{% if site.analytics_clicky is defined and site.analytics_clicky %}
+<script async data-id="{{ site.analytics_clicky }}" src="//static.getclicky.com/js"></script>
+{% endif %}
 </head>
 <body>
 
