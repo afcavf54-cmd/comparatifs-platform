@@ -64,7 +64,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 <meta name="google-site-verification" content="{{ site.google_site_verification }}">
 {% endif %}
 {% if site.analytics_clicky is defined and site.analytics_clicky %}
-<script async data-id="{{ site.analytics_clicky }}" src="//static.getclicky.com/js"></script>
+{{ site.analytics_clicky | safe }}
 {% endif %}
 </head>
 <body>
