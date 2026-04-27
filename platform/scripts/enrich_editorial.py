@@ -565,6 +565,7 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
                 slug = row.get("slug", "").strip()
                 if not slug: continue
                 prod = {k.strip(): v.strip() for k, v in row.items() if k.strip()}
+                prod["categorie"] = kw_name  # Forcer la catégorie = nom du keyword
                 if str(prod.get("disponible", "1")) != "0":
                     kw_products.append(prod)
             if kw_products:
