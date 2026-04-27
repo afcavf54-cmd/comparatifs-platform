@@ -25,8 +25,7 @@ nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;posit
     <a href="/" class="nav-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></a>
     <div class="nav-links">
       {% if page_types is defined and page_types.classement is defined and page_types.vs is not defined %}
-        <a href="/">Accueil</a>
-        <a href="/contact">Contact</a>
+        <a href="/nos-comparateurs">Nos comparateurs</a>
       {% else %}
         <a href="/comparatifs-scpi">Comparatifs</a>
         <a href="/avis-scpi">Avis</a>
@@ -39,8 +38,7 @@ nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;posit
   </div>
   <div class="nav-mobile" id="nav-mobile">
     {% if page_types is defined and page_types.classement is defined and page_types.vs is not defined %}
-      <a href="/">Accueil</a>
-      <a href="/contact">Contact</a>
+      <a href="/nos-comparateurs">Nos comparateurs</a>
     {% else %}
       <a href="/comparatifs-scpi">Comparatifs</a>
       <a href="/avis-scpi">Avis</a>
