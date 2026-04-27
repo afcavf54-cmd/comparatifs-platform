@@ -540,6 +540,39 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
     # Charger les keywords et prompts custom depuis le schema
     schema_keywords = load_schema_keywords(site_dir)
 
+    # Charger les produits depuis les sheets individuels des keywords
+    for kw_name, kw_data in schema_keywords.items():
+        kw_sheet_url = kw_data.get("__sheet_url", "")
+        if not kw_sheet_url:
+            continue
+        # Vérifier si ce keyword a déjà des produits dans le sheet principal
+        already_covered = any(
+            p.get("categorie", "").lower() == kw_name.lower() or
+            kw_name.lower() in p.get("categorie", "").lower()
+            for p in products
+        )
+        if already_covered:
+            continue
+        # Charger les produits depuis le sheet du keyword
+        try:
+            req = urllib.request.Request(kw_sheet_url, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                text = resp.read().decode("utf-8")
+            import csv as _csv, io as _io
+            reader = _csv.DictReader(_io.StringIO(text))
+            kw_products = []
+            for row in reader:
+                slug = row.get("slug", "").strip()
+                if not slug: continue
+                prod = {k.strip(): v.strip() for k, v in row.items() if k.strip()}
+                if str(prod.get("disponible", "1")) != "0":
+                    kw_products.append(prod)
+            if kw_products:
+                products = products + kw_products
+                print(f"  ✓ {len(kw_products)} produits chargés depuis sheet de '{kw_name}'")
+        except Exception as e:
+            print(f"  ⚠ Sheet '{kw_name}' indisponible: {e}")
+
     # Grouper par catégorie
     categories: dict = {}
     for prod in products:
