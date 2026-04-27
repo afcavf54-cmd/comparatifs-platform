@@ -184,7 +184,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
   </div>
   {% endif %}
 
-  <h2 class="section-title">Analyse détaillée</h2>
+  <h2 class="section-title">{{ editorial.titre_analyse if editorial.titre_analyse is defined and editorial.titre_analyse else 'Analyse détaillée' }}</h2>
 
   {% for prod in products %}
   <div class="logiciel-card" id="{{ prod.slug }}">
