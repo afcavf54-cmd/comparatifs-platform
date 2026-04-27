@@ -262,7 +262,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 
       {% if prod.url_affiliation is defined and prod.url_affiliation %}
       <a href="{{ prod.url_affiliation }}" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer {{ prod.nom }}
+        {{ prod.cta_text if prod.cta_text is defined and prod.cta_text else '→ Essayer ' ~ prod.nom }}
       </a>
       {% endif %}
     </div>
