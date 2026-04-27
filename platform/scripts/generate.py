@@ -629,7 +629,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         # Légales
         for tpl_name, out_name in [("mentions-legales.html.j2", "mentions-legales.html"), ("politique-confidentialite.html.j2", "politique-confidentialite.html"), ("contact.html.j2", "contact.html"), ("sitemap-html.html.j2", "plan-du-site.html"), ("404.html.j2", "404.html")]:
             if (TEMPLATES_DIR / tpl_name).exists():
-                html = env.get_template(tpl_name).render(site={**site, "seo": config.get("seo", {})}, theme=theme, build_date=date.today().isoformat(), products=products, total_pairs=len(all_pairs))
+                html = env.get_template(tpl_name).render(site={**site, "seo": config.get("seo", {})}, theme=theme, build_date=date.today().isoformat(), products=products, total_pairs=len(all_pairs), page_types=config.get("page_types", {}))
                 (output_dir / out_name).write_text(html, encoding="utf-8")
                 print(f"  ✓ {out_name}")
 
