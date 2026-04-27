@@ -226,22 +226,18 @@ export default function SiteDetailPage() {
             {/* Clicky */}
             <div>
               <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>
-                📊 Clicky Analytics — ID de suivi
+                📊 Clicky Analytics — Script de suivi
               </div>
               <div style={{ fontSize: 12, color: '#4A5568', marginBottom: 8 }}>
-                Entrez uniquement l'ID numérique (ex: 101505106)
+                Collez le script complet fourni par Clicky
               </div>
-              <input
+              <textarea
                 value={analyticsClicky}
                 onChange={e => setAnalyticsClicky(e.target.value)}
-                placeholder="101505106"
-                style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }}
+                placeholder={'<script async data-id="101505107" src="/623dee8d7d7150d88.js"></script>'}
+                rows={3}
+                style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none', boxSizing: 'border-box' as const, fontFamily: 'monospace', resize: 'vertical', lineHeight: 1.5 }}
               />
-              {analyticsClicky && (
-                <div style={{ marginTop: 8, padding: 10, borderRadius: 6, background: '#0A0E1A', border: '1px solid #1E2D3D', fontSize: 11, color: '#4A5568', fontFamily: 'monospace' }}>
-                  {'<script async data-id="'}{analyticsClicky}{'" src="//static.getclicky.com/js"></script>'}
-                </div>
-              )}
             </div>
 
             {/* Google Search Console */}
