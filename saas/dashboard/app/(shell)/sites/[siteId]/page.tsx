@@ -24,6 +24,10 @@ export default function SiteDetailPage() {
   const [runs, setRuns] = useState<any[]>([])
   const [sheetData, setSheetData] = useState<any>(null)
   const [pageTypes, setPageTypes] = useState<Record<string, string>>({})
+  const [analyticsClicky, setAnalyticsClicky] = useState('')
+  const [googleVerification, setGoogleVerification] = useState('')
+  const [savingTracking, setSavingTracking] = useState(false)
+  const [trackingMsg, setTrackingMsg] = useState('')
 
   useEffect(() => {
     fetch(`/api/sites/${siteId}`).then(r => r.json()).then(d => {
@@ -38,6 +42,8 @@ export default function SiteDetailPage() {
 
     fetch(`/api/sites/${siteId}/config`).then(r => r.json()).then(d => {
       if (d.page_types) setPageTypes(d.page_types)
+      if (d.analytics_clicky) setAnalyticsClicky(d.analytics_clicky)
+      if (d.google_site_verification) setGoogleVerification(d.google_site_verification)
     }).catch(() => {})
   }, [siteId])
 
@@ -49,6 +55,18 @@ export default function SiteDetailPage() {
     } catch {}
   }
 
+  async function saveTracking() {
+    setSavingTracking(true); setTrackingMsg('')
+    const r = await fetch(`/api/sites/${siteId}/config`, {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ analytics_clicky: analyticsClicky, google_site_verification: googleVerification })
+    })
+    const d = await r.json()
+    setTrackingMsg(d.ok ? '✓ Sauvegardé' : '✗ Erreur')
+    setSavingTracking(false)
+    setTimeout(() => setTrackingMsg(''), 3000)
+  }
+
   async function deploy() {
     setDeploying(true); setDeployMsg('')
     try {
@@ -58,7 +76,7 @@ export default function SiteDetailPage() {
       })
       const d = await r.json()
       if (d.ok) {
-        setDeployMsg('✓ Workflow déclenché — déploiement en cours (~3 min)')
+        setDeployMsg('✓ Workflow déclenché - déploiement en cours (~3 min)')
         const updated = { ...site!, status: 'building', last_deployed: new Date().toISOString() }
         setSite(updated)
         await fetch(`/api/sites/${siteId}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ status: 'building', last_deployed: new Date().toISOString() }) })
@@ -69,9 +87,8 @@ export default function SiteDetailPage() {
     setDeploying(false)
   }
 
-  // Onglets dynamiques selon page_types
   const tabs = [
-    { id: 'overview', label: '📊 Vue d\'ensemble', href: '' },
+    { id: 'overview', label: "📊 Vue d'ensemble", href: '' },
     { id: 'templates', label: '📄 Templates', href: '/templates' },
     { id: 'data', label: '🗂 Données', href: '/data' },
     { id: 'editorial', label: '✍️ Éditorial', href: '/editorial' },
@@ -137,7 +154,7 @@ export default function SiteDetailPage() {
           { label: 'Pages générées', value: site.pages_count || 0, icon: '📄', color: '#0090FF' },
           { label: 'Produits', value: sheetData?.count || site.products_count || 0, icon: '📦', color: '#00D4AA' },
           { label: 'Comparatifs', value: (() => { const n = sheetData?.count || 0; return Math.floor(n * (n - 1) / 2) })(), icon: '⚖️', color: '#F6AD55' },
-          { label: 'Dernière MAJ', value: site.last_deployed ? new Date(site.last_deployed).toLocaleDateString('fr') : '—', icon: '🕐', color: '#8B9CB0' },
+          { label: 'Dernière MAJ', value: site.last_deployed ? new Date(site.last_deployed).toLocaleDateString('fr') : '-', icon: '🕐', color: '#8B9CB0' },
         ].map(stat => (
           <div key={stat.label} style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 12, padding: '18px 20px' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
@@ -157,7 +174,7 @@ export default function SiteDetailPage() {
             {[
               { icon: '📄', label: 'Éditer les templates', href: `/sites/${siteId}/templates` },
               { icon: '🗂', label: 'Voir les données', href: `/sites/${siteId}/data` },
-              { icon: '✍️', label: 'Gérer l\'éditorial', href: `/sites/${siteId}/editorial` },
+              { icon: '✍️', label: "Gérer l'éditorial", href: `/sites/${siteId}/editorial` },
               ...(pageTypes.classement ? [{ icon: '📊', label: 'Gérer les classements', href: `/sites/${siteId}/classements` }] : []),
               { icon: '⚙️', label: 'Paramètres du site', href: `/sites/${siteId}/settings` },
             ].map(action => (
@@ -193,9 +210,66 @@ export default function SiteDetailPage() {
           )}
         </div>
 
+        {/* Tracking & Vérification */}
+        <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24, gridColumn: '1 / -1' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+            <h3 style={{ color: '#fff', margin: 0, fontSize: 15, fontWeight: 600 }}>📡 Tracking & Vérification</h3>
+            <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+              {trackingMsg && <span style={{ fontSize: 12, color: trackingMsg.startsWith('✓') ? '#00D4AA' : '#FC8181' }}>{trackingMsg}</span>}
+              <button onClick={saveTracking} disabled={savingTracking} style={{ padding: '8px 16px', borderRadius: 8, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
+                {savingTracking ? '...' : '💾 Sauvegarder'}
+              </button>
+            </div>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+            {/* Clicky */}
+            <div>
+              <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>
+                📊 Clicky Analytics — ID de suivi
+              </div>
+              <div style={{ fontSize: 12, color: '#4A5568', marginBottom: 8 }}>
+                Entrez uniquement l'ID numérique (ex: 101505106)
+              </div>
+              <input
+                value={analyticsClicky}
+                onChange={e => setAnalyticsClicky(e.target.value)}
+                placeholder="101505106"
+                style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }}
+              />
+              {analyticsClicky && (
+                <div style={{ marginTop: 8, padding: 10, borderRadius: 6, background: '#0A0E1A', border: '1px solid #1E2D3D', fontSize: 11, color: '#4A5568', fontFamily: 'monospace' }}>
+                  {'<script async data-id="'}{analyticsClicky}{'" src="//static.getclicky.com/js"></script>'}
+                </div>
+              )}
+            </div>
+
+            {/* Google Search Console */}
+            <div>
+              <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>
+                🔍 Google Search Console — Code de vérification
+              </div>
+              <div style={{ fontSize: 12, color: '#4A5568', marginBottom: 8 }}>
+                Collez uniquement la valeur du content (ex: 8qExRLvDtjV8AY9...)
+              </div>
+              <input
+                value={googleVerification}
+                onChange={e => setGoogleVerification(e.target.value)}
+                placeholder="8qExRLvDtjV8AY9eKfy1-yNAgx7JTZAPDM-Cs4CE4WU"
+                style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }}
+              />
+              {googleVerification && (
+                <div style={{ marginTop: 8, padding: 10, borderRadius: 6, background: '#0A0E1A', border: '1px solid #1E2D3D', fontSize: 11, color: '#4A5568', fontFamily: 'monospace' }}>
+                  {'<meta name="google-site-verification" content="'}{googleVerification}{'" />'}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
         {sheetData && (
           <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24, gridColumn: '1 / -1' }}>
-            <h3 style={{ color: '#fff', margin: '0 0 16px', fontSize: 15, fontWeight: 600 }}>Données Sheet — {sheetData.count} produits détectés</h3>
+            <h3 style={{ color: '#fff', margin: '0 0 16px', fontSize: 15, fontWeight: 600 }}>Données Sheet - {sheetData.count} produits détectés</h3>
             <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
                 <thead>
@@ -203,7 +277,7 @@ export default function SiteDetailPage() {
                 </thead>
                 <tbody>
                   {sheetData.rows.slice(0, 5).map((row: any, i: number) => (
-                    <tr key={i}>{sheetData.headers.slice(0, 8).map((h: string) => (<td key={h} style={{ padding: '8px 12px', color: '#fff', borderBottom: '1px solid #1E2D3D', maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{row[h] || '—'}</td>))}</tr>
+                    <tr key={i}>{sheetData.headers.slice(0, 8).map((h: string) => (<td key={h} style={{ padding: '8px 12px', color: '#fff', borderBottom: '1px solid #1E2D3D', maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{row[h] || '-'}</td>))}</tr>
                   ))}
                 </tbody>
               </table>
