@@ -356,16 +356,23 @@ def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, a
     expected_files.add("politique-confidentialite.html")
     expected_files.add("contact.html")
     expected_files.add("404.html")
+    expected_files.add("nos-comparateurs.html")
     # Pages classement
+    cats_seen = set()
     for prod in products:
         cat = prod.get("categorie", "").strip()
-        if cat:
-            from pathlib import Path as _P
-            import unicodedata as _u, re as _r
-            def _sc(s):
-                s = _u.normalize('NFD', s); s = s.encode('ascii','ignore').decode('ascii')
-                s = s.lower(); s = _r.sub(r"[^a-z0-9]+",'- ',s); return s.strip('-').replace(' ','-')
-            expected_files.add(f"meilleur-{_sc(cat)}.html")
+        if cat and cat not in cats_seen:
+            cats_seen.add(cat)
+            expected_files.add(f"meilleur-{slugify_cat(cat)}.html")
+    # Images schema
+    page_types_for_cleanup = config.get("page_types", {})
+    schema_name_for_cleanup = page_types_for_cleanup.get("classement", "")
+    if schema_name_for_cleanup:
+        images_dir_for_cleanup = ROOT / "schemas" / "images" / schema_name_for_cleanup
+        if images_dir_for_cleanup.exists():
+            for img in images_dir_for_cleanup.iterdir():
+                if img.suffix.lower() in [".png", ".jpg", ".jpeg", ".webp", ".svg"]:
+                    expected_files.add(img.name)
     for slug in current_slugs:
         expected_files.add(f"avis-{slug}.html")
         expected_files.add(f"{slug}.png")
