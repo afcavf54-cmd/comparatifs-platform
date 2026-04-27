@@ -364,15 +364,6 @@ def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, a
         if cat and cat not in cats_seen:
             cats_seen.add(cat)
             expected_files.add(f"meilleur-{slugify_cat(cat)}.html")
-    # Images schema
-    page_types_for_cleanup = config.get("page_types", {})
-    schema_name_for_cleanup = page_types_for_cleanup.get("classement", "")
-    if schema_name_for_cleanup:
-        images_dir_for_cleanup = ROOT / "schemas" / "images" / schema_name_for_cleanup
-        if images_dir_for_cleanup.exists():
-            for img in images_dir_for_cleanup.iterdir():
-                if img.suffix.lower() in [".png", ".jpg", ".jpeg", ".webp", ".svg"]:
-                    expected_files.add(img.name)
     for slug in current_slugs:
         expected_files.add(f"avis-{slug}.html")
         expected_files.add(f"{slug}.png")
