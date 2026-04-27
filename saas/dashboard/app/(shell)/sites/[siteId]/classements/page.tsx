@@ -416,18 +416,17 @@ export default function ClassementsPage() {
                       const cat = selectedData.categorie || selected.replace('classement-', '')
                       const count = catProducts.length
                       try {
-                        const r = await fetch('https://api.anthropic.com/v1/messages', {
+                        const r = await fetch('/api/generate-text', {
                           method: 'POST',
                           headers: { 'Content-Type': 'application/json' },
                           body: JSON.stringify({
-                            model: 'claude-sonnet-4-20250514',
                             max_tokens: 200,
                             system: 'Tu es un expert SEO. Réponds uniquement avec la meta description, sans guillemets, sans preamble. Maximum 155 caractères.',
-                            messages: [{ role: 'user', content: `Écris une meta description SEO optimisée pour une page de classement des meilleurs ${cat} en 2026. ${count} logiciels comparés. Inclure un call-to-action. Maximum 155 caractères.` }]
+                            prompt: `Écris une meta description SEO optimisée pour une page de classement des meilleurs ${cat} en 2026. ${count} logiciels comparés. Inclure un call-to-action. Maximum 155 caractères.`
                           })
                         })
                         const d = await r.json()
-                        const text = d.content?.[0]?.text?.trim()
+                        const text = d.text
                         if (text) updateField(selected, 'meta_description', text)
                       } catch {}
                       setGeneratingMeta(false)
