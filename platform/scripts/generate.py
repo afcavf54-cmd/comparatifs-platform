@@ -491,11 +491,13 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                         with _ur.urlopen(_req, timeout=15) as _resp:
                             _text = _resp.read().decode("utf-8")
                         _reader = _csv.DictReader(_io.StringIO(_text))
-                        _kw_prods = [
-                            {k.strip(): v.strip() for k, v in row.items() if k.strip()}
-                            for row in _reader
-                            if row.get("slug", "").strip() and str(row.get("disponible", "1")) != "0"
-                        ]
+                        _kw_prods = []
+                        for _row in _reader:
+                            if not _row.get("slug", "").strip(): continue
+                            if str(_row.get("disponible", "1")) == "0": continue
+                            _p = {k.strip(): v.strip() for k, v in _row.items() if k.strip()}
+                            _p["categorie"] = _kw_name  # Forcer la catégorie = nom du keyword
+                            _kw_prods.append(_p)
                         if _kw_prods:
                             products = products + _kw_prods
                             print(f"  ✓ {len(_kw_prods)} produits chargés depuis sheet '{_kw_name}'")
