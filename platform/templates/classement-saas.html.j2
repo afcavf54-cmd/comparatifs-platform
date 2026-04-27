@@ -36,8 +36,22 @@
   "@context": "https://schema.org/",
   "@type": "FAQPage",
   "mainEntity": [
-    {% for item in editorial.faq %}
-    { "@type": "Question", "name": "{{ item.q }}", "acceptedAnswer": { "@type": "Answer", "text": "{{ item.a }}" } }{% if not loop.last %},{% endif %}
+    {% set faq_list = [] %}
+    {% if editorial.faq is iterable and editorial.faq is not mapping %}
+      {% set faq_list = editorial.faq %}
+    {% elif editorial.faq is mapping %}
+      {% if editorial.faq.faq is defined and editorial.faq.faq.questions is defined %}
+        {% set faq_list = editorial.faq.faq.questions %}
+      {% elif editorial.faq.questions is defined %}
+        {% set faq_list = editorial.faq.questions %}
+      {% endif %}
+    {% endif %}
+    {% for item in faq_list %}
+    {% set q = item.q if item.q is defined else item.question if item.question is defined else '' %}
+    {% set a = item.a if item.a is defined else item.answer if item.answer is defined else '' %}
+    {% if q and a %}
+    { "@type": "Question", "name": {{ q | tojson }}, "acceptedAnswer": { "@type": "Answer", "text": {{ a | tojson }} } }{% if not loop.last %},{% endif %}
+    {% endif %}
     {% endfor %}
   ]
 }
