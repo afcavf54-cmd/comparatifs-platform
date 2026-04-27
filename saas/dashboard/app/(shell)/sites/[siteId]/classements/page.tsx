@@ -2,7 +2,7 @@
 import React from 'react'
 import { useEffect, useState, useRef } from 'react'
 import { useParams } from 'next/navigation'
-import Link from 'nex-t/link'
+import Link from 'next/link'
 
 
 
