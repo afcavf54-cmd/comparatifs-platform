@@ -46,10 +46,13 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   let yaml = file.content
   const replaceKey = (key: string, val: string) => {
     const re = new RegExp(`^([ ]*)${key}:(.*?)$`, 'm')
+    // Utiliser guillemets simples si la valeur contient des guillemets doubles (ex: script HTML)
+    const quote = val.includes('"') ? "'" : '"'
+    const formatted = `$1${key}: ${quote}${val}${quote}`
     if (re.test(yaml)) {
-      yaml = yaml.replace(re, `$1${key}: "${val}"`)
+      yaml = yaml.replace(re, formatted)
     } else {
-      yaml += `\n  ${key}: "${val}"`
+      yaml += `\n  ${key}: ${quote}${val}${quote}`
     }
   }
   if (body.home_title !== undefined) replaceKey('home_title', body.home_title || '')
