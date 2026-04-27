@@ -341,14 +341,28 @@ export default function ClassementsPage() {
                   borderBottom: '1px solid #1E2D3D'
                 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div>{classements[key]?.categorie || key.replace('classement-', '')}</div>
-                    <button
-                      onClick={e => { e.stopPropagation(); regeneratePage(key) }}
-                      disabled={regenerating[key] || deploying}
-                      title="Régénérer cette page"
-                      style={{ padding: '2px 6px', borderRadius: 4, border: 'none', background: 'transparent', color: regenerating[key] ? '#4A5568' : '#F6AD55', cursor: 'pointer', fontSize: 13 }}>
-                      {regenerating[key] ? '⏳' : '🔄'}
-                    </button>
+                    <div style={{ flex: 1 }}>{classements[key]?.categorie || key.replace('classement-', '')}</div>
+                    <div style={{ display: 'flex', gap: 4 }}>
+                      <button onClick={e => { e.stopPropagation(); regeneratePage(key) }} disabled={regenerating[key] || deploying}
+                        title="Régénérer" style={{ padding: '2px 5px', borderRadius: 4, border: 'none', background: 'transparent', color: regenerating[key] ? '#4A5568' : '#F6AD55', cursor: 'pointer', fontSize: 12 }}>
+                        {regenerating[key] ? '⏳' : '🔄'}
+                      </button>
+                      <button onClick={async e => {
+                        e.stopPropagation()
+                        if (!window.confirm('Supprimer cette page de classement ?')) return
+                        const r = await fetch('/api/github?path=' + encodeURIComponent(editorialPath))
+                        const d = await r.json()
+                        let all: Record<string, any> = {}
+                        if (d.content) { try { all = JSON.parse(d.content) } catch {} }
+                        delete all[key]
+                        await fetch('/api/github', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ path: editorialPath, content: JSON.stringify(all, null, 2), message: 'HUB: Delete classement ' + key }) })
+                        setClassements(prev => { const n = { ...prev }; delete n[key]; return n })
+                        if (selected === key) setSelected(null)
+                        setMsg('✓ Page supprimée')
+                      }} title="Supprimer" style={{ padding: '2px 5px', borderRadius: 4, border: 'none', background: 'transparent', color: '#FC8181', cursor: 'pointer', fontSize: 12 }}>
+                        ×
+                      </button>
+                    </div>
                   </div>
                   <div style={{ fontSize: 10, color: '#4A5568', marginTop: 2 }}>
                     {classements[key]?.intro || classements[key]?.contenu_custom ? '✓ Contenu généré' : '⚠ Sans contenu'}
@@ -360,21 +374,7 @@ export default function ClassementsPage() {
               )}
             </div>
 
-            {categoriesWithoutContent.length > 0 && (
-              <>
-                <div style={{ padding: '10px 12px', borderTop: '1px solid #1E2D3D', borderBottom: '1px solid #1E2D3D', fontSize: 11, color: '#F6AD55', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                  ➕ Ajouter depuis Sheet
-                </div>
-                {categoriesWithoutContent.map(cat => (
-                  <div key={cat} onClick={() => addClassement(cat)} style={{
-                    padding: '10px 14px', cursor: 'pointer', fontSize: 12, color: '#F6AD55',
-                    borderBottom: '1px solid #1E2D3D', display: 'flex', alignItems: 'center', gap: 6
-                  }}>
-                    <span>+</span> {cat}
-                  </div>
-                ))}
-              </>
-            )}
+
           </div>
 
           {/* Éditeur */}
@@ -397,7 +397,6 @@ export default function ClassementsPage() {
                     {selectedData.categorie || selected.replace('classement-', '')}
                   </h3>
                   <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                    {catProducts.length > 0 && <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' as const }}>{catProducts.map(p => <span key={p.slug} style={{ fontSize: 10, padding: '2px 8px', borderRadius: 4, background: '#1E2D3D', color: '#8B9CB0' }}>{p.nom}</span>)}</div>}
                     <button onClick={() => regeneratePage(selected)} disabled={regenerating[selected] || deploying}
                       style={{ padding: '6px 14px', borderRadius: 8, border: '1px solid #F6AD55', background: 'transparent', color: '#F6AD55', cursor: 'pointer', fontWeight: 600, fontSize: 12 }}>
                       {regenerating[selected] ? '⏳...' : '🔄 Régénérer'}
@@ -457,11 +456,27 @@ export default function ClassementsPage() {
 
                 {/* Sections éditables */}
                 {[
-                  { key: 'intro', label: '📝 Introduction', rows: 8 },
-                  { key: 'contenu_custom', label: '📖 Contenu expert', rows: 14 },
-                ].map(({ key, label, rows }) => (
+                  { key: 'intro', label: '📝 Introduction', rows: 8, prompt: `Génère une introduction HTML engageante (150-200 mots) pour une page de classement des meilleurs ${selectedData.categorie || ''} en ${new Date().getFullYear()}. Paragraphes <p>, gras <strong>. Aucun tiret long.` },
+                  { key: 'contenu_custom', label: '📖 Contenu expert', rows: 14, prompt: `Génère un guide expert HTML (500-800 mots) pour aider à choisir parmi les meilleurs ${selectedData.categorie || ''} en ${new Date().getFullYear()}. Utilise des <h2>, <h3>, <p>, <strong>. Aucun tiret long.` },
+                ].map(({ key, label, rows, prompt }) => (
                   <div key={key} style={{ marginBottom: 8 }}>
-                    <div onClick={() => toggleSection(key)} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections[key] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>{label}</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <div onClick={() => toggleSection(key)} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', flex: 1 }}>
+                        <span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections[key] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span>
+                        <span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>{label}</span>
+                        <span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} />
+                      </div>
+                      <button onClick={async () => {
+                        const r = await fetch('/api/generate-text', {
+                          method: 'POST', headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ max_tokens: 1500, system: 'Tu es un expert rédacteur SEO. Réponds uniquement avec le contenu HTML demandé, sans preamble.', prompt })
+                        })
+                        const d = await r.json()
+                        if (d.text) { updateField(selected, key, d.text); setExpandedSections(p => ({ ...p, [key]: true })) }
+                      }} style={{ padding: '3px 10px', borderRadius: 6, border: '1px solid #9F7AEA', background: 'transparent', color: '#9F7AEA', cursor: 'pointer', fontSize: 11, fontWeight: 600, flexShrink: 0 }}>
+                        ✨ Régénérer
+                      </button>
+                    </div>
                     {expandedSections[key] && <div style={{ marginBottom: 12 }}>
                       <HtmlEditor
                         value={selectedData[key] || ''}
@@ -475,15 +490,41 @@ export default function ClassementsPage() {
 
                 {/* FAQ */}
                 <div style={{ marginBottom: 8 }}>
-                  <div onClick={() => toggleSection('faq')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections['faq'] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>❓ FAQ (JSON)</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
-                  {expandedSections['faq'] && <div style={{ marginBottom: 12 }}>
-                    <HtmlEditor
-                      value={typeof selectedData.faq === 'string' ? selectedData.faq : JSON.stringify(selectedData.faq || [], null, 2)}
-                      rows={10}
-                      placeholder={'[{"q": "Question ?", "a": "Réponse."}]'}
-                      onChange={val => updateField(selected, 'faq', val)}
-                    />
-                  </div>}
+                  <div onClick={() => toggleSection('faq')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections['faq'] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>❓ FAQ</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
+                  {expandedSections['faq'] && (() => {
+                    // Normaliser la FAQ en tableau [{q, a}]
+                    let faqItems: {q: string, a: string}[] = []
+                    const raw = selectedData.faq
+                    if (Array.isArray(raw)) {
+                      faqItems = raw.map((i: any) => ({ q: i.q || i.question || '', a: i.a || i.answer || '' }))
+                    } else if (raw?.faq?.questions) {
+                      faqItems = raw.faq.questions.map((i: any) => ({ q: i.question || '', a: i.answer || '' }))
+                    }
+                    const updateFaq = (items: {q: string, a: string}[]) => updateField(selected, 'faq', items)
+                    return (
+                      <div style={{ marginBottom: 12 }}>
+                        {faqItems.map((item, idx) => (
+                          <div key={idx} style={{ marginBottom: 10, background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 8, padding: 12 }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                              <span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600 }}>Q{idx + 1}</span>
+                              <button onClick={() => updateFaq(faqItems.filter((_, i) => i !== idx))}
+                                style={{ padding: '1px 6px', borderRadius: 4, border: 'none', background: 'transparent', color: '#FC8181', cursor: 'pointer', fontSize: 13 }}>×</button>
+                            </div>
+                            <input value={item.q} onChange={e => { const n = [...faqItems]; n[idx] = { ...n[idx], q: e.target.value }; updateFaq(n) }}
+                              placeholder="Question..."
+                              style={{ width: '100%', padding: '7px 10px', borderRadius: 6, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const, marginBottom: 6 }} />
+                            <textarea value={item.a} onChange={e => { const n = [...faqItems]; n[idx] = { ...n[idx], a: e.target.value }; updateFaq(n) }}
+                              placeholder="Réponse..." rows={3}
+                              style={{ width: '100%', padding: '7px 10px', borderRadius: 6, background: '#0D1117', border: '1px solid #1E2D3D', color: '#E2E8F0', fontSize: 13, outline: 'none', fontFamily: 'inherit', resize: 'vertical', boxSizing: 'border-box' as const }} />
+                          </div>
+                        ))}
+                        <button onClick={() => updateFaq([...faqItems, { q: '', a: '' }])}
+                          style={{ width: '100%', padding: '8px', borderRadius: 7, border: '1px dashed #1E2D3D', background: 'transparent', color: '#00D4AA', cursor: 'pointer', fontSize: 12, fontWeight: 600 }}>
+                          + Ajouter une question
+                        </button>
+                      </div>
+                    )
+                  })()}
                 </div>
 
                 {/* Ordre des marques */}
