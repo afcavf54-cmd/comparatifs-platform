@@ -797,6 +797,48 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 print(f"  ✓ {page_slug}.html")
             print(f"  ✓ {classement_count} pages classement générées")
 
+        # ── Page Nos comparateurs ──────────────────────────────────────────
+        nos_comp_tpl_path = TEMPLATES_DIR / "nos-comparateurs.html.j2"
+        if nos_comp_tpl_path.exists() and categories:
+            nos_comp_tpl = env.get_template("nos-comparateurs.html.j2")
+            # Construire la structure par catégorie depuis le schema
+            schema_path = ROOT / "schemas" / f"{template_file.replace('.html.j2', '')}.json"
+            classements_by_category: dict = {}
+            if schema_path.exists():
+                import json as _json
+                with open(schema_path, encoding='utf-8') as _f:
+                    _schema = _json.load(_f)
+                for kw_name, kw_data in _schema.get("keywords", {}).items():
+                    cat_parent = kw_data.get("__categorie", "Autres")
+                    if not cat_parent:
+                        cat_parent = "Autres"
+                    cat_slug = slugify_cat(kw_name)
+                    count = len(kw_data.get("__products", []))
+                    if cat_parent not in classements_by_category:
+                        classements_by_category[cat_parent] = []
+                    classements_by_category[cat_parent].append({
+                        "slug": cat_slug,
+                        "label": kw_name,
+                        "count": count
+                    })
+            # Fallback : utiliser les catégories des produits
+            if not classements_by_category:
+                for cat in categories.keys():
+                    classements_by_category["Nos comparateurs"] = classements_by_category.get("Nos comparateurs", [])
+                    classements_by_category["Nos comparateurs"].append({
+                        "slug": slugify_cat(cat),
+                        "label": cat,
+                        "count": len(categories[cat])
+                    })
+            html = nos_comp_tpl.render(
+                site={**site, "seo": config.get("seo", {})},
+                theme=theme, page_types=config.get("page_types", {}),
+                classements_by_category=classements_by_category,
+                build_date=date.today().isoformat(),
+            )
+            (output_dir / "nos-comparateurs.html").write_text(html, encoding="utf-8")
+            print(f"  ✓ nos-comparateurs.html")
+
     print(f"\n  {'[DRY] ' if dry_run else ''}✅ {generated} pages générées, {skipped} ignorées")
     if not dry_run:
         print(f"  📁 Output : {output_dir}")
