@@ -1,20 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getFile, putFile } from '../../../../../lib/github'
-
 type Params = { params: Promise<{ siteId: string }> }
 
 export async function GET(_: NextRequest, { params }: Params) {
   const { siteId } = await params
   const file = await getFile(`platform/sites/${siteId}/config.yaml`)
   if (!file) return NextResponse.json({ error: 'Config introuvable' }, { status: 404 })
-
   const yaml = file.content
   const get = (key: string) => {
     const match = yaml.match(new RegExp(`^[ ]*${key}:\\s*["']?(.+?)["']?\\s*$`, 'm'))
     return match ? match[1].trim().replace(/^["']|["']$/g, '') : ''
   }
-
-  // Lire page_types
   const pageTypesMatch = yaml.match(/page_types:\s*\n((?:[ ]+\w+:[ ]+\S+\n?)+)/)
   const pageTypes: Record<string, string> = {}
   if (pageTypesMatch) {
@@ -23,7 +19,6 @@ export async function GET(_: NextRequest, { params }: Params) {
       if (m) pageTypes[m[1]] = m[2]
     })
   }
-
   return NextResponse.json({
     home_title: get('home_title'),
     home_description: get('home_description'),
@@ -48,30 +43,27 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   const body = await req.json()
   const file = await getFile(`platform/sites/${siteId}/config.yaml`)
   if (!file) return NextResponse.json({ error: 'Config introuvable' }, { status: 404 })
-
   let yaml = file.content
-
   const replaceKey = (key: string, val: string) => {
     const re = new RegExp(`^([ ]*)${key}:(.*?)$`, 'm')
     if (re.test(yaml)) {
       yaml = yaml.replace(re, `$1${key}: "${val}"`)
+    } else {
+      yaml += `\n  ${key}: "${val}"`
     }
   }
-
-  replaceKey('home_title', body.home_title || '')
-  replaceKey('home_description', body.home_description || '')
-  replaceKey('home_h1', body.home_h1 || '')
-  replaceKey('analytics_clicky', body.analytics_clicky || '')
-  replaceKey('google_site_verification', body.google_site_verification || '')
-  replaceKey('www_preference', body.www_preference || 'www')
-  replaceKey('title_pattern', body.seo_vs_title || '')
-  replaceKey('meta_pattern', body.seo_vs_meta || '')
-  replaceKey('avis_title_pattern', body.seo_avis_title || '')
-  replaceKey('avis_meta_pattern', body.seo_avis_meta || '')
-  replaceKey('liste_comp_title', body.seo_liste_comp_title || '')
-  replaceKey('liste_avis_title', body.seo_liste_avis_title || '')
-
-  // Mettre à jour page_types si fourni
+  if (body.home_title !== undefined) replaceKey('home_title', body.home_title || '')
+  if (body.home_description !== undefined) replaceKey('home_description', body.home_description || '')
+  if (body.home_h1 !== undefined) replaceKey('home_h1', body.home_h1 || '')
+  if (body.analytics_clicky !== undefined) replaceKey('analytics_clicky', body.analytics_clicky || '')
+  if (body.google_site_verification !== undefined) replaceKey('google_site_verification', body.google_site_verification || '')
+  if (body.www_preference !== undefined) replaceKey('www_preference', body.www_preference || 'www')
+  if (body.seo_vs_title !== undefined) replaceKey('title_pattern', body.seo_vs_title || '')
+  if (body.seo_vs_meta !== undefined) replaceKey('meta_pattern', body.seo_vs_meta || '')
+  if (body.seo_avis_title !== undefined) replaceKey('avis_title_pattern', body.seo_avis_title || '')
+  if (body.seo_avis_meta !== undefined) replaceKey('avis_meta_pattern', body.seo_avis_meta || '')
+  if (body.seo_liste_comp_title !== undefined) replaceKey('liste_comp_title', body.seo_liste_comp_title || '')
+  if (body.seo_liste_avis_title !== undefined) replaceKey('liste_avis_title', body.seo_liste_avis_title || '')
   if (body.page_types) {
     const pageTypesBlock = 'page_types:\n' + Object.entries(body.page_types).map(([k, v]) => `  ${k}: ${v}`).join('\n')
     if (/^page_types:/m.test(yaml)) {
@@ -80,8 +72,7 @@ export async function PATCH(req: NextRequest, { params }: Params) {
       yaml = yaml.replace(/^theme:/m, pageTypesBlock + '\ntheme:')
     }
   }
-
   const saved = await putFile(`platform/sites/${siteId}/config.yaml`, yaml, `HUB: Update config ${siteId}`)
   if (!saved) return NextResponse.json({ error: 'Erreur GitHub' }, { status: 500 })
-  return NextResponse.json({ success: true })
+  return NextResponse.json({ ok: true })
 }
