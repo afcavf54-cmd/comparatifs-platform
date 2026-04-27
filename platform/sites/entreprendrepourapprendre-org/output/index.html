@@ -75,11 +75,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 
 /* ── MOTEUR DE RECHERCHE ── */
 .search-wrap{max-width:600px;margin:0 auto;position:relative}
-.search-box{display:flex;align-items:center;background:#fff;border-radius:50px;padding:6px 6px 6px 22px;box-shadow:0 8px 40px rgba(0,0,0,.25);gap:10px}
-.search-box input{flex:1;border:none;outline:none;font-size:16px;font-family:'Outfit',sans-serif;color:var(--ink);background:transparent}
+.search-box{display:flex;align-items:center;background:#fff;border-radius:50px;padding:6px 6px 6px 18px;box-shadow:0 8px 40px rgba(0,0,0,.25);gap:8px}
+.search-box input{flex:1;min-width:0;border:none;outline:none;font-size:15px;font-family:'Outfit',sans-serif;color:var(--ink);background:transparent}
 .search-box input::placeholder{color:var(--ink3)}
-.search-btn{padding:11px 24px;border-radius:40px;background:var(--accent);color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer;white-space:nowrap;transition:.15s;flex-shrink:0}
+.search-btn{padding:11px 20px;border-radius:40px;background:var(--accent);color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer;white-space:nowrap;transition:.15s;flex-shrink:0}
 .search-btn:hover{opacity:.88}
+@media(max-width:480px){
+  .search-box{padding:5px 5px 5px 14px}
+  .search-box input{font-size:13px}
+  .search-btn{padding:9px 14px;font-size:13px}
+}
 .search-suggestions{position:absolute;top:calc(100% + 8px);left:0;right:0;background:#fff;border-radius:var(--r2);box-shadow:0 8px 40px rgba(0,0,0,.15);z-index:50;overflow:hidden;display:none}
 .search-suggestions.open{display:block}
 .suggestion-item{padding:12px 20px;cursor:pointer;font-size:15px;color:var(--ink2);display:flex;align-items:center;gap:10px;transition:.1s;border-bottom:1px solid var(--border)}
@@ -230,16 +235,16 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
   </div>
 </footer>
 
-<script async data-id="101505107" src="/623dee8d7d7150d88.js"></script>
+
 
 <script>
 // Données de recherche (chargées en JS après DOM pour éviter footprint)
 const ALL_CATEGORIES = [
-  { label: "Création d’entreprise en ligne", slug: "meilleur-création-d’entreprise-en-ligne" },
-  { label: "Création d’entreprise en ligne", slug: "meilleur-création-d’entreprise-en-ligne" },
-  { label: "Création d’entreprise en ligne", slug: "meilleur-création-d’entreprise-en-ligne" },
-  { label: "Création d’entreprise en ligne", slug: "meilleur-création-d’entreprise-en-ligne" },
-  { label: "Création d’entreprise en ligne", slug: "meilleur-création-d’entreprise-en-ligne" },
+  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
+  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
+  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
+  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
+  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
 ].filter((v,i,a) => a.findIndex(t=>t.label===v.label)===i);
 
 const searchInput = document.getElementById('search-input');
