@@ -465,6 +465,43 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         template = None
     print(f"  Template : {template_file}")
 
+    # Charger les produits des sheets individuels des keywords (classement)
+    if is_classement_template:
+        _schema_name = page_types.get("classement", "")
+        if _schema_name:
+            _schema_path = ROOT / "schemas" / f"{_schema_name}.json"
+            if _schema_path.exists():
+                import json as _j, csv as _csv, io as _io, urllib.request as _ur, itertools as _it2
+                with open(_schema_path, encoding="utf-8") as _sf:
+                    _schema_data = _j.load(_sf)
+                _extra = []
+                for _kw_name, _kw_data in _schema_data.get("keywords", {}).items():
+                    _kw_url = _kw_data.get("__sheet_url", "")
+                    if not _kw_url:
+                        continue
+                    _covered = any(
+                        _kw_name.lower() in p.get("categorie", "").lower() or
+                        p.get("categorie", "").lower() in _kw_name.lower()
+                        for p in products
+                    )
+                    if _covered:
+                        continue
+                    try:
+                        _req = _ur.Request(_kw_url, headers={"User-Agent": "Mozilla/5.0"})
+                        with _ur.urlopen(_req, timeout=15) as _resp:
+                            _text = _resp.read().decode("utf-8")
+                        _reader = _csv.DictReader(_io.StringIO(_text))
+                        _kw_prods = [
+                            {k.strip(): v.strip() for k, v in row.items() if k.strip()}
+                            for row in _reader
+                            if row.get("slug", "").strip() and str(row.get("disponible", "1")) != "0"
+                        ]
+                        if _kw_prods:
+                            products = products + _kw_prods
+                            print(f"  ✓ {len(_kw_prods)} produits chargés depuis sheet '{_kw_name}'")
+                    except Exception as _e:
+                        print(f"  ⚠ Sheet '{_kw_name}': {_e}")
+
     output_dir = site_dir / "output"
     if not dry_run:
         output_dir.mkdir(exist_ok=True)
