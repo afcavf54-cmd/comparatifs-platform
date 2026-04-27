@@ -593,6 +593,21 @@ export default function ClassementsPage() {
                           {/* Contenu déplié */}
                           {isExpanded && (
                             <div style={{ padding: 14 }}>
+                              {/* Lien affiliation + CTA */}
+                              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 14 }}>
+                                <div>
+                                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5 }}>🔗 Lien d'affiliation</div>
+                                  <input value={prodData.url_affiliation || ''} onChange={e => updateField(selected, `prod_${prodKey}`, { ...prodData, url_affiliation: e.target.value })}
+                                    placeholder="https://..."
+                                    style={{ width: '100%', padding: '8px 12px', borderRadius: 7, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+                                </div>
+                                <div>
+                                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5 }}>🖱 Texte du CTA</div>
+                                  <input value={prodData.cta_text || ''} onChange={e => updateField(selected, `prod_${prodKey}`, { ...prodData, cta_text: e.target.value })}
+                                    placeholder={`→ Essayer ${prod.nom}`}
+                                    style={{ width: '100%', padding: '8px 12px', borderRadius: 7, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+                                </div>
+                              </div>
                               <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 6 }}>Description</div>
                               <HtmlEditor
                                 value={prodData.description || ''}
