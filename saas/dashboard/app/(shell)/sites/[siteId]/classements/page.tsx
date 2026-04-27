@@ -122,6 +122,18 @@ export default function ClassementsPage() {
   const [deploying, setDeploying] = useState(false)
   const [generatingMeta, setGeneratingMeta] = useState(false)
   const [expandedBrands, setExpandedBrands] = useState<Record<string, boolean>>({})
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({ seo: true })
+  function toggleSection(key: string) { setExpandedSections(p => ({ ...p, [key]: !p[key] })) }
+  function SectionHeader({ id, label }: { id: string, label: string }) {
+    const open = expandedSections[id] || false
+    return (
+      <div onClick={() => toggleSection(id)} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: open ? 12 : 0 }}>
+        <span style={{ color: '#4A5568', fontSize: 11, transform: open ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span>
+        <span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>{label}</span>
+        <span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} />
+      </div>
+    )
+  }
   const [showAddBrand, setShowAddBrand] = useState(false)
   const [newBrand, setNewBrand] = useState({ nom: '', slug: '', description: '', points_forts: '', points_faibles: '' })
   const [generatingBrand, setGeneratingBrand] = useState(false)
@@ -403,6 +415,8 @@ export default function ClassementsPage() {
                 </div>
 
                 {/* SEO */}
+                <SectionHeader id="seo" label="🔍 SEO" />
+                {expandedSections['seo'] && <>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 12 }}>
                   {[{ label: 'H1', field: 'h1' }, { label: 'Meta title', field: 'meta_title' }].map(({ label, field }) => (
                     <div key={field}>
@@ -412,7 +426,7 @@ export default function ClassementsPage() {
                     </div>
                   ))}
                 </div>
-                <div style={{ marginBottom: 20 }}>
+                <div style={{ marginBottom: 12 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 5 }}>
                     <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const }}>Meta description</div>
                     <button onClick={async () => {
@@ -448,37 +462,44 @@ export default function ClassementsPage() {
                   )}
                 </div>
 
+                </>}
+
                 {/* Sections éditables */}
                 {[
                   { key: 'intro', label: '📝 Introduction', rows: 8 },
                   { key: 'contenu_custom', label: '📖 Contenu expert', rows: 14 },
                 ].map(({ key, label, rows }) => (
-                  <div key={key} style={{ marginBottom: 20 }}>
-                    <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 8 }}>{label}</div>
-                    <HtmlEditor
-                      value={selectedData[key] || ''}
-                      rows={rows}
-                      placeholder={`Contenu ${label} — généré par Sonnet ou saisi manuellement`}
-                      onChange={val => updateField(selected, key, val)}
-                    />
+                  <div key={key} style={{ marginBottom: 8 }}>
+                    <SectionHeader id={key} label={label} />
+                    {expandedSections[key] && <div style={{ marginBottom: 12 }}>
+                      <HtmlEditor
+                        value={selectedData[key] || ''}
+                        rows={rows}
+                        placeholder={`Contenu ${label} — généré par Sonnet ou saisi manuellement`}
+                        onChange={val => updateField(selected, key, val)}
+                      />
+                    </div>}
                   </div>
                 ))}
 
                 {/* FAQ */}
-                <div style={{ marginBottom: 20 }}>
-                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 8 }}>❓ FAQ (JSON)</div>
-                  <HtmlEditor
-                    value={typeof selectedData.faq === 'string' ? selectedData.faq : JSON.stringify(selectedData.faq || [], null, 2)}
-                    rows={10}
-                    placeholder={'[{"q": "Question ?", "a": "Réponse."}]'}
-                    onChange={val => updateField(selected, 'faq', val)}
-                  />
+                <div style={{ marginBottom: 8 }}>
+                  <SectionHeader id="faq" label="❓ FAQ (JSON)" />
+                  {expandedSections['faq'] && <div style={{ marginBottom: 12 }}>
+                    <HtmlEditor
+                      value={typeof selectedData.faq === 'string' ? selectedData.faq : JSON.stringify(selectedData.faq || [], null, 2)}
+                      rows={10}
+                      placeholder={'[{"q": "Question ?", "a": "Réponse."}]'}
+                      onChange={val => updateField(selected, 'faq', val)}
+                    />
+                  </div>}
                 </div>
 
                 {/* Ordre des marques */}
                 {catProducts.length > 0 && (
-                  <div style={{ marginBottom: 20 }}>
-                    <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 10 }}>🔢 Ordre du classement</div>
+                  <div style={{ marginBottom: 8 }}>
+                    <SectionHeader id="ordre" label="🔢 Ordre du classement" />
+                    {expandedSections['ordre'] && <>
                     <div style={{ fontSize: 12, color: '#4A5568', marginBottom: 10 }}>Par défaut : trié par note. Entrez un numéro pour forcer la position.</div>
                     <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 6 }}>
                       {catProducts.map((prod: any) => {
@@ -506,6 +527,7 @@ export default function ClassementsPage() {
                         )
                       })}
                     </div>
+                    </>}
                   </div>
                 )}
 
