@@ -124,16 +124,7 @@ export default function ClassementsPage() {
   const [expandedBrands, setExpandedBrands] = useState<Record<string, boolean>>({})
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({ seo: true })
   function toggleSection(key: string) { setExpandedSections(p => ({ ...p, [key]: !p[key] })) }
-  function SectionHeader({ id, label }: { id: string, label: string }) {
-    const open = expandedSections[id] || false
-    return (
-      <div onClick={() => toggleSection(id)} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: open ? 12 : 0 }}>
-        <span style={{ color: '#4A5568', fontSize: 11, transform: open ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span>
-        <span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>{label}</span>
-        <span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} />
-      </div>
-    )
-  }
+
   const [showAddBrand, setShowAddBrand] = useState(false)
   const [newBrand, setNewBrand] = useState({ nom: '', slug: '', description: '', points_forts: '', points_faibles: '' })
   const [generatingBrand, setGeneratingBrand] = useState(false)
@@ -415,7 +406,7 @@ export default function ClassementsPage() {
                 </div>
 
                 {/* SEO */}
-                <SectionHeader id="seo" label="🔍 SEO" />
+                <div onClick={() => toggleSection('seo')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections['seo'] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>🔍 SEO</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
                 {expandedSections['seo'] && <>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 12 }}>
                   {[{ label: 'H1', field: 'h1' }, { label: 'Meta title', field: 'meta_title' }].map(({ label, field }) => (
@@ -470,7 +461,7 @@ export default function ClassementsPage() {
                   { key: 'contenu_custom', label: '📖 Contenu expert', rows: 14 },
                 ].map(({ key, label, rows }) => (
                   <div key={key} style={{ marginBottom: 8 }}>
-                    <SectionHeader id={key} label={label} />
+                    <div onClick={() => toggleSection(key)} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections[key] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>{label}</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
                     {expandedSections[key] && <div style={{ marginBottom: 12 }}>
                       <HtmlEditor
                         value={selectedData[key] || ''}
@@ -484,7 +475,7 @@ export default function ClassementsPage() {
 
                 {/* FAQ */}
                 <div style={{ marginBottom: 8 }}>
-                  <SectionHeader id="faq" label="❓ FAQ (JSON)" />
+                  <div onClick={() => toggleSection('faq')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections['faq'] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>❓ FAQ (JSON)</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
                   {expandedSections['faq'] && <div style={{ marginBottom: 12 }}>
                     <HtmlEditor
                       value={typeof selectedData.faq === 'string' ? selectedData.faq : JSON.stringify(selectedData.faq || [], null, 2)}
@@ -498,7 +489,7 @@ export default function ClassementsPage() {
                 {/* Ordre des marques */}
                 {catProducts.length > 0 && (
                   <div style={{ marginBottom: 8 }}>
-                    <SectionHeader id="ordre" label="🔢 Ordre du classement" />
+                    <div onClick={() => toggleSection('ordre')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections['ordre'] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>🔢 Ordre du classement</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
                     {expandedSections['ordre'] && <>
                     <div style={{ fontSize: 12, color: '#4A5568', marginBottom: 10 }}>Par défaut : trié par note. Entrez un numéro pour forcer la position.</div>
                     <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 6 }}>
