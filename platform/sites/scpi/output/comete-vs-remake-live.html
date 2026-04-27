@@ -20,7 +20,7 @@
   "headline": "Comète vs Remake Live : comparatif 2026",
   "description": "Comparatif complet SCPI Comète vs Remake Live : TD, TRI, frais, capitalisation. Trouvez la meilleure SCPI pour votre investissement en 2026.",
   "url": "https://www.utl-peipin.fr/comete-vs-remake-live",
-  "dateModified": "2026-04-20",
+  "dateModified": "2026-04-27",
   "publisher": {"@type": "Organization", "name": "UTL Peipin"}
 }
 </script>
@@ -29,8 +29,8 @@
   "@context": "https://schema.org/",
   "@type": "Review",
   "name": "Avis Comète 2026",
-  "datePublished": "2026-04-20",
-  "dateModified": "2026-04-20",
+  "datePublished": "2026-04-27",
+  "dateModified": "2026-04-27",
   "author": { "@type": "Organization", "name": "Julie Fontaine", "url": "https://www.utl-peipin.fr" },
   "reviewRating": { "@type": "Rating", "ratingValue": "4.7", "bestRating": "5", "worstRating": "1" },
   "itemReviewed": {
@@ -50,8 +50,8 @@
   "@context": "https://schema.org/",
   "@type": "Review",
   "name": "Avis Remake Live 2026",
-  "datePublished": "2026-04-20",
-  "dateModified": "2026-04-20",
+  "datePublished": "2026-04-27",
+  "dateModified": "2026-04-27",
   "author": { "@type": "Organization", "name": "Julie Fontaine", "url": "https://www.utl-peipin.fr" },
   "reviewRating": { "@type": "Rating", "ratingValue": "4.6", "bestRating": "5", "worstRating": "1" },
   "itemReviewed": {
@@ -251,12 +251,12 @@ main h3{margin-top:1.8em;margin-bottom:0.5em}
 
 <style>
 nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;position:sticky;top:0;z-index:100}
-.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:28px}
-.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:25px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
-.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;margin:0 8px}
-.nav-links a{color:rgba(255,255,255,.65);font-size:18px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;position:relative}
+.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
 .nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.1)}
-.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--accent2);color:#fff;font-size:18px;font-weight:700;transition:.15s;flex-shrink:0}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--accent2);color:#fff;font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
 .nav-cta:hover{opacity:.88}
 .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
 .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
@@ -275,8 +275,8 @@ nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;posit
   <div class="nav-inner">
     <a href="/" class="nav-logo">UTL<span>Peipin</span></a>
     <div class="nav-links">
-      <a href="/comparatifs-scpi">Comparatifs SCPI</a>
-      <a href="/avis-scpi">Avis SCPI</a>
+        <a href="/comparatifs-scpi">Comparatifs</a>
+        <a href="/avis-scpi">Avis</a>
     </div>
     <a href="/contact" class="nav-cta">Contact</a>
     <button class="nav-burger" id="burger" aria-label="Menu" onclick="toggleMenu()">
@@ -284,8 +284,8 @@ nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;posit
     </button>
   </div>
   <div class="nav-mobile" id="nav-mobile">
-    <a href="/comparatifs-scpi">Comparatifs SCPI</a>
-    <a href="/avis-scpi">Avis SCPI</a>
+      <a href="/comparatifs-scpi">Comparatifs</a>
+      <a href="/avis-scpi">Avis</a>
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
 </nav>
@@ -313,10 +313,14 @@ document.addEventListener('click',function(e){
     <div style="display:flex;justify-content:center;margin:-10px 0 20px">
       <div style="display:inline-flex;align-items:center;gap:6px;background:#EAF3DE;color:#27500A;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;border:none">
         <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#27500A"></span>
-        Mis à jour le 20 avril 2026
+        Mis à jour le 27 avril 2026
       </div>
     </div>
-    <div class="intro" style="text-align:left"></div>
+    <div class="intro" style="text-align:left"><p>Comète d'Alderan et Remake Live de Remake AM incarnent deux approches distinctes de l'investissement diversifié européen en 2026.</p>
+
+<p>Avec un taux de distribution de <strong>9%</strong> contre <strong>7,05%</strong> pour Remake Live, Comète privilégie le rendement immédiat tandis que Remake Live vise l'équilibre avec un <strong>TRI</strong> de <strong>7%</strong> contre <strong>6,5%</strong>.</p>
+
+<p>Cette comparaison révèle des stratégies complémentaires sur des marchés européens en mutation. Les structures de frais et les approches géographiques diffèrent sensiblement entre ces deux véhicules d'investissement.</p></div>
   </div>
 
   <h2 style="margin-top:0">Comparaison détaillée : Comète vs Remake Live</h2>
@@ -434,19 +438,21 @@ document.addEventListener('click',function(e){
           → Notre avis sur Comète
         </a>
       </div>
-      <div class="model-text">Comète d'Alderan se positionne comme une SCPI diversifiée axée sur l'immobilier européen et international. Avec une capitalisation de 519,6 millions d'euros, elle constitue un véhicule d'investissement de taille significative pour accéder à un patrimoine immobilier varié.
+      <div class="model-text"><p>Comète se positionne comme une SCPI diversifiée européenne délivrant un taux de distribution de <strong>9%</strong> en 2026, soutenu par un portefeuille axé sur les commerces (<strong>28%</strong>) et la logistique (<strong>24%</strong>).</p>
 
-La stratégie de Comète repose sur une diversification géographique marquée, avec la Grande-Bretagne comme pilier principal (47% du patrimoine). L'Espagne (15%), l'Italie (12%) et les Pays-Bas (10%) complètent cette exposition européenne, offrant une répartition des risques géographiques.
+<p>La stratégie d'Alderan concentre <strong>47%</strong> des actifs en Grande-Bretagne, complétés par l'Espagne (<strong>15%</strong>) et l'Italie (<strong>12%</strong>).</p>
 
-Le portefeuille sectoriel privilégie les commerces (28%) et la logistique (24%), deux secteurs résilients dans l'environnement économique actuel. Les hôtels (16%), bureaux (14%) et autres actifs (19%) apportent une diversification supplémentaire.
+<p>Avec une capitalisation de 519,6 millions d'euros et un taux d'occupation financier de <strong>99,10%</strong>, Comète maintient un endettement nul, privilégiant la sécurité patrimoniale.</p>
 
-Comète se distingue par son absence d'endettement et un délai de jouissance limité à 5 mois. Le ticket d'entrée accessible de 250€ pour une part permet une démocratisation de l'investissement immobilier européen.
+<p>Le prix de part s'établit à <strong>250€</strong> à l'achat contre <strong>225€</strong> en retrait, soit une décote de <strong>10%</strong>.</p>
 
-La société de gestion Alderan s'appuie sur une expertise reconnue pour sélectionner des actifs performants dans des zones géographiques diversifiées, visant un équilibre entre rendement et sécurité.</div>
+<p>Les frais de souscription de <strong>10%</strong> s'accompagnent de frais de gestion de <strong>11%</strong>, tandis que le délai de jouissance de 5 mois reflète la politique prudente de la société de gestion.</p>
+
+<p>Le <strong>TRI</strong> sur 10 ans de <strong>6,5%</strong> intègre cette approche conservatrice sur les marchés européens.</p></div>
     </div>
     <div class="pros-cons">
-      <div class="pros"><h3>✓ Points forts</h3><ul><li>Taux de distribution élevé de 9%</li><li>Diversification géographique européenne solide</li><li>Absence d'endettement sécurisante</li><li>Ticket d'entrée accessible à 250€</li></ul></div>
-      <div class="cons"><h3>✗ Points faibles</h3><ul><li>Forte exposition Grande-Bretagne (47%)</li><li>Frais de gestion élevés à 11%</li><li>Délai de retrait potentiel non spécifié</li></ul></div>
+      <div class="pros"><h3>✓ Points forts</h3><ul><li>Taux de distribution élevé de 9%</li><li>Endettement zéro pour sécurité maximale</li><li>TOF excellent de 99,10%</li><li>Exposition logistique de 24%</li></ul></div>
+      <div class="cons"><h3>✗ Points faibles</h3><ul><li>Décote de 10% entre achat et retrait</li><li>TRI limité à 6,5% sur 10 ans</li><li>Délai de jouissance de 5 mois</li></ul></div>
     </div>
     <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border)">
       <a href="https://app.louveinvest.com/signup?promoCode=MONELOR&utm_source=monelor&utm_medium=partenariat" class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="width:100%;justify-content:center">
@@ -486,17 +492,21 @@ La société de gestion Alderan s'appuie sur une expertise reconnue pour sélect
           → Notre avis sur Remake Live
         </a>
       </div>
-      <div class="model-text">Remake Live est la SCPI diversifiée phare de Remake AM, spécialisée dans l'investissement immobilier européen multi-sectoriel. Lancée avec une stratégie d'expansion géographique ambitieuse, elle s'impose comme une référence sur le segment des SCPI européennes diversifiées.
+      <div class="model-text"><p>Remake Live développe une stratégie diversifiée européenne générant un taux de distribution de <strong>7,05%</strong> avec un <strong>TRI</strong> de <strong>7%</strong> sur 10 ans.</p>
 
-La société gère un patrimoine de 846 millions d'euros réparti sur 6 pays européens, avec une forte concentration sur la Grande-Bretagne (30%) et la France (24%). Cette diversification géographique permet de réduire les risques liés à un marché unique tout en captant les opportunités de croissance européennes.
+<p>Le portefeuille privilégie les bureaux (<strong>40%</strong>) et la santé (<strong>20%</strong>), secteurs porteurs de la transformation économique européenne.</p>
 
-La stratégie sectorielle privilégie les bureaux (40% du patrimoine) et la santé (20%), deux secteurs porteurs à long terme. La logistique (15%) et les commerces (12%) complètent cette allocation, offrant une exposition équilibrée aux différents cycles immobiliers européens.
+<p>La répartition géographique équilibre la Grande-Bretagne (<strong>30%</strong>) et la France (<strong>24%</strong>), complétées par l'Espagne et l'Irlande (<strong>10%</strong> chacune).</p>
 
-Avec un taux d'occupation financier de 98,86% et un endettement maîtrisé à 26,97%, Remake Live affiche une gestion rigoureuse. Le délai de jouissance de 3 mois et l'absence de frais d'entrée renforcent son attractivité pour les investisseurs recherchant une exposition immobilière européenne diversifiée.</div>
+<p>Cette diversification s'appuie sur une capitalisation de 846 millions d'euros et un endettement maîtrisé de <strong>26,97%</strong>.</p>
+
+<p>Remake AM propose un accès <strong>sans frais d'entrée</strong> avec un prix de part à <strong>204€</strong> constant à l'achat comme au retrait.</p>
+
+<p>Les frais de gestion de <strong>18%</strong> financent une gestion active, tandis que le délai de jouissance de 3 mois optimise la mise en location. Le taux d'occupation financier de <strong>98,86%</strong> confirme l'efficacité opérationnelle.</p></div>
     </div>
     <div class="pros-cons">
-      <div class="pros"><h3>✓ Points forts</h3><ul><li>TRI de 7% sur 10 ans avec TD stable à 7,05%</li><li>Diversification européenne sur 6 pays</li><li>TOF élevé à 98,86% malgré la diversité</li><li>Aucuns frais d'entrée pour optimiser l'investissement</li></ul></div>
-      <div class="cons"><h3>✗ Points faibles</h3><ul><li>Exposition importante au marché britannique (30%)</li><li>Frais de gestion élevés à 1,8%</li><li>Délai de jouissance de 3 mois</li></ul></div>
+      <div class="pros"><h3>✓ Points forts</h3><ul><li>Aucun frais de souscription</li><li>TRI attractif de 7% sur 10 ans</li><li>Exposition santé de 20%</li><li>Délai de jouissance court de 3 mois</li></ul></div>
+      <div class="cons"><h3>✗ Points faibles</h3><ul><li>Frais de gestion élevés de 18%</li><li>Endettement de 26,97%</li><li>TD plus faible à 7,05%</li></ul></div>
     </div>
     <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border)">
       <a href="https://app.louveinvest.com/signup?promoCode=MONELOR&utm_source=monelor&utm_medium=partenariat" class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="width:100%;justify-content:center">
@@ -554,7 +564,7 @@ Avec un taux d'occupation financier de 98,86% et un endettement maîtrisé à 26
     Mais le taux de distribution seul ne raconte pas toute l'histoire.
     Sur la performance globale (TRI 10 ans), <strong>Remake Live</strong> prend l'avantage avec <strong>7.0%</strong>.  </p>
   <div class="expert-note">
-    💡 <strong>L'avis de l'expert :</strong> 
+    💡 <strong>L'avis de l'expert :</strong> <p>Comète privilégie la distribution avec <strong>9%</strong> contre <strong>7,05%</strong> pour Remake Live, mais Remake Live compense par un <strong>TRI</strong> supérieur (<strong>7%</strong> vs <strong>6,5%</strong>). Cette différence révèle deux philosophies : rendement immédiat versus potentiel de plus-value sur 10 ans.</p>
   </div>
 
   <h2>Composition du patrimoine et diversification</h2>
@@ -566,7 +576,9 @@ Avec un taux d'occupation financier de 98,86% et un endettement maîtrisé à 26
     <strong>Remake Live</strong> : <strong>76% d'exposition étrangère</strong>.
   </p>
   <div class="expert-note">
-    💡 
+    💡 <p>Avec <strong>53%</strong> d'actifs hors France pour Comète contre <strong>76%</strong> pour Remake Live, les deux SCPI optimisent la fiscalité des hauts revenus via l'Europe.</p>
+
+<p>Remake Live offre une exposition internationale plus marquée, particulièrement intéressante pour les TMI à <strong>45%</strong>.</p>
   </div>
 
   <h3>2. L'accessibilité, qui peut investir ?</h3>
@@ -594,7 +606,7 @@ Avec un taux d'occupation financier de 98,86% et un endettement maîtrisé à 26
     </table>
   </div>
   <div class="expert-note">
-    💡 
+    💡 <p>Comète applique <strong>10%</strong> de frais d'entrée et <strong>11%</strong> de gestion contre <strong>0%</strong> et <strong>18%</strong> pour Remake Live. Sur 10 ans, Comète coûte environ <strong>21%</strong> contre <strong>18%</strong> pour Remake Live, avantageant les investissements longs.</p>
     <strong>Comète</strong> est imbattable pour les versements programmés, vous pouvez investir part par part chaque mois. <strong>Remake Live</strong> impose un ticket plus conséquent, adapté aux placements de capital établis.
   </div>
 
@@ -725,7 +737,7 @@ Remake Live est plus grande.  </p>
     Remake Live est plus avantageuse à la sortie.
   </p>
   <div class="expert-note">
-    💡 <strong>L'avis de l'expert :</strong>  C'est l'équivalent des frais de souscription pour les SCPI à capital fixe. Sur 100 parts à 250.0€, une décote de 10.0% représente 2500€ perdus si vous revendez immédiatement.
+    💡 <strong>L'avis de l'expert :</strong> <p>Comète impose une décote de <strong>10%</strong> (<strong>250€</strong> achat vs <strong>225€</strong> retrait) tandis que Remake Live maintient la parité à <strong>204€</strong>. Cette différence pénalise les sorties anticipées de Comète mais reflète sa politique de distribution élevée.</p> C'est l'équivalent des frais de souscription pour les SCPI à capital fixe. Sur 100 parts à 250.0€, une décote de 10.0% représente 2500€ perdus si vous revendez immédiatement.
   </div>
 
   <p style="color:var(--ink2);font-size:18px;line-height:1.75">
@@ -736,9 +748,9 @@ Remake Live est plus grande.  </p>
   <div class="mix-block">
     <h3>🔀 Et si vous investissez dans les deux ?</h3>
     <p style="font-size:17px;color:var(--ink2);line-height:1.75;margin:0">
-      La diversification entre plusieurs SCPI est souvent la stratégie la plus pertinente.
-      Associer <strong>Comète</strong> et <strong>Remake Live</strong> permet de bénéficier des points forts de chacune tout en limitant l'exposition à un seul gestionnaire.
-      Consultez un conseiller en gestion de patrimoine pour déterminer la répartition optimale selon votre fiscalité et vos objectifs.
+      <p>L'association Comète-Remake Live permet de combiner rendement immédiat (<strong>9%</strong>) et potentiel de plus-value (<strong>7%</strong> de <strong>TRI</strong>), tout en diversifiant entre gestion conservatrice sans endettement et approche dynamique avec levier.</p>
+
+<p>Cette complémentarité optimise le couple rendement-risque sur les marchés européens.</p>
     </p>
   </div>
 
@@ -748,7 +760,7 @@ Remake Live est plus grande.  </p>
   <div class="author-avatar">E</div>
   <div>
     <div class="author-name">Équipe éditoriale UTL Peipin</div>
-    <div class="author-title">Analyse basée sur les données officielles des sociétés de gestion · Actualisé le 20 avril 2026</div>
+    <div class="author-title">Analyse basée sur les données officielles des sociétés de gestion · Actualisé le 27 avril 2026</div>
   </div>
 </div>
 
@@ -760,44 +772,37 @@ Remake Live est plus grande.  </p>
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"Comète ou Remake Live : laquelle choisir en 2026 ?","acceptedAnswer":{"@type":"Answer","text":"Comète est recommandée si vous cherchez une exposition immobilière européenne diversifiée. Remake Live convient mieux si vous cherchez une diversification européenne. Les deux peuvent être complémentaires dans un portefeuille SCPI diversifié."}},
+    {"@type":"Question","name":"Comète ou Remake Live : laquelle choisir en 2026 ?","acceptedAnswer":{"@type":"Answer","text":"Comète est recommandée si vous cherchez un rendement immédiat élevé de 9%. Remake Live convient mieux si vous cherchez l'équilibre rendement-plus-value. Les deux peuvent être complémentaires dans un portefeuille SCPI diversifié."}},
 {"@type":"Question","name":"Quel est le taux de distribution de Comète vs Remake Live ?","acceptedAnswer":{"@type":"Answer","text":"Comète affiche 9.0% et Remake Live 7.05% sur le dernier exercice. Analysez aussi le TRI sur 5 ans pour une performance globale."}},{"@type":"Question","name":"Quels sont les frais de souscription ?","acceptedAnswer":{"@type":"Answer","text":"Comète : 10.0%. Remake Live : 0% (sans frais)."}},    {"@type":"Question","name":"Peut-on investir en assurance-vie ?","acceptedAnswer":{"@type":"Answer","text":"Cela dépend de votre contrat. Renseignez-vous auprès de votre assureur ou CGP."}},
     {"@type":"Question","name":"Quel est le risque de perte en capital ?","acceptedAnswer":{"@type":"Answer","text":"Comme toute SCPI, Comète et Remake Live présentent un risque de perte en capital. Les performances passées ne préjugent pas des performances futures."}},
     {"@type":"Question","name":"Le démembrement est-il possible ?","acceptedAnswer":{"@type":"Answer","text":"Le démembrement dépend des conditions proposées par Alderan et Remake AM. Consultez votre CGP pour les modalités."}}
   ]
 }
 </script>
-<div class="faq-item">
-  <div class="faq-q">Comète ou Remake Live : laquelle choisir en 2026 ?</div>
-  <div class="faq-a"><strong>Comète</strong> est recommandée si vous cherchez une exposition immobilière européenne diversifiée. <strong>Remake Live</strong> convient mieux si vous cherchez une diversification européenne. Les deux peuvent être complémentaires, voir la section "mixer les deux" ci-dessus.</div>
-</div>
-<div class="faq-item">
-  <div class="faq-q">Quel est le meilleur taux de distribution ?</div>
-  <div class="faq-a"><strong>Comète</strong> : <strong>9.0%</strong> · <strong>Remake Live</strong> : <strong>7.05%</strong>. Analysez aussi le TRI sur 5 ans, il mesure la performance réelle incluant l'évolution du prix de part.</div>
-</div>
-<div class="faq-item">
-  <div class="faq-q">Quels sont les frais d'entrée ?</div>
-  <div class="faq-a">
-    <strong>Comète</strong> : <strong>10.0%</strong> ·
-    <strong>Remake Live</strong> : <strong>0%, sans frais</strong>. Horizon recommandé : 8 ans minimum.
+  <div class="faq-item">
+    <div class="faq-q">Comète ou Remake Live : laquelle choisir en 2026 ?</div>
+    <div class="faq-a">Comète convient aux investisseurs cherchant un rendement immédiat de 9% avec sécurité maximale (zéro endettement). Remake Live s'adresse aux profils équilibrant distribution (7,05%) et plus-value potentielle (TRI 7%). Le choix dépend de votre horizon et de votre besoin de liquidité.</div>
   </div>
-</div>
-<div class="faq-item">
-  <div class="faq-q">Quand perçoit-on les premiers loyers ?</div>
-  <div class="faq-a"><strong>Comète</strong> : <strong>5.0 mois</strong> · <strong>Remake Live</strong> : <strong>3.0 mois</strong>. Plus ce délai est court, plus vite votre capital commence à travailler.</div>
-</div>
-<div class="faq-item">
-  <div class="faq-q">Peut-on investir en assurance-vie ?</div>
-  <div class="faq-a">Cela dépend de votre contrat d'assurance-vie. Renseignez-vous auprès de votre assureur ou conseiller en gestion de patrimoine pour vérifier si ces SCPI sont référencées.</div>
-</div>
-<div class="faq-item">
-  <div class="faq-q">Quel est le risque de perte en capital ?</div>
-  <div class="faq-a">Comme toute SCPI, <strong>Comète</strong> et <strong>Remake Live</strong> présentent un risque de perte en capital. La valeur des parts peut évoluer à la hausse comme à la baisse. Les performances passées ne préjugent pas des performances futures.</div>
-</div>
-<div class="faq-item">
-  <div class="faq-q">Le démembrement est-il possible sur ces SCPI ?</div>
-  <div class="faq-a">Le démembrement (nue-propriété / usufruit) dépend des conditions proposées par <strong>Alderan</strong> et <strong>Remake AM</strong>. Consultez directement les sociétés de gestion ou votre conseiller en gestion de patrimoine.</div>
-</div>
+  <div class="faq-item">
+    <div class="faq-q">Quel est le meilleur rendement entre Comète et Remake Live ?</div>
+    <div class="faq-a">Comète délivre 9% de taux de distribution contre 7,05% pour Remake Live. Mais sur 10 ans, Remake Live vise 7% de TRI contre 6,5% pour Comète. Comète privilégie le cash-flow immédiat, Remake Live l'enrichissement patrimonial global.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Peut-on combiner Comète et Remake Live ?</div>
+    <div class="faq-a">Oui, cette combinaison optimise la diversification européenne en associant Grande-Bretagne dominante (47% vs 30%) et approches sectorielles complémentaires (commerce-logistique vs bureaux-santé). Les structures de frais différentes lissent aussi les coûts moyens.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Quels sont les vrais coûts de ces deux SCPI ?</div>
+    <div class="faq-a">Comète coûte 10% à l'entrée plus 11% de gestion annuelle, soit environ 21% sur 10 ans. Remake Live ne facture aucun frais d'entrée mais applique 18% de gestion annuelle. Remake Live devient plus économique sur les détentions longues.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Quelle SCPI offre la meilleure fiscalité européenne ?</div>
+    <div class="faq-a">Remake Live expose 76% du patrimoine hors France contre 53% pour Comète, optimisant davantage la fiscalité des TMI élevés. Comète compense par un endettement nul éliminant les risques de change et de taux sur la dette.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Quel profil d'investisseur pour chaque SCPI ?</div>
+    <div class="faq-a">Comète s'adresse aux investisseurs conservateurs privilégiant les revenus réguliers et la sécurité (zéro dette, TOF 99,10%). Remake Live convient aux profils dynamiques acceptant un levier modéré (26,97%) pour optimiser le rendement total sur la durée.</div>
+  </div>
   </div>
 
   <!-- VERDICT -->
@@ -809,7 +814,7 @@ Notre analyse basée sur les données officielles des sociétés de gestion.    
       <div class="verdict-box">
         <div>
           <h3>👉 Choisissez Comète si :</h3>
-          <ul><li>Vous cherchez une exposition immobilière européenne diversifiée</li><li>Vous avez une TMI élevée et privilégiez les revenus fonciers</li><li>Votre horizon d'investissement dépasse 10 ans</li><li>Vous acceptez le risque de change GBP/EUR</li></ul>
+          <ul><li>Vous cherchez un rendement immédiat élevé de 9%</li><li>Votre TMI justifie l'optimisation fiscale européenne</li><li>Vous privilégiez la sécurité avec zéro endettement</li></ul>
         </div>
         <div class="verdict-cta">
           <a href="https://app.louveinvest.com/signup?promoCode=MONELOR&utm_source=monelor&utm_medium=partenariat" class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="width:100%;justify-content:center;font-size:15px">
@@ -819,7 +824,7 @@ Notre analyse basée sur les données officielles des sociétés de gestion.    
       <div class="verdict-box">
         <div>
           <h3>👉 Choisissez Remake Live si :</h3>
-          <ul><li>Vous cherchez une diversification européenne</li><li>Vous avez une TMI élevée et privilégiez le rendement</li><li>Votre horizon dépasse 8-10 ans</li><li>Vous acceptez une volatilité modérée des devises</li></ul>
+          <ul><li>Vous cherchez l'équilibre rendement-plus-value</li><li>Votre TMI bénéficie de l'absence de frais d'entrée</li><li>Vous visez la diversification France-Europe</li></ul>
         </div>
         <div class="verdict-cta">
           <a href="https://app.louveinvest.com/signup?promoCode=MONELOR&utm_source=monelor&utm_medium=partenariat" class="cta-amz cta-amz-primary" rel="nofollow" target="_blank" style="width:100%;justify-content:center;font-size:15px">
@@ -907,11 +912,12 @@ Notre analyse basée sur les données officielles des sociétés de gestion.    
 
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 utl-peipin.fr — Données actualisées le 20 avril 2026. Les performances passées ne préjugent pas des performances futures.
+        © 2026 utl-peipin.fr — Données actualisées le 27 avril 2026. Les performances passées ne préjugent pas des performances futures.
       </div>
     </div>
   </div>
 </footer>
+<script async data-id="<script async data-id="101505110" src="/47bd826415.js"></script>" src="//static.getclicky.com/js"></script>
 <script>
 document.querySelectorAll('.faq-q').forEach(function(q){
   q.addEventListener('click',function(){
