@@ -760,6 +760,10 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                             p["points_forts"] = manual["points_forts"]
                         if manual.get("points_faibles"):
                             p["points_faibles"] = manual["points_faibles"]
+                        if manual.get("url_affiliation"):
+                            p["url_affiliation"] = manual["url_affiliation"]
+                        if manual.get("cta_text"):
+                            p["cta_text"] = manual["cta_text"]
                     # Convertir markdown en HTML pour la description
                     if p.get("description"):
                         p["description"] = md_to_html(p["description"])
