@@ -121,6 +121,10 @@ export default function ClassementsPage() {
   const [regenerating, setRegenerating] = useState<Record<string, boolean>>({})
   const [deploying, setDeploying] = useState(false)
   const [generatingMeta, setGeneratingMeta] = useState(false)
+  const [expandedBrands, setExpandedBrands] = useState<Record<string, boolean>>({})
+  const [showAddBrand, setShowAddBrand] = useState(false)
+  const [newBrand, setNewBrand] = useState({ nom: '', slug: '', description: '', points_forts: '', points_faibles: '' })
+  const [generatingBrand, setGeneratingBrand] = useState(false)
   const [msg, setMsg] = useState('')
 
   const editorialPath = `platform/sites/${siteId}/editorial.json`
@@ -508,49 +512,116 @@ export default function ClassementsPage() {
                 {/* Contenu des marques */}
                 {catProducts.length > 0 && (
                   <div style={{ marginBottom: 20 }}>
-                    <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 12 }}>
-                      🏷 Contenu des marques
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                      <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>🏷 Contenu des marques</div>
+                      <button onClick={() => setShowAddBrand(true)} style={{ padding: '5px 12px', borderRadius: 7, border: '1px solid #00D4AA', background: 'transparent', color: '#00D4AA', cursor: 'pointer', fontSize: 12, fontWeight: 600 }}>
+                        + Ajouter une marque
+                      </button>
                     </div>
+
+                    {/* Formulaire ajout marque */}
+                    {showAddBrand && (
+                      <div style={{ marginBottom: 16, background: '#0A0E1A', border: '1px solid #00D4AA', borderRadius: 10, padding: 16 }}>
+                        <div style={{ fontSize: 13, fontWeight: 600, color: '#00D4AA', marginBottom: 12 }}>Nouvelle marque</div>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
+                          <div>
+                            <div style={{ fontSize: 11, color: '#8B9CB0', marginBottom: 4 }}>Nom</div>
+                            <input value={newBrand.nom} onChange={e => setNewBrand(p => ({ ...p, nom: e.target.value }))}
+                              placeholder="Ex: LegalPlace"
+                              style={{ width: '100%', padding: '8px 12px', borderRadius: 7, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+                          </div>
+                          <div>
+                            <div style={{ fontSize: 11, color: '#8B9CB0', marginBottom: 4 }}>Slug</div>
+                            <input value={newBrand.slug} onChange={e => setNewBrand(p => ({ ...p, slug: e.target.value }))}
+                              placeholder="Ex: legalplace"
+                              style={{ width: '100%', padding: '8px 12px', borderRadius: 7, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+                          </div>
+                        </div>
+                        <div style={{ display: 'flex', gap: 8 }}>
+                          <button onClick={async () => {
+                            if (!newBrand.nom || !newBrand.slug) return
+                            setGeneratingBrand(true)
+                            const cat = selectedData.categorie || selected.replace('classement-', '')
+                            try {
+                              const r = await fetch('/api/generate-text', {
+                                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                  max_tokens: 1000,
+                                  system: 'Tu es un expert rédacteur SEO. Réponds UNIQUEMENT en JSON valide sans backticks.',
+                                  prompt: `Génère une description HTML et des avantages/inconvénients pour ${newBrand.nom} dans un classement des meilleurs ${cat}. Réponds en JSON: {"description": "<p>...</p>", "points_forts": ["avantage 1", "avantage 2", "avantage 3"], "points_faibles": ["inconvénient 1", "inconvénient 2"]}`
+                                })
+                              })
+                              const d = await r.json()
+                              if (d.text) {
+                                try {
+                                  const parsed = JSON.parse(d.text)
+                                  const key = `prod_${newBrand.slug}`
+                                  updateField(selected, key, { description: parsed.description || '', points_forts: parsed.points_forts || [], points_faibles: parsed.points_faibles || [] })
+                                  setExpandedBrands(p => ({ ...p, [newBrand.slug]: true }))
+                                } catch {}
+                              }
+                            } catch {}
+                            setGeneratingBrand(false)
+                            setShowAddBrand(false)
+                            setNewBrand({ nom: '', slug: '', description: '', points_forts: '', points_faibles: '' })
+                          }} disabled={generatingBrand || !newBrand.nom || !newBrand.slug}
+                            style={{ flex: 1, padding: '8px', borderRadius: 7, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
+                            {generatingBrand ? '⏳ Génération...' : '✨ Générer avec IA'}
+                          </button>
+                          <button onClick={() => { setShowAddBrand(false); setNewBrand({ nom: '', slug: '', description: '', points_forts: '', points_faibles: '' }) }}
+                            style={{ padding: '8px 14px', borderRadius: 7, border: '1px solid #1E2D3D', background: 'transparent', color: '#8B9CB0', cursor: 'pointer', fontSize: 13 }}>
+                            Annuler
+                          </button>
+                        </div>
+                      </div>
+                    )}
+
                     {catProducts.map((prod: any) => {
                       const prodKey = prod.slug
                       const prodData = selectedData[`prod_${prodKey}`] || {}
+                      const isExpanded = expandedBrands[prodKey] || false
+                      const hasContent = !!(prodData.description || prodData.points_forts?.length)
                       return (
-                        <div key={prodKey} style={{ marginBottom: 16, background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 10, overflow: 'hidden' }}>
-                          <div style={{ padding: '10px 14px', background: '#0D1117', borderBottom: '1px solid #1E2D3D', display: 'flex', alignItems: 'center', gap: 10 }}>
-                            <span style={{ fontSize: 14, fontWeight: 600, color: '#fff' }}>{prod.nom}</span>
-                            <span style={{ fontSize: 11, color: '#4A5568' }}>{prod.slug}</span>
+                        <div key={prodKey} style={{ marginBottom: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 10, overflow: 'hidden' }}>
+                          {/* Header cliquable */}
+                          <div onClick={() => setExpandedBrands(p => ({ ...p, [prodKey]: !p[prodKey] }))}
+                            style={{ padding: '10px 14px', background: '#0D1117', display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer' }}>
+                            <span style={{ color: '#4A5568', fontSize: 12, transition: 'transform .2s', transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block' }}>▶</span>
+                            <span style={{ fontSize: 14, fontWeight: 600, color: '#fff', flex: 1 }}>{prod.nom}</span>
+                            <span style={{ fontSize: 10, color: hasContent ? '#00D4AA' : '#4A5568' }}>{hasContent ? '✓ Contenu' : '⚠ Vide'}</span>
                           </div>
-                          <div style={{ padding: 14 }}>
-                            <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 6 }}>Description</div>
-                            <HtmlEditor
-                              value={prodData.description || ''}
-                              rows={6}
-                              placeholder={`Description de ${prod.nom}...`}
-                              onChange={val => updateField(selected, `prod_${prodKey}`, { ...prodData, description: val })}
-                            />
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginTop: 12 }}>
-                              <div>
-                                <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 6 }}>✅ Avantages</div>
-                                <textarea
-                                  value={Array.isArray(prodData.points_forts) ? prodData.points_forts.join('\n') : (prodData.points_forts || '')}
-                                  rows={4}
-                                  placeholder="Un avantage par ligne"
-                                  onChange={e => updateField(selected, 'prod_' + prodKey, { ...prodData, points_forts: e.target.value.split('\n').filter(Boolean) })}
-                                  style={{ width: '100%', padding: 10, borderRadius: 8, background: '#0D1117', border: '1px solid #1E2D3D', color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, resize: 'vertical', outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box' as const }}
-                                />
-                              </div>
-                              <div>
-                                <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 6 }}>❌ Inconvénients</div>
-                                <textarea
-                                  value={Array.isArray(prodData.points_faibles) ? prodData.points_faibles.join('\n') : (prodData.points_faibles || '')}
-                                  rows={4}
-                                  placeholder="Un inconvénient par ligne"
-                                  onChange={e => updateField(selected, 'prod_' + prodKey, { ...prodData, points_faibles: e.target.value.split('\n').filter(Boolean) })}
-                                  style={{ width: '100%', padding: 10, borderRadius: 8, background: '#0D1117', border: '1px solid #1E2D3D', color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, resize: 'vertical', outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box' as const }}
-                                />
+                          {/* Contenu déplié */}
+                          {isExpanded && (
+                            <div style={{ padding: 14 }}>
+                              <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 6 }}>Description</div>
+                              <HtmlEditor
+                                value={prodData.description || ''}
+                                rows={6}
+                                placeholder={`Description de ${prod.nom}...`}
+                                onChange={val => updateField(selected, `prod_${prodKey}`, { ...prodData, description: val })}
+                              />
+                              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginTop: 12 }}>
+                                <div>
+                                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 6 }}>✅ Avantages</div>
+                                  <textarea
+                                    value={Array.isArray(prodData.points_forts) ? prodData.points_forts.join('\n') : (prodData.points_forts || '')}
+                                    rows={4} placeholder="Un avantage par ligne"
+                                    onChange={e => updateField(selected, 'prod_' + prodKey, { ...prodData, points_forts: e.target.value.split('\n').filter(Boolean) })}
+                                    style={{ width: '100%', padding: 10, borderRadius: 8, background: '#0D1117', border: '1px solid #1E2D3D', color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, resize: 'vertical', outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box' as const }}
+                                  />
+                                </div>
+                                <div>
+                                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 6 }}>❌ Inconvénients</div>
+                                  <textarea
+                                    value={Array.isArray(prodData.points_faibles) ? prodData.points_faibles.join('\n') : (prodData.points_faibles || '')}
+                                    rows={4} placeholder="Un inconvénient par ligne"
+                                    onChange={e => updateField(selected, 'prod_' + prodKey, { ...prodData, points_faibles: e.target.value.split('\n').filter(Boolean) })}
+                                    style={{ width: '100%', padding: 10, borderRadius: 8, background: '#0D1117', border: '1px solid #1E2D3D', color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, resize: 'vertical', outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box' as const }}
+                                  />
+                                </div>
                               </div>
                             </div>
-                          </div>
+                          )}
                         </div>
                       )
                     })}
