@@ -77,7 +77,7 @@ export default function SettingsPage() {
           body: JSON.stringify({ path, content: base64, message: `HUB: Upload logo ${siteId}`, sha })
         })
         const d = await r.json()
-        setMsgLogo(d.ok ? '✓ Logo uploadé — relancez un déploiement pour l'appliquer' : '✗ Erreur upload')
+        setMsgLogo(d.ok ? "✓ Logo uploadé - relancez un déploiement pour l'appliquer" : "✗ Erreur upload")
         setUploadingLogo(false)
       }
       reader.readAsDataURL(logoFile)
