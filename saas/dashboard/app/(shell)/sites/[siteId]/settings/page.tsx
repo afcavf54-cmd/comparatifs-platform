@@ -18,6 +18,10 @@ export default function SettingsPage() {
   const [deleting, setDeleting] = useState(false)
   const [faviconFile, setFaviconFile] = useState<File | null>(null)
   const [uploadingFavicon, setUploadingFavicon] = useState(false)
+  const [logoFile, setLogoFile] = useState<File | null>(null)
+  const [uploadingLogo, setUploadingLogo] = useState(false)
+  const [msgLogo, setMsgLogo] = useState('')
+  const [logoPreview, setLogoPreview] = useState<string | null>(null)
   const [msg, setMsg] = useState('')
   const [msgSeo, setMsgSeo] = useState('')
   const [msgPageTypes, setMsgPageTypes] = useState('')
@@ -52,6 +56,34 @@ export default function SettingsPage() {
   async function saveSeo() { setSavingSeo(true); setMsgSeo(''); const r = await fetch(`/api/sites/${siteId}/config`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(seoForm) }); const d = await r.json(); setMsgSeo(d.success ? '✓ SEO sauvegardé' : '✗ Erreur'); setSavingSeo(false) }
   async function saveSeoAndDeploy() { setDeployingSeo(true); setMsgSeo(''); try { const r = await fetch(`/api/sites/${siteId}/config`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(seoForm) }); const d = await r.json(); if (!d.success) throw new Error(d.error || 'Erreur sauvegarde'); const wr = await fetch(`/api/sites/${siteId}/deploy`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ skip_enrich: true }) }); const wd = await wr.json(); if (!wd.success) throw new Error(wd.error || 'Erreur workflow'); setMsgSeo('✓ SEO sauvegardé et redéploiement lancé') } catch (e: any) { setMsgSeo('✗ ' + e.message) } finally { setDeployingSeo(false) } }
   async function savePageTypes() { setSavingPageTypes(true); setMsgPageTypes(''); const r = await fetch(`/api/sites/${siteId}/config`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...seoForm, page_types: pageTypes }) }); const d = await r.json(); setMsgPageTypes(d.success ? '✓ Types de pages sauvegardés' : '✗ Erreur'); setSavingPageTypes(false) }
+  async function uploadLogo() {
+    if (!logoFile) return
+    setUploadingLogo(true); setMsgLogo('')
+    try {
+      const ext = logoFile.name.split('.').pop()?.toLowerCase() || 'png'
+      const filename = `logo.${ext}`
+      const path = `platform/sites/${siteId}/public/${filename}`
+      const reader = new FileReader()
+      reader.onload = async () => {
+        const base64 = (reader.result as string).split(',')[1]
+        let sha: string | undefined
+        try {
+          const ex = await fetch(`/api/github?path=${encodeURIComponent(path)}`)
+          const ed = await ex.json()
+          if (ed.sha) sha = ed.sha
+        } catch {}
+        const r = await fetch('/api/github/upload', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ path, content: base64, message: `HUB: Upload logo ${siteId}`, sha })
+        })
+        const d = await r.json()
+        setMsgLogo(d.ok ? '✓ Logo uploadé — relancez un déploiement pour l'appliquer' : '✗ Erreur upload')
+        setUploadingLogo(false)
+      }
+      reader.readAsDataURL(logoFile)
+    } catch { setMsgLogo('✗ Erreur'); setUploadingLogo(false) }
+  }
+
   async function uploadFavicon() { if (!faviconFile) return; setUploadingFavicon(true); setMsgFavicon(''); const fd = new FormData(); fd.append('favicon', faviconFile); const r = await fetch(`/api/sites/${siteId}/favicon`, { method: 'POST', body: fd }); const d = await r.json(); setMsgFavicon(d.success ? "✓ Favicon uploadé — relancez un déploiement pour l'appliquer" : '✗ ' + (d.error || 'Erreur')); setUploadingFavicon(false) }
   async function deleteSite() { if (confirmDelete !== site?.name) return; setDeleting(true); const r = await fetch(`/api/sites/${siteId}`, { method: 'DELETE' }); const d = await r.json(); if (d.ok) router.push('/sites'); else { setMsg('✗ Erreur suppression'); setDeleting(false) } }
 
@@ -131,6 +163,26 @@ export default function SettingsPage() {
 
       {/* Favicon */}
       <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24, marginBottom: 20 }}>
+        {/* Logo */}
+        <h3 style={{ color: '#fff', margin: '0 0 8px', fontSize: 15, fontWeight: 600 }}>🏷 Logo du site</h3>
+        <p style={{ color: '#8B9CB0', fontSize: 12, marginBottom: 16, lineHeight: 1.6 }}>Formats acceptés : SVG, PNG. Recommandé : PNG transparent ou SVG.<br/>Sera copié dans le dossier public du site.</p>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
+          {logoPreview && <img src={logoPreview} alt="logo" style={{ height: 40, borderRadius: 6, background: '#1E2D3D', padding: 4 }} />}
+          <label style={{ padding: '9px 18px', borderRadius: 9, background: '#1E2D3D', color: '#fff', cursor: 'pointer', fontSize: 13, fontWeight: 600 }}>
+            📁 Choisir un logo
+            <input type="file" accept=".svg,.png,.jpg,.jpeg,.webp" style={{ display: 'none' }} onChange={e => {
+              const f = e.target.files?.[0]
+              if (f) { setLogoFile(f); setLogoPreview(URL.createObjectURL(f)) }
+            }} />
+          </label>
+          {logoFile && <span style={{ fontSize: 12, color: '#8B9CB0' }}>{logoFile.name} ({Math.round(logoFile.size/1024)}kb)</span>}
+        </div>
+        {msgLogo && <div style={{ fontSize: 12, color: msgLogo.startsWith('✓') ? '#00D4AA' : '#FC8181', marginBottom: 10 }}>{msgLogo}</div>}
+        <button onClick={uploadLogo} disabled={uploadingLogo || !logoFile} style={{ padding: '11px 24px', borderRadius: 10, border: 'none', fontWeight: 600, fontSize: 13, background: logoFile ? 'linear-gradient(135deg, #00D4AA, #0090FF)' : '#1E2D3D', color: logoFile ? '#fff' : '#4A5568', cursor: logoFile ? 'pointer' : 'not-allowed', marginBottom: 28 }}>
+          {uploadingLogo ? 'Upload...' : '⬆ Uploader le logo'}
+        </button>
+
+        {/* Favicon */}
         <h3 style={{ color: '#fff', margin: '0 0 8px', fontSize: 15, fontWeight: 600 }}>🖼 Favicon</h3>
         <p style={{ color: '#8B9CB0', fontSize: 12, marginBottom: 16, lineHeight: 1.6 }}>Formats acceptés : SVG, PNG, ICO. Recommandé : SVG ou PNG 32×32.<br/>Après upload, relancez un déploiement pour l'appliquer.</p>
         <input type="file" accept=".svg,.png,.ico" onChange={e => setFaviconFile(e.target.files?.[0] || null)} style={{ color: '#8B9CB0', fontSize: 13, marginBottom: 12, display: 'block' }} />
