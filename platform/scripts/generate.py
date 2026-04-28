@@ -298,40 +298,62 @@ def products_by_slug(products: list, slug: str) -> dict:
     return next((p for p in products if p["slug"] == slug), None)
 
 
-def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path) -> None:
-    domain = site["domain"]
-    base   = site["base_path"].rstrip("/")
+def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, config: dict = None) -> None:
+    # Construire le domain avec www_preference
+    raw_domain = site["domain"].rstrip("/")
+    www_pref = (config or {}).get("www_preference", site.get("www_preference", "www"))
+    # Normaliser le domaine selon www_preference
+    import re as _re
+    bare = _re.sub(r"^https?://(www\.)?", "", raw_domain)
+    if www_pref == "www":
+        domain = f"https://www.{bare}"
+    else:
+        domain = f"https://{bare}"
+
     today  = date.today().isoformat()
-    lines  = [
-        '<?xml version="1.0" encoding="UTF-8"?>',
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-        f'  <url><loc>{domain}/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>',
-        f'  <url><loc>{domain}/comparatifs-scpi</loc><lastmod>{today}</lastmod><priority>0.9</priority><changefreq>weekly</changefreq></url>',
-        f'  <url><loc>{domain}/avis-scpi</loc><lastmod>{today}</lastmod><priority>0.9</priority><changefreq>weekly</changefreq></url>',
-    ]
-    for prod in products:
-        lines.append(
-            f'  <url><loc>{domain}/avis-{prod["slug"]}</loc>'
-            f'<lastmod>{today}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>'
-        )
-    for slug_a, slug_b in pairs:
-        lines.append(
-            f'  <url><loc>{domain}/{slug_a}-vs-{slug_b}</loc>'
-            f'<lastmod>{today}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>'
+    is_classement = any(p.get("categorie") for p in products)
+
+    def url(loc, priority="0.8", changefreq="monthly"):
+        return (
+            f"  <url>\n"
+            f"    <loc>{loc}</loc>\n"
+            f"    <lastmod>{today}</lastmod>\n"
+            f"    <changefreq>{changefreq}</changefreq>\n"
+            f"    <priority>{priority}</priority>\n"
+            f"  </url>"
         )
 
-    # Pages classement
-    categories_seen = set()
-    for prod in products:
-        cat = prod.get("categorie", "").strip()
-        if cat and cat not in categories_seen:
-            cat_slug = slugify_cat(cat)
-            lines.append(
-                f'  <url><loc>{domain}/meilleur-{cat_slug}</loc>'
-                f'<lastmod>{today}</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>'
-            )
-            categories_seen.add(cat)
-    lines.append("</urlset>")
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        url(f"{domain}/", "1.0", "weekly"),
+    ]
+
+    if is_classement:
+        # Pages classement
+        lines.append(url(f"{domain}/nos-comparateurs", "0.9", "weekly"))
+        categories_seen = set()
+        for prod in products:
+            cat = prod.get("categorie", "").strip()
+            if cat and cat not in categories_seen:
+                cat_slug = slugify_cat(cat)
+                lines.append(url(f"{domain}/meilleur-{cat_slug}", "0.85", "weekly"))
+                categories_seen.add(cat)
+    else:
+        # Pages SCPI
+        lines.append(url(f"{domain}/comparatifs-scpi", "0.9", "weekly"))
+        lines.append(url(f"{domain}/avis-scpi", "0.9", "weekly"))
+        for prod in products:
+            lines.append(url(f"{domain}/avis-{prod['slug']}", "0.7", "monthly"))
+        for slug_a, slug_b in pairs:
+            lines.append(url(f"{domain}/{slug_a}-vs-{slug_b}", "0.8", "monthly"))
+
+    lines += [
+        url(f"{domain}/mentions-legales", "0.3", "yearly"),
+        url(f"{domain}/politique-confidentialite", "0.3", "yearly"),
+        url(f"{domain}/contact", "0.4", "yearly"),
+        "</urlset>",
+    ]
     (output_dir / "sitemap.xml").write_text("\n".join(lines), encoding="utf-8")
     print(f"  ✓ sitemap.xml ({len(pairs)} comparatifs + {len(products)} avis + pages liste)")
 
@@ -593,7 +615,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         generated += 1
 
     if not dry_run:
-        generate_sitemap(site, all_pairs, products, output_dir)
+        generate_sitemap(site, all_pairs, products, output_dir, config=config)
         cleanup_removed_products(output_dir, site_dir, products, all_pairs)
 
         # ── Fichier _redirects pour Cloudflare Pages ──────────────────────
