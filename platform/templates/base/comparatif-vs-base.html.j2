@@ -2,7 +2,6 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ seo.title }}</title>
 <meta name="description" content="{{ seo.meta }}">
@@ -12,7 +11,7 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="{{ site.domain }}/{{ slug_a }}-vs-{{ slug_b }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">
+<link href="{{ theme.google_fonts }}" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -64,11 +63,11 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .crumb{max-width:1200px;margin:0 auto;padding:8px 5vw;font-size:12px;color:var(--ink3)}
 .crumb a{color:var(--accent)}
 main{max-width:1200px;margin:0 auto;padding:0 5vw 16px}
-.hero-vs{padding:16px 0 0}
+.hero-vs{text-align:center;padding:16px 0 0}
 .eyebrow{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:16px}
 h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(38px,5.5vw,72px);font-weight:400;line-height:1.05;letter-spacing:-.025em;margin-bottom:16px;max-width:100%;width:100%}
 h1 em{font-style:italic;color:var(--accent)}
-.intro{font-size:18px;color:var(--ink2);max-width:100%;line-height:1.75;margin:30px 0 40px;text-align:left}
+.intro{font-size:18px;color:var(--ink2);max-width:100%;line-height:1.75;margin:30px 0 40px;text-align:center}
 .comp-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:32px 0}
 .comp-block-header{background:var(--ink);padding:20px 24px;display:grid;grid-template-columns:220px 1fr 1fr;gap:16px;align-items:center}
 .comp-block-header .col-title{font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:20px;color:#fff;text-align:center;display:block}
@@ -162,15 +161,15 @@ footer a{color:rgba(255,255,255,.4)}
 
 <main>
   <div class="hero-vs">
-    <div style="text-align:center;margin-bottom:16px"><div class="eyebrow">{{ site.seo.eyebrow | replace('{year}', site.year|string) }}</div></div>
-    <h1 style="text-align:center">{{ seo.h1 | safe }}</h1>
+    <div class="eyebrow">{{ site.seo.eyebrow | replace('{year}', site.year|string) }}</div>
+    <h1>{{ seo.h1 | safe }}</h1>
     <div style="display:flex;justify-content:center;margin:-10px 0 20px">
       <div style="display:inline-flex;align-items:center;gap:6px;background:#EAF3DE;color:#27500A;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;border:none">
         <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#27500A"></span>
         Mis à jour le {{ build_date | fr_date }}
       </div>
     </div>
-    <div class="intro" style="text-align:left">{% if editorial is defined and editorial.intro_edito %}{{ editorial.intro_edito }}{% endif %}</div>
+    <p class="intro">{% if editorial is defined and editorial.intro_edito %}{{ editorial.intro_edito }}{% endif %}</p>
   </div>
 
   <h2 style="margin-top:0">Comparaison détaillée : {{ prod_a.nom }} vs {{ prod_b.nom }}</h2>
@@ -408,7 +407,11 @@ footer a{color:rgba(255,255,255,.4)}
 {% include "base/_footer.html.j2" %}
 
 {% if site.analytics_clicky %}
+{% if '<script' in site.analytics_clicky %}
+{{ site.analytics_clicky | safe }}
+{% else %}
 <script async data-id="{{ site.analytics_clicky }}" src="//static.getclicky.com/js"></script>
+{% endif %}
 {% endif %}
 <script>
 document.querySelectorAll('.faq-q').forEach(function(q){
