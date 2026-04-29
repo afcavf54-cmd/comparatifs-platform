@@ -681,6 +681,26 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             if favicon_copied:
                 break
 
+        # Construire classements_by_category pour home + sitemap
+        classements_by_category: dict = {}
+        if is_classement_template:
+            _schema_name2 = config.get("page_types", {}).get("classement", "")
+            if _schema_name2:
+                _schema_path2 = ROOT / "schemas" / f"{_schema_name2}.json"
+                if _schema_path2.exists():
+                    import json as _j2
+                    with open(_schema_path2, encoding="utf-8") as _sf2:
+                        _schema2 = _j2.load(_sf2)
+                    for _kw_name2, _kw_data2 in _schema2.get("keywords", {}).items():
+                        _cat_parent2 = _kw_data2.get("__categorie", "Autres") or "Autres"
+                        _cat_slug2 = slugify_cat(_kw_name2)
+                        _count2 = len(_kw_data2.get("__products", []))
+                        if _cat_parent2 not in classements_by_category:
+                            classements_by_category[_cat_parent2] = []
+                        classements_by_category[_cat_parent2].append({
+                            "slug": _cat_slug2, "label": _kw_name2, "count": _count2
+                        })
+
         # Home
         index_tpl = site.get("index_template", f"index-{site_slug}.html.j2")
         if (TEMPLATES_DIR / index_tpl).exists():
@@ -691,6 +711,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             html = env.get_template(index_tpl).render(
                 site={**site, "seo": config.get("seo", {})}, theme=theme, products=products,
                 total_pairs=len(all_pairs), zero_frais_count=zero_frais,
+                classements_by_category=classements_by_category,
                 top_pairs=top_pairs, build_date=date.today().isoformat(),
                 site_editorial=site_editorial,
                 home_title=home_title, home_description=home_desc, home_h1=site.get('home_h1', ''),
@@ -701,7 +722,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         # Légales
         for tpl_name, out_name in [("mentions-legales.html.j2", "mentions-legales.html"), ("politique-confidentialite.html.j2", "politique-confidentialite.html"), ("contact.html.j2", "contact.html"), ("sitemap-html.html.j2", "plan-du-site.html"), ("404.html.j2", "404.html")]:
             if (TEMPLATES_DIR / tpl_name).exists():
-                html = env.get_template(tpl_name).render(site={**site, "seo": config.get("seo", {})}, theme=theme, build_date=date.today().isoformat(), products=products, total_pairs=len(all_pairs), page_types=config.get("page_types", {}))
+                html = env.get_template(tpl_name).render(site={**site, "seo": config.get("seo", {})}, theme=theme, build_date=date.today().isoformat(), products=products, total_pairs=len(all_pairs), page_types=config.get("page_types", {}), classements_by_category=classements_by_category)
                 (output_dir / out_name).write_text(html, encoding="utf-8")
                 print(f"  ✓ {out_name}")
 
