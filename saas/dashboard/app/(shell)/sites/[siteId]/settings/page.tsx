@@ -30,6 +30,11 @@ export default function SettingsPage() {
   const [msgPageTypes, setMsgPageTypes] = useState('')
   const [msgFavicon, setMsgFavicon] = useState('')
   const [faviconPreview, setFaviconPreview] = useState<string | null>(null)
+  const [authorPhotoPreview, setAuthorPhotoPreview] = useState<string | null>(null)
+  const [authorName, setAuthorName] = useState('')
+  const [authorBio, setAuthorBio] = useState('')
+  const [authorJob, setAuthorJob] = useState('')
+  const [authorSocials, setAuthorSocials] = useState<{label: string, url: string}[]>([])
   const [confirmDelete, setConfirmDelete] = useState('')
 
   useEffect(() => {
