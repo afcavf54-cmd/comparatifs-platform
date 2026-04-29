@@ -2,7 +2,11 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+{% if site.favicon_file is defined and site.favicon_file %}
+<link rel="icon" href="{{ site.favicon_file }}">
+{% else %}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{% endif %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nos comparateurs {{ site.year }} - {{ site.name }}</title>
 <meta name="description" content="Retrouvez tous nos comparatifs et classements de logiciels professionnels {{ site.year }} : {{ site.tagline }}">
@@ -75,13 +79,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 
 <nav>
   <div class="nav-inner">
-    <a href="/" class="nav-logo">
-    {% if site.logo_img is defined and site.logo_img %}
-      <img src="{{ site.logo_img }}" alt="{{ site.name }}" style="height:36px;width:auto;object-fit:contain;vertical-align:middle">
-    {% else %}
-      {{ site.logo_text }}<span>{{ site.logo_accent }}</span>
-    {% endif %}
-  </a>
+    <a href="/" class="nav-logo">{% if site.logo_img is defined and site.logo_img %}<img src="{{ site.logo_img }}" alt="{{ site.name }}" style="height:36px;width:auto;object-fit:contain;vertical-align:middle">{% else %}{{ site.logo_text }}<span>{{ site.logo_accent }}</span>{% endif %}</a>
     <div class="nav-links">
       {% if page_types is defined and page_types.classement is defined and page_types.vs is not defined %}
         <a href="/nos-comparateurs">Nos comparateurs</a>
