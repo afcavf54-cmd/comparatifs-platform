@@ -25,15 +25,22 @@
     <div class="footer-grid">
 
       <div class="footer-brand">
+        {% if site.logo_img is defined and site.logo_img %}
+        <a href="/" style="display:block;margin-bottom:12px"><img src="{{ site.logo_img }}" alt="{{ site.name }}" style="height:36px;width:auto;object-fit:contain"></a>
+        {% else %}
         <div class="footer-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></div>
+        {% endif %}
+        {% if page_types is defined and 'classement' in page_types %}
+        <p>{{ site.tagline | default(site.name) }}</p>
+        {% else %}
         <p>Comparatifs SCPI indépendants. {{ total_pairs | default(45) }} analyses détaillées pour choisir la meilleure SCPI selon votre profil.</p>
+        {% endif %}
       </div>
 
       <div class="footer-col">
         <h4>Navigation</h4>
         {% if page_types is defined and 'classement' in page_types %}
         <a href="/nos-comparateurs">Nos comparateurs</a>
-        <a href="/plan-du-site">Plan du site</a>
         {% else %}
         <a href="/comparatifs-scpi">Comparatifs SCPI</a>
         <a href="/avis-scpi">Avis SCPI</a>
