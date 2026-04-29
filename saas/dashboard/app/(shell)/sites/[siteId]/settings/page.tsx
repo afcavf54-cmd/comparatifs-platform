@@ -127,6 +127,39 @@ export default function SettingsPage() {
         <button onClick={save} disabled={saving} style={{ padding: '11px 24px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>{saving ? 'Sauvegarde...' : '💾 Sauvegarder'}</button>
       </div>
 
+      {/* Thème */}
+      <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24, marginBottom: 20 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+          <h3 style={{ color: '#fff', margin: 0, fontSize: 15, fontWeight: 600 }}>🎨 Thème & Couleurs</h3>
+          <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+            {msgTheme && <span style={{ fontSize: 12, color: msgTheme.startsWith('✓') ? '#00D4AA' : '#FC8181' }}>{msgTheme}</span>}
+            <button onClick={saveTheme} disabled={savingTheme} style={{ padding: '8px 16px', borderRadius: 8, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
+              {savingTheme ? '...' : '💾 Sauvegarder'}
+            </button>
+          </div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
+          {([['accent', 'Couleur principale'], ['accent2', 'Couleur secondaire'], ['bg', 'Fond de page'], ['ink', 'Couleur du texte']] as [string, string][]).map(([key, label]) => (
+            <div key={key}>
+              <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 8 }}>{label}</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <input type="color" value={(themeForm as any)[key] || '#000000'}
+                  onChange={e => setThemeForm(t => ({ ...t, [key]: e.target.value }))}
+                  style={{ width: 40, height: 40, borderRadius: 8, border: '1px solid #1E2D3D', cursor: 'pointer', padding: 2 }} />
+                <input value={(themeForm as any)[key] || ''} onChange={e => setThemeForm(t => ({ ...t, [key]: e.target.value }))}
+                  style={{ flex: 1, padding: '8px 10px', borderRadius: 7, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, fontFamily: 'monospace', outline: 'none' }} />
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style={{ marginTop: 16, padding: 12, borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' as const }}>
+          <span style={{ fontSize: 12, color: '#4A5568' }}>Aperçu :</span>
+          <span style={{ padding: '4px 12px', borderRadius: 20, background: themeForm.accent, color: '#fff', fontSize: 12, fontWeight: 600 }}>Principal</span>
+          <span style={{ padding: '4px 12px', borderRadius: 20, background: themeForm.accent2, color: '#fff', fontSize: 12, fontWeight: 600 }}>Secondaire</span>
+          <span style={{ padding: '6px 14px', borderRadius: 8, background: themeForm.bg, color: themeForm.ink, fontSize: 12, border: '1px solid #1E2D3D' }}>Texte sur fond</span>
+        </div>
+      </div>
+
       {/* SEO */}
       <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24, marginBottom: 20 }}>
         <h3 style={{ color: '#fff', margin: '0 0 8px', fontSize: 15, fontWeight: 600 }}>SEO</h3>
