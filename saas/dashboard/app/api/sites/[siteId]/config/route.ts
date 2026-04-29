@@ -27,6 +27,12 @@ export async function GET(_: NextRequest, { params }: Params) {
     google_site_verification: get('google_site_verification'),
     www_preference: get('www_preference') || 'www',
     page_types: pageTypes,
+    theme: {
+      accent: get('accent'),
+      accent2: get('accent2'),
+      bg: get('bg'),
+      ink: get('ink'),
+    },
     seo: {
       title_pattern: get('title_pattern'),
       meta_pattern: get('meta_pattern'),
@@ -67,6 +73,12 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   if (body.seo_avis_meta !== undefined) replaceKey('avis_meta_pattern', body.seo_avis_meta || '')
   if (body.seo_liste_comp_title !== undefined) replaceKey('liste_comp_title', body.seo_liste_comp_title || '')
   if (body.seo_liste_avis_title !== undefined) replaceKey('liste_avis_title', body.seo_liste_avis_title || '')
+  if (body.theme) {
+    const themeMap: Record<string, string> = body.theme
+    Object.entries(themeMap).forEach(([k, v]) => {
+      if (v) replaceKey(k, v as string)
+    })
+  }
   if (body.page_types) {
     const pageTypesBlock = 'page_types:\n' + Object.entries(body.page_types).map(([k, v]) => `  ${k}: ${v}`).join('\n')
     if (/^page_types:/m.test(yaml)) {
