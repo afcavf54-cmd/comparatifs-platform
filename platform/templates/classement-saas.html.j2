@@ -154,7 +154,13 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 
 <nav>
   <div class="nav-inner">
-    <a href="/" class="nav-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></a>
+    <a href="/" class="nav-logo">
+    {% if site.logo_img is defined and site.logo_img %}
+      <img src="{{ site.logo_img }}" alt="{{ site.name }}" style="height:36px;width:auto;object-fit:contain;vertical-align:middle">
+    {% else %}
+      {{ site.logo_text }}<span>{{ site.logo_accent }}</span>
+    {% endif %}
+  </a>
     <div class="nav-links">
       <a href="/nos-comparateurs">Nos comparateurs</a>
     </div>
