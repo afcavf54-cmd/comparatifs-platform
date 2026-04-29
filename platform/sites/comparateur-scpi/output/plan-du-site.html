@@ -5,12 +5,25 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plan du site | Comparateur SCPI</title>
-<meta name="description" content="Plan du site Comparateur SCPI : toutes les pages, comparatifs SCPI et avis disponibles.">
+<meta name="description" content="Plan du site Comparateur SCPI : toutes les pages disponibles.">
 <link rel="canonical" href="https://comparateur-scpi.eu/plan-du-site">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=comparateur-scpi" rel="stylesheet">
 <style>
-:root{--bg:#F4F6FB;--surface:#fff;--ink:#0F1A2E;--ink2:#4A5568;--ink3:#718096;--accent:#400000;--accent2:#E8410A;--border:#E2E8F0;--r:12px;--r2:20px}
+:root{
+  --bg:#F4F6FB;
+  --surface:#fff;
+  --surface2:#F0ECE5;
+  --ink:#0F1A2E;
+  --ink2:#6B6560;
+  --ink3:#A09890;
+  --accent:#400000;
+  --accent2:#E8410A;--cta:#F59E0B;--cta-text:#ffffff;
+  --border:#E2DDD6;
+  --r:12px;
+  --r2:20px;
+  --green:#1A7A4A;
+}};--surface:#fff;--ink:#0F1A2E;--ink2:#4A5568;--ink3:#718096;--accent:#400000;--accent2:#E8410A;--border:#E2E8F0;--r:12px;--r2:20px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
 a{color:var(--accent);text-decoration:none}
@@ -26,79 +39,44 @@ h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,48px);font-weig
 .sitemap-section li:last-child{border-bottom:none}
 .sitemap-section a{color:var(--ink2);display:flex;align-items:center;gap:8px;transition:.15s}
 .sitemap-section a:hover{color:var(--accent);text-decoration:none}
-.sitemap-section a::before{content:"→";color:var(--accent);font-size:12px;flex-shrink:0}
+.sitemap-section a::before{content:"\2192";color:var(--accent);font-size:12px;flex-shrink:0}
 .sitemap-full{grid-column:1/-1}
-.scpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
-.scpi-grid a{font-size:14px}
-@media(max-width:768px){.sitemap-grid{grid-template-columns:1fr}.scpi-grid{grid-template-columns:1fr 1fr}}
+.pages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
+.pages-grid a{font-size:14px}
+@media(max-width:768px){.sitemap-grid{grid-template-columns:1fr}.pages-grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-
-<style>
-nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;position:sticky;top:0;z-index:100}
-.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;position:relative}
-.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
-.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
-.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
-.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.1)}
-.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--accent2);color:#fff;font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
-.nav-cta:hover{opacity:.88}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
-.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
-.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.nav-burger.open span:nth-child(2){opacity:0}
-.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
-.nav-mobile.open{display:flex}
-.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;font-weight:500;padding:12px 16px;border-radius:10px;transition:.15s}
-.nav-mobile a:hover,.nav-mobile a.active{color:#fff;background:rgba(255,255,255,.08)}
-.nav-mobile .nav-cta{margin-top:8px;justify-content:center;border-radius:12px}
-@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
-</style>
 
 <nav>
   <div class="nav-inner">
     <a href="/" class="nav-logo">Comparateur<span>SCPI</span></a>
     <div class="nav-links">
-        <a href="/comparatifs-scpi">Comparatifs</a>
-        <a href="/avis-scpi">Avis</a>
+      <a href="/nos-comparateurs">Nos comparateurs</a>
     </div>
     <a href="/contact" class="nav-cta">Contact</a>
-    <button class="nav-burger" id="burger" aria-label="Menu" onclick="toggleMenu()">
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-mobile" id="nav-mobile">
-      <a href="/comparatifs-scpi">Comparatifs</a>
-      <a href="/avis-scpi">Avis</a>
+    <a href="/nos-comparateurs">Nos comparateurs</a>
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
 </nav>
 
-<script>
-function toggleMenu(){
-  var m=document.getElementById('nav-mobile');
-  var b=document.getElementById('burger');
-  m.classList.toggle('open');b.classList.toggle('open');
-}
-document.addEventListener('click',function(e){
-  var m=document.getElementById('nav-mobile');var b=document.getElementById('burger');
-  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');b.classList.remove('open');}
-});
-</script>
 <main>
   <h1>Plan du site</h1>
-  <p class="subtitle">Comparateur SCPI | toutes les pages disponibles</p>
+  <p class="subtitle">Comparateur SCPI - toutes les pages disponibles</p>
 
   <div class="sitemap-grid">
 
     <div class="sitemap-section">
-      <h2>🏠 Pages principales</h2>
+      <h2>Pages principales</h2>
       <ul>
         <li><a href="/">Accueil</a></li>
-        <li><a href="/comparatifs-scpi">Tous les comparatifs SCPI</a></li>
-        <li><a href="/avis-scpi">Tous les avis SCPI</a></li>
+        <li><a href="/comparatifs-scpi">Tous les comparatifs</a></li>
+        <li><a href="/avis-scpi">Tous les avis</a></li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="/mentions-legales">Mentions légales</a></li>
         <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
@@ -106,7 +84,7 @@ document.addEventListener('click',function(e){
     </div>
 
     <div class="sitemap-section">
-      <h2>📝 Avis SCPI</h2>
+      <h2>Avis</h2>
       <ul>
         <li><a href="/avis-wemo-one">Avis Wemo One</a></li>
         <li><a href="/avis-iroko-zen">Avis Iroko Zen</a></li>
@@ -122,8 +100,8 @@ document.addEventListener('click',function(e){
     </div>
 
     <div class="sitemap-section sitemap-full">
-      <h2>⚖️ Comparatifs SCPI (45 analyses)</h2>
-      <div class="scpi-grid">
+      <h2>Comparatifs (45 analyses)</h2>
+      <div class="pages-grid">
         <a href="/iroko-zen-vs-wemo-one">Iroko Zen vs Wemo One</a>
         <a href="/iroko-zen-vs-remake-live">Iroko Zen vs Remake Live</a>
         <a href="/iroko-zen-vs-log-in">Iroko Zen vs Log In</a>
@@ -185,15 +163,11 @@ document.addEventListener('click',function(e){
 .footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
 .footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
 .footer-col a:hover{color:#fff}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
 .footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
-.footer-bottom-right{display:flex;gap:20px}
-.footer-bottom-right a{font-size:12px;color:rgba(255,255,255,.3);transition:.15s}
-.footer-bottom-right a:hover{color:rgba(255,255,255,.7)}
 @media(max-width:768px){
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
   .footer-brand{grid-column:1/-1}
-  .footer-bottom{flex-direction:column;align-items:flex-start}
 }
 </style>
 
@@ -203,13 +177,12 @@ document.addEventListener('click',function(e){
 
       <div class="footer-brand">
         <div class="footer-logo">Comparateur<span>SCPI</span></div>
-        <p>Comparatifs SCPI indépendants. 45 analyses détaillées pour choisir la meilleure SCPI selon votre profil.</p>
+        <p>Comparatifs Comparateur SCPI 2026</p>
       </div>
 
       <div class="footer-col">
         <h4>Navigation</h4>
-        <a href="/comparatifs-scpi">Comparatifs SCPI</a>
-        <a href="/avis-scpi">Avis SCPI</a>
+        <a href="/nos-comparateurs">Nos comparateurs</a>
         <a href="/plan-du-site">Plan du site</a>
         <a href="/mentions-legales">Mentions légales</a>
         <a href="/politique-confidentialite">Confidentialité</a>
@@ -224,7 +197,7 @@ document.addEventListener('click',function(e){
 
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 comparateur-scpi.eu — Données actualisées le 29 avril 2026. Les performances passées ne préjugent pas des performances futures.
+        © 2026 comparateur-scpi.eu — Données actualisées le 29 avril 2026
       </div>
     </div>
   </div>
