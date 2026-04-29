@@ -74,9 +74,15 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   if (body.seo_liste_comp_title !== undefined) replaceKey('liste_comp_title', body.seo_liste_comp_title || '')
   if (body.seo_liste_avis_title !== undefined) replaceKey('liste_avis_title', body.seo_liste_avis_title || '')
   if (body.theme) {
+    // Les couleurs sont imbriquées sous theme: dans le YAML
     const themeMap: Record<string, string> = body.theme
     Object.entries(themeMap).forEach(([k, v]) => {
-      if (v) replaceKey(k, v as string)
+      if (!v) return
+      // Remplacer la clé dans le bloc theme: (indentée avec 2 espaces)
+      const re = new RegExp(`^([ ]{2})${k}:(.*?)$`, 'm')
+      if (re.test(yaml)) {
+        yaml = yaml.replace(re, `$1${k}: "${v}"`)
+      }
     })
   }
   if (body.page_types) {
