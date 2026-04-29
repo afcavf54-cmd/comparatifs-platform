@@ -128,6 +128,19 @@ main{max-width:1200px;margin:0 auto;padding:48px 5vw 80px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
 .faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+/* ── AUTHOR BOX ── */
+.author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:48px 0 0}
+.author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
+.author-avatar-placeholder{width:80px;height:80px;border-radius:50%;background:var(--bg);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0}
+.author-info{flex:1}
+.author-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:4px}
+.author-name{font-family:'{{ theme.font_title }}',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:2px}
+.author-job{font-size:13px;color:var(--ink3);margin-bottom:12px}
+.author-bio{font-size:15px;color:var(--ink2);line-height:1.7;margin-bottom:14px}
+.author-socials{display:flex;gap:10px;flex-wrap:wrap}
+.author-social{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:20px;border:1px solid var(--border);font-size:12px;font-weight:600;color:var(--ink2);transition:.15s}
+.author-social:hover{border-color:var(--accent);color:var(--accent)}
+@media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
@@ -299,6 +312,53 @@ main{max-width:1200px;margin:0 auto;padding:48px 5vw 80px}
   {% endif %}
 
 </main>
+
+  {% if site.author_name is defined and site.author_name %}
+  {# ── BOX AUTEUR ── #}
+  <aside class="author-box" itemscope itemtype="https://schema.org/Person">
+    {% if site.author_photo is defined and site.author_photo %}
+    <img src="{{ site.author_photo }}" alt="Photo de {{ site.author_name }}" class="author-avatar" loading="lazy" itemprop="image">
+    {% else %}
+    <div class="author-avatar-placeholder">✍️</div>
+    {% endif %}
+    <div class="author-info">
+      <div class="author-label">À propos de l'auteur</div>
+      <div class="author-name" itemprop="name">{{ site.author_name }}</div>
+      {% if site.author_job is defined and site.author_job %}
+      <div class="author-job" itemprop="jobTitle">{{ site.author_job }}</div>
+      {% endif %}
+      {% if site.author_bio is defined and site.author_bio %}
+      <p class="author-bio" itemprop="description">{{ site.author_bio }}</p>
+      {% endif %}
+      {% if site.author_socials is defined and site.author_socials %}
+      <nav class="author-socials" aria-label="Réseaux sociaux de {{ site.author_name }}">
+        {% for social in site.author_socials %}
+        {% if social.url and social.label %}
+        <a href="{{ social.url }}" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
+          {{ social.label }}
+        </a>
+        {% endif %}
+        {% endfor %}
+      </nav>
+      {% endif %}
+    </div>
+  </aside>
+
+  {# Schema.org JSON-LD Person #}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "{{ site.author_name }}",
+    {% if site.author_job is defined and site.author_job %}"jobTitle": "{{ site.author_job }}",{% endif %}
+    {% if site.author_bio is defined and site.author_bio %}"description": "{{ site.author_bio | striptags }}",{% endif %}
+    {% if site.author_photo is defined and site.author_photo %}"image": "{{ site.domain }}{{ site.author_photo }}",{% endif %}
+    {% if site.author_socials is defined and site.author_socials %}"sameAs": [{% for social in site.author_socials %}{% if social.url %}"{{ social.url }}"{% if not loop.last %},{% endif %}{% endif %}{% endfor %}],{% endif %}
+    "url": "{{ site.domain }}"
+  }
+  </script>
+  {% endif %}
+
 
 {% include "base/_footer.html.j2" %}
 
