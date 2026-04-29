@@ -71,8 +71,9 @@ def md_to_html(text):
 
 
 def slugify_cat(s: str) -> str:
-    """Slugifie une catégorie en ASCII pur (gère accents et apostrophes)."""
+    """Slugifie une catégorie en ASCII pur (gère accents, apostrophes et parenthèses)."""
     s = s.replace('\u2019', ' ').replace('\u2018', ' ').replace("'", ' ').replace("'", ' ')
+    s = _re.sub(r"[()\[\]]", '', s)  # Supprimer parenthèses et crochets
     s = _unicodedata.normalize('NFD', s)
     s = s.encode('ascii', 'ignore').decode('ascii')
     s = s.lower()
