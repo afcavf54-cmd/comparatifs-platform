@@ -275,15 +275,11 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
     <div class="footer-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></div>
     <div class="footer-links">
       <a href="/">Accueil</a>
-      {% if site.footer_pages is defined %}
-        {% for page in site.footer_pages %}
-        <a href="/{{ page.slug }}">{{ page.label }}</a>
-        {% endfor %}
-      {% else %}
+      <a href="/nos-comparateurs">Nos comparateurs</a>
       <a href="/contact">Contact</a>
       <a href="/mentions-legales">Mentions légales</a>
       <a href="/politique-confidentialite">Confidentialité</a>
-      {% endif %}
+      <a href="/plan-du-site">Plan du site</a>
     </div>
     <div class="footer-copy">© {{ site.year }} {{ site.name }} · Tous droits réservés</div>
   </div>
