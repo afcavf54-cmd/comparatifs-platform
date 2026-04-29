@@ -883,12 +883,25 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     return (1, -note)  # Sinon par note décroissante
                 enriched_products.sort(key=sort_key)
 
+                # Données auteur depuis config
+                author_cfg = config.get("author", {})
+                site_with_author = {
+                    **site,
+                    "seo": config.get("seo", {}),
+                    "author_name": author_cfg.get("name", ""),
+                    "author_bio": author_cfg.get("bio", ""),
+                    "author_job": author_cfg.get("job_title", ""),
+                    "author_photo": author_cfg.get("photo", ""),
+                    "author_socials": author_cfg.get("socials", []),
+                }
                 html = classement_tpl.render(
-                    site={**site, "seo": config.get("seo", {})},
+                    site=site_with_author,
                     theme=theme, products=enriched_products, criteria=criteria,
                     page_slug=page_slug,
                     seo={"title": classement_title, "meta": classement_meta, "h1": classement_h1},
                     editorial=cat_editorial, build_date=date.today().isoformat(),
+                    page_types=config.get("page_types", {}),
+                    total_pairs=len(all_pairs),
                 )
                 (output_dir / f"{page_slug}.html").write_text(html, encoding="utf-8")
                 classement_count += 1
