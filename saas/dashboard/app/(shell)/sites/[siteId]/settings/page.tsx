@@ -38,7 +38,7 @@ export default function SettingsPage() {
     })
     fetch(`/api/sites/${siteId}/config`).then(r => r.json()).then(d => {
       if (d) {
-        if (d.theme) setThemeForm(t => ({ ...t, ...d.theme, cta_color: d.theme.cta_color || d.theme.accent2 || '#F59E0B', cta_text_color: d.theme.cta_text_color || '#ffffff' }))
+        if (d.theme) setThemeForm(t => ({ ...t, ...d.theme, cta_color: d.theme.cta_color || '#F59E0B', cta_text_color: d.theme.cta_text_color || '#ffffff' }))
         setSeoForm(f => ({ ...f, home_title: d.home_title || '', home_description: d.home_description || '',
               home_h1: d.home_h1 || '', seo_vs_title: d.seo?.title_pattern || f.seo_vs_title, seo_vs_meta: d.seo?.meta_pattern || f.seo_vs_meta, seo_avis_title: d.seo?.avis_title_pattern || f.seo_avis_title, seo_avis_meta: d.seo?.avis_meta_pattern || f.seo_avis_meta, seo_liste_comp_title: d.seo?.liste_comp_title || f.seo_liste_comp_title, seo_liste_avis_title: d.seo?.liste_avis_title || f.seo_liste_avis_title, www_preference: d.www_preference || 'www' }))
         if (d.page_types) setPageTypes(d.page_types)
