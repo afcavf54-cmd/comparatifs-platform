@@ -407,8 +407,9 @@ export default function TemplateDetailPage() {
                       {schema.keywords[selectedGroup].__products.map((p: any) => {
                         const logoKey = `${p.slug}-logo`
                         const screenshotKey = `${p.slug}-screenshot`
-                        const logoPath = p.logo_path
-                        const screenshotPath = p.screenshot_path
+                        const rawBase = `https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/${imagesBasePath}`
+                        const logoPath = p.logo_path ? `${rawBase}/${p.logo_path.replace(/^\//, '')}?t=${Date.now()}` : null
+                        const screenshotPath = p.screenshot_path ? `${rawBase}/${p.screenshot_path.replace(/^\//, '')}?t=${Date.now()}` : null
                         return (
                           <div key={p.slug} style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 10, padding: 14, display: 'flex', alignItems: 'center', gap: 14 }}>
                             {/* Nom */}
