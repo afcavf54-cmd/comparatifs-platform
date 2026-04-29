@@ -11,12 +11,16 @@ export default function ShellLayout({ children }: { children: React.ReactNode })
   const [deploying, setDeploying] = useState(false)
   const [msg, setMsg] = useState('')
   const [pageTypes, setPageTypes] = useState<Record<string, string>>({})
+  const [siteDomain, setSiteDomain] = useState<string | null>(null)
 
   // Charger page_types pour afficher l'onglet Classements
   useState(() => {
     if (!siteId) return
     fetch(`/api/sites/${siteId}/config`).then(r => r.json()).then(d => {
       if (d.page_types) setPageTypes(d.page_types)
+    }).catch(() => {})
+    fetch(`/api/sites/${siteId}`).then(r => r.json()).then(d => {
+      if (d.domain) setSiteDomain(d.domain)
     }).catch(() => {})
   })
 
@@ -73,8 +77,14 @@ export default function ShellLayout({ children }: { children: React.ReactNode })
                 ))}
               </div>
               {/* Bouton déployer */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10, paddingLeft: 16 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, paddingLeft: 16 }}>
                 {msg && <span style={{ fontSize: 12, color: msg.startsWith('✓') ? '#00D4AA' : '#FC8181' }}>{msg}</span>}
+                {siteDomain && (
+                  <a href={siteDomain.startsWith('http') ? siteDomain : `https://${siteDomain}`} target="_blank" rel="noopener noreferrer"
+                    style={{ padding: '7px 14px', borderRadius: 8, border: '1px solid #1E2D3D', background: 'transparent', color: '#8B9CB0', fontSize: 13, fontWeight: 600, textDecoration: 'none', whiteSpace: 'nowrap' }}>
+                    🌐 Voir le site
+                  </a>
+                )}
                 <button onClick={quickDeploy} disabled={deploying}
                   style={{ padding: '7px 18px', borderRadius: 8, border: 'none', background: deploying ? '#1E2D3D' : 'linear-gradient(135deg, #00D4AA, #0090FF)', color: deploying ? '#4A5568' : '#fff', fontWeight: 600, fontSize: 13, cursor: deploying ? 'not-allowed' : 'pointer', whiteSpace: 'nowrap' }}>
                   {deploying ? '⏳...' : '🚀 Déployer'}
