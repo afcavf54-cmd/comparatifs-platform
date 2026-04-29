@@ -87,15 +87,7 @@ export default function SiteDetailPage() {
     setDeploying(false)
   }
 
-  const tabs = [
-    { id: 'overview', label: "📊 Vue d'ensemble", href: '' },
-    { id: 'templates', label: '📄 Templates', href: '/templates' },
-    { id: 'data', label: '🗂 Données', href: '/data' },
-    { id: 'editorial', label: '✍️ Éditorial', href: '/editorial' },
-    ...(pageTypes.classement ? [{ id: 'classements', label: '📊 Classements', href: '/classements' }] : []),
-    { id: 'deploy', label: '🚀 Déploiement', href: '/deploy' },
-    { id: 'settings', label: '⚙️ Paramètres', href: '/settings' },
-  ]
+
 
   if (loading) return <div style={{ color: '#8B9CB0', textAlign: 'center', padding: 60 }}>Chargement...</div>
   if (!site) return <div style={{ color: '#FC8181', textAlign: 'center', padding: 60 }}>Site introuvable</div>
@@ -131,17 +123,7 @@ export default function SiteDetailPage() {
         </div>
       )}
 
-      {/* Tabs */}
-      <div style={{ display: 'flex', gap: 4, marginBottom: 28, borderBottom: '1px solid #1E2D3D', paddingBottom: 0 }}>
-        {tabs.map(tab => (
-          <Link key={tab.id} href={`/sites/${siteId}${tab.href}`} style={{
-            padding: '10px 16px', fontSize: 13, fontWeight: tab.id === 'overview' ? 600 : 400,
-            color: tab.id === 'overview' ? '#fff' : '#8B9CB0',
-            textDecoration: 'none', borderBottom: tab.id === 'overview' ? '2px solid #00D4AA' : '2px solid transparent',
-            marginBottom: -1
-          }}>{tab.label}</Link>
-        ))}
-      </div>
+
 
       {/* Stats */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 28 }}>
