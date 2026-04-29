@@ -70,20 +70,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'{{ theme.font_body }}',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
-a{color:inherit;text-decoration:none}
-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
-.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
-.nav-logo{font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
-.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
-.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
-.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
-.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
-.nav-cta:hover{opacity:.88}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
-.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
-.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
-.nav-mobile.open{display:flex}
-.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+a{color:inherit;text-decoration:none}}',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
 .hero{background:var(--ink);padding:48px 5vw 40px;text-align:center}
 .hero h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4vw,48px);font-weight:400;color:#fff;line-height:1.15;letter-spacing:-.02em;max-width:800px;margin:0 auto 16px}
 .hero h1 em{font-style:italic;color:var(--accent2)}
@@ -129,13 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:48px 5vw 80px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
-footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-size:13px}
-.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.footer-logo{font-family:'{{ theme.font_title }}',serif;font-size:16px;color:#fff}.footer-logo span{color:var(--accent2)}
-.footer-links{display:flex;gap:20px;flex-wrap:wrap}
-.footer-links a{color:rgba(255,255,255,.4);transition:.15s}.footer-links a:hover{color:#fff}
-.footer-copy{color:rgba(255,255,255,.25);font-size:12px;width:100%;text-align:center;margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.06)}
+.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}}',serif;font-size:16px;color:#fff}.footer-logo span{color:var(--accent2)}.footer-links a:hover{color:#fff}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
@@ -154,179 +135,163 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 {% endif %}
 {% endif %}
 </head>
+
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">{% if site.logo_img is defined and site.logo_img %}<img src="{{ site.logo_img }}" alt="{{ site.name }}" style="height:36px;width:auto;object-fit:contain;vertical-align:middle">{% else %}{{ site.logo_text }}<span>{{ site.logo_accent }}</span>{% endif %}</a>
-    <div class="nav-links">
-      <a href="/nos-comparateurs">Nos comparateurs</a>
-    </div>
-    <a href="/contact" class="nav-cta">Contact</a>
-    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="nav-mobile" id="nav-mobile">
-    <a href="/nos-comparateurs">Nos comparateurs</a>
-    <a href="/contact" class="nav-cta">Contact</a>
-  </div>
-</nav>
-
-<div class="hero">
-  <h1>{{ seo.h1 | safe }}</h1>
-  <div class="hero-meta">⏰ Mis à jour le {{ build_date }} - {{ products | length }} logiciels analysés</div>
-</div>
+{% include "base/_nav.html.j2" %}
 
 <main>
+  <!-- EN-BREF -->
+  <div class="en-bref">
+    <div class="en-bref-title">{{ seo.h1 | default(seo.title) | safe }}</div>
+    <div class="en-bref-sub">Mis à jour le {{ build_date | fr_date }} · {{ products | length }} logiciels analysés</div>
+    <ul>
+      {% for prod in products[:3] %}
+      <li>{{ prod.nom }} — {{ prod.tagline | default(prod.description | striptags | truncate(80)) }}</li>
+      {% endfor %}
+    </ul>
+  </div>
 
-  {% if editorial.intro is defined and editorial.intro %}
+  <!-- INTRO -->
+  {% if editorial.intro %}
   <div class="intro">{{ editorial.intro | safe }}</div>
   {% endif %}
 
-  {% if editorial.en_bref is defined and editorial.en_bref %}
-  <div class="en-bref">
-    <div class="en-bref-title">⚡ En bref</div>
-    <div class="en-bref-sub">Si vous avez la flemme de parcourir notre comparatif détaillé, voici nos recommandations ❤️</div>
-    {{ editorial.en_bref | safe }}
-  </div>
-  {% endif %}
-
-  <h2 class="section-title">{{ editorial.titre_analyse if editorial.titre_analyse is defined and editorial.titre_analyse else 'Analyse détaillée' }}</h2>
-
+  <!-- CLASSEMENT DES LOGICIELS -->
   {% for prod in products %}
   <div class="logiciel-card" id="{{ prod.slug }}">
     <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">{{ prod.nom }}</h2>
-        {% if prod.tagline is defined and prod.tagline %}
-        <div class="logiciel-tagline">{{ prod.tagline }}</div>
+      <div class="logiciel-rank">#{{ loop.index }}</div>
+      <div class="logiciel-info">
+        {% if prod.screenshot %}
+        <a href="{{ prod.url_affiliation | default('#') }}" rel="nofollow" target="_blank">
+          <img src="{{ prod.screenshot }}" alt="{{ prod.nom }}" class="logiciel-screenshot">
+        </a>
         {% endif %}
+        <div>
+          <div class="logiciel-nom">{{ prod.nom }}</div>
+          {% if prod.tagline %}<div class="logiciel-tagline">{{ prod.tagline }}</div>{% endif %}
+        </div>
       </div>
-      {% if prod.prix_achat is defined and prod.prix_achat %}
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">{{ prod.prix_achat | string | replace('.0','') }}€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+      <div class="logiciel-meta">
+        {% for crit in criteria %}
+        {% set val = prod[crit.field] | default('') %}
+        {% if val %}
+        <div class="meta-item">
+          <span class="meta-label">{{ crit.label }}</span>
+          <span class="meta-val">
+            {% if crit.type == 'bool' %}
+              {% if val == '1' or val == 'true' or val == 'True' %}✓{% else %}✗{% endif %}
+            {% else %}{{ val }}{% if crit.suffix %} {{ crit.suffix }}{% endif %}
+            {% endif %}
+          </span>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    {% set prod_key = 'prod_' + prod.slug %}
+    {% set prod_editorial = editorial[prod_key] if prod_key in editorial else {} %}
+
+    {% if prod.description or prod_editorial.description %}
+    <div class="logiciel-desc">{{ (prod_editorial.description | default(prod.description)) | safe }}</div>
+    {% endif %}
+
+    {% if prod.points_forts or prod_editorial.points_forts %}
+    {% set pts_forts = prod_editorial.points_forts | default(prod.points_forts) %}
+    {% if pts_forts %}
+    <div class="logiciel-points">
+      <div class="points-forts">
+        <div class="points-title">✅ Avantages</div>
+        <ul>{% for p in pts_forts %}<li>{{ p }}</li>{% endfor %}</ul>
+      </div>
+      {% set pts_faibles = prod_editorial.points_faibles | default(prod.points_faibles | default([])) %}
+      {% if pts_faibles %}
+      <div class="points-faibles">
+        <div class="points-title">❌ Inconvénients</div>
+        <ul>{% for p in pts_faibles %}<li>{{ p }}</li>{% endfor %}</ul>
       </div>
       {% endif %}
     </div>
-    <div class="logiciel-body">
-      {% set screenshot_file = prod.slug ~ "-screenshot.png" %}
-      {% set logo_file = prod.slug ~ "-logo.png" %}
-      {% if prod.url_affiliation is defined and prod.url_affiliation %}
-      <a href="{{ prod.url_affiliation }}" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/{{ screenshot_file }}" alt="Aperçu {{ prod.nom }}"
-          style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);border:1px solid var(--border)"
-          onerror="this.style.display='none'">
-      </a>
-      {% else %}
-      <img src="/{{ screenshot_file }}" alt="Aperçu {{ prod.nom }}"
-        style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);margin:0 0 16px;border:1px solid var(--border)"
-        onerror="this.style.display='none'">
-      {% endif %}
+    {% endif %}
+    {% endif %}
 
-      <div class="logiciel-desc">
-        {% if prod.description is defined and prod.description %}
-          {% set desc = prod.description %}
-          {% if '##' in desc or '**' in desc or '- ' in desc %}
-            {# Markdown détecté - convertir #}
-            {% for line in desc.split('
-') %}
-              {% if line.startswith('## ') or line.startswith('# ') %}
-                <h3 style="font-family:'{{ theme.font_title }}',serif;font-size:18px;font-weight:400;margin:16px 0 8px">{{ line.replace('## ','').replace('# ','') }}</h3>
-              {% elif line.startswith('### ') %}
-                <h4 style="font-size:16px;font-weight:600;margin:12px 0 6px">{{ line.replace('### ','') }}</h4>
-              {% elif line.startswith('- ') %}
-                <li style="margin-left:20px;margin-bottom:4px">{{ line[2:] | replace('**','') }}</li>
-              {% elif line.strip() %}
-                <p style="margin-bottom:10px">{{ line | replace('**','') | replace('*','') }}</p>
-              {% endif %}
-            {% endfor %}
-          {% else %}
-            {{ desc | safe }}
-          {% endif %}
-        {% else %}
-          <p><strong>{{ prod.nom }}</strong> est une solution développée par <strong>{{ prod.marque | default(prod.nom) }}</strong>.</p>
-        {% endif %}
-      </div>
-
-      {% set pf = prod.points_forts if (prod.points_forts is defined and prod.points_forts) else [] %}
-      {% set pfa = prod.points_faibles if (prod.points_faibles is defined and prod.points_faibles) else [] %}
-      {% if pf or pfa %}
-      <table class="avantages-table">
-        <thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead>
-        <tbody>
-          {% for i in range([pf | length, pfa | length] | max) %}
-          <tr>
-            <td>{% if i < pf | length %}{{ pf[i] }}{% endif %}</td>
-            <td>{% if i < pfa | length %}{{ pfa[i] }}{% endif %}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-      {% else %}
-      <p style="font-size:13px;color:var(--ink3);font-style:italic">Analyse en cours...</p>
-      {% endif %}
-
-      {% if prod.url_affiliation is defined and prod.url_affiliation %}
-      <a href="{{ prod.url_affiliation }}" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        {{ prod.cta_text if prod.cta_text is defined and prod.cta_text else '→ Essayer ' ~ prod.nom }}
-      </a>
-      {% endif %}
-    </div>
+    {% if prod.url_affiliation is defined and prod.url_affiliation %}
+    <a href="{{ prod.url_affiliation }}" class="logiciel-cta" rel="nofollow" target="_blank">
+      {{ prod.cta_text if prod.cta_text is defined and prod.cta_text else '→ Essayer ' + prod.nom }}
+    </a>
+    {% endif %}
   </div>
   {% endfor %}
 
-  {% if editorial.contenu_custom is defined and editorial.contenu_custom %}
-  <div class="content-custom">{{ editorial.contenu_custom | safe }}</div>
+  <!-- CONTENU CUSTOM -->
+  {% if editorial.contenu_custom %}
+  <div class="contenu-custom">
+    <h2 class="section-title">{{ editorial.titre_analyse | default('Analyse détaillée') }}</h2>
+    {{ editorial.contenu_custom | safe }}
+  </div>
   {% endif %}
 
+  <!-- FAQ -->
   {% if editorial.faq is defined and editorial.faq %}
-  <h2 class="section-title">Questions fréquentes</h2>
-
-  {# Gérer les différentes structures possibles de FAQ #}
-  {% set faq_items = [] %}
-  {% if editorial.faq is iterable and editorial.faq is not mapping %}
-    {# Cas normal : liste de {q, a} #}
-    {% set faq_items = editorial.faq %}
-  {% elif editorial.faq is mapping %}
-    {% if editorial.faq.faq is defined %}
-      {# Cas imbriqué : {faq: {questions: [...]}} #}
-      {% if editorial.faq.faq.questions is defined %}
-        {% set faq_items = editorial.faq.faq.questions %}
-      {% endif %}
-    {% elif editorial.faq.questions is defined %}
-      {% set faq_items = editorial.faq.questions %}
-    {% endif %}
-  {% endif %}
-
-  {% for item in faq_items %}
-  <div class="faq-item">
-    {% if item is mapping %}
-      {% if item.q is defined %}
-      <div class="faq-q">{{ item.q }}</div>
-      <div class="faq-a">{{ item.a }}</div>
-      {% elif item.question is defined %}
-      <div class="faq-q">{{ item.question }}</div>
-      <div class="faq-a">{{ item.answer }}</div>
+  <div class="faq-section">
+    <h2 class="section-title">Questions fréquentes</h2>
+    {% set faq_list = [] %}
+    {% if editorial.faq is iterable and editorial.faq is not mapping %}
+      {% set faq_list = editorial.faq %}
+    {% elif editorial.faq is mapping %}
+      {% if editorial.faq.faq is defined and editorial.faq.faq.questions is defined %}
+        {% set faq_list = editorial.faq.faq.questions %}
+      {% elif editorial.faq.questions is defined %}
+        {% set faq_list = editorial.faq.questions %}
       {% endif %}
     {% endif %}
+    {% for item in faq_list %}
+    {% set q = item.q if item.q is defined else item.question if item.question is defined else '' %}
+    {% set a = item.a if item.a is defined else item.answer if item.answer is defined else '' %}
+    {% if q and a %}
+    <div class="faq-item">
+      <div class="faq-q">{{ q }}</div>
+      <div class="faq-a">{{ a }}</div>
+    </div>
+    {% endif %}
+    {% endfor %}
   </div>
-  {% endfor %}
   {% endif %}
 
 </main>
 
 {% include "base/_footer.html.j2" %}
 
-<script>
-function toggleMenu(){
-  document.getElementById('nav-mobile').classList.toggle('open');
+<!-- FAQ Schema JSON-LD -->
+{% if editorial.faq is defined and editorial.faq %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% set faq_list = [] %}
+    {% if editorial.faq is iterable and editorial.faq is not mapping %}
+      {% set faq_list = editorial.faq %}
+    {% elif editorial.faq is mapping %}
+      {% if editorial.faq.faq is defined and editorial.faq.faq.questions is defined %}
+        {% set faq_list = editorial.faq.faq.questions %}
+      {% elif editorial.faq.questions is defined %}
+        {% set faq_list = editorial.faq.questions %}
+      {% endif %}
+    {% endif %}
+    {% for item in faq_list %}
+    {% set q = item.q if item.q is defined else item.question if item.question is defined else '' %}
+    {% set a = item.a if item.a is defined else item.answer if item.answer is defined else '' %}
+    {% if q and a %}
+    { "@type": "Question", "name": {{ q | tojson }}, "acceptedAnswer": { "@type": "Answer", "text": {{ a | tojson }} } }{% if not loop.last %},{% endif %}
+    {% endif %}
+    {% endfor %}
+  ]
 }
-document.addEventListener('click',function(e){
-  var m=document.getElementById('nav-mobile'),b=document.getElementById('burger');
-  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');}
-});
 </script>
+{% endif %}
+
 </body>
 </html>
