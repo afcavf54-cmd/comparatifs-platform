@@ -620,6 +620,7 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
         prompt_classement = keyword_data.get('prompt_classement', '').replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
         prompt_contenu = keyword_data.get('prompt_contenu', '').replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
         prompt_faq = keyword_data.get('prompt_faq', '').replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
+        prompt_en_bref = keyword_data.get('prompt_en_bref', '').replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
 
         if prompt_intro or prompt_contenu:
             # Génération avec prompts custom
