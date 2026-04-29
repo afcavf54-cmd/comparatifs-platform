@@ -7,7 +7,7 @@
 <title>Page introuvable | {{ site.name }}</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="{{ theme.google_fonts }}" rel="stylesheet">
+<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">
 <style>
 :root{--bg:{{ theme.bg }};--ink:{{ theme.ink }};--accent:{{ theme.accent }};--accent2:{{ theme.accent2 }};--border:#E2E8F0}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -32,8 +32,12 @@ p{font-size:17px;color:#718096;margin-bottom:32px;max-width:480px;margin-left:au
     <p>La page que vous recherchez n'existe pas ou a été déplacée. Revenez à l'accueil pour trouver votre comparatif SCPI.</p>
     <a href="/" class="btn">← Retour à l'accueil</a>
     <div class="links">
-      <a href="/comparatifs-scpi" class="link-sec">Comparatifs SCPI</a>
-      <a href="/avis-scpi" class="link-sec">Avis SCPI</a>
+      {% if page_types is defined and 'classement' in page_types %}
+      <a href="/nos-comparateurs" class="link-sec">Nos comparateurs</a>
+      {% else %}
+      <a href="/comparatifs-scpi" class="link-sec">Comparatifs</a>
+      <a href="/avis-scpi" class="link-sec">Avis</a>
+      {% endif %}
     </div>
   </div>
 </main>
