@@ -2,13 +2,17 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+{% if site.favicon_file is defined and site.favicon_file %}
+<link rel="icon" href="{{ site.favicon_file }}">
+{% else %}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{% endif %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plan du site | {{ site.name }}</title>
-<meta name="description" content="Plan du site {{ site.name }} : toutes les pages, comparatifs SCPI et avis disponibles.">
+<meta name="description" content="Plan du site {{ site.name }} : toutes les pages disponibles.">
 <link rel="canonical" href="{{ site.domain }}/plan-du-site">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="{{ theme.google_fonts }}" rel="stylesheet">
+<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">
 <style>
 :root{--bg:{{ theme.bg }};--surface:#fff;--ink:{{ theme.ink }};--ink2:#4A5568;--ink3:#718096;--accent:{{ theme.accent }};--accent2:{{ theme.accent2 }};--border:#E2E8F0;--r:12px;--r2:20px}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -26,11 +30,11 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);fon
 .sitemap-section li:last-child{border-bottom:none}
 .sitemap-section a{color:var(--ink2);display:flex;align-items:center;gap:8px;transition:.15s}
 .sitemap-section a:hover{color:var(--accent);text-decoration:none}
-.sitemap-section a::before{content:"→";color:var(--accent);font-size:12px;flex-shrink:0}
+.sitemap-section a::before{content:"\2192";color:var(--accent);font-size:12px;flex-shrink:0}
 .sitemap-full{grid-column:1/-1}
-.scpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
-.scpi-grid a{font-size:14px}
-@media(max-width:768px){.sitemap-grid{grid-template-columns:1fr}.scpi-grid{grid-template-columns:1fr 1fr}}
+.pages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
+.pages-grid a{font-size:14px}
+@media(max-width:768px){.sitemap-grid{grid-template-columns:1fr}.pages-grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -39,24 +43,45 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);fon
 
 <main>
   <h1>Plan du site</h1>
-  <p class="subtitle">{{ site.name }} | toutes les pages disponibles</p>
+  <p class="subtitle">{{ site.name }} - toutes les pages disponibles</p>
 
   <div class="sitemap-grid">
+    {% set is_classement = page_types is defined and 'classement' in page_types %}
 
     <div class="sitemap-section">
-      <h2>🏠 Pages principales</h2>
+      <h2>Pages principales</h2>
       <ul>
         <li><a href="/">Accueil</a></li>
-        <li><a href="/comparatifs-scpi">Tous les comparatifs SCPI</a></li>
-        <li><a href="/avis-scpi">Tous les avis SCPI</a></li>
+        {% if is_classement %}
+        <li><a href="/nos-comparateurs">Nos comparateurs</a></li>
+        {% else %}
+        <li><a href="/comparatifs-scpi">Tous les comparatifs</a></li>
+        <li><a href="/avis-scpi">Tous les avis</a></li>
+        {% endif %}
         <li><a href="/contact">Contact</a></li>
         <li><a href="/mentions-legales">Mentions légales</a></li>
         <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
       </ul>
     </div>
 
+    {% if is_classement %}
+    {% set ns = namespace(cats=[]) %}
     <div class="sitemap-section">
-      <h2>📝 Avis SCPI</h2>
+      <h2>Nos classements</h2>
+      <ul>
+        {% for prod in products %}
+        {% set cat = prod.categorie | default('') %}
+        {% if cat and cat not in ns.cats %}
+        {% set ns.cats = ns.cats + [cat] %}
+        <li><a href="/meilleur-{{ cat | lower | replace(' ', '-') }}">Meilleur {{ cat }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+
+    {% else %}
+    <div class="sitemap-section">
+      <h2>Avis</h2>
       <ul>
         {% for prod in products %}
         <li><a href="/avis-{{ prod.slug }}">Avis {{ prod.nom }}</a></li>
@@ -65,10 +90,9 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);fon
     </div>
 
     <div class="sitemap-section sitemap-full">
-      <h2>⚖️ Comparatifs SCPI ({{ total_pairs }} analyses)</h2>
-      <div class="scpi-grid">
+      <h2>Comparatifs ({{ total_pairs }} analyses)</h2>
+      <div class="pages-grid">
         {% for prod in products %}
-        {% set slug_a = prod.slug %}
         {% for other in products %}
         {% if other.slug != prod.slug %}
         {% set slugs = [prod.slug, other.slug] | sort %}
@@ -80,6 +104,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);fon
         {% endfor %}
       </div>
     </div>
+    {% endif %}
 
   </div>
 </main>
