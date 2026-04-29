@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Sidebar from '../components/Sidebar'
@@ -13,8 +13,8 @@ export default function ShellLayout({ children }: { children: React.ReactNode })
   const [pageTypes, setPageTypes] = useState<Record<string, string>>({})
   const [siteDomain, setSiteDomain] = useState<string | null>(null)
 
-  // Charger page_types pour afficher l'onglet Classements
-  useState(() => {
+  // Charger page_types et domain
+  useEffect(() => {
     if (!siteId) return
     fetch(`/api/sites/${siteId}/config`).then(r => r.json()).then(d => {
       if (d.page_types) setPageTypes(d.page_types)
@@ -22,7 +22,7 @@ export default function ShellLayout({ children }: { children: React.ReactNode })
     fetch(`/api/sites/${siteId}`).then(r => r.json()).then(d => {
       if (d.domain) setSiteDomain(d.domain)
     }).catch(() => {})
-  })
+  }, [siteId])
 
   async function quickDeploy() {
     if (!siteId) return
