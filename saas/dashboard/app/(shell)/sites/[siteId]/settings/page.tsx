@@ -37,6 +37,23 @@ export default function SettingsPage() {
       setSite(d)
       setForm({ name: d.name, domain: d.domain, cloudflare_project: d.cloudflare_project, description: d.description || '', status: d.status, sheet_csv_url: d.sheet_csv_url || '' })
     })
+    // Charger logo et favicon existants
+    const logoPath = `platform/sites/${siteId}/public/logo.png`
+    const svgPath = `platform/sites/${siteId}/public/logo.svg`
+    fetch(`/api/github?path=${encodeURIComponent(logoPath)}`).then(r => r.json()).then(d => {
+      if (d.download_url) setLogoPreview(d.download_url)
+      else fetch(`/api/github?path=${encodeURIComponent(svgPath)}`).then(r => r.json()).then(d2 => {
+        if (d2.download_url) setLogoPreview(d2.download_url)
+      })
+    }).catch(() => {})
+
+    const faviconPaths = [`platform/sites/${siteId}/public/favicon.svg`, `platform/sites/${siteId}/public/favicon.png`]
+    faviconPaths.forEach(fp => {
+      fetch(`/api/github?path=${encodeURIComponent(fp)}`).then(r => r.json()).then(d => {
+        if (d.download_url) setFaviconPreview(d.download_url)
+      }).catch(() => {})
+    })
+
     fetch(`/api/sites/${siteId}/config`).then(r => r.json()).then(d => {
       if (d) {
         if (d.theme) setThemeForm(t => ({ ...t, ...d.theme, cta_color: d.theme.cta_color || '#F59E0B', cta_text_color: d.theme.cta_text_color || '#ffffff' }))
