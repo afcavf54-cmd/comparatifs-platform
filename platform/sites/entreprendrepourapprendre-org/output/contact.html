@@ -2,10 +2,10 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | Entreprendre Pour Apprendre</title>
-<meta name="description" content="Contactez Entreprendre Pour Apprendre pour toute question sur nos comparatifs SCPI, signalement d'erreur ou demande de partenariat.">
+<meta name="description" content="Contactez Entreprendre Pour Apprendre pour toute question ou suggestion.">
 <link rel="canonical" href="https://www.entreprendrepourapprendre.org/contact">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=entreprendrepourapprendre-org" rel="stylesheet">
@@ -13,36 +13,43 @@
 :root{
   --bg:#F8FAFC;
   --surface:#fff;
-  --surface2:#F0ECE5;
   --ink:#0F172A;
   --ink2:#6B6560;
   --ink3:#A09890;
   --accent:#0000a0;
-  --accent2:#00ff40;--cta:#F59E0B;--cta-text:#ffffff;
+  --accent2:#00ff40;
+  --cta:#F59E0B;
+  --cta-text:#ffffff;
   --border:#E2DDD6;
   --r:12px;
   --r2:20px;
-  --green:#1A7A4A;
-}};--surface:#fff;--ink:#0F172A;--ink2:#4A5568;--ink3:#718096;--accent:#0000a0;--accent2:#00ff40;--border:#E2E8F0;--green:#1A7A4A;--r:12px;--r2:20px}
+}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
 a{color:var(--accent);text-decoration:none}
-main{max-width:1200px;margin:0 auto;padding:56px 5vw 80px}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;height:64px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
+.nav-cta:hover{opacity:.88}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+main{max-width:800px;margin:0 auto;padding:64px 5vw 80px}
 h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,48px);font-weight:400;letter-spacing:-.02em;margin-bottom:12px}
-.page-intro{font-size:18px;color:var(--ink2);line-height:1.75;max-width:600px}
-.contact-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:32px}
-.contact-card h2{font-family:'DM Serif Display',serif;font-size:22px;font-weight:400;margin-bottom:8px}
-.contact-card p{font-size:15px;color:var(--ink2);margin-bottom:20px;line-height:1.7}
-.contact-card a.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;padding:12px 24px;border-radius:var(--r);font-size:15px;font-weight:600;transition:.15s}
-.contact-card a.btn:hover{background:var(--accent2)}
-.contact-card a.btn-outline{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
-.contact-card a.btn-outline:hover{background:var(--accent);color:#fff}
-.info-block{margin-top:12px;font-size:14px;color:var(--ink3);line-height:1.8}
-.info-block strong{color:var(--ink2)}
-.disclaimer{background:#FFF8E6;border:1px solid #FAC775;border-radius:var(--r2);padding:20px 24px;margin-top:48px;font-size:13px;color:#633806;line-height:1.6}
-@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+.subtitle{font-size:16px;color:var(--ink2);margin-bottom:48px}
+.contact-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:32px;margin-bottom:24px}
+.contact-block h2{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;margin-bottom:16px;color:var(--ink)}
+.contact-block p{color:var(--ink2);font-size:15px;margin-bottom:8px}
+.contact-block a{color:var(--accent);font-weight:600}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
 </style>
+<script async data-id="101505107" src="//static.getclicky.com/js"></script>
 </head>
 <body>
 
@@ -64,38 +71,24 @@ h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,48px);font-weig
 </nav>
 
 <main>
-  <h1>Contact</h1>
-  <p class="page-intro">Une question sur un comparatif, une donnée à corriger ou une demande de partenariat ? Nous vous répondons sous 48h.</p>
+  <h1>Nous contacter</h1>
+  <p class="subtitle">Une question, une suggestion ou un partenariat ? Écrivez-nous.</p>
 
-  <div class="contact-grid">
-
-    <div class="contact-card">
-      <h2>✉️ Nous écrire</h2>
-      <p>Pour toute question, signalement d'erreur dans les données ou demande d'information sur nos analyses.</p>
-      <a href="mailto:contact@entreprendrepourapprendre.org" class="btn">
-        Envoyer un email
-      </a>
-      <div class="info-block">
-        <strong>Email :</strong> contact@entreprendrepourapprendre.org<br>
-        <strong>Délai de réponse :</strong> 48h ouvrées
-      </div>
-    </div>
-
-    <div class="contact-card">
-      <h2>🤝 Partenariat & affiliation</h2>
-      <p>Vous êtes une société de gestion ou une plateforme d'investissement et souhaitez être référencé ou corriger vos données ?</p>
-      <a href="mailto:contact@entreprendrepourapprendre.org?subject=Partenariat" class="btn btn-outline">
-        Demande de partenariat
-      </a>
-      <div class="info-block">
-        <strong>Note :</strong> Nos analyses restent indépendantes. Les partenariats n'influencent pas nos notations.
-      </div>
-    </div>
-
+  <div class="contact-block">
+    <h2>📧 Par email</h2>
+    <p>Pour toute demande générale, partenariat ou signalement d'erreur :</p>
+    <p><a href="mailto:contact@entreprendrepourapprendre.org">contact@entreprendrepourapprendre.org</a></p>
   </div>
 
-  <div class="disclaimer">
-    ⚠️ <strong>Rappel :</strong> Entreprendre Pour Apprendre est un site d'information et de comparaison. Nous ne fournissons pas de conseil en investissement personnalisé. Pour toute décision d'investissement en SCPI, consultez un conseiller en gestion de patrimoine (CGP) agréé AMF.
+  <div class="contact-block">
+    <h2>⏱️ Délai de réponse</h2>
+    <p>Nous répondons généralement sous 24 à 48h ouvrées.</p>
+  </div>
+
+  <div class="contact-block">
+    <h2>🔗 Liens utiles</h2>
+    <p><a href="/mentions-legales">Mentions légales</a></p>
+    <p><a href="/politique-confidentialite">Politique de confidentialité</a></p>
   </div>
 </main>
 
@@ -148,5 +141,14 @@ h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,48px);font-weig
     </div>
   </div>
 </footer>
+<script>
+function toggleMenu(){
+  document.getElementById('nav-mobile').classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  var m=document.getElementById('nav-mobile'),b=document.getElementById('burger');
+  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');}
+});
+</script>
 </body>
 </html>
