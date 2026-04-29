@@ -2,7 +2,11 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+{% if site.favicon_file is defined and site.favicon_file %}
+<link rel="icon" href="{{ site.favicon_file }}">
+{% else %}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{% endif %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Page introuvable | {{ site.name }}</title>
 <meta name="robots" content="noindex">
@@ -29,7 +33,7 @@ p{font-size:17px;color:#718096;margin-bottom:32px;max-width:480px;margin-left:au
   <div>
     <div class="code">404</div>
     <h1>Page introuvable</h1>
-    <p>La page que vous recherchez n'existe pas ou a été déplacée. Revenez à l'accueil pour trouver votre comparatif SCPI.</p>
+    <p>La page que vous recherchez n'existe pas ou a été déplacée. Revenez à l'accueil pour trouver votre comparatif.</p>
     <a href="/" class="btn">← Retour à l'accueil</a>
     <div class="links">
       {% if page_types is defined and 'classement' in page_types %}
