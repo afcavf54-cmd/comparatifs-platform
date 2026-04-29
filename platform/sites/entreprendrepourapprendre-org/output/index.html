@@ -38,8 +38,8 @@
   --ink:#0F172A;
   --ink2:#6B6560;
   --ink3:#A09890;
-  --accent:#2563EB;
-  --accent2:#F59E0B;
+  --accent:#0000a0;
+  --accent2:#ff80c0;
   --border:#E2DDD6;
   --r:12px;
   --r2:20px;
@@ -180,7 +180,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
   <!-- Stats bar -->
   <div class="stats-bar" style="margin-top:48px;border-radius:var(--r2)">
     <div class="stat-item">
-      <div class="stat-value" id="stat-logiciels">15+</div>
+      <div class="stat-value" id="stat-logiciels">25+</div>
       <div class="stat-label">Logiciels analysés</div>
     </div>
     <div class="stat-item">
@@ -219,6 +219,16 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
             <div class="cat-card-icon">💻</div>
             <div>
               <div class="cat-card-name">Logiciel de paie</div>
+              <div class="cat-card-count">10 logiciels</div>
+            </div>
+          </div>
+          <span class="cat-card-arrow">→</span>
+        </a>
+        <a href="/meilleur-logiciel-de-systeme-d-information-rh-(sirh)" class="cat-card">
+          <div class="cat-card-left">
+            <div class="cat-card-icon">💻</div>
+            <div>
+              <div class="cat-card-name">Logiciel de système d'information rh (sirh)</div>
               <div class="cat-card-count">10 logiciels</div>
             </div>
           </div>
@@ -265,6 +275,16 @@ const ALL_CATEGORIES = [
   { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
   { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
   { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
+  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
+  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
+  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
+  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
+  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
+  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
+  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
+  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
+  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
 ].filter((v,i,a) => a.findIndex(t=>t.label===v.label)===i);
 
 const searchInput = document.getElementById('search-input');
