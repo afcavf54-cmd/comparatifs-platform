@@ -8,15 +8,11 @@
 .footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
 .footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
 .footer-col a:hover{color:#fff}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
 .footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
-.footer-bottom-right{display:flex;gap:20px}
-.footer-bottom-right a{font-size:12px;color:rgba(255,255,255,.3);transition:.15s}
-.footer-bottom-right a:hover{color:rgba(255,255,255,.7)}
 @media(max-width:768px){
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
   .footer-brand{grid-column:1/-1}
-  .footer-bottom{flex-direction:column;align-items:flex-start}
 }
 </style>
 
@@ -30,21 +26,12 @@
         {% else %}
         <div class="footer-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></div>
         {% endif %}
-        {% if page_types is defined and 'classement' in page_types %}
-        <p>{{ site.tagline | default(site.name) }}</p>
-        {% else %}
-        <p>Comparatifs SCPI indépendants. {{ total_pairs | default(45) }} analyses détaillées pour choisir la meilleure SCPI selon votre profil.</p>
-        {% endif %}
+        <p>{{ site.tagline | default('') }}</p>
       </div>
 
       <div class="footer-col">
         <h4>Navigation</h4>
-        {% if page_types is defined and 'classement' in page_types %}
         <a href="/nos-comparateurs">Nos comparateurs</a>
-        {% else %}
-        <a href="/comparatifs-scpi">Comparatifs SCPI</a>
-        <a href="/avis-scpi">Avis SCPI</a>
-        {% endif %}
         <a href="/plan-du-site">Plan du site</a>
         <a href="/mentions-legales">Mentions légales</a>
         <a href="/politique-confidentialite">Confidentialité</a>
@@ -59,7 +46,7 @@
 
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © {{ site.year }} {{ site.domain | replace('https://www.', '') | replace('https://', '') }} — Données actualisées le {{ build_date | fr_date }}.
+        © {{ site.year }} {{ site.domain | replace('https://www.', '') | replace('https://', '') }} — Données actualisées le {{ build_date | fr_date }}
       </div>
     </div>
   </div>
