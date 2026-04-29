@@ -632,12 +632,22 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             print(f"  ✓ _redirects ({www_preference})")
         copy_shared_assets(output_dir, site_dir)
 
-        # ── Copie logos PNG du site ──────────────────────────────────────
+        # ── Copie logos depuis public/ ───────────────────────────────────
+        public_dir = site_dir / "public"
+        if public_dir.exists():
+            for pub_file in public_dir.iterdir():
+                if pub_file.is_file():
+                    shutil.copy2(pub_file, output_dir / pub_file.name)
+                    if pub_file.stem == "logo":
+                        site["logo_img"] = f"/{pub_file.name}"
+                    elif pub_file.stem == "favicon":
+                        site["favicon_file"] = f"/{pub_file.name}"
+            logos = [f for f in public_dir.iterdir() if f.stem == "logo"]
+            if logos:
+                print(f"  ✓ {len(logos)} logos copiés")
+        # Copie logos PNG legacy depuis racine site_dir
         for logo in site_dir.glob("*.png"):
             shutil.copy2(logo, output_dir / logo.name)
-        logos = list(site_dir.glob("*.png"))
-        if logos:
-            print(f"  ✓ {len(logos)} logos copiés")
 
         # ── Copie images partagées du schema (classement) ─────────────────
         if is_classement_template:
@@ -664,6 +674,8 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     _shutil.copy2(favicon_src, output_dir / f"favicon.{ext}")
                     print(f"  ✓ favicon.{ext} copié")
                     favicon_copied = True
+                    if "favicon_file" not in site:
+                        site["favicon_file"] = f"/favicon.{ext}"
                     break
             if favicon_copied:
                 break
