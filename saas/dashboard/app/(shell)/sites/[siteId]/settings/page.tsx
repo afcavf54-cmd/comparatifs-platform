@@ -293,6 +293,79 @@ export default function SettingsPage() {
       </div>
 
       {/* Danger zone */}
+            {/* ── BOX AUTEUR ── */}
+      <div style={{background:'#0D1117',border:'1px solid #1E2D3D',borderRadius:12,padding:24,marginBottom:24}}>
+        <h3 style={{color:'#fff',fontSize:16,fontWeight:600,marginBottom:20}}>✍️ Box auteur</h3>
+
+        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:16,marginBottom:16}}>
+          <div>
+            <label style={{fontSize:12,color:'#8B9CB0',display:'block',marginBottom:6}}>NOM DE L'AUTEUR</label>
+            <input value={authorName} onChange={e => setAuthorName(e.target.value)} placeholder="Ex: Marie Dupont"
+              style={{width:'100%',padding:'10px 12px',borderRadius:8,background:'#0A0E1A',border:'1px solid #1E2D3D',color:'#fff',fontSize:13,outline:'none',boxSizing:'border-box' as const}} />
+          </div>
+          <div>
+            <label style={{fontSize:12,color:'#8B9CB0',display:'block',marginBottom:6}}>TITRE / POSTE</label>
+            <input value={authorJob} onChange={e => setAuthorJob(e.target.value)} placeholder="Ex: Expert logiciels SaaS"
+              style={{width:'100%',padding:'10px 12px',borderRadius:8,background:'#0A0E1A',border:'1px solid #1E2D3D',color:'#fff',fontSize:13,outline:'none',boxSizing:'border-box' as const}} />
+          </div>
+        </div>
+
+        <div style={{marginBottom:16}}>
+          <label style={{fontSize:12,color:'#8B9CB0',display:'block',marginBottom:6}}>BIOGRAPHIE</label>
+          <textarea value={authorBio} onChange={e => setAuthorBio(e.target.value)} rows={3}
+            placeholder="Courte biographie de l'auteur (2-3 phrases)..."
+            style={{width:'100%',padding:'10px 12px',borderRadius:8,background:'#0A0E1A',border:'1px solid #1E2D3D',color:'#fff',fontSize:13,outline:'none',resize:'vertical' as const,fontFamily:'inherit',boxSizing:'border-box' as const}} />
+        </div>
+
+        <div style={{marginBottom:16}}>
+          <label style={{fontSize:12,color:'#8B9CB0',display:'block',marginBottom:6}}>PHOTO DE L'AUTEUR</label>
+          <div style={{display:'flex',alignItems:'center',gap:16}}>
+            <div style={{width:64,height:64,borderRadius:'50%',overflow:'hidden',background:'#1E2D3D',display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}}>
+              {authorPhotoPreview ? <img src={authorPhotoPreview} alt="Auteur" style={{width:'100%',height:'100%',objectFit:'cover'}} /> : <span style={{fontSize:24}}>✍️</span>}
+            </div>
+            <label style={{padding:'9px 16px',borderRadius:8,background:'#1E2D3D',color:'#F6AD55',cursor:'pointer',fontSize:13,fontWeight:600}}>
+              📁 Choisir une photo
+              <input type="file" accept="image/*" style={{display:'none'}} onChange={async e => {
+                const file = e.target.files?.[0]; if (!file) return
+                const fd = new FormData(); fd.append('file', file); fd.append('siteId', siteId as string); fd.append('type', 'author_photo')
+                const r = await fetch(`/api/sites/${siteId}/favicon`, {method:'POST',body:fd})
+                const d = await r.json()
+                if (d.path) setAuthorPhotoPreview(d.path)
+              }} />
+            </label>
+          </div>
+        </div>
+
+        <div style={{marginBottom:16}}>
+          <label style={{fontSize:12,color:'#8B9CB0',display:'block',marginBottom:8}}>RÉSEAUX SOCIAUX</label>
+          {authorSocials.map((s, i) => (
+            <div key={i} style={{display:'flex',gap:8,marginBottom:8}}>
+              <input value={s.label} onChange={e => { const n=[...authorSocials]; n[i]={...n[i],label:e.target.value}; setAuthorSocials(n) }}
+                placeholder="Label (ex: LinkedIn)"
+                style={{width:140,padding:'8px 10px',borderRadius:6,background:'#0A0E1A',border:'1px solid #1E2D3D',color:'#fff',fontSize:12,outline:'none'}} />
+              <input value={s.url} onChange={e => { const n=[...authorSocials]; n[i]={...n[i],url:e.target.value}; setAuthorSocials(n) }}
+                placeholder="https://linkedin.com/in/..."
+                style={{flex:1,padding:'8px 10px',borderRadius:6,background:'#0A0E1A',border:'1px solid #1E2D3D',color:'#fff',fontSize:12,outline:'none'}} />
+              <button onClick={() => setAuthorSocials(authorSocials.filter((_,j)=>j!==i))}
+                style={{padding:'8px 12px',borderRadius:6,border:'none',background:'#1E2D3D',color:'#FC8181',cursor:'pointer',fontSize:14}}>×</button>
+            </div>
+          ))}
+          <button onClick={() => setAuthorSocials([...authorSocials,{label:'',url:''}])}
+            style={{padding:'8px 14px',borderRadius:6,border:'1px dashed #1E2D3D',background:'transparent',color:'#00D4AA',cursor:'pointer',fontSize:12,fontWeight:600}}>+ Ajouter un réseau</button>
+        </div>
+
+        <button onClick={async () => {
+          const r = await fetch(`/api/sites/${siteId}/config`, {
+            method:'PATCH', headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({ author: { name: authorName, bio: authorBio, job_title: authorJob, photo: authorPhotoPreview || '', socials: authorSocials } })
+          })
+          const d = await r.json()
+          if (d.ok) alert('✓ Auteur sauvegardé')
+        }} style={{padding:'10px 20px',borderRadius:8,border:'none',background:'linear-gradient(135deg,#00D4AA,#0090FF)',color:'#fff',cursor:'pointer',fontWeight:600,fontSize:13}}>
+          💾 Sauvegarder l'auteur
+        </button>
+      </div>
+
       <div style={{ background: '#0D1117', border: '1px solid rgba(252,129,129,0.3)', borderRadius: 16, padding: 24 }}>
         <h3 style={{ color: '#FC8181', margin: '0 0 12px', fontSize: 15, fontWeight: 600 }}>⚠️ Zone dangereuse</h3>
         <p style={{ color: '#8B9CB0', fontSize: 13, marginBottom: 16 }}>Supprimer ce site le retire du HUB. Les fichiers GitHub et le site Cloudflare ne sont pas supprimés automatiquement.</p>
