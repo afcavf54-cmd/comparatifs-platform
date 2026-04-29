@@ -328,7 +328,7 @@ export default function TemplateDetailPage() {
                 <div style={{ display: 'flex', gap: 6 }}>
                   <button onClick={async () => {
                     if (!newGroupName.trim()) return
-                    const newSchema = { ...schema, keywords: { ...(schema.keywords || {}), [newGroupName.trim()]: { __sheet_url: '', __products: [], prompt_intro: '', prompt_classement: '', prompt_contenu: '', prompt_faq: '' } } }
+                    const newSchema = { ...schema, keywords: { ...(schema.keywords || {}), [newGroupName.trim()]: { __sheet_url: '', __products: [], prompt_intro: '', prompt_en_bref: '', prompt_classement: '', prompt_contenu: '', prompt_faq: '' } } }
                     setSchema(newSchema); setSelectedGroup(newGroupName.trim()); setNewGroupName(''); setShowAddGroup(false)
                     setSaving(true)
                     const r = await fetch('/api/github', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ path: schemaPath, content: JSON.stringify(newSchema, null, 2), message: `HUB: Add keyword type ${newGroupName.trim()}` }) })
@@ -468,6 +468,7 @@ export default function TemplateDetailPage() {
               {/* Prompts */}
               {[
                 { key: 'prompt_intro', label: 'Prompt — Introduction', placeholder: 'Rédige une introduction...' },
+                { key: 'prompt_en_bref', label: 'Prompt — En bref ⚡', placeholder: 'Génère un <ul> avec 5 items : logiciel + profil cible idéal...' },
                 { key: 'prompt_classement', label: 'Prompt — Classement détaillé', placeholder: 'Pour chaque logiciel...' },
                 { key: 'prompt_contenu', label: 'Prompt — Contenu expert', placeholder: 'Contexte : Tu es un expert...' },
                 { key: 'prompt_faq', label: 'Prompt — FAQ', placeholder: 'Génère 5 questions/réponses...' },
