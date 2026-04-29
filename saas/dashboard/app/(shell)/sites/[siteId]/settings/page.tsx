@@ -37,26 +37,30 @@ export default function SettingsPage() {
       setSite(d)
       setForm({ name: d.name, domain: d.domain, cloudflare_project: d.cloudflare_project, description: d.description || '', status: d.status, sheet_csv_url: d.sheet_csv_url || '' })
     })
-    // Charger logo et favicon via URL raw GitHub
-    const owner = process.env.NEXT_PUBLIC_GITHUB_OWNER || 'afcavf54-cmd'
-    const repo = process.env.NEXT_PUBLIC_GITHUB_REPO || 'comparatifs-platform'
-    const branch = 'main'
-    const rawBase = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}`
-    
+    // Charger logo et favicon via URL raw GitHub (GET avec Image)
+    const rawBase = `https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main`
+    const ts = Date.now()
+
+    // Essayer chaque extension pour le logo
     const logoExts = ['png', 'svg', 'jpg', 'webp']
+    let logoFound = false
     logoExts.forEach(ext => {
-      const url = `${rawBase}/platform/sites/${siteId}/public/logo.${ext}`
-      fetch(url, { method: 'HEAD' }).then(r => {
-        if (r.ok) setLogoPreview(url + '?t=' + Date.now())
-      }).catch(() => {})
+      if (logoFound) return
+      const url = `${rawBase}/platform/sites/${siteId}/public/logo.${ext}?t=${ts}`
+      const img = new Image()
+      img.onload = () => { if (!logoFound) { logoFound = true; setLogoPreview(url) } }
+      img.src = url
     })
 
-    const favExts = ['svg', 'png', 'ico']
+    // Essayer chaque extension pour le favicon
+    const favExts = ['png', 'svg', 'ico']
+    let favFound = false
     favExts.forEach(ext => {
-      const url = `${rawBase}/platform/sites/${siteId}/public/favicon.${ext}`
-      fetch(url, { method: 'HEAD' }).then(r => {
-        if (r.ok) setFaviconPreview(url + '?t=' + Date.now())
-      }).catch(() => {})
+      if (favFound) return
+      const url = `${rawBase}/platform/sites/${siteId}/public/favicon.${ext}?t=${ts}`
+      const img = new Image()
+      img.onload = () => { if (!favFound) { favFound = true; setFaviconPreview(url) } }
+      img.src = url
     })
 
     fetch(`/api/sites/${siteId}/config`).then(r => r.json()).then(d => {
