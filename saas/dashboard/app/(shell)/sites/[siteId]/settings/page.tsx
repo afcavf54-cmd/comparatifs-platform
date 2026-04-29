@@ -37,20 +37,25 @@ export default function SettingsPage() {
       setSite(d)
       setForm({ name: d.name, domain: d.domain, cloudflare_project: d.cloudflare_project, description: d.description || '', status: d.status, sheet_csv_url: d.sheet_csv_url || '' })
     })
-    // Charger logo et favicon existants
-    const logoPath = `platform/sites/${siteId}/public/logo.png`
-    const svgPath = `platform/sites/${siteId}/public/logo.svg`
-    fetch(`/api/github?path=${encodeURIComponent(logoPath)}`).then(r => r.json()).then(d => {
-      if (d.download_url) setLogoPreview(d.download_url)
-      else fetch(`/api/github?path=${encodeURIComponent(svgPath)}`).then(r => r.json()).then(d2 => {
-        if (d2.download_url) setLogoPreview(d2.download_url)
-      })
-    }).catch(() => {})
+    // Charger logo et favicon via URL raw GitHub
+    const owner = process.env.NEXT_PUBLIC_GITHUB_OWNER || 'afcavf54-cmd'
+    const repo = process.env.NEXT_PUBLIC_GITHUB_REPO || 'comparatifs-platform'
+    const branch = 'main'
+    const rawBase = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}`
+    
+    const logoExts = ['png', 'svg', 'jpg', 'webp']
+    logoExts.forEach(ext => {
+      const url = `${rawBase}/platform/sites/${siteId}/public/logo.${ext}`
+      fetch(url, { method: 'HEAD' }).then(r => {
+        if (r.ok) setLogoPreview(url + '?t=' + Date.now())
+      }).catch(() => {})
+    })
 
-    const faviconPaths = [`platform/sites/${siteId}/public/favicon.svg`, `platform/sites/${siteId}/public/favicon.png`]
-    faviconPaths.forEach(fp => {
-      fetch(`/api/github?path=${encodeURIComponent(fp)}`).then(r => r.json()).then(d => {
-        if (d.download_url) setFaviconPreview(d.download_url)
+    const favExts = ['svg', 'png', 'ico']
+    favExts.forEach(ext => {
+      const url = `${rawBase}/platform/sites/${siteId}/public/favicon.${ext}`
+      fetch(url, { method: 'HEAD' }).then(r => {
+        if (r.ok) setFaviconPreview(url + '?t=' + Date.now())
       }).catch(() => {})
     })
 
