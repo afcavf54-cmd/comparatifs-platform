@@ -214,36 +214,55 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
     <h2>Nos comparateurs</h2>
     <p class="comparateurs-subtitle">Trouvez le meilleur logiciel selon votre métier et vos besoins</p>
 
-    {# Grouper produits par categorie #}
-    {% set categories = [] %}
-    {% for prod in products %}
-      {% if prod.categorie is defined and prod.categorie %}
-        {% if prod.categorie not in categories %}
-          {% set _ = categories.append(prod.categorie) %}
-        {% endif %}
-      {% endif %}
-    {% endfor %}
-
-    {% if categories | length > 0 %}
-    <div class="cat-cards">
-      {% for cat in categories %}
-        {% set cat_slug = cat | lower | replace('’', '-') | replace('‘', '-') | replace("'", '-') | replace(' ', '-') | replace('é', 'e') | replace('è', 'e') | replace('ê', 'e') | replace('à', 'a') | replace('â', 'a') | replace('ù', 'u') | replace('û', 'u') | replace('î', 'i') | replace('ï', 'i') | replace('ô', 'o') | replace('ç', 'c') %}
-        {% set count = products | selectattr('categorie', 'equalto', cat) | list | length %}
-        <a href="/meilleur-{{ cat_slug }}" class="cat-card">
-          <div class="cat-card-left">
-            <div class="cat-card-icon">💻</div>
-            <div>
-              <div class="cat-card-name">{{ cat | capitalize }}</div>
-              <div class="cat-card-count">{{ count }} logiciel{{ 's' if count > 1 else '' }}</div>
+    {% if classements_by_category and classements_by_category | length > 0 %}
+      {# Affichage groupé par catégorie parente #}
+      {% for category, classements in classements_by_category.items() %}
+      <div class="cat-group">
+        <div class="cat-group-title">{{ category }}</div>
+        <div class="cat-cards">
+          {% for cls in classements %}
+          <a href="/meilleur-{{ cls.slug }}" class="cat-card">
+            <div class="cat-card-left">
+              <div class="cat-card-icon">💻</div>
+              <div>
+                <div class="cat-card-name">{{ cls.label }}</div>
+                <div class="cat-card-count">{{ cls.count }} logiciel{{ 's' if cls.count > 1 else '' }}</div>
+              </div>
             </div>
-          </div>
-          <span class="cat-card-arrow">→</span>
-        </a>
+            <span class="cat-card-arrow">→</span>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
       {% endfor %}
-    </div>
     {% else %}
-    <div style="color:var(--ink3);font-size:14px;padding:20px 0">Ajoutez une colonne <code>categorie</code> dans votre Google Sheet pour afficher les comparateurs.</div>
+      {# Fallback : liste plate des catégories #}
+      {% set categories = [] %}
+      {% for prod in products %}
+        {% if prod.categorie is defined and prod.categorie %}
+          {% if prod.categorie not in categories %}{% set _ = categories.append(prod.categorie) %}{% endif %}
+        {% endif %}
+      {% endfor %}
+      {% if categories | length > 0 %}
+      <div class="cat-cards">
+        {% for cat in categories %}
+          {% set cat_slug = cat | lower | replace(' ', '-') %}
+          {% set count = products | selectattr('categorie', 'equalto', cat) | list | length %}
+          <a href="/meilleur-{{ cat_slug }}" class="cat-card">
+            <div class="cat-card-left">
+              <div class="cat-card-icon">💻</div>
+              <div>
+                <div class="cat-card-name">{{ cat }}</div>
+                <div class="cat-card-count">{{ count }} logiciel{{ 's' if count > 1 else '' }}</div>
+              </div>
+            </div>
+            <span class="cat-card-arrow">→</span>
+          </a>
+        {% endfor %}
+      </div>
+      {% endif %}
     {% endif %}
+
   </section>
 
 
