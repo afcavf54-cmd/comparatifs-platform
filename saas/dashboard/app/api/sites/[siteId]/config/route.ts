@@ -93,6 +93,18 @@ export async function PATCH(req: NextRequest, { params }: Params) {
       yaml = yaml.replace(/^theme:/m, pageTypesBlock + '\ntheme:')
     }
   }
+  // Champ author (objet YAML)
+  if (body.author !== undefined) {
+    const author = body.author as { name?: string, bio?: string, job_title?: string, photo?: string, socials?: {label: string, url: string}[] }
+    const socialsYaml = (author.socials || []).map(s => `\n  - label: "${s.label}"\n    url: "${s.url}"`).join('')
+    const authorBlock = `author:\n  name: "${author.name || ''}"\n  bio: "${(author.bio || '').replace(/"/g, "'")}"\n  job_title: "${author.job_title || ''}"\n  photo: "${author.photo || ''}"\n  socials:${socialsYaml || ' []'}`
+    if (/^author:/m.test(yaml)) {
+      yaml = yaml.replace(/^author:\s*\n((?:[ ]+.+\n?)*)/m, authorBlock + '\n')
+    } else {
+      yaml = yaml.trimEnd() + '\n' + authorBlock + '\n'
+    }
+  }
+
   const saved = await putFile(`platform/sites/${siteId}/config.yaml`, yaml, `HUB: Update config ${siteId}`)
   if (!saved) return NextResponse.json({ error: 'Erreur GitHub' }, { status: 500 })
   return NextResponse.json({ ok: true })
