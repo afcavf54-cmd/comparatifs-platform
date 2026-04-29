@@ -126,6 +126,7 @@ export default function TemplateDetailPage() {
   const [newGroupName, setNewGroupName] = useState('')
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null)
   const [uploadingImg, setUploadingImg] = useState<Record<string, boolean>>({})
+  const [loadedImages, setLoadedImages] = useState<Record<string, string>>({})
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const schemaPath = `platform/schemas/${templateId}.json`
@@ -145,6 +146,29 @@ export default function TemplateDetailPage() {
       setLoading(false)
     }).catch(() => setLoading(false))
   }, [templateId])
+
+  // Charger les aperçus via new Image() (même logique que logos/favicons)
+  useEffect(() => {
+    if (!selectedGroup || !schema?.keywords?.[selectedGroup]?.__products) return
+    const rawBase = `https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/${imagesBasePath}`
+    const ts = Date.now()
+    schema.keywords[selectedGroup].__products.forEach((p: any) => {
+      // Logo
+      if (p.logo_path) {
+        const url = `${rawBase}/${p.logo_path.replace(/^\//, '')}?t=${ts}`
+        const img = new Image()
+        img.onload = () => setLoadedImages(prev => ({ ...prev, [`${p.slug}-logo`]: url }))
+        img.src = url
+      }
+      // Screenshot
+      if (p.screenshot_path) {
+        const url = `${rawBase}/${p.screenshot_path.replace(/^\//, '')}?t=${ts}`
+        const img = new Image()
+        img.onload = () => setLoadedImages(prev => ({ ...prev, [`${p.slug}-screenshot`]: url }))
+        img.src = url
+      }
+    })
+  }, [selectedGroup, schema])
 
   async function save() {
     setSaving(true); setMsg('')
@@ -182,6 +206,14 @@ export default function TemplateDetailPage() {
         const d = await r.json()
         if (d.ok) {
           setMsg(`✓ ${imgType} uploadé pour ${slug}`)
+              // Recharger l'aperçu via new Image()
+              setTimeout(() => {
+                const rawBase = `https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/${imagesBasePath}`
+                const url = `${rawBase}/${filename}?t=${Date.now()}`
+                const img = new Image()
+                img.onload = () => setLoadedImages(prev => ({ ...prev, [`${slug}-${imgType}`]: url }))
+                img.src = url
+              }, 2000)
           // Mettre à jour l'URL dans __products
           if (selectedGroup) {
             setSchema((prev: any) => {
@@ -407,9 +439,8 @@ export default function TemplateDetailPage() {
                       {schema.keywords[selectedGroup].__products.map((p: any) => {
                         const logoKey = `${p.slug}-logo`
                         const screenshotKey = `${p.slug}-screenshot`
-                        const rawBase = `https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/${imagesBasePath}`
-                        const logoPath = p.logo_path ? `${rawBase}/${p.logo_path.replace(/^\//, '')}?t=${Date.now()}` : null
-                        const screenshotPath = p.screenshot_path ? `${rawBase}/${p.screenshot_path.replace(/^\//, '')}?t=${Date.now()}` : null
+                        const logoPath = loadedImages[`${p.slug}-logo`] || null
+                        const screenshotPath = loadedImages[`${p.slug}-screenshot`] || null
                         return (
                           <div key={p.slug} style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 10, padding: 14, display: 'flex', alignItems: 'center', gap: 14 }}>
                             {/* Nom */}
