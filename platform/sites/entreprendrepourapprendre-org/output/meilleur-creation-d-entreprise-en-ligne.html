@@ -44,20 +44,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
-a{color:inherit;text-decoration:none}
-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
-.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
-.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
-.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
-.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
-.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
-.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
-.nav-cta:hover{opacity:.88}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
-.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
-.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
-.nav-mobile.open{display:flex}
-.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+a{color:inherit;text-decoration:none}}',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
 .hero{background:var(--ink);padding:48px 5vw 40px;text-align:center}
 .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(28px,4vw,48px);font-weight:400;color:#fff;line-height:1.15;letter-spacing:-.02em;max-width:800px;margin:0 auto 16px}
 .hero h1 em{font-style:italic;color:var(--accent2)}
@@ -103,13 +90,7 @@ main{max-width:1200px;margin:0 auto;padding:48px 5vw 80px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
-footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-size:13px}
-.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.footer-logo{font-family:'DM Serif Display',serif;font-size:16px;color:#fff}.footer-logo span{color:var(--accent2)}
-.footer-links{display:flex;gap:20px;flex-wrap:wrap}
-.footer-links a{color:rgba(255,255,255,.4);transition:.15s}.footer-links a:hover{color:#fff}
-.footer-copy{color:rgba(255,255,255,.25);font-size:12px;width:100%;text-align:center;margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.06)}
+.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}}',serif;font-size:16px;color:#fff}.footer-logo span{color:var(--accent2)}.footer-links a:hover{color:#fff}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
@@ -120,282 +101,335 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 <meta name="google-site-verification" content="8qExRLvDtjV8AY9eKfy1-yNAgx7JTZAPDM-Cs4CE4WU">
 <script async data-id="101505107" src="//static.getclicky.com/js"></script>
 </head>
+
 <body>
+
+<style>
+nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;position:relative}
+.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.1)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
+.nav-cta:hover{opacity:.88}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;font-weight:500;padding:12px 16px;border-radius:10px;transition:.15s}
+.nav-mobile a:hover,.nav-mobile a.active{color:#fff;background:rgba(255,255,255,.08)}
+.nav-mobile .nav-cta{margin-top:8px;justify-content:center;border-radius:12px}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+</style>
 
 <nav>
   <div class="nav-inner">
-    <a href="/" class="nav-logo"><img src="/logo.png" alt="Entreprendre Pour Apprendre" style="height:36px;width:auto;object-fit:contain;vertical-align:middle"></a>
+    <a href="/" class="nav-logo"><img src="/logo.png" alt="Entreprendre Pour Apprendre" style="height:34px;width:auto;object-fit:contain;vertical-align:middle"></a>
     <div class="nav-links">
-      <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/comparatifs-scpi">Comparatifs</a>
+        <a href="/avis-scpi">Avis</a>
     </div>
     <a href="/contact" class="nav-cta">Contact</a>
-    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+    <button class="nav-burger" id="burger" aria-label="Menu" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-mobile" id="nav-mobile">
-    <a href="/nos-comparateurs">Nos comparateurs</a>
+      <a href="/comparatifs-scpi">Comparatifs</a>
+      <a href="/avis-scpi">Avis</a>
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
 </nav>
 
-<div class="hero">
-  <h1>Classement des meilleurs sites de création d'entreprise en ligne en 2026</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-04-29 - 5 logiciels analysés</div>
-</div>
-
+<script>
+function toggleMenu(){
+  var m=document.getElementById('nav-mobile');
+  var b=document.getElementById('burger');
+  m.classList.toggle('open');b.classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  var m=document.getElementById('nav-mobile');var b=document.getElementById('burger');
+  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');b.classList.remove('open');}
+});
+</script>
 <main>
+  <!-- EN-BREF -->
+  <div class="en-bref">
+    <div class="en-bref-title">Classement des meilleurs sites de création d'entreprise en ligne en 2026</div>
+    <div class="en-bref-sub">Mis à jour le 29 avril 2026 · 5 logiciels analysés</div>
+    <ul>
+      <li>Legal Start — LegalStart s'impose comme une référence incontournable dans le domaine de la...</li>
+      <li>Dougs — Dougs est une plateforme digitale française qui révolutionne la création...</li>
+      <li>LegalPlace — LegalPlace s'impose comme une plateforme de référence pour la création...</li>
+    </ul>
+  </div>
 
+  <!-- INTRO -->
   <div class="intro"><p><p>Créer son entreprise n'a jamais été aussi accessible, mais paradoxalement, le choix de la plateforme idéale peut rapidement devenir un casse-tête. Avec plus de <b>995 000 entreprises créées en France en 2025</b>, les entrepreneurs recherchent avant tout une solution simple, fiable et économique pour concrétiser leur projet.</p></p>
 <p><p>Le choix du bon site de création d'entreprise est crucial : il détermine non seulement la rapidité de vos démarches, mais aussi leur coût et leur sécurité juridique. Une erreur dans le processus peut entraîner des délais supplémentaires, des frais cachés, voire des complications administratives qui retarderont le lancement de votre activité.</p></p>
 <p><p>Entre les plateformes gouvernementales gratuites, les services juridiques spécialisés et les solutions tout-en-un, comment s'y retrouver ? Sachant que 23% des créateurs d'entreprise sont des primo-entrepreneurs, il est essentiel de disposer d'un comparatif clair et objectif.</p></p>
 <p><p>Découvrez notre sélection des meilleures plateformes pour créer votre entreprise, analysées selon des critères précis : tarifs, délais, accompagnement et fiabilité.</p></p></div>
 
-
-  <h2 class="section-title">Mon comparatif complet des meilleurs site de création d'entreprise</h2>
-
+  <!-- CLASSEMENT DES LOGICIELS -->
   <div class="logiciel-card" id="legalstart">
     <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">Legal Start</h2>
+      <div class="logiciel-rank">#1</div>
+      <div class="logiciel-info">
+        <div>
+          <div class="logiciel-nom">Legal Start</div>
+        </div>
       </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">60€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+      <div class="logiciel-meta">
+        <div class="meta-item">
+          <span class="meta-label">Prix dès</span>
+          <span class="meta-val">
+60.0 €/mois          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Essai gratuit</span>
+          <span class="meta-val">
+✗          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Note</span>
+          <span class="meta-val">
+4.0 /5          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Catégorie</span>
+          <span class="meta-val">
+Création d’entreprise en ligne          </span>
+        </div>
       </div>
     </div>
-    <div class="logiciel-body">
-      <a href="https://www.legalstart.fr/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/legalstart-screenshot.png" alt="Aperçu Legal Start"
-          style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);border:1px solid var(--border)"
-          onerror="this.style.display='none'">
-      </a>
 
-      <div class="logiciel-desc">
-            <p><p><strong>LegalStart</strong> s'impose comme une référence incontournable dans le domaine de la création d'entreprise en ligne en France. Cette plateforme juridique digitale accompagne les entrepreneurs dans toutes les étapes de constitution de leur société, de la <strong>rédaction des statuts</strong> à l'immatriculation au registre du commerce. Avec plus de 100 000 entreprises créées depuis son lancement, LegalStart combine expertise juridique et technologie pour simplifier des démarches traditionnellement complexes.</p><p>La force de LegalStart réside dans son approche <strong>tout-en-un</strong> qui couvre l'ensemble des formes juridiques : SARL, SAS, SASU, EURL, micro-entreprise et associations. La plateforme propose un <strong>questionnaire intelligent</strong> qui guide l'utilisateur étape par étape, génère automatiquement les documents légaux personnalisés et s'occupe de toutes les formalités administratives. Les entrepreneurs bénéficient également d'un suivi en temps réel de l'avancement de leur dossier et d'un accès à une équipe de juristes qualifiés.</p><p>Ce qui distingue LegalStart de ses concurrents, c'est sa <strong>transparence tarifaire</strong> et son service client réactif. La plateforme offre une garantie satisfaction et propose des services complémentaires comme la domiciliation d'entreprise, l'ouverture de compte bancaire professionnel et la gestion comptable. Destinée aux créateurs d'entreprise de tous profils, LegalStart s'adresse particulièrement aux entrepreneurs qui recherchent <strong>sécurité juridique</strong> et gain de temps.</p></p>
+
+    <div class="logiciel-desc"><p><strong>LegalStart</strong> s'impose comme une référence incontournable dans le domaine de la création d'entreprise en ligne en France. Cette plateforme juridique digitale accompagne les entrepreneurs dans toutes les étapes de constitution de leur société, de la <strong>rédaction des statuts</strong> à l'immatriculation au registre du commerce. Avec plus de 100 000 entreprises créées depuis son lancement, LegalStart combine expertise juridique et technologie pour simplifier des démarches traditionnellement complexes.</p><p>La force de LegalStart réside dans son approche <strong>tout-en-un</strong> qui couvre l'ensemble des formes juridiques : SARL, SAS, SASU, EURL, micro-entreprise et associations. La plateforme propose un <strong>questionnaire intelligent</strong> qui guide l'utilisateur étape par étape, génère automatiquement les documents légaux personnalisés et s'occupe de toutes les formalités administratives. Les entrepreneurs bénéficient également d'un suivi en temps réel de l'avancement de leur dossier et d'un accès à une équipe de juristes qualifiés.</p><p>Ce qui distingue LegalStart de ses concurrents, c'est sa <strong>transparence tarifaire</strong> et son service client réactif. La plateforme offre une garantie satisfaction et propose des services complémentaires comme la domiciliation d'entreprise, l'ouverture de compte bancaire professionnel et la gestion comptable. Destinée aux créateurs d'entreprise de tous profils, LegalStart s'adresse particulièrement aux entrepreneurs qui recherchent <strong>sécurité juridique</strong> et gain de temps.</p></div>
+
+    <div class="logiciel-points">
+      <div class="points-forts">
+        <div class="points-title">✅ Avantages</div>
+        <ul><li>Interface intuitive avec questionnaire guidé pas à pas</li><li>Équipe de juristes experts disponible pour conseils personnalisés</li><li>Tarifs transparents et compétitifs avec garantie satisfaction</li><li>Services complémentaires intégrés (domiciliation, banque, comptabilité)</li></ul>
       </div>
-
-      <table class="avantages-table">
-        <thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive avec questionnaire guidé pas à pas</td>
-            <td>Délais de traitement parfois plus longs que la concurrence</td>
-          </tr>
-          <tr>
-            <td>Équipe de juristes experts disponible pour conseils personnalisés</td>
-            <td>Options de personnalisation limitées pour les statuts complexes</td>
-          </tr>
-          <tr>
-            <td>Tarifs transparents et compétitifs avec garantie satisfaction</td>
-            <td>Pas de création gratuite contrairement à certains concurrents</td>
-          </tr>
-          <tr>
-            <td>Services complémentaires intégrés (domiciliation, banque, comptabilité)</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <a href="https://www.legalstart.fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Legal Start
-      </a>
+      <div class="points-faibles">
+        <div class="points-title">❌ Inconvénients</div>
+        <ul><li>Délais de traitement parfois plus longs que la concurrence</li><li>Options de personnalisation limitées pour les statuts complexes</li><li>Pas de création gratuite contrairement à certains concurrents</li></ul>
+      </div>
     </div>
+
+    <a href="https://www.legalstart.fr/" class="logiciel-cta" rel="nofollow" target="_blank">
+      → Essayer Legal Start
+    </a>
   </div>
   <div class="logiciel-card" id="dougs">
     <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">Dougs</h2>
+      <div class="logiciel-rank">#2</div>
+      <div class="logiciel-info">
+        <div>
+          <div class="logiciel-nom">Dougs</div>
+        </div>
       </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">45€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+      <div class="logiciel-meta">
+        <div class="meta-item">
+          <span class="meta-label">Prix dès</span>
+          <span class="meta-val">
+45.0 €/mois          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Essai gratuit</span>
+          <span class="meta-val">
+✗          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Note</span>
+          <span class="meta-val">
+3.0 /5          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Catégorie</span>
+          <span class="meta-val">
+Création d’entreprise en ligne          </span>
+        </div>
       </div>
     </div>
-    <div class="logiciel-body">
-      <a href="https://www.dougs.fr/creation-entreprise/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/dougs-screenshot.png" alt="Aperçu Dougs"
-          style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);border:1px solid var(--border)"
-          onerror="this.style.display='none'">
-      </a>
 
-      <div class="logiciel-desc">
-            <p><p><strong>Dougs</strong> est une plateforme digitale française qui révolutionne la <strong>création d'entreprise en ligne</strong> en proposant un service complet d'accompagnement entrepreneurial. Cette solution s'adresse principalement aux <strong>entrepreneurs individuels</strong>, <strong>micro-entrepreneurs</strong> et <strong>dirigeants de TPE/PME</strong> qui souhaitent simplifier leurs démarches administratives et se concentrer sur leur cœur de métier. Dougs combine création d'entreprise, comptabilité et conseils juridiques dans une interface unique et intuitive.</p><p>La force de Dougs réside dans son approche <strong>tout-en-un</strong> qui accompagne les entrepreneurs de la création à la gestion quotidienne de leur entreprise. La plateforme propose des <strong>formalités de création simplifiées</strong>, un <strong>service comptable automatisé</strong>, une <strong>assistance juridique personnalisée</strong> et des outils de gestion financière avancés. Les utilisateurs bénéficient d'un tableau de bord centralisé permettant de suivre en temps réel leur situation comptable, leurs obligations fiscales et leurs indicateurs de performance.</p><p>Ce qui distingue Dougs de ses concurrents, c'est son <strong>approche humaine du digital</strong>. Chaque client est accompagné par un <strong>expert-comptable dédié</strong> accessible via chat, téléphone ou visioconférence. La plateforme intègre également des fonctionnalités d'<strong>intelligence artificielle</strong> pour automatiser la saisie comptable et anticiper les besoins des entreprises. Cette combinaison entre technologie et expertise humaine garantit un service personnalisé et des conseils stratégiques adaptés à chaque secteur d'activité.</p></p>
+
+    <div class="logiciel-desc"><p><strong>Dougs</strong> est une plateforme digitale française qui révolutionne la <strong>création d'entreprise en ligne</strong> en proposant un service complet d'accompagnement entrepreneurial. Cette solution s'adresse principalement aux <strong>entrepreneurs individuels</strong>, <strong>micro-entrepreneurs</strong> et <strong>dirigeants de TPE/PME</strong> qui souhaitent simplifier leurs démarches administratives et se concentrer sur leur cœur de métier. Dougs combine création d'entreprise, comptabilité et conseils juridiques dans une interface unique et intuitive.</p><p>La force de Dougs réside dans son approche <strong>tout-en-un</strong> qui accompagne les entrepreneurs de la création à la gestion quotidienne de leur entreprise. La plateforme propose des <strong>formalités de création simplifiées</strong>, un <strong>service comptable automatisé</strong>, une <strong>assistance juridique personnalisée</strong> et des outils de gestion financière avancés. Les utilisateurs bénéficient d'un tableau de bord centralisé permettant de suivre en temps réel leur situation comptable, leurs obligations fiscales et leurs indicateurs de performance.</p><p>Ce qui distingue Dougs de ses concurrents, c'est son <strong>approche humaine du digital</strong>. Chaque client est accompagné par un <strong>expert-comptable dédié</strong> accessible via chat, téléphone ou visioconférence. La plateforme intègre également des fonctionnalités d'<strong>intelligence artificielle</strong> pour automatiser la saisie comptable et anticiper les besoins des entreprises. Cette combinaison entre technologie et expertise humaine garantit un service personnalisé et des conseils stratégiques adaptés à chaque secteur d'activité.</p></div>
+
+    <div class="logiciel-points">
+      <div class="points-forts">
+        <div class="points-title">✅ Avantages</div>
+        <ul><li>Expert-comptable dédié et accessible pour chaque client</li><li>Interface intuitive avec automatisation IA de la comptabilité</li><li>Service tout-en-un : création, comptabilité, juridique et fiscal</li><li>Tarification transparente et competitive pour les TPE/PME</li></ul>
       </div>
-
-      <table class="avantages-table">
-        <thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Expert-comptable dédié et accessible pour chaque client</td>
-            <td>Fonctionnalités limitées pour les grandes entreprises complexes</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive avec automatisation IA de la comptabilité</td>
-            <td>Dépendance à la connectivité internet pour toutes les opérations</td>
-          </tr>
-          <tr>
-            <td>Service tout-en-un : création, comptabilité, juridique et fiscal</td>
-            <td>Options de personnalisation restreintes par rapport aux logiciels traditionnels</td>
-          </tr>
-          <tr>
-            <td>Tarification transparente et competitive pour les TPE/PME</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <a href="https://www.dougs.fr/creation-entreprise/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Dougs
-      </a>
+      <div class="points-faibles">
+        <div class="points-title">❌ Inconvénients</div>
+        <ul><li>Fonctionnalités limitées pour les grandes entreprises complexes</li><li>Dépendance à la connectivité internet pour toutes les opérations</li><li>Options de personnalisation restreintes par rapport aux logiciels traditionnels</li></ul>
+      </div>
     </div>
+
+    <a href="https://www.dougs.fr/creation-entreprise/" class="logiciel-cta" rel="nofollow" target="_blank">
+      → Essayer Dougs
+    </a>
   </div>
   <div class="logiciel-card" id="legalplace">
     <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">LegalPlace</h2>
+      <div class="logiciel-rank">#3</div>
+      <div class="logiciel-info">
+        <div>
+          <div class="logiciel-nom">LegalPlace</div>
+        </div>
       </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">50€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+      <div class="logiciel-meta">
+        <div class="meta-item">
+          <span class="meta-label">Prix dès</span>
+          <span class="meta-val">
+50.0 €/mois          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Essai gratuit</span>
+          <span class="meta-val">
+✗          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Note</span>
+          <span class="meta-val">
+5.0 /5          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Catégorie</span>
+          <span class="meta-val">
+Création d’entreprise en ligne          </span>
+        </div>
       </div>
     </div>
-    <div class="logiciel-body">
-      <a href="https://www.legalplace.fr/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/legalplace-screenshot.png" alt="Aperçu LegalPlace"
-          style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);border:1px solid var(--border)"
-          onerror="this.style.display='none'">
-      </a>
 
-      <div class="logiciel-desc">
-            <p><p><strong>LegalPlace</strong> s'impose comme une plateforme de référence pour la création d'entreprise en ligne, proposant une approche complète et digitalisée des démarches juridiques. Cette solution française permet aux entrepreneurs de créer leur société (SASU, SAS, SARL, EURL, auto-entrepreneur) entièrement en ligne, avec un accompagnement personnalisé par des <strong>juristes qualifiés</strong>. La plateforme se distingue par sa capacité à simplifier des procédures complexes tout en garantissant la conformité légale de chaque dossier.</p><p>Le service s'adresse principalement aux <strong>entrepreneurs individuels, startups et PME</strong> souhaitant optimiser leur temps et réduire les coûts liés à la création d'entreprise. LegalPlace propose un parcours utilisateur intuitif avec des formulaires guidés, une vérification automatique des informations et un suivi en temps réel des démarches. La plateforme inclut également des services complémentaires comme la <strong>rédaction de statuts personnalisés</strong>, l'obtention du Kbis, et l'accompagnement pour les formalités post-création.</p><p>Ce qui différencie LegalPlace de ses concurrents réside dans son <strong>approche hybride</strong> combinant automatisation intelligente et expertise humaine. Chaque dossier est vérifié par un juriste avant transmission aux greffes, garantissant un taux de réussite élevé. La transparence tarifaire, les délais respectés et le <strong>support client réactif</strong> constituent des atouts majeurs pour cette solution de création d'entreprise moderne.</p></p>
+
+    <div class="logiciel-desc"><p><strong>LegalPlace</strong> s'impose comme une plateforme de référence pour la création d'entreprise en ligne, proposant une approche complète et digitalisée des démarches juridiques. Cette solution française permet aux entrepreneurs de créer leur société (SASU, SAS, SARL, EURL, auto-entrepreneur) entièrement en ligne, avec un accompagnement personnalisé par des <strong>juristes qualifiés</strong>. La plateforme se distingue par sa capacité à simplifier des procédures complexes tout en garantissant la conformité légale de chaque dossier.</p><p>Le service s'adresse principalement aux <strong>entrepreneurs individuels, startups et PME</strong> souhaitant optimiser leur temps et réduire les coûts liés à la création d'entreprise. LegalPlace propose un parcours utilisateur intuitif avec des formulaires guidés, une vérification automatique des informations et un suivi en temps réel des démarches. La plateforme inclut également des services complémentaires comme la <strong>rédaction de statuts personnalisés</strong>, l'obtention du Kbis, et l'accompagnement pour les formalités post-création.</p><p>Ce qui différencie LegalPlace de ses concurrents réside dans son <strong>approche hybride</strong> combinant automatisation intelligente et expertise humaine. Chaque dossier est vérifié par un juriste avant transmission aux greffes, garantissant un taux de réussite élevé. La transparence tarifaire, les délais respectés et le <strong>support client réactif</strong> constituent des atouts majeurs pour cette solution de création d'entreprise moderne.</p></div>
+
+    <div class="logiciel-points">
+      <div class="points-forts">
+        <div class="points-title">✅ Avantages</div>
+        <ul><li>Interface intuitive avec parcours guidé étape par étape</li><li>Vérification juridique par des experts qualifiés</li><li>Tarification transparente sans frais cachés</li><li>Support client réactif et accompagnement personnalisé</li></ul>
       </div>
-
-      <table class="avantages-table">
-        <thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive avec parcours guidé étape par étape</td>
-            <td>Coûts plus élevés que certains concurrents directs</td>
-          </tr>
-          <tr>
-            <td>Vérification juridique par des experts qualifiés</td>
-            <td>Services premium parfois nécessaires pour certaines prestations</td>
-          </tr>
-          <tr>
-            <td>Tarification transparente sans frais cachés</td>
-            <td>Délais dépendants de la réactivité des greffes partenaires</td>
-          </tr>
-          <tr>
-            <td>Support client réactif et accompagnement personnalisé</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <a href="https://www.legalplace.fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer LegalPlace
-      </a>
+      <div class="points-faibles">
+        <div class="points-title">❌ Inconvénients</div>
+        <ul><li>Coûts plus élevés que certains concurrents directs</li><li>Services premium parfois nécessaires pour certaines prestations</li><li>Délais dépendants de la réactivité des greffes partenaires</li></ul>
+      </div>
     </div>
+
+    <a href="https://www.legalplace.fr/" class="logiciel-cta" rel="nofollow" target="_blank">
+      → Essayer LegalPlace
+    </a>
   </div>
   <div class="logiciel-card" id="qonto">
     <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">Qonto</h2>
+      <div class="logiciel-rank">#4</div>
+      <div class="logiciel-info">
+        <div>
+          <div class="logiciel-nom">Qonto</div>
+        </div>
       </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">59€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+      <div class="logiciel-meta">
+        <div class="meta-item">
+          <span class="meta-label">Prix dès</span>
+          <span class="meta-val">
+59.0 €/mois          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Essai gratuit</span>
+          <span class="meta-val">
+✗          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Note</span>
+          <span class="meta-val">
+4.4 /5          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Catégorie</span>
+          <span class="meta-val">
+Création d’entreprise en ligne          </span>
+        </div>
       </div>
     </div>
-    <div class="logiciel-body">
-      <a href="https://qonto.com/fr/start-a-business" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/qonto-screenshot.png" alt="Aperçu Qonto"
-          style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);border:1px solid var(--border)"
-          onerror="this.style.display='none'">
-      </a>
 
-      <div class="logiciel-desc">
-            <p><p><strong>Qonto</strong> se positionne comme la solution bancaire nouvelle génération spécialement conçue pour les <strong>entrepreneurs</strong> et les <strong>PME européennes</strong>. Cette néobanque française révolutionne la gestion financière des entreprises en proposant un compte professionnel 100% digital, accompagné d'outils de pilotage avancés. Qonto s'adresse particulièrement aux <strong>startups</strong>, <strong>freelances</strong>, <strong>TPE</strong> et <strong>PME</strong> qui recherchent une alternative moderne et efficace aux banques traditionnelles pour leurs besoins de création et gestion d'entreprise.</p><p>Les fonctionnalités phares de Qonto incluent l'<strong>ouverture de compte simplifiée</strong> en quelques minutes, la <strong>gestion multi-utilisateurs</strong> avec attribution de cartes personnalisées, et des outils de <strong>comptabilité intégrés</strong>. La plateforme propose également une <strong>synchronisation automatique</strong> avec les logiciels comptables populaires, un système de <strong>validation des dépenses</strong> en temps réel, et des <strong>virements instantanés</strong>. L'interface intuitive permet un suivi précis des flux financiers avec une catégorisation automatique des transactions.</p><p>Ce qui distingue Qonto de la concurrence, c'est sa <strong>spécialisation exclusive</strong> dans le secteur B2B et son approche <strong>tout-en-un</strong>. Contrairement aux banques classiques, Qonto offre une <strong>transparence tarifaire totale</strong> sans frais cachés, un <strong>support client réactif</strong> et des fonctionnalités pensées pour l'écosystème entrepreneurial. La plateforme intègre nativement des services essentiels comme la <strong>facturation</strong>, la <strong>gestion des notes de frais</strong> et les <strong>rapports financiers automatisés</strong>, éliminant le besoin de jongler entre plusieurs outils.</p></p>
+
+    <div class="logiciel-desc"><p><strong>Qonto</strong> se positionne comme la solution bancaire nouvelle génération spécialement conçue pour les <strong>entrepreneurs</strong> et les <strong>PME européennes</strong>. Cette néobanque française révolutionne la gestion financière des entreprises en proposant un compte professionnel 100% digital, accompagné d'outils de pilotage avancés. Qonto s'adresse particulièrement aux <strong>startups</strong>, <strong>freelances</strong>, <strong>TPE</strong> et <strong>PME</strong> qui recherchent une alternative moderne et efficace aux banques traditionnelles pour leurs besoins de création et gestion d'entreprise.</p><p>Les fonctionnalités phares de Qonto incluent l'<strong>ouverture de compte simplifiée</strong> en quelques minutes, la <strong>gestion multi-utilisateurs</strong> avec attribution de cartes personnalisées, et des outils de <strong>comptabilité intégrés</strong>. La plateforme propose également une <strong>synchronisation automatique</strong> avec les logiciels comptables populaires, un système de <strong>validation des dépenses</strong> en temps réel, et des <strong>virements instantanés</strong>. L'interface intuitive permet un suivi précis des flux financiers avec une catégorisation automatique des transactions.</p><p>Ce qui distingue Qonto de la concurrence, c'est sa <strong>spécialisation exclusive</strong> dans le secteur B2B et son approche <strong>tout-en-un</strong>. Contrairement aux banques classiques, Qonto offre une <strong>transparence tarifaire totale</strong> sans frais cachés, un <strong>support client réactif</strong> et des fonctionnalités pensées pour l'écosystème entrepreneurial. La plateforme intègre nativement des services essentiels comme la <strong>facturation</strong>, la <strong>gestion des notes de frais</strong> et les <strong>rapports financiers automatisés</strong>, éliminant le besoin de jongler entre plusieurs outils.</p></div>
+
+    <div class="logiciel-points">
+      <div class="points-forts">
+        <div class="points-title">✅ Avantages</div>
+        <ul><li>Interface moderne et intuitive spécialement conçue pour les professionnels</li><li>Ouverture de compte 100% digitale en quelques minutes sans paperasserie</li><li>Intégration native avec les principaux logiciels comptables du marché</li><li>Support client français réactif et spécialisé dans les besoins entreprises</li></ul>
       </div>
-
-      <table class="avantages-table">
-        <thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface moderne et intuitive spécialement conçue pour les professionnels</td>
-            <td>Tarification plus élevée que certaines néobanques généralistes</td>
-          </tr>
-          <tr>
-            <td>Ouverture de compte 100% digitale en quelques minutes sans paperasserie</td>
-            <td>Fonctionnalités limitées pour les très grandes entreprises</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec les principaux logiciels comptables du marché</td>
-            <td>Pas de possibilité de découvert autorisé sur tous les forfaits</td>
-          </tr>
-          <tr>
-            <td>Support client français réactif et spécialisé dans les besoins entreprises</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <a href="https://qonto.com/fr/start-a-business" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Qonto
-      </a>
+      <div class="points-faibles">
+        <div class="points-title">❌ Inconvénients</div>
+        <ul><li>Tarification plus élevée que certaines néobanques généralistes</li><li>Fonctionnalités limitées pour les très grandes entreprises</li><li>Pas de possibilité de découvert autorisé sur tous les forfaits</li></ul>
+      </div>
     </div>
+
+    <a href="https://qonto.com/fr/start-a-business" class="logiciel-cta" rel="nofollow" target="_blank">
+      → Essayer Qonto
+    </a>
   </div>
   <div class="logiciel-card" id="swapn">
     <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">Swapn</h2>
+      <div class="logiciel-rank">#5</div>
+      <div class="logiciel-info">
+        <div>
+          <div class="logiciel-nom">Swapn</div>
+        </div>
       </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">189€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+      <div class="logiciel-meta">
+        <div class="meta-item">
+          <span class="meta-label">Prix dès</span>
+          <span class="meta-val">
+189.0 €/mois          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Essai gratuit</span>
+          <span class="meta-val">
+✗          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Note</span>
+          <span class="meta-val">
+4.1 /5          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Catégorie</span>
+          <span class="meta-val">
+Création d’entreprise en ligne          </span>
+        </div>
       </div>
     </div>
-    <div class="logiciel-body">
-      <a href="https://www.swapn.fr/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/swapn-screenshot.png" alt="Aperçu Swapn"
-          style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);border:1px solid var(--border)"
-          onerror="this.style.display='none'">
-      </a>
 
-      <div class="logiciel-desc">
-            <p><p><strong>Swapn</strong> se positionne comme une plateforme innovante de création d'entreprise en ligne, spécialement conçue pour accompagner les entrepreneurs dans leurs démarches administratives et juridiques. Cette solution digitale révolutionne l'approche traditionnelle de la création d'entreprise en proposant un parcours entièrement dématérialisé, simplifiant considérablement les formalités souvent complexes et chronophages. <strong>Swapn</strong> s'adresse particulièrement aux entrepreneurs individuels, aux créateurs de startups et aux porteurs de projets qui souhaitent gagner du temps tout en bénéficiant d'un accompagnement professionnel de qualité.</p><p>La plateforme se distingue par son <strong>interface intuitive</strong> qui guide pas à pas l'utilisateur dans toutes les étapes de création de son entreprise. Swapn propose une gamme complète de services incluant la rédaction automatisée des statuts, l'immatriculation au registre du commerce, la publication des annonces légales et la gestion des formalités fiscales. <strong>L'automatisation intelligente</strong> permet de réduire significativement les délais de création tout en garantissant la conformité juridique des documents générés.</p><p>Ce qui différencie véritablement Swapn de ses concurrents, c'est son <strong>approche personnalisée</strong> combinée à une technologie de pointe. La plateforme offre un suivi en temps réel de l'avancement des dossiers et met à disposition une équipe d'experts juridiques pour répondre aux questions spécifiques. <strong>Swapn</strong> propose également des outils de gestion post-création, transformant ainsi la simple formalité administrative en un véritable écosystème d'accompagnement entrepreneurial complet et moderne.</p></p>
+
+    <div class="logiciel-desc"><p><strong>Swapn</strong> se positionne comme une plateforme innovante de création d'entreprise en ligne, spécialement conçue pour accompagner les entrepreneurs dans leurs démarches administratives et juridiques. Cette solution digitale révolutionne l'approche traditionnelle de la création d'entreprise en proposant un parcours entièrement dématérialisé, simplifiant considérablement les formalités souvent complexes et chronophages. <strong>Swapn</strong> s'adresse particulièrement aux entrepreneurs individuels, aux créateurs de startups et aux porteurs de projets qui souhaitent gagner du temps tout en bénéficiant d'un accompagnement professionnel de qualité.</p><p>La plateforme se distingue par son <strong>interface intuitive</strong> qui guide pas à pas l'utilisateur dans toutes les étapes de création de son entreprise. Swapn propose une gamme complète de services incluant la rédaction automatisée des statuts, l'immatriculation au registre du commerce, la publication des annonces légales et la gestion des formalités fiscales. <strong>L'automatisation intelligente</strong> permet de réduire significativement les délais de création tout en garantissant la conformité juridique des documents générés.</p><p>Ce qui différencie véritablement Swapn de ses concurrents, c'est son <strong>approche personnalisée</strong> combinée à une technologie de pointe. La plateforme offre un suivi en temps réel de l'avancement des dossiers et met à disposition une équipe d'experts juridiques pour répondre aux questions spécifiques. <strong>Swapn</strong> propose également des outils de gestion post-création, transformant ainsi la simple formalité administrative en un véritable écosystème d'accompagnement entrepreneurial complet et moderne.</p></div>
+
+    <div class="logiciel-points">
+      <div class="points-forts">
+        <div class="points-title">✅ Avantages</div>
+        <ul><li>Interface utilisateur intuitive et parcours guidé étape par étape</li><li>Automatisation complète des démarches administratives et juridiques</li><li>Suivi en temps réel et transparence totale sur l'avancement des dossiers</li><li>Accompagnement par une équipe d'experts juridiques disponibles</li></ul>
       </div>
-
-      <table class="avantages-table">
-        <thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface utilisateur intuitive et parcours guidé étape par étape</td>
-            <td>Tarification potentiellement plus élevée que les solutions basiques du marché</td>
-          </tr>
-          <tr>
-            <td>Automatisation complète des démarches administratives et juridiques</td>
-            <td>Dépendance à la technologie qui peut limiter les cas particuliers complexes</td>
-          </tr>
-          <tr>
-            <td>Suivi en temps réel et transparence totale sur l'avancement des dossiers</td>
-            <td>Absence de contact physique pour les entrepreneurs préférant les rendez-vous en personne</td>
-          </tr>
-          <tr>
-            <td>Accompagnement par une équipe d'experts juridiques disponibles</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <a href="https://www.swapn.fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Swapn
-      </a>
+      <div class="points-faibles">
+        <div class="points-title">❌ Inconvénients</div>
+        <ul><li>Tarification potentiellement plus élevée que les solutions basiques du marché</li><li>Dépendance à la technologie qui peut limiter les cas particuliers complexes</li><li>Absence de contact physique pour les entrepreneurs préférant les rendez-vous en personne</li></ul>
+      </div>
     </div>
+
+    <a href="https://www.swapn.fr/" class="logiciel-cta" rel="nofollow" target="_blank">
+      → Essayer Swapn
+    </a>
   </div>
 
-  <div class="content-custom"><p><h2>Comment choisir le meilleur site pour créer son entreprise ?</h2></p>
+  <!-- CONTENU CUSTOM -->
+  <div class="contenu-custom">
+    <h2 class="section-title">Mon comparatif complet des meilleurs site de création d'entreprise</h2>
+    <p><h2>Comment choisir le meilleur site pour créer son entreprise ?</h2></p>
 <p><p>Créer son entreprise en ligne est devenu une solution prisée par de nombreux entrepreneurs. Face à la multitude de plateformes disponibles, comment faire le bon choix ? Voici un guide pratique basé sur 5 critères essentiels pour vous orienter vers la solution la plus adaptée à vos besoins.</p></p>
 <p><h3>1. Statut juridique : adapter le site à votre forme d'entreprise</h3></p>
 <p><p>Le choix de votre statut juridique détermine largement la plateforme à privilégier. Voici un aperçu des principaux statuts et leurs spécificités :</p></p>
@@ -439,42 +473,44 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 <p><h2>Conclusion : trouvez votre plateforme idéale</h2></p>
 <p><p>Le choix de votre plateforme de création d'entreprise repose sur trois piliers essentiels : votre statut juridique qui détermine les fonctionnalités nécessaires, votre budget qui cadre les options disponibles, et votre besoin d'accompagnement qui oriente vers des solutions plus ou moins automatisées.</p></p>
 <p><p>Nos recommandations selon votre profil : pour l'<strong>entrepreneur pressé</strong> qui privilégie la rapidité, Legalstart offre le meilleur compromis entre vitesse et qualité de service. Si vous recherchez un <strong>accompagnement personnalisé</strong>, LegalPlace excelle avec ses conseillers dédiés et son support juridique premium. Les <strong>auto-entrepreneurs</strong> trouveront chez Indy une solution gratuite et complète incluant la gestion comptable. Enfin, les <strong>startups tech</strong> bénéficieront de l'écosystème innovant de Qonto avec sa banque nouvelle génération parfaitement intégrée.</p></p>
-<p><p>N'attendez plus pour concrétiser votre projet entrepreneurial ! Comparez les offres, lisez les avis clients et lancez-vous. Chaque jour de retard représente des opportunités manquées. Votre choix final doit refléter vos priorités personnelles : rapidité, économies, accompagnement ou services étendus. L'important est de passer à l'action avec la solution qui vous rassure et vous motive à réussir.</p></p></div>
+<p><p>N'attendez plus pour concrétiser votre projet entrepreneurial ! Comparez les offres, lisez les avis clients et lancez-vous. Chaque jour de retard représente des opportunités manquées. Votre choix final doit refléter vos priorités personnelles : rapidité, économies, accompagnement ou services étendus. L'important est de passer à l'action avec la solution qui vous rassure et vous motive à réussir.</p></p>
+  </div>
 
-  <h2 class="section-title">Questions fréquentes</h2>
-
-
-  <div class="faq-item">
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2 class="section-title">Questions fréquentes</h2>
+    <div class="faq-item">
       <div class="faq-q">Combien de temps faut-il pour créer une entreprise en ligne ?</div>
       <div class="faq-a">La création d'une entreprise en ligne est généralement très rapide. Pour un statut d'auto-entrepreneur, comptez entre 24h et 7 jours pour obtenir votre numéro SIRET. Pour une SARL ou SAS, le délai moyen est de 7 à 15 jours ouvrés. Les plateformes spécialisées accélèrent considérablement le processus en pré-remplissant les formulaires et en effectuant les vérifications automatiquement. Le délai peut varier selon la complexité de votre dossier et la charge de travail des greffes. Pour gagner du temps, préparez tous vos documents à l'avance : pièce d'identité, justificatif de domicile, statuts rédigés, et attestation de non-condamnation. Certaines plateformes offrent même une création express en 48h pour les dossiers simples.</div>
-  </div>
-  <div class="faq-item">
+    </div>
+    <div class="faq-item">
       <div class="faq-q">Quel est le coût total de création d'une entreprise ?</div>
       <div class="faq-a">Les coûts varient considérablement selon le statut juridique choisi. La création d'une auto-entreprise est gratuite si vous passez directement par l'URSSAF, ou entre 50€ et 200€ via une plateforme en ligne pour bénéficier d'un accompagnement. Pour une SARL, comptez entre 200€ et 500€ (frais de greffe inclus), tandis qu'une SAS coûte généralement entre 250€ et 600€. Ces tarifs incluent la rédaction des statuts, l'immatriculation au registre du commerce, et souvent un accompagnement personnalisé. Ajoutez éventuellement les frais d'ouverture de compte bancaire professionnel (0€ à 200€) et d'assurance responsabilité civile professionnelle (150€ à 400€/an). Les plateformes en ligne proposent souvent des forfaits tout compris plus avantageux que les démarches traditionnelles.</div>
-  </div>
-  <div class="faq-item">
+    </div>
+    <div class="faq-item">
       <div class="faq-q">Puis-je créer une SARL en ligne ?</div>
       <div class="faq-a">Absolument ! La création de SARL en ligne est parfaitement légale et de plus en plus populaire. Les plateformes spécialisées vous accompagnent dans toutes les étapes : rédaction des statuts personnalisés, dépôt du capital social, publication de l'annonce légale, et immatriculation au registre du commerce. Vous bénéficiez d'un service complet avec vérification juridique de vos documents, ce qui réduit considérablement les risques de rejet. Le processus est entièrement dématérialisé : signature électronique des statuts, dépôt en ligne des pièces justificatives, et suivi en temps réel de votre dossier. La plupart des plateformes offrent une garantie de reprise en cas d'erreur et un support client dédié. Cette solution est généralement plus rapide et moins chère qu'un passage chez un notaire ou un expert-comptable.</div>
-  </div>
-  <div class="faq-item">
+    </div>
+    <div class="faq-item">
       <div class="faq-q">Quel site choisir pour un auto-entrepreneur ?</div>
       <div class="faq-a">Pour créer votre auto-entreprise, vous avez plusieurs options fiables. Le site officiel autoentrepreneur.urssaf.fr est gratuit et directement géré par l'administration. Pour plus d'accompagnement, des plateformes comme LegalPlace, Captain Contrat, ou LegalStart proposent des services complets avec vérification de votre dossier, conseils personnalisés et suivi post-création. Choisissez selon vos besoins : si vous maîtrisez les démarches, optez pour le site officiel. Si vous préférez être accompagné, privilégiez une plateforme payante qui inclut souvent la domiciliation, l'ouverture de compte bancaire, et des conseils juridiques. Vérifiez toujours que la plateforme soit certifiée, possède de bons avis clients, et offre un support réactif. Certaines proposent même une garantie satisfait ou remboursé.</div>
-  </div>
-  <div class="faq-item">
+    </div>
+    <div class="faq-item">
       <div class="faq-q">Est-ce que créer son entreprise en ligne est légal ?</div>
       <div class="faq-a">Créer son entreprise en ligne est parfaitement légal et reconnu par l'administration française. Depuis 2016, la dématérialisation des procédures est même encouragée par l'État dans le cadre de la simplification administrative. Les plateformes agréées utilisent les mêmes circuits officiels que les démarches traditionnelles : vos documents sont transmis aux greffes, à l'INSEE, et aux administrations fiscales et sociales compétentes. Votre entreprise obtient exactement les mêmes documents officiels (Kbis, numéro SIRET) qu'avec une création classique. Les signatures électroniques ont la même valeur juridique que les signatures manuscrites. Assurez-vous simplement de choisir une plateforme certifiée et transparente sur ses tarifs. Le processus en ligne offre même plus de traçabilité et de sécurité que les démarches papier traditionnelles.</div>
-  </div>
-  <div class="faq-item">
+    </div>
+    <div class="faq-item">
       <div class="faq-q">Puis-je modifier mon statut juridique après la création ?</div>
       <div class="faq-a">Oui, vous pouvez modifier votre statut juridique après la création, mais selon certaines conditions. Un auto-entrepreneur peut transformer son activité en société (SARL, SAS) s'il dépasse les seuils de chiffre d'affaires ou souhaite s'associer. Cette transformation nécessite de créer une nouvelle structure et de fermer l'auto-entreprise. Pour les sociétés, vous pouvez modifier la forme juridique (SARL vers SAS par exemple) via une procédure de transformation, plus simple qu'une création ex nihilo. Ces modifications impliquent des formalités administratives : assemblée générale extraordinaire, modification des statuts, publication d'une annonce légale, et déclaration au greffe. Les coûts varient entre 200€ et 800€ selon la complexité. Il est recommandé de bien réfléchir au statut initial pour éviter ces démarches coûteuses, mais sachez que des solutions existent si votre projet évolue.</div>
-  </div>
-  <div class="faq-item">
+    </div>
+    <div class="faq-item">
       <div class="faq-q">Que faire après avoir créé mon entreprise ?</div>
       <div class="faq-a">Félicitations ! Après avoir reçu votre numéro SIRET et votre Kbis, plusieurs étapes importantes vous attendent. D'abord, ouvrez un compte bancaire professionnel (obligatoire pour les sociétés, recommandé pour les auto-entrepreneurs). Souscrivez une assurance responsabilité civile professionnelle adaptée à votre activité. Inscrivez-vous à la Chambre de Commerce ou d'Artisanat selon votre secteur. Choisissez un logiciel de facturation conforme à la réglementation anti-fraude TVA. Si vous avez des salariés, effectuez les déclarations sociales nécessaires. Commencez votre comptabilité dès le premier jour d'activité. Enfin, pensez à communiquer : créez votre site web, vos cartes de visite, et référencez-vous dans les annuaires professionnels. N'hésitez pas à vous faire accompagner par un expert-comptable pour partir sur de bonnes bases.</div>
-  </div>
-  <div class="faq-item">
+    </div>
+    <div class="faq-item">
       <div class="faq-q">Quel est le meilleur site pour une startup ?</div>
       <div class="faq-a">Pour une startup, privilégiez une plateforme spécialisée dans la création de SAS, statut le plus adapté aux projets innovants. LegalStart, LegalPlace et Captain Contrat se distinguent par leur expertise des startups et leurs services complémentaires. Recherchez une plateforme offrant : la rédaction de statuts flexibles avec clauses spécifiques (pacte d'associés, clause d'agrément), l'accompagnement pour la levée de fonds, la domiciliation dans un quartier d'affaires prestigieux, et l'accès à un réseau de partenaires (experts-comptables, avocats d'affaires). Certaines plateformes proposent des forfaits 'startup' incluant l'ouverture de compte pro, l'assurance, et même des outils de gestion financière. Vérifiez aussi qu'elles maîtrisent les spécificités des startups : BSPCE, JEI (Jeune Entreprise Innovante), et crédit d'impôt recherche. L'investissement initial sera plus élevé mais vous gagnez un temps précieux.</div>
+    </div>
   </div>
 
 </main>
@@ -528,14 +564,15 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
     </div>
   </div>
 </footer>
-<script>
-function toggleMenu(){
-  document.getElementById('nav-mobile').classList.toggle('open');
+<!-- FAQ Schema JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Combien de temps faut-il pour cr\u00e9er une entreprise en ligne ?", "acceptedAnswer": { "@type": "Answer", "text": "La cr\u00e9ation d\u0027une entreprise en ligne est g\u00e9n\u00e9ralement tr\u00e8s rapide. Pour un statut d\u0027auto-entrepreneur, comptez entre 24h et 7 jours pour obtenir votre num\u00e9ro SIRET. Pour une SARL ou SAS, le d\u00e9lai moyen est de 7 \u00e0 15 jours ouvr\u00e9s. Les plateformes sp\u00e9cialis\u00e9es acc\u00e9l\u00e8rent consid\u00e9rablement le processus en pr\u00e9-remplissant les formulaires et en effectuant les v\u00e9rifications automatiquement. Le d\u00e9lai peut varier selon la complexit\u00e9 de votre dossier et la charge de travail des greffes. Pour gagner du temps, pr\u00e9parez tous vos documents \u00e0 l\u0027avance : pi\u00e8ce d\u0027identit\u00e9, justificatif de domicile, statuts r\u00e9dig\u00e9s, et attestation de non-condamnation. Certaines plateformes offrent m\u00eame une cr\u00e9ation express en 48h pour les dossiers simples." } },    { "@type": "Question", "name": "Quel est le co\u00fbt total de cr\u00e9ation d\u0027une entreprise ?", "acceptedAnswer": { "@type": "Answer", "text": "Les co\u00fbts varient consid\u00e9rablement selon le statut juridique choisi. La cr\u00e9ation d\u0027une auto-entreprise est gratuite si vous passez directement par l\u0027URSSAF, ou entre 50\u20ac et 200\u20ac via une plateforme en ligne pour b\u00e9n\u00e9ficier d\u0027un accompagnement. Pour une SARL, comptez entre 200\u20ac et 500\u20ac (frais de greffe inclus), tandis qu\u0027une SAS co\u00fbte g\u00e9n\u00e9ralement entre 250\u20ac et 600\u20ac. Ces tarifs incluent la r\u00e9daction des statuts, l\u0027immatriculation au registre du commerce, et souvent un accompagnement personnalis\u00e9. Ajoutez \u00e9ventuellement les frais d\u0027ouverture de compte bancaire professionnel (0\u20ac \u00e0 200\u20ac) et d\u0027assurance responsabilit\u00e9 civile professionnelle (150\u20ac \u00e0 400\u20ac/an). Les plateformes en ligne proposent souvent des forfaits tout compris plus avantageux que les d\u00e9marches traditionnelles." } },    { "@type": "Question", "name": "Puis-je cr\u00e9er une SARL en ligne ?", "acceptedAnswer": { "@type": "Answer", "text": "Absolument ! La cr\u00e9ation de SARL en ligne est parfaitement l\u00e9gale et de plus en plus populaire. Les plateformes sp\u00e9cialis\u00e9es vous accompagnent dans toutes les \u00e9tapes : r\u00e9daction des statuts personnalis\u00e9s, d\u00e9p\u00f4t du capital social, publication de l\u0027annonce l\u00e9gale, et immatriculation au registre du commerce. Vous b\u00e9n\u00e9ficiez d\u0027un service complet avec v\u00e9rification juridique de vos documents, ce qui r\u00e9duit consid\u00e9rablement les risques de rejet. Le processus est enti\u00e8rement d\u00e9mat\u00e9rialis\u00e9 : signature \u00e9lectronique des statuts, d\u00e9p\u00f4t en ligne des pi\u00e8ces justificatives, et suivi en temps r\u00e9el de votre dossier. La plupart des plateformes offrent une garantie de reprise en cas d\u0027erreur et un support client d\u00e9di\u00e9. Cette solution est g\u00e9n\u00e9ralement plus rapide et moins ch\u00e8re qu\u0027un passage chez un notaire ou un expert-comptable." } },    { "@type": "Question", "name": "Quel site choisir pour un auto-entrepreneur ?", "acceptedAnswer": { "@type": "Answer", "text": "Pour cr\u00e9er votre auto-entreprise, vous avez plusieurs options fiables. Le site officiel autoentrepreneur.urssaf.fr est gratuit et directement g\u00e9r\u00e9 par l\u0027administration. Pour plus d\u0027accompagnement, des plateformes comme LegalPlace, Captain Contrat, ou LegalStart proposent des services complets avec v\u00e9rification de votre dossier, conseils personnalis\u00e9s et suivi post-cr\u00e9ation. Choisissez selon vos besoins : si vous ma\u00eetrisez les d\u00e9marches, optez pour le site officiel. Si vous pr\u00e9f\u00e9rez \u00eatre accompagn\u00e9, privil\u00e9giez une plateforme payante qui inclut souvent la domiciliation, l\u0027ouverture de compte bancaire, et des conseils juridiques. V\u00e9rifiez toujours que la plateforme soit certifi\u00e9e, poss\u00e8de de bons avis clients, et offre un support r\u00e9actif. Certaines proposent m\u00eame une garantie satisfait ou rembours\u00e9." } },    { "@type": "Question", "name": "Est-ce que cr\u00e9er son entreprise en ligne est l\u00e9gal ?", "acceptedAnswer": { "@type": "Answer", "text": "Cr\u00e9er son entreprise en ligne est parfaitement l\u00e9gal et reconnu par l\u0027administration fran\u00e7aise. Depuis 2016, la d\u00e9mat\u00e9rialisation des proc\u00e9dures est m\u00eame encourag\u00e9e par l\u0027\u00c9tat dans le cadre de la simplification administrative. Les plateformes agr\u00e9\u00e9es utilisent les m\u00eames circuits officiels que les d\u00e9marches traditionnelles : vos documents sont transmis aux greffes, \u00e0 l\u0027INSEE, et aux administrations fiscales et sociales comp\u00e9tentes. Votre entreprise obtient exactement les m\u00eames documents officiels (Kbis, num\u00e9ro SIRET) qu\u0027avec une cr\u00e9ation classique. Les signatures \u00e9lectroniques ont la m\u00eame valeur juridique que les signatures manuscrites. Assurez-vous simplement de choisir une plateforme certifi\u00e9e et transparente sur ses tarifs. Le processus en ligne offre m\u00eame plus de tra\u00e7abilit\u00e9 et de s\u00e9curit\u00e9 que les d\u00e9marches papier traditionnelles." } },    { "@type": "Question", "name": "Puis-je modifier mon statut juridique apr\u00e8s la cr\u00e9ation ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, vous pouvez modifier votre statut juridique apr\u00e8s la cr\u00e9ation, mais selon certaines conditions. Un auto-entrepreneur peut transformer son activit\u00e9 en soci\u00e9t\u00e9 (SARL, SAS) s\u0027il d\u00e9passe les seuils de chiffre d\u0027affaires ou souhaite s\u0027associer. Cette transformation n\u00e9cessite de cr\u00e9er une nouvelle structure et de fermer l\u0027auto-entreprise. Pour les soci\u00e9t\u00e9s, vous pouvez modifier la forme juridique (SARL vers SAS par exemple) via une proc\u00e9dure de transformation, plus simple qu\u0027une cr\u00e9ation ex nihilo. Ces modifications impliquent des formalit\u00e9s administratives : assembl\u00e9e g\u00e9n\u00e9rale extraordinaire, modification des statuts, publication d\u0027une annonce l\u00e9gale, et d\u00e9claration au greffe. Les co\u00fbts varient entre 200\u20ac et 800\u20ac selon la complexit\u00e9. Il est recommand\u00e9 de bien r\u00e9fl\u00e9chir au statut initial pour \u00e9viter ces d\u00e9marches co\u00fbteuses, mais sachez que des solutions existent si votre projet \u00e9volue." } },    { "@type": "Question", "name": "Que faire apr\u00e8s avoir cr\u00e9\u00e9 mon entreprise ?", "acceptedAnswer": { "@type": "Answer", "text": "F\u00e9licitations ! Apr\u00e8s avoir re\u00e7u votre num\u00e9ro SIRET et votre Kbis, plusieurs \u00e9tapes importantes vous attendent. D\u0027abord, ouvrez un compte bancaire professionnel (obligatoire pour les soci\u00e9t\u00e9s, recommand\u00e9 pour les auto-entrepreneurs). Souscrivez une assurance responsabilit\u00e9 civile professionnelle adapt\u00e9e \u00e0 votre activit\u00e9. Inscrivez-vous \u00e0 la Chambre de Commerce ou d\u0027Artisanat selon votre secteur. Choisissez un logiciel de facturation conforme \u00e0 la r\u00e9glementation anti-fraude TVA. Si vous avez des salari\u00e9s, effectuez les d\u00e9clarations sociales n\u00e9cessaires. Commencez votre comptabilit\u00e9 d\u00e8s le premier jour d\u0027activit\u00e9. Enfin, pensez \u00e0 communiquer : cr\u00e9ez votre site web, vos cartes de visite, et r\u00e9f\u00e9rencez-vous dans les annuaires professionnels. N\u0027h\u00e9sitez pas \u00e0 vous faire accompagner par un expert-comptable pour partir sur de bonnes bases." } },    { "@type": "Question", "name": "Quel est le meilleur site pour une startup ?", "acceptedAnswer": { "@type": "Answer", "text": "Pour une startup, privil\u00e9giez une plateforme sp\u00e9cialis\u00e9e dans la cr\u00e9ation de SAS, statut le plus adapt\u00e9 aux projets innovants. LegalStart, LegalPlace et Captain Contrat se distinguent par leur expertise des startups et leurs services compl\u00e9mentaires. Recherchez une plateforme offrant : la r\u00e9daction de statuts flexibles avec clauses sp\u00e9cifiques (pacte d\u0027associ\u00e9s, clause d\u0027agr\u00e9ment), l\u0027accompagnement pour la lev\u00e9e de fonds, la domiciliation dans un quartier d\u0027affaires prestigieux, et l\u0027acc\u00e8s \u00e0 un r\u00e9seau de partenaires (experts-comptables, avocats d\u0027affaires). Certaines plateformes proposent des forfaits \u0027startup\u0027 incluant l\u0027ouverture de compte pro, l\u0027assurance, et m\u00eame des outils de gestion financi\u00e8re. V\u00e9rifiez aussi qu\u0027elles ma\u00eetrisent les sp\u00e9cificit\u00e9s des startups : BSPCE, JEI (Jeune Entreprise Innovante), et cr\u00e9dit d\u0027imp\u00f4t recherche. L\u0027investissement initial sera plus \u00e9lev\u00e9 mais vous gagnez un temps pr\u00e9cieux." } }  ]
 }
-document.addEventListener('click',function(e){
-  var m=document.getElementById('nav-mobile'),b=document.getElementById('burger');
-  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');}
-});
 </script>
+
 </body>
 </html>

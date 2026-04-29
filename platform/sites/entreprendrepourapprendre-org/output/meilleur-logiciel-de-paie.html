@@ -44,20 +44,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
-a{color:inherit;text-decoration:none}
-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
-.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
-.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
-.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
-.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
-.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
-.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
-.nav-cta:hover{opacity:.88}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
-.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
-.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
-.nav-mobile.open{display:flex}
-.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+a{color:inherit;text-decoration:none}}',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
 .hero{background:var(--ink);padding:48px 5vw 40px;text-align:center}
 .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(28px,4vw,48px);font-weight:400;color:#fff;line-height:1.15;letter-spacing:-.02em;max-width:800px;margin:0 auto 16px}
 .hero h1 em{font-style:italic;color:var(--accent2)}
@@ -103,13 +90,7 @@ main{max-width:1200px;margin:0 auto;padding:48px 5vw 80px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
-footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-size:13px}
-.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.footer-logo{font-family:'DM Serif Display',serif;font-size:16px;color:#fff}.footer-logo span{color:var(--accent2)}
-.footer-links{display:flex;gap:20px;flex-wrap:wrap}
-.footer-links a{color:rgba(255,255,255,.4);transition:.15s}.footer-links a:hover{color:#fff}
-.footer-copy{color:rgba(255,255,255,.25);font-size:12px;width:100%;text-align:center;margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.06)}
+.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}}',serif;font-size:16px;color:#fff}.footer-logo span{color:var(--accent2)}.footer-links a:hover{color:#fff}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
@@ -120,59 +101,114 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 <meta name="google-site-verification" content="8qExRLvDtjV8AY9eKfy1-yNAgx7JTZAPDM-Cs4CE4WU">
 <script async data-id="101505107" src="//static.getclicky.com/js"></script>
 </head>
+
 <body>
+
+<style>
+nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;position:relative}
+.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.1)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
+.nav-cta:hover{opacity:.88}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;font-weight:500;padding:12px 16px;border-radius:10px;transition:.15s}
+.nav-mobile a:hover,.nav-mobile a.active{color:#fff;background:rgba(255,255,255,.08)}
+.nav-mobile .nav-cta{margin-top:8px;justify-content:center;border-radius:12px}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+</style>
 
 <nav>
   <div class="nav-inner">
-    <a href="/" class="nav-logo"><img src="/logo.png" alt="Entreprendre Pour Apprendre" style="height:36px;width:auto;object-fit:contain;vertical-align:middle"></a>
+    <a href="/" class="nav-logo"><img src="/logo.png" alt="Entreprendre Pour Apprendre" style="height:34px;width:auto;object-fit:contain;vertical-align:middle"></a>
     <div class="nav-links">
-      <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/comparatifs-scpi">Comparatifs</a>
+        <a href="/avis-scpi">Avis</a>
     </div>
     <a href="/contact" class="nav-cta">Contact</a>
-    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+    <button class="nav-burger" id="burger" aria-label="Menu" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-mobile" id="nav-mobile">
-    <a href="/nos-comparateurs">Nos comparateurs</a>
+      <a href="/comparatifs-scpi">Comparatifs</a>
+      <a href="/avis-scpi">Avis</a>
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
 </nav>
 
-<div class="hero">
-  <h1>Meilleur Logiciel de paie 2026 : Top 10 comparatif</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-04-29 - 10 logiciels analysés</div>
-</div>
-
+<script>
+function toggleMenu(){
+  var m=document.getElementById('nav-mobile');
+  var b=document.getElementById('burger');
+  m.classList.toggle('open');b.classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  var m=document.getElementById('nav-mobile');var b=document.getElementById('burger');
+  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');b.classList.remove('open');}
+});
+</script>
 <main>
+  <!-- EN-BREF -->
+  <div class="en-bref">
+    <div class="en-bref-title">Meilleur Logiciel de paie 2026 : Top 10 comparatif</div>
+    <div class="en-bref-sub">Mis à jour le 29 avril 2026 · 10 logiciels analysés</div>
+    <ul>
+      <li>PayFit — Les meilleurs logiciels de paie en 2026 1. Sage Paie i7 — La référence...</li>
+      <li>Openpaye — Les meilleurs logiciels de paie en 2026 1. Sage Paie — La référence...</li>
+      <li>Factorial — Les meilleurs logiciels de paie en 2026 1. Sage Paie i7 — La référence pour...</li>
+    </ul>
+  </div>
 
+  <!-- INTRO -->
   <div class="intro"><p><p>Une erreur de paie coûte en moyenne 4 800 euros à une entreprise française, sans compter les risques de redressement URSSAF qui peuvent atteindre plusieurs dizaines de milliers d'euros. Avec plus de 50 obligations légales à respecter et des mises à jour réglementaires constantes, la gestion de la paie représente un défi majeur pour les dirigeants et les services RH.</p></p>
 <p><p>Face à cette complexité croissante, le choix d'un logiciel de paie performant devient stratégique. Fini le temps des calculs manuels et des risques d'erreurs : un bon logiciel de fiche de paie automatise les tâches répétitives, garantit la conformité légale et fait gagner un temps précieux aux équipes.</p></p>
 <p><p>Dans ce comparatif, nous avons analysé les 10 meilleures solutions du marché selon des critères objectifs : facilité d'utilisation, fonctionnalités, rapport qualité-prix, support client et fiabilité. Vous découvrirez également notre guide de sélection personnalisé selon votre profil d'entreprise, que vous soyez une TPE, une PME ou un cabinet comptable.</p></p>
 <p><p>Voici notre classement 2026 des logiciels qui révolutionnent la gestion de la paie.</p></p></div>
 
-
-  <h2 class="section-title">Analyse détaillée</h2>
-
+  <!-- CLASSEMENT DES LOGICIELS -->
   <div class="logiciel-card" id="payfit">
     <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">PayFit</h2>
+      <div class="logiciel-rank">#1</div>
+      <div class="logiciel-info">
+        <div>
+          <div class="logiciel-nom">PayFit</div>
+        </div>
       </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">49€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+      <div class="logiciel-meta">
+        <div class="meta-item">
+          <span class="meta-label">Prix dès</span>
+          <span class="meta-val">
+49 €/mois          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Essai gratuit</span>
+          <span class="meta-val">
+✗          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Note</span>
+          <span class="meta-val">
+5 /5          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Catégorie</span>
+          <span class="meta-val">
+Logiciel de paie          </span>
+        </div>
       </div>
     </div>
-    <div class="logiciel-body">
-      <a href="https://payfit.com/fr/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/payfit-screenshot.png" alt="Aperçu PayFit"
-          style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);border:1px solid var(--border)"
-          onerror="this.style.display='none'">
-      </a>
 
-      <div class="logiciel-desc">
-            <h3>Les meilleurs logiciels de paie en 2026</h3>
+
+    <div class="logiciel-desc"><h3>Les meilleurs logiciels de paie en 2026</h3>
 <h4>1. Sage Paie i7 — La référence historique pour experts-comptables</h4>
 <p>Sage, leader historique du marché français, propose avec Paie i7 une solution complète dédiée aux professionnels de l'expertise comptable et aux grandes entreprises. Ce logiciel on-premise offre une profondeur fonctionnelle exceptionnelle pour gérer les paies les plus complexes. Plébiscité par les cabinets comptables depuis des décennies, il reste la référence pour les utilisateurs experts recherchant robustesse et conformité réglementaire absolue.</p>
 <p><strong>Les points forts :</strong></p>
@@ -332,55 +368,57 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 <li>Module paie moins riche que les spécialistes purs</li>
 </ul>
 <p><strong>Idéal pour :</strong> Entreprises industrielles et de services avec enjeux temps complexes</p>
-<p><strong>Prix :</strong> 8-15€/salarié/mois selon modules et complexité temps</p>
+<p><strong>Prix :</strong> 8-15€/salarié/mois selon modules et complexité temps</p></div>
+
+    <div class="logiciel-points">
+      <div class="points-forts">
+        <div class="points-title">✅ Avantages</div>
+        <ul><li>Interface ultra-intuitive accessible sans formation préalable</li><li>Automatisation complète de la paie avec conformité légale garantie</li><li>Service client français réactif et accompagnement personnalisé</li><li>Intégration native avec de nombreux outils métiers existants</li></ul>
       </div>
-
-      <table class="avantages-table">
-        <thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface ultra-intuitive accessible sans formation préalable</td>
-            <td>Tarification élevée pour les très petites structures</td>
-          </tr>
-          <tr>
-            <td>Automatisation complète de la paie avec conformité légale garantie</td>
-            <td>Fonctionnalités limitées pour les grandes entreprises complexes</td>
-          </tr>
-          <tr>
-            <td>Service client français réactif et accompagnement personnalisé</td>
-            <td>Personnalisation avancée parfois contrainte par le format standardisé</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec de nombreux outils métiers existants</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <a href="https://payfit.com/fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer PayFit
-      </a>
+      <div class="points-faibles">
+        <div class="points-title">❌ Inconvénients</div>
+        <ul><li>Tarification élevée pour les très petites structures</li><li>Fonctionnalités limitées pour les grandes entreprises complexes</li><li>Personnalisation avancée parfois contrainte par le format standardisé</li></ul>
+      </div>
     </div>
+
+    <a href="https://payfit.com/fr/" class="logiciel-cta" rel="nofollow" target="_blank">
+      → Essayer PayFit
+    </a>
   </div>
   <div class="logiciel-card" id="openpaye">
     <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">Openpaye</h2>
+      <div class="logiciel-rank">#2</div>
+      <div class="logiciel-info">
+        <div>
+          <div class="logiciel-nom">Openpaye</div>
+        </div>
       </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">34€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+      <div class="logiciel-meta">
+        <div class="meta-item">
+          <span class="meta-label">Prix dès</span>
+          <span class="meta-val">
+34 €/mois          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Essai gratuit</span>
+          <span class="meta-val">
+✓          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Note</span>
+          <span class="meta-val">
+4 /5          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Catégorie</span>
+          <span class="meta-val">
+Logiciel de paie          </span>
+        </div>
       </div>
     </div>
-    <div class="logiciel-body">
-      <a href="https://openpaye.co/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/openpaye-screenshot.png" alt="Aperçu Openpaye"
-          style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);border:1px solid var(--border)"
-          onerror="this.style.display='none'">
-      </a>
 
-      <div class="logiciel-desc">
-            <h3>Les meilleurs logiciels de paie en 2026</h3>
+
+    <div class="logiciel-desc"><h3>Les meilleurs logiciels de paie en 2026</h3>
 <h4>1. Sage Paie — La référence incontournable des experts-comptables</h4>
 <p>Sage, leader historique du marché français, propose une solution de paie robuste et complète qui s'impose comme la référence depuis plus de 30 ans. Cette solution s'adresse principalement aux cabinets d'expertise-comptable et aux moyennes entreprises qui recherchent une fiabilité absolue en matière de conformité légale et de gestion des obligations sociales.</p>
 <p><strong>Les points forts :</strong></p>
@@ -540,55 +578,57 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 <li>Notoriété à développer sur le segment paie</li>
 </ul>
 <p><strong>Idéal pour :</strong> PME recherchant une solution RH française complète à prix accessible</p>
-<p><strong>Prix :</strong> 3-7€/collaborateur/mois selon modules choisis</p>
+<p><strong>Prix :</strong> 3-7€/collaborateur/mois selon modules choisis</p></div>
+
+    <div class="logiciel-points">
+      <div class="points-forts">
+        <div class="points-title">✅ Avantages</div>
+        <ul><li>Interface utilisateur intuitive et ergonomique facilitant la prise en main</li><li>Automatisation complète des calculs de paie et mise à jour réglementaire</li><li>Excellent rapport qualité-prix adapté aux PME et entreprises en croissance</li><li>Support client réactif avec accompagnement personnalisé dans la mise en œuvre</li></ul>
       </div>
-
-      <table class="avantages-table">
-        <thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface utilisateur intuitive et ergonomique facilitant la prise en main</td>
-            <td>Fonctionnalités avancées de reporting limitées par rapport aux solutions enterprise</td>
-          </tr>
-          <tr>
-            <td>Automatisation complète des calculs de paie et mise à jour réglementaire</td>
-            <td>Options de personnalisation restreintes pour les entreprises aux besoins très spécifiques</td>
-          </tr>
-          <tr>
-            <td>Excellent rapport qualité-prix adapté aux PME et entreprises en croissance</td>
-            <td>Intégrations avec les logiciels tiers moins nombreuses que chez les leaders du marché</td>
-          </tr>
-          <tr>
-            <td>Support client réactif avec accompagnement personnalisé dans la mise en œuvre</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <a href="https://openpaye.co/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Openpaye
-      </a>
+      <div class="points-faibles">
+        <div class="points-title">❌ Inconvénients</div>
+        <ul><li>Fonctionnalités avancées de reporting limitées par rapport aux solutions enterprise</li><li>Options de personnalisation restreintes pour les entreprises aux besoins très spécifiques</li><li>Intégrations avec les logiciels tiers moins nombreuses que chez les leaders du marché</li></ul>
+      </div>
     </div>
+
+    <a href="https://openpaye.co/" class="logiciel-cta" rel="nofollow" target="_blank">
+      → Essayer Openpaye
+    </a>
   </div>
   <div class="logiciel-card" id="factorial">
     <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">Factorial</h2>
+      <div class="logiciel-rank">#3</div>
+      <div class="logiciel-info">
+        <div>
+          <div class="logiciel-nom">Factorial</div>
+        </div>
       </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">35€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+      <div class="logiciel-meta">
+        <div class="meta-item">
+          <span class="meta-label">Prix dès</span>
+          <span class="meta-val">
+35 €/mois          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Essai gratuit</span>
+          <span class="meta-val">
+✓          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Note</span>
+          <span class="meta-val">
+4 /5          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Catégorie</span>
+          <span class="meta-val">
+Logiciel de paie          </span>
+        </div>
       </div>
     </div>
-    <div class="logiciel-body">
-      <a href="https://factorial.fr/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/factorial-screenshot.png" alt="Aperçu Factorial"
-          style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);border:1px solid var(--border)"
-          onerror="this.style.display='none'">
-      </a>
 
-      <div class="logiciel-desc">
-            <h3>Les meilleurs logiciels de paie en 2026</h3>
+
+    <div class="logiciel-desc"><h3>Les meilleurs logiciels de paie en 2026</h3>
 <h4>1. Sage Paie i7 — La référence pour les experts-comptables</h4>
 <p>Sage, leader historique des logiciels de gestion en France, propose avec Paie i7 une solution complète dédiée aux professionnels du chiffre. Cette plateforme intègre toutes les spécificités de la législation française et s'adresse principalement aux cabinets comptables et DRH expérimentés qui gèrent de multiples dossiers clients avec des besoins complexes en matière de paie et déclarations sociales.</p>
 <p><strong>Les points forts :</strong></p>
@@ -757,55 +797,57 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 <li>Écosystème d'intégrations en développement</li>
 </ul>
 <p><strong>Idéal pour :</strong> Entreprises innovantes cherchant expertise et technologie de pointe</p>
-<p><strong>Prix :</strong> À partir de 6€/mois par salarié selon fonctionnalités</p>
+<p><strong>Prix :</strong> À partir de 6€/mois par salarié selon fonctionnalités</p></div>
+
+    <div class="logiciel-points">
+      <div class="points-forts">
+        <div class="points-title">✅ Avantages</div>
+        <ul><li>Interface utilisateur intuitive et moderne, facile à prendre en main</li><li>Solution freemium avec fonctionnalités essentielles gratuites</li><li>Couverture complète des processus RH dans une seule plateforme</li><li>Excellent support client et implémentation rapide</li></ul>
       </div>
-
-      <table class="avantages-table">
-        <thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface utilisateur intuitive et moderne, facile à prendre en main</td>
-            <td>Fonctionnalités de paie limitées selon les pays</td>
-          </tr>
-          <tr>
-            <td>Solution freemium avec fonctionnalités essentielles gratuites</td>
-            <td>Options de personnalisation avancée parfois restrictives</td>
-          </tr>
-          <tr>
-            <td>Couverture complète des processus RH dans une seule plateforme</td>
-            <td>Intégrations avec certains logiciels comptables encore perfectibles</td>
-          </tr>
-          <tr>
-            <td>Excellent support client et implémentation rapide</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <a href="https://factorial.fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Factorial
-      </a>
+      <div class="points-faibles">
+        <div class="points-title">❌ Inconvénients</div>
+        <ul><li>Fonctionnalités de paie limitées selon les pays</li><li>Options de personnalisation avancée parfois restrictives</li><li>Intégrations avec certains logiciels comptables encore perfectibles</li></ul>
+      </div>
     </div>
+
+    <a href="https://factorial.fr/" class="logiciel-cta" rel="nofollow" target="_blank">
+      → Essayer Factorial
+    </a>
   </div>
   <div class="logiciel-card" id="mysilae">
     <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">My Silae</h2>
+      <div class="logiciel-rank">#4</div>
+      <div class="logiciel-info">
+        <div>
+          <div class="logiciel-nom">My Silae</div>
+        </div>
       </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">29€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+      <div class="logiciel-meta">
+        <div class="meta-item">
+          <span class="meta-label">Prix dès</span>
+          <span class="meta-val">
+29 €/mois          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Essai gratuit</span>
+          <span class="meta-val">
+✓          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Note</span>
+          <span class="meta-val">
+4,9 /5          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Catégorie</span>
+          <span class="meta-val">
+Logiciel de paie          </span>
+        </div>
       </div>
     </div>
-    <div class="logiciel-body">
-      <a href="https://my.silae.fr/sign-in#" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/mysilae-screenshot.png" alt="Aperçu My Silae"
-          style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);border:1px solid var(--border)"
-          onerror="this.style.display='none'">
-      </a>
 
-      <div class="logiciel-desc">
-            <h3>Les meilleurs logiciels de paie en 2026</h3>
+
+    <div class="logiciel-desc"><h3>Les meilleurs logiciels de paie en 2026</h3>
 <h4>1. Sage Paie i7 — La référence pour les cabinets comptables</h4>
 <p>Développé par Sage, leader historique des solutions de gestion en France, Sage Paie i7 s'impose comme la solution de référence pour les professionnels de la paie. Ce logiciel robuste et complet répond aux besoins des cabinets comptables et des entreprises de toutes tailles grâce à sa conformité réglementaire irréprochable et ses fonctionnalités avancées de gestion multi-dossiers.</p>
 <p><strong>Les points forts :</strong></p>
@@ -974,55 +1016,57 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 <li>Peu adapté aux besoins complexes ou évolutifs</li>
 </ul>
 <p><strong>Idéal pour :</strong> TPE de 1 à 10 salariés avec besoins de paie simples</p>
-<p><strong>Prix :</strong> À partir de 2€/bulletin de paie</p>
+<p><strong>Prix :</strong> À partir de 2€/bulletin de paie</p></div>
+
+    <div class="logiciel-points">
+      <div class="points-forts">
+        <div class="points-title">✅ Avantages</div>
+        <ul><li>Solution cloud modulaire et évolutive adaptée aux besoins spécifiques de chaque entreprise</li><li>Interface utilisateur intuitive avec portails collaboratifs pour managers et employés</li><li>Conformité réglementaire française et européenne avec mises à jour automatiques</li><li>Support client de qualité et accompagnement personnalisé par des experts RH français</li></ul>
       </div>
-
-      <table class="avantages-table">
-        <thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Solution cloud modulaire et évolutive adaptée aux besoins spécifiques de chaque entreprise</td>
-            <td>Fonctionnalités avancées de reporting et d'analytiques RH moins développées que la concurrence</td>
-          </tr>
-          <tr>
-            <td>Interface utilisateur intuitive avec portails collaboratifs pour managers et employés</td>
-            <td>Options de personnalisation limitées pour les grandes entreprises aux processus complexes</td>
-          </tr>
-          <tr>
-            <td>Conformité réglementaire française et européenne avec mises à jour automatiques</td>
-            <td>Intégrations avec des outils tiers encore restreintes comparé aux leaders du marché</td>
-          </tr>
-          <tr>
-            <td>Support client de qualité et accompagnement personnalisé par des experts RH français</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <a href="https://my.silae.fr/sign-in#" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer My Silae
-      </a>
+      <div class="points-faibles">
+        <div class="points-title">❌ Inconvénients</div>
+        <ul><li>Fonctionnalités avancées de reporting et d'analytiques RH moins développées que la concurrence</li><li>Options de personnalisation limitées pour les grandes entreprises aux processus complexes</li><li>Intégrations avec des outils tiers encore restreintes comparé aux leaders du marché</li></ul>
+      </div>
     </div>
+
+    <a href="https://my.silae.fr/sign-in#" class="logiciel-cta" rel="nofollow" target="_blank">
+      → Essayer My Silae
+    </a>
   </div>
   <div class="logiciel-card" id="sagebusinesscloudpaie">
     <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">Sage Business Cloud Paie</h2>
+      <div class="logiciel-rank">#5</div>
+      <div class="logiciel-info">
+        <div>
+          <div class="logiciel-nom">Sage Business Cloud Paie</div>
+        </div>
       </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">26€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+      <div class="logiciel-meta">
+        <div class="meta-item">
+          <span class="meta-label">Prix dès</span>
+          <span class="meta-val">
+26 €/mois          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Essai gratuit</span>
+          <span class="meta-val">
+✗          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Note</span>
+          <span class="meta-val">
+4,8 /5          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Catégorie</span>
+          <span class="meta-val">
+Logiciel de paie          </span>
+        </div>
       </div>
     </div>
-    <div class="logiciel-body">
-      <a href="https://www.sage.com/fr-fr/sage-business-cloud/logiciels/gestionnaire-de-paie/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/sagebusinesscloudpaie-screenshot.png" alt="Aperçu Sage Business Cloud Paie"
-          style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);border:1px solid var(--border)"
-          onerror="this.style.display='none'">
-      </a>
 
-      <div class="logiciel-desc">
-            <h3>Les meilleurs logiciels de paie en 2026</h3>
+
+    <div class="logiciel-desc"><h3>Les meilleurs logiciels de paie en 2026</h3>
 <h4>1. Sage Paie — La référence historique pour PME/ETI</h4>
 <p>Sage, leader historique du marché français, propose avec Sage Paie une solution complète et robuste adaptée aux entreprises de taille moyenne. Fort de décennies d'expérience, ce logiciel combine fiabilité réglementaire et fonctionnalités avancées. Il s'adresse prioritairement aux PME et ETI recherchant une solution éprouvée avec un écosystème partenaire développé et un support technique reconnu sur le territoire français.</p>
 <p><strong>Les points forts :</strong></p>
@@ -1191,55 +1235,57 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 <li>Écosystème partenaire moins développé que les grands éditeurs</li>
 </ul>
 <p><strong>Idéal pour :</strong> PME et ETI (50-300 salariés) privilégiant les solutions françaises et la proximité</p>
-<p><strong>Prix :</strong> 5-12€/mois par salarié selon les fonctionnalités activées</p>
+<p><strong>Prix :</strong> 5-12€/mois par salarié selon les fonctionnalités activées</p></div>
+
+    <div class="logiciel-points">
+      <div class="points-forts">
+        <div class="points-title">✅ Avantages</div>
+        <ul><li>Interface cloud moderne et accessible depuis n'importe où</li><li>Mises à jour automatiques de la réglementation sociale française</li><li>Intégration native avec l'écosystème Sage Business Cloud</li><li>Support client expert et formations dédiées</li></ul>
       </div>
-
-      <table class="avantages-table">
-        <thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface cloud moderne et accessible depuis n'importe où</td>
-            <td>Tarification qui peut être élevée pour les très petites entreprises</td>
-          </tr>
-          <tr>
-            <td>Mises à jour automatiques de la réglementation sociale française</td>
-            <td>Courbe d'apprentissage nécessaire pour exploiter toutes les fonctionnalités</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec l'écosystème Sage Business Cloud</td>
-            <td>Dépendance à la connexion internet pour l'accès aux données</td>
-          </tr>
-          <tr>
-            <td>Support client expert et formations dédiées</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <a href="https://www.sage.com/fr-fr/sage-business-cloud/logiciels/gestionnaire-de-paie/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Sage Business Cloud Paie
-      </a>
+      <div class="points-faibles">
+        <div class="points-title">❌ Inconvénients</div>
+        <ul><li>Tarification qui peut être élevée pour les très petites entreprises</li><li>Courbe d'apprentissage nécessaire pour exploiter toutes les fonctionnalités</li><li>Dépendance à la connexion internet pour l'accès aux données</li></ul>
+      </div>
     </div>
+
+    <a href="https://www.sage.com/fr-fr/sage-business-cloud/logiciels/gestionnaire-de-paie/" class="logiciel-cta" rel="nofollow" target="_blank">
+      → Essayer Sage Business Cloud Paie
+    </a>
   </div>
   <div class="logiciel-card" id="cegidpayroll">
     <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">Cegid Payroll</h2>
+      <div class="logiciel-rank">#6</div>
+      <div class="logiciel-info">
+        <div>
+          <div class="logiciel-nom">Cegid Payroll</div>
+        </div>
       </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">24€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+      <div class="logiciel-meta">
+        <div class="meta-item">
+          <span class="meta-label">Prix dès</span>
+          <span class="meta-val">
+24 €/mois          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Essai gratuit</span>
+          <span class="meta-val">
+✓          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Note</span>
+          <span class="meta-val">
+4,7 /5          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Catégorie</span>
+          <span class="meta-val">
+Logiciel de paie          </span>
+        </div>
       </div>
     </div>
-    <div class="logiciel-body">
-      <a href="https://www.cegid.com/fr/produits/cegid-payroll-ultimate/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/cegidpayroll-screenshot.png" alt="Aperçu Cegid Payroll"
-          style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);border:1px solid var(--border)"
-          onerror="this.style.display='none'">
-      </a>
 
-      <div class="logiciel-desc">
-            <h3>Les meilleurs logiciels de paie en 2026</h3>
+
+    <div class="logiciel-desc"><h3>Les meilleurs logiciels de paie en 2026</h3>
 <h4>1. Silae — La solution française de référence</h4>
 <p>Silae s'impose comme le leader français des logiciels de paie avec plus de 30 ans d'expertise. Développé par l'éditeur du même nom, ce logiciel cloud propose une approche complète de la gestion sociale et de la paie. Reconnu pour sa conformité réglementaire irréprochable, Silae s'adresse aux cabinets comptables, experts-comptables et entreprises de toutes tailles recherchant une solution fiable et évolutive.</p>
 <p><strong>Les points forts :</strong></p>
@@ -1399,55 +1445,57 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 <li>Moins d'intégrations avec l'écosystème logiciel</li>
 </ul>
 <p><strong>Idéal pour :</strong> TPE/PME de 5 à 50 salariés avec besoins basiques</p>
-<p><strong>Prix :</strong> À partir de 15€/mois + 2€ par bulletin</p>
+<p><strong>Prix :</strong> À partir de 15€/mois + 2€ par bulletin</p></div>
+
+    <div class="logiciel-points">
+      <div class="points-forts">
+        <div class="points-title">✅ Avantages</div>
+        <ul><li>Expertise française avec conformité réglementaire garantie et mises à jour automatiques</li><li>Solution cloud native offrant flexibilité, sécurité et accessibilité depuis n'importe quel device</li><li>Interface intuitive et workflows optimisés réduisant significativement les erreurs de paie</li><li>Intégration complète avec l'écosystème Cegid et les principaux outils SIRH du marché</li></ul>
       </div>
-
-      <table class="avantages-table">
-        <thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Expertise française avec conformité réglementaire garantie et mises à jour automatiques</td>
-            <td>Coût d'acquisition et d'abonnement élevé pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Solution cloud native offrant flexibilité, sécurité et accessibilité depuis n'importe quel device</td>
-            <td>Courbe d'apprentissage importante pour exploiter toutes les fonctionnalités avancées</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive et workflows optimisés réduisant significativement les erreurs de paie</td>
-            <td>Dépendance forte à la connectivité internet pour l'accès aux données critiques</td>
-          </tr>
-          <tr>
-            <td>Intégration complète avec l'écosystème Cegid et les principaux outils SIRH du marché</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <a href="https://www.cegid.com/fr/produits/cegid-payroll-ultimate/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Cegid Payroll
-      </a>
+      <div class="points-faibles">
+        <div class="points-title">❌ Inconvénients</div>
+        <ul><li>Coût d'acquisition et d'abonnement élevé pour les petites structures</li><li>Courbe d'apprentissage importante pour exploiter toutes les fonctionnalités avancées</li><li>Dépendance forte à la connectivité internet pour l'accès aux données critiques</li></ul>
+      </div>
     </div>
+
+    <a href="https://www.cegid.com/fr/produits/cegid-payroll-ultimate/" class="logiciel-cta" rel="nofollow" target="_blank">
+      → Essayer Cegid Payroll
+    </a>
   </div>
   <div class="logiciel-card" id="ebppaie">
     <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">EBP Paie</h2>
+      <div class="logiciel-rank">#7</div>
+      <div class="logiciel-info">
+        <div>
+          <div class="logiciel-nom">EBP Paie</div>
+        </div>
       </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">30€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+      <div class="logiciel-meta">
+        <div class="meta-item">
+          <span class="meta-label">Prix dès</span>
+          <span class="meta-val">
+30 €/mois          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Essai gratuit</span>
+          <span class="meta-val">
+✗          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Note</span>
+          <span class="meta-val">
+4,5 /5          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Catégorie</span>
+          <span class="meta-val">
+Logiciel de paie          </span>
+        </div>
       </div>
     </div>
-    <div class="logiciel-body">
-      <a href="https://www.ebp.com/logiciel-paie/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/ebppaie-screenshot.png" alt="Aperçu EBP Paie"
-          style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);border:1px solid var(--border)"
-          onerror="this.style.display='none'">
-      </a>
 
-      <div class="logiciel-desc">
-            <h3>Les meilleurs logiciels de paie en 2026</h3>
+
+    <div class="logiciel-desc"><h3>Les meilleurs logiciels de paie en 2026</h3>
 <h4>1. Silae — La référence complète pour experts-comptables</h4>
 <p>Silae s'impose comme l'une des solutions de paie les plus utilisées par les cabinets comptables en France. Éditée par la société du même nom, cette plateforme couvre l'ensemble du processus paie avec une expertise métier reconnue. Elle s'adresse principalement aux experts-comptables et aux entreprises exigeant une solution robuste et conforme aux évolutions réglementaires françaises.</p>
 <p><strong>Les points forts :</strong></p>
@@ -1607,55 +1655,57 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 <li>Interface moins moderne que les solutions généralistes récentes</li>
 </ul>
 <p><strong>Idéal pour :</strong> Entreprises des secteurs BTP, transport, spectacle avec contraintes conventionnelles complexes</p>
-<p><strong>Prix :</strong> Sur devis selon spécificités sectorielles, généralement à partir de 12€/bulletin</p>
+<p><strong>Prix :</strong> Sur devis selon spécificités sectorielles, généralement à partir de 12€/bulletin</p></div>
+
+    <div class="logiciel-points">
+      <div class="points-forts">
+        <div class="points-title">✅ Avantages</div>
+        <ul><li>Interface intuitive adaptée aux non-spécialistes de la paie</li><li>Conformité légale française avec mises à jour automatiques</li><li>Excellent rapport qualité-prix pour les TPE/PME</li><li>Support client français et formation utilisateur complète</li></ul>
       </div>
-
-      <table class="avantages-table">
-        <thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive adaptée aux non-spécialistes de la paie</td>
-            <td>Fonctionnalités limitées pour les grandes entreprises</td>
-          </tr>
-          <tr>
-            <td>Conformité légale française avec mises à jour automatiques</td>
-            <td>Pas d'application mobile native</td>
-          </tr>
-          <tr>
-            <td>Excellent rapport qualité-prix pour les TPE/PME</td>
-            <td>Interface graphique un peu datée</td>
-          </tr>
-          <tr>
-            <td>Support client français et formation utilisateur complète</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <a href="https://www.ebp.com/logiciel-paie/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer EBP Paie
-      </a>
+      <div class="points-faibles">
+        <div class="points-title">❌ Inconvénients</div>
+        <ul><li>Fonctionnalités limitées pour les grandes entreprises</li><li>Pas d'application mobile native</li><li>Interface graphique un peu datée</li></ul>
+      </div>
     </div>
+
+    <a href="https://www.ebp.com/logiciel-paie/" class="logiciel-cta" rel="nofollow" target="_blank">
+      → Essayer EBP Paie
+    </a>
   </div>
   <div class="logiciel-card" id="adp">
     <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">ADP</h2>
+      <div class="logiciel-rank">#8</div>
+      <div class="logiciel-info">
+        <div>
+          <div class="logiciel-nom">ADP</div>
+        </div>
       </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">31€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+      <div class="logiciel-meta">
+        <div class="meta-item">
+          <span class="meta-label">Prix dès</span>
+          <span class="meta-val">
+31 €/mois          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Essai gratuit</span>
+          <span class="meta-val">
+✓          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Note</span>
+          <span class="meta-val">
+4,3 /5          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Catégorie</span>
+          <span class="meta-val">
+Logiciel de paie          </span>
+        </div>
       </div>
     </div>
-    <div class="logiciel-body">
-      <a href="https://www.fr.adp.com/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/adp-screenshot.png" alt="Aperçu ADP"
-          style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);border:1px solid var(--border)"
-          onerror="this.style.display='none'">
-      </a>
 
-      <div class="logiciel-desc">
-            <h3>Les meilleurs logiciels de paie en 2026</h3>
+
+    <div class="logiciel-desc"><h3>Les meilleurs logiciels de paie en 2026</h3>
 <h4>1. Sage Paie & RH — La référence historique du marché français</h4>
 <p>Sage, leader européen des logiciels de gestion, propose avec Sage Paie & RH une solution complète adaptée aux spécificités françaises. Fort de plus de 40 ans d'expérience, ce logiciel s'impose comme la référence pour les entreprises de toutes tailles recherchant fiabilité et conformité réglementaire. Il couvre l'ensemble des processus RH, de la paie aux déclarations sociales.</p>
 <p><strong>Les points forts :</strong></p>
@@ -1815,55 +1865,57 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 <li>Positionnement tarifaire élevé pour les fonctionnalités complètes</li>
 </ul>
 <p><strong>Idéal pour :</strong> Entreprises avec enjeux complexes de temps de travail et paie variable</p>
-<p><strong>Prix :</strong> Sur devis selon modules et nombre d'utilisateurs (à partir de 5€/salarié/mois)</p>
+<p><strong>Prix :</strong> Sur devis selon modules et nombre d'utilisateurs (à partir de 5€/salarié/mois)</p></div>
+
+    <div class="logiciel-points">
+      <div class="points-forts">
+        <div class="points-title">✅ Avantages</div>
+        <ul><li>Leader mondial avec plus de 70 ans d'expertise RH et paie</li><li>Conformité réglementaire automatique dans 140+ pays</li><li>Suite complète couvrant tout le cycle de vie employé</li><li>Intégration native avec 400+ applications tierces</li></ul>
       </div>
-
-      <table class="avantages-table">
-        <thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Leader mondial avec plus de 70 ans d'expertise RH et paie</td>
-            <td>Coût élevé pour les petites entreprises</td>
-          </tr>
-          <tr>
-            <td>Conformité réglementaire automatique dans 140+ pays</td>
-            <td>Interface complexe nécessitant une formation approfondie</td>
-          </tr>
-          <tr>
-            <td>Suite complète couvrant tout le cycle de vie employé</td>
-            <td>Personnalisation limitée sans développement spécifique</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec 400+ applications tierces</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <a href="https://www.fr.adp.com/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer ADP
-      </a>
+      <div class="points-faibles">
+        <div class="points-title">❌ Inconvénients</div>
+        <ul><li>Coût élevé pour les petites entreprises</li><li>Interface complexe nécessitant une formation approfondie</li><li>Personnalisation limitée sans développement spécifique</li></ul>
+      </div>
     </div>
+
+    <a href="https://www.fr.adp.com/" class="logiciel-cta" rel="nofollow" target="_blank">
+      → Essayer ADP
+    </a>
   </div>
   <div class="logiciel-card" id="malibou">
     <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">Malibou</h2>
+      <div class="logiciel-rank">#9</div>
+      <div class="logiciel-info">
+        <div>
+          <div class="logiciel-nom">Malibou</div>
+        </div>
       </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">32€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+      <div class="logiciel-meta">
+        <div class="meta-item">
+          <span class="meta-label">Prix dès</span>
+          <span class="meta-val">
+32 €/mois          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Essai gratuit</span>
+          <span class="meta-val">
+✗          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Note</span>
+          <span class="meta-val">
+4,2 /5          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Catégorie</span>
+          <span class="meta-val">
+Logiciel de paie          </span>
+        </div>
       </div>
     </div>
-    <div class="logiciel-body">
-      <a href="https://www.malibou.com/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/malibou-screenshot.png" alt="Aperçu Malibou"
-          style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);border:1px solid var(--border)"
-          onerror="this.style.display='none'">
-      </a>
 
-      <div class="logiciel-desc">
-            <h3>Les meilleurs logiciels de paie en 2026</h3>
+
+    <div class="logiciel-desc"><h3>Les meilleurs logiciels de paie en 2026</h3>
 <h4>1. Sage Paie — Le leader historique français de référence</h4>
 <p>Sage, éditeur français historique depuis 1981, propose avec Sage Paie une solution complète de gestion de la paie particulièrement adaptée aux experts-comptables et PME françaises. Fort de son expertise réglementaire et de sa présence historique sur le marché, ce logiciel s'impose comme la référence pour les professionnels exigeants en matière de conformité légale et de fonctionnalités avancées.</p>
 <p><strong>Les points forts :</strong></p>
@@ -2023,55 +2075,57 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 <li>Éditeur de taille plus modeste avec ressources limitées</li>
 </ul>
 <p><strong>Idéal pour :</strong> Entreprises de 50 à 500 salariés avec besoins spécifiques et contraintes d'intégration</p>
-<p><strong>Prix :</strong> Sur devis, généralement entre 15K€ et 50K€/an selon modules</p>
+<p><strong>Prix :</strong> Sur devis, généralement entre 15K€ et 50K€/an selon modules</p></div>
+
+    <div class="logiciel-points">
+      <div class="points-forts">
+        <div class="points-title">✅ Avantages</div>
+        <ul><li>Interface utilisateur intuitive et moderne</li><li>Solution tout-en-un couvrant tous les besoins RH</li><li>Mise en œuvre rapide et formation simplifiée</li><li>Tableaux de bord analytiques et rapports personnalisables</li></ul>
       </div>
-
-      <table class="avantages-table">
-        <thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface utilisateur intuitive et moderne</td>
-            <td>Documentation technique parfois limitée</td>
-          </tr>
-          <tr>
-            <td>Solution tout-en-un couvrant tous les besoins RH</td>
-            <td>Options de personnalisation avancée restreintes</td>
-          </tr>
-          <tr>
-            <td>Mise en œuvre rapide et formation simplifiée</td>
-            <td>Intégrations avec certains logiciels tiers à améliorer</td>
-          </tr>
-          <tr>
-            <td>Tableaux de bord analytiques et rapports personnalisables</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <a href="https://www.malibou.com/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Malibou
-      </a>
+      <div class="points-faibles">
+        <div class="points-title">❌ Inconvénients</div>
+        <ul><li>Documentation technique parfois limitée</li><li>Options de personnalisation avancée restreintes</li><li>Intégrations avec certains logiciels tiers à améliorer</li></ul>
+      </div>
     </div>
+
+    <a href="https://www.malibou.com/" class="logiciel-cta" rel="nofollow" target="_blank">
+      → Essayer Malibou
+    </a>
   </div>
   <div class="logiciel-card" id="paggabylucca">
     <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">Pagga by Lucca</h2>
+      <div class="logiciel-rank">#10</div>
+      <div class="logiciel-info">
+        <div>
+          <div class="logiciel-nom">Pagga by Lucca</div>
+        </div>
       </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">33€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+      <div class="logiciel-meta">
+        <div class="meta-item">
+          <span class="meta-label">Prix dès</span>
+          <span class="meta-val">
+33 €/mois          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Essai gratuit</span>
+          <span class="meta-val">
+✓          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Note</span>
+          <span class="meta-val">
+4,1 /5          </span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Catégorie</span>
+          <span class="meta-val">
+Logiciel de paie          </span>
+        </div>
       </div>
     </div>
-    <div class="logiciel-body">
-      <a href="https://www.lucca.fr/bulletins-paie-dematerialises" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/paggabylucca-screenshot.png" alt="Aperçu Pagga by Lucca"
-          style="width:100%;height:400px;object-fit:cover;object-position:top;border-radius:var(--r);border:1px solid var(--border)"
-          onerror="this.style.display='none'">
-      </a>
 
-      <div class="logiciel-desc">
-            <h3>Les meilleurs logiciels de paie en 2026</h3>
+
+    <div class="logiciel-desc"><h3>Les meilleurs logiciels de paie en 2026</h3>
 <h4>1. Sage Paie & RH — La référence des moyennes entreprises</h4>
 <p>Sage, leader historique du marché français, propose une solution complète qui s'adapte aux évolutions réglementaires constantes. Cette suite logicielle combine gestion de la paie et administration RH dans un environnement sécurisé. Particulièrement appréciée des cabinets comptables et des moyennes entreprises, elle offre une fiabilité éprouvée et un support technique de qualité pour gérer sereinement les obligations sociales françaises.</p>
 <p><strong>Les points forts :</strong></p>
@@ -2240,38 +2294,28 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 <li>Investissement initial important pour le déploiement complet</li>
 </ul>
 <p><strong>Idéal pour :</strong> Entreprises industrielles et de services avec enjeux temps complexes (100-1000 salariés)</p>
-<p><strong>Prix :</strong> 12-25€/salarié/mois selon les capteurs et options</p>
+<p><strong>Prix :</strong> 12-25€/salarié/mois selon les capteurs et options</p></div>
+
+    <div class="logiciel-points">
+      <div class="points-forts">
+        <div class="points-title">✅ Avantages</div>
+        <ul><li>Interface intuitive et ergonomique favorisant l'adoption par les utilisateurs</li><li>Intégration native avec l'écosystème Lucca (paie, congés, temps)</li><li>Modèles d'entretiens personnalisables et processus digitalisé complet</li><li>Support client français réactif et accompagnement à la mise en œuvre</li></ul>
       </div>
-
-      <table class="avantages-table">
-        <thead><tr><th>✅ Avantages</th><th>❌ Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive et ergonomique favorisant l'adoption par les utilisateurs</td>
-            <td>Fonctionnalités limitées comparées aux solutions RH enterprise plus complètes</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec l'écosystème Lucca (paie, congés, temps)</td>
-            <td>Coût potentiellement élevé pour les très petites entreprises</td>
-          </tr>
-          <tr>
-            <td>Modèles d'entretiens personnalisables et processus digitalisé complet</td>
-            <td>Options de personnalisation avancées parfois insuffisantes pour les grands groupes</td>
-          </tr>
-          <tr>
-            <td>Support client français réactif et accompagnement à la mise en œuvre</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <a href="https://www.lucca.fr/bulletins-paie-dematerialises" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Pagga by Lucca
-      </a>
+      <div class="points-faibles">
+        <div class="points-title">❌ Inconvénients</div>
+        <ul><li>Fonctionnalités limitées comparées aux solutions RH enterprise plus complètes</li><li>Coût potentiellement élevé pour les très petites entreprises</li><li>Options de personnalisation avancées parfois insuffisantes pour les grands groupes</li></ul>
+      </div>
     </div>
+
+    <a href="https://www.lucca.fr/bulletins-paie-dematerialises" class="logiciel-cta" rel="nofollow" target="_blank">
+      → Essayer Pagga by Lucca
+    </a>
   </div>
 
-  <div class="content-custom"><p><h2>Qu'est-ce qu'un logiciel de paie ?</h2></p>
+  <!-- CONTENU CUSTOM -->
+  <div class="contenu-custom">
+    <h2 class="section-title">Analyse détaillée</h2>
+    <p><h2>Qu'est-ce qu'un logiciel de paie ?</h2></p>
 <p><p>Un logiciel de gestion de paie est un outil informatique qui automatise l'ensemble des processus liés à la rémunération des salariés. Il calcule automatiquement les bulletins de salaire en intégrant les cotisations sociales, les heures supplémentaires, les primes et les déductions. Le logiciel de fiche de paie gère également la transmission de la Déclaration Sociale Nominative (DSN) aux organismes sociaux, la dématérialisation des bulletins, et assure la conformité avec les évolutions légales constantes. Il centralise aussi la gestion des congés, des arrêts maladie et des notes de frais, simplifiant considérablement le travail administratif des ressources humaines.</p></p>
 <p><h2>Quelles fonctionnalités doit avoir un bon logiciel de paie ?</h2></p>
 <p><p>Un logiciel paie en ligne performant doit proposer des fonctionnalités essentielles pour garantir une gestion efficace et conforme :</p></p>
@@ -2330,30 +2374,32 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
 <p></table></p>
 <p><p>Le coût d'un logiciel de paie varie considérablement selon plusieurs critères : le nombre de bulletins traités mensuellement, les fonctionnalités souhaitées, le niveau d'accompagnement et la complexité de l'entreprise. Les solutions en ligne proposent généralement des tarifs plus accessibles que les logiciels on-premise. Il faut également prévoir les coûts de formation, de paramétrage initial et de maintenance pour évaluer l'investissement total.</p></p>
 <p><h2>Existe-t-il un logiciel de paie gratuit ?</h2></p>
-<p><p>Il existe effectivement quelques solutions de logiciel de paie gratuit, mais avec des limitations importantes. Certains éditeurs proposent des versions freemium pour les très petites structures (1 à 3 salariés maximum) ou des périodes d'essai étendues. Cependant, un logiciel fiche de paie gratuit présente des risques significatifs : absence de mises à jour légales garanties, support limité, fonctionnalités restreintes et conformité incertaine. La complexité croissante de la réglementation française rend risquée l'utilisation d'outils gratuits pour une activité aussi sensible que la paie. Il est généralement préférable d'investir dans une solution payante mais fiable, même à petit budget, pour éviter les erreurs coûteuses et garantir la conformité légale.</p></p></div>
+<p><p>Il existe effectivement quelques solutions de logiciel de paie gratuit, mais avec des limitations importantes. Certains éditeurs proposent des versions freemium pour les très petites structures (1 à 3 salariés maximum) ou des périodes d'essai étendues. Cependant, un logiciel fiche de paie gratuit présente des risques significatifs : absence de mises à jour légales garanties, support limité, fonctionnalités restreintes et conformité incertaine. La complexité croissante de la réglementation française rend risquée l'utilisation d'outils gratuits pour une activité aussi sensible que la paie. Il est généralement préférable d'investir dans une solution payante mais fiable, même à petit budget, pour éviter les erreurs coûteuses et garantir la conformité légale.</p></p>
+  </div>
 
-  <h2 class="section-title">Questions fréquentes</h2>
-
-
-  <div class="faq-item">
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2 class="section-title">Questions fréquentes</h2>
+    <div class="faq-item">
       <div class="faq-q">Qu'est-ce qu'un rédacteur SEO ?</div>
       <div class="faq-a">Un rédacteur SEO est un spécialiste qui crée du contenu optimisé pour les moteurs de recherche afin d'améliorer le référencement naturel d'un site web.</div>
-  </div>
-  <div class="faq-item">
+    </div>
+    <div class="faq-item">
       <div class="faq-q">Comment optimiser un contenu pour le SEO ?</div>
       <div class="faq-a">Pour optimiser un contenu SEO, il faut utiliser des mots-clés pertinents, structurer le texte avec des balises H1-H6, créer des titres accrocheurs et rédiger des méta-descriptions attractives.</div>
-  </div>
-  <div class="faq-item">
+    </div>
+    <div class="faq-item">
       <div class="faq-q">Quelle est l'importance des mots-clés en rédaction SEO ?</div>
       <div class="faq-a">Les mots-clés sont essentiels car ils permettent aux moteurs de recherche de comprendre le sujet du contenu et d'afficher la page dans les résultats pertinents pour les requêtes des utilisateurs.</div>
-  </div>
-  <div class="faq-item">
+    </div>
+    <div class="faq-item">
       <div class="faq-q">Combien de mots doit contenir un article SEO ?</div>
       <div class="faq-a">Un article SEO doit généralement contenir entre 800 et 2000 mots, selon le sujet et la concurrence. L'important est de fournir un contenu complet et de qualité.</div>
-  </div>
-  <div class="faq-item">
+    </div>
+    <div class="faq-item">
       <div class="faq-q">Comment mesurer l'efficacité d'un contenu SEO ?</div>
       <div class="faq-a">L'efficacité d'un contenu SEO se mesure par le positionnement dans les résultats de recherche, le trafic organique généré, le taux de clics et le temps passé sur la page.</div>
+    </div>
   </div>
 
 </main>
@@ -2407,14 +2453,15 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:40px 5vw;font-si
     </div>
   </div>
 </footer>
-<script>
-function toggleMenu(){
-  document.getElementById('nav-mobile').classList.toggle('open');
+<!-- FAQ Schema JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Qu\u0027est-ce qu\u0027un r\u00e9dacteur SEO ?", "acceptedAnswer": { "@type": "Answer", "text": "Un r\u00e9dacteur SEO est un sp\u00e9cialiste qui cr\u00e9e du contenu optimis\u00e9 pour les moteurs de recherche afin d\u0027am\u00e9liorer le r\u00e9f\u00e9rencement naturel d\u0027un site web." } },    { "@type": "Question", "name": "Comment optimiser un contenu pour le SEO ?", "acceptedAnswer": { "@type": "Answer", "text": "Pour optimiser un contenu SEO, il faut utiliser des mots-cl\u00e9s pertinents, structurer le texte avec des balises H1-H6, cr\u00e9er des titres accrocheurs et r\u00e9diger des m\u00e9ta-descriptions attractives." } },    { "@type": "Question", "name": "Quelle est l\u0027importance des mots-cl\u00e9s en r\u00e9daction SEO ?", "acceptedAnswer": { "@type": "Answer", "text": "Les mots-cl\u00e9s sont essentiels car ils permettent aux moteurs de recherche de comprendre le sujet du contenu et d\u0027afficher la page dans les r\u00e9sultats pertinents pour les requ\u00eates des utilisateurs." } },    { "@type": "Question", "name": "Combien de mots doit contenir un article SEO ?", "acceptedAnswer": { "@type": "Answer", "text": "Un article SEO doit g\u00e9n\u00e9ralement contenir entre 800 et 2000 mots, selon le sujet et la concurrence. L\u0027important est de fournir un contenu complet et de qualit\u00e9." } },    { "@type": "Question", "name": "Comment mesurer l\u0027efficacit\u00e9 d\u0027un contenu SEO ?", "acceptedAnswer": { "@type": "Answer", "text": "L\u0027efficacit\u00e9 d\u0027un contenu SEO se mesure par le positionnement dans les r\u00e9sultats de recherche, le trafic organique g\u00e9n\u00e9r\u00e9, le taux de clics et le temps pass\u00e9 sur la page." } }  ]
 }
-document.addEventListener('click',function(e){
-  var m=document.getElementById('nav-mobile'),b=document.getElementById('burger');
-  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');}
-});
 </script>
+
 </body>
 </html>
