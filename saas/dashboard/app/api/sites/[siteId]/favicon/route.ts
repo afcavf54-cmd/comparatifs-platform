@@ -1,21 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getFile, putFile } from '../../../../../lib/github'
-
+import { getFile } from '../../../../../lib/github'
 type Params = { params: Promise<{ siteId: string }> }
 
 export async function POST(req: NextRequest, { params }: Params) {
   const { siteId } = await params
-
   const formData = await req.formData()
   const file = formData.get('favicon') as File | null
   if (!file) return NextResponse.json({ error: 'Fichier manquant' }, { status: 400 })
 
   const buffer = await file.arrayBuffer()
   const base64 = Buffer.from(buffer).toString('base64')
-  const ext = file.name.endsWith('.svg') ? 'svg' : file.name.endsWith('.png') ? 'png' : 'ico'
-  const path = `platform/sites/${siteId}/favicon.${ext}`
+  const ext = file.name.endsWith('.svg') ? 'svg' : file.name.endsWith('.ico') ? 'ico' : 'png'
+  const path = `platform/sites/${siteId}/public/favicon.${ext}`
 
-  // Vérifie si existe déjà pour récupérer le SHA
   const existing = await getFile(path)
 
   const res = await fetch(
@@ -30,11 +27,14 @@ export async function POST(req: NextRequest, { params }: Params) {
       body: JSON.stringify({
         message: `HUB: Upload favicon for ${siteId}`,
         content: base64,
-        ...(existing ? { sha: existing.sha } : {}),
+        ...(existing?.sha ? { sha: existing.sha } : {}),
       }),
     }
   )
 
-  if (!res.ok) return NextResponse.json({ error: 'Erreur GitHub' }, { status: 500 })
+  if (!res.ok) {
+    const err = await res.json()
+    return NextResponse.json({ error: err.message || 'Erreur GitHub' }, { status: 500 })
+  }
   return NextResponse.json({ success: true, ext })
 }
