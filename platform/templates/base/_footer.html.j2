@@ -31,8 +31,13 @@
 
       <div class="footer-col">
         <h4>Navigation</h4>
+        {% if page_types is defined and 'classement' in page_types %}
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/plan-du-site">Plan du site</a>
+        {% else %}
         <a href="/comparatifs-scpi">Comparatifs SCPI</a>
         <a href="/avis-scpi">Avis SCPI</a>
+        {% endif %}
         <a href="/plan-du-site">Plan du site</a>
         <a href="/mentions-legales">Mentions légales</a>
         <a href="/politique-confidentialite">Confidentialité</a>
