@@ -65,10 +65,22 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);fon
     </div>
 
     {% if is_classement %}
-    {% set ns = namespace(cats=[]) %}
-    <div class="sitemap-section">
+    <div class="sitemap-section sitemap-full">
       <h2>Nos classements</h2>
-      <ul>
+      {% if classements_by_category %}
+        {% for category, classements in classements_by_category.items() %}
+        <div style="margin-bottom:20px">
+          <div style="font-size:12px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)">{{ category }}</div>
+          <ul>
+            {% for cls in classements %}
+            <li><a href="/meilleur-{{ cls.slug }}">Meilleur {{ cls.label }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
+      {% else %}
+        {% set ns = namespace(cats=[]) %}
+        <ul>
         {% for prod in products %}
         {% set cat = prod.categorie | default('') %}
         {% if cat and cat not in ns.cats %}
@@ -76,7 +88,8 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);fon
         <li><a href="/meilleur-{{ cat | lower | replace(' ', '-') }}">Meilleur {{ cat }}</a></li>
         {% endif %}
         {% endfor %}
-      </ul>
+        </ul>
+      {% endif %}
     </div>
 
     {% else %}
