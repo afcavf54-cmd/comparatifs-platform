@@ -14,7 +14,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">
 <style>
-:root{--bg:{{ theme.bg }};--surface:#fff;--ink:{{ theme.ink }};--ink2:#4A5568;--ink3:#718096;--accent:{{ theme.accent }};--accent2:{{ theme.accent2 }};--border:#E2E8F0;--r:12px;--r2:20px}
+:root{
+  --bg:{{ theme.bg }};
+  --surface:#fff;
+  --surface2:#F0ECE5;
+  --ink:{{ theme.ink }};
+  --ink2:#6B6560;
+  --ink3:#A09890;
+  --accent:{{ theme.accent }};
+  --accent2:{{ theme.accent2 }};--cta:{{ theme.cta_color if theme.cta_color is defined and theme.cta_color else "#F59E0B" }};--cta-text:{{ theme.cta_text_color if theme.cta_text_color is defined and theme.cta_text_color else "#ffffff" }};
+  --border:#E2DDD6;
+  --r:12px;
+  --r2:20px;
+  --green:#1A7A4A;
+}};--surface:#fff;--ink:{{ theme.ink }};--ink2:#4A5568;--ink3:#718096;--accent:{{ theme.accent }};--accent2:{{ theme.accent2 }};--border:#E2E8F0;--r:12px;--r2:20px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'{{ theme.font_body }}',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
 a{color:var(--accent);text-decoration:none}
@@ -39,7 +52,22 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);fon
 </head>
 <body>
 
-{% include "base/_nav.html.j2" %}
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">{% if site.logo_img is defined and site.logo_img %}<img src="{{ site.logo_img }}" alt="{{ site.name }}" style="height:36px;width:auto;object-fit:contain;vertical-align:middle">{% else %}{{ site.logo_text }}<span>{{ site.logo_accent }}</span>{% endif %}</a>
+    <div class="nav-links">
+      <a href="/nos-comparateurs">Nos comparateurs</a>
+    </div>
+    <a href="/contact" class="nav-cta">Contact</a>
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="/nos-comparateurs">Nos comparateurs</a>
+    <a href="/contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
 
 <main>
   <h1>Plan du site</h1>
