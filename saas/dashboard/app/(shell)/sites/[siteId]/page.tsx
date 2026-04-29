@@ -122,12 +122,7 @@ export default function SiteDetailPage() {
             </a>
           </div>
         </div>
-        <div style={{ display: 'flex', gap: 10 }}>
-          <a href={`https://${site.domain}`} target="_blank" rel="noopener noreferrer" style={{ padding: '10px 18px', borderRadius: 10, background: '#1E2D3D', color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 600 }}>🌐 Voir le site</a>
-          <button onClick={deploy} disabled={deploying} style={{ padding: '10px 20px', borderRadius: 10, border: 'none', background: deploying ? '#1E2D3D' : 'linear-gradient(135deg, #00D4AA, #0090FF)', color: deploying ? '#4A5568' : '#fff', cursor: deploying ? 'not-allowed' : 'pointer', fontWeight: 600, fontSize: 13 }}>
-            {deploying ? '⏳ En cours...' : '🚀 Déployer'}
-          </button>
-        </div>
+
       </div>
 
       {deployMsg && (
@@ -234,7 +229,7 @@ export default function SiteDetailPage() {
               <textarea
                 value={analyticsClicky}
                 onChange={e => setAnalyticsClicky(e.target.value)}
-                placeholder={'<script async data-id="101505107" src="/623dee8d7d7150d88.js"></script>'}
+                placeholder={'<script async data-id="101505110" src="//static.getclicky.com/js"></script>'}
                 rows={3}
                 style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none', boxSizing: 'border-box' as const, fontFamily: 'monospace', resize: 'vertical', lineHeight: 1.5 }}
               />
