@@ -255,7 +255,7 @@ nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;posit
 .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
 .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
 .nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.1)}
-.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--accent2);color:#fff;font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
 .nav-cta:hover{opacity:.88}
 .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
 .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
@@ -868,15 +868,11 @@ Notre analyse basée sur les données officielles des sociétés de gestion.    
 .footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
 .footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
 .footer-col a:hover{color:#fff}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
 .footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
-.footer-bottom-right{display:flex;gap:20px}
-.footer-bottom-right a{font-size:12px;color:rgba(255,255,255,.3);transition:.15s}
-.footer-bottom-right a:hover{color:rgba(255,255,255,.7)}
 @media(max-width:768px){
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
   .footer-brand{grid-column:1/-1}
-  .footer-bottom{flex-direction:column;align-items:flex-start}
 }
 </style>
 
@@ -886,13 +882,12 @@ Notre analyse basée sur les données officielles des sociétés de gestion.    
 
       <div class="footer-brand">
         <div class="footer-logo">UTL<span>Peipin</span></div>
-        <p>Comparatifs SCPI indépendants. 45 analyses détaillées pour choisir la meilleure SCPI selon votre profil.</p>
+        <p>Comparatifs SCPI 2026</p>
       </div>
 
       <div class="footer-col">
         <h4>Navigation</h4>
-        <a href="/comparatifs-scpi">Comparatifs SCPI</a>
-        <a href="/avis-scpi">Avis SCPI</a>
+        <a href="/nos-comparateurs">Nos comparateurs</a>
         <a href="/plan-du-site">Plan du site</a>
         <a href="/mentions-legales">Mentions légales</a>
         <a href="/politique-confidentialite">Confidentialité</a>
@@ -907,7 +902,7 @@ Notre analyse basée sur les données officielles des sociétés de gestion.    
 
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 utl-peipin.fr — Données actualisées le 29 avril 2026. Les performances passées ne préjugent pas des performances futures.
+        © 2026 utl-peipin.fr — Données actualisées le 29 avril 2026
       </div>
     </div>
   </div>
