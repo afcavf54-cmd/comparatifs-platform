@@ -29,6 +29,7 @@ export default function SettingsPage() {
   const [msgSeo, setMsgSeo] = useState('')
   const [msgPageTypes, setMsgPageTypes] = useState('')
   const [msgFavicon, setMsgFavicon] = useState('')
+  const [faviconPreview, setFaviconPreview] = useState<string | null>(null)
   const [confirmDelete, setConfirmDelete] = useState('')
 
   useEffect(() => {
@@ -215,30 +216,49 @@ export default function SettingsPage() {
       <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24, marginBottom: 20 }}>
         {/* Logo */}
         <h3 style={{ color: '#fff', margin: '0 0 8px', fontSize: 15, fontWeight: 600 }}>🏷 Logo du site</h3>
-        <p style={{ color: '#8B9CB0', fontSize: 12, marginBottom: 16, lineHeight: 1.6 }}>Formats acceptés : SVG, PNG. Recommandé : PNG transparent ou SVG.<br/>Sera copié dans le dossier public du site.</p>
+        <p style={{ color: '#8B9CB0', fontSize: 12, marginBottom: 16, lineHeight: 1.6 }}>PNG transparent ou SVG · Recommandé : 200×50px</p>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-          {logoPreview && <img src={logoPreview} alt="logo" style={{ height: 40, borderRadius: 6, background: '#1E2D3D', padding: 4 }} />}
-          <label style={{ padding: '9px 18px', borderRadius: 9, background: '#1E2D3D', color: '#fff', cursor: 'pointer', fontSize: 13, fontWeight: 600 }}>
-            📁 Choisir un logo
-            <input type="file" accept=".svg,.png,.jpg,.jpeg,.webp" style={{ display: 'none' }} onChange={e => {
-              const f = e.target.files?.[0]
-              if (f) { setLogoFile(f); setLogoPreview(URL.createObjectURL(f)) }
-            }} />
-          </label>
-          {logoFile && <span style={{ fontSize: 12, color: '#8B9CB0' }}>{logoFile.name} ({Math.round(logoFile.size/1024)}kb)</span>}
+          <div style={{ width: 120, height: 48, borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+            {logoPreview ? <img src={logoPreview} alt="logo" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} /> : <span style={{ fontSize: 11, color: '#4A5568' }}>Aperçu</span>}
+          </div>
+          <div>
+            <label style={{ padding: '9px 18px', borderRadius: 9, background: '#1E2D3D', color: '#fff', cursor: 'pointer', fontSize: 13, fontWeight: 600, display: 'inline-block' }}>
+              📁 Choisir un logo
+              <input type="file" accept=".svg,.png,.jpg,.jpeg,.webp" style={{ display: 'none' }} onChange={e => {
+                const f = e.target.files?.[0]
+                if (f) { setLogoFile(f); setLogoPreview(URL.createObjectURL(f)) }
+              }} />
+            </label>
+            {logoFile && <div style={{ fontSize: 11, color: '#8B9CB0', marginTop: 4 }}>{logoFile.name} · {Math.round(logoFile.size/1024)}kb</div>}
+          </div>
         </div>
         {msgLogo && <div style={{ fontSize: 12, color: msgLogo.startsWith('✓') ? '#00D4AA' : '#FC8181', marginBottom: 10 }}>{msgLogo}</div>}
-        <button onClick={uploadLogo} disabled={uploadingLogo || !logoFile} style={{ padding: '11px 24px', borderRadius: 10, border: 'none', fontWeight: 600, fontSize: 13, background: logoFile ? 'linear-gradient(135deg, #00D4AA, #0090FF)' : '#1E2D3D', color: logoFile ? '#fff' : '#4A5568', cursor: logoFile ? 'pointer' : 'not-allowed', marginBottom: 28 }}>
-          {uploadingLogo ? 'Upload...' : '⬆ Uploader le logo'}
+        <button onClick={uploadLogo} disabled={uploadingLogo || !logoFile} style={{ padding: '10px 22px', borderRadius: 9, border: 'none', fontWeight: 600, fontSize: 13, background: logoFile ? 'linear-gradient(135deg, #00D4AA, #0090FF)' : '#1E2D3D', color: logoFile ? '#fff' : '#4A5568', cursor: logoFile ? 'pointer' : 'not-allowed', marginBottom: 28 }}>
+          {uploadingLogo ? '⏳ Upload...' : '💾 Sauvegarder le logo'}
         </button>
 
         {/* Favicon */}
         <h3 style={{ color: '#fff', margin: '0 0 8px', fontSize: 15, fontWeight: 600 }}>🖼 Favicon</h3>
-        <p style={{ color: '#8B9CB0', fontSize: 12, marginBottom: 16, lineHeight: 1.6 }}>Formats acceptés : SVG, PNG, ICO. Recommandé : SVG ou PNG 32×32.<br/>Après upload, relancez un déploiement pour l'appliquer.</p>
-        <input type="file" accept=".svg,.png,.ico" onChange={e => setFaviconFile(e.target.files?.[0] || null)} style={{ color: '#8B9CB0', fontSize: 13, marginBottom: 12, display: 'block' }} />
-        {faviconFile && <div style={{ fontSize: 12, color: '#8B9CB0', marginBottom: 12 }}>Fichier : <span style={{ color: '#fff' }}>{faviconFile.name}</span> ({Math.round(faviconFile.size / 1024)}kb)</div>}
-        {msgFavicon && <div style={{ fontSize: 13, color: msgFavicon.startsWith('✓') ? '#00D4AA' : '#FC8181', marginBottom: 12 }}>{msgFavicon}</div>}
-        <button onClick={uploadFavicon} disabled={uploadingFavicon || !faviconFile} style={{ padding: '11px 24px', borderRadius: 10, border: 'none', fontWeight: 600, fontSize: 13, background: faviconFile ? 'linear-gradient(135deg, #00D4AA, #0090FF)' : '#1E2D3D', color: faviconFile ? '#fff' : '#4A5568', cursor: faviconFile ? 'pointer' : 'not-allowed' }}>{uploadingFavicon ? 'Upload...' : '⬆ Uploader le favicon'}</button>
+        <p style={{ color: '#8B9CB0', fontSize: 12, marginBottom: 16, lineHeight: 1.6 }}>SVG ou PNG 32×32 · ICO accepté</p>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
+          <div style={{ width: 48, height: 48, borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+            {faviconPreview ? <img src={faviconPreview} alt="favicon" style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} /> : <span style={{ fontSize: 11, color: '#4A5568' }}>🖼</span>}
+          </div>
+          <div>
+            <label style={{ padding: '9px 18px', borderRadius: 9, background: '#1E2D3D', color: '#fff', cursor: 'pointer', fontSize: 13, fontWeight: 600, display: 'inline-block' }}>
+              📁 Choisir un favicon
+              <input type="file" accept=".svg,.png,.ico" style={{ display: 'none' }} onChange={e => {
+                const f = e.target.files?.[0]
+                if (f) { setFaviconFile(f); setFaviconPreview(URL.createObjectURL(f)) }
+              }} />
+            </label>
+            {faviconFile && <div style={{ fontSize: 11, color: '#8B9CB0', marginTop: 4 }}>{faviconFile.name} · {Math.round(faviconFile.size/1024)}kb</div>}
+          </div>
+        </div>
+        {msgFavicon && <div style={{ fontSize: 12, color: msgFavicon.startsWith('✓') ? '#00D4AA' : '#FC8181', marginBottom: 10 }}>{msgFavicon}</div>}
+        <button onClick={uploadFavicon} disabled={uploadingFavicon || !faviconFile} style={{ padding: '10px 22px', borderRadius: 9, border: 'none', fontWeight: 600, fontSize: 13, background: faviconFile ? 'linear-gradient(135deg, #00D4AA, #0090FF)' : '#1E2D3D', color: faviconFile ? '#fff' : '#4A5568', cursor: faviconFile ? 'pointer' : 'not-allowed' }}>
+          {uploadingFavicon ? '⏳ Upload...' : '💾 Sauvegarder le favicon'}
+        </button>
       </div>
 
       {/* Danger zone */}
