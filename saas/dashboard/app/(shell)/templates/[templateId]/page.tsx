@@ -143,7 +143,7 @@ export default function TemplateDetailPage() {
   const imagesBasePath = `platform/schemas/images/${templateId}`
 
   useEffect(() => {
-    fetch(`/api/github?path=${encodeURIComponent(schemaPath)}`).then(r => r.json()).then(d => {
+    fetch(`/api/github?path=${encodeURIComponent(schemaPath)}&t=${Date.now()}`).then(r => r.json()).then(d => {
       try {
         const s = JSON.parse(d.content)
         if (!s.keywords) s.keywords = {}
