@@ -444,11 +444,11 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     products_yaml = load_yaml(products_yaml_path) if products_yaml_path.exists() else {"products": []}
     site          = config["site"]
     theme         = config["theme"]
-    # Injecter cta_color et cta_text_color depuis la racine du config dans theme
-    if "cta_color" not in theme and config.get("cta_color"):
-        theme["cta_color"] = config["cta_color"]
-    if "cta_text_color" not in theme and config.get("cta_text_color"):
-        theme["cta_text_color"] = config["cta_text_color"]
+    # Injecter cta_color et cta_text_color (theme: ou racine du config)
+    if "cta_color" not in theme:
+        theme["cta_color"] = config.get("cta_color", "")
+    if "cta_text_color" not in theme:
+        theme["cta_text_color"] = config.get("cta_text_color", "")
     criteria      = config["criteria"]
 
     print(f"\n🚀 Génération site : {site_slug}")
