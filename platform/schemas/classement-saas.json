@@ -343,22 +343,22 @@
       "words_max": 120
     },
     "prompt_en_bref": {
-      "text": "",
+      "text": "Tu rédiges une section “En bref” pour un comparatif sur : [MOT-CLE]\n\nPersona :\n[PERSONA]\n\n🎯 Objectif :\n- résumer les meilleurs choix rapidement\n- permettre une lecture en 30 secondes\n\n📌 Format :\n- 4 à 6 bullet points\n- chaque point = 1 recommandation claire\n- inclure :\n  - meilleur global\n  - meilleur rapport qualité/prix\n  - plus simple\n  - plus complet\n\n📌 Style :\n- phrases courtes\n- ton direct\n- pas de jargon\n\n✅ Optimisation SEO :\n- intégrer des variantes du mot-clé\n- réponses concises type featured snippet\n\n❌ À éviter :\n- phrases longues\n- répétition du classement détaillé",
       "words_min": 15,
       "words_max": 25
     },
     "prompt_classement": {
-      "text": "Pour chaque marque, ",
-      "words_min": 150,
-      "words_max": 400
+      "text": "Tu rédiges une fiche détaillée pour le logiciel : [NOM DU LOGICIEL]\n\nContexte :\nComparatif sur : [MOT-CLE]\n\nPersona :\n[PERSONA]\n\n🎯 Objectif :\n- aider à comprendre si ce logiciel est adapté\n- se différencier des descriptions génériques\n\n📌 Structure OBLIGATOIRE :\n\n1. Présentation rapide (2-3 lignes)\n2. Pour qui ce logiciel est adapté\n3. Points forts (3 à 5)\n4. Limites (2 à 3)\n5. Cas concret d’utilisation\n6. Verdict du persona\n\n📌 Consignes :\n- 180 à 300 mots\n- éviter description officielle\n- utiliser logique métier\n- varier le style selon persona\n\n📌 SEO :\n- inclure le nom du logiciel + mot-clé\n- enrichir lexicalement (synonymes, cas d’usage)\n\n❌ À éviter :\n- copier fiche produit\n- contenu générique",
+      "words_min": 100,
+      "words_max": 150
     },
     "prompt_contenu": {
-      "text": "",
+      "text": "Tu rédiges une section pédagogique sur : [TYPE DE LOGICIEL]\n\nPersona :\n[PERSONA]\n\n🎯 Objectif :\n- expliquer clairement ce type de logiciel\n- aider le lecteur à comprendre ses besoins\n\n📌 Sections à inclure :\n\n1. Qu’est-ce que [TYPE DE LOGICIEL] ?\n2. À qui s’adresse ce type d’outil ?\n3. Quels sont les critères de choix ?\n4. Combien ça coûte ?\n5. Erreurs à éviter\n\n📌 Consignes :\n- 400 à 700 mots\n- ton adapté au persona\n- exemples concrets\n- vulgarisation si nécessaire\n\n📌 SEO :\n- intégrer variantes :\n  - logiciel [type]\n  - outil [type]\n  - solution [type]\n- répondre à plusieurs intentions\n\n❌ À éviter :\n- contenu trop académique\n- répétition du classement",
       "words_min": 200,
       "words_max": 500
     },
     "prompt_faq": {
-      "text": "",
+      "text": "Tu rédiges une FAQ SEO pour : [MOT-CLE]\n\nPersona :\n[PERSONA]\n\n🎯 Objectif :\n- répondre aux questions fréquentes des utilisateurs\n- capter du trafic longue traîne\n\n📌 Format :\n- 5 à 8 questions\n- réponses de 40 à 80 mots\n\n📌 Types de questions :\n- prix\n- gratuit vs payant\n- meilleur outil\n- comparaison rapide\n- erreurs fréquentes\n- cas spécifique (PME, freelance…)\n\n📌 SEO :\n- inclure variantes du mot-clé\n- répondre clairement dès la première phrase\n\n❌ À éviter :\n- réponses vagues\n- FAQ inutile ou générique",
       "words_min": 50,
       "words_max": 150
     }
