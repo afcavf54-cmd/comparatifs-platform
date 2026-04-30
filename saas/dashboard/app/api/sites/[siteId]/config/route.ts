@@ -40,7 +40,29 @@ export async function GET(_: NextRequest, { params }: Params) {
       avis_meta_pattern: get('avis_meta_pattern'),
       liste_comp_title: get('liste_comp_title'),
       liste_avis_title: get('liste_avis_title'),
-    }
+    },
+    persona_prompt: get('persona_prompt'),
+    author: (() => {
+      const authorMatch = yaml.match(/^author:\s*\n((?:[ ]+[^\n]+\n?)*)/m)
+      if (!authorMatch) return null
+      const getField = (field: string) => {
+        const m = authorMatch[1].match(new RegExp(`${field}:\s*["']?(.+?)["']?\s*$`, 'm'))
+        return m ? m[1].trim().replace(/^["']|["']$/g, '') : ''
+      }
+      const socialsBlock = yaml.match(/^  socials:\s*\n((?:[ ]+-[^\n]+\n(?:[ ]+[^\n]+\n?)*)*)/m)
+      const socials: {label: string, url: string}[] = []
+      if (socialsBlock) {
+        const lines = socialsBlock[1].split('\n')
+        let current: any = {}
+        lines.forEach(l => {
+          const lbl = l.match(/label:\s*["']?(.+?)["']?\s*$/)
+          const url = l.match(/url:\s*["']?(.+?)["']?\s*$/)
+          if (lbl) current.label = lbl[1].trim().replace(/^["']|["']$/g, '')
+          if (url) { current.url = url[1].trim().replace(/^["']|["']$/g, ''); socials.push({...current}); current = {} }
+        })
+      }
+      return { name: getField('name'), bio: getField('bio'), job_title: getField('job_title'), photo: getField('photo'), socials }
+    })()
   })
 }
 
