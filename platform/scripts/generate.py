@@ -900,7 +900,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 for _cat_p, _cls_list in classements_by_category.items():
                     if _cat_p == _cat_parent:
                         for _cls in sorted(_cls_list, key=lambda x: x["slug"]):
-                            if _cls["slug"] != slugify_cat(kw_name):
+                            if _cls["slug"] != cat_slug:
                                 _siblings.append(_cls)
                 _siblings = _siblings[:8]
 
