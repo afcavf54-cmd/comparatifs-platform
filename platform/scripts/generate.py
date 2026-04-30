@@ -894,6 +894,16 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     "author_photo": author_cfg.get("photo", ""),
                     "author_socials": author_cfg.get("socials", []),
                 }
+                # Trouver les siblings (même catégorie parente, max 8, triés, fixes)
+                _cat_parent = _kw_data.get("__categorie", "Autres") or "Autres"
+                _siblings = []
+                for _cat_p, _cls_list in classements_by_category.items():
+                    if _cat_p == _cat_parent:
+                        for _cls in sorted(_cls_list, key=lambda x: x["slug"]):
+                            if _cls["slug"] != slugify_cat(kw_name):
+                                _siblings.append(_cls)
+                _siblings = _siblings[:8]
+
                 html = classement_tpl.render(
                     site=site_with_author,
                     theme=theme, products=enriched_products, criteria=criteria,
@@ -902,6 +912,8 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     editorial=cat_editorial, build_date=date.today().isoformat(),
                     page_types=config.get("page_types", {}),
                     total_pairs=len(all_pairs),
+                    siblings=_siblings,
+                    cat_parent=_cat_parent,
                 )
                 (output_dir / f"{page_slug}.html").write_text(html, encoding="utf-8")
                 classement_count += 1
