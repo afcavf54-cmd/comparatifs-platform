@@ -536,7 +536,14 @@ def load_schema_keywords(site_dir: Path) -> dict:
         if global_prompt:
             kw['__global_prompt'] = global_prompt
         if default_prompts:
-            kw['__default_prompts'] = default_prompts
+            # Normaliser : accepter ancien format str et nouveau format {text, words_min, words_max}
+            normalized = {}
+            for k, v in default_prompts.items():
+                if isinstance(v, str):
+                    normalized[k] = {'text': v, 'words_min': 0, 'words_max': 0}
+                else:
+                    normalized[k] = v
+            kw['__default_prompts'] = normalized
     return keywords
 
 
@@ -635,18 +642,31 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
             print(f"\n    → prompts custom détectés")
             result = {}
 
-            # Combiner prompts par défaut + prompts custom
+            # Combiner prompts par défaut + prompts custom + contrainte de mots
+            import random as _random
             _dp = keyword_data.get('__default_prompts', {})
-            def _combine(default_key, custom_prompt):
-                _default = _dp.get(default_key, '').strip()
+            def _word_constraint(default_key, per_line=False):
+                dp_entry = _dp.get(default_key, {})
+                if isinstance(dp_entry, dict):
+                    wmin = dp_entry.get('words_min', 0)
+                    wmax = dp_entry.get('words_max', 0)
+                    if wmin and wmax:
+                        target = _random.randint(wmin, wmax)
+                        if per_line:
+                            return f'\n\nGénère exactement {target} mots par ligne/bullet point.'
+                        return f'\n\nGénère exactement {target} mots (entre {wmin} et {wmax}).'
+                return ''
+            def _combine(default_key, custom_prompt, per_line=False):
+                dp_entry = _dp.get(default_key, {})
+                _default = (dp_entry.get('text', '') if isinstance(dp_entry, dict) else str(dp_entry or '')).strip()
                 _custom = (custom_prompt or '').strip()
-                if _default and _custom:
-                    return _default + '\n\n' + _custom
-                return _custom or _default
+                _words = _word_constraint(default_key, per_line)
+                combined = (_default + '\n\n' + _custom).strip() if (_default and _custom) else (_custom or _default)
+                return combined + _words
 
             for section_key, section_prompt, is_json in [
                 ('intro', _combine('prompt_intro', prompt_intro), False),
-                ('en_bref', _combine('prompt_en_bref', prompt_en_bref), False),
+                ('en_bref', _combine('prompt_en_bref', prompt_en_bref, per_line=True), False),
                 ('contenu_custom', _combine('prompt_contenu', prompt_contenu), False),
                 ('faq', _combine('prompt_faq', prompt_faq) + '\n\nIMPORTANT: Réponds UNIQUEMENT avec un tableau JSON simple : [{"q": "question", "a": "réponse"}, ...]. Pas de structure imbriquée, pas de clé "faq" parent.', True),
             ]:
