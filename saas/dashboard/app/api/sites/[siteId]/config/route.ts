@@ -123,6 +123,9 @@ export async function PATCH(req: NextRequest, { params }: Params) {
       const re = new RegExp(`^([ ]{2})${k}:(.*?)$`, 'm')
       if (re.test(yaml)) {
         yaml = yaml.replace(re, `$1${k}: "${v}"`)
+      } else {
+        // La clé n'existe pas dans theme: → l'ajouter avant la ligne suivante après theme:
+        yaml = yaml.replace(/^(theme:.*\n(?:  .*\n)*)/m, `$1  ${k}: "${v}"\n`)
       }
     })
   }
