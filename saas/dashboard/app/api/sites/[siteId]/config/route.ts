@@ -92,18 +92,17 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   if (body.home_title !== undefined) replaceKey('home_title', body.home_title || '')
   if (body.home_description !== undefined) replaceKey('home_description', body.home_description || '')
   if (body.home_h1 !== undefined) replaceKey('home_h1', body.home_h1 || '')
-  // persona_prompt : bloc scalaire YAML (peut contenir :, ", newlines)
+  // persona_prompt : bloc scalaire YAML
   if (body.persona_prompt !== undefined) {
-    const pp = body.persona_prompt || ''
+    const pp = (body.persona_prompt || '').trim()
     const ppBlock = pp
       ? `persona_prompt: |\n${pp.split('\n').map((l: string) => '  ' + l).join('\n')}`
-      : `persona_prompt: ""`
-    if (/^persona_prompt:/m.test(yaml)) {
-      // Supprimer l'ancien bloc persona_prompt (clé + lignes indentées suivantes)
-      yaml = yaml.replace(/^persona_prompt:(?:[^\n]*|\s*\|\n(?:  [^\n]*\n?)*)*/m, ppBlock)
-    } else {
-      yaml = yaml.trimEnd() + '\n' + ppBlock + '\n'
-    }
+      : 'persona_prompt: ""'
+    // Supprimer TOUT le bloc persona_prompt existant (multi-lignes)
+    yaml = yaml.replace(/^persona_prompt:(?:[^\n]*)(?:\n(?:  [^\n]*))*/mg, '')
+    // Nettoyer les lignes vides multiples
+    yaml = yaml.replace(/\n{3,}/g, '\n\n').trimEnd()
+    yaml = yaml + '\n' + ppBlock + '\n'
   }
   if (body.analytics_clicky !== undefined) replaceKey('analytics_clicky', body.analytics_clicky || '')
   if (body.google_site_verification !== undefined) replaceKey('google_site_verification', body.google_site_verification || '')
