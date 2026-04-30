@@ -641,8 +641,17 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
         new_products = [p for p in cat_products if p.get("slug","") not in existing_descs]
 
         if skip_existing and key in editorial and not new_products:
-            print(f"  [{cat}] ⏭ déjà généré ({len(cat_products)} produits)")
-            continue
+            # Vérifier que les sections importantes sont bien remplies
+            existing_entry = editorial.get(key, {})
+            sections_ok = all([
+                existing_entry.get('intro', ''),
+                existing_entry.get('en_bref', ''),
+            ])
+            contenu_ok = not _combine('prompt_contenu', prompt_contenu) or existing_entry.get('contenu_custom', '')
+            if sections_ok and contenu_ok:
+                print(f"  [{cat}] ⏭ déjà généré ({len(cat_products)} produits)")
+                continue
+            print(f"  [{cat}] sections manquantes — régénération partielle...")
 
         if skip_existing and key in editorial and new_products:
             print(f"  [{cat}] {len(new_products)} nouveau(x) produit(s) à générer...")
@@ -713,6 +722,11 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
             ]:
                 if not section_prompt:
                     continue
+                # Skip si déjà remplie et non vide
+                if skip_existing and result.get(section_key, ''):
+                    existing_val = result.get(section_key, '')
+                    if len(existing_val) > 50 and 'I can see' not in existing_val and 'I see that' not in existing_val:
+                        continue
                 print(f"    [{section_key}]...", end=" ", flush=True)
                 _base_sys = 'Tu es un expert rédacteur SEO. Réponds UNIQUEMENT en JSON valide sans backticks, sans preamble.' if is_json else 'Tu es un expert rédacteur SEO. Aucun tiret long (— ou –). Aucun markdown. Réponds uniquement avec le contenu HTML demandé.'
                 _global = keyword_data.get('__global_prompt', '').strip()
