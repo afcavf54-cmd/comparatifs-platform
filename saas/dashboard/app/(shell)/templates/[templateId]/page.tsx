@@ -129,8 +129,6 @@ export default function TemplateDetailPage() {
   const [globalPrompt, setGlobalPrompt] = useState('')
   const [savingGlobal, setSavingGlobal] = useState(false)
   const [showGlobalPrompt, setShowGlobalPrompt] = useState(false)
-  const [globalPrompt, setGlobalPrompt] = useState('')
-  const [savingGlobal, setSavingGlobal] = useState(false)
   const [loadedImages, setLoadedImages] = useState<Record<string, string>>({})
   const fileInputRef = useRef<HTMLInputElement>(null)
 
