@@ -126,6 +126,11 @@ export default function TemplateDetailPage() {
   const [newGroupName, setNewGroupName] = useState('')
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null)
   const [uploadingImg, setUploadingImg] = useState<Record<string, boolean>>({})
+  const [globalPrompt, setGlobalPrompt] = useState('')
+  const [savingGlobal, setSavingGlobal] = useState(false)
+  const [showGlobalPrompt, setShowGlobalPrompt] = useState(false)
+  const [globalPrompt, setGlobalPrompt] = useState('')
+  const [savingGlobal, setSavingGlobal] = useState(false)
   const [loadedImages, setLoadedImages] = useState<Record<string, string>>({})
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -314,8 +319,44 @@ export default function TemplateDetailPage() {
         </div>
       </div>
 
+      {/* Prompt global */}
+      <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 10, padding: '14px 18px', marginBottom: 16, cursor: 'pointer' }}
+        onClick={() => setShowGlobalPrompt(v => !v)}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span style={{ color: '#fff', fontWeight: 600, fontSize: 14 }}>🌐 Prompt global <span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 400 }}>— appliqué à toutes les générations</span></span>
+          <span style={{ color: '#8B9CB0', fontSize: 12 }}>{showGlobalPrompt ? '▲' : '▼'}</span>
+        </div>
+        {!showGlobalPrompt && globalPrompt && (
+          <div style={{ color: '#8B9CB0', fontSize: 12, marginTop: 6, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{globalPrompt.substring(0, 120)}...</div>
+        )}
+        {showGlobalPrompt && (
+          <div onClick={e => e.stopPropagation()} style={{ marginTop: 14 }}>
+            <textarea
+              value={globalPrompt}
+              onChange={e => setGlobalPrompt(e.target.value)}
+              rows={8}
+              placeholder="Ex: Tu es un expert en logiciels SaaS. Écris en français, ton professionnel, sans tirets longs..."
+              style={{ width: '100%', padding: '10px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', resize: 'vertical' as const, fontFamily: 'inherit', boxSizing: 'border-box' as const, lineHeight: 1.6 }}
+            />
+            <div style={{ display: 'flex', gap: 10, marginTop: 10, alignItems: 'center' }}>
+              <button onClick={async () => {
+                setSavingGlobal(true)
+                const res = await fetch(`/api/schemas/${templateId}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ global_prompt: globalPrompt }) })
+                const d = await res.json()
+                setSavingGlobal(false)
+                if (d.ok) alert('✓ Prompt global sauvegardé')
+                else alert('Erreur : ' + (d.error || 'inconnue'))
+              }} style={{ padding: '8px 16px', borderRadius: 7, border: 'none', background: 'linear-gradient(135deg,#00D4AA,#0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 12 }}>
+                {savingGlobal ? '...' : '💾 Sauvegarder'}
+              </button>
+              {globalPrompt && <span style={{ fontSize: 11, color: '#8B9CB0' }}>{globalPrompt.length} caractères</span>}
+            </div>
+          </div>
+        )}
+      </div>
+
       <div style={{ display: 'flex', gap: 16 }}>
-        {/* Sidebar types */}
+        {/* Sidebar types */}}
         <div style={{ width: 220, flexShrink: 0, background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 12, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
           <div style={{ padding: '10px 14px', borderBottom: '1px solid #1E2D3D', fontSize: 11, color: '#8B9CB0', fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.06em' }}>Types</div>
           <div style={{ flex: 1, overflowY: 'auto' }}>
