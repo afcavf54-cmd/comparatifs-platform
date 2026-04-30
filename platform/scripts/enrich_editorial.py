@@ -677,9 +677,18 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
                 combined = (_default + '\n\n' + _custom).strip() if (_default and _custom) else (_custom or _default)
                 return combined + _words
 
+            # Fallbacks si prompt vide
+            _en_bref_prompt = _combine('prompt_en_bref', prompt_en_bref, per_line=True)
+            if not _en_bref_prompt.strip() or _en_bref_prompt.strip().startswith('Génère exactement'):
+                _en_bref_prompt = f'Génère un encart "En bref" pour les meilleurs {cat} en {year}. Format : <ul> avec 5 <li>, chaque item = nom du logiciel + profil cible idéal en 1 phrase. Aucun tiret long.'
+
+            _intro_prompt = _combine('prompt_intro', prompt_intro)
+            if not _intro_prompt.strip():
+                _intro_prompt = f'Rédige une introduction de 3 paragraphes HTML sur les enjeux du choix d\'un {cat} en {year}. <strong> sur les points clés. Aucun tiret long.'
+
             for section_key, section_prompt, is_json in [
-                ('intro', _combine('prompt_intro', prompt_intro), False),
-                ('en_bref', _combine('prompt_en_bref', prompt_en_bref, per_line=True), False),
+                ('intro', _intro_prompt, False),
+                ('en_bref', _en_bref_prompt, False),
                 ('contenu_custom', _combine('prompt_contenu', prompt_contenu), False),
                 ('faq', _combine('prompt_faq', prompt_faq) + '\n\nIMPORTANT: Réponds UNIQUEMENT avec un tableau JSON simple : [{"q": "question", "a": "réponse"}, ...]. Pas de structure imbriquée, pas de clé "faq" parent.', True),
             ]:
@@ -781,7 +790,7 @@ Réponds UNIQUEMENT en JSON valide sans backticks :
             if skip_existing and prod_key in editorial:
                 # Ignorer les descriptions cassées (réponses Claude invalides)
                 existing_desc = editorial.get(prod_key, {}).get('description', '')
-                if existing_desc and 'I can see' not in existing_desc and len(existing_desc) > 100:
+                if existing_desc and 'I can see' not in existing_desc and 'I see that' not in existing_desc and "I'm here" not in existing_desc and len(existing_desc) > 100:
                     continue
 
             nom = prod.get("nom", "")
