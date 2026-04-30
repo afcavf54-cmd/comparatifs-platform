@@ -75,6 +75,10 @@ export default function NewSitePage() {
   const [persona, setPersona] = useState<any>(null)
   const [personaPrompt, setPersonaPrompt] = useState('')
   const [personaMode, setPersonaMode] = useState<'auto'|'manual'>('auto')
+  const [authorName, setAuthorName] = useState('')
+  const [authorJob, setAuthorJob] = useState('')
+  const [authorBio, setAuthorBio] = useState('')
+  const [generatingBio, setGeneratingBio] = useState(false)
 
   const STEPS = siteType === 'classement' ? STEPS_CLASSEMENT : STEPS_COMPARATIF
 
@@ -117,10 +121,26 @@ export default function NewSitePage() {
     }
   }, [siteType, availableSchemas])
 
-  function handleGenerate() {
+  async function handleGenerate() {
     const p = generatePersona()
     setPersona(p)
     setPersonaPrompt(personaToPrompt(p))
+    // Préremplir la box auteur
+    setAuthorName(`${p.prenom} ${p.nom}`)
+    setAuthorJob(p.metier)
+    // Générer la bio via Claude
+    setGeneratingBio(true)
+    try {
+      const bioPrompt = `Génère une courte biographie professionnelle (2-3 phrases maximum, 40-60 mots) pour ${p.prenom} ${p.nom}, ${p.metier} de ${p.experience} ans d'expérience basé(e) à ${p.ville}. Ton : ${p.ton}. Ne mentionne pas d'entreprise spécifique. Écris à la troisième personne. Pas de tirets longs.`
+      const res = await fetch('/api/generate-text', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: bioPrompt, max_tokens: 200 })
+      })
+      const d = await res.json()
+      if (d.text) setAuthorBio(d.text.trim())
+    } catch { }
+    setGeneratingBio(false)
   }
 
   const set = (k: string, v: string) => {
@@ -147,7 +167,7 @@ export default function NewSitePage() {
     try {
       const r = await fetch('/api/sites', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, page_types: pageTypes, site_type: siteType, persona_prompt: personaPrompt })
+        body: JSON.stringify({ ...form, page_types: pageTypes, site_type: siteType, persona_prompt: personaPrompt, author_name: authorName, author_job: authorJob, author_bio: authorBio })
       })
       const d = await r.json()
       if (d.error) { setError(d.error); setLoading(false); return }
@@ -397,6 +417,33 @@ export default function NewSitePage() {
                         <span style={{ fontSize: 11, padding: '2px 8px', borderRadius: 4, background: '#1E2D3D', color: '#8B9CB0' }}>Détail : {persona.detail}</span>
                       </div>
                     </div>
+
+                    {/* Box auteur préremplie */}
+                    {(authorName || generatingBio) && (
+                      <div style={{ background: '#0A0E1A', border: '1px solid rgba(159,122,234,0.3)', borderRadius: 12, padding: 16, marginBottom: 12 }}>
+                        <div style={{ fontSize: 11, color: '#9F7AEA', marginBottom: 12, fontWeight: 600, textTransform: 'uppercase' as const }}>✍️ Box auteur pré-remplie</div>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
+                          <div>
+                            <div style={{ fontSize: 10, color: '#4A5568', textTransform: 'uppercase' as const, marginBottom: 4 }}>Nom</div>
+                            <input value={authorName} onChange={e => setAuthorName(e.target.value)}
+                              style={{ width: '100%', padding: '8px 10px', borderRadius: 6, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+                          </div>
+                          <div>
+                            <div style={{ fontSize: 10, color: '#4A5568', textTransform: 'uppercase' as const, marginBottom: 4 }}>Poste</div>
+                            <input value={authorJob} onChange={e => setAuthorJob(e.target.value)}
+                              style={{ width: '100%', padding: '8px 10px', borderRadius: 6, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+                          </div>
+                        </div>
+                        <div>
+                          <div style={{ fontSize: 10, color: '#4A5568', textTransform: 'uppercase' as const, marginBottom: 4 }}>
+                            Biographie {generatingBio && <span style={{ color: '#9F7AEA' }}>— génération en cours...</span>}
+                          </div>
+                          <textarea value={authorBio} onChange={e => setAuthorBio(e.target.value)} rows={3}
+                            placeholder={generatingBio ? 'Génération de la biographie...' : ''}
+                            style={{ width: '100%', padding: '8px 10px', borderRadius: 6, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', resize: 'vertical' as const, fontFamily: 'inherit', boxSizing: 'border-box' as const }} />
+                        </div>
+                      </div>
+                    )}
 
                     {/* Prompt généré */}
                     <div style={{ background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 12, padding: 16 }}>
