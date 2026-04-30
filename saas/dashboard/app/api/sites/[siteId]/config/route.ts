@@ -94,6 +94,19 @@ export async function PATCH(req: NextRequest, { params }: Params) {
       yaml = yaml.replace(/^theme:/m, pageTypesBlock + '\ntheme:')
     }
   }
+  // Champs auteur individuels (depuis création site)
+  if (body.author_name !== undefined || body.author_job !== undefined || body.author_bio !== undefined) {
+    const name = body.author_name || ''
+    const job = body.author_job || ''
+    const bio = (body.author_bio || '').replace(/"/g, "'")
+    const authorBlock = `author:\n  name: "${name}"\n  bio: "${bio}"\n  job_title: "${job}"\n  photo: ""\n  socials: []`
+    if (/^author:/m.test(yaml)) {
+      yaml = yaml.replace(/^author:\s*\n((?:[ ]+.+\n?)*)/m, authorBlock + '\n')
+    } else {
+      yaml = yaml.trimEnd() + '\n' + authorBlock + '\n'
+    }
+  }
+
   // Champ author (objet YAML)
   if (body.author !== undefined) {
     const author = body.author as { name?: string, bio?: string, job_title?: string, photo?: string, socials?: {label: string, url: string}[] }
