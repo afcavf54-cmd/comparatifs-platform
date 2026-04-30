@@ -339,16 +339,42 @@ export default function TemplateDetailPage() {
               placeholder="Ex: Tu es un expert en logiciels SaaS. Écris en français, ton professionnel, sans tirets longs..."
               style={{ width: '100%', padding: '10px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', resize: 'vertical' as const, fontFamily: 'inherit', boxSizing: 'border-box' as const, lineHeight: 1.6 }}
             />
+            {/* Prompts par défaut par section */}
+            <div style={{ marginTop: 20, borderTop: '1px solid #1E2D3D', paddingTop: 16 }}>
+              <div style={{ color: '#fff', fontWeight: 600, fontSize: 13, marginBottom: 4 }}>Prompts par défaut par section</div>
+              <p style={{ color: '#8B9CB0', fontSize: 12, marginBottom: 14, lineHeight: 1.5 }}>
+                Ces prompts prérempliront chaque nouveau type ajouté et seront combinés avec les prompts spécifiques lors de la génération.
+              </p>
+              {[
+                { key: 'prompt_intro', label: '📝 Introduction' },
+                { key: 'prompt_en_bref', label: '⚡ En bref' },
+                { key: 'prompt_classement', label: '🏆 Classement détaillé' },
+                { key: 'prompt_contenu', label: '🎓 Contenu expert' },
+                { key: 'prompt_faq', label: '❓ FAQ' },
+              ].map(({ key, label }) => (
+                <div key={key} style={{ marginBottom: 12 }}>
+                  <label style={{ fontSize: 11, color: '#8B9CB0', display: 'block', marginBottom: 4 }}>{label}</label>
+                  <textarea
+                    value={defaultPrompts[key] || ''}
+                    onChange={e => setDefaultPrompts(prev => ({ ...prev, [key]: e.target.value }))}
+                    rows={3}
+                    placeholder={`Prompt par défaut pour ${label}...`}
+                    style={{ width: '100%', padding: '8px 10px', borderRadius: 6, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none', resize: 'vertical' as const, fontFamily: 'inherit', boxSizing: 'border-box' as const }}
+                  />
+                </div>
+              ))}
+            </div>
+
             <div style={{ display: 'flex', gap: 10, marginTop: 10, alignItems: 'center' }}>
               <button onClick={async () => {
                 setSavingGlobal(true)
-                const res = await fetch(`/api/schemas/${templateId}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ global_prompt: globalPrompt }) })
+                const res = await fetch(`/api/schemas/${templateId}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ global_prompt: globalPrompt, default_prompts: defaultPrompts }) })
                 const d = await res.json()
                 setSavingGlobal(false)
                 if (d.ok) alert('✓ Prompt global sauvegardé')
                 else alert('Erreur : ' + (d.error || 'inconnue'))
               }} style={{ padding: '8px 16px', borderRadius: 7, border: 'none', background: 'linear-gradient(135deg,#00D4AA,#0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 12 }}>
-                {savingGlobal ? '...' : '💾 Sauvegarder'}
+                {savingGlobal ? '...' : '💾 Sauvegarder tout'}
               </button>
               {globalPrompt && <span style={{ fontSize: 11, color: '#8B9CB0' }}>{globalPrompt.length} caractères</span>}
             </div>
@@ -357,7 +383,7 @@ export default function TemplateDetailPage() {
       </div>
 
       <div style={{ display: 'flex', gap: 16 }}>
-        {/* Sidebar types */}}
+        {/* Sidebar types */}
         <div style={{ width: 220, flexShrink: 0, background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 12, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
           <div style={{ padding: '10px 14px', borderBottom: '1px solid #1E2D3D', fontSize: 11, color: '#8B9CB0', fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.06em' }}>Types</div>
           <div style={{ flex: 1, overflowY: 'auto' }}>
