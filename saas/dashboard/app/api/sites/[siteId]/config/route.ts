@@ -32,6 +32,8 @@ export async function GET(_: NextRequest, { params }: Params) {
       accent2: get('accent2'),
       bg: get('bg'),
       ink: get('ink'),
+      cta_color: get('cta_color'),
+      cta_text_color: get('cta_text_color'),
     },
     seo: {
       title_pattern: get('title_pattern'),
