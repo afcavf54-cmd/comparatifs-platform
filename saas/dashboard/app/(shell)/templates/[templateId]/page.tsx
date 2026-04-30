@@ -129,6 +129,9 @@ export default function TemplateDetailPage() {
   const [globalPrompt, setGlobalPrompt] = useState('')
   const [savingGlobal, setSavingGlobal] = useState(false)
   const [showGlobalPrompt, setShowGlobalPrompt] = useState(false)
+  const [defaultPrompts, setDefaultPrompts] = useState<Record<string, string>>({
+    prompt_intro: '', prompt_en_bref: '', prompt_classement: '', prompt_contenu: '', prompt_faq: ''
+  })
   const [loadedImages, setLoadedImages] = useState<Record<string, string>>({})
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -390,7 +393,7 @@ export default function TemplateDetailPage() {
                 <div style={{ display: 'flex', gap: 6 }}>
                   <button onClick={async () => {
                     if (!newGroupName.trim()) return
-                    const newSchema = { ...schema, keywords: { ...(schema.keywords || {}), [newGroupName.trim()]: { __sheet_url: '', __products: [], prompt_intro: '', prompt_en_bref: '', prompt_classement: '', prompt_contenu: '', prompt_faq: '' } } }
+                    const newSchema = { ...schema, keywords: { ...(schema.keywords || {}), [newGroupName.trim()]: { __sheet_url: '', __products: [], prompt_intro: defaultPrompts.prompt_intro, prompt_en_bref: defaultPrompts.prompt_en_bref, prompt_classement: defaultPrompts.prompt_classement, prompt_contenu: defaultPrompts.prompt_contenu, prompt_faq: defaultPrompts.prompt_faq } } }
                     setSchema(newSchema); setSelectedGroup(newGroupName.trim()); setNewGroupName(''); setShowAddGroup(false)
                     setSaving(true)
                     const r = await fetch('/api/github', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ path: schemaPath, content: JSON.stringify(newSchema, null, 2), message: `HUB: Add keyword type ${newGroupName.trim()}` }) })
