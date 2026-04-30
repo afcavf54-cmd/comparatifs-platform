@@ -365,14 +365,11 @@ export default function SettingsPage() {
                 const r = await fetch(`/api/sites/${siteId}/author-photo`, {method:'POST',body:fd})
                 const d = await r.json()
                 if (d.rawUrl) {
+                  // Aperçu via new Image() comme logos/favicons
                   const img = new Image()
                   img.onload = () => setAuthorPhotoPreview(d.rawUrl + '?t=' + Date.now())
                   img.src = d.rawUrl + '?t=' + Date.now()
-                  // Sauvegarder le path dans config auto
-                  fetch(`/api/sites/${siteId}/config`, {
-                    method: 'PATCH', headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ author: { name: authorName, bio: authorBio, job_title: authorJob, photo: d.path, socials: authorSocials } })
-                  })
+                  // Config mis à jour automatiquement par la route
                 }
               }} />
             </label>
