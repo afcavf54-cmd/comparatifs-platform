@@ -64,6 +64,7 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   if (body.home_title !== undefined) replaceKey('home_title', body.home_title || '')
   if (body.home_description !== undefined) replaceKey('home_description', body.home_description || '')
   if (body.home_h1 !== undefined) replaceKey('home_h1', body.home_h1 || '')
+  if (body.persona_prompt !== undefined) replaceKey('persona_prompt', body.persona_prompt || '')
   if (body.analytics_clicky !== undefined) replaceKey('analytics_clicky', body.analytics_clicky || '')
   if (body.google_site_verification !== undefined) replaceKey('google_site_verification', body.google_site_verification || '')
   if (body.www_preference !== undefined) replaceKey('www_preference', body.www_preference || 'www')
