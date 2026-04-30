@@ -669,14 +669,16 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
 
         # Utiliser les prompts custom si disponibles, sinon fallback générique
         def _prep(raw):
-            return strip_html_for_prompt(raw).replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
+            return strip_html_for_prompt(raw).replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat).replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
         prompt_intro = _prep(keyword_data.get('prompt_intro', ''))
         prompt_classement = _prep(keyword_data.get('prompt_classement', ''))
         prompt_contenu = _prep(keyword_data.get('prompt_contenu', ''))
         prompt_faq = _prep(keyword_data.get('prompt_faq', ''))
         prompt_en_bref = _prep(keyword_data.get('prompt_en_bref', ''))
 
-        if prompt_intro or prompt_contenu:
+        # Générer si au moins un prompt custom OU un prompt par défaut existe
+        _has_any_prompt = bool(prompt_intro or prompt_contenu or prompt_faq or prompt_en_bref or keyword_data.get('__default_prompts', {}))
+        if _has_any_prompt:
             # Génération avec prompts custom
             print(f"\n    → prompts custom détectés")
             result = {}
@@ -722,10 +724,10 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
             ]:
                 if not section_prompt:
                     continue
-                # Skip si déjà remplie et non vide
-                if skip_existing and result.get(section_key, ''):
-                    existing_val = result.get(section_key, '')
-                    if len(existing_val) > 50 and 'I can see' not in existing_val and 'I see that' not in existing_val:
+                # Skip si déjà remplie et non vide dans editorial existant
+                if skip_existing:
+                    existing_val = editorial.get(key, {}).get(section_key, '')
+                    if len(existing_val) > 50 and 'I can see' not in existing_val and 'I see that' not in existing_val and "I don't see" not in existing_val:
                         continue
                 print(f"    [{section_key}]...", end=" ", flush=True)
                 _base_sys = 'Tu es un expert rédacteur SEO. Réponds UNIQUEMENT en JSON valide sans backticks, sans preamble.' if is_json else 'Tu es un expert rédacteur SEO. Aucun tiret long (— ou –). Aucun markdown. Réponds uniquement avec le contenu HTML demandé.'
