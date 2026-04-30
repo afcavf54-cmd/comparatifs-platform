@@ -530,10 +530,13 @@ def load_schema_keywords(site_dir: Path) -> dict:
     with open(schema_path, encoding='utf-8') as f:
         schema = json.load(f)
     global_prompt = schema.get('global_prompt', '').strip()
+    default_prompts = schema.get('default_prompts', {})
     keywords = schema.get('keywords', {})
-    if global_prompt:
-        for kw in keywords.values():
+    for kw in keywords.values():
+        if global_prompt:
             kw['__global_prompt'] = global_prompt
+        if default_prompts:
+            kw['__default_prompts'] = default_prompts
     return keywords
 
 
@@ -632,10 +635,20 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
             print(f"\n    → prompts custom détectés")
             result = {}
 
+            # Combiner prompts par défaut + prompts custom
+            _dp = keyword_data.get('__default_prompts', {})
+            def _combine(default_key, custom_prompt):
+                _default = _dp.get(default_key, '').strip()
+                _custom = (custom_prompt or '').strip()
+                if _default and _custom:
+                    return _default + '\n\n' + _custom
+                return _custom or _default
+
             for section_key, section_prompt, is_json in [
-                ('intro', prompt_intro, False),
-                ('contenu_custom', prompt_contenu, False),
-                ('faq', prompt_faq + '\n\nIMPORTANT: Réponds UNIQUEMENT avec un tableau JSON simple : [{"q": "question", "a": "réponse"}, ...]. Pas de structure imbriquée, pas de clé "faq" parent.', True),
+                ('intro', _combine('prompt_intro', prompt_intro), False),
+                ('en_bref', _combine('prompt_en_bref', prompt_en_bref), False),
+                ('contenu_custom', _combine('prompt_contenu', prompt_contenu), False),
+                ('faq', _combine('prompt_faq', prompt_faq) + '\n\nIMPORTANT: Réponds UNIQUEMENT avec un tableau JSON simple : [{"q": "question", "a": "réponse"}, ...]. Pas de structure imbriquée, pas de clé "faq" parent.', True),
             ]:
                 if not section_prompt:
                     continue
