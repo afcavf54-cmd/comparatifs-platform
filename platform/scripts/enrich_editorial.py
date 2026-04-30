@@ -21,6 +21,23 @@ import sys
 import time
 import unicodedata as _unicodedata
 import urllib.request
+import re as _re
+
+def strip_html_for_prompt(text: str) -> str:
+    """Nettoie le HTML produit par l'éditeur visuel avant envoi à Claude."""
+    if not text:
+        return ''
+    # Remplacer les <br> par des sauts de ligne
+    text = _re.sub(r'<br\s*/?>', '\n', text)
+    # Remplacer les </p>, </div>, </li> par des sauts de ligne
+    text = _re.sub(r'</(p|div|li|h[1-6]|pre|code)>', '\n', text)
+    # Supprimer toutes les autres balises HTML
+    text = _re.sub(r'<[^>]+>', '', text)
+    # Décoder les entités HTML basiques
+    text = text.replace('&lt;', '<').replace('&gt;', '>').replace('&amp;', '&').replace('&nbsp;', ' ').replace('&quot;', '"')
+    # Nettoyer les lignes vides multiples
+    text = _re.sub(r'\n{3,}', '\n\n', text)
+    return text.strip()
 from pathlib import Path
 
 def slugify_cat(s: str) -> str:
@@ -642,11 +659,13 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
                 break
 
         # Utiliser les prompts custom si disponibles, sinon fallback générique
-        prompt_intro = keyword_data.get('prompt_intro', '').replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
-        prompt_classement = keyword_data.get('prompt_classement', '').replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
-        prompt_contenu = keyword_data.get('prompt_contenu', '').replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
-        prompt_faq = keyword_data.get('prompt_faq', '').replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
-        prompt_en_bref = keyword_data.get('prompt_en_bref', '').replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
+        def _prep(raw):
+            return strip_html_for_prompt(raw).replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
+        prompt_intro = _prep(keyword_data.get('prompt_intro', ''))
+        prompt_classement = _prep(keyword_data.get('prompt_classement', ''))
+        prompt_contenu = _prep(keyword_data.get('prompt_contenu', ''))
+        prompt_faq = _prep(keyword_data.get('prompt_faq', ''))
+        prompt_en_bref = _prep(keyword_data.get('prompt_en_bref', ''))
 
         if prompt_intro or prompt_contenu:
             # Génération avec prompts custom
@@ -671,7 +690,7 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
                 dp_entry = _dp.get(default_key, {})
                 _default = (dp_entry.get('text', '') if isinstance(dp_entry, dict) else str(dp_entry or '')).strip()
                 # Remplacer les variables dans le prompt par défaut aussi
-                _default = _default.replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
+                _default = strip_html_for_prompt(_default).replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
                 _custom = (custom_prompt or '').strip()
                 _words = _word_constraint(default_key, per_line)
                 combined = (_default + '\n\n' + _custom).strip() if (_default and _custom) else (_custom or _default)
