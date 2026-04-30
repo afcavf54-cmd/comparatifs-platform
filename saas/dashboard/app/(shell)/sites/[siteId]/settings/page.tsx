@@ -31,6 +31,7 @@ export default function SettingsPage() {
   const [msgFavicon, setMsgFavicon] = useState('')
   const [faviconPreview, setFaviconPreview] = useState<string | null>(null)
   const [authorPhotoPreview, setAuthorPhotoPreview] = useState<string | null>(null)
+  const [personaPrompt, setPersonaPrompt] = useState('')
   const [authorName, setAuthorName] = useState('')
   const [authorBio, setAuthorBio] = useState('')
   const [authorJob, setAuthorJob] = useState('')
@@ -293,7 +294,28 @@ export default function SettingsPage() {
       </div>
 
       {/* Danger zone */}
-            {/* ── BOX AUTEUR ── */}
+            {/* ── PERSONA ── */}
+      <div style={{background:'#0D1117',border:'1px solid #1E2D3D',borderRadius:12,padding:24,marginBottom:24}}>
+        <h3 style={{color:'#fff',fontSize:16,fontWeight:600,marginBottom:6}}>🎭 Persona éditorial</h3>
+        <p style={{color:'#8B9CB0',fontSize:13,marginBottom:16,lineHeight:1.6}}>
+          Ce prompt persona est injecté dans toutes les générations IA de ce site, en surcouche du prompt global du modèle. Il rend ce site unique.
+        </p>
+        <textarea value={personaPrompt} onChange={e => setPersonaPrompt(e.target.value)} rows={6}
+          placeholder="Ex: Tu écris en tant qu'expert comptable de 42 ans, basé à Lyon. Tu t'adresses à des dirigeants de PME avec un ton professionnel et direct..."
+          style={{width:'100%',padding:'12px 14px',borderRadius:8,background:'#0A0E1A',border:'1px solid #1E2D3D',color:'#fff',fontSize:13,outline:'none',resize:'vertical' as const,fontFamily:'inherit',boxSizing:'border-box' as const,lineHeight:1.6,marginBottom:12}} />
+        <button onClick={async () => {
+          const r = await fetch(`/api/sites/${siteId}/config`, {
+            method:'PATCH', headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({ persona_prompt: personaPrompt })
+          })
+          const d = await r.json()
+          if (d.ok) alert('✓ Persona sauvegardé')
+        }} style={{padding:'10px 20px',borderRadius:8,border:'none',background:'linear-gradient(135deg,#9F7AEA,#0090FF)',color:'#fff',cursor:'pointer',fontWeight:600,fontSize:13}}>
+          💾 Sauvegarder le persona
+        </button>
+      </div>
+
+      {/* ── BOX AUTEUR ── */}
       <div style={{background:'#0D1117',border:'1px solid #1E2D3D',borderRadius:12,padding:24,marginBottom:24}}>
         <h3 style={{color:'#fff',fontSize:16,fontWeight:600,marginBottom:20}}>✍️ Box auteur</h3>
 
