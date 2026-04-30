@@ -358,9 +358,9 @@
       "words_max": 500
     },
     "prompt_faq": {
-      "text": "Tu rédiges une FAQ SEO pour : [MOT-CLE]\n\nPersona :\n[PERSONA]\n\n🎯 Objectif :\n- répondre aux questions fréquentes des utilisateurs\n- capter du trafic longue traîne\n\n📌 Format :\n- 5 à 8 questions\n- réponses de 40 à 80 mots\n\n📌 Types de questions :\n- prix\n- gratuit vs payant\n- meilleur outil\n- comparaison rapide\n- erreurs fréquentes\n- cas spécifique (PME, freelance…)\n\n📌 SEO :\n- inclure variantes du mot-clé\n- répondre clairement dès la première phrase\n\n❌ À éviter :\n- réponses vagues\n- FAQ inutile ou générique",
-      "words_min": 50,
-      "words_max": 150
+      "text": "Tu rédiges une FAQ SEO pour des personnes à la recherche du meilleur {theme}\n\n\n🎯 Objectif :\n- répondre aux questions fréquentes des utilisateurs\n- capter du trafic longue traîne\n\n📌 Format :\n- 3 à 8 questions\n\n📌 Types de questions :\n- prix\n- gratuit vs payant\n- meilleur outil\n- comparaison rapide\n- erreurs fréquentes\n- cas spécifique (PME, freelance…)\n\n📌 SEO :\n- inclure variantes du mot-clé\n- répondre clairement dès la première phrase\n\n❌ À éviter :\n- réponses vagues\n- FAQ inutile ou générique",
+      "words_min": 30,
+      "words_max": 90
     }
   }
 }
