@@ -88,6 +88,8 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4vw,48px);font-weight:400;color:#fff;line-height:1.15;letter-spacing:-.02em;max-width:800px;margin:0 auto 16px}
 .hero h1 em{font-style:italic;color:var(--accent2)}
 .hero-meta{font-size:14px;color:rgba(255,255,255,.85);margin-top:8px}
+.hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
+.hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:48px 5vw 80px}
 .intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
 .intro p{margin-bottom:16px}
@@ -194,6 +196,14 @@ main{max-width:1200px;margin:0 auto;padding:48px 5vw 80px}
 <div class="hero">
   <h1>{{ seo.h1 | safe }}</h1>
   <div class="hero-meta">⏰ Mis à jour le {{ build_date }} - {{ products | length }} logiciels analysés</div>
+  {% if site.author_name is defined and site.author_name %}
+  <div class="hero-author">
+    {% if site.author_photo is defined and site.author_photo %}
+    <img src="{{ site.author_photo }}" alt="Photo de {{ site.author_name }}" class="hero-author-avatar">
+    {% endif %}
+    <span>Rédigé par {{ site.author_name }}</span>
+  </div>
+  {% endif %}
 </div>
 
 <main>
