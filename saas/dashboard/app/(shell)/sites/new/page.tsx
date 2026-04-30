@@ -5,8 +5,63 @@ import Link from 'next/link'
 
 type SiteType = '' | 'comparatif' | 'classement'
 
-const STEPS_COMPARATIF = ['Type', 'Infos', 'Domaine', 'Modèles', 'SEO', 'Visuel', 'Récap']
-const STEPS_CLASSEMENT = ['Type', 'Infos', 'Domaine', 'Modèles', 'Visuel', 'Récap']
+const STEPS_COMPARATIF = ['Type', 'Infos', 'Domaine', 'Modèles', 'Persona', 'SEO', 'Visuel', 'Récap']
+const STEPS_CLASSEMENT = ['Type', 'Infos', 'Domaine', 'Modèles', 'Persona', 'Visuel', 'Récap']
+
+// ── Données du simulateur de persona ──────────────────────────────────────
+const PRENOMS = ['Sophie', 'Thomas', 'Marie', 'Nicolas', 'Camille', 'Antoine', 'Julie', 'Pierre', 'Lucie', 'Julien', 'Emma', 'Alexandre', 'Léa', 'Maxime', 'Chloé', 'Vincent', 'Manon', 'Romain']
+const NOMS = ['Dupont', 'Martin', 'Bernard', 'Lefebvre', 'Moreau', 'Laurent', 'Simon', 'Michel', 'Leroy', 'Petit', 'Durand', 'Roux', 'David', 'Bertrand', 'Morel']
+const VILLES = ['Paris', 'Lyon', 'Marseille', 'Bordeaux', 'Toulouse', 'Nantes', 'Strasbourg', 'Montpellier', 'Nice', 'Rennes']
+const METIERS: Record<string, any> = {
+  'DAF / Directeur Financier': { niveau: 'expert', ton: 'expert', adresse: 'vouvoiement', phrases: 'longues', pedagogie: 'faible', biais: ['prix', 'performance'] },
+  'Directeur RH': { niveau: 'expert', ton: 'expert', adresse: 'vouvoiement', phrases: 'longues', pedagogie: 'moyenne', biais: ['spécialisation métier', 'performance'] },
+  'Gérant PME': { niveau: 'intermédiaire', ton: 'direct', adresse: 'vouvoiement', phrases: 'mixtes', pedagogie: 'moyenne', biais: ['prix', 'simplicité'] },
+  'Artisan / Auto-entrepreneur': { niveau: 'débutant', ton: 'direct', adresse: 'tutoiement', phrases: 'courtes', pedagogie: 'élevée', biais: ['prix', 'simplicité'] },
+  'Fondateur startup': { niveau: 'intermédiaire', ton: 'dynamique', adresse: 'tutoiement', phrases: 'courtes', pedagogie: 'faible', biais: ['automatisation', 'croissance entreprise'] },
+  'Responsable comptable': { niveau: 'expert', ton: 'pédagogique', adresse: 'vouvoiement', phrases: 'mixtes', pedagogie: 'moyenne', biais: ['performance', 'prix'] },
+  'Chef de projet': { niveau: 'intermédiaire', ton: 'accessible', adresse: 'tutoiement', phrases: 'mixtes', pedagogie: 'moyenne', biais: ['automatisation', 'performance'] },
+  'Freelance consultant': { niveau: 'expert', ton: 'critique', adresse: 'tutoiement', phrases: 'courtes', pedagogie: 'faible', biais: ['prix', 'performance'] },
+  'Responsable IT': { niveau: 'expert', ton: 'expert', adresse: 'vouvoiement', phrases: 'longues', pedagogie: 'faible', biais: ['performance', 'automatisation'] },
+  'Dirigeant TPE': { niveau: 'débutant', ton: 'accessible', adresse: 'vouvoiement', phrases: 'courtes', pedagogie: 'élevée', biais: ['prix', 'simplicité'] },
+}
+const TAILLES = ['1-5 salariés', '5-20 salariés', '20-100 salariés', '100-500 salariés', '+500 salariés']
+const ANGLES = ['prix', 'simplicité', 'performance', 'automatisation', 'spécialisation métier', 'alternative à un outil', 'croissance entreprise']
+
+function rand<T>(arr: T[]): T { return arr[Math.floor(Math.random() * arr.length)] }
+function randInt(min: number, max: number) { return Math.floor(Math.random() * (max - min + 1)) + min }
+
+function generatePersona() {
+  const metier = rand(Object.keys(METIERS))
+  const rules = METIERS[metier]
+  const biais = rand(rules.biais)
+  const angle = biais === 'prix' ? 'prix' : biais
+  return {
+    prenom: rand(PRENOMS), nom: rand(NOMS), age: randInt(25, 55),
+    sexe: Math.random() > 0.5 ? 'Homme' : 'Femme',
+    ville: rand(VILLES), metier, taille: rand(TAILLES),
+    niveau: rules.niveau, experience: randInt(2, 20),
+    objectifs: ['Gagner du temps sur les tâches répétitives', 'Réduire les coûts logiciels', 'Améliorer la productivité de mon équipe'].slice(0, randInt(2, 3)),
+    contraintes: ['Budget limité', 'Équipe non technique', 'Peu de temps pour la formation'].slice(0, randInt(1, 3)),
+    biais,
+    // Style (cohérent avec métier)
+    adresse: rules.adresse, ton: rules.ton, phrases: rules.phrases, pedagogie: rules.pedagogie,
+    positionnement: rand(['mentor', 'expert', 'utilisateur terrain']),
+    opinion: rand(['neutre', 'affirmé', 'tranché']),
+    // Angle
+    angle,
+    // Méthodologie
+    criteres: angle === 'prix' ? ['Prix', 'Rapport qualité/prix', 'Facilité d\'utilisation', 'Support client'] : ['Facilité d\'utilisation', 'Fonctionnalités', 'Prix', 'Intégrations'],
+    scoring: rand(['note /5', 'score /100', 'classement simple']),
+    gagnant: Math.random() > 0.4,
+    // Structure
+    faq: Math.random() > 0.3, tableau: Math.random() > 0.5, cas_concrets: Math.random() > 0.4,
+    detail: rand(['synthétique', 'équilibré', 'approfondi']),
+  }
+}
+
+function personaToPrompt(p: any): string {
+  return `Tu écris en tant que ${p.prenom} ${p.nom}, ${p.age} ans, ${p.metier} basé(e) à ${p.ville} (entreprise de ${p.taille}). Niveau ${p.niveau}, ${p.experience} ans d'expérience. ${p.adresse === 'tutoiement' ? 'Tutoie' : 'Vouvoie'} le lecteur. Ton : ${p.ton}. Phrases ${p.phrases}. Niveau pédagogique : ${p.pedagogie}. Positionnement : ${p.positionnement}. Niveau d'opinion : ${p.opinion}. Angle éditorial prioritaire : ${p.angle}. Critères de classement par ordre de priorité : ${p.criteres.join(', ')}. Scoring : ${p.scoring}${p.gagnant ? ', avec un gagnant clairement désigné' : ''}. Objectifs du lecteur cible : ${p.objectifs.join(', ')}. Contraintes du lecteur : ${p.contraintes.join(', ')}. ${p.cas_concrets ? 'Inclure des cas concrets et exemples.' : ''} ${p.faq ? 'Inclure une FAQ.' : ''} Niveau de détail : ${p.detail}.`.trim()
+}
 
 export default function NewSitePage() {
   const router = useRouter()
@@ -17,6 +72,9 @@ export default function NewSitePage() {
   const [sheetPreview, setSheetPreview] = useState<any>(null)
   const [checkingSheet, setCheckingSheet] = useState(false)
   const [availableSchemas, setAvailableSchemas] = useState<any[]>([])
+  const [persona, setPersona] = useState<any>(null)
+  const [personaPrompt, setPersonaPrompt] = useState('')
+  const [personaMode, setPersonaMode] = useState<'auto'|'manual'>('auto')
 
   const STEPS = siteType === 'classement' ? STEPS_CLASSEMENT : STEPS_COMPARATIF
 
@@ -59,6 +117,12 @@ export default function NewSitePage() {
     }
   }, [siteType, availableSchemas])
 
+  function handleGenerate() {
+    const p = generatePersona()
+    setPersona(p)
+    setPersonaPrompt(personaToPrompt(p))
+  }
+
   const set = (k: string, v: string) => {
     setForm(f => {
       const next = { ...f, [k]: v }
@@ -83,7 +147,7 @@ export default function NewSitePage() {
     try {
       const r = await fetch('/api/sites', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, page_types: pageTypes, site_type: siteType })
+        body: JSON.stringify({ ...form, page_types: pageTypes, site_type: siteType, persona_prompt: personaPrompt })
       })
       const d = await r.json()
       if (d.error) { setError(d.error); setLoading(false); return }
@@ -124,6 +188,10 @@ export default function NewSitePage() {
     </div>
   )
 
+  const badge = (label: string, color: string) => (
+    <span style={{ fontSize: 11, padding: '2px 8px', borderRadius: 4, background: `${color}22`, color, fontWeight: 700, marginRight: 6 }}>{label}</span>
+  )
+
   return (
     <div style={{ maxWidth: 700, margin: '0 auto' }}>
       <div style={{ marginBottom: 32 }}>
@@ -144,6 +212,7 @@ export default function NewSitePage() {
 
       <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 28 }}>
 
+        {/* ── STEP TYPE ── */}
         {step === 0 && (
           <div>
             <h2 style={{ color: '#fff', fontSize: 18, fontWeight: 600, marginBottom: 8, marginTop: 0 }}>Quel type de site ?</h2>
@@ -155,6 +224,7 @@ export default function NewSitePage() {
           </div>
         )}
 
+        {/* ── STEP INFOS ── */}
         {step === si('Infos') && (
           <div>
             <h2 style={{ color: '#fff', fontSize: 18, fontWeight: 600, marginBottom: 24, marginTop: 0 }}>Informations générales</h2>
@@ -171,6 +241,7 @@ export default function NewSitePage() {
           </div>
         )}
 
+        {/* ── STEP DOMAINE ── */}
         {step === si('Domaine') && (
           <div>
             <h2 style={{ color: '#fff', fontSize: 18, fontWeight: 600, marginBottom: 24, marginTop: 0 }}>Domaine{siteType === 'comparatif' ? ' et source de données' : ''}</h2>
@@ -208,6 +279,7 @@ export default function NewSitePage() {
           </div>
         )}
 
+        {/* ── STEP MODÈLES ── */}
         {step === si('Modèles') && (
           <div>
             <h2 style={{ color: '#fff', fontSize: 18, fontWeight: 600, marginBottom: 8, marginTop: 0 }}>Modèles de pages</h2>
@@ -254,6 +326,114 @@ export default function NewSitePage() {
           </div>
         )}
 
+        {/* ── STEP PERSONA ── */}
+        {step === si('Persona') && (
+          <div>
+            <h2 style={{ color: '#fff', fontSize: 18, fontWeight: 600, marginBottom: 4, marginTop: 0 }}>🎭 Persona éditorial</h2>
+            <p style={{ color: '#8B9CB0', fontSize: 13, marginBottom: 20, lineHeight: 1.6 }}>
+              Définissez le persona qui guidera la génération de contenu sur ce site. Ce profil rend chaque site unique et différencie votre voix éditoriale.
+            </p>
+
+            {/* Mode selector */}
+            <div style={{ display: 'flex', gap: 10, marginBottom: 20 }}>
+              {[{ id: 'auto', label: '🎲 Générer automatiquement' }, { id: 'manual', label: '✏️ Saisir manuellement' }].map(m => (
+                <button key={m.id} onClick={() => setPersonaMode(m.id as any)}
+                  style={{ flex: 1, padding: '10px 16px', borderRadius: 10, border: personaMode === m.id ? '2px solid #00D4AA' : '2px solid #1E2D3D', background: personaMode === m.id ? 'rgba(0,212,170,0.08)' : 'transparent', color: personaMode === m.id ? '#fff' : '#8B9CB0', cursor: 'pointer', fontSize: 13, fontWeight: 600 }}>
+                  {m.label}
+                </button>
+              ))}
+            </div>
+
+            {personaMode === 'auto' && (
+              <div>
+                <button onClick={handleGenerate}
+                  style={{ width: '100%', padding: '14px', borderRadius: 12, border: 'none', background: 'linear-gradient(135deg,#9F7AEA,#0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 700, fontSize: 15, marginBottom: 20 }}>
+                  🎲 Générer un persona cohérent
+                </button>
+
+                {persona && (
+                  <div>
+                    {/* Fiche persona */}
+                    <div style={{ background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 12, padding: 20, marginBottom: 16 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+                        <div style={{ width: 52, height: 52, borderRadius: '50%', background: 'linear-gradient(135deg,#9F7AEA,#0090FF)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22 }}>
+                          {persona.sexe === 'Homme' ? '👨‍💼' : '👩‍💼'}
+                        </div>
+                        <div>
+                          <div style={{ fontSize: 18, fontWeight: 700, color: '#fff' }}>{persona.prenom} {persona.nom}</div>
+                          <div style={{ fontSize: 13, color: '#8B9CB0' }}>{persona.age} ans · {persona.ville} · {persona.taille}</div>
+                        </div>
+                      </div>
+
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 12 }}>
+                        {[
+                          { label: 'Métier', value: persona.metier },
+                          { label: 'Niveau', value: persona.niveau },
+                          { label: 'Ton', value: persona.ton },
+                          { label: 'Adresse', value: persona.adresse },
+                          { label: 'Phrases', value: persona.phrases },
+                          { label: 'Angle éditorial', value: persona.angle },
+                        ].map(({ label, value }) => (
+                          <div key={label} style={{ background: '#0D1117', borderRadius: 8, padding: '8px 12px' }}>
+                            <div style={{ fontSize: 10, color: '#4A5568', textTransform: 'uppercase' as const, letterSpacing: '0.06em', marginBottom: 2 }}>{label}</div>
+                            <div style={{ fontSize: 13, color: '#fff', fontWeight: 500 }}>{value}</div>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div style={{ marginBottom: 10 }}>
+                        <div style={{ fontSize: 11, color: '#8B9CB0', marginBottom: 6 }}>Critères de classement</div>
+                        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' as const }}>
+                          {persona.criteres.map((c: string, i: number) => (
+                            <span key={c} style={{ fontSize: 11, padding: '3px 8px', borderRadius: 20, background: i === 0 ? 'rgba(0,212,170,0.2)' : '#1E2D3D', color: i === 0 ? '#00D4AA' : '#8B9CB0' }}>{i + 1}. {c}</span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div style={{ display: 'flex', gap: 8 }}>
+                        {persona.faq && <span style={{ fontSize: 11, padding: '2px 8px', borderRadius: 4, background: 'rgba(0,144,255,0.15)', color: '#0090FF' }}>FAQ ✓</span>}
+                        {persona.tableau && <span style={{ fontSize: 11, padding: '2px 8px', borderRadius: 4, background: 'rgba(159,122,234,0.15)', color: '#9F7AEA' }}>Tableau ✓</span>}
+                        {persona.cas_concrets && <span style={{ fontSize: 11, padding: '2px 8px', borderRadius: 4, background: 'rgba(246,173,85,0.15)', color: '#F6AD55' }}>Cas concrets ✓</span>}
+                        <span style={{ fontSize: 11, padding: '2px 8px', borderRadius: 4, background: '#1E2D3D', color: '#8B9CB0' }}>Détail : {persona.detail}</span>
+                      </div>
+                    </div>
+
+                    {/* Prompt généré */}
+                    <div style={{ background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 12, padding: 16 }}>
+                      <div style={{ fontSize: 11, color: '#8B9CB0', marginBottom: 8, fontWeight: 600, textTransform: 'uppercase' as const }}>Prompt persona généré</div>
+                      <textarea value={personaPrompt} onChange={e => setPersonaPrompt(e.target.value)} rows={5}
+                        style={{ width: '100%', padding: '10px', borderRadius: 8, background: '#0D1117', border: '1px solid #1E2D3D', color: '#8B9CB0', fontSize: 12, outline: 'none', resize: 'vertical' as const, fontFamily: 'inherit', boxSizing: 'border-box' as const }} />
+                    </div>
+                  </div>
+                )}
+
+                {!persona && (
+                  <div style={{ textAlign: 'center' as const, padding: '40px 20px', color: '#4A5568', fontSize: 14 }}>
+                    Cliquez sur "Générer" pour créer un persona cohérent pour ce site.
+                    <br /><br />
+                    <span style={{ fontSize: 12 }}>Vous pourrez le modifier à tout moment dans les Paramètres du site.</span>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {personaMode === 'manual' && (
+              <div>
+                <div style={{ fontSize: 13, color: '#8B9CB0', marginBottom: 16 }}>Décrivez directement le persona éditorial de ce site :</div>
+                <textarea value={personaPrompt} onChange={e => setPersonaPrompt(e.target.value)} rows={8}
+                  placeholder="Ex: Tu écris en tant qu'expert comptable de 42 ans, basé à Lyon. Tu t'adresses à des dirigeants de PME avec un ton professionnel et direct. Tu vouvoies le lecteur. Ton angle éditorial prioritaire est le rapport qualité/prix..."
+                  style={{ width: '100%', padding: '12px 14px', borderRadius: 10, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', resize: 'vertical' as const, fontFamily: 'inherit', boxSizing: 'border-box' as const, lineHeight: 1.6 }} />
+                <div style={{ fontSize: 11, color: '#4A5568', marginTop: 8 }}>Ce prompt sera injecté dans toutes les générations IA de ce site.</div>
+              </div>
+            )}
+
+            <div style={{ marginTop: 16, padding: '10px 14px', background: 'rgba(159,122,234,0.06)', border: '1px solid rgba(159,122,234,0.2)', borderRadius: 8, fontSize: 12, color: '#9F7AEA' }}>
+              💡 Laisser vide = pas de persona spécifique (le prompt global du modèle s'applique seul)
+            </div>
+          </div>
+        )}
+
+        {/* ── STEP SEO ── */}
         {siteType === 'comparatif' && step === si('SEO') && (
           <div>
             <h2 style={{ color: '#fff', fontSize: 18, fontWeight: 600, marginBottom: 24, marginTop: 0 }}>SEO</h2>
@@ -273,6 +453,7 @@ export default function NewSitePage() {
           </div>
         )}
 
+        {/* ── STEP VISUEL ── */}
         {step === si('Visuel') && (
           <div>
             <h2 style={{ color: '#fff', fontSize: 18, fontWeight: 600, marginBottom: 24, marginTop: 0 }}>Configuration visuelle</h2>
@@ -297,6 +478,7 @@ export default function NewSitePage() {
           </div>
         )}
 
+        {/* ── STEP RÉCAP ── */}
         {step === si('Récap') && (
           <div>
             <h2 style={{ color: '#fff', fontSize: 18, fontWeight: 600, marginBottom: 24, marginTop: 0 }}>Récapitulatif</h2>
@@ -308,6 +490,7 @@ export default function NewSitePage() {
               { label: 'Google Sheet', value: siteType === 'classement' ? 'Par catégorie (à configurer)' : form.sheet_csv_url ? '✓ Configuré' : 'Non configuré' },
               { label: 'URL canonique', value: form.www_preference === 'www' ? `www.${form.domain}` : form.domain },
               { label: 'Modèles', value: Object.entries(pageTypes).filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`).join(', ') || 'Aucun' },
+              { label: 'Persona', value: personaPrompt ? `✓ Configuré (${personaPrompt.length} car.)` : '— Non défini' },
             ].map(row => (
               <div key={row.label} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid #1E2D3D', fontSize: 14 }}>
                 <span style={{ color: '#8B9CB0' }}>{row.label}</span>
