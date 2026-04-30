@@ -110,13 +110,20 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   // Champ author (objet YAML)
   if (body.author !== undefined) {
     const author = body.author as { name?: string, bio?: string, job_title?: string, photo?: string, socials?: {label: string, url: string}[] }
-    const socialsYaml = (author.socials || []).map(s => `\n  - label: "${s.label}"\n    url: "${s.url}"`).join('')
-    const authorBlock = `author:\n  name: "${author.name || ''}"\n  bio: "${(author.bio || '').replace(/"/g, "'")}"\n  job_title: "${author.job_title || ''}"\n  photo: "${author.photo || ''}"\n  socials:${socialsYaml || ' []'}`
-    if (/^author:/m.test(yaml)) {
-      yaml = yaml.replace(/^author:\s*\n((?:[ ]+.+\n?)*)/m, authorBlock + '\n')
-    } else {
-      yaml = yaml.trimEnd() + '\n' + authorBlock + '\n'
-    }
+    const socialsYaml = (author.socials || []).length > 0
+      ? (author.socials || []).map(s => `\n  - label: "${s.label}"\n    url: "${s.url}"`).join('')
+      : ' []'
+    const authorBlock = [
+      'author:',
+      `  name: "${(author.name || '').replace(/"/g, "'")}"`,
+      `  bio: "${(author.bio || '').replace(/"/g, "'").replace(/\n/g, ' ')}"`,
+      `  job_title: "${(author.job_title || '').replace(/"/g, "'")}"`,
+      `  photo: "${author.photo || ''}"`,
+      `  socials:${socialsYaml}`,
+    ].join('\n')
+    // Supprimer l'ancien bloc author et tout son contenu indenté
+    yaml = yaml.replace(/^author:(?:\n(?:  [^\n]*)?)+/m, '')
+    yaml = yaml.trimEnd() + '\n' + authorBlock + '\n'
   }
 
   const saved = await putFile(`platform/sites/${siteId}/config.yaml`, yaml, `HUB: Update config ${siteId}`)
