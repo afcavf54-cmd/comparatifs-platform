@@ -63,6 +63,7 @@ export async function POST(req: NextRequest, { params }: Params) {
     const configData = await configRes.json()
     let yaml = Buffer.from(configData.content, 'base64').toString('utf-8')
     // Remplacer le champ photo dans le bloc author
+    // Toujours stocker le chemin relatif (ex: /author-photo.png)
     yaml = yaml.replace(/^(  photo:).*$/m, `$1 "${photoPath}"`)
     await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${configPath}`, {
       method: 'PUT',
