@@ -41,7 +41,13 @@ export async function GET(_: NextRequest, { params }: Params) {
       liste_comp_title: get('liste_comp_title'),
       liste_avis_title: get('liste_avis_title'),
     },
-    persona_prompt: get('persona_prompt'),
+    persona_prompt: (() => {
+      // Lire un bloc scalaire YAML (format "persona_prompt: |\n  ligne1\n  ligne2")
+      const blockMatch = yaml.match(/^persona_prompt:\s*\|\s*\n((?:  [^\n]*\n?)*)/m)
+      if (blockMatch) return blockMatch[1].replace(/^  /gm, '').trimEnd()
+      // Fallback : valeur simple entre guillemets
+      return get('persona_prompt')
+    })(),
     author: (() => {
       const authorMatch = yaml.match(/^author:\s*\n((?:[ ]+[^\n]+\n?)*)/m)
       if (!authorMatch) return null
