@@ -641,17 +641,17 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
         new_products = [p for p in cat_products if p.get("slug","") not in existing_descs]
 
         if skip_existing and key in editorial and not new_products:
-            # Vérifier que les sections importantes sont bien remplies
             existing_entry = editorial.get(key, {})
-            sections_ok = all([
-                existing_entry.get('intro', ''),
-                existing_entry.get('en_bref', ''),
-            ])
-            contenu_ok = not _combine('prompt_contenu', prompt_contenu) or existing_entry.get('contenu_custom', '')
-            if sections_ok and contenu_ok:
+            # Vérifier que les sections principales sont non vides
+            has_intro = len(existing_entry.get('intro', '')) > 50
+            has_en_bref = len(existing_entry.get('en_bref', '')) > 20
+            has_contenu = len(existing_entry.get('contenu_custom', '')) > 50
+            has_prompt_contenu = bool((keyword_data.get('prompt_contenu', '') or '').strip())
+            # Sauter seulement si tout ce qui est demandé est déjà là
+            if has_intro and has_en_bref and (has_contenu or not has_prompt_contenu):
                 print(f"  [{cat}] ⏭ déjà généré ({len(cat_products)} produits)")
                 continue
-            print(f"  [{cat}] sections manquantes — régénération partielle...")
+            print(f"  [{cat}] sections manquantes — régénération...")
 
         if skip_existing and key in editorial and new_products:
             print(f"  [{cat}] {len(new_products)} nouveau(x) produit(s) à générer...")
