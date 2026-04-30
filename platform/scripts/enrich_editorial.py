@@ -554,6 +554,17 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
 
     # Charger les keywords et prompts custom depuis le schema
     schema_keywords = load_schema_keywords(site_dir)
+    # Charger persona_prompt depuis config.yaml et l'attacher à chaque keyword
+    import yaml as _yaml
+    _cfg_path = site_dir / 'config.yaml'
+    _persona_prompt = ''
+    if _cfg_path.exists():
+        with open(_cfg_path, encoding='utf-8') as _cf:
+            _site_cfg = _yaml.safe_load(_cf) or {}
+        _persona_prompt = _site_cfg.get('persona_prompt', '').strip()
+    if _persona_prompt:
+        for kw in schema_keywords.values():
+            kw['__persona_prompt'] = _persona_prompt
 
     # Charger les produits depuis les sheets individuels des keywords
     for kw_name, kw_data in schema_keywords.items():
@@ -675,7 +686,9 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
                 print(f"    [{section_key}]...", end=" ", flush=True)
                 _base_sys = 'Tu es un expert rédacteur SEO. Réponds UNIQUEMENT en JSON valide sans backticks, sans preamble.' if is_json else 'Tu es un expert rédacteur SEO. Aucun tiret long (— ou –). Aucun markdown. Réponds uniquement avec le contenu HTML demandé.'
                 _global = keyword_data.get('__global_prompt', '').strip()
-                sys_prompt = (_global + '\n\n' + _base_sys).strip() if _global else _base_sys
+                _persona = keyword_data.get('__persona_prompt', '').strip()
+                _layers = [p for p in [_global, _persona, _base_sys] if p]
+                sys_prompt = '\n\n'.join(_layers)
                 for attempt in range(3):
                     try:
                         response = call_claude_fast(section_prompt, system=sys_prompt)
