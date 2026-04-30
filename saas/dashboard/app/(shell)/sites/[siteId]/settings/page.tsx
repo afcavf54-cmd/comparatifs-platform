@@ -81,7 +81,13 @@ export default function SettingsPage() {
           setAuthorJob(d.author.job_title || '')
           setAuthorBio(d.author.bio || '')
           setAuthorSocials(d.author.socials || [])
-          if (d.author.photo) setAuthorPhotoPreview(d.author.photo)
+          if (d.author.photo) {
+          // Charger via raw GitHub comme logos/favicons
+          const rawUrl = `https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/${siteId}/public/${d.author.photo.replace(/^\//, '')}?t=${Date.now()}`
+          const img = new Image()
+          img.onload = () => setAuthorPhotoPreview(rawUrl)
+          img.src = rawUrl
+        }
         }
         // Charger persona
         setPersonaPrompt(d.persona_prompt || '')
