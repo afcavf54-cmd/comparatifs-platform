@@ -148,6 +148,17 @@ export default function TemplateDetailPage() {
         const s = JSON.parse(d.content)
         if (!s.keywords) s.keywords = {}
         setSchema(s)
+        // Charger global_prompt et default_prompts
+        setGlobalPrompt(s.global_prompt || '')
+        if (s.default_prompts) {
+          setDefaultPrompts({
+            prompt_intro: s.default_prompts.prompt_intro || { text: '', words_min: 100, words_max: 300 },
+            prompt_en_bref: s.default_prompts.prompt_en_bref || { text: '', words_min: 10, words_max: 30 },
+            prompt_classement: s.default_prompts.prompt_classement || { text: '', words_min: 150, words_max: 400 },
+            prompt_contenu: s.default_prompts.prompt_contenu || { text: '', words_min: 200, words_max: 500 },
+            prompt_faq: s.default_prompts.prompt_faq || { text: '', words_min: 50, words_max: 150 },
+          })
+        }
         const groups = Object.keys(s.keywords || {})
         if (groups.length > 0) setSelectedGroup(groups[0])
         const cats = [...new Set(Object.values(s.keywords || {}).map((v: any) => v.__categorie).filter(Boolean))] as string[]
