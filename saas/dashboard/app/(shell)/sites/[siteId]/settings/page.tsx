@@ -69,7 +69,7 @@ export default function SettingsPage() {
       img.src = url
     })
 
-    fetch(`/api/sites/${siteId}/config`).then(r => r.json()).then(d => {
+    fetch(`/api/sites/${siteId}/config?t=${Date.now()}`).then(r => r.json()).then(d => {
       if (d) {
         if (d.theme) setThemeForm(t => ({ ...t, ...d.theme, cta_color: d.theme.cta_color || '#F59E0B', cta_text_color: d.theme.cta_text_color || '#ffffff' }))
         setSeoForm(f => ({ ...f, home_title: d.home_title || '', home_description: d.home_description || '',
@@ -325,10 +325,15 @@ export default function SettingsPage() {
             body: JSON.stringify({ persona_prompt: personaPrompt })
           })
           const d = await r.json()
-          if (d.ok) alert('✓ Persona sauvegardé')
+          if (d.ok) {
+            alert('✓ Persona sauvegardé')
+          } else {
+            alert('✗ Erreur : ' + (d.error || 'inconnue'))
+          }
         }} style={{padding:'10px 20px',borderRadius:8,border:'none',background:'linear-gradient(135deg,#9F7AEA,#0090FF)',color:'#fff',cursor:'pointer',fontWeight:600,fontSize:13}}>
           💾 Sauvegarder le persona
         </button>
+        {personaPrompt && <span style={{fontSize:12,color:'#9F7AEA',marginLeft:12}}>{personaPrompt.length} caractères ✓</span>}
       </div>
 
       {/* ── BOX AUTEUR ── */}
