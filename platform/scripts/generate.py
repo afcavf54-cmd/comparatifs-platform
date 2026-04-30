@@ -885,13 +885,21 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
 
                 # Données auteur depuis config
                 author_cfg = config.get("author", {})
+                # Nettoyer le path photo (enlever URL raw GitHub si présent)
+                _photo_raw = author_cfg.get("photo", "") or ""
+                if "raw.githubusercontent.com" in _photo_raw:
+                    # Extraire juste le nom de fichier
+                    _photo_clean = "/" + _photo_raw.split("/public/")[-1].split("?")[0] if "/public/" in _photo_raw else ""
+                else:
+                    _photo_clean = _photo_raw
+
                 site_with_author = {
                     **site,
                     "seo": config.get("seo", {}),
                     "author_name": author_cfg.get("name", ""),
                     "author_bio": author_cfg.get("bio", ""),
                     "author_job": author_cfg.get("job_title", ""),
-                    "author_photo": author_cfg.get("photo", ""),
+                    "author_photo": _photo_clean,
                     "author_socials": author_cfg.get("socials", []),
                 }
                 # Trouver les siblings (même catégorie parente, max 8, triés, fixes)
