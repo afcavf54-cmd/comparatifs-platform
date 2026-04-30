@@ -343,12 +343,12 @@
       "words_max": 120
     },
     "prompt_en_bref": {
-      "text": "Tu rédiges une section “En bref” pour un comparatif sur : [MOT-CLE]\n\n\n🎯 Objectif :\n- résumer les meilleurs choix rapidement\n- permettre une lecture en 30 secondes\n\n📌 Format :\n- 5 bullet points\n- chaque point = 1 recommandation claire\n- inclure :\n  - meilleur global\n  - meilleur rapport qualité/prix\n  - plus simple\n  - plus complet\n\n📌 Style :\n- phrases courtes\n- ton direct\n- pas de jargon\n\n✅ Optimisation SEO :\n- intégrer des variantes du mot-clé\n- réponses concises type featured snippet\n\n❌ À éviter :\n- phrases longues\n- répétition du classement détaillé",
+      "text": "Tu rédiges une section “En bref” pour un comparatif sur : {theme}\n\n\n🎯 Objectif :\n- résumer les meilleurs choix rapidement\n- permettre une lecture en 30 secondes\n\n📌 Format :\n- 5 bullet points\n- chaque point = 1 recommandation claire\n- inclure :\n  - meilleur global\n  - meilleur rapport qualité/prix\n  - plus simple\n  - plus complet\n\n📌 Style :\n- phrases courtes\n- ton direct\n- pas de jargon\n\n✅ Optimisation SEO :\n- intégrer des variantes du mot-clé\n- réponses concises type featured snippet\n\n❌ À éviter :\n- phrases longues\n- répétition du classement détaillé",
       "words_min": 15,
       "words_max": 25
     },
     "prompt_classement": {
-      "text": "Tu rédiges une fiche détaillée pour le logiciel : [NOM DU LOGICIEL]\n\nContexte :\nComparatif sur : {theme}\n\n\n🎯 Objectif :\n- aider à comprendre si ce logiciel est adapté\n- se différencier des descriptions génériques\n\n📌 Structure OBLIGATOIRE :\n\n1. Présentation rapide (2-3 lignes)\n2. Pour qui ce logiciel est adapté\n4. Limites (2 à 3)\n5. Cas concret d’utilisation\n6. Verdict du persona\n\n📌 Consignes :\n- éviter description officielle\n- utiliser logique métier\n- varier le style selon persona\n\n📌 SEO :\n- inclure le nom du logiciel + mot-clé\n- enrichir lexicalement (synonymes, cas d’usage)\n\n❌ À éviter :\n- copier fiche produit\n- contenu générique",
+      "text": "Tu rédiges une fiche détaillée pour le logiciel : {produits}\n\nContexte :\nComparatif sur : {theme}\n\n\n🎯 Objectif :\n- aider à comprendre si ce logiciel est adapté\n- se différencier des descriptions génériques\n\n📌 Structure OBLIGATOIRE :\n\n1. Présentation rapide (2-3 lignes)\n2. Pour qui ce logiciel est adapté\n4. Limites (2 à 3)\n5. Cas concret d’utilisation\n6. Verdict du persona\n\n📌 Consignes :\n- éviter description officielle\n- utiliser logique métier\n- varier le style selon persona\n\n📌 SEO :\n- inclure le nom du logiciel + mot-clé\n- enrichir lexicalement (synonymes, cas d’usage)\n\n❌ À éviter :\n- copier fiche produit\n- contenu générique",
       "words_min": 100,
       "words_max": 150
     },
