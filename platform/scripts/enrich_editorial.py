@@ -578,7 +578,11 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
     if _cfg_path.exists():
         with open(_cfg_path, encoding='utf-8') as _cf:
             _site_cfg = _yaml.safe_load(_cf) or {}
-        _persona_prompt = _site_cfg.get('persona_prompt', '').strip()
+        _persona_prompt = _site_cfg.get('persona_prompt', '') or ''
+        _persona_prompt = _persona_prompt.strip()
+        # Nettoyer les '|' résiduels de la corruption YAML
+        if _persona_prompt.startswith('|'):
+            _persona_prompt = _persona_prompt.lstrip('|').strip()
     if _persona_prompt:
         for kw in schema_keywords.values():
             kw['__persona_prompt'] = _persona_prompt
