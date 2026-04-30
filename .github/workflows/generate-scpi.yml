@@ -1,5 +1,4 @@
 name: Générer et déployer SCPI
-
 on:
   workflow_dispatch:
     inputs:
@@ -13,12 +12,16 @@ on:
         required: false
         type: boolean
         default: false
+      skip_existing:
+        description: 'Ne régénérer que les sections manquantes (économise les tokens)'
+        required: false
+        type: boolean
+        default: false
       schedule:
         description: 'Heure de lancement HH:MM UTC (ex: 01:00). Vide = immediat.'
         required: false
         type: string
         default: ''
-
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -26,29 +29,28 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
       - name: Install dependencies
         run: pip install pyyaml jinja2 requests
-
       - name: Generate AI editorial content
         if: ${{ inputs.skip_enrich == false }}
         run: |
-          CMD="python platform/scripts/enrich_editorial.py --site ${{ inputs.site }} --skip-existing"
+          CMD="python platform/scripts/enrich_editorial.py --site ${{ inputs.site }}"
+          if [ "${{ inputs.skip_existing }}" = "true" ]; then
+            CMD="$CMD --skip-existing"
+          fi
           if [ -n "${{ inputs.schedule }}" ]; then
             CMD="$CMD --schedule ${{ inputs.schedule }}"
           fi
+          echo "CMD=$CMD"
           $CMD
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-
       - name: Generate static site
         run: python platform/scripts/generate.py --site ${{ inputs.site }}
-
       - name: Commit generated files
         run: |
           git config user.name "Viseoweb HUB"
@@ -60,7 +62,6 @@ jobs:
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Deploy to Cloudflare Pages
         run: |
           PROJECT="${{ inputs.site }}"
@@ -83,7 +84,6 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-
       - name: Setup domains and redirects
         run: |
           python3 platform/scripts/setup_domain.py \
