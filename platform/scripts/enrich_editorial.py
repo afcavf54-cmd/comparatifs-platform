@@ -529,7 +529,12 @@ def load_schema_keywords(site_dir: Path) -> dict:
     import json
     with open(schema_path, encoding='utf-8') as f:
         schema = json.load(f)
-    return schema.get('keywords', {})
+    global_prompt = schema.get('global_prompt', '').strip()
+    keywords = schema.get('keywords', {})
+    if global_prompt:
+        for kw in keywords.values():
+            kw['__global_prompt'] = global_prompt
+    return keywords
 
 
 def generate_classement(products: list, site_dir: Path, year: int, skip_existing: bool = False) -> None:
@@ -635,7 +640,9 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
                 if not section_prompt:
                     continue
                 print(f"    [{section_key}]...", end=" ", flush=True)
-                sys_prompt = 'Tu es un expert rédacteur SEO. Réponds UNIQUEMENT en JSON valide sans backticks, sans preamble.' if is_json else 'Tu es un expert rédacteur SEO. Aucun tiret long (— ou –). Aucun markdown. Réponds uniquement avec le contenu HTML demandé.'
+                _base_sys = 'Tu es un expert rédacteur SEO. Réponds UNIQUEMENT en JSON valide sans backticks, sans preamble.' if is_json else 'Tu es un expert rédacteur SEO. Aucun tiret long (— ou –). Aucun markdown. Réponds uniquement avec le contenu HTML demandé.'
+                _global = keyword_data.get('__global_prompt', '').strip()
+                sys_prompt = (_global + '\n\n' + _base_sys).strip() if _global else _base_sys
                 for attempt in range(3):
                     try:
                         response = call_claude_fast(section_prompt, system=sys_prompt)
