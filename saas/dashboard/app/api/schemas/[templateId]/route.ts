@@ -42,12 +42,13 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ templa
 
   // Mettre à jour les champs
   if (body.global_prompt !== undefined) schema.global_prompt = body.global_prompt
+  if (body.default_prompts !== undefined) schema.default_prompts = body.default_prompts
 
   const saved = await putFile(
     `platform/schemas/${templateId}.json`,
     JSON.stringify(schema, null, 2),
     file.sha,
-    `HUB: Update ${templateId} global_prompt`
+    `HUB: Update ${templateId} global settings`
   )
 
   if (!saved) return NextResponse.json({ error: 'Erreur GitHub' }, { status: 500 })
