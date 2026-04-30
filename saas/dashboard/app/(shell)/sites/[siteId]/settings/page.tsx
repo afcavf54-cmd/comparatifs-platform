@@ -359,10 +359,21 @@ export default function SettingsPage() {
               📁 Choisir une photo
               <input type="file" accept="image/*" style={{display:'none'}} onChange={async e => {
                 const file = e.target.files?.[0]; if (!file) return
-                const fd = new FormData(); fd.append('file', file); fd.append('siteId', siteId as string); fd.append('type', 'author_photo')
-                const r = await fetch(`/api/sites/${siteId}/favicon`, {method:'POST',body:fd})
+                const fd = new FormData(); fd.append('file', file)
+                // Aperçu immédiat
+                setAuthorPhotoPreview(URL.createObjectURL(file))
+                const r = await fetch(`/api/sites/${siteId}/author-photo`, {method:'POST',body:fd})
                 const d = await r.json()
-                if (d.path) setAuthorPhotoPreview(d.path)
+                if (d.rawUrl) {
+                  const img = new Image()
+                  img.onload = () => setAuthorPhotoPreview(d.rawUrl + '?t=' + Date.now())
+                  img.src = d.rawUrl + '?t=' + Date.now()
+                  // Sauvegarder le path dans config auto
+                  fetch(`/api/sites/${siteId}/config`, {
+                    method: 'PATCH', headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ author: { name: authorName, bio: authorBio, job_title: authorJob, photo: d.path, socials: authorSocials } })
+                  })
+                }
               }} />
             </label>
           </div>
