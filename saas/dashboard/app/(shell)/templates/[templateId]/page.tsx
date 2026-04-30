@@ -129,8 +129,12 @@ export default function TemplateDetailPage() {
   const [globalPrompt, setGlobalPrompt] = useState('')
   const [savingGlobal, setSavingGlobal] = useState(false)
   const [showGlobalPrompt, setShowGlobalPrompt] = useState(false)
-  const [defaultPrompts, setDefaultPrompts] = useState<Record<string, string>>({
-    prompt_intro: '', prompt_en_bref: '', prompt_classement: '', prompt_contenu: '', prompt_faq: ''
+  const [defaultPrompts, setDefaultPrompts] = useState<Record<string, any>>({
+    prompt_intro: { text: '', words_min: 100, words_max: 300 },
+    prompt_en_bref: { text: '', words_min: 10, words_max: 30 },
+    prompt_classement: { text: '', words_min: 150, words_max: 400 },
+    prompt_contenu: { text: '', words_min: 200, words_max: 500 },
+    prompt_faq: { text: '', words_min: 50, words_max: 150 },
   })
   const [loadedImages, setLoadedImages] = useState<Record<string, string>>({})
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -347,20 +351,41 @@ export default function TemplateDetailPage() {
               </p>
               {[
                 { key: 'prompt_intro', label: '📝 Introduction' },
-                { key: 'prompt_en_bref', label: '⚡ En bref' },
+                { key: 'prompt_en_bref', label: '⚡ En bref', perLine: true },
                 { key: 'prompt_classement', label: '🏆 Classement détaillé' },
                 { key: 'prompt_contenu', label: '🎓 Contenu expert' },
                 { key: 'prompt_faq', label: '❓ FAQ' },
-              ].map(({ key, label }) => (
-                <div key={key} style={{ marginBottom: 12 }}>
-                  <label style={{ fontSize: 11, color: '#8B9CB0', display: 'block', marginBottom: 4 }}>{label}</label>
+              ].map(({ key, label, perLine }) => (
+                <div key={key} style={{ marginBottom: 16, background: '#0A0E1A', borderRadius: 8, padding: 12, border: '1px solid #1E2D3D' }}>
+                  <label style={{ fontSize: 11, color: '#8B9CB0', display: 'block', marginBottom: 6, fontWeight: 600 }}>
+                    {label}{perLine && <span style={{ color: '#00D4AA', marginLeft: 6, fontSize: 10 }}>intervalle par ligne</span>}
+                  </label>
                   <textarea
-                    value={defaultPrompts[key] || ''}
-                    onChange={e => setDefaultPrompts(prev => ({ ...prev, [key]: e.target.value }))}
+                    value={defaultPrompts[key]?.text || ''}
+                    onChange={e => setDefaultPrompts(prev => ({ ...prev, [key]: { ...prev[key], text: e.target.value } }))}
                     rows={3}
                     placeholder={`Prompt par défaut pour ${label}...`}
-                    style={{ width: '100%', padding: '8px 10px', borderRadius: 6, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none', resize: 'vertical' as const, fontFamily: 'inherit', boxSizing: 'border-box' as const }}
+                    style={{ width: '100%', padding: '8px 10px', borderRadius: 6, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none', resize: 'vertical' as const, fontFamily: 'inherit', boxSizing: 'border-box' as const, marginBottom: 8 }}
                   />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <span style={{ fontSize: 11, color: '#8B9CB0' }}>Nb mots{perLine ? ' / ligne' : ''} :</span>
+                    <input
+                      type="number"
+                      value={defaultPrompts[key]?.words_min ?? ''}
+                      onChange={e => setDefaultPrompts(prev => ({ ...prev, [key]: { ...prev[key], words_min: parseInt(e.target.value) || 0 } }))}
+                      placeholder="min"
+                      style={{ width: 60, padding: '4px 8px', borderRadius: 6, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none', textAlign: 'center' as const }}
+                    />
+                    <span style={{ color: '#8B9CB0', fontSize: 12 }}>→</span>
+                    <input
+                      type="number"
+                      value={defaultPrompts[key]?.words_max ?? ''}
+                      onChange={e => setDefaultPrompts(prev => ({ ...prev, [key]: { ...prev[key], words_max: parseInt(e.target.value) || 0 } }))}
+                      placeholder="max"
+                      style={{ width: 60, padding: '4px 8px', borderRadius: 6, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none', textAlign: 'center' as const }}
+                    />
+                    <span style={{ fontSize: 11, color: '#8B9CB0' }}>mots</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -419,7 +444,7 @@ export default function TemplateDetailPage() {
                 <div style={{ display: 'flex', gap: 6 }}>
                   <button onClick={async () => {
                     if (!newGroupName.trim()) return
-                    const newSchema = { ...schema, keywords: { ...(schema.keywords || {}), [newGroupName.trim()]: { __sheet_url: '', __products: [], prompt_intro: defaultPrompts.prompt_intro, prompt_en_bref: defaultPrompts.prompt_en_bref, prompt_classement: defaultPrompts.prompt_classement, prompt_contenu: defaultPrompts.prompt_contenu, prompt_faq: defaultPrompts.prompt_faq } } }
+                    const newSchema = { ...schema, keywords: { ...(schema.keywords || {}), [newGroupName.trim()]: { __sheet_url: '', __products: [], prompt_intro: defaultPrompts.prompt_intro?.text || '', prompt_en_bref: defaultPrompts.prompt_en_bref?.text || '', prompt_classement: defaultPrompts.prompt_classement?.text || '', prompt_contenu: defaultPrompts.prompt_contenu?.text || '', prompt_faq: defaultPrompts.prompt_faq?.text || '' } } }
                     setSchema(newSchema); setSelectedGroup(newGroupName.trim()); setNewGroupName(''); setShowAddGroup(false)
                     setSaving(true)
                     const r = await fetch('/api/github', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ path: schemaPath, content: JSON.stringify(newSchema, null, 2), message: `HUB: Add keyword type ${newGroupName.trim()}` }) })
