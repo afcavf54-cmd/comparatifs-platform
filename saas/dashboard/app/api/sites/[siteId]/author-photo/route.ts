@@ -52,5 +52,24 @@ export async function POST(req: NextRequest, { params }: Params) {
   }
 
   const rawUrl = `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/${path}`
-  return NextResponse.json({ ok: true, path: `/${filename}`, rawUrl })
+  const photoPath = `/${filename}`
+
+  // Mettre à jour config.yaml avec le nouveau path photo
+  const configPath = `platform/sites/${siteId}/config.yaml`
+  const configRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${configPath}`, {
+    headers: { Authorization: `Bearer ${TOKEN}`, Accept: 'application/vnd.github+json' }
+  })
+  if (configRes.ok) {
+    const configData = await configRes.json()
+    let yaml = Buffer.from(configData.content, 'base64').toString('utf-8')
+    // Remplacer le champ photo dans le bloc author
+    yaml = yaml.replace(/^(  photo:).*$/m, `$1 "${photoPath}"`)
+    await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${configPath}`, {
+      method: 'PUT',
+      headers: { Authorization: `Bearer ${TOKEN}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: `HUB: Update author photo for ${siteId}`, content: Buffer.from(yaml).toString('base64'), sha: configData.sha })
+    })
+  }
+
+  return NextResponse.json({ ok: true, path: photoPath, rawUrl })
 }
