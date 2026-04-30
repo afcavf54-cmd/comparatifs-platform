@@ -21,7 +21,7 @@
   "name": "Meilleurs sites de création d'entreprise en ligne en 2026",
   "description": "Découvrez le top 5 des meilleurs logiciels de création d'entreprise en ligne 2026. Comparatif détaillé, prix et fonctionnalités. Choisissez le vôtre !",
   "url": "https://www.entreprendrepourapprendre.org/meilleur-creation-d-entreprise-en-ligne",
-  "author": { "@type": "Organization", "name": "Camille" },
+  "author": { "@type": "Organization", "name": "Camille Lefèvre" },
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "item": { "@type": "SoftwareApplication", "name": "Legal Start", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "60.0", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 2, "item": { "@type": "SoftwareApplication", "name": "Dougs", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "45.0", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 3, "item": { "@type": "SoftwareApplication", "name": "LegalPlace", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "50.0", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 4, "item": { "@type": "SoftwareApplication", "name": "Qonto", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "59.0", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 5, "item": { "@type": "SoftwareApplication", "name": "Swapn", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "189.0", "priceCurrency": "EUR" } } }  ]
 }
@@ -115,6 +115,20 @@ main{max-width:1200px;margin:0 auto;padding:48px 5vw 80px}
 .author-social{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:20px;border:1px solid var(--border);font-size:12px;font-weight:600;color:var(--ink2);transition:.15s}
 .author-social:hover{border-color:var(--accent);color:var(--accent)}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
+/* ── MAILLAGE INTERNE ── */
+.maillage-section{margin:56px 0 0}
+.maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
+.maillage-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.maillage-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:16px 18px;display:flex;align-items:center;justify-content:space-between;transition:.15s;cursor:pointer;text-decoration:none;color:inherit}
+.maillage-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,.06);transform:translateY(-1px)}
+.maillage-card-left{display:flex;align-items:center;gap:10px}
+.maillage-card-icon{width:34px;height:34px;border-radius:8px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.maillage-card-name{font-size:13px;font-weight:600;color:var(--ink);line-height:1.3}
+.maillage-card-count{font-size:11px;color:var(--ink3);margin-top:2px}
+.maillage-card-arrow{color:var(--accent);font-size:16px;opacity:0;transition:.15s;flex-shrink:0}
+.maillage-card:hover .maillage-card-arrow{opacity:1}
+@media(max-width:900px){.maillage-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.maillage-grid{grid-template-columns:1fr}}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
@@ -479,12 +493,39 @@ main{max-width:1200px;margin:0 auto;padding:48px 5vw 80px}
       <div class="faq-a">Pour une startup, privilégiez une plateforme spécialisée dans la création de SAS, statut le plus adapté aux projets innovants. LegalStart, LegalPlace et Captain Contrat se distinguent par leur expertise des startups et leurs services complémentaires. Recherchez une plateforme offrant : la rédaction de statuts flexibles avec clauses spécifiques (pacte d'associés, clause d'agrément), l'accompagnement pour la levée de fonds, la domiciliation dans un quartier d'affaires prestigieux, et l'accès à un réseau de partenaires (experts-comptables, avocats d'affaires). Certaines plateformes proposent des forfaits 'startup' incluant l'ouverture de compte pro, l'assurance, et même des outils de gestion financière. Vérifiez aussi qu'elles maîtrisent les spécificités des startups : BSPCE, JEI (Jeune Entreprise Innovante), et crédit d'impôt recherche. L'investissement initial sera plus élevé mais vous gagnez un temps précieux.</div>
   </div>
 
+  <section class="maillage-section">
+    <h3>Nos autres comparateurs <span style="color:var(--accent)">Ressources Humaines (RH)</span></h3>
+    <div class="maillage-grid">
+      <a href="/meilleur-logiciel-de-paie" class="maillage-card">
+        <div class="maillage-card-left">
+          <div class="maillage-card-icon">💻</div>
+          <div>
+            <div class="maillage-card-name">Logiciel de paie</div>
+            <div class="maillage-card-count">10 logiciels</div>
+          </div>
+        </div>
+        <span class="maillage-card-arrow">→</span>
+      </a>
+      <a href="/meilleur-logiciel-de-systeme-d-information-rh-sirh" class="maillage-card">
+        <div class="maillage-card-left">
+          <div class="maillage-card-icon">💻</div>
+          <div>
+            <div class="maillage-card-name">Logiciel de système d'information RH (SIRH)</div>
+            <div class="maillage-card-count">10 logiciels</div>
+          </div>
+        </div>
+        <span class="maillage-card-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+
   <aside class="author-box" itemscope itemtype="https://schema.org/Person">
-    <img src="https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/entreprendrepourapprendre-org/public/author-photo.png?t=1777551675009" alt="Photo de Camille" class="author-avatar" loading="lazy" itemprop="image">
+    <img src="https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/entreprendrepourapprendre-org/public/author-photo.png?t=1777551675009" alt="Photo de Camille Lefèvre" class="author-avatar" loading="lazy" itemprop="image">
     <div class="author-info">
       <div class="author-label">À propos de l'auteur</div>
-      <div class="author-name" itemprop="name">Camille</div>
-      <div class="author-job" itemprop="jobTitle">Lefèvre</div>
+      <div class="author-name" itemprop="name">Camille Lefèvre</div>
+      <div class="author-job" itemprop="jobTitle">Gérante agence de communication</div>
       <p class="author-bio" itemprop="description">Je m’appelle Camille Lefèvre, j’ai 34 ans et je dirige une agence de communication de 6 personnes à Lyon. Entre gestion client et administratif, je cherche des outils simples pour gagner du temps et centraliser mes process. Pragmatique, je privilégie des solutions efficaces, faciles à prendre en main et avec un bon support client, tout en évitant les logiciels trop complexes pour une TPE.</p>
     </div>
   </aside>
@@ -493,8 +534,8 @@ main{max-width:1200px;margin:0 auto;padding:48px 5vw 80px}
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Camille",
-"jobTitle": "Lefèvre","description": "Je m’appelle Camille Lefèvre, j’ai 34 ans et je dirige une agence de communication de 6 personnes à Lyon. Entre gestion client et administratif, je cherche des outils simples pour gagner du temps et centraliser mes process. Pragmatique, je privilégie des solutions efficaces, faciles à prendre en main et avec un bon support client, tout en évitant les logiciels trop complexes pour une TPE.","image": "https://www.entreprendrepourapprendre.orghttps://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/entreprendrepourapprendre-org/public/author-photo.png?t=1777551675009",    "url": "https://www.entreprendrepourapprendre.org"
+    "name": "Camille Lefèvre",
+"jobTitle": "Gérante agence de communication","description": "Je m’appelle Camille Lefèvre, j’ai 34 ans et je dirige une agence de communication de 6 personnes à Lyon. Entre gestion client et administratif, je cherche des outils simples pour gagner du temps et centraliser mes process. Pragmatique, je privilégie des solutions efficaces, faciles à prendre en main et avec un bon support client, tout en évitant les logiciels trop complexes pour une TPE.","image": "https://www.entreprendrepourapprendre.orghttps://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/entreprendrepourapprendre-org/public/author-photo.png?t=1777551675009",    "url": "https://www.entreprendrepourapprendre.org"
   }
   </script>
 
