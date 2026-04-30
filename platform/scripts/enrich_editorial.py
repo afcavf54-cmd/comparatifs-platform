@@ -670,6 +670,8 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
             def _combine(default_key, custom_prompt, per_line=False):
                 dp_entry = _dp.get(default_key, {})
                 _default = (dp_entry.get('text', '') if isinstance(dp_entry, dict) else str(dp_entry or '')).strip()
+                # Remplacer les variables dans le prompt par défaut aussi
+                _default = _default.replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
                 _custom = (custom_prompt or '').strip()
                 _words = _word_constraint(default_key, per_line)
                 combined = (_default + '\n\n' + _custom).strip() if (_default and _custom) else (_custom or _default)
@@ -777,7 +779,10 @@ Réponds UNIQUEMENT en JSON valide sans backticks :
             slug = prod.get("slug", "")
             prod_key = f"classement-prod-{slug}"
             if skip_existing and prod_key in editorial:
-                continue
+                # Ignorer les descriptions cassées (réponses Claude invalides)
+                existing_desc = editorial.get(prod_key, {}).get('description', '')
+                if existing_desc and 'I can see' not in existing_desc and len(existing_desc) > 100:
+                    continue
 
             nom = prod.get("nom", "")
             marque = prod.get("marque", "")
