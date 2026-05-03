@@ -154,8 +154,10 @@ export default function ClassementsPage() {
       try {
         const schema = JSON.parse(sd.content)
         const allProducts: any[] = []
-        Object.values(schema.keywords || {}).forEach((kw: any) => {
-          if (Array.isArray(kw.__products)) allProducts.push(...kw.__products)
+        Object.entries(schema.keywords || {}).forEach(([kwName, kw]: [string, any]) => {
+          if (Array.isArray(kw.__products)) {
+            kw.__products.forEach((p: any) => allProducts.push({ ...p, __keyword: kwName }))
+          }
         })
         if (allProducts.length > 0) setProducts(prev => prev.length > 0 ? prev : allProducts)
       } catch {}
@@ -294,8 +296,17 @@ export default function ClassementsPage() {
   }
   const catProducts = selectedData
     ? products.filter(p => {
-        const slug = slugifyCat(p.categorie || '')
-        return `classement-${slug}` === selected
+        // Matcher par slug de catégorie OU par nom de keyword (pour produits du schema)
+        const slugByCat = slugifyCat(p.categorie || '')
+        const slugByKeyword = slugifyCat(selected.replace('classement-', ''))
+        const catName = (p.categorie || '').toLowerCase()
+        const keyName = selected.replace('classement-', '').toLowerCase()
+        return `classement-${slugByCat}` === selected ||
+               slugByCat === slugByKeyword ||
+               catName.includes(keyName) ||
+               keyName.includes(catName) ||
+               // Matcher aussi par nom du produit dans le schema
+               (p.__keyword && slugifyCat(p.__keyword) === slugByKeyword)
       })
     : []
 
@@ -459,6 +470,7 @@ export default function ClassementsPage() {
                 {/* Sections éditables */}
                 {[
                   { key: 'intro', label: '📝 Introduction', rows: 8, prompt: `Génère une introduction HTML engageante (150-200 mots) pour une page de classement des meilleurs ${selectedData.categorie || ''} en ${new Date().getFullYear()}. Paragraphes <p>, gras <strong>. Aucun tiret long.` },
+                  { key: 'en_bref', label: '⚡ En bref', rows: 6, prompt: `Génère un encart "En bref" HTML pour les meilleurs ${selectedData.categorie || ''} en ${new Date().getFullYear()}. Format : <ul> avec 5 <li>, chaque item = nom du logiciel + profil cible idéal. Aucun tiret long.` },
                   { key: 'contenu_custom', label: '📖 Contenu expert', rows: 14, prompt: `Génère un guide expert HTML (500-800 mots) pour aider à choisir parmi les meilleurs ${selectedData.categorie || ''} en ${new Date().getFullYear()}. Utilise des <h2>, <h3>, <p>, <strong>. Aucun tiret long.` },
                 ].map(({ key, label, rows, prompt }) => {
                   // Chercher le prompt dans le schema pour la catégorie sélectionnée
