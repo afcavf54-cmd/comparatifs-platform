@@ -128,7 +128,7 @@ export default function TemplateDetailPage() {
   const [uploadingImg, setUploadingImg] = useState<Record<string, boolean>>({})
   const [globalPrompt, setGlobalPrompt] = useState('')
   const [savingGlobal, setSavingGlobal] = useState(false)
-  const [showGlobalPrompt, setShowGlobalPrompt] = useState(false)
+  const [showGlobalPrompt, setShowGlobalPrompt] = useState(true)
   const [defaultPrompts, setDefaultPrompts] = useState<Record<string, any>>({
     prompt_intro: { text: '', words_min: 100, words_max: 300 },
     prompt_en_bref: { text: '', words_min: 10, words_max: 30 },
