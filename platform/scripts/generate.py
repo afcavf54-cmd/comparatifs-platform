@@ -631,6 +631,21 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         generate_sitemap(site, all_pairs, products, output_dir, config=config)
         cleanup_removed_products(output_dir, site_dir, products, all_pairs, is_classement_template)
 
+    # Pour les sites classement : écraser les anciennes pages avis SCPI avec la 404 actuelle
+    if is_classement_template:
+        try:
+            html_404 = (output_dir / "404.html").read_text(encoding="utf-8")
+        except Exception:
+            html_404 = "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>404</title></head><body><h1>Page introuvable</h1></body></html>"
+        slugs_to_block = [p.get("slug", "") for p in products if p.get("slug")]
+        slugs_to_block += ["scpi"]
+        for slug in slugs_to_block:
+            (output_dir / f"avis-{slug}.html").write_text(html_404, encoding="utf-8")
+        (output_dir / "avis-scpi.html").write_text(html_404, encoding="utf-8")
+        (output_dir / "comparatifs-scpi.html").write_text(html_404, encoding="utf-8")
+        print(f"  ✓ {len(slugs_to_block)} pages avis écrasées avec 404")
+
+
         # ── Fichier _redirects pour Cloudflare Pages ──────────────────────
         www_preference = site.get("www_preference") or config.get("www_preference", "www")
         domain_raw = site.get("domain", "").replace("https://", "").replace("http://", "").replace("www.", "").rstrip("/")
