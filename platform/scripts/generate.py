@@ -641,6 +641,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             else:
                 # Redirige www → naked
                 redirects = f"https://www.{domain_raw}/* https://{domain_raw}/:splat 301\n"
+
             (output_dir / "_redirects").write_text(redirects, encoding="utf-8")
             print(f"  ✓ _redirects ({www_preference})")
         copy_shared_assets(output_dir, site_dir)
