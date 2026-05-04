@@ -829,8 +829,10 @@ Réponds UNIQUEMENT en JSON valide sans backticks :
         time.sleep(3)
 
     # Génère aussi la description de chaque produit dans sa catégorie
+    # Respecter le filtre --only si défini
+    _desc_categories = {k: v for k, v in categories.items() if not only_cat or only_cat in k.lower() or k.lower() in only_cat} if only_cat else categories
     _seen_prod_slugs = set()
-    for cat, cat_products in categories.items():
+    for cat, cat_products in _desc_categories.items():
         for prod in cat_products:
             slug = prod.get("slug", "")
             if slug in _seen_prod_slugs:
