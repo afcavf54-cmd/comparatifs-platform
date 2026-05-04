@@ -455,7 +455,7 @@ export default function TemplateDetailPage() {
                 <div style={{ display: 'flex', gap: 6 }}>
                   <button onClick={async () => {
                     if (!newGroupName.trim()) return
-                    const newSchema = { ...schema, keywords: { ...(schema.keywords || {}), [newGroupName.trim()]: { __sheet_url: '', __products: [], prompt_intro: defaultPrompts.prompt_intro?.text || '', prompt_en_bref: defaultPrompts.prompt_en_bref?.text || '', prompt_classement: defaultPrompts.prompt_classement?.text || '', prompt_contenu: defaultPrompts.prompt_contenu?.text || '', prompt_faq: defaultPrompts.prompt_faq?.text || '' } } }
+                    const newSchema = { ...schema, keywords: { ...(schema.keywords || {}), [newGroupName.trim()]: { __sheet_url: '', __products: [], prompt_intro: '', prompt_en_bref: '', prompt_classement: '', prompt_contenu: '', prompt_faq: '' } } }
                     setSchema(newSchema); setSelectedGroup(newGroupName.trim()); setNewGroupName(''); setShowAddGroup(false)
                     setSaving(true)
                     const r = await fetch('/api/github', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ path: schemaPath, content: JSON.stringify(newSchema, null, 2), message: `HUB: Add keyword type ${newGroupName.trim()}` }) })
