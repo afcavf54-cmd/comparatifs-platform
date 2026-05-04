@@ -407,8 +407,23 @@ export default function TemplateDetailPage() {
                 const res = await fetch(`/api/schemas/${templateId}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ global_prompt: globalPrompt, default_prompts: defaultPrompts }) })
                 const d = await res.json()
                 setSavingGlobal(false)
-                if (d.ok) alert('✓ Prompt global sauvegardé')
-                else alert('Erreur : ' + (d.error || 'inconnue'))
+                if (d.ok) {
+                  // Recharger le schema pour confirmer la sauvegarde
+                  const r2 = await fetch(`/api/github?path=${encodeURIComponent(schemaPath)}&t=${Date.now()}`)
+                  const d2 = await r2.json()
+                  try {
+                    const s2 = JSON.parse(d2.content)
+                    setGlobalPrompt(s2.global_prompt || '')
+                    if (s2.default_prompts) setDefaultPrompts({
+                      prompt_intro: s2.default_prompts.prompt_intro || { text: '', words_min: 100, words_max: 300 },
+                      prompt_en_bref: s2.default_prompts.prompt_en_bref || { text: '', words_min: 10, words_max: 30 },
+                      prompt_classement: s2.default_prompts.prompt_classement || { text: '', words_min: 150, words_max: 400 },
+                      prompt_contenu: s2.default_prompts.prompt_contenu || { text: '', words_min: 200, words_max: 500 },
+                      prompt_faq: s2.default_prompts.prompt_faq || { text: '', words_min: 50, words_max: 150 },
+                    })
+                  } catch {}
+                  alert('✓ Prompt global sauvegardé')
+                } else alert('Erreur : ' + (d.error || 'inconnue'))
               }} style={{ padding: '8px 16px', borderRadius: 7, border: 'none', background: 'linear-gradient(135deg,#00D4AA,#0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 12 }}>
                 {savingGlobal ? '...' : '💾 Sauvegarder tout'}
               </button>
