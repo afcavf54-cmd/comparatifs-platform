@@ -838,7 +838,7 @@ Réponds UNIQUEMENT en JSON valide sans backticks :
             if skip_existing and prod_key in editorial:
                 # Ignorer les descriptions cassées (réponses Claude invalides)
                 existing_desc = editorial.get(prod_key, {}).get('description', '')
-                if existing_desc and 'I can see' not in existing_desc and 'I see that' not in existing_desc and "I'm here" not in existing_desc and len(existing_desc) > 100:
+                if existing_desc and 'I can see' not in existing_desc and 'I see that' not in existing_desc and "I'm here" not in existing_desc and '🎯' not in existing_desc and '---' not in existing_desc and len(existing_desc) > 100:
                     continue
 
             nom = prod.get("nom", "")
