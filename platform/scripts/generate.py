@@ -642,6 +642,8 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 # Redirige www → naked
                 redirects = f"https://www.{domain_raw}/* https://{domain_raw}/:splat 301\n"
 
+            from datetime import datetime as _dt
+            redirects += f"# Generated: {_dt.utcnow().isoformat()}\n"
             (output_dir / "_redirects").write_text(redirects, encoding="utf-8")
             print(f"  ✓ _redirects ({www_preference})")
         copy_shared_assets(output_dir, site_dir)
@@ -729,6 +731,8 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 site_editorial=site_editorial,
                 home_title=home_title, home_description=home_desc, home_h1=site.get('home_h1', ''),
             )
+            # Cache-buster pour forcer Cloudflare à re-uploader
+            html = html.replace("</body>", f"<!-- build:20260504122856 --></body>", 1)
             (output_dir / "index.html").write_text(html, encoding="utf-8")
             print(f"  ✓ index.html ({len(products)} produits, {len(all_pairs)} comparatifs)")
 
