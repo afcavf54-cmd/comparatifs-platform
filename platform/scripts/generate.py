@@ -43,6 +43,10 @@ import re as _re
 def md_to_html(text):
     if not text: return text
     import re as _re2
+    # Supprimer les séparateurs markdown
+    text = _re2.sub(r'^---+$', '', text, flags=_re2.MULTILINE)
+    # Convertir les titres emoji (🎯 Titre, ⚠️ Titre, etc.)
+    text = _re2.sub(r'^([\U0001F3AF\u26A0\U0001F4BC\u2705\U0001F511\U0001F4CC\u274C\u2713\u2192\u2022\u00B7]+)[ ]+(.+)$', lambda m: '<h3>' + m.group(2) + '</h3>', text, flags=_re2.MULTILINE)
     lines = text.split('\n')
     result = []; in_list = False
     for line in lines:
@@ -837,7 +841,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     slug = prod.get("slug", "")
                     # Description depuis descriptions_produits dans l'editorial classement
                     if "descriptions_produits" in cat_editorial and slug in cat_editorial["descriptions_produits"]:
-                        p["description"] = cat_editorial["descriptions_produits"][slug]
+                        p["description"] = md_to_html(cat_editorial["descriptions_produits"][slug])
                     # Points forts/faibles depuis classement-prod-{slug}
                     prod_ed_key = f"classement-prod-{slug}"
                     if prod_ed_key in editorials_fresh:
@@ -847,7 +851,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                         if not p.get("points_faibles") and prod_ed.get("points_faibles"):
                             p["points_faibles"] = prod_ed["points_faibles"]
                         if not p.get("description") and prod_ed.get("description"):
-                            p["description"] = prod_ed["description"]
+                            p["description"] = md_to_html(prod_ed["description"])
                     # Données éditées manuellement via dashboard (prod_{slug})
                     manual_key = f"prod_{slug}"
                     if manual_key in cat_editorial:
