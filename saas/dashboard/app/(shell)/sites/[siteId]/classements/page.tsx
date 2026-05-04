@@ -259,7 +259,7 @@ export default function ClassementsPage() {
       setDeploying(true)
       const dr = await fetch(`/api/sites/${siteId}/deploy`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ skip_enrich: false })
+        body: JSON.stringify({ skip_enrich: false, skipExisting: true })
       })
       const dd = await dr.json()
       setMsg(dd.success ? '✓ Régénération lancée (~3 min)' : '✗ Erreur déploiement')
