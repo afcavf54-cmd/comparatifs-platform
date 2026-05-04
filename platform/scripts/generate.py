@@ -43,6 +43,8 @@ import re as _re
 def md_to_html(text):
     if not text: return text
     import re as _re2
+    # Convertir **bold** en <strong>bold</strong>
+    text = _re2.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
     # Supprimer les séparateurs markdown
     text = _re2.sub(r'^---+$', '', text, flags=_re2.MULTILINE)
     # Convertir les titres emoji (🎯 Titre, ⚠️ Titre, etc.)
