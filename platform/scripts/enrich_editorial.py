@@ -847,18 +847,26 @@ Réponds UNIQUEMENT en JSON valide sans backticks :
 
             niche_prod = prod.get("niche", "")
             niche_prod_ctx = f" ({niche_prod})" if niche_prod else ""
-            prompt = f"""Expert rédacteur SEO. Génère les textes pour la fiche du logiciel {nom} ({marque}) dans un classement des meilleurs {cat}{niche_prod_ctx}.
+            # Combiner avec le prompt_classement du keyword si défini
+            _prod_custom = strip_html_for_prompt(keyword_data.get('prompt_classement', '') or '').replace('{produits}', nom).replace('{year}', str(year)).replace('{theme}', cat).strip()
+            _prod_default_entry = keyword_data.get('__default_prompts', {}).get('prompt_classement', {})
+            _prod_default = strip_html_for_prompt((_prod_default_entry.get('text', '') if isinstance(_prod_default_entry, dict) else str(_prod_default_entry or ''))).replace('{produits}', nom).replace('{year}', str(year)).replace('{theme}', cat).strip()
+            _prod_extra = (_prod_default + '\n\n' + _prod_custom).strip() if (_prod_default and _prod_custom) else (_prod_custom or _prod_default)
 
-Réponds UNIQUEMENT en JSON valide sans backticks :
+            prompt = f"""Expert rédacteur SEO. Génère les textes pour la fiche du logiciel {nom} dans un classement des meilleurs {cat}{niche_prod_ctx} en {year}.
+{('Consignes supplémentaires : ' + _prod_extra) if _prod_extra else ''}
+
+Réponds UNIQUEMENT en JSON valide sans backticks, sans markdown :
 {{
-  "description": "3 paragraphes HTML de 200 mots sur {nom}, ses fonctionnalités clés, sa cible, ce qui le différencie. <strong> sur les points clés. Aucun tiret long.",
-  "points_forts": ["point fort 1", "point fort 2", "point fort 3", "point fort 4"],
-  "points_faibles": ["point faible 1", "point faible 2", "point faible 3"]
+  "description": "<p>Paragraphe 1 HTML sur {nom}.</p><p>Paragraphe 2 HTML sur les fonctionnalités clés.</p><p>Paragraphe 3 HTML sur la cible idéale et différenciation.</p>",
+  "points_forts": ["avantage concret 1", "avantage concret 2", "avantage concret 3", "avantage concret 4"],
+  "points_faibles": ["limite réelle 1", "limite réelle 2", "limite réelle 3"]
 }}"""
 
+            _prod_sys = 'Tu es un expert rédacteur SEO. Réponds UNIQUEMENT en JSON valide sans backticks, sans preamble, sans markdown. Format strict JSON.'
             for attempt in range(5):
                 try:
-                    response = call_claude(prompt)
+                    response = call_claude(prompt, system=_prod_sys)
                     data = parse_json(response, prod_key)
                     if data:
                         editorial[prod_key] = data
