@@ -219,7 +219,7 @@ main{max-width:1200px;margin:0 auto;padding:48px 5vw 80px}
   </div>
   {% endif %}
 
-  <h2 class="section-title">{{ editorial.titre_analyse if editorial.titre_analyse is defined and editorial.titre_analyse else 'Analyse détaillée' }}</h2>
+  <h2 class="section-title">{{ editorial.titre_analyse if editorial.titre_analyse is defined and editorial.titre_analyse else 'Comparatif complet ' ~ (cat_name if cat_name is defined and cat_name else '') }}</h2>
 
   {% for prod in products %}
   <div class="logiciel-card" id="{{ prod.slug }}">
