@@ -17,6 +17,11 @@ on:
         required: false
         type: boolean
         default: false
+      only_category:
+        description: 'Générer uniquement cette catégorie (ex: Logiciel de paie). Vide = toutes.'
+        required: false
+        type: string
+        default: ''
       schedule:
         description: 'Heure de lancement HH:MM UTC (ex: 01:00). Vide = immediat.'
         required: false
@@ -36,11 +41,14 @@ jobs:
       - name: Install dependencies
         run: pip install pyyaml jinja2 requests
       - name: Generate AI editorial content
-        if: ${{ inputs.skip_enrich == false }}
+        if: ${{ inputs.skip_enrich != 'true' }}
         run: |
           CMD="python platform/scripts/enrich_editorial.py --site ${{ inputs.site }}"
           if [ "${{ inputs.skip_existing }}" = "true" ]; then
             CMD="$CMD --skip-existing"
+          fi
+          if [ -n "${{ inputs.only_category }}" ]; then
+            CMD="$CMD --only '${{ inputs.only_category }}'"
           fi
           if [ -n "${{ inputs.schedule }}" ]; then
             CMD="$CMD --schedule ${{ inputs.schedule }}"
