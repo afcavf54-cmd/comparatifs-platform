@@ -51,6 +51,16 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       - name: Generate static site
         run: python platform/scripts/generate.py --site ${{ inputs.site }}
+      - name: Remove SCPI pages from classement sites
+        run: |
+          OUTPUT="platform/sites/${{ inputs.site }}/output"
+          if [ -f "$OUTPUT/meilleur-"*.html ] || ls $OUTPUT/meilleur-*.html 2>/dev/null; then
+            echo "Site classement détecté — suppression pages avis/scpi"
+            rm -f $OUTPUT/avis-*.html
+            rm -f $OUTPUT/comparatifs-scpi.html
+            rm -f $OUTPUT/avis-scpi.html
+            echo "✓ Pages supprimées"
+          fi
       - name: Commit generated files
         run: |
           git config user.name "Viseoweb HUB"
