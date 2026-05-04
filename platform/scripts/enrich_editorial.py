@@ -827,9 +827,13 @@ Réponds UNIQUEMENT en JSON valide sans backticks :
         time.sleep(3)
 
     # Génère aussi la description de chaque produit dans sa catégorie
+    _seen_prod_slugs = set()
     for cat, cat_products in categories.items():
         for prod in cat_products:
             slug = prod.get("slug", "")
+            if slug in _seen_prod_slugs:
+                continue
+            _seen_prod_slugs.add(slug)
             prod_key = f"classement-prod-{slug}"
             if skip_existing and prod_key in editorial:
                 # Ignorer les descriptions cassées (réponses Claude invalides)
