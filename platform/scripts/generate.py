@@ -927,6 +927,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     total_pairs=len(all_pairs),
                     siblings=_siblings,
                     cat_parent=_cat_parent,
+                    cat_name=cat,
                 )
                 (output_dir / f"{page_slug}.html").write_text(html, encoding="utf-8")
                 classement_count += 1
