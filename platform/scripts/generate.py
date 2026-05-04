@@ -394,7 +394,8 @@ def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, a
             cats_seen.add(cat)
             expected_files.add(f"meilleur-{slugify_cat(cat)}.html")
     for slug in current_slugs:
-        expected_files.add(f"avis-{slug}.html")
+        if not is_classement_template:
+            expected_files.add(f"avis-{slug}.html")
         expected_files.add(f"{slug}.png")
     for slug_a, slug_b in all_pairs:
         expected_files.add(f"{slug_a}-vs-{slug_b}.html")
