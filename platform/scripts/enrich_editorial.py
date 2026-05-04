@@ -856,9 +856,9 @@ Réponds UNIQUEMENT en JSON valide sans backticks :
             prompt = f"""Expert rédacteur SEO. Génère les textes pour la fiche du logiciel {nom} dans un classement des meilleurs {cat}{niche_prod_ctx} en {year}.
 {('Consignes supplémentaires : ' + _prod_extra) if _prod_extra else ''}
 
-Réponds UNIQUEMENT en JSON valide sans backticks, sans markdown :
+Réponds UNIQUEMENT en JSON valide sans backticks :
 {{
-  "description": "<p>Paragraphe 1 HTML sur {nom}.</p><p>Paragraphe 2 HTML sur les fonctionnalités clés.</p><p>Paragraphe 3 HTML sur la cible idéale et différenciation.</p>",
+  "description": "<p>Texte avec <strong>mots clés importants en gras</strong>. 3 paragraphes HTML sur {nom}, fonctionnalités clés, cible idéale. Utilise <strong> sur les noms propres, chiffres et points différenciants. Aucun tiret long.</p>",
   "points_forts": ["avantage concret 1", "avantage concret 2", "avantage concret 3", "avantage concret 4"],
   "points_faibles": ["limite réelle 1", "limite réelle 2", "limite réelle 3"]
 }}"""
