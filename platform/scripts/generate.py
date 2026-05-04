@@ -365,7 +365,7 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, 
     print(f"  ✓ sitemap.xml ({len(pairs)} comparatifs + {len(products)} avis + pages liste)")
 
 
-def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, all_pairs: list) -> None:
+def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, all_pairs: list, is_classement_template: bool = False) -> None:
     """Supprime les fichiers HTML et entrées editorial.json des produits supprimés."""
     current_slugs = {p["slug"] for p in products}
 
@@ -629,7 +629,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
 
     if not dry_run:
         generate_sitemap(site, all_pairs, products, output_dir, config=config)
-        cleanup_removed_products(output_dir, site_dir, products, all_pairs)
+        cleanup_removed_products(output_dir, site_dir, products, all_pairs, is_classement_template)
 
         # ── Fichier _redirects pour Cloudflare Pages ──────────────────────
         www_preference = site.get("www_preference") or config.get("www_preference", "www")
