@@ -731,12 +731,14 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
                 # Skip si déjà remplie et non vide dans editorial existant
                 if skip_existing:
                     existing_val = editorial.get(key, {}).get(section_key, '')
+                    # Convertir liste/dict en string pour le check de longueur
+                    existing_str = str(existing_val) if isinstance(existing_val, (list, dict)) else (existing_val or '')
                     _bad_markers = ['I can see', 'I see that', "I don't see", "I'm here",
                                     'Je ne peux pas', 'Je ne vois pas', 'Pourriez-vous',
                                     'Could you please', 'appears to be empty', '[MOT-CLE]',
                                     "n'avez pas spécifié"]
-                    _is_bad = any(m in existing_val for m in _bad_markers)
-                    if len(existing_val) > 50 and not _is_bad:
+                    _is_bad = any(m in existing_str for m in _bad_markers)
+                    if len(existing_str) > 50 and not _is_bad:
                         continue
                 print(f"    [{section_key}]...", end=" ", flush=True)
                 _base_sys = 'Tu es un expert rédacteur SEO. Réponds UNIQUEMENT en JSON valide sans backticks, sans preamble.' if is_json else 'Tu es un expert rédacteur SEO. Aucun tiret long (— ou –). Aucun markdown. Réponds uniquement avec le contenu HTML demandé.'
