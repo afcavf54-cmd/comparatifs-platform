@@ -162,7 +162,7 @@ export default function ClassementsPage() {
         if (allProducts.length > 0) setProducts(prev => prev.length > 0 ? prev : allProducts)
       } catch {}
     }).catch(() => {})
-    fetch(`/api/github?path=${encodeURIComponent(editorialPath)}&t=${Date.now()}`).then(r => r.json()).then(d => {
+    fetch(`/api/github?path=${encodeURIComponent(editorialPath)}`).then(r => r.json()).then(d => {
       if (d.content) {
         try {
           const all = JSON.parse(d.content)
