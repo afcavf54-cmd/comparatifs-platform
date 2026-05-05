@@ -569,6 +569,14 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
     editorial_path = site_dir / "editorial.json"
     editorial = load_json(editorial_path) if editorial_path.exists() else {}
 
+    # Lire global_prompt depuis le schema pour l'injecter dans les descriptions produit
+    _schema_for_global = site_dir.parent.parent / "schemas" / "classement-saas.json"
+    global_prompt = ""
+    if _schema_for_global.exists():
+        import json as _jsgp
+        with open(_schema_for_global, encoding="utf-8") as _fgp:
+            global_prompt = _jsgp.load(_fgp).get("global_prompt", "").strip()
+
     # Charger les keywords et prompts custom depuis le schema
     schema_keywords = load_schema_keywords(site_dir)
     # Charger persona_prompt depuis config.yaml et l'attacher à chaque keyword
