@@ -841,6 +841,9 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     if not dry_run and is_classement_template:
         editorials_fresh = load_editorial(site_dir)
         classement_tpl = env.get_template(template_file)
+        # Filtrer par selected_keywords si défini dans config
+        selected_keywords = config.get('selected_keywords', [])
+
         # Dédupliquer les produits par slug (les sheets keywords peuvent créer des doublons)
         _seen_slugs: set = set()
         _deduped_products = []
