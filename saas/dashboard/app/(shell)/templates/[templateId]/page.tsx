@@ -126,6 +126,7 @@ export default function TemplateDetailPage() {
   const [newGroupName, setNewGroupName] = useState('')
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null)
   const [uploadingImg, setUploadingImg] = useState<Record<string, boolean>>({})
+  const [collapsedCategories, setCollapsedCategories] = useState<Record<string, boolean>>({})
   const [globalPrompt, setGlobalPrompt] = useState('')
   const [savingGlobal, setSavingGlobal] = useState(false)
   const [showGlobalPrompt, setShowGlobalPrompt] = useState(true)
@@ -408,20 +409,11 @@ export default function TemplateDetailPage() {
                 const d = await res.json()
                 setSavingGlobal(false)
                 if (d.ok) {
-                  // Recharger le schema pour confirmer la sauvegarde
-                  const r2 = await fetch(`/api/github?path=${encodeURIComponent(schemaPath)}&t=${Date.now()}`)
-                  const d2 = await r2.json()
-                  try {
-                    const s2 = JSON.parse(d2.content)
-                    setGlobalPrompt(s2.global_prompt || '')
-                    if (s2.default_prompts) setDefaultPrompts({
-                      prompt_intro: s2.default_prompts.prompt_intro || { text: '', words_min: 100, words_max: 300 },
-                      prompt_en_bref: s2.default_prompts.prompt_en_bref || { text: '', words_min: 10, words_max: 30 },
-                      prompt_classement: s2.default_prompts.prompt_classement || { text: '', words_min: 150, words_max: 400 },
-                      prompt_contenu: s2.default_prompts.prompt_contenu || { text: '', words_min: 200, words_max: 500 },
-                      prompt_faq: s2.default_prompts.prompt_faq || { text: '', words_min: 50, words_max: 150 },
-                    })
-                  } catch {}
+                  // Mettre à jour le state directement sans relire GitHub (évite le cache)
+                  setGlobalPrompt(globalPrompt)
+                  setDefaultPrompts(defaultPrompts)
+                  // Mettre à jour le schema en mémoire
+                  setSchema((prev: any) => ({ ...prev, global_prompt: globalPrompt, default_prompts: defaultPrompts }))
                   alert('✓ Prompt global sauvegardé')
                 } else alert('Erreur : ' + (d.error || 'inconnue'))
               }} style={{ padding: '8px 16px', borderRadius: 7, border: 'none', background: 'linear-gradient(135deg,#00D4AA,#0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 12 }}>
@@ -438,24 +430,50 @@ export default function TemplateDetailPage() {
         <div style={{ width: 220, flexShrink: 0, background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 12, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
           <div style={{ padding: '10px 14px', borderBottom: '1px solid #1E2D3D', fontSize: 11, color: '#8B9CB0', fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.06em' }}>Types</div>
           <div style={{ flex: 1, overflowY: 'auto' }}>
-            {Object.keys(keywords).map(type => (
-              <div key={type} onClick={() => setSelectedGroup(type)} style={{
-                padding: '10px 14px', cursor: 'pointer', fontSize: 13,
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                background: selectedGroup === type ? 'rgba(0,212,170,0.1)' : 'transparent',
-                borderLeft: selectedGroup === type ? '2px solid #00D4AA' : '2px solid transparent',
-                color: selectedGroup === type ? '#fff' : '#8B9CB0', borderBottom: '1px solid #1E2D3D'
-              }}>
-                <div>
-                  <div>{type}</div>
-                  <div style={{ fontSize: 10, color: '#4A5568', marginTop: 2 }}>
-                    {keywords[type]?.__products?.length ? `${keywords[type].__products.length} produits` : 'Non synchronisé'}
+            {(() => {
+              // Grouper les types par catégorie parente
+              const grouped: Record<string, string[]> = {}
+              const uncategorized: string[] = []
+              Object.keys(keywords).forEach(type => {
+                const cat = keywords[type]?.__categorie || ''
+                if (cat) {
+                  if (!grouped[cat]) grouped[cat] = []
+                  grouped[cat].push(type)
+                } else {
+                  uncategorized.push(type)
+                }
+              })
+              if (uncategorized.length > 0) grouped['Autres'] = uncategorized
+              return Object.entries(grouped).map(([cat, types]) => (
+                <div key={cat}>
+                  {/* Header catégorie cliquable */}
+                  <div onClick={() => setCollapsedCategories(p => ({ ...p, [cat]: !p[cat] }))}
+                    style={{ padding: '8px 14px', background: '#0A0E1A', borderBottom: '1px solid #1E2D3D', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}>
+                    <span style={{ fontSize: 10, fontWeight: 700, color: '#9F7AEA', textTransform: 'uppercase' as const, letterSpacing: '0.06em' }}>{cat}</span>
+                    <span style={{ color: '#4A5568', fontSize: 10 }}>{collapsedCategories[cat] ? '▶' : '▼'}</span>
                   </div>
+                  {/* Types de la catégorie */}
+                  {!collapsedCategories[cat] && types.map(type => (
+                    <div key={type} onClick={() => setSelectedGroup(type)} style={{
+                      padding: '9px 14px 9px 20px', cursor: 'pointer', fontSize: 12,
+                      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                      background: selectedGroup === type ? 'rgba(0,212,170,0.1)' : 'transparent',
+                      borderLeft: selectedGroup === type ? '2px solid #00D4AA' : '2px solid transparent',
+                      color: selectedGroup === type ? '#fff' : '#8B9CB0', borderBottom: '1px solid #1E2D3D'
+                    }}>
+                      <div>
+                        <div>{type}</div>
+                        <div style={{ fontSize: 10, color: '#4A5568', marginTop: 2 }}>
+                          {keywords[type]?.__products?.length ? `${keywords[type].__products.length} produits` : 'Non synchronisé'}
+                        </div>
+                      </div>
+                      <span onClick={e => { e.stopPropagation(); setConfirmDelete(type) }}
+                        style={{ color: '#FC8181', cursor: 'pointer', fontSize: 16 }}>×</span>
+                    </div>
+                  ))}
                 </div>
-                <span onClick={e => { e.stopPropagation(); setConfirmDelete(type) }}
-                  style={{ color: '#FC8181', cursor: 'pointer', fontSize: 16 }}>×</span>
-              </div>
-            ))}
+              ))
+            })()}
             {Object.keys(keywords).length === 0 && <div style={{ color: '#4A5568', padding: 16, fontSize: 12, textAlign: 'center' }}>Aucun type</div>}
           </div>
           <div style={{ padding: '10px 14px', borderTop: '1px solid #1E2D3D' }}>
