@@ -179,7 +179,7 @@ export default function NewSitePage() {
     try {
       const r = await fetch('/api/sites', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, page_types: pageTypes, site_type: siteType, persona_prompt: personaPrompt, author_name: authorName, author_job: authorJob, author_bio: authorBio, selected_keywords: selectedKeywords })
+        body: JSON.stringify({ ...form, page_types: pageTypes, site_type: siteType, persona_prompt: personaPrompt, author_name: authorName, author_job: authorJob, author_bio: authorBio })
       })
       const d = await r.json()
       if (d.error) { setError(d.error); setLoading(false); return }
