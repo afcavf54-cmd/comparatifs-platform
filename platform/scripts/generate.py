@@ -884,9 +884,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 for prod in cat_products:
                     p = dict(prod)
                     slug = prod.get("slug", "")
-                    # Description depuis descriptions_produits dans l'editorial classement
-                    if "descriptions_produits" in cat_editorial and slug in cat_editorial["descriptions_produits"]:
-                        p["description"] = md_to_html(cat_editorial["descriptions_produits"][slug])
+                    # descriptions_produits ignoré — classement-prod-{slug} a la priorité
                     # Points forts/faibles depuis classement-prod-{slug}
                     prod_ed_key = f"classement-prod-{slug}"
                     if prod_ed_key in editorials_fresh:
