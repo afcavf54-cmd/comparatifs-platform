@@ -841,6 +841,18 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     if not dry_run and is_classement_template:
         editorials_fresh = load_editorial(site_dir)
         classement_tpl = env.get_template(template_file)
+        # Dédupliquer les produits par slug (les sheets keywords peuvent créer des doublons)
+        _seen_slugs: set = set()
+        _deduped_products = []
+        for prod in products:
+            slug = prod.get("slug", "").strip()
+            if slug and slug not in _seen_slugs:
+                _seen_slugs.add(slug)
+                _deduped_products.append(prod)
+            elif not slug:
+                _deduped_products.append(prod)
+        products = _deduped_products
+
         categories: dict = {}
         for prod in products:
             cat = prod.get("categorie", "").strip()
@@ -848,6 +860,13 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 if cat not in categories:
                     categories[cat] = []
                 categories[cat].append(prod)
+        # Appliquer le filtre selected_keywords
+        if selected_keywords:
+            categories = {k: v for k, v in categories.items()
+                         if any(kw.lower() in k.lower() or k.lower() in kw.lower() for kw in selected_keywords)}
+            if categories:
+                print(f"  🎯 {len(categories)} catégories actives (filtre selected_keywords)")
+
         if categories:
             classement_count = 0
             for cat, cat_products in categories.items():
