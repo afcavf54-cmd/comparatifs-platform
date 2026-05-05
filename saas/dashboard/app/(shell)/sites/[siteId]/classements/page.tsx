@@ -122,6 +122,8 @@ export default function ClassementsPage() {
   const [deploying, setDeploying] = useState(false)
   const [generatingMeta, setGeneratingMeta] = useState(false)
   const [expandedBrands, setExpandedBrands] = useState<Record<string, boolean>>({})
+  const [collapsedCats, setCollapsedCats] = useState<Record<string, boolean>>({})
+  const [keywordCategories, setKeywordCategories] = useState<Record<string, string>>({})
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({ seo: true })
   function toggleSection(key: string) { setExpandedSections(p => ({ ...p, [key]: !p[key] })) }
 
@@ -160,6 +162,14 @@ export default function ClassementsPage() {
           }
         })
         if (allProducts.length > 0) setProducts(prev => prev.length > 0 ? prev : allProducts)
+        // Stocker le mapping keyword -> catégorie parente
+        const kwCats: Record<string, string> = {}
+        Object.entries(schema.keywords || {}).forEach(([kwName, kwData]: [string, any]) => {
+          const slug = kwName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+          kwCats[`classement-${slug}`] = kwData.__categorie || 'Autres'
+        })
+        setKeywordCategories(kwCats)
       } catch {}
     }).catch(() => {})
     fetch(`/api/github?path=${encodeURIComponent(editorialPath)}`).then(r => r.json()).then(d => {
@@ -310,6 +320,46 @@ export default function ClassementsPage() {
       })
     : []
 
+  // Fonction de rendu d'un item classement dans la sidebar
+  function renderClassementItem(key: string, indented = false) {
+    return (
+      <div key={key} onClick={() => setSelected(key)} style={{
+        padding: indented ? '9px 14px 9px 20px' : '10px 14px',
+        cursor: 'pointer', fontSize: 12,
+        background: selected === key ? 'rgba(0,212,170,0.1)' : 'transparent',
+        borderLeft: selected === key ? '2px solid #00D4AA' : '2px solid transparent',
+        color: selected === key ? '#fff' : '#8B9CB0',
+        borderBottom: '1px solid #1E2D3D'
+      }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ flex: 1 }}>{classements[key]?.categorie || key.replace('classement-', '')}</div>
+          <div style={{ display: 'flex', gap: 4 }}>
+            <button onClick={e => { e.stopPropagation(); regeneratePage(key) }} disabled={regenerating[key] || deploying}
+              title="Régénérer" style={{ padding: '2px 5px', borderRadius: 4, border: 'none', background: 'transparent', color: regenerating[key] ? '#4A5568' : '#F6AD55', cursor: 'pointer', fontSize: 12 }}>
+              {regenerating[key] ? '⏳' : '🔄'}
+            </button>
+            <button onClick={async e => {
+              e.stopPropagation()
+              if (!window.confirm('Supprimer cette page ?')) return
+              const r = await fetch('/api/github?path=' + encodeURIComponent(editorialPath))
+              const d = await r.json()
+              let all: Record<string, any> = {}
+              if (d.content) { try { all = JSON.parse(d.content) } catch {} }
+              delete all[key]
+              await fetch('/api/github', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ path: editorialPath, content: JSON.stringify(all, null, 2), message: 'HUB: Delete classement ' + key }) })
+              setClassements(prev => { const n = { ...prev }; delete n[key]; return n })
+              if (selected === key) setSelected(null)
+              setMsg('✓ Page supprimée')
+            }} title="Supprimer" style={{ padding: '2px 5px', borderRadius: 4, border: 'none', background: 'transparent', color: '#FC8181', cursor: 'pointer', fontSize: 12 }}>×</button>
+          </div>
+        </div>
+        <div style={{ fontSize: 10, color: '#4A5568', marginTop: 2 }}>
+          {classements[key]?.intro || classements[key]?.contenu_custom ? '✓ Contenu généré' : '⚠ Sans contenu'}
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div style={{ height: 'calc(100vh - 64px)', display: 'flex', flexDirection: 'column' }}>
       <div style={{ marginBottom: 16, fontSize: 13, color: '#8B9CB0' }}>
@@ -345,43 +395,30 @@ export default function ClassementsPage() {
               Pages existantes
             </div>
             <div style={{ flex: 1, overflowY: 'auto' }}>
-              {Object.keys(classements).map(key => (
-                <div key={key} onClick={() => setSelected(key)} style={{
-                  padding: '10px 14px', cursor: 'pointer', fontSize: 12,
-                  background: selected === key ? 'rgba(0,212,170,0.1)' : 'transparent',
-                  borderLeft: selected === key ? '2px solid #00D4AA' : '2px solid transparent',
-                  color: selected === key ? '#fff' : '#8B9CB0',
-                  borderBottom: '1px solid #1E2D3D'
-                }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div style={{ flex: 1 }}>{classements[key]?.categorie || key.replace('classement-', '')}</div>
-                    <div style={{ display: 'flex', gap: 4 }}>
-                      <button onClick={e => { e.stopPropagation(); regeneratePage(key) }} disabled={regenerating[key] || deploying}
-                        title="Régénérer" style={{ padding: '2px 5px', borderRadius: 4, border: 'none', background: 'transparent', color: regenerating[key] ? '#4A5568' : '#F6AD55', cursor: 'pointer', fontSize: 12 }}>
-                        {regenerating[key] ? '⏳' : '🔄'}
-                      </button>
-                      <button onClick={async e => {
-                        e.stopPropagation()
-                        if (!window.confirm('Supprimer cette page de classement ?')) return
-                        const r = await fetch('/api/github?path=' + encodeURIComponent(editorialPath))
-                        const d = await r.json()
-                        let all: Record<string, any> = {}
-                        if (d.content) { try { all = JSON.parse(d.content) } catch {} }
-                        delete all[key]
-                        await fetch('/api/github', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ path: editorialPath, content: JSON.stringify(all, null, 2), message: 'HUB: Delete classement ' + key }) })
-                        setClassements(prev => { const n = { ...prev }; delete n[key]; return n })
-                        if (selected === key) setSelected(null)
-                        setMsg('✓ Page supprimée')
-                      }} title="Supprimer" style={{ padding: '2px 5px', borderRadius: 4, border: 'none', background: 'transparent', color: '#FC8181', cursor: 'pointer', fontSize: 12 }}>
-                        ×
-                      </button>
+              {(() => {
+                // Grouper par catégorie parente (depuis keywordCategories)
+                const grouped: Record<string, string[]> = {}
+                Object.keys(classements).forEach(key => {
+                  const cat = keywordCategories[key] || 'Autres'
+                  if (!grouped[cat]) grouped[cat] = []
+                  grouped[cat].push(key)
+                })
+                const cats = Object.keys(grouped)
+                // Si une seule catégorie ou pas de mapping : afficher à plat
+                if (cats.length <= 1) {
+                  return Object.keys(classements).map(key => renderClassementItem(key))
+                }
+                return cats.map(cat => (
+                  <div key={cat}>
+                    <div onClick={() => setCollapsedCats(p => ({...p, [cat]: !p[cat]}))}
+                      style={{padding:'7px 12px', background:'#0A0E1A', borderBottom:'1px solid #1E2D3D', display:'flex', justifyContent:'space-between', alignItems:'center', cursor:'pointer'}}>
+                      <span style={{fontSize:10, fontWeight:700, color:'#9F7AEA', textTransform:'uppercase' as const, letterSpacing:'0.06em'}}>{cat}</span>
+                      <span style={{color:'#4A5568', fontSize:10}}>{collapsedCats[cat] ? '▶' : '▼'}</span>
                     </div>
+                    {!collapsedCats[cat] && grouped[cat].map(key => renderClassementItem(key, true))}
                   </div>
-                  <div style={{ fontSize: 10, color: '#4A5568', marginTop: 2 }}>
-                    {classements[key]?.intro || classements[key]?.contenu_custom ? '✓ Contenu généré' : '⚠ Sans contenu'}
-                  </div>
-                </div>
-              ))}
+                ))
+              })()}
               {Object.keys(classements).length === 0 && (
                 <div style={{ color: '#4A5568', padding: 16, fontSize: 12, textAlign: 'center' }}>Aucune page</div>
               )}
