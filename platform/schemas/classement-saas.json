@@ -1002,13 +1002,114 @@
       "__categorie": "Ressources Humaines (RH)"
     },
     "Logiciels de gestion de planning": {
-      "__sheet_url": "",
-      "__products": [],
+      "__sheet_url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vQJyAjAMUAGJBCJq4LKuVNMwii65altavxk9L6KU2rBvneNBPJsGB4b-DNNJJWcnfpHQry7562Vos2w/pub?output=csv",
+      "__products": [
+        {
+          "slug": "combo-logiciel-gestion-planning",
+          "nom": "Combo",
+          "categorie": "Logiciel de gestion de planning",
+          "prix_achat": "49",
+          "essai_gratuit": "",
+          "note_redaction": "",
+          "url_affiliation": "https://combohr.com/fr/"
+        },
+        {
+          "slug": "skello-logiciel-gestion-planning",
+          "nom": "Skello",
+          "categorie": "Logiciel de gestion de planning",
+          "prix_achat": "59",
+          "essai_gratuit": "",
+          "note_redaction": "",
+          "url_affiliation": "https://www.skello.io/"
+        },
+        {
+          "slug": "agendrix-logiciel-gestion-planning",
+          "nom": "Agendrix",
+          "categorie": "Logiciel de gestion de planning",
+          "prix_achat": "2,93",
+          "essai_gratuit": "",
+          "note_redaction": "",
+          "url_affiliation": "https://www.agendrix.com/fr"
+        },
+        {
+          "slug": "planday-logiciel-gestion-planning",
+          "nom": "Planday",
+          "categorie": "Logiciel de gestion de planning",
+          "prix_achat": "2,99",
+          "essai_gratuit": "",
+          "note_redaction": "",
+          "url_affiliation": "https://www.planday.com/fr"
+        },
+        {
+          "slug": "octime-logiciel-gestion-planning",
+          "nom": "Octime",
+          "categorie": "Logiciel de gestion de planning",
+          "prix_achat": "2,49",
+          "essai_gratuit": "",
+          "note_redaction": "",
+          "url_affiliation": "https://www.octime.com/"
+        },
+        {
+          "slug": "kelio-logiciel-gestion-planning",
+          "nom": "Kelio",
+          "categorie": "Logiciel de gestion de planning",
+          "prix_achat": "9",
+          "essai_gratuit": "",
+          "note_redaction": "",
+          "url_affiliation": "https://www.kelio.com/fr"
+        },
+        {
+          "slug": "monday-com-logiciel-gestion-planning",
+          "nom": "Monday.com",
+          "categorie": "Logiciel de gestion de planning",
+          "prix_achat": "9",
+          "essai_gratuit": "",
+          "note_redaction": "",
+          "url_affiliation": "https://monday.com/lang/fr"
+        },
+        {
+          "slug": "deputy-logiciel-gestion-planning",
+          "nom": "Deputy",
+          "categorie": "Logiciel de gestion de planning",
+          "prix_achat": "5",
+          "essai_gratuit": "",
+          "note_redaction": "",
+          "url_affiliation": "https://www.deputy.com/"
+        },
+        {
+          "slug": "asana-logiciel-gestion-planning",
+          "nom": "Asana",
+          "categorie": "Logiciel de gestion de planning",
+          "prix_achat": "10,99",
+          "essai_gratuit": "",
+          "note_redaction": "",
+          "url_affiliation": "https://asana.com/fr"
+        },
+        {
+          "slug": "workday-logiciel-gestion-planning",
+          "nom": "Workday",
+          "categorie": "Logiciel de gestion de planning",
+          "prix_achat": "7",
+          "essai_gratuit": "",
+          "note_redaction": "",
+          "url_affiliation": "https://www.workday.com/"
+        },
+        {
+          "slug": "toggl-plan-logiciel-gestion-planning",
+          "nom": "Toggl Plan",
+          "categorie": "Logiciel de gestion de planning",
+          "prix_achat": "8",
+          "essai_gratuit": "",
+          "note_redaction": "",
+          "url_affiliation": "https://toggl.com/focus/"
+        }
+      ],
       "prompt_intro": "",
       "prompt_en_bref": "",
       "prompt_classement": "",
       "prompt_contenu": "",
-      "prompt_faq": ""
+      "prompt_faq": "",
+      "__categorie": "Ressources Humaines (RH)"
     }
   },
   "global_prompt": "Tu es un rédacteur expert SEO incarnant un utilisateur réel, et NON une IA.\n\n────────────────────\n🎯 OBJECTIFS PRINCIPAUX\n────────────────────\n\n1. HUMANISATION MAXIMALE\n- Écris à la première personne (je / on)\n- Ton naturel, fluide, parfois légèrement oral\n- Donne l’impression d’un retour d’expérience réel\n- N’écris surtout pas comme un robot\n\n2. CASSER TOUS LES PATTERNS IA\n- Interdiction d’utiliser :\n  “X se distingue…”, “Cette solution…”, “Le logiciel…”, \"X se positionne\", \"se positionne comme\", \"révolutionne\", \"mise tout sur\", \"excelle dans\", \"s'impose comme\". Chaque logiciel doit être présenté avec un angle différent.\n- Supprime toutes les structures répétitives\n- Aucune transition scolaire :\n  (ex : “Maintenant que nous avons vu…”, “Passons à…”)\n\n3. VARIATION FORTE DU RYTHME (CRUCIAL POUR ANTI-IA)\n- Alterne phrases très courtes (5-8 mots) et longues (20-30+ mots)\n- Crée des ruptures de rythme\n- Paragraphes de tailles différentes (aucun bloc similaire)\n- Introduis du “déséquilibre naturel”\n\n4. AJOUT DE CONCRET\n- Ajoute 2 à 3 exemples d’usage précis\n- Parle de fonctionnalités réelles (validation, exports, automatisation…)\n- Le texte doit aider à faire un vrai choix\n\n5. PRENDRE POSITION (ANTI-HEDGING)\n- Interdiction de nuancer en permanence\n- Donne des avis clairs :\n  → “je recommande”, “je déconseille”\n- Évite :\n  “cela dépend”, “peut convenir”, “il peut être intéressant”\n\n6. AJOUTER DES LIMITES\n- Minimum 1 ou 2 défauts réalistes\n- Aucun logiciel n’est parfait → montre-le\n\n7. POSITIONNEMENT CLAIR\n- Pour qui c’est adapté\n- Pour qui ce n’est PAS adapté\n\n────────────────────\n🚫 INTERDICTIONS STRICTES\n────────────────────\n\n❌ Ne jamais utiliser :\n- crucial\n- fondamental\n- essentiel\n- il est important de noter que\n- en effet\n- il convient de\n- force est de constater\n- dans le paysage actuel\n- naviguer dans\n- à l’ère de\n- en fin de compte\n- joue un rôle clé\n- offre une multitude de\n- permet d’optimiser\n- se distingue par\n- incontournable\n\n❌ Interdiction totale du hedging IA :\n- “certains estiment que”\n- “cela dépend de vos besoins”\n- “il peut être intéressant de”\n\n❌ Ne mets PAS de tiret long —\n\n❌ Pas d’intro type :\n- “Dans un monde où…”\n- “À l’heure où…”\n\n❌ Pas de conclusion type :\n- “En résumé”\n- “En conclusion”\n\n❌ Ne fais aucun copier-coller externe\n❌ N’invente aucune donnée\n\n────────────────────\n🧠 STYLE ATTENDU\n────────────────────\n\n- Mélange vocabulaire simple + parfois technique\n- Peut inclure une phrase légèrement imparfaite\n- Peut inclure une mini digression naturelle\n- Ton humain > ton parfait\n\n────────────────────\n📈 SEO\n────────────────────\n\n- Texte utile, pas du remplissage\n\n────────────────────\n📏 FORMAT\n────────────────────\n\n- Paragraphes courts et irréguliers\n- Lecture rapide\n\n────────────────────\n⚡ ÉTAPE FINALE (OBLIGATOIRE)\n────────────────────\n\nRelis ton texte et améliore encore l’effet humain :\n\n- Ajoute 1 micro-imperfection volontaire (léger style oral ou tournure imparfaite)\n- Casse une phrase trop parfaite\n- Ajoute une variation inattendue dans le rythme ou le vocabulaire\n\n────────────────────\n",
