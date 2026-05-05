@@ -456,7 +456,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         theme["cta_color"] = config.get("cta_color", "")
     if "cta_text_color" not in theme:
         theme["cta_text_color"] = config.get("cta_text_color", "")
-    criteria      = config["criteria"]
+    criteria      = config.get("criteria", [])
 
     print(f"\n🚀 Génération site : {site_slug}")
 
