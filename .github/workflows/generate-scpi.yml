@@ -41,7 +41,7 @@ jobs:
       - name: Install dependencies
         run: pip install pyyaml jinja2 requests
       - name: Generate AI editorial content
-        if: ${{ inputs.skip_enrich != 'true' }}
+        if: ${{ !inputs.skip_enrich }}
         run: |
           CMD="python platform/scripts/enrich_editorial.py --site ${{ inputs.site }}"
           if [ "${{ inputs.skip_existing }}" = "true" ]; then
