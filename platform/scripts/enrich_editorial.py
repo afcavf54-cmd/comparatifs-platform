@@ -952,16 +952,15 @@ def main():
     print(f"   Modèle : {MODEL}")
 
     products = load_products(site_dir, config)
+    page_types = config.get("page_types", {})
+    is_classement = bool(page_types.get("classement")) and not page_types.get("vs") and not page_types.get("avis")
     if not products:
-        # Site classement sans sheet global — pas d'erreur
-        page_types = config.get("page_types", {})
-        sheet_url = site_config.get("sheet_csv_url", "")
-        if page_types.get("classement") and not sheet_url:
-            print("ℹ️ Site classement sans sheet global — génération ignorée")
-            print("  Configurez les sheets par catégorie dans le dashboard Modèles → Mots clés")
-            sys.exit(0)
-        print("❌ Aucun produit chargé")
-        sys.exit(1)
+        if is_classement:
+            # Site classement SaaS — les produits viennent des keyword sheets, pas d'un sheet global
+            products = []  # generate_classement chargera les produits via load_schema_keywords
+        else:
+            print("❌ Aucun produit chargé")
+            sys.exit(1)
 
     only = args.only
     page_types = config.get("page_types", {})
