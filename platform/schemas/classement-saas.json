@@ -1323,7 +1323,7 @@
     },
     "prompt_en_bref": {
       "text": "Tu rédiges une section “En bref” pour un comparatif sur : {theme}\n\n\n🎯 Objectif :\n- résumer les meilleurs choix rapidement\n- permettre une lecture en 30 secondes\n\n📌 Format :\n- 5 bullet points\n- chaque point = 1 recommandation claire\n- inclure :\n  - meilleur global\n  - meilleur rapport qualité/prix\n  - plus simple\n  - plus complet\n\n📌 Style :\n- phrases courtes\n- ton direct\n- pas de jargon\n\n✅ Optimisation SEO :\n- intégrer des variantes du mot-clé\n- réponses concises type featured snippet\n\n❌ À éviter :\n- phrases longues\n- répétition du classement détaillé\n- Pas de H2, génère uniquement la liste à puce",
-      "words_min": 5,
+      "words_min": 9,
       "words_max": 15
     },
     "prompt_classement": {
