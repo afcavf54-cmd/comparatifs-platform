@@ -867,7 +867,8 @@ Réponds UNIQUEMENT en JSON valide sans backticks :
   "points_faibles": ["limite réelle 1", "limite réelle 2", "limite réelle 3"]
 }}"""
 
-            _prod_sys = 'Tu es un expert rédacteur SEO. Réponds UNIQUEMENT en JSON valide sans backticks, sans preamble, sans markdown. Format strict JSON.'
+            # Injecter le global_prompt dans le system prompt des descriptions produit
+            _prod_sys = "Tu es un expert SEO. JSON uniquement sans backticks." + ("\n\n" + global_prompt if global_prompt else "")
             for attempt in range(5):
                 try:
                     response = call_claude(prompt, system=_prod_sys)
