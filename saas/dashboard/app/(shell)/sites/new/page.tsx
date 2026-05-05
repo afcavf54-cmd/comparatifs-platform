@@ -6,7 +6,7 @@ import Link from 'next/link'
 type SiteType = '' | 'comparatif' | 'classement'
 
 const STEPS_COMPARATIF = ['Type', 'Infos', 'Domaine', 'Modèles', 'Persona', 'SEO', 'Visuel', 'Récap']
-const STEPS_CLASSEMENT = ['Type', 'Infos', 'Domaine', 'Modèles', 'Persona', 'Visuel', 'Récap']
+const STEPS_CLASSEMENT = ['Type', 'Infos', 'Domaine', 'Modèles', 'Persona', 'Types', 'Visuel', 'Récap']
 
 // ── Données du simulateur de persona ──────────────────────────────────────
 const PRENOMS = ['Sophie', 'Thomas', 'Marie', 'Nicolas', 'Camille', 'Antoine', 'Julie', 'Pierre', 'Lucie', 'Julien', 'Emma', 'Alexandre', 'Léa', 'Maxime', 'Chloé', 'Vincent', 'Manon', 'Romain']
@@ -74,6 +74,9 @@ export default function NewSitePage() {
   const [availableSchemas, setAvailableSchemas] = useState<any[]>([])
   const [persona, setPersona] = useState<any>(null)
   const [personaPrompt, setPersonaPrompt] = useState('')
+  const [selectedKeywords, setSelectedKeywords] = useState<string[]>([])
+  const [allKeywords, setAllKeywords] = useState<{name: string, categorie: string, count: number}[]>([])
+  const [collapsedKwCats, setCollapsedKwCats] = useState<Record<string, boolean>>({})
   const [personaMode, setPersonaMode] = useState<'auto'|'manual'>('auto')
   const [authorName, setAuthorName] = useState('')
   const [authorJob, setAuthorJob] = useState('')
@@ -107,6 +110,15 @@ export default function NewSitePage() {
         try { return { ...JSON.parse(d.content), filename: f.name.replace('.json', '') } } catch { return null }
       }))
       setAvailableSchemas(schemas.filter(Boolean))
+    }).catch(() => {})
+
+    fetch('/api/schemas/classement-saas').then(r => r.json()).then(schema => {
+      if (schema?.keywords) {
+        const kws = Object.entries(schema.keywords).map(([name, data]: [string, any]) => ({
+          name, categorie: data.__categorie || 'Autres', count: (data.__products || []).length
+        }))
+        setAllKeywords(kws)
+      }
     }).catch(() => {})
   }, [])
 
@@ -497,6 +509,57 @@ export default function NewSitePage() {
             <div style={{ fontSize: 12, color: '#F6AD55', fontWeight: 600, margin: '16px 0 8px' }}>Listes</div>
             {lbl('Title liste comparatifs')}{seoInp('Tous les comparatifs {site_name} {year}', 'seo_liste_comp_title')}
             {lbl('Title liste avis')}{seoInp('Avis {site_name} {year}', 'seo_liste_avis_title')}
+          </div>
+        )}
+
+        {/* ── STEP TYPES (classement only) ── */}
+        {siteType === 'classement' && step === si('Types') && (
+          <div>
+            <h2 style={{ color: '#fff', fontSize: 18, fontWeight: 700, margin: '0 0 6px' }}>🗂 Types de logiciels à inclure</h2>
+            <p style={{ color: '#8B9CB0', fontSize: 13, marginBottom: 20 }}>Sélectionnez les types à générer. Vous pourrez en ajouter d'autres dans les paramètres.</p>
+            <div style={{ display: 'flex', gap: 10, marginBottom: 16 }}>
+              <button onClick={() => setSelectedKeywords(allKeywords.map(k => k.name))}
+                style={{ padding: '6px 12px', borderRadius: 6, border: '1px solid #00D4AA', background: 'transparent', color: '#00D4AA', cursor: 'pointer', fontSize: 12 }}>
+                ✓ Tout sélectionner
+              </button>
+              <button onClick={() => setSelectedKeywords([])}
+                style={{ padding: '6px 12px', borderRadius: 6, border: '1px solid #4A5568', background: 'transparent', color: '#8B9CB0', cursor: 'pointer', fontSize: 12 }}>
+                ✗ Tout désélectionner
+              </button>
+            </div>
+            {allKeywords.length === 0 ? <div style={{ color: '#4A5568', fontSize: 13 }}>Chargement...</div> : (() => {
+              const grouped: Record<string, typeof allKeywords> = {}
+              allKeywords.forEach(kw => { if (!grouped[kw.categorie]) grouped[kw.categorie] = []; grouped[kw.categorie].push(kw) })
+              return Object.entries(grouped).map(([cat, kws]) => {
+                const allSel = kws.every(kw => selectedKeywords.includes(kw.name))
+                const someSel = kws.some(kw => selectedKeywords.includes(kw.name))
+                return (
+                  <div key={cat} style={{ marginBottom: 10, background: '#0A0E1A', borderRadius: 8, overflow: 'hidden', border: '1px solid #1E2D3D' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderBottom: collapsedKwCats[cat] ? 'none' : '1px solid #1E2D3D', cursor: 'pointer' }}
+                      onClick={() => setCollapsedKwCats(p => ({ ...p, [cat]: !p[cat] }))}>
+                      <input type="checkbox" checked={allSel} ref={el => { if (el) el.indeterminate = someSel && !allSel }}
+                        onChange={e => { e.stopPropagation(); if (allSel) setSelectedKeywords(prev => prev.filter(k => !kws.find(kw => kw.name === k))); else setSelectedKeywords(prev => [...new Set([...prev, ...kws.map(kw => kw.name)])]) }}
+                        onClick={e => e.stopPropagation()} style={{ width: 14, height: 14, cursor: 'pointer' }} />
+                      <span style={{ fontSize: 12, fontWeight: 700, color: '#9F7AEA', flex: 1 }}>{cat}</span>
+                      <span style={{ fontSize: 11, color: '#4A5568' }}>{kws.filter(kw => selectedKeywords.includes(kw.name)).length}/{kws.length}</span>
+                      <span style={{ color: '#4A5568', fontSize: 10 }}>{collapsedKwCats[cat] ? '▶' : '▼'}</span>
+                    </div>
+                    {!collapsedKwCats[cat] && kws.map(kw => (
+                      <label key={kw.name} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 14px 8px 28px', borderBottom: '1px solid #1E2D3D', cursor: 'pointer', background: selectedKeywords.includes(kw.name) ? 'rgba(0,212,170,0.05)' : 'transparent' }}>
+                        <input type="checkbox" checked={selectedKeywords.includes(kw.name)}
+                          onChange={e => setSelectedKeywords(prev => e.target.checked ? [...prev, kw.name] : prev.filter(k => k !== kw.name))}
+                          style={{ width: 14, height: 14, cursor: 'pointer' }} />
+                        <span style={{ fontSize: 13, color: selectedKeywords.includes(kw.name) ? '#fff' : '#8B9CB0', flex: 1 }}>{kw.name}</span>
+                        <span style={{ fontSize: 11, color: '#4A5568' }}>{kw.count} produits</span>
+                      </label>
+                    ))}
+                  </div>
+                )
+              })
+            })()}
+            <div style={{ marginTop: 10, fontSize: 12, color: '#4A5568' }}>
+              {selectedKeywords.length === 0 ? '⚠ Aucun type sélectionné — tous les types seront générés' : `${selectedKeywords.length} type(s) sélectionné(s)`}
+            </div>
           </div>
         )}
 
