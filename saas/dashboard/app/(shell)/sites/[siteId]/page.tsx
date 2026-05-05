@@ -72,7 +72,8 @@ export default function SiteDetailPage() {
     try {
       const r = await fetch('/api/deploy', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ siteId, workflowFile: 'generate-scpi.yml' })
+        // skip_enrich: true — ne jamais régénérer le contenu IA depuis ce bouton
+        body: JSON.stringify({ siteId, workflowFile: 'generate-scpi.yml', skip_enrich: true })
       })
       const d = await r.json()
       if (d.ok) {
@@ -86,8 +87,6 @@ export default function SiteDetailPage() {
     } catch { setDeployMsg('✗ Erreur réseau') }
     setDeploying(false)
   }
-
-
 
   if (loading) return <div style={{ color: '#8B9CB0', textAlign: 'center', padding: 60 }}>Chargement...</div>
   if (!site) return <div style={{ color: '#FC8181', textAlign: 'center', padding: 60 }}>Site introuvable</div>
@@ -114,7 +113,6 @@ export default function SiteDetailPage() {
             </a>
           </div>
         </div>
-
       </div>
 
       {deployMsg && (
@@ -122,8 +120,6 @@ export default function SiteDetailPage() {
           {deployMsg}
         </div>
       )}
-
-
 
       {/* Stats */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 28 }}>
@@ -198,44 +194,18 @@ export default function SiteDetailPage() {
               </button>
             </div>
           </div>
-
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-            {/* Clicky */}
             <div>
-              <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>
-                📊 Clicky Analytics — Script de suivi
-              </div>
-              <div style={{ fontSize: 12, color: '#4A5568', marginBottom: 8 }}>
-                Collez le script complet fourni par Clicky
-              </div>
-              <textarea
-                value={analyticsClicky}
-                onChange={e => setAnalyticsClicky(e.target.value)}
+              <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>📊 Clicky Analytics</div>
+              <textarea value={analyticsClicky} onChange={e => setAnalyticsClicky(e.target.value)}
                 placeholder={'<script async data-id="101505110" src="//static.getclicky.com/js"></script>'}
-                rows={3}
-                style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none', boxSizing: 'border-box' as const, fontFamily: 'monospace', resize: 'vertical', lineHeight: 1.5 }}
-              />
+                rows={3} style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, outline: 'none', boxSizing: 'border-box' as const, fontFamily: 'monospace', resize: 'vertical', lineHeight: 1.5 }} />
             </div>
-
-            {/* Google Search Console */}
             <div>
-              <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>
-                🔍 Google Search Console — Code de vérification
-              </div>
-              <div style={{ fontSize: 12, color: '#4A5568', marginBottom: 8 }}>
-                Collez uniquement la valeur du content (ex: 8qExRLvDtjV8AY9...)
-              </div>
-              <input
-                value={googleVerification}
-                onChange={e => setGoogleVerification(e.target.value)}
+              <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>🔍 Google Search Console</div>
+              <input value={googleVerification} onChange={e => setGoogleVerification(e.target.value)}
                 placeholder="8qExRLvDtjV8AY9eKfy1-yNAgx7JTZAPDM-Cs4CE4WU"
-                style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }}
-              />
-              {googleVerification && (
-                <div style={{ marginTop: 8, padding: 10, borderRadius: 6, background: '#0A0E1A', border: '1px solid #1E2D3D', fontSize: 11, color: '#4A5568', fontFamily: 'monospace' }}>
-                  {'<meta name="google-site-verification" content="'}{googleVerification}{'" />'}
-                </div>
-              )}
+                style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
             </div>
           </div>
         </div>
@@ -245,14 +215,8 @@ export default function SiteDetailPage() {
             <h3 style={{ color: '#fff', margin: '0 0 16px', fontSize: 15, fontWeight: 600 }}>Données Sheet - {sheetData.count} produits détectés</h3>
             <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
-                <thead>
-                  <tr>{sheetData.headers.slice(0, 8).map((h: string) => (<th key={h} style={{ padding: '8px 12px', textAlign: 'left', color: '#8B9CB0', borderBottom: '1px solid #1E2D3D', whiteSpace: 'nowrap' }}>{h}</th>))}</tr>
-                </thead>
-                <tbody>
-                  {sheetData.rows.slice(0, 5).map((row: any, i: number) => (
-                    <tr key={i}>{sheetData.headers.slice(0, 8).map((h: string) => (<td key={h} style={{ padding: '8px 12px', color: '#fff', borderBottom: '1px solid #1E2D3D', maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{row[h] || '-'}</td>))}</tr>
-                  ))}
-                </tbody>
+                <thead><tr>{sheetData.headers.slice(0, 8).map((h: string) => (<th key={h} style={{ padding: '8px 12px', textAlign: 'left', color: '#8B9CB0', borderBottom: '1px solid #1E2D3D', whiteSpace: 'nowrap' }}>{h}</th>))}</tr></thead>
+                <tbody>{sheetData.rows.slice(0, 5).map((row: any, i: number) => (<tr key={i}>{sheetData.headers.slice(0, 8).map((h: string) => (<td key={h} style={{ padding: '8px 12px', color: '#fff', borderBottom: '1px solid #1E2D3D', maxWidth: 120, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{row[h] || '-'}</td>))}</tr>))}</tbody>
               </table>
               {sheetData.count > 5 && <div style={{ color: '#4A5568', fontSize: 11, padding: '8px 12px' }}>+ {sheetData.count - 5} autres produits</div>}
             </div>
