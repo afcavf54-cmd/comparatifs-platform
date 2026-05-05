@@ -2,7 +2,11 @@ import { NextRequest, NextResponse } from 'next/server'
 import { triggerWorkflow, getWorkflowRuns } from '../../../lib/github'
 
 export async function POST(req: NextRequest) {
-  const { siteId, workflowFile, skipEnrich, skipExisting } = await req.json()
+  const body = await req.json()
+  const { siteId, workflowFile } = body
+  // Accepter snake_case ET camelCase
+  const skipEnrich = body.skipEnrich ?? body.skip_enrich ?? false
+  const skipExisting = body.skipExisting ?? body.skip_existing ?? false
   if (!siteId) return NextResponse.json({ error: 'siteId requis' }, { status: 400 })
   const wf = workflowFile || 'generate-scpi.yml'
   const ok = await triggerWorkflow(wf, {
