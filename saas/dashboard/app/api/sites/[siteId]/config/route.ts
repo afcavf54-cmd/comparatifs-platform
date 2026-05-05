@@ -35,6 +35,17 @@ export async function GET(_: NextRequest, { params }: Params) {
       cta_color: get('cta_color'),
       cta_text_color: get('cta_text_color'),
     },
+    selected_keywords: (() => {
+      // Lire la liste selected_keywords du YAML
+      const match = yaml.match(/^selected_keywords:\s*
+((?:\s+-\s+[^
+]+
+?)*)/m)
+      if (match) {
+        return match[1].match(/^\s+-\s+(.+)$/gm)?.map((l: string) => l.replace(/^\s+-\s+/, '').trim()) || []
+      }
+      return []
+    })(),
     seo: {
       title_pattern: get('title_pattern'),
       meta_pattern: get('meta_pattern'),
@@ -130,6 +141,25 @@ export async function PATCH(req: NextRequest, { params }: Params) {
       }
     })
   }
+  // selected_keywords : liste des types de logiciels actifs
+  if (body.selected_keywords !== undefined) {
+    const kws: string[] = body.selected_keywords || []
+    const kwBlock = kws.length > 0
+      ? 'selected_keywords:
+' + kws.map((k: string) => `  - ${k}`).join('
+')
+      : 'selected_keywords: []'
+    if (/^selected_keywords:/m.test(yaml)) {
+      yaml = yaml.replace(/^selected_keywords:[\s\S]*?(?=
+\w|
+$|$)/m, kwBlock)
+    } else {
+      yaml = yaml.trimEnd() + '
+' + kwBlock + '
+'
+    }
+  }
+
   if (body.page_types) {
     const pageTypesBlock = 'page_types:\n' + Object.entries(body.page_types).map(([k, v]) => `  ${k}: ${v}`).join('\n')
     if (/^page_types:/m.test(yaml)) {
