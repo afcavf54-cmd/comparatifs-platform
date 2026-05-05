@@ -21,6 +21,10 @@ import sys
 import time
 import unicodedata as _unicodedata
 import urllib.request
+
+# Compteurs de tokens API
+_total_input_tokens = 0
+_total_output_tokens = 0
 import re as _re
 
 def strip_html_for_prompt(text: str) -> str:
