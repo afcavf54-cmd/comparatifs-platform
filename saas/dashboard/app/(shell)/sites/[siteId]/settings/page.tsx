@@ -11,7 +11,7 @@ export default function SettingsPage() {
   const [themeForm, setThemeForm] = useState({ accent: '#2563EB', accent2: '#F59E0B', bg: '#F8FAFC', ink: '#0F172A', cta_color: '#F59E0B', cta_text_color: '#ffffff' })
   const [savingTheme, setSavingTheme] = useState(false)
   const [msgTheme, setMsgTheme] = useState('')
-  const [seoForm, setSeoForm] = useState({ home_title: '', home_description: '', home_h1: '', seo_vs_title: '{A} vs {B} : comparatif {year}', seo_vs_meta: 'Comparatif complet {A} vs {B} {year} : rendements, frais, avis.', seo_avis_title: 'Avis {nom} {year} : faut-il investir ?', seo_avis_meta: 'Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques.', seo_liste_comp_title: 'Tous les comparatifs {site_name} {year}', seo_liste_avis_title: 'Avis {site_name} {year} : analyses independantes', www_preference: 'www' })
+  const [seoForm, setSeoForm] = useState({ home_title: '', home_description: '', home_h1: '', seo_vs_title: '{A} vs {B} : comparatif {year}', seo_vs_meta: 'Comparatif complet {A} vs {B} {year} : rendements, frais, avis.', seo_avis_title: 'Avis {nom} {year} : faut-il investir ?', seo_avis_meta: 'Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques.', seo_liste_comp_title: 'Tous les comparatifs {site_name} {year}', seo_liste_avis_title: 'Avis {site_name} {year} : analyses independantes', seo_classement_title: 'Meilleur {categorie} {year} : Top {count}', seo_classement_meta: 'Comparez les meilleurs {categorie} en {year}.', seo_classement_h1: '', www_preference: 'www' })
   const [pageTypes, setPageTypes] = useState<Record<string, string>>({})
   const [availableSchemas, setAvailableSchemas] = useState<any[]>([])
   const [saving, setSaving] = useState(false)
@@ -78,7 +78,7 @@ export default function SettingsPage() {
       if (d) {
         if (d.theme) setThemeForm(t => ({ ...t, ...d.theme, cta_color: d.theme.cta_color || '#F59E0B', cta_text_color: d.theme.cta_text_color || '#ffffff' }))
         setSeoForm(f => ({ ...f, home_title: d.home_title || '', home_description: d.home_description || '',
-              home_h1: d.home_h1 || '', seo_vs_title: d.seo?.title_pattern || f.seo_vs_title, seo_vs_meta: d.seo?.meta_pattern || f.seo_vs_meta, seo_avis_title: d.seo?.avis_title_pattern || f.seo_avis_title, seo_avis_meta: d.seo?.avis_meta_pattern || f.seo_avis_meta, seo_liste_comp_title: d.seo?.liste_comp_title || f.seo_liste_comp_title, seo_liste_avis_title: d.seo?.liste_avis_title || f.seo_liste_avis_title, www_preference: d.www_preference || 'www' }))
+              home_h1: d.home_h1 || '', seo_vs_title: d.seo?.title_pattern || f.seo_vs_title, seo_vs_meta: d.seo?.meta_pattern || f.seo_vs_meta, seo_avis_title: d.seo?.avis_title_pattern || f.seo_avis_title, seo_avis_meta: d.seo?.avis_meta_pattern || f.seo_avis_meta, seo_liste_comp_title: d.seo?.liste_comp_title || f.seo_liste_comp_title, seo_liste_avis_title: d.seo?.liste_avis_title || f.seo_liste_avis_title, seo_classement_title: d.seo?.classement_title_pattern || f.seo_classement_title, seo_classement_meta: d.seo?.classement_meta_pattern || f.seo_classement_meta, seo_classement_h1: d.seo?.classement_h1_pattern || f.seo_classement_h1, www_preference: d.www_preference || 'www' }))
         if (d.page_types) setPageTypes(d.page_types)
         // Charger auteur
         if (d.author) {
@@ -232,7 +232,7 @@ export default function SettingsPage() {
       {/* SEO */}
       <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24, marginBottom: 20 }}>
         <h3 style={{ color: '#fff', margin: '0 0 8px', fontSize: 15, fontWeight: 600 }}>SEO</h3>
-        <div style={{ fontSize: 11, color: '#4A5568', marginBottom: 16 }}>Variables : <code style={{ color: '#00D4AA' }}>{'{A}'}</code> <code style={{ color: '#00D4AA' }}>{'{B}'}</code> <code style={{ color: '#00D4AA' }}>{'{nom}'}</code> <code style={{ color: '#00D4AA' }}>{'{td}'}</code> <code style={{ color: '#00D4AA' }}>{'{year}'}</code> <code style={{ color: '#00D4AA' }}>{'{site_name}'}</code></div>
+        <div style={{ fontSize: 11, color: '#4A5568', marginBottom: 16 }}>Variables : <code style={{ color: '#00D4AA' }}>{'{A}'}</code> <code style={{ color: '#00D4AA' }}>{'{B}'}</code> <code style={{ color: '#00D4AA' }}>{'{nom}'}</code> <code style={{ color: '#00D4AA' }}>{'{td}'}</code> <code style={{ color: '#00D4AA' }}>{'{year}'}</code> <code style={{ color: '#00D4AA' }}>{'{site_name}'}</code> <code style={{ color: '#00D4AA' }}>{'{categorie}'}</code> <code style={{ color: '#00D4AA' }}>{'{count}'}</code></div>
         <div style={{ fontSize: 12, color: '#00D4AA', fontWeight: 600, marginBottom: 10 }}>Page d'accueil</div>
         {seoInp('Meta title', 'home_title')}{seoInp('Meta description', 'home_description')}
         <div style={{ marginBottom: 14 }}>
@@ -248,6 +248,15 @@ export default function SettingsPage() {
         {seoInp('Title pattern', 'seo_avis_title', '— {td} = rendement%')}{seoInp('Meta pattern', 'seo_avis_meta')}
         <div style={{ fontSize: 12, color: '#F6AD55', fontWeight: 600, margin: '16px 0 10px' }}>Pages listes</div>
         {seoInp('Title liste comparatifs', 'seo_liste_comp_title')}{seoInp('Title liste avis', 'seo_liste_avis_title')}
+        {pageTypes.classement && (
+          <>
+            <div style={{ fontSize: 12, color: '#F687B3', fontWeight: 600, margin: '16px 0 10px' }}>Pages classement (Top {'{categorie}'})</div>
+            <div style={{ fontSize: 11, color: '#4A5568', marginBottom: 8 }}>Patterns par défaut pour les pages <code style={{ color: '#00D4AA' }}>/meilleur-{'{categorie}'}</code>. Les valeurs éditées par catégorie depuis la page Classements ont la priorité.</div>
+            {seoInp('Title pattern', 'seo_classement_title', '— ex : Meilleur {categorie} {year} : Top {count}')}
+            {seoInp('Meta pattern', 'seo_classement_meta')}
+            {seoInp('H1 pattern (vide = utilise le Title)', 'seo_classement_h1', '— ex : Mon top {count} des {categorie} {year}')}
+          </>
+        )}
         <div style={{ fontSize: 12, color: '#8B9CB0', fontWeight: 600, margin: '16px 0 10px' }}>URL canonique</div>
         <div style={{ display: 'flex', gap: 10, marginBottom: 16 }}>
           {[{ val: 'www', label: 'www.monsite.fr' }, { val: 'naked', label: 'monsite.fr' }].map(opt => (
