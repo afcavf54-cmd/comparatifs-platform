@@ -92,20 +92,40 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   const file = await getFile(`platform/sites/${siteId}/config.yaml`)
   if (!file) return NextResponse.json({ error: 'Config introuvable' }, { status: 404 })
   let yaml = file.content
-  const replaceKey = (key: string, val: string) => {
-    const re = new RegExp(`^([ ]*)${key}:(.*?)$`, 'm')
+  // ── Fix d'un bug d'indentation YAML ────────────────────────────────────
+  // L'ancien `replaceKey` appendait les clés inexistantes à la fin du fichier
+  // avec 2 espaces d'indentation, sans connaître le bloc parent. Résultat :
+  // `home_h1`, `title_pattern`, etc. tombaient sous `author:` (dernier bloc
+  // avant la fin) au lieu de `site:` et `seo:`.
+  // Fix : on indique le bloc parent à `replaceKey`. Si la clé n'existe nulle
+  // part, on l'insère à la fin du bloc parent (créé si absent).
+  const replaceKey = (key: string, val: string, parent?: string) => {
     // Utiliser guillemets simples si la valeur contient des guillemets doubles (ex: script HTML)
     const quote = val.includes('"') ? "'" : '"'
-    const formatted = `$1${key}: ${quote}${val}${quote}`
+    // 1) La clé existe déjà quelque part → simple remplacement en place
+    const re = new RegExp(`^([ ]*)${key}:(.*?)$`, 'm')
     if (re.test(yaml)) {
-      yaml = yaml.replace(re, formatted)
+      yaml = yaml.replace(re, `$1${key}: ${quote}${val}${quote}`)
+      return
+    }
+    // 2) Pas de bloc parent demandé → append racine (cas legacy)
+    if (!parent) {
+      yaml += `\n${key}: ${quote}${val}${quote}`
+      return
+    }
+    // 3) Bloc parent demandé → insérer à la fin du bloc (créé si absent)
+    const parentRe = new RegExp(`^${parent}:[^\\n]*\\n((?:[ ]+[^\\n]*\\n?)*)`, 'm')
+    const m = yaml.match(parentRe)
+    if (m) {
+      const body = m[1].replace(/\n*$/, '')
+      yaml = yaml.replace(parentRe, `${parent}:\n${body}\n  ${key}: ${quote}${val}${quote}\n`)
     } else {
-      yaml += `\n  ${key}: ${quote}${val}${quote}`
+      yaml = yaml.trimEnd() + `\n${parent}:\n  ${key}: ${quote}${val}${quote}\n`
     }
   }
-  if (body.home_title !== undefined) replaceKey('home_title', body.home_title || '')
-  if (body.home_description !== undefined) replaceKey('home_description', body.home_description || '')
-  if (body.home_h1 !== undefined) replaceKey('home_h1', body.home_h1 || '')
+  if (body.home_title !== undefined) replaceKey('home_title', body.home_title || '', 'site')
+  if (body.home_description !== undefined) replaceKey('home_description', body.home_description || '', 'site')
+  if (body.home_h1 !== undefined) replaceKey('home_h1', body.home_h1 || '', 'site')
   // persona_prompt : bloc scalaire YAML
   if (body.persona_prompt !== undefined) {
     const pp = (body.persona_prompt || '').trim()
@@ -118,15 +138,15 @@ export async function PATCH(req: NextRequest, { params }: Params) {
     yaml = yaml.replace(/\n{3,}/g, '\n\n').trimEnd()
     yaml = yaml + '\n' + ppBlock + '\n'
   }
-  if (body.analytics_clicky !== undefined) replaceKey('analytics_clicky', body.analytics_clicky || '')
-  if (body.google_site_verification !== undefined) replaceKey('google_site_verification', body.google_site_verification || '')
-  if (body.www_preference !== undefined) replaceKey('www_preference', body.www_preference || 'www')
-  if (body.seo_vs_title !== undefined) replaceKey('title_pattern', body.seo_vs_title || '')
-  if (body.seo_vs_meta !== undefined) replaceKey('meta_pattern', body.seo_vs_meta || '')
-  if (body.seo_avis_title !== undefined) replaceKey('avis_title_pattern', body.seo_avis_title || '')
-  if (body.seo_avis_meta !== undefined) replaceKey('avis_meta_pattern', body.seo_avis_meta || '')
-  if (body.seo_liste_comp_title !== undefined) replaceKey('liste_comp_title', body.seo_liste_comp_title || '')
-  if (body.seo_liste_avis_title !== undefined) replaceKey('liste_avis_title', body.seo_liste_avis_title || '')
+  if (body.analytics_clicky !== undefined) replaceKey('analytics_clicky', body.analytics_clicky || '', 'site')
+  if (body.google_site_verification !== undefined) replaceKey('google_site_verification', body.google_site_verification || '', 'site')
+  if (body.www_preference !== undefined) replaceKey('www_preference', body.www_preference || 'www', 'site')
+  if (body.seo_vs_title !== undefined) replaceKey('title_pattern', body.seo_vs_title || '', 'seo')
+  if (body.seo_vs_meta !== undefined) replaceKey('meta_pattern', body.seo_vs_meta || '', 'seo')
+  if (body.seo_avis_title !== undefined) replaceKey('avis_title_pattern', body.seo_avis_title || '', 'seo')
+  if (body.seo_avis_meta !== undefined) replaceKey('avis_meta_pattern', body.seo_avis_meta || '', 'seo')
+  if (body.seo_liste_comp_title !== undefined) replaceKey('liste_comp_title', body.seo_liste_comp_title || '', 'seo')
+  if (body.seo_liste_avis_title !== undefined) replaceKey('liste_avis_title', body.seo_liste_avis_title || '', 'seo')
   if (body.theme) {
     // Les couleurs sont imbriquées sous theme: dans le YAML
     const themeMap: Record<string, string> = body.theme
