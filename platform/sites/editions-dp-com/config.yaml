@@ -17,7 +17,7 @@ site:
   home_description: ""
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
-  analytics_clicky: ""
+  analytics_clicky: '<script async data-id="101505645" src="/66682616612c3c0.js"></script>'
 page_types:
   classement: classement-saas
 theme:
@@ -46,3 +46,4 @@ author:
   avis_meta_pattern: "Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques."
   liste_comp_title: "Tous nos comparatifs {site_name} {year}"
   liste_avis_title: "Avis {site_name} {year} : analyses independantes"
+  google_site_verification: ""
