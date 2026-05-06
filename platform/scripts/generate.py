@@ -451,6 +451,21 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     products_yaml = load_yaml(products_yaml_path) if products_yaml_path.exists() else {"products": []}
     site          = config["site"]
     theme         = config["theme"]
+    # ── Normalisation site.domain selon www_preference ────────────────────
+    # `domain` est utilisé tel quel par tous les templates pour les canonicals,
+    # og:url, schema.org. Sans cette normalisation, un config avec
+    # `domain: https://editions-dp.com` + `www_preference: www` génère des
+    # canonicals sans www (incohérents avec les redirects Cloudflare qui,
+    # eux, forcent www → 301).
+    import re as _re_dom
+    _raw_domain = (site.get("domain") or "").rstrip("/")
+    if _raw_domain:
+        _www_pref = site.get("www_preference") or config.get("www_preference", "www")
+        _bare = _re_dom.sub(r"^https?://(www\.)?", "", _raw_domain)
+        if _www_pref == "www":
+            site["domain"] = f"https://www.{_bare}"
+        else:
+            site["domain"] = f"https://{_bare}"
     # Injecter cta_color et cta_text_color (theme: ou racine du config)
     if "cta_color" not in theme:
         theme["cta_color"] = config.get("cta_color", "")
