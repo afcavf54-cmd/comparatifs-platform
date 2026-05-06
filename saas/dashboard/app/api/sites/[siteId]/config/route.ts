@@ -54,6 +54,9 @@ export async function GET(_: NextRequest, { params }: Params) {
       avis_meta_pattern: get('avis_meta_pattern'),
       liste_comp_title: get('liste_comp_title'),
       liste_avis_title: get('liste_avis_title'),
+      classement_title_pattern: get('classement_title_pattern'),
+      classement_meta_pattern: get('classement_meta_pattern'),
+      classement_h1_pattern: get('classement_h1_pattern'),
     },
     persona_prompt: (() => {
       // Lire un bloc scalaire YAML (format "persona_prompt: |\n  ligne1\n  ligne2")
@@ -147,6 +150,9 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   if (body.seo_avis_meta !== undefined) replaceKey('avis_meta_pattern', body.seo_avis_meta || '', 'seo')
   if (body.seo_liste_comp_title !== undefined) replaceKey('liste_comp_title', body.seo_liste_comp_title || '', 'seo')
   if (body.seo_liste_avis_title !== undefined) replaceKey('liste_avis_title', body.seo_liste_avis_title || '', 'seo')
+  if (body.seo_classement_title !== undefined) replaceKey('classement_title_pattern', body.seo_classement_title || '', 'seo')
+  if (body.seo_classement_meta !== undefined) replaceKey('classement_meta_pattern', body.seo_classement_meta || '', 'seo')
+  if (body.seo_classement_h1 !== undefined) replaceKey('classement_h1_pattern', body.seo_classement_h1 || '', 'seo')
   if (body.theme) {
     // Les couleurs sont imbriquées sous theme: dans le YAML
     const themeMap: Record<string, string> = body.theme
