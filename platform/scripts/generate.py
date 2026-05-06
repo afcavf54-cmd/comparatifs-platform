@@ -308,7 +308,7 @@ def products_by_slug(products: list, slug: str) -> dict:
 def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, config: dict = None) -> None:
     # Construire le domain avec www_preference
     raw_domain = site["domain"].rstrip("/")
-    www_pref = (config or {}).get("www_preference", site.get("www_preference", "www"))
+    www_pref = site.get("www_preference") or (config or {}).get("www_preference", "www")
     # Normaliser le domaine selon www_preference
     import re as _re
     bare = _re.sub(r"^https?://(www\.)?", "", raw_domain)
@@ -879,7 +879,8 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 cat_editorial = editorials_fresh.get(f"classement-{cat_slug}", {})
                 classement_title = cat_editorial.get("meta_title") or seo_cfg.get("classement_title_pattern", "Meilleur {categorie} {year} : Top {count}").replace("{categorie}", cat).replace("{year}", str(site.get("year", ""))).replace("{count}", str(len(cat_products)))
                 classement_meta = cat_editorial.get("meta_description") or seo_cfg.get("classement_meta_pattern", "Comparez les meilleurs {categorie} en {year}.").replace("{categorie}", cat).replace("{year}", str(site.get("year", "")))
-                classement_h1 = cat_editorial.get("h1") or classement_title
+                _raw_h1 = cat_editorial.get("h1") or classement_title
+                classement_h1 = _raw_h1.replace("{year}", str(site.get("year", ""))).replace("{categorie}", cat).replace("{count}", str(len(cat_products)))
                 enriched_products = []
                 for prod in cat_products:
                     p = dict(prod)
