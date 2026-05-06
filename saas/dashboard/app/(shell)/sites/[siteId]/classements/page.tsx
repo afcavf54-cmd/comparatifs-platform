@@ -137,65 +137,100 @@ export default function ClassementsPage() {
   const editorialPath = `platform/sites/${siteId}/editorial.json`
 
   useEffect(() => {
+    let cancelled = false
+    const slugifyKw = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+
+    // 1. Sheet (independent, fire & forget)
     fetch(`/api/sites/${siteId}`).then(r => r.json()).then(async d => {
+      if (cancelled) return
       if (d.sheet_csv_url) {
         const r = await fetch('/api/sheet', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: d.sheet_csv_url }) })
         const sd = await r.json()
-        if (!sd.error) setProducts(sd.rows || [])
+        if (!cancelled && !sd.error) setProducts(sd.rows || [])
       }
-    })
-    // Aussi essayer de charger depuis le schema du template
-    fetch(`/api/github?path=${encodeURIComponent(`platform/sites/${siteId}/config.yaml`)}`).then(r => r.json()).then(async cfg => {
-      if (!cfg.content) return
-      const classementMatch = cfg.content.match(/classement:\s*(\S+)/)
-      if (!classementMatch) return
-      const schemaName = classementMatch[1]
-      const sr = await fetch(`/api/github?path=${encodeURIComponent(`platform/schemas/${schemaName}.json`)}`)
-      const sd = await sr.json()
-      if (!sd.content) return
-      try {
-        const schema = JSON.parse(sd.content)
-        const allProducts: any[] = []
-        Object.entries(schema.keywords || {}).forEach(([kwName, kw]: [string, any]) => {
-          if (Array.isArray(kw.__products)) {
-            kw.__products.forEach((p: any) => allProducts.push({ ...p, __keyword: kwName }))
-          }
-        })
-        if (allProducts.length > 0) setProducts(prev => prev.length > 0 ? prev : allProducts)
-        // Stocker le mapping keyword -> catégorie parente
-        const kwCats: Record<string, string> = {}
-        Object.entries(schema.keywords || {}).forEach(([kwName, kwData]: [string, any]) => {
-          const slug = kwName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
-          kwCats[`classement-${slug}`] = kwData.__categorie || 'Autres'
-        })
-        setKeywordCategories(kwCats)
-      } catch {}
     }).catch(() => {})
-    fetch(`/api/github?path=${encodeURIComponent(editorialPath)}`).then(r => r.json()).then(d => {
-      if (d.content) {
-        try {
-          const all = JSON.parse(d.content)
-          const cls: Record<string, any> = {}
-          const prods: Record<string, any> = {}
-          for (const [k, v] of Object.entries(all)) {
-            if (k.startsWith('classement-prod-')) prods[k] = v
-            else if (k.startsWith('classement-')) cls[k] = v
-          }
-          // Injecter les données produits dans chaque classement
-          for (const [clsKey, clsVal] of Object.entries(cls)) {
-            const cat_slug = clsKey.replace('classement-', '')
-            for (const [prodKey, prodVal] of Object.entries(prods)) {
-              const slug = prodKey.replace('classement-prod-', '')
-              ;(cls[clsKey] as any)[`prod_${slug}`] = prodVal
+
+    // 2. Schema → editorial (chained, so we know which products belong to each category)
+    ;(async () => {
+      // Per-category slug allowlist : { cat_slug -> Set<product_slug> }
+      const kwToProductSlugs: Record<string, Set<string>> = {}
+      try {
+        const cfgR = await fetch(`/api/github?path=${encodeURIComponent(`platform/sites/${siteId}/config.yaml`)}`)
+        const cfg = await cfgR.json()
+        if (cfg.content) {
+          const m = cfg.content.match(/classement:\s*(\S+)/)
+          if (m) {
+            const schemaName = m[1]
+            const sr = await fetch(`/api/github?path=${encodeURIComponent(`platform/schemas/${schemaName}.json`)}`)
+            const sd = await sr.json()
+            if (sd.content) {
+              const schema = JSON.parse(sd.content)
+              const allProducts: any[] = []
+              const kwCats: Record<string, string> = {}
+              Object.entries(schema.keywords || {}).forEach(([kwName, kw]: [string, any]) => {
+                const cat_slug = slugifyKw(kwName)
+                kwCats[`classement-${cat_slug}`] = kw.__categorie || 'Autres'
+                kwToProductSlugs[cat_slug] = new Set(
+                  (Array.isArray(kw.__products) ? kw.__products : []).map((p: any) => p.slug)
+                )
+                if (Array.isArray(kw.__products)) {
+                  kw.__products.forEach((p: any) => allProducts.push({ ...p, __keyword: kwName }))
+                }
+              })
+              if (cancelled) return
+              if (allProducts.length > 0) setProducts(prev => prev.length > 0 ? prev : allProducts)
+              setKeywordCategories(kwCats)
             }
           }
-          setClassements(cls)
-          if (Object.keys(cls).length > 0) setSelected(Object.keys(cls)[0])
-        } catch {}
-      }
-      setLoading(false)
-    }).catch(() => setLoading(false))
+        }
+      } catch {}
+
+      // Editorial — only inject products that ACTUALLY belong to each category
+      try {
+        const r = await fetch(`/api/github?path=${encodeURIComponent(editorialPath)}`)
+        const d = await r.json()
+        if (cancelled) return
+        if (d.content) {
+          try {
+            const all = JSON.parse(d.content)
+            const cls: Record<string, any> = {}
+            const prods: Record<string, any> = {}
+            for (const [k, v] of Object.entries(all)) {
+              if (k.startsWith('classement-prod-')) prods[k] = v
+              else if (k.startsWith('classement-')) cls[k] = v
+            }
+            // ── INJECTION FIX ──────────────────────────────────────────────
+            // Bug d'origine : on injectait CHAQUE classement-prod-* dans CHAQUE
+            // classement-* → editorial.json gonflait à 1 778+ entrées (3 MB+).
+            // Fix : on ne pré-remplit que les produits qui appartiennent
+            // réellement à la catégorie (via schema.keywords[kw].__products).
+            // Les pré-remplissages sont marqués __auto:true et seront
+            // strippés au save (cf. save()) sauf si l'utilisateur les édite
+            // (cf. updateField, qui retire __auto à toute édition).
+            for (const [clsKey] of Object.entries(cls)) {
+              const cat_slug = clsKey.replace('classement-', '')
+              const allowed = kwToProductSlugs[cat_slug]
+              if (!allowed) continue // Pas d'info schema → on n'injecte rien (safe default)
+              for (const [prodKey, prodVal] of Object.entries(prods)) {
+                const slug = prodKey.replace('classement-prod-', '')
+                if (!allowed.has(slug)) continue
+                const existing = (cls[clsKey] as any)[`prod_${slug}`]
+                // Si une vraie édition utilisateur existe (sans __auto), on la garde
+                if (existing && !(existing as any).__auto) continue
+                ;(cls[clsKey] as any)[`prod_${slug}`] = { ...(prodVal as any), __auto: true }
+              }
+            }
+            setClassements(cls)
+            if (Object.keys(cls).length > 0) setSelected(Object.keys(cls)[0])
+          } catch {}
+        }
+      } catch {}
+
+      if (!cancelled) setLoading(false)
+    })()
+
+    return () => { cancelled = true }
   }, [siteId])
 
   const categories = [...new Set(products.map(p => p.categorie).filter(Boolean))] as string[]
@@ -226,7 +261,22 @@ export default function ClassementsPage() {
     const d = await r.json()
     let allEditorial: Record<string, any> = {}
     if (d.content) { try { allEditorial = JSON.parse(d.content) } catch {} }
-    const merged = { ...allEditorial, ...classements }
+    // ── SAVE FIX ─────────────────────────────────────────────────────────
+    // On strippe les entrées prod_* marquées __auto:true (pré-remplissages
+    // du load qui ne reflètent pas une édition utilisateur). Sans ce filtre,
+    // chaque save répliquerait classement-prod-* à l'intérieur de chaque
+    // classement-* → bloat exponentiel (cf. bug fix du load).
+    const cleanedClassements: Record<string, any> = {}
+    for (const [clsKey, clsVal] of Object.entries(classements)) {
+      if (!clsVal || typeof clsVal !== 'object') { cleanedClassements[clsKey] = clsVal; continue }
+      const cleaned: Record<string, any> = {}
+      for (const [k, v] of Object.entries(clsVal as any)) {
+        if (k.startsWith('prod_') && v && typeof v === 'object' && (v as any).__auto === true) continue
+        cleaned[k] = v
+      }
+      cleanedClassements[clsKey] = cleaned
+    }
+    const merged = { ...allEditorial, ...cleanedClassements }
     const wr = await fetch('/api/github', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ path: editorialPath, content: JSON.stringify(merged, null, 2), message: `HUB: Update classements ${siteId}` })
@@ -280,8 +330,17 @@ export default function ClassementsPage() {
     setDeploying(false)
   }
 
-  function updateField(catKey: string, field: string, value: string) {
-    setClassements(prev => ({ ...prev, [catKey]: { ...prev[catKey], [field]: value } }))
+  function updateField(catKey: string, field: string, value: any) {
+    setClassements(prev => {
+      let cleanValue = value
+      // Toute édition utilisateur sur un prod_* enlève le flag __auto :
+      // cette entrée devient un override réel à persister.
+      if (field.startsWith('prod_') && value && typeof value === 'object' && (value as any).__auto) {
+        const { __auto, ...rest } = value as any
+        cleanValue = rest
+      }
+      return { ...prev, [catKey]: { ...prev[catKey], [field]: cleanValue } }
+    })
   }
 
   function addClassement(cat: string) {
