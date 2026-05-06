@@ -48,31 +48,21 @@ export default function SettingsPage() {
       setSite(d)
       setForm({ name: d.name, domain: d.domain, cloudflare_project: d.cloudflare_project, description: d.description || '', status: d.status, sheet_csv_url: d.sheet_csv_url || '' })
     })
-    // Charger logo et favicon via URL raw GitHub (GET avec Image)
-    const rawBase = `https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main`
-    const ts = Date.now()
-
-    // Essayer chaque extension pour le logo
-    const logoExts = ['png', 'svg', 'jpg', 'webp']
-    let logoFound = false
-    logoExts.forEach(ext => {
-      if (logoFound) return
-      const url = `${rawBase}/platform/sites/${siteId}/public/logo.${ext}?t=${ts}`
-      const img = new Image()
-      img.onload = () => { if (!logoFound) { logoFound = true; setLogoPreview(url) } }
-      img.src = url
-    })
-
-    // Essayer chaque extension pour le favicon
-    const favExts = ['png', 'svg', 'ico']
-    let favFound = false
-    favExts.forEach(ext => {
-      if (favFound) return
-      const url = `${rawBase}/platform/sites/${siteId}/public/favicon.${ext}?t=${ts}`
-      const img = new Image()
-      img.onload = () => { if (!favFound) { favFound = true; setFaviconPreview(url) } }
-      img.src = url
-    })
+    // Charger logo et favicon en listant le dossier public/
+    // (plus robuste que de deviner l'extension : marche avec .png, .svg, .jpg,
+    // .jpeg, .webp, .gif, .ico, .avif, etc.)
+    fetch(`/api/github?path=${encodeURIComponent(`platform/sites/${siteId}/public`)}`)
+      .then(r => r.json())
+      .then(files => {
+        if (!Array.isArray(files)) return
+        const rawBase = `https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main`
+        const ts = Date.now()
+        const logoF = files.find((f: any) => /^logo\.[a-z0-9]+$/i.test(f.name))
+        const favF = files.find((f: any) => /^favicon\.[a-z0-9]+$/i.test(f.name))
+        if (logoF) setLogoPreview(`${rawBase}/${logoF.path}?t=${ts}`)
+        if (favF) setFaviconPreview(`${rawBase}/${favF.path}?t=${ts}`)
+      })
+      .catch(() => {})
 
     fetch(`/api/sites/${siteId}/config?t=${Date.now()}`).then(r => r.json()).then(d => {
       if (d) {
