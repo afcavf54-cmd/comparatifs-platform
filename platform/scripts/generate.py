@@ -930,7 +930,9 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 cat_editorial = _sub_vars(cat_editorial)
                 classement_title = cat_editorial.get("meta_title") or _sub_vars(seo_cfg.get("classement_title_pattern", "Meilleur {categorie} {year} : Top {count}"))
                 classement_meta = cat_editorial.get("meta_description") or _sub_vars(seo_cfg.get("classement_meta_pattern", "Comparez les meilleurs {categorie} en {year}."))
-                classement_h1 = cat_editorial.get("h1") or classement_title
+                # H1 : priorité (1) édition manuelle de la catégorie, (2) pattern SEO global
+                # `classement_h1_pattern`, (3) fallback sur le Title.
+                classement_h1 = cat_editorial.get("h1") or _sub_vars(seo_cfg.get("classement_h1_pattern", "")) or classement_title
                 enriched_products = []
                 for prod in cat_products:
                     p = dict(prod)
