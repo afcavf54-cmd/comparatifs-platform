@@ -17,8 +17,8 @@ site:
   home_description: ""
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
-  analytics_clicky: '<script async data-id="101505645" src="//static.getclicky.com/js"></script>
-'
+  analytics_clicky: '<script async data-id="101505645" src="/66682616612c3c0.js"></script>'
+  home_h1: "Edition Des Pros : touvez le logiciel qu'il vous faut !"
 page_types:
   classement: classement-saas
 theme:
@@ -39,12 +39,10 @@ author:
   job_title: "Dirigeant TPE"
   photo: ""
   socials: []
-
-  home_h1: "Edition Des Pros : touvez le logiciel qu'il vous faut !"
+seo:
   title_pattern: "{A} vs {B} : comparatif {year}"
   meta_pattern: "Comparatif complet {A} vs {B} {year} : rendements, frais, avis."
   avis_title_pattern: "Avis {nom} {year} : faut-il investir ?"
   avis_meta_pattern: "Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques."
   liste_comp_title: "Tous nos comparatifs {site_name} {year}"
   liste_avis_title: "Avis {site_name} {year} : analyses independantes"
-  google_site_verification: ""
