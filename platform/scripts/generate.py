@@ -892,10 +892,34 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 page_slug = f"meilleur-{cat_slug}"
                 seo_cfg = config.get("seo", {})
                 cat_editorial = editorials_fresh.get(f"classement-{cat_slug}", {})
-                classement_title = cat_editorial.get("meta_title") or seo_cfg.get("classement_title_pattern", "Meilleur {categorie} {year} : Top {count}").replace("{categorie}", cat).replace("{year}", str(site.get("year", ""))).replace("{count}", str(len(cat_products)))
-                classement_meta = cat_editorial.get("meta_description") or seo_cfg.get("classement_meta_pattern", "Comparez les meilleurs {categorie} en {year}.").replace("{categorie}", cat).replace("{year}", str(site.get("year", "")))
-                _raw_h1 = cat_editorial.get("h1") or classement_title
-                classement_h1 = _raw_h1.replace("{year}", str(site.get("year", ""))).replace("{categorie}", cat).replace("{count}", str(len(cat_products)))
+                # ── Substitution des placeholders {year}, {categorie}, {count}, {site_name}
+                # Bug d'origine : seul le H1 et les fallbacks de pattern recevaient un .replace().
+                # Si l'utilisateur éditait meta_title / meta_description / titre_analyse via
+                # le dashboard, son texte était passé tel quel au template → {year} brut visible.
+                # Fix : on substitue récursivement TOUTES les strings de cat_editorial
+                # (intro, en_bref, contenu_custom, faq, titre_analyse, meta_*, h1, etc.)
+                # ainsi que les patterns de fallback. Tout futur champ ajouté à l'éditorial
+                # hérite automatiquement de la substitution.
+                _vars = {
+                    "year": str(site.get("year", "")),
+                    "categorie": cat,
+                    "count": str(len(cat_products)),
+                    "site_name": site.get("name", ""),
+                }
+                def _sub_vars(obj):
+                    if isinstance(obj, str):
+                        for k, v in _vars.items():
+                            obj = obj.replace("{" + k + "}", v)
+                        return obj
+                    if isinstance(obj, dict):
+                        return {k: _sub_vars(v) for k, v in obj.items()}
+                    if isinstance(obj, list):
+                        return [_sub_vars(x) for x in obj]
+                    return obj
+                cat_editorial = _sub_vars(cat_editorial)
+                classement_title = cat_editorial.get("meta_title") or _sub_vars(seo_cfg.get("classement_title_pattern", "Meilleur {categorie} {year} : Top {count}"))
+                classement_meta = cat_editorial.get("meta_description") or _sub_vars(seo_cfg.get("classement_meta_pattern", "Comparez les meilleurs {categorie} en {year}."))
+                classement_h1 = cat_editorial.get("h1") or classement_title
                 enriched_products = []
                 for prod in cat_products:
                     p = dict(prod)
