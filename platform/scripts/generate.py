@@ -903,7 +903,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 page_slug = f"meilleur-{cat_slug}"
                 seo_cfg = config.get("seo", {})
                 cat_editorial = editorials_fresh.get(f"classement-{cat_slug}", {})
-                # ── Substitution des placeholders {year}, {categorie}, {count}, {site_name}
+                # ── Substitution des placeholders {year}, {categorie}, {Categorie}, {count}, {site_name}
                 # Bug d'origine : seul le H1 et les fallbacks de pattern recevaient un .replace().
                 # Si l'utilisateur éditait meta_title / meta_description / titre_analyse via
                 # le dashboard, son texte était passé tel quel au template → {year} brut visible.
@@ -911,9 +911,15 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 # (intro, en_bref, contenu_custom, faq, titre_analyse, meta_*, h1, etc.)
                 # ainsi que les patterns de fallback. Tout futur champ ajouté à l'éditorial
                 # hérite automatiquement de la substitution.
+                # Variants de casse :
+                #   {categorie}  → lowercase     ("logiciel de paie")
+                #   {Categorie}  → capitalisé    ("Logiciel de paie")  — utile en début de phrase / H1
+                _cat_lower = cat.lower() if cat else ""
+                _cat_cap = (_cat_lower[0].upper() + _cat_lower[1:]) if _cat_lower else ""
                 _vars = {
                     "year": str(site.get("year", "")),
-                    "categorie": cat,
+                    "categorie": _cat_lower,
+                    "Categorie": _cat_cap,
                     "count": str(len(cat_products)),
                     "site_name": site.get("name", ""),
                 }
