@@ -57,6 +57,7 @@ export async function GET(_: NextRequest, { params }: Params) {
       classement_title_pattern: get('classement_title_pattern'),
       classement_meta_pattern: get('classement_meta_pattern'),
       classement_h1_pattern: get('classement_h1_pattern'),
+      classement_titre_analyse_pattern: get('classement_titre_analyse_pattern'),
     },
     persona_prompt: (() => {
       // Lire un bloc scalaire YAML (format "persona_prompt: |\n  ligne1\n  ligne2")
@@ -153,6 +154,7 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   if (body.seo_classement_title !== undefined) replaceKey('classement_title_pattern', body.seo_classement_title || '', 'seo')
   if (body.seo_classement_meta !== undefined) replaceKey('classement_meta_pattern', body.seo_classement_meta || '', 'seo')
   if (body.seo_classement_h1 !== undefined) replaceKey('classement_h1_pattern', body.seo_classement_h1 || '', 'seo')
+  if (body.seo_classement_titre_analyse !== undefined) replaceKey('classement_titre_analyse_pattern', body.seo_classement_titre_analyse || '', 'seo')
   if (body.theme) {
     // Les couleurs sont imbriquées sous theme: dans le YAML
     const themeMap: Record<string, string> = body.theme
