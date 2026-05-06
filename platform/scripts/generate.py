@@ -927,6 +927,12 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     if isinstance(obj, list):
                         return [_sub_vars(x) for x in obj]
                     return obj
+                # Avant le _sub_vars : si pas de titre_analyse édité par catégorie,
+                # injecter le pattern global SEO (sera substitué juste après comme
+                # le reste des champs éditoriaux). Sinon, fallback hardcodé du template.
+                if not cat_editorial.get("titre_analyse") and seo_cfg.get("classement_titre_analyse_pattern"):
+                    cat_editorial = dict(cat_editorial)
+                    cat_editorial["titre_analyse"] = seo_cfg["classement_titre_analyse_pattern"]
                 cat_editorial = _sub_vars(cat_editorial)
                 classement_title = cat_editorial.get("meta_title") or _sub_vars(seo_cfg.get("classement_title_pattern", "Meilleur {categorie} {year} : Top {count}"))
                 classement_meta = cat_editorial.get("meta_description") or _sub_vars(seo_cfg.get("classement_meta_pattern", "Comparez les meilleurs {categorie} en {year}."))
