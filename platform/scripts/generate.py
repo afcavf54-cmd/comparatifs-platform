@@ -911,15 +911,31 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 # (intro, en_bref, contenu_custom, faq, titre_analyse, meta_*, h1, etc.)
                 # ainsi que les patterns de fallback. Tout futur champ ajouté à l'éditorial
                 # hérite automatiquement de la substitution.
-                # Variants de casse :
-                #   {categorie}  → lowercase     ("logiciel de paie")
-                #   {Categorie}  → capitalisé    ("Logiciel de paie")  — utile en début de phrase / H1
+                # Variants de casse et de nombre :
+                #   {categorie}   → singulier lowercase     ("logiciel de paie")
+                #   {Categorie}   → singulier capitalisé    ("Logiciel de paie")
+                #   {categories}  → pluriel lowercase       ("logiciels de paie")
+                #   {Categories}  → pluriel capitalisé      ("Logiciels de paie")
+                # Règle de pluralisation : ajoute 's' au premier mot s'il ne se
+                # termine pas déjà par s/x/z (mots invariables ou déjà au pluriel).
+                def _pluralize_first(s):
+                    if not s: return s
+                    parts = s.split(" ", 1)
+                    first = parts[0]
+                    rest = parts[1] if len(parts) > 1 else ""
+                    if first.lower().endswith(("s", "x", "z")):
+                        return s
+                    return first + "s" + ((" " + rest) if rest else "")
                 _cat_lower = cat.lower() if cat else ""
                 _cat_cap = (_cat_lower[0].upper() + _cat_lower[1:]) if _cat_lower else ""
+                _cat_plural_lower = _pluralize_first(_cat_lower)
+                _cat_plural_cap = (_cat_plural_lower[0].upper() + _cat_plural_lower[1:]) if _cat_plural_lower else ""
                 _vars = {
                     "year": str(site.get("year", "")),
                     "categorie": _cat_lower,
                     "Categorie": _cat_cap,
+                    "categories": _cat_plural_lower,
+                    "Categories": _cat_plural_cap,
                     "count": str(len(cat_products)),
                     "site_name": site.get("name", ""),
                 }
