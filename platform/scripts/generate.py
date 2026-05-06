@@ -753,9 +753,20 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             top_pairs  = [{"url": f"{a}-vs-{b}", "label": f"{products_by_slug(products, a)['nom']} vs {products_by_slug(products, b)['nom']}"} for a, b in all_pairs[:8]]
             home_title = site.get("home_title") or f"{site.get('name', '')} | Comparatifs {site.get('year', '')}"
             home_desc = site.get("home_description", "")
+            # ── Stats home ────────────────────────────────────────────────
+            # `total_categories` = nombre de types de logiciels (= nombre
+            # de classements générés). Pour un site classement, on somme
+            # toutes les listes de classements_by_category. Pour un site
+            # non-classement, on compte les categories distinctes des
+            # produits (fallback raisonnable).
+            if is_classement_template and classements_by_category:
+                total_categories = sum(len(v) for v in classements_by_category.values())
+            else:
+                total_categories = len({p.get("categorie") for p in products if p.get("categorie")})
             html = env.get_template(index_tpl).render(
                 site={**site, "seo": config.get("seo", {})}, theme=theme, products=products,
                 total_pairs=len(all_pairs), zero_frais_count=zero_frais,
+                total_products=len(products), total_categories=total_categories,
                 classements_by_category=classements_by_category,
                 top_pairs=top_pairs, build_date=date.today().isoformat(),
                 site_editorial=site_editorial,
