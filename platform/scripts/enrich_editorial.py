@@ -742,7 +742,7 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
 
             _intro_prompt = _combine('prompt_intro', prompt_intro)
             if not _intro_prompt.strip():
-                _intro_prompt = f'Rédige une introduction de 3 paragraphes HTML sur les enjeux du choix d\'un {cat} en {year}. <strong> sur les points clés. Aucun tiret long.'
+                _intro_prompt = f'Rédige une introduction de 3 paragraphes HTML sur les enjeux du choix d\'un {cat} en {year}. Aucun tiret long.'
 
             for section_key, section_prompt, is_json in [
                 ('intro', _intro_prompt, False),
@@ -825,7 +825,7 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
 
 Produits à classer : {produits_str}
 
-Règles : paragraphes 3 lignes max, <strong> sur les chiffres/mots clés, aucun tiret long.
+Règles : paragraphes 3 lignes max, aucun tiret long.
 
 Réponds UNIQUEMENT en JSON valide sans backticks :
 {{
@@ -886,7 +886,7 @@ Réponds UNIQUEMENT en JSON valide sans backticks :
 
 Réponds UNIQUEMENT en JSON valide sans backticks :
 {{
-  "description": "<p>Texte avec <strong>mots clés importants en gras</strong>. 3 paragraphes HTML sur {nom}, fonctionnalités clés, cible idéale. Utilise <strong> sur les noms propres, chiffres et points différenciants. Aucun tiret long.</p>",
+  "description": "<p>3 paragraphes HTML sur {nom}, fonctionnalités clés, cible idéale. Aucun tiret long.</p>",
   "points_forts": ["avantage concret 1", "avantage concret 2", "avantage concret 3", "avantage concret 4"],
   "points_faibles": ["limite réelle 1", "limite réelle 2", "limite réelle 3"]
 }}"""
