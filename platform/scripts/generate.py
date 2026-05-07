@@ -43,6 +43,23 @@ import re as _re
 def md_to_html(text):
     if not text: return text
     import re as _re2
+    # ── PRÉ-NORMALISATION DES BULLETS UNICODE ─────────────────────────────
+    # L'IA renvoie parfois `• item` (U+2022) ou `· item` (U+00B7) au lieu
+    # du markdown standard `- item`. On normalise pour que la logique de
+    # liste ci-dessous reconnaisse correctement.
+    # Cas A : tous les bullets sur la même ligne (séparateur inline) →
+    #   "• item1 • item2 • item3" → on splitte sur les bullets
+    # Cas B : un bullet par ligne → simple remplacement en début de ligne
+    has_bullet = '•' in text or '·' in text
+    has_newline_with_bullet = bool(_re2.search(r'\n\s*[•·]', text))
+    if has_bullet and not has_newline_with_bullet:
+        # Cas A : on splitte sur • ou · et on reconstruit en markdown standard
+        items = [i.strip() for i in _re2.split(r'\s*[•·]\s*', text) if i.strip()]
+        if len(items) >= 2:
+            text = '\n'.join('- ' + item for item in items)
+    elif has_bullet:
+        # Cas B : remplacement en début de ligne (collapse les espaces post-bullet)
+        text = _re2.sub(r'^(\s*)[•·]\s*', r'\1- ', text, flags=_re2.MULTILINE)
     # Convertir **bold** en <strong>bold</strong>
     text = _re2.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
     # Supprimer les séparateurs markdown
@@ -995,10 +1012,19 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                         p["description"] = md_to_html(p["description"])
                     enriched_products.append(p)
 
-                # Convertir markdown en HTML pour intro et contenu_custom
+                # Convertir markdown en HTML pour intro, en_bref et contenu_custom
+                # (utile quand l'IA renvoie du markdown brut au lieu de HTML —
+                # md_to_html détecte automatiquement les contenus déjà HTML
+                # via les balises <ul>/<li>/<p> et les laisse tels quels.)
                 if cat_editorial.get("intro"):
                     cat_editorial = dict(cat_editorial)
                     cat_editorial["intro"] = md_to_html(cat_editorial["intro"])
+                if cat_editorial.get("en_bref"):
+                    cat_editorial = dict(cat_editorial)
+                    _eb = cat_editorial["en_bref"]
+                    # Si déjà HTML (présence de <ul>, <li>, <p>), on garde tel quel
+                    if not _re.search(r'<(ul|ol|li|p|div)\b', _eb, _re.I):
+                        cat_editorial["en_bref"] = md_to_html(_eb)
                 if cat_editorial.get("contenu_custom"):
                     cat_editorial = dict(cat_editorial)
                     cat_editorial["contenu_custom"] = md_to_html(cat_editorial["contenu_custom"])
