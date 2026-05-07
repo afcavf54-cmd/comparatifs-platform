@@ -3499,7 +3499,7 @@
       "words_max": 120
     },
     "prompt_en_bref": {
-      "text": "Génère un encart \"En bref\" pour les meilleurs {categorie} en {year}.\n\nFormat : <ul> avec 5 <li>, chaque item = nom du logiciel + profil cible idéal en 1 phrase.\n\n\n🎯 Objectif :\n- résumer les meilleurs choix rapidement\n- permettre une lecture en 30 secondes\n\n\n📌 Style :\n- phrases courtes\n- ton direct\n- pas de jargon\n\n✅ Optimisation SEO :\n- intégrer des variantes du mot-clé\n- réponses concises type featured snippet\n\n\n❌ À éviter :\n- phrases longues\n- répétition du classement détaillé\n- Pas de H2, génère uniquement la liste à puce",
+      "text": "Génère un encart \"En bref\" pour les meilleurs {categorie} en {year}.\n\nFormat : <ul> avec 5 <li>, chaque item = nom du logiciel + profil cible idéal en 1 phrase.\n\nUniquement cette liste à puce, n'ajoute rien d'autre\n\n🎯 Objectif :\n- résumer les meilleurs choix rapidement\n- permettre une lecture en 30 secondes\n\n\n📌 Style :\n- phrases courtes\n- ton direct\n- pas de jargon\n\n✅ Optimisation SEO :\n- intégrer des variantes du mot-clé\n- réponses concises type featured snippet\n\n\n❌ À éviter :\n- phrases longues\n- répétition du classement détaillé\n- Pas de H2, génère uniquement la liste à puce",
       "words_min": 9,
       "words_max": 15
     },
