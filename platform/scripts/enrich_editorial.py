@@ -604,10 +604,14 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
         kw_sheet_url = kw_data.get("__sheet_url", "")
         if not kw_sheet_url:
             continue
-        # Vérifier si ce keyword a déjà des produits dans le sheet principal
+        # ── Anti-doublon : skip si la sheet principale du site contient déjà
+        # des produits avec EXACTEMENT cette categorie. Bug d'origine : un
+        # check `in` au lieu de `==` faisait silencieusement sauter un
+        # keyword préfixe d'un autre déjà chargé (ex: "Logiciel de
+        # comptabilité" skipé après "Logiciel de comptabilité gratuit").
+        kw_norm = kw_name.strip().lower()
         already_covered = any(
-            p.get("categorie", "").lower() == kw_name.lower() or
-            kw_name.lower() in p.get("categorie", "").lower()
+            p.get("categorie", "").strip().lower() == kw_norm
             for p in products
         )
         if already_covered:
