@@ -546,9 +546,15 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     _kw_url = _kw_data.get("__sheet_url", "")
                     if not _kw_url:
                         continue
+                    # ── Anti-doublon : skip si la sheet principale du site
+                    # contient déjà des produits avec EXACTEMENT cette categorie.
+                    # Bug d'origine : un check `in` au lieu de `==` faisait
+                    # silencieusement sauter un keyword préfixe d'un autre
+                    # déjà chargé (ex: "Logiciel de comptabilité" skipé après
+                    # "Logiciel de comptabilité gratuit").
+                    _kw_norm = _kw_name.strip().lower()
                     _covered = any(
-                        _kw_name.lower() in p.get("categorie", "").lower() or
-                        p.get("categorie", "").lower() in _kw_name.lower()
+                        p.get("categorie", "").strip().lower() == _kw_norm
                         for p in products
                     )
                     if _covered:
