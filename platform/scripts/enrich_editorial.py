@@ -720,9 +720,13 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
             def _combine(default_key, custom_prompt, per_line=False):
                 dp_entry = _dp.get(default_key, {})
                 _default = (dp_entry.get('text', '') if isinstance(dp_entry, dict) else str(dp_entry or '')).strip()
-                # Remplacer les variables dans le prompt par défaut aussi
+                # Remplacer les variables dans le prompt par défaut
                 _default = strip_html_for_prompt(_default).replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
-                _custom = (custom_prompt or '').strip()
+                # Remplacer aussi les variables dans le prompt custom du keyword
+                # (bug d'origine : seul _default recevait la sub, donc {produits}
+                # restait littéral si l'utilisateur l'avait mis dans le prompt
+                # custom du keyword au lieu du default_prompts du schema).
+                _custom = (custom_prompt or '').strip().replace('{produits}', produits_str).replace('{year}', str(year)).replace('{theme}', cat)
                 _words = _word_constraint(default_key, per_line)
                 combined = (_default + '\n\n' + _custom).strip() if (_default and _custom) else (_custom or _default)
                 return combined + _words
@@ -768,7 +772,15 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
                 _base_sys = 'Tu es un expert rédacteur SEO. Réponds UNIQUEMENT en JSON valide sans backticks, sans preamble.' if is_json else 'Tu es un expert rédacteur SEO. Aucun tiret long (— ou –). Aucun markdown. Réponds uniquement avec le contenu HTML demandé.'
                 _global = keyword_data.get('__global_prompt', '').strip()
                 _persona = keyword_data.get('__persona_prompt', '').strip()
-                _layers = [p for p in [_global, _persona, _base_sys] if p]
+                # ── Anti-hallucination : on force la liste exacte des produits du
+                # classement dans le system prompt. Sans ça, si le user prompt
+                # configuré dans le dashboard ne contient pas {produits},
+                # l'IA invente des noms de logiciels qu'elle "connaît" pour
+                # le thème (ex: cite Pennylane et QuickBooks sur une page
+                # "Expert-comptable en ligne" alors que ce sont des logiciels
+                # de comptabilité).
+                _products_ctx = f"PRODUITS DU CLASSEMENT — utilise EXCLUSIVEMENT ces noms (n'en invente AUCUN autre, ne mentionne AUCUN autre logiciel) :\n{produits_str}" if produits_str else ''
+                _layers = [p for p in [_global, _persona, _products_ctx, _base_sys] if p]
                 sys_prompt = '\n\n'.join(_layers)
                 for attempt in range(3):
                     try:
@@ -781,7 +793,14 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
                             except:
                                 if attempt < 4: time.sleep([5, 15, 30, 60][attempt])
                         else:
-                            result[section_key] = response.strip()
+                            # Strip code fences markdown si l'IA a enveloppé sa réponse :
+                            #   ```html\n<contenu>\n```   ou   ```\n<contenu>\n```
+                            # Bug fréquent qui faisait apparaître les triple-backticks
+                            # bruts dans le HTML rendu (ex: encart En bref).
+                            cleaned = response.strip()
+                            cleaned = _re.sub(r'^```(?:html|HTML|markdown|md)?[ \t]*\n?', '', cleaned)
+                            cleaned = _re.sub(r'\n?[ \t]*```[ \t]*$', '', cleaned)
+                            result[section_key] = cleaned.strip()
                             print("✓"); break
                     except Exception as e:
                         print(f"❌ {e}"); break
