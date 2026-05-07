@@ -724,9 +724,17 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
                 return combined + _words
 
             # Fallbacks si prompt vide
+            # ── en_bref : pas de fallback hardcoded ──────────────────────────
+            # Le prompt vient exclusivement du dashboard /templates/classement-saas
+            # (global_prompt + default_prompts.prompt_en_bref dans le schema, +
+            # éventuel prompt_en_bref custom au niveau du keyword).
+            # Si tout est vide → on skip la génération du en_bref pour ne pas
+            # envoyer un prompt bidon à l'IA. Le check ci-dessous gère aussi le
+            # cas où _combine n'a renvoyé que la contrainte de mots du
+            # word_constraint sans aucun prompt utile.
             _en_bref_prompt = _combine('prompt_en_bref', prompt_en_bref, per_line=True)
-            if not _en_bref_prompt.strip() or _en_bref_prompt.strip().startswith('Génère exactement'):
-                _en_bref_prompt = f'Génère un encart "En bref" pour les meilleurs {cat} en {year}. Format : <ul> avec 5 <li>, chaque item = nom du logiciel + profil cible idéal en 1 phrase. Aucun tiret long.'
+            if _en_bref_prompt.strip().startswith('Génère exactement'):
+                _en_bref_prompt = ''
 
             _intro_prompt = _combine('prompt_intro', prompt_intro)
             if not _intro_prompt.strip():
