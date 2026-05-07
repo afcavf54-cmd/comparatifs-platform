@@ -31,6 +31,13 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     timeout-minutes: 360
+    # Sérialise les pushs sur main : un seul workflow à la fois pousse sur le repo,
+    # pour éviter les courses où 2 workflows lisent le même HEAD puis se rejettent
+    # mutuellement au push (`cannot lock ref 'refs/heads/main'`).
+    # cancel-in-progress: false → on met en file d'attente plutôt qu'annuler le run en cours.
+    concurrency:
+      group: deploy-push-main
+      cancel-in-progress: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -75,10 +82,33 @@ jobs:
           git config user.email "hub@viseoweb.com"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add platform/sites/${{ inputs.site }}/
-          git diff --cached --quiet || git commit -m "Generated: ${{ inputs.site }} [$(date +%Y-%m-%d)]"
-          git fetch origin main
-          git rebase -X theirs origin/main || (git rebase --abort && git push --force-with-lease)
-          git push
+          if git diff --cached --quiet; then
+            echo "Rien à commit, on saute le push"
+            exit 0
+          fi
+          git commit -m "Generated: ${{ inputs.site }} [$(date +%Y-%m-%d)]"
+          # ── Retry loop (5 tentatives) ─────────────────────────────────────
+          # Filet de sécurité : même si concurrency: deploy-push-main sérialise
+          # les workflows GitHub Actions, un push manuel sur main hors workflow
+          # peut encore créer une course. On re-fetch + rebase + retry jusqu'à 5x
+          # avec backoff progressif (5s, 10s, 15s, 20s, 25s).
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if ! git rebase -X theirs origin/main; then
+              git rebase --abort || true
+              echo "❌ Rebase impossible — abandon"
+              exit 1
+            fi
+            if git push 2>&1 | tee /tmp/push.log; then
+              echo "✓ Push réussi (tentative $attempt)"
+              exit 0
+            fi
+            echo "⚠ Push rejeté (tentative $attempt) :"
+            cat /tmp/push.log
+            sleep $((attempt * 5))
+          done
+          echo "❌ Push échoué après 5 tentatives — un autre workflow / commit pousse en boucle"
+          exit 1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy to Cloudflare Pages
