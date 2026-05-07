@@ -22,6 +22,11 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     timeout-minutes: 360
+    # Sérialise les pushs sur main (idem generate-scpi.yml) — un seul workflow à
+    # la fois pousse pour éviter `cannot lock ref 'refs/heads/main'`.
+    concurrency:
+      group: deploy-push-main
+      cancel-in-progress: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -54,9 +59,30 @@ jobs:
           git config user.email "hub@viseoweb.com"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add platform/sites/${{ inputs.site }}/
-          git diff --cached --quiet || git commit -m "Generated: ${{ inputs.site }} [$(date +%Y-%m-%d)]"
-          git pull --rebase origin main
-          git push
+          if git diff --cached --quiet; then
+            echo "Rien à commit, on saute le push"
+            exit 0
+          fi
+          git commit -m "Generated: ${{ inputs.site }} [$(date +%Y-%m-%d)]"
+          # ── Retry loop (5 tentatives) ─────────────────────────────────────
+          # Filet de sécurité contre les pushs concurrents (cf generate-scpi.yml).
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if ! git rebase -X theirs origin/main; then
+              git rebase --abort || true
+              echo "❌ Rebase impossible — abandon"
+              exit 1
+            fi
+            if git push 2>&1 | tee /tmp/push.log; then
+              echo "✓ Push réussi (tentative $attempt)"
+              exit 0
+            fi
+            echo "⚠ Push rejeté (tentative $attempt) :"
+            cat /tmp/push.log
+            sleep $((attempt * 5))
+          done
+          echo "❌ Push échoué après 5 tentatives"
+          exit 1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
