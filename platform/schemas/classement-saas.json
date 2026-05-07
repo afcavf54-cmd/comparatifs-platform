@@ -3509,7 +3509,7 @@
       "words_max": 150
     },
     "prompt_contenu": {
-      "text": "Tu rédiges une section pédagogique sur : {theme}\n\n\n🎯 Objectif :\n- expliquer clairement ce type de logiciel\n- aider le lecteur à comprendre ses besoins\n\n📌 Idées Sections à inclure, mais tu dois en ajouter d'autres rendre le texte unique :\n\n1. Qu’est-ce que {theme} ?\n2. À qui s’adresse {theme} ?\n3. Quels sont les critères de choix {theme} ?\n4. Combien ça coûte {theme}?\n5. Erreurs à éviter {theme}\n\n📌 Consignes :\n\n- ton adapté au persona\n- exemples concrets\n- vulgarisation si nécessaire\n\n📌 SEO :\n- répondre à plusieurs intentions\n\n❌ À éviter :\n- contenu trop académique\n- répétition du classement",
+      "text": "Tu rédiges une section pédagogique sur : {theme}\n\n\n🎯 Objectif :\n- expliquer clairement ce type de logiciel\n- aider le lecteur à comprendre ses besoins\n\n📌 Idées Sections à inclure, mais tu dois en ajouter d'autres rendre le texte unique (pense à ajouter une structuration Hn aux titre que tu ajoutes) :\n\n1. Qu’est-ce que {theme} ?\n2. À qui s’adresse {theme} ?\n3. Quels sont les critères de choix {theme} ?\n4. Combien ça coûte {theme}?\n5. Erreurs à éviter {theme}\n\n📌 Consignes :\n\n- ton adapté au persona\n- exemples concrets\n- vulgarisation si nécessaire\n\n📌 SEO :\n- répondre à plusieurs intentions\n\n❌ À éviter :\n- contenu trop académique\n- répétition du classement",
       "words_min": 800,
       "words_max": 2000
     },
