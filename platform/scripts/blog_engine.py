@@ -128,7 +128,9 @@ def _parse_anchor_line(line: str) -> dict | None:
 
 
 def _parse_date(date_str: str | _dt.datetime) -> _dt.datetime:
-    """Tolère '2026-05-15', '2026-05-15T09:00', '2026-05-15T09:00:00', objet datetime, ou vide."""
+    """Tolère '2026-05-15', '2026-05-15T09:00', '2026-05-15T09:00:00',
+    '2026-05-15T09:00:00.123456' (microsecondes), '2026-05-15T09:00:00+02:00'
+    (timezone), objet datetime, ou vide."""
     if isinstance(date_str, _dt.datetime):
         return date_str
     if isinstance(date_str, _dt.date):
@@ -136,6 +138,18 @@ def _parse_date(date_str: str | _dt.datetime) -> _dt.datetime:
     s = str(date_str or '').strip()
     if not s:
         return _dt.datetime.min
+    # fromisoformat accepte les microsecondes et les timezones (3.11+). On
+    # neutralise le 'Z' final (UTC) qu'il ne supporte qu'en 3.11+.
+    try:
+        s_norm = s.replace('Z', '+00:00')
+        d = _dt.datetime.fromisoformat(s_norm)
+        # On normalise en naive datetime (sans timezone) pour comparer
+        # avec datetime.now() qui est naive.
+        if d.tzinfo is not None:
+            d = d.replace(tzinfo=None)
+        return d
+    except (ValueError, TypeError):
+        pass
     for fmt in ('%Y-%m-%dT%H:%M:%S', '%Y-%m-%dT%H:%M', '%Y-%m-%d %H:%M:%S',
                 '%Y-%m-%d %H:%M', '%Y-%m-%d'):
         try:
@@ -413,6 +427,10 @@ def _find_anchor_outside_tags(html: str, anchor: str) -> tuple[int, int] | None:
     for m in re.finditer(r'<[^>]+>', html):
         forbidden.append((m.start(), m.end()))
     for m in re.finditer(r'<a\b[^>]*>.*?</a>', html, flags=re.DOTALL | re.IGNORECASE):
+        forbidden.append((m.start(), m.end()))
+    # Exclure aussi l'intérieur des titres h1-h6 : les liens internes ne
+    # doivent jamais "salir" un titre (mauvais SEO et mauvaise UX).
+    for m in re.finditer(r'<h[1-6]\b[^>]*>.*?</h[1-6]\s*>', html, flags=re.DOTALL | re.IGNORECASE):
         forbidden.append((m.start(), m.end()))
 
     # Word boundary classique. Pour les ancres qui finissent par un caractère
