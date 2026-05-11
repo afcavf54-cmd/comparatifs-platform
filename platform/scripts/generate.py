@@ -725,6 +725,26 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                         blog_expected.add(f"{slug}.html")
                 for cat in blog_categories:
                     blog_expected.add(f"{cat['slug']}.html")
+                # ── Enrichissement des posts (excerpt, date_display, reading_time)
+                # On le fait ICI pour que la home puisse utiliser ces champs
+                # dans la section "Articles récents". L'enrichissement est
+                # idempotent (réutilisé tel quel par les autres renders blog).
+                import datetime as _dt_blog
+                _months_fr = ['', 'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+                              'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+                def _fmt_date_fr(d):
+                    if not isinstance(d, _dt_blog.datetime) or d == _dt_blog.datetime.min:
+                        return ''
+                    return f"{d.day} {_months_fr[d.month]} {d.year}"
+                def _reading_time(md_content):
+                    words = len((md_content or '').split())
+                    return max(1, round(words / 200))
+                for post in blog_posts:
+                    post['excerpt'] = blog_engine.excerpt_from_md(post.get('content_md', ''))
+                    post['date_display'] = _fmt_date_fr(post.get('date_obj'))
+                    post['reading_time'] = _reading_time(post.get('content_md', ''))
+                    if post.get('categorie'):
+                        post['categorie_slug'] = blog_engine.categorie_slug(post['categorie'])
         # Charger author_* depuis config.yaml → toujours dans site, utile
         # pour le blog (et harmonisé avec site_with_author des classements).
         # NOTE : on OVERRIDE volontairement les éventuels champs legacy
@@ -877,6 +897,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 top_pairs=top_pairs, build_date=date.today().isoformat(),
                 site_editorial=site_editorial,
                 page_types=config.get("page_types", {}),
+                recent_blog_posts=blog_posts[:6] if blog_posts else [],
                 home_title=home_title, home_description=home_desc, home_h1=site.get('home_h1', ''),
             )
             # Cache-buster pour forcer Cloudflare à re-uploader
@@ -1229,26 +1250,6 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     # le site a un dossier blog/posts/ avec au moins un article publié
     # (chargé plus haut dans `blog_posts`).
     if not dry_run and blog_posts and blog_engine is not None:
-        import datetime as _dt_blog
-        # Helper : format date FR "15 mai 2026"
-        _months_fr = ['', 'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
-                      'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
-        def _fmt_date_fr(d):
-            if not isinstance(d, _dt_blog.datetime) or d == _dt_blog.datetime.min:
-                return ''
-            return f"{d.day} {_months_fr[d.month]} {d.year}"
-        # Helper : temps de lecture (200 mots/min)
-        def _reading_time(md_content):
-            words = len((md_content or '').split())
-            return max(1, round(words / 200))
-        # Enrichir chaque post (excerpt, date_display, reading_time, categorie_slug)
-        for post in blog_posts:
-            post['excerpt'] = blog_engine.excerpt_from_md(post.get('content_md', ''))
-            post['date_display'] = _fmt_date_fr(post.get('date_obj'))
-            post['reading_time'] = _reading_time(post.get('content_md', ''))
-            if post.get('categorie'):
-                post['categorie_slug'] = blog_engine.categorie_slug(post['categorie'])
-
         # SEO params depuis le config seo: ou défauts
         _seo = config.get('seo', {})
         blog_title = _seo.get('blog_title') or f"Blog | {site.get('name', '')}"
