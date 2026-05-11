@@ -1265,6 +1265,8 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     site={**site, "seo": _seo}, theme=theme,
                     page_types=config.get("page_types", {}),
                     post=post, related_posts=related,
+                    blog_categories=blog_categories,
+                    all_posts=blog_posts,
                 )
                 (output_dir / f"{slug}.html").write_text(html, encoding="utf-8")
             print(f"  ✓ {len(blog_posts)} articles de blog générés")
