@@ -1,14 +1,14 @@
 ---
 title: Pappers, le site parfait pour la recherche d'entreprise ?
 slug: 4929-pappers-le-site-parfait-pour-la-recherche-d-entreprise
-date: 2026-05-11T11:31:20
+date: 2026-05-11 11:31:20
 categorie: Entreprenariat
 meta_title: Pappers, le site parfait pour la recherche d'entreprise ?
-meta_description: ""
-featured_image: ""
+meta_description: ''
+featured_image: ''
 status: published
+related_posts: []
 ---
-
 <h2>Mon expérience avec Pappers : un outil vraiment pratique</h2>
 
 <p>Je cherchais un moyen rapide de vérifier les informations de mes prospects et partenaires. <strong>Pappers</strong> m'a été recommandé par un collègue dirigeant. Après 6 mois d'utilisation, je peux vous dire que c'est devenu mon réflexe quotidien pour la recherche d'entreprise.</p>
