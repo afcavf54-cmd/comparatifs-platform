@@ -395,7 +395,7 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         fm = {
             "title": title,
             "slug": slug,
-            "date": pub_dt.isoformat(),
+            "date": pub_dt.replace(microsecond=0).isoformat(),
             "categorie": categorie,
             "meta_title": row.get("meta_title", "").strip() or title,
             "meta_description": meta_desc_raw,
