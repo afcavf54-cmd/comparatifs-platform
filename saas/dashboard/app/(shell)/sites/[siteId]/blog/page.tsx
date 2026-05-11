@@ -81,7 +81,7 @@ export default function BlogListPage() {
     }
     try {
       const r = await fetch(`/api/sites/${siteId}/config`, {
-        method: 'PUT', headers: { 'Content-Type': 'application/json' },
+        method: 'PATCH', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ blog_sheet_csv_url: urlToSave }),
       })
       const data = await r.json().catch(() => ({}))
