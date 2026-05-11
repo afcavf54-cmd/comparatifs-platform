@@ -25,7 +25,7 @@ const empty: PostData = {
   title: '', slug: '', date: '', categorie: '',
   meta_title: '', meta_description: '', featured_image: '',
   status: 'draft', content_md: '',
-  min_words: 800,
+  min_words: 750,
   link_anchors: [],
 }
 
@@ -45,7 +45,7 @@ export default function BlogEditPage() {
   // genMinWords est synchronisé avec post.min_words (champ persistant de l'article).
   // Si l'utilisateur modifie le min_words dans la modale et clique Générer, on
   // met à jour post.min_words pour que le réglage soit conservé au save.
-  const [genMinWords, setGenMinWords] = useState(800)
+  const [genMinWords, setGenMinWords] = useState(750)
   const [showSchedule, setShowSchedule] = useState(false)
   const [scheduleDate, setScheduleDate] = useState('')
   const [scheduleTime, setScheduleTime] = useState('09:00')
@@ -73,7 +73,7 @@ export default function BlogEditPage() {
           }
           setPost({ ...empty, ...data.post, content_md: content })
           // Sync le réglage min_words avec celui stocké dans l'article
-          // (sinon on garderait la valeur par défaut 800 même si l'article
+          // (sinon on garderait la valeur par défaut 750 même si l'article
           // a été sauvegardé avec une valeur différente).
           if (data.post.min_words && Number(data.post.min_words) > 0) {
             setGenMinWords(Number(data.post.min_words))
@@ -360,7 +360,7 @@ export default function BlogEditPage() {
             <input type="number" min={300} max={3000} step={100}
               value={genMinWords}
               onChange={e => {
-                const v = Math.max(300, Math.min(3000, parseInt(e.target.value, 10) || 800))
+                const v = Math.max(300, Math.min(3000, parseInt(e.target.value, 10) || 750))
                 setGenMinWords(v)
                 update('min_words', v)
               }}
@@ -459,7 +459,7 @@ export default function BlogEditPage() {
           </div>
           <Field label="Nombre de mots minimum">
             <input type="number" min={300} max={3000} step={100} value={genMinWords}
-              onChange={e => setGenMinWords(Math.max(300, parseInt(e.target.value, 10) || 800))}
+              onChange={e => setGenMinWords(Math.max(300, parseInt(e.target.value, 10) || 750))}
               style={{ ...input, maxWidth: 160 }} />
           </Field>
           <div style={{ marginTop: 14 }}>
