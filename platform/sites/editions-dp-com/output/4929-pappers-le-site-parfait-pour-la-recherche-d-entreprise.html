@@ -114,12 +114,7 @@ a:hover{text-decoration:underline}
 .related-card-title{font-size:15px;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:6px}
 .related-card-excerpt{font-size:13px;color:var(--ink3);line-height:1.5}
 @media(max-width:600px){.related-grid{grid-template-columns:1fr}}
-/* Footer simple */
-footer{margin-top:80px;padding:32px 0;border-top:1px solid var(--border);background:var(--surface)}
-.footer-inner{max-width:1180px;margin:0 auto;padding:0 5vw;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--ink3)}
-.footer-links{display:flex;gap:16px;flex-wrap:wrap}
-.footer-links a{color:var(--ink3)}
-.footer-links a:hover{color:var(--accent)}
+/* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
 @media(max-width:960px){
   .article-layout{grid-template-columns:1fr;gap:32px}
   .article-sidebar{position:static}
@@ -283,11 +278,11 @@ Non, comptabilisés dans votre quota mensuel. Un export PDF = une recherche cons
   </div>
 
   <div class="author-box">
-    <div class="author-avatar-placeholder">👤</div>
+    <img src="/author-photo.png" alt="Camille Simon" class="author-avatar">
     <div class="author-info">
       <div class="author-label">Auteur</div>
       <div class="author-name">Camille Simon</div>
-    </div>
+<div class="author-job">Dirigeant TPE</div><div class="author-bio">Vincent Bernard dirige sa TPE depuis 6 ans à Strasbourg, où il accompagne le développement de son équipe avec pragmatisme et bienveillance. Fort de son expérience entrepreneuriale, il privilégie une approche humaine et des solutions concrètes pour faire grandir son entreprise au quotidien.</div>    </div>
   </div>
 
   </div><!-- /.article-main -->
