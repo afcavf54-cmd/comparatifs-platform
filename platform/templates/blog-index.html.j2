@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+{% if site.favicon_file is defined and site.favicon_file %}
+<link rel="icon" href="{{ site.favicon_file }}">
+{% else %}
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{% endif %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ blog_title }}</title>
+<meta name="description" content="{{ blog_meta }}">
+<link rel="canonical" href="{{ site.domain }}/blog">
+<meta property="og:title" content="{{ blog_title }}">
+<meta property="og:description" content="{{ blog_meta }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.domain }}/blog">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:{{ theme.bg | default('#FAF9F6') }};--surface:{{ theme.surface | default('#fff') }};--surface2:{{ theme.surface2 | default('#F5F3EE') }};
+  --ink:{{ theme.ink | default('#0F1419') }};--ink2:{{ theme.ink2 | default('#3D434B') }};--ink3:{{ theme.ink3 | default('#8B9CB0') }};
+  --accent:{{ theme.accent | default('#C9A961') }};--accent2:{{ theme.accent2 | default('#1E5F8B') }};--green:{{ theme.green | default('#3D7A4F') }};
+  --border:{{ theme.border | default('#E6E1D8') }};--r:8px;--r2:14px;
+  {% if theme.cta_color %}--cta:{{ theme.cta_color }};{% endif %}{% if theme.cta_text_color %}--cta-text:{{ theme.cta_text_color }};{% endif %}
+}
+body{font-family:'{{ theme.font_body }}',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+a{color:var(--accent2);text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 5vw}
+.blog-header{padding:64px 0 32px;text-align:center}
+.blog-title{font-family:'{{ theme.font_title }}',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:16px}
+.blog-sub{font-size:18px;color:var(--ink3);max-width:600px;margin:0 auto}
+.blog-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:32px 0 40px}
+.blog-filter{font-size:13px;font-weight:600;color:var(--ink2);padding:8px 16px;border-radius:24px;border:1px solid var(--border);background:var(--surface);transition:.15s;cursor:pointer}
+.blog-filter:hover,.blog-filter.active{color:var(--accent);border-color:var(--accent)}
+.blog-filter-count{font-size:11px;color:var(--ink3);margin-left:4px}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px}
+.blog-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;text-decoration:none;transition:.2s;display:flex;flex-direction:column}
+.blog-card:hover{border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.06);transform:translateY(-2px);text-decoration:none}
+.blog-card-img{aspect-ratio:16/9;background:var(--surface2);overflow:hidden}
+.blog-card-img img{width:100%;height:100%;object-fit:cover}
+.blog-card-img-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--surface2) 0%,var(--bg) 100%);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:48px}
+.blog-card-body{padding:20px 22px 24px;flex:1;display:flex;flex-direction:column}
+.blog-card-cat{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:10px;align-self:flex-start}
+.blog-card-title{font-family:'{{ theme.font_title }}',serif;font-size:20px;font-weight:400;line-height:1.3;color:var(--ink);margin-bottom:10px;letter-spacing:-.01em}
+.blog-card-excerpt{font-size:14px;color:var(--ink3);line-height:1.55;margin-bottom:16px;flex:1}
+.blog-card-meta{font-size:12px;color:var(--ink3);margin-top:auto}
+.blog-empty{text-align:center;padding:80px 0;color:var(--ink3);font-size:16px}
+footer{margin-top:80px;padding:32px 0;border-top:1px solid var(--border);background:var(--surface)}
+.footer-inner{max-width:1100px;margin:0 auto;padding:0 5vw;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--ink3)}
+.footer-links{display:flex;gap:16px;flex-wrap:wrap}
+.footer-links a{color:var(--ink3)}
+@media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.blog-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+</style>
+{% if site.google_site_verification is defined and site.google_site_verification %}
+<meta name="google-site-verification" content="{{ site.google_site_verification }}">
+{% endif %}
+{% if site.analytics_clicky is defined and site.analytics_clicky %}
+{% if '<script' in site.analytics_clicky %}
+{{ site.analytics_clicky | safe }}
+{% else %}
+<script async data-id="{{ site.analytics_clicky }}" src="//static.getclicky.com/js"></script>
+{% endif %}
+{% endif %}
+</head>
+<body>
+
+{% include 'base/_nav.html.j2' %}
+
+<header class="container">
+  <div class="blog-header">
+    <h1 class="blog-title">{{ blog_h1 }}</h1>
+    {% if blog_intro %}<p class="blog-sub">{{ blog_intro }}</p>{% endif %}
+  </div>
+  {% if categories and categories | length > 1 %}
+  <div class="blog-filters">
+    <a class="blog-filter active" href="/blog">Tous <span class="blog-filter-count">({{ posts | length }})</span></a>
+    {% for cat in categories %}
+    <a class="blog-filter" href="/{{ cat.slug }}">{{ cat.name }} <span class="blog-filter-count">({{ cat.count }})</span></a>
+    {% endfor %}
+  </div>
+  {% endif %}
+</header>
+
+<main class="container">
+  {% if posts %}
+  <div class="blog-grid">
+    {% for post in posts %}
+    <a href="/{{ post.slug }}" class="blog-card">
+      <div class="blog-card-img">
+        {% if post.featured_image %}
+        <img src="{{ post.featured_image }}" alt="{{ post.title }}" loading="lazy">
+        {% else %}
+        <div class="blog-card-img-placeholder">📰</div>
+        {% endif %}
+      </div>
+      <div class="blog-card-body">
+        {% if post.categorie %}<span class="blog-card-cat">{{ post.categorie }}</span>{% endif %}
+        <h2 class="blog-card-title">{{ post.title }}</h2>
+        {% if post.excerpt %}<p class="blog-card-excerpt">{{ post.excerpt }}</p>{% endif %}
+        {% if post.date_display %}<div class="blog-card-meta">{{ post.date_display }}</div>{% endif %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="blog-empty">Aucun article pour le moment.</div>
+  {% endif %}
+</main>
+
+{% include 'base/_footer.html.j2' ignore missing %}
+
+</body>
+</html>
