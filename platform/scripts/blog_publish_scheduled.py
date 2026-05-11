@@ -288,8 +288,21 @@ def write_post(filepath: Path, fm: dict, body: str) -> None:
 
 # ─── Traitement d'un site ────────────────────────────────────────────────
 
+def get_config_value(config: dict, key: str):
+    """Cherche une clé dans le YAML : top-level OU imbriquée 1 niveau dans
+    une section dict. Tolérance utile car `blog_sheet_csv_url` peut être
+    placée par le dashboard soit au top-level, soit dans `site:`, soit
+    accidentellement dans une autre section selon l'historique d'édition."""
+    if key in config:
+        return config[key]
+    for k, v in (config or {}).items():
+        if isinstance(v, dict) and key in v:
+            return v[key]
+    return None
+
+
 def process_site(site_id: str, site_dir: Path, config: dict) -> int:
-    blog_sheet_url = (config.get("blog_sheet_csv_url") or "").strip()
+    blog_sheet_url = (get_config_value(config, "blog_sheet_csv_url") or "").strip()
     if not blog_sheet_url:
         return 0
 
