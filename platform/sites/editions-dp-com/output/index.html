@@ -105,6 +105,25 @@ main{max-width:1200px;margin:0 auto;padding:64px 5vw 80px}
 /* ── COMPARATEURS ── */
 .comparateurs-section{margin-bottom:56px}
 .comparateurs-section h2{font-family:'',serif;font-size:clamp(28px,3.5vw,40px);font-weight:400;letter-spacing:-.02em;margin-bottom:6px}
+/* Section Articles récents (blog) */
+.blog-recent-section{margin:64px 0 80px}
+.blog-recent-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+.blog-recent-head h2{font-family:'',serif;font-size:clamp(26px,3.2vw,36px);font-weight:400;letter-spacing:-.02em;margin:0}
+.blog-recent-head .blog-recent-link{color:var(--accent);font-size:14px;font-weight:600;text-decoration:none;transition:.15s}
+.blog-recent-head .blog-recent-link:hover{opacity:.7}
+.blog-recent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.blog-recent-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:.18s;display:flex;flex-direction:column}
+.blog-recent-card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.06);text-decoration:none}
+.blog-recent-card-img{aspect-ratio:16/9;background:linear-gradient(135deg,var(--accent),var(--accent2));position:relative;overflow:hidden}
+.blog-recent-card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.blog-recent-card-img-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:40px;opacity:.4}
+.blog-recent-card-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.blog-recent-card-cat{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:8px}
+.blog-recent-card-title{font-size:16px;font-weight:600;color:var(--ink);line-height:1.35;margin-bottom:8px}
+.blog-recent-card-excerpt{font-size:13px;color:var(--ink2);line-height:1.55;flex:1}
+.blog-recent-card-date{font-size:11px;color:var(--ink3);margin-top:12px}
+@media(max-width:900px){.blog-recent-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.blog-recent-grid{grid-template-columns:1fr}}
 .comparateurs-subtitle{font-size:16px;color:var(--ink2);margin-bottom:36px}
 .cat-group{margin-bottom:36px}
 .cat-group-title{font-size:13px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;display:flex;align-items:center;gap:8px}
@@ -556,7 +575,30 @@ document.addEventListener('click',function(e){
 
   </section>
 
-
+  <section class="blog-recent-section">
+    <div class="blog-recent-head">
+      <h2>Articles récents</h2>
+      <a href="/blog" class="blog-recent-link">Voir tous les articles →</a>
+    </div>
+    <div class="blog-recent-grid">
+      <a href="/4929-pappers-le-site-parfait-pour-la-recherche-d-entreprise" class="blog-recent-card">
+        <div class="blog-recent-card-img">
+            <img src="/blog/4929-pappers-le-site-parfait-pour-la-recherche-d-entreprise/featured-77375.png" alt="Pappers, le site parfait pour la recherche d'entreprise ?" loading="lazy">
+        </div>
+        <div class="blog-recent-card-body">
+<div class="blog-recent-card-cat">Entreprenariat</div>          <div class="blog-recent-card-title">Pappers, le site parfait pour la recherche d'entreprise ?</div>
+<div class="blog-recent-card-excerpt">Mon expérience avec Pappers : un outil vraiment pratique Je cherchais un moyen rapide de vérifier les informations de mes prospects et partenaires. Pappers m'a été recommandé par…</div><div class="blog-recent-card-date">📅 11 mai 2026</div>        </div>
+      </a>
+      <a href="/4287-comment-choisir-logiciel-paie-2026" class="blog-recent-card">
+        <div class="blog-recent-card-img">
+            <div class="blog-recent-card-img-placeholder">📄</div>
+        </div>
+        <div class="blog-recent-card-body">
+<div class="blog-recent-card-cat">Paie</div>          <div class="blog-recent-card-title">Comment bien choisir son logiciel de paie en 2026</div>
+<div class="blog-recent-card-excerpt">Comment bien choisir son logiciel de paie en 2026 Le choix d'un logiciel de paie est une décision stratégique pour toute entreprise. Voici les critères qui comptent vraiment. Les…</div><div class="blog-recent-card-date">📅 10 mai 2026</div>        </div>
+      </a>
+    </div>
+  </section>
 
 </main>
 

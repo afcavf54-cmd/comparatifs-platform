@@ -52,7 +52,7 @@ a{color:var(--accent2);text-decoration:none}
 a:hover{text-decoration:underline}
 .container{max-width:1180px;margin:0 auto;padding:0 5vw}
 .article-layout{display:grid;grid-template-columns:1fr 280px;gap:48px;align-items:start}
-.article-main{min-width:0}
+.article-main{min-width:0;padding-bottom:80px}
 .article-sidebar{position:sticky;top:88px}
 .sidebar-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px 22px;margin-bottom:20px}
 .sidebar-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin:0 0 14px}
@@ -74,7 +74,8 @@ a:hover{text-decoration:underline}
 .breadcrumb{font-size:13px;color:var(--ink3);margin-bottom:16px}
 .breadcrumb a{color:var(--ink3)}
 .breadcrumb a:hover{color:var(--accent)}
-.article-cat{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);background:var(--surface2);padding:6px 12px;border-radius:20px;margin-bottom:16px}
+.article-cat{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);background:var(--surface2);padding:4px 10px;border-radius:20px;text-decoration:none;transition:.15s}
+.article-cat:hover{background:var(--accent);color:#fff;text-decoration:none}
 .article-title{font-family:'',serif;font-size:clamp(28px,5vw,48px);font-weight:400;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin-bottom:16px}
 .article-meta{font-size:14px;color:var(--ink3);margin-bottom:32px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .article-meta-item{display:inline-flex;align-items:center;gap:6px}
@@ -184,9 +185,9 @@ document.addEventListener('click',function(e){
     <div class="breadcrumb">
       <a href="/">Accueil</a> &rsaquo; <a href="/blog">Blog</a>
  &rsaquo; <a href="/categorie-entreprenariat">Entreprenariat</a>    </div>
-<span class="article-cat">Entreprenariat</span>    <h1 class="article-title">Pappers, le site parfait pour la recherche d'entreprise ?</h1>
+    <h1 class="article-title">Pappers, le site parfait pour la recherche d'entreprise ?</h1>
     <div class="article-meta">
-<span class="article-meta-item">📅 11 mai 2026</span><span class="article-meta-dot"></span><span class="article-meta-item">⏱ 3 min de lecture</span><span class="article-meta-dot"></span>      <span class="article-meta-item">✍️ Pierre Petit</span>
+<a href="/categorie-entreprenariat" class="article-cat">Entreprenariat</a><span class="article-meta-dot"></span><span class="article-meta-item">📅 11 mai 2026</span><span class="article-meta-dot"></span><span class="article-meta-item">⏱ 3 min de lecture</span><span class="article-meta-dot"></span>      <span class="article-meta-item">✍️ Pierre Petit</span>
     </div>
   </header>
 
