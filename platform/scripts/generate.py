@@ -21,6 +21,13 @@ from pathlib import Path
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
+# ── Blog engine (markdown + frontmatter) ─────────────────────────────────────
+try:
+    sys.path.insert(0, str(Path(__file__).parent))
+    import blog_engine
+except ImportError:
+    blog_engine = None  # Le blog est optionnel, ignore si absent
+
 # ── Chemins ───────────────────────────────────────────────────────────────────
 ROOT          = Path(__file__).parent.parent
 TEMPLATES_DIR = ROOT / "templates"
@@ -372,6 +379,22 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, 
         for slug_a, slug_b in pairs:
             lines.append(url(f"{domain}/{slug_a}-vs-{slug_b}", "0.8", "monthly"))
 
+    # Pages blog (si dossier blog/posts/ présent avec articles publiés)
+    blog_posts_for_sitemap = []
+    if blog_engine is not None:
+        try:
+            blog_posts_for_sitemap = blog_engine.load_all_posts(site_dir, include_drafts=False)
+        except Exception:
+            blog_posts_for_sitemap = []
+        if blog_posts_for_sitemap:
+            lines.append(url(f"{domain}/blog", "0.9", "weekly"))
+            for cat in blog_engine.collect_categories(blog_posts_for_sitemap):
+                lines.append(url(f"{domain}/{cat['slug']}", "0.7", "weekly"))
+            for post in blog_posts_for_sitemap:
+                slug = post.get('slug', '')
+                if slug:
+                    lines.append(url(f"{domain}/{slug}", "0.8", "monthly"))
+
     lines += [
         url(f"{domain}/mentions-legales", "0.3", "yearly"),
         url(f"{domain}/politique-confidentialite", "0.3", "yearly"),
@@ -382,7 +405,7 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, 
     print(f"  ✓ sitemap.xml ({len(pairs)} comparatifs + {len(products)} avis + pages liste)")
 
 
-def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, all_pairs: list, is_classement_template: bool = False) -> None:
+def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, all_pairs: list, is_classement_template: bool = False, blog_expected: set | None = None) -> None:
     """Supprime les fichiers HTML et entrées editorial.json des produits supprimés."""
     current_slugs = {p["slug"] for p in products}
 
@@ -392,6 +415,13 @@ def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, a
     expected_files.add("sitemap.xml")
     expected_files.add("_redirects")
     expected_files.add("sheets.js")
+    # ── Blog : ajouter les pages attendues à expected_files ────────────────
+    # `blog_expected` est passé en paramètre par generate_site() qui a fait le
+    # load. Si présent, ses fichiers .html ne seront pas supprimés comme
+    # orphelins. Évite le double appel à blog_engine.load_all_posts.
+    if blog_expected:
+        expected_files |= blog_expected
+
     expected_files.add("favicon.svg")
     expected_files.add("favicon.png")
     expected_files.add("favicon.ico")
@@ -667,7 +697,29 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
 
     if not dry_run:
         generate_sitemap(site, all_pairs, products, output_dir, config=config)
-        cleanup_removed_products(output_dir, site_dir, products, all_pairs, is_classement_template)
+        # ── Blog : chargement des articles avant le cleanup ──────────────
+        # On marque les pages attendues du blog pour qu'elles ne soient pas
+        # supprimées par cleanup_removed_products.
+        blog_posts = []
+        blog_categories = []
+        blog_expected: set = set()
+        if blog_engine is not None:
+            try:
+                blog_posts = blog_engine.load_all_posts(site_dir, include_drafts=False)
+            except Exception as _e:
+                print(f"  ⚠ Blog : erreur chargement posts : {_e}")
+                blog_posts = []
+            if blog_posts:
+                site["has_blog"] = True
+                blog_categories = blog_engine.collect_categories(blog_posts)
+                blog_expected.add("blog.html")
+                for post in blog_posts:
+                    slug = post.get('slug', '')
+                    if slug:
+                        blog_expected.add(f"{slug}.html")
+                for cat in blog_categories:
+                    blog_expected.add(f"{cat['slug']}.html")
+        cleanup_removed_products(output_dir, site_dir, products, all_pairs, is_classement_template, blog_expected=blog_expected)
 
     # Pour les sites classement : écraser les anciennes pages avis SCPI avec la 404 actuelle
     if is_classement_template:
@@ -1135,6 +1187,87 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             )
             (output_dir / "nos-comparateurs.html").write_text(html, encoding="utf-8")
             print(f"  ✓ nos-comparateurs.html")
+
+    # ── Blog : génération des pages ───────────────────────────────────────
+    # Articles individuels + index + pages catégorie. Tournera uniquement si
+    # le site a un dossier blog/posts/ avec au moins un article publié
+    # (chargé plus haut dans `blog_posts`).
+    if not dry_run and blog_posts and blog_engine is not None:
+        import datetime as _dt_blog
+        # Helper : format date FR "15 mai 2026"
+        _months_fr = ['', 'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+                      'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+        def _fmt_date_fr(d):
+            if not isinstance(d, _dt_blog.datetime) or d == _dt_blog.datetime.min:
+                return ''
+            return f"{d.day} {_months_fr[d.month]} {d.year}"
+        # Helper : temps de lecture (200 mots/min)
+        def _reading_time(md_content):
+            words = len((md_content or '').split())
+            return max(1, round(words / 200))
+        # Enrichir chaque post (excerpt, date_display, reading_time, categorie_slug)
+        for post in blog_posts:
+            post['excerpt'] = blog_engine.excerpt_from_md(post.get('content_md', ''))
+            post['date_display'] = _fmt_date_fr(post.get('date_obj'))
+            post['reading_time'] = _reading_time(post.get('content_md', ''))
+            if post.get('categorie'):
+                post['categorie_slug'] = blog_engine.categorie_slug(post['categorie'])
+
+        # SEO params depuis le config seo: ou défauts
+        _seo = config.get('seo', {})
+        blog_title = _seo.get('blog_title') or f"Blog | {site.get('name', '')}"
+        blog_meta = _seo.get('blog_meta') or f"Articles, guides et conseils — {site.get('name', '')}"
+        blog_h1 = _seo.get('blog_h1') or 'Le Blog'
+        blog_intro = _seo.get('blog_intro') or ''
+
+        # 1) Index blog
+        if (TEMPLATES_DIR / "blog-index.html.j2").exists():
+            html = env.get_template("blog-index.html.j2").render(
+                site={**site, "seo": _seo}, theme=theme,
+                page_types=config.get("page_types", {}),
+                posts=blog_posts, categories=blog_categories,
+                blog_title=blog_title, blog_meta=blog_meta,
+                blog_h1=blog_h1, blog_intro=blog_intro,
+            )
+            (output_dir / "blog.html").write_text(html, encoding="utf-8")
+            print(f"  ✓ blog.html (index, {len(blog_posts)} articles)")
+
+            # 2) Pages catégorie (réutilise le template index, filtré)
+            for cat in blog_categories:
+                cat_posts = [p for p in blog_posts
+                             if (p.get('categorie') or '').strip().lower() == cat['name'].lower()]
+                html = env.get_template("blog-index.html.j2").render(
+                    site={**site, "seo": _seo}, theme=theme,
+                    page_types=config.get("page_types", {}),
+                    posts=cat_posts, categories=blog_categories,
+                    blog_title=f"{cat['name']} — Blog | {site.get('name', '')}",
+                    blog_meta=f"Articles {cat['name'].lower()} — {site.get('name', '')}",
+                    blog_h1=cat['name'], blog_intro=f"{cat['count']} article{'s' if cat['count'] > 1 else ''}",
+                )
+                (output_dir / f"{cat['slug']}.html").write_text(html, encoding="utf-8")
+            if blog_categories:
+                print(f"  ✓ {len(blog_categories)} pages catégories blog générées")
+
+        # 3) Articles individuels
+        if (TEMPLATES_DIR / "blog-post.html.j2").exists():
+            tpl_post = env.get_template("blog-post.html.j2")
+            for post in blog_posts:
+                slug = post.get('slug', '')
+                if not slug:
+                    continue
+                # Maillage interne : 4 articles de la même catégorie (figé)
+                related = blog_engine.compute_related_posts(post, blog_posts, n=4)
+                # Enrichir les related avec excerpt si pas déjà fait
+                for rp in related:
+                    if 'excerpt' not in rp:
+                        rp['excerpt'] = blog_engine.excerpt_from_md(rp.get('content_md', ''), 90)
+                html = tpl_post.render(
+                    site={**site, "seo": _seo}, theme=theme,
+                    page_types=config.get("page_types", {}),
+                    post=post, related_posts=related,
+                )
+                (output_dir / f"{slug}.html").write_text(html, encoding="utf-8")
+            print(f"  ✓ {len(blog_posts)} articles de blog générés")
 
     print(f"\n  {'[DRY] ' if dry_run else ''}✅ {generated} pages générées, {skipped} ignorées")
     if not dry_run:
