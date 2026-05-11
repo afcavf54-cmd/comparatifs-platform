@@ -140,6 +140,8 @@ export function addRandomPrefix(slug: string, existingSlugs: Set<string> = new S
 
 export function mdToHtml(md: string): string {
   if (!md) return ''
+  // Si déjà HTML structuré (produit par le RichEditor), pas de double conversion
+  if (/<(p|h[1-6]|ul|ol|div|img|blockquote|figure)\b/i.test(md)) return md
   let text = md
   // Images : ![alt](url)
   text = text.replace(/!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)/g,
