@@ -34,6 +34,7 @@ export default function BlogEditPage() {
   const [loading, setLoading] = useState(!isNew)
   const [saving, setSaving] = useState(false)
   const [msg, setMsg] = useState('')
+  const [existingCategories, setExistingCategories] = useState<string[]>([])
   const [generating, setGenerating] = useState(false)
   const [showGenModal, setShowGenModal] = useState(false)
   const [genPromptCustom, setGenPromptCustom] = useState('')
@@ -65,6 +66,20 @@ export default function BlogEditPage() {
       })
       .finally(() => setLoading(false))
   }, [siteId, postSlug, isNew])
+
+  // Récupère les catégories existantes (pour le datalist du champ catégorie)
+  useEffect(() => {
+    fetch(`/api/sites/${siteId}/blog`)
+      .then(r => r.json())
+      .then(data => {
+        const cats = new Set<string>()
+        for (const p of data.posts || []) {
+          if (p.categorie) cats.add(p.categorie)
+        }
+        setExistingCategories(Array.from(cats).sort())
+      })
+      .catch(() => { /* silencieux */ })
+  }, [siteId])
 
   // Auto-derive slug from title for new posts
   useEffect(() => {
@@ -269,7 +284,17 @@ export default function BlogEditPage() {
             <input type="text" value={post.title} onChange={e => update('title', e.target.value)} style={input} />
           </Field>
           <Field label="Catégorie *">
-            <input type="text" value={post.categorie} onChange={e => update('categorie', e.target.value)} placeholder="Ex: Paie, Compta..." style={input} />
+            <input type="text" list="blog-categories-list" value={post.categorie}
+              onChange={e => update('categorie', e.target.value)}
+              placeholder="Ex: Paie, Compta..." style={input} />
+            <datalist id="blog-categories-list">
+              {existingCategories.map(c => <option key={c} value={c} />)}
+            </datalist>
+            {existingCategories.length > 0 && (
+              <div style={{ fontSize: 10, color: '#4A5568', marginTop: 4 }}>
+                💡 {existingCategories.length} catégorie{existingCategories.length > 1 ? 's' : ''} existante{existingCategories.length > 1 ? 's' : ''} — clique sur le champ pour voir la liste
+              </div>
+            )}
           </Field>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
