@@ -23,7 +23,12 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
   const ref = useRef<HTMLDivElement | null>(null)
   const [showSource, setShowSource] = useState(false)
   const [sourceValue, setSourceValue] = useState(value)
-  const lastEmittedRef = useRef<string>(value)
+  // Sentinel : on initialise à une valeur impossible pour forcer le sync DOM
+  // au premier render même si `value` est déjà non-vide au mount (cas typique
+  // d'un fetch parent qui termine avant que RichEditor monte → si on init
+  // avec `value`, la condition `value !== lastEmittedRef.current` serait fausse
+  // dès le départ et l'éditeur resterait vide visuellement).
+  const lastEmittedRef = useRef<string>('\u0000__INIT__\u0000')
 
   // Sync value → DOM uniquement si le HTML est différent de ce qu'on a émis
   // (évite de reset le curseur à chaque keystroke).
