@@ -69,7 +69,23 @@ def add_random_prefix(slug: str, existing: set[str]) -> str:
 
 
 def fetch_csv(url: str) -> list[dict]:
-    """Télécharge un CSV public et le parse en liste de dicts. Tolère les erreurs réseau."""
+    """Télécharge un CSV public et le parse en liste de dicts. Tolère les erreurs réseau.
+
+    Auto-correction de l'URL : Google Sheets publie soit en /pubhtml (page web)
+    soit en /pub?output=csv (CSV brut). On force vers le format CSV si l'URL
+    est sous la forme /pubhtml."""
+    if not url:
+        return []
+    # /pubhtml → /pub?output=csv
+    if '/pubhtml' in url:
+        url = re.sub(r'/pubhtml(\?[^#]*)?(#.*)?$', '/pub?output=csv', url)
+        print(f"   ℹ URL normalisée → {url[:80]}...")
+    # Si /pub sans output=csv, on l'ajoute
+    elif re.search(r'/pub(\?|$)', url) and 'output=csv' not in url:
+        if '?' in url:
+            url = url + '&output=csv'
+        else:
+            url = url + '?output=csv'
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
         with urllib.request.urlopen(req, timeout=30) as resp:
