@@ -53,8 +53,10 @@ async function loadPrompts(siteId: string): Promise<{ globalPrompt: string; pers
 export async function POST(req: NextRequest, { params }: { params: Promise<{ siteId: string }> }) {
   const { siteId } = await params
   const body = await req.json()
-  const { title, categorie, prompt_custom } = body
+  const { title, categorie, prompt_custom, min_words } = body
   if (!title) return NextResponse.json({ error: 'title requis' }, { status: 400 })
+  const minW = Math.max(300, Math.min(3000, parseInt(min_words, 10) || 800))
+  const maxW = Math.round(minW * 1.5)
 
   const apiKey = process.env.ANTHROPIC_API_KEY
   if (!apiKey) return NextResponse.json({ error: 'ANTHROPIC_API_KEY manquante' }, { status: 500 })
@@ -85,7 +87,7 @@ CONTRAINTES DE FORMAT (impératif) :
 
 Titre : ${title}${catLine}${customLine}
 
-Longueur cible : 800 à 1200 mots. L'article doit être informatif, structuré, et utile au lecteur cible défini dans ton persona.`
+Longueur cible : ${minW} à ${maxW} mots (minimum ${minW} mots impératif). L'article doit être informatif, structuré, et utile au lecteur cible défini dans ton persona.`
 
   // Appel Claude
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
@@ -97,7 +99,7 @@ Longueur cible : 800 à 1200 mots. L'article doit être informatif, structuré, 
     },
     body: JSON.stringify({
       model: 'claude-sonnet-4-20250514',
-      max_tokens: 4000,
+      max_tokens: Math.min(8000, Math.max(2000, maxW * 4)),  // ~1.3 tokens/word + marge HTML
       system: systemPrompt,
       messages: [{ role: 'user', content: userPrompt }],
     }),
