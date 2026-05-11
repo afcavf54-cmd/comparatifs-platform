@@ -53,6 +53,9 @@ export default function BlogEditPage() {
   // Texte affiché dans le textarea des ancres (format "ancre:nombre" par ligne)
   // synchronisé avec post.link_anchors (array de {text, max}) au save.
   const [anchorsText, setAnchorsText] = useState('')
+  // URL publique de l'article (récupérée depuis le domaine du site)
+  // pour ouvrir l'article live dans un nouvel onglet pendant qu'on l'édite.
+  const [publicUrl, setPublicUrl] = useState('')
 
   const fileInputRef = useRef<HTMLInputElement | null>(null)
   const featuredInputRef = useRef<HTMLInputElement | null>(null)
@@ -72,6 +75,11 @@ export default function BlogEditPage() {
             content = mdToHtml(content)
           }
           setPost({ ...empty, ...data.post, content_md: content })
+          // URL publique pour le lien "Voir l'article" en haut de l'éditeur
+          if (data.site?.domain && data.post.slug) {
+            const dom = data.site.domain.replace(/\/$/, '')
+            setPublicUrl(`${dom}/${data.post.slug}`)
+          }
           // Sync le réglage min_words avec celui stocké dans l'article
           // (sinon on garderait la valeur par défaut 750 même si l'article
           // a été sauvegardé avec une valeur différente).
@@ -318,9 +326,23 @@ export default function BlogEditPage() {
         <span style={{ color: '#fff' }}>{isNew ? 'Nouvel article' : post.title || postSlug}</span>
       </div>
 
-      <h1 style={{ color: '#fff', fontSize: 24, fontWeight: 600, margin: '16px 0 24px' }}>
-        {isNew ? '✨ Nouvel article' : '✏️ Édition'}
-      </h1>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '16px 0 24px', gap: 16, flexWrap: 'wrap' }}>
+        <h1 style={{ color: '#fff', fontSize: 24, fontWeight: 600, margin: 0 }}>
+          {isNew ? '✨ Nouvel article' : '✏️ Édition'}
+        </h1>
+        {!isNew && publicUrl && (
+          <a href={publicUrl} target="_blank" rel="noopener noreferrer"
+            style={{
+              padding: '8px 14px', borderRadius: 8,
+              background: 'rgba(0,212,170,.1)', color: '#00D4AA',
+              border: '1px solid #00D4AA', fontSize: 13, fontWeight: 600,
+              textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6,
+            }}
+            title="Ouvrir l'article publié dans un nouvel onglet">
+            🔗 Voir l'article ↗
+          </a>
+        )}
+      </div>
 
       {/* Méta-infos */}
       <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 12, padding: 24, marginBottom: 20 }}>
