@@ -80,6 +80,16 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
     setShowSource(s => !s)
   }
 
+  // Compteur de mots : on extrait le texte brut du HTML et on compte
+  // les groupes de caractères séparés par des espaces.
+  const currentText = (showSource ? sourceValue : value)
+    .replace(/<[^>]+>/g, ' ')          // strip tags
+    .replace(/&nbsp;|&amp;|&lt;|&gt;|&quot;|&#39;/g, ' ')  // entities → space
+    .replace(/\s+/g, ' ')              // collapse whitespace
+    .trim()
+  const wordCount = currentText ? currentText.split(/\s+/).filter(Boolean).length : 0
+  const charCount = currentText.length
+
   return (
     <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 10, overflow: 'hidden' }}>
       {/* Toolbar */}
@@ -143,6 +153,14 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
           className="rich-editor"
         />
       )}
+
+      {/* Footer avec compteur de mots */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                    padding: '8px 16px', background: '#0A0E1A', borderTop: '1px solid #1E2D3D',
+                    fontSize: 11, color: '#8B9CB0' }}>
+        <span>{wordCount} mot{wordCount > 1 ? 's' : ''} · {charCount} caractère{charCount > 1 ? 's' : ''}</span>
+        <span style={{ color: '#4A5568' }}>{showSource ? 'Mode source HTML' : 'Mode édition'}</span>
+      </div>
 
       <style jsx global>{`
         .rich-editor:empty::before {
