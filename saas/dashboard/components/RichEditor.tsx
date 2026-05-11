@@ -174,7 +174,21 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
         .rich-editor p { margin-bottom: 12px; }
         .rich-editor ul, .rich-editor ol { margin: 0 0 12px 24px; }
         .rich-editor li { margin-bottom: 4px; }
-        .rich-editor a { color: #00D4AA; text-decoration: underline; }
+        .rich-editor a {
+          color: #F6AD55;
+          text-decoration: underline;
+          text-decoration-color: #F6AD55;
+          text-decoration-thickness: 2px;
+          text-underline-offset: 3px;
+          font-weight: 600;
+          background: rgba(246,173,85,.1);
+          padding: 0 4px;
+          border-radius: 3px;
+          transition: background .15s ease;
+        }
+        .rich-editor a:hover {
+          background: rgba(246,173,85,.22);
+        }
         .rich-editor strong, .rich-editor b { color: #fff; font-weight: 700; }
         .rich-editor em, .rich-editor i { font-style: italic; }
         .rich-editor blockquote {
