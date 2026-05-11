@@ -130,13 +130,7 @@ footer a{color:rgba(255,255,255,.4)}
 </div>
 <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
 
-<nav>
-  <a href="index.html" class="nav-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></a>
-  <div class="nav-links">
-    <a href="index.html#comparateur">Comparateur</a>
-    <a href="index.html#comparatifs">Tous les comparatifs</a>
-  </div>
-</nav>
+{% include 'base/_nav.html.j2' %}
 
 <div class="crumb">
   <a href="index.html">Accueil</a> ›
