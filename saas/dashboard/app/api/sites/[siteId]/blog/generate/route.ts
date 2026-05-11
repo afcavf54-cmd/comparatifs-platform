@@ -62,16 +62,18 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ sit
   const { globalPrompt, personaPrompt } = await loadPrompts(siteId)
 
   // System prompt en couches : persona + global + base blog
-  const baseSys = `Tu es un rédacteur SEO expérimenté. Tu écris des articles de blog en français, en markdown propre.
+  const baseSys = `Tu es un rédacteur SEO expérimenté. Tu écris des articles de blog en français.
 
 CONTRAINTES DE FORMAT (impératif) :
-- Réponds UNIQUEMENT avec le contenu markdown de l'article, sans préambule, sans backticks de code fence
-- Pas de titre H1 # en début (le titre est déjà géré ailleurs)
-- Structure : 2-4 sous-titres ## H2, parfois ### H3, paragraphes 3-5 lignes
-- Utilise les listes - quand pertinent
+- Réponds UNIQUEMENT avec le contenu HTML de l'article, sans préambule, sans backticks de code fence
+- Format HTML simple : <h2>, <h3>, <p>, <strong>, <em>, <ul>/<li>, <ol>/<li>, <blockquote>, <a href="...">
+- Pas de titre <h1> (le titre est déjà géré ailleurs)
+- Structure : 2-4 sous-titres <h2>, parfois <h3>, paragraphes 3-5 lignes dans des <p>
+- Utilise les listes <ul>/<li> quand pertinent
 - Pas de tirets longs — ni –, utilise des virgules ou points
 - Pas de bullets unicode • ou ·
-- Aucun markdown imbriqué bizarre, juste du basique : **bold**, *italique*, [liens](url), listes, citations >`
+- Pas de markdown ** _ ## etc. : uniquement du HTML
+- Pas de <div>, pas de <span>, pas de classes CSS — du HTML sémantique simple uniquement`
 
   const layers = [personaPrompt, globalPrompt, baseSys].filter(Boolean)
   const systemPrompt = layers.join('\n\n')
