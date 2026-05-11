@@ -109,14 +109,14 @@ def parse_pub_datetime(date_str: str, time_str: str = "09:00") -> datetime | Non
     return d.replace(hour=9)
 
 
-def call_claude(system: str, user: str, retries: int = 3) -> str:
+def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000) -> str:
     """Appelle l'API Anthropic et retourne la réponse texte. Retry avec backoff sur erreurs réseau."""
     if not ANTHROPIC_API_KEY:
         raise RuntimeError("ANTHROPIC_API_KEY manquante")
 
     body = json.dumps({
         "model": CLAUDE_MODEL,
-        "max_tokens": 4000,
+        "max_tokens": max_tokens,
         "system": system,
         "messages": [{"role": "user", "content": user}],
     }).encode("utf-8")
@@ -175,8 +175,10 @@ def load_prompts(site_dir: Path, config: dict) -> tuple[str, str]:
 
 
 def generate_article_html(title: str, categorie: str, prompt_custom: str,
-                           global_prompt: str, persona_prompt: str) -> str:
+                           global_prompt: str, persona_prompt: str,
+                           min_words: int = 800) -> str:
     """Génère le contenu HTML d'un article via Claude (mêmes contraintes que la route /generate)."""
+    max_w = int(min_words * 1.5)
     base_sys = """Tu es un rédacteur SEO expérimenté. Tu écris des articles de blog en français.
 
 CONTRAINTES DE FORMAT (impératif) :
@@ -197,10 +199,30 @@ CONTRAINTES DE FORMAT (impératif) :
     custom_line = f"\n\nConsignes spécifiques :\n{prompt_custom}" if prompt_custom else ""
     user = (f"Rédige un article de blog complet sur le sujet suivant :\n\n"
             f"Titre : {title}{cat_line}{custom_line}\n\n"
-            f"Longueur cible : 800 à 1200 mots. L'article doit être informatif, "
-            f"structuré, et utile au lecteur cible défini dans ton persona.")
+            f"Longueur cible : {min_words} à {max_w} mots (minimum {min_words} mots impératif). "
+            f"L'article doit être informatif, structuré, et utile au lecteur cible défini dans ton persona.")
 
-    return strip_code_fences(call_claude(system, user))
+    return strip_code_fences(call_claude(system, user, max_tokens=min(8000, max(2000, max_w * 4))))
+
+
+def _parse_anchors_csv(raw: str) -> list[dict]:
+    """Parse une chaîne 'pappers:5;plateforme pappers:5;le site pappers:3' en
+    liste de {text, max}. Sépare sur ';' ou newline. Tolère 'ancre x 5' aussi."""
+    import re as _re
+    out = []
+    for line in _re.split(r'[\n;]', raw or ''):
+        s = line.strip()
+        if not s:
+            continue
+        m = _re.match(r'^(.*?)[:\s]\s*(?:x\s*)?(\d+)\s*$', s, _re.IGNORECASE)
+        if m:
+            text = m.group(1).strip().rstrip(':').strip()
+            n = int(m.group(2))
+            if text and n > 0:
+                out.append({'text': text, 'max': n})
+        elif s:
+            out.append({'text': s, 'max': 1})
+    return out
 
 
 # ─── Sérialisation .md (frontmatter YAML + body) ─────────────────────────
@@ -263,12 +285,22 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         manual_slug = row.get("slug", "").strip()
         slug = add_random_prefix(slugify(manual_slug or title), existing_slugs)
 
+        # Paramètres optionnels du CSV
+        min_words = 800
+        try:
+            v = (row.get("nombre_mots_minimum") or row.get("min_words") or "").strip()
+            if v:
+                min_words = max(300, min(3000, int(v)))
+        except (TypeError, ValueError):
+            pass
+        link_anchors_raw = (row.get("link_anchors") or row.get("ancres") or "").strip()
+
         # Génération IA
         categorie = row.get("categorie", "").strip()
         prompt_custom = row.get("prompt_custom", "").strip()
-        print(f"   🤖 Génération '{title[:50]}'...", end=" ", flush=True)
+        print(f"   🤖 Génération '{title[:50]}' (min {min_words} mots)...", end=" ", flush=True)
         try:
-            html = generate_article_html(title, categorie, prompt_custom, global_prompt, persona_prompt)
+            html = generate_article_html(title, categorie, prompt_custom, global_prompt, persona_prompt, min_words=min_words)
             if not html or len(html) < 100:
                 print("⚠ contenu suspect, skip")
                 continue
@@ -287,6 +319,11 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
             "meta_description": row.get("meta_description", "").strip(),
             "status": "published",
         }
+        # Ancres de maillage interne : format CSV "pappers:5;plateforme:3"
+        if link_anchors_raw:
+            anchors_parsed = _parse_anchors_csv(link_anchors_raw)
+            if anchors_parsed:
+                fm["link_anchors"] = anchors_parsed
         write_post(posts_dir / f"{slug}.md", fm, html)
         existing_slugs.add(slug)
         processed.append(key)
