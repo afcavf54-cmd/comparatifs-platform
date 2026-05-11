@@ -174,9 +174,44 @@ def load_prompts(site_dir: Path, config: dict) -> tuple[str, str]:
     return global_prompt, persona
 
 
+def generate_meta_description(title: str, content_html: str) -> str:
+    """Génère une meta description SEO (~150-160 caractères) via Claude à partir
+    du titre + contenu d'un article. Utilisé par le cron quand la cellule
+    meta_description de la sheet est vide.
+
+    Logique identique à la route /generate-meta du dashboard."""
+    # Strip HTML pour donner du texte propre à l'IA
+    plain = re.sub(r'<[^>]+>', ' ', content_html or '')
+    plain = re.sub(r'&nbsp;|&amp;|&lt;|&gt;|&quot;|&#39;', ' ', plain)
+    plain = re.sub(r'\s+', ' ', plain).strip()[:2000]
+
+    system = """Tu es un expert SEO. Tu rédiges des meta descriptions optimisées en français.
+
+CONTRAINTES STRICTES :
+- Réponds UNIQUEMENT avec le texte de la meta description, rien d'autre
+- Pas de guillemets, pas de préambule, pas de balises
+- Longueur : 140 à 160 caractères (idéal pour Google)
+- Style accrocheur, informatif, donne envie de cliquer
+- Inclure idéalement le mot-clé principal du titre
+- Pas de tiret long — ni –
+- Pas de point d'exclamation"""
+
+    user = f"Rédige une meta description SEO pour cet article :\n\nTitre : {title}\n\nContenu (extrait) : {plain[:1500]}"
+
+    try:
+        text = call_claude(system, user, max_tokens=200).strip()
+        text = text.strip('"\'')
+        if len(text) > 165:
+            text = text[:162].rsplit(' ', 1)[0] + '…'
+        return text
+    except Exception as e:
+        print(f"   ⚠ Meta auto : erreur Claude ({e}) — meta laissée vide")
+        return ''
+
+
 def generate_article_html(title: str, categorie: str, prompt_custom: str,
                            global_prompt: str, persona_prompt: str,
-                           min_words: int = 800) -> str:
+                           min_words: int = 750) -> str:
     """Génère le contenu HTML d'un article via Claude (mêmes contraintes que la route /generate)."""
     max_w = int(min_words * 1.5)
     base_sys = """Tu es un rédacteur SEO expérimenté. Tu écris des articles de blog en français.
@@ -296,7 +331,7 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         slug = add_random_prefix(slugify(manual_slug or title), existing_slugs)
 
         # Paramètres optionnels du CSV
-        min_words = 800
+        min_words = 750
         try:
             v = (row.get("nombre_mots_minimum") or row.get("min_words") or "").strip()
             if v:
@@ -320,13 +355,22 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         print("✓")
 
         # Écriture du .md
+        # Meta description : si vide dans la sheet → on appelle Claude pour
+        # en générer une à partir du contenu fraîchement généré
+        meta_desc_raw = row.get("meta_description", "").strip()
+        if not meta_desc_raw:
+            print(f"   ✨ Génération meta description...", end=" ", flush=True)
+            meta_desc_raw = generate_meta_description(title, html)
+            print("✓" if meta_desc_raw else "(vide)")
+
         fm = {
             "title": title,
             "slug": slug,
             "date": pub_dt.isoformat(),
             "categorie": categorie,
             "meta_title": row.get("meta_title", "").strip() or title,
-            "meta_description": row.get("meta_description", "").strip(),
+            "meta_description": meta_desc_raw,
+            "min_words": min_words,
             "status": "published",
         }
         # Ancres de maillage interne : format CSV "pappers:5;plateforme:3"
