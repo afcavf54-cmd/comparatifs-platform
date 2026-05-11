@@ -29,6 +29,7 @@ export interface BlogPostFrontmatter {
   meta_description?: string
   featured_image?: string
   status?: 'published' | 'scheduled' | 'draft'
+  min_words?: number
   related_posts?: string[]
   link_anchors?: { text: string; max: number }[]
 }
@@ -115,7 +116,7 @@ export function serializePost(post: BlogPost): string {
   const ordered: (keyof BlogPostFrontmatter)[] = [
     'title', 'slug', 'date', 'updated', 'categorie',
     'meta_title', 'meta_description', 'featured_image',
-    'status', 'related_posts', 'link_anchors',
+    'status', 'min_words', 'related_posts', 'link_anchors',
   ]
   for (const key of ordered) {
     const val = (post as any)[key]
