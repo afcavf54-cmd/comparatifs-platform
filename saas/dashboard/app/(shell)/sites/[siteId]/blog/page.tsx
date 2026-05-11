@@ -66,16 +66,36 @@ export default function BlogListPage() {
 
   async function saveSheet() {
     setSavingSheet(true); setSheetMsg('')
+    // Normaliser l'URL : Google Sheets publie soit en /pubhtml (page web)
+    // soit en /pub?output=csv (CSV brut). Le script Python a besoin du CSV.
+    // On corrige automatiquement /pubhtml → /pub?output=csv pour éviter
+    // que l'utilisateur ait à choisir le bon format dans Google Sheets.
+    let urlToSave = sheetUrl.trim()
+    if (urlToSave) {
+      // /pubhtml(?...) → /pub?output=csv
+      urlToSave = urlToSave.replace(/\/pubhtml(\?[^#]*)?(#.*)?$/, '/pub?output=csv')
+      // Si l'URL contient déjà /pub mais sans output=csv, on l'ajoute
+      if (/\/pub(\?|$)/.test(urlToSave) && !/output=csv/.test(urlToSave)) {
+        urlToSave = urlToSave.replace(/\/pub(\?|$)/, '/pub?output=csv$1').replace('?$1', '')
+      }
+    }
     try {
       const r = await fetch(`/api/sites/${siteId}/config`, {
         method: 'PUT', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ blog_sheet_csv_url: sheetUrl }),
+        body: JSON.stringify({ blog_sheet_csv_url: urlToSave }),
       })
-      if (r.ok) { setSheetUrlOriginal(sheetUrl); setSheetMsg('✓ Sheet enregistrée') }
-      else setSheetMsg('✗ Erreur sauvegarde')
+      const data = await r.json().catch(() => ({}))
+      if (r.ok) {
+        setSheetUrl(urlToSave)
+        setSheetUrlOriginal(urlToSave)
+        const msg = urlToSave !== sheetUrl.trim() ? '✓ URL normalisée et enregistrée' : '✓ Sheet enregistrée'
+        setSheetMsg(msg)
+      } else {
+        setSheetMsg(`✗ ${data.error || `Erreur ${r.status}`}`)
+      }
     } catch (e: any) { setSheetMsg(`✗ ${e.message}`) }
     setSavingSheet(false)
-    setTimeout(() => setSheetMsg(''), 3000)
+    setTimeout(() => setSheetMsg(''), 4000)
   }
 
   async function checkSheetNow() {
