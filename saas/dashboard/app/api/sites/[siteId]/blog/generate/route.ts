@@ -55,7 +55,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ sit
   const body = await req.json()
   const { title, categorie, prompt_custom, min_words } = body
   if (!title) return NextResponse.json({ error: 'title requis' }, { status: 400 })
-  const minW = Math.max(300, Math.min(3000, parseInt(min_words, 10) || 800))
+  const minW = Math.max(300, Math.min(3000, parseInt(min_words, 10) || 750))
   const maxW = Math.round(minW * 1.5)
 
   const apiKey = process.env.ANTHROPIC_API_KEY
