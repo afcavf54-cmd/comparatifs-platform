@@ -745,6 +745,19 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     post['reading_time'] = _reading_time(post.get('content_md', ''))
                     if post.get('categorie'):
                         post['categorie_slug'] = blog_engine.categorie_slug(post['categorie'])
+
+                # ── Maillage interne automatique ─────────────────────────
+                # Pour chaque article cible qui déclare des `link_anchors`,
+                # on parcourt tous les autres articles et on insère un lien
+                # vers la cible en remplaçant la première occurrence d'une
+                # ancre dans leur HTML (1 lien max par source vers la même
+                # cible, 15 liens entrants max par cible, quota par ancre).
+                try:
+                    _linking_stats = blog_engine.apply_internal_links(blog_posts)
+                    if _linking_stats.get('links_added', 0) > 0:
+                        print(f"  🔗 Maillage interne : {_linking_stats['links_added']} lien(s) ajouté(s)")
+                except Exception as _e:
+                    print(f"  ⚠ Maillage interne : erreur {_e}")
         # Charger author_* depuis config.yaml → toujours dans site, utile
         # pour le blog (et harmonisé avec site_with_author des classements).
         # NOTE : on OVERRIDE volontairement les éventuels champs legacy
