@@ -27,7 +27,7 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": {{ post.title | tojson }},
-  "description": {{ post.meta_description | tojson }},
+  "description": {{ (post.meta_description | default(''))  | tojson }},
   "datePublished": "{{ post.date }}",
   {% if post.updated %}"dateModified": "{{ post.updated }}",{% endif %}
   {% if post.featured_image %}"image": "{{ site.domain }}{{ post.featured_image }}",{% endif %}
