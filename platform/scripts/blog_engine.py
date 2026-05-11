@@ -65,7 +65,66 @@ def parse_post(filepath: Path) -> dict | None:
     post['filepath'] = str(filepath)
     # Dérivés
     post['date_obj'] = _parse_date(post.get('date', ''))
+    # Ancres de maillage interne : on tolère plusieurs formats
+    post['link_anchors'] = _parse_link_anchors(fm.get('link_anchors'))
     return post
+
+
+def _parse_link_anchors(raw) -> list[dict]:
+    """Parse un champ link_anchors flexible. Formats acceptés :
+
+    1) Liste de dicts (format frontmatter canonique) :
+       link_anchors:
+         - text: "pappers"
+           max: 5
+
+    2) Chaîne texte (format sheet/dashboard textarea) :
+       "pappers:5\\nplateforme pappers:5\\nle site pappers:3"
+       (séparateur newline OU ';')
+
+    Retourne toujours une liste de {text: str, max: int}."""
+    if not raw:
+        return []
+    out: list[dict] = []
+    if isinstance(raw, list):
+        for item in raw:
+            if isinstance(item, dict):
+                text = (item.get('text') or item.get('anchor') or '').strip()
+                try:
+                    n = int(item.get('max') or item.get('count') or 1)
+                except (TypeError, ValueError):
+                    n = 1
+                if text and n > 0:
+                    out.append({'text': text, 'max': n})
+            elif isinstance(item, str):
+                parsed = _parse_anchor_line(item)
+                if parsed:
+                    out.append(parsed)
+        return out
+    if isinstance(raw, str):
+        # Lignes séparées par \n ou ;
+        for line in re.split(r'[\n;]', raw):
+            parsed = _parse_anchor_line(line)
+            if parsed:
+                out.append(parsed)
+    return out
+
+
+def _parse_anchor_line(line: str) -> dict | None:
+    """Parse une ligne au format 'ancre:nombre' ou 'ancre x nombre' ou juste 'ancre'."""
+    s = (line or '').strip()
+    if not s:
+        return None
+    # "ancre:5"
+    m = re.match(r'^(.*?)[:\s]\s*(?:x\s*)?(\d+)\s*$', s, re.IGNORECASE)
+    if m:
+        text = m.group(1).strip().rstrip(':').strip()
+        n = int(m.group(2))
+        if text and n > 0:
+            return {'text': text, 'max': n}
+        return None
+    # Juste "ancre" → quota 1 par défaut
+    return {'text': s, 'max': 1}
 
 
 def _parse_date(date_str: str | _dt.datetime) -> _dt.datetime:
@@ -326,3 +385,131 @@ def collect_categories(posts: list[dict]) -> list[dict]:
             cats[key] = {'name': cat_name, 'slug': categorie_slug(cat_name), 'count': 0}
         cats[key]['count'] += 1
     return sorted(cats.values(), key=lambda c: c['count'], reverse=True)
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MAILLAGE INTERNE — Liens automatiques entre articles via ancres
+# ═══════════════════════════════════════════════════════════════════════════
+
+# Limites globales du maillage
+MAX_INCOMING_LINKS_PER_TARGET = 15  # une cible n'accepte plus de liens au-delà
+# 1 lien max d'une source S vers une cible T (= la première occurrence trouvée
+# est transformée en lien, les autres occurrences de la même ancre restent en
+# texte dans le même article).
+
+
+def _find_anchor_outside_tags(html: str, anchor: str) -> tuple[int, int] | None:
+    """Trouve la première occurrence de `anchor` dans `html` SANS toucher :
+    - L'intérieur des balises HTML (entre `<` et `>`)
+    - L'intérieur des liens `<a>...</a>` existants (évite le double-linking)
+
+    Match : mot complet, insensible à la casse (préserve la casse originale au
+    remplacement). Retourne (start, end) dans `html`, ou None."""
+    if not html or not anchor:
+        return None
+
+    # Construire les zones interdites
+    forbidden: list[tuple[int, int]] = []
+    for m in re.finditer(r'<[^>]+>', html):
+        forbidden.append((m.start(), m.end()))
+    for m in re.finditer(r'<a\b[^>]*>.*?</a>', html, flags=re.DOTALL | re.IGNORECASE):
+        forbidden.append((m.start(), m.end()))
+
+    # Word boundary classique. Pour les ancres qui finissent par un caractère
+    # spécial (ex: "pappers.fr"), \b ne marche pas correctement à la fin, donc
+    # on utilise un boundary souple qui accepte une non-lettre/chiffre/point.
+    # On échappe l'ancre pour l'utiliser en regex.
+    pat = re.compile(
+        r'(?<![\w])' + re.escape(anchor) + r'(?![\w])',
+        flags=re.IGNORECASE,
+    )
+    for m in pat.finditer(html):
+        if not any(a <= m.start() < b for a, b in forbidden):
+            return m.start(), m.end()
+    return None
+
+
+def apply_internal_links(posts: list[dict], verbose: bool = False) -> dict:
+    """Applique le maillage automatique sur la liste de posts.
+
+    Pour chaque article CIBLE T qui a des `link_anchors`, on parcourt tous
+    les articles SOURCE S et on tente d'insérer un lien S→T en remplaçant
+    la première occurrence d'une de ses ancres dans le contenu HTML de S.
+
+    Règles :
+    - 1 lien max d'une source S vers la même cible T
+    - 15 liens entrants max par cible (au-delà, on arrête)
+    - Quota par ancre : si l'ancre "pappers" a max=5, elle ne sera utilisée
+      que 5 fois au total (réparties sur les différents articles sources)
+    - Les ancres les plus longues sont traitées en premier (pour qu'une
+      ancre courte ne casse pas une ancre plus longue qui la contient)
+    - Si deux cibles déclarent la même ancre, c'est la première qui passe
+      le check qui gagne (ordre déterministe : par slug)
+
+    Modifie `posts[i]['content_html']` en place. Retourne un dict de stats."""
+
+    # 1) Construire la table globale des ancres : (anchor_text, target_post)
+    #    triée par longueur d'ancre desc puis slug cible asc pour stabilité.
+    entries: list[tuple[str, int, dict]] = []  # (anchor_text, max_quota, target)
+    for tgt in posts:
+        anchors = tgt.get('link_anchors') or []
+        for a in anchors:
+            text = (a.get('text') or '').strip()
+            max_q = int(a.get('max') or 0)
+            if text and max_q > 0:
+                entries.append((text, max_q, tgt))
+
+    if not entries:
+        return {'links_added': 0, 'anchors_processed': 0}
+
+    entries.sort(key=lambda e: (-len(e[0]), str(e[2].get('slug', ''))))
+
+    # 2) Compteurs partagés
+    incoming_count: dict[str, int] = {}            # slug cible → nb liens entrants
+    anchor_used: dict[tuple[str, str], int] = {}   # (anchor_lower, slug cible) → nb utilisations
+    links_added = 0
+
+    # 3) Pour chaque post source, on parcourt toutes les (ancre, cible)
+    #    et on tente de placer 1 lien par cible distincte.
+    for src in posts:
+        src_slug = src.get('slug', '')
+        if not src_slug:
+            continue
+        linked_targets: set[str] = set()  # cibles déjà liées depuis ce post
+        html = src.get('content_html') or ''
+        if not html:
+            continue
+
+        for anchor_text, max_q, tgt in entries:
+            tgt_slug = tgt.get('slug', '')
+            if not tgt_slug or tgt_slug == src_slug:
+                continue
+            if tgt_slug in linked_targets:
+                continue
+            if incoming_count.get(tgt_slug, 0) >= MAX_INCOMING_LINKS_PER_TARGET:
+                continue
+            akey = (anchor_text.lower(), tgt_slug)
+            if anchor_used.get(akey, 0) >= max_q:
+                continue
+
+            pos = _find_anchor_outside_tags(html, anchor_text)
+            if not pos:
+                continue
+            start, end = pos
+            matched = html[start:end]  # préserve la casse originale
+            replacement = f'<a href="/{tgt_slug}">{matched}</a>'
+            html = html[:start] + replacement + html[end:]
+            incoming_count[tgt_slug] = incoming_count.get(tgt_slug, 0) + 1
+            anchor_used[akey] = anchor_used.get(akey, 0) + 1
+            linked_targets.add(tgt_slug)
+            links_added += 1
+            if verbose:
+                print(f"   🔗 {src_slug} → {tgt_slug}  ({anchor_text!r})")
+
+        src['content_html'] = html
+
+    return {
+        'links_added': links_added,
+        'anchors_processed': len(entries),
+        'incoming_counts': incoming_count,
+    }
