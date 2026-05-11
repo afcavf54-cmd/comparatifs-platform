@@ -32,6 +32,11 @@ export default function BlogListPage() {
   const [search, setSearch] = useState('')
   const [catFilter, setCatFilter] = useState('')
   const [statusFilter, setStatusFilter] = useState('')
+  // Articles en cours de génération (titres attendus depuis le déclenchement
+  // d'un workflow). Stockés en localStorage pour survivre aux reloads.
+  // Format : { title, createdAt: number }[] — pas de slug car il n'est connu
+  // qu'après génération. Rapprochement par normalisation du titre.
+  const [pending, setPending] = useState<{ title: string; createdAt: number }[]>([])
   // Configuration sheet de programmation
   const [showSheetConfig, setShowSheetConfig] = useState(false)
   const [sheetUrl, setSheetUrl] = useState('')
@@ -45,7 +50,47 @@ export default function BlogListPage() {
   const [previewLoading, setPreviewLoading] = useState(false)
   const [confirming, setConfirming] = useState(false)
 
-  useEffect(() => { load(); loadConfig() }, [siteId])
+  useEffect(() => { load(); loadConfig(); loadPending() }, [siteId])
+
+  // Polling : tant qu'il y a des articles en attente, on recharge la liste
+  // toutes les 15s pour détecter les nouveaux articles publiés et nettoyer
+  // les placeholders correspondants.
+  useEffect(() => {
+    if (pending.length === 0) return
+    const id = setInterval(() => { load() }, 15000)
+    return () => clearInterval(id)
+  }, [pending.length])
+
+  // Au chargement de la liste, on rapproche les titres attendus avec les
+  // articles réels et on nettoie les placeholders périmés (>10min).
+  useEffect(() => {
+    if (pending.length === 0) return
+    const realTitles = new Set(posts.map(p => normalizeTitle(p.title)))
+    const MAX_AGE_MS = 10 * 60 * 1000
+    const now = Date.now()
+    const filtered = pending.filter(p =>
+      !realTitles.has(normalizeTitle(p.title)) &&
+      now - p.createdAt < MAX_AGE_MS
+    )
+    if (filtered.length !== pending.length) {
+      setPending(filtered)
+      savePending(filtered)
+    }
+  }, [posts])
+
+  function pendingKey() { return `pending-blog-${siteId}` }
+  function loadPending() {
+    try {
+      const raw = localStorage.getItem(pendingKey())
+      if (raw) setPending(JSON.parse(raw))
+    } catch { /* ignore */ }
+  }
+  function savePending(p: { title: string; createdAt: number }[]) {
+    try {
+      if (p.length > 0) localStorage.setItem(pendingKey(), JSON.stringify(p))
+      else localStorage.removeItem(pendingKey())
+    } catch { /* ignore */ }
+  }
 
   async function load() {
     setLoading(true)
@@ -127,8 +172,19 @@ export default function BlogListPage() {
       const r = await fetch(`/api/sites/${siteId}/blog/check-sheet`, { method: 'POST' })
       const d = await r.json()
       if (r.ok) {
+        // Mémoriser les titres éligibles comme "en cours de génération"
+        const eligible = (previewData?.rows || [])
+          .filter((row: any) => row.status === 'eligible')
+          .map((row: any) => ({ title: row.titre as string, createdAt: Date.now() }))
+        if (eligible.length > 0) {
+          const merged = [...pending, ...eligible.filter(e =>
+            !pending.some(p => normalizeTitle(p.title) === normalizeTitle(e.title))
+          )]
+          setPending(merged)
+          savePending(merged)
+        }
         setShowPreview(false)
-        setSheetMsg('✓ Workflow déclenché — la sheet sera traitée dans quelques minutes')
+        setSheetMsg(`✓ ${eligible.length} article${eligible.length > 1 ? 's' : ''} en cours de génération`)
         setTimeout(() => setSheetMsg(''), 8000)
       } else {
         setPreviewData((prev: any) => ({ ...prev, error: d.error || 'Erreur déclenchement' }))
@@ -204,6 +260,37 @@ export default function BlogListPage() {
           </div>
         </div>
       )}
+
+      {/* Articles en cours de génération */}
+      {pending.length > 0 && (
+        <div style={{ background: 'rgba(246,173,85,.08)', border: '1px solid #F6AD55', borderRadius: 12, padding: 18, marginBottom: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+            <span style={{ display: 'inline-block', width: 12, height: 12, borderRadius: '50%', background: '#F6AD55', animation: 'pulse 1.5s ease-in-out infinite' }} />
+            <strong style={{ color: '#F6AD55', fontSize: 14 }}>
+              🤖 {pending.length} article{pending.length > 1 ? 's' : ''} en cours de génération
+            </strong>
+            <span style={{ color: '#8B9CB0', fontSize: 12 }}>· la liste se met à jour automatiquement</span>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            {pending.map((p, i) => {
+              const ageSec = Math.floor((Date.now() - p.createdAt) / 1000)
+              const ageLabel = ageSec < 60 ? `${ageSec}s` : `${Math.floor(ageSec / 60)}min ${ageSec % 60}s`
+              return (
+                <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 12px', background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 8 }}>
+                  <span style={{ color: '#fff', fontSize: 13 }}>⏳ {p.title}</span>
+                  <span style={{ color: '#4A5568', fontSize: 11 }}>il y a {ageLabel}</span>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      )}
+      <style jsx>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.4; }
+        }
+      `}</style>
 
       {/* Filtres */}
       <div style={{ display: 'flex', gap: 12, marginBottom: 20, flexWrap: 'wrap' }}>
@@ -405,6 +492,16 @@ function renderStatus(r: any): React.ReactNode {
 }
 
 const tdSmall: React.CSSProperties = { padding: '10px 12px', verticalAlign: 'top' }
+
+// Normalisation pour rapprocher titres attendus ↔ articles réels :
+// minuscules, sans accents, espaces normalisés.
+function normalizeTitle(t: string): string {
+  return (t || '')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/\s+/g, ' ')
+    .trim()
+}
 
 function formatDate(s: string): string {
   if (!s) return '—'
