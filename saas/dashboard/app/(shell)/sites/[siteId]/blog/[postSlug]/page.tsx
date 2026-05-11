@@ -16,6 +16,7 @@ interface PostData {
   status: string
   content_md: string
   related_posts?: string[]
+  link_anchors?: { text: string; max: number }[]
   sha?: string
 }
 
@@ -23,6 +24,7 @@ const empty: PostData = {
   title: '', slug: '', date: '', categorie: '',
   meta_title: '', meta_description: '', featured_image: '',
   status: 'draft', content_md: '',
+  link_anchors: [],
 }
 
 export default function BlogEditPage() {
@@ -43,6 +45,9 @@ export default function BlogEditPage() {
   const [scheduleDate, setScheduleDate] = useState('')
   const [scheduleTime, setScheduleTime] = useState('09:00')
   const [uploadingFeatured, setUploadingFeatured] = useState(false)
+  // Texte affiché dans le textarea des ancres (format "ancre:nombre" par ligne)
+  // synchronisé avec post.link_anchors (array de {text, max}) au save.
+  const [anchorsText, setAnchorsText] = useState('')
 
   const fileInputRef = useRef<HTMLInputElement | null>(null)
   const featuredInputRef = useRef<HTMLInputElement | null>(null)
@@ -62,6 +67,15 @@ export default function BlogEditPage() {
             content = mdToHtml(content)
           }
           setPost({ ...empty, ...data.post, content_md: content })
+          // Initialiser le textarea des ancres depuis le frontmatter
+          if (Array.isArray(data.post.link_anchors)) {
+            setAnchorsText(
+              data.post.link_anchors
+                .filter((a: any) => a?.text && Number(a.max) > 0)
+                .map((a: any) => `${a.text}:${a.max}`)
+                .join('\n')
+            )
+          }
         }
       })
       .finally(() => setLoading(false))
@@ -118,11 +132,29 @@ export default function BlogEditPage() {
       } catch { /* ignore, on save sans meta */ }
     }
 
+    // Parse le textarea des ancres au format "ancre:nombre" → array
+    const link_anchors = anchorsText
+      .split(/[\n;]/)
+      .map(line => {
+        const s = line.trim()
+        if (!s) return null
+        const m = s.match(/^(.*?)[:\s]\s*(?:x\s*)?(\d+)\s*$/i)
+        if (m) {
+          const text = m[1].trim().replace(/:$/, '').trim()
+          const max = parseInt(m[2], 10)
+          if (text && max > 0) return { text, max }
+          return null
+        }
+        return { text: s, max: 1 }
+      })
+      .filter(Boolean) as { text: string; max: number }[]
+
     const payload: any = {
       ...post,
       meta_description: metaDesc,
       status: newStatus || post.status,
       date: post.date || new Date().toISOString().replace(/\.\d+Z$/, ''),
+      link_anchors,
     }
     if (isNew) {
       // POST → création
@@ -345,6 +377,19 @@ export default function BlogEditPage() {
               </div>
             )}
           </div>
+        </div>
+
+        {/* Maillage interne — ancres de lien */}
+        <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid #1E2D3D' }}>
+          <div style={{ fontSize: 11, color: '#8B9CB0', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 6 }}>🔗 Maillage interne — ancres de lien</div>
+          <div style={{ fontSize: 12, color: '#4A5568', lineHeight: 1.6, marginBottom: 10 }}>
+            Liste des ancres qui, trouvées dans d'autres articles, seront automatiquement transformées en liens vers <strong>cet article</strong>.
+            Format : <code style={{ color: '#00D4AA' }}>ancre:nombre_max</code> (une par ligne).
+            <br/>Règles automatiques : <strong>1 lien max</strong> par article source, <strong>15 liens entrants max</strong> par article cible.
+          </div>
+          <textarea value={anchorsText} onChange={e => setAnchorsText(e.target.value)} rows={5}
+            placeholder={"pappers:5\nplateforme pappers:5\nle site pappers:3\npappers.fr:1"}
+            style={{ ...input, fontFamily: 'Menlo, Monaco, Consolas, monospace', fontSize: 12, resize: 'vertical' }} />
         </div>
       </div>
 
