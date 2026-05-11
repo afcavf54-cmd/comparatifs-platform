@@ -18,7 +18,11 @@ link_anchors:
   max: 3
 - text: pappers.fr
   max: 1
-related_posts: []
+related_posts:
+- 2256-pappers-ou-puis-je-trouver-le-rcs-d-une-entreprise
+- 4342-pappers-comment-rechercher-le-siret-d-une-entreprise
+- 7452-peut-on-recuperer-son-kbis-gratuitement-sur-pappers
+- 1905-comment-rechercher-un-dirigeant-sur-pappers
 ---
 <h2>Mon expérience avec Pappers : un outil vraiment pratique</h2>
 

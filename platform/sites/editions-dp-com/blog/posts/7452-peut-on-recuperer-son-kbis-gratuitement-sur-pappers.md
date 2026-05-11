@@ -9,8 +9,12 @@ meta_description: 'Découvrez si vous pouvez vraiment obtenir votre Kbis gratuit
   de commander.'
 min_words: 750
 status: published
+related_posts:
+- 2256-pappers-ou-puis-je-trouver-le-rcs-d-une-entreprise
+- 1905-comment-rechercher-un-dirigeant-sur-pappers
+- 4929-pappers-le-site-parfait-pour-la-recherche-d-entreprise
+- 4342-pappers-comment-rechercher-le-siret-d-une-entreprise
 ---
-
 <h2>La vérité sur la gratuité du Kbis chez Pappers</h2>
 
 <p>Je vais être direct avec vous : <strong>non, vous ne pouvez pas récupérer votre Kbis gratuitement sur Pappers</strong>. Après avoir testé la plateforme pendant plusieurs mois pour mes propres besoins d'entreprise, je peux vous confirmer que c'est payant. Mais laissez-moi vous expliquer pourquoi cette confusion existe et quelles sont vos vraies alternatives.</p>
