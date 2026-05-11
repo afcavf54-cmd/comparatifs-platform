@@ -699,7 +699,12 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         generate_sitemap(site, all_pairs, products, output_dir, config=config)
         # ── Blog : chargement des articles avant le cleanup ──────────────
         # On marque les pages attendues du blog pour qu'elles ne soient pas
-        # supprimées par cleanup_removed_products.
+        # supprimées par cleanup_removed_products. Aussi, on set
+        # site["has_blog"] DÈS MAINTENANT pour que TOUTES les pages (home,
+        # classements, etc.) affichent le lien Blog dans la nav, pas
+        # seulement les pages blog elles-mêmes.
+        # On charge aussi author_* dans site pour que les pages blog
+        # utilisent le bon auteur (cohérence avec les pages classement).
         blog_posts = []
         blog_categories = []
         blog_expected: set = set()
@@ -719,6 +724,19 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                         blog_expected.add(f"{slug}.html")
                 for cat in blog_categories:
                     blog_expected.add(f"{cat['slug']}.html")
+        # Charger author_* depuis config.yaml → toujours dans site, utile
+        # pour le blog (et harmonisé avec site_with_author des classements).
+        author_cfg_main = config.get("author", {}) or {}
+        if author_cfg_main:
+            _photo_raw_main = author_cfg_main.get("photo", "")
+            if _photo_raw_main and ("http://" in _photo_raw_main or "https://" in _photo_raw_main):
+                _photo_clean_main = "/" + _photo_raw_main.split("/public/")[-1].split("?")[0] if "/public/" in _photo_raw_main else ""
+            else:
+                _photo_clean_main = _photo_raw_main
+            site.setdefault("author_name", author_cfg_main.get("name", ""))
+            site.setdefault("author_bio", author_cfg_main.get("bio", ""))
+            site.setdefault("author_job", author_cfg_main.get("job_title", ""))
+            site.setdefault("author_photo", _photo_clean_main)
         cleanup_removed_products(output_dir, site_dir, products, all_pairs, is_classement_template, blog_expected=blog_expected)
 
     # Pour les sites classement : écraser les anciennes pages avis SCPI avec la 404 actuelle
