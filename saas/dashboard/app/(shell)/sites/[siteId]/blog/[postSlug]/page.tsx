@@ -1,0 +1,349 @@
+'use client'
+import { useEffect, useState, useRef } from 'react'
+import { useParams, useRouter } from 'next/navigation'
+import Link from 'next/link'
+import { mdToHtml, slugify, addRandomPrefix } from '../../../../../../lib/blog'
+
+interface PostData {
+  title: string
+  slug: string
+  date: string
+  categorie: string
+  meta_title: string
+  meta_description: string
+  featured_image: string
+  status: string
+  content_md: string
+  related_posts?: string[]
+  sha?: string
+}
+
+const empty: PostData = {
+  title: '', slug: '', date: '', categorie: '',
+  meta_title: '', meta_description: '', featured_image: '',
+  status: 'draft', content_md: '',
+}
+
+export default function BlogEditPage() {
+  const { siteId, postSlug } = useParams() as { siteId: string; postSlug: string }
+  const router = useRouter()
+  const isNew = postSlug === 'new'
+
+  const [post, setPost] = useState<PostData>(empty)
+  const [loading, setLoading] = useState(!isNew)
+  const [saving, setSaving] = useState(false)
+  const [msg, setMsg] = useState('')
+  const [generating, setGenerating] = useState(false)
+  const [showGenModal, setShowGenModal] = useState(false)
+  const [genPromptCustom, setGenPromptCustom] = useState('')
+  const [showSchedule, setShowSchedule] = useState(false)
+  const [scheduleDate, setScheduleDate] = useState('')
+  const [scheduleTime, setScheduleTime] = useState('09:00')
+
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null)
+  const fileInputRef = useRef<HTMLInputElement | null>(null)
+
+  useEffect(() => {
+    if (isNew) return
+    fetch(`/api/sites/${siteId}/blog/${postSlug}`)
+      .then(r => r.json())
+      .then(data => {
+        if (data.post) setPost({ ...empty, ...data.post })
+      })
+      .finally(() => setLoading(false))
+  }, [siteId, postSlug, isNew])
+
+  // Auto-derive slug from title for new posts
+  useEffect(() => {
+    if (!isNew) return
+    if (post.title && !post.slug.replace(/^\d{3,5}-/, '')) {
+      setPost(p => ({ ...p, slug: addRandomPrefix(slugify(p.title)) }))
+    }
+  }, [post.title, isNew])
+
+  function update<K extends keyof PostData>(key: K, val: PostData[K]) {
+    setPost(p => ({ ...p, [key]: val }))
+  }
+
+  async function save(newStatus?: string) {
+    if (!post.title.trim()) { setMsg('Le titre est obligatoire'); return }
+    if (!post.categorie.trim()) { setMsg('La catégorie est obligatoire'); return }
+    setSaving(true); setMsg('')
+    const payload: any = {
+      ...post,
+      status: newStatus || post.status,
+      date: post.date || new Date().toISOString().replace(/\.\d+Z$/, ''),
+    }
+    if (isNew) {
+      // POST → création
+      const r = await fetch(`/api/sites/${siteId}/blog`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: post.title, categorie: post.categorie,
+          content_md: post.content_md, meta_title: post.meta_title,
+          meta_description: post.meta_description, featured_image: post.featured_image,
+          status: payload.status,
+          schedule_date: payload.status === 'scheduled' ? payload.date : undefined,
+        }),
+      })
+      const data = await r.json()
+      setSaving(false)
+      if (r.ok && data.slug) {
+        setMsg('✓ Article créé')
+        router.push(`/sites/${siteId}/blog/${data.slug}`)
+      } else {
+        setMsg(`✗ ${data.error || 'Erreur création'}`)
+      }
+    } else {
+      // PUT → save
+      const r = await fetch(`/api/sites/${siteId}/blog/${postSlug}`, {
+        method: 'PUT', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      const data = await r.json()
+      setSaving(false)
+      if (r.ok) {
+        setMsg('✓ Sauvegardé')
+        if (data.slug && data.slug !== postSlug) router.replace(`/sites/${siteId}/blog/${data.slug}`)
+        setTimeout(() => setMsg(''), 2500)
+      } else {
+        setMsg(`✗ ${data.error || 'Erreur sauvegarde'}`)
+      }
+    }
+  }
+
+  async function generateAI() {
+    if (!post.title.trim()) { setMsg('Renseigne d\'abord un titre'); return }
+    if (!post.categorie.trim()) { setMsg('Renseigne d\'abord une catégorie'); return }
+    setGenerating(true); setShowGenModal(false); setMsg('🤖 Génération en cours...')
+    try {
+      const r = await fetch(`/api/sites/${siteId}/blog/generate`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: post.title, categorie: post.categorie, prompt_custom: genPromptCustom }),
+      })
+      const data = await r.json()
+      if (r.ok && data.content_md) {
+        setPost(p => ({ ...p, content_md: data.content_md }))
+        setMsg('✓ Contenu généré')
+        setTimeout(() => setMsg(''), 3000)
+      } else {
+        setMsg(`✗ ${data.error || 'Erreur génération IA'}`)
+      }
+    } catch (e: any) {
+      setMsg(`✗ ${e.message}`)
+    } finally {
+      setGenerating(false)
+    }
+  }
+
+  async function uploadImage(file: File) {
+    if (!file) return
+    setMsg('📷 Upload en cours...')
+    const ext = (file.name.split('.').pop() || 'jpg').toLowerCase()
+    const imgName = `${slugify(file.name.replace(/\.[^.]+$/, ''))}-${Date.now() % 10000}.${ext}`
+    const slug = post.slug || 'misc'
+    const path = `platform/sites/${siteId}/public/blog/${slug}/${imgName}`
+    const dataUrl: string = await new Promise((resolve, reject) => {
+      const r = new FileReader()
+      r.onload = () => resolve(String(r.result).split(',')[1])
+      r.onerror = reject
+      r.readAsDataURL(file)
+    })
+    const r = await fetch('/api/github/upload', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ path, content: dataUrl, message: `HUB: Blog image ${imgName}` }),
+    })
+    if (!r.ok) { setMsg('✗ Erreur upload'); return }
+    // Insérer ![](url) au curseur dans le textarea
+    const publicUrl = `/blog/${slug}/${imgName}`
+    const ta = textareaRef.current
+    if (ta) {
+      const start = ta.selectionStart, end = ta.selectionEnd
+      const md = `\n![${file.name.replace(/\.[^.]+$/, '')}](${publicUrl})\n`
+      const next = post.content_md.slice(0, start) + md + post.content_md.slice(end)
+      setPost(p => ({ ...p, content_md: next }))
+    } else {
+      setPost(p => ({ ...p, content_md: p.content_md + `\n![${file.name}](${publicUrl})\n` }))
+    }
+    setMsg('✓ Image insérée')
+    setTimeout(() => setMsg(''), 2500)
+  }
+
+  function schedulePublish() {
+    if (!scheduleDate) { setMsg('Choisis une date'); return }
+    const iso = `${scheduleDate}T${scheduleTime || '09:00'}:00`
+    setPost(p => ({ ...p, date: iso, status: 'scheduled' }))
+    setShowSchedule(false)
+    setTimeout(() => save('scheduled'), 100)
+  }
+
+  if (loading) return <div style={{ padding: 60, textAlign: 'center', color: '#4A5568' }}>Chargement…</div>
+
+  return (
+    <div style={{ padding: '32px 5vw', maxWidth: 1500, margin: '0 auto' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8, fontSize: 13 }}>
+        <Link href="/sites" style={{ color: '#8B9CB0', textDecoration: 'none' }}>Sites</Link>
+        <span style={{ color: '#4A5568' }}>›</span>
+        <Link href={`/sites/${siteId}`} style={{ color: '#8B9CB0', textDecoration: 'none' }}>{siteId}</Link>
+        <span style={{ color: '#4A5568' }}>›</span>
+        <Link href={`/sites/${siteId}/blog`} style={{ color: '#8B9CB0', textDecoration: 'none' }}>Blog</Link>
+        <span style={{ color: '#4A5568' }}>›</span>
+        <span style={{ color: '#fff' }}>{isNew ? 'Nouvel article' : post.title || postSlug}</span>
+      </div>
+
+      <h1 style={{ color: '#fff', fontSize: 24, fontWeight: 600, margin: '16px 0 24px' }}>
+        {isNew ? '✨ Nouvel article' : '✏️ Édition'}
+      </h1>
+
+      {/* Méta-infos */}
+      <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 12, padding: 24, marginBottom: 20 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 16, marginBottom: 16 }}>
+          <Field label="Titre *">
+            <input type="text" value={post.title} onChange={e => update('title', e.target.value)} style={input} />
+          </Field>
+          <Field label="Catégorie *">
+            <input type="text" value={post.categorie} onChange={e => update('categorie', e.target.value)} placeholder="Ex: Paie, Compta..." style={input} />
+          </Field>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
+          <Field label="Slug (URL)">
+            <input type="text" value={post.slug} onChange={e => update('slug', e.target.value)} style={input} />
+          </Field>
+          <Field label="Date publication">
+            <input type="datetime-local" value={(post.date || '').slice(0, 16)} onChange={e => update('date', e.target.value + ':00')} style={input} />
+          </Field>
+          <Field label="Statut">
+            <select value={post.status} onChange={e => update('status', e.target.value)} style={input}>
+              <option value="draft">Brouillon</option>
+              <option value="scheduled">Programmé</option>
+              <option value="published">Publié</option>
+            </select>
+          </Field>
+        </div>
+        <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid #1E2D3D' }}>
+          <div style={{ fontSize: 11, color: '#8B9CB0', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 10 }}>SEO</div>
+          <Field label="Meta title">
+            <input type="text" value={post.meta_title} onChange={e => update('meta_title', e.target.value)} style={input} />
+          </Field>
+          <div style={{ marginTop: 12 }}>
+            <Field label="Meta description">
+              <textarea value={post.meta_description} onChange={e => update('meta_description', e.target.value)} rows={2} style={{ ...input, resize: 'vertical' }} />
+            </Field>
+          </div>
+          <div style={{ marginTop: 12 }}>
+            <Field label="Featured image (URL)">
+              <input type="text" value={post.featured_image} onChange={e => update('featured_image', e.target.value)} placeholder="/blog/<slug>/cover.jpg" style={input} />
+            </Field>
+          </div>
+        </div>
+      </div>
+
+      {/* Toolbar éditeur */}
+      <div style={{ display: 'flex', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
+        <button onClick={() => setShowGenModal(true)} disabled={generating} style={{ ...btn, background: '#00D4AA', color: '#0A0E1A' }}>
+          {generating ? '🤖 …' : '✨ Générer avec IA'}
+        </button>
+        <button onClick={() => fileInputRef.current?.click()} style={btn}>📷 Insérer image</button>
+        <input ref={fileInputRef} type="file" accept="image/*" style={{ display: 'none' }}
+          onChange={e => e.target.files?.[0] && uploadImage(e.target.files[0])} />
+      </div>
+
+      {/* Éditeur 2 colonnes */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 24 }}>
+        <textarea ref={textareaRef} value={post.content_md} onChange={e => update('content_md', e.target.value)}
+          placeholder="Écris ton article ici en markdown..."
+          style={{ minHeight: 500, padding: 16, borderRadius: 10, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontFamily: 'Menlo, Monaco, Consolas, monospace', fontSize: 13, lineHeight: 1.6, resize: 'vertical' }} />
+        <div style={{ minHeight: 500, padding: 24, borderRadius: 10, background: '#0D1117', border: '1px solid #1E2D3D', color: '#E5E7EB', fontSize: 14, lineHeight: 1.7, overflowY: 'auto', maxHeight: 720 }}>
+          <div style={{ fontSize: 11, color: '#4A5568', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 16 }}>Aperçu</div>
+          <div dangerouslySetInnerHTML={{ __html: mdToHtml(post.content_md) }} className="preview-content" />
+        </div>
+      </div>
+
+      {/* Boutons d'action */}
+      <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+        <button onClick={() => save()} disabled={saving} style={{ ...btn, background: '#1E2D3D', color: '#fff', padding: '12px 24px' }}>
+          {saving ? '⏳ ...' : '💾 Sauvegarder'}
+        </button>
+        <button onClick={() => save('published')} disabled={saving} style={{ ...btn, background: '#00D4AA', color: '#0A0E1A', padding: '12px 24px' }}>
+          🚀 Publier maintenant
+        </button>
+        <button onClick={() => setShowSchedule(true)} disabled={saving} style={{ ...btn, background: '#F6AD55', color: '#0A0E1A', padding: '12px 24px' }}>
+          📅 Programmer
+        </button>
+        {msg && <span style={{ marginLeft: 8, fontSize: 13, color: msg.startsWith('✗') ? '#FC8181' : '#00D4AA' }}>{msg}</span>}
+      </div>
+
+      {/* Modale Génération IA */}
+      {showGenModal && (
+        <Modal onClose={() => setShowGenModal(false)} title="✨ Générer un article avec IA">
+          <div style={{ color: '#E5E7EB', fontSize: 14, lineHeight: 1.6, marginBottom: 16 }}>
+            Le titre <strong>"{post.title || '(à renseigner)'}"</strong>{post.categorie && <> et la catégorie <strong>"{post.categorie}"</strong></>} seront utilisés.
+          </div>
+          <Field label="Consignes spécifiques (optionnel)">
+            <textarea value={genPromptCustom} onChange={e => setGenPromptCustom(e.target.value)} rows={5}
+              placeholder="Ex: Insiste sur les TPE, mets en avant les solutions cloud, ton accessible..."
+              style={{ ...input, resize: 'vertical' }} />
+          </Field>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10, marginTop: 16 }}>
+            <button onClick={() => setShowGenModal(false)} style={btn}>Annuler</button>
+            <button onClick={generateAI} style={{ ...btn, background: '#00D4AA', color: '#0A0E1A' }}>✨ Générer</button>
+          </div>
+        </Modal>
+      )}
+
+      {/* Modale Programmation */}
+      {showSchedule && (
+        <Modal onClose={() => setShowSchedule(false)} title="📅 Programmer la publication">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+            <Field label="Date"><input type="date" value={scheduleDate} onChange={e => setScheduleDate(e.target.value)} style={input} /></Field>
+            <Field label="Heure"><input type="time" value={scheduleTime} onChange={e => setScheduleTime(e.target.value)} style={input} /></Field>
+          </div>
+          <div style={{ marginTop: 12, fontSize: 12, color: '#8B9CB0' }}>
+            L'article sera automatiquement publié par le cron horaire à cette date/heure.
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10, marginTop: 16 }}>
+            <button onClick={() => setShowSchedule(false)} style={btn}>Annuler</button>
+            <button onClick={schedulePublish} style={{ ...btn, background: '#F6AD55', color: '#0A0E1A' }}>📅 Programmer</button>
+          </div>
+        </Modal>
+      )}
+
+      <style jsx global>{`
+        .preview-content h1 { font-size: 24px; margin: 18px 0 12px; color: #fff; font-weight: 600; }
+        .preview-content h2 { font-size: 20px; margin: 18px 0 10px; color: #fff; font-weight: 600; }
+        .preview-content h3 { font-size: 16px; margin: 14px 0 8px; color: #fff; font-weight: 600; }
+        .preview-content p { margin-bottom: 12px; }
+        .preview-content ul, .preview-content ol { margin: 0 0 12px 20px; }
+        .preview-content li { margin-bottom: 4px; }
+        .preview-content a { color: #00D4AA; text-decoration: underline; }
+        .preview-content strong { color: #fff; font-weight: 700; }
+        .preview-content code { background: #1E2D3D; padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+        .preview-content blockquote { border-left: 3px solid #00D4AA; padding: 4px 14px; margin: 12px 0; color: #8B9CB0; font-style: italic; }
+        .preview-content img { max-width: 100%; height: auto; border-radius: 6px; margin: 12px 0; }
+      `}</style>
+    </div>
+  )
+}
+
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <label style={{ display: 'block', fontSize: 11, color: '#8B9CB0', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 6 }}>{label}</label>
+      {children}
+    </div>
+  )
+}
+
+function Modal({ title, onClose, children }: { title: string; onClose: () => void; children: React.ReactNode }) {
+  return (
+    <div onClick={onClose} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100 }}>
+      <div onClick={e => e.stopPropagation()} style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 14, padding: 28, maxWidth: 520, width: '90%', maxHeight: '85vh', overflow: 'auto' }}>
+        <h3 style={{ color: '#fff', fontSize: 18, fontWeight: 600, margin: '0 0 18px' }}>{title}</h3>
+        {children}
+      </div>
+    </div>
+  )
+}
+
+const input: React.CSSProperties = { width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13 }
+const btn: React.CSSProperties = { padding: '8px 16px', borderRadius: 8, background: '#1E2D3D', color: '#fff', fontSize: 13, fontWeight: 600, border: 'none', cursor: 'pointer' }
