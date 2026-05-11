@@ -2,7 +2,8 @@
 import { useEffect, useState, useRef } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { mdToHtml, slugify, addRandomPrefix } from '../../../../../../lib/blog'
+import { slugify, addRandomPrefix, mdToHtml } from '../../../../../../lib/blog'
+import RichEditor from '../../../../../../components/RichEditor'
 
 interface PostData {
   title: string
@@ -40,7 +41,6 @@ export default function BlogEditPage() {
   const [scheduleDate, setScheduleDate] = useState('')
   const [scheduleTime, setScheduleTime] = useState('09:00')
 
-  const textareaRef = useRef<HTMLTextAreaElement | null>(null)
   const fileInputRef = useRef<HTMLInputElement | null>(null)
 
   useEffect(() => {
@@ -48,7 +48,17 @@ export default function BlogEditPage() {
     fetch(`/api/sites/${siteId}/blog/${postSlug}`)
       .then(r => r.json())
       .then(data => {
-        if (data.post) setPost({ ...empty, ...data.post })
+        if (data.post) {
+          let content = data.post.content_md || ''
+          // Si le contenu legacy est en markdown (pas de balises HTML
+          // structurelles détectées), on le convertit pour que le RichEditor
+          // l'affiche correctement. Les nouveaux articles produits par
+          // RichEditor sont déjà en HTML, on les laisse tels quels.
+          if (content && !/<(p|h[1-6]|ul|ol|div|img|blockquote)\b/i.test(content)) {
+            content = mdToHtml(content)
+          }
+          setPost({ ...empty, ...data.post, content_md: content })
+        }
       })
       .finally(() => setLoading(false))
   }, [siteId, postSlug, isNew])
@@ -123,7 +133,13 @@ export default function BlogEditPage() {
       })
       const data = await r.json()
       if (r.ok && data.content_md) {
-        setPost(p => ({ ...p, content_md: data.content_md }))
+        let content = data.content_md
+        // Filet de sécurité : si l'IA renvoie du markdown malgré la consigne
+        // HTML, on convertit pour que le RichEditor l'affiche correctement.
+        if (content && !/<(p|h[1-6]|ul|ol|div|img|blockquote)\b/i.test(content)) {
+          content = mdToHtml(content)
+        }
+        setPost(p => ({ ...p, content_md: content }))
         setMsg('✓ Contenu généré')
         setTimeout(() => setMsg(''), 3000)
       } else {
@@ -154,16 +170,18 @@ export default function BlogEditPage() {
       body: JSON.stringify({ path, content: dataUrl, message: `HUB: Blog image ${imgName}` }),
     })
     if (!r.ok) { setMsg('✗ Erreur upload'); return }
-    // Insérer ![](url) au curseur dans le textarea
+    // Insérer l'image dans l'éditeur : on essaie d'abord d'insérer à la
+    // position du curseur (execCommand insertHTML), sinon on append à la fin.
     const publicUrl = `/blog/${slug}/${imgName}`
-    const ta = textareaRef.current
-    if (ta) {
-      const start = ta.selectionStart, end = ta.selectionEnd
-      const md = `\n![${file.name.replace(/\.[^.]+$/, '')}](${publicUrl})\n`
-      const next = post.content_md.slice(0, start) + md + post.content_md.slice(end)
-      setPost(p => ({ ...p, content_md: next }))
+    const alt = file.name.replace(/\.[^.]+$/, '')
+    const imgHtml = `<p><img src="${publicUrl}" alt="${alt}" /></p>`
+    const editor = document.querySelector('.rich-editor') as HTMLDivElement | null
+    if (editor && editor.contains(document.activeElement)) {
+      document.execCommand('insertHTML', false, imgHtml)
+      // Trigger input event pour que RichEditor remonte la nouvelle valeur
+      editor.dispatchEvent(new Event('input', { bubbles: true }))
     } else {
-      setPost(p => ({ ...p, content_md: p.content_md + `\n![${file.name}](${publicUrl})\n` }))
+      update('content_md', (post.content_md || '') + imgHtml)
     }
     setMsg('✓ Image insérée')
     setTimeout(() => setMsg(''), 2500)
@@ -238,25 +256,24 @@ export default function BlogEditPage() {
         </div>
       </div>
 
-      {/* Toolbar éditeur */}
-      <div style={{ display: 'flex', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
-        <button onClick={() => setShowGenModal(true)} disabled={generating} style={{ ...btn, background: '#00D4AA', color: '#0A0E1A' }}>
-          {generating ? '🤖 …' : '✨ Générer avec IA'}
+      {/* Bouton Générer IA au-dessus de l'éditeur */}
+      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 8 }}>
+        <button onClick={() => setShowGenModal(true)} disabled={generating}
+          style={{ ...btn, background: '#00D4AA', color: '#0A0E1A', padding: '10px 18px' }}>
+          {generating ? '🤖 Génération…' : '✨ Générer avec IA'}
         </button>
-        <button onClick={() => fileInputRef.current?.click()} style={btn}>📷 Insérer image</button>
-        <input ref={fileInputRef} type="file" accept="image/*" style={{ display: 'none' }}
-          onChange={e => e.target.files?.[0] && uploadImage(e.target.files[0])} />
       </div>
 
-      {/* Éditeur 2 colonnes */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 24 }}>
-        <textarea ref={textareaRef} value={post.content_md} onChange={e => update('content_md', e.target.value)}
-          placeholder="Écris ton article ici en markdown..."
-          style={{ minHeight: 500, padding: 16, borderRadius: 10, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontFamily: 'Menlo, Monaco, Consolas, monospace', fontSize: 13, lineHeight: 1.6, resize: 'vertical' }} />
-        <div style={{ minHeight: 500, padding: 24, borderRadius: 10, background: '#0D1117', border: '1px solid #1E2D3D', color: '#E5E7EB', fontSize: 14, lineHeight: 1.7, overflowY: 'auto', maxHeight: 720 }}>
-          <div style={{ fontSize: 11, color: '#4A5568', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 16 }}>Aperçu</div>
-          <div dangerouslySetInnerHTML={{ __html: mdToHtml(post.content_md) }} className="preview-content" />
-        </div>
+      {/* Éditeur WYSIWYG */}
+      <div style={{ marginBottom: 24 }}>
+        <RichEditor
+          value={post.content_md}
+          onChange={(html) => update('content_md', html)}
+          onImageUpload={() => fileInputRef.current?.click()}
+          height={520}
+        />
+        <input ref={fileInputRef} type="file" accept="image/*" style={{ display: 'none' }}
+          onChange={e => e.target.files?.[0] && uploadImage(e.target.files[0])} />
       </div>
 
       {/* Boutons d'action */}
@@ -307,20 +324,6 @@ export default function BlogEditPage() {
           </div>
         </Modal>
       )}
-
-      <style jsx global>{`
-        .preview-content h1 { font-size: 24px; margin: 18px 0 12px; color: #fff; font-weight: 600; }
-        .preview-content h2 { font-size: 20px; margin: 18px 0 10px; color: #fff; font-weight: 600; }
-        .preview-content h3 { font-size: 16px; margin: 14px 0 8px; color: #fff; font-weight: 600; }
-        .preview-content p { margin-bottom: 12px; }
-        .preview-content ul, .preview-content ol { margin: 0 0 12px 20px; }
-        .preview-content li { margin-bottom: 4px; }
-        .preview-content a { color: #00D4AA; text-decoration: underline; }
-        .preview-content strong { color: #fff; font-weight: 700; }
-        .preview-content code { background: #1E2D3D; padding: 2px 6px; border-radius: 4px; font-size: 12px; }
-        .preview-content blockquote { border-left: 3px solid #00D4AA; padding: 4px 14px; margin: 12px 0; color: #8B9CB0; font-style: italic; }
-        .preview-content img { max-width: 100%; height: auto; border-radius: 6px; margin: 12px 0; }
-      `}</style>
     </div>
   )
 }
