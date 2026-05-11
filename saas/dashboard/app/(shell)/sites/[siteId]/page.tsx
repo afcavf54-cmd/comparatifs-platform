@@ -149,6 +149,7 @@ export default function SiteDetailPage() {
               { icon: '🗂', label: 'Voir les données', href: `/sites/${siteId}/data` },
               { icon: '✍️', label: "Gérer l'éditorial", href: `/sites/${siteId}/editorial` },
               ...(pageTypes.classement ? [{ icon: '📊', label: 'Gérer les classements', href: `/sites/${siteId}/classements` }] : []),
+              { icon: '📝', label: 'Gérer le blog', href: `/sites/${siteId}/blog` },
               { icon: '⚙️', label: 'Paramètres du site', href: `/sites/${siteId}/settings` },
             ].map(action => (
               <Link key={action.href} href={action.href} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 10, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', textDecoration: 'none', fontSize: 13, transition: 'all 0.15s' }}
