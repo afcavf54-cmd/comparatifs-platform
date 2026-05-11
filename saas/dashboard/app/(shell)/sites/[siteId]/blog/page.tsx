@@ -39,6 +39,11 @@ export default function BlogListPage() {
   const [savingSheet, setSavingSheet] = useState(false)
   const [checkingSheet, setCheckingSheet] = useState(false)
   const [sheetMsg, setSheetMsg] = useState('')
+  // Modale preview de la sheet (affiche les articles à publier avant de déclencher le workflow)
+  const [showPreview, setShowPreview] = useState(false)
+  const [previewData, setPreviewData] = useState<any>(null)
+  const [previewLoading, setPreviewLoading] = useState(false)
+  const [confirming, setConfirming] = useState(false)
 
   useEffect(() => { load(); loadConfig() }, [siteId])
 
@@ -98,19 +103,40 @@ export default function BlogListPage() {
     setTimeout(() => setSheetMsg(''), 4000)
   }
 
-  async function checkSheetNow() {
-    setCheckingSheet(true); setSheetMsg('')
+  async function openPreview() {
+    setShowPreview(true)
+    setPreviewLoading(true)
+    setPreviewData(null)
+    try {
+      const r = await fetch(`/api/sites/${siteId}/blog/preview-sheet`)
+      const data = await r.json()
+      if (r.ok) {
+        setPreviewData(data)
+      } else {
+        setPreviewData({ error: data.error || `Erreur ${r.status}`, hint: data.hint })
+      }
+    } catch (e: any) {
+      setPreviewData({ error: e.message })
+    }
+    setPreviewLoading(false)
+  }
+
+  async function confirmAndPublish() {
+    setConfirming(true)
     try {
       const r = await fetch(`/api/sites/${siteId}/blog/check-sheet`, { method: 'POST' })
       const d = await r.json()
       if (r.ok) {
+        setShowPreview(false)
         setSheetMsg('✓ Workflow déclenché — la sheet sera traitée dans quelques minutes')
+        setTimeout(() => setSheetMsg(''), 8000)
       } else {
-        setSheetMsg(`✗ ${d.error || 'Erreur déclenchement'}`)
+        setPreviewData((prev: any) => ({ ...prev, error: d.error || 'Erreur déclenchement' }))
       }
-    } catch (e: any) { setSheetMsg(`✗ ${e.message}`) }
-    setCheckingSheet(false)
-    setTimeout(() => setSheetMsg(''), 6000)
+    } catch (e: any) {
+      setPreviewData((prev: any) => ({ ...prev, error: e.message }))
+    }
+    setConfirming(false)
   }
 
   async function del(slug: string, title: string) {
@@ -170,9 +196,9 @@ export default function BlogListPage() {
               style={{ padding: '10px 18px', borderRadius: 8, background: sheetUrl === sheetUrlOriginal ? '#1E2D3D' : '#00D4AA', color: sheetUrl === sheetUrlOriginal ? '#4A5568' : '#0A0E1A', fontSize: 13, fontWeight: 700, border: 'none', cursor: sheetUrl === sheetUrlOriginal ? 'default' : 'pointer' }}>
               {savingSheet ? '⏳' : '💾 Enregistrer'}
             </button>
-            <button onClick={checkSheetNow} disabled={checkingSheet || !sheetUrlOriginal}
+            <button onClick={openPreview} disabled={!sheetUrlOriginal}
               style={{ padding: '10px 18px', borderRadius: 8, background: !sheetUrlOriginal ? '#1E2D3D' : '#F6AD55', color: !sheetUrlOriginal ? '#4A5568' : '#0A0E1A', fontSize: 13, fontWeight: 700, border: 'none', cursor: !sheetUrlOriginal ? 'default' : 'pointer' }}>
-              {checkingSheet ? '⏳' : '🔄 Vérifier la sheet maintenant'}
+              🔄 Vérifier la sheet maintenant
             </button>
             {sheetMsg && <span style={{ fontSize: 12, color: sheetMsg.startsWith('✗') ? '#FC8181' : '#00D4AA' }}>{sheetMsg}</span>}
           </div>
@@ -242,9 +268,143 @@ export default function BlogListPage() {
           </table>
         </div>
       )}
+
+      {/* Modale Preview Sheet */}
+      {showPreview && (
+        <div onClick={() => !confirming && setShowPreview(false)}
+          style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100, padding: 20 }}>
+          <div onClick={e => e.stopPropagation()}
+            style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 14, padding: 28, maxWidth: 900, width: '100%', maxHeight: '90vh', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 18 }}>
+              <div>
+                <h3 style={{ color: '#fff', fontSize: 18, fontWeight: 600, margin: '0 0 4px' }}>📊 Aperçu de la sheet</h3>
+                <div style={{ fontSize: 12, color: '#8B9CB0' }}>Vérifie les articles avant de lancer la génération automatique.</div>
+              </div>
+              <button onClick={() => !confirming && setShowPreview(false)} disabled={confirming}
+                style={{ background: 'transparent', border: 'none', color: '#8B9CB0', fontSize: 22, cursor: 'pointer', padding: 0, lineHeight: 1 }}>×</button>
+            </div>
+
+            {previewLoading && (
+              <div style={{ padding: 40, textAlign: 'center', color: '#8B9CB0' }}>
+                ⏳ Lecture de la sheet en cours…
+              </div>
+            )}
+
+            {!previewLoading && previewData?.error && (
+              <div style={{ padding: 20, background: 'rgba(252,129,129,.08)', border: '1px solid #FC8181', borderRadius: 10, color: '#FC8181' }}>
+                <div style={{ fontWeight: 700, marginBottom: 6 }}>✗ {previewData.error}</div>
+                {previewData.hint && <div style={{ fontSize: 13, color: '#FCA5A5', lineHeight: 1.5 }}>{previewData.hint}</div>}
+                {previewData.sheet_url && (
+                  <div style={{ fontSize: 11, color: '#8B9CB0', marginTop: 8, wordBreak: 'break-all' }}>URL testée : {previewData.sheet_url}</div>
+                )}
+              </div>
+            )}
+
+            {!previewLoading && previewData?.rows && (
+              <>
+                {/* Résumé */}
+                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 16, fontSize: 12 }}>
+                  <span style={pill('#00D4AA')}>✓ {previewData.summary.eligible} à publier</span>
+                  {previewData.summary.scheduled > 0 && <span style={pill('#F6AD55')}>⏰ {previewData.summary.scheduled} programmés</span>}
+                  {previewData.summary.already_done > 0 && <span style={pill('#8B9CB0')}>✓ {previewData.summary.already_done} déjà publiés</span>}
+                  {previewData.summary.invalid > 0 && <span style={pill('#FC8181')}>⚠ {previewData.summary.invalid} invalides</span>}
+                  <span style={pill('#4A5568')}>{previewData.summary.total} lignes au total</span>
+                </div>
+
+                {/* Tableau des lignes */}
+                <div style={{ overflow: 'auto', flex: 1, border: '1px solid #1E2D3D', borderRadius: 8 }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
+                    <thead>
+                      <tr style={{ background: '#0A0E1A', position: 'sticky', top: 0 }}>
+                        <th style={th}>Titre</th>
+                        <th style={th}>Catégorie</th>
+                        <th style={th}>Date publication</th>
+                        <th style={th}>Mots min.</th>
+                        <th style={th}>Statut</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {previewData.rows.map((r: any, i: number) => (
+                        <tr key={i} style={{ borderTop: '1px solid #1E2D3D', opacity: r.status === 'already_done' || r.status === 'skip_no_title' ? 0.5 : 1 }}>
+                          <td style={tdSmall}>
+                            <div style={{ color: '#fff', fontWeight: 500 }}>{r.titre || <span style={{ color: '#FC8181' }}>(vide)</span>}</div>
+                            {r.meta_description && <div style={{ color: '#4A5568', fontSize: 11, marginTop: 2 }}>{r.meta_description.slice(0, 80)}{r.meta_description.length > 80 ? '…' : ''}</div>}
+                          </td>
+                          <td style={{ ...tdSmall, color: '#8B9CB0' }}>{r.categorie || '—'}</td>
+                          <td style={{ ...tdSmall, color: '#8B9CB0' }}>
+                            {r.date_publication ? `${r.date_publication}${r.heure_publication ? ' ' + r.heure_publication : ' 09:00'}` : <span style={{ color: '#00D4AA' }}>maintenant</span>}
+                          </td>
+                          <td style={{ ...tdSmall, color: '#8B9CB0' }}>{r.nombre_mots_minimum || '750'}</td>
+                          <td style={tdSmall}>{renderStatus(r)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Footer modale */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 18, gap: 12, flexWrap: 'wrap' }}>
+                  <div style={{ fontSize: 12, color: '#4A5568', flex: 1 }}>
+                    {previewData.summary.eligible === 0
+                      ? '⚠ Aucun article éligible — modifie la sheet ou ajoute des lignes.'
+                      : `${previewData.summary.eligible} article${previewData.summary.eligible > 1 ? 's seront' : ' sera'} généré${previewData.summary.eligible > 1 ? 's' : ''} en arrière-plan via GitHub Actions (≈ 30-60s par article).`}
+                  </div>
+                  <div style={{ display: 'flex', gap: 8 }}>
+                    <button onClick={() => setShowPreview(false)} disabled={confirming}
+                      style={{ padding: '10px 18px', borderRadius: 8, background: '#1E2D3D', color: '#fff', fontSize: 13, fontWeight: 600, border: 'none', cursor: 'pointer' }}>
+                      Annuler
+                    </button>
+                    <button onClick={confirmAndPublish} disabled={confirming || previewData.summary.eligible === 0}
+                      style={{ padding: '10px 18px', borderRadius: 8, background: (confirming || previewData.summary.eligible === 0) ? '#1E2D3D' : '#00D4AA', color: (confirming || previewData.summary.eligible === 0) ? '#4A5568' : '#0A0E1A', fontSize: 13, fontWeight: 700, border: 'none', cursor: (confirming || previewData.summary.eligible === 0) ? 'default' : 'pointer' }}>
+                      {confirming ? '⏳ Déclenchement…' : `🚀 Lancer la génération${previewData.summary.eligible > 0 ? ` (${previewData.summary.eligible})` : ''}`}
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
+
+function pill(color: string): React.CSSProperties {
+  return {
+    display: 'inline-block',
+    padding: '4px 10px',
+    borderRadius: 12,
+    background: `${color}1A`,
+    color,
+    fontWeight: 600,
+    border: `1px solid ${color}40`,
+  }
+}
+
+function renderStatus(r: any): React.ReactNode {
+  const color = {
+    eligible: '#00D4AA',
+    scheduled: '#F6AD55',
+    already_done: '#8B9CB0',
+    invalid_date: '#FC8181',
+    skip_no_title: '#FC8181',
+  }[r.status as string] || '#8B9CB0'
+  const label = {
+    eligible: '✓ À publier',
+    scheduled: '⏰ Programmé',
+    already_done: '✓ Déjà publié',
+    invalid_date: '⚠ Date invalide',
+    skip_no_title: '⚠ Pas de titre',
+  }[r.status as string] || r.status
+  return (
+    <div>
+      <span style={{ color, fontWeight: 600 }}>{label}</span>
+      {r.reason && <div style={{ color: '#4A5568', fontSize: 10, marginTop: 2 }}>{r.reason}</div>}
+    </div>
+  )
+}
+
+const tdSmall: React.CSSProperties = { padding: '10px 12px', verticalAlign: 'top' }
 
 function formatDate(s: string): string {
   if (!s) return '—'
