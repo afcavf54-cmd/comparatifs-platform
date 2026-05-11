@@ -64,22 +64,7 @@ p{color:var(--ink2);margin-bottom:12px;font-size:16px}
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">{% if site.logo_img is defined and site.logo_img %}<img src="{{ site.logo_img }}" alt="{{ site.name }}" style="height:36px;width:auto;object-fit:contain;vertical-align:middle">{% else %}{{ site.logo_text }}<span>{{ site.logo_accent }}</span>{% endif %}</a>
-    <div class="nav-links">
-      <a href="/nos-comparateurs">Nos comparateurs</a>
-    </div>
-    <a href="/contact" class="nav-cta">Contact</a>
-    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="nav-mobile" id="nav-mobile">
-    <a href="/nos-comparateurs">Nos comparateurs</a>
-    <a href="/contact" class="nav-cta">Contact</a>
-  </div>
-</nav>
+{% include 'base/_nav.html.j2' %}
 
 <main>
   <h1>Mentions légales</h1>
@@ -131,14 +116,6 @@ p{color:var(--ink2);margin-bottom:12px;font-size:16px}
 
 {% include "base/_footer.html.j2" %}
 
-<script>
-function toggleMenu(){
-  document.getElementById('nav-mobile').classList.toggle('open');
-}
-document.addEventListener('click',function(e){
-  var m=document.getElementById('nav-mobile'),b=document.getElementById('burger');
-  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');}
-});
-</script>
+
 </body>
 </html>
