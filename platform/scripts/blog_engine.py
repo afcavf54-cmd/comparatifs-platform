@@ -291,10 +291,16 @@ def md_to_html_blog(md: str) -> str:
 # ═══════════════════════════════════════════════════════════════════════════
 
 def excerpt_from_md(md: str, max_chars: int = 180) -> str:
-    """Génère un extrait à partir du markdown : strip toute la syntaxe et tronque."""
+    """Génère un extrait à partir du markdown OU du HTML : strip syntaxe et balises.
+    Détecte les deux formats car les nouveaux articles produits par le RichEditor
+    du dashboard sont stockés en HTML, tandis que les articles legacy sont en markdown."""
     if not md:
         return ''
     text = md
+    # Strip HTML : balises + entités courantes
+    text = re.sub(r'<[^>]+>', ' ', text)
+    text = re.sub(r'&nbsp;|&amp;|&lt;|&gt;|&quot;|&#39;|&rsquo;|&lsquo;|&ldquo;|&rdquo;', ' ', text)
+    # Strip syntaxe markdown : images, liens → texte, marqueurs
     text = re.sub(r'!\[[^\]]*\]\([^)]+\)', '', text)         # images
     text = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', text)     # liens → texte
     text = re.sub(r'[*_`#>~]+', '', text)                    # syntaxe restante
