@@ -67,7 +67,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ site
 export async function POST(req: NextRequest, { params }: { params: Promise<{ siteId: string }> }) {
   const { siteId } = await params
   const body = await req.json()
-  const { title, categorie, content_md, meta_title, meta_description, featured_image, status, schedule_date } = body
+  const { title, categorie, content_md, meta_title, meta_description, featured_image, status, schedule_date, min_words, link_anchors } = body
   if (!title || !categorie) {
     return NextResponse.json({ error: 'title et categorie requis' }, { status: 400 })
   }
@@ -82,7 +82,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ sit
   const now = new Date()
   const dateStr = (schedule_date || now.toISOString().replace(/\.\d+Z$/, '')).replace('Z', '')
 
-  const post = {
+  const post: any = {
     title,
     slug,
     date: dateStr,
@@ -93,6 +93,8 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ sit
     status: status || (schedule_date ? 'scheduled' : 'published'),
     content_md: content_md || `# ${title}\n\n_À rédiger…_\n`,
   }
+  if (min_words && Number(min_words) > 0) post.min_words = Number(min_words)
+  if (Array.isArray(link_anchors) && link_anchors.length > 0) post.link_anchors = link_anchors
   const raw = serializePost(post as any)
   const path = `${dir}/${slug}.md`
   const ok = await ghPut(path, raw, `HUB: New blog post — ${title}`)
