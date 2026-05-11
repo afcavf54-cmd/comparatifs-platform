@@ -45,8 +45,16 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ site
   if (!file) return NextResponse.json({ error: 'Article introuvable' }, { status: 404 })
   const parsed = parseFrontmatter(file.content)
   if (!parsed) return NextResponse.json({ error: 'Article invalide (frontmatter)' }, { status: 500 })
+  // Récupérer le domaine du site pour construire l'URL publique de prévisualisation
+  let domain = ''
+  const configFile = await ghGet(`platform/sites/${siteId}/config.yaml`)
+  if (configFile) {
+    const m = configFile.content.match(/^[ ]*domain:\s*["']?(.+?)["']?\s*$/m)
+    if (m) domain = m[1].trim().replace(/^["']|["']$/g, '').replace(/\/$/, '')
+  }
   return NextResponse.json({
     post: { ...parsed.fm, content_md: parsed.body, sha: file.sha },
+    site: { domain },
   })
 }
 
