@@ -37,11 +37,14 @@ export default function BlogEditPage() {
   const [generating, setGenerating] = useState(false)
   const [showGenModal, setShowGenModal] = useState(false)
   const [genPromptCustom, setGenPromptCustom] = useState('')
+  const [genMinWords, setGenMinWords] = useState(800)
   const [showSchedule, setShowSchedule] = useState(false)
   const [scheduleDate, setScheduleDate] = useState('')
   const [scheduleTime, setScheduleTime] = useState('09:00')
+  const [uploadingFeatured, setUploadingFeatured] = useState(false)
 
   const fileInputRef = useRef<HTMLInputElement | null>(null)
+  const featuredInputRef = useRef<HTMLInputElement | null>(null)
 
   useEffect(() => {
     if (isNew) return
@@ -79,8 +82,30 @@ export default function BlogEditPage() {
     if (!post.title.trim()) { setMsg('Le titre est obligatoire'); return }
     if (!post.categorie.trim()) { setMsg('La catégorie est obligatoire'); return }
     setSaving(true); setMsg('')
+
+    // ── Auto-génération meta description si vide ─────────────────────────
+    // Si l'utilisateur n'a rien renseigné, on appelle Claude pour générer
+    // une meta description courte (~155 caractères) à partir du contenu.
+    // Le résultat est injecté dans le state ET utilisé dans le payload.
+    let metaDesc = post.meta_description
+    if (!metaDesc?.trim() && post.content_md?.trim()) {
+      try {
+        setMsg('🤖 Génération de la meta description...')
+        const r = await fetch(`/api/sites/${siteId}/blog/generate-meta`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title: post.title, content_html: post.content_md }),
+        })
+        const data = await r.json()
+        if (r.ok && data.meta_description) {
+          metaDesc = data.meta_description
+          update('meta_description', metaDesc)
+        }
+      } catch { /* ignore, on save sans meta */ }
+    }
+
     const payload: any = {
       ...post,
+      meta_description: metaDesc,
       status: newStatus || post.status,
       date: post.date || new Date().toISOString().replace(/\.\d+Z$/, ''),
     }
@@ -91,7 +116,7 @@ export default function BlogEditPage() {
         body: JSON.stringify({
           title: post.title, categorie: post.categorie,
           content_md: post.content_md, meta_title: post.meta_title,
-          meta_description: post.meta_description, featured_image: post.featured_image,
+          meta_description: metaDesc, featured_image: post.featured_image,
           status: payload.status,
           schedule_date: payload.status === 'scheduled' ? payload.date : undefined,
         }),
@@ -129,7 +154,7 @@ export default function BlogEditPage() {
     try {
       const r = await fetch(`/api/sites/${siteId}/blog/generate`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: post.title, categorie: post.categorie, prompt_custom: genPromptCustom }),
+        body: JSON.stringify({ title: post.title, categorie: post.categorie, prompt_custom: genPromptCustom, min_words: genMinWords }),
       })
       const data = await r.json()
       if (r.ok && data.content_md) {
@@ -150,6 +175,30 @@ export default function BlogEditPage() {
     } finally {
       setGenerating(false)
     }
+  }
+
+  async function uploadFeatured(file: File) {
+    if (!file) return
+    setUploadingFeatured(true); setMsg('📷 Upload featured image...')
+    const ext = (file.name.split('.').pop() || 'jpg').toLowerCase()
+    const imgName = `featured-${Date.now() % 100000}.${ext}`
+    const slug = post.slug || 'misc'
+    const path = `platform/sites/${siteId}/public/blog/${slug}/${imgName}`
+    const dataUrl: string = await new Promise((resolve, reject) => {
+      const r = new FileReader()
+      r.onload = () => resolve(String(r.result).split(',')[1])
+      r.onerror = reject
+      r.readAsDataURL(file)
+    })
+    const r = await fetch('/api/github/upload', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ path, content: dataUrl, message: `HUB: Blog featured image ${imgName}` }),
+    })
+    setUploadingFeatured(false)
+    if (!r.ok) { setMsg('✗ Erreur upload'); return }
+    update('featured_image', `/blog/${slug}/${imgName}`)
+    setMsg('✓ Featured image uploadée')
+    setTimeout(() => setMsg(''), 2500)
   }
 
   async function uploadImage(file: File) {
@@ -249,9 +298,27 @@ export default function BlogEditPage() {
             </Field>
           </div>
           <div style={{ marginTop: 12 }}>
-            <Field label="Featured image (URL)">
-              <input type="text" value={post.featured_image} onChange={e => update('featured_image', e.target.value)} placeholder="/blog/<slug>/cover.jpg" style={input} />
-            </Field>
+            <label style={{ display: 'block', fontSize: 11, color: '#8B9CB0', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 6 }}>Featured image</label>
+            <div style={{ display: 'flex', gap: 8, alignItems: 'stretch' }}>
+              <input type="text" value={post.featured_image} onChange={e => update('featured_image', e.target.value)}
+                placeholder="/blog/<slug>/cover.jpg ou colle une URL"
+                style={{ ...input, flex: 1 }} />
+              <button type="button" onClick={() => featuredInputRef.current?.click()} disabled={uploadingFeatured}
+                style={{ ...btn, background: '#1E2D3D', padding: '0 16px', whiteSpace: 'nowrap' }}>
+                {uploadingFeatured ? '⏳' : '📤 Upload'}
+              </button>
+              <input ref={featuredInputRef} type="file" accept="image/*" style={{ display: 'none' }}
+                onChange={e => e.target.files?.[0] && uploadFeatured(e.target.files[0])} />
+            </div>
+            {post.featured_image && (
+              <div style={{ marginTop: 10, padding: 8, background: '#0A0E1A', borderRadius: 8, border: '1px solid #1E2D3D', maxWidth: 240 }}>
+                <img src={post.featured_image.startsWith('http') ? post.featured_image
+                  : `https://raw.githubusercontent.com/${process.env.NEXT_PUBLIC_GITHUB_OWNER || 'afcavf54-cmd'}/${process.env.NEXT_PUBLIC_GITHUB_REPO || 'comparatifs-platform'}/main/platform/sites/${siteId}/public${post.featured_image}`}
+                  alt="aperçu"
+                  style={{ display: 'block', width: '100%', height: 'auto', maxHeight: 140, objectFit: 'cover', borderRadius: 6 }}
+                  onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }} />
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -296,11 +363,18 @@ export default function BlogEditPage() {
           <div style={{ color: '#E5E7EB', fontSize: 14, lineHeight: 1.6, marginBottom: 16 }}>
             Le titre <strong>"{post.title || '(à renseigner)'}"</strong>{post.categorie && <> et la catégorie <strong>"{post.categorie}"</strong></>} seront utilisés.
           </div>
+          <Field label="Nombre de mots minimum">
+            <input type="number" min={300} max={3000} step={100} value={genMinWords}
+              onChange={e => setGenMinWords(Math.max(300, parseInt(e.target.value, 10) || 800))}
+              style={{ ...input, maxWidth: 160 }} />
+          </Field>
+          <div style={{ marginTop: 14 }}>
           <Field label="Consignes spécifiques (optionnel)">
             <textarea value={genPromptCustom} onChange={e => setGenPromptCustom(e.target.value)} rows={5}
               placeholder="Ex: Insiste sur les TPE, mets en avant les solutions cloud, ton accessible..."
               style={{ ...input, resize: 'vertical' }} />
           </Field>
+          </div>
           <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10, marginTop: 16 }}>
             <button onClick={() => setShowGenModal(false)} style={btn}>Annuler</button>
             <button onClick={generateAI} style={{ ...btn, background: '#00D4AA', color: '#0A0E1A' }}>✨ Générer</button>
