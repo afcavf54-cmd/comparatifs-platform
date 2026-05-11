@@ -101,7 +101,20 @@ export async function PATCH(req: NextRequest, { params }: Params) {
     if (re.test(yaml)) {
       yaml = yaml.replace(re, formatted)
     } else {
-      yaml += `\n  ${key}: ${quote}${val}${quote}`
+      // La clé n'existe pas → on l'insère DANS la section `site:` si elle
+      // existe (pour rester cohérent avec où les autres clés métier sont
+      // placées). Sinon top-level sans indentation.
+      // IMPORTANT : on n'append PAS à la fin du fichier avec `  ` car ça
+      // ferait tomber la clé dans la dernière section du YAML (ex: `seo:`,
+      // `author:`), ce qui rendrait la clé invisible pour les scripts qui
+      // s'attendent à la trouver au top-level ou dans `site:`.
+      const siteMatch = yaml.match(/^site:\s*\n/m)
+      if (siteMatch) {
+        const insertIdx = siteMatch.index! + siteMatch[0].length
+        yaml = yaml.slice(0, insertIdx) + `  ${key}: ${quote}${val}${quote}\n` + yaml.slice(insertIdx)
+      } else {
+        yaml = yaml.trimEnd() + `\n${key}: ${quote}${val}${quote}\n`
+      }
     }
   }
   if (body.home_title !== undefined) replaceKey('home_title', body.home_title || '')
