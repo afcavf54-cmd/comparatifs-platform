@@ -15,6 +15,7 @@ interface PostData {
   featured_image: string
   status: string
   content_md: string
+  min_words?: number
   related_posts?: string[]
   link_anchors?: { text: string; max: number }[]
   sha?: string
@@ -24,6 +25,7 @@ const empty: PostData = {
   title: '', slug: '', date: '', categorie: '',
   meta_title: '', meta_description: '', featured_image: '',
   status: 'draft', content_md: '',
+  min_words: 800,
   link_anchors: [],
 }
 
@@ -40,6 +42,9 @@ export default function BlogEditPage() {
   const [generating, setGenerating] = useState(false)
   const [showGenModal, setShowGenModal] = useState(false)
   const [genPromptCustom, setGenPromptCustom] = useState('')
+  // genMinWords est synchronisé avec post.min_words (champ persistant de l'article).
+  // Si l'utilisateur modifie le min_words dans la modale et clique Générer, on
+  // met à jour post.min_words pour que le réglage soit conservé au save.
   const [genMinWords, setGenMinWords] = useState(800)
   const [showSchedule, setShowSchedule] = useState(false)
   const [scheduleDate, setScheduleDate] = useState('')
@@ -67,6 +72,12 @@ export default function BlogEditPage() {
             content = mdToHtml(content)
           }
           setPost({ ...empty, ...data.post, content_md: content })
+          // Sync le réglage min_words avec celui stocké dans l'article
+          // (sinon on garderait la valeur par défaut 800 même si l'article
+          // a été sauvegardé avec une valeur différente).
+          if (data.post.min_words && Number(data.post.min_words) > 0) {
+            setGenMinWords(Number(data.post.min_words))
+          }
           // Initialiser le textarea des ancres depuis le frontmatter
           if (Array.isArray(data.post.link_anchors)) {
             setAnchorsText(
@@ -165,6 +176,8 @@ export default function BlogEditPage() {
           content_md: post.content_md, meta_title: post.meta_title,
           meta_description: metaDesc, featured_image: post.featured_image,
           status: payload.status,
+          min_words: genMinWords,
+          link_anchors: payload.link_anchors,
           schedule_date: payload.status === 'scheduled' ? payload.date : undefined,
         }),
       })
@@ -329,7 +342,7 @@ export default function BlogEditPage() {
             )}
           </Field>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 0.8fr', gap: 16 }}>
           <Field label="Slug (URL)">
             <input type="text" value={post.slug} onChange={e => update('slug', e.target.value)} style={input} />
           </Field>
@@ -342,6 +355,17 @@ export default function BlogEditPage() {
               <option value="scheduled">Programmé</option>
               <option value="published">Publié</option>
             </select>
+          </Field>
+          <Field label="Mots min. (IA)">
+            <input type="number" min={300} max={3000} step={100}
+              value={genMinWords}
+              onChange={e => {
+                const v = Math.max(300, Math.min(3000, parseInt(e.target.value, 10) || 800))
+                setGenMinWords(v)
+                update('min_words', v)
+              }}
+              title="Longueur minimale demandée à l'IA lors de la génération de l'article"
+              style={input} />
           </Field>
         </div>
         <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid #1E2D3D' }}>
