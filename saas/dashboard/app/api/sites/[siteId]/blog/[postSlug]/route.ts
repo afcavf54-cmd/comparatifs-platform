@@ -54,7 +54,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ site
 export async function PUT(req: NextRequest, { params }: { params: Promise<{ siteId: string; postSlug: string }> }) {
   const { siteId, postSlug } = await params
   const body = await req.json()
-  const { title, slug, date, categorie, meta_title, meta_description, featured_image, status, content_md, related_posts, link_anchors, sha } = body
+  const { title, slug, date, categorie, meta_title, meta_description, featured_image, status, content_md, related_posts, link_anchors, min_words, sha } = body
   if (!title || !slug) return NextResponse.json({ error: 'title et slug requis' }, { status: 400 })
 
   // Si le slug change, on supprime l'ancien fichier et on crée le nouveau
@@ -62,7 +62,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
   const newPath = `platform/sites/${siteId}/blog/posts/${slug}.md`
   const slugChanged = slug !== postSlug
 
-  const post = {
+  const post: any = {
     title, slug, date, categorie,
     updated: new Date().toISOString().replace(/\.\d+Z$/, ''),
     meta_title, meta_description, featured_image, status,
@@ -70,6 +70,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
     link_anchors: Array.isArray(link_anchors) ? link_anchors : undefined,
     content_md: content_md || '',
   }
+  if (min_words && Number(min_words) > 0) post.min_words = Number(min_words)
   const raw = serializePost(post as any)
 
   if (slugChanged) {
