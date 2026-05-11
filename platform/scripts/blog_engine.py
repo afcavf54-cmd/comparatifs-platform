@@ -205,9 +205,16 @@ def _persist_related_in_frontmatter(filepath: Path, related_slugs: list[str]) ->
 def md_to_html_blog(md: str) -> str:
     """Convertisseur markdown → HTML pour le blog.
     Couvre : titres #/##/###, paragraphes, **bold**, *italic*, [liens](url),
-    ![images](url), listes - et *, listes numérotées, code inline `x`, citations >."""
+    ![images](url), listes - et *, listes numérotées, code inline `x`, citations >.
+
+    Détection HTML : si le contenu contient déjà des balises HTML structurelles
+    (<p>, <h1>-<h6>, <ul>, <ol>, <img>, etc.), on assume que c'est du HTML
+    produit par le RichEditor du dashboard et on le passe tel quel. Évite
+    la double conversion qui mangerait les balises."""
     if not md:
         return ''
+    if re.search(r'<(p|h[1-6]|ul|ol|div|img|blockquote|figure)\b', md, re.I):
+        return md
     text = md
 
     # Images : ![alt](url)   ← AVANT les liens (qui matchent aussi [alt](url))
