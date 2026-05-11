@@ -30,6 +30,7 @@ export interface BlogPostFrontmatter {
   featured_image?: string
   status?: 'published' | 'scheduled' | 'draft'
   related_posts?: string[]
+  link_anchors?: { text: string; max: number }[]
 }
 
 export interface BlogPost extends BlogPostFrontmatter {
@@ -54,12 +55,37 @@ export function parseFrontmatter(raw: string): { fm: Record<string, any>; body: 
     const listKeyMatch = line.match(/^([a-z_][a-z0-9_]*)\s*:\s*$/i)
     if (listKeyMatch) {
       const key = listKeyMatch[1]
-      const items: string[] = []
+      const items: any[] = []
       i++
-      while (i < lines.length && /^-\s+/.test(lines[i].trim())) {
-        const item = lines[i].trim().replace(/^-\s+/, '')
-        items.push(unquote(item))
-        i++
+      // Détecter format dict (`- text: ...` puis `  max: ...`) vs flat (`- "string"`)
+      while (i < lines.length) {
+        const t = lines[i]
+        // Item dict : `- text: "valeur"` puis lignes `  max: N` continues
+        const dictItemMatch = t.match(/^-\s+([a-z_][a-z0-9_]*)\s*:\s*(.*)$/i)
+        if (dictItemMatch) {
+          const obj: Record<string, any> = {}
+          obj[dictItemMatch[1]] = unquote(dictItemMatch[2].trim())
+          i++
+          // Lignes suivantes indentées `  key: value` font partie du même item
+          while (i < lines.length && /^\s{2,}[a-z_][a-z0-9_]*\s*:/.test(lines[i])) {
+            const sub = lines[i].match(/^\s+([a-z_][a-z0-9_]*)\s*:\s*(.*)$/i)
+            if (sub) {
+              const v = unquote(sub[2].trim())
+              obj[sub[1]] = /^\d+$/.test(v) ? parseInt(v, 10) : v
+            }
+            i++
+          }
+          items.push(obj)
+          continue
+        }
+        // Item flat : `- "valeur"` ou `- valeur`
+        const flatItemMatch = t.match(/^-\s+(.*)$/)
+        if (flatItemMatch) {
+          items.push(unquote(flatItemMatch[1].trim()))
+          i++
+          continue
+        }
+        break
       }
       fm[key] = items
       continue
@@ -89,11 +115,22 @@ export function serializePost(post: BlogPost): string {
   const ordered: (keyof BlogPostFrontmatter)[] = [
     'title', 'slug', 'date', 'updated', 'categorie',
     'meta_title', 'meta_description', 'featured_image',
-    'status', 'related_posts',
+    'status', 'related_posts', 'link_anchors',
   ]
   for (const key of ordered) {
     const val = (post as any)[key]
     if (val === undefined || val === null) continue
+    // Liste de dicts (link_anchors)
+    if (key === 'link_anchors' && Array.isArray(val)) {
+      const filtered = val.filter((a: any) => a && a.text && Number(a.max) > 0)
+      if (filtered.length === 0) continue
+      fmLines.push(`${key}:`)
+      filtered.forEach((a: any) => {
+        fmLines.push(`- text: ${quoteIfNeeded(String(a.text))}`)
+        fmLines.push(`  max: ${parseInt(String(a.max), 10)}`)
+      })
+      continue
+    }
     if (Array.isArray(val)) {
       if (val.length === 0) continue
       fmLines.push(`${key}:`)
