@@ -266,18 +266,28 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
 
     for row in rows:
         title = row.get("titre", "").strip()
+        if not title:
+            continue
         date_str = row.get("date_publication", "").strip()
-        if not title or not date_str:
-            continue
-        pub_dt = parse_pub_datetime(date_str, row.get("heure_publication", "09:00"))
-        if pub_dt is None:
-            print(f"   ⚠ Date invalide pour '{title[:40]}' : {date_str}")
-            continue
-        if pub_dt > now:
-            continue  # Pas encore le moment
+        # Si date vide → publication immédiate (= maintenant).
+        # Si date remplie + future → on attend.
+        # Si date remplie + passée → on publie maintenant.
+        if not date_str:
+            pub_dt = now
+            key = f"{title}__IMMEDIATE"
+        else:
+            pub_dt = parse_pub_datetime(date_str, row.get("heure_publication", "09:00"))
+            if pub_dt is None:
+                print(f"   ⚠ Date invalide pour '{title[:40]}' : {date_str}")
+                continue
+            if pub_dt > now:
+                continue  # Pas encore le moment
+            key = f"{title}__{date_str}"
 
         # Clé unique = titre + date (idempotence : la même ligne n'est pas re-traitée)
-        key = f"{title}__{date_str}"
+        # Pour les lignes sans date, on utilise le suffixe IMMEDIATE → la même
+        # ligne ne sera traitée qu'une seule fois, peu importe le nombre de
+        # vérifications cron. Pour re-publier le même titre, changer le titre.
         if key in processed_set:
             continue
 
