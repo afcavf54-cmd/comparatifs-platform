@@ -683,6 +683,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             "slug_a": slug_a, "slug_b": slug_b,
             "seo": seo, "related_pages": related,
             "build_date": date.today().isoformat(),
+            "page_types": config.get("page_types", {}),
             "editorial": editorials.get(pair_key, {}),
         }
 
@@ -726,6 +727,9 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     blog_expected.add(f"{cat['slug']}.html")
         # Charger author_* depuis config.yaml → toujours dans site, utile
         # pour le blog (et harmonisé avec site_with_author des classements).
+        # NOTE : on OVERRIDE volontairement les éventuels champs legacy
+        # `author_name` qui pourraient traîner au top-level du config.yaml
+        # de certains sites ; la source de vérité est `config.author.*`.
         author_cfg_main = config.get("author", {}) or {}
         if author_cfg_main:
             _photo_raw_main = author_cfg_main.get("photo", "")
@@ -733,10 +737,10 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 _photo_clean_main = "/" + _photo_raw_main.split("/public/")[-1].split("?")[0] if "/public/" in _photo_raw_main else ""
             else:
                 _photo_clean_main = _photo_raw_main
-            site.setdefault("author_name", author_cfg_main.get("name", ""))
-            site.setdefault("author_bio", author_cfg_main.get("bio", ""))
-            site.setdefault("author_job", author_cfg_main.get("job_title", ""))
-            site.setdefault("author_photo", _photo_clean_main)
+            site["author_name"] = author_cfg_main.get("name", "") or site.get("author_name", "")
+            site["author_bio"] = author_cfg_main.get("bio", "") or site.get("author_bio", "")
+            site["author_job"] = author_cfg_main.get("job_title", "") or site.get("author_job", "")
+            site["author_photo"] = _photo_clean_main or site.get("author_photo", "")
         cleanup_removed_products(output_dir, site_dir, products, all_pairs, is_classement_template, blog_expected=blog_expected)
 
     # Pour les sites classement : écraser les anciennes pages avis SCPI avec la 404 actuelle
@@ -771,17 +775,26 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             print(f"  ✓ _redirects ({www_preference})")
         copy_shared_assets(output_dir, site_dir)
 
-        # ── Copie logos depuis public/ ───────────────────────────────────
+        # ── Copie public/ (récursif) ─────────────────────────────────────
+        # On copie tout l'arbre public/ tel quel, ce qui inclut :
+        # - logo.{png,svg,jpg,...} et favicon.* au top-level
+        # - blog/<slug>/featured-XXXXX.{jpg,png,...} dans les sous-dossiers
+        # - tout autre asset uploadé via le dashboard
         public_dir = site_dir / "public"
         if public_dir.exists():
-            for pub_file in public_dir.iterdir():
-                if pub_file.is_file():
-                    shutil.copy2(pub_file, output_dir / pub_file.name)
-                    if pub_file.stem == "logo":
-                        site["logo_img"] = f"/{pub_file.name}"
-                    elif pub_file.stem == "favicon":
-                        site["favicon_file"] = f"/{pub_file.name}"
-            logos = [f for f in public_dir.iterdir() if f.stem == "logo"]
+            for src in public_dir.rglob("*"):
+                if src.is_file():
+                    rel = src.relative_to(public_dir)
+                    dst = output_dir / rel
+                    dst.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copy2(src, dst)
+                    # Détecter logo/favicon au top-level pour les variables `site.*`
+                    if src.parent == public_dir:
+                        if src.stem == "logo":
+                            site["logo_img"] = f"/{src.name}"
+                        elif src.stem == "favicon":
+                            site["favicon_file"] = f"/{src.name}"
+            logos = [f for f in public_dir.iterdir() if f.is_file() and f.stem == "logo"]
             if logos:
                 print(f"  ✓ {len(logos)} logos copiés")
         # Copie logos PNG legacy depuis racine site_dir
@@ -863,6 +876,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 classements_by_category=classements_by_category,
                 top_pairs=top_pairs, build_date=date.today().isoformat(),
                 site_editorial=site_editorial,
+                page_types=config.get("page_types", {}),
                 home_title=home_title, home_description=home_desc, home_h1=site.get('home_h1', ''),
             )
             # Cache-buster pour forcer Cloudflare à re-uploader
@@ -884,6 +898,8 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             html = env.get_template("comparatifs-scpi.html.j2").render(
                 site={**site, "seo": config.get("seo", {})}, theme=theme,
                 products=products, total_pairs=len(all_pairs),
+                page_types=config.get("page_types", {}),
+                build_date=date.today().isoformat(),
                 liste_comp_title=liste_comp_title,
             )
             (output_dir / "comparatifs-scpi.html").write_text(html, encoding="utf-8")
@@ -897,6 +913,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             if (TEMPLATES_DIR / liste_avis_tpl).exists():
                 html = env.get_template(liste_avis_tpl).render(
                     site={**site, "seo": config.get("seo", {})}, theme=theme,
+                    page_types=config.get("page_types", {}),
                     products=products, build_date=date.today().isoformat(),
                 )
                 (output_dir / "avis-scpi.html").write_text(html, encoding="utf-8")
@@ -946,6 +963,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 html = env.get_template(avis_tpl_name).render(
                     site={**site, "seo": config.get("seo", {})},
                     theme=theme,
+                    page_types=config.get("page_types", {}),
                     prod=avis_prod,
                     related_comparatifs=related_comparatifs,
                     build_date=date.today().isoformat(),
@@ -1243,6 +1261,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             html = env.get_template("blog-index.html.j2").render(
                 site={**site, "seo": _seo}, theme=theme,
                 page_types=config.get("page_types", {}),
+                build_date=date.today().isoformat(),
                 posts=blog_posts, categories=blog_categories,
                 blog_title=blog_title, blog_meta=blog_meta,
                 blog_h1=blog_h1, blog_intro=blog_intro,
@@ -1257,6 +1276,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 html = env.get_template("blog-index.html.j2").render(
                     site={**site, "seo": _seo}, theme=theme,
                     page_types=config.get("page_types", {}),
+                    build_date=date.today().isoformat(),
                     posts=cat_posts, categories=blog_categories,
                     blog_title=f"{cat['name']} — Blog | {site.get('name', '')}",
                     blog_meta=f"Articles {cat['name'].lower()} — {site.get('name', '')}",
@@ -1282,6 +1302,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 html = tpl_post.render(
                     site={**site, "seo": _seo}, theme=theme,
                     page_types=config.get("page_types", {}),
+                    build_date=date.today().isoformat(),
                     post=post, related_posts=related,
                     blog_categories=blog_categories,
                     all_posts=blog_posts,
