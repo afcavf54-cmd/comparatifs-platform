@@ -99,6 +99,10 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ siteId
   if (/\/pub(\?|$)/.test(sheetUrl) && !/output=csv/.test(sheetUrl)) {
     sheetUrl = sheetUrl.includes('?') ? sheetUrl + '&output=csv' : sheetUrl + '?output=csv'
   }
+  // Cache-buster : Google Sheets met en cache l'URL CSV publique pendant
+  // 5-15min. En ajoutant un timestamp aléatoire en query param, on contourne
+  // ce cache (Google traite l'URL comme nouvelle).
+  const sheetUrlBusted = sheetUrl + (sheetUrl.includes('?') ? '&' : '?') + `_=${Date.now()}`
 
   // 2) Récupérer la liste des articles déjà traités
   let processed: string[] = []
@@ -115,7 +119,14 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ siteId
   // 4) Fetch + parse le CSV
   let csvText = ''
   try {
-    const resp = await fetch(sheetUrl, { cache: 'no-store' })
+    const resp = await fetch(sheetUrlBusted, {
+      cache: 'no-store',
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'User-Agent': 'Mozilla/5.0 (compatible; Viseoweb-Dashboard/1.0)',
+      },
+    })
     if (!resp.ok) {
       return NextResponse.json({
         error: `Sheet inaccessible (HTTP ${resp.status})`,
@@ -187,8 +198,14 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ siteId
 
   return NextResponse.json({
     sheet_url: sheetUrl,
+    fetched_at: new Date().toISOString(),
     summary,
     rows,
     existing_slugs_count: existingSlugs.size,
+  }, {
+    headers: {
+      'Cache-Control': 'no-store, no-cache, must-revalidate',
+      'Pragma': 'no-cache',
+    },
   })
 }
