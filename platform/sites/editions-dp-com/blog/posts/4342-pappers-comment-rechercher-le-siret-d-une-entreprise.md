@@ -1,20 +1,21 @@
 ---
-title: 'Pappers : comment rechercher le siret d''une entreprise ?'
+title: "Pappers : comment rechercher le siret d''une entreprise ?"
 slug: 4342-pappers-comment-rechercher-le-siret-d-une-entreprise
-date: '2026-05-11T15:00:42.406208'
+date: 2026-05-11T15:00:42.406208
+updated: 2026-05-12T12:46:23
 categorie: Entreprenariat
 meta_title: Comment trouver le numéro SIRET d’une entreprise avec Pappers ?
 meta_description: Découvrez comment trouver facilement le SIRET d'une entreprise avec
-  Pappers, service gratuit et rapide. Guide étape par étape pour rechercher par nom
-  ou dirigeant.
-min_words: 750
+featured_image: /blog/4342-pappers-comment-rechercher-le-siret-d-une-entreprise/featured-75575.png
 status: published
+min_words: 750
 related_posts:
 - 4929-pappers-le-site-parfait-pour-la-recherche-d-entreprise
 - 2256-pappers-ou-puis-je-trouver-le-rcs-d-une-entreprise
 - 7452-peut-on-recuperer-son-kbis-gratuitement-sur-pappers
 - 1905-comment-rechercher-un-dirigeant-sur-pappers
 ---
+
 <h2>Qu'est-ce que Pappers exactement ?</h2>
 
 <p>Je vais être direct : <strong>Pappers, c'est le service gratuit</strong> que j'utilise le plus souvent pour trouver des informations sur les entreprises. Pas besoin de s'inscrire pour faire une recherche basique, et les résultats arrivent en quelques secondes.</p>
@@ -115,3 +116,4 @@ Si l'entreprise apparaît sur Pappers avec un statut "active", le SIRET est vali
 Je vérifie l'orthographe, j'essaie avec une partie du nom seulement, ou je cherche par dirigeant. Si l'entreprise n'apparaît toujours pas, elle n'est peut-être pas immatriculée en France.</p>
 
 <p>Au final, <strong>Pappers simplifie vraiment</strong> la recherche de SIRET pour mon activité quotidienne. L'outil n'est pas parfait, mais son rapport qualité-prix-temps reste imbattable pour les PME comme la mienne.</p>
+
