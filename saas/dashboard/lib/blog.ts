@@ -103,8 +103,13 @@ export function parseFrontmatter(raw: string): { fm: Record<string, any>; body: 
 
 function unquote(s: string): string {
   if (!s) return s
-  if ((s.startsWith('"') && s.endsWith('"')) || (s.startsWith("'") && s.endsWith("'"))) {
-    return s.slice(1, -1).replace(/\\"/g, '"').replace(/\\'/g, "'")
+  // Chaîne entre double-quotes : on retire les quotes et on dé-échappe \" et \\
+  if (s.startsWith('"') && s.endsWith('"') && s.length >= 2) {
+    return s.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\')
+  }
+  // Chaîne entre single-quotes : on retire les quotes et on dé-échappe '' (standard YAML)
+  if (s.startsWith("'") && s.endsWith("'") && s.length >= 2) {
+    return s.slice(1, -1).replace(/''/g, "'")
   }
   return s
 }
@@ -147,9 +152,21 @@ export function serializePost(post: BlogPost): string {
 
 function quoteIfNeeded(s: string): string {
   if (s === '') return '""'
-  // Quote si contient des caractères spéciaux YAML
-  if (/^[\s\-?:,\[\]{}#&*!|>'"%@`]/.test(s) || /:\s/.test(s) || /\n/.test(s)) {
-    return `"${s.replace(/"/g, '\\"')}"`
+  // Quote si :
+  // - commence par un caractère YAML spécial (espace, -, ?, :, etc.)
+  // - contient ': ' (qui couperait le parsing)
+  // - contient ' #' (commentaire YAML)
+  // - contient un newline
+  // - contient une apostrophe (pour éviter que YAML choisisse '...''..'.. en single-quote)
+  // - contient un backslash ou un guillemet double (à échapper)
+  const needsQuote = /^[\s\-?:,\[\]{}#&*!|>'"%@`]/.test(s)
+    || /:\s/.test(s)
+    || /\s#/.test(s)
+    || /\n/.test(s)
+    || /['"\\]/.test(s)
+  if (needsQuote) {
+    // On double-quote : échappe les \ et " selon le standard YAML
+    return `"${s.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}"`
   }
   return s
 }
