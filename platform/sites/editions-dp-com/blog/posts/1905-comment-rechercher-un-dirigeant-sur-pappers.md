@@ -1,20 +1,21 @@
 ---
 title: Comment rechercher un dirigeant sur Pappers ?
 slug: 1905-comment-rechercher-un-dirigeant-sur-pappers
-date: '2026-05-11T15:00:42.406208'
+date: 2026-05-11T15:00:42.406208
+updated: 2026-05-12T12:47:59
 categorie: Entreprenariat
 meta_title: Comment rechercher un dirigeant sur facilement ?
 meta_description: Découvrez comment utiliser Pappers pour rechercher efficacement
-  un dirigeant d'entreprise. Guide pratique avec astuces et méthodes pour identifier
-  rapidement vos…
-min_words: 750
+featured_image: /blog/1905-comment-rechercher-un-dirigeant-sur-pappers/featured-62971.png
 status: published
+min_words: 750
 related_posts:
 - 4929-pappers-le-site-parfait-pour-la-recherche-d-entreprise
 - 7452-peut-on-recuperer-son-kbis-gratuitement-sur-pappers
 - 2256-pappers-ou-puis-je-trouver-le-rcs-d-une-entreprise
 - 4342-pappers-comment-rechercher-le-siret-d-une-entreprise
 ---
+
 <h2>Pappers : mon outil quotidien pour traquer les dirigeants</h2>
 
 <p>Quand j'ai découvert Pappers il y a trois ans, je cherchais désespérément à identifier le bon interlocuteur chez un gros client. Fini de tourner en rond avec des standardistes. Cette plateforme m'a fait gagner des heures, et franchement <strong>c'est devenu indispensable</strong> dans ma prospection commerciale.</p>
@@ -108,3 +109,4 @@ Societe.com propose des fonctionnalités similaires, mais l'interface est moins 
 Oui, avec les dates de début et fin de mandat. Très utile pour comprendre l'historique d'une entreprise.</p>
 
 <p>Au final, Pappers m'a vraiment simplifié la prospection commerciale. Pour identifier rapidement le bon interlocuteur dans une entreprise cible, <strong>c'est devenu mon réflexe numéro un</strong>.</p>
+
