@@ -11,8 +11,9 @@ status: published
 link_anchors:
 - text: création d'entreprise avec legalstart
   max: 5
+related_posts:
+- 8532-guichet-unique-inpi-vs-legalstart-comparatif-complet
 ---
-
 <h2>Pourquoi j'ai choisi Legalstart pour créer ma SAS</h2>
 
 <p>Quand j'ai dû créer ma SAS il y a trois ans, j'avais une contrainte majeure : <strong>un budget serré</strong> et pas envie de passer des semaines à comprendre toutes les subtilités administratives. Mon comptable me parlait de 2 000 euros minimum pour une création classique chez un avocat.</p>

@@ -12,8 +12,8 @@ status: published
 link_anchors:
 - text: comité d'entreprise de la SNCF
   max: 5
+related_posts: []
 ---
-
 <h2>Ce que j'ai découvert sur le comité d'entreprise SNCF</h2>
 
 <p>Quand je me suis penché sur les avantages du comité d'entreprise SNCF, j'ai été surpris par l'ampleur des bénéfices proposés. En tant que dirigeant, je vois souvent passer des budgets CE bien moins généreux dans le privé.</p>

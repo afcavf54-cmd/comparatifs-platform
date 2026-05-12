@@ -9,8 +9,9 @@ meta_description: Guichet Unique INPI ou Legalstart pour créer votre société 
   notre comparatif détaillé basé sur 4 ans d'expérience réelle avec les deux solutions.
 min_words: 1000
 status: published
+related_posts:
+- 8082-tout-savoir-sur-la-creation-d-une-sas-avec-legalstart
 ---
-
 <h2>Mon retour d'expérience après avoir testé les deux solutions</h2>
 
 <p>Quand j'ai créé ma société en 2019, j'ai hésité entre passer par le <strong>Guichet Unique INPI</strong> ou déléguer à Legalstart. Quatre ans après, j'ai eu l'occasion de tester les deux approches avec d'autres projets. Voici ce que j'en pense vraiment.</p>

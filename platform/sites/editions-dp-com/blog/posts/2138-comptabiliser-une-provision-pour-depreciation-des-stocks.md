@@ -9,8 +9,9 @@ meta_description: Découvrez comment comptabiliser une provision pour déprécia
   comptables.
 min_words: 900
 status: published
+related_posts:
+- 7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir
 ---
-
 <h2>Pourquoi prévoir une dépréciation de stock dans sa comptabilité</h2>
 
 <p>On a tous des produits qui traînent dans nos entrepôts. Certains depuis des mois. Je me souviens d'un stock de pièces détachées que j'avais gardé trois ans en me disant qu'on finirait bien par les écouler. <strong>Erreur classique</strong> : ces produits perdaient de la valeur chaque jour.</p>

@@ -11,8 +11,9 @@ status: published
 link_anchors:
 - text: mise au rebut
   max: 10
+related_posts:
+- 2138-comptabiliser-une-provision-pour-depreciation-des-stocks
 ---
-
 <h2>La mise au rebut : quand l'entreprise dit adieu à ses équipements</h2>
 
 <p>J'ai eu affaire à la mise au rebut plusieurs fois dans mon entreprise. Une machine qui tombe en panne définitive, un ordinateur obsolète, du matériel endommagé lors d'un transport... <strong>À chaque fois, même question : comment bien traiter ça en comptabilité ?</strong></p>
