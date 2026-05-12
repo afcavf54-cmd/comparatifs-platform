@@ -388,9 +388,23 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, 
             print(f"  ⚠ Sitemap : impossible de charger les articles blog : {_e}")
             blog_posts_for_sitemap = []
         if blog_posts_for_sitemap:
+            BLOG_POSTS_PER_PAGE = 30
+            total_posts = len(blog_posts_for_sitemap)
+            total_pages = max(1, math.ceil(total_posts / BLOG_POSTS_PER_PAGE))
+            # Page 1 + pages paginées
             lines.append(url(f"{domain}/blog", "0.9", "weekly"))
-            for cat in blog_engine.collect_categories(blog_posts_for_sitemap):
+            for p in range(2, total_pages + 1):
+                lines.append(url(f"{domain}/blog/{p}", "0.6", "weekly"))
+            # Pages catégorie (avec pagination)
+            cats = blog_engine.collect_categories(blog_posts_for_sitemap)
+            for cat in cats:
+                cat_posts = [p for p in blog_posts_for_sitemap
+                             if (p.get('categorie') or '').strip().lower() == cat['name'].lower()]
+                cat_pages = max(1, math.ceil(len(cat_posts) / BLOG_POSTS_PER_PAGE))
                 lines.append(url(f"{domain}/{cat['slug']}", "0.7", "weekly"))
+                for p in range(2, cat_pages + 1):
+                    lines.append(url(f"{domain}/{cat['slug']}/{p}", "0.5", "weekly"))
+            # Articles individuels
             for post in blog_posts_for_sitemap:
                 slug = post.get('slug', '')
                 if slug:
@@ -1311,33 +1325,84 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         blog_h1 = _seo.get('blog_h1') or 'Le Blog'
         blog_intro = _seo.get('blog_intro') or ''
 
-        # 1) Index blog
+        # 1) Index blog paginé (30 articles par page)
+        BLOG_POSTS_PER_PAGE = 30
         if (TEMPLATES_DIR / "blog-index.html.j2").exists():
-            html = env.get_template("blog-index.html.j2").render(
-                site={**site, "seo": _seo}, theme=theme,
-                page_types=config.get("page_types", {}),
-                build_date=date.today().isoformat(),
-                posts=blog_posts, categories=blog_categories,
-                blog_title=blog_title, blog_meta=blog_meta,
-                blog_h1=blog_h1, blog_intro=blog_intro,
-            )
-            (output_dir / "blog.html").write_text(html, encoding="utf-8")
-            print(f"  ✓ blog.html (index, {len(blog_posts)} articles)")
+            total_posts = len(blog_posts)
+            total_pages = max(1, math.ceil(total_posts / BLOG_POSTS_PER_PAGE))
 
-            # 2) Pages catégorie (réutilise le template index, filtré)
-            for cat in blog_categories:
-                cat_posts = [p for p in blog_posts
-                             if (p.get('categorie') or '').strip().lower() == cat['name'].lower()]
-                html = env.get_template("blog-index.html.j2").render(
+            def _render_blog_page(posts_slice: list, page_num: int, total: int,
+                                  base_url: str, h1: str, intro: str,
+                                  meta_title: str, meta_desc: str) -> str:
+                # URL de la page précédente : page 1 = base_url, page N>2 = base_url/N-1
+                prev_url = None
+                if page_num == 2:
+                    prev_url = base_url
+                elif page_num > 2:
+                    prev_url = f"{base_url}/{page_num - 1}"
+                next_url = f"{base_url}/{page_num + 1}" if page_num < total else None
+                # On signale dans le titre si page > 1 (mais SEO : meta dupliquée)
+                title = meta_title if page_num == 1 else f"{meta_title} — Page {page_num}"
+                return env.get_template("blog-index.html.j2").render(
                     site={**site, "seo": _seo}, theme=theme,
                     page_types=config.get("page_types", {}),
                     build_date=date.today().isoformat(),
-                    posts=cat_posts, categories=blog_categories,
-                    blog_title=f"{cat['name']} — Blog | {site.get('name', '')}",
-                    blog_meta=f"Articles {cat['name'].lower()} — {site.get('name', '')}",
-                    blog_h1=cat['name'], blog_intro=f"{cat['count']} article{'s' if cat['count'] > 1 else ''}",
+                    posts=posts_slice, categories=blog_categories,
+                    blog_title=title, blog_meta=meta_desc,
+                    blog_h1=h1, blog_intro=intro,
+                    current_page=page_num, total_pages=total,
+                    base_url=base_url,
+                    prev_url=prev_url, next_url=next_url,
                 )
-                (output_dir / f"{cat['slug']}.html").write_text(html, encoding="utf-8")
+
+            for page_num in range(1, total_pages + 1):
+                start = (page_num - 1) * BLOG_POSTS_PER_PAGE
+                end = start + BLOG_POSTS_PER_PAGE
+                page_posts = blog_posts[start:end]
+                html = _render_blog_page(
+                    page_posts, page_num, total_pages,
+                    base_url="/blog",
+                    h1=blog_h1, intro=blog_intro,
+                    meta_title=blog_title, meta_desc=blog_meta,
+                )
+                if page_num == 1:
+                    (output_dir / "blog.html").write_text(html, encoding="utf-8")
+                else:
+                    page_dir = output_dir / "blog" / str(page_num)
+                    page_dir.mkdir(parents=True, exist_ok=True)
+                    (page_dir / "index.html").write_text(html, encoding="utf-8")
+                    blog_expected.add(f"blog/{page_num}/index.html")
+            pagination_msg = f" + {total_pages - 1} page(s) paginée(s)" if total_pages > 1 else ""
+            print(f"  ✓ blog.html (index, {total_posts} articles, {BLOG_POSTS_PER_PAGE}/page){pagination_msg}")
+
+            # 2) Pages catégorie (réutilise le template index, filtré, paginé)
+            for cat in blog_categories:
+                cat_posts = [p for p in blog_posts
+                             if (p.get('categorie') or '').strip().lower() == cat['name'].lower()]
+                cat_total = len(cat_posts)
+                cat_pages = max(1, math.ceil(cat_total / BLOG_POSTS_PER_PAGE))
+                cat_h1 = cat['name']
+                cat_intro = f"{cat['count']} article{'s' if cat['count'] > 1 else ''}"
+                cat_title = f"{cat['name']} — Blog | {site.get('name', '')}"
+                cat_meta = f"Articles {cat['name'].lower()} — {site.get('name', '')}"
+                cat_base_url = f"/{cat['slug']}"
+                for page_num in range(1, cat_pages + 1):
+                    start = (page_num - 1) * BLOG_POSTS_PER_PAGE
+                    end = start + BLOG_POSTS_PER_PAGE
+                    page_posts = cat_posts[start:end]
+                    html = _render_blog_page(
+                        page_posts, page_num, cat_pages,
+                        base_url=cat_base_url,
+                        h1=cat_h1, intro=cat_intro,
+                        meta_title=cat_title, meta_desc=cat_meta,
+                    )
+                    if page_num == 1:
+                        (output_dir / f"{cat['slug']}.html").write_text(html, encoding="utf-8")
+                    else:
+                        page_dir = output_dir / cat['slug'] / str(page_num)
+                        page_dir.mkdir(parents=True, exist_ok=True)
+                        (page_dir / "index.html").write_text(html, encoding="utf-8")
+                        blog_expected.add(f"{cat['slug']}/{page_num}/index.html")
             if blog_categories:
                 print(f"  ✓ {len(blog_categories)} pages catégories blog générées")
 
