@@ -37,6 +37,10 @@ export default function BlogListPage() {
   // Format : { title, createdAt: number }[] — pas de slug car il n'est connu
   // qu'après génération. Rapprochement par normalisation du titre.
   const [pending, setPending] = useState<{ title: string; createdAt: number }[]>([])
+  // Articles programmés pour une date future (status === 'scheduled' dans la sheet).
+  // Ils restent visibles jusqu'à ce que la date soit atteinte et qu'ils
+  // apparaissent dans la liste publiée. Stockés en localStorage séparé.
+  const [scheduled, setScheduled] = useState<{ title: string; scheduledFor: string; createdAt: number }[]>([])
   // Configuration sheet de programmation
   const [showSheetConfig, setShowSheetConfig] = useState(false)
   const [sheetUrl, setSheetUrl] = useState('')
@@ -50,45 +54,69 @@ export default function BlogListPage() {
   const [previewLoading, setPreviewLoading] = useState(false)
   const [confirming, setConfirming] = useState(false)
 
-  useEffect(() => { load(); loadConfig(); loadPending() }, [siteId])
+  useEffect(() => { load(); loadConfig(); loadPending(); loadScheduled() }, [siteId])
 
-  // Polling : tant qu'il y a des articles en attente, on recharge la liste
-  // toutes les 15s pour détecter les nouveaux articles publiés et nettoyer
-  // les placeholders correspondants.
+  // Polling : tant qu'il y a des articles en attente OU programmés, on
+  // recharge la liste toutes les 15s (rapide) ou 5min (pour les programmés
+  // sans pending). Le rapprochement par titre normalisé nettoie les
+  // placeholders quand leur article apparaît vraiment.
   useEffect(() => {
-    if (pending.length === 0) return
-    const id = setInterval(() => { load() }, 15000)
+    if (pending.length === 0 && scheduled.length === 0) return
+    const interval = pending.length > 0 ? 15000 : 5 * 60 * 1000
+    const id = setInterval(() => { load() }, interval)
     return () => clearInterval(id)
-  }, [pending.length])
+  }, [pending.length, scheduled.length])
 
   // Au chargement de la liste, on rapproche les titres attendus avec les
-  // articles réels et on nettoie les placeholders périmés (>10min).
+  // articles réels et on nettoie les placeholders périmés.
+  // - pending : timeout 10 min (échec probable au-delà)
+  // - scheduled : timeout 60 jours (au-delà, abandonné)
   useEffect(() => {
-    if (pending.length === 0) return
+    if (pending.length === 0 && scheduled.length === 0) return
     const realTitles = new Set(posts.map(p => normalizeTitle(p.title)))
-    const MAX_AGE_MS = 10 * 60 * 1000
     const now = Date.now()
-    const filtered = pending.filter(p =>
+    const PENDING_MAX_AGE_MS = 10 * 60 * 1000
+    const SCHEDULED_MAX_AGE_MS = 60 * 24 * 60 * 60 * 1000
+    const newPending = pending.filter(p =>
       !realTitles.has(normalizeTitle(p.title)) &&
-      now - p.createdAt < MAX_AGE_MS
+      now - p.createdAt < PENDING_MAX_AGE_MS
     )
-    if (filtered.length !== pending.length) {
-      setPending(filtered)
-      savePending(filtered)
+    const newScheduled = scheduled.filter(p =>
+      !realTitles.has(normalizeTitle(p.title)) &&
+      now - p.createdAt < SCHEDULED_MAX_AGE_MS
+    )
+    if (newPending.length !== pending.length) {
+      setPending(newPending); savePending(newPending)
+    }
+    if (newScheduled.length !== scheduled.length) {
+      setScheduled(newScheduled); saveScheduled(newScheduled)
     }
   }, [posts])
 
   function pendingKey() { return `pending-blog-${siteId}` }
+  function scheduledKey() { return `scheduled-blog-${siteId}` }
   function loadPending() {
     try {
       const raw = localStorage.getItem(pendingKey())
       if (raw) setPending(JSON.parse(raw))
     } catch { /* ignore */ }
   }
+  function loadScheduled() {
+    try {
+      const raw = localStorage.getItem(scheduledKey())
+      if (raw) setScheduled(JSON.parse(raw))
+    } catch { /* ignore */ }
+  }
   function savePending(p: { title: string; createdAt: number }[]) {
     try {
       if (p.length > 0) localStorage.setItem(pendingKey(), JSON.stringify(p))
       else localStorage.removeItem(pendingKey())
+    } catch { /* ignore */ }
+  }
+  function saveScheduled(s: { title: string; scheduledFor: string; createdAt: number }[]) {
+    try {
+      if (s.length > 0) localStorage.setItem(scheduledKey(), JSON.stringify(s))
+      else localStorage.removeItem(scheduledKey())
     } catch { /* ignore */ }
   }
 
@@ -183,8 +211,26 @@ export default function BlogListPage() {
           setPending(merged)
           savePending(merged)
         }
+        // Mémoriser les titres programmés (date future)
+        const scheduledRows = (previewData?.rows || [])
+          .filter((row: any) => row.status === 'scheduled')
+          .map((row: any) => ({
+            title: row.titre as string,
+            scheduledFor: row.pub_at as string,
+            createdAt: Date.now(),
+          }))
+        if (scheduledRows.length > 0) {
+          const merged = [...scheduled, ...scheduledRows.filter(e =>
+            !scheduled.some(p => normalizeTitle(p.title) === normalizeTitle(e.title))
+          )]
+          setScheduled(merged)
+          saveScheduled(merged)
+        }
         setShowPreview(false)
-        setSheetMsg(`✓ ${eligible.length} article${eligible.length > 1 ? 's' : ''} en cours de génération`)
+        const parts: string[] = []
+        if (eligible.length > 0) parts.push(`${eligible.length} en cours de génération`)
+        if (scheduledRows.length > 0) parts.push(`${scheduledRows.length} programmé${scheduledRows.length > 1 ? 's' : ''}`)
+        setSheetMsg(`✓ ${parts.join(' · ')}`)
         setTimeout(() => setSheetMsg(''), 8000)
       } else {
         setPreviewData((prev: any) => ({ ...prev, error: d.error || 'Erreur déclenchement' }))
@@ -291,6 +337,26 @@ export default function BlogListPage() {
           50% { opacity: 0.4; }
         }
       `}</style>
+
+      {/* Articles programmés pour une date future */}
+      {scheduled.length > 0 && (
+        <div style={{ background: 'rgba(94,158,214,.08)', border: '1px solid #5E9ED6', borderRadius: 12, padding: 18, marginBottom: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+            <strong style={{ color: '#5E9ED6', fontSize: 14 }}>
+              📅 {scheduled.length} article{scheduled.length > 1 ? 's' : ''} programmé{scheduled.length > 1 ? 's' : ''}
+            </strong>
+            <span style={{ color: '#8B9CB0', fontSize: 12 }}>· seront publiés automatiquement à leur date</span>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            {[...scheduled].sort((a, b) => (a.scheduledFor || '').localeCompare(b.scheduledFor || '')).map((p, i) => (
+              <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 12px', background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 8, gap: 12 }}>
+                <span style={{ color: '#fff', fontSize: 13, flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>📅 {p.title}</span>
+                <span style={{ color: '#5E9ED6', fontSize: 12, fontWeight: 600, whiteSpace: 'nowrap' }}>{formatScheduledDate(p.scheduledFor)}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Filtres */}
       <div style={{ display: 'flex', gap: 12, marginBottom: 20, flexWrap: 'wrap' }}>
@@ -511,6 +577,23 @@ function normalizeTitle(t: string): string {
     .toLowerCase()
     .replace(/\s+/g, ' ')
     .trim()
+}
+
+// Formatte une date ISO pour la box "programmés" en relatif quand c'est proche :
+// "Demain à 09:00", "Dans 3 jours · 09:00", "Le 15 mai à 09:00".
+function formatScheduledDate(iso: string): string {
+  if (!iso) return ''
+  const d = new Date(iso)
+  if (isNaN(d.getTime())) return iso
+  const now = new Date()
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+  const dDay = new Date(d.getFullYear(), d.getMonth(), d.getDate())
+  const diffDays = Math.round((dDay.getTime() - today.getTime()) / (24 * 60 * 60 * 1000))
+  const time = d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
+  if (diffDays === 0) return `Aujourd'hui à ${time}`
+  if (diffDays === 1) return `Demain à ${time}`
+  if (diffDays > 1 && diffDays <= 7) return `Dans ${diffDays} jours · ${time}`
+  return d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' }) + ` · ${time}`
 }
 
 function formatDate(s: string): string {
