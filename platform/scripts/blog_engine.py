@@ -531,3 +531,67 @@ def apply_internal_links(posts: list[dict], verbose: bool = False) -> dict:
         'anchors_processed': len(entries),
         'incoming_counts': incoming_count,
     }
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# SOMMAIRE (TABLE DES MATIÈRES) — injection d'ancres + extraction
+# ═══════════════════════════════════════════════════════════════════════════
+
+def _slugify_anchor(text: str) -> str:
+    """Slugify pour ancre URL : lowercase, sans accents, tirets entre mots."""
+    import unicodedata
+    s = unicodedata.normalize('NFD', text or '').encode('ascii', 'ignore').decode('ascii')
+    s = re.sub(r'<[^>]+>', '', s)  # strip toute balise résiduelle
+    s = s.lower()
+    s = re.sub(r'[^a-z0-9]+', '-', s).strip('-')
+    return s[:60] or 'section'
+
+
+def inject_anchors_and_extract_toc(html: str) -> tuple[str, list[dict]]:
+    """Pour chaque <h2>/<h3> dans le HTML :
+    - Injecte un attribut id="..." dérivé du texte (pour la navigation par ancre)
+    - Extrait le titre et le niveau dans une liste TOC
+
+    Retourne (html_modifié, toc) où toc = [{level: 2|3, text: str, id: str}, ...]
+    Les IDs sont uniques au sein de l'article (suffixe -2, -3, ... si collision).
+    Si un <h2>/<h3> a déjà un id="..." en place, on le réutilise."""
+    if not html:
+        return html, []
+
+    toc: list[dict] = []
+    used_ids: set[str] = set()
+
+    def repl(m: re.Match) -> str:
+        level = int(m.group(1))
+        attrs = m.group(2) or ''
+        content = m.group(3)
+        # Texte propre (sans balises) pour l'item TOC
+        text = re.sub(r'<[^>]+>', '', content).strip()
+        if not text:
+            return m.group(0)
+        # ID déjà présent ? on le réutilise
+        existing_id = re.search(r'\bid=["\']([^"\']+)["\']', attrs)
+        if existing_id:
+            anchor_id = existing_id.group(1)
+        else:
+            base = _slugify_anchor(text)
+            anchor_id = base
+            i = 2
+            while anchor_id in used_ids:
+                anchor_id = f"{base}-{i}"
+                i += 1
+        used_ids.add(anchor_id)
+        toc.append({'level': level, 'text': text, 'id': anchor_id})
+        # Si pas d'id, on l'ajoute proprement
+        if not existing_id:
+            new_attrs = (attrs + f' id="{anchor_id}"').strip()
+            return f'<h{level} {new_attrs}>{content}</h{level}>'
+        return m.group(0)
+
+    new_html = re.sub(
+        r'<h([23])((?:\s+[^>]*)?)>(.+?)</h\1\s*>',
+        repl,
+        html,
+        flags=re.DOTALL | re.IGNORECASE,
+    )
+    return new_html, toc
