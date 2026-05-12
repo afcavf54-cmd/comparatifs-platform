@@ -595,3 +595,173 @@ def inject_anchors_and_extract_toc(html: str) -> tuple[str, list[dict]]:
         flags=re.DOTALL | re.IGNORECASE,
     )
     return new_html, toc
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# SCHEMAS SEO — détection automatique FAQPage et HowTo
+# ═══════════════════════════════════════════════════════════════════════════
+
+def extract_faq_from_html(html: str) -> list[dict]:
+    """Détecte une section FAQ dans le HTML et retourne la liste des paires Q/A.
+
+    Critères de déclenchement :
+    - Un <h2> ou <h3> dont le texte contient l'un de ces marqueurs :
+      'FAQ', 'Foire aux questions', 'Questions fréquentes', 'Questions / Réponses',
+      'Questions courantes', 'Q&R', 'Q & R'
+    - On capture ensuite toutes les paires (<h3>Question</h3> + paragraphe(s) qui suivent)
+      jusqu'au prochain <h2> ou la fin du HTML.
+
+    Retourne [{question, answer}, ...] ou [] si pas de FAQ détectée.
+    Le schema FAQPage ne sera émis dans le template que si la liste contient ≥ 2 éléments."""
+    if not html:
+        return []
+
+    pattern_marker = r'(?:faq|foire\s+aux\s+questions|questions?\s+fr[eé]quentes|questions?\s*[/]\s*r[eé]ponses?|questions?\s+courantes|q\s*[\&/]\s*r)'
+    h_re = re.compile(
+        r'<h([23])[^>]*>\s*[^<]*?' + pattern_marker + r'[^<]*?\s*</h\1>',
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    m = h_re.search(html)
+    if not m:
+        return []
+    section_level = int(m.group(1))
+    # Section : du end de ce header jusqu'au prochain header de même niveau (ou supérieur)
+    start = m.end()
+    if section_level == 2:
+        next_hdr = re.search(r'<h2[\s>]', html[start:], flags=re.IGNORECASE)
+    else:
+        next_hdr = re.search(r'<h[12][\s>]', html[start:], flags=re.IGNORECASE)
+    end = start + next_hdr.start() if next_hdr else len(html)
+    section = html[start:end]
+
+    # Niveau des "questions" : si la FAQ est en h2, on cherche h3 ; sinon h4
+    q_level = 3 if section_level == 2 else 4
+    qa_re = re.compile(
+        rf'<h{q_level}[^>]*>(.+?)</h{q_level}\s*>\s*((?:<p[^>]*>.+?</p>\s*)+)',
+        flags=re.DOTALL | re.IGNORECASE,
+    )
+    faqs = []
+    for qa in qa_re.finditer(section):
+        question = re.sub(r'<[^>]+>', '', qa.group(1)).strip()
+        # Joindre tous les <p> en un seul texte (les réponses peuvent être multi-paragraphes)
+        answer = re.sub(r'<\s*p[^>]*>', '', qa.group(2))
+        answer = re.sub(r'<\s*/\s*p\s*>', ' ', answer)
+        answer = re.sub(r'<[^>]+>', '', answer)
+        answer = re.sub(r'&nbsp;|&amp;|&#39;', lambda m_: {'&nbsp;': ' ', '&amp;': '&', '&#39;': "'"}[m_.group(0)], answer)
+        answer = re.sub(r'\s+', ' ', answer).strip()
+        if question and answer and len(answer) >= 20:
+            faqs.append({'question': question, 'answer': answer})
+    return faqs
+
+
+def extract_howto_from_html(html: str, title: str, post_toc: list[dict] | None = None) -> list[dict]:
+    """Détecte un guide pas à pas dans l'article et retourne la liste des étapes.
+
+    Critères de déclenchement (l'un OU l'autre) :
+    1. Le titre de l'article commence par 'Comment ' (cas le plus fréquent pour un how-to)
+    2. Le contenu contient un <h2> avec marqueur : 'Étapes', 'Procédure',
+       'Étape par étape', 'Tutoriel', 'Marche à suivre'
+
+    Stratégie d'extraction :
+    - Chercher une section "étapes" dans le HTML
+    - Si trouvée : capturer les <h3> à l'intérieur comme étapes (name = texte du h3,
+      text = paragraphe(s) qui suit/suivent)
+    - Si pas trouvée mais titre 'Comment ...' : utiliser les <h2> de l'article comme
+      étapes (sauf le 1er h2 s'il s'appelle 'Introduction' / 'Présentation' / etc.)
+
+    Retourne [{name, text, id}, ...] ou [] si pas détecté.
+    Le schema HowTo ne sera émis dans le template que si la liste contient ≥ 3 étapes."""
+    if not html:
+        return []
+
+    title_lower = (title or '').strip().lower()
+    is_howto_title = title_lower.startswith('comment ') or title_lower.startswith('tutoriel ')
+
+    # Chercher une section "étapes" / "procédure" / "tutoriel"
+    steps_marker = r'(?:[ée]tapes?(?:\s+par\s+[ée]tape)?|proc[ée]dure|tutoriel|marche\s+[aà]\s+suivre|guide\s+pratique)'
+    h2_steps_re = re.compile(
+        r'<h2[^>]*>\s*[^<]*?' + steps_marker + r'[^<]*?\s*</h2>',
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    m = h2_steps_re.search(html)
+
+    if m:
+        # Section trouvée : on extrait les h3 qui suivent (jusqu'au prochain h2)
+        start = m.end()
+        next_h2 = re.search(r'<h2[\s>]', html[start:], flags=re.IGNORECASE)
+        end = start + next_h2.start() if next_h2 else len(html)
+        section = html[start:end]
+        return _extract_steps_from_section(section, base_level=3)
+
+    if is_howto_title:
+        # Pas de section "étapes" mais titre "Comment ...". Fallback : utiliser
+        # les <h2> de l'article comme étapes. On exclut le 1er h2 s'il a un
+        # nom générique introductif, et tous les h2 considérés "non-étapes"
+        # (FAQ, Conclusion, Pour aller plus loin, etc.).
+        return _extract_steps_from_h2(html, post_toc)
+
+    return []
+
+
+_NON_STEP_H2_PATTERNS = re.compile(
+    r'^\s*(?:'
+    r'introduction|pr[ée]sentation|pr[ée]ambule|en\s+r[ée]sum[ée]|r[ée]sum[ée]|'
+    r'conclusion|pour\s+aller\s+plus\s+loin|points?\s+cl[eé]s?|'
+    r'foire\s+aux\s+questions|questions?\s+fr[eé]quentes|faq|'
+    r'pour\s+conclure|en\s+conclusion'
+    r')\s*$',
+    flags=re.IGNORECASE,
+)
+
+
+def _extract_steps_from_section(section: str, base_level: int) -> list[dict]:
+    """Extrait les paires (titre niveau N + paragraphes qui suivent) comme étapes."""
+    pat = re.compile(
+        rf'<h{base_level}([^>]*)>(.+?)</h{base_level}\s*>\s*((?:<p[^>]*>.+?</p>\s*)+)',
+        flags=re.DOTALL | re.IGNORECASE,
+    )
+    steps = []
+    for s in pat.finditer(section):
+        attrs = s.group(1) or ''
+        name_raw = s.group(2)
+        body_raw = s.group(3)
+        name = re.sub(r'<[^>]+>', '', name_raw).strip()
+        # Récupère l'id si présent (pour le lien de l'étape)
+        id_match = re.search(r'\bid=["\']([^"\']+)["\']', attrs)
+        step_id = id_match.group(1) if id_match else _slugify_anchor(name)
+        # Texte de l'étape : 1er paragraphe seulement (suffit pour le schema)
+        first_p = re.search(r'<p[^>]*>(.+?)</p>', body_raw, flags=re.DOTALL | re.IGNORECASE)
+        text = ''
+        if first_p:
+            text = re.sub(r'<[^>]+>', '', first_p.group(1))
+            text = re.sub(r'\s+', ' ', text).strip()
+        if name and text and len(text) >= 15:
+            steps.append({'name': name, 'text': text, 'id': step_id})
+    return steps
+
+
+def _extract_steps_from_h2(html: str, post_toc: list[dict] | None = None) -> list[dict]:
+    """Fallback : utilise les <h2> de l'article comme étapes, en excluant les
+    sections génériques (intro, conclusion, FAQ, etc.)."""
+    pat = re.compile(
+        r'<h2([^>]*)>(.+?)</h2\s*>\s*((?:<p[^>]*>.+?</p>\s*)+)',
+        flags=re.DOTALL | re.IGNORECASE,
+    )
+    steps = []
+    for s in pat.finditer(html):
+        attrs = s.group(1) or ''
+        name_raw = s.group(2)
+        body_raw = s.group(3)
+        name = re.sub(r'<[^>]+>', '', name_raw).strip()
+        if _NON_STEP_H2_PATTERNS.match(name):
+            continue
+        id_match = re.search(r'\bid=["\']([^"\']+)["\']', attrs)
+        step_id = id_match.group(1) if id_match else _slugify_anchor(name)
+        first_p = re.search(r'<p[^>]*>(.+?)</p>', body_raw, flags=re.DOTALL | re.IGNORECASE)
+        text = ''
+        if first_p:
+            text = re.sub(r'<[^>]+>', '', first_p.group(1))
+            text = re.sub(r'\s+', ' ', text).strip()
+        if name and text and len(text) >= 15:
+            steps.append({'name': name, 'text': text, 'id': step_id})
+    return steps
