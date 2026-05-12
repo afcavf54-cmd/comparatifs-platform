@@ -1,19 +1,21 @@
 ---
-title: 'Comprendre la mise au rebut en comptabilité : Tout savoir'
+title: "Comprendre la mise au rebut en comptabilité : Tout savoir"
 slug: 7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir
-date: '2026-05-12T12:02:05'
+date: 2026-05-12T12:02:05
+updated: 2026-05-12T12:57:50
 categorie: Comptabilité
-meta_title: 'La mise au rebut des immobilisations en comptabilité : défintion et explications'
-meta_description: 'Découvrez la mise au rebut comptable : procédures, écritures et
-  cas pratiques pour sortir correctement vos biens de l''actif de votre entreprise.'
-min_words: 900
+meta_title: "La mise au rebut des immobilisations en comptabilité : défintion et explications"
+meta_description: "'Découvrez la mise au rebut comptable : procédures, écritures et"
+featured_image: /blog/7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir/featured-65459.jpg
 status: published
+min_words: 900
+related_posts:
+- 2138-comptabiliser-une-provision-pour-depreciation-des-stocks
 link_anchors:
 - text: mise au rebut
   max: 10
-related_posts:
-- 2138-comptabiliser-une-provision-pour-depreciation-des-stocks
 ---
+
 <h2>La mise au rebut : quand l'entreprise dit adieu à ses équipements</h2>
 
 <p>J'ai eu affaire à la mise au rebut plusieurs fois dans mon entreprise. Une machine qui tombe en panne définitive, un ordinateur obsolète, du matériel endommagé lors d'un transport... <strong>À chaque fois, même question : comment bien traiter ça en comptabilité ?</strong></p>
@@ -113,3 +115,4 @@ Oui, cela diminue votre actif et peut affecter votre ratio d'endettement. Nos ba
 Je conserve tout pendant 10 ans minimum : photos du matériel défaillant, devis de réparation, certificats de destruction si nécessaire.</p>
 
 <p>La mise au rebut reste une opération courante mais qui demande de la rigueur. <strong>L'essentiel : bien documenter, respecter la procédure comptable et anticiper l'impact fiscal.</strong> Dans ma pratique, je préfère être trop prudent que pas assez sur ces sujets.</p>
+
