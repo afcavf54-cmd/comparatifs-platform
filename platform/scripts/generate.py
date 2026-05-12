@@ -329,7 +329,7 @@ def products_by_slug(products: list, slug: str) -> dict:
     return next((p for p in products if p["slug"] == slug), None)
 
 
-def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, config: dict = None) -> None:
+def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, site_dir: Path = None, config: dict = None) -> None:
     # Construire le domain avec www_preference
     raw_domain = site["domain"].rstrip("/")
     www_pref = site.get("www_preference") or (config or {}).get("www_preference", "www")
@@ -381,10 +381,11 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, 
 
     # Pages blog (si dossier blog/posts/ présent avec articles publiés)
     blog_posts_for_sitemap = []
-    if blog_engine is not None:
+    if blog_engine is not None and site_dir is not None:
         try:
             blog_posts_for_sitemap = blog_engine.load_all_posts(site_dir, include_drafts=False)
-        except Exception:
+        except Exception as _e:
+            print(f"  ⚠ Sitemap : impossible de charger les articles blog : {_e}")
             blog_posts_for_sitemap = []
         if blog_posts_for_sitemap:
             lines.append(url(f"{domain}/blog", "0.9", "weekly"))
@@ -402,7 +403,9 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, 
         "</urlset>",
     ]
     (output_dir / "sitemap.xml").write_text("\n".join(lines), encoding="utf-8")
-    print(f"  ✓ sitemap.xml ({len(pairs)} comparatifs + {len(products)} avis + pages liste)")
+    n_blog = len(blog_posts_for_sitemap)
+    blog_msg = f" + {n_blog} articles blog" if n_blog else ""
+    print(f"  ✓ sitemap.xml ({len(pairs)} comparatifs + {len(products)} avis + pages liste{blog_msg})")
 
 
 def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, all_pairs: list, is_classement_template: bool = False, blog_expected: set | None = None) -> None:
@@ -724,7 +727,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         generated += 1
 
     if not dry_run:
-        generate_sitemap(site, all_pairs, products, output_dir, config=config)
+        generate_sitemap(site, all_pairs, products, output_dir, site_dir=site_dir, config=config)
         # ── Blog : chargement des articles avant le cleanup ──────────────
         # On marque les pages attendues du blog pour qu'elles ne soient pas
         # supprimées par cleanup_removed_products. Aussi, on set
