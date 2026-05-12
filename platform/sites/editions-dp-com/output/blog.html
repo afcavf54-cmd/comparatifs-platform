@@ -44,6 +44,15 @@ a{color:var(--accent2);text-decoration:none}
 .blog-card-excerpt{font-size:14px;color:var(--ink3);line-height:1.55;margin-bottom:16px;flex:1}
 .blog-card-meta{font-size:12px;color:var(--ink3);margin-top:auto}
 .blog-empty{text-align:center;padding:80px 0;color:var(--ink3);font-size:16px}
+.blog-pagination{display:flex;align-items:center;justify-content:center;gap:16px;margin:48px 0 24px;flex-wrap:wrap}
+.blog-page-link{padding:10px 18px;border-radius:var(--r);background:var(--surface);border:1px solid var(--border);color:var(--ink);text-decoration:none;font-size:14px;font-weight:500;transition:all .15s}
+.blog-page-link:hover{background:var(--accent);color:var(--surface);border-color:var(--accent)}
+.blog-page-disabled{padding:10px 18px;border-radius:var(--r);color:var(--ink3);font-size:14px;border:1px solid var(--border);background:transparent;cursor:default;opacity:.5}
+.blog-page-numbers{display:flex;gap:6px}
+.blog-page-num{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:38px;padding:0 10px;border-radius:var(--r);background:transparent;border:1px solid var(--border);color:var(--ink2);text-decoration:none;font-size:14px;font-weight:500;transition:all .15s}
+.blog-page-num:hover{border-color:var(--accent);color:var(--accent)}
+.blog-page-current{background:var(--accent);color:var(--surface);border-color:var(--accent);cursor:default}
+@media(max-width:600px){.blog-pagination{gap:8px}.blog-page-link{padding:8px 12px;font-size:13px}.blog-page-num{min-width:32px;height:32px;font-size:13px}}
 /* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
 @media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.blog-grid{grid-template-columns:1fr}}
@@ -201,6 +210,8 @@ document.addEventListener('click',function(e){
 <p class="blog-card-excerpt">Ma découverte de Pappers : plus qu'un simple annuaire Je me souviens encore de mes débuts d'entrepreneur. Rechercher des informations sur mes prospects relevait du parcours du…</p><div class="blog-card-meta">11 mai 2026</div>      </div>
     </a>
   </div>
+
+
 </main>
 
 <style>
