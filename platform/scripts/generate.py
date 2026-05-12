@@ -776,6 +776,13 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     # pour que les liens ne soient pas placés dans des h2/h3, et
                     # pour que le sommaire reflète bien la structure finale).
                     post['content_html'], post['toc'] = blog_engine.inject_anchors_and_extract_toc(post.get('content_html', ''))
+                    # Détection automatique FAQ et HowTo (pour les schemas SEO).
+                    # Les schemas ne sont émis dans le template que si au moins
+                    # 2 Q/A (FAQ) ou 3 étapes (HowTo) sont trouvées.
+                    post['faq'] = blog_engine.extract_faq_from_html(post['content_html'])
+                    post['howto_steps'] = blog_engine.extract_howto_from_html(
+                        post['content_html'], post.get('title', ''), post.get('toc')
+                    )
 
                 # ── Maillage interne automatique ─────────────────────────
                 # Pour chaque article cible qui déclare des `link_anchors`,
