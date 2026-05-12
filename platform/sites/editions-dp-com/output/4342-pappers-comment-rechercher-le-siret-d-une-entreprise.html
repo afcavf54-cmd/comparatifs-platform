@@ -82,6 +82,18 @@ a:hover{text-decoration:underline}
 .article-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
 .article-featured{width:100%;border-radius:var(--r2);overflow:hidden;margin-bottom:40px;border:1px solid var(--border)}
 .article-featured img{display:block;width:100%;height:auto}
+.article-toc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:22px 26px;margin:0 0 40px;position:relative}
+.article-toc-title{font-family:'',serif;font-size:18px;font-weight:600;color:var(--ink);margin:0 0 14px;letter-spacing:-.01em}
+.article-toc-list{list-style:none;padding:0;margin:0;counter-reset:toc}
+.article-toc-item{counter-increment:toc;position:relative;padding:6px 0 6px 28px;line-height:1.5}
+.article-toc-item::before{content:counter(toc) ".";position:absolute;left:0;top:6px;color:var(--accent);font-weight:600;font-size:14px;width:22px;text-align:right}
+.article-toc-level-3{padding-left:48px;font-size:14px}
+.article-toc-level-3::before{left:24px;color:var(--ink2);counter-increment:none;content:"›"}
+.article-toc-item a{color:var(--ink2);text-decoration:none;font-size:15px;transition:color .15s}
+.article-toc-item a:hover{color:var(--accent);text-decoration:underline}
+.article-toc-level-3 a{font-size:14px;color:var(--ink2)}
+/* Scroll offset pour que les ancres ne soient pas masquées par un éventuel header sticky */
+.article-body h2,.article-body h3{scroll-margin-top:80px}
 .article-body{font-size:17px;color:var(--ink2);line-height:1.8}
 .article-body p{margin-bottom:20px}
 .article-body h1{font-family:'',serif;font-size:32px;font-weight:400;color:var(--ink);margin:48px 0 16px;letter-spacing:-.02em}
@@ -192,8 +204,44 @@ document.addEventListener('click',function(e){
   </header>
 
 
+  <nav class="article-toc" aria-label="Sommaire de l'article">
+    <div class="article-toc-title">📑 Sommaire</div>
+    <ol class="article-toc-list">
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#qu-est-ce-que-pappers-exactement">Qu'est-ce que Pappers exactement ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#comment-rechercher-un-siret-sur-pappers-la-methode-etape-par">Comment rechercher un SIRET sur Pappers : la méthode étape par étape</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#recherche-par-nom-d-entreprise">Recherche par nom d'entreprise</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#recherche-par-dirigeant">Recherche par dirigeant</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#recherche-par-adresse">Recherche par adresse</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#decrypter-la-fiche-entreprise-ou-trouver-le-siret">Décrypter la fiche entreprise : où trouver le SIRET</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#les-limites-de-la-version-gratuite">Les limites de la version gratuite</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#alternatives-a-pappers-pour-rechercher-un-siret">Alternatives à Pappers pour rechercher un SIRET</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#cas-pratiques-quand-j-utilise-pappers">Cas pratiques : quand j'utilise Pappers</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#questions-frequentes-sur-pappers-et-les-siret">Questions fréquentes sur Pappers et les SIRET</a>
+      </li>
+    </ol>
+  </nav>
+
   <div class="article-body">
-    <h2>Qu'est-ce que Pappers exactement ?</h2>
+    <h2 id="qu-est-ce-que-pappers-exactement">Qu'est-ce que Pappers exactement ?</h2>
 
 <p>Je vais être direct : <strong>Pappers, c'est le service gratuit</strong> que j'utilise le plus souvent pour trouver des informations sur les entreprises. Pas besoin de s'inscrire pour faire une recherche basique, et les résultats arrivent en quelques secondes.</p>
 
@@ -201,9 +249,9 @@ document.addEventListener('click',function(e){
 
 <p>Bon, par contre, certaines informations avancées nécessitent un compte payant. Mais pour une recherche SIRET classique ? <strong>C'est entièrement gratuit</strong>.</p>
 
-<h2>Comment rechercher un SIRET sur Pappers : la méthode étape par étape</h2>
+<h2 id="comment-rechercher-un-siret-sur-pappers-la-methode-etape-par">Comment rechercher un SIRET sur Pappers : la méthode étape par étape</h2>
 
-<h3>Recherche par nom d'entreprise</h3>
+<h3 id="recherche-par-nom-d-entreprise">Recherche par nom d'entreprise</h3>
 
 <p>C'est la méthode la plus simple. Je tape le nom de l'entreprise dans la barre de recherche principale sur <a href="/4929-pappers-le-site-parfait-pour-la-recherche-d-entreprise">pappers.fr</a>. Pappers propose automatiquement des suggestions pendant que je saisis.</p>
 
@@ -211,19 +259,19 @@ document.addEventListener('click',function(e){
 
 <p><strong>Attention aux homonymes.</strong> J'ai déjà eu des surprises avec des entreprises qui portent le même nom. Je vérifie toujours l'adresse et l'activité avant de noter le SIRET.</p>
 
-<h3>Recherche par dirigeant</h3>
+<h3 id="recherche-par-dirigeant">Recherche par dirigeant</h3>
 
 <p>Parfois, je connais le nom du dirigeant mais pas celui de l'entreprise exacte. Pappers permet de chercher par nom et prénom du dirigeant. Pratique quand on travaille en B2B et qu'on veut identifier rapidement la structure juridique d'un contact.</p>
 
 <p>Je saisis "Pierre Dupont dirigeant" et j'obtiens toutes les entreprises où cette personne apparaît comme dirigeant, associé ou représentant légal.</p>
 
-<h3>Recherche par adresse</h3>
+<h3 id="recherche-par-adresse">Recherche par adresse</h3>
 
 <p>Cette fonction m'a déjà sauvé plusieurs fois. Quand je vois une entreprise à une adresse précise mais que je ne connais pas son nom exact, je tape directement l'adresse complète.</p>
 
 <p>Exemple : "15 rue de la République 69001 Lyon" me donnera toutes les entreprises domiciliées à cette adresse. <strong>Très utile pour les centres d'affaires</strong> où plusieurs sociétés partagent la même adresse.</p>
 
-<h2>Décrypter la fiche entreprise : où trouver le SIRET</h2>
+<h2 id="decrypter-la-fiche-entreprise-ou-trouver-le-siret">Décrypter la fiche entreprise : où trouver le SIRET</h2>
 
 <p>Une fois sur la fiche de l'entreprise, je trouve le SIRET dans la section "Informations générales", juste en haut. Il s'affiche clairement avec 14 chiffres.</p>
 
@@ -241,7 +289,7 @@ document.addEventListener('click',function(e){
 
 <p><strong>Petit truc pratique :</strong> je peux copier directement le SIRET en cliquant sur l'icône à côté du numéro. Plus besoin de le recopier manuellement.</p>
 
-<h2>Les limites de la version gratuite</h2>
+<h2 id="les-limites-de-la-version-gratuite">Les limites de la version gratuite</h2>
 
 <p>Soyons honnêtes : Pappers gratuit a ses contraintes. Je peux faire quelques recherches par jour, mais pas 50. Pour un usage intensif, il faut passer à la version premium.</p>
 
@@ -249,7 +297,7 @@ document.addEventListener('click',function(e){
 
 <p>Le support client reste limité sur la version gratuite. J'ai eu quelques bugs d'affichage, et il faut se débrouiller seul.</p>
 
-<h2>Alternatives à Pappers pour rechercher un SIRET</h2>
+<h2 id="alternatives-a-pappers-pour-rechercher-un-siret">Alternatives à Pappers pour rechercher un SIRET</h2>
 
 <p>Je teste régulièrement d'autres solutions :</p>
 
@@ -261,7 +309,7 @@ document.addEventListener('click',function(e){
 
 <p>Franchement, <strong>Pappers reste mon premier choix</strong> pour 80% de mes recherches. L'ergonomie fait la différence quand on doit traiter plusieurs dossiers dans la journée.</p>
 
-<h2>Cas pratiques : quand j'utilise Pappers</h2>
+<h2 id="cas-pratiques-quand-j-utilise-pappers">Cas pratiques : quand j'utilise Pappers</h2>
 
 <p>Voici trois situations concrètes où Pappers m'aide :</p>
 
@@ -275,7 +323,7 @@ document.addEventListener('click',function(e){
 <p>Un exemple récent : un prospect me contacte pour un projet important. Son entreprise semblait récente sur son site. Via Pappers, j'ai découvert qu'elle avait en fait 8 ans d'existence mais avait changé de nom récemment. Cela a changé ma perception de leur maturité.</p>
 </blockquote>
 
-<h2>Questions fréquentes sur Pappers et les SIRET</h2>
+<h2 id="questions-frequentes-sur-pappers-et-les-siret">Questions fréquentes sur Pappers et les SIRET</h2>
 
 <p><strong>Pappers est-il gratuit ?</strong><br>
 Oui pour les recherches basiques et l'accès aux SIRET. Les documents officiels et l'usage intensif nécessitent un abonnement payant.</p>

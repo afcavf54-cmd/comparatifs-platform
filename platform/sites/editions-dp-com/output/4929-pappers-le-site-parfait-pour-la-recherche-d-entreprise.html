@@ -82,6 +82,18 @@ a:hover{text-decoration:underline}
 .article-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
 .article-featured{width:100%;border-radius:var(--r2);overflow:hidden;margin-bottom:40px;border:1px solid var(--border)}
 .article-featured img{display:block;width:100%;height:auto}
+.article-toc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:22px 26px;margin:0 0 40px;position:relative}
+.article-toc-title{font-family:'',serif;font-size:18px;font-weight:600;color:var(--ink);margin:0 0 14px;letter-spacing:-.01em}
+.article-toc-list{list-style:none;padding:0;margin:0;counter-reset:toc}
+.article-toc-item{counter-increment:toc;position:relative;padding:6px 0 6px 28px;line-height:1.5}
+.article-toc-item::before{content:counter(toc) ".";position:absolute;left:0;top:6px;color:var(--accent);font-weight:600;font-size:14px;width:22px;text-align:right}
+.article-toc-level-3{padding-left:48px;font-size:14px}
+.article-toc-level-3::before{left:24px;color:var(--ink2);counter-increment:none;content:"›"}
+.article-toc-item a{color:var(--ink2);text-decoration:none;font-size:15px;transition:color .15s}
+.article-toc-item a:hover{color:var(--accent);text-decoration:underline}
+.article-toc-level-3 a{font-size:14px;color:var(--ink2)}
+/* Scroll offset pour que les ancres ne soient pas masquées par un éventuel header sticky */
+.article-body h2,.article-body h3{scroll-margin-top:80px}
 .article-body{font-size:17px;color:var(--ink2);line-height:1.8}
 .article-body p{margin-bottom:20px}
 .article-body h1{font-family:'',serif;font-size:32px;font-weight:400;color:var(--ink);margin:48px 0 16px;letter-spacing:-.02em}
@@ -195,8 +207,62 @@ document.addEventListener('click',function(e){
     <img src="/blog/4929-pappers-le-site-parfait-pour-la-recherche-d-entreprise/featured-77375.png" alt="Pappers, le site parfait pour la recherche d'entreprise ?" loading="eager">
   </div>
 
+  <nav class="article-toc" aria-label="Sommaire de l'article">
+    <div class="article-toc-title">📑 Sommaire</div>
+    <ol class="article-toc-list">
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#ma-decouverte-de-pappers-plus-qu-un-simple-annuaire">Ma découverte de Pappers : plus qu'un simple annuaire</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#ce-que-pappers-fait-vraiment-bien">Ce que Pappers fait vraiment bien</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#une-interface-qui-ne-fait-pas-perdre-de-temps">Une interface qui ne fait pas perdre de temps</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#des-donnees-fraiches-et-fiables">Des données fraîches et fiables</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#l-export-pdf-qui-simplifie-la-vie">L'export PDF qui simplifie la vie</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#les-limites-que-j-ai-decouvertes-a-l-usage">Les limites que j'ai découvertes à l'usage</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#la-version-gratuite-frustrante">La version gratuite frustrante</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#des-tarifs-qui-grimpent-vite">Des tarifs qui grimpent vite</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#support-client-perfectible">Support client perfectible</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#cas-d-usage-concrets-dans-mon-quotidien">Cas d'usage concrets dans mon quotidien</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#qualification-de-prospects">Qualification de prospects</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#veille-concurrentielle">Veille concurrentielle</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#due-diligence-partenaires">Due diligence partenaires</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#pappers-vs-la-concurrence-mon-retour">Pappers vs la concurrence : mon retour</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#pour-qui-je-recommande-pappers">Pour qui je recommande Pappers</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#questions-frequentes-sur-pappers">Questions fréquentes sur Pappers</a>
+      </li>
+    </ol>
+  </nav>
+
   <div class="article-body">
-    <h2>Ma découverte de Pappers : plus qu'un simple annuaire</h2>
+    <h2 id="ma-decouverte-de-pappers-plus-qu-un-simple-annuaire">Ma découverte de Pappers : plus qu'un simple annuaire</h2>
 
 <p>Je me souviens encore de mes débuts d'entrepreneur. Rechercher des informations sur mes prospects relevait du parcours du combattant. Entre le site d'Infogreffe, les données éparpillées et les tarifs prohibitifs des solutions professionnelles, j'ai perdu un temps fou. <strong>Pappers a changé la donne</strong> pour mon entreprise lyonnaise.</p>
 
@@ -204,9 +270,9 @@ document.addEventListener('click',function(e){
 
 <p>Mais attention. Pappers n'est pas parfait. J'ai testé la version gratuite pendant des mois avant de passer au premium. Aujourd'hui, après trois ans d'utilisation intensive, je peux vous dire exactement où cette solution brille et où elle déçoit.</p>
 
-<h2>Ce que Pappers fait vraiment bien</h2>
+<h2 id="ce-que-pappers-fait-vraiment-bien">Ce que Pappers fait vraiment bien</h2>
 
-<h3>Une interface qui ne fait pas perdre de temps</h3>
+<h3 id="une-interface-qui-ne-fait-pas-perdre-de-temps">Une interface qui ne fait pas perdre de temps</h3>
 
 <p>L'ergonomie de Pappers m'a séduit dès le premier jour. La barre de recherche centrale accepte tout : nom d'entreprise, SIRET, adresse, nom de dirigeant. <strong>En trois secondes, j'accède aux informations essentielles</strong> d'une société.</p>
 
@@ -214,7 +280,7 @@ document.addEventListener('click',function(e){
 
 <p>Contrairement à d'autres outils que j'ai testés, Pappers évite la surcharge d'informations. Les données critiques ressortent visuellement. Quand je prospecte, je repère immédiatement si l'entreprise est en croissance, en difficulté ou stable.</p>
 
-<h3>Des données fraîches et fiables</h3>
+<h3 id="des-donnees-fraiches-et-fiables">Des données fraîches et fiables</h3>
 
 <p>La mise à jour automatique des informations représente le vrai point fort de Pappers. Les données proviennent directement des greffes des tribunaux de commerce et de l'INSEE. <strong>Délai moyen de 24 à 48 heures</strong> après publication officielle.</p>
 
@@ -222,15 +288,15 @@ document.addEventListener('click',function(e){
 
 <p>Les bilans comptables remontent rapidement aussi. Dès qu'une entreprise dépose ses comptes, je peux analyser sa santé financière. Un avantage concurrentiel non négligeable pour négocier avec des nouveaux partenaires.</p>
 
-<h3>L'export PDF qui simplifie la vie</h3>
+<h3 id="l-export-pdf-qui-simplifie-la-vie">L'export PDF qui simplifie la vie</h3>
 
 <p>Pappers génère des rapports PDF complets en quelques clics. Format idéal pour mes présentations client ou mes demandes de financement. Le document compile automatiquement identité, chiffres clés, dirigeants et historique juridique.</p>
 
 <p>Ces exports m'ont fait gagner des heures de travail administratif. Plus besoin de jongler entre plusieurs sources pour constituer un dossier. <strong>Un seul PDF suffit</strong> pour présenter une entreprise de manière professionnelle.</p>
 
-<h2>Les limites que j'ai découvertes à l'usage</h2>
+<h2 id="les-limites-que-j-ai-decouvertes-a-l-usage">Les limites que j'ai découvertes à l'usage</h2>
 
-<h3>La version gratuite frustrante</h3>
+<h3 id="la-version-gratuite-frustrante">La version gratuite frustrante</h3>
 
 <p>Autant être direct : la version gratuite de Pappers sert surtout d'appât. Trois recherches quotidiennes, pas d'export, informations financières limitées. Impossible de travailler sérieusement avec ces restrictions.</p>
 
@@ -238,7 +304,7 @@ document.addEventListener('click',function(e){
 
 <p>Les informations affichées gratuitement restent basiques : raison sociale, adresse, dirigeant principal. Pour accéder aux données financières, aux participations ou à l'historique complet, le passage au premium s'impose rapidement.</p>
 
-<h3>Des tarifs qui grimpent vite</h3>
+<h3 id="des-tarifs-qui-grimpent-vite">Des tarifs qui grimpent vite</h3>
 
 <p>Le pricing de Pappers suit une logique de freemium classique. Formule Essentiel à <strong>39€ HT par mois</strong>, Business à 79€ HT, Enterprise sur devis. Les prix peuvent surprendre pour une PME habituée aux outils gratuits.</p>
 
@@ -246,15 +312,15 @@ document.addEventListener('click',function(e){
 
 <p>Le rapport qualité-prix reste correct comparé aux solutions concurrentes. Societe.com facture plus cher pour des fonctionnalités équivalentes. Mais le budget annuel représente quand même un poste de dépense à prévoir.</p>
 
-<h3>Support client perfectible</h3>
+<h3 id="support-client-perfectible">Support client perfectible</h3>
 
 <p>J'ai eu besoin du support Pappers à plusieurs reprises. Réactivité correcte mais réponses parfois décevantes. Quand j'ai signalé une erreur sur les données d'un client, la correction a pris trois semaines.</p>
 
 <p>Le chat en ligne fonctionne aux heures ouvrables uniquement. Pour une solution digitale utilisée en continu, j'aurais apprécié un support étendu. <strong>Les problèmes techniques ne surviennent pas qu'entre 9h et 18h</strong>.</p>
 
-<h2>Cas d'usage concrets dans mon quotidien</h2>
+<h2 id="cas-d-usage-concrets-dans-mon-quotidien">Cas d'usage concrets dans mon quotidien</h2>
 
-<h3>Qualification de prospects</h3>
+<h3 id="qualification-de-prospects">Qualification de prospects</h3>
 
 <p>Avant chaque rendez-vous commercial, je consulte Pappers pour qualifier mon interlocuteur. Taille d'entreprise, croissance du chiffre d'affaires, situation financière. Ces éléments orientent mon discours et mes propositions tarifaires.</p>
 
@@ -262,19 +328,19 @@ document.addEventListener('click',function(e){
 
 <p>Cette préparation en amont améliore nettement mon taux de transformation. Mes commerciaux arrivent en rendez-vous avec une connaissance précise du contexte client.</p>
 
-<h3>Veille concurrentielle</h3>
+<h3 id="veille-concurrentielle">Veille concurrentielle</h3>
 
 <p>Je surveille mes principaux concurrents via Pappers. Évolution de leur CA, nouveaux dirigeants, changements d'actionnariat. Ces informations m'aident à anticiper leurs mouvements stratégiques.</p>
 
 <p>L'outil m'a permis de détecter l'arrivée d'un nouveau DG chez un concurrent. Information précieuse qui m'a poussé à accélérer le déploiement de notre nouvelle offre. <strong>Nous avons pris six mois d'avance</strong> sur leur repositionnement.</p>
 
-<h3>Due diligence partenaires</h3>
+<h3 id="due-diligence-partenaires">Due diligence partenaires</h3>
 
 <p>Avant de signer avec de nouveaux fournisseurs, je vérifie systématiquement leur solidité financière sur Pappers. Ratios d'endettement, évolution des capitaux propres, historique des dépôts de bilan.</p>
 
 <p>Cette vérification m'a évité plusieurs déconvenues. Un prestataire informatique qui nous courtisait affichait des résultats négatifs depuis trois ans. J'ai préféré passer mon chemin plutôt que de risquer une rupture de service.</p>
 
-<h2>Pappers vs la concurrence : mon retour</h2>
+<h2 id="pappers-vs-la-concurrence-mon-retour">Pappers vs la concurrence : mon retour</h2>
 
 <p>J'ai testé Societe.com, Verif.com et Infonet avant d'adopter Pappers. Chaque solution a ses spécificités mais Pappers tire son épingle du jeu sur plusieurs points.</p>
 
@@ -284,7 +350,7 @@ document.addEventListener('click',function(e){
 
 <p>L'API Pappers mérite une mention spéciale. Notre développeur l'a intégrée en deux jours dans notre CRM. Synchronisation automatique des données clients, enrichissement des fiches prospects. Fonctionnalité précieuse pour automatiser nos process commerciaux.</p>
 
-<h2>Pour qui je recommande Pappers</h2>
+<h2 id="pour-qui-je-recommande-pappers">Pour qui je recommande Pappers</h2>
 
 <p>Pappers convient parfaitement aux TPE et PME qui prospectent régulièrement. Commerciaux, consultants, prestataires de services : tous y trouvent leur compte. L'outil répond aux besoins de qualification rapide et de veille concurrentielle.</p>
 
@@ -292,7 +358,7 @@ document.addEventListener('click',function(e){
 
 <p>Les freelances et consultants apprécieront la formule Essentiel. <strong>200 recherches mensuelles suffisent</strong> pour une activité individuelle. Le budget de 39€ HT reste abordable pour un professionnel indépendant.</p>
 
-<h2>Questions fréquentes sur Pappers</h2>
+<h2 id="questions-frequentes-sur-pappers">Questions fréquentes sur Pappers</h2>
 
 <p><strong>Les données Pappers sont-elles vraiment fiables ?</strong><br>
 Oui, Pappers récupère les informations directement auprès des sources officielles (greffes, INSEE). Le délai de mise à jour varie entre 24 et 48 heures après publication. J'ai rarement constaté d'erreurs sur les données factuelles.</p>
