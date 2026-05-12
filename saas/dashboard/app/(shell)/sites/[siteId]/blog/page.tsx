@@ -48,6 +48,9 @@ export default function BlogListPage() {
   const [savingSheet, setSavingSheet] = useState(false)
   const [checkingSheet, setCheckingSheet] = useState(false)
   const [sheetMsg, setSheetMsg] = useState('')
+  // Domaine public du site (ex: "https://www.editions-dp.com") pour afficher
+  // les thumbnails featured_image dans la liste blog.
+  const [siteDomain, setSiteDomain] = useState('')
   // Modale preview de la sheet (affiche les articles à publier avant de déclencher le workflow)
   const [showPreview, setShowPreview] = useState(false)
   const [previewData, setPreviewData] = useState<any>(null)
@@ -174,6 +177,11 @@ export default function BlogListPage() {
       const d = await r.json()
       setSheetUrl(d.blog_sheet_csv_url || '')
       setSheetUrlOriginal(d.blog_sheet_csv_url || '')
+      if (d.domain) {
+        // Normalise : on retire le trailing slash et on s'assure du scheme
+        const dom = String(d.domain).replace(/\/+$/, '')
+        setSiteDomain(dom.startsWith('http') ? dom : `https://${dom}`)
+      }
     } catch (e) { /* ignore */ }
   }
 
@@ -434,8 +442,24 @@ export default function BlogListPage() {
               {filtered.map(p => (
                 <tr key={p.slug} style={{ borderBottom: '1px solid #1E2D3D' }}>
                   <td style={td}>
-                    <div style={{ color: '#fff', fontSize: 14, fontWeight: 500, marginBottom: 3 }}>{p.title}</div>
-                    {p.excerpt && <div style={{ color: '#4A5568', fontSize: 12 }}>{p.excerpt.slice(0, 90)}{p.excerpt.length > 90 ? '…' : ''}</div>}
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                      {p.featured_image && siteDomain ? (
+                        <img src={`${siteDomain}${p.featured_image}`} alt=""
+                          loading="lazy"
+                          title="Image à la une définie"
+                          onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
+                          style={{ width: 56, height: 56, objectFit: 'cover', borderRadius: 6, border: '1px solid #1E2D3D', flexShrink: 0 }} />
+                      ) : (
+                        <div title="Pas d'image à la une"
+                          style={{ width: 56, height: 56, borderRadius: 6, border: '1px dashed #2A3A4D', background: '#0A0E1A', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#3A4A5D', fontSize: 22, flexShrink: 0 }}>
+                          🖼️
+                        </div>
+                      )}
+                      <div style={{ minWidth: 0, flex: 1 }}>
+                        <div style={{ color: '#fff', fontSize: 14, fontWeight: 500, marginBottom: 3 }}>{p.title}</div>
+                        {p.excerpt && <div style={{ color: '#4A5568', fontSize: 12 }}>{p.excerpt.slice(0, 90)}{p.excerpt.length > 90 ? '…' : ''}</div>}
+                      </div>
+                    </div>
                   </td>
                   <td style={td}>
                     {p.categorie ? <span style={{ display: 'inline-block', padding: '4px 10px', borderRadius: 12, background: '#1E2D3D', color: '#00D4AA', fontSize: 11, fontWeight: 600 }}>{p.categorie}</span> : <span style={{ color: '#4A5568' }}>—</span>}
