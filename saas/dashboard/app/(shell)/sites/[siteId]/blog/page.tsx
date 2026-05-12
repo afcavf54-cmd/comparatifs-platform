@@ -365,7 +365,12 @@ export default function BlogListPage() {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 18 }}>
               <div>
                 <h3 style={{ color: '#fff', fontSize: 18, fontWeight: 600, margin: '0 0 4px' }}>📊 Aperçu de la sheet</h3>
-                <div style={{ fontSize: 12, color: '#8B9CB0' }}>Vérifie les articles avant de lancer la génération automatique.</div>
+                <div style={{ fontSize: 12, color: '#8B9CB0' }}>
+                  Vérifie les articles avant de lancer la génération automatique.
+                  {previewData?.fetched_at && (
+                    <span style={{ marginLeft: 6, color: '#4A5568' }}>· lu à {new Date(previewData.fetched_at).toLocaleTimeString('fr-FR')}</span>
+                  )}
+                </div>
               </div>
               <button onClick={() => !confirming && setShowPreview(false)} disabled={confirming}
                 style={{ background: 'transparent', border: 'none', color: '#8B9CB0', fontSize: 22, cursor: 'pointer', padding: 0, lineHeight: 1 }}>×</button>
@@ -437,6 +442,11 @@ export default function BlogListPage() {
                       : `${previewData.summary.eligible} article${previewData.summary.eligible > 1 ? 's seront' : ' sera'} généré${previewData.summary.eligible > 1 ? 's' : ''} en arrière-plan via GitHub Actions (≈ 30-60s par article).`}
                   </div>
                   <div style={{ display: 'flex', gap: 8 }}>
+                    <button onClick={openPreview} disabled={confirming || previewLoading}
+                      title="Recharge la sheet (utile si tu viens de la modifier — Google cache peut prendre 5-15 min)"
+                      style={{ padding: '10px 14px', borderRadius: 8, background: '#1E2D3D', color: '#8B9CB0', fontSize: 13, fontWeight: 600, border: 'none', cursor: previewLoading ? 'wait' : 'pointer' }}>
+                      🔄 Recharger
+                    </button>
                     <button onClick={() => setShowPreview(false)} disabled={confirming}
                       style={{ padding: '10px 18px', borderRadius: 8, background: '#1E2D3D', color: '#fff', fontSize: 13, fontWeight: 600, border: 'none', cursor: 'pointer' }}>
                       Annuler
