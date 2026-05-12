@@ -54,7 +54,42 @@ export default function BlogListPage() {
   const [previewLoading, setPreviewLoading] = useState(false)
   const [confirming, setConfirming] = useState(false)
 
-  useEffect(() => { load(); loadConfig(); loadPending(); loadScheduled() }, [siteId])
+  useEffect(() => { load(); loadConfig(); loadPending(); loadScheduled(); syncScheduledFromSheet() }, [siteId])
+
+  // Récupère la liste des articles programmés directement depuis la sheet
+  // (sans afficher la modale). Permet d'avoir la box bleue à jour même si
+  // l'utilisateur n'a jamais cliqué "Lancer la génération" depuis le déploiement
+  // de la feature, OU si le localStorage a été vidé.
+  async function syncScheduledFromSheet() {
+    try {
+      const r = await fetch(`/api/sites/${siteId}/blog/preview-sheet`)
+      if (!r.ok) return  // sheet non configurée ou inaccessible : silencieux
+      const data = await r.json()
+      if (!data.rows) return
+      const sheetScheduled = data.rows
+        .filter((row: any) => row.status === 'scheduled' && row.titre && row.pub_at)
+        .map((row: any) => ({
+          title: row.titre as string,
+          scheduledFor: row.pub_at as string,
+          createdAt: Date.now(),
+        }))
+      if (sheetScheduled.length === 0) return
+      // Merger avec ce qui est en localStorage (sans doublons par titre normalisé)
+      setScheduled(prev => {
+        const existingTitles = new Set(prev.map(p => normalizeTitle(p.title)))
+        const newOnes = sheetScheduled.filter((s: any) => !existingTitles.has(normalizeTitle(s.title)))
+        // On rafraîchit aussi les dates pour les titres déjà connus (au cas où
+        // l'utilisateur ait modifié la date dans la sheet)
+        const refreshed = prev.map(p => {
+          const found = sheetScheduled.find((s: any) => normalizeTitle(s.title) === normalizeTitle(p.title))
+          return found ? { ...p, scheduledFor: found.scheduledFor } : p
+        })
+        const merged = [...refreshed, ...newOnes]
+        saveScheduled(merged)
+        return merged
+      })
+    } catch { /* silencieux : pas de sheet configurée, pas grave */ }
+  }
 
   // Polling : tant qu'il y a des articles en attente OU programmés, on
   // recharge la liste toutes les 15s (rapide) ou 5min (pour les programmés
