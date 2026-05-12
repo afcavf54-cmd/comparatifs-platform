@@ -1,20 +1,21 @@
 ---
 title: Peut-on récupérer son Kbis gratuitement sur Pappers ?
 slug: 7452-peut-on-recuperer-son-kbis-gratuitement-sur-pappers
-date: '2026-05-11T15:00:42.406208'
+date: 2026-05-11T15:00:42.406208
+updated: 2026-05-12T12:44:50
 categorie: Entreprenariat
 meta_title: Peut-on télécharger un Kbis gratuitement sur Pappers ?
-meta_description: 'Découvrez si vous pouvez vraiment obtenir votre Kbis gratuitement
-  sur Pappers. Tarifs, alternatives et frais cachés : tout ce qu''il faut savoir avant
-  de commander.'
-min_words: 750
+meta_description: "'Découvrez si vous pouvez vraiment obtenir votre Kbis gratuitement"
+featured_image: /blog/7452-peut-on-recuperer-son-kbis-gratuitement-sur-pappers/featured-82927.png
 status: published
+min_words: 750
 related_posts:
 - 2256-pappers-ou-puis-je-trouver-le-rcs-d-une-entreprise
 - 1905-comment-rechercher-un-dirigeant-sur-pappers
 - 4929-pappers-le-site-parfait-pour-la-recherche-d-entreprise
 - 4342-pappers-comment-rechercher-le-siret-d-une-entreprise
 ---
+
 <h2>La vérité sur la gratuité du Kbis chez Pappers</h2>
 
 <p>Je vais être direct avec vous : <strong>non, vous ne pouvez pas récupérer votre Kbis gratuitement sur Pappers</strong>. Après avoir testé la plateforme pendant plusieurs mois pour mes propres besoins d'entreprise, je peux vous confirmer que c'est payant. Mais laissez-moi vous expliquer pourquoi cette confusion existe et quelles sont vos vraies alternatives.</p>
@@ -98,3 +99,4 @@ MonIdenum reste la seule option gratuite pour votre propre entreprise. Pour les 
 
 <p><strong>Faut-il créer un compte pour commander sur Pappers ?</strong><br>
 Oui, c'est obligatoire. Mais l'inscription prend 2 minutes avec juste un email et un mot de passe. Pas besoin de données compliquées.</p>
+
