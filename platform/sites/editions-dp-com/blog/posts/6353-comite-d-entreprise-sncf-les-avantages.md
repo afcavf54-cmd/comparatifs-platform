@@ -1,19 +1,19 @@
 ---
-title: 'Comité d''entreprise sncf : les avantages'
+title: "Comité d''entreprise sncf : les avantages"
 slug: 6353-comite-d-entreprise-sncf-les-avantages
-date: '2026-05-12T12:02:05'
+date: 2026-05-12T12:02:05
+updated: 2026-05-12T12:39:21
 categorie: Salarié
 meta_title: Les avantages du comité d'entreprise de la SNCF
-meta_description: 'Découvrez les avantages exceptionnels du comité d''entreprise SNCF
-  : réductions de 75% sur les trains, partenariats magasins, loisirs à prix réduit
-  et bien plus.'
-min_words: 800
+meta_description: "'Découvrez les avantages exceptionnels du comité d''entreprise SNCF"
+featured_image: /blog/6353-comite-d-entreprise-sncf-les-avantages/featured-54373.png
 status: published
+min_words: 800
 link_anchors:
 - text: comité d'entreprise de la SNCF
   max: 5
-related_posts: []
 ---
+
 <h2>Ce que j'ai découvert sur le comité d'entreprise SNCF</h2>
 
 <p>Quand je me suis penché sur les avantages du comité d'entreprise SNCF, j'ai été surpris par l'ampleur des bénéfices proposés. En tant que dirigeant, je vois souvent passer des budgets CE bien moins généreux dans le privé.</p>
@@ -82,3 +82,4 @@ related_posts: []
 <p>Par rapport à d'autres CE que je connais, celui de la SNCF se situe dans le haut du panier. Peut-être pas le plus innovant, mais certainement l'un des plus fournis en termes d'avantages concrets.</p>
 
 <p>Pour les futurs agents SNCF, c'est clairement un plus à prendre en compte dans leur réflexion. Ces avantages représentent une part non négligeable de la rémunération globale, même s'ils ne figurent pas sur la fiche de paie.</p>
+
