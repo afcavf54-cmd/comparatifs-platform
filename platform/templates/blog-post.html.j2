@@ -48,6 +48,50 @@
 }
 </script>
 
+{% if post.faq and post.faq | length >= 2 %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for item in post.faq %}
+    {
+      "@type": "Question",
+      "name": {{ item.question | tojson }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ item.answer | tojson }}
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+
+{% if post.howto_steps and post.howto_steps | length >= 3 %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": {{ post.title | tojson }},
+  "description": {{ (post.meta_description | default(post.title)) | tojson }},
+  {% if post.featured_image %}"image": "{{ site.domain }}{{ post.featured_image }}",{% endif %}
+  "step": [
+    {% for step in post.howto_steps %}
+    {
+      "@type": "HowToStep",
+      "position": {{ loop.index }},
+      "name": {{ step.name | tojson }},
+      "text": {{ step.text | tojson }},
+      "url": "{{ site.domain }}/{{ post.slug }}#{{ step.id }}"
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -93,7 +137,7 @@ a:hover{text-decoration:underline}
 .article-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
 .article-featured{width:100%;border-radius:var(--r2);overflow:hidden;margin-bottom:40px;border:1px solid var(--border)}
 .article-featured img{display:block;width:100%;height:auto}
-.article-toc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:22px 26px;margin:0 0 40px;position:relative}
+.article-toc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:22px 26px;margin:0 0 40px}
 .article-toc-title{font-family:'{{ theme.font_title }}',serif;font-size:18px;font-weight:600;color:var(--ink);margin:0 0 14px;letter-spacing:-.01em}
 .article-toc-list{list-style:none;padding:0;margin:0;counter-reset:toc}
 .article-toc-item{counter-increment:toc;position:relative;padding:6px 0 6px 28px;line-height:1.5}
