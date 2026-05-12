@@ -498,6 +498,33 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     products_yaml = load_yaml(products_yaml_path) if products_yaml_path.exists() else {"products": []}
     site          = config["site"]
     theme         = config["theme"]
+
+    # ── Patch défensif : certaines clés métier peuvent se retrouver mal
+    # placées dans le YAML (typiquement tombées dans `seo:`, `author:` ou
+    # une autre section) suite à des éditions du dashboard. On les rapatrie
+    # dans `site` si elles se trouvent ailleurs, pour que les templates qui
+    # utilisent `site.<key>` continuent de marcher quel que soit l'historique
+    # d'édition. Si la clé existe DÉJÀ dans `site`, on ne touche à rien.
+    SITE_KEYS_TO_RESCUE = [
+        'analytics_clicky', 'google_site_verification',
+        'www_preference', 'home_title', 'home_description', 'home_h1',
+        'blog_sheet_csv_url',
+    ]
+    for _k in SITE_KEYS_TO_RESCUE:
+        if site.get(_k):
+            continue
+        # Top-level
+        if config.get(_k):
+            site[_k] = config[_k]
+            continue
+        # Sections dict (seo, author, theme, page_types, etc.)
+        for _sk, _sv in config.items():
+            if _sk == 'site' or not isinstance(_sv, dict):
+                continue
+            if _sv.get(_k):
+                site[_k] = _sv[_k]
+                break
+
     # ── Normalisation site.domain selon www_preference ────────────────────
     # `domain` est utilisé tel quel par tous les templates pour les canonicals,
     # og:url, schema.org. Sans cette normalisation, un config avec
