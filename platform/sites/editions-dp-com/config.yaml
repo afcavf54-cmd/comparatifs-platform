@@ -2,6 +2,7 @@
 # CONFIG SITE -- editions-dp-com
 # ============================================================
 site:
+  google_site_verification: ""
   slug: editions-dp-com
   name: "editions-dp.com"
   domain: "https://editions-dp.com"
@@ -17,7 +18,7 @@ site:
   home_description: ""
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
-  analytics_clicky: '<script async data-id="101505645" src="/66682616612c3c0.js"></script>'
+  analytics_clicky: '<script async data-id="101505645" src="//static.getclicky.com/js"></script>'
   home_h1: "Edition Des Pros : touvez le logiciel qu'il vous faut !"
 page_types:
   classement: classement-saas
