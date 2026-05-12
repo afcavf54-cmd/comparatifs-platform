@@ -2,11 +2,11 @@
 title: Comptabiliser une provision pour dépréciation des stocks
 slug: 2138-comptabiliser-une-provision-pour-depreciation-des-stocks
 date: 2026-05-12T12:02:05
-updated: 2026-05-12T12:33:48
+updated: 2026-05-12T12:52:45
 categorie: Comptabilité
 meta_title: Comptabilisation des stocks et des dépréciations de stocks
 meta_description: Découvrez comment comptabiliser une provision pour dépréciation
-featured_image: /blog/2138-comptabiliser-une-provision-pour-depreciation-des-stocks/featured-19918.png
+featured_image: /blog/2138-comptabiliser-une-provision-pour-depreciation-des-stocks/featured-60109.jpg
 status: published
 min_words: 900
 related_posts:
@@ -123,4 +123,5 @@ Crédit 78174 : 15 000€</p>
 <p><strong>Les provisions affectent-elles la trésorerie ?</strong> Non directement. C'est une écriture comptable qui impacte le résultat mais pas les flux de trésorerie. Par contre, elle réduit l'impôt sur les bénéfices.</p>
 
 <p>Au final, bien gérer ses provisions pour dépréciation, c'est donner une image fidèle de son patrimoine. Vos banquiers apprécieront cette transparence. Et vous éviterez les mauvaises surprises lors des inventaires.</p>
+
 
