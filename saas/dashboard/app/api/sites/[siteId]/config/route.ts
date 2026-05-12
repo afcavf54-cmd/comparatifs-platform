@@ -27,6 +27,7 @@ export async function GET(_: NextRequest, { params }: Params) {
     google_site_verification: get('google_site_verification'),
     www_preference: get('www_preference') || 'www',
     blog_sheet_csv_url: get('blog_sheet_csv_url'),
+    domain: get('domain'),
     page_types: pageTypes,
     theme: {
       accent: get('accent'),
