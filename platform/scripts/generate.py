@@ -772,6 +772,10 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     post['reading_time'] = _reading_time(post.get('content_md', ''))
                     if post.get('categorie'):
                         post['categorie_slug'] = blog_engine.categorie_slug(post['categorie'])
+                    # Injection ancres + extraction TOC (avant le maillage interne
+                    # pour que les liens ne soient pas placés dans des h2/h3, et
+                    # pour que le sommaire reflète bien la structure finale).
+                    post['content_html'], post['toc'] = blog_engine.inject_anchors_and_extract_toc(post.get('content_html', ''))
 
                 # ── Maillage interne automatique ─────────────────────────
                 # Pour chaque article cible qui déclare des `link_anchors`,
