@@ -23,6 +23,13 @@ Format attendu du CSV (colonnes) :
     slug               (optionnel, dérivé du titre sinon)
     meta_title         (optionnel)
     meta_description   (optionnel)
+    nombre_mots_minimum  (optionnel, défaut 750, plage 300-3000)
+    link_anchors       (optionnel, ancres acceptant cet article comme cible
+                        depuis d'autres articles — format "ancre1:5;ancre2:3")
+    mots_imposes       (optionnel, mots/expressions obligatoires DANS cet
+                        article — séparés par virgule ou point-virgule. Favorise
+                        le maillage entrant : ces mots seront détectés comme
+                        ancres par d'autres articles qui en parlent.)
 """
 from __future__ import annotations
 import csv
@@ -244,8 +251,15 @@ CONTRAINTES STRICTES :
 
 def generate_article_html(title: str, categorie: str, prompt_custom: str,
                            global_prompt: str, persona_prompt: str,
-                           min_words: int = 750) -> str:
-    """Génère le contenu HTML d'un article via Claude (mêmes contraintes que la route /generate)."""
+                           min_words: int = 750,
+                           mots_imposes: list[str] | None = None) -> str:
+    """Génère le contenu HTML d'un article via Claude (mêmes contraintes que la route /generate).
+
+    Si `mots_imposes` est fourni, les expressions y figurant doivent apparaître
+    au moins une fois dans le corps de l'article (utilisé pour le maillage
+    interne : les mots correspondent aux `link_anchors` d'autres articles du
+    blog, qui pourront ainsi être linkés automatiquement vers eux au build).
+    """
     max_w = int(min_words * 1.5)
     base_sys = """Tu es un rédacteur SEO expérimenté. Tu écris des articles de blog en français.
 
@@ -271,8 +285,19 @@ CONTRAINTES DE PONCTUATION (impératif) :
 
     cat_line = f"\nCatégorie : {categorie}" if categorie else ""
     custom_line = f"\n\nConsignes spécifiques :\n{prompt_custom}" if prompt_custom else ""
+    mots_line = ""
+    if mots_imposes:
+        mots_fmt = ", ".join(f'« {m} »' for m in mots_imposes)
+        mots_line = (
+            f"\n\nMOTS-CLÉS OBLIGATOIRES (impératif) :\n"
+            f"Tu dois inclure dans le corps de l'article, au moins une fois chacune et de manière "
+            f"naturelle, les expressions suivantes : {mots_fmt}.\n"
+            f"Ces expressions doivent apparaître TELLES QUELLES (même orthographe, même formulation) "
+            f"car elles servent au maillage interne automatique du blog. Si plusieurs expressions "
+            f"sont synonymes, utilise-les dans des contextes différents pour rester naturel."
+        )
     user = (f"Rédige un article de blog complet sur le sujet suivant :\n\n"
-            f"Titre : {title}{cat_line}{custom_line}\n\n"
+            f"Titre : {title}{cat_line}{custom_line}{mots_line}\n\n"
             f"Longueur cible : {min_words} à {max_w} mots (minimum {min_words} mots impératif). "
             f"L'article doit être informatif, structuré, et utile au lecteur cible défini dans ton persona.")
 
@@ -441,12 +466,28 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
             pass
         link_anchors_raw = (row.get("link_anchors") or row.get("ancres") or "").strip()
 
+        # Mots imposés dans l'article (pour favoriser le maillage interne).
+        # Colonne optionnelle, séparée par virgule, point-virgule ou retour ligne.
+        # Aliases acceptés : mots_imposes, mots_cles, mots-cles, mots_clés, keywords.
+        mots_imposes_raw = (
+            row.get("mots_imposes")
+            or row.get("mots_cles") or row.get("mots-cles") or row.get("mots_clés")
+            or row.get("keywords") or ""
+        ).strip()
+        mots_imposes = [
+            m.strip()
+            for m in re.split(r'[,;\n]', mots_imposes_raw)
+            if m.strip()
+        ]
+
         # Génération IA
         categorie = row.get("categorie", "").strip()
         prompt_custom = row.get("prompt_custom", "").strip()
-        print(f"   🤖 Génération '{title[:50]}' (min {min_words} mots)...", end=" ", flush=True)
+        mots_log = f" + {len(mots_imposes)} mots imposés" if mots_imposes else ""
+        print(f"   🤖 Génération '{title[:50]}' (min {min_words} mots{mots_log})...", end=" ", flush=True)
         try:
-            html = generate_article_html(title, categorie, prompt_custom, global_prompt, persona_prompt, min_words=min_words)
+            html = generate_article_html(title, categorie, prompt_custom, global_prompt, persona_prompt,
+                                          min_words=min_words, mots_imposes=mots_imposes)
             if not html or len(html) < 100:
                 print("⚠ contenu suspect, skip")
                 continue
