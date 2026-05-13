@@ -75,7 +75,13 @@ CONTRAINTES DE FORMAT (impératif) :
 - Pas de tirets longs — ni –, utilise des virgules ou points
 - Pas de bullets unicode • ou ·
 - Pas de markdown ** _ ## etc. : uniquement du HTML
-- Pas de <div>, pas de <span>, pas de classes CSS — du HTML sémantique simple uniquement`
+- Pas de <div>, pas de <span>, pas de classes CSS — du HTML sémantique simple uniquement
+
+CONTRAINTES DE PONCTUATION (impératif) :
+- Tout titre sous forme de question DOIT se terminer par un point d'interrogation '?'
+  (titres commençant par : Comment, Pourquoi, Que, Quel, Quelle, Quels, Quelles, Qui, Où,
+  Quand, Combien, Est-ce que, Faut-il, Doit-on, Peut-on, etc.)
+- En français : espace insécable avant '?' '!' ':' ';' — utilise ' ?' avec un espace simple`
 
   const layers = [personaPrompt, globalPrompt, baseSys].filter(Boolean)
   const systemPrompt = layers.join('\n\n')
