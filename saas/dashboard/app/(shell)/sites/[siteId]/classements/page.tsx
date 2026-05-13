@@ -637,7 +637,12 @@ export default function ClassementsPage() {
                       <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5, display: 'flex', alignItems: 'center', gap: 6 }}>
                         <span>{label}</span>
                         {!selectedData[field] && fieldDefaults[field] && (
-                          <span style={{ fontSize: 9, color: '#5E9ED6', textTransform: 'uppercase' as const, fontWeight: 600, background: 'rgba(94,158,214,.15)', padding: '2px 6px', borderRadius: 4 }} title={`Valeur par défaut générée depuis le pattern SEO du config.yaml — modifie ici pour overrider`}>↳ défaut</span>
+                          <button
+                            onClick={() => updateField(selected, field, fieldDefaults[field])}
+                            title="Copier la valeur par défaut dans le champ pour la modifier"
+                            style={{ fontSize: 9, color: '#5E9ED6', textTransform: 'uppercase' as const, fontWeight: 600, background: 'rgba(94,158,214,.15)', padding: '2px 6px', borderRadius: 4, border: 'none', cursor: 'pointer' }}>
+                            ↳ défaut · éditer
+                          </button>
                         )}
                       </div>
                       <input value={selectedData[field] || ''}
@@ -653,7 +658,12 @@ export default function ClassementsPage() {
                     <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, display: 'flex', alignItems: 'center', gap: 6 }}>
                       <span>Meta description</span>
                       {!selectedData.meta_description && defaultMeta && (
-                        <span style={{ fontSize: 9, color: '#5E9ED6', textTransform: 'uppercase' as const, fontWeight: 600, background: 'rgba(94,158,214,.15)', padding: '2px 6px', borderRadius: 4 }} title={`Valeur par défaut : ${defaultMeta}`}>↳ défaut</span>
+                        <button
+                          onClick={() => updateField(selected, 'meta_description', defaultMeta)}
+                          title="Copier la valeur par défaut dans le champ pour la modifier"
+                          style={{ fontSize: 9, color: '#5E9ED6', textTransform: 'uppercase' as const, fontWeight: 600, background: 'rgba(94,158,214,.15)', padding: '2px 6px', borderRadius: 4, border: 'none', cursor: 'pointer' }}>
+                          ↳ défaut · éditer
+                        </button>
                       )}
                     </div>
                     <button onClick={async () => {
