@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Création entreprise — Blog | editions-dp.com</title>
+<meta name="description" content="Articles création entreprise — editions-dp.com">
+<link rel="canonical" href="https://www.editions-dp.com/blog">
+<meta property="og:title" content="Création entreprise — Blog | editions-dp.com">
+<meta property="og:description" content="Articles création entreprise — editions-dp.com">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.editions-dp.com/blog">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="&v=editions-dp-com" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#F4F6FB;--surface:#FFFFFF;--surface2:#F5F3EE;
+  --ink:#0F1A2E;--ink2:#3D434B;--ink3:#8B9CB0;
+  --accent:#1B4FD8;--accent2:#E8410A;--green:#3D7A4F;
+  --border:#E6E1D8;--r:8px;--r2:14px;
+}
+body{font-family:'',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+a{color:var(--accent2);text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 5vw}
+.blog-header{padding:64px 0 32px;text-align:center}
+.blog-title{font-family:'',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:16px}
+.blog-sub{font-size:18px;color:var(--ink3);max-width:600px;margin:0 auto}
+.blog-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:32px 0 40px}
+.blog-filter{font-size:13px;font-weight:600;color:var(--ink2);padding:8px 16px;border-radius:24px;border:1px solid var(--border);background:var(--surface);transition:.15s;cursor:pointer}
+.blog-filter:hover,.blog-filter.active{color:var(--accent);border-color:var(--accent)}
+.blog-filter-count{font-size:11px;color:var(--ink3);margin-left:4px}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px}
+.blog-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;text-decoration:none;transition:.2s;display:flex;flex-direction:column}
+.blog-card:hover{border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.06);transform:translateY(-2px);text-decoration:none}
+.blog-card-img{aspect-ratio:16/9;background:var(--surface2);overflow:hidden}
+.blog-card-img img{width:100%;height:100%;object-fit:cover}
+.blog-card-img-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--surface2) 0%,var(--bg) 100%);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:48px}
+.blog-card-body{padding:20px 22px 24px;flex:1;display:flex;flex-direction:column}
+.blog-card-cat{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:10px;align-self:flex-start}
+.blog-card-title{font-family:'',serif;font-size:20px;font-weight:400;line-height:1.3;color:var(--ink);margin-bottom:10px;letter-spacing:-.01em}
+.blog-card-excerpt{font-size:14px;color:var(--ink3);line-height:1.55;margin-bottom:16px;flex:1}
+.blog-card-meta{font-size:12px;color:var(--ink3);margin-top:auto}
+.blog-empty{text-align:center;padding:80px 0;color:var(--ink3);font-size:16px}
+.blog-pagination{display:flex;align-items:center;justify-content:center;gap:16px;margin:48px 0 24px;flex-wrap:wrap}
+.blog-page-link{padding:10px 18px;border-radius:var(--r);background:var(--surface);border:1px solid var(--border);color:var(--ink);text-decoration:none;font-size:14px;font-weight:500;transition:all .15s}
+.blog-page-link:hover{background:var(--accent);color:var(--surface);border-color:var(--accent)}
+.blog-page-disabled{padding:10px 18px;border-radius:var(--r);color:var(--ink3);font-size:14px;border:1px solid var(--border);background:transparent;cursor:default;opacity:.5}
+.blog-page-numbers{display:flex;gap:6px}
+.blog-page-num{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:38px;padding:0 10px;border-radius:var(--r);background:transparent;border:1px solid var(--border);color:var(--ink2);text-decoration:none;font-size:14px;font-weight:500;transition:all .15s}
+.blog-page-num:hover{border-color:var(--accent);color:var(--accent)}
+.blog-page-current{background:var(--accent);color:var(--surface);border-color:var(--accent);cursor:default}
+@media(max-width:600px){.blog-pagination{gap:8px}.blog-page-link{padding:8px 12px;font-size:13px}.blog-page-num{min-width:32px;height:32px;font-size:13px}}
+/* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
+@media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.blog-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+</style>
+<script async data-id="101505645" src="//static.getclicky.com/js"></script>
+</head>
+<body>
+
+<style>
+nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;position:sticky;top:0;z-index:1000;isolation:isolate}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;position:relative}
+.nav-logo{font-family:'',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.1)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
+.nav-cta:hover{opacity:.88}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;font-weight:500;padding:12px 16px;border-radius:10px;transition:.15s}
+.nav-mobile a:hover,.nav-mobile a.active{color:#fff;background:rgba(255,255,255,.08)}
+.nav-mobile .nav-cta{margin-top:8px;justify-content:center;border-radius:12px}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+</style>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/logo.png" alt="editions-dp.com" style="height:34px;width:auto;object-fit:contain;vertical-align:middle"></a>
+    <div class="nav-links">
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/blog">Blog</a>
+    </div>
+    <a href="/contact" class="nav-cta">Contact</a>
+    <button class="nav-burger" id="burger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+      <a href="/nos-comparateurs">Nos comparateurs</a>
+      <a href="/blog">Blog</a>
+    <a href="/contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<script>
+function toggleMenu(){
+  var m=document.getElementById('nav-mobile');
+  var b=document.getElementById('burger');
+  m.classList.toggle('open');b.classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  var m=document.getElementById('nav-mobile');var b=document.getElementById('burger');
+  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');b.classList.remove('open');}
+});
+</script>
+<header class="container">
+  <div class="blog-header">
+    <h1 class="blog-title">Création entreprise</h1>
+<p class="blog-sub">2 articles</p>  </div>
+  <div class="blog-filters">
+    <a class="blog-filter active" href="/blog">Tous <span class="blog-filter-count">(2)</span></a>
+    <a class="blog-filter" href="/categorie-entreprenariat">Entreprenariat <span class="blog-filter-count">(8)</span></a>
+    <a class="blog-filter" href="/categorie-salarie">Salarié <span class="blog-filter-count">(3)</span></a>
+    <a class="blog-filter" href="/categorie-comptabilite">Comptabilité <span class="blog-filter-count">(2)</span></a>
+    <a class="blog-filter" href="/categorie-creation-entreprise">Création entreprise <span class="blog-filter-count">(2)</span></a>
+  </div>
+</header>
+
+<main class="container">
+  <div class="blog-grid">
+    <a href="/8532-guichet-unique-inpi-vs-legalstart-comparatif-complet" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/8532-guichet-unique-inpi-vs-legalstart-comparatif-complet/featured-80339.jpg" alt="Guichet Unique INPI vs Legalstart : comparatif complet" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Création entreprise</span>        <h2 class="blog-card-title">Guichet Unique INPI vs Legalstart : comparatif complet</h2>
+<p class="blog-card-excerpt">Mon retour d'expérience après avoir testé les deux solutions Quand j'ai créé ma société en 2019, j'ai hésité entre passer par le Guichet Unique INPI ou déléguer à Legalstart.…</p><div class="blog-card-meta">12 mai 2026</div>      </div>
+    </a>
+    <a href="/8082-tout-savoir-sur-la-creation-d-une-sas-avec-legalstart" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/8082-tout-savoir-sur-la-creation-d-une-sas-avec-legalstart/featured-91959.jpg" alt="Tout savoir sur la création d’une SAS avec Legalstart" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Création entreprise</span>        <h2 class="blog-card-title">Tout savoir sur la création d’une SAS avec Legalstart</h2>
+<p class="blog-card-excerpt">Pourquoi j'ai choisi Legalstart pour créer ma SAS Quand j'ai dû créer ma SAS il y a trois ans, j'avais une contrainte majeure : un budget serré et pas envie de passer des semaines…</p><div class="blog-card-meta">12 mai 2026</div>      </div>
+    </a>
+  </div>
+
+
+</main>
+
+<style>
+.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .footer-logo{font-family:'',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
+.footer-brand .footer-logo span{color:var(--accent2)}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;max-width:260px;margin:0;padding:0}
+.footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
+.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-brand{grid-column:1/-1}
+}
+</style>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <a href="/" style="display:block;margin-bottom:12px"><img src="/logo.png" alt="editions-dp.com" style="height:36px;width:auto;object-fit:contain"></a>
+        <p>Comparatifs logiciels 2026</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/plan-du-site">Plan du site</a>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/politique-confidentialite">Confidentialité</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>À propos</h4>
+        <a href="/contact">Nous contacter</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        © 2026 editions-dp.com — Données actualisées le 13 mai 2026
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
