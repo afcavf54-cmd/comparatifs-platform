@@ -632,74 +632,106 @@ export default function ClassementsPage() {
                   }
                 return (<>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: 12 }}>
-                  {[{ label: 'H1', field: 'h1' }, { label: 'Meta title', field: 'meta_title' }, { label: 'Titre "Analyse détaillée"', field: 'titre_analyse' }].map(({ label, field }) => (
-                    <div key={field}>
-                      <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5, display: 'flex', alignItems: 'center', gap: 6 }}>
-                        <span>{label}</span>
-                        {!selectedData[field] && fieldDefaults[field] && (
-                          <button
-                            onClick={() => updateField(selected, field, fieldDefaults[field])}
-                            title="Copier la valeur par défaut dans le champ pour la modifier"
-                            style={{ fontSize: 9, color: '#5E9ED6', textTransform: 'uppercase' as const, fontWeight: 600, background: 'rgba(94,158,214,.15)', padding: '2px 6px', borderRadius: 4, border: 'none', cursor: 'pointer' }}>
-                            ↳ défaut · éditer
-                          </button>
-                        )}
+                  {[{ label: 'H1', field: 'h1' }, { label: 'Meta title', field: 'meta_title' }, { label: 'Titre "Analyse détaillée"', field: 'titre_analyse' }].map(({ label, field }) => {
+                    const userValue = selectedData[field] || ''
+                    const defaultValue = fieldDefaults[field] || ''
+                    const showDefault = !userValue && !!defaultValue
+                    const displayValue = userValue || defaultValue
+                    return (
+                      <div key={field}>
+                        <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5, display: 'flex', alignItems: 'center', gap: 6 }}>
+                          <span>{label}</span>
+                          {showDefault && (
+                            <span style={{ fontSize: 9, color: '#5E9ED6', textTransform: 'uppercase' as const, fontWeight: 600, background: 'rgba(94,158,214,.15)', padding: '2px 6px', borderRadius: 4 }} title="Cette valeur est le défaut auto-généré. Modifie-la dans le champ pour créer un override.">↳ défaut</span>
+                          )}
+                        </div>
+                        <input value={displayValue}
+                          onChange={e => {
+                            const v = e.target.value
+                            // Si l'utilisateur tape la même valeur que le défaut, on ne crée pas
+                            // d'override (on garde l'héritage). Sinon on enregistre.
+                            updateField(selected, field, v === defaultValue ? '' : v)
+                          }}
+                          onFocus={e => {
+                            // Au focus sur un champ "défaut", on sélectionne tout pour
+                            // faciliter le remplacement direct (utilisateur peut taper)
+                            // ou la copie (Ctrl+C). Le texte reste italique tant qu'il
+                            // matche le défaut.
+                            if (showDefault) e.target.select()
+                          }}
+                          title={showDefault ? `Texte par défaut généré depuis le pattern SEO. Édite pour overrider.` : ''}
+                          style={{
+                            width: '100%', padding: '9px 12px', borderRadius: 8,
+                            background: '#0A0E1A',
+                            border: '1px solid ' + (showDefault ? '#2A4A6D' : '#1E2D3D'),
+                            color: showDefault ? '#A5C9E8' : '#fff',
+                            fontStyle: showDefault ? 'italic' : 'normal',
+                            fontSize: 13, outline: 'none', boxSizing: 'border-box' as const,
+                          }} />
                       </div>
-                      <input value={selectedData[field] || ''}
-                        onChange={e => updateField(selected, field, e.target.value)}
-                        placeholder={fieldDefaults[field] || ''}
-                        title={fieldDefaults[field] ? `Par défaut : ${fieldDefaults[field]}` : ''}
-                        style={{ width: '100%', padding: '9px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
-                    </div>
-                  ))}
+                    )
+                  })}
                 </div>
                 <div style={{ marginBottom: 12 }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 5 }}>
-                    <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, display: 'flex', alignItems: 'center', gap: 6 }}>
-                      <span>Meta description</span>
-                      {!selectedData.meta_description && defaultMeta && (
-                        <button
-                          onClick={() => updateField(selected, 'meta_description', defaultMeta)}
-                          title="Copier la valeur par défaut dans le champ pour la modifier"
-                          style={{ fontSize: 9, color: '#5E9ED6', textTransform: 'uppercase' as const, fontWeight: 600, background: 'rgba(94,158,214,.15)', padding: '2px 6px', borderRadius: 4, border: 'none', cursor: 'pointer' }}>
-                          ↳ défaut · éditer
+                  {(() => {
+                    const userValue = selectedData.meta_description || ''
+                    const defaultValue = defaultMeta || ''
+                    const showDefault = !userValue && !!defaultValue
+                    const displayValue = userValue || defaultValue
+                    return (<>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 5 }}>
+                        <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, display: 'flex', alignItems: 'center', gap: 6 }}>
+                          <span>Meta description</span>
+                          {showDefault && (
+                            <span style={{ fontSize: 9, color: '#5E9ED6', textTransform: 'uppercase' as const, fontWeight: 600, background: 'rgba(94,158,214,.15)', padding: '2px 6px', borderRadius: 4 }} title="Cette valeur est le défaut auto-généré. Modifie-la pour créer un override.">↳ défaut</span>
+                          )}
+                        </div>
+                        <button onClick={async () => {
+                          setGeneratingMeta(true)
+                          const cat = selectedData.categorie || selected.replace('classement-', '')
+                          const count = catProducts.length
+                          try {
+                            const r = await fetch('/api/generate-text', {
+                              method: 'POST',
+                              headers: { 'Content-Type': 'application/json' },
+                              body: JSON.stringify({
+                                max_tokens: 200,
+                                system: 'Tu es un expert SEO. Réponds uniquement avec la meta description, sans guillemets, sans preamble. Maximum 155 caractères.',
+                                prompt: `Écris une meta description SEO optimisée pour une page de classement des meilleurs ${cat} en 2026. ${count} logiciels comparés. Inclure un call-to-action. Maximum 155 caractères.`
+                              })
+                            })
+                            const d = await r.json()
+                            const text = d.text
+                            if (text) updateField(selected, 'meta_description', text)
+                          } catch {}
+                          setGeneratingMeta(false)
+                        }} disabled={generatingMeta}
+                          style={{ padding: '4px 10px', borderRadius: 6, border: '1px solid #9F7AEA', background: 'transparent', color: generatingMeta ? '#4A5568' : '#9F7AEA', cursor: generatingMeta ? 'not-allowed' : 'pointer', fontSize: 11, fontWeight: 600 }}>
+                          {generatingMeta ? '⏳...' : '✨ Générer'}
                         </button>
+                      </div>
+                      <input value={displayValue}
+                        onChange={e => {
+                          const v = e.target.value
+                          updateField(selected, 'meta_description', v === defaultValue ? '' : v)
+                        }}
+                        onFocus={e => { if (showDefault) e.target.select() }}
+                        title={showDefault ? `Texte par défaut. Édite pour overrider.` : ''}
+                        style={{
+                          width: '100%', padding: '9px 12px', borderRadius: 8,
+                          background: '#0A0E1A',
+                          border: '1px solid ' + (showDefault ? '#2A4A6D' : '#1E2D3D'),
+                          color: showDefault ? '#A5C9E8' : '#fff',
+                          fontStyle: showDefault ? 'italic' : 'normal',
+                          fontSize: 13, outline: 'none', boxSizing: 'border-box' as const,
+                        }} />
+                      {userValue && (
+                        <div style={{ fontSize: 11, color: userValue.length > 155 ? '#FC8181' : '#4A5568', marginTop: 4 }}>
+                          {userValue.length}/155 caractères
+                        </div>
                       )}
-                    </div>
-                    <button onClick={async () => {
-                      setGeneratingMeta(true)
-                      const cat = selectedData.categorie || selected.replace('classement-', '')
-                      const count = catProducts.length
-                      try {
-                        const r = await fetch('/api/generate-text', {
-                          method: 'POST',
-                          headers: { 'Content-Type': 'application/json' },
-                          body: JSON.stringify({
-                            max_tokens: 200,
-                            system: 'Tu es un expert SEO. Réponds uniquement avec la meta description, sans guillemets, sans preamble. Maximum 155 caractères.',
-                            prompt: `Écris une meta description SEO optimisée pour une page de classement des meilleurs ${cat} en 2026. ${count} logiciels comparés. Inclure un call-to-action. Maximum 155 caractères.`
-                          })
-                        })
-                        const d = await r.json()
-                        const text = d.text
-                        if (text) updateField(selected, 'meta_description', text)
-                      } catch {}
-                      setGeneratingMeta(false)
-                    }} disabled={generatingMeta}
-                      style={{ padding: '4px 10px', borderRadius: 6, border: '1px solid #9F7AEA', background: 'transparent', color: generatingMeta ? '#4A5568' : '#9F7AEA', cursor: generatingMeta ? 'not-allowed' : 'pointer', fontSize: 11, fontWeight: 600 }}>
-                      {generatingMeta ? '⏳...' : '✨ Générer'}
-                    </button>
-                  </div>
-                  <input value={selectedData.meta_description || ''}
-                    onChange={e => updateField(selected, 'meta_description', e.target.value)}
-                    placeholder={defaultMeta || ''}
-                    title={defaultMeta ? `Par défaut : ${defaultMeta}` : ''}
-                    style={{ width: '100%', padding: '9px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
-                  {selectedData.meta_description && (
-                    <div style={{ fontSize: 11, color: selectedData.meta_description.length > 155 ? '#FC8181' : '#4A5568', marginTop: 4 }}>
-                      {selectedData.meta_description.length}/155 caractères
-                    </div>
-                  )}
+                    </>)
+                  })()}
                 </div>
                 </>)
                 })()}
