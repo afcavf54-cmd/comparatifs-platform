@@ -789,10 +789,14 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     post['reading_time'] = _reading_time(post.get('content_md', ''))
                     if post.get('categorie'):
                         post['categorie_slug'] = blog_engine.categorie_slug(post['categorie'])
+                    # Auto-fix typo : ajout du '?' sur les titres interrogatifs
+                    # (filet de sécurité au cas où l'IA aurait oublié).
+                    fixed_html, _n_q = blog_engine.fix_question_marks(post.get('content_html', ''))
+                    post['content_html'] = fixed_html
                     # Injection ancres + extraction TOC (avant le maillage interne
                     # pour que les liens ne soient pas placés dans des h2/h3, et
                     # pour que le sommaire reflète bien la structure finale).
-                    post['content_html'], post['toc'] = blog_engine.inject_anchors_and_extract_toc(post.get('content_html', ''))
+                    post['content_html'], post['toc'] = blog_engine.inject_anchors_and_extract_toc(post['content_html'])
                     # Détection automatique FAQ et HowTo (pour les schemas SEO).
                     # Les schemas ne sont émis dans le template que si au moins
                     # 2 Q/A (FAQ) ou 3 étapes (HowTo) sont trouvées.
