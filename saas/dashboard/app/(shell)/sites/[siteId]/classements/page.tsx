@@ -124,6 +124,17 @@ export default function ClassementsPage() {
   const [expandedBrands, setExpandedBrands] = useState<Record<string, boolean>>({})
   const [collapsedCats, setCollapsedCats] = useState<Record<string, boolean>>({})
   const [keywordCategories, setKeywordCategories] = useState<Record<string, string>>({})
+  // Patterns SEO du site (lus depuis config.yaml > seo) pour calculer les
+  // valeurs par défaut affichées en placeholder dans les inputs H1, meta_title,
+  // titre_analyse et meta_description quand l'utilisateur n'a pas override.
+  const [seoDefaults, setSeoDefaults] = useState<{
+    year: string; siteName: string;
+    title_pattern: string; h1_pattern: string;
+    titre_analyse_pattern: string; meta_pattern: string;
+  }>({
+    year: new Date().getFullYear().toString(), siteName: '',
+    title_pattern: '', h1_pattern: '', titre_analyse_pattern: '', meta_pattern: '',
+  })
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({ seo: true })
   function toggleSection(key: string) { setExpandedSections(p => ({ ...p, [key]: !p[key] })) }
 
@@ -141,13 +152,61 @@ export default function ClassementsPage() {
     const slugifyKw = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
       .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
 
+    // Fonction qui merge les données products.yaml dans les produits déjà
+    // chargés (depuis sheet ou schema). Récupère url_affiliation et cta_text
+    // par slug si la valeur de la source initiale est manquante.
+    // Si aucun produit n'est encore chargé, prend products.yaml comme source.
+    const mergeProductsYaml = async () => {
+      try {
+        const r = await fetch(`/api/sites/${siteId}/products`)
+        if (!r.ok) return
+        const d = await r.json()
+        const yamlProducts: any[] = d.products || []
+        if (yamlProducts.length === 0) return
+        const bySlug: Record<string, any> = {}
+        for (const p of yamlProducts) {
+          if (p.slug) bySlug[p.slug] = p
+        }
+        if (cancelled) return
+        setProducts(prev => {
+          if (!prev || prev.length === 0) {
+            // Pas de source initiale → on prend yaml en entier
+            return yamlProducts
+          }
+          // Sinon merge par slug (yaml comble les champs manquants)
+          const seen = new Set(prev.map(p => p.slug))
+          const merged = prev.map(p => {
+            const yp = bySlug[p.slug]
+            if (!yp) return p
+            return {
+              ...p,
+              url_affiliation: p.url_affiliation || yp.url_affiliation || '',
+              cta_text: p.cta_text || yp.cta_text || '',
+            }
+          })
+          // Et on ajoute les produits du yaml qui ne sont pas du tout dans la sheet
+          for (const yp of yamlProducts) {
+            if (yp.slug && !seen.has(yp.slug)) merged.push(yp)
+          }
+          return merged
+        })
+      } catch { /* silencieux */ }
+    }
+
     // 1. Sheet (independent, fire & forget)
     fetch(`/api/sites/${siteId}`).then(r => r.json()).then(async d => {
       if (cancelled) return
       if (d.sheet_csv_url) {
         const r = await fetch('/api/sheet', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: d.sheet_csv_url }) })
         const sd = await r.json()
-        if (!cancelled && !sd.error) setProducts(sd.rows || [])
+        if (!cancelled && !sd.error) {
+          setProducts(sd.rows || [])
+          // Merger les données du products.yaml par-dessus (pour url_affiliation, cta_text)
+          await mergeProductsYaml()
+        }
+      } else {
+        // Pas de sheet configurée → on charge tout depuis products.yaml
+        await mergeProductsYaml()
       }
     }).catch(() => {})
 
@@ -159,7 +218,30 @@ export default function ClassementsPage() {
         const cfgR = await fetch(`/api/github?path=${encodeURIComponent(`platform/sites/${siteId}/config.yaml`)}`)
         const cfg = await cfgR.json()
         if (cfg.content) {
-          const m = cfg.content.match(/classement:\s*(\S+)/)
+          // Extraire les patterns SEO et site.year/name pour afficher les
+          // valeurs par défaut (placeholder) dans les inputs H1/meta_*/titre_analyse.
+          const cfgText: string = cfg.content
+          // site.year (numérique ou string)
+          const yearM = cfgText.match(/^site:[\s\S]*?\n\s+year:\s*['"]?(\d{4})['"]?/m)
+          const nameM = cfgText.match(/^site:[\s\S]*?\n\s+name:\s*['"]?([^'"\n]+)['"]?/m)
+          const siteYear = yearM ? yearM[1] : new Date().getFullYear().toString()
+          const siteName = nameM ? nameM[1].trim() : ''
+          // Patterns SEO : section seo: ... avec sous-clés
+          const seoBlock = cfgText.match(/^seo:\s*\n((?:\s+[^\n]*\n?)+)/m)?.[1] || ''
+          const getPattern = (key: string) => {
+            const m = seoBlock.match(new RegExp(`^\\s+${key}:\\s*['"]?([^'"\\n]+)['"]?`, 'm'))
+            return m ? m[1].trim() : ''
+          }
+          setSeoDefaults({
+            year: siteYear,
+            siteName,
+            title_pattern: getPattern('classement_title_pattern') || 'Meilleur {categorie} {year} : Top {count}',
+            h1_pattern: getPattern('classement_h1_pattern') || '',
+            titre_analyse_pattern: getPattern('classement_titre_analyse_pattern') || 'Comparatif complet {categorie}',
+            meta_pattern: getPattern('classement_meta_pattern') || 'Comparez les meilleurs {categorie} en {year}.',
+          })
+
+          const m = cfgText.match(/classement:\s*(\S+)/)
           if (m) {
             const schemaName = m[1]
             const sr = await fetch(`/api/github?path=${encodeURIComponent(`platform/schemas/${schemaName}.json`)}`)
@@ -515,19 +597,65 @@ export default function ClassementsPage() {
 
                 {/* SEO */}
                 <div onClick={() => toggleSection('seo')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections['seo'] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>🔍 SEO</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
-                {expandedSections['seo'] && <>
+                {expandedSections['seo'] && (() => {
+                  // Compute les valeurs par défaut SEO pour cette catégorie en
+                  // substituant {year}, {categorie}, {Categorie}, {count}, etc.
+                  // Reproduit la logique de _sub_vars de generate.py côté Python.
+                  const catName = selectedData.categorie || keywordCategories[selected] || selected.replace('classement-', '').replace(/-/g, ' ')
+                  const catLower = (catName || '').toLowerCase()
+                  const catCap = catLower ? catLower[0].toUpperCase() + catLower.slice(1) : ''
+                  const pluralizeFirst = (s: string) => {
+                    if (!s) return s
+                    const [first, ...rest] = s.split(' ')
+                    if (/[sxz]$/i.test(first)) return s
+                    return [first + 's', ...rest].join(' ')
+                  }
+                  const catPluralLower = pluralizeFirst(catLower)
+                  const catPluralCap = catPluralLower ? catPluralLower[0].toUpperCase() + catPluralLower.slice(1) : ''
+                  const count = String(catProducts.length || 0)
+                  const subVars = (pattern: string) => (pattern || '')
+                    .replace(/\{year\}/g, seoDefaults.year)
+                    .replace(/\{categorie\}/g, catLower)
+                    .replace(/\{Categorie\}/g, catCap)
+                    .replace(/\{categories\}/g, catPluralLower)
+                    .replace(/\{Categories\}/g, catPluralCap)
+                    .replace(/\{count\}/g, count)
+                    .replace(/\{site_name\}/g, seoDefaults.siteName)
+                  const defaultTitle = subVars(seoDefaults.title_pattern)
+                  const defaultH1 = subVars(seoDefaults.h1_pattern) || defaultTitle
+                  const defaultTitreAnalyse = subVars(seoDefaults.titre_analyse_pattern)
+                  const defaultMeta = subVars(seoDefaults.meta_pattern)
+                  const fieldDefaults: Record<string, string> = {
+                    h1: defaultH1,
+                    meta_title: defaultTitle,
+                    titre_analyse: defaultTitreAnalyse,
+                  }
+                return (<>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: 12 }}>
                   {[{ label: 'H1', field: 'h1' }, { label: 'Meta title', field: 'meta_title' }, { label: 'Titre "Analyse détaillée"', field: 'titre_analyse' }].map(({ label, field }) => (
                     <div key={field}>
-                      <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5 }}>{label}</div>
-                      <input value={selectedData[field] || ''} onChange={e => updateField(selected, field, e.target.value)}
+                      <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5, display: 'flex', alignItems: 'center', gap: 6 }}>
+                        <span>{label}</span>
+                        {!selectedData[field] && fieldDefaults[field] && (
+                          <span style={{ fontSize: 9, color: '#5E9ED6', textTransform: 'uppercase' as const, fontWeight: 600, background: 'rgba(94,158,214,.15)', padding: '2px 6px', borderRadius: 4 }} title={`Valeur par défaut générée depuis le pattern SEO du config.yaml — modifie ici pour overrider`}>↳ défaut</span>
+                        )}
+                      </div>
+                      <input value={selectedData[field] || ''}
+                        onChange={e => updateField(selected, field, e.target.value)}
+                        placeholder={fieldDefaults[field] || ''}
+                        title={fieldDefaults[field] ? `Par défaut : ${fieldDefaults[field]}` : ''}
                         style={{ width: '100%', padding: '9px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
                     </div>
                   ))}
                 </div>
                 <div style={{ marginBottom: 12 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 5 }}>
-                    <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const }}>Meta description</div>
+                    <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, display: 'flex', alignItems: 'center', gap: 6 }}>
+                      <span>Meta description</span>
+                      {!selectedData.meta_description && defaultMeta && (
+                        <span style={{ fontSize: 9, color: '#5E9ED6', textTransform: 'uppercase' as const, fontWeight: 600, background: 'rgba(94,158,214,.15)', padding: '2px 6px', borderRadius: 4 }} title={`Valeur par défaut : ${defaultMeta}`}>↳ défaut</span>
+                      )}
+                    </div>
                     <button onClick={async () => {
                       setGeneratingMeta(true)
                       const cat = selectedData.categorie || selected.replace('classement-', '')
@@ -552,7 +680,10 @@ export default function ClassementsPage() {
                       {generatingMeta ? '⏳...' : '✨ Générer'}
                     </button>
                   </div>
-                  <input value={selectedData.meta_description || ''} onChange={e => updateField(selected, 'meta_description', e.target.value)}
+                  <input value={selectedData.meta_description || ''}
+                    onChange={e => updateField(selected, 'meta_description', e.target.value)}
+                    placeholder={defaultMeta || ''}
+                    title={defaultMeta ? `Par défaut : ${defaultMeta}` : ''}
                     style={{ width: '100%', padding: '9px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
                   {selectedData.meta_description && (
                     <div style={{ fontSize: 11, color: selectedData.meta_description.length > 155 ? '#FC8181' : '#4A5568', marginTop: 4 }}>
@@ -560,8 +691,8 @@ export default function ClassementsPage() {
                     </div>
                   )}
                 </div>
-
-                </>}
+                </>)
+                })()}
 
                 {/* Sections éditables */}
                 {[
@@ -755,6 +886,13 @@ export default function ClassementsPage() {
                       const prodData = selectedData[`prod_${prodKey}`] || {}
                       const isExpanded = expandedBrands[prodKey] || false
                       const hasContent = !!(prodData.description || prodData.points_forts?.length)
+                      // Valeurs héritées de la sheet (source produit) si pas d'override éditorial
+                      const inheritedAffUrl = prod.url_affiliation || ''
+                      const inheritedCta = prod.cta_text || ''
+                      const affUrl = prodData.url_affiliation ?? inheritedAffUrl
+                      const ctaTxt = prodData.cta_text ?? inheritedCta
+                      const affIsInherited = !prodData.url_affiliation && !!inheritedAffUrl
+                      const ctaIsInherited = !prodData.cta_text && !!inheritedCta
                       return (
                         <div key={prodKey} style={{ marginBottom: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 10, overflow: 'hidden' }}>
                           {/* Header cliquable */}
@@ -770,16 +908,24 @@ export default function ClassementsPage() {
                               {/* Lien affiliation + CTA */}
                               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 14 }}>
                                 <div>
-                                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5 }}>🔗 Lien d'affiliation</div>
-                                  <input value={prodData.url_affiliation || ''} onChange={e => updateField(selected, `prod_${prodKey}`, { ...prodData, url_affiliation: e.target.value })}
+                                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5, display: 'flex', alignItems: 'center', gap: 6 }}>
+                                    <span>🔗 Lien d'affiliation</span>
+                                    {affIsInherited && <span style={{ fontSize: 9, color: '#5E9ED6', textTransform: 'uppercase' as const, fontWeight: 600, background: 'rgba(94,158,214,.15)', padding: '2px 6px', borderRadius: 4 }} title="Valeur héritée de la sheet — modifie ici pour overrider">↳ sheet</span>}
+                                  </div>
+                                  <input value={affUrl}
+                                    onChange={e => updateField(selected, `prod_${prodKey}`, { ...prodData, url_affiliation: e.target.value })}
                                     placeholder="https://..."
-                                    style={{ width: '100%', padding: '8px 12px', borderRadius: 7, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+                                    style={{ width: '100%', padding: '8px 12px', borderRadius: 7, background: '#0D1117', border: '1px solid ' + (affIsInherited ? '#2A4A6D' : '#1E2D3D'), color: affIsInherited ? '#A5C9E8' : '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
                                 </div>
                                 <div>
-                                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5 }}>🖱 Texte du CTA</div>
-                                  <input value={prodData.cta_text || ''} onChange={e => updateField(selected, `prod_${prodKey}`, { ...prodData, cta_text: e.target.value })}
+                                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5, display: 'flex', alignItems: 'center', gap: 6 }}>
+                                    <span>🖱 Texte du CTA</span>
+                                    {ctaIsInherited && <span style={{ fontSize: 9, color: '#5E9ED6', textTransform: 'uppercase' as const, fontWeight: 600, background: 'rgba(94,158,214,.15)', padding: '2px 6px', borderRadius: 4 }} title="Valeur héritée de la sheet">↳ sheet</span>}
+                                  </div>
+                                  <input value={ctaTxt}
+                                    onChange={e => updateField(selected, `prod_${prodKey}`, { ...prodData, cta_text: e.target.value })}
                                     placeholder={`→ Essayer ${prod.nom}`}
-                                    style={{ width: '100%', padding: '8px 12px', borderRadius: 7, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+                                    style={{ width: '100%', padding: '8px 12px', borderRadius: 7, background: '#0D1117', border: '1px solid ' + (ctaIsInherited ? '#2A4A6D' : '#1E2D3D'), color: ctaIsInherited ? '#A5C9E8' : '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
                                 </div>
                               </div>
                               <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 6 }}>Description</div>
