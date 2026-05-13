@@ -1,20 +1,21 @@
 ---
-title: 'Rupture de CDD à l’initiative du salarié : règles, conditions et conséquences'
+title: "Rupture de CDD à l’initiative du salarié : règles, conditions et conséquences"
 slug: 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
-date: '2026-05-13T09:00:00'
+date: 2026-05-13T09:00:00
+updated: 2026-05-13T10:48:11
 categorie: Salarié
-meta_title: 'Rupture CDD à l''initiative du salarié : que faut-il savoir ?'
-meta_description: 'Découvrez dans quels cas un salarié en CDD peut rompre son contrat
-  sans pénalités : motifs légitimes, délais de prévenance et conséquences juridiques
-  à connaître.'
-min_words: 900
+meta_title: "Rupture CDD à l'initiative du salarié : que faut-il savoir ?"
+meta_description: "'Découvrez dans quels cas un salarié en CDD peut rompre son contrat"
+featured_image: /blog/4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences/featured-82850.jpg
 status: published
+min_words: 900
+related_posts:
+- 6353-comite-d-entreprise-sncf-les-avantages
 link_anchors:
 - text: rupture cdd
   max: 10
-related_posts:
-- 6353-comite-d-entreprise-sncf-les-avantages
 ---
+
 <h2>Pourquoi un salarié en CDD peut-il rompre son contrat ?</h2>
 
 <p>Je vois souvent cette question dans mon entreprise. Un salarié en CDD peut effectivement quitter son poste avant la fin prévue, mais attention : <strong>ce n'est pas aussi simple qu'une démission classique</strong>. Les règles sont précises et les conséquences peuvent être lourdes.</p>
@@ -123,3 +124,4 @@ related_posts:
 <p><strong>Ai-je droit au chômage après une rupture de CDD ?</strong><br>Oui, si la rupture est légitime ou d'un commun accord. En cas de rupture abusive, Pôle emploi peut appliquer une sanction.</p>
 
 <p>La rupture d'un CDD demande de la préparation et de la prudence. Mes conseils : anticipez, documentez tout et n'hésitez pas à demander conseil avant d'agir. <strong>Mieux vaut perdre quelques jours à bien préparer son départ que des mois à gérer un conflit</strong>.</p>
+
