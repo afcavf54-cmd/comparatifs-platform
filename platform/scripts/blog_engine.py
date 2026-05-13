@@ -416,9 +416,49 @@ def collect_categories(posts: list[dict]) -> list[dict]:
 
 # Limites globales du maillage
 MAX_INCOMING_LINKS_PER_TARGET = 15  # une cible n'accepte plus de liens au-delà
+MAX_INTERNAL_LINKS_PER_SOURCE = 5   # un article source ne peut avoir plus de
+                                     # 5 liens internes au total (auto + IA)
 # 1 lien max d'une source S vers une cible T (= la première occurrence trouvée
 # est transformée en lien, les autres occurrences de la même ancre restent en
 # texte dans le même article).
+
+
+def _count_internal_links(html: str) -> int:
+    """Compte les liens internes (relatifs ou pointant vers le même domaine).
+    Considère comme interne : href="/..." ou href commençant par "#" (ancres).
+    Les liens externes (http://, https://) sont ignorés.
+
+    Note : les liens https://<domain>/... ne sont pas matchés ici car on ne
+    connaît pas le domaine à ce stade. On considère que l'IA ne génère que des
+    href relatifs commençant par "/" pour les liens internes (consigne prompt).
+    """
+    if not html:
+        return 0
+    # Match les <a href="/quelque-chose"> (slash initial, pas double-slash ni protocole)
+    return len(re.findall(r'<a\b[^>]*\bhref\s*=\s*["\']/(?!/)[^"\']*["\']', html, re.IGNORECASE))
+
+
+def _strip_self_links(html: str, src_slug: str) -> tuple[str, int]:
+    """Supprime les liens dont le href pointe vers soi-même.
+    Remplace `<a href="/{src_slug}">texte</a>` par `texte`.
+    Aussi gère le format absolu `https://.../{src_slug}` (sans hash) au cas où.
+
+    Retourne (html_modifié, n_self_links_supprimés).
+    """
+    if not html or not src_slug:
+        return html, 0
+    n = 0
+    # Pattern relatif : href="/<slug>" éventuellement avec ?, # ou /
+    pat_rel = re.compile(
+        r'<a\b[^>]*\bhref\s*=\s*["\']/(?:[^"\']*?/)?' + re.escape(src_slug) + r'(?:[/?#"\']|[^"\']*)["\'][^>]*>(.*?)</a>',
+        re.IGNORECASE | re.DOTALL,
+    )
+    def _replace(m: re.Match) -> str:
+        nonlocal n
+        n += 1
+        return m.group(1)  # juste le texte interne, on retire la balise <a>
+    new_html = pat_rel.sub(_replace, html)
+    return new_html, n
 
 
 def _find_anchor_outside_tags(html: str, anchor: str) -> tuple[int, int] | None:
@@ -495,6 +535,7 @@ def apply_internal_links(posts: list[dict], verbose: bool = False) -> dict:
     incoming_count: dict[str, int] = {}            # slug cible → nb liens entrants
     anchor_used: dict[tuple[str, str], int] = {}   # (anchor_lower, slug cible) → nb utilisations
     links_added = 0
+    self_links_stripped_total = 0
 
     # 3) Pour chaque post source, on parcourt toutes les (ancre, cible)
     #    et on tente de placer 1 lien par cible distincte.
@@ -507,7 +548,25 @@ def apply_internal_links(posts: list[dict], verbose: bool = False) -> dict:
         if not html:
             continue
 
+        # Étape 0 : nettoyer les self-links éventuels créés par l'IA pendant la
+        # génération (l'IA peut avoir inséré <a href="/{src_slug}">...</a>
+        # par erreur). On les transforme en texte plain.
+        html, n_self = _strip_self_links(html, src_slug)
+        if n_self > 0:
+            self_links_stripped_total += n_self
+            if verbose:
+                print(f"   🧹 {src_slug} : {n_self} self-link(s) supprimé(s)")
+
+        # Étape 0 bis : compter les liens internes déjà présents dans l'article
+        # (créés par l'IA). On les comptabilise dans le quota max par source
+        # pour respecter la limite MAX_INTERNAL_LINKS_PER_SOURCE.
+        existing_internal = _count_internal_links(html)
+        src_link_count = existing_internal
+
         for anchor_text, max_q, tgt in entries:
+            # Cap global par source : on s'arrête dès qu'on atteint MAX_INTERNAL_LINKS_PER_SOURCE
+            if src_link_count >= MAX_INTERNAL_LINKS_PER_SOURCE:
+                break
             tgt_slug = tgt.get('slug', '')
             if not tgt_slug or tgt_slug == src_slug:
                 continue
@@ -530,14 +589,16 @@ def apply_internal_links(posts: list[dict], verbose: bool = False) -> dict:
             anchor_used[akey] = anchor_used.get(akey, 0) + 1
             linked_targets.add(tgt_slug)
             links_added += 1
+            src_link_count += 1
             if verbose:
-                print(f"   🔗 {src_slug} → {tgt_slug}  ({anchor_text!r})")
+                print(f"   🔗 {src_slug} → {tgt_slug}  ({anchor_text!r})  [{src_link_count}/{MAX_INTERNAL_LINKS_PER_SOURCE}]")
 
         src['content_html'] = html
 
     return {
         'links_added': links_added,
         'anchors_processed': len(entries),
+        'self_links_stripped': self_links_stripped_total,
         'incoming_counts': incoming_count,
     }
 
