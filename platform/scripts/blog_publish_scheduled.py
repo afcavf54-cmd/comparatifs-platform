@@ -327,11 +327,117 @@ def _parse_anchors_csv(raw: str) -> list[dict]:
 # ─── Sérialisation .md (frontmatter YAML + body) ─────────────────────────
 
 def write_post(filepath: Path, fm: dict, body: str) -> None:
-    """Écrit un fichier .md avec frontmatter YAML."""
-    fm_yaml = yaml.dump(fm, allow_unicode=True, default_flow_style=False, sort_keys=False).strip()
+    """Écrit un fichier .md avec frontmatter YAML.
+
+    `width=10000` force PyYAML à NE PAS wrapper les chaînes longues sur
+    plusieurs lignes. Sans ça, un titre de 80+ caractères avec des caractères
+    spéciaux (':', '?') est écrit sur 2 lignes en single-quoted, ce que les
+    parsers naïfs (côté dashboard TS) ne savent pas reconstituer → titre
+    apparait tronqué dans l'éditeur avec une apostrophe orpheline en début.
+    """
+    fm_yaml = yaml.dump(fm, allow_unicode=True, default_flow_style=False,
+                         sort_keys=False, width=10000).strip()
     content = f"---\n{fm_yaml}\n---\n\n{body}\n"
     filepath.parent.mkdir(parents=True, exist_ok=True)
     filepath.write_text(content, encoding="utf-8")
+
+
+def _normalize_title(t: str) -> str:
+    """Normalise un titre pour matching insensible à la casse et aux espaces."""
+    return " ".join(str(t or "").lower().split())
+
+
+def sync_metadata_from_sheet(posts_dir: Path, rows: list[dict]) -> int:
+    """Pour chaque ligne de la sheet, met à jour les métadonnées de l'article
+    correspondant (.md déjà publié) sans toucher au contenu.
+
+    Champs synchronisés depuis la sheet :
+        - link_anchors        (ancres acceptant cet article comme cible)
+        - categorie           (au cas où Julien la corrige)
+        - meta_description    (si remplie dans la sheet)
+        - meta_title          (idem)
+
+    Permet d'optimiser le maillage interne après publication : ajouter des
+    link_anchors sur d'anciens articles depuis la sheet est désormais pris
+    en compte au prochain build du site.
+
+    Retourne le nombre d'articles dont le frontmatter a changé.
+    """
+    if not posts_dir.exists() or not rows:
+        return 0
+
+    # Index titre normalisé → (filepath, frontmatter_dict, body)
+    md_by_title: dict[str, tuple[Path, dict, str]] = {}
+    for md_path in posts_dir.glob('*.md'):
+        try:
+            raw = md_path.read_text(encoding='utf-8')
+            if not raw.startswith('---'):
+                continue
+            end_idx = raw.find('---', 3)
+            if end_idx < 0:
+                continue
+            fm_text = raw[3:end_idx]
+            fm = yaml.safe_load(fm_text) or {}
+            if not isinstance(fm, dict):
+                continue
+            title = (fm.get('title') or '').strip()
+            if not title:
+                continue
+            body = raw[end_idx + 3:].lstrip('\n')
+            md_by_title[_normalize_title(title)] = (md_path, fm, body)
+        except Exception:
+            continue
+
+    n_synced = 0
+    for row in rows:
+        title = (row.get('titre') or '').strip()
+        if not title:
+            continue
+        key = _normalize_title(title)
+        if key not in md_by_title:
+            continue  # Pas encore publié
+        md_path, fm, body = md_by_title[key]
+        changed = False
+
+        # 1. link_anchors : convertir le format CSV de la sheet vers le format
+        # YAML stocké dans le frontmatter (liste de dicts {text, max}).
+        new_anchors_raw = (row.get('link_anchors') or row.get('ancres') or '').strip()
+        new_anchors = _parse_anchors_csv(new_anchors_raw) if new_anchors_raw else []
+        old_anchors = fm.get('link_anchors') or []
+        # Comparaison structurelle (les listes de dicts doivent être identiques)
+        if new_anchors != old_anchors:
+            if new_anchors:
+                fm['link_anchors'] = new_anchors
+            elif 'link_anchors' in fm:
+                # Sheet a vidé la valeur → on retire la clé
+                del fm['link_anchors']
+            changed = True
+
+        # 2. categorie
+        new_cat = (row.get('categorie') or '').strip()
+        if new_cat and fm.get('categorie') != new_cat:
+            fm['categorie'] = new_cat
+            changed = True
+
+        # 3. meta_description (n'écrase pas si vide dans la sheet, pour ne pas
+        # perdre une description générée auto précédemment)
+        new_meta_desc = (row.get('meta_description') or '').strip()
+        if new_meta_desc and fm.get('meta_description') != new_meta_desc:
+            fm['meta_description'] = new_meta_desc
+            changed = True
+
+        # 4. meta_title
+        new_meta_title = (row.get('meta_title') or '').strip()
+        if new_meta_title and fm.get('meta_title') != new_meta_title:
+            fm['meta_title'] = new_meta_title
+            changed = True
+
+        if changed:
+            write_post(md_path, fm, body)
+            n_synced += 1
+            print(f"   🔄 Métadonnées resynchronisées : {title[:60]}")
+
+    return n_synced
 
 
 # ─── Traitement d'un site ────────────────────────────────────────────────
@@ -534,7 +640,23 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         print(f"   ✅ {new_count} article(s) publié(s)")
     else:
         print("   (aucun nouvel article à publier)")
-    return new_count
+
+    # Synchronisation des métadonnées des articles déjà publiés depuis la sheet
+    # (link_anchors, categorie, meta_description, meta_title). Permet de modifier
+    # ces champs sur d'anciens articles via la sheet sans avoir à re-générer
+    # leur contenu. Le commit final capture les .md modifiés via git add.
+    n_synced = 0
+    try:
+        n_synced = sync_metadata_from_sheet(posts_dir, rows)
+        if n_synced > 0:
+            print(f"   🔄 {n_synced} article(s) avec métadonnées mises à jour depuis la sheet")
+    except Exception as e:
+        print(f"   ⚠ Sync metadata : erreur {e}")
+
+    # On retourne new_count + n_synced pour que le workflow déclenche un
+    # redéploiement même si seuls des metadata ont changé (besoin de rebuild
+    # pour que le maillage interne mis à jour soit reflété sur le site).
+    return new_count + n_synced
 
 
 # ─── Main ────────────────────────────────────────────────────────────────
