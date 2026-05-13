@@ -173,12 +173,17 @@ export default function BlogListPage() {
     }
   }
 
+  // URL d'édition de la sheet (différente de l'URL CSV de publication).
+  // Demandée au premier clic sur "📝 Modifier" et persistée dans config.yaml.
+  const [sheetEditUrlSaved, setSheetEditUrlSaved] = useState('')
+
   async function loadConfig() {
     try {
       const r = await fetch(`/api/sites/${siteId}/config`)
       const d = await r.json()
       setSheetUrl(d.blog_sheet_csv_url || '')
       setSheetUrlOriginal(d.blog_sheet_csv_url || '')
+      setSheetEditUrlSaved(d.blog_sheet_edit_url || '')
       if (d.domain) {
         // Normalise : on retire le trailing slash et on s'assure du scheme
         const dom = String(d.domain).replace(/\/+$/, '')
@@ -326,27 +331,65 @@ export default function BlogListPage() {
   }
 
   /**
-   * Ouvre la Google Sheet dans un nouvel onglet en mode édition. Tente de
-   * dériver l'URL d'édition depuis l'URL CSV configurée. Cas gérés :
-   *   - /d/<id>/...           → édition possible (sheet partagée directement)
-   *   - /d/e/<publish_id>/pub → publish_id ≠ id interne, dérivation impossible
-   *     → fallback sur la page d'accueil Google Sheets (Julien clique sur sa sheet)
+   * Ouvre la Google Sheet dans un nouvel onglet en mode édition.
+   *
+   * L'URL CSV de publication (`/d/e/<publish_id>/pub?output=csv`) n'est pas
+   * dérivable vers l'URL d'édition car les 2 IDs sont différents. On demande
+   * donc à l'utilisateur l'URL d'édition au premier clic et on la persiste
+   * dans config.yaml (clé `blog_sheet_edit_url`) pour les fois suivantes.
+   *
+   * Si l'URL CSV est en format `/d/<id>/...` (partage direct sans publication),
+   * on peut dériver directement sans prompt.
    */
-  function openSheetForEdit() {
-    if (!sheetEditUrl) return
-    window.open(sheetEditUrl, '_blank', 'noopener,noreferrer')
-  }
-  const sheetEditUrl = (() => {
+  async function openSheetForEdit() {
+    // Cas 1 : URL d'édition déjà sauvegardée
+    if (sheetEditUrlSaved) {
+      window.open(sheetEditUrlSaved, '_blank', 'noopener,noreferrer')
+      return
+    }
+    // Cas 2 : URL CSV en format direct (pas /pub) → dérivable
     const csv = sheetUrl || sheetUrlOriginal
-    if (!csv) return ''
-    // Pattern 1 : /d/<id>/ (sheet partagée directement, pas via /pub) — dérivable
-    const direct = csv.match(/\/spreadsheets\/d\/(?!e\/)([a-zA-Z0-9_-]+)/)
-    if (direct) return `https://docs.google.com/spreadsheets/d/${direct[1]}/edit`
-    // Pattern 2 : /d/e/<publish_id>/pub — publish_id ≠ id interne, on retourne
-    // la page d'accueil Sheets pour que Julien retrouve sa sheet manuellement.
-    if (csv.includes('/spreadsheets/d/e/')) return 'https://docs.google.com/spreadsheets/'
-    return ''
-  })()
+    if (csv) {
+      const direct = csv.match(/\/spreadsheets\/d\/(?!e\/)([a-zA-Z0-9_-]+)/)
+      if (direct) {
+        const editUrl = `https://docs.google.com/spreadsheets/d/${direct[1]}/edit`
+        window.open(editUrl, '_blank', 'noopener,noreferrer')
+        return
+      }
+    }
+    // Cas 3 : URL en /pub publish_id non dérivable → on demande
+    const input = prompt(
+      "Colle l'URL d'édition de ta Google Sheet :\n\n" +
+      "(format : https://docs.google.com/spreadsheets/d/<ID>/edit)\n\n" +
+      "Tu peux la trouver en ouvrant ta sheet dans Google Drive — l'URL dans la barre d'adresse.\n" +
+      "Elle sera mémorisée pour les prochaines fois."
+    , '')
+    if (!input) return
+    const url = input.trim()
+    if (!url.includes('/spreadsheets/d/')) {
+      alert('URL invalide : doit contenir /spreadsheets/d/')
+      return
+    }
+    // Sauve dans config.yaml
+    try {
+      const r = await fetch(`/api/sites/${siteId}/config`, {
+        method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ blog_sheet_edit_url: url }),
+      })
+      if (r.ok) {
+        setSheetEditUrlSaved(url)
+        window.open(url, '_blank', 'noopener,noreferrer')
+      } else {
+        alert('Erreur sauvegarde — URL utilisée mais non persistée')
+        window.open(url, '_blank', 'noopener,noreferrer')
+      }
+    } catch (e: any) {
+      alert('Erreur réseau : ' + e.message)
+    }
+  }
+  // sheetEditUrl reste pour le `disabled` du bouton — on l'active si on a une URL
+  // sauvegardée OU une URL CSV dérivable OU rien (auquel cas le prompt s'ouvrira).
+  const sheetEditUrl = sheetEditUrlSaved || (sheetUrl || sheetUrlOriginal) || 'prompt'
 
   const categories = Array.from(new Set(posts.map(p => p.categorie).filter(Boolean))) as string[]
   const filtered = posts.filter(p => {
