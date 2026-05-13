@@ -28,6 +28,7 @@ export async function GET(_: NextRequest, { params }: Params) {
     www_preference: get('www_preference') || 'www',
     blog_sheet_csv_url: get('blog_sheet_csv_url'),
     domain: get('domain'),
+    contact_form_key: get('contact_form_key'),
     page_types: pageTypes,
     theme: {
       accent: get('accent'),
@@ -135,6 +136,7 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   }
   if (body.analytics_clicky !== undefined) replaceKey('analytics_clicky', body.analytics_clicky || '')
   if (body.google_site_verification !== undefined) replaceKey('google_site_verification', body.google_site_verification || '')
+  if (body.contact_form_key !== undefined) replaceKey('contact_form_key', body.contact_form_key || '')
   if (body.www_preference !== undefined) replaceKey('www_preference', body.www_preference || 'www')
   if (body.blog_sheet_csv_url !== undefined) replaceKey('blog_sheet_csv_url', body.blog_sheet_csv_url || '')
   if (body.seo_vs_title !== undefined) replaceKey('title_pattern', body.seo_vs_title || '')
