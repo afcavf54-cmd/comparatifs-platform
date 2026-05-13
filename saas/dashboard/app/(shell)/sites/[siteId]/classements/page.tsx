@@ -636,38 +636,24 @@ export default function ClassementsPage() {
                     const userValue = selectedData[field] || ''
                     const defaultValue = fieldDefaults[field] || ''
                     const showDefault = !userValue && !!defaultValue
-                    const displayValue = userValue || defaultValue
                     return (
                       <div key={field}>
-                        <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5, display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <span>{label}</span>
-                          {showDefault && (
-                            <span style={{ fontSize: 9, color: '#5E9ED6', textTransform: 'uppercase' as const, fontWeight: 600, background: 'rgba(94,158,214,.15)', padding: '2px 6px', borderRadius: 4 }} title="Cette valeur est le défaut auto-généré. Modifie-la dans le champ pour créer un override.">↳ défaut</span>
-                          )}
-                        </div>
-                        <input value={displayValue}
-                          onChange={e => {
-                            const v = e.target.value
-                            // Si l'utilisateur tape la même valeur que le défaut, on ne crée pas
-                            // d'override (on garde l'héritage). Sinon on enregistre.
-                            updateField(selected, field, v === defaultValue ? '' : v)
-                          }}
-                          onFocus={e => {
-                            // Au focus sur un champ "défaut", on sélectionne tout pour
-                            // faciliter le remplacement direct (utilisateur peut taper)
-                            // ou la copie (Ctrl+C). Le texte reste italique tant qu'il
-                            // matche le défaut.
-                            if (showDefault) e.target.select()
-                          }}
-                          title={showDefault ? `Texte par défaut généré depuis le pattern SEO. Édite pour overrider.` : ''}
-                          style={{
-                            width: '100%', padding: '9px 12px', borderRadius: 8,
-                            background: '#0A0E1A',
-                            border: '1px solid ' + (showDefault ? '#2A4A6D' : '#1E2D3D'),
-                            color: showDefault ? '#A5C9E8' : '#fff',
-                            fontStyle: showDefault ? 'italic' : 'normal',
-                            fontSize: 13, outline: 'none', boxSizing: 'border-box' as const,
-                          }} />
+                        <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5 }}>{label}</div>
+                        <input value={userValue}
+                          onChange={e => updateField(selected, field, e.target.value)}
+                          placeholder={defaultValue ? '— Laisse vide pour utiliser le défaut ci-dessous —' : ''}
+                          style={{ width: '100%', padding: '9px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+                        {showDefault && (
+                          <div style={{ marginTop: 6, padding: '8px 10px', background: 'rgba(94,158,214,.08)', border: '1px dashed #2A4A6D', borderRadius: 6, fontSize: 11, display: 'flex', alignItems: 'center', gap: 8 }}>
+                            <span style={{ color: '#5E9ED6', fontWeight: 700, flexShrink: 0 }}>↳ défaut :</span>
+                            <span style={{ color: '#A5C9E8', fontStyle: 'italic', userSelect: 'text', flex: 1, wordBreak: 'break-word' }}>{defaultValue}</span>
+                            <button onClick={() => updateField(selected, field, defaultValue)}
+                              title="Copier dans le champ ci-dessus pour éditer"
+                              style={{ padding: '3px 8px', borderRadius: 5, background: '#2A4A6D', color: '#fff', border: 'none', cursor: 'pointer', fontSize: 10, fontWeight: 600, whiteSpace: 'nowrap', flexShrink: 0 }}>
+                              ✏️ Éditer
+                            </button>
+                          </div>
+                        )}
                       </div>
                     )
                   })}
@@ -677,15 +663,9 @@ export default function ClassementsPage() {
                     const userValue = selectedData.meta_description || ''
                     const defaultValue = defaultMeta || ''
                     const showDefault = !userValue && !!defaultValue
-                    const displayValue = userValue || defaultValue
                     return (<>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 5 }}>
-                        <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <span>Meta description</span>
-                          {showDefault && (
-                            <span style={{ fontSize: 9, color: '#5E9ED6', textTransform: 'uppercase' as const, fontWeight: 600, background: 'rgba(94,158,214,.15)', padding: '2px 6px', borderRadius: 4 }} title="Cette valeur est le défaut auto-généré. Modifie-la pour créer un override.">↳ défaut</span>
-                          )}
-                        </div>
+                        <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const }}>Meta description</div>
                         <button onClick={async () => {
                           setGeneratingMeta(true)
                           const cat = selectedData.categorie || selected.replace('classement-', '')
@@ -710,24 +690,24 @@ export default function ClassementsPage() {
                           {generatingMeta ? '⏳...' : '✨ Générer'}
                         </button>
                       </div>
-                      <input value={displayValue}
-                        onChange={e => {
-                          const v = e.target.value
-                          updateField(selected, 'meta_description', v === defaultValue ? '' : v)
-                        }}
-                        onFocus={e => { if (showDefault) e.target.select() }}
-                        title={showDefault ? `Texte par défaut. Édite pour overrider.` : ''}
-                        style={{
-                          width: '100%', padding: '9px 12px', borderRadius: 8,
-                          background: '#0A0E1A',
-                          border: '1px solid ' + (showDefault ? '#2A4A6D' : '#1E2D3D'),
-                          color: showDefault ? '#A5C9E8' : '#fff',
-                          fontStyle: showDefault ? 'italic' : 'normal',
-                          fontSize: 13, outline: 'none', boxSizing: 'border-box' as const,
-                        }} />
+                      <input value={userValue}
+                        onChange={e => updateField(selected, 'meta_description', e.target.value)}
+                        placeholder={defaultValue ? '— Laisse vide pour utiliser le défaut ci-dessous —' : ''}
+                        style={{ width: '100%', padding: '9px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
                       {userValue && (
                         <div style={{ fontSize: 11, color: userValue.length > 155 ? '#FC8181' : '#4A5568', marginTop: 4 }}>
                           {userValue.length}/155 caractères
+                        </div>
+                      )}
+                      {showDefault && (
+                        <div style={{ marginTop: 6, padding: '8px 10px', background: 'rgba(94,158,214,.08)', border: '1px dashed #2A4A6D', borderRadius: 6, fontSize: 11, display: 'flex', alignItems: 'center', gap: 8 }}>
+                          <span style={{ color: '#5E9ED6', fontWeight: 700, flexShrink: 0 }}>↳ défaut :</span>
+                          <span style={{ color: '#A5C9E8', fontStyle: 'italic', userSelect: 'text', flex: 1, wordBreak: 'break-word' }}>{defaultValue}</span>
+                          <button onClick={() => updateField(selected, 'meta_description', defaultValue)}
+                            title="Copier dans le champ ci-dessus pour éditer"
+                            style={{ padding: '3px 8px', borderRadius: 5, background: '#2A4A6D', color: '#fff', border: 'none', cursor: 'pointer', fontSize: 10, fontWeight: 600, whiteSpace: 'nowrap', flexShrink: 0 }}>
+                            ✏️ Éditer
+                          </button>
                         </div>
                       )}
                     </>)
