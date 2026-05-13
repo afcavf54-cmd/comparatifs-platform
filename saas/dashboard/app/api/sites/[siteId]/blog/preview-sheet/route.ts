@@ -65,6 +65,27 @@ function parseCSV(text: string): Record<string, string>[] {
     .map(r => Object.fromEntries(headers.map((h, i) => [h, (r[i] || '').trim()])))
 }
 
+/**
+ * Calcule l'offset en minutes de la timezone Paris par rapport à UTC pour
+ * une date donnée. Gère automatiquement le changement d'heure CET/CEST.
+ * Retourne 60 en hiver, 120 en été (positif = Paris en avance sur UTC).
+ */
+function parisOffsetMinutes(year: number, month: number, day: number): number {
+  // Construit la même date "wall clock" interprétée dans 2 timezones, puis
+  // mesure la différence. Utilise Intl.DateTimeFormat qui gère DST.
+  const probe = new Date(Date.UTC(year, month - 1, day, 12, 0))
+  const parisFmt = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false,
+  })
+  const parts = parisFmt.formatToParts(probe)
+  const get = (t: string) => Number(parts.find(p => p.type === t)?.value)
+  // 'hour' peut être '24' chez en-US — on normalise
+  const h = get('hour') % 24
+  const parisAsUtc = Date.UTC(get('year'), get('month') - 1, get('day'), h, get('minute'), get('second'))
+  return (parisAsUtc - probe.getTime()) / 60000
+}
+
 function parseDateFR(dateStr: string, timeStr: string): Date | null {
   if (!dateStr) return null
   const ts = (timeStr || '09:00').trim() || '09:00'
@@ -72,15 +93,22 @@ function parseDateFR(dateStr: string, timeStr: string): Date | null {
   const hh = tm ? parseInt(tm[1], 10) : 9
   const mm = tm ? parseInt(tm[2], 10) : 0
   // Formats acceptés : YYYY-MM-DD, DD/MM/YYYY, DD-MM-YYYY
-  let d: Date | null = null
+  let y: number, mo: number, dd: number
   const isoMatch = dateStr.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/)
   const frMatch = dateStr.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/)
   if (isoMatch) {
-    d = new Date(Number(isoMatch[1]), Number(isoMatch[2]) - 1, Number(isoMatch[3]), hh, mm)
+    y = Number(isoMatch[1]); mo = Number(isoMatch[2]); dd = Number(isoMatch[3])
   } else if (frMatch) {
-    d = new Date(Number(frMatch[3]), Number(frMatch[2]) - 1, Number(frMatch[1]), hh, mm)
+    y = Number(frMatch[3]); mo = Number(frMatch[2]); dd = Number(frMatch[1])
+  } else {
+    return null
   }
-  if (!d || isNaN(d.getTime())) return null
+  // L'heure tapée par Julien est en heure de Paris. On la convertit en UTC
+  // en soustrayant l'offset Paris (+60 en hiver, +120 en été).
+  const offsetMin = parisOffsetMinutes(y, mo, dd)
+  const utcMs = Date.UTC(y, mo - 1, dd, hh, mm) - offsetMin * 60000
+  const d = new Date(utcMs)
+  if (isNaN(d.getTime())) return null
   return d
 }
 
@@ -115,6 +143,36 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ siteId
   // 3) Lister les slugs existants (pour info, pas utilisé dans la logique éligibilité)
   const postsFiles = await listDir(`platform/sites/${siteId}/blog/posts`)
   const existingSlugs = new Set(postsFiles.filter((f: any) => f.name?.endsWith('.md')).map((f: any) => f.name.replace(/\.md$/, '')))
+
+  // 3 bis) Lister les titres normalisés des articles déjà publiés (.md frontmatter).
+  // Filet de sécurité contre les doublons quand un article a été publié
+  // manuellement via le dashboard (donc absent du schedule_processed.json).
+  const normalizeTitle = (t: string) => t.toLowerCase().split(/\s+/).filter(Boolean).join(' ')
+  const existingTitles = new Set<string>()
+  const mdFiles = postsFiles.filter((f: any) => f.name?.endsWith('.md'))
+  await Promise.all(mdFiles.slice(0, 200).map(async (f: any) => {
+    try {
+      const fileResp = await getFile(`platform/sites/${siteId}/blog/posts/${f.name}`)
+      if (!fileResp) return
+      const content = fileResp.content
+      if (!content.startsWith('---')) return
+      const end = content.indexOf('---', 3)
+      if (end < 0) return
+      const fm = content.slice(3, end)
+      for (const line of fm.split('\n')) {
+        if (line.trim().startsWith('title:')) {
+          let t = line.split(':').slice(1).join(':').trim()
+          // Strip YAML quotes
+          if ((t.startsWith('"') && t.endsWith('"')) || (t.startsWith("'") && t.endsWith("'"))) {
+            t = t.slice(1, -1)
+            t = t[0] === "'" ? t.replace(/''/g, "'") : t.replace(/\\"/g, '"').replace(/\\\\/g, '\\')
+          }
+          if (t) existingTitles.add(normalizeTitle(t))
+          break
+        }
+      }
+    } catch { /* ignore */ }
+  }))
 
   // 4) Fetch + parse le CSV
   let csvText = ''
@@ -182,8 +240,13 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ siteId
     if (processedSet.has(key)) {
       return { ...base, status: 'already_done', reason: 'Déjà publié dans une exécution précédente' }
     }
+    // Filet : si un .md avec le même titre normalisé existe, on considère
+    // comme déjà publié (cas : article créé manuellement via le dashboard).
+    if (existingTitles.has(normalizeTitle(titre))) {
+      return { ...base, status: 'already_done', reason: 'Un article avec ce titre existe déjà dans le repo' }
+    }
     if (pubAt > now) {
-      return { ...base, status: 'scheduled', reason: `Programmé pour le ${pubAt.toLocaleString('fr-FR')}` }
+      return { ...base, status: 'scheduled', reason: `Programmé pour le ${pubAt.toLocaleString('fr-FR', { timeZone: 'Europe/Paris' })}` }
     }
     return { ...base, status: 'eligible' }
   })
