@@ -13,6 +13,7 @@ link_anchors:
 - text: comité d'entreprise de la SNCF
   max: 5
 related_posts:
+- 5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage
 - 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
 ---
 <h2>Ce que j'ai découvert sur le comité d'entreprise SNCF</h2>

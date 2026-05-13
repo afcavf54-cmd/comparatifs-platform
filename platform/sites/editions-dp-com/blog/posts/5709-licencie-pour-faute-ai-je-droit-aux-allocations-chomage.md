@@ -12,8 +12,10 @@ status: published
 link_anchors:
 - text: licenciement pour faute
   max: 10
+related_posts:
+- 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
+- 6353-comite-d-entreprise-sncf-les-avantages
 ---
-
 <h2>Licenciement pour faute : vos droits aux allocations chômage expliqués</h2>
 
 <p>On vient de me poser cette question la semaine dernière lors d'une réunion avec mes équipes. L'un de nos anciens salariés avait été licencié pour faute et se demandait s'il pouvait toucher le chômage. <strong>La réponse n'est pas si simple</strong> et dépend du type de faute commise.</p>

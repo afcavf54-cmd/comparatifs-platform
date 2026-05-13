@@ -1,21 +1,21 @@
 ---
-title: "Rupture de CDD à l’initiative du salarié : règles, conditions et conséquences"
+title: 'Rupture de CDD à l’initiative du salarié : règles, conditions et conséquences'
 slug: 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
-date: 2026-05-13T09:00:00
-updated: 2026-05-13T10:48:11
+date: 2026-05-13 09:00:00
+updated: 2026-05-13 10:48:11
 categorie: Salarié
-meta_title: "Rupture CDD à l'initiative du salarié : que faut-il savoir ?"
-meta_description: "'Découvrez dans quels cas un salarié en CDD peut rompre son contrat"
+meta_title: 'Rupture CDD à l''initiative du salarié : que faut-il savoir ?'
+meta_description: '''Découvrez dans quels cas un salarié en CDD peut rompre son contrat'
 featured_image: /blog/4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences/featured-82850.jpg
 status: published
 min_words: 900
 related_posts:
 - 6353-comite-d-entreprise-sncf-les-avantages
+- 5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage
 link_anchors:
 - text: rupture cdd
   max: 10
 ---
-
 <h2>Pourquoi un salarié en CDD peut-il rompre son contrat ?</h2>
 
 <p>Je vois souvent cette question dans mon entreprise. Un salarié en CDD peut effectivement quitter son poste avant la fin prévue, mais attention : <strong>ce n'est pas aussi simple qu'une démission classique</strong>. Les règles sont précises et les conséquences peuvent être lourdes.</p>

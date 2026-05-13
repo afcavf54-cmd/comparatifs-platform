@@ -12,8 +12,12 @@ status: published
 link_anchors:
 - text: NAF en restauration
   max: 1
+related_posts:
+- 2256-pappers-ou-puis-je-trouver-le-rcs-d-une-entreprise
+- 1905-comment-rechercher-un-dirigeant-sur-pappers
+- 4929-pappers-le-site-parfait-pour-la-recherche-d-entreprise
+- 4342-pappers-comment-rechercher-le-siret-d-une-entreprise
 ---
-
 <h2>Qu'est-ce que le code NAF et pourquoi c'est si important ?</h2>
 
 <p>Le code NAF, c'est votre <strong>identité administrative</strong>. On l'appelle aussi code APE (Activité Principale Exercée). Dans ma boîte, j'ai appris à mes dépens qu'il ne faut pas le choisir au hasard. Ce petit code à 5 caractères détermine votre secteur d'activité, vos obligations, et même vos tarifs d'assurance.</p>
