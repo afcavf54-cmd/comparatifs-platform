@@ -765,3 +765,74 @@ def _extract_steps_from_h2(html: str, post_toc: list[dict] | None = None) -> lis
         if name and text and len(text) >= 15:
             steps.append({'name': name, 'text': text, 'id': step_id})
     return steps
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# FIX TYPOGRAPHIQUE — ajout automatique du '?' sur les titres interrogatifs
+# ═══════════════════════════════════════════════════════════════════════════
+
+# Mots interrogatifs qui déclenchent l'ajout d'un '?' final si manquant.
+# Ordre : multi-mots d'abord (sinon "Est-ce" peut être considéré comme commençant
+# par "Est"). Tous testés case-insensitive sur le premier mot/début.
+_QUESTION_STARTERS = [
+    'est-ce que', 'est-ce qu',
+    'faut-il', 'doit-on', 'peut-on', 'comment',
+    'pourquoi', 'quand', 'combien', 'où',
+    "qu'est-ce", "qu'", "qu’",  # apostrophe ASCII et typographique
+    'que', 'qui', 'quel', 'quelle', 'quels', 'quelles',
+    'lequel', 'laquelle', 'lesquels', 'lesquelles',
+    'a-t-on', 'a-t-il', 'a-t-elle', 'y a-t-il',
+]
+
+
+def _strip_html_for_check(text: str) -> str:
+    """Strip HTML pour vérifier le début du texte d'un titre."""
+    return re.sub(r'<[^>]+>', '', text or '').strip()
+
+
+def _is_question_title(text: str) -> bool:
+    """Détecte si un titre commence par un mot/expression interrogatif."""
+    plain = _strip_html_for_check(text).lower()
+    if not plain:
+        return False
+    for starter in _QUESTION_STARTERS:
+        # Match au début + frontière (espace, apostrophe, ou fin)
+        if plain.startswith(starter):
+            # Vérifier que c'est un mot complet (pas "comme" qui commence par "comm")
+            next_char = plain[len(starter):len(starter) + 1]
+            if next_char in (' ', "'", '\u2019', '-', '') or starter.endswith("'") or starter.endswith('\u2019'):
+                return True
+    return False
+
+
+def fix_question_marks(html: str) -> tuple[str, int]:
+    """Pour chaque <h1>-<h6> dont le texte est une question (commence par un mot
+    interrogatif) mais ne se termine pas par '?', ajoute le '?' final avec un
+    espace simple devant.
+
+    Retourne (html_modifié, n_fixes)."""
+    if not html:
+        return html, 0
+    n_fixes = 0
+
+    def _repl(m: re.Match) -> str:
+        nonlocal n_fixes
+        full_open = m.group(1)   # <hN attrs>
+        content = m.group(2)
+        full_close = m.group(3)  # </hN>
+        if not _is_question_title(content):
+            return m.group(0)
+        plain = _strip_html_for_check(content).rstrip(' \t\u00a0\u202f')
+        if plain.endswith('?') or plain.endswith('!') or plain.endswith('…'):
+            return m.group(0)
+        new_content = content.rstrip(' \t\n\u00a0\u202f') + ' ?'
+        n_fixes += 1
+        return f'{full_open}{new_content}{full_close}'
+
+    new_html = re.sub(
+        r'(<h[1-6]\b[^>]*>)(.+?)(</h[1-6]\s*>)',
+        _repl,
+        html,
+        flags=re.DOTALL | re.IGNORECASE,
+    )
+    return new_html, n_fixes
