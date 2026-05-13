@@ -1,19 +1,21 @@
 ---
-title: 'Pappers Immobilier ne fonctionne plus : quelles alternatives utiliser ?'
+title: "Pappers Immobilier ne fonctionne plus : quelles alternatives utiliser ?"
 slug: 4695-pappers-immobilier-ne-fonctionne-plus-quelles-alternatives-utiliser
-date: '2026-05-13T16:00:00+02:00'
+date: 2026-05-13T16:00:00+02:00
+updated: 2026-05-13T14:11:30
 categorie: Entreprenariat
-meta_title: 'Pappers Immobilier ne fonctionne plus : les alternatives'
+meta_title: "Pappers Immobilier ne fonctionne plus : les alternatives"
 meta_description: Pappers Immobilier a fermé en 2023. Découvrez les meilleures alternatives
-  gratuites et payantes pour analyser les données immobilières et les prix du marché.
-min_words: 750
+featured_image: /blog/4695-pappers-immobilier-ne-fonctionne-plus-quelles-alternatives-utiliser/featured-84574.jpg
 status: published
+min_words: 750
 related_posts:
 - 4929-pappers-le-site-parfait-pour-la-recherche-d-entreprise
 - 2644-pappers-immobilier-avis-complet-sur-la-plateforme-immobiliere
 - 7452-peut-on-recuperer-son-kbis-gratuitement-sur-pappers
 - 2256-pappers-ou-puis-je-trouver-le-rcs-d-une-entreprise
 ---
+
 <h2>Pourquoi Pappers Immobilier pose problème aujourd'hui ?</h2>
 
 <p>Je vais être direct : <strong>Pappers Immobilier a fermé ses portes</strong> fin 2023. Après avoir été racheté par Pappers, le service n'a jamais vraiment retrouvé sa stabilité d'origine.</p>
@@ -106,3 +108,4 @@ Non, le service ayant fermé, ces données ne sont plus accessibles. Il faut rec
 
 <p><strong>Quel outil convient le mieux pour une petite agence ?</strong><br>
 MeilleursAgents Pro reste le meilleur compromis. Interface simple, prix raisonnable et fonctionnalités adaptées aux besoins quotidiens d'une petite structure.</p>
+
