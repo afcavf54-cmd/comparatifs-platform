@@ -26,6 +26,7 @@ export default function SiteDetailPage() {
   const [pageTypes, setPageTypes] = useState<Record<string, string>>({})
   const [analyticsClicky, setAnalyticsClicky] = useState('')
   const [googleVerification, setGoogleVerification] = useState('')
+  const [contactFormKey, setContactFormKey] = useState('')
   const [savingTracking, setSavingTracking] = useState(false)
   const [trackingMsg, setTrackingMsg] = useState('')
 
@@ -44,6 +45,7 @@ export default function SiteDetailPage() {
       if (d.page_types) setPageTypes(d.page_types)
       if (d.analytics_clicky) setAnalyticsClicky(d.analytics_clicky)
       if (d.google_site_verification) setGoogleVerification(d.google_site_verification)
+      if (d.contact_form_key) setContactFormKey(d.contact_form_key)
     }).catch(() => {})
   }, [siteId])
 
@@ -59,7 +61,11 @@ export default function SiteDetailPage() {
     setSavingTracking(true); setTrackingMsg('')
     const r = await fetch(`/api/sites/${siteId}/config`, {
       method: 'PATCH', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ analytics_clicky: analyticsClicky, google_site_verification: googleVerification })
+      body: JSON.stringify({
+        analytics_clicky: analyticsClicky,
+        google_site_verification: googleVerification,
+        contact_form_key: contactFormKey,
+      })
     })
     const d = await r.json()
     setTrackingMsg(d.ok ? '✓ Sauvegardé' : '✗ Erreur')
@@ -207,6 +213,15 @@ export default function SiteDetailPage() {
               <input value={googleVerification} onChange={e => setGoogleVerification(e.target.value)}
                 placeholder="8qExRLvDtjV8AY9eKfy1-yNAgx7JTZAPDM-Cs4CE4WU"
                 style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+            </div>
+            <div style={{ gridColumn: '1 / -1' }}>
+              <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>✉️ Clé Web3Forms (formulaire de contact)</div>
+              <input value={contactFormKey} onChange={e => setContactFormKey(e.target.value)}
+                placeholder="ex: a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const, fontFamily: 'monospace' }} />
+              <div style={{ fontSize: 11, color: '#4A5568', marginTop: 6, lineHeight: 1.5 }}>
+                Crée une clé gratuite sur <a href="https://web3forms.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#00D4AA', textDecoration: 'none' }}>web3forms.com</a> en renseignant <code style={{ color: '#00D4AA' }}>contact@viseoweb.fr</code> comme email destinataire. Sans clé, la page /contact affiche juste un mailto.
+              </div>
             </div>
           </div>
         </div>
