@@ -10,12 +10,14 @@
   "dependencies": {
     "next": "15.3.6",
     "react": "19.2.1",
-    "react-dom": "19.2.1"
+    "react-dom": "19.2.1",
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/js-yaml": "^4.0.9",
     "typescript": "^5"
   }
 }
