@@ -12,8 +12,9 @@ status: published
 link_anchors:
 - text: rupture cdd
   max: 10
+related_posts:
+- 6353-comite-d-entreprise-sncf-les-avantages
 ---
-
 <h2>Pourquoi un salarié en CDD peut-il rompre son contrat ?</h2>
 
 <p>Je vois souvent cette question dans mon entreprise. Un salarié en CDD peut effectivement quitter son poste avant la fin prévue, mais attention : <strong>ce n'est pas aussi simple qu'une démission classique</strong>. Les règles sont précises et les conséquences peuvent être lourdes.</p>
