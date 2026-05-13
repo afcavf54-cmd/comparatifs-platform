@@ -130,8 +130,17 @@ def _parse_anchor_line(line: str) -> dict | None:
 def _parse_date(date_str: str | _dt.datetime) -> _dt.datetime:
     """Tolère '2026-05-15', '2026-05-15T09:00', '2026-05-15T09:00:00',
     '2026-05-15T09:00:00.123456' (microsecondes), '2026-05-15T09:00:00+02:00'
-    (timezone), objet datetime, ou vide."""
+    (timezone), objet datetime (aware ou naïf), ou vide.
+
+    Retourne TOUJOURS un datetime naïf : si l'entrée est aware, on strip le
+    tzinfo pour pouvoir comparer avec `datetime.now()` (naïf par défaut). Sans
+    ce strip, toute comparaison aware-vs-naïf déclencherait TypeError et le
+    chargement de blog_posts retournerait une liste vide → cleanup supprime
+    tous les .html blog → 404 généralisés.
+    """
     if isinstance(date_str, _dt.datetime):
+        if date_str.tzinfo is not None:
+            return date_str.replace(tzinfo=None)
         return date_str
     if isinstance(date_str, _dt.date):
         return _dt.datetime.combine(date_str, _dt.time.min)
