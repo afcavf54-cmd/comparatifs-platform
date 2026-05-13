@@ -36,6 +36,13 @@ import unicodedata
 import urllib.request
 import urllib.error
 from datetime import datetime
+from zoneinfo import ZoneInfo
+
+# Toutes les comparaisons de date/heure du script utilisent Europe/Paris pour
+# que les heures de publication tapées dans la sheet (en heure de Paris)
+# correspondent à ce que voit Julien, indépendamment du timezone du serveur
+# GitHub Actions (UTC par défaut).
+PARIS = ZoneInfo("Europe/Paris")
 from pathlib import Path
 
 import yaml
@@ -102,7 +109,12 @@ def fetch_csv(url: str) -> list[dict]:
 
 
 def parse_pub_datetime(date_str: str, time_str: str = "09:00") -> datetime | None:
-    """Parse 'YYYY-MM-DD' + 'HH:MM' → datetime. Tolère les formats divers."""
+    """Parse 'YYYY-MM-DD' + 'HH:MM' → datetime aware en Europe/Paris.
+
+    L'heure tapée par l'utilisateur dans la sheet est en heure de Paris.
+    On retourne une datetime aware pour que la comparaison avec `datetime.now(PARIS)`
+    soit correcte indépendamment du timezone du serveur GitHub Actions.
+    """
     if not date_str:
         return None
     # Date
@@ -116,13 +128,18 @@ def parse_pub_datetime(date_str: str, time_str: str = "09:00") -> datetime | Non
         return None
     # Heure
     ts = (time_str or "09:00").strip() or "09:00"
+    hour, minute, second = 9, 0, 0
+    parsed_time = False
     for fmt in ("%H:%M:%S", "%H:%M", "%Hh%M", "%H h %M"):
         try:
             t = datetime.strptime(ts, fmt).time()
-            return d.replace(hour=t.hour, minute=t.minute, second=t.second)
+            hour, minute, second = t.hour, t.minute, t.second
+            parsed_time = True
+            break
         except ValueError:
             continue
-    return d.replace(hour=9)
+    # On rend la datetime aware Paris (gère automatiquement CET/CEST)
+    return d.replace(hour=hour, minute=minute, second=second, tzinfo=PARIS)
 
 
 def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000) -> str:
@@ -329,7 +346,7 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
     processed_set = set(processed)
 
     existing_slugs = {p.stem for p in posts_dir.glob("*.md")} if posts_dir.exists() else set()
-    now = datetime.now()
+    now = datetime.now(PARIS)
 
     global_prompt, persona_prompt = load_prompts(site_dir, config)
     new_count = 0
@@ -434,7 +451,7 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
 
 def main():
     print("🚀 Blog cron — publication des articles programmés")
-    print(f"   Maintenant : {datetime.now().isoformat()}")
+    print(f"   Maintenant : {datetime.now(PARIS).isoformat()}")
 
     sites_processed: list[str] = []
     for site_dir in sorted(SITES_DIR.iterdir()):
