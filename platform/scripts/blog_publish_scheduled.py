@@ -347,6 +347,15 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
 
     existing_slugs = {p.stem for p in posts_dir.glob("*.md")} if posts_dir.exists() else set()
     now = datetime.now(PARIS)
+    # Titres dont on force la publication immédiate (séparés par '|').
+    # Set en lowercase pour matcher case-insensitive avec le titre de la sheet.
+    _force_titles = {
+        t.strip().lower()
+        for t in (os.environ.get("FORCE_TITLES") or "").split("|")
+        if t.strip()
+    }
+    if _force_titles:
+        print(f"   ⚡ Mode force activé : {len(_force_titles)} titre(s) à publier immédiatement")
 
     global_prompt, persona_prompt = load_prompts(site_dir, config)
     new_count = 0
@@ -355,13 +364,18 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         title = row.get("titre", "").strip()
         if not title:
             continue
+        # FORCE_TITLES (env, séparés par '|') = liste des titres dont on force la
+        # publication immédiate, en ignorant la date programmée. Utilisé par le
+        # bouton "🚀 Publier maintenant" du dashboard pour publier un article
+        # avant l'heure prévue.
+        is_forced = title.lower() in _force_titles
         date_str = row.get("date_publication", "").strip()
-        # Si date vide → publication immédiate (= maintenant).
-        # Si date remplie + future → on attend.
+        # Si forcé OU date vide → publication immédiate (= maintenant).
+        # Si date remplie + future → on attend (sauf si forcé).
         # Si date remplie + passée → on publie maintenant.
-        if not date_str:
+        if is_forced or not date_str:
             pub_dt = now
-            key = f"{title}__IMMEDIATE"
+            key = f"{title}__{'FORCED' if is_forced else 'IMMEDIATE'}"
         else:
             pub_dt = parse_pub_datetime(date_str, row.get("heure_publication", "09:00"))
             if pub_dt is None:
