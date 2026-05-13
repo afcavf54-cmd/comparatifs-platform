@@ -42,9 +42,8 @@ export default function ShellLayout({ children }: { children: React.ReactNode })
 
   const tabs = siteId ? [
     { id: 'overview', label: "📊 Vue d'ensemble", href: `/sites/${siteId}` },
-    { id: 'templates', label: '📄 Templates', href: `/sites/${siteId}/templates` },
     { id: 'data', label: '🗂 Données', href: `/sites/${siteId}/data` },
-    { id: 'editorial', label: '✍️ Éditorial', href: `/sites/${siteId}/editorial` },
+    { id: 'blog', label: '📝 Blog', href: `/sites/${siteId}/blog` },
     ...(pageTypes.classement ? [{ id: 'classements', label: '📊 Classements', href: `/sites/${siteId}/classements` }] : []),
     { id: 'deploy', label: '🚀 Déploiement', href: `/sites/${siteId}/deploy` },
     { id: 'settings', label: '⚙️ Paramètres', href: `/sites/${siteId}/settings` },
