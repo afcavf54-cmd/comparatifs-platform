@@ -11,8 +11,12 @@ status: published
 link_anchors:
 - text: Pappers Immobilier
   max: 10
+related_posts:
+- 3519-comment-choisir-le-bon-code-naf-en-restauration
+- 1905-comment-rechercher-un-dirigeant-sur-pappers
+- 4929-pappers-le-site-parfait-pour-la-recherche-d-entreprise
+- 2256-pappers-ou-puis-je-trouver-le-rcs-d-une-entreprise
 ---
-
 <h2>Mon test de Pappers Immobilier : une plateforme qui vaut ses 49€/mois ?</h2>
 
 <p>Je vais être direct avec vous. J'ai testé Pappers Immobilier pendant 3 mois pour ma TPE. <strong>L'idée me plaisait</strong> : pouvoir analyser le marché immobilier local avec des données fiables sans me ruiner. Mais la réalité s'avère plus nuancée.</p>

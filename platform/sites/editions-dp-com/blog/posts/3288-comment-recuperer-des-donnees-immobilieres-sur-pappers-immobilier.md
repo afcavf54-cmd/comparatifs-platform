@@ -10,8 +10,12 @@ meta_description: 'Découvrez mon test complet de Pappers Immobilier : données 
   plusieurs…'
 min_words: 750
 status: published
+related_posts:
+- 1905-comment-rechercher-un-dirigeant-sur-pappers
+- 4929-pappers-le-site-parfait-pour-la-recherche-d-entreprise
+- 3519-comment-choisir-le-bon-code-naf-en-restauration
+- 4342-pappers-comment-rechercher-le-siret-d-une-entreprise
 ---
-
 <h2>Pappers Immobilier : ce que je pense vraiment de cet outil</h2>
 
 <p>Pappers Immobilier débarque sur un marché déjà occupé par des mastodontes. Après avoir testé la plateforme plusieurs mois, je partage mon retour d'expérience. Spoiler : ce n'est pas parfait, mais ça peut vous faire économiser pas mal d'argent.</p>
