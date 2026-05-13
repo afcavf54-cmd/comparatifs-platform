@@ -753,12 +753,25 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         blog_posts = []
         blog_categories = []
         blog_expected: set = set()
+        blog_load_failed = False
         if blog_engine is not None:
             try:
                 blog_posts = blog_engine.load_all_posts(site_dir, include_drafts=False)
             except Exception as _e:
                 print(f"  ⚠ Blog : erreur chargement posts : {_e}")
                 blog_posts = []
+                blog_load_failed = True
+            # Filet de sécurité : si le chargement a planté, on protège AU MOINS
+            # les fichiers .html existants pour ne pas les supprimer accidentellement
+            # via cleanup_removed_products. On scan blog/posts/ pour récupérer les
+            # slugs et les ajouter à blog_expected.
+            if blog_load_failed:
+                posts_dir = site_dir / 'blog' / 'posts'
+                if posts_dir.exists():
+                    blog_expected.add("blog.html")
+                    for md_file in posts_dir.glob('*.md'):
+                        blog_expected.add(f"{md_file.stem}.html")
+                    print(f"  🛡 Filet : {len(blog_expected) - 1} slugs blog protégés depuis le disque")
             if blog_posts:
                 site["has_blog"] = True
                 blog_categories = blog_engine.collect_categories(blog_posts)
