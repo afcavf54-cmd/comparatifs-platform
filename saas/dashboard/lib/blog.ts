@@ -94,7 +94,43 @@ export function parseFrontmatter(raw: string): { fm: Record<string, any>; body: 
     // Paire simple `key: value`
     const kvMatch = line.match(/^([a-z_][a-z0-9_]*)\s*:\s*(.*)$/i)
     if (kvMatch) {
-      fm[kvMatch[1]] = unquote(kvMatch[2].trim())
+      const key = kvMatch[1]
+      let value = kvMatch[2]
+      // Gestion de la continuation YAML : si la valeur ouvre une chaîne quoted
+      // sans la fermer sur la même ligne, on consomme les lignes suivantes
+      // (indentées, donc continuation) jusqu'à trouver la quote de fermeture.
+      // PyYAML utilise ce format pour les chaînes longues avec caractères
+      // spéciaux. Ex :
+      //   title: 'Pappers immobilier : comment récupérer ...sur cette
+      //     plateforme ?'
+      const opensSingle = value.startsWith("'") && !value.slice(1).match(/(?<!')'(?!')$/)
+      const opensDouble = value.startsWith('"') && !value.match(/[^\\]"$/) && value.length > 1
+      if (opensSingle || opensDouble) {
+        const quote = opensSingle ? "'" : '"'
+        // Compteurs simples : on cherche la prochaine fin non-échappée.
+        // Pour single-quote : `'` suivi d'une non-quote (`''` est un escape)
+        // Pour double-quote : `"` non précédé de `\`
+        let i2 = i + 1
+        while (i2 < lines.length) {
+          const cont = lines[i2]
+          // On joint avec un espace (convention YAML : les newlines en
+          // single-quoted-string deviennent des espaces).
+          value = value + ' ' + cont.replace(/^\s+/, '')
+          i2++
+          if (quote === "'") {
+            // La quote de fin est un ' qui n'est pas suivi d'un autre ' (= escape)
+            // et qui est à la fin de la chaîne (ou suivi d'un espace/whitespace).
+            // Test : la valeur courante se termine-t-elle par un ' qui clôt ?
+            const endMatch = value.match(/^'((?:[^']|'')*)'$/)
+            if (endMatch) break
+          } else {
+            const endMatch = value.match(/^"((?:[^"\\]|\\.)*)"$/)
+            if (endMatch) break
+          }
+        }
+        i = i2 - 1  // sera incrémenté en bas de boucle
+      }
+      fm[key] = unquote(value.trim())
     }
     i++
   }
