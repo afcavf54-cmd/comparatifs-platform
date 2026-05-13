@@ -439,25 +439,47 @@ def _count_internal_links(html: str) -> int:
 
 
 def _strip_self_links(html: str, src_slug: str) -> tuple[str, int]:
-    """Supprime les liens dont le href pointe vers soi-même.
-    Remplace `<a href="/{src_slug}">texte</a>` par `texte`.
-    Aussi gère le format absolu `https://.../{src_slug}` (sans hash) au cas où.
+    """Supprime les liens dont le href pointe vers soi-même (l'article courant).
+    Gère les 3 formats que l'IA peut générer :
+      - relatif racine    : /<src_slug>
+      - relatif sous-path : /blog/<src_slug>
+      - absolu            : https://example.com/<src_slug>
+    Le matching ignore trailing slash, query string et fragment.
 
+    Remplace `<a href="...">texte</a>` par juste `texte`.
     Retourne (html_modifié, n_self_links_supprimés).
     """
     if not html or not src_slug:
         return html, 0
     n = 0
-    # Pattern relatif : href="/<slug>" éventuellement avec ?, # ou /
-    pat_rel = re.compile(
-        r'<a\b[^>]*\bhref\s*=\s*["\']/(?:[^"\']*?/)?' + re.escape(src_slug) + r'(?:[/?#"\']|[^"\']*)["\'][^>]*>(.*?)</a>',
+
+    def _normalize_href(href: str) -> str:
+        # Retire protocol + domain (http://x.y/foo → /foo)
+        norm = re.sub(r'^https?://[^/]+', '', href.strip())
+        # Retire query string et fragment
+        norm = re.sub(r'[?#].*$', '', norm)
+        # Retire trailing slash
+        norm = norm.rstrip('/')
+        return norm
+
+    pat = re.compile(
+        r'<a\b[^>]*\bhref\s*=\s*["\']([^"\']*)["\'][^>]*>(.*?)</a>',
         re.IGNORECASE | re.DOTALL,
     )
+
     def _replace(m: re.Match) -> str:
         nonlocal n
-        n += 1
-        return m.group(1)  # juste le texte interne, on retire la balise <a>
-    new_html = pat_rel.sub(_replace, html)
+        href = m.group(1)
+        text = m.group(2)
+        norm = _normalize_href(href)
+        target_suffix = '/' + src_slug
+        # Match si href se termine par /<src_slug> (ex: /2644-foo ou /blog/2644-foo)
+        if norm == target_suffix or norm.endswith(target_suffix):
+            n += 1
+            return text
+        return m.group(0)
+
+    new_html = pat.sub(_replace, html)
     return new_html, n
 
 
