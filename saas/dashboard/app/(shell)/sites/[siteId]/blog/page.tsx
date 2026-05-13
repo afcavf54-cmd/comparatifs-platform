@@ -41,6 +41,8 @@ export default function BlogListPage() {
   // Ils restent visibles jusqu'à ce que la date soit atteinte et qu'ils
   // apparaissent dans la liste publiée. Stockés en localStorage séparé.
   const [scheduled, setScheduled] = useState<{ title: string; scheduledFor: string; createdAt: number }[]>([])
+  // Bouton "🚀 Publier maintenant" — titre en cours de déclenchement (sinon null)
+  const [publishingNow, setPublishingNow] = useState<string | null>(null)
   // Configuration sheet de programmation
   const [showSheetConfig, setShowSheetConfig] = useState(false)
   const [sheetUrl, setSheetUrl] = useState('')
@@ -291,6 +293,61 @@ export default function BlogListPage() {
     else alert('Erreur suppression')
   }
 
+  /**
+   * Force la publication immédiate d'un article programmé. Déclenche le
+   * workflow blog-cron.yml avec FORCE_TITLES, qui ignore la date programmée
+   * pour cet article et le publie tout de suite. Retire l'article de la box
+   * scheduled et l'ajoute en pending (génération en cours).
+   */
+  async function publishNow(title: string) {
+    if (!confirm(`Publier maintenant "${title}" ?\n\nL'article sera généré immédiatement, sans attendre sa date programmée.`)) return
+    setPublishingNow(title)
+    try {
+      const r = await fetch(`/api/sites/${siteId}/blog/publish-now`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title }),
+      })
+      const d = await r.json()
+      if (r.ok) {
+        // Retirer du scheduled, ajouter au pending pour le suivi
+        const newScheduled = scheduled.filter(s => s.title !== title)
+        setScheduled(newScheduled)
+        saveScheduled(newScheduled)
+        const merged = [...pending, { title, createdAt: Date.now() }]
+        setPending(merged)
+        savePending(merged)
+      } else {
+        alert('Erreur déclenchement : ' + (d.error || 'inconnue'))
+      }
+    } catch (e: any) {
+      alert('Erreur réseau : ' + e.message)
+    }
+    setPublishingNow(null)
+  }
+
+  /**
+   * Ouvre la Google Sheet dans un nouvel onglet en mode édition. Tente de
+   * dériver l'URL d'édition depuis l'URL CSV configurée. Cas gérés :
+   *   - /d/<id>/...           → édition possible (sheet partagée directement)
+   *   - /d/e/<publish_id>/pub → publish_id ≠ id interne, dérivation impossible
+   *     → fallback sur la page d'accueil Google Sheets (Julien clique sur sa sheet)
+   */
+  function openSheetForEdit() {
+    if (!sheetEditUrl) return
+    window.open(sheetEditUrl, '_blank', 'noopener,noreferrer')
+  }
+  const sheetEditUrl = (() => {
+    const csv = sheetUrl || sheetUrlOriginal
+    if (!csv) return ''
+    // Pattern 1 : /d/<id>/ (sheet partagée directement, pas via /pub) — dérivable
+    const direct = csv.match(/\/spreadsheets\/d\/(?!e\/)([a-zA-Z0-9_-]+)/)
+    if (direct) return `https://docs.google.com/spreadsheets/d/${direct[1]}/edit`
+    // Pattern 2 : /d/e/<publish_id>/pub — publish_id ≠ id interne, on retourne
+    // la page d'accueil Sheets pour que Julien retrouve sa sheet manuellement.
+    if (csv.includes('/spreadsheets/d/e/')) return 'https://docs.google.com/spreadsheets/'
+    return ''
+  })()
+
   const categories = Array.from(new Set(posts.map(p => p.categorie).filter(Boolean))) as string[]
   const filtered = posts.filter(p => {
     if (search && !p.title.toLowerCase().includes(search.toLowerCase())) return false
@@ -395,6 +452,20 @@ export default function BlogListPage() {
               <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 12px', background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 8, gap: 12 }}>
                 <span style={{ color: '#fff', fontSize: 13, flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>📅 {p.title}</span>
                 <span style={{ color: '#5E9ED6', fontSize: 12, fontWeight: 600, whiteSpace: 'nowrap' }}>{formatScheduledDate(p.scheduledFor)}</span>
+                <button
+                  onClick={() => openSheetForEdit()}
+                  disabled={!sheetEditUrl}
+                  title={sheetEditUrl ? 'Modifier la date dans la Google Sheet' : 'URL sheet introuvable'}
+                  style={{ padding: '5px 10px', borderRadius: 6, background: 'transparent', border: '1px solid #2A4A6D', color: sheetEditUrl ? '#5E9ED6' : '#4A5568', fontSize: 11, fontWeight: 600, cursor: sheetEditUrl ? 'pointer' : 'not-allowed', whiteSpace: 'nowrap' }}>
+                  📝 Modifier
+                </button>
+                <button
+                  onClick={() => publishNow(p.title)}
+                  disabled={publishingNow === p.title}
+                  title="Publier immédiatement (ignore la date programmée)"
+                  style={{ padding: '5px 10px', borderRadius: 6, background: publishingNow === p.title ? '#1E2D3D' : '#00D4AA', border: 'none', color: publishingNow === p.title ? '#4A5568' : '#0A0E1A', fontSize: 11, fontWeight: 700, cursor: publishingNow === p.title ? 'default' : 'pointer', whiteSpace: 'nowrap' }}>
+                  {publishingNow === p.title ? '⏳ ...' : '🚀 Publier'}
+                </button>
               </div>
             ))}
           </div>
