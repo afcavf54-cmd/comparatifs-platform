@@ -346,6 +346,29 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
     processed_set = set(processed)
 
     existing_slugs = {p.stem for p in posts_dir.glob("*.md")} if posts_dir.exists() else set()
+    # Titres normalisés des articles déjà publiés (lus depuis le frontmatter
+    # de chaque .md). Sert de filet de sécurité contre les doublons quand un
+    # article a été publié manuellement (dashboard) sans passer par le cron.
+    existing_titles_normalized: set[str] = set()
+    if posts_dir.exists():
+        for md_path in posts_dir.glob("*.md"):
+            try:
+                content = md_path.read_text(encoding="utf-8")
+                # Frontmatter YAML entre --- au début du fichier
+                if content.startswith("---"):
+                    end = content.find("---", 3)
+                    if end > 0:
+                        fm_text = content[3:end]
+                        for line in fm_text.splitlines():
+                            if line.lstrip().startswith("title:"):
+                                t = line.split(":", 1)[1].strip()
+                                # Strip quotes YAML
+                                if t.startswith(("'", '"')) and t.endswith(t[0]) and len(t) >= 2:
+                                    t = t[1:-1].replace("''", "'") if t[0] == "'" else t.replace('\\"', '"').replace('\\\\', '\\')
+                                existing_titles_normalized.add(" ".join(t.lower().split()))
+                                break
+            except Exception:
+                continue
     now = datetime.now(PARIS)
     # Titres dont on force la publication immédiate (séparés par '|').
     # Set en lowercase pour matcher case-insensitive avec le titre de la sheet.
@@ -390,6 +413,18 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         # ligne ne sera traitée qu'une seule fois, peu importe le nombre de
         # vérifications cron. Pour re-publier le même titre, changer le titre.
         if key in processed_set:
+            continue
+
+        # Filet de sécurité supplémentaire : si un article avec EXACTEMENT le
+        # même titre existe déjà parmi les .md du site, on considère comme déjà
+        # publié (cas typique : article publié à la main via le dashboard, donc
+        # absent du schedule_processed.json mais présent dans blog/posts/).
+        # On normalise pour matcher case-insensitive avec espaces collapsés.
+        title_normalized = " ".join(title.lower().split())
+        if title_normalized in existing_titles_normalized:
+            print(f"   ⏭ '{title[:50]}' déjà publié (titre existant) — ajout au registre")
+            processed_set.add(key)
+            processed.append(key)
             continue
 
         # Slug
