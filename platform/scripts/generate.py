@@ -525,7 +525,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     SITE_KEYS_TO_RESCUE = [
         'analytics_clicky', 'google_site_verification',
         'www_preference', 'home_title', 'home_description', 'home_h1',
-        'blog_sheet_csv_url', 'contact_form_key',
+        'blog_sheet_csv_url', 'blog_sheet_edit_url', 'contact_form_key',
     ]
     for _k in SITE_KEYS_TO_RESCUE:
         if site.get(_k):
