@@ -4,14 +4,20 @@ slug: 8440-qu-est-ce-qu-un-comite-d-entreprise
 date: '2026-05-14T09:00:00+02:00'
 categorie: Salarié
 meta_title: 'Définition comité d''entreprise : rôle, fonctionnement et avantages'
-meta_description: 'Découvrez le rôle essentiel du comité d''entreprise : missions, fonctionnement et obligations pour les entreprises de 50 salariés et plus. Guide complet du CE.'
+meta_description: 'Découvrez le rôle essentiel du comité d''entreprise : missions,
+  fonctionnement et obligations pour les entreprises de 50 salariés et plus. Guide
+  complet du CE.'
 min_words: 750
 status: published
 link_anchors:
 - text: comité d'entreprise
   max: 15
+related_posts:
+- 6353-comite-d-entreprise-sncf-les-avantages
+- 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
+- 1188-que-propose-le-comite-d-entreprise-gmf-aux-salaries
+- 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
 ---
-
 <h2>Le comité d'entreprise : définition et rôle</h2>
 
 <p>Je vais vous expliquer ce qu'est réellement un comité d'entreprise. C'est une instance que j'ai côtoyée pendant mes 11 années d'expérience en tant que dirigeant.</p>

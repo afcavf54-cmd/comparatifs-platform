@@ -4,14 +4,20 @@ slug: 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
 date: '2026-05-14T10:00:00+02:00'
 categorie: Salarié
 meta_title: 'Comité d''entreprise CIC : avantages, réductions et fonctionnement'
-meta_description: 'Découvrez tous les avantages du comité d''entreprise CIC : mutuelle performante, chèques vacances, formations, prime de participation et réductions bancaires pour…'
+meta_description: 'Découvrez tous les avantages du comité d''entreprise CIC : mutuelle
+  performante, chèques vacances, formations, prime de participation et réductions
+  bancaires pour…'
 min_words: 750
 status: published
 link_anchors:
 - text: comité d'entreprise cic
   max: 1
+related_posts:
+- 5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage
+- 8440-qu-est-ce-qu-un-comite-d-entreprise
+- 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
+- 6353-comite-d-entreprise-sncf-les-avantages
 ---
-
 <h2>Les avantages du CIC pour ses employés</h2>
 
 <p>Travailler au CIC, c'est bénéficier d'une couverture sociale solide et d'avantages négociés par le <strong>comité d'entreprise</strong>. Je connais plusieurs salariés du secteur bancaire, et franchement, le CIC fait partie des employeurs qui s'occupent bien de leurs équipes.</p>

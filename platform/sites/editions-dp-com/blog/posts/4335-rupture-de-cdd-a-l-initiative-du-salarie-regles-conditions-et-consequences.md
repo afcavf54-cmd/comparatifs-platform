@@ -10,8 +10,10 @@ featured_image: /blog/4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-condi
 status: published
 min_words: 900
 related_posts:
-- 6353-comite-d-entreprise-sncf-les-avantages
+- 8440-qu-est-ce-qu-un-comite-d-entreprise
+- 1188-que-propose-le-comite-d-entreprise-gmf-aux-salaries
 - 5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage
+- 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
 link_anchors:
 - text: rupture cdd
   max: 10

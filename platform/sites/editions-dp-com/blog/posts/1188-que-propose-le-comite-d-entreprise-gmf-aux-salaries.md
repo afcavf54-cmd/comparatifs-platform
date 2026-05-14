@@ -4,14 +4,20 @@ slug: 1188-que-propose-le-comite-d-entreprise-gmf-aux-salaries
 date: '2026-05-14T11:00:00+02:00'
 categorie: Salarié
 meta_title: 'Comité d''entreprise GMF : avantages salariés et offres proposées'
-meta_description: 'Découvrez les avantages du comité d''entreprise GMF pour ses 8 000 salariés : chèques vacances jusqu''à 900€, centres de vacances, billetterie et services familiaux.'
+meta_description: 'Découvrez les avantages du comité d''entreprise GMF pour ses 8
+  000 salariés : chèques vacances jusqu''à 900€, centres de vacances, billetterie
+  et services familiaux.'
 min_words: 750
 status: published
 link_anchors:
 - text: comité d'entreprise gmf
   max: 1
+related_posts:
+- 6353-comite-d-entreprise-sncf-les-avantages
+- 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
+- 5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage
+- 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
 ---
-
 <h2>Un comité d'entreprise qui met l'accent sur l'équilibre vie privée-professionnelle</h2>
 
 <p>Le <strong>comité d'entreprise</strong> GMF propose une gamme d'avantages assez complète pour ses 8 000 salariés répartis dans toute la France. En tant que dirigeant d'une TPE, j'ai eu l'occasion d'étudier leur modèle lors d'un benchmark sur les pratiques RH des grandes entreprises d'assurance.</p>
