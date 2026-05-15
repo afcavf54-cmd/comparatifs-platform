@@ -1,23 +1,24 @@
 ---
 title: Quels sont les avantages du comité d’entreprise CIC ?
 slug: 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
-date: '2026-05-14T10:00:00+02:00'
+date: 2026-05-14T10:00:00+02:00
+updated: 2026-05-15T18:46:14
 categorie: Salarié
-meta_title: 'Comité d''entreprise CIC : avantages, réductions et fonctionnement'
-meta_description: 'Découvrez tous les avantages du comité d''entreprise CIC : mutuelle
-  performante, chèques vacances, formations, prime de participation et réductions
-  bancaires pour…'
-min_words: 750
+meta_title: "Comité d'entreprise CIC : avantages, réductions et fonctionnement"
+meta_description: "Découvrez tous les avantages du comité d'entreprise CIC : mutuelle performante, chèques vacances, formations, prime de participation et réductions bancaires pour…"
+featured_image: /blog/6307-quels-sont-les-avantages-du-comite-d-entreprise-cic/featured-70424.jpg
 status: published
-link_anchors:
-- text: comité d'entreprise cic
-  max: 1
+min_words: 750
 related_posts:
 - 5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage
 - 8440-qu-est-ce-qu-un-comite-d-entreprise
 - 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
 - 6353-comite-d-entreprise-sncf-les-avantages
+link_anchors:
+- text: "comité d'entreprise cic"
+  max: 1
 ---
+
 <h2>Les avantages du CIC pour ses employés</h2>
 
 <p>Travailler au CIC, c'est bénéficier d'une couverture sociale solide et d'avantages négociés par le <strong>comité d'entreprise</strong>. Je connais plusieurs salariés du secteur bancaire, et franchement, le CIC fait partie des employeurs qui s'occupent bien de leurs équipes.</p>
@@ -89,3 +90,4 @@ related_posts:
 <p>Profitez des formations proposées. Le secteur bancaire évolue vite, maintenir ses compétences à jour devient indispensable. Le CIC investit là-dessus, autant en profiter.</p>
 
 <p>Pour finir, les conditions de travail au CIC restent correctes pour le secteur bancaire. Pas parfait, mais l'entreprise fait des efforts pour fidéliser ses équipes. L'équilibre avantages sociaux et évolution professionnelle me semble honnête.</p>
+
