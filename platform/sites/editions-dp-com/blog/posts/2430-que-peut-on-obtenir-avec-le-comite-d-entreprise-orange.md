@@ -4,14 +4,20 @@ slug: 2430-que-peut-on-obtenir-avec-le-comite-d-entreprise-orange
 date: '2026-05-15T16:00:00+02:00'
 categorie: Salarié
 meta_title: 'Comité d''entreprise Orange : réductions, vacances et billetterie'
-meta_description: 'Découvrez les avantages du comité d''entreprise Orange : chèques vacances avec jusqu''à 80% de prise en charge, réductions jusqu''à 40% sur loisirs et spectacles,…'
+meta_description: 'Découvrez les avantages du comité d''entreprise Orange : chèques
+  vacances avec jusqu''à 80% de prise en charge, réductions jusqu''à 40% sur loisirs
+  et spectacles,…'
 min_words: 750
 status: published
 link_anchors:
 - text: comité d'entreprise orange
   max: 1
+related_posts:
+- 5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage
+- 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
+- 1778-comment-fonctionne-le-comite-d-entreprise-loxam
+- 9545-quels-avantages-offre-le-comite-d-entreprise-maaf
 ---
-
 <h2>Chèques vacances, réductions et loisirs : ce qu'Orange met sur la table</h2>
 
 <p>Je vais vous dire d'emblée ce qui m'a frappé quand j'ai creusé le sujet : Orange, c'est une grosse machine avec <strong>plus de 140 000 salariés</strong>. Leur comité d'entreprise a donc des moyens conséquents. Et ça se ressent sur les avantages proposés.</p>
