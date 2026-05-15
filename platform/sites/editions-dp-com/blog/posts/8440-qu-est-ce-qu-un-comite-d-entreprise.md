@@ -1,23 +1,24 @@
 ---
 title: Qu’est-ce qu’un comité d’entreprise ?
 slug: 8440-qu-est-ce-qu-un-comite-d-entreprise
-date: '2026-05-14T09:00:00+02:00'
+date: 2026-05-14T09:00:00+02:00
+updated: 2026-05-15T18:46:58
 categorie: Salarié
-meta_title: 'Définition comité d''entreprise : rôle, fonctionnement et avantages'
-meta_description: 'Découvrez le rôle essentiel du comité d''entreprise : missions,
-  fonctionnement et obligations pour les entreprises de 50 salariés et plus. Guide
-  complet du CE.'
-min_words: 750
+meta_title: "Définition comité d'entreprise : rôle, fonctionnement et avantages"
+meta_description: "Découvrez le rôle essentiel du comité d'entreprise : missions, fonctionnement et obligations pour les entreprises de 50 salariés et plus. Guide complet du CE."
+featured_image: /blog/8440-qu-est-ce-qu-un-comite-d-entreprise/featured-12546.jpg
 status: published
-link_anchors:
-- text: comité d'entreprise
-  max: 15
+min_words: 750
 related_posts:
 - 6353-comite-d-entreprise-sncf-les-avantages
 - 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
 - 1188-que-propose-le-comite-d-entreprise-gmf-aux-salaries
 - 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
+link_anchors:
+- text: "comité d'entreprise"
+  max: 15
 ---
+
 <h2>Le comité d'entreprise : définition et rôle</h2>
 
 <p>Je vais vous expliquer ce qu'est réellement un comité d'entreprise. C'est une instance que j'ai côtoyée pendant mes 11 années d'expérience en tant que dirigeant.</p>
@@ -83,3 +84,4 @@ related_posts:
 <p>N'hésitez pas à former vos managers. Ils doivent comprendre le rôle du CE pour mieux collaborer avec cette instance.</p>
 
 <p>Le comité d'entreprise reste un partenaire incontournable. Bien géré, il facilite le dialogue social et améliore l'ambiance de travail. Mal appréhendé, il devient source de tensions inutiles.</p>
+
