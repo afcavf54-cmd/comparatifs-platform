@@ -4,14 +4,19 @@ slug: 1778-comment-fonctionne-le-comite-d-entreprise-loxam
 date: '2026-05-15T12:00:00+02:00'
 categorie: Salarié
 meta_title: 'Comité d''entreprise Loxam : avantages et services pour les employés'
-meta_description: 'Découvrez le fonctionnement du comité d''entreprise Loxam : élections, représentants, budget et activités sociales pour 11 000 salariés en France.'
+meta_description: 'Découvrez le fonctionnement du comité d''entreprise Loxam : élections,
+  représentants, budget et activités sociales pour 11 000 salariés en France.'
 min_words: 750
 status: published
 link_anchors:
 - text: comité d'entreprise loxam
   max: 1
+related_posts:
+- 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
+- 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
+- 6353-comite-d-entreprise-sncf-les-avantages
+- 5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage
 ---
-
 <h2>Qu'est-ce que le comité d'entreprise chez Loxam ?</h2>
 
 <p>Le <strong>comité d'entreprise</strong> Loxam fonctionne selon les règles classiques du Code du travail français. Je vais vous expliquer comment ça marche concrètement dans cette entreprise de location de matériel.</p>
