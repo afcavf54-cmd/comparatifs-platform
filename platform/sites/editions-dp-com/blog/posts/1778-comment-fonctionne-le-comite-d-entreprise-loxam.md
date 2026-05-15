@@ -1,22 +1,24 @@
 ---
 title: Comment fonctionne le comité d’entreprise Loxam ?
 slug: 1778-comment-fonctionne-le-comite-d-entreprise-loxam
-date: '2026-05-15T12:00:00+02:00'
+date: 2026-05-15T12:00:00+02:00
+updated: 2026-05-15T18:44:28
 categorie: Salarié
-meta_title: 'Comité d''entreprise Loxam : avantages et services pour les employés'
-meta_description: 'Découvrez le fonctionnement du comité d''entreprise Loxam : élections,
-  représentants, budget et activités sociales pour 11 000 salariés en France.'
-min_words: 750
+meta_title: "Comité d'entreprise Loxam : avantages et services pour les employés"
+meta_description: "Découvrez le fonctionnement du comité d'entreprise Loxam : élections, représentants, budget et activités sociales pour 11 000 salariés en France."
+featured_image: /blog/1778-comment-fonctionne-le-comite-d-entreprise-loxam/featured-58543.jpg
 status: published
-link_anchors:
-- text: comité d'entreprise loxam
-  max: 1
+min_words: 750
 related_posts:
 - 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
 - 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
 - 6353-comite-d-entreprise-sncf-les-avantages
 - 5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage
+link_anchors:
+- text: "comité d'entreprise loxam"
+  max: 1
 ---
+
 <h2>Qu'est-ce que le comité d'entreprise chez Loxam ?</h2>
 
 <p>Le <strong>comité d'entreprise</strong> Loxam fonctionne selon les règles classiques du Code du travail français. Je vais vous expliquer comment ça marche concrètement dans cette entreprise de location de matériel.</p>
@@ -105,3 +107,4 @@ related_posts:
 <p>Enfin, les budgets des activités sociales diminuent dans beaucoup d'entreprises. Les directions préfèrent investir dans d'autres avantages comme les tickets restaurant ou la mutuelle.</p>
 
 <p>Malgré ces difficultés, le comité d'entreprise reste un contre-pouvoir utile. Surtout dans une période où les entreprises du BTP traversent des turbulences économiques. Les représentants du personnel jouent un rôle d'alerte et de protection des salariés qu'il ne faut pas sous-estimer.</p>
+
