@@ -4,14 +4,20 @@ slug: 9545-quels-avantages-offre-le-comite-d-entreprise-maaf
 date: '2026-05-15T15:00:00+02:00'
 categorie: Salarié
 meta_title: 'Comité d''entreprise MAAF : avantages, aides et réductions'
-meta_description: 'Découvrez les avantages du comité d''entreprise MAAF : activités culturelles, voyages organisés à prix réduits, aides financières et chèques vacances pour les…'
+meta_description: 'Découvrez les avantages du comité d''entreprise MAAF : activités
+  culturelles, voyages organisés à prix réduits, aides financières et chèques vacances
+  pour les…'
 min_words: 750
 status: published
 link_anchors:
 - text: comité d'entreprise maaf
   max: 1
+related_posts:
+- 5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage
+- 6353-comite-d-entreprise-sncf-les-avantages
+- 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
+- 1188-que-propose-le-comite-d-entreprise-gmf-aux-salaries
 ---
-
 <p>Quand on travaille chez MAAF, on bénéfie d'un <strong>comité d'entreprise</strong> qui propose des avantages intéressants. Je vais vous détailler ce qu'on peut en attendre concrètement.</p>
 
 <p>Le CE MAAF n'a rien d'exceptionnel, mais il fait son travail. <strong>Pas de miracle non plus</strong>. On est sur du classique avec quelques bonnes surprises.</p>
