@@ -4,14 +4,19 @@ slug: 1054-comment-acceder-aux-avantages-du-comite-d-entreprise-adecco
 date: '2026-05-16T10:00:00+02:00'
 categorie: Salarié
 meta_title: 'Comité d''entreprise Adecco : avantages intérimaires et salariés'
-meta_description: Découvrez comment accéder aux avantages du comité d'entreprise Adecco, conditions d'éligibilité pour intérimaires et salariés permanents incluses.
+meta_description: Découvrez comment accéder aux avantages du comité d'entreprise Adecco,
+  conditions d'éligibilité pour intérimaires et salariés permanents incluses.
 min_words: 750
 status: published
 link_anchors:
 - text: comité d'entreprise adecco
   max: 1
+related_posts:
+- 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
+- 5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage
+- 8440-qu-est-ce-qu-un-comite-d-entreprise
+- 1778-comment-fonctionne-le-comite-d-entreprise-loxam
 ---
-
 <h2>Qu'est-ce que le comité d'entreprise Adecco ?</h2>
 
 <p>Je vais être direct : en tant que dirigeant d'une TPE, j'ai souvent eu affaire aux intérimaires d'Adecco. Et une chose m'a toujours frappé, c'est que leurs salariés bénéficient d'avantages du <strong>comité d'entreprise</strong> assez intéressants. Contrairement à ce qu'on pourrait penser, l'intérim ne rime pas forcément avec absence d'avantages sociaux.</p>
