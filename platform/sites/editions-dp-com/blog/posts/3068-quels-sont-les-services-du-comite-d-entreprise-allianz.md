@@ -4,14 +4,19 @@ slug: 3068-quels-sont-les-services-du-comite-d-entreprise-allianz
 date: '2026-05-16T09:00:00+02:00'
 categorie: Salarié
 meta_title: 'Comité d''entreprise Allianz : avantages salariés et prestations'
-meta_description: 'Découvrez tous les services du comité d''entreprise Allianz : billetteries à tarifs réduits, voyages, chèques-vacances et aides financières selon votre situation…'
+meta_description: 'Découvrez tous les services du comité d''entreprise Allianz : billetteries
+  à tarifs réduits, voyages, chèques-vacances et aides financières selon votre situation…'
 min_words: 750
 status: published
 link_anchors:
 - text: comité d'entreprise allianz
   max: 1
+related_posts:
+- 1778-comment-fonctionne-le-comite-d-entreprise-loxam
+- 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
+- 9545-quels-avantages-offre-le-comite-d-entreprise-maaf
+- 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
 ---
-
 <h2>Les services essentiels du comité d'entreprise Allianz</h2>
 
 <p>Chez Allianz, le <strong>comité d'entreprise</strong> joue un rôle central dans l'amélioration du quotidien des salariés. Je vais vous détailler concrètement ce que vous pouvez en attendre.</p>
