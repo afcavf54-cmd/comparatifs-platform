@@ -1,22 +1,24 @@
 ---
 title: Que propose le comité d’entreprise Generali ?
 slug: 7715-que-propose-le-comite-d-entreprise-generali
-date: '2026-05-17T09:00:00+02:00'
+date: 2026-05-17T09:00:00+02:00
+updated: 2026-05-17T19:55:02
 categorie: Salarié
-meta_title: 'Comité d''entreprise Generali : réductions et avantages salariés'
-meta_description: 'Découvrez les avantages du comité d''entreprise Generali : réductions
-  vacances jusqu''à 30%, activités culturelles et sportives pour 8000 salariés français.'
-min_words: 750
+meta_title: "Comité d'entreprise Generali : réductions et avantages salariés"
+meta_description: "Découvrez les avantages du comité d'entreprise Generali : réductions vacances jusqu'à 30%, activités culturelles et sportives pour 8000 salariés français."
+featured_image: /blog/7715-que-propose-le-comite-d-entreprise-generali/featured-97806.jpg
 status: published
-link_anchors:
-- text: comité d'entreprise generali
-  max: 1
+min_words: 750
 related_posts:
 - 2430-que-peut-on-obtenir-avec-le-comite-d-entreprise-orange
 - 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
 - 9545-quels-avantages-offre-le-comite-d-entreprise-maaf
 - 1188-que-propose-le-comite-d-entreprise-gmf-aux-salaries
+link_anchors:
+- text: "comité d'entreprise generali"
+  max: 1
 ---
+
 <h2>Qu'est-ce que le comité d'entreprise Generali ?</h2>
 
 <p>Je vais vous expliquer concrètement ce que propose le <strong>comité d'entreprise</strong> Generali à ses salariés. Après 11 ans à diriger ma TPE, j'ai souvent comparé les avantages offerts par les grandes entreprises pour évaluer la concurrence sur le marché de l'emploi.</p>
@@ -88,3 +90,4 @@ related_posts:
 <blockquote>
 <p>En tant que dirigeant, je trouve que Generali a une approche équilibrée des avantages sociaux. Ni exceptionnelle, ni décevante, mais suffisamment attractive pour fidéliser les talents dans un secteur concurrentiel.</p>
 </blockquote>
+
