@@ -1,22 +1,24 @@
 ---
 title: Comment accéder aux avantages du comité d’entreprise Adecco ?
 slug: 1054-comment-acceder-aux-avantages-du-comite-d-entreprise-adecco
-date: '2026-05-16T10:00:00+02:00'
+date: 2026-05-16T10:00:00+02:00
+updated: 2026-05-17T19:51:15
 categorie: Salarié
-meta_title: 'Comité d''entreprise Adecco : avantages intérimaires et salariés'
-meta_description: Découvrez comment accéder aux avantages du comité d'entreprise Adecco,
-  conditions d'éligibilité pour intérimaires et salariés permanents incluses.
-min_words: 750
+meta_title: "Comité d'entreprise Adecco : avantages intérimaires et salariés"
+meta_description: "Découvrez comment accéder aux avantages du comité d'entreprise Adecco,"
+featured_image: /blog/1054-comment-acceder-aux-avantages-du-comite-d-entreprise-adecco/featured-52131.jpg
 status: published
-link_anchors:
-- text: comité d'entreprise adecco
-  max: 1
+min_words: 750
 related_posts:
 - 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
 - 5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage
 - 8440-qu-est-ce-qu-un-comite-d-entreprise
 - 1778-comment-fonctionne-le-comite-d-entreprise-loxam
+link_anchors:
+- text: "comité d'entreprise adecco"
+  max: 1
 ---
+
 <h2>Qu'est-ce que le comité d'entreprise Adecco ?</h2>
 
 <p>Je vais être direct : en tant que dirigeant d'une TPE, j'ai souvent eu affaire aux intérimaires d'Adecco. Et une chose m'a toujours frappé, c'est que leurs salariés bénéficient d'avantages du <strong>comité d'entreprise</strong> assez intéressants. Contrairement à ce qu'on pourrait penser, l'intérim ne rime pas forcément avec absence d'avantages sociaux.</p>
@@ -95,3 +97,4 @@ Certains oui, d'autres non. Les chèques-vacances sont exonérés dans certaines
 Il existe des procédures de recours. Adressez-vous d'abord au secrétaire du CE, puis aux représentants du personnel si besoin.</p>
 
 <p>Le comité d'entreprise Adecco offre des avantages réels, même s'ils restent plus limités que dans certaines grandes entreprises. Pour un intérimaire, c'est déjà un plus non négligeable. L'important, c'est de bien comprendre les règles du jeu et de ne pas hésiter à poser des questions.</p>
+
