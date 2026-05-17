@@ -1,22 +1,24 @@
 ---
 title: Quels sont les services du comité d’entreprise Allianz ?
 slug: 3068-quels-sont-les-services-du-comite-d-entreprise-allianz
-date: '2026-05-16T09:00:00+02:00'
+date: 2026-05-16T09:00:00+02:00
+updated: 2026-05-17T19:44:35
 categorie: Salarié
-meta_title: 'Comité d''entreprise Allianz : avantages salariés et prestations'
-meta_description: 'Découvrez tous les services du comité d''entreprise Allianz : billetteries
-  à tarifs réduits, voyages, chèques-vacances et aides financières selon votre situation…'
-min_words: 750
+meta_title: "Comité d'entreprise Allianz : avantages salariés et prestations"
+meta_description: "Découvrez tous les services du comité d'entreprise Allianz : billetteries à tarifs réduits, voyages, chèques-vacances et aides financières selon votre situation…"
+featured_image: /blog/3068-quels-sont-les-services-du-comite-d-entreprise-allianz/featured-71168.jpg
 status: published
-link_anchors:
-- text: comité d'entreprise allianz
-  max: 1
+min_words: 750
 related_posts:
 - 1778-comment-fonctionne-le-comite-d-entreprise-loxam
 - 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
 - 9545-quels-avantages-offre-le-comite-d-entreprise-maaf
 - 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
+link_anchors:
+- text: "comité d'entreprise allianz"
+  max: 1
 ---
+
 <h2>Les services essentiels du comité d'entreprise Allianz</h2>
 
 <p>Chez Allianz, le <strong>comité d'entreprise</strong> joue un rôle central dans l'amélioration du quotidien des salariés. Je vais vous détailler concrètement ce que vous pouvez en attendre.</p>
@@ -74,3 +76,4 @@ related_posts:
 <p>Globalement, le comité d'entreprise Allianz offre des services appréciables. L'économie réalisée sur un budget familial peut atteindre <strong>plusieurs centaines d'euros par an</strong>. À condition de bien s'informer et d'anticiper ses demandes.</p>
 
 <p>Mon conseil : prenez le temps de découvrir toute l'offre disponible. Beaucoup de salariés sous-exploitent ces avantages par méconnaissance. C'est dommage car ces services améliorent réellement le pouvoir d'achat.</p>
+
