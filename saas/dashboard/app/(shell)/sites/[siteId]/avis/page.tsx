@@ -377,7 +377,7 @@ export default function AvisPage() {
         ) : (
           <div style={{ display: 'grid', gap: 10 }}>
             {avis.map(a => (
-              <div key={a.slug} style={{ display: 'grid', gridTemplateColumns: '1fr auto auto auto', alignItems: 'center', gap: 12, padding: '12px 14px', background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 8 }}>
+              <div key={a.slug} style={{ display: 'grid', gridTemplateColumns: '1fr auto auto auto auto', alignItems: 'center', gap: 12, padding: '12px 14px', background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 8 }}>
                 <div>
                   <div style={{ fontSize: 14, fontWeight: 600 }}>{a.marque || a.slug}</div>
                   <div style={{ fontSize: 12, color: '#8B9CB0', marginTop: 2 }}>
@@ -393,6 +393,13 @@ export default function AvisPage() {
                 <span style={{ fontSize: 10, padding: '3px 8px', borderRadius: 4, fontWeight: 700, textTransform: 'uppercase' as const, background: (SENTIMENT_COLOR[a.sentiment] || '#5E9ED6') + '22', color: SENTIMENT_COLOR[a.sentiment] || '#5E9ED6' }}>
                   {SENTIMENT_LABEL[a.sentiment] || a.sentiment}
                 </span>
+                {/* Bouton « Éditer » : ouvre la page d'édition complète
+                    (frontmatter + tous les champs métier). Sauvegarde via
+                    PUT /api/sites/<siteId>/avis/<slug>. */}
+                <a href={`/sites/${siteId}/avis/${a.slug}`}
+                   style={{ fontSize: 11, color: '#8B9CB0', textDecoration: 'none', padding: '4px 10px', border: '1px solid #1E2D3D', borderRadius: 6 }}>
+                  ✏️ Éditer
+                </a>
                 {siteDomain && (
                   <a href={`${siteDomain}/${a.slug}`} target="_blank" rel="noopener"
                      style={{ fontSize: 11, color: '#5E9ED6', textDecoration: 'none' }}>
