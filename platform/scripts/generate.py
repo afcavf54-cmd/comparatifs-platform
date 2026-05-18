@@ -684,8 +684,13 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     MOIS_FR = ["janvier","février","mars","avril","mai","juin",
                "juillet","août","septembre","octobre","novembre","décembre"]
     def fr_date(d):
+        # Accepte plusieurs formats : 2026-05-18, 2026-05-18T14:13:46.839371+02:00,
+        # 2026-05-18 14:13:46 etc. On tronque tout après le 'T' ou l'espace.
         try:
-            parts = str(d).split("-")
+            s = str(d).strip()
+            # Sépare la partie date de la partie heure si présente
+            s = s.split("T")[0].split(" ")[0]
+            parts = s.split("-")
             return f"{int(parts[2])} {MOIS_FR[int(parts[1])-1]} {parts[0]}"
         except Exception:
             return d
