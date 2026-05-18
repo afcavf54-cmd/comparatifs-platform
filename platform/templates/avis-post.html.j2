@@ -149,6 +149,15 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
 /* ─── En bref ─── */
 .en-bref{background:var(--surface2);border-left:4px solid var(--accent);padding:18px 24px;border-radius:var(--r);margin:32px 0;font-size:16px;color:var(--ink2)}
 .en-bref strong{color:var(--ink);font-weight:600}
+/* Sommaire : compact, sobre, sans cassure visuelle avec En bref qui le précède */
+.avis-toc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px 24px;margin:24px 0 40px;font-size:15px}
+.avis-toc .toc-title{margin:0 0 10px;font-family:'{{ theme.font_title }}',serif;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink2)}
+.avis-toc ol{margin:0;padding:0 0 0 22px;color:var(--ink2)}
+.avis-toc li{margin:6px 0;line-height:1.5}
+.avis-toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s ease}
+.avis-toc a:hover{border-bottom-color:var(--accent)}
+/* Décalage au scroll pour ne pas que le H2 cible soit caché par un header fixed éventuel */
+.tarifs-section,.analyse-section,.avis-clients,.faq-section,.verdict{scroll-margin-top:24px}
 
 /* ─── Tableau tarifs ─── */
 .tarifs-section{margin:40px 0}
@@ -270,9 +279,41 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
   </div>
   {% endif %}
 
+  {# ─── SOMMAIRE ─────────────────────────────────────────────
+     Sommaire dynamique placé directement après le bloc « En bref ».
+     Les ancres pointent vers les `id` posés sur chaque H2 ci-dessous.
+     On n'inclut une entrée que si la section correspondante est rendue,
+     pour rester cohérent quand l'IA n'a pas généré tel ou tel bloc. #}
+  <nav class="avis-toc" aria-label="Sommaire de l'avis">
+    <p class="toc-title">Sommaire</p>
+    <ol>
+      {% if post.tarifs and post.tarifs | length > 0 %}
+      <li><a href="#tarifs">Tarifs et offres</a></li>
+      {% endif %}
+      {% if post.h2_fonctionnalites and post.h2_fonctionnalites.contenu_html %}
+      <li><a href="#fonctionnalites">{{ post.h2_fonctionnalites.titre }}</a></li>
+      {% endif %}
+      {% if post.h2_support and post.h2_support.contenu_html %}
+      <li><a href="#support">{{ post.h2_support.titre }}</a></li>
+      {% endif %}
+      {% if post.h2_qualite_prix and post.h2_qualite_prix.contenu_html %}
+      <li><a href="#qualite-prix">{{ post.h2_qualite_prix.titre }}</a></li>
+      {% endif %}
+      {% if (post.note_trustpilot and post.nb_avis_trustpilot) or (post.h2_avis_clients and post.h2_avis_clients.contenu_html) %}
+      <li><a href="#avis-clients">{{ (post.h2_avis_clients.titre if post.h2_avis_clients else None) | default('Que disent les utilisateurs ?') }}</a></li>
+      {% endif %}
+      {% if post.faq and post.faq | length >= 2 %}
+      <li><a href="#faq">Foire aux questions</a></li>
+      {% endif %}
+      {% if post.verdict %}
+      <li><a href="#verdict">Verdict final</a></li>
+      {% endif %}
+    </ol>
+  </nav>
+
   {# ─── TABLEAU TARIFS ─────────────────────────────────────── #}
   {% if post.tarifs and post.tarifs | length > 0 %}
-  <section class="tarifs-section">
+  <section class="tarifs-section" id="tarifs">
     <h2>Tarifs et offres de {{ post.marque }}</h2>
     <table class="tarifs-table">
       <thead>
@@ -297,7 +338,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
 
   {# ─── H2 FONCTIONNALITÉS ─────────────────────────────────── #}
   {% if post.h2_fonctionnalites and post.h2_fonctionnalites.contenu_html %}
-  <section class="analyse-section">
+  <section class="analyse-section" id="fonctionnalites">
     <h2>{{ post.h2_fonctionnalites.titre }}</h2>
     {{ post.h2_fonctionnalites.contenu_html | safe }}
   </section>
@@ -305,7 +346,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
 
   {# ─── H2 SUPPORT CLIENT ─────────────────────────────────── #}
   {% if post.h2_support and post.h2_support.contenu_html %}
-  <section class="analyse-section">
+  <section class="analyse-section" id="support">
     <h2>{{ post.h2_support.titre }}</h2>
     {{ post.h2_support.contenu_html | safe }}
   </section>
@@ -313,7 +354,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
 
   {# ─── H2 QUALITÉ / PRIX ─────────────────────────────────── #}
   {% if post.h2_qualite_prix and post.h2_qualite_prix.contenu_html %}
-  <section class="analyse-section">
+  <section class="analyse-section" id="qualite-prix">
     <h2>{{ post.h2_qualite_prix.titre }}</h2>
     {{ post.h2_qualite_prix.contenu_html | safe }}
   </section>
@@ -321,7 +362,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
 
   {# ─── BLOC AVIS CLIENTS (preuve sociale) ────────────────── #}
   {% if post.note_trustpilot and post.nb_avis_trustpilot %}
-  <section class="avis-clients">
+  <section class="avis-clients" id="avis-clients">
     <h2>{{ post.h2_avis_clients.titre | default('Que disent les utilisateurs ?') }}</h2>
     <div class="avis-clients-header">
       <div class="avis-clients-score">{{ post.note_trustpilot }}<small>/5</small></div>
@@ -335,7 +376,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
     {% endif %}
   </section>
   {% elif post.h2_avis_clients and post.h2_avis_clients.contenu_html %}
-  <section class="analyse-section">
+  <section class="analyse-section" id="avis-clients">
     <h2>{{ post.h2_avis_clients.titre }}</h2>
     {{ post.h2_avis_clients.contenu_html | safe }}
   </section>
@@ -343,7 +384,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
 
   {# ─── FAQ ────────────────────────────────────────────────── #}
   {% if post.faq and post.faq | length > 0 %}
-  <section class="faq-section">
+  <section class="faq-section" id="faq">
     <h2>Foire aux questions</h2>
     {% for item in post.faq %}
     <div class="faq-item">
@@ -356,7 +397,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
 
   {# ─── VERDICT FINAL ─────────────────────────────────────── #}
   {% if post.verdict %}
-  <section class="verdict">
+  <section class="verdict" id="verdict">
     <h2>Verdict final sur {{ post.marque }}</h2>
     <div class="verdict-note">
       <span class="score-num">{{ post.note }}<small>/5</small></span>
