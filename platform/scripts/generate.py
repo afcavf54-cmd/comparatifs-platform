@@ -641,6 +641,16 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             site["domain"] = f"https://www.{_bare}"
         else:
             site["domain"] = f"https://{_bare}"
+
+    # ── Détection précoce des avis ────────────────────────────────────────
+    # On set `site["has_avis"] = True` AU TOUT DÉBUT de generate_site pour
+    # que TOUS les templates (home, classements, pages VS, articles de blog,
+    # contact, etc.) affichent le lien "Avis" dans la nav. Le rendu effectif
+    # des pages d'avis lui-même se fait plus bas dans la fonction.
+    _avis_dir_early = site_dir / "posts_avis"
+    if _avis_dir_early.exists() and any(_avis_dir_early.glob("*.md")):
+        site["has_avis"] = True
+
     # Injecter cta_color et cta_text_color (theme: ou racine du config)
     if "cta_color" not in theme:
         theme["cta_color"] = config.get("cta_color", "")
@@ -941,6 +951,16 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 _avis_protected.add(f"{_md.stem}.html")
         _protected = (blog_expected or set()) | _avis_protected
         cleanup_removed_products(output_dir, site_dir, products, all_pairs, is_classement_template, blog_expected=_protected)
+
+        # ── Détection précoce des avis ────────────────────────────────────
+        # On set `site["has_avis"] = True` AVANT la génération des autres
+        # pages (home, classements, comparatifs) pour que TOUTES leurs
+        # navigations affichent le lien "Avis". Sans ce check précoce, le
+        # lien n'apparaissait que sur les pages d'avis elles-mêmes parce que
+        # la section principale de chargement/rendu des avis arrive tout en
+        # bas de generate_site, après le rendu de la home & co.
+        if _avis_dir_chk.exists() and any(_avis_dir_chk.glob("*.md")):
+            site["has_avis"] = True
 
     # Pour les sites classement : écraser les anciennes pages avis SCPI avec la 404 actuelle
     if is_classement_template:
