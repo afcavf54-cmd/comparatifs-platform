@@ -10,8 +10,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ avis_title }}</title>
 <meta name="description" content="{{ avis_meta }}">
-{# Canonical auto-référent : utilise base_url (= /avis ou /avis/<cat>) #}
-{% set page_url = base_url if (current_page is not defined or current_page == 1) else (base_url ~ '/' ~ current_page) %}
+{# Canonical auto-référent : utilise base_url tel quel.                       #}
+{# Convention : si base_url se termine par '/', les liens paginés conservent  #}
+{#   ce slash final (cohérent avec Cloudflare Pages qui ajoute auto le slash  #}
+{#   sur les URLs servies via index.html dans un sous-dossier).               #}
+{% set _base = base_url.rstrip('/') %}
+{% set _slash = '/' if base_url.endswith('/') else '' %}
+{% set page_url = (_base ~ _slash) if (current_page is not defined or current_page == 1) else (_base ~ '/' ~ current_page ~ _slash) %}
 <link rel="canonical" href="{{ site.domain }}{{ page_url }}">
 {% if prev_url %}<link rel="prev" href="{{ site.domain }}{{ prev_url }}">{% endif %}
 {% if next_url %}<link rel="next" href="{{ site.domain }}{{ next_url }}">{% endif %}
@@ -88,7 +93,9 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(36px,6vw,56px);fon
   <nav class="cats-bar" aria-label="Catégories d'avis">
     <a href="/avis" class="cat-pill {{ 'active' if (current_category is not defined or not current_category) else '' }}">Toutes les marques</a>
     {% for c in categories %}
-    <a href="/avis/{{ c.slug }}" class="cat-pill {{ 'active' if (current_category and current_category == c.name) else '' }}">{{ c.name }} ({{ c.count }})</a>
+    {# Trailing slash sur les liens vers /avis/<cat>/ : évite la 301 Cloudflare
+       /avis/<cat> → /avis/<cat>/ qui faisait que Google "canonicalisait" #}
+    <a href="/avis/{{ c.slug }}/" class="cat-pill {{ 'active' if (current_category and current_category == c.name) else '' }}">{{ c.name }} ({{ c.count }})</a>
     {% endfor %}
   </nav>
   {% endif %}
@@ -127,7 +134,10 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(36px,6vw,56px);fon
   <nav class="pager" aria-label="Pagination">
     {% if prev_url %}<a href="{{ prev_url }}" class="pager-link" rel="prev">← Précédent</a>{% endif %}
     {% for p in range(1, total_pages + 1) %}
-      {% set page_link = base_url if p == 1 else (base_url ~ '/' ~ p) %}
+      {# Construit les liens paginés en préservant le trailing slash de base_url #}
+      {% set _b = base_url.rstrip('/') %}
+      {% set _s = '/' if base_url.endswith('/') else '' %}
+      {% set page_link = (_b ~ _s) if p == 1 else (_b ~ '/' ~ p ~ _s) %}
       <a href="{{ page_link }}" class="pager-link {{ 'current' if p == current_page else '' }}">{{ p }}</a>
     {% endfor %}
     {% if next_url %}<a href="{{ next_url }}" class="pager-link" rel="next">Suivant →</a>{% endif %}
