@@ -4,7 +4,7 @@ type: avis
 marque: Legalplace
 categorie: Création d’entreprise en ligne
 sentiment: positif
-note: 5.0
+note: 4.8
 note_max: 5
 note_trustpilot: 4.4
 nb_avis_trustpilot: 12700
