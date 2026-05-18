@@ -588,14 +588,21 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         if key in processed:
             continue
         is_forced = marque in force_titles
-        if not is_forced:
-            pub_dt = parse_pub_datetime(row.get("date_publication", ""))
+        # Convention : date_publication vide = publication immédiate (au prochain
+        # passage du cron, ou maintenant si on est dans la boucle). Permet à
+        # Julien d'ajouter une ligne dans la sheet sans avoir à choisir une date.
+        date_raw = (row.get("date_publication") or "").strip()
+        if not is_forced and date_raw:
+            pub_dt = parse_pub_datetime(date_raw)
             if pub_dt is None:
-                print(f"  ✗ Date invalide pour '{marque}' → ignoré")
+                print(f"  ✗ Date invalide pour '{marque}' (« {date_raw} ») → ignoré")
                 continue
             if pub_dt > now:
                 # Pas encore l'heure
                 continue
+        elif not is_forced and not date_raw:
+            # Date vide → publication immédiate
+            print(f"  ⚡ '{marque}' : date_publication vide → publication immédiate")
         # Slug : "avis-<marque>" pour avoir des URLs cohérentes (/avis-qonto,
         # /avis-legalplace, etc.) distinctes des articles de blog.
         raw_slug = (row.get("slug") or "").strip() or slugify(marque)
