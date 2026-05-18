@@ -150,6 +150,15 @@ h1{font-family:'',serif;font-size:clamp(28px,4.5vw,42px);font-weight:400;letter-
 /* ─── En bref ─── */
 .en-bref{background:var(--surface2);border-left:4px solid var(--accent);padding:18px 24px;border-radius:var(--r);margin:32px 0;font-size:16px;color:var(--ink2)}
 .en-bref strong{color:var(--ink);font-weight:600}
+/* Sommaire : compact, sobre, sans cassure visuelle avec En bref qui le précède */
+.avis-toc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px 24px;margin:24px 0 40px;font-size:15px}
+.avis-toc .toc-title{margin:0 0 10px;font-family:'',serif;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink2)}
+.avis-toc ol{margin:0;padding:0 0 0 22px;color:var(--ink2)}
+.avis-toc li{margin:6px 0;line-height:1.5}
+.avis-toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s ease}
+.avis-toc a:hover{border-bottom-color:var(--accent)}
+/* Décalage au scroll pour ne pas que le H2 cible soit caché par un header fixed éventuel */
+.tarifs-section,.analyse-section,.avis-clients,.faq-section,.verdict{scroll-margin-top:24px}
 
 /* ─── Tableau tarifs ─── */
 .tarifs-section{margin:40px 0}
@@ -261,7 +270,7 @@ document.addEventListener('click',function(e){
   <section class="avis-hero">
 <div class="avis-brand-cat">Création d’entreprise en ligne · Avis</div>    <h1>Avis Legalplace (2026) : création d'entreprise simplifiée</h1>
     <div class="avis-meta">
-      Publié le 2026-05-18T14:13:46.839371+02:00    </div>
+      Publié le 18 mai 2026    </div>
   </section>
 
   <section class="score-card">
@@ -299,23 +308,35 @@ Recommandé        </div>
     <strong>En bref :</strong> Legalplace s'adresse principalement à <strong>Créateur d'entreprise</strong>.
  Legalplace automatise les démarches de création d'entreprise avec un parcours 100% en ligne. La plateforme s'adresse aux entrepreneurs qui veulent éviter la paperasse administrative.  </div>
 
+  <nav class="avis-toc" aria-label="Sommaire de l'avis">
+    <p class="toc-title">Sommaire</p>
+    <ol>
+      <li><a href="#fonctionnalites">Que propose concrètement Legalplace ?</a></li>
+      <li><a href="#support">Support client et accompagnement</a></li>
+      <li><a href="#qualite-prix">Rapport qualité-prix de Legalplace</a></li>
+      <li><a href="#avis-clients">Retours d'expérience des utilisateurs</a></li>
+      <li><a href="#faq">Foire aux questions</a></li>
+      <li><a href="#verdict">Verdict final</a></li>
+    </ol>
+  </nav>
 
-  <section class="analyse-section">
+
+  <section class="analyse-section" id="fonctionnalites">
     <h2>Que propose concrètement Legalplace ?</h2>
     <p>Legalplace centralise toutes les étapes de création d'entreprise sur une plateforme unique. L'entrepreneur remplit un questionnaire détaillé, la solution génère automatiquement les statuts et transmet les dossiers aux organismes compétents (CFE, greffe, INSEE).</p><p>La plateforme couvre les principales formes juridiques : SARL, SAS, SASU, EURL, auto-entrepreneur. Elle gère aussi les démarches post-création comme les modifications statutaires, les cessions de parts ou la fermeture d'entreprise.</p><p>Chaque utilisateur accède à un espace personnel où il suit l'avancement de son dossier en temps réel. Les documents officiels (Kbis, statuts) sont téléchargeables directement depuis l'interface.</p>
   </section>
 
-  <section class="analyse-section">
+  <section class="analyse-section" id="support">
     <h2>Support client et accompagnement</h2>
     <p>Legalplace propose un support par email et chat en ligne sur les heures ouvrées. L'équipe juridique répond aux questions techniques sur les statuts et les démarches administratives.</p><p>Pour les dossiers complexes, la plateforme met en relation avec des avocats partenaires moyennant un supplément. Le support téléphonique existe mais reste réservé aux offres premium.</p>
   </section>
 
-  <section class="analyse-section">
+  <section class="analyse-section" id="qualite-prix">
     <h2>Rapport qualité-prix de Legalplace</h2>
     <p>Legalplace se positionne sur le segment premium de la création d'entreprise en ligne. Ses tarifs dépassent ceux des CFE traditionnels mais restent inférieurs aux honoraires d'avocat classiques.</p><p>Le service convient aux entrepreneurs qui valorisent leur temps et préfèrent déléguer les aspects juridiques. Pour les budgets serrés ou les créations simples, passer directement par le CFE reste plus économique.</p>
   </section>
 
-  <section class="avis-clients">
+  <section class="avis-clients" id="avis-clients">
     <h2>Retours d'expérience des utilisateurs</h2>
     <div class="avis-clients-header">
       <div class="avis-clients-score">4.4<small>/5</small></div>
@@ -327,7 +348,7 @@ Recommandé        </div>
       <p>Avec 4,4/5 sur Trustpilot pour 12700 avis, Legalplace obtient une note satisfaisante. Les utilisateurs saluent la simplicité du processus et la rapidité de traitement. Les critiques portent principalement sur les délais de réponse du support et quelques bugs sur l'interface.</p>
   </section>
 
-  <section class="faq-section">
+  <section class="faq-section" id="faq">
     <h2>Foire aux questions</h2>
     <div class="faq-item">
       <div class="faq-q">Combien de temps faut-il pour créer son entreprise avec Legalplace ?</div>
@@ -347,7 +368,7 @@ Recommandé        </div>
     </div>
   </section>
 
-  <section class="verdict">
+  <section class="verdict" id="verdict">
     <h2>Verdict final sur Legalplace</h2>
     <div class="verdict-note">
       <span class="score-num">5.0<small>/5</small></span>
