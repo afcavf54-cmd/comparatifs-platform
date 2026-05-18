@@ -181,7 +181,12 @@ def normalize_sentiment(raw: str) -> str:
 
 
 def parse_note(raw: str) -> float:
-    """Parse '4.5', '4,5', '4.5/5', '9/10' etc. Retourne note sur 5.0 clampée."""
+    """Parse '4.5', '4,5', '4.8/5', '9.5/10' etc. Retourne note sur 5.0, sans arrondi.
+
+    L'arrondi à la demi-étoile pour le rendu visuel est fait CÔTÉ TEMPLATE
+    (avis-post.html.j2) afin que la valeur numérique exacte (ex: 4.8) reste
+    disponible pour Schema.org Review et l'affichage texte « 4.8/5 ».
+    """
     s = (raw or "").strip().replace(",", ".")
     if not s:
         return 4.0
@@ -193,7 +198,8 @@ def parse_note(raw: str) -> float:
     else:
         m = re.match(r"^([\d.]+)", s)
         val = float(m.group(1)) if m else 4.0
-    return max(0.0, min(5.0, round(val * 2) / 2))  # arrondi à 0.5
+    # Clamp 0..5 ; on garde 1 décimale pour l'affichage texte (4.8/5 plutôt que 4.8000001/5)
+    return round(max(0.0, min(5.0, val)), 1)
 
 
 def parse_tarifs(raw: str) -> list[dict]:
