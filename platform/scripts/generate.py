@@ -7,6 +7,7 @@ Textes éditoriaux : API Claude (un seul appel batch pour toutes les paires)
 
 import argparse
 import csv
+import hashlib
 import io
 import itertools
 import json
@@ -501,6 +502,89 @@ def copy_shared_assets(output_dir: Path, site_dir: Path) -> None:
             shutil.copy2(js_src, output_dir / "sheets.js")
             print(f"  ✓ sheets.js copié depuis {source_dir.name}/")
             return
+
+
+# ── Tracking de dateModified par page ─────────────────────────────────────────
+# Au lieu de mettre date.today() sur toutes les pages à chaque deploy (problème
+# SEO : Google voit toutes les pages "modifiées aujourd'hui" et finit par ignorer
+# le signal), on utilise un fichier dates.json par site qui stocke pour chaque
+# page un hash stable de son contenu + sa dernière vraie date de modif.
+#
+# Au build N+1 :
+#   - Si le hash stable (= HTML rendu, sans les occurrences de today) matche
+#     celui stocké → le contenu n'a pas réellement changé, on patche le HTML
+#     pour remettre l'ancienne date partout. dateModified reste figée.
+#   - Sinon → on garde today comme dateModified et on enregistre le nouveau hash.
+#
+# dates.json est committé dans le repo (cf workflow generate-site.yml qui add
+# platform/sites/<site>/), donc le tracking persiste entre runs.
+def _post_process_dates_tracking(output_dir: Path, site_dir: Path,
+                                  today_iso: str, today_fr: str, fr_date_fn) -> None:
+    dates_file = site_dir / "dates.json"
+    dates_db: dict = {}
+    if dates_file.exists():
+        try:
+            dates_db = json.loads(dates_file.read_text(encoding="utf-8"))
+        except Exception:
+            dates_db = {}
+
+    patched = 0
+    new_pages = 0
+    updated_pages = 0
+    processed = 0
+    new_db: dict = {}
+
+    for html_file in sorted(output_dir.rglob("*.html")):
+        rel = str(html_file.relative_to(output_dir))
+        # On exclut les vraies pages dynamiques où la date "build_date" est un
+        # affichage légitime ("Dernière mise à jour") qu'on veut figer aussi.
+        # Donc on traite TOUS les .html.
+        html = html_file.read_text(encoding="utf-8")
+        processed += 1
+        # Hash stable : on neutralise les 2 formes possibles de la date du jour
+        # (ISO 2026-05-18 et FR "18 mai 2026") pour que le hash ne dépende pas
+        # de la date courante.
+        cleaned = html.replace(today_iso, "<<DATE_ISO>>").replace(today_fr, "<<DATE_FR>>")
+        h = hashlib.sha256(cleaned.encode("utf-8")).hexdigest()
+        rec = dates_db.get(rel)
+
+        if rec and rec.get("hash") == h:
+            # Contenu identique au dernier build où on a enregistré ce hash.
+            # On patche le HTML pour remplacer la date d'aujourd'hui par
+            # l'ancienne date stockée (date de la dernière vraie modif).
+            old_iso = rec.get("date") or today_iso
+            old_fr = fr_date_fn(old_iso)
+            new_html = html.replace(today_iso, old_iso).replace(today_fr, old_fr)
+            if new_html != html:
+                html_file.write_text(new_html, encoding="utf-8")
+                patched += 1
+            new_db[rel] = rec  # on conserve le record tel quel
+        else:
+            # Contenu nouveau ou modifié → today devient la nouvelle dateModified.
+            new_db[rel] = {"date": today_iso, "hash": h}
+            if rec:
+                updated_pages += 1
+            else:
+                new_pages += 1
+
+    # Écriture finale : on sauvegarde le NOUVEAU dict (les pages supprimées
+    # disparaissent automatiquement).
+    dates_file.write_text(
+        json.dumps(new_db, indent=2, sort_keys=True, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    removed = max(0, len(dates_db) - len(new_db))
+    msg_parts = []
+    if patched:
+        msg_parts.append(f"{patched} datée(s) préservée(s)")
+    if updated_pages:
+        msg_parts.append(f"{updated_pages} modifiée(s)")
+    if new_pages:
+        msg_parts.append(f"{new_pages} nouvelle(s)")
+    if removed:
+        msg_parts.append(f"{removed} supprimée(s)")
+    summary = ", ".join(msg_parts) if msg_parts else "rien à faire"
+    print(f"  📅 dates.json ({processed} pages scannées) : {summary}")
 
 
 # ── Générateur principal ───────────────────────────────────────────────────────
@@ -1450,6 +1534,15 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     print(f"\n  {'[DRY] ' if dry_run else ''}✅ {generated} pages générées, {skipped} ignorées")
     if not dry_run:
         print(f"  📁 Output : {output_dir}")
+        # Post-traitement : tracking persistant des dateModified pour éviter
+        # que chaque deploy ne marque toutes les pages comme modifiées
+        # aujourd'hui (mauvais signal SEO). Cf _post_process_dates_tracking.
+        try:
+            today_iso_pp = date.today().isoformat()
+            today_fr_pp = fr_date(today_iso_pp)
+            _post_process_dates_tracking(output_dir, site_dir, today_iso_pp, today_fr_pp, fr_date)
+        except Exception as e:
+            print(f"  ⚠ Tracking dates.json a échoué : {e}")
 
 
 # ── CLI ───────────────────────────────────────────────────────────────────────
