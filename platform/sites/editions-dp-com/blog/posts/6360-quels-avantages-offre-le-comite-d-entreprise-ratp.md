@@ -1,23 +1,24 @@
 ---
 title: Quels avantages offre le comité d’entreprise RATP ?
 slug: 6360-quels-avantages-offre-le-comite-d-entreprise-ratp
-date: '2026-05-18T12:00:00+02:00'
+date: 2026-05-18T12:00:00+02:00
+updated: 2026-05-18T11:47:55
 categorie: Salarié
-meta_title: 'Comité d''entreprise RATP : avantages, vacances et réductions'
-meta_description: 'Découvrez les avantages exceptionnels du comité d''entreprise RATP
-  : centres de vacances, colonies, billetterie, services juridiques et bien plus pour
-  les salariés.'
-min_words: 750
+meta_title: "Comité d'entreprise RATP : avantages, vacances et réductions"
+meta_description: "Découvrez les avantages exceptionnels du comité d'entreprise RATP : centres de vacances, colonies, billetterie, services juridiques et bien plus pour les salariés."
+featured_image: /blog/6360-quels-avantages-offre-le-comite-d-entreprise-ratp/featured-72571.jpg
 status: published
-link_anchors:
-- text: comité d'entreprise ratp
-  max: 1
+min_words: 750
 related_posts:
 - 2430-que-peut-on-obtenir-avec-le-comite-d-entreprise-orange
 - 3695-quels-sont-les-avantages-du-comite-d-entreprise-airbus
 - 1194-quels-avantages-propose-le-comite-d-entreprise-bnp-paribas
 - 6353-comite-d-entreprise-sncf-les-avantages
+link_anchors:
+- text: "comité d'entreprise ratp"
+  max: 1
 ---
+
 <h2>Des avantages concrets pour les salariés RATP</h2>
 
 <p>Quand j'ai commencé à m'intéresser aux <strong>comité d'entreprise</strong> des grands groupes français, la RATP m'a vraiment impressionné. Les avantages proposés aux salariés dépassent largement ce qu'on trouve dans la plupart des entreprises de taille moyenne.</p>
@@ -81,3 +82,4 @@ related_posts:
 <p>Malgré ces bémols, <strong>le bilan reste largement positif</strong>. Pour les salariés qui prennent le temps de s'informer et d'utiliser les services, l'économie annuelle peut facilement atteindre plusieurs centaines d'euros. Sans compter les services qu'on ne peut pas chiffrer : l'accompagnement social, les conseils juridiques, la tranquillité d'esprit.</p>
 
 <p>Au final, le comité d'entreprise RATP illustre parfaitement ce qu'un CE bien organisé peut apporter. Avec un budget conséquent et une vraie professionnalisation des services, les avantages proposés dépassent largement le simple catalogue de réductions.</p>
+
