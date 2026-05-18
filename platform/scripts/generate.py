@@ -970,11 +970,34 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             html_404 = "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>404</title></head><body><h1>Page introuvable</h1></body></html>"
         slugs_to_block = [p.get("slug", "") for p in products if p.get("slug")]
         slugs_to_block += ["scpi"]
+        # ── Protection des nouvelles pages d'avis ────────────────────────
+        # Ce bloc legacy nettoie les anciennes pages /avis-<slug>.html héritées
+        # du template SCPI. Mais désormais on a un VRAI système d'avis dans
+        # posts_avis/ qui génère des pages /avis-<marque>.html à conserver.
+        # Si une marque d'avis matche un slug de produit (ex: legalplace est
+        # à la fois un produit du classement Expert-comptable ET une marque
+        # ayant un avis), on doit garder la page d'avis et NE PAS l'écraser.
+        _avis_dir_protect = site_dir / "posts_avis"
+        _avis_skip_slugs: set = set()
+        if _avis_dir_protect.exists():
+            for _md in _avis_dir_protect.glob("*.md"):
+                # Le fichier est `avis-<marque>.md`. La page générée s'appelle
+                # `avis-<marque>.html`. Pour ce nettoyage on stocke directement
+                # le slug PRODUIT correspondant (sans préfixe "avis-") afin de
+                # le matcher contre `slugs_to_block`.
+                _stem = _md.stem
+                if _stem.startswith("avis-"):
+                    _avis_skip_slugs.add(_stem[len("avis-"):])
+        _written = 0
         for slug in slugs_to_block:
+            if slug in _avis_skip_slugs:
+                # On a un vrai avis pour cette marque → on garde la page
+                continue
             (output_dir / f"avis-{slug}.html").write_text(html_404, encoding="utf-8")
+            _written += 1
         (output_dir / "avis-scpi.html").write_text(html_404, encoding="utf-8")
         (output_dir / "comparatifs-scpi.html").write_text(html_404, encoding="utf-8")
-        print(f"  ✓ {len(slugs_to_block)} pages avis écrasées avec 404")
+        print(f"  ✓ {_written} pages avis écrasées avec 404 ({len(_avis_skip_slugs)} préservées car vrai avis)")
 
 
         # ── Fichier _redirects pour Cloudflare Pages ──────────────────────
@@ -1617,10 +1640,34 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     # Génération des pages d'avis individuelles
     if avis_posts and (TEMPLATES_DIR / "avis-post.html.j2").exists():
         tpl_avis = env.get_template("avis-post.html.j2")
+        avis_rendered = 0
         for post in avis_posts:
             slug = post.get("slug")
             if not slug:
                 continue
+            # ── Sanitisation défensive ──────────────────────────────────────
+            # Le template avis-post fait `post.note | int` et `post.faq | length`
+            # qui plantent si la valeur est None ou de mauvais type. On garantit
+            # les bons types avant le rendu pour éviter un échec silencieux qui
+            # laisserait la page en 404 (cf bug rapporté par Julien).
+            if not isinstance(post.get("note"), (int, float)):
+                try:
+                    post["note"] = float(post.get("note") or 4.0)
+                except Exception:
+                    post["note"] = 4.0
+            for _list_field in ("points_forts", "points_faibles", "faq", "tarifs", "link_anchors"):
+                if not isinstance(post.get(_list_field), list):
+                    post[_list_field] = []
+            for _dict_field in ("h2_fonctionnalites", "h2_support", "h2_qualite_prix", "h2_avis_clients"):
+                if not isinstance(post.get(_dict_field), dict):
+                    post[_dict_field] = {"titre": "", "contenu_html": ""}
+            for _str_field in ("marque", "categorie", "h1", "en_bref", "verdict",
+                               "cta_url", "cta_label", "cible", "meta_title",
+                               "meta_description", "sentiment", "date"):
+                if not isinstance(post.get(_str_field), str):
+                    post[_str_field] = "" if post.get(_str_field) is None else str(post.get(_str_field))
+            if not post.get("sentiment"):
+                post["sentiment"] = "positif"
             try:
                 html = tpl_avis.render(
                     site={**site, "seo": _seo}, theme=theme,
@@ -1631,10 +1678,18 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     all_avis=avis_posts,
                 )
             except Exception as e:
-                print(f"  ⚠ Avis : rendu échoué pour {slug} : {e}")
+                # Log détaillé pour identifier la cause exacte (type d'erreur,
+                # ligne du template, etc.). Permet à Julien de copier-coller
+                # depuis les logs GitHub Actions.
+                import traceback as _tb
+                print(f"  ⚠ Avis : rendu échoué pour '{slug}' (marque={post.get('marque','?')}) : {type(e).__name__}: {e}")
+                _tb_str = _tb.format_exc()
+                # Limite à 800 chars pour pas spammer les logs
+                print("     " + _tb_str.replace("\n", "\n     ")[:800])
                 continue
             (output_dir / f"{slug}.html").write_text(html, encoding="utf-8")
-        print(f"  ✓ {len(avis_posts)} avis générés")
+            avis_rendered += 1
+        print(f"  ✓ {avis_rendered}/{len(avis_posts)} avis générés (échecs : {len(avis_posts) - avis_rendered})")
 
         # Index /avis + pages catégorie /avis/<cat>
         if (TEMPLATES_DIR / "avis-index.html.j2").exists():
