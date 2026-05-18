@@ -45,8 +45,36 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           FORCE_TITLES: ${{ inputs.force_titles }}
         run: python platform/scripts/blog_publish_scheduled.py
-      - name: Commit les nouveaux articles
-        if: steps.publish.outputs.new_articles_count != '0'
+
+      # Publication des avis programmés (template avis-post). Indépendant du
+      # blog : utilise sa propre sheet (config.yaml > site.avis_sheet_csv_url),
+      # son propre dossier posts_avis/, son propre suivi schedule_processed.json.
+      # On combine les sites à redéployer des 2 scripts via SITES_TO_DEPLOY_BLOG
+      # + SITES_TO_DEPLOY_AVIS pour ne lancer qu'un seul deploy par site.
+      - name: Publier les avis programmés
+        id: publish_avis
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          FORCE_TITLES: ${{ inputs.force_titles }}
+        run: |
+          if [ -f platform/scripts/avis_publish_scheduled.py ]; then
+            python platform/scripts/avis_publish_scheduled.py
+          else
+            echo "avis_publish_scheduled.py non trouvé, étape ignorée"
+            echo "sites_to_deploy=" >> $GITHUB_OUTPUT
+          fi
+
+      # Combine les sites à redéployer (blog + avis) en une liste dédupliquée
+      - name: Combiner les sites à redéployer
+        id: combine
+        run: |
+          BLOG="${{ steps.publish.outputs.sites_to_deploy }}"
+          AVIS="${{ steps.publish_avis.outputs.sites_to_deploy }}"
+          ALL=$(echo "$BLOG,$AVIS" | tr ',' '\n' | grep -v '^$' | sort -u | tr '\n' ',' | sed 's/,$//')
+          echo "sites_to_deploy=$ALL" >> $GITHUB_OUTPUT
+          echo "Sites à redéployer (blog + avis combinés) : $ALL"
+      - name: Commit les nouveaux articles et avis
+        if: steps.combine.outputs.sites_to_deploy != ''
         run: |
           git config user.name "Viseoweb HUB"
           git config user.email "hub@viseoweb.com"
@@ -56,7 +84,7 @@ jobs:
             echo "Rien à commit"
             exit 0
           fi
-          git commit -m "Blog cron: publication automatique $(date +%Y-%m-%d-%H:%M)"
+          git commit -m "Cron: publication blog/avis $(date +%Y-%m-%d-%H:%M)"
           # Retry loop (cf generate-scpi.yml)
           for attempt in 1 2 3 4 5; do
             git fetch origin main
@@ -75,11 +103,11 @@ jobs:
           echo "❌ Push échoué après 5 tentatives"
           exit 1
       - name: Déclencher le redéploiement des sites concernés
-        if: steps.publish.outputs.sites_to_deploy != ''
+        if: steps.combine.outputs.sites_to_deploy != ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          IFS=',' read -ra SITES <<< "${{ steps.publish.outputs.sites_to_deploy }}"
+          IFS=',' read -ra SITES <<< "${{ steps.combine.outputs.sites_to_deploy }}"
           for site in "${SITES[@]}"; do
             echo "🚀 Déclenchement du déploiement pour $site"
             gh workflow run generate-scpi.yml \
@@ -89,6 +117,7 @@ jobs:
       - name: Résumé
         if: always()
         run: |
-          echo "=== Blog cron terminé ==="
-          echo "Sites avec articles publiés : ${{ steps.publish.outputs.sites_to_deploy }}"
-          echo "Total nouveaux articles : ${{ steps.publish.outputs.new_articles_count }}"
+          echo "=== Cron blog/avis terminé ==="
+          echo "Blog : ${{ steps.publish.outputs.sites_to_deploy }}"
+          echo "Avis : ${{ steps.publish_avis.outputs.sites_to_deploy }}"
+          echo "Tous (dédupliqués) : ${{ steps.combine.outputs.sites_to_deploy }}"
