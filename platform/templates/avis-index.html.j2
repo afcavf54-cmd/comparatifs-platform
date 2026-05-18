@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+{% if site.favicon_file is defined and site.favicon_file %}
+<link rel="icon" href="{{ site.favicon_file }}">
+{% else %}
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{% endif %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ avis_title }}</title>
+<meta name="description" content="{{ avis_meta }}">
+{# Canonical auto-référent : utilise base_url (= /avis ou /avis/<cat>) #}
+{% set page_url = base_url if (current_page is not defined or current_page == 1) else (base_url ~ '/' ~ current_page) %}
+<link rel="canonical" href="{{ site.domain }}{{ page_url }}">
+{% if prev_url %}<link rel="prev" href="{{ site.domain }}{{ prev_url }}">{% endif %}
+{% if next_url %}<link rel="next" href="{{ site.domain }}{{ next_url }}">{% endif %}
+<meta property="og:title" content="{{ avis_title }}">
+<meta property="og:description" content="{{ avis_meta }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.domain }}{{ page_url }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:{{ theme.bg | default('#FAF9F6') }};--surface:{{ theme.surface | default('#fff') }};--surface2:{{ theme.surface2 | default('#F5F3EE') }};
+  --ink:{{ theme.ink | default('#0F1419') }};--ink2:{{ theme.ink2 | default('#3D434B') }};--ink3:{{ theme.ink3 | default('#8B9CB0') }};
+  --accent:{{ theme.accent | default('#C9A961') }};--accent2:{{ theme.accent2 | default('#1E5F8B') }};--green:{{ theme.green | default('#3D7A4F') }};
+  --red:{{ theme.red | default('#C0392B') }};
+  --border:{{ theme.border | default('#E6E1D8') }};--r:8px;--r2:14px;
+}
+body{font-family:'{{ theme.font_body }}',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+a{color:var(--accent2);text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 5vw}
+
+.avis-header{padding:64px 0 32px;text-align:center}
+h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:16px}
+.avis-sub{font-size:18px;color:var(--ink3);max-width:600px;margin:0 auto}
+
+/* Filtres catégories */
+.cats-bar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:16px 0 32px}
+.cat-pill{display:inline-block;padding:6px 14px;border-radius:20px;background:var(--surface);border:1px solid var(--border);color:var(--ink2);font-size:14px;transition:all .15s}
+.cat-pill:hover,.cat-pill.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* Grid de cartes */
+.avis-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;padding-bottom:48px}
+.avis-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
+.avis-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.06)}
+.avis-card-body{padding:20px;flex:1;display:flex;flex-direction:column}
+.avis-card-cat{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink3);margin-bottom:8px}
+.avis-card-title{font-family:'{{ theme.font_title }}',serif;font-size:22px;font-weight:500;line-height:1.25;color:var(--ink);margin-bottom:12px;flex:1}
+.avis-card-score{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.avis-card-note{font-family:'{{ theme.font_title }}',serif;font-size:24px;color:var(--accent);font-weight:600;line-height:1}
+.avis-card-note small{font-size:14px;color:var(--ink3);font-weight:400}
+.stars-mini{display:inline-flex;gap:1px;font-size:14px;color:#E0DCD2}
+.stars-mini .full{color:var(--accent)}
+.stars-mini .half{position:relative;color:#E0DCD2}
+.stars-mini .half::before{content:'★';position:absolute;left:0;top:0;width:50%;overflow:hidden;color:var(--accent)}
+.avis-card-sentiment{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.avis-card-sentiment.positif{background:#E8F4EA;color:var(--green)}
+.avis-card-sentiment.mitige{background:#FDF6E3;color:#9F7918}
+.avis-card-sentiment.negatif{background:#FBE9E7;color:var(--red)}
+.avis-card-extract{color:var(--ink2);font-size:14px;margin-top:8px;line-height:1.55}
+.avis-card-foot{padding:12px 20px;border-top:1px solid var(--border);color:var(--ink3);font-size:12px}
+
+/* Pagination */
+.pager{display:flex;justify-content:center;gap:8px;padding:24px 0 64px;flex-wrap:wrap}
+.pager-link{padding:8px 14px;border-radius:6px;background:var(--surface);border:1px solid var(--border);color:var(--ink2);font-size:14px}
+.pager-link:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.pager-link.current{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
+
+.empty{text-align:center;padding:64px 0;color:var(--ink3);font-size:18px}
+</style>
+</head>
+<body>
+
+{% include "base/_nav.html.j2" %}
+
+<main class="container">
+  <section class="avis-header">
+    <h1>{{ avis_h1 | default(avis_title) }}</h1>
+    {% if avis_intro %}<p class="avis-sub">{{ avis_intro }}</p>{% endif %}
+  </section>
+
+  {% if categories and categories | length > 0 %}
+  <nav class="cats-bar" aria-label="Catégories d'avis">
+    <a href="/avis" class="cat-pill {{ 'active' if (current_category is not defined or not current_category) else '' }}">Toutes les marques</a>
+    {% for c in categories %}
+    <a href="/avis/{{ c.slug }}" class="cat-pill {{ 'active' if (current_category and current_category == c.name) else '' }}">{{ c.name }} ({{ c.count }})</a>
+    {% endfor %}
+  </nav>
+  {% endif %}
+
+  {% if posts and posts | length > 0 %}
+  <div class="avis-grid">
+    {% for p in posts %}
+    <a class="avis-card" href="/{{ p.slug }}">
+      <div class="avis-card-body">
+        {% if p.categorie %}<div class="avis-card-cat">{{ p.categorie }}</div>{% endif %}
+        <div class="avis-card-title">{{ p.h1 | default(p.marque) }}</div>
+        <div class="avis-card-score">
+          <div class="avis-card-note">{{ p.note }}<small>/5</small></div>
+          <div class="stars-mini" aria-label="{{ p.note }} étoiles">
+            {%- set full = p.note | int -%}
+            {%- set half = 1 if (p.note - full) >= 0.5 else 0 -%}
+            {%- for i in range(full) -%}<span class="full">★</span>{%- endfor -%}
+            {%- if half -%}<span class="half">★</span>{%- endif -%}
+            {%- for i in range(5 - full - half) -%}<span>★</span>{%- endfor -%}
+          </div>
+          <span class="avis-card-sentiment {{ p.sentiment }}">
+            {% if p.sentiment == 'positif' %}Recommandé{% elif p.sentiment == 'mitige' %}Mitigé{% else %}À éviter{% endif %}
+          </span>
+        </div>
+        {% if p.en_bref %}<p class="avis-card-extract">{{ p.en_bref[:140] }}{% if p.en_bref|length > 140 %}…{% endif %}</p>{% endif %}
+      </div>
+      <div class="avis-card-foot">Publié le {{ p.date | fr_date }}</div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty">Aucun avis publié pour le moment.</div>
+  {% endif %}
+
+  {% if total_pages is defined and total_pages > 1 %}
+  <nav class="pager" aria-label="Pagination">
+    {% if prev_url %}<a href="{{ prev_url }}" class="pager-link" rel="prev">← Précédent</a>{% endif %}
+    {% for p in range(1, total_pages + 1) %}
+      {% set page_link = base_url if p == 1 else (base_url ~ '/' ~ p) %}
+      <a href="{{ page_link }}" class="pager-link {{ 'current' if p == current_page else '' }}">{{ p }}</a>
+    {% endfor %}
+    {% if next_url %}<a href="{{ next_url }}" class="pager-link" rel="next">Suivant →</a>{% endif %}
+  </nav>
+  {% endif %}
+</main>
+
+{% include "base/_footer.html.j2" ignore missing %}
+
+</body>
+</html>
