@@ -1676,15 +1676,14 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             # ── Enrichissement façon blog ────────────────────────────────────
             # Pour aligner les meta d'avis sur celles du blog (catégorie · date ·
             # temps de lecture · auteur), on précalcule ici :
-            #   - categorie_slug : permet le lien /avis/<cat>/
+            #   - categorie_slug : slug brut (PAS le `categorie-<slug>` du blog,
+            #                      car les avis sont déjà namespacés sous /avis/<slug>/).
+            #                      Doit matcher la page catégorie créée plus bas
+            #                      avec `slugify_cat(c)` (cf cats_map).
             #   - date_display   : date FR formatée
             #   - reading_time   : minutes, basé sur le total des mots dans tous
             #                      les champs textuels (en_bref + h2_* + faq + verdict).
-            try:
-                from blog_engine import categorie_slug as _cat_slug
-                post["categorie_slug"] = _cat_slug(post.get("categorie", "")) if post.get("categorie") else ""
-            except Exception:
-                post["categorie_slug"] = ""
+            post["categorie_slug"] = slugify_cat(post.get("categorie", "")) if post.get("categorie") else ""
             post["date_display"] = fr_date(post.get("date", ""))
             # Mots : on additionne tous les blocs textuels visibles côté lecteur
             _text_chunks = [
