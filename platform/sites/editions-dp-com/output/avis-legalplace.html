@@ -167,8 +167,10 @@ h1{font-family:'',serif;font-size:clamp(28px,4.5vw,42px);font-weight:400;letter-
    en haut (~64px de hauteur d'après _nav.html.j2). 80px laisse une marge. */
 .tarifs-section,.analyse-section,.avis-clients,.faq-section,.verdict{scroll-margin-top:80px}
 
-/* Box auteur en bas de page (copie du style blog-post) */
-.author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:64px 0 0}
+/* Box auteur en bas de page (copie du style blog-post).
+   Le margin-bottom 96px aère visuellement avant le footer (le blog n'avait pas
+   ce souci car il a des related_posts entre la box et le footer). */
+.author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:64px 0 96px}
 .author-avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
 .author-avatar-placeholder{width:72px;height:72px;border-radius:50%;background:var(--bg);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
 .author-info{flex:1}
