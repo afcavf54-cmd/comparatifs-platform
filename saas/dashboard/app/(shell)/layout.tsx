@@ -44,6 +44,7 @@ export default function ShellLayout({ children }: { children: React.ReactNode })
     { id: 'overview', label: "📊 Vue d'ensemble", href: `/sites/${siteId}` },
     { id: 'data', label: '🗂 Données', href: `/sites/${siteId}/data` },
     { id: 'blog', label: '📝 Blog', href: `/sites/${siteId}/blog` },
+    { id: 'avis', label: '⭐ Avis', href: `/sites/${siteId}/avis` },
     ...(pageTypes.classement ? [{ id: 'classements', label: '📊 Classements', href: `/sites/${siteId}/classements` }] : []),
     { id: 'deploy', label: '🚀 Déploiement', href: `/sites/${siteId}/deploy` },
     { id: 'settings', label: '⚙️ Paramètres', href: `/sites/${siteId}/settings` },
