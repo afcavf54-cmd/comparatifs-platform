@@ -4,14 +4,20 @@ slug: 6360-quels-avantages-offre-le-comite-d-entreprise-ratp
 date: '2026-05-18T12:00:00+02:00'
 categorie: Salarié
 meta_title: 'Comité d''entreprise RATP : avantages, vacances et réductions'
-meta_description: 'Découvrez les avantages exceptionnels du comité d''entreprise RATP : centres de vacances, colonies, billetterie, services juridiques et bien plus pour les salariés.'
+meta_description: 'Découvrez les avantages exceptionnels du comité d''entreprise RATP
+  : centres de vacances, colonies, billetterie, services juridiques et bien plus pour
+  les salariés.'
 min_words: 750
 status: published
 link_anchors:
 - text: comité d'entreprise ratp
   max: 1
+related_posts:
+- 2430-que-peut-on-obtenir-avec-le-comite-d-entreprise-orange
+- 3695-quels-sont-les-avantages-du-comite-d-entreprise-airbus
+- 1194-quels-avantages-propose-le-comite-d-entreprise-bnp-paribas
+- 6353-comite-d-entreprise-sncf-les-avantages
 ---
-
 <h2>Des avantages concrets pour les salariés RATP</h2>
 
 <p>Quand j'ai commencé à m'intéresser aux <strong>comité d'entreprise</strong> des grands groupes français, la RATP m'a vraiment impressionné. Les avantages proposés aux salariés dépassent largement ce qu'on trouve dans la plupart des entreprises de taille moyenne.</p>
