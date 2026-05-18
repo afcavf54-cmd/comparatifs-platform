@@ -930,7 +930,17 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             site["author_bio"] = author_cfg_main.get("bio", "") or site.get("author_bio", "")
             site["author_job"] = author_cfg_main.get("job_title", "") or site.get("author_job", "")
             site["author_photo"] = _photo_clean_main or site.get("author_photo", "")
-        cleanup_removed_products(output_dir, site_dir, products, all_pairs, is_classement_template, blog_expected=blog_expected)
+        # Protection des pages d'avis (similaire à blog_expected) pour ne pas
+        # qu'elles soient supprimées comme orphelines par cleanup_removed_products.
+        # Le set est unioné à blog_expected avant l'appel.
+        _avis_protected: set = set()
+        _avis_dir_chk = site_dir / "posts_avis"
+        if _avis_dir_chk.exists():
+            _avis_protected.add("avis.html")
+            for _md in _avis_dir_chk.glob("*.md"):
+                _avis_protected.add(f"{_md.stem}.html")
+        _protected = (blog_expected or set()) | _avis_protected
+        cleanup_removed_products(output_dir, site_dir, products, all_pairs, is_classement_template, blog_expected=_protected)
 
     # Pour les sites classement : écraser les anciennes pages avis SCPI avec la 404 actuelle
     if is_classement_template:
@@ -1530,6 +1540,125 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 )
                 (output_dir / f"{slug}.html").write_text(html, encoding="utf-8")
             print(f"  ✓ {len(blog_posts)} articles de blog générés")
+
+    # ───────────────────────────────────────────────────────────────────────
+    # ── AVIS (template avis-post.html.j2) ─────────────────────────────────
+    # Structure parallèle au blog mais avec une template dédiée et des données
+    # entièrement structurées (note, tarifs, FAQ, etc.) dans le frontmatter
+    # plutôt qu'un body markdown. Une page index /avis liste tous les avis.
+    # ───────────────────────────────────────────────────────────────────────
+    avis_posts: list[dict] = []
+    avis_categories: list[dict] = []
+    avis_dir = site_dir / "posts_avis"
+    if avis_dir.exists() and (TEMPLATES_DIR / "avis-post.html.j2").exists():
+        # Chargement des fichiers .md (frontmatter only, body vide)
+        for md in sorted(avis_dir.glob("*.md")):
+            try:
+                raw = md.read_text(encoding="utf-8")
+            except Exception as e:
+                print(f"  ⚠ Avis : {md.name} illisible : {e}")
+                continue
+            if not raw.startswith("---"):
+                continue
+            parts = raw.split("---", 2)
+            if len(parts) < 3:
+                continue
+            try:
+                fm = yaml.safe_load(parts[1]) or {}
+            except Exception as e:
+                print(f"  ⚠ Avis : frontmatter invalide {md.name} : {e}")
+                continue
+            if not fm.get("slug"):
+                fm["slug"] = md.stem
+            # Date au format ISO (string), pour pouvoir trier
+            d = fm.get("date") or ""
+            fm["_sort_date"] = str(d)
+            avis_posts.append(fm)
+
+        # Tri par date décroissante (plus récents en premier)
+        avis_posts.sort(key=lambda p: p.get("_sort_date", ""), reverse=True)
+
+        # Collecte des catégories distinctes
+        cats_map: dict[str, dict] = {}
+        for p in avis_posts:
+            c = (p.get("categorie") or "").strip()
+            if not c:
+                continue
+            key = c.lower()
+            if key not in cats_map:
+                cats_map[key] = {"name": c, "slug": slugify_cat(c), "count": 0}
+            cats_map[key]["count"] += 1
+        avis_categories = sorted(cats_map.values(), key=lambda x: x["name"].lower())
+
+        # Permet aux templates de nav d'afficher l'onglet "Avis"
+        if avis_posts:
+            site["has_avis"] = True
+
+    # Génération des pages d'avis individuelles
+    if avis_posts and (TEMPLATES_DIR / "avis-post.html.j2").exists():
+        tpl_avis = env.get_template("avis-post.html.j2")
+        for post in avis_posts:
+            slug = post.get("slug")
+            if not slug:
+                continue
+            try:
+                html = tpl_avis.render(
+                    site={**site, "seo": _seo}, theme=theme,
+                    page_types=config.get("page_types", {}),
+                    build_date=date.today().isoformat(),
+                    post=post,
+                    avis_categories=avis_categories,
+                    all_avis=avis_posts,
+                )
+            except Exception as e:
+                print(f"  ⚠ Avis : rendu échoué pour {slug} : {e}")
+                continue
+            (output_dir / f"{slug}.html").write_text(html, encoding="utf-8")
+        print(f"  ✓ {len(avis_posts)} avis générés")
+
+        # Index /avis + pages catégorie /avis/<cat>
+        if (TEMPLATES_DIR / "avis-index.html.j2").exists():
+            tpl_avis_idx = env.get_template("avis-index.html.j2")
+            site_name = site.get("name", "")
+            year = site.get("year", date.today().year)
+            # Index général /avis.html
+            html = tpl_avis_idx.render(
+                site={**site, "seo": _seo}, theme=theme,
+                page_types=config.get("page_types", {}),
+                build_date=date.today().isoformat(),
+                posts=avis_posts,
+                categories=avis_categories,
+                base_url="/avis",
+                avis_title=f"Avis et tests {site_name} {year}",
+                avis_meta=f"Tous nos avis détaillés sur les services et plateformes. Notes, tests, comparatifs.",
+                avis_h1=f"Nos avis détaillés",
+                avis_intro=f"Retrouvez {len(avis_posts)} avis indépendants et structurés, avec notes, tarifs et verdict.",
+            )
+            (output_dir / "avis.html").write_text(html, encoding="utf-8")
+            print(f"  ✓ avis.html (index, {len(avis_posts)} avis)")
+
+            # Pages catégorie /avis/<slug>/index.html
+            for cat in avis_categories:
+                cat_posts = [p for p in avis_posts
+                             if (p.get("categorie") or "").strip().lower() == cat["name"].lower()]
+                cat_dir = output_dir / "avis" / cat["slug"]
+                cat_dir.mkdir(parents=True, exist_ok=True)
+                html = tpl_avis_idx.render(
+                    site={**site, "seo": _seo}, theme=theme,
+                    page_types=config.get("page_types", {}),
+                    build_date=date.today().isoformat(),
+                    posts=cat_posts,
+                    categories=avis_categories,
+                    current_category=cat["name"],
+                    base_url=f"/avis/{cat['slug']}",
+                    avis_title=f"Avis {cat['name'].lower()} — {site_name}",
+                    avis_meta=f"Avis détaillés sur les {cat['name'].lower()} : tests, notes, comparatifs.",
+                    avis_h1=f"Avis {cat['name'].lower()}",
+                    avis_intro=f"{cat['count']} avis dans la catégorie « {cat['name']} ».",
+                )
+                (cat_dir / "index.html").write_text(html, encoding="utf-8")
+            if avis_categories:
+                print(f"  ✓ {len(avis_categories)} page(s) catégorie d'avis")
 
     print(f"\n  {'[DRY] ' if dry_run else ''}✅ {generated} pages générées, {skipped} ignorées")
     if not dry_run:
