@@ -1,113 +1,34 @@
-name: Générer et déployer SCPI
-on:
-  workflow_dispatch:
-    inputs:
-      site:
-        description: 'Site slug (ex: scpi, comparateur-scpi)'
-        required: true
-        default: 'scpi'
-        type: string
-      skip_enrich:
-        description: 'Sauter la génération IA (utilise les textes déjà générés)'
-        required: false
-        type: boolean
-        default: false
-      skip_existing:
-        description: 'Ne régénérer que les sections manquantes (économise les tokens)'
-        required: false
-        type: boolean
-        default: false
-      only_category:
-        description: 'Générer uniquement cette catégorie (ex: Logiciel de paie). Vide = toutes.'
-        required: false
-        type: string
-        default: ''
-      schedule:
-        description: 'Heure de lancement HH:MM UTC (ex: 01:00). Vide = immediat.'
-        required: false
-        type: string
-        default: ''
-jobs:
-  generate:
-    runs-on: ubuntu-latest
-    timeout-minutes: 360
-    env:
-      TZ: 'Europe/Paris'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Install dependencies
-        run: pip install pyyaml jinja2 requests
-      - name: Generate AI editorial content
-        if: ${{ !inputs.skip_enrich }}
-        run: |
-          CMD="python platform/scripts/enrich_editorial.py --site ${{ inputs.site }}"
-          if [ "${{ inputs.skip_existing }}" = "true" ]; then
-            CMD="$CMD --skip-existing"
-          fi
-          if [ -n "${{ inputs.only_category }}" ]; then
-            CMD="$CMD --only '${{ inputs.only_category }}'"
-          fi
-          if [ -n "${{ inputs.schedule }}" ]; then
-            CMD="$CMD --schedule ${{ inputs.schedule }}"
-          fi
-          echo "CMD=$CMD"
-          $CMD
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-      - name: Generate static site
-        run: python platform/scripts/generate.py --site ${{ inputs.site }}
-      - name: Remove SCPI pages from classement sites
+- name: Remove SCPI pages from classement sites
+        # Ce step nettoyait toutes les `avis-*.html` quand le site est un
+        # classement (héritage du template SCPI). PROBLÈME : il effaçait aussi
+        # les pages de vrais avis publiés via posts_avis/.
+        #
+        # Le nettoyage est désormais géré par generate.py lui-même qui :
+        #   1. écrase les pages legacy `avis-<slug-produit>.html` avec un 404
+        #   2. PRÉSERVE les pages dont le `<slug>` correspond à un .md de
+        #      posts_avis/ (= les vrais avis du nouveau système).
+        # Cf bloc `if is_classement_template:` dans generate.py
+        # (message "X pages avis écrasées avec 404 (Y préservées car vrai avis)").
+        #
+        # On garde ici une étape no-op pour conserver la structure du workflow.
         run: |
           OUTPUT="platform/sites/${{ inputs.site }}/output"
-          if [ -f "$OUTPUT/meilleur-"*.html ] || ls $OUTPUT/meilleur-*.html 2>/dev/null; then
-            echo "Site classement détecté — suppression pages avis/scpi"
-            rm -f $OUTPUT/avis-*.html
+          AVIS_DIR="platform/sites/${{ inputs.site }}/posts_avis"
+          # Construit la liste des slugs à PROTÉGER (les vrais avis)
+          PROTECTED=""
+          if [ -d "$AVIS_DIR" ]; then
+            for md in "$AVIS_DIR"/*.md; do
+              [ -e "$md" ] || continue
+              stem=$(basename "$md" .md)
+              PROTECTED="$PROTECTED $stem"
+            done
+          fi
+          echo "🛡 Avis protégés du nettoyage : $PROTECTED"
+          # Plus de suppression aveugle de avis-*.html. generate.py s'en charge.
+          # On supprime uniquement les fichiers SCPI résiduels qui n'ont jamais
+          # vocation à exister sur un site classement.
+          if ls $OUTPUT/meilleur-*.html >/dev/null 2>&1; then
             rm -f $OUTPUT/comparatifs-scpi.html
             rm -f $OUTPUT/avis-scpi.html
-            echo "✓ Pages supprimées"
+            echo "✓ Pages SCPI résiduelles supprimées (avis individuels préservés)"
           fi
-      - name: Commit generated files
-        run: |
-          git config user.name "Viseoweb HUB"
-          git config user.email "hub@viseoweb.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git add platform/sites/${{ inputs.site }}/
-          git diff --cached --quiet || git commit -m "Generated: ${{ inputs.site }} [$(date +%Y-%m-%d)]"
-          git fetch origin main
-          git rebase -X theirs origin/main || (git rebase --abort && git push --force-with-lease)
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Deploy to Cloudflare Pages
-        run: |
-          PROJECT="${{ inputs.site }}"
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
-            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
-            "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/pages/projects/$PROJECT")
-          if [ "$STATUS" = "404" ]; then
-            curl -s -X POST \
-              -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
-              -H "Content-Type: application/json" \
-              -d "{\"name\":\"$PROJECT\",\"production_branch\":\"main\"}" \
-              "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/pages/projects"
-            sleep 3
-          fi
-          npm install -g wrangler
-          wrangler pages deploy platform/sites/${{ inputs.site }}/output \
-            --project-name=$PROJECT \
-            --branch=main \
-            --commit-dirty=true
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      - name: Setup domains and redirects
-        run: |
-          python3 platform/scripts/setup_domain.py \
-            ${{ inputs.site }} \
-            ${{ secrets.CLOUDFLARE_ACCOUNT_ID }} \
-            ${{ secrets.CLOUDFLARE_API_TOKEN }}
