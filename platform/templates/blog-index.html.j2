@@ -10,11 +10,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ blog_title }}</title>
 <meta name="description" content="{{ blog_meta }}">
-<link rel="canonical" href="{{ site.domain }}/blog">
+{# Canonical : utilise base_url (= /blog pour l'index, /<slug-categorie> pour les pages catégorie). #}
+{# Pour la page 1 le canonical pointe vers base_url, pour les pages 2+ vers base_url/N (auto-référent). #}
+{# Évite la duplication SEO : avant ce fix, /categorie-salarie pointait son canonical vers /blog. #}
+{% set page_url = base_url if (current_page is not defined or current_page == 1) else (base_url ~ '/' ~ current_page) %}
+<link rel="canonical" href="{{ site.domain }}{{ page_url }}">
+{% if prev_url %}<link rel="prev" href="{{ site.domain }}{{ prev_url }}">{% endif %}
+{% if next_url %}<link rel="next" href="{{ site.domain }}{{ next_url }}">{% endif %}
 <meta property="og:title" content="{{ blog_title }}">
 <meta property="og:description" content="{{ blog_meta }}">
 <meta property="og:type" content="website">
-<meta property="og:url" content="{{ site.domain }}/blog">
+<meta property="og:url" content="{{ site.domain }}{{ page_url }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">
 
