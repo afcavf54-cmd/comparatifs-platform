@@ -113,9 +113,13 @@ a{color:var(--accent2);text-decoration:none}
 
 /* ─── Hero / titre ─── */
 .avis-hero{padding:48px 0 24px;text-align:center}
-.avis-brand-cat{font-size:13px;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
 h1{font-family:'',serif;font-size:clamp(28px,4.5vw,42px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:16px;line-height:1.2}
-.avis-meta{font-size:13px;color:var(--ink3)}
+/* Meta façon blog : catégorie · date · durée · auteur */
+.article-cat{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);background:var(--surface2);padding:4px 10px;border-radius:20px;text-decoration:none;transition:.15s}
+.article-cat:hover{background:var(--accent);color:#fff;text-decoration:none}
+.article-meta{font-size:14px;color:var(--ink3);margin-bottom:8px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center}
+.article-meta-item{display:inline-flex;align-items:center;gap:6px}
+.article-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
 
 /* ─── Bloc score (carte principale) ─── */
 .score-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:32px;margin:24px 0 32px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
@@ -150,15 +154,29 @@ h1{font-family:'',serif;font-size:clamp(28px,4.5vw,42px);font-weight:400;letter-
 /* ─── En bref ─── */
 .en-bref{background:var(--surface2);border-left:4px solid var(--accent);padding:18px 24px;border-radius:var(--r);margin:32px 0;font-size:16px;color:var(--ink2)}
 .en-bref strong{color:var(--ink);font-weight:600}
-/* Sommaire : compact, sobre, sans cassure visuelle avec En bref qui le précède */
-.avis-toc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px 24px;margin:24px 0 40px;font-size:15px}
+/* Sommaire : compact, sobre, sans cassure visuelle avec En bref qui le précède.
+   isolation:isolate + z-index:0 garantissent que le sommaire reste DERRIÈRE
+   le menu (qui est en position:sticky z-index:1000), même quand on scroll. */
+.avis-toc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px 24px;margin:24px 0 40px;font-size:15px;position:relative;z-index:0;isolation:isolate}
 .avis-toc .toc-title{margin:0 0 10px;font-family:'',serif;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;color:var(--ink2)}
 .avis-toc ol{margin:0;padding:0 0 0 22px;color:var(--ink2)}
 .avis-toc li{margin:6px 0;line-height:1.5}
 .avis-toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s ease}
 .avis-toc a:hover{border-bottom-color:var(--accent)}
-/* Décalage au scroll pour ne pas que le H2 cible soit caché par un header fixed éventuel */
-.tarifs-section,.analyse-section,.avis-clients,.faq-section,.verdict{scroll-margin-top:24px}
+/* Décalage au scroll pour ne pas que le H2 cible soit caché par le menu sticky
+   en haut (~64px de hauteur d'après _nav.html.j2). 80px laisse une marge. */
+.tarifs-section,.analyse-section,.avis-clients,.faq-section,.verdict{scroll-margin-top:80px}
+
+/* Box auteur en bas de page (copie du style blog-post) */
+.author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:64px 0 0}
+.author-avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
+.author-avatar-placeholder{width:72px;height:72px;border-radius:50%;background:var(--bg);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
+.author-info{flex:1}
+.author-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:4px}
+.author-name{font-family:'',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:2px}
+.author-job{font-size:13px;color:var(--ink3);margin-bottom:12px}
+.author-bio{font-size:14px;color:var(--ink2);line-height:1.7}
+@media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}}
 
 /* ─── Tableau tarifs ─── */
 .tarifs-section{margin:40px 0}
@@ -268,9 +286,16 @@ document.addEventListener('click',function(e){
 <main class="container">
 
   <section class="avis-hero">
-<div class="avis-brand-cat">Création d’entreprise en ligne · Avis</div>    <h1>Avis Legalplace (2026) : création d'entreprise simplifiée</h1>
-    <div class="avis-meta">
-      Publié le 18 mai 2026    </div>
+    <h1>Avis Legalplace (2026) : création d'entreprise simplifiée</h1>
+    <div class="article-meta">
+        <a href="/avis/categorie-creation-d-entreprise-en-ligne/" class="article-cat">Création d’entreprise en ligne</a>
+        <span class="article-meta-dot"></span>
+        <span class="article-meta-item">📅 18 mai 2026</span>
+        <span class="article-meta-dot"></span>
+        <span class="article-meta-item">⏱ 2 min de lecture</span>
+        <span class="article-meta-dot"></span>
+        <span class="article-meta-item">✍️ Pierre Petit</span>
+    </div>
   </section>
 
   <section class="score-card">
@@ -379,6 +404,14 @@ Recommandé        </div>
       -10% en cliquant ici →
     </a>
   </section>
+
+  <div class="author-box">
+    <img src="/author-photo.png" alt="Pierre Petit" class="author-avatar">
+    <div class="author-info">
+      <div class="author-label">Auteur</div>
+      <div class="author-name">Pierre Petit</div>
+<div class="author-job">Dirigeant TPE</div><div class="author-bio">Vincent Bernard dirige sa TPE depuis 6 ans à Strasbourg, où il accompagne le développement de son équipe avec pragmatisme et bienveillance. Fort de son expérience entrepreneuriale, il privilégie une approche humaine et des solutions concrètes pour faire grandir son entreprise au quotidien.</div>    </div>
+  </div>
 
 </main>
 
