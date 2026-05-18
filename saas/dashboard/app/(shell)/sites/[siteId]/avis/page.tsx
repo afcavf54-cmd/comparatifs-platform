@@ -316,7 +316,7 @@ export default function AvisPage() {
                   cta_label, cible, note_trustpilot, nb_avis_trustpilot, plateforme_avis, meta_title, meta_description, link_anchors, slug
                 </code>
                 <p style={{ marginTop: 12, fontSize: 11 }}>
-                  Formats : <strong>date_publication</strong> = <code>YYYY-MM-DD HH:MM</code> (heure de Paris) — <strong>sentiment</strong> = <code>positif</code> / <code>mitige</code> / <code>negatif</code> — <strong>note_globale</strong> = nombre 0–5 (demi-étoiles OK) — <strong>tarifs</strong> = <code>Offre1|Prix1|Features1;Offre2|Prix2|Features2</code>
+                  Formats : <strong>date_publication</strong> = <code>YYYY-MM-DD HH:MM</code> (heure de Paris), <em>vide = publication immédiate au prochain passage du cron</em> — <strong>sentiment</strong> = <code>positif</code> / <code>mitige</code> / <code>negatif</code> — <strong>note_globale</strong> = nombre 0–5 (demi-étoiles OK) — <strong>tarifs</strong> = <code>Offre1|Prix1|Features1;Offre2|Prix2|Features2</code>
                 </p>
               </div>
             </details>
