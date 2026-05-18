@@ -1743,6 +1743,36 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     print(f"\n  {'[DRY] ' if dry_run else ''}✅ {generated} pages générées, {skipped} ignorées")
     if not dry_run:
         print(f"  📁 Output : {output_dir}")
+        # ── DEBUG : liste les fichiers avis-*.html présents juste avant le
+        # deploy Cloudflare. Permet de vérifier qu'un avis attendu (.md dans
+        # posts_avis/) a bien été RENDU et est PHYSIQUEMENT là, pas écrasé.
+        _avis_html = sorted(output_dir.glob("avis-*.html"))
+        print(f"  🔍 DEBUG fichiers avis-*.html dans output ({len(_avis_html)}) :")
+        for _f in _avis_html[:10]:
+            try:
+                _sz = _f.stat().st_size
+                # Lit la première vraie ligne H1 ou title pour confirmer le contenu
+                _content = _f.read_text(encoding="utf-8", errors="replace")
+                _title_m = re.search(r"<title[^>]*>([^<]+)</title>", _content)
+                _h1_m = re.search(r"<h1[^>]*>([^<]+)</h1>", _content)
+                _hint = (_title_m.group(1) if _title_m else (_h1_m.group(1) if _h1_m else _content[:60])).strip()[:80]
+                print(f"     • {_f.name} ({_sz}o) → {_hint!r}")
+            except Exception as _err:
+                print(f"     • {_f.name} (lecture impossible: {_err})")
+        if len(_avis_html) > 10:
+            print(f"     ... et {len(_avis_html) - 10} autres")
+        # Cherche spécifiquement les avis attendus depuis posts_avis/
+        _expected_avis_dir = site_dir / "posts_avis"
+        if _expected_avis_dir.exists():
+            _missing = []
+            for _md in _expected_avis_dir.glob("*.md"):
+                _expected_html = output_dir / f"{_md.stem}.html"
+                if not _expected_html.exists():
+                    _missing.append(_md.stem)
+            if _missing:
+                print(f"  ⚠ AVIS MANQUANTS (présents en .md mais .html absent) : {_missing}")
+            else:
+                print(f"  ✓ Tous les avis du dossier posts_avis ont leur .html ({len(list(_expected_avis_dir.glob('*.md')))} attendus)")
         # Post-traitement : tracking persistant des dateModified pour éviter
         # que chaque deploy ne marque toutes les pages comme modifiées
         # aujourd'hui (mauvais signal SEO). Cf _post_process_dates_tracking.
