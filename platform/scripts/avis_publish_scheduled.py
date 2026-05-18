@@ -37,6 +37,10 @@ Format attendu du CSV (colonnes) :
     meta_description    optionnel
     link_anchors        optionnel  ("ancre1:N;ancre2:M")
     slug                optionnel  (par défaut: slug(marque))
+    mot_minimum         optionnel  (entier, défaut 800 — nombre total de mots minimum
+                                    pour la somme des champs textuels : en_bref +
+                                    H2 + verdict + FAQ. L'IA est instruite d'atteindre
+                                    ce volume sans inventer de faits précis.)
 """
 from __future__ import annotations
 import csv
@@ -262,6 +266,23 @@ def build_generation_prompt(row: dict, site: dict) -> tuple[str, str]:
     plateforme_avis = (row.get("plateforme_avis") or "Trustpilot").strip()
     year = str(site.get("year") or datetime.now(PARIS).year)
 
+    # Colonne « mot_minimum » : nombre total minimum de mots pour l'article
+    # (somme de en_bref + 4 H2 contenu_html + faq + verdict). Si vide ou
+    # invalide, valeur par défaut 800 (équivalent du dimensionnement actuel).
+    try:
+        mot_min = int(str(row.get("mot_minimum") or "").strip() or 800)
+    except Exception:
+        mot_min = 800
+    # On distribue grossièrement le budget mots pour guider l'IA :
+    #  - en_bref : ~5 % (intro courte)
+    #  - chaque H2 : ~22 % (4 blocs principaux)
+    #  - verdict : ~7 %
+    # Le reste va dans la FAQ. Les nombres ci-dessous sont des cibles SOUPLES,
+    # pas des limites strictes : l'IA peut dépasser légèrement si nécessaire.
+    target_h2 = max(120, int(mot_min * 0.22))
+    target_intro = max(50, int(mot_min * 0.05))
+    target_verdict = max(60, int(mot_min * 0.07))
+
     # Construction du paragraphe avis_clients hors f-string pour éviter les
     # problèmes d'échappement de quotes imbriquées
     if note_tp and nb_avis_tp:
@@ -293,37 +314,41 @@ CONTRAINTES :
    mais sans inventer de chiffres, de partenariats, de récompenses, ou d'événements précis.
 3. Si certaines données ne sont pas fournies (cible, avis externes), ne les mentionne pas.
 4. Tu écris pour des humains pressés. Phrases courtes. Vocabulaire concret.
+5. LONGUEUR : la somme des champs textuels (en_bref + 4 H2 contenu_html + verdict + réponses FAQ)
+   DOIT atteindre AU MINIMUM {mot_min} mots au total. Si tu sais peu de choses sur {marque},
+   développe les analyses (positionnement marché, profil-type d'utilisateur, comparaison
+   sectorielle générique) plutôt que d'inventer des faits précis.
 
 Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de ```) :
 
 {{
   "h1": "Titre principal au format 'Avis {marque} ({year}) : ...' (incitatif, max 75 caractères)",
-  "en_bref": "Paragraphe d'intro de 2-3 phrases (max 280 caractères) : qui c'est, à qui ça s'adresse",
+  "en_bref": "Paragraphe d'intro de ~{target_intro} mots : qui c'est, à qui ça s'adresse, positionnement",
   "points_forts": ["3 points forts CONCRETS, 5-12 mots chacun, formulés positivement"],
   "points_faibles": ["2 points faibles HONNÊTES, 5-12 mots chacun, formulés sans diplomatie creuse"],
   "h2_fonctionnalites": {{
     "titre": "Titre H2 sur les fonctionnalités/le service (ex: 'Que permet {marque} concrètement ?')",
-    "contenu_html": "2-4 paragraphes en HTML <p>...</p>. Description objective de ce que fait la plateforme. Aucun H3 sauf si vraiment nécessaire."
+    "contenu_html": "Au moins {target_h2} mots, répartis sur 2-4 paragraphes en HTML <p>...</p>. Description objective de ce que fait la plateforme. Aucun H3 sauf si vraiment nécessaire."
   }},
   "h2_support": {{
     "titre": "Titre H2 sur le service client/support",
-    "contenu_html": "1-2 paragraphes en HTML <p>...</p>. Canaux de support (chat, mail, téléphone), réactivité, qualité."
+    "contenu_html": "Au moins {target_h2} mots en HTML <p>...</p>. Canaux de support (chat, mail, téléphone), réactivité, qualité, escalade."
   }},
   "h2_qualite_prix": {{
     "titre": "Titre H2 sur le rapport qualité/prix",
-    "contenu_html": "1-2 paragraphes en HTML <p>...</p>. Positionnement vs concurrence, justification du prix, à qui c'est rentable."
+    "contenu_html": "Au moins {target_h2} mots en HTML <p>...</p>. Positionnement vs concurrence, justification du prix, à qui c'est rentable, à qui ça ne l'est pas."
   }},
   "h2_avis_clients": {{
     "titre": "Titre H2 sur les avis clients (ex: 'Que disent les utilisateurs ?')",
     "contenu_html": "1 paragraphe en HTML <p>...</p>. {avis_clients_instructions}"
   }},
   "faq": [
-    {{"q": "Question fréquente 1 ? (DOIT se terminer par '?')", "r": "Réponse en 1-3 phrases (HTML interdit, texte brut)"}},
+    {{"q": "Question fréquente 1 ? (DOIT se terminer par '?')", "r": "Réponse en 2-4 phrases (HTML interdit, texte brut)"}},
     {{"q": "Question 2 ?", "r": "..."}},
     {{"q": "Question 3 ?", "r": "..."}},
     {{"q": "Question 4 ?", "r": "..."}}
   ],
-  "verdict": "Verdict final tranché de 3-4 phrases (max 400 caractères). Réitère la note {note}/5 et donne une recommandation claire (pour qui c'est, pour qui ce n'est pas).",
+  "verdict": "Verdict final tranché d'environ {target_verdict} mots. Réitère la note {note}/5 et donne une recommandation claire (pour qui c'est, pour qui ce n'est pas).",
   "meta_title": "Title SEO max 60 caractères, doit contenir '{marque}' et '{year}'",
   "meta_description": "Meta description SEO max 155 caractères, doit donner envie de cliquer"
 }}"""
@@ -424,9 +449,22 @@ def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict
         "meta_title": (row.get("meta_title") or generated.get("meta_title") or f"Avis {marque} : notre verdict").strip(),
         "meta_description": (row.get("meta_description") or generated.get("meta_description") or "").strip(),
         "link_anchors": link_anchors,
+        # Configuration éditoriale (lue par avis_publish_scheduled au build et
+        # éditable depuis le dashboard ou directement dans le .md).
+        # Sert à régénérer ou comprendre comment l'IA a calibré la longueur.
+        "mot_minimum": _safe_int(row.get("mot_minimum"), 800),
         # Date
         "date": pub_iso,
     }
+
+
+def _safe_int(value, default: int) -> int:
+    """Cast tolérant pour les colonnes numériques (chaînes vides, espaces, etc.)."""
+    try:
+        s = str(value or "").strip()
+        return int(s) if s else default
+    except Exception:
+        return default
 
 
 # ─── Tracking des avis déjà publiés ──────────────────────────────────────
@@ -530,6 +568,11 @@ def sync_metadata(posts_dir: Path, rows: list[dict]) -> int:
             new_fm["meta_description"] = row["meta_description"].strip()
         if row.get("link_anchors"):
             new_fm["link_anchors"] = parse_anchors(row["link_anchors"])
+        # `mot_minimum` est purement informatif côté .md déjà publié (la
+        # longueur du contenu existant n'est pas régénérée). Mais on la sync
+        # quand même pour que le dashboard reflète la valeur courante de la sheet.
+        if row.get("mot_minimum"):
+            new_fm["mot_minimum"] = _safe_int(row["mot_minimum"], new_fm.get("mot_minimum", 800))
         if new_fm != fm:
             new_yaml = yaml.safe_dump(new_fm, allow_unicode=True, sort_keys=False, width=10000)
             md.write_text(f"---\n{new_yaml}---{parts[2]}", encoding="utf-8")
