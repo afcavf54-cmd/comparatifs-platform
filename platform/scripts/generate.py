@@ -1673,6 +1673,38 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     post[_str_field] = "" if post.get(_str_field) is None else str(post.get(_str_field))
             if not post.get("sentiment"):
                 post["sentiment"] = "positif"
+            # ── Enrichissement façon blog ────────────────────────────────────
+            # Pour aligner les meta d'avis sur celles du blog (catégorie · date ·
+            # temps de lecture · auteur), on précalcule ici :
+            #   - categorie_slug : permet le lien /avis/<cat>/
+            #   - date_display   : date FR formatée
+            #   - reading_time   : minutes, basé sur le total des mots dans tous
+            #                      les champs textuels (en_bref + h2_* + faq + verdict).
+            try:
+                from blog_engine import categorie_slug as _cat_slug
+                post["categorie_slug"] = _cat_slug(post.get("categorie", "")) if post.get("categorie") else ""
+            except Exception:
+                post["categorie_slug"] = ""
+            post["date_display"] = fr_date(post.get("date", ""))
+            # Mots : on additionne tous les blocs textuels visibles côté lecteur
+            _text_chunks = [
+                post.get("en_bref", ""),
+                post.get("verdict", ""),
+                post.get("h2_fonctionnalites", {}).get("contenu_html", ""),
+                post.get("h2_support", {}).get("contenu_html", ""),
+                post.get("h2_qualite_prix", {}).get("contenu_html", ""),
+                post.get("h2_avis_clients", {}).get("contenu_html", ""),
+            ]
+            for _f in (post.get("faq") or []):
+                if isinstance(_f, dict):
+                    _text_chunks.append(_f.get("q", ""))
+                    _text_chunks.append(_f.get("r", ""))
+            _total_text = " ".join(str(c) for c in _text_chunks)
+            # Strip basique des tags HTML pour ne compter que les mots réels
+            import re as _re_avis
+            _stripped = _re_avis.sub(r"<[^>]+>", " ", _total_text)
+            _words = len([w for w in _stripped.split() if w.strip()])
+            post["reading_time"] = max(1, round(_words / 200))
             try:
                 html = tpl_avis.render(
                     site={**site, "seo": _seo}, theme=theme,
