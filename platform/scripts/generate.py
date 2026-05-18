@@ -1670,7 +1670,12 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     posts=cat_posts,
                     categories=avis_categories,
                     current_category=cat["name"],
-                    base_url=f"/avis/{cat['slug']}",
+                # IMPORTANT : trailing slash conservé dans base_url car les
+                # pages catégorie sont servies depuis avis/<cat>/index.html.
+                # Cloudflare Pages redirige automatiquement /avis/<cat> → /avis/<cat>/.
+                # Sans le slash dans le canonical, Google "canonicalise" l'URL
+                # (bug rapporté par Julien : URL indexable avec slash mais canonical sans).
+                    base_url=f"/avis/{cat['slug']}/",
                     avis_title=f"Avis {cat['name'].lower()} — {site_name}",
                     avis_meta=f"Avis détaillés sur les {cat['name'].lower()} : tests, notes, comparatifs.",
                     avis_h1=f"Avis {cat['name'].lower()}",
