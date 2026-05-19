@@ -150,7 +150,13 @@ def parse_pub_datetime(date_str: str, time_str: str = "09:00") -> datetime | Non
 
 
 def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000) -> str:
-    """Appelle l'API Anthropic et retourne la réponse texte. Retry avec backoff sur erreurs réseau."""
+    """Appelle l'API Anthropic et retourne la réponse texte. Retry avec backoff sur erreurs réseau.
+
+    Timeout fixé à 300s (5 min) car la génération d'articles longs (3000-4000+ mots,
+    soit jusqu'à 8000 tokens de sortie) peut dépasser 60s côté serveur. Le timeout
+    précédent de 60s causait des échecs systématiques sur les articles longs.
+    Pour les très longs, on pourrait passer en streaming — pour l'instant 300s suffit.
+    """
     if not ANTHROPIC_API_KEY:
         raise RuntimeError("ANTHROPIC_API_KEY manquante")
 
@@ -174,7 +180,7 @@ def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000
                 },
                 method="POST",
             )
-            with urllib.request.urlopen(req, timeout=60) as resp:
+            with urllib.request.urlopen(req, timeout=300) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
             text = "".join(b.get("text", "") for b in data.get("content", []) if b.get("type") == "text")
             return text
