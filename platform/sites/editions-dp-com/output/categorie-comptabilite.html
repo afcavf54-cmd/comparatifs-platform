@@ -44,18 +44,26 @@ a{color:var(--accent2);text-decoration:none}
 .blog-card-excerpt{font-size:14px;color:var(--ink3);line-height:1.55;margin-bottom:16px;flex:1}
 .blog-card-meta{font-size:12px;color:var(--ink3);margin-top:auto}
 .blog-empty{text-align:center;padding:80px 0;color:var(--ink3);font-size:16px}
-/* Pagination minimaliste : tout sur une ligne, sans box, sans encadré bleu.
-   La page courante est juste indiquée par un poids fort + couleur principale,
-   plus de fond bleu plein qui faisait "lourd" visuellement. */
-.blog-pagination{display:flex;align-items:center;justify-content:center;gap:8px;margin:48px 0 24px;flex-wrap:nowrap}
-.blog-page-link{padding:6px 12px;color:var(--ink2);text-decoration:none;font-size:14px;font-weight:500;transition:color .15s;border-radius:var(--r);background:transparent;border:none}
-.blog-page-link:hover{color:var(--accent);background:transparent}
-.blog-page-disabled{padding:6px 12px;color:var(--ink3);font-size:14px;opacity:.4;cursor:default;background:transparent;border:none}
-.blog-page-numbers{display:flex;gap:2px}
-.blog-page-num{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;padding:0 8px;background:transparent;border:none;color:var(--ink2);text-decoration:none;font-size:14px;font-weight:500;transition:color .15s;border-radius:var(--r)}
-.blog-page-num:hover{color:var(--accent);background:transparent;border-color:transparent}
-.blog-page-current{color:var(--ink);font-weight:700;background:transparent;border:none;cursor:default}
-@media(max-width:600px){.blog-pagination{gap:4px}.blog-page-link{padding:6px 8px;font-size:13px}.blog-page-num{min-width:24px;height:24px;padding:0 6px;font-size:13px}}
+/* Pagination style "rond bleu pour la page courante + ... + séparateur + Suivant".
+   Match visuel de la maquette fournie : numéros centrés sur 32px, page courante
+   en rond bleu plein, ellipsis pour gros volumes, séparateur vertical avant
+   Précédent/Suivant, et flèche dans cercle foncé. */
+.blog-pagination{display:flex;align-items:center;justify-content:center;gap:4px;margin:48px 0 24px;flex-wrap:nowrap;font-size:15px}
+.blog-page-numbers{display:flex;align-items:center;gap:4px}
+.blog-page-num{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;padding:0 8px;border-radius:50%;background:transparent;border:none;color:var(--ink2);text-decoration:none;font-weight:500;transition:color .15s}
+.blog-page-num:hover{color:var(--accent)}
+.blog-page-current{background:var(--accent);color:#fff;font-weight:600;cursor:default}
+.blog-page-current:hover{color:#fff}
+.blog-page-ellipsis{display:inline-flex;align-items:center;justify-content:center;min-width:24px;color:var(--ink3);user-select:none}
+/* Séparateur vertical entre les numéros et le bouton Précédent/Suivant */
+.blog-page-sep{display:inline-block;width:1px;height:20px;background:var(--border);margin:0 12px}
+/* Lien Précédent/Suivant : texte + flèche dans rond foncé */
+.blog-page-link{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;font-weight:500;padding:6px 4px;background:transparent;border:none;transition:opacity .15s}
+.blog-page-link:hover{opacity:.6;background:transparent}
+.blog-page-disabled{display:inline-flex;align-items:center;gap:8px;color:var(--ink3);font-weight:500;padding:6px 4px;opacity:.4;cursor:default;background:transparent;border:none}
+.blog-page-arrow{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:11px;line-height:1;flex-shrink:0}
+.blog-page-disabled .blog-page-arrow{background:var(--ink3)}
+@media(max-width:600px){.blog-pagination{gap:2px;font-size:14px}.blog-page-num{min-width:28px;height:28px;padding:0 6px}.blog-page-sep{margin:0 6px}.blog-page-link,.blog-page-disabled{padding:4px 2px}.blog-page-link span:not(.blog-page-arrow){display:none}.blog-page-disabled span:not(.blog-page-arrow){display:none}}
 /* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
 @media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.blog-grid{grid-template-columns:1fr}}
