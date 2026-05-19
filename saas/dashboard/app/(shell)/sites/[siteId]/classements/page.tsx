@@ -630,7 +630,11 @@ export default function ClassementsPage() {
 
                 <div onClick={() => toggleSection('seo')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections['seo'] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>🔍 SEO</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
                 {expandedSections['seo'] && (() => {
-                  const catName = selectedData.categorie || keywordCategories[selected] || selected.replace('classement-', '').replace(/-/g, ' ')
+                  // Ne PAS fallback sur `keywordCategories[selected]` ici : c'est la catégorie
+                  // OMBRELLE (ex: "Marketing"), utilisée uniquement pour le regroupement dans la
+                  // sidebar. Pour le pattern SEO on veut le nom de la KEYWORD (ex: "logiciel de
+                  // cold emailing outreach") — d'où le fallback direct sur le slug déshydraté.
+                  const catName = selectedData.categorie || selected.replace('classement-', '').replace(/-/g, ' ')
                   const catLower = (catName || '').toLowerCase()
                   const catCap = catLower ? catLower[0].toUpperCase() + catLower.slice(1) : ''
                   const pluralizeFirst = (s: string) => {
