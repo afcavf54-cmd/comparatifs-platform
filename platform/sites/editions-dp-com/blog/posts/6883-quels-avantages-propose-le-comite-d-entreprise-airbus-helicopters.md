@@ -1,23 +1,24 @@
 ---
 title: Quels avantages propose le comité d’entreprise Airbus Helicopters ?
 slug: 6883-quels-avantages-propose-le-comite-d-entreprise-airbus-helicopters
-date: '2026-05-19T12:00:00+02:00'
+date: 2026-05-19T12:00:00+02:00
+updated: 2026-05-19T11:08:11
 categorie: Salarié
-meta_title: 'Comité d''entreprise Airbus Helicopters : avantages et prestations'
-meta_description: 'Découvrez les nombreux avantages du comité d''entreprise Airbus
-  Helicopters : chèques vacances, billetteries à tarifs réduits, centres de vacances
-  et prêts…'
-min_words: 750
+meta_title: "Comité d'entreprise Airbus Helicopters : avantages et prestations"
+meta_description: "Découvrez les nombreux avantages du comité d'entreprise Airbus Helicopters : chèques vacances, billetteries à tarifs réduits, centres de vacances et prêts…"
+featured_image: /blog/6883-quels-avantages-propose-le-comite-d-entreprise-airbus-helicopters/featured-83637.jpg
 status: published
-link_anchors:
-- text: comité d'entreprise airbus helicopters
-  max: 1
+min_words: 750
 related_posts:
 - 9545-quels-avantages-offre-le-comite-d-entreprise-maaf
 - 8080-quels-sont-les-avantages-du-comite-d-entreprise-mma
 - 1188-que-propose-le-comite-d-entreprise-gmf-aux-salaries
 - 2430-que-peut-on-obtenir-avec-le-comite-d-entreprise-orange
+link_anchors:
+- text: "comité d'entreprise airbus helicopters"
+  max: 1
 ---
+
 <h2>Les services classiques du comité d'entreprise Airbus Helicopters</h2>
 
 <p>En tant que dirigeant d'une TPE à Lyon, j'ai souvent observé les avantages dont bénéficient les salariés des grandes entreprises. <strong>Airbus Helicopters ne fait pas exception</strong> et offre à ses 22 000 employés des services particulièrement développés via son comité d'entreprise.</p>
@@ -69,3 +70,4 @@ related_posts:
 <p>Pour les jeunes parents, les <strong>services de garde</strong> représentent souvent la meilleure rentabilité immédiate. Les tarifs négociés par le comité restent généralement bien inférieurs aux solutions privées.</p>
 
 <p>Enfin, participez aux <strong>événements collectifs</strong>. Au-delà de l'aspect financier, ils permettent de créer du lien avec les collègues. Dans une grande entreprise comme Airbus Helicopters, ces moments informels peuvent ouvrir des opportunités professionnelles inattendues.</p>
+
