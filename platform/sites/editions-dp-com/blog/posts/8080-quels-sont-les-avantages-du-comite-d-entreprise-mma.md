@@ -1,23 +1,24 @@
 ---
 title: Quels sont les avantages du comité d’entreprise MMA ?
 slug: 8080-quels-sont-les-avantages-du-comite-d-entreprise-mma
-date: '2026-05-18T16:00:00+02:00'
+date: 2026-05-18T16:00:00+02:00
+updated: 2026-05-19T09:32:13
 categorie: Salarié
-meta_title: 'Comité d''entreprise MMA : avantages salariés et offres disponibles'
-meta_description: 'Découvrez les avantages du comité d''entreprise MMA : réductions
-  jusqu''à 40% sur vacances, loisirs et shopping. Tarifs négociés, chèques cadeaux
-  et services…'
-min_words: 750
+meta_title: "Comité d'entreprise MMA : avantages salariés et offres disponibles"
+meta_description: "Découvrez les avantages du comité d'entreprise MMA : réductions jusqu'à 40% sur vacances, loisirs et shopping. Tarifs négociés, chèques cadeaux et services…"
+featured_image: /blog/8080-quels-sont-les-avantages-du-comite-d-entreprise-mma/featured-28085.jpg
 status: published
-link_anchors:
-- text: comité d'entreprise mma
-  max: 1
+min_words: 750
 related_posts:
 - 5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage
 - 1188-que-propose-le-comite-d-entreprise-gmf-aux-salaries
 - 1778-comment-fonctionne-le-comite-d-entreprise-loxam
 - 6353-comite-d-entreprise-sncf-les-avantages
+link_anchors:
+- text: "comité d'entreprise mma"
+  max: 1
 ---
+
 <h2>Le comité d'entreprise MMA, un vrai plus pour les salariés</h2>
 
 <p>Depuis onze ans que je dirige ma TPE, j'ai eu l'occasion de collaborer avec différentes mutuelles d'assurance. <strong>MMA fait partie de celles qui proposent des avantages intéressants via leur comité d'entreprise</strong>. Franchement, quand on cherche à réduire les coûts tout en gardant des prestations de qualité, ça mérite qu'on s'y attarde.</p>
@@ -79,3 +80,4 @@ related_posts:
 <p>Pour les vacances, réservez tôt. <strong>Les meilleures offres partent en premier</strong>, surtout pour juillet-août. Et vérifiez bien les conditions d'annulation avant de valider.</p>
 
 <p>Au final, le comité d'entreprise MMA représente un vrai plus financier pour mes équipes. <strong>Pas révolutionnaire, mais efficace et accessible</strong>. Dans un contexte où chaque avantage compte, c'est déjà ça de pris sur l'inflation.</p>
+
