@@ -1320,10 +1320,33 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 # H1 : priorité (1) édition manuelle de la catégorie, (2) pattern SEO global
                 # `classement_h1_pattern`, (3) fallback sur le Title.
                 classement_h1 = cat_editorial.get("h1") or _sub_vars(seo_cfg.get("classement_h1_pattern", "")) or classement_title
+                # ── Résolution de l'extension de screenshot ──────────────
+                # Le template attendait historiquement `<slug>-screenshot.png`,
+                # mais les images uploadées via le dashboard peuvent être en .jpg,
+                # .jpeg ou .webp. On résout ici l'extension réelle en regardant
+                # le fichier présent dans schemas/images/<schema_name>/, et on
+                # expose `screenshot_file` directement sur le produit pour que
+                # le template n'ait plus à supposer l'extension.
+                _schema_imgs_dir = None
+                _schema_name_for_img = config.get("page_types", {}).get("classement", "")
+                if _schema_name_for_img:
+                    _candidate = ROOT / "schemas" / "images" / _schema_name_for_img
+                    if _candidate.exists():
+                        _schema_imgs_dir = _candidate
                 enriched_products = []
                 for prod in cat_products:
                     p = dict(prod)
                     slug = prod.get("slug", "")
+                    # Résolution screenshot — premier fichier trouvé parmi les
+                    # extensions usuelles. Si aucune n'existe, on tombe sur le
+                    # default .png (qui déclenchera le `onerror` côté template).
+                    if slug and _schema_imgs_dir:
+                        for _ext in ("png", "jpg", "jpeg", "webp"):
+                            if (_schema_imgs_dir / f"{slug}-screenshot.{_ext}").exists():
+                                p["screenshot_file"] = f"{slug}-screenshot.{_ext}"
+                                break
+                    if "screenshot_file" not in p and slug:
+                        p["screenshot_file"] = f"{slug}-screenshot.png"
                     # descriptions_produits ignoré — classement-prod-{slug} a la priorité
                     # Points forts/faibles depuis classement-prod-{slug}
                     prod_ed_key = f"classement-prod-{slug}"
