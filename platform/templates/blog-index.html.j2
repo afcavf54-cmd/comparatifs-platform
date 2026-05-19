@@ -58,8 +58,13 @@ a{color:var(--accent2);text-decoration:none}
 /* Pagination style "rond bleu pour la page courante + ... + séparateur + Suivant".
    Match visuel de la maquette fournie : numéros centrés sur 32px, page courante
    en rond bleu plein, ellipsis pour gros volumes, séparateur vertical avant
-   Précédent/Suivant, et flèche dans cercle foncé. */
-.blog-pagination{display:flex;align-items:center;justify-content:center;gap:4px;margin:48px 0 24px;flex-wrap:nowrap;font-size:15px}
+   Précédent/Suivant, et flèche dans cercle foncé.
+   ⚠️ ATTENTION : le sélecteur global `nav` défini dans _nav.html.j2 applique
+   `flex-direction:column; background:var(--ink); position:sticky; padding:0 5vw`
+   à TOUS les <nav>, y compris notre <nav class="blog-pagination">. On override
+   donc explicitement ces propriétés pour éviter que la pagination s'affiche en
+   colonne dans un fond sombre. */
+.blog-pagination{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:4px;margin:48px 0 24px;flex-wrap:nowrap;font-size:15px;background:transparent;padding:0;position:static}
 .blog-page-numbers{display:flex;align-items:center;gap:4px}
 .blog-page-num{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;padding:0 8px;border-radius:50%;background:transparent;border:none;color:var(--ink2);text-decoration:none;font-weight:500;transition:color .15s}
 .blog-page-num:hover{color:var(--accent)}
