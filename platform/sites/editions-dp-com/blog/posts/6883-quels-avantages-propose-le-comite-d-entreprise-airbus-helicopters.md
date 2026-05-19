@@ -4,14 +4,20 @@ slug: 6883-quels-avantages-propose-le-comite-d-entreprise-airbus-helicopters
 date: '2026-05-19T12:00:00+02:00'
 categorie: Salarié
 meta_title: 'Comité d''entreprise Airbus Helicopters : avantages et prestations'
-meta_description: 'Découvrez les nombreux avantages du comité d''entreprise Airbus Helicopters : chèques vacances, billetteries à tarifs réduits, centres de vacances et prêts…'
+meta_description: 'Découvrez les nombreux avantages du comité d''entreprise Airbus
+  Helicopters : chèques vacances, billetteries à tarifs réduits, centres de vacances
+  et prêts…'
 min_words: 750
 status: published
 link_anchors:
 - text: comité d'entreprise airbus helicopters
   max: 1
+related_posts:
+- 9545-quels-avantages-offre-le-comite-d-entreprise-maaf
+- 8080-quels-sont-les-avantages-du-comite-d-entreprise-mma
+- 1188-que-propose-le-comite-d-entreprise-gmf-aux-salaries
+- 2430-que-peut-on-obtenir-avec-le-comite-d-entreprise-orange
 ---
-
 <h2>Les services classiques du comité d'entreprise Airbus Helicopters</h2>
 
 <p>En tant que dirigeant d'une TPE à Lyon, j'ai souvent observé les avantages dont bénéficient les salariés des grandes entreprises. <strong>Airbus Helicopters ne fait pas exception</strong> et offre à ses 22 000 employés des services particulièrement développés via son comité d'entreprise.</p>
