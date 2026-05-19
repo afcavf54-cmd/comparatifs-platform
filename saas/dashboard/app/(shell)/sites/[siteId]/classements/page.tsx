@@ -12,12 +12,10 @@ function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string,
   const editorRef = React.useRef<HTMLDivElement>(null)
   const taRef = React.useRef<HTMLTextAreaElement>(null)
 
-  // Sync visuel → HTML
   function onVisualInput() {
     if (editorRef.current) onChange(editorRef.current.innerHTML)
   }
 
-  // Sync HTML → visuel au changement de mode
   function switchMode(m: 'visual'|'source') {
     if (m === 'visual' && editorRef.current) {
       editorRef.current.innerHTML = value
@@ -56,13 +54,11 @@ function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string,
 
   return (
     <div style={{ border: '1px solid #1E2D3D', borderRadius: 8, overflow: 'hidden' }}>
-      {/* Tabs */}
       <div style={{ display: 'flex', background: '#0A0E1A', borderBottom: '1px solid #1E2D3D', padding: '0 8px', gap: 4 }}>
         <button style={tabBtn('visual','Visuel')} onClick={() => switchMode('visual')}>✏️ Visuel</button>
         <button style={tabBtn('source','HTML')} onClick={() => switchMode('source')}>{'</>'} HTML</button>
       </div>
 
-      {/* Toolbar */}
       <div style={{ display: 'flex', gap: 4, padding: '5px 8px', background: '#0A0E1A', borderBottom: '1px solid #1E2D3D', flexWrap: 'wrap' as const }}>
         {mode === 'visual' ? (<>
           <button style={btn} onClick={() => exec('bold')}><b>B</b></button>
@@ -86,7 +82,6 @@ function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string,
         </>)}
       </div>
 
-      {/* Éditeur visuel */}
       {mode === 'visual' && (
         <div
           ref={editorRef}
@@ -101,7 +96,6 @@ function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string,
         />
       )}
 
-      {/* Éditeur source */}
       {mode === 'source' && (
         <textarea ref={taRef} value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder}
           style={{ width: '100%', padding: 12, background: '#0D1117', border: 'none', color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, outline: 'none', fontFamily: 'monospace', resize: 'vertical', minHeight: (rows * 22) + 'px', boxSizing: 'border-box' as const, display: 'block' }} />
@@ -124,9 +118,16 @@ export default function ClassementsPage() {
   const [expandedBrands, setExpandedBrands] = useState<Record<string, boolean>>({})
   const [collapsedCats, setCollapsedCats] = useState<Record<string, boolean>>({})
   const [keywordCategories, setKeywordCategories] = useState<Record<string, string>>({})
-  // Patterns SEO du site (lus depuis config.yaml > seo) pour calculer les
-  // valeurs par défaut affichées en placeholder dans les inputs H1, meta_title,
-  // titre_analyse et meta_description quand l'utilisateur n'a pas override.
+  // ── PROTECTION editorial.json ────────────────────────────────────────────
+  // Drapeau true SI ET SEULEMENT SI on a réussi à lire et parser editorial.json
+  // au démarrage. Quand false (lecture impossible, contenu tronqué, JSON invalide),
+  // on bloque toute opération de sauvegarde ou suppression qui ferait courir
+  // le risque d'écraser le fichier sur GitHub avec un contenu vide ou partiel.
+  // Cf. bug du 19 mai 2026 : fichier de 1.01 MB tronqué par GitHub Contents API
+  // (limite 1 MB) → parse échoue silencieusement → save aurait écrasé tout le
+  // contenu existant avec seulement les classements en mémoire (zéro).
+  const [editorialReadOk, setEditorialReadOk] = useState(false)
+  const [editorialLoadError, setEditorialLoadError] = useState<string>('')
   const [seoDefaults, setSeoDefaults] = useState<{
     year: string; siteName: string;
     title_pattern: string; h1_pattern: string;
@@ -152,10 +153,6 @@ export default function ClassementsPage() {
     const slugifyKw = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
       .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
 
-    // Fonction qui merge les données products.yaml dans les produits déjà
-    // chargés (depuis sheet ou schema). Récupère url_affiliation et cta_text
-    // par slug si la valeur de la source initiale est manquante.
-    // Si aucun produit n'est encore chargé, prend products.yaml comme source.
     const mergeProductsYaml = async () => {
       try {
         const r = await fetch(`/api/sites/${siteId}/products`)
@@ -169,11 +166,7 @@ export default function ClassementsPage() {
         }
         if (cancelled) return
         setProducts(prev => {
-          if (!prev || prev.length === 0) {
-            // Pas de source initiale → on prend yaml en entier
-            return yamlProducts
-          }
-          // Sinon merge par slug (yaml comble les champs manquants)
+          if (!prev || prev.length === 0) return yamlProducts
           const seen = new Set(prev.map(p => p.slug))
           const merged = prev.map(p => {
             const yp = bySlug[p.slug]
@@ -184,16 +177,14 @@ export default function ClassementsPage() {
               cta_text: p.cta_text || yp.cta_text || '',
             }
           })
-          // Et on ajoute les produits du yaml qui ne sont pas du tout dans la sheet
           for (const yp of yamlProducts) {
             if (yp.slug && !seen.has(yp.slug)) merged.push(yp)
           }
           return merged
         })
-      } catch { /* silencieux */ }
+      } catch {}
     }
 
-    // 1. Sheet (independent, fire & forget)
     fetch(`/api/sites/${siteId}`).then(r => r.json()).then(async d => {
       if (cancelled) return
       if (d.sheet_csv_url) {
@@ -201,32 +192,24 @@ export default function ClassementsPage() {
         const sd = await r.json()
         if (!cancelled && !sd.error) {
           setProducts(sd.rows || [])
-          // Merger les données du products.yaml par-dessus (pour url_affiliation, cta_text)
           await mergeProductsYaml()
         }
       } else {
-        // Pas de sheet configurée → on charge tout depuis products.yaml
         await mergeProductsYaml()
       }
     }).catch(() => {})
 
-    // 2. Schema → editorial (chained, so we know which products belong to each category)
     ;(async () => {
-      // Per-category slug allowlist : { cat_slug -> Set<product_slug> }
       const kwToProductSlugs: Record<string, Set<string>> = {}
       try {
         const cfgR = await fetch(`/api/github?path=${encodeURIComponent(`platform/sites/${siteId}/config.yaml`)}`)
         const cfg = await cfgR.json()
         if (cfg.content) {
-          // Extraire les patterns SEO et site.year/name pour afficher les
-          // valeurs par défaut (placeholder) dans les inputs H1/meta_*/titre_analyse.
           const cfgText: string = cfg.content
-          // site.year (numérique ou string)
           const yearM = cfgText.match(/^site:[\s\S]*?\n\s+year:\s*['"]?(\d{4})['"]?/m)
           const nameM = cfgText.match(/^site:[\s\S]*?\n\s+name:\s*['"]?([^'"\n]+)['"]?/m)
           const siteYear = yearM ? yearM[1] : new Date().getFullYear().toString()
           const siteName = nameM ? nameM[1].trim() : ''
-          // Patterns SEO : section seo: ... avec sous-clés
           const seoBlock = cfgText.match(/^seo:\s*\n((?:\s+[^\n]*\n?)+)/m)?.[1] || ''
           const getPattern = (key: string) => {
             const m = seoBlock.match(new RegExp(`^\\s+${key}:\\s*['"]?([^'"\\n]+)['"]?`, 'm'))
@@ -268,46 +251,56 @@ export default function ClassementsPage() {
         }
       } catch {}
 
-      // Editorial — only inject products that ACTUALLY belong to each category
+      // ── Editorial — LECTURE PROTÉGÉE ──────────────────────────────────────
+      // Si la lecture échoue (réseau, tronqué, JSON invalide), on log,
+      // on affiche un message clair à l'utilisateur ET on garde editorialReadOk
+      // à false pour empêcher tout save destructif derrière.
       try {
         const r = await fetch(`/api/github?path=${encodeURIComponent(editorialPath)}`)
+        if (!r.ok) throw new Error(`HTTP ${r.status} sur /api/github`)
         const d = await r.json()
         if (cancelled) return
-        if (d.content) {
-          try {
-            const all = JSON.parse(d.content)
-            const cls: Record<string, any> = {}
-            const prods: Record<string, any> = {}
-            for (const [k, v] of Object.entries(all)) {
-              if (k.startsWith('classement-prod-')) prods[k] = v
-              else if (k.startsWith('classement-')) cls[k] = v
-            }
-            // ── INJECTION FIX ──────────────────────────────────────────────
-            // Bug d'origine : on injectait CHAQUE classement-prod-* dans CHAQUE
-            // classement-* → editorial.json gonflait à 1 778+ entrées (3 MB+).
-            // Fix : on ne pré-remplit que les produits qui appartiennent
-            // réellement à la catégorie (via schema.keywords[kw].__products).
-            // Les pré-remplissages sont marqués __auto:true et seront
-            // strippés au save (cf. save()) sauf si l'utilisateur les édite
-            // (cf. updateField, qui retire __auto à toute édition).
-            for (const [clsKey] of Object.entries(cls)) {
-              const cat_slug = clsKey.replace('classement-', '')
-              const allowed = kwToProductSlugs[cat_slug]
-              if (!allowed) continue // Pas d'info schema → on n'injecte rien (safe default)
-              for (const [prodKey, prodVal] of Object.entries(prods)) {
-                const slug = prodKey.replace('classement-prod-', '')
-                if (!allowed.has(slug)) continue
-                const existing = (cls[clsKey] as any)[`prod_${slug}`]
-                // Si une vraie édition utilisateur existe (sans __auto), on la garde
-                if (existing && !(existing as any).__auto) continue
-                ;(cls[clsKey] as any)[`prod_${slug}`] = { ...(prodVal as any), __auto: true }
-              }
-            }
-            setClassements(cls)
-            if (Object.keys(cls).length > 0) setSelected(Object.keys(cls)[0])
-          } catch {}
+        if (!d.content) {
+          throw new Error('Aucun contenu retourné par /api/github (fichier vide ou API en échec)')
         }
-      } catch {}
+        // Si l'API expose le flag `truncated:true` (renvoyé par l'API GitHub
+        // Contents quand le fichier dépasse 1 MB), on REFUSE d'aller plus loin.
+        if (d.truncated === true) {
+          throw new Error('editorial.json dépasse 1 MB et a été tronqué par GitHub Contents API — l\'API du dashboard doit utiliser l\'API Blob de GitHub')
+        }
+        let all: any
+        try {
+          all = JSON.parse(d.content)
+        } catch (parseErr: any) {
+          throw new Error(`Parse JSON impossible (${parseErr.message}). Le contenu reçu fait ${(d.content?.length || 0).toLocaleString()} caractères — probablement tronqué par GitHub Contents API (limite 1 MB).`)
+        }
+        const cls: Record<string, any> = {}
+        const prods: Record<string, any> = {}
+        for (const [k, v] of Object.entries(all)) {
+          if (k.startsWith('classement-prod-')) prods[k] = v
+          else if (k.startsWith('classement-')) cls[k] = v
+        }
+        for (const [clsKey] of Object.entries(cls)) {
+          const cat_slug = clsKey.replace('classement-', '')
+          const allowed = kwToProductSlugs[cat_slug]
+          if (!allowed) continue
+          for (const [prodKey, prodVal] of Object.entries(prods)) {
+            const slug = prodKey.replace('classement-prod-', '')
+            if (!allowed.has(slug)) continue
+            const existing = (cls[clsKey] as any)[`prod_${slug}`]
+            if (existing && !(existing as any).__auto) continue
+            ;(cls[clsKey] as any)[`prod_${slug}`] = { ...(prodVal as any), __auto: true }
+          }
+        }
+        setClassements(cls)
+        setEditorialReadOk(true) // ✓ Lecture OK — saves autorisés
+        setEditorialLoadError('')
+        if (Object.keys(cls).length > 0) setSelected(Object.keys(cls)[0])
+      } catch (e: any) {
+        console.error('[Classements] Lecture editorial.json échouée :', e)
+        setEditorialReadOk(false)
+        setEditorialLoadError(e?.message || String(e))
+      }
 
       if (!cancelled) setLoading(false)
     })()
@@ -339,15 +332,37 @@ export default function ClassementsPage() {
 
   async function save() {
     setSaving(true); setMsg('')
+    // ── PROTECTION CRITIQUE ─────────────────────────────────────────────
+    // Si la lecture initiale de editorial.json a échoué, REFUSER de sauvegarder.
+    // Sans cette garde, on écrasait tout editorial.json (potentiellement 1+ MB
+    // de données éditoriales) avec uniquement le state local — qui pouvait être vide.
+    if (!editorialReadOk) {
+      setMsg('✗ Sauvegarde bloquée : editorial.json n\'a pas pu être lu correctement.')
+      setSaving(false)
+      return
+    }
     const r = await fetch(`/api/github?path=${encodeURIComponent(editorialPath)}`)
     const d = await r.json()
+    if (!d.content || d.truncated === true) {
+      setMsg('✗ Sauvegarde bloquée : la relecture pré-save de editorial.json a échoué')
+      setSaving(false)
+      return
+    }
     let allEditorial: Record<string, any> = {}
-    if (d.content) { try { allEditorial = JSON.parse(d.content) } catch {} }
-    // ── SAVE FIX ─────────────────────────────────────────────────────────
-    // On strippe les entrées prod_* marquées __auto:true (pré-remplissages
-    // du load qui ne reflètent pas une édition utilisateur). Sans ce filtre,
-    // chaque save répliquerait classement-prod-* à l'intérieur de chaque
-    // classement-* → bloat exponentiel (cf. bug fix du load).
+    try {
+      allEditorial = JSON.parse(d.content)
+    } catch (e: any) {
+      setMsg('✗ Sauvegarde bloquée : editorial.json invalide à la relecture (' + e.message + ')')
+      setSaving(false)
+      return
+    }
+    // Garde-fou : si la relecture renvoie ~rien alors qu'on a des classements
+    // chargés en local, c'est un signe de troncature — on annule.
+    if (Object.keys(allEditorial).length === 0 && Object.keys(classements).length > 0) {
+      setMsg('✗ Sauvegarde bloquée : editorial.json relu vide alors qu\'on a des données en local')
+      setSaving(false)
+      return
+    }
     const cleanedClassements: Record<string, any> = {}
     for (const [clsKey, clsVal] of Object.entries(classements)) {
       if (!clsVal || typeof clsVal !== 'object') { cleanedClassements[clsKey] = clsVal; continue }
@@ -368,20 +383,33 @@ export default function ClassementsPage() {
     setSaving(false)
   }
 
-  // Régénère une page : supprime la clé dans editorial.json et relance le déploiement
   async function regeneratePage(catKey: string) {
     setRegenerating(prev => ({ ...prev, [catKey]: true })); setMsg('')
+    if (!editorialReadOk) {
+      setMsg('✗ Régénération bloquée : editorial.json n\'a pas pu être lu correctement.')
+      setRegenerating(prev => ({ ...prev, [catKey]: false }))
+      return
+    }
     try {
-      // 1. Charger editorial.json complet
       const r = await fetch(`/api/github?path=${encodeURIComponent(editorialPath)}`)
       const d = await r.json()
+      if (!d.content || d.truncated === true) {
+        setMsg('✗ Régénération bloquée : editorial.json tronqué ou vide à la relecture')
+        return
+      }
       let allEditorial: Record<string, any> = {}
-      if (d.content) { try { allEditorial = JSON.parse(d.content) } catch {} }
-
-      // 2. Supprimer la clé de ce classement
+      try {
+        allEditorial = JSON.parse(d.content)
+      } catch (e: any) {
+        setMsg('✗ Régénération bloquée : parse JSON impossible')
+        return
+      }
+      if (Object.keys(allEditorial).length === 0 && Object.keys(classements).length > 0) {
+        setMsg('✗ Régénération bloquée : editorial.json relu vide')
+        return
+      }
       delete allEditorial[catKey]
 
-      // 3. Sauvegarder sur GitHub
       const wr = await fetch('/api/github', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ path: editorialPath, content: JSON.stringify(allEditorial, null, 2), message: `HUB: Reset classement ${catKey} for regeneration` })
@@ -389,7 +417,6 @@ export default function ClassementsPage() {
       const wd = await wr.json()
       if (!wd.ok) { setMsg('✗ Erreur sauvegarde'); return }
 
-      // 4. Mettre à jour le state local
       setClassements(prev => {
         const next = { ...prev }
         delete next[catKey]
@@ -397,7 +424,6 @@ export default function ClassementsPage() {
       })
       if (selected === catKey) setSelected(null)
 
-      // 5. Lancer le déploiement
       setDeploying(true)
       const dr = await fetch(`/api/sites/${siteId}/deploy`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -415,8 +441,6 @@ export default function ClassementsPage() {
   function updateField(catKey: string, field: string, value: any) {
     setClassements(prev => {
       let cleanValue = value
-      // Toute édition utilisateur sur un prod_* enlève le flag __auto :
-      // cette entrée devient un override réel à persister.
       if (field.startsWith('prod_') && value && typeof value === 'object' && (value as any).__auto) {
         const { __auto, ...rest } = value as any
         cleanValue = rest
@@ -447,7 +471,6 @@ export default function ClassementsPage() {
   }
   const catProducts = selectedData
     ? products.filter(p => {
-        // Matcher par slug de catégorie OU par nom de keyword (pour produits du schema)
         const slugByCat = slugifyCat(p.categorie || '')
         const slugByKeyword = slugifyCat(selected.replace('classement-', ''))
         const catName = (p.categorie || '').toLowerCase()
@@ -456,12 +479,10 @@ export default function ClassementsPage() {
                slugByCat === slugByKeyword ||
                catName.includes(keyName) ||
                keyName.includes(catName) ||
-               // Matcher aussi par nom du produit dans le schema
                (p.__keyword && slugifyCat(p.__keyword) === slugByKeyword)
       })
     : []
 
-  // Fonction de rendu d'un item classement dans la sidebar
   function renderClassementItem(key: string, indented = false) {
     return (
       <div key={key} onClick={() => setSelected(key)} style={{
@@ -475,23 +496,29 @@ export default function ClassementsPage() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ flex: 1 }}>{classements[key]?.categorie || key.replace('classement-', '')}</div>
           <div style={{ display: 'flex', gap: 4 }}>
-            <button onClick={e => { e.stopPropagation(); regeneratePage(key) }} disabled={regenerating[key] || deploying}
-              title="Régénérer" style={{ padding: '2px 5px', borderRadius: 4, border: 'none', background: 'transparent', color: regenerating[key] ? '#4A5568' : '#F6AD55', cursor: 'pointer', fontSize: 12 }}>
+            <button onClick={e => { e.stopPropagation(); regeneratePage(key) }} disabled={regenerating[key] || deploying || !editorialReadOk}
+              title={!editorialReadOk ? 'Lecture editorial.json en échec — désactivé pour éviter la perte de données' : 'Régénérer'}
+              style={{ padding: '2px 5px', borderRadius: 4, border: 'none', background: 'transparent', color: !editorialReadOk ? '#4A5568' : (regenerating[key] ? '#4A5568' : '#F6AD55'), cursor: !editorialReadOk ? 'not-allowed' : 'pointer', fontSize: 12 }}>
               {regenerating[key] ? '⏳' : '🔄'}
             </button>
             <button onClick={async e => {
               e.stopPropagation()
+              if (!editorialReadOk) { setMsg('✗ Suppression bloquée'); return }
               if (!window.confirm('Supprimer cette page ?')) return
               const r = await fetch('/api/github?path=' + encodeURIComponent(editorialPath))
               const d = await r.json()
+              if (!d.content || d.truncated === true) { setMsg('✗ Annulé : relecture tronquée'); return }
               let all: Record<string, any> = {}
-              if (d.content) { try { all = JSON.parse(d.content) } catch {} }
+              try { all = JSON.parse(d.content) } catch { setMsg('✗ Annulé : parse impossible'); return }
+              if (Object.keys(all).length === 0 && Object.keys(classements).length > 0) { setMsg('✗ Annulé : editorial.json vide à la relecture'); return }
               delete all[key]
               await fetch('/api/github', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ path: editorialPath, content: JSON.stringify(all, null, 2), message: 'HUB: Delete classement ' + key }) })
               setClassements(prev => { const n = { ...prev }; delete n[key]; return n })
               if (selected === key) setSelected(null)
               setMsg('✓ Page supprimée')
-            }} title="Supprimer" style={{ padding: '2px 5px', borderRadius: 4, border: 'none', background: 'transparent', color: '#FC8181', cursor: 'pointer', fontSize: 12 }}>×</button>
+            }} title={!editorialReadOk ? 'Désactivé' : 'Supprimer'}
+              disabled={!editorialReadOk}
+              style={{ padding: '2px 5px', borderRadius: 4, border: 'none', background: 'transparent', color: !editorialReadOk ? '#4A5568' : '#FC8181', cursor: !editorialReadOk ? 'not-allowed' : 'pointer', fontSize: 12 }}>×</button>
           </div>
         </div>
         <div style={{ fontSize: 10, color: '#4A5568', marginTop: 2 }}>
@@ -518,26 +545,39 @@ export default function ClassementsPage() {
         </div>
         <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
           {msg && <span style={{ fontSize: 12, color: msg.startsWith('✓') ? '#00D4AA' : '#FC8181', maxWidth: 280 }}>{msg}</span>}
-          <button onClick={save} disabled={saving} style={{ padding: '9px 16px', borderRadius: 10, border: '1px solid #1E2D3D', background: '#0D1117', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
+          <button onClick={save} disabled={saving || !editorialReadOk}
+            title={!editorialReadOk ? 'Lecture editorial.json en échec — désactivé' : 'Sauvegarder'}
+            style={{ padding: '9px 16px', borderRadius: 10, border: '1px solid #1E2D3D', background: '#0D1117', color: !editorialReadOk ? '#4A5568' : '#fff', cursor: !editorialReadOk ? 'not-allowed' : 'pointer', fontWeight: 600, fontSize: 13 }}>
             {saving ? '...' : '💾 Sauvegarder'}
           </button>
-          <button onClick={saveAndDeploy} disabled={saving || deploying} style={{ padding: '9px 16px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
+          <button onClick={saveAndDeploy} disabled={saving || deploying || !editorialReadOk}
+            title={!editorialReadOk ? 'Lecture editorial.json en échec — désactivé' : 'Sauvegarder & Déployer'}
+            style={{ padding: '9px 16px', borderRadius: 10, border: 'none', background: !editorialReadOk ? '#4A5568' : 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: !editorialReadOk ? 'not-allowed' : 'pointer', fontWeight: 600, fontSize: 13 }}>
             {deploying ? '⏳ Déploiement...' : '🚀 Sauvegarder & Déployer'}
           </button>
         </div>
       </div>
 
+      {/* ── BANDEAU D'ALERTE si lecture editorial.json en échec ───────────── */}
+      {!loading && !editorialReadOk && (
+        <div style={{ marginBottom: 16, padding: '12px 16px', background: 'rgba(252,129,129,0.12)', border: '1px solid #FC8181', borderRadius: 10, color: '#FED7D7' }}>
+          <div style={{ fontWeight: 700, fontSize: 13, marginBottom: 4 }}>⚠ editorial.json injoignable ou tronqué</div>
+          <div style={{ fontSize: 12, opacity: .9 }}>{editorialLoadError || 'Erreur inconnue'}</div>
+          <div style={{ fontSize: 11, opacity: .8, marginTop: 6 }}>
+            Toutes les opérations d'écriture sont désactivées pour éviter d'écraser le fichier. Cause probable : fichier &gt; 1 MB (limite GitHub Contents API). Solution : fixer `/api/github` côté serveur pour utiliser l'API Blob de GitHub.
+          </div>
+        </div>
+      )}
+
       {loading ? <div style={{ color: '#8B9CB0', textAlign: 'center', padding: 40 }}>Chargement...</div> : (
         <div style={{ display: 'flex', gap: 16, flex: 1, overflow: 'hidden' }}>
 
-          {/* Sidebar */}
           <div style={{ width: 240, display: 'flex', flexDirection: 'column', background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 12, overflow: 'hidden' }}>
             <div style={{ padding: '10px 12px', borderBottom: '1px solid #1E2D3D', fontSize: 11, color: '#8B9CB0', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
               Pages existantes
             </div>
             <div style={{ flex: 1, overflowY: 'auto' }}>
               {(() => {
-                // Grouper par catégorie parente (depuis keywordCategories)
                 const grouped: Record<string, string[]> = {}
                 Object.keys(classements).forEach(key => {
                   const cat = keywordCategories[key] || 'Autres'
@@ -545,10 +585,7 @@ export default function ClassementsPage() {
                   grouped[cat].push(key)
                 })
                 const cats = Object.keys(grouped)
-                // Si une seule catégorie ou pas de mapping : afficher à plat
-                if (cats.length <= 1) {
-                  return Object.keys(classements).map(key => renderClassementItem(key))
-                }
+                if (cats.length <= 1) return Object.keys(classements).map(key => renderClassementItem(key))
                 return cats.map(cat => (
                   <div key={cat}>
                     <div onClick={() => setCollapsedCats(p => ({...p, [cat]: !p[cat]}))}
@@ -564,11 +601,8 @@ export default function ClassementsPage() {
                 <div style={{ color: '#4A5568', padding: 16, fontSize: 12, textAlign: 'center' }}>Aucune page</div>
               )}
             </div>
-
-
           </div>
 
-          {/* Éditeur */}
           <div style={{ flex: 1, background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 12, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
             {!selected || !selectedData ? (
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#4A5568', flexDirection: 'column', gap: 12 }}>
@@ -582,25 +616,20 @@ export default function ClassementsPage() {
               </div>
             ) : (
               <div style={{ flex: 1, overflowY: 'auto', padding: 24 }}>
-                {/* Header */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
                   <h3 style={{ color: '#00D4AA', margin: 0, fontSize: 15 }}>
                     {selectedData.categorie || selected.replace('classement-', '')}
                   </h3>
                   <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                    <button onClick={() => regeneratePage(selected)} disabled={regenerating[selected] || deploying}
-                      style={{ padding: '6px 14px', borderRadius: 8, border: '1px solid #F6AD55', background: 'transparent', color: '#F6AD55', cursor: 'pointer', fontWeight: 600, fontSize: 12 }}>
+                    <button onClick={() => regeneratePage(selected)} disabled={regenerating[selected] || deploying || !editorialReadOk}
+                      style={{ padding: '6px 14px', borderRadius: 8, border: '1px solid #F6AD55', background: 'transparent', color: !editorialReadOk ? '#4A5568' : '#F6AD55', cursor: !editorialReadOk ? 'not-allowed' : 'pointer', fontWeight: 600, fontSize: 12 }}>
                       {regenerating[selected] ? '⏳...' : '🔄 Régénérer'}
                     </button>
                   </div>
                 </div>
 
-                {/* SEO */}
                 <div onClick={() => toggleSection('seo')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections['seo'] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>🔍 SEO</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
                 {expandedSections['seo'] && (() => {
-                  // Compute les valeurs par défaut SEO pour cette catégorie en
-                  // substituant {year}, {categorie}, {Categorie}, {count}, etc.
-                  // Reproduit la logique de _sub_vars de generate.py côté Python.
                   const catName = selectedData.categorie || keywordCategories[selected] || selected.replace('classement-', '').replace(/-/g, ' ')
                   const catLower = (catName || '').toLowerCase()
                   const catCap = catLower ? catLower[0].toUpperCase() + catLower.slice(1) : ''
@@ -716,13 +745,11 @@ export default function ClassementsPage() {
                 </>)
                 })()}
 
-                {/* Sections éditables */}
                 {[
                   { key: 'intro', label: '📝 Introduction', rows: 8, prompt: `Génère une introduction HTML engageante (150-200 mots) pour une page de classement des meilleurs ${selectedData.categorie || ''} en ${new Date().getFullYear()}. Paragraphes <p>, gras <strong>. Aucun tiret long.` },
                   { key: 'en_bref', label: '⚡ En bref', rows: 6, prompt: `Génère un encart "En bref" HTML pour les meilleurs ${selectedData.categorie || ''} en ${new Date().getFullYear()}. Format : <ul> avec 5 <li>, chaque item = nom du logiciel + profil cible idéal. Aucun tiret long.` },
                   { key: 'contenu_custom', label: '📖 Contenu expert', rows: 14, prompt: `Génère un guide expert HTML (500-800 mots) pour aider à choisir parmi les meilleurs ${selectedData.categorie || ''} en ${new Date().getFullYear()}. Utilise des <h2>, <h3>, <p>, <strong>. Aucun tiret long.` },
                 ].map(({ key, label, rows, prompt }) => {
-                  // Chercher le prompt dans le schema pour la catégorie sélectionnée
                   const cat = selectedData.categorie || selected.replace('classement-', '')
                   const kwData = Object.entries(schemaPrompts).find(([k]) => k.toLowerCase() === cat.toLowerCase() || cat.toLowerCase().includes(k.toLowerCase()))?.[1] as any
                   const promptKey = key === 'intro' ? 'prompt_intro' : key === 'contenu_custom' ? 'prompt_contenu' : null
@@ -761,11 +788,9 @@ export default function ClassementsPage() {
                   </div>
                 )})}
 
-                {/* FAQ */}
                 <div style={{ marginBottom: 8 }}>
                   <div onClick={() => toggleSection('faq')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections['faq'] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>❓ FAQ</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
                   {expandedSections['faq'] && (() => {
-                    // Normaliser la FAQ en tableau [{q, a}]
                     let faqItems: {q: string, a: string}[] = []
                     const raw = selectedData.faq
                     if (Array.isArray(raw)) {
@@ -800,7 +825,6 @@ export default function ClassementsPage() {
                   })()}
                 </div>
 
-                {/* Ordre des marques */}
                 {catProducts.length > 0 && (
                   <div style={{ marginBottom: 8 }}>
                     <div onClick={() => toggleSection('ordre')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections['ordre'] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>🔢 Ordre du classement</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
@@ -836,7 +860,6 @@ export default function ClassementsPage() {
                   </div>
                 )}
 
-                {/* Contenu des marques */}
                 {catProducts.length > 0 && (
                   <div style={{ marginBottom: 20 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
@@ -846,7 +869,6 @@ export default function ClassementsPage() {
                       </button>
                     </div>
 
-                    {/* Formulaire ajout marque */}
                     {showAddBrand && (
                       <div style={{ marginBottom: 16, background: '#0A0E1A', border: '1px solid #00D4AA', borderRadius: 10, padding: 16 }}>
                         <div style={{ fontSize: 13, fontWeight: 600, color: '#00D4AA', marginBottom: 12 }}>Nouvelle marque</div>
@@ -908,7 +930,6 @@ export default function ClassementsPage() {
                       const prodData = selectedData[`prod_${prodKey}`] || {}
                       const isExpanded = expandedBrands[prodKey] || false
                       const hasContent = !!(prodData.description || prodData.points_forts?.length)
-                      // Valeurs héritées de la sheet (source produit) si pas d'override éditorial
                       const inheritedAffUrl = prod.url_affiliation || ''
                       const inheritedCta = prod.cta_text || ''
                       const affUrl = prodData.url_affiliation ?? inheritedAffUrl
@@ -917,17 +938,14 @@ export default function ClassementsPage() {
                       const ctaIsInherited = !prodData.cta_text && !!inheritedCta
                       return (
                         <div key={prodKey} style={{ marginBottom: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 10, overflow: 'hidden' }}>
-                          {/* Header cliquable */}
                           <div onClick={() => setExpandedBrands(p => ({ ...p, [prodKey]: !p[prodKey] }))}
                             style={{ padding: '10px 14px', background: '#0D1117', display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer' }}>
                             <span style={{ color: '#4A5568', fontSize: 12, transition: 'transform .2s', transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block' }}>▶</span>
                             <span style={{ fontSize: 14, fontWeight: 600, color: '#fff', flex: 1 }}>{prod.nom}</span>
                             <span style={{ fontSize: 10, color: hasContent ? '#00D4AA' : '#4A5568' }}>{hasContent ? '✓ Contenu' : '⚠ Vide'}</span>
                           </div>
-                          {/* Contenu déplié */}
                           {isExpanded && (
                             <div style={{ padding: 14 }}>
-                              {/* Lien affiliation + CTA */}
                               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 14 }}>
                                 <div>
                                   <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5, display: 'flex', alignItems: 'center', gap: 6 }}>
