@@ -150,7 +150,18 @@ def parse_pub_datetime(date_str: str, time_str: str = "09:00") -> datetime | Non
 
 
 def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000) -> str:
-    """Appelle l'API Anthropic et retourne la réponse texte. Retry avec backoff sur erreurs réseau."""
+    """Appelle l'API Anthropic en mode STREAMING et retourne la réponse texte complète.
+
+    Le streaming a deux avantages :
+      1. Aucun timeout global possible : la connexion HTTP reste vivante tant que
+         le serveur envoie des chunks. Un article de 5000 mots peut prendre 3-4 min
+         sans risquer un "read timeout" comme avec une requête non-streamée.
+      2. Plus économe en mémoire côté serveur Anthropic, ce qui réduit aussi la
+         latence perçue côté client.
+
+    On agrège les `content_block_delta` (type=text_delta) pour reconstruire le
+    texte final. Retry avec backoff sur erreurs réseau, identique à avant.
+    """
     if not ANTHROPIC_API_KEY:
         raise RuntimeError("ANTHROPIC_API_KEY manquante")
 
@@ -159,6 +170,7 @@ def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000
         "max_tokens": max_tokens,
         "system": system,
         "messages": [{"role": "user", "content": user}],
+        "stream": True,
     }).encode("utf-8")
 
     last_err = None
@@ -174,9 +186,36 @@ def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000
                 },
                 method="POST",
             )
-            with urllib.request.urlopen(req, timeout=60) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-            text = "".join(b.get("text", "") for b in data.get("content", []) if b.get("type") == "text")
+            # Timeout PAR APPEL de read (chaque chunk a max 120s pour arriver).
+            # Le total cumulé peut largement dépasser 300s pour un long article,
+            # sans poser problème puisque chaque chunk arrive bien avant 120s.
+            chunks: list[str] = []
+            with urllib.request.urlopen(req, timeout=120) as resp:
+                for raw_line in resp:
+                    line = raw_line.decode("utf-8", errors="replace").strip()
+                    if not line.startswith("data: "):
+                        continue
+                    payload = line[len("data: "):]
+                    if payload == "[DONE]":
+                        break
+                    try:
+                        event = json.loads(payload)
+                    except json.JSONDecodeError:
+                        continue
+                    if event.get("type") == "content_block_delta":
+                        delta = event.get("delta") or {}
+                        if delta.get("type") == "text_delta":
+                            chunks.append(delta.get("text", ""))
+                    elif event.get("type") == "error":
+                        # Erreur côté Anthropic (rate limit, etc.) → on déclenche le retry
+                        err_info = event.get("error") or {}
+                        raise RuntimeError(
+                            f"Erreur API streaming : {err_info.get('type', '?')} — "
+                            f"{err_info.get('message', '')}"
+                        )
+            text = "".join(chunks)
+            if not text:
+                raise RuntimeError("Réponse streaming vide (aucun text_delta reçu)")
             return text
         except Exception as e:
             last_err = e
@@ -287,21 +326,52 @@ CONTRAINTES DE PONCTUATION (impératif) :
     custom_line = f"\n\nConsignes spécifiques :\n{prompt_custom}" if prompt_custom else ""
     mots_line = ""
     if mots_imposes:
-        mots_fmt = ", ".join(f'« {m} »' for m in mots_imposes)
+        # mots_imposes est une liste de dicts {text, url?}. On présente à l'IA
+        # uniquement le TEXTE des mots (l'URL est appliquée en post-process via
+        # _wrap_first_occurrence_with_link, pour éviter que l'IA hallucine ou
+        # casse la syntaxe HTML autour du lien).
+        plain_words = [m['text'] for m in mots_imposes if not m.get('url')]
+        linked_words = [m for m in mots_imposes if m.get('url')]
+
+        sections: list[str] = []
+        if plain_words:
+            fmt = ", ".join(f'« {m} »' for m in plain_words)
+            sections.append(
+                f"Tu DOIS inclure dans le corps de l'article, au moins une fois chacune "
+                f"et de manière naturelle, les expressions suivantes : {fmt}."
+            )
+        if linked_words:
+            fmt = ", ".join(f'« {m["text"]} »' for m in linked_words)
+            sections.append(
+                f"Tu DOIS également inclure les expressions suivantes au moins une fois "
+                f"chacune (elles seront automatiquement transformées en liens vers d'autres "
+                f"pages du site lors du build, ne crée donc PAS toi-même les balises "
+                f"<a>...</a>) : {fmt}."
+            )
         mots_line = (
             f"\n\nMOTS-CLÉS OBLIGATOIRES (impératif) :\n"
-            f"Tu dois inclure dans le corps de l'article, au moins une fois chacune et de manière "
-            f"naturelle, les expressions suivantes : {mots_fmt}.\n"
-            f"Ces expressions doivent apparaître TELLES QUELLES (même orthographe, même formulation) "
-            f"car elles servent au maillage interne automatique du blog. Si plusieurs expressions "
-            f"sont synonymes, utilise-les dans des contextes différents pour rester naturel."
+            + "\n".join(sections)
+            + "\nCes expressions doivent apparaître TELLES QUELLES (même orthographe, "
+              "même formulation). Place-les naturellement dans des paragraphes."
         )
     user = (f"Rédige un article de blog complet sur le sujet suivant :\n\n"
             f"Titre : {title}{cat_line}{custom_line}{mots_line}\n\n"
             f"Longueur cible : {min_words} à {max_w} mots (minimum {min_words} mots impératif). "
             f"L'article doit être informatif, structuré, et utile au lecteur cible défini dans ton persona.")
 
-    return strip_code_fences(call_claude(system, user, max_tokens=min(8000, max(2000, max_w * 4))))
+    html = strip_code_fences(call_claude(system, user, max_tokens=min(8000, max(2000, max_w * 4))))
+
+    # ── Post-processing : insertion des liens pour les mots avec URL ────────
+    # On wrappe la 1ère occurrence de chaque texte dans un <a href="url">. Cela
+    # garantit que les liens sont posés même si l'IA a oublié de placer le mot
+    # à un endroit linkable, ou a essayé de poser un <a> elle-même au mauvais
+    # endroit. La case originale est préservée dans le lien.
+    if mots_imposes:
+        for m in mots_imposes:
+            if m.get('url'):
+                html = _wrap_first_occurrence_with_link(html, m['text'], m['url'])
+
+    return html
 
 
 def _parse_anchors_csv(raw: str) -> list[dict]:
@@ -322,6 +392,69 @@ def _parse_anchors_csv(raw: str) -> list[dict]:
         elif s:
             out.append({'text': s, 'max': 1})
     return out
+
+
+def _parse_mots_imposes_csv(raw: str) -> list[dict]:
+    """Parse la colonne `mots_imposes`. Chaque entrée est :
+      - soit un simple mot/expression : « logiciel de paie »
+      - soit avec un lien interne : « logiciel de gestion des talents=>https://www.editions-dp.com/meilleur-logiciel-de-gestion-des-talents »
+
+    Le séparateur entre entrées est `;`, `,` ou retour à la ligne.
+    Le séparateur texte ↔ URL est `=>`.
+
+    Renvoie une liste de dicts [{text, url?}, ...]. `url` est absent si l'entrée
+    était un simple mot sans flèche. Si l'URL contient des virgules (rare), il
+    faut utiliser `;` comme séparateur d'entrées.
+    """
+    if not raw:
+        return []
+    out: list[dict] = []
+    for part in re.split(r'[,;\n]', raw):
+        s = part.strip()
+        if not s:
+            continue
+        if '=>' in s:
+            text, _, url = s.partition('=>')
+            text = text.strip()
+            url = url.strip()
+            if text:
+                entry = {'text': text}
+                if url:
+                    entry['url'] = url
+                out.append(entry)
+        else:
+            out.append({'text': s})
+    return out
+
+
+def _wrap_first_occurrence_with_link(html: str, text: str, url: str) -> str:
+    """Wrappe la PREMIÈRE occurrence (case-insensitive, word-boundary) de `text`
+    dans un <a href="url">…</a>. La casse originale du texte est préservée dans
+    le lien. Skip les segments déjà à l'intérieur d'un <a>...</a> existant pour
+    éviter les imbrications de liens (interdites en HTML).
+    Si aucune occurrence n'est trouvée, retourne le HTML inchangé.
+    """
+    if not text or not url:
+        return html
+    pattern = re.compile(r'\b' + re.escape(text) + r'\b', re.IGNORECASE)
+    # On découpe sur les <a>...</a> existants ; les sous-segments hors <a>
+    # sont les seuls candidats au remplacement
+    parts = re.split(r'(<a\b[^>]*>.*?</a>)', html, flags=re.IGNORECASE | re.DOTALL)
+    done = False
+    out: list[str] = []
+    for p in parts:
+        is_anchor = p.lower().startswith('<a')
+        if not done and not is_anchor:
+            new_p, n = pattern.subn(
+                lambda m: f'<a href="{url}">{m.group(0)}</a>',
+                p, count=1,
+            )
+            out.append(new_p)
+            if n > 0:
+                done = True
+        else:
+            out.append(p)
+    return ''.join(out)
 
 
 # ─── Sérialisation .md (frontmatter YAML + body) ─────────────────────────
@@ -575,21 +708,27 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         # Mots imposés dans l'article (pour favoriser le maillage interne).
         # Colonne optionnelle, séparée par virgule, point-virgule ou retour ligne.
         # Aliases acceptés : mots_imposes, mots_cles, mots-cles, mots_clés, keywords.
+        # Format pris en charge :
+        #   - « mot simple »             → l'IA inclut l'expression telle quelle
+        #   - « mot=>https://url »       → idem + post-process pose un lien interne
+        #                                  sur la 1ère occurrence vers l'URL fournie.
+        # Exemple : "logiciel de paie; logiciel de gestion des talents=>https://www.editions-dp.com/meilleur-logiciel-de-gestion-des-talents"
         mots_imposes_raw = (
             row.get("mots_imposes")
             or row.get("mots_cles") or row.get("mots-cles") or row.get("mots_clés")
             or row.get("keywords") or ""
         ).strip()
-        mots_imposes = [
-            m.strip()
-            for m in re.split(r'[,;\n]', mots_imposes_raw)
-            if m.strip()
-        ]
+        mots_imposes = _parse_mots_imposes_csv(mots_imposes_raw)
 
         # Génération IA
         categorie = row.get("categorie", "").strip()
         prompt_custom = row.get("prompt_custom", "").strip()
-        mots_log = f" + {len(mots_imposes)} mots imposés" if mots_imposes else ""
+        nb_link = sum(1 for m in mots_imposes if m.get('url'))
+        mots_log = ""
+        if mots_imposes:
+            mots_log = f" + {len(mots_imposes)} mots imposés"
+            if nb_link:
+                mots_log += f" ({nb_link} avec lien)"
         print(f"   🤖 Génération '{title[:50]}' (min {min_words} mots{mots_log})...", end=" ", flush=True)
         try:
             html = generate_article_html(title, categorie, prompt_custom, global_prompt, persona_prompt,
