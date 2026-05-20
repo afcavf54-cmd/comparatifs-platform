@@ -953,15 +953,22 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         if not marque:
             continue
         key = row_key(row)
-        if key in processed:
-            continue
         is_forced = marque in force_titles
+
         # ⚠ Nouveau workflow (mai 2026) : plus de génération automatique.
         # Les avis ne sont publiés QUE quand Julien clique "Générer & Publier"
-        # depuis le dashboard, ce qui déclenche le workflow avec FORCE_TITLES.
-        # Si FORCE_TITLES n'est pas renseigné, on saute (l'avis reste en
-        # brouillon visible dans le dashboard).
+        # OU "Régénérer le contenu IA" depuis le dashboard, ce qui déclenche
+        # le workflow avec FORCE_TITLES. Si FORCE_TITLES n'est pas renseigné,
+        # on saute (l'avis reste en brouillon visible dans le dashboard).
         if not is_forced:
+            continue
+
+        # Si la marque est forcée (= regen volontaire depuis le dashboard),
+        # on BYPASS le tracker processed. Sans ce bypass, impossible de
+        # regénérer un avis déjà publié : sa clé est dans processed.json
+        # ET ajoutée automatiquement par le "filet de sécurité" plus haut.
+        # is_forced = volonté explicite de l'éditeur, on laisse passer.
+        if key in processed and not is_forced:
             continue
         # Slug : "avis-<marque>" pour avoir des URLs cohérentes (/avis-qonto,
         # /avis-legalplace, etc.) distinctes des articles de blog.
@@ -970,12 +977,19 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
             slug = f"avis-{raw_slug}"
         else:
             slug = raw_slug
-        # Si collision, suffixer
-        if slug in existing_slugs:
+        # Collision de slug :
+        # - Si FORCÉ (regen) : on AUTORISE l'écrasement du .md existant. C'est
+        #   le comportement attendu d'une régénération.
+        # - Sinon (première publication d'une nouvelle marque qui aurait par
+        #   hasard le même slug qu'un avis existant) : on suffixe pour éviter
+        #   d'écraser un avis non lié.
+        if slug in existing_slugs and not is_forced:
             i = 2
             while f"{slug}-{i}" in existing_slugs:
                 i += 1
             slug = f"{slug}-{i}"
+        elif slug in existing_slugs and is_forced:
+            print(f"    ↻ Écrasement de l'avis existant (régénération forcée)")
 
         print(f"  → Génération avis : {marque} ({normalize_sentiment(row.get('sentiment',''))}, {parse_note(row.get('note_globale',''))}/5)")
         # Récupère le prompt custom + questions FAQ pour ce slug (saisis via
