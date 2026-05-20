@@ -29,7 +29,7 @@
   "@type": "Review",
   "itemReviewed": {
     "@type": "Product",
-    "name": {{ post.marque | tojson }}
+    "name": {{ post.marque | default(post.title) | tojson }}
     {% if post.categorie %},"category": {{ post.categorie | tojson }}{% endif %}
   },
   "reviewRating": {
