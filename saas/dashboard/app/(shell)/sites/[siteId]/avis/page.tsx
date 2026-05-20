@@ -61,7 +61,6 @@ export default function AvisPage() {
   const [previewLoading, setPreviewLoading] = useState(true)
   const [notConfigured, setNotConfigured] = useState(false)
   const [previewError, setPreviewError] = useState('')
-  const [publishingMarque, setPublishingMarque] = useState<string | null>(null)
   const [deletingMarque, setDeletingMarque] = useState<string | null>(null)
   const [msg, setMsg] = useState('')
   const [siteDomain, setSiteDomain] = useState('')
@@ -174,29 +173,6 @@ export default function AvisPage() {
     }
     setSavingSheet(false)
     setTimeout(() => setSheetMsg(''), 5000)
-  }
-
-  async function publishNow(marque: string) {
-    if (!confirm(`Forcer la publication immédiate de "${marque}" ? Le workflow GitHub va être déclenché.`)) return
-    setPublishingMarque(marque)
-    try {
-      const r = await fetch(`/api/sites/${siteId}/avis/publish-now`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ marques: [marque] }),
-      })
-      const d = await r.json()
-      if (d.ok) {
-        setMsg(`✓ ${d.message || 'Publication lancée'}`)
-        setTimeout(() => loadSheet(), 2000)
-      } else {
-        setMsg('✗ ' + (d.error || 'Erreur'))
-      }
-    } catch (e: any) {
-      setMsg('✗ Erreur : ' + (e?.message || e))
-    }
-    setPublishingMarque(null)
-    setTimeout(() => setMsg(''), 8000)
   }
 
   // ─── Suppression d'un avis en attente ───────────────────────────────────
@@ -383,9 +359,8 @@ export default function AvisPage() {
             Ces avis ont une date de publication passée mais n'ont pas encore été publiés (le cron horaire les traitera, ou tu peux forcer la publication maintenant).
           </p>
           {pending.map((r, i) => (
-            <Row key={i} row={r} publishingMarque={publishingMarque}
+            <Row key={i} row={r} siteId={siteId}
                  deletingMarque={deletingMarque}
-                 onPublish={() => publishNow(r.marque)}
                  onDelete={() => deleteAvis(r.marque, r.date_publication)}
                  siteDomain={siteDomain} />
           ))}
@@ -397,9 +372,8 @@ export default function AvisPage() {
         <div style={card}>
           <div style={sectionTitle}>📅 Programmés ({scheduled.length})</div>
           {scheduled.map((r, i) => (
-            <Row key={i} row={r} publishingMarque={publishingMarque}
+            <Row key={i} row={r} siteId={siteId}
                  deletingMarque={deletingMarque}
-                 onPublish={() => publishNow(r.marque)}
                  onDelete={() => deleteAvis(r.marque, r.date_publication)}
                  siteDomain={siteDomain} />
           ))}
@@ -456,15 +430,13 @@ export default function AvisPage() {
   )
 }
 
-function Row({ row, publishingMarque, deletingMarque, onPublish, onDelete, siteDomain }: {
+function Row({ row, siteId, deletingMarque, onDelete, siteDomain }: {
   row: SheetRow
-  publishingMarque: string | null
+  siteId: string
   deletingMarque: string | null
-  onPublish: () => void
   onDelete: () => void
   siteDomain: string
 }) {
-  const isPublishing = publishingMarque === row.marque
   const isDeleting = deletingMarque === row.marque
   const note = row.note_globale
   return (
@@ -483,13 +455,16 @@ function Row({ row, publishingMarque, deletingMarque, onPublish, onDelete, siteD
       <span style={{ fontSize: 10, padding: '3px 8px', borderRadius: 4, fontWeight: 700, textTransform: 'uppercase' as const, background: (SENTIMENT_COLOR[row.sentiment] || '#5E9ED6') + '22', color: SENTIMENT_COLOR[row.sentiment] || '#5E9ED6' }}>
         {SENTIMENT_LABEL[row.sentiment] || row.sentiment}
       </span>
-      <button onClick={onPublish} disabled={isPublishing || isDeleting}
-        style={{ padding: '6px 12px', borderRadius: 6, border: '1px solid #3D7A4F', background: isPublishing ? '#1A2A1F' : 'transparent', color: (isPublishing || isDeleting) ? '#4A5568' : '#3D7A4F', cursor: (isPublishing || isDeleting) ? 'wait' : 'pointer', fontSize: 12, fontWeight: 600 }}>
-        {isPublishing ? '⏳ Lancement...' : '🚀 Publier maintenant'}
-      </button>
-      <button onClick={onDelete} disabled={isPublishing || isDeleting}
+      {/* Lien vers la page d'édition de brouillon : c'est là qu'on saisit le
+          prompt custom puis on déclenche "Générer & Publier". Le cron auto
+          ne génère plus rien — tout passe par cette page. */}
+      <a href={`/sites/${siteId}/avis/draft/${row.slug}`}
+         style={{ padding: '6px 12px', borderRadius: 6, border: '1px solid #5E9ED6', background: 'transparent', color: '#5E9ED6', cursor: 'pointer', fontSize: 12, fontWeight: 600, textDecoration: 'none' }}>
+        ✏️ Éditer le brouillon
+      </a>
+      <button onClick={onDelete} disabled={isDeleting}
         title="Retirer cet avis de la liste à publier"
-        style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #C0392B', background: isDeleting ? '#2A1A1A' : 'transparent', color: (isPublishing || isDeleting) ? '#4A5568' : '#C0392B', cursor: (isPublishing || isDeleting) ? 'wait' : 'pointer', fontSize: 12, fontWeight: 600 }}>
+        style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #C0392B', background: isDeleting ? '#2A1A1A' : 'transparent', color: isDeleting ? '#4A5568' : '#C0392B', cursor: isDeleting ? 'wait' : 'pointer', fontSize: 12, fontWeight: 600 }}>
         {isDeleting ? '⏳' : '🗑️'}
       </button>
     </div>
