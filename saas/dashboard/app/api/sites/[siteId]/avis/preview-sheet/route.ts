@@ -159,6 +159,19 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ site
       .map(f => f.name.replace(/\.md$/, ''))
   )
 
+  // Récupère le set des keys "déjà traitées" (par le cron OU dismissed via l'UI).
+  // Format des keys : "slugify(marque)|date_publication" — cf. row_key() Python.
+  // Une key présente dans ce fichier MAIS sans .md correspondant = dismissed
+  // par l'utilisateur depuis le dashboard → on filtre l'affichage côté UI.
+  const processedJson = await ghGet(`platform/sites/${siteId}/posts_avis/schedule_processed.json`)
+  const processedKeys = new Set<string>()
+  if (processedJson) {
+    try {
+      const arr = JSON.parse(processedJson)
+      if (Array.isArray(arr)) arr.forEach((k: any) => processedKeys.add(String(k)))
+    } catch {}
+  }
+
   const now = new Date()
   const classified = rows.map(r => {
     const marque = r.marque || ''
@@ -174,7 +187,13 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ site
       ...r,
       slug,
       status,
+      _key: `${slugify(marque)}|${(r.date_publication || '').trim()}`,
     }
+  }).filter((r: any) => {
+    // Garder TOUJOURS les avis publiés (un .md existe physiquement)
+    if (r.status === 'published') return true
+    // Pour pending/scheduled : exclure si la key a été dismissed
+    return !processedKeys.has(r._key)
   })
 
   return NextResponse.json({ rows: classified })
