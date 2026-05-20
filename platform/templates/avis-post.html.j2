@@ -325,6 +325,14 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
       {% if post.tarifs and post.tarifs | length > 0 %}
       <li><a href="#tarifs">Tarifs et offres</a></li>
       {% endif %}
+      {# ── Nouveau bloc sections_html (prompt custom dashboard) ─────────
+         Si sections_html est rempli, on génère une entrée TOC unique
+         "Analyse détaillée" et on n'affiche AUCUN des 3 H2 standards
+         (fonctionnalites/support/qualite_prix) en dessous. Sinon, on
+         retombe sur l'ancien format avec les 3 H2 nommés. #}
+      {% if post.sections_html %}
+      <li><a href="#analyse">Analyse détaillée</a></li>
+      {% else %}
       {% if post.h2_fonctionnalites and post.h2_fonctionnalites.contenu_html %}
       <li><a href="#fonctionnalites">{{ post.h2_fonctionnalites.titre }}</a></li>
       {% endif %}
@@ -333,6 +341,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
       {% endif %}
       {% if post.h2_qualite_prix and post.h2_qualite_prix.contenu_html %}
       <li><a href="#qualite-prix">{{ post.h2_qualite_prix.titre }}</a></li>
+      {% endif %}
       {% endif %}
       {% if (post.note_trustpilot and post.nb_avis_trustpilot) or (post.h2_avis_clients and post.h2_avis_clients.contenu_html) %}
       <li><a href="#avis-clients">{{ (post.h2_avis_clients.titre if post.h2_avis_clients else None) | default('Que disent les utilisateurs ?') }}</a></li>
@@ -371,6 +380,21 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
   </section>
   {% endif %}
 
+  {# ─── SECTIONS PRINCIPALES ──────────────────────────────────
+     Deux cas mutuellement exclusifs :
+     1. Avis "nouveau workflow" : sections_html est rempli (généré par
+        Claude à partir du prompt custom rédigé dans le dashboard).
+        On l'injecte tel quel — la structure Hn est libre.
+     2. Avis "ancien workflow" (rétro-compat) : on rend les 3 H2 nommés
+        h2_fonctionnalites / h2_support / h2_qualite_prix comme avant.
+     Ancrer le bloc sur #analyse (cohérent avec l'entrée TOC) pour le
+     premier cas, et garder les ancres historiques pour le second. #}
+  {% if post.sections_html %}
+  <section class="analyse-section" id="analyse">
+    {{ post.sections_html | safe }}
+  </section>
+  {% else %}
+
   {# ─── H2 FONCTIONNALITÉS ─────────────────────────────────── #}
   {% if post.h2_fonctionnalites and post.h2_fonctionnalites.contenu_html %}
   <section class="analyse-section" id="fonctionnalites">
@@ -394,6 +418,8 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
     {{ post.h2_qualite_prix.contenu_html | safe }}
   </section>
   {% endif %}
+
+  {% endif %}{# fin de la branche sections_html / 3 H2 standards #}
 
   {# ─── BLOC AVIS CLIENTS (preuve sociale) ────────────────── #}
   {% if post.note_trustpilot and post.nb_avis_trustpilot %}
