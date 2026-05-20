@@ -980,12 +980,20 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         if faq_questions:
             print(f"    ❓ {len(faq_questions)} question(s) FAQ imposée(s)")
 
+        # Persona éditorial du site (config.yaml, champ `persona_prompt`).
+        # Injecté en tête des deux appels Claude pour garantir un ton cohérent
+        # entre l'intro/verdict/FAQ et les sections custom.
+        persona_prompt_site = (config.get("persona_prompt") or "").strip()
+        if persona_prompt_site:
+            print(f"    🎭 Persona éditorial détecté ({len(persona_prompt_site)} caractères)")
+
         try:
             generated = generate_avis_content(
                 row,
                 config.get("site", {}),
                 custom_prompt=custom_prompt,
                 faq_questions=faq_questions,
+                persona_prompt=persona_prompt_site,
             )
         except Exception as e:
             print(f"    ✗ Échec génération : {e}")
