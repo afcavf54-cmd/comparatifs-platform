@@ -11,6 +11,12 @@ import { useRouter } from 'next/navigation'
 // H2, FAQ, verdict, SEO, mot_minimum, Trustpilot, link_anchors), puis fait
 // un PUT pour réécrire le frontmatter.
 //
+// Bouton "🔄 Régénérer le contenu IA" :
+// déclenche le workflow GitHub publish-now (avec FORCE_TITLES=marque) qui
+// rejoue les 2 appels Claude (1er pour intro/FAQ/verdict, 2e pour sections
+// custom via prompt brouillon). Tout le texte IA est écrasé, les champs
+// sheet (marque, catégorie, note, CTA, tarifs) sont préservés.
+//
 // Choix d'UI : page dédiée plutôt que modal, car beaucoup de champs avec
 // listes éditables (tarifs, FAQ, points). Une page scrollable reste plus
 // confortable et autorise le copier-coller multi-écran.
@@ -48,6 +54,7 @@ type Avis = {
   plateforme_avis?: string
   link_anchors?: LinkAnchor[]
   mot_minimum?: number
+  sections_html?: string
   [k: string]: any
 }
 
@@ -59,6 +66,9 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
   const [domain, setDomain] = useState<string>('')
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
+  // État dédié à la régénération IA : permet de désactiver les autres boutons
+  // pendant qu'on lance le workflow et d'afficher un loader spécifique.
+  const [regenerating, setRegenerating] = useState(false)
   const [msg, setMsg] = useState<string>('')
 
   // ── Chargement initial ──────────────────────────────────────────────
@@ -121,6 +131,78 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
     }
   }
 
+  // ── Régénération via Claude (workflow GitHub) ───────────────────────
+  // Déclenche le workflow blog-cron avec FORCE_TITLES=<marque>. Le script
+  // Python `avis_publish_scheduled.py` :
+  //   1. lit le brouillon (_drafts.json) → prompt custom + faq_questions
+  //   2. lit config.yaml > persona_prompt → ton/style
+  //   3. fait 2 appels Claude (JSON principal + sections_html)
+  //   4. écrase le .md avec le nouveau contenu
+  //   5. push → CF Pages redéploie
+  // Donc tout le texte IA (en_bref, points forts/faibles, sections, FAQ
+  // réponses, verdict, meta) est régénéré. Les champs venant de la sheet
+  // (marque, catégorie, note, CTA, tarifs) sont préservés.
+  const regenerate = async () => {
+    if (!avis?.marque) {
+      setMsg('Marque manquante, impossible de lancer la régénération')
+      return
+    }
+
+    if (!confirm(
+      `Régénérer tout le contenu IA pour "${avis.marque}" ?\n\n` +
+      `• Texte IA RÉÉCRIT : intro, en bref, points forts/faibles, sections H2/H3 custom, ` +
+      `réponses FAQ, verdict, meta\n` +
+      `• Tes éditions manuelles sur ces champs seront PERDUES\n` +
+      `• Préservés : marque, catégorie, note, CTA, tarifs, questions FAQ (= ce qui vient de la sheet/brouillon)\n\n` +
+      `Le brouillon (_drafts.json) sera utilisé pour le prompt custom + persona.\n` +
+      `Durée totale : ~3 minutes (workflow GitHub + redéploiement CF Pages).`
+    )) return
+
+    setRegenerating(true)
+    setMsg('')
+    try {
+      // Vérif préalable : un brouillon existe-t-il pour ce slug ? Si non, on
+      // prévient l'éditeur que la regen utilisera le format standard sans
+      // prompt custom (= 3 H2 standards génériques).
+      try {
+        const draftRes = await fetch(`/api/sites/${siteId}/avis/draft/${slug}`)
+        const draftData = await draftRes.json()
+        const hasPrompt = !!((draftData?.draft?.prompt_custom || '').trim())
+        if (!hasPrompt) {
+          if (!confirm(
+            `⚠ Aucun prompt custom détecté pour ${avis.marque} dans le brouillon.\n\n` +
+            `La régénération utilisera le format standard (3 H2 génériques) au lieu de ta structure custom H2/H3.\n\n` +
+            `Continuer quand même ? (Sinon, va d'abord créer un brouillon via /avis → Éditer le brouillon)`
+          )) {
+            setRegenerating(false)
+            return
+          }
+        }
+      } catch {
+        // Si la route draft n'existe pas / erreur réseau, on continue quand même
+        // (le script Python gère le cas sans brouillon).
+      }
+
+      // Déclenche le workflow GitHub
+      const r = await fetch(`/api/sites/${siteId}/avis/publish-now`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ marques: [avis.marque] }),
+      })
+      const d = await r.json()
+      if (d.ok) {
+        setMsg('✓ Régénération lancée. Workflow GitHub en cours (~3 min). Redirection vers la liste des avis...')
+        setTimeout(() => router.push(`/sites/${siteId}/avis`), 3500)
+      } else {
+        setMsg('✗ ' + (d.error || 'Erreur lancement workflow'))
+        setRegenerating(false)
+      }
+    } catch (e: any) {
+      setMsg('Erreur réseau : ' + (e?.message || e))
+      setRegenerating(false)
+    }
+  }
+
   // ── Suppression ─────────────────────────────────────────────────────
   const remove = async () => {
     if (!confirm(`Supprimer définitivement l'avis "${avis?.marque}" ? Cette action est irréversible.`)) return
@@ -140,12 +222,19 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
   if (loading) return <div style={{ padding: 24 }}>Chargement…</div>
   if (!avis) return <div style={{ padding: 24, color: 'crimson' }}>{msg || 'Avis introuvable'}</div>
 
+  // Avis avec sections_html ? On peut signaler à l'éditeur que les 3 H2 legacy
+  // sont vides à dessein (cf. fix Python qui ne les stocke plus si sections_html).
+  const hasSectionsHtml = !!(avis.sections_html && avis.sections_html.trim())
+
   // ── Styles partagés (sobres, cohérents avec le reste du dashboard) ──
   const labelStyle: React.CSSProperties = { display: 'block', fontSize: 12, fontWeight: 600, color: '#555', marginBottom: 4, textTransform: 'uppercase', letterSpacing: 0.4 }
   const inputStyle: React.CSSProperties = { width: '100%', padding: '8px 10px', border: '1px solid #ddd', borderRadius: 6, fontSize: 14, fontFamily: 'inherit' }
   const textareaStyle: React.CSSProperties = { ...inputStyle, minHeight: 80, resize: 'vertical', fontFamily: 'inherit' }
   const sectionStyle: React.CSSProperties = { background: '#fff', border: '1px solid #e5e5e5', borderRadius: 10, padding: 20, marginBottom: 20 }
   const h2Style: React.CSSProperties = { margin: '0 0 16px', fontSize: 16, fontWeight: 600, color: '#222' }
+
+  // Désactive les autres actions pendant une opération en cours
+  const busy = saving || regenerating
 
   return (
     <div style={{ padding: 24, maxWidth: 1000, margin: '0 auto' }}>
@@ -230,14 +319,42 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
         <TarifsEditor tarifs={avis.tarifs || []} onChange={v => upd({ tarifs: v })} />
       </div>
 
-      {/* ── H2 ANALYSE ─────────────────────────────────────────────── */}
-      {(['h2_fonctionnalites', 'h2_support', 'h2_qualite_prix', 'h2_avis_clients'] as const).map(key => (
+      {/* ── SECTIONS HTML CUSTOM (si l'avis a un sections_html) ─────
+          Ce champ contient le HTML libre généré par le 2e appel Claude à
+          partir du prompt custom de l'éditeur (cf. brouillon). Quand il est
+          rempli, c'est lui qui est rendu sur le site, et les 3 H2 legacy
+          (Fonctionnalités / Support / Qualité-Prix) sont ignorés. On le
+          rend éditable ici pour permettre des retouches manuelles.        */}
+      {hasSectionsHtml && (
+        <div style={sectionStyle}>
+          <h2 style={h2Style}>
+            Sections custom (HTML libre)
+            <span style={{ marginLeft: 8, fontSize: 11, fontWeight: 500, color: '#3D7A4F' }}>
+              ✓ Actif — remplace les 3 H2 standards ci-dessous
+            </span>
+          </h2>
+          <label style={labelStyle}>Contenu HTML</label>
+          <textarea
+            style={{ ...textareaStyle, minHeight: 320, fontFamily: 'ui-monospace, monospace', fontSize: 12 }}
+            value={avis.sections_html || ''}
+            onChange={e => upd({ sections_html: e.target.value })}
+          />
+          <small style={{ color: '#888', fontSize: 11, display: 'block', marginTop: 6 }}>
+            Pour modifier la STRUCTURE (H2/H3) ou regénérer ce contenu via le persona,
+            édite le brouillon : <Link href={`/sites/${siteId}/avis/draft/${slug}`} style={{ color: '#0066cc' }}>
+              /avis/draft/{slug}
+            </Link>, puis clique « 🔄 Régénérer le contenu IA » ci-dessous.
+          </small>
+        </div>
+      )}
+
+      {/* ── H2 ANALYSE (legacy — masqués si sections_html actif) ──── */}
+      {!hasSectionsHtml && (['h2_fonctionnalites', 'h2_support', 'h2_qualite_prix'] as const).map(key => (
         <div style={sectionStyle} key={key}>
           <h2 style={h2Style}>{({
             h2_fonctionnalites: 'Section : Fonctionnalités',
             h2_support: 'Section : Support client',
             h2_qualite_prix: 'Section : Qualité-prix',
-            h2_avis_clients: 'Section : Avis clients',
           })[key]}</h2>
           <div style={{ marginBottom: 12 }}>
             <label style={labelStyle}>Titre H2</label>
@@ -251,6 +368,21 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
           </div>
         </div>
       ))}
+
+      {/* ── Section Avis clients (toujours affichée, indépendante des sections custom) ── */}
+      <div style={sectionStyle}>
+        <h2 style={h2Style}>Section : Avis clients</h2>
+        <div style={{ marginBottom: 12 }}>
+          <label style={labelStyle}>Titre H2</label>
+          <input style={inputStyle} value={avis.h2_avis_clients?.titre || ''} onChange={e => updH2('h2_avis_clients', { titre: e.target.value })} />
+        </div>
+        <div>
+          <label style={labelStyle}>Contenu HTML</label>
+          <textarea style={{ ...textareaStyle, minHeight: 160, fontFamily: 'ui-monospace, monospace', fontSize: 13 }}
+                    value={avis.h2_avis_clients?.contenu_html || ''}
+                    onChange={e => updH2('h2_avis_clients', { contenu_html: e.target.value })} />
+        </div>
+      </div>
 
       {/* ── FAQ ─────────────────────────────────────────────────────── */}
       <div style={sectionStyle}>
@@ -320,14 +452,25 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
       </div>
 
       {/* ── BARRE D'ACTIONS ────────────────────────────────────────── */}
-      <div style={{ position: 'sticky', bottom: 0, background: '#fafafa', borderTop: '1px solid #ddd', padding: 16, margin: '20px -24px -24px', display: 'flex', gap: 12, alignItems: 'center' }}>
-        <button onClick={save} disabled={saving}
-                style={{ background: '#000', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: 6, fontWeight: 600, fontSize: 14, cursor: saving ? 'wait' : 'pointer' }}>
+      <div style={{ position: 'sticky', bottom: 0, background: '#fafafa', borderTop: '1px solid #ddd', padding: 16, margin: '20px -24px -24px', display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+        <button onClick={save} disabled={busy}
+                style={{ background: '#000', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: 6, fontWeight: 600, fontSize: 14, cursor: busy ? 'wait' : 'pointer', opacity: busy ? 0.6 : 1 }}>
           {saving ? 'Sauvegarde…' : '💾 Enregistrer'}
         </button>
-        <button onClick={remove} style={{ background: 'transparent', color: '#c00', border: '1px solid #c00', padding: '10px 16px', borderRadius: 6, fontSize: 13, cursor: 'pointer' }}>
+
+        {/* Bouton Régénérer : style accent pour qu'il soit visible mais
+            distinct du bouton primaire. Vert pour signaler l'action IA. */}
+        <button onClick={regenerate} disabled={busy}
+                title="Relance les 2 appels Claude (prompt brouillon + persona) et écrase le contenu actuel"
+                style={{ background: '#3D7A4F', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: 6, fontWeight: 600, fontSize: 14, cursor: busy ? 'wait' : 'pointer', opacity: busy ? 0.6 : 1 }}>
+          {regenerating ? '⏳ Lancement workflow…' : '🔄 Régénérer le contenu IA'}
+        </button>
+
+        <button onClick={remove} disabled={busy}
+                style={{ background: 'transparent', color: '#c00', border: '1px solid #c00', padding: '10px 16px', borderRadius: 6, fontSize: 13, cursor: busy ? 'wait' : 'pointer', opacity: busy ? 0.6 : 1 }}>
           🗑 Supprimer
         </button>
+
         {msg && <span style={{ fontSize: 14, color: msg.startsWith('✓') ? 'green' : 'crimson' }}>{msg}</span>}
         <span style={{ flex: 1 }} />
         <small style={{ color: '#888' }}>Le HTML sera regénéré au prochain déploiement automatique.</small>
