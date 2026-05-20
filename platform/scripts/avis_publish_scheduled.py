@@ -389,8 +389,15 @@ Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de `
     return GENERATION_SYSTEM_PROMPT, user
 
 
-def generate_avis_content(row: dict, site: dict) -> dict:
-    """Appelle Claude et parse le JSON retourné. Lève si parsing échoue."""
+def generate_avis_content(row: dict, site: dict, custom_prompt: str = "") -> dict:
+    """Appelle Claude et parse le JSON retourné. Lève si parsing échoue.
+
+    Si `custom_prompt` est fourni (saisi par l'éditeur via le dashboard et
+    stocké dans posts_avis/_drafts.json), un SECOND appel Claude est effectué
+    pour générer un bloc HTML libre `sections_html` qui remplacera les 3 H2
+    standards (fonctionnalites/support/qualite_prix) dans le rendu.
+    Si aucun custom_prompt n'est fourni, on retombe sur le format historique
+    avec les 3 H2 nommés (rétro-compat avec les avis déjà publiés)."""
     system, user = build_generation_prompt(row, site)
     raw = call_claude(system, user, max_tokens=4000)
     raw = strip_code_fences(raw)
@@ -405,6 +412,17 @@ def generate_avis_content(row: dict, site: dict) -> dict:
             data = json.loads(m.group(0))
         except json.JSONDecodeError:
             raise RuntimeError(f"JSON invalide : {e}\nRaw : {raw[:500]}")
+
+    # ─── Génération du bloc sections custom (si prompt fourni) ──────────
+    sections_html = ""
+    if custom_prompt and custom_prompt.strip():
+        try:
+            sections_html = generate_sections_html(row, site, custom_prompt)
+        except Exception as e:
+            print(f"    ⚠ Échec génération sections custom : {e}")
+            # On garde les 3 H2 standards en fallback
+            sections_html = ""
+
     # Garantit la présence de toutes les clés (valeurs par défaut)
     return {
         "h1": data.get("h1", f"Avis {row.get('marque','')}"),
@@ -419,7 +437,66 @@ def generate_avis_content(row: dict, site: dict) -> dict:
         "verdict": data.get("verdict", ""),
         "meta_title": data.get("meta_title", ""),
         "meta_description": data.get("meta_description", ""),
+        # Bloc HTML libre généré à partir du prompt custom. Vide si pas de
+        # custom_prompt fourni → le template j2 retombe sur les 3 H2 standards.
+        "sections_html": sections_html,
     }
+
+
+# ─── Génération du bloc sections via prompt custom ────────────────────────
+
+SECTIONS_HTML_SYSTEM_PROMPT = """Tu es un rédacteur SEO expert spécialisé dans les avis produits.
+Tu écris des sections d'avis en HTML pur, prêt à être inséré dans une page web.
+
+RÈGLES IMPÉRATIVES :
+- HTML pur uniquement : <h2>, <h3>, <p>, <strong>, <em>, <ul>, <li>
+- AUCUNE balise <html>, <head>, <body>, <main>, <article>, <section>, <div>
+- AUCUN markdown, AUCUN ``` code block
+- Commence DIRECTEMENT par un <h2>
+- Style : phrases courtes, ton professionnel, factuel, conforme E-E-A-T
+- N'invente JAMAIS de chiffres, partenariats ou récompenses
+- Aucun tiret long (—), utilise des virgules ou des points
+- Tu réponds UNIQUEMENT avec le HTML, sans préambule ni commentaire"""
+
+
+def generate_sections_html(row: dict, site: dict, custom_prompt: str) -> str:
+    """Génère le bloc HTML des sections H2 entre le sommaire et 'Retours
+    d'expérience des utilisateurs', à partir d'un prompt rédigé par l'éditeur.
+
+    Le prompt est libre — il contient la structure Hn souhaitée et les
+    instructions de rédaction. On l'enrichit avec les métadonnées de l'avis
+    (marque, catégorie, sentiment) pour cadrer le ton."""
+    marque = row.get("marque", "").strip()
+    categorie = row.get("categorie", "").strip()
+    sentiment = normalize_sentiment(row.get("sentiment", ""))
+    note = parse_note(row.get("note_globale", ""))
+    year = str(site.get("year") or datetime.now(PARIS).year)
+    cible = (row.get("cible") or "").strip()
+
+    user = f"""Tu rédiges les sections principales d'un avis sur **{marque}** ({categorie}).
+
+CONTEXTE DE L'AVIS :
+- Marque : {marque}
+- Catégorie : {categorie}
+- Sentiment global : {sentiment}
+- Note éditeur : {note}/5
+- Cible : {cible or "(à déduire de la marque)"}
+- Année : {year}
+
+INSTRUCTIONS DE L'ÉDITEUR (à respecter strictement, c'est ta structure et ton brief) :
+
+{custom_prompt.strip()}
+
+Réponds avec le HTML des sections, prêt à être inséré tel quel dans la page (commence par <h2>)."""
+
+    raw = call_claude(SECTIONS_HTML_SYSTEM_PROMPT, user, max_tokens=4000)
+    raw = strip_code_fences(raw)
+    # Petit nettoyage défensif : si Claude a quand même ajouté un wrapper, on
+    # retire les balises inutiles. Si Claude a renvoyé un préambule avant le
+    # premier <h2>, on coupe avant.
+    raw = re.sub(r"^(?:.*?)(<h[1-6])", r"\1", raw, count=1, flags=re.DOTALL | re.IGNORECASE)
+    raw = re.sub(r"</?(?:html|body|head|main|article|section|div)[^>]*>", "", raw, flags=re.IGNORECASE)
+    return raw.strip()
 
 
 # ─── Écriture du markdown ────────────────────────────────────────────────
@@ -479,6 +556,10 @@ def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict
         "h2_avis_clients": generated.get("h2_avis_clients", {}),
         "faq": generated.get("faq", []),
         "verdict": generated.get("verdict", ""),
+        # Bloc HTML libre des sections principales (remplace h2_fonctionnalites,
+        # h2_support, h2_qualite_prix dans le rendu si non vide). Cf. template
+        # avis-post.html.j2.
+        "sections_html": generated.get("sections_html", ""),
         # SEO
         "meta_title": (row.get("meta_title") or generated.get("meta_title") or f"Avis {marque} : notre verdict").strip(),
         "meta_description": (row.get("meta_description") or generated.get("meta_description") or "").strip(),
@@ -641,6 +722,22 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
     processed_file = posts_dir / "schedule_processed.json"
     processed = load_processed(processed_file)
 
+    # ─── Brouillons (prompt custom par slug) ──────────────────────────────
+    # Le fichier _drafts.json est géré par le dashboard via
+    # /api/sites/<siteId>/avis/draft/<slug>. Format :
+    #   { "avis-qonto": { "prompt_custom": "...", "updated": "..." }, ... }
+    # Si la marque qu'on s'apprête à publier a un prompt ici, on l'utilise
+    # pour générer le bloc sections_html (qui remplace les 3 H2 standards).
+    drafts_file = posts_dir / "_drafts.json"
+    drafts: dict = {}
+    if drafts_file.exists():
+        try:
+            drafts = json.loads(drafts_file.read_text(encoding="utf-8")) or {}
+            if not isinstance(drafts, dict):
+                drafts = {}
+        except Exception:
+            drafts = {}
+
     # Slugs déjà existants pour éviter collisions
     existing_slugs = {p.stem for p in posts_dir.glob("*.md")}
 
@@ -665,21 +762,13 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         if key in processed:
             continue
         is_forced = marque in force_titles
-        # Convention : date_publication vide = publication immédiate (au prochain
-        # passage du cron, ou maintenant si on est dans la boucle). Permet à
-        # Julien d'ajouter une ligne dans la sheet sans avoir à choisir une date.
-        date_raw = (row.get("date_publication") or "").strip()
-        if not is_forced and date_raw:
-            pub_dt = parse_pub_datetime(date_raw)
-            if pub_dt is None:
-                print(f"  ✗ Date invalide pour '{marque}' (« {date_raw} ») → ignoré")
-                continue
-            if pub_dt > now:
-                # Pas encore l'heure
-                continue
-        elif not is_forced and not date_raw:
-            # Date vide → publication immédiate
-            print(f"  ⚡ '{marque}' : date_publication vide → publication immédiate")
+        # ⚠ Nouveau workflow (mai 2026) : plus de génération automatique.
+        # Les avis ne sont publiés QUE quand Julien clique "Générer & Publier"
+        # depuis le dashboard, ce qui déclenche le workflow avec FORCE_TITLES.
+        # Si FORCE_TITLES n'est pas renseigné, on saute (l'avis reste en
+        # brouillon visible dans le dashboard).
+        if not is_forced:
+            continue
         # Slug : "avis-<marque>" pour avoir des URLs cohérentes (/avis-qonto,
         # /avis-legalplace, etc.) distinctes des articles de blog.
         raw_slug = (row.get("slug") or "").strip() or slugify(marque)
@@ -695,8 +784,17 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
             slug = f"{slug}-{i}"
 
         print(f"  → Génération avis : {marque} ({normalize_sentiment(row.get('sentiment',''))}, {parse_note(row.get('note_globale',''))}/5)")
+        # Récupère le prompt custom pour ce slug (saisi via le dashboard).
+        # Si présent, il sera utilisé pour générer le bloc sections_html.
+        custom_prompt = ""
+        draft_entry = drafts.get(slug) if isinstance(drafts.get(slug), dict) else None
+        if draft_entry:
+            custom_prompt = (draft_entry.get("prompt_custom") or "").strip()
+        if custom_prompt:
+            print(f"    📝 Prompt custom détecté ({len(custom_prompt)} caractères)")
+
         try:
-            generated = generate_avis_content(row, config.get("site", {}))
+            generated = generate_avis_content(row, config.get("site", {}), custom_prompt=custom_prompt)
         except Exception as e:
             print(f"    ✗ Échec génération : {e}")
             continue
