@@ -189,9 +189,29 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
 .tarifs-table .price{font-weight:700;color:var(--accent2);white-space:nowrap}
 
 /* ─── Sections d'analyse ─── */
+/* Note : ce bloc style à la fois les sections "ancien format" (3 H2 nommés
+   h2_fonctionnalites/support/qualite_prix générés par le 1er appel Claude)
+   ET les sections custom rendues via post.sections_html (HTML libre généré
+   par le 2e appel Claude à partir du prompt custom de l'éditeur). Le contenu
+   custom contient librement des h2, h3, p, ul, ol, li, strong, em : on les
+   stylise tous ici pour garantir un rendu propre. */
 .analyse-section{margin:40px 0}
-.analyse-section h2{font-family:'{{ theme.font_title }}',serif;font-size:28px;font-weight:400;margin-bottom:16px;color:var(--ink);line-height:1.3}
-.analyse-section p{margin-bottom:16px;color:var(--ink2)}
+.analyse-section h2{font-family:'{{ theme.font_title }}',serif;font-size:28px;font-weight:400;margin:48px 0 16px;color:var(--ink);line-height:1.3;scroll-margin-top:80px}
+.analyse-section h2:first-child{margin-top:0}
+.analyse-section h3{font-family:'{{ theme.font_title }}',serif;font-size:20px;font-weight:600;margin:32px 0 12px;color:var(--ink);line-height:1.35;scroll-margin-top:80px}
+.analyse-section h3:first-child{margin-top:0}
+.analyse-section p{margin:0 0 16px;color:var(--ink2)}
+.analyse-section p:last-child{margin-bottom:0}
+.analyse-section ul,.analyse-section ol{margin:8px 0 24px;padding-left:24px;color:var(--ink2)}
+.analyse-section li{margin-bottom:8px;line-height:1.7}
+.analyse-section li:last-child{margin-bottom:0}
+.analyse-section ul{list-style:disc}
+.analyse-section ol{list-style:decimal}
+.analyse-section strong{color:var(--ink);font-weight:600}
+/* Espace généreux entre un bloc de liste et le H2/H3 qui suit, sinon visuellement
+   on a l'impression que la liste mange le titre de la section suivante. */
+.analyse-section ul + h2,.analyse-section ol + h2,.analyse-section p + h2{margin-top:48px}
+.analyse-section ul + h3,.analyse-section ol + h3,.analyse-section p + h3{margin-top:28px}
 
 /* ─── Avis clients (preuve sociale) ─── */
 .avis-clients{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px;margin:32px 0}
@@ -326,12 +346,20 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
       <li><a href="#tarifs">Tarifs et offres</a></li>
       {% endif %}
       {# ── Nouveau bloc sections_html (prompt custom dashboard) ─────────
-         Si sections_html est rempli, on génère une entrée TOC unique
-         "Analyse détaillée" et on n'affiche AUCUN des 3 H2 standards
-         (fonctionnalites/support/qualite_prix) en dessous. Sinon, on
-         retombe sur l'ancien format avec les 3 H2 nommés. #}
+         Si sections_html est rempli, on génère DYNAMIQUEMENT une entrée TOC
+         par H2 listé dans post.sections_toc (préparé côté Python en parsant
+         le HTML pour extraire titres et IDs). Si sections_toc est vide pour
+         une raison quelconque, on retombe sur une entrée unique "Analyse
+         détaillée". Si pas de sections_html du tout, on liste les 3 H2
+         standards historiques. #}
       {% if post.sections_html %}
-      <li><a href="#analyse">Analyse détaillée</a></li>
+        {% if post.sections_toc and post.sections_toc | length > 0 %}
+          {% for entry in post.sections_toc %}
+          <li><a href="#{{ entry.id }}">{{ entry.titre }}</a></li>
+          {% endfor %}
+        {% else %}
+          <li><a href="#analyse">Analyse détaillée</a></li>
+        {% endif %}
       {% else %}
       {% if post.h2_fonctionnalites and post.h2_fonctionnalites.contenu_html %}
       <li><a href="#fonctionnalites">{{ post.h2_fonctionnalites.titre }}</a></li>
