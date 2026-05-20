@@ -95,6 +95,7 @@ nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;posit
     <a href="/" class="nav-logo"><img src="/logo.png" alt="editions-dp.com" style="height:34px;width:auto;object-fit:contain;vertical-align:middle"></a>
     <div class="nav-links">
         <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/avis">Avis</a>
         <a href="/blog">Blog</a>
     </div>
     <a href="/contact" class="nav-cta">Contact</a>
@@ -104,6 +105,7 @@ nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;posit
   </div>
   <div class="nav-mobile" id="nav-mobile">
       <a href="/nos-comparateurs">Nos comparateurs</a>
+      <a href="/avis">Avis</a>
       <a href="/blog">Blog</a>
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
@@ -123,10 +125,27 @@ document.addEventListener('click',function(e){
 <main class="container">
   <section class="avis-header">
     <h1>Nos avis détaillés</h1>
-<p class="avis-sub">Retrouvez 0 avis indépendants et structurés, avec notes, tarifs et verdict.</p>  </section>
+<p class="avis-sub">Retrouvez 1 avis indépendants et structurés, avec notes, tarifs et verdict.</p>  </section>
 
+  <nav class="cats-bar" aria-label="Catégories d'avis">
+    <a href="/avis" class="cat-pill active">Toutes les marques</a>
+    <a href="/avis/creation-d-entreprise-en-ligne/" class="cat-pill ">Création d’entreprise en ligne (1)</a>
+  </nav>
 
-  <div class="empty">Aucun avis publié pour le moment.</div>
+  <div class="avis-grid">
+    <a class="avis-card" href="/avis-legalplace">
+      <div class="avis-card-body">
+<div class="avis-card-cat">Création d’entreprise en ligne</div>        <div class="avis-card-title">Avis Legalplace (2026) : création d'entreprise simplifiée en ligne</div>
+        <div class="avis-card-score">
+          <div class="avis-card-note">4.8<small>/5</small></div>
+          <div class="stars-mini" aria-label="4.8 étoiles"><span class="full">★</span><span class="full">★</span><span class="full">★</span><span class="full">★</span><span class="half">★</span></div>
+          <span class="avis-card-sentiment positif">
+Recommandé          </span>
+        </div>
+<p class="avis-card-extract">Legalplace automatise les démarches de création d'entreprise avec une plateforme intuitive. Service dédié aux entrepreneurs qui veulent délé…</p>      </div>
+      <div class="avis-card-foot">Publié le 20 mai 2026</div>
+    </a>
+  </div>
 
 </main>
 
