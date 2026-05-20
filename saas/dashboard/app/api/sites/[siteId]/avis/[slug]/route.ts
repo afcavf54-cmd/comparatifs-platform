@@ -4,11 +4,10 @@ import yaml from 'js-yaml'
 // ─── Endpoint d'édition d'un avis individuel ──────────────────────────────
 // GET    /api/sites/<siteId>/avis/<slug>  → frontmatter + body du .md
 // PUT    /api/sites/<siteId>/avis/<slug>  → réécrit le .md complet
-// DELETE /api/sites/<siteId>/avis/<slug>  → supprime le .md
+// DELETE /api/sites/<siteId>/avis/<slug>  → supprime le .md ET nettoie
+//                                            schedule_processed.json
 //
 // Le `slug` URL correspond au nom de fichier sans extension (`avis-legalplace`).
-// Le frontmatter est lu/écrit en YAML pour préserver les structures imbriquées
-// (tarifs[], faq[], h2_*{titre, contenu_html}) que des regex naïves casseraient.
 
 const BASE = 'https://api.github.com'
 const headers = {
@@ -45,7 +44,6 @@ async function ghDelete(path: string, sha: string, message: string): Promise<boo
 
 function parseAvisMd(raw: string): { fm: any; body: string } | null {
   if (!raw.startsWith('---')) return null
-  // Split sur les `---` ; on garde le reste (3e élément et au-delà) comme body
   const idx1 = raw.indexOf('---')
   const idx2 = raw.indexOf('---', idx1 + 3)
   if (idx1 < 0 || idx2 < 0) return null
@@ -59,10 +57,66 @@ function parseAvisMd(raw: string): { fm: any; body: string } | null {
 }
 
 function serializeAvisMd(fm: any, body: string): string {
-  // lineWidth élevé pour éviter que YAML wrap les longues chaînes (contenu_html)
-  // noRefs pour ne pas générer d'ancres &x / *x
   const fmYaml = yaml.dump(fm, { lineWidth: 100000, noRefs: true, sortKeys: false })
   return `---\n${fmYaml}---\n${body || ''}`
+}
+
+// ─── Cleanup tracker après suppression d'un avis ─────────────────────────
+// Quand on supprime un .md, on doit aussi retirer les traces de cette marque
+// des fichiers de tracking, sinon :
+//   - schedule_processed.json garde la clé → le dashboard filtre la ligne sheet
+//     (croit qu'elle est "dismissed") → impossible de la réimporter
+//   - _drafts.json peut garder un prompt orphelin
+async function cleanupTracker(siteId: string, slug: string): Promise<void> {
+  // Le slug du fichier est typiquement "avis-legalplace" → marque slugifiée = "legalplace"
+  const marqueSlug = slug.startsWith('avis-') ? slug.slice('avis-'.length) : slug
+
+  // 1) schedule_processed.json : retirer toute clé qui commence par "<marqueSlug>|"
+  //    (format de la clé côté Python : slugify(marque) + "|" + date_publication)
+  const processedPath = `platform/sites/${siteId}/posts_avis/schedule_processed.json`
+  const processedFile = await ghGet(processedPath)
+  if (processedFile) {
+    try {
+      const arr = JSON.parse(processedFile.content)
+      if (Array.isArray(arr)) {
+        const filtered = arr.filter((k: any) => {
+          const s = String(k)
+          return !s.startsWith(`${marqueSlug}|`) && s !== marqueSlug
+        })
+        if (filtered.length !== arr.length) {
+          await ghPut(
+            processedPath,
+            JSON.stringify(filtered, null, 2) + '\n',
+            `HUB: Cleanup schedule_processed après suppression ${slug}`,
+            processedFile.sha
+          )
+        }
+      }
+    } catch {
+      // JSON invalide : on laisse en l'état pour éviter d'écraser
+    }
+  }
+
+  // 2) _drafts.json : retirer l'entrée du slug supprimé (au cas où un prompt
+  //    custom y traînait — pas critique mais évite des orphelins).
+  const draftsPath = `platform/sites/${siteId}/posts_avis/_drafts.json`
+  const draftsFile = await ghGet(draftsPath)
+  if (draftsFile) {
+    try {
+      const obj = JSON.parse(draftsFile.content)
+      if (obj && typeof obj === 'object' && !Array.isArray(obj) && obj[slug]) {
+        delete obj[slug]
+        await ghPut(
+          draftsPath,
+          JSON.stringify(obj, null, 2) + '\n',
+          `HUB: Cleanup _drafts.json après suppression ${slug}`,
+          draftsFile.sha
+        )
+      }
+    } catch {
+      // idem : on laisse
+    }
+  }
 }
 
 type Params = { params: Promise<{ siteId: string; slug: string }> }
@@ -75,7 +129,6 @@ export async function GET(_req: NextRequest, { params }: Params) {
   if (!file) return NextResponse.json({ error: 'Avis introuvable' }, { status: 404 })
   const parsed = parseAvisMd(file.content)
   if (!parsed) return NextResponse.json({ error: 'Frontmatter invalide' }, { status: 500 })
-  // On expose aussi le domaine du site pour permettre la preview
   let domain = ''
   const cfg = await ghGet(`platform/sites/${siteId}/config.yaml`)
   if (cfg) {
@@ -93,10 +146,7 @@ export async function PUT(req: NextRequest, { params }: Params) {
   if (!avis || typeof avis !== 'object') {
     return NextResponse.json({ error: 'Champ `avis` (frontmatter) requis' }, { status: 400 })
   }
-  // Le slug du fichier doit rester celui de l'URL — éviter qu'un mauvais
-  // payload corrompe le mapping URL ↔ fichier
   avis.slug = slug
-  // Date de mise à jour technique (utile au tracking + au signal SEO)
   avis.updated = new Date().toISOString().replace(/\.\d+Z$/, 'Z')
 
   const path = `platform/sites/${siteId}/posts_avis/${slug}.md`
@@ -106,7 +156,7 @@ export async function PUT(req: NextRequest, { params }: Params) {
   return NextResponse.json({ ok: true })
 }
 
-// ─── DELETE : supprime l'avis ─────────────────────────────────────────────
+// ─── DELETE : supprime l'avis + cleanup tracker ───────────────────────────
 export async function DELETE(_req: NextRequest, { params }: Params) {
   const { siteId, slug } = await params
   const path = `platform/sites/${siteId}/posts_avis/${slug}.md`
@@ -114,5 +164,12 @@ export async function DELETE(_req: NextRequest, { params }: Params) {
   if (!file) return NextResponse.json({ error: 'Avis introuvable' }, { status: 404 })
   const ok = await ghDelete(path, file.sha, `HUB: Delete avis ${slug}`)
   if (!ok) return NextResponse.json({ error: 'Erreur suppression' }, { status: 500 })
+  // Nettoyage des fichiers de tracking pour permettre la réimportation
+  // de la ligne sheet dans le dashboard. Erreurs ici non-bloquantes (best effort).
+  try {
+    await cleanupTracker(siteId, slug)
+  } catch (e) {
+    console.error('[avis DELETE cleanup]', e)
+  }
   return NextResponse.json({ ok: true })
 }
