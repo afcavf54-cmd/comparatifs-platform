@@ -1,23 +1,24 @@
 ---
 title: Comment choisir un logiciel GEPP pour votre entreprise ?
 slug: 3345-comment-choisir-un-logiciel-gepp-pour-votre-entreprise
-date: '2026-05-20T09:00:00+02:00'
+date: 2026-05-20T09:00:00+02:00
+updated: 2026-05-20T15:38:46
 categorie: Ressources Humaines
-meta_title: 'Logiciel GEPP : pilotez vos emplois et parcours professionnels'
+meta_title: "Logiciel GEPP : pilotez vos emplois et parcours professionnels"
 meta_description: Découvrez comment choisir le bon logiciel GEPP pour votre entreprise.
-  Comparatif des critères essentiels, budget réel et fonctionnalités clés pour optimiser
-  la…
-min_words: 2000
+featured_image: /blog/3345-comment-choisir-un-logiciel-gepp-pour-votre-entreprise/featured-21250.jpg
 status: published
-link_anchors:
-- text: logiciel GEPP
-  max: 2
+min_words: 2000
 related_posts:
 - 8432-comment-mettre-en-place-une-gestion-des-talents-rh-efficace
 - 7114-comment-gerer-les-talents-dans-une-pme
 - 2675-qu-est-ce-que-la-gestion-des-talents-en-ressources-humaines
 - 6481-comment-realiser-une-cartographie-des-competences-efficacement
+link_anchors:
+- text: logiciel GEPP
+  max: 2
 ---
+
 <h2>Qu'est-ce que la GEPP et pourquoi j'en ai entendu parler ?</h2>
 
 <p>On m'a parlé de GEPP pour la première fois il y a deux ans. Je dirigeais alors une équipe de 45 personnes et je me retrouvais régulièrement coincé. Un collaborateur partait à la retraite, impossible de trouver quelqu'un avec ses compétences. Une nouvelle commande arrivait, personne n'avait les bonnes qualifications.</p>
@@ -235,3 +236,4 @@ Vérifiez la portabilité des données. Droit à l'export complet en format stan
 Pour les entreprises de plus de 300 salariés, la GEPP est obligatoire tous les trois ans. Négociation avec les représentants du personnel. En dessous, c'est optionnel mais recommandé.</p>
 
 <p>Au final, choisir un logiciel GEPP n'est pas qu'une décision technique. C'est un investissement dans l'avenir de votre équipe. Prenez le temps de bien définir vos besoins. Testez plusieurs solutions. Et surtout, impliquez vos collaborateurs dès le début du projet.</p>
+
