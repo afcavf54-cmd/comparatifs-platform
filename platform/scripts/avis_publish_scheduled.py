@@ -271,20 +271,50 @@ def parse_anchors(raw: str) -> list[dict]:
 
 # ─── Génération du contenu via Claude ────────────────────────────────────
 
-GENERATION_SYSTEM_PROMPT = """Tu es un rédacteur SEO expert spécialisé dans les avis produits.
-Tu écris des avis honnêtes, structurés, factuels, conformes aux critères E-E-A-T de Google.
-Ton style est direct, professionnel, sans superlatifs creux ni jargon marketing.
-Tu cites des éléments concrets (fonctionnalités, prix réels, cas d'usage) plutôt que des généralités.
-Tu réponds UNIQUEMENT en JSON valide, sans préambule ni guillemets autour.
+def _build_generation_system_prompt(persona_prompt: str = "") -> str:
+    """Construit dynamiquement le system prompt du 1er appel Claude (génération
+    du JSON principal : H1, en_bref, points, h2_*, FAQ, verdict, meta).
 
-Règle de sentiment :
-- "positif" : avis globalement favorable, défauts mineurs reconnus
-- "mitige" : avis nuancé, qualités ET défauts importants équilibrés
-- "negatif" : avis défavorable, défauts majeurs dominants
+    Si `persona_prompt` est fourni, il est placé EN TÊTE du system prompt avec
+    un marquage "PRIORITÉ ABSOLUE". Le system prompt a plus de poids hiérarchique
+    que le user prompt pour Claude — placer le persona ici garantit qu'il prime
+    sur les contraintes structurelles techniques qui suivent.
 
-Toutes les listes doivent être en français correct, sans tournures trop molles ("c'est bien", "ça va").
-Les questions FAQ DOIVENT se terminer par '?'.
-N'invente JAMAIS de note, de chiffre, de pourcentage qui n'est pas dans les données fournies."""
+    Si pas de persona, on retombe sur les directives stylistiques génériques
+    historiques (ton direct, professionnel, sans superlatifs)."""
+    persona_block = ""
+    if persona_prompt and persona_prompt.strip():
+        persona_block = (
+            "## TON IDENTITÉ ÉDITORIALE (PRIORITÉ ABSOLUE — incarne-la pour CHAQUE phrase)\n\n"
+            f"{persona_prompt.strip()}\n\n"
+            "⚠ Cette identité prime sur toutes les autres considérations stylistiques.\n"
+            "Vouvoiement, ton, angle éditorial, contraintes du lecteur cible : tout doit transparaître\n"
+            "dans l'intro, les sections H2, les réponses FAQ et le verdict.\n\n"
+            "---\n\n"
+        )
+
+    # Note : on retire 'Ton style est direct, professionnel...' du prompt historique
+    # car ça entrait en conflit avec un persona personnalisé. Si pas de persona,
+    # Claude reste neutre par défaut, ce qui est OK pour la rétro-compat.
+    base = (
+        "Tu es un rédacteur SEO spécialisé dans les avis produits francophones.\n"
+        "Tu écris des avis honnêtes, structurés, factuels, conformes aux critères E-E-A-T de Google.\n"
+        "Tu cites des éléments concrets (fonctionnalités, prix, cas d'usage) plutôt que des généralités.\n"
+        "Tu réponds UNIQUEMENT en JSON valide, sans préambule ni guillemets autour.\n\n"
+        "Règle de sentiment :\n"
+        "- \"positif\" : avis globalement favorable, défauts mineurs reconnus\n"
+        "- \"mitige\" : avis nuancé, qualités ET défauts importants équilibrés\n"
+        "- \"negatif\" : avis défavorable, défauts majeurs dominants\n\n"
+        "Toutes les listes doivent être en français correct.\n"
+        "Les questions FAQ DOIVENT se terminer par '?'.\n"
+        "N'invente JAMAIS de note, de chiffre, de pourcentage qui n'est pas dans les données fournies."
+    )
+    return persona_block + base
+
+
+# Conservé pour rétro-compat si du code externe l'importe encore. Équivaut à
+# `_build_generation_system_prompt()` sans persona.
+GENERATION_SYSTEM_PROMPT = _build_generation_system_prompt()
 
 
 def build_generation_prompt(row: dict, site: dict, faq_questions: list = None, persona_prompt: str = "") -> tuple:
@@ -443,7 +473,10 @@ Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de `
   "meta_title": "Title SEO max 60 caractères, doit contenir '{marque}' et '{year}'",
   "meta_description": "Meta description SEO max 155 caractères, doit donner envie de cliquer"
 }}"""
-    return GENERATION_SYSTEM_PROMPT, user
+    # Le persona est injecté à 2 niveaux pour maximiser son poids :
+    # 1) En TÊTE du system prompt (plus haute priorité pour Claude)
+    # 2) Rappelé en tête du user prompt (cf. persona_section plus haut)
+    return _build_generation_system_prompt(persona_prompt), user
 
 
 def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_questions: list = None, persona_prompt: str = "") -> dict:
@@ -539,28 +572,46 @@ def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_qu
 
 # ─── Génération du bloc sections via prompt custom ────────────────────────
 
-SECTIONS_HTML_SYSTEM_PROMPT = """Tu es un rédacteur SEO francophone spécialisé dans les avis produits.
-Tu écris des sections d'avis en HTML pur, prêt à être inséré dans une page web.
+def _build_sections_html_system_prompt(persona_prompt: str = "") -> str:
+    """Construit dynamiquement le system prompt du 2e appel Claude (génération
+    du HTML libre des sections custom). Même logique que pour le JSON principal :
+    le persona en tête du SYSTEM prompt (plus haute autorité pour Claude) garantit
+    qu'il prime sur les contraintes techniques HTML qui suivent."""
+    persona_block = ""
+    if persona_prompt and persona_prompt.strip():
+        persona_block = (
+            "## TON IDENTITÉ ÉDITORIALE (PRIORITÉ ABSOLUE — incarne-la pour CHAQUE phrase)\n\n"
+            f"{persona_prompt.strip()}\n\n"
+            "⚠ Cette identité prime sur toutes les autres considérations stylistiques.\n"
+            "Vouvoiement, ton, angle éditorial, contraintes du lecteur cible : tout doit transparaître\n"
+            "dans chaque H2, H3, paragraphe, liste à puces.\n\n"
+            "---\n\n"
+        )
 
-RÈGLES TECHNIQUES IMPÉRATIVES :
-- HTML pur uniquement : <h2>, <h3>, <p>, <strong>, <em>, <ul>, <li>
-- AUCUNE balise <html>, <head>, <body>, <main>, <article>, <section>, <div>
-- AUCUN markdown, AUCUN ``` code block
-- Commence DIRECTEMENT par un <h2>
-- N'invente JAMAIS de chiffres précis, partenariats ou récompenses : reste sur des
-  faits notoires ou des analyses générales si tu manques d'éléments
-- Aucun tiret long (—), utilise des virgules ou des points
-- Tu réponds UNIQUEMENT avec le HTML, sans préambule ni commentaire
+    base = (
+        "Tu es un rédacteur SEO francophone spécialisé dans les avis produits.\n"
+        "Tu écris des sections d'avis en HTML pur, prêt à être inséré dans une page web.\n\n"
+        "RÈGLES TECHNIQUES IMPÉRATIVES :\n"
+        "- HTML pur uniquement : <h2>, <h3>, <p>, <strong>, <em>, <ul>, <li>\n"
+        "- AUCUNE balise <html>, <head>, <body>, <main>, <article>, <section>, <div>\n"
+        "- AUCUN markdown, AUCUN ``` code block\n"
+        "- Commence DIRECTEMENT par un <h2>\n"
+        "- N'invente JAMAIS de chiffres précis, partenariats ou récompenses : reste sur des\n"
+        "  faits notoires ou des analyses générales si tu manques d'éléments\n"
+        "- Aucun tiret long (—), utilise des virgules ou des points\n"
+        "- Tu réponds UNIQUEMENT avec le HTML, sans préambule ni commentaire\n\n"
+        "RÈGLES ÉDITORIALES :\n"
+        "- Donne ton avis : un avis est une opinion argumentée, pas un résumé descriptif. Tu\n"
+        "  peux pointer ce qui marche, ce qui coince, à qui ça convient ou pas.\n"
+        "- Conforme E-E-A-T : appuie tes affirmations sur des éléments visibles (interface,\n"
+        "  tarification publique, retours utilisateurs typiques) plutôt que sur des données\n"
+        "  inventées."
+    )
+    return persona_block + base
 
-RÈGLES ÉDITORIALES :
-- Adopte STRICTEMENT le persona éditorial qui te sera fourni en tête du user prompt
-  (voix, ton, vouvoiement, niveau de pédagogie, angle prioritaire). Ce persona prime
-  sur toute autre considération stylistique.
-- Donne ton avis : un avis est une opinion argumentée, pas un résumé descriptif. Tu
-  peux pointer ce qui marche, ce qui coince, à qui ça convient ou pas.
-- Conforme E-E-A-T : appuie tes affirmations sur des éléments visibles (interface,
-  tarification publique, retours utilisateurs typiques) plutôt que sur des données
-  inventées."""
+
+# Conservé pour rétro-compat (équivaut à la version sans persona).
+SECTIONS_HTML_SYSTEM_PROMPT = _build_sections_html_system_prompt()
 
 
 def _slugify_anchor(s: str) -> str:
@@ -661,7 +712,7 @@ INSTRUCTIONS DE L'ÉDITEUR (à respecter strictement, c'est ta structure et ton 
 
 Réponds avec le HTML des sections, prêt à être inséré tel quel dans la page (commence par <h2>)."""
 
-    raw = call_claude(SECTIONS_HTML_SYSTEM_PROMPT, user, max_tokens=4000)
+    raw = call_claude(_build_sections_html_system_prompt(persona_prompt), user, max_tokens=4000)
     raw = strip_code_fences(raw)
     # Petit nettoyage défensif : si Claude a quand même ajouté un wrapper, on
     # retire les balises inutiles. Si Claude a renvoyé un préambule avant le
