@@ -287,8 +287,14 @@ Les questions FAQ DOIVENT se terminer par '?'.
 N'invente JAMAIS de note, de chiffre, de pourcentage qui n'est pas dans les données fournies."""
 
 
-def build_generation_prompt(row: dict, site: dict) -> tuple[str, str]:
-    """Construit le user prompt pour générer le contenu structuré d'un avis."""
+def build_generation_prompt(row: dict, site: dict, faq_questions: list = None) -> tuple:
+    """Construit le user prompt pour générer le contenu structuré d'un avis.
+
+    Si `faq_questions` est fourni (liste non vide), Claude doit reproduire ces
+    questions VERBATIM dans la FAQ et ne génère QUE les réponses. Cela évite
+    le doublon avec une FAQ déjà imposée par l'éditeur dans le dashboard.
+    Sinon, Claude invente 4 questions + réponses (comportement historique).
+    """
     marque = row.get("marque", "").strip()
     categorie = row.get("categorie", "").strip()
     sentiment = normalize_sentiment(row.get("sentiment", ""))
@@ -330,6 +336,44 @@ def build_generation_prompt(row: dict, site: dict) -> tuple[str, str]:
             "que les avis publics sont à vérifier sur les plateformes spécialisées."
         )
 
+    # ─── FAQ : questions imposées par l'éditeur OU auto-générées ────────────
+    # Si l'éditeur a saisi une liste de questions dans le dashboard, Claude doit
+    # les reproduire verbatim et ne générer QUE les réponses. Sinon, format
+    # historique avec 4 questions inventées par Claude.
+    # ⚠ Important : `faq_block` est injecté COMME UNE VARIABLE dans l'f-string
+    # final `user`. Les accolades dans cette variable ne sont PAS rééchappées
+    # par l'f-string (contrairement à un littéral). On utilise donc des
+    # accolades SIMPLES `{...}` ici (et non `{{...}}` comme dans le reste du
+    # template JSON qui, lui, est littéral dans l'f-string).
+    faq_questions = [q.strip() for q in (faq_questions or []) if isinstance(q, str) and q.strip()]
+    if faq_questions:
+        # On échappe les caractères qui pourraient casser le JSON template,
+        # principalement les guillemets et les antislashs.
+        def _esc(q: str) -> str:
+            return q.replace("\\", "\\\\").replace('"', '\\"')
+        faq_items = ",\n    ".join(
+            '{"q": "' + _esc(q) + '", "r": "Réponse en 2-4 phrases (HTML interdit, texte brut). '
+            'Réponds factuellement à CETTE question précise."}'
+            for q in faq_questions
+        )
+        faq_block = f"[\n    {faq_items}\n  ]"
+        faq_constraint = (
+            f"\n6. FAQ - LISTE IMPOSÉE : Les {len(faq_questions)} questions de la FAQ ci-dessous te sont "
+            f"IMPOSÉES par l'éditeur. Reproduis-les VERBATIM (texte exact, "
+            f"même formulation, même ponctuation). Tu ne génères QUE les réponses. "
+            f"Ne supprime, n'ajoute ni ne reformule aucune question."
+        )
+    else:
+        # Format historique : 4 questions inventées. Accolades simples ici aussi
+        # car la string sera injectée comme variable dans l'f-string user.
+        faq_block = """[
+    {"q": "Question fréquente 1 ? (DOIT se terminer par '?')", "r": "Réponse en 2-4 phrases (HTML interdit, texte brut)"},
+    {"q": "Question 2 ?", "r": "..."},
+    {"q": "Question 3 ?", "r": "..."},
+    {"q": "Question 4 ?", "r": "..."}
+  ]"""
+        faq_constraint = ""
+
     user = f"""Tu rédiges un avis structuré sur **{marque}** ({categorie}).
 
 DONNÉES FOURNIES (à respecter strictement, ne pas inventer) :
@@ -351,7 +395,7 @@ CONTRAINTES :
 5. LONGUEUR : la somme des champs textuels (en_bref + 4 H2 contenu_html + verdict + réponses FAQ)
    DOIT atteindre AU MINIMUM {mot_min} mots au total. Si tu sais peu de choses sur {marque},
    développe les analyses (positionnement marché, profil-type d'utilisateur, comparaison
-   sectorielle générique) plutôt que d'inventer des faits précis.
+   sectorielle générique) plutôt que d'inventer des faits précis.{faq_constraint}
 
 Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de ```) :
 
@@ -376,12 +420,7 @@ Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de `
     "titre": "Titre H2 sur les avis clients (ex: 'Que disent les utilisateurs ?')",
     "contenu_html": "1 paragraphe en HTML <p>...</p>. {avis_clients_instructions}"
   }},
-  "faq": [
-    {{"q": "Question fréquente 1 ? (DOIT se terminer par '?')", "r": "Réponse en 2-4 phrases (HTML interdit, texte brut)"}},
-    {{"q": "Question 2 ?", "r": "..."}},
-    {{"q": "Question 3 ?", "r": "..."}},
-    {{"q": "Question 4 ?", "r": "..."}}
-  ],
+  "faq": {faq_block},
   "verdict": "Verdict final tranché d'environ {target_verdict} mots. Réitère la note {note}/5 et donne une recommandation claire (pour qui c'est, pour qui ce n'est pas).",
   "meta_title": "Title SEO max 60 caractères, doit contenir '{marque}' et '{year}'",
   "meta_description": "Meta description SEO max 155 caractères, doit donner envie de cliquer"
@@ -389,7 +428,7 @@ Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de `
     return GENERATION_SYSTEM_PROMPT, user
 
 
-def generate_avis_content(row: dict, site: dict, custom_prompt: str = "") -> dict:
+def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_questions: list = None) -> dict:
     """Appelle Claude et parse le JSON retourné. Lève si parsing échoue.
 
     Si `custom_prompt` est fourni (saisi par l'éditeur via le dashboard et
@@ -397,8 +436,16 @@ def generate_avis_content(row: dict, site: dict, custom_prompt: str = "") -> dic
     pour générer un bloc HTML libre `sections_html` qui remplacera les 3 H2
     standards (fonctionnalites/support/qualite_prix) dans le rendu.
     Si aucun custom_prompt n'est fourni, on retombe sur le format historique
-    avec les 3 H2 nommés (rétro-compat avec les avis déjà publiés)."""
-    system, user = build_generation_prompt(row, site)
+    avec les 3 H2 nommés (rétro-compat avec les avis déjà publiés).
+
+    Si `faq_questions` est fourni (liste non vide), Claude est instruit de
+    reproduire ces questions verbatim et ne génère QUE les réponses. On force
+    aussi côté Python l'alignement (les questions retournées sont remplacées
+    par les questions imposées en cas de drift)."""
+    # Normalisation de la liste FAQ imposée
+    forced_faq = [q.strip() for q in (faq_questions or []) if isinstance(q, str) and q.strip()]
+
+    system, user = build_generation_prompt(row, site, faq_questions=forced_faq)
     raw = call_claude(system, user, max_tokens=4000)
     raw = strip_code_fences(raw)
     try:
@@ -423,6 +470,24 @@ def generate_avis_content(row: dict, site: dict, custom_prompt: str = "") -> dic
             # On garde les 3 H2 standards en fallback
             sections_html = ""
 
+    # ─── Réalignement FAQ avec les questions imposées ──────────────────────
+    # Si l'éditeur a saisi une liste, on FORCE les questions à correspondre
+    # même si Claude a dérivé. On garde les réponses générées dans l'ordre.
+    faq_generated = data.get("faq") or []
+    if forced_faq:
+        aligned = []
+        for i, q in enumerate(forced_faq):
+            # Récupère la réponse à l'index correspondant si Claude a respecté
+            # l'ordre. Sinon : réponse vide (le template j2 affichera quand
+            # même la question, et Julien pourra éditer manuellement).
+            r = ""
+            if i < len(faq_generated) and isinstance(faq_generated[i], dict):
+                r = (faq_generated[i].get("r") or "").strip()
+            aligned.append({"q": q, "r": r})
+        faq_final = aligned
+    else:
+        faq_final = faq_generated
+
     # Garantit la présence de toutes les clés (valeurs par défaut)
     return {
         "h1": data.get("h1", f"Avis {row.get('marque','')}"),
@@ -433,7 +498,7 @@ def generate_avis_content(row: dict, site: dict, custom_prompt: str = "") -> dic
         "h2_support": data.get("h2_support") or {"titre": "", "contenu_html": ""},
         "h2_qualite_prix": data.get("h2_qualite_prix") or {"titre": "", "contenu_html": ""},
         "h2_avis_clients": data.get("h2_avis_clients") or {"titre": "", "contenu_html": ""},
-        "faq": data.get("faq") or [],
+        "faq": faq_final,
         "verdict": data.get("verdict", ""),
         "meta_title": data.get("meta_title", ""),
         "meta_description": data.get("meta_description", ""),
@@ -784,17 +849,31 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
             slug = f"{slug}-{i}"
 
         print(f"  → Génération avis : {marque} ({normalize_sentiment(row.get('sentiment',''))}, {parse_note(row.get('note_globale',''))}/5)")
-        # Récupère le prompt custom pour ce slug (saisi via le dashboard).
-        # Si présent, il sera utilisé pour générer le bloc sections_html.
+        # Récupère le prompt custom + questions FAQ pour ce slug (saisis via
+        # le dashboard et stockés dans _drafts.json).
+        # - custom_prompt : utilisé pour générer le bloc sections_html
+        # - faq_questions : liste de questions FAQ à imposer verbatim (Claude
+        #   ne génère que les réponses, évite le doublon)
         custom_prompt = ""
+        faq_questions: list = []
         draft_entry = drafts.get(slug) if isinstance(drafts.get(slug), dict) else None
         if draft_entry:
             custom_prompt = (draft_entry.get("prompt_custom") or "").strip()
+            raw_faq = draft_entry.get("faq_questions")
+            if isinstance(raw_faq, list):
+                faq_questions = [q.strip() for q in raw_faq if isinstance(q, str) and q.strip()]
         if custom_prompt:
             print(f"    📝 Prompt custom détecté ({len(custom_prompt)} caractères)")
+        if faq_questions:
+            print(f"    ❓ {len(faq_questions)} question(s) FAQ imposée(s)")
 
         try:
-            generated = generate_avis_content(row, config.get("site", {}), custom_prompt=custom_prompt)
+            generated = generate_avis_content(
+                row,
+                config.get("site", {}),
+                custom_prompt=custom_prompt,
+                faq_questions=faq_questions,
+            )
         except Exception as e:
             print(f"    ✗ Échec génération : {e}")
             continue
