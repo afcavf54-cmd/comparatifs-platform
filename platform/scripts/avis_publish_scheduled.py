@@ -700,6 +700,22 @@ def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict
     pub_iso = pub_dt.isoformat() if pub_dt else datetime.now(PARIS).isoformat()
     link_anchors = parse_anchors(row.get("link_anchors", ""))
 
+    # ─── Sections standards vs custom ───────────────────────────────────────
+    # Si l'avis a un `sections_html` (= prompt custom utilisé), les 3 H2
+    # standards historiques (fonctionnalites/support/qualite_prix) deviennent
+    # caducs : ils sont ignorés par le template et leur présence dans le .md
+    # trompe l'éditeur dans le dashboard (il croit qu'il doit les éditer alors
+    # qu'ils ne sont pas rendus). On les laisse vides pour rester propre.
+    has_sections_html = bool((generated.get("sections_html") or "").strip())
+    if has_sections_html:
+        h2_fonctionnalites_val: dict = {"titre": "", "contenu_html": ""}
+        h2_support_val: dict = {"titre": "", "contenu_html": ""}
+        h2_qualite_prix_val: dict = {"titre": "", "contenu_html": ""}
+    else:
+        h2_fonctionnalites_val = generated.get("h2_fonctionnalites", {}) or {}
+        h2_support_val = generated.get("h2_support", {}) or {}
+        h2_qualite_prix_val = generated.get("h2_qualite_prix", {}) or {}
+
     return {
         # Métadonnées d'identification
         "slug": slug,
@@ -724,9 +740,9 @@ def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict
         "en_bref": generated.get("en_bref", ""),
         "points_forts": generated.get("points_forts", []),
         "points_faibles": generated.get("points_faibles", []),
-        "h2_fonctionnalites": generated.get("h2_fonctionnalites", {}),
-        "h2_support": generated.get("h2_support", {}),
-        "h2_qualite_prix": generated.get("h2_qualite_prix", {}),
+        "h2_fonctionnalites": h2_fonctionnalites_val,
+        "h2_support": h2_support_val,
+        "h2_qualite_prix": h2_qualite_prix_val,
         "h2_avis_clients": generated.get("h2_avis_clients", {}),
         "faq": generated.get("faq", []),
         "verdict": generated.get("verdict", ""),
