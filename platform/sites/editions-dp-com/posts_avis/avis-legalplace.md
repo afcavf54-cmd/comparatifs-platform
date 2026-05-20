@@ -238,7 +238,7 @@ meta_description: Test complet de Legalplace en 2026. Fonctionnalités, tarifs, 
 link_anchors:
 - text: LegalPlace
   max: 10
-mot_minimum: 800
+mot_minimum: 3500
 date: '2026-05-20T14:41:00.295519+02:00'
 ---
 
