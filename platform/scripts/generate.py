@@ -1673,8 +1673,12 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         if avis_posts:
             site["has_avis"] = True
 
-    # Génération des pages d'avis individuelles
-    if avis_posts and (TEMPLATES_DIR / "avis-post.html.j2").exists():
+    # Génération des pages d'avis individuelles + index /avis
+    # ⚠ Important : on entre dans ce bloc MÊME quand `avis_posts` est vide, pour
+    # forcer la regénération de `output/avis.html` (qui sinon resterait à sa
+    # version précédente avec les avis désormais supprimés).
+    # Le template `avis-index.html.j2` gère nativement le cas liste vide.
+    if (TEMPLATES_DIR / "avis-post.html.j2").exists():
         tpl_avis = env.get_template("avis-post.html.j2")
         avis_rendered = 0
         for post in avis_posts:
