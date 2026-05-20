@@ -459,8 +459,16 @@ def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, a
             cats_seen.add(cat)
             expected_files.add(f"meilleur-{slugify_cat(cat)}.html")
     for slug in current_slugs:
-        if not is_classement_template:
-            expected_files.add(f"avis-{slug}.html")
+        # ── Plus de protection automatique de `avis-{slug}.html` ────────────
+        # AVANT : on ajoutait inconditionnellement avis-{slug}.html à
+        # expected_files pour chaque produit de la sheet (legacy SCPI), ce
+        # qui empêchait `cleanup_removed_products` de supprimer les orphelins
+        # quand un avis était dépublié via le dashboard. Désormais, la
+        # protection vient EXCLUSIVEMENT de posts_avis/*.md (cf.
+        # _avis_protected dans generate_site, unioné à blog_expected).
+        # Si un .md d'avis est supprimé, son .html devient orphelin et est
+        # nettoyé au prochain build. Conséquence : Cloudflare Pages sert sa
+        # 404.html avec un vrai HTTP 404 sur l'URL dépubliée.
         expected_files.add(f"{slug}.png")
     for slug_a, slug_b in all_pairs:
         expected_files.add(f"{slug_a}-vs-{slug_b}.html")
