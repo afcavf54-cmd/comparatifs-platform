@@ -1,21 +1,25 @@
 ---
 title: Comment mettre en place une gestion des talents RH efficace ?
 slug: 8432-comment-mettre-en-place-une-gestion-des-talents-rh-efficace
-date: 2026-05-19T12:36:11+02:00
-updated: 2026-05-19T11:20:04
+date: 2026-05-19 12:36:11+02:00
+updated: 2026-05-19 11:20:04
 categorie: Ressources Humaines
-meta_title: "Gestion des talents RH : définition, enjeux et bonnes pratiques"
-meta_description: "Découvrez comment mettre en place une gestion des talents RH efficace dans votre TPE sans exploser votre budget. Cartographie, développement et rétention : les…"
+meta_title: 'Gestion des talents RH : définition, enjeux et bonnes pratiques'
+meta_description: 'Découvrez comment mettre en place une gestion des talents RH efficace
+  dans votre TPE sans exploser votre budget. Cartographie, développement et rétention
+  : les…'
 featured_image: /blog/8432-comment-mettre-en-place-une-gestion-des-talents-rh-efficace/featured-94234.jpg
 status: published
 min_words: 3000
 related_posts:
 - 2675-qu-est-ce-que-la-gestion-des-talents-en-ressources-humaines
+- 7114-comment-gerer-les-talents-dans-une-pme
+- 6481-comment-realiser-une-cartographie-des-competences-efficacement
+- 3345-comment-choisir-un-logiciel-gepp-pour-votre-entreprise
 link_anchors:
 - text: gestion des talents RH
   max: 2
 ---
-
 <h2>Pourquoi votre TPE a besoin d'une vraie stratégie RH ?</h2>
 
 <p>Je dirige une entreprise de 150 salariés depuis 11 ans maintenant. Au début, on gérait les talents "à la bonne franquette". Erreur monumentale. On a perdu nos meilleurs éléments faute de visibilité sur leur évolution. J'ai appris à mes dépens qu'une gestion des talents structurée, c'est vital pour la survie d'une TPE.</p>

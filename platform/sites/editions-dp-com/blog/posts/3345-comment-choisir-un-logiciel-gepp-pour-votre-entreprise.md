@@ -4,14 +4,20 @@ slug: 3345-comment-choisir-un-logiciel-gepp-pour-votre-entreprise
 date: '2026-05-20T09:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logiciel GEPP : pilotez vos emplois et parcours professionnels'
-meta_description: Découvrez comment choisir le bon logiciel GEPP pour votre entreprise. Comparatif des critères essentiels, budget réel et fonctionnalités clés pour optimiser la…
+meta_description: Découvrez comment choisir le bon logiciel GEPP pour votre entreprise.
+  Comparatif des critères essentiels, budget réel et fonctionnalités clés pour optimiser
+  la…
 min_words: 2000
 status: published
 link_anchors:
 - text: logiciel GEPP
   max: 2
+related_posts:
+- 8432-comment-mettre-en-place-une-gestion-des-talents-rh-efficace
+- 7114-comment-gerer-les-talents-dans-une-pme
+- 2675-qu-est-ce-que-la-gestion-des-talents-en-ressources-humaines
+- 6481-comment-realiser-une-cartographie-des-competences-efficacement
 ---
-
 <h2>Qu'est-ce que la GEPP et pourquoi j'en ai entendu parler ?</h2>
 
 <p>On m'a parlé de GEPP pour la première fois il y a deux ans. Je dirigeais alors une équipe de 45 personnes et je me retrouvais régulièrement coincé. Un collaborateur partait à la retraite, impossible de trouver quelqu'un avec ses compétences. Une nouvelle commande arrivait, personne n'avait les bonnes qualifications.</p>

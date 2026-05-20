@@ -1,21 +1,25 @@
 ---
 title: Qu’est-ce que la gestion des talents en ressources humaines ?
 slug: 2675-qu-est-ce-que-la-gestion-des-talents-en-ressources-humaines
-date: 2026-05-19T12:36:11+02:00
-updated: 2026-05-19T11:21:53
+date: 2026-05-19 12:36:11+02:00
+updated: 2026-05-19 11:21:53
 categorie: Ressources Humaines
-meta_title: "Gestion des talents : définition, exemples et stratégie RH"
-meta_description: "Découvrez la gestion des talents en RH : identifier, développer et retenir vos meilleurs collaborateurs. Stratégies concrètes pour PME et conseils d'expert."
+meta_title: 'Gestion des talents : définition, exemples et stratégie RH'
+meta_description: 'Découvrez la gestion des talents en RH : identifier, développer
+  et retenir vos meilleurs collaborateurs. Stratégies concrètes pour PME et conseils
+  d''expert.'
 featured_image: /blog/2675-qu-est-ce-que-la-gestion-des-talents-en-ressources-humaines/featured-6915.jpg
 status: published
 min_words: 3000
 related_posts:
+- 3345-comment-choisir-un-logiciel-gepp-pour-votre-entreprise
 - 8432-comment-mettre-en-place-une-gestion-des-talents-rh-efficace
+- 6481-comment-realiser-une-cartographie-des-competences-efficacement
+- 7114-comment-gerer-les-talents-dans-une-pme
 link_anchors:
 - text: définition de la gestion des talents
   max: 2
 ---
-
 <h2>Une définition simple du talent management</h2>
 
 <p>Je me souviens encore de mes débuts comme dirigeant il y a onze ans. Ma priorité ? Recruter les bonnes personnes et les garder le plus longtemps possible. Mais très vite, j'ai compris qu'il fallait aller plus loin. La gestion des talents, ou <strong>talent management</strong> comme disent les Anglo-Saxons, c'est bien plus que du simple recrutement.</p>
