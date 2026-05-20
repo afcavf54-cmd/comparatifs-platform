@@ -62,6 +62,7 @@ export default function AvisPage() {
   const [notConfigured, setNotConfigured] = useState(false)
   const [previewError, setPreviewError] = useState('')
   const [publishingMarque, setPublishingMarque] = useState<string | null>(null)
+  const [deletingMarque, setDeletingMarque] = useState<string | null>(null)
   const [msg, setMsg] = useState('')
   const [siteDomain, setSiteDomain] = useState('')
   const [sheetEditUrl, setSheetEditUrl] = useState('')
@@ -195,6 +196,40 @@ export default function AvisPage() {
       setMsg('✗ Erreur : ' + (e?.message || e))
     }
     setPublishingMarque(null)
+    setTimeout(() => setMsg(''), 8000)
+  }
+
+  // ─── Suppression d'un avis en attente ───────────────────────────────────
+  // Les lignes pending/scheduled viennent de la Google Sheet, donc on ne peut
+  // pas modifier la sheet directement. À la place, on ajoute la clé de la ligne
+  // dans `posts_avis/schedule_processed.json` — le cron Python skipper alors
+  // l'avis, et la preview-sheet filtre l'affichage. Pour réactiver un avis
+  // dismissed, il faut retirer manuellement la clé du fichier JSON sur GitHub.
+  async function deleteAvis(marque: string, date_publication: string) {
+    if (!confirm(
+      `Retirer l'avis "${marque}" de la liste à publier ?\n\n` +
+      `L'avis ne sera plus généré par le cron horaire. ` +
+      `Pour le réactiver, il faudra retirer manuellement la clé "${marque}" ` +
+      `du fichier posts_avis/schedule_processed.json sur GitHub.`
+    )) return
+    setDeletingMarque(marque)
+    try {
+      const r = await fetch(`/api/sites/${siteId}/avis/dismiss`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ marque, date_publication }),
+      })
+      const d = await r.json()
+      if (d.ok) {
+        setMsg(`✓ "${marque}" retiré de la liste`)
+        setTimeout(() => loadSheet(), 800)
+      } else {
+        setMsg('✗ ' + (d.error || 'Erreur'))
+      }
+    } catch (e: any) {
+      setMsg('✗ Erreur : ' + (e?.message || e))
+    }
+    setDeletingMarque(null)
     setTimeout(() => setMsg(''), 8000)
   }
 
@@ -349,7 +384,10 @@ export default function AvisPage() {
           </p>
           {pending.map((r, i) => (
             <Row key={i} row={r} publishingMarque={publishingMarque}
-                 onPublish={() => publishNow(r.marque)} siteDomain={siteDomain} />
+                 deletingMarque={deletingMarque}
+                 onPublish={() => publishNow(r.marque)}
+                 onDelete={() => deleteAvis(r.marque, r.date_publication)}
+                 siteDomain={siteDomain} />
           ))}
         </div>
       )}
@@ -360,7 +398,10 @@ export default function AvisPage() {
           <div style={sectionTitle}>📅 Programmés ({scheduled.length})</div>
           {scheduled.map((r, i) => (
             <Row key={i} row={r} publishingMarque={publishingMarque}
-                 onPublish={() => publishNow(r.marque)} siteDomain={siteDomain} />
+                 deletingMarque={deletingMarque}
+                 onPublish={() => publishNow(r.marque)}
+                 onDelete={() => deleteAvis(r.marque, r.date_publication)}
+                 siteDomain={siteDomain} />
           ))}
         </div>
       )}
@@ -415,13 +456,16 @@ export default function AvisPage() {
   )
 }
 
-function Row({ row, publishingMarque, onPublish, siteDomain }: {
+function Row({ row, publishingMarque, deletingMarque, onPublish, onDelete, siteDomain }: {
   row: SheetRow
   publishingMarque: string | null
+  deletingMarque: string | null
   onPublish: () => void
+  onDelete: () => void
   siteDomain: string
 }) {
   const isPublishing = publishingMarque === row.marque
+  const isDeleting = deletingMarque === row.marque
   const note = row.note_globale
   return (
     <div style={{ display: 'grid', gridTemplateColumns: '1fr auto auto auto auto', alignItems: 'center', gap: 12, padding: '12px 14px', background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 8, marginBottom: 8 }}>
@@ -439,11 +483,15 @@ function Row({ row, publishingMarque, onPublish, siteDomain }: {
       <span style={{ fontSize: 10, padding: '3px 8px', borderRadius: 4, fontWeight: 700, textTransform: 'uppercase' as const, background: (SENTIMENT_COLOR[row.sentiment] || '#5E9ED6') + '22', color: SENTIMENT_COLOR[row.sentiment] || '#5E9ED6' }}>
         {SENTIMENT_LABEL[row.sentiment] || row.sentiment}
       </span>
-      <button onClick={onPublish} disabled={isPublishing}
-        style={{ padding: '6px 12px', borderRadius: 6, border: '1px solid #3D7A4F', background: isPublishing ? '#1A2A1F' : 'transparent', color: isPublishing ? '#4A5568' : '#3D7A4F', cursor: isPublishing ? 'wait' : 'pointer', fontSize: 12, fontWeight: 600 }}>
+      <button onClick={onPublish} disabled={isPublishing || isDeleting}
+        style={{ padding: '6px 12px', borderRadius: 6, border: '1px solid #3D7A4F', background: isPublishing ? '#1A2A1F' : 'transparent', color: (isPublishing || isDeleting) ? '#4A5568' : '#3D7A4F', cursor: (isPublishing || isDeleting) ? 'wait' : 'pointer', fontSize: 12, fontWeight: 600 }}>
         {isPublishing ? '⏳ Lancement...' : '🚀 Publier maintenant'}
       </button>
-      <span />
+      <button onClick={onDelete} disabled={isPublishing || isDeleting}
+        title="Retirer cet avis de la liste à publier"
+        style={{ padding: '6px 10px', borderRadius: 6, border: '1px solid #C0392B', background: isDeleting ? '#2A1A1A' : 'transparent', color: (isPublishing || isDeleting) ? '#4A5568' : '#C0392B', cursor: (isPublishing || isDeleting) ? 'wait' : 'pointer', fontSize: 12, fontWeight: 600 }}>
+        {isDeleting ? '⏳' : '🗑️'}
+      </button>
     </div>
   )
 }
