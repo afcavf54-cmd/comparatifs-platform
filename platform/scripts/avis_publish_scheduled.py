@@ -287,13 +287,18 @@ Les questions FAQ DOIVENT se terminer par '?'.
 N'invente JAMAIS de note, de chiffre, de pourcentage qui n'est pas dans les données fournies."""
 
 
-def build_generation_prompt(row: dict, site: dict, faq_questions: list = None) -> tuple:
+def build_generation_prompt(row: dict, site: dict, faq_questions: list = None, persona_prompt: str = "") -> tuple:
     """Construit le user prompt pour générer le contenu structuré d'un avis.
 
     Si `faq_questions` est fourni (liste non vide), Claude doit reproduire ces
     questions VERBATIM dans la FAQ et ne génère QUE les réponses. Cela évite
     le doublon avec une FAQ déjà imposée par l'éditeur dans le dashboard.
     Sinon, Claude invente 4 questions + réponses (comportement historique).
+
+    Si `persona_prompt` est fourni (lu depuis `config.yaml`, champ
+    `persona_prompt`), il est injecté en tête du user prompt pour cadrer le
+    ton, le persona du rédacteur, l'angle éditorial, le niveau de détail, etc.
+    Le persona s'applique uniformément à toutes les sections générées.
     """
     marque = row.get("marque", "").strip()
     categorie = row.get("categorie", "").strip()
@@ -374,7 +379,20 @@ def build_generation_prompt(row: dict, site: dict, faq_questions: list = None) -
   ]"""
         faq_constraint = ""
 
-    user = f"""Tu rédiges un avis structuré sur **{marque}** ({categorie}).
+    # ─── Persona éditorial injecté en tête du user prompt ────────────────
+    # Le persona est défini par l'éditeur dans config.yaml (champ
+    # `persona_prompt`) et donne le ton, l'angle, le persona du rédacteur,
+    # le niveau de détail attendu, etc. On le place en TÊTE pour qu'il cadre
+    # tout ce qui suit (la section DONNÉES/CONTRAINTES vient ensuite).
+    persona_section = ""
+    if persona_prompt and persona_prompt.strip():
+        persona_section = (
+            "PERSONA ÉDITORIAL (à incarner pour toute la rédaction — c'est ta voix, "
+            "ton ton, ton positionnement) :\n"
+            f"{persona_prompt.strip()}\n\n"
+        )
+
+    user = f"""{persona_section}Tu rédiges un avis structuré sur **{marque}** ({categorie}).
 
 DONNÉES FOURNIES (à respecter strictement, ne pas inventer) :
 - Marque : {marque}
@@ -428,7 +446,7 @@ Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de `
     return GENERATION_SYSTEM_PROMPT, user
 
 
-def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_questions: list = None) -> dict:
+def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_questions: list = None, persona_prompt: str = "") -> dict:
     """Appelle Claude et parse le JSON retourné. Lève si parsing échoue.
 
     Si `custom_prompt` est fourni (saisi par l'éditeur via le dashboard et
@@ -441,11 +459,16 @@ def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_qu
     Si `faq_questions` est fourni (liste non vide), Claude est instruit de
     reproduire ces questions verbatim et ne génère QUE les réponses. On force
     aussi côté Python l'alignement (les questions retournées sont remplacées
-    par les questions imposées en cas de drift)."""
+    par les questions imposées en cas de drift).
+
+    Si `persona_prompt` est fourni (lu depuis config.yaml), il est injecté à
+    la fois dans le 1er appel (build_generation_prompt) et le 2e appel
+    (generate_sections_html) pour garantir la cohérence de ton sur toute la
+    page (intro, en bref, sections custom, FAQ, verdict)."""
     # Normalisation de la liste FAQ imposée
     forced_faq = [q.strip() for q in (faq_questions or []) if isinstance(q, str) and q.strip()]
 
-    system, user = build_generation_prompt(row, site, faq_questions=forced_faq)
+    system, user = build_generation_prompt(row, site, faq_questions=forced_faq, persona_prompt=persona_prompt)
     raw = call_claude(system, user, max_tokens=4000)
     raw = strip_code_fences(raw)
     try:
@@ -462,13 +485,15 @@ def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_qu
 
     # ─── Génération du bloc sections custom (si prompt fourni) ──────────
     sections_html = ""
+    sections_toc: list = []
     if custom_prompt and custom_prompt.strip():
         try:
-            sections_html = generate_sections_html(row, site, custom_prompt)
+            sections_html, sections_toc = generate_sections_html(row, site, custom_prompt, persona_prompt=persona_prompt)
         except Exception as e:
             print(f"    ⚠ Échec génération sections custom : {e}")
             # On garde les 3 H2 standards en fallback
             sections_html = ""
+            sections_toc = []
 
     # ─── Réalignement FAQ avec les questions imposées ──────────────────────
     # Si l'éditeur a saisi une liste, on FORCE les questions à correspondre
@@ -505,32 +530,105 @@ def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_qu
         # Bloc HTML libre généré à partir du prompt custom. Vide si pas de
         # custom_prompt fourni → le template j2 retombe sur les 3 H2 standards.
         "sections_html": sections_html,
+        # Liste des H2 du sections_html avec leurs IDs d'ancre, pour que le
+        # template puisse construire un sommaire reflétant la structure custom
+        # plutôt qu'une entrée unique "Analyse détaillée".
+        "sections_toc": sections_toc,
     }
 
 
 # ─── Génération du bloc sections via prompt custom ────────────────────────
 
-SECTIONS_HTML_SYSTEM_PROMPT = """Tu es un rédacteur SEO expert spécialisé dans les avis produits.
+SECTIONS_HTML_SYSTEM_PROMPT = """Tu es un rédacteur SEO francophone spécialisé dans les avis produits.
 Tu écris des sections d'avis en HTML pur, prêt à être inséré dans une page web.
 
-RÈGLES IMPÉRATIVES :
+RÈGLES TECHNIQUES IMPÉRATIVES :
 - HTML pur uniquement : <h2>, <h3>, <p>, <strong>, <em>, <ul>, <li>
 - AUCUNE balise <html>, <head>, <body>, <main>, <article>, <section>, <div>
 - AUCUN markdown, AUCUN ``` code block
 - Commence DIRECTEMENT par un <h2>
-- Style : phrases courtes, ton professionnel, factuel, conforme E-E-A-T
-- N'invente JAMAIS de chiffres, partenariats ou récompenses
+- N'invente JAMAIS de chiffres précis, partenariats ou récompenses : reste sur des
+  faits notoires ou des analyses générales si tu manques d'éléments
 - Aucun tiret long (—), utilise des virgules ou des points
-- Tu réponds UNIQUEMENT avec le HTML, sans préambule ni commentaire"""
+- Tu réponds UNIQUEMENT avec le HTML, sans préambule ni commentaire
+
+RÈGLES ÉDITORIALES :
+- Adopte STRICTEMENT le persona éditorial qui te sera fourni en tête du user prompt
+  (voix, ton, vouvoiement, niveau de pédagogie, angle prioritaire). Ce persona prime
+  sur toute autre considération stylistique.
+- Donne ton avis : un avis est une opinion argumentée, pas un résumé descriptif. Tu
+  peux pointer ce qui marche, ce qui coince, à qui ça convient ou pas.
+- Conforme E-E-A-T : appuie tes affirmations sur des éléments visibles (interface,
+  tarification publique, retours utilisateurs typiques) plutôt que sur des données
+  inventées."""
 
 
-def generate_sections_html(row: dict, site: dict, custom_prompt: str) -> str:
+def _slugify_anchor(s: str) -> str:
+    """Slugifie un titre pour servir d'ID HTML d'ancre. Strip les tags HTML
+    qui pourraient être imbriqués (<strong>...</strong> dans un H2), normalise
+    en ASCII lowercase, remplace tout caractère non alphanumérique par un tiret."""
+    s = re.sub(r"<[^>]+>", "", s or "")
+    s = unicodedata.normalize("NFD", s)
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    s = re.sub(r"[^a-zA-Z0-9]+", "-", s).strip("-").lower()
+    return s or "section"
+
+
+def _enrich_sections_html(html: str) -> tuple:
+    """Parse les <h2>...</h2> du HTML, ajoute un attribut id="..." à chacun
+    (slug du titre), et retourne (html_enrichi, [{titre, id}, ...]).
+
+    La liste retournée permet au template j2 de construire le sommaire avec une
+    ancre par H2. Si un <h2> contient déjà un id, on le préserve."""
+    toc = []
+    used_ids: set = set()
+
+    def repl(m):
+        existing_attrs = m.group(1) or ""
+        inner = m.group(2)
+        # Titre lisible : strip tags imbriqués (ex: <strong>) pour l'affichage TOC
+        title = re.sub(r"<[^>]+>", "", inner).strip()
+        # Réutilise un id existant si présent dans le HTML retourné par Claude
+        id_match = re.search(r'\bid\s*=\s*"([^"]+)"', existing_attrs)
+        if id_match:
+            slug = id_match.group(1)
+            new_attrs = existing_attrs
+        else:
+            base = _slugify_anchor(title)
+            slug = base
+            n = 2
+            while slug in used_ids:
+                slug = f"{base}-{n}"
+                n += 1
+            # On ajoute l'id sans toucher aux autres attributs éventuels
+            new_attrs = f'{existing_attrs} id="{slug}"'
+        used_ids.add(slug)
+        toc.append({"titre": title, "id": slug})
+        return f"<h2{new_attrs}>{inner}</h2>"
+
+    new_html = re.sub(
+        r"<h2([^>]*)>(.*?)</h2>",
+        repl, html, flags=re.DOTALL | re.IGNORECASE
+    )
+    return new_html, toc
+
+
+def generate_sections_html(row: dict, site: dict, custom_prompt: str, persona_prompt: str = "") -> tuple:
     """Génère le bloc HTML des sections H2 entre le sommaire et 'Retours
     d'expérience des utilisateurs', à partir d'un prompt rédigé par l'éditeur.
 
     Le prompt est libre — il contient la structure Hn souhaitée et les
     instructions de rédaction. On l'enrichit avec les métadonnées de l'avis
-    (marque, catégorie, sentiment) pour cadrer le ton."""
+    (marque, catégorie, sentiment) pour cadrer le ton.
+
+    Si `persona_prompt` est fourni (lu depuis config.yaml), il est injecté
+    en tête du user prompt pour aligner le ton/style/persona avec le 1er appel
+    Claude (build_generation_prompt). Sans persona, ton neutre par défaut.
+
+    Retourne un tuple (html_enrichi, sections_toc) :
+      - html_enrichi : le HTML retourné par Claude, nettoyé, avec un id="..."
+        ajouté à chaque <h2> pour servir d'ancre depuis le sommaire
+      - sections_toc : liste [{titre, id}, ...] pour construire le sommaire"""
     marque = row.get("marque", "").strip()
     categorie = row.get("categorie", "").strip()
     sentiment = normalize_sentiment(row.get("sentiment", ""))
@@ -538,7 +636,16 @@ def generate_sections_html(row: dict, site: dict, custom_prompt: str) -> str:
     year = str(site.get("year") or datetime.now(PARIS).year)
     cible = (row.get("cible") or "").strip()
 
-    user = f"""Tu rédiges les sections principales d'un avis sur **{marque}** ({categorie}).
+    # Persona éditorial : injecté en tête pour aligner le ton avec le 1er appel
+    persona_section = ""
+    if persona_prompt and persona_prompt.strip():
+        persona_section = (
+            "PERSONA ÉDITORIAL (à incarner pour toute la rédaction — c'est ta voix, "
+            "ton ton, ton positionnement) :\n"
+            f"{persona_prompt.strip()}\n\n"
+        )
+
+    user = f"""{persona_section}Tu rédiges les sections principales d'un avis sur **{marque}** ({categorie}).
 
 CONTEXTE DE L'AVIS :
 - Marque : {marque}
@@ -561,7 +668,9 @@ Réponds avec le HTML des sections, prêt à être inséré tel quel dans la pag
     # premier <h2>, on coupe avant.
     raw = re.sub(r"^(?:.*?)(<h[1-6])", r"\1", raw, count=1, flags=re.DOTALL | re.IGNORECASE)
     raw = re.sub(r"</?(?:html|body|head|main|article|section|div)[^>]*>", "", raw, flags=re.IGNORECASE)
-    return raw.strip()
+    # Enrichit chaque <h2> avec un id="..." et extrait la TOC pour le template
+    enriched_html, toc = _enrich_sections_html(raw.strip())
+    return enriched_html, toc
 
 
 # ─── Écriture du markdown ────────────────────────────────────────────────
@@ -625,6 +734,10 @@ def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict
         # h2_support, h2_qualite_prix dans le rendu si non vide). Cf. template
         # avis-post.html.j2.
         "sections_html": generated.get("sections_html", ""),
+        # Liste [{titre, id}, ...] des H2 du sections_html, utilisée par le
+        # template pour construire le sommaire dynamique reflétant la structure
+        # custom imposée par l'éditeur.
+        "sections_toc": generated.get("sections_toc", []),
         # SEO
         "meta_title": (row.get("meta_title") or generated.get("meta_title") or f"Avis {marque} : notre verdict").strip(),
         "meta_description": (row.get("meta_description") or generated.get("meta_description") or "").strip(),
