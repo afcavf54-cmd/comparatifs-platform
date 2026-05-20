@@ -6,14 +6,17 @@ import Link from 'next/link'
 
 // Page d'édition d'un brouillon d'avis.
 // Le brouillon = une ligne dans la Google Sheet qui n'est pas encore publiée
-// (pas de fichier .md dans posts_avis/). Sur cette page, Julien définit un
-// prompt custom (avec sa structure Hn imposée) qui sera utilisé par le script
-// Python pour générer les sections H2 entre le sommaire et "Retours d'expérience
-// des utilisateurs". Le reste du contenu (intro, en bref, points forts/faibles,
-// FAQ, verdict) est généré automatiquement avec les paramètres standards.
+// (pas de fichier .md dans posts_avis/). Sur cette page, Julien définit :
+//   1. Un prompt custom (structure Hn imposée) → utilisé pour générer le bloc
+//      HTML des sections H2 entre le sommaire et "Retours d'expérience des
+//      utilisateurs".
+//   2. Une liste de questions FAQ imposées → si non vide, c'est cette liste qui
+//      sera utilisée et NON celle inventée par Claude (évite le doublon).
+// Le reste du contenu (intro, en bref, points forts/faibles, verdict) est
+// généré automatiquement avec les paramètres standards.
 //
 // Workflow utilisateur :
-//   1. Édite le prompt (autosauvegardé dans posts_avis/_drafts.json)
+//   1. Édite le prompt + les questions FAQ (autosauvegardé dans _drafts.json)
 //   2. Clique "🚀 Générer & Publier" → déclenche le workflow GitHub Actions
 //   3. Attente ~3 min, puis l'avis devient publié et apparaît dans /sites/<id>/avis
 
@@ -42,6 +45,14 @@ export default function AvisDraftPage() {
   const [sheetRow, setSheetRow] = useState<SheetRow | null>(null)
   const [promptCustom, setPromptCustom] = useState('')
   const [originalPrompt, setOriginalPrompt] = useState('')
+  // ─── Questions FAQ imposées ──────────────────────────────────────────────
+  // Tableau de strings, chaque entrée = 1 question. Vide tant que l'éditeur
+  // n'en a pas ajouté. Si la liste est vide à la publication → comportement
+  // historique (Claude invente 4 questions + réponses). Sinon → Claude utilise
+  // ces questions verbatim et ne génère QUE les réponses.
+  const [faqQuestions, setFaqQuestions] = useState<string[]>([])
+  const [originalFaq, setOriginalFaq] = useState<string[]>([])
+
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [publishing, setPublishing] = useState(false)
@@ -59,7 +70,6 @@ export default function AvisDraftPage() {
         if (cancelled) return
         if (matching) {
           setSheetRow(matching)
-          // Si l'avis a déjà été publié, rediriger vers l'éditeur d'avis publié
           if (matching.status === 'published') {
             router.replace(`/sites/${siteId}/avis/${slug}`)
             return
@@ -67,7 +77,7 @@ export default function AvisDraftPage() {
         }
       } catch {}
 
-      // 2) Charger le prompt custom déjà sauvegardé (s'il existe)
+      // 2) Charger le prompt custom + questions FAQ sauvegardés
       try {
         const draftRes = await fetch(`/api/sites/${siteId}/avis/draft/${slug}`)
         const d = await draftRes.json()
@@ -75,6 +85,9 @@ export default function AvisDraftPage() {
         const p = d?.draft?.prompt_custom || ''
         setPromptCustom(p)
         setOriginalPrompt(p)
+        const fq = Array.isArray(d?.draft?.faq_questions) ? d.draft.faq_questions : []
+        setFaqQuestions(fq)
+        setOriginalFaq(fq)
       } catch {}
 
       if (!cancelled) setLoading(false)
@@ -82,17 +95,31 @@ export default function AvisDraftPage() {
     return () => { cancelled = true }
   }, [siteId, slug, router])
 
-  async function savePrompt(): Promise<boolean> {
+  // ─── Helpers FAQ ────────────────────────────────────────────────────────
+  function addFaqQuestion() {
+    setFaqQuestions(prev => [...prev, ''])
+  }
+  function updateFaqQuestion(idx: number, val: string) {
+    setFaqQuestions(prev => prev.map((q, i) => (i === idx ? val : q)))
+  }
+  function removeFaqQuestion(idx: number) {
+    setFaqQuestions(prev => prev.filter((_, i) => i !== idx))
+  }
+
+  async function saveDraft(): Promise<boolean> {
     setSaving(true); setMsg('')
     try {
+      // On filtre les questions vides côté client avant envoi
+      const cleanedFaq = faqQuestions.map(q => q.trim()).filter(Boolean)
       const r = await fetch(`/api/sites/${siteId}/avis/draft/${slug}`, {
         method: 'PUT', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt_custom: promptCustom }),
+        body: JSON.stringify({ prompt_custom: promptCustom, faq_questions: cleanedFaq }),
       })
       const d = await r.json()
       if (d.ok) {
         setOriginalPrompt(promptCustom)
-        setMsg('✓ Prompt sauvegardé')
+        setOriginalFaq([...faqQuestions])
+        setMsg('✓ Brouillon sauvegardé')
         setSaving(false)
         setTimeout(() => setMsg(''), 4000)
         return true
@@ -111,17 +138,21 @@ export default function AvisDraftPage() {
       setMsg('✗ Saisis d\'abord un prompt')
       return
     }
+    const cleanedFaq = faqQuestions.map(q => q.trim()).filter(Boolean)
+    const faqInfo = cleanedFaq.length > 0
+      ? `• FAQ : ${cleanedFaq.length} question(s) imposée(s) — Claude génère uniquement les réponses\n`
+      : `• FAQ : Claude inventera 4 questions + réponses (standard)\n`
     if (!confirm(
       `Lancer la génération et publication de "${sheetRow.marque}" ?\n\n` +
-      `• Claude va générer l'intro, en bref, points forts/faibles, FAQ, verdict (standard)\n` +
-      `• Et les sections H2 entre sommaire et avis utilisateurs (selon ton prompt custom)\n` +
+      `• Intro, en bref, points forts/faibles, verdict : générés automatiquement\n` +
+      `• Sections H2 entre sommaire et avis utilisateurs : selon ton prompt custom\n` +
+      faqInfo +
       `• Puis l'avis sera commité dans posts_avis/ et le site redéployé\n\n` +
       `Durée totale : ~3 minutes.`
     )) return
 
-    // Sauvegarder le prompt avant de publier si non sauvegardé
-    if (promptCustom !== originalPrompt) {
-      const ok = await savePrompt()
+    if (isDirty) {
+      const ok = await saveDraft()
       if (!ok) return
     }
 
@@ -158,7 +189,12 @@ export default function AvisDraftPage() {
     )
   }
 
-  const isDirty = promptCustom !== originalPrompt
+  // ─── Dirty detection ─────────────────────────────────────────────────────
+  // On considère qu'il y a des modifs non sauvegardées si le prompt OU la
+  // liste FAQ (en JSON pour comparer ses contenus) a changé.
+  const promptDirty = promptCustom !== originalPrompt
+  const faqDirty = JSON.stringify(faqQuestions) !== JSON.stringify(originalFaq)
+  const isDirty = promptDirty || faqDirty
   const canPublish = !!promptCustom.trim() && !publishing
 
   return (
@@ -171,8 +207,8 @@ export default function AvisDraftPage() {
         ✏️ Brouillon : {sheetRow.marque}
       </h1>
       <p style={{ color: '#8B9CB0', fontSize: 13, margin: '0 0 24px', maxWidth: 800 }}>
-        Définis ton prompt custom pour les sections H2 entre le sommaire et le bloc « Retours d'expérience des utilisateurs ».
-        Le reste du contenu (intro, en bref, points forts/faibles, FAQ, verdict) sera généré automatiquement avec les paramètres standards.
+        Définis ton prompt custom (titres H2) ET tes questions FAQ imposées.
+        Le reste du contenu (intro, en bref, points forts/faibles, verdict) sera généré automatiquement.
       </p>
 
       {/* Métadonnées sheet (lecture seule) */}
@@ -197,10 +233,9 @@ export default function AvisDraftPage() {
       <div style={{ background: '#0E1422', border: '1px solid #1E2D3D', borderRadius: 12, padding: 20, marginBottom: 20 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
           <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>
-            🎯 Prompt custom + structure Hn
+            🎯 Prompt custom + titres H2
           </div>
-          {isDirty && <span style={{ fontSize: 11, color: '#F6AD55', fontWeight: 600 }}>● Modifications non sauvegardées</span>}
-          {!isDirty && originalPrompt && <span style={{ fontSize: 11, color: '#3D7A4F', fontWeight: 600 }}>✓ Sauvegardé</span>}
+          {promptDirty && <span style={{ fontSize: 11, color: '#F6AD55', fontWeight: 600 }}>● Modifié</span>}
         </div>
 
         <textarea
@@ -228,7 +263,7 @@ Contraintes :
 - Pas de markdown, pas de tirets longs
 - Ton factuel, sans superlatifs
 - ~800 mots au total pour ces sections`}
-          rows={20}
+          rows={18}
           style={{
             width: '100%', padding: 14, borderRadius: 8,
             background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#E2E8F0',
@@ -238,15 +273,75 @@ Contraintes :
         />
 
         <div style={{ marginTop: 10, fontSize: 11, color: '#8B9CB0', lineHeight: 1.6 }}>
-          💡 Le prompt doit décrire les sections H2 (et éventuellement H3) à générer. Claude rédige tout en HTML brut.
-          <br />
-          📝 Sauvegarde aussi souvent que tu veux — la publication ne se déclenche que via le bouton « Générer & Publier ».
+          💡 Décris les sections H2 (et éventuellement H3) à générer. Claude rédige tout en HTML brut.
         </div>
+      </div>
+
+      {/* Questions FAQ imposées */}
+      <div style={{ background: '#0E1422', border: '1px solid #1E2D3D', borderRadius: 12, padding: 20, marginBottom: 24 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+          <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>
+            ❓ Questions FAQ imposées ({faqQuestions.filter(q => q.trim()).length})
+          </div>
+          {faqDirty && <span style={{ fontSize: 11, color: '#F6AD55', fontWeight: 600 }}>● Modifié</span>}
+        </div>
+
+        <div style={{ fontSize: 12, color: '#8B9CB0', lineHeight: 1.6, marginBottom: 14 }}>
+          Saisis ici les questions exactes que tu veux voir dans la FAQ de l'avis. Claude générera UNIQUEMENT les réponses
+          (pas de questions inventées). Si tu laisses la liste vide, Claude crée 4 questions automatiquement.
+        </div>
+
+        {faqQuestions.length === 0 && (
+          <div style={{ fontSize: 12, color: '#4A5568', fontStyle: 'italic' as const, marginBottom: 12 }}>
+            Aucune question imposée. Claude générera 4 questions standards.
+          </div>
+        )}
+
+        {faqQuestions.map((q, idx) => (
+          <div key={idx} style={{ display: 'flex', gap: 8, marginBottom: 8, alignItems: 'center' }}>
+            <div style={{ flexShrink: 0, fontSize: 11, color: '#4A5568', width: 24, textAlign: 'center' as const }}>
+              {idx + 1}.
+            </div>
+            <input
+              type="text"
+              value={q}
+              onChange={e => updateFaqQuestion(idx, e.target.value)}
+              placeholder={`Question ${idx + 1} ? (doit se terminer par '?')`}
+              style={{
+                flex: 1, padding: '10px 12px', borderRadius: 6,
+                background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#E2E8F0',
+                fontSize: 13, outline: 'none', boxSizing: 'border-box' as const,
+              }}
+            />
+            <button
+              onClick={() => removeFaqQuestion(idx)}
+              title="Supprimer cette question"
+              style={{
+                padding: '8px 12px', borderRadius: 6,
+                background: 'transparent', border: '1px solid #1E2D3D',
+                color: '#FC8181', fontSize: 13, cursor: 'pointer',
+              }}
+            >
+              ✕
+            </button>
+          </div>
+        ))}
+
+        <button
+          onClick={addFaqQuestion}
+          style={{
+            marginTop: 6, padding: '8px 14px', borderRadius: 6,
+            background: 'transparent', border: '1px dashed #5E9ED6',
+            color: '#5E9ED6', fontSize: 12, fontWeight: 600, cursor: 'pointer',
+          }}
+        >
+          + Ajouter une question
+        </button>
       </div>
 
       {/* Actions */}
       <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' as const }}>
-        <button onClick={() => savePrompt()} disabled={saving || !isDirty}
+        <button onClick={() => saveDraft()} disabled={saving || !isDirty}
           style={{
             padding: '10px 18px', borderRadius: 8,
             background: isDirty ? '#5E9ED6' : '#1E2D3D',
@@ -254,7 +349,7 @@ Contraintes :
             border: 'none', fontWeight: 700, fontSize: 13,
             cursor: (saving || !isDirty) ? 'default' : 'pointer',
           }}>
-          {saving ? '⏳ Sauvegarde...' : '💾 Sauvegarder le prompt'}
+          {saving ? '⏳ Sauvegarde...' : '💾 Sauvegarder le brouillon'}
         </button>
 
         <button onClick={generateAndPublish} disabled={!canPublish}
