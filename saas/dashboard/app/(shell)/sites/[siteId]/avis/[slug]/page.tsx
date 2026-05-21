@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState, use } from 'react'
+import { useEffect, useState, use, useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
@@ -35,7 +35,15 @@ type Avis = {
   date?: string
   updated?: string
   cible?: string
+  // Intro : nouveau paragraphe d'introduction sous le H1 (généré par Claude
+  // séparément du en_bref). Cf. avis_publish_scheduled.py v14+ et template
+  // avis-post.html.j2 v5+.
+  intro?: string
   en_bref?: string
+  // Chemin relatif du logo uploadé pour cet avis. Type :
+  // `/avis/<slug>/logo-<ts>.<ext>` (le fichier réside dans
+  // platform/sites/<siteId>/public/avis/<slug>/...).
+  logo_path?: string
   points_forts?: string[]
   points_faibles?: string[]
   tarifs?: Tarif[]
@@ -70,6 +78,9 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
   // pendant qu'on lance le workflow et d'afficher un loader spécifique.
   const [regenerating, setRegenerating] = useState(false)
   const [msg, setMsg] = useState<string>('')
+  // ── État pour l'upload du logo (encart "Mon avis en Bref") ─────────
+  const [uploadingLogo, setUploadingLogo] = useState(false)
+  const logoInputRef = useRef<HTMLInputElement>(null)
 
   // ── Chargement initial ──────────────────────────────────────────────
   useEffect(() => {
@@ -128,6 +139,53 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
       setMsg('Erreur réseau')
     } finally {
       setSaving(false)
+    }
+  }
+
+  // ── Upload du logo de la marque (encart "Mon avis en Bref") ─────────
+  // Le fichier est commité dans `platform/sites/<siteId>/public/avis/<slug>/
+  // logo-<timestamp>.<ext>` et le chemin relatif `/avis/<slug>/logo-<ts>.<ext>`
+  // est stocké dans le frontmatter du .md. Le template avis-post.html.j2
+  // affiche ce logo en haut de page (avec un placeholder = initiale de la
+  // marque si vide).
+  // Pattern copié de blog-edit-page (uploadFeatured) : commit direct via
+  // l'API /api/github/upload, puis update du frontmatter en mémoire.
+  const uploadLogo = async (file: File) => {
+    if (!file || !slug) return
+    setUploadingLogo(true)
+    setMsg('📷 Upload du logo en cours...')
+    const ext = (file.name.split('.').pop() || 'png').toLowerCase()
+    const imgName = `logo-${Date.now() % 100000}.${ext}`
+    const ghPath = `platform/sites/${siteId}/public/avis/${slug}/${imgName}`
+    try {
+      const dataUrl: string = await new Promise((resolve, reject) => {
+        const r = new FileReader()
+        r.onload = () => resolve(String(r.result).split(',')[1])
+        r.onerror = reject
+        r.readAsDataURL(file)
+      })
+      const r = await fetch('/api/github/upload', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          path: ghPath,
+          content: dataUrl,
+          message: `HUB: Avis logo for ${slug}`,
+        }),
+      })
+      if (!r.ok) {
+        setMsg('✗ Erreur upload logo')
+        return
+      }
+      // Met à jour le state local du frontmatter. La sauvegarde via le bouton
+      // "Enregistrer" persiste ce chemin dans le .md de l'avis.
+      setAvis((prev) => prev ? { ...prev, logo_path: `/avis/${slug}/${imgName}` } : prev)
+      setMsg('✓ Logo uploadé — pense à enregistrer pour persister')
+      setTimeout(() => setMsg(''), 3500)
+    } catch {
+      setMsg('✗ Erreur upload')
+    } finally {
+      setUploadingLogo(false)
     }
   }
 
@@ -292,15 +350,87 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
 
       {/* ── EN BREF + H1 ───────────────────────────────────────────── */}
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Hero (titre + résumé)</h2>
+        <h2 style={h2Style}>Hero (titre + intro + résumé)</h2>
         <div style={{ marginBottom: 12 }}>
           <label style={labelStyle}>Titre H1</label>
           <input style={inputStyle} value={avis.h1 || ''} onChange={e => upd({ h1: e.target.value })}
                  placeholder={`Avis ${avis.marque || 'Marque'} (2026) : ...`} />
         </div>
+        <div style={{ marginBottom: 12 }}>
+          <label style={labelStyle}>
+            Intro <span style={{ textTransform: 'none', color: '#888', fontWeight: 400 }}>— paragraphe d'introduction sous le H1</span>
+          </label>
+          <textarea style={textareaStyle} rows={4} value={avis.intro || ''} onChange={e => upd({ intro: e.target.value })}
+                    placeholder="Paragraphe d'accroche éditoriale qui pose le contexte. Différent du résumé « En bref »." />
+        </div>
+        <div style={{ marginBottom: 12 }}>
+          <label style={labelStyle}>
+            Résumé « En bref » <span style={{ textTransform: 'none', color: '#888', fontWeight: 400 }}>— affiché à côté du logo</span>
+          </label>
+          <textarea style={textareaStyle} value={avis.en_bref || ''} onChange={e => upd({ en_bref: e.target.value })}
+                    placeholder="Synthèse de l'avis en ~50 mots : verdict, points clés, pour qui c'est." />
+        </div>
+
+        {/* ── Upload du logo ─────────────────────────────────────────────── */}
+        {/* Le pattern d'upload est identique à celui du blog (uploadFeatured).
+            Le fichier est commité dans `platform/sites/<siteId>/public/avis/<slug>/`
+            et le chemin relatif `/avis/<slug>/logo-<ts>.<ext>` est stocké
+            dans le frontmatter, puis rendu dans avis-post.html.j2. */}
         <div>
-          <label style={labelStyle}>Résumé « En bref »</label>
-          <textarea style={textareaStyle} value={avis.en_bref || ''} onChange={e => upd({ en_bref: e.target.value })} />
+          <label style={labelStyle}>
+            Logo de la marque <span style={{ textTransform: 'none', color: '#888', fontWeight: 400 }}>— affiché à gauche du résumé « En bref »</span>
+          </label>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <input
+              style={{ ...inputStyle, flex: 1 }}
+              value={avis.logo_path || ''}
+              onChange={e => upd({ logo_path: e.target.value })}
+              placeholder={`/avis/${slug || 'votre-slug'}/logo.png — ou laisse vide pour uploader ci-contre`}
+            />
+            <button
+              type="button"
+              onClick={() => logoInputRef.current?.click()}
+              disabled={uploadingLogo}
+              style={{
+                padding: '8px 14px',
+                borderRadius: 8,
+                border: '1px solid #1E2D3D',
+                background: uploadingLogo ? '#1E2D3D' : '#0D1117',
+                color: uploadingLogo ? '#888' : '#00D4AA',
+                cursor: uploadingLogo ? 'not-allowed' : 'pointer',
+                fontSize: 13,
+                fontWeight: 600,
+                whiteSpace: 'nowrap',
+              }}
+            >
+              {uploadingLogo ? '⏳ Upload...' : '📤 Upload'}
+            </button>
+            <input
+              ref={logoInputRef}
+              type="file"
+              accept="image/png,image/jpeg,image/webp,image/svg+xml"
+              style={{ display: 'none' }}
+              onChange={e => e.target.files?.[0] && uploadLogo(e.target.files[0])}
+            />
+          </div>
+          {avis.logo_path && (
+            <div style={{
+              marginTop: 10,
+              display: 'inline-flex', alignItems: 'center', gap: 12,
+              padding: 12, borderRadius: 10, border: '1px solid #1E2D3D', background: '#0A0E1A'
+            }}>
+              <img
+                src={
+                  avis.logo_path.startsWith('http')
+                    ? avis.logo_path
+                    : `https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/${siteId}/public${avis.logo_path}`
+                }
+                alt={`Logo ${avis.marque || ''}`}
+                style={{ width: 56, height: 56, objectFit: 'contain', background: '#fff', borderRadius: 8 }}
+              />
+              <div style={{ fontSize: 12, color: '#888' }}>Aperçu — pense à <strong style={{ color: '#fff' }}>enregistrer</strong> pour persister.</div>
+            </div>
+          )}
         </div>
       </div>
 
