@@ -41,12 +41,6 @@ const DEFAULT_AVIS_CONFIG: Record<string, { label: string, description: string, 
     words_min_default: 5,
     words_max_default: 14,
   },
-  sections_h2: {
-    label: '📚 Sections H2 (par section)',
-    description: 'Limite par bloc H2 du contenu principal. Une page d\'avis a typiquement 4-6 H2.',
-    words_min_default: 200,
-    words_max_default: 400,
-  },
   faq: {
     label: '❓ FAQ (par réponse)',
     description: 'Limite par réponse de FAQ. 4-6 questions au total recommandées.',
