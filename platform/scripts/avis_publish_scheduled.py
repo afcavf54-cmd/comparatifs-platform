@@ -338,10 +338,11 @@ def _load_avis_config(site_dir, config: dict) -> dict:
 
 def _format_avis_limits(avis_config: dict, scope: str = "json") -> str:
     """Construit le bloc texte à injecter dans le user prompt Claude pour
-    forcer le respect des limites de mots définies dans le dashboard.
+    forcer le respect des fourchettes [min, max] de mots définies dans le
+    dashboard /templates/[id] → onglet Avis.
 
     `scope` :
-      - "json"     → 1er appel (in_bref, h1, points_forts/faibles, FAQ, verdict)
+      - "json"     → 1er appel (intro, en_bref, points_forts/faibles, FAQ, verdict)
       - "sections" → 2e appel (HTML libre des sections H2)
 
     Retourne `""` si avis_config est vide ou sans limites pertinentes — dans
@@ -356,16 +357,26 @@ def _format_avis_limits(avis_config: dict, scope: str = "json") -> str:
 
     def _add(section: str, label_humain: str, applies_to: str):
         cfg = avis_config.get(section) or {}
-        w = cfg.get("words_max")
-        if isinstance(w, (int, float)) and w > 0:
-            limit_lines.append(f"- {label_humain} : maximum {int(w)} mots {applies_to}.")
+        w_min = cfg.get("words_min")
+        w_max = cfg.get("words_max")
+        valid_min = isinstance(w_min, (int, float)) and w_min > 0
+        valid_max = isinstance(w_max, (int, float)) and w_max > 0
+        if valid_min and valid_max:
+            limit_lines.append(f"- {label_humain} : entre {int(w_min)} et {int(w_max)} mots {applies_to}.")
+        elif valid_max:
+            limit_lines.append(f"- {label_humain} : maximum {int(w_max)} mots {applies_to}.")
+        elif valid_min:
+            limit_lines.append(f"- {label_humain} : minimum {int(w_min)} mots {applies_to}.")
         p = (cfg.get("prompt") or "").strip()
         if p:
             prompt_lines.append(f"- Pour {label_humain.lower()} : {p}")
 
     if scope == "json":
-        _add("hero",           "h1 (titre principal)",   "(8-15 mots idéal, c'est un titre)")
-        _add("en_bref",        "en_bref (chapeau court)", "")
+        # Note : la section "hero" du dashboard pilote la longueur du champ
+        # `intro` (paragraphe sous le H1), PAS du H1 lui-même (qui doit
+        # rester court par nature, c'est un titre).
+        _add("hero",           "intro (paragraphe d'introduction sous le H1)", "")
+        _add("en_bref",        "en_bref (résumé dans l'encart Mon avis en Bref)", "")
         _add("points_forts",   "chaque point fort",      "(par item de la liste)")
         _add("points_faibles", "chaque point faible",    "(par item de la liste)")
         _add("faq",            "chaque réponse FAQ",     "(par réponse, hors question)")
@@ -589,7 +600,12 @@ CONTRAINTES :
    développe les analyses (positionnement marché, profil-type d'utilisateur, comparaison
    sectorielle générique) plutôt que d'inventer des faits précis.{faq_constraint}
 {_format_avis_limits(avis_config or {}, scope="json")}
-Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de ```) :
+Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de ```).
+
+⚠ IMPORTANT : les champs "intro" et "en_bref" sont OBLIGATOIRES et DISTINCTS.
+   - "intro" = paragraphe d'introduction au-dessus de tout, sous le H1. Pose le sujet.
+   - "en_bref" = synthèse courte affichée à côté du logo dans un encart. Conclusion miniature.
+   Ne pas confondre, ne pas laisser "intro" vide, ne pas mettre la même chose dans les deux.
 
 {{
   "h1": "Titre principal au format 'Avis {marque} ({year}) : ...' (incitatif, max 75 caractères)",
