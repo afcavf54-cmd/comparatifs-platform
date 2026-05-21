@@ -185,14 +185,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
 }
 
 /* ─── En bref ─── */
-/* ─── Bloc "En bref" : pour qui s'adresse la marque.
-       Refondu pour matcher le style de la box verdict (gradient + border accent
-       2px, padding spacieux, centré). C'est un encart de synthèse, autant qu'il
-       respire visuellement. */
-.en-bref{background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);border:2px solid var(--accent);border-radius:var(--r2);padding:28px 32px;margin:32px 0;text-align:center;font-size:16px;color:var(--ink2);line-height:1.65}
-.en-bref strong{color:var(--ink);font-weight:600}
-.en-bref-title{font-family:'{{ theme.font_title }}',serif;font-size:22px;font-weight:500;color:var(--ink);margin:0 0 10px;letter-spacing:-.01em}
-/* Sommaire : compact, sobre, sans cassure visuelle avec En bref qui le précède.
+/* Sommaire : compact, sobre, sans cassure visuelle.
    isolation:isolate + z-index:0 garantissent que le sommaire reste DERRIÈRE
    le menu (qui est en position:sticky z-index:1000), même quand on scroll. */
 .avis-toc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px 24px;margin:24px 0 40px;font-size:15px;position:relative;z-index:0;isolation:isolate}
@@ -404,16 +397,8 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
   </div>
   {% endif %}
 
-  {# ─── EN BREF : pour qui et pourquoi (style box matchant le verdict) ─ #}
-  {% if post.cible %}
-  <div class="en-bref">
-    <div class="en-bref-title">En bref</div>
-    <p style="margin:0">{{ post.marque }} s'adresse principalement à <strong>{{ post.cible }}</strong>.{% if post.en_bref %} {{ post.en_bref }}{% endif %}</p>
-  </div>
-  {% endif %}
-
   {# ─── SOMMAIRE ─────────────────────────────────────────────
-     Sommaire dynamique placé directement après le bloc « En bref ».
+     Sommaire dynamique placé directement après les points forts/faibles.
      Les ancres pointent vers les `id` posés sur chaque H2 ci-dessous.
      On n'inclut une entrée que si la section correspondante est rendue,
      pour rester cohérent quand l'IA n'a pas généré tel ou tel bloc. #}
