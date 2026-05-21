@@ -995,6 +995,9 @@ def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict
     tarifs = parse_tarifs(row.get("tarifs", ""))
     note_tp = row.get("note_trustpilot", "").strip()
     nb_avis_tp = row.get("nb_avis_trustpilot", "").strip()
+    # Avis Google : 2 colonnes optionnelles, lues séparément de Trustpilot.
+    note_google = (row.get("note_google") or "").strip()
+    nb_avis_google = (row.get("nb_avis_google") or "").strip()
     cta_url = row.get("cta_url", "").strip()
     # `cta_label` peut contenir des variables ({marque}, {year}) — on les
     # résout avant de stocker pour que le rendu final soit immédiat.
