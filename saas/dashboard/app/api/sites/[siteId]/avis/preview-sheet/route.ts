@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { parseCSV } from '@/lib/csv'
 
 // API : lit le avis_sheet_csv_url depuis config.yaml, fetch le CSV, et retourne
 // les lignes classées par état (publiée / programmée / à venir).
@@ -49,49 +50,6 @@ function slugify(s: string): string {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '')
-}
-
-function parseCSV(raw: string): { headers: string[]; rows: any[] } {
-  // Parser CSV minimal mais robuste : gère les guillemets et les virgules dans les champs
-  const lines: string[] = []
-  let cur = ''
-  let inQ = false
-  for (let i = 0; i < raw.length; i++) {
-    const c = raw[i]
-    if (c === '"' && raw[i + 1] === '"') { cur += '"'; i++; continue }
-    if (c === '"') { inQ = !inQ; continue }
-    if (c === '\n' && !inQ) { lines.push(cur); cur = ''; continue }
-    if (c === '\r' && !inQ) continue
-    cur += c
-  }
-  if (cur) lines.push(cur)
-  if (lines.length === 0) return { headers: [], rows: [] }
-  // Première ligne = headers (qu'on slugifie en clés)
-  const splitLine = (s: string): string[] => {
-    const out: string[] = []
-    let v = ''; let q = false
-    for (let i = 0; i < s.length; i++) {
-      const c = s[i]
-      if (c === '"' && s[i + 1] === '"') { v += '"'; i++; continue }
-      if (c === '"') { q = !q; continue }
-      if (c === ',' && !q) { out.push(v); v = ''; continue }
-      v += c
-    }
-    out.push(v)
-    return out
-  }
-  const rawHeaders = splitLine(lines[0]).map(h => slugify(h).replace(/-/g, '_'))
-  const rows: any[] = []
-  for (let i = 1; i < lines.length; i++) {
-    const cells = splitLine(lines[i])
-    if (cells.every(c => !c.trim())) continue
-    const row: any = {}
-    for (let j = 0; j < rawHeaders.length; j++) {
-      row[rawHeaders[j]] = (cells[j] || '').trim()
-    }
-    rows.push(row)
-  }
-  return { headers: rawHeaders, rows }
 }
 
 function parsePubDateParis(s: string): Date | null {
@@ -159,19 +117,6 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ site
       .map(f => f.name.replace(/\.md$/, ''))
   )
 
-  // Récupère le set des keys "déjà traitées" (par le cron OU dismissed via l'UI).
-  // Format des keys : "slugify(marque)|date_publication" — cf. row_key() Python.
-  // Une key présente dans ce fichier MAIS sans .md correspondant = dismissed
-  // par l'utilisateur depuis le dashboard → on filtre l'affichage côté UI.
-  const processedJson = await ghGet(`platform/sites/${siteId}/posts_avis/schedule_processed.json`)
-  const processedKeys = new Set<string>()
-  if (processedJson) {
-    try {
-      const arr = JSON.parse(processedJson)
-      if (Array.isArray(arr)) arr.forEach((k: any) => processedKeys.add(String(k)))
-    } catch {}
-  }
-
   const now = new Date()
   const classified = rows.map(r => {
     const marque = r.marque || ''
@@ -187,13 +132,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ site
       ...r,
       slug,
       status,
-      _key: `${slugify(marque)}|${(r.date_publication || '').trim()}`,
     }
-  }).filter((r: any) => {
-    // Garder TOUJOURS les avis publiés (un .md existe physiquement)
-    if (r.status === 'published') return true
-    // Pour pending/scheduled : exclure si la key a été dismissed
-    return !processedKeys.has(r._key)
   })
 
   return NextResponse.json({ rows: classified })
