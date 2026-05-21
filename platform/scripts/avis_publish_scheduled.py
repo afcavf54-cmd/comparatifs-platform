@@ -712,9 +712,21 @@ def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_qu
         faq_final = faq_generated
 
     # Garantit la présence de toutes les clés (valeurs par défaut)
+    # ⚠ Bug fix mai 2026 : `intro` était absent de ce dict de retour, donc
+    # même si Claude générait bien le champ, il était silencieusement perdu
+    # ici et n'arrivait jamais dans le frontmatter. Cf. avis-legalplace
+    # ressorti avec `intro: ''` malgré toutes les instructions au prompt.
+    intro_text = (data.get("intro") or "").strip()
+    en_bref_text = (data.get("en_bref") or "").strip()
+    if not intro_text:
+        # Log explicite pour diagnostiquer si Claude lui-même n'a pas produit
+        # le champ (vs juste un oubli côté code). À surveiller dans les logs
+        # GitHub Actions de la prochaine régénération.
+        print(f"    ⚠ Claude n'a PAS produit le champ 'intro' (clés retournées: {sorted(data.keys())})")
     return {
         "h1": data.get("h1", f"Avis {row.get('marque','')}"),
-        "en_bref": data.get("en_bref", ""),
+        "intro": intro_text,
+        "en_bref": en_bref_text,
         "points_forts": data.get("points_forts") or [],
         "points_faibles": data.get("points_faibles") or [],
         "h2_fonctionnalites": data.get("h2_fonctionnalites") or {"titre": "", "contenu_html": ""},
