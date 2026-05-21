@@ -654,9 +654,9 @@ Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de `
    Ne pas confondre, ne pas laisser "intro" vide, ne pas mettre la même chose dans les deux.
 
 {{
-  "intro": "OBLIGATOIRE. Paragraphe d'INTRODUCTION éditoriale de ~{target_intro} mots, affiché juste sous le H1. Il pose le contexte : à qui s'adresse {marque}, ce que le lecteur va trouver dans cet avis, l'angle adopté. C'est l'accroche éditoriale qui donne envie de lire. PAS un résumé de l'avis. Exemple de structure : 'Vous hésitez entre [marque] et ses alternatives pour [besoin] ? Cet avis détaillé décrypte [angle 1], [angle 2] et [angle 3]. À la fin, vous saurez si [marque] est fait pour vous.'",
+  "intro": "OBLIGATOIRE. Paragraphe d'INTRODUCTION éditoriale, affiché juste sous le H1. Il pose le contexte : à qui s'adresse {marque}, ce que le lecteur va trouver dans cet avis, l'angle adopté. C'est l'accroche éditoriale qui donne envie de lire. PAS un résumé de l'avis. Exemple de structure : 'Vous hésitez entre [marque] et ses alternatives pour [besoin] ? Cet avis détaillé décrypte [angle 1], [angle 2] et [angle 3]. À la fin, vous saurez si [marque] est fait pour vous.' RESPECTE STRICTEMENT la fourchette de mots indiquée plus haut dans 'LIMITES DE LONGUEUR PAR SECTION'.",
   "h1": "Titre principal au format 'Avis {marque} ({year}) : ...' (incitatif, max 75 caractères)",
-  "en_bref": "OBLIGATOIRE. RÉSUMÉ de l'avis en ~50 mots, affiché dans l'encart 'Mon avis en Bref' à côté du logo. Synthèse de la position de l'auteur : verdict global, point clé fort, point clé faible, et pour qui c'est adapté. Différent de l'intro : c'est la conclusion en miniature.",
+  "en_bref": "OBLIGATOIRE. RÉSUMÉ de l'avis, affiché dans l'encart 'Mon avis en Bref' à côté du logo. Synthèse de la position de l'auteur : verdict global, point clé fort, point clé faible, et pour qui c'est adapté. Différent de l'intro : c'est la conclusion en miniature. RESPECTE STRICTEMENT la fourchette de mots indiquée plus haut dans 'LIMITES DE LONGUEUR PAR SECTION'.",
   "points_forts": ["3 points forts CONCRETS, 5-12 mots chacun, formulés positivement"],
   "points_faibles": ["2 points faibles HONNÊTES, 5-12 mots chacun, formulés sans diplomatie creuse"],
   "h2_fonctionnalites": {{
@@ -676,7 +676,7 @@ Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de `
     "regrettent": "Paragraphe HTML <p>...</p> de 40-60 mots résumant ce que les clients REGRETTENT chez {marque}. Mets les éléments-clés en <strong>gras</strong> (3-5 expressions). {avis_clients_instructions}"
   }},
   "faq": {faq_block},
-  "verdict": "Verdict final tranché d'environ {target_verdict} mots. Réitère la note {note}/5 et donne une recommandation claire (pour qui c'est, pour qui ce n'est pas).",
+  "verdict": "Verdict final tranché. Réitère la note {note}/5 et donne une recommandation claire (pour qui c'est, pour qui ce n'est pas). RESPECTE STRICTEMENT la fourchette de mots indiquée plus haut dans 'LIMITES DE LONGUEUR PAR SECTION'.",
   "meta_title": "Title SEO max 60 caractères, doit contenir '{marque}' et '{year}'",
   "meta_description": "Meta description SEO max 155 caractères, doit donner envie de cliquer"
 }}"""
