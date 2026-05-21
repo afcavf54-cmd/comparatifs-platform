@@ -196,6 +196,48 @@ def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000
     raise RuntimeError(f"Claude API a échoué après {retries} tentatives : {last_err}")
 
 
+def _recover_partial_json(raw: str) -> dict | None:
+    """Tente de récupérer un JSON tronqué (Claude a dépassé max_tokens et
+    coupé en plein milieu d'une chaîne). Stratégie :
+
+      1. Trouver le dernier endroit où une valeur de premier niveau est
+         terminée proprement : on cherche un motif `",\n  "next_key"` ou
+         `}\n  "next_key"` (fin d'une string ou d'un objet, suivi d'une
+         virgule, retour à la ligne, et début d'une nouvelle clé).
+      2. Tronquer juste APRÈS cette valeur terminée (donc on conserve toutes
+         les clés complètes et on jette la clé incomplète qui suit).
+      3. Fermer le `{` racine avec un `}` final et tenter le parse.
+
+    Retourne `None` si la récupération échoue. Le but n'est pas la
+    perfection mais de sauver l'essentiel (intro, h1, en_bref, points
+    forts/faibles, premiers H2) quand le truncate frappe.
+    """
+    # On cherche tous les points de coupure propres : la fin d'une valeur
+    # au niveau racine, juste avant une nouvelle clé entre guillemets.
+    # Motif visuel typique du JSON pretty-print :
+    #     "key1": "value1",        ← coupe possible juste après la virgule
+    #     "key2": { ... },         ← coupe possible juste après la virgule
+    #     "key3": "incomplete value...   ← truncated ici
+    # On marche de la fin vers le début pour trouver le dernier point propre.
+    cut_points: list[int] = []
+    # Match les fins de string + virgule + nouvelle clé
+    for m in re.finditer(r'",\s*\n\s*"[a-zA-Z_][a-zA-Z0-9_]*"\s*:', raw):
+        cut_points.append(m.start() + 1)  # juste après le "
+    # Match les fins d'objet/tableau + virgule + nouvelle clé
+    for m in re.finditer(r'[}\]],\s*\n\s*"[a-zA-Z_][a-zA-Z0-9_]*"\s*:', raw):
+        cut_points.append(m.start() + 1)
+    if not cut_points:
+        return None
+    cut_points.sort(reverse=True)
+    for cut in cut_points:
+        candidate = raw[:cut] + "\n}"
+        try:
+            return json.loads(candidate)
+        except json.JSONDecodeError:
+            continue
+    return None
+
+
 def strip_code_fences(text: str) -> str:
     text = re.sub(r"^```(?:json|JSON|html|HTML|markdown|md)?\s*\n?", "", text.strip())
     text = re.sub(r"\n?\s*```\s*$", "", text)
@@ -612,9 +654,9 @@ Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de `
    Ne pas confondre, ne pas laisser "intro" vide, ne pas mettre la même chose dans les deux.
 
 {{
+  "intro": "OBLIGATOIRE. Paragraphe d'INTRODUCTION éditoriale de ~{target_intro} mots, affiché juste sous le H1. Il pose le contexte : à qui s'adresse {marque}, ce que le lecteur va trouver dans cet avis, l'angle adopté. C'est l'accroche éditoriale qui donne envie de lire. PAS un résumé de l'avis. Exemple de structure : 'Vous hésitez entre [marque] et ses alternatives pour [besoin] ? Cet avis détaillé décrypte [angle 1], [angle 2] et [angle 3]. À la fin, vous saurez si [marque] est fait pour vous.'",
   "h1": "Titre principal au format 'Avis {marque} ({year}) : ...' (incitatif, max 75 caractères)",
-  "intro": "Paragraphe d'INTRODUCTION de ~{target_intro} mots, affiché juste sous le H1. Il pose le contexte : à qui s'adresse {marque}, ce que le lecteur va trouver dans cet avis, l'angle adopté. C'est l'accroche éditoriale qui donne envie de lire. PAS un résumé de l'avis.",
-  "en_bref": "RÉSUMÉ de l'avis en ~50 mots, affiché dans l'encart 'Mon avis en Bref' à côté du logo. Synthèse de la position de l'auteur : verdict global, point clé fort, point clé faible, et pour qui c'est adapté. Différent de l'intro : c'est la conclusion en miniature.",
+  "en_bref": "OBLIGATOIRE. RÉSUMÉ de l'avis en ~50 mots, affiché dans l'encart 'Mon avis en Bref' à côté du logo. Synthèse de la position de l'auteur : verdict global, point clé fort, point clé faible, et pour qui c'est adapté. Différent de l'intro : c'est la conclusion en miniature.",
   "points_forts": ["3 points forts CONCRETS, 5-12 mots chacun, formulés positivement"],
   "points_faibles": ["2 points faibles HONNÊTES, 5-12 mots chacun, formulés sans diplomatie creuse"],
   "h2_fonctionnalites": {{
@@ -667,19 +709,43 @@ def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_qu
     forced_faq = [q.strip() for q in (faq_questions or []) if isinstance(q, str) and q.strip()]
 
     system, user = build_generation_prompt(row, site, faq_questions=forced_faq, persona_prompt=persona_prompt, global_prompt=global_prompt, avis_config=avis_config)
-    raw = call_claude(system, user, max_tokens=4000)
+    # max_tokens élevé (6000) : le JSON complet inclut intro + en_bref + 3 H2
+    # contenu_html + aiment/regrettent + FAQ + verdict + meta. Avec un mot_min
+    # élevé (1500+) on flirtait avec la limite de 4000 et `intro` pouvait être
+    # tronqué silencieusement. 6000 laisse une marge confortable.
+    # max_tokens élevé (8000) : le JSON complet inclut intro + en_bref + 3 H2
+    # contenu_html + aiment/regrettent + FAQ + verdict + meta. Avec un mot_min
+    # élevé (1500+) on flirtait avec la limite de 4000 et `intro` pouvait être
+    # tronqué silencieusement (bug observé : 13368 chars de raw → string non
+    # fermée → JSONDecodeError → toute la régénération échoue). 8000 laisse
+    # une vraie marge même pour les avis très détaillés.
+    raw = call_claude(system, user, max_tokens=8000)
     raw = strip_code_fences(raw)
+    print(f"    📦 Réponse Claude : {len(raw)} caractères")
     try:
         data = json.loads(raw)
     except json.JSONDecodeError as e:
-        # Tentative de récupération : extraire le premier objet JSON
+        # Tentative #1 : extraire le premier objet JSON complet via regex
         m = re.search(r"\{[\s\S]*\}", raw)
-        if not m:
+        if m:
+            try:
+                data = json.loads(m.group(0))
+            except json.JSONDecodeError:
+                # Tentative #2 : récupération de JSON tronqué.
+                # Stratégie : couper après la dernière "valeur",\n et fermer
+                # les accolades restantes. On garde ainsi tous les champs déjà
+                # complètement générés (notamment `intro` et `h1` qui sont en
+                # 1ère et 2e position et donc les plus susceptibles d'être
+                # complets), au lieu de tout perdre.
+                data = _recover_partial_json(raw)
+                if data is None:
+                    raise RuntimeError(f"JSON invalide : {e}\nRaw : {raw[:500]}")
+                missing = sorted(set(["h1", "intro", "en_bref", "points_forts", "points_faibles",
+                                       "h2_fonctionnalites", "h2_support", "h2_qualite_prix",
+                                       "h2_avis_clients", "faq", "verdict", "meta_title", "meta_description"]) - set(data.keys()))
+                print(f"    ⚠ JSON tronqué récupéré partiellement ({len(data)} clés présentes, {len(missing)} manquantes : {missing})")
+        else:
             raise RuntimeError(f"Pas de JSON dans la réponse Claude : {raw[:200]}")
-        try:
-            data = json.loads(m.group(0))
-        except json.JSONDecodeError:
-            raise RuntimeError(f"JSON invalide : {e}\nRaw : {raw[:500]}")
 
     # ─── Génération du bloc sections custom (si prompt fourni) ──────────
     sections_html = ""
