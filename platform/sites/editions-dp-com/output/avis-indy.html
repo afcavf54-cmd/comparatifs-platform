@@ -181,14 +181,7 @@ h1{font-family:'',serif;font-size:clamp(28px,4.5vw,42px);font-weight:400;letter-
 }
 
 /* ─── En bref ─── */
-/* ─── Bloc "En bref" : pour qui s'adresse la marque.
-       Refondu pour matcher le style de la box verdict (gradient + border accent
-       2px, padding spacieux, centré). C'est un encart de synthèse, autant qu'il
-       respire visuellement. */
-.en-bref{background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);border:2px solid var(--accent);border-radius:var(--r2);padding:28px 32px;margin:32px 0;text-align:center;font-size:16px;color:var(--ink2);line-height:1.65}
-.en-bref strong{color:var(--ink);font-weight:600}
-.en-bref-title{font-family:'',serif;font-size:22px;font-weight:500;color:var(--ink);margin:0 0 10px;letter-spacing:-.01em}
-/* Sommaire : compact, sobre, sans cassure visuelle avec En bref qui le précède.
+/* Sommaire : compact, sobre, sans cassure visuelle.
    isolation:isolate + z-index:0 garantissent que le sommaire reste DERRIÈRE
    le menu (qui est en position:sticky z-index:1000), même quand on scroll. */
 .avis-toc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px 24px;margin:24px 0 40px;font-size:15px;position:relative;z-index:0;isolation:isolate}
@@ -406,11 +399,6 @@ Recommandé        </div>
     <a class="cta-btn" href="https://c3po.link/QZrBCYjH2T" rel="sponsored noopener" target="_blank">
       Testez Indy Gratuitement ! →
     </a>
-  </div>
-
-  <div class="en-bref">
-    <div class="en-bref-title">En bref</div>
-    <p style="margin:0">Indy s'adresse principalement à <strong>Entrepreneur</strong>. Indy, c'est la solution comptable française qui fait parler d'elle depuis quelques années. Conçue spécifiquement pour les entrepreneurs individuels, freelances et créateurs de micro-entreprises, cette plateforme mise tout sur la simplicité et la gratuité de base. Je l'ai testée pendant plusieurs mois dans mon entreprise, et je dois dire que l'approche détonne dans un secteur souvent complexe et cher. Indy automatise les tâches comptables répétitives : saisie des factures, calcul des charges, déclarations TVA, suivi de trésorerie. L'idée ? Permettre aux entrepreneurs de se concentrer sur leur cœur de métier plutôt que sur leurs obligations comptables. Leur positionnement est clair : remplacer l'expert-comptable traditionnel par une solution digitale accessible. Pour ma TPE lyonnaise, ça représentait un enjeu budgétaire important. Les honoraires d'expertise comptable, c'est facilement 2000 à 4000 euros par an. Indy promet de diviser cette facture par deux, voire plus. Mais attention, on ne parle pas ici d'un simple logiciel de facturation. Indy veut couvrir l'ensemble du cycle comptable : de la création des devis jusqu'aux déclarations fiscales. Un pari ambitieux pour une équipe relativement jeune, mais qui semble tenir ses promesses d'après mon expérience terrain.</p>
   </div>
 
   <nav class="avis-toc" aria-label="Sommaire de l'avis">

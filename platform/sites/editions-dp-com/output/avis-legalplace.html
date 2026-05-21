@@ -181,14 +181,7 @@ h1{font-family:'',serif;font-size:clamp(28px,4.5vw,42px);font-weight:400;letter-
 }
 
 /* ─── En bref ─── */
-/* ─── Bloc "En bref" : pour qui s'adresse la marque.
-       Refondu pour matcher le style de la box verdict (gradient + border accent
-       2px, padding spacieux, centré). C'est un encart de synthèse, autant qu'il
-       respire visuellement. */
-.en-bref{background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);border:2px solid var(--accent);border-radius:var(--r2);padding:28px 32px;margin:32px 0;text-align:center;font-size:16px;color:var(--ink2);line-height:1.65}
-.en-bref strong{color:var(--ink);font-weight:600}
-.en-bref-title{font-family:'',serif;font-size:22px;font-weight:500;color:var(--ink);margin:0 0 10px;letter-spacing:-.01em}
-/* Sommaire : compact, sobre, sans cassure visuelle avec En bref qui le précède.
+/* Sommaire : compact, sobre, sans cassure visuelle.
    isolation:isolate + z-index:0 garantissent que le sommaire reste DERRIÈRE
    le menu (qui est en position:sticky z-index:1000), même quand on scroll. */
 .avis-toc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px 24px;margin:24px 0 40px;font-size:15px;position:relative;z-index:0;isolation:isolate}
@@ -406,11 +399,6 @@ Recommandé        </div>
     <a class="cta-btn" href="https://www.legalplace.fr/" rel="sponsored noopener" target="_blank">
       -10% en cliquant ici →
     </a>
-  </div>
-
-  <div class="en-bref">
-    <div class="en-bref-title">En bref</div>
-    <p style="margin:0">Legalplace s'adresse principalement à <strong>Créateur d'entreprise</strong>. Legalplace, c'est une plateforme qui automatise la création d'entreprise. En gros, vous remplissez des formulaires, ils s'occupent des démarches administratives. Je l'ai testé pour comprendre si ça vaut le coup pour une TPE comme la mienne. Leur positionnement ? Simplifier les formalités juridiques sans passer par un avocat traditionnel. Ça cible principalement les créateurs d'entreprise qui veulent gagner du temps sur la paperasse. L'approche digitale séduit beaucoup d'entrepreneurs pressés. Mais attention, tous les dossiers ne se ressemblent pas. Certaines situations nécessitent quand même un conseil personnalisé. Globalement, j'ai trouvé le service correct pour des créations simples. Le processus reste guidé, même si on n'y connaît rien en juridique. Pas révolutionnaire, mais ça fait le travail.</p>
   </div>
 
   <nav class="avis-toc" aria-label="Sommaire de l'avis">
