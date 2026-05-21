@@ -575,7 +575,8 @@ Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de `
 
 {{
   "h1": "Titre principal au format 'Avis {marque} ({year}) : ...' (incitatif, max 75 caractères)",
-  "en_bref": "Paragraphe d'intro de ~{target_intro} mots : qui c'est, à qui ça s'adresse, positionnement",
+  "intro": "Paragraphe d'INTRODUCTION de ~{target_intro} mots, affiché juste sous le H1. Il pose le contexte : à qui s'adresse {marque}, ce que le lecteur va trouver dans cet avis, l'angle adopté. C'est l'accroche éditoriale qui donne envie de lire. PAS un résumé de l'avis.",
+  "en_bref": "RÉSUMÉ de l'avis en ~50 mots, affiché dans l'encart 'Mon avis en Bref' à côté du logo. Synthèse de la position de l'auteur : verdict global, point clé fort, point clé faible, et pour qui c'est adapté. Différent de l'intro : c'est la conclusion en miniature.",
   "points_forts": ["3 points forts CONCRETS, 5-12 mots chacun, formulés positivement"],
   "points_faibles": ["2 points faibles HONNÊTES, 5-12 mots chacun, formulés sans diplomatie creuse"],
   "h2_fonctionnalites": {{
@@ -1016,6 +1017,13 @@ def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict
         "cta_url": cta_url,
         "cta_label": cta_label,
         "cible": (row.get("cible") or "").strip(),
+        # Logo affiché dans l'encart "Mon avis en Bref" du template avis-post.
+        # Uploadé via le dashboard d'édition d'avis (voir avis/[slug]/page.tsx).
+        # Stocké comme chemin relatif type `/avis/<slug>/logo-<ts>.<ext>` pointant
+        # vers `platform/sites/<siteId>/public/avis/<slug>/logo-<ts>.<ext>`.
+        # Vide tant que l'éditeur n'a pas uploadé : le template affiche un
+        # placeholder avec l'initiale de la marque dans ce cas.
+        "logo_path": "",
         # Tarifs
         "tarifs": tarifs,
         # Contenu IA
@@ -1024,6 +1032,11 @@ def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict
             or generated.get("h1")
             or f"Avis {marque}"
         ).strip(),
+        # `intro` : paragraphe d'introduction placé sous le H1. Distinct du
+        # `en_bref` qui sert maintenant uniquement à l'encart "Mon avis en
+        # Bref" (résumé synthétique de l'avis avec logo + note). Cf. template
+        # avis-post.html.j2 v5+.
+        "intro": generated.get("intro", ""),
         "en_bref": generated.get("en_bref", ""),
         "points_forts": generated.get("points_forts", []),
         "points_faibles": generated.get("points_faibles", []),
