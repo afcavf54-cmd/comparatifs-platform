@@ -382,8 +382,12 @@ def _format_avis_limits(avis_config: dict, scope: str = "json") -> str:
         _add("faq",            "chaque réponse FAQ",     "(par réponse, hors question)")
         _add("verdict",        "verdict (conclusion centrée)", "")
     elif scope == "sections":
-        # Seule sections_h2 s'applique au 2e appel HTML libre
-        _add("sections_h2", "chaque section H2", "(une page comprend généralement 4-6 sections H2)")
+        # Volontairement vide : la longueur des sections H2 du contenu
+        # principal n'est PAS limitée par section, car elle dépend du
+        # `mot_minimum` global défini sur l'avis (et réparti automatiquement
+        # entre les blocs au moment de la génération). Cf. décision Julien
+        # mai 2026 — pas de cap min/max sur les sections_h2.
+        pass
 
     if not limit_lines and not prompt_lines:
         return ""
