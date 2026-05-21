@@ -192,7 +192,7 @@ h1{font-family:'',serif;font-size:clamp(28px,4.5vw,42px);font-weight:400;letter-
 .avis-toc a:hover{border-bottom-color:var(--accent)}
 /* Décalage au scroll pour ne pas que le H2 cible soit caché par le menu sticky
    en haut (~64px de hauteur d'après _nav.html.j2). 80px laisse une marge. */
-.tarifs-section,.analyse-section,.avis-clients,.faq-section,.verdict,.alternatives-section{scroll-margin-top:80px}
+.tarifs-section,.analyse-section,.avis-clients-section,.faq-section,.verdict,.alternatives-section{scroll-margin-top:80px}
 
 /* Box auteur en bas de page (copie du style blog-post).
    Le margin-bottom 96px aère visuellement avant le footer (le blog n'avait pas
@@ -242,11 +242,41 @@ h1{font-family:'',serif;font-size:clamp(28px,4.5vw,42px);font-weight:400;letter-
 .analyse-section ul + h3,.analyse-section ol + h3,.analyse-section p + h3{margin-top:28px}
 
 /* ─── Avis clients (preuve sociale) ─── */
-.avis-clients{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px;margin:32px 0}
-.avis-clients-header{display:flex;align-items:center;gap:16px;margin-bottom:12px}
-.avis-clients-score{font-family:'',serif;font-size:32px;color:var(--accent);font-weight:600;line-height:1}
-.avis-clients-meta{font-size:13px;color:var(--ink3)}
-.avis-clients h2{font-family:'',serif;font-size:24px;font-weight:400;margin-bottom:12px;color:var(--ink)}
+/* ─── Section "Quels sont les avis des utilisateurs de X ?" ─────
+       Refonte 2026 : 2 logos plateformes en haut, 2 cartes notes au milieu,
+       2 boxes "aiment / regrettent" en bas (vert/rouge). */
+.avis-clients-section{margin:48px 0 32px}
+.avis-clients-title{font-family:'',serif;font-size:28px;font-weight:400;margin:0 0 28px;color:var(--ink);text-align:center;line-height:1.3}
+
+/* Cartes logos + notes (1 ou 2 colonnes) */
+.avis-platforms{display:grid;grid-template-columns:1fr;gap:24px;max-width:560px;margin:0 auto 32px;justify-items:center}
+.avis-platforms.two-cols{grid-template-columns:1fr 1fr;max-width:none}
+.avis-platform-card{display:flex;flex-direction:column;align-items:center;width:100%;max-width:340px}
+.avis-platform-logo{height:50px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.avis-platform-logo svg{height:42px;width:auto;max-width:200px}
+.avis-platform-note{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:22px 32px;text-align:center;width:100%;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.avis-platform-note-num{font-family:'',serif;font-size:48px;font-weight:600;color:var(--ink);line-height:1;margin-bottom:6px}
+.avis-platform-note-num small{font-size:20px;color:var(--ink3);font-weight:400}
+.avis-platform-note .stars{font-size:18px;justify-content:center;display:flex;margin:4px 0 10px}
+.avis-platform-meta{font-size:12px;color:var(--ink3);line-height:1.5}
+
+/* Boxes feedback (1 ou 2 colonnes) */
+.avis-feedback{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px}
+.avis-feedback.two-cols{grid-template-columns:1fr 1fr}
+.avis-feedback-box{padding:20px 24px;border-radius:var(--r2);border:1px solid transparent}
+.avis-feedback-aiment{background:#F0FAF3;border-color:#C8E6D0}
+.avis-feedback-regrettent{background:#FDF2F2;border-color:#F5C6C6}
+.avis-feedback-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.avis-feedback-icon{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex-shrink:0;line-height:1}
+.avis-feedback-aiment .avis-feedback-icon{background:#D7EFDE;color:var(--green)}
+.avis-feedback-regrettent .avis-feedback-icon{background:#F8DCDC;color:var(--red)}
+.avis-feedback-label{font-size:15px;font-weight:700;color:var(--ink)}
+.avis-feedback-body{font-size:14.5px;color:var(--ink2);line-height:1.65}
+.avis-feedback-body p{margin:0}
+.avis-feedback-body strong{color:var(--ink);font-weight:700}
+
+/* Rétro-compat : ancien rendu monolithique */
+.avis-clients-legacy{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px;margin-top:16px;color:var(--ink2);font-size:15px;line-height:1.65}
 
 /* ─── FAQ ─── */
 .faq-section{margin:48px 0 32px}
@@ -290,6 +320,8 @@ h1{font-family:'',serif;font-size:clamp(28px,4.5vw,42px);font-weight:400;letter-
   .tarifs-table th,.tarifs-table td{padding:10px}
   .verdict{padding:20px}
   .alternatives-grid{grid-template-columns:1fr;gap:14px}
+  .avis-platforms.two-cols{grid-template-columns:1fr;max-width:340px}
+  .avis-feedback.two-cols{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -358,7 +390,7 @@ document.addEventListener('click',function(e){
         <span class="article-meta-dot"></span>
         <span class="article-meta-item">📅 21 mai 2026</span>
         <span class="article-meta-dot"></span>
-        <span class="article-meta-item">⏱ 3 min de lecture</span>
+        <span class="article-meta-item">⏱ 10 min de lecture</span>
         <span class="article-meta-dot"></span>
         <span class="article-meta-item">✍️ Pierre Petit</span>
     </div>
@@ -409,7 +441,7 @@ Recommandé        </div>
           <li><a href="#les-tarifs-d-indy-en-detail">Les tarifs d'Indy en détail</a></li>
           <li><a href="#les-points-forts-d-indy">Les points forts d'Indy</a></li>
           <li><a href="#les-points-faibles-d-indy">Les points faibles d'Indy</a></li>
-      <li><a href="#avis-clients">Retours utilisateurs : que pensent les entrepreneurs d'Indy ?</a></li>
+      <li><a href="#avis-clients">Avis des utilisateurs</a></li>
       <li><a href="#verdict">Mon avis final</a></li>
       <li><a href="#faq">Foire aux questions</a></li>
     </ol>
@@ -566,16 +598,26 @@ Recommandé        </div>
 <p>Dernier point : certaines intégrations tierces tardent à arriver. Par exemple, la connection avec Shopify ou WooCommerce n'est pas optimale.</p>
   </section>
 
-  <section class="avis-clients" id="avis-clients">
-    <h2>Retours utilisateurs : que pensent les entrepreneurs d'Indy ?</h2>
-    <div class="avis-clients-header">
-      <div class="avis-clients-score">4.8<small>/5</small></div>
-      <div class="avis-clients-meta">
-        Sur <strong>13174</strong> avis<br>
-        Trustpilot
+  <section class="avis-clients-section" id="avis-clients">
+    <h2 class="avis-clients-title">Quels sont les avis des utilisateurs de Indy ?</h2>
+
+    <div class="avis-platforms">
+      <div class="avis-platform-card">
+        <div class="avis-platform-logo">
+          <svg viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg" aria-label="Trustpilot">
+            <polygon points="25,5 30.5,18 44,18 33.5,26 37.5,40 25,32 12.5,40 16.5,26 6,18 19.5,18" fill="#00B67A"/>
+            <text x="56" y="34" font-family="Helvetica,Arial,sans-serif" font-size="26" font-weight="700" fill="#191919">Trustpilot</text>
+          </svg>
+        </div>
+        <div class="avis-platform-note">
+          <div class="avis-platform-note-num">4,8<small>/5</small></div>
+          <div class="stars" aria-label="4.8 étoiles sur 5"><span class="full">★</span><span class="full">★</span><span class="full">★</span><span class="full">★</span><span class="half">★</span></div>
+          <div class="avis-platform-meta">basée sur 13174 avis clients<br>déposés sur Trustpilot</div>
+        </div>
       </div>
     </div>
-      <p>Les avis clients d'Indy sur Trustpilot affichent une <strong>note moyenne de 4.8/5</strong> sur plus de 13 000 évaluations. C'est franchement solide pour un logiciel comptable. Les utilisateurs saluent principalement la simplicité d'utilisation et le gain de temps sur les tâches administratives. Beaucoup soulignent l'accompagnement client, notamment pour les entrepreneurs débutants qui découvrent leurs obligations comptables. Les retours négatifs portent surtout sur les limitations de l'offre gratuite et quelques bugs occasionnels lors des mises à jour. Dans l'ensemble, la satisfaction client semble au rendez-vous, avec une communauté d'utilisateurs qui recommande activement la solution à d'autres entrepreneurs.</p>
+
+    <div class="avis-clients-legacy"><p>Les avis clients d'Indy sur Trustpilot affichent une <strong>note moyenne de 4.8/5</strong> sur plus de 13 000 évaluations. C'est franchement solide pour un logiciel comptable. Les utilisateurs saluent principalement la simplicité d'utilisation et le gain de temps sur les tâches administratives. Beaucoup soulignent l'accompagnement client, notamment pour les entrepreneurs débutants qui découvrent leurs obligations comptables. Les retours négatifs portent surtout sur les limitations de l'offre gratuite et quelques bugs occasionnels lors des mises à jour. Dans l'ensemble, la satisfaction client semble au rendez-vous, avec une communauté d'utilisateurs qui recommande activement la solution à d'autres entrepreneurs.</p></div>
   </section>
 
   <section class="verdict" id="verdict">
