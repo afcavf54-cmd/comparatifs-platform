@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getFile, listDir } from '../../../../../../lib/github'
-import { parseCSV as parseCSVShared } from '@/lib/csv'
+import { parseCSV as parseCSVShared } from '../../../../../../lib/csv'
 
 /**
  * GET /api/sites/[siteId]/blog/preview-sheet
