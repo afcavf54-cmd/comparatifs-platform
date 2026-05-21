@@ -193,7 +193,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
 .avis-toc a:hover{border-bottom-color:var(--accent)}
 /* Décalage au scroll pour ne pas que le H2 cible soit caché par le menu sticky
    en haut (~64px de hauteur d'après _nav.html.j2). 80px laisse une marge. */
-.tarifs-section,.analyse-section,.avis-clients,.faq-section,.verdict{scroll-margin-top:80px}
+.tarifs-section,.analyse-section,.avis-clients,.faq-section,.verdict,.alternatives-section{scroll-margin-top:80px}
 
 /* Box auteur en bas de page (copie du style blog-post).
    Le margin-bottom 96px aère visuellement avant le footer (le blog n'avait pas
@@ -271,10 +271,26 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
 .score-num{font-family:'{{ theme.font_title }}',serif;font-weight:600;color:var(--accent);line-height:1}
 .score-num small{font-size:.5em;color:var(--ink3);font-weight:400}
 
+/* ─── Section "Les alternatives à <Marque>" : 3 cartes côte à côte ─── */
+.alternatives-section{margin:48px 0 32px}
+.alternatives-section h2{font-family:'{{ theme.font_title }}',serif;font-size:28px;font-weight:400;margin-bottom:24px;color:var(--ink);text-align:center}
+.alternatives-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.alternative-card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s,border-color .15s}
+.alternative-card:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.07);border-color:var(--accent);text-decoration:none;color:inherit}
+.alternative-logo{width:100%;height:96px;background:var(--surface2);border-radius:var(--r);display:flex;align-items:center;justify-content:center;margin-bottom:14px;overflow:hidden}
+.alternative-logo img{max-width:80%;max-height:80%;object-fit:contain}
+.alternative-logo-placeholder{font-family:'{{ theme.font_title }}',serif;font-size:42px;font-weight:600;color:var(--accent);text-transform:uppercase}
+.alternative-name{font-size:15px;font-weight:600;color:var(--ink);text-align:center;margin-bottom:6px}
+.alternative-note{display:flex;align-items:center;justify-content:center;gap:5px}
+.alternative-note-num{font-family:'{{ theme.font_title }}',serif;font-size:18px;font-weight:600;color:var(--accent);line-height:1}
+.alternative-note-num small{font-size:12px;color:var(--ink3);font-weight:400}
+.alternative-note-star{color:var(--accent);font-size:16px}
+
 /* ─── Responsive global (les rules spécifiques avis-bref-* et pros-cons sont déjà plus haut) ─── */
 @media (max-width:680px){
   .tarifs-table th,.tarifs-table td{padding:10px}
   .verdict{padding:20px}
+  .alternatives-grid{grid-template-columns:1fr;gap:14px}
 }
 </style>
 </head>
@@ -426,11 +442,21 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
       {% if (post.note_trustpilot and post.nb_avis_trustpilot) or (post.h2_avis_clients and post.h2_avis_clients.contenu_html) %}
       <li><a href="#avis-clients">{{ (post.h2_avis_clients.titre if post.h2_avis_clients else None) | default('Que disent les utilisateurs ?') }}</a></li>
       {% endif %}
+      {% if post.verdict %}
+      <li><a href="#verdict">Mon avis final</a></li>
+      {% endif %}
       {% if post.faq and post.faq | length >= 2 %}
       <li><a href="#faq">Foire aux questions</a></li>
       {% endif %}
-      {% if post.verdict %}
-      <li><a href="#verdict">Verdict final</a></li>
+      {# Alternatives : on n'ajoute le lien que si la condition côté section
+         est satisfaite (catégorie non vide + au moins un autre avis dans la
+         même catégorie). On reproduit la même filtre pour éviter une ancre
+         vers une section absente. #}
+      {% if all_avis is defined and post.categorie %}
+        {% set _alt_count = (all_avis | rejectattr('slug', 'equalto', post.slug) | selectattr('categorie', 'equalto', post.categorie) | list | length) %}
+        {% if _alt_count > 0 %}
+        <li><a href="#alternatives">Les alternatives à {{ post.marque }}</a></li>
+        {% endif %}
       {% endif %}
     </ol>
   </nav>
@@ -523,23 +549,10 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
   </section>
   {% endif %}
 
-  {# ─── FAQ ────────────────────────────────────────────────── #}
-  {% if post.faq and post.faq | length > 0 %}
-  <section class="faq-section" id="faq">
-    <h2>Foire aux questions</h2>
-    {% for item in post.faq %}
-    <div class="faq-item">
-      <div class="faq-q">{{ item.q }}</div>
-      <div class="faq-r">{{ item.r }}</div>
-    </div>
-    {% endfor %}
-  </section>
-  {% endif %}
-
-  {# ─── VERDICT FINAL ─────────────────────────────────────── #}
+  {# ─── VERDICT FINAL (= "Mon avis final" selon le wireframe) ──── #}
   {% if post.verdict %}
   <section class="verdict" id="verdict">
-    <h2>Verdict final sur {{ post.marque }}</h2>
+    <h2>Mon avis final sur {{ post.marque }}</h2>
     <div class="verdict-note">
       <span class="score-num">{{ post.note }}<small>/5</small></span>
       <div class="stars" style="font-size:24px">
@@ -557,6 +570,54 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
     </a>
     {% endif %}
   </section>
+  {% endif %}
+
+  {# ─── FAQ (déplacée APRÈS le verdict pour matcher le wireframe) ─ #}
+  {% if post.faq and post.faq | length > 0 %}
+  <section class="faq-section" id="faq">
+    <h2>Foire aux questions</h2>
+    {% for item in post.faq %}
+    <div class="faq-item">
+      <div class="faq-q">{{ item.q }}</div>
+      <div class="faq-r">{{ item.r }}</div>
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {# ─── ALTERNATIVES À LA MARQUE ───────────────────────────────
+     Sélection automatique : on prend les 3 premiers avis de la MÊME
+     catégorie que celui-ci, en excluant l'avis courant. Source :
+     `all_avis` est passé au template par generate.py (cf. ligne 1760
+     du script). Si la catégorie est vide ou s'il n'y a pas d'autre
+     avis, on n'affiche rien. #}
+  {% if all_avis is defined and post.categorie %}
+    {% set _alternatives = all_avis | rejectattr('slug', 'equalto', post.slug) | selectattr('categorie', 'equalto', post.categorie) | list %}
+    {% if _alternatives | length > 0 %}
+    <section class="alternatives-section" id="alternatives">
+      <h2>Les alternatives à {{ post.marque }}</h2>
+      <div class="alternatives-grid">
+        {% for alt in _alternatives[:3] %}
+        <a href="/{{ alt.slug }}" class="alternative-card">
+          <div class="alternative-logo">
+            {% if alt.logo_path %}
+              <img src="{{ alt.logo_path }}" alt="Logo {{ alt.marque }}">
+            {% else %}
+              <span class="alternative-logo-placeholder">{{ alt.marque[0] | upper if alt.marque else '?' }}</span>
+            {% endif %}
+          </div>
+          <div class="alternative-name">Avis {{ alt.marque }}</div>
+          {% if alt.note %}
+          <div class="alternative-note">
+            <span class="alternative-note-num">{{ alt.note }}<small>/5</small></span>
+            <span class="alternative-note-star">★</span>
+          </div>
+          {% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
   {% endif %}
 
   {# ─── BOX AUTEUR ─────────────────────────────────────────────
