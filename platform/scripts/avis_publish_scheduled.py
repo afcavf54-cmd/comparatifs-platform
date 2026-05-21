@@ -271,32 +271,42 @@ def parse_anchors(raw: str) -> list[dict]:
 
 # ─── Génération du contenu via Claude ────────────────────────────────────
 
-def _build_generation_system_prompt(persona_prompt: str = "") -> str:
-    """Construit dynamiquement le system prompt du 1er appel Claude (génération
-    du JSON principal : H1, en_bref, points, h2_*, FAQ, verdict, meta).
+def _load_global_prompt(site_dir, config: dict) -> str:
+    """Charge le `global_prompt` depuis le schema correspondant au site (même
+    logique que blog_publish_scheduled.py). Le schema est dans /schemas/<tpl>.json
+    avec une clé top-level `global_prompt`. Cette directive complète le persona
+    en ajoutant des consignes éditoriales propres au type de site (ton attendu,
+    sujets à éviter, structure-type des avis sur ce verticales, etc.).
+    """
+    try:
+        from pathlib import Path
+        page_types = config.get("page_types") or {}
+        template_name = page_types.get("classement") or page_types.get("blog")
+        if not template_name:
+            template_name = "classement-saas"
+        # ROOT est défini en tête de module
+        schema_path = ROOT / "schemas" / f"{template_name}.json"
+        if not schema_path.exists():
+            return ""
+        schema = json.loads(schema_path.read_text(encoding="utf-8"))
+        return (schema.get("global_prompt") or "").strip()
+    except Exception:
+        return ""
 
-    Si `persona_prompt` est fourni, il est placé EN TÊTE du system prompt avec
-    un marquage "PRIORITÉ ABSOLUE". Le system prompt a plus de poids hiérarchique
-    que le user prompt pour Claude — placer le persona ici garantit qu'il prime
-    sur les contraintes structurelles techniques qui suivent.
 
-    Si pas de persona, on retombe sur les directives stylistiques génériques
-    historiques (ton direct, professionnel, sans superlatifs)."""
-    persona_block = ""
-    if persona_prompt and persona_prompt.strip():
-        persona_block = (
-            "## TON IDENTITÉ ÉDITORIALE (PRIORITÉ ABSOLUE — incarne-la pour CHAQUE phrase)\n\n"
-            f"{persona_prompt.strip()}\n\n"
-            "⚠ Cette identité prime sur toutes les autres considérations stylistiques.\n"
-            "Vouvoiement, ton, angle éditorial, contraintes du lecteur cible : tout doit transparaître\n"
-            "dans l'intro, les sections H2, les réponses FAQ et le verdict.\n\n"
-            "---\n\n"
-        )
+# ─── Constructeurs des system prompts ────────────────────────────────────
+# On copie le pattern qui marche déjà pour le blog (blog_publish_scheduled.py
+# ligne 322) : empilement de 3 couches dans cet ordre exact :
+#   1. persona_prompt (config.yaml, ex: "Pierre Petit, vouvoie...")
+#   2. global_prompt (schema JSON, ex: "Pour ce site SaaS B2B, ton tranché...")
+#   3. base_sys (contraintes techniques de format)
+# Pas d'extraction custom, pas de detection de mots-clés. La force du système
+# vient de l'ordre : persona en tête = autorité maximale pour Claude.
 
-    # Note : on retire 'Ton style est direct, professionnel...' du prompt historique
-    # car ça entrait en conflit avec un persona personnalisé. Si pas de persona,
-    # Claude reste neutre par défaut, ce qui est OK pour la rétro-compat.
-    base = (
+def _build_generation_system_prompt(persona_prompt: str = "", global_prompt: str = "") -> str:
+    """Construit dynamiquement le system prompt du 1er appel Claude (JSON
+    structuré). Empile persona + global + technique, dans cet ordre."""
+    base_sys = (
         "Tu es un rédacteur SEO spécialisé dans les avis produits francophones.\n"
         "Tu écris des avis honnêtes, structurés, factuels, conformes aux critères E-E-A-T de Google.\n"
         "Tu cites des éléments concrets (fonctionnalités, prix, cas d'usage) plutôt que des généralités.\n"
@@ -309,15 +319,36 @@ def _build_generation_system_prompt(persona_prompt: str = "") -> str:
         "Les questions FAQ DOIVENT se terminer par '?'.\n"
         "N'invente JAMAIS de note, de chiffre, de pourcentage qui n'est pas dans les données fournies."
     )
-    return persona_block + base
+    layers = [p.strip() for p in (persona_prompt, global_prompt, base_sys) if p and p.strip()]
+    return "\n\n".join(layers)
 
 
-# Conservé pour rétro-compat si du code externe l'importe encore. Équivaut à
-# `_build_generation_system_prompt()` sans persona.
+def _build_sections_html_system_prompt(persona_prompt: str = "", global_prompt: str = "") -> str:
+    """Construit dynamiquement le system prompt du 2e appel Claude (HTML libre
+    des sections custom). Même pattern à 3 couches que le 1er appel."""
+    base_sys = (
+        "Tu es un rédacteur SEO francophone spécialisé dans les avis produits.\n"
+        "Tu écris des sections d'avis en HTML pur, prêt à être inséré dans une page web.\n\n"
+        "RÈGLES TECHNIQUES IMPÉRATIVES :\n"
+        "- HTML pur uniquement : <h2>, <h3>, <p>, <strong>, <em>, <ul>, <li>\n"
+        "- AUCUNE balise <html>, <head>, <body>, <main>, <article>, <section>, <div>\n"
+        "- AUCUN markdown, AUCUN ``` code block\n"
+        "- Commence DIRECTEMENT par un <h2>\n"
+        "- N'invente JAMAIS de chiffres précis, partenariats ou récompenses : reste sur des\n"
+        "  faits notoires ou des analyses générales si tu manques d'éléments\n"
+        "- Aucun tiret long (—), utilise des virgules ou des points\n"
+        "- Tu réponds UNIQUEMENT avec le HTML, sans préambule ni commentaire"
+    )
+    layers = [p.strip() for p in (persona_prompt, global_prompt, base_sys) if p and p.strip()]
+    return "\n\n".join(layers)
+
+
+# Conservés pour rétro-compat si du code externe les importe encore.
 GENERATION_SYSTEM_PROMPT = _build_generation_system_prompt()
+SECTIONS_HTML_SYSTEM_PROMPT = _build_sections_html_system_prompt()
 
 
-def build_generation_prompt(row: dict, site: dict, faq_questions: list = None, persona_prompt: str = "") -> tuple:
+def build_generation_prompt(row: dict, site: dict, faq_questions: list = None, persona_prompt: str = "", global_prompt: str = "") -> tuple:
     """Construit le user prompt pour générer le contenu structuré d'un avis.
 
     Si `faq_questions` est fourni (liste non vide), Claude doit reproduire ces
@@ -476,10 +507,10 @@ Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de `
     # Le persona est injecté à 2 niveaux pour maximiser son poids :
     # 1) En TÊTE du system prompt (plus haute priorité pour Claude)
     # 2) Rappelé en tête du user prompt (cf. persona_section plus haut)
-    return _build_generation_system_prompt(persona_prompt), user
+    return _build_generation_system_prompt(persona_prompt, global_prompt), user
 
 
-def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_questions: list = None, persona_prompt: str = "") -> dict:
+def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_questions: list = None, persona_prompt: str = "", global_prompt: str = "") -> dict:
     """Appelle Claude et parse le JSON retourné. Lève si parsing échoue.
 
     Si `custom_prompt` est fourni (saisi par l'éditeur via le dashboard et
@@ -501,7 +532,7 @@ def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_qu
     # Normalisation de la liste FAQ imposée
     forced_faq = [q.strip() for q in (faq_questions or []) if isinstance(q, str) and q.strip()]
 
-    system, user = build_generation_prompt(row, site, faq_questions=forced_faq, persona_prompt=persona_prompt)
+    system, user = build_generation_prompt(row, site, faq_questions=forced_faq, persona_prompt=persona_prompt, global_prompt=global_prompt)
     raw = call_claude(system, user, max_tokens=4000)
     raw = strip_code_fences(raw)
     try:
@@ -521,7 +552,7 @@ def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_qu
     sections_toc: list = []
     if custom_prompt and custom_prompt.strip():
         try:
-            sections_html, sections_toc = generate_sections_html(row, site, custom_prompt, persona_prompt=persona_prompt)
+            sections_html, sections_toc = generate_sections_html(row, site, custom_prompt, persona_prompt=persona_prompt, global_prompt=global_prompt)
         except Exception as e:
             print(f"    ⚠ Échec génération sections custom : {e}")
             # On garde les 3 H2 standards en fallback
@@ -571,47 +602,8 @@ def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_qu
 
 
 # ─── Génération du bloc sections via prompt custom ────────────────────────
-
-def _build_sections_html_system_prompt(persona_prompt: str = "") -> str:
-    """Construit dynamiquement le system prompt du 2e appel Claude (génération
-    du HTML libre des sections custom). Même logique que pour le JSON principal :
-    le persona en tête du SYSTEM prompt (plus haute autorité pour Claude) garantit
-    qu'il prime sur les contraintes techniques HTML qui suivent."""
-    persona_block = ""
-    if persona_prompt and persona_prompt.strip():
-        persona_block = (
-            "## TON IDENTITÉ ÉDITORIALE (PRIORITÉ ABSOLUE — incarne-la pour CHAQUE phrase)\n\n"
-            f"{persona_prompt.strip()}\n\n"
-            "⚠ Cette identité prime sur toutes les autres considérations stylistiques.\n"
-            "Vouvoiement, ton, angle éditorial, contraintes du lecteur cible : tout doit transparaître\n"
-            "dans chaque H2, H3, paragraphe, liste à puces.\n\n"
-            "---\n\n"
-        )
-
-    base = (
-        "Tu es un rédacteur SEO francophone spécialisé dans les avis produits.\n"
-        "Tu écris des sections d'avis en HTML pur, prêt à être inséré dans une page web.\n\n"
-        "RÈGLES TECHNIQUES IMPÉRATIVES :\n"
-        "- HTML pur uniquement : <h2>, <h3>, <p>, <strong>, <em>, <ul>, <li>\n"
-        "- AUCUNE balise <html>, <head>, <body>, <main>, <article>, <section>, <div>\n"
-        "- AUCUN markdown, AUCUN ``` code block\n"
-        "- Commence DIRECTEMENT par un <h2>\n"
-        "- N'invente JAMAIS de chiffres précis, partenariats ou récompenses : reste sur des\n"
-        "  faits notoires ou des analyses générales si tu manques d'éléments\n"
-        "- Aucun tiret long (—), utilise des virgules ou des points\n"
-        "- Tu réponds UNIQUEMENT avec le HTML, sans préambule ni commentaire\n\n"
-        "RÈGLES ÉDITORIALES :\n"
-        "- Donne ton avis : un avis est une opinion argumentée, pas un résumé descriptif. Tu\n"
-        "  peux pointer ce qui marche, ce qui coince, à qui ça convient ou pas.\n"
-        "- Conforme E-E-A-T : appuie tes affirmations sur des éléments visibles (interface,\n"
-        "  tarification publique, retours utilisateurs typiques) plutôt que sur des données\n"
-        "  inventées."
-    )
-    return persona_block + base
-
-
-# Conservé pour rétro-compat (équivaut à la version sans persona).
-SECTIONS_HTML_SYSTEM_PROMPT = _build_sections_html_system_prompt()
+# (Les builders _build_*_system_prompt sont définis plus haut, près du
+#  GENERATION_SYSTEM_PROMPT, avec le pattern à 3 couches identique au blog.)
 
 
 def _slugify_anchor(s: str) -> str:
@@ -664,7 +656,7 @@ def _enrich_sections_html(html: str) -> tuple:
     return new_html, toc
 
 
-def generate_sections_html(row: dict, site: dict, custom_prompt: str, persona_prompt: str = "") -> tuple:
+def generate_sections_html(row: dict, site: dict, custom_prompt: str, persona_prompt: str = "", global_prompt: str = "") -> tuple:
     """Génère le bloc HTML des sections H2 entre le sommaire et 'Retours
     d'expérience des utilisateurs', à partir d'un prompt rédigé par l'éditeur.
 
@@ -712,7 +704,7 @@ INSTRUCTIONS DE L'ÉDITEUR (à respecter strictement, c'est ta structure et ton 
 
 Réponds avec le HTML des sections, prêt à être inséré tel quel dans la page (commence par <h2>)."""
 
-    raw = call_claude(_build_sections_html_system_prompt(persona_prompt), user, max_tokens=4000)
+    raw = call_claude(_build_sections_html_system_prompt(persona_prompt, global_prompt), user, max_tokens=4000)
     raw = strip_code_fences(raw)
     # Petit nettoyage défensif : si Claude a quand même ajouté un wrapper, on
     # retire les balises inutiles. Si Claude a renvoyé un préambule avant le
@@ -1068,6 +1060,15 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         if persona_prompt_site:
             print(f"    🎭 Persona éditorial détecté ({len(persona_prompt_site)} caractères)")
 
+        # Global prompt (schemas/<template>.json, champ `global_prompt`).
+        # Pattern identique à blog_publish_scheduled.py : on empile
+        # [persona, global_prompt, base_sys] dans le system prompt Claude.
+        # Le global_prompt apporte la prescription éditoriale propre au
+        # verticale (SaaS B2B, SCPI, etc.) en complément du persona individuel.
+        global_prompt_site = _load_global_prompt(site_dir, config)
+        if global_prompt_site:
+            print(f"    🌐 Global prompt schema détecté ({len(global_prompt_site)} caractères)")
+
         try:
             generated = generate_avis_content(
                 row,
@@ -1075,6 +1076,7 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
                 custom_prompt=custom_prompt,
                 faq_questions=faq_questions,
                 persona_prompt=persona_prompt_site,
+                global_prompt=global_prompt_site,
             )
         except Exception as e:
             print(f"    ✗ Échec génération : {e}")
