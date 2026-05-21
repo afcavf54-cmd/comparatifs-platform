@@ -68,7 +68,6 @@ type Avis = {
   cta_label?: string
   note_trustpilot?: number | string
   nb_avis_trustpilot?: number | string
-  plateforme_avis?: string
   // Avis Google : 2 colonnes optionnelles ajoutées en 2026. Le template
   // affiche une 2e carte note à côté de Trustpilot si renseignées.
   note_google?: number | string
@@ -589,10 +588,6 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
                 <input style={inputStyle} type="number" min="0" value={avis.nb_avis_trustpilot ?? ''}
                        onChange={e => upd({ nb_avis_trustpilot: e.target.value ? parseInt(e.target.value) : '' })} placeholder="3000" />
               </div>
-            </div>
-            <div>
-              <label style={labelStyle}>Plateforme (libellé custom, optionnel)</label>
-              <input style={inputStyle} value={avis.plateforme_avis || ''} onChange={e => upd({ plateforme_avis: e.target.value })} placeholder="Trustpilot" />
             </div>
           </div>
           <div style={{ padding: 14, border: '1px solid #1E2D3D', borderRadius: 8, background: '#0A0E1A' }}>
