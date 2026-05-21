@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { parseCSV } from '@/lib/csv'
+import { parseCSV } from '../../../../../lib/csv'
 
 // API : lit le avis_sheet_csv_url depuis config.yaml, fetch le CSV, et retourne
 // les lignes classées par état (publiée / programmée / à venir).
