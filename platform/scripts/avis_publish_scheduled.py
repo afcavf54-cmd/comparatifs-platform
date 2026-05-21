@@ -302,6 +302,93 @@ def _load_global_prompt(site_dir, config: dict) -> str:
         return ""
 
 
+def _load_avis_config(site_dir, config: dict) -> dict:
+    """Charge la clé `avis_config` depuis le schema. Cet objet contient, pour
+    chaque section d'une page d'avis (hero, en_bref, points_forts, points_faibles,
+    sections_h2, faq, verdict), un `words_max` (limite de mots) et un `prompt`
+    (directive complémentaire).
+
+    Structure attendue (cf. UI dashboard `/templates/[templateId]`) :
+        {
+          "hero":           { "words_max": 60,  "prompt": "..." },
+          "en_bref":        { "words_max": 50,  "prompt": "..." },
+          "points_forts":   { "words_max": 12,  "prompt": "..." },
+          "points_faibles": { "words_max": 12,  "prompt": "..." },
+          "sections_h2":    { "words_max": 350, "prompt": "..." },
+          "faq":            { "words_max": 60,  "prompt": "..." },
+          "verdict":        { "words_max": 80,  "prompt": "..." }
+        }
+
+    Retourne `{}` si le schema n'existe pas ou si la clé est absente. Dans ce
+    cas les anciennes limites par défaut de Claude s'appliquent (= aucune
+    limite stricte).
+    """
+    try:
+        page_types = config.get("page_types") or {}
+        template_name = page_types.get("classement") or page_types.get("blog") or "classement-saas"
+        schema_path = ROOT / "schemas" / f"{template_name}.json"
+        if not schema_path.exists():
+            return {}
+        schema = json.loads(schema_path.read_text(encoding="utf-8"))
+        return schema.get("avis_config") or {}
+    except Exception:
+        return {}
+
+
+def _format_avis_limits(avis_config: dict, scope: str = "json") -> str:
+    """Construit le bloc texte à injecter dans le user prompt Claude pour
+    forcer le respect des limites de mots définies dans le dashboard.
+
+    `scope` :
+      - "json"     → 1er appel (in_bref, h1, points_forts/faibles, FAQ, verdict)
+      - "sections" → 2e appel (HTML libre des sections H2)
+
+    Retourne `""` si avis_config est vide ou sans limites pertinentes — dans
+    ce cas le prompt n'est pas modifié.
+    """
+    if not avis_config:
+        return ""
+
+    # ─── Limites pertinentes selon le scope ──────────────────────────────
+    limit_lines: list[str] = []
+    prompt_lines: list[str] = []
+
+    def _add(section: str, label_humain: str, applies_to: str):
+        cfg = avis_config.get(section) or {}
+        w = cfg.get("words_max")
+        if isinstance(w, (int, float)) and w > 0:
+            limit_lines.append(f"- {label_humain} : maximum {int(w)} mots {applies_to}.")
+        p = (cfg.get("prompt") or "").strip()
+        if p:
+            prompt_lines.append(f"- Pour {label_humain.lower()} : {p}")
+
+    if scope == "json":
+        _add("hero",           "h1 (titre principal)",   "(8-15 mots idéal, c'est un titre)")
+        _add("en_bref",        "en_bref (chapeau court)", "")
+        _add("points_forts",   "chaque point fort",      "(par item de la liste)")
+        _add("points_faibles", "chaque point faible",    "(par item de la liste)")
+        _add("faq",            "chaque réponse FAQ",     "(par réponse, hors question)")
+        _add("verdict",        "verdict (conclusion centrée)", "")
+    elif scope == "sections":
+        # Seule sections_h2 s'applique au 2e appel HTML libre
+        _add("sections_h2", "chaque section H2", "(une page comprend généralement 4-6 sections H2)")
+
+    if not limit_lines and not prompt_lines:
+        return ""
+
+    parts: list[str] = []
+    if limit_lines:
+        parts.append("LIMITES DE LONGUEUR PAR SECTION (à respecter STRICTEMENT — l'éditeur compte les mots) :")
+        parts.extend(limit_lines)
+    if prompt_lines:
+        if parts:
+            parts.append("")
+        parts.append("DIRECTIVES SUPPLÉMENTAIRES PAR SECTION (en plus du persona général) :")
+        parts.extend(prompt_lines)
+
+    return "\n" + "\n".join(parts) + "\n"
+
+
 # ─── Constructeurs des system prompts ────────────────────────────────────
 # On copie le pattern qui marche déjà pour le blog (blog_publish_scheduled.py
 # ligne 322) : empilement de 3 couches dans cet ordre exact :
@@ -356,7 +443,7 @@ GENERATION_SYSTEM_PROMPT = _build_generation_system_prompt()
 SECTIONS_HTML_SYSTEM_PROMPT = _build_sections_html_system_prompt()
 
 
-def build_generation_prompt(row: dict, site: dict, faq_questions: list = None, persona_prompt: str = "", global_prompt: str = "") -> tuple:
+def build_generation_prompt(row: dict, site: dict, faq_questions: list = None, persona_prompt: str = "", global_prompt: str = "", avis_config: dict | None = None) -> tuple:
     """Construit le user prompt pour générer le contenu structuré d'un avis.
 
     Si `faq_questions` est fourni (liste non vide), Claude doit reproduire ces
@@ -483,7 +570,7 @@ CONTRAINTES :
    DOIT atteindre AU MINIMUM {mot_min} mots au total. Si tu sais peu de choses sur {marque},
    développe les analyses (positionnement marché, profil-type d'utilisateur, comparaison
    sectorielle générique) plutôt que d'inventer des faits précis.{faq_constraint}
-
+{_format_avis_limits(avis_config or {}, scope="json")}
 Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de ```) :
 
 {{
@@ -518,7 +605,7 @@ Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de `
     return _build_generation_system_prompt(persona_prompt, global_prompt), user
 
 
-def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_questions: list = None, persona_prompt: str = "", global_prompt: str = "") -> dict:
+def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_questions: list = None, persona_prompt: str = "", global_prompt: str = "", avis_config: dict | None = None) -> dict:
     """Appelle Claude et parse le JSON retourné. Lève si parsing échoue.
 
     Si `custom_prompt` est fourni (saisi par l'éditeur via le dashboard et
@@ -540,7 +627,7 @@ def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_qu
     # Normalisation de la liste FAQ imposée
     forced_faq = [q.strip() for q in (faq_questions or []) if isinstance(q, str) and q.strip()]
 
-    system, user = build_generation_prompt(row, site, faq_questions=forced_faq, persona_prompt=persona_prompt, global_prompt=global_prompt)
+    system, user = build_generation_prompt(row, site, faq_questions=forced_faq, persona_prompt=persona_prompt, global_prompt=global_prompt, avis_config=avis_config)
     raw = call_claude(system, user, max_tokens=4000)
     raw = strip_code_fences(raw)
     try:
@@ -560,7 +647,7 @@ def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_qu
     sections_toc: list = []
     if custom_prompt and custom_prompt.strip():
         try:
-            sections_html, sections_toc = generate_sections_html(row, site, custom_prompt, persona_prompt=persona_prompt, global_prompt=global_prompt)
+            sections_html, sections_toc = generate_sections_html(row, site, custom_prompt, persona_prompt=persona_prompt, global_prompt=global_prompt, avis_config=avis_config)
         except Exception as e:
             print(f"    ⚠ Échec génération sections custom : {e}")
             # On garde les 3 H2 standards en fallback
@@ -732,7 +819,7 @@ def _wrap_first_occurrence_with_link(html: str, text: str, url: str) -> str:
     return ''.join(out)
 
 
-def generate_sections_html(row: dict, site: dict, custom_prompt: str, persona_prompt: str = "", global_prompt: str = "") -> tuple:
+def generate_sections_html(row: dict, site: dict, custom_prompt: str, persona_prompt: str = "", global_prompt: str = "", avis_config: dict | None = None) -> tuple:
     """Génère le bloc HTML des sections H2 entre le sommaire et 'Retours
     d'expérience des utilisateurs', à partir d'un prompt rédigé par l'éditeur.
 
@@ -812,7 +899,7 @@ CONTEXTE DE L'AVIS :
 INSTRUCTIONS DE L'ÉDITEUR (à respecter strictement, c'est ta structure et ton brief) :
 
 {custom_prompt.strip()}{mots_section}
-
+{_format_avis_limits(avis_config or {}, scope="sections")}
 Réponds avec le HTML des sections, prêt à être inséré tel quel dans la page (commence par <h2>)."""
 
     raw = call_claude(_build_sections_html_system_prompt(persona_prompt, global_prompt), user, max_tokens=4000)
@@ -1264,6 +1351,16 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         if global_prompt_site:
             print(f"    🌐 Global prompt schema détecté ({len(global_prompt_site)} caractères)")
 
+        # avis_config : limites de mots + prompts par section configurés dans
+        # le dashboard /templates/[templateId] et persistés dans schemas/<tpl>.json
+        # sous la clé `avis_config`. Lecture une seule fois par site, injection
+        # dans le user prompt des deux appels Claude (JSON + sections HTML).
+        avis_config_site = _load_avis_config(site_dir, config)
+        if avis_config_site:
+            n_limits = sum(1 for v in avis_config_site.values() if isinstance(v, dict) and v.get("words_max"))
+            n_prompts = sum(1 for v in avis_config_site.values() if isinstance(v, dict) and (v.get("prompt") or "").strip())
+            print(f"    📏 Avis config schema : {n_limits} limite(s) de mots, {n_prompts} prompt(s) par section")
+
         # Mots-clés imposés (sheet) : si présents, log pour traçabilité workflow.
         # Le parsing et l'injection se font dans generate_sections_html.
         _mots_raw = (row.get("mots_imposes") or "").strip()
@@ -1280,6 +1377,7 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
                 faq_questions=faq_questions,
                 persona_prompt=persona_prompt_site,
                 global_prompt=global_prompt_site,
+                avis_config=avis_config_site,
             )
         except Exception as e:
             print(f"    ✗ Échec génération : {e}")
