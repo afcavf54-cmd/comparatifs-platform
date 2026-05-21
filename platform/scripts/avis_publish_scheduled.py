@@ -34,6 +34,10 @@ Format attendu du CSV (colonnes) :
     nb_avis_trustpilot  optionnel  (ex: 3000)
     plateforme_avis     optionnel  (défaut: "Trustpilot")
     meta_title          optionnel  (par défaut: pattern config.seo.avis_title_pattern)
+    H1                  optionnel  (titre principal H1 affiché en haut de page —
+                                     écrase celui généré par l'IA si rempli.
+                                     Utile pour les avis à fort enjeu SEO où
+                                     l'éditeur veut un H1 précis et stable.)
     meta_description    optionnel
     link_anchors        optionnel  ("ancre1:N;ancre2:M")
     mots_imposes        optionnel  (mots-clés à inclure dans sections_html,
@@ -977,6 +981,7 @@ EDITABLE_KEYS = (
     "note", "cta_url", "cta_label", "cible", "tarifs", "categorie",
     "note_trustpilot", "nb_avis_trustpilot", "plateforme_avis",
     "meta_title", "meta_description", "link_anchors", "mots_imposes",
+    "h1",
 )
 
 
@@ -1041,6 +1046,19 @@ def sync_metadata(posts_dir: Path, rows: list[dict]) -> int:
             new_fm["meta_description"] = row["meta_description"].strip()
         if row.get("link_anchors"):
             new_fm["link_anchors"] = parse_anchors(row["link_anchors"])
+        # H1 : si la colonne sheet est remplie, elle écrase celui généré par
+        # Claude. Permet à l'éditeur d'ajuster le titre principal sans
+        # régénérer tout l'avis. Si la cellule est vide → on ne touche pas
+        # (la condition `if row.get("h1")` filtre).
+        if row.get("h1"):
+            new_fm["h1"] = row["h1"].strip()
+        # mots_imposes : sync de la valeur brute (le parsing en liste de dicts
+        # se fait seulement à la génération du contenu). Permet de modifier
+        # les mots-clés depuis la sheet sans régénérer l'avis (utile pour
+        # corriger une URL cassée par exemple ; l'effet ne s'applique qu'à
+        # la prochaine régénération).
+        if row.get("mots_imposes"):
+            new_fm["mots_imposes"] = row["mots_imposes"].strip()
         # `mot_minimum` est purement informatif côté .md déjà publié (la
         # longueur du contenu existant n'est pas régénérée). Mais on la sync
         # quand même pour que le dashboard reflète la valeur courante de la sheet.
