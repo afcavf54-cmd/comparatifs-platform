@@ -464,6 +464,12 @@ def build_generation_prompt(row: dict, site: dict, faq_questions: list = None, p
     tarifs = parse_tarifs(row.get("tarifs", ""))
     note_tp = (row.get("note_trustpilot") or "").strip()
     nb_avis_tp = (row.get("nb_avis_trustpilot") or "").strip()
+    # Avis Google (en plus de Trustpilot) : 2 nouvelles colonnes optionnelles
+    # de la sheet. Si remplies, le template affiche une 2e carte note à côté
+    # de Trustpilot. Indépendantes : on peut avoir Google sans Trustpilot, ou
+    # l'inverse, ou les deux.
+    note_google = (row.get("note_google") or "").strip()
+    nb_avis_google = (row.get("nb_avis_google") or "").strip()
     plateforme_avis = (row.get("plateforme_avis") or "Trustpilot").strip()
     year = str(site.get("year") or datetime.now(PARIS).year)
 
@@ -484,17 +490,29 @@ def build_generation_prompt(row: dict, site: dict, faq_questions: list = None, p
     target_intro = max(50, int(mot_min * 0.05))
     target_verdict = max(60, int(mot_min * 0.07))
 
-    # Construction du paragraphe avis_clients hors f-string pour éviter les
-    # problèmes d'échappement de quotes imbriquées
+    # Construction des instructions pour le bloc "Quels sont les avis des
+    # utilisateurs ?". Maintenant Claude génère DEUX paragraphes distincts :
+    # - aiment    : ce que les clients aiment (rendu dans une box verte)
+    # - regrettent: ce que les clients regrettent (rendu dans une box rouge)
+    # Le contenu est synthétisé à partir du sentiment global, des points
+    # forts/faibles, et des données externes (notes Trustpilot/Google si
+    # disponibles).
+    _sources = []
     if note_tp and nb_avis_tp:
+        _sources.append(f"Trustpilot ({note_tp}/5 sur {nb_avis_tp} avis)")
+    if note_google and nb_avis_google:
+        _sources.append(f"Google ({note_google}/5 sur {nb_avis_google} avis)")
+
+    if _sources:
         avis_clients_instructions = (
-            f"Mentionne la note {note_tp}/5 sur {plateforme_avis} "
-            f"({nb_avis_tp} avis) et résume les retours typiques."
+            "Tu disposes des notes externes : " + " et ".join(_sources) + ". "
+            "Synthétise les retours typiques en 2 paragraphes distincts (aiment / regrettent), "
+            "en cohérence avec ces notes et le sentiment global de l'avis."
         )
     else:
         avis_clients_instructions = (
-            "Les avis externes ne sont pas fournis. Écris simplement en 1 ligne "
-            "que les avis publics sont à vérifier sur les plateformes spécialisées."
+            "Pas de note externe fournie. Synthétise quand même 2 paragraphes courts "
+            "(aiment / regrettent) basés sur ton analyse du sentiment et des points forts/faibles."
         )
 
     # ─── FAQ : questions imposées par l'éditeur OU auto-générées ────────────
@@ -592,8 +610,8 @@ Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de `
     "contenu_html": "Au moins {target_h2} mots en HTML <p>...</p>. Positionnement vs concurrence, justification du prix, à qui c'est rentable, à qui ça ne l'est pas."
   }},
   "h2_avis_clients": {{
-    "titre": "Titre H2 sur les avis clients (ex: 'Que disent les utilisateurs ?')",
-    "contenu_html": "1 paragraphe en HTML <p>...</p>. {avis_clients_instructions}"
+    "aiment": "Paragraphe HTML <p>...</p> de 40-60 mots résumant ce que les clients AIMENT chez {marque}. Mets les éléments-clés en <strong>gras</strong> (3-5 expressions). Ton : factuel, synthétique. Pas de phrase d'intro genre 'Les clients apprécient', va direct au fond.",
+    "regrettent": "Paragraphe HTML <p>...</p> de 40-60 mots résumant ce que les clients REGRETTENT chez {marque}. Mets les éléments-clés en <strong>gras</strong> (3-5 expressions). {avis_clients_instructions}"
   }},
   "faq": {faq_block},
   "verdict": "Verdict final tranché d'environ {target_verdict} mots. Réitère la note {note}/5 et donne une recommandation claire (pour qui c'est, pour qui ce n'est pas).",
@@ -682,7 +700,11 @@ def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_qu
         "h2_fonctionnalites": data.get("h2_fonctionnalites") or {"titre": "", "contenu_html": ""},
         "h2_support": data.get("h2_support") or {"titre": "", "contenu_html": ""},
         "h2_qualite_prix": data.get("h2_qualite_prix") or {"titre": "", "contenu_html": ""},
-        "h2_avis_clients": data.get("h2_avis_clients") or {"titre": "", "contenu_html": ""},
+        # `h2_avis_clients` : structure {aiment, regrettent}. Le `titre` est
+        # forcé côté template ("Quels sont les avis des utilisateurs de X ?").
+        # Si Claude renvoie l'ancienne clé `contenu_html`, le template gère
+        # la rétro-compat (cf. avis-post.html.j2).
+        "h2_avis_clients": data.get("h2_avis_clients") or {"aiment": "", "regrettent": ""},
         "faq": faq_final,
         "verdict": data.get("verdict", ""),
         "meta_title": data.get("meta_title", ""),
@@ -1013,6 +1035,11 @@ def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict
         "note_trustpilot": float(note_tp.replace(",", ".")) if note_tp.replace(",", ".").replace(".", "").isdigit() else None,
         "nb_avis_trustpilot": int(re.sub(r"\D", "", nb_avis_tp)) if nb_avis_tp else None,
         "plateforme_avis": plateforme_avis if (note_tp and nb_avis_tp) else None,
+        # Avis Google : 2 colonnes optionnelles de la sheet. Si remplies, le
+        # template affiche une 2e carte note à côté de Trustpilot dans la
+        # section "Quels sont les avis des utilisateurs de {marque} ?".
+        "note_google": float(note_google.replace(",", ".")) if note_google.replace(",", ".").replace(".", "").isdigit() else None,
+        "nb_avis_google": int(re.sub(r"\D", "", nb_avis_google)) if nb_avis_google else None,
         # CTA
         "cta_url": cta_url,
         "cta_label": cta_label,
