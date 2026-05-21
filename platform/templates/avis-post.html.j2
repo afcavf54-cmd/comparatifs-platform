@@ -120,35 +120,64 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
 .article-meta-item{display:inline-flex;align-items:center;gap:6px}
 .article-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
 
-/* ─── Bloc score (carte principale) ─── */
-.score-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:32px;margin:24px 0 32px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.score-top{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;margin-bottom:24px}
-.score-big{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:120px}
-.score-num{font-family:'{{ theme.font_title }}',serif;font-size:56px;font-weight:600;color:var(--accent);line-height:1}
-.score-num small{font-size:24px;color:var(--ink3);font-weight:400}
-.stars{display:flex;gap:2px;font-size:22px;color:var(--accent)}
+/* ─── Intro : paragraphe sous le H1 ─── */
+.avis-intro{font-size:18px;line-height:1.7;color:var(--ink2);margin:24px auto 32px;max-width:760px;text-align:left}
+.avis-intro p{margin:0}
+
+/* ─── Encart "Mon avis en Bref" : titre + note à droite / logo + texte ─── */
+.avis-bref-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px 28px;margin:32px 0 24px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.avis-bref-header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.avis-bref-title{font-family:'{{ theme.font_title }}',serif;font-size:22px;font-weight:500;color:var(--ink);margin:0;letter-spacing:-.01em}
+.avis-bref-note{display:flex;align-items:center;gap:10px}
+.avis-bref-note-num{font-family:'{{ theme.font_title }}',serif;font-size:28px;font-weight:600;color:var(--accent);line-height:1}
+.avis-bref-note-num small{font-size:14px;color:var(--ink3);font-weight:400}
+.avis-bref-note .stars{font-size:18px}
+
+.avis-bref-body{display:grid;grid-template-columns:96px 1fr;gap:24px;align-items:center}
+.avis-bref-logo{width:96px;height:96px;border-radius:16px;background:var(--surface2);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+.avis-bref-logo img{max-width:100%;max-height:100%;object-fit:contain}
+.avis-bref-logo-placeholder{font-family:'{{ theme.font_title }}',serif;font-size:48px;font-weight:600;color:var(--accent);text-transform:uppercase}
+.avis-bref-text{color:var(--ink2);font-size:15px;line-height:1.65}
+.avis-bref-text p{margin:0 0 10px}
+.avis-bref-text p:last-child{margin:0}
+
+/* ─── Étoiles (réutilisées dans avis-bref-note) ─── */
+.stars{display:inline-flex;gap:2px;font-size:22px;color:var(--accent)}
 .stars span{position:relative;display:inline-block;width:1em;color:#E0DCD2}
 .stars span.full{color:var(--accent)}
 .stars span.half{color:#E0DCD2}
 .stars span.half::before{content:'★';position:absolute;left:0;top:0;width:50%;overflow:hidden;color:var(--accent)}
-.score-sentiment{display:inline-block;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+
+/* ─── Sentiment badge (affiché sous le en_bref) ─── */
+.score-sentiment{display:inline-block;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-top:6px}
 .score-sentiment.positif{background:#E8F4EA;color:var(--green)}
 .score-sentiment.mitige{background:#FDF6E3;color:#9F7918}
 .score-sentiment.negatif{background:#FBE9E7;color:var(--red)}
-.score-summary{flex:1}
-.score-summary h2{font-size:18px;font-weight:600;margin-bottom:8px;font-family:'{{ theme.font_body }}',sans-serif}
-.score-summary p{color:var(--ink2);font-size:15px}
-.score-pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px;padding-top:24px;border-top:1px solid var(--border)}
-.score-pros h3,.score-cons h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-weight:700;margin-bottom:10px}
-.score-pros h3{color:var(--green)}
-.score-cons h3{color:var(--red)}
-.score-pros ul,.score-cons ul{list-style:none;padding:0}
-.score-pros li,.score-cons li{position:relative;padding:6px 0 6px 22px;font-size:14px;color:var(--ink2)}
-.score-pros li::before{content:'✓';position:absolute;left:0;top:6px;color:var(--green);font-weight:700}
-.score-cons li::before{content:'✕';position:absolute;left:0;top:6px;color:var(--red);font-weight:700}
-.cta-btn{display:inline-block;background:var(--cta,var(--accent));color:var(--cta-text,#fff);padding:14px 28px;border-radius:var(--r);font-weight:600;font-size:16px;margin-top:20px;transition:transform .15s,box-shadow .15s;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+
+/* ─── Points forts / faibles en 2 colonnes (sortis de l'ancien score-card) ─── */
+.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:24px 0}
+.pros,.cons{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:20px}
+.pros h3,.cons h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;font-weight:700;margin:0 0 12px}
+.pros h3{color:var(--green)}
+.cons h3{color:var(--red)}
+.pros ul,.cons ul{list-style:none;padding:0;margin:0}
+.pros li,.cons li{position:relative;padding:6px 0 6px 24px;font-size:14px;color:var(--ink2);line-height:1.5}
+.pros li::before{content:'✓';position:absolute;left:0;top:6px;color:var(--green);font-weight:700}
+.cons li::before{content:'✕';position:absolute;left:0;top:6px;color:var(--red);font-weight:700}
+
+/* ─── CTA principal centré ─── */
+.cta-btn{display:inline-block;background:var(--cta,var(--accent));color:var(--cta-text,#fff);padding:14px 28px;border-radius:var(--r);font-weight:600;font-size:16px;transition:transform .15s,box-shadow .15s;box-shadow:0 2px 8px rgba(0,0,0,.08)}
 .cta-btn:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.12);color:var(--cta-text,#fff)}
-.cta-wrap{text-align:center}
+.cta-wrap,.cta-wrap-main{text-align:center}
+.cta-wrap-main{margin:32px 0 48px}
+
+/* Responsive */
+@media(max-width:680px){
+  .avis-bref-header{flex-direction:column;align-items:flex-start;gap:12px}
+  .avis-bref-body{grid-template-columns:1fr;gap:16px;text-align:center}
+  .avis-bref-logo{margin:0 auto}
+  .pros-cons{grid-template-columns:1fr}
+}
 
 /* ─── En bref ─── */
 .en-bref{background:var(--surface2);border-left:4px solid var(--accent);padding:18px 24px;border-radius:var(--r);margin:32px 0;font-size:16px;color:var(--ink2)}
@@ -237,14 +266,15 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
 .verdict p{color:var(--ink2);font-size:16px;margin-bottom:20px;max-width:600px;margin-left:auto;margin-right:auto}
 .verdict-note{display:inline-flex;align-items:center;gap:12px;margin-bottom:20px}
 .verdict-note .score-num{font-size:42px}
+/* `.score-num` est utilisé dans le bloc verdict final + (potentiellement) dans
+   d'autres modèles. Conservé en classe générique. */
+.score-num{font-family:'{{ theme.font_title }}',serif;font-weight:600;color:var(--accent);line-height:1}
+.score-num small{font-size:.5em;color:var(--ink3);font-weight:400}
 
-/* ─── Responsive ─── */
+/* ─── Responsive global (les rules spécifiques avis-bref-* et pros-cons sont déjà plus haut) ─── */
 @media (max-width:680px){
-  .score-top{grid-template-columns:1fr;text-align:center}
-  .score-big{margin:0 auto}
-  .score-pros-cons{grid-template-columns:1fr;gap:12px}
   .tarifs-table th,.tarifs-table td{padding:10px}
-  .score-card,.verdict{padding:20px}
+  .verdict{padding:20px}
 }
 </style>
 </head>
@@ -254,11 +284,10 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
 
 <main class="container">
 
-  {# ─── HERO ─────────────────────────────────────────────────── #}
+  {# ─── HERO : juste H1 + meta-infos ──────────────────────────── #}
   <section class="avis-hero">
     <h1>{{ post.h1 }}</h1>
-    {# Meta façon blog : catégorie (lien) · date · temps de lecture · auteur.
-       Remplace l'ancienne ligne "{{ categorie }} · Avis" + "Publié le ..." #}
+    {# Meta façon blog : catégorie (lien) · date · temps de lecture · auteur. #}
     <div class="article-meta">
       {% if post.categorie and post.categorie_slug %}
         <a href="/avis/{{ post.categorie_slug }}/" class="article-cat">{{ post.categorie }}</a>
@@ -278,11 +307,21 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
     </div>
   </section>
 
-  {# ─── BLOC SCORE (note + étoiles + pros/cons + CTA) ───────── #}
-  <section class="score-card">
-    <div class="score-top">
-      <div class="score-big">
-        <div class="score-num">{{ post.note }}<small>/5</small></div>
+  {# ─── INTRO : paragraphe d'introduction du sujet ─────────────── #}
+  {# Champ généré par Claude (cf. avis_publish_scheduled.py). Distinct de
+     `en_bref` qui apparaît plus bas dans l'encart "Mon avis en Bref". #}
+  {% if post.intro %}
+  <section class="avis-intro">
+    <p>{{ post.intro }}</p>
+  </section>
+  {% endif %}
+
+  {# ─── MON AVIS EN BREF : titre + note à droite / logo + texte ─ #}
+  <section class="avis-bref-card">
+    <div class="avis-bref-header">
+      <h2 class="avis-bref-title">Mon avis en Bref</h2>
+      <div class="avis-bref-note">
+        <span class="avis-bref-note-num">{{ post.note }}<small>/5</small></span>
         <div class="stars" aria-label="{{ post.note }} étoiles sur 5">
           {%- set full = post.note | int -%}
           {%- set half = 1 if (post.note - full) >= 0.5 else 0 -%}
@@ -290,41 +329,54 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
           {%- if half -%}<span class="half">★</span>{%- endif -%}
           {%- for i in range(5 - full - half) -%}<span>★</span>{%- endfor -%}
         </div>
+      </div>
+    </div>
+    <div class="avis-bref-body">
+      <div class="avis-bref-logo">
+        {# logo_path est uploadé via le dashboard d'édition d'avis et stocké
+           comme chemin relatif type `/avis/<slug>/logo-<ts>.<ext>`. Si vide
+           on affiche l'initiale de la marque comme placeholder. #}
+        {% if post.logo_path %}
+          <img src="{{ post.logo_path }}" alt="Logo {{ post.marque }}">
+        {% else %}
+          <span class="avis-bref-logo-placeholder">{{ post.marque[0] | upper if post.marque else '?' }}</span>
+        {% endif %}
+      </div>
+      <div class="avis-bref-text">
+        {% if post.en_bref %}<p>{{ post.en_bref }}</p>{% endif %}
         <div class="score-sentiment {{ post.sentiment }}">
           {% if post.sentiment == 'positif' %}Recommandé{% elif post.sentiment == 'mitige' %}Mitigé{% else %}À éviter{% endif %}
         </div>
       </div>
-      <div class="score-summary">
-        <h2>Notre avis sur {{ post.marque }}</h2>
-        {% if post.en_bref %}<p>{{ post.en_bref }}</p>{% endif %}
-      </div>
     </div>
+  </section>
 
-    {% if post.points_forts or post.points_faibles %}
-    <div class="score-pros-cons">
-      {% if post.points_forts %}
-      <div class="score-pros">
-        <h3>Points forts</h3>
-        <ul>{% for p in post.points_forts %}<li>{{ p }}</li>{% endfor %}</ul>
-      </div>
-      {% endif %}
-      {% if post.points_faibles %}
-      <div class="score-cons">
-        <h3>Points faibles</h3>
-        <ul>{% for p in post.points_faibles %}<li>{{ p }}</li>{% endfor %}</ul>
-      </div>
-      {% endif %}
+  {# ─── POINTS FORTS / POINTS FAIBLES sur 2 colonnes ──────────── #}
+  {% if post.points_forts or post.points_faibles %}
+  <section class="pros-cons">
+    {% if post.points_forts %}
+    <div class="pros">
+      <h3>Points forts</h3>
+      <ul>{% for p in post.points_forts %}<li>{{ p }}</li>{% endfor %}</ul>
     </div>
     {% endif %}
-
-    {% if post.cta_url %}
-    <div class="cta-wrap">
-      <a class="cta-btn" href="{{ post.cta_url }}" rel="sponsored noopener" target="_blank">
-        {{ post.cta_label | default('Visiter ' ~ post.marque) }} →
-      </a>
+    {% if post.points_faibles %}
+    <div class="cons">
+      <h3>Points faibles</h3>
+      <ul>{% for p in post.points_faibles %}<li>{{ p }}</li>{% endfor %}</ul>
     </div>
     {% endif %}
   </section>
+  {% endif %}
+
+  {# ─── CTA centré (sous les pros/cons) ───────────────────────── #}
+  {% if post.cta_url %}
+  <div class="cta-wrap-main">
+    <a class="cta-btn" href="{{ post.cta_url }}" rel="sponsored noopener" target="_blank">
+      {{ post.cta_label | default('Visiter ' ~ post.marque) }} →
+    </a>
+  </div>
+  {% endif %}
 
   {# ─── EN BREF : pour qui et pourquoi ──────────────────────── #}
   {% if post.cible %}
