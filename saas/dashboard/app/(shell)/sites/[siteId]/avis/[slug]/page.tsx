@@ -341,11 +341,6 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
                    onChange={e => upd({ mot_minimum: parseInt(e.target.value) || 800 })} />
           </div>
         </div>
-        <div>
-          <label style={labelStyle}>Cible visée</label>
-          <input style={inputStyle} value={avis.cible || ''} onChange={e => upd({ cible: e.target.value })}
-                 placeholder="Ex: indépendants et TPE qui veulent simplifier leur comptabilité" />
-        </div>
       </div>
 
       {/* ── EN BREF + H1 ───────────────────────────────────────────── */}
