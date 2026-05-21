@@ -1717,7 +1717,8 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             #                      avec `slugify_cat(c)` (cf cats_map).
             #   - date_display   : date FR formatée
             #   - reading_time   : minutes, basé sur le total des mots dans tous
-            #                      les champs textuels (en_bref + h2_* + faq + verdict).
+            #                      les champs textuels (en_bref + h2_* + sections_html
+            #                      + faq + verdict + points forts/faibles).
             post["categorie_slug"] = slugify_cat(post.get("categorie", "")) if post.get("categorie") else ""
             post["date_display"] = fr_date(post.get("date", ""))
             # Mots : on additionne tous les blocs textuels visibles côté lecteur
@@ -1727,8 +1728,23 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 post.get("h2_fonctionnalites", {}).get("contenu_html", ""),
                 post.get("h2_support", {}).get("contenu_html", ""),
                 post.get("h2_qualite_prix", {}).get("contenu_html", ""),
+                # h2_avis_clients : structure nouvelle (aiment + regrettent) ou
+                # legacy (contenu_html). On lit les 3 pour rester rétro-compat
+                # avec les anciens posts non régénérés.
+                post.get("h2_avis_clients", {}).get("aiment", ""),
+                post.get("h2_avis_clients", {}).get("regrettent", ""),
                 post.get("h2_avis_clients", {}).get("contenu_html", ""),
+                # sections_html : bloc HTML libre généré par Claude depuis le
+                # prompt custom du brouillon (cf. avis_publish_scheduled.py).
+                # Souvent le morceau le plus long du contenu — sans lui le
+                # reading_time est très sous-estimé.
+                post.get("sections_html", ""),
             ]
+            # Points forts/faibles (listes de chaînes)
+            for _liste in (post.get("points_forts") or []), (post.get("points_faibles") or []):
+                for _pt in _liste:
+                    if isinstance(_pt, str):
+                        _text_chunks.append(_pt)
             for _f in (post.get("faq") or []):
                 if isinstance(_f, dict):
                     _text_chunks.append(_f.get("q", ""))
