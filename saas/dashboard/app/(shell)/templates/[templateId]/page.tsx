@@ -8,8 +8,11 @@ import Link from 'next/link'
 // 'global'     : prompt global du site + 5 prompts par défaut pour les classements
 // 'classement' : sidebar Types + détails (mots-clés, sheet, produits, prompts)
 // 'avis'       : limites de mots et prompts par section pour les pages d'avis
-// 'blog'       : pareil pour les articles de blog (placeholder en attente)
-type Tab = 'global' | 'classement' | 'avis' | 'blog'
+//
+// Note : l'onglet 'blog' a été retiré (mai 2026) car la longueur des
+// sections d'un article de blog est pilotée par le `mot_minimum` global
+// de la sheet — pas de cap min/max par section.
+type Tab = 'global' | 'classement' | 'avis'
 
 // ── Sections d'un avis avec leur fourchette de mots par défaut ──────────
 // Min et max par section. L'éditeur peut ajuster chaque borne, et Claude
@@ -52,40 +55,6 @@ const DEFAULT_AVIS_CONFIG: Record<string, { label: string, description: string, 
     description: 'Bloc de conclusion centré, juste avant le bouton call-to-action.',
     words_min_default: 50,
     words_max_default: 100,
-  },
-}
-
-// ── Sections d'un article de blog (placeholder, à étoffer plus tard) ────
-const DEFAULT_BLOG_CONFIG: Record<string, { label: string, description: string, words_min_default: number, words_max_default: number }> = {
-  excerpt: {
-    label: '📌 Excerpt (meta-description)',
-    description: 'Court résumé affiché dans les SERP et les cartes d\'article.',
-    words_min_default: 15,
-    words_max_default: 30,
-  },
-  intro: {
-    label: '📝 Intro',
-    description: 'Paragraphe d\'ouverture qui pose le sujet et l\'angle.',
-    words_min_default: 100,
-    words_max_default: 200,
-  },
-  sections_h2: {
-    label: '📚 Sections H2 (par section)',
-    description: 'Limite par bloc H2 du corps de l\'article.',
-    words_min_default: 250,
-    words_max_default: 500,
-  },
-  conclusion: {
-    label: '🎯 Conclusion',
-    description: 'Synthèse finale, takeaway pour le lecteur.',
-    words_min_default: 60,
-    words_max_default: 130,
-  },
-  faq: {
-    label: '❓ FAQ (par réponse)',
-    description: 'Limite par réponse FAQ. Optionnel.',
-    words_min_default: 40,
-    words_max_default: 90,
   },
 }
 
@@ -277,7 +246,6 @@ export default function TemplateDetailPage() {
   })
   // Configs des onglets Avis et Blog : map { section_key -> { words_max, prompt } }
   const [avisConfig, setAvisConfig] = useState<Record<string, { words_min: number, words_max: number, prompt: string }>>({})
-  const [blogConfig, setBlogConfig] = useState<Record<string, { words_min: number, words_max: number, prompt: string }>>({})
   const [loadedImages, setLoadedImages] = useState<Record<string, string>>({})
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -313,17 +281,6 @@ export default function TemplateDetailPage() {
           }
         })
         setAvisConfig(avisMerged)
-        // Idem pour blog_config
-        const blogStored = s.blog_config || {}
-        const blogMerged: Record<string, { words_min: number, words_max: number, prompt: string }> = {}
-        Object.entries(DEFAULT_BLOG_CONFIG).forEach(([key, def]) => {
-          blogMerged[key] = {
-            words_min: blogStored[key]?.words_min ?? def.words_min_default,
-            words_max: blogStored[key]?.words_max ?? def.words_max_default,
-            prompt: blogStored[key]?.prompt ?? '',
-          }
-        })
-        setBlogConfig(blogMerged)
 
         const groups = Object.keys(s.keywords || {})
         if (groups.length > 0) setSelectedGroup(groups[0])
@@ -362,7 +319,6 @@ export default function TemplateDetailPage() {
       global_prompt: globalPrompt,
       default_prompts: defaultPrompts,
       avis_config: avisConfig,
-      blog_config: blogConfig,
     }
     const r = await fetch('/api/github', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -528,7 +484,6 @@ export default function TemplateDetailPage() {
         <button onClick={() => setTab('global')} style={tabBtnStyle(tab === 'global')}>🌐 Prompt global</button>
         <button onClick={() => setTab('classement')} style={tabBtnStyle(tab === 'classement')}>🏆 Classement</button>
         <button onClick={() => setTab('avis')} style={tabBtnStyle(tab === 'avis')}>⭐ Avis</button>
-        <button onClick={() => setTab('blog')} style={tabBtnStyle(tab === 'blog')}>📝 Blog</button>
       </div>
 
       {/* ─── Contenu de l'onglet actif ──────────────────────────────── */}
@@ -826,30 +781,7 @@ export default function TemplateDetailPage() {
             ))}
           </div>
         )}
-
-        {/* ╔═════ ONGLET BLOG (nouveau) ══════════════════════════════ */}
-        {tab === 'blog' && (
-          <div>
-            <div style={{ marginBottom: 6, color: '#fff', fontWeight: 600, fontSize: 14 }}>Structure et limites des articles de blog</div>
-            <p style={{ color: '#8B9CB0', fontSize: 12, marginTop: 0, marginBottom: 18, lineHeight: 1.5 }}>
-              Comme pour les avis, ces limites de mots sont envoyées à Claude au moment de générer un article de blog. Les prompts complémentaires permettent d'ajuster section par section.
-            </p>
-            {Object.entries(DEFAULT_BLOG_CONFIG).map(([key, def]) => (
-              <SectionConfigCard
-                key={key}
-                label={def.label}
-                description={def.description}
-                words_min={blogConfig[key]?.words_min ?? def.words_min_default}
-                words_max={blogConfig[key]?.words_max ?? def.words_max_default}
-                prompt={blogConfig[key]?.prompt ?? ''}
-                onChangeWordsMin={(n) => setBlogConfig(prev => ({ ...prev, [key]: { words_min: n, words_max: prev[key]?.words_max ?? def.words_max_default, prompt: prev[key]?.prompt ?? '' } }))}
-                onChangeWordsMax={(n) => setBlogConfig(prev => ({ ...prev, [key]: { words_min: prev[key]?.words_min ?? def.words_min_default, words_max: n, prompt: prev[key]?.prompt ?? '' } }))}
-                onChangePrompt={(s) => setBlogConfig(prev => ({ ...prev, [key]: { words_min: prev[key]?.words_min ?? def.words_min_default, words_max: prev[key]?.words_max ?? def.words_max_default, prompt: s } }))}
-              />
-            ))}
-          </div>
-        )}
-      </div>
+</div>
     </div>
   )
 }
