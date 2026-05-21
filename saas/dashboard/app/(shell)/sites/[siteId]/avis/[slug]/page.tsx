@@ -23,7 +23,16 @@ import { useRouter } from 'next/navigation'
 
 type Tarif = { nom: string; prix: string; features: string }
 type FaqItem = { q: string; r: string }
-type H2 = { titre: string; contenu_html: string }
+// `H2` est le shape commun à h2_fonctionnalites/h2_support/h2_qualite_prix
+// (qui utilisent {titre, contenu_html}) ET à h2_avis_clients (qui utilise
+// désormais {aiment, regrettent} depuis la refonte 2026). Les 4 champs sont
+// donc optionnels — le code de rendu choisit ceux qui sont pertinents.
+type H2 = {
+  titre?: string
+  contenu_html?: string
+  aiment?: string
+  regrettent?: string
+}
 type LinkAnchor = { phrase: string; count: number }
 
 type Avis = {
@@ -60,6 +69,10 @@ type Avis = {
   note_trustpilot?: number | string
   nb_avis_trustpilot?: number | string
   plateforme_avis?: string
+  // Avis Google : 2 colonnes optionnelles ajoutées en 2026. Le template
+  // affiche une 2e carte note à côté de Trustpilot si renseignées.
+  note_google?: number | string
+  nb_avis_google?: number | string
   link_anchors?: LinkAnchor[]
   mot_minimum?: number
   sections_html?: string
@@ -494,19 +507,37 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
         </div>
       ))}
 
-      {/* ── Section Avis clients (toujours affichée, indépendante des sections custom) ── */}
+      {/* ── Section Avis clients : aiment + regrettent ──────────────────
+          Refonte 2026 : 2 paragraphes distincts au lieu d'un seul contenu_html.
+          Le titre H2 est désormais forcé côté template ("Quels sont les avis
+          des utilisateurs de X ?"), donc plus d'input "Titre H2" ici. */}
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Section : Avis clients</h2>
-        <div style={{ marginBottom: 12 }}>
-          <label style={labelStyle}>Titre H2</label>
-          <input style={inputStyle} value={avis.h2_avis_clients?.titre || ''} onChange={e => updH2('h2_avis_clients', { titre: e.target.value })} />
+        <h2 style={h2Style}>Avis des utilisateurs (boxes aiment / regrettent)</h2>
+        <p style={{ fontSize: 12, color: '#888', margin: '0 0 14px', lineHeight: 1.5 }}>
+          2 paragraphes HTML générés par Claude à partir du sentiment + points forts/faibles.
+          Mots-clés à mettre en <code style={{ background: '#f4f4f4', padding: '1px 5px', borderRadius: 3 }}>&lt;strong&gt;</code>.
+        </p>
+        <div style={{ marginBottom: 14 }}>
+          <label style={labelStyle}>✅ Ce que les clients aiment</label>
+          <textarea style={{ ...textareaStyle, minHeight: 110, fontFamily: 'ui-monospace, monospace', fontSize: 13 }}
+                    value={avis.h2_avis_clients?.aiment || ''}
+                    onChange={e => updH2('h2_avis_clients', { aiment: e.target.value })}
+                    placeholder="<p>Les clients mettent en avant : un <strong>service client réactif</strong>, ...</p>" />
         </div>
         <div>
-          <label style={labelStyle}>Contenu HTML</label>
-          <textarea style={{ ...textareaStyle, minHeight: 160, fontFamily: 'ui-monospace, monospace', fontSize: 13 }}
-                    value={avis.h2_avis_clients?.contenu_html || ''}
-                    onChange={e => updH2('h2_avis_clients', { contenu_html: e.target.value })} />
+          <label style={labelStyle}>❌ Ce que les clients regrettent</label>
+          <textarea style={{ ...textareaStyle, minHeight: 110, fontFamily: 'ui-monospace, monospace', fontSize: 13 }}
+                    value={avis.h2_avis_clients?.regrettent || ''}
+                    onChange={e => updH2('h2_avis_clients', { regrettent: e.target.value })}
+                    placeholder="<p>Plusieurs points faibles reviennent : une <strong>application jugée vieillotte</strong>, ...</p>" />
         </div>
+        {/* Rétro-compat : si l'avis a encore un ancien contenu_html (jamais
+            régénéré depuis la refonte), on l'affiche en read-only pour info. */}
+        {avis.h2_avis_clients?.contenu_html && (
+          <div style={{ marginTop: 14, padding: 10, background: '#FFF8E1', border: '1px solid #FFE082', borderRadius: 6, fontSize: 12, color: '#5D4037' }}>
+            ⚠ Contenu legacy détecté (<code>contenu_html</code>) — sera remplacé par les 2 paragraphes ci-dessus à la prochaine régénération.
+          </div>
+        )}
       </div>
 
       {/* ── FAQ ─────────────────────────────────────────────────────── */}
@@ -534,23 +565,50 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
         </div>
       </div>
 
-      {/* ── TRUSTPILOT ─────────────────────────────────────────────── */}
+      {/* ── PREUVE SOCIALE : Trustpilot + Google ────────────────────
+          2 plateformes optionnelles. Si l'une OU l'autre est renseignée, la
+          section "Quels sont les avis des utilisateurs de X ?" s'affiche
+          avec les logos et notes correspondants. */}
       <div style={sectionStyle}>
-        <h2 style={h2Style}>Preuve sociale (Trustpilot ou autre)</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12 }}>
-          <div>
-            <label style={labelStyle}>Note externe (/5)</label>
-            <input style={inputStyle} type="number" min="0" max="5" step="0.1" value={avis.note_trustpilot ?? ''}
-                   onChange={e => upd({ note_trustpilot: e.target.value ? parseFloat(e.target.value) : '' })} />
+        <h2 style={h2Style}>Preuve sociale (Trustpilot + Google)</h2>
+        <p style={{ fontSize: 12, color: '#888', margin: '0 0 14px', lineHeight: 1.5 }}>
+          Renseigne au moins une des deux plateformes pour afficher la section "Avis des utilisateurs".
+          Les deux peuvent coexister, le template les affiche alors côte à côte.
+        </p>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+          <div style={{ padding: 14, border: '1px solid #1E2D3D', borderRadius: 8, background: '#0A0E1A' }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: '#00B67A', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 10 }}>⭐ Trustpilot</div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
+              <div>
+                <label style={labelStyle}>Note (/5)</label>
+                <input style={inputStyle} type="number" min="0" max="5" step="0.1" value={avis.note_trustpilot ?? ''}
+                       onChange={e => upd({ note_trustpilot: e.target.value ? parseFloat(e.target.value) : '' })} placeholder="4.7" />
+              </div>
+              <div>
+                <label style={labelStyle}>Nb d'avis</label>
+                <input style={inputStyle} type="number" min="0" value={avis.nb_avis_trustpilot ?? ''}
+                       onChange={e => upd({ nb_avis_trustpilot: e.target.value ? parseInt(e.target.value) : '' })} placeholder="3000" />
+              </div>
+            </div>
+            <div>
+              <label style={labelStyle}>Plateforme (libellé custom, optionnel)</label>
+              <input style={inputStyle} value={avis.plateforme_avis || ''} onChange={e => upd({ plateforme_avis: e.target.value })} placeholder="Trustpilot" />
+            </div>
           </div>
-          <div>
-            <label style={labelStyle}>Nombre d'avis</label>
-            <input style={inputStyle} type="number" min="0" value={avis.nb_avis_trustpilot ?? ''}
-                   onChange={e => upd({ nb_avis_trustpilot: e.target.value ? parseInt(e.target.value) : '' })} />
-          </div>
-          <div>
-            <label style={labelStyle}>Plateforme</label>
-            <input style={inputStyle} value={avis.plateforme_avis || ''} onChange={e => upd({ plateforme_avis: e.target.value })} placeholder="Trustpilot" />
+          <div style={{ padding: 14, border: '1px solid #1E2D3D', borderRadius: 8, background: '#0A0E1A' }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: '#4285F4', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 10 }}>📍 Google Reviews</div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+              <div>
+                <label style={labelStyle}>Note (/5)</label>
+                <input style={inputStyle} type="number" min="0" max="5" step="0.1" value={avis.note_google ?? ''}
+                       onChange={e => upd({ note_google: e.target.value ? parseFloat(e.target.value) : '' })} placeholder="3.2" />
+              </div>
+              <div>
+                <label style={labelStyle}>Nb d'avis</label>
+                <input style={inputStyle} type="number" min="0" value={avis.nb_avis_google ?? ''}
+                       onChange={e => upd({ nb_avis_google: e.target.value ? parseInt(e.target.value) : '' })} placeholder="1247" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
