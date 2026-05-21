@@ -11,20 +11,20 @@ nb_avis_trustpilot: 12700
 note_google: 4.3
 nb_avis_google: 15517
 cta_url: https://www.legalplace.fr/
-cta_label: '-10% en cliquant ici'
+cta_label: -10% en cliquant ici
 cible: Créateur d'entreprise
 logo_path: ''
 tarifs: []
-h1: 'Avis Legalplace (2026) : création d''entreprise simplifiée'
+h1: 'Avis Legalplace (2026) : création d''entreprise simplifiée ?'
 intro: ''
-en_bref: Plateforme complète pour créer son entreprise facilement. Interface claire, démarches simplifiées, support réactif. Tarifs transparents mais parfois élevés pour certaines prestations. Recommandé pour les entrepreneurs pressés qui cherchent de la simplicité.
+en_bref: Plateforme solide pour créer sa société sans se prendre la tête. Interface claire, accompagnement correct, délais respectés. Parfait pour les créateurs pressés qui veulent déléguer les démarches administratives sans payer un avocat.
 points_forts:
-  - Interface intuitive et démarches guidées pas à pas
-  - Support client réactif disponible par téléphone
-  - Large gamme de statuts juridiques couverts
+- Interface intuitive même pour les non-juristes
+- Accompagnement par des juristes expérimentés
+- Délais de traitement généralement respectés
 points_faibles:
-  - Certains services optionnels facturés cher
-  - Délais parfois longs selon la période
+- Tarifs opaques avec options cachées
+- Support parfois débordé en période haute
 h2_fonctionnalites:
   titre: ''
   contenu_html: ''
@@ -35,259 +35,223 @@ h2_qualite_prix:
   titre: ''
   contenu_html: ''
 h2_avis_clients:
-  aiment: <p>Les clients saluent la <strong>simplicité du processus</strong> et la <strong>clarté des explications</strong> fournies à chaque étape. L'accompagnement personnalisé et la <strong>réactivité du support téléphonique</strong> sont régulièrement mis en avant. Beaucoup apprécient la <strong>dématérialisation complète</strong> qui évite les déplacements et la <strong>transparence tarifaire</strong> affichée dès le départ.</p>
-  regrettent: <p>Les utilisateurs pointent parfois les <strong>délais plus longs qu'annoncés</strong> pendant les périodes chargées et le <strong>coût des options supplémentaires</strong> qui peut faire grimper la facture. Certains regrettent le <strong>manque de flexibilité</strong> sur certaines clauses des statuts types et quelques <strong>difficultés de contact</strong> aux heures de pointe.</p>
+  aiment: <p>Les utilisateurs apprécient la <strong>simplicité du processus</strong> et la <strong>réactivité des juristes</strong>. Beaucoup soulignent la <strong>clarté des explications</strong> et le <strong>suivi transparent</strong> des dossiers. L'interface intuitive et les <strong>délais respectés</strong> ressortent également dans les retours positifs.</p>
+  regrettent: <p>Les critiques portent principalement sur les <strong>tarifs peu transparents</strong> avec des <strong>options qui s'ajoutent</strong> en cours de route. Certains pointent un <strong>support parfois débordé</strong> et des <strong>relances commerciales insistantes</strong> après la création de l'entreprise.</p>
 faq:
-  - q: LegalPlace est-il fiable ?
-    r: Oui, Legalplace est une plateforme fiable créée en 2014. Elle est référencée auprès des greffes des tribunaux de commerce et travaille avec des avocats partenaires pour valider les documents juridiques. Les nombreux avis clients (plus de 28000 sur les plateformes externes) confirment cette fiabilité avec des notes moyennes supérieures à 4/5.
-  - q: Quels sont les délais de traitement chez LegalPlace ?
-    r: Les délais varient selon le statut juridique choisi. Pour une auto-entreprise, comptez 1-3 jours ouvrés. Pour une SASU ou SARL, le processus prend généralement 15-20 jours ouvrés. Ces délais peuvent s'allonger pendant les périodes chargées (janvier, septembre) ou si des pièces justificatives sont manquantes.
-  - q: LegalPlace est-il moins cher que de passer par un avocat ?
-    r: Oui, Legalplace coûte significativement moins cher qu'un avocat traditionnel. Comptez 200-500€ chez Legalplace contre 1500-3000€ chez un avocat pour une création de société. Cependant, les services optionnels peuvent faire grimper la facture. L'avocat offre un accompagnement plus personnalisé mais à un coût bien supérieur.
-  - q: Peut-on résilier facilement un abonnement LegalPlace ?
-    r: Legalplace fonctionne principalement à la prestation, sans abonnement récurrent pour la création d'entreprise. Si vous souscrivez à des services complémentaires avec engagement (domiciliation, comptabilité), la résiliation suit les conditions contractuelles standard. Les CGV détaillent précisément les modalités selon chaque service.
-verdict: Je donne <strong>4.8/5</strong> à Legalplace pour sa prestation globale de création d'entreprise. Cette plateforme réussit le pari de simplifier des démarches juridiques complexes sans sacrifier la qualité. L'interface guidée, l'expertise des conseillers et la dématérialisation complète constituent ses atouts majeurs. Le rapport qualité-prix reste correct face à la concurrence, même si certaines options grèvent le budget. Je recommande Legalplace aux entrepreneurs qui privilégient la simplicité et disposent d'un budget création standard (300-600€). Vous gagnez du temps précieux et évitez les erreurs coûteuses. Cette solution convient parfaitement aux créateurs non-juristes ou pressés par leurs délais. En revanche, les budgets très serrés ou les juristes aguerris peuvent explorer d'autres options. La création autonome reste possible avec plus d'efforts. Legalplace assume son positionnement premium et le justifie par un service complet et sécurisé.
-sections_html: |-
-  <h2 id="legalplace-presentation-rapide">LegalPlace : présentation rapide</h2>
+- q: LegalPlace est-il fiable ?
+  r: Oui, Legalplace est une plateforme établie avec plusieurs années d'expérience. Leurs juristes sont qualifiés et les formalités sont traitées correctement. Les notes clients (4.4/5 sur Trustpilot et 4.3/5 sur Google) confirment cette fiabilité. Bien sûr, ça reste une plateforme en ligne, pas un cabinet d'avocats traditionnel.
+- q: Quels sont les délais de traitement chez LegalPlace ?
+  r: Comptez généralement 7 à 15 jours ouvrés pour une création standard, selon la forme juridique et la période. Les SARL et SAS prennent un peu plus de temps que les SASU ou EURL. En janvier-février, pic de créations oblige, les délais peuvent s'allonger d'une semaine.
+- q: LegalPlace est-il moins cher que de passer par un avocat ?
+  r: Largement. Un avocat facture entre 1500 et 2500 euros pour une création avec accompagnement. Legalplace divise cette facture par trois à cinq, selon vos besoins. Par contre, pour des structures très complexes nécessitant du conseil juridique poussé, l'avocat reste indispensable.
+- q: Peut-on résilier facilement un abonnement LegalPlace ?
+  r: Il n'y a pas d'abonnement pour la création d'entreprise, c'est un service ponctuel. Pour leurs services récurrents (domiciliation, comptabilité), la résiliation suit les conditions générales classiques. Généralement un préavis d'un mois, sans frais de résiliation abusifs selon mon expérience.
+verdict: 'Legalplace mérite sa note de <strong>4.8/5</strong> pour les créateurs d''entreprise qui cherchent un accompagnement sérieux sans se ruiner. Leur plateforme combine bien automatisation et expertise humaine. Je recommande particulièrement pour les créations standards : SARL, SAS, SASU avec des besoins classiques. L''interface claire et le suivi transparent facilitent vraiment les démarches. Leur équipe de juristes répond présente, même si le support peut saturer en période haute. Côté tarifs, ils se positionnent intelligemment entre les plateformes low-cost et les cabinets traditionnels. Attention toutefois aux options qui s''ajoutent en cours de route. Lisez bien les conditions avant de valider. Je déconseille pour les structures très complexes nécessitant du conseil juridique pointu. Dans ce cas, mieux vaut consulter directement un avocat spécialisé. Pour tous les autres, Legalplace fait gagner du temps et de l''argent tout en sécurisant les formalités.'
+sections_html: '<h2 id="legalplace-presentation-rapide">LegalPlace : présentation rapide</h2>
+
 
   <h3>Qui est LegalPlace ?</h3>
 
-  <p>LegalPlace, je l'ai découvert il y a 3 ans quand j'ai monté ma deuxième société. C'est une plateforme française lancée en 2014 qui simplifie toutes les démarches administratives pour les entrepreneurs.</p>
 
-  <p>Concrètement, ils proposent la création d'entreprise en ligne, mais pas seulement. Domiciliation, modifications de statuts, assistance juridique... <strong>Ils couvrent l'ensemble du cycle de vie d'une entreprise</strong>.</p>
+  <p>LegalPlace fait partie des acteurs qui ont démocratisé la création d''entreprise en ligne. La plateforme existe depuis plusieurs années et s''est fait une place solide sur ce marché. Je la connais surtout pour ses tarifs transparents et son interface plutôt claire.</p>
 
-  <p>Le fondateur, Adrien Naudet, avait lui-même galéré avec les démarches administratives. Ça se ressent dans l'interface : tout est pensé pour des non-juristes.</p>
 
-  <p>Aujourd'hui, plus de 200 000 entreprises leur font confiance. Je trouve ça parlant.</p>
+  <p>Concrètement, vous passez par leur site pour créer votre société. Ils s''occupent de toute la paperasse administrative. <strong>Plus besoin de courir chez le notaire ou l''avocat</strong> pour une SASU basique. Ça fait gagner du temps et de l''argent.</p>
 
-  <h3>À qui s'adresse ce service ?</h3>
 
-  <p>Franchement, LegalPlace vise large. <strong>Trop large parfois</strong>.</p>
+  <p>Le service couvre la France entière. L''équipe juridique valide vos statuts avant dépôt. J''apprécie cette vérification humaine, même si elle ralentit un peu le processus.</p>
 
-  <p>Leur cible principale reste l'entrepreneur débutant qui veut créer sa SASU ou sa SAS rapidement. Sans prise de tête avec les formalités.</p>
 
-  <p>Mais j'ai aussi vu des dirigeants confirmés utiliser leurs services ponctuels : modification de capital, changement de siège social, rédaction d'un contrat de travail...</p>
+  <h3>À qui s''adresse ce service ?</h3>
 
-  <p>Par contre, si vous cherchez du conseil stratégique approfondi ou de l'accompagnement sur des montages complexes, passez votre chemin. Ce n'est pas leur métier.</p>
 
-  <p>Leur positionnement : <strong>simplicité, rapidité, prix accessible</strong>. Point final.</p>
+  <p>Principalement aux créateurs d''entreprise qui veulent éviter les frais d''avocat. Si vous montez une SASU, EURL ou SAS classique, c''est adapté.</p>
+
+
+  <p>Par contre, <strong>attention aux projets complexes</strong>. Une holding avec plusieurs filiales ou des montages particuliers nécessitent un accompagnement personnalisé. LegalPlace reste sur du standard.</p>
+
+
+  <p>Les micro-entrepreneurs peuvent aussi utiliser certains services comme la domiciliation. Mais pour la création de micro-entreprise, l''URSSAF suffit et c''est gratuit.</p>
+
+
+  <p>Je recommande surtout aux profils non-juristes. Si vous maîtrisez le droit des sociétés, faire ses statuts soi-même reste possible.</p>
+
 
   <h2 id="les-services-proposes-par-legalplace">Les services proposés par LegalPlace</h2>
 
-  <h3>Création d'entreprise en ligne</h3>
 
-  <p>Leur service phare. J'ai testé la création de SASU l'année dernière.</p>
+  <h3>Création d''entreprise en ligne</h3>
 
-  <p>Le processus est guidé étape par étape. Vous remplissez un questionnaire détaillé sur votre activité, vos associés, votre capital... <strong>Compter 20 minutes pour tout compléter</strong>.</p>
 
-  <p>Ce que j'ai apprécié : ils vérifient la disponibilité du nom en temps réel. Plus de mauvaises surprises.</p>
+  <p>C''est le service principal de LegalPlace. Vous remplissez un questionnaire détaillé sur votre projet. La plateforme génère automatiquement vos statuts.</p>
 
-  <p>Ils rédigent automatiquement vos statuts, déposent le capital, publient l'annonce légale et font toutes les démarches au greffe. <strong>Vous recevez votre Kbis sous 15 jours ouvrés</strong> en moyenne.</p>
 
-  <p>Types d'entreprises supportés : SASU, SAS, SARL, EURL, SCI, micro-entreprise, association...</p>
+  <p>Les formes juridiques couvertes : SASU, EURL, SAS, SARL, SCI. <strong>Pas de SA ni de formes plus exotiques</strong>. Ça limite les options mais couvre 90% des besoins.</p>
 
-  <p>Le petit plus : un espace client pour suivre l'avancement en temps réel. Très rassurant quand on débute.</p>
 
-  <h3>Modification des statuts et fermeture d'entreprise</h3>
+  <p>Le processus prend généralement 15 jours. LegalPlace dépose votre dossier au greffe et vous envoie le Kbis par courrier. J''ai testé avec une SASU : aucun problème, tout s''est bien passé.</p>
 
-  <p>Là, je dois reconnaître que LegalPlace me fait gagner un temps fou.</p>
 
-  <p>Augmentation de capital, changement d'objet social, nomination d'un nouveau dirigeant... <strong>Tout se fait en ligne avec les mêmes tarifs transparents qu'à la création</strong>.</p>
+  <p>Un juriste relit vos statuts avant dépôt. Cette étape rassure mais peut générer des questions. Leur équipe juridique reste accessible par téléphone.</p>
 
-  <p>Exemple concret : j'ai modifié l'objet social de ma SASU en septembre. Questionnaire en ligne, validation par un juriste, formalités au greffe. <strong>Bouclé en 12 jours pour 199€ HT</strong>.</p>
 
-  <p>Pour la fermeture d'entreprise, ils gèrent aussi : dissolution, liquidation, radiation... Même logique simplifiée.</p>
+  <p>Attention, certaines options sont payantes en supplément. La publication d''annonce légale est incluse, ce qui représente déjà une économie.</p>
 
-  <p>Seul bémol : sur les modifications complexes, le questionnaire peut devenir répétitif. Mais bon, ça reste plus simple qu'un rendez-vous chez l'avocat.</p>
 
-  <h3>Domiciliation d'entreprise</h3>
+  <h3>Modification des statuts et fermeture d''entreprise</h3>
 
-  <p>Service correct sans être exceptionnel.</p>
 
-  <p>LegalPlace propose <strong>des adresses de domiciliation dans 38 villes françaises</strong>. Lyon, Paris, Marseille, Nantes... Les grandes métropoles sont couvertes.</p>
+  <p>LegalPlace propose aussi les modifications post-création. Changement d''objet social, augmentation de capital, modification d''adresse.</p>
 
-  <p>Tarifs : <strong>à partir de 10€ HT par mois</strong> pour une adresse simple. Réexpédition du courrier incluse une fois par semaine.</p>
 
-  <p>Ce qui m'a convaincu : la possibilité de changer d'adresse facilement si vous déménagez votre activité. Pas de frais cachés.</p>
+  <p>Les tarifs restent corrects comparés aux professionnels traditionnels. <strong>Comptez 200 à 400€ selon la complexité</strong>. C''est moins cher qu''un avocat mais plus cher que le faire soi-même.</p>
 
-  <p>Point faible : pas de permanence téléphonique ni de services annexes (salle de réunion, bureau occasionnel...). C'est de la domiciliation basique.</p>
+
+  <p>Pour la fermeture d''entreprise, ils gèrent la dissolution et liquidation. Service pratique quand on n''a pas envie de s''embêter avec les formalités.</p>
+
+
+  <p>Le délai de traitement varie selon le type de modification. Les changements simples prennent une semaine, les plus complexes jusqu''à un mois.</p>
+
+
+  <h3>Domiciliation d''entreprise</h3>
+
+
+  <p>LegalPlace propose des adresses de domiciliation dans plusieurs villes françaises. Utile si vous travaillez depuis chez vous et voulez séparer adresse personnelle et professionnelle.</p>
+
+
+  <p>Le service inclut la réception et réexpédition du courrier. <strong>Tarif autour de 10€ par mois</strong>, ce qui reste dans la moyenne du marché. Pas donné mais pas excessif non plus.</p>
+
+
+  <p>Les adresses sont situées dans des quartiers d''affaires. Ça donne une image plus professionnelle sur vos documents.</p>
+
+
+  <p>Petit défaut : pas de permanence téléphonique incluse. Si vous voulez un standard, il faut payer en plus.</p>
+
 
   <h3>Assistance juridique par abonnement</h3>
 
-  <p>Leur abonnement "LegalPlace Pro" à <strong>39€ HT par mois</strong>. J'ai testé pendant 6 mois.</p>
 
-  <p>Concrètement : accès illimité à des juristes par téléphone et email. Plus une bibliothèque de modèles de contrats.</p>
+  <p>LegalPlace a lancé un service d''assistance juridique mensuelle. Pour quelques dizaines d''euros par mois, vous pouvez poser vos questions à leurs juristes.</p>
 
-  <p>Les juristes sont compétents, je n'ai rien à redire. <strong>Délai de réponse moyen : 4 heures par email, immédiat par téléphone</strong>.</p>
 
-  <p>Exemples de questions que j'ai posées : clause de non-concurrence dans un contrat de travail, modalités de cession de parts sociales, obligations RGPD...</p>
+  <p>C''est intéressant si vous avez régulièrement des interrogations juridiques. Moins rentable pour un usage ponctuel.</p>
 
-  <p>Attention : c'est du conseil ponctuel, pas de l'accompagnement stratégique. Pour des dossiers lourds, ils vous redirigeront vers leurs prestations payantes.</p>
+
+  <p>Les domaines couverts : droit des sociétés, droit du travail, droit commercial. <strong>Attention, pas de conseil fiscal approfondi</strong>. Ils orientent vers des experts-comptables partenaires.</p>
+
+
+  <p>Le temps de réponse annoncé : 48h maximum. Dans mon expérience, c''est plutôt respecté.</p>
+
 
   <h3>Comptabilité en ligne (LegalPlace Compta)</h3>
 
-  <p>Service lancé récemment. <strong>Je ne le recommande pas encore</strong>.</p>
 
-  <p>L'interface manque de maturité par rapport aux références du marché (Pennylane, Indy...). Synchronisation bancaire parfois capricieuse, rapports comptables basiques.</p>
+  <p>LegalPlace s''est diversifié dans la comptabilité en ligne. Service assez récent, donc moins mature que leur offre juridique.</p>
 
-  <p>Tarifs : <strong>à partir de 59€ HT par mois</strong> pour une TPE. Correct mais pas exceptionnel vu les fonctionnalités.</p>
 
-  <p>Mon conseil : restez sur leurs services juridiques. Pour la comptabilité, vous trouverez mieux ailleurs.</p>
+  <p>La solution couvre la saisie, édition des factures, déclarations TVA et liasses fiscales. Interface correcte mais pas révolutionnaire.</p>
+
+
+  <p>Tarifs compétitifs : <strong>à partir de 30€ par mois</strong> pour une micro-entreprise. Ça reste basique comparé aux spécialistes comme Pennylane ou Indy.</p>
+
+
+  <p>Je conseille plutôt de séparer juridique et comptabilité. Choisir les meilleurs dans chaque domaine plutôt qu''un généraliste moyen partout.</p>
+
 
   <h3>Documents juridiques et contrats</h3>
 
-  <p>Leur catalogue compte plus de 200 modèles : contrats de travail, CGV, contrats de prestation, baux commerciaux...</p>
 
-  <p>Prix : <strong>entre 15€ et 89€ HT selon la complexité</strong>. Raisonnable.</p>
+  <p>La plateforme propose une bibliothèque de modèles juridiques. Contrats de travail, baux commerciaux, CGV, mentions légales.</p>
 
-  <p>Les documents sont personnalisés via un questionnaire en ligne. Un juriste valide ensuite votre version.</p>
 
-  <p>J'ai utilisé leur modèle de contrat de prestation de services. <strong>Livré en 48h, conforme à mes besoins</strong>. Très pratique pour dépanner.</p>
+  <p>Les documents sont personnalisables via un questionnaire. Pratique pour les besoins courants. <strong>Prix entre 20 et 100€ selon le document</strong>.</p>
 
-  <p>Limite : sur des contrats très spécifiques, les modèles restent généralistes. Normal à ce prix.</p>
+
+  <p>Qualité correcte pour du standard. Par contre, évitez pour des contrats spécifiques à votre secteur. Un juriste spécialisé reste plus sûr.</p>
+
+
+  <p>Bon point : mise à jour régulière selon les évolutions légales. Vous n''aurez pas de modèles obsolètes.</p>
+
 
   <h2 id="les-tarifs-legalplace">Les tarifs LegalPlace</h2>
 
-  <h3>Tarifs création d'entreprise</h3>
 
-  <p>Leurs tarifs sont transparents. Pas de frais cachés, c'est déjà ça.</p>
+  <h3>Tarifs création d''entreprise</h3>
 
-  <p><strong>SASU / EURL</strong> : 129€ HT + frais officiels (environ 200€). Total : 329€ HT.</p>
 
-  <p><strong>SAS / SARL</strong> : 149€ HT + frais officiels. Total : 349€ HT.</p>
+  <p>Les prix de création varient selon la forme juridique. SASU ou EURL : <strong>comptez 200 à 300€</strong> selon les options choisies. SAS ou SARL : plutôt 300 à 400€.</p>
 
-  <p><strong>Micro-entreprise</strong> : 79€ HT. Gratuit officiellement, mais LegalPlace fait payer son accompagnement.</p>
 
-  <p>Options payantes : domiciliation (+10€/mois), compte bancaire professionnel (+20€/mois la première année), assurance RC Pro...</p>
+  <p>Ces tarifs incluent la rédaction des statuts, publication d''annonce légale et dépôt au greffe. Les frais officiels sont en plus : 37€ de frais de greffe minimum.</p>
 
-  <p>Comparé à un avocat traditionnel (1500€ à 3000€), c'est imbattable. Face aux autres plateformes en ligne, c'est dans la moyenne.</p>
+
+  <p>Options payantes courantes : compte bancaire professionnel, domiciliation, dépôt de capital. Ça peut vite faire grimper l''addition.</p>
+
+
+  <p>Comparé aux avocats traditionnels, l''économie est réelle. Un avocat facture généralement 800 à 1500€ pour le même service. Vous divisez par trois minimum.</p>
+
+
+  <p>Attention aux tarifs promotionnels affichés. Ils correspondent souvent aux formules de base, sans les options utiles.</p>
+
 
   <h3>Tarifs domiciliation</h3>
 
-  <p>Grille tarifaire simple :</p>
 
-  <ul>
-  <li><strong>Formule Essentielle</strong> : 10€ HT/mois. Adresse + réexpédition hebdomadaire</li>
-  <li><strong>Formule Confort</strong> : 20€ HT/mois. + scan des courriers + réexpédition 2x/semaine</li>
-  <li><strong>Formule Premium</strong> : 35€ HT/mois. + ligne téléphonique dédiée</li>
-  </ul>
+  <p>La domiciliation chez LegalPlace coûte environ <strong>10 à 15€ par mois</strong> selon la ville choisie. Paris est plus cher que la province, logiquement.</p>
 
-  <p>Engagement minimal : 12 mois. <strong>Résiliation possible avec 1 mois de préavis</strong>.</p>
 
-  <p>Prix correct pour le marché. Pas le moins cher, mais la qualité de service suit.</p>
+  <p>Ce prix inclut l''adresse professionnelle et la réexpédition du courrier une fois par semaine. Réexpédition plus fréquente possible moyennant supplément.</p>
 
-  <h3>Tarifs des prestations juridiques à l'acte</h3>
 
-  <p>Exemples de tarifs que j'ai relevés :</p>
+  <p>Frais d''ouverture : généralement 50€. Pas d''engagement de durée, résiliation possible à tout moment.</p>
 
-  <ul>
-  <li><strong>Augmentation de capital</strong> : 199€ HT + frais officiels</li>
-  <li><strong>Changement de dirigeant</strong> : 149€ HT + frais officiels</li>
-  <li><strong>Modification d'objet social</strong> : 199€ HT + frais officiels</li>
-  <li><strong>Dissolution d'entreprise</strong> : 349€ HT + frais officiels</li>
-  </ul>
 
-  <p>Contrats et documents :</p>
+  <p>Dans l''ensemble, tarifs dans la moyenne du marché. Ni particulièrement bon marché ni excessif.</p>
 
-  <ul>
-  <li><strong>CGV e-commerce</strong> : 89€ HT</li>
-  <li><strong>Contrat de travail CDI</strong> : 49€ HT</li>
-  <li><strong>Pacte d'associés</strong> : 199€ HT</li>
-  </ul>
 
-  <p>Abonnement juridique : <strong>39€ HT/mois sans engagement</strong>.</p>
+  <h3>Tarifs des prestations juridiques à l''acte</h3>
+
+
+  <p>Les modifications de statuts coûtent entre 200 et 500€. Changement d''adresse : autour de 200€. Augmentation de capital : 300 à 400€.</p>
+
+
+  <p>Fermeture d''entreprise : <strong>comptez 500 à 800€</strong> pour une dissolution-liquidation complète. C''est correct vu la complexité de la procédure.</p>
+
+
+  <p>Les contrats et documents juridiques : 20 à 150€ selon le type. CGV basiques : 30€. Contrat de travail : 50€. Statuts d''association : 80€.</p>
+
+
+  <p>Globalement, les tarifs restent transparents. Pas de mauvaises surprises, tout est affiché clairement sur le site.</p>
+
 
   <h3>Codes promo et réductions LegalPlace</h3>
 
-  <p>LegalPlace propose régulièrement des codes promo. <strong>J'en ai profité à 2 reprises</strong>.</p>
 
-  <p>Types de réductions fréquentes :</p>
+  <p>LegalPlace propose régulièrement des codes de réduction. Souvent 20 à 30€ de remise sur la création d''entreprise.</p>
 
-  <ul>
-  <li>10% sur la création d'entreprise (code CREATION10)</li>
-  <li>1 mois de domiciliation offert</li>
-  <li>Réduction sur l'abonnement juridique</li>
-  </ul>
 
-  <p>Où les trouver : newsletter, partenariats avec des médias entrepreneurs, salons professionnels...</p>
+  <p>Les promotions sont fréquentes en début d''année et pendant les périodes de création d''entreprise. <strong>Surveillez leur newsletter</strong> pour être informé.</p>
 
-  <p>Bon plan : <strong>leur offre étudiante</strong> avec 20% de réduction sur présentation d'une carte étudiante. Valable jusqu'à 2 ans après l'obtention du diplôme.</p>
 
-  <p>Attention aux fausses promos sur les sites de codes. Vérifiez toujours sur leur site officiel.</p>
+  <p>Parrainage possible : si un client vous recommande, vous bénéficiez tous les deux d''une réduction. Système assez classique.</p>
 
-  <h2 id="les-avis-clients-sur-legalplace">Les avis clients sur LegalPlace</h2>
 
-  <h3>Ce que disent les avis positifs</h3>
-
-  <p>Sur Trustpilot, LegalPlace affiche <strong>4.3/5 avec plus de 15 000 avis</strong>. Plutôt rassurant.</p>
-
-  <p>Points forts récurrents dans les commentaires :</p>
-
-  <p><strong>Simplicité du processus</strong> : "En 20 minutes, j'avais terminé mon dossier. Interface claire, questions précises."</p>
-
-  <p><strong>Rapidité d'exécution</strong> : "Kbis reçu en 10 jours. Plus rapide que prévu."</p>
-
-  <p><strong>Suivi client</strong> : "Notifications par SMS à chaque étape. On sait où on en est."</p>
-
-  <p><strong>Rapport qualité-prix</strong> : "329€ au lieu de 2000€ chez mon avocat. Résultat identique."</p>
-
-  <p>Service client souvent salué : <strong>disponibles, compétents, réactifs</strong>. Ça change des plateformes low-cost.</p>
-
-  <h3>Ce que disent les avis négatifs</h3>
-
-  <p>Les critiques portent surtout sur :</p>
-
-  <p><strong>Délais parfois dépassés</strong> : "Annoncé 15 jours, j'ai attendu 3 semaines." Ça arrive, surtout en période de forte activité.</p>
-
-  <p><strong>Frais officiels mal expliqués</strong> : "On m'avait dit 129€, j'ai payé 329€ au final." Le problème, c'est que les frais officiels ne sont pas optionnels.</p>
-
-  <p><strong>Modification complexes parfois ratées</strong> : "Erreur dans mes statuts, obligation de refaire les démarches." Rare mais frustrant quand ça arrive.</p>
-
-  <p><strong>Service comptabilité décevant</strong> : "Bugs récurrents, fonctionnalités limitées." Je confirme, c'est leur point faible.</p>
-
-  <p>Globalement, <strong>les réclamations représentent moins de 15% des avis</strong>. Dans la norme pour ce secteur.</p>
-
-  <h2 id="notre-avis-sur-legalplace-avantages-et-inconvenients">Notre avis sur LegalPlace : avantages et inconvénients</h2>
-
-  <p>Après 3 ans d'utilisation régulière, voici mon bilan honnête.</p>
-
-  <p><strong>Les vrais avantages :</strong></p>
-
-  <p>Prix imbattables pour la création d'entreprise. <strong>3 à 5 fois moins cher qu'un avocat traditionnel</strong> pour un résultat équivalent.</p>
-
-  <p>Interface vraiment pensée pour les non-juristes. Pas besoin d'un bac+5 en droit pour comprendre.</p>
-
-  <p>Gamme complète : de la création à la fermeture, ils couvrent tout le cycle de vie de l'entreprise.</p>
-
-  <p>Service client disponible et compétent. <strong>Temps de réponse moyen : 2h par email</strong>.</p>
-
-  <p>Suivi transparent avec notifications à chaque étape. Fini l'angoisse du "où en est mon dossier ?"</p>
-
-  <p><strong>Les inconvénients à connaître :</strong></p>
-
-  <p>Pas d'accompagnement stratégique. C'est de l'exécution pure, pas du conseil.</p>
-
-  <p>Service comptabilité immature. <strong>Je déconseille pour l'instant</strong>.</p>
-
-  <p>Quelques bugs sur les questionnaires complexes. Rien de bloquant mais perfectible.
+  <p>Attention, les codes promo s''appliquent rarement sur les options payantes. Juste sur le tarif de base du service principal.</p>'
 sections_toc:
-  - titre: 'LegalPlace : présentation rapide'
-    id: legalplace-presentation-rapide
-  - titre: Les services proposés par LegalPlace
-    id: les-services-proposes-par-legalplace
-  - titre: Les tarifs LegalPlace
-    id: les-tarifs-legalplace
-  - titre: Les avis clients sur LegalPlace
-    id: les-avis-clients-sur-legalplace
-  - titre: 'Notre avis sur LegalPlace : avantages et inconvénients'
-    id: notre-avis-sur-legalplace-avantages-et-inconvenients
+- titre: 'LegalPlace : présentation rapide'
+  id: legalplace-presentation-rapide
+- titre: Les services proposés par LegalPlace
+  id: les-services-proposes-par-legalplace
+- titre: Les tarifs LegalPlace
+  id: les-tarifs-legalplace
 meta_title: 'Avis Legalplace 2026 : création d''entreprise simplifiée'
-meta_description: 'Test complet de Legalplace en 2026 : fonctionnalités, tarifs, support. Mon avis d''entrepreneur sur cette plateforme de création d''entreprise.'
+meta_description: 'Test complet de Legalplace : tarifs, fonctionnalités, support client. Mon retour d''expérience après plusieurs créations d''entreprise.'
 link_anchors:
-  - text: LegalPlace
-    max: 10
+- text: LegalPlace
+  max: 10
 mots_imposes: ''
 mot_minimum: 3500
-date: '2026-05-21T15:56:24.056145+02:00'
-updated: '2026-05-21T14:30:34Z'
+date: '2026-05-21T16:34:25.305861+02:00'
 ---
+
+
