@@ -196,7 +196,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
 .avis-toc a:hover{border-bottom-color:var(--accent)}
 /* Décalage au scroll pour ne pas que le H2 cible soit caché par le menu sticky
    en haut (~64px de hauteur d'après _nav.html.j2). 80px laisse une marge. */
-.tarifs-section,.analyse-section,.avis-clients,.faq-section,.verdict,.alternatives-section{scroll-margin-top:80px}
+.tarifs-section,.analyse-section,.avis-clients-section,.faq-section,.verdict,.alternatives-section{scroll-margin-top:80px}
 
 /* Box auteur en bas de page (copie du style blog-post).
    Le margin-bottom 96px aère visuellement avant le footer (le blog n'avait pas
@@ -246,11 +246,41 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
 .analyse-section ul + h3,.analyse-section ol + h3,.analyse-section p + h3{margin-top:28px}
 
 /* ─── Avis clients (preuve sociale) ─── */
-.avis-clients{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px;margin:32px 0}
-.avis-clients-header{display:flex;align-items:center;gap:16px;margin-bottom:12px}
-.avis-clients-score{font-family:'{{ theme.font_title }}',serif;font-size:32px;color:var(--accent);font-weight:600;line-height:1}
-.avis-clients-meta{font-size:13px;color:var(--ink3)}
-.avis-clients h2{font-family:'{{ theme.font_title }}',serif;font-size:24px;font-weight:400;margin-bottom:12px;color:var(--ink)}
+/* ─── Section "Quels sont les avis des utilisateurs de X ?" ─────
+       Refonte 2026 : 2 logos plateformes en haut, 2 cartes notes au milieu,
+       2 boxes "aiment / regrettent" en bas (vert/rouge). */
+.avis-clients-section{margin:48px 0 32px}
+.avis-clients-title{font-family:'{{ theme.font_title }}',serif;font-size:28px;font-weight:400;margin:0 0 28px;color:var(--ink);text-align:center;line-height:1.3}
+
+/* Cartes logos + notes (1 ou 2 colonnes) */
+.avis-platforms{display:grid;grid-template-columns:1fr;gap:24px;max-width:560px;margin:0 auto 32px;justify-items:center}
+.avis-platforms.two-cols{grid-template-columns:1fr 1fr;max-width:none}
+.avis-platform-card{display:flex;flex-direction:column;align-items:center;width:100%;max-width:340px}
+.avis-platform-logo{height:50px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.avis-platform-logo svg{height:42px;width:auto;max-width:200px}
+.avis-platform-note{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:22px 32px;text-align:center;width:100%;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.avis-platform-note-num{font-family:'{{ theme.font_title }}',serif;font-size:48px;font-weight:600;color:var(--ink);line-height:1;margin-bottom:6px}
+.avis-platform-note-num small{font-size:20px;color:var(--ink3);font-weight:400}
+.avis-platform-note .stars{font-size:18px;justify-content:center;display:flex;margin:4px 0 10px}
+.avis-platform-meta{font-size:12px;color:var(--ink3);line-height:1.5}
+
+/* Boxes feedback (1 ou 2 colonnes) */
+.avis-feedback{display:grid;grid-template-columns:1fr;gap:16px;margin-top:16px}
+.avis-feedback.two-cols{grid-template-columns:1fr 1fr}
+.avis-feedback-box{padding:20px 24px;border-radius:var(--r2);border:1px solid transparent}
+.avis-feedback-aiment{background:#F0FAF3;border-color:#C8E6D0}
+.avis-feedback-regrettent{background:#FDF2F2;border-color:#F5C6C6}
+.avis-feedback-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.avis-feedback-icon{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex-shrink:0;line-height:1}
+.avis-feedback-aiment .avis-feedback-icon{background:#D7EFDE;color:var(--green)}
+.avis-feedback-regrettent .avis-feedback-icon{background:#F8DCDC;color:var(--red)}
+.avis-feedback-label{font-size:15px;font-weight:700;color:var(--ink)}
+.avis-feedback-body{font-size:14.5px;color:var(--ink2);line-height:1.65}
+.avis-feedback-body p{margin:0}
+.avis-feedback-body strong{color:var(--ink);font-weight:700}
+
+/* Rétro-compat : ancien rendu monolithique */
+.avis-clients-legacy{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px;margin-top:16px;color:var(--ink2);font-size:15px;line-height:1.65}
 
 /* ─── FAQ ─── */
 .faq-section{margin:48px 0 32px}
@@ -294,6 +324,8 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
   .tarifs-table th,.tarifs-table td{padding:10px}
   .verdict{padding:20px}
   .alternatives-grid{grid-template-columns:1fr;gap:14px}
+  .avis-platforms.two-cols{grid-template-columns:1fr;max-width:340px}
+  .avis-feedback.two-cols{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -434,8 +466,8 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
       <li><a href="#qualite-prix">{{ post.h2_qualite_prix.titre }}</a></li>
       {% endif %}
       {% endif %}
-      {% if (post.note_trustpilot and post.nb_avis_trustpilot) or (post.h2_avis_clients and post.h2_avis_clients.contenu_html) %}
-      <li><a href="#avis-clients">{{ (post.h2_avis_clients.titre if post.h2_avis_clients else None) | default('Que disent les utilisateurs ?') }}</a></li>
+      {% if (post.note_trustpilot and post.nb_avis_trustpilot) or (post.note_google and post.nb_avis_google) or (post.h2_avis_clients and (post.h2_avis_clients.aiment or post.h2_avis_clients.regrettent or post.h2_avis_clients.contenu_html)) %}
+      <li><a href="#avis-clients">Avis des utilisateurs</a></li>
       {% endif %}
       {% if post.verdict %}
       <li><a href="#verdict">Mon avis final</a></li>
@@ -522,25 +554,107 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
 
   {% endif %}{# fin de la branche sections_html / 3 H2 standards #}
 
-  {# ─── BLOC AVIS CLIENTS (preuve sociale) ────────────────── #}
-  {% if post.note_trustpilot and post.nb_avis_trustpilot %}
-  <section class="avis-clients" id="avis-clients">
-    <h2>{{ post.h2_avis_clients.titre | default('Que disent les utilisateurs ?') }}</h2>
-    <div class="avis-clients-header">
-      <div class="avis-clients-score">{{ post.note_trustpilot }}<small>/5</small></div>
-      <div class="avis-clients-meta">
-        Sur <strong>{{ post.nb_avis_trustpilot }}</strong> avis<br>
-        {{ post.plateforme_avis | default('Trustpilot') }}
+  {# ─── BLOC AVIS CLIENTS : refonte 2026 ──────────────────────
+       Structure visuelle (cf. wireframe Julien) :
+         1. H2 forcé : "Quels sont les avis des utilisateurs de X ?"
+         2. Logos Trustpilot + Google côte à côte (centrés)
+         3. Cartes notes : grande note + étoiles + sous-texte "basée sur N avis"
+            (1 ou 2 cartes selon les plateformes renseignées)
+         4. Boxes "Ce que les clients aiment" (verte) / "regrettent" (rouge)
+            avec icônes ronds + paragraphes HTML (mots-clés en gras).
+
+       La section s'affiche si AU MOINS une des conditions suivantes est vraie :
+       - Une note externe (Trustpilot OU Google) est renseignée
+       - Claude a généré aiment OU regrettent
+       - Legacy : ancien `contenu_html` est présent (rétro-compat)
+
+       Le titre H2 est forcé en dur (cf. consigne Julien), pas piloté par Claude. #}
+  {% set _has_tp = post.note_trustpilot and post.nb_avis_trustpilot %}
+  {% set _has_google = post.note_google and post.nb_avis_google %}
+  {% set _has_aiment = post.h2_avis_clients and post.h2_avis_clients.aiment %}
+  {% set _has_regrettent = post.h2_avis_clients and post.h2_avis_clients.regrettent %}
+  {% set _has_legacy = post.h2_avis_clients and post.h2_avis_clients.contenu_html %}
+  {% if _has_tp or _has_google or _has_aiment or _has_regrettent or _has_legacy %}
+  <section class="avis-clients-section" id="avis-clients">
+    <h2 class="avis-clients-title">Quels sont les avis des utilisateurs de {{ post.marque }} ?</h2>
+
+    {# ─── Cartes notes Trustpilot + Google (1 ou 2 selon dispo) ─── #}
+    {% if _has_tp or _has_google %}
+    <div class="avis-platforms{% if _has_tp and _has_google %} two-cols{% endif %}">
+      {% if _has_tp %}
+      <div class="avis-platform-card">
+        <div class="avis-platform-logo">
+          {# Logo Trustpilot inline SVG (étoile verte + texte) #}
+          <svg viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg" aria-label="Trustpilot">
+            <polygon points="25,5 30.5,18 44,18 33.5,26 37.5,40 25,32 12.5,40 16.5,26 6,18 19.5,18" fill="#00B67A"/>
+            <text x="56" y="34" font-family="Helvetica,Arial,sans-serif" font-size="26" font-weight="700" fill="#191919">Trustpilot</text>
+          </svg>
+        </div>
+        <div class="avis-platform-note">
+          <div class="avis-platform-note-num">{{ "%g"|format(post.note_trustpilot) | replace(".", ",") }}<small>/5</small></div>
+          <div class="stars" aria-label="{{ post.note_trustpilot }} étoiles sur 5">
+            {%- set tp_full = post.note_trustpilot | int -%}
+            {%- set tp_half = 1 if (post.note_trustpilot - tp_full) >= 0.5 else 0 -%}
+            {%- for i in range(tp_full) -%}<span class="full">★</span>{%- endfor -%}
+            {%- if tp_half -%}<span class="half">★</span>{%- endif -%}
+            {%- for i in range(5 - tp_full - tp_half) -%}<span>★</span>{%- endfor -%}
+          </div>
+          <div class="avis-platform-meta">basée sur {{ post.nb_avis_trustpilot }} avis clients<br>déposés sur Trustpilot</div>
+        </div>
       </div>
+      {% endif %}
+      {% if _has_google %}
+      <div class="avis-platform-card">
+        <div class="avis-platform-logo">
+          {# Logo Google inline SVG (G multicolore + texte) #}
+          <svg viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg" aria-label="Google">
+            <text x="0" y="38" font-family="Arial,Helvetica,sans-serif" font-size="36" font-weight="500">
+              <tspan fill="#4285F4">G</tspan><tspan fill="#EA4335">o</tspan><tspan fill="#FBBC04">o</tspan><tspan fill="#4285F4">g</tspan><tspan fill="#34A853">l</tspan><tspan fill="#EA4335">e</tspan>
+            </text>
+          </svg>
+        </div>
+        <div class="avis-platform-note">
+          <div class="avis-platform-note-num">{{ "%g"|format(post.note_google) | replace(".", ",") }}<small>/5</small></div>
+          <div class="stars" aria-label="{{ post.note_google }} étoiles sur 5">
+            {%- set g_full = post.note_google | int -%}
+            {%- set g_half = 1 if (post.note_google - g_full) >= 0.5 else 0 -%}
+            {%- for i in range(g_full) -%}<span class="full">★</span>{%- endfor -%}
+            {%- if g_half -%}<span class="half">★</span>{%- endif -%}
+            {%- for i in range(5 - g_full - g_half) -%}<span>★</span>{%- endfor -%}
+          </div>
+          <div class="avis-platform-meta">basée sur {{ post.nb_avis_google }} avis clients<br>déposés sur Google</div>
+        </div>
+      </div>
+      {% endif %}
     </div>
-    {% if post.h2_avis_clients and post.h2_avis_clients.contenu_html %}
-      {{ post.h2_avis_clients.contenu_html | safe }}
     {% endif %}
-  </section>
-  {% elif post.h2_avis_clients and post.h2_avis_clients.contenu_html %}
-  <section class="analyse-section" id="avis-clients">
-    <h2>{{ post.h2_avis_clients.titre }}</h2>
-    {{ post.h2_avis_clients.contenu_html | safe }}
+
+    {# ─── Boxes "aiment / regrettent" ─── #}
+    {% if _has_aiment or _has_regrettent %}
+    <div class="avis-feedback{% if _has_aiment and _has_regrettent %} two-cols{% endif %}">
+      {% if _has_aiment %}
+      <div class="avis-feedback-box avis-feedback-aiment">
+        <div class="avis-feedback-header">
+          <span class="avis-feedback-icon">+</span>
+          <span class="avis-feedback-label">Ce que les clients aiment</span>
+        </div>
+        <div class="avis-feedback-body">{{ post.h2_avis_clients.aiment | safe }}</div>
+      </div>
+      {% endif %}
+      {% if _has_regrettent %}
+      <div class="avis-feedback-box avis-feedback-regrettent">
+        <div class="avis-feedback-header">
+          <span class="avis-feedback-icon">−</span>
+          <span class="avis-feedback-label">Ce que les clients regrettent</span>
+        </div>
+        <div class="avis-feedback-body">{{ post.h2_avis_clients.regrettent | safe }}</div>
+      </div>
+      {% endif %}
+    </div>
+    {% elif _has_legacy %}
+    {# Rétro-compat : ancien post avec un seul contenu_html monolithique #}
+    <div class="avis-clients-legacy">{{ post.h2_avis_clients.contenu_html | safe }}</div>
+    {% endif %}
   </section>
   {% endif %}
 
