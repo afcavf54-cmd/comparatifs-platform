@@ -850,9 +850,36 @@ def write_avis_md(filepath: Path, fm: dict, body_html: str) -> None:
     filepath.write_text(f"---\n{fm_yaml}---\n\n{body_html}\n", encoding="utf-8")
 
 
+def _resolve_template_vars(text: str, marque: str = "", categorie: str = "", year: int | None = None) -> str:
+    """Remplace les variables `{year}`, `{marque}`, `{categorie}` dans une chaîne.
+
+    Utile pour les champs sheet où l'éditeur écrit un template littéral avec
+    ces variables, par exemple :
+        meta_title = "Avis {marque} {year} : notre verdict"
+        h1         = "Notre avis sur {marque} en {year}"
+        cta_label  = "Tester {marque} gratuitement"
+
+    Si une variable n'apparaît pas dans le texte, c'est silencieusement ignoré.
+    Si `year` n'est pas fourni, on utilise l'année courante (zone Europe/Paris)
+    plutôt que l'année de publication, car les avis sont souvent republiés avec
+    un titre qui doit refléter l'année actuelle (« Avis Qonto 2026 »).
+    """
+    if not text:
+        return text
+    if year is None:
+        year = datetime.now(PARIS).year
+    return (
+        text
+        .replace("{year}", str(year))
+        .replace("{marque}", marque or "")
+        .replace("{categorie}", categorie or "")
+    )
+
+
 def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict:
     """Combine données sheet + données IA en un frontmatter complet."""
     marque = row.get("marque", "").strip()
+    categorie = (row.get("categorie") or "").strip()
     sentiment = normalize_sentiment(row.get("sentiment", ""))
     note = parse_note(row.get("note_globale", ""))
     tarifs = parse_tarifs(row.get("tarifs", ""))
@@ -860,7 +887,11 @@ def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict
     nb_avis_tp = row.get("nb_avis_trustpilot", "").strip()
     plateforme_avis = (row.get("plateforme_avis") or "Trustpilot").strip()
     cta_url = row.get("cta_url", "").strip()
-    cta_label = row.get("cta_label", "").strip() or f"Visiter {marque}"
+    # `cta_label` peut contenir des variables ({marque}, {year}) — on les
+    # résout avant de stocker pour que le rendu final soit immédiat.
+    cta_label = _resolve_template_vars(
+        row.get("cta_label", "").strip(), marque, categorie
+    ) or f"Visiter {marque}"
     pub_dt = parse_pub_datetime(row.get("date_publication", ""))
     pub_iso = pub_dt.isoformat() if pub_dt else datetime.now(PARIS).isoformat()
     link_anchors = parse_anchors(row.get("link_anchors", ""))
@@ -901,7 +932,11 @@ def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict
         # Tarifs
         "tarifs": tarifs,
         # Contenu IA
-        "h1": (row.get("h1") or generated.get("h1") or f"Avis {marque}").strip(),
+        "h1": (
+            _resolve_template_vars(row.get("h1") or "", marque, categorie).strip()
+            or generated.get("h1")
+            or f"Avis {marque}"
+        ).strip(),
         "en_bref": generated.get("en_bref", ""),
         "points_forts": generated.get("points_forts", []),
         "points_faibles": generated.get("points_faibles", []),
@@ -920,8 +955,16 @@ def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict
         # custom imposée par l'éditeur.
         "sections_toc": generated.get("sections_toc", []),
         # SEO
-        "meta_title": (row.get("meta_title") or generated.get("meta_title") or f"Avis {marque} : notre verdict").strip(),
-        "meta_description": (row.get("meta_description") or generated.get("meta_description") or "").strip(),
+        "meta_title": (
+            _resolve_template_vars(row.get("meta_title") or "", marque, categorie).strip()
+            or generated.get("meta_title")
+            or f"Avis {marque} : notre verdict"
+        ).strip(),
+        "meta_description": (
+            _resolve_template_vars(row.get("meta_description") or "", marque, categorie).strip()
+            or generated.get("meta_description")
+            or ""
+        ).strip(),
         "link_anchors": link_anchors,
         # Mots-clés imposés (sheet) — préservés bruts pour permettre une
         # éventuelle régénération sans avoir à relire la sheet, et pour audit.
@@ -1016,12 +1059,16 @@ def sync_metadata(posts_dir: Path, rows: list[dict]) -> int:
             continue
         # Recalcule les valeurs depuis la sheet
         new_fm = dict(fm)
+        marque_sheet = (row.get("marque") or "").strip()
+        categorie_sheet = (row.get("categorie") or "").strip()
         if row.get("note_globale"):
             new_fm["note"] = parse_note(row["note_globale"])
         if row.get("cta_url"):
             new_fm["cta_url"] = row["cta_url"].strip()
         if row.get("cta_label"):
-            new_fm["cta_label"] = row["cta_label"].strip()
+            new_fm["cta_label"] = _resolve_template_vars(
+                row["cta_label"].strip(), marque_sheet, categorie_sheet
+            )
         if row.get("cible"):
             new_fm["cible"] = row["cible"].strip()
         if row.get("tarifs"):
@@ -1040,10 +1087,17 @@ def sync_metadata(posts_dir: Path, rows: list[dict]) -> int:
                 pass
         if row.get("plateforme_avis"):
             new_fm["plateforme_avis"] = row["plateforme_avis"].strip()
+        # meta_title / meta_description / h1 : on résout {year}, {marque},
+        # {categorie} pour que les valeurs persistées dans le frontmatter
+        # soient prêtes à l'emploi côté template (sans rebloundir).
         if row.get("meta_title"):
-            new_fm["meta_title"] = row["meta_title"].strip()
+            new_fm["meta_title"] = _resolve_template_vars(
+                row["meta_title"].strip(), marque_sheet, categorie_sheet
+            )
         if row.get("meta_description"):
-            new_fm["meta_description"] = row["meta_description"].strip()
+            new_fm["meta_description"] = _resolve_template_vars(
+                row["meta_description"].strip(), marque_sheet, categorie_sheet
+            )
         if row.get("link_anchors"):
             new_fm["link_anchors"] = parse_anchors(row["link_anchors"])
         # H1 : si la colonne sheet est remplie, elle écrase celui généré par
@@ -1051,7 +1105,9 @@ def sync_metadata(posts_dir: Path, rows: list[dict]) -> int:
         # régénérer tout l'avis. Si la cellule est vide → on ne touche pas
         # (la condition `if row.get("h1")` filtre).
         if row.get("h1"):
-            new_fm["h1"] = row["h1"].strip()
+            new_fm["h1"] = _resolve_template_vars(
+                row["h1"].strip(), marque_sheet, categorie_sheet
+            )
         # mots_imposes : sync de la valeur brute (le parsing en liste de dicts
         # se fait seulement à la génération du contenu). Permet de modifier
         # les mots-clés depuis la sheet sans régénérer l'avis (utile pour
