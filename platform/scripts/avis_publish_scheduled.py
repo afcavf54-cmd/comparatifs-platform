@@ -36,6 +36,10 @@ Format attendu du CSV (colonnes) :
     meta_title          optionnel  (par défaut: pattern config.seo.avis_title_pattern)
     meta_description    optionnel
     link_anchors        optionnel  ("ancre1:N;ancre2:M")
+    mots_imposes        optionnel  (mots-clés à inclure dans sections_html,
+                                     format : "mot1, mot2=>https://url, mot3" — les
+                                     entrées avec `=>url` sont automatiquement
+                                     transformées en liens internes en post-process)
     slug                optionnel  (par défaut: slug(marque))
     mot_minimum         optionnel  (entier, défaut 800 — nombre total de mots minimum
                                     pour la somme des champs textuels : en_bref +
@@ -656,6 +660,74 @@ def _enrich_sections_html(html: str) -> tuple:
     return new_html, toc
 
 
+# ─── Mots-clés imposés + liens internes ───────────────────────────────────
+# Copie du même mécanisme que blog_publish_scheduled.py : la colonne sheet
+# `mots_imposes` accepte des entrées au format « mot » (simple inclusion)
+# ou « mot=>https://url » (inclusion + lien posé en post-process).
+
+def _parse_mots_imposes_csv(raw: str) -> list[dict]:
+    """Parse la colonne `mots_imposes` de la sheet d'avis. Chaque entrée est :
+      - soit un simple mot/expression : « comptable en ligne »
+      - soit avec un lien interne : « logiciel de paie=>https://www.editions-dp.com/meilleur-logiciel-de-paie »
+
+    Le séparateur entre entrées est `;`, `,` ou retour à la ligne.
+    Le séparateur texte ↔ URL est `=>`.
+
+    Renvoie une liste de dicts [{text, url?}, ...]. `url` est absent si l'entrée
+    était un simple mot sans flèche. Si l'URL contient des virgules (rare), il
+    faut utiliser `;` comme séparateur d'entrées.
+    """
+    if not raw:
+        return []
+    out: list[dict] = []
+    for part in re.split(r'[,;\n]', raw):
+        s = part.strip()
+        if not s:
+            continue
+        if '=>' in s:
+            text, _, url = s.partition('=>')
+            text = text.strip()
+            url = url.strip()
+            if text:
+                entry = {'text': text}
+                if url:
+                    entry['url'] = url
+                out.append(entry)
+        else:
+            out.append({'text': s})
+    return out
+
+
+def _wrap_first_occurrence_with_link(html: str, text: str, url: str) -> str:
+    """Wrappe la PREMIÈRE occurrence (case-insensitive, word-boundary) de `text`
+    dans un <a href="url">…</a>. La casse originale du texte est préservée dans
+    le lien. Skip les segments déjà à l'intérieur d'un <a>...</a> existant pour
+    éviter les imbrications de liens (interdites en HTML).
+    Si aucune occurrence n'est trouvée, retourne le HTML inchangé.
+    """
+    if not text or not url:
+        return html
+    pattern = re.compile(r'\b' + re.escape(text) + r'\b', re.IGNORECASE)
+    # On découpe sur les <a>...</a> existants ; les sous-segments hors <a>
+    # sont les seuls candidats au remplacement
+    parts = re.split(r'(<a\b[^>]*>.*?</a>)', html, flags=re.IGNORECASE | re.DOTALL)
+    done = False
+    out: list[str] = []
+    for p in parts:
+        is_anchor = p.lower().startswith('<a')
+        if not done and not is_anchor:
+            new_p, n = pattern.subn(
+                lambda m: f'<a href="{url}">{m.group(0)}</a>',
+                p, count=1,
+            )
+            out.append(new_p)
+            if n > 0:
+                done = True
+        else:
+            out.append(p)
+    return ''.join(out)
+
+
 def generate_sections_html(row: dict, site: dict, custom_prompt: str, persona_prompt: str = "", global_prompt: str = "") -> tuple:
     """Génère le bloc HTML des sections H2 entre le sommaire et 'Retours
     d'expérience des utilisateurs', à partir d'un prompt rédigé par l'éditeur.
@@ -679,6 +751,14 @@ def generate_sections_html(row: dict, site: dict, custom_prompt: str, persona_pr
     year = str(site.get("year") or datetime.now(PARIS).year)
     cible = (row.get("cible") or "").strip()
 
+    # Mots-clés imposés (sheet colonne `mots_imposes`). Format mixte :
+    #   "comptable en ligne, logiciel paie=>https://editions-dp.com/meilleur-logiciel-de-paie"
+    # Les entrées avec URL servent au maillage interne : Claude doit inclure
+    # le texte tel quel, puis on wrappe la 1ère occurrence dans <a> en
+    # post-process (on ne demande PAS à Claude de poser le lien lui-même
+    # pour éviter qu'il hallucine ou casse la syntaxe HTML).
+    mots_imposes = _parse_mots_imposes_csv(row.get("mots_imposes", ""))
+
     # Persona éditorial : injecté en tête pour aligner le ton avec le 1er appel
     persona_section = ""
     if persona_prompt and persona_prompt.strip():
@@ -686,6 +766,33 @@ def generate_sections_html(row: dict, site: dict, custom_prompt: str, persona_pr
             "PERSONA ÉDITORIAL (à incarner pour toute la rédaction — c'est ta voix, "
             "ton ton, ton positionnement) :\n"
             f"{persona_prompt.strip()}\n\n"
+        )
+
+    # Bloc des mots-clés obligatoires à injecter dans le user prompt
+    mots_section = ""
+    if mots_imposes:
+        plain_words = [m['text'] for m in mots_imposes if not m.get('url')]
+        linked_words = [m for m in mots_imposes if m.get('url')]
+        parts: list[str] = []
+        if plain_words:
+            fmt = ", ".join(f'« {m} »' for m in plain_words)
+            parts.append(
+                f"Tu DOIS inclure dans le contenu, au moins une fois chacune "
+                f"et de manière naturelle, les expressions suivantes : {fmt}."
+            )
+        if linked_words:
+            fmt = ", ".join(f'« {m["text"]} »' for m in linked_words)
+            parts.append(
+                f"Tu DOIS également inclure les expressions suivantes au moins une fois "
+                f"chacune (elles seront automatiquement transformées en liens vers d'autres "
+                f"pages du site lors du build, ne crée donc PAS toi-même les balises "
+                f"<a>...</a>) : {fmt}."
+            )
+        mots_section = (
+            "\n\nMOTS-CLÉS OBLIGATOIRES (impératif) :\n"
+            + "\n".join(parts)
+            + "\nCes expressions doivent apparaître TELLES QUELLES (même orthographe, "
+              "même formulation). Place-les naturellement dans des paragraphes."
         )
 
     user = f"""{persona_section}Tu rédiges les sections principales d'un avis sur **{marque}** ({categorie}).
@@ -700,7 +807,7 @@ CONTEXTE DE L'AVIS :
 
 INSTRUCTIONS DE L'ÉDITEUR (à respecter strictement, c'est ta structure et ton brief) :
 
-{custom_prompt.strip()}
+{custom_prompt.strip()}{mots_section}
 
 Réponds avec le HTML des sections, prêt à être inséré tel quel dans la page (commence par <h2>)."""
 
@@ -713,6 +820,17 @@ Réponds avec le HTML des sections, prêt à être inséré tel quel dans la pag
     raw = re.sub(r"</?(?:html|body|head|main|article|section|div)[^>]*>", "", raw, flags=re.IGNORECASE)
     # Enrichit chaque <h2> avec un id="..." et extrait la TOC pour le template
     enriched_html, toc = _enrich_sections_html(raw.strip())
+
+    # Post-process : wrap la 1ère occurrence des mots avec URL dans un <a>.
+    # On le fait APRÈS _enrich_sections_html pour que les ids posés sur les
+    # H2 ne soient pas réécrits, et on skippe automatiquement les <a> déjà
+    # présents (cf. _wrap_first_occurrence_with_link). Si Claude a oublié de
+    # placer le mot dans son HTML, le wrap ne pose pas le lien (silencieux).
+    if mots_imposes:
+        for m in mots_imposes:
+            if m.get('url'):
+                enriched_html = _wrap_first_occurrence_with_link(enriched_html, m['text'], m['url'])
+
     return enriched_html, toc
 
 
@@ -801,6 +919,9 @@ def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict
         "meta_title": (row.get("meta_title") or generated.get("meta_title") or f"Avis {marque} : notre verdict").strip(),
         "meta_description": (row.get("meta_description") or generated.get("meta_description") or "").strip(),
         "link_anchors": link_anchors,
+        # Mots-clés imposés (sheet) — préservés bruts pour permettre une
+        # éventuelle régénération sans avoir à relire la sheet, et pour audit.
+        "mots_imposes": (row.get("mots_imposes") or "").strip(),
         # Configuration éditoriale (lue par avis_publish_scheduled au build et
         # éditable depuis le dashboard ou directement dans le .md).
         # Sert à régénérer ou comprendre comment l'IA a calibré la longueur.
@@ -855,7 +976,7 @@ def _normalize_marque(m: str) -> str:
 EDITABLE_KEYS = (
     "note", "cta_url", "cta_label", "cible", "tarifs", "categorie",
     "note_trustpilot", "nb_avis_trustpilot", "plateforme_avis",
-    "meta_title", "meta_description", "link_anchors",
+    "meta_title", "meta_description", "link_anchors", "mots_imposes",
 )
 
 
@@ -1068,6 +1189,14 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         global_prompt_site = _load_global_prompt(site_dir, config)
         if global_prompt_site:
             print(f"    🌐 Global prompt schema détecté ({len(global_prompt_site)} caractères)")
+
+        # Mots-clés imposés (sheet) : si présents, log pour traçabilité workflow.
+        # Le parsing et l'injection se font dans generate_sections_html.
+        _mots_raw = (row.get("mots_imposes") or "").strip()
+        if _mots_raw:
+            _mots_parsed = _parse_mots_imposes_csv(_mots_raw)
+            _n_link = sum(1 for m in _mots_parsed if m.get('url'))
+            print(f"    🔗 {len(_mots_parsed)} mot(s) imposé(s) ({_n_link} avec lien interne)")
 
         try:
             generated = generate_avis_content(
