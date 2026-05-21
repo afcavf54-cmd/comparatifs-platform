@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getFile, listDir } from '../../../../../../lib/github'
+import { parseCSV as parseCSVShared } from '@/lib/csv'
 
 /**
  * GET /api/sites/[siteId]/blog/preview-sheet
@@ -34,35 +35,12 @@ interface SheetRow {
   reason?: string             // raison de skip si applicable
 }
 
-// Parseur CSV minimaliste, gère les guillemets et les virgules dans les champs
+// Wrapper sur le parseur partagé qui aligne la signature (retourne juste les
+// rows comme `Record<string, string>[]` au lieu de `{ headers, rows }`).
+// Le parseur partagé est basé sur papaparse — gère correctement les virgules
+// à l'intérieur des cellules quotées (bug du parser custom historique).
 function parseCSV(text: string): Record<string, string>[] {
-  const lines: string[][] = []
-  let row: string[] = []
-  let field = ''
-  let inQuotes = false
-  for (let i = 0; i < text.length; i++) {
-    const c = text[i]
-    if (inQuotes) {
-      if (c === '"' && text[i + 1] === '"') { field += '"'; i++; continue }
-      if (c === '"') { inQuotes = false; continue }
-      field += c
-      continue
-    }
-    if (c === '"') { inQuotes = true; continue }
-    if (c === ',') { row.push(field); field = ''; continue }
-    if (c === '\n' || c === '\r') {
-      if (field !== '' || row.length > 0) { row.push(field); lines.push(row); row = []; field = '' }
-      if (c === '\r' && text[i + 1] === '\n') i++
-      continue
-    }
-    field += c
-  }
-  if (field !== '' || row.length > 0) { row.push(field); lines.push(row) }
-  if (lines.length === 0) return []
-  const headers = lines[0].map(h => h.trim().toLowerCase().replace(/^\ufeff/, ''))
-  return lines.slice(1)
-    .filter(r => r.some(c => (c || '').trim()))
-    .map(r => Object.fromEntries(headers.map((h, i) => [h, (r[i] || '').trim()])))
+  return parseCSVShared(text).rows
 }
 
 /**
