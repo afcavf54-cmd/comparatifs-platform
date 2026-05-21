@@ -32,7 +32,8 @@ Format attendu du CSV (colonnes) :
                                      séparateur de lignes : ; ou newline)
     note_trustpilot     optionnel  (ex: 4.7)
     nb_avis_trustpilot  optionnel  (ex: 3000)
-    plateforme_avis     optionnel  (défaut: "Trustpilot")
+    note_google         optionnel  (ex: 3.2)
+    nb_avis_google      optionnel  (ex: 1247)
     meta_title          optionnel  (par défaut: pattern config.seo.avis_title_pattern)
     H1                  optionnel  (titre principal H1 affiché en haut de page —
                                      écrase celui généré par l'IA si rempli.
@@ -470,7 +471,6 @@ def build_generation_prompt(row: dict, site: dict, faq_questions: list = None, p
     # l'inverse, ou les deux.
     note_google = (row.get("note_google") or "").strip()
     nb_avis_google = (row.get("nb_avis_google") or "").strip()
-    plateforme_avis = (row.get("plateforme_avis") or "Trustpilot").strip()
     year = str(site.get("year") or datetime.now(PARIS).year)
 
     # Colonne « mot_minimum » : nombre total minimum de mots pour l'article
@@ -575,7 +575,7 @@ DONNÉES FOURNIES (à respecter strictement, ne pas inventer) :
 - Note globale donnée par l'éditeur : {note}/5
 - Cible visée : {cible or "(à déduire de la marque)"}
 - Offres tarifaires : {json.dumps(tarifs, ensure_ascii=False) if tarifs else "(pas de tarifs fournis)"}
-- Avis utilisateurs externes : {f"{note_tp}/5 sur {nb_avis_tp} avis ({plateforme_avis})" if (note_tp and nb_avis_tp) else "(non renseigné, ne pas l'inventer)"}
+- Avis utilisateurs externes : {(", ".join(filter(None, [f"Trustpilot : {note_tp}/5 sur {nb_avis_tp} avis" if (note_tp and nb_avis_tp) else "", f"Google : {note_google}/5 sur {nb_avis_google} avis" if (note_google and nb_avis_google) else ""])) or "(non renseigné, ne pas l'inventer)")}
 - Année : {year}
 
 CONTRAINTES :
@@ -995,7 +995,6 @@ def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict
     tarifs = parse_tarifs(row.get("tarifs", ""))
     note_tp = row.get("note_trustpilot", "").strip()
     nb_avis_tp = row.get("nb_avis_trustpilot", "").strip()
-    plateforme_avis = (row.get("plateforme_avis") or "Trustpilot").strip()
     cta_url = row.get("cta_url", "").strip()
     # `cta_label` peut contenir des variables ({marque}, {year}) — on les
     # résout avant de stocker pour que le rendu final soit immédiat.
@@ -1034,7 +1033,6 @@ def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict
         "note_max": 5,
         "note_trustpilot": float(note_tp.replace(",", ".")) if note_tp.replace(",", ".").replace(".", "").isdigit() else None,
         "nb_avis_trustpilot": int(re.sub(r"\D", "", nb_avis_tp)) if nb_avis_tp else None,
-        "plateforme_avis": plateforme_avis if (note_tp and nb_avis_tp) else None,
         # Avis Google : 2 colonnes optionnelles de la sheet. Si remplies, le
         # template affiche une 2e carte note à côté de Trustpilot dans la
         # section "Quels sont les avis des utilisateurs de {marque} ?".
@@ -1149,7 +1147,8 @@ def _normalize_marque(m: str) -> str:
 
 EDITABLE_KEYS = (
     "note", "cta_url", "cta_label", "cible", "tarifs", "categorie",
-    "note_trustpilot", "nb_avis_trustpilot", "plateforme_avis",
+    "note_trustpilot", "nb_avis_trustpilot",
+    "note_google", "nb_avis_google",
     "meta_title", "meta_description", "link_anchors", "mots_imposes",
     "h1",
 )
@@ -1212,8 +1211,17 @@ def sync_metadata(posts_dir: Path, rows: list[dict]) -> int:
                 new_fm["nb_avis_trustpilot"] = int(re.sub(r"\D", "", row["nb_avis_trustpilot"]))
             except Exception:
                 pass
-        if row.get("plateforme_avis"):
-            new_fm["plateforme_avis"] = row["plateforme_avis"].strip()
+        # Google : note + nb d'avis (mêmes règles que Trustpilot).
+        if row.get("note_google"):
+            try:
+                new_fm["note_google"] = float(row["note_google"].replace(",", "."))
+            except Exception:
+                pass
+        if row.get("nb_avis_google"):
+            try:
+                new_fm["nb_avis_google"] = int(re.sub(r"\D", "", row["nb_avis_google"]))
+            except Exception:
+                pass
         # meta_title / meta_description / h1 : on résout {year}, {marque},
         # {categorie} pour que les valeurs persistées dans le frontmatter
         # soient prêtes à l'emploi côté template (sans rebloundir).
