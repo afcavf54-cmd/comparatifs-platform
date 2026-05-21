@@ -11,73 +11,87 @@ import Link from 'next/link'
 // 'blog'       : pareil pour les articles de blog (placeholder en attente)
 type Tab = 'global' | 'classement' | 'avis' | 'blog'
 
-// ── Sections d'un avis avec leur limite de mots par défaut ──────────────
-// Ces valeurs servent à initialiser le formulaire la 1ère fois. Les valeurs
-// utilisateur stockées dans `schema.avis_config` prennent ensuite le pas.
-const DEFAULT_AVIS_CONFIG: Record<string, { label: string, description: string, words_max_default: number }> = {
+// ── Sections d'un avis avec leur fourchette de mots par défaut ──────────
+// Min et max par section. L'éditeur peut ajuster chaque borne, et Claude
+// est instruit de viser cette fourchette ([min, max] mots). Les valeurs
+// utilisateur stockées dans `schema.avis_config` prennent le pas sur les
+// défauts ci-dessous.
+const DEFAULT_AVIS_CONFIG: Record<string, { label: string, description: string, words_min_default: number, words_max_default: number }> = {
   hero: {
-    label: '🎯 Hero (titre H1 + chapeau)',
-    description: 'Bloc visible en haut de la page, juste sous la nav. Inclut le H1 et un court paragraphe d\'accroche.',
-    words_max_default: 60,
+    label: '🎯 Hero (intro éditoriale)',
+    description: 'Paragraphe d\'introduction affiché sous le H1. Pose le contexte du sujet, l\'angle de l\'avis, à qui s\'adresse la marque.',
+    words_min_default: 80,
+    words_max_default: 130,
   },
   en_bref: {
-    label: '⚡ En bref (résumé)',
-    description: 'Encart de résumé court affiché juste après le hero, donne en 1 phrase à qui s\'adresse l\'outil.',
-    words_max_default: 50,
+    label: '⚡ Mon avis en Bref (résumé)',
+    description: 'Encart affiché à côté du logo avec la note. Synthèse de l\'avis : verdict global, point fort clé, point faible clé.',
+    words_min_default: 50,
+    words_max_default: 90,
   },
   points_forts: {
     label: '✅ Points forts (par item)',
     description: 'Limite par bullet point de la liste « Points forts ». 4-6 items au total recommandés.',
-    words_max_default: 12,
+    words_min_default: 5,
+    words_max_default: 14,
   },
   points_faibles: {
     label: '❌ Points faibles (par item)',
     description: 'Limite par bullet point de la liste « Points faibles ». 2-4 items au total.',
-    words_max_default: 12,
+    words_min_default: 5,
+    words_max_default: 14,
   },
   sections_h2: {
     label: '📚 Sections H2 (par section)',
     description: 'Limite par bloc H2 du contenu principal. Une page d\'avis a typiquement 4-6 H2.',
-    words_max_default: 350,
+    words_min_default: 200,
+    words_max_default: 400,
   },
   faq: {
     label: '❓ FAQ (par réponse)',
     description: 'Limite par réponse de FAQ. 4-6 questions au total recommandées.',
-    words_max_default: 60,
+    words_min_default: 30,
+    words_max_default: 80,
   },
   verdict: {
     label: '🏆 Verdict + CTA',
     description: 'Bloc de conclusion centré, juste avant le bouton call-to-action.',
-    words_max_default: 80,
+    words_min_default: 50,
+    words_max_default: 100,
   },
 }
 
 // ── Sections d'un article de blog (placeholder, à étoffer plus tard) ────
-const DEFAULT_BLOG_CONFIG: Record<string, { label: string, description: string, words_max_default: number }> = {
+const DEFAULT_BLOG_CONFIG: Record<string, { label: string, description: string, words_min_default: number, words_max_default: number }> = {
   excerpt: {
     label: '📌 Excerpt (meta-description)',
     description: 'Court résumé affiché dans les SERP et les cartes d\'article.',
-    words_max_default: 25,
+    words_min_default: 15,
+    words_max_default: 30,
   },
   intro: {
     label: '📝 Intro',
     description: 'Paragraphe d\'ouverture qui pose le sujet et l\'angle.',
-    words_max_default: 150,
+    words_min_default: 100,
+    words_max_default: 200,
   },
   sections_h2: {
     label: '📚 Sections H2 (par section)',
     description: 'Limite par bloc H2 du corps de l\'article.',
-    words_max_default: 400,
+    words_min_default: 250,
+    words_max_default: 500,
   },
   conclusion: {
     label: '🎯 Conclusion',
     description: 'Synthèse finale, takeaway pour le lecteur.',
-    words_max_default: 100,
+    words_min_default: 60,
+    words_max_default: 130,
   },
   faq: {
     label: '❓ FAQ (par réponse)',
     description: 'Limite par réponse FAQ. Optionnel.',
-    words_max_default: 70,
+    words_min_default: 40,
+    words_max_default: 90,
   },
 }
 
@@ -184,12 +198,12 @@ function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string,
   )
 }
 
-// ── Sous-composant : section configurable avec mots max + prompt ────────
+// ── Sous-composant : section configurable avec fourchette de mots + prompt ─
 function SectionConfigCard({
-  label, description, words_max, prompt, onChangeWordsMax, onChangePrompt,
+  label, description, words_min, words_max, prompt, onChangeWordsMin, onChangeWordsMax, onChangePrompt,
 }: {
-  label: string, description: string, words_max: number, prompt: string,
-  onChangeWordsMax: (n: number) => void, onChangePrompt: (s: string) => void,
+  label: string, description: string, words_min: number, words_max: number, prompt: string,
+  onChangeWordsMin: (n: number) => void, onChangeWordsMax: (n: number) => void, onChangePrompt: (s: string) => void,
 }) {
   return (
     <div style={{ background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 10, padding: 16, marginBottom: 14 }}>
@@ -201,16 +215,28 @@ function SectionConfigCard({
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
           <input
             type="number"
-            value={words_max || ''}
-            onChange={e => onChangeWordsMax(parseInt(e.target.value) || 0)}
-            placeholder="max"
+            value={words_min || ''}
+            onChange={e => onChangeWordsMin(parseInt(e.target.value) || 0)}
+            placeholder="min"
             style={{
-              width: 68, padding: '6px 10px', borderRadius: 6,
+              width: 60, padding: '6px 10px', borderRadius: 6,
               background: '#0D1117', border: '1px solid #1E2D3D',
               color: '#fff', fontSize: 13, outline: 'none', textAlign: 'center' as const, fontWeight: 600,
             }}
           />
-          <span style={{ color: '#8B9CB0', fontSize: 12 }}>mots max</span>
+          <span style={{ color: '#8B9CB0', fontSize: 12 }}>→</span>
+          <input
+            type="number"
+            value={words_max || ''}
+            onChange={e => onChangeWordsMax(parseInt(e.target.value) || 0)}
+            placeholder="max"
+            style={{
+              width: 60, padding: '6px 10px', borderRadius: 6,
+              background: '#0D1117', border: '1px solid #1E2D3D',
+              color: '#fff', fontSize: 13, outline: 'none', textAlign: 'center' as const, fontWeight: 600,
+            }}
+          />
+          <span style={{ color: '#8B9CB0', fontSize: 12 }}>mots</span>
         </div>
       </div>
       <textarea
@@ -256,8 +282,8 @@ export default function TemplateDetailPage() {
     prompt_faq: { text: '', words_min: 50, words_max: 150 },
   })
   // Configs des onglets Avis et Blog : map { section_key -> { words_max, prompt } }
-  const [avisConfig, setAvisConfig] = useState<Record<string, { words_max: number, prompt: string }>>({})
-  const [blogConfig, setBlogConfig] = useState<Record<string, { words_max: number, prompt: string }>>({})
+  const [avisConfig, setAvisConfig] = useState<Record<string, { words_min: number, words_max: number, prompt: string }>>({})
+  const [blogConfig, setBlogConfig] = useState<Record<string, { words_min: number, words_max: number, prompt: string }>>({})
   const [loadedImages, setLoadedImages] = useState<Record<string, string>>({})
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -284,9 +310,10 @@ export default function TemplateDetailPage() {
         // Charger avis_config : merge entre les défauts (pour les sections manquantes)
         // et les valeurs persistées dans le schema.
         const avisStored = s.avis_config || {}
-        const avisMerged: Record<string, { words_max: number, prompt: string }> = {}
+        const avisMerged: Record<string, { words_min: number, words_max: number, prompt: string }> = {}
         Object.entries(DEFAULT_AVIS_CONFIG).forEach(([key, def]) => {
           avisMerged[key] = {
+            words_min: avisStored[key]?.words_min ?? def.words_min_default,
             words_max: avisStored[key]?.words_max ?? def.words_max_default,
             prompt: avisStored[key]?.prompt ?? '',
           }
@@ -294,9 +321,10 @@ export default function TemplateDetailPage() {
         setAvisConfig(avisMerged)
         // Idem pour blog_config
         const blogStored = s.blog_config || {}
-        const blogMerged: Record<string, { words_max: number, prompt: string }> = {}
+        const blogMerged: Record<string, { words_min: number, words_max: number, prompt: string }> = {}
         Object.entries(DEFAULT_BLOG_CONFIG).forEach(([key, def]) => {
           blogMerged[key] = {
+            words_min: blogStored[key]?.words_min ?? def.words_min_default,
             words_max: blogStored[key]?.words_max ?? def.words_max_default,
             prompt: blogStored[key]?.prompt ?? '',
           }
@@ -794,10 +822,12 @@ export default function TemplateDetailPage() {
                 key={key}
                 label={def.label}
                 description={def.description}
+                words_min={avisConfig[key]?.words_min ?? def.words_min_default}
                 words_max={avisConfig[key]?.words_max ?? def.words_max_default}
                 prompt={avisConfig[key]?.prompt ?? ''}
-                onChangeWordsMax={(n) => setAvisConfig(prev => ({ ...prev, [key]: { ...prev[key], words_max: n, prompt: prev[key]?.prompt ?? '' } }))}
-                onChangePrompt={(s) => setAvisConfig(prev => ({ ...prev, [key]: { ...prev[key], prompt: s, words_max: prev[key]?.words_max ?? def.words_max_default } }))}
+                onChangeWordsMin={(n) => setAvisConfig(prev => ({ ...prev, [key]: { words_min: n, words_max: prev[key]?.words_max ?? def.words_max_default, prompt: prev[key]?.prompt ?? '' } }))}
+                onChangeWordsMax={(n) => setAvisConfig(prev => ({ ...prev, [key]: { words_min: prev[key]?.words_min ?? def.words_min_default, words_max: n, prompt: prev[key]?.prompt ?? '' } }))}
+                onChangePrompt={(s) => setAvisConfig(prev => ({ ...prev, [key]: { words_min: prev[key]?.words_min ?? def.words_min_default, words_max: prev[key]?.words_max ?? def.words_max_default, prompt: s } }))}
               />
             ))}
           </div>
@@ -815,10 +845,12 @@ export default function TemplateDetailPage() {
                 key={key}
                 label={def.label}
                 description={def.description}
+                words_min={blogConfig[key]?.words_min ?? def.words_min_default}
                 words_max={blogConfig[key]?.words_max ?? def.words_max_default}
                 prompt={blogConfig[key]?.prompt ?? ''}
-                onChangeWordsMax={(n) => setBlogConfig(prev => ({ ...prev, [key]: { ...prev[key], words_max: n, prompt: prev[key]?.prompt ?? '' } }))}
-                onChangePrompt={(s) => setBlogConfig(prev => ({ ...prev, [key]: { ...prev[key], prompt: s, words_max: prev[key]?.words_max ?? def.words_max_default } }))}
+                onChangeWordsMin={(n) => setBlogConfig(prev => ({ ...prev, [key]: { words_min: n, words_max: prev[key]?.words_max ?? def.words_max_default, prompt: prev[key]?.prompt ?? '' } }))}
+                onChangeWordsMax={(n) => setBlogConfig(prev => ({ ...prev, [key]: { words_min: prev[key]?.words_min ?? def.words_min_default, words_max: n, prompt: prev[key]?.prompt ?? '' } }))}
+                onChangePrompt={(s) => setBlogConfig(prev => ({ ...prev, [key]: { words_min: prev[key]?.words_min ?? def.words_min_default, words_max: prev[key]?.words_max ?? def.words_max_default, prompt: s } }))}
               />
             ))}
           </div>
