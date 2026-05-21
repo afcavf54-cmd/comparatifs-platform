@@ -93,6 +93,15 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
   // ── État pour l'upload du logo (encart "Mon avis en Bref") ─────────
   const [uploadingLogo, setUploadingLogo] = useState(false)
   const logoInputRef = useRef<HTMLInputElement>(null)
+  // ── État du BROUILLON (prompt structure + FAQ imposées) ─────────────
+  // Stocké séparément dans `_drafts.json` sous le slug. Ces 2 champs sont
+  // utilisés par avis_publish_scheduled.py au moment de la régénération
+  // pour piloter la structure des sections H2 et les questions FAQ.
+  // On les charge à l'init et on les pousse via PUT au save (séparément
+  // du frontmatter).
+  const [promptCustom, setPromptCustom] = useState<string>('')
+  const [faqQuestions, setFaqQuestions] = useState<string[]>([])
+  const [draftCollapsed, setDraftCollapsed] = useState<boolean>(true)
 
   // ── Chargement initial ──────────────────────────────────────────────
   useEffect(() => {
@@ -118,6 +127,23 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
         setAvis(a)
         setSha(data.sha || '')
         setDomain(data.site?.domain || '')
+        // ── Chargement du brouillon en parallèle (best-effort) ─────────
+        // Si la route 404 ou erreur, on continue silencieusement avec des
+        // valeurs vides (l'utilisateur pourra remplir et créer le draft).
+        try {
+          const dr = await fetch(`/api/sites/${siteId}/avis/draft/${slug}`)
+          if (dr.ok) {
+            const dd = await dr.json()
+            setPromptCustom((dd?.draft?.prompt_custom || '').toString())
+            const fq = Array.isArray(dd?.draft?.faq_questions) ? dd.draft.faq_questions : []
+            setFaqQuestions(fq.filter((q: any) => typeof q === 'string'))
+            // Auto-déplier le bloc si un prompt OU des questions sont déjà
+            // présents, pour que l'éditeur voie tout de suite ce qui pilote
+            // la génération.
+            const hasContent = !!(dd?.draft?.prompt_custom || '').trim() || fq.length > 0
+            setDraftCollapsed(!hasContent)
+          }
+        } catch { /* draft inaccessible : on continue */ }
       } catch (e) {
         setMsg('Erreur réseau')
       } finally {
@@ -126,23 +152,41 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
     })()
   }, [siteId, slug])
 
-  // ── Sauvegarde ──────────────────────────────────────────────────────
+  // ── Sauvegarde : frontmatter + brouillon (2 requêtes en parallèle) ───
+  // Le frontmatter va dans posts_avis/<slug>.md, le brouillon dans
+  // posts_avis/_drafts.json sous la clé <slug>. Les 2 ne sont pas couplés
+  // côté backend mais on les synchronise depuis cette page pour que
+  // l'éditeur n'ait qu'un seul bouton "Enregistrer" à connaître.
   const save = async () => {
     if (!avis) return
     setSaving(true)
     setMsg('')
     try {
-      const r = await fetch(`/api/sites/${siteId}/avis/${slug}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ avis, body: '', sha }),
-      })
+      const cleanedFaq = faqQuestions.map(q => (q || '').trim()).filter(q => q.length > 0)
+      const [r, dr] = await Promise.all([
+        fetch(`/api/sites/${siteId}/avis/${slug}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ avis, body: '', sha }),
+        }),
+        fetch(`/api/sites/${siteId}/avis/draft/${slug}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt_custom: promptCustom, faq_questions: cleanedFaq }),
+        }),
+      ])
       const data = await r.json()
       if (!r.ok) {
-        setMsg(`Erreur : ${data.error || r.status}`)
+        setMsg(`Erreur frontmatter : ${data.error || r.status}`)
+      } else if (!dr.ok) {
+        // Le frontmatter a été sauvegardé mais pas le draft : on prévient
+        // sans faire de rollback (le frontmatter est la source principale).
+        setMsg('✓ Frontmatter sauvegardé (brouillon non persisté — vérifier l\'API draft)')
+        const fresh = await fetch(`/api/sites/${siteId}/avis/${slug}`).then(r => r.json())
+        setSha(fresh.sha || '')
+        setTimeout(() => setMsg(''), 4500)
       } else {
-        setMsg('✓ Sauvegardé')
-        // Recharge le sha pour permettre une 2e sauvegarde dans la foulée
+        setMsg('✓ Sauvegardé (frontmatter + brouillon)')
         const fresh = await fetch(`/api/sites/${siteId}/avis/${slug}`).then(r => r.json())
         setSha(fresh.sha || '')
         setTimeout(() => setMsg(''), 3000)
@@ -317,6 +361,100 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
              style={{ fontSize: 13, color: '#0066cc', textDecoration: 'none' }}>
             👁 Voir en ligne ↗
           </a>
+        )}
+      </div>
+
+      {/* ── 🤖 CONFIGURATION DE LA GÉNÉRATION IA ──────────────────────
+          Bloc collapsible regroupant ce qui pilote la régénération Claude :
+          - prompt_custom : structure des sections H2 imposée
+          - faq_questions : questions FAQ imposées
+          Les 2 sont stockés dans posts_avis/_drafts.json (séparé du
+          frontmatter). Le bouton "🔄 Régénérer" plus haut utilise ces
+          valeurs. Si ce bloc est vide, Claude génère librement. */}
+      <div style={{ ...sectionStyle, background: '#FAF7FF', border: '1px solid #D6C8F0' }}>
+        <div
+          onClick={() => setDraftCollapsed(c => !c)}
+          style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', userSelect: 'none' }}
+        >
+          <div>
+            <h2 style={{ ...h2Style, marginBottom: 4 }}>🤖 Configuration de la génération IA</h2>
+            <div style={{ fontSize: 12, color: '#666', lineHeight: 1.4 }}>
+              Prompt qui impose la structure H2 + questions FAQ — utilisés à chaque <strong>🔄 Régénération</strong>.
+              {(promptCustom.trim() || faqQuestions.length > 0) && (
+                <span style={{ marginLeft: 6, color: '#7C3AED', fontWeight: 600 }}>
+                  ({promptCustom.trim() ? `${promptCustom.length} car. de prompt` : 'sans prompt'}
+                  {faqQuestions.length > 0 ? `, ${faqQuestions.length} question(s) FAQ` : ''})
+                </span>
+              )}
+            </div>
+          </div>
+          <span style={{ fontSize: 20, color: '#7C3AED', transform: draftCollapsed ? 'rotate(0deg)' : 'rotate(90deg)', transition: 'transform .15s' }}>▶</span>
+        </div>
+        {!draftCollapsed && (
+          <div style={{ marginTop: 16 }}>
+            <div style={{ marginBottom: 16 }}>
+              <label style={labelStyle}>
+                Prompt de structure (sections H2 du corps de l'avis)
+              </label>
+              <textarea
+                value={promptCustom}
+                onChange={e => setPromptCustom(e.target.value)}
+                rows={10}
+                placeholder={`Ex: Génère exactement 4 sections H2 dans cet ordre :\n1. "Présentation de {{ avis.marque || 'la marque' }} et son positionnement"\n2. "Fonctionnalités principales et points forts"\n...`}
+                style={{
+                  width: '100%', padding: '10px 12px', borderRadius: 8,
+                  background: '#fff', border: '1px solid #D6C8F0',
+                  color: '#222', fontSize: 13, outline: 'none',
+                  resize: 'vertical' as const, fontFamily: 'ui-monospace, monospace',
+                  boxSizing: 'border-box' as const, lineHeight: 1.6,
+                }}
+              />
+              <div style={{ fontSize: 11, color: '#888', marginTop: 4 }}>
+                Ce prompt est envoyé tel quel à Claude lors du 2e appel pour générer le bloc <code>sections_html</code>.
+                Vide = Claude génère librement (h2_fonctionnalites + h2_support + h2_qualite_prix).
+              </div>
+            </div>
+            <div>
+              <label style={labelStyle}>
+                Questions FAQ imposées <span style={{ textTransform: 'none', color: '#888', fontWeight: 400 }}>— Claude génère seulement les réponses</span>
+              </label>
+              {faqQuestions.length === 0 && (
+                <div style={{ fontSize: 12, color: '#888', fontStyle: 'italic', marginBottom: 8 }}>
+                  Aucune question imposée. Claude inventera 4 questions par défaut lors de la régénération.
+                </div>
+              )}
+              {faqQuestions.map((q, i) => (
+                <div key={i} style={{ display: 'flex', gap: 8, marginBottom: 6 }}>
+                  <input
+                    value={q}
+                    onChange={e => {
+                      const next = [...faqQuestions]
+                      next[i] = e.target.value
+                      setFaqQuestions(next)
+                    }}
+                    placeholder={`Question ${i + 1}`}
+                    style={{ ...inputStyle, flex: 1, background: '#fff', borderColor: '#D6C8F0' }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setFaqQuestions(faqQuestions.filter((_, j) => j !== i))}
+                    style={{
+                      padding: '6px 10px', borderRadius: 6, border: '1px solid #D6C8F0',
+                      background: '#fff', color: '#FC8181', cursor: 'pointer', fontSize: 14,
+                    }}
+                  >×</button>
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={() => setFaqQuestions([...faqQuestions, ''])}
+                style={{
+                  padding: '6px 12px', borderRadius: 6, border: '1px dashed #D6C8F0',
+                  background: 'transparent', color: '#7C3AED', cursor: 'pointer', fontSize: 13,
+                }}
+              >+ Ajouter une question</button>
+            </div>
+          </div>
         )}
       </div>
 
