@@ -238,6 +238,38 @@ def _recover_partial_json(raw: str) -> dict | None:
     return None
 
 
+def _format_short_text(text: str) -> str:
+    """Applique les règles de mise en forme légère aux champs texte courts
+    (intro, en_bref). Claude peut utiliser `**mot**` pour les passages en
+    gras et `\\n\\n` pour séparer en plusieurs paragraphes — cette fonction
+    convertit ces marqueurs en HTML propre rendu tel quel par le template
+    (`{{ ... | safe }}`).
+
+    Règles appliquées :
+      - `**texte**` → `<strong>texte</strong>` (mise en gras)
+      - `\\n\\n+` → séparation en <p>...</p> distincts (double saut = paragraphe)
+      - Un seul `\\n` → `<br>` (saut de ligne dans le même paragraphe)
+
+    Si le texte est vide ou ne contient aucun marqueur, on le retourne tel
+    quel (rétro-compat avec les anciennes générations sans markdown).
+    """
+    if not text or not isinstance(text, str):
+        return text or ""
+    t = text.strip()
+    # Gras : **texte** → <strong>texte</strong>
+    t = re.sub(r"\*\*([^*\n]+?)\*\*", r"<strong>\1</strong>", t)
+    # Si du HTML est déjà présent (Claude a généré <p>...</p>), on le garde
+    # tel quel sans wrapper supplémentaire pour éviter le double-wrap.
+    if t.startswith("<p>") or t.startswith("<div>"):
+        return t
+    # Séparation en paragraphes sur \n\n
+    paragraphs = re.split(r"\n\s*\n+", t)
+    paragraphs = [p.strip().replace("\n", "<br>") for p in paragraphs if p.strip()]
+    if not paragraphs:
+        return ""
+    return "".join(f"<p>{p}</p>" for p in paragraphs)
+
+
 def strip_code_fences(text: str) -> str:
     text = re.sub(r"^```(?:json|JSON|html|HTML|markdown|md)?\s*\n?", "", text.strip())
     text = re.sub(r"\n?\s*```\s*$", "", text)
@@ -654,9 +686,9 @@ Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de `
    Ne pas confondre, ne pas laisser "intro" vide, ne pas mettre la même chose dans les deux.
 
 {{
-  "intro": "OBLIGATOIRE. Paragraphe d'INTRODUCTION éditoriale, affiché juste sous le H1. Il pose le contexte : à qui s'adresse {marque}, ce que le lecteur va trouver dans cet avis, l'angle adopté. C'est l'accroche éditoriale qui donne envie de lire. PAS un résumé de l'avis. Exemple de structure : 'Vous hésitez entre [marque] et ses alternatives pour [besoin] ? Cet avis détaillé décrypte [angle 1], [angle 2] et [angle 3]. À la fin, vous saurez si [marque] est fait pour vous.' RESPECTE STRICTEMENT la fourchette de mots indiquée plus haut dans 'LIMITES DE LONGUEUR PAR SECTION'.",
+  "intro": "OBLIGATOIRE. Paragraphe d'INTRODUCTION éditoriale, affiché juste sous le H1. Il pose le contexte : à qui s'adresse {marque}, ce que le lecteur va trouver dans cet avis, l'angle adopté. C'est l'accroche éditoriale qui donne envie de lire. PAS un résumé de l'avis. MISE EN FORME : utilise **double-astérisques** pour les expressions-clés à mettre en gras (3-5 par paragraphe). Utilise un double saut de ligne (\\\\n\\\\n) pour séparer en 2-3 paragraphes courts si le contenu est long. Exemple : 'Vous hésitez entre [marque] et ses alternatives pour [besoin] ? Cet avis détaillé décrypte **[angle 1]**, **[angle 2]** et **[angle 3]**.\\\\n\\\\nÀ la fin, vous saurez si **[marque] est fait pour vous**.' RESPECTE STRICTEMENT la fourchette de mots indiquée plus haut dans 'LIMITES DE LONGUEUR PAR SECTION'.",
   "h1": "Titre principal au format 'Avis {marque} ({year}) : ...' (incitatif, max 75 caractères)",
-  "en_bref": "OBLIGATOIRE. RÉSUMÉ de l'avis, affiché dans l'encart 'Mon avis en Bref' à côté du logo. Synthèse de la position de l'auteur : verdict global, point clé fort, point clé faible, et pour qui c'est adapté. Différent de l'intro : c'est la conclusion en miniature. RESPECTE STRICTEMENT la fourchette de mots indiquée plus haut dans 'LIMITES DE LONGUEUR PAR SECTION'.",
+  "en_bref": "OBLIGATOIRE. RÉSUMÉ de l'avis, affiché dans l'encart 'Mon avis en Bref' à côté du logo. Synthèse de la position de l'auteur : verdict global, point clé fort, point clé faible, et pour qui c'est adapté. Différent de l'intro : c'est la conclusion en miniature. MISE EN FORME : utilise **double-astérisques** pour mettre en gras les 3-4 mots-clés importants (verdict, point clé, profil cible). RESPECTE STRICTEMENT la fourchette de mots indiquée plus haut dans 'LIMITES DE LONGUEUR PAR SECTION'.",
   "points_forts": ["3 points forts CONCRETS, 5-12 mots chacun, formulés positivement"],
   "points_faibles": ["2 points faibles HONNÊTES, 5-12 mots chacun, formulés sans diplomatie creuse"],
   "h2_fonctionnalites": {{
@@ -789,6 +821,11 @@ def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_qu
         # le champ (vs juste un oubli côté code). À surveiller dans les logs
         # GitHub Actions de la prochaine régénération.
         print(f"    ⚠ Claude n'a PAS produit le champ 'intro' (clés retournées: {sorted(data.keys())})")
+    # Application des règles éditoriales légères : `**bold**` → <strong>,
+    # `\n\n` → paragraphes séparés. Pour que le template puisse rendre ça
+    # tel quel via {{ post.intro | safe }}.
+    intro_text = _format_short_text(intro_text)
+    en_bref_text = _format_short_text(en_bref_text)
     return {
         "h1": data.get("h1", f"Avis {row.get('marque','')}"),
         "intro": intro_text,
