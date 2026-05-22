@@ -31,15 +31,25 @@ a{color:var(--accent2);text-decoration:none}
 h1{font-family:'',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:16px}
 .avis-sub{font-size:18px;color:var(--ink3);max-width:600px;margin:0 auto}
 
-/* Filtres catégories */
-.cats-bar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:16px 0 32px}
-.cat-pill{display:inline-block;padding:6px 14px;border-radius:20px;background:var(--surface);border:1px solid var(--border);color:var(--ink2);font-size:14px;transition:all .15s}
-.cat-pill:hover,.cat-pill.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* Filtres catégories — style identique au blog-index pour cohérence visuelle.
+   Pastilles ovales blanches, bordure légère, compteur en gris léger.
+   L'élément sélectionné prend la couleur d'accent. */
+.cats-bar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0 40px}
+.cat-pill{font-size:13px;font-weight:600;color:var(--ink2);padding:8px 16px;border-radius:24px;border:1px solid var(--border);background:var(--surface);transition:.15s;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.cat-pill:hover,.cat-pill.active{color:var(--accent);border-color:var(--accent)}
+.cat-pill-count{font-size:11px;color:var(--ink3);font-weight:500}
 
 /* Grid de cartes */
 .avis-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;padding-bottom:48px}
 .avis-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
 .avis-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.06)}
+
+/* Bandeau logo en haut de carte : fond clair, logo carré 80×80 centré, ou
+   placeholder avec l'initiale de la marque si aucun logo n'est uploadé. */
+.avis-card-logo{background:var(--surface2);padding:24px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border)}
+.avis-card-logo-img{width:80px;height:80px;object-fit:contain}
+.avis-card-logo-placeholder{width:80px;height:80px;border-radius:16px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:'',serif;font-size:38px;font-weight:600;color:var(--accent);text-transform:uppercase}
+
 .avis-card-body{padding:20px;flex:1;display:flex;flex-direction:column}
 .avis-card-cat{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink3);margin-bottom:8px}
 .avis-card-title{font-family:'',serif;font-size:22px;font-weight:500;line-height:1.25;color:var(--ink);margin-bottom:12px;flex:1}
@@ -54,7 +64,11 @@ h1{font-family:'',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-sp
 .avis-card-sentiment.positif{background:#E8F4EA;color:var(--green)}
 .avis-card-sentiment.mitige{background:#FDF6E3;color:#9F7918}
 .avis-card-sentiment.negatif{background:#FBE9E7;color:var(--red)}
-.avis-card-extract{color:var(--ink2);font-size:14px;margin-top:8px;line-height:1.55}
+/* Important : couleur explicite var(--ink2) pour éviter qu'un fragment HTML
+   cassé (héritage d'une balise non fermée provenant du frontmatter) ne
+   colore l'extrait en orange ou en gras. Le striptags côté Jinja garantit
+   un texte brut, mais on sécurise aussi côté CSS. */
+.avis-card-extract{color:var(--ink2);font-size:14px;margin-top:8px;line-height:1.55;font-weight:400}
 .avis-card-foot{padding:12px 20px;border-top:1px solid var(--border);color:var(--ink3);font-size:12px}
 
 /* Pagination */
@@ -128,13 +142,22 @@ document.addEventListener('click',function(e){
 <p class="avis-sub">1 avis dans la catégorie « Comptabilité en ligne ».</p>  </section>
 
   <nav class="cats-bar" aria-label="Catégories d'avis">
-    <a href="/avis" class="cat-pill ">Toutes les marques</a>
-    <a href="/avis/comptabilite-en-ligne/" class="cat-pill active">Comptabilité en ligne (1)</a>
-    <a href="/avis/creation-d-entreprise-en-ligne/" class="cat-pill ">Création d’entreprise en ligne (1)</a>
+    <a href="/avis" class="cat-pill ">
+      Tous <span class="cat-pill-count">(2)</span>
+    </a>
+    <a href="/avis/comptabilite-en-ligne/" class="cat-pill active">
+      Comptabilité en ligne <span class="cat-pill-count">(1)</span>
+    </a>
+    <a href="/avis/creation-d-entreprise-en-ligne/" class="cat-pill ">
+      Création d’entreprise en ligne <span class="cat-pill-count">(1)</span>
+    </a>
   </nav>
 
   <div class="avis-grid">
     <a class="avis-card" href="/avis-indy">
+      <div class="avis-card-logo">
+          <div class="avis-card-logo-placeholder">I</div>
+      </div>
       <div class="avis-card-body">
 <div class="avis-card-cat">Comptabilité en ligne</div>        <div class="avis-card-title">Mon avis complet sur Indy : comptabilité,facturation et auto-entrepreneur</div>
         <div class="avis-card-score">
@@ -143,7 +166,7 @@ document.addEventListener('click',function(e){
           <span class="avis-card-sentiment positif">
 Recommandé          </span>
         </div>
-<p class="avis-card-extract"><p>Indy confirme sa position de <strong>solution comptable économique</strong> pour les TPE et auto-entrepreneurs. L'interface reste <strong…</p>      </div>
+<p class="avis-card-extract">Indy confirme sa position de solution comptable économique pour les TPE et auto-entrepreneurs. L'interface reste intuitive même pour les…</p>      </div>
       <div class="avis-card-foot">Publié le 22 mai 2026</div>
     </a>
   </div>
