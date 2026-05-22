@@ -179,7 +179,20 @@ export default function NewSitePage() {
     try {
       const r = await fetch('/api/sites', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, page_types: pageTypes, site_type: siteType, persona_prompt: personaPrompt, author_name: authorName, author_job: authorJob, author_bio: authorBio })
+        // ── FIX v2 : selected_keywords était lu côté API mais jamais envoyé.
+        // À l'étape "Types" l'utilisateur cochait les classements à activer,
+        // mais ils étaient perdus → enabled_classements.json jamais créé →
+        // tous les keywords activés par défaut (mode legacy).
+        body: JSON.stringify({
+          ...form,
+          page_types: pageTypes,
+          site_type: siteType,
+          persona_prompt: personaPrompt,
+          author_name: authorName,
+          author_job: authorJob,
+          author_bio: authorBio,
+          selected_keywords: selectedKeywords,
+        })
       })
       const d = await r.json()
       if (d.error) { setError(d.error); setLoading(false); return }
@@ -601,6 +614,7 @@ export default function NewSitePage() {
               { label: 'URL canonique', value: form.www_preference === 'www' ? `www.${form.domain}` : form.domain },
               { label: 'Modèles', value: Object.entries(pageTypes).filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`).join(', ') || 'Aucun' },
               { label: 'Persona', value: personaPrompt ? `✓ Configuré (${personaPrompt.length} car.)` : '— Non défini' },
+              ...(siteType === 'classement' ? [{ label: 'Types activés', value: selectedKeywords.length > 0 ? `${selectedKeywords.length} classement(s)` : '⚠ Tous (legacy)' }] : []),
             ].map(row => (
               <div key={row.label} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid #1E2D3D', fontSize: 14 }}>
                 <span style={{ color: '#8B9CB0' }}>{row.label}</span>
