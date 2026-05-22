@@ -52,6 +52,36 @@ def slugify_cat(s: str) -> str:
     s = _re.sub(r"[^a-z0-9]+", '-', s)
     return s.strip('-')
 
+
+def _load_enabled_classements(site_dir):
+    """Charge la liste blanche `enabled_classements.json` du site.
+    Mêmes règles que dans generate.py :
+      - Fichier absent      → None (= mode legacy, tout activé)
+      - Fichier présent     → set[str] des slugs activés
+      - Fichier mal formé   → None + warning (fail-safe)
+    """
+    path = site_dir / "enabled_classements.json"
+    if not path.exists():
+        return None
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        slugs = data.get("classements") or []
+        if not isinstance(slugs, list):
+            print(f"  ⚠ {path.name} : 'classements' doit être un array — tout activé par défaut")
+            return None
+        return set(s.strip().lower() for s in slugs if isinstance(s, str))
+    except Exception as e:
+        print(f"  ⚠ {path.name} illisible ({e}) — tout activé par défaut")
+        return None
+
+
+def _keyword_is_enabled(kw_name, enabled):
+    """True si ce keyword doit être enrichi pour ce site."""
+    if enabled is None:
+        return True
+    return slugify_cat(kw_name) in enabled
+
+
 # ── Config ────────────────────────────────────────────────────────────────────
 ROOT      = Path(__file__).parent.parent
 SITES_DIR = ROOT / "sites"
@@ -583,6 +613,26 @@ def generate_classement(products: list, site_dir: Path, year: int, skip_existing
 
     # Charger les keywords et prompts custom depuis le schema
     schema_keywords = load_schema_keywords(site_dir)
+
+    # ── Liste blanche enabled_classements ─────────────────────────────────
+    # Si le fichier `enabled_classements.json` existe pour ce site, on filtre
+    # les keywords pour ne traiter QUE ceux activés. Sans ça, ce script
+    # chargeait les sheets ET enrichissait via Claude pour TOUS les keywords
+    # du schema, ce qui pollue editorial.json + brûle des tokens API inutiles
+    # (observé sur laboxentrepreneuriat-fr : 1 classement coché mais 34
+    # générés). Cohérent avec generate.py.
+    _enabled_cls = _load_enabled_classements(site_dir)
+    if _enabled_cls is not None:
+        before = len(schema_keywords)
+        schema_keywords = {
+            kw_name: kw_data
+            for kw_name, kw_data in schema_keywords.items()
+            if _keyword_is_enabled(kw_name, _enabled_cls)
+        }
+        print(f"  ⚙ enabled_classements.json : {len(schema_keywords)}/{before} keyword(s) activé(s)")
+    else:
+        print(f"  ⚙ enabled_classements.json absent — mode legacy (tous activés)")
+
     # Charger persona_prompt depuis config.yaml et l'attacher à chaque keyword
     import yaml as _yaml
     _cfg_path = site_dir / 'config.yaml'
