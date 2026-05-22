@@ -1,23 +1,24 @@
 ---
 title: Comment construire une marque employeur attractive ?
 slug: 5959-comment-construire-une-marque-employeur-attractive
-date: '2026-05-22T11:00:00+02:00'
+date: 2026-05-22T11:00:00+02:00
+updated: 2026-05-22T11:56:40
 categorie: Ressources Humaines
-meta_title: 'Marque employeur : définition, enjeux et stratégie RH complète'
-meta_description: 'Découvrez comment construire une marque employeur attractive avec
-  des résultats concrets : 40% de démissions en moins et des candidatures spontanées
-  de qualité.'
-min_words: 3000
+meta_title: "Marque employeur : définition, enjeux et stratégie RH complète"
+meta_description: "Découvrez comment construire une marque employeur attractive avec des résultats concrets : 40% de démissions en moins et des candidatures spontanées de qualité."
+featured_image: /blog/5959-comment-construire-une-marque-employeur-attractive/featured-95180.jpg
 status: published
-link_anchors:
-- text: marque employeur
-  max: 2
+min_words: 3000
 related_posts:
 - 8432-comment-mettre-en-place-une-gestion-des-talents-rh-efficace
 - 2675-qu-est-ce-que-la-gestion-des-talents-en-ressources-humaines
 - 7114-comment-gerer-les-talents-dans-une-pme
 - 6481-comment-realiser-une-cartographie-des-competences-efficacement
+link_anchors:
+- text: marque employeur
+  max: 2
 ---
+
 <h2>Pourquoi je me suis mis à la marque employeur après 11 ans de galère recrutement</h2>
 
 <p>Je vais être franc avec vous. Quand j'ai commencé à entendre parler de "marque employeur" il y a quelques années, je pensais que c'était encore un concept marketing pompeux. Mon entreprise lyonnaise de 150 salariés galérait déjà à recruter des profils corrects, alors parler d'attractivité... J'avais d'autres priorités.</p>
@@ -245,3 +246,4 @@ related_posts:
 <p>La marque employeur, ce n'est pas un concept marketing fumeux. C'est un outil concret pour recruter mieux, garder ses talents et faire grandir son entreprise. Même avec un petit budget.</p>
 
 <p>Ça demande du temps et de la constance, mais les bénéfices dépassent largement l'investissement. <strong>Et surtout, ça rend le travail plus agréable</strong> pour tout le monde, dirigeant compris.</p>
+
