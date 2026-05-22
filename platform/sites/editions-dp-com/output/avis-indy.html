@@ -134,10 +134,10 @@ h1{font-family:'',serif;font-size:clamp(28px,4.5vw,42px);font-weight:400;letter-
 .avis-bref-note-num small{font-size:14px;color:var(--ink3);font-weight:400}
 .avis-bref-note .stars{font-size:18px}
 
-.avis-bref-body{display:grid;grid-template-columns:96px 1fr;gap:24px;align-items:center}
-.avis-bref-logo{width:96px;height:96px;border-radius:16px;background:var(--surface2);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
-.avis-bref-logo img{max-width:100%;max-height:100%;object-fit:contain}
-.avis-bref-logo-placeholder{font-family:'',serif;font-size:48px;font-weight:600;color:var(--accent);text-transform:uppercase}
+.avis-bref-body{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center}
+.avis-bref-logo{width:200px;height:200px;border-radius:20px;background:var(--surface2);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+.avis-bref-logo img{max-width:88%;max-height:88%;object-fit:contain}
+.avis-bref-logo-placeholder{font-family:'',serif;font-size:96px;font-weight:600;color:var(--accent);text-transform:uppercase;line-height:1}
 .avis-bref-text{color:var(--ink2);font-size:15px;line-height:1.65}
 .avis-bref-text p{margin:0 0 10px}
 .avis-bref-text p:last-child{margin:0}
@@ -176,7 +176,8 @@ h1{font-family:'',serif;font-size:clamp(28px,4.5vw,42px);font-weight:400;letter-
 @media(max-width:680px){
   .avis-bref-header{flex-direction:column;align-items:flex-start;gap:12px}
   .avis-bref-body{grid-template-columns:1fr;gap:16px;text-align:center}
-  .avis-bref-logo{margin:0 auto}
+  .avis-bref-logo{margin:0 auto;width:140px;height:140px;border-radius:16px}
+  .avis-bref-logo-placeholder{font-size:64px}
   .pros-cons{grid-template-columns:1fr}
 }
 
@@ -397,7 +398,7 @@ document.addEventListener('click',function(e){
   </section>
 
   <section class="avis-intro">
-    <p>Vous cherchez un outil de comptabilité en ligne pour votre TPE ou micro-entreprise ? Indy fait beaucoup parler de lui avec sa promesse d'automatisation et de simplicité. J'ai testé cette solution pendant plusieurs mois dans ma structure lyonnaise. Cet avis détaille les fonctionnalités réelles, le support client et surtout le rapport qualité-prix. Vous saurez si Indy mérite vraiment sa réputation ou s'il faut plutôt regarder ailleurs. Je vous donne ma position claire, avec les vrais avantages mais aussi les limites que j'ai rencontrées sur le terrain.</p>
+    Vous cherchez un outil de comptabilité en ligne pour votre TPE ou micro-entreprise ? Indy fait beaucoup parler de lui avec sa promesse d'automatisation et de simplicité. J'ai testé cette solution pendant plusieurs mois dans ma structure lyonnaise. Cet avis détaille les fonctionnalités réelles, le support client et surtout le rapport qualité-prix. Vous saurez si Indy mérite vraiment sa réputation ou s'il faut plutôt regarder ailleurs. Je vous donne ma position claire, avec les vrais avantages mais aussi les limites que j'ai rencontrées sur le terrain.
   </section>
 
   <section class="avis-bref-card">
@@ -413,7 +414,7 @@ document.addEventListener('click',function(e){
           <span class="avis-bref-logo-placeholder">I</span>
       </div>
       <div class="avis-bref-text">
-<p>Indy impressionne par son automatisation bancaire et sa gratuité réelle pour les indépendants. L'interface reste accessible même pour les non-comptables. Le support répond vite mais manque parfois de précision technique. Quelques bugs lors des pics de charge. Je recommande pour les micro-entrepreneurs et freelances qui veulent du simple et efficace. Moins adapté aux structures avec plusieurs associés ou besoins comptables complexes.</p>        <div class="score-sentiment positif">
+Indy impressionne par son automatisation bancaire et sa gratuité réelle pour les indépendants. L'interface reste accessible même pour les non-comptables. Le support répond vite mais manque parfois de précision technique. Quelques bugs lors des pics de charge. Je recommande pour les micro-entrepreneurs et freelances qui veulent du simple et efficace. Moins adapté aux structures avec plusieurs associés ou besoins comptables complexes.        <div class="score-sentiment positif">
 Recommandé        </div>
       </div>
     </div>
@@ -696,7 +697,7 @@ Recommandé        </div>
 
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 editions-dp.com — Données actualisées le 21 mai 2026
+        © 2026 editions-dp.com — Données actualisées le 22 mai 2026
       </div>
     </div>
   </div>
