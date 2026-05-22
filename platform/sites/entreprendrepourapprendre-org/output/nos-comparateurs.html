@@ -42,7 +42,7 @@ main{max-width:1100px;margin:0 auto;padding:56px 5vw 80px}
 <body>
 
 <style>
-nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;position:sticky;top:0;z-index:100}
+nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;position:sticky;top:0;z-index:1000;isolation:isolate}
 .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;position:relative}
 .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
 .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
@@ -330,6 +330,18 @@ document.addEventListener('click',function(e){
         </a>
       </div>
     </section>
+    <section class="cat-section">
+      <h2 class="cat-title">Marketing</h2>
+      <div class="cat-grid">
+        <a href="/meilleur-logiciel-d-emailing" class="comp-card">
+          <div class="comp-card-left">
+            <div class="comp-card-name">Logiciel d’emailing</div>
+            <div class="comp-card-count">12 logiciels comparés</div>
+          </div>
+          <span class="comp-card-arrow">→</span>
+        </a>
+      </div>
+    </section>
 </main>
 
 <style>
@@ -376,7 +388,7 @@ document.addEventListener('click',function(e){
 
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 entreprendrepourapprendre.org — Données actualisées le 9 mai 2026
+        © 2026 entreprendrepourapprendre.org — Données actualisées le 22 mai 2026
       </div>
     </div>
   </div>

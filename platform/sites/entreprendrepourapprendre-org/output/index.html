@@ -21,7 +21,7 @@
   "name": "Entreprendre Pour Apprendre",
   "url": "https://www.entreprendrepourapprendre.org",
   "description": "Comparez les meilleurs logiciels professionnels en 2026 : comptabilité, paie, facturation, CRM. Avis indépendants, prix et fonctionnalités.",
-  "author": { "@type": "Organization", "name": "Sophie Martin" },
+  "author": { "@type": "Organization", "name": "Camille Lefevre" },
   "potentialAction": {
     "@type": "SearchAction",
     "target": "https://www.entreprendrepourapprendre.org/recherche?q={search_term_string}",
@@ -105,6 +105,25 @@ main{max-width:1200px;margin:0 auto;padding:64px 5vw 80px}
 /* ── COMPARATEURS ── */
 .comparateurs-section{margin-bottom:56px}
 .comparateurs-section h2{font-family:'DM Serif Display',serif;font-size:clamp(28px,3.5vw,40px);font-weight:400;letter-spacing:-.02em;margin-bottom:6px}
+/* Section Articles récents (blog) */
+.blog-recent-section{margin:64px 0 80px}
+.blog-recent-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+.blog-recent-head h2{font-family:'DM Serif Display',serif;font-size:clamp(26px,3.2vw,36px);font-weight:400;letter-spacing:-.02em;margin:0}
+.blog-recent-head .blog-recent-link{color:var(--accent);font-size:14px;font-weight:600;text-decoration:none;transition:.15s}
+.blog-recent-head .blog-recent-link:hover{opacity:.7}
+.blog-recent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.blog-recent-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:.18s;display:flex;flex-direction:column}
+.blog-recent-card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.06);text-decoration:none}
+.blog-recent-card-img{aspect-ratio:16/9;background:linear-gradient(135deg,var(--accent),var(--accent2));position:relative;overflow:hidden}
+.blog-recent-card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.blog-recent-card-img-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:40px;opacity:.4}
+.blog-recent-card-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.blog-recent-card-cat{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:8px}
+.blog-recent-card-title{font-size:16px;font-weight:600;color:var(--ink);line-height:1.35;margin-bottom:8px}
+.blog-recent-card-excerpt{font-size:13px;color:var(--ink2);line-height:1.55;flex:1}
+.blog-recent-card-date{font-size:11px;color:var(--ink3);margin-top:12px}
+@media(max-width:900px){.blog-recent-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.blog-recent-grid{grid-template-columns:1fr}}
 .comparateurs-subtitle{font-size:16px;color:var(--ink2);margin-bottom:36px}
 .cat-group{margin-bottom:36px}
 .cat-group-title{font-size:13px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;display:flex;align-items:center;gap:8px}
@@ -137,27 +156,60 @@ main{max-width:1200px;margin:0 auto;padding:64px 5vw 80px}
 <body>
 
 <!-- NAV -->
+<style>
+nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;position:sticky;top:0;z-index:1000;isolation:isolate}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;position:relative}
+.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.1)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
+.nav-cta:hover{opacity:.88}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;font-weight:500;padding:12px 16px;border-radius:10px;transition:.15s}
+.nav-mobile a:hover,.nav-mobile a.active{color:#fff;background:rgba(255,255,255,.08)}
+.nav-mobile .nav-cta{margin-top:8px;justify-content:center;border-radius:12px}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+</style>
+
 <nav>
   <div class="nav-inner">
-    <a href="/" class="nav-logo"><img src="/logo.png" alt="Entreprendre Pour Apprendre" style="height:36px;width:auto;object-fit:contain;vertical-align:middle"></a>
+    <a href="/" class="nav-logo"><img src="/logo.png" alt="Entreprendre Pour Apprendre" style="height:34px;width:auto;object-fit:contain;vertical-align:middle"></a>
     <div class="nav-links">
-      <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/nos-comparateurs">Nos comparateurs</a>
     </div>
     <a href="/contact" class="nav-cta">Contact</a>
-    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+    <button class="nav-burger" id="burger" aria-label="Menu" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-mobile" id="nav-mobile">
-    <a href="/nos-comparateurs">Nos comparateurs</a>
+      <a href="/nos-comparateurs">Nos comparateurs</a>
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
 </nav>
 
+<script>
+function toggleMenu(){
+  var m=document.getElementById('nav-mobile');
+  var b=document.getElementById('burger');
+  m.classList.toggle('open');b.classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  var m=document.getElementById('nav-mobile');var b=document.getElementById('burger');
+  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');b.classList.remove('open');}
+});
+</script>
 <!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">Comparateur de logiciels professionnels 2026</div>
-  <h1>Entreprendre Pour Apprendre : <em>le comparateur qui compare vraiment</em></h1>
+  <h1>Entreprendre Pour Apprendre : Comparateur de Logiciels pour les Professionnels</h1>
   <p class="hero-desc">Comparez les meilleurs logiciels professionnels en 2026 : comptabilité, paie, facturation, CRM. Avis indépendants, prix et fonctionnalités.</p>
 
   <!-- Moteur de recherche -->
@@ -172,11 +224,11 @@ main{max-width:1200px;margin:0 auto;padding:64px 5vw 80px}
   <!-- Stats bar -->
   <div class="stats-bar" style="margin-top:48px;border-radius:var(--r2)">
     <div class="stat-item">
-      <div class="stat-value" id="stat-logiciels">310+</div>
+      <div class="stat-value" id="stat-logiciels">322+</div>
       <div class="stat-label">Logiciels analysés</div>
     </div>
     <div class="stat-item">
-      <div class="stat-value" id="stat-categories">31</div>
+      <div class="stat-value" id="stat-categories">32</div>
       <div class="stat-label">Catégories</div>
     </div>
     <div class="stat-item">
@@ -519,9 +571,23 @@ main{max-width:1200px;margin:0 auto;padding:64px 5vw 80px}
           </a>
         </div>
       </div>
+      <div class="cat-group">
+        <div class="cat-group-title">Marketing</div>
+        <div class="cat-cards">
+          <a href="/meilleur-logiciel-d-emailing" class="cat-card">
+            <div class="cat-card-left">
+              <div class="cat-card-icon">💻</div>
+              <div>
+                <div class="cat-card-name">Logiciel d’emailing</div>
+                <div class="cat-card-count">12 logiciels</div>
+              </div>
+            </div>
+            <span class="cat-card-arrow">→</span>
+          </a>
+        </div>
+      </div>
 
   </section>
-
 
 
 </main>
@@ -571,7 +637,7 @@ main{max-width:1200px;margin:0 auto;padding:64px 5vw 80px}
 
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 entreprendrepourapprendre.org — Données actualisées le 9 mai 2026
+        © 2026 entreprendrepourapprendre.org — Données actualisées le 22 mai 2026
       </div>
     </div>
   </div>
@@ -891,6 +957,18 @@ const ALL_CATEGORIES = [
   { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
   { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
   { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
+  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
+  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
+  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
+  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
+  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
+  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
+  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
+  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
+  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
+  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
+  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
+  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
 ].filter((v,i,a) => a.findIndex(t=>t.label===v.label)===i);
 
 const searchInput = document.getElementById('search-input');
