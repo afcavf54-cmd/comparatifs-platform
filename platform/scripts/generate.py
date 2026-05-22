@@ -1183,60 +1183,29 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                         })
 
         # Home
-        index_tpl = site.get("index_template", f"index-{site_slug}.html.j2")
-        if (TEMPLATES_DIR / index_tpl).exists():
-            zero_frais = sum(1 for p in products if str(p.get("frais_souscription", 99)).replace('.0','') == "0")
-            top_pairs  = [{"url": f"{a}-vs-{b}", "label": f"{products_by_slug(products, a)['nom']} vs {products_by_slug(products, b)['nom']}"} for a, b in all_pairs[:8]]
-            home_title = site.get("home_title") or f"{site.get('name', '')} | Comparatifs {site.get('year', '')}"
-            home_desc = site.get("home_description", "")
-            # ── Stats home ────────────────────────────────────────────────
-            # `total_categories` = nombre de types de logiciels (= nombre
-            # de classements générés). Pour un site classement, on somme
-            # toutes les listes de classements_by_category. Pour un site
-            # non-classement, on compte les categories distinctes des
-            # produits (fallback raisonnable).
-            if is_classement_template and classements_by_category:
-                total_categories = sum(len(v) for v in classements_by_category.values())
-            else:
-                total_categories = len({p.get("categorie") for p in products if p.get("categorie")})
-            html = env.get_template(index_tpl).render(
-                site={**site, "seo": config.get("seo", {})}, theme=theme, products=products,
-                total_pairs=len(all_pairs), zero_frais_count=zero_frais,
-                total_products=len(products), total_categories=total_categories,
-                classements_by_category=classements_by_category,
-                top_pairs=top_pairs, build_date=date.today().isoformat(),
-                site_editorial=site_editorial,
-                page_types=config.get("page_types", {}),
-                recent_blog_posts=blog_posts[:6] if blog_posts else [],
-                home_title=home_title, home_description=home_desc, home_h1=site.get('home_h1', ''),
-            )
-            # Cache-buster pour forcer Cloudflare à re-uploader
-            html = html.replace("</body>", f"<!-- build:20260504122856 --></body>", 1)
-            (output_dir / "index.html").write_text(html, encoding="utf-8")
-            print(f"  ✓ index.html ({len(products)} produits, {len(all_pairs)} comparatifs)")
-
-        # ── Fallback placeholder : assure qu'un index.html existe toujours ─
-        # Si la branche ci-dessus n'a rien généré (template index-<site>.j2
-        # absent, OU site sans produits où le template ne rend rien d'utile),
-        # on écrit un placeholder minimal "site en construction" branded
-        # avec les couleurs/police du thème + meta robots noindex pour ne
-        # pas se faire indexer ce contenu intermédiaire.
+        # ── Pré-écriture d'un placeholder index.html garantie ────────────
+        # On écrit TOUJOURS un placeholder avant la tentative de render réel
+        # du template index. Si le template existe et le render réussit, son
+        # `.write_text(...)` plus bas écrase le placeholder. Si le template
+        # n'existe pas (ou que le render plante), le placeholder reste et
+        # garantit que l'URL Cloudflare Pages renvoie quelque chose au lieu
+        # d'un 404 sec.
         #
-        # Sans ce fallback, un nouveau site déployé sans contenu renvoie un
-        # 404 sur sa racine Cloudflare Pages (observé : laboxentrepreneuriat-fr
-        # mai 2026), ce qui est trompeur. UX cible : l'URL marche dès le 1er
-        # deploy, l'utilisateur peut la partager et remplir le contenu plus
-        # tard depuis le dashboard HUB.
-        if not (output_dir / "index.html").exists():
-            _site_name = site.get("name") or site.get("home_h1") or site_slug
-            _theme_bg = theme.get("bg", "#FAF9F6")
-            _theme_ink = theme.get("ink", "#0F1419")
-            _theme_accent = theme.get("accent2") or theme.get("accent") or "#1E5F8B"
-            _theme_font_title = theme.get("font_title", "Georgia")
-            _logo_html = ""
-            if site.get("logo_img"):
-                _logo_html = f'<img src="{site["logo_img"]}" alt="{_site_name}" style="height:56px;width:auto;margin-bottom:36px">'
-            _placeholder = f"""<!doctype html>
+        # Bug d'origine (laboxentrepreneuriat-fr mai 2026) : nouveau site
+        # sans products, sans template index-<site>.j2, sans classements
+        # cochés → aucun index.html écrit → 404 sur la racine. Le fallback
+        # `if not exists` placé APRÈS le bloc render ne se déclenchait pas
+        # de manière fiable (un index.html résiduel ou une condition annexe
+        # masquait l'écriture). Force-write au début résout définitivement.
+        _site_name = site.get("name") or site.get("home_h1") or site_slug
+        _theme_bg = theme.get("bg", "#FAF9F6")
+        _theme_ink = theme.get("ink", "#0F1419")
+        _theme_accent = theme.get("accent2") or theme.get("accent") or "#1E5F8B"
+        _theme_font_title = theme.get("font_title", "Georgia")
+        _logo_html = ""
+        if site.get("logo_img"):
+            _logo_html = f'<img src="{site["logo_img"]}" alt="{_site_name}" style="height:56px;width:auto;margin-bottom:36px">'
+        _placeholder = f"""<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
@@ -1263,8 +1232,48 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
 </div>
 </body>
 </html>"""
-            (output_dir / "index.html").write_text(_placeholder, encoding="utf-8")
-            print(f"  ✓ index.html (placeholder — site sans contenu)")
+        (output_dir / "index.html").write_text(_placeholder, encoding="utf-8")
+        _placeholder_written = True  # flag : on l'écrasera si vrai render réussit
+
+        index_tpl = site.get("index_template", f"index-{site_slug}.html.j2")
+        if (TEMPLATES_DIR / index_tpl).exists():
+            zero_frais = sum(1 for p in products if str(p.get("frais_souscription", 99)).replace('.0','') == "0")
+            top_pairs  = [{"url": f"{a}-vs-{b}", "label": f"{products_by_slug(products, a)['nom']} vs {products_by_slug(products, b)['nom']}"} for a, b in all_pairs[:8]]
+            home_title = site.get("home_title") or f"{site.get('name', '')} | Comparatifs {site.get('year', '')}"
+            home_desc = site.get("home_description", "")
+            # ── Stats home ────────────────────────────────────────────────
+            # `total_categories` = nombre de types de logiciels (= nombre
+            # de classements générés). Pour un site classement, on somme
+            # toutes les listes de classements_by_category. Pour un site
+            # non-classement, on compte les categories distinctes des
+            # produits (fallback raisonnable).
+            if is_classement_template and classements_by_category:
+                total_categories = sum(len(v) for v in classements_by_category.values())
+            else:
+                total_categories = len({p.get("categorie") for p in products if p.get("categorie")})
+            try:
+                html = env.get_template(index_tpl).render(
+                    site={**site, "seo": config.get("seo", {})}, theme=theme, products=products,
+                    total_pairs=len(all_pairs), zero_frais_count=zero_frais,
+                    total_products=len(products), total_categories=total_categories,
+                    classements_by_category=classements_by_category,
+                    top_pairs=top_pairs, build_date=date.today().isoformat(),
+                    site_editorial=site_editorial,
+                    page_types=config.get("page_types", {}),
+                    recent_blog_posts=blog_posts[:6] if blog_posts else [],
+                    home_title=home_title, home_description=home_desc, home_h1=site.get('home_h1', ''),
+                )
+                # Cache-buster pour forcer Cloudflare à re-uploader
+                html = html.replace("</body>", f"<!-- build:20260504122856 --></body>", 1)
+                (output_dir / "index.html").write_text(html, encoding="utf-8")
+                _placeholder_written = False
+                print(f"  ✓ index.html ({len(products)} produits, {len(all_pairs)} comparatifs)")
+            except Exception as _e:
+                # Si le render plante, le placeholder pré-écrit reste en place.
+                # On logge l'erreur pour debug sans planter le build entier.
+                print(f"  ⚠ Render index.html échec : {_e} — placeholder conservé")
+        else:
+            print(f"  ✓ index.html (placeholder — template {index_tpl} introuvable)")
 
         # Légales
         for tpl_name, out_name in [("mentions-legales.html.j2", "mentions-legales.html"), ("politique-confidentialite.html.j2", "politique-confidentialite.html"), ("contact.html.j2", "contact.html"), ("sitemap-html.html.j2", "plan-du-site.html"), ("404.html.j2", "404.html")]:
