@@ -1215,6 +1215,57 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             (output_dir / "index.html").write_text(html, encoding="utf-8")
             print(f"  ✓ index.html ({len(products)} produits, {len(all_pairs)} comparatifs)")
 
+        # ── Fallback placeholder : assure qu'un index.html existe toujours ─
+        # Si la branche ci-dessus n'a rien généré (template index-<site>.j2
+        # absent, OU site sans produits où le template ne rend rien d'utile),
+        # on écrit un placeholder minimal "site en construction" branded
+        # avec les couleurs/police du thème + meta robots noindex pour ne
+        # pas se faire indexer ce contenu intermédiaire.
+        #
+        # Sans ce fallback, un nouveau site déployé sans contenu renvoie un
+        # 404 sur sa racine Cloudflare Pages (observé : laboxentrepreneuriat-fr
+        # mai 2026), ce qui est trompeur. UX cible : l'URL marche dès le 1er
+        # deploy, l'utilisateur peut la partager et remplir le contenu plus
+        # tard depuis le dashboard HUB.
+        if not (output_dir / "index.html").exists():
+            _site_name = site.get("name") or site.get("home_h1") or site_slug
+            _theme_bg = theme.get("bg", "#FAF9F6")
+            _theme_ink = theme.get("ink", "#0F1419")
+            _theme_accent = theme.get("accent2") or theme.get("accent") or "#1E5F8B"
+            _theme_font_title = theme.get("font_title", "Georgia")
+            _logo_html = ""
+            if site.get("logo_img"):
+                _logo_html = f'<img src="{site["logo_img"]}" alt="{_site_name}" style="height:56px;width:auto;margin-bottom:36px">'
+            _placeholder = f"""<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>{_site_name} — site en cours de configuration</title>
+<style>
+*{{margin:0;padding:0;box-sizing:border-box}}
+body{{font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:{_theme_bg};color:{_theme_ink};min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;line-height:1.6}}
+.box{{max-width:520px;text-align:center}}
+.tag{{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:{_theme_accent};padding:7px 16px;border:1px solid {_theme_accent};border-radius:30px;margin-bottom:28px}}
+h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44px);font-weight:400;color:{_theme_ink};margin-bottom:18px;letter-spacing:-.02em;line-height:1.2}}
+.msg{{color:{_theme_ink};opacity:.7;font-size:16px;max-width:420px;margin:0 auto}}
+.foot{{margin-top:56px;font-size:11px;color:{_theme_ink};opacity:.4;letter-spacing:.05em;text-transform:uppercase}}
+</style>
+</head>
+<body>
+<div class="box">
+{_logo_html}
+<div class="tag">🚧 En préparation</div>
+<h1>{_site_name}</h1>
+<p class="msg">Ce site est en cours de construction. Le contenu sera bientôt disponible.</p>
+<p class="foot">Build {date.today().isoformat()}</p>
+</div>
+</body>
+</html>"""
+            (output_dir / "index.html").write_text(_placeholder, encoding="utf-8")
+            print(f"  ✓ index.html (placeholder — site sans contenu)")
+
         # Légales
         for tpl_name, out_name in [("mentions-legales.html.j2", "mentions-legales.html"), ("politique-confidentialite.html.j2", "politique-confidentialite.html"), ("contact.html.j2", "contact.html"), ("sitemap-html.html.j2", "plan-du-site.html"), ("404.html.j2", "404.html")]:
             if (TEMPLATES_DIR / tpl_name).exists():
