@@ -283,7 +283,25 @@ export default function ClassementsPage() {
   }
 
   async function saveAndDeploy() {
+    // ⚠ FIX v4 (mai 2026, bug observé sur sauvonslaproximite-com) :
+    // saveAndDeploy() ne sauvegardait QUE editorial.json. Si l'utilisateur
+    // avait modifié sa sélection de classements (cochages/décochages) sans
+    // cliquer manuellement "💾 Sauvegarder la sélection", le déploiement
+    // tournait sur l'ancien `enabled_classements.json` (ou mode legacy si
+    // absent → TOUS les classements générés).
+    //
+    // Fix : on enchaîne explicitement les 3 étapes ici, dans l'ordre, avec
+    // un petit délai de propagation GitHub entre la dernière sauvegarde et
+    // le trigger workflow (sinon le runner peut checkouter un état
+    // antérieur au dernier commit).
+    await saveEnabledClassements()
     await save()
+    // ── Délai de propagation GitHub ─────────────────────────────────
+    // Empiriquement, GitHub peut prendre 2-4s entre le PUT API et la
+    // visibilité du commit dans un checkout de workflow. Sans cette
+    // pause, on observe régulièrement le runner qui voit l'état pré-
+    // commit (race condition reproductible).
+    await new Promise(resolve => setTimeout(resolve, 4000))
     await deploy()
   }
 
