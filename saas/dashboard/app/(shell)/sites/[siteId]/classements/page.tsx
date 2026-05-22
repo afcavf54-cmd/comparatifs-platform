@@ -391,34 +391,109 @@ export default function ClassementsPage() {
   // Construit le JSON `enabled_classements.json` à partir du Set d'état et
   // le pousse via /api/github (PUT). Au premier save, le fichier est créé
   // et le mode legacy bascule en mode "liste blanche explicite".
+  //
+  // De plus, pour chaque classement nouvellement coché qui n'a PAS encore
+  // d'entrée dans `editorial.json`, on crée une entrée minimale (h1, meta,
+  // categorie) basée sur le nom du keyword. Sans ça, la page `.html` est
+  // bien générée par le template au prochain build mais sans contenu
+  // éditorial spécifique → l'utilisateur doit ensuite passer dans la
+  // sidebar pour générer le contenu IA de chaque nouveau classement.
   async function saveEnabledClassements() {
     setSavingEnabled(true)
     setEnabledMsg('')
     try {
+      const slugList = Array.from(enabledSlugs).sort()
+
+      // ── 1) Détecte les NOUVEAUX classements (cochés mais sans editorial) ─
+      // On considère "nouveau" un slug qui :
+      //   - est dans la sélection cochée
+      //   - n'a PAS de clé `classement-<slug>` dans le state local `classements`
+      //     (= dans editorial.json)
+      // Pour chacun, on bootstrap une entrée minimale qui sera persistée
+      // dans editorial.json juste après, et permettra à la page rendue
+      // d'afficher au moins le H1 et les méta corrects.
+      const newEntries: Record<string, any> = {}
+      for (const slug of slugList) {
+        const key = `classement-${slug}`
+        if (classements[key]) continue // déjà éditorial existant
+        // Retrouve le nom complet du keyword pour construire les méta.
+        const kw = allKeywords.find(k => k.slug === slug)
+        if (!kw) continue
+        const productCount = kw.count || products.filter(p => slugifyCat(p.categorie || '') === slug || slugifyCat(p.__keyword || '') === slug).length
+        newEntries[key] = {
+          categorie: kw.name,
+          h1: `Meilleur ${kw.name} {year} : Top ${productCount || ''}`.trim(),
+          meta_title: `Meilleur ${kw.name} {year} : comparatif et avis`,
+          meta_description: `Comparez les meilleurs ${kw.name} en {year} : prix, fonctionnalités, avis.`,
+          // intro / en_bref / contenu_custom / faq laissés vides exprès :
+          // l'utilisateur les remplit via "Générer avec IA" dans la sidebar.
+        }
+      }
+      const hasNew = Object.keys(newEntries).length > 0
+
+      // ── 2) Sauvegarde de enabled_classements.json ──────────────────────
       const payload = {
-        classements: Array.from(enabledSlugs).sort(),
+        classements: slugList,
         updated: new Date().toISOString(),
       }
-      // L'API /api/github gère création ET update via la même route POST :
-      // si le path n'existe pas, il est créé ; sinon mis à jour avec le sha
-      // récupéré automatiquement. Cohérent avec le pattern utilisé pour
-      // editorial.json plus haut dans cette page.
       const r = await fetch('/api/github', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           path: enabledPath,
           content: JSON.stringify(payload, null, 2),
-          message: `HUB: Sélection classements site ${siteId} (${payload.classements.length} activé(s))`,
+          message: `HUB: Sélection classements site ${siteId} (${slugList.length} activé(s))`,
         }),
       })
       const d = await r.json()
-      if (d.ok || d.success) {
-        setIsLegacyMode(false)
-        setEnabledMsg(`✓ Sélection sauvegardée (${payload.classements.length} activé(s))`)
-        setTimeout(() => setEnabledMsg(''), 3500)
-      } else {
+      if (!(d.ok || d.success)) {
         setEnabledMsg(`✗ Erreur : ${d.error || 'inconnue'}`)
+        return
+      }
+      setIsLegacyMode(false)
+
+      // ── 3) Si nouveaux classements → bootstrap des entrées editorial ──
+      // On lit l'editorial.json actuel sur GitHub, on merge les nouvelles
+      // clés, on push. Cohérent avec le pattern de save de cette page.
+      if (hasNew) {
+        // Update state local (UI réactive : la sidebar va afficher les nouveaux)
+        setClassements(prev => ({ ...prev, ...newEntries }))
+
+        // Persistance editorial.json — on relit pour ne pas écraser ce que
+        // d'autres entries auraient pu modifier en parallèle.
+        try {
+          const er = await fetch(`/api/github?path=${encodeURIComponent(editorialPath)}`)
+          const ed = await er.json()
+          let editorial: Record<string, any> = {}
+          if (ed.content) {
+            try { editorial = JSON.parse(ed.content) } catch { editorial = {} }
+          }
+          // Merge : on ne touche pas aux clés existantes (au cas où une
+          // course condition a mis à jour entre-temps).
+          for (const [k, v] of Object.entries(newEntries)) {
+            if (!editorial[k]) editorial[k] = v
+          }
+          await fetch('/api/github', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              path: editorialPath,
+              content: JSON.stringify(editorial, null, 2),
+              message: `HUB: Bootstrap editorial pour ${Object.keys(newEntries).length} nouveau(x) classement(s)`,
+            }),
+          })
+          // Sélectionne automatiquement le 1er nouveau pour que l'utilisateur
+          // soit guidé vers l'écran de génération de contenu.
+          setSelected(Object.keys(newEntries)[0])
+        } catch (e) {
+          // Le enabled est save, mais editorial pas → message d'avertissement
+          console.error('Bootstrap editorial failed', e)
+        }
+        setEnabledMsg(`✓ ${slugList.length} activé(s) — ${Object.keys(newEntries).length} nouveau(x) initialisé(s). Génère le contenu IA depuis la sidebar.`)
+        setTimeout(() => setEnabledMsg(''), 6000)
+      } else {
+        setEnabledMsg(`✓ Sélection sauvegardée (${slugList.length} activé(s))`)
+        setTimeout(() => setEnabledMsg(''), 3500)
       }
     } catch (e: any) {
       setEnabledMsg(`✗ ${e?.message || 'Erreur réseau'}`)
