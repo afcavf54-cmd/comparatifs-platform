@@ -111,6 +111,55 @@ def slugify_cat(s: str) -> str:
     s = _re.sub(r"[^a-z0-9]+", '-', s)
     return s.strip('-')
 
+
+def _load_enabled_classements(site_dir: Path):
+    """Charge la liste blanche des classements activés pour ce site, depuis
+    `platform/sites/<siteId>/enabled_classements.json`.
+
+    Format du fichier :
+        {
+          "classements": ["logiciel-paie", "comptabilite-en-ligne", ...],
+          "updated": "2026-05-22T18:43:21+02:00"
+        }
+
+    Comportements :
+      - Fichier ABSENT       → retourne `None` (= mode legacy, tout activé,
+        pour ne pas casser les sites existants avant la migration).
+      - Fichier PRÉSENT      → retourne `set[str]` des slugs activés.
+      - Fichier MAL FORMÉ    → log warning et retourne `None` (fail-safe).
+
+    Le filtrage est appliqué via `_keyword_is_enabled` qui matche le slug
+    du keyword (slugify_cat(nom)) contre cette liste.
+    """
+    import json as _json
+    path = site_dir / "enabled_classements.json"
+    if not path.exists():
+        return None
+    try:
+        data = _json.loads(path.read_text(encoding="utf-8"))
+        slugs = data.get("classements") or []
+        if not isinstance(slugs, list):
+            print(f"  ⚠ {path.name} : 'classements' doit être un array — tout activé par défaut")
+            return None
+        return set(s.strip().lower() for s in slugs if isinstance(s, str))
+    except Exception as e:
+        print(f"  ⚠ {path.name} illisible ({e}) — tout activé par défaut")
+        return None
+
+
+def _keyword_is_enabled(kw_name: str, enabled: set | None) -> bool:
+    """Retourne True si le keyword `kw_name` doit être généré pour ce site.
+
+    - `enabled is None` (fichier absent) → True pour tous (mode legacy)
+    - `enabled is set()` (liste vide) → False pour tous (= aucun activé,
+      conforme au nouveau comportement par défaut côté dashboard)
+    - `enabled` peuplé → True ssi `slugify_cat(kw_name)` est dans le set
+    """
+    if enabled is None:
+        return True
+    return slugify_cat(kw_name) in enabled
+
+
 def load_yaml(path: Path) -> dict:
     with open(path, encoding="utf-8") as f:
         return yaml.safe_load(f)
@@ -608,6 +657,17 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     site          = config["site"]
     theme         = config["theme"]
 
+    # ── Liste blanche des classements activés pour ce site ────────────
+    # Fichier `enabled_classements.json` édité depuis le dashboard
+    # `/sites/<siteId>/classements`. Si absent → mode legacy (tous activés)
+    # pour ne pas casser les sites existants. Si présent → seul les slugs
+    # listés sont rendus. Cf. _load_enabled_classements pour la spec.
+    _enabled_classements = _load_enabled_classements(site_dir)
+    if _enabled_classements is None:
+        print(f"  ⚙ enabled_classements.json absent — mode legacy (tous activés)")
+    else:
+        print(f"  ⚙ {len(_enabled_classements)} classement(s) activé(s) sur ce site")
+
     # ── Patch défensif : certaines clés métier peuvent se retrouver mal
     # placées dans le YAML (typiquement tombées dans `seo:`, `author:` ou
     # une autre section) suite à des éditions du dashboard. On les rapatrie
@@ -724,6 +784,10 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     _schema_data = _j.load(_sf)
                 _extra = []
                 for _kw_name, _kw_data in _schema_data.get("keywords", {}).items():
+                    # Filtre liste blanche : skip si ce classement n'est pas
+                    # activé pour ce site (cf. enabled_classements.json).
+                    if not _keyword_is_enabled(_kw_name, _enabled_classements):
+                        continue
                     _kw_url = _kw_data.get("__sheet_url", "")
                     if not _kw_url:
                         continue
@@ -1098,6 +1162,8 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     with open(_schema_path2, encoding="utf-8") as _sf2:
                         _schema2 = _j2.load(_sf2)
                     for _kw_name2, _kw_data2 in _schema2.get("keywords", {}).items():
+                        if not _keyword_is_enabled(_kw_name2, _enabled_classements):
+                            continue
                         _cat_parent2 = _kw_data2.get("__categorie", "Autres") or "Autres"
                         _cat_slug2 = slugify_cat(_kw_name2)
                         _count2 = len(_kw_data2.get("__products", []))
@@ -1267,6 +1333,25 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             classement_count = 0
             for cat, cat_products in categories.items():
                 cat_slug = slugify_cat(cat)
+                # ── Liste blanche enabled_classements : skip si ce slug de
+                # catégorie n'est pas activé. Note : le matching se fait sur
+                # le slug de la catégorie (pas du keyword), donc on accepte
+                # aussi un match direct sur slugify_cat(cat) qui correspond
+                # au slugify_cat(kw_name) lorsque kw_name == cat.
+                if _enabled_classements is not None and cat_slug not in _enabled_classements:
+                    # Cleanup orphan : si le .html avait été déployé lors d'un
+                    # précédent build (mode legacy ou classement décoché), on
+                    # le supprime pour que Cloudflare renvoie une 404 native.
+                    # `missing_ok=True` rend l'opération idempotente : aucun
+                    # crash si le fichier n'a jamais existé. Cf. décision
+                    # Julien mai 2026 (Q3 du changement architectural).
+                    _orphan = output_dir / f"meilleur-{cat_slug}.html"
+                    if _orphan.exists():
+                        _orphan.unlink(missing_ok=True)
+                        print(f"  🗑 {cat_slug} : .html orphelin supprimé (classement désactivé)")
+                    else:
+                        print(f"  ⏭ {cat_slug} skipé (non activé dans enabled_classements.json)")
+                    continue
                 page_slug = f"meilleur-{cat_slug}"
                 seo_cfg = config.get("seo", {})
                 cat_editorial = editorials_fresh.get(f"classement-{cat_slug}", {})
@@ -1473,6 +1558,8 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 with open(schema_path, encoding='utf-8') as _f:
                     _schema = _json.load(_f)
                 for kw_name, kw_data in _schema.get("keywords", {}).items():
+                    if not _keyword_is_enabled(kw_name, _enabled_classements):
+                        continue
                     cat_parent = kw_data.get("__categorie", "Autres")
                     if not cat_parent:
                         cat_parent = "Autres"
