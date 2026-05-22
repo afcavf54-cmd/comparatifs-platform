@@ -1183,6 +1183,11 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                         })
 
         # Home
+        # ⚠⚠⚠ DEBUG MARKER v10 — si tu vois cette ligne dans le log, c'est
+        # que v10 est bien déployé et que le code arrive jusqu'ici. Si tu ne
+        # la vois pas, c'est qu'un truc plus haut a sauté tout ce bloc OU
+        # que v10 n'a pas été push. À RETIRER une fois le bug compris.
+        print(f"  🟡 DEBUG v10 : entrée bloc Home, output_dir={output_dir}, exists={output_dir.exists()}")
         # ── Pré-écriture d'un placeholder index.html garantie ────────────
         # On écrit TOUJOURS un placeholder avant la tentative de render réel
         # du template index. Si le template existe et le render réussit, son
