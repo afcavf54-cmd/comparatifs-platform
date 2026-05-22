@@ -668,6 +668,15 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     else:
         print(f"  ⚙ {len(_enabled_classements)} classement(s) activé(s) sur ce site")
 
+    # ── SEO global du site ─────────────────────────────────────────────
+    # Initialisé tôt pour que TOUS les chemins de rendu (blog, classement,
+    # avis index, avis catégories) puissent passer `site={**site, 'seo': _seo}`
+    # aux templates. Bug d'origine : `_seo` n'était défini que dans le bloc
+    # blog (`if blog_posts`), donc un site sans articles blog mais AVEC des
+    # avis crashait à la ligne ~1875 (`UnboundLocalError: _seo`). Cas observé
+    # sur entreprendrepourapprendre-org avec 312 .md d'avis et 0 blog.
+    _seo = config.get("seo", {}) or {}
+
     # ── Patch défensif : certaines clés métier peuvent se retrouver mal
     # placées dans le YAML (typiquement tombées dans `seo:`, `author:` ou
     # une autre section) suite à des éditions du dashboard. On les rapatrie
