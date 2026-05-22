@@ -108,7 +108,13 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(36px,6vw,56px);fon
   </section>
 
   {% if categories and categories | length > 0 %}
-  <nav class="cats-bar" aria-label="Catégories d'avis">
+  {# `<div>` et NON `<nav>` : le partial `base/_nav.html.j2` contient une règle
+     CSS globale `nav { background: var(--ink); display: flex; flex-direction:
+     column; position: sticky; top: 0; ... }` qui s'applique à TOUS les `<nav>`
+     de la page. En utilisant un `<nav>` ici on héritait du fond sombre et de
+     l'empilement vertical, ce qui cassait les filtres. Le blog utilise déjà
+     `<div class="blog-filters">` pour la même raison. #}
+  <div class="cats-bar" role="navigation" aria-label="Catégories d'avis">
     {# Pastille "Tous" : si on n'est pas sur une catégorie spécifique, elle
        est active. Le compteur affiche le total d'avis (somme des compteurs
        par catégorie, ce qui couvre la totalité des avis publiés). #}
@@ -122,7 +128,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(36px,6vw,56px);fon
       {{ c.name }} <span class="cat-pill-count">({{ c.count }})</span>
     </a>
     {% endfor %}
-  </nav>
+  </div>
   {% endif %}
 
   {% if posts and posts | length > 0 %}
