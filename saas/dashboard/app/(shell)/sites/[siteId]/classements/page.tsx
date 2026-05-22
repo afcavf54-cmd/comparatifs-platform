@@ -282,43 +282,42 @@ export default function ClassementsPage() {
     setDeploying(false)
   }
 
-  async function saveAndDeploy() {
-    // ⚠ FIX v4 (mai 2026, bug observé sur sauvonslaproximite-com) :
-    // saveAndDeploy() ne sauvegardait QUE editorial.json. Si l'utilisateur
-    // avait modifié sa sélection de classements (cochages/décochages) sans
-    // cliquer manuellement "💾 Sauvegarder la sélection", le déploiement
-    // tournait sur l'ancien `enabled_classements.json` (ou mode legacy si
-    // absent → TOUS les classements générés).
-    //
-    // Fix : on enchaîne explicitement les 3 étapes ici, dans l'ordre, avec
-    // un petit délai de propagation GitHub entre la dernière sauvegarde et
-    // le trigger workflow (sinon le runner peut checkouter un état
-    // antérieur au dernier commit).
-    await saveEnabledClassements()
-    await save()
-    // ── Délai de propagation GitHub ─────────────────────────────────
-    // Empiriquement, GitHub peut prendre 2-4s entre le PUT API et la
-    // visibilité du commit dans un checkout de workflow. Sans cette
-    // pause, on observe régulièrement le runner qui voit l'état pré-
-    // commit (race condition reproductible).
-    await new Promise(resolve => setTimeout(resolve, 4000))
-    await deploy()
-  }
+  // ⚠ Note v5 : la fonction saveAndDeploy() a été supprimée. La page
+  // expose désormais UN SEUL bouton "💾 Tout sauvegarder" qui sauve
+  // editorial.json + enabled_classements.json, et le déploiement se fait
+  // depuis le bouton "Déployer" du shell (header global du site). Cela
+  // évite la confusion des 3 boutons Sauvegarder précédents et la race
+  // condition observée (deploy avant que la sélection soit persistée).
 
   async function save() {
+    // ⚠ FIX v5 : ce bouton est désormais le SEUL "Sauvegarder" de la page.
+    // Il enregistre TOUT en une fois pour éviter l'écueil "j'ai oublié de
+    // cliquer sur Sauvegarder la sélection avant Déployer" qui causait des
+    // déploiements sur un enabled_classements.json obsolète.
     setSaving(true); setMsg('')
-    const r = await fetch(`/api/github?path=${encodeURIComponent(editorialPath)}`)
-    const d = await r.json()
-    let allEditorial: Record<string, any> = {}
-    if (d.content) { try { allEditorial = JSON.parse(d.content) } catch {} }
-    const merged = { ...allEditorial, ...classements }
-    const wr = await fetch('/api/github', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ path: editorialPath, content: JSON.stringify(merged, null, 2), message: `HUB: Update classements ${siteId}` })
-    })
-    const wd = await wr.json()
-    setMsg(wd.ok ? '✓ Sauvegardé' : '✗ Erreur')
-    setSaving(false)
+    try {
+      // ── 1) Sauvegarde la sélection enabled_classements.json ──────────
+      // saveEnabledClassements() peut aussi bootstrap des entrées
+      // editorial pour les nouveaux classements cochés (méta + h1).
+      await saveEnabledClassements()
+
+      // ── 2) Sauvegarde editorial.json complet ─────────────────────────
+      const r = await fetch(`/api/github?path=${encodeURIComponent(editorialPath)}`)
+      const d = await r.json()
+      let allEditorial: Record<string, any> = {}
+      if (d.content) { try { allEditorial = JSON.parse(d.content) } catch {} }
+      const merged = { ...allEditorial, ...classements }
+      const wr = await fetch('/api/github', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path: editorialPath, content: JSON.stringify(merged, null, 2), message: `HUB: Update classements ${siteId}` })
+      })
+      const wd = await wr.json()
+      setMsg(wd.ok ? '✓ Tout sauvegardé' : '✗ Erreur editorial')
+    } catch (e: any) {
+      setMsg('✗ ' + (e?.message || 'Erreur sauvegarde'))
+    } finally {
+      setSaving(false)
+    }
   }
 
   // Régénère une page : supprime la clé dans editorial.json et relance le déploiement
@@ -597,11 +596,8 @@ export default function ClassementsPage() {
         </div>
         <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
           {msg && <span style={{ fontSize: 12, color: msg.startsWith('✓') ? '#00D4AA' : '#FC8181', maxWidth: 280 }}>{msg}</span>}
-          <button onClick={save} disabled={saving} style={{ padding: '9px 16px', borderRadius: 10, border: '1px solid #1E2D3D', background: '#0D1117', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
-            {saving ? '...' : '💾 Sauvegarder'}
-          </button>
-          <button onClick={saveAndDeploy} disabled={saving || deploying} style={{ padding: '9px 16px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
-            {deploying ? '⏳ Déploiement...' : '🚀 Sauvegarder & Déployer'}
+          <button onClick={save} disabled={saving} style={{ padding: '9px 20px', borderRadius: 10, border: 'none', background: saving ? '#1E2D3D' : 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: saving ? 'wait' : 'pointer', fontWeight: 600, fontSize: 13 }}>
+            {saving ? '⏳ Sauvegarde…' : '💾 Tout sauvegarder'}
           </button>
         </div>
       </div>
@@ -659,18 +655,9 @@ export default function ClassementsPage() {
                 {enabledMsg && (
                   <span style={{ fontSize: 11, color: enabledMsg.startsWith('✓') ? '#00D4AA' : '#FC8181' }}>{enabledMsg}</span>
                 )}
-                <button
-                  type="button"
-                  onClick={saveEnabledClassements}
-                  disabled={savingEnabled}
-                  style={{
-                    padding: '7px 14px', borderRadius: 8, border: 'none',
-                    background: savingEnabled ? '#1E2D3D' : 'linear-gradient(135deg, #7C3AED, #A78BFA)',
-                    color: '#fff', fontWeight: 600, fontSize: 12, cursor: savingEnabled ? 'wait' : 'pointer',
-                  }}
-                >
-                  {savingEnabled ? '...' : '💾 Sauvegarder la sélection'}
-                </button>
+                {/* Bouton "Sauvegarder la sélection" retiré (v5) : la sauvegarde
+                    de enabled_classements.json est maintenant prise en charge
+                    par le bouton "💾 Tout sauvegarder" en haut de la page. */}
               </div>
 
               {/* Liste groupée par catégorie parente — chaque catégorie a son
