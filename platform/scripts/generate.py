@@ -1058,42 +1058,46 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         if _avis_dir_chk.exists() and any(_avis_dir_chk.glob("*.md")):
             site["has_avis"] = True
 
-    # Pour les sites classement : écraser les anciennes pages avis SCPI avec la 404 actuelle
-    if is_classement_template:
-        try:
-            html_404 = (output_dir / "404.html").read_text(encoding="utf-8")
-        except Exception:
-            html_404 = "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>404</title></head><body><h1>Page introuvable</h1></body></html>"
-        slugs_to_block = [p.get("slug", "") for p in products if p.get("slug")]
-        slugs_to_block += ["scpi"]
-        # ── Protection des nouvelles pages d'avis ────────────────────────
-        # Ce bloc legacy nettoie les anciennes pages /avis-<slug>.html héritées
-        # du template SCPI. Mais désormais on a un VRAI système d'avis dans
-        # posts_avis/ qui génère des pages /avis-<marque>.html à conserver.
-        # Si une marque d'avis matche un slug de produit (ex: legalplace est
-        # à la fois un produit du classement Expert-comptable ET une marque
-        # ayant un avis), on doit garder la page d'avis et NE PAS l'écraser.
-        _avis_dir_protect = site_dir / "posts_avis"
-        _avis_skip_slugs: set = set()
-        if _avis_dir_protect.exists():
-            for _md in _avis_dir_protect.glob("*.md"):
-                # Le fichier est `avis-<marque>.md`. La page générée s'appelle
-                # `avis-<marque>.html`. Pour ce nettoyage on stocke directement
-                # le slug PRODUIT correspondant (sans préfixe "avis-") afin de
-                # le matcher contre `slugs_to_block`.
-                _stem = _md.stem
-                if _stem.startswith("avis-"):
-                    _avis_skip_slugs.add(_stem[len("avis-"):])
-        _written = 0
-        for slug in slugs_to_block:
-            if slug in _avis_skip_slugs:
-                # On a un vrai avis pour cette marque → on garde la page
-                continue
-            (output_dir / f"avis-{slug}.html").write_text(html_404, encoding="utf-8")
-            _written += 1
-        (output_dir / "avis-scpi.html").write_text(html_404, encoding="utf-8")
-        (output_dir / "comparatifs-scpi.html").write_text(html_404, encoding="utf-8")
-        print(f"  ✓ {_written} pages avis écrasées avec 404 ({len(_avis_skip_slugs)} préservées car vrai avis)")
+        # Pour les sites classement : écraser les anciennes pages avis SCPI avec la 404 actuelle
+        # ⚠ INDENT FIX v11 (mai 2026) : ce bloc était à 4 espaces, ce qui
+        # le sortait de `if not dry_run:` et englobait toute la suite (Home,
+        # _redirects, légales) dans `if is_classement_template:` → bloc Home
+        # jamais exécuté pour les sites non-classement (404 garanti).
+        if is_classement_template:
+            try:
+                html_404 = (output_dir / "404.html").read_text(encoding="utf-8")
+            except Exception:
+                html_404 = "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>404</title></head><body><h1>Page introuvable</h1></body></html>"
+            slugs_to_block = [p.get("slug", "") for p in products if p.get("slug")]
+            slugs_to_block += ["scpi"]
+            # ── Protection des nouvelles pages d'avis ────────────────────────
+            # Ce bloc legacy nettoie les anciennes pages /avis-<slug>.html héritées
+            # du template SCPI. Mais désormais on a un VRAI système d'avis dans
+            # posts_avis/ qui génère des pages /avis-<marque>.html à conserver.
+            # Si une marque d'avis matche un slug de produit (ex: legalplace est
+            # à la fois un produit du classement Expert-comptable ET une marque
+            # ayant un avis), on doit garder la page d'avis et NE PAS l'écraser.
+            _avis_dir_protect = site_dir / "posts_avis"
+            _avis_skip_slugs: set = set()
+            if _avis_dir_protect.exists():
+                for _md in _avis_dir_protect.glob("*.md"):
+                    # Le fichier est `avis-<marque>.md`. La page générée s'appelle
+                    # `avis-<marque>.html`. Pour ce nettoyage on stocke directement
+                    # le slug PRODUIT correspondant (sans préfixe "avis-") afin de
+                    # le matcher contre `slugs_to_block`.
+                    _stem = _md.stem
+                    if _stem.startswith("avis-"):
+                        _avis_skip_slugs.add(_stem[len("avis-"):])
+            _written = 0
+            for slug in slugs_to_block:
+                if slug in _avis_skip_slugs:
+                    # On a un vrai avis pour cette marque → on garde la page
+                    continue
+                (output_dir / f"avis-{slug}.html").write_text(html_404, encoding="utf-8")
+                _written += 1
+            (output_dir / "avis-scpi.html").write_text(html_404, encoding="utf-8")
+            (output_dir / "comparatifs-scpi.html").write_text(html_404, encoding="utf-8")
+            print(f"  ✓ {_written} pages avis écrasées avec 404 ({len(_avis_skip_slugs)} préservées car vrai avis)")
 
 
         # ── Fichier _redirects pour Cloudflare Pages ──────────────────────
