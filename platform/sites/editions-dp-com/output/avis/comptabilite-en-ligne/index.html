@@ -31,13 +31,17 @@ a{color:var(--accent2);text-decoration:none}
 h1{font-family:'',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:16px}
 .avis-sub{font-size:18px;color:var(--ink3);max-width:600px;margin:0 auto}
 
-/* Filtres catégories — style identique au blog-index pour cohérence visuelle.
-   Pastilles ovales blanches, bordure légère, compteur en gris léger.
-   L'élément sélectionné prend la couleur d'accent. */
-.cats-bar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0 40px}
-.cat-pill{font-size:13px;font-weight:600;color:var(--ink2);padding:8px 16px;border-radius:24px;border:1px solid var(--border);background:var(--surface);transition:.15s;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
-.cat-pill:hover,.cat-pill.active{color:var(--accent);border-color:var(--accent)}
-.cat-pill-count{font-size:11px;color:var(--ink3);font-weight:500}
+/* Filtres catégories — pastilles ovales façon image de réf Julien.
+   Padding généreux (10×22), texte sombre 14px, compteur en gris 13px.
+   L'élément actif passe en bordure 2px var(--accent2) avec compensation
+   du padding (-1px) pour ne pas faire grandir le bouton à la sélection.
+   `accent2` (bleu marine #1E5F8B par défaut) au lieu de `accent` car
+   l'accent principal du site editions-dp-com est doré et trancherait trop. */
+.cats-bar{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:16px 0 40px}
+.cat-pill{font-size:14px;font-weight:500;color:var(--ink);padding:10px 22px;border-radius:30px;border:1px solid var(--border);background:var(--surface);transition:.15s;cursor:pointer;display:inline-flex;align-items:center;gap:8px;line-height:1.2;white-space:nowrap}
+.cat-pill:hover{color:var(--accent2);border-color:var(--accent2)}
+.cat-pill.active{color:var(--accent2);border:2px solid var(--accent2);padding:9px 21px;font-weight:600}
+.cat-pill-count{font-size:13px;color:var(--ink3);font-weight:400}
 
 /* Grid de cartes */
 .avis-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;padding-bottom:48px}
