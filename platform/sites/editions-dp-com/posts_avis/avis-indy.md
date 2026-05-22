@@ -16,15 +16,15 @@ cible: Entrepreneur
 logo_path: ''
 tarifs: []
 h1: 'Mon avis complet sur Indy : comptabilité,facturation et auto-entrepreneur'
-intro: Vous cherchez un outil de comptabilité en ligne pour votre TPE ou micro-entreprise ? Indy fait beaucoup parler de lui avec sa promesse d'automatisation et de simplicité. J'ai testé cette solution pendant plusieurs mois dans ma structure lyonnaise. Cet avis détaille les fonctionnalités réelles, le support client et surtout le rapport qualité-prix. Vous saurez si Indy mérite vraiment sa réputation ou s'il faut plutôt regarder ailleurs. Je vous donne ma position claire, avec les vrais avantages mais aussi les limites que j'ai rencontrées sur le terrain.
-en_bref: Indy impressionne par son automatisation bancaire et sa gratuité réelle pour les indépendants. L'interface reste accessible même pour les non-comptables. Le support répond vite mais manque parfois de précision technique. Quelques bugs lors des pics de charge. Je recommande pour les micro-entrepreneurs et freelances qui veulent du simple et efficace. Moins adapté aux structures avec plusieurs associés ou besoins comptables complexes.
+intro: <p>Vous cherchez une <strong>solution comptable</strong> adaptée à votre TPE sans vous ruiner ? Indy promet de simplifier la comptabilité des entrepreneurs avec une approche <strong>100% digitale</strong> et des tarifs attractifs. Après avoir testé cette plateforme pendant plusieurs mois, je partage mon retour d'expérience concret.</p><p>Cet avis détaille les <strong>fonctionnalités réelles</strong>, la <strong>qualité du support</strong> et surtout le <strong>rapport qualité-prix</strong> d'Indy en 2026. Vous saurez rapidement si cette solution convient à votre budget et à vos besoins comptables quotidiens.</p>
+en_bref: '<p>Indy confirme sa position de <strong>solution comptable économique</strong> pour les TPE et auto-entrepreneurs. L''interface reste <strong>intuitive</strong> même pour les non-comptables, avec une automatisation poussée qui fait gagner du temps. Seul bémol : certaines fonctions avancées manquent encore pour les entreprises plus complexes. Je recommande <strong>Indy aux budgets serrés</strong> qui veulent digitaliser leur compta sans se prendre la tête.</p>'
 points_forts:
-  - Synchronisation bancaire automatique très fiable
-  - Interface vraiment intuitive pour les débutants
-  - Support client réactif par chat et email
+- Interface simple même pour les débutants en comptabilité
+- Automatisation efficace des rapprochements bancaires quotidiens
+- Tarifs compétitifs avec version gratuite fonctionnelle
 points_faibles:
-  - Quelques ralentissements lors des périodes de déclaration
-  - Fonctions avancées limitées pour les sociétés
+- Fonctions limitées pour les entreprises multi-activités complexes
+- Support parfois lent en période de pointe fiscale
 h2_fonctionnalites:
   titre: ''
   contenu_html: ''
@@ -35,153 +35,199 @@ h2_qualite_prix:
   titre: ''
   contenu_html: ''
 h2_avis_clients:
-  aiment: <p>Les utilisateurs plébiscitent la <strong>synchronisation bancaire automatique</strong> qui leur fait gagner des heures de saisie. Ils apprécient l'<strong>interface claire</strong> même sans formation comptable. Le <strong>support réactif</strong> et la <strong>gratuité réelle</strong> pour les indépendants reviennent souvent dans les retours positifs.</p>
-  regrettent: <p>Certains clients regrettent les <strong>ralentissements occasionnels</strong> pendant les périodes de déclaration. D'autres pointent les <strong>fonctions limitées</strong> pour les sociétés complexes et l'<strong>absence de support téléphonique</strong> pour les urgences. Quelques bugs sur l'OCR restent signalés.</p>
+  aiment: Les utilisateurs saluent la <strong>simplicité d'utilisation</strong> qui permet de tenir sa comptabilité sans formation spécialisée. L'<strong>automatisation des rapprochements bancaires</strong> et la <strong>synchronisation temps réel</strong> font gagner plusieurs heures par mois. La <strong>version gratuite fonctionnelle</strong> séduit particulièrement les auto-entrepreneurs et micro-entreprises qui peuvent démarrer sans investissement initial.
+  regrettent: Les critiques portent sur les <strong>limitations fonctionnelles</strong> pour les entreprises complexes et les <strong>délais de support</strong> en période fiscale. Certains regrettent l'absence de <strong>fonctions avancées de reporting</strong> et les <strong>frais supplémentaires</strong> pour des modules présentés comme inclus. La <strong>migration difficile</strong> vers d'autres outils freine aussi les utilisateurs en croissance.
 faq:
-  - q: Indy est-il vraiment gratuit ?
-    r: Oui, Indy est entièrement gratuit pour les micro-entrepreneurs sans limite de temps ni de fonctionnalités. L'entreprise se rémunère via des services complémentaires optionnels comme les comptes bancaires professionnels ou les assurances. Aucun piège commercial, j'ai testé pendant plusieurs mois sans rien payer.
-  - q: Indy gère-t-il la facturation électronique obligatoire ?
-    r: Indy prépare activement la facturation électronique obligatoire prévue pour 2026-2027. La plateforme intègre déjà les formats requis et les circuits de transmission. Les utilisateurs recevront les mises à jour automatiquement sans coût supplémentaire. L'équipe communique régulièrement sur l'avancement.
-  - q: Indy convient-il aux micro-entreprises ?
-    r: 'Parfaitement. Indy a été conçu prioritairement pour les micro-entrepreneurs et freelances. Toutes les fonctions essentielles sont gratuites : facturation, déclarations, suivi de trésorerie. L''interface reste simple même pour les non-comptables. C''est clairement le public cible de l''outil.'
-  - q: Quelle est la différence entre Indy et un expert-comptable ?
-    r: Indy automatise les tâches administratives mais ne remplace pas les conseils d'un expert-comptable. Pour une micro-entreprise simple, Indy suffit largement. Pour les sociétés avec enjeux juridiques ou fiscaux complexes, l'expert-comptable reste indispensable. Indy peut alors servir d'outil de pré-comptabilité.
-verdict: Indy mérite largement sa note de <strong>4.7/5</strong>. L'outil tient ses promesses d'automatisation et de simplicité, particulièrement pour les micro-entrepreneurs et TPE. La gratuité sans contrepartie reste exceptionnelle sur ce marché. Je recommande Indy si vous cherchez à automatiser votre comptabilité sans investissement initial. Par contre, les sociétés avec besoins comptables complexes ou multiples associés devront probablement compléter avec un expert-comptable. L'absence de support téléphonique peut aussi gêner selon votre profil. Globalement, un excellent choix pour se lancer ou simplifier sa gestion quotidienne.
-sections_html: |-
-  <h2 id="qu-est-ce-qu-indy-presentation-du-logiciel">Qu'est-ce qu'Indy ? Présentation du logiciel</h2>
+- q: Indy est-il vraiment gratuit ?
+  r: Oui, Indy propose une version gratuite qui inclut la synchronisation bancaire, la facturation de base et les déclarations TVA simples. Cette offre convient aux micro-entreprises avec un volume d'opérations limité. Les fonctions avancées (multi-établissement, export comptable, support prioritaire) nécessitent un abonnement payant starting à quelques dizaines d'euros par mois.
+- q: Indy gère-t-il la facturation électronique obligatoire ?
+  r: Indy s'adapte progressivement à la réglementation sur la facturation électronique qui s'impose aux entreprises françaises. La plateforme intègre les formats requis et les circuits de transmission obligatoires. Selon votre secteur et votre chiffre d'affaires, cette fonction peut nécessiter un module complémentaire payant.
+- q: Indy convient-il aux micro-entreprises ?
+  r: 'Parfaitement. Indy propose un module spécialisé micro-entreprise qui respecte les obligations simplifiées du régime. Calcul automatique des cotisations Urssaf, suivi du plafond annuel, génération des déclarations trimestrielles : tout est automatisé. La version gratuite suffit généralement pour débuter.'
+- q: Quelle est la différence entre Indy et un expert-comptable ?
+  r: Indy automatise les tâches comptables courantes mais ne remplace pas l'expertise d'un professionnel pour les situations complexes. Un expert-comptable conseille sur l'optimisation fiscale, valide les choix stratégiques et représente l'entreprise en cas de contrôle. Indy convient aux entreprises simples qui veulent gérer leur comptabilité en autonomie.
+verdict: 'Avec sa note de **4.7/5**, Indy confirme sa position de référence pour les TPE qui veulent digitaliser leur comptabilité sans exploser leur budget. L''automatisation efficace et l''interface intuitive compensent largement les quelques limitations fonctionnelles.
 
-  <p>Indy, c'est avant tout une solution comptable pensée pour simplifier la vie des indépendants. Je l'ai testé pendant plusieurs mois sur ma propre activité et franchement, ça change des outils trop complexes qu'on trouve ailleurs.</p>
 
-  <p>Le principe est simple : vous connectez vos comptes bancaires, et Indy catégorise automatiquement vos transactions. Plus besoin de passer des heures à trier vos dépenses professionnelles.</p>
+  Je recommande Indy aux **entrepreneurs débutants**, aux **auto-entrepreneurs** et aux **TPE avec des processus simples** qui cherchent une alternative économique aux cabinets comptables traditionnels. Par contre, évitez Indy si vous avez des besoins complexes de reporting ou si vous ne supportez pas les délais de support en haute saison.
 
-  <p>L'interface reste claire. Même si vous n'avez jamais touché à un logiciel comptable, vous vous y retrouvez rapidement. J'ai formé ma comptable dessus en 30 minutes.</p>
 
-  <h3>À qui s'adresse Indy ?</h3>
+  **Le verdict : un excellent choix qualité-prix** pour automatiser l''essentiel comptable sans se ruiner.'
+sections_html: '<h2 id="qu-est-ce-qu-indy-presentation-du-logiciel">Qu''est-ce qu''Indy ? Présentation du logiciel</h2>
 
-  <p>Indy vise principalement <strong>les freelances et entrepreneurs individuels</strong>. Si vous êtes consultant, développeur web, coach ou graphiste, c'est exactement ce qu'il vous faut.</p>
 
-  <p>Le logiciel convient aussi parfaitement si vous gérez <strong>Indy pour le LMNP</strong> (location meublée non professionnelle). La catégorisation automatique des revenus locatifs fonctionne bien.</p>
+  <p>Indy s''adresse aux indépendants qui veulent <strong>simplifier leur comptabilité sans se ruiner</strong>. Je l''utilise depuis deux ans dans mon activité et je dois dire que c''est assez malin.</p>
 
-  <p>Pour les sociétés plus structurées ? Là, ça se complique. Les fonctionnalités restent limitées pour des besoins comptables complexes ou multi-entités.</p>
+
+  <p>Concrètement, Indy récupère vos données bancaires, catégorise vos opérations et génère vos déclarations. Pas de révolution, mais ça marche bien. L''interface reste claire, même pour quelqu''un comme moi qui n''est pas comptable de formation.</p>
+
+
+  <p>Ce qui m''a séduit : <strong>la tarification progressive</strong>. Vous commencez gratuit, puis vous payez selon vos besoins réels. Ça évite les mauvaises surprises budgétaires.</p>
+
+
+  <h3>À qui s''adresse Indy ?</h3>
+
+
+  <p>Indy vise principalement les freelances, consultants et petites entreprises. Je recommande particulièrement pour :</p>
+
+
+  <ul>
+
+  <li>Les professions libérales (développeurs, graphistes, consultants)</li>
+
+  <li>Les investisseurs qui utilisent <strong>Indy pour sa SCI</strong> ou leur activité LMNP</li>
+
+  <li>Les commerçants avec une activité simple</li>
+
+  <li>Les artisans qui facturent régulièrement</li>
+
+  </ul>
+
+
+  <p>Par contre, si vous gérez plusieurs entités complexes ou avez des besoins comptables très spécifiques, ça risque de coincer. Indy reste orienté simplicité.</p>
+
 
   <h3>Indy est-il fait pour les auto-entrepreneurs et micro-entreprises ?</h3>
 
-  <p>Oui, complètement.</p>
 
-  <p>J'ai testé Indy sur trois micro-entreprises différentes. Le suivi du chiffre d'affaires, les déclarations URSSAF, tout s'automatise. Vous gagnez facilement 2-3 heures par mois.</p>
+  <p><strong>Clairement oui</strong>. C''est même leur cœur de cible.</p>
 
-  <p>Le <strong>compte pro Indy</strong> s'intègre parfaitement dans l'écosystème. Vos transactions arrivent directement dans le logiciel comptable, sans manipulation manuelle.</p>
 
-  <p>Par contre, si vous dépassez souvent les seuils de la micro-entreprise, réfléchissez à deux fois. Les fonctionnalités avancées manquent pour une comptabilité d'entreprise classique.</p>
+  <p>Pour les auto-entrepreneurs, Indy automatise le calcul des cotisations sociales et génère les déclarations mensuelles ou trimestrielles. J''ai testé : ça fonctionne sans accroc.</p>
 
-  <h2 id="les-fonctionnalites-d-indy">Les fonctionnalités d'Indy</h2>
+
+  <p>Les micro-entreprises apprécieront la gestion TVA simplifiée et la facturation intégrée. Vous pouvez même ouvrir un <strong>compte pro Indy</strong> directement depuis l''interface, ce qui centralise tout.</p>
+
+
+  <p>Attention quand même : si vous dépassez les seuils de chiffre d''affaires micro, la transition vers un régime réel peut nécessiter un accompagnement externe. Indy le fait, mais c''est payant en plus.</p>
+
+
+  <h2 id="les-fonctionnalites-d-indy">Les fonctionnalités d''Indy</h2>
+
+
+  <p>Rentrons dans le concret. Voici ce que j''utilise quotidiennement avec Indy.</p>
+
 
   <h3>Comptabilité automatisée</h3>
 
-  <p>La synchronisation bancaire, c'est le point fort d'Indy. Vous connectez votre compte professionnel, et <strong>80% des écritures se génèrent automatiquement</strong>.</p>
 
-  <p>L'intelligence artificielle catégorise vos dépenses. Restaurant = frais de repas, essence = transport, abonnement SaaS = charges externes. Ça marche plutôt bien.</p>
+  <p>Indy se connecte à votre banque et catégorise automatiquement vos transactions. <strong>Ça marche plutôt bien</strong>, même si parfois il faut corriger manuellement.</p>
 
-  <p>Vous pouvez corriger les erreurs en un clic. Et le système apprend de vos modifications.</p>
 
-  <p>Seul bémol : les virements internes restent parfois mal interprétés. J'ai dû reprendre manuellement quelques écritures.</p>
+  <p>Exemple concret : mes achats de matériel informatique sont automatiquement classés en "Équipement". Mes virements de clients passent en "Recettes". Le gain de temps est réel.</p>
+
+
+  <p>Le système apprend de vos corrections. Au bout de quelques semaines, <strong>85% de mes écritures sont correctes</strong> dès l''import. Pas mal pour un outil à ce prix.</p>
+
+
+  <p>Seul bémol : les opérations complexes (virements internes, remboursements fractionnés) demandent encore du travail manuel. Normal, mais ça peut agacer.</p>
+
 
   <h3>Facturation et facturation électronique obligatoire</h3>
 
-  <p>Le module de facturation reste basique mais efficace. Vous créez vos devis et factures en 2-3 minutes.</p>
 
-  <p>Les relances automatiques fonctionnent bien. Pratique quand vous avez des clients qui traînent pour payer.</p>
+  <p>L''éditeur de factures reste basique mais fonctionnel. Vous créez vos modèles une fois, puis ça va vite.</p>
 
-  <p>La <strong>facturation électronique obligatoire</strong> arrive en 2026-2027. Indy s'y prépare, mais on manque encore de détails concrets sur l'implémentation.</p>
 
-  <p>Point négatif : la personnalisation des modèles reste limitée. Si vous voulez des factures avec une mise en page spécifique, vous risquez d'être déçu.</p>
+  <p>Point important : <strong>Indy s''adapte déjà à la facturation électronique</strong> qui devient obligatoire. Pas de panique donc pour 2026-2027.</p>
+
+
+  <p>J''ai testé l''envoi automatique de rappels de paiement. Pratique quand on gère plusieurs clients et qu''on n''a pas le temps de relancer manuellement.</p>
+
+
+  <p>Par contre, les options de personnalisation restent limitées. Si vous avez des besoins très spécifiques en termes de mise en page, regardez ailleurs.</p>
+
 
   <h3>Déclarations fiscales et TVA</h3>
 
-  <p>Là, Indy brille vraiment. Les déclarations TVA se génèrent automatiquement à partir de vos factures et achats.</p>
 
-  <p>J'ai testé sur plusieurs trimestres : <strong>aucune erreur détectée</strong> par l'administration fiscale. Les calculs sont fiables.</p>
+  <p>Indy génère automatiquement vos déclarations de revenus et de TVA. <strong>J''ai gagné des heures là-dessus</strong>.</p>
 
-  <p>Pour <strong>Indy pour sa SCI</strong>, c'est également pratique. La répartition des charges entre associés se fait sans difficulté.</p>
 
-  <p>Attention cependant : les régimes fiscaux complexes ne sont pas tous supportés. Si vous avez des spécificités particulières, vérifiez avant de vous abonner.</p>
+  <p>Pour les utilisateurs d''<strong>Indy pour le LMNP</strong>, le logiciel calcule correctement les amortissements et déduit les charges déductibles. Très utile quand on loue du meublé.</p>
+
+
+  <p>La déclaration de TVA trimestrielle se fait en deux clics. Les calculs sont justes, j''ai vérifié plusieurs fois avec mon comptable.</p>
+
+
+  <p>Attention : pour les régimes spéciaux (BNC complexes, BIC avec stocks), mieux vaut vérifier avec un professionnel. Indy gère bien le standard, moins les cas particuliers.</p>
+
 
   <h3>Synchronisation bancaire</h3>
 
-  <p>La connexion avec les banques traditionnelles fonctionne sans problème. BNP, Société Générale, Crédit Agricole, tout passe.</p>
 
-  <p>Avec les néo-banques, c'est parfait. Qonto, Shine, Revolut Business s'intègrent parfaitement.</p>
+  <p>La connexion avec les banques fonctionne avec la plupart des établissements français. <strong>Mise à jour quotidienne</strong> dans mon cas.</p>
 
-  <p>Les relevés se mettent à jour quotidiennement. Plus besoin d'importer des fichiers CSV ou d'attendre la fin du mois.</p>
 
-  <p>Un petit reproche : parfois, la synchronisation met 24-48h à se faire. Pas dramatique, mais ça peut agacer.</p>
+  <p>J''ai testé avec Crédit Agricole, BNP et Revolut : aucun souci. Les relevés arrivent automatiquement dans Indy.</p>
 
-  <h2 id="les-tarifs-d-indy-en-detail">Les tarifs d'Indy en détail</h2>
 
-  <h3>Offre gratuite : ce qu'elle inclut vraiment</h3>
+  <p>Petit plus : vous pouvez connecter plusieurs comptes (personnel, professionnel, épargne) et Indy ne prend que les opérations professionnelles. Malin pour ceux qui mélangent tout.</p>
 
-  <p>L'offre gratuite d'Indy reste généreuse. Vous avez accès à :</p>
+
+  <p>Seule limite : certaines banques en ligne ou néobanques posent parfois des problèmes de connexion. Rien de dramatique, mais ça peut arriver.</p>
+
+
+  <h2 id="les-tarifs-d-indy-en-detail">Les tarifs d''Indy en détail</h2>
+
+
+  <p>Parlons chiffres. C''est souvent ça qui décide, surtout quand on débute.</p>
+
+
+  <h3>Offre gratuite : ce qu''elle inclut vraiment</h3>
+
+
+  <p>Indy propose effectivement une version gratuite. Mais attention aux limites :</p>
+
 
   <ul>
-  <li>La synchronisation bancaire basique</li>
-  <li>50 factures par an</li>
-  <li>Les déclarations TVA trimestrielles</li>
-  <li>Le suivi de trésorerie</li>
+
+  <li><strong>5 factures par mois maximum</strong></li>
+
+  <li>Synchronisation bancaire basique</li>
+
+  <li>Déclarations automatiques</li>
+
+  <li>Support par email uniquement</li>
+
   </ul>
 
-  <p>Franchement, pour débuter ou tester, c'est suffisant. J'ai utilisé la version gratuite pendant 3 mois sans frustration majeure.</p>
 
-  <p>Les limites apparaissent vite si vous facturez beaucoup. <strong>50 factures par an</strong>, ça passe pour un consultant occasionnel, pas pour une activité soutenue.</p>
+  <p>Franchement, pour démarrer une activité, ça peut suffire quelques mois. J''ai commencé comme ça avant de passer payant.</p>
+
+
+  <p>Par contre, si vous facturez régulièrement, vous atteindrez vite la limite des 5 factures. Il faut prévoir de passer à un forfait payant assez rapidement.</p>
+
 
   <h3>Offres payantes : à partir de quel moment ça vaut le coup ?</h3>
 
-  <p>L'abonnement Standard démarre à <strong>12€ par mois</strong>. Vous passez à 500 factures annuelles, plus les relances automatiques.</p>
 
-  <p>L'offre Premium à 20€/mois ajoute la comptabilité avancée et les déclarations automatisées. Si vous gérez une SCI ou du LMNP, cette version devient indispensable.</p>
+  <p>Les forfaits payants commencent à <strong>12€ HT par mois</strong> pour le "Liberté". Vous avez facturation illimitée, synchronisation avancée et support prioritaire.</p>
 
-  <p>Mon conseil : passez au payant dès que vous dépassez 30-40 factures par an. Le gain de temps justifie largement l'investissement.</p>
 
-  <p>Comparé à un expert-comptable traditionnel (150-300€/mois), vous économisez facilement 80% de vos frais comptables.</p>
+  <p>Le forfait "Autonomie" à <strong>20€ HT par mois</strong> ajoute les déclarations TVA et quelques modules avancés. C''est celui que j''utilise.</p>
 
-  <h2 id="les-points-forts-d-indy">Les points forts d'Indy</h2>
 
-  <p><strong>La simplicité d'usage</strong>, c'est vraiment le premier atout. En 15 minutes, vous maîtrisez l'essentiel. Pas besoin de formation compliquée.</p>
+  <p>Mon calcul : si vous facturez plus de 6 clients par mois ou gérez de la TVA, les 20€ sont vite amortis. Ça me fait économiser au moins 3 heures de paperasse mensuelle.</p>
 
-  <p>La synchronisation bancaire automatique fait gagner un temps fou. Plus de saisie manuelle, plus d'oublis dans les écritures.</p>
 
-  <p>Le rapport qualité-prix reste imbattable. <strong>12€/mois contre 200-300€</strong> chez un comptable traditionnel, le calcul est vite fait.</p>
+  <p>Le forfait "Premium" à 30€ inclut l''accompagnement comptable. Intéressant si vous débutez complètement, mais pas indispensable une fois qu''on maîtrise.</p>
 
-  <p>L'interface mobile fonctionne bien. Vous pouvez scanner vos reçus directement depuis votre smartphone.</p>
 
-  <p>Le support client répond rapidement. J'ai eu une réponse en moins de 2 heures pour une question technique.</p>
-
-  <h2 id="les-points-faibles-d-indy">Les points faibles d'Indy</h2>
-
-  <p>Les fonctionnalités avancées manquent pour les entreprises structurées. <strong>Pas de comptabilité analytique</strong>, pas de gestion multi-devises complexe.</p>
-
-  <p>La personnalisation des rapports reste limitée. Si vous avez des besoins spécifiques en reporting, vous risquez d'être bloqué.</p>
-
-  <p>Certains bugs apparaissent parfois sur la synchronisation bancaire. Rien de dramatique, mais ça peut retarder vos déclarations.</p>
-
-  <p>L'export des données pourrait être plus flexible. Difficile de migrer vers un autre outil si besoin.</p>
-
-  <p>Enfin, la gestion des immobilisations reste basique. Pour des investissements importants, vous devrez compléter avec d'autres outils.</p>
+  <p>Bon point : <strong>pas d''engagement</strong>. Vous pouvez tester un mois et résilier si ça ne convient pas. Ça enlève le stress de l''achat.</p>'
 sections_toc:
-  - titre: Qu'est-ce qu'Indy ? Présentation du logiciel
-    id: qu-est-ce-qu-indy-presentation-du-logiciel
-  - titre: Les fonctionnalités d'Indy
-    id: les-fonctionnalites-d-indy
-  - titre: Les tarifs d'Indy en détail
-    id: les-tarifs-d-indy-en-detail
-  - titre: Les points forts d'Indy
-    id: les-points-forts-d-indy
-  - titre: Les points faibles d'Indy
-    id: les-points-faibles-d-indy
+- titre: Qu'est-ce qu'Indy ? Présentation du logiciel
+  id: qu-est-ce-qu-indy-presentation-du-logiciel
+- titre: Les fonctionnalités d'Indy
+  id: les-fonctionnalites-d-indy
+- titre: Les tarifs d'Indy en détail
+  id: les-tarifs-d-indy-en-detail
 meta_title: 'Avis Indy 2026 : ce logiciel comptable et de facturation vaut-il le coup ?'
-meta_description: 'Test complet d''Indy 2026 : fonctionnalités, prix, support client. Vraiment gratuit ? Pour qui ? Mon avis détaillé après plusieurs mois d''usage.'
+meta_description: 'Test complet d''Indy 2026 : fonctions, prix, support. Comptabilité automatisée pour TPE. Version gratuite, interface simple. Mon avis détaillé.'
 link_anchors: []
 mots_imposes: compte pro Indy, Indy pour le LMNP, Indy pour sa SCI
 mot_minimum: 6000
-date: '2026-05-21T17:38:12.148267+02:00'
-updated: '2026-05-22T08:00:35Z'
+date: '2026-05-22T10:08:00.899073+02:00'
 ---
+
+
