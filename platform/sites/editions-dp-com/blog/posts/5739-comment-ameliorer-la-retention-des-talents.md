@@ -1,23 +1,24 @@
 ---
 title: Comment améliorer la rétention des talents ?
 slug: 5739-comment-ameliorer-la-retention-des-talents
-date: '2026-05-22T10:00:00+02:00'
+date: 2026-05-22T10:00:00+02:00
+updated: 2026-05-22T12:00:06
 categorie: Ressources Humaines
-meta_title: 'Rétention des talents : causes de départ et leviers d''action RH'
+meta_title: "Rétention des talents : causes de départ et leviers d'action RH"
 meta_description: Découvrez les vraies raisons des démissions et les stratégies concrètes
-  pour améliorer la rétention des talents dans votre entreprise. Conseils pratiques
-  testés…
-min_words: 3000
+featured_image: /blog/5739-comment-ameliorer-la-retention-des-talents/featured-92518.jpg
 status: published
-link_anchors:
-- text: rétention des talents
-  max: 2
+min_words: 3000
 related_posts:
 - 2675-qu-est-ce-que-la-gestion-des-talents-en-ressources-humaines
 - 6481-comment-realiser-une-cartographie-des-competences-efficacement
 - 2742-le-talent-management-comment-developper-les-talents-en-entreprise
 - 7371-comment-favoriser-le-developpement-des-talents-en-entreprise
+link_anchors:
+- text: rétention des talents
+  max: 2
 ---
+
 <h2>Qu'est-ce qui pousse vraiment vos talents à partir ?</h2>
 
 <p>Je vais être direct : <strong>perdre un bon élément coûte cher</strong>. Très cher même. Entre le recrutement, la formation du remplaçant et la perte de productivité, on parle facilement de 20 000 à 50 000 euros par départ. Dans ma TPE de 150 personnes, j'ai calculé qu'un départ nous coûte en moyenne 6 mois de salaire. Ça fait réfléchir.</p>
@@ -289,3 +290,4 @@ related_posts:
 <p><strong>Comment retenir les jeunes talents qui veulent tout, tout de suite ?</strong></p>
 
 <p>En étant transparent sur les possibilités réelles et en créant un parcours d'évolution clair. Je fixe des étapes intermédiaires : nouvelles responsabilités tous les 6 mois,
+
