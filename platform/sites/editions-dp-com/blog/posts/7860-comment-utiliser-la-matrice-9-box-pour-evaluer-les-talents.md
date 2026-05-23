@@ -4,14 +4,20 @@ slug: 7860-comment-utiliser-la-matrice-9-box-pour-evaluer-les-talents
 date: '2026-05-23T16:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Matrice 9 box : comment évaluer et gérer vos talents RH'
-meta_description: Découvrez comment utiliser la matrice 9 box pour évaluer vos talents et optimiser votre gestion RH. Méthode simple et efficace pour identifier vos futurs leaders.
+meta_description: Découvrez comment utiliser la matrice 9 box pour évaluer vos talents
+  et optimiser votre gestion RH. Méthode simple et efficace pour identifier vos futurs
+  leaders.
 min_words: 3000
 status: published
 link_anchors:
 - text: matrice 9 box
   max: 2
+related_posts:
+- 3345-comment-choisir-un-logiciel-gepp-pour-votre-entreprise
+- 7371-comment-favoriser-le-developpement-des-talents-en-entreprise
+- 2675-qu-est-ce-que-la-gestion-des-talents-en-ressources-humaines
+- 4437-comment-fideliser-les-talents-en-entreprise
 ---
-
 <h2>Qu'est-ce que la matrice 9 box exactement ?</h2>
 
 <p>Bon, je vais être direct. J'ai découvert la matrice 9 box il y a environ trois ans quand mon équipe a commencé à grandir et que j'ai réalisé qu'on naviguait à vue pour évaluer nos collaborateurs. Cette grille d'analyse, développée par McKinsey dans les années 70, croise deux axes simples : <strong>la performance actuelle</strong> et <strong>le potentiel d'évolution</strong> de vos salariés.</p>
