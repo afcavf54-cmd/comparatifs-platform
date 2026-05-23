@@ -4,14 +4,20 @@ slug: 1506-qu-est-ce-que-l-experience-collaborateur-en-entreprise
 date: '2026-05-23T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Expérience collaborateur : définition, étapes clés et exemples'
-meta_description: 'Découvrez l''expérience collaborateur : définition, enjeux et impact sur la rétention des talents. De l''embauche au départ, chaque interaction compte pour…'
+meta_description: 'Découvrez l''expérience collaborateur : définition, enjeux et impact
+  sur la rétention des talents. De l''embauche au départ, chaque interaction compte
+  pour…'
 min_words: 3000
 status: published
 link_anchors:
 - text: expérience collaborateur
   max: 2
+related_posts:
+- 4437-comment-fideliser-les-talents-en-entreprise
+- 8432-comment-mettre-en-place-une-gestion-des-talents-rh-efficace
+- 3345-comment-choisir-un-logiciel-gepp-pour-votre-entreprise
+- 6481-comment-realiser-une-cartographie-des-competences-efficacement
 ---
-
 <h2>L'expérience collaborateur : bien plus qu'un effet de mode</h2>
 
 <p>J'entends parler d'expérience collaborateur partout depuis quelques années. Au début, je dois l'avouer, j'ai pensé que c'était encore un concept marketing pour habiller de beaux discours RH. Mais après avoir vécu plusieurs situations concrètes dans ma TPE, j'ai compris que c'était bien plus sérieux que ça.</p>
