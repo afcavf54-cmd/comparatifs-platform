@@ -1,0 +1,87 @@
+# ============================================================
+# CONFIG SITE -- digicube-fr
+# Type : classement (SaaS)
+# Généré par le wizard HUB le 2026-05-24
+# ============================================================
+
+site:
+  slug: digicube-fr
+  name: "digicube.fr"
+  domain: "https://digicube.fr"
+  base_path: ""
+  logo_text: "digicube"
+  logo_accent: "fr"
+  tagline: "Comparatifs digicube.fr 2026"
+  year: 2026
+  sheet_csv_url: ""
+  www_preference: "www"
+  author_name: "Nicolas Roux"
+  home_title: "digicube.fr | Comparatifs 2026"
+  home_description: ""
+  template: "classement-saas.html.j2"
+  index_template: "index-saas.html.j2"
+  analytics_clicky: ""
+
+page_types:
+  classement: classement-saas
+
+theme:
+  accent: "#004000"
+  accent2: "#ea8515"
+  bg: "#F4F6FB"
+  ink: "#0F1A2E"
+  surface: "#FFFFFF"
+  font_title: "DM Serif Display"
+  font_body: "Outfit"
+  google_fonts: "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap"
+  cta_color: "#ea8515"
+  cta_text_color: "#ffffff"
+
+criteria:
+  - label: "Prix dès"
+    field: prix_achat
+    type: text
+    suffix: "€/mois"
+  - label: "Essai gratuit"
+    field: essai_gratuit
+    type: bool
+  - label: "Note"
+    field: note_redaction
+    type: text
+    suffix: "/5"
+  - label: "Catégorie"
+    field: categorie
+    type: text
+
+tag_classes:
+  rendement: "tag-rendement"
+  diversifiee: "tag-diversifiee"
+  specialisee: "tag-specialisee"
+  europeenne: "tag-europeenne"
+
+seo:
+  title_pattern: "{A} vs {B} : comparatif {year}"
+  meta_pattern: "Comparatif complet {A} vs {B} {year} : prix, fonctionnalités, avis."
+  h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
+  eyebrow: "Comparatif {year}"
+  intro_pattern: "Comparatif {A} vs {B} - analyse complète."
+  category_label: "Comparateurs"
+  category_url: "/#comparateurs"
+  avis_title_pattern: "Avis {nom} {year} : notre test complet"
+  avis_meta_pattern: "Notre avis complet sur {nom} {year} : prix, fonctionnalités, points forts et limites."
+  liste_comp_title: "Tous les comparatifs {site_name} {year}"
+  liste_avis_title: "Avis logiciels {year} : analyses indépendantes"
+  classement_title_pattern: "Meilleur {categorie} {year} : mon top {count} comparatif"
+  classement_meta_pattern: "Comparez les meilleurs {categories} en {year} : prix, fonctionnalités, avis indépendants."
+  classement_h1_pattern: "J'ai testé {count} {categories} : mon comparatif complet {year}"
+  classement_titre_analyse_pattern: "Mon classement des meilleurs {categories}"
+
+persona_prompt: |
+  Tu écris en tant que Nicolas Roux, 51 ans, Dirigeant TPE basé(e) à Marseille (entreprise de 100-500 salariés). Niveau débutant, 2 ans d'expérience. Vouvoie le lecteur. Ton : accessible. Phrases courtes. Niveau pédagogique : élevée. Positionnement : utilisateur terrain. Niveau d'opinion : neutre. Angle éditorial prioritaire : prix. Critères de classement par ordre de priorité : Prix, Rapport qualité/prix, Facilité d'utilisation, Support client. Scoring : note /5, avec un gagnant clairement désigné. Objectifs du lecteur cible : Gagner du temps sur les tâches répétitives, Réduire les coûts logiciels, Améliorer la productivité de mon équipe. Contraintes du lecteur : Budget limité. Inclure des cas concrets et exemples.  Niveau de détail : approfondi.
+
+author:
+  name: "Nicolas Roux"
+  bio: "Nicolas Roux dirige sa TPE depuis 2 ans à Marseille, où il développe son expertise entrepreneuriale au quotidien. Fort de son expérience terrain, il accompagne la croissance de son entreprise avec pragmatisme et détermination. Sa connaissance du tissu économique local lui permet d'adapter ses stratégies aux spécificités du marché marseillais."
+  job_title: "Dirigeant TPE"
+  photo: "/author-photo.png"
+  socials: []
