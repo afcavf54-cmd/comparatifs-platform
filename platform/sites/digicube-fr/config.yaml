@@ -5,6 +5,8 @@
 # ============================================================
 
 site:
+  contact_form_key: ""
+  google_site_verification: ""
   home_h1: "Comparateur de logiciels et outils digitaux pour entreprises"
   blog_sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT4JduFu8xBisxjGTtoDbCpqs-gvJ0ZWk0WmQJgM-etRmqDc_SXMocpYkIYpE6kKixJu-jCAfA7M9Aj/pub?gid=0&single=true&output=csv"
   slug: digicube-fr
@@ -22,7 +24,8 @@ site:
   home_description: "Retrouvez des comparatifs détaillés, des avis et des actualités autour des logiciels professionnels, solutions cloud et outils digitaux pour entreprises."
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
-  analytics_clicky: ""
+  analytics_clicky: '<script async data-id="101506543" src="//static.getclicky.com/js"></script>
+'
 
 page_types:
   classement: classement-saas
