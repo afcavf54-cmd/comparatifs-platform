@@ -222,11 +222,11 @@ document.addEventListener('click',function(e){
   <!-- Stats bar -->
   <div class="stats-bar" style="margin-top:48px;border-radius:var(--r2)">
     <div class="stat-item">
-      <div class="stat-value" id="stat-logiciels">10+</div>
+      <div class="stat-value" id="stat-logiciels">35+</div>
       <div class="stat-label">Logiciels analysés</div>
     </div>
     <div class="stat-item">
-      <div class="stat-value" id="stat-categories">1</div>
+      <div class="stat-value" id="stat-categories">4</div>
       <div class="stat-label">Catégories</div>
     </div>
     <div class="stat-item">
@@ -245,8 +245,43 @@ document.addEventListener('click',function(e){
     <p class="comparateurs-subtitle">Trouvez le meilleur logiciel selon votre métier et vos besoins</p>
 
       <div class="cat-group">
+        <div class="cat-group-title">Services aux entreprises</div>
+        <div class="cat-cards">
+          <a href="/meilleur-creation-d-entreprise-en-ligne" class="cat-card">
+            <div class="cat-card-left">
+              <div class="cat-card-icon">💻</div>
+              <div>
+                <div class="cat-card-name">Création d’entreprise en ligne</div>
+                <div class="cat-card-count">5 logiciels</div>
+              </div>
+            </div>
+            <span class="cat-card-arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div class="cat-group">
         <div class="cat-group-title">Ressources Humaines (RH)</div>
         <div class="cat-cards">
+          <a href="/meilleur-logiciel-de-paie" class="cat-card">
+            <div class="cat-card-left">
+              <div class="cat-card-icon">💻</div>
+              <div>
+                <div class="cat-card-name">Logiciel de paie</div>
+                <div class="cat-card-count">10 logiciels</div>
+              </div>
+            </div>
+            <span class="cat-card-arrow">→</span>
+          </a>
+          <a href="/meilleur-logiciel-de-gestion-des-talents" class="cat-card">
+            <div class="cat-card-left">
+              <div class="cat-card-icon">💻</div>
+              <div>
+                <div class="cat-card-name">Logiciel de gestion des talents</div>
+                <div class="cat-card-count">10 logiciels</div>
+              </div>
+            </div>
+            <span class="cat-card-arrow">→</span>
+          </a>
           <a href="/meilleur-logiciel-de-pointage" class="cat-card">
             <div class="cat-card-left">
               <div class="cat-card-icon">💻</div>
@@ -310,7 +345,7 @@ document.addEventListener('click',function(e){
 
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 laboxentrepreneuriat.fr — Données actualisées le 22 mai 2026
+        © 2026 laboxentrepreneuriat.fr — Données actualisées le 26 mai 2026
       </div>
     </div>
   </div>
@@ -320,6 +355,31 @@ document.addEventListener('click',function(e){
 <script>
 // Données de recherche (chargées en JS après DOM pour éviter footprint)
 const ALL_CATEGORIES = [
+  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
+  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
+  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
+  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
+  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
+  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
+  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
+  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
+  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
+  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
+  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
+  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
+  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
+  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
   { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
   { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
   { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
