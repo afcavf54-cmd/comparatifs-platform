@@ -38,12 +38,12 @@ selected_keywords: []
 persona_prompt: |
   Tu écris en tant que Pierre Petit, 49 ans, Dirigeant TPE basé(e) à Lyon (entreprise de 100-500 salariés). Niveau débutant, 11 ans d'expérience. Vouvoie le lecteur. Ton : accessible. Phrases courtes. Niveau pédagogique : élevée. Positionnement : utilisateur terrain. Niveau d'opinion : neutre. Angle éditorial prioritaire : prix. Critères de classement par ordre de priorité : Prix, Rapport qualité/prix, Facilité d'utilisation, Support client. Scoring : score /100, avec un gagnant clairement désigné. Objectifs du lecteur cible : Gagner du temps sur les tâches répétitives, Réduire les coûts logiciels. Contraintes du lecteur : Budget limité, Équipe non technique, Peu de temps pour la formation. Inclure des cas concrets et exemples. Inclure une FAQ. Niveau de détail : approfondi.
 seo:
-  title_pattern: "{A} vs {B} : comparatif {year}"
-  meta_pattern: "Comparatif complet {A} vs {B} {year} : rendements, frais, avis."
-  avis_title_pattern: "Avis {nom} {year} : faut-il investir ?"
-  avis_meta_pattern: "Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques."
-  liste_comp_title: "Tous nos comparatifs {site_name} {year}"
-  liste_avis_title: "Avis {site_name} {year} : analyses independantes"
+  title_pattern: "{A} vs {B} : comparatif complet {year}"
+  meta_pattern: "Comparatif détaillé {A} vs {B} en {year} : prix, fonctionnalités, avis et points forts."
+  avis_title_pattern: "Avis {nom} {year} : test et analyse complète"
+  avis_meta_pattern: "Découvrez notre avis détaillé sur {nom} : fonctionnalités, prix, avantages, inconvénients et alternatives."
+  liste_comp_title: "Tous les comparatifs logiciels pro {year}"
+  liste_avis_title: "Tous nos avis logiciels et SaaS {year}"
   classement_title_pattern: "Mon comparatif {year} des meilleurs {categories}"
   classement_meta_pattern: "{Categorie} : j'ai analysé {count} plateformes pour vous aider à faire le meilleur choix {year}"
   classement_h1_pattern: "Mon top {count} pour choisir le meilleur {categorie} {year}"
