@@ -5,6 +5,7 @@
 # ============================================================
 
 site:
+  home_h1: "Des solutions concrètes pour développer votre activité !"
   blog_sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTMwuNnqOiF9aRVKAnR3RcQzWJkmagoswvz7m4aTP4tiS29FhlIOq6f9EKQfJAg5hT3wPmotGqqsGa9/pub?gid=0&single=true&output=csv"
   slug: sauvonslaproximite-com
   name: "sauvonslaproximite.com"
@@ -17,8 +18,8 @@ site:
   sheet_csv_url: ""
   www_preference: "www"
   author_name: "Marie Simon"
-  home_title: "sauvonslaproximite.com | Comparatifs 2026"
-  home_description: ""
+  home_title: "Sauvons la Proximité : comparateur de solutions pour artisans et PME"
+  home_description: "Découvrez des avis, comparatifs et actualités dédiés aux artisans, PME, entreprises du bâtiment et commerces locaux pour optimiser leur activité."
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
   analytics_clicky: ""
