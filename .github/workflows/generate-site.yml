@@ -1,5 +1,4 @@
 name: Generate Site
-
 on:
   workflow_dispatch:
     inputs:
@@ -17,7 +16,6 @@ on:
         required: false
         type: string
         default: ''
-
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -27,15 +25,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
       - name: Install dependencies
         run: pip install pyyaml jinja2 requests
-
       - name: Generate AI editorial content
         if: ${{ inputs.skip_enrich == false }}
         run: |
@@ -46,33 +41,65 @@ jobs:
           $CMD
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-
       - name: Generate static site
         run: python platform/scripts/generate.py --site ${{ inputs.site }}
-
-      - name: Commit generated files
+      - name: Commit generated files (with push retry)
+        # ── Retry loop contre les collisions de push concurrent ──────────
+        # Bug d'origine observé en mai 2026 : quand plusieurs déploiements
+        # tournent en parallèle (cas normal du HUB Viseoweb qui peut lancer
+        # 5+ sites en même temps), le 2e workflow voit son push rejeté avec
+        # "cannot lock ref 'refs/heads/main': is at XXX but expected YYY".
+        # On enchaîne fetch + rebase + push jusqu'à 5 fois avec backoff
+        # progressif (2s, 4s, 6s, 8s, 10s). Au-delà → erreur fatale.
         run: |
           git config user.name "Viseoweb HUB"
           git config user.email "hub@viseoweb.com"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add platform/sites/${{ inputs.site }}/
-          git diff --cached --quiet || git commit -m "Generated: ${{ inputs.site }} [$(date +%Y-%m-%d)]"
-          git pull --rebase origin main
-          git push
+
+          if git diff --cached --quiet; then
+            echo "ℹ Aucun changement à commiter — push skip"
+            exit 0
+          fi
+
+          git commit -m "Generated: ${{ inputs.site }} [$(date +%Y-%m-%d)]"
+
+          PUSH_OK=0
+          for i in 1 2 3 4 5; do
+            echo "→ Push tentative $i/5..."
+            git fetch origin main
+            if ! git rebase origin/main; then
+              echo "  ⚠ Rebase a échoué (conflits ?), abort et retry"
+              git rebase --abort 2>/dev/null || true
+              sleep $((i * 2))
+              continue
+            fi
+            if git push origin HEAD:main; then
+              echo "  ✓ Push réussi (tentative $i/5)"
+              PUSH_OK=1
+              break
+            fi
+            echo "  ⚠ Push collision (tentative $i/5), retry dans $((i * 2))s..."
+            sleep $((i * 2))
+          done
+
+          if [ "$PUSH_OK" != "1" ]; then
+            echo "❌ Push échoué après 5 tentatives — main est trop disputé"
+            echo "   Causes probables : trop de workflows en parallèle, ou incident GitHub"
+            echo "   Action : relancer ce workflow (Re-run failed jobs) après ~1 minute"
+            exit 1
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Deploy to Cloudflare Pages
         run: |
           ACCOUNT_ID="${{ secrets.CLOUDFLARE_ACCOUNT_ID }}"
           API_TOKEN="${{ secrets.CLOUDFLARE_API_TOKEN }}"
           PROJECT="${{ inputs.site }}"
-
           # Crée le projet si il n'existe pas
           STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
             -H "Authorization: Bearer $API_TOKEN" \
             "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/pages/projects/$PROJECT")
-
           if [ "$STATUS" = "404" ]; then
             echo "Création du projet Cloudflare Pages..."
             curl -s -X POST \
@@ -82,7 +109,6 @@ jobs:
               "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/pages/projects"
             sleep 3
           fi
-
           # Deploy via wrangler
           npm install -g wrangler
           wrangler pages deploy platform/sites/${{ inputs.site }}/output \
