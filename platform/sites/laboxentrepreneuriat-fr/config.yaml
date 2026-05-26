@@ -86,12 +86,6 @@ seo:
   classement_h1_pattern: "J'ai testé {count} {categories} : mon comparatif complet {year}"
   classement_titre_analyse_pattern: "Mon classement des meilleurs {categories}"
 
-author:
-  name: "Hugo Simon"
-  bio: "Je m'appelle Hugo Simon, j'accompagne les entrepreneurs dans le choix de leurs outils du quotidien. Mon objectif : vous aider à trouver les logiciels qui vous feront vraiment gagner du temps."
-  job_title: "Expert outils entrepreneurs"
-  photo: "/author-photo.png"
-  socials: []
 persona_prompt: |
   Adopte STRICTEMENT le persona suivant :
   
@@ -132,3 +126,9 @@ persona_prompt: |
   
   ✅ Résultat attendu :
   Un comparatif crédible qu'un dirigeant peut lire en 5 minutes et utiliser pour décider, écrit par quelqu'un qui parle d'expérience.
+author:
+  name: "Hugo Simon"
+  bio: "Je m'appelle Hugo Simon, j'accompagne les entrepreneurs dans le choix de leurs outils du quotidien. Mon objectif : vous aider à trouver les logiciels qui vous feront vraiment gagner du temps."
+  job_title: "Expert outils entrepreneurs"
+  photo: "https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/laboxentrepreneuriat-fr/public/author-photo.png?t=1779805281552"
+  socials: []
