@@ -11,6 +11,8 @@
 # ============================================================
 
 site:
+  contact_form_key: ""
+  google_site_verification: ""
   blog_sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRHUV_e9nusqYfX42oZHbU5ktBbe7W4uCY9BMH3b03UJaGYG5mIITiigJ28JV9n-arAWoUvh03Ykt-1/pub?gid=0&single=true&output=csv"
   slug: laboxentrepreneuriat-fr
   name: "laboxentrepreneuriat.fr"
@@ -28,7 +30,7 @@ site:
   home_h1: "Les meilleures solutions pour gérer et développer votre entreprise"
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
-  analytics_clicky: ""
+  analytics_clicky: '<script async data-id="101506541" src="//static.getclicky.com/js"></script>'
 
 page_types:
   classement: classement-saas
