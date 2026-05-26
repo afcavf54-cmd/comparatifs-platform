@@ -3,15 +3,22 @@ title: 'Bulletin de paie dématérialisé : obligations légales et mise en œuv
 slug: 1501-bulletin-de-paie-dematerialise-obligations-legales-et-mise-en-uvre
 date: '2026-05-26T11:00:00+02:00'
 categorie: Ressources Humaines
-meta_title: 'Bulletin de paie dématérialisé : est-ce obligatoire et comment le mettre en place ?'
-meta_description: 'Découvrez les obligations légales du bulletin de paie dématérialisé depuis 2017 : conditions de mise en œuvre, droits des salariés et solutions techniques conformes.'
+meta_title: 'Bulletin de paie dématérialisé : est-ce obligatoire et comment le mettre
+  en place ?'
+meta_description: 'Découvrez les obligations légales du bulletin de paie dématérialisé
+  depuis 2017 : conditions de mise en œuvre, droits des salariés et solutions techniques
+  conformes.'
 min_words: 3000
 status: published
 link_anchors:
 - text: bulletin de paie dématérialisé
   max: 2
+related_posts:
+- 1218-quelle-strategie-adopter-pour-gerer-les-talents-en-2026
+- 5739-comment-ameliorer-la-retention-des-talents
+- 8407-automatisation-de-la-paie-comment-ca-marche-et-pourquoi-l-adopter
+- 8432-comment-mettre-en-place-une-gestion-des-talents-rh-efficace
 ---
-
 <h2>La dématérialisation du bulletin de paie : une obligation depuis 2017</h2>
 
 <p>J'ai eu l'obligation de m'y pencher sérieusement en 2019 quand notre comptable nous a fait comprendre qu'on ne pouvait plus échapper à la dématérialisation. Depuis janvier 2017, tous les employeurs peuvent distribuer les bulletins de paie sous forme électronique, sauf si le salarié s'y oppose expressément. Cette règle concerne aussi bien les TPE comme la mienne que les grandes entreprises.</p>

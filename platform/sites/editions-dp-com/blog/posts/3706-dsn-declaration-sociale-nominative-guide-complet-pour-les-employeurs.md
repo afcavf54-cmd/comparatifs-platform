@@ -3,15 +3,21 @@ title: 'DSN: Déclaration Sociale Nominative : guide complet pour les employeurs
 slug: 3706-dsn-declaration-sociale-nominative-guide-complet-pour-les-employeurs
 date: '2026-05-26T10:00:00+02:00'
 categorie: Ressources Humaines
-meta_title: 'DSN (Déclaration Sociale Nominative) : qu''est-ce que c''est et comment ça fonctionne ?'
-meta_description: 'Guide complet DSN pour employeurs : tout savoir sur la Déclaration Sociale Nominative obligatoire. Simplifiez vos démarches sociales mensuelles.'
+meta_title: 'DSN (Déclaration Sociale Nominative) : qu''est-ce que c''est et comment
+  ça fonctionne ?'
+meta_description: 'Guide complet DSN pour employeurs : tout savoir sur la Déclaration
+  Sociale Nominative obligatoire. Simplifiez vos démarches sociales mensuelles.'
 min_words: 3000
 status: published
 link_anchors:
 - text: déclaration sociale nominative DSN
   max: 2
+related_posts:
+- 1501-bulletin-de-paie-dematerialise-obligations-legales-et-mise-en-uvre
+- 5959-comment-construire-une-marque-employeur-attractive
+- 2742-le-talent-management-comment-developper-les-talents-en-entreprise
+- 5739-comment-ameliorer-la-retention-des-talents
 ---
-
 <h2>Qu'est-ce que la DSN ?</h2>
 
 <p>La Déclaration Sociale Nominative, ou DSN, c'est LE fichier que vous devez transmettre chaque mois aux organismes sociaux. J'ai basculé dessus en 2017, quand ça devenait obligatoire pour toutes les entreprises.</p>
