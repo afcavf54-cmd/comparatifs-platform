@@ -77,6 +77,20 @@ def main(site_slug: str) -> int:
     site_cfg = config.get("site", {}) or {}
     theme_cfg = config.get("theme", {}) or {}
 
+    # ── Auto-détection has_avis / has_blog (compat nav classement-saas) ──
+    # Le template de la nav du site (inline dans classement-saas.html.j2)
+    # affiche les liens "Avis" et "Blog" uniquement si site.has_avis /
+    # site.has_blog sont vrais. generate.py les calcule probablement
+    # lui-même, mais en standalone on les recalcule en regardant le
+    # filesystem du site, pour avoir le même menu que les autres pages.
+    avis_dir = site_dir / "posts_avis"
+    has_avis = avis_dir.is_dir() and any(avis_dir.glob("*.md"))
+    blog_dir = site_dir / "posts"
+    has_blog = bool(site_cfg.get("blog_sheet_csv_url")) or (blog_dir.is_dir() and any(blog_dir.glob("*.md")))
+    site_cfg.setdefault("has_avis", has_avis)
+    site_cfg.setdefault("has_blog", has_blog)
+    print(f"   menu : has_avis={has_avis}, has_blog={has_blog}")
+
     # ── 2) Charger outils.json (skip si absent) ─────────────────
     outils_path = site_dir / "outils.json"
     if not outils_path.exists():
