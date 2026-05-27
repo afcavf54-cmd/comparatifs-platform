@@ -32,8 +32,12 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     timeout-minutes: 360
+    # ── Env au niveau du JOB ─────────────────────────────────────────────
+    # INDEXNOW_KEY doit être ici (pas dans un step) pour être accessible
+    # dans les conditions `if:` des steps qui suivent.
     env:
       TZ: 'Europe/Paris'
+      INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -87,6 +91,18 @@ jobs:
             rm -f $OUTPUT/avis-scpi.html
             echo "✓ Pages SCPI résiduelles supprimées (avis individuels préservés)"
           fi
+
+      # ── ① Création du fichier de vérification IndexNow ────────────────
+      # IndexNow vérifie la possession du domaine en fetchant en HTTPS le
+      # fichier <key>.txt à la racine du site. Comme output/ est servi
+      # par Cloudflare Pages, on crée le fichier ici avant le deploy.
+      - name: Create IndexNow verification file
+        if: ${{ env.INDEXNOW_KEY != '' }}
+        run: |
+          KEY_FILE="platform/sites/${{ inputs.site }}/output/${INDEXNOW_KEY}.txt"
+          echo "$INDEXNOW_KEY" > "$KEY_FILE"
+          echo "✓ Fichier de vérification créé : ${INDEXNOW_KEY:0:8}...txt"
+
       - name: Commit generated files
         run: |
           git config user.name "Viseoweb HUB"
@@ -127,3 +143,39 @@ jobs:
             ${{ inputs.site }} \
             ${{ secrets.CLOUDFLARE_ACCOUNT_ID }} \
             ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+      # ── ② Soumission à IndexNow ───────────────────────────────────────
+      # Le site est déployé sur Cloudflare et le fichier <key>.txt est
+      # accessible. On attend 10s pour que Cloudflare propage les nouvelles
+      # pages, puis on soumet UNIQUEMENT les URLs nouvelles ou modifiées
+      # (option "Toutes la 1ère fois, ensuite seulement les modifiées").
+      # Effet de bord : platform/sites/<site>/indexation.json est mis à jour.
+      - name: Submit URLs to IndexNow
+        if: ${{ env.INDEXNOW_KEY != '' }}
+        run: |
+          echo "⏳ Attente 10s pour propagation Cloudflare..."
+          sleep 10
+          python platform/scripts/submit_indexnow.py --site ${{ inputs.site }}
+
+      # ── ③ Commit du fichier indexation.json ───────────────────────────
+      # On commit séparément car indexation.json est modifié APRÈS le commit
+      # principal du build. Échec non bloquant : si le push final foire, on
+      # ne fait pas planter le workflow (le déploiement Cloudflare a réussi).
+      - name: Commit indexation.json
+        if: ${{ always() && env.INDEXNOW_KEY != '' }}
+        run: |
+          git config user.name "Viseoweb HUB"
+          git config user.email "hub@viseoweb.com"
+          git add "platform/sites/${{ inputs.site }}/indexation.json" 2>/dev/null || true
+
+          if git diff --cached --quiet; then
+            echo "ℹ Pas de mise à jour indexation.json à commit"
+            exit 0
+          fi
+
+          git commit -m "IndexNow: statut indexation ${{ inputs.site }}"
+          git fetch origin main
+          git rebase -X theirs origin/main || (git rebase --abort && echo "⚠ Rebase échoué (non bloquant)" && exit 0)
+          git push origin HEAD:main || echo "⚠ Push indexation.json échoué (non bloquant)"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
