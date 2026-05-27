@@ -109,6 +109,19 @@ def main(site_slug: str) -> int:
     else:
         print(f"   logo : {site_cfg['logo_img']} (depuis config)")
 
+    # ── Auto-détection du favicon ───────────────────────────────
+    # `<link rel="icon">` dans le head du template. Compatible avec
+    # tous les formats classiques.
+    FAVICON_NAMES = ["favicon.ico", "favicon.png", "favicon.svg", "favicon-32x32.png"]
+    if "favicon_file" not in site_cfg or not site_cfg["favicon_file"]:
+        for name in FAVICON_NAMES:
+            if (public_dir / name).is_file():
+                site_cfg["favicon_file"] = "/" + name
+                print(f"   favicon : {site_cfg['favicon_file']}")
+                break
+        else:
+            print(f"   favicon : aucun fichier public/favicon.* — fallback /favicon.svg")
+
     # ── 2) Charger outils.json (skip si absent) ─────────────────
     outils_path = site_dir / "outils.json"
     if not outils_path.exists():
