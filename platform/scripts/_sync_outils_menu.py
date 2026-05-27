@@ -34,6 +34,23 @@ except ImportError:
     sys.exit(1)
 
 
+
+def slugify(s: str) -> str:
+    """Convertit un label en slug d'URL.
+    Ex : 'Outils' → 'outils', 'Mes outils gratuits' → 'mes-outils-gratuits',
+         'Calculateurs & convertisseurs' → 'calculateurs-convertisseurs'.
+    """
+    import unicodedata
+    import re
+    if not s:
+        return "outils"
+    s = s.strip().lower()
+    s = unicodedata.normalize("NFD", s).encode("ascii", "ignore").decode("ascii")
+    s = re.sub(r"[^a-z0-9]+", "-", s)
+    s = re.sub(r"-+", "-", s).strip("-")
+    return s or "outils"
+
+
 def build_menu_from_outils_json(outils_path: Path) -> list[dict]:
     """Construit la liste menu depuis outils.json.
 
@@ -61,8 +78,10 @@ def build_menu_from_outils_json(outils_path: Path) -> list[dict]:
     if nb_actifs == 0:
         return []
 
-    # Un seul lien menu, pointe vers la page d'index
-    return [{"label": menu_label, "url": "/outils"}]
+    # Un seul lien menu, pointe vers la page d'index dont le slug
+    # est dérivé du menu_label (Outils → /outils, Calculateurs → /calculateurs).
+    index_slug = slugify(menu_label)
+    return [{"label": menu_label, "url": "/" + index_slug}]
 
 
 def main(site_slug: str) -> int:
