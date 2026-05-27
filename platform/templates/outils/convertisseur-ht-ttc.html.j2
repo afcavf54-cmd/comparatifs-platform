@@ -107,34 +107,7 @@ article li{margin:6px 0}
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">{% if site.logo_img is defined and site.logo_img %}<img src="{{ site.logo_img }}" alt="{{ site.name }}" style="height:36px;width:auto;object-fit:contain;vertical-align:middle">{% else %}{{ site.logo_text }}<span>{{ site.logo_accent }}</span>{% endif %}</a>
-    <div class="nav-links">
-      <a href="/nos-comparateurs">Nos comparateurs</a>
-      {% if site.has_avis is defined and site.has_avis %}
-        <a href="/avis">Avis</a>
-      {% endif %}
-      {% if site.has_blog is defined and site.has_blog %}
-        <a href="/blog">Blog</a>
-      {% endif %}
-    </div>
-    <a href="/contact" class="nav-cta">Contact</a>
-    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="nav-mobile" id="nav-mobile">
-    <a href="/nos-comparateurs">Nos comparateurs</a>
-    {% if site.has_avis is defined and site.has_avis %}
-      <a href="/avis">Avis</a>
-    {% endif %}
-    {% if site.has_blog is defined and site.has_blog %}
-      <a href="/blog">Blog</a>
-    {% endif %}
-    <a href="/contact" class="nav-cta">Contact</a>
-  </div>
-</nav>
+{% include "base/_nav.html.j2" %}
 
 <div class="hero">
   <h1>{{ outil.h1 }}</h1>
