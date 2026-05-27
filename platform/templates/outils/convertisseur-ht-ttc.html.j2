@@ -1,0 +1,197 @@
+{# ============================================================
+   OUTIL : Convertisseur HT / TTC
+   Slug par défaut : convertir-ht-ttc
+   
+   Variables attendues (passées par generate.py) :
+   - outil.title             : titre SEO de la page
+   - outil.meta_description  : meta description
+   - outil.h1                : H1 affiché en haut
+   - outil.contenu_genere    : HTML du contenu rédactionnel (sous l'outil)
+   - site                    : objet config du site (theme, name, year, etc.)
+   - nav_html                : barre de nav du site (depuis _nav.html.j2)
+   ============================================================ #}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ outil.title }}</title>
+  <meta name="description" content="{{ outil.meta_description }}">
+  <link rel="canonical" href="{{ site.domain }}/{{ outil.slug }}">
+  {% if site.google_fonts %}<link href="{{ site.google_fonts }}" rel="stylesheet">{% endif %}
+  {% if site.google_site_verification %}<meta name="google-site-verification" content="{{ site.google_site_verification }}">{% endif %}
+  {% if site.analytics_clicky %}{{ site.analytics_clicky | safe }}{% endif %}
+  <style>
+    :root {
+      --bg:       {{ site.theme.bg     | default('#F9FAFB') }};
+      --surface:  {{ site.theme.surface| default('#FFFFFF') }};
+      --ink:      {{ site.theme.ink    | default('#111827') }};
+      --muted:    #8B9CB0;
+      --accent:   {{ site.theme.accent | default('#1F2937') }};
+      --accent2:  {{ site.theme.accent2| default('#374151') }};
+      --cta:      {{ site.theme.cta_color | default('#F97316') }};
+      --border:   #E5E7EB;
+      --radius:   12px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: {{ site.theme.font_body | default('system-ui, -apple-system, sans-serif') }}; line-height: 1.6; }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+    h1, h2, h3 { font-family: {{ site.theme.font_title | default('Georgia, serif') }}; color: var(--ink); }
+    h1 { font-size: 2rem; line-height: 1.2; margin: 2rem 0 1.5rem; }
+    h2 { font-size: 1.5rem; margin: 2.5rem 0 1rem; }
+    h3 { font-size: 1.2rem; margin: 2rem 0 0.75rem; }
+    a { color: var(--accent); }
+
+    /* ── Outil convertisseur ───────────────────────────────────── */
+    .tool-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 2rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .tool-header { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; padding: 1.25rem 1.5rem; font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+    .tool-header .icon { font-size: 1.3rem; }
+    .tool-body { padding: 1.5rem; }
+    .tool-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 1.25rem; }
+    @media (max-width: 540px) { .tool-row { grid-template-columns: 1fr; } }
+    .tool-field label { display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+    .tool-input-wrap { position: relative; }
+    .tool-input-wrap .currency { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 0.95rem; font-weight: 500; pointer-events: none; }
+    .tool-input-wrap input,
+    .tool-field select { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; font-family: inherit; color: var(--ink); background: var(--surface); outline: none; transition: border-color 0.15s; }
+    .tool-input-wrap input { padding-left: 36px; }
+    .tool-input-wrap input:focus,
+    .tool-field select:focus { border-color: var(--accent); }
+    .tool-input-wrap input[readonly] { background: var(--bg); color: var(--muted); cursor: not-allowed; }
+    .tool-instructions { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem; color: var(--muted); }
+    .tool-instructions span.step { display: inline-block; width: 22px; height: 22px; border-radius: 50%; background: var(--cta); color: #fff; text-align: center; line-height: 22px; font-size: 0.75rem; font-weight: 700; margin-right: 10px; }
+
+    /* ── Contenu rédactionnel ──────────────────────────────────── */
+    article { padding: 1rem 0 3rem; }
+    article p { margin: 1rem 0; }
+    article strong { color: var(--accent); }
+    article ul, article ol { padding-left: 1.5rem; }
+    article li { margin: 0.4rem 0; }
+
+    /* ── FAQ ───────────────────────────────────────────────────── */
+    .faq details { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; margin: 0.5rem 0; }
+    .faq details[open] { border-color: var(--accent); }
+    .faq summary { font-weight: 600; cursor: pointer; padding-right: 1rem; }
+    .faq details > *:not(summary) { margin-top: 0.75rem; }
+  </style>
+</head>
+<body>
+  {{ nav_html | safe }}
+
+  <main class="container">
+    <h1>{{ outil.h1 }}</h1>
+
+    <div class="tool-card">
+      <div class="tool-header">
+        <span class="icon">⇄</span>
+        <span>Convertisseur HT / TTC</span>
+      </div>
+      <div class="tool-body">
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="ttc-ht">Prix HT</label>
+            <div class="tool-input-wrap">
+              <span class="currency">€</span>
+              <input id="ttc-ht" type="number" step="0.01" placeholder="Montant HT">
+            </div>
+          </div>
+          <div class="tool-field">
+            <label for="ttc-ttc">Prix TTC</label>
+            <div class="tool-input-wrap">
+              <span class="currency">€</span>
+              <input id="ttc-ttc" type="number" step="0.01" placeholder="Montant TTC">
+            </div>
+          </div>
+        </div>
+        <div class="tool-row">
+          <div class="tool-field">
+            <label for="ttc-rate">Taux de TVA</label>
+            <select id="ttc-rate">
+              <option value="0.20">20 % — taux normal</option>
+              <option value="0.10">10 % — taux intermédiaire</option>
+              <option value="0.055">5,5 % — taux réduit</option>
+              <option value="0.021">2,1 % — taux particulier</option>
+            </select>
+          </div>
+          <div class="tool-field">
+            <label for="ttc-tva">Montant de la TVA</label>
+            <div class="tool-input-wrap">
+              <span class="currency">€</span>
+              <input id="ttc-tva" readonly placeholder="Montant TVA">
+            </div>
+          </div>
+        </div>
+        <div class="tool-instructions">
+          <div><span class="step">1</span>Modifiez le montant HT ou TTC</div>
+          <div><span class="step">2</span>Choisissez votre taux de TVA</div>
+        </div>
+      </div>
+    </div>
+
+    {% if outil.contenu_genere %}
+    <article>
+      {{ outil.contenu_genere | safe }}
+    </article>
+    {% endif %}
+
+    {% if outil.faq and outil.faq | length > 0 %}
+    <section class="faq">
+      <h2>Questions fréquentes</h2>
+      {% for item in outil.faq %}
+      <details>
+        <summary>{{ item.question }}</summary>
+        <div>{{ item.answer | safe }}</div>
+      </details>
+      {% endfor %}
+    </section>
+    {% endif %}
+  </main>
+
+  <script>
+    (function() {
+      const ht = document.getElementById('ttc-ht');
+      const ttc = document.getElementById('ttc-ttc');
+      const rate = document.getElementById('ttc-rate');
+      const tva = document.getElementById('ttc-tva');
+      let lastEdited = 'ht';
+      function getRate() { return parseFloat(rate.value); }
+      function fmt(n) { return (Math.round(n * 100) / 100).toFixed(2); }
+      function fromHT() {
+        const v = parseFloat(ht.value);
+        if (isNaN(v)) { ttc.value = ''; tva.value = ''; return; }
+        const r = getRate();
+        ttc.value = fmt(v * (1 + r));
+        tva.value = fmt(v * r);
+      }
+      function fromTTC() {
+        const v = parseFloat(ttc.value);
+        if (isNaN(v)) { ht.value = ''; tva.value = ''; return; }
+        const r = getRate();
+        const htV = v / (1 + r);
+        ht.value = fmt(htV);
+        tva.value = fmt(v - htV);
+      }
+      ht.addEventListener('input', function() { lastEdited = 'ht'; fromHT(); });
+      ttc.addEventListener('input', function() { lastEdited = 'ttc'; fromTTC(); });
+      rate.addEventListener('change', function() { if (lastEdited === 'ttc') fromTTC(); else fromHT(); });
+    })();
+  </script>
+
+  {# Schema.org pour les FAQ — bon pour SEO #}
+  {% if outil.faq and outil.faq | length > 0 %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {% for item in outil.faq %}{
+        "@type": "Question",
+        "name": {{ item.question | tojson }},
+        "acceptedAnswer": { "@type": "Answer", "text": {{ item.answer | tojson }} }
+      }{% if not loop.last %},{% endif %}{% endfor %}
+    ]
+  }
+  </script>
+  {% endif %}
+</body>
+</html>
