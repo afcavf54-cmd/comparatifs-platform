@@ -40,6 +40,22 @@ except ImportError:
     sys.exit(1)
 
 
+
+# ──────────────────────────────────────────────────────────────────
+# Catalogue d'outils (icon, name, description)
+# Source de vérité partagée. Lors de l'ajout d'un nouvel outil, faut
+# ajouter une entrée ici ET dans le catalogue côté HUB (outils-page.tsx).
+# ──────────────────────────────────────────────────────────────────
+TOOL_CATALOG = {
+    "convertisseur-ht-ttc": {
+        "icon": "⇄",
+        "name": "Convertisseur HT / TTC",
+        "description": "Convertit un prix HT en TTC et inversement, avec les taux TVA 20 %, 10 %, 5,5 % et 2,1 %.",
+    },
+    # Futurs outils :
+    # "salaire-brut-net": {"icon": "💶", "name": "...", "description": "..."},
+}
+
 def find_platform_dir() -> Path:
     """Remonte depuis ce script pour trouver platform/."""
     here = Path(__file__).resolve()
@@ -253,6 +269,44 @@ def main(site_slug: str) -> int:
         generated_urls.append(public_url)
         nb_generated += 1
         print(f"  ✓ {slug}.html → {public_url}")
+
+    # ── 5b) Génération de la page d'index /outils ───────────────
+    # Liste tous les outils actifs avec icon + description (depuis le
+    # catalogue). Sert de hub depuis lequel l'utilisateur peut accéder
+    # à chaque outil. Page créée uniquement s'il y a >= 1 outil actif.
+    outils_list = []
+    for outil_id, outil_state in outils.items():
+        if not outil_state.get("active"):
+            continue
+        slug = (outil_state.get("slug") or outil_id).strip().strip("/")
+        if not slug:
+            continue
+        catalog_entry = TOOL_CATALOG.get(outil_id, {})
+        outils_list.append({
+            "id": outil_id,
+            "slug": slug,
+            "icon": catalog_entry.get("icon", "🛠"),
+            "name": catalog_entry.get("name", outil_state.get("h1") or outil_id),
+            "description": catalog_entry.get("description", outil_state.get("meta_description", "")),
+        })
+
+    if outils_list:
+        try:
+            index_tpl = env.get_template("outils-index.html.j2")
+            html = index_tpl.render(
+                outils_list=outils_list,
+                site=site_cfg,
+                theme=theme_cfg,
+                config=config,
+            )
+            (output_dir / "outils.html").write_text(html, encoding="utf-8")
+            print(f"  ✓ outils.html (page d'index, {len(outils_list)} outil(s))")
+            if domain:
+                generated_urls.append(f"{domain}/outils")
+        except TemplateNotFound:
+            print(f"  ⚠ Template outils-index.html.j2 introuvable — page d'index non générée")
+        except Exception as e:
+            print(f"  ❌ Erreur de rendu de la page d'index : {e}")
 
     # ── 6) Résumé final ─────────────────────────────────────────
     print("─" * 50)
