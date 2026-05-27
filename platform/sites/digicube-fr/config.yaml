@@ -26,6 +26,9 @@ site:
   index_template: "index-saas.html.j2"
   analytics_clicky: '<script async data-id="101506543" src="//static.getclicky.com/js"></script>'
 
+  outils_menu:
+    - label: Outils
+      url: /convertir-ht-ttc
 page_types:
   classement: classement-saas
 
