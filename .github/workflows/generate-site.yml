@@ -20,8 +20,13 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     timeout-minutes: 360
+    # ── Env au niveau du JOB ─────────────────────────────────────────────
+    # INDEXNOW_KEY doit être ici (pas dans un step) pour être accessible
+    # dans les conditions `if:` des steps. Sinon les steps qui dépendent
+    # de cette variable sont skipped silencieusement.
     env:
       TZ: 'Europe/Paris'
+      INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -51,12 +56,9 @@ jobs:
       - name: Create IndexNow verification file
         if: ${{ env.INDEXNOW_KEY != '' }}
         run: |
-          KEY="${{ secrets.INDEXNOW_KEY }}"
-          KEY_FILE="platform/sites/${{ inputs.site }}/output/${KEY}.txt"
-          echo "$KEY" > "$KEY_FILE"
-          echo "✓ Fichier de vérification créé : ${KEY}.txt"
-        env:
-          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          KEY_FILE="platform/sites/${{ inputs.site }}/output/${INDEXNOW_KEY}.txt"
+          echo "$INDEXNOW_KEY" > "$KEY_FILE"
+          echo "✓ Fichier de vérification créé : ${INDEXNOW_KEY:0:8}...txt"
 
       - name: Commit generated files (with push retry)
         # ── Retry loop contre les collisions de push concurrent ──────────
@@ -145,8 +147,6 @@ jobs:
           echo "⏳ Attente 10s pour propagation Cloudflare..."
           sleep 10
           python platform/scripts/submit_indexnow.py --site ${{ inputs.site }}
-        env:
-          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
 
       # ── ③ Commit du fichier indexation.json (avec retry) ──────────────
       # On commit séparément car indexation.json est modifié APRÈS le commit
@@ -187,4 +187,3 @@ jobs:
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
