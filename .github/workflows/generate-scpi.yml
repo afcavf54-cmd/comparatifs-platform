@@ -46,7 +46,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install dependencies
-        run: pip install pyyaml jinja2 requests
+        run: pip install pyyaml jinja2 requests ruamel.yaml
       - name: Generate AI editorial content
         if: ${{ !inputs.skip_enrich }}
         run: |
@@ -64,6 +64,15 @@ jobs:
           $CMD
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      # ── Sync du menu Outils ───────────────────────────────────────────
+      # Lit platform/sites/<site>/outils.json et met à jour
+      # platform/sites/<site>/config.yaml > site.outils_menu pour refléter
+      # les outils actifs. Doit tourner AVANT generate.py pour que le
+      # rendu Jinja2 voie la valeur à jour.
+      - name: Sync outils_menu (config.yaml ← outils.json)
+        run: python platform/scripts/_sync_outils_menu.py ${{ inputs.site }}
+
       - name: Generate static site
         run: python platform/scripts/generate.py --site ${{ inputs.site }}
       - name: Remove SCPI pages from classement sites
