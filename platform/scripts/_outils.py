@@ -91,6 +91,24 @@ def main(site_slug: str) -> int:
     site_cfg.setdefault("has_blog", has_blog)
     print(f"   menu : has_avis={has_avis}, has_blog={has_blog}")
 
+    # ── Auto-détection du logo (compat nav classement-saas) ─────
+    # La nav affiche une image si site.logo_img est défini, sinon
+    # fallback sur le texte logo_text + logo_accent.
+    # On cherche le logo dans `public/` (qui est copié vers `output/`
+    # par generate.py). Première extension trouvée gagne.
+    LOGO_NAMES = ["logo.png", "logo.svg", "logo.jpg", "logo.webp"]
+    public_dir = site_dir / "public"
+    if "logo_img" not in site_cfg or not site_cfg["logo_img"]:
+        for name in LOGO_NAMES:
+            if (public_dir / name).is_file():
+                site_cfg["logo_img"] = "/" + name
+                print(f"   logo : {site_cfg['logo_img']}")
+                break
+        else:
+            print(f"   logo : aucun fichier public/logo.* — fallback texte")
+    else:
+        print(f"   logo : {site_cfg['logo_img']} (depuis config)")
+
     # ── 2) Charger outils.json (skip si absent) ─────────────────
     outils_path = site_dir / "outils.json"
     if not outils_path.exists():
