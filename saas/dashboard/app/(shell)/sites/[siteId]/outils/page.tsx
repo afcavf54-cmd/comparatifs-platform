@@ -84,6 +84,8 @@ export default function OutilsPage() {
   const [siteDomain, setSiteDomain] = useState('')
   const [expanded, setExpanded] = useState<Record<string, boolean>>({})
   const [saving, setSaving] = useState(false)
+  const [generating, setGenerating] = useState<Record<string, boolean>>({})
+  const [genError, setGenError] = useState<Record<string, string>>({})
   const [msg, setMsg] = useState('')
   const [loading, setLoading] = useState(true)
 
@@ -143,6 +145,47 @@ export default function OutilsPage() {
     } finally {
       setSaving(false)
       setTimeout(() => setMsg(''), 4000)
+    }
+  }
+
+
+  async function generateContent(toolId: string) {
+    if (!config) return
+    const state = config.outils[toolId]
+    if (!state) return
+    const tool = CATALOG.find(t => t.id === toolId)
+    if (!tool) return
+
+    if (!state.prompt_redaction.trim()) {
+      setGenError(prev => ({ ...prev, [toolId]: 'Le prompt IA est vide.' }))
+      return
+    }
+
+    setGenerating(prev => ({ ...prev, [toolId]: true }))
+    setGenError(prev => ({ ...prev, [toolId]: '' }))
+
+    try {
+      const r = await fetch(`/api/sites/${siteId}/outils/generate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prompt_redaction: state.prompt_redaction,
+          plan_h2: state.plan_h2,
+          faq: state.faq,
+          nb_mots: state.nb_mots,
+          outil_name: tool.name,
+        }),
+      })
+      const d = await r.json()
+      if (d.ok && d.html) {
+        updateOutil(toolId, { contenu_genere: d.html })
+      } else {
+        setGenError(prev => ({ ...prev, [toolId]: d.error || 'Erreur de génération' }))
+      }
+    } catch (e: any) {
+      setGenError(prev => ({ ...prev, [toolId]: e?.message || 'Erreur réseau' }))
+    } finally {
+      setGenerating(prev => ({ ...prev, [toolId]: false }))
     }
   }
 
@@ -257,10 +300,21 @@ export default function OutilsPage() {
                     <FAQList items={state.faq} onChange={items => updateOutil(tool.id, { faq: items })} />
                   </Field>
 
-                  {/* Génération IA (à venir) */}
-                  <div style={{ padding: '12px 14px', background: '#0A0E1A', border: '1px dashed #1E2D3D', borderRadius: 8, fontSize: 12, color: '#8B9CB0' }}>
-                    ✨ <strong>Génération IA</strong> — Le bouton pour générer automatiquement le contenu rédactionnel (à partir du prompt + plan + FAQ + nb mots) arrive à l'étape suivante. Pour l'instant tu peux déjà tout configurer.
+                  {/* Génération IA */}
+                  <div style={{ padding: '12px 14px', background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 8, display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'space-between' }}>
+                    <div style={{ fontSize: 12, color: '#8B9CB0' }}>
+                      ✨ <strong style={{ color: '#fff' }}>Génération IA</strong> — Claude rédige le contenu HTML à partir du prompt, du plan, de la FAQ et du nb de mots.
+                    </div>
+                    <button onClick={() => generateContent(tool.id)} disabled={generating[tool.id]}
+                      style={{ padding: '7px 14px', borderRadius: 8, border: 'none', background: generating[tool.id] ? '#1E2D3D' : 'linear-gradient(135deg, #7C3AED, #A78BFA)', color: '#fff', fontSize: 12, fontWeight: 600, cursor: generating[tool.id] ? 'wait' : 'pointer', whiteSpace: 'nowrap' }}>
+                      {generating[tool.id] ? '⏳ Génération…' : '✨ Générer'}
+                    </button>
                   </div>
+                  {genError[tool.id] && (
+                    <div style={{ padding: '10px 14px', background: 'rgba(252,129,129,0.1)', border: '1px solid #FC818144', borderRadius: 8, fontSize: 12, color: '#FC8181' }}>
+                      ✗ {genError[tool.id]}
+                    </div>
+                  )}
 
                   {/* Contenu généré (édition manuelle pour l'instant) */}
                   <Field label="Contenu généré (HTML)" hint="Le contenu qui s'affiche sous l'outil. Tu peux le coller manuellement, ou attendre la prochaine étape qui ajoute le bouton de génération IA.">
