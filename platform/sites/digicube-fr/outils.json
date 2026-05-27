@@ -1,0 +1,30 @@
+{
+  "menu_label": "Outils",
+  "outils": {
+    "convertisseur-ht-ttc": {
+      "active": true,
+      "slug": "convertir-ht-ttc",
+      "title": "Convertisseur HT en TTC : calcul TVA instantané",
+      "meta_description": "Convertissez vos prix HT en TTC en 1 clic avec notre outil gratuit. Compatible TVA 20%, 10%, 5,5% et 2,1%.",
+      "h1": "Convertisseur HT/TTC : calculez la TVA en 1 clic",
+      "prompt_redaction": "Rédige un guide pratique sur le calcul de la TVA et la conversion HT/TTC pour un dirigeant de TPE/PME. Ton accessible, exemples chiffrés concrets, mise en garde sur les taux applicables selon le secteur.",
+      "plan_h2": [
+        "Comment calculer la TVA en pratique ?",
+        "Les 4 taux de TVA en France et leurs usages",
+        "Erreurs fréquentes à éviter"
+      ],
+      "faq": [
+        {
+          "question": "Quel taux de TVA appliquer ?",
+          "answer": "Le taux standard est de 20%. Le taux intermédiaire (10%) s'applique à la restauration et certains travaux. Le taux réduit (5,5%) concerne l'alimentation, livres, etc. Le taux particulier (2,1%) ne concerne que les médicaments remboursés et la presse."
+        },
+        {
+          "question": "Comment calculer la TVA à partir du TTC ?",
+          "answer": "Divisez le montant TTC par (1 + taux de TVA). Par exemple, pour 120 € TTC à 20% : 120 / 1,20 = 100 € HT, donc 20 € de TVA."
+        }
+      ],
+      "nb_mots": 1200,
+      "contenu_genere": ""
+    }
+  }
+}
