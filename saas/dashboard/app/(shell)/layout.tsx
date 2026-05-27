@@ -48,6 +48,7 @@ export default function ShellLayout({ children }: { children: React.ReactNode })
     ...(pageTypes.classement ? [{ id: 'classements', label: '📊 Classements', href: `/sites/${siteId}/classements` }] : []),
     { id: 'outils', label: '🧰 Outils', href: `/sites/${siteId}/outils` },
     { id: 'deploy', label: '🚀 Déploiement', href: `/sites/${siteId}/deploy` },
+    { id: 'indexation', label: '🔍 Indexation', href: `/sites/${siteId}/indexation` },
     { id: 'settings', label: '⚙️ Paramètres', href: `/sites/${siteId}/settings` },
   ] : []
 
