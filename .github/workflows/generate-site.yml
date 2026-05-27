@@ -43,12 +43,26 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       - name: Generate static site
         run: python platform/scripts/generate.py --site ${{ inputs.site }}
+
+      # ── ① Création du fichier de vérification IndexNow ────────────────
+      # IndexNow vérifie la possession du domaine en fetchant en HTTPS le
+      # fichier <key>.txt à la racine du site. Comme output/ est servi
+      # par Cloudflare Pages, on crée le fichier ici avant le deploy.
+      - name: Create IndexNow verification file
+        if: ${{ env.INDEXNOW_KEY != '' }}
+        run: |
+          KEY="${{ secrets.INDEXNOW_KEY }}"
+          KEY_FILE="platform/sites/${{ inputs.site }}/output/${KEY}.txt"
+          echo "$KEY" > "$KEY_FILE"
+          echo "✓ Fichier de vérification créé : ${KEY}.txt"
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+
       - name: Commit generated files (with push retry)
         # ── Retry loop contre les collisions de push concurrent ──────────
         # Bug d'origine observé en mai 2026 : quand plusieurs déploiements
-        # tournent en parallèle (cas normal du HUB Viseoweb qui peut lancer
-        # 5+ sites en même temps), le 2e workflow voit son push rejeté avec
-        # "cannot lock ref 'refs/heads/main': is at XXX but expected YYY".
+        # tournent en parallèle (cas normal du HUB Viseoweb), le 2e workflow
+        # voit son push rejeté avec "cannot lock ref 'refs/heads/main'".
         # On enchaîne fetch + rebase + push jusqu'à 5 fois avec backoff
         # progressif (2s, 4s, 6s, 8s, 10s). Au-delà → erreur fatale.
         run: |
@@ -85,8 +99,6 @@ jobs:
 
           if [ "$PUSH_OK" != "1" ]; then
             echo "❌ Push échoué après 5 tentatives — main est trop disputé"
-            echo "   Causes probables : trop de workflows en parallèle, ou incident GitHub"
-            echo "   Action : relancer ce workflow (Re-run failed jobs) après ~1 minute"
             exit 1
           fi
         env:
@@ -120,3 +132,59 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      # ── ② Soumission à IndexNow ───────────────────────────────────────
+      # Le site est déployé sur Cloudflare et le fichier <key>.txt est
+      # accessible. On attend 10s pour que Cloudflare propage les nouvelles
+      # pages, puis on soumet TOUTES les URLs du sitemap.xml.
+      # Effet de bord : platform/sites/<site>/indexation.json est mis à jour
+      # avec le statut HTTP par URL (utilisé par l'onglet Indexation du HUB).
+      - name: Submit URLs to IndexNow
+        if: ${{ env.INDEXNOW_KEY != '' }}
+        run: |
+          echo "⏳ Attente 10s pour propagation Cloudflare..."
+          sleep 10
+          python platform/scripts/submit_indexnow.py --site ${{ inputs.site }}
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+
+      # ── ③ Commit du fichier indexation.json (avec retry) ──────────────
+      # On commit séparément car indexation.json est modifié APRÈS le commit
+      # principal du build. Échec non bloquant : si le push final foire, on
+      # ne fait pas planter le workflow (le déploiement Cloudflare a réussi).
+      - name: Commit indexation.json (with retry)
+        if: ${{ always() && env.INDEXNOW_KEY != '' }}
+        run: |
+          git config user.name "Viseoweb HUB"
+          git config user.email "hub@viseoweb.com"
+          git add "platform/sites/${{ inputs.site }}/indexation.json" 2>/dev/null || true
+
+          if git diff --cached --quiet; then
+            echo "ℹ Pas de mise à jour indexation.json à commit"
+            exit 0
+          fi
+
+          git commit -m "IndexNow: statut indexation ${{ inputs.site }}"
+
+          PUSH_OK=0
+          for i in 1 2 3 4 5; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              git rebase --abort 2>/dev/null || true
+              sleep $((i * 2))
+              continue
+            fi
+            if git push origin HEAD:main; then
+              echo "✓ Push indexation.json réussi (tentative $i/5)"
+              PUSH_OK=1
+              break
+            fi
+            sleep $((i * 2))
+          done
+
+          if [ "$PUSH_OK" != "1" ]; then
+            echo "⚠ Push indexation.json échoué après 5 tentatives (non bloquant)"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
