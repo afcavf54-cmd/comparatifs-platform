@@ -105,6 +105,35 @@ def main(site_slug: str) -> int:
         keep_trailing_newline=True,
     )
 
+    # ── Filtres et globals custom (compat avec generate.py) ─────
+    # Le footer (et potentiellement d'autres includes) utilise des
+    # filtres custom définis par generate.py. On les recopie ici
+    # pour que le rendu ne plante pas en standalone.
+    import datetime as _dt
+
+    _MOIS_FR = [
+        "janvier", "février", "mars", "avril", "mai", "juin",
+        "juillet", "août", "septembre", "octobre", "novembre", "décembre",
+    ]
+
+    def _fr_date(value, fmt: str = "long"):
+        if value is None:
+            value = _dt.date.today()
+        if isinstance(value, str):
+            try:
+                value = _dt.datetime.fromisoformat(value)
+            except ValueError:
+                return value
+        if not isinstance(value, (_dt.date, _dt.datetime)):
+            return str(value)
+        return f"{value.day} {_MOIS_FR[value.month - 1]} {value.year}"
+
+    env.filters["fr_date"] = _fr_date
+    env.globals["today"] = _dt.date.today()
+    env.globals["now"] = _dt.datetime.now()
+    env.globals["build_date"] = _fr_date(_dt.date.today())
+    env.globals["year"] = _dt.date.today().year
+
     # ── 4) Domaine pour URLs publiques ──────────────────────────
     domain = (site_cfg.get("domain") or "").rstrip("/")
 
