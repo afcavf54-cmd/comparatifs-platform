@@ -156,59 +156,43 @@ main{max-width:1200px;margin:0 auto;padding:64px 5vw 80px}
 
 <!-- NAV -->
 <style>
-nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;position:sticky;top:0;z-index:1000;isolation:isolate}
-.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;position:relative}
-.nav-logo{font-family:'',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+.nav-logo{font-family:'',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
+.nav-logo span{color:var(--accent2)}
 .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
 .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
-.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.1)}
-.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
 .nav-cta:hover{opacity:.88}
 .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
-.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
-.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.nav-burger.open span:nth-child(2){opacity:0}
-.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
 .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
 .nav-mobile.open{display:flex}
-.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;font-weight:500;padding:12px 16px;border-radius:10px;transition:.15s}
-.nav-mobile a:hover,.nav-mobile a.active{color:#fff;background:rgba(255,255,255,.08)}
-.nav-mobile .nav-cta{margin-top:8px;justify-content:center;border-radius:12px}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
 @media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
 </style>
 
 <nav>
   <div class="nav-inner">
-    <a href="/" class="nav-logo"><img src="/logo.png" alt="editions-dp.com" style="height:34px;width:auto;object-fit:contain;vertical-align:middle"></a>
+    <a href="/" class="nav-logo"><img src="/logo.png" alt="editions-dp.com" style="height:36px;width:auto;object-fit:contain;vertical-align:middle"></a>
     <div class="nav-links">
-        <a href="/nos-comparateurs">Nos comparateurs</a>
+      <a href="/nos-comparateurs">Nos comparateurs</a>
         <a href="/avis">Avis</a>
         <a href="/blog">Blog</a>
     </div>
     <a href="/contact" class="nav-cta">Contact</a>
-    <button class="nav-burger" id="burger" aria-label="Menu" onclick="toggleMenu()">
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-mobile" id="nav-mobile">
-      <a href="/nos-comparateurs">Nos comparateurs</a>
+    <a href="/nos-comparateurs">Nos comparateurs</a>
       <a href="/avis">Avis</a>
       <a href="/blog">Blog</a>
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
 </nav>
-
-<script>
-function toggleMenu(){
-  var m=document.getElementById('nav-mobile');
-  var b=document.getElementById('burger');
-  m.classList.toggle('open');b.classList.toggle('open');
-}
-document.addEventListener('click',function(e){
-  var m=document.getElementById('nav-mobile');var b=document.getElementById('burger');
-  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');b.classList.remove('open');}
-});
-</script>
 <!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">Comparatifs logiciels 2026</div>
@@ -618,6 +602,22 @@ document.addEventListener('click',function(e){
       <a href="/blog" class="blog-recent-link">Voir tous les articles →</a>
     </div>
     <div class="blog-recent-grid">
+      <a href="/1232-erreur-sur-fiche-de-paie-que-faire-qui-est-responsable-quel-delai" class="blog-recent-card">
+        <div class="blog-recent-card-img">
+            <div class="blog-recent-card-img-placeholder">📄</div>
+        </div>
+        <div class="blog-recent-card-body">
+<div class="blog-recent-card-cat">Ressources Humaines</div>          <div class="blog-recent-card-title">Erreur sur fiche de paie : que faire, qui est responsable, quel délai ?</div>
+<div class="blog-recent-card-excerpt">Les erreurs de paie : un casse-tête fréquent dans les TPE Quand je découvre une erreur sur une fiche de paie dans mon équipe, je ressens toujours cette petite bouffée d'angoisse.…</div><div class="blog-recent-card-date">📅 27 mai 2026</div>        </div>
+      </a>
+      <a href="/6469-externalisation-de-la-paie-grille-tarifaire-et-facteurs-de-cout" class="blog-recent-card">
+        <div class="blog-recent-card-img">
+            <div class="blog-recent-card-img-placeholder">📄</div>
+        </div>
+        <div class="blog-recent-card-body">
+<div class="blog-recent-card-cat">Ressources Humaines</div>          <div class="blog-recent-card-title">Externalisation de la paie : grille tarifaire et facteurs de coût</div>
+<div class="blog-recent-card-excerpt">Le coût de l'externalisation de la paie : ce que j'ai appris après 5 ans de galère En 2019, je me suis retrouvé avec une paie d'entreprise complètement plantée. Mon comptable…</div><div class="blog-recent-card-date">📅 27 mai 2026</div>        </div>
+      </a>
       <a href="/9399-externalisation-de-la-paie-tout-ce-qu-il-faut-savoir-avant-de-se-lancer" class="blog-recent-card">
         <div class="blog-recent-card-img">
             <div class="blog-recent-card-img-placeholder">📄</div>
@@ -649,22 +649,6 @@ document.addEventListener('click',function(e){
         <div class="blog-recent-card-body">
 <div class="blog-recent-card-cat">Ressources Humaines</div>          <div class="blog-recent-card-title">Automatisation de la paie : comment ça marche et pourquoi l'adopter ?</div>
 <div class="blog-recent-card-excerpt">Pourquoi l'automatisation de la paie devient-elle indispensable ? Je passe trop de temps chaque mois sur la paie. Entre les calculs, les déclarations et les erreurs à corriger,…</div><div class="blog-recent-card-date">📅 26 mai 2026</div>        </div>
-      </a>
-      <a href="/4184-gestionnaire-de-paie-quel-salaire-selon-l-experience" class="blog-recent-card">
-        <div class="blog-recent-card-img">
-            <div class="blog-recent-card-img-placeholder">📄</div>
-        </div>
-        <div class="blog-recent-card-body">
-<div class="blog-recent-card-cat">Ressources Humaines</div>          <div class="blog-recent-card-title">Gestionnaire de paie : quel salaire selon l'expérience ?</div>
-<div class="blog-recent-card-excerpt">Combien gagne vraiment un gestionnaire de paie ? Je vais être direct : les salaires dans la gestion de la paie varient énormément. Après plus d'une décennie à diriger mon…</div><div class="blog-recent-card-date">📅 25 mai 2026</div>        </div>
-      </a>
-      <a href="/9006-gestionnaire-de-la-paie-quel-est-son-role-dans-l-entreprise" class="blog-recent-card">
-        <div class="blog-recent-card-img">
-            <div class="blog-recent-card-img-placeholder">📄</div>
-        </div>
-        <div class="blog-recent-card-body">
-<div class="blog-recent-card-cat">Ressources Humaines</div>          <div class="blog-recent-card-title">Gestionnaire de la paie : quel est son rôle dans l'entreprise ?</div>
-<div class="blog-recent-card-excerpt">Avec 11 ans d'expérience dans le pilotage d'une TPE, j'ai vu évoluer les enjeux RH au fil des années. Le gestionnaire de paie reste un rouage essentiel, même si son rôle a…</div><div class="blog-recent-card-date">📅 25 mai 2026</div>        </div>
       </a>
     </div>
   </section>

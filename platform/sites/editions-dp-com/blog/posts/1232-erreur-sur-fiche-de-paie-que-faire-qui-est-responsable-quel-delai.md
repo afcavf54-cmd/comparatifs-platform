@@ -3,15 +3,22 @@ title: 'Erreur sur fiche de paie : que faire, qui est responsable, quel délai ?
 slug: 1232-erreur-sur-fiche-de-paie-que-faire-qui-est-responsable-quel-delai
 date: '2026-05-27T16:00:00+02:00'
 categorie: Ressources Humaines
-meta_title: 'Erreur sur fiche de paie : quels recours et délais pour l''employeur et le salarié ?'
-meta_description: 'Découvrez comment réagir face à une erreur sur fiche de paie : responsabilités légales, délais de correction et procédures à suivre pour les employeurs et salariés.'
+meta_title: 'Erreur sur fiche de paie : quels recours et délais pour l''employeur
+  et le salarié ?'
+meta_description: 'Découvrez comment réagir face à une erreur sur fiche de paie :
+  responsabilités légales, délais de correction et procédures à suivre pour les employeurs
+  et salariés.'
 min_words: 3000
 status: published
 link_anchors:
 - text: erreur sur fiche de paie
   max: 2
+related_posts:
+- 1501-bulletin-de-paie-dematerialise-obligations-legales-et-mise-en-uvre
+- 2742-le-talent-management-comment-developper-les-talents-en-entreprise
+- 6829-fiche-de-paie-en-ligne-acces-lecture-et-decryptage
+- 3345-comment-choisir-un-logiciel-gepp-pour-votre-entreprise
 ---
-
 <h2>Les erreurs de paie : un casse-tête fréquent dans les TPE</h2>
 
 <p>Quand je découvre une erreur sur une fiche de paie dans mon équipe, je ressens toujours cette petite bouffée d'angoisse. <strong>Qui va devoir corriger ?</strong> Combien de temps ça va prendre ? Et surtout, quelles sont mes obligations légales ? Après 11 ans à diriger une TPE, j'ai appris que ces erreurs arrivent plus souvent qu'on ne le croit, même avec les meilleurs outils.</p>
