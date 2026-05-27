@@ -105,30 +105,13 @@ def main(site_slug: str) -> int:
         keep_trailing_newline=True,
     )
 
-    # ── 4) Préparer la nav (si _nav.html.j2 existe) ─────────────
-    nav_html = ""
-    nav_candidates = ["base/_nav.html.j2", "_nav.html.j2", "partials/_nav.html.j2"]
-    for nav_path in nav_candidates:
-        try:
-            nav_tpl = env.get_template(nav_path)
-            nav_html = nav_tpl.render(site=site_cfg, theme=theme_cfg, config=config)
-            print(f"   nav chargée depuis : {nav_path}")
-            break
-        except TemplateNotFound:
-            continue
-        except Exception as e:
-            print(f"   ⚠ nav {nav_path} : erreur de rendu ({e}) — fallback")
-
-    if not nav_html:
-        print(f"   ⚠ Aucune nav trouvée (essayé : {nav_candidates}). La page outil sera sans nav.")
-
-    # ── 5) Domaine pour URLs publiques ──────────────────────────
+    # ── 4) Domaine pour URLs publiques ──────────────────────────
     domain = (site_cfg.get("domain") or "").rstrip("/")
 
     # S'assurer que le dossier output existe
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # ── 6) Générer chaque outil actif ───────────────────────────
+    # ── 5) Générer chaque outil actif ───────────────────────────
     nb_generated = 0
     nb_skipped = 0
     nb_errors = 0
@@ -177,7 +160,6 @@ def main(site_slug: str) -> int:
                 site=site_cfg,
                 theme=theme_cfg,
                 config=config,
-                nav_html=nav_html,
             )
         except Exception as e:
             print(f"  ❌ {outil_id} : erreur de rendu — {e}")
@@ -198,7 +180,7 @@ def main(site_slug: str) -> int:
         nb_generated += 1
         print(f"  ✓ {slug}.html → {public_url}")
 
-    # ── 7) Résumé final ─────────────────────────────────────────
+    # ── 6) Résumé final ─────────────────────────────────────────
     print("─" * 50)
     print(f"✅ {nb_generated} outil(s) publié(s), {nb_skipped} hors ligne, {nb_errors} erreur(s)")
 
