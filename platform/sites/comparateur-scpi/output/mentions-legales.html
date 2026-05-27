@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mentions légales | Comparateur SCPI</title>
 <meta name="description" content="Mentions légales du site Comparateur SCPI : éditeur, hébergeur, propriété intellectuelle.">
-<link rel="canonical" href="https://comparateur-scpi.eu/mentions-legales">
+<link rel="canonical" href="https://www.comparateur-scpi.eu/mentions-legales">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=comparateur-scpi" rel="stylesheet">
 <style>
@@ -54,7 +54,25 @@ p{color:var(--ink2);margin-bottom:12px;font-size:16px}
 </head>
 <body>
 
-<nav>
+<style>
+nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+nav.site-nav .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
+nav.site-nav .nav-logo span{color:var(--accent2)}
+nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
+nav.site-nav .nav-cta:hover{opacity:.88}
+nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+nav.site-nav .nav-mobile.open{display:flex}
+nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
+</style>
+
+<nav class="site-nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo">Comparateur<span>SCPI</span></a>
     <div class="nav-links">
@@ -70,16 +88,15 @@ p{color:var(--ink2);margin-bottom:12px;font-size:16px}
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
 </nav>
-
 <main>
   <h1>Mentions légales</h1>
-  <p class="last-update">Dernière mise à jour : 29 avril 2026</p>
+  <p class="last-update">Dernière mise à jour : 27 mai 2026</p>
 
   <h2>1. Éditeur du site</h2>
   <p>Le site <strong>comparateur-scpi.eu</strong> est édité par :</p>
   <p>
     <strong>Comparateur SCPI</strong><br>
-    Site web : <a href="https://comparateur-scpi.eu">https://comparateur-scpi.eu</a><br>
+    Site web : <a href="https://www.comparateur-scpi.eu">https://www.comparateur-scpi.eu</a><br>
     Email : contact@comparateur-scpi.eu
   </p>
 
@@ -163,19 +180,11 @@ p{color:var(--ink2);margin-bottom:12px;font-size:16px}
 
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 comparateur-scpi.eu — Données actualisées le 29 avril 2026
+        © 2026 comparateur-scpi.eu — Données actualisées le 27 mai 2026
       </div>
     </div>
   </div>
 </footer>
-<script>
-function toggleMenu(){
-  document.getElementById('nav-mobile').classList.toggle('open');
-}
-document.addEventListener('click',function(e){
-  var m=document.getElementById('nav-mobile'),b=document.getElementById('burger');
-  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');}
-});
-</script>
+
 </body>
 </html>

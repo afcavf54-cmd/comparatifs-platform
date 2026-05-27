@@ -5,29 +5,41 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plan du site | Comparateur SCPI</title>
-<meta name="description" content="Plan du site Comparateur SCPI : toutes les pages disponibles.">
-<link rel="canonical" href="https://comparateur-scpi.eu/plan-du-site">
+<meta name="description" content="Plan du site Comparateur SCPI - toutes les pages disponibles.">
+<link rel="canonical" href="https://www.comparateur-scpi.eu/plan-du-site">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=comparateur-scpi" rel="stylesheet">
 <style>
 :root{
   --bg:#F4F6FB;
   --surface:#fff;
-  --surface2:#F0ECE5;
   --ink:#0F1A2E;
   --ink2:#6B6560;
   --ink3:#A09890;
   --accent:#400000;
-  --accent2:#E8410A;--cta:#F59E0B;--cta-text:#ffffff;
+  --accent2:#E8410A;
+  --cta:#F59E0B;
+  --cta-text:#ffffff;
   --border:#E2DDD6;
   --r:12px;
   --r2:20px;
-  --green:#1A7A4A;
-}};--surface:#fff;--ink:#0F1A2E;--ink2:#4A5568;--ink3:#718096;--accent:#400000;--accent2:#E8410A;--border:#E2E8F0;--r:12px;--r2:20px}
+}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
+a{text-decoration:none;color:inherit}
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;height:64px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
+.nav-cta:hover{opacity:.88}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
 main{max-width:1200px;margin:0 auto;padding:56px 5vw 80px}
 h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,48px);font-weight:400;letter-spacing:-.02em;margin-bottom:8px}
 .subtitle{font-size:16px;color:var(--ink3);margin-bottom:48px}
@@ -38,17 +50,36 @@ h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,48px);font-weig
 .sitemap-section li{padding:7px 0;border-bottom:0.5px solid var(--border);font-size:15px}
 .sitemap-section li:last-child{border-bottom:none}
 .sitemap-section a{color:var(--ink2);display:flex;align-items:center;gap:8px;transition:.15s}
-.sitemap-section a:hover{color:var(--accent);text-decoration:none}
-.sitemap-section a::before{content:"\2192";color:var(--accent);font-size:12px;flex-shrink:0}
+.sitemap-section a:hover{color:var(--accent)}
+.sitemap-section a::before{content:"→";color:var(--accent);font-size:12px;flex-shrink:0}
 .sitemap-full{grid-column:1/-1}
-.pages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
-.pages-grid a{font-size:14px}
-@media(max-width:768px){.sitemap-grid{grid-template-columns:1fr}.pages-grid{grid-template-columns:1fr 1fr}}
+.cat-group-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);padding-bottom:8px;border-bottom:1px solid var(--border);margin-bottom:12px;margin-top:20px}
+.cat-group-title:first-child{margin-top:0}
+@media(max-width:768px){.sitemap-grid{grid-template-columns:1fr}.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
 </style>
+<script async data-id="101505111" src="//static.getclicky.com/js"></script> 
 </head>
 <body>
 
-<nav>
+<style>
+nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+nav.site-nav .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
+nav.site-nav .nav-logo span{color:var(--accent2)}
+nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
+nav.site-nav .nav-cta:hover{opacity:.88}
+nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+nav.site-nav .nav-mobile.open{display:flex}
+nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
+</style>
+
+<nav class="site-nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo">Comparateur<span>SCPI</span></a>
     <div class="nav-links">
@@ -64,10 +95,9 @@ h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,48px);font-weig
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
 </nav>
-
 <main>
   <h1>Plan du site</h1>
-  <p class="subtitle">Comparateur SCPI - toutes les pages disponibles</p>
+  <p class="subtitle">Comparateur SCPI — toutes les pages disponibles</p>
 
   <div class="sitemap-grid">
 
@@ -75,79 +105,17 @@ h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,48px);font-weig
       <h2>Pages principales</h2>
       <ul>
         <li><a href="/">Accueil</a></li>
-        <li><a href="/comparatifs-scpi">Tous les comparatifs</a></li>
-        <li><a href="/avis-scpi">Tous les avis</a></li>
+        <li><a href="/nos-comparateurs">Nos comparateurs</a></li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="/mentions-legales">Mentions légales</a></li>
         <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
       </ul>
     </div>
 
-    <div class="sitemap-section">
-      <h2>Avis</h2>
-      <ul>
-        <li><a href="/avis-wemo-one">Avis Wemo One</a></li>
-        <li><a href="/avis-iroko-zen">Avis Iroko Zen</a></li>
-        <li><a href="/avis-comete">Avis Comète</a></li>
-        <li><a href="/avis-corum-origin">Avis Corum Origin</a></li>
-        <li><a href="/avis-remake-live">Avis Remake Live</a></li>
-        <li><a href="/avis-iroko-atlas">Avis Iroko Atlas</a></li>
-        <li><a href="/avis-log-in">Avis Log In</a></li>
-        <li><a href="/avis-transitions-europe">Avis Transitions Europe</a></li>
-        <li><a href="/avis-principal-inside">Avis Principal Inside</a></li>
-        <li><a href="/avis-upeka">Avis Upêka</a></li>
-      </ul>
-    </div>
-
     <div class="sitemap-section sitemap-full">
-      <h2>Comparatifs (45 analyses)</h2>
-      <div class="pages-grid">
-        <a href="/iroko-zen-vs-wemo-one">Iroko Zen vs Wemo One</a>
-        <a href="/iroko-zen-vs-remake-live">Iroko Zen vs Remake Live</a>
-        <a href="/iroko-zen-vs-log-in">Iroko Zen vs Log In</a>
-        <a href="/iroko-zen-vs-transitions-europe">Iroko Zen vs Transitions Europe</a>
-        <a href="/iroko-zen-vs-principal-inside">Iroko Zen vs Principal Inside</a>
-        <a href="/iroko-zen-vs-upeka">Iroko Zen vs Upêka</a>
-        <a href="/comete-vs-wemo-one">Comète vs Wemo One</a>
-        <a href="/comete-vs-iroko-zen">Comète vs Iroko Zen</a>
-        <a href="/comete-vs-corum-origin">Comète vs Corum Origin</a>
-        <a href="/comete-vs-remake-live">Comète vs Remake Live</a>
-        <a href="/comete-vs-iroko-atlas">Comète vs Iroko Atlas</a>
-        <a href="/comete-vs-log-in">Comète vs Log In</a>
-        <a href="/comete-vs-transitions-europe">Comète vs Transitions Europe</a>
-        <a href="/comete-vs-principal-inside">Comète vs Principal Inside</a>
-        <a href="/comete-vs-upeka">Comète vs Upêka</a>
-        <a href="/corum-origin-vs-wemo-one">Corum Origin vs Wemo One</a>
-        <a href="/corum-origin-vs-iroko-zen">Corum Origin vs Iroko Zen</a>
-        <a href="/corum-origin-vs-remake-live">Corum Origin vs Remake Live</a>
-        <a href="/corum-origin-vs-iroko-atlas">Corum Origin vs Iroko Atlas</a>
-        <a href="/corum-origin-vs-log-in">Corum Origin vs Log In</a>
-        <a href="/corum-origin-vs-transitions-europe">Corum Origin vs Transitions Europe</a>
-        <a href="/corum-origin-vs-principal-inside">Corum Origin vs Principal Inside</a>
-        <a href="/corum-origin-vs-upeka">Corum Origin vs Upêka</a>
-        <a href="/remake-live-vs-wemo-one">Remake Live vs Wemo One</a>
-        <a href="/remake-live-vs-transitions-europe">Remake Live vs Transitions Europe</a>
-        <a href="/remake-live-vs-upeka">Remake Live vs Upêka</a>
-        <a href="/iroko-atlas-vs-wemo-one">Iroko Atlas vs Wemo One</a>
-        <a href="/iroko-atlas-vs-iroko-zen">Iroko Atlas vs Iroko Zen</a>
-        <a href="/iroko-atlas-vs-remake-live">Iroko Atlas vs Remake Live</a>
-        <a href="/iroko-atlas-vs-log-in">Iroko Atlas vs Log In</a>
-        <a href="/iroko-atlas-vs-transitions-europe">Iroko Atlas vs Transitions Europe</a>
-        <a href="/iroko-atlas-vs-principal-inside">Iroko Atlas vs Principal Inside</a>
-        <a href="/iroko-atlas-vs-upeka">Iroko Atlas vs Upêka</a>
-        <a href="/log-in-vs-wemo-one">Log In vs Wemo One</a>
-        <a href="/log-in-vs-remake-live">Log In vs Remake Live</a>
-        <a href="/log-in-vs-transitions-europe">Log In vs Transitions Europe</a>
-        <a href="/log-in-vs-principal-inside">Log In vs Principal Inside</a>
-        <a href="/log-in-vs-upeka">Log In vs Upêka</a>
-        <a href="/transitions-europe-vs-wemo-one">Transitions Europe vs Wemo One</a>
-        <a href="/transitions-europe-vs-upeka">Transitions Europe vs Upêka</a>
-        <a href="/principal-inside-vs-wemo-one">Principal Inside vs Wemo One</a>
-        <a href="/principal-inside-vs-remake-live">Principal Inside vs Remake Live</a>
-        <a href="/principal-inside-vs-transitions-europe">Principal Inside vs Transitions Europe</a>
-        <a href="/principal-inside-vs-upeka">Principal Inside vs Upêka</a>
-        <a href="/upeka-vs-wemo-one">Upêka vs Wemo One</a>
-      </div>
+      <h2>Nos classements</h2>
+        <ul>
+        </ul>
     </div>
 
   </div>
@@ -197,10 +165,11 @@ h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,48px);font-weig
 
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 comparateur-scpi.eu — Données actualisées le 29 avril 2026
+        © 2026 comparateur-scpi.eu — Données actualisées le 27 mai 2026
       </div>
     </div>
   </div>
 </footer>
+
 </body>
 </html>
