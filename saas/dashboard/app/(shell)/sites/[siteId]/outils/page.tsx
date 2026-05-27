@@ -19,12 +19,12 @@ const CATALOG = [
       title: 'Convertisseur HT en TTC : calcul TVA instantané',
       meta_description: "Convertissez vos prix HT en TTC en 1 clic avec notre outil gratuit. Compatible TVA 20%, 10%, 5,5% et 2,1%.",
       h1: 'Convertisseur HT/TTC : calculez la TVA en 1 clic',
-      prompt_redaction: "Rédige un guide pratique sur le calcul de la TVA et la conversion HT/TTC pour un dirigeant de TPE/PME. Ton accessible, exemples chiffrés concrets, mise en garde sur les taux applicables selon le secteur.",
-      plan_h2: [
-        'Comment calculer la TVA en pratique ?',
-        'Les 4 taux de TVA en France et leurs usages',
-        'Erreurs fréquentes à éviter',
-      ],
+      prompt_redaction: `Rédige un guide pratique sur le calcul de la TVA et la conversion HT/TTC pour un dirigeant de TPE/PME. Ton accessible, exemples chiffrés concrets, mise en garde sur les taux applicables selon le secteur.
+
+Plan attendu :
+<h2> Comment calculer la TVA en pratique ?
+<h2> Les 4 taux de TVA en France et leurs usages
+<h2> Erreurs fréquentes à éviter`,
       faq: [
         { question: 'Quel taux de TVA appliquer ?', answer: "Le taux standard est de 20%. Le taux intermédiaire (10%) s'applique à la restauration et certains travaux. Le taux réduit (5,5%) concerne l'alimentation, livres, etc. Le taux particulier (2,1%) ne concerne que les médicaments remboursés et la presse." },
         { question: 'Comment calculer la TVA à partir du TTC ?', answer: 'Divisez le montant TTC par (1 + taux de TVA). Par exemple, pour 120 € TTC à 20% : 120 / 1,20 = 100 € HT, donc 20 € de TVA.' },
@@ -44,7 +44,6 @@ interface OutilState {
   meta_description: string
   h1: string
   prompt_redaction: string
-  plan_h2: string[]
   faq: FAQItem[]
   nb_mots: number
   contenu_genere?: string
@@ -63,7 +62,6 @@ function emptyState(toolId: string): OutilState {
     meta_description: tool?.defaults.meta_description || '',
     h1: tool?.defaults.h1 || '',
     prompt_redaction: tool?.defaults.prompt_redaction || '',
-    plan_h2: tool?.defaults.plan_h2 || [],
     faq: tool?.defaults.faq || [],
     nb_mots: tool?.defaults.nb_mots || 1000,
     contenu_genere: '',
@@ -86,6 +84,7 @@ export default function OutilsPage() {
   const [saving, setSaving] = useState(false)
   const [generating, setGenerating] = useState<Record<string, boolean>>({})
   const [genError, setGenError] = useState<Record<string, string>>({})
+  const [genInfo, setGenInfo] = useState<Record<string, string>>({})
   const [msg, setMsg] = useState('')
   const [loading, setLoading] = useState(true)
 
@@ -170,7 +169,6 @@ export default function OutilsPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           prompt_redaction: state.prompt_redaction,
-          plan_h2: state.plan_h2,
           faq: state.faq,
           nb_mots: state.nb_mots,
           outil_name: tool.name,
@@ -179,6 +177,14 @@ export default function OutilsPage() {
       const d = await r.json()
       if (d.ok && d.html) {
         updateOutil(toolId, { contenu_genere: d.html })
+        const layers = []
+        if (d.global_used) layers.push('prompt global')
+        if (d.persona_used) layers.push('persona du site')
+        const msg = layers.length > 0
+          ? `✓ Généré avec : ${layers.join(' + ')}`
+          : '✓ Généré (sans prompt global ni persona — pense à les configurer)'
+        setGenInfo(prev => ({ ...prev, [toolId]: msg }))
+        setTimeout(() => setGenInfo(prev => ({ ...prev, [toolId]: '' })), 7000)
       } else {
         setGenError(prev => ({ ...prev, [toolId]: d.error || 'Erreur de génération' }))
       }
@@ -285,12 +291,9 @@ export default function OutilsPage() {
 
                   {/* Contenu rédactionnel */}
                   <SectionTitle>Contenu rédactionnel (sous l'outil)</SectionTitle>
-                  <Field label="Prompt IA" hint="Donne à Claude la consigne pour rédiger le contenu (ton, public cible, angle…)">
+                  <Field label="Prompt IA" hint="Consigne complète pour Claude (ton, public cible, angle, plan Hn…). Le prompt global du template et le persona du site sont ajoutés automatiquement par-dessus.">
                     <textarea value={state.prompt_redaction} onChange={e => updateOutil(tool.id, { prompt_redaction: e.target.value })}
                       rows={4} style={{ ...inputStyle, fontFamily: 'inherit', resize: 'vertical' }} />
-                  </Field>
-                  <Field label="Plan H2 (titres des sections)">
-                    <StringList items={state.plan_h2} onChange={items => updateOutil(tool.id, { plan_h2: items })} placeholder="Ex: Comment calculer la TVA ?" />
                   </Field>
                   <Field label="Nombre de mots cible">
                     <input type="number" value={state.nb_mots} onChange={e => updateOutil(tool.id, { nb_mots: parseInt(e.target.value) || 0 })}
@@ -313,6 +316,11 @@ export default function OutilsPage() {
                   {genError[tool.id] && (
                     <div style={{ padding: '10px 14px', background: 'rgba(252,129,129,0.1)', border: '1px solid #FC818144', borderRadius: 8, fontSize: 12, color: '#FC8181' }}>
                       ✗ {genError[tool.id]}
+                    </div>
+                  )}
+                  {genInfo[tool.id] && (
+                    <div style={{ padding: '10px 14px', background: 'rgba(0,212,170,0.08)', border: '1px solid #00D4AA44', borderRadius: 8, fontSize: 12, color: '#00D4AA' }}>
+                      {genInfo[tool.id]}
                     </div>
                   )}
 
