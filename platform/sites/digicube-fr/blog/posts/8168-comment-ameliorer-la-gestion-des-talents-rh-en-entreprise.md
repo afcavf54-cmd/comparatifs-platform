@@ -13,7 +13,9 @@ min_words: 3000
 link_anchors:
 - text: gestion des talents RH
   max: 2
-related_posts: []
+related_posts:
+- 7426-comment-choisir-un-logiciel-gepp-adapte-a-votre-entreprise
+- 3951-qu-est-ce-que-la-definition-de-la-gestion-des-talents
 ---
 <h2>Ma vision de la gestion des talents après 2 ans d'expérience</h2>
 
