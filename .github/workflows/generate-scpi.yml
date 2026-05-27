@@ -92,6 +92,16 @@ jobs:
             echo "✓ Pages SCPI résiduelles supprimées (avis individuels préservés)"
           fi
 
+      # ── Génération des pages d'outils interactifs ─────────────────────
+      # Lit platform/sites/<site>/outils.json et publie une page HTML par
+      # outil "active":true dans output/<slug>.html. Script autonome :
+      # ne touche pas à generate.py (limite les risques de régression).
+      # S'exécute APRÈS generate.py (les pages outils ne risquent pas
+      # d'être supprimées par le cleanup ci-dessus) et AVANT le commit +
+      # deploy Cloudflare (les pages sont publiées avec le reste).
+      - name: Generate tools pages
+        run: python platform/scripts/_outils.py ${{ inputs.site }}
+
       # ── ① Création du fichier de vérification IndexNow ────────────────
       # IndexNow vérifie la possession du domaine en fetchant en HTTPS le
       # fichier <key>.txt à la racine du site. Comme output/ est servi
