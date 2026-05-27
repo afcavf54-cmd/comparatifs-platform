@@ -19,7 +19,7 @@
   "headline": "Iroko Atlas vs Wemo One : comparatif 2026",
   "description": "Comparatif complet SCPI Iroko Atlas vs Wemo One : TD, TRI, frais, capitalisation. Trouvez la meilleure SCPI pour votre investissement en 2026.",
   "url": "https://www.utl-peipin.fr/iroko-atlas-vs-wemo-one",
-  "dateModified": "2026-04-29",
+  "dateModified": "2026-05-27",
   "publisher": {"@type": "Organization", "name": "UTL Peipin"}
 }
 </script>
@@ -28,8 +28,8 @@
   "@context": "https://schema.org/",
   "@type": "Review",
   "name": "Avis Iroko Atlas 2026",
-  "datePublished": "2026-04-29",
-  "dateModified": "2026-04-29",
+  "datePublished": "2026-05-27",
+  "dateModified": "2026-05-27",
   "author": { "@type": "Organization", "name": "Julie Fontaine", "url": "https://www.utl-peipin.fr" },
   "reviewRating": { "@type": "Rating", "ratingValue": "4.5", "bestRating": "5", "worstRating": "1" },
   "itemReviewed": {
@@ -49,8 +49,8 @@
   "@context": "https://schema.org/",
   "@type": "Review",
   "name": "Avis Wemo One 2026",
-  "datePublished": "2026-04-29",
-  "dateModified": "2026-04-29",
+  "datePublished": "2026-05-27",
+  "dateModified": "2026-05-27",
   "author": { "@type": "Organization", "name": "Julie Fontaine", "url": "https://www.utl-peipin.fr" },
   "reviewRating": { "@type": "Rating", "ratingValue": "4.9", "bestRating": "5", "worstRating": "1" },
   "itemReviewed": {
@@ -249,57 +249,39 @@ main h3{margin-top:1.8em;margin-bottom:0.5em}
 <body>
 
 <style>
-nav{background:var(--ink);padding:0 5vw;display:flex;flex-direction:column;position:sticky;top:0;z-index:100}
-.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;position:relative}
-.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
-.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
-.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
-.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(255,255,255,.1)}
-.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
-.nav-cta:hover{opacity:.88}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
-.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
-.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.nav-burger.open span:nth-child(2){opacity:0}
-.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
-.nav-mobile.open{display:flex}
-.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;font-weight:500;padding:12px 16px;border-radius:10px;transition:.15s}
-.nav-mobile a:hover,.nav-mobile a.active{color:#fff;background:rgba(255,255,255,.08)}
-.nav-mobile .nav-cta{margin-top:8px;justify-content:center;border-radius:12px}
-@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+nav.site-nav .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
+nav.site-nav .nav-logo span{color:var(--accent2)}
+nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
+nav.site-nav .nav-cta:hover{opacity:.88}
+nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+nav.site-nav .nav-mobile.open{display:flex}
+nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
 </style>
 
-<nav>
+<nav class="site-nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo">UTL<span>Peipin</span></a>
     <div class="nav-links">
-        <a href="/comparatifs-scpi">Comparatifs</a>
-        <a href="/avis-scpi">Avis</a>
+      <a href="/nos-comparateurs">Nos comparateurs</a>
     </div>
     <a href="/contact" class="nav-cta">Contact</a>
-    <button class="nav-burger" id="burger" aria-label="Menu" onclick="toggleMenu()">
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
   <div class="nav-mobile" id="nav-mobile">
-      <a href="/comparatifs-scpi">Comparatifs</a>
-      <a href="/avis-scpi">Avis</a>
+    <a href="/nos-comparateurs">Nos comparateurs</a>
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
-</nav>
-
-<script>
-function toggleMenu(){
-  var m=document.getElementById('nav-mobile');
-  var b=document.getElementById('burger');
-  m.classList.toggle('open');b.classList.toggle('open');
-}
-document.addEventListener('click',function(e){
-  var m=document.getElementById('nav-mobile');var b=document.getElementById('burger');
-  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');b.classList.remove('open');}
-});
-</script><div class="crumb">
+</nav><div class="crumb">
   <a href="/">Accueil</a> ›
   <a href="comparatifs-scpi">Comparatifs SCPI</a> ›
   Iroko Atlas vs Wemo One
@@ -312,7 +294,7 @@ document.addEventListener('click',function(e){
     <div style="display:flex;justify-content:center;margin:-10px 0 20px">
       <div style="display:inline-flex;align-items:center;gap:6px;background:#EAF3DE;color:#27500A;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;border:none">
         <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#27500A"></span>
-        Mis à jour le 29 avril 2026
+        Mis à jour le 27 mai 2026
       </div>
     </div>
     <p class="intro"><p>Iroko Atlas et Wemo One incarnent deux approches distinctes de l'investissement SCPI diversifiée européenne.</p>
@@ -760,7 +742,7 @@ Iroko Atlas est plus grande, meilleure liquidité secondaire potentielle.
   <div class="author-avatar">E</div>
   <div>
     <div class="author-name">Équipe éditoriale UTL Peipin</div>
-    <div class="author-title">Analyse basée sur les données officielles des sociétés de gestion · Actualisé le 29 avril 2026</div>
+    <div class="author-title">Analyse basée sur les données officielles des sociétés de gestion · Actualisé le 27 mai 2026</div>
   </div>
 </div>
 
@@ -907,7 +889,7 @@ Notre analyse basée sur les données officielles des sociétés de gestion.    
 
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 utl-peipin.fr — Données actualisées le 29 avril 2026
+        © 2026 utl-peipin.fr — Données actualisées le 27 mai 2026
       </div>
     </div>
   </div>
