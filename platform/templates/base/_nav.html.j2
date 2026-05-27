@@ -11,6 +11,7 @@
    - site.name             : nom du site (alt de l'image logo)
    - site.has_avis         : (bool) afficher le lien "Avis"
    - site.has_blog         : (bool) afficher le lien "Blog"
+   - site.outils_menu      : (list[{label,url}]) liens vers les outils
    - theme.ink, theme.accent2, theme.font_title : CSS vars/fonts
 
    La fonction JS toggleMenu() doit être déclarée par le template
@@ -45,6 +46,11 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
       {% if site.has_blog is defined and site.has_blog %}
         <a href="/blog">Blog</a>
       {% endif %}
+      {% if site.outils_menu is defined and site.outils_menu %}
+        {% for outil in site.outils_menu %}
+          <a href="{{ outil.url }}">{{ outil.label }}</a>
+        {% endfor %}
+      {% endif %}
     </div>
     <a href="/contact" class="nav-cta">Contact</a>
     <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
@@ -58,6 +64,11 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
     {% endif %}
     {% if site.has_blog is defined and site.has_blog %}
       <a href="/blog">Blog</a>
+    {% endif %}
+    {% if site.outils_menu is defined and site.outils_menu %}
+      {% for outil in site.outils_menu %}
+        <a href="{{ outil.url }}">{{ outil.label }}</a>
+      {% endfor %}
     {% endif %}
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
