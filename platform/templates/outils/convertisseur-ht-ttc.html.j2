@@ -1,197 +1,271 @@
-{# ============================================================
-   OUTIL : Convertisseur HT / TTC
-   Slug par défaut : convertir-ht-ttc
-   
-   Variables attendues (passées par generate.py) :
-   - outil.title             : titre SEO de la page
-   - outil.meta_description  : meta description
-   - outil.h1                : H1 affiché en haut
-   - outil.contenu_genere    : HTML du contenu rédactionnel (sous l'outil)
-   - site                    : objet config du site (theme, name, year, etc.)
-   - nav_html                : barre de nav du site (depuis _nav.html.j2)
-   ============================================================ #}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ outil.title }}</title>
-  <meta name="description" content="{{ outil.meta_description }}">
-  <link rel="canonical" href="{{ site.domain }}/{{ outil.slug }}">
-  {% if site.google_fonts %}<link href="{{ site.google_fonts }}" rel="stylesheet">{% endif %}
-  {% if site.google_site_verification %}<meta name="google-site-verification" content="{{ site.google_site_verification }}">{% endif %}
-  {% if site.analytics_clicky %}{{ site.analytics_clicky | safe }}{% endif %}
-  <style>
-    :root {
-      --bg:       {{ theme.bg     | default('#F9FAFB') }};
-      --surface:  {{ theme.surface| default('#FFFFFF') }};
-      --ink:      {{ theme.ink    | default('#111827') }};
-      --muted:    #8B9CB0;
-      --accent:   {{ theme.accent | default('#1F2937') }};
-      --accent2:  {{ theme.accent2| default('#374151') }};
-      --cta:      {{ theme.cta_color | default('#F97316') }};
-      --border:   #E5E7EB;
-      --radius:   12px;
-    }
-    * { box-sizing: border-box; }
-    body { margin: 0; background: var(--bg); color: var(--ink); font-family: {{ theme.font_body | default('system-ui, -apple-system, sans-serif') }}; line-height: 1.6; }
-    .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
-    h1, h2, h3 { font-family: {{ theme.font_title | default('Georgia, serif') }}; color: var(--ink); }
-    h1 { font-size: 2rem; line-height: 1.2; margin: 2rem 0 1.5rem; }
-    h2 { font-size: 1.5rem; margin: 2.5rem 0 1rem; }
-    h3 { font-size: 1.2rem; margin: 2rem 0 0.75rem; }
-    a { color: var(--accent); }
+<meta charset="UTF-8">
+{% if site.favicon_file is defined and site.favicon_file %}
+<link rel="icon" href="{{ site.favicon_file }}">
+{% else %}
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{% endif %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ outil.title }}</title>
+<meta name="description" content="{{ outil.meta_description }}">
+<link rel="canonical" href="{{ site.domain }}/{{ outil.slug }}">
+<meta property="og:title" content="{{ outil.title }}">
+<meta property="og:description" content="{{ outil.meta_description }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.domain }}/{{ outil.slug }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">
 
-    /* ── Outil convertisseur ───────────────────────────────────── */
-    .tool-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin: 2rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-    .tool-header { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; padding: 1.25rem 1.5rem; font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 10px; }
-    .tool-header .icon { font-size: 1.3rem; }
-    .tool-body { padding: 1.5rem; }
-    .tool-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 1.25rem; }
-    @media (max-width: 540px) { .tool-row { grid-template-columns: 1fr; } }
-    .tool-field label { display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
-    .tool-input-wrap { position: relative; }
-    .tool-input-wrap .currency { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 0.95rem; font-weight: 500; pointer-events: none; }
-    .tool-input-wrap input,
-    .tool-field select { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; font-family: inherit; color: var(--ink); background: var(--surface); outline: none; transition: border-color 0.15s; }
-    .tool-input-wrap input { padding-left: 36px; }
-    .tool-input-wrap input:focus,
-    .tool-field select:focus { border-color: var(--accent); }
-    .tool-input-wrap input[readonly] { background: var(--bg); color: var(--muted); cursor: not-allowed; }
-    .tool-instructions { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem; color: var(--muted); }
-    .tool-instructions span.step { display: inline-block; width: 22px; height: 22px; border-radius: 50%; background: var(--cta); color: #fff; text-align: center; line-height: 22px; font-size: 0.75rem; font-weight: 700; margin-right: 10px; }
+<style>
+:root{
+  --bg:{{ theme.bg }};--surface:#fff;--surface2:#F0ECE5;--ink:{{ theme.ink }};
+  --ink2:#6B6560;--ink3:#A09890;--accent:{{ theme.accent }};--accent2:{{ theme.accent2 }};
+  --cta:{{ theme.cta_color if theme.cta_color is defined and theme.cta_color else "#F59E0B" }};
+  --cta-text:{{ theme.cta_text_color if theme.cta_text_color is defined and theme.cta_text_color else "#ffffff" }};
+  --border:#E2DDD6;--r:12px;--r2:20px;--green:#1A7A4A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'{{ theme.font_body }}',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
+a{color:inherit;text-decoration:none}
 
-    /* ── Contenu rédactionnel ──────────────────────────────────── */
-    article { padding: 1rem 0 3rem; }
-    article p { margin: 1rem 0; }
-    article strong { color: var(--accent); }
-    article ul, article ol { padding-left: 1.5rem; }
-    article li { margin: 0.4rem 0; }
+/* ─── NAV (identique à classement-saas.html.j2) ─────────────── */
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+.nav-logo{font-family:'{{ theme.font_title }}',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
+.nav-cta:hover{opacity:.88}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
 
-    /* ── FAQ ───────────────────────────────────────────────────── */
-    .faq details { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; margin: 0.5rem 0; }
-    .faq details[open] { border-color: var(--accent); }
-    .faq summary { font-weight: 600; cursor: pointer; padding-right: 1rem; }
-    .faq details > *:not(summary) { margin-top: 0.75rem; }
-  </style>
+/* ─── Hero ──────────────────────────────────────────────────── */
+.hero{background:var(--ink);padding:48px 5vw 40px;text-align:center}
+.hero h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4vw,48px);font-weight:400;color:#fff;line-height:1.15;letter-spacing:-.02em;max-width:800px;margin:0 auto 16px}
+
+/* ─── Main container ────────────────────────────────────────── */
+main{max-width:800px;margin:0 auto;padding:48px 5vw 80px}
+
+/* ─── Widget outil ──────────────────────────────────────────── */
+.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.tool-header{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:18px 24px;font-family:'{{ theme.font_title }}',serif;font-size:20px;font-weight:400;display:flex;align-items:center;gap:10px}
+.tool-header .icon{font-size:22px}
+.tool-body{padding:24px}
+.tool-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+@media(max-width:540px){.tool-row{grid-template-columns:1fr}}
+.tool-field label{display:block;font-size:12px;color:var(--ink3);margin-bottom:6px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.tool-input-wrap{position:relative}
+.tool-input-wrap .currency{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--ink3);font-size:15px;font-weight:500;pointer-events:none}
+.tool-input-wrap input,.tool-field select{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:8px;font-size:16px;font-family:inherit;color:var(--ink);background:var(--surface);outline:none;transition:border-color .15s}
+.tool-input-wrap input{padding-left:36px}
+.tool-input-wrap input:focus,.tool-field select:focus{border-color:var(--accent)}
+.tool-input-wrap input[readonly]{background:var(--bg);color:var(--ink3);cursor:not-allowed}
+.tool-instructions{margin-top:16px;padding-top:14px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--ink2)}
+.tool-instructions span.step{display:inline-block;width:22px;height:22px;border-radius:50%;background:var(--cta);color:var(--cta-text);text-align:center;line-height:22px;font-size:12px;font-weight:700;margin-right:10px}
+
+/* ─── Contenu rédactionnel ─────────────────────────────────── */
+article{font-size:16px;color:var(--ink2);line-height:1.8;padding:0 0 24px}
+article p{margin:0 0 16px}
+article strong{color:var(--ink);font-weight:700}
+article h2{font-family:'{{ theme.font_title }}',serif;font-size:clamp(22px,2.5vw,28px);font-weight:400;color:var(--ink);margin:32px 0 12px;letter-spacing:-.01em}
+article h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
+article ul,article ol{padding-left:20px;margin:0 0 16px}
+article li{margin:6px 0}
+
+/* ─── FAQ ──────────────────────────────────────────────────── */
+.faq{margin:32px 0 0}
+.faq-title{font-family:'{{ theme.font_title }}',serif;font-size:clamp(24px,3vw,32px);font-weight:400;letter-spacing:-.02em;margin:0 0 16px;color:var(--ink)}
+.faq details{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px 20px;margin:8px 0;transition:border-color .15s}
+.faq details[open]{border-color:var(--accent)}
+.faq summary{font-weight:600;cursor:pointer;padding-right:8px;color:var(--ink);font-size:16px;list-style:none;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:20px;color:var(--accent);font-weight:300;transition:transform .2s}
+.faq details[open] summary::after{content:"−"}
+.faq details > div{margin-top:12px;color:var(--ink2);font-size:15px;line-height:1.7}
+
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .nav-burger{display:flex}
+}
+</style>
+{% if site.google_site_verification is defined and site.google_site_verification %}
+<meta name="google-site-verification" content="{{ site.google_site_verification }}">
+{% endif %}
+{% if site.analytics_clicky is defined and site.analytics_clicky %}
+{% if '<script' in site.analytics_clicky %}
+{{ site.analytics_clicky | safe }}
+{% else %}
+<script async data-id="{{ site.analytics_clicky }}" src="//static.getclicky.com/js"></script>
+{% endif %}
+{% endif %}
 </head>
 <body>
-  {{ nav_html | safe }}
 
-  <main class="container">
-    <h1>{{ outil.h1 }}</h1>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">{% if site.logo_img is defined and site.logo_img %}<img src="{{ site.logo_img }}" alt="{{ site.name }}" style="height:36px;width:auto;object-fit:contain;vertical-align:middle">{% else %}{{ site.logo_text }}<span>{{ site.logo_accent }}</span>{% endif %}</a>
+    <div class="nav-links">
+      <a href="/nos-comparateurs">Nos comparateurs</a>
+      {% if site.has_avis is defined and site.has_avis %}
+        <a href="/avis">Avis</a>
+      {% endif %}
+      {% if site.has_blog is defined and site.has_blog %}
+        <a href="/blog">Blog</a>
+      {% endif %}
+    </div>
+    <a href="/contact" class="nav-cta">Contact</a>
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="/nos-comparateurs">Nos comparateurs</a>
+    {% if site.has_avis is defined and site.has_avis %}
+      <a href="/avis">Avis</a>
+    {% endif %}
+    {% if site.has_blog is defined and site.has_blog %}
+      <a href="/blog">Blog</a>
+    {% endif %}
+    <a href="/contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
 
-    <div class="tool-card">
-      <div class="tool-header">
-        <span class="icon">⇄</span>
-        <span>Convertisseur HT / TTC</span>
+<div class="hero">
+  <h1>{{ outil.h1 }}</h1>
+</div>
+
+<main>
+
+  {# ── Widget convertisseur HT/TTC ───────────────────────────── #}
+  <div class="tool-card">
+    <div class="tool-header">
+      <span class="icon">⇄</span>
+      <span>Convertisseur HT / TTC</span>
+    </div>
+    <div class="tool-body">
+      <div class="tool-row">
+        <div class="tool-field">
+          <label for="ttc-ht">Prix HT</label>
+          <div class="tool-input-wrap">
+            <span class="currency">€</span>
+            <input id="ttc-ht" type="number" step="0.01" placeholder="Montant HT">
+          </div>
+        </div>
+        <div class="tool-field">
+          <label for="ttc-ttc">Prix TTC</label>
+          <div class="tool-input-wrap">
+            <span class="currency">€</span>
+            <input id="ttc-ttc" type="number" step="0.01" placeholder="Montant TTC">
+          </div>
+        </div>
       </div>
-      <div class="tool-body">
-        <div class="tool-row">
-          <div class="tool-field">
-            <label for="ttc-ht">Prix HT</label>
-            <div class="tool-input-wrap">
-              <span class="currency">€</span>
-              <input id="ttc-ht" type="number" step="0.01" placeholder="Montant HT">
-            </div>
-          </div>
-          <div class="tool-field">
-            <label for="ttc-ttc">Prix TTC</label>
-            <div class="tool-input-wrap">
-              <span class="currency">€</span>
-              <input id="ttc-ttc" type="number" step="0.01" placeholder="Montant TTC">
-            </div>
+      <div class="tool-row">
+        <div class="tool-field">
+          <label for="ttc-rate">Taux de TVA</label>
+          <select id="ttc-rate">
+            <option value="0.20">20 % — taux normal</option>
+            <option value="0.10">10 % — taux intermédiaire</option>
+            <option value="0.055">5,5 % — taux réduit</option>
+            <option value="0.021">2,1 % — taux particulier</option>
+          </select>
+        </div>
+        <div class="tool-field">
+          <label for="ttc-tva">Montant de la TVA</label>
+          <div class="tool-input-wrap">
+            <span class="currency">€</span>
+            <input id="ttc-tva" readonly placeholder="Montant TVA">
           </div>
         </div>
-        <div class="tool-row">
-          <div class="tool-field">
-            <label for="ttc-rate">Taux de TVA</label>
-            <select id="ttc-rate">
-              <option value="0.20">20 % — taux normal</option>
-              <option value="0.10">10 % — taux intermédiaire</option>
-              <option value="0.055">5,5 % — taux réduit</option>
-              <option value="0.021">2,1 % — taux particulier</option>
-            </select>
-          </div>
-          <div class="tool-field">
-            <label for="ttc-tva">Montant de la TVA</label>
-            <div class="tool-input-wrap">
-              <span class="currency">€</span>
-              <input id="ttc-tva" readonly placeholder="Montant TVA">
-            </div>
-          </div>
-        </div>
-        <div class="tool-instructions">
-          <div><span class="step">1</span>Modifiez le montant HT ou TTC</div>
-          <div><span class="step">2</span>Choisissez votre taux de TVA</div>
-        </div>
+      </div>
+      <div class="tool-instructions">
+        <div><span class="step">1</span>Modifiez le montant HT ou TTC</div>
+        <div><span class="step">2</span>Choisissez votre taux de TVA</div>
       </div>
     </div>
+  </div>
 
-    {% if outil.contenu_genere %}
-    <article>
-      {{ outil.contenu_genere | safe }}
-    </article>
-    {% endif %}
-
-    {% if outil.faq and outil.faq | length > 0 %}
-    <section class="faq">
-      <h2>Questions fréquentes</h2>
-      {% for item in outil.faq %}
-      <details>
-        <summary>{{ item.question }}</summary>
-        <div>{{ item.answer | safe }}</div>
-      </details>
-      {% endfor %}
-    </section>
-    {% endif %}
-  </main>
-
-  <script>
-    (function() {
-      const ht = document.getElementById('ttc-ht');
-      const ttc = document.getElementById('ttc-ttc');
-      const rate = document.getElementById('ttc-rate');
-      const tva = document.getElementById('ttc-tva');
-      let lastEdited = 'ht';
-      function getRate() { return parseFloat(rate.value); }
-      function fmt(n) { return (Math.round(n * 100) / 100).toFixed(2); }
-      function fromHT() {
-        const v = parseFloat(ht.value);
-        if (isNaN(v)) { ttc.value = ''; tva.value = ''; return; }
-        const r = getRate();
-        ttc.value = fmt(v * (1 + r));
-        tva.value = fmt(v * r);
-      }
-      function fromTTC() {
-        const v = parseFloat(ttc.value);
-        if (isNaN(v)) { ht.value = ''; tva.value = ''; return; }
-        const r = getRate();
-        const htV = v / (1 + r);
-        ht.value = fmt(htV);
-        tva.value = fmt(v - htV);
-      }
-      ht.addEventListener('input', function() { lastEdited = 'ht'; fromHT(); });
-      ttc.addEventListener('input', function() { lastEdited = 'ttc'; fromTTC(); });
-      rate.addEventListener('change', function() { if (lastEdited === 'ttc') fromTTC(); else fromHT(); });
-    })();
-  </script>
-
-  {# Schema.org pour les FAQ — bon pour SEO #}
-  {% if outil.faq and outil.faq | length > 0 %}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {% for item in outil.faq %}{
-        "@type": "Question",
-        "name": {{ item.question | tojson }},
-        "acceptedAnswer": { "@type": "Answer", "text": {{ item.answer | tojson }} }
-      }{% if not loop.last %},{% endif %}{% endfor %}
-    ]
-  }
-  </script>
+  {# ── Contenu rédactionnel (HTML généré par l'IA) ──────────── #}
+  {% if outil.contenu_genere %}
+  <article>{{ outil.contenu_genere | safe }}</article>
   {% endif %}
+
+  {# ── FAQ ──────────────────────────────────────────────────── #}
+  {% if outil.faq and outil.faq | length > 0 %}
+  <section class="faq">
+    <h2 class="faq-title">Questions fréquentes</h2>
+    {% for item in outil.faq %}
+    <details>
+      <summary>{{ item.question }}</summary>
+      <div>{{ item.answer | safe }}</div>
+    </details>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+</main>
+
+{% include "base/_footer.html.j2" %}
+
+<script>
+function toggleMenu(){
+  document.getElementById('nav-mobile').classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  var m=document.getElementById('nav-mobile'),b=document.getElementById('burger');
+  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');}
+});
+
+(function() {
+  const ht = document.getElementById('ttc-ht');
+  const ttc = document.getElementById('ttc-ttc');
+  const rate = document.getElementById('ttc-rate');
+  const tva = document.getElementById('ttc-tva');
+  let lastEdited = 'ht';
+  function getRate() { return parseFloat(rate.value); }
+  function fmt(n) { return (Math.round(n * 100) / 100).toFixed(2); }
+  function fromHT() {
+    const v = parseFloat(ht.value);
+    if (isNaN(v)) { ttc.value = ''; tva.value = ''; return; }
+    const r = getRate();
+    ttc.value = fmt(v * (1 + r));
+    tva.value = fmt(v * r);
+  }
+  function fromTTC() {
+    const v = parseFloat(ttc.value);
+    if (isNaN(v)) { ht.value = ''; tva.value = ''; return; }
+    const r = getRate();
+    const htV = v / (1 + r);
+    ht.value = fmt(htV);
+    tva.value = fmt(v - htV);
+  }
+  ht.addEventListener('input', function() { lastEdited = 'ht'; fromHT(); });
+  ttc.addEventListener('input', function() { lastEdited = 'ttc'; fromTTC(); });
+  rate.addEventListener('change', function() { if (lastEdited === 'ttc') fromTTC(); else fromHT(); });
+})();
+</script>
+
+{# Schema.org FAQPage (bon pour SEO) #}
+{% if outil.faq and outil.faq | length > 0 %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for item in outil.faq %}{
+      "@type": "Question",
+      "name": {{ item.question | tojson }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ item.answer | tojson }} }
+    }{% if not loop.last %},{% endif %}{% endfor %}
+  ]
+}
+</script>
+{% endif %}
+
 </body>
 </html>
