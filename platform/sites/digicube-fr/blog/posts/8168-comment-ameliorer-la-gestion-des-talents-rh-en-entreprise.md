@@ -1,10 +1,11 @@
 ---
 title: Comment améliorer la gestion des talents RH en entreprise ?
 slug: 8168-comment-ameliorer-la-gestion-des-talents-rh-en-entreprise
-date: 2026-05-26T16:00:00+02:00
-updated: 2026-05-27T06:03:55
+date: 2026-05-26 16:00:00+02:00
+updated: 2026-05-27 06:03:55
 categorie: Ressources Humaines
-meta_title: "Gestion des talents RH : méthodes et outils pour une stratégie efficace en {year}"
+meta_title: 'Gestion des talents RH : méthodes et outils pour une stratégie efficace
+  en {year}'
 meta_description: Découvrez comment améliorer la gestion des talents en TPE avec des
 featured_image: /blog/8168-comment-ameliorer-la-gestion-des-talents-rh-en-entreprise/featured-23015.jpg
 status: published
@@ -12,8 +13,8 @@ min_words: 3000
 link_anchors:
 - text: gestion des talents RH
   max: 2
+related_posts: []
 ---
-
 <h2>Ma vision de la gestion des talents après 2 ans d'expérience</h2>
 
 <p>En tant que dirigeant d'une TPE marseillaise, je vais vous parler franc. <strong>La gestion des talents, c'est compliqué quand on n'a pas les moyens d'une grande entreprise</strong>. On se retrouve souvent à jongler entre les urgences du quotidien et la nécessité de faire évoluer nos équipes.</p>
