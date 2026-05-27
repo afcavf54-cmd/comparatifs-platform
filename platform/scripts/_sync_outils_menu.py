@@ -35,7 +35,15 @@ except ImportError:
 
 
 def build_menu_from_outils_json(outils_path: Path) -> list[dict]:
-    """Construit la liste menu depuis outils.json. Retourne [] si vide/absent."""
+    """Construit la liste menu depuis outils.json.
+
+    Stratégie : si au moins 1 outil est actif, on expose UN seul lien
+    dans le menu, pointant vers la page d'index /outils (générée par
+    _outils.py). La page /outils liste tous les outils actifs avec
+    leur icône, nom et description.
+
+    Retourne [] si aucun outil n'est actif (=> pas de lien dans le menu).
+    """
     if not outils_path.is_file():
         return []
 
@@ -48,16 +56,13 @@ def build_menu_from_outils_json(outils_path: Path) -> list[dict]:
     menu_label = (outils_data.get("menu_label") or "Outils").strip()
     outils = outils_data.get("outils") or {}
 
-    menu = []
-    for outil_id, outil_state in outils.items():
-        if not outil_state.get("active"):
-            continue
-        slug = (outil_state.get("slug") or outil_id).strip().strip("/")
-        if not slug:
-            continue
-        menu.append({"label": menu_label, "url": "/" + slug})
+    # Compter les outils actifs
+    nb_actifs = sum(1 for o in outils.values() if o.get("active"))
+    if nb_actifs == 0:
+        return []
 
-    return menu
+    # Un seul lien menu, pointe vers la page d'index
+    return [{"label": menu_label, "url": "/outils"}]
 
 
 def main(site_slug: str) -> int:
