@@ -14,8 +14,9 @@ link_anchors:
   max: 2
 related_posts:
 - 1786-quels-outils-utiliser-pour-la-gestion-des-talents-rh
-- 2321-comment-definir-une-strategie-efficace-de-gestion-des-talents
 - 3838-comment-mettre-en-place-un-logiciel-gepp-dans-votre-entreprise
+- 2321-comment-definir-une-strategie-efficace-de-gestion-des-talents
+- 4847-gestion-des-talents-dans-une-pme-comment-structurer-votre-rh
 ---
 <p>J'ai mis en place ma première cartographie des compétences il y a trois ans. Franchement, au début, je ne savais pas trop par où commencer. J'avais cette sensation de partir dans tous les sens avec mes six collaborateurs, sans vraiment savoir qui maîtrisait quoi. Aujourd'hui, je peux dire que cette démarche a complètement transformé la gestion de mon équipe.</p>
 

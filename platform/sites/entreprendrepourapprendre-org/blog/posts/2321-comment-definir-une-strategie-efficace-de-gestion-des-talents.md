@@ -13,9 +13,10 @@ link_anchors:
 - text: définition de la gestion des talents
   max: 2
 related_posts:
+- 1786-quels-outils-utiliser-pour-la-gestion-des-talents-rh
 - 6152-cartographie-des-competences-quelles-etapes-suivre
 - 3838-comment-mettre-en-place-un-logiciel-gepp-dans-votre-entreprise
-- 1786-quels-outils-utiliser-pour-la-gestion-des-talents-rh
+- 4847-gestion-des-talents-dans-une-pme-comment-structurer-votre-rh
 ---
 <h2>Pourquoi une stratégie de gestion des talents, même avec 6 personnes ?</h2>
 

@@ -12,9 +12,10 @@ link_anchors:
 - text: gestion des talents RH
   max: 2
 related_posts:
-- 2321-comment-definir-une-strategie-efficace-de-gestion-des-talents
-- 3838-comment-mettre-en-place-un-logiciel-gepp-dans-votre-entreprise
+- 4847-gestion-des-talents-dans-une-pme-comment-structurer-votre-rh
 - 6152-cartographie-des-competences-quelles-etapes-suivre
+- 3838-comment-mettre-en-place-un-logiciel-gepp-dans-votre-entreprise
+- 2321-comment-definir-une-strategie-efficace-de-gestion-des-talents
 ---
 <h2>Pourquoi j'ai abandonné Excel pour gérer les talents dans mon agence</h2>
 
