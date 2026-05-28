@@ -14,8 +14,9 @@ link_anchors:
 - text: gestion des talents RH
   max: 2
 related_posts:
-- 3445-logiciel-gepp-quelles-fonctionnalites-comparer
 - 4853-cartographie-des-competences-comment-identifier-les-savoir-faire-cles
+- 4315-gestion-des-talents-dans-une-pme-quelles-solutions-mettre-en-place
+- 3445-logiciel-gepp-quelles-fonctionnalites-comparer
 - 4687-definition-de-la-gestion-des-talents-tout-comprendre
 ---
 <h2>Qu'est-ce que la gestion des talents et pourquoi c'est devenu incontournable ?</h2>

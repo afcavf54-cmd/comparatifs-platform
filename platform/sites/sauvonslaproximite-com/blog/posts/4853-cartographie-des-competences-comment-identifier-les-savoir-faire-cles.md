@@ -13,8 +13,9 @@ link_anchors:
 - text: cartographie des compétences
   max: 2
 related_posts:
-- 3445-logiciel-gepp-quelles-fonctionnalites-comparer
 - 4687-definition-de-la-gestion-des-talents-tout-comprendre
+- 4315-gestion-des-talents-dans-une-pme-quelles-solutions-mettre-en-place
+- 3445-logiciel-gepp-quelles-fonctionnalites-comparer
 - 4608-gestion-des-talents-rh-quelles-bonnes-pratiques-adopter
 ---
 <h2>Pourquoi la cartographie des compétences est devenue indispensable ?</h2>
