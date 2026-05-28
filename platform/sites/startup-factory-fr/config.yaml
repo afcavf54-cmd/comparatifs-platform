@@ -24,6 +24,9 @@ site:
   index_template: "index-saas.html.j2"
   analytics_clicky: ""
 
+  outils_menu:
+    - label: Outils en ligne
+      url: /outils-en-ligne
 page_types:
   classement: classement-saas
 
