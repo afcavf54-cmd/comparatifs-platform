@@ -24,6 +24,9 @@ site:
   index_template: "index-saas.html.j2"
   analytics_clicky: ""
 
+  outils_menu:
+    - label: Nos Outils
+      url: /nos-outils
 page_types:
   classement: classement-saas
 
