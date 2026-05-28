@@ -13,9 +13,10 @@ link_anchors:
 - text: définition de la gestion des talents
   max: 2
 related_posts:
+- 8819-comment-reussir-la-gestion-des-talents-dans-une-pme
 - 7426-comment-choisir-un-logiciel-gepp-adapte-a-votre-entreprise
-- 6596-comment-realiser-une-cartographie-des-competences-efficace
 - 8168-comment-ameliorer-la-gestion-des-talents-rh-en-entreprise
+- 6596-comment-realiser-une-cartographie-des-competences-efficace
 ---
 <h2>Ce que j'ai appris sur la gestion des talents après 2 ans</h2>
 

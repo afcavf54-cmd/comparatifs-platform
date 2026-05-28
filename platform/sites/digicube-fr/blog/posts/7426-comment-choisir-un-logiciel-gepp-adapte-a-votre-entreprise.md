@@ -12,8 +12,9 @@ link_anchors:
 - text: logiciel GEPP
   max: 2
 related_posts:
-- 3951-qu-est-ce-que-la-definition-de-la-gestion-des-talents
+- 8819-comment-reussir-la-gestion-des-talents-dans-une-pme
 - 6596-comment-realiser-une-cartographie-des-competences-efficace
+- 3951-qu-est-ce-que-la-definition-de-la-gestion-des-talents
 - 8168-comment-ameliorer-la-gestion-des-talents-rh-en-entreprise
 ---
 <h2>La GEPP expliquée simplement : ce qu'on doit vraiment savoir</h2>

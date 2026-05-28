@@ -13,8 +13,9 @@ link_anchors:
   max: 2
 related_posts:
 - 7426-comment-choisir-un-logiciel-gepp-adapte-a-votre-entreprise
-- 3951-qu-est-ce-que-la-definition-de-la-gestion-des-talents
 - 8168-comment-ameliorer-la-gestion-des-talents-rh-en-entreprise
+- 8819-comment-reussir-la-gestion-des-talents-dans-une-pme
+- 3951-qu-est-ce-que-la-definition-de-la-gestion-des-talents
 ---
 <h2>Pourquoi la cartographie des compétences est devenue incontournable ?</h2>
 
