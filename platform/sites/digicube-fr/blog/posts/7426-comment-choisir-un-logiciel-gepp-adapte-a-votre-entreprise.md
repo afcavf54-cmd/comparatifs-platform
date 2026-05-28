@@ -13,6 +13,7 @@ link_anchors:
   max: 2
 related_posts:
 - 3951-qu-est-ce-que-la-definition-de-la-gestion-des-talents
+- 6596-comment-realiser-une-cartographie-des-competences-efficace
 - 8168-comment-ameliorer-la-gestion-des-talents-rh-en-entreprise
 ---
 <h2>La GEPP expliquée simplement : ce qu'on doit vraiment savoir</h2>

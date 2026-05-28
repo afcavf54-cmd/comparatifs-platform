@@ -14,8 +14,9 @@ link_anchors:
 - text: gestion des talents RH
   max: 2
 related_posts:
-- 7426-comment-choisir-un-logiciel-gepp-adapte-a-votre-entreprise
+- 6596-comment-realiser-une-cartographie-des-competences-efficace
 - 3951-qu-est-ce-que-la-definition-de-la-gestion-des-talents
+- 7426-comment-choisir-un-logiciel-gepp-adapte-a-votre-entreprise
 ---
 <h2>Ma vision de la gestion des talents après 2 ans d'expérience</h2>
 

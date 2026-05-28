@@ -14,6 +14,7 @@ link_anchors:
   max: 2
 related_posts:
 - 7426-comment-choisir-un-logiciel-gepp-adapte-a-votre-entreprise
+- 6596-comment-realiser-une-cartographie-des-competences-efficace
 - 8168-comment-ameliorer-la-gestion-des-talents-rh-en-entreprise
 ---
 <h2>Ce que j'ai appris sur la gestion des talents après 2 ans</h2>
