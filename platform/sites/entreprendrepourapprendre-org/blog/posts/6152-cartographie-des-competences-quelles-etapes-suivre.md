@@ -4,14 +4,19 @@ slug: 6152-cartographie-des-competences-quelles-etapes-suivre
 date: '2026-05-28T08:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Cartographie des compétences : guide pratique RH pour optimiser les équipes'
-meta_description: Découvrez les étapes clés pour créer une cartographie des compétences efficace dans votre entreprise. Guide pratique pour identifier, structurer et optimiser les…
+meta_description: Découvrez les étapes clés pour créer une cartographie des compétences
+  efficace dans votre entreprise. Guide pratique pour identifier, structurer et optimiser
+  les…
 min_words: 3000
 status: published
 link_anchors:
 - text: cartographie des compétences
   max: 2
+related_posts:
+- 1786-quels-outils-utiliser-pour-la-gestion-des-talents-rh
+- 2321-comment-definir-une-strategie-efficace-de-gestion-des-talents
+- 3838-comment-mettre-en-place-un-logiciel-gepp-dans-votre-entreprise
 ---
-
 <p>J'ai mis en place ma première cartographie des compétences il y a trois ans. Franchement, au début, je ne savais pas trop par où commencer. J'avais cette sensation de partir dans tous les sens avec mes six collaborateurs, sans vraiment savoir qui maîtrisait quoi. Aujourd'hui, je peux dire que cette démarche a complètement transformé la gestion de mon équipe.</p>
 
 <h2>Qu'est-ce que la cartographie des compétences et pourquoi s'y intéresser ?</h2>

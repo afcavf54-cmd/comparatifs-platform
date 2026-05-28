@@ -16,6 +16,7 @@ link_anchors:
 related_posts:
 - 1786-quels-outils-utiliser-pour-la-gestion-des-talents-rh
 - 2321-comment-definir-une-strategie-efficace-de-gestion-des-talents
+- 6152-cartographie-des-competences-quelles-etapes-suivre
 ---
 <h2>Qu'est-ce qu'un logiciel GEPP et pourquoi en avez-vous besoin ?</h2>
 

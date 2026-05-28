@@ -14,6 +14,7 @@ link_anchors:
 related_posts:
 - 2321-comment-definir-une-strategie-efficace-de-gestion-des-talents
 - 3838-comment-mettre-en-place-un-logiciel-gepp-dans-votre-entreprise
+- 6152-cartographie-des-competences-quelles-etapes-suivre
 ---
 <h2>Pourquoi j'ai abandonné Excel pour gérer les talents dans mon agence</h2>
 
