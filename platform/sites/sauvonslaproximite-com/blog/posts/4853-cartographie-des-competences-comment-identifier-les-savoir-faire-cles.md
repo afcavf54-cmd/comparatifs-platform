@@ -4,14 +4,19 @@ slug: 4853-cartographie-des-competences-comment-identifier-les-savoir-faire-cles
 date: '2026-05-28T08:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Cartographie des compétences : outils et étapes clés pour votre entreprise'
-meta_description: Découvrez comment identifier et cartographier les compétences clés de vos équipes. Méthodes pratiques pour anticiper les besoins formation et éviter les pertes…
+meta_description: Découvrez comment identifier et cartographier les compétences clés
+  de vos équipes. Méthodes pratiques pour anticiper les besoins formation et éviter
+  les pertes…
 min_words: 3000
 status: published
 link_anchors:
 - text: cartographie des compétences
   max: 2
+related_posts:
+- 3445-logiciel-gepp-quelles-fonctionnalites-comparer
+- 4687-definition-de-la-gestion-des-talents-tout-comprendre
+- 4608-gestion-des-talents-rh-quelles-bonnes-pratiques-adopter
 ---
-
 <h2>Pourquoi la cartographie des compétences est devenue indispensable ?</h2>
 
 <p>En vingt ans de comptabilité, j'ai vu défiler de nombreux changements organisationnels. Mais celui qui m'a le plus marquée, c'est quand notre directeur nous a annoncé l'arrivée de nouveaux outils de dématérialisation. <strong>Du jour au lendemain</strong>, mes collaborateurs ont dû maîtriser des processus qu'ils n'avaient jamais vus.</p>

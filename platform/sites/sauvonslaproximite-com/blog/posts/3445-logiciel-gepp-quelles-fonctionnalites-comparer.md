@@ -14,6 +14,7 @@ link_anchors:
   max: 2
 related_posts:
 - 4687-definition-de-la-gestion-des-talents-tout-comprendre
+- 4853-cartographie-des-competences-comment-identifier-les-savoir-faire-cles
 - 4608-gestion-des-talents-rh-quelles-bonnes-pratiques-adopter
 ---
 <h2>Ma sélection des 5 meilleurs logiciels GEPP : comparatif détaillé</h2>
