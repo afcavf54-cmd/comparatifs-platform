@@ -4,14 +4,20 @@ slug: 7191-pourquoi-creer-une-cartographie-des-competences-en-entreprise
 date: '2026-05-28T08:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Cartographie des compétences : comment identifier les compétences stratégiques'
-meta_description: Découvrez comment la cartographie des compétences transforme la gestion d'équipe et évite les crises en entreprise. Un outil pratique pour optimiser vos talents…
+meta_description: Découvrez comment la cartographie des compétences transforme la
+  gestion d'équipe et évite les crises en entreprise. Un outil pratique pour optimiser
+  vos talents…
 min_words: 3000
 status: published
 link_anchors:
 - text: cartographie des compétences
   max: 2
+related_posts:
+- 5564-quel-est-le-meilleur-logiciel-gepp-pour-votre-organisation
+- 1415-comment-attirer-et-fideliser-les-talents-dans-une-pme
+- 8573-gestion-des-talents-rh-comment-optimiser-vos-processus-rh
+- 6997-pourquoi-la-definition-de-la-gestion-des-talents-est-elle-essentielle
 ---
-
 <h2>La cartographie des compétences : votre GPS pour naviguer dans l'humain</h2>
 
 <p>J'accompagne des dirigeants depuis dix ans. Et je vois toujours la même chose : ils connaissent leurs machines, leurs stocks, leur trésorerie au centime près. Mais leurs compétences ? Mystère total.</p>

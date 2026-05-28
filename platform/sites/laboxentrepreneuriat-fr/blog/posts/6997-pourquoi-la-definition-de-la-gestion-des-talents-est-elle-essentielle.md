@@ -13,8 +13,10 @@ link_anchors:
 - text: définition de la gestion des talents
   max: 2
 related_posts:
-- 5564-quel-est-le-meilleur-logiciel-gepp-pour-votre-organisation
 - 8573-gestion-des-talents-rh-comment-optimiser-vos-processus-rh
+- 1415-comment-attirer-et-fideliser-les-talents-dans-une-pme
+- 5564-quel-est-le-meilleur-logiciel-gepp-pour-votre-organisation
+- 7191-pourquoi-creer-une-cartographie-des-competences-en-entreprise
 ---
 <h2>Ce que j'entends vraiment par gestion des talents</h2>
 

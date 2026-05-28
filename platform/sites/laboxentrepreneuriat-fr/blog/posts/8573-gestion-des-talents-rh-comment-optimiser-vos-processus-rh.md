@@ -16,6 +16,8 @@ link_anchors:
   max: 2
 related_posts:
 - 6997-pourquoi-la-definition-de-la-gestion-des-talents-est-elle-essentielle
+- 7191-pourquoi-creer-une-cartographie-des-competences-en-entreprise
+- 1415-comment-attirer-et-fideliser-les-talents-dans-une-pme
 - 5564-quel-est-le-meilleur-logiciel-gepp-pour-votre-organisation
 ---
 <h2>Pourquoi la gestion des talents devient-elle critique pour votre TPE ?</h2>

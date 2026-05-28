@@ -13,8 +13,10 @@ link_anchors:
 - text: logiciel GEPP
   max: 2
 related_posts:
-- 6997-pourquoi-la-definition-de-la-gestion-des-talents-est-elle-essentielle
 - 8573-gestion-des-talents-rh-comment-optimiser-vos-processus-rh
+- 1415-comment-attirer-et-fideliser-les-talents-dans-une-pme
+- 7191-pourquoi-creer-une-cartographie-des-competences-en-entreprise
+- 6997-pourquoi-la-definition-de-la-gestion-des-talents-est-elle-essentielle
 ---
 <h2>GEPP : quand votre service RH devient enfin stratégique</h2>
 
