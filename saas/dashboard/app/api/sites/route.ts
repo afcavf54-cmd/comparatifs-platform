@@ -3,6 +3,12 @@ import { getFile, putFile, triggerWorkflow } from '../../../lib/github'
 
 const HUB_CONFIG_PATH = 'hub.config.json'
 
+// Clé Web3Forms commune à tous les sites Viseoweb.
+// Les messages des formulaires de contact sont envoyés à contact@viseoweb.fr.
+// Si tu changes de compte Web3Forms, mets à jour cette constante ET le
+// script platform/scripts/add_contact_form_key.py.
+const WEB3FORMS_KEY = 'eabd63c5-1744-4172-b8c0-8984db488f10'
+
 function slugify(str: string): string {
   return str.toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -29,16 +35,11 @@ function randomAuthorName(): string {
   return `${first} ${last}`
 }
 
-// ── YAML helpers ──────────────────────────────────────────────────────────
-// Échappe les " et les retours à la ligne dans les valeurs YAML simples.
 function ye(s: string): string {
   if (s === null || s === undefined) return ''
   return String(s).replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, ' ')
 }
 
-// Bloc CRITERIA selon le type de site.
-// - classement : critères génériques SaaS (prix, essai gratuit, note, catégorie)
-// - comparatif : critères SCPI legacy (rétrocompatibilité)
 function criteriaBlock(siteType: string, year: number): string {
   if (siteType === 'classement') {
     return `criteria:
@@ -57,7 +58,6 @@ function criteriaBlock(siteType: string, year: number): string {
     field: categorie
     type: text`
   }
-  // comparatif (legacy SCPI)
   return `criteria:
   - label: "TD ${year}"
     field: td
@@ -103,18 +103,12 @@ function criteriaBlock(siteType: string, year: number): string {
     type: text`
 }
 
-// Bloc SEO selon le type. Pour les sites classement, on ajoute les patterns
-// classement_*_pattern indispensables au rendu des pages de classement.
 function seoBlock(siteType: string, p: {
   seo_vs_title: string, seo_vs_meta: string,
   seo_avis_title: string, seo_avis_meta: string,
   seo_liste_comp_title: string, seo_liste_avis_title: string,
 }): string {
   if (siteType === 'classement') {
-    // Patterns adaptés SaaS : on remplace les fragments SCPI ("rendements",
-    // "{td}%", "faut-il investir") qui auraient été passés depuis le wizard
-    // (lequel n'expose pas l'étape SEO en mode classement) par des libellés
-    // génériques produit.
     return `seo:
   title_pattern: "{A} vs {B} : comparatif {year}"
   meta_pattern: "Comparatif complet {A} vs {B} {year} : prix, fonctionnalités, avis."
@@ -132,7 +126,6 @@ function seoBlock(siteType: string, p: {
   classement_h1_pattern: "J'ai testé {count} {categories} : mon comparatif complet {year}"
   classement_titre_analyse_pattern: "Mon classement des meilleurs {categories}"`
   }
-  // comparatif (legacy) : on utilise les patterns du wizard
   return `seo:
   title_pattern: "${ye(p.seo_vs_title)}"
   meta_pattern: "${ye(p.seo_vs_meta)}"
@@ -147,7 +140,6 @@ function seoBlock(siteType: string, p: {
   category_url: "index.html#comparatifs"`
 }
 
-// Bloc AUTHOR. Toujours généré quand on a au moins un nom (saisi ou random).
 function authorBlock(authorName: string, authorJob: string, authorBio: string): string {
   if (!authorName) return ''
   return `author:
@@ -158,10 +150,8 @@ function authorBlock(authorName: string, authorJob: string, authorBio: string): 
   socials: []`
 }
 
-// Bloc PERSONA_PROMPT en YAML block scalar (|) pour préserver les sauts de ligne.
 function personaBlock(personaPrompt: string): string {
   if (!personaPrompt || !personaPrompt.trim()) return ''
-  // On indente chaque ligne de 2 espaces (YAML block scalar)
   const indented = personaPrompt.split('\n').map(l => `  ${l}`).join('\n')
   return `persona_prompt: |\n${indented}`
 }
@@ -187,13 +177,12 @@ export async function POST(req: NextRequest) {
     seo_liste_comp_title = 'Tous les comparatifs {site_name} {year}',
     seo_liste_avis_title = 'Avis {site_name} {year} : analyses independantes',
     page_types = {},
-    // ── Nouveaux champs traités (étaient ignorés silencieusement avant) ──
-    site_type = 'comparatif',                  // 'comparatif' | 'classement'
+    site_type = 'comparatif',
     persona_prompt = '',
     author_name: providedAuthorName = '',
     author_job = '',
     author_bio = '',
-    selected_keywords = [],                    // liste de noms de keywords cochés à l'étape "Types"
+    selected_keywords = [],
   } = body
 
   if (!name || !domain) return NextResponse.json({ error: 'name et domain requis' }, { status: 400 })
@@ -210,22 +199,16 @@ export async function POST(req: NextRequest) {
   if (hubConfig.sites.find((s: any) => s.id === id))
     return NextResponse.json({ error: 'Un site avec ce nom existe déjà' }, { status: 400 })
 
-  // ── Choix des templates selon le type de site ────────────────────────
-  // Le bug historique d'origine : `template` et `index_template` étaient
-  // codés en dur SCPI, ce qui rendait tous les nouveaux sites classement
-  // inutilisables (template inadapté + bug d'indent dans generate.py).
   const isClassement = site_type === 'classement'
   const tplMain = isClassement ? 'classement-saas.html.j2' : 'comparatif-vs-scpi.html.j2'
   const tplIndex = isClassement ? 'index-saas.html.j2' : 'index-scpi.html.j2'
 
-  // Bloc page_types YAML
   const pageTypesBlock = Object.entries(page_types as Record<string, string>)
     .filter(([, v]) => v)
     .map(([k, v]) => `  ${k}: ${v}`)
     .join('\n')
   const pageTypesYaml = pageTypesBlock ? `page_types:\n${pageTypesBlock}\n\n` : ''
 
-  // Bloc thème : on ajoute cta_color/cta_text_color (cohérence visuelle CTA)
   const themeYaml = `theme:
   accent: "${accent}"
   accent2: "${accent2}"
@@ -238,7 +221,6 @@ export async function POST(req: NextRequest) {
   cta_color: "${accent2}"
   cta_text_color: "#ffffff"`
 
-  // Sections optionnelles
   const personaYaml = personaBlock(persona_prompt)
   const authorYaml = authorBlock(authorName, author_job, author_bio)
 
@@ -265,6 +247,7 @@ site:
   template: "${tplMain}"
   index_template: "${tplIndex}"
   analytics_clicky: ""
+  contact_form_key: "${WEB3FORMS_KEY}"
 
 ${pageTypesYaml}${themeYaml}
 
@@ -279,12 +262,6 @@ tag_classes:
 ${seoBlock(site_type, { seo_vs_title, seo_vs_meta, seo_avis_title, seo_avis_meta, seo_liste_comp_title, seo_liste_avis_title })}
 ${personaYaml ? '\n' + personaYaml + '\n' : ''}${authorYaml ? '\n' + authorYaml + '\n' : ''}`
 
-  // ── enabled_classements.json (sites classement uniquement) ──────────
-  // Si l'utilisateur a coché des keywords à l'étape "Types", on crée le
-  // fichier de liste blanche que `generate.py` et `enrich_editorial.py`
-  // lisent. Sans ça, à la création le site activait par défaut TOUS les
-  // keywords (mode legacy), ce qui pollue editorial.json et brûle des
-  // tokens API inutiles.
   const files: [string, string, string][] = [
     [`platform/sites/${id}/config.yaml`, configYaml, `HUB: Create site ${name}`],
     [`platform/sites/${id}/editorial.json`, '{}', `HUB: Init editorial ${name}`],
