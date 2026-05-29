@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nos outils gratuits {{ site.year }} - {{ site.name }}</title>
 <meta name="description" content="Tous les outils interactifs de {{ site.name }} : convertisseurs, calculateurs, simulateurs. Utilisation gratuite et instantanée.">
-<link rel="canonical" href="{{ site.domain }}/outils">
+<link rel="canonical" href="{{ site.domain }}/{{ outils_index_slug | default('outils') }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">
 <style>
@@ -112,7 +112,7 @@ document.addEventListener('click',function(e){
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Outils {{ site.name }}",
-  "url": "{{ site.domain }}/outils",
+  "url": "{{ site.domain }}/{{ outils_index_slug | default('outils') }}",
   "itemListElement": [
     {% for outil in outils_list %}{
       "@type": "ListItem",
