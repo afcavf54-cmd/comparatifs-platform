@@ -1,5 +1,5 @@
 ---
-title: 'Étapes création entreprise : le guide complet en {year}'
+title: 'Étapes création entreprise : le guide complet en 2026'
 slug: 7122-etapes-creation-entreprise-le-guide-complet-en-year
 date: '2026-05-29T09:00:00+02:00'
 categorie: Création entreprise
