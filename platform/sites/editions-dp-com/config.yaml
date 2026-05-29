@@ -23,6 +23,9 @@ site:
   index_template: "index-saas.html.j2"
   analytics_clicky: '<script async data-id="101505645" src="//static.getclicky.com/js"></script>'
   home_h1: "Comparateur de logiciels et solutions pour les professionnels"
+  outils_menu:
+    - label: Outils pratiques
+      url: /outils-pratiques
 page_types:
   classement: classement-saas
 theme:
