@@ -11,7 +11,7 @@
 # ============================================================
 
 site:
-  contact_form_key: ""
+  contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
   google_site_verification: "L43wAUqgxfT4pxeThRRH2S3Ljy8_aOCtj6bIXgNQdwU"
   blog_sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRHUV_e9nusqYfX42oZHbU5ktBbe7W4uCY9BMH3b03UJaGYG5mIITiigJ28JV9n-arAWoUvh03Ykt-1/pub?gid=0&single=true&output=csv"
   slug: laboxentrepreneuriat-fr
@@ -26,7 +26,8 @@ site:
   www_preference: "www"
   author_name: "Hugo Simon"
   home_title: "La Box Entrepreneuriat : avis logiciels, SaaS et solutions business"
-  home_description: "La Box Entrepreneuriat compare les outils indispensables aux entreprises : CRM, comptabilité, RH, marketing, gestion et logiciels SaaS."
+  home_description: "La Box Entrepreneuriat compare les outils indispensables aux
+    entreprises : CRM, comptabilité, RH, marketing, gestion et logiciels SaaS."
   home_h1: "Les meilleures solutions pour gérer et développer votre entreprise"
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
@@ -78,57 +79,62 @@ seo:
   category_label: "Comparateurs"
   category_url: "/#comparateurs"
   avis_title_pattern: "Avis {nom} : faut-il choisir ce logiciel en {year} ?"
-  avis_meta_pattern: "Découvrez notre test complet du logiciel {nom} : avantages, tarifs et fonctionnalités."
+  avis_meta_pattern: "Découvrez notre test complet du logiciel {nom} : avantages,
+    tarifs et fonctionnalités."
   liste_comp_title: "Tous les comparatifs de La Box Entrepreneuriat"
   liste_avis_title: "Tous nos avis sur les logiciels professionnels"
   classement_title_pattern: "Meilleur {categorie} {year} : mon top {count} comparatif"
-  classement_meta_pattern: "Comparez les meilleurs {categories} en {year} : prix, fonctionnalités, avis indépendants."
-  classement_h1_pattern: "J'ai testé {count} {categories} : mon comparatif complet {year}"
+  classement_meta_pattern: "Comparez les meilleurs {categories} en {year} : prix,
+    fonctionnalités, avis indépendants."
+  classement_h1_pattern: "J'ai testé {count} {categories} : mon comparatif complet
+    {year}"
   classement_titre_analyse_pattern: "Mon classement des meilleurs {categories}"
 
 persona_prompt: |
   Adopte STRICTEMENT le persona suivant :
-  
+
   👤 Identité :
   - Prénom : Hugo
   - Nom : Simon
   - Âge : 38 ans
   - Localisation : Paris
   - Style : entrepreneur expérimenté qui partage son retour terrain
-  
+
   💼 Situation professionnelle :
   - Métier : Consultant outils pour entrepreneurs
   - Expérience : 10 ans dans l'écosystème SaaS B2B
   - Mission : aider les créateurs et dirigeants TPE/PME à choisir les bons outils
-  
+
   🎯 Lecteur cible :
   - Créateur d'entreprise, dirigeant TPE (0 à 10 salariés)
   - Pas forcément technique, peu de temps à perdre
   - Cherche des solutions qui font gagner du temps immédiatement
-  
+
   🗣️ Style rédactionnel :
   - Ton : direct, accessible, parfois tranché
   - Vouvoiement
   - Vulgarise le jargon SaaS
   - Donne des exemples concrets de cas d'usage
   - N'a pas peur de dire "ce logiciel n'est pas pour vous si..."
-  
+
   📊 Méthodologie de classement (par ordre d'importance) :
   1. Simplicité de prise en main (un dirigeant doit s'en servir en 30 min)
   2. Rapport qualité/prix réel (coût total mensuel, pas le prix d'appel)
   3. Couverture fonctionnelle adaptée TPE/PME (sans usine à gaz)
   4. Support en français accessible
-  
+
   ⚠️ Contraintes :
   - Pas de jargon technique inutile
   - Pas de comparatifs vagues, toujours chiffrer
   - Toujours préciser le profil idéal du lecteur pour chaque outil
-  
+
   ✅ Résultat attendu :
   Un comparatif crédible qu'un dirigeant peut lire en 5 minutes et utiliser pour décider, écrit par quelqu'un qui parle d'expérience.
 author:
   name: "Hugo Simon"
-  bio: "Je m'appelle Hugo Simon, j'accompagne les entrepreneurs dans le choix de leurs outils du quotidien. Mon objectif : vous aider à trouver les logiciels qui vous feront vraiment gagner du temps."
+  bio: "Je m'appelle Hugo Simon, j'accompagne les entrepreneurs dans le choix de leurs
+    outils du quotidien. Mon objectif : vous aider à trouver les logiciels qui vous
+    feront vraiment gagner du temps."
   job_title: "Expert outils entrepreneurs"
   photo: "https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/laboxentrepreneuriat-fr/public/author-photo.png?t=1779805281552"
   socials: []

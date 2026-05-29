@@ -6,7 +6,7 @@
 
 site:
   home_h1: "Découvrez les meilleures solutions pour innover et développer votre activité"
-  contact_form_key: ""
+  contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
   google_site_verification: "oJMM9Ml5DWF2XR0ZHIA6s2psQWfzl1XMrakEXw5CHNU"
   slug: idees-innovantes-com
   name: "idees-innovantes.com"
@@ -19,8 +19,10 @@ site:
   sheet_csv_url: ""
   www_preference: "www"
   author_name: "Emma David"
-  home_title: "Idées Innovantes : comparatifs logiciels, outils SaaS et tendances business"
-  home_description: "Comparatifs de logiciels, avis d'experts et actualités des solutions innovantes pour accompagner les entreprises dans leur croissance."
+  home_title: "Idées Innovantes : comparatifs logiciels, outils SaaS et tendances
+    business"
+  home_description: "Comparatifs de logiciels, avis d'experts et actualités des solutions
+    innovantes pour accompagner les entreprises dans leur croissance."
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
   analytics_clicky: ""
@@ -67,26 +69,33 @@ tag_classes:
 
 seo:
   title_pattern: "Test {nom} {year} : notre avis détaillé"
-  meta_pattern: "Notre avis complet sur {nom} : fonctionnalités, performances, tarifs et support."
+  meta_pattern: "Notre avis complet sur {nom} : fonctionnalités, performances, tarifs
+    et support."
   h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
   eyebrow: "Comparatif {year}"
   intro_pattern: "Comparatif {A} vs {B} - analyse complète."
   category_label: "Comparateurs"
   category_url: "/#comparateurs"
   avis_title_pattern: "Avis {nom} {year} : notre test complet"
-  avis_meta_pattern: "Notre avis complet sur {nom} {year} : prix, fonctionnalités, points forts et limites."
+  avis_meta_pattern: "Notre avis complet sur {nom} {year} : prix, fonctionnalités,
+    points forts et limites."
   liste_comp_title: "Tous les comparatifs logiciels et SaaS {year}"
   liste_avis_title: "Tous nos avis sur les outils professionnels"
   classement_title_pattern: "Meilleur {categorie} {year} : mon top {count} comparatif"
-  classement_meta_pattern: "Comparez les meilleurs {categories} en {year} : prix, fonctionnalités, avis indépendants."
-  classement_h1_pattern: "J'ai testé {count} {categories} : mon comparatif complet {year}"
+  classement_meta_pattern: "Comparez les meilleurs {categories} en {year} : prix,
+    fonctionnalités, avis indépendants."
+  classement_h1_pattern: "J'ai testé {count} {categories} : mon comparatif complet
+    {year}"
   classement_titre_analyse_pattern: "Mon classement des meilleurs {categories}"
 
 persona_prompt: |
   Tu écris en tant que Emma David, 27 ans, Chef de projet basé(e) à Bordeaux (entreprise de 20-100 salariés). Niveau intermédiaire, 12 ans d'expérience. Tutoie le lecteur. Ton : accessible. Phrases mixtes. Niveau pédagogique : moyenne. Positionnement : expert. Niveau d'opinion : tranché. Angle éditorial prioritaire : performance. Critères de classement par ordre de priorité : Facilité d'utilisation, Fonctionnalités, Prix, Intégrations. Scoring : classement simple, avec un gagnant clairement désigné. Objectifs du lecteur cible : Gagner du temps sur les tâches répétitives, Réduire les coûts logiciels, Améliorer la productivité de mon équipe. Contraintes du lecteur : Budget limité, Équipe non technique.  Inclure une FAQ. Niveau de détail : synthétique.
 author:
   name: "Emma David"
-  bio: "Emma David est une chef de projet expérimentée basée à Bordeaux, forte de 12 années d'expertise dans la gestion de projets complexes. Elle accompagne les équipes vers la réussite grâce à sa capacité d'écoute et son approche collaborative. Passionnée par l'innovation, elle transforme les défis en opportunités de croissance."
+  bio: "Emma David est une chef de projet expérimentée basée à Bordeaux, forte de
+    12 années d'expertise dans la gestion de projets complexes. Elle accompagne les
+    équipes vers la réussite grâce à sa capacité d'écoute et son approche collaborative.
+    Passionnée par l'innovation, elle transforme les défis en opportunités de croissance."
   job_title: "Chef de projet"
   photo: "https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/idees-innovantes-com/public/author-photo.png?t=1780046116718"
   socials: []

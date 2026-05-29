@@ -14,11 +14,12 @@ site:
   sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTSv0469bN0_2nPikgVhe825g74RbMjaVZFvjJnDSydA-C98NcrCJJiHZdX8-V9xeMW-cklNBRou3vK/pub?gid=0&single=true&output=csv"
   template: "comparatif-vs-scpi.html.j2"
   index_template: "index-scpi.html.j2"
-  analytics_clicky: '<script async data-id="101505111" src="//static.getclicky.com/js"></script>
-'
+  analytics_clicky: '<script async data-id="101505111" src="//static.getclicky.com/js"></script> '
   author_name: "Thomas Mercier"
   home_title: "Comparateur SCPI 2026 : comparez les meilleures SCPI"
-  home_description: "Comparez les meilleures SCPI en 2026 : rendements, frais, avis independants."
+  home_description: "Comparez les meilleures SCPI en 2026 : rendements, frais, avis
+    independants."
+  contact_form_key: eabd63c5-1744-4172-b8c0-8984db488f10
 page_types:
   avis: avis-scpi
   vs: vs-scpi
@@ -88,7 +89,8 @@ seo:
   category_label: "Comparatifs"
   category_url: "index.html#comparatifs"
   avis_title_pattern: "Avis {nom} {year} : faut-il investir ?"
-  avis_meta_pattern: "Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques."
+  avis_meta_pattern: "Notre avis complet sur {nom} {year} : rendement {td}%, frais,
+    points forts et risques."
   liste_comp_title: "Tous les comparatifs {site_name} {year}"
   liste_avis_title: "Avis {site_name} {year} : analyses independantes"
 

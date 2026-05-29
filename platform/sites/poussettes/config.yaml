@@ -16,6 +16,7 @@ site:
   sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTME0FHxMGhf6OloQTGMz4b7ST3X_2REAKQWr3ddYp2NvnJvSxEF9JYRQVc1kf_D4spfoNR_HbmrpkG/pub?output=csv"
   analytics_clicky: "101434361"
 
+  contact_form_key: eabd63c5-1744-4172-b8c0-8984db488f10
 theme:
   accent: "#E8410A"
   accent2: "#FF6B3D"
@@ -75,8 +76,10 @@ tag_classes:
 # Textes SEO réutilisables
 seo:
   title_pattern: "Poussette {A} vs {B} : comparatif + avis {year}"
-  meta_pattern: "Comparatif complet {A} vs {B} : prix, avis, confort. Découvrez la meilleure poussette pour votre bébé en {year}."
-  h1_pattern: "Poussette <em>{A}</em> vs <em>{B}</em> :<br>laquelle choisir en {year} ?"
+  meta_pattern: "Comparatif complet {A} vs {B} : prix, avis, confort. Découvrez la
+    meilleure poussette pour votre bébé en {year}."
+  h1_pattern: "Poussette <em>{A}</em> vs <em>{B}</em> :<br>laquelle choisir en {year}
+    ?"
   eyebrow: "⚖️ Comparatif poussettes {year}"
   intro_pattern: >
     Vous hésitez entre la <strong>{A}</strong> ({prix_a}) et la <strong>{B}</strong>
