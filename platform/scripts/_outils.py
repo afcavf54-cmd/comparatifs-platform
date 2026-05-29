@@ -74,6 +74,31 @@ def slugify(s: str) -> str:
     return s or "outils"
 
 
+
+def normalize_canonical_domain(site_cfg: dict) -> str:
+    """Calcule le domaine canonique en respectant www_preference.
+
+    Exemples :
+      domain="https://laboxentrepreneuriat.fr",  www_preference="www"   → "https://www.laboxentrepreneuriat.fr"
+      domain="https://www.editions-dp.com",      www_preference="www"   → "https://www.editions-dp.com" (inchangé)
+      domain="https://www.example.com",          www_preference="naked" → "https://example.com"
+
+    Important : doit faire EXACTEMENT ce que generate.py fait pour les autres
+    pages du site, sinon on a une incohérence de canonical entre pages outils
+    et pages avis/classements.
+    """
+    domain = (site_cfg or {}).get("domain", "") or ""
+    pref = (site_cfg or {}).get("www_preference", "") or ""
+    if not domain:
+        return domain
+    has_www = "://www." in domain
+    if pref == "www" and not has_www:
+        return domain.replace("://", "://www.", 1)
+    if pref == "naked" and has_www:
+        return domain.replace("://www.", "://", 1)
+    return domain
+
+
 def find_platform_dir() -> Path:
     """Remonte depuis ce script pour trouver platform/."""
     here = Path(__file__).resolve()
@@ -108,7 +133,10 @@ def main(site_slug: str) -> int:
     with config_path.open(encoding="utf-8") as f:
         config = yaml.safe_load(f) or {}
 
-    site_cfg = config.get("site", {}) or {}
+    site_cfg = dict(config.get("site", {}) or {})
+    # Respecter www_preference pour le canonical (sinon canonical sans www
+    # alors que la page est servie en www → incohérence SEO).
+    site_cfg["domain"] = normalize_canonical_domain(site_cfg)
     theme_cfg = config.get("theme", {}) or {}
 
     # ── Auto-détection has_avis / has_blog (compat nav classement-saas) ──
