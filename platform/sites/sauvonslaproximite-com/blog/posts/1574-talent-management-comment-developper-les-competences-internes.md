@@ -1,23 +1,24 @@
 ---
-title: 'Talent management : comment développer les compétences internes ?'
+title: "Talent management : comment développer les compétences internes ?"
 slug: 1574-talent-management-comment-developper-les-competences-internes
-date: '2026-05-29T09:00:00+02:00'
+date: 2026-05-29T09:00:00+02:00
+updated: 2026-05-29T14:48:39
 categorie: Ressources Humaines
-meta_title: 'Talent management : comment améliorer la gestion des compétences en entreprise'
+meta_title: "Talent management : comment améliorer la gestion des compétences en entreprise"
 meta_description: Découvrez comment développer efficacement vos talents internes plutôt
-  que recruter. Stratégies pratiques de talent management pour réduire le turnover
-  et booster…
-min_words: 2500
+featured_image: /blog/1574-talent-management-comment-developper-les-competences-internes/featured-15547.jpg
 status: published
-link_anchors:
-- text: talent management
-  max: 2
+min_words: 2500
 related_posts:
 - 4315-gestion-des-talents-dans-une-pme-quelles-solutions-mettre-en-place
 - 4687-definition-de-la-gestion-des-talents-tout-comprendre
 - 4608-gestion-des-talents-rh-quelles-bonnes-pratiques-adopter
 - 3445-logiciel-gepp-quelles-fonctionnalites-comparer
+link_anchors:
+- text: talent management
+  max: 2
 ---
+
 <h2>Ma définition de la gestion des talents après 20 ans de comptabilité</h2>
 
 <p>J'ai longtemps pensé que la <strong>gestion des talents RH</strong> ne concernait que les grandes multinationales avec leurs programmes de formation sophistiqués. Erreur totale. Après deux décennies à gérer les aspects financiers des RH, j'ai compris que développer les compétences internes était vital pour toutes les entreprises, même les nôtres de taille moyenne.</p>
@@ -191,3 +192,4 @@ related_posts:
 <p>Après vingt ans dans ce métier, je peux vous assurer que développer les talents internes n'est plus une option. C'est une nécessité stratégique. Oui, ça coûte. Oui, ça demande du temps et de l'organisation. Mais une entreprise qui ne forme pas ses collaborateurs se condamne à stagner pendant que les autres avancent.</p>
 
 <p>L'investissement formation, c'est comme l'investissement informatique : on peut s'en passer quelque temps, mais la facture finit toujours par arriver. Autant anticiper et maîtriser plutôt que de rattraper en urgence avec des coûts décuplés.</p>
+
