@@ -1,23 +1,24 @@
 ---
 title: Comment réussir un succession planning en entreprise ?
 slug: 8767-comment-reussir-un-succession-planning-en-entreprise
-date: '2026-05-23T15:00:00+02:00'
+date: 2026-05-23T15:00:00+02:00
+updated: 2026-05-29T15:00:40
 categorie: Ressources Humaines
-meta_title: 'Succession planning : définition, étapes et mise en œuvre RH'
+meta_title: "Succession planning : définition, étapes et mise en œuvre RH"
 meta_description: Découvrez comment mettre en place un succession planning efficace
-  en entreprise. Méthodes concrètes, outils pratiques et stratégies pour éviter les
-  crises de…
-min_words: 3000
+featured_image: /blog/8767-comment-reussir-un-succession-planning-en-entreprise/featured-35548.jpg
 status: published
-link_anchors:
-- text: succession planning
-  max: 2
+min_words: 3000
 related_posts:
 - 5739-comment-ameliorer-la-retention-des-talents
 - 2742-le-talent-management-comment-developper-les-talents-en-entreprise
 - 5959-comment-construire-une-marque-employeur-attractive
 - 6481-comment-realiser-une-cartographie-des-competences-efficacement
+link_anchors:
+- text: succession planning
+  max: 2
 ---
+
 <h2>Le succession planning, ce casse-tête qui m'a fait perdre des nuits</h2>
 
 <p>J'ai vécu ma première crise de succession planning il y a trois ans. Mon directeur commercial, pilier de l'entreprise depuis huit ans, m'annonce son départ pour créer sa boîte. <strong>Panique totale.</strong> Aucun plan de succession, personne de formé, et 40% de notre chiffre d'affaires entre ses mains.</p>
@@ -304,3 +305,4 @@ related_posts:
 <p>Le succession planning transforme votre approche RH. Plus de panique face aux départs, plus de gestion de crise permanente. Vous anticipez, vous préparez, vous sécurisez.</p>
 
 <p>Mon conseil final ? <strong>Commencez petit mais commencez maintenant.</strong> Identifiez vos trois postes les plus critiques, trouvez un successeur pour chacun, et lancez leur formation. Dans 18 mois, vous me remercierez.</p>
+
