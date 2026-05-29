@@ -1,0 +1,45 @@
+name: Add contact_form_key to all sites
+
+# Workflow one-shot : ajoute la clé Web3Forms à tous les config.yaml
+# Lance-le manuellement depuis l'onglet Actions du repo.
+# Idempotent : peut tourner plusieurs fois sans casser quoi que ce soit.
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install ruamel.yaml
+        run: pip install ruamel.yaml
+
+      - name: Run migration script
+        run: python platform/scripts/add_contact_form_key.py
+
+      - name: Commit changes (if any)
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add platform/sites/*/config.yaml
+            git commit -m "chore: add Web3Forms contact_form_key to all sites"
+            git push
+            echo "✅ Commit créé et pushé"
+          else
+            echo "ℹ️ Rien à commit, tous les sites avaient déjà la clé"
+          fi
