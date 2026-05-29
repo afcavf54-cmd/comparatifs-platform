@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 const UNCATEGORIZED_KEY = '__uncategorized__'
@@ -79,6 +80,7 @@ function CategoryInput({
 }
 
 export default function SitesPage() {
+  const router = useRouter()
   const [sites, setSites] = useState<any[]>([])
   const [categories, setCategories] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(true)
@@ -232,10 +234,11 @@ export default function SitesPage() {
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 14 }}>
                   {groupSites.map((site: any) => (
-                    <Link key={site.id} href={`/sites/${site.id}`} style={{ textDecoration: 'none' }}>
-                      <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 14, padding: 18, transition: 'border-color 0.15s, transform 0.15s', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: 10, height: '100%' }}
-                        onMouseEnter={e => { e.currentTarget.style.borderColor = '#00D4AA'; e.currentTarget.style.transform = 'translateY(-1px)' }}
-                        onMouseLeave={e => { e.currentTarget.style.borderColor = '#1E2D3D'; e.currentTarget.style.transform = 'translateY(0)' }}>
+                    <div key={site.id}
+                      onClick={() => router.push(`/sites/${site.id}`)}
+                      style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 14, padding: 18, transition: 'border-color 0.15s, transform 0.15s', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: 10, height: '100%' }}
+                      onMouseEnter={e => { e.currentTarget.style.borderColor = '#00D4AA'; e.currentTarget.style.transform = 'translateY(-1px)' }}
+                      onMouseLeave={e => { e.currentTarget.style.borderColor = '#1E2D3D'; e.currentTarget.style.transform = 'translateY(0)' }}>
                         <div style={{ fontSize: 15, fontWeight: 700, color: '#fff', lineHeight: 1.3, wordBreak: 'break-word' }}>
                           {site.name}
                         </div>
@@ -278,8 +281,7 @@ export default function SitesPage() {
                           <span style={{ flex: 1 }} />
                           <span style={{ color: '#4A5568', fontSize: 16 }}>›</span>
                         </div>
-                      </div>
-                    </Link>
+                    </div>
                   ))}
                 </div>
               </section>
