@@ -1,23 +1,24 @@
 ---
-title: 'Cartographie des compétences : comment identifier les savoir-faire clés ?'
+title: "Cartographie des compétences : comment identifier les savoir-faire clés ?"
 slug: 4853-cartographie-des-competences-comment-identifier-les-savoir-faire-cles
-date: '2026-05-28T08:00:00+02:00'
+date: 2026-05-28T08:00:00+02:00
+updated: 2026-05-29T14:43:36
 categorie: Ressources Humaines
-meta_title: 'Cartographie des compétences : outils et étapes clés pour votre entreprise'
+meta_title: "Cartographie des compétences : outils et étapes clés pour votre entreprise"
 meta_description: Découvrez comment identifier et cartographier les compétences clés
-  de vos équipes. Méthodes pratiques pour anticiper les besoins formation et éviter
-  les pertes…
-min_words: 3000
+featured_image: /blog/4853-cartographie-des-competences-comment-identifier-les-savoir-faire-cles/featured-12589.jpg
 status: published
-link_anchors:
-- text: cartographie des compétences
-  max: 2
+min_words: 3000
 related_posts:
 - 4687-definition-de-la-gestion-des-talents-tout-comprendre
 - 4315-gestion-des-talents-dans-une-pme-quelles-solutions-mettre-en-place
 - 3445-logiciel-gepp-quelles-fonctionnalites-comparer
 - 4608-gestion-des-talents-rh-quelles-bonnes-pratiques-adopter
+link_anchors:
+- text: cartographie des compétences
+  max: 2
 ---
+
 <h2>Pourquoi la cartographie des compétences est devenue indispensable ?</h2>
 
 <p>En vingt ans de comptabilité, j'ai vu défiler de nombreux changements organisationnels. Mais celui qui m'a le plus marquée, c'est quand notre directeur nous a annoncé l'arrivée de nouveaux outils de dématérialisation. <strong>Du jour au lendemain</strong>, mes collaborateurs ont dû maîtriser des processus qu'ils n'avaient jamais vus.</p>
@@ -213,3 +214,4 @@ related_posts:
 <p><strong>Doit-on impliquer la DRH ?</strong> Ça dépend de la taille de l'entreprise. Dans une PME, je gère directement. Dans des structures plus importantes, la DRH peut apporter une expertise méthodologique utile et centraliser les données.</p>
 
 <p>La cartographie des compétences n'est pas un gadget RH de plus. C'est un outil concret qui améliore l'efficacité quotidienne et prépare l'avenir. À condition de garder une approche pragmatique et de ne pas se perdre dans la complexité. Commencez simple, ajustez en cours de route, et mesurez les résultats. <strong>Vos équipes vous remercieront.</strong></p>
+
