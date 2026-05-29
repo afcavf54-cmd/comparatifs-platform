@@ -5,6 +5,7 @@
 # ============================================================
 
 site:
+  home_h1: "Découvrez les meilleures solutions pour innover et développer votre activité"
   contact_form_key: ""
   google_site_verification: "oJMM9Ml5DWF2XR0ZHIA6s2psQWfzl1XMrakEXw5CHNU"
   slug: idees-innovantes-com
@@ -18,8 +19,8 @@ site:
   sheet_csv_url: ""
   www_preference: "www"
   author_name: "Emma David"
-  home_title: "idees-innovantes.com | Comparatifs 2026"
-  home_description: ""
+  home_title: "Idées Innovantes : comparatifs logiciels, outils SaaS et tendances business"
+  home_description: "Comparatifs de logiciels, avis d'experts et actualités des solutions innovantes pour accompagner les entreprises dans leur croissance."
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
   analytics_clicky: ""
@@ -65,8 +66,8 @@ tag_classes:
   europeenne: "tag-europeenne"
 
 seo:
-  title_pattern: "{A} vs {B} : comparatif {year}"
-  meta_pattern: "Comparatif complet {A} vs {B} {year} : prix, fonctionnalités, avis."
+  title_pattern: "Test {nom} {year} : notre avis détaillé"
+  meta_pattern: "Notre avis complet sur {nom} : fonctionnalités, performances, tarifs et support."
   h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
   eyebrow: "Comparatif {year}"
   intro_pattern: "Comparatif {A} vs {B} - analyse complète."
@@ -74,8 +75,8 @@ seo:
   category_url: "/#comparateurs"
   avis_title_pattern: "Avis {nom} {year} : notre test complet"
   avis_meta_pattern: "Notre avis complet sur {nom} {year} : prix, fonctionnalités, points forts et limites."
-  liste_comp_title: "Tous les comparatifs {site_name} {year}"
-  liste_avis_title: "Avis logiciels {year} : analyses indépendantes"
+  liste_comp_title: "Tous les comparatifs logiciels et SaaS {year}"
+  liste_avis_title: "Tous nos avis sur les outils professionnels"
   classement_title_pattern: "Meilleur {categorie} {year} : mon top {count} comparatif"
   classement_meta_pattern: "Comparez les meilleurs {categories} en {year} : prix, fonctionnalités, avis indépendants."
   classement_h1_pattern: "J'ai testé {count} {categories} : mon comparatif complet {year}"
