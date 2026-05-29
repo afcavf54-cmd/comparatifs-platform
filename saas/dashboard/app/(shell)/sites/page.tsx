@@ -209,14 +209,15 @@ export default function SitesPage() {
           <div style={{
             display: 'grid',
             gridTemplateColumns: GRID_COLS,
-            gap: 16,
-            padding: '0 18px',
+            gap: 14,
+            padding: '0 12px',
             fontSize: 11,
             fontWeight: 600,
             color: '#4A5568',
             textTransform: 'uppercase',
             letterSpacing: '0.08em',
             marginBottom: -20,
+            maxWidth: 980,
           }}>
             <div>Nom du site</div>
             <div>Catégorie</div>
@@ -230,7 +231,7 @@ export default function SitesPage() {
             const groupLabel = isUncategorized ? 'Sans catégorie' : groupKey
             const groupIcon = isUncategorized ? '📁' : '🏷️'
             return (
-              <section key={groupKey}>
+              <section key={groupKey} style={{ maxWidth: 980 }}>
                 {/* Titre de section */}
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginBottom: 12 }}>
                   <span style={{ fontSize: 14 }}>{groupIcon}</span>
@@ -239,7 +240,7 @@ export default function SitesPage() {
                 </div>
 
                 {/* Liste des lignes */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', borderTop: '1px solid #1E2D3D' }}>
                   {groupSites.map((site: any) => {
                     const cleanDomain = site.domain ? site.domain.replace(/^https?:\/\//, '') : ''
                     const fullUrl = site.domain ? (site.domain.startsWith('http') ? site.domain : `https://${site.domain}`) : ''
@@ -250,16 +251,15 @@ export default function SitesPage() {
                           display: 'grid',
                           gridTemplateColumns: GRID_COLS,
                           alignItems: 'center',
-                          gap: 16,
-                          padding: '14px 18px',
-                          borderRadius: 10,
-                          background: '#0D1117',
-                          border: '1px solid transparent',
+                          gap: 14,
+                          padding: '11px 12px',
+                          background: 'transparent',
+                          borderBottom: '1px solid #1E2D3D',
                           cursor: 'pointer',
-                          transition: 'background 0.15s, border-color 0.15s',
+                          transition: 'background 0.15s',
                         }}
-                        onMouseEnter={e => { e.currentTarget.style.background = '#11161F'; e.currentTarget.style.borderColor = '#1E2D3D' }}
-                        onMouseLeave={e => { e.currentTarget.style.background = '#0D1117'; e.currentTarget.style.borderColor = 'transparent' }}>
+                        onMouseEnter={e => { e.currentTarget.style.background = '#11161F' }}
+                        onMouseLeave={e => { e.currentTarget.style.background = 'transparent' }}>
                         {/* Nom du site */}
                         <div style={{ fontSize: 14, fontWeight: 600, color: '#fff', wordBreak: 'break-word' }}>
                           {site.name}
