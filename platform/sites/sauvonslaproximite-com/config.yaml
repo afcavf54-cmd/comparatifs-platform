@@ -23,12 +23,14 @@ site:
   www_preference: "www"
   author_name: "Marie Simon"
   home_title: "Sauvons la Proximité : comparateur de solutions pour artisans et PME"
-  home_description: "Découvrez des avis, comparatifs et actualités dédiés aux artisans,
-    PME, entreprises du bâtiment et commerces locaux pour optimiser leur activité."
+  home_description: "Découvrez des avis, comparatifs et actualités dédiés aux artisans, PME, entreprises du bâtiment et commerces locaux pour optimiser leur activité."
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
   analytics_clicky: '<script async data-id="101506542" src="//static.getclicky.com/js"></script>'
 
+  outils_menu:
+    - label: Tools
+      url: /tools
 page_types:
   classement: classement-saas
 
@@ -75,26 +77,19 @@ seo:
   category_label: "Comparateurs"
   category_url: "/#comparateurs"
   avis_title_pattern: "Avis {nom} : notre test pour artisans et PME"
-  avis_meta_pattern: "Analyse de {nom} : fonctionnalités, tarifs et avantages pour
-    les professionnels."
+  avis_meta_pattern: "Analyse de {nom} : fonctionnalités, tarifs et avantages pour les professionnels."
   liste_comp_title: "Comparatifs des meilleurs outils pour PME et artisans"
   liste_avis_title: "Tests et avis des solutions professionnelles"
   classement_title_pattern: "Meilleur {categorie} {year} : mon top {count} comparatif"
-  classement_meta_pattern: "Comparez les meilleurs {categories} en {year} : prix,
-    fonctionnalités, avis indépendants."
-  classement_h1_pattern: "J'ai testé {count} {categories} : mon comparatif complet
-    {year}"
+  classement_meta_pattern: "Comparez les meilleurs {categories} en {year} : prix, fonctionnalités, avis indépendants."
+  classement_h1_pattern: "J'ai testé {count} {categories} : mon comparatif complet {year}"
   classement_titre_analyse_pattern: "Mon classement des meilleurs {categories}"
 
 persona_prompt: |
   Tu écris en tant que Marie Simon, 54 ans, Responsable comptable basé(e) à Lyon (entreprise de 20-100 salariés). Niveau expert, 20 ans d'expérience. Vouvoie le lecteur. Ton : pédagogique. Phrases mixtes. Niveau pédagogique : moyenne. Positionnement : expert.  Angle éditorial prioritaire : performance. Critères de classement par ordre de priorité : Facilité d'utilisation, Fonctionnalités, Prix, Intégrations. Scoring : note /5, avec un gagnant clairement désigné. Objectifs du lecteur cible : Gagner du temps sur les tâches répétitives, Réduire les coûts logiciels. Contraintes du lecteur : Budget limité, Équipe non technique. Inclure des cas concrets et exemples. Inclure une FAQ. Niveau de détail : approfondi.
 author:
   name: "Marie Simon"
-  bio: "Manon Dupont est une artisane expérimentée établie à Bordeaux depuis 18 ans.
-    Elle développe son savoir-faire en tant qu'auto-entrepreneure, alliant tradition
-    artisanale et approche moderne. Son expertise reconnue lui permet d'accompagner
-    ses clients avec professionnalisme et créativité dans la réalisation de leurs
-    projets."
+  bio: "Manon Dupont est une artisane expérimentée établie à Bordeaux depuis 18 ans. Elle développe son savoir-faire en tant qu'auto-entrepreneure, alliant tradition artisanale et approche moderne. Son expertise reconnue lui permet d'accompagner ses clients avec professionnalisme et créativité dans la réalisation de leurs projets."
   job_title: "Responsable comptable"
   photo: "https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/sauvonslaproximite-com/public/author-photo.png?t=1779805395937"
   socials: []
