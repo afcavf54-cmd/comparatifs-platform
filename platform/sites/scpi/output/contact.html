@@ -108,10 +108,124 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <p class="subtitle">Une question, une suggestion ou un partenariat ? Écrivez-nous.</p>
 
   <div class="contact-block">
-    <h2>📧 Par email</h2>
-    <p>Pour toute demande générale, partenariat ou signalement d'erreur :</p>
-    <p><a href="mailto:contact@utl-peipin.fr">contact@utl-peipin.fr</a></p>
+    <h2>✉️ Nous écrire</h2>
+    <p style="margin-bottom:24px">Remplissez ce formulaire, nous vous répondrons sous 24 à 48h ouvrées.</p>
+
+    <form class="contact-form" id="contact-form" novalidate>
+      <input type="hidden" name="access_key" value="eabd63c5-1744-4172-b8c0-8984db488f10">
+      <input type="hidden" name="from_name" value="UTL Peipin">
+      <input type="hidden" name="redirect" value="false">
+      <input type="hidden" name="subject" id="contact-subject" value="UTL Peipin - Nouveau message">
+
+      <div class="contact-row">
+        <div class="contact-field">
+          <label for="contact-name">Nom & Prénom *</label>
+          <input type="text" id="contact-name" name="name" required autocomplete="name" placeholder="Jean Dupont">
+        </div>
+        <div class="contact-field">
+          <label for="contact-email">Email *</label>
+          <input type="email" id="contact-email" name="email" required autocomplete="email" placeholder="jean@exemple.com">
+        </div>
+      </div>
+
+      <div class="contact-field">
+        <label for="contact-objet">Objet *</label>
+        <select id="contact-objet" name="objet" required>
+          <option value="">— Choisissez —</option>
+          <option value="Question générale">Question générale</option>
+          <option value="Partenariat">Partenariat</option>
+          <option value="Signalement d'erreur">Signalement d'erreur</option>
+          <option value="Suggestion d'article">Suggestion d'article</option>
+          <option value="Autre">Autre</option>
+        </select>
+      </div>
+
+      <div class="contact-field">
+        <label for="contact-message">Votre message *</label>
+        <textarea id="contact-message" name="message" required placeholder="Détaillez votre demande…"></textarea>
+      </div>
+
+      <div class="contact-field">
+        <label for="contact-captcha">Question anti-spam : combien font <strong id="captcha-q">3 + 4</strong> ? *</label>
+        <input type="text" id="contact-captcha" name="captcha_answer" required autocomplete="off" inputmode="numeric" style="max-width:120px">
+        <div class="contact-field-hint">Une simple addition pour prouver que vous êtes humain.</div>
+      </div>
+
+      <div class="contact-honeypot" aria-hidden="true">
+        <input type="text" name="botcheck" tabindex="-1" autocomplete="off">
+      </div>
+
+      <button type="submit" class="contact-submit" id="contact-submit">Envoyer le message</button>
+      <div class="contact-status" id="contact-status" role="status" aria-live="polite"></div>
+    </form>
   </div>
+
+  <script>
+  (function() {
+    var form = document.getElementById('contact-form');
+    var statusBox = document.getElementById('contact-status');
+    var submitBtn = document.getElementById('contact-submit');
+    // Question anti-spam aléatoire (entre 2 et 9, addition simple)
+    var a = Math.floor(Math.random() * 7) + 2;
+    var b = Math.floor(Math.random() * 7) + 2;
+    var expected = a + b;
+    document.getElementById('captcha-q').textContent = a + ' + ' + b;
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      statusBox.className = 'contact-status';
+      statusBox.textContent = '';
+
+      // Vérif anti-spam côté client
+      var captchaInput = document.getElementById('contact-captcha').value.trim();
+      if (parseInt(captchaInput, 10) !== expected) {
+        statusBox.className = 'contact-status error';
+        statusBox.textContent = '✗ La réponse à la question anti-spam est incorrecte.';
+        return;
+      }
+      // Honeypot : si rempli, on bloque silencieusement (bot)
+      if (form.querySelector('input[name="botcheck"]').value !== '') {
+        statusBox.className = 'contact-status success';
+        statusBox.textContent = '✓ Message envoyé. Nous vous répondrons rapidement.';
+        form.reset();
+        return;
+      }
+
+      // Met à jour le sujet avec l'objet choisi : "<site> - <objet>"
+      var objet = document.getElementById('contact-objet').value || 'Message';
+      document.getElementById('contact-subject').value = 'UTL Peipin - ' + objet;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = '⏳ Envoi en cours…';
+      try {
+        var formData = new FormData(form);
+        var resp = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData,
+        });
+        var data = await resp.json();
+        if (resp.ok && data.success) {
+          statusBox.className = 'contact-status success';
+          statusBox.textContent = '✓ Message envoyé. Nous vous répondrons rapidement.';
+          form.reset();
+          // Re-génère une nouvelle question anti-spam
+          a = Math.floor(Math.random() * 7) + 2;
+          b = Math.floor(Math.random() * 7) + 2;
+          expected = a + b;
+          document.getElementById('captcha-q').textContent = a + ' + ' + b;
+        } else {
+          statusBox.className = 'contact-status error';
+          statusBox.textContent = '✗ Erreur d\u0027envoi : ' + (data.message || 'merci de réessayer');
+        }
+      } catch (err) {
+        statusBox.className = 'contact-status error';
+        statusBox.textContent = '✗ Erreur réseau : merci de réessayer.';
+      }
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Envoyer le message';
+    });
+  })();
+  </script>
 
   <div class="contact-block">
     <h2>⏱️ Délai de réponse</h2>
@@ -169,7 +283,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 utl-peipin.fr — Données actualisées le 27 mai 2026
+        © 2026 utl-peipin.fr — Données actualisées le 29 mai 2026
       </div>
     </div>
   </div>
