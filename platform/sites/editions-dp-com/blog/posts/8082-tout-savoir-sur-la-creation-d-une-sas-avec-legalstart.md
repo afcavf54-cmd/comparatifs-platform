@@ -1,21 +1,21 @@
 ---
 title: Tout savoir sur la création d’une SAS avec Legalstart
 slug: 8082-tout-savoir-sur-la-creation-d-une-sas-avec-legalstart
-date: 2026-05-12T12:02:05
-updated: 2026-05-12T13:11:39
+date: 2026-05-12 12:02:05
+updated: 2026-05-12 13:11:39
 categorie: Création entreprise
-meta_title: "Tout savoir sur la création d'une SAS avec le site Legalstart"
+meta_title: Tout savoir sur la création d'une SAS avec le site Legalstart
 meta_description: Découvrez comment créer votre SAS avec Legalstart à partir de 199€
 featured_image: /blog/8082-tout-savoir-sur-la-creation-d-une-sas-avec-legalstart/featured-91959.jpg
 status: published
 min_words: 1000
 related_posts:
 - 8532-guichet-unique-inpi-vs-legalstart-comparatif-complet
+- 7122-etapes-creation-entreprise-le-guide-complet-en-year
 link_anchors:
-- text: "création d'entreprise avec legalstart"
+- text: création d'entreprise avec legalstart
   max: 5
 ---
-
 <h2>Pourquoi j'ai choisi Legalstart pour créer ma SAS</h2>
 
 <p>Quand j'ai dû créer ma SAS il y a trois ans, j'avais une contrainte majeure : <strong>un budget serré</strong> et pas envie de passer des semaines à comprendre toutes les subtilités administratives. Mon comptable me parlait de 2 000 euros minimum pour une création classique chez un avocat.</p>
