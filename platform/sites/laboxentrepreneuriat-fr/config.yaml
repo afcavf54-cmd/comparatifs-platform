@@ -26,13 +26,15 @@ site:
   www_preference: "www"
   author_name: "Hugo Simon"
   home_title: "La Box Entrepreneuriat : avis logiciels, SaaS et solutions business"
-  home_description: "La Box Entrepreneuriat compare les outils indispensables aux
-    entreprises : CRM, comptabilité, RH, marketing, gestion et logiciels SaaS."
+  home_description: "La Box Entrepreneuriat compare les outils indispensables aux entreprises : CRM, comptabilité, RH, marketing, gestion et logiciels SaaS."
   home_h1: "Les meilleures solutions pour gérer et développer votre entreprise"
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
   analytics_clicky: '<script async data-id="101506541" src="//static.getclicky.com/js"></script>'
 
+  outils_menu:
+    - label: Nos Outils
+      url: /nos-outils
 page_types:
   classement: classement-saas
 
@@ -79,15 +81,12 @@ seo:
   category_label: "Comparateurs"
   category_url: "/#comparateurs"
   avis_title_pattern: "Avis {nom} : faut-il choisir ce logiciel en {year} ?"
-  avis_meta_pattern: "Découvrez notre test complet du logiciel {nom} : avantages,
-    tarifs et fonctionnalités."
+  avis_meta_pattern: "Découvrez notre test complet du logiciel {nom} : avantages, tarifs et fonctionnalités."
   liste_comp_title: "Tous les comparatifs de La Box Entrepreneuriat"
   liste_avis_title: "Tous nos avis sur les logiciels professionnels"
   classement_title_pattern: "Meilleur {categorie} {year} : mon top {count} comparatif"
-  classement_meta_pattern: "Comparez les meilleurs {categories} en {year} : prix,
-    fonctionnalités, avis indépendants."
-  classement_h1_pattern: "J'ai testé {count} {categories} : mon comparatif complet
-    {year}"
+  classement_meta_pattern: "Comparez les meilleurs {categories} en {year} : prix, fonctionnalités, avis indépendants."
+  classement_h1_pattern: "J'ai testé {count} {categories} : mon comparatif complet {year}"
   classement_titre_analyse_pattern: "Mon classement des meilleurs {categories}"
 
 persona_prompt: |
@@ -132,9 +131,7 @@ persona_prompt: |
   Un comparatif crédible qu'un dirigeant peut lire en 5 minutes et utiliser pour décider, écrit par quelqu'un qui parle d'expérience.
 author:
   name: "Hugo Simon"
-  bio: "Je m'appelle Hugo Simon, j'accompagne les entrepreneurs dans le choix de leurs
-    outils du quotidien. Mon objectif : vous aider à trouver les logiciels qui vous
-    feront vraiment gagner du temps."
+  bio: "Je m'appelle Hugo Simon, j'accompagne les entrepreneurs dans le choix de leurs outils du quotidien. Mon objectif : vous aider à trouver les logiciels qui vous feront vraiment gagner du temps."
   job_title: "Expert outils entrepreneurs"
   photo: "https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/laboxentrepreneuriat-fr/public/author-photo.png?t=1779805281552"
   socials: []
