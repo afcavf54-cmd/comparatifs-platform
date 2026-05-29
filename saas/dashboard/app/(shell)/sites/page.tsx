@@ -5,15 +5,11 @@ import Link from 'next/link'
 
 const UNCATEGORIZED_KEY = '__uncategorized__'
 
-// ── Sous-composant : input éditable pour la catégorie ───────────
-// Gère son propre state local pour éviter les re-renders du parent
-// à chaque keystroke. Sauvegarde au blur ou à Enter.
+// Grille commune à toutes les lignes (et au header) pour aligner les colonnes
+const GRID_COLS = '1.4fr 1.2fr 1.4fr 0.8fr'
+
 function CategoryInput({
-  siteId,
-  value,
-  suggestions,
-  onSave,
-  disabled,
+  siteId, value, suggestions, onSave, disabled,
 }: {
   siteId: string
   value: string
@@ -23,11 +19,7 @@ function CategoryInput({
 }) {
   const [localValue, setLocalValue] = useState(value)
 
-  // Resync si la valeur change de l'extérieur (ex: après save d'un autre site
-  // qui partage la même catégorie, ou après reload)
-  useEffect(() => {
-    setLocalValue(value)
-  }, [value])
+  useEffect(() => { setLocalValue(value) }, [value])
 
   function commit() {
     const trimmed = localValue.trim()
@@ -65,15 +57,13 @@ function CategoryInput({
           border: '1px solid #1E2D3D',
           background: '#0A0E1A',
           color: '#fff',
-          fontSize: 11,
+          fontSize: 12,
           outline: 'none',
           boxSizing: 'border-box',
         }}
       />
       <datalist id={datalistId}>
-        {suggestions.map(s => (
-          <option key={s} value={s} />
-        ))}
+        {suggestions.map(s => <option key={s} value={s} />)}
       </datalist>
     </>
   )
@@ -106,7 +96,6 @@ export default function SitesPage() {
 
   async function saveCategory(siteId: string, newCategory: string) {
     setSavingCategoryFor(siteId)
-    // Optimistic update
     setCategories(prev => {
       const updated = { ...prev }
       if (newCategory) updated[siteId] = newCategory
@@ -123,7 +112,6 @@ export default function SitesPage() {
       if (d.ok && d.categories) {
         setCategories(d.categories)
       } else if (!d.ok) {
-        // Revert : recharger depuis le serveur
         const r2 = await fetch('/api/categories')
         const d2 = await r2.json()
         setCategories(d2.categories || {})
@@ -161,7 +149,7 @@ export default function SitesPage() {
     setDeployingAll(false)
   }
 
-  // ── Regrouper les sites par catégorie ──────────────────────────
+  // ── Regrouper par catégorie ──────────────────────────────────────
   const groups: Record<string, any[]> = {}
   for (const site of sites) {
     const cat = (categories[site.id] || '').trim()
@@ -169,14 +157,12 @@ export default function SitesPage() {
     if (!groups[key]) groups[key] = []
     groups[key].push(site)
   }
-  // Tri : catégories alpha, "Sans catégorie" en dernier
   const sortedGroupKeys = Object.keys(groups).sort((a, b) => {
     if (a === UNCATEGORIZED_KEY) return 1
     if (b === UNCATEGORIZED_KEY) return -1
     return a.localeCompare(b, 'fr')
   })
 
-  // Suggestions pour l'autocomplete (catégories existantes uniques)
   const suggestions = Array.from(new Set(Object.values(categories))).filter(Boolean).sort((a, b) => a.localeCompare(b, 'fr'))
 
   return (
@@ -218,7 +204,26 @@ export default function SitesPage() {
           <Link href="/sites/new" style={{ padding: '12px 24px', borderRadius: 10, background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', fontWeight: 600, textDecoration: 'none' }}>Créer mon premier site</Link>
         </div>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 44 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 36 }}>
+          {/* Header colonnes global */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: GRID_COLS,
+            gap: 16,
+            padding: '0 18px',
+            fontSize: 11,
+            fontWeight: 600,
+            color: '#4A5568',
+            textTransform: 'uppercase',
+            letterSpacing: '0.08em',
+            marginBottom: -20,
+          }}>
+            <div>Nom du site</div>
+            <div>Catégorie</div>
+            <div>URL</div>
+            <div style={{ textAlign: 'right' }}>Créé le</div>
+          </div>
+
           {sortedGroupKeys.map(groupKey => {
             const groupSites = groups[groupKey]
             const isUncategorized = groupKey === UNCATEGORIZED_KEY
@@ -226,56 +231,74 @@ export default function SitesPage() {
             const groupIcon = isUncategorized ? '📁' : '🏷️'
             return (
               <section key={groupKey}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginBottom: 18, paddingBottom: 10, borderBottom: '1px solid #1E2D3D' }}>
-                  <span style={{ fontSize: 16 }}>{groupIcon}</span>
+                {/* Titre de section */}
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginBottom: 12 }}>
+                  <span style={{ fontSize: 14 }}>{groupIcon}</span>
                   <h2 style={{ fontSize: 13, fontWeight: 700, color: isUncategorized ? '#4A5568' : '#fff', margin: 0, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{groupLabel}</h2>
                   <span style={{ fontSize: 12, color: '#4A5568' }}>· {groupSites.length} site{groupSites.length > 1 ? 's' : ''}</span>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))', gap: 18 }}>
-                  {groupSites.map((site: any) => (
-                    <div key={site.id}
-                      onClick={() => router.push(`/sites/${site.id}`)}
-                      style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 14, padding: '22px 24px', transition: 'border-color 0.15s, transform 0.15s', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: 12, height: '100%' }}
-                      onMouseEnter={e => { e.currentTarget.style.borderColor = '#00D4AA'; e.currentTarget.style.transform = 'translateY(-1px)' }}
-                      onMouseLeave={e => { e.currentTarget.style.borderColor = '#1E2D3D'; e.currentTarget.style.transform = 'translateY(0)' }}>
-                        <div style={{ fontSize: 15, fontWeight: 700, color: '#fff', lineHeight: 1.3, wordBreak: 'break-word' }}>
+                {/* Liste des lignes */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  {groupSites.map((site: any) => {
+                    const cleanDomain = site.domain ? site.domain.replace(/^https?:\/\//, '') : ''
+                    const fullUrl = site.domain ? (site.domain.startsWith('http') ? site.domain : `https://${site.domain}`) : ''
+                    return (
+                      <div key={site.id}
+                        onClick={() => router.push(`/sites/${site.id}`)}
+                        style={{
+                          display: 'grid',
+                          gridTemplateColumns: GRID_COLS,
+                          alignItems: 'center',
+                          gap: 16,
+                          padding: '14px 18px',
+                          borderRadius: 10,
+                          background: '#0D1117',
+                          border: '1px solid transparent',
+                          cursor: 'pointer',
+                          transition: 'background 0.15s, border-color 0.15s',
+                        }}
+                        onMouseEnter={e => { e.currentTarget.style.background = '#11161F'; e.currentTarget.style.borderColor = '#1E2D3D' }}
+                        onMouseLeave={e => { e.currentTarget.style.background = '#0D1117'; e.currentTarget.style.borderColor = 'transparent' }}>
+                        {/* Nom du site */}
+                        <div style={{ fontSize: 14, fontWeight: 600, color: '#fff', wordBreak: 'break-word' }}>
                           {site.name}
                         </div>
 
-                        {site.domain && (
-                          <a href={site.domain.startsWith('http') ? site.domain : `https://${site.domain}`} target="_blank" rel="noopener noreferrer"
-                            onClick={e => e.stopPropagation()}
-                            style={{ fontSize: 12, color: '#00D4AA', textDecoration: 'none', wordBreak: 'break-all' }}>
-                            🌐 {site.domain.replace(/^https?:\/\//, '')}
-                          </a>
-                        )}
-
-                        <div style={{ flex: 1 }} />
-
-                        <div style={{ fontSize: 11, color: '#4A5568', lineHeight: 1.6 }}>
-                          <div>Créé le {new Date(site.created_at).toLocaleDateString('fr')}</div>
-                          {site.last_deployed && <div>Déployé le {new Date(site.last_deployed).toLocaleDateString('fr')}</div>}
+                        {/* Catégorie input */}
+                        <div onClick={e => e.stopPropagation()} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                          <CategoryInput
+                            siteId={site.id}
+                            value={categories[site.id] || ''}
+                            suggestions={suggestions}
+                            onSave={v => saveCategory(site.id, v)}
+                            disabled={savingCategoryFor === site.id}
+                          />
+                          {savingCategoryFor === site.id && (
+                            <span style={{ fontSize: 11, color: '#F6AD55' }}>⏳</span>
+                          )}
                         </div>
 
-                        {/* Input catégorie */}
-                        <div onClick={e => e.stopPropagation()} style={{ marginTop: 4 }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                            <CategoryInput
-                              siteId={site.id}
-                              value={categories[site.id] || ''}
-                              suggestions={suggestions}
-                              onSave={v => saveCategory(site.id, v)}
-                              disabled={savingCategoryFor === site.id}
-                            />
-                            {savingCategoryFor === site.id && (
-                              <span style={{ fontSize: 11, color: '#F6AD55', whiteSpace: 'nowrap' }}>⏳</span>
-                            )}
-                          </div>
+                        {/* URL */}
+                        <div>
+                          {cleanDomain ? (
+                            <a href={fullUrl} target="_blank" rel="noopener noreferrer"
+                              onClick={e => e.stopPropagation()}
+                              style={{ fontSize: 13, color: '#00D4AA', textDecoration: 'none', wordBreak: 'break-all' }}>
+                              🌐 {cleanDomain} ↗
+                            </a>
+                          ) : (
+                            <span style={{ fontSize: 13, color: '#4A5568' }}>—</span>
+                          )}
                         </div>
 
-                    </div>
-                  ))}
+                        {/* Date de création */}
+                        <div style={{ fontSize: 12, color: '#8B9CB0', textAlign: 'right' }}>
+                          {new Date(site.created_at).toLocaleDateString('fr')}
+                        </div>
+                      </div>
+                    )
+                  })}
                 </div>
               </section>
             )
