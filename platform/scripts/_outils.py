@@ -56,6 +56,24 @@ TOOL_CATALOG = {
     # "salaire-brut-net": {"icon": "💶", "name": "...", "description": "..."},
 }
 
+
+def slugify(s: str) -> str:
+    """Convertit un label en slug d'URL.
+    Ex : 'Outils' → 'outils', 'Mes outils' → 'mes-outils'.
+    Doit être identique à la fonction du même nom dans _sync_outils_menu.py
+    pour que les deux scripts s'accordent sur le même slug.
+    """
+    import unicodedata
+    import re
+    if not s:
+        return "outils"
+    s = s.strip().lower()
+    s = unicodedata.normalize("NFD", s).encode("ascii", "ignore").decode("ascii")
+    s = re.sub(r"[^a-z0-9]+", "-", s)
+    s = re.sub(r"-+", "-", s).strip("-")
+    return s or "outils"
+
+
 def find_platform_dir() -> Path:
     """Remonte depuis ce script pour trouver platform/."""
     here = Path(__file__).resolve()
@@ -291,18 +309,25 @@ def main(site_slug: str) -> int:
         })
 
     if outils_list:
+        # Slug d'URL de la page d'index, dérivé du menu_label
+        # ("Outils" → /outils, "Calculateurs" → /calculateurs, etc.)
+        # Doit matcher ce que _sync_outils_menu.py écrit dans le menu.
+        menu_label = (outils_config.get("menu_label") or "Outils").strip()
+        index_slug = slugify(menu_label)
+
         try:
             index_tpl = env.get_template("outils-index.html.j2")
             html = index_tpl.render(
                 outils_list=outils_list,
+                outils_index_slug=index_slug,
                 site=site_cfg,
                 theme=theme_cfg,
                 config=config,
             )
-            (output_dir / "outils.html").write_text(html, encoding="utf-8")
-            print(f"  ✓ outils.html (page d'index, {len(outils_list)} outil(s))")
+            (output_dir / f"{index_slug}.html").write_text(html, encoding="utf-8")
+            print(f"  ✓ {index_slug}.html (page d'index, {len(outils_list)} outil(s))")
             if domain:
-                generated_urls.append(f"{domain}/outils")
+                generated_urls.append(f"{domain}/{index_slug}")
         except TemplateNotFound:
             print(f"  ⚠ Template outils-index.html.j2 introuvable — page d'index non générée")
         except Exception as e:
