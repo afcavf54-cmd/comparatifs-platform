@@ -122,18 +122,64 @@ jobs:
           echo "$INDEXNOW_KEY" > "$KEY_FILE"
           echo "✓ Fichier de vérification créé : ${INDEXNOW_KEY:0:8}...txt"
 
+      # ── Commit des fichiers générés AVEC RETRY LOOP ───────────────────
+      # Quand "Tout déployer" lance plusieurs workflows en parallèle, leurs
+      # pushes peuvent se rejeter mutuellement ("fetch first"). On boucle :
+      # fetch + rebase + push, avec backoff aléatoire pour éviter que tous
+      # les workflows retrient simultanément. Max 8 tentatives sur ~2 min.
       - name: Commit generated files
         run: |
           git config user.name "Viseoweb HUB"
           git config user.email "hub@viseoweb.com"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+
           git add platform/sites/${{ inputs.site }}/
-          git diff --cached --quiet || git commit -m "Generated: ${{ inputs.site }} [$(date +%Y-%m-%d)]"
-          git fetch origin main
-          git rebase -X theirs origin/main || (git rebase --abort && git push --force-with-lease)
-          git push
+          if git diff --cached --quiet; then
+            echo "ℹ Pas de changement à commit"
+            exit 0
+          fi
+          git commit -m "Generated: ${{ inputs.site }} [$(date +%Y-%m-%d)]"
+
+          MAX_ATTEMPTS=8
+          attempt=0
+          while [ $attempt -lt $MAX_ATTEMPTS ]; do
+            attempt=$((attempt + 1))
+            echo ""
+            echo "─── Push tentative $attempt/$MAX_ATTEMPTS ───"
+
+            # Rebase sur la dernière version de main
+            git fetch origin main
+            if ! git rebase -X theirs origin/main; then
+              echo "⚠ Conflit de rebase, abort"
+              git rebase --abort 2>/dev/null || true
+              # Conflit non auto-résolvable, on tente quand même un retry après pause
+              SLEEP=$((RANDOM % 12 + 6))
+              echo "⏳ Pause ${SLEEP}s avant nouveau cycle"
+              sleep $SLEEP
+              continue
+            fi
+
+            # Push
+            if git push origin HEAD:main; then
+              echo "✅ Push réussi (tentative $attempt)"
+              exit 0
+            fi
+
+            # Push rejeté : un autre workflow a pushé entre notre rebase et notre push.
+            # Backoff aléatoire entre 5 et 16s pour désynchroniser les retries
+            # des workflows concurrents.
+            if [ $attempt -lt $MAX_ATTEMPTS ]; then
+              SLEEP=$((RANDOM % 12 + 5))
+              echo "⚠ Push rejeté, retry dans ${SLEEP}s..."
+              sleep $SLEEP
+            fi
+          done
+
+          echo "❌ Push échoué après $MAX_ATTEMPTS tentatives"
+          exit 1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Deploy to Cloudflare Pages
         run: |
           PROJECT="${{ inputs.site }}"
@@ -176,10 +222,10 @@ jobs:
           sleep 10
           python platform/scripts/submit_indexnow.py --site ${{ inputs.site }}
 
-      # ── ③ Commit du fichier indexation.json ───────────────────────────
-      # On commit séparément car indexation.json est modifié APRÈS le commit
-      # principal du build. Échec non bloquant : si le push final foire, on
-      # ne fait pas planter le workflow (le déploiement Cloudflare a réussi).
+      # ── ③ Commit du fichier indexation.json (avec retry loop) ─────────
+      # Identique à "Commit generated files" mais NON BLOQUANT : si le push
+      # final foire, on n'échoue pas le workflow (le déploiement Cloudflare
+      # est déjà réussi, indexation.json sera rattrapé au prochain run).
       - name: Commit indexation.json
         if: ${{ always() && env.INDEXNOW_KEY != '' }}
         run: |
@@ -191,10 +237,37 @@ jobs:
             echo "ℹ Pas de mise à jour indexation.json à commit"
             exit 0
           fi
-
           git commit -m "IndexNow: statut indexation ${{ inputs.site }}"
-          git fetch origin main
-          git rebase -X theirs origin/main || (git rebase --abort && echo "⚠ Rebase échoué (non bloquant)" && exit 0)
-          git push origin HEAD:main || echo "⚠ Push indexation.json échoué (non bloquant)"
+
+          MAX_ATTEMPTS=5
+          attempt=0
+          while [ $attempt -lt $MAX_ATTEMPTS ]; do
+            attempt=$((attempt + 1))
+            echo "─── Push indexation tentative $attempt/$MAX_ATTEMPTS ───"
+
+            git fetch origin main
+            if ! git rebase -X theirs origin/main; then
+              git rebase --abort 2>/dev/null || true
+              SLEEP=$((RANDOM % 10 + 5))
+              echo "⏳ Pause ${SLEEP}s avant retry"
+              sleep $SLEEP
+              continue
+            fi
+
+            if git push origin HEAD:main; then
+              echo "✅ Push indexation réussi (tentative $attempt)"
+              exit 0
+            fi
+
+            if [ $attempt -lt $MAX_ATTEMPTS ]; then
+              SLEEP=$((RANDOM % 10 + 5))
+              echo "⚠ Push indexation rejeté, retry dans ${SLEEP}s..."
+              sleep $SLEEP
+            fi
+          done
+
+          # NON BLOQUANT : on log un warning mais on n'échoue pas
+          echo "⚠ Push indexation.json échoué après $MAX_ATTEMPTS tentatives (non bloquant)"
+          exit 0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
