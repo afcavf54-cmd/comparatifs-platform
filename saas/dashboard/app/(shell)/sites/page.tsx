@@ -218,7 +218,7 @@ export default function SitesPage() {
           <Link href="/sites/new" style={{ padding: '12px 24px', borderRadius: 10, background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', fontWeight: 600, textDecoration: 'none' }}>Créer mon premier site</Link>
         </div>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 44 }}>
           {sortedGroupKeys.map(groupKey => {
             const groupSites = groups[groupKey]
             const isUncategorized = groupKey === UNCATEGORIZED_KEY
@@ -226,17 +226,17 @@ export default function SitesPage() {
             const groupIcon = isUncategorized ? '📁' : '🏷️'
             return (
               <section key={groupKey}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginBottom: 14, paddingBottom: 8, borderBottom: '1px solid #1E2D3D' }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, marginBottom: 18, paddingBottom: 10, borderBottom: '1px solid #1E2D3D' }}>
                   <span style={{ fontSize: 16 }}>{groupIcon}</span>
                   <h2 style={{ fontSize: 13, fontWeight: 700, color: isUncategorized ? '#4A5568' : '#fff', margin: 0, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{groupLabel}</h2>
                   <span style={{ fontSize: 12, color: '#4A5568' }}>· {groupSites.length} site{groupSites.length > 1 ? 's' : ''}</span>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 14 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))', gap: 18 }}>
                   {groupSites.map((site: any) => (
                     <div key={site.id}
                       onClick={() => router.push(`/sites/${site.id}`)}
-                      style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 14, padding: 18, transition: 'border-color 0.15s, transform 0.15s', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: 10, height: '100%' }}
+                      style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 14, padding: '22px 24px', transition: 'border-color 0.15s, transform 0.15s', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: 12, height: '100%' }}
                       onMouseEnter={e => { e.currentTarget.style.borderColor = '#00D4AA'; e.currentTarget.style.transform = 'translateY(-1px)' }}
                       onMouseLeave={e => { e.currentTarget.style.borderColor = '#1E2D3D'; e.currentTarget.style.transform = 'translateY(0)' }}>
                         <div style={{ fontSize: 15, fontWeight: 700, color: '#fff', lineHeight: 1.3, wordBreak: 'break-word' }}>
@@ -274,13 +274,6 @@ export default function SitesPage() {
                           </div>
                         </div>
 
-                        {/* Footer actions */}
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 4, paddingTop: 10, borderTop: '1px solid #1E2D3D' }}>
-                          <a href={`/sites/${site.id}/settings`} onClick={e => e.stopPropagation()}
-                            style={{ fontSize: 11, color: '#8B9CB0', padding: '4px 10px', borderRadius: 6, border: '1px solid #1E2D3D', textDecoration: 'none' }}>⚙️ SEO</a>
-                          <span style={{ flex: 1 }} />
-                          <span style={{ color: '#4A5568', fontSize: 16 }}>›</span>
-                        </div>
                     </div>
                   ))}
                 </div>
