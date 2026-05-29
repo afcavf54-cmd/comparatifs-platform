@@ -245,8 +245,16 @@ export default function SitesPage() {
                     const cleanDomain = site.domain ? site.domain.replace(/^https?:\/\//, '') : ''
                     const fullUrl = site.domain ? (site.domain.startsWith('http') ? site.domain : `https://${site.domain}`) : ''
                     return (
-                      <div key={site.id}
-                        onClick={() => router.push(`/sites/${site.id}`)}
+                      <a key={site.id}
+                        href={`/sites/${site.id}`}
+                        onClick={e => {
+                          // Laisse le comportement par défaut si modifier (Ctrl/Cmd/Shift)
+                          // ou si middle-click — le navigateur ouvrira un nouvel onglet
+                          if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return
+                          // Sinon, navigation client-side Next.js
+                          e.preventDefault()
+                          router.push(`/sites/${site.id}`)
+                        }}
                         style={{
                           display: 'grid',
                           gridTemplateColumns: GRID_COLS,
@@ -257,6 +265,8 @@ export default function SitesPage() {
                           borderBottom: '1px solid #1E2D3D',
                           cursor: 'pointer',
                           transition: 'background 0.15s',
+                          textDecoration: 'none',
+                          color: 'inherit',
                         }}
                         onMouseEnter={e => { e.currentTarget.style.background = '#11161F' }}
                         onMouseLeave={e => { e.currentTarget.style.background = 'transparent' }}>
@@ -296,7 +306,7 @@ export default function SitesPage() {
                         <div style={{ fontSize: 12, color: '#8B9CB0', textAlign: 'right' }}>
                           {new Date(site.created_at).toLocaleDateString('fr')}
                         </div>
-                      </div>
+                      </a>
                     )
                   })}
                 </div>
