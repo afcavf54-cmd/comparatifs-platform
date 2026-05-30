@@ -11,7 +11,9 @@ status: published
 min_words: 1000
 related_posts:
 - 8532-guichet-unique-inpi-vs-legalstart-comparatif-complet
-- 7122-etapes-creation-entreprise-le-guide-complet-en-year
+- 9835-statut-juridique-d-une-entreprise-lequel-choisir-en-year
+- 2581-micro-entreprise-ou-entreprise-individuelle-quelle-difference
+- 2986-comment-creer-un-produit-de-a-a-z-methode-etapes-cles-et-conseils-pratiques
 link_anchors:
 - text: création d'entreprise avec legalstart
   max: 5

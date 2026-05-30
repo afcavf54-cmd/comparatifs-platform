@@ -11,8 +11,10 @@ featured_image: /blog/8532-guichet-unique-inpi-vs-legalstart-comparatif-complet/
 status: published
 min_words: 1000
 related_posts:
-- 7122-etapes-creation-entreprise-le-guide-complet-en-year
 - 8082-tout-savoir-sur-la-creation-d-une-sas-avec-legalstart
+- 7122-etapes-creation-entreprise-le-guide-complet-en-year
+- 2986-comment-creer-un-produit-de-a-a-z-methode-etapes-cles-et-conseils-pratiques
+- 2581-micro-entreprise-ou-entreprise-individuelle-quelle-difference
 ---
 <h2>Mon retour d'expérience après avoir testé les deux solutions</h2>
 

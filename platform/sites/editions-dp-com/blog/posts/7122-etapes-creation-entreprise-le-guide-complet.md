@@ -12,8 +12,10 @@ link_anchors:
 - text: les étapes de création d'une entreprise
   max: 2
 related_posts:
+- 9835-statut-juridique-d-une-entreprise-lequel-choisir-en-year
 - 8082-tout-savoir-sur-la-creation-d-une-sas-avec-legalstart
-- 8532-guichet-unique-inpi-vs-legalstart-comparatif-complet
+- 2986-comment-creer-un-produit-de-a-a-z-methode-etapes-cles-et-conseils-pratiques
+- 2581-micro-entreprise-ou-entreprise-individuelle-quelle-difference
 ---
 <h2>Pourquoi créer son entreprise n'est plus un parcours du combattant en 2024 ?</h2>
 
