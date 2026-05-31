@@ -4,14 +4,17 @@ slug: 9832-la-methode-sepo-expliquee-comment-l-utiliser-pour-analyser-votre-orga
 date: '2026-05-31T10:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'SEPO : définition, méthode et exemples'
-meta_description: Découvrez la méthode SEPO (Succès, Échecs, Potentialités, Obstacles) pour analyser efficacement votre organisation et identifier vos leviers de croissance cachés.
+meta_description: Découvrez la méthode SEPO (Succès, Échecs, Potentialités, Obstacles)
+  pour analyser efficacement votre organisation et identifier vos leviers de croissance
+  cachés.
 min_words: 2500
 status: published
 link_anchors:
 - text: sepo
   max: 4
+related_posts:
+- 3423-qu-est-ce-qu-une-strategie-de-croissance-et-comment-la-construire-pour-votre-entreprise
 ---
-
 <h2>Qu'est-ce que la méthode SEPO exactement ?</h2>
 
 <p>J'ai découvert la méthode SEPO il y a quelques années quand on commençait à stagner. Notre boîte tournait mais on n'arrivait plus à grandir vraiment. Un consultant nous avait parlé de cet outil d'analyse organisationnelle assez méconnu mais redoutable.</p>
