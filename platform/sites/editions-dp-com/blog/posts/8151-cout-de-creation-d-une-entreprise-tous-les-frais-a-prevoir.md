@@ -4,14 +4,20 @@ slug: 8151-cout-de-creation-d-une-entreprise-tous-les-frais-a-prevoir
 date: '2026-05-31T15:00:00+02:00'
 categorie: Création entreprise
 meta_title: Combien coûte la création d'une entreprise en France ?
-meta_description: 'Découvrez tous les coûts réels de création d''entreprise selon votre statut juridique. Auto-entrepreneur, SARL, frais cachés : notre guide complet pour éviter les…'
+meta_description: 'Découvrez tous les coûts réels de création d''entreprise selon
+  votre statut juridique. Auto-entrepreneur, SARL, frais cachés : notre guide complet
+  pour éviter les…'
 min_words: 1500
 status: published
 link_anchors:
 - text: coût de création d'une entreprise
   max: 2
+related_posts:
+- 3980-creer-une-entreprise-individuelle-demarches-et-formalites
+- 2440-capital-social-d-une-entreprise-definition-et-fonctionnement
+- 2581-micro-entreprise-ou-entreprise-individuelle-quelle-difference
+- 8082-tout-savoir-sur-la-creation-d-une-sas-avec-legalstart
 ---
-
 <h2>Ce que j'ai appris sur les vrais coûts de création d'entreprise</h2>
 
 <p>Après avoir accompagné plusieurs créations d'entreprises dans mon secteur, je peux vous dire qu'on a tendance à sous-estimer les frais réels. <strong>Le coût affiché n'est jamais le coût final</strong>. J'ai vu trop de porteurs de projet partir sur des bases erronées, avec un budget trop serré.</p>
