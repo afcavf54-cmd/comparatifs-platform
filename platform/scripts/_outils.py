@@ -78,6 +78,32 @@ def slugify(s: str) -> str:
 
 
 
+
+def substitute_template_vars(obj, vars_map: dict):
+    """Substitue récursivement les placeholders {var} dans tous les strings
+    d'une structure (dict, list, str). Utile pour permettre à l'utilisateur
+    d'écrire `{year}` dans n'importe quel champ de outils.json / config.yaml
+    et que ce soit remplacé par 2026 au moment du rendu.
+
+    Exemple :
+      substitute_template_vars(
+        {"title": "Calcul salaire {year}", "faq": [{"q": "En {year} ?"}]},
+        {"year": "2026"}
+      )
+      → {"title": "Calcul salaire 2026", "faq": [{"q": "En 2026 ?"}]}
+    """
+    if isinstance(obj, str):
+        out = obj
+        for key, val in vars_map.items():
+            out = out.replace("{" + key + "}", str(val))
+        return out
+    if isinstance(obj, dict):
+        return {k: substitute_template_vars(v, vars_map) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [substitute_template_vars(item, vars_map) for item in obj]
+    return obj
+
+
 def normalize_canonical_domain(site_cfg: dict) -> str:
     """Calcule le domaine canonique en respectant www_preference.
 
@@ -291,6 +317,11 @@ def main(site_slug: str) -> int:
             "faq": outil_state.get("faq", []) or [],
             "nb_mots": outil_state.get("nb_mots", 0),
         }
+
+        # Substituer {year} (et autres placeholders) dans tous les champs
+        # de l'outil. L'utilisateur peut écrire `{year}` dans le H1, title,
+        # meta, FAQ, contenu généré — c'est remplacé ici au build.
+        outil_data = substitute_template_vars(outil_data, {"year": env.globals["year"]})
 
         # Rendu
         try:
