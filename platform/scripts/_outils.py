@@ -52,8 +52,11 @@ TOOL_CATALOG = {
         "name": "Convertisseur HT / TTC",
         "description": "Convertit un prix HT en TTC et inversement, avec les taux TVA 20 %, 10 %, 5,5 % et 2,1 %.",
     },
-    # Futurs outils :
-    # "salaire-brut-net": {"icon": "💶", "name": "...", "description": "..."},
+    "simulateur-salaire-brut-net": {
+        "icon": "💰",
+        "name": "Salaire brut → net",
+        "description": "Convertit un salaire brut en net (horaire, mensuel, annuel) selon le statut professionnel et applique le prélèvement à la source.",
+    },
 }
 
 
