@@ -4,14 +4,18 @@ slug: 8804-matrice-tows-comment-l-utiliser-pour-construire-une-strategie-efficac
 date: '2026-06-01T11:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Matrice TOWS : définition et utilisation'
-meta_description: Découvrez la matrice TOWS pour transformer votre analyse SWOT en stratégies concrètes. Méthode étape par étape pour construire un plan d'action efficace et…
+meta_description: Découvrez la matrice TOWS pour transformer votre analyse SWOT en
+  stratégies concrètes. Méthode étape par étape pour construire un plan d'action efficace
+  et…
 min_words: 2500
 status: published
 link_anchors:
 - text: matrice tows
   max: 4
+related_posts:
+- 9832-la-methode-sepo-expliquee-comment-l-utiliser-pour-analyser-votre-organisation
+- 3423-qu-est-ce-qu-une-strategie-de-croissance-et-comment-la-construire-pour-votre-entreprise
 ---
-
 <h2>Qu'est-ce que la matrice TOWS et pourquoi j'ai arrêté de faire du SWOT classique ?</h2>
 
 <p>Vous connaissez forcément l'analyse SWOT. Forces, faiblesses, opportunités, menaces. Je l'ai utilisée pendant des années dans mon entreprise de transport à Lyon. <strong>Le problème</strong> ? On finissait toujours avec une belle liste bien propre qui ne menait à rien de concret.</p>

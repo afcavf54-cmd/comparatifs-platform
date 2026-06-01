@@ -4,14 +4,20 @@ slug: 3788-creation-micro-entreprise-sur-l-urssaf-guide-etape-par-etape
 date: '2026-06-01T10:00:00+02:00'
 categorie: Création entreprise
 meta_title: Comment créer sa micro-entreprise sur le site de l'URSSAF ?
-meta_description: Créez votre micro-entreprise facilement sur l'URSSAF avec notre guide complet étape par étape. Démarches gratuites, documents nécessaires et conseils pratiques.
+meta_description: Créez votre micro-entreprise facilement sur l'URSSAF avec notre
+  guide complet étape par étape. Démarches gratuites, documents nécessaires et conseils
+  pratiques.
 min_words: 1200
 status: published
 link_anchors:
 - text: création d'une micro-entreprise sur le site de l'urssaf
   max: 2
+related_posts:
+- 2581-micro-entreprise-ou-entreprise-individuelle-quelle-difference
+- 8151-cout-de-creation-d-une-entreprise-tous-les-frais-a-prevoir
+- 2440-capital-social-d-une-entreprise-definition-et-fonctionnement
+- 7122-etapes-creation-entreprise-le-guide-complet-en-year
 ---
-
 <h2>L'URSSAF, votre porte d'entrée officielle vers l'auto-entrepreneuriat</h2>
 
 <p>Je me souviens de ma première création de micro-entreprise. L'URSSAF m'a semblé être un labyrinthe administratif. Aujourd'hui, après avoir accompagné plusieurs entrepreneurs, je peux vous dire que <strong>la démarche s'est vraiment simplifiée</strong>. Le site autoentrepreneur.urssaf.fr concentre tout ce dont vous avez besoin.</p>

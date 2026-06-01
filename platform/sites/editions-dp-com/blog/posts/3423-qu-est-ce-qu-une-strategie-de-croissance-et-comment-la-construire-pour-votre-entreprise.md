@@ -15,6 +15,7 @@ link_anchors:
   max: 4
 related_posts:
 - 9832-la-methode-sepo-expliquee-comment-l-utiliser-pour-analyser-votre-organisation
+- 8804-matrice-tows-comment-l-utiliser-pour-construire-une-strategie-efficace
 ---
 <h2>Définir une stratégie de croissance : ma vision de dirigeant</h2>
 

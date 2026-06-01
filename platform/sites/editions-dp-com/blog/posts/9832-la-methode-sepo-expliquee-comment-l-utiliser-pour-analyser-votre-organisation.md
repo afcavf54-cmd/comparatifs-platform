@@ -13,6 +13,7 @@ link_anchors:
 - text: sepo
   max: 4
 related_posts:
+- 8804-matrice-tows-comment-l-utiliser-pour-construire-une-strategie-efficace
 - 3423-qu-est-ce-qu-une-strategie-de-croissance-et-comment-la-construire-pour-votre-entreprise
 ---
 <h2>Qu'est-ce que la méthode SEPO exactement ?</h2>

@@ -4,14 +4,20 @@ slug: 2626-creer-son-entreprise-en-ligne-gratuitement-est-ce-possible
 date: '2026-06-01T11:00:00+02:00'
 categorie: Création entreprise
 meta_title: Comment créer son entreprise en ligne gratuitement ?
-meta_description: Découvrez si créer son entreprise en ligne sans frais est vraiment possible. Guide complet des démarches gratuites, pièges à éviter et coûts cachés à prévoir.
+meta_description: Découvrez si créer son entreprise en ligne sans frais est vraiment
+  possible. Guide complet des démarches gratuites, pièges à éviter et coûts cachés
+  à prévoir.
 min_words: 1500
 status: published
 link_anchors:
 - text: créer son entreprise en ligne gratuitement
   max: 2
+related_posts:
+- 9835-statut-juridique-d-une-entreprise-lequel-choisir-en-year
+- 3788-creation-micro-entreprise-sur-l-urssaf-guide-etape-par-etape
+- 5948-demarches-creation-d-entreprise-tout-ce-qu-il-faut-faire
+- 2581-micro-entreprise-ou-entreprise-individuelle-quelle-difference
 ---
-
 <h2>La promesse du gratuit : mythe ou réalité ?</h2>
 
 <p>Quand on lance sa boîte, chaque euro compte. Je reçois souvent cette question : peut-on vraiment créer son entreprise sans débourser un centime ? Après onze ans à accompagner des TPE, je vais être franc avec vous.</p>
