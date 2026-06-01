@@ -1,37 +1,22 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-{% if site.favicon_file is defined and site.favicon_file %}
-<link rel="icon" href="{{ site.favicon_file }}">
-{% else %}
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-{% endif %}
-<title>{{ outil.meta_title or outil.title or 'Simulateur salaire brut net' }}</title>
-<meta name="description" content="{{ outil.meta_description or 'Calculateur de salaire brut en net : horaire, mensuel, annuel selon votre statut (cadre, non-cadre, fonction publique, libéral, portage).' }}">
-<link rel="canonical" href="{{ site.domain }}/{{ outil.slug }}">
-<meta property="og:title" content="{{ outil.meta_title or outil.title }}">
-<meta property="og:description" content="{{ outil.meta_description }}">
-<meta property="og:type" content="website">
-<meta property="og:url" content="{{ site.domain }}/{{ outil.slug }}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">
+{% extends "base/_layout.html.j2" %}
 
-{# ─── Schema.org WebApplication ─── #}
+{% block title %}{{ outil.meta_title | default(outil.title | default('Simulateur salaire brut net')) }}{% endblock %}
+{% block description %}{{ outil.meta_description | default('Calculateur de salaire brut en net : horaire, mensuel, annuel selon votre statut (cadre, non-cadre, fonction publique, libéral, portage).') }}{% endblock %}
+
+{% block canonical %}<link rel="canonical" href="{{ site.domain }}/{{ outil.slug }}">{% endblock %}
+
+{% block schema_extra %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": {{ (outil.title | default('Simulateur salaire brut net')) | tojson }},
-  "url": "{{ site.domain }}/{{ outil.slug }}",
   "applicationCategory": "FinanceApplication",
-  "operatingSystem": "All",
+  "operatingSystem": "Any (web)",
+  "url": {{ (site.domain ~ "/" ~ outil.slug) | tojson }},
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
 }
 </script>
-
-{# ─── Schema.org FAQ ─── #}
 {% if outil.faq and outil.faq | length >= 2 %}
 <script type="application/ld+json">
 {
@@ -49,84 +34,80 @@
 }
 </script>
 {% endif %}
+{% endblock %}
 
+{% block extra_head %}
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:{{ theme.bg | default('#FAF9F6') }};--surface:{{ theme.surface | default('#fff') }};--surface2:{{ theme.surface2 | default('#F5F3EE') }};
-  --ink:{{ theme.ink | default('#0F1419') }};--ink2:{{ theme.ink2 | default('#3D434B') }};--ink3:{{ theme.ink3 | default('#8B9CB0') }};
-  --accent:{{ theme.accent | default('#C9A961') }};--accent2:{{ theme.accent2 | default('#1E5F8B') }};
-  --green:{{ theme.green | default('#3D7A4F') }};--red:{{ theme.red | default('#C0392B') }};
-  --border:{{ theme.border | default('#E6E1D8') }};--r:10px;--r2:16px;
-  {% if theme.cta_color %}--cta:{{ theme.cta_color }};{% endif %}{% if theme.cta_text_color %}--cta-text:{{ theme.cta_text_color }};{% endif %}
+  --calc-bg: var(--cta, #E55A5A);
+  --calc-bg-dark: color-mix(in srgb, var(--calc-bg) 88%, #000);
+  --calc-text: #fff;
+  --calc-text-dim: rgba(255,255,255,.85);
+  --calc-input-bg: #fff;
+  --calc-input-text: #1A1A1A;
+  --calc-border: rgba(255,255,255,.3);
+  --calc-border-hover: rgba(255,255,255,.6);
 }
-body{font-family:'{{ theme.font_body }}',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
-a{color:var(--accent2);text-decoration:none}
-.container{max-width:1200px;margin:0 auto;padding:0 5vw}
+.tool-hero{background:var(--bg);padding:60px 0 30px;border-bottom:1px solid #EAE9E4}
+.tool-hero-inner{max-width:1100px;margin:0 auto;padding:0 24px;text-align:center}
+.tool-hero-eyebrow{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--ink2);padding:6px 14px;border:1px solid #EAE9E4;border-radius:30px;margin-bottom:20px;background:#fff}
+.tool-hero h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4vw,42px);font-weight:400;color:var(--ink);margin:0 0 12px;line-height:1.2;letter-spacing:-.02em}
+.tool-hero-sub{color:var(--ink2);font-size:17px;max-width:680px;margin:0 auto;line-height:1.6}
+.container{max-width:1100px;margin:0 auto;padding:40px 24px 60px}
 
-/* ─── Hero sombre ─── */
-.tool-hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2532 100%);color:#fff;padding:60px 0 80px;text-align:center;position:relative}
-.tool-hero-inner{max-width:760px;margin:0 auto;padding:0 5vw}
-.tool-hero-eyebrow{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);background:rgba(201,169,97,.12);padding:6px 14px;border-radius:20px;margin-bottom:18px}
-.tool-hero h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,5vw,48px);font-weight:400;letter-spacing:-.02em;color:#fff;line-height:1.15;margin-bottom:16px}
-.tool-hero p{font-size:17px;color:rgba(255,255,255,.78);line-height:1.6;margin:0}
+/* ── Carte calculateur (fond couleur) ─────────────────────────── */
+.calc-card{background:var(--calc-bg);color:var(--calc-text);border-radius:14px;padding:36px 32px;box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+@media (max-width:920px){
+  .calc-grid{grid-template-columns:1fr;gap:32px}
+  .calc-card{padding:24px 18px}
+}
+.calc-col{display:flex;flex-direction:column;gap:28px;min-width:0}
 
-/* ─── Widget calcul ─── */
-.calc-wrap{margin-top:-50px;margin-bottom:60px;position:relative;z-index:2}
-.calc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);box-shadow:0 8px 40px rgba(0,0,0,.08);padding:28px;max-width:980px;margin:0 auto}
+/* ── Section header (uppercase) ──────────────────────────────── */
+.calc-section-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin:0 0 14px;color:var(--calc-text);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.calc-section-title .value{font-weight:400;font-size:13px;letter-spacing:0;text-transform:none}
+.calc-section-title .badge{display:inline-block;background:var(--calc-bg-dark);color:#fff;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:500;text-transform:none;letter-spacing:0;white-space:nowrap}
 
-/* Paramètres ligne du haut */
-.calc-params{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+/* ── Champ input ─────────────────────────────────────────────── */
 .calc-field{display:flex;flex-direction:column;gap:6px}
-.calc-label{font-size:12px;font-weight:700;color:var(--ink2);text-transform:uppercase;letter-spacing:.06em}
-.calc-select{padding:11px 14px;border:1px solid var(--border);border-radius:var(--r);background:#fff;color:var(--ink);font-family:inherit;font-size:15px;outline:none;transition:border-color .15s;cursor:pointer}
-.calc-select:focus{border-color:var(--accent)}
+.calc-field-label{font-size:13px;color:var(--calc-text-dim);font-weight:500;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.calc-input{width:100%;background:var(--calc-input-bg);color:var(--calc-input-text);border:1px solid transparent;border-radius:6px;padding:11px 14px;font-size:16px;font-weight:500;font-family:inherit;outline:none;transition:border-color .15s}
+.calc-input:focus{border-color:#fff}
+.calc-input[readonly]{cursor:not-allowed;color:#555}
 
-/* Sliders */
-.calc-sliders{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:28px}
-.slider-row{display:flex;flex-direction:column;gap:10px}
-.slider-header{display:flex;justify-content:space-between;align-items:baseline}
-.slider-label{font-size:13px;font-weight:600;color:var(--ink2)}
-.slider-value{font-size:18px;font-weight:700;color:var(--accent);font-family:'{{ theme.font_title }}',serif}
-.slider{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:3px;background:var(--surface2);outline:none;cursor:pointer}
-.slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:20px;height:20px;border-radius:50%;background:var(--accent);cursor:pointer;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.2);transition:transform .15s}
-.slider::-webkit-slider-thumb:hover{transform:scale(1.15)}
-.slider::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--accent);cursor:pointer;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+/* ── Section salaire (brut/net côte à côte) ──────────────────── */
+.calc-salaire{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:480px){
+  .calc-salaire{grid-template-columns:1fr;gap:12px}
+}
+.calc-salaire .calc-fields-stack{display:flex;flex-direction:column;gap:14px}
 
-/* Inputs salaire brut */
-.brut-section{margin-bottom:8px}
-.section-title{font-family:'{{ theme.font_title }}',serif;font-size:18px;font-weight:600;color:var(--ink);margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.brut-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.brut-cell{display:flex;flex-direction:column;gap:6px}
-.brut-cell-label{font-size:11px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em}
-.brut-input-wrap{position:relative}
-.brut-input{width:100%;padding:14px 44px 14px 14px;border:1.5px solid var(--border);border-radius:var(--r);background:#fff;color:var(--ink);font-family:'{{ theme.font_title }}',serif;font-size:20px;font-weight:600;outline:none;transition:border-color .15s}
-.brut-input:focus{border-color:var(--accent)}
-.brut-input::-webkit-outer-spin-button,.brut-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.brut-input{-moz-appearance:textfield}
-.brut-suffix{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--ink3);font-size:14px;pointer-events:none;font-family:'{{ theme.font_body }}',sans-serif;font-weight:400}
+/* ── Radio cards horizontales ────────────────────────────────── */
+.calc-radios{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;background:transparent}
+@media (max-width:600px){.calc-radios{grid-template-columns:repeat(2,1fr)}}
+.calc-radio{position:relative;border:1px solid var(--calc-border);border-radius:8px;padding:14px 8px;text-align:center;cursor:pointer;background:transparent;transition:border-color .15s,background .15s;min-height:84px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:8px}
+.calc-radio input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.calc-radio:hover{border-color:var(--calc-border-hover)}
+.calc-radio-bullet{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--calc-border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.calc-radio input:checked + .calc-radio-bullet{background:#fff;border-color:#fff}
+.calc-radio input:checked + .calc-radio-bullet::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--calc-bg)}
+.calc-radio-label{font-size:13px;line-height:1.3;color:var(--calc-text);font-weight:500}
 
-/* Reset button */
-.reset-btn{margin-top:18px;padding:9px 18px;border:1px solid var(--border);background:transparent;border-radius:var(--r);color:var(--ink2);font-size:13px;font-weight:600;cursor:pointer;transition:.15s}
-.reset-btn:hover{background:var(--surface2);border-color:var(--accent);color:var(--accent)}
+/* ── Slider ──────────────────────────────────────────────────── */
+.calc-slider{-webkit-appearance:none;appearance:none;width:100%;height:6px;background:rgba(255,255,255,.3);border-radius:3px;outline:none}
+.calc-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:20px;height:32px;background:#fff;border:1px solid var(--calc-bg-dark);border-radius:4px;cursor:pointer}
+.calc-slider::-moz-range-thumb{width:20px;height:32px;background:#fff;border:1px solid var(--calc-bg-dark);border-radius:4px;cursor:pointer;border-style:solid}
 
-/* ─── Section RÉSULTATS ─── */
-.results-card{background:linear-gradient(135deg,#fff 0%,var(--surface2) 100%);border:1px solid var(--border);border-radius:var(--r2);padding:28px;max-width:980px;margin:24px auto 0}
-.results-title{font-family:'{{ theme.font_title }}',serif;font-size:20px;font-weight:600;color:var(--ink);margin-bottom:20px;text-align:center}
-.results-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
-.result-col{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:18px;text-align:center}
-.result-col.highlight{background:linear-gradient(135deg,var(--accent) 0%,#b89951 100%);border-color:var(--accent);color:#fff}
-.result-col-header{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:12px}
-.result-col.highlight .result-col-header{color:rgba(255,255,255,.85)}
-.result-row{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;font-size:14px;color:var(--ink2)}
-.result-row:not(:last-child){border-bottom:1px dashed var(--border)}
-.result-col.highlight .result-row:not(:last-child){border-bottom-color:rgba(255,255,255,.18)}
-.result-col.highlight .result-row{color:rgba(255,255,255,.88)}
-.result-row-label{font-size:12px}
-.result-row-value{font-family:'{{ theme.font_title }}',serif;font-size:17px;font-weight:600;color:var(--ink)}
-.result-col.highlight .result-row-value{color:#fff}
+/* ── Estimation après impôts ─────────────────────────────────── */
+.calc-pas-result{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:480px){.calc-pas-result{grid-template-columns:1fr}}
 
-/* ─── Contenu rédactionnel ─── */
+/* ── Bouton effacer ──────────────────────────────────────────── */
+.calc-reset{background:transparent;color:#fff;border:1px solid #fff;padding:9px 18px;border-radius:6px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;align-self:flex-start;transition:background .15s,color .15s}
+.calc-reset:hover{background:#fff;color:var(--calc-bg)}
+
+/* ── Contenu rédactionnel (sous la carte) ────────────────────── */
 .tool-content{padding:40px 0 60px;max-width:760px;margin:0 auto}
 .tool-content h2{font-family:'{{ theme.font_title }}',serif;font-size:28px;font-weight:400;margin:40px 0 16px;color:var(--ink);line-height:1.3}
 .tool-content h2:first-child{margin-top:0}
@@ -135,11 +116,12 @@ a{color:var(--accent2);text-decoration:none}
 .tool-content ul,.tool-content ol{margin:8px 0 20px;padding-left:24px;color:var(--ink2)}
 .tool-content li{margin-bottom:8px;line-height:1.7}
 .tool-content strong{color:var(--ink);font-weight:600}
+
 /* Tableaux dans le contenu rédactionnel */
 .tool-content .table-wrap{overflow-x:auto;margin:24px 0;border-radius:10px;border:1px solid #E5E7EB}
 .tool-content table{width:100%;border-collapse:collapse;font-size:15px;background:#fff}
 .tool-content thead{background:#F3F4F6}
-.tool-content thead th{text-align:left;padding:14px 18px;font-weight:600;color:var(--ink);font-size:14px;text-transform:none;letter-spacing:0;border-bottom:2px solid #E5E7EB;white-space:nowrap}
+.tool-content thead th{text-align:left;padding:14px 18px;font-weight:600;color:var(--ink);font-size:14px;border-bottom:2px solid #E5E7EB;white-space:nowrap}
 .tool-content thead th:not(:last-child){border-right:1px solid #E5E7EB}
 .tool-content tbody td{padding:12px 18px;color:var(--ink);border-bottom:1px solid #F0F0F0;vertical-align:top}
 .tool-content tbody td:not(:last-child){border-right:1px solid #F0F0F0}
@@ -147,149 +129,190 @@ a{color:var(--accent2);text-decoration:none}
 .tool-content tbody tr:hover{background:#F5F7FA}
 .tool-content tbody tr:last-child td{border-bottom:none}
 .tool-content table caption{caption-side:top;padding:12px 18px;font-weight:600;color:var(--ink);text-align:left;background:#F9FAFB;border-bottom:1px solid #E5E7EB}
-/* Wrapper auto pour les tableaux nus (responsive scroll horizontal) */
-.tool-content > table{display:block;overflow-x:auto;max-width:100%}
 @media (max-width:680px){
   .tool-content table{font-size:14px}
   .tool-content thead th,.tool-content tbody td{padding:10px 12px}
 }
 
-/* ─── FAQ ─── */
-.faq-section{padding:20px 0 60px;max-width:760px;margin:0 auto}
-.faq-section h2{font-family:'{{ theme.font_title }}',serif;font-size:28px;font-weight:400;margin-bottom:20px;color:var(--ink)}
-.faq-item{border-bottom:1px solid var(--border);padding:16px 0}
-.faq-item:first-of-type{padding-top:0}
-.faq-q{font-weight:600;font-size:17px;color:var(--ink);margin-bottom:8px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
-.faq-q::after{content:'+';font-size:24px;color:var(--ink3);font-weight:400;line-height:1;transition:transform .2s}
+/* ── FAQ ─────────────────────────────────────────────────────── */
+.faq-section{max-width:760px;margin:0 auto 60px;padding:0}
+.faq-section h2{font-family:'{{ theme.font_title }}',serif;font-size:32px;font-weight:400;margin:0 0 24px;color:var(--ink);text-align:center}
+.faq-item{border-bottom:1px solid #EAE9E4;padding:20px 0}
+.faq-q{font-weight:600;color:var(--ink);margin:0 0 10px;font-size:17px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-q::after{content:"+";font-size:24px;font-weight:300;color:var(--ink2);transition:transform .2s}
 .faq-item.open .faq-q::after{transform:rotate(45deg)}
-.faq-r{color:var(--ink2);font-size:15px;display:none;padding-top:8px;line-height:1.7}
+.faq-r{color:var(--ink2);line-height:1.7;display:none;margin-top:10px}
 .faq-item.open .faq-r{display:block}
-
-/* Responsive */
-@media(max-width:768px){
-  .tool-hero{padding:48px 0 64px}
-  .calc-card{padding:20px}
-  .calc-params{grid-template-columns:1fr}
-  .calc-sliders{grid-template-columns:1fr;gap:18px}
-  .brut-grid{grid-template-columns:1fr}
-  .results-grid{grid-template-columns:1fr;gap:12px}
-  .results-card{padding:20px}
-}
 </style>
-</head>
-<body>
+{% endblock %}
 
-{% include "base/_nav.html.j2" %}
+{% block content %}
 
 <header class="tool-hero">
   <div class="tool-hero-inner">
     <div class="tool-hero-eyebrow">💰 Outil gratuit</div>
-    <h1>{{ outil.h1 or 'Salaire brut → net : simulateur instantané' }}</h1>
-    <p>{{ outil.subtitle or 'Convertissez votre salaire brut en net horaire, mensuel ou annuel selon votre statut professionnel.' }}</p>
+    <h1>{{ outil.h1 | default(outil.title | default('Simulateur salaire brut net')) }}</h1>
+    <p class="tool-hero-sub">{{ outil.subtitle | default('Calculez votre salaire net à partir de votre brut selon votre statut, votre temps de travail et le nombre de mois de rémunération.') }}</p>
   </div>
 </header>
 
 <main class="container">
 
-  <div class="calc-wrap">
-    <div class="calc-card">
+  <div class="calc-card">
+    <div class="calc-grid">
 
-      {# ─── Paramètres : statut + nombre de mois ─── #}
-      <div class="calc-params">
-        <div class="calc-field">
-          <label class="calc-label" for="statut">Statut professionnel</label>
-          <select id="statut" class="calc-select">
-            <option value="non-cadre">Salarié non-cadre (-22 %)</option>
-            <option value="cadre">Salarié cadre (-25 %)</option>
-            <option value="fonction-publique">Fonction publique (-17 %)</option>
-            <option value="liberal">Profession libérale (-35 %)</option>
-            <option value="portage">Portage salarial (-47 %)</option>
-          </select>
-        </div>
-        <div class="calc-field">
-          <label class="calc-label" for="mois">Nombre de mois de rémunération</label>
-          <select id="mois" class="calc-select">
-            <option value="12">12 mois</option>
-            <option value="13">13 mois</option>
-            <option value="14">14 mois</option>
-            <option value="15">15 mois</option>
-            <option value="16">16 mois</option>
-          </select>
-        </div>
-      </div>
+      {# ─────── COLONNE 1 ─────── #}
+      <div class="calc-col">
 
-      {# ─── Sliders : temps de travail + prélèvement à la source ─── #}
-      <div class="calc-sliders">
-        <div class="slider-row">
-          <div class="slider-header">
-            <span class="slider-label">Temps de travail</span>
-            <span class="slider-value" id="temps-value">100 %</span>
-          </div>
-          <input type="range" id="temps" class="slider" min="50" max="100" step="1" value="100">
-        </div>
-        <div class="slider-row">
-          <div class="slider-header">
-            <span class="slider-label">Prélèvement à la source</span>
-            <span class="slider-value" id="pas-value">0 %</span>
-          </div>
-          <input type="range" id="pas" class="slider" min="0" max="25" step="0.1" value="0">
-        </div>
-      </div>
-
-      {# ─── SALAIRE BRUT (entrées) ─── #}
-      <div class="brut-section">
-        <div class="section-title">💼 Salaire brut</div>
-        <div class="brut-grid">
-          <div class="brut-cell">
-            <span class="brut-cell-label">Horaire</span>
-            <div class="brut-input-wrap">
-              <input type="number" id="brut-horaire" class="brut-input" step="0.01" min="0" value="16.48">
-              <span class="brut-suffix">€/h</span>
+        {# Section Salaire brut/net en 2 sous-colonnes #}
+        <div>
+          <div class="calc-salaire">
+            <div>
+              <div class="calc-section-title">INDIQUEZ VOTRE SALAIRE BRUT</div>
+              <div class="calc-fields-stack">
+                <div class="calc-field">
+                  <label class="calc-field-label" for="horaire-brut">Horaire brut</label>
+                  <input type="number" id="horaire-brut" class="calc-input" placeholder="0" min="0" step="0.01">
+                </div>
+                <div class="calc-field">
+                  <label class="calc-field-label" for="mensuel-brut">
+                    Mensuel brut
+                    <span class="badge" id="taux-badge">Non-cadre -22%</span>
+                  </label>
+                  <input type="number" id="mensuel-brut" class="calc-input" placeholder="0" min="0" step="0.01">
+                </div>
+                <div class="calc-field">
+                  <label class="calc-field-label" for="annuel-brut">Annuel brut</label>
+                  <input type="number" id="annuel-brut" class="calc-input" placeholder="0" min="0" step="0.01">
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="brut-cell">
-            <span class="brut-cell-label">Mensuel</span>
-            <div class="brut-input-wrap">
-              <input type="number" id="brut-mensuel" class="brut-input" step="1" min="0" value="2500">
-              <span class="brut-suffix">€/mois</span>
-            </div>
-          </div>
-          <div class="brut-cell">
-            <span class="brut-cell-label">Annuel</span>
-            <div class="brut-input-wrap">
-              <input type="number" id="brut-annuel" class="brut-input" step="100" min="0" value="30000">
-              <span class="brut-suffix">€/an</span>
+            <div>
+              <div class="calc-section-title">RÉSULTAT DE VOTRE SALAIRE NET</div>
+              <div class="calc-fields-stack">
+                <div class="calc-field">
+                  <label class="calc-field-label" for="horaire-net">Horaire net</label>
+                  <input type="text" id="horaire-net" class="calc-input" placeholder="0" readonly>
+                </div>
+                <div class="calc-field">
+                  <label class="calc-field-label" for="mensuel-net">Mensuel net</label>
+                  <input type="text" id="mensuel-net" class="calc-input" placeholder="0" readonly>
+                </div>
+                <div class="calc-field">
+                  <label class="calc-field-label" for="annuel-net">Annuel net</label>
+                  <input type="text" id="annuel-net" class="calc-input" placeholder="0" readonly>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        {# Section Statut #}
+        <div>
+          <div class="calc-section-title">SÉLECTIONNEZ VOTRE STATUT :</div>
+          <div class="calc-radios" id="statut-group">
+            <label class="calc-radio">
+              <input type="radio" name="statut" value="non-cadre" data-label="Non-cadre" data-taux="22" checked>
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">Salarié<br>non-cadre</span>
+            </label>
+            <label class="calc-radio">
+              <input type="radio" name="statut" value="cadre" data-label="Cadre" data-taux="25">
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">Salarié cadre</span>
+            </label>
+            <label class="calc-radio">
+              <input type="radio" name="statut" value="fonction-publique" data-label="Fonction publique" data-taux="17">
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">Fonction<br>publique</span>
+            </label>
+            <label class="calc-radio">
+              <input type="radio" name="statut" value="liberal" data-label="Libéral" data-taux="35">
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">Profession<br>libérale</span>
+            </label>
+            <label class="calc-radio">
+              <input type="radio" name="statut" value="portage" data-label="Portage" data-taux="47">
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">Portage<br>salarial</span>
+            </label>
+          </div>
+        </div>
+
       </div>
 
-      <button type="button" class="reset-btn" id="reset-btn">↻ Réinitialiser</button>
-    </div>
+      {# ─────── COLONNE 2 ─────── #}
+      <div class="calc-col">
 
-    {# ─── RÉSULTATS ─── #}
-    <div class="results-card">
-      <div class="results-title">📊 Vos résultats</div>
-      <div class="results-grid">
-        <div class="result-col">
-          <div class="result-col-header">Salaire brut</div>
-          <div class="result-row"><span class="result-row-label">Horaire</span><span class="result-row-value" id="r-brut-h">—</span></div>
-          <div class="result-row"><span class="result-row-label">Mensuel</span><span class="result-row-value" id="r-brut-m">—</span></div>
-          <div class="result-row"><span class="result-row-label">Annuel</span><span class="result-row-value" id="r-brut-a">—</span></div>
+        {# Temps de travail #}
+        <div>
+          <div class="calc-section-title">
+            SÉLECTIONNEZ VOTRE TEMPS DE TRAVAIL :
+            <span class="value"><strong id="temps-value">100 %</strong></span>
+          </div>
+          <input type="range" id="temps-slider" class="calc-slider" min="50" max="100" step="1" value="100">
         </div>
-        <div class="result-col highlight">
-          <div class="result-col-header">Salaire net</div>
-          <div class="result-row"><span class="result-row-label">Horaire</span><span class="result-row-value" id="r-net-h">—</span></div>
-          <div class="result-row"><span class="result-row-label">Mensuel</span><span class="result-row-value" id="r-net-m">—</span></div>
-          <div class="result-row"><span class="result-row-label">Annuel</span><span class="result-row-value" id="r-net-a">—</span></div>
+
+        {# Nombre de mois #}
+        <div>
+          <div class="calc-section-title">SÉLECTIONNEZ LE NOMBRE DE MOIS DE PRIME CONVENTIONNELLE:</div>
+          <div class="calc-radios" id="mois-group">
+            <label class="calc-radio">
+              <input type="radio" name="mois" value="12" checked>
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">12 mois</span>
+            </label>
+            <label class="calc-radio">
+              <input type="radio" name="mois" value="13">
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">13 mois</span>
+            </label>
+            <label class="calc-radio">
+              <input type="radio" name="mois" value="14">
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">14 mois</span>
+            </label>
+            <label class="calc-radio">
+              <input type="radio" name="mois" value="15">
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">15 mois</span>
+            </label>
+            <label class="calc-radio">
+              <input type="radio" name="mois" value="16">
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">16 mois</span>
+            </label>
+          </div>
         </div>
-        <div class="result-col">
-          <div class="result-col-header">Net après impôt</div>
-          <div class="result-row"><span class="result-row-label">Mensuel</span><span class="result-row-value" id="r-apres-m">—</span></div>
-          <div class="result-row"><span class="result-row-label">Annuel</span><span class="result-row-value" id="r-apres-a">—</span></div>
-          <div class="result-row" style="opacity:.5"><span class="result-row-label">PAS appliqué</span><span class="result-row-value" id="r-pas-display" style="font-size:14px">0 %</span></div>
+
+        {# PAS slider #}
+        <div>
+          <div class="calc-section-title">
+            SÉLECTIONNEZ LE TAUX DE PRÉLÈVEMENT À LA SOURCE :
+            <span class="value"><strong id="pas-value">0.0 %</strong></span>
+          </div>
+          <input type="range" id="pas-slider" class="calc-slider" min="0" max="25" step="0.1" value="0">
         </div>
+
+        {# Estimation net après impôts #}
+        <div>
+          <div class="calc-section-title">ESTIMATION DE VOTRE SALAIRE NET APRÈS LE PRÉLÈVEMENT À LA SOURCE</div>
+          <div class="calc-pas-result">
+            <div class="calc-field">
+              <label class="calc-field-label" for="mensuel-net-pas">Mensuel net après impôts</label>
+              <input type="text" id="mensuel-net-pas" class="calc-input" placeholder="0" readonly>
+            </div>
+            <div class="calc-field">
+              <label class="calc-field-label" for="annuel-net-pas">Annuel net après impôts</label>
+              <input type="text" id="annuel-net-pas" class="calc-input" placeholder="0" readonly>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="calc-reset" id="reset-btn">Effacer les champs</button>
+
       </div>
+
     </div>
   </div>
 
@@ -315,136 +338,165 @@ a{color:var(--accent2);text-decoration:none}
 
 </main>
 
-{% include "base/_footer.html.j2" ignore missing %}
-
 <script>
-(function() {
-  // ─── Référence des statuts (coef NET / BRUT) ──────────────────────
-  const STATUTS = {
-    'non-cadre':         { coef: 0.78, charges: 22 },
-    'cadre':             { coef: 0.75, charges: 25 },
-    'fonction-publique': { coef: 0.83, charges: 17 },
-    'liberal':           { coef: 0.65, charges: 35 },
-    'portage':           { coef: 0.53, charges: 47 }
-  };
-  const HEURES_MENSUELLES = 151.67;
+(function(){
+  'use strict';
 
-  // ─── État : on garde le brut MENSUEL comme source de vérité ───────
-  // Quand l'utilisateur modifie horaire ou annuel, on recalcule le mensuel
-  // à partir de ce qu'il a tapé, puis on regénère les 3 inputs.
-  let state = {
-    brutMensuel: 2500,
-    statut: 'non-cadre',
-    mois: 12,
-    tempsPct: 100,
-    pasPct: 0,
-    isUpdating: false   // anti-boucle infinie quand on synchronise les inputs
-  };
+  // ── Constantes ───────────────────────────────────────────────
+  const HEURES_MENSUELLES = 151.67; // 35h × 52/12
 
-  // ─── Helpers formatage ────────────────────────────────────────────
-  const fmtEur = (n, withCents) => {
-    if (!isFinite(n) || isNaN(n)) return '—';
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency', currency: 'EUR',
-      minimumFractionDigits: withCents ? 2 : 0,
-      maximumFractionDigits: withCents ? 2 : 0
-    }).format(n);
+  // ── Récupération des éléments ────────────────────────────────
+  const $ = sel => document.querySelector(sel);
+  const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+  const inputs = {
+    horaireBrut: $('#horaire-brut'),
+    mensuelBrut: $('#mensuel-brut'),
+    annuelBrut: $('#annuel-brut'),
+    horaireNet: $('#horaire-net'),
+    mensuelNet: $('#mensuel-net'),
+    annuelNet: $('#annuel-net'),
+    mensuelNetPas: $('#mensuel-net-pas'),
+    annuelNetPas: $('#annuel-net-pas'),
+    tempsSlider: $('#temps-slider'),
+    tempsValue: $('#temps-value'),
+    pasSlider: $('#pas-slider'),
+    pasValue: $('#pas-value'),
+    tauxBadge: $('#taux-badge'),
+    resetBtn: $('#reset-btn'),
   };
 
-  // ─── Calcul + rendu complet ───────────────────────────────────────
-  function render() {
-    const st = STATUTS[state.statut];
-    // Brut MENSUEL ajusté au temps de travail
-    const brutMensuelEffectif = state.brutMensuel * (state.tempsPct / 100);
-    const brutHoraire = brutMensuelEffectif / HEURES_MENSUELLES;
-    const brutAnnuel  = brutMensuelEffectif * state.mois;
-
-    const netMensuel = brutMensuelEffectif * st.coef;
-    const netHoraire = netMensuel / HEURES_MENSUELLES;
-    const netAnnuel  = netMensuel * state.mois;
-
-    const apresMensuel = netMensuel * (1 - state.pasPct / 100);
-    const apresAnnuel  = netAnnuel  * (1 - state.pasPct / 100);
-
-    // ─── Mise à jour des inputs (sans déclencher l'event input) ─────
-    state.isUpdating = true;
-    document.getElementById('brut-horaire').value = brutHoraire.toFixed(2);
-    document.getElementById('brut-mensuel').value = Math.round(brutMensuelEffectif);
-    document.getElementById('brut-annuel').value  = Math.round(brutAnnuel);
-    state.isUpdating = false;
-
-    // ─── Mise à jour des sliders ────────────────────────────────────
-    document.getElementById('temps-value').textContent = state.tempsPct + ' %';
-    document.getElementById('pas-value').textContent   = state.pasPct.toFixed(1) + ' %';
-    document.getElementById('r-pas-display').textContent = state.pasPct.toFixed(1) + ' %';
-
-    // ─── Mise à jour des résultats ──────────────────────────────────
-    document.getElementById('r-brut-h').textContent = fmtEur(brutHoraire, true);
-    document.getElementById('r-brut-m').textContent = fmtEur(brutMensuelEffectif, false);
-    document.getElementById('r-brut-a').textContent = fmtEur(brutAnnuel, false);
-    document.getElementById('r-net-h').textContent  = fmtEur(netHoraire, true);
-    document.getElementById('r-net-m').textContent  = fmtEur(netMensuel, false);
-    document.getElementById('r-net-a').textContent  = fmtEur(netAnnuel, false);
-    document.getElementById('r-apres-m').textContent = fmtEur(apresMensuel, false);
-    document.getElementById('r-apres-a').textContent = fmtEur(apresAnnuel, false);
+  // ── Helpers de formatage ─────────────────────────────────────
+  function fmt(n){
+    if (!isFinite(n) || n <= 0) return '';
+    return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
   }
 
-  // ─── Listeners sur les 3 inputs brut ──────────────────────────────
-  // Quand l'utilisateur tape dans un champ, on recalcule le brut mensuel
-  // (la source de vérité), puis on regénère TOUT (y compris les autres
-  // champs). Le flag isUpdating évite la boucle infinie.
-  function attachBrutInput(id, computeMensuel) {
-    document.getElementById(id).addEventListener('input', function(e) {
-      if (state.isUpdating) return;
-      const val = parseFloat(e.target.value) || 0;
-      const mensuelEffectif = computeMensuel(val);
-      // On stocke le brut "FULL-TIME" : si on travaille à 80 %, ce que l'user
-      // tape = brut à 80 %, donc le brut full-time est plus élevé.
-      state.brutMensuel = mensuelEffectif / (state.tempsPct / 100);
-      render();
+  // ── État interne (mensuel brut comme valeur pivot) ───────────
+  let mensuelBrut = 0;
+  let lastEditedField = null; // 'horaire' | 'mensuel' | 'annuel' | null
+
+  function getStatut(){
+    const checked = document.querySelector('input[name="statut"]:checked');
+    if (!checked) return { value: 'non-cadre', label: 'Non-cadre', taux: 22 };
+    return {
+      value: checked.value,
+      label: checked.dataset.label,
+      taux: parseFloat(checked.dataset.taux),
+    };
+  }
+
+  function getMois(){
+    const checked = document.querySelector('input[name="mois"]:checked');
+    return checked ? parseInt(checked.value, 10) : 12;
+  }
+
+  function getTemps(){ return parseFloat(inputs.tempsSlider.value); } // 50..100
+  function getPas(){ return parseFloat(inputs.pasSlider.value); } // 0..25
+
+  // ── Mise à jour des champs depuis mensuelBrut ────────────────
+  function recompute(){
+    const statut = getStatut();
+    const mois = getMois();
+    const temps = getTemps(); // % (ne sert PAS à recalculer brut→net, juste à afficher).
+                              // Note : on considère que les valeurs saisies sont déjà
+                              // au prorata du temps de travail effectif (l'utilisateur
+                              // tape son brut réel). Le slider temps est cosmétique
+                              // ici, pour cohérence avec la maquette.
+    const pas = getPas();
+    const tauxCharges = statut.taux / 100;
+    const facteurTemps = temps / 100;
+
+    // Badge dynamique
+    inputs.tauxBadge.textContent = `${statut.label} -${statut.taux}%`;
+
+    // ── Synchronisation des 3 champs brut depuis lastEditedField ─
+    const horaireV = parseFloat(inputs.horaireBrut.value) || 0;
+    const mensuelV = parseFloat(inputs.mensuelBrut.value) || 0;
+    const annuelV = parseFloat(inputs.annuelBrut.value) || 0;
+
+    if (lastEditedField === 'horaire' && horaireV > 0) {
+      mensuelBrut = horaireV * HEURES_MENSUELLES * facteurTemps;
+      inputs.mensuelBrut.value = mensuelBrut.toFixed(2);
+      inputs.annuelBrut.value = (mensuelBrut * mois).toFixed(2);
+    } else if (lastEditedField === 'mensuel' && mensuelV > 0) {
+      mensuelBrut = mensuelV;
+      inputs.horaireBrut.value = (mensuelBrut / HEURES_MENSUELLES / facteurTemps).toFixed(2);
+      inputs.annuelBrut.value = (mensuelBrut * mois).toFixed(2);
+    } else if (lastEditedField === 'annuel' && annuelV > 0) {
+      mensuelBrut = annuelV / mois;
+      inputs.mensuelBrut.value = mensuelBrut.toFixed(2);
+      inputs.horaireBrut.value = (mensuelBrut / HEURES_MENSUELLES / facteurTemps).toFixed(2);
+    } else if (!lastEditedField) {
+      // Aucun champ édité encore : on déduit de ce qu'il y a
+      if (mensuelV > 0) mensuelBrut = mensuelV;
+      else if (horaireV > 0) mensuelBrut = horaireV * HEURES_MENSUELLES * facteurTemps;
+      else if (annuelV > 0) mensuelBrut = annuelV / mois;
+      else mensuelBrut = 0;
+    }
+
+    // ── Calcul du net ────────────────────────────────────────
+    const horaireBrutNum = parseFloat(inputs.horaireBrut.value) || 0;
+    const horaireNet = horaireBrutNum * (1 - tauxCharges);
+    const mensuelNet = mensuelBrut * (1 - tauxCharges);
+    const annuelNet = mensuelNet * mois;
+    inputs.horaireNet.value = fmt(horaireNet);
+    inputs.mensuelNet.value = fmt(mensuelNet);
+    inputs.annuelNet.value = fmt(annuelNet);
+
+    // ── Net après prélèvement à la source ─────────────────────
+    const facteurPas = 1 - (pas / 100);
+    inputs.mensuelNetPas.value = fmt(mensuelNet * facteurPas);
+    inputs.annuelNetPas.value = fmt(annuelNet * facteurPas);
+  }
+
+  // ── Listeners ────────────────────────────────────────────────
+  inputs.horaireBrut.addEventListener('input', () => { lastEditedField = 'horaire'; recompute(); });
+  inputs.mensuelBrut.addEventListener('input', () => { lastEditedField = 'mensuel'; recompute(); });
+  inputs.annuelBrut.addEventListener('input', () => { lastEditedField = 'annuel'; recompute(); });
+
+  inputs.tempsSlider.addEventListener('input', () => {
+    inputs.tempsValue.textContent = inputs.tempsSlider.value + ' %';
+    recompute();
+  });
+
+  inputs.pasSlider.addEventListener('input', () => {
+    inputs.pasValue.textContent = parseFloat(inputs.pasSlider.value).toFixed(1) + ' %';
+    recompute();
+  });
+
+  $$('input[name="statut"]').forEach(r => r.addEventListener('change', recompute));
+  $$('input[name="mois"]').forEach(r => r.addEventListener('change', recompute));
+
+  inputs.resetBtn.addEventListener('click', () => {
+    inputs.horaireBrut.value = '';
+    inputs.mensuelBrut.value = '';
+    inputs.annuelBrut.value = '';
+    inputs.horaireNet.value = '';
+    inputs.mensuelNet.value = '';
+    inputs.annuelNet.value = '';
+    inputs.mensuelNetPas.value = '';
+    inputs.annuelNetPas.value = '';
+    inputs.tempsSlider.value = 100;
+    inputs.tempsValue.textContent = '100 %';
+    inputs.pasSlider.value = 0;
+    inputs.pasValue.textContent = '0.0 %';
+    document.querySelector('input[name="statut"][value="non-cadre"]').checked = true;
+    document.querySelector('input[name="mois"][value="12"]').checked = true;
+    mensuelBrut = 0;
+    lastEditedField = null;
+    recompute();
+  });
+
+  // FAQ : accordéon
+  $$('.faq-item .faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      q.parentElement.classList.toggle('open');
     });
-  }
-  attachBrutInput('brut-horaire', v => v * HEURES_MENSUELLES);
-  attachBrutInput('brut-mensuel', v => v);
-  attachBrutInput('brut-annuel',  v => v / state.mois);
-
-  // ─── Listeners sur les paramètres ─────────────────────────────────
-  document.getElementById('statut').addEventListener('change', e => {
-    state.statut = e.target.value; render();
-  });
-  document.getElementById('mois').addEventListener('change', e => {
-    state.mois = parseInt(e.target.value, 10); render();
-  });
-  document.getElementById('temps').addEventListener('input', e => {
-    state.tempsPct = parseInt(e.target.value, 10); render();
-  });
-  document.getElementById('pas').addEventListener('input', e => {
-    state.pasPct = parseFloat(e.target.value); render();
   });
 
-  // ─── Reset ────────────────────────────────────────────────────────
-  document.getElementById('reset-btn').addEventListener('click', () => {
-    state.brutMensuel = 2500;
-    state.statut = 'non-cadre';
-    state.mois = 12;
-    state.tempsPct = 100;
-    state.pasPct = 0;
-    document.getElementById('statut').value = 'non-cadre';
-    document.getElementById('mois').value = '12';
-    document.getElementById('temps').value = 100;
-    document.getElementById('pas').value = 0;
-    render();
-  });
-
-  // ─── FAQ accordion ────────────────────────────────────────────────
-  document.querySelectorAll('.faq-q').forEach(q => {
-    q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
-  });
-
-  // ─── Render initial ───────────────────────────────────────────────
-  render();
+  // Init
+  recompute();
 })();
 </script>
-
-</body>
-</html>
+{% endblock %}
