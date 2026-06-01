@@ -1,23 +1,24 @@
 ---
-title: 'Développement des talents : comment faire évoluer vos collaborateurs ?'
+title: "Développement des talents : comment faire évoluer vos collaborateurs ?"
 slug: 5407-developpement-des-talents-comment-faire-evoluer-vos-collaborateurs
-date: '2026-05-30T14:00:00+02:00'
+date: 2026-05-30T14:00:00+02:00
+updated: 2026-06-01T14:28:32
 categorie: Ressources Humaines
-meta_title: 'Développement des talents : outils et méthodes pour accompagner la croissance
-  RH'
+meta_title: "Développement des talents : outils et méthodes pour accompagner la croissance RH"
 meta_description: Découvrez une approche moderne du développement des talents qui
-  mise sur l'apprentissage au quotidien plutôt que sur les formations traditionnelles.
-min_words: 3000
+featured_image: /blog/5407-developpement-des-talents-comment-faire-evoluer-vos-collaborateurs/featured-7991.jpg
 status: published
-link_anchors:
-- text: développement des talents
-  max: 2
+min_words: 3000
 related_posts:
 - 7191-pourquoi-creer-une-cartographie-des-competences-en-entreprise
 - 7286-comment-renforcer-la-fidelisation-des-talents-durablement
 - 4708-comment-batir-une-strategie-de-gestion-des-talents-efficace
 - 5564-quel-est-le-meilleur-logiciel-gepp-pour-votre-organisation
+link_anchors:
+- text: développement des talents
+  max: 2
 ---
+
 <h2>Pourquoi je ne crois plus aux plans de formation classiques</h2>
 
 <p>Après 10 ans à accompagner des dirigeants TPE dans leurs choix d'outils RH, je peux vous dire une chose : <strong>la formation traditionnelle, c'est fini</strong>. Plus personne n'a le temps d'envoyer ses équipes en stage pendant trois jours pour apprendre PowerPoint.</p>
@@ -354,3 +355,4 @@ related_posts:
 <p>Le développement des talents dans une TPE, c'est un investissement rentable quand c'est bien fait. Pas de programme démesuré, pas d'outils surdimensionnés. <strong>Du pragmatique, du concret, de l'humain</strong>.</p>
 
 <p>Commencez petit, mesurez l'impact, ajustez. Vos collaborateurs vous remercieront, et votre entreprise sera plus solide.</p>
+
