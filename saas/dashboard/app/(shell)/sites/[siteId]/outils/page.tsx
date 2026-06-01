@@ -271,7 +271,7 @@ export default function OutilsPage() {
         {CATALOG.map(tool => {
           const state = config.outils[tool.id]
           const isActive = state?.active === true
-          const isExpanded = expanded[tool.id] !== false  // ouvert par défaut
+          const isExpanded = expanded[tool.id] === true  // fermé par défaut
           const url = `https://${domainClean}/${state?.slug || tool.defaults.slug}`
 
           return (
