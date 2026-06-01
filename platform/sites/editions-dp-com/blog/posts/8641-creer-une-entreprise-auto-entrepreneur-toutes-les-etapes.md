@@ -1,22 +1,24 @@
 ---
-title: 'Créer une entreprise auto-entrepreneur : toutes les étapes'
+title: "Créer une entreprise auto-entrepreneur : toutes les étapes"
 slug: 8641-creer-une-entreprise-auto-entrepreneur-toutes-les-etapes
-date: '2026-06-01T12:00:00+02:00'
+date: 2026-06-01T12:00:00+02:00
+updated: 2026-06-01T13:50:08
 categorie: Création entreprise
-meta_title: Comment créer son statut d'auto-entrepreneur ?
+meta_title: "Comment créer son statut d'auto-entrepreneur ?"
 meta_description: Découvrez toutes les étapes pour créer votre auto-entreprise simplement.
-  Guide complet des démarches obligatoires, formalités en ligne et conseils pratiques.
-min_words: 2000
+featured_image: /blog/8641-creer-une-entreprise-auto-entrepreneur-toutes-les-etapes/featured-4343.jpg
 status: published
-link_anchors:
-- text: créer une entreprise auto-entrepreneur
-  max: 2
+min_words: 2000
 related_posts:
 - 5948-demarches-creation-d-entreprise-tout-ce-qu-il-faut-faire
 - 7122-etapes-creation-entreprise-le-guide-complet-en-year
 - 2986-comment-creer-un-produit-de-a-a-z-methode-etapes-cles-et-conseils-pratiques
 - 9835-statut-juridique-d-une-entreprise-lequel-choisir-en-year
+link_anchors:
+- text: créer une entreprise auto-entrepreneur
+  max: 2
 ---
+
 <h2>Comprendre le statut d'auto-entrepreneur avant de se lancer</h2>
 
 <p>Créer une auto-entreprise, c'est franchir le pas vers l'indépendance professionnelle. Je vois souvent des porteurs de projet hésiter entre micro-entreprise ou entreprise individuelle, sans vraiment saisir les nuances. La confusion est légitime : ces termes désignent en fait la même chose depuis 2016.</p>
@@ -165,3 +167,4 @@ related_posts:
 <p>La transition peut se faire en douceur. Vous créez votre société et fermez votre auto-entreprise une fois tout transféré. Comptez 2 à 3 mois pour faire les démarches sans précipitation.</p>
 
 <p>Créer une auto-entreprise reste le moyen le plus simple de tester une idée business. Les formalités allégées et la fiscalité proportionnelle donnent une vraie liberté d'action. Mais gardez en tête que ce statut a ses limites. L'important, c'est de commencer. Vous ajusterez en chemin selon vos résultats et ambitions.</p>
+
