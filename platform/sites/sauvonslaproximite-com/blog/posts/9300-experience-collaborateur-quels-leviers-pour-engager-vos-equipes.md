@@ -1,23 +1,24 @@
 ---
-title: 'Expérience collaborateur : quels leviers pour engager vos équipes ?'
+title: "Expérience collaborateur : quels leviers pour engager vos équipes ?"
 slug: 9300-experience-collaborateur-quels-leviers-pour-engager-vos-equipes
-date: '2026-06-01T12:00:00+02:00'
+date: 2026-06-01T12:00:00+02:00
+updated: 2026-06-01T15:00:05
 categorie: Ressources Humaines
-meta_title: 'Expérience collaborateur : comment améliorer le bien-être au travail'
-meta_description: Découvrez les leviers concrets pour améliorer l'expérience collaborateur
-  et fidéliser vos équipes. Conseils pratiques d'un expert comptable pour réduire
-  le…
-min_words: 3000
+meta_title: "Expérience collaborateur : comment améliorer le bien-être au travail"
+meta_description: "Découvrez les leviers concrets pour améliorer l'expérience collaborateur"
+featured_image: /blog/9300-experience-collaborateur-quels-leviers-pour-engager-vos-equipes/featured-1902.jpg
 status: published
-link_anchors:
-- text: expérience collaborateur
-  max: 2
+min_words: 3000
 related_posts:
 - 1574-talent-management-comment-developper-les-competences-internes
 - 7114-developpement-des-talents-quelles-methodes-utiliser
 - 1267-marque-employeur-comment-attirer-les-meilleurs-talents
 - 4853-cartographie-des-competences-comment-identifier-les-savoir-faire-cles
+link_anchors:
+- text: expérience collaborateur
+  max: 2
 ---
+
 <p>Vingt ans dans la comptabilité, j'ai vu défiler pas mal de modes RH. Mais là, on ne peut plus ignorer cette tendance : <strong>l'expérience collaborateur</strong> fait partie des préoccupations majeures de toutes les entreprises que je côtoie. Et pour cause.</p>
 
 <p>Les équipes comptables sont souvent vues comme des postes "techniques" où l'humain passerait au second plan. Grosse erreur. Dans mon département, j'ai appris que garder mes meilleurs éléments et créer un environnement où ils s'épanouissent, ça change complètement la donne. Fini les démissions en cascade, fini les recrutements qui n'aboutissent jamais.</p>
@@ -271,3 +272,4 @@ related_posts:
 <p>On fait une enquête anonyme deux fois par an avec des questions simples : recommanderiez-vous l'entreprise à un ami ? Vous sentez-vous écouté par votre manager ? Avez-vous les moyens de faire votre travail correctement ?</p>
 
 <p>Les résultats nous donnent une température de l'équipe et nous aident à identifier les points d'amélioration. Cette année, on a eu des remontées sur la charge de travail en fin de mois. On a pu
+
