@@ -19,13 +19,14 @@ import { NextRequest, NextResponse } from 'next/server'
 //   nb_mots: number,
 //   outil_name: string,
 //   mode?: 'content' | 'faq' | 'both',  // défaut 'content' (rétrocompat)
-//   faq_count?: number,                  // nb de Q/R à générer (défaut 6)
 // }
 //
 // Modes :
-//   - 'content' (défaut) : génère uniquement le HTML rédactionnel (comportement historique)
-//   - 'faq'             : génère uniquement une nouvelle FAQ
-//   - 'both'            : génère HTML + FAQ en parallèle (Promise.all)
+//   - 'content' (défaut) : génère uniquement le HTML rédactionnel
+//   - 'faq'             : génère les RÉPONSES aux questions fournies
+//                         (les questions saisies par l'utilisateur sont
+//                         préservées strictement à l'identique)
+//   - 'both'            : génère HTML + réponses FAQ en parallèle
 //
 // Réponse :
 //   { ok: true, html?, faq?, global_used, persona_used, template_id }
@@ -43,7 +44,6 @@ export async function POST(
       nb_mots = 1000,
       outil_name = 'outil',
       mode = 'content',
-      faq_count = 6,
     } = body || {}
 
     if (!prompt_redaction.trim()) {
@@ -82,7 +82,7 @@ export async function POST(
       } catch {}
     }
 
-    // ── 3) Helpers pour empiler le system prompt ─────────────────
+    // ── 3) Helpers ───────────────────────────────────────────────
     function buildSystem(specificFormatRules: string): string {
       const layers: string[] = []
       if (globalPrompt)  layers.push(globalPrompt)
@@ -91,7 +91,6 @@ export async function POST(
       return layers.join('\n\n---\n\n')
     }
 
-    // ── 4) Appel API Anthropic générique ─────────────────────────
     async function callClaude(system: string, user: string): Promise<string> {
       const r = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
@@ -121,7 +120,7 @@ export async function POST(
       return txt.trim()
     }
 
-    // ── 5) Génération HTML (mode 'content' ou 'both') ────────────
+    // ── 4) Génération HTML (mode 'content' ou 'both') ────────────
     async function generateContent(): Promise<string> {
       const formatRules = `# RÈGLES TECHNIQUES DE FORMAT (à respecter strictement)
 - Sortie : HTML uniquement, sans <html>, <head>, <body>, sans <h1> (le H1 est déjà géré par la page).
@@ -150,49 +149,85 @@ Réponds uniquement avec le HTML, sans introduction, sans balises de code, sans 
       return html
     }
 
-    // ── 6) Génération FAQ (mode 'faq' ou 'both') ─────────────────
-    async function generateFaq(): Promise<{ question: string; answer: string }[]> {
+    // ── 5) Génération des RÉPONSES aux questions fournies ────────
+    //    Les questions sont saisies par l'utilisateur dans le dashboard
+    //    et doivent être préservées strictement à l'identique. Claude ne
+    //    génère QUE les réponses, pas les questions.
+    async function regenerateAnswers(): Promise<{ question: string; answer: string }[]> {
+      // Filtrer : on ne traite que les questions non-vides
+      const questions = (faq as any[])
+        .filter(f => f && typeof f.question === 'string' && f.question.trim().length > 0)
+        .map(f => f.question.trim())
+
+      if (questions.length === 0) {
+        return []
+      }
+
       const faqFormatRules = `# RÈGLES TECHNIQUES (à respecter strictement)
 - Sortie : JSON pur, AUCUN texte avant ou après, AUCUN bloc \`\`\`json, juste l'objet JSON brut.
-- Format exact : { "faq": [ { "question": "...", "answer": "..." }, ... ] }
-- ${faq_count} entrées de FAQ minimum.
-- Questions : tournures naturelles que se posent vraiment les utilisateurs (commencent par Comment, Pourquoi, Est-ce que, Quel(le)…), entre 5 et 12 mots.
-- Réponses : 2 à 4 phrases, en français, ton clair et concret, AUCUNE balise HTML, AUCUN markdown. Une seule chaîne par réponse.
+- Format exact : { "answers": [ "réponse 1", "réponse 2", ... ] }
+- Le tableau "answers" doit contenir EXACTEMENT ${questions.length} éléments, dans le MÊME ORDRE que les questions fournies.
+- Chaque réponse : 2 à 4 phrases, en français, ton clair et concret.
+- AUCUNE balise HTML, AUCUN markdown, AUCUN guillemet de citation. Texte brut uniquement.
+- Réponds à la question telle qu'elle est posée, ne reformule pas la question dans la réponse.
 - N'invente pas de chiffres précis ou de règlementations : reste général ou indique "selon votre situation".
-- Diversifie les angles : usage pratique, cas particuliers, limites, contexte légal/fiscal si pertinent, comparaison.
-- Si une FAQ existante est fournie en contexte, traite des sujets DIFFÉRENTS (ne reformule pas).`
+- Si une question est ambiguë, donne la réponse la plus utile pour un lecteur qui découvre le sujet.`
 
-      const existingFaqContext = faq.length > 0
-        ? `\n\nFAQ existante (à ne PAS dupliquer, génère des questions sur d'autres angles) :\n${faq.map((f: any) => `- ${f.question}`).join('\n')}`
-        : ''
+      const questionsList = questions
+        .map((q, i) => `${i + 1}. ${q}`)
+        .join('\n')
 
-      const user = `Génère une FAQ structurée pour la page de l'outil "${outil_name}".
+      const user = `Tu dois répondre à ${questions.length} questions d'une FAQ pour la page de l'outil "${outil_name}".
 
 Contexte de la page :
 ${prompt_redaction}
-${existingFaqContext}
 
-Génère exactement ${faq_count} questions/réponses au format JSON demandé. Réponds UNIQUEMENT par le JSON, rien d'autre.`
+Questions auxquelles tu dois répondre (dans cet ordre exact) :
+${questionsList}
+
+Réponds UNIQUEMENT par le JSON au format demandé, avec exactement ${questions.length} réponses dans le même ordre que les questions. Rien d'autre.`
 
       const raw = await callClaude(buildSystem(faqFormatRules), user)
-      // Nettoyage défensif : si Claude a quand même mis des backticks
       const cleaned = raw.replace(/^```(?:json)?\s*\n?/, '').replace(/\n?```\s*$/, '').trim()
+
+      let answers: string[] = []
       try {
         const parsed = JSON.parse(cleaned)
-        const list = Array.isArray(parsed?.faq) ? parsed.faq : []
-        // Filtre défensif : ne garde que les paires valides
-        return list
-          .filter((f: any) => f && typeof f.question === 'string' && typeof f.answer === 'string')
-          .map((f: any) => ({ question: f.question.trim(), answer: f.answer.trim() }))
-          .filter((f: any) => f.question.length > 0 && f.answer.length > 0)
+        answers = Array.isArray(parsed?.answers) ? parsed.answers : []
       } catch (e) {
-        // Si le parse plante, retourner une liste vide plutôt que de tout faire péter
-        console.error('[generate-faq] JSON parse failed:', e, 'raw:', cleaned.slice(0, 200))
+        console.error('[regenerate-answers] JSON parse failed:', e, 'raw:', cleaned.slice(0, 200))
         return []
       }
+
+      // Recombiner questions + réponses dans l'ordre exact, en préservant
+      // l'ordre original de `faq` (y compris les questions vides qu'on a
+      // sautées plus haut — celles-ci restent telles quelles).
+      const result: { question: string; answer: string }[] = []
+      let aiIdx = 0
+      for (const original of (faq as any[])) {
+        const q = (original?.question || '').trim()
+        if (q.length === 0) {
+          // Question vide : on garde l'item tel quel (au cas où l'utilisateur
+          // l'avait laissé vide volontairement, on ne le supprime pas).
+          result.push({
+            question: original?.question || '',
+            answer: original?.answer || '',
+          })
+        } else {
+          // Question non-vide : on réutilise la réponse générée par l'IA
+          const generatedAnswer = answers[aiIdx] || original?.answer || ''
+          result.push({
+            question: q,
+            answer: typeof generatedAnswer === 'string' ? generatedAnswer.trim() : String(generatedAnswer || ''),
+          })
+          aiIdx++
+        }
+      }
+
+      return result.filter(item => item.question.length > 0 || item.answer.length > 0)
     }
 
-    // ── 7) Dispatch selon le mode ─────────────────────────────────
+    // ── 6) Dispatch selon le mode ─────────────────────────────────
     const response: any = {
       ok: true,
       global_used: !!globalPrompt,
@@ -203,10 +238,10 @@ Génère exactement ${faq_count} questions/réponses au format JSON demandé. R�
     if (mode === 'content') {
       response.html = await generateContent()
     } else if (mode === 'faq') {
-      response.faq = await generateFaq()
+      response.faq = await regenerateAnswers()
     } else if (mode === 'both') {
       // Appels parallèles pour gagner du temps
-      const [html, generatedFaq] = await Promise.all([generateContent(), generateFaq()])
+      const [html, generatedFaq] = await Promise.all([generateContent(), regenerateAnswers()])
       response.html = html
       response.faq = generatedFaq
     } else {
