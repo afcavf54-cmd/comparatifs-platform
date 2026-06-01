@@ -1,23 +1,24 @@
 ---
-title: 'DSN: Déclaration Sociale Nominative : guide complet pour les employeurs'
+title: "DSN: Déclaration Sociale Nominative : guide complet pour les employeurs"
 slug: 3706-dsn-declaration-sociale-nominative-guide-complet-pour-les-employeurs
-date: '2026-05-26T10:00:00+02:00'
+date: 2026-05-26T10:00:00+02:00
+updated: 2026-06-01T13:05:23
 categorie: Ressources Humaines
-meta_title: 'DSN (Déclaration Sociale Nominative) : qu''est-ce que c''est et comment
-  ça fonctionne ?'
-meta_description: 'Guide complet DSN pour employeurs : tout savoir sur la Déclaration
-  Sociale Nominative obligatoire. Simplifiez vos démarches sociales mensuelles.'
-min_words: 3000
+meta_title: "DSN (Déclaration Sociale Nominative) : qu'est-ce que c'est et comment ça fonctionne ?"
+meta_description: "Guide complet DSN pour employeurs : tout savoir sur la Déclaration Sociale Nominative obligatoire. Simplifiez vos démarches sociales mensuelles."
+featured_image: /blog/3706-dsn-declaration-sociale-nominative-guide-complet-pour-les-employeurs/featured-18975.jpg
 status: published
-link_anchors:
-- text: déclaration sociale nominative DSN
-  max: 2
+min_words: 3000
 related_posts:
 - 1501-bulletin-de-paie-dematerialise-obligations-legales-et-mise-en-uvre
 - 5959-comment-construire-une-marque-employeur-attractive
 - 2742-le-talent-management-comment-developper-les-talents-en-entreprise
 - 5739-comment-ameliorer-la-retention-des-talents
+link_anchors:
+- text: déclaration sociale nominative DSN
+  max: 2
 ---
+
 <h2>Qu'est-ce que la DSN ?</h2>
 
 <p>La Déclaration Sociale Nominative, ou DSN, c'est LE fichier que vous devez transmettre chaque mois aux organismes sociaux. J'ai basculé dessus en 2017, quand ça devenait obligatoire pour toutes les entreprises.</p>
@@ -301,3 +302,4 @@ Vous devez répartir les données de paie entre les différents établissements.
 
 <p><strong>Et pour les dirigeants assimilés salariés ?</strong><br>
 Ils doivent être déclarés comme les autres salariés, avec leurs spécificités de cotisations. Attention aux régimes particuliers (RSI, CIPAV...) qui ont leurs propres codes.</p>
+
