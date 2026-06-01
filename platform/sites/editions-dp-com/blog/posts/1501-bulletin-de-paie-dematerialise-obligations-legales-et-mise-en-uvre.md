@@ -1,24 +1,24 @@
 ---
-title: 'Bulletin de paie dématérialisé : obligations légales et mise en œuvre'
+title: "Bulletin de paie dématérialisé : obligations légales et mise en œuvre"
 slug: 1501-bulletin-de-paie-dematerialise-obligations-legales-et-mise-en-uvre
-date: '2026-05-26T11:00:00+02:00'
+date: 2026-05-26T11:00:00+02:00
+updated: 2026-06-01T13:06:21
 categorie: Ressources Humaines
-meta_title: 'Bulletin de paie dématérialisé : est-ce obligatoire et comment le mettre
-  en place ?'
-meta_description: 'Découvrez les obligations légales du bulletin de paie dématérialisé
-  depuis 2017 : conditions de mise en œuvre, droits des salariés et solutions techniques
-  conformes.'
-min_words: 3000
+meta_title: "Bulletin de paie dématérialisé : est-ce obligatoire et comment le mettre en place ?"
+meta_description: "Découvrez les obligations légales du bulletin de paie dématérialisé depuis 2017 : conditions de mise en œuvre, droits des salariés et solutions techniques conformes."
+featured_image: /blog/1501-bulletin-de-paie-dematerialise-obligations-legales-et-mise-en-uvre/featured-67545.jpg
 status: published
-link_anchors:
-- text: bulletin de paie dématérialisé
-  max: 2
+min_words: 3000
 related_posts:
 - 1218-quelle-strategie-adopter-pour-gerer-les-talents-en-2026
 - 5739-comment-ameliorer-la-retention-des-talents
 - 8407-automatisation-de-la-paie-comment-ca-marche-et-pourquoi-l-adopter
 - 8432-comment-mettre-en-place-une-gestion-des-talents-rh-efficace
+link_anchors:
+- text: bulletin de paie dématérialisé
+  max: 2
 ---
+
 <h2>La dématérialisation du bulletin de paie : une obligation depuis 2017</h2>
 
 <p>J'ai eu l'obligation de m'y pencher sérieusement en 2019 quand notre comptable nous a fait comprendre qu'on ne pouvait plus échapper à la dématérialisation. Depuis janvier 2017, tous les employeurs peuvent distribuer les bulletins de paie sous forme électronique, sauf si le salarié s'y oppose expressément. Cette règle concerne aussi bien les TPE comme la mienne que les grandes entreprises.</p>
@@ -172,3 +172,4 @@ related_posts:
 <p>Mon principal conseil : ne sous-estimez pas l'accompagnement humain. La technique ne fait pas tout. Prenez le temps d'expliquer, de rassurer, de former. C'est ce qui fait réussir ou échouer votre projet de dématérialisation.</p>
 
 <p>Les économies réelles sont au rendez-vous. Entre les coûts d'impression évités et le gain de temps administratif, l'investissement est amorti en moins d'un an pour une TPE comme la mienne. Pour une entreprise plus importante, les gains se multiplient proportionnellement.</p>
+
