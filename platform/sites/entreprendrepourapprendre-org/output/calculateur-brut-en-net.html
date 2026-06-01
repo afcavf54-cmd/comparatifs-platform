@@ -74,17 +74,17 @@
 }
 body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
 a{color:var(--accent2);text-decoration:none}
-.container{max-width:1280px;margin:0 auto;padding:0 24px}
+/* ─── Wrapper principal (aligné sur les autres outils du site) ─── */
+main.tool-main{max-width:1200px;margin:0 auto;padding:32px 5vw 60px}
 
 /* ─── Hero ─── */
-.tool-hero{background:var(--bg);padding:50px 0 20px;text-align:center}
-.tool-hero-inner{max-width:1280px;margin:0 auto;padding:0 24px;text-align:center}
+.tool-hero{background:var(--bg);padding:50px 0 8px;text-align:center}
+.tool-hero-inner{max-width:1200px;margin:0 auto;padding:0 5vw;text-align:center}
 .tool-hero h1{font-family:'DM Serif Display',serif;font-size:clamp(28px,4vw,42px);font-weight:400;color:var(--ink);margin:0 0 12px;line-height:1.2;letter-spacing:-.02em}
 
 /* ─── Carte calculateur (fond couleur) ─── */
-.calc-wrap{max-width:1280px;margin:32px auto 0;padding:0 24px}
-.calc-card{background:var(--calc-bg);color:#fff;border-radius:14px;padding:40px 44px;box-shadow:0 8px 32px rgba(0,0,0,.08)}
-.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.calc-card{background:var(--calc-bg);color:#fff;border-radius:14px;padding:36px 32px;box-shadow:0 8px 32px rgba(0,0,0,.08);margin:0 0 32px}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
 @media (max-width:920px){.calc-grid{grid-template-columns:1fr;gap:32px}.calc-card{padding:24px 18px}}
 .calc-col{display:flex;flex-direction:column;gap:28px;min-width:0}
 
@@ -130,7 +130,7 @@ a{color:var(--accent2);text-decoration:none}
 .calc-reset:hover{background:#fff;color:var(--calc-bg)}
 
 /* ─── Contenu rédactionnel ─── */
-.tool-content{padding:40px 0 60px;max-width:760px;margin:0 auto}
+.tool-content{padding:0;margin:0 0 40px}
 .tool-content h2{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;margin:40px 0 16px;color:var(--ink);line-height:1.3}
 .tool-content h2:first-child{margin-top:0}
 .tool-content h3{font-family:'DM Serif Display',serif;font-size:20px;font-weight:600;margin:28px 0 12px;color:var(--ink)}
@@ -151,8 +151,8 @@ a{color:var(--accent2);text-decoration:none}
 @media (max-width:680px){.tool-content table{font-size:14px}.tool-content thead th,.tool-content tbody td{padding:10px 12px}}
 
 /* ─── FAQ ─── */
-.faq-section{max-width:760px;margin:0 auto 60px;padding:0 24px}
-.faq-section h2{font-family:'DM Serif Display',serif;font-size:32px;font-weight:400;margin:0 0 24px;color:var(--ink);text-align:center}
+.faq-section{margin:0 0 40px;padding:0}
+.faq-section h2{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,32px);font-weight:400;margin:0 0 16px;color:var(--ink);letter-spacing:-.02em}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-weight:600;color:var(--ink);margin:0 0 10px;font-size:17px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .faq-q::after{content:"+";font-size:24px;font-weight:300;color:var(--ink2);transition:transform .2s}
@@ -224,7 +224,8 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   </div>
 </header>
 
-<div class="calc-wrap">
+<main class="tool-main">
+
   <div class="calc-card">
     <div class="calc-grid">
 
@@ -374,12 +375,10 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
     </div>
   </div>
-</div>
 
-
-
-<section class="container">
-  <div class="tool-content">
+  
+  
+  <article class="tool-content">
     <h2>Transformer son salaire brut en net facilement</h2>
 
 <p>Quand je recrute dans mon agence, la première question que posent mes futurs salariés concerne toujours le salaire net qu'ils percevront réellement. C'est normal : comprendre ce qu'on va toucher sur son compte en banque, c'est essentiel pour anticiper son budget mensuel et négocier sereinement.</p>
@@ -498,13 +497,12 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Pour les <strong>apprentis et alternants</strong>, le calcul varie selon l'âge et le niveau d'études. Un apprenti de moins de 26 ans est exonéré de cotisations salariales sur la partie de rémunération inférieure au SMIC. Concrètement, un apprenti payé au SMIC touche quasiment l'intégralité de son salaire brut en net.</p>
 
 <p>Les <strong>stagiaires</strong> avec gratification supérieure au minimum légal (environ 600 € mensuels) voient s'appliquer les cotisations classiques sur la partie dépassant ce seuil. C'est un point important à vérifier si vous encadrez des stages longs dans votre entreprise.</p>
-  </div>
-</section>
+  </article>
+  
 
-
-
-
-<section class="faq-section">
+  
+  
+  <section class="faq-section">
   <h2>Foire aux questions</h2>
   
   <div class="faq-item">
@@ -522,8 +520,10 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <div class="faq-r">Pour évaluer une proposition, convertissez d'abord le brut en net avec un coefficient de 0,78 pour les non-cadres ou 0,75 pour les cadres. Vérifiez ensuite les avantages inclus comme la mutuelle, les tickets restaurant ou la participation qui peuvent représenter plusieurs centaines d'euros mensuels. N'oubliez pas d'estimer l'impact du prélèvement à la source selon votre taux d'imposition pour connaître ce que vous toucherez réellement chaque mois.</div>
   </div>
   
-</section>
+  </section>
+  
 
+</main>
 
 <style>
 .footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
