@@ -6,7 +6,8 @@ import { useParams } from 'next/navigation'
 // Pour ajouter un nouvel outil :
 // 1. Créer le template Jinja2 dans platform/templates/outils/<id>.html.j2
 // 2. Ajouter une entrée ici dans CATALOG (avec des defaults SEO sensés)
-// 3. generate.py lira platform/sites/<site>/outils.json et publiera
+// 3. Ajouter l'entrée correspondante dans platform/scripts/_outils.py > TOOL_CATALOG
+// 4. generate.py lira platform/sites/<site>/outils.json et publiera
 //    les outils dont active=true
 const CATALOG = [
   {
@@ -32,7 +33,37 @@ Plan attendu :
       nb_mots: 1200,
     },
   },
-  // Futur : { id: 'salaire-brut-net', ... }
+  {
+    id: 'simulateur-salaire-brut-net',
+    icon: '💰',
+    name: 'Salaire brut → net',
+    description: "Calcule le salaire net à partir du brut (horaire, mensuel, annuel) selon le statut, le temps de travail, le nombre de mois et le prélèvement à la source.",
+    defaults: {
+      slug: 'simulateur-salaire-brut-net',
+      title: 'Calcul salaire brut net : simulateur instantané',
+      meta_description: "Convertissez votre salaire brut en net en 1 clic. Horaire, mensuel, annuel, selon votre statut (cadre, non-cadre, fonction publique, libéral, portage).",
+      h1: 'Salaire brut → net : simulateur instantané',
+      prompt_redaction: `Rédige un guide complet sur le calcul du salaire brut en net pour un salarié français qui veut comprendre sa fiche de paie et anticiper ses revenus nets.
+
+Plan attendu (utilise des <h2> et <h3>) :
+<h2> Brut, net, net après impôt : quelles différences ?
+<h2> Les charges salariales selon votre statut
+<h3> Salarié non-cadre (22 %)
+<h3> Salarié cadre (25 %)
+<h3> Fonction publique (17 %)
+<h3> Profession libérale et portage salarial
+<h2> Comment calculer son salaire net mensuel ?
+<h2> Le prélèvement à la source (PAS) : comment l'intégrer ?
+<h2> Cas particuliers : temps partiel, 13e mois, primes`,
+      faq: [
+        { question: 'Comment calculer son salaire net à partir du brut ?', answer: 'Le calcul dépend de votre statut : un salarié non-cadre garde environ 78 % du brut (22 % de charges), un cadre 75 %, un fonctionnaire 83 %. Pour le mensuel : salaire net = salaire brut × coefficient. Notre simulateur applique automatiquement le bon taux selon le statut sélectionné.' },
+        { question: 'Quelle est la différence entre net avant et après impôt ?', answer: "Le salaire net est ce qui figure en bas de fiche de paie, avant retrait du prélèvement à la source (PAS). Le net après impôt est ce que vous touchez réellement sur votre compte bancaire, une fois le PAS prélevé par votre employeur. Le taux PAS est communiqué par l'administration fiscale et varie selon votre situation." },
+        { question: 'Comment passer du salaire brut annuel au mensuel ?', answer: "Le salaire annuel se divise par le nombre de mois de rémunération. Sur 12 mois : annuel ÷ 12. Sur 13 mois (avec une prime de 13e mois) : annuel ÷ 13. Attention : un salarié payé 12 mois × 3 000 € touche le même brut annuel (36 000 €) que celui payé 13 mois × 2 769 €, mais le mensuel diffère." },
+        { question: 'Le simulateur prend-il en compte le temps partiel ?', answer: "Oui, le curseur 'Temps de travail' permet d'ajuster le brut de 50 % à 100 %. Un mi-temps à 50 % aura un brut divisé par 2, et le net suit la même proportion. C'est utile pour les salariés à temps partiel choisi ou subi, et pour les contrats forfait jour réduits." },
+      ],
+      nb_mots: 1500,
+    },
+  },
   // Futur : { id: 'calcul-interets', ... }
 ]
 
