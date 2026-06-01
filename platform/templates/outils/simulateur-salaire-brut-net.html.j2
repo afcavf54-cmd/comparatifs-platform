@@ -23,7 +23,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": {{ (outil.title or 'Simulateur salaire brut net') | tojson }},
+  "name": {{ (outil.title | default('Simulateur salaire brut net')) | tojson }},
   "url": "{{ site.domain }}/{{ outil.slug }}",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "All",
@@ -41,8 +41,8 @@
     {% for item in outil.faq %}
     {
       "@type": "Question",
-      "name": {{ item.q | tojson }},
-      "acceptedAnswer": { "@type": "Answer", "text": {{ item.r | tojson }} }
+      "name": {{ (item.question | default('')) | tojson }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ (item.answer | default('')) | tojson }} }
     }{% if not loop.last %},{% endif %}
     {% endfor %}
   ]
@@ -288,8 +288,8 @@ a{color:var(--accent2);text-decoration:none}
     <h2>Foire aux questions</h2>
     {% for item in outil.faq %}
     <div class="faq-item">
-      <div class="faq-q">{{ item.q }}</div>
-      <div class="faq-r">{{ item.r }}</div>
+      <div class="faq-q">{{ item.question | default('') }}</div>
+      <div class="faq-r">{{ item.answer | default('') }}</div>
     </div>
     {% endfor %}
   </section>
