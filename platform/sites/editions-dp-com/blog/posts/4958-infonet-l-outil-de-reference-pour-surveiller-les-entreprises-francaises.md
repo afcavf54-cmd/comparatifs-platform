@@ -4,14 +4,16 @@ slug: 4958-infonet-l-outil-de-reference-pour-surveiller-les-entreprises-francais
 date: '2026-06-01T22:00:00+02:00'
 categorie: Finance & Comptabilité
 meta_title: 'Infonet : présentation et fonctionnalités'
-meta_description: Découvrez Infonet, l'outil incontournable pour surveiller la santé financière des entreprises françaises. Bilans, dirigeants, alertes automatiques centralisés.
+meta_description: Découvrez Infonet, l'outil incontournable pour surveiller la santé
+  financière des entreprises françaises. Bilans, dirigeants, alertes automatiques
+  centralisés.
 min_words: 1000
 status: published
 link_anchors:
 - text: infonet
   max: 4
+related_posts: []
 ---
-
 <h2>Infonet : panorama d'un outil qui sait tout sur les entreprises françaises</h2>
 
 <p>Je surveille régulièrement nos fournisseurs et clients depuis des années. Infonet s'est imposé naturellement dans ma routine. Cet outil me permet de vérifier la santé financière d'une entreprise en quelques clics. <strong>Plutôt que de naviguer sur 3-4 sites différents</strong>, j'ai tout centralisé.</p>
