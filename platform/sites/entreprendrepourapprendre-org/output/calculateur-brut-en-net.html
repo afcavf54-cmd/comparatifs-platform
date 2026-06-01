@@ -74,19 +74,17 @@
 }
 body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
 a{color:var(--accent2);text-decoration:none}
-.container{max-width:1200px;margin:0 auto;padding:0 5vw}
+.container{max-width:1280px;margin:0 auto;padding:0 24px}
 
 /* ─── Hero ─── */
-.tool-hero{background:var(--bg);padding:60px 0 30px;border-bottom:1px solid var(--border)}
-.tool-hero-inner{max-width:1100px;margin:0 auto;padding:0 5vw;text-align:center}
-.tool-hero-eyebrow{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--ink2);padding:6px 14px;border:1px solid var(--border);border-radius:30px;margin-bottom:20px;background:var(--surface)}
+.tool-hero{background:var(--bg);padding:50px 0 20px;text-align:center}
+.tool-hero-inner{max-width:1280px;margin:0 auto;padding:0 24px;text-align:center}
 .tool-hero h1{font-family:'DM Serif Display',serif;font-size:clamp(28px,4vw,42px);font-weight:400;color:var(--ink);margin:0 0 12px;line-height:1.2;letter-spacing:-.02em}
-.tool-hero-sub{color:var(--ink2);font-size:17px;max-width:680px;margin:0 auto;line-height:1.6}
 
 /* ─── Carte calculateur (fond couleur) ─── */
-.calc-wrap{max-width:1100px;margin:32px auto 0;padding:0 5vw}
-.calc-card{background:var(--calc-bg);color:#fff;border-radius:14px;padding:36px 32px;box-shadow:0 8px 32px rgba(0,0,0,.08)}
-.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.calc-wrap{max-width:1280px;margin:32px auto 0;padding:0 24px}
+.calc-card{background:var(--calc-bg);color:#fff;border-radius:14px;padding:40px 44px;box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
 @media (max-width:920px){.calc-grid{grid-template-columns:1fr;gap:32px}.calc-card{padding:24px 18px}}
 .calc-col{display:flex;flex-direction:column;gap:28px;min-width:0}
 
@@ -153,7 +151,7 @@ a{color:var(--accent2);text-decoration:none}
 @media (max-width:680px){.tool-content table{font-size:14px}.tool-content thead th,.tool-content tbody td{padding:10px 12px}}
 
 /* ─── FAQ ─── */
-.faq-section{max-width:760px;margin:0 auto 60px;padding:0 5vw}
+.faq-section{max-width:760px;margin:0 auto 60px;padding:0 24px}
 .faq-section h2{font-family:'DM Serif Display',serif;font-size:32px;font-weight:400;margin:0 0 24px;color:var(--ink);text-align:center}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-weight:600;color:var(--ink);margin:0 0 10px;font-size:17px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
@@ -222,9 +220,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
 <header class="tool-hero">
   <div class="tool-hero-inner">
-    <div class="tool-hero-eyebrow">💰 Outil gratuit</div>
     <h1>Calculateur de salaire brut en net</h1>
-    <p class="tool-hero-sub">Calculez votre salaire net à partir de votre brut selon votre statut, votre temps de travail et le nombre de mois de rémunération.</p>
   </div>
 </header>
 
