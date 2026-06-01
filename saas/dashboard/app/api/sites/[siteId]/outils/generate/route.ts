@@ -128,7 +128,28 @@ export async function POST(
 - Pas de markdown, pas de \`\`\` autour du code, juste le HTML pur.
 - Paragraphes courts (3-5 phrases max).
 - Ne PAS inclure de bloc FAQ dans le HTML (la FAQ est gérée séparément par le template).
-- N'invente pas de chiffres ou de règlementations : reste général ou indique "selon votre situation".`
+- N'invente pas de chiffres ou de règlementations : reste général ou indique "selon votre situation".
+
+# TABLEAUX (IMPORTANT)
+Si tu présentes des données chiffrées comparatives, des correspondances valeur→valeur (ex : salaire brut → net), des listes structurées multi-colonnes, des barèmes, etc. :
+- Utilise OBLIGATOIREMENT une vraie balise <table> HTML structurée.
+- TOUJOURS encadrer le tableau dans <div class="table-wrap">…</div> (pour le scroll horizontal sur mobile).
+- Structure minimale :
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>En-tête colonne 1</th><th>En-tête colonne 2</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Valeur 1A</td><td>Valeur 1B</td></tr>
+        <tr><td>Valeur 2A</td><td>Valeur 2B</td></tr>
+      </tbody>
+    </table>
+  </div>
+- Les en-têtes de colonne DOIVENT être dans <thead><tr><th>…</th></tr></thead>, jamais dans <tbody>.
+- Les <th> doivent décrire clairement la colonne (ex : "Salaire brut mensuel", "Salaire net estimé"), pas être implicites.
+- N'utilise JAMAIS de pseudo-tableau aligné avec des espaces, des <p> en colonnes, ou des <div> flex/grid. C'est <table> ou rien.
+- Si le tableau a plus de 8 lignes, ajoute un <caption> en haut décrivant le contenu.`
 
       const faqContext = faq.length > 0
         ? `\n\nContexte FAQ (à traiter dans les paragraphes si pertinent, mais NE PAS inclure de bloc FAQ dans le HTML — il est géré séparément) :\n${faq.map((f: any) => `Q: ${f.question}\nR: ${f.answer}`).join('\n\n')}`
