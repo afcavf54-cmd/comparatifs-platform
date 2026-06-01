@@ -5,14 +5,14 @@
 <link rel="icon" href="/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Marque employeur : comment améliorer l’image de votre entreprise</title>
-<meta name="description" content="Découvrez comment développer une marque employeur attractive en comptabilité pour recruter les meilleurs talents. Conseils d'expert, outils modernes et…">
+<meta name="description" content="Découvrez comment développer une marque employeur attractive en">
 <link rel="canonical" href="https://www.sauvonslaproximite.com/1267-marque-employeur-comment-attirer-les-meilleurs-talents">
 <meta property="og:title" content="Marque employeur : comment améliorer l’image de votre entreprise">
-<meta property="og:description" content="Découvrez comment développer une marque employeur attractive en comptabilité pour recruter les meilleurs talents. Conseils d'expert, outils modernes et…">
+<meta property="og:description" content="Découvrez comment développer une marque employeur attractive en">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.sauvonslaproximite.com/1267-marque-employeur-comment-attirer-les-meilleurs-talents">
-<meta property="article:published_time" content="2026-05-31T15:00:00+02:00">
-<meta property="article:section" content="Ressources Humaines"><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta property="og:image" content="https://www.sauvonslaproximite.com/blog/1267-marque-employeur-comment-attirer-les-meilleurs-talents/featured-65695.jpg"><meta property="article:published_time" content="2026-05-31 15:00:00+02:00">
+<meta property="article:modified_time" content="2026-06-01 14:59:29"><meta property="article:section" content="Ressources Humaines"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=sauvonslaproximite-com" rel="stylesheet">
 
 <script type="application/ld+json">
@@ -20,9 +20,9 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Marque employeur : comment attirer les meilleurs talents ?",
-  "description": "D\u00e9couvrez comment d\u00e9velopper une marque employeur attractive en comptabilit\u00e9 pour recruter les meilleurs talents. Conseils d\u0027expert, outils modernes et\u2026",
-  "datePublished": "2026-05-31T15:00:00+02:00",
-  "author": {
+  "description": "D\u00e9couvrez comment d\u00e9velopper une marque employeur attractive en",
+  "datePublished": "2026-05-31 15:00:00+02:00",
+"dateModified": "2026-06-01 14:59:29","image": "https://www.sauvonslaproximite.com/blog/1267-marque-employeur-comment-attirer-les-meilleurs-talents/featured-65695.jpg",  "author": {
     "@type": "Person",
     "name": "Marie Simon"
   },
@@ -235,6 +235,9 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </div>
   </header>
 
+  <div class="article-featured">
+    <img src="/blog/1267-marque-employeur-comment-attirer-les-meilleurs-talents/featured-65695.jpg" alt="Marque employeur : comment attirer les meilleurs talents ?" loading="eager">
+  </div>
 
   <nav class="article-toc" aria-label="Sommaire de l'article">
     <div class="article-toc-title">📑 Sommaire</div>
@@ -804,5 +807,99 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </div>
   </div>
 </footer>
+
+<button type="button"
+        class="scroll-top-btn"
+        id="scroll-top-btn"
+        aria-label="Remonter en haut de la page"
+        title="Remonter en haut">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2.5"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+</button>
+
+<style>
+.scroll-top-btn{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:9999;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--ink, #0F1419);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .15s;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+  padding:0;
+  font-family:inherit;
+}
+.scroll-top-btn.visible{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.scroll-top-btn:hover{
+  background:var(--accent, #C9A961);
+}
+.scroll-top-btn:focus-visible{
+  outline:2px solid var(--accent, #C9A961);
+  outline-offset:3px;
+}
+@media (max-width:600px){
+  .scroll-top-btn{ bottom:16px; right:16px; width:42px; height:42px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .scroll-top-btn{ transition:opacity .2s, visibility .2s; }
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  var btn = document.getElementById('scroll-top-btn');
+  if (!btn) return;
+
+  var THRESHOLD = 400; // px de scroll avant apparition
+  var ticking = false;
+
+  function update(){
+    if (window.scrollY > THRESHOLD) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+    ticking = false;
+  }
+
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  btn.addEventListener('click', function(){
+    var prefersReduced = window.matchMedia
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  });
+
+  // Check immédiat (au cas où la page est rechargée déjà scrollée)
+  update();
+})();
+</script>
 </body>
 </html>
