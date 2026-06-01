@@ -1,22 +1,37 @@
-{% extends "base/_layout.html.j2" %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% if site.favicon_file is defined and site.favicon_file %}
+<link rel="icon" href="{{ site.favicon_file }}">
+{% else %}
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{% endif %}
+<title>{{ outil.meta_title or outil.title or 'Simulateur salaire brut net' }}</title>
+<meta name="description" content="{{ outil.meta_description or 'Calculateur de salaire brut en net : horaire, mensuel, annuel selon votre statut (cadre, non-cadre, fonction publique, libéral, portage).' }}">
+<link rel="canonical" href="{{ site.domain }}/{{ outil.slug }}">
+<meta property="og:title" content="{{ outil.meta_title or outil.title }}">
+<meta property="og:description" content="{{ outil.meta_description }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.domain }}/{{ outil.slug }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">
 
-{% block title %}{{ outil.meta_title | default(outil.title | default('Simulateur salaire brut net')) }}{% endblock %}
-{% block description %}{{ outil.meta_description | default('Calculateur de salaire brut en net : horaire, mensuel, annuel selon votre statut (cadre, non-cadre, fonction publique, libéral, portage).') }}{% endblock %}
-
-{% block canonical %}<link rel="canonical" href="{{ site.domain }}/{{ outil.slug }}">{% endblock %}
-
-{% block schema_extra %}
+{# ─── Schema.org WebApplication ─── #}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": {{ (outil.title | default('Simulateur salaire brut net')) | tojson }},
+  "url": "{{ site.domain }}/{{ outil.slug }}",
   "applicationCategory": "FinanceApplication",
-  "operatingSystem": "Any (web)",
-  "url": {{ (site.domain ~ "/" ~ outil.slug) | tojson }},
+  "operatingSystem": "All",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
 }
 </script>
+
+{# ─── Schema.org FAQ ─── #}
 {% if outil.faq and outil.faq | length >= 2 %}
 <script type="application/ld+json">
 {
@@ -34,80 +49,79 @@
 }
 </script>
 {% endif %}
-{% endblock %}
 
-{% block extra_head %}
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
 :root{
+  --bg:{{ theme.bg | default('#FAF9F6') }};--surface:{{ theme.surface | default('#fff') }};--surface2:{{ theme.surface2 | default('#F5F3EE') }};
+  --ink:{{ theme.ink | default('#0F1419') }};--ink2:{{ theme.ink2 | default('#3D434B') }};--ink3:{{ theme.ink3 | default('#8B9CB0') }};
+  --accent:{{ theme.accent | default('#C9A961') }};--accent2:{{ theme.accent2 | default('#1E5F8B') }};
+  --green:{{ theme.green | default('#3D7A4F') }};--red:{{ theme.red | default('#C0392B') }};
+  --border:{{ theme.border | default('#E6E1D8') }};--r:10px;--r2:16px;
+  {% if theme.cta_color %}--cta:{{ theme.cta_color }};{% endif %}{% if theme.cta_text_color %}--cta-text:{{ theme.cta_text_color }};{% endif %}
   --calc-bg: var(--cta, #E55A5A);
   --calc-bg-dark: color-mix(in srgb, var(--calc-bg) 88%, #000);
-  --calc-text: #fff;
-  --calc-text-dim: rgba(255,255,255,.85);
-  --calc-input-bg: #fff;
-  --calc-input-text: #1A1A1A;
-  --calc-border: rgba(255,255,255,.3);
-  --calc-border-hover: rgba(255,255,255,.6);
 }
-.tool-hero{background:var(--bg);padding:60px 0 30px;border-bottom:1px solid #EAE9E4}
-.tool-hero-inner{max-width:1100px;margin:0 auto;padding:0 24px;text-align:center}
-.tool-hero-eyebrow{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--ink2);padding:6px 14px;border:1px solid #EAE9E4;border-radius:30px;margin-bottom:20px;background:#fff}
+body{font-family:'{{ theme.font_body }}',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+a{color:var(--accent2);text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:0 5vw}
+
+/* ─── Hero ─── */
+.tool-hero{background:var(--bg);padding:60px 0 30px;border-bottom:1px solid var(--border)}
+.tool-hero-inner{max-width:1100px;margin:0 auto;padding:0 5vw;text-align:center}
+.tool-hero-eyebrow{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--ink2);padding:6px 14px;border:1px solid var(--border);border-radius:30px;margin-bottom:20px;background:var(--surface)}
 .tool-hero h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4vw,42px);font-weight:400;color:var(--ink);margin:0 0 12px;line-height:1.2;letter-spacing:-.02em}
 .tool-hero-sub{color:var(--ink2);font-size:17px;max-width:680px;margin:0 auto;line-height:1.6}
-.container{max-width:1100px;margin:0 auto;padding:40px 24px 60px}
 
-/* ── Carte calculateur (fond couleur) ─────────────────────────── */
-.calc-card{background:var(--calc-bg);color:var(--calc-text);border-radius:14px;padding:36px 32px;box-shadow:0 8px 32px rgba(0,0,0,.08)}
+/* ─── Carte calculateur (fond couleur) ─── */
+.calc-wrap{max-width:1100px;margin:32px auto 0;padding:0 5vw}
+.calc-card{background:var(--calc-bg);color:#fff;border-radius:14px;padding:36px 32px;box-shadow:0 8px 32px rgba(0,0,0,.08)}
 .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
-@media (max-width:920px){
-  .calc-grid{grid-template-columns:1fr;gap:32px}
-  .calc-card{padding:24px 18px}
-}
+@media (max-width:920px){.calc-grid{grid-template-columns:1fr;gap:32px}.calc-card{padding:24px 18px}}
 .calc-col{display:flex;flex-direction:column;gap:28px;min-width:0}
 
-/* ── Section header (uppercase) ──────────────────────────────── */
-.calc-section-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin:0 0 14px;color:var(--calc-text);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+/* ─── Section header (uppercase) ─── */
+.calc-section-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin:0 0 14px;color:#fff;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .calc-section-title .value{font-weight:400;font-size:13px;letter-spacing:0;text-transform:none}
 .calc-section-title .badge{display:inline-block;background:var(--calc-bg-dark);color:#fff;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:500;text-transform:none;letter-spacing:0;white-space:nowrap}
 
-/* ── Champ input ─────────────────────────────────────────────── */
+/* ─── Champ input ─── */
 .calc-field{display:flex;flex-direction:column;gap:6px}
-.calc-field-label{font-size:13px;color:var(--calc-text-dim);font-weight:500;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.calc-input{width:100%;background:var(--calc-input-bg);color:var(--calc-input-text);border:1px solid transparent;border-radius:6px;padding:11px 14px;font-size:16px;font-weight:500;font-family:inherit;outline:none;transition:border-color .15s}
-.calc-input:focus{border-color:#fff}
+.calc-field-label{font-size:13px;color:rgba(255,255,255,.85);font-weight:500;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.calc-input{width:100%;background:#fff;color:#1A1A1A;border:1px solid transparent;border-radius:6px;padding:11px 14px;font-size:16px;font-weight:500;font-family:inherit;outline:none;transition:border-color .15s}
+.calc-input:focus{border-color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.4)}
 .calc-input[readonly]{cursor:not-allowed;color:#555}
 
-/* ── Section salaire (brut/net côte à côte) ──────────────────── */
+/* ─── Section salaire (brut/net côte à côte) ─── */
 .calc-salaire{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-@media (max-width:480px){
-  .calc-salaire{grid-template-columns:1fr;gap:12px}
-}
+@media (max-width:480px){.calc-salaire{grid-template-columns:1fr;gap:12px}}
 .calc-salaire .calc-fields-stack{display:flex;flex-direction:column;gap:14px}
 
-/* ── Radio cards horizontales ────────────────────────────────── */
+/* ─── Radio cards horizontales ─── */
 .calc-radios{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;background:transparent}
 @media (max-width:600px){.calc-radios{grid-template-columns:repeat(2,1fr)}}
-.calc-radio{position:relative;border:1px solid var(--calc-border);border-radius:8px;padding:14px 8px;text-align:center;cursor:pointer;background:transparent;transition:border-color .15s,background .15s;min-height:84px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:8px}
+.calc-radio{position:relative;border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:14px 8px;text-align:center;cursor:pointer;background:transparent;transition:border-color .15s,background .15s;min-height:84px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:8px}
 .calc-radio input{position:absolute;opacity:0;inset:0;cursor:pointer}
-.calc-radio:hover{border-color:var(--calc-border-hover)}
-.calc-radio-bullet{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--calc-border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.calc-radio input:checked + .calc-radio-bullet{background:#fff;border-color:#fff}
-.calc-radio input:checked + .calc-radio-bullet::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--calc-bg)}
-.calc-radio-label{font-size:13px;line-height:1.3;color:var(--calc-text);font-weight:500}
+.calc-radio:hover{border-color:rgba(255,255,255,.6)}
+.calc-radio-bullet{width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;background:transparent}
+.calc-radio input:checked ~ .calc-radio-bullet{background:#fff;border-color:#fff}
+.calc-radio input:checked ~ .calc-radio-bullet::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--calc-bg)}
+.calc-radio-label{font-size:13px;line-height:1.3;color:#fff;font-weight:500}
 
-/* ── Slider ──────────────────────────────────────────────────── */
-.calc-slider{-webkit-appearance:none;appearance:none;width:100%;height:6px;background:rgba(255,255,255,.3);border-radius:3px;outline:none}
+/* ─── Slider ─── */
+.calc-slider{-webkit-appearance:none;appearance:none;width:100%;height:6px;background:rgba(255,255,255,.3);border-radius:3px;outline:none;margin-top:6px}
 .calc-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:20px;height:32px;background:#fff;border:1px solid var(--calc-bg-dark);border-radius:4px;cursor:pointer}
 .calc-slider::-moz-range-thumb{width:20px;height:32px;background:#fff;border:1px solid var(--calc-bg-dark);border-radius:4px;cursor:pointer;border-style:solid}
 
-/* ── Estimation après impôts ─────────────────────────────────── */
+/* ─── Estimation après impôts ─── */
 .calc-pas-result{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media (max-width:480px){.calc-pas-result{grid-template-columns:1fr}}
 
-/* ── Bouton effacer ──────────────────────────────────────────── */
+/* ─── Bouton effacer ─── */
 .calc-reset{background:transparent;color:#fff;border:1px solid #fff;padding:9px 18px;border-radius:6px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;align-self:flex-start;transition:background .15s,color .15s}
 .calc-reset:hover{background:#fff;color:var(--calc-bg)}
 
-/* ── Contenu rédactionnel (sous la carte) ────────────────────── */
+/* ─── Contenu rédactionnel ─── */
 .tool-content{padding:40px 0 60px;max-width:760px;margin:0 auto}
 .tool-content h2{font-family:'{{ theme.font_title }}',serif;font-size:28px;font-weight:400;margin:40px 0 16px;color:var(--ink);line-height:1.3}
 .tool-content h2:first-child{margin-top:0}
@@ -116,37 +130,32 @@
 .tool-content ul,.tool-content ol{margin:8px 0 20px;padding-left:24px;color:var(--ink2)}
 .tool-content li{margin-bottom:8px;line-height:1.7}
 .tool-content strong{color:var(--ink);font-weight:600}
-
-/* Tableaux dans le contenu rédactionnel */
-.tool-content .table-wrap{overflow-x:auto;margin:24px 0;border-radius:10px;border:1px solid #E5E7EB}
-.tool-content table{width:100%;border-collapse:collapse;font-size:15px;background:#fff}
-.tool-content thead{background:#F3F4F6}
-.tool-content thead th{text-align:left;padding:14px 18px;font-weight:600;color:var(--ink);font-size:14px;border-bottom:2px solid #E5E7EB;white-space:nowrap}
-.tool-content thead th:not(:last-child){border-right:1px solid #E5E7EB}
-.tool-content tbody td{padding:12px 18px;color:var(--ink);border-bottom:1px solid #F0F0F0;vertical-align:top}
-.tool-content tbody td:not(:last-child){border-right:1px solid #F0F0F0}
-.tool-content tbody tr:nth-child(even){background:#FAFBFC}
-.tool-content tbody tr:hover{background:#F5F7FA}
+.tool-content .table-wrap{overflow-x:auto;margin:24px 0;border-radius:10px;border:1px solid var(--border)}
+.tool-content table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface)}
+.tool-content thead{background:var(--surface2)}
+.tool-content thead th{text-align:left;padding:14px 18px;font-weight:600;color:var(--ink);font-size:14px;border-bottom:2px solid var(--border);white-space:nowrap}
+.tool-content thead th:not(:last-child){border-right:1px solid var(--border)}
+.tool-content tbody td{padding:12px 18px;color:var(--ink);border-bottom:1px solid var(--border);vertical-align:top}
+.tool-content tbody td:not(:last-child){border-right:1px solid var(--border)}
+.tool-content tbody tr:nth-child(even){background:var(--surface2)}
+.tool-content tbody tr:hover{background:var(--surface2)}
 .tool-content tbody tr:last-child td{border-bottom:none}
-.tool-content table caption{caption-side:top;padding:12px 18px;font-weight:600;color:var(--ink);text-align:left;background:#F9FAFB;border-bottom:1px solid #E5E7EB}
-@media (max-width:680px){
-  .tool-content table{font-size:14px}
-  .tool-content thead th,.tool-content tbody td{padding:10px 12px}
-}
+@media (max-width:680px){.tool-content table{font-size:14px}.tool-content thead th,.tool-content tbody td{padding:10px 12px}}
 
-/* ── FAQ ─────────────────────────────────────────────────────── */
-.faq-section{max-width:760px;margin:0 auto 60px;padding:0}
+/* ─── FAQ ─── */
+.faq-section{max-width:760px;margin:0 auto 60px;padding:0 5vw}
 .faq-section h2{font-family:'{{ theme.font_title }}',serif;font-size:32px;font-weight:400;margin:0 0 24px;color:var(--ink);text-align:center}
-.faq-item{border-bottom:1px solid #EAE9E4;padding:20px 0}
+.faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-weight:600;color:var(--ink);margin:0 0 10px;font-size:17px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .faq-q::after{content:"+";font-size:24px;font-weight:300;color:var(--ink2);transition:transform .2s}
 .faq-item.open .faq-q::after{transform:rotate(45deg)}
 .faq-r{color:var(--ink2);line-height:1.7;display:none;margin-top:10px}
 .faq-item.open .faq-r{display:block}
-</style>
-{% endblock %}
+</style></style>
+</head>
+<body>
 
-{% block content %}
+{% include "base/_nav.html.j2" %}
 
 <header class="tool-hero">
   <div class="tool-hero-inner">
@@ -156,15 +165,12 @@
   </div>
 </header>
 
-<main class="container">
-
+<div class="calc-wrap">
   <div class="calc-card">
     <div class="calc-grid">
 
-      {# ─────── COLONNE 1 ─────── #}
+      {# ─── COLONNE 1 ─── #}
       <div class="calc-col">
-
-        {# Section Salaire brut/net en 2 sous-colonnes #}
         <div>
           <div class="calc-salaire">
             <div>
@@ -207,7 +213,6 @@
           </div>
         </div>
 
-        {# Section Statut #}
         <div>
           <div class="calc-section-title">SÉLECTIONNEZ VOTRE STATUT :</div>
           <div class="calc-radios" id="statut-group">
@@ -238,13 +243,11 @@
             </label>
           </div>
         </div>
-
       </div>
 
-      {# ─────── COLONNE 2 ─────── #}
+      {# ─── COLONNE 2 ─── #}
       <div class="calc-col">
 
-        {# Temps de travail #}
         <div>
           <div class="calc-section-title">
             SÉLECTIONNEZ VOTRE TEMPS DE TRAVAIL :
@@ -253,7 +256,6 @@
           <input type="range" id="temps-slider" class="calc-slider" min="50" max="100" step="1" value="100">
         </div>
 
-        {# Nombre de mois #}
         <div>
           <div class="calc-section-title">SÉLECTIONNEZ LE NOMBRE DE MOIS DE PRIME CONVENTIONNELLE:</div>
           <div class="calc-radios" id="mois-group">
@@ -285,7 +287,6 @@
           </div>
         </div>
 
-        {# PAS slider #}
         <div>
           <div class="calc-section-title">
             SÉLECTIONNEZ LE TAUX DE PRÉLÈVEMENT À LA SOURCE :
@@ -294,7 +295,6 @@
           <input type="range" id="pas-slider" class="calc-slider" min="0" max="25" step="0.1" value="0">
         </div>
 
-        {# Estimation net après impôts #}
         <div>
           <div class="calc-section-title">ESTIMATION DE VOTRE SALAIRE NET APRÈS LE PRÉLÈVEMENT À LA SOURCE</div>
           <div class="calc-pas-result">
@@ -315,37 +315,36 @@
 
     </div>
   </div>
+</div>
 
-  {# ─── Contenu rédactionnel ─── #}
-  {% if outil.contenu_genere %}
-  <section class="tool-content">
+{# ─── Contenu rédactionnel ─── #}
+{% if outil.contenu_genere %}
+<section class="container">
+  <div class="tool-content">
     {{ outil.contenu_genere | safe }}
-  </section>
-  {% endif %}
+  </div>
+</section>
+{% endif %}
 
-  {# ─── FAQ ─── #}
-  {% if outil.faq and outil.faq | length > 0 %}
-  <section class="faq-section">
-    <h2>Foire aux questions</h2>
-    {% for item in outil.faq %}
-    <div class="faq-item">
-      <div class="faq-q">{{ item.question | default('') }}</div>
-      <div class="faq-r">{{ item.answer | default('') }}</div>
-    </div>
-    {% endfor %}
-  </section>
-  {% endif %}
+{# ─── FAQ ─── #}
+{% if outil.faq and outil.faq | length > 0 %}
+<section class="faq-section">
+  <h2>Foire aux questions</h2>
+  {% for item in outil.faq %}
+  <div class="faq-item">
+    <div class="faq-q">{{ item.question | default('') }}</div>
+    <div class="faq-r">{{ item.answer | default('') }}</div>
+  </div>
+  {% endfor %}
+</section>
+{% endif %}
 
-</main>
+{% include "base/_footer.html.j2" ignore missing %}
 
 <script>
 (function(){
   'use strict';
-
-  // ── Constantes ───────────────────────────────────────────────
-  const HEURES_MENSUELLES = 151.67; // 35h × 52/12
-
-  // ── Récupération des éléments ────────────────────────────────
+  const HEURES_MENSUELLES = 151.67;
   const $ = sel => document.querySelector(sel);
   const $$ = sel => Array.from(document.querySelectorAll(sel));
 
@@ -366,51 +365,36 @@
     resetBtn: $('#reset-btn'),
   };
 
-  // ── Helpers de formatage ─────────────────────────────────────
   function fmt(n){
     if (!isFinite(n) || n <= 0) return '';
     return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
   }
 
-  // ── État interne (mensuel brut comme valeur pivot) ───────────
   let mensuelBrut = 0;
-  let lastEditedField = null; // 'horaire' | 'mensuel' | 'annuel' | null
+  let lastEditedField = null;
 
   function getStatut(){
-    const checked = document.querySelector('input[name="statut"]:checked');
-    if (!checked) return { value: 'non-cadre', label: 'Non-cadre', taux: 22 };
-    return {
-      value: checked.value,
-      label: checked.dataset.label,
-      taux: parseFloat(checked.dataset.taux),
-    };
+    const c = document.querySelector('input[name="statut"]:checked');
+    if (!c) return { value: 'non-cadre', label: 'Non-cadre', taux: 22 };
+    return { value: c.value, label: c.dataset.label, taux: parseFloat(c.dataset.taux) };
   }
-
   function getMois(){
-    const checked = document.querySelector('input[name="mois"]:checked');
-    return checked ? parseInt(checked.value, 10) : 12;
+    const c = document.querySelector('input[name="mois"]:checked');
+    return c ? parseInt(c.value, 10) : 12;
   }
+  function getTemps(){ return parseFloat(inputs.tempsSlider.value); }
+  function getPas(){ return parseFloat(inputs.pasSlider.value); }
 
-  function getTemps(){ return parseFloat(inputs.tempsSlider.value); } // 50..100
-  function getPas(){ return parseFloat(inputs.pasSlider.value); } // 0..25
-
-  // ── Mise à jour des champs depuis mensuelBrut ────────────────
   function recompute(){
     const statut = getStatut();
     const mois = getMois();
-    const temps = getTemps(); // % (ne sert PAS à recalculer brut→net, juste à afficher).
-                              // Note : on considère que les valeurs saisies sont déjà
-                              // au prorata du temps de travail effectif (l'utilisateur
-                              // tape son brut réel). Le slider temps est cosmétique
-                              // ici, pour cohérence avec la maquette.
+    const temps = getTemps();
     const pas = getPas();
     const tauxCharges = statut.taux / 100;
     const facteurTemps = temps / 100;
 
-    // Badge dynamique
-    inputs.tauxBadge.textContent = `${statut.label} -${statut.taux}%`;
+    inputs.tauxBadge.textContent = statut.label + ' -' + statut.taux + '%';
 
-    // ── Synchronisation des 3 champs brut depuis lastEditedField ─
     const horaireV = parseFloat(inputs.horaireBrut.value) || 0;
     const mensuelV = parseFloat(inputs.mensuelBrut.value) || 0;
     const annuelV = parseFloat(inputs.annuelBrut.value) || 0;
@@ -428,14 +412,12 @@
       inputs.mensuelBrut.value = mensuelBrut.toFixed(2);
       inputs.horaireBrut.value = (mensuelBrut / HEURES_MENSUELLES / facteurTemps).toFixed(2);
     } else if (!lastEditedField) {
-      // Aucun champ édité encore : on déduit de ce qu'il y a
       if (mensuelV > 0) mensuelBrut = mensuelV;
       else if (horaireV > 0) mensuelBrut = horaireV * HEURES_MENSUELLES * facteurTemps;
       else if (annuelV > 0) mensuelBrut = annuelV / mois;
       else mensuelBrut = 0;
     }
 
-    // ── Calcul du net ────────────────────────────────────────
     const horaireBrutNum = parseFloat(inputs.horaireBrut.value) || 0;
     const horaireNet = horaireBrutNum * (1 - tauxCharges);
     const mensuelNet = mensuelBrut * (1 - tauxCharges);
@@ -444,31 +426,28 @@
     inputs.mensuelNet.value = fmt(mensuelNet);
     inputs.annuelNet.value = fmt(annuelNet);
 
-    // ── Net après prélèvement à la source ─────────────────────
     const facteurPas = 1 - (pas / 100);
     inputs.mensuelNetPas.value = fmt(mensuelNet * facteurPas);
     inputs.annuelNetPas.value = fmt(annuelNet * facteurPas);
   }
 
-  // ── Listeners ────────────────────────────────────────────────
-  inputs.horaireBrut.addEventListener('input', () => { lastEditedField = 'horaire'; recompute(); });
-  inputs.mensuelBrut.addEventListener('input', () => { lastEditedField = 'mensuel'; recompute(); });
-  inputs.annuelBrut.addEventListener('input', () => { lastEditedField = 'annuel'; recompute(); });
+  inputs.horaireBrut.addEventListener('input', function(){ lastEditedField = 'horaire'; recompute(); });
+  inputs.mensuelBrut.addEventListener('input', function(){ lastEditedField = 'mensuel'; recompute(); });
+  inputs.annuelBrut.addEventListener('input', function(){ lastEditedField = 'annuel'; recompute(); });
 
-  inputs.tempsSlider.addEventListener('input', () => {
+  inputs.tempsSlider.addEventListener('input', function(){
     inputs.tempsValue.textContent = inputs.tempsSlider.value + ' %';
     recompute();
   });
-
-  inputs.pasSlider.addEventListener('input', () => {
+  inputs.pasSlider.addEventListener('input', function(){
     inputs.pasValue.textContent = parseFloat(inputs.pasSlider.value).toFixed(1) + ' %';
     recompute();
   });
 
-  $$('input[name="statut"]').forEach(r => r.addEventListener('change', recompute));
-  $$('input[name="mois"]').forEach(r => r.addEventListener('change', recompute));
+  $$('input[name="statut"]').forEach(function(r){ r.addEventListener('change', recompute); });
+  $$('input[name="mois"]').forEach(function(r){ r.addEventListener('change', recompute); });
 
-  inputs.resetBtn.addEventListener('click', () => {
+  inputs.resetBtn.addEventListener('click', function(){
     inputs.horaireBrut.value = '';
     inputs.mensuelBrut.value = '';
     inputs.annuelBrut.value = '';
@@ -488,15 +467,13 @@
     recompute();
   });
 
-  // FAQ : accordéon
-  $$('.faq-item .faq-q').forEach(q => {
-    q.addEventListener('click', () => {
-      q.parentElement.classList.toggle('open');
-    });
+  $$('.faq-item .faq-q').forEach(function(q){
+    q.addEventListener('click', function(){ q.parentElement.classList.toggle('open'); });
   });
 
-  // Init
   recompute();
 })();
 </script>
-{% endblock %}
+
+</body>
+</html>
