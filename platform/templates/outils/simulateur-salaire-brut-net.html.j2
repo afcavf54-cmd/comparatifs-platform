@@ -67,11 +67,9 @@ a{color:var(--accent2);text-decoration:none}
 .container{max-width:1200px;margin:0 auto;padding:0 5vw}
 
 /* ─── Hero ─── */
-.tool-hero{background:var(--bg);padding:60px 0 30px;border-bottom:1px solid var(--border)}
+.tool-hero{background:var(--bg);padding:50px 0 20px;text-align:center}
 .tool-hero-inner{max-width:1100px;margin:0 auto;padding:0 5vw;text-align:center}
-.tool-hero-eyebrow{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--ink2);padding:6px 14px;border:1px solid var(--border);border-radius:30px;margin-bottom:20px;background:var(--surface)}
 .tool-hero h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4vw,42px);font-weight:400;color:var(--ink);margin:0 0 12px;line-height:1.2;letter-spacing:-.02em}
-.tool-hero-sub{color:var(--ink2);font-size:17px;max-width:680px;margin:0 auto;line-height:1.6}
 
 /* ─── Carte calculateur (fond couleur) ─── */
 .calc-wrap{max-width:1100px;margin:32px auto 0;padding:0 5vw}
@@ -159,9 +157,7 @@ a{color:var(--accent2);text-decoration:none}
 
 <header class="tool-hero">
   <div class="tool-hero-inner">
-    <div class="tool-hero-eyebrow">💰 Outil gratuit</div>
     <h1>{{ outil.h1 | default(outil.title | default('Simulateur salaire brut net')) }}</h1>
-    <p class="tool-hero-sub">{{ outil.subtitle | default('Calculez votre salaire net à partir de votre brut selon votre statut, votre temps de travail et le nombre de mois de rémunération.') }}</p>
   </div>
 </header>
 
