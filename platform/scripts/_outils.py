@@ -79,6 +79,103 @@ def slugify(s: str) -> str:
 
 
 
+def normalize_table_html(html: str) -> str:
+    """Normalise les <table> dans le HTML rédactionnel pour qu'ils soient
+    bien stylés par le CSS du template :
+      1. Si une <table> n'est pas déjà dans un <div class="table-wrap">,
+         on l'enveloppe (pour le scroll horizontal sur mobile).
+      2. Si une <table> n'a pas de <thead>, on essaie de promouvoir la
+         première <tr> qui contient des <th>, ou la première <tr> tout
+         court (en convertissant ses <td> en <th>).
+
+    Cette fonction est conservatrice : elle ne touche pas si le HTML est
+    déjà correctement structuré. Idempotente.
+    """
+    if not html or "<table" not in html.lower():
+        return html
+
+    import re as _re_t
+
+    # ── Étape 1 : envelopper les <table> orphelines dans <div class="table-wrap">
+    # On détecte les <table> qui ne sont pas déjà dans un <div class="table-wrap">.
+    # Heuristique simple : on cherche les `<table` qui ne sont pas immédiatement
+    # précédés (dans les 50 derniers caractères) d'un `class="table-wrap"`.
+    def wrap_table(match):
+        before = html[max(0, match.start() - 80):match.start()]
+        if "table-wrap" in before:
+            return match.group(0)
+        # On enveloppe : on insère le div avant la table, et on devra fermer
+        # le div après le </table>. Comme regex de remplacement c'est trop
+        # complexe, on fait une passe plus simple ci-dessous.
+        return match.group(0)
+
+    # Approche plus simple : on extrait chaque <table>...</table> entier,
+    # on vérifie si déjà wrappé, sinon on wrappe.
+    def wrap_unwrapped_tables(html_in: str) -> str:
+        out = []
+        pos = 0
+        for m in _re_t.finditer(r"<table\b[^>]*>.*?</table>", html_in, flags=_re_t.IGNORECASE | _re_t.DOTALL):
+            out.append(html_in[pos:m.start()])
+            # Regarde les 100 caractères avant pour détecter un wrap existant
+            before_window = html_in[max(0, m.start() - 100):m.start()]
+            if 'class="table-wrap"' in before_window or "class='table-wrap'" in before_window:
+                # Déjà wrappé, on garde tel quel
+                out.append(m.group(0))
+            else:
+                out.append('<div class="table-wrap">')
+                out.append(m.group(0))
+                out.append('</div>')
+            pos = m.end()
+        out.append(html_in[pos:])
+        return "".join(out)
+
+    html = wrap_unwrapped_tables(html)
+
+    # ── Étape 2 : promouvoir les <table> sans <thead>
+    # Si une table n'a pas de <thead>, on regarde sa première <tr> :
+    #   - Si elle contient déjà des <th> : on l'enveloppe dans <thead>
+    #   - Sinon : on convertit ses <td> en <th> et on l'enveloppe dans <thead>
+    def promote_first_row(table_match):
+        table_html = table_match.group(0)
+        # Si déjà un <thead>, on ne touche pas
+        if _re_t.search(r"<thead\b", table_html, _re_t.IGNORECASE):
+            return table_html
+        # Cherche la première <tr>
+        tr_match = _re_t.search(r"<tr\b[^>]*>.*?</tr>", table_html, _re_t.IGNORECASE | _re_t.DOTALL)
+        if not tr_match:
+            return table_html
+        first_tr = tr_match.group(0)
+        # Si la <tr> contient déjà des <th>, on l'enveloppe juste dans <thead>
+        if _re_t.search(r"<th\b", first_tr, _re_t.IGNORECASE):
+            new_first = "<thead>" + first_tr + "</thead>"
+        else:
+            # Convertit les <td> de cette première ligne en <th>
+            new_first = first_tr
+            new_first = _re_t.sub(r"<td\b", "<th", new_first, flags=_re_t.IGNORECASE)
+            new_first = _re_t.sub(r"</td>", "</th>", new_first, flags=_re_t.IGNORECASE)
+            new_first = "<thead>" + new_first + "</thead>"
+        # Remplace la première <tr> dans la table par le bloc <thead> + le reste
+        # On wrappe aussi les <tr> restantes dans <tbody> si pas déjà fait
+        rest = table_html[tr_match.end():]
+        rest_before_close = _re_t.sub(r"</table>\s*$", "", rest, flags=_re_t.IGNORECASE)
+        closing_match = _re_t.search(r"</table>\s*$", rest, _re_t.IGNORECASE)
+        closing = closing_match.group(0) if closing_match else "</table>"
+        # On wrappe les <tr> restantes dans <tbody> si elles existent et pas déjà wrappées
+        if "<tr" in rest_before_close.lower() and "<tbody" not in rest_before_close.lower():
+            rest_before_close = "<tbody>" + rest_before_close + "</tbody>"
+        opening = table_html[:tr_match.start()]
+        return opening + new_first + rest_before_close + closing
+
+    html = _re_t.sub(
+        r"<table\b[^>]*>.*?</table>",
+        promote_first_row,
+        html,
+        flags=_re_t.IGNORECASE | _re_t.DOTALL,
+    )
+
+    return html
+
+
 def substitute_template_vars(obj, vars_map: dict):
     """Substitue récursivement les placeholders {var} dans tous les strings
     d'une structure (dict, list, str). Utile pour permettre à l'utilisateur
@@ -322,6 +419,13 @@ def main(site_slug: str) -> int:
         # de l'outil. L'utilisateur peut écrire `{year}` dans le H1, title,
         # meta, FAQ, contenu généré — c'est remplacé ici au build.
         outil_data = substitute_template_vars(outil_data, {"year": env.globals["year"]})
+
+        # Normaliser les <table> du contenu rédactionnel pour qu'ils
+        # héritent du styling CSS du template (table-wrap, thead, tbody).
+        # Si l'IA a généré un <table> nu, on l'enveloppe et on promeut la
+        # première ligne en <thead>. Idempotent sur les tables déjà correctes.
+        if outil_data.get("contenu_genere"):
+            outil_data["contenu_genere"] = normalize_table_html(outil_data["contenu_genere"])
 
         # Rendu
         try:
