@@ -11,6 +11,8 @@ min_words: 1000
 status: published
 related_posts:
 - 1405-pourquoi-choisir-quickbill-advanced-pour-votre-facturation
+- 1814-prix-du-logiciel-invoicemaster-evolution-analyse-detaillee
+- 5227-pourquoi-choisir-quickbill-advanced-pour-votre-facturation
 ---
 <h2>InvoiceMaster Evolution : mon verdict après 6 mois d'utilisation</h2>
 
