@@ -1,10 +1,10 @@
 ---
-title: "Créer un produit : guide pratique pour concevoir et commercialiser votre offre"
+title: 'Créer un produit : guide pratique pour concevoir et commercialiser votre offre'
 slug: 9434-creer-un-produit-guide-pratique-pour-concevoir-et-commercialiser-votre-offre
-date: 2026-06-01T09:00:00+02:00
-updated: 2026-06-01T14:46:57
+date: 2026-06-01 09:00:00+02:00
+updated: 2026-06-01 14:46:57
 categorie: Création entreprise
-meta_title: "Créer un produit : méthode complète de la conception à la vente"
+meta_title: 'Créer un produit : méthode complète de la conception à la vente'
 meta_description: Découvrez comment créer un produit qui répond à un vrai besoin client.
 featured_image: /blog/9434-creer-un-produit-guide-pratique-pour-concevoir-et-commercialiser-votre-offre/featured-12753.jpg
 status: published
@@ -12,8 +12,8 @@ min_words: 1800
 link_anchors:
 - text: créer un produit
   max: 4
+related_posts: []
 ---
-
 <h2>L'idée de produit : partir du bon pied</h2>
 
 <p>Je vais être franc. Créer un produit sans méthode, c'est comme naviguer sans boussole. Après avoir accompagné plusieurs entrepreneurs dans le lancement de leurs offres, j'ai vu trop d'échecs évitables. Des produits géniaux sur le papier qui ne trouvent jamais leur marché. Des innovations techniques impressionnantes mais que personne n'achète.</p>
