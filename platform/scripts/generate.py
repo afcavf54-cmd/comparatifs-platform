@@ -179,6 +179,33 @@ def cast(val: str):
     return val
 
 
+# ── Substitution de placeholders {var} dans n'importe quel contenu ──────────
+# Permet à l'utilisateur d'écrire `{year}` (ou `{site_name}`, etc.) dans
+# n'importe quel champ de frontmatter de blog post / fichier d'avis / éditorial
+# de classement, et que ce soit remplacé au moment du rendu.
+#
+# Utilisé par :
+#   - Boucle blog posts        (substituer {year} dans titre, meta, content, FAQ…)
+#   - Boucle avis posts        (substituer {year} dans h1, en_bref, sections_html…)
+#   - Boucle classements       (en complément du _sub_vars local qui gère aussi
+#                                {categorie}, {Categorie}, {count}, etc.)
+def substitute_template_vars(obj, vars_map: dict):
+    """Substitue récursivement les placeholders {var} dans tous les strings
+    d'une structure (dict, list, str). Renvoie un nouvel objet (les inputs
+    list/dict ne sont PAS mutés).
+    """
+    if isinstance(obj, str):
+        out = obj
+        for key, val in vars_map.items():
+            out = out.replace("{" + key + "}", str(val))
+        return out
+    if isinstance(obj, dict):
+        return {k: substitute_template_vars(v, vars_map) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [substitute_template_vars(item, vars_map) for item in obj]
+    return obj
+
+
 # ── Chargement Sheet CSV ───────────────────────────────────────────────────────
 STRING_FIELDS = {
     'geo', 'secteurs', 'pays', 'investissement_min', 'tri_horizon',
@@ -646,12 +673,12 @@ def _post_process_dates_tracking(output_dir: Path, site_dir: Path,
 
 # ── Générateur principal ───────────────────────────────────────────────────────
 def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = None) -> None:
-    # ⚠⚠⚠ DEBUG MARKER v11 — au TOUT DÉBUT de generate_site ⚠⚠⚠
+    # ⚠⚠⚠ DEBUG MARKER v12 — au TOUT DÉBUT de generate_site ⚠⚠⚠
     # Si tu vois cette ligne dans le log : v11 est bien exécuté, on peut
     # creuser le reste. Si tu ne la vois PAS : le fichier exécuté n'est
     # PAS v11 (problème de checkout/cache GitHub Actions).
     import sys as _sys
-    print(f"  🟢 DEBUG v11 ENTRÉE generate_site : site_slug={site_slug}", flush=True)
+    print(f"  🟢 DEBUG v12 ENTRÉE generate_site : site_slug={site_slug}", flush=True)
     _sys.stdout.flush()
 
     site_dir = SITES_DIR / site_slug
@@ -744,6 +771,16 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     criteria      = config.get("criteria", [])
 
     print(f"\n🚀 Génération site : {site_slug}")
+
+    # ── Variables globales du site (utilisées pour la substitution de
+    # placeholders {year}, {site_name}, etc. dans tous les contenus rendus
+    # par ce build). Calculées ici une seule fois pour rester cohérentes
+    # entre tous les rendus (blog, avis, classements, comparatifs).
+    _site_year = str(site.get("year", date.today().year))
+    _global_vars = {
+        "year": _site_year,
+        "site_name": site.get("name", ""),
+    }
 
     # Chargement produits
     sheet_url = site.get("sheet_csv_url", "")
@@ -929,7 +966,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         generated += 1
 
     if not dry_run:
-        print(f"  🟢 DEBUG v11 ENTRÉE bloc 'if not dry_run' (ligne ~923)", flush=True)
+        print(f"  🟢 DEBUG v12 ENTRÉE bloc 'if not dry_run' (ligne ~923)", flush=True)
         generate_sitemap(site, all_pairs, products, output_dir, site_dir=site_dir, config=config)
         # ── Blog : chargement des articles avant le cleanup ──────────────
         # On marque les pages attendues du blog pour qu'elles ne soient pas
@@ -1046,7 +1083,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 _avis_protected.add(f"{_md.stem}.html")
         _protected = (blog_expected or set()) | _avis_protected
         cleanup_removed_products(output_dir, site_dir, products, all_pairs, is_classement_template, blog_expected=_protected)
-        print(f"  🟢 DEBUG v11 APRÈS cleanup, avant la suite (is_classement_template={is_classement_template})", flush=True)
+        print(f"  🟢 DEBUG v12 APRÈS cleanup, avant la suite (is_classement_template={is_classement_template})", flush=True)
 
         # ── Détection précoce des avis ────────────────────────────────────
         # On set `site["has_avis"] = True` AVANT la génération des autres
@@ -1201,7 +1238,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         # que v10 est bien déployé et que le code arrive jusqu'ici. Si tu ne
         # la vois pas, c'est qu'un truc plus haut a sauté tout ce bloc OU
         # que v10 n'a pas été push. À RETIRER une fois le bug compris.
-        print(f"  🟡 DEBUG v10 : entrée bloc Home, output_dir={output_dir}, exists={output_dir.exists()}")
+        print(f"  🟡 DEBUG v12 : entrée bloc Home, output_dir={output_dir}, exists={output_dir.exists()}")
         # ── Pré-écriture d'un placeholder index.html garantie ────────────
         # On écrit TOUJOURS un placeholder avant la tentative de render réel
         # du template index. Si le template existe et le render réussit, son
@@ -1574,6 +1611,17 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 if cat_editorial.get("contenu_custom"):
                     cat_editorial = dict(cat_editorial)
                     cat_editorial["contenu_custom"] = md_to_html(cat_editorial["contenu_custom"])
+
+                # ── Substitution finale {year} sur les produits enrichis ──
+                # Le _sub_vars ci-dessus traite cat_editorial. Mais les
+                # produits enrichis (description manuelle, points forts/faibles)
+                # peuvent aussi contenir des `{year}` saisis manuellement par
+                # l'utilisateur ou générés par l'IA. On les substitue ici.
+                enriched_products = substitute_template_vars(
+                    enriched_products,
+                    {"year": _site_year}
+                )
+
                 # Trier les produits : ordre manuel si défini, sinon par note
                 order_map = cat_editorial.get("products_order", {})
                 def sort_key(p):
@@ -1784,11 +1832,19 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 for rp in related:
                     if 'excerpt' not in rp:
                         rp['excerpt'] = blog_engine.excerpt_from_md(rp.get('content_md', ''), 90)
+                # ── Substitution {year} dans tout le post et ses related ──
+                # Permet à l'utilisateur d'écrire `{year}` dans le titre, le
+                # H1, la meta, le contenu, la FAQ etc. au moment d'éditer ses
+                # .md, et que ce soit remplacé par 2026 au moment du rendu.
+                # Important : on opère sur des COPIES pour ne pas muter les
+                # objets blog_posts utilisés ailleurs (sitemap, related).
+                post_rendered = substitute_template_vars(post, _global_vars)
+                related_rendered = substitute_template_vars(related, _global_vars)
                 html = tpl_post.render(
                     site={**site, "seo": _seo}, theme=theme,
                     page_types=config.get("page_types", {}),
                     build_date=date.today().isoformat(),
-                    post=post, related_posts=related,
+                    post=post_rendered, related_posts=related_rendered,
                     blog_categories=blog_categories,
                     all_posts=blog_posts,
                 )
@@ -1930,14 +1986,24 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
             _stripped = _re_avis.sub(r"<[^>]+>", " ", _total_text)
             _words = len([w for w in _stripped.split() if w.strip()])
             post["reading_time"] = max(1, round(_words / 200))
+
+            # ── Substitution {year} dans tout le post d'avis ──────────────
+            # Permet à l'utilisateur d'écrire `{year}` dans le H1, en_bref,
+            # sections_html, verdict, FAQ etc. du frontmatter .md, et que
+            # ce soit remplacé par 2026 au moment du rendu.
+            # Opère sur une COPIE pour ne pas muter l'avis (utilisé ailleurs
+            # pour all_avis et pour les pages catégorie).
+            post_rendered = substitute_template_vars(post, _global_vars)
+            all_avis_rendered = substitute_template_vars(avis_posts, _global_vars)
+
             try:
                 html = tpl_avis.render(
                     site={**site, "seo": _seo}, theme=theme,
                     page_types=config.get("page_types", {}),
                     build_date=date.today().isoformat(),
-                    post=post,
+                    post=post_rendered,
                     avis_categories=avis_categories,
-                    all_avis=avis_posts,
+                    all_avis=all_avis_rendered,
                 )
             except Exception as e:
                 # Log détaillé pour identifier la cause exacte (type d'erreur,
