@@ -135,6 +135,24 @@ a{color:var(--accent2);text-decoration:none}
 .tool-content ul,.tool-content ol{margin:8px 0 20px;padding-left:24px;color:var(--ink2)}
 .tool-content li{margin-bottom:8px;line-height:1.7}
 .tool-content strong{color:var(--ink);font-weight:600}
+/* Tableaux dans le contenu rédactionnel */
+.tool-content .table-wrap{overflow-x:auto;margin:24px 0;border-radius:10px;border:1px solid #E5E7EB}
+.tool-content table{width:100%;border-collapse:collapse;font-size:15px;background:#fff}
+.tool-content thead{background:#F3F4F6}
+.tool-content thead th{text-align:left;padding:14px 18px;font-weight:600;color:var(--ink);font-size:14px;text-transform:none;letter-spacing:0;border-bottom:2px solid #E5E7EB;white-space:nowrap}
+.tool-content thead th:not(:last-child){border-right:1px solid #E5E7EB}
+.tool-content tbody td{padding:12px 18px;color:var(--ink);border-bottom:1px solid #F0F0F0;vertical-align:top}
+.tool-content tbody td:not(:last-child){border-right:1px solid #F0F0F0}
+.tool-content tbody tr:nth-child(even){background:#FAFBFC}
+.tool-content tbody tr:hover{background:#F5F7FA}
+.tool-content tbody tr:last-child td{border-bottom:none}
+.tool-content table caption{caption-side:top;padding:12px 18px;font-weight:600;color:var(--ink);text-align:left;background:#F9FAFB;border-bottom:1px solid #E5E7EB}
+/* Wrapper auto pour les tableaux nus (responsive scroll horizontal) */
+.tool-content > table{display:block;overflow-x:auto;max-width:100%}
+@media (max-width:680px){
+  .tool-content table{font-size:14px}
+  .tool-content thead th,.tool-content tbody td{padding:10px 12px}
+}
 
 /* ─── FAQ ─── */
 .faq-section{padding:20px 0 60px;max-width:760px;margin:0 auto}
