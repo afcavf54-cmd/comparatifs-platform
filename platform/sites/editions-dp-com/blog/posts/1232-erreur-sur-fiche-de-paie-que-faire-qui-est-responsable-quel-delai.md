@@ -1,24 +1,24 @@
 ---
-title: 'Erreur sur fiche de paie : que faire, qui est responsable, quel délai ?'
+title: "Erreur sur fiche de paie : que faire, qui est responsable, quel délai ?"
 slug: 1232-erreur-sur-fiche-de-paie-que-faire-qui-est-responsable-quel-delai
-date: '2026-05-27T16:00:00+02:00'
+date: 2026-05-27T16:00:00+02:00
+updated: 2026-06-01T13:08:11
 categorie: Ressources Humaines
-meta_title: 'Erreur sur fiche de paie : quels recours et délais pour l''employeur
-  et le salarié ?'
-meta_description: 'Découvrez comment réagir face à une erreur sur fiche de paie :
-  responsabilités légales, délais de correction et procédures à suivre pour les employeurs
-  et salariés.'
-min_words: 3000
+meta_title: "Erreur sur fiche de paie : quels recours et délais pour l'employeur et le salarié ?"
+meta_description: "Découvrez comment réagir face à une erreur sur fiche de paie : responsabilités légales, délais de correction et procédures à suivre pour les employeurs et salariés."
+featured_image: /blog/1232-erreur-sur-fiche-de-paie-que-faire-qui-est-responsable-quel-delai/featured-87162.jpg
 status: published
-link_anchors:
-- text: erreur sur fiche de paie
-  max: 2
+min_words: 3000
 related_posts:
 - 1501-bulletin-de-paie-dematerialise-obligations-legales-et-mise-en-uvre
 - 2742-le-talent-management-comment-developper-les-talents-en-entreprise
 - 6829-fiche-de-paie-en-ligne-acces-lecture-et-decryptage
 - 3345-comment-choisir-un-logiciel-gepp-pour-votre-entreprise
+link_anchors:
+- text: erreur sur fiche de paie
+  max: 2
 ---
+
 <h2>Les erreurs de paie : un casse-tête fréquent dans les TPE</h2>
 
 <p>Quand je découvre une erreur sur une fiche de paie dans mon équipe, je ressens toujours cette petite bouffée d'angoisse. <strong>Qui va devoir corriger ?</strong> Combien de temps ça va prendre ? Et surtout, quelles sont mes obligations légales ? Après 11 ans à diriger une TPE, j'ai appris que ces erreurs arrivent plus souvent qu'on ne le croit, même avec les meilleurs outils.</p>
@@ -326,3 +326,4 @@ related_posts:
 <p>Côté employeur : des erreurs répétées peuvent constituer une faute, surtout si le salarié connaît la paie. Mais il faut prouver la négligence ou l'intention. Côté salarié : des erreurs employeur répétées peuvent justifier une résiliation judiciaire aux torts de l'employeur.</p>
 
 <p>Au final, gérer les erreurs de paie demande de la méthode et de la réactivité. L'investissement dans de bons outils et des processus clairs se rentabilise rapidement. Et surtout, il préserve l'essentiel : la confiance des équipes.</p>
+
