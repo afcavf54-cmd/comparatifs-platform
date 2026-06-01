@@ -15,29 +15,25 @@
     "simulateur-salaire-brut-net": {
       "active": false,
       "slug": "salaire-brut-en-net",
-      "title": "Calcul Salaire Brut en Net {year} : Simulateur Gratuit et Rapide",
+      "title": "Calcul Salaire Brut en Net {year} : Simulateur gratuit et rapide",
       "meta_description": "Convertissez votre salaire brut en net en quelques secondes. Simulateur gratuit prenant en compte les cotisations salariales et les spécificités de votre statut.",
       "h1": "Calcul du salaire brut en net",
-      "prompt_redaction": "Rédige un guide complet sur le calcul du salaire brut en net pour un salarié français qui veut comprendre sa fiche de paie et anticiper ses revenus nets.\n\nPlan attendu (utilise des <h2> et <h3>) :\n<h2> Brut, net, net après impôt : quelles différences ?\n<h2> Les charges salariales selon votre statut\n<h3> Salarié non-cadre (22 %)\n<h3> Salarié cadre (25 %)\n<h3> Fonction publique (17 %)\n<h3> Profession libérale et portage salarial\n<h2> Comment calculer son salaire net mensuel ?\n<h2> Le prélèvement à la source (PAS) : comment l'intégrer ?\n<h2> Cas particuliers : temps partiel, 13e mois, primes",
+      "prompt_redaction": "Rédige un guide complet sur le calcul du salaire brut en net pour un salarié français qui veut comprendre sa fiche de paie et anticiper ses revenus nets.\n\nPlan attendu (utilise des <h2> et <h3>) :\n\nH2 - Calculer son salaire net à partir du salaire brut\nH3 - Le coefficient de conversion le plus utilisé\nH3 - Salaire net avant et après prélèvement à la source\nH2 - Quels prélèvements réduisent le salaire brut ?\nH3 - Les cotisations obligatoires du salarié\nH3 - Le rôle de la CSG et de la CRDS\nH3 - L'impact de l'impôt sur le revenu\nH2 - Simulez votre salaire brut vers net\n(insère ici un tableau avec sur la première colonne une salaire brut de 1500 à 4000 euros (de 100 en 100), en 2eme colonne le Net salarié / mois)\nH2 - Les différences de calcul selon le profil\nH3 - Salarié non-cadre : comment est calculé le net ?\nH3 - Cadre : quelles cotisations supplémentaires ?\nH3 - Fonctionnaires, apprentis et contrats spécifiques",
       "faq": [
         {
-          "question": "Comment calculer son salaire net à partir du brut ?",
-          "answer": "Le calcul dépend de votre statut : un salarié non-cadre garde environ 78 % du brut (22 % de charges), un cadre 75 %, un fonctionnaire 83 %. Pour le mensuel : salaire net = salaire brut × coefficient. Notre simulateur applique automatiquement le bon taux selon le statut sélectionné."
+          "question": "Quel salaire net correspond à 2 000 € brut ?",
+          "answer": ""
         },
         {
-          "question": "Quelle est la différence entre net avant et après impôt ?",
-          "answer": "Le salaire net est ce qui figure en bas de fiche de paie, avant retrait du prélèvement à la source (PAS). Le net après impôt est ce que vous touchez réellement sur votre compte bancaire, une fois le PAS prélevé par votre employeur. Le taux PAS est communiqué par l'administration fiscale et varie selon votre situation."
+          "question": "Quelle différence entre le SMIC brut et le SMIC net ?",
+          "answer": ""
         },
         {
-          "question": "Comment passer du salaire brut annuel au mensuel ?",
-          "answer": "Le salaire annuel se divise par le nombre de mois de rémunération. Sur 12 mois : annuel ÷ 12. Sur 13 mois (avec une prime de 13e mois) : annuel ÷ 13. Attention : un salarié payé 12 mois × 3 000 € touche le même brut annuel (36 000 €) que celui payé 13 mois × 2 769 €, mais le mensuel diffère."
-        },
-        {
-          "question": "Le simulateur prend-il en compte le temps partiel ?",
-          "answer": "Oui, le curseur 'Temps de travail' permet d'ajuster le brut de 50 % à 100 %. Un mi-temps à 50 % aura un brut divisé par 2, et le net suit la même proportion. C'est utile pour les salariés à temps partiel choisi ou subi, et pour les contrats forfait jour réduits."
+          "question": "Faut-il négocier son salaire en brut ou en net ?",
+          "answer": ""
         }
       ],
-      "nb_mots": 1500,
+      "nb_mots": 1200,
       "contenu_genere": ""
     }
   }
