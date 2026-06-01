@@ -1,23 +1,24 @@
 ---
-title: 'Création micro-entreprise sur l''URSSAF : guide étape par étape'
+title: "Création micro-entreprise sur l'URSSAF : guide étape par étape"
 slug: 3788-creation-micro-entreprise-sur-l-urssaf-guide-etape-par-etape
-date: '2026-06-01T10:00:00+02:00'
+date: 2026-06-01T10:00:00+02:00
+updated: 2026-06-01T13:48:37
 categorie: Création entreprise
-meta_title: Comment créer sa micro-entreprise sur le site de l'URSSAF ?
-meta_description: Créez votre micro-entreprise facilement sur l'URSSAF avec notre
-  guide complet étape par étape. Démarches gratuites, documents nécessaires et conseils
-  pratiques.
-min_words: 1200
+meta_title: "Comment créer sa micro-entreprise sur le site de l'URSSAF ?"
+meta_description: "Créez votre micro-entreprise facilement sur l'URSSAF avec notre"
+featured_image: /blog/3788-creation-micro-entreprise-sur-l-urssaf-guide-etape-par-etape/featured-11949.jpg
 status: published
-link_anchors:
-- text: création d'une micro-entreprise sur le site de l'urssaf
-  max: 2
+min_words: 1200
 related_posts:
 - 2581-micro-entreprise-ou-entreprise-individuelle-quelle-difference
 - 8151-cout-de-creation-d-une-entreprise-tous-les-frais-a-prevoir
 - 2440-capital-social-d-une-entreprise-definition-et-fonctionnement
 - 7122-etapes-creation-entreprise-le-guide-complet-en-year
+link_anchors:
+- text: "création d'une micro-entreprise sur le site de l'urssaf"
+  max: 2
 ---
+
 <h2>L'URSSAF, votre porte d'entrée officielle vers l'auto-entrepreneuriat</h2>
 
 <p>Je me souviens de ma première création de micro-entreprise. L'URSSAF m'a semblé être un labyrinthe administratif. Aujourd'hui, après avoir accompagné plusieurs entrepreneurs, je peux vous dire que <strong>la démarche s'est vraiment simplifiée</strong>. Le site autoentrepreneur.urssaf.fr concentre tout ce dont vous avez besoin.</p>
@@ -119,3 +120,4 @@ Votre première déclaration intervient le trimestre suivant votre inscription. 
 Oui, mais elles doivent relever du même régime fiscal. Vous pouvez cumuler vente et prestation de services, par exemple. Attention aux seuils de chiffre d'affaires qui s'appliquent globalement.</p>
 
 <p>La création de votre micro-entreprise sur l'URSSAF représente votre premier pas vers l'entrepreneuriat. <strong>Prenez le temps de bien préparer</strong> votre dossier, mais ne vous laissez pas paralyser par les détails. Vous pourrez toujours ajuster certains éléments en cours de route.</p>
+
