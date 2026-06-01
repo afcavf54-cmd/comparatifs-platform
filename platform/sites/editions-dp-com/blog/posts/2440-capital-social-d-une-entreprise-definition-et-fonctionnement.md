@@ -1,22 +1,24 @@
 ---
-title: 'Capital social d''une entreprise : définition et fonctionnement'
+title: "Capital social d'une entreprise : définition et fonctionnement"
 slug: 2440-capital-social-d-une-entreprise-definition-et-fonctionnement
-date: '2026-05-30T12:00:00+02:00'
+date: 2026-05-30T12:00:00+02:00
+updated: 2026-06-01T13:43:16
 categorie: Création entreprise
-meta_title: Qu'est-ce que le capital social d'une entreprise ?
-meta_description: 'Découvrez le capital social d''une entreprise : définition complète,
-  fonctionnement pratique et impact sur votre pouvoir de décision et crédibilité.'
-min_words: 1200
+meta_title: "Qu'est-ce que le capital social d'une entreprise ?"
+meta_description: "Découvrez le capital social d'une entreprise : définition complète, fonctionnement pratique et impact sur votre pouvoir de décision et crédibilité."
+featured_image: /blog/2440-capital-social-d-une-entreprise-definition-et-fonctionnement/featured-92521.jpg
 status: published
-link_anchors:
-- text: capital social d'une entreprise
-  max: 2
+min_words: 1200
 related_posts:
 - 9835-statut-juridique-d-une-entreprise-lequel-choisir-en-year
 - 2581-micro-entreprise-ou-entreprise-individuelle-quelle-difference
 - 8532-guichet-unique-inpi-vs-legalstart-comparatif-complet
 - 2986-comment-creer-un-produit-de-a-a-z-methode-etapes-cles-et-conseils-pratiques
+link_anchors:
+- text: "capital social d'une entreprise"
+  max: 2
 ---
+
 <h2>Qu'est-ce que le capital social d'une entreprise ?</h2>
 
 <p>Le capital social, c'est la somme des apports que les associés d'une société mettent à disposition de l'entreprise lors de sa création. Concrètement, c'est l'argent et les biens que vous investissez pour donner vie à votre projet. Cette notion peut sembler abstraite au début, mais je vous assure qu'elle aura un impact direct sur votre quotidien d'entrepreneur.</p>
@@ -113,3 +115,4 @@ related_posts:
 <p>Enfin, documentez scrupuleusement tous les apports. Gardez les justificatifs de virements, les factures d'achat du matériel apporté et les attestations d'évaluation. Ces pièces vous seront utiles lors des contrôles comptables et fiscaux.</p>
 
 <p>Le capital social reste un pilier fondamental de votre entreprise. Bien pensé dès le départ, il facilitera votre développement et renforcera votre crédibilité. Mal calibré, il peut devenir un frein à votre croissance pendant des années.</p>
+
