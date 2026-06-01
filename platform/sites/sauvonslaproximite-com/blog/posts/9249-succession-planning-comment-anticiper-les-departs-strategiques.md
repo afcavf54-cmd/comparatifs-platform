@@ -4,14 +4,19 @@ slug: 9249-succession-planning-comment-anticiper-les-departs-strategiques
 date: '2026-06-01T16:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Succession planning : comment anticiper les départs clés en entreprise'
-meta_description: Découvrez comment mettre en place une succession planning efficace pour anticiper les départs de vos collaborateurs clés. Méthodologie, outils et retours…
+meta_description: Découvrez comment mettre en place une succession planning efficace
+  pour anticiper les départs de vos collaborateurs clés. Méthodologie, outils et retours…
 min_words: 3000
 status: published
 link_anchors:
 - text: succession planning
   max: 2
+related_posts:
+- 8763-fidelisation-des-talents-quelles-actions-rh-privilegier
+- 6041-strategie-de-gestion-des-talents-comment-structurer-votre-politique-rh
+- 5779-retention-des-talents-comment-limiter-le-turnover
+- 7114-developpement-des-talents-quelles-methodes-utiliser
 ---
-
 <h2>Une réalité que j'ai vécue trop souvent</h2>
 
 <p>Dans ma carrière de responsable comptable, j'ai vu partir du jour au lendemain notre directeur financier, emportant avec lui 15 ans d'expertise et la connaissance de tous nos processus budgétaires. Six mois de chaos total. Les reportings étaient en retard, personne ne connaissait les subtilités de nos relations bancaires, et on a failli perdre un client majeur à cause d'un malentendu sur une procédure de facturation.</p>
