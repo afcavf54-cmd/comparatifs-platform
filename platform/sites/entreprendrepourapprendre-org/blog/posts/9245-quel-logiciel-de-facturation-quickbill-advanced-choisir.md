@@ -4,11 +4,14 @@ slug: 9245-quel-logiciel-de-facturation-quickbill-advanced-choisir
 date: '2026-06-01T17:36:20+02:00'
 categorie: Entreprenariat
 meta_title: 'Logiciel de facturation QuickBill Advanced : test complet et comparatif'
-meta_description: QuickBill Advanced n'existe plus depuis son rachat par Sage en 2019. Découvrez 6 alternatives de logiciels de facturation testées pour TPE avec retours d'usage…
+meta_description: QuickBill Advanced n'existe plus depuis son rachat par Sage en 2019.
+  Découvrez 6 alternatives de logiciels de facturation testées pour TPE avec retours
+  d'usage…
 min_words: 1000
 status: published
+related_posts:
+- 4504-tarification-invoicemaster-evolution-comparatif-et-avis
 ---
-
 <h2>QuickBill Advanced : pourquoi j'ai fini par l'abandonner</h2>
 
 <p>Je vais commencer par vous dire les choses clairement : QuickBill Advanced n'existe plus sous cette forme. L'entreprise a été rachetée par Sage en 2019, et le produit a été intégré dans leur gamme. Quand j'ai découvert ça l'année dernière en cherchant à migrer mon ancien système, j'étais un peu perdue.</p>
