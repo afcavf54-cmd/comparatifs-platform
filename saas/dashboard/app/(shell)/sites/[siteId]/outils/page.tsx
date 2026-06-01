@@ -179,7 +179,7 @@ export default function OutilsPage() {
   }
 
 
-  async function generateContent(toolId: string) {
+  async function generateContent(toolId: string, mode: 'content' | 'faq' | 'both' = 'content') {
     if (!config) return
     const state = config.outils[toolId]
     if (!state) return
@@ -203,17 +203,29 @@ export default function OutilsPage() {
           faq: state.faq,
           nb_mots: state.nb_mots,
           outil_name: tool.name,
+          mode,
         }),
       })
       const d = await r.json()
-      if (d.ok && d.html) {
-        updateOutil(toolId, { contenu_genere: d.html })
+      if (d.ok) {
+        // Mise à jour conditionnelle selon ce que l'API a renvoyé
+        const updates: Partial<OutilState> = {}
+        if (d.html) updates.contenu_genere = d.html
+        if (Array.isArray(d.faq) && d.faq.length > 0) updates.faq = d.faq
+        if (Object.keys(updates).length > 0) {
+          updateOutil(toolId, updates)
+        }
         const layers = []
         if (d.global_used) layers.push('prompt global')
         if (d.persona_used) layers.push('persona du site')
+        const what = mode === 'faq'
+          ? `FAQ régénérée (${d.faq?.length || 0} entrées)`
+          : mode === 'both'
+            ? `Contenu + FAQ régénérés (${d.faq?.length || 0} entrées)`
+            : 'Contenu généré'
         const msg = layers.length > 0
-          ? `✓ Généré avec : ${layers.join(' + ')}`
-          : '✓ Généré (sans prompt global ni persona — pense à les configurer)'
+          ? `✓ ${what} avec : ${layers.join(' + ')}`
+          : `✓ ${what} (sans prompt global ni persona — pense à les configurer)`
         setGenInfo(prev => ({ ...prev, [toolId]: msg }))
         setTimeout(() => setGenInfo(prev => ({ ...prev, [toolId]: '' })), 7000)
       } else {
@@ -330,19 +342,44 @@ export default function OutilsPage() {
                     <input type="number" value={state.nb_mots} onChange={e => updateOutil(tool.id, { nb_mots: parseInt(e.target.value) || 0 })}
                       style={{ ...inputStyle, maxWidth: 160 }} min={300} max={5000} step={100} />
                   </Field>
-                  <Field label="FAQ">
-                    <FAQList items={state.faq} onChange={items => updateOutil(tool.id, { faq: items })} />
+                  <Field label="FAQ" hint="Liste de Q/R affichée sous l'outil. Tu peux régénérer la FAQ par IA pour avoir une vraie FAQ structurée.">
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                      <FAQList items={state.faq} onChange={items => updateOutil(tool.id, { faq: items })} />
+                      <button
+                        onClick={() => generateContent(tool.id, 'faq')}
+                        disabled={generating[tool.id]}
+                        style={{
+                          alignSelf: 'flex-start',
+                          padding: '7px 14px', borderRadius: 8, border: '1px solid #1E2D3D',
+                          background: generating[tool.id] ? '#1E2D3D' : '#0A0E1A',
+                          color: generating[tool.id] ? '#566A85' : '#A78BFA',
+                          fontSize: 12, fontWeight: 600,
+                          cursor: generating[tool.id] ? 'wait' : 'pointer',
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {generating[tool.id] ? '⏳ Génération…' : '✨ Régénérer la FAQ par IA'}
+                      </button>
+                    </div>
                   </Field>
 
                   {/* Génération IA */}
                   <div style={{ padding: '12px 14px', background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 8, display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'space-between' }}>
                     <div style={{ fontSize: 12, color: '#8B9CB0' }}>
-                      ✨ <strong style={{ color: '#fff' }}>Génération IA</strong> — Claude rédige le contenu HTML à partir du prompt, du plan, de la FAQ et du nb de mots.
+                      ✨ <strong style={{ color: '#fff' }}>Génération IA</strong> — Claude rédige le contenu HTML (et optionnellement la FAQ) à partir du prompt, du plan et du nb de mots.
                     </div>
-                    <button onClick={() => generateContent(tool.id)} disabled={generating[tool.id]}
-                      style={{ padding: '7px 14px', borderRadius: 8, border: 'none', background: generating[tool.id] ? '#1E2D3D' : 'linear-gradient(135deg, #7C3AED, #A78BFA)', color: '#fff', fontSize: 12, fontWeight: 600, cursor: generating[tool.id] ? 'wait' : 'pointer', whiteSpace: 'nowrap' }}>
-                      {generating[tool.id] ? '⏳ Génération…' : '✨ Générer'}
-                    </button>
+                    <div style={{ display: 'flex', gap: 8 }}>
+                      <button onClick={() => generateContent(tool.id, 'content')} disabled={generating[tool.id]}
+                        title="Génère uniquement le HTML rédactionnel (sans toucher à la FAQ)"
+                        style={{ padding: '7px 14px', borderRadius: 8, border: '1px solid #1E2D3D', background: generating[tool.id] ? '#1E2D3D' : '#0A0E1A', color: generating[tool.id] ? '#566A85' : '#A78BFA', fontSize: 12, fontWeight: 600, cursor: generating[tool.id] ? 'wait' : 'pointer', whiteSpace: 'nowrap' }}>
+                        Contenu seul
+                      </button>
+                      <button onClick={() => generateContent(tool.id, 'both')} disabled={generating[tool.id]}
+                        title="Génère le HTML rédactionnel ET la FAQ en un appel"
+                        style={{ padding: '7px 14px', borderRadius: 8, border: 'none', background: generating[tool.id] ? '#1E2D3D' : 'linear-gradient(135deg, #7C3AED, #A78BFA)', color: '#fff', fontSize: 12, fontWeight: 600, cursor: generating[tool.id] ? 'wait' : 'pointer', whiteSpace: 'nowrap' }}>
+                        {generating[tool.id] ? '⏳ Génération…' : '✨ Tout générer'}
+                      </button>
+                    </div>
                   </div>
                   {genError[tool.id] && (
                     <div style={{ padding: '10px 14px', background: 'rgba(252,129,129,0.1)', border: '1px solid #FC818144', borderRadius: 8, fontSize: 12, color: '#FC8181' }}>
