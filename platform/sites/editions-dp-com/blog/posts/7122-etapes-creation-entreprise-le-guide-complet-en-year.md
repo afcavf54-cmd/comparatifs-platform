@@ -2,11 +2,11 @@
 title: "Étapes création entreprise : le guide complet en 2026"
 slug: 7122-etapes-creation-entreprise-le-guide-complet-en-year
 date: 2026-05-29T09:00:00+02:00
-updated: 2026-06-01T14:03:39
+updated: 2026-06-01T14:06:10
 categorie: Création entreprise
 meta_title: Quelles sont les étapes pour créer son entreprise ?
 meta_description: Découvrez toutes les étapes pour créer votre entreprise.
-featured_image: ""
+featured_image: /blog/7122-etapes-creation-entreprise-le-guide-complet-en-year/featured-66024.jpg
 status: published
 min_words: 1800
 related_posts:
@@ -244,4 +244,5 @@ link_anchors:
 <p>Ces montants ne comprennent pas vos investissements en matériel, logiciels ou stock selon votre activité.</p>
 
 <p>Créer son entreprise en 2026 demande de la préparation, mais les outils existent pour vous faciliter la tâche. L'essentiel est de bien réfléchir en amont à votre projet et de choisir le statut adapté à votre situation. Une fois ces bases posées, vous pourrez vous concentrer sur l'essentiel : développer votre activité.</p>
+
 
