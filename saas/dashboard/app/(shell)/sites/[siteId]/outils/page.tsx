@@ -218,10 +218,15 @@ export default function OutilsPage() {
         const layers = []
         if (d.global_used) layers.push('prompt global')
         if (d.persona_used) layers.push('persona du site')
+        // Compte des réponses non-vides parmi celles renvoyées
+        const filledCount = Array.isArray(d.faq)
+          ? d.faq.filter((f: any) => (f?.answer || '').trim().length > 0).length
+          : 0
+        const totalCount = Array.isArray(d.faq) ? d.faq.length : 0
         const what = mode === 'faq'
-          ? `FAQ régénérée (${d.faq?.length || 0} entrées)`
+          ? `Réponses de la FAQ générées (${filledCount}/${totalCount})`
           : mode === 'both'
-            ? `Contenu + FAQ régénérés (${d.faq?.length || 0} entrées)`
+            ? `Contenu + ${filledCount} réponses FAQ générés`
             : 'Contenu généré'
         const msg = layers.length > 0
           ? `✓ ${what} avec : ${layers.join(' + ')}`
@@ -342,7 +347,7 @@ export default function OutilsPage() {
                     <input type="number" value={state.nb_mots} onChange={e => updateOutil(tool.id, { nb_mots: parseInt(e.target.value) || 0 })}
                       style={{ ...inputStyle, maxWidth: 160 }} min={300} max={5000} step={100} />
                   </Field>
-                  <Field label="FAQ" hint="Liste de Q/R affichée sous l'outil. Tu peux régénérer la FAQ par IA pour avoir une vraie FAQ structurée.">
+                  <Field label="FAQ" hint="Saisis tes questions. Le bouton ci-dessous fait générer les RÉPONSES par l'IA (les questions que tu as tapées sont strictement préservées).">
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                       <FAQList items={state.faq} onChange={items => updateOutil(tool.id, { faq: items })} />
                       <button
@@ -358,7 +363,7 @@ export default function OutilsPage() {
                           whiteSpace: 'nowrap',
                         }}
                       >
-                        {generating[tool.id] ? '⏳ Génération…' : '✨ Régénérer la FAQ par IA'}
+                        {generating[tool.id] ? '⏳ Génération…' : '✨ Générer les réponses par IA'}
                       </button>
                     </div>
                   </Field>
@@ -366,7 +371,7 @@ export default function OutilsPage() {
                   {/* Génération IA */}
                   <div style={{ padding: '12px 14px', background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 8, display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'space-between' }}>
                     <div style={{ fontSize: 12, color: '#8B9CB0' }}>
-                      ✨ <strong style={{ color: '#fff' }}>Génération IA</strong> — Claude rédige le contenu HTML (et optionnellement la FAQ) à partir du prompt, du plan et du nb de mots.
+                      ✨ <strong style={{ color: '#fff' }}>Génération IA</strong> — Claude rédige le contenu HTML et peut aussi remplir les réponses de la FAQ (les questions que tu as saisies sont préservées).
                     </div>
                     <div style={{ display: 'flex', gap: 8 }}>
                       <button onClick={() => generateContent(tool.id, 'content')} disabled={generating[tool.id]}
@@ -375,7 +380,7 @@ export default function OutilsPage() {
                         Contenu seul
                       </button>
                       <button onClick={() => generateContent(tool.id, 'both')} disabled={generating[tool.id]}
-                        title="Génère le HTML rédactionnel ET la FAQ en un appel"
+                        title="Génère le HTML rédactionnel ET les réponses de la FAQ en un seul appel"
                         style={{ padding: '7px 14px', borderRadius: 8, border: 'none', background: generating[tool.id] ? '#1E2D3D' : 'linear-gradient(135deg, #7C3AED, #A78BFA)', color: '#fff', fontSize: 12, fontWeight: 600, cursor: generating[tool.id] ? 'wait' : 'pointer', whiteSpace: 'nowrap' }}>
                         {generating[tool.id] ? '⏳ Génération…' : '✨ Tout générer'}
                       </button>
