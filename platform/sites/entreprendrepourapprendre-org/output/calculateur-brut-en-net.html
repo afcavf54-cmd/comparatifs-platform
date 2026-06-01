@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="/favicon.png">
+
+<title>Calculateur Brut en Net {year} : Salaire Net en quelques secondes</title>
+<meta name="description" content="Calculez facilement votre rémunération nette à partir du salaire brut. Outil gratuit, rapide et mis à jour pour {year}.">
+<link rel="canonical" href="https://www.entreprendrepourapprendre.org/calculateur-brut-en-net">
+<meta property="og:title" content="Calculateur Brut en Net {year} : Salaire Net en quelques secondes">
+<meta property="og:description" content="Calculez facilement votre rémunération nette à partir du salaire brut. Outil gratuit, rapide et mis à jour pour {year}.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.entreprendrepourapprendre.org/calculateur-brut-en-net">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=entreprendrepourapprendre-org" rel="stylesheet">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculateur Brut en Net {year} : Salaire Net en quelques secondes",
+  "url": "https://www.entreprendrepourapprendre.org/calculateur-brut-en-net",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    
+    {
+      "@type": "Question",
+      "name": "Combien gagne r\u00e9ellement un salari\u00e9 pay\u00e9 2 000 \u20ac brut ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "" }
+    },
+    
+    {
+      "@type": "Question",
+      "name": "Quel est le salaire net correspondant au SMIC brut ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "" }
+    },
+    
+    {
+      "@type": "Question",
+      "name": "Comment \u00e9valuer une proposition salariale en brut et en net avant de n\u00e9gocier ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "" }
+    }
+    
+  ]
+}
+</script>
+
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#F8FAFC;--surface:#FFFFFF;--surface2:#F5F3EE;
+  --ink:#0F172A;--ink2:#3D434B;--ink3:#8B9CB0;
+  --accent:#004080;--accent2:#0080c0;
+  --green:#3D7A4F;--red:#C0392B;
+  --border:#E6E1D8;--r:10px;--r2:16px;
+  --cta:#008080;--cta-text:#ffffff;
+}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+a{color:var(--accent2);text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:0 5vw}
+
+/* ─── Hero sombre ─── */
+.tool-hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2532 100%);color:#fff;padding:60px 0 80px;text-align:center;position:relative}
+.tool-hero-inner{max-width:760px;margin:0 auto;padding:0 5vw}
+.tool-hero-eyebrow{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);background:rgba(201,169,97,.12);padding:6px 14px;border-radius:20px;margin-bottom:18px}
+.tool-hero h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,5vw,48px);font-weight:400;letter-spacing:-.02em;color:#fff;line-height:1.15;margin-bottom:16px}
+.tool-hero p{font-size:17px;color:rgba(255,255,255,.78);line-height:1.6;margin:0}
+
+/* ─── Widget calcul ─── */
+.calc-wrap{margin-top:-50px;margin-bottom:60px;position:relative;z-index:2}
+.calc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);box-shadow:0 8px 40px rgba(0,0,0,.08);padding:28px;max-width:980px;margin:0 auto}
+
+/* Paramètres ligne du haut */
+.calc-params{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.calc-field{display:flex;flex-direction:column;gap:6px}
+.calc-label{font-size:12px;font-weight:700;color:var(--ink2);text-transform:uppercase;letter-spacing:.06em}
+.calc-select{padding:11px 14px;border:1px solid var(--border);border-radius:var(--r);background:#fff;color:var(--ink);font-family:inherit;font-size:15px;outline:none;transition:border-color .15s;cursor:pointer}
+.calc-select:focus{border-color:var(--accent)}
+
+/* Sliders */
+.calc-sliders{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:28px}
+.slider-row{display:flex;flex-direction:column;gap:10px}
+.slider-header{display:flex;justify-content:space-between;align-items:baseline}
+.slider-label{font-size:13px;font-weight:600;color:var(--ink2)}
+.slider-value{font-size:18px;font-weight:700;color:var(--accent);font-family:'DM Serif Display',serif}
+.slider{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:3px;background:var(--surface2);outline:none;cursor:pointer}
+.slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:20px;height:20px;border-radius:50%;background:var(--accent);cursor:pointer;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.2);transition:transform .15s}
+.slider::-webkit-slider-thumb:hover{transform:scale(1.15)}
+.slider::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--accent);cursor:pointer;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+
+/* Inputs salaire brut */
+.brut-section{margin-bottom:8px}
+.section-title{font-family:'DM Serif Display',serif;font-size:18px;font-weight:600;color:var(--ink);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.brut-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.brut-cell{display:flex;flex-direction:column;gap:6px}
+.brut-cell-label{font-size:11px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em}
+.brut-input-wrap{position:relative}
+.brut-input{width:100%;padding:14px 44px 14px 14px;border:1.5px solid var(--border);border-radius:var(--r);background:#fff;color:var(--ink);font-family:'DM Serif Display',serif;font-size:20px;font-weight:600;outline:none;transition:border-color .15s}
+.brut-input:focus{border-color:var(--accent)}
+.brut-input::-webkit-outer-spin-button,.brut-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.brut-input{-moz-appearance:textfield}
+.brut-suffix{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--ink3);font-size:14px;pointer-events:none;font-family:'Outfit',sans-serif;font-weight:400}
+
+/* Reset button */
+.reset-btn{margin-top:18px;padding:9px 18px;border:1px solid var(--border);background:transparent;border-radius:var(--r);color:var(--ink2);font-size:13px;font-weight:600;cursor:pointer;transition:.15s}
+.reset-btn:hover{background:var(--surface2);border-color:var(--accent);color:var(--accent)}
+
+/* ─── Section RÉSULTATS ─── */
+.results-card{background:linear-gradient(135deg,#fff 0%,var(--surface2) 100%);border:1px solid var(--border);border-radius:var(--r2);padding:28px;max-width:980px;margin:24px auto 0}
+.results-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:600;color:var(--ink);margin-bottom:20px;text-align:center}
+.results-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+.result-col{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:18px;text-align:center}
+.result-col.highlight{background:linear-gradient(135deg,var(--accent) 0%,#b89951 100%);border-color:var(--accent);color:#fff}
+.result-col-header{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:12px}
+.result-col.highlight .result-col-header{color:rgba(255,255,255,.85)}
+.result-row{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;font-size:14px;color:var(--ink2)}
+.result-row:not(:last-child){border-bottom:1px dashed var(--border)}
+.result-col.highlight .result-row:not(:last-child){border-bottom-color:rgba(255,255,255,.18)}
+.result-col.highlight .result-row{color:rgba(255,255,255,.88)}
+.result-row-label{font-size:12px}
+.result-row-value{font-family:'DM Serif Display',serif;font-size:17px;font-weight:600;color:var(--ink)}
+.result-col.highlight .result-row-value{color:#fff}
+
+/* ─── Contenu rédactionnel ─── */
+.tool-content{padding:40px 0 60px;max-width:760px;margin:0 auto}
+.tool-content h2{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;margin:40px 0 16px;color:var(--ink);line-height:1.3}
+.tool-content h2:first-child{margin-top:0}
+.tool-content h3{font-family:'DM Serif Display',serif;font-size:20px;font-weight:600;margin:28px 0 12px;color:var(--ink)}
+.tool-content p{margin:0 0 16px;color:var(--ink2)}
+.tool-content ul,.tool-content ol{margin:8px 0 20px;padding-left:24px;color:var(--ink2)}
+.tool-content li{margin-bottom:8px;line-height:1.7}
+.tool-content strong{color:var(--ink);font-weight:600}
+
+/* ─── FAQ ─── */
+.faq-section{padding:20px 0 60px;max-width:760px;margin:0 auto}
+.faq-section h2{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;margin-bottom:20px;color:var(--ink)}
+.faq-item{border-bottom:1px solid var(--border);padding:16px 0}
+.faq-item:first-of-type{padding-top:0}
+.faq-q{font-weight:600;font-size:17px;color:var(--ink);margin-bottom:8px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-size:24px;color:var(--ink3);font-weight:400;line-height:1;transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-r{color:var(--ink2);font-size:15px;display:none;padding-top:8px;line-height:1.7}
+.faq-item.open .faq-r{display:block}
+
+/* Responsive */
+@media(max-width:768px){
+  .tool-hero{padding:48px 0 64px}
+  .calc-card{padding:20px}
+  .calc-params{grid-template-columns:1fr}
+  .calc-sliders{grid-template-columns:1fr;gap:18px}
+  .brut-grid{grid-template-columns:1fr}
+  .results-grid{grid-template-columns:1fr;gap:12px}
+  .results-card{padding:20px}
+}
+</style>
+</head>
+<body>
+
+
+<style>
+nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+nav.site-nav .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
+nav.site-nav .nav-logo span{color:var(--accent2)}
+nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
+nav.site-nav .nav-cta:hover{opacity:.88}
+nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+nav.site-nav .nav-mobile.open{display:flex}
+nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
+</style>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/logo.png" alt="Entreprendre Pour Apprendre" style="height:36px;width:auto;object-fit:contain;vertical-align:middle"></a>
+    <div class="nav-links">
+      <a href="/nos-comparateurs">Nos comparateurs</a>
+      
+      
+        <a href="/blog">Blog</a>
+      
+      
+        
+          <a href="/outils">Outils</a>
+        
+      
+    </div>
+    <a href="/contact" class="nav-cta">Contact</a>
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="/nos-comparateurs">Nos comparateurs</a>
+    
+    
+      <a href="/blog">Blog</a>
+    
+    
+      
+        <a href="/outils">Outils</a>
+      
+    
+    <a href="/contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+
+<header class="tool-hero">
+  <div class="tool-hero-inner">
+    <div class="tool-hero-eyebrow">💰 Outil gratuit</div>
+    <h1>Calculateur de salaire brut en net</h1>
+    <p>Convertissez votre salaire brut en net horaire, mensuel ou annuel selon votre statut professionnel.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="calc-wrap">
+    <div class="calc-card">
+
+      
+      <div class="calc-params">
+        <div class="calc-field">
+          <label class="calc-label" for="statut">Statut professionnel</label>
+          <select id="statut" class="calc-select">
+            <option value="non-cadre">Salarié non-cadre (-22 %)</option>
+            <option value="cadre">Salarié cadre (-25 %)</option>
+            <option value="fonction-publique">Fonction publique (-17 %)</option>
+            <option value="liberal">Profession libérale (-35 %)</option>
+            <option value="portage">Portage salarial (-47 %)</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label class="calc-label" for="mois">Nombre de mois de rémunération</label>
+          <select id="mois" class="calc-select">
+            <option value="12">12 mois</option>
+            <option value="13">13 mois</option>
+            <option value="14">14 mois</option>
+            <option value="15">15 mois</option>
+            <option value="16">16 mois</option>
+          </select>
+        </div>
+      </div>
+
+      
+      <div class="calc-sliders">
+        <div class="slider-row">
+          <div class="slider-header">
+            <span class="slider-label">Temps de travail</span>
+            <span class="slider-value" id="temps-value">100 %</span>
+          </div>
+          <input type="range" id="temps" class="slider" min="50" max="100" step="1" value="100">
+        </div>
+        <div class="slider-row">
+          <div class="slider-header">
+            <span class="slider-label">Prélèvement à la source</span>
+            <span class="slider-value" id="pas-value">0 %</span>
+          </div>
+          <input type="range" id="pas" class="slider" min="0" max="25" step="0.1" value="0">
+        </div>
+      </div>
+
+      
+      <div class="brut-section">
+        <div class="section-title">💼 Salaire brut</div>
+        <div class="brut-grid">
+          <div class="brut-cell">
+            <span class="brut-cell-label">Horaire</span>
+            <div class="brut-input-wrap">
+              <input type="number" id="brut-horaire" class="brut-input" step="0.01" min="0" value="16.48">
+              <span class="brut-suffix">€/h</span>
+            </div>
+          </div>
+          <div class="brut-cell">
+            <span class="brut-cell-label">Mensuel</span>
+            <div class="brut-input-wrap">
+              <input type="number" id="brut-mensuel" class="brut-input" step="1" min="0" value="2500">
+              <span class="brut-suffix">€/mois</span>
+            </div>
+          </div>
+          <div class="brut-cell">
+            <span class="brut-cell-label">Annuel</span>
+            <div class="brut-input-wrap">
+              <input type="number" id="brut-annuel" class="brut-input" step="100" min="0" value="30000">
+              <span class="brut-suffix">€/an</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="reset-btn" id="reset-btn">↻ Réinitialiser</button>
+    </div>
+
+    
+    <div class="results-card">
+      <div class="results-title">📊 Vos résultats</div>
+      <div class="results-grid">
+        <div class="result-col">
+          <div class="result-col-header">Salaire brut</div>
+          <div class="result-row"><span class="result-row-label">Horaire</span><span class="result-row-value" id="r-brut-h">—</span></div>
+          <div class="result-row"><span class="result-row-label">Mensuel</span><span class="result-row-value" id="r-brut-m">—</span></div>
+          <div class="result-row"><span class="result-row-label">Annuel</span><span class="result-row-value" id="r-brut-a">—</span></div>
+        </div>
+        <div class="result-col highlight">
+          <div class="result-col-header">Salaire net</div>
+          <div class="result-row"><span class="result-row-label">Horaire</span><span class="result-row-value" id="r-net-h">—</span></div>
+          <div class="result-row"><span class="result-row-label">Mensuel</span><span class="result-row-value" id="r-net-m">—</span></div>
+          <div class="result-row"><span class="result-row-label">Annuel</span><span class="result-row-value" id="r-net-a">—</span></div>
+        </div>
+        <div class="result-col">
+          <div class="result-col-header">Net après impôt</div>
+          <div class="result-row"><span class="result-row-label">Mensuel</span><span class="result-row-value" id="r-apres-m">—</span></div>
+          <div class="result-row"><span class="result-row-label">Annuel</span><span class="result-row-value" id="r-apres-a">—</span></div>
+          <div class="result-row" style="opacity:.5"><span class="result-row-label">PAS appliqué</span><span class="result-row-value" id="r-pas-display" style="font-size:14px">0 %</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  
+
+  
+  
+  <section class="faq-section">
+    <h2>Foire aux questions</h2>
+    
+    <div class="faq-item">
+      <div class="faq-q">Combien gagne réellement un salarié payé 2 000 € brut ?</div>
+      <div class="faq-r"></div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-q">Quel est le salaire net correspondant au SMIC brut ?</div>
+      <div class="faq-r"></div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-q">Comment évaluer une proposition salariale en brut et en net avant de négocier ?</div>
+      <div class="faq-r"></div>
+    </div>
+    
+  </section>
+  
+
+</main>
+
+<style>
+.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
+.footer-brand .footer-logo span{color:var(--accent2)}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;max-width:260px;margin:0;padding:0}
+.footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
+.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-brand{grid-column:1/-1}
+}
+</style>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        
+        <a href="/" style="display:block;margin-bottom:12px"><img src="/logo.png" alt="Entreprendre Pour Apprendre" style="height:36px;width:auto;object-fit:contain"></a>
+        
+        <p>Comparateur de logiciels professionnels 2026</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/plan-du-site">Plan du site</a>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/politique-confidentialite">Confidentialité</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>À propos</h4>
+        <a href="/contact">Nous contacter</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        © 2026 entreprendrepourapprendre.org — Données actualisées le 1 juin 2026
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function() {
+  // ─── Référence des statuts (coef NET / BRUT) ──────────────────────
+  const STATUTS = {
+    'non-cadre':         { coef: 0.78, charges: 22 },
+    'cadre':             { coef: 0.75, charges: 25 },
+    'fonction-publique': { coef: 0.83, charges: 17 },
+    'liberal':           { coef: 0.65, charges: 35 },
+    'portage':           { coef: 0.53, charges: 47 }
+  };
+  const HEURES_MENSUELLES = 151.67;
+
+  // ─── État : on garde le brut MENSUEL comme source de vérité ───────
+  // Quand l'utilisateur modifie horaire ou annuel, on recalcule le mensuel
+  // à partir de ce qu'il a tapé, puis on regénère les 3 inputs.
+  let state = {
+    brutMensuel: 2500,
+    statut: 'non-cadre',
+    mois: 12,
+    tempsPct: 100,
+    pasPct: 0,
+    isUpdating: false   // anti-boucle infinie quand on synchronise les inputs
+  };
+
+  // ─── Helpers formatage ────────────────────────────────────────────
+  const fmtEur = (n, withCents) => {
+    if (!isFinite(n) || isNaN(n)) return '—';
+    return new Intl.NumberFormat('fr-FR', {
+      style: 'currency', currency: 'EUR',
+      minimumFractionDigits: withCents ? 2 : 0,
+      maximumFractionDigits: withCents ? 2 : 0
+    }).format(n);
+  };
+
+  // ─── Calcul + rendu complet ───────────────────────────────────────
+  function render() {
+    const st = STATUTS[state.statut];
+    // Brut MENSUEL ajusté au temps de travail
+    const brutMensuelEffectif = state.brutMensuel * (state.tempsPct / 100);
+    const brutHoraire = brutMensuelEffectif / HEURES_MENSUELLES;
+    const brutAnnuel  = brutMensuelEffectif * state.mois;
+
+    const netMensuel = brutMensuelEffectif * st.coef;
+    const netHoraire = netMensuel / HEURES_MENSUELLES;
+    const netAnnuel  = netMensuel * state.mois;
+
+    const apresMensuel = netMensuel * (1 - state.pasPct / 100);
+    const apresAnnuel  = netAnnuel  * (1 - state.pasPct / 100);
+
+    // ─── Mise à jour des inputs (sans déclencher l'event input) ─────
+    state.isUpdating = true;
+    document.getElementById('brut-horaire').value = brutHoraire.toFixed(2);
+    document.getElementById('brut-mensuel').value = Math.round(brutMensuelEffectif);
+    document.getElementById('brut-annuel').value  = Math.round(brutAnnuel);
+    state.isUpdating = false;
+
+    // ─── Mise à jour des sliders ────────────────────────────────────
+    document.getElementById('temps-value').textContent = state.tempsPct + ' %';
+    document.getElementById('pas-value').textContent   = state.pasPct.toFixed(1) + ' %';
+    document.getElementById('r-pas-display').textContent = state.pasPct.toFixed(1) + ' %';
+
+    // ─── Mise à jour des résultats ──────────────────────────────────
+    document.getElementById('r-brut-h').textContent = fmtEur(brutHoraire, true);
+    document.getElementById('r-brut-m').textContent = fmtEur(brutMensuelEffectif, false);
+    document.getElementById('r-brut-a').textContent = fmtEur(brutAnnuel, false);
+    document.getElementById('r-net-h').textContent  = fmtEur(netHoraire, true);
+    document.getElementById('r-net-m').textContent  = fmtEur(netMensuel, false);
+    document.getElementById('r-net-a').textContent  = fmtEur(netAnnuel, false);
+    document.getElementById('r-apres-m').textContent = fmtEur(apresMensuel, false);
+    document.getElementById('r-apres-a').textContent = fmtEur(apresAnnuel, false);
+  }
+
+  // ─── Listeners sur les 3 inputs brut ──────────────────────────────
+  // Quand l'utilisateur tape dans un champ, on recalcule le brut mensuel
+  // (la source de vérité), puis on regénère TOUT (y compris les autres
+  // champs). Le flag isUpdating évite la boucle infinie.
+  function attachBrutInput(id, computeMensuel) {
+    document.getElementById(id).addEventListener('input', function(e) {
+      if (state.isUpdating) return;
+      const val = parseFloat(e.target.value) || 0;
+      const mensuelEffectif = computeMensuel(val);
+      // On stocke le brut "FULL-TIME" : si on travaille à 80 %, ce que l'user
+      // tape = brut à 80 %, donc le brut full-time est plus élevé.
+      state.brutMensuel = mensuelEffectif / (state.tempsPct / 100);
+      render();
+    });
+  }
+  attachBrutInput('brut-horaire', v => v * HEURES_MENSUELLES);
+  attachBrutInput('brut-mensuel', v => v);
+  attachBrutInput('brut-annuel',  v => v / state.mois);
+
+  // ─── Listeners sur les paramètres ─────────────────────────────────
+  document.getElementById('statut').addEventListener('change', e => {
+    state.statut = e.target.value; render();
+  });
+  document.getElementById('mois').addEventListener('change', e => {
+    state.mois = parseInt(e.target.value, 10); render();
+  });
+  document.getElementById('temps').addEventListener('input', e => {
+    state.tempsPct = parseInt(e.target.value, 10); render();
+  });
+  document.getElementById('pas').addEventListener('input', e => {
+    state.pasPct = parseFloat(e.target.value); render();
+  });
+
+  // ─── Reset ────────────────────────────────────────────────────────
+  document.getElementById('reset-btn').addEventListener('click', () => {
+    state.brutMensuel = 2500;
+    state.statut = 'non-cadre';
+    state.mois = 12;
+    state.tempsPct = 100;
+    state.pasPct = 0;
+    document.getElementById('statut').value = 'non-cadre';
+    document.getElementById('mois').value = '12';
+    document.getElementById('temps').value = 100;
+    document.getElementById('pas').value = 0;
+    render();
+  });
+
+  // ─── FAQ accordion ────────────────────────────────────────────────
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+  });
+
+  // ─── Render initial ───────────────────────────────────────────────
+  render();
+})();
+</script>
+
+</body>
+</html>
