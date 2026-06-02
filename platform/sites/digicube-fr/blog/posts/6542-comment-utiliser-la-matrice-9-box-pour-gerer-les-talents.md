@@ -4,14 +4,20 @@ slug: 6542-comment-utiliser-la-matrice-9-box-pour-gerer-les-talents
 date: '2026-06-02T05:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Matrice 9 box : comment évaluer le potentiel des collaborateurs efficacement'
-meta_description: Découvrez la matrice 9 box pour gérer les talents avec un retour d'expérience concret. Guide pratique pour évaluer performance et potentiel de vos collaborateurs.
+meta_description: Découvrez la matrice 9 box pour gérer les talents avec un retour
+  d'expérience concret. Guide pratique pour évaluer performance et potentiel de vos
+  collaborateurs.
 min_words: 3000
 status: published
 link_anchors:
 - text: matrice 9 box
   max: 2
+related_posts:
+- 7364-comment-construire-une-marque-employeur-attractive
+- 6596-comment-realiser-une-cartographie-des-competences-efficace
+- 8168-comment-ameliorer-la-gestion-des-talents-rh-en-entreprise
+- 9121-comment-mettre-en-place-une-strategie-de-talent-management
 ---
-
 <h2>La matrice 9 box : mon retour d'expérience après deux ans d'utilisation</h2>
 
 <p>Je vais être franc avec vous. Quand mon DRH m'a parlé de la matrice 9 box pour la première fois, j'ai pensé que c'était encore un de ces outils RH compliqués qui allaient me faire perdre du temps. J'avais tort. Après deux ans d'utilisation dans mon entreprise de 350 salariés, je peux vous dire que cet <a href="https://www.digicube.fr/meilleur-logiciel-de-gestion-des-talents">outil de gestion des talents</a> m'a vraiment aidé à y voir plus clair sur mon équipe.</p>
