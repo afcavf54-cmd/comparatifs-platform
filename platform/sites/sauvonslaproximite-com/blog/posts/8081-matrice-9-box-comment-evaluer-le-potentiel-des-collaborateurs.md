@@ -4,14 +4,19 @@ slug: 8081-matrice-9-box-comment-evaluer-le-potentiel-des-collaborateurs
 date: '2026-06-02T05:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Matrice 9 box : guide pratique RH pour identifier les hauts potentiels'
-meta_description: Découvrez la matrice 9 box pour évaluer le potentiel des collaborateurs. Méthode éprouvée pour identifier vos futurs leaders et optimiser vos décisions RH.
+meta_description: Découvrez la matrice 9 box pour évaluer le potentiel des collaborateurs.
+  Méthode éprouvée pour identifier vos futurs leaders et optimiser vos décisions RH.
 min_words: 3000
 status: published
 link_anchors:
 - text: matrice 9 box
   max: 2
+related_posts:
+- 4853-cartographie-des-competences-comment-identifier-les-savoir-faire-cles
+- 3445-logiciel-gepp-quelles-fonctionnalites-comparer
+- 4315-gestion-des-talents-dans-une-pme-quelles-solutions-mettre-en-place
+- 4608-gestion-des-talents-rh-quelles-bonnes-pratiques-adopter
 ---
-
 <h2>Qu'est-ce que la matrice 9 box et pourquoi l'utiliser ?</h2>
 
 <p>La matrice 9 box, je l'ai découverte il y a plus de dix ans lors d'une formation RH. Franchement, au début, j'étais sceptique. Encore un autre outil théorique qui ne marcherait pas en pratique ? Sauf que cette grille d'évaluation, développée initialement par McKinsey puis popularisée par General Electric, s'est révélée redoutablement efficace pour cartographier nos talents.</p>
