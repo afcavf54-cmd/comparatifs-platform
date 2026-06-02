@@ -673,12 +673,12 @@ def _post_process_dates_tracking(output_dir: Path, site_dir: Path,
 
 # ── Générateur principal ───────────────────────────────────────────────────────
 def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = None) -> None:
-    # ⚠⚠⚠ DEBUG MARKER v12 — au TOUT DÉBUT de generate_site ⚠⚠⚠
+    # ⚠⚠⚠ DEBUG MARKER v14 — au TOUT DÉBUT de generate_site ⚠⚠⚠
     # Si tu vois cette ligne dans le log : v11 est bien exécuté, on peut
     # creuser le reste. Si tu ne la vois PAS : le fichier exécuté n'est
     # PAS v11 (problème de checkout/cache GitHub Actions).
     import sys as _sys
-    print(f"  🟢 DEBUG v12 ENTRÉE generate_site : site_slug={site_slug}", flush=True)
+    print(f"  🟢 DEBUG v14 ENTRÉE generate_site : site_slug={site_slug}", flush=True)
     _sys.stdout.flush()
 
     site_dir = SITES_DIR / site_slug
@@ -966,7 +966,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         generated += 1
 
     if not dry_run:
-        print(f"  🟢 DEBUG v12 ENTRÉE bloc 'if not dry_run' (ligne ~923)", flush=True)
+        print(f"  🟢 DEBUG v14 ENTRÉE bloc 'if not dry_run' (ligne ~923)", flush=True)
         generate_sitemap(site, all_pairs, products, output_dir, site_dir=site_dir, config=config)
         # ── Blog : chargement des articles avant le cleanup ──────────────
         # On marque les pages attendues du blog pour qu'elles ne soient pas
@@ -1083,7 +1083,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 _avis_protected.add(f"{_md.stem}.html")
         _protected = (blog_expected or set()) | _avis_protected
         cleanup_removed_products(output_dir, site_dir, products, all_pairs, is_classement_template, blog_expected=_protected)
-        print(f"  🟢 DEBUG v12 APRÈS cleanup, avant la suite (is_classement_template={is_classement_template})", flush=True)
+        print(f"  🟢 DEBUG v14 APRÈS cleanup, avant la suite (is_classement_template={is_classement_template})", flush=True)
 
         # ── Détection précoce des avis ────────────────────────────────────
         # On set `site["has_avis"] = True` AVANT la génération des autres
@@ -1238,7 +1238,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         # que v10 est bien déployé et que le code arrive jusqu'ici. Si tu ne
         # la vois pas, c'est qu'un truc plus haut a sauté tout ce bloc OU
         # que v10 n'a pas été push. À RETIRER une fois le bug compris.
-        print(f"  🟡 DEBUG v12 : entrée bloc Home, output_dir={output_dir}, exists={output_dir.exists()}")
+        print(f"  🟡 DEBUG v14 : entrée bloc Home, output_dir={output_dir}, exists={output_dir.exists()}")
         # ── Pré-écriture d'un placeholder index.html garantie ────────────
         # On écrit TOUJOURS un placeholder avant la tentative de render réel
         # du template index. Si le template existe et le render réussit, son
@@ -1316,7 +1316,7 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     top_pairs=top_pairs, build_date=date.today().isoformat(),
                     site_editorial=site_editorial,
                     page_types=config.get("page_types", {}),
-                    recent_blog_posts=blog_posts[:6] if blog_posts else [],
+                    recent_blog_posts=substitute_template_vars(blog_posts[:6], _global_vars) if blog_posts else [],
                     home_title=home_title, home_description=home_desc, home_h1=site.get('home_h1', ''),
                 )
                 # Cache-buster pour forcer Cloudflare à re-uploader
@@ -1756,11 +1756,15 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 next_url = f"{base_url}/{page_num + 1}" if page_num < total else None
                 # On signale dans le titre si page > 1 (mais SEO : meta dupliquée)
                 title = meta_title if page_num == 1 else f"{meta_title} — Page {page_num}"
+                # Substitution {year} sur les posts affichés dans l'index/catégorie.
+                # Sans ça, les cards de la liste affichaient `{year}` non substitué
+                # dans les titres / excerpts (cf. editions-dp.com/blog).
+                posts_slice_rendered = substitute_template_vars(posts_slice, _global_vars)
                 return env.get_template("blog-index.html.j2").render(
                     site={**site, "seo": _seo}, theme=theme,
                     page_types=config.get("page_types", {}),
                     build_date=date.today().isoformat(),
-                    posts=posts_slice, categories=blog_categories,
+                    posts=posts_slice_rendered, categories=blog_categories,
                     blog_title=title, blog_meta=meta_desc,
                     blog_h1=h1, blog_intro=intro,
                     current_page=page_num, total_pages=total,
@@ -2024,12 +2028,13 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
             tpl_avis_idx = env.get_template("avis-index.html.j2")
             site_name = site.get("name", "")
             year = site.get("year", date.today().year)
-            # Index général /avis.html
+            # Index général /avis.html — substitution {year} sur la liste
+            avis_posts_rendered = substitute_template_vars(avis_posts, _global_vars)
             html = tpl_avis_idx.render(
                 site={**site, "seo": _seo}, theme=theme,
                 page_types=config.get("page_types", {}),
                 build_date=date.today().isoformat(),
-                posts=avis_posts,
+                posts=avis_posts_rendered,
                 categories=avis_categories,
                 base_url="/avis",
                 avis_title=f"Avis et tests {site_name} {year}",
@@ -2046,11 +2051,13 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                              if (p.get("categorie") or "").strip().lower() == cat["name"].lower()]
                 cat_dir = output_dir / "avis" / cat["slug"]
                 cat_dir.mkdir(parents=True, exist_ok=True)
+                # Substitution {year} sur les avis de cette catégorie
+                cat_posts_rendered = substitute_template_vars(cat_posts, _global_vars)
                 html = tpl_avis_idx.render(
                     site={**site, "seo": _seo}, theme=theme,
                     page_types=config.get("page_types", {}),
                     build_date=date.today().isoformat(),
-                    posts=cat_posts,
+                    posts=cat_posts_rendered,
                     categories=avis_categories,
                     current_category=cat["name"],
                 # IMPORTANT : trailing slash conservé dans base_url car les
