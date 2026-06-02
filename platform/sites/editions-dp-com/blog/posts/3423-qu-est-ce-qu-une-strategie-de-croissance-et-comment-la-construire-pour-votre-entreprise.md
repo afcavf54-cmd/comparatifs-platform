@@ -1,22 +1,23 @@
 ---
-title: "Qu'est-ce qu'une stratégie de croissance et comment la construire pour votre entreprise ?"
+title: Qu'est-ce qu'une stratégie de croissance et comment la construire pour votre
+  entreprise ?
 slug: 3423-qu-est-ce-qu-une-strategie-de-croissance-et-comment-la-construire-pour-votre-entreprise
-date: 2026-05-31T09:00:00+02:00
-updated: 2026-06-01T13:45:47
-categorie: "Gestion d'entreprise"
-meta_title: "Stratégie de croissance : définition et méthodes"
+date: 2026-05-31 09:00:00+02:00
+updated: 2026-06-01 13:45:47
+categorie: Gestion d'entreprise
+meta_title: 'Stratégie de croissance : définition et méthodes'
 meta_description: Découvrez comment construire une stratégie de croissance durable
 featured_image: /blog/3423-qu-est-ce-qu-une-strategie-de-croissance-et-comment-la-construire-pour-votre-entreprise/featured-41111.jpg
 status: published
 min_words: 1800
 related_posts:
-- 9832-la-methode-sepo-expliquee-comment-l-utiliser-pour-analyser-votre-organisation
 - 8804-matrice-tows-comment-l-utiliser-pour-construire-une-strategie-efficace
+- 9832-la-methode-sepo-expliquee-comment-l-utiliser-pour-analyser-votre-organisation
+- 1843-pain-point-client-comment-identifier-et-resoudre-les-points-de-douleur-de-vos-clients
 link_anchors:
 - text: stratégie de croissance
   max: 4
 ---
-
 <h2>Définir une stratégie de croissance : ma vision de dirigeant</h2>
 
 <p>Après 11 ans à diriger ma TPE lyonnaise, je peux vous dire qu'une stratégie de croissance, c'est bien plus qu'un plan sur le papier. <strong>C'est votre feuille de route pour faire grandir votre entreprise de façon durable</strong>, sans vous ruiner ni épuiser vos équipes.</p>
