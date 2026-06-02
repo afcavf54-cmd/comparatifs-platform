@@ -4,14 +4,20 @@ slug: 7406-statut-juridique-de-la-micro-entreprise-ce-qu-il-faut-savoir
 date: '2026-06-02T09:00:00+02:00'
 categorie: Création entreprise
 meta_title: Quel est le statut juridique de la micro-entreprise ?
-meta_description: 'Découvrez tout sur le statut juridique de la micro-entreprise : seuils 2024, avantages, inconvénients et spécificités pour bien choisir ce régime simplifié.'
+meta_description: 'Découvrez tout sur le statut juridique de la micro-entreprise :
+  seuils 2024, avantages, inconvénients et spécificités pour bien choisir ce régime
+  simplifié.'
 min_words: 1200
 status: published
 link_anchors:
 - text: statut juridique de la micro-entreprise
   max: 2
+related_posts:
+- 2986-comment-creer-un-produit-de-a-a-z-methode-etapes-cles-et-conseils-pratiques
+- 8641-creer-une-entreprise-auto-entrepreneur-toutes-les-etapes
+- 8082-tout-savoir-sur-la-creation-d-une-sas-avec-legalstart
+- 5948-demarches-creation-d-entreprise-tout-ce-qu-il-faut-faire
 ---
-
 <h2>Micro-entreprise : un statut simple mais avec des spécificités</h2>
 
 <p>Je vais être franc avec vous. Quand j'ai créé ma première entreprise il y a onze ans, le statut de micro-entreprise n'existait pas encore. On parlait d'auto-entrepreneur. Aujourd'hui, c'est devenu LA solution pour se lancer rapidement dans l'entrepreneuriat. Mais attention, simple ne veut pas dire simpliste.</p>
