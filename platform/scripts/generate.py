@@ -206,6 +206,102 @@ def substitute_template_vars(obj, vars_map: dict):
     return obj
 
 
+def normalize_table_html(html: str) -> str:
+    """Normalise les <table> dans un HTML pour qu'ils soient bien stylés
+    par le CSS partagé (_table_styles.html.j2) :
+      1. Si une <table> n'est pas dans un <div class="table-wrap">,
+         on l'enveloppe (pour scroll horizontal sur mobile).
+      2. Si une <table> n'a pas de <thead>, on promeut la première <tr> :
+         soit elle a déjà des <th> (juste wrap dans <thead>), soit on
+         convertit ses <td> en <th> + wrap.
+      3. Si les <tr> restantes ne sont pas dans <tbody>, on les wrappe.
+
+    Idempotente : appliquer plusieurs fois ne change rien sur un HTML
+    déjà conforme. Conservative : ne touche pas si tout est déjà bien.
+    """
+    if not html or "<table" not in html.lower():
+        return html
+
+    import re as _re_t
+
+    # ── Étape 1 : envelopper les <table> nues dans <div class="table-wrap">
+    def wrap_unwrapped_tables(html_in: str) -> str:
+        out = []
+        pos = 0
+        for m in _re_t.finditer(r"<table\b[^>]*>.*?</table>", html_in, flags=_re_t.IGNORECASE | _re_t.DOTALL):
+            out.append(html_in[pos:m.start()])
+            before_window = html_in[max(0, m.start() - 100):m.start()]
+            if 'class="table-wrap"' in before_window or "class='table-wrap'" in before_window:
+                out.append(m.group(0))
+            else:
+                out.append('<div class="table-wrap">')
+                out.append(m.group(0))
+                out.append('</div>')
+            pos = m.end()
+        out.append(html_in[pos:])
+        return "".join(out)
+
+    html = wrap_unwrapped_tables(html)
+
+    # ── Étape 2 + 3 : promouvoir la première ligne en <thead> + wrapper <tbody>
+    def promote_first_row(table_match):
+        table_html = table_match.group(0)
+        # Si déjà <thead>, ne pas toucher
+        if _re_t.search(r"<thead\b", table_html, _re_t.IGNORECASE):
+            return table_html
+        tr_match = _re_t.search(r"<tr\b[^>]*>.*?</tr>", table_html, _re_t.IGNORECASE | _re_t.DOTALL)
+        if not tr_match:
+            return table_html
+        first_tr = tr_match.group(0)
+        if _re_t.search(r"<th\b", first_tr, _re_t.IGNORECASE):
+            new_first = "<thead>" + first_tr + "</thead>"
+        else:
+            new_first = first_tr
+            new_first = _re_t.sub(r"<td\b", "<th", new_first, flags=_re_t.IGNORECASE)
+            new_first = _re_t.sub(r"</td>", "</th>", new_first, flags=_re_t.IGNORECASE)
+            new_first = "<thead>" + new_first + "</thead>"
+        rest = table_html[tr_match.end():]
+        closing_match = _re_t.search(r"</table>\s*$", rest, _re_t.IGNORECASE)
+        closing = closing_match.group(0) if closing_match else "</table>"
+        rest_before_close = _re_t.sub(r"</table>\s*$", "", rest, flags=_re_t.IGNORECASE)
+        if "<tr" in rest_before_close.lower() and "<tbody" not in rest_before_close.lower():
+            rest_before_close = "<tbody>" + rest_before_close + "</tbody>"
+        opening = table_html[:tr_match.start()]
+        return opening + new_first + rest_before_close + closing
+
+    html = _re_t.sub(
+        r"<table\b[^>]*>.*?</table>",
+        promote_first_row,
+        html,
+        flags=_re_t.IGNORECASE | _re_t.DOTALL,
+    )
+
+    return html
+
+
+def _post_process_normalize_tables(output_dir: Path) -> None:
+    """Parcourt tous les .html générés et normalise les <table> trouvés.
+    À appeler en fin de build, après que tous les fichiers HTML soient écrits.
+    Idempotent : safe à rappeler plusieurs fois.
+    """
+    touched = 0
+    scanned = 0
+    for html_file in sorted(output_dir.rglob("*.html")):
+        scanned += 1
+        try:
+            html = html_file.read_text(encoding="utf-8")
+        except Exception:
+            continue
+        if "<table" not in html.lower():
+            continue
+        new_html = normalize_table_html(html)
+        if new_html != html:
+            html_file.write_text(new_html, encoding="utf-8")
+            touched += 1
+    if touched:
+        print(f"  📋 Tables normalisées : {touched}/{scanned} fichiers HTML touchés")
+
+
 # ── Chargement Sheet CSV ───────────────────────────────────────────────────────
 STRING_FIELDS = {
     'geo', 'secteurs', 'pays', 'investissement_min', 'tri_horizon',
@@ -487,6 +583,70 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, 
                 if slug:
                     lines.append(url(f"{domain}/{slug}", "0.8", "monthly"))
 
+    # ── Pages OUTILS (depuis platform/sites/<site>/outils.json) ──────
+    # On scanne outils.json (qui contient les outils activés pour ce site)
+    # et on ajoute leurs URLs au sitemap. Le slug d'index est dérivé du
+    # menu_label (slugifié) — défaut "outils".
+    n_outils = 0
+    if site_dir is not None:
+        outils_path = site_dir / "outils.json"
+        if outils_path.exists():
+            try:
+                outils_data = json.loads(outils_path.read_text(encoding="utf-8"))
+                outils_map = outils_data.get("outils", {}) or {}
+                # Slug d'index (page liste des outils)
+                menu_label = (outils_data.get("menu_label") or "Outils").strip() or "Outils"
+                index_slug = slugify_cat(menu_label)
+                # On ajoute la page d'index uniquement s'il y a au moins
+                # un outil activé (sinon la page n'existe pas)
+                if outils_map:
+                    has_active = any(o.get("active") for o in outils_map.values())
+                    if has_active:
+                        lines.append(url(f"{domain}/{index_slug}", "0.6", "monthly"))
+                    for outil_id, outil_state in outils_map.items():
+                        if not outil_state.get("active"):
+                            continue
+                        outil_slug = (outil_state.get("slug") or outil_id).strip()
+                        if outil_slug:
+                            lines.append(url(f"{domain}/{outil_slug}", "0.7", "monthly"))
+                            n_outils += 1
+            except Exception as _e:
+                print(f"  ⚠ Sitemap : lecture outils.json a échoué : {_e}")
+
+    # ── Pages AVIS (nouveau système, depuis platform/sites/<site>/posts_avis/) ──
+    # On scanne les .md du dossier et on ajoute leurs URLs. Aussi l'index /avis
+    # et les pages catégorie /avis/<slug>/.
+    n_avis = 0
+    if site_dir is not None:
+        avis_dir = site_dir / "posts_avis"
+        if avis_dir.exists():
+            avis_md = list(avis_dir.glob("*.md"))
+            if avis_md:
+                # Index /avis
+                lines.append(url(f"{domain}/avis", "0.8", "weekly"))
+                # Pages individuelles
+                _cats_seen = set()
+                for md in avis_md:
+                    stem = md.stem
+                    if stem:
+                        lines.append(url(f"{domain}/{stem}", "0.7", "monthly"))
+                        n_avis += 1
+                        # Collecter les catégories pour ajouter /avis/<cat>/
+                        try:
+                            raw = md.read_text(encoding="utf-8")
+                            if raw.startswith("---"):
+                                parts = raw.split("---", 2)
+                                if len(parts) >= 3:
+                                    fm = yaml.safe_load(parts[1]) or {}
+                                    cat = (fm.get("categorie") or "").strip()
+                                    if cat:
+                                        _cats_seen.add(slugify_cat(cat))
+                        except Exception:
+                            pass
+                # Pages catégorie d'avis
+                for cat_slug in sorted(_cats_seen):
+                    lines.append(url(f"{domain}/avis/{cat_slug}/", "0.6", "weekly"))
+
     lines += [
         url(f"{domain}/mentions-legales", "0.3", "yearly"),
         url(f"{domain}/politique-confidentialite", "0.3", "yearly"),
@@ -495,8 +655,12 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, 
     ]
     (output_dir / "sitemap.xml").write_text("\n".join(lines), encoding="utf-8")
     n_blog = len(blog_posts_for_sitemap)
-    blog_msg = f" + {n_blog} articles blog" if n_blog else ""
-    print(f"  ✓ sitemap.xml ({len(pairs)} comparatifs + {len(products)} avis + pages liste{blog_msg})")
+    extras = []
+    if n_blog:   extras.append(f"{n_blog} blog")
+    if n_outils: extras.append(f"{n_outils} outils")
+    if n_avis:   extras.append(f"{n_avis} avis")
+    extras_msg = (" + " + " + ".join(extras)) if extras else ""
+    print(f"  ✓ sitemap.xml ({len(pairs)} comparatifs + {len(products)} avis-legacy + pages liste{extras_msg})")
 
 
 def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, all_pairs: list, is_classement_template: bool = False, blog_expected: set | None = None) -> None:
@@ -673,12 +837,12 @@ def _post_process_dates_tracking(output_dir: Path, site_dir: Path,
 
 # ── Générateur principal ───────────────────────────────────────────────────────
 def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = None) -> None:
-    # ⚠⚠⚠ DEBUG MARKER v14 — au TOUT DÉBUT de generate_site ⚠⚠⚠
+    # ⚠⚠⚠ DEBUG MARKER v15 — au TOUT DÉBUT de generate_site ⚠⚠⚠
     # Si tu vois cette ligne dans le log : v11 est bien exécuté, on peut
     # creuser le reste. Si tu ne la vois PAS : le fichier exécuté n'est
     # PAS v11 (problème de checkout/cache GitHub Actions).
     import sys as _sys
-    print(f"  🟢 DEBUG v14 ENTRÉE generate_site : site_slug={site_slug}", flush=True)
+    print(f"  🟢 DEBUG v15 ENTRÉE generate_site : site_slug={site_slug}", flush=True)
     _sys.stdout.flush()
 
     site_dir = SITES_DIR / site_slug
@@ -966,7 +1130,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         generated += 1
 
     if not dry_run:
-        print(f"  🟢 DEBUG v14 ENTRÉE bloc 'if not dry_run' (ligne ~923)", flush=True)
+        print(f"  🟢 DEBUG v15 ENTRÉE bloc 'if not dry_run' (ligne ~923)", flush=True)
         generate_sitemap(site, all_pairs, products, output_dir, site_dir=site_dir, config=config)
         # ── Blog : chargement des articles avant le cleanup ──────────────
         # On marque les pages attendues du blog pour qu'elles ne soient pas
@@ -1083,7 +1247,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 _avis_protected.add(f"{_md.stem}.html")
         _protected = (blog_expected or set()) | _avis_protected
         cleanup_removed_products(output_dir, site_dir, products, all_pairs, is_classement_template, blog_expected=_protected)
-        print(f"  🟢 DEBUG v14 APRÈS cleanup, avant la suite (is_classement_template={is_classement_template})", flush=True)
+        print(f"  🟢 DEBUG v15 APRÈS cleanup, avant la suite (is_classement_template={is_classement_template})", flush=True)
 
         # ── Détection précoce des avis ────────────────────────────────────
         # On set `site["has_avis"] = True` AVANT la génération des autres
@@ -1238,7 +1402,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         # que v10 est bien déployé et que le code arrive jusqu'ici. Si tu ne
         # la vois pas, c'est qu'un truc plus haut a sauté tout ce bloc OU
         # que v10 n'a pas été push. À RETIRER une fois le bug compris.
-        print(f"  🟡 DEBUG v14 : entrée bloc Home, output_dir={output_dir}, exists={output_dir.exists()}")
+        print(f"  🟡 DEBUG v15 : entrée bloc Home, output_dir={output_dir}, exists={output_dir.exists()}")
         # ── Pré-écriture d'un placeholder index.html garantie ────────────
         # On écrit TOUJOURS un placeholder avant la tentative de render réel
         # du template index. Si le template existe et le render réussit, son
@@ -2117,6 +2281,15 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
             _post_process_dates_tracking(output_dir, site_dir, today_iso_pp, today_fr_pp, fr_date)
         except Exception as e:
             print(f"  ⚠ Tracking dates.json a échoué : {e}")
+
+        # Normalisation finale des <table> dans tous les .html générés.
+        # Ajoute <div class="table-wrap"> + <thead>/<tbody> aux tables nues
+        # (générées par l'IA, ou par markdown sans header explicite).
+        # Le CSS de base/_table_styles.html.j2 s'occupe du visuel.
+        try:
+            _post_process_normalize_tables(output_dir)
+        except Exception as e:
+            print(f"  ⚠ Normalisation tables a échoué : {e}")
 
 
 # ── CLI ───────────────────────────────────────────────────────────────────────
