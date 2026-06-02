@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>startuponly.com | Comparatifs 2026</title>
+<meta name="description" content="Comparez les meilleurs logiciels professionnels en 2026 : avis, prix, fonctionnalités.">
+<link rel="canonical" href="https://startuponly.com/">
+<meta property="og:title" content="startuponly.com | Comparatifs 2026">
+<meta property="og:description" content="">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://startuponly.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=startuponly-com" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "WebSite",
+  "name": "startuponly.com",
+  "url": "https://startuponly.com",
+  "description": "",
+  "author": { "@type": "Organization", "name": "Thomas Bertrand" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://startuponly.com/recherche?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<style>
+:root{
+  --bg:#F4F6FB;
+  --surface:#fff;
+  --surface2:#F0ECE5;
+  --ink:#0F1A2E;
+  --ink2:#6B6560;
+  --ink3:#A09890;
+  --accent:#1B4FD8;
+  --accent2:#E8410A;--cta:#E8410A;--cta-text:#ffffff;
+  --border:#E2DDD6;
+  --r:12px;
+  --r2:20px;
+  --green:#1A7A4A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
+a{color:inherit;text-decoration:none}
+
+/* ── NAV ── */
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
+.nav-cta:hover{opacity:.88}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+.nav-mobile a:hover{color:#fff;background:rgba(255,255,255,.08)}
+
+/* ── HERO ── */
+.hero{background:var(--ink);padding:72px 5vw 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-20%;width:60%;height:200%;background:radial-gradient(ellipse,rgba(255,255,255,.04) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);font-size:12px;font-weight:600;padding:5px 14px;border-radius:20px;margin-bottom:20px;letter-spacing:.06em;text-transform:uppercase}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(34px,5vw,62px);font-weight:400;color:#fff;line-height:1.1;letter-spacing:-.025em;max-width:800px;margin:0 auto 20px}
+.hero h1 em{font-style:normal;color:var(--accent2)}
+.hero-desc{font-size:18px;color:rgba(255,255,255,.6);max-width:580px;margin:0 auto 40px;line-height:1.7}
+
+/* ── MOTEUR DE RECHERCHE ── */
+.search-wrap{max-width:600px;margin:0 auto;position:relative}
+.search-box{display:flex;align-items:center;background:#fff;border-radius:50px;padding:6px 6px 6px 18px;box-shadow:0 8px 40px rgba(0,0,0,.25);gap:8px}
+.search-box input{flex:1;min-width:0;border:none;outline:none;font-size:15px;font-family:'Outfit',sans-serif;color:var(--ink);background:transparent}
+.search-box input::placeholder{color:var(--ink3)}
+.search-btn{padding:11px 20px;border-radius:40px;background:var(--accent);color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer;white-space:nowrap;transition:.15s;flex-shrink:0}
+.search-btn:hover{opacity:.88}
+@media(max-width:480px){
+  .search-box{padding:5px 5px 5px 14px}
+  .search-box input{font-size:13px}
+  .search-btn{padding:9px 14px;font-size:13px}
+}
+.search-suggestions{position:absolute;top:calc(100% + 8px);left:0;right:0;background:#fff;border-radius:var(--r2);box-shadow:0 8px 40px rgba(0,0,0,.15);z-index:50;overflow:hidden;display:none}
+.search-suggestions.open{display:block}
+.suggestion-item{padding:12px 20px;cursor:pointer;font-size:15px;color:var(--ink2);display:flex;align-items:center;gap:10px;transition:.1s;border-bottom:1px solid var(--border)}
+.suggestion-item:last-child{border-bottom:none}
+.suggestion-item:hover{background:var(--bg);color:var(--accent)}
+.suggestion-item::before{content:'🔍';font-size:13px;opacity:.5}
+.suggestion-highlight{font-weight:700;color:var(--ink)}
+
+/* ── STATS ── */
+.stats-bar{background:rgba(255,255,255,.05);border-top:1px solid rgba(255,255,255,.08);padding:20px 5vw;display:flex;justify-content:center;gap:48px}
+.stat-item{text-align:center}
+.stat-value{font-size:24px;font-weight:700;color:#fff;font-family:'DM Serif Display',serif}
+.stat-label{font-size:12px;color:rgba(255,255,255,.45);margin-top:2px}
+
+/* ── CONTENU PRINCIPAL ── */
+main{max-width:1200px;margin:0 auto;padding:64px 5vw 80px}
+
+/* ── COMPARATEURS ── */
+.comparateurs-section{margin-bottom:56px}
+.comparateurs-section h2{font-family:'DM Serif Display',serif;font-size:clamp(28px,3.5vw,40px);font-weight:400;letter-spacing:-.02em;margin-bottom:6px}
+/* Section Articles récents (blog) */
+.blog-recent-section{margin:64px 0 80px}
+.blog-recent-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+.blog-recent-head h2{font-family:'DM Serif Display',serif;font-size:clamp(26px,3.2vw,36px);font-weight:400;letter-spacing:-.02em;margin:0}
+.blog-recent-head .blog-recent-link{color:var(--accent);font-size:14px;font-weight:600;text-decoration:none;transition:.15s}
+.blog-recent-head .blog-recent-link:hover{opacity:.7}
+.blog-recent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.blog-recent-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:.18s;display:flex;flex-direction:column}
+.blog-recent-card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.06);text-decoration:none}
+.blog-recent-card-img{aspect-ratio:16/9;background:linear-gradient(135deg,var(--accent),var(--accent2));position:relative;overflow:hidden}
+.blog-recent-card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.blog-recent-card-img-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:40px;opacity:.4}
+.blog-recent-card-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.blog-recent-card-cat{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:8px}
+.blog-recent-card-title{font-size:16px;font-weight:600;color:var(--ink);line-height:1.35;margin-bottom:8px}
+.blog-recent-card-excerpt{font-size:13px;color:var(--ink2);line-height:1.55;flex:1}
+.blog-recent-card-date{font-size:11px;color:var(--ink3);margin-top:12px}
+@media(max-width:900px){.blog-recent-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.blog-recent-grid{grid-template-columns:1fr}}
+.comparateurs-subtitle{font-size:16px;color:var(--ink2);margin-bottom:36px}
+.cat-group{margin-bottom:36px}
+.cat-group-title{font-size:13px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.cat-group-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.cat-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.cat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;transition:.15s;cursor:pointer}
+.cat-card:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(0,0,0,.06);transform:translateY(-1px)}
+.cat-card-left{display:flex;align-items:center;gap:12px}
+.cat-card-icon{width:38px;height:38px;border-radius:10px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.cat-card-name{font-size:14px;font-weight:600;color:var(--ink);line-height:1.4}
+.cat-card-count{font-size:11px;color:var(--ink3);margin-top:2px}
+.cat-card-arrow{color:var(--accent);font-size:18px;opacity:0;transition:.15s}
+.cat-card:hover .cat-card-arrow{opacity:1}
+
+
+
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .nav-burger{display:flex}
+  .stats-bar{gap:24px;flex-wrap:wrap}
+  .cat-cards{grid-template-columns:1fr}
+  .top-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-inner{flex-direction:column;text-align:center}
+  .footer-links{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<style>
+nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+nav.site-nav .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
+nav.site-nav .nav-logo span{color:var(--accent2)}
+nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
+nav.site-nav .nav-cta:hover{opacity:.88}
+nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+nav.site-nav .nav-mobile.open{display:flex}
+nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
+</style>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">startuponly.com<span></span></a>
+    <div class="nav-links">
+      <a href="/nos-comparateurs">Nos comparateurs</a>
+    </div>
+    <a href="/contact" class="nav-cta">Contact</a>
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="/nos-comparateurs">Nos comparateurs</a>
+    <a href="/contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Comparatifs startuponly.com 2026</div>
+  <h1>startuponly.com : <em>le comparateur qui compare vraiment</em></h1>
+  <p class="hero-desc"></p>
+
+  <!-- Moteur de recherche -->
+  <div class="search-wrap">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Recherchez un type de logiciel..." autocomplete="off" aria-label="Rechercher">
+      <button class="search-btn" onclick="submitSearch()">Rechercher →</button>
+    </div>
+    <div class="search-suggestions" id="search-suggestions"></div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="stats-bar" style="margin-top:48px;border-radius:var(--r2)">
+    <div class="stat-item">
+      <div class="stat-value" id="stat-logiciels">10+</div>
+      <div class="stat-label">Logiciels analysés</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value" id="stat-categories">1</div>
+      <div class="stat-label">Catégories</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">2026</div>
+      <div class="stat-label">Mis à jour</div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main>
+
+  <!-- NOS COMPARATEURS -->
+  <section class="comparateurs-section">
+    <h2>Nos comparateurs</h2>
+    <p class="comparateurs-subtitle">Trouvez le meilleur logiciel selon votre métier et vos besoins</p>
+
+      <div class="cat-group">
+        <div class="cat-group-title">Ressources Humaines (RH)</div>
+        <div class="cat-cards">
+          <a href="/meilleur-logiciel-de-paie" class="cat-card">
+            <div class="cat-card-left">
+              <div class="cat-card-icon">💻</div>
+              <div>
+                <div class="cat-card-name">Logiciel de paie</div>
+                <div class="cat-card-count">10 logiciels</div>
+              </div>
+            </div>
+            <span class="cat-card-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+  </section>
+
+
+</main>
+
+<!-- FOOTER -->
+<style>
+.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
+.footer-brand .footer-logo span{color:var(--accent2)}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;max-width:260px;margin:0;padding:0}
+.footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
+.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-brand{grid-column:1/-1}
+}
+</style>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="footer-logo">startuponly.com<span></span></div>
+        <p>Comparatifs startuponly.com 2026</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/plan-du-site">Plan du site</a>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/politique-confidentialite">Confidentialité</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>À propos</h4>
+        <a href="/contact">Nous contacter</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        © 2026 startuponly.com — Données actualisées le 2 juin 2026
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button type="button"
+        class="scroll-top-btn"
+        id="scroll-top-btn"
+        aria-label="Remonter en haut de la page"
+        title="Remonter en haut">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2.5"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+</button>
+
+<style>
+.scroll-top-btn{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:9999;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--ink, #0F1419);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .15s;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+  padding:0;
+  font-family:inherit;
+}
+.scroll-top-btn.visible{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.scroll-top-btn:hover{
+  background:var(--accent, #C9A961);
+}
+.scroll-top-btn:focus-visible{
+  outline:2px solid var(--accent, #C9A961);
+  outline-offset:3px;
+}
+@media (max-width:600px){
+  .scroll-top-btn{ bottom:16px; right:16px; width:42px; height:42px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .scroll-top-btn{ transition:opacity .2s, visibility .2s; }
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  var btn = document.getElementById('scroll-top-btn');
+  if (!btn) return;
+
+  var THRESHOLD = 400; // px de scroll avant apparition
+  var ticking = false;
+
+  function update(){
+    if (window.scrollY > THRESHOLD) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+    ticking = false;
+  }
+
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  btn.addEventListener('click', function(){
+    var prefersReduced = window.matchMedia
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  });
+
+  // Check immédiat (au cas où la page est rechargée déjà scrollée)
+  update();
+})();
+</script>
+
+
+<script>
+// Données de recherche (chargées en JS après DOM pour éviter footprint)
+const ALL_CATEGORIES = [
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
+].filter((v,i,a) => a.findIndex(t=>t.label===v.label)===i);
+
+const searchInput = document.getElementById('search-input');
+const suggestions = document.getElementById('search-suggestions');
+
+searchInput.addEventListener('input', function() {
+  const q = this.value.toLowerCase().trim();
+  suggestions.innerHTML = '';
+  if (!q) { suggestions.classList.remove('open'); return; }
+  const matches = ALL_CATEGORIES.filter(c => c.label.toLowerCase().includes(q)).slice(0, 6);
+  if (!matches.length) { suggestions.classList.remove('open'); return; }
+  matches.forEach(m => {
+    const div = document.createElement('div');
+    div.className = 'suggestion-item';
+    const idx = m.label.toLowerCase().indexOf(q);
+    div.innerHTML = '<span class="suggestion-highlight">' + m.label.substring(0,idx) + '</span>'
+      + '<strong>' + m.label.substring(idx, idx+q.length) + '</strong>'
+      + m.label.substring(idx+q.length);
+    div.onclick = () => window.location.href = '/' + m.slug;
+    suggestions.appendChild(div);
+  });
+  suggestions.classList.add('open');
+});
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.search-wrap')) suggestions.classList.remove('open');
+});
+
+searchInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter') submitSearch();
+});
+
+function submitSearch() {
+  const q = searchInput.value.toLowerCase().trim();
+  if (!q) return;
+  const match = ALL_CATEGORIES.find(c => c.label.toLowerCase().includes(q));
+  if (match) window.location.href = '/' + match.slug;
+}
+
+// Menu mobile
+function toggleMenu() {
+  document.getElementById('nav-mobile').classList.toggle('open');
+  document.getElementById('burger').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  const m = document.getElementById('nav-mobile');
+  const b = document.getElementById('burger');
+  if (m && b && !m.contains(e.target) && !b.contains(e.target)) {
+    m.classList.remove('open'); b.classList.remove('open');
+  }
+});
+</script>
+<!-- build:20260504122856 --></body>
+</html>
