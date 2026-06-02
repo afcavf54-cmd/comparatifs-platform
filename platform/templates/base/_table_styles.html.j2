@@ -1,0 +1,103 @@
+{# ─────────────────────────────────────────────────────────────────────
+  Styles tableaux partagés — à inclure UNE SEULE FOIS depuis _nav.html.j2.
+
+  Objectif : uniformiser l'apparence des <table> sur TOUS les sites et
+  TOUS les types de pages (blog, avis, classement, comparatif, outils).
+
+  Sélecteurs : on cible les tables dans les conteneurs rédactionnels
+  classiques (.tool-content, .classement-content, article, main),
+  PAS les tables structurelles que les templates peuvent utiliser
+  (nav, footer, sidebar). Le :where() baisse la spécificité pour ne
+  pas écraser un styling local plus précis si un template en définit.
+
+  À inclure depuis base/_nav.html.j2 dans le <head>, via :
+    {% include "base/_table_styles.html.j2" %}
+───────────────────────────────────────────────────────────────────── #}
+<style>
+/* Wrapper auto pour scroll horizontal sur mobile.
+   La fonction normalize_table_html() côté Python enveloppe les <table>
+   nues dans <div class="table-wrap"> au build. Pour les contenus déjà
+   wrappés (markdown ou IA conforme), c'est idempotent. */
+:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) .table-wrap{
+  overflow-x:auto;
+  margin:24px 0;
+  border-radius:10px;
+  border:1px solid var(--border, #E6E1D8);
+}
+
+/* Tableau de base */
+:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:15px;
+  background:var(--surface, #fff);
+  margin:24px 0;
+}
+:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) .table-wrap > table{
+  margin:0;
+}
+
+/* Headers */
+:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) thead{
+  background:var(--surface2, #F5F3EE);
+}
+:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) thead th{
+  text-align:left;
+  padding:14px 18px;
+  font-weight:600;
+  color:var(--ink, #0F1419);
+  font-size:14px;
+  letter-spacing:0;
+  text-transform:none;
+  border-bottom:2px solid var(--border, #E6E1D8);
+  white-space:nowrap;
+}
+:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) thead th:not(:last-child){
+  border-right:1px solid var(--border, #E6E1D8);
+}
+
+/* Caption (titre du tableau) */
+:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) table caption{
+  caption-side:top;
+  padding:12px 18px;
+  font-weight:600;
+  color:var(--ink, #0F1419);
+  text-align:left;
+  background:var(--surface2, #F5F3EE);
+  border-bottom:1px solid var(--border, #E6E1D8);
+}
+
+/* Cells */
+:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) tbody td{
+  padding:12px 18px;
+  color:var(--ink, #0F1419);
+  border-bottom:1px solid var(--border, #E6E1D8);
+  vertical-align:top;
+  line-height:1.5;
+}
+:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) tbody td:not(:last-child){
+  border-right:1px solid var(--border, #E6E1D8);
+}
+
+/* Alternance + hover */
+:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) tbody tr:nth-child(even){
+  background:color-mix(in srgb, var(--surface, #fff) 70%, var(--surface2, #F5F3EE));
+}
+:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) tbody tr:hover{
+  background:var(--surface2, #F5F3EE);
+}
+:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) tbody tr:last-child td{
+  border-bottom:none;
+}
+
+/* Mobile */
+@media (max-width:680px){
+  :where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) table{
+    font-size:14px;
+  }
+  :where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) thead th,
+  :where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) tbody td{
+    padding:10px 12px;
+  }
+}
+</style>
