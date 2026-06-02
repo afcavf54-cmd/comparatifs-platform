@@ -5,6 +5,7 @@
 # ============================================================
 
 site:
+  home_h1: "Les meilleures solutions pour lancer et faire grandir votre startup"
   slug: startuponly-com
   name: "startuponly.com"
   domain: "https://startuponly.com"
@@ -16,8 +17,8 @@ site:
   sheet_csv_url: ""
   www_preference: "naked"
   author_name: "Thomas Bertrand"
-  home_title: "startuponly.com | Comparatifs 2026"
-  home_description: ""
+  home_title: "StartupOnly : comparatifs logiciels SaaS, outils startup et solutions business"
+  home_description: "StartupOnly compare les meilleurs logiciels SaaS, outils professionnels et solutions innovantes pour accompagner les startups, PME et entrepreneurs dans leur croissance."
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
   analytics_clicky: ""
@@ -61,17 +62,17 @@ tag_classes:
   europeenne: "tag-europeenne"
 
 seo:
-  title_pattern: "{A} vs {B} : comparatif {year}"
-  meta_pattern: "Comparatif complet {A} vs {B} {year} : prix, fonctionnalités, avis."
+  title_pattern: "{A} ou {B} : notre comparatif startup {year}"
+  meta_pattern: "Analyse détaillée de {A} et {B} pour startups et entreprises innovantes."
   h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
   eyebrow: "Comparatif {year}"
   intro_pattern: "Comparatif {A} vs {B} - analyse complète."
   category_label: "Comparateurs"
   category_url: "/#comparateurs"
   avis_title_pattern: "Avis {nom} {year} : notre test complet"
-  avis_meta_pattern: "Notre avis complet sur {nom} {year} : prix, fonctionnalités, points forts et limites."
-  liste_comp_title: "Tous les comparatifs {site_name} {year}"
-  liste_avis_title: "Avis logiciels {year} : analyses indépendantes"
+  avis_meta_pattern: "Découvrez notre avis détaillé sur {nom} : fonctionnalités, tarifs, automatisations et support."
+  liste_comp_title: "Tous les comparatifs StartupOnly {year}"
+  liste_avis_title: "Avis logiciels SaaS : nos analyses indépendantes"
   classement_title_pattern: "Meilleur {categorie} {year} : mon top {count} comparatif"
   classement_meta_pattern: "Comparez les meilleurs {categories} en {year} : prix, fonctionnalités, avis indépendants."
   classement_h1_pattern: "J'ai testé {count} {categories} : mon comparatif complet {year}"
