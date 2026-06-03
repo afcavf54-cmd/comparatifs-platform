@@ -15,8 +15,8 @@ site:
   sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTIm5HMSufNd_hmq_GufS5Tgx9QLXni_5vWKvy4rjtxDIKZVWJ2Cpa8JdDWm4_7W5HpghhnZnyWBxG6/pub?output=csv"
   www_preference: "www"
   author_name: "Sophie Martin"
-  home_title: "Entreprendre Pour Apprendre : outils, logiciels et solutions pour entrepreneurs"
-  home_description: "Retrouvez des comparatifs de logiciels, des avis sur les solutions
+  home_title: "Entreprendre pour Apprendre : le média de la création d'entreprise"
+  home_description: "Découvrez des conseils, guides pratiques, actualités et ressources pour créer, gérer et développer votre entreprise à chaque étape de votre parcours entrepreneurial."
     professionnelles et des conseils dédiés aux entrepreneurs, indépendants et entreprises."
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
@@ -73,7 +73,7 @@ seo:
   category_label: "Comparateurs"
   category_url: "/#comparateurs"
   avis_title_pattern: "Avis {nom} {year} : notre analyse complète"
-  avis_meta_pattern: "Découvrez notre test du logiciel {nom} : UX, automatisation,
+  avis_meta_pattern: "Découvrez notre test du logiciel {nom} : UX, automatisation,"
     IA et support."
   liste_comp_title: "Comparatifs des meilleures solutions digitales"
   liste_avis_title: "Tests et analyses des logiciels & SaaS"
@@ -95,4 +95,4 @@ author:
   photo: "/author-photo.png"
   socials: []
 
-  home_h1: "Comparatifs et conseils pour les entrepreneurs et entreprises"
+  home_h1: "Le média pour créer, lancer et développer son entreprise"
