@@ -30,6 +30,15 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
   // dès le départ et l'éditeur resterait vide visuellement).
   const lastEmittedRef = useRef<string>('\u0000__INIT__\u0000')
 
+  // Au mount : force le browser à utiliser <p> au lieu de <div> à chaque
+  // Entrée. Sans ça, Chrome/Edge créent des <div> qui ne reçoivent pas le
+  // CSS `p { margin-bottom: 12px }` côté éditeur ET côté site publié, ce
+  // qui supprime l'espacement entre les paragraphes saisis.
+  // execCommand est deprecated mais cette option reste supportée partout.
+  useEffect(() => {
+    try { document.execCommand('defaultParagraphSeparator', false, 'p') } catch {}
+  }, [])
+
   // Sync value → DOM uniquement si le HTML est différent de ce qu'on a émis
   // (évite de reset le curseur à chaque keystroke).
   useEffect(() => {
@@ -42,7 +51,11 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
 
   function emit() {
     if (!ref.current) return
-    const html = ref.current.innerHTML
+    let html = ref.current.innerHTML
+    // Normalisation défensive : convertit les <div> de premier niveau en <p>
+    // pour les saisies legacy ou les browsers qui ignorent
+    // defaultParagraphSeparator. Idempotent.
+    html = html.replace(/<div(\s[^>]*)?>/gi, '<p>').replace(/<\/div>/gi, '</p>')
     lastEmittedRef.current = html
     onChange(html)
   }
@@ -171,7 +184,8 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
         .rich-editor h1 { font-size: 26px; font-weight: 600; color: #fff; margin: 18px 0 10px; }
         .rich-editor h2 { font-size: 22px; font-weight: 600; color: #fff; margin: 18px 0 10px; }
         .rich-editor h3 { font-size: 18px; font-weight: 600; color: #fff; margin: 14px 0 8px; }
-        .rich-editor p { margin-bottom: 12px; }
+        .rich-editor p,
+        .rich-editor div { margin-bottom: 12px; }
         .rich-editor ul, .rich-editor ol { margin: 0 0 12px 24px; }
         .rich-editor li { margin-bottom: 4px; }
         .rich-editor a {
