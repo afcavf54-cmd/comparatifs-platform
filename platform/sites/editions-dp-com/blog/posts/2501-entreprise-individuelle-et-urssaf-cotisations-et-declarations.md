@@ -4,14 +4,20 @@ slug: 2501-entreprise-individuelle-et-urssaf-cotisations-et-declarations
 date: '2026-06-03T16:00:00+02:00'
 categorie: Création entreprise
 meta_title: Comment déclarer son entreprise individuelle à l'URSSAF ?
-meta_description: 'Découvrez vos obligations URSSAF en entreprise individuelle : calcul des cotisations sociales, déclarations obligatoires et protection sociale. Guide complet…'
+meta_description: 'Découvrez vos obligations URSSAF en entreprise individuelle : calcul
+  des cotisations sociales, déclarations obligatoires et protection sociale. Guide
+  complet…'
 min_words: 1200
 status: published
 link_anchors:
 - text: entreprise individuelle et URSSAF
   max: 2
+related_posts:
+- 8347-peut-on-creer-une-association-et-en-vivre-statuts-financements-et-conseils-pratiques
+- 7122-etapes-creation-entreprise-le-guide-complet-en-year
+- 2986-comment-creer-un-produit-de-a-a-z-methode-etapes-cles-et-conseils-pratiques
+- 9835-statut-juridique-d-une-entreprise-lequel-choisir-en-year
 ---
-
 <h2>Comprendre l'URSSAF et vos obligations en tant qu'entrepreneur individuel</h2>
 
 <p>En tant que dirigeant d'une petite entreprise, je comprends parfaitement votre préoccupation concernant les cotisations URSSAF. Cette question revient régulièrement chez mes collègues entrepreneurs. <strong>L'URSSAF</strong> collecte vos cotisations sociales obligatoires, que vous soyez en entreprise individuelle classique ou auto-entrepreneur.</p>
