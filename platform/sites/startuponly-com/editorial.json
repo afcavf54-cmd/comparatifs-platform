@@ -28,7 +28,147 @@
         "q": "Comment automatiser la paie de mon entreprise ?",
         "a": "Pagga by Lucca excelle là-dessus : import automatique des variables, calcul des heures sup', édition des bulletins. J'ai divisé par 3 mon temps de traitement paie. <strong>Attention</strong> : l'automatisation demande un paramétrage initial rigoureux."
       }
-    ]
+    ],
+    "prod_payfit": {
+      "description": "<p>J'utilise <strong>PayFit</strong> depuis deux ans et c'est devenu mon outil de référence pour la paie des PME. Ce logiciel de paie français fait exactement ce qu'il promet : simplifier la gestion des salaires sans nécessiter de formation comptable poussée. L'interface guide vraiment bien les novices.</p><p>Ce qui m'a séduit dès le départ, c'est la <strong>gestion automatique des cotisations sociales</strong>. Fini les calculs manuels et les erreurs de taux. PayFit met à jour automatiquement les barèmes URSSAF et calcule les charges patronales. Je passe maintenant 3 heures par mois sur la paie au lieu de 8.</p><p>L'outil couvre bien les besoins classiques des entreprises de 5 à 300 salariés : bulletins de paie conformes, déclarations sociales automatisées, gestion des congés payés et arrêts maladie. <strong>L'onboarding est particulièrement soigné</strong> avec un accompagnement personnalisé pendant les premiers mois.</p>",
+      "points_forts": [
+        "Interface intuitive même pour les non-comptables",
+        "Mise à jour automatique des taux de cotisations sociales",
+        "Support client réactif avec des experts paie français",
+        "Intégration native avec les principales banques pour les virements"
+      ],
+      "points_faibles": [
+        "Tarification qui grimpe vite avec les options avancées",
+        "Personnalisation limitée des bulletins de paie",
+        "Gestion des contrats complexes parfois rigide"
+      ]
+    },
+    "prod_mysilae": {
+      "description": "<p>My Silae propose une <strong>approche modulaire</strong> de la gestion de paie qui me séduit particulièrement. Je peux commencer par la paie basique puis ajouter les modules RH, formation ou gestion des temps selon mes besoins. L'interface reste sobre, pas de fioritures inutiles qui ralentissent le travail quotidien.</p><p>Ce qui frappe d'emblée, c'est la <strong>logique comptable bien pensée</strong>. Les écritures se génèrent automatiquement et correspondent exactement à ce que j'attends. Le paramétrage des conventions collectives fonctionne bien, même sur des cas complexes comme le BTP ou la métallurgie. J'ai testé sur plusieurs secteurs et ça tient la route.</p><p>Le logiciel de paie My Silae vise clairement les <strong>cabinets comptables</strong> et les moyennes entreprises qui veulent garder la main sur leur process. Pas de révolution dans l'approche, mais une solidité technique qui rassure quand on traite 200 bulletins par mois.</p>",
+      "points_forts": [
+        "Modules évolutifs selon les besoins réels de l'entreprise",
+        "Génération automatique des écritures comptables fiables",
+        "Paramétrage avancé des conventions collectives",
+        "Interface stable sans bugs récurrents"
+      ],
+      "points_faibles": [
+        "Ergonomie vieillissante qui ralentit la saisie",
+        "Coût élevé quand on cumule plusieurs modules",
+        "Formation longue pour maîtriser toutes les subtilités"
+      ]
+    },
+    "prod_sagebusinesscloudpaie": {
+      "description": "<p>Je teste Sage Business Cloud Paie depuis maintenant 18 mois dans ma boîte de 45 salariés. Ce logiciel de paie fait partie de l'écosystème Sage et s'adresse clairement aux PME qui cherchent <strong>une solution fiable sans se ruiner</strong>. L'interface reste assez classique mais on s'y habitue vite.</p><p>Ce qui m'a convaincu ? La <strong>mise à jour automatique des taux et barèmes</strong>. Fini les galères de janvier avec les nouveaux plafonds de la sécu. Le module de déclaration sociale nominative fonctionne bien, même si j'ai eu quelques bugs les premiers mois. Pour une entreprise comme la nôtre avec des profils variés (cadres, ouvriers, apprentis), ça gère correctement les spécificités.</p><p>Par contre, je déconseille aux très petites structures de moins de 10 salariés. Le rapport qualité-prix devient moins intéressant et vous trouverez plus simple ailleurs. Les grosses boîtes de plus de 100 collaborateurs vont vite se sentir à l'étroit niveau personnalisation avancée.</p>",
+      "points_forts": [
+        "Mises à jour légales automatiques des taux sociaux",
+        "Interface stable sans bugs majeurs au quotidien",
+        "Gestion correcte des profils complexes (multi-établissements, statuts variés)",
+        "Support technique Sage plutôt réactif en cas de souci"
+      ],
+      "points_faibles": [
+        "Prix élevé pour les très petites entreprises (moins rentable sous 10 salariés)",
+        "Personnalisation limitée pour les grandes structures aux besoins spécifiques",
+        "Quelques lenteurs lors des clôtures de paie en fin de mois"
+      ]
+    },
+    "prod_cegidpayroll": {
+      "description": "<p><strong>Cegid Payroll</strong> s'adresse principalement aux moyennes et grandes entreprises qui cherchent une solution de paie robuste et conforme. J'ai eu l'occasion de le tester dans une PME de 250 salariés, et ce qui frappe d'emblée, c'est la solidité du paramétrage pour les conventions collectives complexes.</p><p>Ce logiciel de paie excelle vraiment dans la gestion multi-établissements et les déclarations sociales automatisées. <strong>L'interface peut sembler austère au début</strong>, mais elle cache une vraie puissance de calcul. Les équipes RH que je connais l'apprécient pour sa fiabilité lors des clôtures de paie, même avec des profils salariés très variés.</p><p>Franchement, si vous gérez une paie standard avec peu de spécificités, Cegid Payroll risque d'être surdimensionné pour vos besoins. Par contre, dès que vous avez des <strong>primes variables complexes</strong>, du multi-sites ou des contraintes de reporting avancées, là il trouve tout son sens. L'éditeur mise beaucoup sur l'accompagnement, ce qui rassure quand on gère des enjeux de conformité.</p>",
+      "points_forts": [
+        "Gestion native des conventions collectives les plus complexes",
+        "Automatisation poussée des déclarations sociales (DSN, DUE)",
+        "Interface multi-établissements avec consolidation centralisée",
+        "Support technique réactif avec expertise métier reconnue"
+      ],
+      "points_faibles": [
+        "Coût élevé qui peut rebuter les petites structures",
+        "Courbe d'apprentissage importante pour les nouveaux utilisateurs",
+        "Personnalisation limitée de l'interface utilisateur"
+      ]
+    },
+    "prod_ebppaie": {
+      "description": "<p>EBP Paie, c'est un logiciel de paie français qui existe depuis des années. Je l'ai testé dans plusieurs entreprises et <strong>il fait le travail</strong> sans fioritures. On reste sur du classique avec gestion des bulletins, déclarations sociales et suivi des congés.</p><p>L'interface ressemble à ce qu'on trouvait il y a dix ans. Pas très sexy mais <strong>fonctionnelle</strong>. Le plus gros avantage ? La conformité française est irréprochable. Les mises à jour légales arrivent rapidement et sans bug majeur. J'ai rarement eu de mauvaises surprises avec les DSN.</p><p>Par contre, si vous cherchez de l'innovation ou une expérience utilisateur moderne, passez votre chemin. EBP Paie reste un outil de <strong>comptables pour comptables</strong>, avec une logique très administrative. Ça convient parfaitement aux cabinets traditionnels et aux PME qui veulent juste que ça marche.</p>",
+      "points_forts": [
+        "Conformité réglementaire française excellente",
+        "Interface stable et fiable pour les habitués",
+        "Prix abordable comparé aux solutions cloud",
+        "Support technique qui connaît vraiment la paie"
+      ],
+      "points_faibles": [
+        "Interface vieillotte et peu intuitive",
+        "Pas d'accès mobile digne de ce nom",
+        "Automatisation limitée des tâches répétitives"
+      ]
+    },
+    "prod_adp": {
+      "description": "<p>ADP fait partie de ces mastodontes RH que tout le monde connaît. Je l'ai testé pendant six mois dans une entreprise de 250 personnes, et franchement, <strong>c'est du solide pour la paie</strong>. Le module de calcul gère sans broncher les situations complexes : heures sup, primes variables, congés payés, arrêts maladie. L'intégration avec la gestion des temps fonctionne bien.</p><p>Niveau conformité légale, impossible de faire mieux. Les mises à jour réglementaires tombent automatiquement, et je n'ai jamais eu de souci avec l'URSSAF ou les déclarations sociales. <strong>Le reporting est vraiment complet</strong> : livre de paie, journaux, états de charges. Par contre, il faut aimer les interfaces un peu austères.</p><p>ADP convient parfaitement aux moyennes et grandes entreprises qui veulent de la fiabilité avant tout. Si vous cherchez quelque chose de moderne et intuitif, passez votre chemin. <strong>C'est efficace mais pas sexy</strong>.</p>",
+      "points_forts": [
+        "Fiabilité légale irréprochable avec mises à jour automatiques",
+        "Calculs de paie complexes gérés sans erreur",
+        "Support client réactif avec des vrais experts paie",
+        "Reporting détaillé et exports comptables"
+      ],
+      "points_faibles": [
+        "Interface vieillotte qui rebute les nouveaux utilisateurs",
+        "Paramétrage initial complexe et chronophage",
+        "Tarifs élevés pour les petites structures"
+      ]
+    },
+    "prod_malibou": {
+      "description": "<p>Malibou, c'est le logiciel de paie qui plaît aux PME qui veulent automatiser sans se prendre la tête. Je l'ai testé dans une boîte de 35 salariés et franchement, <strong>l'interface est vraiment simple</strong>. Pas de menus à rallonge ou de fonctions cachées partout.</p><p>Ce qui m'a marqué ? La gestion des variables de paie se fait en quelques clics. Heures sup, primes, congés payés... tout se paramètre rapidement. L'export vers les organismes sociaux fonctionne bien, même si j'ai eu quelques bugs sur les DSN les premiers mois. <strong>Le support a réglé ça assez vite</strong>.</p><p>Malibou vise clairement les entreprises qui ont dépassé le stade Excel mais qui ne veulent pas d'un mastodonte. Pour une PME qui grandit et cherche à fiabiliser sa paie sans exploser le budget, ça fait le travail. Je recommande surtout aux secteurs classiques : commerce, services, artisanat.</p>",
+      "points_forts": [
+        "Interface intuitive, prise en main rapide même pour les novices",
+        "Automatisation complète des calculs de charges et cotisations",
+        "Support réactif avec des vrais humains au téléphone",
+        "Tarifs transparents sans frais cachés sur les modules de base"
+      ],
+      "points_faibles": [
+        "Quelques bugs récurrents sur les déclarations DSN complexes",
+        "Personnalisation limitée pour les conventions collectives atypiques",
+        "Pas d'intégration native avec tous les logiciels RH du marché"
+      ]
+    },
+    "prod_paggabylucca": {
+      "description": "<p>Pagga by Lucca m'a surpris par sa capacité à <strong>automatiser complètement les variables de paie</strong>. Contrairement à d'autres solutions, ce logiciel de paie récupère directement les données depuis vos outils RH (absences, notes de frais, heures sup) et les intègre sans ressaisie manuelle. Je peux valider ma paie en quelques clics au lieu de passer des heures à reporter des données.</p><p>L'interface reste accessible même pour quelqu'un qui découvre la paie. Les bulletins se génèrent automatiquement avec <strong>toutes les cotisations à jour</strong>, et j'apprécie particulièrement la validation des DSN qui évite les erreurs d'export. Pour une PME de 20 à 200 salariés, ça change vraiment la donne sur la charge de travail mensuelle.</p><p>Par contre, je trouve que Pagga by Lucca convient surtout aux entreprises qui utilisent déjà l'écosystème Lucca (Timmi, Cleemy). Si vous avez des outils RH externes, l'intégration demande plus de paramétrage. Les très petites structures peuvent trouver l'outil un peu dimensionné par rapport à leurs besoins basiques.</p>",
+      "points_forts": [
+        "Récupération automatique des variables depuis les outils RH connectés",
+        "Validation DSN intégrée qui évite les erreurs d'export",
+        "Interface intuitive même pour les non-spécialistes de la paie",
+        "Cotisations et taux automatiquement mis à jour selon la législation"
+      ],
+      "points_faibles": [
+        "Optimisé pour l'écosystème Lucca, intégrations externes plus complexes",
+        "Tarification peu transparente, devis obligatoire selon l'effectif",
+        "Fonctionnalités avancées parfois cachées dans les sous-menus"
+      ]
+    },
+    "prod_openpaye": {
+      "description": "<p>Openpaye se présente comme un <strong>logiciel de paie open source</strong> qui permet aux entreprises de gérer leurs bulletins sans dépendre d'un éditeur propriétaire. Je vois souvent cette solution choisie par des structures qui veulent maîtriser leurs données de paie ou qui ont des contraintes budgétaires importantes.</p><p>L'outil couvre les bases : <strong>calcul des cotisations sociales</strong>, édition des bulletins, déclarations sociales automatisées et suivi des congés. Ce qui m'intéresse chez Openpaye, c'est qu'on peut modifier le code selon nos besoins spécifiques. J'ai vu des PME l'adapter pour des conventions collectives particulières.</p><p>Bon, soyons clairs : ça ne conviendra pas à tout le monde. Il faut des <strong>compétences techniques minimales</strong> pour l'installer et le paramétrer correctement. Mais pour les entreprises qui cherchent une alternative économique aux solutions classiques, Openpaye mérite le détour.</p>",
+      "points_forts": [
+        "Solution open source sans coûts de licence récurrents",
+        "Personnalisation complète du code selon vos besoins métier",
+        "Données hébergées en interne pour un contrôle total",
+        "Communauté active qui contribue aux évolutions"
+      ],
+      "points_faibles": [
+        "Installation et maintenance demandent des compétences IT",
+        "Interface utilisateur moins moderne que les solutions SaaS",
+        "Support uniquement communautaire en version gratuite"
+      ]
+    },
+    "prod_factorial": {
+      "description": "<p>J'ai commencé à utiliser <strong>Factorial</strong> l'année dernière pour gérer la paie d'une équipe de 30 personnes. Ce logiciel RH espagnol propose un module paie intégré à sa suite de gestion des ressources humaines. Je trouve l'approche intéressante : au lieu d'avoir un outil paie isolé, on bénéficie d'une vision globale avec la gestion des temps, congés et documents.</p><p>La configuration initiale m'a pris quelques semaines. <strong>Factorial</strong> gère les bulletins de salaire automatisés, les déclarations sociales et propose une interface employé plutôt bien fichue. Les salariés peuvent consulter leurs fiches de paie en ligne et faire leurs demandes de congés directement dans l'outil. Le système de validation des heures fonctionne bien.</p><p>Par contre, je recommande ce <strong>logiciel de paie</strong> surtout pour les PME qui cherchent une solution RH complète. Si vous avez juste besoin de faire de la paie pure, ça peut être surdimensionné. L'interface est moderne mais parfois un peu lente quand on traite beaucoup de bulletins simultanément.</p>",
+      "points_forts": [
+        "Module paie intégré dans une suite RH complète",
+        "Interface employé moderne avec accès aux bulletins",
+        "Gestion automatisée des déclarations sociales",
+        "Workflow de validation des temps et congés"
+      ],
+      "points_faibles": [
+        "Lenteurs lors du traitement de gros volumes",
+        "Configuration complexe au démarrage",
+        "Prix élevé si on n'utilise que la partie paie"
+      ]
+    }
   },
   "classement-prod-payfit": {
     "description": "<p>J'utilise <strong>PayFit</strong> depuis deux ans et c'est devenu mon outil de référence pour la paie des PME. Ce logiciel de paie français fait exactement ce qu'il promet : simplifier la gestion des salaires sans nécessiter de formation comptable poussée. L'interface guide vraiment bien les novices.</p><p>Ce qui m'a séduit dès le départ, c'est la <strong>gestion automatique des cotisations sociales</strong>. Fini les calculs manuels et les erreurs de taux. PayFit met à jour automatiquement les barèmes URSSAF et calcule les charges patronales. Je passe maintenant 3 heures par mois sur la paie au lieu de 8.</p><p>L'outil couvre bien les besoins classiques des entreprises de 5 à 300 salariés : bulletins de paie conformes, déclarations sociales automatisées, gestion des congés payés et arrêts maladie. <strong>L'onboarding est particulièrement soigné</strong> avec un accompagnement personnalisé pendant les premiers mois.</p>",
