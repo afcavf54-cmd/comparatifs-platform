@@ -656,6 +656,13 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         # bouton "🚀 Publier maintenant" du dashboard pour publier un article
         # avant l'heure prévue.
         is_forced = title.lower() in _force_titles
+        # ⚠ FORCE_TITLES = mode EXCLUSIF : si une liste est passée (typiquement
+        # via le bouton "🚀 Publier maintenant" du dashboard, qui n'envoie qu'UN
+        # titre), on ne traite QUE ces titres. Sans ça, tous les autres articles
+        # à date vide ou passée seraient aussi publiés (cf. bug "Régénérer Revolut
+        # Business" sur les avis, 2026-06).
+        if _force_titles and not is_forced:
+            continue
         date_str = row.get("date_publication", "").strip()
         # Si forcé OU date vide → publication immédiate (= maintenant).
         # Si date remplie + future → on attend (sauf si forcé).
