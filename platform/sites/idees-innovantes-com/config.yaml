@@ -5,7 +5,7 @@
 # ============================================================
 
 site:
-  home_h1: "Découvrez les meilleures solutions pour innover et développer votre activité"
+  home_h1: "Le média qui met l'innovation à portée d'entreprise"
   contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
   google_site_verification: "oJMM9Ml5DWF2XR0ZHIA6s2psQWfzl1XMrakEXw5CHNU"
   slug: idees-innovantes-com
@@ -19,9 +19,9 @@ site:
   sheet_csv_url: ""
   www_preference: "www"
   author_name: "Emma David"
-  home_title: "Idées Innovantes : comparatifs logiciels, outils SaaS et tendances
+  home_title: "Idées Innovantes : le média de l'innovation et des entrepreneurs"
     business"
-  home_description: "Comparatifs de logiciels, avis d'experts et actualités des solutions
+  home_description: "Retrouvez les dernières tendances, innovations, startups et opportunités pour inspirer les entrepreneurs, dirigeants et porteurs de projets."
     innovantes pour accompagner les entreprises dans leur croissance."
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
@@ -69,7 +69,7 @@ tag_classes:
 
 seo:
   title_pattern: "Test {nom} {year} : notre avis détaillé"
-  meta_pattern: "Notre avis complet sur {nom} : fonctionnalités, performances, tarifs
+  meta_pattern: "Notre avis complet sur {nom} : fonctionnalités, performances, tarifs"
     et support."
   h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
   eyebrow: "Comparatif {year}"
@@ -77,7 +77,7 @@ seo:
   category_label: "Comparateurs"
   category_url: "/#comparateurs"
   avis_title_pattern: "Avis {nom} {year} : notre test complet"
-  avis_meta_pattern: "Notre avis complet sur {nom} {year} : prix, fonctionnalités,
+  avis_meta_pattern: "Notre avis complet sur {nom} {year} : prix, fonctionnalités,"
     points forts et limites."
   liste_comp_title: "Tous les comparatifs logiciels et SaaS {year}"
   liste_avis_title: "Tous nos avis sur les outils professionnels"
