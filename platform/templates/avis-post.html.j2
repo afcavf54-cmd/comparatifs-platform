@@ -19,7 +19,7 @@
 {% if post.updated %}<meta property="article:modified_time" content="{{ post.updated }}">{% endif %}
 {% if post.categorie %}<meta property="article:section" content="{{ post.categorie }}">{% endif %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">
+{% if theme.google_fonts %}<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">{% endif %}
 
 {# ── Schema.org : Review (avec aggregateRating optionnel) ─────────────── #}
 {# C'est ce JSON-LD qui permet à Google d'afficher les étoiles dans les SERP. #}
