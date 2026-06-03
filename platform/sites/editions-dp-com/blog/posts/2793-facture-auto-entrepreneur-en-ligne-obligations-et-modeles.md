@@ -4,14 +4,20 @@ slug: 2793-facture-auto-entrepreneur-en-ligne-obligations-et-modeles
 date: '2026-06-03T10:00:00+02:00'
 categorie: Création entreprise
 meta_title: Comment faire une facture en ligne en tant qu'auto-entrepreneur ?
-meta_description: Découvrez les obligations légales de facturation pour auto-entrepreneurs et téléchargez des modèles conformes. Guide complet avec mentions obligatoires et outils…
+meta_description: Découvrez les obligations légales de facturation pour auto-entrepreneurs
+  et téléchargez des modèles conformes. Guide complet avec mentions obligatoires et
+  outils…
 min_words: 1200
 status: published
 link_anchors:
 - text: facture en ligne quand on est auto-entrepreneur
   max: 2
+related_posts:
+- 3843-entreprise-individuelle-avantages-et-inconvenients-en-year
+- 5948-demarches-creation-d-entreprise-tout-ce-qu-il-faut-faire
+- 2986-comment-creer-un-produit-de-a-a-z-methode-etapes-cles-et-conseils-pratiques
+- 7406-statut-juridique-de-la-micro-entreprise-ce-qu-il-faut-savoir
 ---
-
 <h2>Les règles de facturation pour les auto-entrepreneurs</h2>
 
 <p>Quand j'ai lancé mon activité, je pensais naïvement qu'être auto-entrepreneur simplifiait tout. <strong>Grave erreur sur la facturation</strong>. Les obligations légales restent strictes, même avec ce statut simplifié.</p>
