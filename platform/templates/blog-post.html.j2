@@ -20,7 +20,7 @@
 {% if post.updated %}<meta property="article:modified_time" content="{{ post.updated }}">{% endif %}
 {% if post.categorie %}<meta property="article:section" content="{{ post.categorie }}">{% endif %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">
+{% if theme.google_fonts %}<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">{% endif %}
 
 <script type="application/ld+json">
 {
