@@ -14,6 +14,7 @@ link_anchors:
 - text: stratégie de croissance
   max: 4
 related_posts:
+- 5289-matrice-tows-guide-pratique-pour-renforcer-votre-strategie-d-entreprise
 - 6236-sepo-comment-exploiter-cette-methode-d-analyse-strategique-en-entreprise
 ---
 <h2>Pourquoi j'ai appris à faire un vrai plan de croissance après 2 ans d'erreurs</h2>
