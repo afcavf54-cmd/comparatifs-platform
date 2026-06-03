@@ -1,0 +1,88 @@
+# ============================================================
+# CONFIG SITE -- creaone-fr
+# Type : classement (SaaS)
+# Généré par le wizard HUB le 2026-06-03
+# ============================================================
+
+site:
+  slug: creaone-fr
+  name: "creaone.fr"
+  domain: "https://creaone.fr"
+  base_path: ""
+  logo_text: "creaone.fr"
+  logo_accent: ""
+  tagline: "Comparatifs creaone.fr 2026"
+  year: 2026
+  sheet_csv_url: ""
+  www_preference: "naked"
+  author_name: "Alexandre Michel"
+  home_title: "creaone.fr | Comparatifs 2026"
+  home_description: ""
+  template: "classement-saas.html.j2"
+  index_template: "index-saas.html.j2"
+  analytics_clicky: ""
+  contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
+
+page_types:
+  classement: classement-saas
+
+theme:
+  accent: "#1B4FD8"
+  accent2: "#E8410A"
+  bg: "#F4F6FB"
+  ink: "#0F1A2E"
+  surface: "#FFFFFF"
+  font_title: "DM Serif Display"
+  font_body: "Outfit"
+  google_fonts: "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap"
+  cta_color: "#E8410A"
+  cta_text_color: "#ffffff"
+
+criteria:
+  - label: "Prix dès"
+    field: prix_achat
+    type: text
+    suffix: "€/mois"
+  - label: "Essai gratuit"
+    field: essai_gratuit
+    type: bool
+  - label: "Note"
+    field: note_redaction
+    type: text
+    suffix: "/5"
+  - label: "Catégorie"
+    field: categorie
+    type: text
+
+tag_classes:
+  rendement: "tag-rendement"
+  diversifiee: "tag-diversifiee"
+  specialisee: "tag-specialisee"
+  europeenne: "tag-europeenne"
+
+seo:
+  title_pattern: "{A} vs {B} : comparatif {year}"
+  meta_pattern: "Comparatif complet {A} vs {B} {year} : prix, fonctionnalités, avis."
+  h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
+  eyebrow: "Comparatif {year}"
+  intro_pattern: "Comparatif {A} vs {B} - analyse complète."
+  category_label: "Comparateurs"
+  category_url: "/#comparateurs"
+  avis_title_pattern: "Avis {nom} {year} : notre test complet"
+  avis_meta_pattern: "Notre avis complet sur {nom} {year} : prix, fonctionnalités, points forts et limites."
+  liste_comp_title: "Tous les comparatifs {site_name} {year}"
+  liste_avis_title: "Avis logiciels {year} : analyses indépendantes"
+  classement_title_pattern: "Meilleur {categorie} {year} : mon top {count} comparatif"
+  classement_meta_pattern: "Comparez les meilleurs {categories} en {year} : prix, fonctionnalités, avis indépendants."
+  classement_h1_pattern: "J'ai testé {count} {categories} : mon comparatif complet {year}"
+  classement_titre_analyse_pattern: "Mon classement des meilleurs {categories}"
+
+persona_prompt: |
+  Tu écris en tant que Alexandre Michel, 31 ans, Responsable comptable basé(e) à Toulouse (entreprise de 100-500 salariés). Niveau expert, 9 ans d'expérience. Vouvoie le lecteur. Ton : pédagogique. Phrases mixtes. Niveau pédagogique : moyenne. Positionnement : utilisateur terrain. Niveau d'opinion : tranché. Angle éditorial prioritaire : performance. Critères de classement par ordre de priorité : Facilité d'utilisation, Fonctionnalités, Prix, Intégrations. Scoring : note /5, avec un gagnant clairement désigné. Objectifs du lecteur cible : Gagner du temps sur les tâches répétitives, Réduire les coûts logiciels. Contraintes du lecteur : Budget limité, Équipe non technique, Peu de temps pour la formation. Inclure des cas concrets et exemples. Inclure une FAQ. Niveau de détail : équilibré.
+
+author:
+  name: "Alexandre Michel"
+  bio: "Alexandre Michel est un Responsable comptable expérimenté avec 9 années d'expertise dans la gestion financière et la supervision d'équipes comptables à Toulouse. Il maîtrise parfaitement les normes comptables françaises et internationales, ainsi que les outils de gestion modernes. Alexandre excelle dans l'optimisation des processus financiers et la formation des collaborateurs aux bonnes pratiques comptables."
+  job_title: "Responsable comptable"
+  photo: "/author-photo.png"
+  socials: []
