@@ -1,17 +1,24 @@
 ---
-title: Peut-on créer une association et en vivre ? Statuts, financements et conseils pratiques
+title: Peut-on créer une association et en vivre ? Statuts, financements et conseils
+  pratiques
 slug: 8347-peut-on-creer-une-association-et-en-vivre-statuts-financements-et-conseils-pratiques
 date: '2026-06-03T15:00:00+02:00'
 categorie: Création entreprise
 meta_title: 'Créer une association et en vivre : le guide'
-meta_description: Découvrez comment créer une association et en vivre grâce aux bons statuts juridiques et stratégies de financement. Conseils pratiques pour rémunération et…
+meta_description: Découvrez comment créer une association et en vivre grâce aux bons
+  statuts juridiques et stratégies de financement. Conseils pratiques pour rémunération
+  et…
 min_words: 1200
 status: published
 link_anchors:
 - text: créer une association et en vivre
   max: 4
+related_posts:
+- 3843-entreprise-individuelle-avantages-et-inconvenients-en-year
+- 9835-statut-juridique-d-une-entreprise-lequel-choisir-en-year
+- 2440-capital-social-d-une-entreprise-definition-et-fonctionnement
+- 7122-etapes-creation-entreprise-le-guide-complet-en-year
 ---
-
 <h2>Peut-on réellement vivre de son association ?</h2>
 
 <p>Je vais être direct. Oui, on peut vivre d'une association, mais ce n'est pas aussi simple qu'on le croit. J'ai accompagné plusieurs porteurs de projets associatifs ces dernières années. Certains s'en sortent bien, d'autres galèrent.</p>
