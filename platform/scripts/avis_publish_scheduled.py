@@ -32,19 +32,10 @@ Format attendu du CSV (colonnes) :
                                      séparateur de lignes : ; ou newline)
     note_trustpilot     optionnel  (ex: 4.7)
     nb_avis_trustpilot  optionnel  (ex: 3000)
-    note_google         optionnel  (ex: 3.2)
-    nb_avis_google      optionnel  (ex: 1247)
+    plateforme_avis     optionnel  (défaut: "Trustpilot")
     meta_title          optionnel  (par défaut: pattern config.seo.avis_title_pattern)
-    H1                  optionnel  (titre principal H1 affiché en haut de page —
-                                     écrase celui généré par l'IA si rempli.
-                                     Utile pour les avis à fort enjeu SEO où
-                                     l'éditeur veut un H1 précis et stable.)
     meta_description    optionnel
     link_anchors        optionnel  ("ancre1:N;ancre2:M")
-    mots_imposes        optionnel  (mots-clés à inclure dans sections_html,
-                                     format : "mot1, mot2=>https://url, mot3" — les
-                                     entrées avec `=>url` sont automatiquement
-                                     transformées en liens internes en post-process)
     slug                optionnel  (par défaut: slug(marque))
     mot_minimum         optionnel  (entier, défaut 800 — nombre total de mots minimum
                                     pour la somme des champs textuels : en_bref +
@@ -136,7 +127,7 @@ def parse_pub_datetime(date_str: str, time_str: str = "") -> datetime | None:
         return None
 
 
-def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000) -> str:
+def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 8192) -> str:
     """Appelle l'API Anthropic en mode STREAMING. Cf blog_publish_scheduled.py
     pour le raisonnement complet : le streaming évite les "read timed out" sur
     les générations longues en gardant la connexion vivante chunk par chunk."""
@@ -179,6 +170,18 @@ def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000
                         delta = event.get("delta") or {}
                         if delta.get("type") == "text_delta":
                             chunks.append(delta.get("text", ""))
+                    elif event.get("type") == "message_delta":
+                        # Le stop_reason final arrive ici. Si 'max_tokens', on
+                        # WARN explicitement : ça veut dire que la génération
+                        # a été coupée avant la fin → JSON probablement invalide,
+                        # ou contenu manquant à la fin (FAQ tronquée, verdict
+                        # absent, etc.).
+                        msg_delta = event.get("delta") or {}
+                        stop_reason = msg_delta.get("stop_reason")
+                        if stop_reason == "max_tokens":
+                            print(f"  ⚠ AVERTISSEMENT : génération coupée par max_tokens "
+                                  f"(limite={max_tokens}). Contenu probablement tronqué. "
+                                  f"Augmenter max_tokens dans call_claude().", flush=True)
                     elif event.get("type") == "error":
                         err_info = event.get("error") or {}
                         raise RuntimeError(
@@ -194,80 +197,6 @@ def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000
             if attempt < retries - 1:
                 time.sleep([5, 15, 30][attempt])
     raise RuntimeError(f"Claude API a échoué après {retries} tentatives : {last_err}")
-
-
-def _recover_partial_json(raw: str) -> dict | None:
-    """Tente de récupérer un JSON tronqué (Claude a dépassé max_tokens et
-    coupé en plein milieu d'une chaîne). Stratégie :
-
-      1. Trouver le dernier endroit où une valeur de premier niveau est
-         terminée proprement : on cherche un motif `",\n  "next_key"` ou
-         `}\n  "next_key"` (fin d'une string ou d'un objet, suivi d'une
-         virgule, retour à la ligne, et début d'une nouvelle clé).
-      2. Tronquer juste APRÈS cette valeur terminée (donc on conserve toutes
-         les clés complètes et on jette la clé incomplète qui suit).
-      3. Fermer le `{` racine avec un `}` final et tenter le parse.
-
-    Retourne `None` si la récupération échoue. Le but n'est pas la
-    perfection mais de sauver l'essentiel (intro, h1, en_bref, points
-    forts/faibles, premiers H2) quand le truncate frappe.
-    """
-    # On cherche tous les points de coupure propres : la fin d'une valeur
-    # au niveau racine, juste avant une nouvelle clé entre guillemets.
-    # Motif visuel typique du JSON pretty-print :
-    #     "key1": "value1",        ← coupe possible juste après la virgule
-    #     "key2": { ... },         ← coupe possible juste après la virgule
-    #     "key3": "incomplete value...   ← truncated ici
-    # On marche de la fin vers le début pour trouver le dernier point propre.
-    cut_points: list[int] = []
-    # Match les fins de string + virgule + nouvelle clé
-    for m in re.finditer(r'",\s*\n\s*"[a-zA-Z_][a-zA-Z0-9_]*"\s*:', raw):
-        cut_points.append(m.start() + 1)  # juste après le "
-    # Match les fins d'objet/tableau + virgule + nouvelle clé
-    for m in re.finditer(r'[}\]],\s*\n\s*"[a-zA-Z_][a-zA-Z0-9_]*"\s*:', raw):
-        cut_points.append(m.start() + 1)
-    if not cut_points:
-        return None
-    cut_points.sort(reverse=True)
-    for cut in cut_points:
-        candidate = raw[:cut] + "\n}"
-        try:
-            return json.loads(candidate)
-        except json.JSONDecodeError:
-            continue
-    return None
-
-
-def _format_short_text(text: str) -> str:
-    """Applique les règles de mise en forme légère aux champs texte courts
-    (intro, en_bref). Claude peut utiliser `**mot**` pour les passages en
-    gras et `\\n\\n` pour séparer en plusieurs paragraphes — cette fonction
-    convertit ces marqueurs en HTML propre rendu tel quel par le template
-    (`{{ ... | safe }}`).
-
-    Règles appliquées :
-      - `**texte**` → `<strong>texte</strong>` (mise en gras)
-      - `\\n\\n+` → séparation en <p>...</p> distincts (double saut = paragraphe)
-      - Un seul `\\n` → `<br>` (saut de ligne dans le même paragraphe)
-
-    Si le texte est vide ou ne contient aucun marqueur, on le retourne tel
-    quel (rétro-compat avec les anciennes générations sans markdown).
-    """
-    if not text or not isinstance(text, str):
-        return text or ""
-    t = text.strip()
-    # Gras : **texte** → <strong>texte</strong>
-    t = re.sub(r"\*\*([^*\n]+?)\*\*", r"<strong>\1</strong>", t)
-    # Si du HTML est déjà présent (Claude a généré <p>...</p>), on le garde
-    # tel quel sans wrapper supplémentaire pour éviter le double-wrap.
-    if t.startswith("<p>") or t.startswith("<div>"):
-        return t
-    # Séparation en paragraphes sur \n\n
-    paragraphs = re.split(r"\n\s*\n+", t)
-    paragraphs = [p.strip().replace("\n", "<br>") for p in paragraphs if p.strip()]
-    if not paragraphs:
-        return ""
-    return "".join(f"<p>{p}</p>" for p in paragraphs)
 
 
 def strip_code_fences(text: str) -> str:
@@ -354,198 +283,24 @@ def parse_anchors(raw: str) -> list[dict]:
 
 # ─── Génération du contenu via Claude ────────────────────────────────────
 
-def _load_global_prompt(site_dir, config: dict) -> str:
-    """Charge le `global_prompt` depuis le schema correspondant au site (même
-    logique que blog_publish_scheduled.py). Le schema est dans /schemas/<tpl>.json
-    avec une clé top-level `global_prompt`. Cette directive complète le persona
-    en ajoutant des consignes éditoriales propres au type de site (ton attendu,
-    sujets à éviter, structure-type des avis sur ce verticales, etc.).
-    """
-    try:
-        from pathlib import Path
-        page_types = config.get("page_types") or {}
-        template_name = page_types.get("classement") or page_types.get("blog")
-        if not template_name:
-            template_name = "classement-saas"
-        # ROOT est défini en tête de module
-        schema_path = ROOT / "schemas" / f"{template_name}.json"
-        if not schema_path.exists():
-            return ""
-        schema = json.loads(schema_path.read_text(encoding="utf-8"))
-        return (schema.get("global_prompt") or "").strip()
-    except Exception:
-        return ""
+GENERATION_SYSTEM_PROMPT = """Tu es un rédacteur SEO expert spécialisé dans les avis produits.
+Tu écris des avis honnêtes, structurés, factuels, conformes aux critères E-E-A-T de Google.
+Ton style est direct, professionnel, sans superlatifs creux ni jargon marketing.
+Tu cites des éléments concrets (fonctionnalités, prix réels, cas d'usage) plutôt que des généralités.
+Tu réponds UNIQUEMENT en JSON valide, sans préambule ni guillemets autour.
+
+Règle de sentiment :
+- "positif" : avis globalement favorable, défauts mineurs reconnus
+- "mitige" : avis nuancé, qualités ET défauts importants équilibrés
+- "negatif" : avis défavorable, défauts majeurs dominants
+
+Toutes les listes doivent être en français correct, sans tournures trop molles ("c'est bien", "ça va").
+Les questions FAQ DOIVENT se terminer par '?'.
+N'invente JAMAIS de note, de chiffre, de pourcentage qui n'est pas dans les données fournies."""
 
 
-def _load_avis_config(site_dir, config: dict) -> dict:
-    """Charge la clé `avis_config` depuis le schema. Cet objet contient, pour
-    chaque section d'une page d'avis (hero, en_bref, points_forts, points_faibles,
-    sections_h2, faq, verdict), un `words_max` (limite de mots) et un `prompt`
-    (directive complémentaire).
-
-    Structure attendue (cf. UI dashboard `/templates/[templateId]`) :
-        {
-          "hero":           { "words_max": 60,  "prompt": "..." },
-          "en_bref":        { "words_max": 50,  "prompt": "..." },
-          "points_forts":   { "words_max": 12,  "prompt": "..." },
-          "points_faibles": { "words_max": 12,  "prompt": "..." },
-          "sections_h2":    { "words_max": 350, "prompt": "..." },
-          "faq":            { "words_max": 60,  "prompt": "..." },
-          "verdict":        { "words_max": 80,  "prompt": "..." }
-        }
-
-    Retourne `{}` si le schema n'existe pas ou si la clé est absente. Dans ce
-    cas les anciennes limites par défaut de Claude s'appliquent (= aucune
-    limite stricte).
-    """
-    try:
-        page_types = config.get("page_types") or {}
-        template_name = page_types.get("classement") or page_types.get("blog") or "classement-saas"
-        schema_path = ROOT / "schemas" / f"{template_name}.json"
-        if not schema_path.exists():
-            return {}
-        schema = json.loads(schema_path.read_text(encoding="utf-8"))
-        return schema.get("avis_config") or {}
-    except Exception:
-        return {}
-
-
-def _format_avis_limits(avis_config: dict, scope: str = "json") -> str:
-    """Construit le bloc texte à injecter dans le user prompt Claude pour
-    forcer le respect des fourchettes [min, max] de mots définies dans le
-    dashboard /templates/[id] → onglet Avis.
-
-    `scope` :
-      - "json"     → 1er appel (intro, en_bref, points_forts/faibles, FAQ, verdict)
-      - "sections" → 2e appel (HTML libre des sections H2)
-
-    Retourne `""` si avis_config est vide ou sans limites pertinentes — dans
-    ce cas le prompt n'est pas modifié.
-    """
-    if not avis_config:
-        return ""
-
-    # ─── Limites pertinentes selon le scope ──────────────────────────────
-    limit_lines: list[str] = []
-    prompt_lines: list[str] = []
-
-    def _add(section: str, label_humain: str, applies_to: str):
-        cfg = avis_config.get(section) or {}
-        w_min = cfg.get("words_min")
-        w_max = cfg.get("words_max")
-        valid_min = isinstance(w_min, (int, float)) and w_min > 0
-        valid_max = isinstance(w_max, (int, float)) and w_max > 0
-        if valid_min and valid_max:
-            limit_lines.append(f"- {label_humain} : entre {int(w_min)} et {int(w_max)} mots {applies_to}.")
-        elif valid_max:
-            limit_lines.append(f"- {label_humain} : maximum {int(w_max)} mots {applies_to}.")
-        elif valid_min:
-            limit_lines.append(f"- {label_humain} : minimum {int(w_min)} mots {applies_to}.")
-        p = (cfg.get("prompt") or "").strip()
-        if p:
-            prompt_lines.append(f"- Pour {label_humain.lower()} : {p}")
-
-    if scope == "json":
-        # Note : la section "hero" du dashboard pilote la longueur du champ
-        # `intro` (paragraphe sous le H1), PAS du H1 lui-même (qui doit
-        # rester court par nature, c'est un titre).
-        _add("hero",           "intro (paragraphe d'introduction sous le H1)", "")
-        _add("en_bref",        "en_bref (résumé dans l'encart Mon avis en Bref)", "")
-        _add("points_forts",   "chaque point fort",      "(par item de la liste)")
-        _add("points_faibles", "chaque point faible",    "(par item de la liste)")
-        _add("faq",            "chaque réponse FAQ",     "(par réponse, hors question)")
-        _add("verdict",        "verdict (conclusion centrée)", "")
-    elif scope == "sections":
-        # Volontairement vide : la longueur des sections H2 du contenu
-        # principal n'est PAS limitée par section, car elle dépend du
-        # `mot_minimum` global défini sur l'avis (et réparti automatiquement
-        # entre les blocs au moment de la génération). Cf. décision Julien
-        # mai 2026 — pas de cap min/max sur les sections_h2.
-        pass
-
-    if not limit_lines and not prompt_lines:
-        return ""
-
-    parts: list[str] = []
-    if limit_lines:
-        parts.append("LIMITES DE LONGUEUR PAR SECTION (à respecter STRICTEMENT — l'éditeur compte les mots) :")
-        parts.extend(limit_lines)
-    if prompt_lines:
-        if parts:
-            parts.append("")
-        parts.append("DIRECTIVES SUPPLÉMENTAIRES PAR SECTION (en plus du persona général) :")
-        parts.extend(prompt_lines)
-
-    return "\n" + "\n".join(parts) + "\n"
-
-
-# ─── Constructeurs des system prompts ────────────────────────────────────
-# On copie le pattern qui marche déjà pour le blog (blog_publish_scheduled.py
-# ligne 322) : empilement de 3 couches dans cet ordre exact :
-#   1. persona_prompt (config.yaml, ex: "Pierre Petit, vouvoie...")
-#   2. global_prompt (schema JSON, ex: "Pour ce site SaaS B2B, ton tranché...")
-#   3. base_sys (contraintes techniques de format)
-# Pas d'extraction custom, pas de detection de mots-clés. La force du système
-# vient de l'ordre : persona en tête = autorité maximale pour Claude.
-
-def _build_generation_system_prompt(persona_prompt: str = "", global_prompt: str = "") -> str:
-    """Construit dynamiquement le system prompt du 1er appel Claude (JSON
-    structuré). Empile persona + global + technique, dans cet ordre."""
-    base_sys = (
-        "Tu es un rédacteur SEO spécialisé dans les avis produits francophones.\n"
-        "Tu écris des avis honnêtes, structurés, factuels, conformes aux critères E-E-A-T de Google.\n"
-        "Tu cites des éléments concrets (fonctionnalités, prix, cas d'usage) plutôt que des généralités.\n"
-        "Tu réponds UNIQUEMENT en JSON valide, sans préambule ni guillemets autour.\n\n"
-        "Règle de sentiment :\n"
-        "- \"positif\" : avis globalement favorable, défauts mineurs reconnus\n"
-        "- \"mitige\" : avis nuancé, qualités ET défauts importants équilibrés\n"
-        "- \"negatif\" : avis défavorable, défauts majeurs dominants\n\n"
-        "Toutes les listes doivent être en français correct.\n"
-        "Les questions FAQ DOIVENT se terminer par '?'.\n"
-        "N'invente JAMAIS de note, de chiffre, de pourcentage qui n'est pas dans les données fournies."
-    )
-    layers = [p.strip() for p in (persona_prompt, global_prompt, base_sys) if p and p.strip()]
-    return "\n\n".join(layers)
-
-
-def _build_sections_html_system_prompt(persona_prompt: str = "", global_prompt: str = "") -> str:
-    """Construit dynamiquement le system prompt du 2e appel Claude (HTML libre
-    des sections custom). Même pattern à 3 couches que le 1er appel."""
-    base_sys = (
-        "Tu es un rédacteur SEO francophone spécialisé dans les avis produits.\n"
-        "Tu écris des sections d'avis en HTML pur, prêt à être inséré dans une page web.\n\n"
-        "RÈGLES TECHNIQUES IMPÉRATIVES :\n"
-        "- HTML pur uniquement : <h2>, <h3>, <p>, <strong>, <em>, <ul>, <li>\n"
-        "- AUCUNE balise <html>, <head>, <body>, <main>, <article>, <section>, <div>\n"
-        "- AUCUN markdown, AUCUN ``` code block\n"
-        "- Commence DIRECTEMENT par un <h2>\n"
-        "- N'invente JAMAIS de chiffres précis, partenariats ou récompenses : reste sur des\n"
-        "  faits notoires ou des analyses générales si tu manques d'éléments\n"
-        "- Aucun tiret long (—), utilise des virgules ou des points\n"
-        "- Tu réponds UNIQUEMENT avec le HTML, sans préambule ni commentaire"
-    )
-    layers = [p.strip() for p in (persona_prompt, global_prompt, base_sys) if p and p.strip()]
-    return "\n\n".join(layers)
-
-
-# Conservés pour rétro-compat si du code externe les importe encore.
-GENERATION_SYSTEM_PROMPT = _build_generation_system_prompt()
-SECTIONS_HTML_SYSTEM_PROMPT = _build_sections_html_system_prompt()
-
-
-def build_generation_prompt(row: dict, site: dict, faq_questions: list = None, persona_prompt: str = "", global_prompt: str = "", avis_config: dict | None = None) -> tuple:
-    """Construit le user prompt pour générer le contenu structuré d'un avis.
-
-    Si `faq_questions` est fourni (liste non vide), Claude doit reproduire ces
-    questions VERBATIM dans la FAQ et ne génère QUE les réponses. Cela évite
-    le doublon avec une FAQ déjà imposée par l'éditeur dans le dashboard.
-    Sinon, Claude invente 4 questions + réponses (comportement historique).
-
-    Si `persona_prompt` est fourni (lu depuis `config.yaml`, champ
-    `persona_prompt`), il est injecté en tête du user prompt pour cadrer le
-    ton, le persona du rédacteur, l'angle éditorial, le niveau de détail, etc.
-    Le persona s'applique uniformément à toutes les sections générées.
-    """
+def build_generation_prompt(row: dict, site: dict) -> tuple[str, str]:
+    """Construit le user prompt pour générer le contenu structuré d'un avis."""
     marque = row.get("marque", "").strip()
     categorie = row.get("categorie", "").strip()
     sentiment = normalize_sentiment(row.get("sentiment", ""))
@@ -554,12 +309,7 @@ def build_generation_prompt(row: dict, site: dict, faq_questions: list = None, p
     tarifs = parse_tarifs(row.get("tarifs", ""))
     note_tp = (row.get("note_trustpilot") or "").strip()
     nb_avis_tp = (row.get("nb_avis_trustpilot") or "").strip()
-    # Avis Google (en plus de Trustpilot) : 2 nouvelles colonnes optionnelles
-    # de la sheet. Si remplies, le template affiche une 2e carte note à côté
-    # de Trustpilot. Indépendantes : on peut avoir Google sans Trustpilot, ou
-    # l'inverse, ou les deux.
-    note_google = (row.get("note_google") or "").strip()
-    nb_avis_google = (row.get("nb_avis_google") or "").strip()
+    plateforme_avis = (row.get("plateforme_avis") or "Trustpilot").strip()
     year = str(site.get("year") or datetime.now(PARIS).year)
 
     # Colonne « mot_minimum » : nombre total minimum de mots pour l'article
@@ -579,83 +329,20 @@ def build_generation_prompt(row: dict, site: dict, faq_questions: list = None, p
     target_intro = max(50, int(mot_min * 0.05))
     target_verdict = max(60, int(mot_min * 0.07))
 
-    # Construction des instructions pour le bloc "Quels sont les avis des
-    # utilisateurs ?". Maintenant Claude génère DEUX paragraphes distincts :
-    # - aiment    : ce que les clients aiment (rendu dans une box verte)
-    # - regrettent: ce que les clients regrettent (rendu dans une box rouge)
-    # Le contenu est synthétisé à partir du sentiment global, des points
-    # forts/faibles, et des données externes (notes Trustpilot/Google si
-    # disponibles).
-    _sources = []
+    # Construction du paragraphe avis_clients hors f-string pour éviter les
+    # problèmes d'échappement de quotes imbriquées
     if note_tp and nb_avis_tp:
-        _sources.append(f"Trustpilot ({note_tp}/5 sur {nb_avis_tp} avis)")
-    if note_google and nb_avis_google:
-        _sources.append(f"Google ({note_google}/5 sur {nb_avis_google} avis)")
-
-    if _sources:
         avis_clients_instructions = (
-            "Tu disposes des notes externes : " + " et ".join(_sources) + ". "
-            "Synthétise les retours typiques en 2 paragraphes distincts (aiment / regrettent), "
-            "en cohérence avec ces notes et le sentiment global de l'avis."
+            f"Mentionne la note {note_tp}/5 sur {plateforme_avis} "
+            f"({nb_avis_tp} avis) et résume les retours typiques."
         )
     else:
         avis_clients_instructions = (
-            "Pas de note externe fournie. Synthétise quand même 2 paragraphes courts "
-            "(aiment / regrettent) basés sur ton analyse du sentiment et des points forts/faibles."
+            "Les avis externes ne sont pas fournis. Écris simplement en 1 ligne "
+            "que les avis publics sont à vérifier sur les plateformes spécialisées."
         )
 
-    # ─── FAQ : questions imposées par l'éditeur OU auto-générées ────────────
-    # Si l'éditeur a saisi une liste de questions dans le dashboard, Claude doit
-    # les reproduire verbatim et ne générer QUE les réponses. Sinon, format
-    # historique avec 4 questions inventées par Claude.
-    # ⚠ Important : `faq_block` est injecté COMME UNE VARIABLE dans l'f-string
-    # final `user`. Les accolades dans cette variable ne sont PAS rééchappées
-    # par l'f-string (contrairement à un littéral). On utilise donc des
-    # accolades SIMPLES `{...}` ici (et non `{{...}}` comme dans le reste du
-    # template JSON qui, lui, est littéral dans l'f-string).
-    faq_questions = [q.strip() for q in (faq_questions or []) if isinstance(q, str) and q.strip()]
-    if faq_questions:
-        # On échappe les caractères qui pourraient casser le JSON template,
-        # principalement les guillemets et les antislashs.
-        def _esc(q: str) -> str:
-            return q.replace("\\", "\\\\").replace('"', '\\"')
-        faq_items = ",\n    ".join(
-            '{"q": "' + _esc(q) + '", "r": "Réponse en 2-4 phrases (HTML interdit, texte brut). '
-            'Réponds factuellement à CETTE question précise."}'
-            for q in faq_questions
-        )
-        faq_block = f"[\n    {faq_items}\n  ]"
-        faq_constraint = (
-            f"\n6. FAQ - LISTE IMPOSÉE : Les {len(faq_questions)} questions de la FAQ ci-dessous te sont "
-            f"IMPOSÉES par l'éditeur. Reproduis-les VERBATIM (texte exact, "
-            f"même formulation, même ponctuation). Tu ne génères QUE les réponses. "
-            f"Ne supprime, n'ajoute ni ne reformule aucune question."
-        )
-    else:
-        # Format historique : 4 questions inventées. Accolades simples ici aussi
-        # car la string sera injectée comme variable dans l'f-string user.
-        faq_block = """[
-    {"q": "Question fréquente 1 ? (DOIT se terminer par '?')", "r": "Réponse en 2-4 phrases (HTML interdit, texte brut)"},
-    {"q": "Question 2 ?", "r": "..."},
-    {"q": "Question 3 ?", "r": "..."},
-    {"q": "Question 4 ?", "r": "..."}
-  ]"""
-        faq_constraint = ""
-
-    # ─── Persona éditorial injecté en tête du user prompt ────────────────
-    # Le persona est défini par l'éditeur dans config.yaml (champ
-    # `persona_prompt`) et donne le ton, l'angle, le persona du rédacteur,
-    # le niveau de détail attendu, etc. On le place en TÊTE pour qu'il cadre
-    # tout ce qui suit (la section DONNÉES/CONTRAINTES vient ensuite).
-    persona_section = ""
-    if persona_prompt and persona_prompt.strip():
-        persona_section = (
-            "PERSONA ÉDITORIAL (à incarner pour toute la rédaction — c'est ta voix, "
-            "ton ton, ton positionnement) :\n"
-            f"{persona_prompt.strip()}\n\n"
-        )
-
-    user = f"""{persona_section}Tu rédiges un avis structuré sur **{marque}** ({categorie}).
+    user = f"""Tu rédiges un avis structuré sur **{marque}** ({categorie}).
 
 DONNÉES FOURNIES (à respecter strictement, ne pas inventer) :
 - Marque : {marque}
@@ -664,7 +351,7 @@ DONNÉES FOURNIES (à respecter strictement, ne pas inventer) :
 - Note globale donnée par l'éditeur : {note}/5
 - Cible visée : {cible or "(à déduire de la marque)"}
 - Offres tarifaires : {json.dumps(tarifs, ensure_ascii=False) if tarifs else "(pas de tarifs fournis)"}
-- Avis utilisateurs externes : {(", ".join(filter(None, [f"Trustpilot : {note_tp}/5 sur {nb_avis_tp} avis" if (note_tp and nb_avis_tp) else "", f"Google : {note_google}/5 sur {nb_avis_google} avis" if (note_google and nb_avis_google) else ""])) or "(non renseigné, ne pas l'inventer)")}
+- Avis utilisateurs externes : {f"{note_tp}/5 sur {nb_avis_tp} avis ({plateforme_avis})" if (note_tp and nb_avis_tp) else "(non renseigné, ne pas l'inventer)"}
 - Année : {year}
 
 CONTRAINTES :
@@ -676,19 +363,13 @@ CONTRAINTES :
 5. LONGUEUR : la somme des champs textuels (en_bref + 4 H2 contenu_html + verdict + réponses FAQ)
    DOIT atteindre AU MINIMUM {mot_min} mots au total. Si tu sais peu de choses sur {marque},
    développe les analyses (positionnement marché, profil-type d'utilisateur, comparaison
-   sectorielle générique) plutôt que d'inventer des faits précis.{faq_constraint}
-{_format_avis_limits(avis_config or {}, scope="json")}
-Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de ```).
+   sectorielle générique) plutôt que d'inventer des faits précis.
 
-⚠ IMPORTANT : les champs "intro" et "en_bref" sont OBLIGATOIRES et DISTINCTS.
-   - "intro" = paragraphe d'introduction au-dessus de tout, sous le H1. Pose le sujet.
-   - "en_bref" = synthèse courte affichée à côté du logo dans un encart. Conclusion miniature.
-   Ne pas confondre, ne pas laisser "intro" vide, ne pas mettre la même chose dans les deux.
+Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de ```) :
 
 {{
-  "intro": "OBLIGATOIRE. Paragraphe d'INTRODUCTION éditoriale, affiché juste sous le H1. Il pose le contexte : à qui s'adresse {marque}, ce que le lecteur va trouver dans cet avis, l'angle adopté. C'est l'accroche éditoriale qui donne envie de lire. PAS un résumé de l'avis. MISE EN FORME : utilise **double-astérisques** pour les expressions-clés à mettre en gras (3-5 par paragraphe). Utilise un double saut de ligne (\\\\n\\\\n) pour séparer en 2-3 paragraphes courts si le contenu est long. Exemple : 'Vous hésitez entre [marque] et ses alternatives pour [besoin] ? Cet avis détaillé décrypte **[angle 1]**, **[angle 2]** et **[angle 3]**.\\\\n\\\\nÀ la fin, vous saurez si **[marque] est fait pour vous**.' RESPECTE STRICTEMENT la fourchette de mots indiquée plus haut dans 'LIMITES DE LONGUEUR PAR SECTION'.",
   "h1": "Titre principal au format 'Avis {marque} ({year}) : ...' (incitatif, max 75 caractères)",
-  "en_bref": "OBLIGATOIRE. RÉSUMÉ de l'avis, affiché dans l'encart 'Mon avis en Bref' à côté du logo. Synthèse de la position de l'auteur : verdict global, point clé fort, point clé faible, et pour qui c'est adapté. Différent de l'intro : c'est la conclusion en miniature. MISE EN FORME : utilise **double-astérisques** pour mettre en gras les 3-4 mots-clés importants (verdict, point clé, profil cible). RESPECTE STRICTEMENT la fourchette de mots indiquée plus haut dans 'LIMITES DE LONGUEUR PAR SECTION'.",
+  "en_bref": "Paragraphe d'intro de ~{target_intro} mots : qui c'est, à qui ça s'adresse, positionnement",
   "points_forts": ["3 points forts CONCRETS, 5-12 mots chacun, formulés positivement"],
   "points_faibles": ["2 points faibles HONNÊTES, 5-12 mots chacun, formulés sans diplomatie creuse"],
   "h2_fonctionnalites": {{
@@ -704,383 +385,53 @@ Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de `
     "contenu_html": "Au moins {target_h2} mots en HTML <p>...</p>. Positionnement vs concurrence, justification du prix, à qui c'est rentable, à qui ça ne l'est pas."
   }},
   "h2_avis_clients": {{
-    "aiment": "Paragraphe HTML <p>...</p> de 40-60 mots résumant ce que les clients AIMENT chez {marque}. Mets les éléments-clés en <strong>gras</strong> (3-5 expressions). Ton : factuel, synthétique. Pas de phrase d'intro genre 'Les clients apprécient', va direct au fond.",
-    "regrettent": "Paragraphe HTML <p>...</p> de 40-60 mots résumant ce que les clients REGRETTENT chez {marque}. Mets les éléments-clés en <strong>gras</strong> (3-5 expressions). {avis_clients_instructions}"
+    "titre": "Titre H2 sur les avis clients (ex: 'Que disent les utilisateurs ?')",
+    "contenu_html": "1 paragraphe en HTML <p>...</p>. {avis_clients_instructions}"
   }},
-  "faq": {faq_block},
-  "verdict": "Verdict final tranché. Réitère la note {note}/5 et donne une recommandation claire (pour qui c'est, pour qui ce n'est pas). RESPECTE STRICTEMENT la fourchette de mots indiquée plus haut dans 'LIMITES DE LONGUEUR PAR SECTION'.",
+  "faq": [
+    {{"q": "Question fréquente 1 ? (DOIT se terminer par '?')", "r": "Réponse en 2-4 phrases (HTML interdit, texte brut)"}},
+    {{"q": "Question 2 ?", "r": "..."}},
+    {{"q": "Question 3 ?", "r": "..."}},
+    {{"q": "Question 4 ?", "r": "..."}}
+  ],
+  "verdict": "Verdict final tranché d'environ {target_verdict} mots. Réitère la note {note}/5 et donne une recommandation claire (pour qui c'est, pour qui ce n'est pas).",
   "meta_title": "Title SEO max 60 caractères, doit contenir '{marque}' et '{year}'",
   "meta_description": "Meta description SEO max 155 caractères, doit donner envie de cliquer"
 }}"""
-    # Le persona est injecté à 2 niveaux pour maximiser son poids :
-    # 1) En TÊTE du system prompt (plus haute priorité pour Claude)
-    # 2) Rappelé en tête du user prompt (cf. persona_section plus haut)
-    return _build_generation_system_prompt(persona_prompt, global_prompt), user
+    return GENERATION_SYSTEM_PROMPT, user
 
 
-def generate_avis_content(row: dict, site: dict, custom_prompt: str = "", faq_questions: list = None, persona_prompt: str = "", global_prompt: str = "", avis_config: dict | None = None) -> dict:
-    """Appelle Claude et parse le JSON retourné. Lève si parsing échoue.
-
-    Si `custom_prompt` est fourni (saisi par l'éditeur via le dashboard et
-    stocké dans posts_avis/_drafts.json), un SECOND appel Claude est effectué
-    pour générer un bloc HTML libre `sections_html` qui remplacera les 3 H2
-    standards (fonctionnalites/support/qualite_prix) dans le rendu.
-    Si aucun custom_prompt n'est fourni, on retombe sur le format historique
-    avec les 3 H2 nommés (rétro-compat avec les avis déjà publiés).
-
-    Si `faq_questions` est fourni (liste non vide), Claude est instruit de
-    reproduire ces questions verbatim et ne génère QUE les réponses. On force
-    aussi côté Python l'alignement (les questions retournées sont remplacées
-    par les questions imposées en cas de drift).
-
-    Si `persona_prompt` est fourni (lu depuis config.yaml), il est injecté à
-    la fois dans le 1er appel (build_generation_prompt) et le 2e appel
-    (generate_sections_html) pour garantir la cohérence de ton sur toute la
-    page (intro, en bref, sections custom, FAQ, verdict)."""
-    # Normalisation de la liste FAQ imposée
-    forced_faq = [q.strip() for q in (faq_questions or []) if isinstance(q, str) and q.strip()]
-
-    system, user = build_generation_prompt(row, site, faq_questions=forced_faq, persona_prompt=persona_prompt, global_prompt=global_prompt, avis_config=avis_config)
-    # max_tokens élevé (6000) : le JSON complet inclut intro + en_bref + 3 H2
-    # contenu_html + aiment/regrettent + FAQ + verdict + meta. Avec un mot_min
-    # élevé (1500+) on flirtait avec la limite de 4000 et `intro` pouvait être
-    # tronqué silencieusement. 6000 laisse une marge confortable.
-    # max_tokens élevé (8000) : le JSON complet inclut intro + en_bref + 3 H2
-    # contenu_html + aiment/regrettent + FAQ + verdict + meta. Avec un mot_min
-    # élevé (1500+) on flirtait avec la limite de 4000 et `intro` pouvait être
-    # tronqué silencieusement (bug observé : 13368 chars de raw → string non
-    # fermée → JSONDecodeError → toute la régénération échoue). 8000 laisse
-    # une vraie marge même pour les avis très détaillés.
-    raw = call_claude(system, user, max_tokens=8000)
+def generate_avis_content(row: dict, site: dict) -> dict:
+    """Appelle Claude et parse le JSON retourné. Lève si parsing échoue."""
+    system, user = build_generation_prompt(row, site)
+    raw = call_claude(system, user, max_tokens=8192)
     raw = strip_code_fences(raw)
-    print(f"    📦 Réponse Claude : {len(raw)} caractères")
     try:
         data = json.loads(raw)
     except json.JSONDecodeError as e:
-        # Tentative #1 : extraire le premier objet JSON complet via regex
+        # Tentative de récupération : extraire le premier objet JSON
         m = re.search(r"\{[\s\S]*\}", raw)
-        if m:
-            try:
-                data = json.loads(m.group(0))
-            except json.JSONDecodeError:
-                # Tentative #2 : récupération de JSON tronqué.
-                # Stratégie : couper après la dernière "valeur",\n et fermer
-                # les accolades restantes. On garde ainsi tous les champs déjà
-                # complètement générés (notamment `intro` et `h1` qui sont en
-                # 1ère et 2e position et donc les plus susceptibles d'être
-                # complets), au lieu de tout perdre.
-                data = _recover_partial_json(raw)
-                if data is None:
-                    raise RuntimeError(f"JSON invalide : {e}\nRaw : {raw[:500]}")
-                missing = sorted(set(["h1", "intro", "en_bref", "points_forts", "points_faibles",
-                                       "h2_fonctionnalites", "h2_support", "h2_qualite_prix",
-                                       "h2_avis_clients", "faq", "verdict", "meta_title", "meta_description"]) - set(data.keys()))
-                print(f"    ⚠ JSON tronqué récupéré partiellement ({len(data)} clés présentes, {len(missing)} manquantes : {missing})")
-        else:
+        if not m:
             raise RuntimeError(f"Pas de JSON dans la réponse Claude : {raw[:200]}")
-
-    # ─── Génération du bloc sections custom (si prompt fourni) ──────────
-    sections_html = ""
-    sections_toc: list = []
-    if custom_prompt and custom_prompt.strip():
         try:
-            sections_html, sections_toc = generate_sections_html(row, site, custom_prompt, persona_prompt=persona_prompt, global_prompt=global_prompt, avis_config=avis_config)
-        except Exception as e:
-            print(f"    ⚠ Échec génération sections custom : {e}")
-            # On garde les 3 H2 standards en fallback
-            sections_html = ""
-            sections_toc = []
-
-    # ─── Réalignement FAQ avec les questions imposées ──────────────────────
-    # Si l'éditeur a saisi une liste, on FORCE les questions à correspondre
-    # même si Claude a dérivé. On garde les réponses générées dans l'ordre.
-    faq_generated = data.get("faq") or []
-    if forced_faq:
-        aligned = []
-        for i, q in enumerate(forced_faq):
-            # Récupère la réponse à l'index correspondant si Claude a respecté
-            # l'ordre. Sinon : réponse vide (le template j2 affichera quand
-            # même la question, et Julien pourra éditer manuellement).
-            r = ""
-            if i < len(faq_generated) and isinstance(faq_generated[i], dict):
-                r = (faq_generated[i].get("r") or "").strip()
-            aligned.append({"q": q, "r": r})
-        faq_final = aligned
-    else:
-        faq_final = faq_generated
-
+            data = json.loads(m.group(0))
+        except json.JSONDecodeError:
+            raise RuntimeError(f"JSON invalide : {e}\nRaw : {raw[:500]}")
     # Garantit la présence de toutes les clés (valeurs par défaut)
-    # ⚠ Bug fix mai 2026 : `intro` était absent de ce dict de retour, donc
-    # même si Claude générait bien le champ, il était silencieusement perdu
-    # ici et n'arrivait jamais dans le frontmatter. Cf. avis-legalplace
-    # ressorti avec `intro: ''` malgré toutes les instructions au prompt.
-    intro_text = (data.get("intro") or "").strip()
-    en_bref_text = (data.get("en_bref") or "").strip()
-    if not intro_text:
-        # Log explicite pour diagnostiquer si Claude lui-même n'a pas produit
-        # le champ (vs juste un oubli côté code). À surveiller dans les logs
-        # GitHub Actions de la prochaine régénération.
-        print(f"    ⚠ Claude n'a PAS produit le champ 'intro' (clés retournées: {sorted(data.keys())})")
-    # Application des règles éditoriales légères : `**bold**` → <strong>,
-    # `\n\n` → paragraphes séparés. Pour que le template puisse rendre ça
-    # tel quel via {{ post.intro | safe }}.
-    intro_text = _format_short_text(intro_text)
-    en_bref_text = _format_short_text(en_bref_text)
     return {
         "h1": data.get("h1", f"Avis {row.get('marque','')}"),
-        "intro": intro_text,
-        "en_bref": en_bref_text,
+        "en_bref": data.get("en_bref", ""),
         "points_forts": data.get("points_forts") or [],
         "points_faibles": data.get("points_faibles") or [],
         "h2_fonctionnalites": data.get("h2_fonctionnalites") or {"titre": "", "contenu_html": ""},
         "h2_support": data.get("h2_support") or {"titre": "", "contenu_html": ""},
         "h2_qualite_prix": data.get("h2_qualite_prix") or {"titre": "", "contenu_html": ""},
-        # `h2_avis_clients` : structure {aiment, regrettent}. Le `titre` est
-        # forcé côté template ("Quels sont les avis des utilisateurs de X ?").
-        # Si Claude renvoie l'ancienne clé `contenu_html`, le template gère
-        # la rétro-compat (cf. avis-post.html.j2).
-        "h2_avis_clients": data.get("h2_avis_clients") or {"aiment": "", "regrettent": ""},
-        "faq": faq_final,
+        "h2_avis_clients": data.get("h2_avis_clients") or {"titre": "", "contenu_html": ""},
+        "faq": data.get("faq") or [],
         "verdict": data.get("verdict", ""),
         "meta_title": data.get("meta_title", ""),
         "meta_description": data.get("meta_description", ""),
-        # Bloc HTML libre généré à partir du prompt custom. Vide si pas de
-        # custom_prompt fourni → le template j2 retombe sur les 3 H2 standards.
-        "sections_html": sections_html,
-        # Liste des H2 du sections_html avec leurs IDs d'ancre, pour que le
-        # template puisse construire un sommaire reflétant la structure custom
-        # plutôt qu'une entrée unique "Analyse détaillée".
-        "sections_toc": sections_toc,
     }
-
-
-# ─── Génération du bloc sections via prompt custom ────────────────────────
-# (Les builders _build_*_system_prompt sont définis plus haut, près du
-#  GENERATION_SYSTEM_PROMPT, avec le pattern à 3 couches identique au blog.)
-
-
-def _slugify_anchor(s: str) -> str:
-    """Slugifie un titre pour servir d'ID HTML d'ancre. Strip les tags HTML
-    qui pourraient être imbriqués (<strong>...</strong> dans un H2), normalise
-    en ASCII lowercase, remplace tout caractère non alphanumérique par un tiret."""
-    s = re.sub(r"<[^>]+>", "", s or "")
-    s = unicodedata.normalize("NFD", s)
-    s = "".join(c for c in s if not unicodedata.combining(c))
-    s = re.sub(r"[^a-zA-Z0-9]+", "-", s).strip("-").lower()
-    return s or "section"
-
-
-def _enrich_sections_html(html: str) -> tuple:
-    """Parse les <h2>...</h2> du HTML, ajoute un attribut id="..." à chacun
-    (slug du titre), et retourne (html_enrichi, [{titre, id}, ...]).
-
-    La liste retournée permet au template j2 de construire le sommaire avec une
-    ancre par H2. Si un <h2> contient déjà un id, on le préserve."""
-    toc = []
-    used_ids: set = set()
-
-    def repl(m):
-        existing_attrs = m.group(1) or ""
-        inner = m.group(2)
-        # Titre lisible : strip tags imbriqués (ex: <strong>) pour l'affichage TOC
-        title = re.sub(r"<[^>]+>", "", inner).strip()
-        # Réutilise un id existant si présent dans le HTML retourné par Claude
-        id_match = re.search(r'\bid\s*=\s*"([^"]+)"', existing_attrs)
-        if id_match:
-            slug = id_match.group(1)
-            new_attrs = existing_attrs
-        else:
-            base = _slugify_anchor(title)
-            slug = base
-            n = 2
-            while slug in used_ids:
-                slug = f"{base}-{n}"
-                n += 1
-            # On ajoute l'id sans toucher aux autres attributs éventuels
-            new_attrs = f'{existing_attrs} id="{slug}"'
-        used_ids.add(slug)
-        toc.append({"titre": title, "id": slug})
-        return f"<h2{new_attrs}>{inner}</h2>"
-
-    new_html = re.sub(
-        r"<h2([^>]*)>(.*?)</h2>",
-        repl, html, flags=re.DOTALL | re.IGNORECASE
-    )
-    return new_html, toc
-
-
-# ─── Mots-clés imposés + liens internes ───────────────────────────────────
-# Copie du même mécanisme que blog_publish_scheduled.py : la colonne sheet
-# `mots_imposes` accepte des entrées au format « mot » (simple inclusion)
-# ou « mot=>https://url » (inclusion + lien posé en post-process).
-
-def _parse_mots_imposes_csv(raw: str) -> list[dict]:
-    """Parse la colonne `mots_imposes` de la sheet d'avis. Chaque entrée est :
-      - soit un simple mot/expression : « comptable en ligne »
-      - soit avec un lien interne : « logiciel de paie=>https://www.editions-dp.com/meilleur-logiciel-de-paie »
-
-    Le séparateur entre entrées est `;`, `,` ou retour à la ligne.
-    Le séparateur texte ↔ URL est `=>`.
-
-    Renvoie une liste de dicts [{text, url?}, ...]. `url` est absent si l'entrée
-    était un simple mot sans flèche. Si l'URL contient des virgules (rare), il
-    faut utiliser `;` comme séparateur d'entrées.
-    """
-    if not raw:
-        return []
-    out: list[dict] = []
-    for part in re.split(r'[,;\n]', raw):
-        s = part.strip()
-        if not s:
-            continue
-        if '=>' in s:
-            text, _, url = s.partition('=>')
-            text = text.strip()
-            url = url.strip()
-            if text:
-                entry = {'text': text}
-                if url:
-                    entry['url'] = url
-                out.append(entry)
-        else:
-            out.append({'text': s})
-    return out
-
-
-def _wrap_first_occurrence_with_link(html: str, text: str, url: str) -> str:
-    """Wrappe la PREMIÈRE occurrence (case-insensitive, word-boundary) de `text`
-    dans un <a href="url">…</a>. La casse originale du texte est préservée dans
-    le lien. Skip les segments déjà à l'intérieur d'un <a>...</a> existant pour
-    éviter les imbrications de liens (interdites en HTML).
-    Si aucune occurrence n'est trouvée, retourne le HTML inchangé.
-    """
-    if not text or not url:
-        return html
-    pattern = re.compile(r'\b' + re.escape(text) + r'\b', re.IGNORECASE)
-    # On découpe sur les <a>...</a> existants ; les sous-segments hors <a>
-    # sont les seuls candidats au remplacement
-    parts = re.split(r'(<a\b[^>]*>.*?</a>)', html, flags=re.IGNORECASE | re.DOTALL)
-    done = False
-    out: list[str] = []
-    for p in parts:
-        is_anchor = p.lower().startswith('<a')
-        if not done and not is_anchor:
-            new_p, n = pattern.subn(
-                lambda m: f'<a href="{url}">{m.group(0)}</a>',
-                p, count=1,
-            )
-            out.append(new_p)
-            if n > 0:
-                done = True
-        else:
-            out.append(p)
-    return ''.join(out)
-
-
-def generate_sections_html(row: dict, site: dict, custom_prompt: str, persona_prompt: str = "", global_prompt: str = "", avis_config: dict | None = None) -> tuple:
-    """Génère le bloc HTML des sections H2 entre le sommaire et 'Retours
-    d'expérience des utilisateurs', à partir d'un prompt rédigé par l'éditeur.
-
-    Le prompt est libre — il contient la structure Hn souhaitée et les
-    instructions de rédaction. On l'enrichit avec les métadonnées de l'avis
-    (marque, catégorie, sentiment) pour cadrer le ton.
-
-    Si `persona_prompt` est fourni (lu depuis config.yaml), il est injecté
-    en tête du user prompt pour aligner le ton/style/persona avec le 1er appel
-    Claude (build_generation_prompt). Sans persona, ton neutre par défaut.
-
-    Retourne un tuple (html_enrichi, sections_toc) :
-      - html_enrichi : le HTML retourné par Claude, nettoyé, avec un id="..."
-        ajouté à chaque <h2> pour servir d'ancre depuis le sommaire
-      - sections_toc : liste [{titre, id}, ...] pour construire le sommaire"""
-    marque = row.get("marque", "").strip()
-    categorie = row.get("categorie", "").strip()
-    sentiment = normalize_sentiment(row.get("sentiment", ""))
-    note = parse_note(row.get("note_globale", ""))
-    year = str(site.get("year") or datetime.now(PARIS).year)
-    cible = (row.get("cible") or "").strip()
-
-    # Mots-clés imposés (sheet colonne `mots_imposes`). Format mixte :
-    #   "comptable en ligne, logiciel paie=>https://editions-dp.com/meilleur-logiciel-de-paie"
-    # Les entrées avec URL servent au maillage interne : Claude doit inclure
-    # le texte tel quel, puis on wrappe la 1ère occurrence dans <a> en
-    # post-process (on ne demande PAS à Claude de poser le lien lui-même
-    # pour éviter qu'il hallucine ou casse la syntaxe HTML).
-    mots_imposes = _parse_mots_imposes_csv(row.get("mots_imposes", ""))
-
-    # Persona éditorial : injecté en tête pour aligner le ton avec le 1er appel
-    persona_section = ""
-    if persona_prompt and persona_prompt.strip():
-        persona_section = (
-            "PERSONA ÉDITORIAL (à incarner pour toute la rédaction — c'est ta voix, "
-            "ton ton, ton positionnement) :\n"
-            f"{persona_prompt.strip()}\n\n"
-        )
-
-    # Bloc des mots-clés obligatoires à injecter dans le user prompt
-    mots_section = ""
-    if mots_imposes:
-        plain_words = [m['text'] for m in mots_imposes if not m.get('url')]
-        linked_words = [m for m in mots_imposes if m.get('url')]
-        parts: list[str] = []
-        if plain_words:
-            fmt = ", ".join(f'« {m} »' for m in plain_words)
-            parts.append(
-                f"Tu DOIS inclure dans le contenu, au moins une fois chacune "
-                f"et de manière naturelle, les expressions suivantes : {fmt}."
-            )
-        if linked_words:
-            fmt = ", ".join(f'« {m["text"]} »' for m in linked_words)
-            parts.append(
-                f"Tu DOIS également inclure les expressions suivantes au moins une fois "
-                f"chacune (elles seront automatiquement transformées en liens vers d'autres "
-                f"pages du site lors du build, ne crée donc PAS toi-même les balises "
-                f"<a>...</a>) : {fmt}."
-            )
-        mots_section = (
-            "\n\nMOTS-CLÉS OBLIGATOIRES (impératif) :\n"
-            + "\n".join(parts)
-            + "\nCes expressions doivent apparaître TELLES QUELLES (même orthographe, "
-              "même formulation). Place-les naturellement dans des paragraphes."
-        )
-
-    user = f"""{persona_section}Tu rédiges les sections principales d'un avis sur **{marque}** ({categorie}).
-
-CONTEXTE DE L'AVIS :
-- Marque : {marque}
-- Catégorie : {categorie}
-- Sentiment global : {sentiment}
-- Note éditeur : {note}/5
-- Cible : {cible or "(à déduire de la marque)"}
-- Année : {year}
-
-INSTRUCTIONS DE L'ÉDITEUR (à respecter strictement, c'est ta structure et ton brief) :
-
-{custom_prompt.strip()}{mots_section}
-{_format_avis_limits(avis_config or {}, scope="sections")}
-Réponds avec le HTML des sections, prêt à être inséré tel quel dans la page (commence par <h2>)."""
-
-    raw = call_claude(_build_sections_html_system_prompt(persona_prompt, global_prompt), user, max_tokens=4000)
-    raw = strip_code_fences(raw)
-    # Petit nettoyage défensif : si Claude a quand même ajouté un wrapper, on
-    # retire les balises inutiles. Si Claude a renvoyé un préambule avant le
-    # premier <h2>, on coupe avant.
-    raw = re.sub(r"^(?:.*?)(<h[1-6])", r"\1", raw, count=1, flags=re.DOTALL | re.IGNORECASE)
-    raw = re.sub(r"</?(?:html|body|head|main|article|section|div)[^>]*>", "", raw, flags=re.IGNORECASE)
-    # Enrichit chaque <h2> avec un id="..." et extrait la TOC pour le template
-    enriched_html, toc = _enrich_sections_html(raw.strip())
-
-    # Post-process : wrap la 1ère occurrence des mots avec URL dans un <a>.
-    # On le fait APRÈS _enrich_sections_html pour que les ids posés sur les
-    # H2 ne soient pas réécrits, et on skippe automatiquement les <a> déjà
-    # présents (cf. _wrap_first_occurrence_with_link). Si Claude a oublié de
-    # placer le mot dans son HTML, le wrap ne pose pas le lien (silencieux).
-    if mots_imposes:
-        for m in mots_imposes:
-            if m.get('url'):
-                enriched_html = _wrap_first_occurrence_with_link(enriched_html, m['text'], m['url'])
-
-    return enriched_html, toc
 
 
 # ─── Écriture du markdown ────────────────────────────────────────────────
@@ -1095,69 +446,20 @@ def write_avis_md(filepath: Path, fm: dict, body_html: str) -> None:
     filepath.write_text(f"---\n{fm_yaml}---\n\n{body_html}\n", encoding="utf-8")
 
 
-def _resolve_template_vars(text: str, marque: str = "", categorie: str = "", year: int | None = None) -> str:
-    """Remplace les variables `{year}`, `{marque}`, `{categorie}` dans une chaîne.
-
-    Utile pour les champs sheet où l'éditeur écrit un template littéral avec
-    ces variables, par exemple :
-        meta_title = "Avis {marque} {year} : notre verdict"
-        h1         = "Notre avis sur {marque} en {year}"
-        cta_label  = "Tester {marque} gratuitement"
-
-    Si une variable n'apparaît pas dans le texte, c'est silencieusement ignoré.
-    Si `year` n'est pas fourni, on utilise l'année courante (zone Europe/Paris)
-    plutôt que l'année de publication, car les avis sont souvent republiés avec
-    un titre qui doit refléter l'année actuelle (« Avis Qonto 2026 »).
-    """
-    if not text:
-        return text
-    if year is None:
-        year = datetime.now(PARIS).year
-    return (
-        text
-        .replace("{year}", str(year))
-        .replace("{marque}", marque or "")
-        .replace("{categorie}", categorie or "")
-    )
-
-
 def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict:
     """Combine données sheet + données IA en un frontmatter complet."""
     marque = row.get("marque", "").strip()
-    categorie = (row.get("categorie") or "").strip()
     sentiment = normalize_sentiment(row.get("sentiment", ""))
     note = parse_note(row.get("note_globale", ""))
     tarifs = parse_tarifs(row.get("tarifs", ""))
     note_tp = row.get("note_trustpilot", "").strip()
     nb_avis_tp = row.get("nb_avis_trustpilot", "").strip()
-    # Avis Google : 2 colonnes optionnelles, lues séparément de Trustpilot.
-    note_google = (row.get("note_google") or "").strip()
-    nb_avis_google = (row.get("nb_avis_google") or "").strip()
+    plateforme_avis = (row.get("plateforme_avis") or "Trustpilot").strip()
     cta_url = row.get("cta_url", "").strip()
-    # `cta_label` peut contenir des variables ({marque}, {year}) — on les
-    # résout avant de stocker pour que le rendu final soit immédiat.
-    cta_label = _resolve_template_vars(
-        row.get("cta_label", "").strip(), marque, categorie
-    ) or f"Visiter {marque}"
+    cta_label = row.get("cta_label", "").strip() or f"Visiter {marque}"
     pub_dt = parse_pub_datetime(row.get("date_publication", ""))
     pub_iso = pub_dt.isoformat() if pub_dt else datetime.now(PARIS).isoformat()
     link_anchors = parse_anchors(row.get("link_anchors", ""))
-
-    # ─── Sections standards vs custom ───────────────────────────────────────
-    # Si l'avis a un `sections_html` (= prompt custom utilisé), les 3 H2
-    # standards historiques (fonctionnalites/support/qualite_prix) deviennent
-    # caducs : ils sont ignorés par le template et leur présence dans le .md
-    # trompe l'éditeur dans le dashboard (il croit qu'il doit les éditer alors
-    # qu'ils ne sont pas rendus). On les laisse vides pour rester propre.
-    has_sections_html = bool((generated.get("sections_html") or "").strip())
-    if has_sections_html:
-        h2_fonctionnalites_val: dict = {"titre": "", "contenu_html": ""}
-        h2_support_val: dict = {"titre": "", "contenu_html": ""}
-        h2_qualite_prix_val: dict = {"titre": "", "contenu_html": ""}
-    else:
-        h2_fonctionnalites_val = generated.get("h2_fonctionnalites", {}) or {}
-        h2_support_val = generated.get("h2_support", {}) or {}
-        h2_qualite_prix_val = generated.get("h2_qualite_prix", {}) or {}
 
     return {
         # Métadonnées d'identification
@@ -1171,67 +473,28 @@ def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict
         "note_max": 5,
         "note_trustpilot": float(note_tp.replace(",", ".")) if note_tp.replace(",", ".").replace(".", "").isdigit() else None,
         "nb_avis_trustpilot": int(re.sub(r"\D", "", nb_avis_tp)) if nb_avis_tp else None,
-        # Avis Google : 2 colonnes optionnelles de la sheet. Si remplies, le
-        # template affiche une 2e carte note à côté de Trustpilot dans la
-        # section "Quels sont les avis des utilisateurs de {marque} ?".
-        "note_google": float(note_google.replace(",", ".")) if note_google.replace(",", ".").replace(".", "").isdigit() else None,
-        "nb_avis_google": int(re.sub(r"\D", "", nb_avis_google)) if nb_avis_google else None,
+        "plateforme_avis": plateforme_avis if (note_tp and nb_avis_tp) else None,
         # CTA
         "cta_url": cta_url,
         "cta_label": cta_label,
         "cible": (row.get("cible") or "").strip(),
-        # Logo affiché dans l'encart "Mon avis en Bref" du template avis-post.
-        # Uploadé via le dashboard d'édition d'avis (voir avis/[slug]/page.tsx).
-        # Stocké comme chemin relatif type `/avis/<slug>/logo-<ts>.<ext>` pointant
-        # vers `platform/sites/<siteId>/public/avis/<slug>/logo-<ts>.<ext>`.
-        # Vide tant que l'éditeur n'a pas uploadé : le template affiche un
-        # placeholder avec l'initiale de la marque dans ce cas.
-        "logo_path": "",
         # Tarifs
         "tarifs": tarifs,
         # Contenu IA
-        "h1": (
-            _resolve_template_vars(row.get("h1") or "", marque, categorie).strip()
-            or generated.get("h1")
-            or f"Avis {marque}"
-        ).strip(),
-        # `intro` : paragraphe d'introduction placé sous le H1. Distinct du
-        # `en_bref` qui sert maintenant uniquement à l'encart "Mon avis en
-        # Bref" (résumé synthétique de l'avis avec logo + note). Cf. template
-        # avis-post.html.j2 v5+.
-        "intro": generated.get("intro", ""),
+        "h1": (row.get("h1") or generated.get("h1") or f"Avis {marque}").strip(),
         "en_bref": generated.get("en_bref", ""),
         "points_forts": generated.get("points_forts", []),
         "points_faibles": generated.get("points_faibles", []),
-        "h2_fonctionnalites": h2_fonctionnalites_val,
-        "h2_support": h2_support_val,
-        "h2_qualite_prix": h2_qualite_prix_val,
+        "h2_fonctionnalites": generated.get("h2_fonctionnalites", {}),
+        "h2_support": generated.get("h2_support", {}),
+        "h2_qualite_prix": generated.get("h2_qualite_prix", {}),
         "h2_avis_clients": generated.get("h2_avis_clients", {}),
         "faq": generated.get("faq", []),
         "verdict": generated.get("verdict", ""),
-        # Bloc HTML libre des sections principales (remplace h2_fonctionnalites,
-        # h2_support, h2_qualite_prix dans le rendu si non vide). Cf. template
-        # avis-post.html.j2.
-        "sections_html": generated.get("sections_html", ""),
-        # Liste [{titre, id}, ...] des H2 du sections_html, utilisée par le
-        # template pour construire le sommaire dynamique reflétant la structure
-        # custom imposée par l'éditeur.
-        "sections_toc": generated.get("sections_toc", []),
         # SEO
-        "meta_title": (
-            _resolve_template_vars(row.get("meta_title") or "", marque, categorie).strip()
-            or generated.get("meta_title")
-            or f"Avis {marque} : notre verdict"
-        ).strip(),
-        "meta_description": (
-            _resolve_template_vars(row.get("meta_description") or "", marque, categorie).strip()
-            or generated.get("meta_description")
-            or ""
-        ).strip(),
+        "meta_title": (row.get("meta_title") or generated.get("meta_title") or f"Avis {marque} : notre verdict").strip(),
+        "meta_description": (row.get("meta_description") or generated.get("meta_description") or "").strip(),
         "link_anchors": link_anchors,
-        # Mots-clés imposés (sheet) — préservés bruts pour permettre une
-        # éventuelle régénération sans avoir à relire la sheet, et pour audit.
-        "mots_imposes": (row.get("mots_imposes") or "").strip(),
         # Configuration éditoriale (lue par avis_publish_scheduled au build et
         # éditable depuis le dashboard ou directement dans le .md).
         # Sert à régénérer ou comprendre comment l'IA a calibré la longueur.
@@ -1285,10 +548,8 @@ def _normalize_marque(m: str) -> str:
 
 EDITABLE_KEYS = (
     "note", "cta_url", "cta_label", "cible", "tarifs", "categorie",
-    "note_trustpilot", "nb_avis_trustpilot",
-    "note_google", "nb_avis_google",
-    "meta_title", "meta_description", "link_anchors", "mots_imposes",
-    "h1",
+    "note_trustpilot", "nb_avis_trustpilot", "plateforme_avis",
+    "meta_title", "meta_description", "link_anchors",
 )
 
 
@@ -1323,16 +584,12 @@ def sync_metadata(posts_dir: Path, rows: list[dict]) -> int:
             continue
         # Recalcule les valeurs depuis la sheet
         new_fm = dict(fm)
-        marque_sheet = (row.get("marque") or "").strip()
-        categorie_sheet = (row.get("categorie") or "").strip()
         if row.get("note_globale"):
             new_fm["note"] = parse_note(row["note_globale"])
         if row.get("cta_url"):
             new_fm["cta_url"] = row["cta_url"].strip()
         if row.get("cta_label"):
-            new_fm["cta_label"] = _resolve_template_vars(
-                row["cta_label"].strip(), marque_sheet, categorie_sheet
-            )
+            new_fm["cta_label"] = row["cta_label"].strip()
         if row.get("cible"):
             new_fm["cible"] = row["cible"].strip()
         if row.get("tarifs"):
@@ -1349,45 +606,14 @@ def sync_metadata(posts_dir: Path, rows: list[dict]) -> int:
                 new_fm["nb_avis_trustpilot"] = int(re.sub(r"\D", "", row["nb_avis_trustpilot"]))
             except Exception:
                 pass
-        # Google : note + nb d'avis (mêmes règles que Trustpilot).
-        if row.get("note_google"):
-            try:
-                new_fm["note_google"] = float(row["note_google"].replace(",", "."))
-            except Exception:
-                pass
-        if row.get("nb_avis_google"):
-            try:
-                new_fm["nb_avis_google"] = int(re.sub(r"\D", "", row["nb_avis_google"]))
-            except Exception:
-                pass
-        # meta_title / meta_description / h1 : on résout {year}, {marque},
-        # {categorie} pour que les valeurs persistées dans le frontmatter
-        # soient prêtes à l'emploi côté template (sans rebloundir).
+        if row.get("plateforme_avis"):
+            new_fm["plateforme_avis"] = row["plateforme_avis"].strip()
         if row.get("meta_title"):
-            new_fm["meta_title"] = _resolve_template_vars(
-                row["meta_title"].strip(), marque_sheet, categorie_sheet
-            )
+            new_fm["meta_title"] = row["meta_title"].strip()
         if row.get("meta_description"):
-            new_fm["meta_description"] = _resolve_template_vars(
-                row["meta_description"].strip(), marque_sheet, categorie_sheet
-            )
+            new_fm["meta_description"] = row["meta_description"].strip()
         if row.get("link_anchors"):
             new_fm["link_anchors"] = parse_anchors(row["link_anchors"])
-        # H1 : si la colonne sheet est remplie, elle écrase celui généré par
-        # Claude. Permet à l'éditeur d'ajuster le titre principal sans
-        # régénérer tout l'avis. Si la cellule est vide → on ne touche pas
-        # (la condition `if row.get("h1")` filtre).
-        if row.get("h1"):
-            new_fm["h1"] = _resolve_template_vars(
-                row["h1"].strip(), marque_sheet, categorie_sheet
-            )
-        # mots_imposes : sync de la valeur brute (le parsing en liste de dicts
-        # se fait seulement à la génération du contenu). Permet de modifier
-        # les mots-clés depuis la sheet sans régénérer l'avis (utile pour
-        # corriger une URL cassée par exemple ; l'effet ne s'applique qu'à
-        # la prochaine régénération).
-        if row.get("mots_imposes"):
-            new_fm["mots_imposes"] = row["mots_imposes"].strip()
         # `mot_minimum` est purement informatif côté .md déjà publié (la
         # longueur du contenu existant n'est pas régénérée). Mais on la sync
         # quand même pour que le dashboard reflète la valeur courante de la sheet.
@@ -1427,22 +653,6 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
     processed_file = posts_dir / "schedule_processed.json"
     processed = load_processed(processed_file)
 
-    # ─── Brouillons (prompt custom par slug) ──────────────────────────────
-    # Le fichier _drafts.json est géré par le dashboard via
-    # /api/sites/<siteId>/avis/draft/<slug>. Format :
-    #   { "avis-qonto": { "prompt_custom": "...", "updated": "..." }, ... }
-    # Si la marque qu'on s'apprête à publier a un prompt ici, on l'utilise
-    # pour générer le bloc sections_html (qui remplace les 3 H2 standards).
-    drafts_file = posts_dir / "_drafts.json"
-    drafts: dict = {}
-    if drafts_file.exists():
-        try:
-            drafts = json.loads(drafts_file.read_text(encoding="utf-8")) or {}
-            if not isinstance(drafts, dict):
-                drafts = {}
-        except Exception:
-            drafts = {}
-
     # Slugs déjà existants pour éviter collisions
     existing_slugs = {p.stem for p in posts_dir.glob("*.md")}
 
@@ -1464,23 +674,24 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         if not marque:
             continue
         key = row_key(row)
+        if key in processed:
+            continue
         is_forced = marque in force_titles
-
-        # ⚠ Nouveau workflow (mai 2026) : plus de génération automatique.
-        # Les avis ne sont publiés QUE quand Julien clique "Générer & Publier"
-        # OU "Régénérer le contenu IA" depuis le dashboard, ce qui déclenche
-        # le workflow avec FORCE_TITLES. Si FORCE_TITLES n'est pas renseigné,
-        # on saute (l'avis reste en brouillon visible dans le dashboard).
-        if not is_forced:
-            continue
-
-        # Si la marque est forcée (= regen volontaire depuis le dashboard),
-        # on BYPASS le tracker processed. Sans ce bypass, impossible de
-        # regénérer un avis déjà publié : sa clé est dans processed.json
-        # ET ajoutée automatiquement par le "filet de sécurité" plus haut.
-        # is_forced = volonté explicite de l'éditeur, on laisse passer.
-        if key in processed and not is_forced:
-            continue
+        # Convention : date_publication vide = publication immédiate (au prochain
+        # passage du cron, ou maintenant si on est dans la boucle). Permet à
+        # Julien d'ajouter une ligne dans la sheet sans avoir à choisir une date.
+        date_raw = (row.get("date_publication") or "").strip()
+        if not is_forced and date_raw:
+            pub_dt = parse_pub_datetime(date_raw)
+            if pub_dt is None:
+                print(f"  ✗ Date invalide pour '{marque}' (« {date_raw} ») → ignoré")
+                continue
+            if pub_dt > now:
+                # Pas encore l'heure
+                continue
+        elif not is_forced and not date_raw:
+            # Date vide → publication immédiate
+            print(f"  ⚡ '{marque}' : date_publication vide → publication immédiate")
         # Slug : "avis-<marque>" pour avoir des URLs cohérentes (/avis-qonto,
         # /avis-legalplace, etc.) distinctes des articles de blog.
         raw_slug = (row.get("slug") or "").strip() or slugify(marque)
@@ -1488,83 +699,16 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
             slug = f"avis-{raw_slug}"
         else:
             slug = raw_slug
-        # Collision de slug :
-        # - Si FORCÉ (regen) : on AUTORISE l'écrasement du .md existant. C'est
-        #   le comportement attendu d'une régénération.
-        # - Sinon (première publication d'une nouvelle marque qui aurait par
-        #   hasard le même slug qu'un avis existant) : on suffixe pour éviter
-        #   d'écraser un avis non lié.
-        if slug in existing_slugs and not is_forced:
+        # Si collision, suffixer
+        if slug in existing_slugs:
             i = 2
             while f"{slug}-{i}" in existing_slugs:
                 i += 1
             slug = f"{slug}-{i}"
-        elif slug in existing_slugs and is_forced:
-            print(f"    ↻ Écrasement de l'avis existant (régénération forcée)")
 
         print(f"  → Génération avis : {marque} ({normalize_sentiment(row.get('sentiment',''))}, {parse_note(row.get('note_globale',''))}/5)")
-        # Récupère le prompt custom + questions FAQ pour ce slug (saisis via
-        # le dashboard et stockés dans _drafts.json).
-        # - custom_prompt : utilisé pour générer le bloc sections_html
-        # - faq_questions : liste de questions FAQ à imposer verbatim (Claude
-        #   ne génère que les réponses, évite le doublon)
-        custom_prompt = ""
-        faq_questions: list = []
-        draft_entry = drafts.get(slug) if isinstance(drafts.get(slug), dict) else None
-        if draft_entry:
-            custom_prompt = (draft_entry.get("prompt_custom") or "").strip()
-            raw_faq = draft_entry.get("faq_questions")
-            if isinstance(raw_faq, list):
-                faq_questions = [q.strip() for q in raw_faq if isinstance(q, str) and q.strip()]
-        if custom_prompt:
-            print(f"    📝 Prompt custom détecté ({len(custom_prompt)} caractères)")
-        if faq_questions:
-            print(f"    ❓ {len(faq_questions)} question(s) FAQ imposée(s)")
-
-        # Persona éditorial du site (config.yaml, champ `persona_prompt`).
-        # Injecté en tête des deux appels Claude pour garantir un ton cohérent
-        # entre l'intro/verdict/FAQ et les sections custom.
-        persona_prompt_site = (config.get("persona_prompt") or "").strip()
-        if persona_prompt_site:
-            print(f"    🎭 Persona éditorial détecté ({len(persona_prompt_site)} caractères)")
-
-        # Global prompt (schemas/<template>.json, champ `global_prompt`).
-        # Pattern identique à blog_publish_scheduled.py : on empile
-        # [persona, global_prompt, base_sys] dans le system prompt Claude.
-        # Le global_prompt apporte la prescription éditoriale propre au
-        # verticale (SaaS B2B, SCPI, etc.) en complément du persona individuel.
-        global_prompt_site = _load_global_prompt(site_dir, config)
-        if global_prompt_site:
-            print(f"    🌐 Global prompt schema détecté ({len(global_prompt_site)} caractères)")
-
-        # avis_config : limites de mots + prompts par section configurés dans
-        # le dashboard /templates/[templateId] et persistés dans schemas/<tpl>.json
-        # sous la clé `avis_config`. Lecture une seule fois par site, injection
-        # dans le user prompt des deux appels Claude (JSON + sections HTML).
-        avis_config_site = _load_avis_config(site_dir, config)
-        if avis_config_site:
-            n_limits = sum(1 for v in avis_config_site.values() if isinstance(v, dict) and v.get("words_max"))
-            n_prompts = sum(1 for v in avis_config_site.values() if isinstance(v, dict) and (v.get("prompt") or "").strip())
-            print(f"    📏 Avis config schema : {n_limits} limite(s) de mots, {n_prompts} prompt(s) par section")
-
-        # Mots-clés imposés (sheet) : si présents, log pour traçabilité workflow.
-        # Le parsing et l'injection se font dans generate_sections_html.
-        _mots_raw = (row.get("mots_imposes") or "").strip()
-        if _mots_raw:
-            _mots_parsed = _parse_mots_imposes_csv(_mots_raw)
-            _n_link = sum(1 for m in _mots_parsed if m.get('url'))
-            print(f"    🔗 {len(_mots_parsed)} mot(s) imposé(s) ({_n_link} avec lien interne)")
-
         try:
-            generated = generate_avis_content(
-                row,
-                config.get("site", {}),
-                custom_prompt=custom_prompt,
-                faq_questions=faq_questions,
-                persona_prompt=persona_prompt_site,
-                global_prompt=global_prompt_site,
-                avis_config=avis_config_site,
-            )
+            generated = generate_avis_content(row, config.get("site", {}))
         except Exception as e:
             print(f"    ✗ Échec génération : {e}")
             continue
