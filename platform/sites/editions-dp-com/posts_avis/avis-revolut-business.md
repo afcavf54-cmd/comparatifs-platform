@@ -402,7 +402,7 @@ sections_toc:
   id: avis-clients-sur-revolut-business-ce-qu-en-pensent-les-utilisateurs
 - titre: Comment ouvrir un compte Revolut Business ?
   id: comment-ouvrir-un-compte-revolut-business
-meta_title: 'Avis Revolut Business 2026 : j''ai testé ce compte pro pour mon activité'
+meta_title: 'Avis Revolut Business {year} : j''ai testé ce compte pro pour mon activité'
 meta_description: J'ai testé Revolut Business pour gérer mes paiements, virements et dépenses professionnelles. Découvrez mon avis complet, les tarifs, avantages et limites.
 link_anchors:
 - text: Revolut Business

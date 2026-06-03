@@ -222,7 +222,7 @@ sections_toc:
   id: les-fonctionnalites-d-indy
 - titre: Les tarifs d'Indy en détail
   id: les-tarifs-d-indy-en-detail
-meta_title: 'Avis Indy 2026 : ce logiciel comptable et de facturation vaut-il le coup ?'
+meta_title: 'Avis Indy {year} : ce logiciel comptable et de facturation vaut-il le coup ?'
 meta_description: 'Test complet d''Indy 2026 : fonctions, prix, support. Comptabilité automatisée pour TPE. Version gratuite, interface simple. Mon avis détaillé.'
 link_anchors: []
 mots_imposes: compte pro Indy, Indy pour le LMNP, Indy pour sa SCI
