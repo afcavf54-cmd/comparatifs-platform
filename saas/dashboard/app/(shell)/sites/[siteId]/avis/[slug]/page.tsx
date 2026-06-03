@@ -2,31 +2,24 @@
 import { useEffect, useState, use, useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import RichEditor from '../../../../../../components/RichEditor'
 
 // ─── Page d'édition d'un avis ─────────────────────────────────────────────
 // URL : /sites/<siteId>/avis/<slug>
 //
-// Lit le .md via GET /api/sites/<siteId>/avis/<slug>, présente un formulaire
-// avec TOUS les champs métier (marque, note, points forts/faibles, tarifs,
-// H2, FAQ, verdict, SEO, mot_minimum, Trustpilot, link_anchors), puis fait
-// un PUT pour réécrire le frontmatter.
+// Édition WYSIWYG via le composant RichEditor (même que le blog) sur 6
+// champs rich-text : intro, en_bref, sections_html, h2_avis_clients.aiment,
+// h2_avis_clients.regrettent, verdict. Les autres champs restent en input
+// texte simple ou en éditeurs spécialisés (FAQ, tarifs, points, ancres).
 //
-// Bouton "🔄 Régénérer le contenu IA" :
-// déclenche le workflow GitHub publish-now (avec FORCE_TITLES=marque) qui
-// rejoue les 2 appels Claude (1er pour intro/FAQ/verdict, 2e pour sections
-// custom via prompt brouillon). Tout le texte IA est écrasé, les champs
-// sheet (marque, catégorie, note, CTA, tarifs) sont préservés.
-//
-// Choix d'UI : page dédiée plutôt que modal, car beaucoup de champs avec
-// listes éditables (tarifs, FAQ, points). Une page scrollable reste plus
-// confortable et autorise le copier-coller multi-écran.
+// L'upload d'image est partagé par les 6 RichEditor via un seul file input
+// caché + activeEditorRef qui tracke quel éditeur a déclenché l'upload.
+// Les images sont commités dans platform/sites/<siteId>/public/avis/<slug>/
+// et insérées soit à la position du curseur (si l'éditeur a le focus),
+// soit appendées à la fin du contenu du champ ciblé.
 
 type Tarif = { nom: string; prix: string; features: string }
 type FaqItem = { q: string; r: string }
-// `H2` est le shape commun à h2_fonctionnalites/h2_support/h2_qualite_prix
-// (qui utilisent {titre, contenu_html}) ET à h2_avis_clients (qui utilise
-// désormais {aiment, regrettent} depuis la refonte 2026). Les 4 champs sont
-// donc optionnels — le code de rendu choisit ceux qui sont pertinents.
 type H2 = {
   titre?: string
   contenu_html?: string
@@ -44,14 +37,8 @@ type Avis = {
   date?: string
   updated?: string
   cible?: string
-  // Intro : nouveau paragraphe d'introduction sous le H1 (généré par Claude
-  // séparément du en_bref). Cf. avis_publish_scheduled.py v14+ et template
-  // avis-post.html.j2 v5+.
   intro?: string
   en_bref?: string
-  // Chemin relatif du logo uploadé pour cet avis. Type :
-  // `/avis/<slug>/logo-<ts>.<ext>` (le fichier réside dans
-  // platform/sites/<siteId>/public/avis/<slug>/...).
   logo_path?: string
   points_forts?: string[]
   points_faibles?: string[]
@@ -68,8 +55,6 @@ type Avis = {
   cta_label?: string
   note_trustpilot?: number | string
   nb_avis_trustpilot?: number | string
-  // Avis Google : 2 colonnes optionnelles ajoutées en 2026. Le template
-  // affiche une 2e carte note à côté de Trustpilot si renseignées.
   note_google?: number | string
   nb_avis_google?: number | string
   link_anchors?: LinkAnchor[]
@@ -77,6 +62,10 @@ type Avis = {
   sections_html?: string
   [k: string]: any
 }
+
+// Identifiants des 6 champs édités via RichEditor. Utilisés pour router
+// l'upload d'image vers le bon champ via activeEditorRef.
+type RichField = 'intro' | 'en_bref' | 'sections_html' | 'aiment' | 'regrettent' | 'verdict'
 
 export default function AvisEditPage({ params }: { params: Promise<{ siteId: string; slug: string }> }) {
   const { siteId, slug } = use(params)
@@ -86,24 +75,20 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
   const [domain, setDomain] = useState<string>('')
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
-  // État dédié à la régénération IA : permet de désactiver les autres boutons
-  // pendant qu'on lance le workflow et d'afficher un loader spécifique.
   const [regenerating, setRegenerating] = useState(false)
   const [msg, setMsg] = useState<string>('')
-  // ── État pour l'upload du logo (encart "Mon avis en Bref") ─────────
   const [uploadingLogo, setUploadingLogo] = useState(false)
+  const [uploadingImage, setUploadingImage] = useState(false)
   const logoInputRef = useRef<HTMLInputElement>(null)
-  // ── État du BROUILLON (prompt structure + FAQ imposées) ─────────────
-  // Stocké séparément dans `_drafts.json` sous le slug. Ces 2 champs sont
-  // utilisés par avis_publish_scheduled.py au moment de la régénération
-  // pour piloter la structure des sections H2 et les questions FAQ.
-  // On les charge à l'init et on les pousse via PUT au save (séparément
-  // du frontmatter).
+  // File input caché unique partagé par les 6 RichEditor. Quand un éditeur
+  // demande un upload, il set activeEditorRef AVANT de trigger le picker,
+  // ce qui permet à uploadImage() de savoir dans quel champ injecter l'URL.
+  const imageInputRef = useRef<HTMLInputElement>(null)
+  const activeEditorRef = useRef<RichField | null>(null)
   const [promptCustom, setPromptCustom] = useState<string>('')
   const [faqQuestions, setFaqQuestions] = useState<string[]>([])
   const [draftCollapsed, setDraftCollapsed] = useState<boolean>(true)
 
-  // ── Chargement initial ──────────────────────────────────────────────
   useEffect(() => {
     (async () => {
       try {
@@ -114,7 +99,6 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
           return
         }
         const data = await r.json()
-        // Sécurise les types listés/dicts pour les inputs contrôlés
         const a: Avis = data.avis || {}
         a.points_forts = Array.isArray(a.points_forts) ? a.points_forts : []
         a.points_faibles = Array.isArray(a.points_faibles) ? a.points_faibles : []
@@ -127,9 +111,6 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
         setAvis(a)
         setSha(data.sha || '')
         setDomain(data.site?.domain || '')
-        // ── Chargement du brouillon en parallèle (best-effort) ─────────
-        // Si la route 404 ou erreur, on continue silencieusement avec des
-        // valeurs vides (l'utilisateur pourra remplir et créer le draft).
         try {
           const dr = await fetch(`/api/sites/${siteId}/avis/draft/${slug}`)
           if (dr.ok) {
@@ -137,9 +118,6 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
             setPromptCustom((dd?.draft?.prompt_custom || '').toString())
             const fq = Array.isArray(dd?.draft?.faq_questions) ? dd.draft.faq_questions : []
             setFaqQuestions(fq.filter((q: any) => typeof q === 'string'))
-            // Auto-déplier le bloc si un prompt OU des questions sont déjà
-            // présents, pour que l'éditeur voie tout de suite ce qui pilote
-            // la génération.
             const hasContent = !!(dd?.draft?.prompt_custom || '').trim() || fq.length > 0
             setDraftCollapsed(!hasContent)
           }
@@ -152,11 +130,6 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
     })()
   }, [siteId, slug])
 
-  // ── Sauvegarde : frontmatter + brouillon (2 requêtes en parallèle) ───
-  // Le frontmatter va dans posts_avis/<slug>.md, le brouillon dans
-  // posts_avis/_drafts.json sous la clé <slug>. Les 2 ne sont pas couplés
-  // côté backend mais on les synchronise depuis cette page pour que
-  // l'éditeur n'ait qu'un seul bouton "Enregistrer" à connaître.
   const save = async () => {
     if (!avis) return
     setSaving(true)
@@ -179,9 +152,7 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
       if (!r.ok) {
         setMsg(`Erreur frontmatter : ${data.error || r.status}`)
       } else if (!dr.ok) {
-        // Le frontmatter a été sauvegardé mais pas le draft : on prévient
-        // sans faire de rollback (le frontmatter est la source principale).
-        setMsg('✓ Frontmatter sauvegardé (brouillon non persisté — vérifier l\'API draft)')
+        setMsg("✓ Frontmatter sauvegardé (brouillon non persisté — vérifier l'API draft)")
         const fresh = await fetch(`/api/sites/${siteId}/avis/${slug}`).then(r => r.json())
         setSha(fresh.sha || '')
         setTimeout(() => setMsg(''), 4500)
@@ -198,14 +169,6 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
     }
   }
 
-  // ── Upload du logo de la marque (encart "Mon avis en Bref") ─────────
-  // Le fichier est commité dans `platform/sites/<siteId>/public/avis/<slug>/
-  // logo-<timestamp>.<ext>` et le chemin relatif `/avis/<slug>/logo-<ts>.<ext>`
-  // est stocké dans le frontmatter du .md. Le template avis-post.html.j2
-  // affiche ce logo en haut de page (avec un placeholder = initiale de la
-  // marque si vide).
-  // Pattern copié de blog-edit-page (uploadFeatured) : commit direct via
-  // l'API /api/github/upload, puis update du frontmatter en mémoire.
   const uploadLogo = async (file: File) => {
     if (!file || !slug) return
     setUploadingLogo(true)
@@ -233,8 +196,6 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
         setMsg('✗ Erreur upload logo')
         return
       }
-      // Met à jour le state local du frontmatter. La sauvegarde via le bouton
-      // "Enregistrer" persiste ce chemin dans le .md de l'avis.
       setAvis((prev) => prev ? { ...prev, logo_path: `/avis/${slug}/${imgName}` } : prev)
       setMsg('✓ Logo uploadé — pense à enregistrer pour persister')
       setTimeout(() => setMsg(''), 3500)
@@ -245,17 +206,75 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
     }
   }
 
-  // ── Régénération via Claude (workflow GitHub) ───────────────────────
-  // Déclenche le workflow blog-cron avec FORCE_TITLES=<marque>. Le script
-  // Python `avis_publish_scheduled.py` :
-  //   1. lit le brouillon (_drafts.json) → prompt custom + faq_questions
-  //   2. lit config.yaml > persona_prompt → ton/style
-  //   3. fait 2 appels Claude (JSON principal + sections_html)
-  //   4. écrase le .md avec le nouveau contenu
-  //   5. push → CF Pages redéploie
-  // Donc tout le texte IA (en_bref, points forts/faibles, sections, FAQ
-  // réponses, verdict, meta) est régénéré. Les champs venant de la sheet
-  // (marque, catégorie, note, CTA, tarifs) sont préservés.
+  // ── Upload image inline dans un RichEditor ──────────────────────────
+  // L'éditeur appelant a set activeEditorRef.current via son `onImageUpload`.
+  // Si un .rich-editor a le focus on insère à la position du curseur via
+  // execCommand insertHTML, sinon on append au state du champ ciblé.
+  const uploadImage = async (file: File) => {
+    if (!file || !slug) return
+    const field = activeEditorRef.current
+    if (!field) return
+    setUploadingImage(true)
+    setMsg("📷 Upload de l'image en cours...")
+    const ext = (file.name.split('.').pop() || 'jpg').toLowerCase()
+    const baseName = (file.name.replace(/\.[^.]+$/, '') || 'image')
+      .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40) || 'image'
+    const imgName = `${baseName}-${Date.now() % 100000}.${ext}`
+    const ghPath = `platform/sites/${siteId}/public/avis/${slug}/${imgName}`
+    try {
+      const dataUrl: string = await new Promise((resolve, reject) => {
+        const r = new FileReader()
+        r.onload = () => resolve(String(r.result).split(',')[1])
+        r.onerror = reject
+        r.readAsDataURL(file)
+      })
+      const r = await fetch('/api/github/upload', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          path: ghPath,
+          content: dataUrl,
+          message: `HUB: Avis image for ${slug} (${field})`,
+        }),
+      })
+      if (!r.ok) {
+        setMsg('✗ Erreur upload image')
+        return
+      }
+      const publicUrl = `/avis/${slug}/${imgName}`
+      const alt = file.name.replace(/\.[^.]+$/, '')
+      const imgHtml = `<p><img src="${publicUrl}" alt="${alt}" /></p>`
+
+      const focusedEditor = document.activeElement?.closest('.rich-editor') as HTMLDivElement | null
+      if (focusedEditor) {
+        document.execCommand('insertHTML', false, imgHtml)
+        focusedEditor.dispatchEvent(new Event('input', { bubbles: true }))
+      } else {
+        if (field === 'intro') {
+          upd({ intro: (avis?.intro || '') + imgHtml })
+        } else if (field === 'en_bref') {
+          upd({ en_bref: (avis?.en_bref || '') + imgHtml })
+        } else if (field === 'sections_html') {
+          upd({ sections_html: (avis?.sections_html || '') + imgHtml })
+        } else if (field === 'verdict') {
+          upd({ verdict: (avis?.verdict || '') + imgHtml })
+        } else if (field === 'aiment') {
+          updH2('h2_avis_clients', { aiment: (avis?.h2_avis_clients?.aiment || '') + imgHtml })
+        } else if (field === 'regrettent') {
+          updH2('h2_avis_clients', { regrettent: (avis?.h2_avis_clients?.regrettent || '') + imgHtml })
+        }
+      }
+      setMsg('✓ Image insérée — pense à enregistrer')
+      setTimeout(() => setMsg(''), 3500)
+    } catch {
+      setMsg('✗ Erreur upload')
+    } finally {
+      setUploadingImage(false)
+      activeEditorRef.current = null
+      if (imageInputRef.current) imageInputRef.current.value = ''
+    }
+  }
+
   const regenerate = async () => {
     if (!avis?.marque) {
       setMsg('Marque manquante, impossible de lancer la régénération')
@@ -275,9 +294,6 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
     setRegenerating(true)
     setMsg('')
     try {
-      // Vérif préalable : un brouillon existe-t-il pour ce slug ? Si non, on
-      // prévient l'éditeur que la regen utilisera le format standard sans
-      // prompt custom (= 3 H2 standards génériques).
       try {
         const draftRes = await fetch(`/api/sites/${siteId}/avis/draft/${slug}`)
         const draftData = await draftRes.json()
@@ -292,12 +308,8 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
             return
           }
         }
-      } catch {
-        // Si la route draft n'existe pas / erreur réseau, on continue quand même
-        // (le script Python gère le cas sans brouillon).
-      }
+      } catch { /* draft inaccessible : on continue */ }
 
-      // Déclenche le workflow GitHub
       const r = await fetch(`/api/sites/${siteId}/avis/publish-now`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -317,7 +329,6 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
     }
   }
 
-  // ── Suppression ─────────────────────────────────────────────────────
   const remove = async () => {
     if (!confirm(`Supprimer définitivement l'avis "${avis?.marque}" ? Cette action est irréversible.`)) return
     const r = await fetch(`/api/sites/${siteId}/avis/${slug}`, { method: 'DELETE' })
@@ -328,31 +339,31 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
     }
   }
 
-  // ── Helpers d'update partiel ────────────────────────────────────────
   const upd = (patch: Partial<Avis>) => setAvis(prev => prev ? { ...prev, ...patch } : prev)
   const updH2 = (key: 'h2_fonctionnalites' | 'h2_support' | 'h2_qualite_prix' | 'h2_avis_clients', patch: Partial<H2>) =>
     setAvis(prev => prev ? { ...prev, [key]: { ...(prev[key] || { titre: '', contenu_html: '' }), ...patch } } : prev)
 
+  // Helper : tracke l'éditeur actif puis ouvre le picker
+  const triggerImagePicker = (field: RichField) => {
+    activeEditorRef.current = field
+    imageInputRef.current?.click()
+  }
+
   if (loading) return <div style={{ padding: 24 }}>Chargement…</div>
   if (!avis) return <div style={{ padding: 24, color: 'crimson' }}>{msg || 'Avis introuvable'}</div>
 
-  // Avis avec sections_html ? On peut signaler à l'éditeur que les 3 H2 legacy
-  // sont vides à dessein (cf. fix Python qui ne les stocke plus si sections_html).
   const hasSectionsHtml = !!(avis.sections_html && avis.sections_html.trim())
 
-  // ── Styles partagés (sobres, cohérents avec le reste du dashboard) ──
   const labelStyle: React.CSSProperties = { display: 'block', fontSize: 12, fontWeight: 600, color: '#555', marginBottom: 4, textTransform: 'uppercase', letterSpacing: 0.4 }
   const inputStyle: React.CSSProperties = { width: '100%', padding: '8px 10px', border: '1px solid #ddd', borderRadius: 6, fontSize: 14, fontFamily: 'inherit' }
   const textareaStyle: React.CSSProperties = { ...inputStyle, minHeight: 80, resize: 'vertical', fontFamily: 'inherit' }
   const sectionStyle: React.CSSProperties = { background: '#fff', border: '1px solid #e5e5e5', borderRadius: 10, padding: 20, marginBottom: 20 }
   const h2Style: React.CSSProperties = { margin: '0 0 16px', fontSize: 16, fontWeight: 600, color: '#222' }
 
-  // Désactive les autres actions pendant une opération en cours
   const busy = saving || regenerating
 
   return (
     <div style={{ padding: 24, maxWidth: 1000, margin: '0 auto' }}>
-      {/* Bandeau top */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
         <Link href={`/sites/${siteId}/avis`} style={{ fontSize: 14, color: '#666', textDecoration: 'none' }}>← Retour aux avis</Link>
         <h1 style={{ flex: 1, margin: 0, fontSize: 22, fontWeight: 600 }}>Édition : {avis.marque || slug}</h1>
@@ -364,13 +375,6 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
         )}
       </div>
 
-      {/* ── 🤖 CONFIGURATION DE LA GÉNÉRATION IA ──────────────────────
-          Bloc collapsible regroupant ce qui pilote la régénération Claude :
-          - prompt_custom : structure des sections H2 imposée
-          - faq_questions : questions FAQ imposées
-          Les 2 sont stockés dans posts_avis/_drafts.json (séparé du
-          frontmatter). Le bouton "🔄 Régénérer" plus haut utilise ces
-          valeurs. Si ce bloc est vide, Claude génère librement. */}
       <div style={{ ...sectionStyle, background: '#FAF7FF', border: '1px solid #D6C8F0' }}>
         <div
           onClick={() => setDraftCollapsed(c => !c)}
@@ -400,7 +404,7 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
                 value={promptCustom}
                 onChange={e => setPromptCustom(e.target.value)}
                 rows={10}
-                placeholder={`Ex: Génère exactement 4 sections H2 dans cet ordre :\n1. "Présentation de {{ avis.marque || 'la marque' }} et son positionnement"\n2. "Fonctionnalités principales et points forts"\n...`}
+                placeholder={`Ex: Génère exactement 4 sections H2 dans cet ordre :\n1. "Présentation de la marque et son positionnement"\n2. "Fonctionnalités principales et points forts"\n...`}
                 style={{
                   width: '100%', padding: '10px 12px', borderRadius: 8,
                   background: '#fff', border: '1px solid #D6C8F0',
@@ -458,7 +462,6 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
         )}
       </div>
 
-      {/* ── INFOS DE BASE ──────────────────────────────────────────── */}
       <div style={sectionStyle}>
         <h2 style={h2Style}>Informations</h2>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 12 }}>
@@ -493,34 +496,39 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
         </div>
       </div>
 
-      {/* ── EN BREF + H1 ───────────────────────────────────────────── */}
+      {/* ── HERO (H1 + INTRO + EN BREF + LOGO) ─────────────────────── */}
       <div style={sectionStyle}>
         <h2 style={h2Style}>Hero (titre + intro + résumé)</h2>
-        <div style={{ marginBottom: 12 }}>
+        <div style={{ marginBottom: 16 }}>
           <label style={labelStyle}>Titre H1</label>
           <input style={inputStyle} value={avis.h1 || ''} onChange={e => upd({ h1: e.target.value })}
                  placeholder={`Avis ${avis.marque || 'Marque'} (2026) : ...`} />
         </div>
-        <div style={{ marginBottom: 12 }}>
+        <div style={{ marginBottom: 16 }}>
           <label style={labelStyle}>
             Intro <span style={{ textTransform: 'none', color: '#888', fontWeight: 400 }}>— paragraphe d'introduction sous le H1</span>
           </label>
-          <textarea style={textareaStyle} rows={4} value={avis.intro || ''} onChange={e => upd({ intro: e.target.value })}
-                    placeholder="Paragraphe d'accroche éditoriale qui pose le contexte. Différent du résumé « En bref »." />
+          <RichEditor
+            value={avis.intro || ''}
+            onChange={(html) => upd({ intro: html })}
+            onImageUpload={() => triggerImagePicker('intro')}
+            placeholder="Paragraphe d'accroche éditoriale qui pose le contexte. Différent du résumé « En bref »."
+            height={220}
+          />
         </div>
-        <div style={{ marginBottom: 12 }}>
+        <div style={{ marginBottom: 16 }}>
           <label style={labelStyle}>
             Résumé « En bref » <span style={{ textTransform: 'none', color: '#888', fontWeight: 400 }}>— affiché à côté du logo</span>
           </label>
-          <textarea style={textareaStyle} value={avis.en_bref || ''} onChange={e => upd({ en_bref: e.target.value })}
-                    placeholder="Synthèse de l'avis en ~50 mots : verdict, points clés, pour qui c'est." />
+          <RichEditor
+            value={avis.en_bref || ''}
+            onChange={(html) => upd({ en_bref: html })}
+            onImageUpload={() => triggerImagePicker('en_bref')}
+            placeholder="Synthèse de l'avis en ~50 mots : verdict, points clés, pour qui c'est."
+            height={200}
+          />
         </div>
 
-        {/* ── Upload du logo ─────────────────────────────────────────────── */}
-        {/* Le pattern d'upload est identique à celui du blog (uploadFeatured).
-            Le fichier est commité dans `platform/sites/<siteId>/public/avis/<slug>/`
-            et le chemin relatif `/avis/<slug>/logo-<ts>.<ext>` est stocké
-            dans le frontmatter, puis rendu dans avis-post.html.j2. */}
         <div>
           <label style={labelStyle}>
             Logo de la marque <span style={{ textTransform: 'none', color: '#888', fontWeight: 400 }}>— affiché à gauche du résumé « En bref »</span>
@@ -579,7 +587,6 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
         </div>
       </div>
 
-      {/* ── POINTS FORTS / FAIBLES ─────────────────────────────────── */}
       <div style={sectionStyle}>
         <h2 style={h2Style}>Points forts et faibles</h2>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
@@ -588,18 +595,11 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
         </div>
       </div>
 
-      {/* ── TARIFS ─────────────────────────────────────────────────── */}
       <div style={sectionStyle}>
         <h2 style={h2Style}>Tarifs et offres</h2>
         <TarifsEditor tarifs={avis.tarifs || []} onChange={v => upd({ tarifs: v })} />
       </div>
 
-      {/* ── SECTIONS HTML CUSTOM (si l'avis a un sections_html) ─────
-          Ce champ contient le HTML libre généré par le 2e appel Claude à
-          partir du prompt custom de l'éditeur (cf. brouillon). Quand il est
-          rempli, c'est lui qui est rendu sur le site, et les 3 H2 legacy
-          (Fonctionnalités / Support / Qualité-Prix) sont ignorés. On le
-          rend éditable ici pour permettre des retouches manuelles.        */}
       {hasSectionsHtml && (
         <div style={sectionStyle}>
           <h2 style={h2Style}>
@@ -608,11 +608,13 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
               ✓ Actif — remplace les 3 H2 standards ci-dessous
             </span>
           </h2>
-          <label style={labelStyle}>Contenu HTML</label>
-          <textarea
-            style={{ ...textareaStyle, minHeight: 320, fontFamily: 'ui-monospace, monospace', fontSize: 12 }}
+          <label style={labelStyle}>Contenu</label>
+          <RichEditor
             value={avis.sections_html || ''}
-            onChange={e => upd({ sections_html: e.target.value })}
+            onChange={(html) => upd({ sections_html: html })}
+            onImageUpload={() => triggerImagePicker('sections_html')}
+            placeholder="Bloc HTML libre généré par Claude depuis le prompt custom du brouillon."
+            height={420}
           />
           <small style={{ color: '#888', fontSize: 11, display: 'block', marginTop: 6 }}>
             Pour modifier la STRUCTURE (H2/H3) ou regénérer ce contenu via le persona,
@@ -623,7 +625,6 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
         </div>
       )}
 
-      {/* ── H2 ANALYSE (legacy — masqués si sections_html actif) ──── */}
       {!hasSectionsHtml && (['h2_fonctionnalites', 'h2_support', 'h2_qualite_prix'] as const).map(key => (
         <div style={sectionStyle} key={key}>
           <h2 style={h2Style}>{({
@@ -644,32 +645,32 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
         </div>
       ))}
 
-      {/* ── Section Avis clients : aiment + regrettent ──────────────────
-          Refonte 2026 : 2 paragraphes distincts au lieu d'un seul contenu_html.
-          Le titre H2 est désormais forcé côté template ("Quels sont les avis
-          des utilisateurs de X ?"), donc plus d'input "Titre H2" ici. */}
       <div style={sectionStyle}>
         <h2 style={h2Style}>Avis des utilisateurs (boxes aiment / regrettent)</h2>
         <p style={{ fontSize: 12, color: '#888', margin: '0 0 14px', lineHeight: 1.5 }}>
           2 paragraphes HTML générés par Claude à partir du sentiment + points forts/faibles.
-          Mots-clés à mettre en <code style={{ background: '#f4f4f4', padding: '1px 5px', borderRadius: 3 }}>&lt;strong&gt;</code>.
+          Mets les mots-clés en <strong>gras</strong> via la toolbar.
         </p>
-        <div style={{ marginBottom: 14 }}>
+        <div style={{ marginBottom: 16 }}>
           <label style={labelStyle}>✅ Ce que les clients aiment</label>
-          <textarea style={{ ...textareaStyle, minHeight: 110, fontFamily: 'ui-monospace, monospace', fontSize: 13 }}
-                    value={avis.h2_avis_clients?.aiment || ''}
-                    onChange={e => updH2('h2_avis_clients', { aiment: e.target.value })}
-                    placeholder="<p>Les clients mettent en avant : un <strong>service client réactif</strong>, ...</p>" />
+          <RichEditor
+            value={avis.h2_avis_clients?.aiment || ''}
+            onChange={(html) => updH2('h2_avis_clients', { aiment: html })}
+            onImageUpload={() => triggerImagePicker('aiment')}
+            placeholder="Les clients mettent en avant : un service client réactif, ..."
+            height={200}
+          />
         </div>
         <div>
           <label style={labelStyle}>❌ Ce que les clients regrettent</label>
-          <textarea style={{ ...textareaStyle, minHeight: 110, fontFamily: 'ui-monospace, monospace', fontSize: 13 }}
-                    value={avis.h2_avis_clients?.regrettent || ''}
-                    onChange={e => updH2('h2_avis_clients', { regrettent: e.target.value })}
-                    placeholder="<p>Plusieurs points faibles reviennent : une <strong>application jugée vieillotte</strong>, ...</p>" />
+          <RichEditor
+            value={avis.h2_avis_clients?.regrettent || ''}
+            onChange={(html) => updH2('h2_avis_clients', { regrettent: html })}
+            onImageUpload={() => triggerImagePicker('regrettent')}
+            placeholder="Plusieurs points faibles reviennent : une application jugée vieillotte, ..."
+            height={200}
+          />
         </div>
-        {/* Rétro-compat : si l'avis a encore un ancien contenu_html (jamais
-            régénéré depuis la refonte), on l'affiche en read-only pour info. */}
         {avis.h2_avis_clients?.contenu_html && (
           <div style={{ marginTop: 14, padding: 10, background: '#FFF8E1', border: '1px solid #FFE082', borderRadius: 6, fontSize: 12, color: '#5D4037' }}>
             ⚠ Contenu legacy détecté (<code>contenu_html</code>) — sera remplacé par les 2 paragraphes ci-dessus à la prochaine régénération.
@@ -677,18 +678,22 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
         )}
       </div>
 
-      {/* ── FAQ ─────────────────────────────────────────────────────── */}
       <div style={sectionStyle}>
         <h2 style={h2Style}>Foire aux questions</h2>
         <FaqEditor faq={avis.faq || []} onChange={v => upd({ faq: v })} />
       </div>
 
-      {/* ── VERDICT + CTA ──────────────────────────────────────────── */}
       <div style={sectionStyle}>
         <h2 style={h2Style}>Verdict et CTA</h2>
-        <div style={{ marginBottom: 12 }}>
+        <div style={{ marginBottom: 16 }}>
           <label style={labelStyle}>Verdict final</label>
-          <textarea style={textareaStyle} value={avis.verdict || ''} onChange={e => upd({ verdict: e.target.value })} />
+          <RichEditor
+            value={avis.verdict || ''}
+            onChange={(html) => upd({ verdict: html })}
+            onImageUpload={() => triggerImagePicker('verdict')}
+            placeholder="Conclusion finale de l'avis : recommandation, pour qui, à éviter si..."
+            height={240}
+          />
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 12 }}>
           <div>
@@ -702,10 +707,6 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
         </div>
       </div>
 
-      {/* ── PREUVE SOCIALE : Trustpilot + Google ────────────────────
-          2 plateformes optionnelles. Si l'une OU l'autre est renseignée, la
-          section "Quels sont les avis des utilisateurs de X ?" s'affiche
-          avec les logos et notes correspondants. */}
       <div style={sectionStyle}>
         <h2 style={h2Style}>Preuve sociale (Trustpilot + Google)</h2>
         <p style={{ fontSize: 12, color: '#888', margin: '0 0 14px', lineHeight: 1.5 }}>
@@ -746,7 +747,6 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
         </div>
       </div>
 
-      {/* ── SEO ────────────────────────────────────────────────────── */}
       <div style={sectionStyle}>
         <h2 style={h2Style}>SEO</h2>
         <div style={{ marginBottom: 12 }}>
@@ -761,21 +761,17 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
         </div>
       </div>
 
-      {/* ── MAILLAGE INTERNE ────────────────────────────────────────── */}
       <div style={sectionStyle}>
         <h2 style={h2Style}>Maillage interne (ancres → nb d'occurrences à lier)</h2>
         <LinkAnchorsEditor anchors={avis.link_anchors || []} onChange={v => upd({ link_anchors: v })} />
       </div>
 
-      {/* ── BARRE D'ACTIONS ────────────────────────────────────────── */}
       <div style={{ position: 'sticky', bottom: 0, background: '#fafafa', borderTop: '1px solid #ddd', padding: 16, margin: '20px -24px -24px', display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
         <button onClick={save} disabled={busy}
                 style={{ background: '#000', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: 6, fontWeight: 600, fontSize: 14, cursor: busy ? 'wait' : 'pointer', opacity: busy ? 0.6 : 1 }}>
           {saving ? 'Sauvegarde…' : '💾 Enregistrer'}
         </button>
 
-        {/* Bouton Régénérer : style accent pour qu'il soit visible mais
-            distinct du bouton primaire. Vert pour signaler l'action IA. */}
         <button onClick={regenerate} disabled={busy}
                 title="Relance les 2 appels Claude (prompt brouillon + persona) et écrase le contenu actuel"
                 style={{ background: '#3D7A4F', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: 6, fontWeight: 600, fontSize: 14, cursor: busy ? 'wait' : 'pointer', opacity: busy ? 0.6 : 1 }}>
@@ -791,11 +787,18 @@ export default function AvisEditPage({ params }: { params: Promise<{ siteId: str
         <span style={{ flex: 1 }} />
         <small style={{ color: '#888' }}>Le HTML sera regénéré au prochain déploiement automatique.</small>
       </div>
+
+      {/* File input caché unique partagé par les 6 RichEditor — uploadImage() lit activeEditorRef pour router l'URL au bon champ */}
+      <input
+        ref={imageInputRef}
+        type="file"
+        accept="image/png,image/jpeg,image/webp,image/gif"
+        style={{ display: 'none' }}
+        onChange={e => e.target.files?.[0] && uploadImage(e.target.files[0])}
+      />
     </div>
   )
 }
-
-// ─── Petits éditeurs spécialisés ──────────────────────────────────────────
 
 function ListEditor({ label, items, onChange }: { label: string; items: string[]; onChange: (v: string[]) => void }) {
   return (
