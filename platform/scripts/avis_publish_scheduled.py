@@ -677,6 +677,15 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         if key in processed:
             continue
         is_forced = marque in force_titles
+        # ⚠ FORCE_TITLES = mode EXCLUSIF : si une liste est passée (typiquement
+        # via le bouton "🔄 Régénérer" du dashboard, qui appelle publish-now
+        # avec une seule marque), on ne traite QUE ces marques. Sans ça, tous
+        # les autres avis du Sheet à date vide ou passée seraient aussi publiés
+        # (parce que le cron horaire utilise la même logique de "publication
+        # immédiate si date vide"). Bug observé le 2026-06 : "Régénérer Revolut
+        # Business" avait déclenché la publication de 5+ avis en brouillon.
+        if force_titles and not is_forced:
+            continue
         # Convention : date_publication vide = publication immédiate (au prochain
         # passage du cron, ou maintenant si on est dans la boucle). Permet à
         # Julien d'ajouter une ligne dans la sheet sans avoir à choisir une date.
