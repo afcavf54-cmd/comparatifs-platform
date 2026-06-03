@@ -16,7 +16,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ site.domain }}/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">
+{% if theme.google_fonts %}<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">{% endif %}
 
 <script type="application/ld+json">
 {
