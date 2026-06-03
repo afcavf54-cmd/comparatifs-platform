@@ -5,7 +5,7 @@
 # ============================================================
 
 site:
-  home_h1: "Comparateur de solutions professionnelles pour startups et entreprises"
+  home_h1: "Startup Only : idées, stratégies et croissance pour les startups"
   contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
   google_site_verification: "aJ6dZaO-dy_qnh037a17U9GUPAmfx2DsoxnYAQTi4d4"
   slug: startup-factory-fr
@@ -19,9 +19,9 @@ site:
   sheet_csv_url: ""
   www_preference: "www"
   author_name: "Léa Petit"
-  home_title: "Startup Factory : comparatifs logiciels, outils SaaS et actualités
+  home_title: "Startup Only : idées, stratégies et croissance pour les startups"
     business"
-  home_description: "Startup Factory compare les meilleurs logiciels professionnels,
+  home_description: "Startup Only partage actualités, analyses, conseils et stratégies pour aider les entrepreneurs à lancer et développer leur startup."
     outils SaaS et services innovants pour accompagner les entrepreneurs, startups
     et PME."
   template: "classement-saas.html.j2"
@@ -70,7 +70,7 @@ tag_classes:
 
 seo:
   title_pattern: "{A} vs {B} : quel logiciel choisir en {year} ?"
-  meta_pattern: "Comparatif complet entre {A} et {B} : prix, fonctionnalités, automatisations
+  meta_pattern: "Comparatif complet entre {A} et {B} : prix, fonctionnalités, automatisations"
     et avis utilisateurs."
   h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
   eyebrow: "Comparatif {year}"
@@ -78,7 +78,7 @@ seo:
   category_label: "Comparateurs"
   category_url: "/#comparateurs"
   avis_title_pattern: "Avis {nom} {year} : notre analyse complète"
-  avis_meta_pattern: "Découvrez notre avis détaillé sur {nom} : fonctionnalités, prix,
+  avis_meta_pattern: "Découvrez notre avis détaillé sur {nom} : fonctionnalités, prix,"
     avantages, limites et alternatives."
   liste_comp_title: "Tous les comparatifs Startup Factory {year}"
   liste_avis_title: "Avis logiciels et SaaS : nos tests indépendants"
