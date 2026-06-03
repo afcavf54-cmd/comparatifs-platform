@@ -338,7 +338,7 @@ sections_toc:
   id: fonctionnalites-de-sumup-caisse-pro-le-tour-complet
 - titre: 'Tarifs SumUp Caisse Pro : ce que vous allez vraiment payer'
   id: tarifs-sumup-caisse-pro-ce-que-vous-allez-vraiment-payer
-meta_title: Avis SumUp Caisse Pro, meilleur logiciel de caisse 2026 ?
+meta_title: Avis SumUp Caisse Pro, meilleur logiciel de caisse {year} ?
 meta_description: 'Test approfondi de SumUp Caisse Pro : fonctionnalités, prix, support client. Avis d''expert après utilisation réelle. Note 4,5/5. Pour qui c''est adapté ?'
 link_anchors: []
 mots_imposes: ''
