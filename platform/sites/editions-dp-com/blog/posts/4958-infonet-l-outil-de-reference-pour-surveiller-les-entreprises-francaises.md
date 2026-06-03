@@ -12,7 +12,8 @@ min_words: 1000
 link_anchors:
 - text: infonet
   max: 4
-related_posts: []
+related_posts:
+- 8982-quasi-usufruit-definition-avantages-inconvenients-et-cas-d-usage-en-gestion-patrimoniale
 ---
 <h2>Infonet : panorama d'un outil qui sait tout sur les entreprises françaises</h2>
 
