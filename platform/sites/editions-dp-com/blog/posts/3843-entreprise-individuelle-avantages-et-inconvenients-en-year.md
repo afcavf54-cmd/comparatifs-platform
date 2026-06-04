@@ -1,11 +1,11 @@
 ---
-title: "Entreprise individuelle : avantages et inconvénients en {year}"
+title: 'Entreprise individuelle : avantages et inconvénients en {year}'
 slug: 3843-entreprise-individuelle-avantages-et-inconvenients-en-year
-date: 2026-06-02T16:00:00+02:00
-updated: 2026-06-04T14:15:34
+date: 2026-06-02 16:00:00+02:00
+updated: 2026-06-04 14:15:34
 categorie: Création entreprise
-meta_title: "Quels sont les avantages et inconvénients de l'entreprise individuelle"
-meta_description: "Découvrez les avantages et inconvénients de l'entreprise individuelle"
+meta_title: Quels sont les avantages et inconvénients de l'entreprise individuelle ?
+meta_description: Découvrez les avantages et inconvénients de l'entreprise individuelle
 featured_image: /blog/3843-entreprise-individuelle-avantages-et-inconvenients-en-year/featured-28488.jpg
 status: published
 min_words: 1500
@@ -15,7 +15,7 @@ related_posts:
 - 8641-creer-une-entreprise-auto-entrepreneur-toutes-les-etapes
 - 9835-statut-juridique-d-une-entreprise-lequel-choisir-en-year
 link_anchors:
-- text: "les avantages et inconvénients d'une entreprise individuelle"
+- text: les avantages et inconvénients d'une entreprise individuelle
   max: 2
 ---
 
@@ -172,4 +172,5 @@ link_anchors:
 <p>Mais ne foncez pas tête baissée. Évaluez bien les risques liés à votre activité et à votre patrimoine personnel. Un conseil en création d'entreprise peut vous éviter des erreurs coûteuses.</p>
 
 <p>L'entreprise individuelle reste un excellent point de départ. Après tout, on peut toujours évoluer vers autre chose. Ce qui compte, c'est de commencer.</p>
+
 
