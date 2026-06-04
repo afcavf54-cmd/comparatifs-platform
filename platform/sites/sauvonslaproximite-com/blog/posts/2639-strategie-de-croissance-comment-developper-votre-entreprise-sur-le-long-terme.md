@@ -14,7 +14,8 @@ status: published
 link_anchors:
 - text: stratégie de croissance
   max: 4
-related_posts: []
+related_posts:
+- 5553-sepo-comprendre-cette-methode-pour-analyser-les-performances-de-votre-organisation
 ---
 <h2>Les fondamentaux d'une stratégie de croissance durable</h2>
 

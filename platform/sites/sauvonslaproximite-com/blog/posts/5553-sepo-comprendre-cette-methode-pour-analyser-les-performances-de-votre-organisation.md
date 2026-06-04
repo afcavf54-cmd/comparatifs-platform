@@ -4,14 +4,17 @@ slug: 5553-sepo-comprendre-cette-methode-pour-analyser-les-performances-de-votre
 date: '2026-06-04T10:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'SEPO : présentation, fonctionnement et cas d''utilisation'
-meta_description: Découvrez la méthode SEPO pour analyser efficacement les performances de votre organisation. Outil d'évaluation simple et actionnable pour identifier succès,…
+meta_description: Découvrez la méthode SEPO pour analyser efficacement les performances
+  de votre organisation. Outil d'évaluation simple et actionnable pour identifier
+  succès,…
 min_words: 2500
 status: published
 link_anchors:
 - text: sepo
   max: 4
+related_posts:
+- 2639-strategie-de-croissance-comment-developper-votre-entreprise-sur-le-long-terme
 ---
-
 <h2>Qu'est-ce que la méthode SEPO et pourquoi l'utiliser ?</h2>
 
 <p>La méthode SEPO (Succès, Échecs, Potentiels, Obstacles) me sert régulièrement pour <strong>analyser les performances</strong> de mon département comptable. C'est un outil d'évaluation qui ressemble au SWOT, mais avec une approche plus orientée vers l'action concrète.</p>
