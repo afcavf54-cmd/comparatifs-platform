@@ -40,27 +40,42 @@ async function ghPut(path: string, content: string, message: string, sha?: strin
 }
 
 // ─── GET : liste tous les articles du blog ────────────────────────────────
+// Optimisation : tous les .md sont fetchés EN PARALLÈLE (chunks de 30).
+// Avant : 140 articles = 140 appels GitHub séquentiels ~ 20-40s.
+// Après : 140 articles = ~5 chunks de 30 en parallèle ~ 2-5s.
+// GitHub API authentifiée : 5000 req/h → 140 req/page = OK même avec
+// plusieurs rafraîchissements.
 export async function GET(req: NextRequest, { params }: { params: Promise<{ siteId: string }> }) {
   const { siteId } = await params
   const dir = `platform/sites/${siteId}/blog/posts`
   const files = await ghList(dir)
   if (!files) return NextResponse.json({ posts: [] })
 
-  const posts: any[] = []
-  for (const f of files) {
-    if (!f.name.endsWith('.md')) continue
-    const file = await ghGet(f.path)
-    if (!file) continue
-    const parsed = parseFrontmatter(file.content)
-    if (!parsed) continue
-    posts.push({
-      ...parsed.fm,
-      filename: f.name,
-      excerpt: (parsed.body || '').replace(/[#*_`>\-]/g, '').replace(/\s+/g, ' ').slice(0, 150),
-    })
+  const mdFiles = files.filter(f => f.name.endsWith('.md'))
+
+  // Chunked parallel fetch : 30 requêtes en parallèle max, puis next batch.
+  // Évite de saturer GitHub avec 140 connexions simultanées tout en gardant
+  // un gain de perf énorme vs la version séquentielle.
+  const CHUNK_SIZE = 30
+  const results: any[] = []
+  for (let i = 0; i < mdFiles.length; i += CHUNK_SIZE) {
+    const chunk = mdFiles.slice(i, i + CHUNK_SIZE)
+    const fetched = await Promise.all(chunk.map(async f => {
+      const file = await ghGet(f.path)
+      if (!file) return null
+      const parsed = parseFrontmatter(file.content)
+      if (!parsed) return null
+      return {
+        ...parsed.fm,
+        filename: f.name,
+        excerpt: (parsed.body || '').replace(/[#*_`>\-]/g, '').replace(/\s+/g, ' ').slice(0, 150),
+      }
+    }))
+    for (const p of fetched) if (p) results.push(p)
   }
-  posts.sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')))
-  return NextResponse.json({ posts })
+
+  results.sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')))
+  return NextResponse.json({ posts: results })
 }
 
 // ─── POST : créer un nouveau post (squelette vide ou avec contenu IA) ─────
