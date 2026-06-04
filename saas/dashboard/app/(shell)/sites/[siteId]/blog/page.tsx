@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
 
@@ -11,7 +11,10 @@ interface Post {
   status?: string
   meta_description?: string
   excerpt?: string
+  featured_image?: string
 }
+
+type TabKey = 'published' | 'scheduled' | 'draft'
 
 const STATUS_LABEL: Record<string, string> = {
   published: '✓ Publié',
@@ -31,29 +34,19 @@ export default function BlogListPage() {
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
   const [catFilter, setCatFilter] = useState('')
-  const [statusFilter, setStatusFilter] = useState('')
-  // Articles en cours de génération (titres attendus depuis le déclenchement
-  // d'un workflow). Stockés en localStorage pour survivre aux reloads.
-  // Format : { title, createdAt: number }[] — pas de slug car il n'est connu
-  // qu'après génération. Rapprochement par normalisation du titre.
+  // ── Onglet actif. Par défaut : "Publiés" (le plus consulté au quotidien).
+  // Les boxes jaune (pending) et bleue (scheduled depuis sheet) restent
+  // toujours visibles en haut quel que soit l'onglet.
+  const [activeTab, setActiveTab] = useState<TabKey>('published')
   const [pending, setPending] = useState<{ title: string; createdAt: number }[]>([])
-  // Articles programmés pour une date future (status === 'scheduled' dans la sheet).
-  // Ils restent visibles jusqu'à ce que la date soit atteinte et qu'ils
-  // apparaissent dans la liste publiée. Stockés en localStorage séparé.
   const [scheduled, setScheduled] = useState<{ title: string; scheduledFor: string; createdAt: number }[]>([])
-  // Bouton "🚀 Publier maintenant" — titre en cours de déclenchement (sinon null)
   const [publishingNow, setPublishingNow] = useState<string | null>(null)
-  // Configuration sheet de programmation
   const [showSheetConfig, setShowSheetConfig] = useState(false)
   const [sheetUrl, setSheetUrl] = useState('')
   const [sheetUrlOriginal, setSheetUrlOriginal] = useState('')
   const [savingSheet, setSavingSheet] = useState(false)
-  const [checkingSheet, setCheckingSheet] = useState(false)
   const [sheetMsg, setSheetMsg] = useState('')
-  // Domaine public du site (ex: "https://www.editions-dp.com") pour afficher
-  // les thumbnails featured_image dans la liste blog.
   const [siteDomain, setSiteDomain] = useState('')
-  // Modale preview de la sheet (affiche les articles à publier avant de déclencher le workflow)
   const [showPreview, setShowPreview] = useState(false)
   const [previewData, setPreviewData] = useState<any>(null)
   const [previewLoading, setPreviewLoading] = useState(false)
@@ -61,14 +54,10 @@ export default function BlogListPage() {
 
   useEffect(() => { load(); loadConfig(); loadPending(); loadScheduled(); syncScheduledFromSheet() }, [siteId])
 
-  // Récupère la liste des articles programmés directement depuis la sheet
-  // (sans afficher la modale). Permet d'avoir la box bleue à jour même si
-  // l'utilisateur n'a jamais cliqué "Lancer la génération" depuis le déploiement
-  // de la feature, OU si le localStorage a été vidé.
   async function syncScheduledFromSheet() {
     try {
       const r = await fetch(`/api/sites/${siteId}/blog/preview-sheet`)
-      if (!r.ok) return  // sheet non configurée ou inaccessible : silencieux
+      if (!r.ok) return
       const data = await r.json()
       if (!data.rows) return
       const sheetScheduled = data.rows
@@ -79,12 +68,9 @@ export default function BlogListPage() {
           createdAt: Date.now(),
         }))
       if (sheetScheduled.length === 0) return
-      // Merger avec ce qui est en localStorage (sans doublons par titre normalisé)
       setScheduled(prev => {
         const existingTitles = new Set(prev.map(p => normalizeTitle(p.title)))
         const newOnes = sheetScheduled.filter((s: any) => !existingTitles.has(normalizeTitle(s.title)))
-        // On rafraîchit aussi les dates pour les titres déjà connus (au cas où
-        // l'utilisateur ait modifié la date dans la sheet)
         const refreshed = prev.map(p => {
           const found = sheetScheduled.find((s: any) => normalizeTitle(s.title) === normalizeTitle(p.title))
           return found ? { ...p, scheduledFor: found.scheduledFor } : p
@@ -93,13 +79,9 @@ export default function BlogListPage() {
         saveScheduled(merged)
         return merged
       })
-    } catch { /* silencieux : pas de sheet configurée, pas grave */ }
+    } catch { /* silencieux */ }
   }
 
-  // Polling : tant qu'il y a des articles en attente OU programmés, on
-  // recharge la liste toutes les 15s (rapide) ou 5min (pour les programmés
-  // sans pending). Le rapprochement par titre normalisé nettoie les
-  // placeholders quand leur article apparaît vraiment.
   useEffect(() => {
     if (pending.length === 0 && scheduled.length === 0) return
     const interval = pending.length > 0 ? 15000 : 5 * 60 * 1000
@@ -107,10 +89,6 @@ export default function BlogListPage() {
     return () => clearInterval(id)
   }, [pending.length, scheduled.length])
 
-  // Au chargement de la liste, on rapproche les titres attendus avec les
-  // articles réels et on nettoie les placeholders périmés.
-  // - pending : timeout 10 min (échec probable au-delà)
-  // - scheduled : timeout 60 jours (au-delà, abandonné)
   useEffect(() => {
     if (pending.length === 0 && scheduled.length === 0) return
     const realTitles = new Set(posts.map(p => normalizeTitle(p.title)))
@@ -135,30 +113,10 @@ export default function BlogListPage() {
 
   function pendingKey() { return `pending-blog-${siteId}` }
   function scheduledKey() { return `scheduled-blog-${siteId}` }
-  function loadPending() {
-    try {
-      const raw = localStorage.getItem(pendingKey())
-      if (raw) setPending(JSON.parse(raw))
-    } catch { /* ignore */ }
-  }
-  function loadScheduled() {
-    try {
-      const raw = localStorage.getItem(scheduledKey())
-      if (raw) setScheduled(JSON.parse(raw))
-    } catch { /* ignore */ }
-  }
-  function savePending(p: { title: string; createdAt: number }[]) {
-    try {
-      if (p.length > 0) localStorage.setItem(pendingKey(), JSON.stringify(p))
-      else localStorage.removeItem(pendingKey())
-    } catch { /* ignore */ }
-  }
-  function saveScheduled(s: { title: string; scheduledFor: string; createdAt: number }[]) {
-    try {
-      if (s.length > 0) localStorage.setItem(scheduledKey(), JSON.stringify(s))
-      else localStorage.removeItem(scheduledKey())
-    } catch { /* ignore */ }
-  }
+  function loadPending() { try { const raw = localStorage.getItem(pendingKey()); if (raw) setPending(JSON.parse(raw)) } catch {} }
+  function loadScheduled() { try { const raw = localStorage.getItem(scheduledKey()); if (raw) setScheduled(JSON.parse(raw)) } catch {} }
+  function savePending(p: any[]) { try { if (p.length > 0) localStorage.setItem(pendingKey(), JSON.stringify(p)); else localStorage.removeItem(pendingKey()) } catch {} }
+  function saveScheduled(s: any[]) { try { if (s.length > 0) localStorage.setItem(scheduledKey(), JSON.stringify(s)); else localStorage.removeItem(scheduledKey()) } catch {} }
 
   async function load() {
     setLoading(true)
@@ -166,15 +124,10 @@ export default function BlogListPage() {
       const r = await fetch(`/api/sites/${siteId}/blog`)
       const data = await r.json()
       setPosts(data.posts || [])
-    } catch (e) {
-      console.error(e)
-    } finally {
-      setLoading(false)
-    }
+    } catch (e) { console.error(e) }
+    finally { setLoading(false) }
   }
 
-  // URL d'édition de la sheet (différente de l'URL CSV de publication).
-  // Demandée au premier clic sur "📝 Modifier" et persistée dans config.yaml.
   const [sheetEditUrlSaved, setSheetEditUrlSaved] = useState('')
 
   async function loadConfig() {
@@ -185,24 +138,17 @@ export default function BlogListPage() {
       setSheetUrlOriginal(d.blog_sheet_csv_url || '')
       setSheetEditUrlSaved(d.blog_sheet_edit_url || '')
       if (d.domain) {
-        // Normalise : on retire le trailing slash et on s'assure du scheme
         const dom = String(d.domain).replace(/\/+$/, '')
         setSiteDomain(dom.startsWith('http') ? dom : `https://${dom}`)
       }
-    } catch (e) { /* ignore */ }
+    } catch {}
   }
 
   async function saveSheet() {
     setSavingSheet(true); setSheetMsg('')
-    // Normaliser l'URL : Google Sheets publie soit en /pubhtml (page web)
-    // soit en /pub?output=csv (CSV brut). Le script Python a besoin du CSV.
-    // On corrige automatiquement /pubhtml → /pub?output=csv pour éviter
-    // que l'utilisateur ait à choisir le bon format dans Google Sheets.
     let urlToSave = sheetUrl.trim()
     if (urlToSave) {
-      // /pubhtml(?...) → /pub?output=csv
       urlToSave = urlToSave.replace(/\/pubhtml(\?[^#]*)?(#.*)?$/, '/pub?output=csv')
-      // Si l'URL contient déjà /pub mais sans output=csv, on l'ajoute
       if (/\/pub(\?|$)/.test(urlToSave) && !/output=csv/.test(urlToSave)) {
         urlToSave = urlToSave.replace(/\/pub(\?|$)/, '/pub?output=csv$1').replace('?$1', '')
       }
@@ -214,33 +160,22 @@ export default function BlogListPage() {
       })
       const data = await r.json().catch(() => ({}))
       if (r.ok) {
-        setSheetUrl(urlToSave)
-        setSheetUrlOriginal(urlToSave)
-        const msg = urlToSave !== sheetUrl.trim() ? '✓ URL normalisée et enregistrée' : '✓ Sheet enregistrée'
-        setSheetMsg(msg)
-      } else {
-        setSheetMsg(`✗ ${data.error || `Erreur ${r.status}`}`)
-      }
+        setSheetUrl(urlToSave); setSheetUrlOriginal(urlToSave)
+        setSheetMsg(urlToSave !== sheetUrl.trim() ? '✓ URL normalisée et enregistrée' : '✓ Sheet enregistrée')
+      } else { setSheetMsg(`✗ ${data.error || `Erreur ${r.status}`}`) }
     } catch (e: any) { setSheetMsg(`✗ ${e.message}`) }
     setSavingSheet(false)
     setTimeout(() => setSheetMsg(''), 4000)
   }
 
   async function openPreview() {
-    setShowPreview(true)
-    setPreviewLoading(true)
-    setPreviewData(null)
+    setShowPreview(true); setPreviewLoading(true); setPreviewData(null)
     try {
       const r = await fetch(`/api/sites/${siteId}/blog/preview-sheet`)
       const data = await r.json()
-      if (r.ok) {
-        setPreviewData(data)
-      } else {
-        setPreviewData({ error: data.error || `Erreur ${r.status}`, hint: data.hint })
-      }
-    } catch (e: any) {
-      setPreviewData({ error: e.message })
-    }
+      if (r.ok) setPreviewData(data)
+      else setPreviewData({ error: data.error || `Erreur ${r.status}`, hint: data.hint })
+    } catch (e: any) { setPreviewData({ error: e.message }) }
     setPreviewLoading(false)
   }
 
@@ -250,31 +185,23 @@ export default function BlogListPage() {
       const r = await fetch(`/api/sites/${siteId}/blog/check-sheet`, { method: 'POST' })
       const d = await r.json()
       if (r.ok) {
-        // Mémoriser les titres éligibles comme "en cours de génération"
         const eligible = (previewData?.rows || [])
           .filter((row: any) => row.status === 'eligible')
           .map((row: any) => ({ title: row.titre as string, createdAt: Date.now() }))
         if (eligible.length > 0) {
-          const merged = [...pending, ...eligible.filter(e =>
+          const merged = [...pending, ...eligible.filter((e: any) =>
             !pending.some(p => normalizeTitle(p.title) === normalizeTitle(e.title))
           )]
-          setPending(merged)
-          savePending(merged)
+          setPending(merged); savePending(merged)
         }
-        // Mémoriser les titres programmés (date future)
         const scheduledRows = (previewData?.rows || [])
           .filter((row: any) => row.status === 'scheduled')
-          .map((row: any) => ({
-            title: row.titre as string,
-            scheduledFor: row.pub_at as string,
-            createdAt: Date.now(),
-          }))
+          .map((row: any) => ({ title: row.titre as string, scheduledFor: row.pub_at as string, createdAt: Date.now() }))
         if (scheduledRows.length > 0) {
-          const merged = [...scheduled, ...scheduledRows.filter(e =>
+          const merged = [...scheduled, ...scheduledRows.filter((e: any) =>
             !scheduled.some(p => normalizeTitle(p.title) === normalizeTitle(e.title))
           )]
-          setScheduled(merged)
-          saveScheduled(merged)
+          setScheduled(merged); saveScheduled(merged)
         }
         setShowPreview(false)
         const parts: string[] = []
@@ -285,25 +212,16 @@ export default function BlogListPage() {
       } else {
         setPreviewData((prev: any) => ({ ...prev, error: d.error || 'Erreur déclenchement' }))
       }
-    } catch (e: any) {
-      setPreviewData((prev: any) => ({ ...prev, error: e.message }))
-    }
+    } catch (e: any) { setPreviewData((prev: any) => ({ ...prev, error: e.message })) }
     setConfirming(false)
   }
 
   async function del(slug: string, title: string) {
     if (!confirm(`Supprimer l'article "${title}" ?`)) return
     const r = await fetch(`/api/sites/${siteId}/blog/${slug}`, { method: 'DELETE' })
-    if (r.ok) load()
-    else alert('Erreur suppression')
+    if (r.ok) load(); else alert('Erreur suppression')
   }
 
-  /**
-   * Force la publication immédiate d'un article programmé. Déclenche le
-   * workflow blog-cron.yml avec FORCE_TITLES, qui ignore la date programmée
-   * pour cet article et le publie tout de suite. Retire l'article de la box
-   * scheduled et l'ajoute en pending (génération en cours).
-   */
   async function publishNow(title: string) {
     if (!confirm(`Publier maintenant "${title}" ?\n\nL'article sera généré immédiatement, sans attendre sa date programmée.`)) return
     setPublishingNow(title)
@@ -314,40 +232,17 @@ export default function BlogListPage() {
       })
       const d = await r.json()
       if (r.ok) {
-        // Retirer du scheduled, ajouter au pending pour le suivi
         const newScheduled = scheduled.filter(s => s.title !== title)
-        setScheduled(newScheduled)
-        saveScheduled(newScheduled)
+        setScheduled(newScheduled); saveScheduled(newScheduled)
         const merged = [...pending, { title, createdAt: Date.now() }]
-        setPending(merged)
-        savePending(merged)
-      } else {
-        alert('Erreur déclenchement : ' + (d.error || 'inconnue'))
-      }
-    } catch (e: any) {
-      alert('Erreur réseau : ' + e.message)
-    }
+        setPending(merged); savePending(merged)
+      } else { alert('Erreur déclenchement : ' + (d.error || 'inconnue')) }
+    } catch (e: any) { alert('Erreur réseau : ' + e.message) }
     setPublishingNow(null)
   }
 
-  /**
-   * Ouvre la Google Sheet dans un nouvel onglet en mode édition.
-   *
-   * L'URL CSV de publication (`/d/e/<publish_id>/pub?output=csv`) n'est pas
-   * dérivable vers l'URL d'édition car les 2 IDs sont différents. On demande
-   * donc à l'utilisateur l'URL d'édition au premier clic et on la persiste
-   * dans config.yaml (clé `blog_sheet_edit_url`) pour les fois suivantes.
-   *
-   * Si l'URL CSV est en format `/d/<id>/...` (partage direct sans publication),
-   * on peut dériver directement sans prompt.
-   */
   async function openSheetForEdit() {
-    // Cas 1 : URL d'édition déjà sauvegardée
-    if (sheetEditUrlSaved) {
-      window.open(sheetEditUrlSaved, '_blank', 'noopener,noreferrer')
-      return
-    }
-    // Cas 2 : URL CSV en format direct (pas /pub) → dérivable
+    if (sheetEditUrlSaved) { window.open(sheetEditUrlSaved, '_blank', 'noopener,noreferrer'); return }
     const csv = sheetUrl || sheetUrlOriginal
     if (csv) {
       const direct = csv.match(/\/spreadsheets\/d\/(?!e\/)([a-zA-Z0-9_-]+)/)
@@ -357,47 +252,44 @@ export default function BlogListPage() {
         return
       }
     }
-    // Cas 3 : URL en /pub publish_id non dérivable → on demande
     const input = prompt(
       "Colle l'URL d'édition de ta Google Sheet :\n\n" +
       "(format : https://docs.google.com/spreadsheets/d/<ID>/edit)\n\n" +
-      "Tu peux la trouver en ouvrant ta sheet dans Google Drive — l'URL dans la barre d'adresse.\n" +
-      "Elle sera mémorisée pour les prochaines fois."
-    , '')
+      "Tu peux la trouver en ouvrant ta sheet dans Google Drive.\n" +
+      "Elle sera mémorisée pour les prochaines fois.", '')
     if (!input) return
     const url = input.trim()
-    if (!url.includes('/spreadsheets/d/')) {
-      alert('URL invalide : doit contenir /spreadsheets/d/')
-      return
-    }
-    // Sauve dans config.yaml
+    if (!url.includes('/spreadsheets/d/')) { alert('URL invalide'); return }
     try {
       const r = await fetch(`/api/sites/${siteId}/config`, {
         method: 'PATCH', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ blog_sheet_edit_url: url }),
       })
-      if (r.ok) {
-        setSheetEditUrlSaved(url)
-        window.open(url, '_blank', 'noopener,noreferrer')
-      } else {
-        alert('Erreur sauvegarde — URL utilisée mais non persistée')
-        window.open(url, '_blank', 'noopener,noreferrer')
-      }
-    } catch (e: any) {
-      alert('Erreur réseau : ' + e.message)
-    }
+      if (r.ok) { setSheetEditUrlSaved(url); window.open(url, '_blank', 'noopener,noreferrer') }
+      else { alert('Erreur sauvegarde'); window.open(url, '_blank', 'noopener,noreferrer') }
+    } catch (e: any) { alert('Erreur réseau : ' + e.message) }
   }
-  // sheetEditUrl reste pour le `disabled` du bouton — on l'active si on a une URL
-  // sauvegardée OU une URL CSV dérivable OU rien (auquel cas le prompt s'ouvrira).
   const sheetEditUrl = sheetEditUrlSaved || (sheetUrl || sheetUrlOriginal) || 'prompt'
 
-  const categories = Array.from(new Set(posts.map(p => p.categorie).filter(Boolean))) as string[]
-  const filtered = posts.filter(p => {
+  // ── Comptages par onglet (mémoized pour éviter re-calcul à chaque keystroke) ──
+  const counts = useMemo(() => {
+    const c = { published: 0, scheduled: 0, draft: 0 }
+    for (const p of posts) {
+      const s = (p.status || 'published') as TabKey
+      if (s in c) c[s]++
+    }
+    return c
+  }, [posts])
+
+  // Filtrage : onglet → puis recherche + catégorie (les filtres s'appliquent
+  // dans l'onglet actif uniquement). Plus de filtre "statut" car redondant.
+  const categories = useMemo(() => Array.from(new Set(posts.map(p => p.categorie).filter(Boolean))) as string[], [posts])
+  const filtered = useMemo(() => posts.filter(p => {
+    if ((p.status || 'published') !== activeTab) return false
     if (search && !p.title.toLowerCase().includes(search.toLowerCase())) return false
     if (catFilter && p.categorie !== catFilter) return false
-    if (statusFilter && (p.status || 'published') !== statusFilter) return false
     return true
-  })
+  }), [posts, activeTab, search, catFilter])
 
   return (
     <div style={{ padding: '32px 5vw', maxWidth: 1400, margin: '0 auto' }}>
@@ -412,7 +304,13 @@ export default function BlogListPage() {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '20px 0 28px', flexWrap: 'wrap', gap: 16 }}>
         <div>
           <h1 style={{ color: '#fff', fontSize: 28, fontWeight: 600, margin: 0 }}>📝 Gérer le blog</h1>
-          <div style={{ color: '#8B9CB0', fontSize: 14, marginTop: 6 }}>{posts.length} article{posts.length > 1 ? 's' : ''} au total</div>
+          <div style={{ color: '#8B9CB0', fontSize: 14, marginTop: 6 }}>
+            {posts.length} article{posts.length > 1 ? 's' : ''} au total
+            {' · '}
+            <span style={{ color: '#00D4AA' }}>{counts.published} en ligne</span>
+            {counts.scheduled > 0 && <>{' · '}<span style={{ color: '#F6AD55' }}>{counts.scheduled} programmé{counts.scheduled > 1 ? 's' : ''}</span></>}
+            {counts.draft > 0 && <>{' · '}<span style={{ color: '#8B9CB0' }}>{counts.draft} brouillon{counts.draft > 1 ? 's' : ''}</span></>}
+          </div>
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
           <button onClick={() => setShowSheetConfig(s => !s)} style={{ padding: '12px 18px', borderRadius: 10, background: '#1E2D3D', color: '#fff', fontSize: 13, fontWeight: 600, border: 'none', cursor: 'pointer' }}>
@@ -481,12 +379,12 @@ export default function BlogListPage() {
         }
       `}</style>
 
-      {/* Articles programmés pour une date future */}
+      {/* Articles programmés depuis la sheet (date future) */}
       {scheduled.length > 0 && (
         <div style={{ background: 'rgba(94,158,214,.08)', border: '1px solid #5E9ED6', borderRadius: 12, padding: 18, marginBottom: 20 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
             <strong style={{ color: '#5E9ED6', fontSize: 14 }}>
-              📅 {scheduled.length} article{scheduled.length > 1 ? 's' : ''} programmé{scheduled.length > 1 ? 's' : ''}
+              📅 {scheduled.length} article{scheduled.length > 1 ? 's' : ''} programmé{scheduled.length > 1 ? 's' : ''} (depuis la sheet)
             </strong>
             <span style={{ color: '#8B9CB0', fontSize: 12 }}>· seront publiés automatiquement à leur date</span>
           </div>
@@ -495,16 +393,12 @@ export default function BlogListPage() {
               <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 12px', background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 8, gap: 12 }}>
                 <span style={{ color: '#fff', fontSize: 13, flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>📅 {p.title}</span>
                 <span style={{ color: '#5E9ED6', fontSize: 12, fontWeight: 600, whiteSpace: 'nowrap' }}>{formatScheduledDate(p.scheduledFor)}</span>
-                <button
-                  onClick={() => openSheetForEdit()}
-                  disabled={!sheetEditUrl}
+                <button onClick={() => openSheetForEdit()} disabled={!sheetEditUrl}
                   title={sheetEditUrl ? 'Modifier la date dans la Google Sheet' : 'URL sheet introuvable'}
                   style={{ padding: '5px 10px', borderRadius: 6, background: 'transparent', border: '1px solid #2A4A6D', color: sheetEditUrl ? '#5E9ED6' : '#4A5568', fontSize: 11, fontWeight: 600, cursor: sheetEditUrl ? 'pointer' : 'not-allowed', whiteSpace: 'nowrap' }}>
                   📝 Modifier
                 </button>
-                <button
-                  onClick={() => publishNow(p.title)}
-                  disabled={publishingNow === p.title}
+                <button onClick={() => publishNow(p.title)} disabled={publishingNow === p.title}
                   title="Publier immédiatement (ignore la date programmée)"
                   style={{ padding: '5px 10px', borderRadius: 6, background: publishingNow === p.title ? '#1E2D3D' : '#00D4AA', border: 'none', color: publishingNow === p.title ? '#4A5568' : '#0A0E1A', fontSize: 11, fontWeight: 700, cursor: publishingNow === p.title ? 'default' : 'pointer', whiteSpace: 'nowrap' }}>
                   {publishingNow === p.title ? '⏳ ...' : '🚀 Publier'}
@@ -515,21 +409,31 @@ export default function BlogListPage() {
         </div>
       )}
 
-      {/* Filtres */}
+      {/* ── ONGLETS ─────────────────────────────────────────────────
+          Sépare la longue liste en 2-3 vues distinctes pour ne pas
+          mélanger publiés et programmés. Compteurs en temps réel. */}
+      <div style={{ display: 'flex', gap: 4, marginBottom: 16, borderBottom: '1px solid #1E2D3D' }}>
+        <TabButton active={activeTab === 'published'} onClick={() => setActiveTab('published')} color={STATUS_COLOR.published}>
+          🌐 En ligne <span style={{ opacity: 0.7 }}>({counts.published})</span>
+        </TabButton>
+        <TabButton active={activeTab === 'scheduled'} onClick={() => setActiveTab('scheduled')} color={STATUS_COLOR.scheduled}>
+          📅 Programmés <span style={{ opacity: 0.7 }}>({counts.scheduled})</span>
+        </TabButton>
+        {counts.draft > 0 && (
+          <TabButton active={activeTab === 'draft'} onClick={() => setActiveTab('draft')} color={STATUS_COLOR.draft}>
+            ✏️ Brouillons <span style={{ opacity: 0.7 }}>({counts.draft})</span>
+          </TabButton>
+        )}
+      </div>
+
+      {/* Filtres dans l'onglet courant — filtre statut supprimé (redondant avec les onglets) */}
       <div style={{ display: 'flex', gap: 12, marginBottom: 20, flexWrap: 'wrap' }}>
-        <input type="text" placeholder="🔍 Rechercher..." value={search} onChange={e => setSearch(e.target.value)}
+        <input type="text" placeholder="🔍 Rechercher dans cet onglet..." value={search} onChange={e => setSearch(e.target.value)}
           style={{ flex: '1 1 220px', padding: '10px 14px', borderRadius: 8, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13 }} />
         <select value={catFilter} onChange={e => setCatFilter(e.target.value)}
           style={{ padding: '10px 14px', borderRadius: 8, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13 }}>
           <option value="">Toutes catégories</option>
           {categories.map(c => <option key={c} value={c}>{c}</option>)}
-        </select>
-        <select value={statusFilter} onChange={e => setStatusFilter(e.target.value)}
-          style={{ padding: '10px 14px', borderRadius: 8, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13 }}>
-          <option value="">Tous statuts</option>
-          <option value="published">Publié</option>
-          <option value="scheduled">Programmé</option>
-          <option value="draft">Brouillon</option>
         </select>
       </div>
 
@@ -538,7 +442,11 @@ export default function BlogListPage() {
         <div style={{ textAlign: 'center', padding: 60, color: '#4A5568' }}>Chargement…</div>
       ) : filtered.length === 0 ? (
         <div style={{ textAlign: 'center', padding: 80, color: '#4A5568', background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16 }}>
-          {posts.length === 0 ? "Aucun article. Clique sur ✨ Nouvel article pour commencer." : "Aucun résultat avec ces filtres."}
+          {posts.length === 0
+            ? "Aucun article. Clique sur ✨ Nouvel article pour commencer."
+            : counts[activeTab] === 0
+              ? `Aucun article ${activeTab === 'published' ? 'en ligne' : activeTab === 'scheduled' ? 'programmé' : 'en brouillon'}.`
+              : "Aucun résultat avec ces filtres."}
         </div>
       ) : (
         <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, overflow: 'hidden' }}>
@@ -548,7 +456,6 @@ export default function BlogListPage() {
                 <th style={th}>Titre</th>
                 <th style={th}>Catégorie</th>
                 <th style={th}>Date</th>
-                <th style={th}>Statut</th>
                 <th style={{ ...th, textAlign: 'right' }}>Actions</th>
               </tr>
             </thead>
@@ -579,11 +486,6 @@ export default function BlogListPage() {
                     {p.categorie ? <span style={{ display: 'inline-block', padding: '4px 10px', borderRadius: 12, background: '#1E2D3D', color: '#00D4AA', fontSize: 11, fontWeight: 600 }}>{p.categorie}</span> : <span style={{ color: '#4A5568' }}>—</span>}
                   </td>
                   <td style={{ ...td, color: '#8B9CB0', fontSize: 13 }}>{formatDate(p.date)}</td>
-                  <td style={td}>
-                    <span style={{ color: STATUS_COLOR[p.status || 'published'] || '#8B9CB0', fontSize: 12, fontWeight: 600 }}>
-                      {STATUS_LABEL[p.status || 'published'] || p.status}
-                    </span>
-                  </td>
                   <td style={{ ...td, textAlign: 'right' }}>
                     <Link href={`/sites/${siteId}/blog/${p.slug}`} style={{ padding: '6px 12px', borderRadius: 6, background: '#1E2D3D', color: '#fff', fontSize: 12, textDecoration: 'none', marginRight: 6 }}>Éditer</Link>
                     <button onClick={() => del(p.slug, p.title)} style={{ padding: '6px 12px', borderRadius: 6, background: 'transparent', border: '1px solid #FC8181', color: '#FC8181', fontSize: 12, cursor: 'pointer' }}>Supprimer</button>
@@ -595,7 +497,7 @@ export default function BlogListPage() {
         </div>
       )}
 
-      {/* Modale Preview Sheet */}
+      {/* Modale Preview Sheet (inchangée) */}
       {showPreview && (
         <div onClick={() => !confirming && setShowPreview(false)}
           style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100, padding: 20 }}>
@@ -615,11 +517,7 @@ export default function BlogListPage() {
                 style={{ background: 'transparent', border: 'none', color: '#8B9CB0', fontSize: 22, cursor: 'pointer', padding: 0, lineHeight: 1 }}>×</button>
             </div>
 
-            {previewLoading && (
-              <div style={{ padding: 40, textAlign: 'center', color: '#8B9CB0' }}>
-                ⏳ Lecture de la sheet en cours…
-              </div>
-            )}
+            {previewLoading && <div style={{ padding: 40, textAlign: 'center', color: '#8B9CB0' }}>⏳ Lecture de la sheet en cours…</div>}
 
             {!previewLoading && previewData?.error && (
               <div style={{ padding: 20, background: 'rgba(252,129,129,.08)', border: '1px solid #FC8181', borderRadius: 10, color: '#FC8181' }}>
@@ -633,7 +531,6 @@ export default function BlogListPage() {
 
             {!previewLoading && previewData?.rows && (
               <>
-                {/* Résumé */}
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 16, fontSize: 12 }}>
                   <span style={pill('#00D4AA')}>✓ {previewData.summary.eligible} à publier</span>
                   {previewData.summary.scheduled > 0 && <span style={pill('#F6AD55')}>⏰ {previewData.summary.scheduled} programmés</span>}
@@ -642,7 +539,6 @@ export default function BlogListPage() {
                   <span style={pill('#4A5568')}>{previewData.summary.total} lignes au total</span>
                 </div>
 
-                {/* Tableau des lignes */}
                 <div style={{ overflow: 'auto', flex: 1, border: '1px solid #1E2D3D', borderRadius: 8 }}>
                   <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 12 }}>
                     <thead>
@@ -673,7 +569,6 @@ export default function BlogListPage() {
                   </table>
                 </div>
 
-                {/* Footer modale */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 18, gap: 12, flexWrap: 'wrap' }}>
                   <div style={{ fontSize: 12, color: '#4A5568', flex: 1 }}>
                     {previewData.summary.eligible === 0
@@ -682,7 +577,7 @@ export default function BlogListPage() {
                   </div>
                   <div style={{ display: 'flex', gap: 8 }}>
                     <button onClick={openPreview} disabled={confirming || previewLoading}
-                      title="Recharge la sheet (utile si tu viens de la modifier — Google cache peut prendre 5-15 min)"
+                      title="Recharge la sheet"
                       style={{ padding: '10px 14px', borderRadius: 8, background: '#1E2D3D', color: '#8B9CB0', fontSize: 13, fontWeight: 600, border: 'none', cursor: previewLoading ? 'wait' : 'pointer' }}>
                       🔄 Recharger
                     </button>
@@ -705,33 +600,34 @@ export default function BlogListPage() {
   )
 }
 
+// ─── Composant onglet ────────────────────────────────────────────────────
+function TabButton({ active, onClick, color, children }: { active: boolean; onClick: () => void; color: string; children: React.ReactNode }) {
+  return (
+    <button onClick={onClick}
+      style={{
+        padding: '10px 18px',
+        background: 'transparent',
+        border: 'none',
+        color: active ? color : '#8B9CB0',
+        fontSize: 14,
+        fontWeight: 600,
+        cursor: 'pointer',
+        borderBottom: active ? `2px solid ${color}` : '2px solid transparent',
+        marginBottom: -1, // chevauche le borderBottom du parent pour effet "onglet"
+        transition: 'color .15s',
+      }}>
+      {children}
+    </button>
+  )
+}
+
 function pill(color: string): React.CSSProperties {
-  return {
-    display: 'inline-block',
-    padding: '4px 10px',
-    borderRadius: 12,
-    background: `${color}1A`,
-    color,
-    fontWeight: 600,
-    border: `1px solid ${color}40`,
-  }
+  return { display: 'inline-block', padding: '4px 10px', borderRadius: 12, background: `${color}1A`, color, fontWeight: 600, border: `1px solid ${color}40` }
 }
 
 function renderStatus(r: any): React.ReactNode {
-  const color = {
-    eligible: '#00D4AA',
-    scheduled: '#F6AD55',
-    already_done: '#8B9CB0',
-    invalid_date: '#FC8181',
-    skip_no_title: '#FC8181',
-  }[r.status as string] || '#8B9CB0'
-  const label = {
-    eligible: '✓ À publier',
-    scheduled: '⏰ Programmé',
-    already_done: '✓ Déjà publié',
-    invalid_date: '⚠ Date invalide',
-    skip_no_title: '⚠ Pas de titre',
-  }[r.status as string] || r.status
+  const color = { eligible: '#00D4AA', scheduled: '#F6AD55', already_done: '#8B9CB0', invalid_date: '#FC8181', skip_no_title: '#FC8181' }[r.status as string] || '#8B9CB0'
+  const label = { eligible: '✓ À publier', scheduled: '⏰ Programmé', already_done: '✓ Déjà publié', invalid_date: '⚠ Date invalide', skip_no_title: '⚠ Pas de titre' }[r.status as string] || r.status
   return (
     <div>
       <span style={{ color, fontWeight: 600 }}>{label}</span>
@@ -742,18 +638,10 @@ function renderStatus(r: any): React.ReactNode {
 
 const tdSmall: React.CSSProperties = { padding: '10px 12px', verticalAlign: 'top' }
 
-// Normalisation pour rapprocher titres attendus ↔ articles réels :
-// minuscules, sans accents, espaces normalisés.
 function normalizeTitle(t: string): string {
-  return (t || '')
-    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/\s+/g, ' ')
-    .trim()
+  return (t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, ' ').trim()
 }
 
-// Formatte une date ISO pour la box "programmés" en relatif quand c'est proche :
-// "Demain à 09:00", "Dans 3 jours · 09:00", "Le 15 mai à 09:00".
 function formatScheduledDate(iso: string): string {
   if (!iso) return ''
   const d = new Date(iso)
@@ -771,10 +659,8 @@ function formatScheduledDate(iso: string): string {
 
 function formatDate(s: string): string {
   if (!s) return '—'
-  try {
-    const d = new Date(s)
-    return d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' })
-  } catch { return s }
+  try { const d = new Date(s); return d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' }) }
+  catch { return s }
 }
 
 const th: React.CSSProperties = { padding: '12px 16px', textAlign: 'left', color: '#8B9CB0', fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }
