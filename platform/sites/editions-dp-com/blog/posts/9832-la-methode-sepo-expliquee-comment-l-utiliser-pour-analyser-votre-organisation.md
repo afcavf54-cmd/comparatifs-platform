@@ -10,9 +10,10 @@ featured_image: /blog/9832-la-methode-sepo-expliquee-comment-l-utiliser-pour-ana
 status: published
 min_words: 2500
 related_posts:
-- 3423-qu-est-ce-qu-une-strategie-de-croissance-et-comment-la-construire-pour-votre-entreprise
 - 1843-pain-point-client-comment-identifier-et-resoudre-les-points-de-douleur-de-vos-clients
+- 4489-comment-calculer-son-prix-de-vente-a-partir-du-taux-de-marge-formule-et-exemples
 - 8804-matrice-tows-comment-l-utiliser-pour-construire-une-strategie-efficace
+- 3423-qu-est-ce-qu-une-strategie-de-croissance-et-comment-la-construire-pour-votre-entreprise
 link_anchors:
 - text: sepo
   max: 4

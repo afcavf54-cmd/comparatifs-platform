@@ -10,9 +10,10 @@ featured_image: /blog/8804-matrice-tows-comment-l-utiliser-pour-construire-une-s
 status: published
 min_words: 2500
 related_posts:
-- 9832-la-methode-sepo-expliquee-comment-l-utiliser-pour-analyser-votre-organisation
+- 4489-comment-calculer-son-prix-de-vente-a-partir-du-taux-de-marge-formule-et-exemples
 - 3423-qu-est-ce-qu-une-strategie-de-croissance-et-comment-la-construire-pour-votre-entreprise
 - 1843-pain-point-client-comment-identifier-et-resoudre-les-points-de-douleur-de-vos-clients
+- 9832-la-methode-sepo-expliquee-comment-l-utiliser-pour-analyser-votre-organisation
 link_anchors:
 - text: matrice tows
   max: 4

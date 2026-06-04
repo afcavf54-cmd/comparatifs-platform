@@ -11,6 +11,7 @@ featured_image: /blog/3423-qu-est-ce-qu-une-strategie-de-croissance-et-comment-l
 status: published
 min_words: 1800
 related_posts:
+- 4489-comment-calculer-son-prix-de-vente-a-partir-du-taux-de-marge-formule-et-exemples
 - 8804-matrice-tows-comment-l-utiliser-pour-construire-une-strategie-efficace
 - 9832-la-methode-sepo-expliquee-comment-l-utiliser-pour-analyser-votre-organisation
 - 1843-pain-point-client-comment-identifier-et-resoudre-les-points-de-douleur-de-vos-clients
