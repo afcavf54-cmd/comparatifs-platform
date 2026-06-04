@@ -1,22 +1,24 @@
 ---
-title: 'Promesse d''embauche : modèle gratuit, mentions obligatoires et valeur juridique'
+title: "Promesse d'embauche : modèle gratuit, mentions obligatoires et valeur juridique"
 slug: 2564-promesse-d-embauche-modele-gratuit-mentions-obligatoires-et-valeur-juridique
-date: '2026-06-02T09:00:00+02:00'
+date: 2026-06-02T09:00:00+02:00
+updated: 2026-06-04T14:14:26
 categorie: Ressources Humaines
-meta_title: 'Modèle promesse d''embauche : téléchargez gratis'
-meta_description: 'Découvrez tout sur la promesse d''embauche : modèle gratuit, mentions
-  obligatoires et valeur juridique. Guide pratique pour éviter les erreurs de recrutement.'
-min_words: 1800
+meta_title: "Modèle promesse d'embauche : téléchargez gratis"
+meta_description: "Découvrez tout sur la promesse d'embauche : modèle gratuit, mentions obligatoires et valeur juridique. Guide pratique pour éviter les erreurs de recrutement."
+featured_image: /blog/2564-promesse-d-embauche-modele-gratuit-mentions-obligatoires-et-valeur-juridique/featured-62091.jpg
 status: published
-link_anchors:
-- text: modèle de promesse d'embauche
-  max: 4
+min_words: 1800
 related_posts:
 - 3345-comment-choisir-un-logiciel-gepp-pour-votre-entreprise
 - 2742-le-talent-management-comment-developper-les-talents-en-entreprise
 - 4690-tout-savoir-sur-le-bulletin-de-paie-contenu-regles-et-dematerialisation
 - 6481-comment-realiser-une-cartographie-des-competences-efficacement
+link_anchors:
+- text: "modèle de promesse d'embauche"
+  max: 4
 ---
+
 <p>Ah, la promesse d'embauche ! Un document que j'ai eu l'occasion de manipuler plusieurs fois dans mon entreprise. Quand on recrute, on a tendance à sous-estimer l'importance de ce papier. Pourtant, c'est un engagement sérieux qui peut vous mettre dans le pétrin si vous ne respectez pas certaines règles.</p>
 
 <p>Je vais vous expliquer concrètement ce qu'il faut savoir. Pas de jargon juridique compliqué, juste du pratique pour éviter les galères.</p>
@@ -181,3 +183,4 @@ Le candidat : [signature]
 <p>La promesse d'embauche reste un outil utile pour sécuriser vos recrutements. Utilisée correctement, elle protège autant l'employeur que le candidat. Mal maîtrisée, elle peut créer des complications juridiques et financières importantes.</p>
 
 <p>Dans ma TPE, je l'utilise pour les postes clés où je veux m'assurer que le candidat ne nous échappe pas. Mais je reste toujours prudent sur les engagements pris.</p>
+
