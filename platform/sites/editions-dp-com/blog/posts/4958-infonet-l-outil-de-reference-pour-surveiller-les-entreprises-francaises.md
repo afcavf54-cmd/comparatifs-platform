@@ -13,6 +13,7 @@ link_anchors:
 - text: infonet
   max: 4
 related_posts:
+- 3413-actif-net-reevalue-anr-comment-le-calculer-et-l-interpreter-en-analyse-financiere
 - 8982-quasi-usufruit-definition-avantages-inconvenients-et-cas-d-usage-en-gestion-patrimoniale
 ---
 <h2>Infonet : panorama d'un outil qui sait tout sur les entreprises françaises</h2>
