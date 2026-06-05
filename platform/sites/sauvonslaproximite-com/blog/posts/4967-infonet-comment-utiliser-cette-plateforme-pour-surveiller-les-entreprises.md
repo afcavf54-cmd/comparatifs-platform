@@ -4,14 +4,16 @@ slug: 4967-infonet-comment-utiliser-cette-plateforme-pour-surveiller-les-entrepr
 date: '2026-06-05T22:00:00+02:00'
 categorie: Finance & Comptabilité
 meta_title: 'Infonet : fonctionnalités, avantages et utilisation au quotidien'
-meta_description: Découvrez Infonet, la plateforme gratuite pour surveiller les entreprises françaises. Guide complet pour rechercher et analyser les données officielles du RCS.
+meta_description: Découvrez Infonet, la plateforme gratuite pour surveiller les entreprises
+  françaises. Guide complet pour rechercher et analyser les données officielles du
+  RCS.
 min_words: 1000
 status: published
 link_anchors:
 - text: infonet
   max: 4
+related_posts: []
 ---
-
 <h2>Qu'est-ce qu'Infonet et pourquoi l'utiliser ?</h2>
 
 <p>Infonet, c'est cette plateforme que j'utilise depuis des années pour surveiller les entreprises avec lesquelles on travaille. <strong>Gratuite et accessible à tous</strong>, elle compile les informations officielles des sociétés françaises. Je vous montre comment en tirer le maximum pour sécuriser vos relations d'affaires.</p>
