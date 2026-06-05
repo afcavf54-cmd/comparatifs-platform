@@ -308,48 +308,90 @@ export default function ClassementsPage() {
       const merged = { ...allEditorial, ...classements }
       const jsonStr = JSON.stringify(merged, null, 2)
       const payloadSizeMb = jsonStr.length / 1024 / 1024
-      console.log(`[save] editorial.json : ${payloadSizeMb.toFixed(2)} MB, ${Object.keys(merged).length} clés`)
+      const totalKeys = Object.keys(merged).length
+      console.log(`[save] editorial.json : ${payloadSizeMb.toFixed(2)} MB, ${totalKeys} clés`)
 
-      // ── Décision route à utiliser selon la taille ─────────────────────
-      // < 3 MB → POST /api/github classique (rapide, pas de compression)
-      // >= 3 MB → POST /api/sites/<id>/editorial-bulk (gzip + base64, dédié
-      //   aux gros payloads, contourne la limite Vercel 4.5 MB)
-      const USE_BULK_THRESHOLD = 3 * 1024 * 1024  // 3 MB
-      let wd: any = null
-      let wrStatus = 0
-      if (jsonStr.length < USE_BULK_THRESHOLD) {
+      // ── Stratégie de sauvegarde selon la taille ────────────────────────
+      // < 3 MB raw  → POST /api/github (1 commit, rapide)
+      // 3-30 MB raw → POST /api/sites/<id>/editorial-bulk en chunks gzippés
+      //   (le serveur merge progressivement, 1 commit par chunk)
+      // > 30 MB raw → on rejette explicitement (architecture à refactorer)
+      const SIMPLE_THRESHOLD = 3 * 1024 * 1024     // 3 MB raw : route classique
+      const CHUNK_TARGET_RAW = 2 * 1024 * 1024     // 2 MB raw par chunk avant gzip
+      const HARD_LIMIT = 30 * 1024 * 1024          // 30 MB raw : refuse
+
+      if (jsonStr.length > HARD_LIMIT) {
+        setMsg(`✗ editorial.json trop gros (${payloadSizeMb.toFixed(1)} MB > 30 MB). Architecture à refactorer (split en fichiers par classement).`)
+        return
+      }
+
+      if (jsonStr.length < SIMPLE_THRESHOLD) {
+        // ── Route simple ───────────────────────────────────────────────
         const wr = await fetch('/api/github', {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ path: editorialPath, content: jsonStr, message: `HUB: Update classements ${siteId}` })
         })
-        wrStatus = wr.status
-        wd = await safeJson(wr, `POST /api/github (editorial save)`)
+        const wd = await safeJson(wr, `POST /api/github (editorial save)`)
+        if (!wd) { setMsg(`✗ Réponse invalide (status ${wr.status}, voir console)`); return }
+        setMsg(wd.ok ? `✓ Tout sauvegardé (${payloadSizeMb.toFixed(2)} MB)` : `✗ ${wd.error || 'Erreur editorial'}`)
       } else {
-        // Compression gzip pour les gros payloads
-        console.log(`[save] Payload ${payloadSizeMb.toFixed(2)} MB > 3 MB → compression gzip…`)
-        const t0 = performance.now()
-        const gzipBase64 = await gzipToBase64(jsonStr)
-        const compressedMb = (gzipBase64.length * 0.75) / 1024 / 1024  // base64 ~33% overhead
-        console.log(`[save] Compressé en ${(performance.now() - t0).toFixed(0)} ms : ${compressedMb.toFixed(2)} MB (ratio ${(payloadSizeMb / compressedMb).toFixed(1)}x)`)
-        if (gzipBase64.length > 4 * 1024 * 1024) {
-          setMsg(`✗ Payload compressé encore trop gros (${(gzipBase64.length / 1024 / 1024).toFixed(1)} MB). Contactez le support pour fragmentation.`)
-          return
+        // ── Chunking : split par clés, gzip chaque chunk, PUT séquentiel ─
+        // Le serveur en mode 'merge' lit editorial.json, applique le chunk, PUT.
+        // Chaque chunk fait UN commit GitHub : N chunks = N commits (acceptable).
+        const keys = Object.keys(merged)
+        const chunks: Array<Record<string, any>> = []
+        let current: Record<string, any> = {}
+        let currentSize = 0
+        for (const k of keys) {
+          const v = merged[k]
+          const sizeKey = JSON.stringify({ [k]: v }).length
+          // Si la clé seule dépasse le target, on la met quand même dans son
+          // propre chunk (sinon boucle infinie). Limite hard = 4 MB gzippé ;
+          // le serveur rejettera si vraiment trop gros.
+          if (currentSize > 0 && currentSize + sizeKey > CHUNK_TARGET_RAW) {
+            chunks.push(current)
+            current = {}
+            currentSize = 0
+          }
+          current[k] = v
+          currentSize += sizeKey
         }
-        const wr = await fetch(`/api/sites/${siteId}/editorial-bulk`, {
-          method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            content_gzip_base64: gzipBase64,
-            message: `HUB: Update classements ${siteId} (${payloadSizeMb.toFixed(1)} MB via bulk)`,
+        if (currentSize > 0) chunks.push(current)
+
+        console.log(`[save] Split en ${chunks.length} chunks de ~${(CHUNK_TARGET_RAW / 1024 / 1024).toFixed(1)} MB chacun`)
+
+        for (let i = 0; i < chunks.length; i++) {
+          setMsg(`💾 Sauvegarde chunk ${i + 1}/${chunks.length}…`)
+          const chunkJson = JSON.stringify(chunks[i])
+          const chunkRawMb = chunkJson.length / 1024 / 1024
+          const t0 = performance.now()
+          const chunkGzip = await gzipToBase64(chunkJson)
+          const chunkCompressedMb = (chunkGzip.length * 0.75) / 1024 / 1024
+          console.log(`[save] Chunk ${i + 1}/${chunks.length} : ${chunkRawMb.toFixed(2)} MB → ${chunkCompressedMb.toFixed(2)} MB gzip en ${(performance.now() - t0).toFixed(0)} ms (${Object.keys(chunks[i]).length} clés)`)
+
+          if (chunkGzip.length > 4 * 1024 * 1024) {
+            setMsg(`✗ Chunk ${i + 1} encore trop gros après gzip (${(chunkGzip.length / 1024 / 1024).toFixed(1)} MB). Une clé individuelle est probablement énorme.`)
+            return
+          }
+
+          const wr = await fetch(`/api/sites/${siteId}/editorial-bulk`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              content_gzip_base64: chunkGzip,
+              mode: 'merge',
+              chunk_idx: i,
+              total_chunks: chunks.length,
+              message: `HUB: Update classements ${siteId} [chunk ${i + 1}/${chunks.length}]`,
+            })
           })
-        })
-        wrStatus = wr.status
-        wd = await safeJson(wr, `POST /api/sites/${siteId}/editorial-bulk`)
+          const wd = await safeJson(wr, `POST /api/sites/${siteId}/editorial-bulk chunk ${i + 1}`)
+          if (!wd?.ok) {
+            setMsg(`✗ Chunk ${i + 1} échec : ${wd?.error || 'erreur inconnue'} (voir console)`)
+            return
+          }
+        }
+        setMsg(`✓ Tout sauvegardé (${payloadSizeMb.toFixed(2)} MB en ${chunks.length} chunks)`)
       }
-      if (!wd) {
-        setMsg(`✗ Réponse invalide (status ${wrStatus}, voir console F12)`)
-        return
-      }
-      setMsg(wd.ok ? `✓ Tout sauvegardé (${payloadSizeMb.toFixed(1)} MB)` : `✗ ${wd.error || 'Erreur editorial'}`)
     } catch (e: any) {
       console.error('[save] Exception non gérée :', e)
       setMsg('✗ ' + (e?.message || 'Erreur sauvegarde'))
