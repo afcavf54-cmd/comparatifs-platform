@@ -1,21 +1,22 @@
 ---
-title: 'Actif net réévalué (ANR) : comment le calculer et l''interpréter en analyse
-  financière'
+title: "Actif net réévalué (ANR) : comment le calculer et l'interpréter en analyse financière"
 slug: 3413-actif-net-reevalue-anr-comment-le-calculer-et-l-interpreter-en-analyse-financiere
-date: '2026-06-04T22:00:00+02:00'
+date: 2026-06-04T22:00:00+02:00
+updated: 2026-06-05T07:02:03
 categorie: Finance & Comptabilité
-meta_title: 'Actif net réévalué : définition et calcul'
-meta_description: 'Découvrez l''actif net réévalué (ANR) : méthode de calcul, interprétation
-  et utilisation en analyse financière pour évaluer la valeur réelle d''une entreprise.'
-min_words: 1800
+meta_title: "Actif net réévalué : définition et calcul"
+meta_description: "Découvrez l'actif net réévalué (ANR) : méthode de calcul, interprétation et utilisation en analyse financière pour évaluer la valeur réelle d'une entreprise."
+featured_image: /blog/3413-actif-net-reevalue-anr-comment-le-calculer-et-l-interpreter-en-analyse-financiere/featured-13614.jpg
 status: published
-link_anchors:
-- text: actif net réévalué
-  max: 4
+min_words: 1800
 related_posts:
 - 4958-infonet-l-outil-de-reference-pour-surveiller-les-entreprises-francaises
 - 8982-quasi-usufruit-definition-avantages-inconvenients-et-cas-d-usage-en-gestion-patrimoniale
+link_anchors:
+- text: actif net réévalué
+  max: 4
 ---
+
 <h2>Qu'est-ce que l'actif net réévalué et pourquoi s'en servir ?</h2>
 
 <p>L'actif net réévalué, ou ANR, c'est la valeur réelle du patrimoine d'une entreprise une fois qu'on a remis tous ses actifs à leur <strong>valeur de marché actuelle</strong>. Je le vois comme une radiographie financière qui nous montre ce que vaut vraiment une société aujourd'hui, pas selon ses livres comptables parfois vieillots.</p>
@@ -180,3 +181,4 @@ related_posts:
 <p>L'actif net réévalué reste un outil précieux d'analyse financière, surtout pour les entreprises patrimoniales. Il donne une vision objective de la valeur minimale d'une société. Mais comme tout indicateur, il doit s'inscrire dans une analyse globale qui prend en compte la rentabilité, les perspectives de croissance et les spécificités sectorielles.</p>
 
 <p>Pour nous dirigeants de TPE, l'ANR aide à prendre des décisions éclairées, que ce soit pour évaluer notre propre entreprise, analyser une cible d'acquisition, ou simplement mieux comprendre notre situation patrimoniale.</p>
+
