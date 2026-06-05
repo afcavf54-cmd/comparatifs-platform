@@ -12,12 +12,10 @@ function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string,
   const editorRef = React.useRef<HTMLDivElement>(null)
   const taRef = React.useRef<HTMLTextAreaElement>(null)
 
-  // Sync visuel → HTML
   function onVisualInput() {
     if (editorRef.current) onChange(editorRef.current.innerHTML)
   }
 
-  // Sync HTML → visuel au changement de mode
   function switchMode(m: 'visual'|'source') {
     if (m === 'visual' && editorRef.current) {
       editorRef.current.innerHTML = value
@@ -56,13 +54,11 @@ function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string,
 
   return (
     <div style={{ border: '1px solid #1E2D3D', borderRadius: 8, overflow: 'hidden' }}>
-      {/* Tabs */}
       <div style={{ display: 'flex', background: '#0A0E1A', borderBottom: '1px solid #1E2D3D', padding: '0 8px', gap: 4 }}>
         <button style={tabBtn('visual','Visuel')} onClick={() => switchMode('visual')}>✏️ Visuel</button>
         <button style={tabBtn('source','HTML')} onClick={() => switchMode('source')}>{'</>'} HTML</button>
       </div>
 
-      {/* Toolbar */}
       <div style={{ display: 'flex', gap: 4, padding: '5px 8px', background: '#0A0E1A', borderBottom: '1px solid #1E2D3D', flexWrap: 'wrap' as const }}>
         {mode === 'visual' ? (<>
           <button style={btn} onClick={() => exec('bold')}><b>B</b></button>
@@ -86,7 +82,6 @@ function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string,
         </>)}
       </div>
 
-      {/* Éditeur visuel */}
       {mode === 'visual' && (
         <div
           ref={editorRef}
@@ -101,7 +96,6 @@ function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string,
         />
       )}
 
-      {/* Éditeur source */}
       {mode === 'source' && (
         <textarea ref={taRef} value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder}
           style={{ width: '100%', padding: 12, background: '#0D1117', border: 'none', color: '#E2E8F0', fontSize: 13, lineHeight: 1.6, outline: 'none', fontFamily: 'monospace', resize: 'vertical', minHeight: (rows * 22) + 'px', boxSizing: 'border-box' as const, display: 'block' }} />
@@ -110,6 +104,31 @@ function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string,
   )
 }
 // ── fin HtmlEditor ────────────────────────────────────────────────────────
+
+// ─────────────────────────────────────────────────────────────────────
+// Helper de parsing JSON défensif.
+// Si une réponse n'est pas du JSON valide (HTML 500, body vide, etc.),
+// on log précisément l'URL et le début du body pour pouvoir diagnostiquer
+// (console F12). Évite le crash silencieux "JSON.parse: unexpected character
+// at line 1 column 1" qui ne dit pas quel endpoint a échoué.
+// ─────────────────────────────────────────────────────────────────────
+async function safeJson(r: Response, urlHint: string): Promise<any | null> {
+  const text = await r.text()
+  if (!text) {
+    console.error(`[safeJson] Réponse vide : ${urlHint} (status ${r.status})`)
+    return null
+  }
+  try {
+    return JSON.parse(text)
+  } catch (e: any) {
+    console.error(
+      `[safeJson] JSON.parse fail sur ${urlHint} (status ${r.status}) :`,
+      text.slice(0, 300),
+      e?.message
+    )
+    return null
+  }
+}
 
 export default function ClassementsPage() {
   const { siteId } = useParams()
@@ -134,18 +153,6 @@ export default function ClassementsPage() {
   const [generatingSections, setGeneratingSections] = useState<Record<string, boolean>>({})
   const [msg, setMsg] = useState('')
 
-  // ── SÉLECTION DES CLASSEMENTS À DÉPLOYER ────────────────────────────
-  // Stocké dans `platform/sites/<siteId>/enabled_classements.json`.
-  //
-  // Modèle :
-  //   `allKeywords` : tous les classements présents dans le schema du
-  //     template (= la base de données générale, ex: classement-saas).
-  //     Format : { name, slug, parent_category, count_products }.
-  //   `enabledSlugs` : Set des slugs cochés par l'utilisateur.
-  //   `isLegacyMode` : true tant que le fichier .json n'existe pas encore.
-  //     Dans ce mode, toutes les cases sont cochées par défaut côté UI
-  //     pour matcher l'état réel du site (tout déployé), et un bandeau
-  //     d'info invite à sauvegarder pour figer la sélection.
   const [allKeywords, setAllKeywords] = useState<Array<{name:string, slug:string, parent:string, count:number}>>([])
   const [enabledSlugs, setEnabledSlugs] = useState<Set<string>>(new Set())
   const [isLegacyMode, setIsLegacyMode] = useState<boolean>(true)
@@ -164,7 +171,6 @@ export default function ClassementsPage() {
         if (!sd.error) setProducts(sd.rows || [])
       }
     })
-    // Aussi essayer de charger depuis le schema du template
     fetch(`/api/github?path=${encodeURIComponent(`platform/sites/${siteId}/config.yaml`)}`).then(r => r.json()).then(async cfg => {
       if (!cfg.content) return
       const classementMatch = cfg.content.match(/classement:\s*(\S+)/)
@@ -182,12 +188,7 @@ export default function ClassementsPage() {
           }
         })
         if (allProducts.length > 0) setProducts(prev => prev.length > 0 ? prev : allProducts)
-        // Stocker le mapping keyword -> catégorie parente
         const kwCats: Record<string, string> = {}
-        // ── Construction de la liste complète des classements disponibles
-        // (catalogue côté template). Utilisée par le bloc de sélection
-        // pour afficher les checkboxes. Slug calculé exactement comme
-        // côté Python (slugify_cat) pour que le matching soit cohérent.
         const allKw: Array<{name:string, slug:string, parent:string, count:number}> = []
         Object.entries(schema.keywords || {}).forEach(([kwName, kwData]: [string, any]) => {
           const slug = kwName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
@@ -201,13 +202,9 @@ export default function ClassementsPage() {
           })
         })
         setKeywordCategories(kwCats)
-        // Tri : par catégorie parente puis nom — donne une liste lisible
         allKw.sort((a, b) => a.parent === b.parent ? a.name.localeCompare(b.name) : a.parent.localeCompare(b.parent))
         setAllKeywords(allKw)
 
-        // ── Chargement du fichier enabled_classements.json ─────────────
-        // 404 = mode legacy (toutes les cases cochées par défaut, file
-        // sera créé au 1er save). Présent = mode liste blanche explicite.
         try {
           const er = await fetch(`/api/github?path=${encodeURIComponent(enabledPath)}`)
           if (er.ok) {
@@ -219,17 +216,14 @@ export default function ClassementsPage() {
                 setEnabledSlugs(new Set(list.map((s:any) => String(s).trim().toLowerCase()).filter(Boolean)))
                 setIsLegacyMode(false)
               } catch {
-                // JSON corrompu : on retombe en mode legacy
                 setIsLegacyMode(true)
                 setEnabledSlugs(new Set(allKw.map(k => k.slug)))
               }
             } else {
-              // Pas de contenu (404 déguisé en 200 selon l'API) : legacy
               setIsLegacyMode(true)
               setEnabledSlugs(new Set(allKw.map(k => k.slug)))
             }
           } else {
-            // 404 explicite : legacy, on coche tout par défaut
             setIsLegacyMode(true)
             setEnabledSlugs(new Set(allKw.map(k => k.slug)))
           }
@@ -249,7 +243,6 @@ export default function ClassementsPage() {
             if (k.startsWith('classement-prod-')) prods[k] = v
             else if (k.startsWith('classement-')) cls[k] = v
           }
-          // Injecter les données produits dans chaque classement
           for (const [clsKey, clsVal] of Object.entries(cls)) {
             const cat_slug = clsKey.replace('classement-', '')
             for (const [prodKey, prodVal] of Object.entries(prods)) {
@@ -282,58 +275,53 @@ export default function ClassementsPage() {
     setDeploying(false)
   }
 
-  // ⚠ Note v5 : la fonction saveAndDeploy() a été supprimée. La page
-  // expose désormais UN SEUL bouton "💾 Tout sauvegarder" qui sauve
-  // editorial.json + enabled_classements.json, et le déploiement se fait
-  // depuis le bouton "Déployer" du shell (header global du site). Cela
-  // évite la confusion des 3 boutons Sauvegarder précédents et la race
-  // condition observée (deploy avant que la sélection soit persistée).
-
   async function save() {
-    // ⚠ FIX v5 : ce bouton est désormais le SEUL "Sauvegarder" de la page.
-    // Il enregistre TOUT en une fois pour éviter l'écueil "j'ai oublié de
-    // cliquer sur Sauvegarder la sélection avant Déployer" qui causait des
-    // déploiements sur un enabled_classements.json obsolète.
+    // v6 : tous les fetch passent par safeJson() pour diagnostiquer
+    // l'erreur "JSON.parse unexpected character" qui crashait silencieusement.
     setSaving(true); setMsg('')
     try {
-      // ── 1) Sauvegarde la sélection enabled_classements.json ──────────
-      // saveEnabledClassements() peut aussi bootstrap des entrées
-      // editorial pour les nouveaux classements cochés (méta + h1).
       await saveEnabledClassements()
 
-      // ── 2) Sauvegarde editorial.json complet ─────────────────────────
       const r = await fetch(`/api/github?path=${encodeURIComponent(editorialPath)}`)
-      const d = await r.json()
+      const d = await safeJson(r, `GET /api/github?path=${editorialPath}`)
       let allEditorial: Record<string, any> = {}
-      if (d.content) { try { allEditorial = JSON.parse(d.content) } catch {} }
+      if (d?.content) { try { allEditorial = JSON.parse(d.content) } catch {} }
       const merged = { ...allEditorial, ...classements }
+      const payloadSize = JSON.stringify(merged).length
+      console.log(`[save] Payload editorial.json : ${(payloadSize / 1024).toFixed(1)} Ko, ${Object.keys(merged).length} clés`)
+      // Vercel Hobby limite le body POST à 4.5 MB. Au-delà, on alerte.
+      if (payloadSize > 4 * 1024 * 1024) {
+        setMsg(`✗ Payload trop gros (${(payloadSize / 1024 / 1024).toFixed(1)} MB) — Vercel limite à 4.5 MB. Fragmentation requise.`)
+        return
+      }
       const wr = await fetch('/api/github', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ path: editorialPath, content: JSON.stringify(merged, null, 2), message: `HUB: Update classements ${siteId}` })
       })
-      const wd = await wr.json()
-      setMsg(wd.ok ? '✓ Tout sauvegardé' : '✗ Erreur editorial')
+      const wd = await safeJson(wr, `POST /api/github (editorial save)`)
+      if (!wd) {
+        setMsg(`✗ Réponse invalide /api/github (status ${wr.status}, voir console F12)`)
+        return
+      }
+      setMsg(wd.ok ? '✓ Tout sauvegardé' : `✗ ${wd.error || 'Erreur editorial'}`)
     } catch (e: any) {
+      console.error('[save] Exception non gérée :', e)
       setMsg('✗ ' + (e?.message || 'Erreur sauvegarde'))
     } finally {
       setSaving(false)
     }
   }
 
-  // Régénère une page : supprime la clé dans editorial.json et relance le déploiement
   async function regeneratePage(catKey: string) {
     setRegenerating(prev => ({ ...prev, [catKey]: true })); setMsg('')
     try {
-      // 1. Charger editorial.json complet
       const r = await fetch(`/api/github?path=${encodeURIComponent(editorialPath)}`)
       const d = await r.json()
       let allEditorial: Record<string, any> = {}
       if (d.content) { try { allEditorial = JSON.parse(d.content) } catch {} }
 
-      // 2. Supprimer la clé de ce classement
       delete allEditorial[catKey]
 
-      // 3. Sauvegarder sur GitHub
       const wr = await fetch('/api/github', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ path: editorialPath, content: JSON.stringify(allEditorial, null, 2), message: `HUB: Reset classement ${catKey} for regeneration` })
@@ -341,7 +329,6 @@ export default function ClassementsPage() {
       const wd = await wr.json()
       if (!wd.ok) { setMsg('✗ Erreur sauvegarde'); return }
 
-      // 4. Mettre à jour le state local
       setClassements(prev => {
         const next = { ...prev }
         delete next[catKey]
@@ -349,7 +336,6 @@ export default function ClassementsPage() {
       })
       if (selected === catKey) setSelected(null)
 
-      // 5. Lancer le déploiement
       setDeploying(true)
       const dr = await fetch(`/api/sites/${siteId}/deploy`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -390,7 +376,6 @@ export default function ClassementsPage() {
   }
   const catProducts = selectedData
     ? products.filter(p => {
-        // Matcher par slug de catégorie OU par nom de keyword (pour produits du schema)
         const slugByCat = slugifyCat(p.categorie || '')
         const slugByKeyword = slugifyCat(selected.replace('classement-', ''))
         const catName = (p.categorie || '').toLowerCase()
@@ -399,41 +384,20 @@ export default function ClassementsPage() {
                slugByCat === slugByKeyword ||
                catName.includes(keyName) ||
                keyName.includes(catName) ||
-               // Matcher aussi par nom du produit dans le schema
                (p.__keyword && slugifyCat(p.__keyword) === slugByKeyword)
       })
     : []
 
-  // ── Sauvegarde de la sélection des classements activés ──────────────
-  // Construit le JSON `enabled_classements.json` à partir du Set d'état et
-  // le pousse via /api/github (PUT). Au premier save, le fichier est créé
-  // et le mode legacy bascule en mode "liste blanche explicite".
-  //
-  // De plus, pour chaque classement nouvellement coché qui n'a PAS encore
-  // d'entrée dans `editorial.json`, on crée une entrée minimale (h1, meta,
-  // categorie) basée sur le nom du keyword. Sans ça, la page `.html` est
-  // bien générée par le template au prochain build mais sans contenu
-  // éditorial spécifique → l'utilisateur doit ensuite passer dans la
-  // sidebar pour générer le contenu IA de chaque nouveau classement.
   async function saveEnabledClassements() {
     setSavingEnabled(true)
     setEnabledMsg('')
     try {
       const slugList = Array.from(enabledSlugs).sort()
 
-      // ── 1) Détecte les NOUVEAUX classements (cochés mais sans editorial) ─
-      // On considère "nouveau" un slug qui :
-      //   - est dans la sélection cochée
-      //   - n'a PAS de clé `classement-<slug>` dans le state local `classements`
-      //     (= dans editorial.json)
-      // Pour chacun, on bootstrap une entrée minimale qui sera persistée
-      // dans editorial.json juste après, et permettra à la page rendue
-      // d'afficher au moins le H1 et les méta corrects.
       const newEntries: Record<string, any> = {}
       for (const slug of slugList) {
         const key = `classement-${slug}`
-        if (classements[key]) continue // déjà éditorial existant
-        // Retrouve le nom complet du keyword pour construire les méta.
+        if (classements[key]) continue
         const kw = allKeywords.find(k => k.slug === slug)
         if (!kw) continue
         const productCount = kw.count || products.filter(p => slugifyCat(p.categorie || '') === slug || slugifyCat(p.__keyword || '') === slug).length
@@ -442,13 +406,10 @@ export default function ClassementsPage() {
           h1: `Meilleur ${kw.name} {year} : Top ${productCount || ''}`.trim(),
           meta_title: `Meilleur ${kw.name} {year} : comparatif et avis`,
           meta_description: `Comparez les meilleurs ${kw.name} en {year} : prix, fonctionnalités, avis.`,
-          // intro / en_bref / contenu_custom / faq laissés vides exprès :
-          // l'utilisateur les remplit via "Générer avec IA" dans la sidebar.
         }
       }
       const hasNew = Object.keys(newEntries).length > 0
 
-      // ── 2) Sauvegarde de enabled_classements.json ──────────────────────
       const payload = {
         classements: slugList,
         updated: new Date().toISOString(),
@@ -462,31 +423,27 @@ export default function ClassementsPage() {
           message: `HUB: Sélection classements site ${siteId} (${slugList.length} activé(s))`,
         }),
       })
-      const d = await r.json()
+      const d = await safeJson(r, 'POST /api/github (enabled_classements save)')
+      if (!d) {
+        setEnabledMsg(`✗ Réponse invalide /api/github (status ${r.status}, voir console F12)`)
+        return
+      }
       if (!(d.ok || d.success)) {
         setEnabledMsg(`✗ Erreur : ${d.error || 'inconnue'}`)
         return
       }
       setIsLegacyMode(false)
 
-      // ── 3) Si nouveaux classements → bootstrap des entrées editorial ──
-      // On lit l'editorial.json actuel sur GitHub, on merge les nouvelles
-      // clés, on push. Cohérent avec le pattern de save de cette page.
       if (hasNew) {
-        // Update state local (UI réactive : la sidebar va afficher les nouveaux)
         setClassements(prev => ({ ...prev, ...newEntries }))
 
-        // Persistance editorial.json — on relit pour ne pas écraser ce que
-        // d'autres entries auraient pu modifier en parallèle.
         try {
           const er = await fetch(`/api/github?path=${encodeURIComponent(editorialPath)}`)
-          const ed = await er.json()
+          const ed = await safeJson(er, `GET /api/github?path=${editorialPath} (bootstrap)`)
           let editorial: Record<string, any> = {}
-          if (ed.content) {
+          if (ed?.content) {
             try { editorial = JSON.parse(ed.content) } catch { editorial = {} }
           }
-          // Merge : on ne touche pas aux clés existantes (au cas où une
-          // course condition a mis à jour entre-temps).
           for (const [k, v] of Object.entries(newEntries)) {
             if (!editorial[k]) editorial[k] = v
           }
@@ -499,11 +456,8 @@ export default function ClassementsPage() {
               message: `HUB: Bootstrap editorial pour ${Object.keys(newEntries).length} nouveau(x) classement(s)`,
             }),
           })
-          // Sélectionne automatiquement le 1er nouveau pour que l'utilisateur
-          // soit guidé vers l'écran de génération de contenu.
           setSelected(Object.keys(newEntries)[0])
         } catch (e) {
-          // Le enabled est save, mais editorial pas → message d'avertissement
           console.error('Bootstrap editorial failed', e)
         }
         setEnabledMsg(`✓ ${slugList.length} activé(s) — ${Object.keys(newEntries).length} nouveau(x) initialisé(s). Génère le contenu IA depuis la sidebar.`)
@@ -519,7 +473,6 @@ export default function ClassementsPage() {
     }
   }
 
-  // Helpers UI pour le bloc de sélection
   function toggleSlug(slug: string) {
     setEnabledSlugs(prev => {
       const next = new Set(prev)
@@ -539,7 +492,6 @@ export default function ClassementsPage() {
     setEnabledSlugs(checked ? new Set(allKeywords.map(k => k.slug)) : new Set())
   }
 
-  // Fonction de rendu d'un item classement dans la sidebar
   function renderClassementItem(key: string, indented = false) {
     return (
       <div key={key} onClick={() => setSelected(key)} style={{
@@ -602,12 +554,6 @@ export default function ClassementsPage() {
         </div>
       </div>
 
-      {/* ── 🎯 SÉLECTION DES CLASSEMENTS À DÉPLOYER ─────────────────────
-          Bloc collapsible qui pilote `enabled_classements.json`. Tant que
-          le fichier n'existe pas, mode legacy = toutes les cases cochées
-          côté UI et un bandeau invite à figer la sélection. Au 1er save,
-          le fichier est créé et le filtrage Python s'active au prochain
-          build (.html des décochés supprimés). */}
       {!loading && allKeywords.length > 0 && (
         <div style={{ background: '#0D1117', border: `1px solid ${isLegacyMode ? '#7C3AED' : '#1E2D3D'}`, borderRadius: 12, padding: 16, marginBottom: 14 }}>
           <div
@@ -639,7 +585,6 @@ export default function ClassementsPage() {
 
           {!enabledCollapsed && (
             <div style={{ marginTop: 14 }}>
-              {/* Toolbar : tout cocher / tout décocher + sauvegarde */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12, flexWrap: 'wrap' }}>
                 <button
                   type="button"
@@ -655,13 +600,8 @@ export default function ClassementsPage() {
                 {enabledMsg && (
                   <span style={{ fontSize: 11, color: enabledMsg.startsWith('✓') ? '#00D4AA' : '#FC8181' }}>{enabledMsg}</span>
                 )}
-                {/* Bouton "Sauvegarder la sélection" retiré (v5) : la sauvegarde
-                    de enabled_classements.json est maintenant prise en charge
-                    par le bouton "💾 Tout sauvegarder" en haut de la page. */}
               </div>
 
-              {/* Liste groupée par catégorie parente — chaque catégorie a son
-                  propre toggle "cocher la catégorie entière". */}
               {(() => {
                 const groups: Record<string, typeof allKeywords> = {}
                 allKeywords.forEach(k => {
@@ -677,7 +617,6 @@ export default function ClassementsPage() {
                         <input
                           type="checkbox"
                           checked={allChecked}
-                          // @ts-ignore — indeterminate non typé sur HTMLInputElement
                           ref={el => { if (el) (el as HTMLInputElement).indeterminate = !allChecked && someChecked }}
                           onChange={e => selectAllOfCategory(parent, e.target.checked)}
                           style={{ cursor: 'pointer' }}
@@ -722,14 +661,12 @@ export default function ClassementsPage() {
       {loading ? <div style={{ color: '#8B9CB0', textAlign: 'center', padding: 40 }}>Chargement...</div> : (
         <div style={{ display: 'flex', gap: 16, flex: 1, overflow: 'hidden' }}>
 
-          {/* Sidebar */}
           <div style={{ width: 240, display: 'flex', flexDirection: 'column', background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 12, overflow: 'hidden' }}>
             <div style={{ padding: '10px 12px', borderBottom: '1px solid #1E2D3D', fontSize: 11, color: '#8B9CB0', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
               Pages existantes
             </div>
             <div style={{ flex: 1, overflowY: 'auto' }}>
               {(() => {
-                // Grouper par catégorie parente (depuis keywordCategories)
                 const grouped: Record<string, string[]> = {}
                 Object.keys(classements).forEach(key => {
                   const cat = keywordCategories[key] || 'Autres'
@@ -737,7 +674,6 @@ export default function ClassementsPage() {
                   grouped[cat].push(key)
                 })
                 const cats = Object.keys(grouped)
-                // Si une seule catégorie ou pas de mapping : afficher à plat
                 if (cats.length <= 1) {
                   return Object.keys(classements).map(key => renderClassementItem(key))
                 }
@@ -760,7 +696,6 @@ export default function ClassementsPage() {
 
           </div>
 
-          {/* Éditeur */}
           <div style={{ flex: 1, background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 12, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
             {!selected || !selectedData ? (
               <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#4A5568', flexDirection: 'column', gap: 12 }}>
@@ -774,7 +709,6 @@ export default function ClassementsPage() {
               </div>
             ) : (
               <div style={{ flex: 1, overflowY: 'auto', padding: 24 }}>
-                {/* Header */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
                   <h3 style={{ color: '#00D4AA', margin: 0, fontSize: 15 }}>
                     {selectedData.categorie || selected.replace('classement-', '')}
@@ -787,7 +721,6 @@ export default function ClassementsPage() {
                   </div>
                 </div>
 
-                {/* SEO */}
                 <div onClick={() => toggleSection('seo')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections['seo'] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>🔍 SEO</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
                 {expandedSections['seo'] && <>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: 12 }}>
@@ -837,13 +770,11 @@ export default function ClassementsPage() {
 
                 </>}
 
-                {/* Sections éditables */}
                 {[
                   { key: 'intro', label: '📝 Introduction', rows: 8, prompt: `Génère une introduction HTML engageante (150-200 mots) pour une page de classement des meilleurs ${selectedData.categorie || ''} en ${new Date().getFullYear()}. Paragraphes <p>, gras <strong>. Aucun tiret long.` },
                   { key: 'en_bref', label: '⚡ En bref', rows: 6, prompt: `Génère un encart "En bref" HTML pour les meilleurs ${selectedData.categorie || ''} en ${new Date().getFullYear()}. Format : <ul> avec 5 <li>, chaque item = nom du logiciel + profil cible idéal. Aucun tiret long.` },
                   { key: 'contenu_custom', label: '📖 Contenu expert', rows: 14, prompt: `Génère un guide expert HTML (500-800 mots) pour aider à choisir parmi les meilleurs ${selectedData.categorie || ''} en ${new Date().getFullYear()}. Utilise des <h2>, <h3>, <p>, <strong>. Aucun tiret long.` },
                 ].map(({ key, label, rows, prompt }) => {
-                  // Chercher le prompt dans le schema pour la catégorie sélectionnée
                   const cat = selectedData.categorie || selected.replace('classement-', '')
                   const kwData = Object.entries(schemaPrompts).find(([k]) => k.toLowerCase() === cat.toLowerCase() || cat.toLowerCase().includes(k.toLowerCase()))?.[1] as any
                   const promptKey = key === 'intro' ? 'prompt_intro' : key === 'contenu_custom' ? 'prompt_contenu' : null
@@ -882,11 +813,9 @@ export default function ClassementsPage() {
                   </div>
                 )})}
 
-                {/* FAQ */}
                 <div style={{ marginBottom: 8 }}>
                   <div onClick={() => toggleSection('faq')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections['faq'] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>❓ FAQ</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
                   {expandedSections['faq'] && (() => {
-                    // Normaliser la FAQ en tableau [{q, a}]
                     let faqItems: {q: string, a: string}[] = []
                     const raw = selectedData.faq
                     if (Array.isArray(raw)) {
@@ -921,7 +850,6 @@ export default function ClassementsPage() {
                   })()}
                 </div>
 
-                {/* Ordre des marques */}
                 {catProducts.length > 0 && (
                   <div style={{ marginBottom: 8 }}>
                     <div onClick={() => toggleSection('ordre')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections['ordre'] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>🔢 Ordre du classement</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
@@ -957,7 +885,6 @@ export default function ClassementsPage() {
                   </div>
                 )}
 
-                {/* Contenu des marques */}
                 {catProducts.length > 0 && (
                   <div style={{ marginBottom: 20 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
@@ -967,7 +894,6 @@ export default function ClassementsPage() {
                       </button>
                     </div>
 
-                    {/* Formulaire ajout marque */}
                     {showAddBrand && (
                       <div style={{ marginBottom: 16, background: '#0A0E1A', border: '1px solid #00D4AA', borderRadius: 10, padding: 16 }}>
                         <div style={{ fontSize: 13, fontWeight: 600, color: '#00D4AA', marginBottom: 12 }}>Nouvelle marque</div>
@@ -1031,17 +957,14 @@ export default function ClassementsPage() {
                       const hasContent = !!(prodData.description || prodData.points_forts?.length)
                       return (
                         <div key={prodKey} style={{ marginBottom: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 10, overflow: 'hidden' }}>
-                          {/* Header cliquable */}
                           <div onClick={() => setExpandedBrands(p => ({ ...p, [prodKey]: !p[prodKey] }))}
                             style={{ padding: '10px 14px', background: '#0D1117', display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer' }}>
                             <span style={{ color: '#4A5568', fontSize: 12, transition: 'transform .2s', transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block' }}>▶</span>
                             <span style={{ fontSize: 14, fontWeight: 600, color: '#fff', flex: 1 }}>{prod.nom}</span>
                             <span style={{ fontSize: 10, color: hasContent ? '#00D4AA' : '#4A5568' }}>{hasContent ? '✓ Contenu' : '⚠ Vide'}</span>
                           </div>
-                          {/* Contenu déplié */}
                           {isExpanded && (
                             <div style={{ padding: 14 }}>
-                              {/* Lien affiliation + CTA */}
                               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 14 }}>
                                 <div>
                                   <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5 }}>🔗 Lien d'affiliation</div>
