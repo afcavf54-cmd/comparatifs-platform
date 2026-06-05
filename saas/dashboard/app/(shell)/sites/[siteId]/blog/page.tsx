@@ -82,13 +82,25 @@ export default function BlogListPage() {
   useEffect(() => {
     if (autoSwitched || loading || posts.length === 0) return
     const now = new Date()
-    const counts = { published: 0, scheduled: 0, draft: 0 } as Record<TabKey, number>
-    for (const p of posts) counts[classifyPost(p, now)]++
-    if (counts.published === 0 && counts.scheduled > 0) {
+    const c = { published: 0, scheduled: 0, draft: 0 } as Record<TabKey, number>
+    for (const p of posts) c[classifyPost(p, now)]++
+    if (c.published === 0 && c.scheduled > 0) {
       setActiveTab('scheduled')
     }
     setAutoSwitched(true)
   }, [posts, loading, autoSwitched])
+
+  // Safety : si on est sur un onglet qui est devenu vide (le cron a publié les
+  // .md programmés, par ex), on bascule sur "En ligne". Évite d'afficher
+  // "Aucun résultat" alors qu'on n'a juste plus d'items dans cet onglet.
+  useEffect(() => {
+    if (activeTab === 'scheduled' && counts.scheduled === 0 && !loading) {
+      setActiveTab('published')
+    }
+    if (activeTab === 'draft' && counts.draft === 0 && !loading) {
+      setActiveTab('published')
+    }
+  }, [counts.scheduled, counts.draft, activeTab, loading])
 
   async function syncScheduledFromSheet() {
     try {
@@ -308,14 +320,28 @@ export default function BlogListPage() {
   const sheetEditUrl = sheetEditUrlSaved || (sheetUrl || sheetUrlOriginal) || 'prompt'
 
   // ── Comptages par onglet (mémoized pour éviter re-calcul à chaque keystroke) ──
+  // Compteurs par onglet.
+  // - published : .md à date passée
+  // - scheduled : .md à date future + items de la sheet (dédup par titre normalisé)
+  // - draft     : .md avec status='draft'
+  // Le merge avec la sheet est important : tes articles "à venir" vivent
+  // souvent dans la sheet uniquement (pas encore de .md), donc l'onglet
+  // "Programmés" doit les inclure pour avoir un compteur non trompeur.
   const counts = useMemo(() => {
     const c: Record<TabKey, number> = { published: 0, scheduled: 0, draft: 0 }
     const now = new Date()
+    const scheduledTitles = new Set<string>()
     for (const p of posts) {
-      c[classifyPost(p, now)]++
+      const tab = classifyPost(p, now)
+      c[tab]++
+      if (tab === 'scheduled') scheduledTitles.add(normalizeTitle(p.title))
+    }
+    // Ajouter les items de la sheet qui ne sont PAS déjà couverts par un .md
+    for (const s of scheduled) {
+      if (!scheduledTitles.has(normalizeTitle(s.title))) c.scheduled++
     }
     return c
-  }, [posts])
+  }, [posts, scheduled])
 
   // Filtrage : onglet → puis recherche + catégorie (les filtres s'appliquent
   // dans l'onglet actif uniquement). Plus de filtre "statut" car redondant.
@@ -418,8 +444,35 @@ export default function BlogListPage() {
         }
       `}</style>
 
-      {/* Articles programmés depuis la sheet (date future) */}
-      {scheduled.length > 0 && (
+      {/* ── ONGLETS ─────────────────────────────────────────────────
+          Sépare la longue liste en 2-3 vues distinctes pour ne pas
+          mélanger publiés et programmés. Compteurs en temps réel. */}
+      <div style={{ display: 'flex', gap: 4, marginBottom: 16, borderBottom: '1px solid #1E2D3D' }}>
+        <TabButton active={activeTab === 'published'} onClick={() => setActiveTab('published')} color={STATUS_COLOR.published}>
+          🌐 En ligne <span style={{ opacity: 0.7 }}>({counts.published})</span>
+        </TabButton>
+        {/* L'onglet Programmés ne s'affiche que s'il y a des .md avec date
+            future. Sinon (cas courant chez Julien : tout vient de la Google
+            Sheet, aucun .md scheduled), l'utilisateur voit ses futurs articles
+            dans la "box bleue" au-dessus du tableau, pas dans le tableau.
+            Évite l'onglet trompeur "Programmés (0)". */}
+        {counts.scheduled > 0 && (
+          <TabButton active={activeTab === 'scheduled'} onClick={() => setActiveTab('scheduled')} color={STATUS_COLOR.scheduled}>
+            📅 Programmés <span style={{ opacity: 0.7 }}>({counts.scheduled})</span>
+          </TabButton>
+        )}
+        {counts.draft > 0 && (
+          <TabButton active={activeTab === 'draft'} onClick={() => setActiveTab('draft')} color={STATUS_COLOR.draft}>
+            ✏️ Brouillons <span style={{ opacity: 0.7 }}>({counts.draft})</span>
+          </TabButton>
+        )}
+      </div>
+
+      {/* Box "Programmés depuis la sheet" — affichée UNIQUEMENT dans l'onglet
+          Programmés. C'est l'endroit logique pour la trouver vu qu'on parle
+          d'articles à venir. Quand on est sur "En ligne", on ne veut pas voir
+          la box (qui noyait le contenu avant). */}
+      {activeTab === 'scheduled' && scheduled.length > 0 && (
         <div style={{ background: 'rgba(94,158,214,.08)', border: '1px solid #5E9ED6', borderRadius: 12, padding: 18, marginBottom: 20 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
             <strong style={{ color: '#5E9ED6', fontSize: 14 }}>
@@ -427,7 +480,7 @@ export default function BlogListPage() {
             </strong>
             <span style={{ color: '#8B9CB0', fontSize: 12 }}>· seront publiés automatiquement à leur date</span>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6, maxHeight: 480, overflowY: 'auto' }}>
             {[...scheduled].sort((a, b) => (a.scheduledFor || '').localeCompare(b.scheduledFor || '')).map((p, i) => (
               <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 12px', background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 8, gap: 12 }}>
                 <span style={{ color: '#fff', fontSize: 13, flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>📅 {p.title}</span>
@@ -447,23 +500,6 @@ export default function BlogListPage() {
           </div>
         </div>
       )}
-
-      {/* ── ONGLETS ─────────────────────────────────────────────────
-          Sépare la longue liste en 2-3 vues distinctes pour ne pas
-          mélanger publiés et programmés. Compteurs en temps réel. */}
-      <div style={{ display: 'flex', gap: 4, marginBottom: 16, borderBottom: '1px solid #1E2D3D' }}>
-        <TabButton active={activeTab === 'published'} onClick={() => setActiveTab('published')} color={STATUS_COLOR.published}>
-          🌐 En ligne <span style={{ opacity: 0.7 }}>({counts.published})</span>
-        </TabButton>
-        <TabButton active={activeTab === 'scheduled'} onClick={() => setActiveTab('scheduled')} color={STATUS_COLOR.scheduled}>
-          📅 Programmés <span style={{ opacity: 0.7 }}>({counts.scheduled})</span>
-        </TabButton>
-        {counts.draft > 0 && (
-          <TabButton active={activeTab === 'draft'} onClick={() => setActiveTab('draft')} color={STATUS_COLOR.draft}>
-            ✏️ Brouillons <span style={{ opacity: 0.7 }}>({counts.draft})</span>
-          </TabButton>
-        )}
-      </div>
 
       {/* Filtres dans l'onglet courant — filtre statut supprimé (redondant avec les onglets) */}
       <div style={{ display: 'flex', gap: 12, marginBottom: 20, flexWrap: 'wrap' }}>
