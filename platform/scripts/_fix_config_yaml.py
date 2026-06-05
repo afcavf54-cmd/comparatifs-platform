@@ -159,7 +159,12 @@ def main() -> int:
         print(f"❌ Dossier introuvable : {SITES_DIR}")
         return 1
 
-    sites = sorted([d for d in SITES_DIR.iterdir() if d.is_dir() and not d.name.startswith(".")])
+    sites = sorted([
+        d for d in SITES_DIR.iterdir()
+        if d.is_dir()
+        and not d.name.startswith(".")
+        and not d.name.startswith("_")  # _shared, _templates, etc. = dossiers internes
+    ])
     if args.site:
         sites = [d for d in sites if d.name == args.site]
         if not sites:
@@ -201,7 +206,13 @@ def main() -> int:
         print("  Pour appliquer : relance avec --write")
         print()
 
-    return 0 if not broken else 2
+    # Exit code :
+    #   0 = tout va bien (rien à faire ou tout réparé)
+    #   2 = au moins un site a un YAML vraiment cassé que le script ne sait pas réparer
+    # On ignore les "config.yaml inexistant" qui sont des dossiers vides
+    # (sites créés sans config, ou dossiers non-sites passés à travers le filtre).
+    real_broken = [r for r in broken if r["error"] != "config.yaml inexistant"]
+    return 0 if not real_broken else 2
 
 
 if __name__ == "__main__":
