@@ -16,6 +16,24 @@ interface Post {
 
 type TabKey = 'published' | 'scheduled' | 'draft'
 
+// Classement d'un article dans un onglet : on regarde d'abord le status='draft'
+// (champ explicite), sinon on compare la date à maintenant.
+// IMPORTANT : on ne se fie pas à p.status pour distinguer 'published' vs
+// 'scheduled' parce que le script Python blog_publish_scheduled.py écrit
+// toujours 'published' dans le frontmatter, peu importe la date. C'est donc
+// la date qui détermine si un article est accessible sur le site public
+// (date <= now → publié) ou en attente (date > now → programmé).
+function classifyPost(p: { date?: string; status?: string }, now: Date): TabKey {
+  if (p.status === 'draft') return 'draft'
+  if (p.date) {
+    try {
+      const d = new Date(p.date)
+      if (!isNaN(d.getTime()) && d > now) return 'scheduled'
+    } catch { /* date malformée → traité comme en ligne */ }
+  }
+  return 'published'
+}
+
 const STATUS_LABEL: Record<string, string> = {
   published: '✓ Publié',
   scheduled: '⏰ Programmé',
@@ -37,7 +55,11 @@ export default function BlogListPage() {
   // ── Onglet actif. Par défaut : "Publiés" (le plus consulté au quotidien).
   // Les boxes jaune (pending) et bleue (scheduled depuis sheet) restent
   // toujours visibles en haut quel que soit l'onglet.
+  // Onglet par défaut : "Publiés" (le plus consulté). Si vide ET qu'il y a
+  // des programmés, on switch automatiquement à l'init (UX : ne pas atterrir
+  // sur un onglet vide).
   const [activeTab, setActiveTab] = useState<TabKey>('published')
+  const [autoSwitched, setAutoSwitched] = useState(false)
   const [pending, setPending] = useState<{ title: string; createdAt: number }[]>([])
   const [scheduled, setScheduled] = useState<{ title: string; scheduledFor: string; createdAt: number }[]>([])
   const [publishingNow, setPublishingNow] = useState<string | null>(null)
@@ -53,6 +75,20 @@ export default function BlogListPage() {
   const [confirming, setConfirming] = useState(false)
 
   useEffect(() => { load(); loadConfig(); loadPending(); loadScheduled(); syncScheduledFromSheet() }, [siteId])
+
+  // Auto-switch sur l'onglet "Programmés" SI l'onglet par défaut "Publiés"
+  // est vide ET qu'il y a des programmés. Évite d'atterrir sur un onglet
+  // vide quand 100% des articles ont une date future.
+  useEffect(() => {
+    if (autoSwitched || loading || posts.length === 0) return
+    const now = new Date()
+    const counts = { published: 0, scheduled: 0, draft: 0 } as Record<TabKey, number>
+    for (const p of posts) counts[classifyPost(p, now)]++
+    if (counts.published === 0 && counts.scheduled > 0) {
+      setActiveTab('scheduled')
+    }
+    setAutoSwitched(true)
+  }, [posts, loading, autoSwitched])
 
   async function syncScheduledFromSheet() {
     try {
@@ -273,10 +309,10 @@ export default function BlogListPage() {
 
   // ── Comptages par onglet (mémoized pour éviter re-calcul à chaque keystroke) ──
   const counts = useMemo(() => {
-    const c = { published: 0, scheduled: 0, draft: 0 }
+    const c: Record<TabKey, number> = { published: 0, scheduled: 0, draft: 0 }
+    const now = new Date()
     for (const p of posts) {
-      const s = (p.status || 'published') as TabKey
-      if (s in c) c[s]++
+      c[classifyPost(p, now)]++
     }
     return c
   }, [posts])
@@ -284,12 +320,15 @@ export default function BlogListPage() {
   // Filtrage : onglet → puis recherche + catégorie (les filtres s'appliquent
   // dans l'onglet actif uniquement). Plus de filtre "statut" car redondant.
   const categories = useMemo(() => Array.from(new Set(posts.map(p => p.categorie).filter(Boolean))) as string[], [posts])
-  const filtered = useMemo(() => posts.filter(p => {
-    if ((p.status || 'published') !== activeTab) return false
-    if (search && !p.title.toLowerCase().includes(search.toLowerCase())) return false
-    if (catFilter && p.categorie !== catFilter) return false
-    return true
-  }), [posts, activeTab, search, catFilter])
+  const filtered = useMemo(() => {
+    const now = new Date()
+    return posts.filter(p => {
+      if (classifyPost(p, now) !== activeTab) return false
+      if (search && !p.title.toLowerCase().includes(search.toLowerCase())) return false
+      if (catFilter && p.categorie !== catFilter) return false
+      return true
+    })
+  }, [posts, activeTab, search, catFilter])
 
   return (
     <div style={{ padding: '32px 5vw', maxWidth: 1400, margin: '0 auto' }}>
