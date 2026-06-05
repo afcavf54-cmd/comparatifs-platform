@@ -92,6 +92,35 @@ export async function GET(_: NextRequest, { params }: Params) {
   })
 }
 
+// ─────────────────────────────────────────────────────────────────────
+// Helper de sanitisation pour insérer une valeur dans une YAML string
+// double-quoted single-line.
+//
+// Bug observé en juin 2026 : des sites créés/édités via le HUB avaient des
+// config.yaml invalides parce qu'un home_title (ou meta_pattern, etc.)
+// saisi dans un textarea avec un saut de ligne se retrouvait dumpé tel
+// quel dans le YAML, produisant une ligne orpheline qui plante ruamel.yaml :
+//
+//     home_title: "Startup Only : idées, stratégies et croissance pour les startups
+//         business"
+//
+// Cette fonction normalise toute valeur insérée :
+//   - retire les retours chariots (Windows)
+//   - remplace les sauts de ligne par des espaces
+//   - échappe les backslashes et guillemets doubles pour YAML
+//   - trim
+//
+// Cf. _fix_config_yaml.py pour la réparation rétroactive des sites cassés.
+// ─────────────────────────────────────────────────────────────────────
+function escapeYamlValue(val: unknown): string {
+  return String(val ?? '')
+    .replace(/\r/g, '')
+    .replace(/\n+/g, ' ')
+    .replace(/\\/g, '\\\\')
+    .replace(/"/g, '\\"')
+    .trim()
+}
+
 export async function PATCH(req: NextRequest, { params }: Params) {
   const { siteId } = await params
   const body = await req.json()
@@ -99,10 +128,13 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   if (!file) return NextResponse.json({ error: 'Config introuvable' }, { status: 404 })
   let yaml = file.content
   const replaceKey = (key: string, val: string) => {
+    // Sanitisation systématique : toute valeur insérée dans le YAML passe par
+    // escapeYamlValue (retours à la ligne → espaces, échappement \ et ").
+    // On utilise TOUJOURS des guillemets DOUBLES avec échappement complet
+    // (plus simple et plus robuste que basculer en single quotes).
+    const safe = escapeYamlValue(val)
     const re = new RegExp(`^([ ]*)${key}:(.*?)$`, 'm')
-    // Utiliser guillemets simples si la valeur contient des guillemets doubles (ex: script HTML)
-    const quote = val.includes('"') ? "'" : '"'
-    const formatted = `$1${key}: ${quote}${val}${quote}`
+    const formatted = `$1${key}: "${safe}"`
     if (re.test(yaml)) {
       yaml = yaml.replace(re, formatted)
     } else {
@@ -116,9 +148,9 @@ export async function PATCH(req: NextRequest, { params }: Params) {
       const siteMatch = yaml.match(/^site:\s*\n/m)
       if (siteMatch) {
         const insertIdx = siteMatch.index! + siteMatch[0].length
-        yaml = yaml.slice(0, insertIdx) + `  ${key}: ${quote}${val}${quote}\n` + yaml.slice(insertIdx)
+        yaml = yaml.slice(0, insertIdx) + `  ${key}: "${safe}"\n` + yaml.slice(insertIdx)
       } else {
-        yaml = yaml.trimEnd() + `\n${key}: ${quote}${val}${quote}\n`
+        yaml = yaml.trimEnd() + `\n${key}: "${safe}"\n`
       }
     }
   }
@@ -156,21 +188,26 @@ export async function PATCH(req: NextRequest, { params }: Params) {
     const themeMap: Record<string, string> = body.theme
     Object.entries(themeMap).forEach(([k, v]) => {
       if (!v) return
+      // Sanitisation aussi sur les valeurs theme (par cohérence — les couleurs
+      // hex ne risquent pas de contenir des \n, mais on ne sait jamais).
+      const safe = escapeYamlValue(v)
       // Remplacer la clé dans le bloc theme: (indentée avec 2 espaces)
       const re = new RegExp(`^([ ]{2})${k}:(.*?)$`, 'm')
       if (re.test(yaml)) {
-        yaml = yaml.replace(re, `$1${k}: "${v}"`)
+        yaml = yaml.replace(re, `$1${k}: "${safe}"`)
       } else {
         // La clé n'existe pas dans theme: → l'ajouter avant la ligne suivante après theme:
-        yaml = yaml.replace(/^(theme:.*\n(?:  .*\n)*)/m, `$1  ${k}: "${v}"\n`)
+        yaml = yaml.replace(/^(theme:.*\n(?:  .*\n)*)/m, `$1  ${k}: "${safe}"\n`)
       }
     })
   }
   // selected_keywords : liste des types de logiciels actifs
   if (body.selected_keywords !== undefined) {
     const kws: string[] = body.selected_keywords || []
+    // Sanitisation aussi sur les keywords individuels (les keywords ne
+    // contiennent normalement pas de caractères spéciaux mais ceinture+bretelles)
     const kwLines = kws.length > 0
-      ? ['selected_keywords:', ...kws.map((k: string) => '  - ' + k)]
+      ? ['selected_keywords:', ...kws.map((k: string) => '  - "' + escapeYamlValue(k) + '"')]
       : ['selected_keywords: []']
     const yamlLines = yaml.split('\n')
     const skIdx = yamlLines.findIndex((l: string) => l.startsWith('selected_keywords:'))
@@ -192,11 +229,11 @@ export async function PATCH(req: NextRequest, { params }: Params) {
       yaml = yaml.replace(/^theme:/m, pageTypesBlock + '\ntheme:')
     }
   }
-  // Champs auteur individuels (depuis création site)
+  // Champs auteur individuels (depuis création site) — sanitisation systématique
   if (body.author_name !== undefined || body.author_job !== undefined || body.author_bio !== undefined) {
-    const name = body.author_name || ''
-    const job = body.author_job || ''
-    const bio = (body.author_bio || '').replace(/"/g, "'")
+    const name = escapeYamlValue(body.author_name || '')
+    const job = escapeYamlValue(body.author_job || '')
+    const bio = escapeYamlValue(body.author_bio || '')
     const authorBlock = `author:\n  name: "${name}"\n  bio: "${bio}"\n  job_title: "${job}"\n  photo: ""\n  socials: []`
     if (/^author:/m.test(yaml)) {
       yaml = yaml.replace(/^author:\s*\n((?:[ ]+.+\n?)*)/m, authorBlock + '\n')
@@ -205,23 +242,44 @@ export async function PATCH(req: NextRequest, { params }: Params) {
     }
   }
 
-  // Champ author (objet YAML)
+  // Champ author (objet YAML) — sanitisation appliquée à tous les sous-champs
   if (body.author !== undefined) {
     const author = body.author as { name?: string, bio?: string, job_title?: string, photo?: string, socials?: {label: string, url: string}[] }
     const socialsYaml = (author.socials || []).length > 0
-      ? (author.socials || []).map(s => `\n  - label: "${s.label}"\n    url: "${s.url}"`).join('')
+      ? (author.socials || []).map(s => `\n  - label: "${escapeYamlValue(s.label)}"\n    url: "${escapeYamlValue(s.url)}"`).join('')
       : ' []'
     const authorBlock = [
       'author:',
-      `  name: "${(author.name || '').replace(/"/g, "'")}"`,
-      `  bio: "${(author.bio || '').replace(/"/g, "'").replace(/\n/g, ' ')}"`,
-      `  job_title: "${(author.job_title || '').replace(/"/g, "'")}"`,
-      `  photo: "${author.photo || ''}"`,
+      `  name: "${escapeYamlValue(author.name)}"`,
+      `  bio: "${escapeYamlValue(author.bio)}"`,
+      `  job_title: "${escapeYamlValue(author.job_title)}"`,
+      `  photo: "${escapeYamlValue(author.photo)}"`,
       `  socials:${socialsYaml}`,
     ].join('\n')
     // Supprimer l'ancien bloc author et tout son contenu indenté
     yaml = yaml.replace(/^author:(?:\n(?:  [^\n]*)?)+/m, '')
     yaml = yaml.trimEnd() + '\n' + authorBlock + '\n'
+  }
+
+  // ─────────────────────────────────────────────────────────────────
+  // Filet de sécurité : détection du pattern "ligne orpheline" avant
+  // l'écriture sur GitHub. Si jamais une valeur passe à travers la
+  // sanitisation (cas non couvert qu'on a raté), on refuse d'écrire un
+  // fichier qu'on sait cassé. Le user voit un message d'erreur explicite
+  // et peut retenter (ses modifs ne sont pas perdues, juste pas sauvegardées).
+  // ─────────────────────────────────────────────────────────────────
+  const yamlLines = yaml.split('\n')
+  for (let i = 1; i < yamlLines.length; i++) {
+    const line = yamlLines[i]
+    const prevLine = yamlLines[i - 1]
+    // Détection : ligne sans `:` indentée + terminée par `"` orphelin,
+    // précédée par une ligne `key: "..."` complète (= le pattern fautif).
+    if (/^\s{2,}[^:\n]+"\s*$/.test(line) && /^\s*[a-zA-Z_][\w-]*:\s*".+"\s*$/.test(prevLine)) {
+      console.error('Validation YAML KO : ligne orpheline détectée à la ligne', i + 1, ':', line)
+      return NextResponse.json({
+        error: 'Validation YAML : ligne orpheline détectée (bug interne). Vos modifications n\'ont pas été sauvegardées. Réessayez sans saut de ligne dans les champs texte.',
+      }, { status: 500 })
+    }
   }
 
   const saved = await putFile(`platform/sites/${siteId}/config.yaml`, yaml, `HUB: Update config ${siteId}`)
