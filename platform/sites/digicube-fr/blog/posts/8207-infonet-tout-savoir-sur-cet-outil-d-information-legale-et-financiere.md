@@ -12,7 +12,8 @@ status: published
 link_anchors:
 - text: infonet
   max: 4
-related_posts: []
+related_posts:
+- 7914-quasi-usufruit-dans-quels-cas-utiliser-ce-mecanisme-juridique
 ---
 <h2>Qu'est-ce qu'Infonet exactement ?</h2>
 
