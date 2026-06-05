@@ -23,7 +23,10 @@ type TabKey = 'published' | 'scheduled' | 'draft'
 // toujours 'published' dans le frontmatter, peu importe la date. C'est donc
 // la date qui détermine si un article est accessible sur le site public
 // (date <= now → publié) ou en attente (date > now → programmé).
-function classifyPost(p: { date?: string; status?: string }, now: Date): TabKey {
+function classifyPost(p: { date?: string; status?: string } | null | undefined, now: Date): TabKey {
+  // Défensif : un post mal-formé (sans .date, ou .status d'un type bizarre)
+  // ne fait pas crasher l'app.
+  if (!p) return 'published'
   if (p.status === 'draft') return 'draft'
   if (p.date) {
     try {
@@ -329,16 +332,26 @@ export default function BlogListPage() {
   // "Programmés" doit les inclure pour avoir un compteur non trompeur.
   const counts = useMemo(() => {
     const c: Record<TabKey, number> = { published: 0, scheduled: 0, draft: 0 }
-    const now = new Date()
-    const scheduledTitles = new Set<string>()
-    for (const p of posts) {
-      const tab = classifyPost(p, now)
-      c[tab]++
-      if (tab === 'scheduled') scheduledTitles.add(normalizeTitle(p.title))
-    }
-    // Ajouter les items de la sheet qui ne sont PAS déjà couverts par un .md
-    for (const s of scheduled) {
-      if (!scheduledTitles.has(normalizeTitle(s.title))) c.scheduled++
+    try {
+      const now = new Date()
+      const scheduledTitles = new Set<string>()
+      // Posts (.md) : classés selon date/status
+      if (Array.isArray(posts)) {
+        for (const p of posts) {
+          const tab = classifyPost(p, now)
+          c[tab]++
+          if (tab === 'scheduled') scheduledTitles.add(normalizeTitle((p as any)?.title))
+        }
+      }
+      // Items de la sheet : ajoutés s'ils ne sont pas déjà dans les .md scheduled
+      if (Array.isArray(scheduled)) {
+        for (const s of scheduled) {
+          if (!s) continue
+          if (!scheduledTitles.has(normalizeTitle((s as any)?.title))) c.scheduled++
+        }
+      }
+    } catch (e) {
+      console.error('counts computation failed', e)
     }
     return c
   }, [posts, scheduled])
@@ -713,8 +726,12 @@ function renderStatus(r: any): React.ReactNode {
 
 const tdSmall: React.CSSProperties = { padding: '10px 12px', verticalAlign: 'top' }
 
-function normalizeTitle(t: string): string {
-  return (t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, ' ').trim()
+function normalizeTitle(t: any): string {
+  // Défensif : accepte n'importe quoi (string, undefined, null, number).
+  // Si jamais un post a un title non-string (ancien .md corrompu), évite
+  // un crash sur .normalize() qui n'existe que sur les strings.
+  if (typeof t !== 'string') return ''
+  return t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, ' ').trim()
 }
 
 function formatScheduledDate(iso: string): string {
