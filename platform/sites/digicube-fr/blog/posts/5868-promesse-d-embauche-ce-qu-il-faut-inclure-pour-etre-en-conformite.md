@@ -4,14 +4,20 @@ slug: 5868-promesse-d-embauche-ce-qu-il-faut-inclure-pour-etre-en-conformite
 date: '2026-06-04T09:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Modèle promesse d''embauche : guide complet et modèle à télécharger'
-meta_description: Découvrez les mentions obligatoires d'une promesse d'embauche pour éviter les pièges juridiques coûteux. Guide complet avec exemples concrets pour rédiger un…
+meta_description: Découvrez les mentions obligatoires d'une promesse d'embauche pour
+  éviter les pièges juridiques coûteux. Guide complet avec exemples concrets pour
+  rédiger un…
 min_words: 1800
 status: published
 link_anchors:
 - text: modèle de promesse d'embauche
   max: 4
+related_posts:
+- 7426-comment-choisir-un-logiciel-gepp-adapte-a-votre-entreprise
+- 6596-comment-realiser-une-cartographie-des-competences-efficace
+- 3951-qu-est-ce-que-la-definition-de-la-gestion-des-talents
+- 1910-comment-reussir-un-succession-planning-efficace
 ---
-
 <h2>La promesse d'embauche : un document qui engage plus qu'on ne le pense</h2>
 
 <p>Quand je recrute pour mon entreprise, je m'aperçois souvent que la promesse d'embauche est perçue comme une simple formalité. Grave erreur. Ce document a une vraie portée juridique et peut vous coûter cher si mal rédigé. Je l'ai appris à mes dépens il y a deux ans.</p>

@@ -14,6 +14,7 @@ link_anchors:
 - text: stratégie de croissance
   max: 4
 related_posts:
+- 7851-pain-point-pourquoi-cette-notion-est-essentielle-en-marketing-et-en-vente
 - 5289-matrice-tows-guide-pratique-pour-renforcer-votre-strategie-d-entreprise
 - 6236-sepo-comment-exploiter-cette-methode-d-analyse-strategique-en-entreprise
 ---
