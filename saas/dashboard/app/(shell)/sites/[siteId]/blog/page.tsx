@@ -130,16 +130,23 @@ export default function BlogListPage() {
 
   useEffect(() => {
     if (pending.length === 0 && scheduled.length === 0) return
-    const realTitles = new Set(posts.map(p => normalizeTitle(p.title)))
+    // Match par signature (8 mots) + fallback norm exact, comme scheduledVisible
+    const realSignatures = new Set(posts.map(p => titleSignature(p.title)))
+    const realNorms = new Set(posts.map(p => normalizeTitle(p.title)))
+    const isInPosts = (title: string) => {
+      const sig = titleSignature(title)
+      if (sig.length < 20) return realNorms.has(normalizeTitle(title))
+      return realSignatures.has(sig)
+    }
     const now = Date.now()
     const PENDING_MAX_AGE_MS = 10 * 60 * 1000
     const SCHEDULED_MAX_AGE_MS = 60 * 24 * 60 * 60 * 1000
     const newPending = pending.filter(p =>
-      !realTitles.has(normalizeTitle(p.title)) &&
+      !isInPosts(p.title) &&
       now - p.createdAt < PENDING_MAX_AGE_MS
     )
     const newScheduled = scheduled.filter(p =>
-      !realTitles.has(normalizeTitle(p.title)) &&
+      !isInPosts(p.title) &&
       now - p.createdAt < SCHEDULED_MAX_AGE_MS
     )
     if (newPending.length !== pending.length) {
@@ -322,23 +329,27 @@ export default function BlogListPage() {
     const c: Record<TabKey, number> = { published: 0, scheduled: 0, draft: 0 }
     try {
       const now = new Date()
-      const realTitles = new Set<string>()
-      // Posts (.md) : classés selon date/status, et leur titre va dans realTitles
-      // pour qu'on n'ajoute pas en double via les items sheet ci-dessous.
+      const realSignatures = new Set<string>()
+      const realNorms = new Set<string>()
+      // Posts (.md) : classés selon date/status, et leur signature/norm va
+      // dans les Sets pour le rapprochement avec les items sheet.
       if (Array.isArray(posts)) {
         for (const p of posts) {
           const tab = classifyPost(p, now)
           c[tab]++
-          realTitles.add(normalizeTitle((p as any)?.title))
+          realSignatures.add(titleSignature((p as any)?.title))
+          realNorms.add(normalizeTitle((p as any)?.title))
         }
       }
-      // Items de la sheet : ajoutés s'ils ne sont PAS déjà dans posts.
-      // (Sans ça, un article publié reste compté comme "programmé" tant que la
-      // sheet n'a pas été mise à jour.)
+      // Items de la sheet : ajoutés s'ils ne sont PAS déjà dans posts
+      // (match par signature 8 mots, fallback exact pour titres très courts).
       if (Array.isArray(scheduled)) {
         for (const s of scheduled) {
           if (!s) continue
-          if (!realTitles.has(normalizeTitle((s as any)?.title))) c.scheduled++
+          const sig = titleSignature((s as any)?.title)
+          const norm = normalizeTitle((s as any)?.title)
+          const isMatched = sig.length < 20 ? realNorms.has(norm) : realSignatures.has(sig)
+          if (!isMatched) c.scheduled++
         }
       }
     } catch (e) {
@@ -355,8 +366,20 @@ export default function BlogListPage() {
   // mais à chaque syncScheduledFromSheet() la sheet ré-injecte les titres,
   // donc ce filtre dérivé est plus robuste pour l'affichage.
   const scheduledVisible = useMemo(() => {
-    const realTitles = new Set(posts.map(p => normalizeTitle(p.title)))
-    return scheduled.filter(s => !realTitles.has(normalizeTitle(s.title)))
+    // Signature par préfixe (8 mots) au lieu du titre complet, pour gérer
+    // les cas où la fin du titre diffère (ex. l'IA tronque "...conseils
+    // pratiques" en "...conseils" lors de la génération du .md).
+    const realSignatures = new Set(posts.map(p => titleSignature(p.title)))
+    return scheduled.filter(s => {
+      const sig = titleSignature(s.title)
+      // Sig courte (< 20 chars = 2-3 mots) → on fallback sur normalize exact
+      // pour éviter des faux positifs ("Avis 2026" pourrait matcher trop large)
+      if (sig.length < 20) {
+        const norm = normalizeTitle(s.title)
+        return !posts.some(p => normalizeTitle(p.title) === norm)
+      }
+      return !realSignatures.has(sig)
+    })
   }, [scheduled, posts])
 
   // Filtrage : onglet → puis recherche + catégorie (les filtres s'appliquent
@@ -748,6 +771,18 @@ function normalizeTitle(t: any): string {
   // un crash sur .normalize() qui n'existe que sur les strings.
   if (typeof t !== 'string') return ''
   return t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\s+/g, ' ').trim()
+}
+
+// Signature d'un titre = ses 8 premiers mots normalisés.
+// Sert au rapprochement scheduled (sheet) ↔ posts (.md) qui peuvent avoir des
+// titres légèrement différents (l'IA tronque parfois la fin lors de la génération,
+// ex. sheet="...conseils pratiques" vs .md="...conseils"). 8 mots = signature
+// suffisamment unique pour éviter les faux positifs tout en tolérant les
+// variations sur les derniers mots.
+function titleSignature(t: any): string {
+  const norm = normalizeTitle(t)
+  if (!norm) return ''
+  return norm.split(' ').slice(0, 8).join(' ')
 }
 
 function formatScheduledDate(iso: string): string {
