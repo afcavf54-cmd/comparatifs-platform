@@ -17,7 +17,6 @@ site:
   author_name: "Sophie Martin"
   home_title: "Entreprendre pour Apprendre : le média de la création d'entreprise"
   home_description: "Découvrez des conseils, guides pratiques, actualités et ressources pour créer, gérer et développer votre entreprise à chaque étape de votre parcours entrepreneurial."
-    professionnelles et des conseils dédiés aux entrepreneurs, indépendants et entreprises."
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
   analytics_clicky: '<script async data-id="101505107" src="//static.getclicky.com/js"></script>'
@@ -74,7 +73,6 @@ seo:
   category_url: "/#comparateurs"
   avis_title_pattern: "Avis {nom} {year} : notre analyse complète"
   avis_meta_pattern: "Découvrez notre test du logiciel {nom} : UX, automatisation,"
-    IA et support."
   liste_comp_title: "Comparatifs des meilleures solutions digitales"
   liste_avis_title: "Tests et analyses des logiciels & SaaS"
   classement_title_pattern: "Meilleur {categorie} {year} : mon top {count} comparatif"

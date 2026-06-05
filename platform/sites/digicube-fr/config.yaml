@@ -22,7 +22,6 @@ site:
   author_name: "Nicolas Roux"
   home_title: "Digicube : l'information dédiée à la digitalisation des entreprises"
   home_description: "Digicube décrypte les logiciels, services numériques, innovations technologiques et tendances digitales qui accompagnent les entreprises."
-    autour des logiciels professionnels, solutions cloud et outils digitaux pour entreprises."
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
   analytics_clicky: '<script async data-id="101506543" src="//static.getclicky.com/js"></script>'
@@ -70,7 +69,6 @@ tag_classes:
 seo:
   title_pattern: "Avis {nom} : notre retour d’expérience {year}"
   meta_pattern: "Découvrez les points forts et limites du logiciel {nom} dans notre"
-    test complet."
   h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
   eyebrow: "Comparatif {year}"
   intro_pattern: "Comparatif {A} vs {B} - analyse complète."
@@ -78,7 +76,6 @@ seo:
   category_url: "/#comparateurs"
   avis_title_pattern: "Tous les comparatifs outils entrepreneurs {year}"
   avis_meta_pattern: "Découvrez les points forts et limites du logiciel {nom} dans"
-    notre test complet."
   liste_comp_title: "Tous les comparatifs outils entrepreneurs {year}"
   liste_avis_title: "Tous nos tests de logiciels professionnels"
   classement_title_pattern: "Meilleur {categorie} {year} : mon top {count} comparatif"
