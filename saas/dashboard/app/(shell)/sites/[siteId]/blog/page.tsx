@@ -322,20 +322,23 @@ export default function BlogListPage() {
     const c: Record<TabKey, number> = { published: 0, scheduled: 0, draft: 0 }
     try {
       const now = new Date()
-      const scheduledTitles = new Set<string>()
-      // Posts (.md) : classés selon date/status
+      const realTitles = new Set<string>()
+      // Posts (.md) : classés selon date/status, et leur titre va dans realTitles
+      // pour qu'on n'ajoute pas en double via les items sheet ci-dessous.
       if (Array.isArray(posts)) {
         for (const p of posts) {
           const tab = classifyPost(p, now)
           c[tab]++
-          if (tab === 'scheduled') scheduledTitles.add(normalizeTitle((p as any)?.title))
+          realTitles.add(normalizeTitle((p as any)?.title))
         }
       }
-      // Items de la sheet : ajoutés s'ils ne sont pas déjà dans les .md scheduled
+      // Items de la sheet : ajoutés s'ils ne sont PAS déjà dans posts.
+      // (Sans ça, un article publié reste compté comme "programmé" tant que la
+      // sheet n'a pas été mise à jour.)
       if (Array.isArray(scheduled)) {
         for (const s of scheduled) {
           if (!s) continue
-          if (!scheduledTitles.has(normalizeTitle((s as any)?.title))) c.scheduled++
+          if (!realTitles.has(normalizeTitle((s as any)?.title))) c.scheduled++
         }
       }
     } catch (e) {
@@ -343,6 +346,18 @@ export default function BlogListPage() {
     }
     return c
   }, [posts, scheduled])
+
+  // Liste filtrée des "programmés depuis la sheet" affichables : on retire
+  // les titres déjà présents dans posts (.md). Sans ce filtre, un article
+  // publié via "Publier maintenant" continue d'apparaître dans la box bleue
+  // tant que la sheet n'a pas été mise à jour (status changé en 'done').
+  // Le useEffect de cleanup met aussi à jour `scheduled` côté localStorage,
+  // mais à chaque syncScheduledFromSheet() la sheet ré-injecte les titres,
+  // donc ce filtre dérivé est plus robuste pour l'affichage.
+  const scheduledVisible = useMemo(() => {
+    const realTitles = new Set(posts.map(p => normalizeTitle(p.title)))
+    return scheduled.filter(s => !realTitles.has(normalizeTitle(s.title)))
+  }, [scheduled, posts])
 
   // Filtrage : onglet → puis recherche + catégorie (les filtres s'appliquent
   // dans l'onglet actif uniquement). Plus de filtre "statut" car redondant.
@@ -486,16 +501,16 @@ export default function BlogListPage() {
           Programmés. C'est l'endroit logique pour la trouver vu qu'on parle
           d'articles à venir. Quand on est sur "En ligne", on ne veut pas voir
           la box (qui noyait le contenu avant). */}
-      {activeTab === 'scheduled' && scheduled.length > 0 && (
+      {activeTab === 'scheduled' && scheduledVisible.length > 0 && (
         <div style={{ background: 'rgba(94,158,214,.08)', border: '1px solid #5E9ED6', borderRadius: 12, padding: 18, marginBottom: 20 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
             <strong style={{ color: '#5E9ED6', fontSize: 14 }}>
-              📅 {scheduled.length} article{scheduled.length > 1 ? 's' : ''} programmé{scheduled.length > 1 ? 's' : ''} (depuis la sheet)
+              📅 {scheduledVisible.length} article{scheduledVisible.length > 1 ? 's' : ''} programmé{scheduledVisible.length > 1 ? 's' : ''} (depuis la sheet)
             </strong>
             <span style={{ color: '#8B9CB0', fontSize: 12 }}>· seront publiés automatiquement à leur date</span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6, maxHeight: 480, overflowY: 'auto' }}>
-            {[...scheduled].sort((a, b) => (a.scheduledFor || '').localeCompare(b.scheduledFor || '')).map((p, i) => (
+            {[...scheduledVisible].sort((a, b) => (a.scheduledFor || '').localeCompare(b.scheduledFor || '')).map((p, i) => (
               <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 12px', background: '#0A0E1A', border: '1px solid #1E2D3D', borderRadius: 8, gap: 12 }}>
                 <span style={{ color: '#fff', fontSize: 13, flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>📅 {p.title}</span>
                 <span style={{ color: '#5E9ED6', fontSize: 12, fontWeight: 600, whiteSpace: 'nowrap' }}>{formatScheduledDate(p.scheduledFor)}</span>
