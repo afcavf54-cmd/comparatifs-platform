@@ -1,0 +1,69 @@
+name: Fix config.yaml (cleanup orphan lines)
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Mode'
+        required: true
+        type: choice
+        default: 'dry-run'
+        options:
+          - dry-run
+          - apply
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    concurrency:
+      group: fix-config-yaml-${{ github.repository }}
+      cancel-in-progress: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Run fix script (dry-run)
+        if: inputs.mode == 'dry-run'
+        run: python3 platform/scripts/_fix_config_yaml.py
+
+      - name: Run fix script (apply)
+        if: inputs.mode == 'apply'
+        run: python3 platform/scripts/_fix_config_yaml.py --write
+
+      - name: Commit changes
+        if: inputs.mode == 'apply'
+        run: |
+          git config user.name "Viseoweb HUB"
+          git config user.email "hub@viseoweb.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git add platform/sites/*/config.yaml
+          if git diff --cached --quiet; then
+            echo "✓ Aucun fichier à commit (rien n'a changé)"
+            exit 0
+          fi
+          git commit -m "fix: clean orphan lines in config.yaml (one-shot HUB wizard bug repair)"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if ! git rebase -X theirs origin/main; then
+              git rebase --abort || true
+              echo "❌ Rebase impossible — abandon"
+              exit 1
+            fi
+            if git push; then
+              echo "✓ Push réussi (tentative $attempt)"
+              exit 0
+            fi
+            echo "⚠ Push rejeté (tentative $attempt), retry..."
+            sleep $((attempt * 5))
+          done
+          echo "❌ Push échoué après 5 tentatives"
+          exit 1
