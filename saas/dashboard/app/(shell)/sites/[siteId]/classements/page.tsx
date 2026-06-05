@@ -305,11 +305,32 @@ export default function ClassementsPage() {
       const d = await safeJson(r, `GET /api/github?path=${editorialPath}`)
       let allEditorial: Record<string, any> = {}
       if (d?.content) { try { allEditorial = JSON.parse(d.content) } catch {} }
-      const merged = { ...allEditorial, ...classements }
+      // ── FIX duplication : extraire les `prod_*` embeddés dans les classements ──
+      // Au load, on injecte chaque produit dans chaque classement pour faciliter
+      // l'UI (cls[clsKey]['prod_X'] = prodVal). Mais ces données sont déjà
+      // stockées top-level en `classement-prod-X`. Sans extraction, on POUSSE
+      // cette duplication dans GitHub → 19 MB au lieu de ~200 Ko sur startuponly.
+      const cleanedClassements: Record<string, any> = {}
+      const extractedProds: Record<string, any> = {}
+      for (const [clsKey, clsVal] of Object.entries(classements)) {
+        const cleaned: Record<string, any> = {}
+        for (const [field, value] of Object.entries(clsVal as Record<string, any>)) {
+          if (field.startsWith('prod_')) {
+            const slug = field.replace('prod_', '')
+            extractedProds[`classement-prod-${slug}`] = value
+          } else {
+            cleaned[field] = value
+          }
+        }
+        cleanedClassements[clsKey] = cleaned
+      }
+      // Merge : existant top-level + classements nettoyés + produits extraits.
+      // Les produits extraits écrasent ceux d'existant (dernière édition gagne).
+      const merged = { ...allEditorial, ...cleanedClassements, ...extractedProds }
       const jsonStr = JSON.stringify(merged, null, 2)
       const payloadSizeMb = jsonStr.length / 1024 / 1024
       const totalKeys = Object.keys(merged).length
-      console.log(`[save] editorial.json : ${payloadSizeMb.toFixed(2)} MB, ${totalKeys} clés`)
+      console.log(`[save] editorial.json : ${payloadSizeMb.toFixed(2)} MB, ${totalKeys} clés (${Object.keys(cleanedClassements).length} classements + ${Object.keys(extractedProds).length} produits extraits)`)
 
       // ── Stratégie de sauvegarde selon la taille ────────────────────────
       // < 3 MB raw  → POST /api/github (1 commit, rapide)
