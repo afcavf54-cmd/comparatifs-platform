@@ -93,18 +93,6 @@ export default function BlogListPage() {
     setAutoSwitched(true)
   }, [posts, loading, autoSwitched])
 
-  // Safety : si on est sur un onglet qui est devenu vide (le cron a publié les
-  // .md programmés, par ex), on bascule sur "En ligne". Évite d'afficher
-  // "Aucun résultat" alors qu'on n'a juste plus d'items dans cet onglet.
-  useEffect(() => {
-    if (activeTab === 'scheduled' && counts.scheduled === 0 && !loading) {
-      setActiveTab('published')
-    }
-    if (activeTab === 'draft' && counts.draft === 0 && !loading) {
-      setActiveTab('published')
-    }
-  }, [counts.scheduled, counts.draft, activeTab, loading])
-
   async function syncScheduledFromSheet() {
     try {
       const r = await fetch(`/api/sites/${siteId}/blog/preview-sheet`)
@@ -368,6 +356,19 @@ export default function BlogListPage() {
       return true
     })
   }, [posts, activeTab, search, catFilter])
+
+  // Safety : si on est sur un onglet qui est devenu vide (cas où le cron a
+  // publié tous les .md programmés en arrière-plan), bascule sur "En ligne".
+  // Doit être APRÈS le useMemo `counts` (temporal dead zone sinon — Next.js
+  // évalue les deps au render et `counts` doit déjà être défini).
+  useEffect(() => {
+    if (activeTab === 'scheduled' && counts.scheduled === 0 && !loading) {
+      setActiveTab('published')
+    }
+    if (activeTab === 'draft' && counts.draft === 0 && !loading) {
+      setActiveTab('published')
+    }
+  }, [counts.scheduled, counts.draft, activeTab, loading])
 
   return (
     <div style={{ padding: '32px 5vw', maxWidth: 1400, margin: '0 auto' }}>
