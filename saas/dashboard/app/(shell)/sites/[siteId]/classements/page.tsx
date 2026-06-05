@@ -130,6 +130,25 @@ async function safeJson(r: Response, urlHint: string): Promise<any | null> {
   }
 }
 
+// Compresse une string en gzip + base64 via CompressionStream (browser natif).
+// Utilisé pour les payloads > 4 MB qui dépassent la limite Vercel POST.
+// Sur du JSON répétitif, ratio ~7-10x : 18 MB → ~2 MB → ~2.7 MB base64.
+async function gzipToBase64(str: string): Promise<string> {
+  const blob = new Blob([str])
+  const stream = blob.stream().pipeThrough(new CompressionStream('gzip'))
+  const compressedBlob = await new Response(stream).blob()
+  return new Promise<string>((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onload = () => {
+      const result = reader.result as string
+      // result = "data:application/octet-stream;base64,XXXXX" → on garde après la virgule
+      resolve(result.split(',')[1] || '')
+    }
+    reader.onerror = () => reject(reader.error)
+    reader.readAsDataURL(compressedBlob)
+  })
+}
+
 export default function ClassementsPage() {
   const { siteId } = useParams()
   const [classements, setClassements] = useState<Record<string, any>>({})
@@ -287,23 +306,50 @@ export default function ClassementsPage() {
       let allEditorial: Record<string, any> = {}
       if (d?.content) { try { allEditorial = JSON.parse(d.content) } catch {} }
       const merged = { ...allEditorial, ...classements }
-      const payloadSize = JSON.stringify(merged).length
-      console.log(`[save] Payload editorial.json : ${(payloadSize / 1024).toFixed(1)} Ko, ${Object.keys(merged).length} clés`)
-      // Vercel Hobby limite le body POST à 4.5 MB. Au-delà, on alerte.
-      if (payloadSize > 4 * 1024 * 1024) {
-        setMsg(`✗ Payload trop gros (${(payloadSize / 1024 / 1024).toFixed(1)} MB) — Vercel limite à 4.5 MB. Fragmentation requise.`)
-        return
+      const jsonStr = JSON.stringify(merged, null, 2)
+      const payloadSizeMb = jsonStr.length / 1024 / 1024
+      console.log(`[save] editorial.json : ${payloadSizeMb.toFixed(2)} MB, ${Object.keys(merged).length} clés`)
+
+      // ── Décision route à utiliser selon la taille ─────────────────────
+      // < 3 MB → POST /api/github classique (rapide, pas de compression)
+      // >= 3 MB → POST /api/sites/<id>/editorial-bulk (gzip + base64, dédié
+      //   aux gros payloads, contourne la limite Vercel 4.5 MB)
+      const USE_BULK_THRESHOLD = 3 * 1024 * 1024  // 3 MB
+      let wd: any = null
+      let wrStatus = 0
+      if (jsonStr.length < USE_BULK_THRESHOLD) {
+        const wr = await fetch('/api/github', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ path: editorialPath, content: jsonStr, message: `HUB: Update classements ${siteId}` })
+        })
+        wrStatus = wr.status
+        wd = await safeJson(wr, `POST /api/github (editorial save)`)
+      } else {
+        // Compression gzip pour les gros payloads
+        console.log(`[save] Payload ${payloadSizeMb.toFixed(2)} MB > 3 MB → compression gzip…`)
+        const t0 = performance.now()
+        const gzipBase64 = await gzipToBase64(jsonStr)
+        const compressedMb = (gzipBase64.length * 0.75) / 1024 / 1024  // base64 ~33% overhead
+        console.log(`[save] Compressé en ${(performance.now() - t0).toFixed(0)} ms : ${compressedMb.toFixed(2)} MB (ratio ${(payloadSizeMb / compressedMb).toFixed(1)}x)`)
+        if (gzipBase64.length > 4 * 1024 * 1024) {
+          setMsg(`✗ Payload compressé encore trop gros (${(gzipBase64.length / 1024 / 1024).toFixed(1)} MB). Contactez le support pour fragmentation.`)
+          return
+        }
+        const wr = await fetch(`/api/sites/${siteId}/editorial-bulk`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            content_gzip_base64: gzipBase64,
+            message: `HUB: Update classements ${siteId} (${payloadSizeMb.toFixed(1)} MB via bulk)`,
+          })
+        })
+        wrStatus = wr.status
+        wd = await safeJson(wr, `POST /api/sites/${siteId}/editorial-bulk`)
       }
-      const wr = await fetch('/api/github', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ path: editorialPath, content: JSON.stringify(merged, null, 2), message: `HUB: Update classements ${siteId}` })
-      })
-      const wd = await safeJson(wr, `POST /api/github (editorial save)`)
       if (!wd) {
-        setMsg(`✗ Réponse invalide /api/github (status ${wr.status}, voir console F12)`)
+        setMsg(`✗ Réponse invalide (status ${wrStatus}, voir console F12)`)
         return
       }
-      setMsg(wd.ok ? '✓ Tout sauvegardé' : `✗ ${wd.error || 'Erreur editorial'}`)
+      setMsg(wd.ok ? `✓ Tout sauvegardé (${payloadSizeMb.toFixed(1)} MB)` : `✗ ${wd.error || 'Erreur editorial'}`)
     } catch (e: any) {
       console.error('[save] Exception non gérée :', e)
       setMsg('✗ ' + (e?.message || 'Erreur sauvegarde'))
