@@ -12,7 +12,8 @@ min_words: 1800
 link_anchors:
 - text: créer un produit
   max: 4
-related_posts: []
+related_posts:
+- 3259-creer-une-association-et-en-vivre-statut-remuneration-et-bonnes-pratiques
 ---
 <h2>L'idée de produit : partir du bon pied</h2>
 
