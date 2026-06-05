@@ -1,17 +1,23 @@
 ---
-title: Les critères essentiels pour bien choisir son agence web et éviter les mauvaises surprises
+title: Les critères essentiels pour bien choisir son agence web et éviter les mauvaises
+  surprises
 slug: 3861-les-criteres-essentiels-pour-bien-choisir-son-agence-web-et-eviter-les-mauvaises-surprises
 date: '2026-06-05T07:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Comment choisir son agence web en {year}
-meta_description: Découvrez les critères essentiels pour choisir votre agence web sans mauvaises surprises. Conseils d'un dirigeant lyonnais après 11 ans d'expérience.
+meta_description: Découvrez les critères essentiels pour choisir votre agence web
+  sans mauvaises surprises. Conseils d'un dirigeant lyonnais après 11 ans d'expérience.
 min_words: 1200
 status: published
 link_anchors:
 - text: comment choisir son agence web
   max: 4
+related_posts:
+- 9832-la-methode-sepo-expliquee-comment-l-utiliser-pour-analyser-votre-organisation
+- 4489-comment-calculer-son-prix-de-vente-a-partir-du-taux-de-marge-formule-et-exemples
+- 8804-matrice-tows-comment-l-utiliser-pour-construire-une-strategie-efficace
+- 1843-pain-point-client-comment-identifier-et-resoudre-les-points-de-douleur-de-vos-clients
 ---
-
 <h2>Mon expérience avec les agences web : ce que j'aurais aimé savoir avant</h2>
 
 <p>Après avoir dirigé ma TPE lyonnaise pendant 11 ans, j'ai collaboré avec plusieurs agences web. Certaines collaborations ont été excellentes, d'autres... moins. Je vais vous partager mes retours d'expérience concrets pour vous éviter les écueils que j'ai rencontrés.</p>
