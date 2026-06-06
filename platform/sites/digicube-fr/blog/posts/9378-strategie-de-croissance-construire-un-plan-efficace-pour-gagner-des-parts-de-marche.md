@@ -14,9 +14,10 @@ link_anchors:
 - text: stratégie de croissance
   max: 4
 related_posts:
+- 6236-sepo-comment-exploiter-cette-methode-d-analyse-strategique-en-entreprise
 - 7851-pain-point-pourquoi-cette-notion-est-essentielle-en-marketing-et-en-vente
 - 5289-matrice-tows-guide-pratique-pour-renforcer-votre-strategie-d-entreprise
-- 6236-sepo-comment-exploiter-cette-methode-d-analyse-strategique-en-entreprise
+- 6254-calcul-prix-de-vente-avec-taux-de-marge-comment-garantir-votre-rentabilite
 ---
 <h2>Pourquoi j'ai appris à faire un vrai plan de croissance après 2 ans d'erreurs</h2>
 

@@ -13,9 +13,10 @@ link_anchors:
 - text: matrice tows
   max: 4
 related_posts:
-- 7851-pain-point-pourquoi-cette-notion-est-essentielle-en-marketing-et-en-vente
 - 9378-strategie-de-croissance-construire-un-plan-efficace-pour-gagner-des-parts-de-marche
+- 6254-calcul-prix-de-vente-avec-taux-de-marge-comment-garantir-votre-rentabilite
 - 6236-sepo-comment-exploiter-cette-methode-d-analyse-strategique-en-entreprise
+- 7851-pain-point-pourquoi-cette-notion-est-essentielle-en-marketing-et-en-vente
 ---
 <h2>Qu'est-ce que la matrice TOWS et pourquoi je m'y suis mis ?</h2>
 

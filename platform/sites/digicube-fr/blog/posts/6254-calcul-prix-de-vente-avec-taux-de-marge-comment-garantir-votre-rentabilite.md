@@ -1,17 +1,25 @@
 ---
-title: 'Calcul prix de vente avec taux de marge : comment garantir votre rentabilité ?'
+title: 'Calcul prix de vente avec taux de marge : comment garantir votre rentabilité
+  ?'
 slug: 6254-calcul-prix-de-vente-avec-taux-de-marge-comment-garantir-votre-rentabilite
 date: '2026-06-06T20:00:00+02:00'
 categorie: Gestion d'entreprise
-meta_title: 'Calcul prix de vente avec taux de marge : guide pratique pour fixer vos tarifs'
-meta_description: Découvrez la méthode précise pour calculer vos prix de vente avec le bon taux de marge. Évitez la confusion marge/markup qui coûte cher à de nombreux dirigeants.
+meta_title: 'Calcul prix de vente avec taux de marge : guide pratique pour fixer vos
+  tarifs'
+meta_description: Découvrez la méthode précise pour calculer vos prix de vente avec
+  le bon taux de marge. Évitez la confusion marge/markup qui coûte cher à de nombreux
+  dirigeants.
 min_words: 1200
 status: published
 link_anchors:
 - text: calcul du prix de vente avec taux de marge
   max: 4
+related_posts:
+- 7851-pain-point-pourquoi-cette-notion-est-essentielle-en-marketing-et-en-vente
+- 9378-strategie-de-croissance-construire-un-plan-efficace-pour-gagner-des-parts-de-marche
+- 5289-matrice-tows-guide-pratique-pour-renforcer-votre-strategie-d-entreprise
+- 6236-sepo-comment-exploiter-cette-methode-d-analyse-strategique-en-entreprise
 ---
-
 <h2>La différence entre marge et markup qui peut vous coûter cher</h2>
 
 <p>Je vois encore trop de dirigeants confondre marge et markup. Cette erreur peut littéralement détruire votre rentabilité sans que vous vous en rendiez compte. Quand je calcule un prix de vente avec un taux de marge de 30%, je ne rajoute pas 30% à mon prix d'achat. Ça c'est le markup.</p>

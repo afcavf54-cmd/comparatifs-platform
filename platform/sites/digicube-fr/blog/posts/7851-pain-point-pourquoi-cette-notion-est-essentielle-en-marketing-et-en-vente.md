@@ -12,8 +12,9 @@ link_anchors:
 - text: pain point
   max: 4
 related_posts:
-- 6236-sepo-comment-exploiter-cette-methode-d-analyse-strategique-en-entreprise
+- 6254-calcul-prix-de-vente-avec-taux-de-marge-comment-garantir-votre-rentabilite
 - 9378-strategie-de-croissance-construire-un-plan-efficace-pour-gagner-des-parts-de-marche
+- 6236-sepo-comment-exploiter-cette-methode-d-analyse-strategique-en-entreprise
 - 5289-matrice-tows-guide-pratique-pour-renforcer-votre-strategie-d-entreprise
 ---
 <h2>Pain point : cette notion qui change tout</h2>
