@@ -12,6 +12,7 @@ link_anchors:
 - text: matrice tows
   max: 4
 related_posts:
+- 7354-pain-point-identifier-les-freins-qui-empechent-vos-clients-d-acheter
 - 2639-strategie-de-croissance-comment-developper-votre-entreprise-sur-le-long-terme
 - 5553-sepo-comprendre-cette-methode-pour-analyser-les-performances-de-votre-organisation
 ---

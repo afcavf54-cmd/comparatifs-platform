@@ -15,8 +15,9 @@ link_anchors:
 - text: stratégie de croissance
   max: 4
 related_posts:
-- 5553-sepo-comprendre-cette-methode-pour-analyser-les-performances-de-votre-organisation
+- 7354-pain-point-identifier-les-freins-qui-empechent-vos-clients-d-acheter
 - 6906-matrice-tows-transformer-votre-analyse-swot-en-actions-concretes
+- 5553-sepo-comprendre-cette-methode-pour-analyser-les-performances-de-votre-organisation
 ---
 <h2>Les fondamentaux d'une stratégie de croissance durable</h2>
 

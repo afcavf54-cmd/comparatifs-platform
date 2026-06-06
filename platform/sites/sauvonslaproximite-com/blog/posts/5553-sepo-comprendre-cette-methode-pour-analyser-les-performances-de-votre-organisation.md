@@ -13,8 +13,9 @@ link_anchors:
 - text: sepo
   max: 4
 related_posts:
-- 6906-matrice-tows-transformer-votre-analyse-swot-en-actions-concretes
 - 2639-strategie-de-croissance-comment-developper-votre-entreprise-sur-le-long-terme
+- 6906-matrice-tows-transformer-votre-analyse-swot-en-actions-concretes
+- 7354-pain-point-identifier-les-freins-qui-empechent-vos-clients-d-acheter
 ---
 <h2>Qu'est-ce que la méthode SEPO et pourquoi l'utiliser ?</h2>
 
