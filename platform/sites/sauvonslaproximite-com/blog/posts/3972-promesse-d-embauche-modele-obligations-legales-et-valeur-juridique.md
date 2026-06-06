@@ -4,14 +4,20 @@ slug: 3972-promesse-d-embauche-modele-obligations-legales-et-valeur-juridique
 date: '2026-06-06T09:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Modèle promesse d''embauche : exemple gratuit et mentions à prévoir'
-meta_description: 'Découvrez tout sur la promesse d''embauche : modèles, obligations légales de l''employeur et valeur juridique. Guide complet pour comprendre vos droits et protections.'
+meta_description: 'Découvrez tout sur la promesse d''embauche : modèles, obligations
+  légales de l''employeur et valeur juridique. Guide complet pour comprendre vos droits
+  et protections.'
 min_words: 1800
 status: published
 link_anchors:
 - text: modèle de promesse d'embauche
   max: 4
+related_posts:
+- 5779-retention-des-talents-comment-limiter-le-turnover
+- 1574-talent-management-comment-developper-les-competences-internes
+- 8081-matrice-9-box-comment-evaluer-le-potentiel-des-collaborateurs
+- 9869-succession-planning-comment-anticiper-les-departs-strategiques
 ---
-
 <h2>Qu'est-ce qu'une promesse d'embauche exactement ?</h2>
 
 <p>Une promesse d'embauche, c'est cet engagement écrit qu'un employeur vous adresse avant la signature du contrat de travail définitif. Je l'ai vue passer sur mon bureau des dizaines de fois, et je peux vous dire qu'elle n'a rien d'anodin. <strong>Cette promesse vous garantit un poste</strong> sous certaines conditions, généralement pendant une durée déterminée.</p>
