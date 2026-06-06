@@ -12,7 +12,8 @@ status: published
 link_anchors:
 - text: le modèle de business plan StartupKit Advanced
   max: 1
-related_posts: []
+related_posts:
+- 6898-business-plan-template-smartstart-generator-notre-avis-complet
 ---
 <h2>Mon retour d'expérience sur le template de business plan StartupKit Premium</h2>
 

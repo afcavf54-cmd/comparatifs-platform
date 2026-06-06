@@ -4,14 +4,17 @@ slug: 6898-business-plan-template-smartstart-generator-notre-avis-complet
 date: '2026-06-06T17:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Business Plan Template SmartStart Generator : avis et test'
-meta_description: 'Notre test complet du SmartStart Generator pour créer votre business plan. Prix, fonctionnalités, qualité des modèles : découvrez si cet outil vaut ses 49 à 149€.'
+meta_description: 'Notre test complet du SmartStart Generator pour créer votre business
+  plan. Prix, fonctionnalités, qualité des modèles : découvrez si cet outil vaut ses
+  49 à 149€.'
 min_words: 920
 status: published
 link_anchors:
 - text: les avis sur le template de business plan SmartStart Generator
   max: 1
+related_posts:
+- 5504-business-plan-modele-startupkit-advanced-avis-et-utilisation
 ---
-
 <h2>SmartStart Generator : qu'est-ce que c'est exactement ?</h2>
 
 <p>SmartStart Generator fait partie de ces nouveaux outils qui promettent de simplifier la création d'un business plan. J'ai testé cette plateforme pendant plusieurs semaines dans le cadre de mes accompagnements d'entrepreneurs. <strong>Premier constat : c'est accessible</strong>, même pour quelqu'un qui n'a jamais monté de dossier financier.</p>
