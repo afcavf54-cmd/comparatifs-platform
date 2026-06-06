@@ -14,6 +14,7 @@ link_anchors:
   max: 4
 related_posts:
 - 7914-quasi-usufruit-dans-quels-cas-utiliser-ce-mecanisme-juridique
+- 3144-actif-net-reevalue-methode-de-calcul-et-interet-pour-les-investisseurs
 ---
 <h2>Qu'est-ce qu'Infonet exactement ?</h2>
 

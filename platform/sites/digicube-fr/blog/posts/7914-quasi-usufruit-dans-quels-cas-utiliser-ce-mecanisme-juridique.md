@@ -12,6 +12,7 @@ link_anchors:
 - text: avantages et inconvénients du quasi-usufruit
   max: 4
 related_posts:
+- 3144-actif-net-reevalue-methode-de-calcul-et-interet-pour-les-investisseurs
 - 8207-infonet-tout-savoir-sur-cet-outil-d-information-legale-et-financiere
 ---
 <h2>Qu'est-ce que le quasi-usufruit exactement ?</h2>
