@@ -15,6 +15,7 @@ link_anchors:
 related_posts:
 - 2484-trimbox-fonctionnalites-tarifs-et-retours-d-experience-sur-cet-outil-de-gestion
 - 3413-actif-net-reevalue-anr-comment-le-calculer-et-l-interpreter-en-analyse-financiere
+- 2405-roce-return-on-capital-employed-comment-le-calculer-et-l-utiliser-pour-evaluer-une-entreprise
 - 8982-quasi-usufruit-definition-avantages-inconvenients-et-cas-d-usage-en-gestion-patrimoniale
 ---
 <h2>Infonet : panorama d'un outil qui sait tout sur les entreprises françaises</h2>

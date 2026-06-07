@@ -12,6 +12,7 @@ featured_image: /blog/3413-actif-net-reevalue-anr-comment-le-calculer-et-l-inter
 status: published
 min_words: 1800
 related_posts:
+- 2405-roce-return-on-capital-employed-comment-le-calculer-et-l-utiliser-pour-evaluer-une-entreprise
 - 4958-infonet-l-outil-de-reference-pour-surveiller-les-entreprises-francaises
 - 2484-trimbox-fonctionnalites-tarifs-et-retours-d-experience-sur-cet-outil-de-gestion
 - 8982-quasi-usufruit-definition-avantages-inconvenients-et-cas-d-usage-en-gestion-patrimoniale

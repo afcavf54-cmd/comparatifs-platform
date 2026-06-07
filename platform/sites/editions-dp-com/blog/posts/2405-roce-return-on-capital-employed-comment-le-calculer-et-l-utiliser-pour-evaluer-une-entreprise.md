@@ -1,17 +1,24 @@
 ---
-title: 'ROCE (Return on Capital Employed) : comment le calculer et l''utiliser pour évaluer une entreprise'
+title: 'ROCE (Return on Capital Employed) : comment le calculer et l''utiliser pour
+  évaluer une entreprise'
 slug: 2405-roce-return-on-capital-employed-comment-le-calculer-et-l-utiliser-pour-evaluer-une-entreprise
 date: '2026-06-07T16:00:00+02:00'
 categorie: Finance & Comptabilité
 meta_title: 'ROCE : définition, formule et interprétation'
-meta_description: Découvrez le ROCE, l'indicateur clé pour mesurer la rentabilité de votre capital investi. Formule simple, calcul pratique et conseils d'expert pour optimiser vos…
+meta_description: Découvrez le ROCE, l'indicateur clé pour mesurer la rentabilité
+  de votre capital investi. Formule simple, calcul pratique et conseils d'expert pour
+  optimiser vos…
 min_words: 2500
 status: published
 link_anchors:
 - text: roce
   max: 4
+related_posts:
+- 3413-actif-net-reevalue-anr-comment-le-calculer-et-l-interpreter-en-analyse-financiere
+- 8982-quasi-usufruit-definition-avantages-inconvenients-et-cas-d-usage-en-gestion-patrimoniale
+- 4958-infonet-l-outil-de-reference-pour-surveiller-les-entreprises-francaises
+- 2484-trimbox-fonctionnalites-tarifs-et-retours-d-experience-sur-cet-outil-de-gestion
 ---
-
 <h2>Le ROCE : votre boussole financière pour des décisions éclairées</h2>
 
 <p>Après onze ans à diriger ma TPE, je peux vous dire que <strong>les ratios financiers ne sont pas que des chiffres sur un tableau</strong>. Le ROCE, ou Return on Capital Employed, fait partie de mes indicateurs préférés. Simple à calculer, facile à comprendre, il me donne une vision claire de la performance de mon entreprise. Et surtout, il m'aide à prendre les bonnes décisions d'investissement.</p>

@@ -14,8 +14,9 @@ link_anchors:
   max: 4
 related_posts:
 - 3413-actif-net-reevalue-anr-comment-le-calculer-et-l-interpreter-en-analyse-financiere
-- 4958-infonet-l-outil-de-reference-pour-surveiller-les-entreprises-francaises
 - 8982-quasi-usufruit-definition-avantages-inconvenients-et-cas-d-usage-en-gestion-patrimoniale
+- 4958-infonet-l-outil-de-reference-pour-surveiller-les-entreprises-francaises
+- 2405-roce-return-on-capital-employed-comment-le-calculer-et-l-utiliser-pour-evaluer-une-entreprise
 ---
 <h2>Trimbox : qu'est-ce que c'est exactement ?</h2>
 
