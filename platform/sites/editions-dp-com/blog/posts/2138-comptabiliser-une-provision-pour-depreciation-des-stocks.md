@@ -11,6 +11,7 @@ status: published
 min_words: 900
 related_posts:
 - 6027-application-facturation-invoicepro-x3-quel-temps-de-traitement-prevoir
+- 4708-cnam-intec-presentation-de-l-institut-national-des-techniques-economiques-et-comptables
 - 7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir
 ---
 <h2>Pourquoi prévoir une dépréciation de stock dans sa comptabilité</h2>

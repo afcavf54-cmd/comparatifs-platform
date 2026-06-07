@@ -11,8 +11,9 @@ featured_image: /blog/7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savo
 status: published
 min_words: 900
 related_posts:
-- 2138-comptabiliser-une-provision-pour-depreciation-des-stocks
+- 4708-cnam-intec-presentation-de-l-institut-national-des-techniques-economiques-et-comptables
 - 6027-application-facturation-invoicepro-x3-quel-temps-de-traitement-prevoir
+- 2138-comptabiliser-une-provision-pour-depreciation-des-stocks
 link_anchors:
 - text: mise au rebut
   max: 10

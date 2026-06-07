@@ -13,6 +13,7 @@ link_anchors:
 - text: le temps de traitement de l'application de facturation InvoicePro
   max: 3
 related_posts:
+- 4708-cnam-intec-presentation-de-l-institut-national-des-techniques-economiques-et-comptables
 - 2138-comptabiliser-une-provision-pour-depreciation-des-stocks
 - 7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir
 ---
