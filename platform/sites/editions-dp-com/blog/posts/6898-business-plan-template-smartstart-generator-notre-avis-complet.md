@@ -14,6 +14,7 @@ link_anchors:
   max: 1
 related_posts:
 - 5504-business-plan-modele-startupkit-advanced-avis-et-utilisation
+- 1796-business-plan-template-startupkit-premium-faut-il-l-utiliser
 ---
 <h2>SmartStart Generator : qu'est-ce que c'est exactement ?</h2>
 

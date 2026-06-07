@@ -13,6 +13,7 @@ link_anchors:
 - text: le modèle de business plan StartupKit Advanced
   max: 1
 related_posts:
+- 1796-business-plan-template-startupkit-premium-faut-il-l-utiliser
 - 6898-business-plan-template-smartstart-generator-notre-avis-complet
 ---
 <h2>Mon retour d'expérience sur le template de business plan StartupKit Premium</h2>
