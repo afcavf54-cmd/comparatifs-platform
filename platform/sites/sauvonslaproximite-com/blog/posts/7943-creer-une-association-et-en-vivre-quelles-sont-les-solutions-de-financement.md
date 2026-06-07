@@ -1,17 +1,21 @@
 ---
-title: 'Créer une association et en vivre : quelles sont les solutions de financement ?'
+title: 'Créer une association et en vivre : quelles sont les solutions de financement
+  ?'
 slug: 7943-creer-une-association-et-en-vivre-quelles-sont-les-solutions-de-financement
 date: '2026-06-07T15:00:00+02:00'
 categorie: Création entreprise
 meta_title: 'Créer une association et en vivre : est-ce réellement possible ?'
-meta_description: 'Découvrez les solutions de financement pour créer une association viable : subventions publiques, cotisations, adhésions et stratégies pour générer des revenus…'
+meta_description: 'Découvrez les solutions de financement pour créer une association
+  viable : subventions publiques, cotisations, adhésions et stratégies pour générer
+  des revenus…'
 min_words: 1200
 status: published
 link_anchors:
 - text: créer une association et en vivre
   max: 4
+related_posts:
+- 3401-creer-un-produit-les-etapes-indispensables-pour-transformer-une-idee-en-succes
 ---
-
 <h2>Les subventions publiques : votre premier réflexe</h2>
 
 <p>Quand on lance une association, je recommande toujours de commencer par explorer les <strong>subventions publiques</strong>. Pourquoi ? Parce que c'est de l'argent qu'on n'a pas besoin de rembourser, et les collectivités cherchent souvent à soutenir des projets associatifs locaux.</p>

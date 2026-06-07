@@ -12,7 +12,8 @@ status: published
 link_anchors:
 - text: créer un produit
   max: 4
-related_posts: []
+related_posts:
+- 7943-creer-une-association-et-en-vivre-quelles-sont-les-solutions-de-financement
 ---
 <h2>Pourquoi 80% des nouveaux produits échouent-ils ?</h2>
 
