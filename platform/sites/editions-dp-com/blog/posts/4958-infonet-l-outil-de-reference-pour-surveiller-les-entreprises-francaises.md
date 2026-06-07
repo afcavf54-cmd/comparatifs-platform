@@ -13,6 +13,7 @@ link_anchors:
 - text: infonet
   max: 4
 related_posts:
+- 2484-trimbox-fonctionnalites-tarifs-et-retours-d-experience-sur-cet-outil-de-gestion
 - 3413-actif-net-reevalue-anr-comment-le-calculer-et-l-interpreter-en-analyse-financiere
 - 8982-quasi-usufruit-definition-avantages-inconvenients-et-cas-d-usage-en-gestion-patrimoniale
 ---

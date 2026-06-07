@@ -4,14 +4,20 @@ slug: 5507-cdi-interimaire-avantages-et-inconvenients-a-connaitre
 date: '2026-06-07T12:00:00+02:00'
 categorie: Salarié
 meta_title: 'CDI intérimaire : avantages, inconvénients et fonctionnement'
-meta_description: 'Découvrez le CDI intérimaire : stabilité financière, diversité des missions et accompagnement professionnel. Avantages, inconvénients et conseils pratiques.'
+meta_description: 'Découvrez le CDI intérimaire : stabilité financière, diversité
+  des missions et accompagnement professionnel. Avantages, inconvénients et conseils
+  pratiques.'
 min_words: 900
 status: published
 link_anchors:
 - text: les avantages et inconvénients du CDI intérimaire
   max: 1
+related_posts:
+- 8440-qu-est-ce-qu-un-comite-d-entreprise
+- 3068-quels-sont-les-services-du-comite-d-entreprise-allianz
+- 1778-comment-fonctionne-le-comite-d-entreprise-loxam
+- 2430-que-peut-on-obtenir-avec-le-comite-d-entreprise-orange
 ---
-
 <h2>CDI intérimaire : qu'est-ce que c'est exactement ?</h2>
 
 <p>Le CDI intérimaire, vous en avez peut-être entendu parler sans vraiment comprendre. Je dirige une TPE depuis 11 ans et j'ai découvert ce dispositif il y a trois ans. <strong>En gros, c'est un CDI signé avec une agence d'intérim</strong>, pas directement avec l'entreprise où vous travaillez.</p>
