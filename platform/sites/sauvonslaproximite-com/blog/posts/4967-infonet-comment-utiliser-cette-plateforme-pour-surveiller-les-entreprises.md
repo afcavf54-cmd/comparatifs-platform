@@ -12,7 +12,8 @@ status: published
 link_anchors:
 - text: infonet
   max: 4
-related_posts: []
+related_posts:
+- 2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-implications-patrimoniales
 ---
 <h2>Qu'est-ce qu'Infonet et pourquoi l'utiliser ?</h2>
 
