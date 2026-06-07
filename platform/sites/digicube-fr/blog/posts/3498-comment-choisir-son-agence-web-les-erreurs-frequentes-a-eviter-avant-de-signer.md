@@ -1,17 +1,24 @@
 ---
-title: 'Comment choisir son agence web : les erreurs fréquentes à éviter avant de signer'
+title: 'Comment choisir son agence web : les erreurs fréquentes à éviter avant de
+  signer'
 slug: 3498-comment-choisir-son-agence-web-les-erreurs-frequentes-a-eviter-avant-de-signer
 date: '2026-06-07T07:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Comment choisir son agence web : les erreurs à éviter avant de signer'
-meta_description: Découvrez les erreurs courantes à éviter pour bien choisir son agence web. Signaux d'alarme, analyse de devis et conseils d'expert pour ne pas vous faire piéger.
+meta_description: Découvrez les erreurs courantes à éviter pour bien choisir son agence
+  web. Signaux d'alarme, analyse de devis et conseils d'expert pour ne pas vous faire
+  piéger.
 min_words: 1200
 status: published
 link_anchors:
 - text: comment choisir son agence web
   max: 4
+related_posts:
+- 6236-sepo-comment-exploiter-cette-methode-d-analyse-strategique-en-entreprise
+- 5289-matrice-tows-guide-pratique-pour-renforcer-votre-strategie-d-entreprise
+- 6254-calcul-prix-de-vente-avec-taux-de-marge-comment-garantir-votre-rentabilite
+- 7851-pain-point-pourquoi-cette-notion-est-essentielle-en-marketing-et-en-vente
 ---
-
 <h2>Les signaux d'alarme qui doivent vous alerter dès le premier contact</h2>
 
 <p>J'ai vu passer des dizaines de devis d'agences web ces dernières années. Certains me font encore sourire, d'autres m'ont coûté cher. Le premier piège ? <strong>L'agence qui promet la lune sans vous poser une seule question</strong>. Si votre interlocuteur vous sort un devis en 24h sans avoir creusé vos besoins réels, fuyez.</p>
