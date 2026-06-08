@@ -2,46 +2,112 @@
   Styles tableaux partagés — à inclure UNE SEULE FOIS depuis _nav.html.j2.
 
   Objectif : uniformiser l'apparence des <table> sur TOUS les sites et
-  TOUS les types de pages (blog, avis, classement, comparatif, outils).
+  TOUS les types de pages (blog, avis, classement, comparatif, outils,
+  pages éditoriales libres).
 
-  Sélecteurs : on cible les tables dans les conteneurs rédactionnels
-  classiques (.tool-content, .classement-content, article, main),
-  PAS les tables structurelles que les templates peuvent utiliser
-  (nav, footer, sidebar). Le :where() baisse la spécificité pour ne
-  pas écraser un styling local plus précis si un template en définit.
+  ⚠ Différence avec v1 :
+  - Suppression du :where() qui forçait la spécificité à 0,0,1 (un simple
+    `table { }` ailleurs dans la page l'écrasait). On utilise désormais
+    les classes directement (spécificité 0,1,1).
+  - Liste élargie pour couvrir TOUTES les classes de conteneur rédactionnel
+    présentes dans les templates : .article-body (blog), .tool-content,
+    .classement-content, .blog-content, .contenu-genere, .avis-content,
+    .avis-body, .editorial-content, .comparatif-content, plus les balises
+    sémantiques main et article.
+  - Style un peu plus marqué (header sur fond gris foncé, ligne paire
+    légèrement teintée) pour bonne lisibilité même sur fond clair.
 
   À inclure depuis base/_nav.html.j2 dans le <head>, via :
     {% include "base/_table_styles.html.j2" %}
+
+  Sécurité : les sélecteurs sont ciblés (pas `body table`) pour ne PAS
+  affecter les éventuelles tables structurelles utilisées dans la nav,
+  le footer, ou les widgets (cartes, grilles).
 ───────────────────────────────────────────────────────────────────── #}
 <style>
-/* Wrapper auto pour scroll horizontal sur mobile.
-   La fonction normalize_table_html() côté Python enveloppe les <table>
+/* ── Wrapper scroll horizontal ─────────────────────────────────────
+   Le post-process Python normalize_table_html() enveloppe les <table>
    nues dans <div class="table-wrap"> au build. Pour les contenus déjà
-   wrappés (markdown ou IA conforme), c'est idempotent. */
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) .table-wrap{
+   wrappés (markdown conforme, IA bien dressée), c'est idempotent. */
+main .table-wrap,
+article .table-wrap,
+.article-body .table-wrap,
+.tool-content .table-wrap,
+.classement-content .table-wrap,
+.blog-content .table-wrap,
+.contenu-genere .table-wrap,
+.avis-content .table-wrap,
+.avis-body .table-wrap,
+.editorial-content .table-wrap,
+.comparatif-content .table-wrap{
   overflow-x:auto;
-  margin:24px 0;
+  margin:28px 0;
   border-radius:10px;
   border:1px solid var(--border, #E6E1D8);
+  background:var(--surface, #fff);
 }
 
-/* Tableau de base */
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) table{
+/* ── Table de base ─────────────────────────────────────────────────
+   Spécificité 0,1,1 (classe + élément) — emporte sur tout `table { }`
+   nu déclaré ailleurs. */
+main table,
+article table,
+.article-body table,
+.tool-content table,
+.classement-content table,
+.blog-content table,
+.contenu-genere table,
+.avis-content table,
+.avis-body table,
+.editorial-content table,
+.comparatif-content table{
   width:100%;
   border-collapse:collapse;
   font-size:15px;
   background:var(--surface, #fff);
-  margin:24px 0;
+  margin:28px 0;
+  color:var(--ink, #0F1419);
 }
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) .table-wrap > table{
+main .table-wrap > table,
+article .table-wrap > table,
+.article-body .table-wrap > table,
+.tool-content .table-wrap > table,
+.classement-content .table-wrap > table,
+.blog-content .table-wrap > table,
+.contenu-genere .table-wrap > table,
+.avis-content .table-wrap > table,
+.avis-body .table-wrap > table,
+.editorial-content .table-wrap > table,
+.comparatif-content .table-wrap > table{
   margin:0;
+  border:none;
 }
 
-/* Headers */
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) thead{
+/* ── Headers ──────────────────────────────────────────────────────── */
+main thead,
+article thead,
+.article-body thead,
+.tool-content thead,
+.classement-content thead,
+.blog-content thead,
+.contenu-genere thead,
+.avis-content thead,
+.avis-body thead,
+.editorial-content thead,
+.comparatif-content thead{
   background:var(--surface2, #F5F3EE);
 }
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) thead th{
+main thead th,
+article thead th,
+.article-body thead th,
+.tool-content thead th,
+.classement-content thead th,
+.blog-content thead th,
+.contenu-genere thead th,
+.avis-content thead th,
+.avis-body thead th,
+.editorial-content thead th,
+.comparatif-content thead th{
   text-align:left;
   padding:14px 18px;
   font-weight:600;
@@ -50,14 +116,35 @@
   letter-spacing:0;
   text-transform:none;
   border-bottom:2px solid var(--border, #E6E1D8);
+  vertical-align:middle;
   white-space:nowrap;
 }
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) thead th:not(:last-child){
+main thead th:not(:last-child),
+article thead th:not(:last-child),
+.article-body thead th:not(:last-child),
+.tool-content thead th:not(:last-child),
+.classement-content thead th:not(:last-child),
+.blog-content thead th:not(:last-child),
+.contenu-genere thead th:not(:last-child),
+.avis-content thead th:not(:last-child),
+.avis-body thead th:not(:last-child),
+.editorial-content thead th:not(:last-child),
+.comparatif-content thead th:not(:last-child){
   border-right:1px solid var(--border, #E6E1D8);
 }
 
-/* Caption (titre du tableau) */
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) table caption{
+/* ── Caption (titre de tableau) ───────────────────────────────────── */
+main table caption,
+article table caption,
+.article-body table caption,
+.tool-content table caption,
+.classement-content table caption,
+.blog-content table caption,
+.contenu-genere table caption,
+.avis-content table caption,
+.avis-body table caption,
+.editorial-content table caption,
+.comparatif-content table caption{
   caption-side:top;
   padding:12px 18px;
   font-weight:600;
@@ -67,37 +154,118 @@
   border-bottom:1px solid var(--border, #E6E1D8);
 }
 
-/* Cells */
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) tbody td{
-  padding:12px 18px;
+/* ── Cellules ─────────────────────────────────────────────────────── */
+main tbody td,
+article tbody td,
+.article-body tbody td,
+.tool-content tbody td,
+.classement-content tbody td,
+.blog-content tbody td,
+.contenu-genere tbody td,
+.avis-content tbody td,
+.avis-body tbody td,
+.editorial-content tbody td,
+.comparatif-content tbody td{
+  padding:14px 18px;
   color:var(--ink, #0F1419);
   border-bottom:1px solid var(--border, #E6E1D8);
   vertical-align:top;
   line-height:1.5;
 }
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) tbody td:not(:last-child){
+main tbody td:not(:last-child),
+article tbody td:not(:last-child),
+.article-body tbody td:not(:last-child),
+.tool-content tbody td:not(:last-child),
+.classement-content tbody td:not(:last-child),
+.blog-content tbody td:not(:last-child),
+.contenu-genere tbody td:not(:last-child),
+.avis-content tbody td:not(:last-child),
+.avis-body tbody td:not(:last-child),
+.editorial-content tbody td:not(:last-child),
+.comparatif-content tbody td:not(:last-child){
   border-right:1px solid var(--border, #E6E1D8);
 }
 
-/* Alternance + hover */
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) tbody tr:nth-child(even){
+/* ── Alternance + hover ───────────────────────────────────────────── */
+main tbody tr:nth-child(even),
+article tbody tr:nth-child(even),
+.article-body tbody tr:nth-child(even),
+.tool-content tbody tr:nth-child(even),
+.classement-content tbody tr:nth-child(even),
+.blog-content tbody tr:nth-child(even),
+.contenu-genere tbody tr:nth-child(even),
+.avis-content tbody tr:nth-child(even),
+.avis-body tbody tr:nth-child(even),
+.editorial-content tbody tr:nth-child(even),
+.comparatif-content tbody tr:nth-child(even){
   background:color-mix(in srgb, var(--surface, #fff) 70%, var(--surface2, #F5F3EE));
 }
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) tbody tr:hover{
+main tbody tr:hover,
+article tbody tr:hover,
+.article-body tbody tr:hover,
+.tool-content tbody tr:hover,
+.classement-content tbody tr:hover,
+.blog-content tbody tr:hover,
+.contenu-genere tbody tr:hover,
+.avis-content tbody tr:hover,
+.avis-body tbody tr:hover,
+.editorial-content tbody tr:hover,
+.comparatif-content tbody tr:hover{
   background:var(--surface2, #F5F3EE);
 }
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) tbody tr:last-child td{
+main tbody tr:last-child td,
+article tbody tr:last-child td,
+.article-body tbody tr:last-child td,
+.tool-content tbody tr:last-child td,
+.classement-content tbody tr:last-child td,
+.blog-content tbody tr:last-child td,
+.contenu-genere tbody tr:last-child td,
+.avis-content tbody tr:last-child td,
+.avis-body tbody tr:last-child td,
+.editorial-content tbody tr:last-child td,
+.comparatif-content tbody tr:last-child td{
   border-bottom:none;
 }
 
-/* Mobile */
+/* ── Mobile ───────────────────────────────────────────────────────── */
 @media (max-width:680px){
-  :where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) table{
+  main table,
+  article table,
+  .article-body table,
+  .tool-content table,
+  .classement-content table,
+  .blog-content table,
+  .contenu-genere table,
+  .avis-content table,
+  .avis-body table,
+  .editorial-content table,
+  .comparatif-content table{
     font-size:14px;
   }
-  :where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) thead th,
-  :where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) tbody td{
+  main thead th,
+  article thead th,
+  .article-body thead th,
+  .tool-content thead th,
+  .classement-content thead th,
+  .blog-content thead th,
+  .contenu-genere thead th,
+  .avis-content thead th,
+  .avis-body thead th,
+  .editorial-content thead th,
+  .comparatif-content thead th,
+  main tbody td,
+  article tbody td,
+  .article-body tbody td,
+  .tool-content tbody td,
+  .classement-content tbody td,
+  .blog-content tbody td,
+  .contenu-genere tbody td,
+  .avis-content tbody td,
+  .avis-body tbody td,
+  .editorial-content tbody td,
+  .comparatif-content tbody td{
     padding:10px 12px;
+    white-space:normal;
   }
 }
 </style>
