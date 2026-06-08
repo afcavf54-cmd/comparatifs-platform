@@ -1,11 +1,11 @@
 ---
-title: "CNAM INTEC : présentation de l'Institut National des Techniques Économiques et Comptables"
+title: 'CNAM INTEC : présentation de l''Institut National des Techniques Économiques et Comptables'
 slug: 4708-cnam-intec-presentation-de-l-institut-national-des-techniques-economiques-et-comptables
-date: 2026-06-07T17:00:00+02:00
-updated: 2026-06-08T09:11:56
+date: 2026-06-07 17:00:00+02:00
+updated: 2026-06-08 09:11:56
 categorie: Comptabilité
-meta_title: "CNAM INTEC : formations et diplômes en comptabilité"
-meta_description: "Découvrez le CNAM INTEC : formation comptable diplômante à tarifs publics pour préparer DCG et DSCG. Cours du soir, formation à distance, rythme adapté aux salariés."
+meta_title: 'CNAM INTEC : formations et diplômes en comptabilité'
+meta_description: 'Découvrez le CNAM INTEC : formation comptable diplômante à tarifs publics pour préparer DCG et DSCG. Cours du soir, formation à distance, rythme adapté aux salariés.'
 featured_image: /blog/4708-cnam-intec-presentation-de-l-institut-national-des-techniques-economiques-et-comptables/featured-3470.jpg
 status: published
 min_words: 910
@@ -15,7 +15,7 @@ related_posts:
 - 7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir
 link_anchors:
 - text: le CNAM INTEC (institut national des techniques économiques et comptables)
-  max: 5
+  max: 1
 ---
 
 <p>Après 11 ans passés à gérer mon entreprise, je me suis souvent posé la question de la formation comptable pour mes équipes. Quand j'ai découvert le CNAM INTEC, j'ai compris qu'il y avait là une opportunité intéressante. Mais attention, ce n'est pas forcément fait pour tout le monde.</p>
@@ -122,4 +122,5 @@ link_anchors:
 <p>Attention quand même aux délais. Entre l'inscription et l'obtention du diplôme complet, comptez 4 à 5 ans minimum. Pas idéal si vous avez des besoins urgents de formation.</p>
 
 <p>Pour finir, un conseil pratique : commencez par une ou deux UE pour tester. Vous verrez rapidement si le rythme vous convient. Et n'hésitez pas à vous renseigner auprès d'anciens étudiants. Leurs retours sont souvent plus honnêtes que les plaquettes commerciales.</p>
+
 
