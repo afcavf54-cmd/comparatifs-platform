@@ -223,6 +223,18 @@ def load_prompts(site_dir: Path, config: dict) -> tuple[str, str]:
 
 
 def generate_meta_description(title: str, content_html: str) -> str:
+    """Génère une meta description SEO de 145-160 caractères via Claude.
+
+    Stratégie :
+      1. Tentative initiale avec consigne stricte (145-160 caractères)
+      2. Si la réponse est < 130 car. (Google tronque les meta trop courtes
+         et ça réduit le CTR), retry une fois avec consigne renforcée qui
+         rappelle à Claude le nombre exact de caractères trop court
+      3. Si toujours < 130 après retry, on garde quand même (mieux qu'une
+         meta vide) mais on logue un warning.
+
+    Tronque à MAX_LEN-1 + '…' si > 165 caractères.
+    """
     plain = re.sub(r'<[^>]+>', ' ', content_html or '')
     plain = re.sub(r'&nbsp;|&amp;|&lt;|&gt;|&quot;|&#39;', ' ', plain)
     plain = re.sub(r'\s+', ' ', plain).strip()[:2000]
@@ -232,23 +244,47 @@ def generate_meta_description(title: str, content_html: str) -> str:
 CONTRAINTES STRICTES :
 - Réponds UNIQUEMENT avec le texte de la meta description, rien d'autre
 - Pas de guillemets, pas de préambule, pas de balises
-- Longueur : 140 à 160 caractères (idéal pour Google)
+- LONGUEUR IMPÉRATIVE : entre 145 et 160 caractères. CIBLE : 155 CARACTÈRES.
+  Google tronque les meta < 120 caractères (mauvais CTR) et > 165 caractères.
+  Compte mentalement les caractères avant de répondre, et étoffe si tu es sous 145.
 - Style accrocheur, informatif, donne envie de cliquer
 - Inclure idéalement le mot-clé principal du titre
 - Pas de tiret long — ni –
 - Pas de point d'exclamation"""
 
-    user = f"Rédige une meta description SEO pour cet article :\n\nTitre : {title}\n\nContenu (extrait) : {plain[:1500]}"
+    base_user = f"Rédige une meta description SEO pour cet article :\n\nTitre : {title}\n\nContenu (extrait) : {plain[:1500]}"
 
-    try:
-        text = call_claude(system, user, max_tokens=200).strip()
-        text = text.strip('"\'')
-        if len(text) > 165:
-            text = text[:162].rsplit(' ', 1)[0] + '…'
-        return text
-    except Exception as e:
-        print(f"   ⚠ Meta auto : erreur Claude ({e}) — meta laissée vide")
-        return ''
+    MIN_LEN = 130
+    MAX_LEN = 165
+    best_text = ''
+
+    for attempt in range(2):
+        user_msg = base_user
+        if attempt == 1:
+            user_msg = (
+                f"{base_user}\n\n"
+                f"ATTENTION : ta première réponse faisait seulement {len(best_text)} caractères, "
+                f"c'est BEAUCOUP TROP COURT. Rédige cette fois IMPÉRATIVEMENT une meta description "
+                f"de 150 à 160 caractères. Étoffe avec un bénéfice client concret, un chiffre clé "
+                f"ou un détail spécifique de l'article. Ne descends pas sous 145 caractères."
+            )
+        try:
+            text = call_claude(system, user_msg, max_tokens=200).strip()
+            text = text.strip('"\'')
+            if len(text) > MAX_LEN:
+                text = text[:MAX_LEN - 1].rsplit(' ', 1)[0] + '…'
+            best_text = text
+            if len(text) >= MIN_LEN:
+                return text
+            if attempt == 0:
+                print(f"meta trop courte ({len(text)} car.), retry...", end=" ", flush=True)
+        except Exception as e:
+            print(f"   ⚠ Meta auto : erreur Claude ({e})")
+            return best_text
+
+    if best_text:
+        print(f"(meta finale {len(best_text)} car., sous le seuil {MIN_LEN})", end=" ", flush=True)
+    return best_text
 
 
 def generate_article_html(title: str, categorie: str, prompt_custom: str,
