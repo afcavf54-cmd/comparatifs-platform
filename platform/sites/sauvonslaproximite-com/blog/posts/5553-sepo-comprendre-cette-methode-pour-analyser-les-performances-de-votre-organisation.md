@@ -1,23 +1,23 @@
 ---
-title: "SEPO : comprendre cette méthode pour analyser les performances de votre organisation"
+title: 'SEPO : comprendre cette méthode pour analyser les performances de votre organisation'
 slug: 5553-sepo-comprendre-cette-methode-pour-analyser-les-performances-de-votre-organisation
-date: 2026-06-04T10:00:00+02:00
-updated: 2026-06-08T13:14:46
-categorie: "Gestion d'entreprise"
-meta_title: "SEPO : présentation, fonctionnement et cas d'utilisation"
+date: 2026-06-04 10:00:00+02:00
+updated: 2026-06-08 13:14:46
+categorie: Gestion d'entreprise
+meta_title: 'SEPO : présentation, fonctionnement et cas d''utilisation'
 meta_description: Découvrez la méthode SEPO pour analyser efficacement les performances
 featured_image: /blog/5553-sepo-comprendre-cette-methode-pour-analyser-les-performances-de-votre-organisation/featured-81404.jpg
 status: published
 min_words: 2500
 related_posts:
 - 2639-strategie-de-croissance-comment-developper-votre-entreprise-sur-le-long-terme
-- 6906-matrice-tows-transformer-votre-analyse-swot-en-actions-concretes
 - 7354-pain-point-identifier-les-freins-qui-empechent-vos-clients-d-acheter
+- 5959-calcul-prix-de-vente-avec-taux-de-marge-methode-simple-et-exemples-detailles
+- 6906-matrice-tows-transformer-votre-analyse-swot-en-actions-concretes
 link_anchors:
 - text: sepo
   max: 4
 ---
-
 <h2>Qu'est-ce que la méthode SEPO et pourquoi l'utiliser ?</h2>
 
 <p>La méthode SEPO (Succès, Échecs, Potentiels, Obstacles) me sert régulièrement pour <strong>analyser les performances</strong> de mon département comptable. C'est un outil d'évaluation qui ressemble au SWOT, mais avec une approche plus orientée vers l'action concrète.</p>

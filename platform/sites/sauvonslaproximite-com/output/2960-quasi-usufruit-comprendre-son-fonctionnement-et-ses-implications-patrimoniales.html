@@ -140,6 +140,26 @@ a:hover{text-decoration:underline}
   .article-sidebar{position:static}
 }
 @media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+
+/* ── PATCH : tableaux du contenu blog ─────────────────────────────
+   Ajout chirurgical en toute fin du <style>, après les media queries
+   existantes. Aucune modif au CSS au-dessus. */
+.article-body .table-wrap{overflow-x:auto;margin:28px 0;border-radius:10px;border:1px solid var(--border);background:var(--surface)}
+.article-body table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface);margin:28px 0;color:var(--ink)}
+.article-body .table-wrap > table{margin:0;border:none}
+.article-body thead{background:var(--surface2)}
+.article-body thead th{text-align:left;padding:14px 18px;font-weight:600;color:var(--ink);font-size:14px;border-bottom:2px solid var(--border);vertical-align:middle;white-space:nowrap}
+.article-body thead th:not(:last-child){border-right:1px solid var(--border)}
+.article-body tbody td{padding:14px 18px;color:var(--ink);border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+.article-body tbody td:not(:last-child){border-right:1px solid var(--border)}
+.article-body tbody tr:nth-child(even){background:var(--surface2)}
+.article-body tbody tr:hover{background:var(--surface2)}
+.article-body tbody tr:last-child td{border-bottom:none}
+.article-body table caption{caption-side:top;padding:12px 18px;font-weight:600;color:var(--ink);text-align:left;background:var(--surface2);border-bottom:1px solid var(--border)}
+@media (max-width:680px){
+  .article-body table{font-size:14px}
+  .article-body thead th,.article-body tbody td{padding:10px 12px;white-space:normal}
+}
 </style>
 <script async data-id="101506542" src="//static.getclicky.com/js"></script>
 </head>
@@ -319,7 +339,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
 <h3 id="impact-sur-l-actif-net-reevalue">Impact sur l'actif net réévalué</h3>
 
-<p>Le quasi-usufruit influence directement le calcul de <strong>l'actif net réévalué</strong> de l'entreprise. Les biens reçus s'ajoutent à l'actif, mais la dette de restitution vient en déduction. L'impact net dépend de la valorisation des actifs concernés.</p>
+<p>Le quasi-usufruit influence directement le calcul de <strong>l'<a href="/1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise">actif net réévalué</a></strong> de l'entreprise. Les biens reçus s'ajoutent à l'actif, mais la dette de restitution vient en déduction. L'impact net dépend de la valorisation des actifs concernés.</p>
 
 <p>Dans une évaluation d'entreprise, je recommande d'analyser attentivement ces mécanismes. Ils modifient la structure bilancielle sans forcément améliorer la valeur intrinsèque. <strong>Une vigilance particulière s'impose lors d'audits d'acquisition</strong>.</p>
 
@@ -419,6 +439,9 @@ Dans une donation avec réserve d'usufruit classique, le donateur garde la jouis
       <a href="/4967-infonet-comment-utiliser-cette-plateforme-pour-surveiller-les-entreprises" class="related-card">
 <div class="related-card-cat">Finance & Comptabilité</div>        <div class="related-card-title">Infonet : comment utiliser cette plateforme pour surveiller les entreprises</div>
 <div class="related-card-excerpt">Qu'est-ce qu'Infonet et pourquoi l'utiliser ? Infonet, c'est cette plateforme que j'utilise depuis des années pour surveiller les entreprises avec lesquelles on travaille.…</div>      </a>
+      <a href="/1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise" class="related-card">
+<div class="related-card-cat">Finance & Comptabilité</div>        <div class="related-card-title">Actif net réévalué : comment mesurer la valeur réelle d'une entreprise</div>
+<div class="related-card-excerpt">Pourquoi l'actif net comptable ne suffit plus ? Après vingt ans de pratique comptable, je peux vous affirmer qu'il y a un fossé énorme entre ce qu'affiche un bilan et la vraie…</div>      </a>
     </div>
   </section>
   </div><!-- /.article-main -->
@@ -430,7 +453,7 @@ Dans une donation avec réserve d'usufruit classique, le donateur garde la jouis
         <li class="sidebar-cat-item">
           <a href="/blog" class="sidebar-cat-link">
             <span>Tous les articles</span>
-            <span class="sidebar-cat-count">27</span>
+            <span class="sidebar-cat-count">29</span>
           </a>
         </li>
         <li class="sidebar-cat-item">
@@ -442,7 +465,7 @@ Dans une donation avec réserve d'usufruit classique, le donateur garde la jouis
         <li class="sidebar-cat-item">
           <a href="/categorie-gestion-d-entreprise" class="sidebar-cat-link">
             <span>Gestion d'entreprise</span>
-            <span class="sidebar-cat-count">4</span>
+            <span class="sidebar-cat-count">5</span>
           </a>
         </li>
         <li class="sidebar-cat-item">
@@ -454,7 +477,7 @@ Dans une donation avec réserve d'usufruit classique, le donateur garde la jouis
         <li class="sidebar-cat-item">
           <a href="/categorie-finance-comptabilite" class="sidebar-cat-link active">
             <span>Finance & Comptabilité</span>
-            <span class="sidebar-cat-count">2</span>
+            <span class="sidebar-cat-count">3</span>
           </a>
         </li>
         <li class="sidebar-cat-item">
@@ -470,6 +493,16 @@ Dans une donation avec réserve d'usufruit classique, le donateur garde la jouis
       <h3 class="sidebar-title">Articles récents</h3>
       <ul class="sidebar-recent-list">
         <li class="sidebar-recent-item">
+          <a href="/1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise" class="sidebar-recent-link">
+<div class="sidebar-recent-cat">Finance & Comptabilité</div>            Actif net réévalué : comment mesurer la valeur réelle d'une entreprise
+          </a>
+        </li>
+        <li class="sidebar-recent-item">
+          <a href="/5959-calcul-prix-de-vente-avec-taux-de-marge-methode-simple-et-exemples-detailles" class="sidebar-recent-link">
+<div class="sidebar-recent-cat">Gestion d'entreprise</div>            Calcul prix de vente avec taux de marge : méthode simple et exemples détaillés
+          </a>
+        </li>
+        <li class="sidebar-recent-item">
           <a href="/7943-creer-une-association-et-en-vivre-quelles-sont-les-solutions-de-financement" class="sidebar-recent-link">
 <div class="sidebar-recent-cat">Création entreprise</div>            Créer une association et en vivre : quelles sont les solutions de financement ?
           </a>
@@ -477,16 +510,6 @@ Dans une donation avec réserve d'usufruit classique, le donateur garde la jouis
         <li class="sidebar-recent-item">
           <a href="/7354-pain-point-identifier-les-freins-qui-empechent-vos-clients-d-acheter" class="sidebar-recent-link">
 <div class="sidebar-recent-cat">Gestion d'entreprise</div>            Pain point : identifier les freins qui empêchent vos clients d'acheter
-          </a>
-        </li>
-        <li class="sidebar-recent-item">
-          <a href="/3972-promesse-d-embauche-modele-obligations-legales-et-valeur-juridique" class="sidebar-recent-link">
-<div class="sidebar-recent-cat">Ressources Humaines</div>            Promesse d'embauche : modèle, obligations légales et valeur juridique
-          </a>
-        </li>
-        <li class="sidebar-recent-item">
-          <a href="/4967-infonet-comment-utiliser-cette-plateforme-pour-surveiller-les-entreprises" class="sidebar-recent-link">
-<div class="sidebar-recent-cat">Finance & Comptabilité</div>            Infonet : comment utiliser cette plateforme pour surveiller les entreprises
           </a>
         </li>
       </ul>

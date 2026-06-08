@@ -1,21 +1,21 @@
 ---
-title: "Infonet : comment utiliser cette plateforme pour surveiller les entreprises"
+title: 'Infonet : comment utiliser cette plateforme pour surveiller les entreprises'
 slug: 4967-infonet-comment-utiliser-cette-plateforme-pour-surveiller-les-entreprises
-date: 2026-06-05T22:00:00+02:00
-updated: 2026-06-08T13:10:51
+date: 2026-06-05 22:00:00+02:00
+updated: 2026-06-08 13:10:51
 categorie: Finance & Comptabilité
-meta_title: "Infonet : fonctionnalités, avantages et utilisation au quotidien"
+meta_title: 'Infonet : fonctionnalités, avantages et utilisation au quotidien'
 meta_description: Découvrez Infonet, la plateforme gratuite pour surveiller les entreprises
 featured_image: /blog/4967-infonet-comment-utiliser-cette-plateforme-pour-surveiller-les-entreprises/featured-47685.jpg
 status: published
 min_words: 1000
 related_posts:
+- 1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise
 - 2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-implications-patrimoniales
 link_anchors:
 - text: infonet
   max: 4
 ---
-
 <h2>Qu'est-ce qu'Infonet et pourquoi l'utiliser ?</h2>
 
 <p>Infonet, c'est cette plateforme que j'utilise depuis des années pour surveiller les entreprises avec lesquelles on travaille. <strong>Gratuite et accessible à tous</strong>, elle compile les informations officielles des sociétés françaises. Je vous montre comment en tirer le maximum pour sécuriser vos relations d'affaires.</p>
