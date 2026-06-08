@@ -1,23 +1,24 @@
 ---
-title: 'Horaires décalés : ce que dit le code du travail sur vos droits et obligations'
+title: "Horaires décalés : ce que dit le code du travail sur vos droits et obligations"
 slug: 8103-horaires-decales-ce-que-dit-le-code-du-travail-sur-vos-droits-et-obligations
-date: '2026-06-08T11:00:00+02:00'
+date: 2026-06-08T11:00:00+02:00
+updated: 2026-06-08T11:32:06
 categorie: Salarié
-meta_title: 'Horaire décalé et code du travail : vos droits'
-meta_description: 'Découvrez vos droits et obligations sur les horaires décalés selon
-  le code du travail. Travail de nuit, équipes matinales, horaires variables : ce
-  que dit la loi…'
-min_words: 1200
+meta_title: "Horaire décalé et code du travail : vos droits"
+meta_description: "Découvrez vos droits et obligations sur les horaires décalés selon le code du travail. Travail de nuit, équipes matinales, horaires variables : ce que dit la loi…"
+featured_image: /blog/8103-horaires-decales-ce-que-dit-le-code-du-travail-sur-vos-droits-et-obligations/featured-22463.jpg
 status: published
-link_anchors:
-- text: horaire décalé dans le code du travail
-  max: 4
+min_words: 1200
 related_posts:
 - 3068-quels-sont-les-services-du-comite-d-entreprise-allianz
 - 1778-comment-fonctionne-le-comite-d-entreprise-loxam
 - 8080-quels-sont-les-avantages-du-comite-d-entreprise-mma
 - 1054-comment-acceder-aux-avantages-du-comite-d-entreprise-adecco
+link_anchors:
+- text: horaire décalé dans le code du travail
+  max: 4
 ---
+
 <h2>Qu'est-ce qu'on entend par horaires décalés au travail ?</h2>
 
 <p>Les horaires décalés, ça couvre en fait plusieurs situations. On parle généralement de tout ce qui sort des horaires classiques 9h-17h. Ça peut être du travail de nuit, des équipes qui commencent très tôt le matin, ou encore des horaires variables selon les besoins de l'entreprise.</p>
@@ -157,3 +158,4 @@ related_posts:
 <p>Pour les salariés : ne subissez pas des horaires impossibles par peur de perdre votre emploi. <strong>Un employeur qui vous épuise finira par vous remplacer de toute façon</strong>.</p>
 
 <p>Enfin, n'hésitez pas à demander conseil. Votre convention collective, les représentants du personnel, même un avocat en consultation gratuite. <strong>Une heure de conseil peut vous éviter des mois de galère</strong>.</p>
+
