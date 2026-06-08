@@ -1,23 +1,24 @@
 ---
-title: 'SCEA : tout savoir sur les avantages et inconvénients de cette société agricole'
+title: "SCEA : tout savoir sur les avantages et inconvénients de cette société agricole"
 slug: 8394-scea-tout-savoir-sur-les-avantages-et-inconvenients-de-cette-societe-agricole
-date: '2026-06-06T13:00:00+02:00'
+date: 2026-06-06T13:00:00+02:00
+updated: 2026-06-08T09:19:52
 categorie: Création entreprise
-meta_title: 'SCEA : avantages et inconvénients à connaître'
-meta_description: 'Découvrez les avantages fiscaux et inconvénients de la SCEA. Guide
-  complet sur cette société agricole : conditions, création et optimisation pour votre
-  projet.'
-min_words: 1800
+meta_title: "SCEA : avantages et inconvénients à connaître"
+meta_description: "Découvrez les avantages fiscaux et inconvénients de la SCEA. Guide complet sur cette société agricole : conditions, création et optimisation pour votre projet."
+featured_image: /blog/8394-scea-tout-savoir-sur-les-avantages-et-inconvenients-de-cette-societe-agricole/featured-88304.jpg
 status: published
-link_anchors:
-- text: avantages et inconvénients de la scea
-  max: 4
+min_words: 1800
 related_posts:
 - 3843-entreprise-individuelle-avantages-et-inconvenients-en-year
 - 3788-creation-micro-entreprise-sur-l-urssaf-guide-etape-par-etape
 - 2440-capital-social-d-une-entreprise-definition-et-fonctionnement
 - 3332-fiscalite-auto-entrepreneur-impots-charges-et-cotisations
+link_anchors:
+- text: avantages et inconvénients de la scea
+  max: 4
 ---
+
 <h2>Qu'est-ce qu'une SCEA et pourquoi s'y intéresser ?</h2>
 
 <p>La Société Civile d'Exploitation Agricole (SCEA) reste méconnue de beaucoup d'entrepreneurs agricoles. Pourtant, j'ai découvert que cette forme juridique présente des <strong>avantages fiscaux intéressants</strong> pour certains projets.</p>
@@ -210,3 +211,4 @@ L'objet social doit rester agricole, mais plusieurs productions agricoles sont p
 Comptez entre 500 et 1 500 € selon la complexité : frais de notaire, publication d'annonces légales, honoraires éventuels.</p>
 
 <p>La SCEA reste une option intéressante pour certains projets agricoles, malgré ses inconvénients. Son choix dépend vraiment de votre situation personnelle, de vos objectifs et de votre tolérance au risque. Je conseille toujours de faire une simulation avec un expert-comptable spécialisé en agriculture avant de prendre cette décision.</p>
+
