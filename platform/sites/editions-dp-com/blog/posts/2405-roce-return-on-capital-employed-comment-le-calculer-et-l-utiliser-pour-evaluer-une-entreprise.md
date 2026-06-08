@@ -1,11 +1,11 @@
 ---
-title: "ROCE (Return on Capital Employed) : comment le calculer et l'utiliser pour évaluer une entreprise"
+title: 'ROCE (Return on Capital Employed) : comment le calculer et l''utiliser pour évaluer une entreprise'
 slug: 2405-roce-return-on-capital-employed-comment-le-calculer-et-l-utiliser-pour-evaluer-une-entreprise
-date: 2026-06-07T16:00:00+02:00
-updated: 2026-06-08T09:12:55
+date: 2026-06-07 16:00:00+02:00
+updated: 2026-06-08 09:12:55
 categorie: Finance & Comptabilité
-meta_title: "ROCE : définition, formule et interprétation"
-meta_description: "Découvrez le ROCE, l'indicateur clé pour mesurer la rentabilité"
+meta_title: 'ROCE : définition, formule et interprétation'
+meta_description: Découvrez le ROCE, ratio financier essentiel pour évaluer la performance d'une entreprise. Formule, calcul pratique et conseils d'expert pour optimiser vos…
 featured_image: /blog/2405-roce-return-on-capital-employed-comment-le-calculer-et-l-utiliser-pour-evaluer-une-entreprise/featured-70582.jpg
 status: published
 min_words: 2500
@@ -213,4 +213,5 @@ Pas forcément. Tout dépend du secteur, du coût du capital et du contexte éco
 <p><strong>Comment améliorer rapidement son ROCE ?</strong><br>
 Les leviers les plus rapides sont l'optimisation du besoin en fonds de roulement (stocks, créances clients, dettes fournisseurs) et l'amélioration de la marge opérationnelle par la maîtrise des coûts. Les effets se voient dès le trimestre suivant.</p>
 </blockquote>
+
 

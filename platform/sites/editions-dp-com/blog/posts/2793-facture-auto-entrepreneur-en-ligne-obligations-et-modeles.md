@@ -5,7 +5,7 @@ date: 2026-06-03 10:00:00+02:00
 updated: 2026-06-08 11:35:19
 categorie: Création entreprise
 meta_title: Comment faire une facture en ligne en tant qu'auto-entrepreneur ?
-meta_description: Découvrez les obligations légales de facturation pour auto-entrepreneurs
+meta_description: Découvrez les obligations de facturation auto-entrepreneur et téléchargez des modèles conformes. Mentions légales obligatoires, outils gratuits et conseils…
 featured_image: /blog/2793-facture-auto-entrepreneur-en-ligne-obligations-et-modeles/featured-9155.jpg
 status: published
 min_words: 1200
@@ -126,6 +126,7 @@ link_anchors:
 <p><strong>Combien de temps dois-je conserver mes factures ?</strong> 10 ans minimum. L'administration peut contrôler jusqu'à 3 ans, mais mieux vaut être large.</p>
 <p><strong>Que risque-je en cas de facture non conforme ?</strong> Amende de 75€ par facture non conforme. Ça peut vite chiffrer lors d'un contrôle.</p>
 </blockquote>
+
 
 
 

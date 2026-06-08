@@ -1,11 +1,11 @@
 ---
 title: Peut-on créer une association et en vivre ? Statuts, financements et conseils
 slug: 8347-peut-on-creer-une-association-et-en-vivre-statuts-financements-et-conseils-pratiques
-date: 2026-06-03T15:00:00+02:00
-updated: 2026-06-04T14:17:30
+date: 2026-06-03 15:00:00+02:00
+updated: 2026-06-04 14:17:30
 categorie: Création entreprise
-meta_title: "Créer une association et en vivre : le guide"
-meta_description: Découvrez comment créer une association et en vivre grâce aux bons
+meta_title: 'Créer une association et en vivre : le guide'
+meta_description: Découvrez comment créer une association viable et en vivre grâce aux bons statuts juridiques, stratégies de financement et modèles économiques diversifiés.…
 featured_image: /blog/8347-peut-on-creer-une-association-et-en-vivre-statuts-financements-et-conseils-pratiques/featured-44349.jpg
 status: published
 min_words: 1200
@@ -172,4 +172,5 @@ link_anchors:
 <p>Le remboursement compense des dépenses réelles (transport, repas...). La rémunération est un salaire soumis aux charges sociales. Ne confondez pas.</p>
 
 <p>Vivre d'une association, c'est possible mais ça demande du professionnalisme. Commencez petit, diversifiez vos revenus et entourez-vous bien. Le secteur associatif recrute, les opportunités existent.</p>
+
 

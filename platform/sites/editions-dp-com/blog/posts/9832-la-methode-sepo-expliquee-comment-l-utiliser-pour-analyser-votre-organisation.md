@@ -5,7 +5,7 @@ date: 2026-05-31 10:00:00+02:00
 updated: 2026-06-08 09:26:15
 categorie: Gestion d'entreprise
 meta_title: 'SEPO : définition, méthode et exemples'
-meta_description: Découvrez la méthode SEPO (Succès, Échecs, Potentialités, Obstacles)
+meta_description: 'Découvrez la méthode SEPO pour analyser efficacement votre organisation. Grille d''analyse simple et concrète basée sur 4 axes : Succès, Échecs, Potentialités,…'
 featured_image: /blog/9832-la-methode-sepo-expliquee-comment-l-utiliser-pour-analyser-votre-organisation/featured-74981.jpg
 status: published
 min_words: 2500
@@ -288,6 +288,7 @@ link_anchors:
 <p>Absolument. Analysez vos investissements passés (succès/échecs) et identifiez les potentialités futures avec leurs obstacles. Ça donne une grille de lecture très pratique pour arbitrer.</p>
 
 <p>Voilà, j'espère que ce tour d'horizon vous donne envie de tester SEPO dans votre contexte. C'est un outil simple mais puissant quand on l'applique rigoureusement. L'essentiel c'est de passer de l'analyse à l'action rapidement. Sinon on reste dans la réflexion stérile.</p>
+
 
 
 

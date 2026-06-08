@@ -1,11 +1,11 @@
 ---
-title: "Exemple de fiche de paie commenté : décryptage ligne par ligne"
+title: 'Exemple de fiche de paie commenté : décryptage ligne par ligne'
 slug: 2849-exemple-de-fiche-de-paie-commente-decryptage-ligne-par-ligne
-date: 2026-05-25T12:00:00+02:00
-updated: 2026-05-29T15:10:14
+date: 2026-05-25 12:00:00+02:00
+updated: 2026-05-29 15:10:14
 categorie: Ressources Humaines
-meta_title: "Exemple de fiche de paie : comment lire chaque ligne ?"
-meta_description: Découvrez comment lire et vérifier votre fiche de paie grâce à notre
+meta_title: 'Exemple de fiche de paie : comment lire chaque ligne ?'
+meta_description: Découvrez comment décrypter votre fiche de paie ligne par ligne avec des exemples concrets. Apprenez à identifier les erreurs de cotisations, heures…
 featured_image: /blog/2849-exemple-de-fiche-de-paie-commente-decryptage-ligne-par-ligne/featured-9802.jpg
 status: published
 min_words: 2300
@@ -265,4 +265,5 @@ La CSG se calcule sur 98,25% du salaire brut. Si votre salaire varie (heures sup
 Oui, en cas d'erreur avérée. La correction apparaîtra sur une fiche de paie suivante, avec le détail du rappel ou de la retenue. Vous devez être informé et avoir accès aux justificatifs de la modification.</p>
 
 <p>Comprendre sa fiche de paie demande un peu d'effort au début. Mais une fois les bases acquises, vous gagnez en autonomie et en sérénité. Plus d'angoisse devant les chiffres, plus de doutes sur vos droits. Vous savez exactement ce que vous touchez et pourquoi.</p>
+
 

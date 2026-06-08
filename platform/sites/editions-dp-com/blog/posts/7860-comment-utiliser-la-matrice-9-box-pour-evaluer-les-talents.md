@@ -1,11 +1,11 @@
 ---
 title: Comment utiliser la matrice 9 box pour évaluer les talents ?
 slug: 7860-comment-utiliser-la-matrice-9-box-pour-evaluer-les-talents
-date: 2026-05-23T16:00:00+02:00
-updated: 2026-05-29T15:02:46
+date: 2026-05-23 16:00:00+02:00
+updated: 2026-05-29 15:02:46
 categorie: Ressources Humaines
-meta_title: "Matrice 9 box : comment évaluer et gérer vos talents RH"
-meta_description: Découvrez comment utiliser la matrice 9 box pour évaluer vos talents
+meta_title: 'Matrice 9 box : comment évaluer et gérer vos talents RH'
+meta_description: Découvrez la matrice 9 box, l'outil RH développé par McKinsey pour évaluer vos talents en croisant performance et potentiel. Guide complet avec exemples concrets.
 featured_image: /blog/7860-comment-utiliser-la-matrice-9-box-pour-evaluer-les-talents/featured-59117.jpg
 status: published
 min_words: 3000
@@ -257,4 +257,5 @@ link_anchors:
 
 <p><strong>La matrice fonctionne-t-elle dans toutes les entreprises ?</strong></p>
 <p>Elle fonctionne mieux dans les entreprises
+
 

@@ -5,7 +5,7 @@ date: 2026-06-01 11:00:00+02:00
 updated: 2026-06-01 13:49:12
 categorie: Gestion d'entreprise
 meta_title: 'Matrice TOWS : définition et utilisation'
-meta_description: Découvrez la matrice TOWS pour transformer votre analyse SWOT en
+meta_description: Découvrez la matrice TOWS, l'évolution du SWOT qui transforme votre analyse en stratégie concrète. Apprenez à croiser forces, faiblesses, opportunités et menaces…
 featured_image: /blog/8804-matrice-tows-comment-l-utiliser-pour-construire-une-strategie-efficace/featured-47213.jpg
 status: published
 min_words: 2500
@@ -18,6 +18,7 @@ link_anchors:
 - text: matrice tows
   max: 4
 ---
+
 <h2>Qu'est-ce que la matrice TOWS et pourquoi j'ai arrêté de faire du SWOT classique ?</h2>
 
 <p>Vous connaissez forcément l'analyse SWOT. Forces, faiblesses, opportunités, menaces. Je l'ai utilisée pendant des années dans mon entreprise de transport à Lyon. <strong>Le problème</strong> ? On finissait toujours avec une belle liste bien propre qui ne menait à rien de concret.</p>
@@ -379,4 +380,5 @@ link_anchors:
 <p>Dans notre cas, j'ai choisi l'option 1. Deux matrices distinctes, révision simultanée. Ça prend plus de temps, mais les stratégies sont plus pertinentes.</p>
 
 <p>Règle pratique : si vos activités ont moins de 30% de points communs (clients, concurrents, enjeux), faites des matrices séparées.</p>
+
 

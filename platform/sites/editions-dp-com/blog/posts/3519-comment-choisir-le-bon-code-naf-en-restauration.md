@@ -5,7 +5,7 @@ date: 2026-05-13 11:00:00
 updated: 2026-05-13 13:20:34
 categorie: Entreprenariat
 meta_title: Comment choisir le bon code NAF en restauration ?
-meta_description: Découvrez comment choisir le bon code NAF en restauration pour éviter
+meta_description: Découvrez comment choisir le bon code NAF en restauration pour éviter les erreurs coûteuses. Guide complet des codes 5610A, 5610B, 5610C avec exemples pratiques et…
 featured_image: /blog/3519-comment-choisir-le-bon-code-naf-en-restauration/featured-27764.jpg
 status: published
 min_words: 800
@@ -122,5 +122,6 @@ Pas forcément. Si la restauration sur place reste votre activité principale, g
 <p><strong>Le code NAF apparaît-il sur mes factures ?</strong><br>
 Non, ce n'est pas obligatoire. Mais il figure sur tous vos documents officiels (Kbis, etc.).</p>
 </blockquote>
+
 
 

@@ -1,11 +1,11 @@
 ---
 title: Comment améliorer la rétention des talents ?
 slug: 5739-comment-ameliorer-la-retention-des-talents
-date: 2026-05-22T10:00:00+02:00
-updated: 2026-05-22T12:00:06
+date: 2026-05-22 10:00:00+02:00
+updated: 2026-05-22 12:00:06
 categorie: Ressources Humaines
-meta_title: "Rétention des talents : causes de départ et leviers d'action RH"
-meta_description: Découvrez les vraies raisons des démissions et les stratégies concrètes
+meta_title: 'Rétention des talents : causes de départ et leviers d''action RH'
+meta_description: Découvrez les vraies raisons des démissions et 5 stratégies concrètes pour améliorer la rétention des talents. Économisez jusqu'à 50 000€ par départ évité.
 featured_image: /blog/5739-comment-ameliorer-la-retention-des-talents/featured-92518.jpg
 status: published
 min_words: 3000
@@ -290,4 +290,5 @@ link_anchors:
 <p><strong>Comment retenir les jeunes talents qui veulent tout, tout de suite ?</strong></p>
 
 <p>En étant transparent sur les possibilités réelles et en créant un parcours d'évolution clair. Je fixe des étapes intermédiaires : nouvelles responsabilités tous les 6 mois,
+
 

@@ -1,11 +1,11 @@
 ---
-title: "Fiche de paie en ligne : accès, lecture et décryptage"
+title: 'Fiche de paie en ligne : accès, lecture et décryptage'
 slug: 6829-fiche-de-paie-en-ligne-acces-lecture-et-decryptage
-date: 2026-05-24T11:00:00+02:00
-updated: 2026-06-01T13:02:56
+date: 2026-05-24 11:00:00+02:00
+updated: 2026-06-01 13:02:56
 categorie: Ressources Humaines
-meta_title: "Fiche de paie en ligne : comment y accéder et la comprendre ?"
-meta_description: Accédez facilement à votre fiche de paie en ligne et apprenez à
+meta_title: 'Fiche de paie en ligne : comment y accéder et la comprendre ?'
+meta_description: Découvrez comment accéder et décrypter votre fiche de paie en ligne facilement. Guide complet pour comprendre vos bulletins dématérialisés et optimiser leur lecture.
 featured_image: /blog/6829-fiche-de-paie-en-ligne-acces-lecture-et-decryptage/featured-69191.jpg
 status: published
 min_words: 2500
@@ -244,4 +244,5 @@ link_anchors:
 <h3>Comment récupérer une fiche de paie perdue ou supprimée par erreur ?</h3>
 
 <p>Vérifiez d'abord votre corbeille ou dossier de téléchargements. Reconnectez-vous au portail RH, parfois simple problème de synchronisation. Sinon, demandez une régénération au service paie de votre entreprise.</p>
+
 

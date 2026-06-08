@@ -5,7 +5,7 @@ date: 2026-05-13 10:00:00
 updated: 2026-05-13 13:53:01
 categorie: Salarié
 meta_title: 'Licenciement pour faute : avez-vous droit au chômage ?'
-meta_description: Licencié pour faute simple ou grave ? Découvrez si vous avez droit
+meta_description: 'Licencié pour faute simple, grave ou lourde : découvrez vos droits aux allocations chômage selon le type de faute commise et les conditions d''indemnisation par…'
 featured_image: /blog/5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage/featured-77280.jpg
 status: published
 min_words: 1000
@@ -18,6 +18,7 @@ link_anchors:
 - text: licenciement pour faute
   max: 10
 ---
+
 <h2>Licenciement pour faute : vos droits aux allocations chômage expliqués</h2>
 
 <p>On vient de me poser cette question la semaine dernière lors d'une réunion avec mes équipes. L'un de nos anciens salariés avait été licencié pour faute et se demandait s'il pouvait toucher le chômage. <strong>La réponse n'est pas si simple</strong> et dépend du type de faute commise.</p>
@@ -129,5 +130,6 @@ link_anchors:
 <p><strong>Que se passe-t-il si je conteste mon licenciement aux prud'hommes ?</strong> Vos droits au chômage ne sont pas suspendus pendant la procédure. Si vous gagnez et que le licenciement est requalifié, vous pourriez même récupérer des indemnités.</p>
 
 <p>En résumé : <strong>un licenciement pour faute ne vous prive pas automatiquement du chômage.</strong> Seules des situations très spécifiques peuvent vous en exclure. Mon expérience me montre que Pôle emploi applique généralement le principe du bénéfice du doute au salarié.</p>
+
 
 

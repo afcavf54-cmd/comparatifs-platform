@@ -1,11 +1,11 @@
 ---
 title: Comment réussir un succession planning en entreprise ?
 slug: 8767-comment-reussir-un-succession-planning-en-entreprise
-date: 2026-05-23T15:00:00+02:00
-updated: 2026-05-29T15:00:40
+date: 2026-05-23 15:00:00+02:00
+updated: 2026-05-29 15:00:40
 categorie: Ressources Humaines
-meta_title: "Succession planning : définition, étapes et mise en œuvre RH"
-meta_description: Découvrez comment mettre en place un succession planning efficace
+meta_title: 'Succession planning : définition, étapes et mise en œuvre RH'
+meta_description: Découvrez comment mettre en place un succession planning efficace en TPE pour éviter les crises de départ et sécuriser votre entreprise. Méthodes concrètes et…
 featured_image: /blog/8767-comment-reussir-un-succession-planning-en-entreprise/featured-35548.jpg
 status: published
 min_words: 3000
@@ -305,4 +305,5 @@ link_anchors:
 <p>Le succession planning transforme votre approche RH. Plus de panique face aux départs, plus de gestion de crise permanente. Vous anticipez, vous préparez, vous sécurisez.</p>
 
 <p>Mon conseil final ? <strong>Commencez petit mais commencez maintenant.</strong> Identifiez vos trois postes les plus critiques, trouvez un successeur pour chacun, et lancez leur formation. Dans 18 mois, vous me remercierez.</p>
+
 

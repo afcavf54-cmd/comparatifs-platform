@@ -5,7 +5,7 @@ date: 2026-05-16 10:00:00+02:00
 updated: 2026-05-17 19:51:15
 categorie: Salarié
 meta_title: 'Comité d''entreprise Adecco : avantages intérimaires et salariés'
-meta_description: Découvrez comment accéder aux avantages du comité d'entreprise Adecco,
+meta_description: 'Découvrez comment accéder aux avantages du comité d''entreprise Adecco : conditions d''éligibilité, prestations pour intérimaires et salariés permanents, démarches…'
 featured_image: /blog/1054-comment-acceder-aux-avantages-du-comite-d-entreprise-adecco/featured-52131.jpg
 status: published
 min_words: 750
@@ -97,5 +97,6 @@ Certains oui, d'autres non. Les chèques-vacances sont exonérés dans certaines
 Il existe des procédures de recours. Adressez-vous d'abord au secrétaire du CE, puis aux représentants du personnel si besoin.</p>
 
 <p>Le comité d'entreprise Adecco offre des avantages réels, même s'ils restent plus limités que dans certaines grandes entreprises. Pour un intérimaire, c'est déjà un plus non négligeable. L'important, c'est de bien comprendre les règles du jeu et de ne pas hésiter à poser des questions.</p>
+
 
 

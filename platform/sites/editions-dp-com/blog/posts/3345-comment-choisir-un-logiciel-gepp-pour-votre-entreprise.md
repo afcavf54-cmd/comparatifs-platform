@@ -1,11 +1,11 @@
 ---
 title: Comment choisir un logiciel GEPP pour votre entreprise ?
 slug: 3345-comment-choisir-un-logiciel-gepp-pour-votre-entreprise
-date: 2026-05-20T09:00:00+02:00
-updated: 2026-05-20T15:38:46
+date: 2026-05-20 09:00:00+02:00
+updated: 2026-05-20 15:38:46
 categorie: Ressources Humaines
-meta_title: "Logiciel GEPP : pilotez vos emplois et parcours professionnels"
-meta_description: Découvrez comment choisir le bon logiciel GEPP pour votre entreprise.
+meta_title: 'Logiciel GEPP : pilotez vos emplois et parcours professionnels'
+meta_description: Découvrez comment choisir le logiciel GEPP idéal pour cartographier les compétences, anticiper les départs et optimiser la gestion des emplois dans votre entreprise.
 featured_image: /blog/3345-comment-choisir-un-logiciel-gepp-pour-votre-entreprise/featured-21250.jpg
 status: published
 min_words: 2000
@@ -236,4 +236,5 @@ Vérifiez la portabilité des données. Droit à l'export complet en format stan
 Pour les entreprises de plus de 300 salariés, la GEPP est obligatoire tous les trois ans. Négociation avec les représentants du personnel. En dessous, c'est optionnel mais recommandé.</p>
 
 <p>Au final, choisir un logiciel GEPP n'est pas qu'une décision technique. C'est un investissement dans l'avenir de votre équipe. Prenez le temps de bien définir vos besoins. Testez plusieurs solutions. Et surtout, impliquez vos collaborateurs dès le début du projet.</p>
+
 

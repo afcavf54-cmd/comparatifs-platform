@@ -1,11 +1,11 @@
 ---
-title: "Pappers : Où puis-je trouver le RCS d'une entreprise ?"
+title: 'Pappers : Où puis-je trouver le RCS d''une entreprise ?'
 slug: 2256-pappers-ou-puis-je-trouver-le-rcs-d-une-entreprise
-date: 2026-05-11T15:00:42.406208
-updated: 2026-05-12T09:13:23
+date: 2026-05-11 15:00:42.406208
+updated: 2026-05-12 09:13:23
 categorie: Entreprenariat
 meta_title: Où trouver le numéro RCS d’une entreprise sur ?
-meta_description: Découvrez comment trouver facilement le numéro RCS d'une entreprise
+meta_description: Découvrez comment trouver rapidement le RCS d'une entreprise avec Pappers. Recherche gratuite dans 15 millions d'entreprises françaises, données officielles à jour…
 featured_image: /blog/2256-pappers-ou-puis-je-trouver-le-rcs-d-une-entreprise/featured-84640.png
 status: published
 min_words: 750
@@ -116,5 +116,6 @@ Pappers diffuse les données officielles mais pour un usage juridique strict (tr
 
 <p><strong>Puis-je rechercher une entreprise avec son ancienne dénomination ?</strong><br>
 Pappers conserve l'historique des dénominations. Vous pouvez donc retrouver une société même si elle a changé de nom récemment.</p>
+
 
 
