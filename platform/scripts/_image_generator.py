@@ -104,6 +104,14 @@ def _build_prompt(site_name: str, primary_color: str, secondary_color: str,
                    cta_color: str, article_title: str) -> str:
     """Construit le prompt OpenAI en suivant exactement la structure validée
     par Julien. Ne pas modifier sans accord."""
+    # Note importante : gpt-image-1 a une forte tendance à inventer du texte
+    # gribouillé sur les images même quand on demande "pas de texte". Pour
+    # contrer ça efficacement il faut :
+    #   1. Répéter l'interdiction en français ET en anglais (le modèle comprend
+    #      les deux et la redondance bilingue augmente le respect de la consigne)
+    #   2. Lister explicitement ce qui est interdit (lettres, mots, chiffres,
+    #      labels, watermark) plutôt que juste "pas de texte"
+    #   3. Mettre la consigne en MAJUSCULES + en fin de prompt (priorité forte)
     return f"""Pour le site "{site_name}"
 
  Couleur principale : {primary_color}
@@ -112,7 +120,13 @@ def _build_prompt(site_name: str, primary_color: str, secondary_color: str,
 
  Peux tu me générer une image pour illustrer cet article : "{article_title}"
 
- Evite de mettre trop de texte sur l'image. JE VEUX UNE IMAGE STYLE ILLUSTRATION"""
+ JE VEUX UNE IMAGE STYLE ILLUSTRATION.
+
+ CONSIGNE ABSOLUE : AUCUN TEXTE sur l'image. Aucune lettre, aucun mot, aucun
+ chiffre, aucun label, aucun titre, aucun watermark, aucun logo. Image
+ purement visuelle, 100% sans texte.
+ ABSOLUTE RULE: NO TEXT in the image. No letters, no words, no numbers, no
+ labels, no captions, no watermarks. Pure visual illustration only."""
 
 
 def _call_openai_gpt_image(prompt: str) -> bytes:
@@ -124,7 +138,7 @@ def _call_openai_gpt_image(prompt: str) -> bytes:
         "model": OPENAI_MODEL,
         "prompt": prompt,
         "size": "1536x1024",   # paysage, idéal featured image
-        "quality": "high",     # qualité publication pro (~$0.166/image)
+        "quality": "medium",   # bon compromis qualité/coût (~$0.042/image)
         "n": 1,
     }).encode("utf-8")
     req = urllib.request.Request(
