@@ -44,13 +44,16 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install dependencies
+        # pillow + piexif : utilisés par _image_generator.py pour la conversion
+        # PNG -> JPG compressee + injection des EXIF "photo prise a Paris".
         run: |
           python -m pip install --upgrade pip
-          pip install pyyaml
+          pip install pyyaml pillow piexif
       - name: Publier les articles programmés
         id: publish
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           FORCE_TITLES: ${{ inputs.force_titles }}
         run: python platform/scripts/blog_publish_scheduled.py
 
@@ -63,6 +66,7 @@ jobs:
         id: publish_avis
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           FORCE_TITLES: ${{ inputs.force_titles }}
         run: |
           if [ -f platform/scripts/avis_publish_scheduled.py ]; then
