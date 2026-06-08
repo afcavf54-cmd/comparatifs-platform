@@ -1,0 +1,110 @@
+name: Backfill — régénérer les meta descriptions trop courtes
+on:
+  workflow_dispatch:
+    inputs:
+      site:
+        description: 'Limiter à un site (vide = tous)'
+        required: false
+        type: string
+        default: ''
+      threshold:
+        description: 'Longueur min en caractères (en dessous → régénère)'
+        required: false
+        type: string
+        default: '130'
+      limit:
+        description: 'Nombre max de meta à régénérer (garde-fou budget Claude)'
+        required: false
+        type: string
+        default: '100'
+      dry_run:
+        description: 'Dry-run : juste afficher ce qui serait fait, sans appeler Claude'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      TZ: 'Europe/Paris'
+    concurrency:
+      group: backfill-meta-${{ github.repository }}
+      cancel-in-progress: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+
+      - name: Régénérer les meta descriptions
+        id: backfill
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SITE: ${{ inputs.site }}
+          LIMIT: ${{ inputs.limit }}
+          THRESHOLD: ${{ inputs.threshold }}
+          DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+        run: python platform/scripts/backfill_meta_descriptions.py
+
+      - name: Commit les meta régénérées
+        if: ${{ steps.backfill.outputs.sites_to_deploy != '' && !inputs.dry_run }}
+        run: |
+          git config user.name "Viseoweb HUB"
+          git config user.email "hub@viseoweb.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git add platform/sites/
+          if git diff --cached --quiet; then
+            echo "Rien à commit"
+            exit 0
+          fi
+          git commit -m "Backfill: ${{ steps.backfill.outputs.metas_regenerated }} meta description(s) régénérée(s)"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            if ! git rebase -X theirs origin/main; then
+              git rebase --abort || true
+              echo "❌ Rebase impossible — abandon"
+              exit 1
+            fi
+            if git push 2>&1 | tee /tmp/push.log; then
+              echo "✓ Push réussi (tentative $attempt)"
+              exit 0
+            fi
+            echo "⚠ Push rejeté (tentative $attempt), retry..."
+            sleep $((attempt * 5))
+          done
+          echo "❌ Push échoué après 5 tentatives"
+          exit 1
+
+      - name: Déclencher le redéploiement
+        if: ${{ steps.backfill.outputs.sites_to_deploy != '' && !inputs.dry_run }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          IFS=',' read -ra SITES <<< "${{ steps.backfill.outputs.sites_to_deploy }}"
+          for site in "${SITES[@]}"; do
+            echo "🚀 Déclenchement du déploiement pour $site"
+            gh workflow run generate-scpi.yml \
+              -f site="$site" \
+              -f skip_enrich=true || echo "⚠ Échec déclenchement $site"
+          done
+
+      - name: Résumé
+        if: always()
+        run: |
+          echo "=== Backfill meta terminé ==="
+          echo "Seuil : ${{ inputs.threshold }} caractères"
+          echo "Sites traités : ${{ steps.backfill.outputs.sites_to_deploy }}"
+          echo "Metas régénérées : ${{ steps.backfill.outputs.metas_regenerated }}"
+          echo "Dry-run : ${{ inputs.dry_run }}"
