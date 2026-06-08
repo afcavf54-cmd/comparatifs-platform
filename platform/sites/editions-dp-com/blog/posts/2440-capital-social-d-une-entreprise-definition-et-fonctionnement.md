@@ -2,7 +2,7 @@
 title: "Capital social d'une entreprise : définition et fonctionnement"
 slug: 2440-capital-social-d-une-entreprise-definition-et-fonctionnement
 date: 2026-05-30T12:00:00+02:00
-updated: 2026-06-01T13:43:16
+updated: 2026-06-08T09:25:52
 categorie: Création entreprise
 meta_title: "Qu'est-ce que le capital social d'une entreprise ?"
 meta_description: "Découvrez le capital social d'une entreprise : définition complète, fonctionnement pratique et impact sur votre pouvoir de décision et crédibilité."
@@ -16,7 +16,7 @@ related_posts:
 - 2986-comment-creer-un-produit-de-a-a-z-methode-etapes-cles-et-conseils-pratiques
 link_anchors:
 - text: "capital social d'une entreprise"
-  max: 2
+  max: 5
 ---
 
 <h2>Qu'est-ce que le capital social d'une entreprise ?</h2>
@@ -115,4 +115,5 @@ link_anchors:
 <p>Enfin, documentez scrupuleusement tous les apports. Gardez les justificatifs de virements, les factures d'achat du matériel apporté et les attestations d'évaluation. Ces pièces vous seront utiles lors des contrôles comptables et fiscaux.</p>
 
 <p>Le capital social reste un pilier fondamental de votre entreprise. Bien pensé dès le départ, il facilitera votre développement et renforcera votre crédibilité. Mal calibré, il peut devenir un frein à votre croissance pendant des années.</p>
+
 
