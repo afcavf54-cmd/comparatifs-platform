@@ -4,14 +4,20 @@ slug: 8103-horaires-decales-ce-que-dit-le-code-du-travail-sur-vos-droits-et-obli
 date: '2026-06-08T11:00:00+02:00'
 categorie: Salarié
 meta_title: 'Horaire décalé et code du travail : vos droits'
-meta_description: 'Découvrez vos droits et obligations sur les horaires décalés selon le code du travail. Travail de nuit, équipes matinales, horaires variables : ce que dit la loi…'
+meta_description: 'Découvrez vos droits et obligations sur les horaires décalés selon
+  le code du travail. Travail de nuit, équipes matinales, horaires variables : ce
+  que dit la loi…'
 min_words: 1200
 status: published
 link_anchors:
 - text: horaire décalé dans le code du travail
   max: 4
+related_posts:
+- 3068-quels-sont-les-services-du-comite-d-entreprise-allianz
+- 1778-comment-fonctionne-le-comite-d-entreprise-loxam
+- 8080-quels-sont-les-avantages-du-comite-d-entreprise-mma
+- 1054-comment-acceder-aux-avantages-du-comite-d-entreprise-adecco
 ---
-
 <h2>Qu'est-ce qu'on entend par horaires décalés au travail ?</h2>
 
 <p>Les horaires décalés, ça couvre en fait plusieurs situations. On parle généralement de tout ce qui sort des horaires classiques 9h-17h. Ça peut être du travail de nuit, des équipes qui commencent très tôt le matin, ou encore des horaires variables selon les besoins de l'entreprise.</p>

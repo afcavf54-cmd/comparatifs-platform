@@ -4,14 +4,20 @@ slug: 2133-comment-automatiser-la-facturation-avec-billmatic-auto
 date: '2026-06-08T12:00:00+02:00'
 categorie: Comptabilité
 meta_title: Comment automatiser la facturation avec Billmatic Auto
-meta_description: 'Découvrez Billmatic Auto pour automatiser votre facturation : retour d''expérience après 2 ans d''utilisation, configuration simple en 20 minutes et gain de temps…'
+meta_description: 'Découvrez Billmatic Auto pour automatiser votre facturation : retour
+  d''expérience après 2 ans d''utilisation, configuration simple en 20 minutes et
+  gain de temps…'
 min_words: 930
 status: published
 link_anchors:
 - text: comment automatiser sa facturation avec Billmatic Auto
   max: 1
+related_posts:
+- 2138-comptabiliser-une-provision-pour-depreciation-des-stocks
+- 6027-application-facturation-invoicepro-x3-quel-temps-de-traitement-prevoir
+- 7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir
+- 4708-cnam-intec-presentation-de-l-institut-national-des-techniques-economiques-et-comptables
 ---
-
 <h2>Billmatic Auto : mon retour d'expérience après 2 ans d'utilisation</h2>
 
 <p>Je vais être franc avec vous. Quand j'ai découvert Billmatic Auto il y a deux ans, j'étais sceptique. Encore un énième logiciel de facturation qui promet monts et merveilles ? J'avais déjà testé plusieurs solutions qui m'avaient déçu. Mais là, j'ai été <strong>agréablement surpris</strong>.</p>

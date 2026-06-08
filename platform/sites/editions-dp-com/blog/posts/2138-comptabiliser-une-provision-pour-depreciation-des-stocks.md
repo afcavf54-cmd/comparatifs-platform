@@ -10,9 +10,10 @@ featured_image: /blog/2138-comptabiliser-une-provision-pour-depreciation-des-sto
 status: published
 min_words: 900
 related_posts:
+- 7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir
 - 6027-application-facturation-invoicepro-x3-quel-temps-de-traitement-prevoir
 - 4708-cnam-intec-presentation-de-l-institut-national-des-techniques-economiques-et-comptables
-- 7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir
+- 2133-comment-automatiser-la-facturation-avec-billmatic-auto
 ---
 <h2>Pourquoi prévoir une dépréciation de stock dans sa comptabilité</h2>
 
