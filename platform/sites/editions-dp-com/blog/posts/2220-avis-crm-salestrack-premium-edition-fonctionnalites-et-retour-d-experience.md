@@ -2,7 +2,7 @@
 title: "Avis CRM SalesTrack Premium Edition : fonctionnalités et retour d'expérience"
 slug: 2220-avis-crm-salestrack-premium-edition-fonctionnalites-et-retour-d-experience
 date: 2026-06-06T07:00:00+02:00
-updated: 2026-06-08T09:21:50
+updated: 2026-06-08T11:34:26
 categorie: "Gestion d'entreprise"
 meta_title: "Avis CRM SalesTrack Premium Edition : test complet et prix"
 meta_description: Découvrez mon test complet de SalesTrack Premium Edition après 6
@@ -16,7 +16,7 @@ related_posts:
 - 8804-matrice-tows-comment-l-utiliser-pour-construire-une-strategie-efficace
 link_anchors:
 - text: les avis sur le CRM SalesTrack Premium Edition
-  max: 1
+  max: 5
 ---
 
 <h2>Mon test de CRM SalesTrack Premium Edition : ce qui fonctionne et ce qui coince</h2>
@@ -185,4 +185,5 @@ Une session de formation de 2 heures est incluse. Après, c'est 150€/heure de 
 
 <p><strong>Combien d'utilisateurs maximum ?</strong><br>
 Pas de limite technique, mais au-delà de 10 utilisateurs, les performances se dégradent.</p>
+
 
