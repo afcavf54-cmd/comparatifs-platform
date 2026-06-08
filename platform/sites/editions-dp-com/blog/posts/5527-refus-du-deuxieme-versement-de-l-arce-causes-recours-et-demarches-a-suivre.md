@@ -4,15 +4,21 @@ slug: 5527-refus-du-deuxieme-versement-de-l-arce-causes-recours-et-demarches-a-s
 date: '2026-06-08T23:00:00+02:00'
 categorie: Création entreprise
 meta_title: 'Refus 2ᵉ versement ARCE : que faire ?'
-meta_description: Découvrez pourquoi le deuxième versement ARCE peut être refusé par Pôle emploi et les démarches pour contester cette décision. Guide complet avec causes, recours…
+meta_description: Découvrez pourquoi le deuxième versement ARCE peut être refusé par
+  Pôle emploi et les démarches pour contester cette décision. Guide complet avec causes,
+  recours…
 min_words: 1800
 status: published
 featured_image: /blog/5527-refus-du-deuxieme-versement-de-l-arce-causes-recours-et-demarches-a-suivre.jpg
 link_anchors:
 - text: refus du deuxième versement de l'arce
   max: 4
+related_posts:
+- 2581-micro-entreprise-ou-entreprise-individuelle-quelle-difference
+- 9835-statut-juridique-d-une-entreprise-lequel-choisir-en-year
+- 1909-avance-sur-dividendes-en-sasu-fonctionnement-conditions-et-risques-a-connaitre
+- 2626-creer-son-entreprise-en-ligne-gratuitement-est-ce-possible
 ---
-
 <h2>Comprendre l'ARCE et ses versements</h2>
 
 <p>L'ARCE, ou Aide à la Reprise et à la Création d'Entreprise, représente une opportunité intéressante pour financer votre projet entrepreneurial. Depuis mes 11 ans d'expérience en tant que dirigeant, j'ai accompagné plusieurs porteurs de projet dans ces démarches. Le principe paraît simple : Pôle emploi vous verse <strong>45% de vos droits restants</strong> sous forme de capital.</p>
