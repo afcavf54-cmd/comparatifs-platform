@@ -124,7 +124,7 @@ def _call_openai_gpt_image(prompt: str) -> bytes:
         "model": OPENAI_MODEL,
         "prompt": prompt,
         "size": "1536x1024",   # paysage, idéal featured image
-        "quality": "low",      # style illustration → suffit largement
+        "quality": "high",     # qualité publication pro (~$0.166/image)
         "n": 1,
     }).encode("utf-8")
     req = urllib.request.Request(
