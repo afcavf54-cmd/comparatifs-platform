@@ -1,23 +1,24 @@
 ---
 title: Comment utiliser la matrice 9 box pour gérer les talents ?
 slug: 6542-comment-utiliser-la-matrice-9-box-pour-gerer-les-talents
-date: '2026-06-02T05:00:00+02:00'
+date: 2026-06-02T05:00:00+02:00
+updated: 2026-06-08T12:34:40
 categorie: Ressources Humaines
-meta_title: 'Matrice 9 box : comment évaluer le potentiel des collaborateurs efficacement'
+meta_title: "Matrice 9 box : comment évaluer le potentiel des collaborateurs efficacement"
 meta_description: Découvrez la matrice 9 box pour gérer les talents avec un retour
-  d'expérience concret. Guide pratique pour évaluer performance et potentiel de vos
-  collaborateurs.
-min_words: 3000
+featured_image: /blog/6542-comment-utiliser-la-matrice-9-box-pour-gerer-les-talents/featured-76941.jpg
 status: published
-link_anchors:
-- text: matrice 9 box
-  max: 2
+min_words: 3000
 related_posts:
 - 7364-comment-construire-une-marque-employeur-attractive
 - 6596-comment-realiser-une-cartographie-des-competences-efficace
 - 8168-comment-ameliorer-la-gestion-des-talents-rh-en-entreprise
 - 9121-comment-mettre-en-place-une-strategie-de-talent-management
+link_anchors:
+- text: matrice 9 box
+  max: 2
 ---
+
 <h2>La matrice 9 box : mon retour d'expérience après deux ans d'utilisation</h2>
 
 <p>Je vais être franc avec vous. Quand mon DRH m'a parlé de la matrice 9 box pour la première fois, j'ai pensé que c'était encore un de ces outils RH compliqués qui allaient me faire perdre du temps. J'avais tort. Après deux ans d'utilisation dans mon entreprise de 350 salariés, je peux vous dire que cet <a href="https://www.digicube.fr/meilleur-logiciel-de-gestion-des-talents">outil de gestion des talents</a> m'a vraiment aidé à y voir plus clair sur mon équipe.</p>
@@ -302,3 +303,4 @@ related_posts:
 <p>Voilà mon retour d'expérience sur la matrice 9 box. C'est un outil puissant mais qui demande de la rigueur et du temps. <strong>Deux ans après, je ne peux plus m'en passer pour gérer les évolutions de mon équipe.</strong> Mais attention, ce n'est qu'un outil. Il ne remplace pas le bon sens et la connaissance de vos collaborateurs.</p>
 
 <p>Si vous débutez, allez-y progressivement. Testez sur quelques personnes, affinez votre méthode, puis étendez. Et surtout, concentrez-vous sur les plans d'action. C'est là que vous ferez la différence en tant que manager.</p>
+
