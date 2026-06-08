@@ -51,6 +51,14 @@ from pathlib import Path
 
 import yaml
 
+# Génération d'image à la une via OpenAI gpt-image-1 (optionnel : si le module
+# ou OPENAI_API_KEY est absent, on continue sans image).
+try:
+    sys.path.insert(0, str(Path(__file__).parent))
+    from _image_generator import generate_featured_image  # type: ignore
+except Exception:
+    generate_featured_image = None  # type: ignore
+
 ROOT = Path(__file__).parent.parent
 SITES_DIR = ROOT / "sites"
 
@@ -472,6 +480,29 @@ def sync_metadata_from_sheet(posts_dir: Path, rows: list[dict]) -> int:
 
 # ─── Traitement d'un site ────────────────────────────────────────────────
 
+def _extract_site_colors(config: dict) -> tuple[str, str, str]:
+    """Extrait (primary, secondary, cta) du theme du config.yaml avec
+    fallbacks raisonnables. Utilisé pour le prompt de génération d'image
+    afin que chaque image respecte la charte du site."""
+    theme = config.get("theme") or {}
+    primary = (
+        theme.get("accent")
+        or theme.get("primary")
+        or "#1E5F8B"
+    )
+    secondary = (
+        theme.get("accent2")
+        or theme.get("secondary")
+        or "#FFB200"
+    )
+    cta = (
+        theme.get("cta_color")
+        or config.get("cta_color")
+        or "#FF6B35"
+    )
+    return primary, secondary, cta
+
+
 def get_config_value(config: dict, key: str):
     if key in config:
         return config[key]
@@ -602,6 +633,33 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
             continue
         print("✓")
 
+        # ── Génération de l'image à la une via OpenAI ───────────────────
+        # On la fait ICI (avant la meta) car en cas d'échec image on garde
+        # quand même l'article. featured_image vaut None si OPENAI_API_KEY
+        # est absente, si l'API plante, ou si le module image n'est pas
+        # importable (cf. try/except en haut du fichier).
+        featured_image_rel: str | None = None
+        if generate_featured_image is not None:
+            primary, secondary, cta = _extract_site_colors(config)
+            site_name = (config.get("site") or {}).get("name", "") or site_id
+            print(f"   🎨 Génération image (low quality)...", end=" ", flush=True)
+            jpg_bytes = generate_featured_image(
+                site_name=site_name,
+                primary_color=primary,
+                secondary_color=secondary,
+                cta_color=cta,
+                article_title=title,
+            )
+            if jpg_bytes:
+                img_dir = site_dir / "public" / "blog" / slug
+                img_dir.mkdir(parents=True, exist_ok=True)
+                img_path = img_dir / "featured.jpg"
+                img_path.write_bytes(jpg_bytes)
+                featured_image_rel = f"/blog/{slug}/featured.jpg"
+                print(f"✓ ({len(jpg_bytes) // 1024} KB)")
+            else:
+                print("⚠ (sans image)")
+
         meta_desc_raw = row.get("meta_description", "").strip()
         if not meta_desc_raw:
             print(f"   ✨ Génération meta description...", end=" ", flush=True)
@@ -618,6 +676,11 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
             "min_words": min_words,
             "status": "published",
         }
+        # Référence vers l'image à la une si elle a bien été générée.
+        # Le générateur (generate.py) copie tout public/ vers output/ au build,
+        # donc /blog/<slug>/featured.jpg est servi automatiquement par Cloudflare.
+        if featured_image_rel:
+            fm["featured_image"] = featured_image_rel
         if link_anchors_raw:
             anchors_parsed = _parse_anchors_csv(link_anchors_raw)
             if anchors_parsed:
