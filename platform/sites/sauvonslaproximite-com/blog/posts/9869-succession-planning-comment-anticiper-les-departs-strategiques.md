@@ -1,23 +1,24 @@
 ---
-title: 'Succession planning : comment anticiper les départs stratégiques ?'
+title: "Succession planning : comment anticiper les départs stratégiques ?"
 slug: 9869-succession-planning-comment-anticiper-les-departs-strategiques
-date: '2026-06-01T16:00:00+02:00'
+date: 2026-06-01T16:00:00+02:00
+updated: 2026-06-08T13:21:46
 categorie: Ressources Humaines
-meta_title: 'Succession planning : comment anticiper les départs clés en entreprise'
+meta_title: "Succession planning : comment anticiper les départs clés en entreprise"
 meta_description: Découvrez comment mettre en place une succession planning efficace
-  pour anticiper les départs stratégiques et éviter les crises organisationnelles
-  dans votre…
-min_words: 3000
+featured_image: /blog/9869-succession-planning-comment-anticiper-les-departs-strategiques/featured-97377.jpg
 status: published
-link_anchors:
-- text: succession planning
-  max: 2
+min_words: 3000
 related_posts:
 - 3445-logiciel-gepp-quelles-fonctionnalites-comparer
 - 5779-retention-des-talents-comment-limiter-le-turnover
 - 4687-definition-de-la-gestion-des-talents-tout-comprendre
 - 6041-strategie-de-gestion-des-talents-comment-structurer-votre-politique-rh
+link_anchors:
+- text: succession planning
+  max: 2
 ---
+
 <h2>Pourquoi la succession planning devient urgente dans un contexte de départs massifs ?</h2>
 
 <p>Je vois chaque jour dans mon métier l'impact des départs non anticipés sur les organisations. Quand notre directeur financier a annoncé son départ avec seulement un mois de préavis, on s'est retrouvés dans une situation compliquée. Les processus de clôture mensuelle, la relation avec l'expert-comptable, la gestion de trésorerie... tout reposait sur ses épaules.</p>
@@ -222,3 +223,4 @@ La GEPP (Gestion des Emplois et Parcours Professionnels) est plus large que la s
 <p>La succession planning n'est plus un luxe pour les grandes entreprises. C'est devenu une nécessité opérationnelle pour toute organisation qui veut préserver sa performance face aux départs stratégiques. Les outils existent, les méthodes sont éprouvées. Il ne manque que la volonté de s'y mettre sérieusement.</p>
 
 <p>Mon conseil final : commencez petit mais commencez maintenant. Une succession planning imparfaite vaut mieux qu'une absence totale de préparation. Et les premiers résultats vous donneront l'élan nécessaire pour développer progressivement votre dispositif.</p>
+
