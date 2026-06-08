@@ -25,7 +25,8 @@ Format attendu du CSV (colonnes) :
     meta_description   (optionnel)
     nombre_mots_minimum  (optionnel, défaut 750, plage 300-3000)
     link_anchors       (optionnel, ancres acceptant cet article comme cible
-                        depuis d'autres articles — format "ancre1:5;ancre2:3")
+                        depuis d'autres articles — format "ancre1:5;ancre2:3".
+                        Si pas de nombre après l'ancre, défaut = 5.)
     mots_imposes       (optionnel, mots/expressions obligatoires DANS cet
                         article — séparés par virgule ou point-virgule. Favorise
                         le maillage entrant : ces mots seront détectés comme
@@ -45,10 +46,6 @@ import urllib.error
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-# Toutes les comparaisons de date/heure du script utilisent Europe/Paris pour
-# que les heures de publication tapées dans la sheet (en heure de Paris)
-# correspondent à ce que voit Julien, indépendamment du timezone du serveur
-# GitHub Actions (UTC par défaut).
 PARIS = ZoneInfo("Europe/Paris")
 from pathlib import Path
 
@@ -83,18 +80,11 @@ def add_random_prefix(slug: str, existing: set[str]) -> str:
 
 
 def fetch_csv(url: str) -> list[dict]:
-    """Télécharge un CSV public et le parse en liste de dicts. Tolère les erreurs réseau.
-
-    Auto-correction de l'URL : Google Sheets publie soit en /pubhtml (page web)
-    soit en /pub?output=csv (CSV brut). On force vers le format CSV si l'URL
-    est sous la forme /pubhtml."""
     if not url:
         return []
-    # /pubhtml → /pub?output=csv
     if '/pubhtml' in url:
         url = re.sub(r'/pubhtml(\?[^#]*)?(#.*)?$', '/pub?output=csv', url)
         print(f"   ℹ URL normalisée → {url[:80]}...")
-    # Si /pub sans output=csv, on l'ajoute
     elif re.search(r'/pub(\?|$)', url) and 'output=csv' not in url:
         if '?' in url:
             url = url + '&output=csv'
@@ -110,21 +100,13 @@ def fetch_csv(url: str) -> list[dict]:
     reader = csv.DictReader(io.StringIO(raw))
     rows: list[dict] = []
     for row in reader:
-        # Nettoie les clés (espaces, BOM)
         rows.append({(k or "").strip(): (v or "").strip() for k, v in row.items() if k})
     return rows
 
 
 def parse_pub_datetime(date_str: str, time_str: str = "09:00") -> datetime | None:
-    """Parse 'YYYY-MM-DD' + 'HH:MM' → datetime aware en Europe/Paris.
-
-    L'heure tapée par l'utilisateur dans la sheet est en heure de Paris.
-    On retourne une datetime aware pour que la comparaison avec `datetime.now(PARIS)`
-    soit correcte indépendamment du timezone du serveur GitHub Actions.
-    """
     if not date_str:
         return None
-    # Date
     for fmt in ("%Y-%m-%d", "%d/%m/%Y", "%Y/%m/%d", "%d-%m-%Y"):
         try:
             d = datetime.strptime(date_str.strip(), fmt)
@@ -133,7 +115,6 @@ def parse_pub_datetime(date_str: str, time_str: str = "09:00") -> datetime | Non
             continue
     else:
         return None
-    # Heure
     ts = (time_str or "09:00").strip() or "09:00"
     hour, minute, second = 9, 0, 0
     parsed_time = False
@@ -145,23 +126,10 @@ def parse_pub_datetime(date_str: str, time_str: str = "09:00") -> datetime | Non
             break
         except ValueError:
             continue
-    # On rend la datetime aware Paris (gère automatiquement CET/CEST)
     return d.replace(hour=hour, minute=minute, second=second, tzinfo=PARIS)
 
 
 def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000) -> str:
-    """Appelle l'API Anthropic en mode STREAMING et retourne la réponse texte complète.
-
-    Le streaming a deux avantages :
-      1. Aucun timeout global possible : la connexion HTTP reste vivante tant que
-         le serveur envoie des chunks. Un article de 5000 mots peut prendre 3-4 min
-         sans risquer un "read timeout" comme avec une requête non-streamée.
-      2. Plus économe en mémoire côté serveur Anthropic, ce qui réduit aussi la
-         latence perçue côté client.
-
-    On agrège les `content_block_delta` (type=text_delta) pour reconstruire le
-    texte final. Retry avec backoff sur erreurs réseau, identique à avant.
-    """
     if not ANTHROPIC_API_KEY:
         raise RuntimeError("ANTHROPIC_API_KEY manquante")
 
@@ -186,9 +154,6 @@ def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000
                 },
                 method="POST",
             )
-            # Timeout PAR APPEL de read (chaque chunk a max 120s pour arriver).
-            # Le total cumulé peut largement dépasser 300s pour un long article,
-            # sans poser problème puisque chaque chunk arrive bien avant 120s.
             chunks: list[str] = []
             with urllib.request.urlopen(req, timeout=120) as resp:
                 for raw_line in resp:
@@ -207,7 +172,6 @@ def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000
                         if delta.get("type") == "text_delta":
                             chunks.append(delta.get("text", ""))
                     elif event.get("type") == "error":
-                        # Erreur côté Anthropic (rate limit, etc.) → on déclenche le retry
                         err_info = event.get("error") or {}
                         raise RuntimeError(
                             f"Erreur API streaming : {err_info.get('type', '?')} — "
@@ -225,7 +189,6 @@ def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000
 
 
 def strip_code_fences(text: str) -> str:
-    """Supprime les ```html...``` éventuels que l'IA peut ajouter."""
     text = re.sub(r"^```(?:html|HTML|markdown|md)?\s*\n?", "", text.strip())
     text = re.sub(r"\n?\s*```\s*$", "", text)
     return text.strip()
@@ -234,13 +197,11 @@ def strip_code_fences(text: str) -> str:
 # ─── Génération d'un article ─────────────────────────────────────────────
 
 def load_prompts(site_dir: Path, config: dict) -> tuple[str, str]:
-    """Récupère global_prompt (depuis le schema) et persona_prompt (depuis config.yaml)."""
     persona = (config.get("persona_prompt") or "").strip()
     template_name = None
     page_types = config.get("page_types") or {}
     template_name = page_types.get("classement") or page_types.get("blog")
     if not template_name:
-        # Fallback : on cherche un schema correspondant au type de site
         template_name = "classement-saas"
     schema_path = ROOT / "schemas" / f"{template_name}.json"
     global_prompt = ""
@@ -254,12 +215,6 @@ def load_prompts(site_dir: Path, config: dict) -> tuple[str, str]:
 
 
 def generate_meta_description(title: str, content_html: str) -> str:
-    """Génère une meta description SEO (~150-160 caractères) via Claude à partir
-    du titre + contenu d'un article. Utilisé par le cron quand la cellule
-    meta_description de la sheet est vide.
-
-    Logique identique à la route /generate-meta du dashboard."""
-    # Strip HTML pour donner du texte propre à l'IA
     plain = re.sub(r'<[^>]+>', ' ', content_html or '')
     plain = re.sub(r'&nbsp;|&amp;|&lt;|&gt;|&quot;|&#39;', ' ', plain)
     plain = re.sub(r'\s+', ' ', plain).strip()[:2000]
@@ -292,13 +247,6 @@ def generate_article_html(title: str, categorie: str, prompt_custom: str,
                            global_prompt: str, persona_prompt: str,
                            min_words: int = 750,
                            mots_imposes: list[str] | None = None) -> str:
-    """Génère le contenu HTML d'un article via Claude (mêmes contraintes que la route /generate).
-
-    Si `mots_imposes` est fourni, les expressions y figurant doivent apparaître
-    au moins une fois dans le corps de l'article (utilisé pour le maillage
-    interne : les mots correspondent aux `link_anchors` d'autres articles du
-    blog, qui pourront ainsi être linkés automatiquement vers eux au build).
-    """
     max_w = int(min_words * 1.5)
     base_sys = """Tu es un rédacteur SEO expérimenté. Tu écris des articles de blog en français.
 
@@ -326,10 +274,6 @@ CONTRAINTES DE PONCTUATION (impératif) :
     custom_line = f"\n\nConsignes spécifiques :\n{prompt_custom}" if prompt_custom else ""
     mots_line = ""
     if mots_imposes:
-        # mots_imposes est une liste de dicts {text, url?}. On présente à l'IA
-        # uniquement le TEXTE des mots (l'URL est appliquée en post-process via
-        # _wrap_first_occurrence_with_link, pour éviter que l'IA hallucine ou
-        # casse la syntaxe HTML autour du lien).
         plain_words = [m['text'] for m in mots_imposes if not m.get('url')]
         linked_words = [m for m in mots_imposes if m.get('url')]
 
@@ -361,11 +305,6 @@ CONTRAINTES DE PONCTUATION (impératif) :
 
     html = strip_code_fences(call_claude(system, user, max_tokens=min(8000, max(2000, max_w * 4))))
 
-    # ── Post-processing : insertion des liens pour les mots avec URL ────────
-    # On wrappe la 1ère occurrence de chaque texte dans un <a href="url">. Cela
-    # garantit que les liens sont posés même si l'IA a oublié de placer le mot
-    # à un endroit linkable, ou a essayé de poser un <a> elle-même au mauvais
-    # endroit. La case originale est préservée dans le lien.
     if mots_imposes:
         for m in mots_imposes:
             if m.get('url'):
@@ -374,9 +313,19 @@ CONTRAINTES DE PONCTUATION (impératif) :
     return html
 
 
+# Quota par défaut quand l'utilisateur n'a pas mis de chiffre après l'ancre
+# dans la colonne `link_anchors` de la sheet. Auparavant : 1 (un seul lien
+# entrant max par ancre). Désormais : 5 pour favoriser un maillage interne
+# plus dense par défaut.
+DEFAULT_ANCHOR_MAX = 5
+
+
 def _parse_anchors_csv(raw: str) -> list[dict]:
     """Parse une chaîne 'pappers:5;plateforme pappers:5;le site pappers:3' en
-    liste de {text, max}. Sépare sur ';' ou newline. Tolère 'ancre x 5' aussi."""
+    liste de {text, max}. Sépare sur ';' ou newline. Tolère 'ancre x 5' aussi.
+
+    Si pas de chiffre après l'ancre, on applique DEFAULT_ANCHOR_MAX (= 5) au
+    lieu de 1, pour éviter qu'un oubli côté sheet ne limite trop le maillage."""
     import re as _re
     out = []
     for line in _re.split(r'[\n;]', raw or ''):
@@ -390,22 +339,11 @@ def _parse_anchors_csv(raw: str) -> list[dict]:
             if text and n > 0:
                 out.append({'text': text, 'max': n})
         elif s:
-            out.append({'text': s, 'max': 1})
+            out.append({'text': s, 'max': DEFAULT_ANCHOR_MAX})
     return out
 
 
 def _parse_mots_imposes_csv(raw: str) -> list[dict]:
-    """Parse la colonne `mots_imposes`. Chaque entrée est :
-      - soit un simple mot/expression : « logiciel de paie »
-      - soit avec un lien interne : « logiciel de gestion des talents=>https://www.editions-dp.com/meilleur-logiciel-de-gestion-des-talents »
-
-    Le séparateur entre entrées est `;`, `,` ou retour à la ligne.
-    Le séparateur texte ↔ URL est `=>`.
-
-    Renvoie une liste de dicts [{text, url?}, ...]. `url` est absent si l'entrée
-    était un simple mot sans flèche. Si l'URL contient des virgules (rare), il
-    faut utiliser `;` comme séparateur d'entrées.
-    """
     if not raw:
         return []
     out: list[dict] = []
@@ -428,17 +366,9 @@ def _parse_mots_imposes_csv(raw: str) -> list[dict]:
 
 
 def _wrap_first_occurrence_with_link(html: str, text: str, url: str) -> str:
-    """Wrappe la PREMIÈRE occurrence (case-insensitive, word-boundary) de `text`
-    dans un <a href="url">…</a>. La casse originale du texte est préservée dans
-    le lien. Skip les segments déjà à l'intérieur d'un <a>...</a> existant pour
-    éviter les imbrications de liens (interdites en HTML).
-    Si aucune occurrence n'est trouvée, retourne le HTML inchangé.
-    """
     if not text or not url:
         return html
     pattern = re.compile(r'\b' + re.escape(text) + r'\b', re.IGNORECASE)
-    # On découpe sur les <a>...</a> existants ; les sous-segments hors <a>
-    # sont les seuls candidats au remplacement
     parts = re.split(r'(<a\b[^>]*>.*?</a>)', html, flags=re.IGNORECASE | re.DOTALL)
     done = False
     out: list[str] = []
@@ -460,14 +390,6 @@ def _wrap_first_occurrence_with_link(html: str, text: str, url: str) -> str:
 # ─── Sérialisation .md (frontmatter YAML + body) ─────────────────────────
 
 def write_post(filepath: Path, fm: dict, body: str) -> None:
-    """Écrit un fichier .md avec frontmatter YAML.
-
-    `width=10000` force PyYAML à NE PAS wrapper les chaînes longues sur
-    plusieurs lignes. Sans ça, un titre de 80+ caractères avec des caractères
-    spéciaux (':', '?') est écrit sur 2 lignes en single-quoted, ce que les
-    parsers naïfs (côté dashboard TS) ne savent pas reconstituer → titre
-    apparait tronqué dans l'éditeur avec une apostrophe orpheline en début.
-    """
     fm_yaml = yaml.dump(fm, allow_unicode=True, default_flow_style=False,
                          sort_keys=False, width=10000).strip()
     content = f"---\n{fm_yaml}\n---\n\n{body}\n"
@@ -476,30 +398,13 @@ def write_post(filepath: Path, fm: dict, body: str) -> None:
 
 
 def _normalize_title(t: str) -> str:
-    """Normalise un titre pour matching insensible à la casse et aux espaces."""
     return " ".join(str(t or "").lower().split())
 
 
 def sync_metadata_from_sheet(posts_dir: Path, rows: list[dict]) -> int:
-    """Pour chaque ligne de la sheet, met à jour les métadonnées de l'article
-    correspondant (.md déjà publié) sans toucher au contenu.
-
-    Champs synchronisés depuis la sheet :
-        - link_anchors        (ancres acceptant cet article comme cible)
-        - categorie           (au cas où Julien la corrige)
-        - meta_description    (si remplie dans la sheet)
-        - meta_title          (idem)
-
-    Permet d'optimiser le maillage interne après publication : ajouter des
-    link_anchors sur d'anciens articles depuis la sheet est désormais pris
-    en compte au prochain build du site.
-
-    Retourne le nombre d'articles dont le frontmatter a changé.
-    """
     if not posts_dir.exists() or not rows:
         return 0
 
-    # Index titre normalisé → (filepath, frontmatter_dict, body)
     md_by_title: dict[str, tuple[Path, dict, str]] = {}
     for md_path in posts_dir.glob('*.md'):
         try:
@@ -528,38 +433,30 @@ def sync_metadata_from_sheet(posts_dir: Path, rows: list[dict]) -> int:
             continue
         key = _normalize_title(title)
         if key not in md_by_title:
-            continue  # Pas encore publié
+            continue
         md_path, fm, body = md_by_title[key]
         changed = False
 
-        # 1. link_anchors : convertir le format CSV de la sheet vers le format
-        # YAML stocké dans le frontmatter (liste de dicts {text, max}).
         new_anchors_raw = (row.get('link_anchors') or row.get('ancres') or '').strip()
         new_anchors = _parse_anchors_csv(new_anchors_raw) if new_anchors_raw else []
         old_anchors = fm.get('link_anchors') or []
-        # Comparaison structurelle (les listes de dicts doivent être identiques)
         if new_anchors != old_anchors:
             if new_anchors:
                 fm['link_anchors'] = new_anchors
             elif 'link_anchors' in fm:
-                # Sheet a vidé la valeur → on retire la clé
                 del fm['link_anchors']
             changed = True
 
-        # 2. categorie
         new_cat = (row.get('categorie') or '').strip()
         if new_cat and fm.get('categorie') != new_cat:
             fm['categorie'] = new_cat
             changed = True
 
-        # 3. meta_description (n'écrase pas si vide dans la sheet, pour ne pas
-        # perdre une description générée auto précédemment)
         new_meta_desc = (row.get('meta_description') or '').strip()
         if new_meta_desc and fm.get('meta_description') != new_meta_desc:
             fm['meta_description'] = new_meta_desc
             changed = True
 
-        # 4. meta_title
         new_meta_title = (row.get('meta_title') or '').strip()
         if new_meta_title and fm.get('meta_title') != new_meta_title:
             fm['meta_title'] = new_meta_title
@@ -576,10 +473,6 @@ def sync_metadata_from_sheet(posts_dir: Path, rows: list[dict]) -> int:
 # ─── Traitement d'un site ────────────────────────────────────────────────
 
 def get_config_value(config: dict, key: str):
-    """Cherche une clé dans le YAML : top-level OU imbriquée 1 niveau dans
-    une section dict. Tolérance utile car `blog_sheet_csv_url` peut être
-    placée par le dashboard soit au top-level, soit dans `site:`, soit
-    accidentellement dans une autre section selon l'historique d'édition."""
     if key in config:
         return config[key]
     for k, v in (config or {}).items():
@@ -610,15 +503,11 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
     processed_set = set(processed)
 
     existing_slugs = {p.stem for p in posts_dir.glob("*.md")} if posts_dir.exists() else set()
-    # Titres normalisés des articles déjà publiés (lus depuis le frontmatter
-    # de chaque .md). Sert de filet de sécurité contre les doublons quand un
-    # article a été publié manuellement (dashboard) sans passer par le cron.
     existing_titles_normalized: set[str] = set()
     if posts_dir.exists():
         for md_path in posts_dir.glob("*.md"):
             try:
                 content = md_path.read_text(encoding="utf-8")
-                # Frontmatter YAML entre --- au début du fichier
                 if content.startswith("---"):
                     end = content.find("---", 3)
                     if end > 0:
@@ -626,7 +515,6 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
                         for line in fm_text.splitlines():
                             if line.lstrip().startswith("title:"):
                                 t = line.split(":", 1)[1].strip()
-                                # Strip quotes YAML
                                 if t.startswith(("'", '"')) and t.endswith(t[0]) and len(t) >= 2:
                                     t = t[1:-1].replace("''", "'") if t[0] == "'" else t.replace('\\"', '"').replace('\\\\', '\\')
                                 existing_titles_normalized.add(" ".join(t.lower().split()))
@@ -634,8 +522,6 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
             except Exception:
                 continue
     now = datetime.now(PARIS)
-    # Titres dont on force la publication immédiate (séparés par '|').
-    # Set en lowercase pour matcher case-insensitive avec le titre de la sheet.
     _force_titles = {
         t.strip().lower()
         for t in (os.environ.get("FORCE_TITLES") or "").split("|")
@@ -651,22 +537,10 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         title = row.get("titre", "").strip()
         if not title:
             continue
-        # FORCE_TITLES (env, séparés par '|') = liste des titres dont on force la
-        # publication immédiate, en ignorant la date programmée. Utilisé par le
-        # bouton "🚀 Publier maintenant" du dashboard pour publier un article
-        # avant l'heure prévue.
         is_forced = title.lower() in _force_titles
-        # ⚠ FORCE_TITLES = mode EXCLUSIF : si une liste est passée (typiquement
-        # via le bouton "🚀 Publier maintenant" du dashboard, qui n'envoie qu'UN
-        # titre), on ne traite QUE ces titres. Sans ça, tous les autres articles
-        # à date vide ou passée seraient aussi publiés (cf. bug "Régénérer Revolut
-        # Business" sur les avis, 2026-06).
         if _force_titles and not is_forced:
             continue
         date_str = row.get("date_publication", "").strip()
-        # Si forcé OU date vide → publication immédiate (= maintenant).
-        # Si date remplie + future → on attend (sauf si forcé).
-        # Si date remplie + passée → on publie maintenant.
         if is_forced or not date_str:
             pub_dt = now
             key = f"{title}__{'FORCED' if is_forced else 'IMMEDIATE'}"
@@ -676,21 +550,12 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
                 print(f"   ⚠ Date invalide pour '{title[:40]}' : {date_str}")
                 continue
             if pub_dt > now:
-                continue  # Pas encore le moment
+                continue
             key = f"{title}__{date_str}"
 
-        # Clé unique = titre + date (idempotence : la même ligne n'est pas re-traitée)
-        # Pour les lignes sans date, on utilise le suffixe IMMEDIATE → la même
-        # ligne ne sera traitée qu'une seule fois, peu importe le nombre de
-        # vérifications cron. Pour re-publier le même titre, changer le titre.
         if key in processed_set:
             continue
 
-        # Filet de sécurité supplémentaire : si un article avec EXACTEMENT le
-        # même titre existe déjà parmi les .md du site, on considère comme déjà
-        # publié (cas typique : article publié à la main via le dashboard, donc
-        # absent du schedule_processed.json mais présent dans blog/posts/).
-        # On normalise pour matcher case-insensitive avec espaces collapsés.
         title_normalized = " ".join(title.lower().split())
         if title_normalized in existing_titles_normalized:
             print(f"   ⏭ '{title[:50]}' déjà publié (titre existant) — ajout au registre")
@@ -698,11 +563,9 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
             processed.append(key)
             continue
 
-        # Slug
         manual_slug = row.get("slug", "").strip()
         slug = add_random_prefix(slugify(manual_slug or title), existing_slugs)
 
-        # Paramètres optionnels du CSV
         min_words = 750
         try:
             v = (row.get("nombre_mots_minimum") or row.get("min_words") or "").strip()
@@ -712,14 +575,6 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
             pass
         link_anchors_raw = (row.get("link_anchors") or row.get("ancres") or "").strip()
 
-        # Mots imposés dans l'article (pour favoriser le maillage interne).
-        # Colonne optionnelle, séparée par virgule, point-virgule ou retour ligne.
-        # Aliases acceptés : mots_imposes, mots_cles, mots-cles, mots_clés, keywords.
-        # Format pris en charge :
-        #   - « mot simple »             → l'IA inclut l'expression telle quelle
-        #   - « mot=>https://url »       → idem + post-process pose un lien interne
-        #                                  sur la 1ère occurrence vers l'URL fournie.
-        # Exemple : "logiciel de paie; logiciel de gestion des talents=>https://www.editions-dp.com/meilleur-logiciel-de-gestion-des-talents"
         mots_imposes_raw = (
             row.get("mots_imposes")
             or row.get("mots_cles") or row.get("mots-cles") or row.get("mots_clés")
@@ -727,7 +582,6 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         ).strip()
         mots_imposes = _parse_mots_imposes_csv(mots_imposes_raw)
 
-        # Génération IA
         categorie = row.get("categorie", "").strip()
         prompt_custom = row.get("prompt_custom", "").strip()
         nb_link = sum(1 for m in mots_imposes if m.get('url'))
@@ -748,9 +602,6 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
             continue
         print("✓")
 
-        # Écriture du .md
-        # Meta description : si vide dans la sheet → on appelle Claude pour
-        # en générer une à partir du contenu fraîchement généré
         meta_desc_raw = row.get("meta_description", "").strip()
         if not meta_desc_raw:
             print(f"   ✨ Génération meta description...", end=" ", flush=True)
@@ -767,7 +618,6 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
             "min_words": min_words,
             "status": "published",
         }
-        # Ancres de maillage interne : format CSV "pappers:5;plateforme:3"
         if link_anchors_raw:
             anchors_parsed = _parse_anchors_csv(link_anchors_raw)
             if anchors_parsed:
@@ -787,10 +637,6 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
     else:
         print("   (aucun nouvel article à publier)")
 
-    # Synchronisation des métadonnées des articles déjà publiés depuis la sheet
-    # (link_anchors, categorie, meta_description, meta_title). Permet de modifier
-    # ces champs sur d'anciens articles via la sheet sans avoir à re-générer
-    # leur contenu. Le commit final capture les .md modifiés via git add.
     n_synced = 0
     try:
         n_synced = sync_metadata_from_sheet(posts_dir, rows)
@@ -799,9 +645,6 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
     except Exception as e:
         print(f"   ⚠ Sync metadata : erreur {e}")
 
-    # On retourne new_count + n_synced pour que le workflow déclenche un
-    # redéploiement même si seuls des metadata ont changé (besoin de rebuild
-    # pour que le maillage interne mis à jour soit reflété sur le site).
     return new_count + n_synced
 
 
@@ -827,7 +670,6 @@ def main():
         if n > 0:
             sites_processed.append(site_dir.name)
 
-    # Output pour le workflow GitHub Actions
     print("\n=== Résumé ===")
     if sites_processed:
         print(f"✅ Sites avec nouveaux articles : {', '.join(sites_processed)}")
