@@ -86,6 +86,11 @@ a:hover{text-decoration:underline}
 .article-toc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:22px 26px;margin:0 0 40px;position:relative;z-index:0}
 .article-toc-title{font-family:'DM Serif Display',serif;font-size:18px;font-weight:600;color:var(--ink);margin:0 0 14px;letter-spacing:-.01em}
 .article-toc-list{list-style:none;padding:0;margin:0;counter-reset:toc}
+/* L'incrément du compteur est appliqué UNIQUEMENT sur les items H2 (level-2),
+   pas sur les H3 (level-3). Avant : tous les items incrémentaient → si on avait
+   un H3 entre deux H2, la numérotation visible sautait (1, 3, 4...) car le H3
+   consommait silencieusement le 2 (il affichait ›). Maintenant les H3 ne touchent
+   plus au compteur, et les H2 se suivent proprement (1, 2, 3, ...). */
 .article-toc-item{position:relative;padding:6px 0 6px 28px;line-height:1.5}
 .article-toc-level-2{counter-increment:toc}
 .article-toc-level-2::before{content:counter(toc) ".";position:absolute;left:0;top:6px;color:var(--accent);font-weight:600;font-size:14px;width:22px;text-align:right}
@@ -94,6 +99,7 @@ a:hover{text-decoration:underline}
 .article-toc-item a{color:var(--ink2);text-decoration:none;font-size:15px;transition:color .15s}
 .article-toc-item a:hover{color:var(--accent);text-decoration:underline}
 .article-toc-level-3 a{font-size:14px;color:var(--ink2)}
+/* Scroll offset pour que les ancres ne soient pas masquées par un éventuel header sticky */
 .article-body h2,.article-body h3{scroll-margin-top:80px}
 .article-body{font-size:17px;color:var(--ink2);line-height:1.8}
 .article-body p{margin-bottom:20px}
@@ -108,65 +114,7 @@ a:hover{text-decoration:underline}
 .article-body strong{color:var(--ink);font-weight:700}
 .article-body a{color:var(--accent2);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px}
 .article-body a:hover{text-decoration-color:var(--accent2)}
-
-/* ── Tableaux du contenu blog ─────────────────────────────────────
-   Style explicite ciblé sur .article-body avec spécificité forte.
-   Le post-process Python normalize_table_html() wrappe les <div class="table-wrap"><table>
-   dans <div class="table-wrap"> + <thead>/<tbody>. */
-.article-body .table-wrap{
-  overflow-x:auto;
-  margin:28px 0;
-  border-radius:10px;
-  border:1px solid var(--border);
-  background:var(--surface);
-}
-.article-body table{
-  width:100%;
-  border-collapse:collapse;
-  font-size:15px;
-  background:var(--surface);
-  margin:28px 0;
-}
-.article-body .table-wrap > table{margin:0;border:none}
-.article-body thead{background:var(--surface2)}
-.article-body thead th{
-  text-align:left;
-  padding:14px 18px;
-  font-weight:600;
-  color:var(--ink);
-  font-size:14px;
-  border-bottom:2px solid var(--border);
-  vertical-align:middle;
-  white-space:nowrap;
-}
-.article-body thead th:not(:last-child){border-right:1px solid var(--border)}
-.article-body tbody td{
-  padding:14px 18px;
-  color:var(--ink);
-  border-bottom:1px solid var(--border);
-  vertical-align:top;
-  line-height:1.5;
-}
-.article-body tbody td:not(:last-child){border-right:1px solid var(--border)}
-.article-body tbody tr:nth-child(even){background:color-mix(in srgb, var(--surface) 70%, var(--surface2))}
-.article-body tbody tr:hover{background:var(--surface2)}
-.article-body tbody tr:last-child td{border-bottom:none}
-.article-body table caption{
-  caption-side:top;
-  padding:12px 18px;
-  font-weight:600;
-  color:var(--ink);
-  text-align:left;
-  background:var(--surface2);
-  border-bottom:1px solid var(--border);
-}
-@media (max-width:680px){
-  .article-body table{font-size:14px}
-  .article-body thead th,
-  .article-body tbody td{padding:10px 12px;white-space:normal}
-}
-
-/* Author box */
+/* Author box (réutilise le style de classement-saas) */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:64px 0 0}
 .author-avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
 .author-avatar-placeholder{width:72px;height:72px;border-radius:50%;background:var(--bg);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
@@ -176,6 +124,7 @@ a:hover{text-decoration:underline}
 .author-job{font-size:13px;color:var(--ink3);margin-bottom:12px}
 .author-bio{font-size:14px;color:var(--ink2);line-height:1.7}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}}
+/* Maillage interne */
 .related-section{margin:64px 0 0;padding-top:40px;border-top:1px solid var(--border)}
 .related-title{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
 .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
@@ -185,99 +134,31 @@ a:hover{text-decoration:underline}
 .related-card-title{font-size:15px;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:6px}
 .related-card-excerpt{font-size:13px;color:var(--ink3);line-height:1.5}
 @media(max-width:600px){.related-grid{grid-template-columns:1fr}}
+/* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
 @media(max-width:960px){
   .article-layout{grid-template-columns:1fr;gap:32px}
   .article-sidebar{position:static}
 }
 @media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
-</style>
 
-<style>
-/* Wrapper auto pour scroll horizontal sur mobile.
-   La fonction normalize_table_html() côté Python enveloppe les <table>
-   nues dans <div class="table-wrap"> au build. Pour les contenus déjà
-   wrappés (markdown ou IA conforme), c'est idempotent. */
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) .table-wrap{
-  overflow-x:auto;
-  margin:24px 0;
-  border-radius:10px;
-  border:1px solid var(--border, #E6E1D8);
-}
-
-/* Tableau de base */
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) table{
-  width:100%;
-  border-collapse:collapse;
-  font-size:15px;
-  background:var(--surface, #fff);
-  margin:24px 0;
-}
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) .table-wrap > table{
-  margin:0;
-}
-
-/* Headers */
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) thead{
-  background:var(--surface2, #F5F3EE);
-}
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) thead th{
-  text-align:left;
-  padding:14px 18px;
-  font-weight:600;
-  color:var(--ink, #0F1419);
-  font-size:14px;
-  letter-spacing:0;
-  text-transform:none;
-  border-bottom:2px solid var(--border, #E6E1D8);
-  white-space:nowrap;
-}
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) thead th:not(:last-child){
-  border-right:1px solid var(--border, #E6E1D8);
-}
-
-/* Caption (titre du tableau) */
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) table caption{
-  caption-side:top;
-  padding:12px 18px;
-  font-weight:600;
-  color:var(--ink, #0F1419);
-  text-align:left;
-  background:var(--surface2, #F5F3EE);
-  border-bottom:1px solid var(--border, #E6E1D8);
-}
-
-/* Cells */
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) tbody td{
-  padding:12px 18px;
-  color:var(--ink, #0F1419);
-  border-bottom:1px solid var(--border, #E6E1D8);
-  vertical-align:top;
-  line-height:1.5;
-}
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) tbody td:not(:last-child){
-  border-right:1px solid var(--border, #E6E1D8);
-}
-
-/* Alternance + hover */
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) tbody tr:nth-child(even){
-  background:color-mix(in srgb, var(--surface, #fff) 70%, var(--surface2, #F5F3EE));
-}
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) tbody tr:hover{
-  background:var(--surface2, #F5F3EE);
-}
-:where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) tbody tr:last-child td{
-  border-bottom:none;
-}
-
-/* Mobile */
+/* ── PATCH : tableaux du contenu blog ─────────────────────────────
+   Ajout chirurgical en toute fin du <style>, après les media queries
+   existantes. Aucune modif au CSS au-dessus. */
+.article-body .table-wrap{overflow-x:auto;margin:28px 0;border-radius:10px;border:1px solid var(--border);background:var(--surface)}
+.article-body table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface);margin:28px 0;color:var(--ink)}
+.article-body .table-wrap > table{margin:0;border:none}
+.article-body thead{background:var(--surface2)}
+.article-body thead th{text-align:left;padding:14px 18px;font-weight:600;color:var(--ink);font-size:14px;border-bottom:2px solid var(--border);vertical-align:middle;white-space:nowrap}
+.article-body thead th:not(:last-child){border-right:1px solid var(--border)}
+.article-body tbody td{padding:14px 18px;color:var(--ink);border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+.article-body tbody td:not(:last-child){border-right:1px solid var(--border)}
+.article-body tbody tr:nth-child(even){background:var(--surface2)}
+.article-body tbody tr:hover{background:var(--surface2)}
+.article-body tbody tr:last-child td{border-bottom:none}
+.article-body table caption{caption-side:top;padding:12px 18px;font-weight:600;color:var(--ink);text-align:left;background:var(--surface2);border-bottom:1px solid var(--border)}
 @media (max-width:680px){
-  :where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) table{
-    font-size:14px;
-  }
-  :where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) thead th,
-  :where(main, article, .tool-content, .classement-content, .blog-content, .contenu-genere, .avis-content) tbody td{
-    padding:10px 12px;
-  }
+  .article-body table{font-size:14px}
+  .article-body thead th,.article-body tbody td{padding:10px 12px;white-space:normal}
 }
 </style>
 <meta name="google-site-verification" content="L43wAUqgxfT4pxeThRRH2S3Ljy8_aOCtj6bIXgNQdwU">
@@ -412,12 +293,12 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
 <p>Et le pire : la formation. Leur "accompagnement personnalisé" vous coûtera <strong>150€ de l'heure</strong>. J'ai eu besoin de 2 heures pour paramétrer correctement les modèles de factures. Ça fait 300€ que je n'avais pas budgetés.</p>
 
-<table>
-<tr>
+<div class="table-wrap"><table>
+<thead><tr>
 <th>Option</th>
 <th>Prix mensuel</th>
 <th>Indispensable ?</th>
-</tr>
+</tr></thead><tbody>
 <tr>
 <td>Sync bancaire</td>
 <td>8€</td>
@@ -438,7 +319,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <td>12€</td>
 <td>Recommandée</td>
 </tr>
-</table></div>
+</tbody></table></div>
 
 <h3 id="la-facturation-a-l-utilisateur-qui-fait-mal">La facturation à l'utilisateur qui fait mal</h3>
 
