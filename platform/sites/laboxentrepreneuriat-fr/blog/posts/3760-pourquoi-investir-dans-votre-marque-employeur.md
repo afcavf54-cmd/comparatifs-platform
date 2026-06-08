@@ -1,12 +1,12 @@
 ---
 title: Pourquoi investir dans votre marque employeur ?
 slug: 3760-pourquoi-investir-dans-votre-marque-employeur
-date: 2026-05-31T15:00:00+02:00
-updated: 2026-06-01T14:24:42
+date: 2026-05-31 15:00:00+02:00
+updated: 2026-06-01 14:24:42
 categorie: Ressources Humaines
-meta_title: "Marque employeur : bonnes pratiques RH pour recruter efficacement"
+meta_title: 'Marque employeur : bonnes pratiques RH pour recruter efficacement'
 meta_description: Découvrez pourquoi investir dans votre marque employeur transforme
-featured_image: /blog/3760-pourquoi-investir-dans-votre-marque-employeur/featured-76676.jpg
+featured_image: /blog/3760-pourquoi-investir-dans-votre-marque-employeur.jpg
 status: published
 min_words: 3000
 related_posts:
@@ -297,4 +297,5 @@ link_anchors:
 <p>Le message que je martèle à tous mes clients : votre marque employeur n'est pas un projet marketing, c'est un enjeu de survie. Dans un marché tendu, les entreprises attractives récupèrent les talents. Les autres subissent.</p>
 
 <p>Commencez par auditer votre situation actuelle, interrogez vos équipes, regardez ce qui se dit de vous en ligne. Puis construisez une stratégie cohérente, authentique, dans la durée. Votre future croissance en dépend.</p>
+
 

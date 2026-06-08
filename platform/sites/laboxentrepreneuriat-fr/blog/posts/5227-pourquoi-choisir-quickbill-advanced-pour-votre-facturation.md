@@ -11,7 +11,7 @@ related_posts:
 - 1814-prix-du-logiciel-invoicemaster-evolution-analyse-detaillee
 - 7565-prix-du-logiciel-invoicemaster-evolution-analyse-detaillee
 - 1405-pourquoi-choisir-quickbill-advanced-pour-votre-facturation
-featured_image: /blog/5227-pourquoi-choisir-quickbill-advanced-pour-votre-facturation/featured.jpg
+featured_image: /blog/5227-pourquoi-choisir-quickbill-advanced-pour-votre-facturation.jpg
 ---
 
 <h2>QuickBill Advanced : mon retour après 8 mois d'utilisation</h2>
@@ -153,4 +153,5 @@ featured_image: /blog/5227-pourquoi-choisir-quickbill-advanced-pour-votre-factur
 <p>Point d'attention : testez la version d'essai 14 jours avec vos vrais clients et factures. C'est le seul moyen de vérifier que l'outil colle à votre façon de travailler.</p>
 
 <p>Pour résumer : un bon outil de facturation, ni plus ni moins. Dans un marché saturé de solutions bancales ou hors de prix, c'est déjà beaucoup.</p>
+
 

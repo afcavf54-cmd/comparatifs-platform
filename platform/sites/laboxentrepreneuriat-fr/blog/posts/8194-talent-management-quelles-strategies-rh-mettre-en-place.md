@@ -1,12 +1,12 @@
 ---
-title: "Talent management : quelles stratégies RH mettre en place ?"
+title: 'Talent management : quelles stratégies RH mettre en place ?'
 slug: 8194-talent-management-quelles-strategies-rh-mettre-en-place
-date: 2026-05-29T09:00:00+02:00
-updated: 2026-06-01T14:30:07
+date: 2026-05-29 09:00:00+02:00
+updated: 2026-06-01 14:30:07
 categorie: Ressources Humaines
-meta_title: "Talent management : outils et méthodes pour fidéliser les meilleurs profils"
+meta_title: 'Talent management : outils et méthodes pour fidéliser les meilleurs profils'
 meta_description: Découvrez les meilleures stratégies de talent management pour TPE
-featured_image: /blog/8194-talent-management-quelles-strategies-rh-mettre-en-place/featured-2489.jpg
+featured_image: /blog/8194-talent-management-quelles-strategies-rh-mettre-en-place.jpg
 status: published
 min_words: 2500
 related_posts:
@@ -268,4 +268,5 @@ link_anchors:
 <p>Dans un monde qui change vite, <strong>arrêter d'apprendre c'est commencer à devenir obsolète</strong>. Budgetez systématiquement la montée en compétences, même pour les seniors.</p>
 
 <p>La gestion des talents RH n'est plus un luxe de grand groupe. C'est une nécessité de survie pour toute entreprise qui grandit. Commencez petit, mais commencez. L'investissement se rentabilise rapidement quand on évite ne serait-ce qu'un seul recrutement raté ou un départ imprévu.</p>
+
 

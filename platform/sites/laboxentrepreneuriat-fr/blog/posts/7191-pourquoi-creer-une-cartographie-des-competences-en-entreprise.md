@@ -1,12 +1,12 @@
 ---
 title: Pourquoi créer une cartographie des compétences en entreprise ?
 slug: 7191-pourquoi-creer-une-cartographie-des-competences-en-entreprise
-date: 2026-05-28T08:00:00+02:00
-updated: 2026-06-01T14:31:26
+date: 2026-05-28 08:00:00+02:00
+updated: 2026-06-01 14:31:26
 categorie: Ressources Humaines
-meta_title: "Cartographie des compétences : comment identifier les compétences stratégiques"
+meta_title: 'Cartographie des compétences : comment identifier les compétences stratégiques'
 meta_description: Découvrez comment la cartographie des compétences transforme la
-featured_image: /blog/7191-pourquoi-creer-une-cartographie-des-competences-en-entreprise/featured-81868.jpg
+featured_image: /blog/7191-pourquoi-creer-une-cartographie-des-competences-en-entreprise.jpg
 status: published
 min_words: 3000
 related_posts:
@@ -202,4 +202,5 @@ link_anchors:
 <p>C'est ça, la vraie valeur de la cartographie des compétences. Elle révèle le potentiel humain de votre entreprise et vous donne les clés pour l'exploiter intelligemment.</p>
 
 <p>Franchement, pour le temps que ça demande, je ne vois pas pourquoi s'en priver.</p>
+
 

@@ -15,7 +15,7 @@ related_posts:
 - 5407-developpement-des-talents-comment-faire-evoluer-vos-collaborateurs
 - 8573-gestion-des-talents-rh-comment-optimiser-vos-processus-rh
 - 1090-comment-preparer-les-futurs-managers-avec-le-succession-planning
-featured_image: /blog/1312-comment-interpreter-une-matrice-9-box-efficacement/featured.jpg
+featured_image: /blog/1312-comment-interpreter-une-matrice-9-box-efficacement.jpg
 ---
 
 <h2>Qu'est-ce que la matrice 9 box exactement ?</h2>
@@ -437,4 +437,5 @@ featured_image: /blog/1312-comment-interpreter-une-matrice-9-box-efficacement/fe
 <p>Au final, une matrice 9 box réussie se mesure à sa capacité à faire grandir vos collaborateurs ET votre entreprise simultanément. <strong>C'est un outil de gestion des talents</strong> qui transforme votre capital humain en avantage concurrentiel durable.</p>
 
 <p>L'investissement en temps et en argent est réel. Mais le retour l'est encore plus quand on maîtrise la méthode. À vous de jouer maintenant.</p>
+
 

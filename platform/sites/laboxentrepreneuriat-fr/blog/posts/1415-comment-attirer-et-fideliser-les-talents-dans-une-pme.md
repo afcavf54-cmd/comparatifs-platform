@@ -1,12 +1,12 @@
 ---
 title: Comment attirer et fidéliser les talents dans une PME ?
 slug: 1415-comment-attirer-et-fideliser-les-talents-dans-une-pme
-date: 2026-05-28T12:00:00+02:00
-updated: 2026-06-01T14:30:53
+date: 2026-05-28 12:00:00+02:00
+updated: 2026-06-01 14:30:53
 categorie: Ressources Humaines
-meta_title: "Gestion des talents dans une PME : outils et méthodes pour mieux recruter"
+meta_title: 'Gestion des talents dans une PME : outils et méthodes pour mieux recruter'
 meta_description: Découvrez comment attirer et fidéliser les talents dans votre PME
-featured_image: /blog/1415-comment-attirer-et-fideliser-les-talents-dans-une-pme/featured-49278.jpg
+featured_image: /blog/1415-comment-attirer-et-fideliser-les-talents-dans-une-pme.jpg
 status: published
 min_words: 1500
 related_posts:
@@ -179,4 +179,5 @@ link_anchors:
 <p>Attirer et fidéliser les talents en PME, c'est possible. Ça demande juste d'arrêter de penser comme il y a 20 ans et de mettre en place une vraie stratégie RH. Pas besoin d'un budget énorme, juste de la méthode et de la régularité.</p>
 
 <p>Commencez petit : améliorez votre annonce de recrutement, mettez en place un vrai process d'intégration, écoutez vos salariés actuels. Les résultats suivront.</p>
+
 

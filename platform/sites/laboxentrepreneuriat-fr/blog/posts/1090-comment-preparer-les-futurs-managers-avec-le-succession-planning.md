@@ -15,7 +15,7 @@ related_posts:
 - 7191-pourquoi-creer-une-cartographie-des-competences-en-entreprise
 - 4708-comment-batir-une-strategie-de-gestion-des-talents-efficace
 - 8573-gestion-des-talents-rh-comment-optimiser-vos-processus-rh
-featured_image: /blog/1090-comment-preparer-les-futurs-managers-avec-le-succession-planning/featured.jpg
+featured_image: /blog/1090-comment-preparer-les-futurs-managers-avec-le-succession-planning.jpg
 ---
 
 <h2>Le succession planning : bien plus qu'un simple organigramme de remplacement</h2>
@@ -308,4 +308,5 @@ featured_image: /blog/1090-comment-preparer-les-futurs-managers-avec-le-successi
 <p>Le succession planning n'est pas une contrainte administrative, c'est un investissement sur votre capacité à vous adapter et grandir. Dans un monde qui change vite, ceux qui anticipent prennent l'avantage sur ceux qui subissent.</p>
 
 <p>Commencez petit, testez, ajustez. Mais commencez. Vos futurs vous remercieront d'avoir pris ce temps pour préparer l'avenir.</p>
+
 

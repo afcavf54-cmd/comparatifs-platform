@@ -1,12 +1,12 @@
 ---
-title: "Développement des talents : comment faire évoluer vos collaborateurs ?"
+title: 'Développement des talents : comment faire évoluer vos collaborateurs ?'
 slug: 5407-developpement-des-talents-comment-faire-evoluer-vos-collaborateurs
-date: 2026-05-30T14:00:00+02:00
-updated: 2026-06-01T14:28:32
+date: 2026-05-30 14:00:00+02:00
+updated: 2026-06-01 14:28:32
 categorie: Ressources Humaines
-meta_title: "Développement des talents : outils et méthodes pour accompagner la croissance RH"
+meta_title: 'Développement des talents : outils et méthodes pour accompagner la croissance RH'
 meta_description: Découvrez une approche moderne du développement des talents qui
-featured_image: /blog/5407-developpement-des-talents-comment-faire-evoluer-vos-collaborateurs/featured-7991.jpg
+featured_image: /blog/5407-developpement-des-talents-comment-faire-evoluer-vos-collaborateurs.jpg
 status: published
 min_words: 3000
 related_posts:
@@ -355,4 +355,5 @@ link_anchors:
 <p>Le développement des talents dans une TPE, c'est un investissement rentable quand c'est bien fait. Pas de programme démesuré, pas d'outils surdimensionnés. <strong>Du pragmatique, du concret, de l'humain</strong>.</p>
 
 <p>Commencez petit, mesurez l'impact, ajustez. Vos collaborateurs vous remercieront, et votre entreprise sera plus solide.</p>
+
 

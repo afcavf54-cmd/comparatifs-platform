@@ -11,7 +11,7 @@ related_posts:
 - 5227-pourquoi-choisir-quickbill-advanced-pour-votre-facturation
 - 7565-prix-du-logiciel-invoicemaster-evolution-analyse-detaillee
 - 1405-pourquoi-choisir-quickbill-advanced-pour-votre-facturation
-featured_image: /blog/1814-prix-du-logiciel-invoicemaster-evolution-analyse-detaillee/featured.jpg
+featured_image: /blog/1814-prix-du-logiciel-invoicemaster-evolution-analyse-detaillee.jpg
 ---
 
 <h2>InvoiceMaster Evolution : les tarifs cachés derrière la façade</h2>
@@ -144,4 +144,5 @@ featured_image: /blog/1814-prix-du-logiciel-invoicemaster-evolution-analyse-deta
 <p>Si vous tenez absolument à InvoiceMaster, négociez. Leur équipe commerciale accepte parfois des remises sur les forfaits annuels. J'ai eu du -15% en m'engageant sur 2 ans.</p>
 
 <p>Mais franchement ? Regardez d'abord chez la concurrence. Vous pourriez économiser 200 à 300€ par an sans perdre en fonctionnalités.</p>
+
 
