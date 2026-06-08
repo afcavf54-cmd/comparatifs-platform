@@ -1,4 +1,4 @@
-name: Backfill — générer les images à la une manquantes
+name: Backfill — générer / régénérer les images à la une
 on:
   workflow_dispatch:
     inputs:
@@ -12,6 +12,11 @@ on:
         required: false
         type: string
         default: '20'
+      force_regenerate:
+        description: 'FORCE : régénère toutes les images, même celles déjà présentes (utile pour passer de low à high quality)'
+        required: false
+        type: boolean
+        default: false
       dry_run:
         description: 'Dry-run : juste afficher ce qui serait fait, sans appeler OpenAI'
         required: false
@@ -24,8 +29,6 @@ jobs:
     timeout-minutes: 60
     env:
       TZ: 'Europe/Paris'
-    # Concurrency group dédié : on ne veut pas que 2 backfills tournent en
-    # même temps (risque de doublons d'appel OpenAI et de conflit de push).
     concurrency:
       group: backfill-featured-images-${{ github.repository }}
       cancel-in-progress: false
@@ -45,21 +48,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install pyyaml pillow piexif
 
-      - name: Générer les images manquantes
+      - name: Générer / régénérer les images
         id: backfill
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           SITE: ${{ inputs.site }}
           LIMIT: ${{ inputs.limit }}
-          # En dry-run, le script ne fait aucun appel OpenAI mais affiche
-          # quels articles seraient traités. Utile pour estimer le budget
-          # avant le run réel.
+          # Boolean GitHub Actions → string '0' / '1' pour Python
           DRY_RUN: ${{ inputs.dry_run && '1' || '0' }}
+          FORCE_REGENERATE: ${{ inputs.force_regenerate && '1' || '0' }}
         run: python platform/scripts/backfill_featured_images.py
 
       - name: Commit les nouvelles images
-        # `!inputs.dry_run` est l'écriture qui marche pour un boolean input
-        # GitHub Actions (cf. correction faite sur generate-scpi.yml).
         if: ${{ steps.backfill.outputs.sites_to_deploy != '' && !inputs.dry_run }}
         run: |
           git config user.name "Viseoweb HUB"
@@ -70,8 +70,8 @@ jobs:
             echo "Rien à commit"
             exit 0
           fi
-          git commit -m "Backfill: ${{ steps.backfill.outputs.images_generated }} image(s) à la une"
-          # Retry loop standard (cf. blog-cron.yml)
+          MODE="${{ inputs.force_regenerate && 'force-regen' || 'backfill' }}"
+          git commit -m "Images ${MODE}: ${{ steps.backfill.outputs.images_generated }} image(s)"
           for attempt in 1 2 3 4 5; do
             git fetch origin main
             if ! git rebase -X theirs origin/main; then
@@ -106,6 +106,7 @@ jobs:
         if: always()
         run: |
           echo "=== Backfill images terminé ==="
+          echo "Mode : ${{ inputs.force_regenerate && 'FORCE-REGENERATE' || 'normal' }}"
           echo "Sites traités : ${{ steps.backfill.outputs.sites_to_deploy }}"
           echo "Images générées : ${{ steps.backfill.outputs.images_generated }}"
-          echo "Mode : ${{ inputs.dry_run && 'DRY-RUN (rien commit)' || 'réel' }}"
+          echo "Dry-run : ${{ inputs.dry_run }}"
