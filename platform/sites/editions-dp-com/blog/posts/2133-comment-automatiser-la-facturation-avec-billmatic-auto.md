@@ -1,23 +1,24 @@
 ---
 title: Comment automatiser la facturation avec Billmatic Auto ?
 slug: 2133-comment-automatiser-la-facturation-avec-billmatic-auto
-date: '2026-06-08T12:00:00+02:00'
+date: 2026-06-08T12:00:00+02:00
+updated: 2026-06-08T11:31:31
 categorie: Comptabilité
 meta_title: Comment automatiser la facturation avec Billmatic Auto
-meta_description: 'Découvrez Billmatic Auto pour automatiser votre facturation : retour
-  d''expérience après 2 ans d''utilisation, configuration simple en 20 minutes et
-  gain de temps…'
-min_words: 930
+meta_description: "Découvrez Billmatic Auto pour automatiser votre facturation : retour d'expérience après 2 ans d'utilisation, configuration simple en 20 minutes et gain de temps…"
+featured_image: /blog/2133-comment-automatiser-la-facturation-avec-billmatic-auto/featured-87070.jpg
 status: published
-link_anchors:
-- text: comment automatiser sa facturation avec Billmatic Auto
-  max: 1
+min_words: 930
 related_posts:
 - 2138-comptabiliser-une-provision-pour-depreciation-des-stocks
 - 6027-application-facturation-invoicepro-x3-quel-temps-de-traitement-prevoir
 - 7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir
 - 4708-cnam-intec-presentation-de-l-institut-national-des-techniques-economiques-et-comptables
+link_anchors:
+- text: comment automatiser sa facturation avec Billmatic Auto
+  max: 1
 ---
+
 <h2>Billmatic Auto : mon retour d'expérience après 2 ans d'utilisation</h2>
 
 <p>Je vais être franc avec vous. Quand j'ai découvert Billmatic Auto il y a deux ans, j'étais sceptique. Encore un énième logiciel de facturation qui promet monts et merveilles ? J'avais déjà testé plusieurs solutions qui m'avaient déçu. Mais là, j'ai été <strong>agréablement surpris</strong>.</p>
@@ -124,3 +125,4 @@ Oui, mais uniquement pour l'affichage. Les taux de change ne se mettent pas à j
 
 <p><strong>Que se passe-t-il en cas de panne technique ?</strong><br>
 J'ai vécu une panne de 3 heures l'année dernière. Les factures programmées ce jour-là sont parties avec quelques heures de retard. Billmatic Auto dispose d'un système de rattrapage automatique rassurant.</p>
+
