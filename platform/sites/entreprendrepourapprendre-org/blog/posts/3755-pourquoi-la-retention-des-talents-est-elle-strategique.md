@@ -4,9 +4,7 @@ slug: 3755-pourquoi-la-retention-des-talents-est-elle-strategique
 date: '2026-05-31T11:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Rétention des talents : outils et bonnes pratiques RH en {year}'
-meta_description: Découvrez pourquoi la rétention des talents est cruciale pour votre
-  TPE. Un témoignage concret sur les coûts cachés du turnover et les stratégies efficaces
-  de…
+meta_description: Découvrez pourquoi la rétention des talents est cruciale pour votre TPE. Un témoignage concret sur les coûts cachés du turnover et les stratégies efficaces de…
 min_words: 3000
 status: published
 link_anchors:
@@ -17,7 +15,9 @@ related_posts:
 - 6152-cartographie-des-competences-quelles-etapes-suivre
 - 3264-quels-sont-les-leviers-de-fidelisation-des-talents-les-plus-efficaces
 - 2321-comment-definir-une-strategie-efficace-de-gestion-des-talents
+featured_image: /blog/3755-pourquoi-la-retention-des-talents-est-elle-strategique/featured.jpg
 ---
+
 <h2>Ce que j'ai appris sur le coût réel du turnover dans ma TPE</h2>
 
 <p>Quand j'ai créé mon agence il y a huit ans, je pensais naïvement que la rétention des talents était un luxe de grandes entreprises. <strong>Grosse erreur</strong>. En 2019, j'ai perdu ma directrice artistique senior après seulement 18 mois. Le temps de recruter et former sa remplaçante ? Quatre mois. Les projets retardés, les clients mécontents, ma surcharge de travail... j'ai calculé que ce départ m'avait coûté <strong>près de 25 000€</strong>.</p>
@@ -266,3 +266,4 @@ related_posts:
 <p>Résultat : frustration du reste de l'équipe et impact négatif sur la rentabilité. Parfois, un départ libère des tensions et permet de repartir sur de meilleures bases. <strong>Il faut savoir l'accepter</strong>.</p>
 
 La rétention des talents est devenue stratégique dans ma TPE, mais elle ne doit pas devenir une obsession. L'objectif reste de construire une équipe stable, motivée et performante. Pas de conserver à tout prix chaque salarié.
+
