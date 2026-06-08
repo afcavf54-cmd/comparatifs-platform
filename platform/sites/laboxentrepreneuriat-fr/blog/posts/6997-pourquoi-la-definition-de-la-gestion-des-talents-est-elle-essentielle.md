@@ -228,3 +228,4 @@ link_anchors:
 <p>Et surtout, n'oubliez jamais que derrière chaque "talent" il y a une personne avec ses motivations, ses contraintes, ses ambitions. La technique c'est important, l'humain c'est primordial.</p>
 
 
+

@@ -198,3 +198,4 @@ related_posts:
 <p>La gestion des talents en TPE, c'est finalement du bon sens appliqué avec méthode. Partez de vos besoins réels, utilisez des outils simples et concentrez-vous sur l'humain avant tout. Les résultats suivront naturellement : équipes motivées, turnover maîtrisé et croissance accompagnée par les bonnes compétences au bon moment.</p>
 
 
+

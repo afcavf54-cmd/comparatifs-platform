@@ -439,3 +439,4 @@ featured_image: /blog/1312-comment-interpreter-une-matrice-9-box-efficacement.jp
 <p>L'investissement en temps et en argent est réel. Mais le retour l'est encore plus quand on maîtrise la méthode. À vous de jouer maintenant.</p>
 
 
+

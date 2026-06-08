@@ -128,3 +128,4 @@ featured_image: /blog/1405-pourquoi-choisir-quickbill-advanced-pour-votre-factur
 <p>Seul bémol : je regrette l'absence d'offre d'essai gratuite longue durée. 15 jours, c'est court pour bien tester. Mais une fois adopté, difficile de s'en passer.</p>
 
 
+

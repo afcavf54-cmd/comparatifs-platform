@@ -312,3 +312,4 @@ featured_image: /blog/6799-comment-preparer-les-futurs-managers-avec-le-successi
 <p>Commencez petit, restez pragmatique, mesurez vos résultats. <strong>Vos futurs managers vous remercieront</strong>. Et votre compte de résultat aussi.</p>
 
 
+

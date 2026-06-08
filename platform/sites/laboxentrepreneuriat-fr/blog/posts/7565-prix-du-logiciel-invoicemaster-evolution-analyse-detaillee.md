@@ -136,3 +136,4 @@ featured_image: /blog/7565-prix-du-logiciel-invoicemaster-evolution-analyse-deta
 <p>Je garde InvoiceMaster pour le moment, mais je réévalue chaque année. Dans ce secteur qui évolue vite, il faut rester vigilant sur l'évolution des tarifs et des fonctionnalités concurrentes.</p>
 
 
+

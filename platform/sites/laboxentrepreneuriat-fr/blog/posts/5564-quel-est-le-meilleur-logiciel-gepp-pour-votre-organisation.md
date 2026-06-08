@@ -190,3 +190,4 @@ link_anchors:
 <p>Parce qu'au final, une GEPP réussie, c'est un dirigeant qui sait où il va avec ses équipes. Et ça, aucun algorithme ne peut le faire à votre place.</p>
 
 
+

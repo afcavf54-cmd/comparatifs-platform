@@ -270,3 +270,4 @@ link_anchors:
 <p>La gestion des talents RH n'est plus un luxe de grand groupe. C'est une nécessité de survie pour toute entreprise qui grandit. Commencez petit, mais commencez. L'investissement se rentabilise rapidement quand on évite ne serait-ce qu'un seul recrutement raté ou un départ imprévu.</p>
 
 
+
