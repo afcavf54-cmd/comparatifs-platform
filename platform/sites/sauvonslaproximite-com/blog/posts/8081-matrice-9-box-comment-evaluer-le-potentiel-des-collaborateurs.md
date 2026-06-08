@@ -1,22 +1,24 @@
 ---
-title: 'Matrice 9 box : comment évaluer le potentiel des collaborateurs ?'
+title: "Matrice 9 box : comment évaluer le potentiel des collaborateurs ?"
 slug: 8081-matrice-9-box-comment-evaluer-le-potentiel-des-collaborateurs
-date: '2026-06-02T05:00:00+02:00'
+date: 2026-06-02T05:00:00+02:00
+updated: 2026-06-08T13:17:14
 categorie: Ressources Humaines
-meta_title: 'Matrice 9 box : guide pratique RH pour identifier les hauts potentiels'
+meta_title: "Matrice 9 box : guide pratique RH pour identifier les hauts potentiels"
 meta_description: Découvrez la matrice 9 box pour évaluer le potentiel des collaborateurs.
-  Méthode éprouvée pour identifier vos futurs leaders et optimiser vos décisions RH.
-min_words: 3000
+featured_image: /blog/8081-matrice-9-box-comment-evaluer-le-potentiel-des-collaborateurs/featured-26488.jpg
 status: published
-link_anchors:
-- text: matrice 9 box
-  max: 2
+min_words: 3000
 related_posts:
 - 4853-cartographie-des-competences-comment-identifier-les-savoir-faire-cles
 - 3445-logiciel-gepp-quelles-fonctionnalites-comparer
 - 4315-gestion-des-talents-dans-une-pme-quelles-solutions-mettre-en-place
 - 4608-gestion-des-talents-rh-quelles-bonnes-pratiques-adopter
+link_anchors:
+- text: matrice 9 box
+  max: 2
 ---
+
 <h2>Qu'est-ce que la matrice 9 box et pourquoi l'utiliser ?</h2>
 
 <p>La matrice 9 box, je l'ai découverte il y a plus de dix ans lors d'une formation RH. Franchement, au début, j'étais sceptique. Encore un autre outil théorique qui ne marcherait pas en pratique ? Sauf que cette grille d'évaluation, développée initialement par McKinsey puis popularisée par General Electric, s'est révélée redoutablement efficace pour cartographier nos talents.</p>
@@ -260,3 +262,4 @@ Ils représentent souvent 60-70% des effectifs. Stratégie d'amélioration conti
 Adaptez les critères selon les spécificités. Un commercial se mesure différemment d'un comptable ou d'un technicien. Le principe reste valable, la déclinaison change.</p>
 
 <p>La matrice 9 box transforme votre vision RH quand elle est bien utilisée. Vous passez d'une gestion intuitive à une approche structurée, tout en gardant l'humain au centre. Cet outil de gestion des talents facilite vos décisions et optimise vos investissements en développement. Un équilibre subtil entre rigueur méthodologique et souplesse opérationnelle.</p>
+
