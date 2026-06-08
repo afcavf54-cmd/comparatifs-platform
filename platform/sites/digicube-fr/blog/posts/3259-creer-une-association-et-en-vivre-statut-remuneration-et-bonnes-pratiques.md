@@ -1,22 +1,23 @@
 ---
-title: "Créer une association et en vivre : statut, rémunération et bonnes pratiques"
+title: 'Créer une association et en vivre : statut, rémunération et bonnes pratiques'
 slug: 3259-creer-une-association-et-en-vivre-statut-remuneration-et-bonnes-pratiques
-date: 2026-06-05T15:00:00+02:00
-updated: 2026-06-08T12:49:37
+date: 2026-06-05 15:00:00+02:00
+updated: 2026-06-08 12:49:37
 categorie: Création entreprise
-meta_title: "Créer une association et en vivre : guide complet pour les porteurs de projet"
+meta_title: 'Créer une association et en vivre : guide complet pour les porteurs de
+  projet'
 meta_description: Découvrez comment créer une association et en vivre financièrement.
 featured_image: /blog/3259-creer-une-association-et-en-vivre-statut-remuneration-et-bonnes-pratiques/featured-73489.jpg
 status: published
 min_words: 1200
 related_posts:
-- 2094-avance-sur-dividendes-en-sasu-conditions-risques-et-precautions-a-prendre
+- 7650-scea-avantages-contraintes-et-fonctionnement-expliques-simplement
 - 9434-creer-un-produit-guide-pratique-pour-concevoir-et-commercialiser-votre-offre
+- 2094-avance-sur-dividendes-en-sasu-conditions-risques-et-precautions-a-prendre
 link_anchors:
 - text: créer une association et en vivre
   max: 4
 ---
-
 <h2>Monter une association et s'en sortir financièrement : mes conseils après 8 ans de terrain</h2>
 
 <p>Je dirige une TPE depuis maintenant 8 ans, et j'ai aidé plusieurs porteurs de projets à créer leur association. Autant vous dire que le sujet de la rémunération revient constamment. Beaucoup pensent qu'association rime forcément avec bénévolat. <strong>C'est faux.</strong></p>

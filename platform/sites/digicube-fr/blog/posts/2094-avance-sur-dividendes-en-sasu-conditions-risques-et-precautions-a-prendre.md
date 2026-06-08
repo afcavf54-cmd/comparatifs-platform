@@ -1,10 +1,10 @@
 ---
-title: "Avance sur dividendes en SASU : conditions, risques et précautions à prendre"
+title: 'Avance sur dividendes en SASU : conditions, risques et précautions à prendre'
 slug: 2094-avance-sur-dividendes-en-sasu-conditions-risques-et-precautions-a-prendre
-date: 2026-06-07T19:00:00+02:00
-updated: 2026-06-08T12:45:49
+date: 2026-06-07 19:00:00+02:00
+updated: 2026-06-08 12:45:49
 categorie: Création entreprise
-meta_title: "Avance sur dividendes SASU : mode d'emploi et points de vigilance"
+meta_title: 'Avance sur dividendes SASU : mode d''emploi et points de vigilance'
 meta_description: Découvrez les conditions légales, risques financiers et précautions
 featured_image: /blog/2094-avance-sur-dividendes-en-sasu-conditions-risques-et-precautions-a-prendre/featured-46993.jpg
 status: published
@@ -12,11 +12,11 @@ min_words: 1800
 related_posts:
 - 9434-creer-un-produit-guide-pratique-pour-concevoir-et-commercialiser-votre-offre
 - 3259-creer-une-association-et-en-vivre-statut-remuneration-et-bonnes-pratiques
+- 7650-scea-avantages-contraintes-et-fonctionnement-expliques-simplement
 link_anchors:
 - text: avance sur dividendes en sasu
   max: 4
 ---
-
 <h2>Ce qu'il faut savoir avant de toucher une avance sur dividendes</h2>
 
 <p>J'ai découvert l'avance sur dividendes il y a environ un an, quand notre expert-comptable me l'a proposée pour éviter de puiser dans la trésorerie de l'entreprise. Sur le papier, ça paraît simple : récupérer de l'argent en avance sur les bénéfices futurs. Mais après avoir creusé le sujet, je me suis rendu compte que <strong>c'est plus complexe qu'il n'y paraît</strong>.</p>
