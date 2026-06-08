@@ -1,21 +1,22 @@
 ---
-title: 'Business Plan Template SmartStart Generator : notre avis complet'
+title: "Business Plan Template SmartStart Generator : notre avis complet"
 slug: 6898-business-plan-template-smartstart-generator-notre-avis-complet
-date: '2026-06-06T17:00:00+02:00'
-categorie: Création d'entreprise
-meta_title: 'Business Plan Template SmartStart Generator : avis et test'
-meta_description: 'Notre test complet du SmartStart Generator pour créer votre business
-  plan. Prix, fonctionnalités, qualité des modèles : découvrez si cet outil vaut ses
-  49 à 149€.'
-min_words: 920
+date: 2026-06-06T17:00:00+02:00
+updated: 2026-06-08T09:19:14
+categorie: "Création d'entreprise"
+meta_title: "Business Plan Template SmartStart Generator : avis et test"
+meta_description: "Notre test complet du SmartStart Generator pour créer votre business plan. Prix, fonctionnalités, qualité des modèles : découvrez si cet outil vaut ses 49 à 149€."
+featured_image: /blog/6898-business-plan-template-smartstart-generator-notre-avis-complet/featured-51211.jpg
 status: published
-link_anchors:
-- text: les avis sur le template de business plan SmartStart Generator
-  max: 1
+min_words: 920
 related_posts:
 - 5504-business-plan-modele-startupkit-advanced-avis-et-utilisation
 - 1796-business-plan-template-startupkit-premium-faut-il-l-utiliser
+link_anchors:
+- text: les avis sur le template de business plan SmartStart Generator
+  max: 1
 ---
+
 <h2>SmartStart Generator : qu'est-ce que c'est exactement ?</h2>
 
 <p>SmartStart Generator fait partie de ces nouveaux outils qui promettent de simplifier la création d'un business plan. J'ai testé cette plateforme pendant plusieurs semaines dans le cadre de mes accompagnements d'entrepreneurs. <strong>Premier constat : c'est accessible</strong>, même pour quelqu'un qui n'a jamais monté de dossier financier.</p>
@@ -128,3 +129,4 @@ related_posts:
 <p><strong>Score final : 72/100</strong></p>
 
 <p>SmartStart Generator gagne cette évaluation grâce à son excellent rapport qualité-prix et sa facilité d'utilisation. Un choix solide pour débuter, même si ce n'est pas l'outil le plus avancé du marché.</p>
+
