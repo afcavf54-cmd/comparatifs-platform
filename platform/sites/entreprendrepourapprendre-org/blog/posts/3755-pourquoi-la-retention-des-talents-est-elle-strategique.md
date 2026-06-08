@@ -15,7 +15,7 @@ related_posts:
 - 6152-cartographie-des-competences-quelles-etapes-suivre
 - 3264-quels-sont-les-leviers-de-fidelisation-des-talents-les-plus-efficaces
 - 2321-comment-definir-une-strategie-efficace-de-gestion-des-talents
-featured_image: /blog/3755-pourquoi-la-retention-des-talents-est-elle-strategique/featured.jpg
+featured_image: /blog/3755-pourquoi-la-retention-des-talents-est-elle-strategique.jpg
 ---
 
 <h2>Ce que j'ai appris sur le coût réel du turnover dans ma TPE</h2>
@@ -266,4 +266,5 @@ featured_image: /blog/3755-pourquoi-la-retention-des-talents-est-elle-strategiqu
 <p>Résultat : frustration du reste de l'équipe et impact négatif sur la rentabilité. Parfois, un départ libère des tensions et permet de repartir sur de meilleures bases. <strong>Il faut savoir l'accepter</strong>.</p>
 
 La rétention des talents est devenue stratégique dans ma TPE, mais elle ne doit pas devenir une obsession. L'objectif reste de construire une équipe stable, motivée et performante. Pas de conserver à tout prix chaque salarié.
+
 

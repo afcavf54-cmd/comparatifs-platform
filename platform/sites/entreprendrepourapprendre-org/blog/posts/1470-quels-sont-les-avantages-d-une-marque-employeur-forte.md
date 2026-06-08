@@ -15,7 +15,7 @@ related_posts:
 - 3755-pourquoi-la-retention-des-talents-est-elle-strategique
 - 2321-comment-definir-une-strategie-efficace-de-gestion-des-talents
 - 5738-comment-reussir-votre-strategie-de-gestion-des-talents-en-year
-featured_image: /blog/1470-quels-sont-les-avantages-d-une-marque-employeur-forte/featured.jpg
+featured_image: /blog/1470-quels-sont-les-avantages-d-une-marque-employeur-forte.jpg
 ---
 
 <h2>Pourquoi j'ai réalisé l'importance d'une marque employeur solide</h2>
@@ -159,4 +159,5 @@ featured_image: /blog/1470-quels-sont-les-avantages-d-une-marque-employeur-forte
 <blockquote>
 <p>Une marque employeur forte transforme durablement une entreprise. Elle attire les talents, fidélise les équipes, booste la productivité et l'innovation. Pour une TPE comme la mienne, c'est devenu un avantage concurrentiel décisif. Un investissement rentable qui sécurise l'avenir de l'entreprise tout en améliorant le quotidien de chacun.</p>
 </blockquote>
+
 

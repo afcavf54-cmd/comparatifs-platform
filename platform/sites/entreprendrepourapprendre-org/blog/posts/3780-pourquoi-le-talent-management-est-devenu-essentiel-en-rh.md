@@ -15,7 +15,7 @@ related_posts:
 - 4847-gestion-des-talents-dans-une-pme-comment-structurer-votre-rh
 - 3838-comment-mettre-en-place-un-logiciel-gepp-dans-votre-entreprise
 - 6152-cartographie-des-competences-quelles-etapes-suivre
-featured_image: /blog/3780-pourquoi-le-talent-management-est-devenu-essentiel-en-rh/featured.jpg
+featured_image: /blog/3780-pourquoi-le-talent-management-est-devenu-essentiel-en-rh.jpg
 ---
 
 <h2>Qu'est-ce qui a vraiment changé dans la gestion des équipes ces dernières années ?</h2>
@@ -224,4 +224,5 @@ featured_image: /blog/3780-pourquoi-le-talent-management-est-devenu-essentiel-en
 <p>Le talent management dans une TPE, c'est finalement du management humain. Écouter, comprendre, accompagner, faire grandir. <strong>Pas besoin de buzzwords</strong> ou de méthodes compliquées. Juste de l'attention et de la bienveillance, couplées à une vision claire de où on veut emmener l'entreprise.</p>
 
 <p>Cette approche me demande du temps et de l'énergie, mais elle me permet de garder mes meilleurs éléments et d'attirer de nouveaux talents. Dans un marché du travail tendu comme aujourd'hui, c'est mon meilleur investissement.</p>
+
 

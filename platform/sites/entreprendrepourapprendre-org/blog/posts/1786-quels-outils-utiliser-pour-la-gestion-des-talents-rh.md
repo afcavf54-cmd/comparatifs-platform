@@ -15,7 +15,7 @@ related_posts:
 - 6152-cartographie-des-competences-quelles-etapes-suivre
 - 3838-comment-mettre-en-place-un-logiciel-gepp-dans-votre-entreprise
 - 2321-comment-definir-une-strategie-efficace-de-gestion-des-talents
-featured_image: /blog/1786-quels-outils-utiliser-pour-la-gestion-des-talents-rh/featured.jpg
+featured_image: /blog/1786-quels-outils-utiliser-pour-la-gestion-des-talents-rh.jpg
 ---
 
 <h2>Pourquoi j'ai abandonné Excel pour gérer les talents dans mon agence</h2>
@@ -244,4 +244,5 @@ featured_image: /blog/1786-quels-outils-utiliser-pour-la-gestion-des-talents-rh/
 <p>Patience donc. L'investissement en temps et en argent se rentabilise, mais pas immédiatement.</p>
 
 <p>Au final, choisir un outil de gestion des talents, c'est comme choisir un collaborateur : il faut qu'il s'intègre dans votre organisation, qu'il résolve vos vrais problèmes, et qu'il vous simplifie la vie. Prenez le temps de bien définir vos besoins, testez sérieusement, et n'hésitez pas à vous faire accompagner si nécessaire.</p>
+
 

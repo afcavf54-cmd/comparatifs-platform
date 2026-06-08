@@ -11,7 +11,7 @@ related_posts:
 - 4504-tarification-invoicemaster-evolution-comparatif-et-avis
 - 9611-quel-logiciel-de-facturation-quickbill-advanced-choisir
 - 9245-quel-logiciel-de-facturation-quickbill-advanced-choisir
-featured_image: /blog/4388-tarification-invoicemaster-evolution-comparatif-et-avis/featured.jpg
+featured_image: /blog/4388-tarification-invoicemaster-evolution-comparatif-et-avis.jpg
 ---
 
 <h2>InvoiceMaster Evolution, un prix qui fait réfléchir</h2>
@@ -150,4 +150,5 @@ featured_image: /blog/4388-tarification-invoicemaster-evolution-comparatif-et-av
 <p>Je déconseille pour les très petites activités (moins de 20 factures/mois) où Pennylane ou même un Excel suffit. Et aussi pour les grosses structures qui ont besoin d'intégrations poussées.</p>
 
 <p>Mon conseil ? Testez la version d'essai 15 jours en simulant votre vraie activité. Comptez tous les modules dont vous aurez besoin pour calculer le <strong>coût réel mensuel</strong>. C'est la seule façon de voir si ça colle à votre budget et vos besoins.</p>
+
 

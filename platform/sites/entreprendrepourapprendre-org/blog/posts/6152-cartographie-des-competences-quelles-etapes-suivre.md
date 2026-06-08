@@ -15,7 +15,7 @@ related_posts:
 - 3838-comment-mettre-en-place-un-logiciel-gepp-dans-votre-entreprise
 - 2321-comment-definir-une-strategie-efficace-de-gestion-des-talents
 - 4847-gestion-des-talents-dans-une-pme-comment-structurer-votre-rh
-featured_image: /blog/6152-cartographie-des-competences-quelles-etapes-suivre/featured.jpg
+featured_image: /blog/6152-cartographie-des-competences-quelles-etapes-suivre.jpg
 ---
 
 <p>J'ai mis en place ma première cartographie des compétences il y a trois ans. Franchement, au début, je ne savais pas trop par où commencer. J'avais cette sensation de partir dans tous les sens avec mes six collaborateurs, sans vraiment savoir qui maîtrisait quoi. Aujourd'hui, je peux dire que cette démarche a complètement transformé la gestion de mon équipe.</p>
@@ -205,4 +205,5 @@ featured_image: /blog/6152-cartographie-des-competences-quelles-etapes-suivre/fe
 <p>Cette polyvalence partielle coûte en formation, mais elle sécurise énormément l'activité. On a évité deux situations critiques cette année grâce à cette approche.</p>
 
 <p>La cartographie des compétences n'est pas qu'un exercice RH théorique. C'est devenu un vrai outil de pilotage pour mon entreprise. Ça demande du temps et de la rigueur, mais l'impact sur l'efficacité et la sérénité au quotidien est indéniable. Pour une TPE, c'est même devenu indispensable face à la complexité croissante des projets et la rapidité d'évolution des métiers.</p>
+
 

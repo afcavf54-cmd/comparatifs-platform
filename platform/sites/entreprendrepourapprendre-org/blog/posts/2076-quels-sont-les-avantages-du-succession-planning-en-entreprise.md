@@ -15,7 +15,7 @@ related_posts:
 - 2651-quels-sont-les-avantages-du-succession-planning-en-entreprise
 - 6152-cartographie-des-competences-quelles-etapes-suivre
 - 3755-pourquoi-la-retention-des-talents-est-elle-strategique
-featured_image: /blog/2076-quels-sont-les-avantages-du-succession-planning-en-entreprise/featured.jpg
+featured_image: /blog/2076-quels-sont-les-avantages-du-succession-planning-en-entreprise.jpg
 ---
 
 <h2>Pourquoi j'ai mis en place un succession planning dans mon agence</h2>
@@ -199,4 +199,5 @@ featured_image: /blog/2076-quels-sont-les-avantages-du-succession-planning-en-en
 <p><strong>Mon conseil principal</strong> : commencez simple et ajustez en marchant. Le succession planning, ce n'est pas une science exacte. C'est du bon sens organisé et un peu de méthode.</p>
 
 <p>Et vous, avez-vous déjà réfléchi à organiser la transmission des compétences dans votre structure ? Dans une TPE comme la mienne, c'est souvent la différence entre subir les départs et les anticiper sereinement.</p>
+
 

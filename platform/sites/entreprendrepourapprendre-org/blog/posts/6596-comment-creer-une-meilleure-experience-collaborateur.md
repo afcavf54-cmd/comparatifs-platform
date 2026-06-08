@@ -15,7 +15,7 @@ related_posts:
 - 1470-quels-sont-les-avantages-d-une-marque-employeur-forte
 - 1786-quels-outils-utiliser-pour-la-gestion-des-talents-rh
 - 1300-comment-accompagner-le-developpement-des-talents-internes
-featured_image: /blog/6596-comment-creer-une-meilleure-experience-collaborateur/featured.jpg
+featured_image: /blog/6596-comment-creer-une-meilleure-experience-collaborateur.jpg
 ---
 
 <h2>Mon expérience terrain : pourquoi l'expérience collaborateur transforme tout</h2>
@@ -215,4 +215,5 @@ featured_image: /blog/6596-comment-creer-une-meilleure-experience-collaborateur/
 <p>Ensuite, instaurez un rythme : un feedback par mois, une amélioration par trimestre, un bilan annuel. Cette régularité transformera progressivement votre culture d'entreprise sans bouleverser votre organisation.</p>
 
 <p>L'expérience collaborateur, ce n'est pas un projet qu'on termine. C'est un état d'esprit qu'on cultive au quotidien. Dans une TPE comme la nôtre, c'est souvent ce qui fait la différence entre perdre ses talents et les faire grandir avec l'entreprise.</p>
+
 

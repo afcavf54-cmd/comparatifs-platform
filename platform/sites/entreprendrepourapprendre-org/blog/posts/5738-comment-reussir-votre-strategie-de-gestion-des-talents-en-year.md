@@ -15,7 +15,7 @@ related_posts:
 - 1786-quels-outils-utiliser-pour-la-gestion-des-talents-rh
 - 4847-gestion-des-talents-dans-une-pme-comment-structurer-votre-rh
 - 6152-cartographie-des-competences-quelles-etapes-suivre
-featured_image: /blog/5738-comment-reussir-votre-strategie-de-gestion-des-talents-en-year/featured.jpg
+featured_image: /blog/5738-comment-reussir-votre-strategie-de-gestion-des-talents-en-year.jpg
 ---
 
 <h2>Pourquoi la gestion des talents est devenue un enjeu majeur pour les TPE ?</h2>
@@ -205,4 +205,5 @@ featured_image: /blog/5738-comment-reussir-votre-strategie-de-gestion-des-talent
 <p>L'année prochaine, j'aimerais mettre en place un système de mobilité interne plus formalisé. Permettre à quelqu'un de changer de poste ou de missions sans quitter l'entreprise. Défi intéressant quand on n'a que six postes au total, mais ça vaut le coup d'essayer.</p>
 
 <p>Une stratégie de gestion des talents réussie en 2024, c'est finalement une équipe stable, motivée, et qui grandit avec l'entreprise. Pas révolutionnaire, mais diablement efficace quand c'est bien fait.</p>
+
 

@@ -11,7 +11,7 @@ related_posts:
 - 9611-quel-logiciel-de-facturation-quickbill-advanced-choisir
 - 4504-tarification-invoicemaster-evolution-comparatif-et-avis
 - 4388-tarification-invoicemaster-evolution-comparatif-et-avis
-featured_image: /blog/9245-quel-logiciel-de-facturation-quickbill-advanced-choisir/featured.jpg
+featured_image: /blog/9245-quel-logiciel-de-facturation-quickbill-advanced-choisir.jpg
 ---
 
 <h2>QuickBill Advanced : pourquoi j'ai fini par l'abandonner</h2>
@@ -102,4 +102,5 @@ featured_image: /blog/9245-quel-logiciel-de-facturation-quickbill-advanced-chois
 <p>Si vous avez des besoins plus larges (CRM poussé, comptabilité intégrée, gestion de stock), regardez plutôt du côté de Sellsy ou Pennylane. Mais préparez-vous à investir plus de temps et d'argent dans la prise en main.</p>
 
 <p>Une dernière chose : <strong>ne restez pas sur un outil qui ne vous convient pas</strong> par flemme de changer. J'ai perdu six mois avec une solution inadaptée avant de prendre le temps de vraiment chercher. Ces six mois m'ont coûté plus cher en perte de productivité que tous les tests que j'ai faits ensuite.</p>
+
 

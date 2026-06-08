@@ -15,7 +15,7 @@ related_posts:
 - 2321-comment-definir-une-strategie-efficace-de-gestion-des-talents
 - 6152-cartographie-des-competences-quelles-etapes-suivre
 - 3838-comment-mettre-en-place-un-logiciel-gepp-dans-votre-entreprise
-featured_image: /blog/4847-gestion-des-talents-dans-une-pme-comment-structurer-votre-rh/featured.jpg
+featured_image: /blog/4847-gestion-des-talents-dans-une-pme-comment-structurer-votre-rh.jpg
 ---
 
 <h2>Pourquoi structurer sa RH devient urgent en PME ?</h2>
@@ -145,4 +145,5 @@ featured_image: /blog/4847-gestion-des-talents-dans-une-pme-comment-structurer-v
 <p>Par exemple, je sais que le secteur de la communication évolue vers plus de digital et d'automatisation. J'ai donc prévu des formations en marketing automation pour mes chargés de communication. Plutôt que de subir le changement, on le devance.</p>
 
 <p>Structurer sa gestion des talents en PME, ce n'est pas une option. C'est une nécessité pour grandir sereinement et fidéliser ses meilleurs collaborateurs. Commencez simple, mesurez vos progrès, ajustez régulièrement. <strong>Vos équipes vous en remercieront</strong>, et votre business aussi.</p>
+
 

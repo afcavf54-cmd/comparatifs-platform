@@ -15,7 +15,7 @@ related_posts:
 - 2321-comment-definir-une-strategie-efficace-de-gestion-des-talents
 - 3838-comment-mettre-en-place-un-logiciel-gepp-dans-votre-entreprise
 - 1786-quels-outils-utiliser-pour-la-gestion-des-talents-rh
-featured_image: /blog/1300-comment-accompagner-le-developpement-des-talents-internes/featured.jpg
+featured_image: /blog/1300-comment-accompagner-le-developpement-des-talents-internes.jpg
 ---
 
 <h2>Développer les talents, ça commence par savoir ce qu'on a sous le capot</h2>
@@ -208,4 +208,5 @@ featured_image: /blog/1300-comment-accompagner-le-developpement-des-talents-inte
 <p>Au final, développer les talents internes dans une TPE, c'est un investissement de long terme qui transforme l'entreprise. Ça demande de la patience, de l'organisation, et parfois de sortir de sa zone de confort. Mais les résultats sont là : des équipes plus motivées, des compétences qui évoluent avec le marché, et une entreprise plus agile face aux changements.</p>
 
 <p>Maintenant, si vous cherchez des outils pour vous aider dans cette démarche, n'hésitez pas à creuser du côté des logiciels spécialisés. Ils peuvent vraiment simplifier la gestion au quotidien, surtout quand l'équipe grandit.</p>
+
 

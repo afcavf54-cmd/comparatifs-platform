@@ -15,7 +15,7 @@ related_posts:
 - 4847-gestion-des-talents-dans-une-pme-comment-structurer-votre-rh
 - 6152-cartographie-des-competences-quelles-etapes-suivre
 - 2321-comment-definir-une-strategie-efficace-de-gestion-des-talents
-featured_image: /blog/3838-comment-mettre-en-place-un-logiciel-gepp-dans-votre-entreprise/featured.jpg
+featured_image: /blog/3838-comment-mettre-en-place-un-logiciel-gepp-dans-votre-entreprise.jpg
 ---
 
 <h2>Qu'est-ce qu'un logiciel GEPP et pourquoi en avez-vous besoin ?</h2>
@@ -222,4 +222,5 @@ featured_image: /blog/3838-comment-mettre-en-place-un-logiciel-gepp-dans-votre-e
 <p>La GEPP n'est pas un projet avec un début et une fin. C'est un processus continu d'adaptation aux évolutions de votre secteur et aux aspirations de vos équipes. Votre logiciel doit être le facilitateur de cette démarche, pas une contrainte supplémentaire.</p>
 
 <p>Avec du recul, je peux affirmer que la mise en place d'un logiciel GEPP a transformé ma vision du management. Plus besoin de deviner les envies d'évolution de mes collaborateurs ou de subir les départs surprise. Nous avons tous une vision claire des perspectives d'avenir, ce qui renforce l'engagement et la motivation de chacun.</p>
+
 

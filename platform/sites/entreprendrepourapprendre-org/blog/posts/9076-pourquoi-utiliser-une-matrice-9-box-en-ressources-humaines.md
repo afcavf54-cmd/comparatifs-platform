@@ -15,7 +15,7 @@ related_posts:
 - 2651-quels-sont-les-avantages-du-succession-planning-en-entreprise
 - 2076-quels-sont-les-avantages-du-succession-planning-en-entreprise
 - 3264-quels-sont-les-leviers-de-fidelisation-des-talents-les-plus-efficaces
-featured_image: /blog/9076-pourquoi-utiliser-une-matrice-9-box-en-ressources-humaines/featured.jpg
+featured_image: /blog/9076-pourquoi-utiliser-une-matrice-9-box-en-ressources-humaines.jpg
 ---
 
 <h2>Qu'est-ce qu'une matrice 9 box et pourquoi je l'ai adoptée</h2>
@@ -229,4 +229,5 @@ featured_image: /blog/9076-pourquoi-utiliser-une-matrice-9-box-en-ressources-hum
 <p>Mesurez l'impact régulièrement. Turnover, satisfaction collaborateurs, atteinte des objectifs : ces indicateurs vous diront si l'outil vous est vraiment utile.</p>
 
 <p>La matrice 9 box a transformé ma façon de manager. Plus de clarté, moins d'improvisation, meilleurs résultats. Pour une dirigeante de TPE qui veut professionnaliser ses pratiques RH sans se compliquer la vie, c'est un investissement temps rentable dès la première année.</p>
+
 
