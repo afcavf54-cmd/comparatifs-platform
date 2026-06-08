@@ -1,24 +1,24 @@
 ---
-title: 'ROCE (Return on Capital Employed) : comment le calculer et l''utiliser pour
-  évaluer une entreprise'
+title: "ROCE (Return on Capital Employed) : comment le calculer et l'utiliser pour évaluer une entreprise"
 slug: 2405-roce-return-on-capital-employed-comment-le-calculer-et-l-utiliser-pour-evaluer-une-entreprise
-date: '2026-06-07T16:00:00+02:00'
+date: 2026-06-07T16:00:00+02:00
+updated: 2026-06-08T09:12:55
 categorie: Finance & Comptabilité
-meta_title: 'ROCE : définition, formule et interprétation'
-meta_description: Découvrez le ROCE, l'indicateur clé pour mesurer la rentabilité
-  de votre capital investi. Formule simple, calcul pratique et conseils d'expert pour
-  optimiser vos…
-min_words: 2500
+meta_title: "ROCE : définition, formule et interprétation"
+meta_description: "Découvrez le ROCE, l'indicateur clé pour mesurer la rentabilité"
+featured_image: /blog/2405-roce-return-on-capital-employed-comment-le-calculer-et-l-utiliser-pour-evaluer-une-entreprise/featured-70582.jpg
 status: published
-link_anchors:
-- text: roce
-  max: 4
+min_words: 2500
 related_posts:
 - 3413-actif-net-reevalue-anr-comment-le-calculer-et-l-interpreter-en-analyse-financiere
 - 8982-quasi-usufruit-definition-avantages-inconvenients-et-cas-d-usage-en-gestion-patrimoniale
 - 4958-infonet-l-outil-de-reference-pour-surveiller-les-entreprises-francaises
 - 2484-trimbox-fonctionnalites-tarifs-et-retours-d-experience-sur-cet-outil-de-gestion
+link_anchors:
+- text: roce
+  max: 4
 ---
+
 <h2>Le ROCE : votre boussole financière pour des décisions éclairées</h2>
 
 <p>Après onze ans à diriger ma TPE, je peux vous dire que <strong>les ratios financiers ne sont pas que des chiffres sur un tableau</strong>. Le ROCE, ou Return on Capital Employed, fait partie de mes indicateurs préférés. Simple à calculer, facile à comprendre, il me donne une vision claire de la performance de mon entreprise. Et surtout, il m'aide à prendre les bonnes décisions d'investissement.</p>
@@ -213,3 +213,4 @@ Pas forcément. Tout dépend du secteur, du coût du capital et du contexte éco
 <p><strong>Comment améliorer rapidement son ROCE ?</strong><br>
 Les leviers les plus rapides sont l'optimisation du besoin en fonds de roulement (stocks, créances clients, dettes fournisseurs) et l'amélioration de la marge opérationnelle par la maîtrise des coûts. Les effets se voient dès le trimestre suivant.</p>
 </blockquote>
+
