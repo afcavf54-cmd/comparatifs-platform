@@ -1,21 +1,22 @@
 ---
-title: 'Infonet : tout savoir sur cet outil d''information légale et financière'
+title: "Infonet : tout savoir sur cet outil d'information légale et financière"
 slug: 8207-infonet-tout-savoir-sur-cet-outil-d-information-legale-et-financiere
-date: '2026-06-03T22:00:00+02:00'
+date: 2026-06-03T22:00:00+02:00
+updated: 2026-06-08T12:31:51
 categorie: Finance & Comptabilité
-meta_title: 'Infonet : avis, services proposés et points forts'
-meta_description: Découvrez Infonet, l'outil d'information légale et financière pour
-  analyser les entreprises françaises. Bilans, dirigeants, surveillance automatique
-  et exports…
-min_words: 1000
+meta_title: "Infonet : avis, services proposés et points forts"
+meta_description: "Découvrez Infonet, l'outil d'information légale et financière pour"
+featured_image: /blog/8207-infonet-tout-savoir-sur-cet-outil-d-information-legale-et-financiere/featured-6796.jpg
 status: published
-link_anchors:
-- text: infonet
-  max: 4
+min_words: 1000
 related_posts:
 - 7914-quasi-usufruit-dans-quels-cas-utiliser-ce-mecanisme-juridique
 - 3144-actif-net-reevalue-methode-de-calcul-et-interet-pour-les-investisseurs
+link_anchors:
+- text: infonet
+  max: 4
 ---
+
 <h2>Qu'est-ce qu'Infonet exactement ?</h2>
 
 <p>Infonet, c'est un outil d'information légale et financière que j'utilise depuis deux ans dans mon entreprise marseillaise. <strong>Une base de données complète</strong> qui centralise les informations sur les entreprises françaises. Bilans, comptes de résultat, dirigeants, statuts juridiques... tout y passe.</p>
@@ -99,3 +100,4 @@ related_posts:
 <p>Les alternatives existent : Societe.com pour du ponctuel, Diane de Bureau van Dijk pour du haut de gamme. Mais Infonet trouve sa place au milieu, avec un bon équilibre entre fonctionnalités et accessibilité.</p>
 
 <p>Mon conseil ? <strong>Testez la version d'essai gratuite</strong> avant de vous engager. Vous verrez rapidement si l'outil correspond à vos besoins réels et à votre budget serré de dirigeant de TPE.</p>
+
