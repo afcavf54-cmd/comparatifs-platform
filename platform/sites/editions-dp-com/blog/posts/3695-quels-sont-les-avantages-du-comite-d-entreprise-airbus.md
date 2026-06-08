@@ -1,11 +1,11 @@
 ---
 title: Quels sont les avantages du comité d’entreprise Airbus ?
 slug: 3695-quels-sont-les-avantages-du-comite-d-entreprise-airbus
-date: 2026-05-17T10:00:00+02:00
-updated: 2026-05-17T19:56:53
+date: 2026-05-17 10:00:00+02:00
+updated: 2026-05-17 19:56:53
 categorie: Salarié
-meta_title: "Comité d'entreprise Airbus : avantages, voyages et billetterie"
-meta_description: "Découvrez les nombreux avantages du comité d'entreprise Airbus : réductions vacances jusqu'à 40%, billetterie spectacles, services pratiques et bien plus pour…"
+meta_title: 'Comité d''entreprise Airbus : avantages, voyages et billetterie'
+meta_description: 'Découvrez les nombreux avantages du comité d''entreprise Airbus : réductions vacances jusqu''à 40%, billetterie spectacles, services pratiques et bien plus pour…'
 featured_image: /blog/3695-quels-sont-les-avantages-du-comite-d-entreprise-airbus/featured-8674.jpg
 status: published
 min_words: 750
@@ -15,8 +15,8 @@ related_posts:
 - 1194-quels-avantages-propose-le-comite-d-entreprise-bnp-paribas
 - 2430-que-peut-on-obtenir-avec-le-comite-d-entreprise-orange
 link_anchors:
-- text: "comité d'entreprise airbus"
-  max: 1
+- text: comité d'entreprise airbus
+  max: 5
 ---
 
 <h2>Les avantages sociaux chez Airbus</h2>
@@ -91,4 +91,5 @@ link_anchors:
 <p>Les économies réalisées peuvent rapidement atteindre plusieurs centaines d'euros par an. À condition de jouer le jeu et de ne pas laisser ses droits en sommeil.</p>
 
 <p>Au final, le comité d'entreprise Airbus constitue un véritable plus dans le package de rémunération global. <strong>Un atout non négligeable</strong> quand on compare les offres d'emploi dans l'aéronautique. Les candidats ont tout intérêt à s'informer précisément sur ces aspects lors des entretiens d'embauche.</p>
+
 

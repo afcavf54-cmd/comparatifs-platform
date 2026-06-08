@@ -1,11 +1,11 @@
 ---
 title: Comment fonctionne le comité d’entreprise Crédit Mutuel ?
 slug: 4315-comment-fonctionne-le-comite-d-entreprise-credit-mutuel
-date: 2026-05-17T11:00:00+02:00
-updated: 2026-05-17T19:58:31
+date: 2026-05-17 11:00:00+02:00
+updated: 2026-05-17 19:58:31
 categorie: Salarié
-meta_title: "Comité d'entreprise Crédit Mutuel : aides et avantages salariés"
-meta_description: "Découvrez le fonctionnement du comité d'entreprise Crédit Mutuel : organisation, missions, élections et spécificités des caisses régionales. Guide complet pour…"
+meta_title: 'Comité d''entreprise Crédit Mutuel : aides et avantages salariés'
+meta_description: 'Découvrez le fonctionnement du comité d''entreprise Crédit Mutuel : organisation, missions, élections et spécificités des caisses régionales. Guide complet pour…'
 featured_image: /blog/4315-comment-fonctionne-le-comite-d-entreprise-credit-mutuel/featured-6405.jpg
 status: published
 min_words: 750
@@ -15,8 +15,8 @@ related_posts:
 - 1054-comment-acceder-aux-avantages-du-comite-d-entreprise-adecco
 - 3695-quels-sont-les-avantages-du-comite-d-entreprise-airbus
 link_anchors:
-- text: "comite d'entreprise crédit mutuel"
-  max: 1
+- text: comite d'entreprise crédit mutuel
+  max: 5
 ---
 
 <h2>Le comité d'entreprise du Crédit Mutuel, comment ça marche vraiment ?</h2>
@@ -93,4 +93,5 @@ link_anchors:
 <p>Cette fusion entre CE, délégués du personnel et CHSCT simplifie théoriquement les choses. Dans la pratique, c'est un peu plus compliqué. Les habitudes ont la vie dure.</p>
 
 <p>Au final, le comité d'entreprise du Crédit Mutuel reste un outil utile pour les salariés. Entre avantages sociaux et rôle de représentation, il contribue à améliorer les conditions de travail. Même s'il faut parfois s'armer de patience pour voir aboutir certains projets.</p>
+
 

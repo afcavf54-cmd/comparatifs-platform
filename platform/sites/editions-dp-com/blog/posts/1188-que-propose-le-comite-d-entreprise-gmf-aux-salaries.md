@@ -1,11 +1,11 @@
 ---
 title: Que propose le comité d’entreprise GMF aux salariés ?
 slug: 1188-que-propose-le-comite-d-entreprise-gmf-aux-salaries
-date: 2026-05-14T11:00:00+02:00
-updated: 2026-05-15T18:45:21
+date: 2026-05-14 11:00:00+02:00
+updated: 2026-05-15 18:45:21
 categorie: Salarié
-meta_title: "Comité d'entreprise GMF : avantages salariés et offres proposées"
-meta_description: "Découvrez les avantages du comité d'entreprise GMF pour ses 8 000 salariés : chèques vacances jusqu'à 900€, centres de vacances, billetterie et services familiaux."
+meta_title: 'Comité d''entreprise GMF : avantages salariés et offres proposées'
+meta_description: 'Découvrez les avantages du comité d''entreprise GMF pour ses 8 000 salariés : chèques vacances jusqu''à 900€, centres de vacances, billetterie et services familiaux.'
 featured_image: /blog/1188-que-propose-le-comite-d-entreprise-gmf-aux-salaries/featured-14865.jpg
 status: published
 min_words: 750
@@ -15,8 +15,8 @@ related_posts:
 - 5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage
 - 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
 link_anchors:
-- text: "comité d'entreprise gmf"
-  max: 1
+- text: comité d'entreprise gmf
+  max: 5
 ---
 
 <h2>Un comité d'entreprise qui met l'accent sur l'équilibre vie privée-professionnelle</h2>
@@ -90,4 +90,5 @@ link_anchors:
 <p>Le comité d'entreprise GMF propose finalement un <strong>package équilibré</strong> entre tradition et modernité. Leurs prestations vacances restent le point fort, même si l'innovation digitale rattrape le retard accumulé.</p>
 
 <p>Pour nous, dirigeants de TPE, leur modèle inspire surtout par la diversité des partenariats locaux. Impossible de reproduire leurs centres de vacances, mais les accords avec les commerçants de proximité restent accessibles à notre échelle.</p>
+
 

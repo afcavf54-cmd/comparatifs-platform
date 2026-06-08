@@ -1,11 +1,11 @@
 ---
 title: Quels avantages offre le comité d’entreprise MAAF ?
 slug: 9545-quels-avantages-offre-le-comite-d-entreprise-maaf
-date: 2026-05-15T15:00:00+02:00
-updated: 2026-05-15T18:43:34
+date: 2026-05-15 15:00:00+02:00
+updated: 2026-05-15 18:43:34
 categorie: Salarié
-meta_title: "Comité d'entreprise MAAF : avantages, aides et réductions"
-meta_description: "Découvrez les avantages du comité d'entreprise MAAF : activités culturelles, voyages organisés à prix réduits, aides financières et chèques vacances pour les…"
+meta_title: 'Comité d''entreprise MAAF : avantages, aides et réductions'
+meta_description: 'Découvrez les avantages du comité d''entreprise MAAF : activités culturelles, voyages organisés à prix réduits, aides financières et chèques vacances pour les…'
 featured_image: /blog/9545-quels-avantages-offre-le-comite-d-entreprise-maaf/featured-8744.jpg
 status: published
 min_words: 750
@@ -15,8 +15,8 @@ related_posts:
 - 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
 - 1188-que-propose-le-comite-d-entreprise-gmf-aux-salaries
 link_anchors:
-- text: "comité d'entreprise maaf"
-  max: 1
+- text: comité d'entreprise maaf
+  max: 5
 ---
 
 <p>Quand on travaille chez MAAF, on bénéfie d'un <strong>comité d'entreprise</strong> qui propose des avantages intéressants. Je vais vous détailler ce qu'on peut en attendre concrètement.</p>
@@ -82,4 +82,5 @@ link_anchors:
 <p>C'est un avantage social non négligeable qui complète bien le package salarial. Pas de quoi révolutionner sa vie, mais un plus appréciable au quotidien.</p>
 
 <p>Mon conseil ? <strong>Profitez-en sans modération</strong>. C'est inclus dans votre contrat, autant en tirer parti. Et n'hésitez pas à faire remonter vos suggestions lors des assemblées générales du CE.</p>
+
 

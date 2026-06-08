@@ -1,11 +1,11 @@
 ---
 title: Que propose le comité d’entreprise Renault aux salariés ?
 slug: 2622-que-propose-le-comite-d-entreprise-renault-aux-salaries
-date: 2026-05-18T15:00:00+02:00
-updated: 2026-05-19T09:34:14
+date: 2026-05-18 15:00:00+02:00
+updated: 2026-05-19 09:34:14
 categorie: Salarié
-meta_title: "Comité d'entreprise Renault : billetterie, vacances et avantages"
-meta_description: "Découvrez tous les avantages du comité d'entreprise Renault pour ses 170 000 salariés : centres de vacances, tarifs préférentiels, activités culturelles et…"
+meta_title: 'Comité d''entreprise Renault : billetterie, vacances et avantages'
+meta_description: 'Découvrez tous les avantages du comité d''entreprise Renault pour ses 170 000 salariés : centres de vacances, tarifs préférentiels, activités culturelles et…'
 featured_image: /blog/2622-que-propose-le-comite-d-entreprise-renault-aux-salaries/featured-48483.jpg
 status: published
 min_words: 750
@@ -15,8 +15,8 @@ related_posts:
 - 4315-comment-fonctionne-le-comite-d-entreprise-credit-mutuel
 - 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
 link_anchors:
-- text: "comité d'entreprise renault"
-  max: 1
+- text: comité d'entreprise renault
+  max: 5
 ---
 
 <h2>Les avantages du comité d'entreprise Renault : un panorama complet</h2>
@@ -106,4 +106,5 @@ link_anchors:
 <p>L'équité géographique pose aussi question. Les salariés des grands sites bénéficient d'installations plus développées que ceux des implantations plus petites.</p>
 
 <p>Le comité d'entreprise Renault reste néanmoins une référence en matière d'avantages sociaux. Son modèle inspire de nombreuses autres entreprises, même si la reproduction à l'identique demeure complexe pour des structures plus modestes comme la mienne.</p>
+
 
