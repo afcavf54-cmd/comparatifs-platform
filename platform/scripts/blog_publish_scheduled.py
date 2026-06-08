@@ -651,11 +651,14 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
                 article_title=title,
             )
             if jpg_bytes:
-                img_dir = site_dir / "public" / "blog" / slug
+                # Nouveau pattern de nom : /blog/<slug>.jpg directement à la racine
+                # du dossier public/blog/. Plus court, plus SEO-friendly que
+                # l'ancien public/blog/<slug>/featured.jpg.
+                img_dir = site_dir / "public" / "blog"
                 img_dir.mkdir(parents=True, exist_ok=True)
-                img_path = img_dir / "featured.jpg"
+                img_path = img_dir / f"{slug}.jpg"
                 img_path.write_bytes(jpg_bytes)
-                featured_image_rel = f"/blog/{slug}/featured.jpg"
+                featured_image_rel = f"/blog/{slug}.jpg"
                 print(f"✓ ({len(jpg_bytes) // 1024} KB)")
             else:
                 print("⚠ (sans image)")
