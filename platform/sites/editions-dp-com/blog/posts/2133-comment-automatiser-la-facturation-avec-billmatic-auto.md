@@ -2,7 +2,7 @@
 title: Comment automatiser la facturation avec Billmatic Auto ?
 slug: 2133-comment-automatiser-la-facturation-avec-billmatic-auto
 date: 2026-06-08T12:00:00+02:00
-updated: 2026-06-08T11:31:31
+updated: 2026-06-08T11:33:34
 categorie: Comptabilité
 meta_title: Comment automatiser la facturation avec Billmatic Auto
 meta_description: "Découvrez Billmatic Auto pour automatiser votre facturation : retour d'expérience après 2 ans d'utilisation, configuration simple en 20 minutes et gain de temps…"
@@ -16,7 +16,7 @@ related_posts:
 - 4708-cnam-intec-presentation-de-l-institut-national-des-techniques-economiques-et-comptables
 link_anchors:
 - text: comment automatiser sa facturation avec Billmatic Auto
-  max: 1
+  max: 5
 ---
 
 <h2>Billmatic Auto : mon retour d'expérience après 2 ans d'utilisation</h2>
@@ -125,4 +125,5 @@ Oui, mais uniquement pour l'affichage. Les taux de change ne se mettent pas à j
 
 <p><strong>Que se passe-t-il en cas de panne technique ?</strong><br>
 J'ai vécu une panne de 3 heures l'année dernière. Les factures programmées ce jour-là sont parties avec quelques heures de retard. Billmatic Auto dispose d'un système de rattrapage automatique rassurant.</p>
+
 
