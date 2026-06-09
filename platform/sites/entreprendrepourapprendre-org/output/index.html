@@ -193,6 +193,48 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
 </nav>
+
+<script>
+/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
+   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
+   devoir redéfinir la fonction côté template parent.
+
+   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
+   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
+   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
+   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
+   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
+   qui est actif et le parent réécrit derrière s'il en a un.
+
+   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
+   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
+   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
+   ne faisait rien. */
+(function(){
+  if (typeof window.toggleMenu === 'function') return;
+  window.toggleMenu = function(){
+    var menu = document.getElementById('nav-mobile');
+    if (menu) menu.classList.toggle('open');
+  };
+  // UX bonus : fermer le menu mobile en cliquant en dehors
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('nav-mobile');
+    var burger = document.getElementById('burger');
+    if (!menu || !burger) return;
+    if (!menu.classList.contains('open')) return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    menu.classList.remove('open');
+  });
+  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
+  document.addEventListener('DOMContentLoaded', function(){
+    var menu = document.getElementById('nav-mobile');
+    if (!menu) return;
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  });
+})();
+</script>
 <!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">Comparateur de logiciels professionnels 2026</div>
@@ -610,22 +652,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <div class="blog-recent-card-cat">Ressources Humaines</div>          <div class="blog-recent-card-title">Pourquoi utiliser une matrice 9 box en ressources humaines ?</div>
 <div class="blog-recent-card-excerpt">Qu'est-ce qu'une matrice 9 box et pourquoi je l'ai adoptée Quand j'ai découvert la matrice 9 box il y a deux ans, je cherchais une solution simple pour mieux gérer les évolutions…</div><div class="blog-recent-card-date">📅 2 juin 2026</div>        </div>
       </a>
-      <a href="/9611-quel-logiciel-de-facturation-quickbill-advanced-choisir" class="blog-recent-card">
-        <div class="blog-recent-card-img">
-            <img src="/blog/9611-quel-logiciel-de-facturation-quickbill-advanced-choisir.jpg" alt="Quel logiciel de facturation QuickBill Advanced choisir ?" loading="lazy">
-        </div>
-        <div class="blog-recent-card-body">
-<div class="blog-recent-card-cat">Entreprenariat</div>          <div class="blog-recent-card-title">Quel logiciel de facturation QuickBill Advanced choisir ?</div>
-<div class="blog-recent-card-excerpt">Je vais être franche avec vous : j'ai testé une quinzaine de logiciels de facturation ces deux dernières années. Entre les versions d'essai, les démos commerciales et les…</div><div class="blog-recent-card-date">📅 1 juin 2026</div>        </div>
-      </a>
-      <a href="/4388-tarification-invoicemaster-evolution-comparatif-et-avis" class="blog-recent-card">
-        <div class="blog-recent-card-img">
-            <img src="/blog/4388-tarification-invoicemaster-evolution-comparatif-et-avis.jpg" alt="Tarification InvoiceMaster Evolution : comparatif et avis" loading="lazy">
-        </div>
-        <div class="blog-recent-card-body">
-<div class="blog-recent-card-cat">Entreprenariat</div>          <div class="blog-recent-card-title">Tarification InvoiceMaster Evolution : comparatif et avis</div>
-<div class="blog-recent-card-excerpt">InvoiceMaster Evolution, un prix qui fait réfléchir Je gère mon agence depuis 8 ans maintenant, et la question du logiciel de facturation revient régulièrement. InvoiceMaster…</div><div class="blog-recent-card-date">📅 1 juin 2026</div>        </div>
-      </a>
       <a href="/9245-quel-logiciel-de-facturation-quickbill-advanced-choisir" class="blog-recent-card">
         <div class="blog-recent-card-img">
             <img src="/blog/9245-quel-logiciel-de-facturation-quickbill-advanced-choisir.jpg" alt="Quel logiciel de facturation QuickBill Advanced choisir ?" loading="lazy">
@@ -649,6 +675,22 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <div class="blog-recent-card-body">
 <div class="blog-recent-card-cat">Ressources Humaines</div>          <div class="blog-recent-card-title">Quels sont les avantages du succession planning en entreprise ?</div>
 <div class="blog-recent-card-excerpt">Pourquoi la planification de succession n'est plus une option ? Quand j'ai commencé à m'intéresser au succession planning il y a quelques années, je pensais que c'était réservé…</div><div class="blog-recent-card-date">📅 1 juin 2026</div>        </div>
+      </a>
+      <a href="/2076-quels-sont-les-avantages-du-succession-planning-en-entreprise" class="blog-recent-card">
+        <div class="blog-recent-card-img">
+            <img src="/blog/2076-quels-sont-les-avantages-du-succession-planning-en-entreprise.jpg" alt="Quels sont les avantages du succession planning en entreprise ?" loading="lazy">
+        </div>
+        <div class="blog-recent-card-body">
+<div class="blog-recent-card-cat">Ressources Humaines</div>          <div class="blog-recent-card-title">Quels sont les avantages du succession planning en entreprise ?</div>
+<div class="blog-recent-card-excerpt">Pourquoi j'ai mis en place un succession planning dans mon agence Quand j'ai créé mon agence de communication il y a 8 ans, jamais je n'aurais imaginé me poser la question de la…</div><div class="blog-recent-card-date">📅 1 juin 2026</div>        </div>
+      </a>
+      <a href="/6596-comment-creer-une-meilleure-experience-collaborateur" class="blog-recent-card">
+        <div class="blog-recent-card-img">
+            <img src="/blog/6596-comment-creer-une-meilleure-experience-collaborateur.jpg" alt="Comment créer une meilleure expérience collaborateur ?" loading="lazy">
+        </div>
+        <div class="blog-recent-card-body">
+<div class="blog-recent-card-cat">Ressources Humaines</div>          <div class="blog-recent-card-title">Comment créer une meilleure expérience collaborateur ?</div>
+<div class="blog-recent-card-excerpt">Mon expérience terrain : pourquoi l'expérience collaborateur transforme tout Chez nous, on a longtemps pensé qu'un bon salaire et des congés payés suffisaient à garder nos…</div><div class="blog-recent-card-date">📅 1 juin 2026</div>        </div>
       </a>
     </div>
   </section>
@@ -700,7 +742,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 entreprendrepourapprendre.org — Données actualisées le 8 juin 2026
+        © 2026 entreprendrepourapprendre.org — Données actualisées le 9 juin 2026
       </div>
     </div>
   </div>
