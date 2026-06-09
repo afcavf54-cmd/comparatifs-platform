@@ -1,22 +1,22 @@
 ---
-title: "Infonet : tout savoir sur cet outil d'information légale et financière"
+title: 'Infonet : tout savoir sur cet outil d''information légale et financière'
 slug: 8207-infonet-tout-savoir-sur-cet-outil-d-information-legale-et-financiere
-date: 2026-06-03T22:00:00+02:00
-updated: 2026-06-08T12:31:51
+date: 2026-06-03 22:00:00+02:00
+updated: 2026-06-08 12:31:51
 categorie: Finance & Comptabilité
-meta_title: "Infonet : avis, services proposés et points forts"
-meta_description: "Découvrez Infonet, l'outil d'information légale et financière pour"
+meta_title: 'Infonet : avis, services proposés et points forts'
+meta_description: Découvrez Infonet, l'outil d'information légale et financière pour
 featured_image: /blog/8207-infonet-tout-savoir-sur-cet-outil-d-information-legale-et-financiere/featured-6796.jpg
 status: published
 min_words: 1000
 related_posts:
 - 7914-quasi-usufruit-dans-quels-cas-utiliser-ce-mecanisme-juridique
 - 3144-actif-net-reevalue-methode-de-calcul-et-interet-pour-les-investisseurs
+- 5023-trimbox-notre-analyse-detaillee-de-cette-solution-de-gestion
 link_anchors:
 - text: infonet
   max: 4
 ---
-
 <h2>Qu'est-ce qu'Infonet exactement ?</h2>
 
 <p>Infonet, c'est un outil d'information légale et financière que j'utilise depuis deux ans dans mon entreprise marseillaise. <strong>Une base de données complète</strong> qui centralise les informations sur les entreprises françaises. Bilans, comptes de résultat, dirigeants, statuts juridiques... tout y passe.</p>
