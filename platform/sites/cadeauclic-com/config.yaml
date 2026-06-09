@@ -1,0 +1,204 @@
+# ============================================================
+# CONFIG SITE -- cadeauclic-com
+# Thématique     : cadeau-code-promo
+# Types activés  : blog
+# Templates HTML : comparatif-vs-scpi.html.j2 (pages) / index-blog.html.j2 (home)
+# Généré par le wizard HUB le 2026-06-09
+# ============================================================
+
+site:
+  slug: cadeauclic-com
+  name: "cadeauclic.com"
+  domain: "https://cadeauclic.com"
+  base_path: ""
+  logo_text: "cadeauclic.com"
+  logo_accent: ""
+  tagline: "Comparatifs cadeauclic.com 2026"
+  year: 2026
+  sheet_csv_url: ""
+  www_preference: "www"
+  blog_slug_format: "clean"
+  author_name: "Elisa Dubois"
+  home_title: "cadeauclic.com | Comparatifs 2026"
+  home_description: ""
+  template: "comparatif-vs-scpi.html.j2"
+  index_template: "index-blog.html.j2"
+  analytics_clicky: ""
+  contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
+
+page_types:
+  blog: cadeau-code-promo
+
+theme:
+  accent: "#1B4FD8"
+  accent2: "#ff8080"
+  bg: "#F4F6FB"
+  ink: "#0F1A2E"
+  surface: "#FFFFFF"
+  font_title: "DM Serif Display"
+  font_body: "Outfit"
+  google_fonts: "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap"
+  cta_color: "#ff8080"
+  cta_text_color: "#ffffff"
+
+criteria:
+  - label: "TD 2026"
+    field: td
+    type: text
+    suffix: "%"
+  - label: "TRI"
+    field: tri
+    type: text
+    suffix: "%"
+  - label: "Prix de la part"
+    field: prix_achat
+    type: text
+    suffix: "EUR"
+  - label: "Prix de retrait"
+    field: prix_retrait
+    type: text
+    suffix: "EUR"
+  - label: "Investissement min."
+    field: investissement_min
+    type: text
+  - label: "Frais de souscription"
+    field: frais_souscription
+    type: text
+    suffix: "%"
+  - label: "Frais de gestion"
+    field: frais_gestion
+    type: text
+    suffix: "% TTC"
+  - label: "TOF"
+    field: tof
+    type: text
+    suffix: "%"
+  - label: "Endettement"
+    field: endettement
+    type: text
+    suffix: "%"
+  - label: "Delai de jouissance"
+    field: delai_jouissance
+    type: text
+    suffix: " mois"
+  - label: "Pays"
+    field: pays
+    type: text
+
+tag_classes:
+  rendement: "tag-rendement"
+  diversifiee: "tag-diversifiee"
+  specialisee: "tag-specialisee"
+  europeenne: "tag-europeenne"
+
+seo:
+  title_pattern: "{A} vs {B} : comparatif {year}"
+  meta_pattern: "Comparatif complet {A} vs {B} {year} : rendements, frais, avis."
+  avis_title_pattern: "Avis {nom} {year} : faut-il investir ?"
+  avis_meta_pattern: "Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques."
+  liste_comp_title: "Tous les comparatifs {site_name} {year}"
+  liste_avis_title: "Avis {site_name} {year} : analyses indépendantes"
+  h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
+  eyebrow: "Comparatif {year}"
+  intro_pattern: "Comparatif {A} vs {B} - analyse complete."
+  category_label: "Comparatifs"
+  category_url: "index.html#comparatifs"
+
+persona_prompt: |
+  Tu écris en tant que Sophie Martin, 37 ans, responsable marketing basée à Lyon. Mariée, deux enfants. Passionnée par les cadeaux personnalisés, les anniversaires, les mariages et les bonnes affaires.
+  
+  Niveau d'expérience : élevé dans l'achat de cadeaux et la recherche de bons plans.
+  
+  Tutoie le lecteur.
+  
+  Ton : chaleureux, spontané et authentique.
+  
+  Style rédactionnel :
+  
+  * Phrases courtes et variées
+  * Ton conversationnel
+  * Retour d'expérience personnel fréquent
+  * Avis assumés
+  * Pas de jargon marketing
+  * Écriture naturelle proche d'un blog lifestyle
+  
+  Positionnement : acheteuse expérimentée qui adore trouver des cadeaux originaux sans exploser son budget.
+  
+  Niveau d'opinion : affirmé.
+  
+  Angle éditorial prioritaire :
+  
+  * Trouver le cadeau qui fera plaisir
+  * Éviter les achats décevants
+  * Dénicher les meilleures promotions
+  * Partager des idées originales
+  * Faire gagner du temps aux lecteurs
+  
+  Critères de classement par ordre de priorité :
+  
+  1. Originalité
+  2. Rapport qualité-prix
+  3. Effet de surprise
+  4. Avis clients
+  5. Délais de livraison
+  6. Personnalisation
+  
+  Scoring :
+  
+  * Note globale sur 5
+  * Rapport qualité-prix sur 5
+  * Originalité sur 5
+  * Facilité à offrir sur 5
+  
+  Objectifs du lecteur cible :
+  
+  * Trouver un cadeau rapidement
+  * Faire plaisir à un proche
+  * Respecter un budget précis
+  * Trouver une idée originale
+  * Éviter les cadeaux vus et revus
+  * Profiter d'un code promo valide
+  
+  Contraintes du lecteur :
+  
+  * Budget limité
+  * Peu de temps pour chercher
+  * Manque d'inspiration
+  * Besoin d'une livraison rapide
+  * Peur de se tromper
+  
+  Toujours inclure :
+  
+  * Des exemples concrets d'utilisation
+  * Une tranche de budget
+  * Le profil idéal du destinataire
+  * Les points faibles du produit
+  * Une recommandation claire
+  
+  Exemples de formulations :
+  
+  "J'ai offert ce cadeau à ma sœur pour ses 40 ans."
+  
+  "Franchement, je ne m'attendais pas à une qualité aussi correcte à ce prix."
+  
+  "Bon, par contre, la livraison a pris presque une semaine."
+  
+  "Je recommande sans hésiter pour un couple qui vient d'emménager."
+  
+  "Pour un adolescent passionné de jeux vidéo, je passerais plutôt mon tour."
+  
+  Niveau de détail :
+  
+  Synthétique mais utile.
+  
+  Objectif principal :
+  
+  Aider le lecteur à choisir le bon cadeau sans perdre une heure à comparer des dizaines de sites.
+  
+
+author:
+  name: "Elisa Dubois"
+  bio: ""
+  job_title: ""
+  photo: "/author-photo.png"
+  socials: []
