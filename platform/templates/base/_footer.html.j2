@@ -15,11 +15,9 @@
   .footer-brand{grid-column:1/-1}
 }
 </style>
-
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-grid">
-
       <div class="footer-brand">
         {% if site.logo_img is defined and site.logo_img %}
         <a href="/" style="display:block;margin-bottom:12px"><img src="{{ site.logo_img }}" alt="{{ site.name }}" style="height:36px;width:auto;object-fit:contain"></a>
@@ -28,22 +26,30 @@
         {% endif %}
         <p>{{ site.tagline | default('') }}</p>
       </div>
-
       <div class="footer-col">
         <h4>Navigation</h4>
+        {# Liens conditionnels : alignés sur la logique du _nav.html.j2.
+           - "Nos comparateurs" : caché si site.has_comparateurs est défini ET false
+             (sites blog-only). Affiché si non défini (rétro-compat sites legacy).
+           - "Avis" / "Blog" : affichés uniquement si flag explicitement défini à true. #}
+        {% if site.has_comparateurs is not defined or site.has_comparateurs %}
         <a href="/nos-comparateurs">Nos comparateurs</a>
+        {% endif %}
+        {% if site.has_avis is defined and site.has_avis %}
+        <a href="/avis">Avis</a>
+        {% endif %}
+        {% if site.has_blog is defined and site.has_blog %}
+        <a href="/blog">Blog</a>
+        {% endif %}
         <a href="/plan-du-site">Plan du site</a>
         <a href="/mentions-legales">Mentions légales</a>
         <a href="/politique-confidentialite">Confidentialité</a>
       </div>
-
       <div class="footer-col">
         <h4>À propos</h4>
         <a href="/contact">Nous contacter</a>
       </div>
-
     </div>
-
     <div class="footer-bottom">
       <div class="footer-bottom-left">
         © {{ site.year }} {{ site.domain | replace('https://www.', '') | replace('https://', '') }} — Données actualisées le {{ build_date | fr_date }}
