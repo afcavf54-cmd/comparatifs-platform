@@ -80,6 +80,10 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 80px}
 .en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
+/* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
+   Exemple : "Legal Start" reste sur une ligne, seul le texte après le ":"
+   wrap si nécessaire. */
+.en-bref li strong{white-space:nowrap}
 .logiciel-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px}
 .logiciel-header{background:var(--ink);padding:18px 24px;display:flex;align-items:center;gap:14px}
 .logiciel-name{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:#fff;margin:0}
