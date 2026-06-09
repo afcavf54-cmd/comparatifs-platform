@@ -21,7 +21,13 @@ export default function TemplatesPage() {
     }).catch(() => setLoading(false))
   }, [])
 
+  // ── Labels et couleurs par type ────────────────────────────────────────
+  // 'blog' ajouté (juin 2026) pour les thématiques blog-only (ex: cadeau,
+  // finance perso). Référencé via page_types.blog: <slug> dans config.yaml,
+  // lu côté Python par load_prompts() dans blog_publish_scheduled.py.
+  // Couleur rose (#F687B3) pour les distinguer visuellement des classements.
   const TYPE_LABELS: Record<string, string> = {
+    blog: 'Thématiques Blog',
     avis: 'Pages Avis',
     vs: 'Pages Marque vs Marque',
     local: 'Pages Locales',
@@ -37,6 +43,7 @@ export default function TemplatesPage() {
   }, {})
 
   const typeColors: Record<string, string> = {
+    blog: '#F687B3',
     avis: '#00D4AA',
     vs: '#0090FF',
     local: '#F6AD55',
