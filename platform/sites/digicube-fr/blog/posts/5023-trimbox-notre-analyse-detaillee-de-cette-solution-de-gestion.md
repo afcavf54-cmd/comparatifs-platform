@@ -14,9 +14,10 @@ link_anchors:
 - text: trimbox
   max: 4
 related_posts:
-- 8207-infonet-tout-savoir-sur-cet-outil-d-information-legale-et-financiere
-- 7914-quasi-usufruit-dans-quels-cas-utiliser-ce-mecanisme-juridique
 - 3144-actif-net-reevalue-methode-de-calcul-et-interet-pour-les-investisseurs
+- 6723-roce-comprendre-cet-indicateur-de-rentabilite-financiere
+- 7914-quasi-usufruit-dans-quels-cas-utiliser-ce-mecanisme-juridique
+- 8207-infonet-tout-savoir-sur-cet-outil-d-information-legale-et-financiere
 ---
 <h2>Trimbox : qu'est-ce que c'est vraiment ?</h2>
 

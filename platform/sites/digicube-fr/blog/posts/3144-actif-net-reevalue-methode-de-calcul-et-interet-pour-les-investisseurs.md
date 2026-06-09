@@ -13,6 +13,7 @@ related_posts:
 - 8207-infonet-tout-savoir-sur-cet-outil-d-information-legale-et-financiere
 - 7914-quasi-usufruit-dans-quels-cas-utiliser-ce-mecanisme-juridique
 - 5023-trimbox-notre-analyse-detaillee-de-cette-solution-de-gestion
+- 6723-roce-comprendre-cet-indicateur-de-rentabilite-financiere
 link_anchors:
 - text: actif net réévalué
   max: 4

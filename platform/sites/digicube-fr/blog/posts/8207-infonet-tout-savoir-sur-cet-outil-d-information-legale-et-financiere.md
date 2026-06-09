@@ -11,8 +11,9 @@ status: published
 min_words: 1000
 related_posts:
 - 7914-quasi-usufruit-dans-quels-cas-utiliser-ce-mecanisme-juridique
-- 3144-actif-net-reevalue-methode-de-calcul-et-interet-pour-les-investisseurs
 - 5023-trimbox-notre-analyse-detaillee-de-cette-solution-de-gestion
+- 6723-roce-comprendre-cet-indicateur-de-rentabilite-financiere
+- 3144-actif-net-reevalue-methode-de-calcul-et-interet-pour-les-investisseurs
 link_anchors:
 - text: infonet
   max: 4
