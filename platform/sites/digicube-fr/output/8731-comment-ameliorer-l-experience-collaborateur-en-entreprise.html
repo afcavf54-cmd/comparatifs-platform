@@ -125,7 +125,7 @@ a:hover{text-decoration:underline}
 .author-bio{font-size:14px;color:var(--ink2);line-height:1.7}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}}
 /* Maillage interne */
-.related-section{margin:25px 0 0;padding-top:0;border-top:1px solid var(--border)}
+.related-section{margin:25px 0 0;padding-top:25px;border-top:1px solid var(--border)}
 .related-title{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
 .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .related-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px;text-decoration:none;transition:.15s;display:block}
@@ -136,8 +136,12 @@ a:hover{text-decoration:underline}
 @media(max-width:600px){.related-grid{grid-template-columns:1fr}}
 /* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
 @media(max-width:960px){
-  .article-layout{grid-template-columns:1fr;gap:32px}
+  .article-layout{grid-template-columns:1fr;gap:25px}
   .article-sidebar{position:static}
+  /* Sur mobile, la sidebar passe sous le contenu : on retire le padding-bottom
+     de article-main qui ne sert plus à rien (l'écart est géré par le gap du
+     grid). 80 (padding) + 32 (gap) = 112px → désormais 0 + 25 = 25px. */
+  .article-main{padding-bottom:0}
 }
 @media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
 
