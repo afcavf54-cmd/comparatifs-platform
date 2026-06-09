@@ -205,6 +205,48 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
 </nav>
+
+<script>
+/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
+   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
+   devoir redéfinir la fonction côté template parent.
+
+   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
+   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
+   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
+   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
+   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
+   qui est actif et le parent réécrit derrière s'il en a un.
+
+   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
+   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
+   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
+   ne faisait rien. */
+(function(){
+  if (typeof window.toggleMenu === 'function') return;
+  window.toggleMenu = function(){
+    var menu = document.getElementById('nav-mobile');
+    if (menu) menu.classList.toggle('open');
+  };
+  // UX bonus : fermer le menu mobile en cliquant en dehors
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('nav-mobile');
+    var burger = document.getElementById('burger');
+    if (!menu || !burger) return;
+    if (!menu.classList.contains('open')) return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    menu.classList.remove('open');
+  });
+  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
+  document.addEventListener('DOMContentLoaded', function(){
+    var menu = document.getElementById('nav-mobile');
+    if (!menu) return;
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  });
+})();
+</script>
 <div class="container">
 <article class="article-layout">
   <div class="article-main">
@@ -506,7 +548,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <li class="sidebar-cat-item">
           <a href="/blog" class="sidebar-cat-link">
             <span>Tous les articles</span>
-            <span class="sidebar-cat-count">29</span>
+            <span class="sidebar-cat-count">30</span>
           </a>
         </li>
         <li class="sidebar-cat-item">
@@ -518,7 +560,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <li class="sidebar-cat-item">
           <a href="/categorie-gestion-d-entreprise" class="sidebar-cat-link">
             <span>Gestion d'entreprise</span>
-            <span class="sidebar-cat-count">5</span>
+            <span class="sidebar-cat-count">6</span>
           </a>
         </li>
         <li class="sidebar-cat-item">
@@ -546,6 +588,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       <h3 class="sidebar-title">Articles récents</h3>
       <ul class="sidebar-recent-list">
         <li class="sidebar-recent-item">
+          <a href="/4127-comment-choisir-son-agence-web-les-criteres-pour-trouver-un-partenaire-fiable" class="sidebar-recent-link">
+<div class="sidebar-recent-cat">Gestion d'entreprise</div>            Comment choisir son agence web : les critères pour trouver un partenaire fiable
+          </a>
+        </li>
+        <li class="sidebar-recent-item">
           <a href="/1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise" class="sidebar-recent-link">
 <div class="sidebar-recent-cat">Finance & Comptabilité</div>            Actif net réévalué : comment mesurer la valeur réelle d'une entreprise
           </a>
@@ -563,11 +610,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <li class="sidebar-recent-item">
           <a href="/7943-creer-une-association-et-en-vivre-quelles-sont-les-solutions-de-financement" class="sidebar-recent-link">
 <div class="sidebar-recent-cat">Création entreprise</div>            Créer une association et en vivre : quelles sont les solutions de financement ?
-          </a>
-        </li>
-        <li class="sidebar-recent-item">
-          <a href="/7354-pain-point-identifier-les-freins-qui-empechent-vos-clients-d-acheter" class="sidebar-recent-link">
-<div class="sidebar-recent-cat">Gestion d'entreprise</div>            Pain point : identifier les freins qui empêchent vos clients d'acheter
           </a>
         </li>
       </ul>
@@ -620,7 +662,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 sauvonslaproximite.com — Données actualisées le 8 juin 2026
+        © 2026 sauvonslaproximite.com — Données actualisées le 9 juin 2026
       </div>
     </div>
   </div>
