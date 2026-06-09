@@ -41,6 +41,17 @@ Format de slug (configurable au niveau du site, depuis juin 2026) :
                              En cas de collision, suffixe -2, -3, ...
     Utiliser "clean" pour migrer un site existant et préserver les URLs
     (ex. site WordPress en migration).
+
+Global prompt — résolution multi-source (depuis juin 2026, ordre de priorité) :
+    1. `thematic: <nom>` dans config.yaml :
+        → charge platform/thematics/<nom>/global_prompt.md
+        Pour réutiliser un même prompt global sur plusieurs sites de même
+        thématique (ex: tous les sites "cadeau" partagent le même prompt).
+    2. `blog_global_prompt: |...` inline dans config.yaml :
+        → utilise directement le texte multiligne du config
+        Pour un override one-off sans créer de fichier thématique.
+    3. Fallback historique (schema classement-saas.json ou page_types.classement)
+        → comportement actuel. Maintenu pour rétro-compat des sites existants.
 """
 from __future__ import annotations
 import csv
@@ -71,6 +82,7 @@ except Exception:
 
 ROOT = Path(__file__).parent.parent
 SITES_DIR = ROOT / "sites"
+THEMATICS_DIR = ROOT / "thematics"
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 CLAUDE_MODEL = "claude-sonnet-4-20250514"
@@ -256,10 +268,105 @@ def strip_code_fences(text: str) -> str:
     return text.strip()
 
 
+# ─── Helpers config ──────────────────────────────────────────────────────
+
+def get_config_value(config: dict, key: str):
+    """Cherche `key` au top-level du config.yaml, puis dans toutes ses
+    sub-sections (typiquement `site:`). Retourne None si introuvable."""
+    if key in config:
+        return config[key]
+    for k, v in (config or {}).items():
+        if isinstance(v, dict) and key in v:
+            return v[key]
+    return None
+
+
+def _resolve_slug_format(config: dict) -> str:
+    """Lit `blog_slug_format` du config.yaml (top-level OU section `site:`).
+    Valeurs acceptées : 'prefix' (défaut historique), 'clean' (sans préfixe).
+    Toute autre valeur est traitée comme 'prefix' avec un warning.
+    """
+    raw = (get_config_value(config, "blog_slug_format") or "").strip().lower()
+    if not raw:
+        return "prefix"  # défaut historique : compatibilité totale avec les sites existants
+    if raw not in ("prefix", "clean"):
+        print(f"   ⚠ blog_slug_format={raw!r} non reconnu (valeurs : 'prefix'|'clean') — fallback 'prefix'")
+        return "prefix"
+    return raw
+
+
 # ─── Génération d'un article ─────────────────────────────────────────────
 
+def _load_thematic_prompt(thematic: str) -> str:
+    """Charge le prompt global depuis platform/thematics/<thematic>/global_prompt.md.
+
+    Le dossier `thematics/` est la base de l'architecture multi-thématiques :
+    chaque thématique a son propre sous-dossier qui pourra à terme contenir
+    d'autres fichiers (vocab.yaml, schema_org.yaml, etc.). Pour l'instant on
+    n'utilise QUE global_prompt.md, qui contient les consignes éditoriales
+    spécifiques à la thématique (style, ton, structure type, mots à éviter,
+    angles à privilégier, etc.).
+
+    Retourne '' si la thématique n'existe pas (avec un warning logué) ou si
+    le fichier est vide/illisible. Le caller décide du fallback.
+    """
+    name = (thematic or "").strip()
+    if not name:
+        return ""
+    path = THEMATICS_DIR / name / "global_prompt.md"
+    if not path.exists():
+        print(f"   ⚠ Thématique '{name}' demandée mais fichier absent : {path.relative_to(ROOT)}")
+        return ""
+    try:
+        text = path.read_text(encoding="utf-8").strip()
+        if text:
+            print(f"   📚 Thématique '{name}' chargée ({len(text)} car.)")
+        return text
+    except Exception as e:
+        print(f"   ⚠ Erreur lecture thématique '{name}' : {e}")
+        return ""
+
+
 def load_prompts(site_dir: Path, config: dict) -> tuple[str, str]:
-    persona = (config.get("persona_prompt") or "").strip()
+    """Résout le couple (global_prompt, persona_prompt) pour ce site.
+
+    Le persona est toujours lu depuis `persona_prompt` (top-level ou `site:`).
+
+    Le global est résolu dans cet ordre de priorité (premier hit gagne) :
+      1. `thematic: <nom>` → platform/thematics/<nom>/global_prompt.md
+         Cas d'usage : plusieurs sites de même thématique partagent ce prompt
+         (ex: cadeauclic.com + autres sites cadeau utilisent thematic=cadeau).
+      2. `blog_global_prompt: |...` inline dans config.yaml
+         Cas d'usage : override one-off sans créer de fichier thématique.
+      3. Fallback historique : schema classement-saas.json (ou page_types.*)
+         Cas d'usage : sites existants pré-thématique, pas de changement de
+         comportement pour eux.
+
+    Si l'utilisateur définit `thematic:` ET `blog_global_prompt:`, le thematic
+    gagne (intentionnel : le fichier centralisé est plus fiable que le yaml
+    inline qui peut être désynchronisé entre sites).
+    """
+    persona = (get_config_value(config, "persona_prompt") or "").strip()
+
+    # ── Source 1 : thematic défini → charge depuis platform/thematics/
+    thematic = get_config_value(config, "thematic")
+    if thematic:
+        thematic_prompt = _load_thematic_prompt(str(thematic))
+        if thematic_prompt:
+            return thematic_prompt, persona
+        # Si thematic défini mais fichier absent/vide → on ne fallback PAS
+        # silencieusement sur le schema SaaS (ça serait surprenant pour
+        # l'utilisateur). On retourne un global_prompt vide, le persona
+        # et le base_sys de generate_article_html suffiront.
+        return "", persona
+
+    # ── Source 2 : blog_global_prompt inline dans config
+    inline = (get_config_value(config, "blog_global_prompt") or "").strip()
+    if inline:
+        print(f"   📝 Global prompt inline depuis config.yaml ({len(inline)} car.)")
+        return inline, persona
+
+    # ── Source 3 : fallback historique (schema-based)
     template_name = None
     page_types = config.get("page_types") or {}
     template_name = page_types.get("classement") or page_types.get("blog")
@@ -591,29 +698,6 @@ def _extract_site_colors(config: dict) -> tuple[str, str, str]:
         or "#FF6B35"
     )
     return primary, secondary, cta
-
-
-def get_config_value(config: dict, key: str):
-    if key in config:
-        return config[key]
-    for k, v in (config or {}).items():
-        if isinstance(v, dict) and key in v:
-            return v[key]
-    return None
-
-
-def _resolve_slug_format(config: dict) -> str:
-    """Lit `blog_slug_format` du config.yaml (top-level OU section `site:`).
-    Valeurs acceptées : 'prefix' (défaut historique), 'clean' (sans préfixe).
-    Toute autre valeur est traitée comme 'prefix' avec un warning.
-    """
-    raw = (get_config_value(config, "blog_slug_format") or "").strip().lower()
-    if not raw:
-        return "prefix"  # défaut historique : compatibilité totale avec les sites existants
-    if raw not in ("prefix", "clean"):
-        print(f"   ⚠ blog_slug_format={raw!r} non reconnu (valeurs : 'prefix'|'clean') — fallback 'prefix'")
-        return "prefix"
-    return raw
 
 
 def process_site(site_id: str, site_dir: Path, config: dict) -> int:
