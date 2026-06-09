@@ -9,6 +9,16 @@ const HUB_CONFIG_PATH = 'hub.config.json'
 // script platform/scripts/add_contact_form_key.py.
 const WEB3FORMS_KEY = 'eabd63c5-1744-4172-b8c0-8984db488f10'
 
+// ── Formats de slugs blog acceptés ────────────────────────────────────────
+// 'prefix' : URLs avec préfixe numérique aléatoire /3847-mon-article/
+//            (défaut historique, évite à 99,99% les collisions sans calcul)
+// 'clean'  : URLs propres /mon-article/, avec suffixage -2/-3/... si collision
+//            (à activer quand on migre un WordPress existant pour conserver
+//             exactement les URLs en place et ne pas casser le SEO)
+// Lu côté Python par blog_publish_scheduled.py > _resolve_slug_format()
+const VALID_SLUG_FORMATS = ['prefix', 'clean'] as const
+type SlugFormat = typeof VALID_SLUG_FORMATS[number]
+
 function slugify(str: string): string {
   return str.toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -183,9 +193,18 @@ export async function POST(req: NextRequest) {
     author_job = '',
     author_bio = '',
     selected_keywords = [],
+    blog_slug_format: rawBlogSlugFormat = 'prefix',
   } = body
 
   if (!name || !domain) return NextResponse.json({ error: 'name et domain requis' }, { status: 400 })
+
+  // ── Validation blog_slug_format ────────────────────────────────────────
+  // Sanitisation : on accepte uniquement 'prefix' | 'clean'. Toute autre
+  // valeur (vide, undefined, typo) → fallback 'prefix' (défaut historique,
+  // 100% rétro-compat avec les sites existants).
+  const blogSlugFormat: SlugFormat = (VALID_SLUG_FORMATS as readonly string[]).includes(rawBlogSlugFormat)
+    ? rawBlogSlugFormat as SlugFormat
+    : 'prefix'
 
   const id = slugify(name)
   const year = new Date().getFullYear()
@@ -241,6 +260,7 @@ site:
   year: ${year}
   sheet_csv_url: "${ye(sheet_csv_url || '')}"
   www_preference: "${www_preference}"
+  blog_slug_format: "${blogSlugFormat}"
   author_name: "${ye(authorName)}"
   home_title: "${ye(home_title || `${name} | Comparatifs ${year}`)}"
   home_description: "${ye(home_description)}"
@@ -295,6 +315,7 @@ ${personaYaml ? '\n' + personaYaml + '\n' : ''}${authorYaml ? '\n' + authorYaml 
     domain: domainClean, sheet_csv_url: sheet_csv_url || '',
     description: description || '', status: 'pending_generation',
     site_type,
+    blog_slug_format: blogSlugFormat,
     created_at: new Date().toISOString(),
     page_types: Object.fromEntries(Object.entries(page_types as Record<string, string>).filter(([, v]) => v)),
   }
