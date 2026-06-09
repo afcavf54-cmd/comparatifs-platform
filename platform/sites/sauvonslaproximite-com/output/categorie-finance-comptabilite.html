@@ -25,10 +25,13 @@
 body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
 a{color:var(--accent2);text-decoration:none}
 .container{max-width:1100px;margin:0 auto;padding:0 5vw}
-.blog-header{padding:64px 0 32px;text-align:center}
-.blog-title{font-family:'DM Serif Display',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:16px}
+/* Padding réduit (avant : 64px top / 32px bot) pour rapprocher le titre du header
+   et le titre des filtres. Sur mobile (≤600px) on resserre encore. */
+.blog-header{padding:32px 0 12px;text-align:center}
+.blog-title{font-family:'DM Serif Display',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:12px}
 .blog-sub{font-size:18px;color:var(--ink3);max-width:600px;margin:0 auto}
-.blog-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:32px 0 40px}
+/* Margin réduit (avant : 32px top / 40px bot) pour coller les filtres au titre. */
+.blog-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0 32px}
 .blog-filter{font-size:13px;font-weight:600;color:var(--ink2);padding:8px 16px;border-radius:24px;border:1px solid var(--border);background:var(--surface);transition:.15s;cursor:pointer}
 .blog-filter:hover,.blog-filter.active{color:var(--accent);border-color:var(--accent)}
 .blog-filter-count{font-size:11px;color:var(--ink3);margin-left:4px}
@@ -71,7 +74,13 @@ a{color:var(--accent2);text-decoration:none}
 @media(max-width:600px){.blog-pagination{gap:2px;font-size:14px}.blog-page-num{min-width:28px;height:28px;padding:0 6px}.blog-page-sep{margin:0 6px}.blog-page-link,.blog-page-disabled{padding:4px 2px}.blog-page-link span:not(.blog-page-arrow){display:none}.blog-page-disabled span:not(.blog-page-arrow){display:none}}
 /* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
 @media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.blog-grid{grid-template-columns:1fr}}
+@media(max-width:600px){
+  .blog-grid{grid-template-columns:1fr}
+  /* Resserrage supplémentaire sur mobile : header + filtres ultra compacts */
+  .blog-header{padding:20px 0 8px}
+  .blog-title{margin-bottom:8px}
+  .blog-filters{margin:10px 0 24px}
+}
 @media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
 </style>
 <script async data-id="101506542" src="//static.getclicky.com/js"></script>
@@ -168,9 +177,9 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <a class="blog-filter active" href="/blog">Tous <span class="blog-filter-count">(3)</span></a>
     <a class="blog-filter" href="/categorie-ressources-humaines">Ressources Humaines <span class="blog-filter-count">(15)</span></a>
     <a class="blog-filter" href="/categorie-gestion-d-entreprise">Gestion d'entreprise <span class="blog-filter-count">(6)</span></a>
-    <a class="blog-filter" href="/categorie-entreprenariat">Entreprenariat <span class="blog-filter-count">(4)</span></a>
     <a class="blog-filter" href="/categorie-finance-comptabilite">Finance & Comptabilité <span class="blog-filter-count">(3)</span></a>
     <a class="blog-filter" href="/categorie-creation-entreprise">Création entreprise <span class="blog-filter-count">(2)</span></a>
+    <a class="blog-filter" href="/categorie-entreprenariat">Entreprenariat <span class="blog-filter-count">(2)</span></a>
   </div>
 </header>
 

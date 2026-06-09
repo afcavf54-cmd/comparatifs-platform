@@ -71,17 +71,17 @@ a:hover{text-decoration:underline}
 .sidebar-recent-link{color:var(--ink2);font-size:13px;line-height:1.45;text-decoration:none;display:block}
 .sidebar-recent-link:hover{color:var(--accent);text-decoration:none}
 .sidebar-recent-cat{font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
-.article-header{padding:48px 0 24px}
+.article-header{padding:23px 0 24px}
 .breadcrumb{font-size:13px;color:var(--ink3);margin-bottom:16px}
 .breadcrumb a{color:var(--ink3)}
 .breadcrumb a:hover{color:var(--accent)}
 .article-cat{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);background:var(--surface2);padding:4px 10px;border-radius:20px;text-decoration:none;transition:.15s}
 .article-cat:hover{background:var(--accent);color:#fff;text-decoration:none}
 .article-title{font-family:'DM Serif Display',serif;font-size:clamp(28px,5vw,48px);font-weight:400;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin-bottom:16px}
-.article-meta{font-size:14px;color:var(--ink3);margin-bottom:32px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.article-meta{font-size:14px;color:var(--ink3);margin-bottom:7px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .article-meta-item{display:inline-flex;align-items:center;gap:6px}
 .article-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
-.article-featured{width:100%;border-radius:var(--r2);overflow:hidden;margin-bottom:40px;border:1px solid var(--border)}
+.article-featured{width:100%;border-radius:var(--r2);overflow:hidden;margin-bottom:15px;border:1px solid var(--border)}
 .article-featured img{display:block;width:100%;height:auto}
 .article-toc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:22px 26px;margin:0 0 40px;position:relative;z-index:0}
 .article-toc-title{font-family:'DM Serif Display',serif;font-size:18px;font-weight:600;color:var(--ink);margin:0 0 14px;letter-spacing:-.01em}
@@ -115,7 +115,7 @@ a:hover{text-decoration:underline}
 .article-body a{color:var(--accent2);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px}
 .article-body a:hover{text-decoration-color:var(--accent2)}
 /* Author box (réutilise le style de classement-saas) */
-.author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:64px 0 0}
+.author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
 .author-avatar-placeholder{width:72px;height:72px;border-radius:50%;background:var(--bg);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
 .author-info{flex:1}
@@ -125,7 +125,7 @@ a:hover{text-decoration:underline}
 .author-bio{font-size:14px;color:var(--ink2);line-height:1.7}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}}
 /* Maillage interne */
-.related-section{margin:64px 0 0;padding-top:40px;border-top:1px solid var(--border)}
+.related-section{margin:25px 0 0;padding-top:25px;border-top:1px solid var(--border)}
 .related-title{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
 .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .related-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px;text-decoration:none;transition:.15s;display:block}
@@ -136,8 +136,12 @@ a:hover{text-decoration:underline}
 @media(max-width:600px){.related-grid{grid-template-columns:1fr}}
 /* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
 @media(max-width:960px){
-  .article-layout{grid-template-columns:1fr;gap:32px}
+  .article-layout{grid-template-columns:1fr;gap:25px}
   .article-sidebar{position:static}
+  /* Sur mobile, la sidebar passe sous le contenu : on retire le padding-bottom
+     de article-main qui ne sert plus à rien (l'écart est géré par le gap du
+     grid). 80 (padding) + 32 (gap) = 112px → désormais 0 + 25 = 25px. */
+  .article-main{padding-bottom:0}
 }
 @media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
 
@@ -489,7 +493,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <li class="sidebar-cat-item">
           <a href="/blog" class="sidebar-cat-link">
             <span>Tous les articles</span>
-            <span class="sidebar-cat-count">30</span>
+            <span class="sidebar-cat-count">28</span>
           </a>
         </li>
         <li class="sidebar-cat-item">
@@ -505,12 +509,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
           </a>
         </li>
         <li class="sidebar-cat-item">
-          <a href="/categorie-entreprenariat" class="sidebar-cat-link">
-            <span>Entreprenariat</span>
-            <span class="sidebar-cat-count">4</span>
-          </a>
-        </li>
-        <li class="sidebar-cat-item">
           <a href="/categorie-finance-comptabilite" class="sidebar-cat-link">
             <span>Finance & Comptabilité</span>
             <span class="sidebar-cat-count">3</span>
@@ -519,6 +517,12 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <li class="sidebar-cat-item">
           <a href="/categorie-creation-entreprise" class="sidebar-cat-link">
             <span>Création entreprise</span>
+            <span class="sidebar-cat-count">2</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-entreprenariat" class="sidebar-cat-link">
+            <span>Entreprenariat</span>
             <span class="sidebar-cat-count">2</span>
           </a>
         </li>
