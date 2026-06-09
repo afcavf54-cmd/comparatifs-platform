@@ -1,0 +1,326 @@
+{# ============================================================
+   index-blog.html.j2 — Home neutre pour les sites blog-only
+   ============================================================
+   Utilisé quand un site est créé avec UNIQUEMENT le type "blog"
+   activé (ex: cadeauclic.com). Affiche :
+     - Hero (H1 + tagline)
+     - Grille des 6 derniers articles
+     - Liste des catégories du blog
+   Pas de section produits / classements / comparatifs.
+
+   Variables Jinja attendues (cf. generate.py > render index_tpl) :
+     site, theme, recent_blog_posts, home_title, home_description,
+     home_h1, build_date, page_types
+
+   Pour une home design-custom (ex: cadeauclic.com avec
+   stroller comparison sur la home), créer un index-<siteid>.html.j2
+   spécifique. Si présent, il sera utilisé en priorité par generate.py
+   (cf. site.get("index_template", f"index-{site_slug}.html.j2")).
+   ============================================================ #}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+{% include "base/_head.html.j2" ignore missing %}
+<title>{{ home_title or (site.name + ' — Blog') }}</title>
+<meta name="description" content="{{ home_description or (site.tagline or '') }}">
+<link rel="canonical" href="{{ site.domain }}/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ home_title or site.name }}">
+<meta property="og:description" content="{{ home_description or '' }}">
+<meta property="og:url" content="{{ site.domain }}/">
+{% if site.favicon_file %}<link rel="icon" href="{{ site.favicon_file }}">{% endif %}
+<style>
+:root {
+  --accent: {{ theme.accent or '#1B4FD8' }};
+  --accent2: {{ theme.accent2 or '#E8410A' }};
+  --bg: {{ theme.bg or '#FAF9F6' }};
+  --ink: {{ theme.ink or '#0F1419' }};
+  --ink2: #4A5568;
+  --ink3: #8B9CB0;
+  --surface: {{ theme.surface or '#FFFFFF' }};
+  --border: rgba(15, 26, 46, 0.08);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: {{ theme.font_body or '"Outfit", system-ui, sans-serif' }};
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Hero ─────────────────────────────────────────────────────── */
+.hero {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 64px 5vw 48px;
+  text-align: left;
+}
+.hero h1 {
+  font-family: {{ theme.font_title or '"DM Serif Display", Georgia, serif' }};
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+.hero h1 .accent { color: var(--accent); }
+.hero .tagline {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--ink2);
+  max-width: 720px;
+  line-height: 1.55;
+}
+
+/* ── Section articles récents ─────────────────────────────────── */
+.section-articles {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 24px 5vw 64px;
+}
+.section-title {
+  font-family: {{ theme.font_title or '"DM Serif Display", Georgia, serif' }};
+  font-size: clamp(24px, 3.5vw, 32px);
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+.section-subtitle {
+  font-size: 14px;
+  color: var(--ink3);
+  margin-bottom: 32px;
+}
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+}
+.article-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: flex;
+  flex-direction: column;
+}
+.article-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(15, 26, 46, 0.08);
+}
+.article-card a.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.article-card .image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.article-card .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.article-card .content {
+  padding: 20px 22px 22px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.article-card .meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 12px;
+  color: var(--ink3);
+  margin-bottom: 10px;
+}
+.article-card .meta .cat {
+  background: rgba(0, 0, 0, 0.04);
+  padding: 3px 10px;
+  border-radius: 20px;
+  color: var(--accent);
+  font-weight: 600;
+}
+.article-card h3 {
+  font-family: {{ theme.font_title or '"DM Serif Display", Georgia, serif' }};
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+.article-card .excerpt {
+  font-size: 14px;
+  color: var(--ink2);
+  line-height: 1.55;
+  flex: 1;
+}
+
+/* ── Section catégories ───────────────────────────────────────── */
+.section-categories {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 5vw 80px;
+}
+.cats-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.cat-pill {
+  padding: 8px 18px;
+  border-radius: 30px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+.cat-pill:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  text-decoration: none;
+}
+
+/* ── CTA voir tous les articles ───────────────────────────────── */
+.all-articles-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+.all-articles-cta:hover {
+  background: var(--accent);
+  text-decoration: none;
+  color: #fff;
+}
+
+/* ── Empty state ──────────────────────────────────────────────── */
+.empty-state {
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: 14px;
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--ink3);
+}
+
+@media (max-width: 640px) {
+  .hero { padding: 40px 5vw 24px; }
+  .section-articles { padding: 16px 5vw 40px; }
+  .articles-grid { grid-template-columns: 1fr; gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+{% include "base/_nav.html.j2" ignore missing %}
+
+{# ── Hero ─────────────────────────────────────────────────────── #}
+<section class="hero">
+  <h1>
+    {% if home_h1 %}
+      {{ home_h1 | safe }}
+    {% else %}
+      {{ site.logo_text or site.name }}<span class="accent">{% if site.logo_accent %} {{ site.logo_accent }}{% endif %}</span>
+    {% endif %}
+  </h1>
+  {% if site.tagline or home_description %}
+    <p class="tagline">{{ home_description or site.tagline }}</p>
+  {% endif %}
+</section>
+
+{# ── Derniers articles ────────────────────────────────────────── #}
+<section class="section-articles">
+  <h2 class="section-title">Derniers articles</h2>
+  <p class="section-subtitle">Explorez nos guides, conseils et analyses</p>
+
+  {% if recent_blog_posts and recent_blog_posts | length > 0 %}
+  <div class="articles-grid">
+    {% for post in recent_blog_posts %}
+    <article class="article-card">
+      <a class="card-link" href="/{{ post.slug }}">
+        <div class="image">
+          {% if post.featured_image %}
+            <img src="{{ post.featured_image }}" alt="{{ post.title }}" loading="lazy">
+          {% endif %}
+        </div>
+        <div class="content">
+          <div class="meta">
+            {% if post.categorie %}<span class="cat">{{ post.categorie }}</span>{% endif %}
+            {% if post.date_display %}<span>{{ post.date_display }}</span>{% endif %}
+            {% if post.reading_time %}<span>· {{ post.reading_time }} min</span>{% endif %}
+          </div>
+          <h3>{{ post.title }}</h3>
+          {% if post.excerpt %}<p class="excerpt">{{ post.excerpt }}</p>{% endif %}
+        </div>
+      </a>
+    </article>
+    {% endfor %}
+  </div>
+
+  <div style="margin-top: 36px; text-align: center;">
+    <a class="all-articles-cta" href="/blog">
+      Voir tous les articles
+      <span>→</span>
+    </a>
+  </div>
+  {% else %}
+  <div class="empty-state">
+    <div style="font-size: 32px; margin-bottom: 12px; opacity: 0.4;">📝</div>
+    <div>Les premiers articles arrivent bientôt</div>
+  </div>
+  {% endif %}
+</section>
+
+{# ── Catégories du blog (si présentes) ──────────────────────── #}
+{% set blog_cats = [] %}
+{% if recent_blog_posts %}
+  {% set _seen = [] %}
+  {% for post in recent_blog_posts %}
+    {% if post.categorie and post.categorie not in _seen %}
+      {% if _seen.append(post.categorie) %}{% endif %}
+      {% if blog_cats.append({'name': post.categorie, 'slug': post.categorie_slug or ''}) %}{% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% if blog_cats | length > 0 %}
+<section class="section-categories">
+  <h2 class="section-title">Catégories</h2>
+  <p class="section-subtitle">Parcourez par thématique</p>
+  <div class="cats-list">
+    {% for cat in blog_cats %}
+      <a href="/{{ cat.slug }}" class="cat-pill">{{ cat.name }}</a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% include "base/_footer.html.j2" ignore missing %}
+
+<script>
+// Cache buster build_date : {{ build_date }}
+</script>
+</body>
+</html>
