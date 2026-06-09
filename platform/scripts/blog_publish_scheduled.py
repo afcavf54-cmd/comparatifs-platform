@@ -31,6 +31,16 @@ Format attendu du CSV (colonnes) :
                         article — séparés par virgule ou point-virgule. Favorise
                         le maillage entrant : ces mots seront détectés comme
                         ancres par d'autres articles qui en parlent.)
+
+Format de slug (configurable au niveau du site, depuis juin 2026) :
+    Un paramètre `blog_slug_format` peut être posé soit au top-level du
+    config.yaml, soit dans `site:`. Valeurs :
+      - "prefix" (DÉFAUT) : ajoute un préfixe XXXX- (4 chiffres aléatoires)
+                             → /3847-mon-article/. Comportement historique.
+      - "clean"           : pas de préfixe numérique → /mon-article/.
+                             En cas de collision, suffixe -2, -3, ...
+    Utiliser "clean" pour migrer un site existant et préserver les URLs
+    (ex. site WordPress en migration).
 """
 from __future__ import annotations
 import csv
@@ -76,15 +86,59 @@ def slugify(text: str) -> str:
     return s or "article"
 
 
-def add_random_prefix(slug: str, existing: set[str]) -> str:
+def assign_slug(slug: str, existing: set[str], use_prefix: bool = True) -> str:
+    """Résout un slug final unique selon le format choisi.
+
+    Args:
+        slug: slug "propre" déjà passé par slugify() (ex: "mon-article")
+        existing: ensemble des slugs déjà utilisés sur ce site (collisions)
+        use_prefix: si True (défaut historique), ajoute un préfixe numérique
+                    aléatoire XXXX- (4 chiffres entre 1000 et 9999).
+                    Si False, garde le slug tel quel et suffixe -2/-3/...
+                    en cas de collision.
+
+    Returns:
+        Slug final unique à utiliser pour ce post.
+
+    Pourquoi 2 modes ?
+      - Mode "prefix" : historique du système. Évite à ~99,99% les collisions
+        sans calcul, masque l'ordre de création, ressemble à un routing par ID.
+        URLs : /3847-mon-article/.
+      - Mode "clean" : pour migrer un site WordPress vers ce système en
+        gardant exactement les anciennes URLs (continuité SEO).
+        URLs : /mon-article/. À activer via config.yaml > blog_slug_format = "clean".
+    """
+    # ── Mode "clean" : slug propre, suffixage seulement si conflit
+    if not use_prefix:
+        if slug not in existing:
+            return slug
+        # Collision : essayer -2, -3, ... jusqu'à 999
+        for i in range(2, 1000):
+            candidate = f"{slug}-{i}"
+            if candidate not in existing:
+                print(f"   ⚠ Slug '{slug}' déjà pris, utilisation de '{candidate}'")
+                return candidate
+        # Très improbable : 999 collisions sur le même slug. Fallback timestamp.
+        return f"{slug}-{int(time.time())}"
+
+    # ── Mode "prefix" (historique) : préfixe XXXX- aléatoire
     if re.match(r"^\d{3,5}-", slug):
+        # Slug fourni manuellement avec un préfixe numérique déjà conforme
+        # (ex: "1234-mon-article") → on le garde tel quel.
         return slug
     import random
     for _ in range(30):
         candidate = f"{random.randint(1000, 9999)}-{slug}"
         if candidate not in existing:
             return candidate
+    # Très improbable : 30 essais infructueux. Fallback timestamp.
     return f"{int(time.time()) % 10000:04d}-{slug}"
+
+
+# Alias rétro-compat : si du code externe utilisait l'ancien nom
+# `add_random_prefix(slug, existing)`, il continue de fonctionner.
+def add_random_prefix(slug: str, existing: set[str], use_prefix: bool = True) -> str:
+    return assign_slug(slug, existing, use_prefix=use_prefix)
 
 
 def fetch_csv(url: str) -> list[dict]:
@@ -548,6 +602,20 @@ def get_config_value(config: dict, key: str):
     return None
 
 
+def _resolve_slug_format(config: dict) -> str:
+    """Lit `blog_slug_format` du config.yaml (top-level OU section `site:`).
+    Valeurs acceptées : 'prefix' (défaut historique), 'clean' (sans préfixe).
+    Toute autre valeur est traitée comme 'prefix' avec un warning.
+    """
+    raw = (get_config_value(config, "blog_slug_format") or "").strip().lower()
+    if not raw:
+        return "prefix"  # défaut historique : compatibilité totale avec les sites existants
+    if raw not in ("prefix", "clean"):
+        print(f"   ⚠ blog_slug_format={raw!r} non reconnu (valeurs : 'prefix'|'clean') — fallback 'prefix'")
+        return "prefix"
+    return raw
+
+
 def process_site(site_id: str, site_dir: Path, config: dict) -> int:
     blog_sheet_url = (get_config_value(config, "blog_sheet_csv_url") or "").strip()
     if not blog_sheet_url:
@@ -559,6 +627,12 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         print("   (sheet vide ou inaccessible)")
         return 0
     print(f"   {len(rows)} ligne(s) dans la sheet")
+
+    # ── Format de slug pour ce site (cf. config.yaml > blog_slug_format) ──
+    slug_format = _resolve_slug_format(config)
+    use_prefix = (slug_format == "prefix")
+    if not use_prefix:
+        print(f"   📐 Format slug : 'clean' (URLs propres, sans préfixe numérique)")
 
     posts_dir = site_dir / "blog" / "posts"
     processed_file = site_dir / "blog" / "schedule_processed.json"
@@ -631,7 +705,9 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
             continue
 
         manual_slug = row.get("slug", "").strip()
-        slug = add_random_prefix(slugify(manual_slug or title), existing_slugs)
+        # On slugifie quand même si manual_slug fourni (normalise accents,
+        # espaces, caractères spéciaux), puis on applique le format choisi.
+        slug = assign_slug(slugify(manual_slug or title), existing_slugs, use_prefix=use_prefix)
 
         min_words = 750
         try:
@@ -687,9 +763,9 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
                 article_title=title,
             )
             if jpg_bytes:
-                # Nouveau pattern de nom : /blog/<slug>.jpg directement à la racine
-                # du dossier public/blog/. Plus court, plus SEO-friendly que
-                # l'ancien public/blog/<slug>/featured.jpg.
+                # Pattern : /blog/<slug>.jpg directement à la racine de
+                # public/blog/. Plus court, plus SEO-friendly que l'ancien
+                # public/blog/<slug>/featured.jpg.
                 img_dir = site_dir / "public" / "blog"
                 img_dir.mkdir(parents=True, exist_ok=True)
                 img_path = img_dir / f"{slug}.jpg"
@@ -715,9 +791,6 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
             "min_words": min_words,
             "status": "published",
         }
-        # Référence vers l'image à la une si elle a bien été générée.
-        # Le générateur (generate.py) copie tout public/ vers output/ au build,
-        # donc /blog/<slug>/featured.jpg est servi automatiquement par Cloudflare.
         if featured_image_rel:
             fm["featured_image"] = featured_image_rel
         if link_anchors_raw:
