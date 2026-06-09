@@ -13,6 +13,13 @@
    - site.logo_text        : texte du logo (fallback si pas d'image)
    - site.logo_accent      : suffixe coloré du logo texte
    - site.name             : nom du site (alt de l'image logo)
+   - site.has_comparateurs : (bool) afficher le lien "Nos comparateurs".
+                             Si NON DÉFINI dans config.yaml (sites legacy
+                             créés avant juin 2026), affiché par défaut
+                             pour préserver la rétro-compat. Si défini à
+                             false explicitement (sites blog-only créés
+                             via le wizard refondu, ex: cadeauclic.com),
+                             le lien est masqué.
    - site.has_avis         : (bool) afficher le lien "Avis"
    - site.has_blog         : (bool) afficher le lien "Blog"
    - site.outils_menu      : (list[{label,url}]) liens vers les outils
@@ -44,7 +51,12 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="nav-inner">
     <a href="/" class="nav-logo">{% if site.logo_img is defined and site.logo_img %}<img src="{{ site.logo_img }}" alt="{{ site.name }}" style="height:36px;width:auto;object-fit:contain;vertical-align:middle">{% else %}{{ site.logo_text }}<span>{{ site.logo_accent }}</span>{% endif %}</a>
     <div class="nav-links">
-      <a href="/nos-comparateurs">Nos comparateurs</a>
+      {# Lien "Nos comparateurs" : caché si site.has_comparateurs est défini
+         ET false (sites blog-only). Sinon affiché (rétro-compat avec les
+         sites legacy qui n'ont pas le flag dans leur config). #}
+      {% if site.has_comparateurs is not defined or site.has_comparateurs %}
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+      {% endif %}
       {% if site.has_avis is defined and site.has_avis %}
         <a href="/avis">Avis</a>
       {% endif %}
@@ -63,7 +75,9 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </button>
   </div>
   <div class="nav-mobile" id="nav-mobile">
-    <a href="/nos-comparateurs">Nos comparateurs</a>
+    {% if site.has_comparateurs is not defined or site.has_comparateurs %}
+      <a href="/nos-comparateurs">Nos comparateurs</a>
+    {% endif %}
     {% if site.has_avis is defined and site.has_avis %}
       <a href="/avis">Avis</a>
     {% endif %}
