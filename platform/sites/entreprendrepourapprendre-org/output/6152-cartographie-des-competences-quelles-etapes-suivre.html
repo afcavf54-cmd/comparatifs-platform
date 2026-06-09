@@ -140,6 +140,26 @@ a:hover{text-decoration:underline}
   .article-sidebar{position:static}
 }
 @media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+
+/* ── PATCH : tableaux du contenu blog ─────────────────────────────
+   Ajout chirurgical en toute fin du <style>, après les media queries
+   existantes. Aucune modif au CSS au-dessus. */
+.article-body .table-wrap{overflow-x:auto;margin:28px 0;border-radius:10px;border:1px solid var(--border);background:var(--surface)}
+.article-body table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface);margin:28px 0;color:var(--ink)}
+.article-body .table-wrap > table{margin:0;border:none}
+.article-body thead{background:var(--surface2)}
+.article-body thead th{text-align:left;padding:14px 18px;font-weight:600;color:var(--ink);font-size:14px;border-bottom:2px solid var(--border);vertical-align:middle;white-space:nowrap}
+.article-body thead th:not(:last-child){border-right:1px solid var(--border)}
+.article-body tbody td{padding:14px 18px;color:var(--ink);border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+.article-body tbody td:not(:last-child){border-right:1px solid var(--border)}
+.article-body tbody tr:nth-child(even){background:var(--surface2)}
+.article-body tbody tr:hover{background:var(--surface2)}
+.article-body tbody tr:last-child td{border-bottom:none}
+.article-body table caption{caption-side:top;padding:12px 18px;font-weight:600;color:var(--ink);text-align:left;background:var(--surface2);border-bottom:1px solid var(--border)}
+@media (max-width:680px){
+  .article-body table{font-size:14px}
+  .article-body thead th,.article-body tbody td{padding:10px 12px;white-space:normal}
+}
 </style>
 <meta name="google-site-verification" content="8qExRLvDtjV8AY9eKfy1-yNAgx7JTZAPDM-Cs4CE4WU">
 <script async data-id="101505107" src="//static.getclicky.com/js"></script>
@@ -626,7 +646,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 entreprendrepourapprendre.org — Données actualisées le 8 juin 2026
+        © 2026 entreprendrepourapprendre.org — Données actualisées le 9 juin 2026
       </div>
     </div>
   </div>
