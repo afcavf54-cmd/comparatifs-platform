@@ -115,13 +115,21 @@ body{font-family:'{{ theme.font_body }}',system-ui,sans-serif;background:var(--b
 a{color:var(--accent2);text-decoration:none}
 .container{max-width:1180px;margin:0 auto;padding:0 5vw}
 
-/* ─── Hero / titre ─── */
-.avis-hero{padding:48px 0 8px;text-align:center}
-h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:16px;line-height:1.2}
-/* Meta façon blog : catégorie · date · durée · auteur */
+/* ─── Hero / titre ───
+   Refonte 2026 : alignement gauche + breadcrumb façon articles de blog
+   (avant : centré, sans fil d'Ariane). La police du H1 et la largeur du
+   container (.container max-width:1180px) sont déjà identiques au blog. */
+.avis-hero{padding:48px 0 24px;text-align:left}
+.breadcrumb{font-size:13px;color:var(--ink3);margin-bottom:16px}
+.breadcrumb a{color:var(--ink3)}
+.breadcrumb a:hover{color:var(--accent)}
+/* H1 : clamp identique au blog (28→48px au lieu de 28→42px) + line-height 1.15 */
+h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,5vw,48px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:16px;line-height:1.15}
+/* Meta façon blog : catégorie · date · durée · auteur (alignement à gauche,
+   plus de justify-content:center) */
 .article-cat{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);background:var(--surface2);padding:4px 10px;border-radius:20px;text-decoration:none;transition:.15s}
 .article-cat:hover{background:var(--accent);color:#fff;text-decoration:none}
-.article-meta{font-size:14px;color:var(--ink3);margin-bottom:8px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center}
+.article-meta{font-size:14px;color:var(--ink3);margin-bottom:8px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .article-meta-item{display:inline-flex;align-items:center;gap:6px}
 .article-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
 
@@ -336,8 +344,14 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(28px,4.5vw,42px);f
 
 <main class="container">
 
-  {# ─── HERO : juste H1 + meta-infos ──────────────────────────── #}
+  {# ─── HERO : breadcrumb + H1 + meta-infos ──────────────────────
+       Refonte 2026 : alignement gauche façon blog, ajout du fil d'Ariane
+       Accueil › Avis › Catégorie (la dernière entrée n'apparaît que si
+       la catégorie est définie sur ce post). #}
   <section class="avis-hero">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="/">Accueil</a> &rsaquo; <a href="/avis">Avis</a>{% if post.categorie and post.categorie_slug %} &rsaquo; <a href="/avis/{{ post.categorie_slug }}/">{{ post.categorie }}</a>{% endif %}
+    </nav>
     <h1>{{ post.h1 }}</h1>
     {# Meta façon blog : catégorie (lien) · date · temps de lecture · auteur. #}
     <div class="article-meta">
