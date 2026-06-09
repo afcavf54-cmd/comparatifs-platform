@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avis et tests cadeauclic.com 2026</title>
+<meta name="description" content="Tous nos avis détaillés sur les services et plateformes. Notes, tests, comparatifs.">
+<link rel="canonical" href="https://www.cadeauclic.com/avis">
+<meta property="og:title" content="Avis et tests cadeauclic.com 2026">
+<meta property="og:description" content="Tous nos avis détaillés sur les services et plateformes. Notes, tests, comparatifs.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.cadeauclic.com/avis">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=cadeauclic-com" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#F4F6FB;--surface:#FFFFFF;--surface2:#F5F3EE;
+  --ink:#0F1A2E;--ink2:#3D434B;--ink3:#8B9CB0;
+  --accent:#1B4FD8;--accent2:#ff8080;--green:#3D7A4F;
+  --red:#C0392B;
+  --border:#E6E1D8;--r:8px;--r2:14px;
+}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+a{color:var(--accent2);text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 5vw}
+
+.avis-header{padding:64px 0 32px;text-align:center}
+h1{font-family:'DM Serif Display',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:16px}
+.avis-sub{font-size:18px;color:var(--ink3);max-width:600px;margin:0 auto}
+
+/* Filtres catégories — pastilles ovales façon image de réf Julien.
+   Padding généreux (10×22), texte sombre 14px, compteur en gris 13px.
+   L'élément actif passe en bordure 2px var(--accent2) avec compensation
+   du padding (-1px) pour ne pas faire grandir le bouton à la sélection.
+   `accent2` (bleu marine #1E5F8B par défaut) au lieu de `accent` car
+   l'accent principal du site editions-dp-com est doré et trancherait trop. */
+.cats-bar{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:16px 0 40px}
+.cat-pill{font-size:14px;font-weight:500;color:var(--ink);padding:10px 22px;border-radius:30px;border:1px solid var(--border);background:var(--surface);transition:.15s;cursor:pointer;display:inline-flex;align-items:center;gap:8px;line-height:1.2;white-space:nowrap}
+.cat-pill:hover{color:var(--accent2);border-color:var(--accent2)}
+.cat-pill.active{color:var(--accent2);border:2px solid var(--accent2);padding:9px 21px;font-weight:600}
+.cat-pill-count{font-size:13px;color:var(--ink3);font-weight:400}
+
+/* Grid de cartes */
+.avis-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;padding-bottom:48px}
+.avis-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
+.avis-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.06)}
+
+/* Bandeau logo en haut de carte : fond clair, logo carré 80×80 centré, ou
+   placeholder avec l'initiale de la marque si aucun logo n'est uploadé. */
+.avis-card-logo{background:var(--surface2);padding:24px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border)}
+.avis-card-logo-img{width:80px;height:80px;object-fit:contain}
+.avis-card-logo-placeholder{width:80px;height:80px;border-radius:16px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:38px;font-weight:600;color:var(--accent);text-transform:uppercase}
+
+.avis-card-body{padding:20px;flex:1;display:flex;flex-direction:column}
+.avis-card-cat{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink3);margin-bottom:8px}
+.avis-card-title{font-family:'DM Serif Display',serif;font-size:22px;font-weight:500;line-height:1.25;color:var(--ink);margin-bottom:12px;flex:1}
+.avis-card-score{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.avis-card-note{font-family:'DM Serif Display',serif;font-size:24px;color:var(--accent);font-weight:600;line-height:1}
+.avis-card-note small{font-size:14px;color:var(--ink3);font-weight:400}
+.stars-mini{display:inline-flex;gap:1px;font-size:14px;color:#E0DCD2}
+.stars-mini .full{color:var(--accent)}
+.stars-mini .half{position:relative;color:#E0DCD2}
+.stars-mini .half::before{content:'★';position:absolute;left:0;top:0;width:50%;overflow:hidden;color:var(--accent)}
+.avis-card-sentiment{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.avis-card-sentiment.positif{background:#E8F4EA;color:var(--green)}
+.avis-card-sentiment.mitige{background:#FDF6E3;color:#9F7918}
+.avis-card-sentiment.negatif{background:#FBE9E7;color:var(--red)}
+/* Important : couleur explicite var(--ink2) pour éviter qu'un fragment HTML
+   cassé (héritage d'une balise non fermée provenant du frontmatter) ne
+   colore l'extrait en orange ou en gras. Le striptags côté Jinja garantit
+   un texte brut, mais on sécurise aussi côté CSS. */
+.avis-card-extract{color:var(--ink2);font-size:14px;margin-top:8px;line-height:1.55;font-weight:400}
+.avis-card-foot{padding:12px 20px;border-top:1px solid var(--border);color:var(--ink3);font-size:12px}
+
+/* Pagination */
+.pager{display:flex;justify-content:center;gap:8px;padding:24px 0 64px;flex-wrap:wrap}
+.pager-link{padding:8px 14px;border-radius:6px;background:var(--surface);border:1px solid var(--border);color:var(--ink2);font-size:14px}
+.pager-link:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.pager-link.current{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
+
+.empty{text-align:center;padding:64px 0;color:var(--ink3);font-size:18px}
+</style>
+</head>
+<body>
+
+<style>
+nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+nav.site-nav .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
+nav.site-nav .nav-logo span{color:var(--accent2)}
+nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
+nav.site-nav .nav-cta:hover{opacity:.88}
+nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+nav.site-nav .nav-mobile.open{display:flex}
+nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
+</style>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">cadeauclic.com<span></span></a>
+    <div class="nav-links">
+      <a href="/nos-comparateurs">Nos comparateurs</a>
+    </div>
+    <a href="/contact" class="nav-cta">Contact</a>
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="/nos-comparateurs">Nos comparateurs</a>
+    <a href="/contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<script>
+/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
+   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
+   devoir redéfinir la fonction côté template parent.
+
+   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
+   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
+   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
+   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
+   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
+   qui est actif et le parent réécrit derrière s'il en a un.
+
+   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
+   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
+   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
+   ne faisait rien. */
+(function(){
+  if (typeof window.toggleMenu === 'function') return;
+  window.toggleMenu = function(){
+    var menu = document.getElementById('nav-mobile');
+    if (menu) menu.classList.toggle('open');
+  };
+  // UX bonus : fermer le menu mobile en cliquant en dehors
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('nav-mobile');
+    var burger = document.getElementById('burger');
+    if (!menu || !burger) return;
+    if (!menu.classList.contains('open')) return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    menu.classList.remove('open');
+  });
+  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
+  document.addEventListener('DOMContentLoaded', function(){
+    var menu = document.getElementById('nav-mobile');
+    if (!menu) return;
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  });
+})();
+</script>
+<main class="container">
+  <section class="avis-header">
+    <h1>Nos avis détaillés</h1>
+<p class="avis-sub">Retrouvez 0 avis indépendants et structurés, avec notes, tarifs et verdict.</p>  </section>
+
+
+  <div class="empty">Aucun avis publié pour le moment.</div>
+
+</main>
+
+<style>
+.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
+.footer-brand .footer-logo span{color:var(--accent2)}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;max-width:260px;margin:0;padding:0}
+.footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
+.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-brand{grid-column:1/-1}
+}
+</style>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <div class="footer-logo">cadeauclic.com<span></span></div>
+        <p>Comparatifs cadeauclic.com 2026</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/plan-du-site">Plan du site</a>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/politique-confidentialite">Confidentialité</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>À propos</h4>
+        <a href="/contact">Nous contacter</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        © 2026 cadeauclic.com — Données actualisées le 9 juin 2026
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button type="button"
+        class="scroll-top-btn"
+        id="scroll-top-btn"
+        aria-label="Remonter en haut de la page"
+        title="Remonter en haut">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2.5"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+</button>
+
+<style>
+.scroll-top-btn{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:9999;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--ink, #0F1419);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .15s;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+  padding:0;
+  font-family:inherit;
+}
+.scroll-top-btn.visible{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.scroll-top-btn:hover{
+  background:var(--accent, #C9A961);
+}
+.scroll-top-btn:focus-visible{
+  outline:2px solid var(--accent, #C9A961);
+  outline-offset:3px;
+}
+@media (max-width:600px){
+  .scroll-top-btn{ bottom:16px; right:16px; width:42px; height:42px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .scroll-top-btn{ transition:opacity .2s, visibility .2s; }
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  var btn = document.getElementById('scroll-top-btn');
+  if (!btn) return;
+
+  var THRESHOLD = 400; // px de scroll avant apparition
+  var ticking = false;
+
+  function update(){
+    if (window.scrollY > THRESHOLD) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+    ticking = false;
+  }
+
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  btn.addEventListener('click', function(){
+    var prefersReduced = window.matchMedia
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  });
+
+  // Check immédiat (au cas où la page est rechargée déjà scrollée)
+  update();
+})();
+</script>
+</body>
+</html>
