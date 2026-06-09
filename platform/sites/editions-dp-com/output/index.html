@@ -195,6 +195,48 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
 </nav>
+
+<script>
+/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
+   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
+   devoir redéfinir la fonction côté template parent.
+
+   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
+   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
+   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
+   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
+   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
+   qui est actif et le parent réécrit derrière s'il en a un.
+
+   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
+   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
+   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
+   ne faisait rien. */
+(function(){
+  if (typeof window.toggleMenu === 'function') return;
+  window.toggleMenu = function(){
+    var menu = document.getElementById('nav-mobile');
+    if (menu) menu.classList.toggle('open');
+  };
+  // UX bonus : fermer le menu mobile en cliquant en dehors
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('nav-mobile');
+    var burger = document.getElementById('burger');
+    if (!menu || !burger) return;
+    if (!menu.classList.contains('open')) return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    menu.classList.remove('open');
+  });
+  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
+  document.addEventListener('DOMContentLoaded', function(){
+    var menu = document.getElementById('nav-mobile');
+    if (!menu) return;
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  });
+})();
+</script>
 <!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">Comparatifs logiciels 2026</div>
@@ -604,6 +646,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       <a href="/blog" class="blog-recent-link">Voir tous les articles →</a>
     </div>
     <div class="blog-recent-grid">
+      <a href="/9832-comment-configurer-erp-solutions-dynabiz-pro-efficacement" class="blog-recent-card">
+        <div class="blog-recent-card-img">
+            <img src="/blog/9832-comment-configurer-erp-solutions-dynabiz-pro-efficacement.jpg" alt="Comment configurer ERP Solutions DynaBiz Pro efficacement" loading="lazy">
+        </div>
+        <div class="blog-recent-card-body">
+<div class="blog-recent-card-cat">Gestion d'entreprise</div>          <div class="blog-recent-card-title">Comment configurer ERP Solutions DynaBiz Pro efficacement</div>
+<div class="blog-recent-card-excerpt">Configurer un ERP, c'est toujours un moment délicat. Je me souviens encore de mes premières heures passées sur DynaBiz Pro en 2019. Trois jours de galère avant que tout fonctionne…</div><div class="blog-recent-card-date">📅 9 juin 2026</div>        </div>
+      </a>
       <a href="/1015-bordereau-de-situation-fiscale-modele-p-237-a-quoi-sert-il-et-comment-l-obtenir" class="blog-recent-card">
         <div class="blog-recent-card-img">
             <img src="/blog/1015-bordereau-de-situation-fiscale-modele-p-237-a-quoi-sert-il-et-comment-l-obtenir.jpg" alt="Bordereau de situation fiscale modèle P 237 : à quoi sert-il et comment l'obtenir ?" loading="lazy">
@@ -643,14 +693,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <div class="blog-recent-card-body">
 <div class="blog-recent-card-cat">Salarié</div>          <div class="blog-recent-card-title">Horaires décalés : ce que dit le code du travail sur vos droits et obligations</div>
 <div class="blog-recent-card-excerpt">Qu'est-ce qu'on entend par horaires décalés au travail ? Les horaires décalés, ça couvre en fait plusieurs situations. On parle généralement de tout ce qui sort des horaires…</div><div class="blog-recent-card-date">📅 8 juin 2026</div>        </div>
-      </a>
-      <a href="/1209-combien-coute-erp-bizcore-enterprise-prix-et-deploiement" class="blog-recent-card">
-        <div class="blog-recent-card-img">
-            <img src="/blog/1209-combien-coute-erp-bizcore-enterprise-prix-et-deploiement/featured-65180.jpg" alt="Combien coûte ERP BizCore Enterprise ? Prix et déploiement" loading="lazy">
-        </div>
-        <div class="blog-recent-card-body">
-<div class="blog-recent-card-cat">Gestion d'entreprise</div>          <div class="blog-recent-card-title">Combien coûte ERP BizCore Enterprise ? Prix et déploiement</div>
-<div class="blog-recent-card-excerpt">BizCore Enterprise : un investissement qui mérite réflexion Voilà plusieurs mois que je réfléchis à moderniser notre ERP. Entre les bugs récurrents de notre solution actuelle et…</div><div class="blog-recent-card-date">📅 8 juin 2026</div>        </div>
       </a>
     </div>
   </section>
