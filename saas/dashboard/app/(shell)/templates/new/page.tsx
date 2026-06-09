@@ -3,21 +3,28 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
-// ── Types de modèles disponibles ──────────────────────────────────────────
-// Doit rester cohérent avec :
-//   - TYPE_LABELS et typeColors dans /templates/page.tsx (liste)
-//   - load_prompts() côté Python qui cherche page_types.classement OU page_types.blog
-// 'blog' est le type à utiliser pour les sites blog-only (ex: cadeauclic.com).
-// Pour ces sites, on créera le schema ici puis on l'éditera via l'onglet
-// "🌐 Prompt global" de l'éditeur ; les onglets "Classement" et "Avis" peuvent
-// être ignorés car ils ne s'appliquent pas aux sites blog-only.
-const TYPES = [
-  { id: 'blog',       label: '📝 Blog (thématique)', desc: "Pour les sites blog-only. Définit le ton, le style et l'angle éditorial de la thématique." },
-  { id: 'classement', label: '🏆 Classement',        desc: 'Pour les sites avec pages de classement (logiciels, produits, services).' },
-  { id: 'avis',       label: '⭐ Avis',              desc: 'Pour les pages individuelles d\'avis sur un produit ou service.' },
-  { id: 'vs',         label: '⚖️ Comparatif (vs)',   desc: 'Pour les pages A vs B (comparaison entre deux produits).' },
-  { id: 'local',      label: '📍 Page locale',       desc: 'Pour les pages géolocalisées (ville, région, code postal...).' },
-]
+// ── Création d'une nouvelle THÉMATIQUE ───────────────────────────────────
+// Une thématique est un univers éditorial transversal qui s'applique à TOUS
+// les types de pages d'un site (blog, classement, avis, vs, local). Elle
+// porte principalement le `global_prompt` (voix éditoriale, contraintes de
+// style, mots à éviter, etc.) + les défauts par section.
+//
+// Le concept de "type" (blog/classement/avis/...) est un attribut des
+// SITES qui consomment la thématique, pas de la thématique elle-même.
+// Le site cadeauclic.com référence la thématique "cadeau" dans son config
+// via :
+//     page_types:
+//       blog: cadeau         # pour la génération des articles de blog
+//       classement: cadeau   # plus tard, quand on fera des classements cadeau
+//       avis: cadeau         # plus tard, pour les avis sur des produits cadeau
+//
+// Le code Python (blog_publish_scheduled.py > load_prompts) lit alors
+// platform/schemas/cadeau.json et en extrait le global_prompt.
+//
+// Le `type: "thematic"` du schema généré est UNIQUEMENT utilisé pour le
+// regroupement dans la liste /templates (cf. TYPE_LABELS et typeColors).
+// Il n'a aucun impact côté Python (où c'est `page_types.<X>` dans le
+// config du site qui choisit quel schema lire).
 
 function slugify(s: string): string {
   return s.toLowerCase()
@@ -30,7 +37,6 @@ export default function NewTemplatePage() {
   const [form, setForm] = useState({
     template: '',
     label: '',
-    type: 'blog',
     niche: '',
     description: '',
   })
@@ -41,8 +47,8 @@ export default function NewTemplatePage() {
     setForm(f => {
       const next = { ...f, [k]: v }
       // Auto-derive slug from label tant que l'utilisateur n'a pas saisi le slug manuellement.
-      // Si le slug actuel correspond au label précédent (= jamais modifié manuellement),
-      // on continue de le suivre. Sinon, on respecte le choix de l'utilisateur.
+      // Si le slug actuel correspond au slugify du label précédent (= jamais modifié à la main),
+      // on continue de le suivre. Sinon on respecte le choix de l'utilisateur.
       if (k === 'label' && (f.template === '' || f.template === slugify(f.label))) {
         next.template = slugify(v)
       }
@@ -59,15 +65,14 @@ export default function NewTemplatePage() {
     setCreating(true)
 
     // ── Vérifier que ce slug n'existe pas déjà ───────────────────────────
-    // L'API /api/github renvoie { content: "..." } si le fichier existe,
-    // ou un objet sans content (voire une erreur) sinon. On considère donc
-    // que la présence d'un champ `content` non vide = fichier déjà présent.
+    // L'API /api/github renvoie { content: "..." } si le fichier existe.
+    // On considère donc que la présence d'un champ `content` non vide = collision.
     try {
       const check = await fetch(`/api/github?path=${encodeURIComponent(`platform/schemas/${slug}.json`)}&t=${Date.now()}`)
       if (check.ok) {
         const d = await check.json()
         if (d?.content) {
-          setError(`Un modèle avec l'identifiant "${slug}" existe déjà. Choisis un autre slug.`)
+          setError(`Une thématique avec l'identifiant "${slug}" existe déjà. Choisis un autre slug.`)
           setCreating(false)
           return
         }
@@ -76,18 +81,18 @@ export default function NewTemplatePage() {
       // Erreur réseau ou 404 → considère comme inexistant, on peut créer
     }
 
-    // ── JSON initial du schema ────────────────────────────────────────────
-    // On reproduit la structure du schema "classement-saas.json" existant
-    // pour garder la cohérence avec l'éditeur. Pour un type "blog", les
-    // sections `keywords`, `blocks`, et `avis_config` ne seront pas utilisées,
-    // mais on les pose vides pour que l'éditeur fonctionne sans crash.
-    // Le seul champ qui compte vraiment pour un site blog-only est `global_prompt`
-    // (à remplir dans l'éditeur juste après création).
+    // ── JSON initial du schema de la thématique ──────────────────────────
+    // On reproduit la structure complète des schemas existants (cf.
+    // classement-saas.json) pour que l'éditeur fonctionne sans surprise
+    // une fois la création terminée. Tous les sous-champs sont vides ou
+    // initialisés à leurs défauts ; Julien les remplira au fur et à
+    // mesure que la thématique se développe (blog d'abord, classement
+    // et avis plus tard si pertinents pour la thématique).
     const schema = {
       template: slug,
       label: form.label.trim(),
-      type: form.type,
-      niche: form.niche.trim() || form.type,
+      type: 'thematic',
+      niche: form.niche.trim() || slug,
       description: form.description.trim() || '',
       variables: ['theme', 'year', 'site_name'],
       blocks: [],
@@ -117,7 +122,6 @@ export default function NewTemplatePage() {
       },
     }
 
-    // ── Création via /api/github ──────────────────────────────────────────
     try {
       const r = await fetch('/api/github', {
         method: 'POST',
@@ -125,7 +129,7 @@ export default function NewTemplatePage() {
         body: JSON.stringify({
           path: `platform/schemas/${slug}.json`,
           content: JSON.stringify(schema, null, 2),
-          message: `HUB: Create template ${slug} (${form.type})`,
+          message: `HUB: Create thematic ${slug}`,
         }),
       })
       const d = await r.json()
@@ -134,9 +138,10 @@ export default function NewTemplatePage() {
         setCreating(false)
         return
       }
-      // Redirige vers l'éditeur. On laisse 500ms pour que GitHub se mette à jour
-      // avant que l'éditeur ne tente de relire le fichier (sinon il peut tomber
-      // sur l'ancien index Git et croire que le fichier n'existe pas).
+      // Redirige vers l'éditeur. 500ms de latence pour laisser GitHub
+      // se synchroniser avant que l'éditeur ne tente de relire le fichier
+      // (sinon il peut tomber sur l'ancien index Git et croire que le
+      // fichier n'existe pas → écran "Modèle introuvable").
       setTimeout(() => router.push(`/templates/${slug}`), 500)
     } catch (e: any) {
       setError(`Erreur réseau : ${e?.message || 'inconnue'}`)
@@ -151,41 +156,23 @@ export default function NewTemplatePage() {
   return (
     <div style={{ maxWidth: 700, margin: '0 auto' }}>
       <Link href="/templates" style={{ color: '#8B9CB0', textDecoration: 'none', fontSize: 13 }}>← Retour aux modèles</Link>
-      <h1 style={{ fontSize: 24, fontWeight: 700, color: '#fff', margin: '12px 0 6px' }}>📐 Nouveau modèle</h1>
+      <h1 style={{ fontSize: 24, fontWeight: 700, color: '#fff', margin: '12px 0 6px' }}>🎨 Nouvelle thématique</h1>
       <p style={{ color: '#8B9CB0', fontSize: 13, marginBottom: 28, lineHeight: 1.6 }}>
-        Crée un nouveau modèle pour une nouvelle thématique (ex: blog cadeau, classement immobilier, finance perso...).
-        Le prompt global et les défauts s'éditent ensuite via l'éditeur de modèle classique.
+        Une thématique est un <strong style={{ color: '#fff' }}>univers éditorial</strong> qui s'applique à tous les types de pages
+        d'un site (blog, classement, avis...). Elle porte le prompt global (voix, ton, contraintes)
+        et les défauts par section, partagés entre toutes les générations de contenu pour les sites
+        rattachés à cette thématique.
       </p>
 
       <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24 }}>
 
-        {/* ── Type ── */}
-        <div style={{ marginBottom: 22 }}>
-          {lbl('Type *')}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 10 }}>
-            {TYPES.map(t => (
-              <div key={t.id} onClick={() => set('type', t.id)} style={{
-                padding: '14px 16px',
-                borderRadius: 10,
-                cursor: 'pointer',
-                border: form.type === t.id ? '2px solid #00D4AA' : '2px solid #1E2D3D',
-                background: form.type === t.id ? 'rgba(0,212,170,0.06)' : 'transparent',
-                transition: 'all .15s',
-              }}>
-                <div style={{ fontSize: 14, fontWeight: 600, color: '#fff', marginBottom: 4 }}>{t.label}</div>
-                <div style={{ fontSize: 11, color: '#8B9CB0', lineHeight: 1.4 }}>{t.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* ── Label ── */}
         <div style={{ marginBottom: 14 }}>
-          {lbl("Nom affiché *")}
+          {lbl('Nom affiché *')}
           <input
             value={form.label}
             onChange={e => set('label', e.target.value)}
-            placeholder="Ex: Blog Cadeaux"
+            placeholder="Ex: Cadeaux"
             style={{ width: '100%', padding: '12px 14px', borderRadius: 10, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 14, outline: 'none', boxSizing: 'border-box' as const }}
           />
         </div>
@@ -199,9 +186,15 @@ export default function NewTemplatePage() {
             placeholder="cadeau"
             style={{ width: '100%', padding: '12px 14px', borderRadius: 10, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 14, outline: 'none', fontFamily: 'ui-monospace, monospace', boxSizing: 'border-box' as const }}
           />
-          <div style={{ fontSize: 11, color: '#4A5568', marginTop: 6, lineHeight: 1.5 }}>
+          <div style={{ fontSize: 11, color: '#4A5568', marginTop: 6, lineHeight: 1.6 }}>
             Nom du fichier généré : <code style={{ color: '#8B9CB0', background: '#0A0E1A', padding: '1px 6px', borderRadius: 3, fontSize: 11 }}>platform/schemas/{form.template || 'xxx'}.json</code>
-            <br/>Référencé dans config.yaml du site via <code style={{ color: '#8B9CB0', background: '#0A0E1A', padding: '1px 6px', borderRadius: 3, fontSize: 11 }}>page_types: {form.type === 'classement' ? 'classement' : 'blog'}: {form.template || 'xxx'}</code>
+            <br/>Référence dans <code style={{ color: '#8B9CB0', background: '#0A0E1A', padding: '1px 6px', borderRadius: 3, fontSize: 11 }}>config.yaml</code> du site (selon les types de pages activés) :
+            <pre style={{ margin: '6px 0 0', padding: '6px 10px', background: '#0A0E1A', borderRadius: 6, fontSize: 11, color: '#00D4AA', overflowX: 'auto' as const }}>
+{`page_types:
+  blog: ${form.template || 'xxx'}
+  classement: ${form.template || 'xxx'}   # si tu fais des classements
+  avis: ${form.template || 'xxx'}         # si tu fais des avis`}
+            </pre>
           </div>
         </div>
 
@@ -211,11 +204,11 @@ export default function NewTemplatePage() {
           <input
             value={form.niche}
             onChange={e => set('niche', e.target.value)}
-            placeholder={`Ex: ${form.type === 'blog' ? 'cadeau, finance-perso, immobilier' : 'saas, scpi, mutuelle'}`}
+            placeholder="cadeau, finance-perso, saas, immobilier..."
             style={{ width: '100%', padding: '12px 14px', borderRadius: 10, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 14, outline: 'none', boxSizing: 'border-box' as const }}
           />
           <div style={{ fontSize: 11, color: '#4A5568', marginTop: 6 }}>
-            Si laissé vide, sera identique au type sélectionné ("{form.type}")
+            Si laissé vide, sera égal au slug
           </div>
         </div>
 
@@ -225,7 +218,7 @@ export default function NewTemplatePage() {
           <textarea
             value={form.description}
             onChange={e => set('description', e.target.value)}
-            placeholder="Description courte affichée dans la liste des modèles..."
+            placeholder="Description courte affichée dans la liste des thématiques..."
             rows={3}
             style={{ width: '100%', padding: '12px 14px', borderRadius: 10, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', resize: 'vertical' as const, fontFamily: 'inherit', boxSizing: 'border-box' as const, lineHeight: 1.5 }}
           />
@@ -239,26 +232,18 @@ export default function NewTemplatePage() {
           </Link>
           <button onClick={handleCreate} disabled={creating}
             style={{ padding: '10px 24px', borderRadius: 10, border: 'none', background: creating ? '#1E2D3D' : 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: creating ? 'not-allowed' : 'pointer', fontWeight: 600, fontSize: 14 }}>
-            {creating ? 'Création...' : '✓ Créer le modèle'}
+            {creating ? 'Création...' : '✓ Créer la thématique'}
           </button>
         </div>
 
         <div style={{ marginTop: 24, padding: 16, background: 'rgba(0,212,170,0.06)', border: '1px solid rgba(0,212,170,0.2)', borderRadius: 10, fontSize: 12, color: '#8B9CB0', lineHeight: 1.6 }}>
-          💡 <strong style={{ color: '#fff' }}>Après création</strong>, tu seras redirigé vers l'éditeur du modèle.
-          Tu pourras y coller ton prompt global (généré via ChatGPT par exemple) dans l'onglet
-          <strong style={{ color: '#fff' }}> "🌐 Prompt global"</strong>.
-          <br/><br/>
-          {form.type === 'blog' && (
-            <>
-              📌 <strong style={{ color: '#fff' }}>Pour un type "blog"</strong>, seul l'onglet
-              "🌐 Prompt global" est pertinent ; les onglets "Classement" et "Avis" peuvent être ignorés.
-              Côté site, édite ensuite manuellement <code style={{ color: '#8B9CB0', background: '#0A0E1A', padding: '1px 6px', borderRadius: 3, fontSize: 11 }}>platform/sites/&lt;site&gt;/config.yaml</code> pour ajouter :
-              <pre style={{ margin: '8px 0 0', padding: '8px 10px', background: '#0A0E1A', borderRadius: 6, fontSize: 11, color: '#00D4AA', overflowX: 'auto' as const }}>
-{`page_types:
-  blog: ${form.template || 'xxx'}`}
-              </pre>
-            </>
-          )}
+          💡 <strong style={{ color: '#fff' }}>Après création</strong>, tu seras redirigé vers l'éditeur de la thématique.
+          Tu pourras y configurer :
+          <ul style={{ margin: '8px 0 0', paddingLeft: 20 }}>
+            <li>L'onglet <strong style={{ color: '#fff' }}>🌐 Prompt global</strong> : la voix éditoriale, le ton, les contraintes de style (à coller depuis ChatGPT par ex.)</li>
+            <li>L'onglet <strong style={{ color: '#fff' }}>🏆 Classement</strong> : à remplir uniquement si tu fais des classements pour cette thématique (mots-clés, sheets produits, prompts par catégorie)</li>
+            <li>L'onglet <strong style={{ color: '#fff' }}>⭐ Avis</strong> : à remplir uniquement si tu fais des avis (limites de mots par section)</li>
+          </ul>
         </div>
       </div>
     </div>
