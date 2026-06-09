@@ -1,24 +1,23 @@
 ---
 title: Comment réussir un succession planning efficace ?
 slug: 7219-comment-reussir-un-succession-planning-efficace
-date: 2026-06-01T16:00:00+02:00
-updated: 2026-06-08T12:37:30
+date: 2026-06-01 16:00:00+02:00
+updated: 2026-06-08 12:37:30
 categorie: Ressources Humaines
-meta_title: "Succession planning : méthodes RH pour préparer les talents de demain"
+meta_title: 'Succession planning : méthodes RH pour préparer les talents de demain'
 meta_description: Découvrez comment mettre en place un succession planning efficace
 featured_image: /blog/7219-comment-reussir-un-succession-planning-efficace/featured-11097.jpg
 status: published
 min_words: 3000
 related_posts:
-- 1910-comment-reussir-un-succession-planning-efficace
 - 8102-comment-ameliorer-la-retention-des-talents-dans-votre-entreprise
+- 6596-comment-realiser-une-cartographie-des-competences-efficace
 - 3951-qu-est-ce-que-la-definition-de-la-gestion-des-talents
-- 7364-comment-construire-une-marque-employeur-attractive
+- 6542-comment-utiliser-la-matrice-9-box-pour-gerer-les-talents
 link_anchors:
 - text: succession planning
   max: 2
 ---
-
 <p>Ça fait trois ans que je dirige ma TPE et je me suis récemment rendu compte d'un problème majeur : on a deux salariés clés qui approchent de la retraite. Quand ils partiront, une partie de notre savoir-faire partira avec eux. Cette prise de conscience m'a poussé à me pencher sérieusement sur le succession planning.</p>
 
 <p>Pour une entreprise comme la mienne, <strong>anticiper les départs</strong> n'est pas un luxe. C'est une nécessité. Mais par où commencer quand on n'a jamais fait ça ? J'ai passé des semaines à éplucher les bonnes pratiques et à tester différentes approches. Voici ce que j'ai appris.</p>
