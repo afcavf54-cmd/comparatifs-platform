@@ -19,6 +19,19 @@ const WEB3FORMS_KEY = 'eabd63c5-1744-4172-b8c0-8984db488f10'
 const VALID_SLUG_FORMATS = ['prefix', 'clean'] as const
 type SlugFormat = typeof VALID_SLUG_FORMATS[number]
 
+// ── Types de pages valides (refonte juin 2026) ────────────────────────────
+// Cohérent avec ALL_PAGE_TYPES côté wizard (sites/new/page.tsx). Chaque type
+// activé sur un site est mappé dans config.yaml > page_types vers le slug
+// de la thématique choisie :
+//     page_types:
+//       blog: cadeau
+//       classement: cadeau   # si activé
+//       avis: cadeau         # si activé
+// Côté Python, blog_publish_scheduled.py > load_prompts() lit ce mapping et
+// résout le schema/global_prompt à utiliser pour chaque type de génération.
+const VALID_PAGE_TYPES = ['blog', 'classement', 'avis', 'vs', 'local'] as const
+type PageType = typeof VALID_PAGE_TYPES[number]
+
 function slugify(str: string): string {
   return str.toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -50,8 +63,14 @@ function ye(s: string): string {
   return String(s).replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, ' ')
 }
 
-function criteriaBlock(siteType: string, year: number): string {
-  if (siteType === 'classement') {
+// ── criteriaBlock : refonte juin 2026 ─────────────────────────────────────
+// Avant : prenait `siteType` ('classement' ou 'comparatif').
+// Maintenant : prend directement `hasClassement` calculé depuis activeTypes.
+// Logique identique : si classement actif → bloc SaaS, sinon → bloc SCPI.
+// (Le bloc SCPI reste utilisé en cas de site blog-only, en pratique le
+// `criteria` n'est pas lu dans ce cas par les templates.)
+function criteriaBlock(hasClassement: boolean, year: number): string {
+  if (hasClassement) {
     return `criteria:
   - label: "Prix dès"
     field: prix_achat
@@ -113,12 +132,15 @@ function criteriaBlock(siteType: string, year: number): string {
     type: text`
 }
 
-function seoBlock(siteType: string, p: {
+// ── seoBlock : refonte juin 2026 ──────────────────────────────────────────
+// Idem que criteriaBlock : prend `hasClassement` directement. Le bloc SCPI
+// est conservé en fallback pour les sites sans classement (vs/avis/blog).
+function seoBlock(hasClassement: boolean, p: {
   seo_vs_title: string, seo_vs_meta: string,
   seo_avis_title: string, seo_avis_meta: string,
   seo_liste_comp_title: string, seo_liste_avis_title: string,
 }): string {
-  if (siteType === 'classement') {
+  if (hasClassement) {
     return `seo:
   title_pattern: "{A} vs {B} : comparatif {year}"
   meta_pattern: "Comparatif complet {A} vs {B} {year} : prix, fonctionnalités, avis."
@@ -186,8 +208,17 @@ export async function POST(req: NextRequest) {
     seo_avis_meta = 'Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques.',
     seo_liste_comp_title = 'Tous les comparatifs {site_name} {year}',
     seo_liste_avis_title = 'Avis {site_name} {year} : analyses independantes',
-    page_types = {},
-    site_type = 'comparatif',
+
+    // ── Nouveau payload (refonte juin 2026) ───────────────────────────
+    // - `thematic` remplace le couple (site_type + page_types). C'est le
+    //   slug d'un schema dans platform/schemas/ (ex: "cadeau",
+    //   "classement-saas", "comparatif-vs-scpi").
+    // - `active_page_types` est la liste des types de pages activés sur
+    //   ce site. À partir de ça, on construit dynamiquement la section
+    //   page_types: du config.yaml et on choisit les templates HTML.
+    thematic = '',
+    active_page_types = [],
+
     persona_prompt = '',
     author_name: providedAuthorName = '',
     author_job = '',
@@ -197,6 +228,33 @@ export async function POST(req: NextRequest) {
   } = body
 
   if (!name || !domain) return NextResponse.json({ error: 'name et domain requis' }, { status: 400 })
+
+  // ── Validation thematic + active_page_types (refonte juin 2026) ───────
+  if (!thematic || typeof thematic !== 'string') {
+    return NextResponse.json({ error: 'Thématique requise (slug du schema dans platform/schemas/)' }, { status: 400 })
+  }
+  if (!Array.isArray(active_page_types) || active_page_types.length === 0) {
+    return NextResponse.json({ error: 'Au moins un type de page doit être activé (active_page_types)' }, { status: 400 })
+  }
+  const activeTypes: PageType[] = (active_page_types as unknown[])
+    .filter((t): t is PageType => typeof t === 'string' && (VALID_PAGE_TYPES as readonly string[]).includes(t))
+  if (activeTypes.length === 0) {
+    return NextResponse.json({
+      error: `Aucun type de page valide. Valides : ${VALID_PAGE_TYPES.join(', ')}`,
+    }, { status: 400 })
+  }
+
+  // ── Validation thematic : doit exister dans platform/schemas/ ─────────
+  // Évite la création d'un site qui pointe vers un schema inexistant
+  // (page_types.<X>: <thematic> ne servirait à rien et load_prompts()
+  // côté Python tomberait sur un FileNotFoundError silencieux).
+  const thematicSlug = slugify(thematic)
+  const thematicFile = await getFile(`platform/schemas/${thematicSlug}.json`)
+  if (!thematicFile) {
+    return NextResponse.json({
+      error: `Thématique introuvable : platform/schemas/${thematicSlug}.json. Crée-la d'abord via /templates/new.`,
+    }, { status: 400 })
+  }
 
   // ── Validation blog_slug_format ────────────────────────────────────────
   // Sanitisation : on accepte uniquement 'prefix' | 'clean'. Toute autre
@@ -218,15 +276,49 @@ export async function POST(req: NextRequest) {
   if (hubConfig.sites.find((s: any) => s.id === id))
     return NextResponse.json({ error: 'Un site avec ce nom existe déjà' }, { status: 400 })
 
-  const isClassement = site_type === 'classement'
-  const tplMain = isClassement ? 'classement-saas.html.j2' : 'comparatif-vs-scpi.html.j2'
-  const tplIndex = isClassement ? 'index-saas.html.j2' : 'index-scpi.html.j2'
+  // ── Sélection conditionnelle des templates HTML ──────────────────────
+  // tplMain est utilisé pour les pages individuelles (VS, classements).
+  // Le code Python (generate.py) distingue les deux modes via la présence
+  // de "classement" dans le nom du template.
+  //   - Si classement activé → 'classement-saas.html.j2' (génère pages classement)
+  //   - Sinon → 'comparatif-vs-scpi.html.j2' (génère pages VS individuelles
+  //     si des products existent, sinon rien)
+  const hasClassement = activeTypes.includes('classement')
+  const hasVs = activeTypes.includes('vs')
+  const hasAvis = activeTypes.includes('avis')
+  const onlyBlog = activeTypes.length === 1 && activeTypes[0] === 'blog'
+  const tplMain = hasClassement ? 'classement-saas.html.j2' : 'comparatif-vs-scpi.html.j2'
 
-  const pageTypesBlock = Object.entries(page_types as Record<string, string>)
-    .filter(([, v]) => v)
-    .map(([k, v]) => `  ${k}: ${v}`)
+  // tplIndex est utilisé pour la page d'accueil du site.
+  // Priorité (top-down) :
+  //   - UNIQUEMENT blog activé → 'index-blog.html.j2' (neutre, créé juin
+  //     2026 pour la migration cadeauclic.com et autres sites blog-only)
+  //   - Classement activé → 'index-saas.html.j2' (home SaaS legacy)
+  //   - Sinon (vs/avis seuls) → 'index-scpi.html.j2' (home SCPI legacy)
+  // Note : si un index custom 'index-<id>.html.j2' existe dans
+  // platform/templates/, il peut être référencé manuellement dans le
+  // config.yaml après création (cf. backlog homes personnalisées par
+  // site, notamment cadeauclic.com prévu en design custom plus tard).
+  let tplIndex: string
+  if (onlyBlog) tplIndex = 'index-blog.html.j2'
+  else if (hasClassement) tplIndex = 'index-saas.html.j2'
+  else tplIndex = 'index-scpi.html.j2'
+
+  // ── Construction dynamique de page_types ─────────────────────────────
+  // À partir des types activés, on génère un mapping <type>: <thematic>
+  // dans le config.yaml. Une même thématique peut être réutilisée pour
+  // plusieurs types de pages (un seul global_prompt pour tout le site).
+  //
+  // Côté Python, blog_publish_scheduled.py > load_prompts() lit ce
+  // mapping :
+  //     page_types = config.get("page_types") or {}
+  //     template_name = page_types.get("classement") or page_types.get("blog")
+  // Donc l'ordre dans le YAML n'importe pas, mais classement/blog sont
+  // les clés actuellement consommées en priorité côté générateurs.
+  const pageTypesBlock = activeTypes
+    .map(t => `  ${t}: ${thematicSlug}`)
     .join('\n')
-  const pageTypesYaml = pageTypesBlock ? `page_types:\n${pageTypesBlock}\n\n` : ''
+  const pageTypesYaml = `page_types:\n${pageTypesBlock}\n\n`
 
   const themeYaml = `theme:
   accent: "${accent}"
@@ -243,9 +335,15 @@ export async function POST(req: NextRequest) {
   const personaYaml = personaBlock(persona_prompt)
   const authorYaml = authorBlock(authorName, author_job, author_bio)
 
+  // ── Description du site dans le header du config.yaml ────────────────
+  // Plus de "Type : classement (SaaS) / comparatif (SCPI legacy)" qui était
+  // un raccourci ambigu. Maintenant on documente clairement la thématique
+  // et les types activés, ce qui facilite la lecture du config pour debug.
   const configYaml = `# ============================================================
 # CONFIG SITE -- ${id}
-# Type : ${isClassement ? 'classement (SaaS)' : 'comparatif (SCPI legacy)'}
+# Thématique     : ${thematicSlug}
+# Types activés  : ${activeTypes.join(', ')}
+# Templates HTML : ${tplMain} (pages) / ${tplIndex} (home)
 # Généré par le wizard HUB le ${new Date().toISOString().split('T')[0]}
 # ============================================================
 
@@ -271,7 +369,7 @@ site:
 
 ${pageTypesYaml}${themeYaml}
 
-${criteriaBlock(site_type, year)}
+${criteriaBlock(hasClassement, year)}
 
 tag_classes:
   rendement: "tag-rendement"
@@ -279,7 +377,7 @@ tag_classes:
   specialisee: "tag-specialisee"
   europeenne: "tag-europeenne"
 
-${seoBlock(site_type, { seo_vs_title, seo_vs_meta, seo_avis_title, seo_avis_meta, seo_liste_comp_title, seo_liste_avis_title })}
+${seoBlock(hasClassement, { seo_vs_title, seo_vs_meta, seo_avis_title, seo_avis_meta, seo_liste_comp_title, seo_liste_avis_title })}
 ${personaYaml ? '\n' + personaYaml + '\n' : ''}${authorYaml ? '\n' + authorYaml + '\n' : ''}`
 
   const files: [string, string, string][] = [
@@ -289,7 +387,9 @@ ${personaYaml ? '\n' + personaYaml + '\n' : ''}${authorYaml ? '\n' + authorYaml 
     [`platform/sites/${id}/site_editorial.json`, '{}', `HUB: Init site_editorial ${name}`],
   ]
 
-  if (isClassement && Array.isArray(selected_keywords) && selected_keywords.length > 0) {
+  // ── enabled_classements.json (créé seulement si classement activé) ───
+  // Inchangé sauf la condition : `hasClassement` au lieu de `isClassement`.
+  if (hasClassement && Array.isArray(selected_keywords) && selected_keywords.length > 0) {
     const enabledSlugs = selected_keywords
       .filter((k: unknown): k is string => typeof k === 'string' && !!k.trim())
       .map((k: string) => slugify(k))
@@ -310,14 +410,25 @@ ${personaYaml ? '\n' + personaYaml + '\n' : ''}${authorYaml ? '\n' + authorYaml 
     await new Promise(r => setTimeout(r, 300))
   }
 
+  // ── Construction du newSite stocké dans hub.config.json ──────────────
+  // - Champs nouveaux (modèle actuel) : `thematic`, `active_page_types`
+  // - Champ `site_type` conservé pour rétro-compat avec les composants du
+  //   dashboard qui pourraient encore lire cet attribut (badges, filtres
+  //   dans /sites). Calculé : 'classement' si hasClassement, sinon 'comparatif'.
+  // - `page_types` reconstruit en mapping pour rétro-compat similaire.
+  // - `niche` : par défaut = thematicSlug (le champ niche du form n'est
+  //   plus utilisé par le wizard refondu, on garde au cas où).
+  const pageTypesObject = Object.fromEntries(activeTypes.map(t => [t, thematicSlug]))
   const newSite = {
-    id, name, niche: niche || site_type,
+    id, name, niche: niche || thematicSlug,
     domain: domainClean, sheet_csv_url: sheet_csv_url || '',
     description: description || '', status: 'pending_generation',
-    site_type,
+    thematic: thematicSlug,
+    active_page_types: activeTypes,
+    site_type: hasClassement ? 'classement' : 'comparatif',
     blog_slug_format: blogSlugFormat,
     created_at: new Date().toISOString(),
-    page_types: Object.fromEntries(Object.entries(page_types as Record<string, string>).filter(([, v]) => v)),
+    page_types: pageTypesObject,
   }
   hubConfig.sites.push(newSite)
   hubConfig.updated_at = new Date().toISOString()
