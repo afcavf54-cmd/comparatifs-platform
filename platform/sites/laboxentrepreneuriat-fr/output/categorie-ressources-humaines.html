@@ -25,10 +25,13 @@
 body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
 a{color:var(--accent2);text-decoration:none}
 .container{max-width:1100px;margin:0 auto;padding:0 5vw}
-.blog-header{padding:64px 0 32px;text-align:center}
-.blog-title{font-family:'DM Serif Display',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:16px}
+/* Padding réduit (avant : 64px top / 32px bot) pour rapprocher le titre du header
+   et le titre des filtres. Sur mobile (≤600px) on resserre encore. */
+.blog-header{padding:32px 0 12px;text-align:center}
+.blog-title{font-family:'DM Serif Display',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:12px}
 .blog-sub{font-size:18px;color:var(--ink3);max-width:600px;margin:0 auto}
-.blog-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:32px 0 40px}
+/* Margin réduit (avant : 32px top / 40px bot) pour coller les filtres au titre. */
+.blog-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0 32px}
 .blog-filter{font-size:13px;font-weight:600;color:var(--ink2);padding:8px 16px;border-radius:24px;border:1px solid var(--border);background:var(--surface);transition:.15s;cursor:pointer}
 .blog-filter:hover,.blog-filter.active{color:var(--accent);border-color:var(--accent)}
 .blog-filter-count{font-size:11px;color:var(--ink3);margin-left:4px}
@@ -71,7 +74,13 @@ a{color:var(--accent2);text-decoration:none}
 @media(max-width:600px){.blog-pagination{gap:2px;font-size:14px}.blog-page-num{min-width:28px;height:28px;padding:0 6px}.blog-page-sep{margin:0 6px}.blog-page-link,.blog-page-disabled{padding:4px 2px}.blog-page-link span:not(.blog-page-arrow){display:none}.blog-page-disabled span:not(.blog-page-arrow){display:none}}
 /* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
 @media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.blog-grid{grid-template-columns:1fr}}
+@media(max-width:600px){
+  .blog-grid{grid-template-columns:1fr}
+  /* Resserrage supplémentaire sur mobile : header + filtres ultra compacts */
+  .blog-header{padding:20px 0 8px}
+  .blog-title{margin-bottom:8px}
+  .blog-filters{margin:10px 0 24px}
+}
 @media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
 </style>
 <meta name="google-site-verification" content="L43wAUqgxfT4pxeThRRH2S3Ljy8_aOCtj6bIXgNQdwU">
@@ -117,14 +126,56 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
 </nav>
+
+<script>
+/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
+   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
+   devoir redéfinir la fonction côté template parent.
+
+   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
+   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
+   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
+   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
+   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
+   qui est actif et le parent réécrit derrière s'il en a un.
+
+   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
+   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
+   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
+   ne faisait rien. */
+(function(){
+  if (typeof window.toggleMenu === 'function') return;
+  window.toggleMenu = function(){
+    var menu = document.getElementById('nav-mobile');
+    if (menu) menu.classList.toggle('open');
+  };
+  // UX bonus : fermer le menu mobile en cliquant en dehors
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('nav-mobile');
+    var burger = document.getElementById('burger');
+    if (!menu || !burger) return;
+    if (!menu.classList.contains('open')) return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    menu.classList.remove('open');
+  });
+  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
+  document.addEventListener('DOMContentLoaded', function(){
+    var menu = document.getElementById('nav-mobile');
+    if (!menu) return;
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  });
+})();
+</script>
 <header class="container">
   <div class="blog-header">
     <h1 class="blog-title">Ressources Humaines</h1>
-<p class="blog-sub">15 articles</p>  </div>
+<p class="blog-sub">14 articles</p>  </div>
   <div class="blog-filters">
-    <a class="blog-filter active" href="/blog">Tous <span class="blog-filter-count">(15)</span></a>
-    <a class="blog-filter" href="/categorie-ressources-humaines">Ressources Humaines <span class="blog-filter-count">(15)</span></a>
-    <a class="blog-filter" href="/categorie-entreprenariat">Entreprenariat <span class="blog-filter-count">(4)</span></a>
+    <a class="blog-filter active" href="/blog">Tous <span class="blog-filter-count">(14)</span></a>
+    <a class="blog-filter" href="/categorie-ressources-humaines">Ressources Humaines <span class="blog-filter-count">(14)</span></a>
+    <a class="blog-filter" href="/categorie-entreprenariat">Entreprenariat <span class="blog-filter-count">(2)</span></a>
   </div>
 </header>
 
@@ -145,14 +196,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       <div class="blog-card-body">
 <span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Comment préparer les futurs managers avec le succession planning ?</h2>
 <p class="blog-card-excerpt">Succession planning : pourquoi j'ai fini par y croire (après des années de scepticisme) Je vais être franc. Pendant longtemps, j'ai trouvé que le succession planning, c'était un…</p><div class="blog-card-meta">1 juin 2026</div>      </div>
-    </a>
-    <a href="/1090-comment-preparer-les-futurs-managers-avec-le-succession-planning" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/1090-comment-preparer-les-futurs-managers-avec-le-succession-planning.jpg" alt="Comment préparer les futurs managers avec le succession planning ?" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-<span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Comment préparer les futurs managers avec le succession planning ?</h2>
-<p class="blog-card-excerpt">Le succession planning : bien plus qu'un simple organigramme de remplacement Je vais être franc avec vous : trop d'entreprises confondent encore succession planning et simple…</p><div class="blog-card-meta">1 juin 2026</div>      </div>
     </a>
     <a href="/7735-comment-optimiser-l-experience-collaborateur-au-quotidien" class="blog-card">
       <div class="blog-card-img">
@@ -299,7 +342,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 laboxentrepreneuriat.fr — Données actualisées le 8 juin 2026
+        © 2026 laboxentrepreneuriat.fr — Données actualisées le 9 juin 2026
       </div>
     </div>
   </div>

@@ -105,17 +105,17 @@ a:hover{text-decoration:underline}
 .sidebar-recent-link{color:var(--ink2);font-size:13px;line-height:1.45;text-decoration:none;display:block}
 .sidebar-recent-link:hover{color:var(--accent);text-decoration:none}
 .sidebar-recent-cat{font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
-.article-header{padding:48px 0 24px}
+.article-header{padding:23px 0 24px}
 .breadcrumb{font-size:13px;color:var(--ink3);margin-bottom:16px}
 .breadcrumb a{color:var(--ink3)}
 .breadcrumb a:hover{color:var(--accent)}
 .article-cat{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);background:var(--surface2);padding:4px 10px;border-radius:20px;text-decoration:none;transition:.15s}
 .article-cat:hover{background:var(--accent);color:#fff;text-decoration:none}
 .article-title{font-family:'DM Serif Display',serif;font-size:clamp(28px,5vw,48px);font-weight:400;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin-bottom:16px}
-.article-meta{font-size:14px;color:var(--ink3);margin-bottom:32px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.article-meta{font-size:14px;color:var(--ink3);margin-bottom:7px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .article-meta-item{display:inline-flex;align-items:center;gap:6px}
 .article-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
-.article-featured{width:100%;border-radius:var(--r2);overflow:hidden;margin-bottom:40px;border:1px solid var(--border)}
+.article-featured{width:100%;border-radius:var(--r2);overflow:hidden;margin-bottom:15px;border:1px solid var(--border)}
 .article-featured img{display:block;width:100%;height:auto}
 .article-toc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:22px 26px;margin:0 0 40px;position:relative;z-index:0}
 .article-toc-title{font-family:'DM Serif Display',serif;font-size:18px;font-weight:600;color:var(--ink);margin:0 0 14px;letter-spacing:-.01em}
@@ -149,7 +149,7 @@ a:hover{text-decoration:underline}
 .article-body a{color:var(--accent2);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px}
 .article-body a:hover{text-decoration-color:var(--accent2)}
 /* Author box (réutilise le style de classement-saas) */
-.author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:64px 0 0}
+.author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
 .author-avatar-placeholder{width:72px;height:72px;border-radius:50%;background:var(--bg);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
 .author-info{flex:1}
@@ -159,7 +159,7 @@ a:hover{text-decoration:underline}
 .author-bio{font-size:14px;color:var(--ink2);line-height:1.7}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}}
 /* Maillage interne */
-.related-section{margin:64px 0 0;padding-top:40px;border-top:1px solid var(--border)}
+.related-section{margin:25px 0 0;padding-top:25px;border-top:1px solid var(--border)}
 .related-title{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
 .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .related-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px;text-decoration:none;transition:.15s;display:block}
@@ -170,8 +170,12 @@ a:hover{text-decoration:underline}
 @media(max-width:600px){.related-grid{grid-template-columns:1fr}}
 /* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
 @media(max-width:960px){
-  .article-layout{grid-template-columns:1fr;gap:32px}
+  .article-layout{grid-template-columns:1fr;gap:25px}
   .article-sidebar{position:static}
+  /* Sur mobile, la sidebar passe sous le contenu : on retire le padding-bottom
+     de article-main qui ne sert plus à rien (l'écart est géré par le gap du
+     grid). 80 (padding) + 32 (gap) = 112px → désormais 0 + 25 = 25px. */
+  .article-main{padding-bottom:0}
 }
 @media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
 
@@ -238,6 +242,48 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
 </nav>
+
+<script>
+/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
+   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
+   devoir redéfinir la fonction côté template parent.
+
+   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
+   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
+   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
+   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
+   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
+   qui est actif et le parent réécrit derrière s'il en a un.
+
+   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
+   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
+   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
+   ne faisait rien. */
+(function(){
+  if (typeof window.toggleMenu === 'function') return;
+  window.toggleMenu = function(){
+    var menu = document.getElementById('nav-mobile');
+    if (menu) menu.classList.toggle('open');
+  };
+  // UX bonus : fermer le menu mobile en cliquant en dehors
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('nav-mobile');
+    var burger = document.getElementById('burger');
+    if (!menu || !burger) return;
+    if (!menu.classList.contains('open')) return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    menu.classList.remove('open');
+  });
+  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
+  document.addEventListener('DOMContentLoaded', function(){
+    var menu = document.getElementById('nav-mobile');
+    if (!menu) return;
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  });
+})();
+</script>
 <div class="container">
 <article class="article-layout">
   <div class="article-main">
@@ -421,7 +467,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
 <p>Attention, ça ne correspond pas forcément aux salaires ou aux postes hiérarchiques. J'ai vu des assistantes administratives classées "impact critique" parce qu'elles géraient seules toute la relation client.</p>
 
-<p>Deuxième critère : le potentiel d'évolution. Qui pourrait prendre plus de responsabilités dans les 12 prochains mois ? Ça rejoint la notion de <strong>succession planning</strong> dont je vous parle plus bas.</p>
+<p>Deuxième critère : le potentiel d'évolution. Qui pourrait prendre plus de responsabilités dans les 12 prochains mois ? Ça rejoint la notion de <strong><a href="/6799-comment-preparer-les-futurs-managers-avec-le-succession-planning">succession planning</a></strong> dont je vous parle plus bas.</p>
 
 <h3 id="etape-2-comprendre-leurs-motivations-reelles">Étape 2 : Comprendre leurs motivations réelles</h3>
 
@@ -751,19 +797,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <li class="sidebar-cat-item">
           <a href="/blog" class="sidebar-cat-link">
             <span>Tous les articles</span>
-            <span class="sidebar-cat-count">19</span>
+            <span class="sidebar-cat-count">16</span>
           </a>
         </li>
         <li class="sidebar-cat-item">
           <a href="/categorie-ressources-humaines" class="sidebar-cat-link active">
             <span>Ressources Humaines</span>
-            <span class="sidebar-cat-count">15</span>
+            <span class="sidebar-cat-count">14</span>
           </a>
         </li>
         <li class="sidebar-cat-item">
           <a href="/categorie-entreprenariat" class="sidebar-cat-link">
             <span>Entreprenariat</span>
-            <span class="sidebar-cat-count">4</span>
+            <span class="sidebar-cat-count">2</span>
           </a>
         </li>
       </ul>
@@ -783,18 +829,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
           </a>
         </li>
         <li class="sidebar-recent-item">
-          <a href="/1814-prix-du-logiciel-invoicemaster-evolution-analyse-detaillee" class="sidebar-recent-link">
-<div class="sidebar-recent-cat">Entreprenariat</div>            Prix du logiciel InvoiceMaster Evolution : analyse détaillée
-          </a>
-        </li>
-        <li class="sidebar-recent-item">
           <a href="/7565-prix-du-logiciel-invoicemaster-evolution-analyse-detaillee" class="sidebar-recent-link">
 <div class="sidebar-recent-cat">Entreprenariat</div>            Prix du logiciel InvoiceMaster Evolution : analyse détaillée
           </a>
         </li>
         <li class="sidebar-recent-item">
-          <a href="/1405-pourquoi-choisir-quickbill-advanced-pour-votre-facturation" class="sidebar-recent-link">
-<div class="sidebar-recent-cat">Entreprenariat</div>            Pourquoi choisir QuickBill Advanced pour votre facturation ?
+          <a href="/6799-comment-preparer-les-futurs-managers-avec-le-succession-planning" class="sidebar-recent-link">
+<div class="sidebar-recent-cat">Ressources Humaines</div>            Comment préparer les futurs managers avec le succession planning ?
+          </a>
+        </li>
+        <li class="sidebar-recent-item">
+          <a href="/7735-comment-optimiser-l-experience-collaborateur-au-quotidien" class="sidebar-recent-link">
+<div class="sidebar-recent-cat">Ressources Humaines</div>            Comment optimiser l’expérience collaborateur au quotidien ?
           </a>
         </li>
       </ul>
@@ -847,7 +893,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 laboxentrepreneuriat.fr — Données actualisées le 8 juin 2026
+        © 2026 laboxentrepreneuriat.fr — Données actualisées le 9 juin 2026
       </div>
     </div>
   </div>
