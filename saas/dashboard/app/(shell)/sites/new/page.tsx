@@ -90,6 +90,14 @@ export default function NewSitePage() {
     logo_text: '', logo_accent: '',
     accent: '#1B4FD8', accent2: '#E8410A', bg: '#F4F6FB',
     www_preference: 'www',
+    // ── Format des slugs d'articles blog ───────────────────────────────
+    // 'prefix' (défaut historique) : ajoute /3847-mon-article/
+    // 'clean'                       : URLs propres /mon-article/
+    // Le 2e mode est nécessaire pour migrer un site WordPress existant
+    // en conservant exactement les URLs (continuité SEO). Le paramètre
+    // est lu côté Python par blog_publish_scheduled.py > _resolve_slug_format
+    // depuis config.yaml (top-level ou section site:).
+    blog_slug_format: 'prefix',
     home_title: '', home_description: '',
     seo_vs_title: '{A} vs {B} : comparatif {year}',
     seo_vs_meta: 'Comparatif complet {A} vs {B} {year} : rendements, frais, avis.',
@@ -183,6 +191,9 @@ export default function NewSitePage() {
         // À l'étape "Types" l'utilisateur cochait les classements à activer,
         // mais ils étaient perdus → enabled_classements.json jamais créé →
         // tous les keywords activés par défaut (mode legacy).
+        // ── juin 2026 : blog_slug_format fait partie de form donc déjà
+        // inclus via ...form. L'API doit lire ce champ et l'écrire dans
+        // config.yaml pour que blog_publish_scheduled.py le respecte.
         body: JSON.stringify({
           ...form,
           page_types: pageTypes,
@@ -299,6 +310,29 @@ export default function NewSitePage() {
                 </div>
               ))}
             </div>
+
+            {/* ── Format des slugs d'articles blog ──────────────────────
+                Permet de choisir comment les URLs des articles seront construites.
+                - 'prefix' : URLs avec préfixe numérique (défaut historique)
+                - 'clean'  : URLs propres, à utiliser pour migrer un site existant
+                Ce champ est lu par blog_publish_scheduled.py au moment de la
+                génération du slug. L'API /api/sites doit l'écrire dans config.yaml. */}
+            {lbl('Format des slugs d\'articles blog')}
+            <div style={{ display: 'flex', gap: 10, marginBottom: 8 }}>
+              {[
+                { val: 'prefix', label: 'Avec préfixe numérique', sub: '/3847-mon-article/' },
+                { val: 'clean', label: 'Slug propre', sub: '/mon-article/' }
+              ].map(opt => (
+                <div key={opt.val} onClick={() => set('blog_slug_format', opt.val)} style={{ flex: 1, padding: '12px 16px', borderRadius: 10, cursor: 'pointer', border: form.blog_slug_format === opt.val ? '2px solid #00D4AA' : '2px solid #1E2D3D', background: form.blog_slug_format === opt.val ? 'rgba(0,212,170,0.08)' : 'transparent' }}>
+                  <div style={{ fontSize: 14, fontWeight: 600, color: '#fff' }}>{opt.label}</div>
+                  <div style={{ fontSize: 11, color: '#8B9CB0', fontFamily: 'monospace', marginTop: 4 }}>{opt.sub}</div>
+                </div>
+              ))}
+            </div>
+            <div style={{ fontSize: 11, color: '#4A5568', marginBottom: 20, lineHeight: 1.5 }}>
+              💡 Choisissez <strong style={{ color: '#8B9CB0' }}>Slug propre</strong> si vous migrez un site existant (WordPress par ex.) et devez conserver les URLs pour ne pas perdre votre référencement.
+            </div>
+
             {siteType === 'comparatif' && (
               <>
                 {lbl('URL Google Sheet (CSV publié) *')}
@@ -612,6 +646,7 @@ export default function NewSitePage() {
               { label: 'Logo', value: `${form.logo_text} ${form.logo_accent}`.trim() },
               { label: 'Google Sheet', value: siteType === 'classement' ? 'Par catégorie (à configurer)' : form.sheet_csv_url ? '✓ Configuré' : 'Non configuré' },
               { label: 'URL canonique', value: form.www_preference === 'www' ? `www.${form.domain}` : form.domain },
+              { label: 'Format slugs blog', value: form.blog_slug_format === 'clean' ? 'Slug propre (/mon-article/)' : 'Avec préfixe (/3847-mon-article/)' },
               { label: 'Modèles', value: Object.entries(pageTypes).filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`).join(', ') || 'Aucun' },
               { label: 'Persona', value: personaPrompt ? `✓ Configuré (${personaPrompt.length} car.)` : '— Non défini' },
               ...(siteType === 'classement' ? [{ label: 'Types activés', value: selectedKeywords.length > 0 ? `${selectedKeywords.length} classement(s)` : '⚠ Tous (legacy)' }] : []),
