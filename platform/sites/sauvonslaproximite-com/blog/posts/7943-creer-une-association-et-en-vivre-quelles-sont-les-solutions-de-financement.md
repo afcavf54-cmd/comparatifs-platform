@@ -13,8 +13,9 @@ featured_image: /blog/7943-creer-une-association-et-en-vivre-quelles-sont-les-so
 status: published
 min_words: 1200
 related_posts:
-- 3401-creer-un-produit-les-etapes-indispensables-pour-transformer-une-idee-en-succes
 - 2652-avance-sur-dividendes-en-sasu-les-regles-a-connaitre-avant-de-se-remunerer
+- 8445-scea-comprendre-le-fonctionnement-de-cette-societe-agricole
+- 3401-creer-un-produit-les-etapes-indispensables-pour-transformer-une-idee-en-succes
 link_anchors:
 - text: créer une association et en vivre
   max: 4

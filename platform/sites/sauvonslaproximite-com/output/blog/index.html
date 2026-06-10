@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog | sauvonslaproximite.com</title>
+<meta name="description" content="Articles, guides et conseils — sauvonslaproximite.com">
+<link rel="canonical" href="https://www.sauvonslaproximite.com/blog/">
+<link rel="next" href="https://www.sauvonslaproximite.com/blog/2/"><meta property="og:title" content="Blog | sauvonslaproximite.com">
+<meta property="og:description" content="Articles, guides et conseils — sauvonslaproximite.com">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sauvonslaproximite.com/blog/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=sauvonslaproximite-com" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#EEF2F7;--surface:#FFFFFF;--surface2:#F5F3EE;
+  --ink:#0F172A;--ink2:#3D434B;--ink3:#8B9CB0;
+  --accent:#121826;--accent2:#2563EB;--green:#3D7A4F;
+  --border:#E6E1D8;--r:8px;--r2:14px;
+--cta:#0EA5A5;--cta-text:#FFFFFF;}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+a{color:var(--accent2);text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 5vw}
+/* Padding réduit (avant : 64px top / 32px bot) pour rapprocher le titre du header
+   et le titre des filtres. Sur mobile (≤600px) on resserre encore. */
+.blog-header{padding:32px 0 12px;text-align:center}
+.blog-title{font-family:'DM Serif Display',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:12px}
+.blog-sub{font-size:18px;color:var(--ink3);max-width:600px;margin:0 auto}
+/* Margin réduit (avant : 32px top / 40px bot) pour coller les filtres au titre. */
+.blog-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0 32px}
+.blog-filter{font-size:13px;font-weight:600;color:var(--ink2);padding:8px 16px;border-radius:24px;border:1px solid var(--border);background:var(--surface);transition:.15s;cursor:pointer}
+.blog-filter:hover,.blog-filter.active{color:var(--accent);border-color:var(--accent)}
+.blog-filter-count{font-size:11px;color:var(--ink3);margin-left:4px}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px}
+.blog-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;text-decoration:none;transition:.2s;display:flex;flex-direction:column}
+.blog-card:hover{border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.06);transform:translateY(-2px);text-decoration:none}
+.blog-card-img{aspect-ratio:16/9;background:var(--surface2);overflow:hidden}
+.blog-card-img img{width:100%;height:100%;object-fit:cover}
+.blog-card-img-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--surface2) 0%,var(--bg) 100%);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:48px}
+.blog-card-body{padding:20px 22px 24px;flex:1;display:flex;flex-direction:column}
+.blog-card-cat{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:10px;align-self:flex-start}
+.blog-card-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;line-height:1.3;color:var(--ink);margin-bottom:10px;letter-spacing:-.01em}
+.blog-card-excerpt{font-size:14px;color:var(--ink3);line-height:1.55;margin-bottom:16px;flex:1}
+.blog-card-meta{font-size:12px;color:var(--ink3);margin-top:auto}
+.blog-empty{text-align:center;padding:80px 0;color:var(--ink3);font-size:16px}
+/* Pagination style "rond bleu pour la page courante + ... + séparateur + Suivant".
+   Match visuel de la maquette fournie : numéros centrés sur 32px, page courante
+   en rond bleu plein, ellipsis pour gros volumes, séparateur vertical avant
+   Précédent/Suivant, et flèche dans cercle foncé.
+   ⚠️ ATTENTION : le sélecteur global `nav` défini dans _nav.html.j2 applique
+   `flex-direction:column; background:var(--ink); position:sticky; padding:0 5vw`
+   à TOUS les <nav>, y compris notre <nav class="blog-pagination">. On override
+   donc explicitement ces propriétés pour éviter que la pagination s'affiche en
+   colonne dans un fond sombre. */
+.blog-pagination{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:4px;margin:48px 0 24px;flex-wrap:nowrap;font-size:15px;background:transparent;padding:0;position:static}
+.blog-page-numbers{display:flex;align-items:center;gap:4px}
+.blog-page-num{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;padding:0 8px;border-radius:50%;background:transparent;border:none;color:var(--ink2);text-decoration:none;font-weight:500;transition:color .15s}
+.blog-page-num:hover{color:var(--accent)}
+.blog-page-current{background:var(--accent);color:#fff;font-weight:600;cursor:default}
+.blog-page-current:hover{color:#fff}
+.blog-page-ellipsis{display:inline-flex;align-items:center;justify-content:center;min-width:24px;color:var(--ink3);user-select:none}
+/* Séparateur vertical entre les numéros et le bouton Précédent/Suivant */
+.blog-page-sep{display:inline-block;width:1px;height:20px;background:var(--border);margin:0 12px}
+/* Lien Précédent/Suivant : texte + flèche dans rond foncé */
+.blog-page-link{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;font-weight:500;padding:6px 4px;background:transparent;border:none;transition:opacity .15s}
+.blog-page-link:hover{opacity:.6;background:transparent}
+.blog-page-disabled{display:inline-flex;align-items:center;gap:8px;color:var(--ink3);font-weight:500;padding:6px 4px;opacity:.4;cursor:default;background:transparent;border:none}
+.blog-page-arrow{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:11px;line-height:1;flex-shrink:0}
+.blog-page-disabled .blog-page-arrow{background:var(--ink3)}
+@media(max-width:600px){.blog-pagination{gap:2px;font-size:14px}.blog-page-num{min-width:28px;height:28px;padding:0 6px}.blog-page-sep{margin:0 6px}.blog-page-link,.blog-page-disabled{padding:4px 2px}.blog-page-link span:not(.blog-page-arrow){display:none}.blog-page-disabled span:not(.blog-page-arrow){display:none}}
+/* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
+@media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){
+  .blog-grid{grid-template-columns:1fr}
+  /* Resserrage supplémentaire sur mobile : header + filtres ultra compacts */
+  .blog-header{padding:20px 0 8px}
+  .blog-title{margin-bottom:8px}
+  .blog-filters{margin:10px 0 24px}
+}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+</style>
+<script async data-id="101506542" src="//static.getclicky.com/js"></script>
+</head>
+<body>
+
+<style>
+nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+nav.site-nav .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
+nav.site-nav .nav-logo span{color:var(--accent2)}
+nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
+nav.site-nav .nav-cta:hover{opacity:.88}
+nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+nav.site-nav .nav-mobile.open{display:flex}
+nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
+</style>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/logo.png" alt="sauvonslaproximite.com" style="height:36px;width:auto;object-fit:contain;vertical-align:middle"></a>
+    <div class="nav-links">
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/avis">Avis</a>
+        <a href="/blog/">Blog</a>
+          <a href="/tools">Tools</a>
+    </div>
+    <a href="/contact" class="nav-cta">Contact</a>
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+      <a href="/nos-comparateurs">Nos comparateurs</a>
+      <a href="/avis">Avis</a>
+      <a href="/blog/">Blog</a>
+        <a href="/tools">Tools</a>
+    <a href="/contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<script>
+/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
+   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
+   devoir redéfinir la fonction côté template parent.
+
+   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
+   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
+   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
+   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
+   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
+   qui est actif et le parent réécrit derrière s'il en a un.
+
+   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
+   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
+   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
+   ne faisait rien. */
+(function(){
+  if (typeof window.toggleMenu === 'function') return;
+  window.toggleMenu = function(){
+    var menu = document.getElementById('nav-mobile');
+    if (menu) menu.classList.toggle('open');
+  };
+  // UX bonus : fermer le menu mobile en cliquant en dehors
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('nav-mobile');
+    var burger = document.getElementById('burger');
+    if (!menu || !burger) return;
+    if (!menu.classList.contains('open')) return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    menu.classList.remove('open');
+  });
+  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
+  document.addEventListener('DOMContentLoaded', function(){
+    var menu = document.getElementById('nav-mobile');
+    if (!menu) return;
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  });
+})();
+</script>
+<header class="container">
+  <div class="blog-header">
+    <h1 class="blog-title">Le Blog</h1>
+  </div>
+  <div class="blog-filters">
+    <a class="blog-filter active" href="/blog/">Tous <span class="blog-filter-count">(30)</span></a>
+    <a class="blog-filter" href="/categorie-ressources-humaines/">Ressources Humaines <span class="blog-filter-count">(15)</span></a>
+    <a class="blog-filter" href="/categorie-gestion-d-entreprise/">Gestion d'entreprise <span class="blog-filter-count">(7)</span></a>
+    <a class="blog-filter" href="/categorie-creation-entreprise/">Création entreprise <span class="blog-filter-count">(4)</span></a>
+    <a class="blog-filter" href="/categorie-finance-comptabilite/">Finance & Comptabilité <span class="blog-filter-count">(3)</span></a>
+    <a class="blog-filter" href="/categorie-entreprenariat/">Entreprenariat <span class="blog-filter-count">(2)</span></a>
+  </div>
+</header>
+
+<main class="container">
+  <div class="blog-grid">
+    <a href="/8445-scea-comprendre-le-fonctionnement-de-cette-societe-agricole/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/8445-scea-comprendre-le-fonctionnement-de-cette-societe-agricole.jpg" alt="SCEA : comprendre le fonctionnement de cette société agricole" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Création entreprise</span>        <h2 class="blog-card-title">SCEA : comprendre le fonctionnement de cette société agricole</h2>
+<p class="blog-card-excerpt">Qu'est-ce qu'une SCEA exactement ? La SCEA (Société Civile d'Exploitation Agricole) est une forme juridique spécialement conçue pour l'activité agricole. Je la présente souvent à…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
+    </a>
+    <a href="/5171-strategie-corporate-les-fondamentaux-pour-piloter-la-croissance-d-un-groupe/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/5171-strategie-corporate-les-fondamentaux-pour-piloter-la-croissance-d-un-groupe.jpg" alt="Stratégie corporate : les fondamentaux pour piloter la croissance d'un groupe" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Gestion d'entreprise</span>        <h2 class="blog-card-title">Stratégie corporate : les fondamentaux pour piloter la croissance d'un groupe</h2>
+<p class="blog-card-excerpt">Comment définir une vision stratégique pour votre groupe ? Après vingt ans passés dans la comptabilité d'entreprises de taille moyenne, j'ai vu beaucoup de dirigeants se perdre…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
+    </a>
+    <a href="/2652-avance-sur-dividendes-en-sasu-les-regles-a-connaitre-avant-de-se-remunerer/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/2652-avance-sur-dividendes-en-sasu-les-regles-a-connaitre-avant-de-se-remunerer.jpg" alt="Avance sur dividendes en SASU : les règles à connaître avant de se rémunérer" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Création entreprise</span>        <h2 class="blog-card-title">Avance sur dividendes en SASU : les règles à connaître avant de se rémunérer</h2>
+<p class="blog-card-excerpt">Pourquoi choisir l'avance sur dividendes en SASU ? Président de SASU, vous cherchez un moyen de vous rémunérer sans attendre l'assemblée générale ? L'avance sur dividendes…</p><div class="blog-card-meta">9 juin 2026</div>      </div>
+    </a>
+    <a href="/4127-comment-choisir-son-agence-web-les-criteres-pour-trouver-un-partenaire-fiable/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/4127-comment-choisir-son-agence-web-les-criteres-pour-trouver-un-partenaire-fiable.jpg" alt="Comment choisir son agence web : les critères pour trouver un partenaire fiable" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Gestion d'entreprise</span>        <h2 class="blog-card-title">Comment choisir son agence web : les critères pour trouver un partenaire fiable</h2>
+<p class="blog-card-excerpt">Les signaux d'alarme à repérer dès le premier contact Je vais être directe avec vous : 90% des problèmes avec une agence web se voient dès les premiers échanges. Après vingt ans à…</p><div class="blog-card-meta">9 juin 2026</div>      </div>
+    </a>
+    <a href="/1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise.jpg" alt="Actif net réévalué : comment mesurer la valeur réelle d'une entreprise" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Finance & Comptabilité</span>        <h2 class="blog-card-title">Actif net réévalué : comment mesurer la valeur réelle d'une entreprise</h2>
+<p class="blog-card-excerpt">Pourquoi l'actif net comptable ne suffit plus ? Après vingt ans de pratique comptable, je peux vous affirmer qu'il y a un fossé énorme entre ce qu'affiche un bilan et la vraie…</p><div class="blog-card-meta">8 juin 2026</div>      </div>
+    </a>
+    <a href="/5959-calcul-prix-de-vente-avec-taux-de-marge-methode-simple-et-exemples-detailles/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/5959-calcul-prix-de-vente-avec-taux-de-marge-methode-simple-et-exemples-detailles.jpg" alt="Calcul prix de vente avec taux de marge : méthode simple et exemples détaillés" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Gestion d'entreprise</span>        <h2 class="blog-card-title">Calcul prix de vente avec taux de marge : méthode simple et exemples détaillés</h2>
+<p class="blog-card-excerpt">Comprendre la différence entre marge et taux de marge Quand on parle de prix de vente, je vois souvent des confusions entre marge et taux de marge. Pourtant, la différence est…</p><div class="blog-card-meta">8 juin 2026</div>      </div>
+    </a>
+    <a href="/2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-implications-patrimoniales/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-implications-patrimoniales/featured-84128.jpg" alt="Quasi-usufruit : comprendre son fonctionnement et ses implications patrimoniales" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Finance & Comptabilité</span>        <h2 class="blog-card-title">Quasi-usufruit : comprendre son fonctionnement et ses implications patrimoniales</h2>
+<p class="blog-card-excerpt">Qu'est-ce que le quasi-usufruit et en quoi diffère-t-il de l'usufruit classique ? Je commence par une précision importante : le quasi-usufruit représente un mécanisme juridique…</p><div class="blog-card-meta">7 juin 2026</div>      </div>
+    </a>
+    <a href="/7943-creer-une-association-et-en-vivre-quelles-sont-les-solutions-de-financement/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/7943-creer-une-association-et-en-vivre-quelles-sont-les-solutions-de-financement/featured-23976.jpg" alt="Créer une association et en vivre : quelles sont les solutions de financement ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Création entreprise</span>        <h2 class="blog-card-title">Créer une association et en vivre : quelles sont les solutions de financement ?</h2>
+<p class="blog-card-excerpt">Les subventions publiques : votre premier réflexe Quand on lance une association, je recommande toujours de commencer par explorer les subventions publiques . Pourquoi ? Parce que…</p><div class="blog-card-meta">7 juin 2026</div>      </div>
+    </a>
+    <a href="/7354-pain-point-identifier-les-freins-qui-empechent-vos-clients-d-acheter/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/7354-pain-point-identifier-les-freins-qui-empechent-vos-clients-d-acheter/featured-73858.jpg" alt="Pain point : identifier les freins qui empêchent vos clients d'acheter" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Gestion d'entreprise</span>        <h2 class="blog-card-title">Pain point : identifier les freins qui empêchent vos clients d'acheter</h2>
+<p class="blog-card-excerpt">Les pain points : ces obstacles invisibles qui sabotent vos ventes Je vais être franche avec vous. Après vingt ans à analyser les chiffres d'entreprises de toutes tailles, j'ai vu…</p><div class="blog-card-meta">6 juin 2026</div>      </div>
+    </a>
+    <a href="/3972-promesse-d-embauche-modele-obligations-legales-et-valeur-juridique/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/3972-promesse-d-embauche-modele-obligations-legales-et-valeur-juridique/featured-16102.jpg" alt="Promesse d'embauche : modèle, obligations légales et valeur juridique" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Promesse d'embauche : modèle, obligations légales et valeur juridique</h2>
+<p class="blog-card-excerpt">Qu'est-ce qu'une promesse d'embauche exactement ? Une promesse d'embauche, c'est cet engagement écrit qu'un employeur vous adresse avant la signature du contrat de travail…</p><div class="blog-card-meta">6 juin 2026</div>      </div>
+    </a>
+    <a href="/4967-infonet-comment-utiliser-cette-plateforme-pour-surveiller-les-entreprises/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/4967-infonet-comment-utiliser-cette-plateforme-pour-surveiller-les-entreprises/featured-47685.jpg" alt="Infonet : comment utiliser cette plateforme pour surveiller les entreprises" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Finance & Comptabilité</span>        <h2 class="blog-card-title">Infonet : comment utiliser cette plateforme pour surveiller les entreprises</h2>
+<p class="blog-card-excerpt">Qu'est-ce qu'Infonet et pourquoi l'utiliser ? Infonet, c'est cette plateforme que j'utilise depuis des années pour surveiller les entreprises avec lesquelles on travaille.…</p><div class="blog-card-meta">5 juin 2026</div>      </div>
+    </a>
+    <a href="/6906-matrice-tows-transformer-votre-analyse-swot-en-actions-concretes/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/6906-matrice-tows-transformer-votre-analyse-swot-en-actions-concretes/featured-96444.jpg" alt="Matrice TOWS : transformer votre analyse SWOT en actions concrètes" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Gestion d'entreprise</span>        <h2 class="blog-card-title">Matrice TOWS : transformer votre analyse SWOT en actions concrètes</h2>
+<p class="blog-card-excerpt">Qu'est-ce que la matrice TOWS exactement ? Je vais être franche avec vous : quand j'ai découvert la matrice TOWS il y a quelques années, j'ai d'abord pensé qu'on essayait de me…</p><div class="blog-card-meta">5 juin 2026</div>      </div>
+    </a>
+    <a href="/5553-sepo-comprendre-cette-methode-pour-analyser-les-performances-de-votre-organisation/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/5553-sepo-comprendre-cette-methode-pour-analyser-les-performances-de-votre-organisation/featured-81404.jpg" alt="SEPO : comprendre cette méthode pour analyser les performances de votre organisation" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Gestion d'entreprise</span>        <h2 class="blog-card-title">SEPO : comprendre cette méthode pour analyser les performances de votre organisation</h2>
+<p class="blog-card-excerpt">Qu'est-ce que la méthode SEPO et pourquoi l'utiliser ? La méthode SEPO (Succès, Échecs, Potentiels, Obstacles) me sert régulièrement pour analyser les performances de mon…</p><div class="blog-card-meta">4 juin 2026</div>      </div>
+    </a>
+    <a href="/2639-strategie-de-croissance-comment-developper-votre-entreprise-sur-le-long-terme/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/2639-strategie-de-croissance-comment-developper-votre-entreprise-sur-le-long-terme/featured-21302.jpg" alt="Stratégie de croissance : comment développer votre entreprise sur le long terme" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Gestion d'entreprise</span>        <h2 class="blog-card-title">Stratégie de croissance : comment développer votre entreprise sur le long terme</h2>
+<p class="blog-card-excerpt">Les fondamentaux d'une stratégie de croissance durable Après vingt ans à superviser les finances d'entreprises en pleine expansion, je peux vous dire une chose : la croissance…</p><div class="blog-card-meta">4 juin 2026</div>      </div>
+    </a>
+    <a href="/3401-creer-un-produit-les-etapes-indispensables-pour-transformer-une-idee-en-succes/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/3401-creer-un-produit-les-etapes-indispensables-pour-transformer-une-idee-en-succes/featured-55130.jpg" alt="Créer un produit : les étapes indispensables pour transformer une idée en succès" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Création entreprise</span>        <h2 class="blog-card-title">Créer un produit : les étapes indispensables pour transformer une idée en succès</h2>
+<p class="blog-card-excerpt">Pourquoi 80% des nouveaux produits échouent-ils ? Après vingt ans à analyser les bilans de PME innovantes, je peux vous dire une chose : la majorité des entrepreneurs se plantent…</p><div class="blog-card-meta">3 juin 2026</div>      </div>
+    </a>
+    <a href="/8081-matrice-9-box-comment-evaluer-le-potentiel-des-collaborateurs/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/8081-matrice-9-box-comment-evaluer-le-potentiel-des-collaborateurs/featured-26488.jpg" alt="Matrice 9 box : comment évaluer le potentiel des collaborateurs ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Matrice 9 box : comment évaluer le potentiel des collaborateurs ?</h2>
+<p class="blog-card-excerpt">Qu'est-ce que la matrice 9 box et pourquoi l'utiliser ? La matrice 9 box, je l'ai découverte il y a plus de dix ans lors d'une formation RH. Franchement, au début, j'étais…</p><div class="blog-card-meta">2 juin 2026</div>      </div>
+    </a>
+    <a href="/1205-quickbill-advanced-est-ce-le-bon-logiciel-pour-votre-entreprise/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/1205-quickbill-advanced-est-ce-le-bon-logiciel-pour-votre-entreprise/featured-35368.png" alt="QuickBill Advanced : est-ce le bon logiciel pour votre entreprise ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Entreprenariat</span>        <h2 class="blog-card-title">QuickBill Advanced : est-ce le bon logiciel pour votre entreprise ?</h2>
+<p class="blog-card-excerpt">Mon retour d'expérience sur QuickBill Advanced après 8 mois d'utilisation Je vais être franche avec vous : quand j'ai découvert QuickBill Advanced l'an dernier, j'étais sceptique.…</p><div class="blog-card-meta">1 juin 2026</div>      </div>
+    </a>
+    <a href="/3791-prix-invoicemaster-evolution-tout-savoir-sur-les-tarifs-du-logiciel/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/3791-prix-invoicemaster-evolution-tout-savoir-sur-les-tarifs-du-logiciel/featured-57457.png" alt="Prix InvoiceMaster Evolution : tout savoir sur les tarifs du logiciel" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Entreprenariat</span>        <h2 class="blog-card-title">Prix InvoiceMaster Evolution : tout savoir sur les tarifs du logiciel</h2>
+<p class="blog-card-excerpt">InvoiceMaster Evolution : que vaut vraiment cette solution de facturation ? Je vais être franche avec vous : InvoiceMaster Evolution n'est pas le logiciel de facturation le plus…</p><div class="blog-card-meta">1 juin 2026</div>      </div>
+    </a>
+    <a href="/9869-succession-planning-comment-anticiper-les-departs-strategiques/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/9869-succession-planning-comment-anticiper-les-departs-strategiques/featured-97377.jpg" alt="Succession planning : comment anticiper les départs stratégiques ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Succession planning : comment anticiper les départs stratégiques ?</h2>
+<p class="blog-card-excerpt">Pourquoi la succession planning devient urgente dans un contexte de départs massifs ? Je vois chaque jour dans mon métier l'impact des départs non anticipés sur les organisations.…</p><div class="blog-card-meta">1 juin 2026</div>      </div>
+    </a>
+    <a href="/9300-experience-collaborateur-quels-leviers-pour-engager-vos-equipes/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/9300-experience-collaborateur-quels-leviers-pour-engager-vos-equipes/featured-1902.jpg" alt="Expérience collaborateur : quels leviers pour engager vos équipes ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Expérience collaborateur : quels leviers pour engager vos équipes ?</h2>
+<p class="blog-card-excerpt">Vingt ans dans la comptabilité, j'ai vu défiler pas mal de modes RH. Mais là, on ne peut plus ignorer cette tendance : l'expérience collaborateur fait partie des préoccupations…</p><div class="blog-card-meta">1 juin 2026</div>      </div>
+    </a>
+    <a href="/1267-marque-employeur-comment-attirer-les-meilleurs-talents/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/1267-marque-employeur-comment-attirer-les-meilleurs-talents/featured-65695.jpg" alt="Marque employeur : comment attirer les meilleurs talents ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Marque employeur : comment attirer les meilleurs talents ?</h2>
+<p class="blog-card-excerpt">Pourquoi la marque employeur devient votre arme secrète en comptabilité ? Je vais vous parler franchement. Après 20 ans dans la comptabilité, j'ai vu le marché se transformer…</p><div class="blog-card-meta">31 mai 2026</div>      </div>
+    </a>
+    <a href="/5779-retention-des-talents-comment-limiter-le-turnover/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/5779-retention-des-talents-comment-limiter-le-turnover/featured-35935.jpg" alt="Rétention des talents : comment limiter le turnover ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Rétention des talents : comment limiter le turnover ?</h2>
+<p class="blog-card-excerpt">Le turnover, ce fléau silencieux qui mine votre entreprise J'ai vu trop d'entreprises se vider de leurs meilleurs éléments sans vraiment comprendre pourquoi. Le turnover élevé,…</p><div class="blog-card-meta">31 mai 2026</div>      </div>
+    </a>
+    <a href="/7114-developpement-des-talents-quelles-methodes-utiliser/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/7114-developpement-des-talents-quelles-methodes-utiliser/featured-89460.jpg" alt="Développement des talents : quelles méthodes utiliser ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Développement des talents : quelles méthodes utiliser ?</h2>
+<p class="blog-card-excerpt">Développement des talents : mes 20 ans d'expérience en RH me donnent une vision claire J'ai vu défiler des dizaines de modes en développement des talents. Coaching, formation…</p><div class="blog-card-meta">30 mai 2026</div>      </div>
+    </a>
+    <a href="/6041-strategie-de-gestion-des-talents-comment-structurer-votre-politique-rh/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/6041-strategie-de-gestion-des-talents-comment-structurer-votre-politique-rh/featured-52366.jpg" alt="Stratégie de gestion des talents : comment structurer votre politique RH ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Stratégie de gestion des talents : comment structurer votre politique RH ?</h2>
+<p class="blog-card-excerpt">Pourquoi votre stratégie de gestion des talents détermine votre succès ? Après vingt ans à gérer les ressources humaines dans différentes structures, je peux vous dire qu'une…</p><div class="blog-card-meta">30 mai 2026</div>      </div>
+    </a>
+    <a href="/8763-fidelisation-des-talents-quelles-actions-rh-privilegier/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/8763-fidelisation-des-talents-quelles-actions-rh-privilegier/featured-70259.jpg" alt="Fidélisation des talents : quelles actions RH privilégier ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Fidélisation des talents : quelles actions RH privilégier ?</h2>
+<p class="blog-card-excerpt">Pourquoi la fidélisation des talents devient un enjeu majeur pour les entreprises ? Je vais être franche avec vous : après 20 ans dans la comptabilité en PME, j'ai vu défiler…</p><div class="blog-card-meta">29 mai 2026</div>      </div>
+    </a>
+    <a href="/1574-talent-management-comment-developper-les-competences-internes/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/1574-talent-management-comment-developper-les-competences-internes/featured-15547.jpg" alt="Talent management : comment développer les compétences internes ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Talent management : comment développer les compétences internes ?</h2>
+<p class="blog-card-excerpt">Ma définition de la gestion des talents après 20 ans de comptabilité J'ai longtemps pensé que la gestion des talents RH ne concernait que les grandes multinationales avec leurs…</p><div class="blog-card-meta">29 mai 2026</div>      </div>
+    </a>
+    <a href="/4315-gestion-des-talents-dans-une-pme-quelles-solutions-mettre-en-place/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/4315-gestion-des-talents-dans-une-pme-quelles-solutions-mettre-en-place/featured-72546.jpg" alt="Gestion des talents dans une PME : quelles solutions mettre en place ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Gestion des talents dans une PME : quelles solutions mettre en place ?</h2>
+<p class="blog-card-excerpt">Les défis de la gestion des talents dans une PME Après vingt ans en comptabilité, j'ai vu défiler beaucoup de collaborateurs. Entre ceux qui partent au bout de six mois et ceux…</p><div class="blog-card-meta">28 mai 2026</div>      </div>
+    </a>
+    <a href="/4853-cartographie-des-competences-comment-identifier-les-savoir-faire-cles/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/4853-cartographie-des-competences-comment-identifier-les-savoir-faire-cles/featured-12589.jpg" alt="Cartographie des compétences : comment identifier les savoir-faire clés ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Cartographie des compétences : comment identifier les savoir-faire clés ?</h2>
+<p class="blog-card-excerpt">Pourquoi la cartographie des compétences est devenue indispensable ? En vingt ans de comptabilité, j'ai vu défiler de nombreux changements organisationnels. Mais celui qui m'a le…</p><div class="blog-card-meta">28 mai 2026</div>      </div>
+    </a>
+    <a href="/3445-logiciel-gepp-quelles-fonctionnalites-comparer/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/3445-logiciel-gepp-quelles-fonctionnalites-comparer/featured-81791.jpg" alt="Logiciel GEPP : quelles fonctionnalités comparer ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Logiciel GEPP : quelles fonctionnalités comparer ?</h2>
+<p class="blog-card-excerpt">Ma sélection des 5 meilleurs logiciels GEPP : comparatif détaillé J'ai testé une quinzaine de solutions GEPP ces derniers mois pour accompagner notre croissance et optimiser nos…</p><div class="blog-card-meta">27 mai 2026</div>      </div>
+    </a>
+    <a href="/4687-definition-de-la-gestion-des-talents-tout-comprendre/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/4687-definition-de-la-gestion-des-talents-tout-comprendre/featured-64008.jpg" alt="Définition de la gestion des talents : tout comprendre" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Ressources Humaines</span>        <h2 class="blog-card-title">Définition de la gestion des talents : tout comprendre</h2>
+<p class="blog-card-excerpt">Ce que j'ai appris sur la gestion des talents après 20 ans dans les PME Après deux décennies à gérer la comptabilité d'entreprises de taille moyenne, j'ai vu défiler bon nombre de…</p><div class="blog-card-meta">27 mai 2026</div>      </div>
+    </a>
+  </div>
+
+  <nav class="blog-pagination" aria-label="Pagination du blog">
+    <span class="blog-page-disabled">
+      <span class="blog-page-arrow" aria-hidden="true">‹</span>
+      <span>Précédent</span>
+    </span>
+
+<span class="blog-page-sep" aria-hidden="true"></span>
+    <div class="blog-page-numbers">
+          <span class="blog-page-num blog-page-current" aria-current="page">1</span>
+          <a href="/blog/2/" class="blog-page-num">2</a>
+    </div>
+
+<span class="blog-page-sep" aria-hidden="true"></span>
+    <a href="/blog/2/" class="blog-page-link blog-page-next" rel="next">
+      <span>Suivant</span>
+      <span class="blog-page-arrow" aria-hidden="true">›</span>
+    </a>
+  </nav>
+
+</main>
+
+<style>
+.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
+.footer-brand .footer-logo span{color:var(--accent2)}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;max-width:260px;margin:0;padding:0}
+.footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
+.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-brand{grid-column:1/-1}
+}
+</style>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" style="display:block;margin-bottom:12px"><img src="/logo.png" alt="sauvonslaproximite.com" style="height:36px;width:auto;object-fit:contain"></a>
+        <p>Comparatifs sauvonslaproximite.com 2026</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/avis">Avis</a>
+        <a href="/blog/">Blog</a>
+        <a href="/plan-du-site">Plan du site</a>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/politique-confidentialite">Confidentialité</a>
+      </div>
+      <div class="footer-col">
+        <h4>À propos</h4>
+        <a href="/contact">Nous contacter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        © 2026 sauvonslaproximite.com — Données actualisées le 10 juin 2026
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button type="button"
+        class="scroll-top-btn"
+        id="scroll-top-btn"
+        aria-label="Remonter en haut de la page"
+        title="Remonter en haut">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2.5"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+</button>
+
+<style>
+.scroll-top-btn{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:9999;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--ink, #0F1419);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .15s;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+  padding:0;
+  font-family:inherit;
+}
+.scroll-top-btn.visible{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.scroll-top-btn:hover{
+  background:var(--accent, #C9A961);
+}
+.scroll-top-btn:focus-visible{
+  outline:2px solid var(--accent, #C9A961);
+  outline-offset:3px;
+}
+@media (max-width:600px){
+  .scroll-top-btn{ bottom:16px; right:16px; width:42px; height:42px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .scroll-top-btn{ transition:opacity .2s, visibility .2s; }
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  var btn = document.getElementById('scroll-top-btn');
+  if (!btn) return;
+
+  var THRESHOLD = 400; // px de scroll avant apparition
+  var ticking = false;
+
+  function update(){
+    if (window.scrollY > THRESHOLD) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+    ticking = false;
+  }
+
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  btn.addEventListener('click', function(){
+    var prefersReduced = window.matchMedia
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  });
+
+  // Check immédiat (au cas où la page est rechargée déjà scrollée)
+  update();
+})();
+</script>
+</body>
+</html>
