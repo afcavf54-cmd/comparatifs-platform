@@ -112,6 +112,18 @@ def slugify_cat(s: str) -> str:
     return s.strip('-')
 
 
+def _get_current_month_fr() -> str:
+    """Retourne le mois courant en français lowercase (ex: "juin").
+
+    Utilisé pour alimenter les placeholders {month} / {Month} substitués
+    dans les contenus rendus (blog posts, avis, classements). Convention
+    alignée sur {year} / {Year}.
+    """
+    months = ["janvier", "février", "mars", "avril", "mai", "juin",
+              "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
+    return months[date.today().month - 1]
+
+
 def _load_enabled_classements(site_dir: Path):
     """Charge la liste blanche des classements activés pour ce site, depuis
     `platform/sites/<siteId>/enabled_classements.json`.
@@ -942,9 +954,12 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     # par ce build). Calculées ici une seule fois pour rester cohérentes
     # entre tous les rendus (blog, avis, classements, comparatifs).
     _site_year = str(site.get("year", date.today().year))
+    _current_month_fr = _get_current_month_fr()
     _global_vars = {
         "year": _site_year,
         "site_name": site.get("name", ""),
+        "month": _current_month_fr,
+        "Month": _current_month_fr.capitalize(),
     }
 
     # Chargement produits
@@ -1674,6 +1689,8 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 _cat_plural_cap = (_cat_plural_lower[0].upper() + _cat_plural_lower[1:]) if _cat_plural_lower else ""
                 _vars = {
                     "year": str(site.get("year", "")),
+                    "month": _current_month_fr,
+                    "Month": _current_month_fr.capitalize(),
                     "categorie": _cat_lower,
                     "Categorie": _cat_cap,
                     "categories": _cat_plural_lower,
