@@ -4,15 +4,21 @@ slug: 6842-comment-faire-un-business-plan-avec-planexpert
 date: '2026-06-10T07:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Faire un business plan avec PlanExpert : guide complet'
-meta_description: Découvrez PlanExpert, le logiciel français pour créer votre business plan dès 29€/mois. Interface intuitive, modèles préconçus et tableaux financiers automatisés…
+meta_description: Découvrez PlanExpert, le logiciel français pour créer votre business
+  plan dès 29€/mois. Interface intuitive, modèles préconçus et tableaux financiers
+  automatisés…
 min_words: 980
 status: published
 featured_image: /blog/6842-comment-faire-un-business-plan-avec-planexpert.jpg
 link_anchors:
 - text: comment faire un business plan avec PlanExpert
   max: 5
+related_posts:
+- 5504-business-plan-modele-startupkit-advanced-avis-et-utilisation
+- 1796-business-plan-template-startupkit-premium-faut-il-l-utiliser
+- 6898-business-plan-template-smartstart-generator-notre-avis-complet
+- 2239-comment-creer-un-business-plan-avec-financepro-smart
 ---
-
 <h2>PlanExpert : mon retour après 6 mois d'utilisation</h2>
 
 <p>Je vais être direct : quand j'ai découvert PlanExpert l'année dernière, je cherchais un logiciel abordable pour créer des business plans sans me ruiner. Après avoir testé plusieurs solutions, j'ai fini par adopter cet outil français. <strong>Première bonne surprise : le prix</strong>. On démarre à 29€ par mois, ce qui reste correct pour une TPE comme la mienne.</p>

@@ -12,9 +12,10 @@ featured_image: /blog/6898-business-plan-template-smartstart-generator-notre-avi
 status: published
 min_words: 920
 related_posts:
-- 5504-business-plan-modele-startupkit-advanced-avis-et-utilisation
-- 1796-business-plan-template-startupkit-premium-faut-il-l-utiliser
 - 2239-comment-creer-un-business-plan-avec-financepro-smart
+- 6842-comment-faire-un-business-plan-avec-planexpert
+- 1796-business-plan-template-startupkit-premium-faut-il-l-utiliser
+- 5504-business-plan-modele-startupkit-advanced-avis-et-utilisation
 link_anchors:
 - text: les avis sur le template de business plan SmartStart Generator
   max: 5

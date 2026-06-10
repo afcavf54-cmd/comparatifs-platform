@@ -15,6 +15,7 @@ related_posts:
 - 1796-business-plan-template-startupkit-premium-faut-il-l-utiliser
 - 6898-business-plan-template-smartstart-generator-notre-avis-complet
 - 2239-comment-creer-un-business-plan-avec-financepro-smart
+- 6842-comment-faire-un-business-plan-avec-planexpert
 link_anchors:
 - text: le modèle de business plan StartupKit Advanced
   max: 5

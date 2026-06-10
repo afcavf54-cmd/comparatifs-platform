@@ -13,9 +13,10 @@ link_anchors:
 - text: comment créer un business plan avec FinancePro Smart
   max: 5
 related_posts:
+- 5504-business-plan-modele-startupkit-advanced-avis-et-utilisation
+- 6842-comment-faire-un-business-plan-avec-planexpert
 - 1796-business-plan-template-startupkit-premium-faut-il-l-utiliser
 - 6898-business-plan-template-smartstart-generator-notre-avis-complet
-- 5504-business-plan-modele-startupkit-advanced-avis-et-utilisation
 ---
 <h2>FinancePro Smart : mon retour d'expérience pour monter un business plan</h2>
 

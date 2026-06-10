@@ -12,9 +12,10 @@ featured_image: /blog/1796-business-plan-template-startupkit-premium-faut-il-l-u
 status: published
 min_words: 910
 related_posts:
-- 5504-business-plan-modele-startupkit-advanced-avis-et-utilisation
 - 2239-comment-creer-un-business-plan-avec-financepro-smart
+- 6842-comment-faire-un-business-plan-avec-planexpert
 - 6898-business-plan-template-smartstart-generator-notre-avis-complet
+- 5504-business-plan-modele-startupkit-advanced-avis-et-utilisation
 link_anchors:
 - text: le template de business plan StartupKit Premium
   max: 5
