@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salarié — Blog | editions-dp.com</title>
+<meta name="description" content="Articles salarié — editions-dp.com">
+<link rel="canonical" href="https://www.editions-dp.com/categorie-salarie/">
+<meta property="og:title" content="Salarié — Blog | editions-dp.com">
+<meta property="og:description" content="Articles salarié — editions-dp.com">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.editions-dp.com/categorie-salarie/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="&v=editions-dp-com" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#F4F6FB;--surface:#FFFFFF;--surface2:#F5F3EE;
+  --ink:#0F1A2E;--ink2:#3D434B;--ink3:#8B9CB0;
+  --accent:#1B4FD8;--accent2:#E8410A;--green:#3D7A4F;
+  --border:#E6E1D8;--r:8px;--r2:14px;
+--cta:#F59E0B;--cta-text:#ffffff;}
+body{font-family:'',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+a{color:var(--accent2);text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 5vw}
+/* Padding réduit (avant : 64px top / 32px bot) pour rapprocher le titre du header
+   et le titre des filtres. Sur mobile (≤600px) on resserre encore. */
+.blog-header{padding:32px 0 12px;text-align:center}
+.blog-title{font-family:'',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:12px}
+.blog-sub{font-size:18px;color:var(--ink3);max-width:600px;margin:0 auto}
+/* Margin réduit (avant : 32px top / 40px bot) pour coller les filtres au titre. */
+.blog-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0 32px}
+.blog-filter{font-size:13px;font-weight:600;color:var(--ink2);padding:8px 16px;border-radius:24px;border:1px solid var(--border);background:var(--surface);transition:.15s;cursor:pointer}
+.blog-filter:hover,.blog-filter.active{color:var(--accent);border-color:var(--accent)}
+.blog-filter-count{font-size:11px;color:var(--ink3);margin-left:4px}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px}
+.blog-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;text-decoration:none;transition:.2s;display:flex;flex-direction:column}
+.blog-card:hover{border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.06);transform:translateY(-2px);text-decoration:none}
+.blog-card-img{aspect-ratio:16/9;background:var(--surface2);overflow:hidden}
+.blog-card-img img{width:100%;height:100%;object-fit:cover}
+.blog-card-img-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--surface2) 0%,var(--bg) 100%);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:48px}
+.blog-card-body{padding:20px 22px 24px;flex:1;display:flex;flex-direction:column}
+.blog-card-cat{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:10px;align-self:flex-start}
+.blog-card-title{font-family:'',serif;font-size:20px;font-weight:400;line-height:1.3;color:var(--ink);margin-bottom:10px;letter-spacing:-.01em}
+.blog-card-excerpt{font-size:14px;color:var(--ink3);line-height:1.55;margin-bottom:16px;flex:1}
+.blog-card-meta{font-size:12px;color:var(--ink3);margin-top:auto}
+.blog-empty{text-align:center;padding:80px 0;color:var(--ink3);font-size:16px}
+/* Pagination style "rond bleu pour la page courante + ... + séparateur + Suivant".
+   Match visuel de la maquette fournie : numéros centrés sur 32px, page courante
+   en rond bleu plein, ellipsis pour gros volumes, séparateur vertical avant
+   Précédent/Suivant, et flèche dans cercle foncé.
+   ⚠️ ATTENTION : le sélecteur global `nav` défini dans _nav.html.j2 applique
+   `flex-direction:column; background:var(--ink); position:sticky; padding:0 5vw`
+   à TOUS les <nav>, y compris notre <nav class="blog-pagination">. On override
+   donc explicitement ces propriétés pour éviter que la pagination s'affiche en
+   colonne dans un fond sombre. */
+.blog-pagination{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:4px;margin:48px 0 24px;flex-wrap:nowrap;font-size:15px;background:transparent;padding:0;position:static}
+.blog-page-numbers{display:flex;align-items:center;gap:4px}
+.blog-page-num{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;padding:0 8px;border-radius:50%;background:transparent;border:none;color:var(--ink2);text-decoration:none;font-weight:500;transition:color .15s}
+.blog-page-num:hover{color:var(--accent)}
+.blog-page-current{background:var(--accent);color:#fff;font-weight:600;cursor:default}
+.blog-page-current:hover{color:#fff}
+.blog-page-ellipsis{display:inline-flex;align-items:center;justify-content:center;min-width:24px;color:var(--ink3);user-select:none}
+/* Séparateur vertical entre les numéros et le bouton Précédent/Suivant */
+.blog-page-sep{display:inline-block;width:1px;height:20px;background:var(--border);margin:0 12px}
+/* Lien Précédent/Suivant : texte + flèche dans rond foncé */
+.blog-page-link{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;font-weight:500;padding:6px 4px;background:transparent;border:none;transition:opacity .15s}
+.blog-page-link:hover{opacity:.6;background:transparent}
+.blog-page-disabled{display:inline-flex;align-items:center;gap:8px;color:var(--ink3);font-weight:500;padding:6px 4px;opacity:.4;cursor:default;background:transparent;border:none}
+.blog-page-arrow{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:11px;line-height:1;flex-shrink:0}
+.blog-page-disabled .blog-page-arrow{background:var(--ink3)}
+@media(max-width:600px){.blog-pagination{gap:2px;font-size:14px}.blog-page-num{min-width:28px;height:28px;padding:0 6px}.blog-page-sep{margin:0 6px}.blog-page-link,.blog-page-disabled{padding:4px 2px}.blog-page-link span:not(.blog-page-arrow){display:none}.blog-page-disabled span:not(.blog-page-arrow){display:none}}
+/* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
+@media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){
+  .blog-grid{grid-template-columns:1fr}
+  /* Resserrage supplémentaire sur mobile : header + filtres ultra compacts */
+  .blog-header{padding:20px 0 8px}
+  .blog-title{margin-bottom:8px}
+  .blog-filters{margin:10px 0 24px}
+}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+</style>
+<meta name="google-site-verification" content="OCcdcUpSRa7rYVvon9usT9XulNaFaOFUY572r-mj1mA">
+<script async data-id="101505645" src="//static.getclicky.com/js"></script>
+</head>
+<body>
+
+<style>
+nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+nav.site-nav .nav-logo{font-family:'',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
+nav.site-nav .nav-logo span{color:var(--accent2)}
+nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
+nav.site-nav .nav-cta:hover{opacity:.88}
+nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+nav.site-nav .nav-mobile.open{display:flex}
+nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
+</style>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/logo.png" alt="editions-dp.com" style="height:36px;width:auto;object-fit:contain;vertical-align:middle"></a>
+    <div class="nav-links">
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/avis">Avis</a>
+        <a href="/blog/">Blog</a>
+          <a href="/outils-pratiques">Outils pratiques</a>
+    </div>
+    <a href="/contact" class="nav-cta">Contact</a>
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+      <a href="/nos-comparateurs">Nos comparateurs</a>
+      <a href="/avis">Avis</a>
+      <a href="/blog/">Blog</a>
+        <a href="/outils-pratiques">Outils pratiques</a>
+    <a href="/contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<script>
+/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
+   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
+   devoir redéfinir la fonction côté template parent.
+
+   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
+   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
+   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
+   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
+   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
+   qui est actif et le parent réécrit derrière s'il en a un.
+
+   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
+   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
+   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
+   ne faisait rien. */
+(function(){
+  if (typeof window.toggleMenu === 'function') return;
+  window.toggleMenu = function(){
+    var menu = document.getElementById('nav-mobile');
+    if (menu) menu.classList.toggle('open');
+  };
+  // UX bonus : fermer le menu mobile en cliquant en dehors
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('nav-mobile');
+    var burger = document.getElementById('burger');
+    if (!menu || !burger) return;
+    if (!menu.classList.contains('open')) return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    menu.classList.remove('open');
+  });
+  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
+  document.addEventListener('DOMContentLoaded', function(){
+    var menu = document.getElementById('nav-mobile');
+    if (!menu) return;
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  });
+})();
+</script>
+<header class="container">
+  <div class="blog-header">
+    <h1 class="blog-title">Salarié</h1>
+<p class="blog-sub">22 articles</p>  </div>
+  <div class="blog-filters">
+    <a class="blog-filter active" href="/blog/">Tous <span class="blog-filter-count">(22)</span></a>
+    <a class="blog-filter" href="/categorie-ressources-humaines/">Ressources Humaines <span class="blog-filter-count">(29)</span></a>
+    <a class="blog-filter" href="/categorie-salarie/">Salarié <span class="blog-filter-count">(22)</span></a>
+    <a class="blog-filter" href="/categorie-creation-entreprise/">Création entreprise <span class="blog-filter-count">(22)</span></a>
+    <a class="blog-filter" href="/categorie-gestion-d-entreprise/">Gestion d'entreprise <span class="blog-filter-count">(14)</span></a>
+    <a class="blog-filter" href="/categorie-entreprenariat/">Entreprenariat <span class="blog-filter-count">(12)</span></a>
+    <a class="blog-filter" href="/categorie-finance-comptabilite/">Finance & Comptabilité <span class="blog-filter-count">(7)</span></a>
+    <a class="blog-filter" href="/categorie-creation-d-entreprise/">Création d'entreprise <span class="blog-filter-count">(5)</span></a>
+    <a class="blog-filter" href="/categorie-comptabilite/">Comptabilité <span class="blog-filter-count">(5)</span></a>
+    <a class="blog-filter" href="/categorie-entrepreneuriat/">Entrepreneuriat <span class="blog-filter-count">(1)</span></a>
+  </div>
+</header>
+
+<main class="container">
+  <div class="blog-grid">
+    <a href="/8124-combien-d-avertissements-avant-une-radiation-de-pole-emploi-regles-et-procedure/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/8124-combien-d-avertissements-avant-une-radiation-de-pole-emploi-regles-et-procedure.jpg" alt="Combien d'avertissements avant une radiation de Pôle Emploi ? Règles et procédure" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Combien d'avertissements avant une radiation de Pôle Emploi ? Règles et procédure</h2>
+<p class="blog-card-excerpt">Combien d'avertissements avant une radiation de Pôle Emploi ? Vous cherchez un emploi et vous vous demandez jusqu'où Pôle Emploi peut aller avant de vous radier ? Je vais être…</p><div class="blog-card-meta">9 juin 2026</div>      </div>
+    </a>
+    <a href="/8103-horaires-decales-ce-que-dit-le-code-du-travail-sur-vos-droits-et-obligations/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/8103-horaires-decales-ce-que-dit-le-code-du-travail-sur-vos-droits-et-obligations/featured-22463.jpg" alt="Horaires décalés : ce que dit le code du travail sur vos droits et obligations" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Horaires décalés : ce que dit le code du travail sur vos droits et obligations</h2>
+<p class="blog-card-excerpt">Qu'est-ce qu'on entend par horaires décalés au travail ? Les horaires décalés, ça couvre en fait plusieurs situations. On parle généralement de tout ce qui sort des horaires…</p><div class="blog-card-meta">8 juin 2026</div>      </div>
+    </a>
+    <a href="/5507-cdi-interimaire-avantages-et-inconvenients-a-connaitre/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/5507-cdi-interimaire-avantages-et-inconvenients-a-connaitre/featured-59998.jpg" alt="CDI intérimaire : avantages et inconvénients à connaître" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">CDI intérimaire : avantages et inconvénients à connaître</h2>
+<p class="blog-card-excerpt">CDI intérimaire : qu'est-ce que c'est exactement ? Le CDI intérimaire, vous en avez peut-être entendu parler sans vraiment comprendre. Je dirige une TPE depuis 11 ans et j'ai…</p><div class="blog-card-meta">7 juin 2026</div>      </div>
+    </a>
+    <a href="/6883-quels-avantages-propose-le-comite-d-entreprise-airbus-helicopters/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/6883-quels-avantages-propose-le-comite-d-entreprise-airbus-helicopters/featured-83637.jpg" alt="Quels avantages propose le comité d’entreprise Airbus Helicopters ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Quels avantages propose le comité d’entreprise Airbus Helicopters ?</h2>
+<p class="blog-card-excerpt">Les services classiques du comité d'entreprise Airbus Helicopters En tant que dirigeant d'une TPE à Lyon, j'ai souvent observé les avantages dont bénéficient les salariés des…</p><div class="blog-card-meta">19 mai 2026</div>      </div>
+    </a>
+    <a href="/8080-quels-sont-les-avantages-du-comite-d-entreprise-mma/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/8080-quels-sont-les-avantages-du-comite-d-entreprise-mma/featured-28085.jpg" alt="Quels sont les avantages du comité d’entreprise MMA ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Quels sont les avantages du comité d’entreprise MMA ?</h2>
+<p class="blog-card-excerpt">Le comité d'entreprise MMA, un vrai plus pour les salariés Depuis onze ans que je dirige ma TPE, j'ai eu l'occasion de collaborer avec différentes mutuelles d'assurance. MMA fait…</p><div class="blog-card-meta">18 mai 2026</div>      </div>
+    </a>
+    <a href="/2622-que-propose-le-comite-d-entreprise-renault-aux-salaries/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/2622-que-propose-le-comite-d-entreprise-renault-aux-salaries/featured-48483.jpg" alt="Que propose le comité d’entreprise Renault aux salariés ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Que propose le comité d’entreprise Renault aux salariés ?</h2>
+<p class="blog-card-excerpt">Les avantages du comité d'entreprise Renault : un panorama complet En tant que dirigeant d'une TPE lyonnaise, j'ai souvent été curieux de découvrir comment fonctionnent les…</p><div class="blog-card-meta">18 mai 2026</div>      </div>
+    </a>
+    <a href="/6360-quels-avantages-offre-le-comite-d-entreprise-ratp/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/6360-quels-avantages-offre-le-comite-d-entreprise-ratp/featured-72571.jpg" alt="Quels avantages offre le comité d’entreprise RATP ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Quels avantages offre le comité d’entreprise RATP ?</h2>
+<p class="blog-card-excerpt">Des avantages concrets pour les salariés RATP Quand j'ai commencé à m'intéresser aux comité d'entreprise des grands groupes français, la RATP m'a vraiment impressionné. Les…</p><div class="blog-card-meta">18 mai 2026</div>      </div>
+    </a>
+    <a href="/4315-comment-fonctionne-le-comite-d-entreprise-credit-mutuel/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/4315-comment-fonctionne-le-comite-d-entreprise-credit-mutuel/featured-6405.jpg" alt="Comment fonctionne le comité d’entreprise Crédit Mutuel ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Comment fonctionne le comité d’entreprise Crédit Mutuel ?</h2>
+<p class="blog-card-excerpt">Le comité d'entreprise du Crédit Mutuel, comment ça marche vraiment ? Quand on travaille au Crédit Mutuel, on entend forcément parler du comité d'entreprise . Mais concrètement,…</p><div class="blog-card-meta">17 mai 2026</div>      </div>
+    </a>
+    <a href="/3695-quels-sont-les-avantages-du-comite-d-entreprise-airbus/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/3695-quels-sont-les-avantages-du-comite-d-entreprise-airbus/featured-8674.jpg" alt="Quels sont les avantages du comité d’entreprise Airbus ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Quels sont les avantages du comité d’entreprise Airbus ?</h2>
+<p class="blog-card-excerpt">Les avantages sociaux chez Airbus Travailler chez Airbus, c'est intégrer l'un des leaders mondiaux de l'aéronautique. Mais au-delà des projets passionnants, l'entreprise propose…</p><div class="blog-card-meta">17 mai 2026</div>      </div>
+    </a>
+    <a href="/7715-que-propose-le-comite-d-entreprise-generali/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/7715-que-propose-le-comite-d-entreprise-generali/featured-97806.jpg" alt="Que propose le comité d’entreprise Generali ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Que propose le comité d’entreprise Generali ?</h2>
+<p class="blog-card-excerpt">Qu'est-ce que le comité d'entreprise Generali ? Je vais vous expliquer concrètement ce que propose le comité d'entreprise Generali à ses salariés. Après 11 ans à diriger ma TPE,…</p><div class="blog-card-meta">17 mai 2026</div>      </div>
+    </a>
+    <a href="/1194-quels-avantages-propose-le-comite-d-entreprise-bnp-paribas/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/1194-quels-avantages-propose-le-comite-d-entreprise-bnp-paribas/featured-73294.jpg" alt="Quels avantages propose le comité d’entreprise BNP Paribas ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Quels avantages propose le comité d’entreprise BNP Paribas ?</h2>
+<p class="blog-card-excerpt">Ce que propose vraiment le CE de BNP Paribas J'ai eu l'occasion de côtoyer plusieurs salariés de BNP Paribas ces dernières années. Leurs retours sur leur comité d'entreprise sont…</p><div class="blog-card-meta">16 mai 2026</div>      </div>
+    </a>
+    <a href="/1054-comment-acceder-aux-avantages-du-comite-d-entreprise-adecco/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/1054-comment-acceder-aux-avantages-du-comite-d-entreprise-adecco/featured-52131.jpg" alt="Comment accéder aux avantages du comité d’entreprise Adecco ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Comment accéder aux avantages du comité d’entreprise Adecco ?</h2>
+<p class="blog-card-excerpt">Qu'est-ce que le comité d'entreprise Adecco ? Je vais être direct : en tant que dirigeant d'une TPE, j'ai souvent eu affaire aux intérimaires d'Adecco. Et une chose m'a toujours…</p><div class="blog-card-meta">16 mai 2026</div>      </div>
+    </a>
+    <a href="/3068-quels-sont-les-services-du-comite-d-entreprise-allianz/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/3068-quels-sont-les-services-du-comite-d-entreprise-allianz/featured-71168.jpg" alt="Quels sont les services du comité d’entreprise Allianz ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Quels sont les services du comité d’entreprise Allianz ?</h2>
+<p class="blog-card-excerpt">Les services essentiels du comité d'entreprise Allianz Chez Allianz, le comité d'entreprise joue un rôle central dans l'amélioration du quotidien des salariés. Je vais vous…</p><div class="blog-card-meta">16 mai 2026</div>      </div>
+    </a>
+    <a href="/2430-que-peut-on-obtenir-avec-le-comite-d-entreprise-orange/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/2430-que-peut-on-obtenir-avec-le-comite-d-entreprise-orange/featured-42083.jpg" alt="Que peut-on obtenir avec le comité d’entreprise Orange ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Que peut-on obtenir avec le comité d’entreprise Orange ?</h2>
+<p class="blog-card-excerpt">Chèques vacances, réductions et loisirs : ce qu'Orange met sur la table Je vais vous dire d'emblée ce qui m'a frappé quand j'ai creusé le sujet : Orange, c'est une grosse machine…</p><div class="blog-card-meta">15 mai 2026</div>      </div>
+    </a>
+    <a href="/9545-quels-avantages-offre-le-comite-d-entreprise-maaf/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/9545-quels-avantages-offre-le-comite-d-entreprise-maaf/featured-8744.jpg" alt="Quels avantages offre le comité d’entreprise MAAF ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Quels avantages offre le comité d’entreprise MAAF ?</h2>
+<p class="blog-card-excerpt">Quand on travaille chez MAAF, on bénéfie d'un comité d'entreprise qui propose des avantages intéressants. Je vais vous détailler ce qu'on peut en attendre concrètement. Le CE MAAF…</p><div class="blog-card-meta">15 mai 2026</div>      </div>
+    </a>
+    <a href="/1778-comment-fonctionne-le-comite-d-entreprise-loxam/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/1778-comment-fonctionne-le-comite-d-entreprise-loxam/featured-58543.jpg" alt="Comment fonctionne le comité d’entreprise Loxam ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Comment fonctionne le comité d’entreprise Loxam ?</h2>
+<p class="blog-card-excerpt">Qu'est-ce que le comité d'entreprise chez Loxam ? Le comité d'entreprise Loxam fonctionne selon les règles classiques du Code du travail français. Je vais vous expliquer comment…</p><div class="blog-card-meta">15 mai 2026</div>      </div>
+    </a>
+    <a href="/1188-que-propose-le-comite-d-entreprise-gmf-aux-salaries/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/1188-que-propose-le-comite-d-entreprise-gmf-aux-salaries/featured-14865.jpg" alt="Que propose le comité d’entreprise GMF aux salariés ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Que propose le comité d’entreprise GMF aux salariés ?</h2>
+<p class="blog-card-excerpt">Un comité d'entreprise qui met l'accent sur l'équilibre vie privée-professionnelle Le comité d'entreprise GMF propose une gamme d'avantages assez complète pour ses 8 000 salariés…</p><div class="blog-card-meta">14 mai 2026</div>      </div>
+    </a>
+    <a href="/6307-quels-sont-les-avantages-du-comite-d-entreprise-cic/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/6307-quels-sont-les-avantages-du-comite-d-entreprise-cic/featured-70424.jpg" alt="Quels sont les avantages du comité d’entreprise CIC ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Quels sont les avantages du comité d’entreprise CIC ?</h2>
+<p class="blog-card-excerpt">Les avantages du CIC pour ses employés Travailler au CIC, c'est bénéficier d'une couverture sociale solide et d'avantages négociés par le comité d'entreprise . Je connais…</p><div class="blog-card-meta">14 mai 2026</div>      </div>
+    </a>
+    <a href="/8440-qu-est-ce-qu-un-comite-d-entreprise/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/8440-qu-est-ce-qu-un-comite-d-entreprise/featured-12546.jpg" alt="Qu’est-ce qu’un comité d’entreprise ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Qu’est-ce qu’un comité d’entreprise ?</h2>
+<p class="blog-card-excerpt">Le comité d'entreprise : définition et rôle Je vais vous expliquer ce qu'est réellement un comité d'entreprise. C'est une instance que j'ai côtoyée pendant mes 11 années…</p><div class="blog-card-meta">14 mai 2026</div>      </div>
+    </a>
+    <a href="/5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage/featured-77280.jpg" alt="Licencié pour faute : ai-je droit aux allocations chômage ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Licencié pour faute : ai-je droit aux allocations chômage ?</h2>
+<p class="blog-card-excerpt">Licenciement pour faute : vos droits aux allocations chômage expliqués On vient de me poser cette question la semaine dernière lors d'une réunion avec mes équipes. L'un de nos…</p><div class="blog-card-meta">13 mai 2026</div>      </div>
+    </a>
+    <a href="/4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences/featured-82850.jpg" alt="Rupture de CDD à l’initiative du salarié : règles, conditions et conséquences" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Rupture de CDD à l’initiative du salarié : règles, conditions et conséquences</h2>
+<p class="blog-card-excerpt">Pourquoi un salarié en CDD peut-il rompre son contrat ? Je vois souvent cette question dans mon entreprise. Un salarié en CDD peut effectivement quitter son poste avant la fin…</p><div class="blog-card-meta">13 mai 2026</div>      </div>
+    </a>
+    <a href="/6353-comite-d-entreprise-sncf-les-avantages/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/6353-comite-d-entreprise-sncf-les-avantages/featured-26154.jpg" alt="Comité d'entreprise sncf : les avantages" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">Comité d'entreprise sncf : les avantages</h2>
+<p class="blog-card-excerpt">Ce que j'ai découvert sur le comité d'entreprise SNCF Quand je me suis penché sur les avantages du comité d'entreprise SNCF, j'ai été surpris par l'ampleur des bénéfices proposés.…</p><div class="blog-card-meta">12 mai 2026</div>      </div>
+    </a>
+  </div>
+
+
+</main>
+
+<style>
+.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .footer-logo{font-family:'',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
+.footer-brand .footer-logo span{color:var(--accent2)}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;max-width:260px;margin:0;padding:0}
+.footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
+.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-brand{grid-column:1/-1}
+}
+</style>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" style="display:block;margin-bottom:12px"><img src="/logo.png" alt="editions-dp.com" style="height:36px;width:auto;object-fit:contain"></a>
+        <p>Comparatifs logiciels 2026</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/avis">Avis</a>
+        <a href="/blog/">Blog</a>
+        <a href="/plan-du-site">Plan du site</a>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/politique-confidentialite">Confidentialité</a>
+      </div>
+      <div class="footer-col">
+        <h4>À propos</h4>
+        <a href="/contact">Nous contacter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        © 2026 editions-dp.com — Données actualisées le 10 juin 2026
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button type="button"
+        class="scroll-top-btn"
+        id="scroll-top-btn"
+        aria-label="Remonter en haut de la page"
+        title="Remonter en haut">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2.5"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+</button>
+
+<style>
+.scroll-top-btn{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:9999;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--ink, #0F1419);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .15s;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+  padding:0;
+  font-family:inherit;
+}
+.scroll-top-btn.visible{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.scroll-top-btn:hover{
+  background:var(--accent, #C9A961);
+}
+.scroll-top-btn:focus-visible{
+  outline:2px solid var(--accent, #C9A961);
+  outline-offset:3px;
+}
+@media (max-width:600px){
+  .scroll-top-btn{ bottom:16px; right:16px; width:42px; height:42px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .scroll-top-btn{ transition:opacity .2s, visibility .2s; }
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  var btn = document.getElementById('scroll-top-btn');
+  if (!btn) return;
+
+  var THRESHOLD = 400; // px de scroll avant apparition
+  var ticking = false;
+
+  function update(){
+    if (window.scrollY > THRESHOLD) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+    ticking = false;
+  }
+
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  btn.addEventListener('click', function(){
+    var prefersReduced = window.matchMedia
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  });
+
+  // Check immédiat (au cas où la page est rechargée déjà scrollée)
+  update();
+})();
+</script>
+</body>
+</html>
