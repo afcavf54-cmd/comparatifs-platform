@@ -184,18 +184,76 @@ h1,h2,h3,h4{
 .hero-visual{position:relative}
 .hero-figure{position:relative;border-radius:var(--radius);overflow:hidden;
   box-shadow:var(--shadow-lg);aspect-ratio:4/3.4}
-.float-card{
-  position:absolute;background:rgba(255,255,255,.96);color:var(--ink);
-  border-radius:14px;padding:13px 16px;box-shadow:var(--shadow-lg);
-  display:flex;align-items:center;gap:12px;backdrop-filter:blur(8px);
+
+/* hero mockup : composite dashboard SaaS avec 5 cards empilées */
+.hero-mockup{position:absolute;inset:0;
+  background:
+    radial-gradient(120% 80% at 70% 20%,rgba(249,115,22,.14),transparent 55%),
+    linear-gradient(160deg,var(--navy-900),var(--navy-800));
 }
-.float-card .fc-num{font-family:var(--font-display);font-weight:800;font-size:24px;line-height:1;letter-spacing:-.02em}
-.float-card .fc-lbl{font-size:11.5px;color:var(--muted);font-weight:600;line-height:1.2}
-.float-card .fc-ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
-  background:var(--accent-tint);color:var(--accent-700);flex:none}
-.float-a{top:18px;left:-26px}
-.float-b{bottom:22px;right:-22px}
-.float-stars{color:var(--accent);letter-spacing:2px;font-size:13px}
+.hero-mockup::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:24px 24px;pointer-events:none;
+}
+.mk-card{position:absolute;background:rgba(20,30,45,.94);border:1px solid rgba(255,255,255,.09);
+  border-radius:12px;padding:13px;backdrop-filter:blur(8px);color:#fff;
+  font-family:var(--font-body);box-shadow:0 10px 28px rgba(0,0,0,.35)}
+.mk-card-h{display:flex;align-items:center;gap:7px;margin-bottom:9px}
+.mk-icon{width:18px;height:18px;border-radius:5px;background:var(--accent);display:grid;
+  place-items:center;color:#fff;font-size:10px;font-weight:800;flex:none}
+.mk-title{font-family:var(--font-display);font-weight:700;font-size:11.5px;color:#fff;letter-spacing:-.005em}
+
+/* Card Comparatif CRM (top-left) */
+.mk-card-crm{top:5%;left:-2%;width:46%}
+.mk-bars{width:100%;height:30px;margin-bottom:8px;display:block}
+.mk-row{display:flex;align-items:center;justify-content:space-between;font-size:10px;
+  color:rgba(255,255,255,.78);padding:4px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.mk-row:last-child{border-bottom:0}
+.mk-row .mk-name{display:flex;align-items:center;gap:6px;font-weight:600}
+.mk-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
+.mk-stars{color:var(--accent);font-size:9px;letter-spacing:.5px;white-space:nowrap}
+
+/* Card Avis logiciel (top-right) */
+.mk-card-avis{top:7%;right:-2%;width:38%}
+.mk-avis-name{font-family:var(--font-display);font-weight:700;font-size:13px;margin-bottom:6px;
+  display:flex;align-items:center;gap:6px}
+.mk-avis-name::before{content:"";width:18px;height:18px;border-radius:50%;background:var(--accent);
+  display:inline-block;flex:none}
+.mk-avis-score{display:flex;align-items:center;gap:8px}
+.mk-score{font-family:var(--font-display);font-weight:800;font-size:22px;color:#fff;letter-spacing:-.02em}
+.mk-avis-score .mk-stars{font-size:12px;letter-spacing:1.5px}
+
+/* Card Tableau de bord (centre, gros) */
+.mk-card-main{top:35%;left:6%;right:6%;background:rgba(247,247,250,.97);color:var(--ink);
+  border-color:rgba(0,0,0,.06)}
+.mk-card-main .mk-title{color:var(--ink)}
+.mk-card-main .mk-icon{background:var(--navy)}
+.mk-main-body{display:grid;grid-template-columns:1.5fr 1fr;gap:10px;align-items:center}
+.mk-line{width:100%;height:48px;display:block}
+.mk-stats{display:flex;gap:12px;margin-top:8px}
+.mk-stat{flex:1}
+.mk-stat-l{font-size:8px;color:var(--muted-2);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.mk-stat-v{font-family:var(--font-display);font-weight:800;font-size:12px;color:var(--ink);margin-top:1px;letter-spacing:-.01em}
+.mk-stat-d{font-size:9px;font-weight:700;margin-top:1px}
+.mk-stat-d.up{color:#1a7a4a}
+.mk-stat-d.down{color:#c9540a}
+.mk-donuts{display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center}
+.mk-donut{width:48px;height:48px;display:block}
+
+/* Card Facturation (bottom-left) */
+.mk-card-fact{bottom:5%;left:-2%;width:30%}
+.mk-fact-sub{font-size:9.5px;color:rgba(255,255,255,.6);margin-bottom:3px;font-weight:500}
+.mk-fact-amount{display:flex;align-items:center;gap:7px;font-family:var(--font-display);
+  font-weight:800;font-size:14px;letter-spacing:-.01em}
+.mk-check{width:17px;height:17px;border-radius:50%;background:#1a7a4a;color:#fff;
+  display:inline-grid;place-items:center;font-size:9px;font-weight:800;flex:none}
+
+/* Card IA (bottom-right) */
+.mk-card-ai{bottom:4%;right:-2%;width:36%}
+.mk-ai-text{font-size:9.5px;color:rgba(255,255,255,.72);line-height:1.4;padding-right:32px}
+.mk-robot{position:absolute;right:8px;bottom:8px;width:34px;height:34px}
 
 /* hero chips strip */
 .hero-chips{
@@ -410,7 +468,6 @@ h1,h2,h3,h4{
   .cmp-grid,.avis-grid,.blog-grid,.aud-grid{grid-template-columns:1fr}
   .cmp-card.is-featured{grid-column:span 1}
   .sec-head{flex-direction:column;align-items:flex-start}
-  .float-a{left:0}.float-b{right:0}
 }
 </style>
 
@@ -521,14 +578,135 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <div class="hero-visual">
         <div class="hero-figure">
-          <div class="ph"><span class="ph-tag">Illustration flat · analyse de logiciels</span></div>
-        </div>
-        <div class="float-card float-a">
-          <div class="fc-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"></path><path d="m7 14 4-4 3 3 5-6"></path></svg></div>
-          <div><div class="fc-num">340+</div><div class="fc-lbl">logiciels analysés</div></div>
-        </div>
-        <div class="float-card float-b">
-          <div><div class="float-stars">★★★★★</div><div class="fc-lbl" style="margin-top:4px">Avis indépendants &amp; testés</div></div>
+          <div class="hero-mockup">
+
+            <!-- Comparatif CRM (top-left) -->
+            <div class="mk-card mk-card-crm">
+              <div class="mk-card-h">
+                <span class="mk-icon">⌘</span>
+                <span class="mk-title">Comparatif CRM</span>
+              </div>
+              <svg class="mk-bars" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true">
+                <rect x="4" y="14" width="9" height="16" fill="#f97316" rx="1"/>
+                <rect x="18" y="6" width="9" height="24" fill="#f97316" opacity=".75" rx="1"/>
+                <rect x="32" y="18" width="9" height="12" fill="#f97316" opacity=".55" rx="1"/>
+                <rect x="46" y="10" width="9" height="20" fill="#f97316" opacity=".4" rx="1"/>
+                <rect x="60" y="20" width="9" height="10" fill="#f97316" opacity=".3" rx="1"/>
+                <rect x="74" y="13" width="9" height="17" fill="#f97316" opacity=".22" rx="1"/>
+                <rect x="88" y="22" width="9" height="8" fill="#f97316" opacity=".15" rx="1"/>
+              </svg>
+              <div class="mk-row">
+                <span class="mk-name"><span class="mk-dot"></span>HubSpot</span>
+                <span class="mk-stars">★★★★★</span>
+              </div>
+              <div class="mk-row">
+                <span class="mk-name"><span class="mk-dot" style="background:#fb923c"></span>Pipedrive</span>
+                <span class="mk-stars">★★★★<span style="opacity:.3">★</span></span>
+              </div>
+              <div class="mk-row">
+                <span class="mk-name"><span class="mk-dot" style="background:#fdba74"></span>Sellsy</span>
+                <span class="mk-stars">★★★★<span style="opacity:.3">★</span></span>
+              </div>
+            </div>
+
+            <!-- Avis logiciel (top-right) -->
+            <div class="mk-card mk-card-avis">
+              <div class="mk-card-h">
+                <span class="mk-icon">★</span>
+                <span class="mk-title">Avis logiciel</span>
+              </div>
+              <div class="mk-avis-name">Pennylane</div>
+              <div class="mk-avis-score">
+                <span class="mk-score">4,8</span>
+                <span class="mk-stars">★★★★★</span>
+              </div>
+            </div>
+
+            <!-- Tableau de bord (center, big) -->
+            <div class="mk-card mk-card-main">
+              <div class="mk-card-h">
+                <span class="mk-icon">▣</span>
+                <span class="mk-title">Tableau de bord</span>
+              </div>
+              <div class="mk-main-body">
+                <div>
+                  <svg class="mk-line" viewBox="0 0 200 48" preserveAspectRatio="none" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="mkg" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0" stop-color="#f97316" stop-opacity=".35"/>
+                        <stop offset="1" stop-color="#f97316" stop-opacity="0"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M0,40 L20,34 L40,38 L60,26 L80,24 L100,18 L120,16 L140,12 L160,8 L180,6 L200,3 L200,48 L0,48 Z" fill="url(#mkg)"/>
+                    <path d="M0,40 L20,34 L40,38 L60,26 L80,24 L100,18 L120,16 L140,12 L160,8 L180,6 L200,3" fill="none" stroke="#f97316" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <div class="mk-stats">
+                    <div class="mk-stat">
+                      <div class="mk-stat-l">CA</div>
+                      <div class="mk-stat-v">125 K€</div>
+                      <div class="mk-stat-d up">+12,5%</div>
+                    </div>
+                    <div class="mk-stat">
+                      <div class="mk-stat-l">Dépenses</div>
+                      <div class="mk-stat-v">48,5 K€</div>
+                      <div class="mk-stat-d down">-8,2%</div>
+                    </div>
+                    <div class="mk-stat">
+                      <div class="mk-stat-l">Tréso</div>
+                      <div class="mk-stat-v">76,5 K€</div>
+                      <div class="mk-stat-d up">+9,3%</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mk-donuts">
+                  <svg class="mk-donut" viewBox="0 0 36 36" aria-hidden="true">
+                    <circle cx="18" cy="18" r="14" fill="none" stroke="#e5e7eb" stroke-width="4"/>
+                    <circle cx="18" cy="18" r="14" fill="none" stroke="#f97316" stroke-width="4"
+                            stroke-dasharray="62 100" stroke-linecap="round" transform="rotate(-90 18 18)"/>
+                  </svg>
+                  <svg class="mk-donut" viewBox="0 0 36 36" aria-hidden="true">
+                    <circle cx="18" cy="18" r="14" fill="none" stroke="#e5e7eb" stroke-width="4"/>
+                    <circle cx="18" cy="18" r="14" fill="none" stroke="#1f2937" stroke-width="4"
+                            stroke-dasharray="40 100" stroke-linecap="round" transform="rotate(-90 18 18)"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Facturation (bottom-left) -->
+            <div class="mk-card mk-card-fact">
+              <div class="mk-card-h">
+                <span class="mk-icon">€</span>
+                <span class="mk-title">Facturation</span>
+              </div>
+              <div class="mk-fact-sub">12 factures payées</div>
+              <div class="mk-fact-amount">
+                8 550 €
+                <span class="mk-check">✓</span>
+              </div>
+            </div>
+
+            <!-- IA (bottom-right) -->
+            <div class="mk-card mk-card-ai">
+              <div class="mk-card-h">
+                <span class="mk-icon">∞</span>
+                <span class="mk-title">Intelligence artificielle</span>
+              </div>
+              <div class="mk-ai-text">Générez des analyses et des résumés en quelques secondes</div>
+              <svg class="mk-robot" viewBox="0 0 36 36" aria-hidden="true">
+                <line x1="18" y1="13" x2="18" y2="8.5" stroke="#f97316" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="18" cy="7.5" r="1.6" fill="#f97316"/>
+                <rect x="8" y="13" width="20" height="17" rx="3.5" fill="#f97316"/>
+                <rect x="10.5" y="16" width="15" height="10" rx="2" fill="#0d141f"/>
+                <circle cx="14.5" cy="20" r="1.6" fill="#fff"/>
+                <circle cx="21.5" cy="20" r="1.6" fill="#fff"/>
+                <path d="M14 24 Q18 26 22 24" fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round"/>
+                <line x1="6" y1="20" x2="8" y2="20" stroke="#f97316" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="28" y1="20" x2="30" y2="20" stroke="#f97316" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
