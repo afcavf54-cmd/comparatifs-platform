@@ -260,7 +260,7 @@ a:hover { text-decoration: underline; }
   <div class="articles-grid">
     {% for post in recent_blog_posts %}
     <article class="article-card">
-      <a class="card-link" href="/{{ post.slug }}">
+      <a class="card-link" href="/{{ post.slug }}/">
         <div class="image">
           {% if post.featured_image %}
             <img src="{{ post.featured_image }}" alt="{{ post.title }}" loading="lazy">
@@ -281,7 +281,7 @@ a:hover { text-decoration: underline; }
   </div>
 
   <div style="margin-top: 36px; text-align: center;">
-    <a class="all-articles-cta" href="/blog">
+    <a class="all-articles-cta" href="/blog/">
       Voir tous les articles
       <span>→</span>
     </a>
@@ -311,7 +311,7 @@ a:hover { text-decoration: underline; }
   <p class="section-subtitle">Parcourez par thématique</p>
   <div class="cats-list">
     {% for cat in blog_cats %}
-      <a href="/{{ cat.slug }}" class="cat-pill">{{ cat.name }}</a>
+      <a href="/{{ cat.slug }}/" class="cat-pill">{{ cat.name }}</a>
     {% endfor %}
   </div>
 </section>
