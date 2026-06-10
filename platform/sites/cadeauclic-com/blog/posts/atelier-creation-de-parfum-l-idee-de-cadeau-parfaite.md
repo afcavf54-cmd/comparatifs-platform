@@ -4,15 +4,17 @@ slug: atelier-creation-de-parfum-l-idee-de-cadeau-parfaite
 date: '2026-06-10T16:17:30+02:00'
 categorie: Idées cadeaux
 meta_title: 'Atelier création de parfum : une bonne idée de cadeau ?'
-meta_description: Découvrez pourquoi l'atelier création de parfum devient le cadeau tendance incontournable. Créez votre parfum unique avec des notes personnalisées lors d'une…
+meta_description: Découvrez pourquoi l'atelier création de parfum devient le cadeau
+  tendance incontournable. Créez votre parfum unique avec des notes personnalisées
+  lors d'une…
 min_words: 750
 status: published
 featured_image: /blog/atelier-creation-de-parfum-l-idee-de-cadeau-parfaite.jpg
 link_anchors:
 - text: atelier création de parfum
   max: 5
+related_posts: []
 ---
-
 <h2>L'atelier création de parfum, mon coup de cœur du moment</h2>
 
 <p>Quand j'ai découvert l'idée de l'atelier création de parfum, j'avoue que j'étais un peu sceptique. Encore un de ces trucs à la mode qui coûtent cher pour pas grand-chose ? Et puis ma belle-sœur m'a raconté son expérience après avoir reçu ce cadeau pour ses 35 ans. Son enthousiasme m'a complètement fait changer d'avis.</p>
