@@ -3,16 +3,21 @@ title: 'Cagnotte de naissance en ligne : le cadeau parfait avec Leetchi ?'
 slug: cagnotte-de-naissance-en-ligne-le-cadeau-parfait
 date: '2026-06-10T16:50:28+02:00'
 categorie: Bébé & Naissance
-meta_title: 'Cagnotte de naissance en ligne : cadeau facile pour célébrer l''arrivée d''un enfant'
-meta_description: Découvrez Leetchi pour organiser une cagnotte de naissance en ligne. Retour d'expérience complet, avantages, inconvénients et conseils pratiques pour offrir le…
+meta_title: 'Cagnotte de naissance en ligne : cadeau facile pour célébrer l''arrivée
+  d''un enfant'
+meta_description: Découvrez Leetchi pour organiser une cagnotte de naissance en ligne.
+  Retour d'expérience complet, avantages, inconvénients et conseils pratiques pour
+  offrir le…
 min_words: 1000
 status: published
 featured_image: /blog/cagnotte-de-naissance-en-ligne-le-cadeau-parfait.jpg
 link_anchors:
 - text: cagnotte de naissance en ligne
   max: 5
+related_posts:
+- comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver
+- quels-sont-les-differents-types-de-baignoires-pour-bebe
 ---
-
 <h2>Leetchi pour les naissances : mon retour d'expérience</h2>
 
 <p>Quand ma belle-sœur attendait son premier bébé, j'ai découvert les cagnotte de naissance en ligne. Franchement, au début j'étais sceptique. Une cagnotte au lieu d'un joli paquet ? Ça me semblait un peu impersonnel.</p>

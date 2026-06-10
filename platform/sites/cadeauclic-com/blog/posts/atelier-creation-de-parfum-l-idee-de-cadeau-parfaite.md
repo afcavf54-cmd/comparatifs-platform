@@ -13,7 +13,11 @@ featured_image: /blog/atelier-creation-de-parfum-l-idee-de-cadeau-parfaite.jpg
 link_anchors:
 - text: atelier création de parfum
   max: 5
-related_posts: []
+related_posts:
+- comment-souhaiter-un-joyeux-anniversaire-a-un-homme-avec-originalite
+- quel-cadeau-offrir-a-quelquun-qui-a-deja-tout
+- calendrier-photo-personnalise-une-bonne-idee-de-cadeau-pour-noel
+- idees-de-cadeaux-de-noel-pour-toute-la-famille
 ---
 <h2>L'atelier création de parfum, mon coup de cœur du moment</h2>
 

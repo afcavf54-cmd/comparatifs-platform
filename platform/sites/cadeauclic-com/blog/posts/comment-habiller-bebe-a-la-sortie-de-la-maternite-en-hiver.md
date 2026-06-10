@@ -4,15 +4,19 @@ slug: comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver
 date: '2026-06-10T16:50:28+02:00'
 categorie: Bébé & Naissance
 meta_title: Habiller bébé à la sortie de la maternité, quelques idées !
-meta_description: Découvrez comment bien habiller bébé pour sa sortie de maternité en hiver. Conseils pratiques, règle des 3 couches et astuces pour éviter le froid sans surchauffer.
+meta_description: Découvrez comment bien habiller bébé pour sa sortie de maternité
+  en hiver. Conseils pratiques, règle des 3 couches et astuces pour éviter le froid
+  sans surchauffer.
 min_words: 1000
 status: published
 featured_image: /blog/comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver.jpg
 link_anchors:
 - text: comment habiller bébé à la sortie de la maternité en hiver
   max: 5
+related_posts:
+- quels-sont-les-differents-types-de-baignoires-pour-bebe
+- cagnotte-de-naissance-en-ligne-le-cadeau-parfait
 ---
-
 <h2>Le grand moment approche : bien choisir la tenue de sortie</h2>
 
 <p>Je me souviens encore de ce stress quand j'ai préparé la valise pour la maternité en plein mois de janvier. <strong>Comment habiller mon bébé pour sa première sortie</strong> alors qu'il faisait -5°C dehors ? Entre les conseils contradictoires de ma mère et ceux de ma belle-sœur, j'étais complètement perdue.</p>
