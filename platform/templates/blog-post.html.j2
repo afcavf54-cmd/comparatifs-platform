@@ -10,11 +10,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ post.meta_title or post.title }}</title>
 <meta name="description" content="{{ post.meta_description }}">
-<link rel="canonical" href="{{ site.domain }}/{{ post.slug }}">
+<link rel="canonical" href="{{ site.domain }}/{{ post.slug }}/">
 <meta property="og:title" content="{{ post.meta_title or post.title }}">
 <meta property="og:description" content="{{ post.meta_description }}">
 <meta property="og:type" content="article">
-<meta property="og:url" content="{{ site.domain }}/{{ post.slug }}">
+<meta property="og:url" content="{{ site.domain }}/{{ post.slug }}/">
 {% if post.featured_image %}<meta property="og:image" content="{{ site.domain }}{{ post.featured_image }}">{% endif %}
 <meta property="article:published_time" content="{{ post.date }}">
 {% if post.updated %}<meta property="article:modified_time" content="{{ post.updated }}">{% endif %}
@@ -42,7 +42,7 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "{{ site.domain }}/{{ post.slug }}"
+    "@id": "{{ site.domain }}/{{ post.slug }}/"
   }
   {% if post.categorie %},"articleSection": {{ post.categorie | tojson }}{% endif %}
 }
@@ -84,7 +84,7 @@
       "position": {{ loop.index }},
       "name": {{ step.name | tojson }},
       "text": {{ step.text | tojson }},
-      "url": "{{ site.domain }}/{{ post.slug }}#{{ step.id }}"
+      "url": "{{ site.domain }}/{{ post.slug }}/#{{ step.id }}"
     }{% if not loop.last %},{% endif %}
     {% endfor %}
   ]
@@ -239,12 +239,12 @@ a:hover{text-decoration:underline}
   <div class="article-main">
   <header class="article-header">
     <div class="breadcrumb">
-      <a href="/">Accueil</a> &rsaquo; <a href="/blog">Blog</a>
-      {% if post.categorie %} &rsaquo; <a href="/{{ post.categorie_slug }}">{{ post.categorie }}</a>{% endif %}
+      <a href="/">Accueil</a> &rsaquo; <a href="/blog/">Blog</a>
+      {% if post.categorie %} &rsaquo; <a href="/{{ post.categorie_slug }}/">{{ post.categorie }}</a>{% endif %}
     </div>
     <h1 class="article-title">{{ post.title }}</h1>
     <div class="article-meta">
-      {% if post.categorie %}<a href="/{{ post.categorie_slug }}" class="article-cat">{{ post.categorie }}</a><span class="article-meta-dot"></span>{% endif %}
+      {% if post.categorie %}<a href="/{{ post.categorie_slug }}/" class="article-cat">{{ post.categorie }}</a><span class="article-meta-dot"></span>{% endif %}
       {% if post.date_display %}<span class="article-meta-item">📅 {{ post.date_display }}</span><span class="article-meta-dot"></span>{% endif %}
       {% if post.reading_time %}<span class="article-meta-item">⏱ {{ post.reading_time }} min de lecture</span><span class="article-meta-dot"></span>{% endif %}
       <span class="article-meta-item">✍️ {{ site.author_name | default(site.name) }}</span>
@@ -295,7 +295,7 @@ a:hover{text-decoration:underline}
     <h3 class="related-title">À lire aussi</h3>
     <div class="related-grid">
       {% for rp in related_posts %}
-      <a href="/{{ rp.slug }}" class="related-card">
+      <a href="/{{ rp.slug }}/" class="related-card">
         {% if rp.categorie %}<div class="related-card-cat">{{ rp.categorie }}</div>{% endif %}
         <div class="related-card-title">{{ rp.title }}</div>
         {% if rp.excerpt %}<div class="related-card-excerpt">{{ rp.excerpt }}</div>{% endif %}
@@ -312,14 +312,14 @@ a:hover{text-decoration:underline}
       <h3 class="sidebar-title">Catégories</h3>
       <ul class="sidebar-cat-list">
         <li class="sidebar-cat-item">
-          <a href="/blog" class="sidebar-cat-link">
+          <a href="/blog/" class="sidebar-cat-link">
             <span>Tous les articles</span>
             <span class="sidebar-cat-count">{{ all_posts | length }}</span>
           </a>
         </li>
         {% for cat in blog_categories %}
         <li class="sidebar-cat-item">
-          <a href="/{{ cat.slug }}" class="sidebar-cat-link{% if post.categorie and cat.name == post.categorie %} active{% endif %}">
+          <a href="/{{ cat.slug }}/" class="sidebar-cat-link{% if post.categorie and cat.name == post.categorie %} active{% endif %}">
             <span>{{ cat.name }}</span>
             <span class="sidebar-cat-count">{{ cat.count }}</span>
           </a>
@@ -336,7 +336,7 @@ a:hover{text-decoration:underline}
         {% for rp in all_posts[:5] %}
         {% if rp.slug != post.slug %}
         <li class="sidebar-recent-item">
-          <a href="/{{ rp.slug }}" class="sidebar-recent-link">
+          <a href="/{{ rp.slug }}/" class="sidebar-recent-link">
             {% if rp.categorie %}<div class="sidebar-recent-cat">{{ rp.categorie }}</div>{% endif %}
             {{ rp.title }}
           </a>
