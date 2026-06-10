@@ -14,8 +14,9 @@ link_anchors:
 - text: avantages et inconvénients de la scea
   max: 4
 related_posts:
-- 3259-creer-une-association-et-en-vivre-statut-remuneration-et-bonnes-pratiques
+- 3222-refus-du-deuxieme-versement-de-l-arce-quelles-solutions-pour-debloquer-la-situation
 - 9434-creer-un-produit-guide-pratique-pour-concevoir-et-commercialiser-votre-offre
+- 3259-creer-une-association-et-en-vivre-statut-remuneration-et-bonnes-pratiques
 - 2094-avance-sur-dividendes-en-sasu-conditions-risques-et-precautions-a-prendre
 ---
 <h2>Pourquoi choisir une SCEA plutôt qu'une autre forme juridique ?</h2>

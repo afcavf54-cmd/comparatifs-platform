@@ -1,18 +1,24 @@
 ---
-title: 'Refus du deuxième versement de l''ARCE : quelles solutions pour débloquer la situation ?'
+title: 'Refus du deuxième versement de l''ARCE : quelles solutions pour débloquer
+  la situation ?'
 slug: 3222-refus-du-deuxieme-versement-de-l-arce-quelles-solutions-pour-debloquer-la-situation
 date: '2026-06-10T23:00:00+02:00'
 categorie: Création entreprise
 meta_title: 'Refus 2ᵉ versement ARCE : comprendre les motifs et agir'
-meta_description: Découvrez pourquoi Pôle emploi refuse le deuxième versement ARCE et les solutions concrètes pour débloquer votre situation. Guide complet pour entrepreneurs.
+meta_description: Découvrez pourquoi Pôle emploi refuse le deuxième versement ARCE
+  et les solutions concrètes pour débloquer votre situation. Guide complet pour entrepreneurs.
 min_words: 1800
 status: published
 featured_image: /blog/3222-refus-du-deuxieme-versement-de-l-arce-quelles-solutions-pour-debloquer-la-situation.jpg
 link_anchors:
 - text: refus du deuxième versement de l'arce
   max: 4
+related_posts:
+- 7650-scea-avantages-contraintes-et-fonctionnement-expliques-simplement
+- 3259-creer-une-association-et-en-vivre-statut-remuneration-et-bonnes-pratiques
+- 2094-avance-sur-dividendes-en-sasu-conditions-risques-et-precautions-a-prendre
+- 9434-creer-un-produit-guide-pratique-pour-concevoir-et-commercialiser-votre-offre
 ---
-
 <h2>Pourquoi Pôle emploi peut-il refuser le deuxième versement de l'ARCE ?</h2>
 
 <p>Je vois régulièrement des entrepreneurs confrontés à ce problème : après avoir reçu le premier versement de l'ARCE (45% de leurs droits), Pôle emploi leur refuse le second. Cette situation peut vraiment mettre en difficulté une entreprise naissante, surtout quand on compte sur ces fonds pour développer son activité.</p>
