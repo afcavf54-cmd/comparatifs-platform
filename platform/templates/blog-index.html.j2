@@ -11,12 +11,12 @@
 <title>{{ blog_title }}</title>
 <meta name="description" content="{{ blog_meta }}">
 {# Canonical : utilise base_url (= /blog pour l'index, /<slug-categorie> pour les pages catégorie). #}
-{# Pour la page 1 le canonical pointe vers base_url, pour les pages 2+ vers base_url/N (auto-référent). #}
+{# Pour la page 1 le canonical pointe vers base_url/, pour les pages 2+ vers base_url/N/ (auto-référent, slash final). #}
 {# Évite la duplication SEO : avant ce fix, /categorie-salarie pointait son canonical vers /blog. #}
-{% set page_url = base_url if (current_page is not defined or current_page == 1) else (base_url ~ '/' ~ current_page) %}
+{% set page_url = (base_url ~ '/') if (current_page is not defined or current_page == 1) else (base_url ~ '/' ~ current_page ~ '/') %}
 <link rel="canonical" href="{{ site.domain }}{{ page_url }}">
-{% if prev_url %}<link rel="prev" href="{{ site.domain }}{{ prev_url }}">{% endif %}
-{% if next_url %}<link rel="next" href="{{ site.domain }}{{ next_url }}">{% endif %}
+{% if prev_url %}<link rel="prev" href="{{ site.domain }}{{ prev_url }}/">{% endif %}
+{% if next_url %}<link rel="next" href="{{ site.domain }}{{ next_url }}/">{% endif %}
 <meta property="og:title" content="{{ blog_title }}">
 <meta property="og:description" content="{{ blog_meta }}">
 <meta property="og:type" content="website">
@@ -116,9 +116,9 @@ a{color:var(--accent2);text-decoration:none}
   </div>
   {% if categories and categories | length > 1 %}
   <div class="blog-filters">
-    <a class="blog-filter active" href="/blog">Tous <span class="blog-filter-count">({{ posts | length }})</span></a>
+    <a class="blog-filter active" href="/blog/">Tous <span class="blog-filter-count">({{ posts | length }})</span></a>
     {% for cat in categories %}
-    <a class="blog-filter" href="/{{ cat.slug }}">{{ cat.name }} <span class="blog-filter-count">({{ cat.count }})</span></a>
+    <a class="blog-filter" href="/{{ cat.slug }}/">{{ cat.name }} <span class="blog-filter-count">({{ cat.count }})</span></a>
     {% endfor %}
   </div>
   {% endif %}
@@ -128,7 +128,7 @@ a{color:var(--accent2);text-decoration:none}
   {% if posts %}
   <div class="blog-grid">
     {% for post in posts %}
-    <a href="/{{ post.slug }}" class="blog-card">
+    <a href="/{{ post.slug }}/" class="blog-card">
       <div class="blog-card-img">
         {% if post.featured_image %}
         <img src="{{ post.featured_image }}" alt="{{ post.title }}" loading="lazy">
@@ -150,9 +150,12 @@ a{color:var(--accent2);text-decoration:none}
   {% if total_pages is defined and total_pages > 1 %}
   <nav class="blog-pagination" aria-label="Pagination du blog">
     {# Précédent (à gauche) — visible uniquement s'il y a une page précédente.
-       Style : flèche dans rond foncé + texte « Précédent ». Sur mobile, texte masqué. #}
+       Style : flèche dans rond foncé + texte « Précédent ». Sur mobile, texte masqué.
+       NB : `{{ prev_url }}/` ajoute le slash final puisque prev_url est généré
+       par le backend sans slash (ex: "/blog" ou "/blog/2"). Évite les 301
+       Cloudflare en pointant directement vers /blog/ ou /blog/2/. #}
     {% if prev_url %}
-    <a href="{{ prev_url }}" class="blog-page-link blog-page-prev" rel="prev">
+    <a href="{{ prev_url }}/" class="blog-page-link blog-page-prev" rel="prev">
       <span class="blog-page-arrow" aria-hidden="true">‹</span>
       <span>Précédent</span>
     </a>
@@ -178,7 +181,9 @@ a{color:var(--accent2);text-decoration:none}
           {% if ns.prev > 0 and p - ns.prev > 1 %}
             <span class="blog-page-ellipsis" aria-hidden="true">…</span>
           {% endif %}
-          {% set page_url = base_url if p == 1 else (base_url + '/' + (p|string)) %}
+          {# URL avec slash final pour matcher la structure /<slug>/index.html
+             générée par generate.py. p=1 → base_url/, p>1 → base_url/N/. #}
+          {% set page_url = (base_url ~ '/') if p == 1 else (base_url ~ '/' ~ (p|string) ~ '/') %}
           {% if p == current_page %}
           <span class="blog-page-num blog-page-current" aria-current="page">{{ p }}</span>
           {% else %}
@@ -193,7 +198,7 @@ a{color:var(--accent2);text-decoration:none}
     {% if total_pages > 1 %}<span class="blog-page-sep" aria-hidden="true"></span>{% endif %}
 
     {% if next_url %}
-    <a href="{{ next_url }}" class="blog-page-link blog-page-next" rel="next">
+    <a href="{{ next_url }}/" class="blog-page-link blog-page-next" rel="next">
       <span>Suivant</span>
       <span class="blog-page-arrow" aria-hidden="true">›</span>
     </a>
