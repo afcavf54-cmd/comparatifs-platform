@@ -973,9 +973,22 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
 
     print(f"   {len(products)} produits → {math.comb(len(products), 2)} paires")
 
-    # Jinja2
+    # Jinja2 — ChoiceLoader pour permettre les overrides par site.
+    # Ordre de résolution des templates :
+    #   1. platform/sites/<site>/templates/   (override local du site)
+    #   2. platform/templates/                 (templates globaux, fallback)
+    # Permet à chaque site d'avoir son `index.html.j2`, `_nav.html.j2`, etc.
+    # sans polluer le dossier global. Convention recommandée pour les sites
+    # avec home custom : `index_template: "index.html.j2"` dans config.yaml +
+    # fichier dans `platform/sites/<site>/templates/index.html.j2`.
+    from jinja2 import ChoiceLoader as _ChoiceLoader
+    _site_templates_dir = site_dir / "templates"
+    _jinja_loaders = []
+    if _site_templates_dir.exists():
+        _jinja_loaders.append(FileSystemLoader(str(_site_templates_dir)))
+    _jinja_loaders.append(FileSystemLoader(str(TEMPLATES_DIR)))
     env = Environment(
-        loader=FileSystemLoader(str(TEMPLATES_DIR)),
+        loader=_ChoiceLoader(_jinja_loaders),
         autoescape=select_autoescape(["html"]),
         trim_blocks=True, lstrip_blocks=True,
     )
@@ -1471,8 +1484,45 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
         (output_dir / "index.html").write_text(_placeholder, encoding="utf-8")
         _placeholder_written = True  # flag : on l'écrasera si vrai render réussit
 
+        # ── Pré-load léger des avis pour exposer `recent_avis` à la home ──
+        # Le chargement complet + rendu des pages d'avis se fait plus bas
+        # dans la section AVIS dédiée (avec sanitisation, tri, catégories).
+        # Ici on lit juste le frontmatter des .md pour pouvoir injecter les
+        # 6 derniers avis dans le render de l'index, en miroir de
+        # `recent_blog_posts`. Idempotent (la section AVIS recharge tout).
+        _recent_avis_for_home: list[dict] = []
+        _avis_pre_dir = site_dir / "posts_avis"
+        if _avis_pre_dir.exists():
+            for _md_pre in sorted(_avis_pre_dir.glob("*.md")):
+                try:
+                    _raw_pre = _md_pre.read_text(encoding="utf-8")
+                    if not _raw_pre.startswith("---"):
+                        continue
+                    _parts_pre = _raw_pre.split("---", 2)
+                    if len(_parts_pre) < 3:
+                        continue
+                    _fm_pre = yaml.safe_load(_parts_pre[1]) or {}
+                    if not _fm_pre.get("slug"):
+                        _fm_pre["slug"] = _md_pre.stem
+                    _fm_pre["_sort_date"] = str(_fm_pre.get("date") or "")
+                    _recent_avis_for_home.append(_fm_pre)
+                except Exception:
+                    continue
+            _recent_avis_for_home.sort(key=lambda p: p.get("_sort_date", ""), reverse=True)
+            _recent_avis_for_home = _recent_avis_for_home[:6]
+
         index_tpl = site.get("index_template", f"index-{site_slug}.html.j2")
-        if (TEMPLATES_DIR / index_tpl).exists():
+        # On utilise env.get_template() avec try/except plutôt qu'un check
+        # sur disque limité à TEMPLATES_DIR — ainsi ChoiceLoader peut trouver
+        # le template dans platform/sites/<site>/templates/ aussi.
+        from jinja2 import TemplateNotFound as _TemplateNotFound
+        try:
+            _index_template_obj = env.get_template(index_tpl)
+            _index_template_found = True
+        except _TemplateNotFound:
+            _index_template_obj = None
+            _index_template_found = False
+        if _index_template_found:
             zero_frais = sum(1 for p in products if str(p.get("frais_souscription", 99)).replace('.0','') == "0")
             top_pairs  = [{"url": f"{a}-vs-{b}", "label": f"{products_by_slug(products, a)['nom']} vs {products_by_slug(products, b)['nom']}"} for a, b in all_pairs[:8]]
             home_title = site.get("home_title") or f"{site.get('name', '')} | Comparatifs {site.get('year', '')}"
@@ -1488,7 +1538,7 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
             else:
                 total_categories = len({p.get("categorie") for p in products if p.get("categorie")})
             try:
-                html = env.get_template(index_tpl).render(
+                html = _index_template_obj.render(
                     site={**site, "seo": config.get("seo", {})}, theme=theme, products=products,
                     total_pairs=len(all_pairs), zero_frais_count=zero_frais,
                     total_products=len(products), total_categories=total_categories,
@@ -1497,6 +1547,7 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     site_editorial=site_editorial,
                     page_types=config.get("page_types", {}),
                     recent_blog_posts=substitute_template_vars(blog_posts[:6], _global_vars) if blog_posts else [],
+                    recent_avis=substitute_template_vars(_recent_avis_for_home, _global_vars) if _recent_avis_for_home else [],
                     home_title=home_title, home_description=home_desc, home_h1=site.get('home_h1', ''),
                 )
                 # Cache-buster pour forcer Cloudflare à re-uploader
