@@ -4,15 +4,17 @@ slug: 1340-horaire-decale-reglementation-remuneration-et-organisation-du-travail
 date: '2026-06-10T11:00:00+02:00'
 categorie: Salarié
 meta_title: 'Horaire décalé et code du travail : ce qu''il faut savoir'
-meta_description: 'Découvrez la réglementation sur les horaires décalés au travail : droits des salariés, règles de rémunération, temps de repos obligatoires et conseils pratiques…'
+meta_description: 'Découvrez la réglementation sur les horaires décalés au travail
+  : droits des salariés, règles de rémunération, temps de repos obligatoires et conseils
+  pratiques…'
 min_words: 1200
 status: published
 featured_image: /blog/1340-horaire-decale-reglementation-remuneration-et-organisation-du-travail.jpg
 link_anchors:
 - text: horaire décalé dans le code du travail
   max: 4
+related_posts: []
 ---
-
 <h2>Qu'est-ce qu'un horaire décalé au travail ?</h2>
 
 <p>Les horaires décalés, c'est un peu le quotidien de beaucoup d'entreprises aujourd'hui. Je pense aux équipes du matin qui commencent à 6h, aux services clients qui finissent à 22h, ou encore aux <strong>équipes de production</strong> qui tournent en 3x8. Dans mon entreprise, on a dû s'adapter après plusieurs demandes de salariés qui voulaient éviter les bouchons marseillais.</p>
