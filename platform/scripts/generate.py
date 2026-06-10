@@ -564,24 +564,25 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, 
             BLOG_POSTS_PER_PAGE = 30
             total_posts = len(blog_posts_for_sitemap)
             total_pages = max(1, math.ceil(total_posts / BLOG_POSTS_PER_PAGE))
-            # Page 1 + pages paginées
-            lines.append(url(f"{domain}/blog", "0.9", "weekly"))
+            # Page 1 + pages paginées (URLs avec slash final pour cohérence
+            # avec la structure de fichiers /slug/index.html générée plus bas)
+            lines.append(url(f"{domain}/blog/", "0.9", "weekly"))
             for p in range(2, total_pages + 1):
-                lines.append(url(f"{domain}/blog/{p}", "0.6", "weekly"))
+                lines.append(url(f"{domain}/blog/{p}/", "0.6", "weekly"))
             # Pages catégorie (avec pagination)
             cats = blog_engine.collect_categories(blog_posts_for_sitemap)
             for cat in cats:
                 cat_posts = [p for p in blog_posts_for_sitemap
                              if (p.get('categorie') or '').strip().lower() == cat['name'].lower()]
                 cat_pages = max(1, math.ceil(len(cat_posts) / BLOG_POSTS_PER_PAGE))
-                lines.append(url(f"{domain}/{cat['slug']}", "0.7", "weekly"))
+                lines.append(url(f"{domain}/{cat['slug']}/", "0.7", "weekly"))
                 for p in range(2, cat_pages + 1):
-                    lines.append(url(f"{domain}/{cat['slug']}/{p}", "0.5", "weekly"))
+                    lines.append(url(f"{domain}/{cat['slug']}/{p}/", "0.5", "weekly"))
             # Articles individuels
             for post in blog_posts_for_sitemap:
                 slug = post.get('slug', '')
                 if slug:
-                    lines.append(url(f"{domain}/{slug}", "0.8", "monthly"))
+                    lines.append(url(f"{domain}/{slug}/", "0.8", "monthly"))
 
     # ── Pages OUTILS (depuis platform/sites/<site>/outils.json) ──────
     # On scanne outils.json (qui contient les outils activés pour ce site)
@@ -1158,20 +1159,20 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             if blog_load_failed:
                 posts_dir = site_dir / 'blog' / 'posts'
                 if posts_dir.exists():
-                    blog_expected.add("blog.html")
+                    blog_expected.add("blog/index.html")
                     for md_file in posts_dir.glob('*.md'):
-                        blog_expected.add(f"{md_file.stem}.html")
+                        blog_expected.add(f"{md_file.stem}/index.html")
                     print(f"  🛡 Filet : {len(blog_expected) - 1} slugs blog protégés depuis le disque")
             if blog_posts:
                 site["has_blog"] = True
                 blog_categories = blog_engine.collect_categories(blog_posts)
-                blog_expected.add("blog.html")
+                blog_expected.add("blog/index.html")
                 for post in blog_posts:
                     slug = post.get('slug', '')
                     if slug:
-                        blog_expected.add(f"{slug}.html")
+                        blog_expected.add(f"{slug}/index.html")
                 for cat in blog_categories:
-                    blog_expected.add(f"{cat['slug']}.html")
+                    blog_expected.add(f"{cat['slug']}/index.html")
                 # ── Enrichissement des posts (excerpt, date_display, reading_time)
                 # On le fait ICI pour que la home puisse utiliser ces champs
                 # dans la section "Articles récents". L'enrichissement est
@@ -1946,10 +1947,14 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     h1=blog_h1, intro=blog_intro,
                     meta_title=blog_title, meta_desc=blog_meta,
                 )
+                # ── /blog/ (page 1) + /blog/N/ (pages 2+) ────────────────────
+                blog_root = output_dir / "blog"
+                blog_root.mkdir(parents=True, exist_ok=True)
                 if page_num == 1:
-                    (output_dir / "blog.html").write_text(html, encoding="utf-8")
+                    (blog_root / "index.html").write_text(html, encoding="utf-8")
+                    blog_expected.add("blog/index.html")
                 else:
-                    page_dir = output_dir / "blog" / str(page_num)
+                    page_dir = blog_root / str(page_num)
                     page_dir.mkdir(parents=True, exist_ok=True)
                     (page_dir / "index.html").write_text(html, encoding="utf-8")
                     blog_expected.add(f"blog/{page_num}/index.html")
@@ -1977,10 +1982,14 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                         h1=cat_h1, intro=cat_intro,
                         meta_title=cat_title, meta_desc=cat_meta,
                     )
+                    # ── /<cat>/ (page 1) + /<cat>/N/ (pages 2+) ──────────────
+                    cat_root = output_dir / cat['slug']
+                    cat_root.mkdir(parents=True, exist_ok=True)
                     if page_num == 1:
-                        (output_dir / f"{cat['slug']}.html").write_text(html, encoding="utf-8")
+                        (cat_root / "index.html").write_text(html, encoding="utf-8")
+                        blog_expected.add(f"{cat['slug']}/index.html")
                     else:
-                        page_dir = output_dir / cat['slug'] / str(page_num)
+                        page_dir = cat_root / str(page_num)
                         page_dir.mkdir(parents=True, exist_ok=True)
                         (page_dir / "index.html").write_text(html, encoding="utf-8")
                         blog_expected.add(f"{cat['slug']}/{page_num}/index.html")
@@ -2016,7 +2025,12 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     blog_categories=blog_categories,
                     all_posts=blog_posts,
                 )
-                (output_dir / f"{slug}.html").write_text(html, encoding="utf-8")
+                # ── Écriture en /<slug>/index.html (URLs avec slash final) ───
+                # Format WordPress-compatible : Cloudflare Pages sert /<slug>/
+                # et redirige automatiquement /<slug> → /<slug>/ en 301.
+                article_dir = output_dir / slug
+                article_dir.mkdir(parents=True, exist_ok=True)
+                (article_dir / "index.html").write_text(html, encoding="utf-8")
             print(f"  ✓ {len(blog_posts)} articles de blog générés")
 
     # ───────────────────────────────────────────────────────────────────────
