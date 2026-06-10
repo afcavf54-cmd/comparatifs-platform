@@ -1,18 +1,25 @@
 ---
-title: 'Rupture conventionnelle : quand parle-t-on d''accord implicite et quelles en sont les conséquences ?'
+title: 'Rupture conventionnelle : quand parle-t-on d''accord implicite et quelles
+  en sont les conséquences ?'
 slug: 5753-rupture-conventionnelle-quand-parle-t-on-d-accord-implicite-et-quelles-en-sont-les-consequences
 date: '2026-06-10T14:00:00+02:00'
 categorie: Salarié
 meta_title: Accord implicite rupture conventionnelle
-meta_description: Découvrez ce qu'est l'accord implicite en rupture conventionnelle et pourquoi il faut absolument l'éviter. Sans formalisme légal, ces arrangements verbaux peuvent…
+meta_description: Découvrez ce qu'est l'accord implicite en rupture conventionnelle
+  et pourquoi il faut absolument l'éviter. Sans formalisme légal, ces arrangements
+  verbaux peuvent…
 min_words: 1800
 status: published
 featured_image: /blog/5753-rupture-conventionnelle-quand-parle-t-on-d-accord-implicite-et-quelles-en-sont-les-consequences.jpg
 link_anchors:
 - text: accord implicite lors d'une rupture conventionnelle
   max: 4
+related_posts:
+- 6883-quels-avantages-propose-le-comite-d-entreprise-airbus-helicopters
+- 4315-comment-fonctionne-le-comite-d-entreprise-credit-mutuel
+- 5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage
+- 1054-comment-acceder-aux-avantages-du-comite-d-entreprise-adecco
 ---
-
 <h2>L'accord implicite dans la rupture conventionnelle : un piège à éviter</h2>
 
 <p>Je vois régulièrement passer des situations où des salariés pensent avoir conclu une rupture conventionnelle, alors qu'en réalité rien n'a été formalisé. C'est ce qu'on appelle <strong>l'accord implicite</strong>. Un terrain glissant qui peut coûter cher.</p>
