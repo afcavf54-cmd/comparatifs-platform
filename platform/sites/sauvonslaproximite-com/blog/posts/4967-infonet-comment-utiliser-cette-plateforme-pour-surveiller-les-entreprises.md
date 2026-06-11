@@ -10,8 +10,9 @@ featured_image: /blog/4967-infonet-comment-utiliser-cette-plateforme-pour-survei
 status: published
 min_words: 1000
 related_posts:
-- 1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise
+- 5780-roce-comment-evaluer-l-efficacite-du-capital-investi-dans-une-entreprise
 - 2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-implications-patrimoniales
+- 1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise
 - 6014-trimbox-analyse-complete-des-fonctionnalites-et-retours-utilisateurs
 link_anchors:
 - text: infonet

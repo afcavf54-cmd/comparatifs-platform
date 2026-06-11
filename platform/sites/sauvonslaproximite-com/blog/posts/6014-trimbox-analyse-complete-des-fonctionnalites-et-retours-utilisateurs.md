@@ -14,8 +14,9 @@ link_anchors:
 - text: trimbox
   max: 4
 related_posts:
-- 2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-implications-patrimoniales
+- 5780-roce-comment-evaluer-l-efficacite-du-capital-investi-dans-une-entreprise
 - 4967-infonet-comment-utiliser-cette-plateforme-pour-surveiller-les-entreprises
+- 2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-implications-patrimoniales
 - 1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise
 ---
 <h2>Mon premier contact avec Trimbox : une surprise dans la masse</h2>

@@ -13,9 +13,10 @@ link_anchors:
 - text: actif net réévalué
   max: 4
 related_posts:
-- 4967-infonet-comment-utiliser-cette-plateforme-pour-surveiller-les-entreprises
 - 2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-implications-patrimoniales
+- 4967-infonet-comment-utiliser-cette-plateforme-pour-surveiller-les-entreprises
 - 6014-trimbox-analyse-complete-des-fonctionnalites-et-retours-utilisateurs
+- 5780-roce-comment-evaluer-l-efficacite-du-capital-investi-dans-une-entreprise
 ---
 <h2>Pourquoi l'actif net comptable ne suffit plus ?</h2>
 
