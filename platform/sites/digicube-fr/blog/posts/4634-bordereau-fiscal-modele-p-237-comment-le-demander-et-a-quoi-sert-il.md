@@ -4,15 +4,21 @@ slug: 4634-bordereau-fiscal-modele-p-237-comment-le-demander-et-a-quoi-sert-il
 date: '2026-06-11T05:00:00+02:00'
 categorie: Finance & Comptabilité
 meta_title: 'Bordereau fiscal modèle P 237 : utilité et démarches administratives'
-meta_description: 'Découvrez le bordereau fiscal modèle P 237 : document obligatoire pour certaines entreprises lors des contrôles fiscaux. Guide complet pour savoir quand le…'
+meta_description: 'Découvrez le bordereau fiscal modèle P 237 : document obligatoire
+  pour certaines entreprises lors des contrôles fiscaux. Guide complet pour savoir
+  quand le…'
 min_words: 1200
 status: published
 featured_image: /blog/4634-bordereau-fiscal-modele-p-237-comment-le-demander-et-a-quoi-sert-il.jpg
 link_anchors:
 - text: bordereau de situation fiscale modèle p 237
   max: 4
+related_posts:
+- 5023-trimbox-notre-analyse-detaillee-de-cette-solution-de-gestion
+- 8207-infonet-tout-savoir-sur-cet-outil-d-information-legale-et-financiere
+- 6723-roce-comprendre-cet-indicateur-de-rentabilite-financiere
+- 3144-actif-net-reevalue-methode-de-calcul-et-interet-pour-les-investisseurs
 ---
-
 <h2>Qu'est-ce que le bordereau fiscal modèle P 237 ?</h2>
 
 <p>Le bordereau fiscal modèle P 237, je l'ai découvert il y a quelques années lors d'une vérification fiscale dans mon entreprise. Ce document m'avait complètement échappé jusqu'alors. C'est un formulaire administratif que certaines entreprises doivent obligatoirement tenir et présenter aux services fiscaux lors de contrôles.</p>
