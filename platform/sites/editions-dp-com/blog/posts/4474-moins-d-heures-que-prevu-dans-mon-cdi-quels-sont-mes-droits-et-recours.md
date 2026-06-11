@@ -1,18 +1,25 @@
 ---
-title: 'Moins d''heures que prévu dans mon CDI : quels sont mes droits et recours ?'
+title: 'Moins d''heures que prévu dans mon CDI : quels sont mes droits et recours
+  ?'
 slug: 4474-moins-d-heures-que-prevu-dans-mon-cdi-quels-sont-mes-droits-et-recours
 date: '2026-06-11T18:00:00+02:00'
 categorie: Salarié
 meta_title: Je fais moins d'heures que mon contrat CDI
-meta_description: 'Découvrez vos droits quand votre employeur vous fait travailler moins d''heures que prévu dans votre CDI. Salaire, recours légaux, exceptions autorisées : tout ce…'
+meta_description: 'Découvrez vos droits quand votre employeur vous fait travailler
+  moins d''heures que prévu dans votre CDI. Salaire, recours légaux, exceptions autorisées
+  : tout ce…'
 min_words: 1200
 status: published
 featured_image: /blog/4474-moins-d-heures-que-prevu-dans-mon-cdi-quels-sont-mes-droits-et-recours.jpg
 link_anchors:
 - text: je fais moins d'heure que mon contrat cdi
   max: 4
+related_posts:
+- 8124-combien-d-avertissements-avant-une-radiation-de-pole-emploi-regles-et-procedure
+- 6883-quels-avantages-propose-le-comite-d-entreprise-airbus-helicopters
+- 2622-que-propose-le-comite-d-entreprise-renault-aux-salaries
+- 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
 ---
-
 <h2>Ce qui m'est arrivé et pourquoi ça peut vous concerner</h2>
 
 <p>Il y a quelques mois, j'ai vécu une situation que beaucoup d'entre vous connaissent peut-être. <strong>Mon contrat prévoyait 35 heures par semaine</strong>, mais la réalité était bien différente. Certaines semaines, je ne faisais que 28 heures. D'autres, on me demandait de rester plus longtemps sans compensation.</p>
