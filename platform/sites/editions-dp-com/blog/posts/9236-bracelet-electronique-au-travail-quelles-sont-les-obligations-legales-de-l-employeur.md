@@ -1,18 +1,25 @@
 ---
-title: 'Bracelet électronique au travail : quelles sont les obligations légales de l''employeur ?'
+title: 'Bracelet électronique au travail : quelles sont les obligations légales de
+  l''employeur ?'
 slug: 9236-bracelet-electronique-au-travail-quelles-sont-les-obligations-legales-de-l-employeur
 date: '2026-06-11T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Bracelet électronique : obligations de l''employeur'
-meta_description: 'Bracelet électronique au travail : découvrez les obligations légales de l''employeur selon le RGPD et Code du travail. Surveillance justifiée, proportionnée et…'
+meta_description: 'Bracelet électronique au travail : découvrez les obligations légales
+  de l''employeur selon le RGPD et Code du travail. Surveillance justifiée, proportionnée
+  et…'
 min_words: 1800
 status: published
 featured_image: /blog/9236-bracelet-electronique-au-travail-quelles-sont-les-obligations-legales-de-l-employeur.jpg
 link_anchors:
 - text: obligation de l'employeur pour un salarié sous bracelet électronique
   max: 4
+related_posts:
+- 1506-qu-est-ce-que-l-experience-collaborateur-en-entreprise
+- 2742-le-talent-management-comment-developper-les-talents-en-entreprise
+- 3706-dsn-declaration-sociale-nominative-guide-complet-pour-les-employeurs
+- 6641-gestion-de-la-paie-fonctionnement-etapes-et-obligations
 ---
-
 <h2>Le bracelet électronique au travail : un dispositif qui interroge</h2>
 
 <p>Quand j'ai découvert que certaines entreprises utilisent des bracelets électroniques pour leurs salariés, ça m'a fait un choc. Je ne parle pas ici du dispositif pénal qu'on connaît tous, mais bien d'outils de surveillance au bureau. La question des obligations légales m'a tout de suite interpellé.</p>
