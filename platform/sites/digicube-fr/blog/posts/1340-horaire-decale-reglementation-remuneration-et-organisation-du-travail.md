@@ -13,7 +13,8 @@ featured_image: /blog/1340-horaire-decale-reglementation-remuneration-et-organis
 link_anchors:
 - text: horaire décalé dans le code du travail
   max: 4
-related_posts: []
+related_posts:
+- 3761-radiation-pole-emploi-procedure-delais-et-consequences-pour-les-demandeurs-d-emploi
 ---
 <h2>Qu'est-ce qu'un horaire décalé au travail ?</h2>
 

@@ -1,18 +1,22 @@
 ---
-title: 'Radiation Pôle Emploi : procédure, délais et conséquences pour les demandeurs d''emploi'
+title: 'Radiation Pôle Emploi : procédure, délais et conséquences pour les demandeurs
+  d''emploi'
 slug: 3761-radiation-pole-emploi-procedure-delais-et-consequences-pour-les-demandeurs-d-emploi
 date: '2026-06-11T12:00:00+02:00'
 categorie: Salarié
 meta_title: 'Radiation Pôle Emploi : règles, délais et conséquences'
-meta_description: Découvrez la procédure de radiation Pôle Emploi, les motifs qui peuvent vous conduire à cette sanction, les délais de traitement et les conséquences sur vos droits…
+meta_description: Découvrez la procédure de radiation Pôle Emploi, les motifs qui
+  peuvent vous conduire à cette sanction, les délais de traitement et les conséquences
+  sur vos droits…
 min_words: 1200
 status: published
 featured_image: /blog/3761-radiation-pole-emploi-procedure-delais-et-consequences-pour-les-demandeurs-d-emploi.jpg
 link_anchors:
 - text: nombre d'avertissement avant la radiation de pôle emploi
   max: 4
+related_posts:
+- 1340-horaire-decale-reglementation-remuneration-et-organisation-du-travail
 ---
-
 <h2>Qu'est-ce que la radiation de Pôle Emploi ?</h2>
 
 <p>La radiation de Pôle Emploi correspond à la <strong>suppression temporaire ou définitive</strong> de votre statut de demandeur d'emploi. Concrètement, vous perdez vos droits aux allocations chômage et l'accès aux services de Pôle Emploi pendant une durée déterminée.</p>
