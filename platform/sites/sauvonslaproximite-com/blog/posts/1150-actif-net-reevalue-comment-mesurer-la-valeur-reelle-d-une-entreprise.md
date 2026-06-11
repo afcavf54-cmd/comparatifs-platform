@@ -15,6 +15,7 @@ link_anchors:
 related_posts:
 - 4967-infonet-comment-utiliser-cette-plateforme-pour-surveiller-les-entreprises
 - 2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-implications-patrimoniales
+- 6014-trimbox-analyse-complete-des-fonctionnalites-et-retours-utilisateurs
 ---
 <h2>Pourquoi l'actif net comptable ne suffit plus ?</h2>
 

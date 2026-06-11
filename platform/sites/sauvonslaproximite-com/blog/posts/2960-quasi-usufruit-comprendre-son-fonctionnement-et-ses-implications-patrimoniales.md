@@ -12,6 +12,7 @@ featured_image: /blog/2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-i
 status: published
 min_words: 1800
 related_posts:
+- 6014-trimbox-analyse-complete-des-fonctionnalites-et-retours-utilisateurs
 - 4967-infonet-comment-utiliser-cette-plateforme-pour-surveiller-les-entreprises
 - 1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise
 link_anchors:
