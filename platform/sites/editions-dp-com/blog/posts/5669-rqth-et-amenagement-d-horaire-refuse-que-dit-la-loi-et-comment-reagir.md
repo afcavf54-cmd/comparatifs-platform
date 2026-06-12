@@ -4,15 +4,21 @@ slug: 5669-rqth-et-amenagement-d-horaire-refuse-que-dit-la-loi-et-comment-reagir
 date: '2026-06-12T18:00:00+02:00'
 categorie: Salarié
 meta_title: 'Refus aménagement horaire RQTH : vos recours'
-meta_description: 'RQTH et aménagement d''horaire refusé : découvrez vos droits, obligations légales de l''employeur et recours possibles. Guide pratique avec témoignage concret pour…'
+meta_description: 'RQTH et aménagement d''horaire refusé : découvrez vos droits, obligations
+  légales de l''employeur et recours possibles. Guide pratique avec témoignage concret
+  pour…'
 min_words: 1800
 status: published
 featured_image: /blog/5669-rqth-et-amenagement-d-horaire-refuse-que-dit-la-loi-et-comment-reagir.jpg
 link_anchors:
 - text: refus d'aménagement d'horaire pour une salarié rqth
   max: 4
+related_posts:
+- 8103-horaires-decales-ce-que-dit-le-code-du-travail-sur-vos-droits-et-obligations
+- 5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage
+- 1188-que-propose-le-comite-d-entreprise-gmf-aux-salaries
+- 1778-comment-fonctionne-le-comite-d-entreprise-loxam
 ---
-
 <h2>RQTH et refus d'aménagement : ma propre galère avec l'employeur</h2>
 
 <p>L'année dernière, j'ai accompagné un de mes salariés dans ses démarches liées à sa reconnaissance travailleur handicapé. Fatigue chronique, besoin d'horaires adaptés. <strong>Refus catégorique du client</strong> pour qui il travaillait. Ça m'a ouvert les yeux sur la complexité du sujet et les obligations légales que beaucoup ignorent.</p>
