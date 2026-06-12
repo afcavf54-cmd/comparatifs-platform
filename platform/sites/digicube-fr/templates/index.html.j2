@@ -115,7 +115,7 @@ h1,h2,h3,h4{
 }
 
 .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
-.section{padding-block:50px}
+.section{padding-block:100px}
 .eyebrow{
   font-family:var(--font-body);
   font-weight:700;
@@ -290,10 +290,10 @@ h1,h2,h3,h4{
   letter-spacing:-.03em;color:#fff}
 .trust-cell .t-num .u{color:var(--accent)}
 .trust-cell .t-lbl{font-size:13px;color:rgba(255,255,255,.6);font-weight:600;margin-top:6px;letter-spacing:.01em}
-.trust-logos{display:flex;gap:34px;align-items:center;justify-content:center;flex-wrap:wrap;
-  margin-top:30px;opacity:.55}
-.trust-logos .lg{height:22px;color:rgba(255,255,255,.7);font-weight:800;font-family:var(--font-display);
-  letter-spacing:.02em;font-size:15px;display:flex;align-items:center;gap:6px}
+.trust-logos{display:flex;gap:30px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.trust-logos .lg{color:#fff;font-weight:700;font-family:var(--font-display);
+  letter-spacing:-.005em;font-size:14.5px;display:inline-flex;align-items:center;gap:9px}
+.trust-logos .lg-ic{color:var(--accent);flex:none;width:18px;height:18px}
 
 /* ============================================================
    SECTION HEADER
@@ -666,10 +666,22 @@ h1,h2,h3,h4{
       <div class="trust-cell"><div class="t-num">{{ year | default(2026) }}</div><div class="t-lbl">Données à jour</div></div>
     </div>
     <div class="trust-logos">
-      <span class="lg">★ Indépendant</span>
-      <span class="lg">◆ Testé en conditions réelles</span>
-      <span class="lg">● Sans publi-rédactionnel</span>
-      <span class="lg">▲ Mis à jour chaque mois</span>
+      <span class="lg">
+        <svg class="lg-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.39 7.36H22l-6.18 4.49L18.21 21 12 16.5 5.79 21l2.39-7.15L2 9.36h7.61z"/></svg>
+        Indépendant
+      </span>
+      <span class="lg">
+        <svg class="lg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Testé en conditions réelles
+      </span>
+      <span class="lg">
+        <svg class="lg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+        Sans publi-rédactionnel
+      </span>
+      <span class="lg">
+        <svg class="lg-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
+        Mis à jour chaque mois
+      </span>
     </div>
   </div>
 </section>
