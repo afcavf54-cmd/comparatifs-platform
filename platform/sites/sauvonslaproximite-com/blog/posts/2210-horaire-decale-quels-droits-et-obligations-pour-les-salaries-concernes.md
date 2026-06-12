@@ -4,15 +4,17 @@ slug: 2210-horaire-decale-quels-droits-et-obligations-pour-les-salaries-concerne
 date: '2026-06-12T11:00:00+02:00'
 categorie: Salarié
 meta_title: 'Horaire décalé et code du travail : réglementation et droits'
-meta_description: 'Découvrez vos droits face aux horaires décalés : procédures obligatoires, préavis légal et protections du salarié. Guide complet sur la modification des horaires…'
+meta_description: 'Découvrez vos droits face aux horaires décalés : procédures obligatoires,
+  préavis légal et protections du salarié. Guide complet sur la modification des horaires…'
 min_words: 1200
 status: published
 featured_image: /blog/2210-horaire-decale-quels-droits-et-obligations-pour-les-salaries-concernes.jpg
 link_anchors:
 - text: horaire décalé dans le code du travail
   max: 4
+related_posts:
+- 8972-horaire-decale-quels-droits-et-obligations-pour-les-salaries-concernes
 ---
-
 <h2>Les horaires décalés en entreprise : ce que dit la loi</h2>
 
 <p>Après 20 ans dans la comptabilité, j'ai vu passer de nombreux dossiers RH où les salariés se retrouvaient confrontés à des changements d'horaires parfois brutaux. <strong>La question des horaires décalés</strong> revient régulièrement dans les entreprises, surtout celles qui doivent s'adapter aux contraintes client ou aux pics d'activité.</p>

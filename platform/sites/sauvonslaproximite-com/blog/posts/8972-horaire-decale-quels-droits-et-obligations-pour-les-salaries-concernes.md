@@ -13,7 +13,8 @@ featured_image: /blog/8972-horaire-decale-quels-droits-et-obligations-pour-les-s
 link_anchors:
 - text: horaire décalé dans le code du travail
   max: 4
-related_posts: []
+related_posts:
+- 2210-horaire-decale-quels-droits-et-obligations-pour-les-salaries-concernes
 ---
 <h2>Qu'est-ce qu'un horaire décalé et dans quels cas l'employeur peut-il l'imposer ?</h2>
 
