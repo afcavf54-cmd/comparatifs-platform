@@ -3,16 +3,20 @@ title: La formation intensive de négociation commerciale DealMaker de fond en c
 slug: 7190-la-formation-intensive-de-negociation-commerciale-dealmaker-de-fond-en-comble
 date: '2026-06-12T10:36:44+02:00'
 categorie: Salarié
-meta_title: 'Formation négociation commerciale DealMaker Intensive : vaut-elle le détour ?'
-meta_description: 'J''ai testé la formation DealMaker pour mes commerciaux : 3200€ pour 5 jours intensifs de négociation commerciale. Découvrez mon analyse complète de cette formation'
+meta_title: 'Formation négociation commerciale DealMaker Intensive : vaut-elle le
+  détour ?'
+meta_description: 'J''ai testé la formation DealMaker pour mes commerciaux : 3200€
+  pour 5 jours intensifs de négociation commerciale. Découvrez mon analyse complète
+  de cette formation'
 min_words: 940
 status: published
 featured_image: /blog/7190-la-formation-intensive-de-negociation-commerciale-dealmaker-de-fond-en-comble.jpg
 link_anchors:
 - text: la formation négociation commerciale DealMaker Intensive
   max: 5
+related_posts:
+- 2406-la-formation-caces-de-mon-institut-du-btp-au-scanner
 ---
-
 <h2>Pourquoi j'ai testé la formation DealMaker ?</h2>
 
 <p>Quand on gère une petite agence avec 6 commerciaux qui galèrent parfois à finaliser leurs ventes, on se dit qu'il faut agir. J'entendais parler de cette formation intensive DealMaker depuis des mois dans mon réseau lyonnais d'entrepreneurs. <strong>Le prix m'a d'abord fait hésiter</strong> : 3 200€ par participant pour une formation de 5 jours. Mais les retours étaient unanimes.</p>
