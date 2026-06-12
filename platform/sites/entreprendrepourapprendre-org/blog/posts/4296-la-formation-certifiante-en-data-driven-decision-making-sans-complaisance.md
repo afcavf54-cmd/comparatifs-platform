@@ -4,15 +4,19 @@ slug: 4296-la-formation-certifiante-en-data-driven-decision-making-sans-complais
 date: '2026-06-12T17:00:00+02:00'
 categorie: Salarié
 meta_title: 'Formation certifiante data driven decision making : faut-il y aller ?'
-meta_description: Découvrez une formation certifiante en data driven decision making adaptée aux dirigeants de TPE. Transformez vos données en vraies décisions business rentables.
+meta_description: Découvrez une formation certifiante en data driven decision making
+  adaptée aux dirigeants de TPE. Transformez vos données en vraies décisions business
+  rentables.
 min_words: 930
 status: published
 featured_image: /blog/4296-la-formation-certifiante-en-data-driven-decision-making-sans-complaisance.jpg
 link_anchors:
 - text: la formation certifiante Data Driven Decision Making
   max: 5
+related_posts:
+- 7898-la-formation-caces-de-mon-institut-du-btp-au-scanner
+- 7190-la-formation-intensive-de-negociation-commerciale-dealmaker-de-fond-en-comble
 ---
-
 <h2>Pourquoi j'ai décidé de me former au data driven decision making ?</h2>
 
 <p>L'année dernière, j'ai pris une décision qui m'a coûté <strong>15 000€ de chiffre d'affaires</strong>. Une campagne de communication basée sur "mon ressenti" plutôt que sur des données concrètes. Cette erreur m'a fait comprendre une chose : diriger une TPE sans s'appuyer sur les données, c'est naviguer à l'aveugle.</p>

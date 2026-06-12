@@ -173,9 +173,9 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <h1 class="blog-title">Le Blog</h1>
   </div>
   <div class="blog-filters">
-    <a class="blog-filter active" href="/blog/">Tous <span class="blog-filter-count">(19)</span></a>
+    <a class="blog-filter active" href="/blog/">Tous <span class="blog-filter-count">(20)</span></a>
     <a class="blog-filter" href="/categorie-ressources-humaines/">Ressources Humaines <span class="blog-filter-count">(14)</span></a>
-    <a class="blog-filter" href="/categorie-salarie/">Salarié <span class="blog-filter-count">(2)</span></a>
+    <a class="blog-filter" href="/categorie-salarie/">Salarié <span class="blog-filter-count">(3)</span></a>
     <a class="blog-filter" href="/categorie-entreprenariat/">Entreprenariat <span class="blog-filter-count">(2)</span></a>
     <a class="blog-filter" href="/categorie-creation-d-entreprise/">Création d'entreprise <span class="blog-filter-count">(1)</span></a>
   </div>
@@ -183,6 +183,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
 <main class="container">
   <div class="blog-grid">
+    <a href="/4296-la-formation-certifiante-en-data-driven-decision-making-sans-complaisance/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/4296-la-formation-certifiante-en-data-driven-decision-making-sans-complaisance.jpg" alt="La formation certifiante en data driven decision making sans complaisance" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Salarié</span>        <h2 class="blog-card-title">La formation certifiante en data driven decision making sans complaisance</h2>
+<p class="blog-card-excerpt">Pourquoi j'ai décidé de me former au data driven decision making ? L'année dernière, j'ai pris une décision qui m'a coûté 15 000€ de chiffre d'affaires . Une campagne de…</p><div class="blog-card-meta">12 juin 2026</div>      </div>
+    </a>
     <a href="/7190-la-formation-intensive-de-negociation-commerciale-dealmaker-de-fond-en-comble/" class="blog-card">
       <div class="blog-card-img">
         <img src="/blog/7190-la-formation-intensive-de-negociation-commerciale-dealmaker-de-fond-en-comble.jpg" alt="La formation intensive de négociation commerciale DealMaker de fond en comble" loading="lazy">
@@ -347,7 +355,8 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 .footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
 .footer-brand .footer-logo span{color:var(--accent2)}
 .footer-brand p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;max-width:260px;margin:0;padding:0}
-.footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+/* Anciennement .footer-col h4 — passé en div pour respecter la hiérarchie Hn (le footer ne doit pas introduire de Hn) */
+.footer-col .footer-col-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
 .footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
 .footer-col a:hover{color:#fff}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
@@ -365,7 +374,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <p>Comparateur de logiciels professionnels 2026</p>
       </div>
       <div class="footer-col">
-        <h4>Navigation</h4>
+        <div class="footer-col-label">Navigation</div>
         <a href="/nos-comparateurs">Nos comparateurs</a>
         <a href="/blog/">Blog</a>
         <a href="/plan-du-site">Plan du site</a>
@@ -373,7 +382,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <a href="/politique-confidentialite">Confidentialité</a>
       </div>
       <div class="footer-col">
-        <h4>À propos</h4>
+        <div class="footer-col-label">À propos</div>
         <a href="/contact">Nous contacter</a>
       </div>
     </div>

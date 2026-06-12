@@ -14,8 +14,7 @@ link_anchors:
 - text: la formation CACES de Mon-Institut-du-BTP
   max: 5
 related_posts:
-- 2406-la-formation-caces-de-mon-institut-du-btp-au-scanner
-- 4797-la-formation-intensive-de-negociation-commerciale-dealmaker-de-fond-en-comble
+- 4296-la-formation-certifiante-en-data-driven-decision-making-sans-complaisance
 - 7190-la-formation-intensive-de-negociation-commerciale-dealmaker-de-fond-en-comble
 ---
 <h2>Ce que j'ai découvert sur Mon-Institut-du-BTP</h2>

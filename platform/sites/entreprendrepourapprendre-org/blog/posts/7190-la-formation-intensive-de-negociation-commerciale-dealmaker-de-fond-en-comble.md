@@ -15,8 +15,7 @@ link_anchors:
 - text: la formation négociation commerciale DealMaker Intensive
   max: 5
 related_posts:
-- 4797-la-formation-intensive-de-negociation-commerciale-dealmaker-de-fond-en-comble
-- 2406-la-formation-caces-de-mon-institut-du-btp-au-scanner
+- 4296-la-formation-certifiante-en-data-driven-decision-making-sans-complaisance
 - 7898-la-formation-caces-de-mon-institut-du-btp-au-scanner
 ---
 <h2>Pourquoi j'ai testé la formation DealMaker ?</h2>
