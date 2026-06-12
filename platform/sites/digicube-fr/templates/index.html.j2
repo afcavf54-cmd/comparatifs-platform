@@ -363,7 +363,8 @@ h1,h2,h3,h4{
 .aud-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:transparent}
 .aud-ic{width:46px;height:46px;border-radius:12px;background:var(--accent-tint);color:var(--accent-700);
   display:grid;place-items:center;margin-bottom:16px}
-.aud-card h4{font-size:18px;margin-bottom:8px}
+/* Titres cards audience : passage en h3 (force la taille pour ne pas hériter de h3 par défaut) */
+.aud-card h3{font-size:18px;margin-bottom:8px;line-height:1.18}
 .aud-card p{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
 
 /* ============================================================
@@ -809,17 +810,17 @@ h1,h2,h3,h4{
     <div class="aud-grid">
       <div class="aud-card">
         <div class="aud-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"></path></svg></div>
-        <h4>Dirigeants de TPE</h4>
+        <h3>Dirigeants de TPE</h3>
         <p>Vous portez plusieurs casquettes. On vous fait gagner des heures de recherche avec des choix déjà arbitrés et expliqués.</p>
       </div>
       <div class="aud-card">
         <div class="aud-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"></circle><path d="M2 21v-2a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v2M17 11l2 2 4-4"></path></svg></div>
-        <h4>Indépendants &amp; freelances</h4>
+        <h3>Indépendants &amp; freelances</h3>
         <p>Facturation, compta, prospection : les bons outils pour rester léger sans renoncer à la conformité.</p>
       </div>
       <div class="aud-card">
         <div class="aud-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
-        <h4>Responsables de PME</h4>
+        <h3>Responsables de PME</h3>
         <p>RH, finance, marketing : des comparateurs par fonction pour outiller chaque service sans erreur de casting.</p>
       </div>
     </div>
