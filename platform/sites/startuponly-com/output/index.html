@@ -176,7 +176,8 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="nav-inner">
     <a href="/" class="nav-logo"><img src="/logo.png" alt="startuponly.com" style="height:36px;width:auto;object-fit:contain;vertical-align:middle"></a>
     <div class="nav-links">
-      <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/blog/">Blog</a>
           <a href="/outils">Outils</a>
     </div>
     <a href="/contact" class="nav-cta">Contact</a>
@@ -185,11 +186,54 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </button>
   </div>
   <div class="nav-mobile" id="nav-mobile">
-    <a href="/nos-comparateurs">Nos comparateurs</a>
+      <a href="/nos-comparateurs">Nos comparateurs</a>
+      <a href="/blog/">Blog</a>
         <a href="/outils">Outils</a>
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
 </nav>
+
+<script>
+/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
+   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
+   devoir redéfinir la fonction côté template parent.
+
+   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
+   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
+   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
+   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
+   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
+   qui est actif et le parent réécrit derrière s'il en a un.
+
+   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
+   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
+   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
+   ne faisait rien. */
+(function(){
+  if (typeof window.toggleMenu === 'function') return;
+  window.toggleMenu = function(){
+    var menu = document.getElementById('nav-mobile');
+    if (menu) menu.classList.toggle('open');
+  };
+  // UX bonus : fermer le menu mobile en cliquant en dehors
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('nav-mobile');
+    var burger = document.getElementById('burger');
+    if (!menu || !burger) return;
+    if (!menu.classList.contains('open')) return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    menu.classList.remove('open');
+  });
+  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
+  document.addEventListener('DOMContentLoaded', function(){
+    var menu = document.getElementById('nav-mobile');
+    if (!menu) return;
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  });
+})();
+</script>
 <!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">Comparatifs startuponly.com 2026</div>
@@ -593,6 +637,22 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   </section>
 
+  <section class="blog-recent-section">
+    <div class="blog-recent-head">
+      <h2>Articles récents</h2>
+      <a href="/blog" class="blog-recent-link">Voir tous les articles →</a>
+    </div>
+    <div class="blog-recent-grid">
+      <a href="/9906-delai-d-implementation-de-l-erp-bizflow-max" class="blog-recent-card">
+        <div class="blog-recent-card-img">
+            <img src="/blog/9906-delai-d-implementation-de-l-erp-bizflow-max.jpg" alt="Délai d'implémentation de l'ERP BizFlow Max" loading="lazy">
+        </div>
+        <div class="blog-recent-card-body">
+<div class="blog-recent-card-cat">Gestion d'entreprise</div>          <div class="blog-recent-card-title">Délai d'implémentation de l'ERP BizFlow Max</div>
+<div class="blog-recent-card-excerpt">Pourquoi l'implémentation de BizFlow Max prend-elle si longtemps ? J'ai accompagné 12 entreprises sur BizFlow Max ces trois dernières années. Le délai moyen ? 8 mois. Ça paraît…</div><div class="blog-recent-card-date">📅 12 juin 2026</div>        </div>
+      </a>
+    </div>
+  </section>
 
 </main>
 
@@ -614,34 +674,29 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   .footer-brand{grid-column:1/-1}
 }
 </style>
-
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-grid">
-
       <div class="footer-brand">
         <a href="/" style="display:block;margin-bottom:12px"><img src="/logo.png" alt="startuponly.com" style="height:36px;width:auto;object-fit:contain"></a>
         <p>Comparatifs startuponly.com 2026</p>
       </div>
-
       <div class="footer-col">
         <h4>Navigation</h4>
         <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/blog/">Blog</a>
         <a href="/plan-du-site">Plan du site</a>
         <a href="/mentions-legales">Mentions légales</a>
         <a href="/politique-confidentialite">Confidentialité</a>
       </div>
-
       <div class="footer-col">
         <h4>À propos</h4>
         <a href="/contact">Nous contacter</a>
       </div>
-
     </div>
-
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 startuponly.com — Données actualisées le 5 juin 2026
+        © 2026 startuponly.com — Données actualisées le 12 juin 2026
       </div>
     </div>
   </div>

@@ -4,61 +4,89 @@
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Page introuvable | startuponly.com</title>
-<meta name="robots" content="noindex">
+<title>Gestion d'entreprise — Blog | startuponly.com</title>
+<meta name="description" content="Articles gestion d'entreprise — startuponly.com">
+<link rel="canonical" href="https://startuponly.com/categorie-gestion-d-entreprise/">
+<meta property="og:title" content="Gestion d'entreprise — Blog | startuponly.com">
+<meta property="og:description" content="Articles gestion d'entreprise — startuponly.com">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://startuponly.com/categorie-gestion-d-entreprise/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=startuponly-com" rel="stylesheet">
+
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#FAFAFC;
-  --surface:#fff;
-  --surface2:#F0ECE5;
-  --ink:#1E293B;
-  --ink2:#6B6560;
-  --ink3:#A09890;
-  --accent:#0F172A;
-  --accent2:#7C3AED;--cta:#10B981;--cta-text:#ffffff;
-  --border:#E2DDD6;
-  --r:12px;
-  --r2:20px;
-  --green:#1A7A4A;
+  --bg:#FAFAFC;--surface:#FFFFFF;--surface2:#F5F3EE;
+  --ink:#1E293B;--ink2:#3D434B;--ink3:#8B9CB0;
+  --accent:#0F172A;--accent2:#7C3AED;--green:#3D7A4F;
+  --border:#E6E1D8;--r:8px;--r2:14px;
+--cta:#10B981;--cta-text:#ffffff;}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+a{color:var(--accent2);text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 5vw}
+/* Padding réduit (avant : 64px top / 32px bot) pour rapprocher le titre du header
+   et le titre des filtres. Sur mobile (≤600px) on resserre encore. */
+.blog-header{padding:32px 0 12px;text-align:center}
+.blog-title{font-family:'DM Serif Display',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:12px}
+.blog-sub{font-size:18px;color:var(--ink3);max-width:600px;margin:0 auto}
+/* Margin réduit (avant : 32px top / 40px bot) pour coller les filtres au titre. */
+.blog-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0 32px}
+.blog-filter{font-size:13px;font-weight:600;color:var(--ink2);padding:8px 16px;border-radius:24px;border:1px solid var(--border);background:var(--surface);transition:.15s;cursor:pointer}
+.blog-filter:hover,.blog-filter.active{color:var(--accent);border-color:var(--accent)}
+.blog-filter-count{font-size:11px;color:var(--ink3);margin-left:4px}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px}
+.blog-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;text-decoration:none;transition:.2s;display:flex;flex-direction:column}
+.blog-card:hover{border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.06);transform:translateY(-2px);text-decoration:none}
+.blog-card-img{aspect-ratio:16/9;background:var(--surface2);overflow:hidden}
+.blog-card-img img{width:100%;height:100%;object-fit:cover}
+.blog-card-img-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--surface2) 0%,var(--bg) 100%);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:48px}
+.blog-card-body{padding:20px 22px 24px;flex:1;display:flex;flex-direction:column}
+.blog-card-cat{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:10px;align-self:flex-start}
+.blog-card-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;line-height:1.3;color:var(--ink);margin-bottom:10px;letter-spacing:-.01em}
+.blog-card-excerpt{font-size:14px;color:var(--ink3);line-height:1.55;margin-bottom:16px;flex:1}
+.blog-card-meta{font-size:12px;color:var(--ink3);margin-top:auto}
+.blog-empty{text-align:center;padding:80px 0;color:var(--ink3);font-size:16px}
+/* Pagination style "rond bleu pour la page courante + ... + séparateur + Suivant".
+   Match visuel de la maquette fournie : numéros centrés sur 32px, page courante
+   en rond bleu plein, ellipsis pour gros volumes, séparateur vertical avant
+   Précédent/Suivant, et flèche dans cercle foncé.
+   ⚠️ ATTENTION : le sélecteur global `nav` défini dans _nav.html.j2 applique
+   `flex-direction:column; background:var(--ink); position:sticky; padding:0 5vw`
+   à TOUS les <nav>, y compris notre <nav class="blog-pagination">. On override
+   donc explicitement ces propriétés pour éviter que la pagination s'affiche en
+   colonne dans un fond sombre. */
+.blog-pagination{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:4px;margin:48px 0 24px;flex-wrap:nowrap;font-size:15px;background:transparent;padding:0;position:static}
+.blog-page-numbers{display:flex;align-items:center;gap:4px}
+.blog-page-num{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;padding:0 8px;border-radius:50%;background:transparent;border:none;color:var(--ink2);text-decoration:none;font-weight:500;transition:color .15s}
+.blog-page-num:hover{color:var(--accent)}
+.blog-page-current{background:var(--accent);color:#fff;font-weight:600;cursor:default}
+.blog-page-current:hover{color:#fff}
+.blog-page-ellipsis{display:inline-flex;align-items:center;justify-content:center;min-width:24px;color:var(--ink3);user-select:none}
+/* Séparateur vertical entre les numéros et le bouton Précédent/Suivant */
+.blog-page-sep{display:inline-block;width:1px;height:20px;background:var(--border);margin:0 12px}
+/* Lien Précédent/Suivant : texte + flèche dans rond foncé */
+.blog-page-link{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;font-weight:500;padding:6px 4px;background:transparent;border:none;transition:opacity .15s}
+.blog-page-link:hover{opacity:.6;background:transparent}
+.blog-page-disabled{display:inline-flex;align-items:center;gap:8px;color:var(--ink3);font-weight:500;padding:6px 4px;opacity:.4;cursor:default;background:transparent;border:none}
+.blog-page-arrow{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:11px;line-height:1;flex-shrink:0}
+.blog-page-disabled .blog-page-arrow{background:var(--ink3)}
+@media(max-width:600px){.blog-pagination{gap:2px;font-size:14px}.blog-page-num{min-width:28px;height:28px;padding:0 6px}.blog-page-sep{margin:0 6px}.blog-page-link,.blog-page-disabled{padding:4px 2px}.blog-page-link span:not(.blog-page-arrow){display:none}.blog-page-disabled span:not(.blog-page-arrow){display:none}}
+/* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
+@media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){
+  .blog-grid{grid-template-columns:1fr}
+  /* Resserrage supplémentaire sur mobile : header + filtres ultra compacts */
+  .blog-header{padding:20px 0 8px}
+  .blog-title{margin-bottom:8px}
+  .blog-filters{margin:10px 0 24px}
 }
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
-a{color:inherit;text-decoration:none}
-
-/* ── NAV ── */
-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
-.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
-.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
-.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
-.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
-.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
-.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
-.nav-cta:hover{opacity:.88}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
-.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
-.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
-.nav-mobile.open{display:flex}
-.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
-.nav-mobile a:hover{color:#fff;background:rgba(255,255,255,.08)}
-
-
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column}
-main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 5vw;text-align:center}
-.code{font-family:'DM Serif Display',serif;font-size:clamp(80px,15vw,160px);font-weight:400;color:var(--accent);line-height:1;margin-bottom:16px;opacity:.15}
-h1{font-family:'DM Serif Display',serif;font-size:clamp(24px,4vw,40px);font-weight:400;margin-bottom:12px}
-p{font-size:17px;color:#718096;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;background:var(--accent);color:#fff;font-size:16px;font-weight:600;text-decoration:none;transition:.15s}
-.btn:hover{background:var(--cta,var(--accent2))}
-.links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:16px}
-.link-sec{color:var(--accent);font-size:14px;text-decoration:none;padding:8px 16px;border-radius:8px;border:1px solid var(--border)}
-.link-sec:hover{background:var(--border)}
-
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
 </style>
+<meta name="google-site-verification" content="dbUmlw7ya-ztcNiY47reWej6Kok2j-6f-gwUI89CSeY">
 </head>
 <body>
+
 <style>
 nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
 nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
@@ -138,17 +166,28 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     });
   });
 })();
-</script><main>
-  <div>
-    <div class="code">404</div>
-    <h1>Page introuvable</h1>
-    <p>La page que vous recherchez n'existe pas ou a été déplacée. Revenez à l'accueil pour trouver votre comparatif.</p>
-    <a href="/" class="btn">← Retour à l'accueil</a>
-    <div class="links">
-      <a href="/nos-comparateurs" class="link-sec">Nos comparateurs</a>
-    </div>
+</script>
+<header class="container">
+  <div class="blog-header">
+    <h1 class="blog-title">Gestion d'entreprise</h1>
+<p class="blog-sub">1 article</p>  </div>
+</header>
+
+<main class="container">
+  <div class="blog-grid">
+    <a href="/9906-delai-d-implementation-de-l-erp-bizflow-max/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/9906-delai-d-implementation-de-l-erp-bizflow-max.jpg" alt="Délai d'implémentation de l'ERP BizFlow Max" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Gestion d'entreprise</span>        <h2 class="blog-card-title">Délai d'implémentation de l'ERP BizFlow Max</h2>
+<p class="blog-card-excerpt">Pourquoi l'implémentation de BizFlow Max prend-elle si longtemps ? J'ai accompagné 12 entreprises sur BizFlow Max ces trois dernières années. Le délai moyen ? 8 mois. Ça paraît…</p><div class="blog-card-meta">12 juin 2026</div>      </div>
+    </a>
   </div>
+
+
 </main>
+
 <style>
 .footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
 .footer-inner{max-width:1200px;margin:0 auto}
@@ -286,5 +325,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   // Check immédiat (au cas où la page est rechargée déjà scrollée)
   update();
 })();
-</script></body>
+</script>
+</body>
 </html>
