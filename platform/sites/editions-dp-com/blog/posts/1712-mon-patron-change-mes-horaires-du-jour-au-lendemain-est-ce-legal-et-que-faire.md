@@ -1,18 +1,25 @@
 ---
-title: 'Mon patron change mes horaires du jour au lendemain : est-ce légal et que faire ?'
+title: 'Mon patron change mes horaires du jour au lendemain : est-ce légal et que
+  faire ?'
 slug: 1712-mon-patron-change-mes-horaires-du-jour-au-lendemain-est-ce-legal-et-que-faire
 date: '2026-06-12T20:00:00+02:00'
 categorie: Salarié
 meta_title: Mon patron change mes horaires sans préavis
-meta_description: Votre patron change vos horaires sans préavis ? Découvrez vos droits selon le code du travail, les délais de prévenance obligatoires et les recours possibles face…
+meta_description: Votre patron change vos horaires sans préavis ? Découvrez vos droits
+  selon le code du travail, les délais de prévenance obligatoires et les recours possibles
+  face…
 min_words: 1200
 status: published
 featured_image: /blog/1712-mon-patron-change-mes-horaires-du-jour-au-lendemain-est-ce-legal-et-que-faire.jpg
 link_anchors:
 - text: mon patron change mes horaires du jour au lendemain
   max: 4
+related_posts:
+- 2622-que-propose-le-comite-d-entreprise-renault-aux-salaries
+- 4474-moins-d-heures-que-prevu-dans-mon-cdi-quels-sont-mes-droits-et-recours
+- 1188-que-propose-le-comite-d-entreprise-gmf-aux-salaries
+- 3068-quels-sont-les-services-du-comite-d-entreprise-allianz
 ---
-
 <h2>Changement d'horaires au dernier moment : les règles à connaître</h2>
 
 <p>Votre employeur vous annonce un changement d'horaires pour demain matin ? Je comprends votre frustration. En tant que dirigeant, j'ai eu l'occasion de voir cette situation des deux côtés de la barrière. La réponse n'est pas toujours simple, mais elle dépend de plusieurs facteurs précis.</p>
