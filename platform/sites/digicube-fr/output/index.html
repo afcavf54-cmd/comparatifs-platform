@@ -468,6 +468,19 @@ h1,h2,h3,h4{
   .cmp-grid,.avis-grid,.blog-grid,.aud-grid{grid-template-columns:1fr}
   .cmp-card.is-featured{grid-column:span 1}
   .sec-head{flex-direction:column;align-items:flex-start}
+  /* Affirmation : on garde 75px de padding vertical sur les sections (= 75px d'espace au-dessus de chaque H2 type "Nos comparateurs") */
+  .section{padding-block:75px}
+  /* CTA Newsletter — fix débordement mobile :
+     - réduit le padding interne
+     - cache le cercle décoratif (300x300) qui dépasse à droite
+     - passe le formulaire en colonne pour que input et bouton aient toute la largeur */
+  .cta{padding:28px 22px;gap:18px;border-radius:var(--radius)}
+  .cta::before{display:none}
+  .cta h2{font-size:clamp(22px,6vw,28px)}
+  .cta p{font-size:14.5px}
+  .cta-form{flex-direction:column;background:transparent;padding:0;gap:10px;border-radius:0}
+  .cta-form input{background:#fff;border-radius:var(--radius-pill);width:100%;padding:14px 18px;color:var(--ink)}
+  .cta-form .btn{justify-content:center;width:100%}
 }
 </style>
 
