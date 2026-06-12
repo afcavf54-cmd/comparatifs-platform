@@ -4,51 +4,61 @@
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nos comparateurs 2026 - creaone.fr</title>
-<meta name="description" content="Retrouvez tous nos comparatifs et classements de logiciels professionnels 2026 : Comparatifs creaone.fr 2026">
-<link rel="canonical" href="https://creaone.fr/nos-comparateurs">
+<title>Page introuvable | creaone.fr</title>
+<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=creaone-fr" rel="stylesheet">
 <style>
 :root{
-  --bg:#F4F7FA;--surface:#fff;--ink:#1C2733;
-  --ink2:#6B6560;--ink3:#A09890;--accent:#0F3D5E;--accent2:#1D70A2;
-  --cta:#168551;
-  --cta-text:#FFFFFF;
-  --border:#E2DDD6;--r:12px;--r2:20px;
+  --bg:#F4F7FA;
+  --surface:#fff;
+  --surface2:#F0ECE5;
+  --ink:#1C2733;
+  --ink2:#6B6560;
+  --ink3:#A09890;
+  --accent:#0F3D5E;
+  --accent2:#1D70A2;--cta:#168551;--cta-text:#FFFFFF;
+  --border:#E2DDD6;
+  --r:12px;
+  --r2:20px;
+  --green:#1A7A4A;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
 a{color:inherit;text-decoration:none}
 
-.hero{background:var(--ink);padding:48px 5vw 40px;text-align:center}
-.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(28px,4vw,48px);font-weight:400;color:#fff;line-height:1.15;letter-spacing:-.02em;margin-bottom:12px}
-.hero-sub{font-size:16px;color:rgba(255,255,255,.6);max-width:560px;margin:0 auto}
+/* ── NAV ── */
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
+.nav-cta:hover{opacity:.88}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+.nav-mobile a:hover{color:#fff;background:rgba(255,255,255,.08)}
 
-main{max-width:1100px;margin:0 auto;padding:56px 5vw 80px}
-.cat-section{margin-bottom:48px}
-.cat-title{font-family:'DM Serif Display',serif;font-size:clamp(22px,3vw,30px);font-weight:400;letter-spacing:-.02em;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--accent)}
-.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
 
-.comp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px 22px;display:flex;align-items:center;justify-content:space-between;transition:.15s;cursor:pointer}
-.comp-card:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(0,0,0,.06);transform:translateY(-2px)}
-.comp-card-left{display:flex;flex-direction:column;gap:4px}
-.comp-card-name{font-size:15px;font-weight:600;color:var(--ink)}
-.comp-card-count{font-size:12px;color:var(--ink3)}
-.comp-card-arrow{color:var(--accent);font-size:20px;opacity:0;transition:.15s}
-.comp-card:hover .comp-card-arrow{opacity:1}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 5vw;text-align:center}
+.code{font-family:'DM Serif Display',serif;font-size:clamp(80px,15vw,160px);font-weight:400;color:var(--accent);line-height:1;margin-bottom:16px;opacity:.15}
+h1{font-family:'DM Serif Display',serif;font-size:clamp(24px,4vw,40px);font-weight:400;margin-bottom:12px}
+p{font-size:17px;color:#718096;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;background:var(--accent);color:#fff;font-size:16px;font-weight:600;text-decoration:none;transition:.15s}
+.btn:hover{background:var(--cta,var(--accent2))}
+.links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.link-sec{color:var(--accent);font-size:14px;text-decoration:none;padding:8px 16px;border-radius:8px;border:1px solid var(--border)}
+.link-sec:hover{background:var(--border)}
 
-.footer-logo span{color:var(--accent2)}
-.footer-links a:hover{color:#fff}
-
-@media(max-width:768px){
-  .cat-grid{grid-template-columns:1fr}
-}
 </style>
-<meta name="google-site-verification" content="Rz8oi425b-CwU-EHq2QI7jhKg2Iuu6StC_bM6K95-bo">
 </head>
 <body>
-
 <style>
 nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
 nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
@@ -126,28 +136,17 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     });
   });
 })();
-</script>
-
-<div class="hero">
-  <h1>Nos comparateurs 2026</h1>
-  <p class="hero-sub">Comparatifs creaone.fr 2026</p>
-</div>
-
-<main>
-    <section class="cat-section">
-      <h2 class="cat-title">Marketing</h2>
-      <div class="cat-grid">
-        <a href="/meilleur-logiciel-de-creation-de-site-web" class="comp-card">
-          <div class="comp-card-left">
-            <div class="comp-card-name">Logiciel de création de site web</div>
-            <div class="comp-card-count">10 logiciels comparés</div>
-          </div>
-          <span class="comp-card-arrow">→</span>
-        </a>
-      </div>
-    </section>
+</script><main>
+  <div>
+    <div class="code">404</div>
+    <h1>Page introuvable</h1>
+    <p>La page que vous recherchez n'existe pas ou a été déplacée. Revenez à l'accueil pour trouver votre comparatif.</p>
+    <a href="/" class="btn">← Retour à l'accueil</a>
+    <div class="links">
+      <a href="/nos-comparateurs" class="link-sec">Nos comparateurs</a>
+    </div>
+  </div>
 </main>
-
 <style>
 .footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
 .footer-inner{max-width:1200px;margin:0 auto}
@@ -285,15 +284,5 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   // Check immédiat (au cas où la page est rechargée déjà scrollée)
   update();
 })();
-</script>
-<script>
-function toggleMenu(){
-  document.getElementById('nav-mobile').classList.toggle('open');
-}
-document.addEventListener('click',function(e){
-  var m=document.getElementById('nav-mobile'),b=document.getElementById('burger');
-  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');}
-});
-</script>
-</body>
+</script></body>
 </html>
