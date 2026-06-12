@@ -14,8 +14,9 @@ link_anchors:
 - text: la formation Google Ads de Vite-Une-Formation
   max: 5
 related_posts:
-- 7392-btp-chantier-fr-face-a-un-devis-d-artisan
 - 9025-l-espace-de-bureau-et-coworking-wework-face-aux-acteurs-locaux
+- 8676-l-espace-de-bureau-et-coworking-wework-face-aux-acteurs-locaux
+- 7392-btp-chantier-fr-face-a-un-devis-d-artisan
 ---
 <h2>Ma propre expérience avec Google Ads : un apprentissage chaotique</h2>
 

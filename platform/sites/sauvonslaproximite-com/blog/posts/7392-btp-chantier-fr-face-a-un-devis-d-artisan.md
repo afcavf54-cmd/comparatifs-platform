@@ -14,8 +14,9 @@ link_anchors:
 - text: un devis gratuit sur BTP-Chantier.fr
   max: 5
 related_posts:
-- 9025-l-espace-de-bureau-et-coworking-wework-face-aux-acteurs-locaux
 - 1981-se-former-a-google-ads-vite-une-formation-ou-seul
+- 8676-l-espace-de-bureau-et-coworking-wework-face-aux-acteurs-locaux
+- 9025-l-espace-de-bureau-et-coworking-wework-face-aux-acteurs-locaux
 ---
 <h2>Ma découverte de BTP-Chantier.fr : un concurrent sérieux aux solutions traditionnelles</h2>
 
