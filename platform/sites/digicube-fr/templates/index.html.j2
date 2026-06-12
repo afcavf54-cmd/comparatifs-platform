@@ -115,7 +115,7 @@ h1,h2,h3,h4{
 }
 
 .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
-.section{padding-block:100px}
+.section{padding-block:75px}
 .eyebrow{
   font-family:var(--font-body);
   font-weight:700;
@@ -693,7 +693,7 @@ h1,h2,h3,h4{
       <div>
         <span class="eyebrow eyebrow--center">Nos comparateurs</span>
         <h2>Trouvez le bon logiciel<br>selon votre métier</h2>
-        <p class="lead" style="margin-inline:auto">Chaque comparateur compare les solutions du marché sur le prix, les fonctionnalités et l'expérience réelle pour décider vite, sans vous tromper.</p>
+        <p class="lead" style="margin-inline:auto;max-width:80ch">Chaque comparateur compare les solutions du marché sur le prix, les fonctionnalités et l'expérience réelle pour décider vite, sans vous tromper.</p>
       </div>
     </div>
 
@@ -807,7 +807,146 @@ h1,h2,h3,h4{
     </div>
     <div class="split-media">
       <div class="hero-figure" style="aspect-ratio:4/4.4;box-shadow:var(--shadow)">
-        <div class="ph"><span class="ph-tag">Illustration flat · protocole de test</span></div>
+        <svg viewBox="0 0 400 440" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="display:block;width:100%;height:100%" aria-hidden="true">
+          <defs>
+            <linearGradient id="proto-bg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#16202e"/>
+              <stop offset="1" stop-color="#0d141f"/>
+            </linearGradient>
+            <radialGradient id="proto-glow" cx="78%" cy="14%" r="58%">
+              <stop offset="0" stop-color="#f97316" stop-opacity=".34"/>
+              <stop offset="1" stop-color="#f97316" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="proto-screen" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#1f2c3f"/>
+              <stop offset="1" stop-color="#16202e"/>
+            </linearGradient>
+            <linearGradient id="proto-spark" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#f97316"/>
+              <stop offset="1" stop-color="#fb923c"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Background -->
+          <rect width="400" height="440" fill="url(#proto-bg)"/>
+          <rect width="400" height="440" fill="url(#proto-glow)"/>
+
+          <!-- Subtle diagonal pattern -->
+          <g opacity=".06" stroke="#fff" stroke-width=".5">
+            <line x1="-40" y1="100" x2="440" y2="-40"/>
+            <line x1="-40" y1="200" x2="440" y2="60"/>
+            <line x1="-40" y1="300" x2="440" y2="160"/>
+            <line x1="-40" y1="400" x2="440" y2="260"/>
+            <line x1="-40" y1="500" x2="440" y2="360"/>
+          </g>
+
+          <!-- Browser / app window -->
+          <rect x="42" y="62" width="316" height="252" rx="14" fill="url(#proto-screen)" stroke="rgba(255,255,255,.09)" stroke-width="1"/>
+          <!-- Window controls -->
+          <circle cx="60" cy="82" r="4" fill="#fb923c"/>
+          <circle cx="74" cy="82" r="4" fill="rgba(255,255,255,.15)"/>
+          <circle cx="88" cy="82" r="4" fill="rgba(255,255,255,.15)"/>
+          <!-- Window tab / search bar -->
+          <rect x="116" y="74" width="180" height="16" rx="8" fill="rgba(255,255,255,.06)"/>
+          <rect x="124" y="80" width="80" height="4" rx="2" fill="rgba(255,255,255,.28)"/>
+          <!-- Divider -->
+          <line x1="56" y1="104" x2="344" y2="104" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+
+          <!-- Step 1 -->
+          <g transform="translate(60,124)">
+            <rect width="22" height="22" rx="6" fill="#f97316"/>
+            <text x="11" y="16" text-anchor="middle" fill="#fff" font-family="Archivo, sans-serif" font-weight="800" font-size="12">1</text>
+            <rect x="34" y="3" width="178" height="6" rx="3" fill="rgba(255,255,255,.78)"/>
+            <rect x="34" y="14" width="120" height="4" rx="2" fill="rgba(255,255,255,.22)"/>
+            <!-- Check pill on the right -->
+            <g transform="translate(252,2)">
+              <rect width="32" height="18" rx="9" fill="rgba(249,115,22,.18)"/>
+              <path d="M9 9 L13 13 L23 4" stroke="#f97316" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </g>
+
+          <!-- Step 2 -->
+          <g transform="translate(60,160)">
+            <rect width="22" height="22" rx="6" fill="#f97316"/>
+            <text x="11" y="16" text-anchor="middle" fill="#fff" font-family="Archivo, sans-serif" font-weight="800" font-size="12">2</text>
+            <rect x="34" y="3" width="156" height="6" rx="3" fill="rgba(255,255,255,.78)"/>
+            <rect x="34" y="14" width="100" height="4" rx="2" fill="rgba(255,255,255,.22)"/>
+            <g transform="translate(252,2)">
+              <rect width="32" height="18" rx="9" fill="rgba(249,115,22,.18)"/>
+              <path d="M9 9 L13 13 L23 4" stroke="#f97316" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </g>
+
+          <!-- Step 3 -->
+          <g transform="translate(60,196)">
+            <rect width="22" height="22" rx="6" fill="#f97316"/>
+            <text x="11" y="16" text-anchor="middle" fill="#fff" font-family="Archivo, sans-serif" font-weight="800" font-size="12">3</text>
+            <rect x="34" y="3" width="190" height="6" rx="3" fill="rgba(255,255,255,.78)"/>
+            <rect x="34" y="14" width="138" height="4" rx="2" fill="rgba(255,255,255,.22)"/>
+            <g transform="translate(252,2)">
+              <rect width="32" height="18" rx="9" fill="rgba(249,115,22,.18)"/>
+              <path d="M9 9 L13 13 L23 4" stroke="#f97316" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </g>
+
+          <!-- Step 4 -->
+          <g transform="translate(60,232)">
+            <rect width="22" height="22" rx="6" fill="#f97316"/>
+            <text x="11" y="16" text-anchor="middle" fill="#fff" font-family="Archivo, sans-serif" font-weight="800" font-size="12">4</text>
+            <rect x="34" y="3" width="168" height="6" rx="3" fill="rgba(255,255,255,.78)"/>
+            <rect x="34" y="14" width="110" height="4" rx="2" fill="rgba(255,255,255,.22)"/>
+            <g transform="translate(252,2)">
+              <rect width="32" height="18" rx="9" fill="rgba(249,115,22,.18)"/>
+              <path d="M9 9 L13 13 L23 4" stroke="#f97316" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </g>
+
+          <!-- Mini stat bars at bottom of screen -->
+          <g transform="translate(60,272)">
+            <rect width="84" height="30" rx="6" fill="rgba(255,255,255,.04)"/>
+            <text x="10" y="14" fill="rgba(255,255,255,.5)" font-family="Hanken Grotesk, sans-serif" font-weight="700" font-size="7" letter-spacing=".6">CRITÈRES</text>
+            <text x="10" y="26" fill="#fff" font-family="Archivo, sans-serif" font-weight="800" font-size="14">6/6</text>
+          </g>
+          <g transform="translate(154,272)">
+            <rect width="84" height="30" rx="6" fill="rgba(255,255,255,.04)"/>
+            <text x="10" y="14" fill="rgba(255,255,255,.5)" font-family="Hanken Grotesk, sans-serif" font-weight="700" font-size="7" letter-spacing=".6">SCORE</text>
+            <text x="10" y="26" fill="#fff" font-family="Archivo, sans-serif" font-weight="800" font-size="14">8,7<tspan fill="rgba(255,255,255,.4)" font-size="9">/10</tspan></text>
+          </g>
+          <g transform="translate(248,272)">
+            <rect width="84" height="30" rx="6" fill="rgba(255,255,255,.04)"/>
+            <text x="10" y="14" fill="rgba(255,255,255,.5)" font-family="Hanken Grotesk, sans-serif" font-weight="700" font-size="7" letter-spacing=".6">VERDICT</text>
+            <text x="10" y="26" fill="#f97316" font-family="Archivo, sans-serif" font-weight="800" font-size="11">RECOMMANDÉ</text>
+          </g>
+
+          <!-- Standalone badge "TESTÉ" qui dépasse du cadre -->
+          <g transform="translate(286,42)">
+            <circle r="36" fill="url(#proto-spark)"/>
+            <circle r="36" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+            <text y="-3" text-anchor="middle" fill="#fff" font-family="Archivo, sans-serif" font-weight="800" font-size="13" letter-spacing=".5">TESTÉ</text>
+            <text y="13" text-anchor="middle" fill="#fff" font-family="Hanken Grotesk, sans-serif" font-weight="700" font-size="9" opacity=".9">en conditions</text>
+            <text y="24" text-anchor="middle" fill="#fff" font-family="Hanken Grotesk, sans-serif" font-weight="700" font-size="9" opacity=".9">réelles</text>
+          </g>
+
+          <!-- Mini chart card en bas -->
+          <g transform="translate(42,332)">
+            <rect width="316" height="80" rx="14" fill="url(#proto-screen)" stroke="rgba(255,255,255,.09)" stroke-width="1"/>
+            <text x="18" y="22" fill="rgba(255,255,255,.5)" font-family="Hanken Grotesk, sans-serif" font-weight="700" font-size="8" letter-spacing=".8">PROGRESSION DES TESTS</text>
+            <!-- Bars -->
+            <rect x="18" y="34" width="14" height="32" rx="2" fill="#f97316"/>
+            <rect x="38" y="42" width="14" height="24" rx="2" fill="#f97316" opacity=".82"/>
+            <rect x="58" y="30" width="14" height="36" rx="2" fill="#f97316" opacity=".72"/>
+            <rect x="78" y="38" width="14" height="28" rx="2" fill="#f97316" opacity=".58"/>
+            <rect x="98" y="48" width="14" height="18" rx="2" fill="#f97316" opacity=".42"/>
+            <rect x="118" y="44" width="14" height="22" rx="2" fill="#f97316" opacity=".32"/>
+            <!-- Tiny line curve right side -->
+            <path d="M148,64 L168,52 L188,56 L208,42 L228,46 L248,32 L268,38 L288,24"
+                  stroke="#f97316" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Points -->
+            <circle cx="148" cy="64" r="2.5" fill="#f97316"/>
+            <circle cx="288" cy="24" r="3" fill="#fff"/>
+            <circle cx="288" cy="24" r="6" fill="none" stroke="#f97316" stroke-width="1.5"/>
+          </g>
+        </svg>
       </div>
     </div>
   </div>
@@ -820,7 +959,7 @@ h1,h2,h3,h4{
       <div>
         <span class="eyebrow eyebrow--center">À qui s'adresse Digicube</span>
         <h2>Pensé pour ceux qui dirigent,<br>pas pour les DSI</h2>
-        <p class="lead" style="margin-inline:auto">Digicube parle le langage des entrepreneurs et des petites équipes : on traduit la technologie en décisions simples, utiles au quotidien.</p>
+        <p class="lead" style="margin-inline:auto;max-width:80ch">Digicube parle le langage des entrepreneurs et des petites équipes : on traduit la technologie en décisions simples, utiles au quotidien.</p>
       </div>
     </div>
     <div class="aud-grid">
@@ -993,20 +1132,26 @@ h1,h2,h3,h4{
 <section class="section edito" id="auteur">
   <div class="wrap edito-grid">
     <div>
-      <span class="eyebrow">L'édito de Nicolas</span>
+      <span class="eyebrow">L'édito de {{ (author.name.split(' ')[0]) if (author is defined and author.name) else 'Nicolas' }}</span>
       <blockquote>« J'ai créé Digicube parce que je perdais des heures à choisir mes outils. Aujourd'hui, je <span class="hl">teste pour vous</span> ce que j'aurais aimé qu'on m'explique. »</blockquote>
     </div>
     <div class="author-card">
       <div class="author-top">
-        <div class="author-photo"><div class="ph"></div></div>
+        <div class="author-photo">
+          {% if author is defined and author.photo %}
+            <img src="{{ author.photo }}" alt="{{ author.name | default('Auteur') }}" style="width:100%;height:100%;object-fit:cover;display:block">
+          {% else %}
+            <div class="ph"></div>
+          {% endif %}
+        </div>
         <div>
           <div class="author-role">Auteur</div>
-          <div class="author-name">Nicolas Roux</div>
-          <div class="author-meta">Dirigeant TPE · Marseille</div>
+          <div class="author-name">{{ author.name if (author is defined and author.name) else 'Nicolas Roux' }}</div>
+          <div class="author-meta">{{ author.job_title if (author is defined and author.job_title) else 'Dirigeant TPE · Marseille' }}</div>
         </div>
       </div>
-      <p>Nicolas Roux dirige sa TPE depuis 2 ans à Marseille, où il développe son expertise entrepreneuriale au quotidien. Fort de son expérience terrain, il accompagne la croissance de son entreprise avec pragmatisme et détermination. Sa connaissance du tissu économique local lui permet d'adapter ses stratégies aux spécificités du marché marseillais.</p>
-      <div class="author-sign">— Nicolas, fondateur de Digicube</div>
+      <p>{{ author.bio if (author is defined and author.bio) else "Nicolas Roux dirige sa TPE depuis 2 ans à Marseille, où il développe son expertise entrepreneuriale au quotidien. Fort de son expérience terrain, il accompagne la croissance de son entreprise avec pragmatisme et détermination. Sa connaissance du tissu économique local lui permet d'adapter ses stratégies aux spécificités du marché marseillais." }}</p>
+      <div class="author-sign">— {{ (author.name.split(' ')[0]) if (author is defined and author.name) else 'Nicolas' }}, fondateur de Digicube</div>
     </div>
   </div>
 </section>
