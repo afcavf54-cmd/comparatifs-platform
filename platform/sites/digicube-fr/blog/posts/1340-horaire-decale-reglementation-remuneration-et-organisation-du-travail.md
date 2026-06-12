@@ -15,6 +15,7 @@ link_anchors:
   max: 4
 related_posts:
 - 3761-radiation-pole-emploi-procedure-delais-et-consequences-pour-les-demandeurs-d-emploi
+- 2242-accord-implicite-de-rupture-conventionnelle-mythe-ou-realite-juridique
 ---
 <h2>Qu'est-ce qu'un horaire décalé au travail ?</h2>
 

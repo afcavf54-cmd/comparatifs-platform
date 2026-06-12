@@ -4,15 +4,19 @@ slug: 2242-accord-implicite-de-rupture-conventionnelle-mythe-ou-realite-juridiqu
 date: '2026-06-12T14:00:00+02:00'
 categorie: Salarié
 meta_title: 'Accord implicite rupture conventionnelle : existe-t-il vraiment ?'
-meta_description: L'accord implicite de rupture conventionnelle n'existe pas juridiquement. Découvrez pourquoi le formalisme strict est obligatoire et les risques encourus sans…
+meta_description: L'accord implicite de rupture conventionnelle n'existe pas juridiquement.
+  Découvrez pourquoi le formalisme strict est obligatoire et les risques encourus
+  sans…
 min_words: 1800
 status: published
 featured_image: /blog/2242-accord-implicite-de-rupture-conventionnelle-mythe-ou-realite-juridique.jpg
 link_anchors:
 - text: accord implicite lors d'une rupture conventionnelle
   max: 4
+related_posts:
+- 3761-radiation-pole-emploi-procedure-delais-et-consequences-pour-les-demandeurs-d-emploi
+- 1340-horaire-decale-reglementation-remuneration-et-organisation-du-travail
 ---
-
 <h2>Qu'est-ce qu'un accord implicite de rupture conventionnelle ?</h2>
 
 <p>J'ai souvent entendu des dirigeants me dire : "On s'est mis d'accord avec le salarié, il va partir". Mais attention, juridiquement parlant, <strong>l'accord implicite de rupture conventionnelle n'existe pas</strong>. Je vais vous expliquer pourquoi c'est important pour votre entreprise.</p>
