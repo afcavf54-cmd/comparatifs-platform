@@ -4,15 +4,21 @@ slug: 8814-comment-installer-erp-cloudmanager-enterprise
 date: '2026-06-12T12:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Installer ERP CloudManager Enterprise : tutoriel complet'
-meta_description: 'Découvrez comment installer ERP CloudManager Enterprise étape par étape : prérequis techniques, configuration serveur, téléchargement et procédure complète pour…'
+meta_description: 'Découvrez comment installer ERP CloudManager Enterprise étape par
+  étape : prérequis techniques, configuration serveur, téléchargement et procédure
+  complète pour…'
 min_words: 950
 status: published
 featured_image: /blog/8814-comment-installer-erp-cloudmanager-enterprise.jpg
 link_anchors:
 - text: comment installer l'ERP CloudManager Enterprise
   max: 5
+related_posts:
+- 9832-comment-configurer-erp-solutions-dynabiz-pro-efficacement
+- 4499-comment-implementer-erp-nextgen-business-suite
+- 9832-la-methode-sepo-expliquee-comment-l-utiliser-pour-analyser-votre-organisation
+- 1628-comment-gerer-ses-stocks-avec-inventory-control-smart
 ---
-
 <h2>Les prérequis techniques pour une installation réussie</h2>
 
 <p>Avant de me lancer dans l'installation d'ERP CloudManager Enterprise, j'ai appris à mes dépens qu'il faut vérifier plusieurs points. <strong>Premier point crucial</strong> : votre serveur doit tourner sous Windows Server 2016 minimum. J'ai perdu une matinée complète sur une ancienne machine en 2012.</p>
