@@ -4,15 +4,17 @@ slug: 8972-horaire-decale-quels-droits-et-obligations-pour-les-salaries-concerne
 date: '2026-06-12T11:00:00+02:00'
 categorie: Salarié
 meta_title: 'Horaire décalé et code du travail : réglementation et droits'
-meta_description: Découvrez vos droits face aux horaires décalés imposés par votre employeur. Quand peut-il modifier vos créneaux ? Quelles procédures respecter ? Guide complet pour…
+meta_description: Découvrez vos droits face aux horaires décalés imposés par votre
+  employeur. Quand peut-il modifier vos créneaux ? Quelles procédures respecter ?
+  Guide complet pour…
 min_words: 1200
 status: published
 featured_image: /blog/8972-horaire-decale-quels-droits-et-obligations-pour-les-salaries-concernes.jpg
 link_anchors:
 - text: horaire décalé dans le code du travail
   max: 4
+related_posts: []
 ---
-
 <h2>Qu'est-ce qu'un horaire décalé et dans quels cas l'employeur peut-il l'imposer ?</h2>
 
 <p>Les horaires décalés correspondent à des plages de travail qui sortent du cadre traditionnel 9h-17h. Je vois régulièrement passer des dossiers où les salariés découvrent du jour au lendemain un changement de leurs créneaux habituels. Cette pratique soulève des questions légitimes sur les droits et obligations de chacun.</p>
