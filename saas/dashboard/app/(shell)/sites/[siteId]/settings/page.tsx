@@ -12,12 +12,11 @@ export default function SettingsPage() {
   const [savingTheme, setSavingTheme] = useState(false)
   const [msgTheme, setMsgTheme] = useState('')
   const [seoForm, setSeoForm] = useState({ home_title: '', home_description: '', home_h1: '', seo_vs_title: '{A} vs {B} : comparatif {year}', seo_vs_meta: 'Comparatif complet {A} vs {B} {year} : rendements, frais, avis.', seo_avis_title: 'Avis {nom} {year} : faut-il investir ?', seo_avis_meta: 'Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques.', seo_liste_comp_title: 'Tous les comparatifs {site_name} {year}', seo_liste_avis_title: 'Avis {site_name} {year} : analyses independantes', seo_classement_title: 'Meilleur {categorie} {year} : Top {count}', seo_classement_meta: 'Comparez les meilleurs {categorie} en {year}.', seo_classement_h1: '', seo_classement_titre_analyse: 'Comparatif complet {categorie}', www_preference: 'www' })
+  // pageTypes reste lu en interne (utilisé par le bloc SEO classement) mais n'est plus éditable depuis cette page
   const [pageTypes, setPageTypes] = useState<Record<string, string>>({})
-  const [availableSchemas, setAvailableSchemas] = useState<any[]>([])
   const [saving, setSaving] = useState(false)
   const [savingSeo, setSavingSeo] = useState(false)
   const [deployingSeo, setDeployingSeo] = useState(false)
-  const [savingPageTypes, setSavingPageTypes] = useState(false)
   const [deleting, setDeleting] = useState(false)
   const [faviconFile, setFaviconFile] = useState<File | null>(null)
   const [uploadingFavicon, setUploadingFavicon] = useState(false)
@@ -27,16 +26,10 @@ export default function SettingsPage() {
   const [logoPreview, setLogoPreview] = useState<string | null>(null)
   const [msg, setMsg] = useState('')
   const [msgSeo, setMsgSeo] = useState('')
-  const [msgPageTypes, setMsgPageTypes] = useState('')
   const [msgFavicon, setMsgFavicon] = useState('')
   const [faviconPreview, setFaviconPreview] = useState<string | null>(null)
   const [authorPhotoPreview, setAuthorPhotoPreview] = useState<string | null>(null)
   const [personaPrompt, setPersonaPrompt] = useState('')
-  const [selectedKeywords, setSelectedKeywords] = useState<string[]>([])
-  const [allKeywords, setAllKeywords] = useState<{name: string, categorie: string, count: number}[]>([])
-  const [collapsedKwCats, setCollapsedKwCats] = useState<Record<string, boolean>>({})
-  const [savingKeywords, setSavingKeywords] = useState(false)
-  const [msgKeywords, setMsgKeywords] = useState('')
   const [authorName, setAuthorName] = useState('')
   const [authorBio, setAuthorBio] = useState('')
   const [authorJob, setAuthorJob] = useState('')
@@ -84,40 +77,15 @@ export default function SettingsPage() {
           img.src = rawUrl
         }
         }
-        // Charger selected_keywords
-        setSelectedKeywords(d.selected_keywords || [])
         // Charger persona
         setPersonaPrompt(d.persona_prompt || '')
       }
-    }).catch(() => {})
-
-    // Charger les keywords disponibles depuis le schema classement-saas
-    fetch(`/api/schemas/classement-saas`).then(r => r.json()).then(schema => {
-      if (schema?.keywords) {
-        const kws = Object.entries(schema.keywords).map(([name, data]: [string, any]) => ({
-          name,
-          categorie: data.__categorie || 'Autres',
-          count: (data.__products || []).length
-        }))
-        setAllKeywords(kws)
-      }
-    }).catch(() => {})
-
-    fetch('/api/github?path=platform/schemas').then(r => r.json()).then(async (files) => {
-      if (!Array.isArray(files)) return
-      const schemas = await Promise.all(files.filter((f: any) => f.name.endsWith('.json')).map(async (f: any) => {
-        const r = await fetch(`/api/github?path=${encodeURIComponent(f.path)}`)
-        const d = await r.json()
-        try { return { ...JSON.parse(d.content), filename: f.name.replace('.json', '') } } catch { return null }
-      }))
-      setAvailableSchemas(schemas.filter(Boolean))
     }).catch(() => {})
   }, [siteId])
 
   async function save() { setSaving(true); setMsg(''); const r = await fetch(`/api/sites/${siteId}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) }); const d = await r.json(); setMsg(d.id ? '✓ Paramètres sauvegardés' : '✗ Erreur'); setSaving(false) }
   async function saveSeo() { setSavingSeo(true); setMsgSeo(''); const r = await fetch(`/api/sites/${siteId}/config`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(seoForm) }); const d = await r.json(); setMsgSeo(d.ok ? '✓ SEO sauvegardé' : '✗ Erreur'); setSavingSeo(false) }
   async function saveSeoAndDeploy() { setDeployingSeo(true); setMsgSeo(''); try { const r = await fetch(`/api/sites/${siteId}/config`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(seoForm) }); const d = await r.json(); if (!d.ok) throw new Error(d.error || 'Erreur sauvegarde'); const wr = await fetch(`/api/sites/${siteId}/deploy`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ skip_enrich: true }) }); const wd = await wr.json(); if (!wd.ok) throw new Error(wd.error || 'Erreur workflow'); setMsgSeo('✓ SEO sauvegardé et redéploiement lancé') } catch (e: any) { setMsgSeo('✗ ' + e.message) } finally { setDeployingSeo(false) } }
-  async function savePageTypes() { setSavingPageTypes(true); setMsgPageTypes(''); const r = await fetch(`/api/sites/${siteId}/config`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...seoForm, page_types: pageTypes }) }); const d = await r.json(); setMsgPageTypes(d.ok ? '✓ Types de pages sauvegardés' : '✗ Erreur'); setSavingPageTypes(false) }
   async function uploadLogo() {
     if (!logoFile) return
     setUploadingLogo(true); setMsgLogo('')
@@ -259,26 +227,6 @@ export default function SettingsPage() {
         <button onClick={saveSeoAndDeploy} disabled={deployingSeo} style={{ marginLeft: 10, padding: '11px 24px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #9F7AEA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>{deployingSeo ? '🚀 Déploiement...' : '🚀 Sauvegarder et redéployer'}</button>
       </div>
 
-      {/* Types de pages */}
-      <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24, marginBottom: 20 }}>
-        <h3 style={{ color: '#fff', margin: '0 0 8px', fontSize: 15, fontWeight: 600 }}>📐 Types de pages</h3>
-        <p style={{ color: '#8B9CB0', fontSize: 12, marginBottom: 16, lineHeight: 1.6 }}>Associez un modèle de page à chaque type. Les modèles définissent la structure et les prompts de génération.</p>
-        {['avis', 'vs', 'local', 'classement'].map(type => (
-          <div key={type} style={{ marginBottom: 12 }}>
-            <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 6 }}>{type}</div>
-            <select value={pageTypes[type] || ''} onChange={e => setPageTypes(prev => ({ ...prev, [type]: e.target.value }))}
-              style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: pageTypes[type] ? '#fff' : '#4A5568', fontSize: 13, outline: 'none' }}>
-              <option value=''>— Non utilisé —</option>
-              {availableSchemas.filter(s => s.type === type).map(s => (
-                <option key={s.filename} value={s.filename}>{s.label} ({s.filename})</option>
-              ))}
-            </select>
-          </div>
-        ))}
-        {msgPageTypes && <div style={{ fontSize: 13, color: msgPageTypes.startsWith('✓') ? '#00D4AA' : '#FC8181', marginBottom: 12 }}>{msgPageTypes}</div>}
-        <button onClick={savePageTypes} disabled={savingPageTypes} style={{ padding: '11px 24px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>{savingPageTypes ? 'Sauvegarde...' : '💾 Sauvegarder les types'}</button>
-      </div>
-
       {/* Favicon */}
       <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 16, padding: 24, marginBottom: 20 }}>
         {/* Logo */}
@@ -328,8 +276,7 @@ export default function SettingsPage() {
         </button>
       </div>
 
-      {/* Danger zone */}
-            {/* ── PERSONA ── */}
+      {/* ── PERSONA ── */}
       <div style={{background:'#0D1117',border:'1px solid #1E2D3D',borderRadius:12,padding:24,marginBottom:24}}>
         <h3 style={{color:'#fff',fontSize:16,fontWeight:600,marginBottom:6}}>🎭 Persona éditorial</h3>
         <p style={{color:'#8B9CB0',fontSize:13,marginBottom:16,lineHeight:1.6}}>
@@ -436,78 +383,7 @@ export default function SettingsPage() {
         </button>
       </div>
 
-      {/* ── TYPES DE LOGICIELS ── */}
-      <div style={{background:'#0D1117',border:'1px solid #1E2D3D',borderRadius:12,padding:24,marginBottom:24}}>
-        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:8}}>
-          <h3 style={{color:'#fff',fontSize:16,fontWeight:600,margin:0}}>🗂 Types de logiciels actifs</h3>
-          <div style={{display:'flex',gap:10,alignItems:'center'}}>
-            {msgKeywords && <span style={{fontSize:12,color:msgKeywords.startsWith('✓')?'#00D4AA':'#FC8181'}}>{msgKeywords}</span>}
-            <button onClick={async () => {
-              setSavingKeywords(true); setMsgKeywords('')
-              const r = await fetch(`/api/sites/${siteId}/config`, {
-                method:'PATCH', headers:{'Content-Type':'application/json'},
-                body: JSON.stringify({ selected_keywords: selectedKeywords })
-              })
-              const d = await r.json()
-              setMsgKeywords(d.ok ? '✓ Sauvegardé' : '✗ Erreur')
-              setSavingKeywords(false)
-              setTimeout(() => setMsgKeywords(''), 3000)
-            }} style={{padding:'7px 14px',borderRadius:8,border:'none',background:'linear-gradient(135deg,#00D4AA,#0090FF)',color:'#fff',cursor:'pointer',fontWeight:600,fontSize:12}}>
-              {savingKeywords ? '...' : '💾 Sauvegarder'}
-            </button>
-          </div>
-        </div>
-        <p style={{color:'#8B9CB0',fontSize:12,marginBottom:16,lineHeight:1.6}}>
-          Seuls les types sélectionnés seront générés et déployés sur ce site.
-        </p>
-        {allKeywords.length === 0 ? (
-          <div style={{color:'#4A5568',fontSize:12}}>Chargement des types disponibles...</div>
-        ) : (() => {
-          // Grouper par catégorie
-          const grouped: Record<string, typeof allKeywords> = {}
-          allKeywords.forEach(kw => {
-            if (!grouped[kw.categorie]) grouped[kw.categorie] = []
-            grouped[kw.categorie].push(kw)
-          })
-          return Object.entries(grouped).map(([cat, kws]) => {
-            const allSelected = kws.every(kw => selectedKeywords.includes(kw.name))
-            const someSelected = kws.some(kw => selectedKeywords.includes(kw.name))
-            return (
-              <div key={cat} style={{marginBottom:8,background:'#0A0E1A',borderRadius:8,overflow:'hidden',border:'1px solid #1E2D3D'}}>
-                {/* Header catégorie */}
-                <div style={{display:'flex',alignItems:'center',gap:10,padding:'10px 14px',borderBottom: collapsedKwCats[cat] ? 'none' : '1px solid #1E2D3D',cursor:'pointer'}}
-                  onClick={() => setCollapsedKwCats(p => ({...p,[cat]:!p[cat]}))}>
-                  <input type="checkbox" checked={allSelected} ref={el => { if (el) el.indeterminate = someSelected && !allSelected }}
-                    onChange={e => {
-                      e.stopPropagation()
-                      if (allSelected) setSelectedKeywords(prev => prev.filter(k => !kws.find(kw => kw.name === k)))
-                      else setSelectedKeywords(prev => [...new Set([...prev, ...kws.map(kw => kw.name)])])
-                    }}
-                    onClick={e => e.stopPropagation()}
-                    style={{width:14,height:14,cursor:'pointer'}} />
-                  <span style={{fontSize:12,fontWeight:700,color:'#9F7AEA',flex:1}}>{cat}</span>
-                  <span style={{fontSize:11,color:'#4A5568'}}>{kws.filter(kw => selectedKeywords.includes(kw.name)).length}/{kws.length}</span>
-                  <span style={{color:'#4A5568',fontSize:10}}>{collapsedKwCats[cat] ? '▶' : '▼'}</span>
-                </div>
-                {/* Types de la catégorie */}
-                {!collapsedKwCats[cat] && kws.map(kw => (
-                  <label key={kw.name} style={{display:'flex',alignItems:'center',gap:10,padding:'8px 14px 8px 28px',borderBottom:'1px solid #1E2D3D',cursor:'pointer',background:selectedKeywords.includes(kw.name)?'rgba(0,212,170,0.05)':'transparent'}}>
-                    <input type="checkbox" checked={selectedKeywords.includes(kw.name)}
-                      onChange={e => setSelectedKeywords(prev => e.target.checked ? [...prev, kw.name] : prev.filter(k => k !== kw.name))}
-                      style={{width:14,height:14,cursor:'pointer'}} />
-                    <span style={{fontSize:13,color:selectedKeywords.includes(kw.name)?'#fff':'#8B9CB0',flex:1}}>{kw.name}</span>
-                    <span style={{fontSize:11,color:'#4A5568'}}>{kw.count} produits</span>
-                  </label>
-                ))}
-              </div>
-            )
-          })
-        })()}
-        <div style={{marginTop:10,fontSize:11,color:'#4A5568'}}>
-          {selectedKeywords.length === 0 ? '⚠ Aucun type sélectionné — tous les types seront générés' : `${selectedKeywords.length} type(s) sélectionné(s)`}
-        </div>
-      </div>
-
+      {/* Danger zone */}
       <div style={{ background: '#0D1117', border: '1px solid rgba(252,129,129,0.3)', borderRadius: 16, padding: 24 }}>
         <h3 style={{ color: '#FC8181', margin: '0 0 12px', fontSize: 15, fontWeight: 600 }}>⚠️ Zone dangereuse</h3>
         <p style={{ color: '#8B9CB0', fontSize: 13, marginBottom: 16 }}>Supprimer ce site le retire du HUB. Les fichiers GitHub et le site Cloudflare ne sont pas supprimés automatiquement.</p>
