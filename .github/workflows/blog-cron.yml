@@ -15,25 +15,30 @@ on:
         required: false
         type: string
         default: ''
+
+# Concurrency group AU NIVEAU DU WORKFLOW (et non du job).
+#
+# Pourquoi au niveau workflow plutôt que job : GitHub Actions garantit qu'un
+# seul run du workflow tourne en même temps avec cette config. Avec un
+# concurrency au niveau du job, dans certains edge cases (notamment quand un
+# workflow_dispatch arrive très proche d'un trigger schedule), 2 runs peuvent
+# se chevaucher et créer des doublons d'articles (slugs avec préfixes random
+# différents, rebase sans conflit côté Git → 2 fichiers .md publiés).
+#
+# Pourquoi pas partagé avec deploy-push-main : GitHub Actions n'autorise QU'UN
+# seul job en queue par concurrency group. Si plusieurs pushs sur main arrivent
+# pendant que le blog-cron attend, le blog-cron serait CANCELLED. Les conflits
+# de push sont gérés ailleurs (boucle de retry avec git fetch + rebase + push).
+concurrency:
+  group: blog-cron-${{ github.repository }}
+  cancel-in-progress: false
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:
       TZ: 'Europe/Paris'
-    # Concurrency group DÉDIÉ au blog-cron (pas partagé avec deploy-push-main).
-    #
-    # Pourquoi pas partagé : GitHub Actions n'autorise QU'UN seul job en queue
-    # par concurrency group. Si plusieurs pushs sur main arrivent pendant que
-    # le blog-cron attend dans la queue, le blog-cron est CANCELLED ("a higher
-    # priority waiting request exists"). Avec un groupe dédié, il est protégé.
-    #
-    # Les conflits de push sur main sont gérés AILLEURS, dans le commit step
-    # ci-dessous (boucle de retry avec git fetch + rebase + push, 5 tentatives).
-    # Donc séparer les groupes est safe.
-    concurrency:
-      group: blog-cron-${{ github.repository }}
-      cancel-in-progress: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4
