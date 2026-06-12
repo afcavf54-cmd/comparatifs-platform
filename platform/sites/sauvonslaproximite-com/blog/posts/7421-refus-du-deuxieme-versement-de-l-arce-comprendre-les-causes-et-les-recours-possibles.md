@@ -1,18 +1,25 @@
 ---
-title: 'Refus du deuxième versement de l''ARCE : comprendre les causes et les recours possibles'
+title: 'Refus du deuxième versement de l''ARCE : comprendre les causes et les recours
+  possibles'
 slug: 7421-refus-du-deuxieme-versement-de-l-arce-comprendre-les-causes-et-les-recours-possibles
 date: '2026-06-12T23:00:00+02:00'
 categorie: Création entreprise
 meta_title: 'Refus 2ᵉ versement ARCE : solutions et recours possibles'
-meta_description: Découvrez pourquoi Pôle emploi refuse votre deuxième versement ARCE et comment contester cette décision. Reprise d'emploi, obligations déclaratives, dossier…
+meta_description: Découvrez pourquoi Pôle emploi refuse votre deuxième versement ARCE
+  et comment contester cette décision. Reprise d'emploi, obligations déclaratives,
+  dossier…
 min_words: 1800
 status: published
 featured_image: /blog/7421-refus-du-deuxieme-versement-de-l-arce-comprendre-les-causes-et-les-recours-possibles.jpg
 link_anchors:
 - text: refus du deuxième versement de l'arce
   max: 4
+related_posts:
+- 7943-creer-une-association-et-en-vivre-quelles-sont-les-solutions-de-financement
+- 8445-scea-comprendre-le-fonctionnement-de-cette-societe-agricole
+- 2652-avance-sur-dividendes-en-sasu-les-regles-a-connaitre-avant-de-se-remunerer
+- 3401-creer-un-produit-les-etapes-indispensables-pour-transformer-une-idee-en-succes
 ---
-
 <h2>ARCE refusée : les raisons principales d'un deuxième versement bloqué</h2>
 
 <p>Après avoir touché votre premier versement ARCE, vous attendez logiquement la seconde tranche prévue six mois plus tard. Malheureusement, Pôle emploi vient de vous notifier un refus. Cette situation arrive plus souvent qu'on ne le croit, et je vais vous expliquer pourquoi.</p>

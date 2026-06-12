@@ -14,9 +14,10 @@ link_anchors:
 - text: avantages et inconvénients de la scea
   max: 4
 related_posts:
+- 7421-refus-du-deuxieme-versement-de-l-arce-comprendre-les-causes-et-les-recours-possibles
 - 7943-creer-une-association-et-en-vivre-quelles-sont-les-solutions-de-financement
-- 3401-creer-un-produit-les-etapes-indispensables-pour-transformer-une-idee-en-succes
 - 2652-avance-sur-dividendes-en-sasu-les-regles-a-connaitre-avant-de-se-remunerer
+- 3401-creer-un-produit-les-etapes-indispensables-pour-transformer-une-idee-en-succes
 ---
 <h2>Qu'est-ce qu'une SCEA exactement ?</h2>
 
