@@ -13,7 +13,8 @@ featured_image: /blog/1332-facturation-pme-fastbill-vs-invoicepro-max.jpg
 link_anchors:
 - text: comparatif entre le logiciel de facturation Fastbill et InvoicePro Max
   max: 5
-related_posts: []
+related_posts:
+- 8853-invoicepro-x3-face-a-la-facturation-manuelle-le-temps-de-traitement
 ---
 <h2>Mon retour d'expérience : deux solutions à l'essai</h2>
 
