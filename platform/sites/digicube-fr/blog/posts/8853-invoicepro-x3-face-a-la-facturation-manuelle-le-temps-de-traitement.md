@@ -14,6 +14,7 @@ link_anchors:
 - text: le temps de traitement de l'application de facturation InvoicePro X3
   max: 5
 related_posts:
+- 5607-invoicepro-x3-face-a-la-facturation-manuelle-le-temps-de-traitement
 - 1332-facturation-pme-fastbill-vs-invoicepro-max
 ---
 <h2>Ma méthode manuelle m'a coûté une fortune en temps</h2>

@@ -15,6 +15,7 @@ link_anchors:
   max: 5
 related_posts:
 - 8853-invoicepro-x3-face-a-la-facturation-manuelle-le-temps-de-traitement
+- 5607-invoicepro-x3-face-a-la-facturation-manuelle-le-temps-de-traitement
 ---
 <h2>Mon retour d'expérience : deux solutions à l'essai</h2>
 
