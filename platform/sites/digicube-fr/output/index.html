@@ -7,10 +7,10 @@
 <title>Digicube : l'information dédiée à la digitalisation des entreprises</title>
 <meta name="description" content="Digicube décrypte les logiciels, services numériques, innovations technologiques et tendances digitales qui accompagnent les entreprises.">
 
-<link rel="canonical" href="https://www.https://www.digicube.fr/">
+<link rel="canonical" href="https://www.digicube.fr/">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.https://www.digicube.fr/">
+<meta property="og:url" content="https://www.digicube.fr/">
 <meta property="og:title" content="Digicube : l'information dédiée à la digitalisation des entreprises">
 <meta property="og:description" content="Digicube décrypte les logiciels, services numériques, innovations technologiques et tendances digitales qui accompagnent les entreprises.">
 <meta property="og:site_name" content="digicube.fr">
@@ -122,7 +122,7 @@ h1,h2,h3,h4{
 }
 .btn .arr{transition:transform .2s ease}
 .btn:hover .arr{transform:translateX(3px)}
-.btn--accent{background:var(--accent);color:#fff;box-shadow:0 8px 20px -8px var(--accent)}
+.btn--accent{background:var(--accent);color:#fff}
 .btn--accent:hover{background:var(--accent-600)}
 .btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.28)}
 .btn--ghost:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.06)}
@@ -170,15 +170,8 @@ h1,h2,h3,h4{
 
 /* hero CTA (remplace l'ancien searchbar) */
 .hero-cta-block{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-
-.search-tags{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
-.search-tags span{font-size:12.5px;color:rgba(255,255,255,.55);font-weight:600}
-.search-tags a{
-  font-size:12.5px;font-weight:600;color:rgba(255,255,255,.78);
-  border:1px solid rgba(255,255,255,.16);border-radius:var(--radius-pill);
-  padding:5px 12px;transition:.15s;white-space:nowrap;
-}
-.search-tags a:hover{border-color:var(--accent);color:#fff}
+/* Boutons hero en MAJUSCULES (uniquement les CTA du hero, pas les .btn ailleurs) */
+.hero-cta-block .btn{text-transform:uppercase;letter-spacing:.06em;font-size:13.5px}
 
 /* hero visual */
 .hero-visual{position:relative}
@@ -315,14 +308,16 @@ h1,h2,h3,h4{
 .cmp-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--shadow)}
 .cmp-ic{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;flex:none;
   background:var(--accent-tint);color:var(--accent-700)}
-.cmp-card h4{font-size:16px;font-weight:700;letter-spacing:-.015em;line-height:1.18}
+/* Titre de card comparateur (anciennement h4 — rétrogradé en div pour respect de la hiérarchie Hn) */
+.cmp-card .cmp-title{font-family:var(--font-display);font-weight:700;font-size:16px;
+  letter-spacing:-.015em;line-height:1.18;color:var(--ink);margin:0}
 .cmp-card .cdesc{font-size:13px;color:var(--muted);line-height:1.45;margin:0}
 .cmp-card .cfoot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:6px}
 .cmp-card .ccount{font-size:12.5px;color:var(--muted-2);font-weight:600;white-space:nowrap}
 .cmp-card .cgo{color:var(--accent);opacity:0;transform:translateX(-4px);transition:.18s}
 .cmp-card:hover .cgo{opacity:1;transform:translateX(0)}
 .cmp-card.is-featured{grid-column:span 2;background:var(--navy-900);color:#fff;border-color:transparent}
-.cmp-card.is-featured h4{color:#fff;font-size:22px}
+.cmp-card.is-featured .cmp-title{color:#fff;font-size:22px}
 .cmp-card.is-featured .cdesc{color:rgba(255,255,255,.66)}
 .cmp-card.is-featured .cmp-ic{background:var(--accent);color:#fff}
 .cmp-card.is-featured .ccount{color:rgba(255,255,255,.6)}
@@ -337,7 +332,9 @@ h1,h2,h3,h4{
 .step:hover{background:var(--surface);border-color:var(--line);box-shadow:var(--shadow-sm)}
 .step .sn{font-family:var(--font-display);font-weight:800;font-size:15px;color:#fff;background:var(--navy);
   width:34px;height:34px;border-radius:9px;display:grid;place-items:center;flex:none}
-.step h4{font-size:17px;margin-bottom:5px;letter-spacing:-.015em}
+/* Titres d'étapes méthode : passage en h3 (au lieu de h4 précédemment).
+   On force la taille au niveau de la classe pour ne pas hériter de la taille h3 par défaut. */
+.step h3{font-size:17px;margin-bottom:5px;letter-spacing:-.015em;line-height:1.18}
 .step p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.5}
 .step:nth-child(1) .sn{background:var(--accent)}
 
@@ -384,7 +381,9 @@ h1,h2,h3,h4{
 .card-link{position:absolute;inset:0;z-index:2;text-indent:-9999px;overflow:hidden}
 .post-body{padding:20px;display:flex;flex-direction:column;gap:10px;flex:1}
 .post-cat{font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--accent-700)}
-.post h4{font-size:18px;line-height:1.22;letter-spacing:-.015em}
+/* Titre d'article blog (anciennement h4 — rétrogradé en div pour respect de la hiérarchie Hn) */
+.post .post-title{font-family:var(--font-display);font-weight:800;font-size:18px;
+  line-height:1.22;letter-spacing:-.015em;color:var(--ink);margin:0}
 .post p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.5}
 .post-meta{margin-top:auto;display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted-2);
   font-weight:600;padding-top:8px}
@@ -566,13 +565,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <div class="hero-cta-block">
           <a href="https://www.digicube.fr/nos-comparateurs" class="btn btn--accent">Nos comparateurs <span class="arr">→</span></a>
           <a href="/blog" class="btn btn--ghost">Nos guides</a>
-        </div>
-        <div class="search-tags">
-          <span>Populaires :</span>
-          <a href="/meilleur-logiciel-paie">Logiciel de paie</a>
-          <a href="/meilleur-logiciel-facturation">Facturation</a>
-          <a href="/meilleur-sirh">SIRH</a>
-          <a href="/meilleur-logiciel-comptabilite">Comptabilité</a>
         </div>
       </div>
 
@@ -759,19 +751,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       <div class="cmp-grid">
         <a class="cmp-card is-featured" href="/meilleur-logiciel-paie">
           <div class="cmp-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path></svg></div>
-          <h4>Logiciel de paie</h4>
+          <div class="cmp-title">Logiciel de paie</div>
           <p class="cdesc">Notre comparateur le plus consulté : 10 solutions de paie évaluées sur la conformité, l'automatisation et le coût par bulletin.</p>
           <div class="cfoot"><span class="ccount">10 logiciels comparés</span><span class="cgo">→</span></div>
         </a>
         <a class="cmp-card" href="/meilleur-sirh">
           <div class="cmp-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M8 2v4M16 2v4M3 10h18"></path></svg></div>
-          <h4>Système d'information RH (SIRH)</h4>
+          <div class="cmp-title">Système d'information RH (SIRH)</div>
           <p class="cdesc">Centralisez données, congés et contrats.</p>
           <div class="cfoot"><span class="ccount">13 logiciels</span><span class="cgo">→</span></div>
         </a>
         <a class="cmp-card" href="/meilleur-logiciel-recrutement">
           <div class="cmp-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-4.3-4.3"></path><circle cx="11" cy="11" r="7"></circle></svg></div>
-          <h4>Logiciel de recrutement</h4>
+          <div class="cmp-title">Logiciel de recrutement</div>
           <p class="cdesc">ATS et suivi des candidatures.</p>
           <div class="cfoot"><span class="ccount">9 logiciels</span><span class="cgo">→</span></div>
         </a>
@@ -784,25 +776,25 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       <div class="cmp-grid">
         <a class="cmp-card" href="/meilleur-logiciel-facturation">
           <div class="cmp-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6M9 13h6M9 17h4"></path></svg></div>
-          <h4>Facturation électronique</h4>
+          <div class="cmp-title">Facturation électronique</div>
           <p class="cdesc">Anticipez la réforme 2026.</p>
           <div class="cfoot"><span class="ccount">12 logiciels</span><span class="cgo">→</span></div>
         </a>
         <a class="cmp-card" href="/meilleur-logiciel-tresorerie">
           <div class="cmp-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"></path><rect x="7" y="11" width="3" height="6"></rect><rect x="13" y="7" width="3" height="10"></rect></svg></div>
-          <h4>Gestion de trésorerie</h4>
+          <div class="cmp-title">Gestion de trésorerie</div>
           <p class="cdesc">Pilotez votre cash en temps réel.</p>
           <div class="cfoot"><span class="ccount">9 logiciels</span><span class="cgo">→</span></div>
         </a>
         <a class="cmp-card" href="/meilleur-compte-pro">
           <div class="cmp-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M2 10h20"></path></svg></div>
-          <h4>Banque pro en ligne</h4>
+          <div class="cmp-title">Banque pro en ligne</div>
           <p class="cdesc">Comptes pro, cartes et intégrations.</p>
           <div class="cfoot"><span class="ccount">12 logiciels</span><span class="cgo">→</span></div>
         </a>
         <a class="cmp-card" href="/meilleur-logiciel-comptabilite">
           <div class="cmp-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v10M9.5 9.5h5M9.5 14.5h5"></path></svg></div>
-          <h4>Logiciel de comptabilité</h4>
+          <div class="cmp-title">Logiciel de comptabilité</div>
           <p class="cdesc">Du gratuit à l'expert-comptable en ligne.</p>
           <div class="cfoot"><span class="ccount">18 logiciels</span><span class="cgo">→</span></div>
         </a>
@@ -815,25 +807,25 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       <div class="cmp-grid">
         <a class="cmp-card" href="/meilleur-logiciel-emailing">
           <div class="cmp-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m2 7 10 6 10-6"></path></svg></div>
-          <h4>Logiciel d'emailing</h4>
+          <div class="cmp-title">Logiciel d'emailing</div>
           <p class="cdesc">Newsletters et automation.</p>
           <div class="cfoot"><span class="ccount">12 logiciels</span><span class="cgo">→</span></div>
         </a>
         <a class="cmp-card" href="/meilleur-createur-site">
           <div class="cmp-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H4z"></path><path d="M2 20h20M9 8l3 3 3-4"></path></svg></div>
-          <h4>Création de site web</h4>
+          <div class="cmp-title">Création de site web</div>
           <p class="cdesc">CMS et builders no-code.</p>
           <div class="cfoot"><span class="ccount">10 logiciels</span><span class="cgo">→</span></div>
         </a>
         <a class="cmp-card" href="/meilleur-logiciel-cold-emailing">
           <div class="cmp-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-5v12L3 14z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg></div>
-          <h4>Cold emailing / outreach</h4>
+          <div class="cmp-title">Cold emailing / outreach</div>
           <p class="cdesc">Prospection B2B à grande échelle.</p>
           <div class="cfoot"><span class="ccount">8 logiciels</span><span class="cgo">→</span></div>
         </a>
         <a class="cmp-card" href="/meilleur-service-creation-entreprise">
           <div class="cmp-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"></path><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"></path></svg></div>
-          <h4>Création d'entreprise en ligne</h4>
+          <div class="cmp-title">Création d'entreprise en ligne</div>
           <p class="cdesc">Immatriculez et gérez vos statuts.</p>
           <div class="cfoot"><span class="ccount">5 logiciels</span><span class="cgo">→</span></div>
         </a>
@@ -850,10 +842,10 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       <h2>Comment on teste<br>les logiciels</h2>
       <p class="lead">Chez Digicube, chaque solution est ouverte, prise en main et confrontée aux besoins réels d'une TPE ou d'une PME française. Voici notre protocole, identique pour tous.</p>
       <div class="steps">
-        <div class="step"><span class="sn">1</span><div><h4>On cadre le besoin métier</h4><p>On définit les cas d'usage concrets, paie d'une équipe de 8, facturation conforme 2026, etc., avant de comparer quoi que ce soit.</p></div></div>
-        <div class="step"><span class="sn">2</span><div><h4>On ouvre un vrai compte</h4><p>Essai gratuit ou abonnement payé par nos soins. On configure, on importe des données, on va au bout du parcours.</p></div></div>
-        <div class="step"><span class="sn">3</span><div><h4>On note sur 6 critères</h4><p>Prix réel, fonctionnalités, prise en main, support, conformité et intégrations, chaque critère est documenté et daté.</p></div></div>
-        <div class="step"><span class="sn">4</span><div><h4>On met à jour en continu</h4><p>Les tarifs et fonctionnalités bougent vite. Nos comparateurs sont révisés chaque mois pour rester fiables.</p></div></div>
+        <div class="step"><span class="sn">1</span><div><h3>On cadre le besoin métier</h3><p>On définit les cas d'usage concrets, paie d'une équipe de 8, facturation conforme 2026, etc., avant de comparer quoi que ce soit.</p></div></div>
+        <div class="step"><span class="sn">2</span><div><h3>On ouvre un vrai compte</h3><p>Essai gratuit ou abonnement payé par nos soins. On configure, on importe des données, on va au bout du parcours.</p></div></div>
+        <div class="step"><span class="sn">3</span><div><h3>On note sur 6 critères</h3><p>Prix réel, fonctionnalités, prise en main, support, conformité et intégrations, chaque critère est documenté et daté.</p></div></div>
+        <div class="step"><span class="sn">4</span><div><h3>On met à jour en continu</h3><p>Les tarifs et fonctionnalités bougent vite. Nos comparateurs sont révisés chaque mois pour rester fiables.</p></div></div>
       </div>
     </div>
     <div class="split-media">
@@ -953,7 +945,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
           <a class="card-link" href="/2242-accord-implicite-de-rupture-conventionnelle-mythe-ou-realite-juridique">Lire : Accord implicite de rupture conventionnelle : mythe ou réalité juridique ?</a>
           <img class="post-image" src="/blog/2242-accord-implicite-de-rupture-conventionnelle-mythe-ou-realite-juridique.jpg" alt="Accord implicite de rupture conventionnelle : mythe ou réalité juridique ?" loading="lazy">
           <div class="post-body">
-<span class="post-cat">Salarié</span>            <h4>Accord implicite de rupture conventionnelle : mythe ou réalité juridique ?</h4>
+<span class="post-cat">Salarié</span>            <div class="post-title">Accord implicite de rupture conventionnelle : mythe ou réalité juridique ?</div>
 <p>Qu'est-ce qu'un accord implicite de rupture conventionnelle ? J'ai souvent entendu des dirigeants me dire : "On s'est mis d'accord avec le salarié, i…</p>            <div class="post-meta">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M8 2v4M16 2v4M3 10h18"></path></svg>
               12 juin 2026
@@ -964,7 +956,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
           <a class="card-link" href="/3429-tva-sur-option-obligations-avantages-et-formalites-a-connaitre">Lire : TVA sur option : obligations, avantages et formalités à connaître</a>
           <img class="post-image" src="/blog/3429-tva-sur-option-obligations-avantages-et-formalites-a-connaitre.jpg" alt="TVA sur option : obligations, avantages et formalités à connaître" loading="lazy">
           <div class="post-body">
-<span class="post-cat">Finance & Comptabilité</span>            <h4>TVA sur option : obligations, avantages et formalités à connaître</h4>
+<span class="post-cat">Finance & Comptabilité</span>            <div class="post-title">TVA sur option : obligations, avantages et formalités à connaître</div>
 <p>Quand peut-on opter pour la TVA sur option ? Je vais être direct : l'option pour la TVA s'adresse principalement aux entreprises exonérées de TVA mai…</p>            <div class="post-meta">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M8 2v4M16 2v4M3 10h18"></path></svg>
               12 juin 2026
@@ -975,7 +967,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
           <a class="card-link" href="/8853-invoicepro-x3-face-a-la-facturation-manuelle-le-temps-de-traitement">Lire : InvoicePro X3 face à la facturation manuelle : le temps de traitement</a>
           <img class="post-image" src="/blog/8853-invoicepro-x3-face-a-la-facturation-manuelle-le-temps-de-traitement.jpg" alt="InvoicePro X3 face à la facturation manuelle : le temps de traitement" loading="lazy">
           <div class="post-body">
-<span class="post-cat">Comptabilité</span>            <h4>InvoicePro X3 face à la facturation manuelle : le temps de traitement</h4>
+<span class="post-cat">Comptabilité</span>            <div class="post-title">InvoicePro X3 face à la facturation manuelle : le temps de traitement</div>
 <p>Ma méthode manuelle m'a coûté une fortune en temps Franchement, je regrette de ne pas avoir sauté le pas plus tôt. Pendant deux ans, j'ai géré la fac…</p>            <div class="post-meta">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M8 2v4M16 2v4M3 10h18"></path></svg>
               12 juin 2026
@@ -986,7 +978,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
           <a class="card-link" href="/1332-facturation-pme-fastbill-vs-invoicepro-max">Lire : Facturation PME : Fastbill vs InvoicePro Max</a>
           <img class="post-image" src="/blog/1332-facturation-pme-fastbill-vs-invoicepro-max.jpg" alt="Facturation PME : Fastbill vs InvoicePro Max" loading="lazy">
           <div class="post-body">
-<span class="post-cat">Comptabilité</span>            <h4>Facturation PME : Fastbill vs InvoicePro Max</h4>
+<span class="post-cat">Comptabilité</span>            <div class="post-title">Facturation PME : Fastbill vs InvoicePro Max</div>
 <p>Mon retour d'expérience : deux solutions à l'essai Je dirige une PME de 150 salariés à Marseille depuis deux ans. La facturation, c'est devenu mon ca…</p>            <div class="post-meta">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M8 2v4M16 2v4M3 10h18"></path></svg>
               12 juin 2026
@@ -997,7 +989,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
           <a class="card-link" href="/4224-kickngo-vs-autres-agences-d-e-reputation">Lire : KicknGo vs autres agences d'e-réputation</a>
           <img class="post-image" src="/blog/4224-kickngo-vs-autres-agences-d-e-reputation.jpg" alt="KicknGo vs autres agences d'e-réputation" loading="lazy">
           <div class="post-body">
-<span class="post-cat">Entrepreneuriat</span>            <h4>KicknGo vs autres agences d'e-réputation</h4>
+<span class="post-cat">Entrepreneuriat</span>            <div class="post-title">KicknGo vs autres agences d'e-réputation</div>
 <p>Pourquoi j'ai comparé KicknGo aux autres agences d'e-réputation ? Après trois incidents de bad buzz sur les réseaux sociaux qui ont fait chuter mes v…</p>            <div class="post-meta">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M8 2v4M16 2v4M3 10h18"></path></svg>
               12 juin 2026
@@ -1008,7 +1000,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
           <a class="card-link" href="/3761-radiation-pole-emploi-procedure-delais-et-consequences-pour-les-demandeurs-d-emploi">Lire : Radiation Pôle Emploi : procédure, délais et conséquences pour les demandeurs d'emploi</a>
           <img class="post-image" src="/blog/3761-radiation-pole-emploi-procedure-delais-et-consequences-pour-les-demandeurs-d-emploi.jpg" alt="Radiation Pôle Emploi : procédure, délais et conséquences pour les demandeurs d'emploi" loading="lazy">
           <div class="post-body">
-<span class="post-cat">Salarié</span>            <h4>Radiation Pôle Emploi : procédure, délais et conséquences pour les demandeurs d'emploi</h4>
+<span class="post-cat">Salarié</span>            <div class="post-title">Radiation Pôle Emploi : procédure, délais et conséquences pour les demandeurs d'emploi</div>
 <p>Qu'est-ce que la radiation de Pôle Emploi ? La radiation de Pôle Emploi correspond à la suppression temporaire ou définitive de votre statut de deman…</p>            <div class="post-meta">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M8 2v4M16 2v4M3 10h18"></path></svg>
               11 juin 2026
