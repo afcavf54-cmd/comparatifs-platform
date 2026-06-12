@@ -3,16 +3,20 @@ title: La formation business plan Frenchy-Business-Pro sous toutes les coutures
 slug: 7965-la-formation-business-plan-frenchy-business-pro-sous-toutes-les-coutures
 date: '2026-06-12T07:00:00+02:00'
 categorie: Création d'entreprise
-meta_title: 'Formation business plan Frenchy-Business-Pro : tient-elle ses promesses ?'
-meta_description: 'Test complet de la formation business plan Frenchy-Business-Pro : modules concrets, templates exploitables et retour d''expérience d''une dirigeante de TPE après…'
+meta_title: 'Formation business plan Frenchy-Business-Pro : tient-elle ses promesses
+  ?'
+meta_description: 'Test complet de la formation business plan Frenchy-Business-Pro
+  : modules concrets, templates exploitables et retour d''expérience d''une dirigeante
+  de TPE après…'
 min_words: 910
 status: published
 featured_image: /blog/7965-la-formation-business-plan-frenchy-business-pro-sous-toutes-les-coutures.jpg
 link_anchors:
 - text: la formation business plan Frenchy-Business-Pro
   max: 5
+related_posts:
+- 2726-la-formation-business-plan-frenchy-business-pro-sous-toutes-les-coutures
 ---
-
 <h2>Pourquoi j'ai testé cette formation business plan ?</h2>
 
 <p>Quand j'ai découvert la formation business plan de Frenchy-Business-Pro, j'avoue que j'étais <strong>assez sceptique</strong>. Encore une énième promesse de réussir son projet entrepreneurial en quelques semaines ? J'avais déjà perdu du temps avec des formations généralistes qui ne m'apportaient rien de concret pour mon agence de communication.</p>

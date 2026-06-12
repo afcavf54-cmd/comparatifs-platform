@@ -13,7 +13,8 @@ featured_image: /blog/2726-la-formation-business-plan-frenchy-business-pro-sous-
 link_anchors:
 - text: la formation business plan Frenchy-Business-Pro
   max: 5
-related_posts: []
+related_posts:
+- 7965-la-formation-business-plan-frenchy-business-pro-sous-toutes-les-coutures
 ---
 <h2>Pourquoi j'ai choisi cette formation plutôt qu'une autre ?</h2>
 

@@ -14,7 +14,9 @@ link_anchors:
 - text: la formation CACES de Mon-Institut-du-BTP
   max: 5
 related_posts:
+- 7898-la-formation-caces-de-mon-institut-du-btp-au-scanner
 - 7190-la-formation-intensive-de-negociation-commerciale-dealmaker-de-fond-en-comble
+- 4797-la-formation-intensive-de-negociation-commerciale-dealmaker-de-fond-en-comble
 ---
 <h2>Pourquoi j'ai choisi Mon-Institut-du-BTP pour ma formation CACES ?</h2>
 
