@@ -1159,11 +1159,10 @@ h1,h2,h3,h4{
     <div class="author-card">
       <div class="author-top">
         <div class="author-photo">
-          {% if author is defined and author.photo %}
-            <img src="{{ author.photo }}" alt="{{ author.name | default('Auteur') }}" style="width:100%;height:100%;object-fit:cover;display:block">
-          {% else %}
-            <div class="ph"></div>
-          {% endif %}
+          <img src="/author-photo.png"
+               alt="{{ author.name if (author is defined and author.name) else 'Auteur' }}"
+               style="width:100%;height:100%;object-fit:cover;display:block"
+               onerror="this.parentNode.innerHTML='<div class=&quot;ph&quot;></div>'">
         </div>
         <div>
           <div class="author-role">Auteur</div>
