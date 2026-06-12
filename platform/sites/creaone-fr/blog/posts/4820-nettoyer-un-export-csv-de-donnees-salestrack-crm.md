@@ -4,15 +4,17 @@ slug: 4820-nettoyer-un-export-csv-de-donnees-salestrack-crm
 date: '2026-06-12T14:53:49+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Exporter les données SalesTrack CRM en CSV : bien préparer le fichier'
-meta_description: Découvrez comment nettoyer efficacement un export CSV SalesTrack CRM pour éliminer doublons, corriger les formats de dates et optimiser vos données comptables.
+meta_description: Découvrez comment nettoyer efficacement un export CSV SalesTrack
+  CRM pour éliminer doublons, corriger les formats de dates et optimiser vos données
+  comptables.
 min_words: 970
 status: published
 featured_image: /blog/4820-nettoyer-un-export-csv-de-donnees-salestrack-crm.jpg
 link_anchors:
 - text: comment exporter les données du CRM SalesTrack au format CSV
   max: 5
+related_posts: []
 ---
-
 <h2>L'export CSV SalesTrack : un format pratique mais imparfait</h2>
 
 <p>Je travaille quotidiennement avec des exports CSV issus de différents CRM, dont SalesTrack. <strong>Le format CSV reste incontournable</strong> pour transférer des données entre systèmes, mais j'ai remarqué qu'il arrive souvent « sale » avec des incohérences qui peuvent fausser vos analyses comptables.</p>
