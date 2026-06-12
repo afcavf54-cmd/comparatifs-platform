@@ -12,7 +12,8 @@ featured_image: /blog/1173-les-6-modeles-de-factures-phares-de-digitalise-tes-fa
 link_anchors:
 - text: les modèles de factures de Digitalise-Tes-Factures
   max: 5
-related_posts: []
+related_posts:
+- 6162-les-6-modeles-de-factures-phares-de-digitalise-tes-factures
 ---
 <h2>Pourquoi j'ai testé les modèles de factures de Digitalise-Tes-Factures ?</h2>
 
