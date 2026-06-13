@@ -3,16 +3,19 @@ title: Installer le logiciel CRM mobile FieldForce Sync, point par point
 slug: 6769-installer-le-logiciel-crm-mobile-fieldforce-sync-point-par-point
 date: '2026-06-13T06:00:00+02:00'
 categorie: Gestion d'entreprise
-meta_title: 'Logiciel CRM mobile FieldForce Sync : par où commencer l''installation ?'
-meta_description: 'Découvrez comment installer FieldForce Sync étape par étape : prérequis système, téléchargement sécurisé et configuration initiale pour optimiser votre CRM mobile.'
+meta_title: 'Logiciel CRM mobile FieldForce Sync : par où commencer l''installation
+  ?'
+meta_description: 'Découvrez comment installer FieldForce Sync étape par étape : prérequis
+  système, téléchargement sécurisé et configuration initiale pour optimiser votre
+  CRM mobile.'
 min_words: 960
 status: published
 featured_image: /blog/6769-installer-le-logiciel-crm-mobile-fieldforce-sync-point-par-point.jpg
 link_anchors:
 - text: l'installation du logiciel CRM mobile FieldForce Sync
   max: 5
+related_posts: []
 ---
-
 <h2>Prérequis avant l'installation de FieldForce Sync</h2>
 
 <p>Avant de me lancer dans l'installation proprement dite, je vérifie toujours quelques éléments de base. <strong>Premier point crucial</strong> : votre smartphone ou tablette doit tourner sous Android 8.0 minimum ou iOS 12. FieldForce Sync est particulièrement gourmand en ressources, j'ai appris ça à mes dépens avec un ancien téléphone qui ramait.</p>
