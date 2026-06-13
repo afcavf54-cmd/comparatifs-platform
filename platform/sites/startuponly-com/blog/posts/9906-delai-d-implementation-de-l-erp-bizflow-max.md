@@ -15,6 +15,7 @@ link_anchors:
   max: 5
 related_posts:
 - 4765-le-crm-mobile-fieldforce-connect-android-et-le-mode-hors-ligne
+- 9889-a-quelle-equipe-convient-le-tarif-mensuel-de-cloudlead-manager
 ---
 <h2>Pourquoi l'implémentation de BizFlow Max prend-elle si longtemps ?</h2>
 

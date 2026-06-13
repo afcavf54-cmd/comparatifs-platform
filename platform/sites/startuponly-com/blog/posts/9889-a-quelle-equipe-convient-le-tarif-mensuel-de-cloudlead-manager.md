@@ -3,16 +3,21 @@ title: À quelle équipe convient le tarif mensuel de CloudLead Manager
 slug: 9889-a-quelle-equipe-convient-le-tarif-mensuel-de-cloudlead-manager
 date: '2026-06-13T11:00:00+02:00'
 categorie: Gestion d'entreprise
-meta_title: 'CRM SaaS CloudLead Manager : quelle formule mensuelle pour une petite équipe ?'
-meta_description: CloudLead Manager coûte 89€ par utilisateur et par mois. Découvrez pour quelle taille d'équipe ce CRM est rentable et quand investir selon votre budget et volume…
+meta_title: 'CRM SaaS CloudLead Manager : quelle formule mensuelle pour une petite
+  équipe ?'
+meta_description: CloudLead Manager coûte 89€ par utilisateur et par mois. Découvrez
+  pour quelle taille d'équipe ce CRM est rentable et quand investir selon votre budget
+  et volume…
 min_words: 1000
 status: published
 featured_image: /blog/9889-a-quelle-equipe-convient-le-tarif-mensuel-de-cloudlead-manager.jpg
 link_anchors:
 - text: le tarif mensuel du CRM SaaS CloudLead Manager
   max: 5
+related_posts:
+- 9906-delai-d-implementation-de-l-erp-bizflow-max
+- 4765-le-crm-mobile-fieldforce-connect-android-et-le-mode-hors-ligne
 ---
-
 <h2>CloudLead Manager : qui peut vraiment se l'offrir en 2024 ?</h2>
 
 <p>J'ai testé CloudLead Manager pendant 3 mois. Bon, on ne va pas tourner autour du pot : <strong>cette solution de CRM coûte 89€ par utilisateur et par mois</strong>. Pas donné quand tu démarre ta boîte.</p>
