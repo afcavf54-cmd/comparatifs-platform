@@ -13,7 +13,8 @@ featured_image: /blog/3614-csv-ou-export-natif-des-donnees-salestrack-crm-que-ch
 link_anchors:
 - text: comment exporter les données du CRM SalesTrack au format CSV
   max: 5
-related_posts: []
+related_posts:
+- 5187-installation-de-l-erp-cloudmanager-enterprise-les-pieges
 ---
 <h2>Format CSV vs export natif : mes 19 ans d'expérience tranchent</h2>
 
