@@ -15,6 +15,7 @@ link_anchors:
 related_posts:
 - 3614-csv-ou-export-natif-des-donnees-salestrack-crm-que-choisir
 - 7027-integration-de-l-erp-flexmanage-plus-les-pieges-techniques
+- 4746-projet-erp-smartchain-360-les-pieges-a-anticiper
 ---
 <h2>Mon expérience avec CloudManager Enterprise : attention aux embûches</h2>
 

@@ -16,6 +16,7 @@ link_anchors:
 related_posts:
 - 7027-integration-de-l-erp-flexmanage-plus-les-pieges-techniques
 - 5187-installation-de-l-erp-cloudmanager-enterprise-les-pieges
+- 4746-projet-erp-smartchain-360-les-pieges-a-anticiper
 ---
 <h2>Format CSV vs export natif : mes 19 ans d'expérience tranchent</h2>
 

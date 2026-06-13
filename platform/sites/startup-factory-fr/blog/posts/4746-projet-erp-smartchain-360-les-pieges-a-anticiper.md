@@ -4,15 +4,20 @@ slug: 4746-projet-erp-smartchain-360-les-pieges-a-anticiper
 date: '2026-06-13T17:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Implémenter l''ERP SmartChain 360 : les erreurs à éviter'
-meta_description: 'Retour d''expérience sur SmartChain 360 : découvrez les pièges cachés de ce projet ERP et les erreurs coûteuses à éviter lors de la migration des données et de…'
+meta_description: 'Retour d''expérience sur SmartChain 360 : découvrez les pièges
+  cachés de ce projet ERP et les erreurs coûteuses à éviter lors de la migration des
+  données et de…'
 min_words: 970
 status: published
 featured_image: /blog/4746-projet-erp-smartchain-360-les-pieges-a-anticiper.jpg
 link_anchors:
 - text: comment implémenter l'ERP SmartChain 360
   max: 5
+related_posts:
+- 3614-csv-ou-export-natif-des-donnees-salestrack-crm-que-choisir
+- 5187-installation-de-l-erp-cloudmanager-enterprise-les-pieges
+- 7027-integration-de-l-erp-flexmanage-plus-les-pieges-techniques
 ---
-
 <h2>Retour d'expérience : SmartChain 360 et ses zones de turbulence</h2>
 
 <p>J'ai accompagné trois projets ERP SmartChain 360 ces deux dernières années. Honnêtement, je pensais que ce serait plus fluide. <strong>Spoiler alert</strong> : ça ne l'a jamais été.</p>
