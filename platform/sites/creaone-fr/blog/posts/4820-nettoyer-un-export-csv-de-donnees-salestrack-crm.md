@@ -13,7 +13,8 @@ featured_image: /blog/4820-nettoyer-un-export-csv-de-donnees-salestrack-crm.jpg
 link_anchors:
 - text: comment exporter les données du CRM SalesTrack au format CSV
   max: 5
-related_posts: []
+related_posts:
+- 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
 ---
 <h2>L'export CSV SalesTrack : un format pratique mais imparfait</h2>
 
