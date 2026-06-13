@@ -13,7 +13,8 @@ featured_image: /blog/7333-startupkit-advanced-face-aux-modeles-de-business-plan
 link_anchors:
 - text: le modèle de business plan StartupKit Advanced
   max: 5
-related_posts: []
+related_posts:
+- 4679-business-plan-smartstart-generator-face-au-travail-fait-main
 ---
 <h2>Mon retour après 2 ans à jongler entre gratuit et payant</h2>
 

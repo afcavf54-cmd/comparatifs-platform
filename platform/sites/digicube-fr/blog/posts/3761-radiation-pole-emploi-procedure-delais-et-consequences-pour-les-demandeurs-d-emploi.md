@@ -16,6 +16,7 @@ link_anchors:
   max: 4
 related_posts:
 - 2242-accord-implicite-de-rupture-conventionnelle-mythe-ou-realite-juridique
+- 4100-je-fais-moins-d-heures-que-mon-contrat-cdi-comment-faire-respecter-vos-droits
 - 1340-horaire-decale-reglementation-remuneration-et-organisation-du-travail
 ---
 <h2>Qu'est-ce que la radiation de Pôle Emploi ?</h2>

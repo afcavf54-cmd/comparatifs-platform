@@ -1,18 +1,24 @@
 ---
-title: 'Je fais moins d''heures que mon contrat CDI : comment faire respecter vos droits ?'
+title: 'Je fais moins d''heures que mon contrat CDI : comment faire respecter vos
+  droits ?'
 slug: 4100-je-fais-moins-d-heures-que-mon-contrat-cdi-comment-faire-respecter-vos-droits
 date: '2026-06-13T18:00:00+02:00'
 categorie: Salarié
 meta_title: 'Je fais moins d''heures que mon contrat CDI : droits et solutions'
-meta_description: Employeur qui ne respecte pas les heures contractuelles de vos salariés ? Découvrez vos obligations légales, les risques encourus et les solutions pratiques pour…
+meta_description: Employeur qui ne respecte pas les heures contractuelles de vos salariés
+  ? Découvrez vos obligations légales, les risques encourus et les solutions pratiques
+  pour…
 min_words: 1200
 status: published
 featured_image: /blog/4100-je-fais-moins-d-heures-que-mon-contrat-cdi-comment-faire-respecter-vos-droits.jpg
 link_anchors:
 - text: je fais moins d'heure que mon contrat cdi
   max: 4
+related_posts:
+- 1340-horaire-decale-reglementation-remuneration-et-organisation-du-travail
+- 3761-radiation-pole-emploi-procedure-delais-et-consequences-pour-les-demandeurs-d-emploi
+- 2242-accord-implicite-de-rupture-conventionnelle-mythe-ou-realite-juridique
 ---
-
 <h2>Quand votre employeur ne respecte pas vos heures contractuelles</h2>
 
 <p>Je reçois régulièrement des questions d'entrepreneurs dont les salariés se plaignent de ne pas faire leurs heures. C'est frustrant pour tout le monde. D'un côté, on a des contraintes économiques réelles. De l'autre, le salarié a des droits qu'on ne peut pas ignorer.</p>
