@@ -4,15 +4,18 @@ slug: 3837-radiation-pole-emploi-combien-d-avertissements-avant-une-sanction
 date: '2026-06-13T12:00:00+02:00'
 categorie: Salarié
 meta_title: 'Radiation Pôle Emploi : procédure et nombre d''avertissements'
-meta_description: 'Découvrez combien d''avertissements Pôle Emploi tolère avant une radiation. Contrairement aux idées reçues, il n''y a pas de règle fixe : une sanction peut tomber…'
+meta_description: 'Découvrez combien d''avertissements Pôle Emploi tolère avant une
+  radiation. Contrairement aux idées reçues, il n''y a pas de règle fixe : une sanction
+  peut tomber…'
 min_words: 1200
 status: published
 featured_image: /blog/3837-radiation-pole-emploi-combien-d-avertissements-avant-une-sanction.jpg
 link_anchors:
 - text: nombre d'avertissement avant la radiation de pôle emploi
   max: 4
+related_posts:
+- 8972-horaire-decale-quels-droits-et-obligations-pour-les-salaries-concernes
 ---
-
 <h2>Le système d'avertissements : ce qu'on ne vous dit pas toujours</h2>
 
 <p>Je vais être directe avec vous : il n'existe pas de nombre magique d'avertissements avant une radiation. Contrairement aux idées reçues, Pôle Emploi peut vous radier dès le premier manquement grave. J'ai vu des demandeurs d'emploi partir du principe qu'ils avaient "trois chances" et se retrouver rayés des listes sans préavis.</p>
