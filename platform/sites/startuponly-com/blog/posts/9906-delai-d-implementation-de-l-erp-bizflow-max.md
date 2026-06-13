@@ -13,7 +13,8 @@ featured_image: /blog/9906-delai-d-implementation-de-l-erp-bizflow-max.jpg
 link_anchors:
 - text: comment implémenter l'ERP BizFlow Max
   max: 5
-related_posts: []
+related_posts:
+- 4765-le-crm-mobile-fieldforce-connect-android-et-le-mode-hors-ligne
 ---
 <h2>Pourquoi l'implémentation de BizFlow Max prend-elle si longtemps ?</h2>
 

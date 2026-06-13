@@ -4,15 +4,18 @@ slug: 4765-le-crm-mobile-fieldforce-connect-android-et-le-mode-hors-ligne
 date: '2026-06-13T08:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'CRM mobile FieldForce Connect Android : marche-t-il hors connexion ?'
-meta_description: Test complet de FieldForce Connect Android après 6 mois d'utilisation avec mon équipe commerciale. Découvrez les vrais avantages du mode hors-ligne et ses limites…
+meta_description: Test complet de FieldForce Connect Android après 6 mois d'utilisation
+  avec mon équipe commerciale. Découvrez les vrais avantages du mode hors-ligne et
+  ses limites…
 min_words: 990
 status: published
 featured_image: /blog/4765-le-crm-mobile-fieldforce-connect-android-et-le-mode-hors-ligne.jpg
 link_anchors:
 - text: le CRM mobile FieldForce Connect en version Android
   max: 5
+related_posts:
+- 9906-delai-d-implementation-de-l-erp-bizflow-max
 ---
-
 <h2>FieldForce Connect Android : mon test terrain complet</h2>
 
 <p>Je teste des CRM mobiles depuis 7 ans maintenant. FieldForce Connect sur Android, c'est celui que j'utilise depuis 6 mois avec mon équipe commerciale. <strong>Spoiler : il a ses qualités, mais aussi quelques défauts agaçants</strong>. Je vais te dire ce qui marche vraiment et ce qui coince.</p>
