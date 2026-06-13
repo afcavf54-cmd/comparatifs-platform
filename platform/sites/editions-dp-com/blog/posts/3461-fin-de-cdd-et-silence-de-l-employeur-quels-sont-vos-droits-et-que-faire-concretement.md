@@ -1,18 +1,25 @@
 ---
-title: 'Fin de CDD et silence de l''employeur : quels sont vos droits et que faire concrètement ?'
+title: 'Fin de CDD et silence de l''employeur : quels sont vos droits et que faire
+  concrètement ?'
 slug: 3461-fin-de-cdd-et-silence-de-l-employeur-quels-sont-vos-droits-et-que-faire-concretement
 date: '2026-06-13T10:00:00+02:00'
 categorie: Salarié
 meta_title: Fin de CDD sans nouvelles de l'employeur
-meta_description: CDD terminé et employeur silencieux ? Découvrez vos droits face au silence de l'employeur après l'échéance de votre contrat. Conseils pratiques et solutions…
+meta_description: CDD terminé et employeur silencieux ? Découvrez vos droits face
+  au silence de l'employeur après l'échéance de votre contrat. Conseils pratiques
+  et solutions…
 min_words: 1200
 status: published
 featured_image: /blog/3461-fin-de-cdd-et-silence-de-l-employeur-quels-sont-vos-droits-et-que-faire-concretement.jpg
 link_anchors:
 - text: pas de nouvelle de l'employeur à la fin d'un CDD
   max: 4
+related_posts:
+- 1712-mon-patron-change-mes-horaires-du-jour-au-lendemain-est-ce-legal-et-que-faire
+- 8124-combien-d-avertissements-avant-une-radiation-de-pole-emploi-regles-et-procedure
+- 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
+- 5753-rupture-conventionnelle-quand-parle-t-on-d-accord-implicite-et-quelles-en-sont-les-consequences
 ---
-
 <h2>Le silence après la fin de votre CDD : un vide juridique anxiogène</h2>
 
 <p>Votre CDD touche à sa fin et votre employeur ne dit rien. Pas un mot sur un éventuel renouvellement, aucune information sur la suite. Cette situation m'arrive régulièrement au cabinet et je comprends votre stress. <strong>Le silence ne signifie pas forcément la fin de votre relation de travail</strong>.</p>
