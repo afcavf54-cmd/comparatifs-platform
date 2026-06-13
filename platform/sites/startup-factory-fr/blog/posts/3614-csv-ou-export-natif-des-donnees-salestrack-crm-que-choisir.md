@@ -14,6 +14,7 @@ link_anchors:
 - text: comment exporter les données du CRM SalesTrack au format CSV
   max: 5
 related_posts:
+- 7027-integration-de-l-erp-flexmanage-plus-les-pieges-techniques
 - 5187-installation-de-l-erp-cloudmanager-enterprise-les-pieges
 ---
 <h2>Format CSV vs export natif : mes 19 ans d'expérience tranchent</h2>
