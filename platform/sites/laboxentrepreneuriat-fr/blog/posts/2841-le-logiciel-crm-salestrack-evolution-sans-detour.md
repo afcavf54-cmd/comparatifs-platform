@@ -4,15 +4,18 @@ slug: 2841-le-logiciel-crm-salestrack-evolution-sans-detour
 date: '2026-06-13T19:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Avis logiciel CRM SalesTrack Evolution de fond en comble
-meta_description: Mon test complet de SalesTrack Evolution après 3 semaines d'usage réel. Interface épurée, relances automatiques efficaces, import facile. Idéal TPE/PME.
+meta_description: Mon test complet de SalesTrack Evolution après 3 semaines d'usage
+  réel. Interface épurée, relances automatiques efficaces, import facile. Idéal TPE/PME.
 min_words: 980
 status: published
 featured_image: /blog/2841-le-logiciel-crm-salestrack-evolution-sans-detour.jpg
 link_anchors:
 - text: les avis sur le logiciel CRM SalesTrack Evolution
   max: 5
+related_posts:
+- 6182-les-retours-utilisateurs-sur-le-logiciel-crm-salestrack-360
+- 6769-installer-le-logiciel-crm-mobile-fieldforce-sync-point-par-point
 ---
-
 <h2>Mon test réel de SalesTrack Evolution : ce qui m'a convaincu et déçu</h2>
 
 <p>J'ai passé trois semaines à tester SalesTrack Evolution dans mon agence, et je vais vous dire exactement ce que j'en pense. Pas de langue de bois. Ce CRM fait partie de la gamme SalesTrack (avec SalesTrack Pro et SalesTrack 360), mais Evolution vise clairement les <strong>TPE et PME</strong> qui veulent quelque chose de plus simple.</p>

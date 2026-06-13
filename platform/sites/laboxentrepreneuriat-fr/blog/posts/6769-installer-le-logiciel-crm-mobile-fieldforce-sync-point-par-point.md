@@ -15,6 +15,7 @@ link_anchors:
 - text: l'installation du logiciel CRM mobile FieldForce Sync
   max: 5
 related_posts:
+- 2841-le-logiciel-crm-salestrack-evolution-sans-detour
 - 6182-les-retours-utilisateurs-sur-le-logiciel-crm-salestrack-360
 ---
 <h2>Prérequis avant l'installation de FieldForce Sync</h2>
