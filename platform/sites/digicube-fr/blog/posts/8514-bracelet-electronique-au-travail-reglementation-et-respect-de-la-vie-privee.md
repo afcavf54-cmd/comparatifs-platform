@@ -4,15 +4,21 @@ slug: 8514-bracelet-electronique-au-travail-reglementation-et-respect-de-la-vie-
 date: '2026-06-13T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Bracelet électronique : cadre légal et droits des salariés'
-meta_description: Découvrez la réglementation du bracelet électronique au travail, les obligations légales CNIL et Code du travail, consultation CSE obligatoire et respect de la vie…
+meta_description: Découvrez la réglementation du bracelet électronique au travail,
+  les obligations légales CNIL et Code du travail, consultation CSE obligatoire et
+  respect de la vie…
 min_words: 1800
 status: published
 featured_image: /blog/8514-bracelet-electronique-au-travail-reglementation-et-respect-de-la-vie-privee.jpg
 link_anchors:
 - text: obligation de l'employeur pour un salarié sous bracelet électronique
   max: 4
+related_posts:
+- 7364-comment-construire-une-marque-employeur-attractive
+- 3951-qu-est-ce-que-la-definition-de-la-gestion-des-talents
+- 8102-comment-ameliorer-la-retention-des-talents-dans-votre-entreprise
+- 7426-comment-choisir-un-logiciel-gepp-adapte-a-votre-entreprise
 ---
-
 <h2>Le cadre légal du bracelet électronique professionnel</h2>
 
 <p>Voilà plusieurs années que j'observe l'évolution des pratiques de surveillance au travail. Le bracelet électronique commence à faire son apparition dans certaines entreprises françaises, notamment pour le <strong>suivi des horaires</strong> et la géolocalisation des salariés mobiles.</p>
