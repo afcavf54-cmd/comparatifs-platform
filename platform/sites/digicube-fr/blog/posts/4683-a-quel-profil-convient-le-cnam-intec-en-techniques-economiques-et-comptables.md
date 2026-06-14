@@ -4,14 +4,18 @@ slug: 4683-a-quel-profil-convient-le-cnam-intec-en-techniques-economiques-et-com
 date: '2026-06-14T19:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Cnam-Intec : pour quel profil en techniques comptables ?'
-meta_description: 'Découvrez si le Cnam-Intec en comptabilité correspond à votre profil professionnel. Formation DCG/DSCG à 590€ par module : pour qui cette solution est-elle adaptée ?'
+meta_description: 'Découvrez si le Cnam-Intec en comptabilité correspond à votre profil
+  professionnel. Formation DCG/DSCG à 590€ par module : pour qui cette solution est-elle
+  adaptée ?'
 min_words: 910
 status: published
 link_anchors:
 - text: le CNAM INTEC (institut national des techniques économiques et comptables)
   max: 5
+related_posts:
+- 8853-invoicepro-x3-face-a-la-facturation-manuelle-le-temps-de-traitement
+- 1332-facturation-pme-fastbill-vs-invoicepro-max
 ---
-
 <h2>Le Cnam-Intec, c'est quoi exactement ?</h2>
 
 <p>J'ai découvert le Cnam-Intec il y a trois ans. Mes équipes avaient besoin de monter en compétences comptables, et je cherchais une formation solide sans exploser le budget. Le Conservatoire National des Arts et Métiers propose l'Intec (Institut National des Techniques Économiques et Comptables) depuis 1931. <strong>Une référence dans le domaine</strong>.</p>
