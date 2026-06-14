@@ -4,15 +4,20 @@ slug: 7159-rapidesk-solutions-face-aux-erp-surdimensionnes-pour-une-pme
 date: '2026-06-14T11:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'ERP pour PME : RapiDesk Solutions vs ERP de grand groupe'
-meta_description: Découvrez pourquoi abandonner SAP pour RapiDesk Solutions a transformé cette PME lyonnaise. Comparatif ERP surdimensionnés vs solutions adaptées aux petites…
+meta_description: Découvrez pourquoi abandonner SAP pour RapiDesk Solutions a transformé
+  cette PME lyonnaise. Comparatif ERP surdimensionnés vs solutions adaptées aux petites…
 min_words: 980
 status: published
 featured_image: /blog/7159-rapidesk-solutions-face-aux-erp-surdimensionnes-pour-une-pme.jpg
 link_anchors:
 - text: RapiDesk Solutions qui est un ERP pensé pour les PME
   max: 5
+related_posts:
+- 6202-les-6-phases-qui-rythment-le-deploiement-du-crm-smartsales-enterprise
+- 4127-comment-choisir-son-agence-web-les-criteres-pour-trouver-un-partenaire-fiable
+- 8245-la-solution-de-conformite-rgpd-dataprotect-manager-face-a-un-consultant
+- 5553-sepo-comprendre-cette-methode-pour-analyser-les-performances-de-votre-organisation
 ---
-
 <h2>Pourquoi j'ai abandonné SAP pour ma PME lyonnaise</h2>
 
 <p>Après 15 ans à manipuler des ERP dans différentes structures, j'ai vécu une situation frustrante l'année dernière. Notre entreprise de 45 salariés venait de migrer vers <strong>l'ERP (Enterprise Resource Planning) SAP</strong>, pensant faire un choix d'avenir. Six mois plus tard, on nageait en pleine eau.</p>
