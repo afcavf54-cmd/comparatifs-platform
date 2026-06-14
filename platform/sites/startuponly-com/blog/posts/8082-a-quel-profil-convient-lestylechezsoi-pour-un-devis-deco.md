@@ -13,7 +13,8 @@ featured_image: /blog/8082-a-quel-profil-convient-lestylechezsoi-pour-un-devis-d
 link_anchors:
 - text: un devis déco avec LeStyleChezSoi
   max: 5
-related_posts: []
+related_posts:
+- 5141-le-devis-gratuit-btp-chantier-fr-est-il-sans-engagement
 ---
 <h2>Qui peut vraiment tirer parti de LeStyleChezSoi ?</h2>
 
