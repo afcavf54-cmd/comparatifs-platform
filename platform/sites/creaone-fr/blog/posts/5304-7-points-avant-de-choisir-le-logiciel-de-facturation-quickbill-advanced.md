@@ -14,6 +14,7 @@ link_anchors:
 - text: comment choisir le logiciel de facturation QuickBill Advanced
   max: 5
 related_posts:
+- 9168-pourquoi-choisir-la-comptabilite-cloud-financecore-plus
 - 9323-sa-premiere-facture-en-ligne-gratuite-avec-articles
 ---
 <h2>Les tarifs : une grille tarifaire à maîtriser avant de signer</h2>
