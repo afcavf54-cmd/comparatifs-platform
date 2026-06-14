@@ -1,17 +1,23 @@
 ---
-title: 'Mon patron modifie mes horaires du jour au lendemain : quels sont mes droits ?'
+title: 'Mon patron modifie mes horaires du jour au lendemain : quels sont mes droits
+  ?'
 slug: 1917-mon-patron-modifie-mes-horaires-du-jour-au-lendemain-quels-sont-mes-droits
 date: '2026-06-14T20:00:00+02:00'
 categorie: Salarié
 meta_title: 'Mon patron change mes horaires sans prévenir : est-ce légal ?'
-meta_description: Votre patron peut-il modifier vos horaires sans votre accord ? Découvrez vos droits selon votre contrat, les procédures légales et les exceptions. Conseils…
+meta_description: Votre patron peut-il modifier vos horaires sans votre accord ? Découvrez
+  vos droits selon votre contrat, les procédures légales et les exceptions. Conseils…
 min_words: 1200
 status: published
 link_anchors:
 - text: mon patron change mes horaires du jour au lendemain
   max: 4
+related_posts:
+- 1340-horaire-decale-reglementation-remuneration-et-organisation-du-travail
+- 2230-refus-d-amenagement-d-horaire-avec-une-rqth-les-recours-possibles-face-a-l-employeur
+- 4100-je-fais-moins-d-heures-que-mon-contrat-cdi-comment-faire-respecter-vos-droits
+- 2242-accord-implicite-de-rupture-conventionnelle-mythe-ou-realite-juridique
 ---
-
 <h2>Les règles de base pour modifier vos horaires</h2>
 
 <p>Votre patron ne peut pas modifier vos horaires comme bon lui semble. Je vais vous expliquer clairement quels sont vos droits selon votre situation.</p>
