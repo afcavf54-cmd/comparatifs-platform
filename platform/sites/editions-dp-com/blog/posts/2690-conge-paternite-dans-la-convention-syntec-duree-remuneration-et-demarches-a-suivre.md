@@ -1,17 +1,24 @@
 ---
-title: 'Congé paternité dans la convention Syntec : durée, rémunération et démarches à suivre'
+title: 'Congé paternité dans la convention Syntec : durée, rémunération et démarches
+  à suivre'
 slug: 2690-conge-paternite-dans-la-convention-syntec-duree-remuneration-et-demarches-a-suivre
 date: '2026-06-14T15:00:00+02:00'
 categorie: Salarié
 meta_title: 'Congé paternité Syntec : durée et conditions'
-meta_description: 'Congé paternité Syntec : 25 jours depuis 2021, dont 4 obligatoires après naissance et 21 jours à prendre en 6 mois. Découvrez durée, rémunération et démarches…'
+meta_description: 'Congé paternité Syntec : 25 jours depuis 2021, dont 4 obligatoires
+  après naissance et 21 jours à prendre en 6 mois. Découvrez durée, rémunération et
+  démarches…'
 min_words: 1800
 status: published
 link_anchors:
 - text: congé paternité syntec
   max: 4
+related_posts:
+- 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
+- 1054-comment-acceder-aux-avantages-du-comite-d-entreprise-adecco
+- 8440-qu-est-ce-qu-un-comite-d-entreprise
+- 3695-quels-sont-les-avantages-du-comite-d-entreprise-airbus
 ---
-
 <h2>Les nouvelles règles du congé paternité Syntec</h2>
 
 <p>Depuis septembre 2021, le congé paternité a doublé en France. <strong>25 jours de congé</strong> au lieu de 11 précédemment. Pour nous dirigeants de PME appliquant la convention Syntec, cette évolution change la donne. Je gère une équipe de développeurs et consultants depuis 11 ans. J'ai vécu cette transition de près.</p>
