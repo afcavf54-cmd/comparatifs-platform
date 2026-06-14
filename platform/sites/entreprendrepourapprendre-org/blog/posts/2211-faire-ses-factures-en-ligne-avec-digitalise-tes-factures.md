@@ -15,6 +15,7 @@ link_anchors:
   max: 5
 related_posts:
 - 6741-comment-parametrer-la-facturation-recurrente-billmatic-cyclic
+- 5909-faire-ses-factures-en-ligne-avec-simplifie-ta-compta
 ---
 <h2>Digitalise-Tes-Factures : ma solution pour en finir avec la paperasse</h2>
 
