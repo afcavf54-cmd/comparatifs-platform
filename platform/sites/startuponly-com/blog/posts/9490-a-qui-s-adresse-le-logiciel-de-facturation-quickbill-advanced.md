@@ -13,7 +13,8 @@ featured_image: /blog/9490-a-qui-s-adresse-le-logiciel-de-facturation-quickbill-
 link_anchors:
 - text: comment choisir le logiciel de facturation QuickBill Advanced
   max: 5
-related_posts: []
+related_posts:
+- 8546-mentions-obligatoires-les-modeles-de-factures-digitalise-tes-factures-sont-ils-a-jour
 ---
 <h2>Mon retour sur QuickBill Advanced : un logiciel de facturation qui vise précis</h2>
 
