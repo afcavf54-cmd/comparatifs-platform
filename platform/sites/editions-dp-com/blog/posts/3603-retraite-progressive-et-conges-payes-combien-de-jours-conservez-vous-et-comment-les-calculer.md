@@ -1,18 +1,25 @@
 ---
-title: 'Retraite progressive et congés payés : combien de jours conservez-vous et comment les calculer ?'
+title: 'Retraite progressive et congés payés : combien de jours conservez-vous et
+  comment les calculer ?'
 slug: 3603-retraite-progressive-et-conges-payes-combien-de-jours-conservez-vous-et-comment-les-calculer
 date: '2026-06-14T08:00:00+02:00'
 categorie: Salarié
 meta_title: 'Congés en retraite progressive : combien de jours ?'
-meta_description: 'Découvrez comment calculer vos congés payés en retraite progressive : règles proportionnelles, arrondis, exceptions selon les accords d''entreprise et conservation…'
+meta_description: 'Découvrez comment calculer vos congés payés en retraite progressive
+  : règles proportionnelles, arrondis, exceptions selon les accords d''entreprise
+  et conservation…'
 min_words: 1200
 status: published
 featured_image: /blog/3603-retraite-progressive-et-conges-payes-combien-de-jours-conservez-vous-et-comment-les-calculer.jpg
 link_anchors:
 - text: nombre de jours de congés en retraite progressive
   max: 4
+related_posts:
+- 6353-comite-d-entreprise-sncf-les-avantages
+- 4315-comment-fonctionne-le-comite-d-entreprise-credit-mutuel
+- 1188-que-propose-le-comite-d-entreprise-gmf-aux-salaries
+- 3461-fin-de-cdd-et-silence-de-l-employeur-quels-sont-vos-droits-et-que-faire-concretement
 ---
-
 <h2>Comment calculer vos congés en retraite progressive ?</h2>
 
 <p>Je vais vous expliquer concrètement comment ça marche pour les congés payés en retraite progressive. Quand j'ai accompagné mes équipes sur ce sujet, j'ai vite réalisé que <strong>beaucoup de dirigeants</strong> ne maîtrisent pas les calculs. Pourtant, c'est un point crucial pour anticiper les coûts.</p>
