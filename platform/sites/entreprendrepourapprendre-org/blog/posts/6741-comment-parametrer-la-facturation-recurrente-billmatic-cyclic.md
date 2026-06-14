@@ -13,7 +13,8 @@ featured_image: /blog/6741-comment-parametrer-la-facturation-recurrente-billmati
 link_anchors:
 - text: le paramétrage de la facturation récurrente Billmatic Cyclic
   max: 5
-related_posts: []
+related_posts:
+- 2211-faire-ses-factures-en-ligne-avec-digitalise-tes-factures
 ---
 <h2>Pourquoi j'ai choisi Billmatic Cyclic pour automatiser ma facturation ?</h2>
 
