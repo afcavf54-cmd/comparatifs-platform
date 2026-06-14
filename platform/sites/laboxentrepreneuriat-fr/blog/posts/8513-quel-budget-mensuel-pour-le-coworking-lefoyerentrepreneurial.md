@@ -3,16 +3,20 @@ title: Quel budget mensuel pour le coworking LeFoyerEntrepreneurial
 slug: 8513-quel-budget-mensuel-pour-le-coworking-lefoyerentrepreneurial
 date: '2026-06-14T11:00:00+02:00'
 categorie: Entrepreneuriat
-meta_title: 'Tarifs coworking LeFoyerEntrepreneurial : combien pour une place fixe ?'
-meta_description: 'Découvrez les tarifs de LeFoyerEntrepreneurial : formule nomade à 89€, résidente à 179€ ou bureau privé jusqu''à 450€. Calculez votre budget coworking optimal avec…'
+meta_title: 'Tarifs coworking LeFoyerEntrepreneurial : combien pour une place fixe
+  ?'
+meta_description: 'Découvrez les tarifs de LeFoyerEntrepreneurial : formule nomade
+  à 89€, résidente à 179€ ou bureau privé jusqu''à 450€. Calculez votre budget coworking
+  optimal avec…'
 min_words: 940
 status: published
 featured_image: /blog/8513-quel-budget-mensuel-pour-le-coworking-lefoyerentrepreneurial.jpg
 link_anchors:
 - text: les tarifs de coworking de LeFoyerEntrepreneurial
   max: 5
+related_posts:
+- 3933-les-6-atouts-du-coworking-la-cantine-x-french-tech-nantes
 ---
-
 <h2>Budget coworking : ce que vous devez prévoir pour LeFoyerEntrepreneurial</h2>
 
 <p>Quand je vois passer les devis de <strong>location de bureaux et salles de réunion chez Mama Works coworking à Bordeaux</strong> ou dans d'autres espaces similaires, je me dis qu'il faut vraiment bien calculer son coup avant de se lancer. LeFoyerEntrepreneurial propose plusieurs formules, mais sans une vision claire de votre budget mensuel, vous risquez de vous retrouver coincé.</p>

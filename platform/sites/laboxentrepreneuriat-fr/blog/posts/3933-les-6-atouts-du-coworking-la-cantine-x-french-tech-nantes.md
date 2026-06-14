@@ -4,15 +4,18 @@ slug: 3933-les-6-atouts-du-coworking-la-cantine-x-french-tech-nantes
 date: '2026-06-14T08:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'Coworking La Cantine x French Tech Nantes : 6 raisons d''y travailler'
-meta_description: 'Découvrez les 6 atouts majeurs du coworking La Cantine x French Tech Nantes : communauté tech innovante, événements pointus et environnement startup unique à Nantes.'
+meta_description: 'Découvrez les 6 atouts majeurs du coworking La Cantine x French
+  Tech Nantes : communauté tech innovante, événements pointus et environnement startup
+  unique à Nantes.'
 min_words: 930
 status: published
 featured_image: /blog/3933-les-6-atouts-du-coworking-la-cantine-x-french-tech-nantes.jpg
 link_anchors:
 - text: l'espace de coworking La Cantine x La French Tech Nantes
   max: 5
+related_posts:
+- 8513-quel-budget-mensuel-pour-le-coworking-lefoyerentrepreneurial
 ---
-
 <p>J'ai testé plusieurs espaces de coworking dans l'écosystème French Tech, et <strong>La Cantine x French Tech Nantes</strong> sort vraiment du lot. Pas seulement pour son positionnement tech, mais pour des aspects très concrets que je vais détailler.</p>
 
 <p>Quand on cherche un espace de travail partagé, on regarde souvent d'abord le prix. Mais après avoir accompagné des dizaines d'entrepreneurs dans leurs choix d'espaces de travail, je peux vous dire que les vrais critères qui comptent au quotidien sont ailleurs.</p>
