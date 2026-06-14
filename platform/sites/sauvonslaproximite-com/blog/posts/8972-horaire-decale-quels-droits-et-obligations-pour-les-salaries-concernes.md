@@ -15,6 +15,7 @@ link_anchors:
   max: 4
 related_posts:
 - 3837-radiation-pole-emploi-combien-d-avertissements-avant-une-sanction
+- 9279-accord-implicite-de-rupture-conventionnelle-ce-que-prevoit-reellement-la-loi
 ---
 <h2>Qu'est-ce qu'un horaire décalé et dans quels cas l'employeur peut-il l'imposer ?</h2>
 
