@@ -4,15 +4,21 @@ slug: 3554-les-inconvenients-du-cdi-interimaire-avant-de-signer
 date: '2026-06-14T12:00:00+02:00'
 categorie: Salarié
 meta_title: 'CDI intérimaire : les inconvénients à anticiper'
-meta_description: 'Découvrez les inconvénients cachés du CDI intérimaire : salaire réduit en intermission, absence de primes, évolution limitée. Tout savoir avant de signer ce contrat.'
+meta_description: 'Découvrez les inconvénients cachés du CDI intérimaire : salaire
+  réduit en intermission, absence de primes, évolution limitée. Tout savoir avant
+  de signer ce contrat.'
 min_words: 900
 status: published
 featured_image: /blog/3554-les-inconvenients-du-cdi-interimaire-avant-de-signer.jpg
 link_anchors:
 - text: les avantages et inconvénients du CDI intérimaire
   max: 5
+related_posts:
+- 4100-je-fais-moins-d-heures-que-mon-contrat-cdi-comment-faire-respecter-vos-droits
+- 1340-horaire-decale-reglementation-remuneration-et-organisation-du-travail
+- 2242-accord-implicite-de-rupture-conventionnelle-mythe-ou-realite-juridique
+- 3761-radiation-pole-emploi-procedure-delais-et-consequences-pour-les-demandeurs-d-emploi
 ---
-
 <h2>Qu'est-ce que le CDI intérimaire et pourquoi faire attention ?</h2>
 
 <p>Le CDI intérimaire, officiellement appelé CDI intérimaire, vous promet la sécurité d'un contrat à durée indéterminée avec la flexibilité de l'intérim. Ça sonne bien sur le papier. Mais avant de signer, je vous conseille de bien comprendre ce qui vous attend.</p>
