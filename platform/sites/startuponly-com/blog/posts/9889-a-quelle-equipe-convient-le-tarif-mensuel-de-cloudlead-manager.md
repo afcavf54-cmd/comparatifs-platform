@@ -16,6 +16,7 @@ link_anchors:
   max: 5
 related_posts:
 - 9906-delai-d-implementation-de-l-erp-bizflow-max
+- 6030-crm-basique-ou-salesforce-premium-lequel-pour-une-pme
 - 4765-le-crm-mobile-fieldforce-connect-android-et-le-mode-hors-ligne
 ---
 <h2>CloudLead Manager : qui peut vraiment se l'offrir en 2024 ?</h2>

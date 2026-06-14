@@ -14,8 +14,9 @@ link_anchors:
 - text: le CRM mobile FieldForce Connect en version Android
   max: 5
 related_posts:
-- 9906-delai-d-implementation-de-l-erp-bizflow-max
 - 9889-a-quelle-equipe-convient-le-tarif-mensuel-de-cloudlead-manager
+- 9906-delai-d-implementation-de-l-erp-bizflow-max
+- 6030-crm-basique-ou-salesforce-premium-lequel-pour-une-pme
 ---
 <h2>FieldForce Connect Android : mon test terrain complet</h2>
 
