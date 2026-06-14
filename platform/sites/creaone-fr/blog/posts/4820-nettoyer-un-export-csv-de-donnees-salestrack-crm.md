@@ -14,6 +14,7 @@ link_anchors:
 - text: comment exporter les données du CRM SalesTrack au format CSV
   max: 5
 related_posts:
+- 2160-6-elements-qui-font-grimper-le-cout-d-implementation-de-bizcore-advanced
 - 9219-5-points-a-verifier-sur-le-tarif-mensuel-de-cloudlead-manager
 - 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
 ---

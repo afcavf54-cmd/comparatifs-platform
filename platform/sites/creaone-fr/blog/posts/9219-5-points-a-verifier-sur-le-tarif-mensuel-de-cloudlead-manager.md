@@ -16,6 +16,7 @@ link_anchors:
 related_posts:
 - 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
 - 4820-nettoyer-un-export-csv-de-donnees-salestrack-crm
+- 2160-6-elements-qui-font-grimper-le-cout-d-implementation-de-bizcore-advanced
 ---
 <h2>Pourquoi surveiller de près votre abonnement CloudLead Manager ?</h2>
 
