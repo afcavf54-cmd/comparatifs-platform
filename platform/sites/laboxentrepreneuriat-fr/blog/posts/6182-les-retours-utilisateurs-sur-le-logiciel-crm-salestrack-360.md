@@ -13,6 +13,7 @@ link_anchors:
 - text: les avis utilisateurs sur le logiciel CRM SalesTrack 360
   max: 5
 related_posts:
+- 1860-le-logiciel-crm-businesspro-x4-au-scanner
 - 6769-installer-le-logiciel-crm-mobile-fieldforce-sync-point-par-point
 - 2841-le-logiciel-crm-salestrack-evolution-sans-detour
 ---
