@@ -13,9 +13,10 @@ link_anchors:
 - text: comment installer l'ERP CloudManager Enterprise
   max: 5
 related_posts:
-- 3614-csv-ou-export-natif-des-donnees-salestrack-crm-que-choisir
-- 7027-integration-de-l-erp-flexmanage-plus-les-pieges-techniques
+- 8123-projet-erp-nextgen-business-suite-les-pieges
 - 4746-projet-erp-smartchain-360-les-pieges-a-anticiper
+- 7027-integration-de-l-erp-flexmanage-plus-les-pieges-techniques
+- 3614-csv-ou-export-natif-des-donnees-salestrack-crm-que-choisir
 ---
 <h2>Mon expérience avec CloudManager Enterprise : attention aux embûches</h2>
 

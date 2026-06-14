@@ -15,8 +15,9 @@ link_anchors:
   max: 5
 related_posts:
 - 3614-csv-ou-export-natif-des-donnees-salestrack-crm-que-choisir
-- 5187-installation-de-l-erp-cloudmanager-enterprise-les-pieges
 - 7027-integration-de-l-erp-flexmanage-plus-les-pieges-techniques
+- 8123-projet-erp-nextgen-business-suite-les-pieges
+- 5187-installation-de-l-erp-cloudmanager-enterprise-les-pieges
 ---
 <h2>Retour d'expérience : SmartChain 360 et ses zones de turbulence</h2>
 

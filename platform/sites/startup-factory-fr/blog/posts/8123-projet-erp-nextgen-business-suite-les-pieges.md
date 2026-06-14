@@ -4,15 +4,21 @@ slug: 8123-projet-erp-nextgen-business-suite-les-pieges
 date: '2026-06-14T10:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Implémenter l''ERP NextGen Business Suite : les erreurs à éviter'
-meta_description: Découvrez pourquoi l'implémentation de NextGen Business Suite a failli couler une startup de 35 salariés. Retour d'expérience sur les pièges commerciaux et…
+meta_description: Découvrez pourquoi l'implémentation de NextGen Business Suite a
+  failli couler une startup de 35 salariés. Retour d'expérience sur les pièges commerciaux
+  et…
 min_words: 980
 status: published
 featured_image: /blog/8123-projet-erp-nextgen-business-suite-les-pieges.jpg
 link_anchors:
 - text: comment implémenter l'ERP NextGen Business Suite
   max: 5
+related_posts:
+- 3614-csv-ou-export-natif-des-donnees-salestrack-crm-que-choisir
+- 4746-projet-erp-smartchain-360-les-pieges-a-anticiper
+- 5187-installation-de-l-erp-cloudmanager-enterprise-les-pieges
+- 7027-integration-de-l-erp-flexmanage-plus-les-pieges-techniques
 ---
-
 <h2>NextGen Business Suite : pourquoi j'ai failli couler ma startup</h2>
 
 <p>En 2023, j'ai pris une des décisions les plus risquées de ma vie d'entrepreneur. Implémenter NextGen Business Suite dans ma startup de 35 salariés. <strong>Six mois plus tard</strong>, j'ai compris pourquoi tant de dirigeants parlent de ce projet comme d'un cauchemar éveillé.</p>
