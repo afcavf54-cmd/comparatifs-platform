@@ -37,7 +37,36 @@ async function ghDelete(path: string, sha: string, message: string): Promise<boo
   return res.ok
 }
 
+// ─── Helper : normaliser les catégories d'un body de requête ──────────────
+// Accepte 3 cas (par ordre de priorité) :
+//   1) body.categories : string[] (nouvelle UI multi-select)
+//   2) body.categorie  : string   (legacy / fallback client)
+//   3) rien            → null
+// Retourne { categorie, categories } où categorie === categories[0] (invariant).
+function normalizeCategories(body: any): { categorie: string; categories: string[] } | null {
+  let cats: string[] = []
+  if (Array.isArray(body.categories)) {
+    cats = body.categories
+      .map((c: any) => (typeof c === 'string' ? c.trim() : ''))
+      .filter((c: string) => c.length > 0)
+  }
+  if (cats.length === 0 && typeof body.categorie === 'string' && body.categorie.trim()) {
+    cats = [body.categorie.trim()]
+  }
+  if (cats.length === 0) return null
+  const seen = new Set<string>()
+  const unique = cats.filter(c => {
+    if (seen.has(c)) return false
+    seen.add(c)
+    return true
+  })
+  return { categorie: unique[0], categories: unique }
+}
+
 // ─── GET : récupère un article ─────────────────────────────────────────────
+// Backward-compat : si l'article legacy n'a que `categorie` (string) dans son
+// frontmatter, on synthétise `categories: [categorie]` à la volée pour que le
+// frontend reçoive toujours une liste exploitable par le multi-select.
 export async function GET(req: NextRequest, { params }: { params: Promise<{ siteId: string; postSlug: string }> }) {
   const { siteId, postSlug } = await params
   const path = `platform/sites/${siteId}/blog/posts/${postSlug}.md`
@@ -45,6 +74,13 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ site
   if (!file) return NextResponse.json({ error: 'Article introuvable' }, { status: 404 })
   const parsed = parseFrontmatter(file.content)
   if (!parsed) return NextResponse.json({ error: 'Article invalide (frontmatter)' }, { status: 500 })
+
+  const fm: any = parsed.fm
+  // Backward-compat : reconstruire categories[] depuis categorie si absent
+  if (!Array.isArray(fm.categories) || fm.categories.length === 0) {
+    fm.categories = fm.categorie ? [fm.categorie] : []
+  }
+
   // Récupérer le domaine du site pour construire l'URL publique de prévisualisation
   let domain = ''
   const configFile = await ghGet(`platform/sites/${siteId}/config.yaml`)
@@ -53,7 +89,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ site
     if (m) domain = m[1].trim().replace(/^["']|["']$/g, '').replace(/\/$/, '')
   }
   return NextResponse.json({
-    post: { ...parsed.fm, content_md: parsed.body, sha: file.sha },
+    post: { ...fm, content_md: parsed.body, sha: file.sha },
     site: { domain },
   })
 }
@@ -62,8 +98,14 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ site
 export async function PUT(req: NextRequest, { params }: { params: Promise<{ siteId: string; postSlug: string }> }) {
   const { siteId, postSlug } = await params
   const body = await req.json()
-  const { title, slug, date, categorie, meta_title, meta_description, featured_image, status, content_md, related_posts, link_anchors, min_words, sha } = body
+  const { title, slug, date, meta_title, meta_description, featured_image, status, content_md, related_posts, link_anchors, min_words, sha } = body
   if (!title || !slug) return NextResponse.json({ error: 'title et slug requis' }, { status: 400 })
+
+  // Normalisation : accepte body.categories[] (nouvelle UI) ou body.categorie (legacy)
+  const cats = normalizeCategories(body)
+  if (!cats) {
+    return NextResponse.json({ error: 'Au moins une catégorie est requise' }, { status: 400 })
+  }
 
   // Si le slug change, on supprime l'ancien fichier et on crée le nouveau
   const oldPath = `platform/sites/${siteId}/blog/posts/${postSlug}.md`
@@ -71,7 +113,10 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
   const slugChanged = slug !== postSlug
 
   const post: any = {
-    title, slug, date, categorie,
+    title, slug, date,
+    // Invariant écrit dans le frontmatter : categorie (principale) === categories[0]
+    categorie: cats.categorie,
+    categories: cats.categories,
     updated: new Date().toISOString().replace(/\.\d+Z$/, ''),
     meta_title, meta_description, featured_image, status,
     related_posts: Array.isArray(related_posts) ? related_posts : undefined,
