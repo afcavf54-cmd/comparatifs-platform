@@ -1,18 +1,25 @@
 ---
-title: 'Travailler sans contrat depuis 15 jours : quels risques pour l''employeur et quels droits pour vous ?'
+title: 'Travailler sans contrat depuis 15 jours : quels risques pour l''employeur
+  et quels droits pour vous ?'
 slug: 2957-travailler-sans-contrat-depuis-15-jours-quels-risques-pour-l-employeur-et-quels-droits-pour-vous
 date: '2026-06-15T14:00:00+02:00'
 categorie: Salarié
 meta_title: Je travaille sans contrat depuis 15 jours
-meta_description: Travailler sans contrat depuis 15 jours expose l'employeur à des sanctions et vous donne des droits légaux complets. Découvrez vos protections et les risques…
+meta_description: Travailler sans contrat depuis 15 jours expose l'employeur à des
+  sanctions et vous donne des droits légaux complets. Découvrez vos protections et
+  les risques…
 min_words: 1200
 status: published
 featured_image: /blog/2957-travailler-sans-contrat-depuis-15-jours-quels-risques-pour-l-employeur-et-quels-droits-pour-vous.jpg
 link_anchors:
 - text: si vous travaillez depuis 15 jours sans contrat
   max: 4
+related_posts:
+- 7715-que-propose-le-comite-d-entreprise-generali
+- 1054-comment-acceder-aux-avantages-du-comite-d-entreprise-adecco
+- 2690-conge-paternite-dans-la-convention-syntec-duree-remuneration-et-demarches-a-suivre
+- 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
 ---
-
 <h2>La situation : travailler sans contrat, une réalité plus fréquente qu'on ne le pense</h2>
 
 <p>Je vais être franc avec vous. Après 11 ans à diriger une petite entreprise, j'ai vu des situations compliquées. Mais celle-ci revient régulièrement : <strong>des salariés qui travaillent depuis 15 jours sans contrat signé</strong>. Parfois c'est de la négligence administrative, parfois c'est volontaire. Dans tous les cas, la situation est délicate pour tout le monde.</p>
