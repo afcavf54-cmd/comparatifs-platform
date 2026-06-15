@@ -39,12 +39,44 @@ async function ghPut(path: string, content: string, message: string, sha?: strin
   return res.ok
 }
 
+// ─── Helper : normaliser les catégories d'un body de requête ──────────────
+// Accepte 3 cas (par ordre de priorité) :
+//   1) body.categories : string[] (nouvelle UI multi-select)
+//   2) body.categorie  : string   (legacy / fallback client)
+//   3) rien            → null (erreur 400 côté caller)
+// Retourne { categorie, categories } où categorie === categories[0] (invariant).
+function normalizeCategories(body: any): { categorie: string; categories: string[] } | null {
+  let cats: string[] = []
+  if (Array.isArray(body.categories)) {
+    cats = body.categories
+      .map((c: any) => (typeof c === 'string' ? c.trim() : ''))
+      .filter((c: string) => c.length > 0)
+  }
+  // Fallback legacy : si pas de categories[] mais un categorie string
+  if (cats.length === 0 && typeof body.categorie === 'string' && body.categorie.trim()) {
+    cats = [body.categorie.trim()]
+  }
+  if (cats.length === 0) return null
+  // Dédupliquer en conservant l'ordre (la 1ère occurrence reste principale)
+  const seen = new Set<string>()
+  const unique = cats.filter(c => {
+    if (seen.has(c)) return false
+    seen.add(c)
+    return true
+  })
+  return { categorie: unique[0], categories: unique }
+}
+
 // ─── GET : liste tous les articles du blog ────────────────────────────────
 // Optimisation : tous les .md sont fetchés EN PARALLÈLE (chunks de 30).
 // Avant : 140 articles = 140 appels GitHub séquentiels ~ 20-40s.
 // Après : 140 articles = ~5 chunks de 30 en parallèle ~ 2-5s.
 // GitHub API authentifiée : 5000 req/h → 140 req/page = OK même avec
 // plusieurs rafraîchissements.
+//
+// Backward-compat multi-catégories : pour les articles legacy qui n'ont que
+// `categorie` (string) dans leur frontmatter, on synthétise `categories: [categorie]`
+// à la volée pour que le frontend reçoive toujours une liste à itérer.
 export async function GET(req: NextRequest, { params }: { params: Promise<{ siteId: string }> }) {
   const { siteId } = await params
   const dir = `platform/sites/${siteId}/blog/posts`
@@ -53,9 +85,6 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ site
 
   const mdFiles = files.filter(f => f.name.endsWith('.md'))
 
-  // Chunked parallel fetch : 30 requêtes en parallèle max, puis next batch.
-  // Évite de saturer GitHub avec 140 connexions simultanées tout en gardant
-  // un gain de perf énorme vs la version séquentielle.
   const CHUNK_SIZE = 30
   const results: any[] = []
   for (let i = 0; i < mdFiles.length; i += CHUNK_SIZE) {
@@ -65,8 +94,13 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ site
       if (!file) return null
       const parsed = parseFrontmatter(file.content)
       if (!parsed) return null
+      const fm: any = parsed.fm
+      // Backward-compat : reconstruire categories[] depuis categorie si absent
+      if (!Array.isArray(fm.categories) || fm.categories.length === 0) {
+        fm.categories = fm.categorie ? [fm.categorie] : []
+      }
       return {
-        ...parsed.fm,
+        ...fm,
         filename: f.name,
         excerpt: (parsed.body || '').replace(/[#*_`>\-]/g, '').replace(/\s+/g, ' ').slice(0, 150),
       }
@@ -82,9 +116,15 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ site
 export async function POST(req: NextRequest, { params }: { params: Promise<{ siteId: string }> }) {
   const { siteId } = await params
   const body = await req.json()
-  const { title, categorie, content_md, meta_title, meta_description, featured_image, status, schedule_date, min_words, link_anchors } = body
-  if (!title || !categorie) {
-    return NextResponse.json({ error: 'title et categorie requis' }, { status: 400 })
+  const { title, content_md, meta_title, meta_description, featured_image, status, schedule_date, min_words, link_anchors } = body
+
+  // Normalisation : accepte body.categories[] (nouvelle UI) ou body.categorie (legacy)
+  const cats = normalizeCategories(body)
+  if (!title) {
+    return NextResponse.json({ error: 'title requis' }, { status: 400 })
+  }
+  if (!cats) {
+    return NextResponse.json({ error: 'Au moins une catégorie est requise' }, { status: 400 })
   }
 
   // Lister les slugs existants pour éviter les collisions
@@ -101,7 +141,9 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ sit
     title,
     slug,
     date: dateStr,
-    categorie,
+    // Invariant écrit dans le frontmatter : categorie (principale) === categories[0]
+    categorie: cats.categorie,
+    categories: cats.categories,
     meta_title: meta_title || title,
     meta_description: meta_description || '',
     featured_image: featured_image || '',
