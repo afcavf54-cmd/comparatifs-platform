@@ -35,13 +35,9 @@
   <meta name="twitter:title" content="{{ site.home_title | default('CadeauClic — Des idées cadeau & des bons plans') }}">
   <meta name="twitter:description" content="{{ site.home_description | default('Idées cadeau originales, codes promo testés et offres de parrainage.') }}">
 
-  {# Favicon — /favicon.png en priorité (fichier dashboard), fallbacks pour autres formats #}
-  {% if site.favicon_file %}
-  <link rel="icon" href="/{{ site.favicon_file }}">
-  {% endif %}
+  {# Favicon — fichier dashboard upload (public/favicon.png) #}
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/favicon.png">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
   {# Google Search Console #}
   {% if site.google_site_verification %}
