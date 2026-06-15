@@ -35,15 +35,13 @@
   <meta name="twitter:title" content="{{ site.home_title | default('CadeauClic — Des idées cadeau & des bons plans') }}">
   <meta name="twitter:description" content="{{ site.home_description | default('Idées cadeau originales, codes promo testés et offres de parrainage.') }}">
 
-  {# Favicon — site.favicon_file pris en priorité, sinon fallbacks standards #}
+  {# Favicon — /favicon.png en priorité (fichier dashboard), fallbacks pour autres formats #}
   {% if site.favicon_file %}
   <link rel="icon" href="/{{ site.favicon_file }}">
   {% endif %}
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
   {# Google Search Console #}
   {% if site.google_site_verification %}
@@ -341,12 +339,12 @@
 <header>
   <div class="wrap nav">
     <a href="/" class="logo">
-      {% if site.logo_image or site.logo_url or site.logo_file %}
-        {% set _logo_src = site.logo_image or site.logo_url or site.logo_file %}
-        <img src="{% if _logo_src.startswith('http') or _logo_src.startswith('/') %}{{ _logo_src }}{% else %}/{{ _logo_src }}{% endif %}" alt="{{ site.name | default('CadeauClic') }}" class="logo-img">
-      {% else %}
-        <span class="mark">🎁</span>{{ site.logo_text | default('Cadeau') }}<span>{{ site.logo_accent | default('Clic') }}</span>
-      {% endif %}
+      {# /logo.png = fichier dashboard (public/logo.png), fallback text si absent #}
+      <img src="/logo.png" alt="{{ site.name | default('CadeauClic') }}" class="logo-img"
+           onerror="this.onerror=null;this.style.display='none';var fb=this.parentNode.querySelector('.logo-fallback');if(fb)fb.style.display='inline-flex'">
+      <span class="logo-fallback" style="display:none;align-items:center;gap:6px">
+        <span class="mark">🎁</span>{{ site.logo_text | default('Cadeau') }}{% if site.logo_accent %}<span>{{ site.logo_accent }}</span>{% endif %}
+      </span>
     </a>
 
     {# Bouton hamburger — visible uniquement sur mobile #}
@@ -672,12 +670,11 @@
     <div class="foot-grid">
       <div>
         <a href="/" class="logo">
-          {% if site.logo_image or site.logo_url or site.logo_file %}
-            {% set _logo_src_f = site.logo_image or site.logo_url or site.logo_file %}
-            <img src="{% if _logo_src_f.startswith('http') or _logo_src_f.startswith('/') %}{{ _logo_src_f }}{% else %}/{{ _logo_src_f }}{% endif %}" alt="{{ site.name | default('CadeauClic') }}" class="logo-img" style="filter:brightness(0) invert(1)">
-          {% else %}
-            <span class="mark">🎁</span>{{ site.logo_text | default('Cadeau') }}<span style="color:var(--rose-300)">{{ site.logo_accent | default('Clic') }}</span>
-          {% endif %}
+          <img src="/logo.png" alt="{{ site.name | default('CadeauClic') }}" class="logo-img" style="filter:brightness(0) invert(1)"
+               onerror="this.onerror=null;this.style.display='none';var fb=this.parentNode.querySelector('.logo-fallback');if(fb)fb.style.display='inline-flex'">
+          <span class="logo-fallback" style="display:none;align-items:center;gap:6px">
+            <span class="mark">🎁</span>{{ site.logo_text | default('Cadeau') }}{% if site.logo_accent %}<span style="color:var(--rose-300)">{{ site.logo_accent }}</span>{% endif %}
+          </span>
         </a>
         <p class="intro">En manque d'inspiration pour un futur cadeau à offrir&nbsp;? CadeauClic est le site référence pour trouver des idées cadeaux qui plaisent à coup sûr.</p>
         <div class="socials">
