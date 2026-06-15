@@ -4,15 +4,21 @@ slug: exemple-liste-de-naissance
 date: '2026-06-15T22:19:11+02:00'
 categorie: Bébé & Naissance
 meta_title: 'Exemple liste de naissance : les indispensables pour bébé'
-meta_description: 'Découvrez un exemple concret de liste de naissance pour accueillir bébé : quoi mettre, quoi éviter et comment guider vos proches vers des cadeaux vraiment utiles.'
+meta_description: 'Découvrez un exemple concret de liste de naissance pour accueillir
+  bébé : quoi mettre, quoi éviter et comment guider vos proches vers des cadeaux vraiment
+  utiles.'
 min_words: 900
 status: published
 featured_image: /blog/exemple-liste-de-naissance.jpg
 link_anchors:
 - text: exemple de liste de naissance
   max: 5
+related_posts:
+- liste-de-naissance-mes-envies
+- liste-de-naissance-berceau-magique
+- quels-sont-les-differents-types-de-baignoires-pour-bebe
+- cagnotte-de-naissance-en-ligne-le-cadeau-parfait
 ---
-
 <p>Quand j'attendais mon premier, j'ai passé des soirées entières à essayer de lister ce dont on aurait besoin. Un body ? Oui. Mais en quelle taille ? Un transat ? Peut-être. Un babyphone ? Sûrement. Et puis les proches commençaient à demander, à vouloir bien faire, et moi je ne savais pas quoi leur répondre. C'est là que j'ai vraiment compris l'intérêt d'une liste de naissance bien pensée.</p>
 
 <p>Si tu es enceinte ou si tu cherches une <strong>idée cadeau pour une future maman</strong> dans ton entourage, cet article va t'aider à y voir plus clair. Je partage ici ce que j'aurais aimé qu'on me dise avant, avec du concret, des exemples, et quelques erreurs à éviter.</p>
