@@ -13,7 +13,11 @@ featured_image: /blog/carte-cadeau-prefere-salaries-noel.jpg
 link_anchors:
 - text: pourquoi la carte cadeau est le cadeau préféré des salariés à noël
   max: 5
-related_posts: []
+related_posts:
+- code-promo-qonto
+- boursobank-220-euros
+- boursobank-150-euros
+- boursobank-80-euros
 ---
 <h2>Ma découverte qui a changé ma façon d'offrir en entreprise</h2>
 

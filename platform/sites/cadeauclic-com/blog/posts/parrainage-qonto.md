@@ -4,15 +4,21 @@ slug: parrainage-qonto
 date: '2026-06-15T21:19:25+02:00'
 categorie: Bons plans & Parrainage
 meta_title: 'Parrainage Qonto {Month} {year} : 160€ offerts'
-meta_description: Ouvre un compte Qonto via un lien de parrainage et profite de 160 euros offerts sur ton compte pro. Conditions, fonctionnement et astuces pour ne rien rater.
+meta_description: Ouvre un compte Qonto via un lien de parrainage et profite de 160
+  euros offerts sur ton compte pro. Conditions, fonctionnement et astuces pour ne
+  rien rater.
 min_words: 1000
 status: published
 featured_image: /blog/parrainage-qonto.jpg
 link_anchors:
 - text: parrainage qonto
   max: 5
+related_posts:
+- parrainage-qonto-500-euros
+- boursobank-80-euros
+- carte-cadeau-prefere-salaries-noel
+- code-promo-qonto
 ---
-
 <p>Je vais être honnête avec toi : quand j'ai lancé mon activité de conseil en organisation d'événements il y a deux ans, j'ai mis un temps fou à choisir un compte pro. J'ai testé plusieurs banques en ligne, comparé les offres, et finalement je suis tombée sur Qonto. Et là, j'ai découvert qu'en passant par un lien de parrainage, on pouvait gratter une belle somme à l'ouverture. Aujourd'hui je te partage tout ce que j'ai compris sur le <strong>parrainage Qonto</strong>, comment ça fonctionne vraiment, et surtout comment récupérer les 160€ offerts sans te prendre la tête.</p>
 
 <h2>Le parrainage Qonto, c'est quoi exactement ?</h2>
