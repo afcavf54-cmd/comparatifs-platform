@@ -1,13 +1,10 @@
 ---
-title: 'Refus d''aménagement d''horaire avec une RQTH : les recours possibles face
-  à l''employeur'
+title: 'Refus d''aménagement d''horaire avec une RQTH : les recours possibles face à l''employeur'
 slug: 2230-refus-d-amenagement-d-horaire-avec-une-rqth-les-recours-possibles-face-a-l-employeur
 date: '2026-06-14T18:00:00+02:00'
 categorie: Salarié
 meta_title: 'Refus aménagement horaire RQTH : quels recours face à l''employeur ?'
-meta_description: Face au refus d'aménagement d'horaire avec une RQTH, découvrez vos
-  recours légaux contre l'employeur. Conseils pratiques et démarches pour faire valoir
-  vos droits.
+meta_description: Face au refus d'aménagement d'horaire avec une RQTH, découvrez vos recours légaux contre l'employeur. Conseils pratiques et démarches pour faire valoir vos droits.
 min_words: 1800
 status: published
 link_anchors:
@@ -18,7 +15,9 @@ related_posts:
 - 3554-les-inconvenients-du-cdi-interimaire-avant-de-signer
 - 2242-accord-implicite-de-rupture-conventionnelle-mythe-ou-realite-juridique
 - 1340-horaire-decale-reglementation-remuneration-et-organisation-du-travail
+featured_image: /blog/2230-refus-d-amenagement-d-horaire-avec-une-rqth-les-recours-possibles-face-a-l-employeur.jpg
 ---
+
 <h2>La RQTH, un droit trop souvent méconnu par les employeurs</h2>
 
 <p>Je vais être direct avec vous. Quand on a une RQTH (Reconnaissance de la Qualité de Travailleur Handicapé), on s'attend à ce que l'employeur joue le jeu. <strong>Malheureusement, ce n'est pas toujours le cas</strong>. Après deux ans à accompagner des dirigeants sur ces questions RH, j'ai vu trop d'entreprises refuser des aménagements d'horaires sans vraie justification.</p>
@@ -341,3 +340,4 @@ related_posts:
 <p>Enfin, rappelez-vous qu'un aménagement d'horaire bien négocié <strong>profite à tout le monde</strong>. Vous gagnez en qualité de vie, l'employeur garde un salarié motivé et compétent.</p>
 
 <p>La loi est de votre côté. Les tribunaux sont de plus en plus sévères avec les employeurs qui discriminent. <strong>Faites valoir vos droits</strong>, c'est légitime et nécessaire.</p>
+

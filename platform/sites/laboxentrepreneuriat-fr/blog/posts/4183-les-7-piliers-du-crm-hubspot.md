@@ -4,9 +4,7 @@ slug: 4183-les-7-piliers-du-crm-hubspot
 date: '2026-06-15T07:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'HubSpot CRM : 7 fonctions clés du customer relationship management'
-meta_description: 'Découvrez les 7 piliers du CRM HubSpot : Marketing Hub, Sales Hub
-  et leurs fonctionnalités clés pour optimiser vos campagnes, qualifier vos prospects
-  et…'
+meta_description: 'Découvrez les 7 piliers du CRM HubSpot : Marketing Hub, Sales Hub et leurs fonctionnalités clés pour optimiser vos campagnes, qualifier vos prospects et…'
 min_words: 900
 status: published
 link_anchors:
@@ -17,7 +15,9 @@ related_posts:
 - 6769-installer-le-logiciel-crm-mobile-fieldforce-sync-point-par-point
 - 1860-le-logiciel-crm-businesspro-x4-au-scanner
 - 6182-les-retours-utilisateurs-sur-le-logiciel-crm-salestrack-360
+featured_image: /blog/4183-les-7-piliers-du-crm-hubspot.jpg
 ---
+
 <h2>Marketing Hub : le moteur de votre stratégie d'acquisition</h2>
 
 <p>Après avoir testé pas mal de solutions CRM, je dois reconnaître que HubSpot a structuré son offre de manière plutôt intelligente. Le Marketing Hub, premier pilier de leur écosystème, centralise vos campagnes email, votre gestion des réseaux sociaux et vos formulaires de capture.</p>
@@ -103,3 +103,4 @@ related_posts:
 <p>Aussi, la migration depuis un autre CRM peut s'avérer complexe si vous avez des processus très spécifiques. <strong>Comptez plusieurs semaines</strong> pour une transition propre avec formation des équipes.</p>
 
 <p>Un bon logiciel n'est pas celui qui propose le plus de fonctionnalités. C'est celui qui vous fait gagner du temps dès la première semaine d'utilisation.</p>
+

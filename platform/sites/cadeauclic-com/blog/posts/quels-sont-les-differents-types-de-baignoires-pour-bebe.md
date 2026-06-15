@@ -10,6 +10,7 @@ status: published
 link_anchors:
 - text: quelle est la meilleure baignoire pour bébé
   max: 5
+featured_image: /blog/quels-sont-les-differents-types-de-baignoires-pour-bebe.jpg
 ---
 
 <h2>Ma sélection des meilleures baignoires bébé après 2 ans de tests</h2>
@@ -87,3 +88,4 @@ link_anchors:
 </blockquote>
 
 <p>Le prix d'une bonne baignoire reste raisonnable comparé à d'autres équipements pour bébé. Entre 35 et 60 €, tu auras un produit qui te servira pendant toute la petite enfance et que tu pourras même garder pour un deuxième enfant.</p>
+
