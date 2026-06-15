@@ -29,6 +29,12 @@ try:
 except ImportError:
     blog_engine = None  # Le blog est optionnel, ignore si absent
 
+# ── Codes promo engine (depuis juin 2026) ────────────────────────────────────
+try:
+    import codes_promo_engine
+except ImportError:
+    codes_promo_engine = None  # Les codes promo sont optionnels (activés site par site)
+
 # ── Chemins ───────────────────────────────────────────────────────────────────
 ROOT          = Path(__file__).parent.parent
 TEMPLATES_DIR = ROOT / "templates"
@@ -679,6 +685,22 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, 
                 for cat_slug in sorted(_cats_seen):
                     lines.append(url(f"{domain}/avis/{cat_slug}/", "0.6", "weekly"))
 
+    # ── Pages CODES PROMO (depuis platform/sites/<site>/codes_promo/) ──
+    # Génère /codes-promo/ (listing) + /codes-promo/<marque-slug>/ par marque
+    # publiée. Activé si dossier codes_promo/ existe et contient des .md.
+    n_codes_promo = 0
+    if site_dir is not None and codes_promo_engine is not None:
+        cp_dir = site_dir / "codes_promo"
+        if cp_dir.exists():
+            cp_brands_sitemap = codes_promo_engine.load_all_brands(cp_dir.parent, include_drafts=False)
+            if cp_brands_sitemap:
+                lines.append(url(f"{domain}/codes-promo/", "0.8", "weekly"))
+                for b in cp_brands_sitemap:
+                    slug = b.get("slug", "")
+                    if slug:
+                        lines.append(url(f"{domain}/codes-promo/{slug}/", "0.7", "weekly"))
+                        n_codes_promo += 1
+
     lines += [
         url(f"{domain}/mentions-legales", "0.3", "yearly"),
         url(f"{domain}/politique-confidentialite", "0.3", "yearly"),
@@ -688,9 +710,10 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, 
     (output_dir / "sitemap.xml").write_text("\n".join(lines), encoding="utf-8")
     n_blog = len(blog_posts_for_sitemap)
     extras = []
-    if n_blog:   extras.append(f"{n_blog} blog")
-    if n_outils: extras.append(f"{n_outils} outils")
-    if n_avis:   extras.append(f"{n_avis} avis")
+    if n_blog:         extras.append(f"{n_blog} blog")
+    if n_outils:       extras.append(f"{n_outils} outils")
+    if n_avis:         extras.append(f"{n_avis} avis")
+    if n_codes_promo:  extras.append(f"{n_codes_promo} codes-promo")
     extras_msg = (" + " + " + ".join(extras)) if extras else ""
     print(f"  ✓ sitemap.xml ({len(pairs)} comparatifs + {len(products)} avis-legacy + pages liste{extras_msg})")
 
@@ -2120,6 +2143,131 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 article_dir.mkdir(parents=True, exist_ok=True)
                 (article_dir / "index.html").write_text(html, encoding="utf-8")
             print(f"  ✓ {len(blog_posts)} articles de blog générés")
+
+    # ───────────────────────────────────────────────────────────────────────
+    # ── CODES PROMO (template codes-promo.html.j2) ────────────────────────
+    # 1 marque = 1 page /codes-promo/<slug>/. Listing global /codes-promo/.
+    # Activé site par site via `has_codes_promo: true` dans hub.config.json
+    # OU si le dossier codes_promo/ existe et contient des .md.
+    # ───────────────────────────────────────────────────────────────────────
+    has_codes_promo = bool(config.get("has_codes_promo")) or (site_dir / "codes_promo").exists()
+    if has_codes_promo and codes_promo_engine is not None:
+        cp_dir = site_dir / "codes_promo"
+        cp_brands = codes_promo_engine.load_all_brands(cp_dir.parent, include_drafts=False) if cp_dir.exists() else []
+        if cp_brands:
+            cp_index_tpl_path = TEMPLATES_DIR / "codes-promo.html.j2"
+            cp_listing_tpl_path = TEMPLATES_DIR / "codes-promo-index.html.j2"
+            # Vérifier que les templates existent (site-local d'abord, fallback base)
+            try:
+                cp_tpl = env.get_template("codes-promo.html.j2")
+            except Exception as _e:
+                print(f"  ⚠ Codes promo : template codes-promo.html.j2 absent — skip ({_e})")
+                cp_tpl = None
+            try:
+                cp_listing_tpl = env.get_template("codes-promo-index.html.j2")
+            except Exception as _e:
+                print(f"  ⚠ Codes promo : template codes-promo-index.html.j2 absent — skip listing ({_e})")
+                cp_listing_tpl = None
+
+            if cp_tpl is not None:
+                # ── Données partagées : auteur, date construite, mois courant
+                _cp_author = config.get("author", {}) or {}
+                # Fallback : si pas de bloc `author:` top-level, dérive de site.author_name/photo
+                if not _cp_author.get("name") and config.get("site", {}).get("author_name"):
+                    _cp_author = {
+                        "name": config["site"].get("author_name"),
+                        "photo": config["site"].get("author_photo"),
+                        "job_title": config["site"].get("author_job_title"),
+                    }
+                today = date.today()
+                _cp_months_fr = ['', 'janvier', 'février', 'mars', 'avril', 'mai', 'juin',
+                                 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+                _cp_month_year = f"{_cp_months_fr[today.month]} {today.year}"
+                _cp_date_fr = f"{today.day} {_cp_months_fr[today.month]} {today.year}"
+                _cp_date_short = f"{today.day:02d}/{today.month:02d}"
+
+                # ── Pré-résolution des related_brands pour chaque marque
+                # (figé au 1er rendu si pas déjà défini, override dashboard)
+                for b in cp_brands:
+                    b["_related_resolved"] = codes_promo_engine.resolve_related_brands(b, cp_brands, n=8)
+
+                # ── Rendering de chaque marque ──────────────────────────
+                cp_site_url = (config.get("site", {}).get("url") or "").rstrip("/")
+                if not cp_site_url and config.get("site", {}).get("domain"):
+                    cp_site_url = f"https://{config['site']['domain']}"
+                n_cp = 0
+                for b in cp_brands:
+                    slug = b.get("slug", "")
+                    if not slug:
+                        continue
+                    jsonld_blocks = codes_promo_engine.build_jsonld_blocks(b, cp_site_url)
+                    steps = codes_promo_engine.extract_steps_from_content(b)
+                    try:
+                        html = cp_tpl.render(
+                            site={**site, "url": cp_site_url, "seo": config.get("seo", {})},
+                            theme=theme,
+                            author=_cp_author,
+                            brand=b,
+                            jsonld_blocks=jsonld_blocks,
+                            how_to_steps=steps,
+                            related_brands=b["_related_resolved"],
+                            build_date=today.isoformat(),
+                            build_date_fr=_cp_date_fr,
+                            build_date_short_fr=_cp_date_short,
+                            build_month_year=_cp_month_year,
+                            year=today.year,
+                            format_mois_court=codes_promo_engine.format_mois_court_fr,
+                        )
+                    except Exception as _e:
+                        print(f"  ⚠ Codes promo : render échec pour {slug} : {_e}")
+                        continue
+                    cp_brand_dir = output_dir / "codes-promo" / slug
+                    cp_brand_dir.mkdir(parents=True, exist_ok=True)
+                    (cp_brand_dir / "index.html").write_text(html, encoding="utf-8")
+                    n_cp += 1
+                if n_cp:
+                    print(f"  ✓ {n_cp} pages codes promo générées (/codes-promo/<marque>/)")
+
+            # ── Listing /codes-promo/ ────────────────────────────────────
+            if cp_listing_tpl is not None:
+                # Enrichir chaque marque avec best_offer_label pour le listing
+                for b in cp_brands:
+                    b["best_offer_label"] = codes_promo_engine._best_offer_label(b)
+                # Catégories de marques pour le filtre
+                cp_cats: dict = {}
+                for b in cp_brands:
+                    cm = (b.get("categorie_marque") or "").strip()
+                    if not cm:
+                        continue
+                    key = cm.lower()
+                    if key not in cp_cats:
+                        cp_cats[key] = {
+                            "name": cm,
+                            "slug": cm.lower().replace(" ", "-"),
+                            "count": 0,
+                        }
+                    cp_cats[key]["count"] += 1
+                cp_cats_list = sorted(cp_cats.values(), key=lambda x: x["count"], reverse=True)
+                total_codes = sum(b.get("n_total", 0) for b in cp_brands)
+                try:
+                    html = cp_listing_tpl.render(
+                        site={**site, "url": cp_site_url, "seo": config.get("seo", {})},
+                        theme=theme,
+                        author=_cp_author,
+                        brands=cp_brands,
+                        categories=cp_cats_list,
+                        total_codes=total_codes,
+                        build_date=today.isoformat(),
+                        build_date_fr=_cp_date_fr,
+                        build_month_year=_cp_month_year,
+                        year=today.year,
+                    )
+                    cp_root = output_dir / "codes-promo"
+                    cp_root.mkdir(parents=True, exist_ok=True)
+                    (cp_root / "index.html").write_text(html, encoding="utf-8")
+                    print(f"  ✓ /codes-promo/ (listing : {len(cp_brands)} marques, {total_codes} codes actifs)")
+                except Exception as _e:
+                    print(f"  ⚠ Codes promo : render listing échec : {_e}")
 
     # ───────────────────────────────────────────────────────────────────────
     # ── AVIS (template avis-post.html.j2) ─────────────────────────────────
