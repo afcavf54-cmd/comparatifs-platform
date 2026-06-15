@@ -16,6 +16,7 @@ related_posts:
 - 6769-installer-le-logiciel-crm-mobile-fieldforce-sync-point-par-point
 - 1860-le-logiciel-crm-businesspro-x4-au-scanner
 - 6182-les-retours-utilisateurs-sur-le-logiciel-crm-salestrack-360
+- 4183-les-7-piliers-du-crm-hubspot
 ---
 <h2>Mon test réel de SalesTrack Evolution : ce qui m'a convaincu et déçu</h2>
 

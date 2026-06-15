@@ -18,6 +18,7 @@ related_posts:
 - 2841-le-logiciel-crm-salestrack-evolution-sans-detour
 - 6182-les-retours-utilisateurs-sur-le-logiciel-crm-salestrack-360
 - 1860-le-logiciel-crm-businesspro-x4-au-scanner
+- 4183-les-7-piliers-du-crm-hubspot
 ---
 <h2>Prérequis avant l'installation de FieldForce Sync</h2>
 

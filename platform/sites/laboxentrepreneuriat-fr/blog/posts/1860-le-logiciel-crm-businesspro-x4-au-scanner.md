@@ -13,9 +13,10 @@ link_anchors:
 - text: les avis sur le logiciel CRM BusinessPro X4
   max: 5
 related_posts:
-- 6182-les-retours-utilisateurs-sur-le-logiciel-crm-salestrack-360
 - 6769-installer-le-logiciel-crm-mobile-fieldforce-sync-point-par-point
+- 4183-les-7-piliers-du-crm-hubspot
 - 2841-le-logiciel-crm-salestrack-evolution-sans-detour
+- 6182-les-retours-utilisateurs-sur-le-logiciel-crm-salestrack-360
 ---
 <h2>Mon retour d'expérience après 6 mois d'utilisation intensive</h2>
 
