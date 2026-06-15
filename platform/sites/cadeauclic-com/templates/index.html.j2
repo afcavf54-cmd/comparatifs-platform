@@ -1,0 +1,629 @@
+{# ============================================================
+   HOME OVERRIDE — cadeauclic.com
+   Path  : platform/sites/cadeauclic-com/templates/index.html.j2
+   Type  : home custom (multi-niche cadeau / bons plans / promos)
+   Persona auteur : Sophie Martin
+   Convention URL blog : /<slug>/  (slash final, héritage WordPress)
+   ============================================================ #}
+
+{# ── Helper canonical : reconstruit https://www.<host>/ proprement ── #}
+{% set _raw_host = (site.domain | default('https://cadeauclic.com'))
+                    | replace('https://','') | replace('http://','')
+                    | replace('www.','') | trim('/') %}
+{% set _canonical = 'https://www.' ~ _raw_host ~ '/' %}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {# ============ SEO ============ #}
+  <title>{{ site.home_title | default("CadeauClic — Des idées cadeau & des bons plans") }}</title>
+  <meta name="description" content="{{ site.home_description | default("Idées cadeau originales, codes promo testés et offres de parrainage. Sophie déniche pour toi les meilleures astuces pour offrir et économiser.") }}">
+  <link rel="canonical" href="{{ _canonical }}">
+
+  {# Open Graph #}
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ site.home_title | default('CadeauClic — Des idées cadeau & des bons plans') }}">
+  <meta property="og:description" content="{{ site.home_description | default('Idées cadeau originales, codes promo testés et offres de parrainage.') }}">
+  <meta property="og:url" content="{{ _canonical }}">
+  <meta property="og:locale" content="fr_FR">
+
+  {# Twitter #}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ site.home_title | default('CadeauClic — Des idées cadeau & des bons plans') }}">
+  <meta name="twitter:description" content="{{ site.home_description | default('Idées cadeau originales, codes promo testés et offres de parrainage.') }}">
+
+  {# Favicon #}
+  {% if site.favicon_file %}
+  <link rel="icon" href="/{{ site.favicon_file }}">
+  {% else %}
+  <link rel="icon" href="/favicon.ico">
+  {% endif %}
+
+  {# Google Search Console #}
+  {% if site.google_site_verification %}
+  <meta name="google-site-verification" content="{{ site.google_site_verification }}">
+  {% endif %}
+
+  {# Analytics (Clicky / autre) — passe-plat depuis config #}
+  {% if site.analytics_clicky %}
+  {{ site.analytics_clicky | safe }}
+  {% endif %}
+
+  {# ============ FONTS ============ #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  {# ============ CSS ============ #}
+  <style>
+    :root{
+      --rose-50:#fff5f8;
+      --rose-100:#ffe7ef;
+      --rose-200:#ffd0e0;
+      --rose-300:#ffb1cc;
+      --rose-500:#ff5b8a;
+      --rose-600:#ec3f76;
+      --rose-700:#cf2c61;
+      --coral:#ff7a59;
+      --ink:#251d27;
+      --ink-soft:#5d5360;
+      --line:#f0e3e9;
+      --white:#ffffff;
+      --grad:linear-gradient(100deg,var(--rose-500),var(--coral));
+      --shadow-sm:0 4px 18px rgba(207,44,97,.08);
+      --shadow-md:0 18px 50px rgba(207,44,97,.13);
+      --r:22px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"Nunito Sans",system-ui,sans-serif;
+      color:var(--ink);
+      background:#fff;
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit;text-decoration:none}
+    h1,h2,h3,h4,h5{font-family:"Poppins",sans-serif;line-height:1.2;color:var(--ink)}
+    img{max-width:100%;display:block}
+
+    .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+
+    /* ---------- BUTTONS ---------- */
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--grad);color:#fff;font-family:"Poppins";font-weight:700;
+      padding:14px 26px;border-radius:50px;font-size:.97rem;
+      box-shadow:var(--shadow-sm);transition:transform .15s,box-shadow .15s;
+      border:0;cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-md)}
+    .btn-ghost{background:transparent;color:var(--rose-600);box-shadow:none;border:2px solid var(--rose-200)}
+    .btn-ghost:hover{background:var(--rose-50);border-color:var(--rose-300)}
+
+    .eyebrow{
+      font-family:"Poppins";font-weight:700;
+      font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
+      color:var(--rose-600);
+      background:var(--rose-50);
+      padding:7px 14px;border-radius:50px;
+      display:inline-block;margin-bottom:18px;
+    }
+
+    /* ---------- HEADER ---------- */
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;gap:24px}
+    .logo{display:flex;align-items:center;gap:6px;font-family:"Poppins";font-weight:800;font-size:1.35rem;color:var(--ink)}
+    .logo .mark{font-size:1.55rem}
+    .logo span{color:var(--rose-600)}
+    .menu{display:flex;gap:30px}
+    .menu a{font-family:"Poppins";font-weight:600;color:var(--ink-soft);font-size:.95rem;transition:.15s}
+    .menu a:hover{color:var(--rose-600)}
+    .nav-right{display:flex;align-items:center;gap:18px}
+    .socials{display:flex;gap:10px}
+    .socials a{width:36px;height:36px;border-radius:50%;background:var(--rose-50);display:inline-flex;align-items:center;justify-content:center;color:var(--rose-600);transition:.15s}
+    .socials a:hover{background:var(--rose-100)}
+    .socials svg{width:16px;height:16px}
+
+    /* ---------- HERO ---------- */
+    .hero{padding:80px 0 70px;background:linear-gradient(180deg,var(--rose-50) 0%,#fff 80%);overflow:hidden;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center;position:relative}
+    .hero-copy h1{font-size:clamp(2.2rem,4.2vw,3.6rem);font-weight:800;letter-spacing:-.02em;margin:6px 0 22px;text-wrap:balance}
+    .hero-copy h1 .pink{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero-copy .lead{font-size:1.12rem;color:var(--ink-soft);max-width:36em;margin-bottom:30px}
+    .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:38px}
+    .hero-stats{display:grid;grid-template-columns:repeat(3,auto);gap:38px;padding-top:24px;border-top:1px solid var(--line);max-width:430px}
+    .hero-stats .num{font-family:"Poppins";font-weight:800;font-size:1.55rem;color:var(--rose-600);line-height:1}
+    .hero-stats small{font-size:.82rem;color:var(--ink-soft);margin-top:4px;display:block}
+
+    .hero-media{position:relative;aspect-ratio:1/1.05;max-width:520px;justify-self:center}
+    .hero-media .blob{position:absolute;inset:8% -4% 0 -4%;background:var(--grad);border-radius:46% 54% 38% 62% / 48% 42% 58% 52%;opacity:.18;filter:blur(10px);z-index:0}
+    .hero-figure{position:relative;width:100%;height:100%;border-radius:26px;overflow:hidden;background:linear-gradient(135deg,var(--rose-200),var(--coral));box-shadow:var(--shadow-md);display:flex;align-items:center;justify-content:center;z-index:1}
+    .hero-figure .gift{font-size:8rem;filter:drop-shadow(0 16px 30px rgba(207,44,97,.25))}
+    .float-tag{
+      position:absolute;background:#fff;border-radius:50px;padding:10px 16px 10px 10px;
+      font-family:"Poppins";font-weight:700;font-size:.86rem;color:var(--ink);
+      box-shadow:var(--shadow-md);display:flex;align-items:center;gap:9px;z-index:2;
+    }
+    .float-tag .ic{width:24px;height:24px;border-radius:50%;color:#fff;font-size:.75rem;display:inline-flex;align-items:center;justify-content:center;font-weight:700}
+    .float-tag.one{top:6%;left:-8%}
+    .float-tag.two{bottom:8%;right:-8%}
+
+    /* ---------- FEATURE STRIP ---------- */
+    .strip{margin-top:-30px;position:relative;z-index:5}
+    .strip-card{
+      background:#fff;border-radius:var(--r);border:1px solid var(--line);
+      box-shadow:var(--shadow-md);
+      display:grid;grid-template-columns:repeat(3,1fr);overflow:hidden;
+    }
+    .strip-item{padding:28px 30px;display:flex;align-items:center;gap:16px}
+    .strip-item+.strip-item{border-left:1px solid var(--line)}
+    .strip-item .ic{font-size:1.8rem;flex:none}
+    .strip-item h4{font-family:"Poppins";font-weight:700;font-size:1rem;margin-bottom:3px}
+    .strip-item p{font-size:.9rem;color:var(--ink-soft);line-height:1.4}
+
+    /* ---------- SECTION BLOCKS ---------- */
+    section.block{padding:90px 0}
+    section.block.tint{background:var(--rose-50)}
+    .head{text-align:center;max-width:680px;margin:0 auto 50px}
+    .head h2{font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:800;letter-spacing:-.01em;margin-bottom:14px;text-wrap:balance}
+    .head p{color:var(--ink-soft);font-size:1.05rem}
+
+    /* ---------- PROMO CODES ---------- */
+    .promo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+    .promo{
+      background:#fff;border:1px solid var(--line);border-radius:var(--r);
+      padding:30px 26px;text-align:center;box-shadow:var(--shadow-sm);
+      display:flex;flex-direction:column;align-items:center;gap:8px;
+      transition:transform .18s,box-shadow .18s;
+    }
+    .promo:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+    .promo .brand{font-family:"Poppins";font-weight:700;color:var(--ink);font-size:1.05rem;background:var(--rose-50);padding:8px 16px;border-radius:50px;margin-bottom:10px}
+    .promo .deal{font-family:"Poppins";font-weight:800;font-size:1.55rem;color:var(--rose-600);line-height:1.1}
+    .promo small{color:var(--ink-soft);font-size:.86rem}
+    .promo .code{
+      margin-top:14px;font-family:"Poppins";font-weight:700;letter-spacing:.05em;
+      background:var(--grad);color:#fff;padding:11px 20px;border-radius:12px;
+      font-size:.92rem;width:100%;
+    }
+
+    /* ---------- ARTICLES ---------- */
+    .art-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+    .card{
+      background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+      display:flex;flex-direction:column;box-shadow:var(--shadow-sm);
+      transition:transform .18s,box-shadow .18s;
+    }
+    .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+    .card .thumb{width:100%;height:210px;background:linear-gradient(135deg,var(--rose-100),var(--rose-200));display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--rose-600)}
+    .card .thumb img{width:100%;height:100%;object-fit:cover}
+    .card .body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:12px;flex:1}
+    .cat{align-self:flex-start;font-family:"Poppins";font-weight:700;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rose-600);background:var(--rose-50);padding:6px 12px;border-radius:50px}
+    .card h3{font-size:1.18rem;font-weight:700;line-height:1.25;text-wrap:pretty}
+    .card p{font-size:.93rem;color:var(--ink-soft);flex:1}
+    .card .more{font-family:"Poppins";font-weight:600;color:var(--rose-600);font-size:.9rem;display:inline-flex;align-items:center;gap:6px}
+    .center-btn{text-align:center;margin-top:50px}
+
+    /* ---------- AUTHOR ---------- */
+    .author{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:32px;padding:46px;box-shadow:var(--shadow-md)}
+    .author-media{position:relative}
+    .author-media .ring{position:absolute;inset:-14px;border-radius:34px;background:var(--grad);opacity:.16}
+    .author-media .photo{position:relative;width:100%;height:420px;border-radius:24px;overflow:hidden;background:linear-gradient(135deg,var(--rose-200),var(--coral));display:flex;align-items:center;justify-content:center;font-size:5rem;color:#fff}
+    .author-media .photo img{width:100%;height:100%;object-fit:cover}
+    .author-badge{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);background:#fff;box-shadow:var(--shadow-md);border-radius:50px;padding:10px 20px;font-family:"Poppins";font-weight:700;color:var(--rose-600);font-size:.9rem;white-space:nowrap}
+    .author h2{font-size:clamp(1.9rem,3vw,2.5rem);font-weight:800;margin:14px 0 18px}
+    .author p{color:var(--ink-soft);margin-bottom:14px;font-size:1.04rem}
+    .author .sign{font-family:"Poppins";font-weight:700;color:var(--ink);font-size:1.05rem;margin-top:10px}
+    .author .sign small{display:block;font-weight:500;color:var(--ink-soft);font-size:.85rem}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 22px}
+    .chip{font-family:"Poppins";font-weight:600;font-size:.82rem;background:var(--rose-50);color:var(--rose-700);padding:8px 15px;border-radius:50px}
+
+    /* ---------- TESTIMONIALS ---------- */
+    .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+    .test{background:#fff;border-radius:20px;padding:30px;box-shadow:var(--shadow-sm);border:1px solid var(--line)}
+    .stars{color:#ffb020;font-size:1rem;letter-spacing:2px;margin-bottom:14px}
+    .test q{display:block;font-size:1rem;color:var(--ink);quotes:none}
+    .test .who{display:flex;align-items:center;gap:12px;margin-top:18px}
+    .test .who .avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--rose-200),var(--coral));display:inline-flex;align-items:center;justify-content:center;color:#fff;font-family:"Poppins";font-weight:700;font-size:1rem;flex:none}
+    .test .who b{font-family:"Poppins";font-weight:700;font-size:.95rem;display:block}
+    .test .who small{color:var(--ink-soft);font-size:.82rem}
+
+    /* ---------- CTA BANNER ---------- */
+    .cta-band{background:var(--grad);border-radius:32px;padding:60px;text-align:center;color:#fff;position:relative;overflow:hidden}
+    .cta-band h2{font-size:clamp(1.9rem,3.2vw,2.6rem);font-weight:800;margin-bottom:14px;color:#fff}
+    .cta-band p{font-size:1.1rem;opacity:.95;max-width:34em;margin:0 auto 28px}
+    .cta-band .btn{background:#fff;color:var(--rose-600);box-shadow:0 12px 30px rgba(0,0,0,.16)}
+    .cta-band .deco{position:absolute;border-radius:50%;background:rgba(255,255,255,.14)}
+    .cta-band .deco.a{width:240px;height:240px;top:-90px;left:-60px}
+    .cta-band .deco.b{width:180px;height:180px;bottom:-70px;right:-30px}
+
+    /* ---------- FOOTER ---------- */
+    footer{background:#1f1722;color:#d9cdd4;padding:64px 0 30px;margin-top:20px}
+    .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px}
+    footer .logo{color:#fff}
+    footer h5{font-family:"Poppins";font-weight:700;color:#fff;font-size:1rem;margin-bottom:18px}
+    footer a{color:#c3b4bd;font-size:.92rem;display:block;margin-bottom:10px;transition:.15s}
+    footer a:hover{color:var(--rose-300)}
+    footer .intro{font-size:.95rem;color:#b8a9b2;margin:16px 0 18px;max-width:30em}
+    .foot-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:46px;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.85rem;color:#9c8e96}
+
+    /* ---------- RESPONSIVE ---------- */
+    @media(max-width:980px){
+      .menu{display:none}
+      .hero-grid{grid-template-columns:1fr;gap:36px}
+      .hero-media{max-width:380px}
+      .strip-card{grid-template-columns:1fr}
+      .strip-item+.strip-item{border-left:none;border-top:1px solid var(--line)}
+      .promo-grid{grid-template-columns:repeat(2,1fr)}
+      .art-grid,.test-grid{grid-template-columns:1fr 1fr}
+      .author{grid-template-columns:1fr;padding:30px}
+      .author-media .photo{height:340px}
+      .foot-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:620px){
+      .promo-grid,.art-grid,.test-grid,.foot-grid{grid-template-columns:1fr}
+      .wrap{padding:0 20px}
+      section.block{padding:60px 0}
+      .hero{padding:50px 0 40px}
+      .cta-band{padding:40px 26px}
+      .float-tag.one{left:-2%;top:-2%}
+      .float-tag.two{right:-2%;bottom:-2%}
+    }
+  </style>
+</head>
+<body>
+
+{# ============================================================
+   HEADER
+   ============================================================ #}
+<header>
+  <div class="wrap nav">
+    <a href="/" class="logo">
+      <span class="mark">🎁</span>{{ site.logo_text | default('Cadeau') }}<span>{{ site.logo_accent | default('Clic') }}</span>
+    </a>
+    <nav class="menu">
+      <a href="/cadeau-femme/">Cadeau femme</a>
+      <a href="/cadeau-homme/">Cadeau homme</a>
+      <a href="/creer-une-liste/">Créer une liste</a>
+      <a href="#articles">Blog</a>
+      <a href="#parrainage">Parrainage</a>
+    </nav>
+    <div class="nav-right">
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h2.7l.4-3.1H13V8.9c0-.9.3-1.5 1.6-1.5H16V4.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.4H7.2V14H9.9v8H13z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 8.6A3.4 3.4 0 1 0 15.4 12 3.4 3.4 0 0 0 12 8.6zm0 5.6A2.2 2.2 0 1 1 14.2 12 2.2 2.2 0 0 1 12 14.2zm4.3-5.8a.8.8 0 1 1-.8-.8.8.8 0 0 1 .8.8zM18.7 8a3.9 3.9 0 0 0-1.1-2.8A3.9 3.9 0 0 0 14.8 4c-1.1-.1-4.5-.1-5.6 0A3.9 3.9 0 0 0 6.4 5.2 3.9 3.9 0 0 0 5.3 8c-.1 1.1-.1 4.5 0 5.6a3.9 3.9 0 0 0 1.1 2.8 3.9 3.9 0 0 0 2.8 1.1c1.1.1 4.5.1 5.6 0a3.9 3.9 0 0 0 2.8-1.1 3.9 3.9 0 0 0 1.1-2.8c.1-1.1.1-4.5 0-5.6z"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4a8 8 0 0 0-2.9 15.4c0-.6-.1-1.6.1-2.3l1-4.2s-.2-.5-.2-1.3c0-1.2.7-2.1 1.6-2.1.7 0 1.1.6 1.1 1.2 0 .8-.5 1.9-.7 2.9-.2.9.4 1.6 1.3 1.6 1.6 0 2.7-2 2.7-4.4 0-1.8-1.2-3.2-3.5-3.2a4 4 0 0 0-4.1 4c0 .8.3 1.4.6 1.8.2.2.2.3.1.5l-.2.8c0 .3-.2.4-.5.2-1.2-.5-1.7-1.9-1.7-3.4 0-2.5 2.1-5.5 6.3-5.5 3.4 0 5.6 2.4 5.6 5 0 3.4-1.9 6-4.7 6-1 0-1.8-.5-2.1-1.1l-.6 2.2c-.2.7-.6 1.5-1 2A8 8 0 1 0 12 4z"/></svg></a>
+      </div>
+      <a href="#parrainage" class="btn" style="padding:12px 22px;font-size:.92rem">Bons plans</a>
+    </div>
+  </div>
+</header>
+
+{# ============================================================
+   HERO
+   ============================================================ #}
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Idées cadeau · bons plans · codes promo</span>
+      <h1>{% if site.home_h1 %}{{ site.home_h1 | safe }}{% else %}Des idées cadeau<br><span class="pink">&amp; des bons plans</span> malins{% endif %}</h1>
+      <p class="lead">Salut, moi c'est {{ (author.name.split(' ')[0]) if (author is defined and author.name) else 'Sophie' }}&nbsp;! Ici je déniche pour toi des cadeaux originaux qui font vraiment plaisir, sans exploser ton budget. Codes promo testés, idées par occasion et offres de parrainage&nbsp;: tout est trié pour te faire gagner du temps.</p>
+      <div class="hero-cta">
+        <a href="#parrainage" class="btn">Voir les meilleures offres →</a>
+        <a href="#articles" class="btn btn-ghost">Lire le blog</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="num">200+</div><small>boutiques partenaires</small></div>
+        <div><div class="num">350+</div><small>idées cadeau testées</small></div>
+        <div><div class="num">50€</div><small>offerts en parrainage</small></div>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="blob"></div>
+      {# Hero image : remplaçable par /hero-image.jpg si uploadé dans public/ #}
+      <div class="hero-figure">
+        <img src="/hero-image.jpg" alt="Hero CadeauClic"
+             style="width:100%;height:100%;object-fit:cover"
+             onerror="this.outerHTML='<span class=&quot;gift&quot;>🎁</span>'">
+      </div>
+      <div class="float-tag one"><span class="ic" style="background:var(--rose-500)">✓</span>Codes promo vérifiés</div>
+      <div class="float-tag two"><span class="ic" style="background:var(--coral)">★</span>Sélection sans budget explosé</div>
+    </div>
+  </div>
+</section>
+
+{# ============================================================
+   FEATURE STRIP — 3 promesses
+   ============================================================ #}
+<div class="wrap strip">
+  <div class="strip-card">
+    <div class="strip-item">
+      <span class="ic">🏷️</span>
+      <div><h4>Des codes promo</h4><p>Réductions testées et toujours valides.</p></div>
+    </div>
+    <div class="strip-item">
+      <span class="ic">🤝</span>
+      <div><h4>Des offres de parrainage</h4><p>Jusqu'à 50€ offerts chez nos partenaires.</p></div>
+    </div>
+    <div class="strip-item">
+      <span class="ic">🎀</span>
+      <div><h4>Des idées cadeaux originales</h4><p>Pour ne plus jamais offrir du déjà-vu.</p></div>
+    </div>
+  </div>
+</div>
+
+{# ============================================================
+   CODES PROMO  (V1 hardcoded — data source à brancher plus tard)
+   ============================================================ #}
+<section class="block tint" id="promo">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Économise dès maintenant</span>
+      <h2>Les meilleurs codes promo du moment</h2>
+      <p>Je les teste avant de te les partager. Pas de code expiré qui te fait perdre 10 minutes à la caisse&nbsp;: que du valide.</p>
+    </div>
+    <div class="promo-grid">
+      <div class="promo">
+        <div class="brand"><span>Linxea</span></div>
+        <div class="deal">50€ offerts</div>
+        <small>en carte cadeau à l'ouverture</small>
+        <div class="code">LINXEA50</div>
+      </div>
+      <div class="promo">
+        <div class="brand"><span>Qonto</span></div>
+        <div class="deal">3 mois offerts</div>
+        <small>sur ton compte pro</small>
+        <div class="code">QONTO3M</div>
+      </div>
+      <div class="promo">
+        <div class="brand"><span>BoursoBank</span></div>
+        <div class="deal">jusqu'à 220€</div>
+        <small>de prime de bienvenue</small>
+        <div class="code">BOURSO220</div>
+      </div>
+      <div class="promo">
+        <div class="brand"><span>Revolut</span></div>
+        <div class="deal">3 mois Premium</div>
+        <small>gratuits pour les nouveaux</small>
+        <div class="code">REVOLUT3</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ============================================================
+   ARTICLES — synchronisés via recent_blog_posts
+   Convention URL cadeauclic : /<slug>/  (slash final WP)
+   ============================================================ #}
+<section class="block" id="articles">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Le blog</span>
+      <h2>Mes 6 derniers articles</h2>
+      <p>Retours d'expérience, comparatifs et idées cadeau&nbsp;: je te raconte ce que j'ai vraiment offert et ce que j'en ai pensé.</p>
+    </div>
+
+    <div class="art-grid">
+    {% if recent_blog_posts and (recent_blog_posts | length) > 0 %}
+      {% for post in recent_blog_posts[:6] %}
+      <article class="card">
+        <a href="/{{ post.slug }}/" class="thumb">
+          {% if post.featured_image %}
+            <img src="{{ post.featured_image }}" alt="{{ post.title }}" loading="lazy">
+          {% else %}
+            🎁
+          {% endif %}
+        </a>
+        <div class="body">
+          {% if post.categorie or post.category %}
+          <span class="cat">{{ post.categorie or post.category }}</span>
+          {% endif %}
+          <h3><a href="/{{ post.slug }}/">{{ post.title }}</a></h3>
+          {% if post.excerpt %}<p>{{ post.excerpt }}</p>{% endif %}
+          <a href="/{{ post.slug }}/" class="more">Lire l'article →</a>
+        </div>
+      </article>
+      {% endfor %}
+    {% else %}
+      {# Fallback design — affichage si pas d'articles synchronisés #}
+      <article class="card">
+        <div class="thumb">🎁</div>
+        <div class="body">
+          <span class="cat">Personnalisé</span>
+          <h3>Baptême, mariage, anniversaire : pourquoi le gobelet personnalisé séduit autant</h3>
+          <p>Je l'ai offert au baptême de mon neveu : réutilisable, joli et utile. Franchement, le petit cadeau malin qui fait toujours son effet.</p>
+          <a href="#" class="more">Lire l'article →</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb">💸</div>
+        <div class="body">
+          <span class="cat">Code promo</span>
+          <h3>Code promo Linxea juin {{ year | default(2026) }} : 50€ offerts en carte cadeau</h3>
+          <p>L'offre que j'utilise en ce moment. Je t'explique comment l'activer en 2 minutes pour récupérer tes 50€ sans te tromper.</p>
+          <a href="#" class="more">Lire l'article →</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb">👔</div>
+        <div class="body">
+          <span class="cat">Pour lui</span>
+          <h3>Caleçon personnalisé : une idée cadeau originale pour papa</h3>
+          <p>Pour la fête des pères, j'ai tenté le caleçon avec la photo des enfants. Mon mari a adoré, et le rendu était bien meilleur que prévu.</p>
+          <a href="#" class="more">Lire l'article →</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb">👕</div>
+        <div class="body">
+          <span class="cat">Tendance</span>
+          <h3>Vêtement personnalisé : la tendance cadeau unique de {{ year | default(2026) }}</h3>
+          <p>Sweat brodé, t-shirt prénom… je te donne mes adresses préférées et les pièges à éviter pour un rendu qui ne fait pas cheap.</p>
+          <a href="#" class="more">Lire l'article →</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb">🚗</div>
+        <div class="body">
+          <span class="cat">Comparatif</span>
+          <h3>Siège auto Cybex vs Joie : lequel choisir pour ton enfant ?</h3>
+          <p>J'ai testé les deux avec mes loulous. Sécurité, confort, prix : voici mon avis tranché pour t'éviter d'hésiter pendant des heures.</p>
+          <a href="#" class="more">Lire l'article →</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="thumb">💡</div>
+        <div class="body">
+          <span class="cat">Inspiration</span>
+          <h3>Quel cadeau offrir à quelqu'un qui a déjà tout&nbsp;?</h3>
+          <p>Mon casse-tête préféré ! Expériences, abonnements, créations sur mesure : mes idées pour surprendre même les plus difficiles.</p>
+          <a href="#" class="more">Lire l'article →</a>
+        </div>
+      </article>
+    {% endif %}
+    </div>
+
+    <div class="center-btn">
+      <a href="/blog/" class="btn">Voir tous les articles</a>
+    </div>
+  </div>
+</section>
+
+{# ============================================================
+   AUTHOR — Sophie (dynamique sur author.* avec fallback)
+   Photo : /author-photo.png (upload dashboard)
+   ============================================================ #}
+<section class="block tint" id="auteur">
+  <div class="wrap">
+    <div class="author">
+      <div class="author-media">
+        <div class="ring"></div>
+        <div class="photo">
+          <img src="/author-photo.png"
+               alt="{{ author.name if (author is defined and author.name) else 'Sophie Martin' }}"
+               onerror="this.outerHTML='👩'">
+        </div>
+        <div class="author-badge">{{ author.name if (author is defined and author.name) else 'Sophie Martin' }} · 37 ans 🎀</div>
+      </div>
+      <div class="author-copy">
+        <span class="eyebrow">Qui se cache derrière CadeauClic</span>
+        <h2>Salut, moi c'est {{ (author.name.split(' ')[0]) if (author is defined and author.name) else 'Sophie' }}&nbsp;!</h2>
+        {% if author is defined and author.bio %}
+          {# Si la bio fait plusieurs paragraphes séparés par \n\n on les rend, sinon un seul p #}
+          {% for para in (author.bio.split('\n\n') if '\n\n' in author.bio else [author.bio]) %}
+            <p>{{ para }}</p>
+          {% endfor %}
+        {% else %}
+          <p>Maman de deux enfants, mariée et accro aux bonnes affaires. Depuis des années, je passe (beaucoup trop) de temps à chercher LE cadeau qui fera plaisir — celui qu'on n'a pas déjà vu cent fois.</p>
+          <p>Anniversaires, mariages, naissances, fêtes des mères et des pères… j'ai testé, comparé, parfois été déçue. Du coup j'ai créé CadeauClic pour te partager ce qui marche vraiment, à quel prix, et pour qui.</p>
+        {% endif %}
+        <div class="chips">
+          <span class="chip">Cadeaux personnalisés</span>
+          <span class="chip">Anniversaires</span>
+          <span class="chip">Mariages</span>
+          <span class="chip">Bons plans &amp; promos</span>
+        </div>
+        <div class="sign">
+          {{ (author.name.split(' ')[0]) if (author is defined and author.name) else 'Sophie' }}
+          <small>{{ author.job_title if (author is defined and author.job_title) else 'Acheteuse experte & dénicheuse de bons plans' }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ============================================================
+   TESTIMONIALS — 3 avis lecteurs (V1 hardcoded)
+   ============================================================ #}
+<section class="block">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Ils me font confiance</span>
+      <h2>Ce que pensent mes lecteurs</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test">
+        <div class="stars">★★★★★</div>
+        <q>« Grâce à CadeauClic j'ai trouvé le cadeau parfait pour la fête des mères. Service au top, idées originales, ma maman était ravie. Merci&nbsp;! »</q>
+        <div class="who">
+          <span class="avatar">M</span>
+          <div><b>Marion</b><small>Pour la fête des mamans</small></div>
+        </div>
+      </div>
+      <div class="test">
+        <div class="stars">★★★★★</div>
+        <q>« J'ai déniché le cadeau parfait pour l'anniversaire de mon mec. La sélection de produits est vraiment originale et bien expliquée. »</q>
+        <div class="who">
+          <span class="avatar">J</span>
+          <div><b>Julie</b><small>Pour un anniversaire</small></div>
+        </div>
+      </div>
+      <div class="test">
+        <div class="stars">★★★★★</div>
+        <q>« Les codes promo sont toujours valides, ça change&nbsp;! J'ai économisé 50€ sur mon ouverture de compte en suivant le guide de Sophie. »</q>
+        <div class="who">
+          <span class="avatar">K</span>
+          <div><b>Karim</b><small>Pour un bon plan parrainage</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ============================================================
+   CTA BAND — Parrainage
+   ============================================================ #}
+<section class="block" id="parrainage" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band">
+      <div class="deco a"></div><div class="deco b"></div>
+      <h2>Profite des meilleures offres de parrainage du moment</h2>
+      <p>Je rassemble pour toi les primes de bienvenue les plus généreuses du moment. Quelques clics, et c'est jusqu'à 50€ dans ta poche.</p>
+      <a href="#promo" class="btn">Découvrir les offres →</a>
+    </div>
+  </div>
+</section>
+
+{# ============================================================
+   FOOTER
+   ============================================================ #}
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="/" class="logo">
+          <span class="mark">🎁</span>{{ site.logo_text | default('Cadeau') }}<span style="color:var(--rose-300)">{{ site.logo_accent | default('Clic') }}</span>
+        </a>
+        <p class="intro">En manque d'inspiration pour un futur cadeau à offrir&nbsp;? CadeauClic est le site référence pour trouver des idées cadeaux qui plaisent à coup sûr.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h2.7l.4-3.1H13V8.9c0-.9.3-1.5 1.6-1.5H16V4.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.4H7.2V14H9.9v8H13z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 8.6A3.4 3.4 0 1 0 15.4 12 3.4 3.4 0 0 0 12 8.6zm0 5.6A2.2 2.2 0 1 1 14.2 12 2.2 2.2 0 0 1 12 14.2zm4.3-5.8a.8.8 0 1 1-.8-.8.8.8 0 0 1 .8.8zM18.7 8a3.9 3.9 0 0 0-1.1-2.8A3.9 3.9 0 0 0 14.8 4c-1.1-.1-4.5-.1-5.6 0A3.9 3.9 0 0 0 6.4 5.2 3.9 3.9 0 0 0 5.3 8c-.1 1.1-.1 4.5 0 5.6a3.9 3.9 0 0 0 1.1 2.8 3.9 3.9 0 0 0 2.8 1.1c1.1.1 4.5.1 5.6 0a3.9 3.9 0 0 0 2.8-1.1 3.9 3.9 0 0 0 1.1-2.8c.1-1.1.1-4.5 0-5.6z"/></svg></a>
+          <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4a8 8 0 0 0-2.9 15.4c0-.6-.1-1.6.1-2.3l1-4.2s-.2-.5-.2-1.3c0-1.2.7-2.1 1.6-2.1.7 0 1.1.6 1.1 1.2 0 .8-.5 1.9-.7 2.9-.2.9.4 1.6 1.3 1.6 1.6 0 2.7-2 2.7-4.4 0-1.8-1.2-3.2-3.5-3.2a4 4 0 0 0-4.1 4c0 .8.3 1.4.6 1.8.2.2.2.3.1.5l-.2.8c0 .3-.2.4-.5.2-1.2-.5-1.7-1.9-1.7-3.4 0-2.5 2.1-5.5 6.3-5.5 3.4 0 5.6 2.4 5.6 5 0 3.4-1.9 6-4.7 6-1 0-1.8-.5-2.1-1.1l-.6 2.2c-.2.7-.6 1.5-1 2A8 8 0 1 0 12 4z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>{{ site.name | default('Cadeauclic.com') }}</h5>
+        <a href="#auteur">À propos</a>
+        <a href="/presse/">Presse</a>
+        <a href="/annonceur/">Annonceur</a>
+        <a href="/contact/">Nous contacter</a>
+      </div>
+      <div>
+        <h5>Légal</h5>
+        <a href="/mentions-legales/">Mentions légales</a>
+        <a href="/cgu/">CGU</a>
+        <a href="/politique-de-confidentialite/">Politique de confidentialité</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© {{ year | default(2026) }} {{ site.name | default('CadeauClic') }} — Tous droits réservés.</span>
+      <span>Fait avec 🎀 par {{ author.name if (author is defined and author.name) else 'Sophie Martin' }}</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
