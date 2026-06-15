@@ -4,15 +4,18 @@ slug: liste-de-mariage
 date: '2026-06-15T22:53:25+02:00'
 categorie: Mariage & Fêtes
 meta_title: 'Créer liste de mariage gratuite en ligne : guide complet'
-meta_description: Découvrez comment créer une liste de mariage gratuite en ligne, éviter les doublons et simplifier la vie de vos invités grâce aux meilleures plateformes du moment.
+meta_description: Découvrez comment créer une liste de mariage gratuite en ligne,
+  éviter les doublons et simplifier la vie de vos invités grâce aux meilleures plateformes
+  du moment.
 min_words: 900
 status: published
 featured_image: /blog/liste-de-mariage.jpg
 link_anchors:
 - text: comment créer une liste de mariage gratuite en ligne
   max: 5
+related_posts:
+- bapteme-mariage-anniversaire-le-gobelet-reutilisable
 ---
-
 <p>Préparer un mariage, c'est beau, c'est stressant, et parfois c'est le chaos total. J'en sais quelque chose. Quand on a organisé le nôtre il y a quelques années, on a perdu un temps fou à expliquer à chaque invité ce qu'on voulait, à gérer les doublons, à répondre aux mêmes questions vingt fois. Si c'était à refaire, je passerais directement par une liste de mariage en ligne. Et gratuite, si possible.</p>
 
 <p>Aujourd'hui je t'explique comment t'y prendre, quelles plateformes valent vraiment le coup, et comment éviter les pièges classiques que j'ai vus autour de moi.</p>
