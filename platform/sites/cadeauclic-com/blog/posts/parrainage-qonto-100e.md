@@ -1,12 +1,10 @@
 ---
-title: 'Parrainage Qonto 100€ {Month} {year} : comment en profiter ?'
+title: 'Parrainage Qonto 100€ Juin 2026 : comment en profiter ?'
 slug: parrainage-qonto-100e
 date: '2026-06-15T21:19:25+02:00'
 categorie: Bons plans & Parrainage
-meta_title: 'Parrainage Qonto {Month} {year} : 100€ offerts'
-meta_description: Profitez du parrainage Qonto pour obtenir 100 euros à l'ouverture
-  de votre compte pro. Découvrez comment fonctionne l'offre, les conditions et nos
-  conseils pour en…
+meta_title: 'Parrainage Qonto Juin 2026 : 100€ offerts'
+meta_description: Profitez du parrainage Qonto pour obtenir 100 euros à l'ouverture de votre compte pro. Découvrez comment fonctionne l'offre, les conditions et nos conseils pour en…
 min_words: 1000
 status: published
 featured_image: /blog/parrainage-qonto-100e.jpg
@@ -19,6 +17,7 @@ related_posts:
 - parrainage-qonto
 - parrainage-revolut
 ---
+
 <p>Je vais être honnête avec toi : quand j'ai entendu parler du <strong>parrainage Qonto</strong> pour la première fois, j'étais sceptique. Une banque pro qui offre de l'argent juste pour recommander ses services ? J'avais l'impression d'être face à un de ces bons plans qui ne profitent qu'à celui qui parraine. Mais après avoir creusé un peu, et après en avoir parlé avec quelques indépendants de mon entourage, j'ai changé d'avis. Voilà ce que j'ai compris et comment en tirer vraiment profit.</p>
 
 <h2>Le parrainage Qonto, c'est quoi exactement ?</h2>

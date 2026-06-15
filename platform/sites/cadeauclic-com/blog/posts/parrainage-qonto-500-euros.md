@@ -1,12 +1,10 @@
 ---
-title: 'Parrainage Qonto 500€ {Month} {year} : comment en bénéficier?'
+title: 'Parrainage Qonto 500€ Juin 2026 : comment en bénéficier?'
 slug: parrainage-qonto-500-euros
 date: '2026-06-15T21:19:25+02:00'
 categorie: Bons plans & Parrainage
-meta_title: 'Parrainage Qonto {Month} {year} : 500€ offerts'
-meta_description: Découvrez comment profiter du parrainage Qonto et obtenir jusqu'à
-  500 euros pour ouvrir votre compte pro de néobanque en toute simplicité, sans mauvaise
-  surprise.
+meta_title: 'Parrainage Qonto Juin 2026 : 500€ offerts'
+meta_description: Découvrez comment profiter du parrainage Qonto et obtenir jusqu'à 500 euros pour ouvrir votre compte pro de néobanque en toute simplicité, sans mauvaise surprise.
 min_words: 1000
 status: published
 featured_image: /blog/parrainage-qonto-500-euros.jpg
@@ -19,6 +17,7 @@ related_posts:
 - code-promo-qonto
 - boursobank-150-euros
 ---
+
 <p>Je vais être honnête avec toi : quand on m'a parlé du <strong>parrainage Qonto</strong> pour la première fois, j'ai mis du temps à creuser le sujet. Pourtant, mon mari a lancé son activité en micro-entreprise il y a deux ans, et on cherchait justement une banque pro qui ne nous prendrait pas la tête. On a fini par franchir le pas, et franchement, je regrette de ne pas l'avoir fait plus tôt. Surtout avec les avantages liés au parrainage.</p>
 
 <p>Aujourd'hui je t'explique tout ce qu'il faut savoir sur l'offre de parrainage Qonto, comment récupérer jusqu'à <strong>500 €</strong>, ce qui se cache derrière les conditions, et pourquoi certains passent à côté sans le savoir.</p>

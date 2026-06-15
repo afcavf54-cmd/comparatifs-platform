@@ -1,12 +1,10 @@
 ---
-title: 'Parrainage Qonto 300€ : comment en bénéficier en {Month} {year}?'
+title: 'Parrainage Qonto 300€ : comment en bénéficier en Juin 2026?'
 slug: parrainage-qonto-300-euros
 date: '2026-06-15T21:19:25+02:00'
 categorie: Bons plans & Parrainage
-meta_title: 'Parrainage Qonto {Month} {year} : 300€ offerts'
-meta_description: 'Parrainage Qonto 300€ : découvrez comment en profiter vraiment,
-  les conditions à remplir et ce que l''offre vaut concrètement pour un freelance
-  ou auto-entrepreneur.'
+meta_title: 'Parrainage Qonto Juin 2026 : 300€ offerts'
+meta_description: 'Parrainage Qonto 300€ : découvrez comment en profiter vraiment, les conditions à remplir et ce que l''offre vaut concrètement pour un freelance ou auto-entrepreneur.'
 min_words: 1000
 status: published
 featured_image: /blog/parrainage-qonto-300-euros.jpg
@@ -19,6 +17,7 @@ related_posts:
 - boursobank-80-euros
 - carte-cadeau-prefere-salaries-noel
 ---
+
 <p>Je vais être honnête avec toi : je ne suis pas du genre à recommander un service juste pour gratter quelques euros de parrainage. Mais quand l'offre est vraiment intéressante, je le dis sans détour. Et le <strong>parrainage Qonto</strong>, j'en parle parce que plusieurs personnes de mon entourage en ont bénéficié concrètement, dont mon mari qui a monté sa micro-entreprise l'année dernière.</p>
 
 <p>Alors voilà ce que j'ai compris, comparé et vérifié pour toi. Parce que franchement, entre les conditions floues et les offres qui changent sans prévenir, ça mérite qu'on prenne cinq minutes pour démêler tout ça.</p>

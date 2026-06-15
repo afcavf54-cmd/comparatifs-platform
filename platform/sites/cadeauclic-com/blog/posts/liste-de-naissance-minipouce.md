@@ -3,9 +3,8 @@ title: Mon avis sur la liste de naissance Minipouce
 slug: liste-de-naissance-minipouce
 date: '2026-06-15T22:19:11+02:00'
 categorie: Bébé & Naissance
-meta_title: 'Liste de naissance Minipouce : Avis {year}'
-meta_description: 'Avis honnête sur la liste de naissance Minipouce : interface, fonctionnalités,
-  points forts et limites. Tout ce qu''il faut savoir avant de créer la vôtre.'
+meta_title: 'Liste de naissance Minipouce : Avis 2026'
+meta_description: 'Avis honnête sur la liste de naissance Minipouce : interface, fonctionnalités, points forts et limites. Tout ce qu''il faut savoir avant de créer la vôtre.'
 min_words: 750
 status: published
 featured_image: /blog/liste-de-naissance-minipouce.jpg
@@ -18,6 +17,7 @@ related_posts:
 - quels-sont-les-differents-types-de-baignoires-pour-bebe
 - liste-de-naissance-berceau-magique
 ---
+
 <p>Je vais être directe : quand j'ai cherché où créer la liste de naissance de ma deuxième, j'ai passé des heures à comparer des dizaines de sites. Minipouce est ressorti assez vite dans mes recherches. Alors j'ai testé, j'ai utilisé, et aujourd'hui je te donne mon vrai avis, sans filtre.</p>
 
 <h2>Pourquoi faire une liste de naissance, déjà ?</h2>

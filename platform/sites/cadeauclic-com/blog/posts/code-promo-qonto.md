@@ -1,11 +1,10 @@
 ---
-title: 'Code promo Qonto en {Month} {year} : 280€ offerts'
+title: 'Code promo Qonto en Juin 2026 : 280€ offerts'
 slug: code-promo-qonto
 date: '2026-06-15T21:19:25+02:00'
 categorie: Bons plans & Parrainage
-meta_title: 'Code promo Qonto en {Month} {year} : 280€ offerts'
-meta_description: Découvrez le code promo Qonto et profitez de 280€ offerts pour ouvrir
-  votre compte pro de néobanque, idéal pour freelances, auto-entrepreneurs et TPE.
+meta_title: 'Code promo Qonto en Juin 2026 : 280€ offerts'
+meta_description: Découvrez le code promo Qonto et profitez de 280€ offerts pour ouvrir votre compte pro de néobanque, idéal pour freelances, auto-entrepreneurs et TPE.
 min_words: 1000
 status: published
 featured_image: /blog/code-promo-qonto.jpg
@@ -18,6 +17,7 @@ related_posts:
 - parrainage-revolut
 - parrainage-qonto-300-euros
 ---
+
 <p>Je vais être honnête avec toi : quand j'ai lancé ma petite activité de vente de cadeaux personnalisés il y a deux ans, j'ai perdu un temps fou à gérer mes finances avec un compte bancaire classique. Virements qui prennent trois jours, frais cachés à chaque opération, relevés illisibles... Bref, un cauchemar. C'est une amie qui m'a parlé de Qonto, et franchement, ça a changé pas mal de choses. Alors aujourd'hui je te partage tout ce que je sais sur le <strong>code promo Qonto</strong>, notamment les <strong>280€ offerts</strong> en ce moment, parce que c'est une offre qui vaut vraiment le coup.</p>
 
 <h2>Qonto, c'est quoi exactement ?</h2>

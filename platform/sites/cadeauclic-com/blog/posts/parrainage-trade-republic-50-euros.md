@@ -3,10 +3,8 @@ title: 'Parrainage Trade Republic : 50€ en actions offerts pour démarrer !'
 slug: parrainage-trade-republic-50-euros
 date: '2026-06-15T21:44:18+02:00'
 categorie: Bons plans & Parrainage
-meta_title: 'Parrainage Trade Republic : 50€ en actions offerts {Month} {year}'
-meta_description: 'Parrainage Trade Republic : recevez jusqu''à 50€ en actions gratuites
-  sans dépôt minimum. Découvrez comment fonctionne vraiment cette offre et ce que
-  vous pouvez…'
+meta_title: 'Parrainage Trade Republic : 50€ en actions offerts Juin 2026'
+meta_description: 'Parrainage Trade Republic : recevez jusqu''à 50€ en actions gratuites sans dépôt minimum. Découvrez comment fonctionne vraiment cette offre et ce que vous pouvez…'
 min_words: 1000
 status: published
 featured_image: /blog/parrainage-trade-republic-50-euros.jpg
@@ -19,6 +17,7 @@ related_posts:
 - parrainage-qonto-500-euros
 - boursobank-150-euros
 ---
+
 <p>Je vais être directe : quand j'ai découvert le système de parrainage de Trade Republic, j'ai d'abord pensé que c'était trop beau pour être vrai. 50€ en actions offerts juste pour ouvrir un compte ? J'ai creusé, comparé, et finalement testé. Voilà ce que j'ai vraiment trouvé.</p>
 
 <h2>Le parrainage Trade Republic, comment ça marche vraiment ?</h2>

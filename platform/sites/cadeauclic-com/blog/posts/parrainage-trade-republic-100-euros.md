@@ -1,13 +1,10 @@
 ---
-title: 'Parrainage Trade Republic {Month} {year} : jusqu’à 100€ en actions offerts
-  !'
+title: 'Parrainage Trade Republic Juin 2026 : jusqu’à 100€ en actions offerts !'
 slug: parrainage-trade-republic-100-euros
 date: '2026-06-15T21:44:18+02:00'
 categorie: Bons plans & Parrainage
-meta_title: 'Parrainage Trade Republic : 100€ en actions offerts {Month} {year}'
-meta_description: Utilise le lien de parrainage Trade Republic pour recevoir jusqu'à
-  100 euros en actions offertes. Découvrez comment fonctionne ce système et les détails
-  que…
+meta_title: 'Parrainage Trade Republic : 100€ en actions offerts Juin 2026'
+meta_description: Utilise le lien de parrainage Trade Republic pour recevoir jusqu'à 100 euros en actions offertes. Découvrez comment fonctionne ce système et les détails que…
 min_words: 1000
 status: published
 featured_image: /blog/parrainage-trade-republic-100-euros.jpg
@@ -20,6 +17,7 @@ related_posts:
 - parrainage-qonto-200-euros
 - parrainage-qonto
 ---
+
 <p>Je ne vais pas te mentir : j'ai mis du temps avant de me lancer sur Trade Republic. Pas par manque d'intérêt, mais parce que les applis d'investissement, j'en avais tellement essayé que j'étais devenue un peu méfiante. Et puis une amie m'a envoyé son lien de parrainage en me disant "t'as rien à perdre, tu reçois des actions gratuites". Là, j'ai tenté. Et franchement, je ne regrette pas.</p>
 
 <p>Aujourd'hui je te partage tout ce que je sais sur le <strong>parrainage Trade Republic</strong>, comment ça fonctionne vraiment, ce que tu peux espérer recevoir, et surtout, les petits détails que personne ne te dit avant que tu t'inscrives.</p>
