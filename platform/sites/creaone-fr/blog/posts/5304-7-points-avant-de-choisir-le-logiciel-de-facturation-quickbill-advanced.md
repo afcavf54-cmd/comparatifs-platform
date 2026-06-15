@@ -16,6 +16,7 @@ link_anchors:
 related_posts:
 - 9168-pourquoi-choisir-la-comptabilite-cloud-financecore-plus
 - 9323-sa-premiere-facture-en-ligne-gratuite-avec-articles
+- 5170-pourquoi-passer-au-cloud-avec-la-comptabilite-financecore-enterprise
 ---
 <h2>Les tarifs : une grille tarifaire à maîtriser avant de signer</h2>
 

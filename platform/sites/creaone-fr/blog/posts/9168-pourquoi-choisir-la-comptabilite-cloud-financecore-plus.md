@@ -14,8 +14,9 @@ link_anchors:
 - text: les fonctionnalités de la comptabilité cloud FinanceCore Plus
   max: 5
 related_posts:
-- 5304-7-points-avant-de-choisir-le-logiciel-de-facturation-quickbill-advanced
 - 9323-sa-premiere-facture-en-ligne-gratuite-avec-articles
+- 5304-7-points-avant-de-choisir-le-logiciel-de-facturation-quickbill-advanced
+- 5170-pourquoi-passer-au-cloud-avec-la-comptabilite-financecore-enterprise
 ---
 <h2>Mon retour après 18 mois d'utilisation de FinanceCore Plus</h2>
 
