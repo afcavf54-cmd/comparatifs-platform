@@ -9,7 +9,8 @@ interface PostData {
   title: string
   slug: string
   date: string
-  categorie: string
+  categorie: string                    // PRINCIPALE — calculée automatiquement = categories[0] au save
+  categories: string[]                 // LISTE — source de vérité côté UI (multi-select chips)
   meta_title: string
   meta_description: string
   featured_image: string
@@ -22,7 +23,8 @@ interface PostData {
 }
 
 const empty: PostData = {
-  title: '', slug: '', date: '', categorie: '',
+  title: '', slug: '', date: '',
+  categorie: '', categories: [],
   meta_title: '', meta_description: '', featured_image: '',
   status: 'draft', content_md: '',
   min_words: 750,
@@ -39,22 +41,16 @@ export default function BlogEditPage() {
   const [saving, setSaving] = useState(false)
   const [msg, setMsg] = useState('')
   const [existingCategories, setExistingCategories] = useState<string[]>([])
+  const [catInput, setCatInput] = useState('')          // saisie en cours dans le chips-input
   const [generating, setGenerating] = useState(false)
   const [showGenModal, setShowGenModal] = useState(false)
   const [genPromptCustom, setGenPromptCustom] = useState('')
-  // genMinWords est synchronisé avec post.min_words (champ persistant de l'article).
-  // Si l'utilisateur modifie le min_words dans la modale et clique Générer, on
-  // met à jour post.min_words pour que le réglage soit conservé au save.
   const [genMinWords, setGenMinWords] = useState(750)
   const [showSchedule, setShowSchedule] = useState(false)
   const [scheduleDate, setScheduleDate] = useState('')
   const [scheduleTime, setScheduleTime] = useState('09:00')
   const [uploadingFeatured, setUploadingFeatured] = useState(false)
-  // Texte affiché dans le textarea des ancres (format "ancre:nombre" par ligne)
-  // synchronisé avec post.link_anchors (array de {text, max}) au save.
   const [anchorsText, setAnchorsText] = useState('')
-  // URL publique de l'article (récupérée depuis le domaine du site)
-  // pour ouvrir l'article live dans un nouvel onglet pendant qu'on l'édite.
   const [publicUrl, setPublicUrl] = useState('')
 
   const fileInputRef = useRef<HTMLInputElement | null>(null)
@@ -67,26 +63,28 @@ export default function BlogEditPage() {
       .then(data => {
         if (data.post) {
           let content = data.post.content_md || ''
-          // Si le contenu legacy est en markdown (pas de balises HTML
-          // structurelles détectées), on le convertit pour que le RichEditor
-          // l'affiche correctement. Les nouveaux articles produits par
-          // RichEditor sont déjà en HTML, on les laisse tels quels.
           if (content && !/<(p|h[1-6]|ul|ol|div|img|blockquote)\b/i.test(content)) {
             content = mdToHtml(content)
           }
-          setPost({ ...empty, ...data.post, content_md: content })
-          // URL publique pour le lien "Voir l'article" en haut de l'éditeur
+          // Backward-compat : si le backend renvoie déjà categories[] (nouveau format
+          // ou legacy reconstruit côté API), on l'utilise. Sinon on tombe sur [categorie].
+          const cats: string[] = Array.isArray(data.post.categories) && data.post.categories.length > 0
+            ? data.post.categories.filter((c: any) => typeof c === 'string' && c.trim()).map((c: string) => c.trim())
+            : (data.post.categorie ? [data.post.categorie] : [])
+          setPost({
+            ...empty,
+            ...data.post,
+            content_md: content,
+            categories: cats,
+            categorie: cats[0] || '',
+          })
           if (data.site?.domain && data.post.slug) {
             const dom = data.site.domain.replace(/\/$/, '')
             setPublicUrl(`${dom}/${data.post.slug}`)
           }
-          // Sync le réglage min_words avec celui stocké dans l'article
-          // (sinon on garderait la valeur par défaut 750 même si l'article
-          // a été sauvegardé avec une valeur différente).
           if (data.post.min_words && Number(data.post.min_words) > 0) {
             setGenMinWords(Number(data.post.min_words))
           }
-          // Initialiser le textarea des ancres depuis le frontmatter
           if (Array.isArray(data.post.link_anchors)) {
             setAnchorsText(
               data.post.link_anchors
@@ -100,7 +98,9 @@ export default function BlogEditPage() {
       .finally(() => setLoading(false))
   }, [siteId, postSlug, isNew])
 
-  // Récupère les catégories existantes (pour le datalist du champ catégorie)
+  // Récupère les catégories existantes pour l'autocomplete du multi-select.
+  // On accumule à la fois `p.categorie` (string legacy) ET `p.categories[]` (nouveau)
+  // pour que l'autocomplete remonte toutes les catégories déjà utilisées sur le site.
   useEffect(() => {
     fetch(`/api/sites/${siteId}/blog`)
       .then(r => r.json())
@@ -108,8 +108,11 @@ export default function BlogEditPage() {
         const cats = new Set<string>()
         for (const p of data.posts || []) {
           if (p.categorie) cats.add(p.categorie)
+          if (Array.isArray(p.categories)) {
+            for (const c of p.categories) if (typeof c === 'string' && c.trim()) cats.add(c.trim())
+          }
         }
-        setExistingCategories(Array.from(cats).sort())
+        setExistingCategories(Array.from(cats).sort((a, b) => a.localeCompare(b, 'fr')))
       })
       .catch(() => { /* silencieux */ })
   }, [siteId])
@@ -126,15 +129,47 @@ export default function BlogEditPage() {
     setPost(p => ({ ...p, [key]: val }))
   }
 
+  // ─── Helpers multi-catégories ───────────────────────────────────────────
+  function addCategory(name: string) {
+    const trimmed = (name || '').trim()
+    if (!trimmed) { setCatInput(''); return }
+    if (post.categories.includes(trimmed)) { setCatInput(''); return }
+    setPost(p => {
+      const next = [...p.categories, trimmed]
+      return { ...p, categories: next, categorie: next[0] }
+    })
+    setCatInput('')
+  }
+  function removeCategory(idx: number) {
+    setPost(p => {
+      const next = p.categories.filter((_, i) => i !== idx)
+      return { ...p, categories: next, categorie: next[0] || '' }
+    })
+  }
+  function moveCategoryUp(idx: number) {
+    if (idx === 0) return
+    setPost(p => {
+      const next = [...p.categories]
+      ;[next[idx - 1], next[idx]] = [next[idx], next[idx - 1]]
+      return { ...p, categories: next, categorie: next[0] }
+    })
+  }
+  function makeCategoryPrincipal(idx: number) {
+    if (idx === 0) return
+    setPost(p => {
+      const next = [...p.categories]
+      const [removed] = next.splice(idx, 1)
+      next.unshift(removed)
+      return { ...p, categories: next, categorie: next[0] }
+    })
+  }
+
   async function save(newStatus?: string) {
     if (!post.title.trim()) { setMsg('Le titre est obligatoire'); return }
-    if (!post.categorie.trim()) { setMsg('La catégorie est obligatoire'); return }
+    if (post.categories.length === 0) { setMsg('Au moins une catégorie est obligatoire'); return }
     setSaving(true); setMsg('')
 
     // ── Auto-génération meta description si vide ─────────────────────────
-    // Si l'utilisateur n'a rien renseigné, on appelle Claude pour générer
-    // une meta description courte (~155 caractères) à partir du contenu.
-    // Le résultat est injecté dans le state ET utilisé dans le payload.
     let metaDesc = post.meta_description
     if (!metaDesc?.trim() && post.content_md?.trim()) {
       try {
@@ -168,19 +203,25 @@ export default function BlogEditPage() {
       })
       .filter(Boolean) as { text: string; max: number }[]
 
+    // Invariant envoyé au backend : categorie === categories[0]
+    const principalCat = post.categories[0]
+
     const payload: any = {
       ...post,
+      categorie: principalCat,
+      categories: post.categories,
       meta_description: metaDesc,
       status: newStatus || post.status,
       date: post.date || new Date().toISOString().replace(/\.\d+Z$/, ''),
       link_anchors,
     }
     if (isNew) {
-      // POST → création
       const r = await fetch(`/api/sites/${siteId}/blog`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          title: post.title, categorie: post.categorie,
+          title: post.title,
+          categorie: principalCat,
+          categories: post.categories,
           content_md: post.content_md, meta_title: post.meta_title,
           meta_description: metaDesc, featured_image: post.featured_image,
           status: payload.status,
@@ -198,7 +239,6 @@ export default function BlogEditPage() {
         setMsg(`✗ ${data.error || 'Erreur création'}`)
       }
     } else {
-      // PUT → save
       const r = await fetch(`/api/sites/${siteId}/blog/${postSlug}`, {
         method: 'PUT', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -217,18 +257,23 @@ export default function BlogEditPage() {
 
   async function generateAI() {
     if (!post.title.trim()) { setMsg('Renseigne d\'abord un titre'); return }
-    if (!post.categorie.trim()) { setMsg('Renseigne d\'abord une catégorie'); return }
+    if (post.categories.length === 0) { setMsg('Renseigne d\'abord une catégorie'); return }
     setGenerating(true); setShowGenModal(false); setMsg('🤖 Génération en cours...')
     try {
       const r = await fetch(`/api/sites/${siteId}/blog/generate`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: post.title, categorie: post.categorie, prompt_custom: genPromptCustom, min_words: genMinWords }),
+        body: JSON.stringify({
+          title: post.title,
+          // On envoie la catégorie principale au générateur IA pour orienter le contenu.
+          categorie: post.categories[0],
+          categories: post.categories,
+          prompt_custom: genPromptCustom,
+          min_words: genMinWords,
+        }),
       })
       const data = await r.json()
       if (r.ok && data.content_md) {
         let content = data.content_md
-        // Filet de sécurité : si l'IA renvoie du markdown malgré la consigne
-        // HTML, on convertit pour que le RichEditor l'affiche correctement.
         if (content && !/<(p|h[1-6]|ul|ol|div|img|blockquote)\b/i.test(content)) {
           content = mdToHtml(content)
         }
@@ -287,15 +332,12 @@ export default function BlogEditPage() {
       body: JSON.stringify({ path, content: dataUrl, message: `HUB: Blog image ${imgName}` }),
     })
     if (!r.ok) { setMsg('✗ Erreur upload'); return }
-    // Insérer l'image dans l'éditeur : on essaie d'abord d'insérer à la
-    // position du curseur (execCommand insertHTML), sinon on append à la fin.
     const publicUrl = `/blog/${slug}/${imgName}`
     const alt = file.name.replace(/\.[^.]+$/, '')
     const imgHtml = `<p><img src="${publicUrl}" alt="${alt}" /></p>`
     const editor = document.querySelector('.rich-editor') as HTMLDivElement | null
     if (editor && editor.contains(document.activeElement)) {
       document.execCommand('insertHTML', false, imgHtml)
-      // Trigger input event pour que RichEditor remonte la nouvelle valeur
       editor.dispatchEvent(new Event('input', { bubbles: true }))
     } else {
       update('content_md', (post.content_md || '') + imgHtml)
@@ -313,6 +355,15 @@ export default function BlogEditPage() {
   }
 
   if (loading) return <div style={{ padding: 60, textAlign: 'center', color: '#4A5568' }}>Chargement…</div>
+
+  // Suggestions d'autocomplete : on filtre les catégories déjà sélectionnées
+  // et celles qui matchent la saisie courante (case-insensitive).
+  const catSuggestions = catInput.trim()
+    ? existingCategories.filter(c =>
+        !post.categories.includes(c) &&
+        c.toLowerCase().includes(catInput.trim().toLowerCase())
+      ).slice(0, 8)
+    : existingCategories.filter(c => !post.categories.includes(c)).slice(0, 8)
 
   return (
     <div style={{ padding: '32px 5vw', maxWidth: 1500, margin: '0 auto' }}>
@@ -346,22 +397,88 @@ export default function BlogEditPage() {
 
       {/* Méta-infos */}
       <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 12, padding: 24, marginBottom: 20 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 16, marginBottom: 16 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 16, marginBottom: 16 }}>
           <Field label="Titre *">
             <input type="text" value={post.title} onChange={e => update('title', e.target.value)} style={input} />
           </Field>
-          <Field label="Catégorie *">
-            <input type="text" list="blog-categories-list" value={post.categorie}
-              onChange={e => update('categorie', e.target.value)}
-              placeholder="Ex: Paie, Compta..." style={input} />
-            <datalist id="blog-categories-list">
-              {existingCategories.map(c => <option key={c} value={c} />)}
-            </datalist>
-            {existingCategories.length > 0 && (
-              <div style={{ fontSize: 10, color: '#4A5568', marginTop: 4 }}>
-                💡 {existingCategories.length} catégorie{existingCategories.length > 1 ? 's' : ''} existante{existingCategories.length > 1 ? 's' : ''} — clique sur le champ pour voir la liste
+          {/* ─── Multi-select chips pour les catégories ───────────────── */}
+          <Field label={`Catégories * ${post.categories.length > 0 ? `(${post.categories.length})` : ''}`}>
+            <div style={{
+              display: 'flex', flexWrap: 'wrap', gap: 6, alignItems: 'center',
+              padding: 8, minHeight: 44, borderRadius: 8,
+              background: '#0A0E1A', border: '1px solid #1E2D3D',
+            }}>
+              {post.categories.map((cat, idx) => {
+                const isPrincipal = idx === 0
+                return (
+                  <span key={`${cat}-${idx}`} style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 4,
+                    background: isPrincipal ? 'rgba(0,212,170,.18)' : '#1E2D3D',
+                    color: isPrincipal ? '#00D4AA' : '#fff',
+                    border: isPrincipal ? '1px solid rgba(0,212,170,.4)' : '1px solid transparent',
+                    padding: '4px 6px 4px 10px', borderRadius: 20,
+                    fontSize: 12, fontWeight: 600,
+                  }}>
+                    {isPrincipal && (
+                      <span title="Catégorie principale (utilisée pour l'URL et le breadcrumb)"
+                            style={{ fontSize: 10, marginRight: 2 }}>★</span>
+                    )}
+                    <span>{cat}</span>
+                    {!isPrincipal && (
+                      <button type="button" onClick={() => makeCategoryPrincipal(idx)}
+                              title="Faire de cette catégorie la principale"
+                              style={chipIconBtn}>↑</button>
+                    )}
+                    <button type="button" onClick={() => removeCategory(idx)}
+                            title="Retirer"
+                            style={{ ...chipIconBtn, fontSize: 14, lineHeight: 1 }}>×</button>
+                  </span>
+                )
+              })}
+              <input
+                type="text"
+                value={catInput}
+                onChange={e => setCatInput(e.target.value)}
+                onKeyDown={e => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault()
+                    addCategory(catInput)
+                  } else if (e.key === 'Backspace' && !catInput && post.categories.length > 0) {
+                    removeCategory(post.categories.length - 1)
+                  } else if (e.key === ',' || e.key === ';') {
+                    e.preventDefault()
+                    addCategory(catInput)
+                  }
+                }}
+                placeholder={post.categories.length === 0 ? 'Tape une catégorie + Entrée…' : '+ ajouter…'}
+                style={{
+                  flex: 1, minWidth: 140,
+                  background: 'transparent', border: 'none', outline: 'none',
+                  color: '#fff', fontSize: 13, padding: '4px 6px',
+                }}
+              />
+            </div>
+            {/* Suggestions d'autocomplete (catégories existantes filtrées) */}
+            {catSuggestions.length > 0 && (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 8 }}>
+                <span style={{ fontSize: 10, color: '#4A5568', alignSelf: 'center', marginRight: 4 }}>Suggestions :</span>
+                {catSuggestions.map(c => (
+                  <button key={c} type="button" onClick={() => addCategory(c)}
+                          style={{
+                            padding: '3px 10px', borderRadius: 20,
+                            background: '#0D1117', border: '1px solid #1E2D3D',
+                            color: '#8B9CB0', fontSize: 11, cursor: 'pointer',
+                          }}>
+                    + {c}
+                  </button>
+                ))}
               </div>
             )}
+            <div style={{ fontSize: 10, color: '#4A5568', marginTop: 6, lineHeight: 1.5 }}>
+              ★ = catégorie <strong style={{ color: '#8B9CB0' }}>principale</strong> (utilisée pour l'URL, le breadcrumb et le SEO).
+              Clique <span style={{ color: '#8B9CB0' }}>↑</span> sur une chip pour la faire principale.
+              Entrée / virgule pour ajouter, Backspace pour retirer la dernière.
+            </div>
           </Field>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 0.8fr', gap: 16 }}>
@@ -477,7 +594,10 @@ export default function BlogEditPage() {
       {showGenModal && (
         <Modal onClose={() => setShowGenModal(false)} title="✨ Générer un article avec IA">
           <div style={{ color: '#E5E7EB', fontSize: 14, lineHeight: 1.6, marginBottom: 16 }}>
-            Le titre <strong>"{post.title || '(à renseigner)'}"</strong>{post.categorie && <> et la catégorie <strong>"{post.categorie}"</strong></>} seront utilisés.
+            Le titre <strong>"{post.title || '(à renseigner)'}"</strong>
+            {post.categories.length > 0 && <> et la catégorie principale <strong>"{post.categories[0]}"</strong></>}
+            {post.categories.length > 1 && <> (+ {post.categories.length - 1} autre{post.categories.length - 1 > 1 ? 's' : ''})</>}
+            {' '}seront utilisés.
           </div>
           <Field label="Nombre de mots minimum">
             <input type="number" min={300} max={3000} step={100} value={genMinWords}
@@ -540,3 +660,9 @@ function Modal({ title, onClose, children }: { title: string; onClose: () => voi
 
 const input: React.CSSProperties = { width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13 }
 const btn: React.CSSProperties = { padding: '8px 16px', borderRadius: 8, background: '#1E2D3D', color: '#fff', fontSize: 13, fontWeight: 600, border: 'none', cursor: 'pointer' }
+const chipIconBtn: React.CSSProperties = {
+  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+  width: 18, height: 18, padding: 0, borderRadius: '50%',
+  background: 'rgba(255,255,255,.08)', border: 'none', color: 'inherit',
+  fontSize: 11, fontWeight: 700, cursor: 'pointer', lineHeight: 1,
+}
