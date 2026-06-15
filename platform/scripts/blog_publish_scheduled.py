@@ -14,6 +14,13 @@ Output (GITHUB_OUTPUT) :
 Variables d'env requises :
     ANTHROPIC_API_KEY    pour la génération d'articles
 
+Variables d'env optionnelles :
+    MAX_ARTICLES_PER_RUN  Limite GLOBALE d'articles générés par run, tous sites
+                          confondus. Défaut : 10. Sert à borner la durée d'un
+                          run et le coût Claude/OpenAI en cas de rattrapage
+                          massif (ex. 96 articles dont la date est passée).
+                          Mettre 999 pour désactiver la limite.
+
 Format attendu du CSV (colonnes) :
     titre              (obligatoire)
     categorie          (obligatoire)
@@ -24,34 +31,11 @@ Format attendu du CSV (colonnes) :
     meta_title         (optionnel)
     meta_description   (optionnel)
     nombre_mots_minimum  (optionnel, défaut 750, plage 300-3000)
-    link_anchors       (optionnel, ancres acceptant cet article comme cible
-                        depuis d'autres articles — format "ancre1:5;ancre2:3".
-                        Si pas de nombre après l'ancre, défaut = 5.)
-    mots_imposes       (optionnel, mots/expressions obligatoires DANS cet
-                        article — séparés par virgule ou point-virgule. Favorise
-                        le maillage entrant : ces mots seront détectés comme
-                        ancres par d'autres articles qui en parlent.)
+    link_anchors       (optionnel)
+    mots_imposes       (optionnel)
 
-Format de slug (configurable au niveau du site, depuis juin 2026) :
-    Un paramètre `blog_slug_format` peut être posé soit au top-level du
-    config.yaml, soit dans `site:`. Valeurs :
-      - "prefix" (DÉFAUT) : ajoute un préfixe XXXX- (4 chiffres aléatoires)
-                             → /3847-mon-article/. Comportement historique.
-      - "clean"           : pas de préfixe numérique → /mon-article/.
-                             En cas de collision, suffixe -2, -3, ...
-    Utiliser "clean" pour migrer un site existant et préserver les URLs
-    (ex. site WordPress en migration).
-
-Global prompt — résolution multi-source (depuis juin 2026, ordre de priorité) :
-    1. `thematic: <nom>` dans config.yaml :
-        → charge platform/thematics/<nom>/global_prompt.md
-        Pour réutiliser un même prompt global sur plusieurs sites de même
-        thématique (ex: tous les sites "cadeau" partagent le même prompt).
-    2. `blog_global_prompt: |...` inline dans config.yaml :
-        → utilise directement le texte multiligne du config
-        Pour un override one-off sans créer de fichier thématique.
-    3. Fallback historique (schema classement-saas.json ou page_types.classement)
-        → comportement actuel. Maintenu pour rétro-compat des sites existants.
+Format de slug : cf. blog_slug_format dans config.yaml ('prefix' | 'clean').
+Global prompt : cf. thematic | blog_global_prompt | schema fallback.
 """
 from __future__ import annotations
 import csv
@@ -72,8 +56,6 @@ from pathlib import Path
 
 import yaml
 
-# Génération d'image à la une via OpenAI gpt-image-1 (optionnel : si le module
-# ou OPENAI_API_KEY est absent, on continue sans image).
 try:
     sys.path.insert(0, str(Path(__file__).parent))
     from _image_generator import generate_featured_image  # type: ignore
@@ -87,6 +69,13 @@ THEMATICS_DIR = ROOT / "thematics"
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 CLAUDE_MODEL = "claude-sonnet-4-20250514"
 
+# ── Limite globale d'articles par run (tous sites confondus) ──────────────
+# Évite qu'un rattrapage massif (ex. 96 articles d'un coup sur cadeauclic)
+# n'explose la durée du workflow (timeout GitHub Actions) ni le coût Claude
+# en un seul shot. Le cron quotidien continuera à grignoter la liste sur
+# plusieurs jours. Override via env var MAX_ARTICLES_PER_RUN.
+MAX_ARTICLES_PER_RUN = int(os.environ.get("MAX_ARTICLES_PER_RUN", "10"))
+
 
 # ─── Helpers ──────────────────────────────────────────────────────────────
 
@@ -99,56 +88,25 @@ def slugify(text: str) -> str:
 
 
 def assign_slug(slug: str, existing: set[str], use_prefix: bool = True) -> str:
-    """Résout un slug final unique selon le format choisi.
-
-    Args:
-        slug: slug "propre" déjà passé par slugify() (ex: "mon-article")
-        existing: ensemble des slugs déjà utilisés sur ce site (collisions)
-        use_prefix: si True (défaut historique), ajoute un préfixe numérique
-                    aléatoire XXXX- (4 chiffres entre 1000 et 9999).
-                    Si False, garde le slug tel quel et suffixe -2/-3/...
-                    en cas de collision.
-
-    Returns:
-        Slug final unique à utiliser pour ce post.
-
-    Pourquoi 2 modes ?
-      - Mode "prefix" : historique du système. Évite à ~99,99% les collisions
-        sans calcul, masque l'ordre de création, ressemble à un routing par ID.
-        URLs : /3847-mon-article/.
-      - Mode "clean" : pour migrer un site WordPress vers ce système en
-        gardant exactement les anciennes URLs (continuité SEO).
-        URLs : /mon-article/. À activer via config.yaml > blog_slug_format = "clean".
-    """
-    # ── Mode "clean" : slug propre, suffixage seulement si conflit
     if not use_prefix:
         if slug not in existing:
             return slug
-        # Collision : essayer -2, -3, ... jusqu'à 999
         for i in range(2, 1000):
             candidate = f"{slug}-{i}"
             if candidate not in existing:
                 print(f"   ⚠ Slug '{slug}' déjà pris, utilisation de '{candidate}'")
                 return candidate
-        # Très improbable : 999 collisions sur le même slug. Fallback timestamp.
         return f"{slug}-{int(time.time())}"
-
-    # ── Mode "prefix" (historique) : préfixe XXXX- aléatoire
     if re.match(r"^\d{3,5}-", slug):
-        # Slug fourni manuellement avec un préfixe numérique déjà conforme
-        # (ex: "1234-mon-article") → on le garde tel quel.
         return slug
     import random
     for _ in range(30):
         candidate = f"{random.randint(1000, 9999)}-{slug}"
         if candidate not in existing:
             return candidate
-    # Très improbable : 30 essais infructueux. Fallback timestamp.
     return f"{int(time.time()) % 10000:04d}-{slug}"
 
 
-# Alias rétro-compat : si du code externe utilisait l'ancien nom
-# `add_random_prefix(slug, existing)`, il continue de fonctionner.
 def add_random_prefix(slug: str, existing: set[str], use_prefix: bool = True) -> str:
     return assign_slug(slug, existing, use_prefix=use_prefix)
 
@@ -191,12 +149,10 @@ def parse_pub_datetime(date_str: str, time_str: str = "09:00") -> datetime | Non
         return None
     ts = (time_str or "09:00").strip() or "09:00"
     hour, minute, second = 9, 0, 0
-    parsed_time = False
     for fmt in ("%H:%M:%S", "%H:%M", "%Hh%M", "%H h %M"):
         try:
             t = datetime.strptime(ts, fmt).time()
             hour, minute, second = t.hour, t.minute, t.second
-            parsed_time = True
             break
         except ValueError:
             continue
@@ -206,7 +162,6 @@ def parse_pub_datetime(date_str: str, time_str: str = "09:00") -> datetime | Non
 def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000) -> str:
     if not ANTHROPIC_API_KEY:
         raise RuntimeError("ANTHROPIC_API_KEY manquante")
-
     body = json.dumps({
         "model": CLAUDE_MODEL,
         "max_tokens": max_tokens,
@@ -214,7 +169,6 @@ def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000
         "messages": [{"role": "user", "content": user}],
         "stream": True,
     }).encode("utf-8")
-
     last_err = None
     for attempt in range(retries):
         try:
@@ -268,11 +222,7 @@ def strip_code_fences(text: str) -> str:
     return text.strip()
 
 
-# ─── Helpers config ──────────────────────────────────────────────────────
-
 def get_config_value(config: dict, key: str):
-    """Cherche `key` au top-level du config.yaml, puis dans toutes ses
-    sub-sections (typiquement `site:`). Retourne None si introuvable."""
     if key in config:
         return config[key]
     for k, v in (config or {}).items():
@@ -282,34 +232,16 @@ def get_config_value(config: dict, key: str):
 
 
 def _resolve_slug_format(config: dict) -> str:
-    """Lit `blog_slug_format` du config.yaml (top-level OU section `site:`).
-    Valeurs acceptées : 'prefix' (défaut historique), 'clean' (sans préfixe).
-    Toute autre valeur est traitée comme 'prefix' avec un warning.
-    """
     raw = (get_config_value(config, "blog_slug_format") or "").strip().lower()
     if not raw:
-        return "prefix"  # défaut historique : compatibilité totale avec les sites existants
+        return "prefix"
     if raw not in ("prefix", "clean"):
-        print(f"   ⚠ blog_slug_format={raw!r} non reconnu (valeurs : 'prefix'|'clean') — fallback 'prefix'")
+        print(f"   ⚠ blog_slug_format={raw!r} non reconnu — fallback 'prefix'")
         return "prefix"
     return raw
 
 
-# ─── Génération d'un article ─────────────────────────────────────────────
-
 def _load_thematic_prompt(thematic: str) -> str:
-    """Charge le prompt global depuis platform/thematics/<thematic>/global_prompt.md.
-
-    Le dossier `thematics/` est la base de l'architecture multi-thématiques :
-    chaque thématique a son propre sous-dossier qui pourra à terme contenir
-    d'autres fichiers (vocab.yaml, schema_org.yaml, etc.). Pour l'instant on
-    n'utilise QUE global_prompt.md, qui contient les consignes éditoriales
-    spécifiques à la thématique (style, ton, structure type, mots à éviter,
-    angles à privilégier, etc.).
-
-    Retourne '' si la thématique n'existe pas (avec un warning logué) ou si
-    le fichier est vide/illisible. Le caller décide du fallback.
-    """
     name = (thematic or "").strip()
     if not name:
         return ""
@@ -328,50 +260,20 @@ def _load_thematic_prompt(thematic: str) -> str:
 
 
 def load_prompts(site_dir: Path, config: dict) -> tuple[str, str]:
-    """Résout le couple (global_prompt, persona_prompt) pour ce site.
-
-    Le persona est toujours lu depuis `persona_prompt` (top-level ou `site:`).
-
-    Le global est résolu dans cet ordre de priorité (premier hit gagne) :
-      1. `thematic: <nom>` → platform/thematics/<nom>/global_prompt.md
-         Cas d'usage : plusieurs sites de même thématique partagent ce prompt
-         (ex: cadeauclic.com + autres sites cadeau utilisent thematic=cadeau).
-      2. `blog_global_prompt: |...` inline dans config.yaml
-         Cas d'usage : override one-off sans créer de fichier thématique.
-      3. Fallback historique : schema classement-saas.json (ou page_types.*)
-         Cas d'usage : sites existants pré-thématique, pas de changement de
-         comportement pour eux.
-
-    Si l'utilisateur définit `thematic:` ET `blog_global_prompt:`, le thematic
-    gagne (intentionnel : le fichier centralisé est plus fiable que le yaml
-    inline qui peut être désynchronisé entre sites).
-    """
     persona = (get_config_value(config, "persona_prompt") or "").strip()
-
-    # ── Source 1 : thematic défini → charge depuis platform/thematics/
     thematic = get_config_value(config, "thematic")
     if thematic:
         thematic_prompt = _load_thematic_prompt(str(thematic))
         if thematic_prompt:
             return thematic_prompt, persona
-        # Si thematic défini mais fichier absent/vide → on ne fallback PAS
-        # silencieusement sur le schema SaaS (ça serait surprenant pour
-        # l'utilisateur). On retourne un global_prompt vide, le persona
-        # et le base_sys de generate_article_html suffiront.
         return "", persona
-
-    # ── Source 2 : blog_global_prompt inline dans config
     inline = (get_config_value(config, "blog_global_prompt") or "").strip()
     if inline:
         print(f"   📝 Global prompt inline depuis config.yaml ({len(inline)} car.)")
         return inline, persona
-
-    # ── Source 3 : fallback historique (schema-based)
     template_name = None
     page_types = config.get("page_types") or {}
-    template_name = page_types.get("classement") or page_types.get("blog")
-    if not template_name:
-        template_name = "classement-saas"
+    template_name = page_types.get("classement") or page_types.get("blog") or "classement-saas"
     schema_path = ROOT / "schemas" / f"{template_name}.json"
     global_prompt = ""
     if schema_path.exists():
@@ -384,22 +286,9 @@ def load_prompts(site_dir: Path, config: dict) -> tuple[str, str]:
 
 
 def generate_meta_description(title: str, content_html: str) -> str:
-    """Génère une meta description SEO de 145-160 caractères via Claude.
-
-    Stratégie :
-      1. Tentative initiale avec consigne stricte (145-160 caractères)
-      2. Si la réponse est < 130 car. (Google tronque les meta trop courtes
-         et ça réduit le CTR), retry une fois avec consigne renforcée qui
-         rappelle à Claude le nombre exact de caractères trop court
-      3. Si toujours < 130 après retry, on garde quand même (mieux qu'une
-         meta vide) mais on logue un warning.
-
-    Tronque à MAX_LEN-1 + '…' si > 165 caractères.
-    """
     plain = re.sub(r'<[^>]+>', ' ', content_html or '')
     plain = re.sub(r'&nbsp;|&amp;|&lt;|&gt;|&quot;|&#39;', ' ', plain)
     plain = re.sub(r'\s+', ' ', plain).strip()[:2000]
-
     system = """Tu es un expert SEO. Tu rédiges des meta descriptions optimisées en français.
 
 CONTRAINTES STRICTES :
@@ -412,13 +301,10 @@ CONTRAINTES STRICTES :
 - Inclure idéalement le mot-clé principal du titre
 - Pas de tiret long — ni –
 - Pas de point d'exclamation"""
-
     base_user = f"Rédige une meta description SEO pour cet article :\n\nTitre : {title}\n\nContenu (extrait) : {plain[:1500]}"
-
     MIN_LEN = 130
     MAX_LEN = 165
     best_text = ''
-
     for attempt in range(2):
         user_msg = base_user
         if attempt == 1:
@@ -442,7 +328,6 @@ CONTRAINTES STRICTES :
         except Exception as e:
             print(f"   ⚠ Meta auto : erreur Claude ({e})")
             return best_text
-
     if best_text:
         print(f"(meta finale {len(best_text)} car., sous le seuil {MIN_LEN})", end=" ", flush=True)
     return best_text
@@ -468,20 +353,15 @@ CONTRAINTES DE FORMAT (impératif) :
 
 CONTRAINTES DE PONCTUATION (impératif) :
 - Tout titre sous forme de question DOIT se terminer par un point d'interrogation '?'
-  (titres commençant par : Comment, Pourquoi, Que, Quel, Quelle, Quels, Quelles, Qui, Où,
-  Quand, Combien, Est-ce que, Faut-il, Doit-on, Peut-on, etc.)
 - En français : espace insécable avant '?' '!' ':' ';' — utilise ' ?' avec un espace simple"""
-
     layers = [p for p in [persona_prompt, global_prompt, base_sys] if p]
     system = "\n\n".join(layers)
-
     cat_line = f"\nCatégorie : {categorie}" if categorie else ""
     custom_line = f"\n\nConsignes spécifiques :\n{prompt_custom}" if prompt_custom else ""
     mots_line = ""
     if mots_imposes:
         plain_words = [m['text'] for m in mots_imposes if not m.get('url')]
         linked_words = [m for m in mots_imposes if m.get('url')]
-
         sections: list[str] = []
         if plain_words:
             fmt = ", ".join(f'« {m} »' for m in plain_words)
@@ -507,30 +387,18 @@ CONTRAINTES DE PONCTUATION (impératif) :
             f"Titre : {title}{cat_line}{custom_line}{mots_line}\n\n"
             f"Longueur cible : {min_words} à {max_w} mots (minimum {min_words} mots impératif). "
             f"L'article doit être informatif, structuré, et utile au lecteur cible défini dans ton persona.")
-
     html = strip_code_fences(call_claude(system, user, max_tokens=min(8000, max(2000, max_w * 4))))
-
     if mots_imposes:
         for m in mots_imposes:
             if m.get('url'):
                 html = _wrap_first_occurrence_with_link(html, m['text'], m['url'])
-
     return html
 
 
-# Quota par défaut quand l'utilisateur n'a pas mis de chiffre après l'ancre
-# dans la colonne `link_anchors` de la sheet. Auparavant : 1 (un seul lien
-# entrant max par ancre). Désormais : 5 pour favoriser un maillage interne
-# plus dense par défaut.
 DEFAULT_ANCHOR_MAX = 5
 
 
 def _parse_anchors_csv(raw: str) -> list[dict]:
-    """Parse une chaîne 'pappers:5;plateforme pappers:5;le site pappers:3' en
-    liste de {text, max}. Sépare sur ';' ou newline. Tolère 'ancre x 5' aussi.
-
-    Si pas de chiffre après l'ancre, on applique DEFAULT_ANCHOR_MAX (= 5) au
-    lieu de 1, pour éviter qu'un oubli côté sheet ne limite trop le maillage."""
     import re as _re
     out = []
     for line in _re.split(r'[\n;]', raw or ''):
@@ -606,10 +474,28 @@ def _normalize_title(t: str) -> str:
     return " ".join(str(t or "").lower().split())
 
 
+def _save_processed(processed_file: Path, processed: list) -> None:
+    """Save incrémental du tracker `schedule_processed.json`.
+
+    Appelé après CHAQUE article généré pour persister l'avancement intra-run.
+    Si le script crash entre 2 articles, le fichier sur disque reflète l'état
+    correct et le prochain run reprendra à l'article suivant.
+
+    Note : le fichier vit sur le runner GitHub Actions. Le commit + push est
+    fait par le workflow appelant en fin de run. Si le run crash AVANT le
+    commit, le fichier (et les .md générés) sont perdus avec le runner — le
+    prochain run regénèrera ces articles. Coût acceptable car borné par
+    MAX_ARTICLES_PER_RUN."""
+    processed_file.parent.mkdir(parents=True, exist_ok=True)
+    processed_file.write_text(
+        json.dumps(processed, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+
 def sync_metadata_from_sheet(posts_dir: Path, rows: list[dict]) -> int:
     if not posts_dir.exists() or not rows:
         return 0
-
     md_by_title: dict[str, tuple[Path, dict, str]] = {}
     for md_path in posts_dir.glob('*.md'):
         try:
@@ -630,7 +516,6 @@ def sync_metadata_from_sheet(posts_dir: Path, rows: list[dict]) -> int:
             md_by_title[_normalize_title(title)] = (md_path, fm, body)
         except Exception:
             continue
-
     n_synced = 0
     for row in rows:
         title = (row.get('titre') or '').strip()
@@ -641,7 +526,6 @@ def sync_metadata_from_sheet(posts_dir: Path, rows: list[dict]) -> int:
             continue
         md_path, fm, body = md_by_title[key]
         changed = False
-
         new_anchors_raw = (row.get('link_anchors') or row.get('ancres') or '').strip()
         new_anchors = _parse_anchors_csv(new_anchors_raw) if new_anchors_raw else []
         old_anchors = fm.get('link_anchors') or []
@@ -651,56 +535,45 @@ def sync_metadata_from_sheet(posts_dir: Path, rows: list[dict]) -> int:
             elif 'link_anchors' in fm:
                 del fm['link_anchors']
             changed = True
-
         new_cat = (row.get('categorie') or '').strip()
         if new_cat and fm.get('categorie') != new_cat:
             fm['categorie'] = new_cat
             changed = True
-
         new_meta_desc = (row.get('meta_description') or '').strip()
         if new_meta_desc and fm.get('meta_description') != new_meta_desc:
             fm['meta_description'] = new_meta_desc
             changed = True
-
         new_meta_title = (row.get('meta_title') or '').strip()
         if new_meta_title and fm.get('meta_title') != new_meta_title:
             fm['meta_title'] = new_meta_title
             changed = True
-
         if changed:
             write_post(md_path, fm, body)
             n_synced += 1
             print(f"   🔄 Métadonnées resynchronisées : {title[:60]}")
-
     return n_synced
 
 
 # ─── Traitement d'un site ────────────────────────────────────────────────
 
 def _extract_site_colors(config: dict) -> tuple[str, str, str]:
-    """Extrait (primary, secondary, cta) du theme du config.yaml avec
-    fallbacks raisonnables. Utilisé pour le prompt de génération d'image
-    afin que chaque image respecte la charte du site."""
     theme = config.get("theme") or {}
-    primary = (
-        theme.get("accent")
-        or theme.get("primary")
-        or "#1E5F8B"
-    )
-    secondary = (
-        theme.get("accent2")
-        or theme.get("secondary")
-        or "#FFB200"
-    )
-    cta = (
-        theme.get("cta_color")
-        or config.get("cta_color")
-        or "#FF6B35"
-    )
+    primary = theme.get("accent") or theme.get("primary") or "#1E5F8B"
+    secondary = theme.get("accent2") or theme.get("secondary") or "#FFB200"
+    cta = theme.get("cta_color") or config.get("cta_color") or "#FF6B35"
     return primary, secondary, cta
 
 
-def process_site(site_id: str, site_dir: Path, config: dict) -> int:
+def process_site(site_id: str, site_dir: Path, config: dict,
+                 remaining_quota: int = 999) -> int:
+    """Traite un site. Génère AU PLUS `remaining_quota` articles (limite globale
+    passée par main()). Retourne (n_generated, n_synced).
+
+    Si remaining_quota <= 0 en entrée, le site est skip silencieusement (la
+    limite globale est déjà atteinte sur un site précédent)."""
+    if remaining_quota <= 0:
+        return 0
+
     blog_sheet_url = (get_config_value(config, "blog_sheet_csv_url") or "").strip()
     if not blog_sheet_url:
         return 0
@@ -712,7 +585,6 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         return 0
     print(f"   {len(rows)} ligne(s) dans la sheet")
 
-    # ── Format de slug pour ce site (cf. config.yaml > blog_slug_format) ──
     slug_format = _resolve_slug_format(config)
     use_prefix = (slug_format == "prefix")
     if not use_prefix:
@@ -757,8 +629,14 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
 
     global_prompt, persona_prompt = load_prompts(site_dir, config)
     new_count = 0
+    quota_hit = False  # flag pour log de fin
 
     for row in rows:
+        # ── Garde-fou quota global atteint ───────────────────────────────
+        if new_count >= remaining_quota:
+            quota_hit = True
+            break
+
         title = row.get("titre", "").strip()
         if not title:
             continue
@@ -786,11 +664,11 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
             print(f"   ⏭ '{title[:50]}' déjà publié (titre existant) — ajout au registre")
             processed_set.add(key)
             processed.append(key)
+            # Save incrémental même pour cet ajout (évite redétection inutile au prochain run)
+            _save_processed(processed_file, processed)
             continue
 
         manual_slug = row.get("slug", "").strip()
-        # On slugifie quand même si manual_slug fourni (normalise accents,
-        # espaces, caractères spéciaux), puis on applique le format choisi.
         slug = assign_slug(slugify(manual_slug or title), existing_slugs, use_prefix=use_prefix)
 
         min_words = 750
@@ -829,11 +707,6 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
             continue
         print("✓")
 
-        # ── Génération de l'image à la une via OpenAI ───────────────────
-        # On la fait ICI (avant la meta) car en cas d'échec image on garde
-        # quand même l'article. featured_image vaut None si OPENAI_API_KEY
-        # est absente, si l'API plante, ou si le module image n'est pas
-        # importable (cf. try/except en haut du fichier).
         featured_image_rel: str | None = None
         if generate_featured_image is not None:
             primary, secondary, cta = _extract_site_colors(config)
@@ -847,9 +720,6 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
                 article_title=title,
             )
             if jpg_bytes:
-                # Pattern : /blog/<slug>.jpg directement à la racine de
-                # public/blog/. Plus court, plus SEO-friendly que l'ancien
-                # public/blog/<slug>/featured.jpg.
                 img_dir = site_dir / "public" / "blog"
                 img_dir.mkdir(parents=True, exist_ok=True)
                 img_path = img_dir / f"{slug}.jpg"
@@ -887,12 +757,17 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
         processed_set.add(key)
         new_count += 1
 
+        # ── SAVE INCRÉMENTAL après CHAQUE article ────────────────────────
+        # Le fichier processed.json est sauvegardé après chaque succès.
+        # Si le script crash sur l'article suivant, on garde la trace de
+        # ceux déjà générés → pas de re-génération coûteuse au prochain run.
+        # (Le fichier .md est déjà écrit ci-dessus par write_post.)
+        _save_processed(processed_file, processed)
+
     if new_count > 0:
-        processed_file.write_text(
-            json.dumps(processed, indent=2, ensure_ascii=False),
-            encoding="utf-8",
-        )
         print(f"   ✅ {new_count} article(s) publié(s)")
+        if quota_hit:
+            print(f"   ⏸ Quota global atteint ({remaining_quota}) — reste de la sheet reporté au prochain run")
     else:
         print("   (aucun nouvel article à publier)")
 
@@ -912,8 +787,12 @@ def process_site(site_id: str, site_dir: Path, config: dict) -> int:
 def main():
     print("🚀 Blog cron — publication des articles programmés")
     print(f"   Maintenant : {datetime.now(PARIS).isoformat()}")
+    print(f"   Limite globale : {MAX_ARTICLES_PER_RUN} articles par run "
+          f"(override via MAX_ARTICLES_PER_RUN)")
 
     sites_processed: list[str] = []
+    total_generated = 0
+
     for site_dir in sorted(SITES_DIR.iterdir()):
         if not site_dir.is_dir() or site_dir.name.startswith("_"):
             continue
@@ -925,18 +804,32 @@ def main():
         except Exception as e:
             print(f"   ⚠ Erreur config {site_dir.name} : {e}")
             continue
-        n = process_site(site_dir.name, site_dir, config)
+
+        # Quota restant pour ce site = limite globale - déjà générés
+        remaining = MAX_ARTICLES_PER_RUN - total_generated
+        if remaining <= 0:
+            # Limite globale atteinte. On skip mais on log clairement pour
+            # voir dans l'UI GitHub Actions quels sites n'ont pas été traités.
+            print(f"\n⏸ {site_dir.name} skip — quota global déjà atteint ({MAX_ARTICLES_PER_RUN})")
+            continue
+
+        n = process_site(site_dir.name, site_dir, config, remaining_quota=remaining)
+        # `n` inclut les sync de métadonnées (sans génération Claude). Pour le
+        # compteur quota, on prend min(n, remaining) — borne supérieure mais
+        # toujours bornée, et c'est juste un compteur de safety, pas critique.
+        total_generated += max(0, min(n, remaining))
         if n > 0:
             sites_processed.append(site_dir.name)
 
     print("\n=== Résumé ===")
+    print(f"   Articles générés ce run : {total_generated} / {MAX_ARTICLES_PER_RUN} (limite)")
     if sites_processed:
         print(f"✅ Sites avec nouveaux articles : {', '.join(sites_processed)}")
         gh_output = os.environ.get("GITHUB_OUTPUT", "")
         if gh_output:
             with open(gh_output, "a", encoding="utf-8") as f:
                 f.write(f"sites_to_deploy={','.join(sites_processed)}\n")
-                f.write(f"new_articles_count={sum(1 for _ in sites_processed)}\n")
+                f.write(f"new_articles_count={total_generated}\n")
     else:
         print("ℹ Aucun nouvel article à publier sur l'ensemble des sites")
         gh_output = os.environ.get("GITHUB_OUTPUT", "")
