@@ -48,6 +48,12 @@
       </div>
       <div class="footer-col">
         <div class="footer-col-label">À propos</div>
+        {# Lien vers la page À propos : conditionnel sur site.has_a_propos, défini
+           par generate.py si le template a-propos.html.j2 existe (site-local OU base).
+           Évite un 404 sur les sites qui n'ont pas encore créé leur page. #}
+        {% if site.has_a_propos is defined and site.has_a_propos %}
+        <a href="/a-propos/">À propos</a>
+        {% endif %}
         <a href="/contact">Nous contacter</a>
       </div>
     </div>
