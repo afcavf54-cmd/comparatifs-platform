@@ -7,6 +7,7 @@
 # ============================================================
 
 site:
+  home_h1: ""
   blog_sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ6VAYBGV15Prr0PtBYDzmUR5vkn7sBJAcAdq2cYQftfIi7CN2ahf8WhJx299YcqLCoYC-N7I4gY2p0/pub?gid=0&single=true&output=csv"
   slug: cadeauclic-com
   name: "cadeauclic.com"
@@ -20,8 +21,8 @@ site:
   www_preference: "www"
   blog_slug_format: "clean"
   author_name: "Elisa Dubois"
-  home_title: "cadeauclic.com | Comparatifs 2026"
-  home_description: ""
+  home_title: "CadeauClic : des idées cadeaux et bons plans par milliers !"
+  home_description: "CadeauCLic : votre source d'inspiration pour trouver des idées cadeaux pour toutes les occasions de la vie ..."
   template: "comparatif-vs-scpi.html.j2"
   index_template: "index.html.j2"
   analytics_clicky: ""
