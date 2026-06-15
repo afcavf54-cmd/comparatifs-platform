@@ -4,15 +4,21 @@ slug: 9439-comptabilite-cloud-financecore-enterprise-fonctionnalites-et-avis
 date: '2026-06-15T17:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Comptabilité Cloud FinanceCore Enterprise : fonctionnalités complètes'
-meta_description: 'Avis complet sur FinanceCore Enterprise, logiciel de comptabilité cloud pour PME : fonctionnalités clés, rapprochement bancaire, relances auto et retour terrain…'
+meta_description: 'Avis complet sur FinanceCore Enterprise, logiciel de comptabilité
+  cloud pour PME : fonctionnalités clés, rapprochement bancaire, relances auto et
+  retour terrain…'
 min_words: 950
 status: published
 featured_image: /blog/9439-comptabilite-cloud-financecore-enterprise-fonctionnalites-et-avis.jpg
 link_anchors:
 - text: les fonctionnalités de la comptabilité cloud FinanceCore Enterprise
   max: 5
+related_posts:
+- 7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir
+- 6027-application-facturation-invoicepro-x3-quel-temps-de-traitement-prevoir
+- 4708-cnam-intec-presentation-de-l-institut-national-des-techniques-economiques-et-comptables
+- 2138-comptabiliser-une-provision-pour-depreciation-des-stocks
 ---
-
 <p>J'utilise des logiciels de comptabilité depuis une bonne dizaine d'années. Et honnêtement, j'en ai essayé beaucoup. Trop. Certains m'ont fait perdre un temps fou, d'autres ont coûté cher pour peu de résultats concrets. Quand FinanceCore Enterprise a commencé à circuler dans les discussions entre dirigeants de PME lyonnaises, j'ai voulu voir par moi-même ce que ça valait vraiment.</p>
 
 <p>Voici mon retour, sans filtre.</p>

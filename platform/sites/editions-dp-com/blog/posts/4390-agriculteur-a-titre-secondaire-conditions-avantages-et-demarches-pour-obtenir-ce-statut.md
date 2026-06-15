@@ -1,18 +1,24 @@
 ---
-title: 'Agriculteur à titre secondaire : conditions, avantages et démarches pour obtenir ce statut'
+title: 'Agriculteur à titre secondaire : conditions, avantages et démarches pour obtenir
+  ce statut'
 slug: 4390-agriculteur-a-titre-secondaire-conditions-avantages-et-demarches-pour-obtenir-ce-statut
 date: '2026-06-15T16:00:00+02:00'
 categorie: Création entreprise
 meta_title: 'Statut agriculteur à titre secondaire : guide'
-meta_description: Découvrez les conditions, avantages et démarches pour devenir agriculteur à titre secondaire et exercer une activité agricole en complément de votre emploi…
+meta_description: Découvrez les conditions, avantages et démarches pour devenir agriculteur
+  à titre secondaire et exercer une activité agricole en complément de votre emploi…
 min_words: 1200
 status: published
 featured_image: /blog/4390-agriculteur-a-titre-secondaire-conditions-avantages-et-demarches-pour-obtenir-ce-statut.jpg
 link_anchors:
 - text: statut agriculteur à titre secondaire
   max: 4
+related_posts:
+- 3332-fiscalite-auto-entrepreneur-impots-charges-et-cotisations
+- 2986-comment-creer-un-produit-de-a-a-z-methode-etapes-cles-et-conseils-pratiques
+- 7122-etapes-creation-entreprise-le-guide-complet-en-year
+- 5948-demarches-creation-d-entreprise-tout-ce-qu-il-faut-faire
 ---
-
 <p>J'ai mis du temps à comprendre ce que signifiait vraiment être agriculteur à titre secondaire. Quand j'ai commencé à me poser la question pour un associé qui voulait reprendre quelques hectares en parallèle de son activité principale, je me suis retrouvé avec des définitions floues et des textes réglementaires pas franchement accessibles. Voilà ce que j'ai compris, concrètement, après avoir creusé le sujet.</p>
 
 <h2>Agriculteur à titre secondaire : c'est quoi exactement ?</h2>
