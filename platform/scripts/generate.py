@@ -48,6 +48,24 @@ except ImportError:
 import unicodedata as _unicodedata
 import re as _re
 
+def _post_categories(post):
+    """Retourne la liste des catégories d'un article blog.
+
+    Multi-catégories (depuis juin 2026) : un article peut être taggé sur plusieurs
+    catégories via le champ `categories: [...]` du frontmatter. Cette helper
+    retourne TOUJOURS une liste, avec fallback `[categorie]` pour les articles
+    legacy qui n'ont que l'ancien champ `categorie` (string).
+
+    Invariant garanti par le dashboard : si `categories` est présent et non vide,
+    alors `categories[0] == categorie` (la principale). Mais on ne s'appuie pas
+    dessus côté lecture : on parcourt simplement `categories`.
+    """
+    cats = post.get('categories')
+    if isinstance(cats, list) and cats:
+        return [c.strip() for c in cats if isinstance(c, str) and c.strip()]
+    one = (post.get('categorie') or '').strip()
+    return [one] if one else []
+
 def md_to_html(text):
     if not text: return text
     import re as _re2
@@ -584,8 +602,9 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, 
             # Pages catégorie (avec pagination)
             cats = blog_engine.collect_categories(blog_posts_for_sitemap)
             for cat in cats:
+                # Multi-catégories : un post apparaît dans CHAQUE catégorie où il est taggé
                 cat_posts = [p for p in blog_posts_for_sitemap
-                             if (p.get('categorie') or '').strip().lower() == cat['name'].lower()]
+                             if cat['name'].lower() in [c.lower() for c in _post_categories(p)]]
                 cat_pages = max(1, math.ceil(len(cat_posts) / BLOG_POSTS_PER_PAGE))
                 lines.append(url(f"{domain}/{cat['slug']}/", "0.7", "weekly"))
                 for p in range(2, cat_pages + 1):
@@ -1194,6 +1213,27 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             if blog_posts:
                 site["has_blog"] = True
                 blog_categories = blog_engine.collect_categories(blog_posts)
+                # ── Recompte multi-catégories : blog_engine.collect_categories parcourt
+                #    probablement uniquement `categorie` (legacy). Avec la nouvelle clé
+                #    `categories: [...]`, un article taggé sur 3 catégories doit apparaître
+                #    dans le count des 3. On reconstruit donc la liste en parcourant
+                #    `_post_categories(post)` qui gère le fallback proprement. On préserve
+                #    les `slug`/`name` produits par collect_categories pour rester cohérent
+                #    avec d'éventuelles personnalisations de slugify.
+                _cat_index = {c['name'].lower(): c for c in blog_categories}
+                _recomputed: dict = {}
+                for _post in blog_posts:
+                    for _cat_name in _post_categories(_post):
+                        _key = _cat_name.lower()
+                        if _key not in _recomputed:
+                            _existing = _cat_index.get(_key)
+                            _recomputed[_key] = {
+                                'name': _existing['name'] if _existing else _cat_name,
+                                'slug': _existing['slug'] if _existing else blog_engine.categorie_slug(_cat_name),
+                                'count': 0,
+                            }
+                        _recomputed[_key]['count'] += 1
+                blog_categories = sorted(_recomputed.values(), key=lambda x: x['name'].lower())
                 blog_expected.add("blog/index.html")
                 for post in blog_posts:
                     slug = post.get('slug', '')
@@ -2031,8 +2071,9 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
 
             # 2) Pages catégorie (réutilise le template index, filtré, paginé)
             for cat in blog_categories:
+                # Multi-catégories : un post apparaît dans CHAQUE catégorie où il est taggé
                 cat_posts = [p for p in blog_posts
-                             if (p.get('categorie') or '').strip().lower() == cat['name'].lower()]
+                             if cat['name'].lower() in [c.lower() for c in _post_categories(p)]]
                 cat_total = len(cat_posts)
                 cat_pages = max(1, math.ceil(cat_total / BLOG_POSTS_PER_PAGE))
                 cat_h1 = cat['name']
