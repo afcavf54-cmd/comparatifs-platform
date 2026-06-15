@@ -4,15 +4,20 @@ slug: 3017-je-fais-moins-d-heures-que-prevu-dans-mon-cdi-quels-recours-engager
 date: '2026-06-15T18:00:00+02:00'
 categorie: Salarié
 meta_title: 'Je fais moins d''heures que mon contrat CDI : quels recours ?'
-meta_description: Travailler moins d'heures que prévu dans votre CDI sans accord écrit engage la responsabilité de votre employeur. Découvrez vos droits et les recours concrets à…
+meta_description: Travailler moins d'heures que prévu dans votre CDI sans accord écrit
+  engage la responsabilité de votre employeur. Découvrez vos droits et les recours
+  concrets à…
 min_words: 1200
 status: published
 featured_image: /blog/3017-je-fais-moins-d-heures-que-prevu-dans-mon-cdi-quels-recours-engager.jpg
 link_anchors:
 - text: je fais moins d'heure que mon contrat cdi
   max: 4
+related_posts:
+- 3837-radiation-pole-emploi-combien-d-avertissements-avant-une-sanction
+- 9279-accord-implicite-de-rupture-conventionnelle-ce-que-prevoit-reellement-la-loi
+- 8972-horaire-decale-quels-droits-et-obligations-pour-les-salaries-concernes
 ---
-
 <p>Vingt ans à accompagner des équipes sur leurs bulletins de paie, leurs contrats, leurs droits... et pourtant, ce sujet revient régulièrement. Un salarié en CDI qui réalise, souvent en fin de mois, qu'il a travaillé moins d'heures que son contrat le prévoit. Pas parce qu'il a posé des congés. Mais parce que son employeur a réduit son planning, modifié ses horaires, ou tout simplement ne lui a pas fourni assez de travail. Voyons ensemble ce que dit la loi, et surtout ce que vous pouvez faire concrètement.</p>
 
 <h2>Ce que votre contrat garantit réellement</h2>

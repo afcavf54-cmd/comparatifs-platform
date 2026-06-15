@@ -14,8 +14,9 @@ link_anchors:
 - text: horaire décalé dans le code du travail
   max: 4
 related_posts:
-- 3837-radiation-pole-emploi-combien-d-avertissements-avant-une-sanction
 - 9279-accord-implicite-de-rupture-conventionnelle-ce-que-prevoit-reellement-la-loi
+- 3017-je-fais-moins-d-heures-que-prevu-dans-mon-cdi-quels-recours-engager
+- 3837-radiation-pole-emploi-combien-d-avertissements-avant-une-sanction
 ---
 <h2>Qu'est-ce qu'un horaire décalé et dans quels cas l'employeur peut-il l'imposer ?</h2>
 

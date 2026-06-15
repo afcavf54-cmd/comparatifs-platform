@@ -1,10 +1,13 @@
 ---
-title: 'Accord implicite de rupture conventionnelle : ce que prévoit réellement la loi'
+title: 'Accord implicite de rupture conventionnelle : ce que prévoit réellement la
+  loi'
 slug: 9279-accord-implicite-de-rupture-conventionnelle-ce-que-prevoit-reellement-la-loi
 date: '2026-06-14T14:00:00+02:00'
 categorie: Salarié
 meta_title: 'Accord implicite rupture conventionnelle : que dit la loi ?'
-meta_description: 'Découvrez ce que dit vraiment la loi sur l''accord implicite de rupture conventionnelle. Formalisme obligatoire, procédures strictes et sanctions : tout ce qu''il…'
+meta_description: 'Découvrez ce que dit vraiment la loi sur l''accord implicite de
+  rupture conventionnelle. Formalisme obligatoire, procédures strictes et sanctions
+  : tout ce qu''il…'
 min_words: 1800
 status: published
 link_anchors:
@@ -12,10 +15,10 @@ link_anchors:
   max: 4
 related_posts:
 - 8972-horaire-decale-quels-droits-et-obligations-pour-les-salaries-concernes
+- 3017-je-fais-moins-d-heures-que-prevu-dans-mon-cdi-quels-recours-engager
 - 3837-radiation-pole-emploi-combien-d-avertissements-avant-une-sanction
 featured_image: /blog/9279-accord-implicite-de-rupture-conventionnelle-ce-que-prevoit-reellement-la-loi.jpg
 ---
-
 <h2>L'accord implicite de rupture conventionnelle : mythe ou réalité juridique ?</h2>
 
 <p>Après 20 ans à gérer la comptabilité d'entreprises de toutes tailles, j'ai vu passer nombre de situations délicates entre employeurs et salariés. L'une des questions qui revient régulièrement concerne <strong>l'accord implicite de rupture conventionnelle</strong>. Beaucoup pensent qu'un simple accord verbal ou des comportements particuliers peuvent valoir rupture conventionnelle. Je vais vous expliquer ce que dit vraiment la loi.</p>
