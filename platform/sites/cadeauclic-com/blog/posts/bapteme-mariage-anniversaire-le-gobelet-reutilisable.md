@@ -15,7 +15,8 @@ featured_image: /blog/bapteme-mariage-anniversaire-le-gobelet-reutilisable.jpg
 link_anchors:
 - text: pourquoi offrir un gobelet personnalisé
   max: 5
-related_posts: []
+related_posts:
+- liste-de-mariage
 ---
 <h2>Le succès fulgurant des gobelets personnalisés : un phénomène qui ne me surprend plus</h2>
 

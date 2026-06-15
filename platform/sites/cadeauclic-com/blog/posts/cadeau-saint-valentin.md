@@ -4,15 +4,20 @@ slug: cadeau-saint-valentin
 date: '2026-06-15T22:37:11+02:00'
 categorie: Idées cadeaux
 meta_title: 'Cadeau Saint-Valentin : 60 idées pour tous les couples'
-meta_description: Découvrez des idées de cadeaux pour la Saint-Valentin pour votre partenaire, vos amis et votre famille, avec des budgets réels et des conseils concrets.
+meta_description: Découvrez des idées de cadeaux pour la Saint-Valentin pour votre
+  partenaire, vos amis et votre famille, avec des budgets réels et des conseils concrets.
 min_words: 2000
 status: published
 featured_image: /blog/cadeau-saint-valentin.jpg
 link_anchors:
 - text: idées de cadeaux pour la saint-valentin
   max: 5
+related_posts:
+- quel-cadeau-offrir-a-quelquun-qui-a-deja-tout
+- cadeau-homme-saint-valentin
+- playmobil-valeur-sure-cadeau-reussi
+- cadeau-saint-valentin-derniere-minute
 ---
-
 <h2>La Saint-Valentin, c'est quoi exactement pour moi ?</h2>
 
 <p>Chaque année, c'est la même chose. Le 14 février approche et je me retrouve à jongler entre les idées pour mon mari, un petit quelque chose pour mes enfants, et parfois même un cadeau sympa pour une amie qui traverse une période compliquée. La Saint-Valentin, dans ma tête, ce n'est pas uniquement une fête pour les couples. C'est une excuse parfaite pour montrer à ceux qu'on aime qu'on pense à eux.</p>

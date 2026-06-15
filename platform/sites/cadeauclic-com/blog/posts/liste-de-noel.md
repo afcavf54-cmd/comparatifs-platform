@@ -4,15 +4,21 @@ slug: liste-de-noel
 date: '2026-06-15T22:37:11+02:00'
 categorie: Idées cadeaux
 meta_title: 'Créer une liste de Noël en ligne : guide gratuit'
-meta_description: Créer une liste de Noël en ligne simplifie vraiment les fêtes en famille. Découvrez les meilleures plateformes gratuites pour éviter les cadeaux en double et…
+meta_description: Créer une liste de Noël en ligne simplifie vraiment les fêtes en
+  famille. Découvrez les meilleures plateformes gratuites pour éviter les cadeaux
+  en double et…
 min_words: 800
 status: published
 featured_image: /blog/liste-de-noel.jpg
 link_anchors:
 - text: comment créer une liste de noël en ligne
   max: 5
+related_posts:
+- idees-cadeaux-de-noel-pour-un-jeune-couple
+- idees-de-cadeaux-de-noel-pour-toute-la-famille
+- cadeau-homme-95-ans
+- bougies-parfumees-cadeau-intemporel
 ---
-
 <h2>Pourquoi créer une liste de Noël en ligne change vraiment la vie ?</h2>
 
 <p>Je vais te dire un truc. Avant de passer au numérique, j'envoyais un SMS groupé à toute ma famille fin novembre avec une liste copiée-collée depuis mes notes. Résultat : deux cadeaux identiques, un jouet déjà acheté par mon mari, et ma belle-mère qui improvisait quand même un bougie-coffret qu'elle avait trouvé en promo. Bref, le bazar habituel.</p>

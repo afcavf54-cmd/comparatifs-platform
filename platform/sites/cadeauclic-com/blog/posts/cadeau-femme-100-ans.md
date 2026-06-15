@@ -4,15 +4,20 @@ slug: cadeau-femme-100-ans
 date: '2026-06-15T22:37:11+02:00'
 categorie: Idées cadeaux
 meta_title: 'Idée cadeau Femme 100 ans : Anniversaire, fête des mères, Noël'
-meta_description: 'Idées de cadeaux pour une femme de 100 ans : découvrez des suggestions douces, personnalisées et adaptées pour marquer cet anniversaire rare avec une attention…'
+meta_description: 'Idées de cadeaux pour une femme de 100 ans : découvrez des suggestions
+  douces, personnalisées et adaptées pour marquer cet anniversaire rare avec une attention…'
 min_words: 900
 status: published
 featured_image: /blog/cadeau-femme-100-ans.jpg
 link_anchors:
 - text: idées de cadeaux pour femme de 100 ans
   max: 5
+related_posts:
+- quels-cadeaux-surprises-les-hommes-aiment-ils
+- idees-de-cadeaux-de-noel-pour-toute-la-famille
+- quel-cadeau-offrir-a-quelquun-qui-a-deja-tout
+- cadeau-saint-valentin
 ---
-
 <h2>Trouver un cadeau pour une femme de 100 ans : par où commencer ?</h2>
 
 <p>Quand ma grand-mère a fêté ses 95 ans, j'ai réalisé à quel point trouver un cadeau pour une femme très âgée est un exercice à part entière. On ne cherche pas la même chose qu'à 40 ou 60 ans. Les priorités changent. Le rapport aux objets change. Et franchement, le risque de se tromper est réel si on n'y réfléchit pas vraiment.</p>
