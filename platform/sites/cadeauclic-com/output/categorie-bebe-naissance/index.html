@@ -181,21 +181,13 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
 <main class="container">
   <div class="blog-grid">
-    <a href="/comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver/" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver.jpg" alt="Comment habiller bébé à la sortie de la maternité en hiver ?" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-<span class="blog-card-cat">Bébé & Naissance</span>        <h2 class="blog-card-title">Comment habiller bébé à la sortie de la maternité en hiver ?</h2>
-<p class="blog-card-excerpt">Le grand moment approche : bien choisir la tenue de sortie Je me souviens encore de ce stress quand j'ai préparé la valise pour la maternité en plein mois de janvier. Comment…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
-    </a>
     <a href="/quels-sont-les-differents-types-de-baignoires-pour-bebe/" class="blog-card">
       <div class="blog-card-img">
         <img src="/blog/quels-sont-les-differents-types-de-baignoires-pour-bebe.jpg" alt="Quelle est la meilleure baignoire bébé ?" loading="lazy">
       </div>
       <div class="blog-card-body">
 <span class="blog-card-cat">Bébé & Naissance</span>        <h2 class="blog-card-title">Quelle est la meilleure baignoire bébé ?</h2>
-<p class="blog-card-excerpt">Mon expérience avec les baignoires bébé : le bon choix fait toute la différence Quand j'ai préparé l'arrivée de mon premier enfant, j'ai passé des heures à comparer les…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
+<p class="blog-card-excerpt">Ma sélection des meilleures baignoires bébé après 2 ans de tests Depuis la naissance de mes deux enfants, j'ai testé pas mal de baignoires pour bébé. Entre celles qui glissent,…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
     </a>
     <a href="/cagnotte-de-naissance-en-ligne-le-cadeau-parfait/" class="blog-card">
       <div class="blog-card-img">
@@ -203,7 +195,15 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
       <div class="blog-card-body">
 <span class="blog-card-cat">Bébé & Naissance</span>        <h2 class="blog-card-title">Cagnotte de naissance en ligne : le cadeau parfait avec Leetchi ?</h2>
-<p class="blog-card-excerpt">Leetchi pour les naissances : mon retour d'expérience Quand ma belle-sœur attendait son premier bébé, j'ai découvert les cagnotte de naissance en ligne. Franchement, au début…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
+<p class="blog-card-excerpt">Leetchi pour organiser une cagnotte de naissance : mon retour d'expérience Quand ma belle-sœur a annoncé qu'elle attendait son premier enfant, j'ai tout de suite pensé à organiser…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
+    </a>
+    <a href="/comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver.jpg" alt="Comment habiller bébé à la sortie de la maternité en hiver ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Bébé & Naissance</span>        <h2 class="blog-card-title">Comment habiller bébé à la sortie de la maternité en hiver ?</h2>
+<p class="blog-card-excerpt">Mes indispensables pour la première sortie de bébé Je me souviens encore de ma panique la veille de quitter la maternité avec ma fille, née en plein janvier. Habiller un…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
     </a>
   </div>
 
@@ -217,7 +217,8 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 .footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
 .footer-brand .footer-logo span{color:var(--accent2)}
 .footer-brand p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;max-width:260px;margin:0;padding:0}
-.footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+/* Anciennement .footer-col h4 — passé en div pour respecter la hiérarchie Hn (le footer ne doit pas introduire de Hn) */
+.footer-col .footer-col-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
 .footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
 .footer-col a:hover{color:#fff}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
@@ -235,7 +236,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <p>Comparatifs cadeauclic.com 2026</p>
       </div>
       <div class="footer-col">
-        <h4>Navigation</h4>
+        <div class="footer-col-label">Navigation</div>
         <a href="/nos-comparateurs">Nos comparateurs</a>
         <a href="/blog/">Blog</a>
         <a href="/plan-du-site">Plan du site</a>
@@ -243,13 +244,13 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <a href="/politique-confidentialite">Confidentialité</a>
       </div>
       <div class="footer-col">
-        <h4>À propos</h4>
+        <div class="footer-col-label">À propos</div>
         <a href="/contact">Nous contacter</a>
       </div>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 cadeauclic.com — Données actualisées le 10 juin 2026
+        © 2026 cadeauclic.com — Données actualisées le 15 juin 2026
       </div>
     </div>
   </div>

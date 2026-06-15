@@ -4,15 +4,19 @@ slug: comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver
 date: '2026-06-10T17:29:21+02:00'
 categorie: Bébé & Naissance
 meta_title: Habiller bébé à la sortie de la maternité, quelques idées !
-meta_description: Découvrez mes conseils d'experte pour habiller votre nouveau-né lors de sa première sortie de maternité en hiver. Technique de l'oignon, body coton, combinaison…
+meta_description: Découvrez mes conseils d'experte pour habiller votre nouveau-né
+  lors de sa première sortie de maternité en hiver. Technique de l'oignon, body coton,
+  combinaison…
 min_words: 1000
 status: published
 featured_image: /blog/comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver.jpg
 link_anchors:
 - text: comment habiller bébé à la sortie de la maternité en hiver
   max: 5
+related_posts:
+- cagnotte-de-naissance-en-ligne-le-cadeau-parfait
+- quels-sont-les-differents-types-de-baignoires-pour-bebe
 ---
-
 <h2>Mes indispensables pour la première sortie de bébé</h2>
 
 <p>Je me souviens encore de ma panique la veille de quitter la maternité avec ma fille, née en plein janvier. Habiller un nouveau-né en hiver, c'est tout un art ! Entre la peur qu'il ait froid et celle de trop le couvrir, j'ai passé des heures à préparer sa tenue. Après deux enfants et quelques erreurs, je peux te dire que la règle d'or, c'est la <strong>technique de l'oignon</strong>. On habille bébé par couches qu'on peut ajouter ou retirer selon la température.</p>

@@ -4,15 +4,17 @@ slug: carte-cadeau-prefere-salaries-noel
 date: '2026-06-10T17:29:21+02:00'
 categorie: Bons plans & Parrainage
 meta_title: Pourquoi la carte cadeau est le cadeau préféré des salariés à Noël ?
-meta_description: Découvrez pourquoi 78% des salariés français préfèrent les cartes cadeaux pour Noël. Retour d'expérience d'un responsable RH qui a testé cette solution en…
+meta_description: Découvrez pourquoi 78% des salariés français préfèrent les cartes
+  cadeaux pour Noël. Retour d'expérience d'un responsable RH qui a testé cette solution
+  en…
 min_words: 1000
 status: published
 featured_image: /blog/carte-cadeau-prefere-salaries-noel.jpg
 link_anchors:
 - text: pourquoi la carte cadeau est le cadeau préféré des salariés à noël
   max: 5
+related_posts: []
 ---
-
 <h2>Ma découverte qui a changé ma façon d'offrir en entreprise</h2>
 
 <p>L'an dernier, j'organisais les cadeaux de Noël pour notre petite équipe. Quinze personnes, quinze profils différents, quinze goûts à deviner. J'ai passé des heures à chercher des idées originales, scrutant les 20 idées de cadeaux de noël pour toute la famille sur tous les blogs possibles.</p>
