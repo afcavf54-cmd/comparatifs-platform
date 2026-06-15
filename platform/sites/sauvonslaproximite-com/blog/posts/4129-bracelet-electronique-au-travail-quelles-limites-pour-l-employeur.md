@@ -4,15 +4,21 @@ slug: 4129-bracelet-electronique-au-travail-quelles-limites-pour-l-employeur
 date: '2026-06-15T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Bracelet électronique : obligations de l''employeur et réglementation'
-meta_description: 'Découvrez les obligations légales de l''employeur face au bracelet électronique au travail : maintien du contrat, aménagements nécessaires et limites à respecter.'
+meta_description: 'Découvrez les obligations légales de l''employeur face au bracelet
+  électronique au travail : maintien du contrat, aménagements nécessaires et limites
+  à respecter.'
 min_words: 1800
 status: published
 featured_image: /blog/4129-bracelet-electronique-au-travail-quelles-limites-pour-l-employeur.jpg
 link_anchors:
 - text: obligation de l'employeur pour un salarié sous bracelet électronique
   max: 4
+related_posts:
+- 8081-matrice-9-box-comment-evaluer-le-potentiel-des-collaborateurs
+- 6041-strategie-de-gestion-des-talents-comment-structurer-votre-politique-rh
+- 7114-developpement-des-talents-quelles-methodes-utiliser
+- 1267-marque-employeur-comment-attirer-les-meilleurs-talents
 ---
-
 <h2>Le bracelet électronique au travail : un dispositif encadré par la loi</h2>
 
 <p>En tant que responsable comptable depuis vingt ans, j'ai vu évoluer les pratiques de surveillance dans l'entreprise. Le bracelet électronique au travail fait partie de ces dispositifs qui suscitent beaucoup de questions. Contrairement à ce qu'on pourrait penser, il ne s'agit pas uniquement d'un outil de contrôle patronal mais souvent d'une mesure de protection.</p>
