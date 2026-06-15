@@ -990,6 +990,14 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     if _avis_dir_early.exists() and any(_avis_dir_early.glob("*.md")):
         site["has_avis"] = True
 
+    # ── Détection précoce de la page À propos ─────────────────────────────
+    # Même logique : si le template `a-propos.html.j2` existe pour ce site
+    # (site-local OU base), on expose `site["has_a_propos"] = True` afin que
+    # tous les footers/nav puissent afficher le lien conditionnellement.
+    if (site_dir / "templates" / "a-propos.html.j2").exists() \
+            or (TEMPLATES_DIR / "a-propos.html.j2").exists():
+        site["has_a_propos"] = True
+
     # Injecter cta_color et cta_text_color (theme: ou racine du config)
     if "cta_color" not in theme:
         theme["cta_color"] = config.get("cta_color", "")
