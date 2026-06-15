@@ -1213,27 +1213,6 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             if blog_posts:
                 site["has_blog"] = True
                 blog_categories = blog_engine.collect_categories(blog_posts)
-                # ── Recompte multi-catégories : blog_engine.collect_categories parcourt
-                #    probablement uniquement `categorie` (legacy). Avec la nouvelle clé
-                #    `categories: [...]`, un article taggé sur 3 catégories doit apparaître
-                #    dans le count des 3. On reconstruit donc la liste en parcourant
-                #    `_post_categories(post)` qui gère le fallback proprement. On préserve
-                #    les `slug`/`name` produits par collect_categories pour rester cohérent
-                #    avec d'éventuelles personnalisations de slugify.
-                _cat_index = {c['name'].lower(): c for c in blog_categories}
-                _recomputed: dict = {}
-                for _post in blog_posts:
-                    for _cat_name in _post_categories(_post):
-                        _key = _cat_name.lower()
-                        if _key not in _recomputed:
-                            _existing = _cat_index.get(_key)
-                            _recomputed[_key] = {
-                                'name': _existing['name'] if _existing else _cat_name,
-                                'slug': _existing['slug'] if _existing else blog_engine.categorie_slug(_cat_name),
-                                'count': 0,
-                            }
-                        _recomputed[_key]['count'] += 1
-                blog_categories = sorted(_recomputed.values(), key=lambda x: x['name'].lower())
                 blog_expected.add("blog/index.html")
                 for post in blog_posts:
                     slug = post.get('slug', '')
