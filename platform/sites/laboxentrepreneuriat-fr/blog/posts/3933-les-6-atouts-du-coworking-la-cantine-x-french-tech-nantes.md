@@ -14,6 +14,7 @@ link_anchors:
 - text: l'espace de coworking La Cantine x La French Tech Nantes
   max: 5
 related_posts:
+- 5974-les-6-indicateurs-phares-de-leterritoireentreprise
 - 8513-quel-budget-mensuel-pour-le-coworking-lefoyerentrepreneurial
 ---
 <p>J'ai testé plusieurs espaces de coworking dans l'écosystème French Tech, et <strong>La Cantine x French Tech Nantes</strong> sort vraiment du lot. Pas seulement pour son positionnement tech, mais pour des aspects très concrets que je vais détailler.</p>
