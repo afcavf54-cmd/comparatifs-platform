@@ -701,6 +701,14 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, 
                         lines.append(url(f"{domain}/codes-promo/{slug}/", "0.7", "weekly"))
                         n_codes_promo += 1
 
+    # ── Page À propos (si template a-propos.html.j2 existe pour ce site)
+    has_apropos = False
+    if site_dir is not None:
+        # On vérifie dans les templates site-local OU base (qui héritent tous deux dans l'env Jinja)
+        if (site_dir / "templates" / "a-propos.html.j2").exists() or (TEMPLATES_DIR / "a-propos.html.j2").exists():
+            has_apropos = True
+            lines.append(url(f"{domain}/a-propos/", "0.6", "monthly"))
+
     lines += [
         url(f"{domain}/mentions-legales", "0.3", "yearly"),
         url(f"{domain}/politique-confidentialite", "0.3", "yearly"),
@@ -2268,6 +2276,44 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     print(f"  ✓ /codes-promo/ (listing : {len(cp_brands)} marques, {total_codes} codes actifs)")
                 except Exception as _e:
                     print(f"  ⚠ Codes promo : render listing échec : {_e}")
+
+    # ───────────────────────────────────────────────────────────────────────
+    # ── PAGE À PROPOS (template a-propos.html.j2) ─────────────────────────
+    # Page statique simple. Générée si le template existe pour ce site.
+    # URL : /a-propos/index.html
+    # ───────────────────────────────────────────────────────────────────────
+    apropos_tpl = None
+    try:
+        apropos_tpl = env.get_template("a-propos.html.j2")
+    except Exception:
+        pass
+    if apropos_tpl is not None:
+        _apropos_author = config.get("author", {}) or {}
+        # Fallback : si pas de bloc author top-level, dérive de site.author_*
+        if not _apropos_author.get("name") and config.get("site", {}).get("author_name"):
+            _apropos_author = {
+                "name": config["site"].get("author_name"),
+                "photo": config["site"].get("author_photo"),
+                "job_title": config["site"].get("author_job_title"),
+                "bio": config["site"].get("author_bio"),
+            }
+        _apropos_site_url = (config.get("site", {}).get("url") or "").rstrip("/")
+        if not _apropos_site_url and config.get("site", {}).get("domain"):
+            _apropos_site_url = f"https://{config['site']['domain']}"
+        try:
+            html = apropos_tpl.render(
+                site={**site, "url": _apropos_site_url, "seo": config.get("seo", {})},
+                theme=theme,
+                author=_apropos_author,
+                year=date.today().year,
+                build_date=date.today().isoformat(),
+            )
+            apropos_dir = output_dir / "a-propos"
+            apropos_dir.mkdir(parents=True, exist_ok=True)
+            (apropos_dir / "index.html").write_text(html, encoding="utf-8")
+            print(f"  ✓ /a-propos/ (page À propos)")
+        except Exception as _e:
+            print(f"  ⚠ À propos : render échec : {_e}")
 
     # ───────────────────────────────────────────────────────────────────────
     # ── AVIS (template avis-post.html.j2) ─────────────────────────────────
