@@ -4,15 +4,21 @@ slug: 5928-mal-configurer-le-crm-leadflow-automation-ce-qui-plante
 date: '2026-06-15T17:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Configurer le CRM LeadFlow Automation : les erreurs fréquentes'
-meta_description: 'Mal configurer LeadFlow Automation peut coûter cher : doublons, relances mal timées, pipeline chaotique. Voici les erreurs à éviter absolument avant de démarrer.'
+meta_description: 'Mal configurer LeadFlow Automation peut coûter cher : doublons,
+  relances mal timées, pipeline chaotique. Voici les erreurs à éviter absolument avant
+  de démarrer.'
 min_words: 940
 status: published
 featured_image: /blog/5928-mal-configurer-le-crm-leadflow-automation-ce-qui-plante.jpg
 link_anchors:
 - text: comment configurer le CRM LeadFlow Automation
   max: 5
+related_posts:
+- 6395-crm-clientpulse-pro-2024-face-a-la-concurrence
+- 7851-pain-point-pourquoi-cette-notion-est-essentielle-en-marketing-et-en-vente
+- 3498-comment-choisir-son-agence-web-les-erreurs-frequentes-a-eviter-avant-de-signer
+- 6254-calcul-prix-de-vente-avec-taux-de-marge-comment-garantir-votre-rentabilite
 ---
-
 <p>J'ai passé plusieurs semaines à configurer LeadFlow Automation pour mon équipe commerciale. Résultat : des relances qui partaient au mauvais moment, des contacts doublonnés partout, et un responsable des ventes qui m'appelait deux fois par semaine pour me signaler des bugs. Des bugs qui n'en étaient pas. C'était juste une mauvaise configuration au départ.</p>
 
 <p>Si vous démarrez avec ce CRM, voici ce que j'aurais aimé savoir avant.</p>
