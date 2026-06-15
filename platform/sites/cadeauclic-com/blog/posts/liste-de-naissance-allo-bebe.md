@@ -3,7 +3,7 @@ title: Mon avis sur la liste de naissance Allo bébé
 slug: liste-de-naissance-allo-bebe
 date: '2026-06-15T22:19:11+02:00'
 categorie: Bébé & Naissance
-meta_title: 'Liste de naissance Allo bébé : Avis 2026'
+meta_title: 'Liste de naissance Allo bébé : Avis {year}'
 meta_description: 'Retour d''expérience honnête sur la liste de naissance Allo bébé : ce service vaut-il vraiment le coup pour éviter les doublons et recevoir des cadeaux utiles à la…'
 min_words: 750
 status: published
@@ -121,4 +121,5 @@ related_posts:
 <p>C'est un bon outil. Pas parfait, pas révolutionnaire, mais honnête et fonctionnel. Si tu es déjà cliente Allo bébé, fonce. Sinon, prends le temps de comparer avant de te lancer, parce que les alternatives ont vraiment progressé ces dernières années.</p>
 
 <p>Et surtout, pense à le partager tôt. J'ai attendu le septième mois, et certains proches avaient déjà acheté leurs cadeaux de leur côté. La liste de naissance, ça fonctionne seulement si tout le monde est au courant à temps.</p>
+
 

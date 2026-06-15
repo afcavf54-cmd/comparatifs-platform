@@ -3,7 +3,7 @@ title: Mon avis sur la liste de naissance Minipouce
 slug: liste-de-naissance-minipouce
 date: '2026-06-15T22:19:11+02:00'
 categorie: Bébé & Naissance
-meta_title: 'Liste de naissance Minipouce : Avis 2026'
+meta_title: 'Liste de naissance Minipouce : Avis {year}'
 meta_description: 'Avis honnête sur la liste de naissance Minipouce : interface, fonctionnalités, points forts et limites. Tout ce qu''il faut savoir avant de créer la vôtre.'
 min_words: 750
 status: published
@@ -118,4 +118,5 @@ related_posts:
 Rapport qualité-prix : 4/5<br>
 Originalité : 3,5/5<br>
 Facilité à offrir : 4,5/5</p>
+
 

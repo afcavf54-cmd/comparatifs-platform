@@ -3,7 +3,7 @@ title: Les tendances déco homme incontournables pour Noël cette année
 slug: tendances-deco-homme-incontournables-noel
 date: '2026-06-10T17:29:21+02:00'
 categorie: Maison & Déco
-meta_title: Les tendances déco homme pour Noël en 2026
+meta_title: Les tendances déco homme pour Noël en {year}
 meta_description: Découvrez les tendances déco homme 2024 pour trouver le cadeau de Noël parfait. Matières brutes, style industriel et objets design qui séduisent vraiment les hommes.
 min_words: 1000
 status: published
@@ -99,3 +99,4 @@ related_posts:
 <p>L'avantage de ces objets déco, c'est qu'ils s'adaptent aux goûts de chacun tout en servant à toute la famille. Une belle façon de faire plaisir sans se tromper.</p>
 
 <p>Cette année, un <strong><a href="https://www.monsieurtshirt.com/idee-cadeau-noel-homme">cadeau tendance pour homme</a></strong> dans l'univers de la déco, c'est misé gagné. Les hommes assument de plus en plus leur goût pour un intérieur soigné, et ça ouvre plein de nouvelles possibilités pour nous faire plaisir sous le sapin !</p>
+

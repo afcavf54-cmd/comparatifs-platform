@@ -3,7 +3,7 @@ title: Mon avis sur la liste de naissance Autour de bébé
 slug: liste-de-naissance-autour-de-bebe
 date: '2026-06-15T22:04:00+02:00'
 categorie: Bébé & Naissance
-meta_title: 'Liste de naissance Autour de bébé : Avis 2026'
+meta_title: 'Liste de naissance Autour de bébé : Avis {year}'
 meta_description: 'Retour d''expérience complet sur la liste de naissance Autour de bébé : création en magasin, conseillère dédiée et comparatif avec Aubert, Bébé 9 ou Babylist.'
 min_words: 750
 status: published
@@ -109,3 +109,4 @@ related_posts:
 </ul>
 
 <p>Ce qui m'a le plus marquée ? La conseillère qui m'a dit franchement de retirer un article. Ce genre d'honnêteté, dans un contexte commercial, c'est assez rare pour être souligné.</p>
+

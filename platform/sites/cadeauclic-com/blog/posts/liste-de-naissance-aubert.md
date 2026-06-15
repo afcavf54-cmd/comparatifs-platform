@@ -3,7 +3,7 @@ title: Mon avis sur la liste de naissance Aubert
 slug: liste-de-naissance-aubert
 date: '2026-06-15T22:04:00+02:00'
 categorie: Bébé & Naissance
-meta_title: 'Liste de naissance Aubert : Avis 2026'
+meta_title: 'Liste de naissance Aubert : Avis {year}'
 meta_description: 'Avis honnête sur la liste de naissance Aubert : fonctionnement, avantages et limites vus par une maman qui a vraiment utilisé ce service pour son deuxième enfant.'
 min_words: 750
 status: published
@@ -121,3 +121,4 @@ related_posts:
   <li>Originalité : <strong>3/5</strong></li>
   <li>Facilité à offrir : <strong>4,5/5</strong></li>
 </ul>
+

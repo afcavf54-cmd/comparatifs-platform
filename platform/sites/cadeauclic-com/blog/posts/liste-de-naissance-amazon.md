@@ -3,7 +3,7 @@ title: Mon avis sur la liste de naissance Amazon
 slug: liste-de-naissance-amazon
 date: '2026-06-15T22:04:00+02:00'
 categorie: Bébé & Naissance
-meta_title: 'Liste de naissance Amazon : Avis 2026'
+meta_title: 'Liste de naissance Amazon : Avis {year}'
 meta_description: 'Avis complet sur la liste de naissance Amazon : création, catalogue, avantages et limites pour t''aider à décider si cette option est faite pour toi.'
 min_words: 750
 status: published
@@ -128,3 +128,4 @@ related_posts:
 <p>En revanche, si tu veux quelque chose de visuellement soigné, avec une page personnalisée à ton prénom et celui de ton bébé, je regarderais plutôt du côté de Babylist ou d'une boutique spécialisée. Et si l'esthétique de marque compte pour toi, certaines listes dédiées comme Verbaudet ont un rendu plus cohérent.</p>
 
 <p>Ce qui compte au final, c'est que tes proches trouvent facilement ce que tu attends, et que tu reçoives vraiment ce dont tu as besoin. La liste Amazon coche ces deux cases sans effort. Et c'est déjà beaucoup quand on est enceinte et qu'on a autre chose à gérer.</p>
+

@@ -3,7 +3,7 @@ title: Mon avis sur la liste de naissance bébé9
 slug: liste-de-naissance-bebe9
 date: '2026-06-15T22:19:11+02:00'
 categorie: Bébé & Naissance
-meta_title: 'Liste de naissance bébé9 : Avis 2026'
+meta_title: 'Liste de naissance bébé9 : Avis {year}'
 meta_description: 'Avis complet sur la liste de naissance Bébé9 : catalogue large, prix variés, création simple. Tout ce qu''il faut savoir avant de se lancer pour bien choisir.'
 min_words: 750
 status: published
@@ -142,4 +142,5 @@ related_posts:
 </tr>
 </tbody>
 </table>
+
 

@@ -3,7 +3,7 @@ title: Mon avis sur la liste de naissance Verbaudet
 slug: liste-de-naissance-verbaudet
 date: '2026-06-15T22:19:11+02:00'
 categorie: Bébé & Naissance
-meta_title: 'Liste de naissance Verbaudet : Avis 2026'
+meta_title: 'Liste de naissance Verbaudet : Avis {year}'
 meta_description: 'Avis complet et honnête sur la liste de naissance Verbaudet : création, interface, expérience des proches et points forts pour bien préparer l''arrivée de bébé.'
 min_words: 750
 status: published
@@ -111,4 +111,5 @@ related_posts:
 <p>Pour une maman qui veut une liste propre, sans prise de tête, avec des articles fiables et une qualité constante, Verbaudet reste une valeur sûre. Ce n'est pas le choix le plus aventureux, mais c'est un choix solide. Et honnêtement, quand tu es à huit mois de grossesse avec un grand à gérer en parallèle, la simplicité, ça a une vraie valeur.</p>
 
 <p>Ma note globale : <strong>4 / 5.</strong> Je l'ai utilisée, je ne l'ai pas regrettée, et je la conseillerais sans hésiter à une amie qui me demanderait par où commencer.</p>
+
 

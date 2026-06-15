@@ -3,7 +3,7 @@ title: Mon avis sur la liste de naissance Milirose
 slug: liste-de-naissance-milirose
 date: '2026-06-15T22:19:11+02:00'
 categorie: Bébé & Naissance
-meta_title: 'Liste de naissance Milirose : Avis 2026'
+meta_title: 'Liste de naissance Milirose : Avis {year}'
 meta_description: 'Découvrez mon avis complet sur la liste de naissance Milirose : une boutique haut de gamme, un catalogue soigné et un service qui change des grandes plateformes…'
 min_words: 750
 status: published
@@ -109,4 +109,5 @@ related_posts:
 <p>Le seul vrai conseil que je donnerais : ne fais pas de Milirose ta seule liste si tu as besoin de couvrir tous tes besoins pratiques. Utilise-la pour les cadeaux dont tu as vraiment envie, et complète avec une liste plus large pour le reste.</p>
 
 <p>Budget à prévoir côté acheteurs : <strong>entre 40 et 200 euros</strong> selon les articles. Vraiment pas une liste pour les petits budgets, mais pour ceux qui veulent offrir quelque chose de beau et durable, c'est clairement là qu'il faut regarder.</p>
+
 

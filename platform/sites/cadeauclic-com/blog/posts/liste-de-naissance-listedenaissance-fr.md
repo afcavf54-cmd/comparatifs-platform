@@ -3,7 +3,7 @@ title: Mon avis sur la liste de naissance Listedenaissance.fr
 slug: liste-de-naissance-listedenaissance-fr
 date: '2026-06-15T22:04:00+02:00'
 categorie: Bébé & Naissance
-meta_title: 'Liste de naissance Listedenaissance.fr : Avis 2026'
+meta_title: 'Liste de naissance Listedenaissance.fr : Avis {year}'
 meta_description: Avis honnête sur Listedenaissance.fr par une maman qui l'a vraiment testé. Créer sa liste de naissance simplement, avec des articles de n'importe quel site, ça…
 min_words: 750
 status: published
@@ -154,3 +154,4 @@ related_posts:
 <p>Par contre, si tu cherches une plateforme ultra-designée avec une personnalisation poussée, tu seras peut-être un peu déçue. Et pense à prévenir tes proches pour la commission, histoire d'éviter les questions au moment du paiement.</p>
 
 <p>En dehors de ça, ça a vraiment simplifié l'organisation autour de la naissance. Moins de messages, moins de doublons, zéro stress. Pour moi, c'est déjà une belle réussite.</p>
+
