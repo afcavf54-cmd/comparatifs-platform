@@ -13,6 +13,7 @@ link_anchors:
 - text: l'ERP (Enterprise Resource Planning) SAP
   max: 5
 related_posts:
+- 7831-crm-basique-ou-salesforce-premium-quelle-difference
 - 8975-comment-installer-l-erp-integre-managepro-suite
 ---
 <h2>SAP, qu'est-ce que c'est exactement ?</h2>
