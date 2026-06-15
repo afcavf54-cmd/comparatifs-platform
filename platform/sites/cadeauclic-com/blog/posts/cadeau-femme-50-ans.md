@@ -4,15 +4,20 @@ slug: cadeau-femme-50-ans
 date: '2026-06-15T23:31:26+02:00'
 categorie: Idées cadeaux
 meta_title: 'Idée cadeau Femme 90 ans : Anniversaire, fête des pères, Noël'
-meta_description: 'Trouvez l''idée cadeau parfaite pour une femme de 50 ans : expériences uniques, objets symboliques ou attentions personnalisées pour un anniversaire vraiment…'
+meta_description: 'Trouvez l''idée cadeau parfaite pour une femme de 50 ans : expériences
+  uniques, objets symboliques ou attentions personnalisées pour un anniversaire vraiment…'
 min_words: 1100
 status: published
 featured_image: /blog/cadeau-femme-50-ans.jpg
 link_anchors:
 - text: idées de cadeaux pour femme de 50 ans
   max: 5
+related_posts:
+- cadeau-saint-valentin
+- cadeau-homme-90-ans
+- cadeau-homme-73-ans
+- quels-cadeaux-surprises-les-hommes-aiment-ils
 ---
-
 <h2>Les 50 ans, c'est une occasion qui mérite vraiment mieux qu'un bouquet de fleurs classique</h2>
 
 <p>Je vais te dire un truc : trouver un cadeau pour une femme qui fête ses 50 ans, c'est à la fois plus simple et plus compliqué qu'on le croit. Plus simple, parce qu'à cet âge, les goûts sont affirmés. Plus compliqué, parce que justement, elle sait exactement ce qu'elle aime et ce qu'elle ne veut pas. Alors oublie le coffret générique vendu en grande surface. On va faire mieux que ça.</p>
