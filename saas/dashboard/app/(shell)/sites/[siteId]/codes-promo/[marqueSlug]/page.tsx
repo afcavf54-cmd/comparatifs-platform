@@ -384,7 +384,20 @@ export default function CodesPromoEditPage() {
   if (error) return <div style={S.empty}><div style={{ color: '#c00' }}>⚠ {error}</div></div>
   if (!brand) return <div style={S.empty}>Marque introuvable.</div>
 
-  const previewUrl = siteDomain ? `https://${siteDomain}/codes-promo/${brand.slug}/` : ''
+  // Construit l'URL de preview en gérant proprement les 3 formats possibles
+  // de `siteDomain` retournés par l'API selon ce qu'il y a dans config.yaml :
+  //   - "cadeauclic.com"           → on préfixe avec https://
+  //   - "www.cadeauclic.com"       → on préfixe avec https://
+  //   - "https://cadeauclic.com"   → on utilise tel quel (pas de double protocole)
+  //   - "http://localhost:3000"    → on utilise tel quel
+  // On strippe aussi un éventuel trailing slash pour ne pas avoir // dans l'URL.
+  function buildPreviewUrl(domain: string, slug: string): string {
+    if (!domain) return ''
+    const cleaned = domain.replace(/\/+$/, '')
+    const withProto = /^https?:\/\//i.test(cleaned) ? cleaned : `https://${cleaned}`
+    return `${withProto}/codes-promo/${slug}/`
+  }
+  const previewUrl = buildPreviewUrl(siteDomain, brand.slug)
 
   return (
     <div style={S.shell}>
