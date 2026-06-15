@@ -97,7 +97,51 @@ const S = {
 }
 
 // ───────────────────────────────────────────────────────────────────────
-// Component
+// Composant helper pour la modale de génération IA
+// Affiche un bloc de contenu généré avec bouton "Appliquer" ou indicateur
+// "Remplacer le texte actuel" si un contenu existe déjà.
+// ───────────────────────────────────────────────────────────────────────
+function ApplyBlock({ label, content, existing, isMd, onApply }: {
+  label: string
+  content: string
+  existing: string
+  isMd?: boolean
+  onApply: () => void
+}) {
+  if (!content || !content.trim()) {
+    return (
+      <div style={{ background: '#fafafa', borderRadius: 8, padding: 14, marginBottom: 12, border: '1px solid #eee' }}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#999', marginBottom: 4 }}>{label}</div>
+        <div style={{ fontSize: 13, color: '#aaa', fontStyle: 'italic' }}>(aucun contenu généré)</div>
+      </div>
+    )
+  }
+  const hasExisting = existing && existing.trim().length > 0
+  return (
+    <div style={{ background: '#fafafa', borderRadius: 8, padding: 14, marginBottom: 12, border: '1px solid #eee' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8, gap: 10 }}>
+        <div style={{ fontSize: 13, fontWeight: 700 }}>{label}</div>
+        <button
+          style={{ padding: '6px 12px', borderRadius: 6, border: 0, cursor: 'pointer', fontWeight: 600, fontSize: 12, background: hasExisting ? '#f9a825' : '#00D4AA', color: '#fff' }}
+          onClick={onApply}
+          title={hasExisting ? 'Remplacer le contenu existant' : 'Appliquer'}
+        >
+          {hasExisting ? '⚠ Remplacer' : '✓ Appliquer'}
+        </button>
+      </div>
+      <div style={{
+        background: '#fff', borderRadius: 6, padding: 12, fontSize: 13, lineHeight: 1.55, color: '#333',
+        fontFamily: isMd ? 'ui-monospace,SFMono-Regular,Consolas,monospace' : 'inherit',
+        whiteSpace: 'pre-wrap', maxHeight: 240, overflowY: 'auto', border: '1px solid #f0f0f0',
+      }}>
+        {content}
+      </div>
+    </div>
+  )
+}
+
+// ───────────────────────────────────────────────────────────────────────
+// Component principal — page d'édition d'une marque
 // ───────────────────────────────────────────────────────────────────────
 export default function CodesPromoEditPage() {
   const params = useParams<{ siteId: string; marqueSlug: string }>()
@@ -113,6 +157,11 @@ export default function CodesPromoEditPage() {
   const [saveError, setSaveError] = useState<string | null>(null)
   const [saveSuccess, setSaveSuccess] = useState<string | null>(null)
   const [siteDomain, setSiteDomain] = useState<string>('')
+
+  // Vague C : génération IA
+  const [generating, setGenerating] = useState(false)
+  const [generateError, setGenerateError] = useState<string | null>(null)
+  const [showGenerateModal, setShowGenerateModal] = useState<null | { content_md: string; avis_sophie: string; conseil_sophie: string }>(null)
 
   // ── Load ─────────────────────────────────────────────────────────────
   useEffect(() => {
@@ -280,6 +329,56 @@ export default function CodesPromoEditPage() {
     }
   }
 
+  // ── Vague C : génération IA des 3 contenus textuels ──────────────────
+  async function generateContent() {
+    if (!brand) return
+    // Garde-fou : si le contenu existe déjà, prévenir l'utilisateur
+    const hasExisting = (brand.content_md && brand.content_md.trim().length > 50)
+                      || (brand.avis_sophie && brand.avis_sophie.trim().length > 0)
+                      || (brand.conseil_sophie && brand.conseil_sophie.trim().length > 0)
+    if (hasExisting) {
+      if (!confirm("Tu as déjà du contenu rédigé pour cette marque. La génération va te proposer un nouveau texte que tu pourras choisir d'appliquer ou non. Continuer ?")) return
+    }
+    setGenerating(true)
+    setGenerateError(null)
+    try {
+      const r = await fetch(`/api/sites/${siteId}/codes-promo/${marqueSlug}/generate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          marque: brand.marque,
+          categorie_marque: brand.categorie_marque,
+          description_marque: brand.description_marque,
+          n_codes: (brand.codes || []).filter(c => !c.expired).length,
+        }),
+      })
+      const data = await r.json()
+      if (!r.ok) throw new Error(data.error || `HTTP ${r.status}`)
+      // On affiche le résultat dans une modale, l'utilisateur choisit ce qu'il applique
+      setShowGenerateModal({
+        content_md: data.content_md || '',
+        avis_sophie: data.avis_sophie || '',
+        conseil_sophie: data.conseil_sophie || '',
+      })
+    } catch (e: any) {
+      setGenerateError(e?.message || 'Génération échouée')
+    } finally {
+      setGenerating(false)
+    }
+  }
+
+  function applyGenerated(which: { content_md?: boolean; avis_sophie?: boolean; conseil_sophie?: boolean }) {
+    if (!brand || !showGenerateModal) return
+    const patch: Partial<Brand> = {}
+    if (which.content_md) patch.content_md = showGenerateModal.content_md
+    if (which.avis_sophie) patch.avis_sophie = showGenerateModal.avis_sophie
+    if (which.conseil_sophie) patch.conseil_sophie = showGenerateModal.conseil_sophie
+    setBrand({ ...brand, ...patch })
+    setShowGenerateModal(null)
+    setSaveSuccess('Contenu appliqué ✓ pense à enregistrer.')
+    setTimeout(() => setSaveSuccess(null), 4000)
+  }
+
   // ── Render ───────────────────────────────────────────────────────────
   if (loading) return <div style={S.empty}>Chargement…</div>
   if (error) return <div style={S.empty}><div style={{ color: '#c00' }}>⚠ {error}</div></div>
@@ -308,11 +407,12 @@ export default function CodesPromoEditPage() {
             </a>
           )}
           <button
-            style={{ ...S.btn, ...S.btnGhost, opacity: 0.6 }}
-            title="Disponible en vague C (génération IA)"
-            disabled
+            style={{ ...S.btn, ...S.btnGhost, opacity: generating ? 0.6 : 1 }}
+            onClick={generateContent}
+            disabled={generating || saving}
+            title="Génère 'Comment utiliser', 'Avis de Sophie' et 'Conseil de Sophie' via Claude"
           >
-            ✨ Générer le contenu
+            {generating ? '✨ Génération…' : '✨ Générer le contenu'}
           </button>
           {brand.status === 'draft' ? (
             <button style={{ ...S.btn, ...S.btnPub }} onClick={() => save('published')} disabled={saving}>
@@ -334,6 +434,7 @@ export default function CodesPromoEditPage() {
 
       <div style={S.content}>
         {saveError && <div style={S.errorBox}>⚠ {saveError}</div>}
+        {generateError && <div style={S.errorBox}>⚠ Génération : {generateError}</div>}
         {saveSuccess && <div style={S.successBox}>{saveSuccess}</div>}
 
         {/* ── INFOS GÉNÉRALES ──────────────────────────────────────── */}
@@ -601,6 +702,67 @@ export default function CodesPromoEditPage() {
           />
         </div>
       </div>
+
+      {/* ── Modale Vague C : preview du contenu généré ──────────────── */}
+      {showGenerateModal && (
+        <div
+          style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.55)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100, padding: 20 }}
+          onClick={() => setShowGenerateModal(null)}
+        >
+          <div
+            style={{ background: '#fff', borderRadius: 12, padding: 28, width: '100%', maxWidth: 760, maxHeight: '85vh', overflowY: 'auto', boxShadow: '0 10px 40px rgba(0,0,0,0.25)' }}
+            onClick={e => e.stopPropagation()}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
+              <div style={{ fontSize: 20, fontWeight: 700 }}>✨ Contenu généré pour {brand.marque}</div>
+              <button style={S.iconBtn} onClick={() => setShowGenerateModal(null)} aria-label="Fermer">✕</button>
+            </div>
+            <div style={{ fontSize: 13, color: '#666', marginBottom: 18 }}>
+              Coche ce que tu veux appliquer. Tu peux relancer une nouvelle génération si le résultat ne te convient pas.
+            </div>
+
+            <ApplyBlock
+              label="Comment utiliser un code promo (4 étapes)"
+              content={showGenerateModal.content_md}
+              existing={brand.content_md}
+              isMd
+              onApply={() => applyGenerated({ content_md: true })}
+            />
+            <ApplyBlock
+              label="Avis de Sophie (sidebar)"
+              content={showGenerateModal.avis_sophie}
+              existing={brand.avis_sophie || ''}
+              onApply={() => applyGenerated({ avis_sophie: true })}
+            />
+            <ApplyBlock
+              label="Conseil de Sophie (astuce)"
+              content={showGenerateModal.conseil_sophie}
+              existing={brand.conseil_sophie || ''}
+              onApply={() => applyGenerated({ conseil_sophie: true })}
+            />
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, marginTop: 20, paddingTop: 16, borderTop: '1px solid #eee' }}>
+              <button
+                style={{ ...S.btn, ...S.btnGhost }}
+                onClick={() => { setShowGenerateModal(null); generateContent() }}
+              >
+                🔄 Relancer une génération
+              </button>
+              <div style={{ display: 'flex', gap: 8 }}>
+                <button style={{ ...S.btn, ...S.btnGhost }} onClick={() => setShowGenerateModal(null)}>
+                  Annuler
+                </button>
+                <button
+                  style={{ ...S.btn, ...S.btnPrimary }}
+                  onClick={() => applyGenerated({ content_md: true, avis_sophie: true, conseil_sophie: true })}
+                >
+                  Tout appliquer
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── Save bar sticky bottom (apparaît si dirty) ────────────── */}
       {dirty && (
