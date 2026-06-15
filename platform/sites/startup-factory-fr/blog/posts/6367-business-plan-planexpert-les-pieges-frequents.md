@@ -4,15 +4,17 @@ slug: 6367-business-plan-planexpert-les-pieges-frequents
 date: '2026-06-15T11:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Faire un business plan avec PlanExpert : les erreurs de débutant'
-meta_description: Découvrez pourquoi PlanExpert peut ralentir votre business plan. Interface obsolète, calculs lents et pièges coûteux analysés par un expert après 3 mois de test…
+meta_description: Découvrez pourquoi PlanExpert peut ralentir votre business plan.
+  Interface obsolète, calculs lents et pièges coûteux analysés par un expert après
+  3 mois de test…
 min_words: 980
 status: published
 featured_image: /blog/6367-business-plan-planexpert-les-pieges-frequents.jpg
 link_anchors:
 - text: comment faire un business plan avec PlanExpert
   max: 5
+related_posts: []
 ---
-
 <h2>PlanExpert : pourquoi je déconseille ce logiciel pour ton business plan</h2>
 
 <p>J'ai testé PlanExpert pendant 3 mois pour créer le business plan de ma startup. <strong>Spoiler : j'ai perdu du temps</strong>. Ce logiciel français promet de simplifier la création de business plans, mais j'ai découvert plusieurs pièges qui peuvent te coûter cher.</p>
