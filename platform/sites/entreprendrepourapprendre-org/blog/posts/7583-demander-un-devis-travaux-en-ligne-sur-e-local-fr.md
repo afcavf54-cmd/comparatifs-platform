@@ -13,7 +13,8 @@ featured_image: /blog/7583-demander-un-devis-travaux-en-ligne-sur-e-local-fr.jpg
 link_anchors:
 - text: un devis travaux en ligne sur E-Local.fr
   max: 5
-related_posts: []
+related_posts:
+- 1058-demander-un-devis-gratuit-sur-btp-chantier-fr
 ---
 <h2>Pourquoi choisir e-local.fr pour vos demandes de devis travaux ?</h2>
 
