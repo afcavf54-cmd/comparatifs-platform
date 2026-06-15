@@ -8,7 +8,8 @@ Format article :
     title: "Mon titre"
     slug: "1542-mon-titre"          # préfixe numérique unique
     date: "2026-05-15T09:00:00"
-    categorie: "Paie"
+    categorie: "Paie"                # PRINCIPALE (= categories[0])
+    categories: ["Paie", "Compta"]   # LISTE multi-cat (depuis juin 2026)
     meta_title: "Mon titre - Site"
     meta_description: "..."
     featured_image: "/blog/1542-mon-titre/cover.jpg"
@@ -21,6 +22,12 @@ Format article :
 
 Format images :
     platform/sites/<site>/public/blog/<slug>/<image>.jpg
+
+Multi-catégories (depuis juin 2026) :
+- L'invariant `categorie == categories[0]` est garanti par le dashboard au save.
+- À la lecture, `parse_post` normalise toujours `post['categories']` en liste,
+  en synthétisant `[categorie]` pour les articles legacy. Toutes les fonctions
+  consommatrices peuvent compter sur `post['categories']` étant une liste.
 """
 from __future__ import annotations
 import os
@@ -29,6 +36,28 @@ import json
 import random
 import datetime as _dt
 from pathlib import Path
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# HELPER MULTI-CATÉGORIES
+# ═══════════════════════════════════════════════════════════════════════════
+
+def _post_categories(post: dict) -> list[str]:
+    """Retourne la liste des catégories d'un post.
+
+    Multi-catégories : depuis juin 2026, un article peut être taggé sur plusieurs
+    catégories via `categories: [...]` du frontmatter. Cette fonction retourne
+    TOUJOURS une liste de strings, avec fallback `[categorie]` pour les articles
+    legacy qui n'ont que l'ancien champ `categorie` (string).
+
+    L'invariant `categorie == categories[0]` est garanti par le dashboard, mais
+    cette fonction ne s'en sert pas — elle se contente de lire les champs présents.
+    """
+    cats = post.get('categories')
+    if isinstance(cats, list) and cats:
+        return [c.strip() for c in cats if isinstance(c, str) and c.strip()]
+    one = (post.get('categorie') or '').strip()
+    return [one] if one else []
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -63,6 +92,11 @@ def parse_post(filepath: Path) -> dict | None:
     post['content_md'] = body.strip()
     post['content_html'] = md_to_html_blog(body.strip())
     post['filepath'] = str(filepath)
+    # Multi-catégories : normalise post['categories'] en liste de strings.
+    # Pour les articles legacy qui n'ont que `categorie` (string), on synthétise
+    # `[categorie]`. Toutes les fonctions consommatrices peuvent désormais
+    # compter sur `post['categories']` étant une liste (potentiellement vide).
+    post['categories'] = _post_categories(post)
     # Dérivés
     post['date_obj'] = _parse_date(post.get('date', ''))
     # Ancres de maillage interne : on tolère plusieurs formats
@@ -233,20 +267,29 @@ def categorie_slug(name: str) -> str:
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-# MAILLAGE INTERNE (4 articles de la même catégorie, figés une fois)
+# MAILLAGE INTERNE (4 articles qui partagent ≥ 1 catégorie, figés une fois)
 # ═══════════════════════════════════════════════════════════════════════════
 
 def compute_related_posts(post: dict, all_posts: list[dict], n: int = 4) -> list[dict]:
     """Si post.related_posts est déjà rempli dans le frontmatter, on l'utilise
-    tel quel (figé). Sinon, on pick n articles aléatoires de la même catégorie,
-    on les écrit dans le frontmatter (fichier .md mis à jour), et on retourne."""
-    cat = (post.get('categorie') or '').strip().lower()
-    if not cat:
+    tel quel (figé). Sinon, on pick n articles aléatoires qui PARTAGENT AU MOINS
+    UNE CATÉGORIE avec ce post, on les écrit dans le frontmatter (fichier .md
+    mis à jour), et on retourne.
+
+    Multi-catégories : avec la nouvelle structure `categories: [...]`, deux
+    articles sont considérés "liés" dès qu'ils partagent ne serait-ce qu'une
+    catégorie (overlap non vide). Les articles legacy n'ont qu'une catégorie
+    dans leur liste (synthétisée par parse_post), donc le comportement reste
+    identique pour eux."""
+    src_cats = {c.lower() for c in _post_categories(post)}
+    if not src_cats:
         return []
     same_slug = post.get('slug', '')
-    candidates = [p for p in all_posts
-                  if (p.get('categorie') or '').strip().lower() == cat
-                  and p.get('slug', '') != same_slug]
+    candidates = [
+        p for p in all_posts
+        if p.get('slug', '') != same_slug
+        and src_cats.intersection(c.lower() for c in _post_categories(p))
+    ]
 
     # Si déjà figé dans le frontmatter, on résout les slugs
     stored = post.get('related_posts') or []
@@ -397,16 +440,23 @@ def excerpt_from_md(md: str, max_chars: int = 180) -> str:
 # ═══════════════════════════════════════════════════════════════════════════
 
 def collect_categories(posts: list[dict]) -> list[dict]:
-    """Retourne la liste des catégories distinctes avec leur compte d'articles."""
+    """Retourne la liste des catégories distinctes avec leur compte d'articles.
+
+    Multi-catégories (depuis juin 2026) : un article apparaît dans le count de
+    CHAQUE catégorie où il est taggé (via `categories: [...]` du frontmatter),
+    pas seulement sa principale (`categorie`). Pour les articles legacy qui n'ont
+    que `categorie`, le helper _post_categories synthétise une liste à 1 élément,
+    donc le comportement reste identique pour eux.
+
+    Tri : par count décroissant (catégories les plus utilisées en haut).
+    """
     cats: dict[str, dict] = {}
     for p in posts:
-        cat_name = (p.get('categorie') or '').strip()
-        if not cat_name:
-            continue
-        key = cat_name.lower()
-        if key not in cats:
-            cats[key] = {'name': cat_name, 'slug': categorie_slug(cat_name), 'count': 0}
-        cats[key]['count'] += 1
+        for cat_name in _post_categories(p):
+            key = cat_name.lower()
+            if key not in cats:
+                cats[key] = {'name': cat_name, 'slug': categorie_slug(cat_name), 'count': 0}
+            cats[key]['count'] += 1
     return sorted(cats.values(), key=lambda c: c['count'], reverse=True)
 
 
