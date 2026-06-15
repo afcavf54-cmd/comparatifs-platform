@@ -1,0 +1,62 @@
+name: Fix blog placeholders ({Month}, {year}…)
+
+on:
+  workflow_dispatch:
+    inputs:
+      site:
+        description: 'Site ID (ex: cadeauclic-com)'
+        required: true
+        type: string
+        default: 'cadeauclic-com'
+      dry_run:
+        description: 'Mode dry-run (preview sans modifier)'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Run script
+        run: |
+          DRY_FLAG=""
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            DRY_FLAG="--dry-run"
+            echo "→ Mode dry-run : aucun fichier ne sera modifié"
+          fi
+          python3 platform/scripts/fix_blog_placeholders.py "${{ inputs.site }}" $DRY_FLAG
+
+      - name: Commit & push
+        if: ${{ inputs.dry_run == false }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "platform/sites/${{ inputs.site }}/blog/posts/" 2>/dev/null || true
+
+          if git diff --cached --quiet; then
+            echo "✓ Aucune substitution nécessaire (rien à committer)"
+            exit 0
+          fi
+
+          N_FIXED=$(git diff --cached --name-only | grep -c '\.md$' || true)
+          git commit -m "fix(blog): substitute {Month}/{year} placeholders in ${{ inputs.site }} — ${N_FIXED} files"
+          git push
+          echo "✓ ${N_FIXED} fichier(s) corrigé(s) et poussé(s)"
