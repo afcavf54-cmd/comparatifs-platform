@@ -45,6 +45,7 @@ export default function ShellLayout({ children }: { children: React.ReactNode })
     { id: 'data', label: '🗂 Données', href: `/sites/${siteId}/data` },
     { id: 'blog', label: '📝 Blog', href: `/sites/${siteId}/blog` },
     { id: 'avis', label: '⭐ Avis', href: `/sites/${siteId}/avis` },
+    { id: 'codes-promo', label: '🏷️ Codes promo', href: `/sites/${siteId}/codes-promo` },
     ...(pageTypes.classement ? [{ id: 'classements', label: '📊 Classements', href: `/sites/${siteId}/classements` }] : []),
     { id: 'outils', label: '🧰 Outils', href: `/sites/${siteId}/outils` },
     { id: 'deploy', label: '🚀 Déploiement', href: `/sites/${siteId}/deploy` },
