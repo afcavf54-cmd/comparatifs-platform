@@ -998,6 +998,25 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             or (TEMPLATES_DIR / "a-propos.html.j2").exists():
         site["has_a_propos"] = True
 
+    # ── Détection précoce des comparateurs ────────────────────────────────
+    # Un site a des comparateurs si son products.yaml contient au moins
+    # 1 produit. Sinon (cas cadeauclic.com qui est blog-only), on set
+    # explicitement `has_comparateurs = False` pour que le partial _nav.html.j2
+    # commun (et le footer) cachent le lien "Nos comparateurs".
+    # Note : le pattern dans _footer.html.j2 est :
+    #   {% if site.has_comparateurs is not defined or site.has_comparateurs %}
+    # Donc set False (et non "ne pas définir") pour CACHER le lien — sinon
+    # le fallback rétro-compat l'affiche (sites legacy sans config explicite).
+    _comparateurs_products = (products_yaml.get("products") or []) if isinstance(products_yaml, dict) else []
+    if not _comparateurs_products:
+        # Pas de produits → pas de comparateurs à afficher sur ce site
+        site["has_comparateurs"] = False
+    elif "has_comparateurs" not in site:
+        # Au moins 1 produit ET pas d'override explicite dans config.yaml
+        site["has_comparateurs"] = True
+    # (sinon : la valeur explicite du config.yaml gagne — utile pour forcer
+    #  False même avec un products.yaml présent, ex. site en transition)
+
     # Injecter cta_color et cta_text_color (theme: ou racine du config)
     if "cta_color" not in theme:
         theme["cta_color"] = config.get("cta_color", "")
