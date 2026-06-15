@@ -123,6 +123,7 @@
     .logo .mark{font-size:1.55rem}
     .logo span{color:var(--rose-600)}
     .logo-img{height:40px;width:auto;max-width:200px;display:block}
+    .nav-collapse{display:flex;align-items:center;gap:30px}
     .menu{display:flex;gap:30px}
     .menu a{font-family:"Poppins";font-weight:600;color:var(--ink-soft);font-size:.95rem;transition:.15s}
     .menu a:hover{color:var(--rose-600)}
@@ -131,6 +132,28 @@
     .socials a{width:36px;height:36px;border-radius:50%;background:var(--rose-50);display:inline-flex;align-items:center;justify-content:center;color:var(--rose-600);transition:.15s}
     .socials a:hover{background:var(--rose-100)}
     .socials svg{width:16px;height:16px}
+
+    /* Hamburger button (mobile only) */
+    .hamburger{
+      display:none;flex-direction:column;justify-content:center;gap:5px;
+      width:40px;height:40px;background:none;border:0;cursor:pointer;padding:8px;
+      z-index:101;position:relative;
+    }
+    .hamburger span{
+      display:block;width:24px;height:2px;background:var(--ink);
+      border-radius:2px;transition:.3s ease;
+    }
+    body.menu-open .hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    body.menu-open .hamburger span:nth-child(2){opacity:0}
+    body.menu-open .hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    /* Backdrop derrière le drawer mobile */
+    .nav-backdrop{
+      position:fixed;inset:0;background:rgba(31,23,34,.5);
+      opacity:0;pointer-events:none;
+      transition:opacity .25s ease;z-index:99;
+    }
+    body.menu-open .nav-backdrop{opacity:1;pointer-events:auto}
 
     /* ---------- HERO ---------- */
     .hero{padding:80px 0 70px;background:linear-gradient(180deg,var(--rose-50) 0%,#fff 80%);overflow:hidden;position:relative}
@@ -256,7 +279,39 @@
 
     /* ---------- RESPONSIVE ---------- */
     @media(max-width:980px){
-      .menu{display:none}
+      .hamburger{display:flex}
+
+      /* Le wrapper nav-collapse devient le drawer slide-in depuis la droite */
+      .nav-collapse{
+        position:fixed;top:0;right:0;
+        width:min(320px,85vw);
+        height:100vh;
+        background:#fff;
+        transform:translateX(100%);
+        transition:transform .3s cubic-bezier(.2,.7,.3,1);
+        z-index:100;
+        flex-direction:column;
+        align-items:stretch;
+        padding:90px 30px 30px;
+        gap:28px;
+        box-shadow:-20px 0 60px rgba(0,0,0,.1);
+        overflow-y:auto;
+      }
+      body.menu-open .nav-collapse{transform:translateX(0)}
+      body.menu-open{overflow:hidden}
+
+      /* Menu dans le drawer : empilé en colonne */
+      .menu{
+        flex-direction:column;gap:18px;align-items:flex-start;
+        padding-bottom:24px;border-bottom:1px solid var(--line);
+      }
+      .menu a{font-size:1.08rem;color:var(--ink)}
+
+      /* nav-right (socials + CTA) dans le drawer */
+      .nav-right{flex-direction:column;align-items:stretch;gap:18px;width:100%}
+      .nav-right .btn{width:100%;justify-content:center}
+      .nav-right .socials{justify-content:flex-start}
+
       .hero-grid{grid-template-columns:1fr;gap:36px}
       .hero-media{max-width:380px}
       .strip-card{grid-template-columns:1fr}
@@ -293,23 +348,36 @@
         <span class="mark">🎁</span>{{ site.logo_text | default('Cadeau') }}<span>{{ site.logo_accent | default('Clic') }}</span>
       {% endif %}
     </a>
-    <nav class="menu">
-      <a href="/cadeau-femme/">Cadeau femme</a>
-      <a href="/cadeau-homme/">Cadeau homme</a>
-      <a href="/creer-une-liste/">Créer une liste</a>
-      <a href="#articles">Blog</a>
-      <a href="#parrainage">Parrainage</a>
-    </nav>
-    <div class="nav-right">
-      <div class="socials">
-        <a href="https://www.facebook.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h2.7l.4-3.1H13V8.9c0-.9.3-1.5 1.6-1.5H16V4.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.4H7.2V14H9.9v8H13z"/></svg></a>
-        <a href="https://www.instagram.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 8.6A3.4 3.4 0 1 0 15.4 12 3.4 3.4 0 0 0 12 8.6zm0 5.6A2.2 2.2 0 1 1 14.2 12 2.2 2.2 0 0 1 12 14.2zm4.3-5.8a.8.8 0 1 1-.8-.8.8.8 0 0 1 .8.8zM18.7 8a3.9 3.9 0 0 0-1.1-2.8A3.9 3.9 0 0 0 14.8 4c-1.1-.1-4.5-.1-5.6 0A3.9 3.9 0 0 0 6.4 5.2 3.9 3.9 0 0 0 5.3 8c-.1 1.1-.1 4.5 0 5.6a3.9 3.9 0 0 0 1.1 2.8 3.9 3.9 0 0 0 2.8 1.1c1.1.1 4.5.1 5.6 0a3.9 3.9 0 0 0 2.8-1.1 3.9 3.9 0 0 0 1.1-2.8c.1-1.1.1-4.5 0-5.6z"/></svg></a>
-        <a href="https://fr.pinterest.com/cadeaucliccom/" target="_blank" rel="nofollow noopener" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4a8 8 0 0 0-2.9 15.4c0-.6-.1-1.6.1-2.3l1-4.2s-.2-.5-.2-1.3c0-1.2.7-2.1 1.6-2.1.7 0 1.1.6 1.1 1.2 0 .8-.5 1.9-.7 2.9-.2.9.4 1.6 1.3 1.6 1.6 0 2.7-2 2.7-4.4 0-1.8-1.2-3.2-3.5-3.2a4 4 0 0 0-4.1 4c0 .8.3 1.4.6 1.8.2.2.2.3.1.5l-.2.8c0 .3-.2.4-.5.2-1.2-.5-1.7-1.9-1.7-3.4 0-2.5 2.1-5.5 6.3-5.5 3.4 0 5.6 2.4 5.6 5 0 3.4-1.9 6-4.7 6-1 0-1.8-.5-2.1-1.1l-.6 2.2c-.2.7-.6 1.5-1 2A8 8 0 1 0 12 4z"/></svg></a>
+
+    {# Bouton hamburger — visible uniquement sur mobile #}
+    <button class="hamburger" aria-label="Ouvrir le menu" aria-controls="nav-drawer" aria-expanded="false"
+            onclick="var o=document.body.classList.toggle('menu-open');this.setAttribute('aria-expanded',o);this.setAttribute('aria-label',o?'Fermer le menu':'Ouvrir le menu')">
+      <span></span><span></span><span></span>
+    </button>
+
+    {# Wrapper menu + nav-right — devient un drawer slide-in sur mobile #}
+    <div class="nav-collapse" id="nav-drawer">
+      <nav class="menu">
+        <a href="/cadeau-femme/">Cadeau femme</a>
+        <a href="/cadeau-homme/">Cadeau homme</a>
+        <a href="/creer-une-liste/">Créer une liste</a>
+        <a href="#articles">Blog</a>
+        <a href="#parrainage">Parrainage</a>
+      </nav>
+      <div class="nav-right">
+        <a href="#parrainage" class="btn" style="padding:12px 22px;font-size:.92rem">Bons plans</a>
+        <div class="socials">
+          <a href="https://www.facebook.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h2.7l.4-3.1H13V8.9c0-.9.3-1.5 1.6-1.5H16V4.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.4H7.2V14H9.9v8H13z"/></svg></a>
+          <a href="https://www.instagram.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 8.6A3.4 3.4 0 1 0 15.4 12 3.4 3.4 0 0 0 12 8.6zm0 5.6A2.2 2.2 0 1 1 14.2 12 2.2 2.2 0 0 1 12 14.2zm4.3-5.8a.8.8 0 1 1-.8-.8.8.8 0 0 1 .8.8zM18.7 8a3.9 3.9 0 0 0-1.1-2.8A3.9 3.9 0 0 0 14.8 4c-1.1-.1-4.5-.1-5.6 0A3.9 3.9 0 0 0 6.4 5.2 3.9 3.9 0 0 0 5.3 8c-.1 1.1-.1 4.5 0 5.6a3.9 3.9 0 0 0 1.1 2.8 3.9 3.9 0 0 0 2.8 1.1c1.1.1 4.5.1 5.6 0a3.9 3.9 0 0 0 2.8-1.1 3.9 3.9 0 0 0 1.1-2.8c.1-1.1.1-4.5 0-5.6z"/></svg></a>
+          <a href="https://fr.pinterest.com/cadeaucliccom/" target="_blank" rel="nofollow noopener" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4a8 8 0 0 0-2.9 15.4c0-.6-.1-1.6.1-2.3l1-4.2s-.2-.5-.2-1.3c0-1.2.7-2.1 1.6-2.1.7 0 1.1.6 1.1 1.2 0 .8-.5 1.9-.7 2.9-.2.9.4 1.6 1.3 1.6 1.6 0 2.7-2 2.7-4.4 0-1.8-1.2-3.2-3.5-3.2a4 4 0 0 0-4.1 4c0 .8.3 1.4.6 1.8.2.2.2.3.1.5l-.2.8c0 .3-.2.4-.5.2-1.2-.5-1.7-1.9-1.7-3.4 0-2.5 2.1-5.5 6.3-5.5 3.4 0 5.6 2.4 5.6 5 0 3.4-1.9 6-4.7 6-1 0-1.8-.5-2.1-1.1l-.6 2.2c-.2.7-.6 1.5-1 2A8 8 0 1 0 12 4z"/></svg></a>
+        </div>
       </div>
-      <a href="#parrainage" class="btn" style="padding:12px 22px;font-size:.92rem">Bons plans</a>
     </div>
   </div>
 </header>
+
+{# Backdrop : clic = fermer le menu #}
+<div class="nav-backdrop" onclick="document.body.classList.remove('menu-open');var h=document.querySelector('.hamburger');h.setAttribute('aria-expanded','false');h.setAttribute('aria-label','Ouvrir le menu')"></div>
 
 {# ============================================================
    HERO
