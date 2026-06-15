@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À propos — Sophie Martin, fondatrice de cadeauclic.com</title>
+  <meta name="description" content="Sophie Martin, maman et accro aux bonnes affaires, te raconte pourquoi elle a créé cadeauclic.com : avis sincères, codes promo testés à la main, idées originales par occasion et par budget.">
+  <link rel="canonical" href="https://https://www.cadeauclic.com/a-propos/">
+  <link rel="icon" href="/favicon.png" type="image/png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD AboutPage + Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "url": "https://https://www.cadeauclic.com/a-propos/",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Sophie Martin",
+      "jobTitle": "",
+      "description": "",
+      "image": "https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/cadeauclic-com/public/author-photo.png?t=1781515402513",
+      "url": "https://https://www.cadeauclic.com/a-propos/",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "cadeauclic.com",
+        "url": "https://https://www.cadeauclic.com/"
+      }
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --rose-50:#fff5f8; --rose-100:#ffe7ef; --rose-200:#ffd0e0; --rose-300:#ffb1cc;
+      --rose-500:#ff5b8a; --rose-600:#ec3f76; --rose-700:#cf2c61; --coral:#ff7a59;
+      --ink:#251d27; --ink-soft:#5d5360; --line:#f0e3e9; --white:#fff;
+      --grad: linear-gradient(100deg, var(--rose-500), var(--coral));
+      --shadow-sm: 0 4px 18px rgba(207,44,97,.08);
+      --shadow-md: 0 18px 50px rgba(207,44,97,.13);
+      --r: 22px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"Nunito Sans",system-ui,sans-serif;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;line-height:1.6}
+    h1,h2,h3,h4{font-family:"Poppins",sans-serif;line-height:1.15;letter-spacing:-.01em}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+    .eyebrow{font-family:"Poppins";font-weight:700;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--rose-600)}
+    .btn{display:inline-flex;align-items:center;gap:.6em;font-family:"Poppins";font-weight:600;font-size:1rem;color:#fff;background:var(--grad);padding:15px 28px;border-radius:50px;box-shadow:0 12px 26px rgba(255,91,138,.34);transition:transform .2s,box-shadow .2s;cursor:pointer;border:none}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(255,91,138,.42)}
+    .btn-ghost{background:#fff;color:var(--rose-600);box-shadow:inset 0 0 0 2px var(--rose-200)}
+    .btn-ghost:hover{box-shadow:inset 0 0 0 2px var(--rose-500)}
+
+    /* HEADER */
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:78px;max-width:1200px;margin:0 auto;padding:0 28px;gap:24px}
+    .logo{display:flex;align-items:center;gap:10px;font-family:"Poppins";font-weight:800;font-size:1.5rem;color:var(--ink)}
+    .logo img{height:36px;width:auto}
+    .logo-fallback{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .nav-collapse{display:flex;align-items:center;gap:30px;flex:1;justify-content:space-between}
+    .menu{display:flex;align-items:center;gap:30px;font-family:"Poppins";font-weight:500;font-size:.92rem;list-style:none}
+    .menu a{color:var(--ink-soft);transition:color .15s;white-space:nowrap}
+    .menu a:hover, .menu a.active{color:var(--rose-600)}
+    .nav-right{display:flex;align-items:center;gap:18px}
+    .socials{display:flex;gap:10px}
+    .socials a{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--rose-50);color:var(--rose-600);transition:.18s}
+    .socials a:hover{background:var(--rose-500);color:#fff;transform:translateY(-2px)}
+    .socials svg{width:16px;height:16px}
+    .hamburger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+    .hamburger span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;transition:all .3s}
+    .nav-backdrop{display:none;position:fixed;inset:0;background:rgba(37,29,39,.5);z-index:45}
+
+    /* HERO */
+    .hero{background:radial-gradient(120% 130% at 80% 0%,var(--rose-100) 0%,var(--rose-50) 42%,#fff 78%);overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1fr .82fr;gap:56px;align-items:center;padding:64px 0 72px}
+    .hero h1{font-size:clamp(2.4rem,4.4vw,3.7rem);font-weight:800;margin:16px 0 20px}
+    .hero h1 .pink{color:var(--rose-600)}
+    .hero p.lead{font-size:1.18rem;color:var(--ink-soft);max-width:34em;margin-bottom:24px}
+    .hero .sign{font-family:"Poppins";font-weight:700;color:var(--ink);font-size:1.05rem}
+    .hero .sign small{display:block;font-weight:500;color:var(--ink-soft);font-size:.85rem;margin-top:2px}
+    .hero-media{position:relative}
+    .hero-media .blob{position:absolute;inset:-7% -6% -9% -5%;background:var(--grad);border-radius:46% 54% 56% 44%/50% 44% 56% 50%;opacity:.92}
+    .hero-photo{position:relative;width:100%;height:440px;border-radius:26px;overflow:hidden;background:var(--rose-50);box-shadow:var(--shadow-md)}
+    .hero-photo img{width:100%;height:100%;object-fit:cover}
+    .hero-photo .ph{width:100%;height:100%;display:grid;place-items:center;color:var(--rose-600);font-family:"Poppins";font-weight:700;font-size:1.2rem;text-align:center;padding:20px}
+    .float-tag{position:absolute;z-index:3;background:#fff;border-radius:16px;padding:11px 15px;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:9px;font-family:"Poppins";font-weight:600;font-size:.86rem}
+    .float-tag .ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;color:#fff;font-size:.95rem}
+    .float-tag.one{top:22px;left:-24px}
+    .float-tag.two{bottom:30px;right:-20px}
+
+    /* SECTION */
+    section.block{padding:78px 0}
+    .tint{background:var(--rose-50)}
+    .head{max-width:40em;margin:0 auto 48px;text-align:center}
+    .head h2{font-size:clamp(1.9rem,3.2vw,2.6rem);font-weight:800;margin:14px 0}
+    .head p{color:var(--ink-soft);font-size:1.08rem}
+
+    /* STORY */
+    .story{max-width:720px;margin:0 auto;font-size:1.12rem;color:var(--ink-soft)}
+    .story p{margin-bottom:22px}
+    .story p strong{color:var(--ink);font-weight:700}
+    .story .pull{font-family:"Poppins";font-weight:700;font-size:1.5rem;color:var(--rose-600);line-height:1.3;border-left:4px solid var(--rose-300);padding:6px 0 6px 22px;margin:34px 0}
+
+    /* TIMELINE */
+    .timeline{max-width:760px;margin:0 auto;position:relative;padding-left:34px}
+    .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:3px;background:linear-gradient(var(--rose-300),var(--rose-100))}
+    .tl-item{position:relative;padding-bottom:34px}
+    .tl-item:last-child{padding-bottom:0}
+    .tl-item::before{content:"";position:absolute;left:-33px;top:4px;width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid var(--rose-500);box-shadow:0 0 0 4px var(--rose-100)}
+    .tl-item .yr{font-family:"Poppins";font-weight:800;color:var(--rose-600);font-size:1.05rem}
+    .tl-item h4{font-family:"Poppins";font-weight:700;font-size:1.15rem;margin:3px 0 6px}
+    .tl-item p{color:var(--ink-soft);font-size:.98rem}
+
+    /* VALUES */
+    .val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto}
+    .val-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px;box-shadow:var(--shadow-sm);transition:.2s}
+    .val-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md)}
+    .val-card .ic{width:56px;height:56px;border-radius:16px;background:var(--grad);display:grid;place-items:center;color:#fff;font-size:1.5rem;margin-bottom:16px}
+    .val-card h3{font-size:1.18rem;font-weight:700;margin-bottom:8px}
+    .val-card p{color:var(--ink-soft);font-size:.96rem}
+
+    /* STATS */
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1000px;margin:50px auto 0;text-align:center}
+    .stats .n{font-family:"Poppins";font-weight:800;font-size:2.6rem;color:var(--rose-600);line-height:1}
+    .stats small{display:block;color:var(--ink-soft);font-size:.9rem;margin-top:8px}
+
+    /* METHOD */
+    .method{max-width:880px;margin:0 auto;display:grid;gap:16px}
+    .m-step{display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 26px;box-shadow:var(--shadow-sm)}
+    .m-step .num{flex:none;width:42px;height:42px;border-radius:12px;background:var(--grad);color:#fff;font-family:"Poppins";font-weight:800;display:grid;place-items:center;font-size:1.1rem}
+    .m-step h4{font-family:"Poppins";font-weight:700;font-size:1.08rem;margin-bottom:4px}
+    .m-step p{color:var(--ink-soft);font-size:.96rem}
+
+    /* PROFILE */
+    .profile{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:32px;padding:46px;box-shadow:var(--shadow-md);max-width:1000px;margin:0 auto}
+    .profile-media{position:relative}
+    .profile-media .ring{position:absolute;inset:-13px;border-radius:34px;background:var(--grad);opacity:.16}
+    .profile-photo{position:relative;width:100%;height:380px;border-radius:22px;overflow:hidden;background:var(--rose-50)}
+    .profile-photo img{width:100%;height:100%;object-fit:cover}
+    .profile-photo .ph{width:100%;height:100%;display:grid;place-items:center;color:var(--rose-600);font-family:"Poppins";font-weight:700;font-size:1.1rem}
+    .profile h2{font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:800;margin:12px 0 16px}
+    .profile p{color:var(--ink-soft);margin-bottom:14px;font-size:1.02rem}
+    .chips{display:flex;flex-wrap:wrap;gap:9px;margin:4px 0 20px}
+    .chip{font-family:"Poppins";font-weight:600;font-size:.82rem;background:var(--rose-50);color:var(--rose-700);padding:8px 15px;border-radius:50px}
+    .facts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+    .fact{display:flex;gap:10px;align-items:center;font-size:.95rem;color:var(--ink-soft)}
+    .fact .fi{flex:none;width:34px;height:34px;border-radius:10px;background:var(--rose-50);display:grid;place-items:center;font-size:1rem}
+
+    /* QUOTE */
+    .quote-band{background:var(--grad);color:#fff;text-align:center;padding:70px 0;position:relative;overflow:hidden}
+    .quote-band .mark{font-family:"Poppins";font-weight:800;font-size:4rem;opacity:.5;line-height:.6}
+    .quote-band q{display:block;font-family:"Poppins";font-weight:700;font-size:clamp(1.4rem,2.6vw,2rem);max-width:20em;margin:10px auto 22px;quotes:none;line-height:1.35}
+    .quote-band .who{font-weight:600;opacity:.95}
+    .quote-band .deco{position:absolute;border-radius:50%;background:rgba(255,255,255,.13)}
+    .quote-band .deco.a{width:220px;height:220px;top:-80px;left:-50px}
+    .quote-band .deco.b{width:160px;height:160px;bottom:-60px;right:-20px}
+
+    /* CTA */
+    .cta{max-width:880px;margin:0 auto;text-align:center;background:#fff;border:1px solid var(--line);border-radius:28px;padding:54px;box-shadow:var(--shadow-md)}
+    .cta h2{font-size:clamp(1.7rem,2.8vw,2.3rem);font-weight:800;margin-bottom:12px}
+    .cta p{color:var(--ink-soft);font-size:1.06rem;max-width:34em;margin:0 auto 26px}
+    .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+    /* FOOTER */
+    footer{background:#1f1722;color:#d9cdd4;padding:64px 0 30px;margin-top:20px}
+    .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;max-width:1200px;margin:0 auto;padding:0 28px}
+    footer .logo{color:#fff}
+    footer .logo img{filter:brightness(0) invert(1)}
+    footer h5{font-family:"Poppins";font-weight:700;color:#fff;font-size:1rem;margin-bottom:18px}
+    footer a{color:#c3b4bd;font-size:.92rem;display:block;margin-bottom:10px;transition:.15s}
+    footer a:hover{color:var(--rose-300)}
+    footer .intro{font-size:.95rem;color:#b8a9b2;margin:16px 0 18px;max-width:30em}
+    footer .socials a{background:rgba(255,255,255,.08);color:#e7d6df}
+    footer .socials a:hover{background:var(--rose-500);color:#fff}
+    .foot-bottom{border-top:1px solid rgba(255,255,255,.1);margin:46px auto 0;max-width:1200px;padding:22px 28px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.85rem;color:#9c8e96}
+
+    @media(max-width:980px){
+      .nav-collapse{position:fixed;top:0;right:0;bottom:0;width:min(320px,85vw);background:#fff;flex-direction:column;padding:80px 28px 28px;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);z-index:95;box-shadow:-10px 0 30px rgba(0,0,0,.1);justify-content:flex-start;gap:18px}
+      body.menu-open .nav-collapse{transform:translateX(0)}
+      body.menu-open .nav-backdrop{display:block}
+      body.menu-open{overflow:hidden}
+      body.menu-open .hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+      body.menu-open .hamburger span:nth-child(2){opacity:0}
+      body.menu-open .hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+      .menu{flex-direction:column;gap:4px;width:100%}
+      .menu a{display:block;padding:10px 0}
+      .nav-right{flex-direction:column;align-items:stretch;gap:18px;width:100%;margin-top:12px}
+      .nav-right .btn{width:100%;justify-content:center}
+      .hamburger{display:block;z-index:100}
+      .hero-grid{grid-template-columns:1fr;gap:40px}
+      .hero h1{font-size:2.2rem}
+      .float-tag.one{left:8px}
+      .float-tag.two{right:8px}
+      .val-grid{grid-template-columns:1fr;max-width:520px}
+      .stats{grid-template-columns:repeat(2,1fr)}
+      .profile{grid-template-columns:1fr;padding:30px}
+      .foot-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:560px){
+      .wrap{padding:0 20px}
+      section.block{padding:56px 0}
+      .stats{grid-template-columns:1fr 1fr}
+      .facts{grid-template-columns:1fr}
+      .foot-grid{grid-template-columns:1fr}
+      .profile,.cta{padding:26px}
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- ═══ HEADER ════════════════════════════════════════════════════════ -->
+<div class="nav-backdrop" id="navBackdrop"></div>
+<header>
+  <div class="nav">
+    <a href="/" class="logo">
+      <img src="/logo.png" alt="cadeauclic.com" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+      <span class="logo-fallback" style="display:none">🎁 cadeauclic.com</span>
+    </a>
+    <div class="nav-collapse" id="navDrawer">
+      <ul class="menu">
+        <li><a href="/cadeau-femme/">Cadeau femme</a></li>
+        <li><a href="/cadeau-homme/">Cadeau homme</a></li>
+        <li><a href="/creer-une-liste/">Créer une liste</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/parrainage/">Parrainage</a></li>
+        <li><a href="/a-propos/" class="active">À propos</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="socials">
+          <a href="https://www.facebook.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.13 8.44 9.88v-6.99H7.9v-2.89h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.89h-2.33V22c4.78-.75 8.44-4.88 8.44-9.94z"/></svg></a>
+          <a href="https://www.instagram.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84c-3.4 0-6.16 2.76-6.16 6.16S8.6 18.16 12 18.16s6.16-2.76 6.16-6.16S15.4 5.84 12 5.84zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm6.41-11.85c-.79 0-1.44.64-1.44 1.44s.64 1.44 1.44 1.44c.79 0 1.44-.64 1.44-1.44s-.64-1.44-1.44-1.44z"/></svg></a>
+          <a href="https://fr.pinterest.com/cadeaucliccom/" target="_blank" rel="nofollow noopener" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.5 2 2 6.5 2 12.04c0 4.24 2.64 7.86 6.36 9.32-.08-.79-.16-2 .03-2.86.18-.79 1.16-5.04 1.16-5.04s-.3-.6-.3-1.48c0-1.39.81-2.43 1.81-2.43.86 0 1.27.64 1.27 1.41 0 .86-.55 2.14-.83 3.34-.24 1 .5 1.81 1.49 1.81 1.79 0 3.16-1.89 3.16-4.6 0-2.41-1.73-4.09-4.21-4.09-2.86 0-4.54 2.15-4.54 4.37 0 .87.33 1.79.75 2.3.08.1.09.18.07.29-.08.31-.25 1-.28 1.14-.04.18-.15.22-.34.13-1.25-.58-2.03-2.4-2.03-3.86 0-3.14 2.28-6.03 6.59-6.03 3.46 0 6.15 2.47 6.15 5.76 0 3.44-2.17 6.21-5.18 6.21-1.01 0-1.97-.53-2.29-1.15 0 0-.5 1.91-.62 2.38-.23.88-.84 1.98-1.25 2.65A10 10 0 0 0 12.04 22c5.53 0 10.01-4.48 10.01-10 0-5.55-4.48-10-10.01-10z"/></svg></a>
+        </div>
+        <a href="/codes-promo/" class="btn">Bons plans →</a>
+      </div>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navDrawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">À propos de cadeauclic.com</span>
+      <h1>Salut, moi c'est <span class="pink">Sophie</span> 👋</h1>
+      <p class="lead"></p>
+      <div class="sign">Sophie Martin<small> · 37 ans</small></div>
+    </div>
+    <div class="hero-media">
+      <div class="blob"></div>
+      <div class="hero-photo">
+        <img src="https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/cadeauclic-com/public/author-photo.png?t=1781515402513" alt="Photo de Sophie Martin" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+        <div class="ph" style="display:none">📷 Photo de Sophie</div>
+      </div>
+      <div class="float-tag one"><span class="ic" style="background:var(--rose-500)">🎀</span>350+ cadeaux testés</div>
+      <div class="float-tag two"><span class="ic" style="background:var(--coral)">★</span>Avis 100% sincères</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STORY ═════════════════════════════════════════════════════════ -->
+<section class="block">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">L'histoire du site</span>
+      <h2>Pourquoi j'ai créé cadeauclic.com</h2>
+    </div>
+    <div class="story">
+      <p>Tout a commencé par un grand classique&nbsp;: <strong>la panique de la veille d'anniversaire.</strong> Tu sais, ce moment où tu ouvres quinze onglets, tu compares des dizaines de produits, et tu finis par offrir… encore une bougie parfumée. Ça m'est arrivé tellement de fois que j'ai eu envie de changer ça.</p>
+      <p>Alors je me suis mise à <strong>noter tout ce que j'offrais</strong>&nbsp;: ce qui avait fait mouche, ce qui était décevant, le rapport qualité-prix, les délais de livraison. Mes amies ont commencé à me demander mes idées avant chaque fête. Au bout d'un moment, j'ai pensé&nbsp;: autant en faire profiter tout le monde.</p>
+      <p class="pull">«&nbsp;Offrir un cadeau, ça devrait être un plaisir — pas une corvée de comparaison qui dure une heure.&nbsp;»</p>
+      <p>cadeauclic.com est né de cette idée toute simple&nbsp;: <strong>te faire gagner du temps</strong> et t'éviter les achats décevants. Ici, je partage des idées originales par occasion et par budget, mes vrais retours d'expérience, et les <strong>codes promo que je teste moi-même</strong> avant de te les donner.</p>
+      <p>Aujourd'hui, le site aide des milliers de personnes chaque mois à trouver LE cadeau. Et entre nous&nbsp;? Je prends toujours autant de plaisir à dénicher la petite pépite à laquelle personne n'avait pensé.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TIMELINE ══════════════════════════════════════════════════════ -->
+<section class="block tint">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Le parcours</span>
+      <h2>Les grandes étapes</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="yr">2021</div>
+        <h4>Un carnet d'idées qui déborde</h4>
+        <p>Je commence à répertorier sérieusement chaque cadeau offert et son effet. Mon entourage s'arrache mes recommandations.</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2022</div>
+        <h4>Naissance de cadeauclic.com</h4>
+        <p>Je lance le blog pour partager mes idées et mes avis sincères, sans jargon marketing. Les premiers lecteurs arrivent.</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2024</div>
+        <h4>Les bons plans &amp; codes promo</h4>
+        <p>J'ajoute une section dédiée aux réductions, que je vérifie à la main. Fini les codes expirés qui font perdre du temps&nbsp;!</p>
+      </div>
+      <div class="tl-item">
+        <div class="yr">2026</div>
+        <h4>Des milliers de cadeaux trouvés</h4>
+        <p>Le site accompagne aujourd'hui des milliers de lecteurs chaque mois pour chaque occasion, du baptême au mariage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VALUES ════════════════════════════════════════════════════════ -->
+<section class="block">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Ma ligne de conduite</span>
+      <h2>Ce en quoi je crois</h2>
+      <p>Trois principes simples qui guident chaque idée et chaque avis que tu trouves sur cadeauclic.com.</p>
+    </div>
+    <div class="val-grid">
+      <div class="val-card">
+        <div class="ic">🎯</div>
+        <h3>Des avis 100% sincères</h3>
+        <p>Je te dis ce qui m'a plu… et ce qui m'a déçue. Pas de complaisance&nbsp;: si un cadeau ne vaut pas le coup, je te le dis franchement.</p>
+      </div>
+      <div class="val-card">
+        <div class="ic">💸</div>
+        <h3>Le bon prix, toujours</h3>
+        <p>Faire plaisir sans se ruiner, c'est possible. J'indique systématiquement une tranche de budget et je traque les vraies bonnes affaires.</p>
+      </div>
+      <div class="val-card">
+        <div class="ic">✨</div>
+        <h3>De l'originalité avant tout</h3>
+        <p>Marre des cadeaux vus et revus&nbsp;? Moi aussi. Je cherche la pépite originale qui crée la surprise et fait briller les yeux.</p>
+      </div>
+    </div>
+    <div class="stats">
+      <div><div class="n">350+</div><small>cadeaux testés &amp; notés</small></div>
+      <div><div class="n">200+</div><small>boutiques partenaires</small></div>
+      <div><div class="n">5k+</div><small>lecteurs accompagnés / mois</small></div>
+      <div><div class="n">100%</div><small>codes vérifiés à la main</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ METHOD ════════════════════════════════════════════════════════ -->
+<section class="block tint">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Comment je travaille</span>
+      <h2>Ma méthode pour te recommander un cadeau</h2>
+      <p>Chaque idée passe par le même filtre avant d'arriver jusqu'à toi.</p>
+    </div>
+    <div class="method">
+      <div class="m-step"><span class="num">1</span><div><h4>Je teste ou j'enquête</h4><p>J'achète, j'offre, j'observe la réaction — ou je creuse les avis clients quand je ne peux pas tester moi-même.</p></div></div>
+      <div class="m-step"><span class="num">2</span><div><h4>Je note sur mes critères</h4><p>Originalité, rapport qualité-prix, effet de surprise, facilité à offrir&nbsp;: une note claire sur 5 pour chaque cadeau.</p></div></div>
+      <div class="m-step"><span class="num">3</span><div><h4>Je vérifie les codes promo</h4><p>Avant publication, je teste chaque code sur un vrai panier. S'il ne marche plus, il file en section «&nbsp;expirés&nbsp;».</p></div></div>
+      <div class="m-step"><span class="num">4</span><div><h4>Je te dis tout, même les défauts</h4><p>Budget, profil idéal du destinataire, points faibles et reco finale&nbsp;: tu as toutes les cartes en main pour décider.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROFILE ═══════════════════════════════════════════════════════ -->
+<section class="block">
+  <div class="wrap">
+    <div class="profile">
+      <div class="profile-media">
+        <div class="ring"></div>
+        <div class="profile-photo">
+          <img src="https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/cadeauclic-com/public/author-photo.png?t=1781515402513" alt="Photo de Sophie Martin" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="ph" style="display:none">📷 Photo de Sophie</div>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow">Faisons connaissance</span>
+        <h2>Sophie Martin, en quelques mots</h2>
+        <p>Passionnée de cadeaux personnalisés, d'anniversaires, de mariages et — évidemment — de bonnes affaires. Quand je ne cherche pas la perle rare, je suis à fond dans la vie de famille avec mon mari et mes deux loulous.</p>
+        <div class="chips">
+          <span class="chip">Cadeaux personnalisés</span>
+          <span class="chip">Anniversaires</span>
+          <span class="chip">Mariages</span>
+          <span class="chip">Bons plans &amp; promos</span>
+        </div>
+        <div class="facts">
+          <div class="fact"><span class="fi">🎂</span>37 ans</div>
+          <div class="fact"><span class="fi">👩‍👧‍👦</span>Maman de deux enfants</div>
+          <div class="fact"><span class="fi">💍</span>Mariée</div>
+          <div class="fact"><span class="fi">🛍️</span>+10 ans d'achats malins</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ QUOTE BAND ════════════════════════════════════════════════════ -->
+<section class="quote-band">
+  <div class="deco a"></div>
+  <div class="deco b"></div>
+  <div class="wrap">
+    <div class="mark">"</div>
+    <q>Le meilleur cadeau, ce n'est pas le plus cher. C'est celui qui montre qu'on a pensé à la personne.</q>
+    <div class="who">— Sophie Martin</div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══════════════════════════════════════════════════════════ -->
+<section class="block">
+  <div class="wrap">
+    <div class="cta">
+      <span class="eyebrow">On reste en contact&nbsp;?</span>
+      <h2>Une question, une idée de cadeau à partager&nbsp;?</h2>
+      <p>Écris-moi&nbsp;! J'adore échanger avec mes lecteurs et je lis tous les messages. Et pour ne rien rater des bons plans, suis-moi sur les réseaux.</p>
+      <div class="cta-btns">
+        <a href="/contact/" class="btn">M'écrire un message ✉️</a>
+        <a href="/blog/" class="btn btn-ghost">Lire le blog</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="logo">
+        <img src="/logo.png" alt="cadeauclic.com" onerror="this.style.display='none'">
+      </div>
+      <p class="intro">Bons plans, codes promo et idées cadeau, vérifiés à la main par Sophie. Pas de spam, que des affaires.</p>
+      <div class="socials">
+        <a href="https://www.facebook.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.13 8.44 9.88v-6.99H7.9v-2.89h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.89h-2.33V22c4.78-.75 8.44-4.88 8.44-9.94z"/></svg></a>
+        <a href="https://www.instagram.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84c-3.4 0-6.16 2.76-6.16 6.16S8.6 18.16 12 18.16s6.16-2.76 6.16-6.16S15.4 5.84 12 5.84zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm6.41-11.85c-.79 0-1.44.64-1.44 1.44s.64 1.44 1.44 1.44c.79 0 1.44-.64 1.44-1.44s-.64-1.44-1.44-1.44z"/></svg></a>
+        <a href="https://fr.pinterest.com/cadeaucliccom/" target="_blank" rel="nofollow noopener" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.5 2 2 6.5 2 12.04c0 4.24 2.64 7.86 6.36 9.32-.08-.79-.16-2 .03-2.86.18-.79 1.16-5.04 1.16-5.04s-.3-.6-.3-1.48c0-1.39.81-2.43 1.81-2.43.86 0 1.27.64 1.27 1.41 0 .86-.55 2.14-.83 3.34-.24 1 .5 1.81 1.49 1.81 1.79 0 3.16-1.89 3.16-4.6 0-2.41-1.73-4.09-4.21-4.09-2.86 0-4.54 2.15-4.54 4.37 0 .87.33 1.79.75 2.3.08.1.09.18.07.29-.08.31-.25 1-.28 1.14-.04.18-.15.22-.34.13-1.25-.58-2.03-2.4-2.03-3.86 0-3.14 2.28-6.03 6.59-6.03 3.46 0 6.15 2.47 6.15 5.76 0 3.44-2.17 6.21-5.18 6.21-1.01 0-1.97-.53-2.29-1.15 0 0-.5 1.91-.62 2.38-.23.88-.84 1.98-1.25 2.65A10 10 0 0 0 12.04 22c5.53 0 10.01-4.48 10.01-10 0-5.55-4.48-10-10.01-10z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h5>cadeauclic.com</h5>
+      <a href="/codes-promo/">Codes promo</a>
+      <a href="/blog/">Blog</a>
+      <a href="/parrainage/">Parrainage</a>
+      <a href="/a-propos/">À propos</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <div>
+      <h5>Légal</h5>
+      <a href="/mentions-legales">Mentions légales</a>
+      <a href="/politique-confidentialite">Politique de confidentialité</a>
+      <a href="/cookies">Cookies</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 cadeauclic.com — Tous droits réservés</span>
+    <span>Fait à Paris avec 🎀</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const ham = document.getElementById('hamburger');
+  const backdrop = document.getElementById('navBackdrop');
+  const body = document.body;
+  if (!ham) return;
+  function toggle(open) {
+    body.classList.toggle('menu-open', open);
+    ham.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  ham.addEventListener('click', () => toggle(!body.classList.contains('menu-open')));
+  backdrop.addEventListener('click', () => toggle(false));
+})();
+</script>
+
+</body>
+</html>
