@@ -14,8 +14,10 @@ link_anchors:
 - text: comment habiller bébé à la sortie de la maternité en hiver
   max: 5
 related_posts:
+- liste-de-naissance-autour-de-bebe
+- liste-de-naissance-aubert
 - cagnotte-de-naissance-en-ligne-le-cadeau-parfait
-- quels-sont-les-differents-types-de-baignoires-pour-bebe
+- liste-de-naissance-listedenaissance-fr
 ---
 <h2>Mes indispensables pour la première sortie de bébé</h2>
 

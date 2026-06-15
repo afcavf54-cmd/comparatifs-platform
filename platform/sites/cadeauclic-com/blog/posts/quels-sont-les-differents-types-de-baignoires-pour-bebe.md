@@ -14,7 +14,9 @@ link_anchors:
   max: 5
 featured_image: /blog/quels-sont-les-differents-types-de-baignoires-pour-bebe.jpg
 related_posts:
+- liste-de-naissance-amazon
 - cagnotte-de-naissance-en-ligne-le-cadeau-parfait
+- liste-de-naissance-aubert
 - comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver
 ---
 <h2>Ma sélection des meilleures baignoires bébé après 2 ans de tests</h2>

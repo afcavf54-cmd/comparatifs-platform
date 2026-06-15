@@ -17,6 +17,8 @@ link_anchors:
 related_posts:
 - comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver
 - quels-sont-les-differents-types-de-baignoires-pour-bebe
+- quel-site-pour-faire-une-liste-de-naissance
+- liste-de-naissance-berceau-magique
 ---
 <h2>Leetchi pour organiser une cagnotte de naissance : mon retour d'expérience</h2>
 
