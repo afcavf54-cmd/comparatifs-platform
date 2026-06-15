@@ -14,6 +14,7 @@ link_anchors:
 - text: le tarif mensuel du CRM SaaS CloudLead Manager
   max: 5
 related_posts:
+- 7544-a-qui-profite-le-crm-smartlead-evolution
 - 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
 - 4820-nettoyer-un-export-csv-de-donnees-salestrack-crm
 - 2160-6-elements-qui-font-grimper-le-cout-d-implementation-de-bizcore-advanced

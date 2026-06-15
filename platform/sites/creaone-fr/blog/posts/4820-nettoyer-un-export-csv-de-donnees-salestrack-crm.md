@@ -15,8 +15,9 @@ link_anchors:
   max: 5
 related_posts:
 - 2160-6-elements-qui-font-grimper-le-cout-d-implementation-de-bizcore-advanced
-- 9219-5-points-a-verifier-sur-le-tarif-mensuel-de-cloudlead-manager
+- 7544-a-qui-profite-le-crm-smartlead-evolution
 - 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
+- 9219-5-points-a-verifier-sur-le-tarif-mensuel-de-cloudlead-manager
 ---
 <h2>L'export CSV SalesTrack : un format pratique mais imparfait</h2>
 
