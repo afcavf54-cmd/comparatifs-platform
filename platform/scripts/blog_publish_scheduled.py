@@ -480,6 +480,50 @@ def _normalize_title(t: str) -> str:
     return " ".join(str(t or "").lower().split())
 
 
+# ─── Substitution de placeholders {Month}, {year}, etc. ──────────────────
+# Les titres de la sheet contiennent souvent des placeholders évolutifs
+# comme "Parrainage Qonto {Month} {year} : 160€ offerts". Ces placeholders
+# doivent être substitués AVANT :
+#   1. Le passage à Claude (sinon Claude génère du texte avec {Month})
+#   2. L'écriture du .md (sinon la sidebar/listing affiche {Month} brut)
+# La date de référence est `pub_dt` (date de publication de l'article).
+
+MOIS_FR_FULL = [
+    "janvier", "février", "mars", "avril", "mai", "juin",
+    "juillet", "août", "septembre", "octobre", "novembre", "décembre"
+]
+
+
+def substitute_placeholders(text: str, dt: datetime) -> str:
+    """Substitue les placeholders {Month}, {month}, {year}, {YEAR}, etc.
+    par la valeur correspondant à la date `dt`. Retourne le texte modifié.
+
+    Placeholders supportés (case-sensitive) :
+      - {year}  / {YEAR}   → "2026"
+      - {Month}            → "Juin" (capitalisé)
+      - {month}            → "juin" (lowercase)
+      - {MONTH}            → "JUIN" (uppercase)
+      - {month_num}        → "06" (zero-padded)
+    """
+    if not text or "{" not in text:
+        return text
+    mois = MOIS_FR_FULL[dt.month - 1]
+    repl = {
+        "{year}": str(dt.year),
+        "{YEAR}": str(dt.year),
+        "{Year}": str(dt.year),
+        "{Month}": mois.capitalize(),
+        "{month}": mois,
+        "{MONTH}": mois.upper(),
+        "{month_num}": f"{dt.month:02d}",
+    }
+    out = text
+    for k, v in repl.items():
+        if k in out:
+            out = out.replace(k, v)
+    return out
+
+
 def _save_processed(processed_file: Path, processed: list) -> None:
     """Save incrémental du tracker `schedule_processed.json`.
 
@@ -665,6 +709,12 @@ def process_site(site_id: str, site_dir: Path, config: dict,
         if key in processed_set:
             continue
 
+        # ── Substituer les placeholders {Month}, {year}, etc. ──────────
+        # Effectué APRÈS calcul de pub_dt (pour avoir la date de référence)
+        # mais AVANT toute autre opération sur title (slugify, dédup, prompt).
+        # Du coup le titre est cohérent partout : .md, sidebar, OG, Claude.
+        title = substitute_placeholders(title, pub_dt)
+
         title_normalized = " ".join(title.lower().split())
         if title_normalized in existing_titles_normalized:
             print(f"   ⏭ '{title[:50]}' déjà publié (titre existant) — ajout au registre")
@@ -694,7 +744,7 @@ def process_site(site_id: str, site_dir: Path, config: dict,
         mots_imposes = _parse_mots_imposes_csv(mots_imposes_raw)
 
         categorie = row.get("categorie", "").strip()
-        prompt_custom = row.get("prompt_custom", "").strip()
+        prompt_custom = substitute_placeholders(row.get("prompt_custom", "").strip(), pub_dt)
         nb_link = sum(1 for m in mots_imposes if m.get('url'))
         mots_log = ""
         if mots_imposes:
@@ -735,7 +785,7 @@ def process_site(site_id: str, site_dir: Path, config: dict,
             else:
                 print("⚠ (sans image)")
 
-        meta_desc_raw = row.get("meta_description", "").strip()
+        meta_desc_raw = substitute_placeholders(row.get("meta_description", "").strip(), pub_dt)
         if not meta_desc_raw:
             print(f"   ✨ Génération meta description...", end=" ", flush=True)
             meta_desc_raw = generate_meta_description(title, html)
@@ -746,7 +796,7 @@ def process_site(site_id: str, site_dir: Path, config: dict,
             "slug": slug,
             "date": pub_dt.replace(microsecond=0).isoformat(),
             "categorie": categorie,
-            "meta_title": row.get("meta_title", "").strip() or title,
+            "meta_title": substitute_placeholders(row.get("meta_title", "").strip(), pub_dt) or title,
             "meta_description": meta_desc_raw,
             "min_words": min_words,
             "status": "published",
