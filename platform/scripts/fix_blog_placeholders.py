@@ -132,18 +132,24 @@ def process_site(site_id: str, dry_run: bool = False) -> int:
 
         # Date de référence : celle du frontmatter, ou fallback "aujourd'hui"
         # (peu probable d'avoir un .md sans date côté blog cron).
-        date_raw = fm.get("date") or ""
+        date_raw = fm.get("date")
         dt = None
-        if date_raw:
+        if isinstance(date_raw, datetime):
+            # yaml.safe_load a déjà parsé la date ISO en datetime — on l'utilise direct
+            dt = date_raw
+        elif isinstance(date_raw, str) and date_raw:
             # date peut être ISO avec tz : 2026-06-15T09:00:00+02:00
-            for fmt in ("%Y-%m-%dT%H:%M:%S%z", "%Y-%m-%dT%H:%M:%S", "%Y-%m-%d"):
+            # On strippe la timezone pour le strptime (qui gère mal les fuseaux),
+            # ce qui est OK car on n'utilise que year/month dans la substitution.
+            clean = date_raw.split("+")[0].split("Z")[0].strip()
+            for fmt in ("%Y-%m-%dT%H:%M:%S", "%Y-%m-%d %H:%M:%S", "%Y-%m-%d"):
                 try:
-                    dt = datetime.strptime(date_raw.split("+")[0].split("Z")[0], fmt.replace("%z", ""))
+                    dt = datetime.strptime(clean, fmt)
                     break
                 except ValueError:
                     continue
         if dt is None:
-            print(f"  ⚠ Date introuvable dans {md_path.name}, fallback today")
+            print(f"  ⚠ Date introuvable/inexploitable dans {md_path.name} (raw={date_raw!r}), fallback today")
             dt = datetime.now()
 
         # Substituer dans frontmatter et body
