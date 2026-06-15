@@ -4,15 +4,21 @@ slug: 5508-ruptures-et-surstocks-les-pieges-sous-inventory-control-smart
 date: '2026-06-15T18:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Gérer ses stocks avec Inventory Control Smart : les erreurs à éviter'
-meta_description: 'Ruptures de stock ou surstocks avec Inventory Control Smart : découvrez les pièges de paramétrage qui coûtent cher et comment les éviter avant qu''il ne soit trop…'
+meta_description: 'Ruptures de stock ou surstocks avec Inventory Control Smart : découvrez
+  les pièges de paramétrage qui coûtent cher et comment les éviter avant qu''il ne
+  soit trop…'
 min_words: 990
 status: published
 featured_image: /blog/5508-ruptures-et-surstocks-les-pieges-sous-inventory-control-smart.jpg
 link_anchors:
 - text: comment gérer ses stocks avec Inventory Control Smart
   max: 5
+related_posts:
+- 7027-integration-de-l-erp-flexmanage-plus-les-pieges-techniques
+- 4746-projet-erp-smartchain-360-les-pieges-a-anticiper
+- 7911-projet-erp-bizflow-evolution-en-pme-les-pieges
+- 4204-migrer-vers-l-erp-bizflow-v8-pro-les-pieges
 ---
-
 <p>J'ai failli perdre un client à cause d'une rupture de stock que mon outil n'avait pas anticipée. On avait les données, on avait le logiciel, on avait même les alertes configurées. Et pourtant. La commande est passée, le stock était à zéro, et le client a attendu trois semaines. Pas de chance ? Non. Un mauvais paramétrage d'Inventory Control Smart.</p>
 
 <p>Je vais te dire ce que j'ai appris à la dure sur cet outil, parce que je vois beaucoup de fondateurs et de responsables opé tomber dans les mêmes pièges. Deux en particulier : les ruptures qu'on ne voit pas venir, et les surstocks qu'on accumule sans s'en rendre compte.</p>
