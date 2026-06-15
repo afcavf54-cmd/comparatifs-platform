@@ -14,8 +14,9 @@ link_anchors:
 - text: le paramétrage de la facturation récurrente Billmatic Cyclic
   max: 5
 related_posts:
-- 2211-faire-ses-factures-en-ligne-avec-digitalise-tes-factures
 - 5909-faire-ses-factures-en-ligne-avec-simplifie-ta-compta
+- 2211-faire-ses-factures-en-ligne-avec-digitalise-tes-factures
+- 6452-les-modeles-de-factures-digitalise-tes-factures-au-banc-d-essai
 ---
 <h2>Pourquoi j'ai choisi Billmatic Cyclic pour automatiser ma facturation ?</h2>
 
