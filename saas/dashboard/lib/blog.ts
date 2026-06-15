@@ -6,7 +6,11 @@
  *   title: "Mon titre"
  *   slug: "1234-mon-titre"
  *   date: "2026-05-15T09:00:00"
- *   categorie: "Paie"
+ *   categorie: "Paie"                        ← PRINCIPALE (utilisée pour breadcrumb, URL canonique, SEO)
+ *   categories:                              ← LISTE COMPLÈTE (utilisée pour filtres et listings multi-cat)
+ *   - "Paie"
+ *   - "Compta"
+ *   - "Gestion"
  *   meta_title: "..."
  *   meta_description: "..."
  *   featured_image: "/blog/.../cover.jpg"
@@ -17,6 +21,11 @@
  *   ---
  *
  *   # Contenu markdown
+ *
+ * Règle invariante : `categorie` === `categories[0]`. Écrite automatiquement par
+ * les routes API au save, à partir de la première chip de la multi-sélection.
+ * Les articles legacy qui n'ont QUE `categorie` continuent de fonctionner :
+ * le frontend les charge en faisant `categories = [categorie]` au load.
  */
 
 export interface BlogPostFrontmatter {
@@ -24,7 +33,8 @@ export interface BlogPostFrontmatter {
   slug: string
   date: string                        // ISO datetime
   updated?: string
-  categorie?: string
+  categorie?: string                  // catégorie principale (= categories[0])
+  categories?: string[]               // liste complète des catégories
   meta_title?: string
   meta_description?: string
   featured_image?: string
@@ -155,7 +165,7 @@ function unquote(s: string): string {
 export function serializePost(post: BlogPost): string {
   const fmLines: string[] = []
   const ordered: (keyof BlogPostFrontmatter)[] = [
-    'title', 'slug', 'date', 'updated', 'categorie',
+    'title', 'slug', 'date', 'updated', 'categorie', 'categories',
     'meta_title', 'meta_description', 'featured_image',
     'status', 'min_words', 'related_posts', 'link_anchors',
   ]
