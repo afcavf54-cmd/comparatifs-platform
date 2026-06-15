@@ -1,0 +1,78 @@
+name: Import codes promo (Sheet)
+
+on:
+  workflow_dispatch:
+    inputs:
+      site_id:
+        description: 'Site ID (ex: cadeauclic-com)'
+        required: true
+        type: string
+        default: 'cadeauclic-com'
+  # Décommente ces 2 lignes pour activer un import automatique quotidien à 06:00 UTC :
+  # schedule:
+  #   - cron: '0 6 * * *'
+
+permissions:
+  contents: write   # nécessaire pour commit & push
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Run import script
+        run: |
+          # Mode manuel : on prend l'input. Mode cron : on importe pour TOUS les sites
+          # qui ont une clé `codes_promo_sheet_url` dans leur config.yaml.
+          if [ -n "${{ inputs.site_id }}" ]; then
+            echo "→ Import single site : ${{ inputs.site_id }}"
+            python3 platform/scripts/codes_promo_import_sheet.py "${{ inputs.site_id }}"
+          else
+            echo "→ Mode cron : scan de tous les sites"
+            for site_dir in platform/sites/*/; do
+              site_id=$(basename "$site_dir")
+              # Skip le dossier _shared
+              if [ "$site_id" = "_shared" ]; then continue; fi
+              # Skip si pas de config.yaml
+              if [ ! -f "$site_dir/config.yaml" ]; then continue; fi
+              # Skip si pas de clé codes_promo_sheet_url
+              if ! grep -q '^codes_promo_sheet_url:' "$site_dir/config.yaml"; then continue; fi
+              echo "  ── $site_id"
+              python3 platform/scripts/codes_promo_import_sheet.py "$site_id" || echo "    (échec, on continue)"
+            done
+          fi
+
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Ajouter uniquement les dossiers codes_promo/ (pas tout le repo)
+          git add 'platform/sites/*/codes_promo/' 2>/dev/null || true
+
+          # S'il n'y a rien à commit, on sort proprement
+          if git diff --cached --quiet; then
+            echo "✓ Aucune nouvelle marque importée (rien à pousser)"
+            exit 0
+          fi
+
+          # Compte des nouveaux fichiers pour le message de commit
+          N_NEW=$(git diff --cached --name-only --diff-filter=A | grep -c '\.md$' || true)
+          N_MOD=$(git diff --cached --name-only --diff-filter=M | grep -c '\.md$' || true)
+
+          git commit -m "chore(codes-promo): import sheet — ${N_NEW} new, ${N_MOD} updated"
+          git push
+          echo "✓ Push effectué : ${N_NEW} nouvelles marques, ${N_MOD} mises à jour"
