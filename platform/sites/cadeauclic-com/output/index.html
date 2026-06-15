@@ -1,544 +1,545 @@
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<title>cadeauclic.com | Comparatifs 2026</title>
-<meta name="description" content="Comparatifs cadeauclic.com 2026">
-<link rel="canonical" href="https://www.cadeauclic.com/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="cadeauclic.com | Comparatifs 2026">
-<meta property="og:description" content="">
-<meta property="og:url" content="https://www.cadeauclic.com/">
-<style>
-:root {
-  --accent: #1B4FD8;
-  --accent2: #ff8080;
-  --bg: #F4F6FB;
-  --ink: #0F1A2E;
-  --ink2: #4A5568;
-  --ink3: #8B9CB0;
-  --surface: #FFFFFF;
-  --border: rgba(15, 26, 46, 0.08);
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-body {
-  font-family: Outfit;
-  background: var(--bg);
-  color: var(--ink);
-  line-height: 1.65;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-/* ── Hero ─────────────────────────────────────────────────────── */
-.hero {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 64px 5vw 48px;
-  text-align: left;
-}
-.hero h1 {
-  font-family: DM Serif Display;
-  font-size: clamp(36px, 6vw, 64px);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
-  color: var(--ink);
-}
-.hero h1 .accent { color: var(--accent); }
-.hero .tagline {
-  font-size: clamp(16px, 2vw, 20px);
-  color: var(--ink2);
-  max-width: 720px;
-  line-height: 1.55;
-}
+  <title>cadeauclic.com | Comparatifs 2026</title>
+  <meta name="description" content="">
+  <link rel="canonical" href="https://www.cadeauclic.com/">
 
-/* ── Section articles récents ─────────────────────────────────── */
-.section-articles {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 24px 5vw 64px;
-}
-.section-title {
-  font-family: DM Serif Display;
-  font-size: clamp(24px, 3.5vw, 32px);
-  font-weight: 400;
-  margin-bottom: 8px;
-  color: var(--ink);
-}
-.section-subtitle {
-  font-size: 14px;
-  color: var(--ink3);
-  margin-bottom: 32px;
-}
-.articles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 28px;
-}
-.article-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  overflow: hidden;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-  display: flex;
-  flex-direction: column;
-}
-.article-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(15, 26, 46, 0.08);
-}
-.article-card a.card-link {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-.article-card .image {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-  position: relative;
-  overflow: hidden;
-}
-.article-card .image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.article-card .content {
-  padding: 20px 22px 22px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-.article-card .meta {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  font-size: 12px;
-  color: var(--ink3);
-  margin-bottom: 10px;
-}
-.article-card .meta .cat {
-  background: rgba(0, 0, 0, 0.04);
-  padding: 3px 10px;
-  border-radius: 20px;
-  color: var(--accent);
-  font-weight: 600;
-}
-.article-card h3 {
-  font-family: DM Serif Display;
-  font-size: 19px;
-  font-weight: 400;
-  line-height: 1.3;
-  margin-bottom: 10px;
-  color: var(--ink);
-}
-.article-card .excerpt {
-  font-size: 14px;
-  color: var(--ink2);
-  line-height: 1.55;
-  flex: 1;
-}
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="cadeauclic.com | Comparatifs 2026">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.cadeauclic.com/">
+  <meta property="og:locale" content="fr_FR">
 
-/* ── Section catégories ───────────────────────────────────────── */
-.section-categories {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 5vw 80px;
-}
-.cats-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.cat-pill {
-  padding: 8px 18px;
-  border-radius: 30px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--ink);
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.15s;
-}
-.cat-pill:hover {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-  text-decoration: none;
-}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="cadeauclic.com | Comparatifs 2026">
+  <meta name="twitter:description" content="">
 
-/* ── CTA voir tous les articles ───────────────────────────────── */
-.all-articles-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 28px;
-  background: var(--ink);
-  color: #fff;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 600;
-  transition: background 0.15s;
-}
-.all-articles-cta:hover {
-  background: var(--accent);
-  text-decoration: none;
-  color: #fff;
-}
+  <link rel="icon" href="/favicon.ico">
 
-/* ── Empty state ──────────────────────────────────────────────── */
-.empty-state {
-  background: var(--surface);
-  border: 1px dashed var(--border);
-  border-radius: 14px;
-  padding: 48px 24px;
-  text-align: center;
-  color: var(--ink3);
-}
 
-@media (max-width: 640px) {
-  .hero { padding: 40px 5vw 24px; }
-  .section-articles { padding: 16px 5vw 40px; }
-  .articles-grid { grid-template-columns: 1fr; gap: 20px; }
-}
-</style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --rose-50:#fff5f8;
+      --rose-100:#ffe7ef;
+      --rose-200:#ffd0e0;
+      --rose-300:#ffb1cc;
+      --rose-500:#ff5b8a;
+      --rose-600:#ec3f76;
+      --rose-700:#cf2c61;
+      --coral:#ff7a59;
+      --ink:#251d27;
+      --ink-soft:#5d5360;
+      --line:#f0e3e9;
+      --white:#ffffff;
+      --grad:linear-gradient(100deg,var(--rose-500),var(--coral));
+      --shadow-sm:0 4px 18px rgba(207,44,97,.08);
+      --shadow-md:0 18px 50px rgba(207,44,97,.13);
+      --r:22px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"Nunito Sans",system-ui,sans-serif;
+      color:var(--ink);
+      background:#fff;
+      line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit;text-decoration:none}
+    h1,h2,h3,h4,h5{font-family:"Poppins",sans-serif;line-height:1.2;color:var(--ink)}
+    img{max-width:100%;display:block}
+
+    .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+
+    /* ---------- BUTTONS ---------- */
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--grad);color:#fff;font-family:"Poppins";font-weight:700;
+      padding:14px 26px;border-radius:50px;font-size:.97rem;
+      box-shadow:var(--shadow-sm);transition:transform .15s,box-shadow .15s;
+      border:0;cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-md)}
+    .btn-ghost{background:transparent;color:var(--rose-600);box-shadow:none;border:2px solid var(--rose-200)}
+    .btn-ghost:hover{background:var(--rose-50);border-color:var(--rose-300)}
+
+    .eyebrow{
+      font-family:"Poppins";font-weight:700;
+      font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
+      color:var(--rose-600);
+      background:var(--rose-50);
+      padding:7px 14px;border-radius:50px;
+      display:inline-block;margin-bottom:18px;
+    }
+
+    /* ---------- HEADER ---------- */
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;gap:24px}
+    .logo{display:flex;align-items:center;gap:6px;font-family:"Poppins";font-weight:800;font-size:1.35rem;color:var(--ink)}
+    .logo .mark{font-size:1.55rem}
+    .logo span{color:var(--rose-600)}
+    .menu{display:flex;gap:30px}
+    .menu a{font-family:"Poppins";font-weight:600;color:var(--ink-soft);font-size:.95rem;transition:.15s}
+    .menu a:hover{color:var(--rose-600)}
+    .nav-right{display:flex;align-items:center;gap:18px}
+    .socials{display:flex;gap:10px}
+    .socials a{width:36px;height:36px;border-radius:50%;background:var(--rose-50);display:inline-flex;align-items:center;justify-content:center;color:var(--rose-600);transition:.15s}
+    .socials a:hover{background:var(--rose-100)}
+    .socials svg{width:16px;height:16px}
+
+    /* ---------- HERO ---------- */
+    .hero{padding:80px 0 70px;background:linear-gradient(180deg,var(--rose-50) 0%,#fff 80%);overflow:hidden;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center;position:relative}
+    .hero-copy h1{font-size:clamp(2.2rem,4.2vw,3.6rem);font-weight:800;letter-spacing:-.02em;margin:6px 0 22px;text-wrap:balance}
+    .hero-copy h1 .pink{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero-copy .lead{font-size:1.12rem;color:var(--ink-soft);max-width:36em;margin-bottom:30px}
+    .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:38px}
+    .hero-stats{display:grid;grid-template-columns:repeat(3,auto);gap:38px;padding-top:24px;border-top:1px solid var(--line);max-width:430px}
+    .hero-stats .num{font-family:"Poppins";font-weight:800;font-size:1.55rem;color:var(--rose-600);line-height:1}
+    .hero-stats small{font-size:.82rem;color:var(--ink-soft);margin-top:4px;display:block}
+
+    .hero-media{position:relative;aspect-ratio:1/1.05;max-width:520px;justify-self:center}
+    .hero-media .blob{position:absolute;inset:8% -4% 0 -4%;background:var(--grad);border-radius:46% 54% 38% 62% / 48% 42% 58% 52%;opacity:.18;filter:blur(10px);z-index:0}
+    .hero-figure{position:relative;width:100%;height:100%;border-radius:26px;overflow:hidden;background:linear-gradient(135deg,var(--rose-200),var(--coral));box-shadow:var(--shadow-md);display:flex;align-items:center;justify-content:center;z-index:1}
+    .hero-figure .gift{font-size:8rem;filter:drop-shadow(0 16px 30px rgba(207,44,97,.25))}
+    .float-tag{
+      position:absolute;background:#fff;border-radius:50px;padding:10px 16px 10px 10px;
+      font-family:"Poppins";font-weight:700;font-size:.86rem;color:var(--ink);
+      box-shadow:var(--shadow-md);display:flex;align-items:center;gap:9px;z-index:2;
+    }
+    .float-tag .ic{width:24px;height:24px;border-radius:50%;color:#fff;font-size:.75rem;display:inline-flex;align-items:center;justify-content:center;font-weight:700}
+    .float-tag.one{top:6%;left:-8%}
+    .float-tag.two{bottom:8%;right:-8%}
+
+    /* ---------- FEATURE STRIP ---------- */
+    .strip{margin-top:-30px;position:relative;z-index:5}
+    .strip-card{
+      background:#fff;border-radius:var(--r);border:1px solid var(--line);
+      box-shadow:var(--shadow-md);
+      display:grid;grid-template-columns:repeat(3,1fr);overflow:hidden;
+    }
+    .strip-item{padding:28px 30px;display:flex;align-items:center;gap:16px}
+    .strip-item+.strip-item{border-left:1px solid var(--line)}
+    .strip-item .ic{font-size:1.8rem;flex:none}
+    .strip-item h4{font-family:"Poppins";font-weight:700;font-size:1rem;margin-bottom:3px}
+    .strip-item p{font-size:.9rem;color:var(--ink-soft);line-height:1.4}
+
+    /* ---------- SECTION BLOCKS ---------- */
+    section.block{padding:90px 0}
+    section.block.tint{background:var(--rose-50)}
+    .head{text-align:center;max-width:680px;margin:0 auto 50px}
+    .head h2{font-size:clamp(1.9rem,3.2vw,2.7rem);font-weight:800;letter-spacing:-.01em;margin-bottom:14px;text-wrap:balance}
+    .head p{color:var(--ink-soft);font-size:1.05rem}
+
+    /* ---------- PROMO CODES ---------- */
+    .promo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+    .promo{
+      background:#fff;border:1px solid var(--line);border-radius:var(--r);
+      padding:30px 26px;text-align:center;box-shadow:var(--shadow-sm);
+      display:flex;flex-direction:column;align-items:center;gap:8px;
+      transition:transform .18s,box-shadow .18s;
+    }
+    .promo:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+    .promo .brand{font-family:"Poppins";font-weight:700;color:var(--ink);font-size:1.05rem;background:var(--rose-50);padding:8px 16px;border-radius:50px;margin-bottom:10px}
+    .promo .deal{font-family:"Poppins";font-weight:800;font-size:1.55rem;color:var(--rose-600);line-height:1.1}
+    .promo small{color:var(--ink-soft);font-size:.86rem}
+    .promo .code{
+      margin-top:14px;font-family:"Poppins";font-weight:700;letter-spacing:.05em;
+      background:var(--grad);color:#fff;padding:11px 20px;border-radius:12px;
+      font-size:.92rem;width:100%;
+    }
+
+    /* ---------- ARTICLES ---------- */
+    .art-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+    .card{
+      background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+      display:flex;flex-direction:column;box-shadow:var(--shadow-sm);
+      transition:transform .18s,box-shadow .18s;
+    }
+    .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+    .card .thumb{width:100%;height:210px;background:linear-gradient(135deg,var(--rose-100),var(--rose-200));display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--rose-600)}
+    .card .thumb img{width:100%;height:100%;object-fit:cover}
+    .card .body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:12px;flex:1}
+    .cat{align-self:flex-start;font-family:"Poppins";font-weight:700;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rose-600);background:var(--rose-50);padding:6px 12px;border-radius:50px}
+    .card h3{font-size:1.18rem;font-weight:700;line-height:1.25;text-wrap:pretty}
+    .card p{font-size:.93rem;color:var(--ink-soft);flex:1}
+    .card .more{font-family:"Poppins";font-weight:600;color:var(--rose-600);font-size:.9rem;display:inline-flex;align-items:center;gap:6px}
+    .center-btn{text-align:center;margin-top:50px}
+
+    /* ---------- AUTHOR ---------- */
+    .author{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:32px;padding:46px;box-shadow:var(--shadow-md)}
+    .author-media{position:relative}
+    .author-media .ring{position:absolute;inset:-14px;border-radius:34px;background:var(--grad);opacity:.16}
+    .author-media .photo{position:relative;width:100%;height:420px;border-radius:24px;overflow:hidden;background:linear-gradient(135deg,var(--rose-200),var(--coral));display:flex;align-items:center;justify-content:center;font-size:5rem;color:#fff}
+    .author-media .photo img{width:100%;height:100%;object-fit:cover}
+    .author-badge{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);background:#fff;box-shadow:var(--shadow-md);border-radius:50px;padding:10px 20px;font-family:"Poppins";font-weight:700;color:var(--rose-600);font-size:.9rem;white-space:nowrap}
+    .author h2{font-size:clamp(1.9rem,3vw,2.5rem);font-weight:800;margin:14px 0 18px}
+    .author p{color:var(--ink-soft);margin-bottom:14px;font-size:1.04rem}
+    .author .sign{font-family:"Poppins";font-weight:700;color:var(--ink);font-size:1.05rem;margin-top:10px}
+    .author .sign small{display:block;font-weight:500;color:var(--ink-soft);font-size:.85rem}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 22px}
+    .chip{font-family:"Poppins";font-weight:600;font-size:.82rem;background:var(--rose-50);color:var(--rose-700);padding:8px 15px;border-radius:50px}
+
+    /* ---------- TESTIMONIALS ---------- */
+    .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+    .test{background:#fff;border-radius:20px;padding:30px;box-shadow:var(--shadow-sm);border:1px solid var(--line)}
+    .stars{color:#ffb020;font-size:1rem;letter-spacing:2px;margin-bottom:14px}
+    .test q{display:block;font-size:1rem;color:var(--ink);quotes:none}
+    .test .who{display:flex;align-items:center;gap:12px;margin-top:18px}
+    .test .who .avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--rose-200),var(--coral));display:inline-flex;align-items:center;justify-content:center;color:#fff;font-family:"Poppins";font-weight:700;font-size:1rem;flex:none}
+    .test .who b{font-family:"Poppins";font-weight:700;font-size:.95rem;display:block}
+    .test .who small{color:var(--ink-soft);font-size:.82rem}
+
+    /* ---------- CTA BANNER ---------- */
+    .cta-band{background:var(--grad);border-radius:32px;padding:60px;text-align:center;color:#fff;position:relative;overflow:hidden}
+    .cta-band h2{font-size:clamp(1.9rem,3.2vw,2.6rem);font-weight:800;margin-bottom:14px;color:#fff}
+    .cta-band p{font-size:1.1rem;opacity:.95;max-width:34em;margin:0 auto 28px}
+    .cta-band .btn{background:#fff;color:var(--rose-600);box-shadow:0 12px 30px rgba(0,0,0,.16)}
+    .cta-band .deco{position:absolute;border-radius:50%;background:rgba(255,255,255,.14)}
+    .cta-band .deco.a{width:240px;height:240px;top:-90px;left:-60px}
+    .cta-band .deco.b{width:180px;height:180px;bottom:-70px;right:-30px}
+
+    /* ---------- FOOTER ---------- */
+    footer{background:#1f1722;color:#d9cdd4;padding:64px 0 30px;margin-top:20px}
+    .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px}
+    footer .logo{color:#fff}
+    footer h5{font-family:"Poppins";font-weight:700;color:#fff;font-size:1rem;margin-bottom:18px}
+    footer a{color:#c3b4bd;font-size:.92rem;display:block;margin-bottom:10px;transition:.15s}
+    footer a:hover{color:var(--rose-300)}
+    footer .intro{font-size:.95rem;color:#b8a9b2;margin:16px 0 18px;max-width:30em}
+    .foot-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:46px;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.85rem;color:#9c8e96}
+
+    /* ---------- RESPONSIVE ---------- */
+    @media(max-width:980px){
+      .menu{display:none}
+      .hero-grid{grid-template-columns:1fr;gap:36px}
+      .hero-media{max-width:380px}
+      .strip-card{grid-template-columns:1fr}
+      .strip-item+.strip-item{border-left:none;border-top:1px solid var(--line)}
+      .promo-grid{grid-template-columns:repeat(2,1fr)}
+      .art-grid,.test-grid{grid-template-columns:1fr 1fr}
+      .author{grid-template-columns:1fr;padding:30px}
+      .author-media .photo{height:340px}
+      .foot-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:620px){
+      .promo-grid,.art-grid,.test-grid,.foot-grid{grid-template-columns:1fr}
+      .wrap{padding:0 20px}
+      section.block{padding:60px 0}
+      .hero{padding:50px 0 40px}
+      .cta-band{padding:40px 26px}
+      .float-tag.one{left:-2%;top:-2%}
+      .float-tag.two{right:-2%;bottom:-2%}
+    }
+  </style>
 </head>
 <body>
 
-<style>
-nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
-nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
-nav.site-nav .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
-nav.site-nav .nav-logo span{color:var(--accent2)}
-nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
-nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
-nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
-nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
-nav.site-nav .nav-cta:hover{opacity:.88}
-nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
-nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
-nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
-nav.site-nav .nav-mobile.open{display:flex}
-nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
-@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
-</style>
-
-<nav class="site-nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo">cadeauclic.com<span></span></a>
-    <div class="nav-links">
-        <a href="/nos-comparateurs">Nos comparateurs</a>
-        <a href="/blog/">Blog</a>
-    </div>
-    <a href="/contact" class="nav-cta">Contact</a>
-    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="nav-mobile" id="nav-mobile">
-      <a href="/nos-comparateurs">Nos comparateurs</a>
-      <a href="/blog/">Blog</a>
-    <a href="/contact" class="nav-cta">Contact</a>
-  </div>
-</nav>
-
-<script>
-/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
-   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
-   devoir redéfinir la fonction côté template parent.
-
-   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
-   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
-   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
-   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
-   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
-   qui est actif et le parent réécrit derrière s'il en a un.
-
-   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
-   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
-   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
-   ne faisait rien. */
-(function(){
-  if (typeof window.toggleMenu === 'function') return;
-  window.toggleMenu = function(){
-    var menu = document.getElementById('nav-mobile');
-    if (menu) menu.classList.toggle('open');
-  };
-  // UX bonus : fermer le menu mobile en cliquant en dehors
-  document.addEventListener('click', function(e){
-    var menu = document.getElementById('nav-mobile');
-    var burger = document.getElementById('burger');
-    if (!menu || !burger) return;
-    if (!menu.classList.contains('open')) return;
-    if (menu.contains(e.target) || burger.contains(e.target)) return;
-    menu.classList.remove('open');
-  });
-  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
-  document.addEventListener('DOMContentLoaded', function(){
-    var menu = document.getElementById('nav-mobile');
-    if (!menu) return;
-    menu.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){ menu.classList.remove('open'); });
-    });
-  });
-})();
-</script>
-<section class="hero">
-  <h1>
-      cadeauclic.com<span class="accent"></span>
-  </h1>
-    <p class="tagline">Comparatifs cadeauclic.com 2026</p>
-</section>
-
-<section class="section-articles">
-  <h2 class="section-title">Derniers articles</h2>
-  <p class="section-subtitle">Explorez nos guides, conseils et analyses</p>
-
-  <div class="articles-grid">
-    <article class="article-card">
-      <a class="card-link" href="/bapteme-mariage-anniversaire-le-gobelet-reutilisable/">
-        <div class="image">
-            <img src="/blog/bapteme-mariage-anniversaire-le-gobelet-reutilisable.jpg" alt="Baptême, mariage, anniversaire : pourquoi le gobelet personnalisé et réutilisable séduit autant" loading="lazy">
-        </div>
-        <div class="content">
-          <div class="meta">
-<span class="cat">Mariage & Fêtes</span><span>10 juin 2026</span><span>· 6 min</span>          </div>
-          <h3>Baptême, mariage, anniversaire : pourquoi le gobelet personnalisé et réutilisable séduit autant</h3>
-<p class="excerpt">Le succès fulgurant des gobelets personnalisés : un phénomène qui ne me surprend plus Franchement, quand j'ai vu pour la première fois des gobelets personnalisés lors du mariage…</p>        </div>
-      </a>
-    </article>
-    <article class="article-card">
-      <a class="card-link" href="/carte-cadeau-prefere-salaries-noel/">
-        <div class="image">
-            <img src="/blog/carte-cadeau-prefere-salaries-noel.jpg" alt="Pourquoi la carte cadeau est le cadeau préféré des salariés à Noël ?" loading="lazy">
-        </div>
-        <div class="content">
-          <div class="meta">
-<span class="cat">Bons plans & Parrainage</span><span>10 juin 2026</span><span>· 5 min</span>          </div>
-          <h3>Pourquoi la carte cadeau est le cadeau préféré des salariés à Noël ?</h3>
-<p class="excerpt">Ma découverte qui a changé ma façon d'offrir en entreprise L'an dernier, j'organisais les cadeaux de Noël pour notre petite équipe. Quinze personnes, quinze profils différents,…</p>        </div>
-      </a>
-    </article>
-    <article class="article-card">
-      <a class="card-link" href="/quel-cadeau-offrir-a-quelquun-qui-a-deja-tout/">
-        <div class="image">
-            <img src="/blog/quel-cadeau-offrir-a-quelquun-qui-a-deja-tout.jpg" alt="Quel cadeau offrir à quelqu’un qui a déjà tout ?" loading="lazy">
-        </div>
-        <div class="content">
-          <div class="meta">
-<span class="cat">Idées cadeaux</span><span>10 juin 2026</span><span>· 6 min</span>          </div>
-          <h3>Quel cadeau offrir à quelqu’un qui a déjà tout ?</h3>
-<p class="excerpt">Le défi du cadeau impossible Je me souviens de cette année où j'ai passé des heures à chercher un cadeau pour mon beau-père. Cet homme a littéralement tout : une cave à vin digne…</p>        </div>
-      </a>
-    </article>
-    <article class="article-card">
-      <a class="card-link" href="/5-occasions-ou-offrir-des-fleurs-est-important/">
-        <div class="image">
-            <img src="/blog/5-occasions-ou-offrir-des-fleurs-est-important.jpg" alt="5 occasions où offrir des fleurs est important" loading="lazy">
-        </div>
-        <div class="content">
-          <div class="meta">
-<span class="cat">Maison & Déco</span><span>10 juin 2026</span><span>· 5 min</span>          </div>
-          <h3>5 occasions où offrir des fleurs est important</h3>
-<p class="excerpt">La Saint-Valentin : quand les fleurs deviennent le langage de l'amour Je ne vais pas te mentir, la Saint-Valentin reste LE moment où les fleurs prennent tout leur sens. Après…</p>        </div>
-      </a>
-    </article>
-    <article class="article-card">
-      <a class="card-link" href="/playmobil-valeur-sure-cadeau-reussi/">
-        <div class="image">
-            <img src="/blog/playmobil-valeur-sure-cadeau-reussi.jpg" alt="Pourquoi Playmobil reste une valeur sûre pour un cadeau réussi ?" loading="lazy">
-        </div>
-        <div class="content">
-          <div class="meta">
-<span class="cat">Idées cadeaux</span><span>10 juin 2026</span><span>· 5 min</span>          </div>
-          <h3>Pourquoi Playmobil reste une valeur sûre pour un cadeau réussi ?</h3>
-<p class="excerpt">Playmobil, cette marque qui traverse les générations Je me souviens encore de mes premiers Playmobil. J'avais six ans et j'ai passé des heures entières à inventer des histoires…</p>        </div>
-      </a>
-    </article>
-    <article class="article-card">
-      <a class="card-link" href="/garde-robe-fillette-ethique-robes-basiques-et-accessoires-qui-durent/">
-        <div class="image">
-            <img src="/blog/garde-robe-fillette-ethique-robes-basiques-et-accessoires-qui-durent.jpg" alt="Garde-robe fillette éthique : robes, basiques et accessoires qui durent" loading="lazy">
-        </div>
-        <div class="content">
-          <div class="meta">
-<span class="cat">Mode & Personnalisation</span><span>10 juin 2026</span><span>· 6 min</span>          </div>
-          <h3>Garde-robe fillette éthique : robes, basiques et accessoires qui durent</h3>
-<p class="excerpt">Ma découverte de la mode éthique pour ma fille Quand j'ai commencé à chercher des vêtements pour ma fille de 6 ans, je me suis vite rendu compte que la fast fashion pour enfants,…</p>        </div>
-      </a>
-    </article>
-  </div>
-
-  <div style="margin-top: 36px; text-align: center;">
-    <a class="all-articles-cta" href="/blog/">
-      Voir tous les articles
-      <span>→</span>
+<header>
+  <div class="wrap nav">
+    <a href="/" class="logo">
+      <span class="mark">🎁</span>cadeauclic.com<span></span>
     </a>
-  </div>
-</section>
-
-<section class="section-categories">
-  <h2 class="section-title">Catégories</h2>
-  <p class="section-subtitle">Parcourez par thématique</p>
-  <div class="cats-list">
-      <a href="/categorie-mariage-fetes/" class="cat-pill">Mariage & Fêtes</a>
-      <a href="/categorie-bons-plans-parrainage/" class="cat-pill">Bons plans & Parrainage</a>
-      <a href="/categorie-idees-cadeaux/" class="cat-pill">Idées cadeaux</a>
-      <a href="/categorie-maison-deco/" class="cat-pill">Maison & Déco</a>
-      <a href="/categorie-mode-personnalisation/" class="cat-pill">Mode & Personnalisation</a>
-  </div>
-</section>
-
-<style>
-.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
-.footer-inner{max-width:1200px;margin:0 auto}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
-.footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
-.footer-brand .footer-logo span{color:var(--accent2)}
-.footer-brand p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;max-width:260px;margin:0;padding:0}
-/* Anciennement .footer-col h4 — passé en div pour respecter la hiérarchie Hn (le footer ne doit pas introduire de Hn) */
-.footer-col .footer-col-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
-.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
-.footer-col a:hover{color:#fff}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
-.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
-@media(max-width:768px){
-  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
-  .footer-brand{grid-column:1/-1}
-}
-</style>
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="footer-logo">cadeauclic.com<span></span></div>
-        <p>Comparatifs cadeauclic.com 2026</p>
+    <nav class="menu">
+      <a href="/cadeau-femme/">Cadeau femme</a>
+      <a href="/cadeau-homme/">Cadeau homme</a>
+      <a href="/creer-une-liste/">Créer une liste</a>
+      <a href="#articles">Blog</a>
+      <a href="#parrainage">Parrainage</a>
+    </nav>
+    <div class="nav-right">
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h2.7l.4-3.1H13V8.9c0-.9.3-1.5 1.6-1.5H16V4.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.4H7.2V14H9.9v8H13z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 8.6A3.4 3.4 0 1 0 15.4 12 3.4 3.4 0 0 0 12 8.6zm0 5.6A2.2 2.2 0 1 1 14.2 12 2.2 2.2 0 0 1 12 14.2zm4.3-5.8a.8.8 0 1 1-.8-.8.8.8 0 0 1 .8.8zM18.7 8a3.9 3.9 0 0 0-1.1-2.8A3.9 3.9 0 0 0 14.8 4c-1.1-.1-4.5-.1-5.6 0A3.9 3.9 0 0 0 6.4 5.2 3.9 3.9 0 0 0 5.3 8c-.1 1.1-.1 4.5 0 5.6a3.9 3.9 0 0 0 1.1 2.8 3.9 3.9 0 0 0 2.8 1.1c1.1.1 4.5.1 5.6 0a3.9 3.9 0 0 0 2.8-1.1 3.9 3.9 0 0 0 1.1-2.8c.1-1.1.1-4.5 0-5.6z"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4a8 8 0 0 0-2.9 15.4c0-.6-.1-1.6.1-2.3l1-4.2s-.2-.5-.2-1.3c0-1.2.7-2.1 1.6-2.1.7 0 1.1.6 1.1 1.2 0 .8-.5 1.9-.7 2.9-.2.9.4 1.6 1.3 1.6 1.6 0 2.7-2 2.7-4.4 0-1.8-1.2-3.2-3.5-3.2a4 4 0 0 0-4.1 4c0 .8.3 1.4.6 1.8.2.2.2.3.1.5l-.2.8c0 .3-.2.4-.5.2-1.2-.5-1.7-1.9-1.7-3.4 0-2.5 2.1-5.5 6.3-5.5 3.4 0 5.6 2.4 5.6 5 0 3.4-1.9 6-4.7 6-1 0-1.8-.5-2.1-1.1l-.6 2.2c-.2.7-.6 1.5-1 2A8 8 0 1 0 12 4z"/></svg></a>
       </div>
-      <div class="footer-col">
-        <div class="footer-col-label">Navigation</div>
-        <a href="/nos-comparateurs">Nos comparateurs</a>
-        <a href="/blog/">Blog</a>
-        <a href="/plan-du-site">Plan du site</a>
-        <a href="/mentions-legales">Mentions légales</a>
-        <a href="/politique-confidentialite">Confidentialité</a>
+      <a href="#parrainage" class="btn" style="padding:12px 22px;font-size:.92rem">Bons plans</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Idées cadeau · bons plans · codes promo</span>
+      <h1>Des idées cadeau<br><span class="pink">&amp; des bons plans</span> malins</h1>
+      <p class="lead">Salut, moi c'est Sophie&nbsp;! Ici je déniche pour toi des cadeaux originaux qui font vraiment plaisir, sans exploser ton budget. Codes promo testés, idées par occasion et offres de parrainage&nbsp;: tout est trié pour te faire gagner du temps.</p>
+      <div class="hero-cta">
+        <a href="#parrainage" class="btn">Voir les meilleures offres →</a>
+        <a href="#articles" class="btn btn-ghost">Lire le blog</a>
       </div>
-      <div class="footer-col">
-        <div class="footer-col-label">À propos</div>
-        <a href="/contact">Nous contacter</a>
+      <div class="hero-stats">
+        <div><div class="num">200+</div><small>boutiques partenaires</small></div>
+        <div><div class="num">350+</div><small>idées cadeau testées</small></div>
+        <div><div class="num">50€</div><small>offerts en parrainage</small></div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div class="footer-bottom-left">
-        © 2026 cadeauclic.com — Données actualisées le 15 juin 2026
+    <div class="hero-media">
+      <div class="blob"></div>
+      <div class="hero-figure">
+        <img src="/hero-image.jpg" alt="Hero CadeauClic"
+             style="width:100%;height:100%;object-fit:cover"
+             onerror="this.outerHTML='<span class=&quot;gift&quot;>🎁</span>'">
       </div>
+      <div class="float-tag one"><span class="ic" style="background:var(--rose-500)">✓</span>Codes promo vérifiés</div>
+      <div class="float-tag two"><span class="ic" style="background:var(--coral)">★</span>Sélection sans budget explosé</div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap strip">
+  <div class="strip-card">
+    <div class="strip-item">
+      <span class="ic">🏷️</span>
+      <div><h4>Des codes promo</h4><p>Réductions testées et toujours valides.</p></div>
+    </div>
+    <div class="strip-item">
+      <span class="ic">🤝</span>
+      <div><h4>Des offres de parrainage</h4><p>Jusqu'à 50€ offerts chez nos partenaires.</p></div>
+    </div>
+    <div class="strip-item">
+      <span class="ic">🎀</span>
+      <div><h4>Des idées cadeaux originales</h4><p>Pour ne plus jamais offrir du déjà-vu.</p></div>
+    </div>
+  </div>
+</div>
+
+<section class="block tint" id="promo">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Économise dès maintenant</span>
+      <h2>Les meilleurs codes promo du moment</h2>
+      <p>Je les teste avant de te les partager. Pas de code expiré qui te fait perdre 10 minutes à la caisse&nbsp;: que du valide.</p>
+    </div>
+    <div class="promo-grid">
+      <div class="promo">
+        <div class="brand"><span>Linxea</span></div>
+        <div class="deal">50€ offerts</div>
+        <small>en carte cadeau à l'ouverture</small>
+        <div class="code">LINXEA50</div>
+      </div>
+      <div class="promo">
+        <div class="brand"><span>Qonto</span></div>
+        <div class="deal">3 mois offerts</div>
+        <small>sur ton compte pro</small>
+        <div class="code">QONTO3M</div>
+      </div>
+      <div class="promo">
+        <div class="brand"><span>BoursoBank</span></div>
+        <div class="deal">jusqu'à 220€</div>
+        <small>de prime de bienvenue</small>
+        <div class="code">BOURSO220</div>
+      </div>
+      <div class="promo">
+        <div class="brand"><span>Revolut</span></div>
+        <div class="deal">3 mois Premium</div>
+        <small>gratuits pour les nouveaux</small>
+        <div class="code">REVOLUT3</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="articles">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Le blog</span>
+      <h2>Mes 6 derniers articles</h2>
+      <p>Retours d'expérience, comparatifs et idées cadeau&nbsp;: je te raconte ce que j'ai vraiment offert et ce que j'en ai pensé.</p>
+    </div>
+
+    <div class="art-grid">
+      <article class="card">
+        <a href="/bapteme-mariage-anniversaire-le-gobelet-reutilisable/" class="thumb">
+            <img src="/blog/bapteme-mariage-anniversaire-le-gobelet-reutilisable.jpg" alt="Baptême, mariage, anniversaire : pourquoi le gobelet personnalisé et réutilisable séduit autant" loading="lazy">
+        </a>
+        <div class="body">
+          <span class="cat">Mariage & Fêtes</span>
+          <h3><a href="/bapteme-mariage-anniversaire-le-gobelet-reutilisable/">Baptême, mariage, anniversaire : pourquoi le gobelet personnalisé et réutilisable séduit autant</a></h3>
+<p>Le succès fulgurant des gobelets personnalisés : un phénomène qui ne me surprend plus Franchement, quand j'ai vu pour la première fois des gobelets personnalisés lors du mariage…</p>          <a href="/bapteme-mariage-anniversaire-le-gobelet-reutilisable/" class="more">Lire l'article →</a>
+        </div>
+      </article>
+      <article class="card">
+        <a href="/carte-cadeau-prefere-salaries-noel/" class="thumb">
+            <img src="/blog/carte-cadeau-prefere-salaries-noel.jpg" alt="Pourquoi la carte cadeau est le cadeau préféré des salariés à Noël ?" loading="lazy">
+        </a>
+        <div class="body">
+          <span class="cat">Bons plans & Parrainage</span>
+          <h3><a href="/carte-cadeau-prefere-salaries-noel/">Pourquoi la carte cadeau est le cadeau préféré des salariés à Noël ?</a></h3>
+<p>Ma découverte qui a changé ma façon d'offrir en entreprise L'an dernier, j'organisais les cadeaux de Noël pour notre petite équipe. Quinze personnes, quinze profils différents,…</p>          <a href="/carte-cadeau-prefere-salaries-noel/" class="more">Lire l'article →</a>
+        </div>
+      </article>
+      <article class="card">
+        <a href="/quel-cadeau-offrir-a-quelquun-qui-a-deja-tout/" class="thumb">
+            <img src="/blog/quel-cadeau-offrir-a-quelquun-qui-a-deja-tout.jpg" alt="Quel cadeau offrir à quelqu’un qui a déjà tout ?" loading="lazy">
+        </a>
+        <div class="body">
+          <span class="cat">Idées cadeaux</span>
+          <h3><a href="/quel-cadeau-offrir-a-quelquun-qui-a-deja-tout/">Quel cadeau offrir à quelqu’un qui a déjà tout ?</a></h3>
+<p>Le défi du cadeau impossible Je me souviens de cette année où j'ai passé des heures à chercher un cadeau pour mon beau-père. Cet homme a littéralement tout : une cave à vin digne…</p>          <a href="/quel-cadeau-offrir-a-quelquun-qui-a-deja-tout/" class="more">Lire l'article →</a>
+        </div>
+      </article>
+      <article class="card">
+        <a href="/5-occasions-ou-offrir-des-fleurs-est-important/" class="thumb">
+            <img src="/blog/5-occasions-ou-offrir-des-fleurs-est-important.jpg" alt="5 occasions où offrir des fleurs est important" loading="lazy">
+        </a>
+        <div class="body">
+          <span class="cat">Maison & Déco</span>
+          <h3><a href="/5-occasions-ou-offrir-des-fleurs-est-important/">5 occasions où offrir des fleurs est important</a></h3>
+<p>La Saint-Valentin : quand les fleurs deviennent le langage de l'amour Je ne vais pas te mentir, la Saint-Valentin reste LE moment où les fleurs prennent tout leur sens. Après…</p>          <a href="/5-occasions-ou-offrir-des-fleurs-est-important/" class="more">Lire l'article →</a>
+        </div>
+      </article>
+      <article class="card">
+        <a href="/playmobil-valeur-sure-cadeau-reussi/" class="thumb">
+            <img src="/blog/playmobil-valeur-sure-cadeau-reussi.jpg" alt="Pourquoi Playmobil reste une valeur sûre pour un cadeau réussi ?" loading="lazy">
+        </a>
+        <div class="body">
+          <span class="cat">Idées cadeaux</span>
+          <h3><a href="/playmobil-valeur-sure-cadeau-reussi/">Pourquoi Playmobil reste une valeur sûre pour un cadeau réussi ?</a></h3>
+<p>Playmobil, cette marque qui traverse les générations Je me souviens encore de mes premiers Playmobil. J'avais six ans et j'ai passé des heures entières à inventer des histoires…</p>          <a href="/playmobil-valeur-sure-cadeau-reussi/" class="more">Lire l'article →</a>
+        </div>
+      </article>
+      <article class="card">
+        <a href="/garde-robe-fillette-ethique-robes-basiques-et-accessoires-qui-durent/" class="thumb">
+            <img src="/blog/garde-robe-fillette-ethique-robes-basiques-et-accessoires-qui-durent.jpg" alt="Garde-robe fillette éthique : robes, basiques et accessoires qui durent" loading="lazy">
+        </a>
+        <div class="body">
+          <span class="cat">Mode & Personnalisation</span>
+          <h3><a href="/garde-robe-fillette-ethique-robes-basiques-et-accessoires-qui-durent/">Garde-robe fillette éthique : robes, basiques et accessoires qui durent</a></h3>
+<p>Ma découverte de la mode éthique pour ma fille Quand j'ai commencé à chercher des vêtements pour ma fille de 6 ans, je me suis vite rendu compte que la fast fashion pour enfants,…</p>          <a href="/garde-robe-fillette-ethique-robes-basiques-et-accessoires-qui-durent/" class="more">Lire l'article →</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="center-btn">
+      <a href="/blog/" class="btn">Voir tous les articles</a>
+    </div>
+  </div>
+</section>
+
+<section class="block tint" id="auteur">
+  <div class="wrap">
+    <div class="author">
+      <div class="author-media">
+        <div class="ring"></div>
+        <div class="photo">
+          <img src="/author-photo.png"
+               alt="Sophie Martin"
+               onerror="this.outerHTML='👩'">
+        </div>
+        <div class="author-badge">Sophie Martin · 37 ans 🎀</div>
+      </div>
+      <div class="author-copy">
+        <span class="eyebrow">Qui se cache derrière CadeauClic</span>
+        <h2>Salut, moi c'est Sophie&nbsp;!</h2>
+          <p>Maman de deux enfants, mariée et accro aux bonnes affaires. Depuis des années, je passe (beaucoup trop) de temps à chercher LE cadeau qui fera plaisir — celui qu'on n'a pas déjà vu cent fois.</p>
+          <p>Anniversaires, mariages, naissances, fêtes des mères et des pères… j'ai testé, comparé, parfois été déçue. Du coup j'ai créé CadeauClic pour te partager ce qui marche vraiment, à quel prix, et pour qui.</p>
+        <div class="chips">
+          <span class="chip">Cadeaux personnalisés</span>
+          <span class="chip">Anniversaires</span>
+          <span class="chip">Mariages</span>
+          <span class="chip">Bons plans &amp; promos</span>
+        </div>
+        <div class="sign">
+          Sophie
+          <small>Acheteuse experte & dénicheuse de bons plans</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Ils me font confiance</span>
+      <h2>Ce que pensent mes lecteurs</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test">
+        <div class="stars">★★★★★</div>
+        <q>« Grâce à CadeauClic j'ai trouvé le cadeau parfait pour la fête des mères. Service au top, idées originales, ma maman était ravie. Merci&nbsp;! »</q>
+        <div class="who">
+          <span class="avatar">M</span>
+          <div><b>Marion</b><small>Pour la fête des mamans</small></div>
+        </div>
+      </div>
+      <div class="test">
+        <div class="stars">★★★★★</div>
+        <q>« J'ai déniché le cadeau parfait pour l'anniversaire de mon mec. La sélection de produits est vraiment originale et bien expliquée. »</q>
+        <div class="who">
+          <span class="avatar">J</span>
+          <div><b>Julie</b><small>Pour un anniversaire</small></div>
+        </div>
+      </div>
+      <div class="test">
+        <div class="stars">★★★★★</div>
+        <q>« Les codes promo sont toujours valides, ça change&nbsp;! J'ai économisé 50€ sur mon ouverture de compte en suivant le guide de Sophie. »</q>
+        <div class="who">
+          <span class="avatar">K</span>
+          <div><b>Karim</b><small>Pour un bon plan parrainage</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="parrainage" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band">
+      <div class="deco a"></div><div class="deco b"></div>
+      <h2>Profite des meilleures offres de parrainage du moment</h2>
+      <p>Je rassemble pour toi les primes de bienvenue les plus généreuses du moment. Quelques clics, et c'est jusqu'à 50€ dans ta poche.</p>
+      <a href="#promo" class="btn">Découvrir les offres →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="/" class="logo">
+          <span class="mark">🎁</span>cadeauclic.com<span style="color:var(--rose-300)"></span>
+        </a>
+        <p class="intro">En manque d'inspiration pour un futur cadeau à offrir&nbsp;? CadeauClic est le site référence pour trouver des idées cadeaux qui plaisent à coup sûr.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h2.7l.4-3.1H13V8.9c0-.9.3-1.5 1.6-1.5H16V4.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.4H7.2V14H9.9v8H13z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 8.6A3.4 3.4 0 1 0 15.4 12 3.4 3.4 0 0 0 12 8.6zm0 5.6A2.2 2.2 0 1 1 14.2 12 2.2 2.2 0 0 1 12 14.2zm4.3-5.8a.8.8 0 1 1-.8-.8.8.8 0 0 1 .8.8zM18.7 8a3.9 3.9 0 0 0-1.1-2.8A3.9 3.9 0 0 0 14.8 4c-1.1-.1-4.5-.1-5.6 0A3.9 3.9 0 0 0 6.4 5.2 3.9 3.9 0 0 0 5.3 8c-.1 1.1-.1 4.5 0 5.6a3.9 3.9 0 0 0 1.1 2.8 3.9 3.9 0 0 0 2.8 1.1c1.1.1 4.5.1 5.6 0a3.9 3.9 0 0 0 2.8-1.1 3.9 3.9 0 0 0 1.1-2.8c.1-1.1.1-4.5 0-5.6z"/></svg></a>
+          <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4a8 8 0 0 0-2.9 15.4c0-.6-.1-1.6.1-2.3l1-4.2s-.2-.5-.2-1.3c0-1.2.7-2.1 1.6-2.1.7 0 1.1.6 1.1 1.2 0 .8-.5 1.9-.7 2.9-.2.9.4 1.6 1.3 1.6 1.6 0 2.7-2 2.7-4.4 0-1.8-1.2-3.2-3.5-3.2a4 4 0 0 0-4.1 4c0 .8.3 1.4.6 1.8.2.2.2.3.1.5l-.2.8c0 .3-.2.4-.5.2-1.2-.5-1.7-1.9-1.7-3.4 0-2.5 2.1-5.5 6.3-5.5 3.4 0 5.6 2.4 5.6 5 0 3.4-1.9 6-4.7 6-1 0-1.8-.5-2.1-1.1l-.6 2.2c-.2.7-.6 1.5-1 2A8 8 0 1 0 12 4z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>cadeauclic.com</h5>
+        <a href="#auteur">À propos</a>
+        <a href="/presse/">Presse</a>
+        <a href="/annonceur/">Annonceur</a>
+        <a href="/contact/">Nous contacter</a>
+      </div>
+      <div>
+        <h5>Légal</h5>
+        <a href="/mentions-legales/">Mentions légales</a>
+        <a href="/cgu/">CGU</a>
+        <a href="/politique-de-confidentialite/">Politique de confidentialité</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 cadeauclic.com — Tous droits réservés.</span>
+      <span>Fait avec 🎀 par Sophie Martin</span>
     </div>
   </div>
 </footer>
 
-<button type="button"
-        class="scroll-top-btn"
-        id="scroll-top-btn"
-        aria-label="Remonter en haut de la page"
-        title="Remonter en haut">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-       stroke="currentColor" stroke-width="2.5"
-       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <line x1="12" y1="19" x2="12" y2="5"></line>
-    <polyline points="5 12 12 5 19 12"></polyline>
-  </svg>
-</button>
-
-<style>
-.scroll-top-btn{
-  position:fixed;
-  bottom:24px;
-  right:24px;
-  z-index:9999;
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  background:var(--ink, #0F1419);
-  color:#fff;
-  border:none;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
-  visibility:hidden;
-  transform:translateY(10px);
-  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .15s;
-  box-shadow:0 4px 14px rgba(0,0,0,.18);
-  padding:0;
-  font-family:inherit;
-}
-.scroll-top-btn.visible{
-  opacity:1;
-  visibility:visible;
-  transform:translateY(0);
-}
-.scroll-top-btn:hover{
-  background:var(--accent, #C9A961);
-}
-.scroll-top-btn:focus-visible{
-  outline:2px solid var(--accent, #C9A961);
-  outline-offset:3px;
-}
-@media (max-width:600px){
-  .scroll-top-btn{ bottom:16px; right:16px; width:42px; height:42px; }
-}
-@media (prefers-reduced-motion: reduce){
-  .scroll-top-btn{ transition:opacity .2s, visibility .2s; }
-}
-</style>
-
-<script>
-(function(){
-  'use strict';
-  var btn = document.getElementById('scroll-top-btn');
-  if (!btn) return;
-
-  var THRESHOLD = 400; // px de scroll avant apparition
-  var ticking = false;
-
-  function update(){
-    if (window.scrollY > THRESHOLD) {
-      btn.classList.add('visible');
-    } else {
-      btn.classList.remove('visible');
-    }
-    ticking = false;
-  }
-
-  function onScroll(){
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(update);
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  btn.addEventListener('click', function(){
-    var prefersReduced = window.matchMedia
-      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
-  });
-
-  // Check immédiat (au cas où la page est rechargée déjà scrollée)
-  update();
-})();
-</script>
-<script>
-// Cache buster build_date : 2026-06-15
-</script>
 <!-- build:20260504122856 --></body>
 </html>
