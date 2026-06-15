@@ -4,15 +4,20 @@ slug: cadeau-femme-80-ans
 date: '2026-06-15T23:10:49+02:00'
 categorie: Idées cadeaux
 meta_title: 'Cadeau femme 80 ans : 40 idées pour ce moment'
-meta_description: Trouver un cadeau pour une femme de 80 ans n'est pas simple. Découvrez des idées originales et sincères, loin des clichés, pour lui faire vraiment plaisir.
+meta_description: Trouver un cadeau pour une femme de 80 ans n'est pas simple. Découvrez
+  des idées originales et sincères, loin des clichés, pour lui faire vraiment plaisir.
 min_words: 1000
 status: published
 featured_image: /blog/cadeau-femme-80-ans.jpg
 link_anchors:
 - text: idées de cadeaux pour femme de 80 ans
   max: 5
+related_posts:
+- bougies-parfumees-cadeau-intemporel
+- quel-cadeau-offrir-a-quelquun-qui-a-deja-tout
+- cadeau-femme-90-ans
+- liste-de-noel
 ---
-
 <h2>Trouver le bon cadeau pour une femme de 80 ans : par où commencer ?</h2>
 
 <p>Les 80 ans, c'est une occasion qui mérite vraiment qu'on se creuse la tête. Pas question d'arriver avec une bougie parfumée achetée en vitesse ou un foulard générique. J'ai vécu ça de près l'an dernier avec ma grand-tante Micheline, qui fêtait justement ses 80 printemps. Et je peux te dire que trouver quelque chose d'original, de sincère, sans tomber dans le cliché "cadeau de mamie", c'est un vrai défi.</p>

@@ -4,15 +4,21 @@ slug: cadeau-femme-70-ans
 date: '2026-06-15T23:10:49+02:00'
 categorie: Idées cadeaux
 meta_title: 'Cadeau femme 70 ans : 45 idées pour la fêter'
-meta_description: Trouver un cadeau pour une femme de 70 ans sans tomber dans les classiques bateau, c'est possible. Découvrez des idées originales, testées et vraiment adaptées à…
+meta_description: Trouver un cadeau pour une femme de 70 ans sans tomber dans les
+  classiques bateau, c'est possible. Découvrez des idées originales, testées et vraiment
+  adaptées à…
 min_words: 1050
 status: published
 featured_image: /blog/cadeau-femme-70-ans.jpg
 link_anchors:
 - text: cadeau pour une femme de 70 ans
   max: 5
+related_posts:
+- bougies-parfumees-cadeau-intemporel
+- cadeau-femme-100-ans
+- cadeau-saint-valentin-derniere-minute
+- playmobil-valeur-sure-cadeau-reussi
 ---
-
 <h2>Trouver le cadeau parfait pour une femme de 70 ans, pas si simple</h2>
 
 <p>Je vais te dire un truc : offrir un cadeau à une femme de 70 ans, c'est un exercice qui mérite vraiment qu'on s'y arrête. Pas parce que c'est compliqué, mais parce que beaucoup de gens partent sur des classiques un peu trop prévisibles. Le parfum qu'elle a déjà, le foulard qu'elle ne mettra pas, la bougie qui dormira dans un tiroir. J'en suis passée par là, et franchement, ça fait un peu mal quand tu vois la réaction polie mais pas vraiment emballée de la personne à qui tu offres.</p>
