@@ -1,0 +1,112 @@
+# ============================================================
+# CONFIG SITE -- monelor-com
+# Thématique     : finances-personnelles
+# Types activés  : blog
+# Templates HTML : comparatif-vs-scpi.html.j2 (pages) / index-blog.html.j2 (home)
+# Généré par le wizard HUB le 2026-06-15
+# ============================================================
+
+site:
+  slug: monelor-com
+  name: "monelor.com"
+  domain: "https://monelor.com"
+  base_path: ""
+  logo_text: "monelor.com"
+  logo_accent: ""
+  tagline: "Comparatifs monelor.com 2026"
+  year: 2026
+  sheet_csv_url: ""
+  www_preference: "www"
+  blog_slug_format: "prefix"
+  author_name: "Nicolas Lefebvre"
+  home_title: "monelor.com | Comparatifs 2026"
+  home_description: ""
+  template: "comparatif-vs-scpi.html.j2"
+  index_template: "index-blog.html.j2"
+  analytics_clicky: ""
+  contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
+
+page_types:
+  blog: finances-personnelles
+
+theme:
+  accent: "#1B4FD8"
+  accent2: "#E8410A"
+  bg: "#F4F6FB"
+  ink: "#0F1A2E"
+  surface: "#FFFFFF"
+  font_title: "DM Serif Display"
+  font_body: "Outfit"
+  google_fonts: "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap"
+  cta_color: "#E8410A"
+  cta_text_color: "#ffffff"
+
+criteria:
+  - label: "TD 2026"
+    field: td
+    type: text
+    suffix: "%"
+  - label: "TRI"
+    field: tri
+    type: text
+    suffix: "%"
+  - label: "Prix de la part"
+    field: prix_achat
+    type: text
+    suffix: "EUR"
+  - label: "Prix de retrait"
+    field: prix_retrait
+    type: text
+    suffix: "EUR"
+  - label: "Investissement min."
+    field: investissement_min
+    type: text
+  - label: "Frais de souscription"
+    field: frais_souscription
+    type: text
+    suffix: "%"
+  - label: "Frais de gestion"
+    field: frais_gestion
+    type: text
+    suffix: "% TTC"
+  - label: "TOF"
+    field: tof
+    type: text
+    suffix: "%"
+  - label: "Endettement"
+    field: endettement
+    type: text
+    suffix: "%"
+  - label: "Delai de jouissance"
+    field: delai_jouissance
+    type: text
+    suffix: " mois"
+  - label: "Pays"
+    field: pays
+    type: text
+
+tag_classes:
+  rendement: "tag-rendement"
+  diversifiee: "tag-diversifiee"
+  specialisee: "tag-specialisee"
+  europeenne: "tag-europeenne"
+
+seo:
+  title_pattern: "{A} vs {B} : comparatif {year}"
+  meta_pattern: "Comparatif complet {A} vs {B} {year} : rendements, frais, avis."
+  avis_title_pattern: "Avis {nom} {year} : faut-il investir ?"
+  avis_meta_pattern: "Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques."
+  liste_comp_title: "Tous les comparatifs {site_name} {year}"
+  liste_avis_title: "Avis {site_name} {year} : analyses indépendantes"
+  h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
+  eyebrow: "Comparatif {year}"
+  intro_pattern: "Comparatif {A} vs {B} - analyse complete."
+  category_label: "Comparatifs"
+  category_url: "index.html#comparatifs"
+
+author:
+  name: "Nicolas Lefebvre"
+  bio: "Nicolas Lefebvre est un artisan auto-entrepreneur expérimenté basé à Montpellier, fort de 15 années d'expertise dans son domaine. Il accompagne ses clients avec un savoir-faire reconnu et une approche directe, garantissant des prestations de qualité adaptées à leurs besoins spécifiques."
+  job_title: "Artisan / Auto-entrepreneur"
+  photo: "/author-photo.png"
+  socials: []
