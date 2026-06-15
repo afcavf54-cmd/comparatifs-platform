@@ -1,13 +1,10 @@
 ---
-title: 'Mentions obligatoires : les modèles de factures Digitalise-Tes-Factures sont-ils
-  à jour ?'
+title: 'Mentions obligatoires : les modèles de factures Digitalise-Tes-Factures sont-ils à jour ?'
 slug: 8546-mentions-obligatoires-les-modeles-de-factures-digitalise-tes-factures-sont-ils-a-jour
 date: '2026-06-14T19:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Modèles de factures Digitalise-Tes-Factures : sont-ils conformes ?'
-meta_description: Découvrez si les modèles de factures de Digitalise-Tes-Factures
-  respectent la réglementation 2024. Analyse des mentions obligatoires et conformité
-  légale pour…
+meta_description: Découvrez si les modèles de factures de Digitalise-Tes-Factures respectent la réglementation 2024. Analyse des mentions obligatoires et conformité légale pour…
 min_words: 970
 status: published
 link_anchors:
@@ -15,7 +12,9 @@ link_anchors:
   max: 5
 related_posts:
 - 9490-a-qui-s-adresse-le-logiciel-de-facturation-quickbill-advanced
+featured_image: /blog/8546-mentions-obligatoires-les-modeles-de-factures-digitalise-tes-factures-sont-ils-a-jour.jpg
 ---
+
 <h2>La réglementation française sur les factures : où en est-on aujourd'hui ?</h2>
 
 <p>Je vais être franc avec toi : la réglementation sur les factures, c'est un vrai casse-tête. <strong>Depuis janvier 2024</strong>, plusieurs mentions sont devenues obligatoires et beaucoup d'entrepreneurs ne sont même pas au courant. J'ai moi-même découvert certains changements en discutant avec mon expert-comptable il y a quelques semaines.</p>
@@ -106,3 +105,4 @@ related_posts:
 <p>L'outil reste correct pour son prix (à partir de 9 €/mois), mais il faut rester vigilant. <strong>Prévois une vérification trimestrielle</strong> de tes modèles ou fais-toi accompagner par un professionnel.</p>
 
 <p>Au final, peu importe l'outil choisi. L'important, c'est de rester proactif sur les mentions légales. Un modèle obsolète peut coûter beaucoup plus cher que quelques euros d'abonnement supplémentaires.</p>
+
