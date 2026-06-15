@@ -14,8 +14,9 @@ link_anchors:
 - text: le temps de traitement de l'application de facturation InvoicePro X3
   max: 5
 related_posts:
-- 4683-a-quel-profil-convient-le-cnam-intec-en-techniques-economiques-et-comptables
 - 1332-facturation-pme-fastbill-vs-invoicepro-max
+- 9791-facturation-manuelle-ou-automatisee-avec-billmatic-auto
+- 4683-a-quel-profil-convient-le-cnam-intec-en-techniques-economiques-et-comptables
 ---
 <h2>Ma méthode manuelle m'a coûté une fortune en temps</h2>
 

@@ -4,15 +4,21 @@ slug: 8171-fin-de-cdd-sans-nouvelles-de-l-employeur-les-solutions-a-envisager
 date: '2026-06-15T10:00:00+02:00'
 categorie: Salarié
 meta_title: 'Fin de CDD sans nouvelles de l''employeur : quelles démarches ?'
-meta_description: Votre CDD se termine sans nouvelles de votre employeur ? Découvrez vos droits, les démarches à effectuer et les recours possibles. Guide complet pour gérer cette…
+meta_description: Votre CDD se termine sans nouvelles de votre employeur ? Découvrez
+  vos droits, les démarches à effectuer et les recours possibles. Guide complet pour
+  gérer cette…
 min_words: 1200
 status: published
 featured_image: /blog/8171-fin-de-cdd-sans-nouvelles-de-l-employeur-les-solutions-a-envisager.jpg
 link_anchors:
 - text: pas de nouvelle de l'employeur à la fin d'un CDD
   max: 4
+related_posts:
+- 3554-les-inconvenients-du-cdi-interimaire-avant-de-signer
+- 2230-refus-d-amenagement-d-horaire-avec-une-rqth-les-recours-possibles-face-a-l-employeur
+- 4100-je-fais-moins-d-heures-que-mon-contrat-cdi-comment-faire-respecter-vos-droits
+- 2242-accord-implicite-de-rupture-conventionnelle-mythe-ou-realite-juridique
 ---
-
 <h2>Que faire quand votre CDD se termine sans nouvelles ?</h2>
 
 <p>Je gère une TPE à Marseille depuis maintenant 10 ans. Au fil du temps, j'ai vécu plusieurs situations délicates avec des contrats qui arrivaient à échéance. La plus fréquente ? <strong>Un CDD qui se termine et l'employeur ne donne aucune nouvelle</strong>. Ni prolongation, ni CDI, ni même un simple "merci au revoir".</p>
