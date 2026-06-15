@@ -67,7 +67,13 @@ SITES_DIR = ROOT / "sites"
 THEMATICS_DIR = ROOT / "thematics"
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-CLAUDE_MODEL = "claude-sonnet-4-20250514"
+# ── Modèle Claude utilisé pour la génération d'articles ────────────────────
+# L'ancien "claude-sonnet-4-20250514" a été retiré par Anthropic le
+# 15 juin 2026 (annonce du 14 avril 2026). Migration directe vers
+# "claude-sonnet-4-6" (Sonnet 4.6 — direct upgrade, même tier de prix,
+# prompts compatibles, fenêtre 1M tokens en beta). Override possible via
+# env var CLAUDE_MODEL si Julien veut tester un modèle différent.
+CLAUDE_MODEL = os.environ.get("CLAUDE_MODEL", "claude-sonnet-4-6")
 
 # ── Limite globale d'articles par run (tous sites confondus) ──────────────
 # Évite qu'un rattrapage massif (ex. 96 articles d'un coup sur cadeauclic)
