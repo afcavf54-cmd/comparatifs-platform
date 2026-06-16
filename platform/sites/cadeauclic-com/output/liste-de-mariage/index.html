@@ -293,6 +293,16 @@ a:hover{text-decoration:underline}
     .cdc-nav-backdrop { display: block; }
     .cdc-nav-collapse {
       position: fixed; top: 0; right: 0; bottom: 0;
+      /* Force la hauteur full-viewport. Sans `height` explicite, le drawer
+         se laisse contraindre par le contexte flex parent (.cdc-nav avec
+         align-items:center), prend la hauteur de son contenu (~118px) et
+         coupe les liens. `100dvh` (dynamic viewport height) gère correctement
+         iOS Safari où 100vh inclut la barre adresse. Fallback 100vh pour les
+         vieux navigateurs sans dvh. `align-self: stretch` blindage supplé-
+         mentaire au cas où le flex parent essaie d'auto-dimensionner. */
+      height: 100vh;
+      height: 100dvh;
+      align-self: stretch;
       width: min(86vw, 360px); padding: 90px 28px 28px;
       background: #fff; transform: translateX(105%);
       transition: transform .3s cubic-bezier(.4,0,.2,1);
