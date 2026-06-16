@@ -4,15 +4,21 @@ slug: 5670-conge-paternite-syntec-tout-comprendre-sur-vos-droits-et-votre-remune
 date: '2026-06-16T15:00:00+02:00'
 categorie: Salarié
 meta_title: 'Congé paternité Syntec : vos droits, durée et rémunération'
-meta_description: 'Congé paternité Syntec : découvrez les droits exacts de vos salariés, le maintien de salaire à 100 % et comment calculer la rémunération pendant ces 25 jours.'
+meta_description: 'Congé paternité Syntec : découvrez les droits exacts de vos salariés,
+  le maintien de salaire à 100 % et comment calculer la rémunération pendant ces 25
+  jours.'
 min_words: 1800
 status: published
 featured_image: /blog/5670-conge-paternite-syntec-tout-comprendre-sur-vos-droits-et-votre-remuneration.jpg
 link_anchors:
 - text: congé paternité syntec
   max: 4
+related_posts:
+- 2230-refus-d-amenagement-d-horaire-avec-une-rqth-les-recours-possibles-face-a-l-employeur
+- 8171-fin-de-cdd-sans-nouvelles-de-l-employeur-les-solutions-a-envisager
+- 1340-horaire-decale-reglementation-remuneration-et-organisation-du-travail
+- 2242-accord-implicite-de-rupture-conventionnelle-mythe-ou-realite-juridique
 ---
-
 <p>Quand notre responsable RH m'a annoncé la naissance prochaine de mon second enfant dans l'équipe, j'ai réalisé qu'on ne savait pas grand chose sur les règles exactes du congé paternité sous la convention Syntec. On avait une vague idée des jours légaux, mais rien de précis sur ce que la convention ajoute par-dessus. J'ai creusé le sujet. Voici ce que j'ai trouvé.</p>
 
 <h2>Ce que dit vraiment la convention Syntec sur le congé paternité</h2>

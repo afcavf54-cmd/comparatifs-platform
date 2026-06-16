@@ -3,16 +3,22 @@ title: Pourquoi votre export CSV SalesTrack CRM s'affiche mal
 slug: 8837-pourquoi-votre-export-csv-salestrack-crm-s-affiche-mal
 date: '2026-06-16T18:00:00+02:00'
 categorie: Gestion d'entreprise
-meta_title: 'Exporter les données SalesTrack CRM en CSV : les erreurs qui cassent le fichier'
-meta_description: 'Export CSV SalesTrack CRM mal affiché dans Excel : encodage, séparateur, format de date... Découvrez comment corriger ces 3 problèmes en quelques minutes.'
+meta_title: 'Exporter les données SalesTrack CRM en CSV : les erreurs qui cassent
+  le fichier'
+meta_description: 'Export CSV SalesTrack CRM mal affiché dans Excel : encodage, séparateur,
+  format de date... Découvrez comment corriger ces 3 problèmes en quelques minutes.'
 min_words: 970
 status: published
 featured_image: /blog/8837-pourquoi-votre-export-csv-salestrack-crm-s-affiche-mal.jpg
 link_anchors:
 - text: comment exporter les données du CRM SalesTrack au format CSV
   max: 5
+related_posts:
+- 6254-calcul-prix-de-vente-avec-taux-de-marge-comment-garantir-votre-rentabilite
+- 8699-strategie-corporate-comment-definir-les-orientations-globales-de-votre-entreprise
+- 5928-mal-configurer-le-crm-leadflow-automation-ce-qui-plante
+- 6395-crm-clientpulse-pro-2024-face-a-la-concurrence
 ---
-
 <p>J'ai perdu presque une heure là-dessus la semaine dernière. Mon export CSV depuis SalesTrack CRM s'ouvrait dans Excel avec tout sur une seule colonne, des caractères bizarres à la place des accents, et des dates complètement illisibles. Résultat : mon assistante a dû tout retraiter à la main avant de pouvoir envoyer les relances clients. Une heure de travail inutile, juste à cause d'un mauvais paramétrage d'export.</p>
 
 <p>Si vous êtes dans la même situation, ce guide est fait pour vous. Je vais vous expliquer concrètement pourquoi ça arrive et comment y remédier, sans jargon inutile.</p>
