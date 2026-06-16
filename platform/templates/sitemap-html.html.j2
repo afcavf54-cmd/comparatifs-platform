@@ -59,6 +59,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);fon
 .sitemap-full{grid-column:1/-1}
 .cat-group-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);padding-bottom:8px;border-bottom:1px solid var(--border);margin-bottom:12px;margin-top:20px}
 .cat-group-title:first-child{margin-top:0}
+.sitemap-count{font-size:13px;color:var(--ink3);font-weight:400;margin-left:6px}
 @media(max-width:768px){.sitemap-grid{grid-template-columns:1fr}.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
 </style>
 {% if site.analytics_clicky is defined and site.analytics_clicky %}
@@ -79,17 +80,33 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);fon
 
   <div class="sitemap-grid">
 
+    {# ── Pages principales — liens conditionnels selon la config du site ── #}
     <div class="sitemap-section">
       <h2>Pages principales</h2>
       <ul>
         <li><a href="/">Accueil</a></li>
+        {% if site.has_a_propos is defined and site.has_a_propos %}
+        <li><a href="/a-propos/">À propos</a></li>
+        {% endif %}
+        {% if site.has_blog is defined and site.has_blog %}
+        <li><a href="/blog/">Blog</a></li>
+        {% endif %}
+        {# "Nos comparateurs" : pattern identique au footer/nav — affiché si
+           has_comparateurs n'est pas défini (rétro-compat sites legacy) OU
+           explicitement à true. Caché si défini à false (blog-only). #}
+        {% if site.has_comparateurs is not defined or site.has_comparateurs %}
         <li><a href="/nos-comparateurs">Nos comparateurs</a></li>
+        {% endif %}
         <li><a href="/contact">Contact</a></li>
         <li><a href="/mentions-legales">Mentions légales</a></li>
         <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
       </ul>
     </div>
 
+    {# ── Nos classements — section ENTIÈRE conditionnée sur présence ───────
+       Si pas de classement (cas cadeauclic blog-only), la section disparaît
+       au lieu d'afficher un cadre vide avec juste le titre. #}
+    {% if classements_by_category or products %}
     <div class="sitemap-section sitemap-full">
       <h2>Nos classements</h2>
       {% if classements_by_category %}
@@ -114,6 +131,55 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);fon
         </ul>
       {% endif %}
     </div>
+    {% endif %}
+
+    {# ── Articles du blog — section pleine largeur, conditionnée sur posts ─
+       Nécessite que generate.py expose `posts` au render (depuis juin 2026).
+       Chaque post est un dict avec .title, .slug, .categorie, .date. #}
+    {% if posts %}
+    <div class="sitemap-section sitemap-full">
+      <h2>Articles du blog <span class="sitemap-count">({{ posts | length }})</span></h2>
+      {# Tri par catégorie si la propriété existe sur les posts, sinon liste plate #}
+      {% set ns = namespace(by_cat={}, no_cat=[]) %}
+      {% for p in posts %}
+        {% set c = (p.categorie or p.category or '') | string | trim %}
+        {% if c %}
+          {% if c not in ns.by_cat %}
+            {% set _ = ns.by_cat.update({c: []}) %}
+          {% endif %}
+          {% set _ = ns.by_cat[c].append(p) %}
+        {% else %}
+          {% set _ = ns.no_cat.append(p) %}
+        {% endif %}
+      {% endfor %}
+
+      {% if ns.by_cat %}
+        {% for cat, cat_posts in ns.by_cat.items() %}
+        <div class="cat-group-title">{{ cat }} <span class="sitemap-count">({{ cat_posts | length }})</span></div>
+        <ul>
+          {% for p in cat_posts %}
+          <li><a href="/blog/{{ p.slug }}/">{{ p.title }}</a></li>
+          {% endfor %}
+        </ul>
+        {% endfor %}
+        {% if ns.no_cat %}
+        <div class="cat-group-title">Autres</div>
+        <ul>
+          {% for p in ns.no_cat %}
+          <li><a href="/blog/{{ p.slug }}/">{{ p.title }}</a></li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      {% else %}
+        {# Aucun post n'a de catégorie → liste plate #}
+        <ul>
+          {% for p in posts %}
+          <li><a href="/blog/{{ p.slug }}/">{{ p.title }}</a></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    {% endif %}
 
   </div>
 </main>
