@@ -25,12 +25,9 @@
 body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
 a{color:var(--accent2);text-decoration:none}
 .container{max-width:1100px;margin:0 auto;padding:0 5vw}
-/* Padding réduit (avant : 64px top / 32px bot) pour rapprocher le titre du header
-   et le titre des filtres. Sur mobile (≤600px) on resserre encore. */
 .blog-header{padding:32px 0 12px;text-align:center}
 .blog-title{font-family:'DM Serif Display',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:12px}
 .blog-sub{font-size:18px;color:var(--ink3);max-width:600px;margin:0 auto}
-/* Margin réduit (avant : 32px top / 40px bot) pour coller les filtres au titre. */
 .blog-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0 32px}
 .blog-filter{font-size:13px;font-weight:600;color:var(--ink2);padding:8px 16px;border-radius:24px;border:1px solid var(--border);background:var(--surface);transition:.15s;cursor:pointer}
 .blog-filter:hover,.blog-filter.active{color:var(--accent);border-color:var(--accent)}
@@ -47,15 +44,6 @@ a{color:var(--accent2);text-decoration:none}
 .blog-card-excerpt{font-size:14px;color:var(--ink3);line-height:1.55;margin-bottom:16px;flex:1}
 .blog-card-meta{font-size:12px;color:var(--ink3);margin-top:auto}
 .blog-empty{text-align:center;padding:80px 0;color:var(--ink3);font-size:16px}
-/* Pagination style "rond bleu pour la page courante + ... + séparateur + Suivant".
-   Match visuel de la maquette fournie : numéros centrés sur 32px, page courante
-   en rond bleu plein, ellipsis pour gros volumes, séparateur vertical avant
-   Précédent/Suivant, et flèche dans cercle foncé.
-   ⚠️ ATTENTION : le sélecteur global `nav` défini dans _nav.html.j2 applique
-   `flex-direction:column; background:var(--ink); position:sticky; padding:0 5vw`
-   à TOUS les <nav>, y compris notre <nav class="blog-pagination">. On override
-   donc explicitement ces propriétés pour éviter que la pagination s'affiche en
-   colonne dans un fond sombre. */
 .blog-pagination{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:4px;margin:48px 0 24px;flex-wrap:nowrap;font-size:15px;background:transparent;padding:0;position:static}
 .blog-page-numbers{display:flex;align-items:center;gap:4px}
 .blog-page-num{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;padding:0 8px;border-radius:50%;background:transparent;border:none;color:var(--ink2);text-decoration:none;font-weight:500;transition:color .15s}
@@ -63,20 +51,16 @@ a{color:var(--accent2);text-decoration:none}
 .blog-page-current{background:var(--accent);color:#fff;font-weight:600;cursor:default}
 .blog-page-current:hover{color:#fff}
 .blog-page-ellipsis{display:inline-flex;align-items:center;justify-content:center;min-width:24px;color:var(--ink3);user-select:none}
-/* Séparateur vertical entre les numéros et le bouton Précédent/Suivant */
 .blog-page-sep{display:inline-block;width:1px;height:20px;background:var(--border);margin:0 12px}
-/* Lien Précédent/Suivant : texte + flèche dans rond foncé */
 .blog-page-link{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;font-weight:500;padding:6px 4px;background:transparent;border:none;transition:opacity .15s}
 .blog-page-link:hover{opacity:.6;background:transparent}
 .blog-page-disabled{display:inline-flex;align-items:center;gap:8px;color:var(--ink3);font-weight:500;padding:6px 4px;opacity:.4;cursor:default;background:transparent;border:none}
 .blog-page-arrow{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:11px;line-height:1;flex-shrink:0}
 .blog-page-disabled .blog-page-arrow{background:var(--ink3)}
 @media(max-width:600px){.blog-pagination{gap:2px;font-size:14px}.blog-page-num{min-width:28px;height:28px;padding:0 6px}.blog-page-sep{margin:0 6px}.blog-page-link,.blog-page-disabled{padding:4px 2px}.blog-page-link span:not(.blog-page-arrow){display:none}.blog-page-disabled span:not(.blog-page-arrow){display:none}}
-/* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
 @media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){
   .blog-grid{grid-template-columns:1fr}
-  /* Resserrage supplémentaire sur mobile : header + filtres ultra compacts */
   .blog-header{padding:20px 0 8px}
   .blog-title{margin-bottom:8px}
   .blog-filters{margin:10px 0 24px}
@@ -171,10 +155,10 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <h1 class="blog-title">Le Blog</h1>
   </div>
   <div class="blog-filters">
-    <a class="blog-filter active" href="/blog/">Tous <span class="blog-filter-count">(28)</span></a>
+    <a class="blog-filter active" href="/blog/">Tous <span class="blog-filter-count">(29)</span></a>
     <a class="blog-filter" href="/categorie-ressources-humaines/">Ressources Humaines <span class="blog-filter-count">(14)</span></a>
     <a class="blog-filter" href="/categorie-gestion-d-entreprise/">Gestion d'entreprise <span class="blog-filter-count">(6)</span></a>
-    <a class="blog-filter" href="/categorie-entrepreneuriat/">Entrepreneuriat <span class="blog-filter-count">(3)</span></a>
+    <a class="blog-filter" href="/categorie-entrepreneuriat/">Entrepreneuriat <span class="blog-filter-count">(4)</span></a>
     <a class="blog-filter" href="/categorie-salarie/">Salarié <span class="blog-filter-count">(2)</span></a>
     <a class="blog-filter" href="/categorie-entreprenariat/">Entreprenariat <span class="blog-filter-count">(2)</span></a>
     <a class="blog-filter" href="/categorie-comptabilite/">Comptabilité <span class="blog-filter-count">(1)</span></a>
@@ -183,6 +167,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
 <main class="container">
   <div class="blog-grid">
+    <a href="/9823-les-6-acquis-de-la-formation-seo-vite-une-formation/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/9823-les-6-acquis-de-la-formation-seo-vite-une-formation.jpg" alt="Les 6 acquis de la formation SEO Vite-une-Formation" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Entrepreneuriat</span>        <h2 class="blog-card-title">Les 6 acquis de la formation SEO Vite-une-Formation</h2>
+<p class="blog-card-excerpt">Ça fait maintenant plusieurs années que j'accompagne des dirigeants et des indépendants dans le choix de leurs outils et de leurs formations. Et une question revient souvent :…</p><div class="blog-card-meta">16 juin 2026</div>      </div>
+    </a>
     <a href="/6757-les-6-principes-de-la-methode-de-presentation-a-impact-powerpoint/" class="blog-card">
       <div class="blog-card-img">
         <img src="/blog/6757-les-6-principes-de-la-methode-de-presentation-a-impact-powerpoint.jpg" alt="Les 6 principes de la méthode de présentation à impact PowerPoint" loading="lazy">
