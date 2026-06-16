@@ -13,9 +13,10 @@ link_anchors:
 - text: l'installation de l'ERP intégré ManagePro Suite
   max: 5
 related_posts:
-- 4544-sap-l-erp-de-reference-explique-simplement
-- 4096-fieldforce-connect-android-le-crm-mobile-sans-filtre
 - 7831-crm-basique-ou-salesforce-premium-quelle-difference
+- 4096-fieldforce-connect-android-le-crm-mobile-sans-filtre
+- 4544-sap-l-erp-de-reference-explique-simplement
+- 2823-tarif-mensuel-du-crm-saas-cloudlead-manager-sans-surprise
 featured_image: /blog/8975-comment-installer-l-erp-integre-managepro-suite.jpg
 ---
 <h2>Pourquoi j'ai choisi ManagePro Suite pour mon agence</h2>

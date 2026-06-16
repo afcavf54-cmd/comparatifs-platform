@@ -14,8 +14,9 @@ link_anchors:
 - text: le CRM mobile FieldForce Connect en version Android
   max: 5
 related_posts:
-- 7831-crm-basique-ou-salesforce-premium-quelle-difference
 - 8975-comment-installer-l-erp-integre-managepro-suite
+- 7831-crm-basique-ou-salesforce-premium-quelle-difference
+- 2823-tarif-mensuel-du-crm-saas-cloudlead-manager-sans-surprise
 - 4544-sap-l-erp-de-reference-explique-simplement
 ---
 <p>Ça fait maintenant presque deux ans que j'utilise des outils CRM sur mobile pour gérer le suivi client de mon agence. Et franchement, j'en ai testé quelques-uns. Des beaux, des moches, des trop complexes, des trop vides. Quand on gère une équipe de 6 personnes avec des commerciaux qui bougent, des briefs clients à suivre et des relances qui ne doivent pas tomber dans les oubliettes, le CRM mobile n'est plus un luxe. C'est juste une nécessité.</p>
