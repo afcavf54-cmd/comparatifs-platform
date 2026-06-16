@@ -17,7 +17,12 @@ async function ghGet(path: string): Promise<{ content: string; sha: string } | n
   return { content: Buffer.from(data.content, 'base64').toString('utf-8'), sha: data.sha }
 }
 
-async function ghPut(path: string, content: string, message: string, sha?: string): Promise<boolean> {
+// Renvoie { ok, status, error } pour avoir des messages d'erreur exploitables
+// côté client (status code GitHub + message) au lieu d'un simple `boolean`
+// qui masque le vrai problème (409 stale sha vs 404 vs 422 vs 403 rate-limit).
+async function ghPut(
+  path: string, content: string, message: string, sha?: string,
+): Promise<{ ok: boolean; status: number; error?: string }> {
   const body: any = {
     message,
     content: Buffer.from(content, 'utf-8').toString('base64'),
@@ -26,7 +31,15 @@ async function ghPut(path: string, content: string, message: string, sha?: strin
   const res = await fetch(`${BASE}/repos/${repoPath()}/contents/${path}`, {
     method: 'PUT', headers: { ...headers, 'Content-Type': 'application/json' }, body: JSON.stringify(body),
   })
-  return res.ok
+  if (res.ok) return { ok: true, status: res.status }
+  let err = ''
+  try {
+    const data = await res.json()
+    err = data?.message || JSON.stringify(data).slice(0, 200)
+  } catch {
+    err = await res.text().catch(() => 'unknown')
+  }
+  return { ok: false, status: res.status, error: err }
 }
 
 async function ghDelete(path: string, sha: string, message: string): Promise<boolean> {
@@ -51,16 +64,12 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ site
     content_md: parsed.body,
     sha: file.sha,
   }
-  // Normalisation : assurer 12 mois d'historique (fusion avec ce qui existe)
   brand.historique_12_mois = normalizeHistory12Months(brand.historique_12_mois)
-  // Assurer rating présent
   if (!brand.rating) brand.rating = { value: 0, count: 0 }
-  // Tableaux toujours présents
   brand.codes = brand.codes || []
   brand.faq = brand.faq || []
   brand.related_brands = brand.related_brands || []
 
-  // Domaine du site (pour preview)
   let domain = ''
   const configFile = await ghGet(`platform/sites/${siteId}/config.yaml`)
   if (configFile) {
@@ -71,6 +80,16 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ site
 }
 
 // ─── PUT : sauvegarde une marque (override complet) ───────────────────────
+// CRITIQUE — gestion du sha :
+// Avant ce patch, le PUT utilisait `body.sha` directement. Mais le client
+// reçoit le sha UNIQUEMENT au load initial — après chaque save, GitHub
+// génère un nouveau sha qui n'est PAS renvoyé au client. Donc au 2ème save
+// (typiquement "Sauvegarder" puis "Publier"), le sha envoyé est obsolète,
+// GitHub renvoie 409 Conflict, la route renvoie 500.
+//
+// Fix : toujours fetch le sha FRAIS via ghGet juste avant le ghPut. Idempotent,
+// élimine définitivement la race condition. Coût : 1 requête GitHub
+// supplémentaire (~50-100ms), négligeable.
 export async function PUT(req: NextRequest, { params }: { params: Promise<{ siteId: string; marqueSlug: string }> }) {
   const { siteId, marqueSlug } = await params
   const body = await req.json()
@@ -79,7 +98,6 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
     return NextResponse.json({ error: 'marque et slug requis' }, { status: 400 })
   }
 
-  // Si le slug a changé, on supprime l'ancien fichier et on crée le nouveau
   const oldPath = `platform/sites/${siteId}/codes_promo/${marqueSlug}.md`
   const newPath = `platform/sites/${siteId}/codes_promo/${body.slug}.md`
   const slugChanged = body.slug !== marqueSlug
@@ -110,15 +128,48 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
   const raw = serializeBrand(brand)
 
   if (slugChanged) {
-    const okCreate = await ghPut(newPath, raw, `HUB: Rename brand codes promo → ${brand.slug}`)
-    if (!okCreate) return NextResponse.json({ error: 'Erreur création (slug changé)' }, { status: 500 })
+    // Renommage : vérifier que le nouveau path n'existe pas déjà
+    // (sinon on écraserait silencieusement une autre marque).
+    const collision = await ghGet(newPath)
+    if (collision) {
+      return NextResponse.json({
+        error: `Une marque existe déjà avec le slug "${brand.slug}". Choisis un autre slug.`,
+      }, { status: 409 })
+    }
+    // Créer le nouveau
+    const createRes = await ghPut(newPath, raw, `HUB: Rename brand codes promo → ${brand.slug}`)
+    if (!createRes.ok) {
+      return NextResponse.json({
+        error: `Erreur création (GitHub ${createRes.status}) : ${createRes.error || 'inconnue'}`,
+      }, { status: 500 })
+    }
+    // Supprimer l'ancien
     const oldFile = await ghGet(oldPath)
     if (oldFile) await ghDelete(oldPath, oldFile.sha, `HUB: Delete old brand slug ${marqueSlug}`)
   } else {
-    const ok = await ghPut(newPath, raw, `HUB: Update brand codes promo — ${brand.marque}`, body.sha)
-    if (!ok) return NextResponse.json({ error: 'Erreur sauvegarde' }, { status: 500 })
+    // Update sur place : on récupère le sha FRAIS du fichier actuel
+    // (peu importe ce que le client a envoyé — son sha peut être obsolète).
+    const existing = await ghGet(newPath)
+    const freshSha = existing?.sha   // undefined si le fichier n'existe pas (création initiale)
+    const updateRes = await ghPut(
+      newPath, raw,
+      `HUB: Update brand codes promo — ${brand.marque}`,
+      freshSha,
+    )
+    if (!updateRes.ok) {
+      // Loggue côté serveur pour les futurs diags Vercel
+      console.error(
+        `[codes-promo PUT] échec ghPut ${newPath} sha=${freshSha} status=${updateRes.status} err=${updateRes.error}`
+      )
+      return NextResponse.json({
+        error: `Erreur sauvegarde (GitHub ${updateRes.status}) : ${updateRes.error || 'inconnue'}`,
+      }, { status: 500 })
+    }
   }
-  return NextResponse.json({ ok: true, slug: brand.slug })
+  // On renvoie aussi le nouveau sha au cas où le client veuille l'utiliser
+  // (optionnel — le fix ci-dessus ne dépend plus du sha client mais autant le donner)
+  const fresh = await ghGet(newPath)
+  return NextResponse.json({ ok: true, slug: brand.slug, sha: fresh?.sha })
 }
 
 // ─── DELETE : supprime une marque ──────────────────────────────────────────
