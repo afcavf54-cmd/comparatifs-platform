@@ -4,15 +4,21 @@ slug: 6505-conges-payes-et-retraite-progressive-quelles-regles-appliquer
 date: '2026-06-16T08:00:00+02:00'
 categorie: Salarié
 meta_title: 'Congés en retraite progressive : droits et calcul des jours acquis'
-meta_description: 'Retraite progressive et congés payés : les règles à connaître pour éviter les erreurs de calcul et gérer sereinement ce cas particulier dans votre entreprise.'
+meta_description: 'Retraite progressive et congés payés : les règles à connaître pour
+  éviter les erreurs de calcul et gérer sereinement ce cas particulier dans votre
+  entreprise.'
 min_words: 1200
 status: published
 featured_image: /blog/6505-conges-payes-et-retraite-progressive-quelles-regles-appliquer.jpg
 link_anchors:
 - text: nombre de jours de congés en retraite progressive
   max: 4
+related_posts:
+- 2242-accord-implicite-de-rupture-conventionnelle-mythe-ou-realite-juridique
+- 4100-je-fais-moins-d-heures-que-mon-contrat-cdi-comment-faire-respecter-vos-droits
+- 3554-les-inconvenients-du-cdi-interimaire-avant-de-signer
+- 1340-horaire-decale-reglementation-remuneration-et-organisation-du-travail
 ---
-
 <p>J'ai mis du temps à comprendre comment fonctionnent les congés payés quand un salarié passe en retraite progressive. Franchement, la première fois qu'un de mes collaborateurs m'en a parlé, j'ai cru que c'était simple. Un mi-temps aménagé, quelques jours de congés au prorata, basta. Pas du tout.</p>
 
 <p>La réalité est bien plus tordue. Et si vous gérez une équipe, même petite, vous allez forcément tomber sur ce cas un jour.</p>
