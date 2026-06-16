@@ -4,15 +4,18 @@ slug: 6176-business-plan-financepro-smart-les-pieges-des-debutants
 date: '2026-06-16T17:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Créer un business plan avec FinancePro Smart : les erreurs à éviter'
-meta_description: Éviter les erreurs classiques sur FinancePro Smart commence par comprendre à quoi sert vraiment un business plan. Retours d'expérience d'un fondateur aguerri.
+meta_description: Éviter les erreurs classiques sur FinancePro Smart commence par
+  comprendre à quoi sert vraiment un business plan. Retours d'expérience d'un fondateur
+  aguerri.
 min_words: 960
 status: published
 featured_image: /blog/6176-business-plan-financepro-smart-les-pieges-des-debutants.jpg
 link_anchors:
 - text: comment créer un business plan avec FinancePro Smart
   max: 5
+related_posts:
+- 6367-business-plan-planexpert-les-pieges-frequents
 ---
-
 <p>J'ai créé ma première startup à 22 ans. J'ai passé trois semaines sur mon business plan. Et j'ai quand même fait à peu près toutes les erreurs possibles.</p>
 
 <p>Aujourd'hui, avec quelques entreprises au compteur et une équipe de 30 personnes, je regarde les plans que me montrent parfois des founders débutants et je reconnais exactement les mêmes pièges. Toujours les mêmes. Partout.</p>

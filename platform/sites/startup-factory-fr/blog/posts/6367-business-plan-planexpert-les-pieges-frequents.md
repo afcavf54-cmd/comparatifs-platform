@@ -13,7 +13,8 @@ featured_image: /blog/6367-business-plan-planexpert-les-pieges-frequents.jpg
 link_anchors:
 - text: comment faire un business plan avec PlanExpert
   max: 5
-related_posts: []
+related_posts:
+- 6176-business-plan-financepro-smart-les-pieges-des-debutants
 ---
 <h2>PlanExpert : pourquoi je déconseille ce logiciel pour ton business plan</h2>
 
