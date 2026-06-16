@@ -381,6 +381,7 @@ CONTRAINTES DE FORMAT (impératif) :
 - Pas de bullets unicode • ou ·
 - Pas de markdown ** _ ## etc. : uniquement du HTML
 - Pas de <div>, pas de <span>, pas de classes CSS — du HTML sémantique simple uniquement
+- INTERDICTION ABSOLUE de mettre un lien <a href="..."> à l'intérieur d'un titre <h2>, <h3>, <h4>, <h5> ou <h6>. Les titres sont du texte pur. Les liens vont uniquement dans les paragraphes <p>, listes <li>, ou citations <blockquote>.
 
 CONTRAINTES DE PONCTUATION (impératif) :
 - Tout titre sous forme de question DOIT se terminer par un point d'interrogation '?'
@@ -419,10 +420,16 @@ CONTRAINTES DE PONCTUATION (impératif) :
             f"Longueur cible : {min_words} à {max_w} mots (minimum {min_words} mots impératif). "
             f"L'article doit être informatif, structuré, et utile au lecteur cible défini dans ton persona.")
     html = strip_code_fences(call_claude(system, user, max_tokens=min(8000, max(2000, max_w * 4))))
+    # Defensive : retirer les liens que Claude aurait pu mettre dans les <hN>
+    # malgré l'interdiction explicite dans le prompt. Cas rare mais arrivé.
+    html = strip_links_from_headings(html)
     if mots_imposes:
         for m in mots_imposes:
             if m.get('url'):
                 html = _wrap_first_occurrence_with_link(html, m['text'], m['url'])
+    # Re-strip après les wraps (ceinture + bretelles) — _wrap_first_occurrence
+    # skippe déjà les <hN> mais on protège contre un éventuel bug de regex.
+    html = strip_links_from_headings(html)
     return html
 
 
@@ -470,15 +477,25 @@ def _parse_mots_imposes_csv(raw: str) -> list[dict]:
 
 
 def _wrap_first_occurrence_with_link(html: str, text: str, url: str) -> str:
+    """Wrap la PREMIÈRE occurrence de `text` dans `html` avec un <a href="url">.
+    Skippe les blocs où on ne veut surtout pas de lien :
+      - <a>...</a> existants (évite les liens imbriqués, invalides en HTML)
+      - <h1>...</h6> (un titre ne doit pas contenir de lien : mauvais SEO,
+        mauvaise UX, et casse la hiérarchie sémantique du document)
+    """
     if not text or not url:
         return html
     pattern = re.compile(r'\b' + re.escape(text) + r'\b', re.IGNORECASE)
-    parts = re.split(r'(<a\b[^>]*>.*?</a>)', html, flags=re.IGNORECASE | re.DOTALL)
+    # Split sur les zones intouchables : <a>...</a> et <hN>...</hN>
+    parts = re.split(
+        r'(<a\b[^>]*>.*?</a>|<h[1-6]\b[^>]*>.*?</h[1-6]>)',
+        html, flags=re.IGNORECASE | re.DOTALL,
+    )
     done = False
     out: list[str] = []
     for p in parts:
-        is_anchor = p.lower().startswith('<a')
-        if not done and not is_anchor:
+        is_skip = bool(re.match(r'<(a|h[1-6])\b', p, re.IGNORECASE))
+        if not done and not is_skip:
             new_p, n = pattern.subn(
                 lambda m: f'<a href="{url}">{m.group(0)}</a>',
                 p, count=1,
@@ -489,6 +506,39 @@ def _wrap_first_occurrence_with_link(html: str, text: str, url: str) -> str:
         else:
             out.append(p)
     return ''.join(out)
+
+
+def strip_links_from_headings(html: str) -> str:
+    """Retire les balises <a> à l'intérieur des titres <h1> à <h6>, en
+    gardant uniquement le texte. Un titre ne doit pas contenir de lien :
+      - Mauvais pour le SEO (Google interprète le titre comme l'ancre du lien)
+      - Mauvais UX (un titre cliquable est ambigü)
+      - Brise la hiérarchie sémantique (l'utilisateur s'attend à un titre
+        descriptif, pas à une CTA)
+
+    Defensive : appelée après génération Claude (au cas où le modèle aurait
+    quand même mis un lien dans un titre malgré le prompt) ET après tout
+    post-traitement qui ajoute des liens (maillage interne, etc).
+
+    Exemple :
+        <h2>Notre avis sur <a href="/qonto">Qonto</a> en 2026</h2>
+        → <h2>Notre avis sur Qonto en 2026</h2>
+    """
+    def clean_heading(m: re.Match) -> str:
+        full = m.group(0)
+        # Retirer les <a ...>...</a>, garder le texte (group 1 du sous-regex)
+        return re.sub(
+            r'<a\b[^>]*>(.*?)</a>',
+            r'\1',
+            full,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+    return re.sub(
+        r'<h[1-6]\b[^>]*>.*?</h[1-6]>',
+        clean_heading,
+        html,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
 
 
 # ─── Sérialisation .md (frontmatter YAML + body) ─────────────────────────
