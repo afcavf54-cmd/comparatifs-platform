@@ -9,6 +9,39 @@ const headers = {
 }
 const repoPath = () => `${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}`
 
+// ─── Sanitize d'un slug pour usage en chemin de fichier ────────────────────
+// PROBLÈME résolu : avant ce sanitize, si l'utilisateur tapait un slug avec
+// un slash final (ex. "mon-article/"), le code faisait
+//   `${slug}.md` = "mon-article/.md"
+// → GitHub interprétait le `/` comme un séparateur et créait un SOUS-DOSSIER
+// `mon-article/` contenant un fichier `.md` (juste l'extension, sans nom).
+// L'article devenait introuvable dans le dashboard et le site.
+//
+// Règles de normalisation :
+//   1. Lowercase
+//   2. Strip ".." (path traversal)
+//   3. Convertir / et \ en tirets
+//   4. Strip tout caractère non [a-z0-9-]
+//   5. Collapse multiples tirets en un seul
+//   6. Strip tirets début/fin
+//
+// Exemples :
+//   "mon-article/"             → "mon-article"
+//   "mon article/"             → "mon-article"
+//   "FOO/BAR"                  → "foo-bar"
+//   "../../etc/passwd"         → "etc-passwd"
+//   "https://www.x.com/path"   → "https-www-x-com-path"  (toujours casé mais sans dossier)
+//   "____"                     → ""        (rejeté car vide)
+function sanitizeSlug(rawSlug: any): string {
+  if (typeof rawSlug !== 'string') return ''
+  return rawSlug.trim().toLowerCase()
+    .replace(/\.\.+/g, '')           // strip ".." (path traversal)
+    .replace(/[\/\\]+/g, '-')        // convertir slashes/backslashes en tirets
+    .replace(/[^a-z0-9-]+/g, '-')   // strip caractères non-slug-friendly
+    .replace(/-+/g, '-')             // collapse multiples tirets
+    .replace(/^-+|-+$/g, '')         // strip tirets début/fin
+}
+
 async function ghGet(path: string): Promise<{ content: string; sha: string } | null> {
   const res = await fetch(`${BASE}/repos/${repoPath()}/contents/${path}`, { headers, cache: 'no-store' })
   if (!res.ok) return null
@@ -98,8 +131,18 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ site
 export async function PUT(req: NextRequest, { params }: { params: Promise<{ siteId: string; postSlug: string }> }) {
   const { siteId, postSlug } = await params
   const body = await req.json()
-  const { title, slug, date, meta_title, meta_description, featured_image, status, content_md, related_posts, link_anchors, min_words, sha } = body
-  if (!title || !slug) return NextResponse.json({ error: 'title et slug requis' }, { status: 400 })
+  const { title, slug: rawSlug, date, meta_title, meta_description, featured_image, status, content_md, related_posts, link_anchors, min_words, sha } = body
+  if (!title || !rawSlug) return NextResponse.json({ error: 'title et slug requis' }, { status: 400 })
+
+  // ── Sanitize le slug AVANT toute construction de path. ────────────────
+  // Critique : sans ce sanitize, un slash final dans le slug crée un sous-
+  // dossier et perd l'article. cf. la fonction sanitizeSlug ci-dessus.
+  const slug = sanitizeSlug(rawSlug)
+  if (!slug || slug.length < 2) {
+    return NextResponse.json({
+      error: `Slug invalide après normalisation : "${rawSlug}" → "${slug}". Utilise uniquement des lettres minuscules, chiffres et tirets (ex: "mon-article").`,
+    }, { status: 400 })
+  }
 
   // Normalisation : accepte body.categories[] (nouvelle UI) ou body.categorie (legacy)
   const cats = normalizeCategories(body)
@@ -111,6 +154,17 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
   const oldPath = `platform/sites/${siteId}/blog/posts/${postSlug}.md`
   const newPath = `platform/sites/${siteId}/blog/posts/${slug}.md`
   const slugChanged = slug !== postSlug
+
+  // Si le slug change et que le nouveau path existe déjà → conflit.
+  // Sans ce check, on écraserait silencieusement un article existant.
+  if (slugChanged) {
+    const existing = await ghGet(newPath)
+    if (existing) {
+      return NextResponse.json({
+        error: `Un article existe déjà avec le slug "${slug}". Choisis un autre slug.`,
+      }, { status: 409 })
+    }
+  }
 
   const post: any = {
     title, slug, date,
