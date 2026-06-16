@@ -9,8 +9,11 @@ import { parseCSV as parseCSVShared } from '../../../../../../lib/csv'
  * un aperçu des articles avec leur statut d'éligibilité :
  *   - eligible       : sera publié au prochain déclenchement
  *   - scheduled      : date future, attend la date
+ *   - draft          : marqueur de brouillon dans date_publication (article
+ *                      sera généré par Claude mais marqué status: draft, donc
+ *                      invisible sur le site live tant que pas validé)
  *   - already_done   : déjà publié (présent dans schedule_processed.json)
- *   - invalid_date   : date renseignée mais format invalide
+ *   - invalid_date   : date renseignée mais format invalide ET pas un marker draft
  *   - skip_no_title  : ligne sans titre, sera ignorée
  *
  * Utilisé par la modale "Vérifier la sheet" du dashboard pour montrer à
@@ -29,10 +32,25 @@ interface SheetRow {
   nombre_mots_minimum: string
   link_anchors: string
   // Calculés :
-  status: 'eligible' | 'scheduled' | 'already_done' | 'invalid_date' | 'skip_no_title'
+  status: 'eligible' | 'scheduled' | 'draft' | 'already_done' | 'invalid_date' | 'skip_no_title'
   pub_at?: string             // ISO datetime calculé
   key?: string                // clé d'idempotence
   reason?: string             // raison de skip si applicable
+}
+
+// ─── Markers de brouillon (alignés avec blog_publish_scheduled.py) ────────
+// Quand la colonne date_publication contient l'un de ces mots-clés (case
+// insensitive), l'article est GÉNÉRÉ par Claude mais avec status: draft.
+// Il N'APPARAÎT PAS sur le site live tant que tu ne l'as pas validé en
+// passant manuellement status: draft → published. Pratique pour la rédaction
+// d'articles à valider par un annonceur avant publication.
+const DRAFT_MARKERS = new Set([
+  'draft', 'brouillon', 'wip', 'pending', 'todo',
+  'à valider', 'a valider',
+])
+
+function isDraftMarker(dateStr: string): boolean {
+  return DRAFT_MARKERS.has((dateStr || '').trim().toLowerCase())
 }
 
 // Wrapper sur le parseur partagé qui aligne la signature (retourne juste les
@@ -199,6 +217,27 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ siteId
     if (!titre) {
       return { ...base, status: 'skip_no_title', reason: 'Pas de titre' }
     }
+
+    // ── Marker brouillon (draft / brouillon / wip / pending / todo / à valider)
+    // Détecté AVANT le parse de date pour ne pas tomber en 'invalid_date'.
+    // L'article sera généré par Claude mais avec status: draft dans le .md,
+    // donc invisible sur le site live tant que pas validé manuellement.
+    if (isDraftMarker(dateStr)) {
+      // Clé d'idempotence basée sur le titre seul (la valeur exacte du marker
+      // peut changer entre "draft" et "brouillon" sans qu'on regénère l'article)
+      const key = `${titre}__DRAFT`
+      // On vérifie quand même si on a déjà traité ce brouillon
+      if (processedSet.has(key) || existingTitles.has(normalizeTitle(titre))) {
+        return { ...base, status: 'already_done', key, reason: 'Brouillon déjà généré — édite-le directement dans le repo' }
+      }
+      return {
+        ...base,
+        status: 'draft',
+        key,
+        reason: 'Article généré en brouillon — invisible sur le site tant que tu ne valides pas',
+      }
+    }
+
     // Si date vide → immédiat
     let pubAt: Date
     let key: string
@@ -233,6 +272,7 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ siteId
     total: rows.length,
     eligible: rows.filter(r => r.status === 'eligible').length,
     scheduled: rows.filter(r => r.status === 'scheduled').length,
+    draft: rows.filter(r => r.status === 'draft').length,
     already_done: rows.filter(r => r.status === 'already_done').length,
     invalid: rows.filter(r => r.status === 'invalid_date' || r.status === 'skip_no_title').length,
   }
