@@ -119,37 +119,142 @@
 </head>
 <body>
 
-<div class="nav-backdrop" id="navBackdrop"></div>
-<header>
-  <div class="nav">
-    <a href="/" class="logo">
-      <img src="/logo.png" alt="cadeauclic.com" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
-      <span class="logo-fallback" style="display:none">🎁 cadeauclic.com</span>
+<style>
+  /* ─── Palette cadeauclic (scope local au partial) ────────────────────
+     Variables redéfinies ici pour que le header fonctionne même sur les
+     pages communes (blog, avis) qui n'ont pas le :root global de la home.
+     Les noms commencent par --cdc-* pour éviter tout conflit avec d'autres
+     variables CSS du site (--ink, --accent, etc. du thème commun). */
+  :root {
+    --cdc-rose-50: #fff5f8;
+    --cdc-rose-100: #ffe7ef;
+    --cdc-rose-200: #ffd0e0;
+    --cdc-rose-600: #ec3f76;
+    --cdc-rose-700: #cf2c61;
+    --cdc-coral: #ff7a59;
+    --cdc-ink: #251d27;
+    --cdc-ink-soft: #5d5360;
+    --cdc-line: #f0e3e9;
+    --cdc-grad: linear-gradient(100deg, #ff5b8a, #ff7a59);
+  }
+
+  /* ─── Header sticky ────────────────────────────────────────────────── */
+  .cdc-header { position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,.92); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--cdc-line);
+    font-family: "Nunito Sans", system-ui, -apple-system, sans-serif; }
+  .cdc-header * { box-sizing: border-box; }
+  .cdc-header a { text-decoration: none; color: inherit; }
+
+  .cdc-nav { display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 28px; gap: 24px; max-width: 1200px; margin: 0 auto; }
+
+  .cdc-logo { display: flex; align-items: center; gap: 6px;
+    font-family: "Poppins", system-ui, sans-serif;
+    font-weight: 800; font-size: 1.35rem; color: var(--cdc-ink); }
+  .cdc-logo .mark { font-size: 1.55rem; }
+  .cdc-logo span.accent { color: var(--cdc-rose-600); }
+  .cdc-logo-img { height: 40px; width: auto; max-width: 200px; display: block; }
+
+  .cdc-nav-collapse { display: flex; align-items: center; gap: 30px; }
+  .cdc-menu { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
+  .cdc-menu a { font-family: "Poppins", system-ui, sans-serif; font-weight: 600;
+    color: var(--cdc-ink-soft); font-size: .95rem; transition: color .15s; }
+  .cdc-menu a:hover, .cdc-menu a.active { color: var(--cdc-rose-600); }
+
+  .cdc-nav-right { display: flex; align-items: center; gap: 18px; }
+  .cdc-btn { display: inline-flex; align-items: center; padding: 12px 22px;
+    font-size: .92rem; font-family: "Poppins", sans-serif; font-weight: 700;
+    color: #fff; background: var(--cdc-grad); border-radius: 999px;
+    box-shadow: 0 8px 20px rgba(236,63,118,.28); transition: transform .15s, box-shadow .15s; }
+  .cdc-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(236,63,118,.36); }
+
+  .cdc-socials { display: flex; gap: 10px; }
+  .cdc-socials a { width: 36px; height: 36px; border-radius: 50%;
+    background: var(--cdc-rose-50); display: inline-flex; align-items: center;
+    justify-content: center; color: var(--cdc-rose-600); transition: background .15s; }
+  .cdc-socials a:hover { background: var(--cdc-rose-100); }
+  .cdc-socials svg { width: 16px; height: 16px; fill: currentColor; }
+
+  /* ─── Hamburger ────────────────────────────────────────────────────── */
+  .cdc-hamburger { display: none; flex-direction: column; gap: 5px;
+    width: 28px; height: 28px; padding: 0; background: transparent;
+    border: 0; cursor: pointer; justify-content: center; z-index: 51; }
+  .cdc-hamburger span { display: block; width: 100%; height: 2px;
+    background: var(--cdc-ink); border-radius: 2px;
+    transition: transform .25s, opacity .2s; }
+  body.cdc-menu-open .cdc-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  body.cdc-menu-open .cdc-hamburger span:nth-child(2) { opacity: 0; }
+  body.cdc-menu-open .cdc-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .cdc-nav-backdrop { display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,.4); opacity: 0; pointer-events: none;
+    transition: opacity .25s; z-index: 49; }
+  body.cdc-menu-open .cdc-nav-backdrop { opacity: 1; pointer-events: auto; }
+
+  /* ─── Mobile ───────────────────────────────────────────────────────── */
+  @media (max-width: 880px) {
+    .cdc-hamburger { display: flex; }
+    .cdc-nav-backdrop { display: block; }
+    .cdc-nav-collapse {
+      position: fixed; top: 0; right: 0; bottom: 0;
+      width: min(86vw, 360px); padding: 90px 28px 28px;
+      background: #fff; transform: translateX(105%);
+      transition: transform .3s cubic-bezier(.4,0,.2,1);
+      z-index: 50; flex-direction: column; align-items: flex-start; gap: 26px;
+      overflow-y: auto; box-shadow: -20px 0 60px rgba(0,0,0,.12);
+    }
+    body.cdc-menu-open .cdc-nav-collapse { transform: translateX(0); }
+    .cdc-menu { flex-direction: column; gap: 18px; width: 100%; }
+    .cdc-menu a { font-size: 1.1rem; padding: 6px 0; }
+    .cdc-nav-right { flex-direction: column-reverse; align-items: flex-start; gap: 24px; width: 100%; }
+    .cdc-socials { width: 100%; }
+  }
+</style>
+
+<header class="cdc-header">
+  <div class="cdc-nav">
+    <a href="/" class="cdc-logo">
+      <img src="/logo.png" alt="cadeauclic.com" class="cdc-logo-img"
+           onerror="this.onerror=null;this.style.display='none';var fb=this.parentNode.querySelector('.cdc-logo-fallback');if(fb)fb.style.display='inline-flex'">
+      <span class="cdc-logo-fallback" style="display:none;align-items:center;gap:6px">
+        <span class="mark">🎁</span>cadeauclic.com      </span>
     </a>
-    <div class="nav-collapse" id="navDrawer">
-      <ul class="menu">
-        <li><a href="/cadeau-femme/">Cadeau femme</a></li>
-        <li><a href="/cadeau-homme/">Cadeau homme</a></li>
-        <li><a href="/creer-une-liste/">Créer une liste</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/parrainage/">Parrainage</a></li>
-      </ul>
-      <div class="nav-right">
-        <div class="socials">
-          <a href="https://www.facebook.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.13 8.44 9.88v-6.99H7.9v-2.89h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.89h-2.33V22c4.78-.75 8.44-4.88 8.44-9.94z"/></svg></a>
-          <a href="https://www.instagram.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84c-3.4 0-6.16 2.76-6.16 6.16S8.6 18.16 12 18.16s6.16-2.76 6.16-6.16S15.4 5.84 12 5.84zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm6.41-11.85c-.79 0-1.44.64-1.44 1.44s.64 1.44 1.44 1.44c.79 0 1.44-.64 1.44-1.44s-.64-1.44-1.44-1.44z"/></svg></a>
+
+    <button class="cdc-hamburger" aria-label="Ouvrir le menu" aria-controls="cdc-nav-drawer" aria-expanded="false"
+            onclick="var o=document.body.classList.toggle('cdc-menu-open');this.setAttribute('aria-expanded',o);this.setAttribute('aria-label',o?'Fermer le menu':'Ouvrir le menu')">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="cdc-nav-collapse" id="cdc-nav-drawer">
+      <nav class="cdc-menu">
+        <a href="/categorie-idees-cadeaux/">Idées cadeaux</a>
+        <a href="/blog/">Blog</a>
+        <a href="/categorie-bons-plans-parrainage/">Parrainage</a>
+        <a href="/a-propos/">À propos</a>
+      </nav>
+      <div class="cdc-nav-right">
+        <a href="/codes-promo/" class="cdc-btn">Bons plans</a>
+        <div class="cdc-socials">
+          <a href="https://www.facebook.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M13 22v-8h2.7l.4-3.1H13V8.9c0-.9.3-1.5 1.6-1.5H16V4.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.4H7.2V14H9.9v8H13z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 8.6A3.4 3.4 0 1 0 15.4 12 3.4 3.4 0 0 0 12 8.6zm0 5.6A2.2 2.2 0 1 1 14.2 12 2.2 2.2 0 0 1 12 14.2zm4.3-5.8a.8.8 0 1 1-.8-.8.8.8 0 0 1 .8.8zM18.7 8a3.9 3.9 0 0 0-1.1-2.8A3.9 3.9 0 0 0 14.8 4c-1.1-.1-4.5-.1-5.6 0A3.9 3.9 0 0 0 6.4 5.2 3.9 3.9 0 0 0 5.3 8c-.1 1.1-.1 4.5 0 5.6a3.9 3.9 0 0 0 1.1 2.8 3.9 3.9 0 0 0 2.8 1.1c1.1.1 4.5.1 5.6 0a3.9 3.9 0 0 0 2.8-1.1 3.9 3.9 0 0 0 1.1-2.8c.1-1.1.1-4.5 0-5.6z"/></svg>
+          </a>
+          <a href="https://fr.pinterest.com/cadeaucliccom/" target="_blank" rel="nofollow noopener" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24"><path d="M12 4a8 8 0 0 0-2.9 15.4c0-.6-.1-1.6.1-2.3l1-4.2s-.2-.5-.2-1.3c0-1.2.7-2.1 1.6-2.1.7 0 1.1.6 1.1 1.2 0 .8-.5 1.9-.7 2.9-.2.9.4 1.6 1.3 1.6 1.6 0 2.7-2 2.7-4.4 0-1.8-1.2-3.2-3.5-3.2a4 4 0 0 0-4.1 4c0 .8.3 1.4.6 1.8.2.2.2.3.1.5l-.2.8c0 .3-.2.4-.5.2-1.2-.5-1.7-1.9-1.7-3.4 0-2.5 2.1-5.5 6.3-5.5 3.4 0 5.6 2.4 5.6 5 0 3.4-1.9 6-4.7 6-1 0-1.8-.5-2.1-1.1l-.6 2.2c-.2.7-.6 1.5-1 2A8 8 0 1 0 12 4z"/></svg>
+          </a>
         </div>
-        <a href="/codes-promo/" class="btn">Bons plans →</a>
       </div>
     </div>
-    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
-
+<div class="cdc-nav-backdrop" onclick="document.body.classList.remove('cdc-menu-open');var h=document.querySelector('.cdc-hamburger');if(h){h.setAttribute('aria-expanded','false');h.setAttribute('aria-label','Ouvrir le menu')}"></div>
 <div class="wrap">
   <div class="hero">
     <h1>Tous les <span class="pink">codes promo</span> & bons plans</h1>
-    <p>1 marque référencée, 5 codes promo vérifiés par Sophie Martin. Mis à jour 15 juin 2026.</p>
+    <p>1 marque référencée, 5 codes promo vérifiés par Sophie Martin. Mis à jour 16 juin 2026.</p>
   </div>
 
   <div class="filters" id="filters">
@@ -181,6 +286,7 @@
       <a href="/codes-promo/">Codes promo</a>
       <a href="/blog/">Blog</a>
       <a href="/parrainage/">Parrainage</a>
+      <a href="/a-propos/">À propos</a>
       <a href="/contact">Contact</a>
     </div>
     <div>
