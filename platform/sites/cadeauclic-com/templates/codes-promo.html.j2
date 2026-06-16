@@ -274,35 +274,10 @@
 <body>
 
 <!-- ═══ HEADER ═══════════════════════════════════════════════════════════ -->
-<div class="nav-backdrop" id="navBackdrop"></div>
-<header>
-  <div class="nav">
-    <a href="/" class="logo">
-      <img src="/logo.png" alt="{{ site.name }}" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
-      <span class="logo-fallback" style="display:none">🎁 {{ site.logo_text or site.name }}</span>
-    </a>
-    <div class="nav-collapse" id="navDrawer">
-      <ul class="menu">
-        <li><a href="/cadeau-femme/">Cadeau femme</a></li>
-        <li><a href="/cadeau-homme/">Cadeau homme</a></li>
-        <li><a href="/creer-une-liste/">Créer une liste</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/parrainage/">Parrainage</a></li>
-      </ul>
-      <div class="nav-right">
-        <div class="socials">
-          <a href="https://www.facebook.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.13 8.44 9.88v-6.99H7.9v-2.89h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.89h-2.33V22c4.78-.75 8.44-4.88 8.44-9.94z"/></svg></a>
-          <a href="https://www.instagram.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84c-3.4 0-6.16 2.76-6.16 6.16S8.6 18.16 12 18.16s6.16-2.76 6.16-6.16S15.4 5.84 12 5.84zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm6.41-11.85c-.79 0-1.44.64-1.44 1.44s.64 1.44 1.44 1.44c.79 0 1.44-.64 1.44-1.44s-.64-1.44-1.44-1.44z"/></svg></a>
-          <a href="https://fr.pinterest.com/cadeaucliccom/" target="_blank" rel="nofollow noopener" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.5 2 2 6.5 2 12.04c0 4.24 2.64 7.86 6.36 9.32-.08-.79-.16-2 .03-2.86.18-.79 1.16-5.04 1.16-5.04s-.3-.6-.3-1.48c0-1.39.81-2.43 1.81-2.43.86 0 1.27.64 1.27 1.41 0 .86-.55 2.14-.83 3.34-.24 1 .5 1.81 1.49 1.81 1.79 0 3.16-1.89 3.16-4.6 0-2.41-1.73-4.09-4.21-4.09-2.86 0-4.54 2.15-4.54 4.37 0 .87.33 1.79.75 2.3.08.1.09.18.07.29-.08.31-.25 1-.28 1.14-.04.18-.15.22-.34.13-1.25-.58-2.03-2.4-2.03-3.86 0-3.14 2.28-6.03 6.59-6.03 3.46 0 6.15 2.47 6.15 5.76 0 3.44-2.17 6.21-5.18 6.21-1.01 0-1.97-.53-2.29-1.15 0 0-.5 1.91-.62 2.38-.23.88-.84 1.98-1.25 2.65A10 10 0 0 0 12.04 22c5.53 0 10.01-4.48 10.01-10 0-5.55-4.48-10-10.01-10z"/></svg></a>
-        </div>
-        <a href="/codes-promo/" class="btn">Bons plans →</a>
-      </div>
-    </div>
-    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navDrawer">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
+{# ─── Nav (partial site-local cadeauclic) ─────────────────────────────
+   Source unique de vérité pour le header — modifs du menu dans
+   platform/sites/cadeauclic-com/templates/base/_nav.html.j2 #}
+{% include "base/_nav.html.j2" %}
 
 <div class="wrap">
   <!-- BREADCRUMB -->
@@ -537,6 +512,7 @@
       <a href="/codes-promo/">Codes promo</a>
       <a href="/blog/">Blog</a>
       <a href="/parrainage/">Parrainage</a>
+      <a href="/a-propos/">À propos</a>
       <a href="/contact">Contact</a>
     </div>
     <div>
