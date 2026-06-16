@@ -14,9 +14,9 @@ link_anchors:
   max: 5
 related_posts:
 - cadeau-homme-43-ans
-- https-www-cadeauclic-com-quel-cadeau-offrir-pour-un-emmenagement
-- cadeau-femme-saint-valentin
-- calendrier-photo-personnalise-une-bonne-idee-de-cadeau-pour-noel
+- cadeau-homme
+- 5-idees-de-cadeaux-pour-prendre-soins-dun-visage
+- quel-cadeau-offrir-a-quelquun-qui-a-deja-tout
 ---
 <p>Trouver un cadeau pour un homme de 73 ans, ce n'est pas toujours simple. Ni trop sage, ni trop gadget. Quelque chose qui lui ressemble vraiment, qui tient compte de ce qu'il aime, de ce qu'il vit, de ce qu'il ne s'offrirait pas lui-même. C'est exactement le défi que j'ai relevé l'an dernier pour l'anniversaire de mon beau-père, et je vais te partager tout ce que j'ai appris en cherchant.</p>
 

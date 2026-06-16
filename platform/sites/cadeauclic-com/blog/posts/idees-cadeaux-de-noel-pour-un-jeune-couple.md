@@ -14,10 +14,10 @@ link_anchors:
 - text: quel cadeau de noël pour un jeune couple
   max: 5
 related_posts:
-- https-www-cadeauclic-com-quel-cadeau-offrir-pour-un-emmenagement
-- idees-de-cadeaux-de-noel-pour-toute-la-famille
-- playmobil-valeur-sure-cadeau-reussi
 - carte-cadeau-pour-voyager-une-bonne-idee-cadeau
+- quel-cadeau-offrir-a-quelquun-qui-a-deja-tout
+- cadeau-homme-60-ans
+- cadeau-homme-57-ans
 ---
 <h2>Les cadeaux qui renforcent la complicité du couple</h2>
 

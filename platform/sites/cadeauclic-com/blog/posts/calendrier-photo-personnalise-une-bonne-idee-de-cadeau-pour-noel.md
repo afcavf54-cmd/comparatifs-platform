@@ -14,10 +14,10 @@ link_anchors:
 - text: calendrier photo personnalisé pour noël
   max: 5
 related_posts:
-- https-www-cadeauclic-com-quel-cadeau-offrir-pour-un-emmenagement
+- cadeau-saint-valentin
 - quel-cadeau-offrir-a-quelquun-qui-a-deja-tout
-- playmobil-valeur-sure-cadeau-reussi
-- idees-cadeaux-de-noel-pour-un-jeune-couple
+- cadeau-femme-50-ans
+- 15-livres-a-offrir-en-cadeau-a-une-maman
 ---
 <h2>Pourquoi j'ai craqué pour l'idée du <a href="https://www.rosemood.fr/calendrier-photo/">calendrier photo personnalisé</a> ?</h2>
 

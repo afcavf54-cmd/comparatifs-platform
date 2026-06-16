@@ -14,10 +14,10 @@ link_anchors:
 - text: cadeau pour un homme qui a déjà tout
   max: 5
 related_posts:
-- comment-souhaiter-un-joyeux-anniversaire-a-un-homme-avec-originalite
-- quels-cadeaux-surprises-les-hommes-aiment-ils
-- carte-cadeau-pour-voyager-une-bonne-idee-cadeau
-- https-www-cadeauclic-com-quel-cadeau-offrir-pour-un-emmenagement
+- idees-de-cadeaux-de-noel-pour-toute-la-famille
+- liste-de-noel
+- atelier-creation-de-parfum-l-idee-de-cadeau-parfaite
+- cadeau-homme-65-ans
 ---
 <h2>Le défi du cadeau impossible</h2>
 

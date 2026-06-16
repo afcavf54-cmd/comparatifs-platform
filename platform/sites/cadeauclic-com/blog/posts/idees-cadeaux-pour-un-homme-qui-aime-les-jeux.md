@@ -14,10 +14,10 @@ link_anchors:
 - text: idée cadeau pour un homme qui aime les jeux
   max: 5
 related_posts:
-- playmobil-valeur-sure-cadeau-reussi
-- calendrier-photo-personnalise-une-bonne-idee-de-cadeau-pour-noel
-- quels-cadeaux-surprises-les-hommes-aiment-ils
-- https-www-cadeauclic-com-quel-cadeau-offrir-pour-un-emmenagement
+- cadeau-femme-90-ans
+- atelier-creation-de-parfum-l-idee-de-cadeau-parfaite
+- cadeau-homme-saint-valentin
+- cadeau-femme
 ---
 <h2>Pourquoi les jeux sont-ils la valeur sûre pour faire plaisir ?</h2>
 

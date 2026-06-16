@@ -14,10 +14,10 @@ link_anchors:
 - text: carte cadeau pour voyager
   max: 5
 related_posts:
-- https-www-cadeauclic-com-quel-cadeau-offrir-pour-un-emmenagement
-- 5-idees-de-cadeaux-pour-prendre-soins-dun-visage
-- atelier-creation-de-parfum-l-idee-de-cadeau-parfaite
-- bougies-parfumees-cadeau-intemporel
+- robot-kenwood-ou-kitchenaid
+- idees-cadeaux-pour-un-homme-qui-aime-les-jeux
+- cadeau-femme
+- liste-de-noel
 ---
 <h2>La carte cadeau voyage, vraiment pratique ?</h2>
 

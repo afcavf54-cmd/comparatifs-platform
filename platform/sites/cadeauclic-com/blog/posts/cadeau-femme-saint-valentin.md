@@ -14,10 +14,10 @@ link_anchors:
 - text: quel cadeau offrir à une femme pour la saint-valentin
   max: 5
 related_posts:
-- cadeau-homme-saint-valentin
-- playmobil-valeur-sure-cadeau-reussi
-- https-www-cadeauclic-com-quel-cadeau-offrir-pour-un-emmenagement
-- idees-cadeaux-pour-un-homme-qui-aime-les-jeux
+- comment-souhaiter-un-joyeux-anniversaire-a-un-homme-avec-originalite
+- cadeau-homme-59-ans
+- quel-cadeau-offrir-a-quelquun-qui-a-deja-tout
+- cadeau-femme-80-ans
 ---
 <h2>La Saint-Valentin approche et tu ne sais pas quoi offrir ?</h2>
 

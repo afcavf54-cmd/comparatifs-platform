@@ -14,10 +14,10 @@ link_anchors:
 - text: 20 idées de cadeaux de noël pour toute la famille
   max: 5
 related_posts:
-- 5-idees-de-cadeaux-pour-prendre-soins-dun-visage
-- quels-cadeaux-surprises-les-hommes-aiment-ils
-- https-www-cadeauclic-com-quel-cadeau-offrir-pour-un-emmenagement
-- quel-cadeau-offrir-a-quelquun-qui-a-deja-tout
+- cadeau-homme-saint-valentin
+- cadeau-homme
+- cadeau-homme-73-ans
+- comment-faire-plaisir-a-sa-mere-sans-argent
 ---
 <h2>Mes 20 coups de cœur pour un Noël réussi</h2>
 
