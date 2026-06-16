@@ -7,7 +7,7 @@
 <title>Blog | cadeauclic.com — Page 4</title>
 <meta name="description" content="Articles, guides et conseils — cadeauclic.com">
 <link rel="canonical" href="https://www.cadeauclic.com/blog/4/">
-<link rel="prev" href="https://www.cadeauclic.com/blog/3/"><meta property="og:title" content="Blog | cadeauclic.com — Page 4">
+<link rel="prev" href="https://www.cadeauclic.com/blog/3/"><link rel="next" href="https://www.cadeauclic.com/blog/5/"><meta property="og:title" content="Blog | cadeauclic.com — Page 4">
 <meta property="og:description" content="Articles, guides et conseils — cadeauclic.com">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.cadeauclic.com/blog/4/">
@@ -25,12 +25,9 @@
 body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
 a{color:var(--accent2);text-decoration:none}
 .container{max-width:1100px;margin:0 auto;padding:0 5vw}
-/* Padding réduit (avant : 64px top / 32px bot) pour rapprocher le titre du header
-   et le titre des filtres. Sur mobile (≤600px) on resserre encore. */
 .blog-header{padding:32px 0 12px;text-align:center}
 .blog-title{font-family:'DM Serif Display',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:12px}
 .blog-sub{font-size:18px;color:var(--ink3);max-width:600px;margin:0 auto}
-/* Margin réduit (avant : 32px top / 40px bot) pour coller les filtres au titre. */
 .blog-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0 32px}
 .blog-filter{font-size:13px;font-weight:600;color:var(--ink2);padding:8px 16px;border-radius:24px;border:1px solid var(--border);background:var(--surface);transition:.15s;cursor:pointer}
 .blog-filter:hover,.blog-filter.active{color:var(--accent);border-color:var(--accent)}
@@ -47,15 +44,6 @@ a{color:var(--accent2);text-decoration:none}
 .blog-card-excerpt{font-size:14px;color:var(--ink3);line-height:1.55;margin-bottom:16px;flex:1}
 .blog-card-meta{font-size:12px;color:var(--ink3);margin-top:auto}
 .blog-empty{text-align:center;padding:80px 0;color:var(--ink3);font-size:16px}
-/* Pagination style "rond bleu pour la page courante + ... + séparateur + Suivant".
-   Match visuel de la maquette fournie : numéros centrés sur 32px, page courante
-   en rond bleu plein, ellipsis pour gros volumes, séparateur vertical avant
-   Précédent/Suivant, et flèche dans cercle foncé.
-   ⚠️ ATTENTION : le sélecteur global `nav` défini dans _nav.html.j2 applique
-   `flex-direction:column; background:var(--ink); position:sticky; padding:0 5vw`
-   à TOUS les <nav>, y compris notre <nav class="blog-pagination">. On override
-   donc explicitement ces propriétés pour éviter que la pagination s'affiche en
-   colonne dans un fond sombre. */
 .blog-pagination{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:4px;margin:48px 0 24px;flex-wrap:nowrap;font-size:15px;background:transparent;padding:0;position:static}
 .blog-page-numbers{display:flex;align-items:center;gap:4px}
 .blog-page-num{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;padding:0 8px;border-radius:50%;background:transparent;border:none;color:var(--ink2);text-decoration:none;font-weight:500;transition:color .15s}
@@ -63,20 +51,16 @@ a{color:var(--accent2);text-decoration:none}
 .blog-page-current{background:var(--accent);color:#fff;font-weight:600;cursor:default}
 .blog-page-current:hover{color:#fff}
 .blog-page-ellipsis{display:inline-flex;align-items:center;justify-content:center;min-width:24px;color:var(--ink3);user-select:none}
-/* Séparateur vertical entre les numéros et le bouton Précédent/Suivant */
 .blog-page-sep{display:inline-block;width:1px;height:20px;background:var(--border);margin:0 12px}
-/* Lien Précédent/Suivant : texte + flèche dans rond foncé */
 .blog-page-link{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;font-weight:500;padding:6px 4px;background:transparent;border:none;transition:opacity .15s}
 .blog-page-link:hover{opacity:.6;background:transparent}
 .blog-page-disabled{display:inline-flex;align-items:center;gap:8px;color:var(--ink3);font-weight:500;padding:6px 4px;opacity:.4;cursor:default;background:transparent;border:none}
 .blog-page-arrow{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:11px;line-height:1;flex-shrink:0}
 .blog-page-disabled .blog-page-arrow{background:var(--ink3)}
 @media(max-width:600px){.blog-pagination{gap:2px;font-size:14px}.blog-page-num{min-width:28px;height:28px;padding:0 6px}.blog-page-sep{margin:0 6px}.blog-page-link,.blog-page-disabled{padding:4px 2px}.blog-page-link span:not(.blog-page-arrow){display:none}.blog-page-disabled span:not(.blog-page-arrow){display:none}}
-/* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
 @media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){
   .blog-grid{grid-template-columns:1fr}
-  /* Resserrage supplémentaire sur mobile : header + filtres ultra compacts */
   .blog-header{padding:20px 0 8px}
   .blog-title{margin-bottom:8px}
   .blog-filters{margin:10px 0 24px}
@@ -241,11 +225,11 @@ a{color:var(--accent2);text-decoration:none}
     <h1 class="blog-title">Le Blog</h1>
   </div>
   <div class="blog-filters">
-    <a class="blog-filter active" href="/blog/">Tous <span class="blog-filter-count">(21)</span></a>
+    <a class="blog-filter active" href="/blog/">Tous <span class="blog-filter-count">(122)</span></a>
     <a class="blog-filter" href="/categorie-idees-cadeaux/">Idées cadeaux <span class="blog-filter-count">(42)</span></a>
     <a class="blog-filter" href="/categorie-bebe-naissance/">Bébé & Naissance <span class="blog-filter-count">(24)</span></a>
     <a class="blog-filter" href="/categorie-bons-plans-parrainage/">Bons plans & Parrainage <span class="blog-filter-count">(24)</span></a>
-    <a class="blog-filter" href="/categorie-mariage-fetes/">Mariage & Fêtes <span class="blog-filter-count">(12)</span></a>
+    <a class="blog-filter" href="/categorie-mariage-fetes/">Mariage & Fêtes <span class="blog-filter-count">(22)</span></a>
     <a class="blog-filter" href="/categorie-mode-personnalisation/">Mode & Personnalisation <span class="blog-filter-count">(7)</span></a>
     <a class="blog-filter" href="/categorie-maison-deco/">Maison & Déco <span class="blog-filter-count">(2)</span></a>
     <a class="blog-filter" href="/categorie-cadeau-femme/">Cadeau femme <span class="blog-filter-count">(1)</span></a>
@@ -254,6 +238,86 @@ a{color:var(--accent2);text-decoration:none}
 
 <main class="container">
   <div class="blog-grid">
+    <a href="/parrainage-qonto-200-euros/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/parrainage-qonto-200-euros.jpg" alt="Parrainage Qonto 200€ Juin 2026 : comment en bénéficier ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Bons plans & Parrainage</span>        <h2 class="blog-card-title">Parrainage Qonto 200€ Juin 2026 : comment en bénéficier ?</h2>
+<p class="blog-card-excerpt">Je vais être honnête : quand on m'a parlé pour la première fois du parrainage Qonto , j'ai mis du temps à creuser le sujet. Et pourtant, c'est l'un des rares avantages bancaires…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
+    </a>
+    <a href="/parrainage-qonto-500-euros/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/parrainage-qonto-500-euros.jpg" alt="Parrainage Qonto 500€ Juin 2026 : comment en bénéficier?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Bons plans & Parrainage</span>        <h2 class="blog-card-title">Parrainage Qonto 500€ Juin 2026 : comment en bénéficier?</h2>
+<p class="blog-card-excerpt">Je vais être honnête avec toi : quand on m'a parlé du parrainage Qonto pour la première fois, j'ai mis du temps à creuser le sujet. Pourtant, mon mari a lancé son activité en…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
+    </a>
+    <a href="/parrainage-revolut/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/parrainage-revolut.jpg" alt="Parrainage Revolut Juin 2026 : jusqu’à 200€ offerts" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Bons plans & Parrainage</span>        <h2 class="blog-card-title">Parrainage Revolut Juin 2026 : jusqu’à 200€ offerts</h2>
+<p class="blog-card-excerpt">Revolut, ça fait maintenant plusieurs années que j'en entends parler autour de moi. Mon mari l'utilise pour ses voyages professionnels, ma belle-sœur pour ses achats en ligne à…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
+    </a>
+    <a href="/code-promo-qonto/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/code-promo-qonto.jpg" alt="Code promo Qonto en Juin 2026 : 280€ offerts" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Bons plans & Parrainage</span>        <h2 class="blog-card-title">Code promo Qonto en Juin 2026 : 280€ offerts</h2>
+<p class="blog-card-excerpt">Je vais être honnête avec toi : quand j'ai lancé ma petite activité de vente de cadeaux personnalisés il y a deux ans, j'ai perdu un temps fou à gérer mes finances avec un compte…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
+    </a>
+    <a href="/parrainage-qonto-300-euros/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/parrainage-qonto-300-euros.jpg" alt="Parrainage Qonto 300€ : comment en bénéficier en Juin 2026?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Bons plans & Parrainage</span>        <h2 class="blog-card-title">Parrainage Qonto 300€ : comment en bénéficier en Juin 2026?</h2>
+<p class="blog-card-excerpt">Je vais être honnête avec toi : je ne suis pas du genre à recommander un service juste pour gratter quelques euros de parrainage. Mais quand l'offre est vraiment intéressante, je…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
+    </a>
+    <a href="/bapteme-mariage-anniversaire-le-gobelet-reutilisable/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/bapteme-mariage-anniversaire-le-gobelet-reutilisable.jpg" alt="Baptême, mariage, anniversaire : pourquoi le gobelet personnalisé et réutilisable séduit autant" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Mariage & Fêtes</span>        <h2 class="blog-card-title">Baptême, mariage, anniversaire : pourquoi le gobelet personnalisé et réutilisable séduit autant</h2>
+<p class="blog-card-excerpt">Le succès fulgurant des gobelets personnalisés : un phénomène qui ne me surprend plus Franchement, quand j'ai vu pour la première fois des gobelets personnalisés lors du mariage…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
+    </a>
+    <a href="/carte-cadeau-prefere-salaries-noel/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/carte-cadeau-prefere-salaries-noel.jpg" alt="Pourquoi la carte cadeau est le cadeau préféré des salariés à Noël ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Bons plans & Parrainage</span>        <h2 class="blog-card-title">Pourquoi la carte cadeau est le cadeau préféré des salariés à Noël ?</h2>
+<p class="blog-card-excerpt">Ma découverte qui a changé ma façon d'offrir en entreprise L'an dernier, j'organisais les cadeaux de Noël pour notre petite équipe. Quinze personnes, quinze profils différents,…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
+    </a>
+    <a href="/quel-cadeau-offrir-a-quelquun-qui-a-deja-tout/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/quel-cadeau-offrir-a-quelquun-qui-a-deja-tout.jpg" alt="Quel cadeau offrir à quelqu’un qui a déjà tout ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Idées cadeaux</span>        <h2 class="blog-card-title">Quel cadeau offrir à quelqu’un qui a déjà tout ?</h2>
+<p class="blog-card-excerpt">Le défi du cadeau impossible Je me souviens de cette année où j'ai passé des heures à chercher un cadeau pour mon beau-père. Cet homme a littéralement tout : une cave à vin digne…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
+    </a>
+    <a href="/5-occasions-ou-offrir-des-fleurs-est-important/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/5-occasions-ou-offrir-des-fleurs-est-important.jpg" alt="5 occasions où offrir des fleurs est important" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Maison & Déco</span>        <h2 class="blog-card-title">5 occasions où offrir des fleurs est important</h2>
+<p class="blog-card-excerpt">La Saint-Valentin : quand les fleurs deviennent le langage de l'amour Je ne vais pas te mentir, la Saint-Valentin reste LE moment où les fleurs prennent tout leur sens. Après…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
+    </a>
+    <a href="/playmobil-valeur-sure-cadeau-reussi/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/playmobil-valeur-sure-cadeau-reussi.jpg" alt="Pourquoi Playmobil reste une valeur sûre pour un cadeau réussi ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Idées cadeaux</span>        <h2 class="blog-card-title">Pourquoi Playmobil reste une valeur sûre pour un cadeau réussi ?</h2>
+<p class="blog-card-excerpt">Playmobil, cette marque qui traverse les générations Je me souviens encore de mes premiers Playmobil. J'avais six ans et j'ai passé des heures entières à inventer des histoires…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
+    </a>
     <a href="/garde-robe-fillette-ethique-robes-basiques-et-accessoires-qui-durent/" class="blog-card">
       <div class="blog-card-img">
         <img src="/blog/garde-robe-fillette-ethique-robes-basiques-et-accessoires-qui-durent.jpg" alt="Garde-robe fillette éthique : robes, basiques et accessoires qui durent" loading="lazy">
@@ -414,14 +478,6 @@ a{color:var(--accent2);text-decoration:none}
 <span class="blog-card-cat">Idées cadeaux</span>        <h2 class="blog-card-title">Comment souhaiter un joyeux anniversaire à un homme avec originalité ?</h2>
 <p class="blog-card-excerpt">Mes secrets pour sortir de l'ordinaire Je ne sais pas si c'est pareil chez vous, mais chez moi, souhaiter un anniversaire à un homme, c'est souvent un vrai casse-tête. Mon mari,…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
     </a>
-    <a href="/comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver/" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver.jpg" alt="Comment habiller bébé à la sortie de la maternité en hiver ?" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-<span class="blog-card-cat">Bébé & Naissance</span>        <h2 class="blog-card-title">Comment habiller bébé à la sortie de la maternité en hiver ?</h2>
-<p class="blog-card-excerpt">Mes indispensables pour la première sortie de bébé Je me souviens encore de ma panique la veille de quitter la maternité avec ma fille, née en plein janvier. Habiller un…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
-    </a>
   </div>
 
   <nav class="blog-pagination" aria-label="Pagination du blog">
@@ -436,13 +492,14 @@ a{color:var(--accent2);text-decoration:none}
             <span class="blog-page-ellipsis" aria-hidden="true">…</span>
           <a href="/blog/3/" class="blog-page-num">3</a>
           <span class="blog-page-num blog-page-current" aria-current="page">4</span>
+          <a href="/blog/5/" class="blog-page-num">5</a>
     </div>
 
 <span class="blog-page-sep" aria-hidden="true"></span>
-    <span class="blog-page-disabled">
+    <a href="/blog/5/" class="blog-page-link blog-page-next" rel="next">
       <span>Suivant</span>
       <span class="blog-page-arrow" aria-hidden="true">›</span>
-    </span>
+    </a>
   </nav>
 
 </main>

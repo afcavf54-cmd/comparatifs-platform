@@ -4,15 +4,20 @@ slug: noces-de-rose-30-cadeaux-17-ans-de-mariage
 date: '2026-06-16T11:55:33+02:00'
 categorie: Mariage & Fêtes
 meta_title: 30 idées et cadeaux pour fêter vos 17 ans de mariage
-meta_description: 'Noces de rose : découvrez 30 idées cadeaux originaux pour célébrer 17 ans de mariage avec tendresse et sincérité, loin des clichés habituels des grands…'
+meta_description: 'Noces de rose : découvrez 30 idées cadeaux originaux pour célébrer
+  17 ans de mariage avec tendresse et sincérité, loin des clichés habituels des grands…'
 min_words: 1000
 status: published
 featured_image: /blog/noces-de-rose-30-cadeaux-17-ans-de-mariage.jpg
 link_anchors:
 - text: noces de rose
   max: 5
+related_posts:
+- noces-d-etain-idees-cadeaux-10-ans-de-mariage
+- noces-de-cuir-2-ans-de-mariage
+- noces-de-cretonne-cadeaux-19-ans-de-mariage
+- noces-de-froment-3-ans-de-mariage
 ---
-
 <p>Dix-sept ans de mariage. C'est long, c'est beau, et franchement, ça mérite bien plus qu'un simple dîner au restaurant. Les noces de rose, c'est l'étape un peu oubliée entre les grandes célébrations, et pourtant c'est exactement là que se cachent les souvenirs les plus touchants. J'ai passé pas mal de temps à chercher des idées pour nos propres noces de rose l'an dernier, et je vais te partager tout ce que j'ai trouvé, ce qui a vraiment fonctionné, et aussi ce qui m'a déçue.</p>
 
 <h2>Les noces de rose, c'est quoi exactement ?</h2>

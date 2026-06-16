@@ -4,15 +4,21 @@ slug: noces-de-soie-idees-12-ans-de-mariage
 date: '2026-06-16T11:55:33+02:00'
 categorie: Mariage & Fêtes
 meta_title: 30 idées et cadeaux pour fêter vos 12 ans de mariage
-meta_description: Célébrez vos noces de soie avec les meilleures idées cadeaux pour 12 ans de mariage. Surprises, escapades et présents doux et précieux pour marquer cette belle…
+meta_description: Célébrez vos noces de soie avec les meilleures idées cadeaux pour
+  12 ans de mariage. Surprises, escapades et présents doux et précieux pour marquer
+  cette belle…
 min_words: 1000
 status: published
 featured_image: /blog/noces-de-soie-idees-12-ans-de-mariage.jpg
 link_anchors:
 - text: noces de soie
   max: 5
+related_posts:
+- noces-de-turquoise-30-cadeaux-18-ans-de-mariage
+- noces-de-laine-7-ans-de-mariage
+- bapteme-mariage-anniversaire-le-gobelet-reutilisable
+- noces-de-chypre-6-ans-de-mariage
 ---
-
 <h2>12 ans de mariage, ça se fête vraiment</h2>
 
 <p>Douze ans ensemble. C'est à la fois long et court, quand on y pense. Long parce que vous avez traversé des trucs que vous n'auriez pas imaginés le jour du mariage. Court parce que, franchement, ça a filé vite. Les <strong>noces de soie</strong> marquent cette étape un peu particulière, ni trop tôt ni trop tard dans une vie de couple. Et pourtant, je vois tellement de gens passer à côté sans même s'en rendre compte.</p>

@@ -4,15 +4,21 @@ slug: noces-de-porcelaine-30-cadeaux-20-ans-de-mariage
 date: '2026-06-16T11:55:33+02:00'
 categorie: Mariage & Fêtes
 meta_title: 30 idées et cadeaux pour fêter vos 20 ans de mariage
-meta_description: Fêter 20 ans de mariage avec les noces de porcelaine mérite une belle attention. Découvrez 30 idées cadeaux pour tous les budgets, du plus original au plus…
+meta_description: Fêter 20 ans de mariage avec les noces de porcelaine mérite une
+  belle attention. Découvrez 30 idées cadeaux pour tous les budgets, du plus original
+  au plus…
 min_words: 1000
 status: published
 featured_image: /blog/noces-de-porcelaine-30-cadeaux-20-ans-de-mariage.jpg
 link_anchors:
 - text: noces de porcelaine
   max: 5
+related_posts:
+- noces-de-froment-3-ans-de-mariage
+- noces-de-bois-5-ans-de-mariage
+- noces-de-laine-7-ans-de-mariage
+- noces-de-rose-30-cadeaux-17-ans-de-mariage
 ---
-
 <h2>20 ans de mariage, et alors, on fait quoi ?</h2>
 
 <p>Les noces de porcelaine, c'est une étape que peu de couples atteignent vraiment. Vingt ans ensemble, c'est du concret. Des déménagements, des enfants, des galères, des fous rires, des nuits blanches et des milliers de repas partagés. Quand mon amie Céline a fêté ses 20 ans de mariage l'année dernière, elle m'a avoué qu'elle ne savait vraiment pas comment marquer le coup. Trop important pour rester dans le flou, mais pas non plus envie d'une grosse fête avec traiteur hors de prix.</p>

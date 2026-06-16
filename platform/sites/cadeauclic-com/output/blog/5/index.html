@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog | cadeauclic.com — Page 5</title>
+<meta name="description" content="Articles, guides et conseils — cadeauclic.com">
+<link rel="canonical" href="https://www.cadeauclic.com/blog/5/">
+<link rel="prev" href="https://www.cadeauclic.com/blog/4/"><meta property="og:title" content="Blog | cadeauclic.com — Page 5">
+<meta property="og:description" content="Articles, guides et conseils — cadeauclic.com">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.cadeauclic.com/blog/5/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=cadeauclic-com" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#F4F6FB;--surface:#FFFFFF;--surface2:#F5F3EE;
+  --ink:#0F1A2E;--ink2:#3D434B;--ink3:#8B9CB0;
+  --accent:#1B4FD8;--accent2:#ff8080;--green:#3D7A4F;
+  --border:#E6E1D8;--r:8px;--r2:14px;
+--cta:#ff8080;--cta-text:#ffffff;}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+a{color:var(--accent2);text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 5vw}
+.blog-header{padding:32px 0 12px;text-align:center}
+.blog-title{font-family:'DM Serif Display',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:12px}
+.blog-sub{font-size:18px;color:var(--ink3);max-width:600px;margin:0 auto}
+.blog-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0 32px}
+.blog-filter{font-size:13px;font-weight:600;color:var(--ink2);padding:8px 16px;border-radius:24px;border:1px solid var(--border);background:var(--surface);transition:.15s;cursor:pointer}
+.blog-filter:hover,.blog-filter.active{color:var(--accent);border-color:var(--accent)}
+.blog-filter-count{font-size:11px;color:var(--ink3);margin-left:4px}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px}
+.blog-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;text-decoration:none;transition:.2s;display:flex;flex-direction:column}
+.blog-card:hover{border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.06);transform:translateY(-2px);text-decoration:none}
+.blog-card-img{aspect-ratio:16/9;background:var(--surface2);overflow:hidden}
+.blog-card-img img{width:100%;height:100%;object-fit:cover}
+.blog-card-img-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--surface2) 0%,var(--bg) 100%);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:48px}
+.blog-card-body{padding:20px 22px 24px;flex:1;display:flex;flex-direction:column}
+.blog-card-cat{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:10px;align-self:flex-start}
+.blog-card-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;line-height:1.3;color:var(--ink);margin-bottom:10px;letter-spacing:-.01em}
+.blog-card-excerpt{font-size:14px;color:var(--ink3);line-height:1.55;margin-bottom:16px;flex:1}
+.blog-card-meta{font-size:12px;color:var(--ink3);margin-top:auto}
+.blog-empty{text-align:center;padding:80px 0;color:var(--ink3);font-size:16px}
+.blog-pagination{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:4px;margin:48px 0 24px;flex-wrap:nowrap;font-size:15px;background:transparent;padding:0;position:static}
+.blog-page-numbers{display:flex;align-items:center;gap:4px}
+.blog-page-num{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;padding:0 8px;border-radius:50%;background:transparent;border:none;color:var(--ink2);text-decoration:none;font-weight:500;transition:color .15s}
+.blog-page-num:hover{color:var(--accent)}
+.blog-page-current{background:var(--accent);color:#fff;font-weight:600;cursor:default}
+.blog-page-current:hover{color:#fff}
+.blog-page-ellipsis{display:inline-flex;align-items:center;justify-content:center;min-width:24px;color:var(--ink3);user-select:none}
+.blog-page-sep{display:inline-block;width:1px;height:20px;background:var(--border);margin:0 12px}
+.blog-page-link{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;font-weight:500;padding:6px 4px;background:transparent;border:none;transition:opacity .15s}
+.blog-page-link:hover{opacity:.6;background:transparent}
+.blog-page-disabled{display:inline-flex;align-items:center;gap:8px;color:var(--ink3);font-weight:500;padding:6px 4px;opacity:.4;cursor:default;background:transparent;border:none}
+.blog-page-arrow{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:11px;line-height:1;flex-shrink:0}
+.blog-page-disabled .blog-page-arrow{background:var(--ink3)}
+@media(max-width:600px){.blog-pagination{gap:2px;font-size:14px}.blog-page-num{min-width:28px;height:28px;padding:0 6px}.blog-page-sep{margin:0 6px}.blog-page-link,.blog-page-disabled{padding:4px 2px}.blog-page-link span:not(.blog-page-arrow){display:none}.blog-page-disabled span:not(.blog-page-arrow){display:none}}
+@media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){
+  .blog-grid{grid-template-columns:1fr}
+  .blog-header{padding:20px 0 8px}
+  .blog-title{margin-bottom:8px}
+  .blog-filters{margin:10px 0 24px}
+}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+</style>
+<script async data-id="101505106" src="//static.getclicky.com/js"></script>
+</head>
+<body>
+
+<style>
+  /* ─── Reset défensif (CIBLÉ) ─────────────────────────────────────────
+     Certains templates communs du réseau (contact.html.j2, plan-du-site,
+     mentions-legales…) ont un sélecteur `nav { background: var(--ink);
+     padding: 0 5vw; height: 64px; position: sticky; ... }` qui catch
+     N'IMPORTE QUEL <nav> de la page, y compris notre <nav class="cdc-menu">.
+     On reset donc UNIQUEMENT les propriétés polluées sur .cdc-menu (le seul
+     élément vraiment touché). Reset minimal pour ne pas casser autre chose
+     comme le drawer mobile (qui doit être position: fixed). */
+  .cdc-menu {
+    background: transparent;
+    height: auto;
+    padding: 0;
+    position: static;
+    top: auto;
+    z-index: auto;
+  }
+
+  /* ─── Palette cadeauclic (scope local au partial) ────────────────────
+     Variables redéfinies ici pour que le header fonctionne même sur les
+     pages communes (blog, avis) qui n'ont pas le :root global de la home.
+     Les noms commencent par --cdc-* pour éviter tout conflit avec d'autres
+     variables CSS du site (--ink, --accent, etc. du thème commun). */
+  :root {
+    --cdc-rose-50: #fff5f8;
+    --cdc-rose-100: #ffe7ef;
+    --cdc-rose-200: #ffd0e0;
+    --cdc-rose-600: #ec3f76;
+    --cdc-rose-700: #cf2c61;
+    --cdc-coral: #ff7a59;
+    --cdc-ink: #251d27;
+    --cdc-ink-soft: #5d5360;
+    --cdc-line: #f0e3e9;
+    --cdc-grad: linear-gradient(100deg, #ff5b8a, #ff7a59);
+  }
+
+  /* ─── Header sticky ────────────────────────────────────────────────── */
+  .cdc-header { position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,.92); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--cdc-line);
+    font-family: "Nunito Sans", system-ui, -apple-system, sans-serif; }
+  .cdc-header * { box-sizing: border-box; }
+  .cdc-header a { text-decoration: none; color: inherit; }
+
+  .cdc-nav { display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 28px; gap: 24px; max-width: 1200px; margin: 0 auto; }
+
+  .cdc-logo { display: flex; align-items: center; gap: 6px;
+    font-family: "Poppins", system-ui, sans-serif;
+    font-weight: 800; font-size: 1.35rem; color: var(--cdc-ink); }
+  .cdc-logo .mark { font-size: 1.55rem; }
+  .cdc-logo span.accent { color: var(--cdc-rose-600); }
+  .cdc-logo-img { height: 40px; width: auto; max-width: 200px; display: block; }
+
+  .cdc-nav-collapse { display: flex; align-items: center; gap: 30px; }
+  .cdc-menu { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
+  .cdc-menu a { font-family: "Poppins", system-ui, sans-serif; font-weight: 600;
+    color: var(--cdc-ink-soft); font-size: .95rem; transition: color .15s; }
+  .cdc-menu a:hover, .cdc-menu a.active { color: var(--cdc-rose-600); }
+
+  .cdc-nav-right { display: flex; align-items: center; gap: 18px; }
+  .cdc-btn { display: inline-flex; align-items: center; padding: 12px 22px;
+    font-size: .92rem; font-family: "Poppins", sans-serif; font-weight: 700;
+    color: #fff; background: var(--cdc-grad); border-radius: 999px;
+    box-shadow: 0 8px 20px rgba(236,63,118,.28); transition: transform .15s, box-shadow .15s; }
+  .cdc-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(236,63,118,.36); }
+
+  .cdc-socials { display: flex; gap: 10px; }
+  .cdc-socials a { width: 36px; height: 36px; border-radius: 50%;
+    background: var(--cdc-rose-50); display: inline-flex; align-items: center;
+    justify-content: center; color: var(--cdc-rose-600); transition: background .15s; }
+  .cdc-socials a:hover { background: var(--cdc-rose-100); }
+  .cdc-socials svg { width: 16px; height: 16px; fill: currentColor; }
+
+  /* ─── Hamburger ────────────────────────────────────────────────────── */
+  .cdc-hamburger { display: none; flex-direction: column; gap: 5px;
+    width: 28px; height: 28px; padding: 0; background: transparent;
+    border: 0; cursor: pointer; justify-content: center; z-index: 51; }
+  .cdc-hamburger span { display: block; width: 100%; height: 2px;
+    background: var(--cdc-ink); border-radius: 2px;
+    transition: transform .25s, opacity .2s; }
+  body.cdc-menu-open .cdc-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  body.cdc-menu-open .cdc-hamburger span:nth-child(2) { opacity: 0; }
+  body.cdc-menu-open .cdc-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .cdc-nav-backdrop { display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,.4); opacity: 0; pointer-events: none;
+    transition: opacity .25s; z-index: 49; }
+  body.cdc-menu-open .cdc-nav-backdrop { opacity: 1; pointer-events: auto; }
+
+  /* ─── Mobile ───────────────────────────────────────────────────────── */
+  @media (max-width: 880px) {
+    .cdc-hamburger { display: flex; }
+    .cdc-nav-backdrop { display: block; }
+    .cdc-nav-collapse {
+      position: fixed; top: 0; right: 0; bottom: 0;
+      width: min(86vw, 360px); padding: 90px 28px 28px;
+      background: #fff; transform: translateX(105%);
+      transition: transform .3s cubic-bezier(.4,0,.2,1);
+      z-index: 50; flex-direction: column; align-items: flex-start; gap: 26px;
+      overflow-y: auto; box-shadow: -20px 0 60px rgba(0,0,0,.12);
+    }
+    body.cdc-menu-open .cdc-nav-collapse { transform: translateX(0); }
+    .cdc-menu { flex-direction: column; gap: 18px; width: 100%; }
+    .cdc-menu a { font-size: 1.1rem; padding: 6px 0; }
+    .cdc-nav-right { flex-direction: column-reverse; align-items: flex-start; gap: 24px; width: 100%; }
+    .cdc-socials { width: 100%; }
+  }
+</style>
+
+<header class="cdc-header">
+  <div class="cdc-nav">
+    <a href="/" class="cdc-logo">
+      <img src="/logo.png" alt="cadeauclic.com" class="cdc-logo-img"
+           onerror="this.onerror=null;this.style.display='none';var fb=this.parentNode.querySelector('.cdc-logo-fallback');if(fb)fb.style.display='inline-flex'">
+      <span class="cdc-logo-fallback" style="display:none;align-items:center;gap:6px">
+        <span class="mark">🎁</span>cadeauclic.com      </span>
+    </a>
+
+    <button class="cdc-hamburger" aria-label="Ouvrir le menu" aria-controls="cdc-nav-drawer" aria-expanded="false"
+            onclick="var o=document.body.classList.toggle('cdc-menu-open');this.setAttribute('aria-expanded',o);this.setAttribute('aria-label',o?'Fermer le menu':'Ouvrir le menu')">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="cdc-nav-collapse" id="cdc-nav-drawer">
+      <nav class="cdc-menu">
+        <a href="/categorie-idees-cadeaux/">Idées cadeaux</a>
+        <a href="/blog/">Blog</a>
+        <a href="/categorie-bons-plans-parrainage/">Parrainage</a>
+        <a href="/a-propos/">À propos</a>
+      </nav>
+      <div class="cdc-nav-right">
+        <a href="/codes-promo/" class="cdc-btn">Bons plans</a>
+        <div class="cdc-socials">
+          <a href="https://www.facebook.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M13 22v-8h2.7l.4-3.1H13V8.9c0-.9.3-1.5 1.6-1.5H16V4.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.4H7.2V14H9.9v8H13z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 8.6A3.4 3.4 0 1 0 15.4 12 3.4 3.4 0 0 0 12 8.6zm0 5.6A2.2 2.2 0 1 1 14.2 12 2.2 2.2 0 0 1 12 14.2zm4.3-5.8a.8.8 0 1 1-.8-.8.8.8 0 0 1 .8.8zM18.7 8a3.9 3.9 0 0 0-1.1-2.8A3.9 3.9 0 0 0 14.8 4c-1.1-.1-4.5-.1-5.6 0A3.9 3.9 0 0 0 6.4 5.2 3.9 3.9 0 0 0 5.3 8c-.1 1.1-.1 4.5 0 5.6a3.9 3.9 0 0 0 1.1 2.8 3.9 3.9 0 0 0 2.8 1.1c1.1.1 4.5.1 5.6 0a3.9 3.9 0 0 0 2.8-1.1 3.9 3.9 0 0 0 1.1-2.8c.1-1.1.1-4.5 0-5.6z"/></svg>
+          </a>
+          <a href="https://fr.pinterest.com/cadeaucliccom/" target="_blank" rel="nofollow noopener" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24"><path d="M12 4a8 8 0 0 0-2.9 15.4c0-.6-.1-1.6.1-2.3l1-4.2s-.2-.5-.2-1.3c0-1.2.7-2.1 1.6-2.1.7 0 1.1.6 1.1 1.2 0 .8-.5 1.9-.7 2.9-.2.9.4 1.6 1.3 1.6 1.6 0 2.7-2 2.7-4.4 0-1.8-1.2-3.2-3.5-3.2a4 4 0 0 0-4.1 4c0 .8.3 1.4.6 1.8.2.2.2.3.1.5l-.2.8c0 .3-.2.4-.5.2-1.2-.5-1.7-1.9-1.7-3.4 0-2.5 2.1-5.5 6.3-5.5 3.4 0 5.6 2.4 5.6 5 0 3.4-1.9 6-4.7 6-1 0-1.8-.5-2.1-1.1l-.6 2.2c-.2.7-.6 1.5-1 2A8 8 0 1 0 12 4z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="cdc-nav-backdrop" onclick="document.body.classList.remove('cdc-menu-open');var h=document.querySelector('.cdc-hamburger');if(h){h.setAttribute('aria-expanded','false');h.setAttribute('aria-label','Ouvrir le menu')}"></div>
+<header class="container">
+  <div class="blog-header">
+    <h1 class="blog-title">Le Blog</h1>
+  </div>
+  <div class="blog-filters">
+    <a class="blog-filter active" href="/blog/">Tous <span class="blog-filter-count">(122)</span></a>
+    <a class="blog-filter" href="/categorie-idees-cadeaux/">Idées cadeaux <span class="blog-filter-count">(42)</span></a>
+    <a class="blog-filter" href="/categorie-bebe-naissance/">Bébé & Naissance <span class="blog-filter-count">(24)</span></a>
+    <a class="blog-filter" href="/categorie-bons-plans-parrainage/">Bons plans & Parrainage <span class="blog-filter-count">(24)</span></a>
+    <a class="blog-filter" href="/categorie-mariage-fetes/">Mariage & Fêtes <span class="blog-filter-count">(22)</span></a>
+    <a class="blog-filter" href="/categorie-mode-personnalisation/">Mode & Personnalisation <span class="blog-filter-count">(7)</span></a>
+    <a class="blog-filter" href="/categorie-maison-deco/">Maison & Déco <span class="blog-filter-count">(2)</span></a>
+    <a class="blog-filter" href="/categorie-cadeau-femme/">Cadeau femme <span class="blog-filter-count">(1)</span></a>
+  </div>
+</header>
+
+<main class="container">
+  <div class="blog-grid">
+    <a href="/comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver.jpg" alt="Comment habiller bébé à la sortie de la maternité en hiver ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Bébé & Naissance</span>        <h2 class="blog-card-title">Comment habiller bébé à la sortie de la maternité en hiver ?</h2>
+<p class="blog-card-excerpt">Mes indispensables pour la première sortie de bébé Je me souviens encore de ma panique la veille de quitter la maternité avec ma fille, née en plein janvier. Habiller un…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
+    </a>
+  </div>
+
+  <nav class="blog-pagination" aria-label="Pagination du blog">
+    <a href="/blog/4/" class="blog-page-link blog-page-prev" rel="prev">
+      <span class="blog-page-arrow" aria-hidden="true">‹</span>
+      <span>Précédent</span>
+    </a>
+
+<span class="blog-page-sep" aria-hidden="true"></span>
+    <div class="blog-page-numbers">
+          <a href="/blog/" class="blog-page-num">1</a>
+            <span class="blog-page-ellipsis" aria-hidden="true">…</span>
+          <a href="/blog/4/" class="blog-page-num">4</a>
+          <span class="blog-page-num blog-page-current" aria-current="page">5</span>
+    </div>
+
+<span class="blog-page-sep" aria-hidden="true"></span>
+    <span class="blog-page-disabled">
+      <span>Suivant</span>
+      <span class="blog-page-arrow" aria-hidden="true">›</span>
+    </span>
+  </nav>
+
+</main>
+
+<style>
+  /* ─── Reset défensif ──────────────────────────────────────────────────
+     Comme pour le _nav.html.j2 cadeauclic, certains templates communs du
+     réseau (contact, mentions-legales, plan-du-site…) ont des sélecteurs
+     CSS par tag larges qui catchent <footer>, <a>, <h5>… On reset donc
+     explicitement sur tous les descendants du footer pour qu'aucun style
+     parent ne percole et n'écrase notre design. */
+  .cdc-foot,
+  .cdc-foot * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    color: inherit;
+    text-decoration: none;
+    font-family: inherit;
+  }
+
+  /* ─── Palette cadeauclic (scope local au partial) ────────────────────
+     Variables --cdc-* pour éviter tout conflit avec le thème commun du
+     réseau (--ink, --accent, --bg…). Les pages communes blog/avis/contact
+     n'ont pas le :root rose/coral de la home, on le réintroduit ici. */
+  :root {
+    --cdc-foot-bg: #1f1722;
+    --cdc-foot-text: #d9cdd4;
+    --cdc-foot-text-soft: #c3b4bd;
+    --cdc-foot-text-mute: #9c8e96;
+    --cdc-foot-tagline: #b8a9b2;
+    --cdc-rose-accent: #ffb1cc;
+  }
+
+  /* ─── Footer ───────────────────────────────────────────────────────── */
+  .cdc-foot {
+    background: var(--cdc-foot-bg);
+    color: var(--cdc-foot-text);
+    padding: 64px 28px 30px;
+    margin-top: 20px;
+    font-family: "Nunito Sans", system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .cdc-foot-wrap { max-width: 1200px; margin: 0 auto; }
+
+  .cdc-foot-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 40px;
+  }
+
+  /* Logo */
+  .cdc-foot-logo {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: "Poppins", system-ui, sans-serif;
+    font-weight: 800; font-size: 1.35rem; color: #fff;
+    margin-bottom: 16px;
+  }
+  .cdc-foot-logo-img {
+    height: 36px; width: auto; max-width: 200px; display: block;
+    filter: brightness(0) invert(1);  /* logo blanc sur fond sombre */
+  }
+  .cdc-foot-logo .mark { font-size: 1.55rem; }
+  .cdc-foot-logo span.accent { color: var(--cdc-rose-accent); }
+
+  .cdc-foot-intro {
+    font-size: .95rem;
+    color: var(--cdc-foot-tagline);
+    margin: 16px 0 18px;
+    max-width: 30em;
+  }
+
+  /* Colonnes (CadeauClic, Légal) */
+  .cdc-foot h5 {
+    font-family: "Poppins", system-ui, sans-serif;
+    font-weight: 700;
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 18px;
+  }
+  .cdc-foot-col a {
+    color: var(--cdc-foot-text-soft);
+    font-size: .92rem;
+    display: block;
+    margin-bottom: 10px;
+    transition: color .15s;
+  }
+  .cdc-foot-col a:hover { color: var(--cdc-rose-accent); }
+
+  /* Socials */
+  .cdc-foot-socials { display: flex; gap: 10px; margin-top: 4px; }
+  .cdc-foot-socials a {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,.06);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--cdc-foot-text-soft);
+    transition: background .15s, color .15s;
+  }
+  .cdc-foot-socials a:hover {
+    background: var(--cdc-rose-accent);
+    color: var(--cdc-foot-bg);
+  }
+  .cdc-foot-socials svg { width: 16px; height: 16px; fill: currentColor; }
+
+  /* Bottom : copyright + signature */
+  .cdc-foot-bottom {
+    border-top: 1px solid rgba(255,255,255,.1);
+    margin-top: 46px;
+    padding-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: .85rem;
+    color: var(--cdc-foot-text-mute);
+  }
+
+  /* Responsive */
+  @media (max-width: 880px) {
+    .cdc-foot-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .cdc-foot-grid { grid-template-columns: 1fr; gap: 32px; }
+    .cdc-foot-bottom { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+
+<footer class="cdc-foot">
+  <div class="cdc-foot-wrap">
+    <div class="cdc-foot-grid">
+
+      <div>
+        <a href="/" class="cdc-foot-logo">
+          <img src="/logo.png" alt="cadeauclic.com" class="cdc-foot-logo-img"
+               onerror="this.onerror=null;this.style.display='none';var fb=this.parentNode.querySelector('.cdc-foot-logo-fallback');if(fb)fb.style.display='inline-flex'">
+          <span class="cdc-foot-logo-fallback" style="display:none;align-items:center;gap:6px">
+            <span class="mark">🎁</span>cadeauclic.com          </span>
+        </a>
+        <p class="cdc-foot-intro">En manque d'inspiration pour un futur cadeau à offrir&nbsp;? CadeauClic est le site référence pour trouver des idées cadeaux qui plaisent à coup sûr.</p>
+        <div class="cdc-foot-socials">
+          <a href="https://www.facebook.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M13 22v-8h2.7l.4-3.1H13V8.9c0-.9.3-1.5 1.6-1.5H16V4.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.4H7.2V14H9.9v8H13z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 8.6A3.4 3.4 0 1 0 15.4 12 3.4 3.4 0 0 0 12 8.6zm0 5.6A2.2 2.2 0 1 1 14.2 12 2.2 2.2 0 0 1 12 14.2zm4.3-5.8a.8.8 0 1 1-.8-.8.8.8 0 0 1 .8.8zM18.7 8a3.9 3.9 0 0 0-1.1-2.8A3.9 3.9 0 0 0 14.8 4c-1.1-.1-4.5-.1-5.6 0A3.9 3.9 0 0 0 6.4 5.2 3.9 3.9 0 0 0 5.3 8c-.1 1.1-.1 4.5 0 5.6a3.9 3.9 0 0 0 1.1 2.8 3.9 3.9 0 0 0 2.8 1.1c1.1.1 4.5.1 5.6 0a3.9 3.9 0 0 0 2.8-1.1 3.9 3.9 0 0 0 1.1-2.8c.1-1.1.1-4.5 0-5.6z"/></svg>
+          </a>
+          <a href="https://fr.pinterest.com/cadeaucliccom/" target="_blank" rel="nofollow noopener" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24"><path d="M12 4a8 8 0 0 0-2.9 15.4c0-.6-.1-1.6.1-2.3l1-4.2s-.2-.5-.2-1.3c0-1.2.7-2.1 1.6-2.1.7 0 1.1.6 1.1 1.2 0 .8-.5 1.9-.7 2.9-.2.9.4 1.6 1.3 1.6 1.6 0 2.7-2 2.7-4.4 0-1.8-1.2-3.2-3.5-3.2a4 4 0 0 0-4.1 4c0 .8.3 1.4.6 1.8.2.2.2.3.1.5l-.2.8c0 .3-.2.4-.5.2-1.2-.5-1.7-1.9-1.7-3.4 0-2.5 2.1-5.5 6.3-5.5 3.4 0 5.6 2.4 5.6 5 0 3.4-1.9 6-4.7 6-1 0-1.8-.5-2.1-1.1l-.6 2.2c-.2.7-.6 1.5-1 2A8 8 0 1 0 12 4z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="cdc-foot-col">
+        <h5>cadeauclic.com</h5>
+        <a href="/a-propos/">À propos</a>
+        <a href="/categorie-idees-cadeaux/">Idées cadeaux</a>
+        <a href="/blog/">Blog</a>
+        <a href="/codes-promo/">Codes promo</a>
+        <a href="/categorie-bons-plans-parrainage/">Parrainage</a>
+        <a href="/contact">Nous contacter</a>
+      </div>
+
+      <div class="cdc-foot-col">
+        <h5>Légal</h5>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/politique-confidentialite">Politique de confidentialité</a>
+        <a href="/plan-du-site">Plan du site</a>
+      </div>
+
+    </div>
+
+    <div class="cdc-foot-bottom">
+      <span>© 2026 cadeauclic.com — Tous droits réservés.</span>
+      <span>Fait avec 🎀 par Sophie Martin</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

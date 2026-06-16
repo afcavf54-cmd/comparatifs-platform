@@ -4,15 +4,21 @@ slug: noces-de-turquoise-30-cadeaux-18-ans-de-mariage
 date: '2026-06-16T11:55:33+02:00'
 categorie: Mariage & Fêtes
 meta_title: 30 idées et cadeaux pour fêter vos 18 ans de mariage
-meta_description: 'Noces de turquoise : découvrez 30 idées cadeaux originaux pour célébrer 18 ans de mariage, classés par budget, avec des suggestions alliant sens et élégance.'
+meta_description: 'Noces de turquoise : découvrez 30 idées cadeaux originaux pour
+  célébrer 18 ans de mariage, classés par budget, avec des suggestions alliant sens
+  et élégance.'
 min_words: 1000
 status: published
 featured_image: /blog/noces-de-turquoise-30-cadeaux-18-ans-de-mariage.jpg
 link_anchors:
 - text: noces de turquoise
   max: 5
+related_posts:
+- noces-de-bois-5-ans-de-mariage
+- noces-de-cuir-2-ans-de-mariage
+- noces-de-faience-idees-cadeaux-9-ans-de-mariage
+- noces-de-coton-1-an-de-mariage
 ---
-
 <h2>18 ans de mariage, ça se fête vraiment</h2>
 
 <p>Dix-huit ans ensemble. C'est long, c'est beau, et franchement, ça mérite bien mieux qu'un dîner expédié entre deux réunions. Les noces de turquoise, c'est l'anniversaire de mariage qui tombe un peu dans l'angle mort : pas aussi célèbre que les noces d'argent, pas aussi symbolique que les noces d'or, mais pourtant chargé d'une vraie profondeur. Presque deux décennies de vie commune, de choix faits à deux, de souvenirs accumulés. Ça compte énormément.</p>

@@ -4,15 +4,21 @@ slug: noces-de-corail-idees-cadeaux-11-ans-de-mariage
 date: '2026-06-16T11:55:33+02:00'
 categorie: Mariage & Fêtes
 meta_title: 30 idées et cadeaux pour vos 11 ans de mariage
-meta_description: Noces de corail, 11 ans de mariage à célébrer avec style. Découvrez 30 idées cadeaux originaux et personnalisés, pour tous les budgets, qui feront leur petit effet.
+meta_description: Noces de corail, 11 ans de mariage à célébrer avec style. Découvrez
+  30 idées cadeaux originaux et personnalisés, pour tous les budgets, qui feront leur
+  petit effet.
 min_words: 1000
 status: published
 featured_image: /blog/noces-de-corail-idees-cadeaux-11-ans-de-mariage.jpg
 link_anchors:
 - text: noces de corail
   max: 5
+related_posts:
+- noces-de-bois-5-ans-de-mariage
+- noces-de-cire-4-ans-de-mariage
+- noces-de-froment-3-ans-de-mariage
+- noces-de-porcelaine-30-cadeaux-20-ans-de-mariage
 ---
-
 <h2>Les noces de corail, c'est quoi exactement ?</h2>
 
 <p>Onze ans de mariage. Ça mérite vraiment qu'on s'arrête une seconde pour le célébrer comme il faut. Les noces de corail, c'est cette étape un peu méconnue qui tombe juste entre les <strong>noces de cristal</strong> (10 ans) et les noces d'étain (12 ans ou 15 ans selon les traditions). Beaucoup de couples passent à côté parce qu'ils ne savent même pas que ça existe. Et c'est dommage, parce que c'est une belle occasion de se rappeler pourquoi on a dit oui.</p>

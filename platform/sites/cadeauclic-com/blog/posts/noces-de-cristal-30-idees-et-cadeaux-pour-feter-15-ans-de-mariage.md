@@ -4,15 +4,20 @@ slug: noces-de-cristal-30-idees-et-cadeaux-pour-feter-15-ans-de-mariage
 date: '2026-06-16T11:55:33+02:00'
 categorie: Mariage & Fêtes
 meta_title: 30 idées et cadeaux pour fêter vos 15 ans de mariage
-meta_description: 'Noces de cristal : découvrez 30 idées cadeaux originaux pour célébrer 15 ans de mariage avec élégance et une vraie touche de symbolique autour du cristal.'
+meta_description: 'Noces de cristal : découvrez 30 idées cadeaux originaux pour célébrer
+  15 ans de mariage avec élégance et une vraie touche de symbolique autour du cristal.'
 min_words: 1000
 status: published
 featured_image: /blog/noces-de-cristal-30-idees-et-cadeaux-pour-feter-15-ans-de-mariage.jpg
 link_anchors:
 - text: noces de saphir
   max: 5
+related_posts:
+- noces-de-coton-1-an-de-mariage
+- noces-de-coquelicot-8-ans-de-mariage
+- noces-de-rose-30-cadeaux-17-ans-de-mariage
+- liste-de-mariage
 ---
-
 <h2>15 ans de mariage, ça se fête vraiment</h2>
 
 <p>Quinze ans. Ça fait un sacré bout de chemin. Et franchement, quand on arrive à cet anniversaire-là, c'est que le couple a traversé des choses sérieuses ensemble. Des déménagements, des enfants qui arrivent, des galères financières, des nuits sans dormir, des fous rires aussi. Alors oui, les <strong>noces de cristal</strong> méritent largement une vraie célébration, pas juste un dîner improvisé le vendredi soir.</p>

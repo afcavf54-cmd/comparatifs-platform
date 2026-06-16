@@ -4,15 +4,21 @@ slug: noces-de-plomb-idees-cadeaux-14-ans-de-mariage
 date: '2026-06-16T11:55:33+02:00'
 categorie: Mariage & Fêtes
 meta_title: 30 idées et cadeaux pour fêter vos 14 ans de mariage
-meta_description: Fêter 14 ans de mariage avec les noces de plomb mérite une vraie célébration. Découvrez 30 idées cadeaux originaux pour tous les budgets et tous les profils.
+meta_description: Fêter 14 ans de mariage avec les noces de plomb mérite une vraie
+  célébration. Découvrez 30 idées cadeaux originaux pour tous les budgets et tous
+  les profils.
 min_words: 1000
 status: published
 featured_image: /blog/noces-de-plomb-idees-cadeaux-14-ans-de-mariage.jpg
 link_anchors:
 - text: noces de plomb
   max: 5
+related_posts:
+- liste-de-mariage
+- noces-de-soie-idees-12-ans-de-mariage
+- noces-de-laine-7-ans-de-mariage
+- bapteme-mariage-anniversaire-le-gobelet-reutilisable
 ---
-
 <h2>Les noces de plomb, c'est quoi exactement ?</h2>
 
 <p>14 ans de mariage. C'est une belle étape, et pourtant elle est souvent moins célébrée que les noces de cristal ou les noces de porcelaine. Comme si les années "rondes" avaient le monopole des grandes fêtes. Moi, je pense l'inverse. 14 ans ensemble, c'est du sérieux. Ça mérite un vrai cadeau, une vraie attention, pas juste un dîner au restaurant expédié entre deux réunions.</p>

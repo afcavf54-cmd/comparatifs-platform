@@ -25,12 +25,9 @@
 body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
 a{color:var(--accent2);text-decoration:none}
 .container{max-width:1100px;margin:0 auto;padding:0 5vw}
-/* Padding réduit (avant : 64px top / 32px bot) pour rapprocher le titre du header
-   et le titre des filtres. Sur mobile (≤600px) on resserre encore. */
 .blog-header{padding:32px 0 12px;text-align:center}
 .blog-title{font-family:'DM Serif Display',serif;font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.02em;color:var(--ink);margin-bottom:12px}
 .blog-sub{font-size:18px;color:var(--ink3);max-width:600px;margin:0 auto}
-/* Margin réduit (avant : 32px top / 40px bot) pour coller les filtres au titre. */
 .blog-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0 32px}
 .blog-filter{font-size:13px;font-weight:600;color:var(--ink2);padding:8px 16px;border-radius:24px;border:1px solid var(--border);background:var(--surface);transition:.15s;cursor:pointer}
 .blog-filter:hover,.blog-filter.active{color:var(--accent);border-color:var(--accent)}
@@ -47,15 +44,6 @@ a{color:var(--accent2);text-decoration:none}
 .blog-card-excerpt{font-size:14px;color:var(--ink3);line-height:1.55;margin-bottom:16px;flex:1}
 .blog-card-meta{font-size:12px;color:var(--ink3);margin-top:auto}
 .blog-empty{text-align:center;padding:80px 0;color:var(--ink3);font-size:16px}
-/* Pagination style "rond bleu pour la page courante + ... + séparateur + Suivant".
-   Match visuel de la maquette fournie : numéros centrés sur 32px, page courante
-   en rond bleu plein, ellipsis pour gros volumes, séparateur vertical avant
-   Précédent/Suivant, et flèche dans cercle foncé.
-   ⚠️ ATTENTION : le sélecteur global `nav` défini dans _nav.html.j2 applique
-   `flex-direction:column; background:var(--ink); position:sticky; padding:0 5vw`
-   à TOUS les <nav>, y compris notre <nav class="blog-pagination">. On override
-   donc explicitement ces propriétés pour éviter que la pagination s'affiche en
-   colonne dans un fond sombre. */
 .blog-pagination{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:4px;margin:48px 0 24px;flex-wrap:nowrap;font-size:15px;background:transparent;padding:0;position:static}
 .blog-page-numbers{display:flex;align-items:center;gap:4px}
 .blog-page-num{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;padding:0 8px;border-radius:50%;background:transparent;border:none;color:var(--ink2);text-decoration:none;font-weight:500;transition:color .15s}
@@ -63,20 +51,16 @@ a{color:var(--accent2);text-decoration:none}
 .blog-page-current{background:var(--accent);color:#fff;font-weight:600;cursor:default}
 .blog-page-current:hover{color:#fff}
 .blog-page-ellipsis{display:inline-flex;align-items:center;justify-content:center;min-width:24px;color:var(--ink3);user-select:none}
-/* Séparateur vertical entre les numéros et le bouton Précédent/Suivant */
 .blog-page-sep{display:inline-block;width:1px;height:20px;background:var(--border);margin:0 12px}
-/* Lien Précédent/Suivant : texte + flèche dans rond foncé */
 .blog-page-link{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none;font-weight:500;padding:6px 4px;background:transparent;border:none;transition:opacity .15s}
 .blog-page-link:hover{opacity:.6;background:transparent}
 .blog-page-disabled{display:inline-flex;align-items:center;gap:8px;color:var(--ink3);font-weight:500;padding:6px 4px;opacity:.4;cursor:default;background:transparent;border:none}
 .blog-page-arrow{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:11px;line-height:1;flex-shrink:0}
 .blog-page-disabled .blog-page-arrow{background:var(--ink3)}
 @media(max-width:600px){.blog-pagination{gap:2px;font-size:14px}.blog-page-num{min-width:28px;height:28px;padding:0 6px}.blog-page-sep{margin:0 6px}.blog-page-link,.blog-page-disabled{padding:4px 2px}.blog-page-link span:not(.blog-page-arrow){display:none}.blog-page-disabled span:not(.blog-page-arrow){display:none}}
-/* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
 @media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){
   .blog-grid{grid-template-columns:1fr}
-  /* Resserrage supplémentaire sur mobile : header + filtres ultra compacts */
   .blog-header{padding:20px 0 8px}
   .blog-title{margin-bottom:8px}
   .blog-filters{margin:10px 0 24px}
@@ -241,11 +225,11 @@ a{color:var(--accent2);text-decoration:none}
     <h1 class="blog-title">Le Blog</h1>
   </div>
   <div class="blog-filters">
-    <a class="blog-filter active" href="/blog/">Tous <span class="blog-filter-count">(30)</span></a>
+    <a class="blog-filter active" href="/blog/">Tous <span class="blog-filter-count">(122)</span></a>
     <a class="blog-filter" href="/categorie-idees-cadeaux/">Idées cadeaux <span class="blog-filter-count">(42)</span></a>
     <a class="blog-filter" href="/categorie-bebe-naissance/">Bébé & Naissance <span class="blog-filter-count">(24)</span></a>
     <a class="blog-filter" href="/categorie-bons-plans-parrainage/">Bons plans & Parrainage <span class="blog-filter-count">(24)</span></a>
-    <a class="blog-filter" href="/categorie-mariage-fetes/">Mariage & Fêtes <span class="blog-filter-count">(12)</span></a>
+    <a class="blog-filter" href="/categorie-mariage-fetes/">Mariage & Fêtes <span class="blog-filter-count">(22)</span></a>
     <a class="blog-filter" href="/categorie-mode-personnalisation/">Mode & Personnalisation <span class="blog-filter-count">(7)</span></a>
     <a class="blog-filter" href="/categorie-maison-deco/">Maison & Déco <span class="blog-filter-count">(2)</span></a>
     <a class="blog-filter" href="/categorie-cadeau-femme/">Cadeau femme <span class="blog-filter-count">(1)</span></a>
@@ -254,6 +238,86 @@ a{color:var(--accent2);text-decoration:none}
 
 <main class="container">
   <div class="blog-grid">
+    <a href="/cadeau-homme-55-ans/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/cadeau-homme-55-ans.jpg" alt="Idées de cadeaux pour homme de 55 ans" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Idées cadeaux</span>        <h2 class="blog-card-title">Idées de cadeaux pour homme de 55 ans</h2>
+<p class="blog-card-excerpt">Trouver un cadeau pour un homme de 55 ans : par où commencer ? Les 55 ans, c'est un cap qui mérite vraiment un beau cadeau. Pas un truc banal acheté en cinq minutes. Pas encore…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
+    </a>
+    <a href="/cadeau-femme-50-ans/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/cadeau-femme-50-ans.jpg" alt="Idées de cadeaux pour femme de 50 ans" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Idées cadeaux</span>        <h2 class="blog-card-title">Idées de cadeaux pour femme de 50 ans</h2>
+<p class="blog-card-excerpt">Les 50 ans, c'est une occasion qui mérite vraiment mieux qu'un bouquet de fleurs classique Je vais te dire un truc : trouver un cadeau pour une femme qui fête ses 50 ans, c'est à…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
+    </a>
+    <a href="/cadeau-homme-60-ans/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/cadeau-homme-60-ans.jpg" alt="Quel cadeau offrir à un homme de 60 ans ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Idées cadeaux</span>        <h2 class="blog-card-title">Quel cadeau offrir à un homme de 60 ans ?</h2>
+<p class="blog-card-excerpt">Soixante ans. C'est un cap qui mérite vraiment qu'on prenne le temps de trouver quelque chose de bien. Pas un cadeau bâclé acheté en catastrophe la veille, pas un parfum générique…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
+    </a>
+    <a href="/cadeau-homme-59-ans/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/cadeau-homme-59-ans.jpg" alt="Idées de cadeaux pour homme de 59 ans" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Idées cadeaux</span>        <h2 class="blog-card-title">Idées de cadeaux pour homme de 59 ans</h2>
+<p class="blog-card-excerpt">Trouver un cadeau pour un homme qui approche la soixantaine, c'est une mission qui peut rapidement devenir un casse-tête. Ni trop classique, ni trop décalé. Quelque chose qui lui…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
+    </a>
+    <a href="/cadeau-homme-57-ans/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/cadeau-homme-57-ans.jpg" alt="Quel cadeau offrir à un homme de 57 ans ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Idées cadeaux</span>        <h2 class="blog-card-title">Quel cadeau offrir à un homme de 57 ans ?</h2>
+<p class="blog-card-excerpt">Trouver un cadeau pour un homme de 57 ans : pourquoi c'est souvent plus compliqué qu'on le croit Je ne compte plus le nombre de fois où j'ai passé des heures à chercher une idée…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
+    </a>
+    <a href="/cadeau-homme-73-ans/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/cadeau-homme-73-ans.jpg" alt="Idées de cadeaux pour homme de 73 ans" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Idées cadeaux</span>        <h2 class="blog-card-title">Idées de cadeaux pour homme de 73 ans</h2>
+<p class="blog-card-excerpt">Trouver un cadeau pour un homme de 73 ans, ce n'est pas toujours simple. Ni trop sage, ni trop gadget. Quelque chose qui lui ressemble vraiment, qui tient compte de ce qu'il aime,…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
+    </a>
+    <a href="/cadeau-femme-80-ans/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/cadeau-femme-80-ans.jpg" alt="Idées de cadeaux pour femme de 80 ans" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Idées cadeaux</span>        <h2 class="blog-card-title">Idées de cadeaux pour femme de 80 ans</h2>
+<p class="blog-card-excerpt">Trouver le bon cadeau pour une femme de 80 ans : par où commencer ? Les 80 ans, c'est une occasion qui mérite vraiment qu'on se creuse la tête. Pas question d'arriver avec une…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
+    </a>
+    <a href="/cadeau-femme-70-ans/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/cadeau-femme-70-ans.jpg" alt="Quel cadeau offrir à une femme de 70 ans ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Idées cadeaux</span>        <h2 class="blog-card-title">Quel cadeau offrir à une femme de 70 ans ?</h2>
+<p class="blog-card-excerpt">Trouver le cadeau parfait pour une femme de 70 ans, pas si simple Je vais te dire un truc : offrir un cadeau à une femme de 70 ans, c'est un exercice qui mérite vraiment qu'on s'y…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
+    </a>
+    <a href="/cadeau-homme-51-ans/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/cadeau-homme-51-ans.jpg" alt="Quel cadeau offrir à un homme de 51 ans ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Idées cadeaux</span>        <h2 class="blog-card-title">Quel cadeau offrir à un homme de 51 ans ?</h2>
+<p class="blog-card-excerpt">Trouver un cadeau pour un homme de 51 ans : par où commencer ? J'ai vécu cette situation une bonne dizaine de fois. Un proche qui approche la cinquantaine, voire qui vient de la…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
+    </a>
+    <a href="/cadeau-homme-65-ans/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/cadeau-homme-65-ans.jpg" alt="Quel cadeau offrir à un homme de 65 ans ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Idées cadeaux</span>        <h2 class="blog-card-title">Quel cadeau offrir à un homme de 65 ans ?</h2>
+<p class="blog-card-excerpt">Trouver un cadeau pour un homme de 65 ans : par où commencer ? 65 ans, c'est une étape qu'on n'improvise pas. Ce n'est pas un anniversaire comme les autres. Et franchement, quand…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
+    </a>
     <a href="/cadeau-homme-70-ans/" class="blog-card">
       <div class="blog-card-img">
         <img src="/blog/cadeau-homme-70-ans.jpg" alt="Quel cadeau offrir à un homme de 70 ans ?" loading="lazy">
@@ -414,86 +478,6 @@ a{color:var(--accent2);text-decoration:none}
 <span class="blog-card-cat">Bébé & Naissance</span>        <h2 class="blog-card-title">Mon avis sur la liste de naissance Minipouce</h2>
 <p class="blog-card-excerpt">Je vais être directe : quand j'ai cherché où créer la liste de naissance de ma deuxième, j'ai passé des heures à comparer des dizaines de sites. Minipouce est ressorti assez vite…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
     </a>
-    <a href="/cadeau-saint-valentin-derniere-minute/" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/cadeau-saint-valentin-derniere-minute.jpg" alt="Cadeaux de dernière minute pour la Saint-Valentin : solutions rapides" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-<span class="blog-card-cat">Idées cadeaux</span>        <h2 class="blog-card-title">Cadeaux de dernière minute pour la Saint-Valentin : solutions rapides</h2>
-<p class="blog-card-excerpt">La panique du 13 février, on connaît toutes Le 14 février arrive à toute vitesse et tu n'as toujours rien prévu. Pas de panique, vraiment. Ça m'est arrivé plus d'une fois, et à…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
-    </a>
-    <a href="/liste-de-naissance-milirose/" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/liste-de-naissance-milirose.jpg" alt="Mon avis sur la liste de naissance Milirose" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-<span class="blog-card-cat">Bébé & Naissance</span>        <h2 class="blog-card-title">Mon avis sur la liste de naissance Milirose</h2>
-<p class="blog-card-excerpt">J'ai découvert Milirose un peu par hasard, en cherchant une alternative aux grandes plateformes de liste de naissance que tout le monde utilise. Ma belle-sœur attendait son…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
-    </a>
-    <a href="/liste-de-naissance-mes-envies/" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/liste-de-naissance-mes-envies.jpg" alt="Mon avis sur la liste de naissance Mes envies" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-<span class="blog-card-cat">Bébé & Naissance</span>        <h2 class="blog-card-title">Mon avis sur la liste de naissance Mes envies</h2>
-<p class="blog-card-excerpt">Je suis tombée sur Mes envies un peu par hasard, en cherchant une alternative aux listes de naissance classiques proposées par les grandes enseignes. Franchement, j'en avais un…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
-    </a>
-    <a href="/liste-de-naissance-verbaudet/" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/liste-de-naissance-verbaudet.jpg" alt="Mon avis sur la liste de naissance Verbaudet" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-<span class="blog-card-cat">Bébé & Naissance</span>        <h2 class="blog-card-title">Mon avis sur la liste de naissance Verbaudet</h2>
-<p class="blog-card-excerpt">Quand j'ai été enceinte de mon deuxième, j'ai voulu faire les choses bien. Pas question de refaire la même erreur qu'à la première grossesse, où j'avais laissé mes proches acheter…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
-    </a>
-    <a href="/liste-de-naissance-bebe9/" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/liste-de-naissance-bebe9.jpg" alt="Mon avis sur la liste de naissance bébé9" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-<span class="blog-card-cat">Bébé & Naissance</span>        <h2 class="blog-card-title">Mon avis sur la liste de naissance bébé9</h2>
-<p class="blog-card-excerpt">J'avais entendu parler de Bébé9 par une amie qui venait d'accoucher de son deuxième. Elle m'avait dit "vas voir, c'est bien foutue, et les prix sont corrects". J'ai donc creusé un…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
-    </a>
-    <a href="/code-promo-linxea-per/" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/code-promo-linxea-per.jpg" alt="Code promo Linxea PER en Juin 2026 : jusqu’à 200€ offerts" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-<span class="blog-card-cat">Bons plans & Parrainage</span>        <h2 class="blog-card-title">Code promo Linxea PER en Juin 2026 : jusqu’à 200€ offerts</h2>
-<p class="blog-card-excerpt">Je vais être directe : quand j'ai ouvert un PER pour la première fois, j'avais surtout peur de me retrouver bloquée avec un produit compliqué que je ne comprendrais pas. Et…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
-    </a>
-    <a href="/liste-de-naissance-autour-de-bebe/" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/liste-de-naissance-autour-de-bebe.jpg" alt="Mon avis sur la liste de naissance Autour de bébé" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-<span class="blog-card-cat">Bébé & Naissance</span>        <h2 class="blog-card-title">Mon avis sur la liste de naissance Autour de bébé</h2>
-<p class="blog-card-excerpt">Pourquoi j'ai choisi Autour de bébé pour ma liste de naissance ? Quand j'ai été enceinte de mon deuxième, je me suis dit que j'allais faire les choses bien cette fois-ci. Pas de…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
-    </a>
-    <a href="/pourquoi-faire-une-liste-de-naissance/" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/pourquoi-faire-une-liste-de-naissance.jpg" alt="Pourquoi faire une liste de naissance ?" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-<span class="blog-card-cat">Bébé & Naissance</span>        <h2 class="blog-card-title">Pourquoi faire une liste de naissance ?</h2>
-<p class="blog-card-excerpt">La liste de naissance, vraiment utile ou simple tradition ? Quand j'étais enceinte de mon premier, ma belle-mère m'a conseillé de faire une liste de naissance. J'ai un peu résisté…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
-    </a>
-    <a href="/liste-de-naissance-berceau-magique/" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/liste-de-naissance-berceau-magique.jpg" alt="Mon avis sur la liste de naissance Berceau Magique" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-<span class="blog-card-cat">Bébé & Naissance</span>        <h2 class="blog-card-title">Mon avis sur la liste de naissance Berceau Magique</h2>
-<p class="blog-card-excerpt">J'ai créé ma liste de naissance sur Berceau Magique quand j'attendais mon deuxième. À l'époque, j'avais déjà eu une liste sur un autre site pour le premier, alors j'avais un point…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
-    </a>
-    <a href="/liste-de-naissance-listedenaissance-fr/" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/liste-de-naissance-listedenaissance-fr.jpg" alt="Mon avis sur la liste de naissance Listedenaissance.fr" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-<span class="blog-card-cat">Bébé & Naissance</span>        <h2 class="blog-card-title">Mon avis sur la liste de naissance Listedenaissance.fr</h2>
-<p class="blog-card-excerpt">Quand j'étais enceinte de mon deuxième, j'avais déjà tout le matériel de base. La poussette, le lit, les bodies en stock. Mais la famille voulait quand même offrir des cadeaux. Et…</p><div class="blog-card-meta">15 juin 2026</div>      </div>
-    </a>
   </div>
 
   <nav class="blog-pagination" aria-label="Pagination du blog">
@@ -507,7 +491,8 @@ a{color:var(--accent2);text-decoration:none}
           <a href="/blog/" class="blog-page-num">1</a>
           <span class="blog-page-num blog-page-current" aria-current="page">2</span>
           <a href="/blog/3/" class="blog-page-num">3</a>
-          <a href="/blog/4/" class="blog-page-num">4</a>
+            <span class="blog-page-ellipsis" aria-hidden="true">…</span>
+          <a href="/blog/5/" class="blog-page-num">5</a>
     </div>
 
 <span class="blog-page-sep" aria-hidden="true"></span>
