@@ -806,6 +806,85 @@ def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, a
             print(f"  🧹 {len(orphan_keys)} paires supprimées de editorial.json")
 
 
+# ── Index JSON pré-calculé pour le dashboard ──────────────────────────────────
+# PROBLÈME résolu : avant cet index, le dashboard lisait chaque .md du blog
+# individuellement via l'API GitHub (1 requête par article). À 122 articles,
+# ça saturait le rate limit GitHub et le chargement prenait 5-15s avec des
+# 403/429 intermittents. À 1000+ articles, le dashboard devenait inutilisable.
+#
+# SOLUTION : un fichier `posts-index.json` est généré à chaque build, qui
+# contient tous les metadata nécessaires au dashboard (title, slug, date,
+# status, categorie, excerpt, featured_image, meta_description). Le dashboard
+# fait UNE SEULE requête GitHub pour lire ce JSON, au lieu de N requêtes.
+#
+# Le contenu COMPLET des articles reste dans les .md (pour git diff, édition,
+# génération du site statique). L'index ne stocke que les metadata d'affichage.
+def _serialize_post_for_index(p) -> dict:
+    """Convertit un post (objet ou dict retourné par blog_engine) en dict
+    minimaliste pour l'index JSON. Defensive : utilise getattr/.get selon
+    le type, et ne stocke pas le contenu HTML complet (trop volumineux)."""
+    def g(attr, default=None):
+        if hasattr(p, attr):
+            v = getattr(p, attr, default)
+        elif isinstance(p, dict):
+            v = p.get(attr, default)
+        else:
+            v = default
+        if hasattr(v, 'isoformat'):
+            return v.isoformat()
+        return v
+
+    excerpt = g('excerpt') or g('meta_description') or ''
+    if excerpt and len(excerpt) > 250:
+        excerpt = excerpt[:247] + '...'
+
+    return {
+        "title": g('title') or '',
+        "slug": g('slug') or '',
+        "date": g('date') or '',
+        "status": g('status') or 'published',
+        "categorie": g('categorie') or g('category') or '',
+        "excerpt": excerpt,
+        "featured_image": g('featured_image') or '',
+        "meta_description": g('meta_description') or '',
+        "min_words": g('min_words') or 0,
+    }
+
+
+def write_posts_index(site_dir: Path) -> None:
+    """Génère `<site_dir>/blog/posts-index.json` avec tous les posts (publiés
+    ET brouillons). Le dashboard lit ce fichier pour afficher la liste —
+    1 requête GitHub au lieu de N. No-op si pas de blog_engine ou pas de
+    dossier blog/posts/."""
+    blog_dir = site_dir / "blog"
+    posts_dir = blog_dir / "posts"
+    if not posts_dir.exists():
+        return
+    if blog_engine is None:
+        return
+    try:
+        posts_with_drafts = blog_engine.load_all_posts(site_dir, include_drafts=True)
+    except Exception as e:
+        print(f"  ⚠ write_posts_index : load_all_posts a échoué — {e}")
+        return
+
+    blog_dir.mkdir(exist_ok=True)
+    index_path = blog_dir / "posts-index.json"
+    payload = {
+        "updated_at": datetime.now().isoformat(),
+        "count": len(posts_with_drafts),
+        "posts": [_serialize_post_for_index(p) for p in posts_with_drafts],
+    }
+    try:
+        index_path.write_text(
+            json.dumps(payload, ensure_ascii=False, indent=2),
+            encoding="utf-8"
+        )
+        print(f"  ✓ posts-index.json écrit ({payload['count']} articles)")
+    except Exception as e:
+        print(f"  ⚠ write_posts_index : écriture échouée — {e}")
+
+
 def copy_shared_assets(output_dir: Path, site_dir: Path) -> None:
     # ── sheets.js (composant JS partagé) ─────────────────────────────────
     for source_dir in [site_dir, SHARED_DIR]:
@@ -1440,6 +1519,11 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             (output_dir / "_redirects").write_text(redirects, encoding="utf-8")
             print(f"  ✓ _redirects ({www_preference})")
         copy_shared_assets(output_dir, site_dir)
+        # ── Index JSON pour le dashboard (1 requête GitHub au lieu de N) ──
+        # Doit être appelé AVANT le post-process des dates pour avoir tous
+        # les posts à jour. L'index est committé dans le repo (cf workflow
+        # generate-site.yml qui add platform/sites/<site>/blog/).
+        write_posts_index(site_dir)
 
         # ── Copie public/ (récursif) ─────────────────────────────────────
         # On copie tout l'arbre public/ tel quel, ce qui inclut :
