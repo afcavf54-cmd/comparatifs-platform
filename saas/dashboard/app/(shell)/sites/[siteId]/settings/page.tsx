@@ -3,6 +3,34 @@ import { useEffect, useState } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 
+// ─── Helper : extrait le filename "propre" depuis n'importe quelle valeur ─
+// La valeur stockée dans config.yaml.author.photo peut être :
+//   - un filename simple : "author-photo.jpg"
+//   - un path : "/author-photo.jpg" ou "/public/author-photo.jpg"
+//   - une URL absolue (corruption causée par d'anciennes versions du dashboard
+//     qui stockaient `authorPhotoPreview` au lieu du filename) :
+//     "https://raw.githubusercontent.com/.../public/author-photo.jpg?t=..."
+// Dans tous les cas on veut juste le filename pour stockage propre.
+function extractFilename(raw: string): string {
+  if (!raw) return ''
+  let s = String(raw).trim()
+  // Strip query string si présent (?t=...)
+  s = s.split('?')[0]
+  // Si URL absolue → prendre le dernier segment du path
+  if (s.includes('://')) {
+    s = s.split('/').pop() || ''
+  } else {
+    // Path relatif : prendre le dernier segment (gère "/public/foo.jpg" → "foo.jpg")
+    if (s.includes('/')) s = s.split('/').pop() || ''
+  }
+  // Validation finale : autoriser uniquement [a-zA-Z0-9._-]
+  if (!/^[a-zA-Z0-9._-]+$/.test(s)) {
+    console.warn('[author photo] filename invalide après normalisation :', raw, '→', s)
+    return ''
+  }
+  return s
+}
+
 export default function SettingsPage() {
   const { siteId } = useParams()
   const router = useRouter()
@@ -12,7 +40,6 @@ export default function SettingsPage() {
   const [savingTheme, setSavingTheme] = useState(false)
   const [msgTheme, setMsgTheme] = useState('')
   const [seoForm, setSeoForm] = useState({ home_title: '', home_description: '', home_h1: '', seo_vs_title: '{A} vs {B} : comparatif {year}', seo_vs_meta: 'Comparatif complet {A} vs {B} {year} : rendements, frais, avis.', seo_avis_title: 'Avis {nom} {year} : faut-il investir ?', seo_avis_meta: 'Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques.', seo_liste_comp_title: 'Tous les comparatifs {site_name} {year}', seo_liste_avis_title: 'Avis {site_name} {year} : analyses independantes', seo_classement_title: 'Meilleur {categorie} {year} : Top {count}', seo_classement_meta: 'Comparez les meilleurs {categorie} en {year}.', seo_classement_h1: '', seo_classement_titre_analyse: 'Comparatif complet {categorie}', www_preference: 'www' })
-  // pageTypes reste lu en interne (utilisé par le bloc SEO classement) mais n'est plus éditable depuis cette page
   const [pageTypes, setPageTypes] = useState<Record<string, string>>({})
   const [saving, setSaving] = useState(false)
   const [savingSeo, setSavingSeo] = useState(false)
@@ -28,7 +55,14 @@ export default function SettingsPage() {
   const [msgSeo, setMsgSeo] = useState('')
   const [msgFavicon, setMsgFavicon] = useState('')
   const [faviconPreview, setFaviconPreview] = useState<string | null>(null)
-  const [authorPhotoPreview, setAuthorPhotoPreview] = useState<string | null>(null)
+
+  // ─── ÉTAT PHOTO AUTEUR ────────────────────────────────────────────────
+  // Découpler le filename (stocké dans config.yaml) et l'URL preview (pour
+  // l'<img>). Sans ce découplage, le save écrit l'URL absolue dans
+  // config.yaml, qui est ensuite re-préfixée au reload → 404 récurrent.
+  const [authorPhotoFilename, setAuthorPhotoFilename] = useState<string>('')   // ← stocké dans config
+  const [authorPhotoPreview, setAuthorPhotoPreview] = useState<string | null>(null) // ← URL pour <img>
+
   const [personaPrompt, setPersonaPrompt] = useState('')
   const [authorName, setAuthorName] = useState('')
   const [authorBio, setAuthorBio] = useState('')
@@ -41,9 +75,6 @@ export default function SettingsPage() {
       setSite(d)
       setForm({ name: d.name, domain: d.domain, cloudflare_project: d.cloudflare_project, description: d.description || '', status: d.status, sheet_csv_url: d.sheet_csv_url || '' })
     })
-    // Charger logo et favicon en listant le dossier public/
-    // (plus robuste que de deviner l'extension : marche avec .png, .svg, .jpg,
-    // .jpeg, .webp, .gif, .ico, .avif, etc.)
     fetch(`/api/github?path=${encodeURIComponent(`platform/sites/${siteId}/public`)}`)
       .then(r => r.json())
       .then(files => {
@@ -70,14 +101,22 @@ export default function SettingsPage() {
           setAuthorBio(d.author.bio || '')
           setAuthorSocials(d.author.socials || [])
           if (d.author.photo) {
-          // Charger via raw GitHub comme logos/favicons
-          const rawUrl = `https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/${siteId}/public/${d.author.photo.replace(/^\//, '')}?t=${Date.now()}`
-          const img = new Image()
-          img.onload = () => setAuthorPhotoPreview(rawUrl)
-          img.src = rawUrl
+            // Extraire le filename (tolérant : gère filenames simples, paths,
+            // ET les URLs absolues corrompues par d'anciennes versions du
+            // dashboard — auto-migration au prochain save).
+            const filename = extractFilename(d.author.photo)
+            if (filename) {
+              setAuthorPhotoFilename(filename)
+              // Construire l'URL preview à partir du filename
+              const rawUrl = `https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/${siteId}/public/${filename}?t=${Date.now()}`
+              setAuthorPhotoPreview(rawUrl)
+            } else {
+              console.warn('[author photo] valeur config invalide :', d.author.photo)
+              setAuthorPhotoFilename('')
+              setAuthorPhotoPreview(null)
+            }
+          }
         }
-        }
-        // Charger persona
         setPersonaPrompt(d.persona_prompt || '')
       }
     }).catch(() => {})
@@ -327,26 +366,42 @@ export default function SettingsPage() {
         </div>
 
         <div style={{marginBottom:16}}>
-          <label style={{fontSize:12,color:'#8B9CB0',display:'block',marginBottom:6}}>PHOTO DE L'AUTEUR</label>
+          <label style={{fontSize:12,color:'#8B9CB0',display:'block',marginBottom:6}}>
+            PHOTO DE L'AUTEUR
+            {authorPhotoFilename && <span style={{color:'#4A5568',fontWeight:400,marginLeft:8,fontSize:11}}>· {authorPhotoFilename}</span>}
+          </label>
           <div style={{display:'flex',alignItems:'center',gap:16}}>
             <div style={{width:64,height:64,borderRadius:'50%',overflow:'hidden',background:'#1E2D3D',display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}}>
-              {authorPhotoPreview ? <img src={authorPhotoPreview} alt="Auteur" style={{width:'100%',height:'100%',objectFit:'cover'}} /> : <span style={{fontSize:24}}>✍️</span>}
+              {authorPhotoPreview ? (
+                <img
+                  src={authorPhotoPreview}
+                  alt="Auteur"
+                  style={{width:'100%',height:'100%',objectFit:'cover'}}
+                  onError={() => {
+                    // Photo référencée dans config mais introuvable sur le repo :
+                    // on retire l'aperçu pour afficher le placeholder ✍️.
+                    console.warn('[author photo] image introuvable :', authorPhotoPreview)
+                    setAuthorPhotoPreview(null)
+                  }}
+                />
+              ) : <span style={{fontSize:24}}>✍️</span>}
             </div>
             <label style={{padding:'9px 16px',borderRadius:8,background:'#1E2D3D',color:'#F6AD55',cursor:'pointer',fontSize:13,fontWeight:600}}>
               📁 Choisir une photo
               <input type="file" accept="image/*" style={{display:'none'}} onChange={async e => {
                 const file = e.target.files?.[0]; if (!file) return
                 const fd = new FormData(); fd.append('file', file)
-                // Aperçu immédiat
+                // Aperçu immédiat avec l'objet local
                 setAuthorPhotoPreview(URL.createObjectURL(file))
                 const r = await fetch(`/api/sites/${siteId}/author-photo`, {method:'POST',body:fd})
                 const d = await r.json()
                 if (d.rawUrl) {
-                  // Aperçu via new Image() comme logos/favicons
-                  const img = new Image()
-                  img.onload = () => setAuthorPhotoPreview(d.rawUrl + '?t=' + Date.now())
-                  img.src = d.rawUrl + '?t=' + Date.now()
-                  // Config mis à jour automatiquement par la route
+                  // Extraire le filename de rawUrl (= ce qu'on stocke dans config)
+                  // pour s'assurer qu'au prochain save on n'écrit pas l'URL complète.
+                  const filename = extractFilename(d.rawUrl)
+                  if (filename) setAuthorPhotoFilename(filename)
+                  // Preview avec cache-bust
+                  setAuthorPhotoPreview(d.rawUrl + '?t=' + Date.now())
                 }
               }} />
             </label>
@@ -372,12 +427,16 @@ export default function SettingsPage() {
         </div>
 
         <button onClick={async () => {
+          // CRITIQUE : on save authorPhotoFilename (juste le filename), JAMAIS
+          // authorPhotoPreview (URL absolue). Sans ça, au prochain reload le
+          // path serait re-préfixé par le code de chargement → 404 récurrent.
           const r = await fetch(`/api/sites/${siteId}/config`, {
             method:'PATCH', headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({ author: { name: authorName, bio: authorBio, job_title: authorJob, photo: authorPhotoPreview || '', socials: authorSocials } })
+            body: JSON.stringify({ author: { name: authorName, bio: authorBio, job_title: authorJob, photo: authorPhotoFilename, socials: authorSocials } })
           })
           const d = await r.json()
           if (d.ok) alert('✓ Auteur sauvegardé')
+          else alert('✗ Erreur : ' + (d.error || 'inconnue'))
         }} style={{padding:'10px 20px',borderRadius:8,border:'none',background:'linear-gradient(135deg,#00D4AA,#0090FF)',color:'#fff',cursor:'pointer',fontWeight:600,fontSize:13}}>
           💾 Sauvegarder l'auteur
         </button>
