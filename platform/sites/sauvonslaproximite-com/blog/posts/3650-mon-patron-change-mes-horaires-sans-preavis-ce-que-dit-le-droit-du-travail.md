@@ -4,15 +4,21 @@ slug: 3650-mon-patron-change-mes-horaires-sans-preavis-ce-que-dit-le-droit-du-tr
 date: '2026-06-16T20:00:00+02:00'
 categorie: Salarié
 meta_title: 'Mon patron change mes horaires sans préavis : que faire ?'
-meta_description: Votre patron peut-il changer vos horaires sans vous demander votre avis ? Cela dépend de votre contrat de travail. Découvrez vos droits et comment réagir.
+meta_description: Votre patron peut-il changer vos horaires sans vous demander votre
+  avis ? Cela dépend de votre contrat de travail. Découvrez vos droits et comment
+  réagir.
 min_words: 1200
 status: published
 featured_image: /blog/3650-mon-patron-change-mes-horaires-sans-preavis-ce-que-dit-le-droit-du-travail.jpg
 link_anchors:
 - text: mon patron change mes horaires du jour au lendemain
   max: 4
+related_posts:
+- 8092-refus-d-amenagement-d-horaire-avec-une-rqth-comment-faire-valoir-vos-droits
+- 3837-radiation-pole-emploi-combien-d-avertissements-avant-une-sanction
+- 9279-accord-implicite-de-rupture-conventionnelle-ce-que-prevoit-reellement-la-loi
+- 8972-horaire-decale-quels-droits-et-obligations-pour-les-salaries-concernes
 ---
-
 <p>Vingt ans à jongler avec les paies, les déclarations, les clôtures de fin de mois... j'ai vu défiler beaucoup de situations sociales dans les entreprises où j'ai travaillé. Et une question revient régulièrement chez les salariés, souvent formulée avec une vraie inquiétude : "Mon patron a changé mes horaires du jour au lendemain, c'est légal ?"</p>
 
 <p>Réponse courte : pas forcément. Réponse longue : ça dépend de ce qui est écrit dans votre contrat, et de la nature du changement. Je vais vous expliquer comment distinguer ce qui relève d'un simple ajustement de planning de ce qui constitue une modification contractuelle que vous pouvez refuser.</p>

@@ -14,9 +14,10 @@ link_anchors:
 - text: nombre d'avertissement avant la radiation de pôle emploi
   max: 4
 related_posts:
+- 8092-refus-d-amenagement-d-horaire-avec-une-rqth-comment-faire-valoir-vos-droits
+- 3650-mon-patron-change-mes-horaires-sans-preavis-ce-que-dit-le-droit-du-travail
 - 3017-je-fais-moins-d-heures-que-prevu-dans-mon-cdi-quels-recours-engager
 - 9279-accord-implicite-de-rupture-conventionnelle-ce-que-prevoit-reellement-la-loi
-- 8972-horaire-decale-quels-droits-et-obligations-pour-les-salaries-concernes
 ---
 <h2>Le système d'avertissements : ce qu'on ne vous dit pas toujours</h2>
 

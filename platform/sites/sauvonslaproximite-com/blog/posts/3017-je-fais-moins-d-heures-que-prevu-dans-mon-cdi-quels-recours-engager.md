@@ -15,8 +15,9 @@ link_anchors:
   max: 4
 related_posts:
 - 3837-radiation-pole-emploi-combien-d-avertissements-avant-une-sanction
+- 8092-refus-d-amenagement-d-horaire-avec-une-rqth-comment-faire-valoir-vos-droits
+- 3650-mon-patron-change-mes-horaires-sans-preavis-ce-que-dit-le-droit-du-travail
 - 9279-accord-implicite-de-rupture-conventionnelle-ce-que-prevoit-reellement-la-loi
-- 8972-horaire-decale-quels-droits-et-obligations-pour-les-salaries-concernes
 ---
 <p>Vingt ans à accompagner des équipes sur leurs bulletins de paie, leurs contrats, leurs droits... et pourtant, ce sujet revient régulièrement. Un salarié en CDI qui réalise, souvent en fin de mois, qu'il a travaillé moins d'heures que son contrat le prévoit. Pas parce qu'il a posé des congés. Mais parce que son employeur a réduit son planning, modifié ses horaires, ou tout simplement ne lui a pas fourni assez de travail. Voyons ensemble ce que dit la loi, et surtout ce que vous pouvez faire concrètement.</p>
 

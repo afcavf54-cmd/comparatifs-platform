@@ -15,8 +15,9 @@ link_anchors:
   max: 4
 related_posts:
 - 8972-horaire-decale-quels-droits-et-obligations-pour-les-salaries-concernes
-- 3017-je-fais-moins-d-heures-que-prevu-dans-mon-cdi-quels-recours-engager
 - 3837-radiation-pole-emploi-combien-d-avertissements-avant-une-sanction
+- 3650-mon-patron-change-mes-horaires-sans-preavis-ce-que-dit-le-droit-du-travail
+- 3017-je-fais-moins-d-heures-que-prevu-dans-mon-cdi-quels-recours-engager
 featured_image: /blog/9279-accord-implicite-de-rupture-conventionnelle-ce-que-prevoit-reellement-la-loi.jpg
 ---
 <h2>L'accord implicite de rupture conventionnelle : mythe ou réalité juridique ?</h2>

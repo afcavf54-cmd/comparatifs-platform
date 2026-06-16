@@ -1,18 +1,25 @@
 ---
-title: 'Refus d''aménagement d''horaire avec une RQTH : comment faire valoir vos droits ?'
+title: 'Refus d''aménagement d''horaire avec une RQTH : comment faire valoir vos droits
+  ?'
 slug: 8092-refus-d-amenagement-d-horaire-avec-une-rqth-comment-faire-valoir-vos-droits
 date: '2026-06-16T18:00:00+02:00'
 categorie: Salarié
 meta_title: 'Refus aménagement horaire RQTH : démarches et solutions'
-meta_description: Votre employeur a refusé un aménagement d'horaire malgré votre RQTH ? Ce refus n'est pas toujours légal. Découvrez vos droits et les recours concrets disponibles.
+meta_description: Votre employeur a refusé un aménagement d'horaire malgré votre RQTH
+  ? Ce refus n'est pas toujours légal. Découvrez vos droits et les recours concrets
+  disponibles.
 min_words: 1800
 status: published
 featured_image: /blog/8092-refus-d-amenagement-d-horaire-avec-une-rqth-comment-faire-valoir-vos-droits.jpg
 link_anchors:
 - text: refus d'aménagement d'horaire pour une salarié rqth
   max: 4
+related_posts:
+- 3017-je-fais-moins-d-heures-que-prevu-dans-mon-cdi-quels-recours-engager
+- 3650-mon-patron-change-mes-horaires-sans-preavis-ce-que-dit-le-droit-du-travail
+- 3837-radiation-pole-emploi-combien-d-avertissements-avant-une-sanction
+- 8972-horaire-decale-quels-droits-et-obligations-pour-les-salaries-concernes
 ---
-
 <p>Vingt ans à jongler avec les plannings, les absences, les aménagements de poste. J'ai vu beaucoup de situations. Et la question du refus d'aménagement d'horaire pour un salarié titulaire d'une RQTH revient régulièrement, souvent mal gérée des deux côtés.</p>
 
 <p>Ce qui m'a toujours frappé, c'est que beaucoup de salariés ne savent pas vraiment ce à quoi ils ont droit. Ils formulent une demande, l'employeur dit non, et l'affaire s'arrête là. Pourtant, ce "non" n'est pas toujours légal.</p>

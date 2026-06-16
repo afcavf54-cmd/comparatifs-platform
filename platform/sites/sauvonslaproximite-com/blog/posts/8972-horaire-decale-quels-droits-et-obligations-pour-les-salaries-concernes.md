@@ -15,8 +15,9 @@ link_anchors:
   max: 4
 related_posts:
 - 9279-accord-implicite-de-rupture-conventionnelle-ce-que-prevoit-reellement-la-loi
-- 3017-je-fais-moins-d-heures-que-prevu-dans-mon-cdi-quels-recours-engager
+- 8092-refus-d-amenagement-d-horaire-avec-une-rqth-comment-faire-valoir-vos-droits
 - 3837-radiation-pole-emploi-combien-d-avertissements-avant-une-sanction
+- 3017-je-fais-moins-d-heures-que-prevu-dans-mon-cdi-quels-recours-engager
 ---
 <h2>Qu'est-ce qu'un horaire décalé et dans quels cas l'employeur peut-il l'imposer ?</h2>
 
