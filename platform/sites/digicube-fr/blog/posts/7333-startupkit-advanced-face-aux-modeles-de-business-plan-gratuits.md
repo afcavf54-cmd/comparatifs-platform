@@ -14,6 +14,7 @@ link_anchors:
 - text: le modèle de business plan StartupKit Advanced
   max: 5
 related_posts:
+- 4578-financepro-smart-face-a-excel-pour-creer-son-business-plan
 - 5639-business-plan-startupkit-premium-face-aux-modeles-gratuits
 - 4679-business-plan-smartstart-generator-face-au-travail-fait-main
 ---
