@@ -4,15 +4,21 @@ slug: 1047-a-qui-se-destine-le-crm-salestrack-evolution
 date: '2026-06-16T07:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Utiliser le CRM SalesTrack Evolution : pour quel commercial ?'
-meta_description: 'Découvrez à qui s''adresse vraiment le CRM SalesTrack Evolution : profils cibles, points forts des pipelines et avis concret d''une responsable comptable impliquée…'
+meta_description: 'Découvrez à qui s''adresse vraiment le CRM SalesTrack Evolution
+  : profils cibles, points forts des pipelines et avis concret d''une responsable
+  comptable impliquée…'
 min_words: 920
 status: published
 featured_image: /blog/1047-a-qui-se-destine-le-crm-salestrack-evolution.jpg
 link_anchors:
 - text: comment utiliser le CRM SalesTrack Evolution
   max: 5
+related_posts:
+- 7544-a-qui-profite-le-crm-smartlead-evolution
+- 2732-marketing-et-vente-le-crm-salesconnect-pro-contre-marketwise
+- 2160-6-elements-qui-font-grimper-le-cout-d-implementation-de-bizcore-advanced
+- 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
 ---
-
 <p>Je vais vous parler d'un outil que j'ai eu l'occasion d'étudier de près ces derniers mois, dans le cadre d'un projet de refonte de notre gestion commerciale. Chez nous, la comptabilité et le suivi client sont liés, et quand le commercial ne documente rien correctement, c'est moi qui ramasse les pots cassés en fin de trimestre. Alors quand la direction m'a demandé de participer à l'évaluation de plusieurs CRM, j'ai pris ça au sérieux.</p>
 
 <p>SalesTrack Evolution est l'un des outils qu'on a mis sur la table. Pas le seul, mais celui qui a suscité le plus de questions dans l'équipe. Et pour cause : il ne s'adresse clairement pas à tout le monde.</p>
