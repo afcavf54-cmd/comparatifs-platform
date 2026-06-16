@@ -588,143 +588,181 @@ a:hover{text-decoration:underline}
 </div>
 
 <style>
-.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
-.footer-inner{max-width:1200px;margin:0 auto}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
-.footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
-.footer-brand .footer-logo span{color:var(--accent2)}
-.footer-brand p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;max-width:260px;margin:0;padding:0}
-/* Anciennement .footer-col h4 — passé en div pour respecter la hiérarchie Hn (le footer ne doit pas introduire de Hn) */
-.footer-col .footer-col-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
-.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
-.footer-col a:hover{color:#fff}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
-.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
-@media(max-width:768px){
-  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
-  .footer-brand{grid-column:1/-1}
-}
+  /* ─── Reset défensif ──────────────────────────────────────────────────
+     Comme pour le _nav.html.j2 cadeauclic, certains templates communs du
+     réseau (contact, mentions-legales, plan-du-site…) ont des sélecteurs
+     CSS par tag larges qui catchent <footer>, <a>, <h5>… On reset donc
+     explicitement sur tous les descendants du footer pour qu'aucun style
+     parent ne percole et n'écrase notre design. */
+  .cdc-foot,
+  .cdc-foot * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    color: inherit;
+    text-decoration: none;
+    font-family: inherit;
+  }
+
+  /* ─── Palette cadeauclic (scope local au partial) ────────────────────
+     Variables --cdc-* pour éviter tout conflit avec le thème commun du
+     réseau (--ink, --accent, --bg…). Les pages communes blog/avis/contact
+     n'ont pas le :root rose/coral de la home, on le réintroduit ici. */
+  :root {
+    --cdc-foot-bg: #1f1722;
+    --cdc-foot-text: #d9cdd4;
+    --cdc-foot-text-soft: #c3b4bd;
+    --cdc-foot-text-mute: #9c8e96;
+    --cdc-foot-tagline: #b8a9b2;
+    --cdc-rose-accent: #ffb1cc;
+  }
+
+  /* ─── Footer ───────────────────────────────────────────────────────── */
+  .cdc-foot {
+    background: var(--cdc-foot-bg);
+    color: var(--cdc-foot-text);
+    padding: 64px 28px 30px;
+    margin-top: 20px;
+    font-family: "Nunito Sans", system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .cdc-foot-wrap { max-width: 1200px; margin: 0 auto; }
+
+  .cdc-foot-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 40px;
+  }
+
+  /* Logo */
+  .cdc-foot-logo {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: "Poppins", system-ui, sans-serif;
+    font-weight: 800; font-size: 1.35rem; color: #fff;
+    margin-bottom: 16px;
+  }
+  .cdc-foot-logo-img {
+    height: 36px; width: auto; max-width: 200px; display: block;
+    filter: brightness(0) invert(1);  /* logo blanc sur fond sombre */
+  }
+  .cdc-foot-logo .mark { font-size: 1.55rem; }
+  .cdc-foot-logo span.accent { color: var(--cdc-rose-accent); }
+
+  .cdc-foot-intro {
+    font-size: .95rem;
+    color: var(--cdc-foot-tagline);
+    margin: 16px 0 18px;
+    max-width: 30em;
+  }
+
+  /* Colonnes (CadeauClic, Légal) */
+  .cdc-foot h5 {
+    font-family: "Poppins", system-ui, sans-serif;
+    font-weight: 700;
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 18px;
+  }
+  .cdc-foot-col a {
+    color: var(--cdc-foot-text-soft);
+    font-size: .92rem;
+    display: block;
+    margin-bottom: 10px;
+    transition: color .15s;
+  }
+  .cdc-foot-col a:hover { color: var(--cdc-rose-accent); }
+
+  /* Socials */
+  .cdc-foot-socials { display: flex; gap: 10px; margin-top: 4px; }
+  .cdc-foot-socials a {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,.06);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--cdc-foot-text-soft);
+    transition: background .15s, color .15s;
+  }
+  .cdc-foot-socials a:hover {
+    background: var(--cdc-rose-accent);
+    color: var(--cdc-foot-bg);
+  }
+  .cdc-foot-socials svg { width: 16px; height: 16px; fill: currentColor; }
+
+  /* Bottom : copyright + signature */
+  .cdc-foot-bottom {
+    border-top: 1px solid rgba(255,255,255,.1);
+    margin-top: 46px;
+    padding-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: .85rem;
+    color: var(--cdc-foot-text-mute);
+  }
+
+  /* Responsive */
+  @media (max-width: 880px) {
+    .cdc-foot-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .cdc-foot-grid { grid-template-columns: 1fr; gap: 32px; }
+    .cdc-foot-bottom { flex-direction: column; align-items: flex-start; }
+  }
 </style>
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="/" style="display:block;margin-bottom:12px"><img src="/logo.png" alt="cadeauclic.com" style="height:36px;width:auto;object-fit:contain"></a>
-        <p>Comparatifs cadeauclic.com 2026</p>
+
+<footer class="cdc-foot">
+  <div class="cdc-foot-wrap">
+    <div class="cdc-foot-grid">
+
+      <div>
+        <a href="/" class="cdc-foot-logo">
+          <img src="/logo.png" alt="cadeauclic.com" class="cdc-foot-logo-img"
+               onerror="this.onerror=null;this.style.display='none';var fb=this.parentNode.querySelector('.cdc-foot-logo-fallback');if(fb)fb.style.display='inline-flex'">
+          <span class="cdc-foot-logo-fallback" style="display:none;align-items:center;gap:6px">
+            <span class="mark">🎁</span>cadeauclic.com          </span>
+        </a>
+        <p class="cdc-foot-intro">En manque d'inspiration pour un futur cadeau à offrir&nbsp;? CadeauClic est le site référence pour trouver des idées cadeaux qui plaisent à coup sûr.</p>
+        <div class="cdc-foot-socials">
+          <a href="https://www.facebook.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M13 22v-8h2.7l.4-3.1H13V8.9c0-.9.3-1.5 1.6-1.5H16V4.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.4H7.2V14H9.9v8H13z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 8.6A3.4 3.4 0 1 0 15.4 12 3.4 3.4 0 0 0 12 8.6zm0 5.6A2.2 2.2 0 1 1 14.2 12 2.2 2.2 0 0 1 12 14.2zm4.3-5.8a.8.8 0 1 1-.8-.8.8.8 0 0 1 .8.8zM18.7 8a3.9 3.9 0 0 0-1.1-2.8A3.9 3.9 0 0 0 14.8 4c-1.1-.1-4.5-.1-5.6 0A3.9 3.9 0 0 0 6.4 5.2 3.9 3.9 0 0 0 5.3 8c-.1 1.1-.1 4.5 0 5.6a3.9 3.9 0 0 0 1.1 2.8 3.9 3.9 0 0 0 2.8 1.1c1.1.1 4.5.1 5.6 0a3.9 3.9 0 0 0 2.8-1.1 3.9 3.9 0 0 0 1.1-2.8c.1-1.1.1-4.5 0-5.6z"/></svg>
+          </a>
+          <a href="https://fr.pinterest.com/cadeaucliccom/" target="_blank" rel="nofollow noopener" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24"><path d="M12 4a8 8 0 0 0-2.9 15.4c0-.6-.1-1.6.1-2.3l1-4.2s-.2-.5-.2-1.3c0-1.2.7-2.1 1.6-2.1.7 0 1.1.6 1.1 1.2 0 .8-.5 1.9-.7 2.9-.2.9.4 1.6 1.3 1.6 1.6 0 2.7-2 2.7-4.4 0-1.8-1.2-3.2-3.5-3.2a4 4 0 0 0-4.1 4c0 .8.3 1.4.6 1.8.2.2.2.3.1.5l-.2.8c0 .3-.2.4-.5.2-1.2-.5-1.7-1.9-1.7-3.4 0-2.5 2.1-5.5 6.3-5.5 3.4 0 5.6 2.4 5.6 5 0 3.4-1.9 6-4.7 6-1 0-1.8-.5-2.1-1.1l-.6 2.2c-.2.7-.6 1.5-1 2A8 8 0 1 0 12 4z"/></svg>
+          </a>
+        </div>
       </div>
-      <div class="footer-col">
-        <div class="footer-col-label">Navigation</div>
-        <a href="/blog/">Blog</a>
-        <a href="/plan-du-site">Plan du site</a>
-        <a href="/mentions-legales">Mentions légales</a>
-        <a href="/politique-confidentialite">Confidentialité</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-label">À propos</div>
+
+      <div class="cdc-foot-col">
+        <h5>cadeauclic.com</h5>
         <a href="/a-propos/">À propos</a>
+        <a href="/categorie-idees-cadeaux/">Idées cadeaux</a>
+        <a href="/blog/">Blog</a>
+        <a href="/codes-promo/">Codes promo</a>
+        <a href="/categorie-bons-plans-parrainage/">Parrainage</a>
         <a href="/contact">Nous contacter</a>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-bottom-left">
-        © 2026 cadeauclic.com — Données actualisées le 16 juin 2026
+
+      <div class="cdc-foot-col">
+        <h5>Légal</h5>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/politique-confidentialite">Politique de confidentialité</a>
+        <a href="/plan-du-site">Plan du site</a>
       </div>
+
+    </div>
+
+    <div class="cdc-foot-bottom">
+      <span>© 2026 cadeauclic.com — Tous droits réservés.</span>
+      <span>Fait avec 🎀 par Sophie Martin</span>
     </div>
   </div>
 </footer>
-
-<button type="button"
-        class="scroll-top-btn"
-        id="scroll-top-btn"
-        aria-label="Remonter en haut de la page"
-        title="Remonter en haut">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-       stroke="currentColor" stroke-width="2.5"
-       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <line x1="12" y1="19" x2="12" y2="5"></line>
-    <polyline points="5 12 12 5 19 12"></polyline>
-  </svg>
-</button>
-
-<style>
-.scroll-top-btn{
-  position:fixed;
-  bottom:24px;
-  right:24px;
-  z-index:9999;
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  background:var(--ink, #0F1419);
-  color:#fff;
-  border:none;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
-  visibility:hidden;
-  transform:translateY(10px);
-  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .15s;
-  box-shadow:0 4px 14px rgba(0,0,0,.18);
-  padding:0;
-  font-family:inherit;
-}
-.scroll-top-btn.visible{
-  opacity:1;
-  visibility:visible;
-  transform:translateY(0);
-}
-.scroll-top-btn:hover{
-  background:var(--accent, #C9A961);
-}
-.scroll-top-btn:focus-visible{
-  outline:2px solid var(--accent, #C9A961);
-  outline-offset:3px;
-}
-@media (max-width:600px){
-  .scroll-top-btn{ bottom:16px; right:16px; width:42px; height:42px; }
-}
-@media (prefers-reduced-motion: reduce){
-  .scroll-top-btn{ transition:opacity .2s, visibility .2s; }
-}
-</style>
-
-<script>
-(function(){
-  'use strict';
-  var btn = document.getElementById('scroll-top-btn');
-  if (!btn) return;
-
-  var THRESHOLD = 400; // px de scroll avant apparition
-  var ticking = false;
-
-  function update(){
-    if (window.scrollY > THRESHOLD) {
-      btn.classList.add('visible');
-    } else {
-      btn.classList.remove('visible');
-    }
-    ticking = false;
-  }
-
-  function onScroll(){
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(update);
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  btn.addEventListener('click', function(){
-    var prefersReduced = window.matchMedia
-      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
-  });
-
-  // Check immédiat (au cas où la page est rechargée déjà scrollée)
-  update();
-})();
-</script>
 </body>
 </html>
