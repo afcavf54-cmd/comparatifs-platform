@@ -37,4 +37,16 @@ date_creation: "2026-06-16"
 date_maj: "2026-06-16"
 ---
 
+# Comment utiliser un code promo Octopus Energy
 
+## Étape 1
+Repère le code promo Octopus Energy qui t'intéresse sur cette page et copie-le soigneusement, en vérifiant bien chaque caractère.
+
+## Étape 2
+Rends-toi sur le site Octopus Energy et commence ta simulation de contrat ou accède à ton espace client pour gérer ton abonnement.
+
+## Étape 3
+Lors de la souscription ou dans la section dédiée, repère le champ prévu pour saisir un code promo ou un code de parrainage, puis colle-y ton code.
+
+## Étape 4
+Valide le code et vérifie que la remise ou l'avantage apparaît bien dans le récapitulatif avant de confirmer ta souscription.
