@@ -14,6 +14,7 @@ link_anchors:
   max: 5
 related_posts:
 - 7831-crm-basique-ou-salesforce-premium-quelle-difference
+- 4096-fieldforce-connect-android-le-crm-mobile-sans-filtre
 - 8975-comment-installer-l-erp-integre-managepro-suite
 ---
 <h2>SAP, qu'est-ce que c'est exactement ?</h2>
