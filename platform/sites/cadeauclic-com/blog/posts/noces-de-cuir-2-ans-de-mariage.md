@@ -4,15 +4,20 @@ slug: noces-de-cuir-2-ans-de-mariage
 date: '2026-06-16T11:36:18+02:00'
 categorie: Mariage & Fêtes
 meta_title: 'Noces de cuir : 30 idées et cadeaux pour fêter vos 2 ans de mariage'
-meta_description: 'Noces de cuir : découvrez 30 idées cadeaux originales pour célébrer 2 ans de mariage, classées par budget, avec la symbolique du cuir expliquée simplement.'
+meta_description: 'Noces de cuir : découvrez 30 idées cadeaux originales pour célébrer
+  2 ans de mariage, classées par budget, avec la symbolique du cuir expliquée simplement.'
 min_words: 1000
 status: published
 featured_image: /blog/noces-de-cuir-2-ans-de-mariage.jpg
 link_anchors:
 - text: noces de cuir
   max: 5
+related_posts:
+- noces-de-laine-7-ans-de-mariage
+- noces-de-froment-3-ans-de-mariage
+- noces-de-faience-idees-cadeaux-9-ans-de-mariage
+- noces-de-cire-4-ans-de-mariage
 ---
-
 <h2>Les noces de cuir, c'est quoi exactement ?</h2>
 
 <p>Deux ans de mariage. Ça passe vite, non ? On vient à peine de ranger les photos du mariage dans un bel album et déjà, le deuxième anniversaire arrive. Les noces de cuir marquent cette étape, et honnêtement, je trouve que c'est une occasion trop souvent sous-estimée. On va pas se mentir, deux ans ensemble, c'est pas rien. Ça mérite clairement une vraie célébration.</p>

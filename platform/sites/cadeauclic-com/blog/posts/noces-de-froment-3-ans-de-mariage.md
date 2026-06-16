@@ -4,15 +4,20 @@ slug: noces-de-froment-3-ans-de-mariage
 date: '2026-06-16T11:36:18+02:00'
 categorie: Mariage & Fêtes
 meta_title: 'Noces de froment : 30 idées et cadeaux pour fêter vos 3 ans de mariage'
-meta_description: 'Noces de froment : découvrez 30 idées originales pour célébrer 3 ans de mariage avec des cadeaux et activités pensés autour du symbole du blé.'
+meta_description: 'Noces de froment : découvrez 30 idées originales pour célébrer
+  3 ans de mariage avec des cadeaux et activités pensés autour du symbole du blé.'
 min_words: 1000
 status: published
 featured_image: /blog/noces-de-froment-3-ans-de-mariage.jpg
 link_anchors:
 - text: noces de froment
   max: 5
+related_posts:
+- noces-de-cire-4-ans-de-mariage
+- liste-de-mariage
+- noces-de-coton-1-an-de-mariage
+- noces-d-etain-idees-cadeaux-10-ans-de-mariage
 ---
-
 <h2>Les noces de froment, c'est quoi exactement ?</h2>
 
 <p>Trois ans de mariage. Pas toujours facile à fêter, parce que franchement, on ne sait pas toujours ce qu'on est censé offrir ou organiser. Les noces de froment, c'est l'anniversaire des 3 ans de vie commune officielle, et comme beaucoup de couples, mon mari et moi on a failli passer à côté sans vraiment le marquer. On a rattrapé le coup in extremis avec un dîner improvisé et un cadeau un peu trop classique. Je ne veux pas que tu fasses la même erreur.</p>

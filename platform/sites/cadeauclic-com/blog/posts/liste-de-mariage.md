@@ -15,6 +15,9 @@ link_anchors:
   max: 5
 related_posts:
 - bapteme-mariage-anniversaire-le-gobelet-reutilisable
+- noces-de-cire-4-ans-de-mariage
+- noces-de-laine-7-ans-de-mariage
+- noces-de-cuir-2-ans-de-mariage
 ---
 <p>Préparer un mariage, c'est beau, c'est stressant, et parfois c'est le chaos total. J'en sais quelque chose. Quand on a organisé le nôtre il y a quelques années, on a perdu un temps fou à expliquer à chaque invité ce qu'on voulait, à gérer les doublons, à répondre aux mêmes questions vingt fois. Si c'était à refaire, je passerais directement par une liste de mariage en ligne. Et gratuite, si possible.</p>
 

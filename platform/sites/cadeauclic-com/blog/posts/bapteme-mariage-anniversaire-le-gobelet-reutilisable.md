@@ -16,7 +16,10 @@ link_anchors:
 - text: pourquoi offrir un gobelet personnalisé
   max: 5
 related_posts:
-- liste-de-mariage
+- noces-de-cire-4-ans-de-mariage
+- noces-d-etain-idees-cadeaux-10-ans-de-mariage
+- noces-de-coquelicot-8-ans-de-mariage
+- noces-de-froment-3-ans-de-mariage
 ---
 <h2>Le succès fulgurant des gobelets personnalisés : un phénomène qui ne me surprend plus</h2>
 

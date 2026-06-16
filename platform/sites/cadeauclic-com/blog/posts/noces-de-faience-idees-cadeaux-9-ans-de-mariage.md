@@ -4,15 +4,20 @@ slug: noces-de-faience-idees-cadeaux-9-ans-de-mariage
 date: '2026-06-16T11:36:18+02:00'
 categorie: Mariage & Fêtes
 meta_title: 30 idées et cadeaux pour vos 9 ans de mariage
-meta_description: 'Noces de faïence : découvrez 30 idées cadeaux originaux pour célébrer 9 ans de mariage avec style, du souvenir artisanal au cadeau personnalisé.'
+meta_description: 'Noces de faïence : découvrez 30 idées cadeaux originaux pour célébrer
+  9 ans de mariage avec style, du souvenir artisanal au cadeau personnalisé.'
 min_words: 1000
 status: published
 featured_image: /blog/noces-de-faience-idees-cadeaux-9-ans-de-mariage.jpg
 link_anchors:
 - text: noces de faïence
   max: 5
+related_posts:
+- liste-de-mariage
+- bapteme-mariage-anniversaire-le-gobelet-reutilisable
+- noces-de-cuir-2-ans-de-mariage
+- noces-de-coton-1-an-de-mariage
 ---
-
 <h2>Les noces de faïence, c'est quoi exactement ?</h2>
 
 <p>Neuf ans de mariage. Ça mérite clairement plus qu'un dîner au restaurant du coin. Les noces de faïence marquent cette étape un peu oubliée entre les noces de cristal (15 ans) et celles qui précèdent. Et pourtant, neuf ans ensemble, c'est une vraie aventure. Des déménagements, des enfants parfois, des galères surmontées, des souvenirs accumulés. Bref, ça se fête.</p>

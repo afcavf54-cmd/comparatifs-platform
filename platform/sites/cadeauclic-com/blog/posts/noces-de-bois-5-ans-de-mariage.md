@@ -4,15 +4,20 @@ slug: noces-de-bois-5-ans-de-mariage
 date: '2026-06-16T11:36:18+02:00'
 categorie: Mariage & Fêtes
 meta_title: 30 idées et cadeaux pour vos 5 ans de mariage
-meta_description: 'Noces de bois, 5 ans de mariage : découvrez 30 idées cadeaux originaux autour du bois, pour tous les budgets, de moins de 20 euros aux présents plus généreux.'
+meta_description: 'Noces de bois, 5 ans de mariage : découvrez 30 idées cadeaux originaux
+  autour du bois, pour tous les budgets, de moins de 20 euros aux présents plus généreux.'
 min_words: 1000
 status: published
 featured_image: /blog/noces-de-bois-5-ans-de-mariage.jpg
 link_anchors:
 - text: noces de bois
   max: 5
+related_posts:
+- liste-de-mariage
+- noces-de-coton-1-an-de-mariage
+- noces-de-froment-3-ans-de-mariage
+- noces-de-cire-4-ans-de-mariage
 ---
-
 <h2>5 ans de mariage, ça se fête vraiment</h2>
 
 <p>Cinq ans ensemble. C'est court pour certains, mais quand on pense à tout ce qu'un couple traverse en cinq ans, les déménagements, les projets, les petites crises et les grands bonheurs, on réalise que ça mérite vraiment une vraie célébration. Les noces de bois, c'est l'anniversaire de mariage de la cinquième année. Le bois, c'est solide, c'est chaleureux, ça dure. Comme une relation qui a traversé les premières années et qui s'est enracinée.</p>

@@ -4,15 +4,20 @@ slug: 15-livres-a-offrir-en-cadeau-a-une-maman
 date: '2026-06-16T11:22:26+02:00'
 categorie: Idées cadeaux
 meta_title: 'Offrir un livre à une maman : 15 idées cadeau de livres incontournables'
-meta_description: Découvrez une sélection de 15 livres à offrir en cadeau à une maman, pour tous les profils et tous les budgets, avec des idées vraiment personnalisées.
+meta_description: Découvrez une sélection de 15 livres à offrir en cadeau à une maman,
+  pour tous les profils et tous les budgets, avec des idées vraiment personnalisées.
 min_words: 1000
 status: published
 featured_image: /blog/15-livres-a-offrir-en-cadeau-a-une-maman.jpg
 link_anchors:
 - text: 15 livres à offrir en cadeau à une maman
   max: 5
+related_posts:
+- calendrier-photo-personnalise-une-bonne-idee-de-cadeau-pour-noel
+- comment-souhaiter-un-joyeux-anniversaire-a-un-homme-avec-originalite
+- cadeau-homme-73-ans
+- cadeau-femme-100-ans
 ---
-
 <p>Tu cherches un cadeau pour ta maman et tu te retrouves les mains vides devant Amazon à 23h ? Je connais ce moment. Je l'ai vécu des dizaines de fois. Et pourtant, après des années à chercher des idées pour les anniversaires, la fête des mères, Noël, j'ai fini par trouver une valeur sûre qui marche à presque tous les coups : le livre.</p>
 
 <p>Pas n'importe lequel, évidemment. Un livre choisi avec soin, qui correspond vraiment à sa personnalité, à ses passions, à ce qu'elle traverse en ce moment. Là, ça change tout. J'ai vu ma mère pleurer en lisant la dédicace que j'avais glissée dans un roman. Je n'oublierai jamais sa tête.</p>

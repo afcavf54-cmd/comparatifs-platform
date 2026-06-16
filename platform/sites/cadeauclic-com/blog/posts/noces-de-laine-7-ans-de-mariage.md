@@ -4,15 +4,20 @@ slug: noces-de-laine-7-ans-de-mariage
 date: '2026-06-16T11:36:18+02:00'
 categorie: Mariage & Fêtes
 meta_title: 30 idées et cadeaux pour vos 7 ans de mariage
-meta_description: 'Noces de laine, 7 ans de mariage : découvrez 30 idées cadeaux originaux et inspirants autour de la laine, pour célébrer cette belle étape en couple.'
+meta_description: 'Noces de laine, 7 ans de mariage : découvrez 30 idées cadeaux originaux
+  et inspirants autour de la laine, pour célébrer cette belle étape en couple.'
 min_words: 1000
 status: published
 featured_image: /blog/noces-de-laine-7-ans-de-mariage.jpg
 link_anchors:
 - text: noces de laine
   max: 5
+related_posts:
+- noces-de-coquelicot-8-ans-de-mariage
+- noces-de-coton-1-an-de-mariage
+- liste-de-mariage
+- noces-de-cuir-2-ans-de-mariage
 ---
-
 <p>Sept ans. C'est à la fois peu et beaucoup. Assez pour avoir traversé des moments compliqués, des déménagements, peut-être l'arrivée d'enfants. Assez pour savoir que vous avez choisi la bonne personne. Les noces de laine marquent cette étape avec un symbole fort : la laine qui tisse, qui réchauffe, qui lie. Et franchement, j'adore cette symbolique.</p>
 
 <p>Quand on cherche comment célébrer ses 7 ans de mariage, on tombe souvent sur des listes génériques et peu inspirantes. J'ai voulu faire quelque chose d'utile, de concret, avec de vraies idées que j'aurais envie d'offrir ou de recevoir moi-même. Voici donc 30 idées et cadeaux pour marquer le coup, quel que soit ton budget.</p>

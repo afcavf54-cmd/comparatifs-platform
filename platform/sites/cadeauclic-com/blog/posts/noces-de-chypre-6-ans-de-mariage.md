@@ -4,15 +4,20 @@ slug: noces-de-chypre-6-ans-de-mariage
 date: '2026-06-16T11:36:18+02:00'
 categorie: Mariage & Fêtes
 meta_title: 30 idées et cadeaux pour vos 6 ans de mariage
-meta_description: 'Noces de Chypre : découvrez 30 idées cadeaux originaux pour célébrer 6 ans de mariage avec élégance, entre personnalisation, sucre et résines parfumées.'
+meta_description: 'Noces de Chypre : découvrez 30 idées cadeaux originaux pour célébrer
+  6 ans de mariage avec élégance, entre personnalisation, sucre et résines parfumées.'
 min_words: 1000
 status: published
 featured_image: /blog/noces-de-chypre-6-ans-de-mariage.jpg
 link_anchors:
 - text: noces de chypre
   max: 5
+related_posts:
+- noces-de-coton-1-an-de-mariage
+- noces-de-coquelicot-8-ans-de-mariage
+- noces-de-cire-4-ans-de-mariage
+- noces-de-laine-7-ans-de-mariage
 ---
-
 <h2>Les noces de Chypre, c'est quoi exactement ?</h2>
 
 <p>Six ans de mariage. Pas encore une décennie, mais déjà bien plus qu'un simple départ. Les noces de Chypre marquent une étape que beaucoup de couples oublient de célébrer, à tort. C'est pourtant un anniversaire qui mérite qu'on s'y arrête, qu'on prenne le temps de marquer le coup avec un cadeau qui a du sens.</p>

@@ -3,16 +3,23 @@ title: Comment faire plaisir à sa mère sans argent ?
 slug: comment-faire-plaisir-a-sa-mere-sans-argent
 date: '2026-06-16T11:22:26+02:00'
 categorie: Idées cadeaux
-meta_title: Comment faire plaisir à sa mère sans argent ? 11 idées qui lui feront plaisir
-meta_description: Faire plaisir à sa mère sans argent, c'est souvent ce qui touche le plus. Découvrez 20 idées concrètes, sincères et gratuites pour lui montrer votre amour.
+meta_title: Comment faire plaisir à sa mère sans argent ? 11 idées qui lui feront
+  plaisir
+meta_description: Faire plaisir à sa mère sans argent, c'est souvent ce qui touche
+  le plus. Découvrez 20 idées concrètes, sincères et gratuites pour lui montrer votre
+  amour.
 min_words: 1000
 status: published
 featured_image: /blog/comment-faire-plaisir-a-sa-mere-sans-argent.jpg
 link_anchors:
 - text: comment faire plaisir à sa mère sans argent
   max: 5
+related_posts:
+- cadeau-saint-valentin-derniere-minute
+- liste-danniversaire
+- cadeau-homme-90-ans
+- idees-cadeaux-de-noel-pour-un-jeune-couple
 ---
-
 <p>Faire plaisir à sa mère sans dépenser un centime, c'est possible. Et franchement, parfois c'est même ce qui touche le plus. J'ai longtemps cru qu'un beau cadeau emballé était la meilleure façon de montrer son affection. Et puis un jour, ma mère m'a dit que le meilleur cadeau qu'elle avait jamais reçu, c'était une lettre que je lui avais écrite à la main à ses 50 ans. Pas d'achat, pas de livraison, pas de budget. Juste du temps et des mots sincères.</p>
 
 <p>Alors si tu te retrouves à chercher comment faire plaisir à ta maman sans avoir un euro sur toi, sache que tu n'es pas dans une situation désespérée. Loin de là.</p>

@@ -4,15 +4,20 @@ slug: noces-d-etain-idees-cadeaux-10-ans-de-mariage
 date: '2026-06-16T11:36:18+02:00'
 categorie: Mariage & Fêtes
 meta_title: 30 idées et cadeaux pour vos 10 ans de mariage
-meta_description: 'Noces d''étain : découvrez 30 idées cadeaux originaux pour célébrer 10 ans de mariage avec style, classés par budget et par profil de couple.'
+meta_description: 'Noces d''étain : découvrez 30 idées cadeaux originaux pour célébrer
+  10 ans de mariage avec style, classés par budget et par profil de couple.'
 min_words: 1000
 status: published
 featured_image: /blog/noces-d-etain-idees-cadeaux-10-ans-de-mariage.jpg
 link_anchors:
 - text: noces d’étain
   max: 5
+related_posts:
+- bapteme-mariage-anniversaire-le-gobelet-reutilisable
+- noces-de-laine-7-ans-de-mariage
+- noces-de-froment-3-ans-de-mariage
+- noces-de-coquelicot-8-ans-de-mariage
 ---
-
 <h2>10 ans de mariage, et alors ?</h2>
 
 <p>Franchement, dix ans ensemble, ça mérite mieux qu'un dîner en tête à tête et une carte achetée en vitesse à la caisse du supermarché. Les noces d'étain, c'est une vraie étape. Pas la plus célébrée, pas la plus connue du grand public, mais pour moi, c'est l'une des plus belles. Dix ans, c'est le moment où on réalise qu'on a traversé des galères, des déménagements, probablement des enfants, des nuits sans sommeil, et qu'on est encore là, ensemble. Ça se fête vraiment.</p>

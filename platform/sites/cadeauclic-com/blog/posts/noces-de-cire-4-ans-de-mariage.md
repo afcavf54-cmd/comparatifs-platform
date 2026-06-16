@@ -4,15 +4,21 @@ slug: noces-de-cire-4-ans-de-mariage
 date: '2026-06-16T11:36:18+02:00'
 categorie: Mariage & Fêtes
 meta_title: 'Noces de cire : 30 idées et cadeaux pour fêter vos 4 ans de mariage'
-meta_description: 'Noces de cire : découvrez 30 idées cadeaux pour célébrer 4 ans de mariage, classées par budget et par profil, avec des suggestions qui ont vraiment du sens.'
+meta_description: 'Noces de cire : découvrez 30 idées cadeaux pour célébrer 4 ans
+  de mariage, classées par budget et par profil, avec des suggestions qui ont vraiment
+  du sens.'
 min_words: 1000
 status: published
 featured_image: /blog/noces-de-cire-4-ans-de-mariage.jpg
 link_anchors:
 - text: noces de cire
   max: 5
+related_posts:
+- noces-de-froment-3-ans-de-mariage
+- noces-de-laine-7-ans-de-mariage
+- noces-de-cuir-2-ans-de-mariage
+- noces-d-etain-idees-cadeaux-10-ans-de-mariage
 ---
-
 <h2>Les noces de cire, c'est quoi exactement ?</h2>
 
 <p>Quatre ans de mariage. Ça passe vite, non ? On est sorti du tourbillon des premiers mois, on a trouvé notre rythme, et pourtant on a encore cette flamme, même si elle brûle différemment qu'au début. C'est exactement ce que symbolisent les noces de cire : une flamme qui dure, qui éclaire, qui réchauffe. Comme une bougie qu'on prend soin d'entretenir.</p>

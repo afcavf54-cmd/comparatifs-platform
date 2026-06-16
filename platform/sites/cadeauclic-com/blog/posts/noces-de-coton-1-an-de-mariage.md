@@ -4,15 +4,20 @@ slug: noces-de-coton-1-an-de-mariage
 date: '2026-06-16T11:22:26+02:00'
 categorie: Mariage & Fêtes
 meta_title: 'Noces de coton : 30 idées et cadeaux pour fêter vos 1 an de mariage'
-meta_description: 'Noces de coton et 1 an de mariage : découvrez 30 idées de cadeaux et activités originales pour célébrer cette étape symbolique avec style et émotion.'
+meta_description: 'Noces de coton et 1 an de mariage : découvrez 30 idées de cadeaux
+  et activités originales pour célébrer cette étape symbolique avec style et émotion.'
 min_words: 1000
 status: published
 featured_image: /blog/noces-de-coton-1-an-de-mariage.jpg
 link_anchors:
 - text: noces de coton
   max: 5
+related_posts:
+- noces-de-cire-4-ans-de-mariage
+- noces-de-bois-5-ans-de-mariage
+- noces-de-coquelicot-8-ans-de-mariage
+- liste-de-mariage
 ---
-
 <h2>Un an déjà, et ça se fête vraiment</h2>
 
 <p>Le temps passe vite. Vraiment. Je me souviens de mon premier anniversaire de mariage comme si c'était hier, cette sensation un peu bizarre de réaliser qu'une année entière s'est écoulée depuis le grand jour. Les noces de coton, c'est la première étape officielle, celle qui marque le début d'une longue série. Et franchement, c'est une belle occasion de souffler un peu et de célébrer ce que vous avez construit ensemble depuis un an.</p>
