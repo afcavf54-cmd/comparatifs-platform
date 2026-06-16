@@ -1639,10 +1639,19 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
         else:
             print(f"  ✓ index.html (placeholder — template {index_tpl} introuvable)")
 
-        # Légales
+        # Légales — charge les posts du blog AVANT pour pouvoir les exposer
+        # au render de sitemap-html.html.j2 (plan-du-site), qui en a besoin
+        # pour lister les articles. Si pas de blog_engine ou pas de posts,
+        # on passe une liste vide (le template gère le cas via {% if posts %}).
+        _planpage_posts = []
+        if blog_engine is not None and site_dir is not None:
+            try:
+                _planpage_posts = blog_engine.load_all_posts(site_dir, include_drafts=False)
+            except Exception:
+                _planpage_posts = []
         for tpl_name, out_name in [("mentions-legales.html.j2", "mentions-legales.html"), ("politique-confidentialite.html.j2", "politique-confidentialite.html"), ("contact.html.j2", "contact.html"), ("sitemap-html.html.j2", "plan-du-site.html"), ("404.html.j2", "404.html")]:
             if (TEMPLATES_DIR / tpl_name).exists():
-                html = env.get_template(tpl_name).render(site={**site, "seo": config.get("seo", {})}, theme=theme, build_date=date.today().isoformat(), products=products, total_pairs=len(all_pairs), page_types=config.get("page_types", {}), classements_by_category=classements_by_category)
+                html = env.get_template(tpl_name).render(site={**site, "seo": config.get("seo", {})}, theme=theme, build_date=date.today().isoformat(), products=products, total_pairs=len(all_pairs), page_types=config.get("page_types", {}), classements_by_category=classements_by_category, posts=_planpage_posts)
                 (output_dir / out_name).write_text(html, encoding="utf-8")
                 print(f"  ✓ {out_name}")
 
