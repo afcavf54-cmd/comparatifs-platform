@@ -4,15 +4,17 @@ slug: 6757-les-6-principes-de-la-methode-de-presentation-a-impact-powerpoint
 date: '2026-06-16T06:00:00+02:00'
 categorie: Salarié
 meta_title: 'Formation PowerPoint exécutif : 6 réflexes pour une présentation à impact'
-meta_description: Découvrez les 6 principes d'une présentation PowerPoint à impact pour captiver votre audience, éviter les slides surchargées et convaincre durablement.
+meta_description: Découvrez les 6 principes d'une présentation PowerPoint à impact
+  pour captiver votre audience, éviter les slides surchargées et convaincre durablement.
 min_words: 930
 status: published
 featured_image: /blog/6757-les-6-principes-de-la-methode-de-presentation-a-impact-powerpoint.jpg
 link_anchors:
 - text: la méthode de formation PowerPoint exécutif pour des présentations à impact
   max: 5
+related_posts:
+- 4812-5-avantages-meconnus-du-cdi-interimaire
 ---
-
 <h2>Pourquoi la plupart des présentations PowerPoint n'ont aucun impact ?</h2>
 
 <p>J'ai accompagné beaucoup d'entrepreneurs et de managers ces dernières années. Et honnêtement, la même erreur revient sans arrêt : des slides surchargées, des bullet points à n'en plus finir, et un orateur qui lit ce qui est écrit à l'écran. Le public décroche au bout de trois minutes. Parfois moins.</p>

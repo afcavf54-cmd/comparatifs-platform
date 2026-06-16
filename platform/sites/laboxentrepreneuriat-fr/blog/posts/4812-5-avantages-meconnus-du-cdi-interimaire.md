@@ -13,7 +13,8 @@ featured_image: /blog/4812-5-avantages-meconnus-du-cdi-interimaire.jpg
 link_anchors:
 - text: les avantages et inconvénients du CDI intérimaire
   max: 5
-related_posts: []
+related_posts:
+- 6757-les-6-principes-de-la-methode-de-presentation-a-impact-powerpoint
 ---
 <h2>Le CDI intérimaire, ce méconnu qui mérite votre attention</h2>
 
