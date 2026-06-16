@@ -17,6 +17,7 @@ related_posts:
 - 7957-a-qui-se-prete-la-facture-en-ligne-digitalise-tes-factures
 - 8546-mentions-obligatoires-les-modeles-de-factures-digitalise-tes-factures-sont-ils-a-jour
 - 9490-a-qui-s-adresse-le-logiciel-de-facturation-quickbill-advanced
+- 6581-delai-de-parametrage-de-la-facturation-recurrente-billmatic-cyclic
 ---
 <h2>Simplifie-Ta-Compta, c'est fait pour qui exactement ?</h2>
 

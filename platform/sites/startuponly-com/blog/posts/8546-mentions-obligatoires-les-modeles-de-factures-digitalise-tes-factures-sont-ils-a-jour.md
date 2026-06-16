@@ -14,9 +14,10 @@ link_anchors:
 - text: les modèles de factures de Digitalise-Tes-Factures
   max: 5
 related_posts:
+- 9490-a-qui-s-adresse-le-logiciel-de-facturation-quickbill-advanced
+- 6581-delai-de-parametrage-de-la-facturation-recurrente-billmatic-cyclic
 - 7957-a-qui-se-prete-la-facture-en-ligne-digitalise-tes-factures
 - 8740-a-qui-se-destine-la-facture-en-ligne-simplifie-ta-compta
-- 9490-a-qui-s-adresse-le-logiciel-de-facturation-quickbill-advanced
 featured_image: /blog/8546-mentions-obligatoires-les-modeles-de-factures-digitalise-tes-factures-sont-ils-a-jour.jpg
 ---
 <h2>La réglementation française sur les factures : où en est-on aujourd'hui ?</h2>

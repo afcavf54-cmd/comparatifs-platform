@@ -14,9 +14,10 @@ link_anchors:
 - text: créer une facture en ligne avec Digitalise-Tes-Factures
   max: 5
 related_posts:
-- 8740-a-qui-se-destine-la-facture-en-ligne-simplifie-ta-compta
 - 9490-a-qui-s-adresse-le-logiciel-de-facturation-quickbill-advanced
 - 8546-mentions-obligatoires-les-modeles-de-factures-digitalise-tes-factures-sont-ils-a-jour
+- 8740-a-qui-se-destine-la-facture-en-ligne-simplifie-ta-compta
+- 6581-delai-de-parametrage-de-la-facturation-recurrente-billmatic-cyclic
 ---
 <h2>Mon expérience avec Digitalise-Tes-Factures : pour qui c'est vraiment fait ?</h2>
 
