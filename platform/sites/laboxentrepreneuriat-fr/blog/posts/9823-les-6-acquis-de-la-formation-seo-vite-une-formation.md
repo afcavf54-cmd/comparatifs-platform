@@ -13,8 +13,9 @@ link_anchors:
 - text: la formation SEO de Vite-Une-Formation
   max: 5
 related_posts:
-- 8513-quel-budget-mensuel-pour-le-coworking-lefoyerentrepreneurial
 - 3933-les-6-atouts-du-coworking-la-cantine-x-french-tech-nantes
+- 9770-combien-de-temps-pour-la-certification-strategie-digitale-webmarket
+- 8513-quel-budget-mensuel-pour-le-coworking-lefoyerentrepreneurial
 - 5974-les-6-indicateurs-phares-de-leterritoireentreprise
 ---
 <p>Ça fait maintenant plusieurs années que j'accompagne des dirigeants et des indépendants dans le choix de leurs outils et de leurs formations. Et une question revient souvent : comment se former au SEO quand on n'a ni le temps ni le budget pour un cursus de six mois ?</p>

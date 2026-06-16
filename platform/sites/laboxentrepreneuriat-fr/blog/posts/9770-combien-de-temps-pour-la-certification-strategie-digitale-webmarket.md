@@ -4,15 +4,21 @@ slug: 9770-combien-de-temps-pour-la-certification-strategie-digitale-webmarket
 date: '2026-06-16T19:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'Formation stratégie digitale WebMarket : combien de temps ?'
-meta_description: 'Certification stratégie digitale WebMarket : découvrez combien de temps il faut vraiment pour vous certifier, selon votre rythme et votre niveau de départ.'
+meta_description: 'Certification stratégie digitale WebMarket : découvrez combien
+  de temps il faut vraiment pour vous certifier, selon votre rythme et votre niveau
+  de départ.'
 min_words: 910
 status: published
 featured_image: /blog/9770-combien-de-temps-pour-la-certification-strategie-digitale-webmarket.jpg
 link_anchors:
 - text: la durée de la formation certifiante en stratégie digitale WebMarket
   max: 5
+related_posts:
+- 5974-les-6-indicateurs-phares-de-leterritoireentreprise
+- 3933-les-6-atouts-du-coworking-la-cantine-x-french-tech-nantes
+- 9823-les-6-acquis-de-la-formation-seo-vite-une-formation
+- 8513-quel-budget-mensuel-pour-le-coworking-lefoyerentrepreneurial
 ---
-
 <p>Quand un dirigeant me pose cette question, ma première réponse c'est toujours : "ça dépend de ce que vous appelez la certification". Pas pour esquiver, mais parce que la durée réelle d'une certification en stratégie digitale varie énormément selon le format choisi, votre point de départ, et surtout le temps que vous pouvez y consacrer chaque semaine.</p>
 
 <p>J'ai accompagné beaucoup d'indépendants et de dirigeants de TPE sur ce type de parcours. Voici ce que j'observe vraiment sur le terrain, sans le discours commercial que vous trouverez sur la plupart des pages de vente.</p>
