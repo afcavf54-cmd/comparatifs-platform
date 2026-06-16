@@ -4,15 +4,21 @@ slug: 4437-quel-budget-pour-un-erp-sap
 date: '2026-06-16T08:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'ERP SAP : combien coûte un projet SAP ?'
-meta_description: 'Découvrez le budget réel d''un ERP SAP selon votre taille d''entreprise : licences, implémentation, cloud ou on-premise, tous les chiffres concrets pour bien décider.'
+meta_description: 'Découvrez le budget réel d''un ERP SAP selon votre taille d''entreprise
+  : licences, implémentation, cloud ou on-premise, tous les chiffres concrets pour
+  bien décider.'
 min_words: 920
 status: published
 featured_image: /blog/4437-quel-budget-pour-un-erp-sap.jpg
 link_anchors:
 - text: l'ERP (Enterprise Resource Planning) SAP
   max: 5
+related_posts:
+- 6030-crm-basique-ou-salesforce-premium-lequel-pour-une-pme
+- 4765-le-crm-mobile-fieldforce-connect-android-et-le-mode-hors-ligne
+- 9889-a-quelle-equipe-convient-le-tarif-mensuel-de-cloudlead-manager
+- 9906-delai-d-implementation-de-l-erp-bizflow-max
 ---
-
 <p>Je vais être honnête avec toi : quand j'ai commencé à regarder SAP pour ma boîte, j'ai failli refermer l'onglet au bout de dix minutes. Les grilles tarifaires, les modules, les licences perpétuelles contre les abonnements cloud... c'est un monde à part. Mais j'ai persisté, j'ai posé des questions à des intégrateurs, et aujourd'hui je peux te donner une vraie réponse sur ce que ça coûte vraiment.</p>
 
 <p>Spoiler : ça dépend énormément de ta taille, de tes besoins et de l'intégrateur que tu choisis. Mais on peut quand même poser des chiffres concrets.</p>

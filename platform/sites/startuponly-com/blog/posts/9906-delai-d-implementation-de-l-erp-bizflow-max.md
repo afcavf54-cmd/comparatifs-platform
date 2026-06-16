@@ -14,8 +14,9 @@ link_anchors:
 - text: comment implémenter l'ERP BizFlow Max
   max: 5
 related_posts:
-- 9889-a-quelle-equipe-convient-le-tarif-mensuel-de-cloudlead-manager
 - 6030-crm-basique-ou-salesforce-premium-lequel-pour-une-pme
+- 4437-quel-budget-pour-un-erp-sap
+- 9889-a-quelle-equipe-convient-le-tarif-mensuel-de-cloudlead-manager
 - 4765-le-crm-mobile-fieldforce-connect-android-et-le-mode-hors-ligne
 ---
 <h2>Pourquoi l'implémentation de BizFlow Max prend-elle si longtemps ?</h2>
