@@ -63,24 +63,22 @@ h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,48px);font-weig
 <body>
 
 <style>
-  /* ─── Reset défensif ──────────────────────────────────────────────────
+  /* ─── Reset défensif (CIBLÉ) ─────────────────────────────────────────
      Certains templates communs du réseau (contact.html.j2, plan-du-site,
-     mentions-legales, politique-confidentialite…) ont des sélecteurs CSS
-     **par tag** trop larges, du genre `nav { background: var(--ink); ... }`.
-     Ces règles attrapent les <nav>, <header>, <button> de notre partial
-     même s'il a ses propres classes préfixées `cdc-*`. On reset donc
-     explicitement les propriétés critiques sur les éléments internes du
-     partial pour qu'aucun style parent ne percole. */
-  .cdc-header,
-  .cdc-header * {
+     mentions-legales…) ont un sélecteur `nav { background: var(--ink);
+     padding: 0 5vw; height: 64px; position: sticky; ... }` qui catch
+     N'IMPORTE QUEL <nav> de la page, y compris notre <nav class="cdc-menu">.
+     On reset donc UNIQUEMENT les propriétés polluées sur .cdc-menu (le seul
+     élément vraiment touché). Reset minimal pour ne pas casser autre chose
+     comme le drawer mobile (qui doit être position: fixed). */
+  .cdc-menu {
     background: transparent;
     height: auto;
-    position: static;
     padding: 0;
-    margin: 0;
-    border-radius: 0;
+    position: static;
+    top: auto;
+    z-index: auto;
   }
-  .cdc-header { position: sticky; }   /* on remet le sticky uniquement sur le header */
 
   /* ─── Palette cadeauclic (scope local au partial) ────────────────────
      Variables redéfinies ici pour que le header fonctionne même sur les
@@ -237,6 +235,7 @@ h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,48px);font-weig
 
         <div class="cat-group-title">Idées cadeaux <span class="sitemap-count">(39)</span></div>
         <ul>
+          <li><a href="/blog/atelier-creation-de-parfum-l-idee-de-cadeau-parfaite/">Atelier création de parfum : l'idée de cadeau parfaite ?</a></li>
           <li><a href="/blog/cadeau-homme-55-ans/">Idées de cadeaux pour homme de 55 ans</a></li>
           <li><a href="/blog/cadeau-femme-50-ans/">Idées de cadeaux pour femme de 50 ans</a></li>
           <li><a href="/blog/cadeau-homme-60-ans/">Quel cadeau offrir à un homme de 60 ans ?</a></li>
@@ -275,7 +274,6 @@ h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,48px);font-weig
           <li><a href="/blog/idees-cadeaux-pour-un-homme-qui-aime-les-jeux/">Idées cadeaux pour un homme qui aime les jeux</a></li>
           <li><a href="/blog/calendrier-photo-personnalise-une-bonne-idee-de-cadeau-pour-noel/">Calendrier photo personnalisé : une bonne idée de cadeau pour Noël ?</a></li>
           <li><a href="/blog/comment-souhaiter-un-joyeux-anniversaire-a-un-homme-avec-originalite/">Comment souhaiter un joyeux anniversaire à un homme avec originalité ?</a></li>
-          <li><a href="/blog/atelier-creation-de-parfum-l-idee-de-cadeau-parfaite/">Atelier création de parfum : l'idée de cadeau parfaite ?</a></li>
         </ul>
         <div class="cat-group-title">Mariage & Fêtes <span class="sitemap-count">(2)</span></div>
         <ul>

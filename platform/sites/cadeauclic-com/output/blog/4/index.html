@@ -88,24 +88,22 @@ a{color:var(--accent2);text-decoration:none}
 <body>
 
 <style>
-  /* ─── Reset défensif ──────────────────────────────────────────────────
+  /* ─── Reset défensif (CIBLÉ) ─────────────────────────────────────────
      Certains templates communs du réseau (contact.html.j2, plan-du-site,
-     mentions-legales, politique-confidentialite…) ont des sélecteurs CSS
-     **par tag** trop larges, du genre `nav { background: var(--ink); ... }`.
-     Ces règles attrapent les <nav>, <header>, <button> de notre partial
-     même s'il a ses propres classes préfixées `cdc-*`. On reset donc
-     explicitement les propriétés critiques sur les éléments internes du
-     partial pour qu'aucun style parent ne percole. */
-  .cdc-header,
-  .cdc-header * {
+     mentions-legales…) ont un sélecteur `nav { background: var(--ink);
+     padding: 0 5vw; height: 64px; position: sticky; ... }` qui catch
+     N'IMPORTE QUEL <nav> de la page, y compris notre <nav class="cdc-menu">.
+     On reset donc UNIQUEMENT les propriétés polluées sur .cdc-menu (le seul
+     élément vraiment touché). Reset minimal pour ne pas casser autre chose
+     comme le drawer mobile (qui doit être position: fixed). */
+  .cdc-menu {
     background: transparent;
     height: auto;
-    position: static;
     padding: 0;
-    margin: 0;
-    border-radius: 0;
+    position: static;
+    top: auto;
+    z-index: auto;
   }
-  .cdc-header { position: sticky; }   /* on remet le sticky uniquement sur le header */
 
   /* ─── Palette cadeauclic (scope local au partial) ────────────────────
      Variables redéfinies ici pour que le header fonctionne même sur les
@@ -256,6 +254,14 @@ a{color:var(--accent2);text-decoration:none}
 
 <main class="container">
   <div class="blog-grid">
+    <a href="/comment-souhaiter-un-joyeux-anniversaire-a-un-homme-avec-originalite/" class="blog-card">
+      <div class="blog-card-img">
+        <img src="/blog/comment-souhaiter-un-joyeux-anniversaire-a-un-homme-avec-originalite.jpg" alt="Comment souhaiter un joyeux anniversaire à un homme avec originalité ?" loading="lazy">
+      </div>
+      <div class="blog-card-body">
+<span class="blog-card-cat">Idées cadeaux</span>        <h2 class="blog-card-title">Comment souhaiter un joyeux anniversaire à un homme avec originalité ?</h2>
+<p class="blog-card-excerpt">Mes secrets pour sortir de l'ordinaire Je ne sais pas si c'est pareil chez vous, mais chez moi, souhaiter un anniversaire à un homme, c'est souvent un vrai casse-tête. Mon mari,…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
+    </a>
     <a href="/comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver/" class="blog-card">
       <div class="blog-card-img">
         <img src="/blog/comment-habiller-bebe-a-la-sortie-de-la-maternite-en-hiver.jpg" alt="Comment habiller bébé à la sortie de la maternité en hiver ?" loading="lazy">
@@ -263,14 +269,6 @@ a{color:var(--accent2);text-decoration:none}
       <div class="blog-card-body">
 <span class="blog-card-cat">Bébé & Naissance</span>        <h2 class="blog-card-title">Comment habiller bébé à la sortie de la maternité en hiver ?</h2>
 <p class="blog-card-excerpt">Mes indispensables pour la première sortie de bébé Je me souviens encore de ma panique la veille de quitter la maternité avec ma fille, née en plein janvier. Habiller un…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
-    </a>
-    <a href="/atelier-creation-de-parfum-l-idee-de-cadeau-parfaite/" class="blog-card">
-      <div class="blog-card-img">
-        <img src="/blog/atelier-creation-de-parfum-l-idee-de-cadeau-parfaite.jpg" alt="Atelier création de parfum : l'idée de cadeau parfaite ?" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-<span class="blog-card-cat">Idées cadeaux</span>        <h2 class="blog-card-title">Atelier création de parfum : l'idée de cadeau parfaite ?</h2>
-<p class="blog-card-excerpt">L'atelier création de parfum, mon coup de cœur du moment Quand j'ai découvert l'idée de l'atelier création de parfum, j'avoue que j'étais un peu sceptique. Encore un de ces trucs…</p><div class="blog-card-meta">10 juin 2026</div>      </div>
     </a>
   </div>
 

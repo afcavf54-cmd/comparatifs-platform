@@ -170,24 +170,22 @@ a:hover{text-decoration:underline}
 <body>
 
 <style>
-  /* ─── Reset défensif ──────────────────────────────────────────────────
+  /* ─── Reset défensif (CIBLÉ) ─────────────────────────────────────────
      Certains templates communs du réseau (contact.html.j2, plan-du-site,
-     mentions-legales, politique-confidentialite…) ont des sélecteurs CSS
-     **par tag** trop larges, du genre `nav { background: var(--ink); ... }`.
-     Ces règles attrapent les <nav>, <header>, <button> de notre partial
-     même s'il a ses propres classes préfixées `cdc-*`. On reset donc
-     explicitement les propriétés critiques sur les éléments internes du
-     partial pour qu'aucun style parent ne percole. */
-  .cdc-header,
-  .cdc-header * {
+     mentions-legales…) ont un sélecteur `nav { background: var(--ink);
+     padding: 0 5vw; height: 64px; position: sticky; ... }` qui catch
+     N'IMPORTE QUEL <nav> de la page, y compris notre <nav class="cdc-menu">.
+     On reset donc UNIQUEMENT les propriétés polluées sur .cdc-menu (le seul
+     élément vraiment touché). Reset minimal pour ne pas casser autre chose
+     comme le drawer mobile (qui doit être position: fixed). */
+  .cdc-menu {
     background: transparent;
     height: auto;
-    position: static;
     padding: 0;
-    margin: 0;
-    border-radius: 0;
+    position: static;
+    top: auto;
+    z-index: auto;
   }
-  .cdc-header { position: sticky; }   /* on remet le sticky uniquement sur le header */
 
   /* ─── Palette cadeauclic (scope local au partial) ────────────────────
      Variables redéfinies ici pour que le header fonctionne même sur les
@@ -488,7 +486,7 @@ a:hover{text-decoration:underline}
 
 <p>Et si tu prépares quelque chose pour un siècle de vie, les <a href="/cadeau-femme-100-ans">idées de cadeaux pour femme de 100 ans</a> demandent encore plus de symbolique. À cet âge, le cadeau prend une dimension presque historique. Un livre retraçant les grandes dates de son siècle, un portrait dessiné par un artiste, une médaille gravée... C'est rare, et ça mérite quelque chose de rare en retour.</p>
 
-<p>De manière plus générale, quand je cherche des <a href="/cadeau-femme">idées de cadeaux pour femme</a> à l'occasion d'un grand anniversaire, je pars toujours d'une question simple : qu'est-ce qui va lui faire sourire dès qu'elle ouvre le paquet ? Pas dans une semaine. Tout de suite.</p>
+<p>De manière plus générale, quand je cherche des idées de cadeaux pour femme à l'occasion d'un grand anniversaire, je pars toujours d'une question simple : qu'est-ce qui va lui faire sourire dès qu'elle ouvre le paquet ? Pas dans une semaine. Tout de suite.</p>
 
 <h2 id="mon-conseil-final">Mon conseil final</h2>
 
@@ -585,6 +583,11 @@ a:hover{text-decoration:underline}
       <h3 class="sidebar-title">Articles récents</h3>
       <ul class="sidebar-recent-list">
         <li class="sidebar-recent-item">
+          <a href="/atelier-creation-de-parfum-l-idee-de-cadeau-parfaite/" class="sidebar-recent-link">
+<div class="sidebar-recent-cat">Idées cadeaux</div>            Atelier création de parfum : l'idée de cadeau parfaite ?
+          </a>
+        </li>
+        <li class="sidebar-recent-item">
           <a href="/cadeau-homme-55-ans/" class="sidebar-recent-link">
 <div class="sidebar-recent-cat">Idées cadeaux</div>            Idées de cadeaux pour homme de 55 ans
           </a>
@@ -602,11 +605,6 @@ a:hover{text-decoration:underline}
         <li class="sidebar-recent-item">
           <a href="/cadeau-homme-59-ans/" class="sidebar-recent-link">
 <div class="sidebar-recent-cat">Idées cadeaux</div>            Idées de cadeaux pour homme de 59 ans
-          </a>
-        </li>
-        <li class="sidebar-recent-item">
-          <a href="/cadeau-homme-57-ans/" class="sidebar-recent-link">
-<div class="sidebar-recent-cat">Idées cadeaux</div>            Quel cadeau offrir à un homme de 57 ans ?
           </a>
         </li>
       </ul>
