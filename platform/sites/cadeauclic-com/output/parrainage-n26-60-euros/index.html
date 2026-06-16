@@ -170,81 +170,137 @@ a:hover{text-decoration:underline}
 <body>
 
 <style>
-nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
-nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
-nav.site-nav .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
-nav.site-nav .nav-logo span{color:var(--accent2)}
-nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
-nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
-nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
-nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
-nav.site-nav .nav-cta:hover{opacity:.88}
-nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
-nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
-nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
-nav.site-nav .nav-mobile.open{display:flex}
-nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
-@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
+  /* ─── Palette cadeauclic (scope local au partial) ────────────────────
+     Variables redéfinies ici pour que le header fonctionne même sur les
+     pages communes (blog, avis) qui n'ont pas le :root global de la home.
+     Les noms commencent par --cdc-* pour éviter tout conflit avec d'autres
+     variables CSS du site (--ink, --accent, etc. du thème commun). */
+  :root {
+    --cdc-rose-50: #fff5f8;
+    --cdc-rose-100: #ffe7ef;
+    --cdc-rose-200: #ffd0e0;
+    --cdc-rose-600: #ec3f76;
+    --cdc-rose-700: #cf2c61;
+    --cdc-coral: #ff7a59;
+    --cdc-ink: #251d27;
+    --cdc-ink-soft: #5d5360;
+    --cdc-line: #f0e3e9;
+    --cdc-grad: linear-gradient(100deg, #ff5b8a, #ff7a59);
+  }
+
+  /* ─── Header sticky ────────────────────────────────────────────────── */
+  .cdc-header { position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,.92); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--cdc-line);
+    font-family: "Nunito Sans", system-ui, -apple-system, sans-serif; }
+  .cdc-header * { box-sizing: border-box; }
+  .cdc-header a { text-decoration: none; color: inherit; }
+
+  .cdc-nav { display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 28px; gap: 24px; max-width: 1200px; margin: 0 auto; }
+
+  .cdc-logo { display: flex; align-items: center; gap: 6px;
+    font-family: "Poppins", system-ui, sans-serif;
+    font-weight: 800; font-size: 1.35rem; color: var(--cdc-ink); }
+  .cdc-logo .mark { font-size: 1.55rem; }
+  .cdc-logo span.accent { color: var(--cdc-rose-600); }
+  .cdc-logo-img { height: 40px; width: auto; max-width: 200px; display: block; }
+
+  .cdc-nav-collapse { display: flex; align-items: center; gap: 30px; }
+  .cdc-menu { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
+  .cdc-menu a { font-family: "Poppins", system-ui, sans-serif; font-weight: 600;
+    color: var(--cdc-ink-soft); font-size: .95rem; transition: color .15s; }
+  .cdc-menu a:hover, .cdc-menu a.active { color: var(--cdc-rose-600); }
+
+  .cdc-nav-right { display: flex; align-items: center; gap: 18px; }
+  .cdc-btn { display: inline-flex; align-items: center; padding: 12px 22px;
+    font-size: .92rem; font-family: "Poppins", sans-serif; font-weight: 700;
+    color: #fff; background: var(--cdc-grad); border-radius: 999px;
+    box-shadow: 0 8px 20px rgba(236,63,118,.28); transition: transform .15s, box-shadow .15s; }
+  .cdc-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(236,63,118,.36); }
+
+  .cdc-socials { display: flex; gap: 10px; }
+  .cdc-socials a { width: 36px; height: 36px; border-radius: 50%;
+    background: var(--cdc-rose-50); display: inline-flex; align-items: center;
+    justify-content: center; color: var(--cdc-rose-600); transition: background .15s; }
+  .cdc-socials a:hover { background: var(--cdc-rose-100); }
+  .cdc-socials svg { width: 16px; height: 16px; fill: currentColor; }
+
+  /* ─── Hamburger ────────────────────────────────────────────────────── */
+  .cdc-hamburger { display: none; flex-direction: column; gap: 5px;
+    width: 28px; height: 28px; padding: 0; background: transparent;
+    border: 0; cursor: pointer; justify-content: center; z-index: 51; }
+  .cdc-hamburger span { display: block; width: 100%; height: 2px;
+    background: var(--cdc-ink); border-radius: 2px;
+    transition: transform .25s, opacity .2s; }
+  body.cdc-menu-open .cdc-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  body.cdc-menu-open .cdc-hamburger span:nth-child(2) { opacity: 0; }
+  body.cdc-menu-open .cdc-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .cdc-nav-backdrop { display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,.4); opacity: 0; pointer-events: none;
+    transition: opacity .25s; z-index: 49; }
+  body.cdc-menu-open .cdc-nav-backdrop { opacity: 1; pointer-events: auto; }
+
+  /* ─── Mobile ───────────────────────────────────────────────────────── */
+  @media (max-width: 880px) {
+    .cdc-hamburger { display: flex; }
+    .cdc-nav-backdrop { display: block; }
+    .cdc-nav-collapse {
+      position: fixed; top: 0; right: 0; bottom: 0;
+      width: min(86vw, 360px); padding: 90px 28px 28px;
+      background: #fff; transform: translateX(105%);
+      transition: transform .3s cubic-bezier(.4,0,.2,1);
+      z-index: 50; flex-direction: column; align-items: flex-start; gap: 26px;
+      overflow-y: auto; box-shadow: -20px 0 60px rgba(0,0,0,.12);
+    }
+    body.cdc-menu-open .cdc-nav-collapse { transform: translateX(0); }
+    .cdc-menu { flex-direction: column; gap: 18px; width: 100%; }
+    .cdc-menu a { font-size: 1.1rem; padding: 6px 0; }
+    .cdc-nav-right { flex-direction: column-reverse; align-items: flex-start; gap: 24px; width: 100%; }
+    .cdc-socials { width: 100%; }
+  }
 </style>
 
-<nav class="site-nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo"><img src="/logo.png" alt="cadeauclic.com" style="height:36px;width:auto;object-fit:contain;vertical-align:middle"></a>
-    <div class="nav-links">
-        <a href="/blog/">Blog</a>
-    </div>
-    <a href="/contact" class="nav-cta">Contact</a>
-    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+<header class="cdc-header">
+  <div class="cdc-nav">
+    <a href="/" class="cdc-logo">
+      <img src="/logo.png" alt="cadeauclic.com" class="cdc-logo-img"
+           onerror="this.onerror=null;this.style.display='none';var fb=this.parentNode.querySelector('.cdc-logo-fallback');if(fb)fb.style.display='inline-flex'">
+      <span class="cdc-logo-fallback" style="display:none;align-items:center;gap:6px">
+        <span class="mark">🎁</span>cadeauclic.com      </span>
+    </a>
+
+    <button class="cdc-hamburger" aria-label="Ouvrir le menu" aria-controls="cdc-nav-drawer" aria-expanded="false"
+            onclick="var o=document.body.classList.toggle('cdc-menu-open');this.setAttribute('aria-expanded',o);this.setAttribute('aria-label',o?'Fermer le menu':'Ouvrir le menu')">
       <span></span><span></span><span></span>
     </button>
+
+    <div class="cdc-nav-collapse" id="cdc-nav-drawer">
+      <nav class="cdc-menu">
+        <a href="/categorie-idees-cadeaux/">Idées cadeaux</a>
+        <a href="/blog/">Blog</a>
+        <a href="/categorie-bons-plans-parrainage/">Parrainage</a>
+        <a href="/a-propos/">À propos</a>
+      </nav>
+      <div class="cdc-nav-right">
+        <a href="/codes-promo/" class="cdc-btn">Bons plans</a>
+        <div class="cdc-socials">
+          <a href="https://www.facebook.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M13 22v-8h2.7l.4-3.1H13V8.9c0-.9.3-1.5 1.6-1.5H16V4.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.4H7.2V14H9.9v8H13z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 8.6A3.4 3.4 0 1 0 15.4 12 3.4 3.4 0 0 0 12 8.6zm0 5.6A2.2 2.2 0 1 1 14.2 12 2.2 2.2 0 0 1 12 14.2zm4.3-5.8a.8.8 0 1 1-.8-.8.8.8 0 0 1 .8.8zM18.7 8a3.9 3.9 0 0 0-1.1-2.8A3.9 3.9 0 0 0 14.8 4c-1.1-.1-4.5-.1-5.6 0A3.9 3.9 0 0 0 6.4 5.2 3.9 3.9 0 0 0 5.3 8c-.1 1.1-.1 4.5 0 5.6a3.9 3.9 0 0 0 1.1 2.8 3.9 3.9 0 0 0 2.8 1.1c1.1.1 4.5.1 5.6 0a3.9 3.9 0 0 0 2.8-1.1 3.9 3.9 0 0 0 1.1-2.8c.1-1.1.1-4.5 0-5.6z"/></svg>
+          </a>
+          <a href="https://fr.pinterest.com/cadeaucliccom/" target="_blank" rel="nofollow noopener" aria-label="Pinterest">
+            <svg viewBox="0 0 24 24"><path d="M12 4a8 8 0 0 0-2.9 15.4c0-.6-.1-1.6.1-2.3l1-4.2s-.2-.5-.2-1.3c0-1.2.7-2.1 1.6-2.1.7 0 1.1.6 1.1 1.2 0 .8-.5 1.9-.7 2.9-.2.9.4 1.6 1.3 1.6 1.6 0 2.7-2 2.7-4.4 0-1.8-1.2-3.2-3.5-3.2a4 4 0 0 0-4.1 4c0 .8.3 1.4.6 1.8.2.2.2.3.1.5l-.2.8c0 .3-.2.4-.5.2-1.2-.5-1.7-1.9-1.7-3.4 0-2.5 2.1-5.5 6.3-5.5 3.4 0 5.6 2.4 5.6 5 0 3.4-1.9 6-4.7 6-1 0-1.8-.5-2.1-1.1l-.6 2.2c-.2.7-.6 1.5-1 2A8 8 0 1 0 12 4z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="nav-mobile" id="nav-mobile">
-      <a href="/blog/">Blog</a>
-    <a href="/contact" class="nav-cta">Contact</a>
-  </div>
-</nav>
-
-<script>
-/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
-   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
-   devoir redéfinir la fonction côté template parent.
-
-   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
-   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
-   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
-   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
-   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
-   qui est actif et le parent réécrit derrière s'il en a un.
-
-   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
-   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
-   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
-   ne faisait rien. */
-(function(){
-  if (typeof window.toggleMenu === 'function') return;
-  window.toggleMenu = function(){
-    var menu = document.getElementById('nav-mobile');
-    if (menu) menu.classList.toggle('open');
-  };
-  // UX bonus : fermer le menu mobile en cliquant en dehors
-  document.addEventListener('click', function(e){
-    var menu = document.getElementById('nav-mobile');
-    var burger = document.getElementById('burger');
-    if (!menu || !burger) return;
-    if (!menu.classList.contains('open')) return;
-    if (menu.contains(e.target) || burger.contains(e.target)) return;
-    menu.classList.remove('open');
-  });
-  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
-  document.addEventListener('DOMContentLoaded', function(){
-    var menu = document.getElementById('nav-mobile');
-    if (!menu) return;
-    menu.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){ menu.classList.remove('open'); });
-    });
-  });
-})();
-</script>
+</header>
+<div class="cdc-nav-backdrop" onclick="document.body.classList.remove('cdc-menu-open');var h=document.querySelector('.cdc-hamburger');if(h){h.setAttribute('aria-expanded','false');h.setAttribute('aria-label','Ouvrir le menu')}"></div>
 <div class="container">
 <article class="article-layout">
   <div class="article-main">
@@ -603,7 +659,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 cadeauclic.com — Données actualisées le 15 juin 2026
+        © 2026 cadeauclic.com — Données actualisées le 16 juin 2026
       </div>
     </div>
   </div>
