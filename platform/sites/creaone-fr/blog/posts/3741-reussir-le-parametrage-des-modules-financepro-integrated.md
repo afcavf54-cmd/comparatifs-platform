@@ -3,16 +3,23 @@ title: Réussir le paramétrage des modules FinancePro Integrated
 slug: 3741-reussir-le-parametrage-des-modules-financepro-integrated
 date: '2026-06-16T12:00:00+02:00'
 categorie: Gestion d'entreprise
-meta_title: 'Paramétrer les modules de l''ERP FinancePro Integrated : la grille de vérification'
-meta_description: 'Retour d''expérience concret sur le paramétrage de FinancePro Integrated : méthode, erreurs à éviter et conseils terrain pour réussir votre déploiement sans perdre…'
+meta_title: 'Paramétrer les modules de l''ERP FinancePro Integrated : la grille de
+  vérification'
+meta_description: 'Retour d''expérience concret sur le paramétrage de FinancePro Integrated
+  : méthode, erreurs à éviter et conseils terrain pour réussir votre déploiement sans
+  perdre…'
 min_words: 900
 status: published
 featured_image: /blog/3741-reussir-le-parametrage-des-modules-financepro-integrated.jpg
 link_anchors:
 - text: comment paramétrer les modules de l'ERP FinancePro Integrated
   max: 5
+related_posts:
+- 2732-marketing-et-vente-le-crm-salesconnect-pro-contre-marketwise
+- 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
+- 7544-a-qui-profite-le-crm-smartlead-evolution
+- 9219-5-points-a-verifier-sur-le-tarif-mensuel-de-cloudlead-manager
 ---
-
 <h2>Ce que j'ai appris en paramétrant FinancePro Integrated de zéro</h2>
 
 <p>Quand on m'a confié le déploiement de FinancePro Integrated dans notre structure, j'avais déjà neuf ans de comptabilité derrière moi. Je pensais que ça suffirait. Spoiler : non. Le paramétrage d'un module financier intégré, c'est un autre métier. Pas insurmontable, mais ça demande une vraie méthode.</p>
