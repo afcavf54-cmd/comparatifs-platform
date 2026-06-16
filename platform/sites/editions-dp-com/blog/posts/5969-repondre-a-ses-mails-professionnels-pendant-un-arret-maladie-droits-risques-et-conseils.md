@@ -1,18 +1,25 @@
 ---
-title: 'Répondre à ses mails professionnels pendant un arrêt maladie : droits, risques et conseils'
+title: 'Répondre à ses mails professionnels pendant un arrêt maladie : droits, risques
+  et conseils'
 slug: 5969-repondre-a-ses-mails-professionnels-pendant-un-arret-maladie-droits-risques-et-conseils
 date: '2026-06-16T11:00:00+02:00'
 categorie: Salarié
 meta_title: 'Mail pro pendant arrêt maladie : est-ce légal ?'
-meta_description: Répondre à ses mails pro pendant un arrêt maladie peut sembler anodin, mais comporte de vrais risques juridiques et financiers. Voici ce que la loi dit vraiment.
+meta_description: Répondre à ses mails pro pendant un arrêt maladie peut sembler anodin,
+  mais comporte de vrais risques juridiques et financiers. Voici ce que la loi dit
+  vraiment.
 min_words: 1200
 status: published
 featured_image: /blog/5969-repondre-a-ses-mails-professionnels-pendant-un-arret-maladie-droits-risques-et-conseils.jpg
 link_anchors:
 - text: mail professionnel pendant arrêt maladie
   max: 4
+related_posts:
+- 1054-comment-acceder-aux-avantages-du-comite-d-entreprise-adecco
+- 2957-travailler-sans-contrat-depuis-15-jours-quels-risques-pour-l-employeur-et-quels-droits-pour-vous
+- 1778-comment-fonctionne-le-comite-d-entreprise-loxam
+- 8124-combien-d-avertissements-avant-une-radiation-de-pole-emploi-regles-et-procedure
 ---
-
 <p>Je vais vous dire ce que beaucoup de DRH ne vous expliqueront jamais clairement. Répondre à un mail professionnel pendant votre arrêt maladie, ça semble anodin. Un message de rien du tout, deux lignes, envoyé depuis votre canapé. Et pourtant, cette petite habitude peut vous coûter cher, sur plusieurs fronts à la fois.</p>
 
 <p>J'ai vu des situations se compliquer sérieusement pour des salariés qui pensaient juste "rendre service". Voici ce que vous devez comprendre avant d'appuyer sur Envoyer.</p>

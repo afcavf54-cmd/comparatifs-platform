@@ -1,18 +1,25 @@
 ---
-title: 'Redressement judiciaire : comment quitter l''entreprise et quels sont vos droits en tant que salarié ?'
+title: 'Redressement judiciaire : comment quitter l''entreprise et quels sont vos
+  droits en tant que salarié ?'
 slug: 5990-redressement-judiciaire-comment-quitter-l-entreprise-et-quels-sont-vos-droits-en-tant-que-salarie
 date: '2026-06-16T10:00:00+02:00'
 categorie: Salarié
 meta_title: Quitter une entreprise en redressement judiciaire
-meta_description: 'Redressement judiciaire : découvrez vos droits en tant que salarié, les options pour quitter l''entreprise et comment protéger votre ancienneté et vos indemnités.'
+meta_description: 'Redressement judiciaire : découvrez vos droits en tant que salarié,
+  les options pour quitter l''entreprise et comment protéger votre ancienneté et vos
+  indemnités.'
 min_words: 1200
 status: published
 featured_image: /blog/5990-redressement-judiciaire-comment-quitter-l-entreprise-et-quels-sont-vos-droits-en-tant-que-salarie.jpg
 link_anchors:
 - text: quitter une entreprise en redressement judiciaire
   max: 4
+related_posts:
+- 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
+- 8103-horaires-decales-ce-que-dit-le-code-du-travail-sur-vos-droits-et-obligations
+- 4335-rupture-de-cdd-a-l-initiative-du-salarie-regles-conditions-et-consequences
+- 2957-travailler-sans-contrat-depuis-15-jours-quels-risques-pour-l-employeur-et-quels-droits-pour-vous
 ---
-
 <h2>Redressement judiciaire : ce que ça change concrètement pour vous</h2>
 
 <p>Votre employeur vient de placer l'entreprise en redressement judiciaire. Les rumeurs circulent, personne ne sait vraiment ce qui va se passer, et vous commencez à vous demander si vous devez partir ou attendre. Je connais cette situation. Et franchement, elle est épuisante, surtout quand on n'a pas les bons repères juridiques.</p>
