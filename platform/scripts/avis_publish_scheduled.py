@@ -1,46 +1,49 @@
 #!/usr/bin/env python3
 """
-avis_publish_scheduled.py — Cron job pour publier les avis programmés.
+blog_publish_scheduled.py — Cron job pour publier les articles de blog programmés.
 
-Architecture parallèle à `blog_publish_scheduled.py` mais pour des AVIS produits
-(template `avis-post.html.j2`) avec une structure éditoriale très différente :
-note /5, points forts/faibles, tarifs, FAQ, verdict, schema.org Review.
+Pour chaque site qui a un `blog_sheet_csv_url` configuré dans son config.yaml :
+1. Lit le CSV de la sheet
+2. Filtre les lignes dont date_publication + heure_publication <= maintenant
+3. Compare avec `blog/schedule_processed.json` (slugs déjà traités)
+4. Pour les nouvelles lignes : appelle Claude API → génère HTML → écrit `blog/posts/<slug>.md`
 
-Pour chaque site qui a un `avis_sheet_csv_url` configuré dans son config.yaml :
-1. Lit le CSV de la sheet d'avis
-2. Filtre les lignes dont date_publication <= maintenant (Europe/Paris)
-3. Compare avec `posts_avis/schedule_processed.json` (clefs déjà traitées)
-4. Pour les nouvelles lignes : appelle Claude API → génère contenu structuré (en_bref,
-   points_forts, points_faibles, sections, faq, verdict) → écrit `posts_avis/<slug>.md`
-5. Met à jour rétroactivement les avis déjà publiés depuis la sheet (metadata)
+Output (GITHUB_OUTPUT) :
+    sites_to_deploy=<site1>,<site2>,...   liste des sites à redéployer
 
 Variables d'env requises :
-    ANTHROPIC_API_KEY
-    FORCE_TITLES (optionnel) : marques séparées par `||` pour forcer la publication
-                              immédiate, ignorant la date programmée
+    ANTHROPIC_API_KEY    pour la génération d'articles
+
+Variables d'env optionnelles :
+    MAX_ARTICLES_PER_RUN  Limite GLOBALE d'articles générés par run, tous sites
+                          confondus. Défaut : 10. Sert à borner la durée d'un
+                          run et le coût Claude/OpenAI en cas de rattrapage
+                          massif (ex. 96 articles dont la date est passée).
+                          Mettre 999 pour désactiver la limite.
 
 Format attendu du CSV (colonnes) :
-    date_publication    obligatoire (YYYY-MM-DD HH:MM, heure de Paris)
-    marque              obligatoire (ex: Qonto)
-    categorie           obligatoire (ex: Banque pro)
-    sentiment           obligatoire (positif | mitige | negatif)
-    note_globale        obligatoire (1.0 à 5.0, demi-étoiles autorisées)
-    cta_url             obligatoire (URL d'affiliation)
-    cta_label           optionnel  (défaut: "Visiter <Marque>")
-    cible               optionnel  (à qui s'adresse la marque, 1 phrase)
-    tarifs              obligatoire (format multi-lignes : `Offre|Prix|Features`,
-                                     séparateur de lignes : ; ou newline)
-    note_trustpilot     optionnel  (ex: 4.7)
-    nb_avis_trustpilot  optionnel  (ex: 3000)
-    plateforme_avis     optionnel  (défaut: "Trustpilot")
-    meta_title          optionnel  (par défaut: pattern config.seo.avis_title_pattern)
-    meta_description    optionnel
-    link_anchors        optionnel  ("ancre1:N;ancre2:M")
-    slug                optionnel  (par défaut: slug(marque))
-    mot_minimum         optionnel  (entier, défaut 800 — nombre total de mots minimum
-                                    pour la somme des champs textuels : en_bref +
-                                    H2 + verdict + FAQ. L'IA est instruite d'atteindre
-                                    ce volume sans inventer de faits précis.)
+    titre              (obligatoire)
+    categorie          (obligatoire)
+    prompt_custom      (optionnel)
+    date_publication   (obligatoire — date OU marqueur brouillon)
+                       3 cas acceptés :
+                         • date au format YYYY-MM-DD → article publié à cette date
+                         • vide → article publié immédiatement
+                         • mot-clé "draft" / "brouillon" / "wip" / "pending" /
+                           "todo" / "à valider" → article généré par Claude
+                           mais marqué status: draft dans le frontmatter
+                           (invisible sur le site live, validable manuellement
+                           ensuite en passant status: published)
+    heure_publication  (optionnel, format HH:MM, défaut 09:00)
+    slug               (optionnel, dérivé du titre sinon)
+    meta_title         (optionnel)
+    meta_description   (optionnel)
+    nombre_mots_minimum  (optionnel, défaut 750, plage 300-3000)
+    link_anchors       (optionnel)
+    mots_imposes       (optionnel)
+
+Format de slug : cf. blog_slug_format dans config.yaml ('prefix' | 'clean').
+Global prompt : cf. thematic | blog_global_prompt | schema fallback.
 """
 from __future__ import annotations
 import csv
@@ -54,83 +57,140 @@ import unicodedata
 import urllib.request
 import urllib.error
 from datetime import datetime
-from pathlib import Path
 from zoneinfo import ZoneInfo
+
+PARIS = ZoneInfo("Europe/Paris")
+from pathlib import Path
 
 import yaml
 
-PARIS = ZoneInfo("Europe/Paris")
+try:
+    sys.path.insert(0, str(Path(__file__).parent))
+    from _image_generator import generate_featured_image  # type: ignore
+except Exception:
+    generate_featured_image = None  # type: ignore
+
 ROOT = Path(__file__).parent.parent
 SITES_DIR = ROOT / "sites"
+THEMATICS_DIR = ROOT / "thematics"
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-CLAUDE_MODEL = "claude-sonnet-4-20250514"
+# ── Modèle Claude utilisé pour la génération d'articles ────────────────────
+# L'ancien "claude-sonnet-4-20250514" a été retiré par Anthropic le
+# 15 juin 2026 (annonce du 14 avril 2026). Migration directe vers
+# "claude-sonnet-4-6" (Sonnet 4.6 — direct upgrade, même tier de prix,
+# prompts compatibles, fenêtre 1M tokens en beta). Override possible via
+# env var CLAUDE_MODEL si Julien veut tester un modèle différent.
+CLAUDE_MODEL = os.environ.get("CLAUDE_MODEL", "claude-sonnet-4-6")
+
+# ── Limite globale d'articles par run (tous sites confondus) ──────────────
+# Évite qu'un rattrapage massif (ex. 96 articles d'un coup sur cadeauclic)
+# n'explose la durée du workflow (timeout GitHub Actions) ni le coût Claude
+# en un seul shot. Le cron quotidien continuera à grignoter la liste sur
+# plusieurs jours. Override via env var MAX_ARTICLES_PER_RUN.
+MAX_ARTICLES_PER_RUN = int(os.environ.get("MAX_ARTICLES_PER_RUN", "10"))
 
 
-# ─── Helpers de base (identiques au blog) ─────────────────────────────────
+# ─── Helpers ──────────────────────────────────────────────────────────────
 
 def slugify(text: str) -> str:
     s = unicodedata.normalize("NFD", str(text or ""))
     s = "".join(c for c in s if unicodedata.category(c) != "Mn")
     s = re.sub(r"[^a-z0-9]+", "-", s.lower())
-    return re.sub(r"-+", "-", s).strip("-")
+    s = re.sub(r"-+", "-", s).strip("-")
+    return s or "article"
+
+
+def assign_slug(slug: str, existing: set[str], use_prefix: bool = True) -> str:
+    if not use_prefix:
+        if slug not in existing:
+            return slug
+        for i in range(2, 1000):
+            candidate = f"{slug}-{i}"
+            if candidate not in existing:
+                print(f"   ⚠ Slug '{slug}' déjà pris, utilisation de '{candidate}'")
+                return candidate
+        return f"{slug}-{int(time.time())}"
+    if re.match(r"^\d{3,5}-", slug):
+        return slug
+    import random
+    for _ in range(30):
+        candidate = f"{random.randint(1000, 9999)}-{slug}"
+        if candidate not in existing:
+            return candidate
+    return f"{int(time.time()) % 10000:04d}-{slug}"
+
+
+def add_random_prefix(slug: str, existing: set[str], use_prefix: bool = True) -> str:
+    return assign_slug(slug, existing, use_prefix=use_prefix)
 
 
 def fetch_csv(url: str) -> list[dict]:
-    """Lit un CSV public Google Sheet et renvoie une liste de dicts.
-    Normalise les noms de colonnes (lowercase, sans accents, _ à la place des espaces)."""
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        raw = resp.read().decode("utf-8-sig")
+    if not url:
+        return []
+    if '/pubhtml' in url:
+        url = re.sub(r'/pubhtml(\?[^#]*)?(#.*)?$', '/pub?output=csv', url)
+        print(f"   ℹ URL normalisée → {url[:80]}...")
+    elif re.search(r'/pub(\?|$)', url) and 'output=csv' not in url:
+        if '?' in url:
+            url = url + '&output=csv'
+        else:
+            url = url + '?output=csv'
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            raw = resp.read().decode("utf-8-sig", errors="replace")
+    except Exception as e:
+        print(f"   ⚠ Erreur fetch sheet : {e}")
+        return []
     reader = csv.DictReader(io.StringIO(raw))
-    rows = []
-    for r in reader:
-        clean = {}
-        for k, v in r.items():
-            if k is None:
-                continue
-            key = slugify(k).replace("-", "_")
-            clean[key] = (v or "").strip()
-        if any(clean.values()):
-            rows.append(clean)
+    rows: list[dict] = []
+    for row in reader:
+        rows.append({(k or "").strip(): (v or "").strip() for k, v in row.items() if k})
     return rows
 
 
-def parse_pub_datetime(date_str: str, time_str: str = "") -> datetime | None:
-    """Parse 'YYYY-MM-DD HH:MM' ou 'YYYY-MM-DD' (date_str peut contenir l'heure)
-    et retourne un datetime AWARE en zone Europe/Paris."""
-    s = (date_str or "").strip()
-    if not s:
+def parse_pub_datetime(date_str: str, time_str: str = "09:00") -> datetime | None:
+    if not date_str:
         return None
-    # Si date_publication contient déjà l'heure (ex "2026-05-20 14:00")
-    m = re.match(r"^(\d{4}-\d{2}-\d{2})[\sT]+(\d{1,2}):(\d{2})", s)
-    if m:
+    for fmt in ("%Y-%m-%d", "%d/%m/%Y", "%Y/%m/%d", "%d-%m-%Y"):
         try:
-            dt = datetime(int(m.group(1).split("-")[0]),
-                          int(m.group(1).split("-")[1]),
-                          int(m.group(1).split("-")[2]),
-                          int(m.group(2)), int(m.group(3)))
-            return dt.replace(tzinfo=PARIS)
-        except Exception:
-            return None
-    # Sinon date seule + colonne heure
-    if not re.match(r"^\d{4}-\d{2}-\d{2}$", s):
+            d = datetime.strptime(date_str.strip(), fmt)
+            break
+        except ValueError:
+            continue
+    else:
         return None
-    t = (time_str or "09:00").strip() or "09:00"
-    tm = re.match(r"^(\d{1,2}):(\d{2})", t)
-    if not tm:
-        return None
-    try:
-        y, mo, d = s.split("-")
-        return datetime(int(y), int(mo), int(d), int(tm.group(1)), int(tm.group(2))).replace(tzinfo=PARIS)
-    except Exception:
-        return None
+    ts = (time_str or "09:00").strip() or "09:00"
+    hour, minute, second = 9, 0, 0
+    for fmt in ("%H:%M:%S", "%H:%M", "%Hh%M", "%H h %M"):
+        try:
+            t = datetime.strptime(ts, fmt).time()
+            hour, minute, second = t.hour, t.minute, t.second
+            break
+        except ValueError:
+            continue
+    return d.replace(hour=hour, minute=minute, second=second, tzinfo=PARIS)
 
 
-def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 8192) -> str:
-    """Appelle l'API Anthropic en mode STREAMING. Cf blog_publish_scheduled.py
-    pour le raisonnement complet : le streaming évite les "read timed out" sur
-    les générations longues en gardant la connexion vivante chunk par chunk."""
+# Marqueurs de brouillon dans la colonne date_publication de la sheet.
+# Quand l'un de ces mots-clés est utilisé à la place d'une date, l'article
+# est GÉNÉRÉ par Claude (texte + image + meta) mais marqué `status: draft`
+# dans le frontmatter. Du coup il N'APPARAÎT PAS sur le site live (le filtre
+# include_drafts=False de blog_engine l'écarte), mais existe dans le repo
+# et est éditable par l'utilisateur. Workflow : marquer "draft" dans la
+# sheet pour la rédaction → valider le contenu auprès du client → passer
+# manuellement status: draft → published dans le .md (ou via dashboard).
+DRAFT_MARKERS = {"draft", "brouillon", "wip", "pending", "todo", "à valider", "a valider"}
+
+
+def is_draft_marker(date_str: str) -> bool:
+    """True si la valeur du champ date_publication est un marqueur de
+    brouillon (cf. DRAFT_MARKERS) plutôt qu'une vraie date."""
+    return (date_str or "").strip().lower() in DRAFT_MARKERS
+
+
+def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000) -> str:
     if not ANTHROPIC_API_KEY:
         raise RuntimeError("ANTHROPIC_API_KEY manquante")
     body = json.dumps({
@@ -170,18 +230,6 @@ def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 8192
                         delta = event.get("delta") or {}
                         if delta.get("type") == "text_delta":
                             chunks.append(delta.get("text", ""))
-                    elif event.get("type") == "message_delta":
-                        # Le stop_reason final arrive ici. Si 'max_tokens', on
-                        # WARN explicitement : ça veut dire que la génération
-                        # a été coupée avant la fin → JSON probablement invalide,
-                        # ou contenu manquant à la fin (FAQ tronquée, verdict
-                        # absent, etc.).
-                        msg_delta = event.get("delta") or {}
-                        stop_reason = msg_delta.get("stop_reason")
-                        if stop_reason == "max_tokens":
-                            print(f"  ⚠ AVERTISSEMENT : génération coupée par max_tokens "
-                                  f"(limite={max_tokens}). Contenu probablement tronqué. "
-                                  f"Augmenter max_tokens dans call_claude().", flush=True)
                     elif event.get("type") == "error":
                         err_info = event.get("error") or {}
                         raise RuntimeError(
@@ -200,584 +248,690 @@ def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 8192
 
 
 def strip_code_fences(text: str) -> str:
-    text = re.sub(r"^```(?:json|JSON|html|HTML|markdown|md)?\s*\n?", "", text.strip())
+    text = re.sub(r"^```(?:html|HTML|markdown|md)?\s*\n?", "", text.strip())
     text = re.sub(r"\n?\s*```\s*$", "", text)
     return text.strip()
 
 
-# ─── Parsing des données métier (sentiment, tarifs, etc.) ────────────────
-
-SENTIMENT_MAP = {
-    "positif": "positif", "positive": "positif", "+": "positif", "bon": "positif",
-    "mitige": "mitige", "mitigé": "mitige", "neutre": "mitige", "moyen": "mitige", "~": "mitige",
-    "negatif": "negatif", "négatif": "negatif", "negative": "negatif", "-": "negatif", "mauvais": "negatif",
-}
-
-
-def normalize_sentiment(raw: str) -> str:
-    s = unicodedata.normalize("NFD", (raw or "").strip().lower())
-    s = "".join(c for c in s if unicodedata.category(c) != "Mn")
-    return SENTIMENT_MAP.get(s, "positif")
+def get_config_value(config: dict, key: str):
+    if key in config:
+        return config[key]
+    for k, v in (config or {}).items():
+        if isinstance(v, dict) and key in v:
+            return v[key]
+    return None
 
 
-def parse_note(raw: str) -> float:
-    """Parse '4.5', '4,5', '4.8/5', '9.5/10' etc. Retourne note sur 5.0, sans arrondi.
-
-    L'arrondi à la demi-étoile pour le rendu visuel est fait CÔTÉ TEMPLATE
-    (avis-post.html.j2) afin que la valeur numérique exacte (ex: 4.8) reste
-    disponible pour Schema.org Review et l'affichage texte « 4.8/5 ».
-    """
-    s = (raw or "").strip().replace(",", ".")
-    if not s:
-        return 4.0
-    m = re.match(r"^([\d.]+)\s*/\s*(\d+)", s)
-    if m:
-        val, denom = float(m.group(1)), float(m.group(2))
-        if denom > 0:
-            val = (val / denom) * 5.0
-    else:
-        m = re.match(r"^([\d.]+)", s)
-        val = float(m.group(1)) if m else 4.0
-    # Clamp 0..5 ; on garde 1 décimale pour l'affichage texte (4.8/5 plutôt que 4.8000001/5)
-    return round(max(0.0, min(5.0, val)), 1)
-
-
-def parse_tarifs(raw: str) -> list[dict]:
-    """Parse '`Offre|Prix|Features` séparées par `;` ou newline'.
-    Retourne [{nom, prix, features}].
-    """
+def _resolve_slug_format(config: dict) -> str:
+    raw = (get_config_value(config, "blog_slug_format") or "").strip().lower()
     if not raw:
-        return []
-    items = []
-    # Séparateur de lignes : newline OR semicolon (mais pas dans une URL)
-    for ln in re.split(r"[\n;]+", raw):
-        ln = ln.strip()
-        if not ln:
-            continue
-        parts = [p.strip() for p in ln.split("|")]
-        if len(parts) < 2:
-            continue
-        nom = parts[0]
-        prix = parts[1]
-        features = parts[2] if len(parts) > 2 else ""
-        items.append({"nom": nom, "prix": prix, "features": features})
-    return items
+        return "prefix"
+    if raw not in ("prefix", "clean"):
+        print(f"   ⚠ blog_slug_format={raw!r} non reconnu — fallback 'prefix'")
+        return "prefix"
+    return raw
 
 
-def parse_anchors(raw: str) -> list[dict]:
-    """'ancre1:3;ancre2:1' → [{text, max}]"""
+def _load_thematic_prompt(thematic: str) -> str:
+    name = (thematic or "").strip()
+    if not name:
+        return ""
+    path = THEMATICS_DIR / name / "global_prompt.md"
+    if not path.exists():
+        print(f"   ⚠ Thématique '{name}' demandée mais fichier absent : {path.relative_to(ROOT)}")
+        return ""
+    try:
+        text = path.read_text(encoding="utf-8").strip()
+        if text:
+            print(f"   📚 Thématique '{name}' chargée ({len(text)} car.)")
+        return text
+    except Exception as e:
+        print(f"   ⚠ Erreur lecture thématique '{name}' : {e}")
+        return ""
+
+
+def load_prompts(site_dir: Path, config: dict) -> tuple[str, str]:
+    persona = (get_config_value(config, "persona_prompt") or "").strip()
+    thematic = get_config_value(config, "thematic")
+    if thematic:
+        thematic_prompt = _load_thematic_prompt(str(thematic))
+        if thematic_prompt:
+            return thematic_prompt, persona
+        return "", persona
+    inline = (get_config_value(config, "blog_global_prompt") or "").strip()
+    if inline:
+        print(f"   📝 Global prompt inline depuis config.yaml ({len(inline)} car.)")
+        return inline, persona
+    template_name = None
+    page_types = config.get("page_types") or {}
+    template_name = page_types.get("classement") or page_types.get("blog") or "classement-saas"
+    schema_path = ROOT / "schemas" / f"{template_name}.json"
+    global_prompt = ""
+    if schema_path.exists():
+        try:
+            schema = json.loads(schema_path.read_text(encoding="utf-8"))
+            global_prompt = (schema.get("global_prompt") or "").strip()
+        except Exception:
+            pass
+    return global_prompt, persona
+
+
+def generate_meta_description(title: str, content_html: str) -> str:
+    plain = re.sub(r'<[^>]+>', ' ', content_html or '')
+    plain = re.sub(r'&nbsp;|&amp;|&lt;|&gt;|&quot;|&#39;', ' ', plain)
+    plain = re.sub(r'\s+', ' ', plain).strip()[:2000]
+    system = """Tu es un expert SEO. Tu rédiges des meta descriptions optimisées en français.
+
+CONTRAINTES STRICTES :
+- Réponds UNIQUEMENT avec le texte de la meta description, rien d'autre
+- Pas de guillemets, pas de préambule, pas de balises
+- LONGUEUR IMPÉRATIVE : entre 145 et 160 caractères. CIBLE : 155 CARACTÈRES.
+  Google tronque les meta < 120 caractères (mauvais CTR) et > 165 caractères.
+  Compte mentalement les caractères avant de répondre, et étoffe si tu es sous 145.
+- Style accrocheur, informatif, donne envie de cliquer
+- Inclure idéalement le mot-clé principal du titre
+- Pas de tiret long — ni –
+- Pas de point d'exclamation"""
+    base_user = f"Rédige une meta description SEO pour cet article :\n\nTitre : {title}\n\nContenu (extrait) : {plain[:1500]}"
+    MIN_LEN = 130
+    MAX_LEN = 165
+    best_text = ''
+    for attempt in range(2):
+        user_msg = base_user
+        if attempt == 1:
+            user_msg = (
+                f"{base_user}\n\n"
+                f"ATTENTION : ta première réponse faisait seulement {len(best_text)} caractères, "
+                f"c'est BEAUCOUP TROP COURT. Rédige cette fois IMPÉRATIVEMENT une meta description "
+                f"de 150 à 160 caractères. Étoffe avec un bénéfice client concret, un chiffre clé "
+                f"ou un détail spécifique de l'article. Ne descends pas sous 145 caractères."
+            )
+        try:
+            text = call_claude(system, user_msg, max_tokens=200).strip()
+            text = text.strip('"\'')
+            if len(text) > MAX_LEN:
+                text = text[:MAX_LEN - 1].rsplit(' ', 1)[0] + '…'
+            best_text = text
+            if len(text) >= MIN_LEN:
+                return text
+            if attempt == 0:
+                print(f"meta trop courte ({len(text)} car.), retry...", end=" ", flush=True)
+        except Exception as e:
+            print(f"   ⚠ Meta auto : erreur Claude ({e})")
+            return best_text
+    if best_text:
+        print(f"(meta finale {len(best_text)} car., sous le seuil {MIN_LEN})", end=" ", flush=True)
+    return best_text
+
+
+def generate_article_html(title: str, categorie: str, prompt_custom: str,
+                           global_prompt: str, persona_prompt: str,
+                           min_words: int = 750,
+                           mots_imposes: list[str] | None = None) -> str:
+    max_w = int(min_words * 1.5)
+    base_sys = """Tu es un rédacteur SEO expérimenté. Tu écris des articles de blog en français.
+
+CONTRAINTES DE FORMAT (impératif) :
+- Réponds UNIQUEMENT avec le contenu HTML de l'article, sans préambule, sans backticks de code fence
+- Format HTML simple : <h2>, <h3>, <p>, <strong>, <em>, <ul>/<li>, <ol>/<li>, <blockquote>, <a href="...">
+- Pas de titre <h1> (le titre est déjà géré ailleurs)
+- Structure : 2-4 sous-titres <h2>, parfois <h3>, paragraphes 3-5 lignes dans des <p>
+- Utilise les listes <ul>/<li> quand pertinent
+- Pas de tirets longs — ni –, utilise des virgules ou points
+- Pas de bullets unicode • ou ·
+- Pas de markdown ** _ ## etc. : uniquement du HTML
+- Pas de <div>, pas de <span>, pas de classes CSS — du HTML sémantique simple uniquement
+
+CONTRAINTES DE PONCTUATION (impératif) :
+- Tout titre sous forme de question DOIT se terminer par un point d'interrogation '?'
+- En français : espace insécable avant '?' '!' ':' ';' — utilise ' ?' avec un espace simple"""
+    layers = [p for p in [persona_prompt, global_prompt, base_sys] if p]
+    system = "\n\n".join(layers)
+    cat_line = f"\nCatégorie : {categorie}" if categorie else ""
+    custom_line = f"\n\nConsignes spécifiques :\n{prompt_custom}" if prompt_custom else ""
+    mots_line = ""
+    if mots_imposes:
+        plain_words = [m['text'] for m in mots_imposes if not m.get('url')]
+        linked_words = [m for m in mots_imposes if m.get('url')]
+        sections: list[str] = []
+        if plain_words:
+            fmt = ", ".join(f'« {m} »' for m in plain_words)
+            sections.append(
+                f"Tu DOIS inclure dans le corps de l'article, au moins une fois chacune "
+                f"et de manière naturelle, les expressions suivantes : {fmt}."
+            )
+        if linked_words:
+            fmt = ", ".join(f'« {m["text"]} »' for m in linked_words)
+            sections.append(
+                f"Tu DOIS également inclure les expressions suivantes au moins une fois "
+                f"chacune (elles seront automatiquement transformées en liens vers d'autres "
+                f"pages du site lors du build, ne crée donc PAS toi-même les balises "
+                f"<a>...</a>) : {fmt}."
+            )
+        mots_line = (
+            f"\n\nMOTS-CLÉS OBLIGATOIRES (impératif) :\n"
+            + "\n".join(sections)
+            + "\nCes expressions doivent apparaître TELLES QUELLES (même orthographe, "
+              "même formulation). Place-les naturellement dans des paragraphes."
+        )
+    user = (f"Rédige un article de blog complet sur le sujet suivant :\n\n"
+            f"Titre : {title}{cat_line}{custom_line}{mots_line}\n\n"
+            f"Longueur cible : {min_words} à {max_w} mots (minimum {min_words} mots impératif). "
+            f"L'article doit être informatif, structuré, et utile au lecteur cible défini dans ton persona.")
+    html = strip_code_fences(call_claude(system, user, max_tokens=min(8000, max(2000, max_w * 4))))
+    if mots_imposes:
+        for m in mots_imposes:
+            if m.get('url'):
+                html = _wrap_first_occurrence_with_link(html, m['text'], m['url'])
+    return html
+
+
+DEFAULT_ANCHOR_MAX = 5
+
+
+def _parse_anchors_csv(raw: str) -> list[dict]:
+    import re as _re
     out = []
-    if not raw:
-        return out
-    for part in re.split(r"[;\n]+", raw):
-        part = part.strip()
-        if not part:
+    for line in _re.split(r'[\n;]', raw or ''):
+        s = line.strip()
+        if not s:
             continue
-        m = re.match(r"^(.+?):(\d+)\s*$", part)
+        m = _re.match(r'^(.*?)[:\s]\s*(?:x\s*)?(\d+)\s*$', s, _re.IGNORECASE)
         if m:
-            out.append({"text": m.group(1).strip(), "max": int(m.group(2))})
-        else:
-            out.append({"text": part, "max": 5})
+            text = m.group(1).strip().rstrip(':').strip()
+            n = int(m.group(2))
+            if text and n > 0:
+                out.append({'text': text, 'max': n})
+        elif s:
+            out.append({'text': s, 'max': DEFAULT_ANCHOR_MAX})
     return out
 
 
-# ─── Génération du contenu via Claude ────────────────────────────────────
-
-GENERATION_SYSTEM_PROMPT = """Tu es un rédacteur SEO expert spécialisé dans les avis produits.
-Tu écris des avis honnêtes, structurés, factuels, conformes aux critères E-E-A-T de Google.
-Ton style est direct, professionnel, sans superlatifs creux ni jargon marketing.
-Tu cites des éléments concrets (fonctionnalités, prix réels, cas d'usage) plutôt que des généralités.
-Tu réponds UNIQUEMENT en JSON valide, sans préambule ni guillemets autour.
-
-Règle de sentiment :
-- "positif" : avis globalement favorable, défauts mineurs reconnus
-- "mitige" : avis nuancé, qualités ET défauts importants équilibrés
-- "negatif" : avis défavorable, défauts majeurs dominants
-
-Toutes les listes doivent être en français correct, sans tournures trop molles ("c'est bien", "ça va").
-Les questions FAQ DOIVENT se terminer par '?'.
-N'invente JAMAIS de note, de chiffre, de pourcentage qui n'est pas dans les données fournies."""
-
-
-def build_generation_prompt(row: dict, site: dict) -> tuple[str, str]:
-    """Construit le user prompt pour générer le contenu structuré d'un avis."""
-    marque = row.get("marque", "").strip()
-    categorie = row.get("categorie", "").strip()
-    sentiment = normalize_sentiment(row.get("sentiment", ""))
-    note = parse_note(row.get("note_globale", ""))
-    cible = (row.get("cible") or "").strip()
-    tarifs = parse_tarifs(row.get("tarifs", ""))
-    note_tp = (row.get("note_trustpilot") or "").strip()
-    nb_avis_tp = (row.get("nb_avis_trustpilot") or "").strip()
-    plateforme_avis = (row.get("plateforme_avis") or "Trustpilot").strip()
-    year = str(site.get("year") or datetime.now(PARIS).year)
-
-    # Colonne « mot_minimum » : nombre total minimum de mots pour l'article
-    # (somme de en_bref + 4 H2 contenu_html + faq + verdict). Si vide ou
-    # invalide, valeur par défaut 800 (équivalent du dimensionnement actuel).
-    try:
-        mot_min = int(str(row.get("mot_minimum") or "").strip() or 800)
-    except Exception:
-        mot_min = 800
-    # On distribue grossièrement le budget mots pour guider l'IA :
-    #  - en_bref : ~5 % (intro courte)
-    #  - chaque H2 : ~22 % (4 blocs principaux)
-    #  - verdict : ~7 %
-    # Le reste va dans la FAQ. Les nombres ci-dessous sont des cibles SOUPLES,
-    # pas des limites strictes : l'IA peut dépasser légèrement si nécessaire.
-    target_h2 = max(120, int(mot_min * 0.22))
-    target_intro = max(50, int(mot_min * 0.05))
-    target_verdict = max(60, int(mot_min * 0.07))
-
-    # Construction du paragraphe avis_clients hors f-string pour éviter les
-    # problèmes d'échappement de quotes imbriquées
-    if note_tp and nb_avis_tp:
-        avis_clients_instructions = (
-            f"Mentionne la note {note_tp}/5 sur {plateforme_avis} "
-            f"({nb_avis_tp} avis) et résume les retours typiques."
-        )
-    else:
-        avis_clients_instructions = (
-            "Les avis externes ne sont pas fournis. Écris simplement en 1 ligne "
-            "que les avis publics sont à vérifier sur les plateformes spécialisées."
-        )
-
-    user = f"""Tu rédiges un avis structuré sur **{marque}** ({categorie}).
-
-DONNÉES FOURNIES (à respecter strictement, ne pas inventer) :
-- Marque : {marque}
-- Catégorie : {categorie}
-- Sentiment global : {sentiment}
-- Note globale donnée par l'éditeur : {note}/5
-- Cible visée : {cible or "(à déduire de la marque)"}
-- Offres tarifaires : {json.dumps(tarifs, ensure_ascii=False) if tarifs else "(pas de tarifs fournis)"}
-- Avis utilisateurs externes : {f"{note_tp}/5 sur {nb_avis_tp} avis ({plateforme_avis})" if (note_tp and nb_avis_tp) else "(non renseigné, ne pas l'inventer)"}
-- Année : {year}
-
-CONTRAINTES :
-1. Le ton suit le sentiment "{sentiment}" : tu DOIS refléter ce sentiment dans le texte.
-2. Tu peux t'appuyer sur ce que tu sais publiquement de {marque} (fonctionnalités, positionnement marché)
-   mais sans inventer de chiffres, de partenariats, de récompenses, ou d'événements précis.
-3. Si certaines données ne sont pas fournies (cible, avis externes), ne les mentionne pas.
-4. Tu écris pour des humains pressés. Phrases courtes. Vocabulaire concret.
-5. LONGUEUR : la somme des champs textuels (en_bref + 4 H2 contenu_html + verdict + réponses FAQ)
-   DOIT atteindre AU MINIMUM {mot_min} mots au total. Si tu sais peu de choses sur {marque},
-   développe les analyses (positionnement marché, profil-type d'utilisateur, comparaison
-   sectorielle générique) plutôt que d'inventer des faits précis.
-
-Réponds STRICTEMENT en JSON avec cette structure exacte (rien d'autre, pas de ```) :
-
-{{
-  "h1": "Titre principal au format 'Avis {marque} ({year}) : ...' (incitatif, max 75 caractères)",
-  "en_bref": "Paragraphe d'intro de ~{target_intro} mots : qui c'est, à qui ça s'adresse, positionnement",
-  "points_forts": ["3 points forts CONCRETS, 5-12 mots chacun, formulés positivement"],
-  "points_faibles": ["2 points faibles HONNÊTES, 5-12 mots chacun, formulés sans diplomatie creuse"],
-  "h2_fonctionnalites": {{
-    "titre": "Titre H2 sur les fonctionnalités/le service (ex: 'Que permet {marque} concrètement ?')",
-    "contenu_html": "Au moins {target_h2} mots, répartis sur 2-4 paragraphes en HTML <p>...</p>. Description objective de ce que fait la plateforme. Aucun H3 sauf si vraiment nécessaire."
-  }},
-  "h2_support": {{
-    "titre": "Titre H2 sur le service client/support",
-    "contenu_html": "Au moins {target_h2} mots en HTML <p>...</p>. Canaux de support (chat, mail, téléphone), réactivité, qualité, escalade."
-  }},
-  "h2_qualite_prix": {{
-    "titre": "Titre H2 sur le rapport qualité/prix",
-    "contenu_html": "Au moins {target_h2} mots en HTML <p>...</p>. Positionnement vs concurrence, justification du prix, à qui c'est rentable, à qui ça ne l'est pas."
-  }},
-  "h2_avis_clients": {{
-    "titre": "Titre H2 sur les avis clients (ex: 'Que disent les utilisateurs ?')",
-    "contenu_html": "1 paragraphe en HTML <p>...</p>. {avis_clients_instructions}"
-  }},
-  "faq": [
-    {{"q": "Question fréquente 1 ? (DOIT se terminer par '?')", "r": "Réponse en 2-4 phrases (HTML interdit, texte brut)"}},
-    {{"q": "Question 2 ?", "r": "..."}},
-    {{"q": "Question 3 ?", "r": "..."}},
-    {{"q": "Question 4 ?", "r": "..."}}
-  ],
-  "verdict": "Verdict final tranché d'environ {target_verdict} mots. Réitère la note {note}/5 et donne une recommandation claire (pour qui c'est, pour qui ce n'est pas).",
-  "meta_title": "Title SEO max 60 caractères, doit contenir '{marque}' et '{year}'",
-  "meta_description": "Meta description SEO max 155 caractères, doit donner envie de cliquer"
-}}"""
-    return GENERATION_SYSTEM_PROMPT, user
+def _parse_mots_imposes_csv(raw: str) -> list[dict]:
+    if not raw:
+        return []
+    out: list[dict] = []
+    for part in re.split(r'[,;\n]', raw):
+        s = part.strip()
+        if not s:
+            continue
+        if '=>' in s:
+            text, _, url = s.partition('=>')
+            text = text.strip()
+            url = url.strip()
+            if text:
+                entry = {'text': text}
+                if url:
+                    entry['url'] = url
+                out.append(entry)
+        else:
+            out.append({'text': s})
+    return out
 
 
-def generate_avis_content(row: dict, site: dict) -> dict:
-    """Appelle Claude et parse le JSON retourné. Lève si parsing échoue."""
-    system, user = build_generation_prompt(row, site)
-    raw = call_claude(system, user, max_tokens=8192)
-    raw = strip_code_fences(raw)
-    try:
-        data = json.loads(raw)
-    except json.JSONDecodeError as e:
-        # Tentative de récupération : extraire le premier objet JSON
-        m = re.search(r"\{[\s\S]*\}", raw)
-        if not m:
-            raise RuntimeError(f"Pas de JSON dans la réponse Claude : {raw[:200]}")
-        try:
-            data = json.loads(m.group(0))
-        except json.JSONDecodeError:
-            raise RuntimeError(f"JSON invalide : {e}\nRaw : {raw[:500]}")
-    # Garantit la présence de toutes les clés (valeurs par défaut)
-    return {
-        "h1": data.get("h1", f"Avis {row.get('marque','')}"),
-        "en_bref": data.get("en_bref", ""),
-        "points_forts": data.get("points_forts") or [],
-        "points_faibles": data.get("points_faibles") or [],
-        "h2_fonctionnalites": data.get("h2_fonctionnalites") or {"titre": "", "contenu_html": ""},
-        "h2_support": data.get("h2_support") or {"titre": "", "contenu_html": ""},
-        "h2_qualite_prix": data.get("h2_qualite_prix") or {"titre": "", "contenu_html": ""},
-        "h2_avis_clients": data.get("h2_avis_clients") or {"titre": "", "contenu_html": ""},
-        "faq": data.get("faq") or [],
-        "verdict": data.get("verdict", ""),
-        "meta_title": data.get("meta_title", ""),
-        "meta_description": data.get("meta_description", ""),
-    }
+def _wrap_first_occurrence_with_link(html: str, text: str, url: str) -> str:
+    if not text or not url:
+        return html
+    pattern = re.compile(r'\b' + re.escape(text) + r'\b', re.IGNORECASE)
+    parts = re.split(r'(<a\b[^>]*>.*?</a>)', html, flags=re.IGNORECASE | re.DOTALL)
+    done = False
+    out: list[str] = []
+    for p in parts:
+        is_anchor = p.lower().startswith('<a')
+        if not done and not is_anchor:
+            new_p, n = pattern.subn(
+                lambda m: f'<a href="{url}">{m.group(0)}</a>',
+                p, count=1,
+            )
+            out.append(new_p)
+            if n > 0:
+                done = True
+        else:
+            out.append(p)
+    return ''.join(out)
 
 
-# ─── Écriture du markdown ────────────────────────────────────────────────
+# ─── Sérialisation .md (frontmatter YAML + body) ─────────────────────────
 
-def write_avis_md(filepath: Path, fm: dict, body_html: str) -> None:
-    """Sérialise le frontmatter YAML + le corps HTML.
-    Le frontmatter contient les données structurées non textuelles (note, tarifs,
-    points forts/faibles, FAQ) que le template lira directement plutôt que de
-    parser du HTML."""
-    fm_yaml = yaml.safe_dump(fm, allow_unicode=True, sort_keys=False, width=10000)
+def write_post(filepath: Path, fm: dict, body: str) -> None:
+    fm_yaml = yaml.dump(fm, allow_unicode=True, default_flow_style=False,
+                         sort_keys=False, width=10000).strip()
+    content = f"---\n{fm_yaml}\n---\n\n{body}\n"
     filepath.parent.mkdir(parents=True, exist_ok=True)
-    filepath.write_text(f"---\n{fm_yaml}---\n\n{body_html}\n", encoding="utf-8")
+    filepath.write_text(content, encoding="utf-8")
 
 
-def build_frontmatter(row: dict, generated: dict, site: dict, slug: str) -> dict:
-    """Combine données sheet + données IA en un frontmatter complet."""
-    marque = row.get("marque", "").strip()
-    sentiment = normalize_sentiment(row.get("sentiment", ""))
-    note = parse_note(row.get("note_globale", ""))
-    tarifs = parse_tarifs(row.get("tarifs", ""))
-    note_tp = row.get("note_trustpilot", "").strip()
-    nb_avis_tp = row.get("nb_avis_trustpilot", "").strip()
-    plateforme_avis = (row.get("plateforme_avis") or "Trustpilot").strip()
-    cta_url = row.get("cta_url", "").strip()
-    cta_label = row.get("cta_label", "").strip() or f"Visiter {marque}"
-    pub_dt = parse_pub_datetime(row.get("date_publication", ""))
-    pub_iso = pub_dt.isoformat() if pub_dt else datetime.now(PARIS).isoformat()
-    link_anchors = parse_anchors(row.get("link_anchors", ""))
+def _normalize_title(t: str) -> str:
+    return " ".join(str(t or "").lower().split())
 
-    return {
-        # Métadonnées d'identification
-        "slug": slug,
-        "type": "avis",  # discriminant utilisé par generate.py
-        "marque": marque,
-        "categorie": (row.get("categorie") or "").strip(),
-        "sentiment": sentiment,
-        # Note + données quantifiables
-        "note": note,
-        "note_max": 5,
-        "note_trustpilot": float(note_tp.replace(",", ".")) if note_tp.replace(",", ".").replace(".", "").isdigit() else None,
-        "nb_avis_trustpilot": int(re.sub(r"\D", "", nb_avis_tp)) if nb_avis_tp else None,
-        "plateforme_avis": plateforme_avis if (note_tp and nb_avis_tp) else None,
-        # CTA
-        "cta_url": cta_url,
-        "cta_label": cta_label,
-        "cible": (row.get("cible") or "").strip(),
-        # Tarifs
-        "tarifs": tarifs,
-        # Contenu IA
-        "h1": (row.get("h1") or generated.get("h1") or f"Avis {marque}").strip(),
-        "en_bref": generated.get("en_bref", ""),
-        "points_forts": generated.get("points_forts", []),
-        "points_faibles": generated.get("points_faibles", []),
-        "h2_fonctionnalites": generated.get("h2_fonctionnalites", {}),
-        "h2_support": generated.get("h2_support", {}),
-        "h2_qualite_prix": generated.get("h2_qualite_prix", {}),
-        "h2_avis_clients": generated.get("h2_avis_clients", {}),
-        "faq": generated.get("faq", []),
-        "verdict": generated.get("verdict", ""),
-        # SEO
-        "meta_title": (row.get("meta_title") or generated.get("meta_title") or f"Avis {marque} : notre verdict").strip(),
-        "meta_description": (row.get("meta_description") or generated.get("meta_description") or "").strip(),
-        "link_anchors": link_anchors,
-        # Configuration éditoriale (lue par avis_publish_scheduled au build et
-        # éditable depuis le dashboard ou directement dans le .md).
-        # Sert à régénérer ou comprendre comment l'IA a calibré la longueur.
-        "mot_minimum": _safe_int(row.get("mot_minimum"), 800),
-        # Date
-        "date": pub_iso,
+
+# ─── Substitution de placeholders {Month}, {year}, etc. ──────────────────
+# Les titres de la sheet contiennent souvent des placeholders évolutifs
+# comme "Parrainage Qonto {Month} {year} : 160€ offerts". Ces placeholders
+# doivent être substitués AVANT :
+#   1. Le passage à Claude (sinon Claude génère du texte avec {Month})
+#   2. L'écriture du .md (sinon la sidebar/listing affiche {Month} brut)
+# La date de référence est `pub_dt` (date de publication de l'article).
+
+MOIS_FR_FULL = [
+    "janvier", "février", "mars", "avril", "mai", "juin",
+    "juillet", "août", "septembre", "octobre", "novembre", "décembre"
+]
+
+
+def substitute_placeholders(text: str, dt: datetime) -> str:
+    """Substitue les placeholders {Month}, {month}, {year}, {YEAR}, etc.
+    par la valeur correspondant à la date `dt`. Retourne le texte modifié.
+
+    Placeholders supportés (case-sensitive) :
+      - {year}  / {YEAR}   → "2026"
+      - {Month}            → "Juin" (capitalisé)
+      - {month}            → "juin" (lowercase)
+      - {MONTH}            → "JUIN" (uppercase)
+      - {month_num}        → "06" (zero-padded)
+    """
+    if not text or "{" not in text:
+        return text
+    mois = MOIS_FR_FULL[dt.month - 1]
+    repl = {
+        "{year}": str(dt.year),
+        "{YEAR}": str(dt.year),
+        "{Year}": str(dt.year),
+        "{Month}": mois.capitalize(),
+        "{month}": mois,
+        "{MONTH}": mois.upper(),
+        "{month_num}": f"{dt.month:02d}",
     }
+    out = text
+    for k, v in repl.items():
+        if k in out:
+            out = out.replace(k, v)
+    return out
 
 
-def _safe_int(value, default: int) -> int:
-    """Cast tolérant pour les colonnes numériques (chaînes vides, espaces, etc.)."""
-    try:
-        s = str(value or "").strip()
-        return int(s) if s else default
-    except Exception:
-        return default
+def _save_processed(processed_file: Path, processed: list) -> None:
+    """Save incrémental du tracker `schedule_processed.json`.
 
+    Appelé après CHAQUE article généré pour persister l'avancement intra-run.
+    Si le script crash entre 2 articles, le fichier sur disque reflète l'état
+    correct et le prochain run reprendra à l'article suivant.
 
-# ─── Tracking des avis déjà publiés ──────────────────────────────────────
-
-def load_processed(processed_file: Path) -> set[str]:
-    if not processed_file.exists():
-        return set()
-    try:
-        return set(json.loads(processed_file.read_text(encoding="utf-8")))
-    except Exception:
-        return set()
-
-
-def save_processed(processed_file: Path, processed: set[str]) -> None:
+    Note : le fichier vit sur le runner GitHub Actions. Le commit + push est
+    fait par le workflow appelant en fin de run. Si le run crash AVANT le
+    commit, le fichier (et les .md générés) sont perdus avec le runner — le
+    prochain run regénèrera ces articles. Coût acceptable car borné par
+    MAX_ARTICLES_PER_RUN."""
     processed_file.parent.mkdir(parents=True, exist_ok=True)
     processed_file.write_text(
-        json.dumps(sorted(processed), indent=2, ensure_ascii=False),
+        json.dumps(processed, indent=2, ensure_ascii=False),
         encoding="utf-8",
     )
 
 
-def row_key(row: dict) -> str:
-    """Clé unique d'un avis : marque + date_publication (un avis par marque pour MVP).
-    Si le même couple revient dans la sheet, on ne re-publie pas."""
-    return f"{slugify(row.get('marque',''))}|{(row.get('date_publication') or '').strip()}"
-
-
-def _normalize_marque(m: str) -> str:
-    return slugify(m).replace("-", "")
-
-
-# ─── Sync metadata sur avis déjà publiés ─────────────────────────────────
-# Comme pour le blog : si Julien modifie note, cta_url, link_anchors dans la
-# sheet, on met à jour les .md déjà publiés sans régénérer le contenu IA.
-
-EDITABLE_KEYS = (
-    "note", "cta_url", "cta_label", "cible", "tarifs", "categorie",
-    "note_trustpilot", "nb_avis_trustpilot", "plateforme_avis",
-    "meta_title", "meta_description", "link_anchors",
-)
-
-
-def sync_metadata(posts_dir: Path, rows: list[dict]) -> int:
-    """Pour chaque .md existant, retrouve la ligne par marque slugifiée et met
-    à jour les champs éditables si la sheet a changé."""
-    if not posts_dir.exists():
+def sync_metadata_from_sheet(posts_dir: Path, rows: list[dict]) -> int:
+    if not posts_dir.exists() or not rows:
         return 0
-    rows_by_marque = {}
-    for r in rows:
-        m = slugify(r.get("marque", ""))
-        if m:
-            rows_by_marque[m] = r
-    updated = 0
-    for md in posts_dir.glob("*.md"):
+    md_by_title: dict[str, tuple[Path, dict, str]] = {}
+    for md_path in posts_dir.glob('*.md'):
         try:
-            raw = md.read_text(encoding="utf-8")
+            raw = md_path.read_text(encoding='utf-8')
+            if not raw.startswith('---'):
+                continue
+            end_idx = raw.find('---', 3)
+            if end_idx < 0:
+                continue
+            fm_text = raw[3:end_idx]
+            fm = yaml.safe_load(fm_text) or {}
+            if not isinstance(fm, dict):
+                continue
+            title = (fm.get('title') or '').strip()
+            if not title:
+                continue
+            body = raw[end_idx + 3:].lstrip('\n')
+            md_by_title[_normalize_title(title)] = (md_path, fm, body)
         except Exception:
             continue
-        if not raw.startswith("---"):
-            continue
-        parts = raw.split("---", 2)
-        if len(parts) < 3:
-            continue
-        try:
-            fm = yaml.safe_load(parts[1]) or {}
-        except Exception:
-            continue
-        marque_slug = slugify(fm.get("marque", "") or md.stem)
-        row = rows_by_marque.get(marque_slug)
-        if not row:
-            continue
-        # Recalcule les valeurs depuis la sheet
-        new_fm = dict(fm)
-        if row.get("note_globale"):
-            new_fm["note"] = parse_note(row["note_globale"])
-        if row.get("cta_url"):
-            new_fm["cta_url"] = row["cta_url"].strip()
-        if row.get("cta_label"):
-            new_fm["cta_label"] = row["cta_label"].strip()
-        if row.get("cible"):
-            new_fm["cible"] = row["cible"].strip()
-        if row.get("tarifs"):
-            new_fm["tarifs"] = parse_tarifs(row["tarifs"])
-        if row.get("categorie"):
-            new_fm["categorie"] = row["categorie"].strip()
-        if row.get("note_trustpilot"):
-            try:
-                new_fm["note_trustpilot"] = float(row["note_trustpilot"].replace(",", "."))
-            except Exception:
-                pass
-        if row.get("nb_avis_trustpilot"):
-            try:
-                new_fm["nb_avis_trustpilot"] = int(re.sub(r"\D", "", row["nb_avis_trustpilot"]))
-            except Exception:
-                pass
-        if row.get("plateforme_avis"):
-            new_fm["plateforme_avis"] = row["plateforme_avis"].strip()
-        if row.get("meta_title"):
-            new_fm["meta_title"] = row["meta_title"].strip()
-        if row.get("meta_description"):
-            new_fm["meta_description"] = row["meta_description"].strip()
-        if row.get("link_anchors"):
-            new_fm["link_anchors"] = parse_anchors(row["link_anchors"])
-        # `mot_minimum` est purement informatif côté .md déjà publié (la
-        # longueur du contenu existant n'est pas régénérée). Mais on la sync
-        # quand même pour que le dashboard reflète la valeur courante de la sheet.
-        if row.get("mot_minimum"):
-            new_fm["mot_minimum"] = _safe_int(row["mot_minimum"], new_fm.get("mot_minimum", 800))
-        if new_fm != fm:
-            new_yaml = yaml.safe_dump(new_fm, allow_unicode=True, sort_keys=False, width=10000)
-            md.write_text(f"---\n{new_yaml}---{parts[2]}", encoding="utf-8")
-            updated += 1
-    return updated
-
-
-# ─── Process d'un site ───────────────────────────────────────────────────
-
-def get_csv_url(config: dict) -> str:
-    site = config.get("site", {}) or {}
-    return site.get("avis_sheet_csv_url", "") or ""
-
-
-def process_site(site_id: str, site_dir: Path, config: dict) -> int:
-    """Retourne le nombre d'avis nouvellement publiés."""
-    csv_url = get_csv_url(config)
-    if not csv_url:
-        return 0
-    print(f"\n→ Avis : {site_id}")
-    try:
-        rows = fetch_csv(csv_url)
-    except Exception as e:
-        print(f"  ⚠ Lecture CSV échouée : {e}")
-        return 0
-    print(f"  {len(rows)} ligne(s) dans la sheet")
-    if not rows:
-        return 0
-
-    posts_dir = site_dir / "posts_avis"
-    posts_dir.mkdir(parents=True, exist_ok=True)
-    processed_file = posts_dir / "schedule_processed.json"
-    processed = load_processed(processed_file)
-
-    # Slugs déjà existants pour éviter collisions
-    existing_slugs = {p.stem for p in posts_dir.glob("*.md")}
-
-    now = datetime.now(PARIS)
-    force_titles_env = os.environ.get("FORCE_TITLES", "") or ""
-    force_titles = set(t.strip() for t in re.split(r"\|\||;", force_titles_env) if t.strip())
-
-    # Filet de sécurité : si une marque est déjà publiée (fichier .md existe)
-    # même si processed.json ne le sait pas, on l'ajoute pour ne pas re-générer.
-    for slug in existing_slugs:
-        # On ne connaît pas la marque exacte → on cherche dans les rows
-        for r in rows:
-            if slugify(r.get("marque", "")) == slug:
-                processed.add(row_key(r))
-
-    new_count = 0
+    n_synced = 0
     for row in rows:
-        marque = (row.get("marque") or "").strip()
-        if not marque:
+        title = (row.get('titre') or '').strip()
+        if not title:
             continue
-        key = row_key(row)
-        if key in processed:
+        key = _normalize_title(title)
+        if key not in md_by_title:
             continue
-        is_forced = marque in force_titles
-        # ⚠ FORCE_TITLES = mode EXCLUSIF : si une liste est passée (typiquement
-        # via le bouton "🔄 Régénérer" du dashboard, qui appelle publish-now
-        # avec une seule marque), on ne traite QUE ces marques. Sans ça, tous
-        # les autres avis du Sheet à date vide ou passée seraient aussi publiés
-        # (parce que le cron horaire utilise la même logique de "publication
-        # immédiate si date vide"). Bug observé le 2026-06 : "Régénérer Revolut
-        # Business" avait déclenché la publication de 5+ avis en brouillon.
-        if force_titles and not is_forced:
+        md_path, fm, body = md_by_title[key]
+        changed = False
+        new_anchors_raw = (row.get('link_anchors') or row.get('ancres') or '').strip()
+        new_anchors = _parse_anchors_csv(new_anchors_raw) if new_anchors_raw else []
+        old_anchors = fm.get('link_anchors') or []
+        if new_anchors != old_anchors:
+            if new_anchors:
+                fm['link_anchors'] = new_anchors
+            elif 'link_anchors' in fm:
+                del fm['link_anchors']
+            changed = True
+        new_cat = (row.get('categorie') or '').strip()
+        if new_cat and fm.get('categorie') != new_cat:
+            fm['categorie'] = new_cat
+            changed = True
+        new_meta_desc = (row.get('meta_description') or '').strip()
+        if new_meta_desc and fm.get('meta_description') != new_meta_desc:
+            fm['meta_description'] = new_meta_desc
+            changed = True
+        new_meta_title = (row.get('meta_title') or '').strip()
+        if new_meta_title and fm.get('meta_title') != new_meta_title:
+            fm['meta_title'] = new_meta_title
+            changed = True
+        if changed:
+            write_post(md_path, fm, body)
+            n_synced += 1
+            print(f"   🔄 Métadonnées resynchronisées : {title[:60]}")
+    return n_synced
+
+
+# ─── Traitement d'un site ────────────────────────────────────────────────
+
+def _extract_site_colors(config: dict) -> tuple[str, str, str]:
+    theme = config.get("theme") or {}
+    primary = theme.get("accent") or theme.get("primary") or "#1E5F8B"
+    secondary = theme.get("accent2") or theme.get("secondary") or "#FFB200"
+    cta = theme.get("cta_color") or config.get("cta_color") or "#FF6B35"
+    return primary, secondary, cta
+
+
+def process_site(site_id: str, site_dir: Path, config: dict,
+                 remaining_quota: int = 999) -> int:
+    """Traite un site. Génère AU PLUS `remaining_quota` articles (limite globale
+    passée par main()). Retourne (n_generated, n_synced).
+
+    Si remaining_quota <= 0 en entrée, le site est skip silencieusement (la
+    limite globale est déjà atteinte sur un site précédent)."""
+    if remaining_quota <= 0:
+        return 0
+
+    blog_sheet_url = (get_config_value(config, "blog_sheet_csv_url") or "").strip()
+    if not blog_sheet_url:
+        return 0
+
+    print(f"\n📰 {site_id} — sheet : {blog_sheet_url[:80]}...")
+    rows = fetch_csv(blog_sheet_url)
+    if not rows:
+        print("   (sheet vide ou inaccessible)")
+        return 0
+    print(f"   {len(rows)} ligne(s) dans la sheet")
+
+    slug_format = _resolve_slug_format(config)
+    use_prefix = (slug_format == "prefix")
+    if not use_prefix:
+        print(f"   📐 Format slug : 'clean' (URLs propres, sans préfixe numérique)")
+
+    posts_dir = site_dir / "blog" / "posts"
+    processed_file = site_dir / "blog" / "schedule_processed.json"
+    processed_file.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        processed = json.loads(processed_file.read_text(encoding="utf-8")) if processed_file.exists() else []
+    except Exception:
+        processed = []
+    processed_set = set(processed)
+
+    existing_slugs = {p.stem for p in posts_dir.glob("*.md")} if posts_dir.exists() else set()
+    existing_titles_normalized: set[str] = set()
+    if posts_dir.exists():
+        for md_path in posts_dir.glob("*.md"):
+            try:
+                content = md_path.read_text(encoding="utf-8")
+                if content.startswith("---"):
+                    end = content.find("---", 3)
+                    if end > 0:
+                        fm_text = content[3:end]
+                        for line in fm_text.splitlines():
+                            if line.lstrip().startswith("title:"):
+                                t = line.split(":", 1)[1].strip()
+                                if t.startswith(("'", '"')) and t.endswith(t[0]) and len(t) >= 2:
+                                    t = t[1:-1].replace("''", "'") if t[0] == "'" else t.replace('\\"', '"').replace('\\\\', '\\')
+                                existing_titles_normalized.add(" ".join(t.lower().split()))
+                                break
+            except Exception:
+                continue
+    now = datetime.now(PARIS)
+    _force_titles = {
+        t.strip().lower()
+        for t in (os.environ.get("FORCE_TITLES") or "").split("|")
+        if t.strip()
+    }
+    if _force_titles:
+        print(f"   ⚡ Mode force activé : {len(_force_titles)} titre(s) à publier immédiatement")
+
+    global_prompt, persona_prompt = load_prompts(site_dir, config)
+    new_count = 0
+    quota_hit = False  # flag pour log de fin
+
+    for row in rows:
+        # ── Garde-fou quota global atteint ───────────────────────────────
+        if new_count >= remaining_quota:
+            quota_hit = True
+            break
+
+        title = row.get("titre", "").strip()
+        if not title:
             continue
-        # Convention : date_publication vide = publication immédiate (au prochain
-        # passage du cron, ou maintenant si on est dans la boucle). Permet à
-        # Julien d'ajouter une ligne dans la sheet sans avoir à choisir une date.
-        date_raw = (row.get("date_publication") or "").strip()
-        if not is_forced and date_raw:
-            pub_dt = parse_pub_datetime(date_raw)
+        is_forced = title.lower() in _force_titles
+        if _force_titles and not is_forced:
+            continue
+        date_str = row.get("date_publication", "").strip()
+
+        # ── 3 cas possibles : forcé / brouillon / programmé ─────────────
+        is_draft = is_draft_marker(date_str)
+        if is_draft:
+            # Marqueur de brouillon (ex: "draft", "brouillon"). On génère
+            # l'article quand même mais avec status: draft → invisible sur
+            # le site live. Julien le validera ensuite manuellement.
+            pub_dt = now
+            key = f"{title}__DRAFT"
+            article_status = "draft"
+        elif is_forced or not date_str:
+            pub_dt = now
+            key = f"{title}__{'FORCED' if is_forced else 'IMMEDIATE'}"
+            article_status = "published"
+        else:
+            pub_dt = parse_pub_datetime(date_str, row.get("heure_publication", "09:00"))
             if pub_dt is None:
-                print(f"  ✗ Date invalide pour '{marque}' (« {date_raw} ») → ignoré")
+                print(f"   ⚠ Date invalide pour '{title[:40]}' : {date_str}")
                 continue
             if pub_dt > now:
-                # Pas encore l'heure
                 continue
-        elif not is_forced and not date_raw:
-            # Date vide → publication immédiate
-            print(f"  ⚡ '{marque}' : date_publication vide → publication immédiate")
-        # Slug : "avis-<marque>" pour avoir des URLs cohérentes (/avis-qonto,
-        # /avis-legalplace, etc.) distinctes des articles de blog.
-        raw_slug = (row.get("slug") or "").strip() or slugify(marque)
-        if not raw_slug.startswith("avis-"):
-            slug = f"avis-{raw_slug}"
-        else:
-            slug = raw_slug
-        # Si collision, suffixer
-        if slug in existing_slugs:
-            i = 2
-            while f"{slug}-{i}" in existing_slugs:
-                i += 1
-            slug = f"{slug}-{i}"
+            key = f"{title}__{date_str}"
+            article_status = "published"
 
-        print(f"  → Génération avis : {marque} ({normalize_sentiment(row.get('sentiment',''))}, {parse_note(row.get('note_globale',''))}/5)")
-        try:
-            generated = generate_avis_content(row, config.get("site", {}))
-        except Exception as e:
-            print(f"    ✗ Échec génération : {e}")
+        if key in processed_set:
             continue
-        fm = build_frontmatter(row, generated, config.get("site", {}), slug)
-        # Le corps "body" du markdown est ici vide : tout est dans le frontmatter
-        # (le template avis-post.html.j2 lit fm.* directement, ce qui permet
-        # d'éditer chaque section indépendamment depuis un futur dashboard).
-        body = ""
-        out_path = posts_dir / f"{slug}.md"
-        write_avis_md(out_path, fm, body)
+
+        # ── Substituer les placeholders {Month}, {year}, etc. ──────────
+        # Effectué APRÈS calcul de pub_dt (pour avoir la date de référence)
+        # mais AVANT toute autre opération sur title (slugify, dédup, prompt).
+        # Du coup le titre est cohérent partout : .md, sidebar, OG, Claude.
+        title = substitute_placeholders(title, pub_dt)
+
+        title_normalized = " ".join(title.lower().split())
+        if title_normalized in existing_titles_normalized:
+            print(f"   ⏭ '{title[:50]}' déjà publié (titre existant) — ajout au registre")
+            processed_set.add(key)
+            processed.append(key)
+            # Save incrémental même pour cet ajout (évite redétection inutile au prochain run)
+            _save_processed(processed_file, processed)
+            continue
+
+        manual_slug = row.get("slug", "").strip()
+        slug = assign_slug(slugify(manual_slug or title), existing_slugs, use_prefix=use_prefix)
+
+        min_words = 750
+        try:
+            v = (row.get("nombre_mots_minimum") or row.get("min_words") or "").strip()
+            if v:
+                min_words = max(300, min(3000, int(v)))
+        except (TypeError, ValueError):
+            pass
+        link_anchors_raw = (row.get("link_anchors") or row.get("ancres") or "").strip()
+
+        mots_imposes_raw = (
+            row.get("mots_imposes")
+            or row.get("mots_cles") or row.get("mots-cles") or row.get("mots_clés")
+            or row.get("keywords") or ""
+        ).strip()
+        mots_imposes = _parse_mots_imposes_csv(mots_imposes_raw)
+
+        categorie = row.get("categorie", "").strip()
+        prompt_custom = substitute_placeholders(row.get("prompt_custom", "").strip(), pub_dt)
+        nb_link = sum(1 for m in mots_imposes if m.get('url'))
+        mots_log = ""
+        if mots_imposes:
+            mots_log = f" + {len(mots_imposes)} mots imposés"
+            if nb_link:
+                mots_log += f" ({nb_link} avec lien)"
+        # Préfixe spécifique pour les brouillons → log clair dans le runner
+        draft_log = " 📝 BROUILLON" if is_draft else ""
+        print(f"   🤖 Génération{draft_log} '{title[:50]}' (min {min_words} mots{mots_log})...", end=" ", flush=True)
+        try:
+            html = generate_article_html(title, categorie, prompt_custom, global_prompt, persona_prompt,
+                                          min_words=min_words, mots_imposes=mots_imposes)
+            if not html or len(html) < 100:
+                print("⚠ contenu suspect, skip")
+                continue
+        except Exception as e:
+            print(f"❌ {e}")
+            continue
+        print("✓")
+
+        featured_image_rel: str | None = None
+        if generate_featured_image is not None:
+            primary, secondary, cta = _extract_site_colors(config)
+            site_name = (config.get("site") or {}).get("name", "") or site_id
+            print(f"   🎨 Génération image (low quality)...", end=" ", flush=True)
+            jpg_bytes = generate_featured_image(
+                site_name=site_name,
+                primary_color=primary,
+                secondary_color=secondary,
+                cta_color=cta,
+                article_title=title,
+            )
+            if jpg_bytes:
+                img_dir = site_dir / "public" / "blog"
+                img_dir.mkdir(parents=True, exist_ok=True)
+                img_path = img_dir / f"{slug}.jpg"
+                img_path.write_bytes(jpg_bytes)
+                featured_image_rel = f"/blog/{slug}.jpg"
+                print(f"✓ ({len(jpg_bytes) // 1024} KB)")
+            else:
+                print("⚠ (sans image)")
+
+        meta_desc_raw = substitute_placeholders(row.get("meta_description", "").strip(), pub_dt)
+        if not meta_desc_raw:
+            print(f"   ✨ Génération meta description...", end=" ", flush=True)
+            meta_desc_raw = generate_meta_description(title, html)
+            print("✓" if meta_desc_raw else "(vide)")
+
+        fm = {
+            "title": title,
+            "slug": slug,
+            "date": pub_dt.replace(microsecond=0).isoformat(),
+            "categorie": categorie,
+            "meta_title": substitute_placeholders(row.get("meta_title", "").strip(), pub_dt) or title,
+            "meta_description": meta_desc_raw,
+            "min_words": min_words,
+            "status": article_status,   # "draft" si marqueur brouillon dans la sheet, sinon "published"
+        }
+        if featured_image_rel:
+            fm["featured_image"] = featured_image_rel
+        if link_anchors_raw:
+            anchors_parsed = _parse_anchors_csv(link_anchors_raw)
+            if anchors_parsed:
+                fm["link_anchors"] = anchors_parsed
+        write_post(posts_dir / f"{slug}.md", fm, html)
         existing_slugs.add(slug)
-        processed.add(key)
+        processed.append(key)
+        processed_set.add(key)
         new_count += 1
-        print(f"    ✓ {out_path.relative_to(ROOT)}")
 
-    save_processed(processed_file, processed)
+        # ── SAVE INCRÉMENTAL après CHAQUE article ────────────────────────
+        # Le fichier processed.json est sauvegardé après chaque succès.
+        # Si le script crash sur l'article suivant, on garde la trace de
+        # ceux déjà générés → pas de re-génération coûteuse au prochain run.
+        # (Le fichier .md est déjà écrit ci-dessus par write_post.)
+        _save_processed(processed_file, processed)
 
-    # Sync metadata des avis déjà publiés
+    if new_count > 0:
+        print(f"   ✅ {new_count} article(s) publié(s)")
+        if quota_hit:
+            print(f"   ⏸ Quota global atteint ({remaining_quota}) — reste de la sheet reporté au prochain run")
+    else:
+        print("   (aucun nouvel article à publier)")
+
+    n_synced = 0
     try:
-        n_sync = sync_metadata(posts_dir, rows)
-        if n_sync:
-            print(f"  ↻ {n_sync} avis(s) mis à jour depuis la sheet (metadata)")
+        n_synced = sync_metadata_from_sheet(posts_dir, rows)
+        if n_synced > 0:
+            print(f"   🔄 {n_synced} article(s) avec métadonnées mises à jour depuis la sheet")
     except Exception as e:
-        print(f"  ⚠ Sync metadata échoué : {e}")
+        print(f"   ⚠ Sync metadata : erreur {e}")
 
-    return new_count
+    return new_count + n_synced
 
 
 # ─── Main ────────────────────────────────────────────────────────────────
 
 def main():
-    sites_to_deploy: list[str] = []
-    if not SITES_DIR.exists():
-        print(f"⚠ {SITES_DIR} introuvable")
-        return
+    print("🚀 Blog cron — publication des articles programmés")
+    print(f"   Maintenant : {datetime.now(PARIS).isoformat()}")
+    print(f"   Limite globale : {MAX_ARTICLES_PER_RUN} articles par run "
+          f"(override via MAX_ARTICLES_PER_RUN)")
+
+    sites_processed: list[str] = []
+    total_generated = 0
+
     for site_dir in sorted(SITES_DIR.iterdir()):
         if not site_dir.is_dir() or site_dir.name.startswith("_"):
             continue
-        cfg_path = site_dir / "config.yaml"
-        if not cfg_path.exists():
+        config_path = site_dir / "config.yaml"
+        if not config_path.exists():
             continue
         try:
-            config = yaml.safe_load(cfg_path.read_text(encoding="utf-8")) or {}
-        except Exception:
-            continue
-        if not get_csv_url(config):
-            continue
-        try:
-            n = process_site(site_dir.name, site_dir, config)
+            config = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
         except Exception as e:
-            print(f"  ⚠ Erreur sur {site_dir.name} : {e}")
-            n = 0
-        if n > 0:
-            sites_to_deploy.append(site_dir.name)
+            print(f"   ⚠ Erreur config {site_dir.name} : {e}")
+            continue
 
-    print(f"\n✓ Total sites à redéployer : {len(sites_to_deploy)} → {sites_to_deploy}")
-    gh_out = os.environ.get("GITHUB_OUTPUT")
-    if gh_out:
-        with open(gh_out, "a", encoding="utf-8") as f:
-            f.write(f"sites_to_deploy={','.join(sites_to_deploy)}\n")
+        # Quota restant pour ce site = limite globale - déjà générés
+        remaining = MAX_ARTICLES_PER_RUN - total_generated
+        if remaining <= 0:
+            # Limite globale atteinte. On skip mais on log clairement pour
+            # voir dans l'UI GitHub Actions quels sites n'ont pas été traités.
+            print(f"\n⏸ {site_dir.name} skip — quota global déjà atteint ({MAX_ARTICLES_PER_RUN})")
+            continue
+
+        n = process_site(site_dir.name, site_dir, config, remaining_quota=remaining)
+        # `n` inclut les sync de métadonnées (sans génération Claude). Pour le
+        # compteur quota, on prend min(n, remaining) — borne supérieure mais
+        # toujours bornée, et c'est juste un compteur de safety, pas critique.
+        total_generated += max(0, min(n, remaining))
+        if n > 0:
+            sites_processed.append(site_dir.name)
+
+    print("\n=== Résumé ===")
+    print(f"   Articles générés ce run : {total_generated} / {MAX_ARTICLES_PER_RUN} (limite)")
+    if sites_processed:
+        print(f"✅ Sites avec nouveaux articles : {', '.join(sites_processed)}")
+        gh_output = os.environ.get("GITHUB_OUTPUT", "")
+        if gh_output:
+            with open(gh_output, "a", encoding="utf-8") as f:
+                f.write(f"sites_to_deploy={','.join(sites_processed)}\n")
+                f.write(f"new_articles_count={total_generated}\n")
+    else:
+        print("ℹ Aucun nouvel article à publier sur l'ensemble des sites")
+        gh_output = os.environ.get("GITHUB_OUTPUT", "")
+        if gh_output:
+            with open(gh_output, "a", encoding="utf-8") as f:
+                f.write("sites_to_deploy=\n")
+                f.write("new_articles_count=0\n")
 
 
 if __name__ == "__main__":
