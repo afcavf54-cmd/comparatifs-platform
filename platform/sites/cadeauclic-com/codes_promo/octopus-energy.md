@@ -32,7 +32,7 @@ historique_12_mois:
     valeur: 40
   - mois: 2026-06
     valeur: 40
-status: draft
+status: published
 date_creation: "2026-06-16"
 date_maj: "2026-06-16"
 ---
