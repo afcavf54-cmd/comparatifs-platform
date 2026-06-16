@@ -158,7 +158,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);fon
         <div class="cat-group-title">{{ cat }} <span class="sitemap-count">({{ cat_posts | length }})</span></div>
         <ul>
           {% for p in cat_posts %}
-          <li><a href="/blog/{{ p.slug }}/">{{ p.title }}</a></li>
+          <li><a href="/{{ p.slug }}/">{{ p.title }}</a></li>
           {% endfor %}
         </ul>
         {% endfor %}
@@ -166,7 +166,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);fon
         <div class="cat-group-title">Autres</div>
         <ul>
           {% for p in ns.no_cat %}
-          <li><a href="/blog/{{ p.slug }}/">{{ p.title }}</a></li>
+          <li><a href="/{{ p.slug }}/">{{ p.title }}</a></li>
           {% endfor %}
         </ul>
         {% endif %}
@@ -174,7 +174,7 @@ h1{font-family:'{{ theme.font_title }}',serif;font-size:clamp(32px,4vw,48px);fon
         {# Aucun post n'a de catégorie → liste plate #}
         <ul>
           {% for p in posts %}
-          <li><a href="/blog/{{ p.slug }}/">{{ p.title }}</a></li>
+          <li><a href="/{{ p.slug }}/">{{ p.title }}</a></li>
           {% endfor %}
         </ul>
       {% endif %}
