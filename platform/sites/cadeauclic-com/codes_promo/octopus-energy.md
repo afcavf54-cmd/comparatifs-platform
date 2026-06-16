@@ -4,6 +4,8 @@ slug: octopus-energy
 categorie_marque: Energie
 url_marchand: https://octopusenergy.fr
 url_affiliation: https://clikme.xyz/octopus
+avis_sophie: "J'ai passé du temps à rassembler et tester ces codes Octopus Energy à la main, parce que dans le secteur de l'énergie, les offres changent vite et certains codes expirés trainent encore sur des sites peu sérieux. Ce que j'ai remarqué, c'est que les codes de parrainage sont souvent les plus fiables et les plus généreux, alors privilégie-les si tu en trouves un actif sur cette page. Un petit piège à éviter : certains codes ne sont valables que pour une première souscription, donc si tu es déjà client Octopus Energy, vérifie bien les conditions avant de t'emballer. Dans l'ensemble, la marque joue plutôt le jeu de la transparence sur ses offres, ce qui est appréciable."
+conseil_sophie: Surveille les périodes de rentrée et de début d'hiver, Octopus Energy lance régulièrement des offres de bienvenue plus avantageuses à ces moments-là, c'est souvent le meilleur timing pour souscrire et cumuler un bon bonus de parrainage avec un tarif compétitif.
 rating:
   value: 5
   count: 59
@@ -40,13 +42,13 @@ date_maj: "2026-06-16"
 # Comment utiliser un code promo Octopus Energy
 
 ## Étape 1
-Repère le code promo Octopus Energy qui t'intéresse sur cette page et copie-le soigneusement, en vérifiant bien chaque caractère.
+Repère le code promo Octopus Energy qui t'intéresse sur cette page et copie-le soigneusement, certains codes sont sensibles à la casse.
 
 ## Étape 2
-Rends-toi sur le site Octopus Energy et commence ta simulation de contrat ou accède à ton espace client pour gérer ton abonnement.
+Rends-toi sur le site Octopus Energy et commence ton inscription ou accède à ton espace client pour simuler une offre adaptée à ton logement.
 
 ## Étape 3
-Lors de la souscription ou dans la section dédiée, repère le champ prévu pour saisir un code promo ou un code de parrainage, puis colle-y ton code.
+Lors du processus d'inscription ou de souscription, cherche le champ prévu pour saisir un code de parrainage ou un code promo, il apparaît généralement en bas du formulaire.
 
 ## Étape 4
-Valide le code et vérifie que la remise ou l'avantage apparaît bien dans le récapitulatif avant de confirmer ta souscription.
+Colle ton code dans le champ correspondant et valide pour voir la remise ou le bonus s'appliquer directement à ton contrat d'énergie.
