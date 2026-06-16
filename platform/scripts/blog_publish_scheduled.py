@@ -25,7 +25,15 @@ Format attendu du CSV (colonnes) :
     titre              (obligatoire)
     categorie          (obligatoire)
     prompt_custom      (optionnel)
-    date_publication   (obligatoire, format YYYY-MM-DD)
+    date_publication   (obligatoire — date OU marqueur brouillon)
+                       3 cas acceptés :
+                         • date au format YYYY-MM-DD → article publié à cette date
+                         • vide → article publié immédiatement
+                         • mot-clé "draft" / "brouillon" / "wip" / "pending" /
+                           "todo" / "à valider" → article généré par Claude
+                           mais marqué status: draft dans le frontmatter
+                           (invisible sur le site live, validable manuellement
+                           ensuite en passant status: published)
     heure_publication  (optionnel, format HH:MM, défaut 09:00)
     slug               (optionnel, dérivé du titre sinon)
     meta_title         (optionnel)
@@ -163,6 +171,23 @@ def parse_pub_datetime(date_str: str, time_str: str = "09:00") -> datetime | Non
         except ValueError:
             continue
     return d.replace(hour=hour, minute=minute, second=second, tzinfo=PARIS)
+
+
+# Marqueurs de brouillon dans la colonne date_publication de la sheet.
+# Quand l'un de ces mots-clés est utilisé à la place d'une date, l'article
+# est GÉNÉRÉ par Claude (texte + image + meta) mais marqué `status: draft`
+# dans le frontmatter. Du coup il N'APPARAÎT PAS sur le site live (le filtre
+# include_drafts=False de blog_engine l'écarte), mais existe dans le repo
+# et est éditable par l'utilisateur. Workflow : marquer "draft" dans la
+# sheet pour la rédaction → valider le contenu auprès du client → passer
+# manuellement status: draft → published dans le .md (ou via dashboard).
+DRAFT_MARKERS = {"draft", "brouillon", "wip", "pending", "todo", "à valider", "a valider"}
+
+
+def is_draft_marker(date_str: str) -> bool:
+    """True si la valeur du champ date_publication est un marqueur de
+    brouillon (cf. DRAFT_MARKERS) plutôt qu'une vraie date."""
+    return (date_str or "").strip().lower() in DRAFT_MARKERS
 
 
 def call_claude(system: str, user: str, retries: int = 3, max_tokens: int = 4000) -> str:
@@ -524,6 +549,77 @@ def substitute_placeholders(text: str, dt: datetime) -> str:
     return out
 
 
+# ─── Index JSON pré-calculé pour le dashboard ─────────────────────────────
+# À chaque article généré, on met à jour `<site_dir>/blog/posts-index.json`
+# avec tous les posts (publiés + brouillons). Le dashboard lit ce SEUL
+# fichier au lieu de 122 .md → temps de chargement divisé par ~50, et plus
+# de saturation du rate limit GitHub. Aligné avec generate.py qui régénère
+# aussi cet index au build.
+def _serialize_post_for_index(p) -> dict:
+    """Convertit un post blog_engine en dict minimaliste pour l'index JSON."""
+    def g(attr, default=None):
+        if hasattr(p, attr):
+            v = getattr(p, attr, default)
+        elif isinstance(p, dict):
+            v = p.get(attr, default)
+        else:
+            v = default
+        if hasattr(v, 'isoformat'):
+            return v.isoformat()
+        return v
+
+    excerpt = g('excerpt') or g('meta_description') or ''
+    if excerpt and len(excerpt) > 250:
+        excerpt = excerpt[:247] + '...'
+
+    return {
+        "title": g('title') or '',
+        "slug": g('slug') or '',
+        "date": g('date') or '',
+        "status": g('status') or 'published',
+        "categorie": g('categorie') or g('category') or '',
+        "excerpt": excerpt,
+        "featured_image": g('featured_image') or '',
+        "meta_description": g('meta_description') or '',
+        "min_words": g('min_words') or 0,
+    }
+
+
+def _update_posts_index_safe(site_dir: Path) -> None:
+    """Régénère `<site_dir>/blog/posts-index.json`. Silencieux en cas d'erreur
+    (l'échec d'index n'empêche pas la publication d'un article — on log juste
+    un warning et on continue). Import blog_engine en local pour gérer les
+    setups où il n'est pas dispo."""
+    blog_dir = site_dir / "blog"
+    posts_dir = blog_dir / "posts"
+    if not posts_dir.exists():
+        return
+    try:
+        import sys as _sys
+        scripts_dir = Path(__file__).parent
+        if str(scripts_dir) not in _sys.path:
+            _sys.path.insert(0, str(scripts_dir))
+        import blog_engine as _blog_engine
+        posts = _blog_engine.load_all_posts(site_dir, include_drafts=True)
+    except Exception as e:
+        print(f"   ⚠ posts-index : load_all_posts a échoué ({e}) — index non mis à jour")
+        return
+
+    index_path = blog_dir / "posts-index.json"
+    payload = {
+        "updated_at": datetime.now().isoformat(),
+        "count": len(posts),
+        "posts": [_serialize_post_for_index(p) for p in posts],
+    }
+    try:
+        index_path.write_text(
+            json.dumps(payload, ensure_ascii=False, indent=2),
+            encoding="utf-8"
+        )
+    except Exception as e:
+        print(f"   ⚠ posts-index : écriture échouée ({e})")
+
+
 def _save_processed(processed_file: Path, processed: list) -> None:
     """Save incrémental du tracker `schedule_processed.json`.
 
@@ -694,9 +790,20 @@ def process_site(site_id: str, site_dir: Path, config: dict,
         if _force_titles and not is_forced:
             continue
         date_str = row.get("date_publication", "").strip()
-        if is_forced or not date_str:
+
+        # ── 3 cas possibles : forcé / brouillon / programmé ─────────────
+        is_draft = is_draft_marker(date_str)
+        if is_draft:
+            # Marqueur de brouillon (ex: "draft", "brouillon"). On génère
+            # l'article quand même mais avec status: draft → invisible sur
+            # le site live. Julien le validera ensuite manuellement.
+            pub_dt = now
+            key = f"{title}__DRAFT"
+            article_status = "draft"
+        elif is_forced or not date_str:
             pub_dt = now
             key = f"{title}__{'FORCED' if is_forced else 'IMMEDIATE'}"
+            article_status = "published"
         else:
             pub_dt = parse_pub_datetime(date_str, row.get("heure_publication", "09:00"))
             if pub_dt is None:
@@ -705,6 +812,7 @@ def process_site(site_id: str, site_dir: Path, config: dict,
             if pub_dt > now:
                 continue
             key = f"{title}__{date_str}"
+            article_status = "published"
 
         if key in processed_set:
             continue
@@ -751,7 +859,9 @@ def process_site(site_id: str, site_dir: Path, config: dict,
             mots_log = f" + {len(mots_imposes)} mots imposés"
             if nb_link:
                 mots_log += f" ({nb_link} avec lien)"
-        print(f"   🤖 Génération '{title[:50]}' (min {min_words} mots{mots_log})...", end=" ", flush=True)
+        # Préfixe spécifique pour les brouillons → log clair dans le runner
+        draft_log = " 📝 BROUILLON" if is_draft else ""
+        print(f"   🤖 Génération{draft_log} '{title[:50]}' (min {min_words} mots{mots_log})...", end=" ", flush=True)
         try:
             html = generate_article_html(title, categorie, prompt_custom, global_prompt, persona_prompt,
                                           min_words=min_words, mots_imposes=mots_imposes)
@@ -799,7 +909,7 @@ def process_site(site_id: str, site_dir: Path, config: dict,
             "meta_title": substitute_placeholders(row.get("meta_title", "").strip(), pub_dt) or title,
             "meta_description": meta_desc_raw,
             "min_words": min_words,
-            "status": "published",
+            "status": article_status,   # "draft" si marqueur brouillon dans la sheet, sinon "published"
         }
         if featured_image_rel:
             fm["featured_image"] = featured_image_rel
@@ -819,6 +929,10 @@ def process_site(site_id: str, site_dir: Path, config: dict,
         # ceux déjà générés → pas de re-génération coûteuse au prochain run.
         # (Le fichier .md est déjà écrit ci-dessus par write_post.)
         _save_processed(processed_file, processed)
+        # Update posts-index.json (1 requête GitHub au lieu de N pour le
+        # dashboard). Permet de voir immédiatement les nouveaux articles
+        # dans le HUB sans attendre le prochain build complet du site.
+        _update_posts_index_safe(site_dir)
 
     if new_count > 0:
         print(f"   ✅ {new_count} article(s) publié(s)")
