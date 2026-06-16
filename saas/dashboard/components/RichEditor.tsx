@@ -23,24 +23,29 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
   const ref = useRef<HTMLDivElement | null>(null)
   const [showSource, setShowSource] = useState(false)
   const [sourceValue, setSourceValue] = useState(value)
-  // Sentinel : on initialise à une valeur impossible pour forcer le sync DOM
-  // au premier render même si `value` est déjà non-vide au mount (cas typique
-  // d'un fetch parent qui termine avant que RichEditor monte → si on init
-  // avec `value`, la condition `value !== lastEmittedRef.current` serait fausse
-  // dès le départ et l'éditeur resterait vide visuellement).
   const lastEmittedRef = useRef<string>('\u0000__INIT__\u0000')
 
-  // Au mount : force le browser à utiliser <p> au lieu de <div> à chaque
-  // Entrée. Sans ça, Chrome/Edge créent des <div> qui ne reçoivent pas le
-  // CSS `p { margin-bottom: 12px }` côté éditeur ET côté site publié, ce
-  // qui supprime l'espacement entre les paragraphes saisis.
-  // execCommand est deprecated mais cette option reste supportée partout.
+  // ─── État de la modale "Insérer / éditer un lien" ──────────────────────
+  // execCommand('createLink') ne permet ni target ni rel. On gère donc
+  // l'insertion manuellement via insertHTML, avec une modale qui propose
+  // - URL
+  // - Texte d'ancre (auto-rempli depuis la sélection)
+  // - Checkbox "Ouvrir dans un nouvel onglet" → target="_blank"
+  // - Checkbox "Nofollow"                      → rel="nofollow"
+  // Quand target=_blank, on ajoute automatiquement noopener+noreferrer
+  // dans rel (best practice de sécurité contre window.opener hijacking).
+  const [showLinkModal, setShowLinkModal] = useState(false)
+  const [linkUrl, setLinkUrl] = useState('')
+  const [linkText, setLinkText] = useState('')
+  const [linkBlank, setLinkBlank] = useState(false)
+  const [linkNofollow, setLinkNofollow] = useState(false)
+  const editingLinkRef = useRef<HTMLAnchorElement | null>(null) // <a> à éditer, ou null si nouveau lien
+  const savedRangeRef = useRef<Range | null>(null)              // sélection sauvegardée à la restoration
+
   useEffect(() => {
     try { document.execCommand('defaultParagraphSeparator', false, 'p') } catch {}
   }, [])
 
-  // Sync value → DOM uniquement si le HTML est différent de ce qu'on a émis
-  // (évite de reset le curseur à chaque keystroke).
   useEffect(() => {
     if (!ref.current) return
     if (value !== lastEmittedRef.current && value !== ref.current.innerHTML) {
@@ -52,9 +57,6 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
   function emit() {
     if (!ref.current) return
     let html = ref.current.innerHTML
-    // Normalisation défensive : convertit les <div> de premier niveau en <p>
-    // pour les saisies legacy ou les browsers qui ignorent
-    // defaultParagraphSeparator. Idempotent.
     html = html.replace(/<div(\s[^>]*)?>/gi, '<p>').replace(/<\/div>/gi, '</p>')
     lastEmittedRef.current = html
     onChange(html)
@@ -71,10 +73,119 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
     exec('formatBlock', `<${tag}>`)
   }
 
-  function insertLink() {
-    const url = prompt('URL du lien :', 'https://')
-    if (!url) return
-    exec('createLink', url)
+  /** Ouvre la modale d'insertion/édition de lien.
+   * Si le curseur est positionné dans un <a> existant, pré-remplit la modale
+   * avec ses valeurs (URL, target, rel). Sinon, prépare un nouveau lien
+   * en pré-remplissant le texte d'ancre avec la sélection courante. */
+  function openLinkModal() {
+    if (!ref.current) return
+    ref.current.focus()
+
+    const sel = window.getSelection()
+    if (!sel || sel.rangeCount === 0) {
+      savedRangeRef.current = null
+      editingLinkRef.current = null
+      setLinkUrl('https://')
+      setLinkText('')
+      setLinkBlank(false)
+      setLinkNofollow(false)
+      setShowLinkModal(true)
+      return
+    }
+    const range = sel.getRangeAt(0)
+
+    // Cherche un <a> qui englobe le curseur (édition d'un lien existant)
+    let node: Node | null = range.commonAncestorContainer
+    let existingLink: HTMLAnchorElement | null = null
+    while (node && node !== ref.current) {
+      if (node.nodeType === 1 && (node as HTMLElement).tagName === 'A') {
+        existingLink = node as HTMLAnchorElement
+        break
+      }
+      node = node.parentNode
+    }
+
+    if (existingLink) {
+      // Mode édition
+      editingLinkRef.current = existingLink
+      setLinkUrl(existingLink.getAttribute('href') || '')
+      setLinkText(existingLink.textContent || '')
+      setLinkBlank(existingLink.getAttribute('target') === '_blank')
+      const rel = (existingLink.getAttribute('rel') || '').toLowerCase()
+      setLinkNofollow(/\bnofollow\b/.test(rel))
+    } else {
+      // Mode création
+      editingLinkRef.current = null
+      setLinkUrl('https://')
+      setLinkText(sel.toString())
+      setLinkBlank(false)
+      setLinkNofollow(false)
+    }
+
+    // Sauvegarder la range pour la restaurer après que la modale prenne
+    // le focus. Sans ça, execCommand('insertHTML') insérerait au mauvais
+    // endroit (ou rien du tout si plus de sélection).
+    savedRangeRef.current = range.cloneRange()
+    setShowLinkModal(true)
+  }
+
+  function applyLink() {
+    const url = linkUrl.trim()
+    if (!url || url === 'https://') {
+      setShowLinkModal(false)
+      return
+    }
+    if (!ref.current) return
+
+    // Construire l'attribut rel (combine target + nofollow proprement)
+    const relParts: string[] = []
+    if (linkBlank) {
+      // Sécurité : sans noopener, le nouvel onglet peut accéder à window.opener
+      // et rediriger l'onglet source. Toujours ajouter quand target=_blank.
+      relParts.push('noopener', 'noreferrer')
+    }
+    if (linkNofollow) relParts.push('nofollow')
+    const relAttr = relParts.length > 0 ? relParts.join(' ') : ''
+
+    const existing = editingLinkRef.current
+    if (existing) {
+      // Mode édition : mettre à jour les attrs sans recréer le <a>
+      existing.setAttribute('href', url)
+      if (linkBlank) existing.setAttribute('target', '_blank')
+      else existing.removeAttribute('target')
+      if (relAttr) existing.setAttribute('rel', relAttr)
+      else existing.removeAttribute('rel')
+      // Si on a changé le texte, mettre à jour (sinon laisser le contenu intact)
+      const trimmedText = linkText.trim()
+      if (trimmedText && trimmedText !== existing.textContent) {
+        existing.textContent = trimmedText
+      }
+    } else {
+      // Mode création : insérer un nouveau <a> à l'endroit de la sélection
+      ref.current.focus()
+      const sel = window.getSelection()
+      if (sel && savedRangeRef.current) {
+        sel.removeAllRanges()
+        sel.addRange(savedRangeRef.current)
+      }
+      const text = linkText.trim() || url
+      const attrs: string[] = [`href="${escapeAttr(url)}"`]
+      if (linkBlank) attrs.push(`target="_blank"`)
+      if (relAttr) attrs.push(`rel="${escapeAttr(relAttr)}"`)
+      const html = `<a ${attrs.join(' ')}>${escapeText(text)}</a>`
+      document.execCommand('insertHTML', false, html)
+    }
+
+    emit()
+    setShowLinkModal(false)
+    editingLinkRef.current = null
+    savedRangeRef.current = null
+  }
+
+  function cancelLink() {
+    setShowLinkModal(false)
+    editingLinkRef.current = null
+    savedRangeRef.current = null
   }
 
   function unlink() {
@@ -85,7 +196,6 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
     if (!showSource) {
       setSourceValue(ref.current?.innerHTML || '')
     } else {
-      // Quand on quitte le mode source, on applique le contenu édité
       onChange(sourceValue)
       lastEmittedRef.current = sourceValue
       if (ref.current) ref.current.innerHTML = sourceValue
@@ -93,15 +203,25 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
     setShowSource(s => !s)
   }
 
-  // Compteur de mots : on extrait le texte brut du HTML et on compte
-  // les groupes de caractères séparés par des espaces.
   const currentText = (showSource ? sourceValue : value)
-    .replace(/<[^>]+>/g, ' ')          // strip tags
-    .replace(/&nbsp;|&amp;|&lt;|&gt;|&quot;|&#39;/g, ' ')  // entities → space
-    .replace(/\s+/g, ' ')              // collapse whitespace
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;|&amp;|&lt;|&gt;|&quot;|&#39;/g, ' ')
+    .replace(/\s+/g, ' ')
     .trim()
   const wordCount = currentText ? currentText.split(/\s+/).filter(Boolean).length : 0
   const charCount = currentText.length
+
+  // Aperçu de la balise <a> qui sera générée (utile pour debug visuel)
+  const linkPreview = (() => {
+    const url = linkUrl.trim() || 'https://...'
+    const attrs: string[] = [`href="${url}"`]
+    if (linkBlank) attrs.push(`target="_blank"`)
+    const relParts: string[] = []
+    if (linkBlank) relParts.push('noopener', 'noreferrer')
+    if (linkNofollow) relParts.push('nofollow')
+    if (relParts.length > 0) attrs.push(`rel="${relParts.join(' ')}"`)
+    return `<a ${attrs.join(' ')}>${linkText.trim() || 'texte'}</a>`
+  })()
 
   return (
     <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 10, overflow: 'hidden' }}>
@@ -126,7 +246,7 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
         </BtnGroup>
         <Sep />
         <BtnGroup>
-          <Btn onClick={insertLink} title="Insérer un lien">🔗</Btn>
+          <Btn onClick={openLinkModal} title="Insérer / éditer un lien">🔗</Btn>
           <Btn onClick={unlink} title="Supprimer le lien">⛓</Btn>
           {onImageUpload && <Btn onClick={onImageUpload} title="Insérer une image">📷</Btn>}
         </BtnGroup>
@@ -153,7 +273,6 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
           suppressContentEditableWarning
           onInput={emit}
           onPaste={e => {
-            // Coller du texte brut par défaut (évite les styles bizarres)
             e.preventDefault()
             const text = e.clipboardData.getData('text/plain')
             document.execCommand('insertText', false, text)
@@ -174,6 +293,84 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
         <span>{wordCount} mot{wordCount > 1 ? 's' : ''} · {charCount} caractère{charCount > 1 ? 's' : ''}</span>
         <span style={{ color: '#4A5568' }}>{showSource ? 'Mode source HTML' : 'Mode édition'}</span>
       </div>
+
+      {/* ─── Modale Insertion / édition de lien ─────────────────────────── */}
+      {showLinkModal && (
+        <div onClick={cancelLink}
+             style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.75)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 200 }}>
+          <div onClick={e => e.stopPropagation()}
+               style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 14,
+                        padding: 28, width: '90%', maxWidth: 560, maxHeight: '90vh', overflow: 'auto' }}>
+            <h3 style={{ color: '#fff', fontSize: 18, fontWeight: 600, margin: '0 0 4px' }}>
+              {editingLinkRef.current ? '✏️ Modifier le lien' : '🔗 Insérer un lien'}
+            </h3>
+            <p style={{ color: '#8B9CB0', fontSize: 12, margin: '0 0 20px' }}>
+              {editingLinkRef.current
+                ? "Modifie l'URL, le texte ou les options du lien existant."
+                : "Saisis l'URL et choisis les options (utile pour liens affiliés ou externes)."}
+            </p>
+
+            <label style={modalLabel}>URL *</label>
+            <input value={linkUrl} onChange={e => setLinkUrl(e.target.value)}
+                   placeholder="https://exemple.com" autoFocus
+                   style={modalInput} />
+
+            <label style={modalLabel}>Texte du lien {editingLinkRef.current ? '' : "(sinon affiche l'URL)"}</label>
+            <input value={linkText} onChange={e => setLinkText(e.target.value)}
+                   placeholder="ex: notre comparatif"
+                   style={modalInput} />
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 18,
+                          padding: 14, background: '#0A0E1A', borderRadius: 10, border: '1px solid #1E2D3D' }}>
+              <label style={{ display: 'flex', alignItems: 'flex-start', gap: 10, cursor: 'pointer', color: '#E5E7EB', fontSize: 13 }}>
+                <input type="checkbox" checked={linkBlank} onChange={e => setLinkBlank(e.target.checked)}
+                       style={{ marginTop: 3, accentColor: '#00D4AA' }} />
+                <span>
+                  <strong>Ouvrir dans un nouvel onglet</strong>{' '}
+                  <code style={{ color: '#F6AD55', fontSize: 11 }}>target="_blank"</code>
+                  <div style={{ fontSize: 11, color: '#8B9CB0', marginTop: 2 }}>
+                    Recommandé pour les liens vers d'autres sites. Ajoute automatiquement{' '}
+                    <code style={{ color: '#F6AD55' }}>noopener noreferrer</code> pour la sécurité.
+                  </div>
+                </span>
+              </label>
+              <label style={{ display: 'flex', alignItems: 'flex-start', gap: 10, cursor: 'pointer', color: '#E5E7EB', fontSize: 13 }}>
+                <input type="checkbox" checked={linkNofollow} onChange={e => setLinkNofollow(e.target.checked)}
+                       style={{ marginTop: 3, accentColor: '#00D4AA' }} />
+                <span>
+                  <strong>Nofollow</strong>{' '}
+                  <code style={{ color: '#F6AD55', fontSize: 11 }}>rel="nofollow"</code>
+                  <div style={{ fontSize: 11, color: '#8B9CB0', marginTop: 2 }}>
+                    Recommandé pour les liens affiliés, sponsorisés ou non vérifiés. Indique à Google de ne pas transmettre de jus SEO.
+                  </div>
+                </span>
+              </label>
+            </div>
+
+            {/* Aperçu du HTML qui sera inséré */}
+            <div style={{ marginTop: 16, padding: 12, background: '#0A0E1A', borderRadius: 8,
+                          border: '1px dashed #1E2D3D', fontSize: 11, color: '#8B9CB0',
+                          fontFamily: 'Menlo, Monaco, Consolas, monospace', wordBreak: 'break-all' }}>
+              <div style={{ color: '#4A5568', marginBottom: 4 }}>Aperçu HTML :</div>
+              <div style={{ color: '#00D4AA' }}>{linkPreview}</div>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10, marginTop: 20 }}>
+              <button onClick={cancelLink}
+                      style={{ padding: '10px 18px', borderRadius: 8, background: '#1E2D3D',
+                               color: '#fff', border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 600 }}>
+                Annuler
+              </button>
+              <button onClick={applyLink}
+                      style={{ padding: '10px 18px', borderRadius: 8, background: '#00D4AA',
+                               color: '#0A0E1A', border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700 }}>
+                {editingLinkRef.current ? '✓ Modifier' : '✓ Insérer'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <style jsx global>{`
         .rich-editor:empty::before {
@@ -200,6 +397,15 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
           border-radius: 3px;
           transition: background .15s ease;
         }
+        /* Affichage visuel des liens spéciaux pour repérage rapide dans l'éditeur */
+        .rich-editor a[target="_blank"]::after {
+          content: " ↗";
+          font-size: 11px;
+          opacity: .7;
+        }
+        .rich-editor a[rel*="nofollow"] {
+          border-bottom: 2px dashed #F6AD55;
+        }
         .rich-editor a:hover {
           background: rgba(246,173,85,.22);
         }
@@ -222,9 +428,29 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
   )
 }
 
+// Helpers d'échappement HTML pour construire le <a> manuellement
+function escapeAttr(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+}
+function escapeText(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+}
+
 const toolbar: React.CSSProperties = {
   display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'wrap',
   padding: 8, background: '#0A0E1A', borderBottom: '1px solid #1E2D3D',
+}
+
+const modalLabel: React.CSSProperties = {
+  display: 'block', fontSize: 11, color: '#8B9CB0',
+  textTransform: 'uppercase', letterSpacing: '.05em',
+  marginBottom: 6, marginTop: 14,
+}
+
+const modalInput: React.CSSProperties = {
+  width: '100%', padding: '10px 14px', borderRadius: 8,
+  background: '#0A0E1A', border: '1px solid #1E2D3D',
+  color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box',
 }
 
 function BtnGroup({ children }: { children: React.ReactNode }) {
