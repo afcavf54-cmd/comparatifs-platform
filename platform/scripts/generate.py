@@ -807,12 +807,29 @@ def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, a
 
 
 def copy_shared_assets(output_dir: Path, site_dir: Path) -> None:
+    # ── sheets.js (composant JS partagé) ─────────────────────────────────
     for source_dir in [site_dir, SHARED_DIR]:
         js_src = source_dir / "sheets.js"
         if js_src.exists():
             shutil.copy2(js_src, output_dir / "sheets.js")
             print(f"  ✓ sheets.js copié depuis {source_dir.name}/")
-            return
+            break
+
+    # ── Fichiers de config Cloudflare Pages ──────────────────────────────
+    # `_redirects` : redirections 301/302 (utile pour rediriger les anciens
+    #   slugs vers les nouveaux après une migration ou un renommage d'article)
+    # `_headers`   : custom HTTP headers (caching, security, etc.)
+    # `robots.txt` : indexation SEO
+    # Ces fichiers doivent être à la racine du dossier publié sur Cloudflare.
+    # On les copie depuis site_dir (priorité au config site-local) puis depuis
+    # SHARED_DIR (fallback réseau).
+    for filename in ("_redirects", "_headers", "robots.txt"):
+        for source_dir in [site_dir, SHARED_DIR]:
+            src = source_dir / filename
+            if src.exists():
+                shutil.copy2(src, output_dir / filename)
+                print(f"  ✓ {filename} copié depuis {source_dir.name}/")
+                break  # priorité site-local, on s'arrête au premier trouvé
 
 
 # ── Tracking de dateModified par page ─────────────────────────────────────────
