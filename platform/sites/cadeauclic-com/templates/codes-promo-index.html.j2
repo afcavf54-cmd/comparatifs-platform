@@ -166,32 +166,10 @@
   {% endif %}
 </div>
 
-<footer>
-  <div class="foot-grid">
-    <div>
-      <img src="/logo.png" alt="{{ site.name }}" onerror="this.style.display='none'">
-      <p>Bons plans, codes promo et idées cadeau, vérifiés à la main par {{ author.name or 'Sophie' }}.</p>
-    </div>
-    <div>
-      <h4>{{ site.name }}</h4>
-      <a href="/codes-promo/">Codes promo</a>
-      <a href="/blog/">Blog</a>
-      <a href="/parrainage/">Parrainage</a>
-      <a href="/a-propos/">À propos</a>
-      <a href="/contact">Contact</a>
-    </div>
-    <div>
-      <h4>Légal</h4>
-      <a href="/mentions-legales">Mentions légales</a>
-      <a href="/politique-confidentialite">Politique de confidentialité</a>
-      <a href="/cookies">Cookies</a>
-    </div>
-  </div>
-  <div class="foot-bottom">
-    <span>© {{ year }} {{ site.name }} — Tous droits réservés</span>
-    <span>Fait à Paris avec 🎀</span>
-  </div>
-</footer>
+{# ─── Footer (partial site-local cadeauclic) ─────────────────────────
+   Source unique de vérité pour le footer — modifs des liens / colonnes
+   dans platform/sites/cadeauclic-com/templates/base/_footer.html.j2 #}
+{% include "base/_footer.html.j2" %}
 
 <script>
 (function(){
