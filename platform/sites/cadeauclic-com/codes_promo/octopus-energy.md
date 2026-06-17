@@ -10,6 +10,20 @@ conseil_sophie: Surveille les périodes de rentrée et de début d'hiver, Octopu
 rating:
   value: 5
   count: 59
+codes:
+  - id: cmqhz0aj5bod2
+    type: code
+    valeur: 40
+    unite: €
+    sous_type: Bon plan
+    accroche: "151515"
+    code: ""
+    detail: ""
+    expire_le: ""
+    nb_utilisations: 0
+    teste_par_sophie: ""
+    meilleure_remise: false
+    expired: false
 historique_12_mois:
   - mois: 2025-07
     valeur: 40
@@ -53,4 +67,5 @@ Lors du processus d'inscription ou de souscription, cherche le champ prévu pour
 
 ## Étape 4
 Colle ton code dans le champ correspondant et valide pour voir la remise ou le bonus s'appliquer directement à ton contrat d'énergie.
+
 
