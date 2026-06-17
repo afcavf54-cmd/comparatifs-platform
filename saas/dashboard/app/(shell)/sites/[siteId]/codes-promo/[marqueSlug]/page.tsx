@@ -691,6 +691,17 @@ export default function CodesPromoEditPage() {
                 <div style={{ marginTop: 10, fontSize: 11, color: '#888', fontStyle: 'italic' }}>
                   Les valeurs ci-dessus sont des exemples calculés à partir des données actuelles de cette marque. Au build, elles seront recalculées avec le mois/année courant et le nombre de codes à ce moment-là.
                 </div>
+                <div style={{ marginTop: 10, padding: '10px 12px', background: '#fff', border: '1px solid #ffe7ef', borderRadius: 6, fontSize: 11, color: '#555' }}>
+                  💡 <b>Astuce casse</b> : la casse du placeholder s'applique à la valeur.
+                  <div style={{ marginTop: 6, fontFamily: 'ui-monospace,SFMono-Regular,Consolas,monospace' }}>
+                    <code style={{ color: '#cf2c61' }}>{'{mois_annee}'}</code> → juin 2026<br/>
+                    <code style={{ color: '#cf2c61' }}>{'{Mois_annee}'}</code> → Juin 2026<br/>
+                    <code style={{ color: '#cf2c61' }}>{'{MOIS_ANNEE}'}</code> → JUIN 2026
+                  </div>
+                  <div style={{ marginTop: 4, color: '#888' }}>
+                    Marche pour toutes les variables : <code>{'{Marque}'}</code>, <code>{'{MARQUE}'}</code>, <code>{'{Categorie}'}</code>, etc.
+                  </div>
+                </div>
               </details>
             </div>
           </div>
