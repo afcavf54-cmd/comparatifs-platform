@@ -4,15 +4,21 @@ slug: 7788-toutes-les-abreviations-de-votre-bulletin-de-salaire-expliquees-simpl
 date: '2026-06-17T17:00:00+02:00'
 categorie: Salarié
 meta_title: 'Abréviations bulletin de salaire : le lexique'
-meta_description: Décryptez toutes les abréviations de votre bulletin de salaire, de SB à IFM, avec des explications claires et simples pour enfin comprendre chaque ligne de votre…
+meta_description: Décryptez toutes les abréviations de votre bulletin de salaire,
+  de SB à IFM, avec des explications claires et simples pour enfin comprendre chaque
+  ligne de votre…
 min_words: 1200
 status: published
 featured_image: /blog/7788-toutes-les-abreviations-de-votre-bulletin-de-salaire-expliquees-simplement.jpg
 link_anchors:
 - text: abréviation sur un bulletin de salaire
   max: 4
+related_posts:
+- 2430-que-peut-on-obtenir-avec-le-comite-d-entreprise-orange
+- 2622-que-propose-le-comite-d-entreprise-renault-aux-salaries
+- 4315-comment-fonctionne-le-comite-d-entreprise-credit-mutuel
+- 1778-comment-fonctionne-le-comite-d-entreprise-loxam
 ---
-
 <p>J'ai reçu mon premier bulletin de salaire à 28 ans. Je l'ai regardé pendant dix minutes. Littéralement. Je ne comprenais pas la moitié des lignes. Et pourtant, ce document, c'est votre argent. Alors autant savoir ce qu'il y a écrit.</p>
 
 <p>Voilà ce que je vais faire ici : décortiquer les abréviations les plus courantes, ligne par ligne, sans jargon inutile. Vous allez voir, c'est moins compliqué qu'il n'y paraît une fois qu'on a les bons repères.</p>

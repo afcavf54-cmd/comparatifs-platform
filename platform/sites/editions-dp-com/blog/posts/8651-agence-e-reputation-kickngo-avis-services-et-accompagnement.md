@@ -14,7 +14,8 @@ min_words: 980
 link_anchors:
 - text: l'agence d'e-réputation Kickngo
   max: 5
-related_posts: []
+related_posts:
+- 1635-devis-deco-lestylechezsoi-comment-obtenir-une-estimation
 ---
 <h2>Kickngo, une agence e-réputation qui fait parler d'elle</h2>
 
