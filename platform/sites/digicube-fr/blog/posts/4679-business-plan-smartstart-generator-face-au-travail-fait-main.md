@@ -15,8 +15,9 @@ link_anchors:
   max: 5
 related_posts:
 - 7333-startupkit-advanced-face-aux-modeles-de-business-plan-gratuits
-- 5639-business-plan-startupkit-premium-face-aux-modeles-gratuits
 - 4578-financepro-smart-face-a-excel-pour-creer-son-business-plan
+- 5639-business-plan-startupkit-premium-face-aux-modeles-gratuits
+- 3550-planexpert-face-aux-modeles-gratuits-pour-faire-son-business-plan
 ---
 <h2>Mes premiers pas avec les générateurs de business plan automatiques</h2>
 

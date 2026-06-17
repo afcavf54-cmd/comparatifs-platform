@@ -4,15 +4,20 @@ slug: 3550-planexpert-face-aux-modeles-gratuits-pour-faire-son-business-plan
 date: '2026-06-17T06:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: Faire un business plan avec PlanExpert vs modèle Word
-meta_description: 'Comparer PlanExpert aux modèles gratuits de business plan : retour d''expérience concret sur les limites des templates Excel face à un logiciel dédié.'
+meta_description: 'Comparer PlanExpert aux modèles gratuits de business plan : retour
+  d''expérience concret sur les limites des templates Excel face à un logiciel dédié.'
 min_words: 980
 status: published
 featured_image: /blog/3550-planexpert-face-aux-modeles-gratuits-pour-faire-son-business-plan.jpg
 link_anchors:
 - text: comment faire un business plan avec PlanExpert
   max: 5
+related_posts:
+- 7333-startupkit-advanced-face-aux-modeles-de-business-plan-gratuits
+- 4679-business-plan-smartstart-generator-face-au-travail-fait-main
+- 5639-business-plan-startupkit-premium-face-aux-modeles-gratuits
+- 4578-financepro-smart-face-a-excel-pour-creer-son-business-plan
 ---
-
 <p>J'ai testé pas mal d'outils pour faire mon business plan quand j'ai créé mon activité. Et honnêtement, la question que tout le monde se pose au départ : est-ce qu'on paye pour un logiciel comme PlanExpert, ou est-ce qu'on se débrouille avec ce qu'on trouve gratuitement sur internet ?</p>
 
 <p>Je vais vous donner mon retour direct. Pas de langue de bois.</p>

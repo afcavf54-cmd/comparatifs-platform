@@ -17,6 +17,7 @@ related_posts:
 - 5639-business-plan-startupkit-premium-face-aux-modeles-gratuits
 - 4679-business-plan-smartstart-generator-face-au-travail-fait-main
 - 7333-startupkit-advanced-face-aux-modeles-de-business-plan-gratuits
+- 3550-planexpert-face-aux-modeles-gratuits-pour-faire-son-business-plan
 ---
 <p>J'ai mis du temps avant de me décider. Pendant presque un an, j'ai continué à bricoler mes projections financières sur Excel, convaincu que ça suffisait. Et puis un jour, face à un rendez-vous avec ma banque pour un financement, j'ai réalisé que mon fichier ressemblait à une usine à gaz que personne d'autre que moi ne pouvait comprendre. C'est là que j'ai commencé à regarder sérieusement FinancePro Smart.</p>
 

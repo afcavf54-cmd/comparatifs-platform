@@ -14,9 +14,10 @@ link_anchors:
 - text: le template de business plan StartupKit Premium
   max: 5
 related_posts:
-- 4679-business-plan-smartstart-generator-face-au-travail-fait-main
 - 7333-startupkit-advanced-face-aux-modeles-de-business-plan-gratuits
 - 4578-financepro-smart-face-a-excel-pour-creer-son-business-plan
+- 3550-planexpert-face-aux-modeles-gratuits-pour-faire-son-business-plan
+- 4679-business-plan-smartstart-generator-face-au-travail-fait-main
 ---
 <h2>Pourquoi j'ai testé StartupKit Premium après avoir galéré avec les modèles gratuits</h2>
 
