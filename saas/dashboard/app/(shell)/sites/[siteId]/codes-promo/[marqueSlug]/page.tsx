@@ -23,6 +23,7 @@ interface Brand {
   rating?: BrandRating; codes?: CodePromo[]; faq?: BrandFaq[]
   historique_12_mois?: BrandHistoryMonth[]; related_brands?: string[]
   status?: 'draft' | 'published'; meta_title?: string; meta_description?: string
+  h1_custom?: string  // H1 perso supportant les variables {marque}, {mois}, etc.
   date_creation?: string; date_maj?: string
   content_md: string; content_libre?: string  // ← nouveau champ bloc libre HTML
   sha?: string
@@ -632,11 +633,65 @@ export default function CodesPromoEditPage() {
 
             <div style={S.field}>
               <label style={S.label}>Meta title (SEO)</label>
-              <input style={S.input} value={brand.meta_title || ''} onChange={e => update('meta_title', e.target.value)} placeholder={`Codes promo ${brand.marque} — <mois> | <site>`} />
+              <input style={S.input} value={brand.meta_title || ''} onChange={e => update('meta_title', e.target.value)} placeholder={`Codes promo {marque} — {mois_annee} | {site_name}`} />
             </div>
             <div style={S.field}>
               <label style={S.label}>Meta description (SEO)</label>
-              <input style={S.input} value={brand.meta_description || ''} onChange={e => update('meta_description', e.target.value)} placeholder="Résumé de la page pour Google." />
+              <input style={S.input} value={brand.meta_description || ''} onChange={e => update('meta_description', e.target.value)} placeholder="Découvre {n_codes} codes promo {marque} testés en {mois_annee}." />
+            </div>
+
+            {/* H1 personnalisé (optionnel) + rappel des variables disponibles.
+                Affiché en pleine largeur pour donner de la place au panneau d'aide. */}
+            <div style={{ ...S.field, gridColumn: 'span 2' }}>
+              <label style={S.label}>H1 personnalisé (optionnel)</label>
+              <input
+                style={S.input}
+                value={brand.h1_custom || ''}
+                onChange={e => update('h1_custom', e.target.value)}
+                placeholder={`Codes promo {marque} — {mois_annee}    (laisse vide pour le H1 par défaut)`}
+              />
+              <div style={{ fontSize: 11, color: '#999', marginTop: 4 }}>
+                Si vide, le H1 par défaut est utilisé : <em>Codes promo {brand.marque} — {new Date().toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })}</em>.
+                Dans ton H1, <code>{'{marque}'}</code> est automatiquement coloré en rose.
+              </div>
+            </div>
+
+            {/* Rappel des variables — panel commun pour les 3 champs ci-dessus */}
+            <div style={{ gridColumn: 'span 2', background: '#fafafa', border: '1px solid #eee', borderRadius: 8, padding: '12px 16px', marginTop: 4 }}>
+              <details>
+                <summary style={{ cursor: 'pointer', fontSize: 12, fontWeight: 700, color: '#555', userSelect: 'none' }}>
+                  📌 Variables disponibles dans le H1, meta title et meta description
+                </summary>
+                <div style={{ marginTop: 10, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px 18px', fontSize: 12, color: '#555' }}>
+                  {[
+                    ['{marque}', brand.marque || 'Octopus Energy'],
+                    ['{categorie}', brand.categorie_marque || 'Énergie'],
+                    ['{mois}', new Date().toLocaleDateString('fr-FR', { month: 'long' })],
+                    ['{annee}', String(new Date().getFullYear())],
+                    ['{mois_annee}', new Date().toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })],
+                    ['{n_codes}', String((brand.codes || []).filter(c => !c.expired).length)],
+                    ['{n_codes_promo}', String((brand.codes || []).filter(c => !c.expired && c.type === 'code').length)],
+                    ['{best_remise}', (() => {
+                      const active = (brand.codes || []).filter(c => !c.expired && c.valeur && (c.unite === '%' || c.unite === '€'))
+                      if (!active.length) return '—'
+                      const best = active.reduce((a, b) => (a.valeur! > b.valeur! ? a : b))
+                      return `${best.valeur}${best.unite}`
+                    })()],
+                    ['{site_name}', siteDomain || 'cadeauclic.com'],
+                  ].map(([v, ex]) => (
+                    <div key={v} style={{ display: 'flex', justifyContent: 'space-between', gap: 12 }}>
+                      <code style={{ background: '#fff', padding: '2px 6px', borderRadius: 4, fontSize: 11, color: '#cf2c61', fontFamily: 'ui-monospace,SFMono-Regular,Consolas,monospace', cursor: 'copy' }}
+                        onClick={() => navigator.clipboard?.writeText(v as string)}
+                        title="Cliquer pour copier"
+                      >{v}</code>
+                      <span style={{ color: '#888', fontSize: 11 }}>→ {ex}</span>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ marginTop: 10, fontSize: 11, color: '#888', fontStyle: 'italic' }}>
+                  Les valeurs ci-dessus sont des exemples calculés à partir des données actuelles de cette marque. Au build, elles seront recalculées avec le mois/année courant et le nombre de codes à ce moment-là.
+                </div>
+              </details>
             </div>
           </div>
         </div>
