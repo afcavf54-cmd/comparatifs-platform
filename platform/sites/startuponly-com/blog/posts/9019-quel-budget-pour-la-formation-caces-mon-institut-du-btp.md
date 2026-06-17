@@ -4,15 +4,16 @@ slug: 9019-quel-budget-pour-la-formation-caces-mon-institut-du-btp
 date: '2026-06-17T12:00:00+02:00'
 categorie: Salarié
 meta_title: 'Formation CACES Mon-Institut-du-BTP : combien ça coûte ?'
-meta_description: 'Découvrez le budget réel pour une formation CACES chez Mon-Institut-du-BTP : tarifs par catégorie, financements disponibles et frais annexes à ne pas négliger.'
+meta_description: 'Découvrez le budget réel pour une formation CACES chez Mon-Institut-du-BTP
+  : tarifs par catégorie, financements disponibles et frais annexes à ne pas négliger.'
 min_words: 920
 status: published
 featured_image: /blog/9019-quel-budget-pour-la-formation-caces-mon-institut-du-btp.jpg
 link_anchors:
 - text: la formation CACES de Mon-Institut-du-BTP
   max: 5
+related_posts: []
 ---
-
 <p>Le CACES, ça revient souvent dans les conversations quand tu bosses dans le BTP. Et la première question qui arrive, c'est toujours la même : combien ça coûte ? J'ai creusé le sujet côté Mon-Institut-du-BTP, et je vais te donner une réponse claire, sans jargon inutile.</p>
 
 <h2>Ce que ça coûte vraiment, formation CACES chez Mon-Institut-du-BTP</h2>
