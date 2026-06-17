@@ -336,7 +336,7 @@
           <div class="meta">
             <span class="verif">✓ Vérifié le {{ build_date_short_fr }}</span>
             {% if c.nb_utilisations and c.nb_utilisations > 0 %}<span>Utilisé {{ '{:,}'.format(c.nb_utilisations).replace(',', ' ') }} fois</span>{% endif %}
-            {% if c.expire_le %}<span>Expire le {{ c.expire_le | replace('2026-','') | replace('-', '/') }}</span>{% endif %}
+            {% if c.expire_le %}{% set _ed = c.expire_le.split('-') %}{% if _ed | length == 3 %}<span>Expire le {{ _ed[2] }}/{{ _ed[1] }}/{{ _ed[0] }}</span>{% else %}<span>Expire le {{ c.expire_le }}</span>{% endif %}{% endif %}
           </div>
           {% if c.teste_par_sophie %}
           <div class="tested">
