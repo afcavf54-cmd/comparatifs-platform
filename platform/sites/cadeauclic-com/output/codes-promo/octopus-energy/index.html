@@ -41,7 +41,7 @@
   <script type="application/ld+json">{
   "@type": "Offer",
   "description": "",
-  "name": "B\u00e9n\u00e9ficiez de 80\u20ac de prime \u00e0 partager en cliquant sur notre lien. Le code est automatiquement appliqu\u00e9 !",
+  "name": "B\u00e9n\u00e9ficiez de 80\u20ac de prime \u00e0 partager en cliquant sur notre lien.",
   "seller": {
     "@type": "Organization",
     "name": "Octopus Energy"
@@ -69,7 +69,7 @@
       "item": {
         "@type": "Offer",
         "description": "",
-        "name": "B\u00e9n\u00e9ficiez de 80\u20ac de prime \u00e0 partager en cliquant sur notre lien. Le code est automatiquement appliqu\u00e9 !",
+        "name": "B\u00e9n\u00e9ficiez de 80\u20ac de prime \u00e0 partager en cliquant sur notre lien.",
         "seller": {
           "@type": "Organization",
           "name": "Octopus Energy"
@@ -218,19 +218,23 @@
     .crumb a:hover { color: var(--rose-600); }
     .crumb span { color: var(--ink); font-weight: 600; }
 
-    /* Page head */
-    .page-head { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 24px 0 28px; }
+    /* Page head : grid 1fr 340px aligné avec .layout pour que le logo soit
+       centré dans la même colonne que la sidebar. align-items: end → le texte
+       (h1 + updated) est aligné en bas, donc l'écart entre .updated et .tabs
+       est contrôlé par margin-top des tabs, indépendant de la hauteur du logo. */
+    .page-head { display: grid; grid-template-columns: 1fr 340px; gap: 36px; padding: 24px 0 0; align-items: end; }
     .page-head h1 { font-size: 2.4rem; line-height: 1.15; margin-bottom: 8px; }
     .pink { color: var(--rose-600); }
     .updated { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-soft); font-size: .95rem; }
     .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
-    .brandbox { width: 200px; height: 200px; background: var(--white); border-radius: 24px; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 22px; flex-shrink: 0; box-shadow: var(--shadow-sm); }
+    .brandbox { width: 200px; height: 200px; background: var(--white); border-radius: 24px; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 22px; flex-shrink: 0; box-shadow: var(--shadow-sm); margin: 0 auto; }
     .brandbox img { max-width: 100%; max-height: 100%; object-fit: contain; }
     .brandbox .ph { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--rose-600); font-size: 1.3rem; text-align: center; }
 
-    /* Tabs filtres */
-    .tabs { display: flex; gap: 8px; padding-bottom: 24px; flex-wrap: wrap; }
+    /* Tabs filtres — écart de 40px sous le .updated (contrôlé ici pour rester
+       précis quelle que soit la hauteur du logo dans .page-head). */
+    .tabs { display: flex; gap: 8px; padding-bottom: 24px; margin-top: 40px; flex-wrap: wrap; }
     .tab { background: var(--white); border: 1px solid var(--line); padding: 10px 16px; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: .9rem; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 6px; transition: all .2s; }
     .tab .count { background: var(--rose-50); color: var(--rose-600); padding: 2px 8px; border-radius: 999px; font-size: .8rem; font-weight: 700; }
     .tab:hover { border-color: var(--rose-300); color: var(--ink); }
@@ -250,7 +254,10 @@
     .val .big { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 2.2rem; line-height: 1; color: var(--rose-600); }
     .val .kind { display: inline-block; margin-top: 6px; font-size: .72rem; font-weight: 700; background: var(--rose-50); color: var(--rose-600); padding: 3px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: .03em; }
 
-    .mid h3 { font-size: 1.05rem; line-height: 1.35; margin-bottom: 10px; }
+    /* Titre de chaque accroche de code/offre. Volontairement PAS un <hN> pour
+       ne pas créer de hiérarchie de titres (un seul h1 par page, les h2 sont
+       réservés aux sections "Comment utiliser…", "Historique", "FAQ"). */
+    .mid .coupon-title { font-size: 1.05rem; line-height: 1.35; margin-bottom: 10px; font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--ink); }
     .meta { display: flex; flex-wrap: wrap; gap: 14px; font-size: .85rem; color: var(--ink-soft); margin-bottom: 10px; }
     .verif { color: var(--green); font-weight: 700; }
     .tested { display: inline-flex; align-items: center; gap: 8px; background: var(--rose-50); color: var(--ink); font-size: .85rem; padding: 6px 12px; border-radius: 999px; margin-bottom: 10px; }
@@ -408,9 +415,10 @@
       .nav-right .btn { width: 100%; justify-content: center; }
       .hamburger { display: block; z-index: 100; }
       .layout { grid-template-columns: 1fr; }
-      .page-head { flex-direction: column-reverse; align-items: flex-start; gap: 18px; }
+      .page-head { display: flex; flex-direction: column-reverse; align-items: flex-start; gap: 18px; padding: 24px 0 0; }
       .page-head h1 { font-size: 1.8rem; }
-      .brandbox { width: 120px; height: 120px; padding: 16px; border-radius: 20px; }
+      .brandbox { width: 120px; height: 120px; padding: 16px; border-radius: 20px; margin: 0; }
+      .tabs { margin-top: 24px; }
       .coupon { grid-template-columns: 80px 1fr; padding: 18px; }
       .coupon .reveal { grid-column: 1 / -1; flex-direction: row; justify-content: center; gap: 10px; }
       .val .big { font-size: 1.7rem; }
@@ -631,7 +639,7 @@
           <span class="kind">Bon plan</span>
         </div>
         <div class="mid">
-          <h3>Bénéficiez de 80€ de prime à partager en cliquant sur notre lien. Le code est automatiquement appliqué !</h3>
+          <div class="coupon-title">Bénéficiez de 80€ de prime à partager en cliquant sur notre lien.</div>
           <div class="meta">
             <span class="verif">✓ Vérifié le 17/06/2026</span>
 <span>Utilisé 150 fois</span><span>Expire le 31/12/2028</span>          </div>
@@ -650,7 +658,7 @@
           <span class="kind">Code promo</span>
         </div>
         <div class="mid">
-          <h3>40€ OFFERTS A VOTRE INSCRIPTION !</h3>
+          <div class="coupon-title">40€ OFFERTS A VOTRE INSCRIPTION !</div>
           <div class="meta">
             <span class="verif">✓ Vérifié le 17/06/2026</span>
 <span>Utilisé 59 fois</span><span>Expire le 31/12/2026</span>          </div>
@@ -664,8 +672,7 @@
       <!-- RATING -->
       <div class="rating">
         <div class="stars">★★★★★</div>
-        <b>5 / 5</b>
-        <span style="color:var(--ink-soft);font-size:.9rem">— note des codes Octopus Energy par 59 lecteurs</span>
+        <span>Octopus Energy a obtenu la note de <b>5/5</b> de la part de nos lecteurs</span>
       </div>
 
       <!-- HOW TO -->
@@ -684,18 +691,18 @@
         <h2>Historique des remises Octopus Energy</h2>
         <p style="color:var(--ink-soft);margin-bottom:20px;font-size:.95rem">La meilleure remise disponible chaque mois sur les 12 derniers mois.</p>
         <div class="chart">
-          <div class="bar" style="height: 100%" data-val="80%"></div>
-          <div class="bar" style="height: 100%" data-val="80%"></div>
-          <div class="bar" style="height: 100%" data-val="80%"></div>
-          <div class="bar" style="height: 100%" data-val="80%"></div>
-          <div class="bar" style="height: 100%" data-val="80%"></div>
-          <div class="bar" style="height: 100%" data-val="80%"></div>
-          <div class="bar" style="height: 100%" data-val="80%"></div>
-          <div class="bar" style="height: 100%" data-val="80%"></div>
-          <div class="bar" style="height: 100%" data-val="80%"></div>
-          <div class="bar" style="height: 100%" data-val="80%"></div>
-          <div class="bar" style="height: 100%" data-val="80%"></div>
-          <div class="bar" style="height: 100%" data-val="80%"></div>
+          <div class="bar" style="height: 100%" data-val="80€"></div>
+          <div class="bar" style="height: 100%" data-val="80€"></div>
+          <div class="bar" style="height: 100%" data-val="80€"></div>
+          <div class="bar" style="height: 100%" data-val="80€"></div>
+          <div class="bar" style="height: 100%" data-val="80€"></div>
+          <div class="bar" style="height: 100%" data-val="80€"></div>
+          <div class="bar" style="height: 100%" data-val="80€"></div>
+          <div class="bar" style="height: 100%" data-val="80€"></div>
+          <div class="bar" style="height: 100%" data-val="80€"></div>
+          <div class="bar" style="height: 100%" data-val="80€"></div>
+          <div class="bar" style="height: 100%" data-val="80€"></div>
+          <div class="bar" style="height: 100%" data-val="80€"></div>
         </div>
         <div class="chart-x">
 <span>Jui</span><span>Aoû</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Déc</span><span>Jan</span><span>Fév</span><span>Mar</span><span>Avr</span><span>Mai</span><span>Jui</span>        </div>
@@ -998,7 +1005,7 @@
 <!-- ═══ SCRIPTS ═══════════════════════════════════════════════════════════ -->
 <script>
 const COUPONS = {
-  "cmqhz0aj5bod2": { code: "", accroche: "B\u00e9n\u00e9ficiez de 80\u20ac de prime \u00e0 partager en cliquant sur notre lien. Le code est automatiquement appliqu\u00e9 !", detail: "", valeur: 80, unite: "\u20ac", type: "code" },
+  "cmqhz0aj5bod2": { code: "", accroche: "B\u00e9n\u00e9ficiez de 80\u20ac de prime \u00e0 partager en cliquant sur notre lien.", detail: "", valeur: 80, unite: "\u20ac", type: "code" },
   "cmqi2qgcjupvd": { code: "", accroche: "40\u20ac OFFERTS A VOTRE INSCRIPTION !", detail: "", valeur: 40, unite: "\u20ac", type: "code" },
 };
 const URL_AFFILIATION = "https://clikme.xyz/octopus";
