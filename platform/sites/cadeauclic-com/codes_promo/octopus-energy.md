@@ -81,6 +81,8 @@ content_libre: |-
 
   <p>Et le service client ? Élu meilleur service client dans l'énergie, et basé en France. Ça change vraiment : quand j'ai eu une question sur ma facture, j'ai eu quelqu'un de compétent en ligne en moins de cinq minutes. Pas de script robotique, une vraie conversation.</p>
 status: published
+meta_title: Parrainage Octopus Energy code promo 80€ de réductions {Mois_annee}
+h1_custom: "Code Parrainage Octopus Energy {Mois_annee} : 80€"
 date_creation: "2026-06-16"
 date_maj: "2026-06-17"
 ---
@@ -98,6 +100,7 @@ Lors du processus d'inscription ou de souscription, cherche le champ prévu pour
 
 ## Étape 4
 Colle ton code dans le champ correspondant et valide pour voir la remise ou le bonus s'appliquer directement à ton contrat d'énergie.
+
 
 
 
