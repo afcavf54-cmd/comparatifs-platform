@@ -23,13 +23,45 @@ interface Brand {
   rating?: BrandRating; codes?: CodePromo[]; faq?: BrandFaq[]
   historique_12_mois?: BrandHistoryMonth[]; related_brands?: string[]
   status?: 'draft' | 'published'; meta_title?: string; meta_description?: string
-  date_creation?: string; date_maj?: string; content_md: string; sha?: string
+  date_creation?: string; date_maj?: string
+  content_md: string; content_libre?: string  // ← nouveau champ bloc libre HTML
+  sha?: string
 }
 interface OtherBrandSummary { marque: string; slug: string; categorie_marque?: string }
+
+// Config d'un bloc générable côté serveur (récupérée via GET /generate-block)
+interface BlockCfg {
+  defaultWords: number; minWords: number; maxWords: number
+  allowsCustomPrompt: boolean; outputFormat: 'html' | 'prose' | 'json'
+}
 
 const SOUS_TYPES = ['Code promo', 'Bon plan', 'Cashback', 'Livraison gratuite', 'Code étudiant', 'Première commande', 'Autre']
 const MONTHS_FR = ['', 'Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Déc']
 
+// Labels humains des blocs (pour la modale, les messages, etc.)
+const BLOCK_LABELS: Record<string, string> = {
+  description_marque: 'Description de la marque',
+  avis_sophie: "L'avis de Sophie",
+  conseil_sophie: 'Le conseil de Sophie',
+  faq: 'Foire aux questions (4 Q/R)',
+  content_md: 'Comment utiliser un code promo (4 étapes)',
+  content_libre: 'Contenu libre (sous l\'historique)',
+}
+
+// Fallback config si le GET échoue ou n'est pas encore arrivé. Aligné avec
+// les valeurs du serveur (cf BLOCKS dans generate-block/route.ts).
+const FALLBACK_BLOCK_CFG: Record<string, BlockCfg> = {
+  description_marque: { defaultWords: 50, minWords: 30, maxWords: 120, allowsCustomPrompt: false, outputFormat: 'prose' },
+  avis_sophie:        { defaultWords: 120, minWords: 80, maxWords: 250, allowsCustomPrompt: false, outputFormat: 'prose' },
+  conseil_sophie:     { defaultWords: 50, minWords: 30, maxWords: 120, allowsCustomPrompt: false, outputFormat: 'prose' },
+  faq:                { defaultWords: 200, minWords: 120, maxWords: 400, allowsCustomPrompt: false, outputFormat: 'json' },
+  content_md:         { defaultWords: 400, minWords: 250, maxWords: 800, allowsCustomPrompt: true, outputFormat: 'html' },
+  content_libre:      { defaultWords: 300, minWords: 100, maxWords: 1200, allowsCustomPrompt: true, outputFormat: 'html' },
+}
+
+// ───────────────────────────────────────────────────────────────────────
+// Styles
+// ───────────────────────────────────────────────────────────────────────
 const S = {
   shell: { padding: '0 0 80px', maxWidth: 1200, margin: '0 auto', fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif' } as React.CSSProperties,
   topBar: { position: 'sticky' as const, top: 0, background: '#fff', borderBottom: '1px solid #eee', padding: '14px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, zIndex: 50, flexWrap: 'wrap' as const },
@@ -52,6 +84,8 @@ const S = {
   grid2: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 } as React.CSSProperties,
   grid3: { display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 14 } as React.CSSProperties,
   field: { display: 'flex', flexDirection: 'column' as const, gap: 5 },
+  // Label avec slot à droite pour le bouton générer
+  labelRow: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 } as React.CSSProperties,
   label: { fontSize: 12, color: '#555', fontWeight: 600 },
   input: { padding: '9px 12px', border: '1px solid #ddd', borderRadius: 7, fontSize: 14, outline: 'none', fontFamily: 'inherit' } as React.CSSProperties,
   textarea: { padding: '10px 12px', border: '1px solid #ddd', borderRadius: 7, fontSize: 14, outline: 'none', fontFamily: 'inherit', resize: 'vertical' as const, minHeight: 80 },
@@ -78,43 +112,15 @@ const S = {
   errorBox: { background: '#fff5f5', color: '#c00', padding: '10px 14px', borderRadius: 8, border: '1px solid #fbb', fontSize: 13, marginBottom: 14 },
   successBox: { background: '#e6f7ef', color: '#16a065', padding: '10px 14px', borderRadius: 8, border: '1px solid #b8e6cd', fontSize: 13, marginBottom: 14 },
   empty: { textAlign: 'center' as const, padding: 60, color: '#888' },
+  // Bouton générer — gradient distinct pour le différencier des autres
+  btnGen: { background: 'linear-gradient(135deg, #7C3AED, #00D4AA)', color: '#fff', padding: '6px 12px', borderRadius: 7, border: 0, fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 },
+  btnGenDisabled: { background: '#ccc', cursor: 'wait' },
+  wordsInput: { width: 64, padding: '5px 7px', border: '1px solid #ddd', borderRadius: 6, fontSize: 12, textAlign: 'center' as const, outline: 'none' },
 }
 
-function ApplyBlock({ label, content, existing, isMd, onApply }: {
-  label: string; content: string; existing: string; isMd?: boolean; onApply: () => void
-}) {
-  if (!content || !content.trim()) {
-    return (
-      <div style={{ background: '#fafafa', borderRadius: 8, padding: 14, marginBottom: 12, border: '1px solid #eee' }}>
-        <div style={{ fontSize: 13, fontWeight: 600, color: '#999', marginBottom: 4 }}>{label}</div>
-        <div style={{ fontSize: 13, color: '#aaa', fontStyle: 'italic' }}>(aucun contenu généré)</div>
-      </div>
-    )
-  }
-  const hasExisting = existing && existing.trim().length > 0
-  return (
-    <div style={{ background: '#fafafa', borderRadius: 8, padding: 14, marginBottom: 12, border: '1px solid #eee' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8, gap: 10 }}>
-        <div style={{ fontSize: 13, fontWeight: 700 }}>{label}</div>
-        <button
-          style={{ padding: '6px 12px', borderRadius: 6, border: 0, cursor: 'pointer', fontWeight: 600, fontSize: 12, background: hasExisting ? '#f9a825' : '#00D4AA', color: '#fff' }}
-          onClick={onApply}
-          title={hasExisting ? 'Remplacer le contenu existant' : 'Appliquer'}
-        >
-          {hasExisting ? '⚠ Remplacer' : '✓ Appliquer'}
-        </button>
-      </div>
-      <div style={{
-        background: '#fff', borderRadius: 6, padding: 12, fontSize: 13, lineHeight: 1.55, color: '#333',
-        fontFamily: isMd ? 'ui-monospace,SFMono-Regular,Consolas,monospace' : 'inherit',
-        whiteSpace: 'pre-wrap', maxHeight: 240, overflowY: 'auto', border: '1px solid #f0f0f0',
-      }}>
-        {content}
-      </div>
-    </div>
-  )
-}
-
+// ───────────────────────────────────────────────────────────────────────
+// Component principal
+// ───────────────────────────────────────────────────────────────────────
 export default function CodesPromoEditPage() {
   const params = useParams<{ siteId: string; marqueSlug: string }>()
   const router = useRouter()
@@ -129,22 +135,45 @@ export default function CodesPromoEditPage() {
   const [saveError, setSaveError] = useState<string | null>(null)
   const [saveSuccess, setSaveSuccess] = useState<string | null>(null)
   const [siteDomain, setSiteDomain] = useState<string>('')
-  const [generating, setGenerating] = useState(false)
-  const [generateError, setGenerateError] = useState<string | null>(null)
-  const [showGenerateModal, setShowGenerateModal] = useState<null | { content_md: string; avis_sophie: string; conseil_sophie: string }>(null)
 
-  // ── Upload logo (même pattern que featured image blog) ───────────────
+  // ── Upload logo ──────────────────────────────────────────────────────
   const logoInputRef = useRef<HTMLInputElement | null>(null)
   const [uploadingLogo, setUploadingLogo] = useState(false)
 
+  // ── Génération bloc par bloc (système V2) ────────────────────────────
+  // Chaque bloc éditorial a son propre bouton "✨ Générer" + input mots.
+  // Le résultat ouvre une modale d'aperçu qu'on peut appliquer ou régénérer.
+  const [blockGenerating, setBlockGenerating] = useState<string | null>(null)
+  const [blockGenerateError, setBlockGenerateError] = useState<string | null>(null)
+  const [blockModal, setBlockModal] = useState<null | {
+    blockType: string
+    content: any           // string pour la plupart, array pour faq
+    nWords: number
+    customPrompt: string
+  }>(null)
+  const [blockConfig, setBlockConfig] = useState<Record<string, BlockCfg>>(FALLBACK_BLOCK_CFG)
+
+  // Prompts custom (uniquement pour blocs content_md et content_libre).
+  // Le custom_prompt N'EST PAS sauvegardé côté serveur — c'est un état local
+  // qui sert juste à mémoriser ce que tu as tapé pendant ta session.
+  const [customPrompt5, setCustomPrompt5] = useState('')  // content_md
+  const [customPrompt6, setCustomPrompt6] = useState('')  // content_libre
+
+  // Nombre de mots configuré par l'utilisateur, par bloc. Init = defaultWords.
+  const [wordsByBlock, setWordsByBlock] = useState<Record<string, number>>({})
+
+  // ── Load ─────────────────────────────────────────────────────────────
   useEffect(() => {
     let cancelled = false
     async function load() {
       setLoading(true); setError(null)
       try {
-        const [rBrand, rAll] = await Promise.all([
+        const [rBrand, rAll, rCfg] = await Promise.all([
           fetch(`/api/sites/${siteId}/codes-promo/${marqueSlug}`, { cache: 'no-store' }),
           fetch(`/api/sites/${siteId}/codes-promo`, { cache: 'no-store' }),
+          // Charge la config des blocs depuis la route (défaultWords/min/max).
+          // Si échec, on garde FALLBACK_BLOCK_CFG initialisé en state.
+          fetch(`/api/sites/${siteId}/codes-promo/${marqueSlug}/generate-block`, { cache: 'no-store' }).catch(() => null),
         ])
         if (!rBrand.ok) {
           const e = await rBrand.json().catch(() => ({}))
@@ -161,6 +190,15 @@ export default function CodesPromoEditPage() {
               marque: b.marque, slug: b.slug, categorie_marque: b.categorie_marque || ''
             }))
           : [])
+        // Config blocs (silent fallback si la route répond mal)
+        if (rCfg && rCfg.ok) {
+          try {
+            const cfgData = await rCfg.json()
+            if (cfgData?.blocks && typeof cfgData.blocks === 'object') {
+              setBlockConfig({ ...FALLBACK_BLOCK_CFG, ...cfgData.blocks })
+            }
+          } catch { /* fallback déjà en place */ }
+        }
       } catch (e: any) {
         if (!cancelled) setError(e?.message || 'Chargement échoué')
       } finally {
@@ -171,8 +209,20 @@ export default function CodesPromoEditPage() {
     return () => { cancelled = true }
   }, [siteId, marqueSlug])
 
+  // Initialiser wordsByBlock dès que blockConfig est chargé
+  useEffect(() => {
+    setWordsByBlock(prev => {
+      const next = { ...prev }
+      for (const [k, v] of Object.entries(blockConfig)) {
+        if (next[k] === undefined) next[k] = v.defaultWords
+      }
+      return next
+    })
+  }, [blockConfig])
+
   const dirty = brand !== null && JSON.stringify(brand) !== original
 
+  // ── Helpers de mutation ──────────────────────────────────────────────
   function update<K extends keyof Brand>(key: K, value: Brand[K]) {
     if (!brand) return
     setBrand({ ...brand, [key]: value })
@@ -230,11 +280,7 @@ export default function CodesPromoEditPage() {
     setBrand({ ...brand, historique_12_mois: hist })
   }
 
-  // ── Upload du logo de la marque ───────────────────────────────────────
-  // Pattern repris de uploadFeatured du blog : on lit le fichier en base64,
-  // on push via /api/github/upload, puis on met à jour brand.logo_url avec
-  // le path public (servi par Cloudflare Pages depuis platform/sites/<site>/public/).
-  // L'upload écrase l'ancien logo si présent (même filename `logo.<ext>`).
+  // ── Upload logo ──────────────────────────────────────────────────────
   async function uploadLogo(file: File) {
     if (!file || !brand) return
     setUploadingLogo(true); setSaveError(null); setSaveSuccess(null)
@@ -243,16 +289,12 @@ export default function CodesPromoEditPage() {
       const slug = brand.slug || marqueSlug || 'misc'
       const filename = `logo.${ext}`
       const path = `platform/sites/${siteId}/public/codes-promo/${slug}/${filename}`
-
-      // Lire le fichier en base64
       const base64: string = await new Promise((resolve, reject) => {
         const r = new FileReader()
         r.onload = () => resolve(String(r.result).split(',')[1])
         r.onerror = reject
         r.readAsDataURL(file)
       })
-
-      // Récupérer le sha si le fichier existe déjà (sinon création)
       let sha: string | undefined
       try {
         const ex = await fetch(`/api/github?path=${encodeURIComponent(path)}`)
@@ -260,8 +302,7 @@ export default function CodesPromoEditPage() {
           const ed = await ex.json()
           if (ed.sha) sha = ed.sha
         }
-      } catch { /* création OK */ }
-
+      } catch { /* création */ }
       const r = await fetch('/api/github/upload', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -274,9 +315,6 @@ export default function CodesPromoEditPage() {
         const e = await r.json().catch(() => ({}))
         throw new Error(e.error || `HTTP ${r.status}`)
       }
-
-      // brand.logo_url = path PUBLIC (sans le préfixe platform/sites/<site>/public/)
-      // Cloudflare Pages sert public/ à la racine du site déployé.
       const publicUrl = `/codes-promo/${slug}/${filename}`
       setBrand({ ...brand, logo_url: publicUrl })
       setSaveSuccess('Logo uploadé ✓ pense à enregistrer la marque.')
@@ -289,6 +327,74 @@ export default function CodesPromoEditPage() {
     }
   }
 
+  // ── Génération bloc par bloc ─────────────────────────────────────────
+  // Appelle la route /generate-block qui construit le prompt en couches
+  // (persona + global éditorial + bloc spécifique + custom) et renvoie le
+  // contenu. On l'affiche dans une modale d'aperçu commune à tous les blocs.
+  async function generateBlock(blockType: string) {
+    if (!brand) return
+    const cfg = blockConfig[blockType]
+    if (!cfg) {
+      setBlockGenerateError(`Bloc inconnu : ${blockType}`)
+      return
+    }
+    const nWords = wordsByBlock[blockType] || cfg.defaultWords
+    const customPrompt = blockType === 'content_md' ? customPrompt5
+                       : blockType === 'content_libre' ? customPrompt6
+                       : ''
+    // Garde-fou client : bloc libre exige un prompt non vide
+    if (blockType === 'content_libre' && customPrompt.trim().length < 10) {
+      setBlockGenerateError('Le bloc "Contenu libre" requiert un prompt personnalisé (au moins 10 caractères). Renseigne-le dans la section en bas de page.')
+      return
+    }
+
+    setBlockGenerating(blockType)
+    setBlockGenerateError(null)
+    try {
+      const r = await fetch(`/api/sites/${siteId}/codes-promo/${marqueSlug}/generate-block`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          block_type: blockType,
+          n_words: nWords,
+          custom_prompt: customPrompt || undefined,
+        }),
+      })
+      const data = await r.json()
+      if (!r.ok) throw new Error(data.error || `HTTP ${r.status} (stage: ${data.stage || 'inconnu'})`)
+      setBlockModal({
+        blockType,
+        content: data.content,
+        nWords,
+        customPrompt,
+      })
+    } catch (e: any) {
+      setBlockGenerateError(`Génération ${BLOCK_LABELS[blockType] || blockType} : ${e?.message || 'erreur'}`)
+    } finally {
+      setBlockGenerating(null)
+    }
+  }
+
+  // Applique le contenu de la modale au champ correspondant du brand.
+  function applyBlock() {
+    if (!brand || !blockModal) return
+    const { blockType, content } = blockModal
+    const patch: Partial<Brand> = {}
+    switch (blockType) {
+      case 'description_marque': patch.description_marque = content; break
+      case 'avis_sophie':         patch.avis_sophie = content; break
+      case 'conseil_sophie':      patch.conseil_sophie = content; break
+      case 'faq':                 patch.faq = Array.isArray(content) ? content : []; break
+      case 'content_md':          patch.content_md = content; break
+      case 'content_libre':       patch.content_libre = content; break
+    }
+    setBrand({ ...brand, ...patch })
+    setBlockModal(null)
+    setSaveSuccess(`${BLOCK_LABELS[blockType]} appliqué ✓ pense à enregistrer la marque.`)
+    setTimeout(() => setSaveSuccess(null), 4000)
+  }
+
+  // ── Related brands ────────────────────────────────────────────────────
   const [relInput, setRelInput] = useState('')
   function addRelated(slug: string) {
     if (!brand) return
@@ -305,6 +411,7 @@ export default function CodesPromoEditPage() {
     .filter(b => !relInput.trim() || b.marque.toLowerCase().includes(relInput.toLowerCase().trim()))
     .slice(0, 8)
 
+  // ── Save / Delete ─────────────────────────────────────────────────────
   async function save(newStatus?: 'draft' | 'published') {
     if (!brand) return
     setSaving(true); setSaveError(null); setSaveSuccess(null)
@@ -347,50 +454,7 @@ export default function CodesPromoEditPage() {
     }
   }
 
-  async function generateContent() {
-    if (!brand) return
-    const hasExisting = (brand.content_md && brand.content_md.trim().length > 50)
-                      || (brand.avis_sophie && brand.avis_sophie.trim().length > 0)
-                      || (brand.conseil_sophie && brand.conseil_sophie.trim().length > 0)
-    if (hasExisting) {
-      if (!confirm("Tu as déjà du contenu rédigé pour cette marque. La génération va te proposer un nouveau texte que tu pourras choisir d'appliquer ou non. Continuer ?")) return
-    }
-    setGenerating(true); setGenerateError(null)
-    try {
-      const r = await fetch(`/api/sites/${siteId}/codes-promo/${marqueSlug}/generate`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          marque: brand.marque,
-          categorie_marque: brand.categorie_marque,
-          description_marque: brand.description_marque,
-          n_codes: (brand.codes || []).filter(c => !c.expired).length,
-        }),
-      })
-      const data = await r.json()
-      if (!r.ok) throw new Error(data.error || `HTTP ${r.status}`)
-      setShowGenerateModal({
-        content_md: data.content_md || '',
-        avis_sophie: data.avis_sophie || '',
-        conseil_sophie: data.conseil_sophie || '',
-      })
-    } catch (e: any) {
-      setGenerateError(e?.message || 'Génération échouée')
-    } finally { setGenerating(false) }
-  }
-
-  function applyGenerated(which: { content_md?: boolean; avis_sophie?: boolean; conseil_sophie?: boolean }) {
-    if (!brand || !showGenerateModal) return
-    const patch: Partial<Brand> = {}
-    if (which.content_md) patch.content_md = showGenerateModal.content_md
-    if (which.avis_sophie) patch.avis_sophie = showGenerateModal.avis_sophie
-    if (which.conseil_sophie) patch.conseil_sophie = showGenerateModal.conseil_sophie
-    setBrand({ ...brand, ...patch })
-    setShowGenerateModal(null)
-    setSaveSuccess('Contenu appliqué ✓ pense à enregistrer.')
-    setTimeout(() => setSaveSuccess(null), 4000)
-  }
-
+  // ── Render ───────────────────────────────────────────────────────────
   if (loading) return <div style={S.empty}>Chargement…</div>
   if (error) return <div style={S.empty}><div style={{ color: '#c00' }}>⚠ {error}</div></div>
   if (!brand) return <div style={S.empty}>Marque introuvable.</div>
@@ -403,7 +467,6 @@ export default function CodesPromoEditPage() {
   }
   const previewUrl = buildPreviewUrl(siteDomain, brand.slug)
 
-  // URL d'aperçu du logo : URL absolue → tel quel, sinon construit l'URL raw GitHub
   function buildLogoPreviewUrl(logoUrl: string): string {
     if (!logoUrl) return ''
     if (/^https?:\/\//i.test(logoUrl)) return logoUrl
@@ -414,8 +477,43 @@ export default function CodesPromoEditPage() {
   }
   const logoPreviewSrc = buildLogoPreviewUrl(brand.logo_url || '')
 
+  // ── Composant interne : Bouton "✨ Générer" + input mots ─────────────
+  // Affiché à côté de chaque label de champ générable.
+  function GenerateBtn({ block, helpText }: { block: string; helpText?: string }) {
+    const cfg = blockConfig[block]
+    if (!cfg) return null
+    const isGen = blockGenerating === block
+    const anyGen = blockGenerating !== null
+    const nWords = wordsByBlock[block] ?? cfg.defaultWords
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }} title={helpText || `Min ${cfg.minWords} / Max ${cfg.maxWords} mots`}>
+        <input
+          type="number" min={cfg.minWords} max={cfg.maxWords} step={10}
+          value={nWords}
+          onChange={e => {
+            const v = parseInt(e.target.value, 10)
+            const clamped = isNaN(v) ? cfg.defaultWords : Math.max(cfg.minWords, Math.min(cfg.maxWords, v))
+            setWordsByBlock({ ...wordsByBlock, [block]: clamped })
+          }}
+          style={S.wordsInput}
+          disabled={anyGen}
+        />
+        <span style={{ fontSize: 11, color: '#888' }}>mots</span>
+        <button
+          type="button"
+          onClick={() => generateBlock(block)}
+          disabled={anyGen}
+          style={{ ...S.btnGen, ...(isGen || anyGen ? S.btnGenDisabled : {}) }}
+        >
+          {isGen ? '⏳ ...' : '✨ Générer'}
+        </button>
+      </div>
+    )
+  }
+
   return (
     <div style={S.shell}>
+      {/* ── Top bar sticky ──────────────────────────────────────────── */}
       <div style={S.topBar}>
         <div style={S.bcrumb}>
           <span style={S.bcrumbLink} onClick={() => router.push(`/sites/${siteId}`)}>{siteId}</span>
@@ -433,14 +531,6 @@ export default function CodesPromoEditPage() {
               ↗ Voir en ligne
             </a>
           )}
-          <button
-            style={{ ...S.btn, ...S.btnGhost, opacity: generating ? 0.6 : 1 }}
-            onClick={generateContent}
-            disabled={generating || saving}
-            title="Génère 'Comment utiliser', 'Avis de Sophie' et 'Conseil de Sophie' via Claude"
-          >
-            {generating ? '✨ Génération…' : '✨ Générer le contenu'}
-          </button>
           {brand.status === 'draft' ? (
             <button style={{ ...S.btn, ...S.btnPub }} onClick={() => save('published')} disabled={saving}>Publier</button>
           ) : (
@@ -455,9 +545,10 @@ export default function CodesPromoEditPage() {
 
       <div style={S.content}>
         {saveError && <div style={S.errorBox}>⚠ {saveError}</div>}
-        {generateError && <div style={S.errorBox}>⚠ Génération : {generateError}</div>}
+        {blockGenerateError && <div style={S.errorBox}>⚠ {blockGenerateError}</div>}
         {saveSuccess && <div style={S.successBox}>{saveSuccess}</div>}
 
+        {/* ── INFOS GÉNÉRALES ──────────────────────────────────────── */}
         <div style={S.section}>
           <div style={S.sectionTitle}>📋 Infos générales</div>
           <div style={S.grid2}>
@@ -482,7 +573,7 @@ export default function CodesPromoEditPage() {
               <input style={S.input} value={brand.url_affiliation || ''} onChange={e => update('url_affiliation', e.target.value)} placeholder="https://www.shein.com/?ref=…" />
             </div>
 
-            {/* ── LOGO : input + bouton upload + aperçu ──────────────── */}
+            {/* Logo */}
             <div style={{ ...S.field, gridColumn: 'span 2' }}>
               <label style={S.label}>Logo de la marque</label>
               <div style={{ display: 'flex', gap: 8, alignItems: 'stretch' }}>
@@ -502,7 +593,6 @@ export default function CodesPromoEditPage() {
                     color: '#fff', padding: '0 16px', whiteSpace: 'nowrap',
                     cursor: uploadingLogo ? 'wait' : 'pointer',
                   }}
-                  title="Uploader un nouveau logo depuis ton ordinateur"
                 >
                   {uploadingLogo ? '⏳ Upload…' : '📤 Upload'}
                 </button>
@@ -523,32 +613,23 @@ export default function CodesPromoEditPage() {
                   <img
                     src={logoPreviewSrc}
                     alt="Aperçu logo"
-                    style={{
-                      maxHeight: 64, maxWidth: 160,
-                      objectFit: 'contain', display: 'block',
-                      background: '#fff', borderRadius: 6, padding: 4,
-                    }}
-                    onError={e => {
-                      // Image pas encore push ou path invalide : cacher
-                      // l'élément (au lieu d'afficher l'icône broken)
-                      ;(e.currentTarget as HTMLImageElement).style.display = 'none'
-                    }}
+                    style={{ maxHeight: 64, maxWidth: 160, objectFit: 'contain', display: 'block', background: '#fff', borderRadius: 6, padding: 4 }}
+                    onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
                   />
-                  <div style={{ fontSize: 11, color: '#888', wordBreak: 'break-all' }}>
-                    {brand.logo_url}
-                  </div>
+                  <div style={{ fontSize: 11, color: '#888', wordBreak: 'break-all' }}>{brand.logo_url}</div>
                 </div>
               )}
-              <div style={{ fontSize: 11, color: '#999', marginTop: 6 }}>
-                PNG / JPG / SVG / WebP — fond transparent recommandé, hauteur ~80px.
-                L'upload écrase l'ancien fichier <code>logo.&lt;ext&gt;</code> du dossier de la marque.
-              </div>
             </div>
 
+            {/* Description marque + bouton générer */}
             <div style={{ ...S.field, gridColumn: 'span 2' }}>
-              <label style={S.label}>Description de la marque (sidebar "Qu'est-ce que…")</label>
+              <div style={S.labelRow}>
+                <label style={S.label}>Description de la marque (sidebar "Qu'est-ce que…")</label>
+                <GenerateBtn block="description_marque" />
+              </div>
               <textarea style={S.textarea} rows={3} value={brand.description_marque || ''} onChange={e => update('description_marque', e.target.value)} placeholder="Présente la marque en 2-3 phrases." />
             </div>
+
             <div style={S.field}>
               <label style={S.label}>Meta title (SEO)</label>
               <input style={S.input} value={brand.meta_title || ''} onChange={e => update('meta_title', e.target.value)} placeholder={`Codes promo ${brand.marque} — <mois> | <site>`} />
@@ -560,6 +641,7 @@ export default function CodesPromoEditPage() {
           </div>
         </div>
 
+        {/* ── RATING ────────────────────────────────────────────────── */}
         <div style={S.section}>
           <div style={S.sectionTitle}>⭐ Note globale (AggregateRating)</div>
           <div style={S.sectionSub}>Note affichée dans la bannière rating et envoyée à Google pour les étoiles dans les SERP.</div>
@@ -579,11 +661,11 @@ export default function CodesPromoEditPage() {
           </div>
         </div>
 
+        {/* ── CODES PROMO ───────────────────────────────────────────── */}
         <div style={S.section}>
           <div style={S.sectionTitle}>🏷️ Codes promo & offres</div>
-          <div style={S.sectionSub}>
-            Chaque code/offre apparaît dans une card sur la page. Les codes expirés sont déplacés dans une section dédiée en bas de la page.
-          </div>
+          <div style={S.sectionSub}>Chaque code/offre apparaît dans une card sur la page. Les codes expirés sont déplacés dans une section dédiée en bas.</div>
+
           {(brand.codes || []).map((c, idx) => (
             <div key={c.id || idx} style={{
               ...S.codeRow,
@@ -659,28 +741,42 @@ export default function CodesPromoEditPage() {
               </div>
             </div>
           ))}
+
           <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
             <button style={{ ...S.btn, ...S.btnGhost }} onClick={() => addCode('code')}>+ Ajouter un code promo</button>
             <button style={{ ...S.btn, ...S.btnGhost }} onClick={() => addCode('offer')}>+ Ajouter une offre (sans code)</button>
           </div>
         </div>
 
+        {/* ── AVIS & CONSEIL DE SOPHIE ──────────────────────────────── */}
         <div style={S.section}>
           <div style={S.sectionTitle}>📝 L'avis & le conseil de Sophie</div>
           <div style={S.sectionSub}>L'avis apparaît dans la sidebar avec la photo. Le conseil dans une 2ème card "💡 Le conseil de Sophie".</div>
+
           <div style={S.field}>
-            <label style={S.label}>Avis de Sophie</label>
+            <div style={S.labelRow}>
+              <label style={S.label}>Avis de Sophie</label>
+              <GenerateBtn block="avis_sophie" helpText={`L'avis intègre automatiquement le nombre de codes actifs (${(brand.codes || []).filter(c => !c.expired).length})`} />
+            </div>
             <textarea style={S.textarea} rows={4} value={brand.avis_sophie || ''} onChange={e => update('avis_sophie', e.target.value)} placeholder={`J'ai rassemblé et testé pour toi les meilleurs codes promo ${brand.marque}…`} />
           </div>
+
           <div style={{ ...S.field, marginTop: 12 }}>
-            <label style={S.label}>Conseil de Sophie (astuce)</label>
+            <div style={S.labelRow}>
+              <label style={S.label}>Conseil de Sophie (astuce)</label>
+              <GenerateBtn block="conseil_sophie" />
+            </div>
             <textarea style={S.textarea} rows={3} value={brand.conseil_sophie || ''} onChange={e => update('conseil_sophie', e.target.value)} placeholder="Un conseil pour économiser plus, un timing à connaître, etc." />
           </div>
         </div>
 
+        {/* ── FAQ ────────────────────────────────────────────────────── */}
         <div style={S.section}>
-          <div style={S.sectionTitle}>❓ Foire aux questions</div>
-          <div style={S.sectionSub}>Au moins 2 questions pour générer le schéma FAQPage (étoiles SERP).</div>
+          <div style={{ ...S.sectionTitle, justifyContent: 'space-between' }}>
+            <span>❓ Foire aux questions</span>
+            <GenerateBtn block="faq" helpText="Remplace toutes les Q/R par 4 nouvelles questions générées" />
+          </div>
+          <div style={S.sectionSub}>Au moins 2 questions pour générer le schéma FAQPage (étoiles SERP). ⚠ Une génération remplace TOUTES les Q/R existantes.</div>
           {(brand.faq || []).map((q, idx) => (
             <div key={idx} style={S.faqRow}>
               <input style={S.input} value={q.question} onChange={e => updateFaq(idx, { question: e.target.value })} placeholder="Question" />
@@ -691,9 +787,10 @@ export default function CodesPromoEditPage() {
           <button style={{ ...S.btn, ...S.btnGhost, marginTop: 8 }} onClick={addFaq}>+ Ajouter une question</button>
         </div>
 
+        {/* ── HISTORIQUE 12 MOIS ──────────────────────────────────── */}
         <div style={S.section}>
           <div style={S.sectionTitle}>📊 Historique des remises (12 derniers mois)</div>
-          <div style={S.sectionSub}>La meilleure remise disponible chaque mois sur les 12 derniers mois (en %). Utilisé pour le mini-graphique.</div>
+          <div style={S.sectionSub}>La meilleure remise disponible chaque mois sur les 12 derniers mois (en %).</div>
           <div style={S.historyGrid}>
             {(brand.historique_12_mois || []).map((h, idx) => {
               const [year, month] = h.mois.split('-')
@@ -713,11 +810,11 @@ export default function CodesPromoEditPage() {
           </div>
         </div>
 
+        {/* ── MARQUES SIMILAIRES ──────────────────────────────────── */}
         <div style={S.section}>
           <div style={S.sectionTitle}>🔗 Marques similaires (bandeau bas de page)</div>
           <div style={S.sectionSub}>
-            Si vide, on prend automatiquement 8 marques de la même catégorie "{brand.categorie_marque || '<définis une catégorie>'}", figées au 1er rendu.
-            Ajoute des marques pour overrider la sélection automatique.
+            Si vide, on prend automatiquement 8 marques de la même catégorie "{brand.categorie_marque || '<définis une catégorie>'}".
           </div>
           <div style={S.chipsRow}>
             {(brand.related_brands || []).map(slug => {
@@ -759,72 +856,162 @@ export default function CodesPromoEditPage() {
           )}
         </div>
 
+        {/* ── CONTENU RÉDIGÉ (bloc 5) ────────────────────────────────
+            Section "Comment utiliser un code promo {marque}". Prompt système
+            FIXE (4 étapes, HTML) + custom_prompt OPTIONNEL pour ajouter des
+            instructions spécifiques à la marque. */}
         <div style={S.section}>
-          <div style={S.sectionTitle}>📄 Contenu rédigé ("Comment utiliser un code promo {brand.marque}")</div>
-          <div style={S.sectionSub}>
-            Texte affiché entre les codes et l'historique. En vague C ce contenu sera généré par IA. En attendant, tu peux écrire en markdown (## Étape 1, etc.).
+          <div style={{ ...S.sectionTitle, justifyContent: 'space-between' }}>
+            <span>📄 Contenu rédigé "Comment utiliser un code promo {brand.marque}"</span>
+            <GenerateBtn block="content_md" helpText="4 étapes en HTML. Le prompt custom ci-dessous est OPTIONNEL." />
           </div>
-          <textarea
-            style={{ ...S.textarea, minHeight: 280, fontFamily: 'ui-monospace,SFMono-Regular,Consolas,monospace', fontSize: 13 }}
-            value={brand.content_md}
-            onChange={e => update('content_md', e.target.value)}
-            placeholder={`## Étape 1\nRepère le code…\n\n## Étape 2\n…`}
-          />
+          <div style={S.sectionSub}>Affiché entre les codes et l'historique sur la page. Structure imposée : 4 étapes (h2) avec paragraphes (p) en HTML simple.</div>
+
+          {/* Custom prompt OPTIONNEL */}
+          <div style={S.field}>
+            <label style={S.label}>Instructions supplémentaires pour la génération (optionnel)</label>
+            <textarea
+              style={{ ...S.textarea, minHeight: 60 }} rows={2}
+              value={customPrompt5}
+              onChange={e => setCustomPrompt5(e.target.value)}
+              placeholder='Ex : "Mentionne la livraison gratuite dès 65€" ou "Évite de parler du parrainage car suspendu"'
+            />
+            <div style={{ fontSize: 11, color: '#999' }}>
+              Ces instructions s'ajoutent au prompt système (4 étapes + ton de Sophie). Vide = génération standard.
+            </div>
+          </div>
+
+          {/* HTML résultat */}
+          <div style={{ ...S.field, marginTop: 12 }}>
+            <label style={S.label}>HTML du contenu (édite directement si besoin)</label>
+            <textarea
+              style={{ ...S.textarea, minHeight: 280, fontFamily: 'ui-monospace,SFMono-Regular,Consolas,monospace', fontSize: 13 }}
+              value={brand.content_md}
+              onChange={e => update('content_md', e.target.value)}
+              placeholder={`<h2>Étape 1 : Repère le code</h2>\n<p>...</p>\n<h2>Étape 2 : Copie le code</h2>\n<p>...</p>`}
+            />
+          </div>
+        </div>
+
+        {/* ── CONTENU LIBRE (bloc 6) ─────────────────────────────────
+            NOUVEAU bloc 100% pilotable par toi. Affiché sous l'historique
+            des remises sur le site. Le prompt système est juste persona +
+            global éditorial — TOUT le reste vient de ton prompt custom. */}
+        <div style={S.section}>
+          <div style={{ ...S.sectionTitle, justifyContent: 'space-between' }}>
+            <span>✏️ Contenu libre (affiché sous "Historique des remises")</span>
+            <GenerateBtn block="content_libre" helpText="Génère un HTML libre à partir du prompt ci-dessous." />
+          </div>
+          <div style={S.sectionSub}>
+            Bloc HTML 100% pilotable par toi. Pas de structure imposée — tu écris le prompt, l'IA génère le contenu. Pratique pour des sections spéciales (sélection éditoriale, comparaison, calendrier événementiel, etc.).
+          </div>
+
+          {/* Prompt custom OBLIGATOIRE */}
+          <div style={S.field}>
+            <label style={S.label}>Ton prompt personnalisé *</label>
+            <textarea
+              style={{ ...S.textarea, minHeight: 100 }} rows={4}
+              value={customPrompt6}
+              onChange={e => setCustomPrompt6(e.target.value)}
+              placeholder={`Ex : "Rédige une sélection des 3 meilleurs produits ${brand.marque} pour la Saint-Valentin, avec un h3 par produit, une fourchette de prix, et qui l'offrir."`}
+            />
+            <div style={{ fontSize: 11, color: '#999' }}>
+              Obligatoire (min. 10 caractères). Persona Sophie + ton éditorial sont injectés automatiquement.
+            </div>
+          </div>
+
+          {/* HTML résultat */}
+          <div style={{ ...S.field, marginTop: 12 }}>
+            <label style={S.label}>HTML généré (édite directement si besoin)</label>
+            <textarea
+              style={{ ...S.textarea, minHeight: 200, fontFamily: 'ui-monospace,SFMono-Regular,Consolas,monospace', fontSize: 13 }}
+              value={brand.content_libre || ''}
+              onChange={e => update('content_libre', e.target.value)}
+              placeholder={`<h2>Notre sélection éditoriale</h2>\n<p>...</p>`}
+            />
+            <div style={{ fontSize: 11, color: '#999' }}>
+              Le HTML est inséré tel quel dans un &lt;div class="panel content-libre"&gt;.
+              Si vide, le bloc n'apparaît pas sur le site.
+            </div>
+          </div>
         </div>
       </div>
 
-      {showGenerateModal && (
+      {/* ── MODALE D'APERÇU DE GÉNÉRATION ─────────────────────────────
+          Apparaît dès que blockModal != null. Affiche le contenu généré
+          (texte ou FAQ) avec boutons Appliquer / Régénérer / Annuler. */}
+      {blockModal && (
         <div
           style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.55)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100, padding: 20 }}
-          onClick={() => setShowGenerateModal(null)}
+          onClick={() => setBlockModal(null)}
         >
           <div
-            style={{ background: '#fff', borderRadius: 12, padding: 28, width: '100%', maxWidth: 760, maxHeight: '85vh', overflowY: 'auto', boxShadow: '0 10px 40px rgba(0,0,0,0.25)' }}
+            style={{ background: '#fff', borderRadius: 12, padding: 28, width: '100%', maxWidth: 820, maxHeight: '85vh', overflowY: 'auto', boxShadow: '0 10px 40px rgba(0,0,0,0.25)' }}
             onClick={e => e.stopPropagation()}
           >
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
-              <div style={{ fontSize: 20, fontWeight: 700 }}>✨ Contenu généré pour {brand.marque}</div>
-              <button style={S.iconBtn} onClick={() => setShowGenerateModal(null)} aria-label="Fermer">✕</button>
+              <div style={{ fontSize: 18, fontWeight: 700 }}>
+                ✨ Aperçu : {BLOCK_LABELS[blockModal.blockType] || blockModal.blockType}
+              </div>
+              <button style={S.iconBtn} onClick={() => setBlockModal(null)} aria-label="Fermer">✕</button>
             </div>
-            <div style={{ fontSize: 13, color: '#666', marginBottom: 18 }}>
-              Coche ce que tu veux appliquer. Tu peux relancer une nouvelle génération si le résultat ne te convient pas.
+            <div style={{ fontSize: 12, color: '#888', marginBottom: 18 }}>
+              {blockModal.nWords} mots cibles · marque {brand.marque}
+              {blockModal.customPrompt && <> · prompt custom : "{blockModal.customPrompt.slice(0, 60)}{blockModal.customPrompt.length > 60 ? '…' : ''}"</>}
             </div>
-            <ApplyBlock
-              label="Comment utiliser un code promo (4 étapes)"
-              content={showGenerateModal.content_md}
-              existing={brand.content_md}
-              isMd
-              onApply={() => applyGenerated({ content_md: true })}
-            />
-            <ApplyBlock
-              label="Avis de Sophie (sidebar)"
-              content={showGenerateModal.avis_sophie}
-              existing={brand.avis_sophie || ''}
-              onApply={() => applyGenerated({ avis_sophie: true })}
-            />
-            <ApplyBlock
-              label="Conseil de Sophie (astuce)"
-              content={showGenerateModal.conseil_sophie}
-              existing={brand.conseil_sophie || ''}
-              onApply={() => applyGenerated({ conseil_sophie: true })}
-            />
+
+            {/* Rendu différent selon le type de bloc */}
+            {blockModal.blockType === 'faq' && Array.isArray(blockModal.content) ? (
+              <div style={{ background: '#fafafa', borderRadius: 8, padding: 16, border: '1px solid #eee', maxHeight: 400, overflowY: 'auto' }}>
+                {blockModal.content.map((q: BrandFaq, i: number) => (
+                  <div key={i} style={{ marginBottom: i < blockModal.content.length - 1 ? 16 : 0, paddingBottom: i < blockModal.content.length - 1 ? 16 : 0, borderBottom: i < blockModal.content.length - 1 ? '1px solid #eee' : 'none' }}>
+                    <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 6 }}>{q.question}</div>
+                    <div style={{ fontSize: 13, color: '#555', lineHeight: 1.6 }}>{q.reponse}</div>
+                  </div>
+                ))}
+              </div>
+            ) : blockModal.blockType === 'content_md' || blockModal.blockType === 'content_libre' ? (
+              <div>
+                <div style={{ fontSize: 11, color: '#888', marginBottom: 6 }}>Aperçu rendu HTML :</div>
+                <div
+                  style={{ background: '#fff', borderRadius: 8, padding: 16, border: '1px solid #eee', maxHeight: 300, overflowY: 'auto', fontSize: 14, lineHeight: 1.6 }}
+                  dangerouslySetInnerHTML={{ __html: String(blockModal.content || '') }}
+                />
+                <details style={{ marginTop: 10 }}>
+                  <summary style={{ fontSize: 11, color: '#888', cursor: 'pointer' }}>Voir le HTML source</summary>
+                  <pre style={{ background: '#fafafa', borderRadius: 6, padding: 12, fontSize: 11, fontFamily: 'ui-monospace,SFMono-Regular,Consolas,monospace', overflowX: 'auto', whiteSpace: 'pre-wrap', maxHeight: 200 }}>
+                    {String(blockModal.content || '')}
+                  </pre>
+                </details>
+              </div>
+            ) : (
+              <div style={{ background: '#fafafa', borderRadius: 8, padding: 16, border: '1px solid #eee', fontSize: 14, lineHeight: 1.6, whiteSpace: 'pre-wrap', maxHeight: 400, overflowY: 'auto' }}>
+                {String(blockModal.content || '')}
+              </div>
+            )}
+
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, marginTop: 20, paddingTop: 16, borderTop: '1px solid #eee' }}>
-              <button style={{ ...S.btn, ...S.btnGhost }}
-                onClick={() => { setShowGenerateModal(null); generateContent() }}>
-                🔄 Relancer une génération
+              <button
+                style={{ ...S.btn, ...S.btnGhost }}
+                onClick={() => { const bt = blockModal.blockType; setBlockModal(null); generateBlock(bt) }}
+                disabled={blockGenerating !== null}
+              >
+                🔄 Régénérer
               </button>
               <div style={{ display: 'flex', gap: 8 }}>
-                <button style={{ ...S.btn, ...S.btnGhost }} onClick={() => setShowGenerateModal(null)}>Annuler</button>
-                <button
-                  style={{ ...S.btn, ...S.btnPrimary }}
-                  onClick={() => applyGenerated({ content_md: true, avis_sophie: true, conseil_sophie: true })}
-                >Tout appliquer</button>
+                <button style={{ ...S.btn, ...S.btnGhost }} onClick={() => setBlockModal(null)}>
+                  Annuler
+                </button>
+                <button style={{ ...S.btn, ...S.btnPrimary }} onClick={applyBlock}>
+                  ✓ Appliquer
+                </button>
               </div>
             </div>
           </div>
         </div>
       )}
 
+      {/* ── Save bar sticky bottom ────────────────────────────────── */}
       {dirty && (
         <div style={S.saveBar}>
           <span>● Modifications non enregistrées</span>
