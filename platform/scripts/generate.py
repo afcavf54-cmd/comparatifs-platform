@@ -2361,7 +2361,7 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                                  'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
                 _cp_month_year = f"{_cp_months_fr[today.month]} {today.year}"
                 _cp_date_fr = f"{today.day} {_cp_months_fr[today.month]} {today.year}"
-                _cp_date_short = f"{today.day:02d}/{today.month:02d}"
+                _cp_date_short = f"{today.day:02d}/{today.month:02d}/{today.year}"
 
                 # ── Pré-résolution des related_brands pour chaque marque
                 # (figé au 1er rendu si pas déjà défini, override dashboard)
