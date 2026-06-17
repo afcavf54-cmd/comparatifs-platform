@@ -13,8 +13,9 @@ link_anchors:
 - text: créer une facture en ligne avec Simplifie-Ta-Compta
   max: 5
 related_posts:
-- 2211-faire-ses-factures-en-ligne-avec-digitalise-tes-factures
 - 6452-les-modeles-de-factures-digitalise-tes-factures-au-banc-d-essai
+- 2211-faire-ses-factures-en-ligne-avec-digitalise-tes-factures
+- 7766-les-fonctionnalites-de-la-comptabilite-cloud-financecore-plus
 - 6741-comment-parametrer-la-facturation-recurrente-billmatic-cyclic
 featured_image: /blog/5909-faire-ses-factures-en-ligne-avec-simplifie-ta-compta.jpg
 ---

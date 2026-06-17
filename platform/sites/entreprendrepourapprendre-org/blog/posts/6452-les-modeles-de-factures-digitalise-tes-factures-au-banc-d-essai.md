@@ -14,8 +14,9 @@ link_anchors:
 - text: les modèles de factures de Digitalise-Tes-Factures
   max: 5
 related_posts:
-- 2211-faire-ses-factures-en-ligne-avec-digitalise-tes-factures
 - 6741-comment-parametrer-la-facturation-recurrente-billmatic-cyclic
+- 7766-les-fonctionnalites-de-la-comptabilite-cloud-financecore-plus
+- 2211-faire-ses-factures-en-ligne-avec-digitalise-tes-factures
 - 5909-faire-ses-factures-en-ligne-avec-simplifie-ta-compta
 ---
 <h2>Ce que j'attendais de Digitalise-Tes-Factures, et ce que j'ai vraiment trouvé</h2>

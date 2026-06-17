@@ -15,8 +15,9 @@ link_anchors:
   max: 5
 related_posts:
 - 5909-faire-ses-factures-en-ligne-avec-simplifie-ta-compta
-- 6452-les-modeles-de-factures-digitalise-tes-factures-au-banc-d-essai
+- 7766-les-fonctionnalites-de-la-comptabilite-cloud-financecore-plus
 - 6741-comment-parametrer-la-facturation-recurrente-billmatic-cyclic
+- 6452-les-modeles-de-factures-digitalise-tes-factures-au-banc-d-essai
 ---
 <h2>Digitalise-Tes-Factures : ma solution pour en finir avec la paperasse</h2>
 
