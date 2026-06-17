@@ -25,14 +25,14 @@ codes:
     meilleure_remise: false
     expired: false
 faq:
-  - question: Combien gagne le parrain et le filleul chez Octopus Energy ?
-    reponse: ""
-  - question: Le parrainage Octopus Energy est-il rétroactif ?
-    reponse: ""
-  - question: Où trouver mon propre lien de parrainage Octopus ?
-    reponse: ""
-  - question: Peut-on cumuler le parrainage avec un code promo Octopus Energy ?
-    reponse: ""
+  - question: Comment utiliser un code promo Octopus Energy ?
+    reponse: Pour utiliser un code promo Octopus Energy, commence par te rendre sur leur site et lance une simulation de contrat. Une fois arrivé à l'étape de souscription, cherche un champ intitulé "code de parrainage" ou "code promo". Colle ton code, valide, et vérifie que la réduction ou le crédit s'applique bien avant de finaliser ton inscription.
+  - question: Les codes promo Octopus Energy sont-ils cumulables ?
+    reponse: En général, les codes promo Octopus Energy ne sont pas cumulables entre eux. Un seul code peut être utilisé par souscription. Côté cashback, certaines plateformes permettent de combiner les deux, mais ce n'est pas garanti. Vérifie les conditions du code et celles du site de cashback avant de souscrire pour éviter les mauvaises surprises.
+  - question: Octopus Energy propose-t-elle un code de parrainage, étudiant ou nouveau client ?
+    reponse: "Octopus Energy est connu pour son programme de parrainage : un client existant partage son lien ou son code, et les deux parties reçoivent un crédit sur leur compte. En revanche, il n'existe pas de tarif étudiant spécifique à ce jour. Les offres nouveau client passent essentiellement par ce système de parrainage ou via des partenaires."
+  - question: Que faire si mon code promo Octopus Energy ne fonctionne pas ?
+    reponse: "Première chose à vérifier : la date d'expiration du code. Ensuite, assure-toi que tu es bien un nouveau client, car la plupart des codes sont réservés aux premières souscriptions. Si tout semble correct, contacte le service client Octopus Energy directement. Ils sont assez réactifs et peuvent appliquer le crédit manuellement si le code était valide."
 historique_12_mois:
   - mois: 2025-07
     valeur: 40
