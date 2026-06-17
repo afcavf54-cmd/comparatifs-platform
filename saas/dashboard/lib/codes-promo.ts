@@ -74,6 +74,10 @@ export interface BrandFrontmatter {
   status?: BrandStatus
   meta_title?: string
   meta_description?: string
+  // H1 personnalisé. Supporte les variables {marque}, {mois}, {annee},
+  // {mois_annee}, {n_codes}, {best_remise}, etc. Si vide, le template
+  // utilise le H1 hardcodé : "Codes promo <marque> — <mois_annee>".
+  h1_custom?: string
   date_creation?: string
   date_maj?: string
 
@@ -116,7 +120,7 @@ const FIELD_ORDER: (keyof BrandFrontmatter)[] = [
   'historique_12_mois',
   'related_brands',
   'content_libre',           // ← bloc libre HTML, juste avant le SEO/statuts
-  'status', 'meta_title', 'meta_description',
+  'status', 'meta_title', 'meta_description', 'h1_custom',
   'date_creation', 'date_maj',
 ]
 
@@ -213,6 +217,7 @@ export function emptyBrand(marque: string, slug?: string): Brand {
     status: 'draft',
     meta_title: '',
     meta_description: '',
+    h1_custom: '',
     date_creation: new Date().toISOString().slice(0, 10),
     date_maj: new Date().toISOString().slice(0, 10),
     content_md: '',
