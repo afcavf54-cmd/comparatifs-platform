@@ -176,7 +176,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="nav-inner">
     <a href="/" class="nav-logo"><img src="/logo.png" alt="idees-innovantes.com" style="height:36px;width:auto;object-fit:contain;vertical-align:middle"></a>
     <div class="nav-links">
-      <a href="/nos-comparateurs">Nos comparateurs</a>
           <a href="/nos-outils">Nos Outils</a>
     </div>
     <a href="/contact" class="nav-cta">Contact</a>
@@ -185,11 +184,52 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </button>
   </div>
   <div class="nav-mobile" id="nav-mobile">
-    <a href="/nos-comparateurs">Nos comparateurs</a>
         <a href="/nos-outils">Nos Outils</a>
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
 </nav>
+
+<script>
+/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
+   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
+   devoir redéfinir la fonction côté template parent.
+
+   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
+   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
+   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
+   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
+   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
+   qui est actif et le parent réécrit derrière s'il en a un.
+
+   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
+   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
+   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
+   ne faisait rien. */
+(function(){
+  if (typeof window.toggleMenu === 'function') return;
+  window.toggleMenu = function(){
+    var menu = document.getElementById('nav-mobile');
+    if (menu) menu.classList.toggle('open');
+  };
+  // UX bonus : fermer le menu mobile en cliquant en dehors
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('nav-mobile');
+    var burger = document.getElementById('burger');
+    if (!menu || !burger) return;
+    if (!menu.classList.contains('open')) return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    menu.classList.remove('open');
+  });
+  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
+  document.addEventListener('DOMContentLoaded', function(){
+    var menu = document.getElementById('nav-mobile');
+    if (!menu) return;
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  });
+})();
+</script>
 <!-- HERO -->
 <section class="hero">
   <div class="hero-eyebrow">Comparatifs idees-innovantes.com 2026</div>
@@ -208,11 +248,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <!-- Stats bar -->
   <div class="stats-bar" style="margin-top:48px;border-radius:var(--r2)">
     <div class="stat-item">
-      <div class="stat-value" id="stat-logiciels">340+</div>
+      <div class="stat-value" id="stat-logiciels">0+</div>
       <div class="stat-label">Logiciels analysés</div>
     </div>
     <div class="stat-item">
-      <div class="stat-value" id="stat-categories">34</div>
+      <div class="stat-value" id="stat-categories">0</div>
       <div class="stat-label">Catégories</div>
     </div>
     <div class="stat-item">
@@ -230,366 +270,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <h2>Nos comparateurs</h2>
     <p class="comparateurs-subtitle">Trouvez le meilleur logiciel selon votre métier et vos besoins</p>
 
-      <div class="cat-group">
-        <div class="cat-group-title">Services aux entreprises</div>
-        <div class="cat-cards">
-          <a href="/meilleur-creation-d-entreprise-en-ligne" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Création d’entreprise en ligne</div>
-                <div class="cat-card-count">5 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-        </div>
-      </div>
-      <div class="cat-group">
-        <div class="cat-group-title">Ressources Humaines (RH)</div>
-        <div class="cat-cards">
-          <a href="/meilleur-logiciel-de-paie" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de paie</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-systeme-d-information-rh-sirh" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de système d'information RH (SIRH)</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciels-de-recrutement" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciels de Recrutement</div>
-                <div class="cat-card-count">9 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-bien-etre-des-employes" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de bien-être des employés</div>
-                <div class="cat-card-count">7 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-des-temps" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion des temps</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-des-conges-et-absences" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion des congés et absences</div>
-                <div class="cat-card-count">8 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-engagement-des-collaborateurs" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de engagement des collaborateurs</div>
-                <div class="cat-card-count">6 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-des-competences" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion des compétences</div>
-                <div class="cat-card-count">9 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-des-talents" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion des talents</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciels-de-gestion-de-planning" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciels de gestion de planning</div>
-                <div class="cat-card-count">11 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciels-d-onboarding" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciels d’onboarding</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-pointage" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de pointage</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-        </div>
-      </div>
-      <div class="cat-group">
-        <div class="cat-group-title">Finances et comptabilité</div>
-        <div class="cat-cards">
-          <a href="/meilleur-logiciel-de-facturation-electronique" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de facturation électronique</div>
-                <div class="cat-card-count">12 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-recouvrement" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de recouvrement</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-d-audit-et-commissariat-aux-comptes" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel d'audit et commissariat aux comptes</div>
-                <div class="cat-card-count">7 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-d-abonnements" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion d'abonnements</div>
-                <div class="cat-card-count">9 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-de-caisse" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion de caisse</div>
-                <div class="cat-card-count">11 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-notes-de-frais" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de notes de frais</div>
-                <div class="cat-card-count">9 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-comptabilite-gratuit" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de comptabilité gratuit</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impots" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion de l’avance immédiate de crédit d’impôts</div>
-                <div class="cat-card-count">9 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-banque-pro-en-ligne" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Banque pro en ligne</div>
-                <div class="cat-card-count">12 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-data-visualisation" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de data visualisation</div>
-                <div class="cat-card-count">17 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-financiere" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion financière</div>
-                <div class="cat-card-count">9 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-terminaux-de-paiement" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Terminaux de paiement</div>
-                <div class="cat-card-count">7 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-d-association" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion d’association</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-erp" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel ERP</div>
-                <div class="cat-card-count">9 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-de-tresorerie" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion de trésorerie</div>
-                <div class="cat-card-count">9 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-facturation" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de facturation</div>
-                <div class="cat-card-count">16 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-comptabilite" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de comptabilité</div>
-                <div class="cat-card-count">18 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-expert-comptable-en-ligne" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Expert-comptable en ligne</div>
-                <div class="cat-card-count">11 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-        </div>
-      </div>
-      <div class="cat-group">
-        <div class="cat-group-title">Marketing</div>
-        <div class="cat-cards">
-          <a href="/meilleur-logiciel-d-emailing" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel d’emailing</div>
-                <div class="cat-card-count">12 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-cold-emailing-outreach" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de cold emailing / outreach</div>
-                <div class="cat-card-count">8 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-creation-de-site-web" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de création de site web</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-        </div>
-      </div>
 
   </section>
 
@@ -604,7 +284,8 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 .footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
 .footer-brand .footer-logo span{color:var(--accent2)}
 .footer-brand p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;max-width:260px;margin:0;padding:0}
-.footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+/* Anciennement .footer-col h4 — passé en div pour respecter la hiérarchie Hn (le footer ne doit pas introduire de Hn) */
+.footer-col .footer-col-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
 .footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
 .footer-col a:hover{color:#fff}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
@@ -614,34 +295,27 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   .footer-brand{grid-column:1/-1}
 }
 </style>
-
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-grid">
-
       <div class="footer-brand">
         <a href="/" style="display:block;margin-bottom:12px"><img src="/logo.png" alt="idees-innovantes.com" style="height:36px;width:auto;object-fit:contain"></a>
         <p>Comparatifs idees-innovantes.com 2026</p>
       </div>
-
       <div class="footer-col">
-        <h4>Navigation</h4>
-        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <div class="footer-col-label">Navigation</div>
         <a href="/plan-du-site">Plan du site</a>
         <a href="/mentions-legales">Mentions légales</a>
         <a href="/politique-confidentialite">Confidentialité</a>
       </div>
-
       <div class="footer-col">
-        <h4>À propos</h4>
+        <div class="footer-col-label">À propos</div>
         <a href="/contact">Nous contacter</a>
       </div>
-
     </div>
-
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 idees-innovantes.com — Données actualisées le 5 juin 2026
+        © 2026 idees-innovantes.com — Données actualisées le 17 juin 2026
       </div>
     </div>
   </div>
@@ -745,346 +419,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <script>
 // Données de recherche (chargées en JS après DOM pour éviter footprint)
 const ALL_CATEGORIES = [
-  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
-  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
-  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
-  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
-  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciels de Recrutement", slug: "meilleur-logiciels-de-recrutement" },
-  { label: "Logiciels de Recrutement", slug: "meilleur-logiciels-de-recrutement" },
-  { label: "Logiciels de Recrutement", slug: "meilleur-logiciels-de-recrutement" },
-  { label: "Logiciels de Recrutement", slug: "meilleur-logiciels-de-recrutement" },
-  { label: "Logiciels de Recrutement", slug: "meilleur-logiciels-de-recrutement" },
-  { label: "Logiciels de Recrutement", slug: "meilleur-logiciels-de-recrutement" },
-  { label: "Logiciels de Recrutement", slug: "meilleur-logiciels-de-recrutement" },
-  { label: "Logiciels de Recrutement", slug: "meilleur-logiciels-de-recrutement" },
-  { label: "Logiciels de Recrutement", slug: "meilleur-logiciels-de-recrutement" },
-  { label: "Logiciel de bien-être des employés", slug: "meilleur-logiciel-de-bien-etre-des-employes" },
-  { label: "Logiciel de bien-être des employés", slug: "meilleur-logiciel-de-bien-etre-des-employes" },
-  { label: "Logiciel de bien-être des employés", slug: "meilleur-logiciel-de-bien-etre-des-employes" },
-  { label: "Logiciel de bien-être des employés", slug: "meilleur-logiciel-de-bien-etre-des-employes" },
-  { label: "Logiciel de bien-être des employés", slug: "meilleur-logiciel-de-bien-etre-des-employes" },
-  { label: "Logiciel de bien-être des employés", slug: "meilleur-logiciel-de-bien-etre-des-employes" },
-  { label: "Logiciel de bien-être des employés", slug: "meilleur-logiciel-de-bien-etre-des-employes" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des congés et absences", slug: "meilleur-logiciel-de-gestion-des-conges-et-absences" },
-  { label: "Logiciel de gestion des congés et absences", slug: "meilleur-logiciel-de-gestion-des-conges-et-absences" },
-  { label: "Logiciel de gestion des congés et absences", slug: "meilleur-logiciel-de-gestion-des-conges-et-absences" },
-  { label: "Logiciel de gestion des congés et absences", slug: "meilleur-logiciel-de-gestion-des-conges-et-absences" },
-  { label: "Logiciel de gestion des congés et absences", slug: "meilleur-logiciel-de-gestion-des-conges-et-absences" },
-  { label: "Logiciel de gestion des congés et absences", slug: "meilleur-logiciel-de-gestion-des-conges-et-absences" },
-  { label: "Logiciel de gestion des congés et absences", slug: "meilleur-logiciel-de-gestion-des-conges-et-absences" },
-  { label: "Logiciel de gestion des congés et absences", slug: "meilleur-logiciel-de-gestion-des-conges-et-absences" },
-  { label: "Logiciel de engagement des collaborateurs", slug: "meilleur-logiciel-de-engagement-des-collaborateurs" },
-  { label: "Logiciel de engagement des collaborateurs", slug: "meilleur-logiciel-de-engagement-des-collaborateurs" },
-  { label: "Logiciel de engagement des collaborateurs", slug: "meilleur-logiciel-de-engagement-des-collaborateurs" },
-  { label: "Logiciel de engagement des collaborateurs", slug: "meilleur-logiciel-de-engagement-des-collaborateurs" },
-  { label: "Logiciel de engagement des collaborateurs", slug: "meilleur-logiciel-de-engagement-des-collaborateurs" },
-  { label: "Logiciel de engagement des collaborateurs", slug: "meilleur-logiciel-de-engagement-des-collaborateurs" },
-  { label: "Logiciel de gestion des compétences", slug: "meilleur-logiciel-de-gestion-des-competences" },
-  { label: "Logiciel de gestion des compétences", slug: "meilleur-logiciel-de-gestion-des-competences" },
-  { label: "Logiciel de gestion des compétences", slug: "meilleur-logiciel-de-gestion-des-competences" },
-  { label: "Logiciel de gestion des compétences", slug: "meilleur-logiciel-de-gestion-des-competences" },
-  { label: "Logiciel de gestion des compétences", slug: "meilleur-logiciel-de-gestion-des-competences" },
-  { label: "Logiciel de gestion des compétences", slug: "meilleur-logiciel-de-gestion-des-competences" },
-  { label: "Logiciel de gestion des compétences", slug: "meilleur-logiciel-de-gestion-des-competences" },
-  { label: "Logiciel de gestion des compétences", slug: "meilleur-logiciel-de-gestion-des-competences" },
-  { label: "Logiciel de gestion des compétences", slug: "meilleur-logiciel-de-gestion-des-competences" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel d'audit et commissariat aux comptes", slug: "meilleur-logiciel-d-audit-et-commissariat-aux-comptes" },
-  { label: "Logiciel d'audit et commissariat aux comptes", slug: "meilleur-logiciel-d-audit-et-commissariat-aux-comptes" },
-  { label: "Logiciel d'audit et commissariat aux comptes", slug: "meilleur-logiciel-d-audit-et-commissariat-aux-comptes" },
-  { label: "Logiciel d'audit et commissariat aux comptes", slug: "meilleur-logiciel-d-audit-et-commissariat-aux-comptes" },
-  { label: "Logiciel d'audit et commissariat aux comptes", slug: "meilleur-logiciel-d-audit-et-commissariat-aux-comptes" },
-  { label: "Logiciel d'audit et commissariat aux comptes", slug: "meilleur-logiciel-d-audit-et-commissariat-aux-comptes" },
-  { label: "Logiciel d'audit et commissariat aux comptes", slug: "meilleur-logiciel-d-audit-et-commissariat-aux-comptes" },
-  { label: "Logiciel de gestion d'abonnements", slug: "meilleur-logiciel-de-gestion-d-abonnements" },
-  { label: "Logiciel de gestion d'abonnements", slug: "meilleur-logiciel-de-gestion-d-abonnements" },
-  { label: "Logiciel de gestion d'abonnements", slug: "meilleur-logiciel-de-gestion-d-abonnements" },
-  { label: "Logiciel de gestion d'abonnements", slug: "meilleur-logiciel-de-gestion-d-abonnements" },
-  { label: "Logiciel de gestion d'abonnements", slug: "meilleur-logiciel-de-gestion-d-abonnements" },
-  { label: "Logiciel de gestion d'abonnements", slug: "meilleur-logiciel-de-gestion-d-abonnements" },
-  { label: "Logiciel de gestion d'abonnements", slug: "meilleur-logiciel-de-gestion-d-abonnements" },
-  { label: "Logiciel de gestion d'abonnements", slug: "meilleur-logiciel-de-gestion-d-abonnements" },
-  { label: "Logiciel de gestion d'abonnements", slug: "meilleur-logiciel-de-gestion-d-abonnements" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de notes de frais", slug: "meilleur-logiciel-de-notes-de-frais" },
-  { label: "Logiciel de notes de frais", slug: "meilleur-logiciel-de-notes-de-frais" },
-  { label: "Logiciel de notes de frais", slug: "meilleur-logiciel-de-notes-de-frais" },
-  { label: "Logiciel de notes de frais", slug: "meilleur-logiciel-de-notes-de-frais" },
-  { label: "Logiciel de notes de frais", slug: "meilleur-logiciel-de-notes-de-frais" },
-  { label: "Logiciel de notes de frais", slug: "meilleur-logiciel-de-notes-de-frais" },
-  { label: "Logiciel de notes de frais", slug: "meilleur-logiciel-de-notes-de-frais" },
-  { label: "Logiciel de notes de frais", slug: "meilleur-logiciel-de-notes-de-frais" },
-  { label: "Logiciel de notes de frais", slug: "meilleur-logiciel-de-notes-de-frais" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de gestion de l’avance immédiate de crédit d’impôts", slug: "meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impôts" },
-  { label: "Logiciel de gestion de l’avance immédiate de crédit d’impôts", slug: "meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impôts" },
-  { label: "Logiciel de gestion de l’avance immédiate de crédit d’impôts", slug: "meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impôts" },
-  { label: "Logiciel de gestion de l’avance immédiate de crédit d’impôts", slug: "meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impôts" },
-  { label: "Logiciel de gestion de l’avance immédiate de crédit d’impôts", slug: "meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impôts" },
-  { label: "Logiciel de gestion de l’avance immédiate de crédit d’impôts", slug: "meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impôts" },
-  { label: "Logiciel de gestion de l’avance immédiate de crédit d’impôts", slug: "meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impôts" },
-  { label: "Logiciel de gestion de l’avance immédiate de crédit d’impôts", slug: "meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impôts" },
-  { label: "Logiciel de gestion de l’avance immédiate de crédit d’impôts", slug: "meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impôts" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de gestion financière", slug: "meilleur-logiciel-de-gestion-financiere" },
-  { label: "Logiciel de gestion financière", slug: "meilleur-logiciel-de-gestion-financiere" },
-  { label: "Logiciel de gestion financière", slug: "meilleur-logiciel-de-gestion-financiere" },
-  { label: "Logiciel de gestion financière", slug: "meilleur-logiciel-de-gestion-financiere" },
-  { label: "Logiciel de gestion financière", slug: "meilleur-logiciel-de-gestion-financiere" },
-  { label: "Logiciel de gestion financière", slug: "meilleur-logiciel-de-gestion-financiere" },
-  { label: "Logiciel de gestion financière", slug: "meilleur-logiciel-de-gestion-financiere" },
-  { label: "Logiciel de gestion financière", slug: "meilleur-logiciel-de-gestion-financiere" },
-  { label: "Logiciel de gestion financière", slug: "meilleur-logiciel-de-gestion-financiere" },
-  { label: "Terminaux de paiement", slug: "meilleur-terminaux-de-paiement" },
-  { label: "Terminaux de paiement", slug: "meilleur-terminaux-de-paiement" },
-  { label: "Terminaux de paiement", slug: "meilleur-terminaux-de-paiement" },
-  { label: "Terminaux de paiement", slug: "meilleur-terminaux-de-paiement" },
-  { label: "Terminaux de paiement", slug: "meilleur-terminaux-de-paiement" },
-  { label: "Terminaux de paiement", slug: "meilleur-terminaux-de-paiement" },
-  { label: "Terminaux de paiement", slug: "meilleur-terminaux-de-paiement" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel ERP", slug: "meilleur-logiciel-erp" },
-  { label: "Logiciel ERP", slug: "meilleur-logiciel-erp" },
-  { label: "Logiciel ERP", slug: "meilleur-logiciel-erp" },
-  { label: "Logiciel ERP", slug: "meilleur-logiciel-erp" },
-  { label: "Logiciel ERP", slug: "meilleur-logiciel-erp" },
-  { label: "Logiciel ERP", slug: "meilleur-logiciel-erp" },
-  { label: "Logiciel ERP", slug: "meilleur-logiciel-erp" },
-  { label: "Logiciel ERP", slug: "meilleur-logiciel-erp" },
-  { label: "Logiciel ERP", slug: "meilleur-logiciel-erp" },
-  { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
-  { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
-  { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
-  { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
-  { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
-  { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
-  { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
-  { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
-  { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },
-  { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },
-  { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },
-  { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },
-  { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },
-  { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },
-  { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },
-  { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
 ].filter((v,i,a) => a.findIndex(t=>t.label===v.label)===i);
 
 const searchInput = document.getElementById('search-input');
