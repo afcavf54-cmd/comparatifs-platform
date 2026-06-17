@@ -4,15 +4,21 @@ slug: 2748-pourquoi-ne-pas-garder-la-config-d-usine-de-leadflow-automation
 date: '2026-06-17T07:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Configurer le CRM LeadFlow Automation vs réglages par défaut
-meta_description: 'Config d''usine de LeadFlow Automation : découvrez pourquoi la garder est une erreur et comment personnaliser vos workflows pour des leads mieux qualifiés.'
+meta_description: 'Config d''usine de LeadFlow Automation : découvrez pourquoi la
+  garder est une erreur et comment personnaliser vos workflows pour des leads mieux
+  qualifiés.'
 min_words: 940
 status: published
 featured_image: /blog/2748-pourquoi-ne-pas-garder-la-config-d-usine-de-leadflow-automation.jpg
 link_anchors:
 - text: comment configurer le CRM LeadFlow Automation
   max: 5
+related_posts:
+- 7027-integration-de-l-erp-flexmanage-plus-les-pieges-techniques
+- 5508-ruptures-et-surstocks-les-pieges-sous-inventory-control-smart
+- 2662-faut-il-configurer-l-erp-dynabiz-pro-en-interne
+- 5187-installation-de-l-erp-cloudmanager-enterprise-les-pieges
 ---
-
 <p>La config d'usine d'un outil d'automatisation, c'est un peu comme une voiture sortie du concessionnaire avec les réglages du siège d'un inconnu. Techniquement ça roule. Mais tu n'es pas à l'aise, tu ajustes le rétro toutes les cinq minutes, et tu perds du temps à chaque virage.</p>
 
 <p>Avec LeadFlow Automation, j'ai fait l'erreur de garder les paramètres par défaut pendant presque trois semaines après l'installation. Résultat : des leads qui tombaient dans les mauvaises séquences, des relances envoyées trop tôt, et deux commerciaux de mon équipe qui ne comprenaient pas pourquoi leurs tableaux de bord ne correspondaient pas à leur pipeline réel. <strong>Trois semaines perdues.</strong> Pas catastrophique, mais clairement évitable.</p>
