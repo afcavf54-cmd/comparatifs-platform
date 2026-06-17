@@ -20,7 +20,7 @@ codes:
     code: ""
     detail: ""
     expire_le: ""
-    nb_utilisations: 0
+    nb_utilisations: 150
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
