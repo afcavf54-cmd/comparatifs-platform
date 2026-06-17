@@ -38,7 +38,7 @@ interface BlockCfg {
   allowsCustomPrompt: boolean; outputFormat: 'html' | 'prose' | 'json'
 }
 
-const SOUS_TYPES = ['Code promo', 'Bon plan', 'Cashback', 'Livraison gratuite', 'Code étudiant', 'Première commande', 'Autre']
+const SOUS_TYPES = ['Code promo', 'Parrainage', 'Bon plan', 'Cashback', 'Livraison gratuite', 'Code étudiant', 'Première commande', 'Autre']
 const MONTHS_FR = ['', 'Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Déc']
 
 // Labels humains des blocs (pour la modale, les messages, etc.)
