@@ -4,15 +4,21 @@ slug: 8567-fin-de-cdd-sans-reponse-de-l-employeur-quelles-demarches-entreprendre
 date: '2026-06-17T10:00:00+02:00'
 categorie: Salarié
 meta_title: 'Fin de CDD sans nouvelles de l''employeur : vos droits'
-meta_description: 'CDD sans réponse de l''employeur : que faire quand la date de fin approche et que le silence persiste ? Vos droits, les démarches et les risques de requalification…'
+meta_description: 'CDD sans réponse de l''employeur : que faire quand la date de fin
+  approche et que le silence persiste ? Vos droits, les démarches et les risques de
+  requalification…'
 min_words: 1200
 status: published
 featured_image: /blog/8567-fin-de-cdd-sans-reponse-de-l-employeur-quelles-demarches-entreprendre.jpg
 link_anchors:
 - text: pas de nouvelle de l'employeur à la fin d'un CDD
   max: 4
+related_posts:
+- 8092-refus-d-amenagement-d-horaire-avec-une-rqth-comment-faire-valoir-vos-droits
+- 3837-radiation-pole-emploi-combien-d-avertissements-avant-une-sanction
+- 9279-accord-implicite-de-rupture-conventionnelle-ce-que-prevoit-reellement-la-loi
+- 3650-mon-patron-change-mes-horaires-sans-preavis-ce-que-dit-le-droit-du-travail
 ---
-
 <p>Votre CDD arrive à terme, vous n'avez aucune nouvelle de votre employeur, et vous ne savez pas trop si vous êtes censé revenir travailler le lendemain matin. Ce flou est plus fréquent qu'on ne le croit. Et franchement, c'est une situation qui peut vite devenir stressante si on ne sait pas comment réagir.</p>
 
 <p>J'ai accompagné plusieurs salariés dans des situations similaires au fil de mes années en comptabilité et RH. La bonne nouvelle : le droit du travail est assez clair sur ce point. La mauvaise : encore faut-il savoir s'en servir.</p>
