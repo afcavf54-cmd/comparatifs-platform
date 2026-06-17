@@ -21,7 +21,9 @@ interface Brand {
   url_marchand?: string; url_affiliation?: string; logo_url?: string
   description_marque?: string; avis_sophie?: string; conseil_sophie?: string
   rating?: BrandRating; codes?: CodePromo[]; faq?: BrandFaq[]
-  historique_12_mois?: BrandHistoryMonth[]; related_brands?: string[]
+  historique_12_mois?: BrandHistoryMonth[]
+  historique_unite?: '%' | '€'   // unité globale du mini-graphique
+  related_brands?: string[]
   status?: 'draft' | 'published'; meta_title?: string; meta_description?: string
   h1_custom?: string  // H1 perso supportant les variables {marque}, {mois}, etc.
   date_creation?: string; date_maj?: string
@@ -855,20 +857,54 @@ export default function CodesPromoEditPage() {
 
         {/* ── HISTORIQUE 12 MOIS ──────────────────────────────────── */}
         <div style={S.section}>
-          <div style={S.sectionTitle}>📊 Historique des remises (12 derniers mois)</div>
-          <div style={S.sectionSub}>La meilleure remise disponible chaque mois sur les 12 derniers mois (en %).</div>
+          <div style={{ ...S.sectionTitle, justifyContent: 'space-between' }}>
+            <span>📊 Historique des remises (12 derniers mois)</span>
+            {/* Sélecteur d'unité globale pour l'historique. Cohérent pour 99%
+                des marques : soit toute l'année en %, soit toute en €. */}
+            <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+              <span style={{ fontSize: 12, color: '#666', fontWeight: 600, marginRight: 6 }}>Unité :</span>
+              {(['%', '€'] as const).map(u => (
+                <button
+                  key={u}
+                  type="button"
+                  onClick={() => update('historique_unite', u)}
+                  style={{
+                    ...S.chipBtn,
+                    ...((brand.historique_unite || '%') === u ? S.chipBtnActive : {}),
+                    minWidth: 38, justifyContent: 'center',
+                  }}
+                >{u}</button>
+              ))}
+            </div>
+          </div>
+          <div style={S.sectionSub}>
+            La meilleure remise disponible chaque mois sur les 12 derniers mois.
+            L'unité ({brand.historique_unite || '%'}) s'applique à tous les mois.
+          </div>
           <div style={S.historyGrid}>
             {(brand.historique_12_mois || []).map((h, idx) => {
               const [year, month] = h.mois.split('-')
               const label = `${MONTHS_FR[parseInt(month)]} ${year.slice(2)}`
+              const unite = brand.historique_unite || '%'
               return (
                 <div key={h.mois} style={S.histCell}>
-                  <input
-                    type="number" min={0} max={100} step={1}
-                    style={S.histInput}
-                    value={h.valeur}
-                    onChange={e => updateHistory(idx, parseInt(e.target.value) || 0)}
-                  />
+                  <div style={{ position: 'relative', width: '100%' }}>
+                    <input
+                      type="number"
+                      min={0}
+                      // Max 100 si %, sinon libre (on borne à 999 € pour rester raisonnable)
+                      max={unite === '%' ? 100 : 9999}
+                      step={1}
+                      style={{ ...S.histInput, paddingRight: 18 }}
+                      value={h.valeur}
+                      onChange={e => updateHistory(idx, parseInt(e.target.value) || 0)}
+                    />
+                    <span style={{
+                      position: 'absolute', right: 6, top: '50%',
+                      transform: 'translateY(-50%)',
+                      fontSize: 11, color: '#888', pointerEvents: 'none',
+                    }}>{unite}</span>
+                  </div>
                   <div style={{ fontSize: 11, color: '#888' }}>{label}</div>
                 </div>
               )
