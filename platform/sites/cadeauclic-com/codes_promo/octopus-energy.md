@@ -21,7 +21,7 @@ codes:
     detail: ""
     expire_le: "2028-12-31"
     nb_utilisations: 150
-    teste_par_sophie: Testé par Sophie
+    teste_par_sophie: Testé par Sophie en {mois_annee}
     meilleure_remise: false
     expired: false
   - id: cmqi2qgcjupvd
