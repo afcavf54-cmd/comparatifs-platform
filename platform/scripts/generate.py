@@ -995,6 +995,38 @@ def _post_process_dates_tracking(output_dir: Path, site_dir: Path,
 
 
 # ── Générateur principal ───────────────────────────────────────────────────────
+def _normalize_site_url(site_config: dict, parent_config: dict | None = None) -> str:
+    """Construit l'URL canonique du site (toujours https://, avec ou sans www
+    selon www_preference) à partir de config.site.
+
+    Robuste face aux 4 variations historiques de config.yaml :
+      - domain = "cadeauclic.com"             → https://www.cadeauclic.com
+      - domain = "www.cadeauclic.com"         → https://www.cadeauclic.com
+      - domain = "https://cadeauclic.com"     → https://www.cadeauclic.com  (cf bug 17 juin)
+      - domain = "https://www.cadeauclic.com" → https://www.cadeauclic.com
+
+    Si site.url est défini explicitement, on l'utilise tel quel (après strip /).
+    Sinon on reconstruit depuis site.domain + www_preference.
+    """
+    explicit_url = (site_config.get("url") or "").rstrip("/")
+    if explicit_url:
+        return explicit_url
+    domain_raw = (site_config.get("domain") or "").strip()
+    if not domain_raw:
+        return ""
+    cleaned = (domain_raw
+               .replace("https://", "")
+               .replace("http://", "")
+               .lstrip("/")
+               .rstrip("/"))
+    cleaned_no_www = cleaned[4:] if cleaned.startswith("www.") else cleaned
+    www_pref = (site_config.get("www_preference")
+                or (parent_config or {}).get("www_preference", "www"))
+    if www_pref == "www":
+        return f"https://www.{cleaned_no_www}"
+    return f"https://{cleaned_no_www}"
+
+
 def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = None) -> None:
     # ⚠⚠⚠ DEBUG MARKER v15 — au TOUT DÉBUT de generate_site ⚠⚠⚠
     # Si tu vois cette ligne dans le log : v11 est bien exécuté, on peut
@@ -2337,9 +2369,7 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     b["_related_resolved"] = codes_promo_engine.resolve_related_brands(b, cp_brands, n=8)
 
                 # ── Rendering de chaque marque ──────────────────────────
-                cp_site_url = (config.get("site", {}).get("url") or "").rstrip("/")
-                if not cp_site_url and config.get("site", {}).get("domain"):
-                    cp_site_url = f"https://{config['site']['domain']}"
+                cp_site_url = _normalize_site_url(config.get("site", {}), config)
                 n_cp = 0
                 for b in cp_brands:
                     slug = b.get("slug", "")
@@ -2434,9 +2464,7 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 "job_title": config["site"].get("author_job_title"),
                 "bio": config["site"].get("author_bio"),
             }
-        _apropos_site_url = (config.get("site", {}).get("url") or "").rstrip("/")
-        if not _apropos_site_url and config.get("site", {}).get("domain"):
-            _apropos_site_url = f"https://{config['site']['domain']}"
+        _apropos_site_url = _normalize_site_url(config.get("site", {}), config)
         try:
             html = apropos_tpl.render(
                 site={**site, "url": _apropos_site_url, "seo": config.get("seo", {})},
