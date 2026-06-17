@@ -58,6 +58,28 @@ historique_12_mois:
     valeur: 40
   - mois: 2026-06
     valeur: 40
+content_libre: |-
+  <h2>Les tarifs</h2>
+
+  <p>Octopus Energy propose une offre principale appelée <strong>Éco-conso</strong>, pensée pour les foyers qui veulent maîtriser leur consommation d'électricité sans mauvaise surprise sur la facture. Le principe est simple : tu paies ton électricité à un tarif indexé sur le marché, avec une structure transparente.</p>
+
+  <p>Pour te donner une idée concrète, voici ce que ça donne en comparaison avec le tarif réglementé d'EDF :</p>
+
+  <ul>
+    <li>Le prix du kWh chez Octopus Energy est souvent <strong>aligné ou légèrement inférieur</strong> au tarif réglementé selon les périodes, avec des ajustements réguliers communiqués clairement aux clients.</li>
+    <li>L'abonnement mensuel reste dans les mêmes eaux que ce que proposent les autres fournisseurs alternatifs.</li>
+    <li>Pas de frais cachés, pas de pénalités si tu changes d'avis : tu pars quand tu veux.</li>
+  </ul>
+
+  <p>Bon, honnêtement, si tu cherches un tarif fixe garanti sur plusieurs années, Octopus n'est pas forcément le choix le plus rassurant. Les prix évoluent avec le marché. C'est à garder en tête avant de souscrire.</p>
+
+  <h2>Les avantages d'Octopus</h2>
+
+  <p>Ce qui m'a vraiment attirée chez Octopus Energy, c'est leur engagement pour une <strong>énergie 100% verte</strong>. Chez eux, l'électricité est issue exclusivement de sources renouvelables. C'est certifié, pas juste un argument de façade.</p>
+
+  <p>Autre point que j'apprécie beaucoup : les <strong>Bonus Octopus</strong>. Le concept est sympa. Quand tu réduis ta consommation pendant les pics de tension sur le réseau électrique, tu accumules des crédits sur ton compte. En clair, tu es récompensé si tu fais un effort. J'ai vu des familles récupérer plusieurs dizaines d'euros sur l'année comme ça.</p>
+
+  <p>Et le service client ? Élu meilleur service client dans l'énergie, et basé en France. Ça change vraiment : quand j'ai eu une question sur ma facture, j'ai eu quelqu'un de compétent en ligne en moins de cinq minutes. Pas de script robotique, une vraie conversation.</p>
 status: published
 date_creation: "2026-06-16"
 date_maj: "2026-06-17"
@@ -76,5 +98,6 @@ Lors du processus d'inscription ou de souscription, cherche le champ prévu pour
 
 ## Étape 4
 Colle ton code dans le champ correspondant et valide pour voir la remise ou le bonus s'appliquer directement à ton contrat d'énergie.
+
 
 
