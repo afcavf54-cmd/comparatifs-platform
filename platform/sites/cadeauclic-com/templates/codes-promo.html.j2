@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ brand.meta_title or ('Codes promo ' ~ brand.marque ~ ' — ' ~ build_month_year ~ ' | ' ~ site.name) }}</title>
-  <meta name="description" content="{{ brand.meta_description or (brand.n_total | string ~ ' codes promo ' ~ brand.marque ~ ' vérifiés. ' ~ (brand.avis_sophie | striptags | truncate(110, true, '…') if brand.avis_sophie else '')) }}">
+  <title>{{ brand.meta_title_resolved or brand.meta_title or ('Codes promo ' ~ brand.marque ~ ' — ' ~ build_month_year ~ ' | ' ~ site.name) }}</title>
+  <meta name="description" content="{{ brand.meta_description_resolved or brand.meta_description or (brand.n_total | string ~ ' codes promo ' ~ brand.marque ~ ' vérifiés. ' ~ (brand.avis_sophie | striptags | truncate(110, true, '…') if brand.avis_sophie else '')) }}">
   <link rel="canonical" href="{{ site.url }}/codes-promo/{{ brand.slug }}/">
   <link rel="icon" href="/favicon.png" type="image/png">
 
@@ -300,7 +300,7 @@
   <!-- PAGE HEAD -->
   <div class="page-head">
     <div>
-      <h1>Codes promo <span class="pink">{{ brand.marque }}</span> — {{ build_month_year }}</h1>
+      <h1>{% if brand.h1_resolved %}{{ brand.h1_resolved | safe }}{% else %}Codes promo <span class="pink">{{ brand.marque }}</span> — {{ build_month_year }}{% endif %}</h1>
       <span class="updated"><span class="dot"></span>{{ brand.n_total }} code{{ 's' if brand.n_total > 1 else '' }} promo {{ brand.marque }} vérifié{{ 's' if brand.n_total > 1 else '' }} le {{ build_date_fr }}</span>
     </div>
     <div class="brandbox">
