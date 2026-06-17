@@ -15,7 +15,7 @@ codes:
     type: code
     valeur: 80
     unite: €
-    sous_type: Bon plan
+    sous_type: Parrainage
     accroche: Bénéficiez de 80€ de prime à partager en cliquant sur notre lien.
     code: ""
     detail: ""
@@ -24,11 +24,12 @@ codes:
     teste_par_sophie: Testé par Sophie en {mois_annee}
     meilleure_remise: false
     expired: false
+    cta_text: Activer l'offre
   - id: cmqi2qgcjupvd
     type: code
     valeur: 40
     unite: €
-    sous_type: Code promo
+    sous_type: Parrainage
     accroche: 40€ OFFERTS A VOTRE INSCRIPTION !
     code: ""
     detail: ""
@@ -37,6 +38,7 @@ codes:
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
+    cta_text: Profiter de la prime
 faq:
   - question: Comment utiliser un code promo Octopus Energy ?
     reponse: Pour utiliser un code promo Octopus Energy, commence par te rendre sur leur site et lance une simulation de contrat. Une fois arrivé à l'étape de souscription, cherche un champ intitulé "code de parrainage" ou "code promo". Colle ton code, valide, et vérifie que la réduction ou le crédit s'applique bien avant de finaliser ton inscription.
@@ -114,6 +116,7 @@ Lors du processus d'inscription ou de souscription, cherche le champ prévu pour
 
 ## Étape 4
 Colle ton code dans le champ correspondant et valide pour voir la remise ou le bonus s'appliquer directement à ton contrat d'énergie.
+
 
 
 
