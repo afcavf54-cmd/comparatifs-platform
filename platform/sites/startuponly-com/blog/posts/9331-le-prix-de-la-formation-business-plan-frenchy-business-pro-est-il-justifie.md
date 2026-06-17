@@ -1,18 +1,20 @@
 ---
-title: Le prix de la formation business plan Frenchy-Business-Pro est-il justifié ?
+title: Le prix de la formation business plan Frenchy-Business-Pro est-il justifié
+  ?
 slug: 9331-le-prix-de-la-formation-business-plan-frenchy-business-pro-est-il-justifie
 date: '2026-06-17T06:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Formation business plan Frenchy-Business-Pro : est-elle rentable ?'
-meta_description: 'Formation Frenchy-Business-Pro sur le business plan : le prix entre 400 et 500 euros est-il vraiment justifié ? Analyse honnête d''un testeur critique.'
+meta_description: 'Formation Frenchy-Business-Pro sur le business plan : le prix entre
+  400 et 500 euros est-il vraiment justifié ? Analyse honnête d''un testeur critique.'
 min_words: 910
 status: published
 featured_image: /blog/9331-le-prix-de-la-formation-business-plan-frenchy-business-pro-est-il-justifie.jpg
 link_anchors:
 - text: la formation business plan Frenchy-Business-Pro
   max: 5
+related_posts: []
 ---
-
 <p>J'ai testé pas mal de formations sur la création d'entreprise ces dernières années. Et franchement, la plupart m'ont déçu. Soit trop théoriques, soit mal structurées, soit carrément hors de prix pour ce qu'elles apportent. Alors quand j'ai croisé Frenchy-Business-Pro dans mon feed, j'ai regardé ça avec un oeil critique. Voilà ce que j'en pense vraiment.</p>
 
 <h2>C'est quoi exactement cette formation ?</h2>
