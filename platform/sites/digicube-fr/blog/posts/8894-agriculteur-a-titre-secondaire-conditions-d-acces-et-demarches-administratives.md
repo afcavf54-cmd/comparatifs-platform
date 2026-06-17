@@ -4,15 +4,21 @@ slug: 8894-agriculteur-a-titre-secondaire-conditions-d-acces-et-demarches-admini
 date: '2026-06-17T16:00:00+02:00'
 categorie: Création entreprise
 meta_title: 'Statut agriculteur à titre secondaire : démarches et fonctionnement'
-meta_description: Vous exercez une activité agricole en complément de votre emploi principal ? Découvrez les conditions du statut d'agriculteur à titre secondaire, les démarches MSA…
+meta_description: Vous exercez une activité agricole en complément de votre emploi
+  principal ? Découvrez les conditions du statut d'agriculteur à titre secondaire,
+  les démarches MSA…
 min_words: 1200
 status: published
 featured_image: /blog/8894-agriculteur-a-titre-secondaire-conditions-d-acces-et-demarches-administratives.jpg
 link_anchors:
 - text: statut agriculteur à titre secondaire
   max: 4
+related_posts:
+- 7650-scea-avantages-contraintes-et-fonctionnement-expliques-simplement
+- 2094-avance-sur-dividendes-en-sasu-conditions-risques-et-precautions-a-prendre
+- 9434-creer-un-produit-guide-pratique-pour-concevoir-et-commercialiser-votre-offre
+- 3259-creer-une-association-et-en-vivre-statut-remuneration-et-bonnes-pratiques
 ---
-
 <p>J'ai mis du temps à comprendre ce statut. Pas parce que c'est compliqué dans l'absolu, mais parce qu'on en parle peu. Agriculteur à titre secondaire, c'est une situation qui concerne beaucoup de monde sans qu'on mette vraiment un nom dessus. Un salarié qui hérite d'une parcelle. Un artisan qui reprend les terres familiales. Un gérant de TPE qui veut développer une activité agricole à côté. C'est ça, la réalité.</p>
 
 <p>Voici ce que j'ai appris sur les conditions d'accès, les démarches, et les pièges à éviter.</p>

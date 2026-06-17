@@ -1,18 +1,25 @@
 ---
-title: 'Je travaille sans contrat depuis plusieurs jours : quelles protections pour le salarié ?'
+title: 'Je travaille sans contrat depuis plusieurs jours : quelles protections pour
+  le salarié ?'
 slug: 6793-je-travaille-sans-contrat-depuis-plusieurs-jours-quelles-protections-pour-le-salarie
 date: '2026-06-17T14:00:00+02:00'
 categorie: Salarié
 meta_title: 'Je travaille sans contrat depuis 15 jours : risques et protections'
-meta_description: Travailler sans contrat écrit expose à des risques réels. Découvrez vos droits en tant que salarié, les protections légales qui s'appliquent et les recours…
+meta_description: Travailler sans contrat écrit expose à des risques réels. Découvrez
+  vos droits en tant que salarié, les protections légales qui s'appliquent et les
+  recours…
 min_words: 1200
 status: published
 featured_image: /blog/6793-je-travaille-sans-contrat-depuis-plusieurs-jours-quelles-protections-pour-le-salarie.jpg
 link_anchors:
 - text: si vous travaillez depuis 15 jours sans contrat
   max: 4
+related_posts:
+- 3554-les-inconvenients-du-cdi-interimaire-avant-de-signer
+- 3761-radiation-pole-emploi-procedure-delais-et-consequences-pour-les-demandeurs-d-emploi
+- 8171-fin-de-cdd-sans-nouvelles-de-l-employeur-les-solutions-a-envisager
+- 1340-horaire-decale-reglementation-remuneration-et-organisation-du-travail
 ---
-
 <p>J'ai vécu cette situation il y a deux ans avec l'une de mes salariées. Elle avait commencé à travailler le lundi matin. Le contrat écrit ? Il n'est arrivé que dix jours plus tard. Entre temps, elle bossait, pointait, gérait des clients. Aucun papier signé. Et personne n'avait pensé à se poser la question.</p>
 
 <p>C'est une situation plus courante qu'on ne le croit. Côté salarié, ça peut vite devenir angoissant. Vous travaillez, vous donnez de votre temps, mais vous n'avez rien entre les mains. Pas de contrat, pas de preuve, et une vraie incertitude sur vos droits.</p>
