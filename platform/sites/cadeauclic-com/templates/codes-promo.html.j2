@@ -409,9 +409,10 @@
         <h2>Historique des remises {{ brand.marque }}</h2>
         <p style="color:var(--ink-soft);margin-bottom:20px;font-size:.95rem">La meilleure remise disponible chaque mois sur les 12 derniers mois.</p>
         {% set max_val = brand.historique_12_mois | map(attribute='valeur') | max %}
+        {% set hist_unite = brand.historique_unite or '%' %}
         <div class="chart">
           {% for h in brand.historique_12_mois %}
-          <div class="bar" style="height: {{ (h.valeur / max_val * 100) | round(0) | int }}%" data-val="{{ h.valeur | int }}%"></div>
+          <div class="bar" style="height: {{ (h.valeur / max_val * 100) | round(0) | int if max_val else 0 }}%" data-val="{{ h.valeur | int }}{{ hist_unite }}"></div>
           {% endfor %}
         </div>
         <div class="chart-x">
