@@ -212,28 +212,29 @@
     /* ═══ MAIN WRAP ════════════════════════════════════════════════════════ */
     .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-    /* Breadcrumb */
-    .crumb { padding: 20px 0 8px; font-size: .9rem; color: var(--ink-soft); }
+    /* Breadcrumb — pas de padding-bottom : l'écart .crumb → .page-head est
+       contrôlé par padding-top: 40px de .page-head (cf demande Julien 17 juin). */
+    .crumb { padding: 20px 0 0; font-size: .9rem; color: var(--ink-soft); }
     .crumb a { color: var(--ink-soft); }
     .crumb a:hover { color: var(--rose-600); }
     .crumb span { color: var(--ink); font-weight: 600; }
 
-    /* Page head : grid 1fr 340px aligné avec .layout pour que le logo soit
-       centré dans la même colonne que la sidebar. align-items: end → le texte
-       (h1 + updated) est aligné en bas, donc l'écart entre .updated et .tabs
-       est contrôlé par margin-top des tabs, indépendant de la hauteur du logo. */
-    .page-head { display: grid; grid-template-columns: 1fr 340px; gap: 36px; padding: 24px 0 0; align-items: end; }
+    /* Page head : grid 1fr 340px aligné avec .layout (sidebar). align-items:
+       start = H1 et logo alignés en HAUT. Les .tabs sont placées DANS la
+       colonne gauche de .page-head pour qu'elles soient à 40px précis sous
+       .updated, indépendamment de la hauteur du logo. */
+    .page-head { display: grid; grid-template-columns: 1fr 340px; gap: 36px; padding: 40px 0 0; align-items: start; }
+    .page-head .head-left { display: flex; flex-direction: column; }
     .page-head h1 { font-size: 2.4rem; line-height: 1.15; margin-bottom: 8px; }
     .pink { color: var(--rose-600); }
-    .updated { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-soft); font-size: .95rem; }
+    .updated { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-soft); font-size: .95rem; align-self: flex-start; }
     .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
     .brandbox { width: 200px; height: 200px; background: var(--white); border-radius: 24px; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 22px; flex-shrink: 0; box-shadow: var(--shadow-sm); margin: 0 auto; }
     .brandbox img { max-width: 100%; max-height: 100%; object-fit: contain; }
     .brandbox .ph { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--rose-600); font-size: 1.3rem; text-align: center; }
 
-    /* Tabs filtres — écart de 40px sous le .updated (contrôlé ici pour rester
-       précis quelle que soit la hauteur du logo dans .page-head). */
+    /* Tabs filtres — dans .head-left, à 40px sous .updated */
     .tabs { display: flex; gap: 8px; padding-bottom: 24px; margin-top: 40px; flex-wrap: wrap; }
     .tab { background: var(--white); border: 1px solid var(--line); padding: 10px 16px; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: .9rem; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 6px; transition: all .2s; }
     .tab .count { background: var(--rose-50); color: var(--rose-600); padding: 2px 8px; border-radius: 999px; font-size: .8rem; font-weight: 700; }
@@ -611,22 +612,22 @@
 
   <!-- PAGE HEAD -->
   <div class="page-head">
-    <div>
+    <div class="head-left">
       <h1>Code Parrainage Octopus Energy Juin 2026 : 80€</h1>
       <span class="updated"><span class="dot"></span>2 codes promo Octopus Energy vérifiés le 17 juin 2026</span>
+
+      <!-- TABS (dans .head-left pour rester à 40px précis sous .updated) -->
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-filter="all">Tout <span class="count">2</span></button>
+        <button class="tab" data-filter="code">Codes promo <span class="count">2</span></button>
+        <button class="tab" data-filter="offer">Offres <span class="count">0</span></button>
+        <button class="tab" data-filter="best">Meilleure remise</button>
+      </div>
     </div>
     <div class="brandbox">
       <img src="/codes-promo/octopus-energy/logo.png" alt="Logo Octopus Energy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
       <div class="ph" style="display:none">Octopus Energy</div>
     </div>
-  </div>
-
-  <!-- TABS -->
-  <div class="tabs" id="tabs">
-    <button class="tab active" data-filter="all">Tout <span class="count">2</span></button>
-    <button class="tab" data-filter="code">Codes promo <span class="count">2</span></button>
-    <button class="tab" data-filter="offer">Offres <span class="count">0</span></button>
-    <button class="tab" data-filter="best">Meilleure remise</button>
   </div>
 
   <!-- LAYOUT -->
