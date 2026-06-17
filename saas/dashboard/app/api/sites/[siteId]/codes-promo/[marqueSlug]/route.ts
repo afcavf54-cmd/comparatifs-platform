@@ -143,6 +143,10 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
       date_creation: body.date_creation || new Date().toISOString().slice(0, 10),
       date_maj: new Date().toISOString().slice(0, 10),
       content_md: body.content_md || '',
+      // Bloc HTML libre affiché sous l'historique des remises. Optionnel.
+      // Sans ce champ ici, la route PUT le jetait silencieusement avant
+      // serializeBrand (cf bug Octopus Energy 17 juin).
+      content_libre: typeof body.content_libre === 'string' ? body.content_libre : '',
     }
 
     stage = 'serializeBrand'
