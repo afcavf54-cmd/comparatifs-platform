@@ -4,15 +4,21 @@ slug: 1601-bizflow-evolution-est-il-surdimensionne-pour-une-pme
 date: '2026-06-17T19:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Implémenter l'ERP BizFlow Evolution vs ERP plus léger pour PME
-meta_description: BizFlow Evolution est-il adapté aux PME ou trop complexe pour elles ? Retour d'expérience concret d'un dirigeant de 150 salariés sur cet ERP puissant mais exigeant.
+meta_description: BizFlow Evolution est-il adapté aux PME ou trop complexe pour elles
+  ? Retour d'expérience concret d'un dirigeant de 150 salariés sur cet ERP puissant
+  mais exigeant.
 min_words: 1000
 status: published
 featured_image: /blog/1601-bizflow-evolution-est-il-surdimensionne-pour-une-pme.jpg
 link_anchors:
 - text: comment implémenter l'ERP BizFlow Evolution dans une PME
   max: 5
+related_posts:
+- 8699-strategie-corporate-comment-definir-les-orientations-globales-de-votre-entreprise
+- 6254-calcul-prix-de-vente-avec-taux-de-marge-comment-garantir-votre-rentabilite
+- 5289-matrice-tows-guide-pratique-pour-renforcer-votre-strategie-d-entreprise
+- 9378-strategie-de-croissance-construire-un-plan-efficace-pour-gagner-des-parts-de-marche
 ---
-
 <p>Je vais être honnête avec vous : quand mon directeur informatique m'a parlé de BizFlow Evolution pour la première fois, j'ai cru que c'était une blague. On gère une entreprise de 150 personnes à Marseille, on n'est pas Amazon. Et voilà qu'on me propose un ERP avec des modules qu'on n'utilisera probablement jamais.</p>
 
 <p>J'ai quand même creusé le sujet. Pendant plusieurs semaines. Parce que notre logiciel de gestion actuel commence à montrer ses limites, et que les devis qu'on reçoit ressemblent parfois à des budgets de collectivité locale.</p>
