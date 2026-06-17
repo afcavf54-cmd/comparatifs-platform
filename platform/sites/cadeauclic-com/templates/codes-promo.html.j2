@@ -363,7 +363,7 @@
           {% endif %}
         </div>
         <button class="reveal" data-type="{{ c.type }}" data-code="{{ c.code }}" data-id="{{ c.id }}">
-          <span class="label">{% if c.type == 'code' %}Voir le code 🏷️{% else %}Profiter de l'offre →{% endif %}</span>
+          <span class="label">{% if c.cta_text %}{{ c.cta_text }}{% elif c.type == 'code' %}Voir le code 🏷️{% else %}Profiter de l'offre →{% endif %}</span>
           {% if c.code %}<span class="peek">{{ c.code[:2] }}•••</span>{% endif %}
         </button>
       </article>
