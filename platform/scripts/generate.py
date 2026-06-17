@@ -2376,24 +2376,54 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     if not slug:
                         continue
 
-                    # ── Substitution des variables dans meta_title, meta_description
-                    # et h1_custom. Cf docstring de substitute_brand_vars(). Pré-
-                    # calculé ici (au moment du render) plutôt que dans Jinja
-                    # parce que les variables comme {mois_annee} viennent du
-                    # contexte de build, pas du frontmatter.
+                    # ── Substitution des variables {marque}, {Mois_annee}, etc.
+                    # Étendue à TOUS les champs textuels saisis par l'utilisateur
+                    # via le HUB pour éviter les bugs "variables qui marchent ici
+                    # mais pas là" (cf demande 17 juin pour teste_par_sophie).
+                    # Les valeurs sont substituées EN PLACE dans le dict brand,
+                    # SAUF h1_custom qui produit un champ séparé `h1_resolved`
+                    # car il contient du HTML (span.pink) injecté via |safe.
                     _build_ctx = {
                         'mois_fr': _cp_months_fr[today.month],
                         'annee': today.year,
                         'mois_annee_fr': _cp_month_year,
                     }
                     _cp_site_ctx = {**site, 'url': cp_site_url}
-                    b['meta_title_resolved'] = codes_promo_engine.substitute_brand_vars(
-                        b.get('meta_title', '') or '', b, _cp_site_ctx, _build_ctx)
-                    b['meta_description_resolved'] = codes_promo_engine.substitute_brand_vars(
-                        b.get('meta_description', '') or '', b, _cp_site_ctx, _build_ctx)
-                    b['h1_resolved'] = codes_promo_engine.substitute_brand_vars(
-                        b.get('h1_custom', '') or '', b, _cp_site_ctx, _build_ctx,
-                        wrap_marque_pink=True)
+                    _sub = codes_promo_engine.substitute_brand_vars
+
+                    # Champs textuels du brand (niveau racine)
+                    for _k in ('meta_title', 'meta_description', 'description_marque',
+                               'avis_sophie', 'conseil_sophie', 'content_libre', 'content_md'):
+                        if b.get(_k):
+                            b[_k] = _sub(b[_k], b, _cp_site_ctx, _build_ctx)
+
+                    # H1 personnalisé : champ séparé h1_resolved car contient du HTML
+                    b['h1_resolved'] = _sub(b.get('h1_custom', '') or '', b,
+                                            _cp_site_ctx, _build_ctx,
+                                            wrap_marque_pink=True)
+
+                    # FAQ (question + réponse)
+                    for _q in b.get('faq') or []:
+                        if _q.get('question'):
+                            _q['question'] = _sub(_q['question'], b, _cp_site_ctx, _build_ctx)
+                        if _q.get('reponse'):
+                            _q['reponse'] = _sub(_q['reponse'], b, _cp_site_ctx, _build_ctx)
+
+                    # Codes individuels : accroche, detail, teste_par_sophie, cta_text
+                    # (NOT le champ "code" lui-même qui doit rester littéral)
+                    for _c in b.get('codes') or []:
+                        for _ck in ('accroche', 'detail', 'teste_par_sophie', 'cta_text'):
+                            if _c.get(_ck):
+                                _c[_ck] = _sub(_c[_ck], b, _cp_site_ctx, _build_ctx)
+                    # Re-séparer codes_actifs / codes_expires après mutation
+                    # (parse_brand a déjà fait le split, mais les références
+                    # pointent sur les mêmes objets donc la mutation propage)
+
+                    # Backward-compat : on garde meta_title_resolved et
+                    # meta_description_resolved pour les templates non encore
+                    # mis à jour. À retirer une fois les templates migrés.
+                    b['meta_title_resolved'] = b.get('meta_title', '')
+                    b['meta_description_resolved'] = b.get('meta_description', '')
 
                     jsonld_blocks = codes_promo_engine.build_jsonld_blocks(b, cp_site_url)
                     steps = codes_promo_engine.extract_steps_from_content(b)
