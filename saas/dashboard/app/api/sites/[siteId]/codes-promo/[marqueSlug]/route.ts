@@ -136,6 +136,9 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
       codes: Array.isArray(body.codes) ? body.codes : [],
       faq: Array.isArray(body.faq) ? body.faq : [],
       historique_12_mois: normalizeHistory12Months(body.historique_12_mois),
+      // Unité du graphique historique (% ou €). Valide la valeur côté serveur
+      // pour éviter d'écrire n'importe quoi dans le YAML.
+      historique_unite: (body.historique_unite === '€' ? '€' : '%') as '%' | '€',
       related_brands: Array.isArray(body.related_brands) ? body.related_brands : [],
       status: body.status === 'published' ? 'published' : 'draft',
       meta_title: body.meta_title || '',
