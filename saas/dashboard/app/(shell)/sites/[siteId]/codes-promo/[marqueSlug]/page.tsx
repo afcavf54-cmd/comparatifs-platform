@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 
 // ───────────────────────────────────────────────────────────────────────
-// Types (dupliqués de lib/codes-promo.ts pour éviter import client)
+// Types
 // ───────────────────────────────────────────────────────────────────────
 type CodePromoType = 'code' | 'offer'
 type CodePromoUnite = '%' | '€' | ''
@@ -30,9 +30,6 @@ interface OtherBrandSummary { marque: string; slug: string; categorie_marque?: s
 const SOUS_TYPES = ['Code promo', 'Bon plan', 'Cashback', 'Livraison gratuite', 'Code étudiant', 'Première commande', 'Autre']
 const MONTHS_FR = ['', 'Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sep', 'Oct', 'Nov', 'Déc']
 
-// ───────────────────────────────────────────────────────────────────────
-// Styles
-// ───────────────────────────────────────────────────────────────────────
 const S = {
   shell: { padding: '0 0 80px', maxWidth: 1200, margin: '0 auto', fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif' } as React.CSSProperties,
   topBar: { position: 'sticky' as const, top: 0, background: '#fff', borderBottom: '1px solid #eee', padding: '14px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, zIndex: 50, flexWrap: 'wrap' as const },
@@ -48,7 +45,6 @@ const S = {
   badge: { display: 'inline-block', padding: '3px 10px', borderRadius: 999, fontSize: 11, fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '.04em' },
   badgePub: { background: '#e6f7ef', color: '#16a065' },
   badgeDraft: { background: '#fff4e0', color: '#a76b00' },
-
   content: { padding: '32px 40px' } as React.CSSProperties,
   section: { background: '#fff', borderRadius: 12, padding: '24px 28px', marginBottom: 18, boxShadow: '0 1px 3px rgba(0,0,0,0.04)' } as React.CSSProperties,
   sectionTitle: { fontSize: 16, fontWeight: 700, marginBottom: 14, color: '#1a1a1a', display: 'flex', alignItems: 'center', gap: 8 },
@@ -60,8 +56,6 @@ const S = {
   input: { padding: '9px 12px', border: '1px solid #ddd', borderRadius: 7, fontSize: 14, outline: 'none', fontFamily: 'inherit' } as React.CSSProperties,
   textarea: { padding: '10px 12px', border: '1px solid #ddd', borderRadius: 7, fontSize: 14, outline: 'none', fontFamily: 'inherit', resize: 'vertical' as const, minHeight: 80 },
   select: { padding: '9px 12px', border: '1px solid #ddd', borderRadius: 7, fontSize: 14, outline: 'none', background: '#fff', cursor: 'pointer' },
-
-  // Codes promo
   codeRow: { background: '#fafafa', border: '1px solid #eee', borderRadius: 10, padding: 14, marginBottom: 10 },
   codeRowExp: { opacity: 0.5 },
   codeRowBest: { borderColor: '#ffb1cc', background: '#fff8fb' },
@@ -70,43 +64,24 @@ const S = {
   iconBtn: { background: 'transparent', border: '0', cursor: 'pointer', color: '#888', padding: 4, fontSize: 16, lineHeight: 1 },
   chipBtn: { padding: '4px 10px', borderRadius: 999, fontSize: 11, fontWeight: 600, border: '1px solid #ddd', cursor: 'pointer', background: '#fff', color: '#666' },
   chipBtnActive: { background: '#1a1a1a', color: '#fff', borderColor: '#1a1a1a' },
-
-  // FAQ
   faqRow: { background: '#fafafa', border: '1px solid #eee', borderRadius: 10, padding: 12, marginBottom: 8, display: 'grid', gridTemplateColumns: '1fr 1fr auto', gap: 10, alignItems: 'flex-start' } as React.CSSProperties,
-
-  // Historique
   historyGrid: { display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 8 } as React.CSSProperties,
   histCell: { display: 'flex', flexDirection: 'column' as const, alignItems: 'center', gap: 4 },
   histInput: { width: '100%', padding: '6px 6px', border: '1px solid #ddd', borderRadius: 6, fontSize: 12, textAlign: 'center' as const, outline: 'none' },
-
-  // Related brands
   chipsRow: { display: 'flex', flexWrap: 'wrap' as const, gap: 6, padding: 6, border: '1px solid #ddd', borderRadius: 7, minHeight: 38, alignItems: 'center' },
   chip: { background: '#fff5f8', color: '#cf2c61', padding: '4px 10px', borderRadius: 999, fontSize: 12, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 6 },
   chipX: { background: 'transparent', border: 0, cursor: 'pointer', color: '#cf2c61', fontWeight: 700, padding: 0, fontSize: 14, lineHeight: 1 },
   chipInput: { border: 0, outline: 'none', padding: '4px 6px', fontSize: 13, minWidth: 100, fontFamily: 'inherit', flex: 1 },
   suggList: { marginTop: 6, border: '1px solid #eee', borderRadius: 7, background: '#fff', maxHeight: 180, overflowY: 'auto' as const },
   suggItem: { padding: '7px 10px', cursor: 'pointer', fontSize: 13, borderBottom: '1px solid #f5f5f5' },
-
-  // Save bar (sticky bottom on dirty)
   saveBar: { position: 'fixed' as const, bottom: 0, left: 0, right: 0, background: '#1a1a1a', color: '#fff', padding: '14px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', boxShadow: '0 -4px 20px rgba(0,0,0,0.15)', zIndex: 40 },
-
   errorBox: { background: '#fff5f5', color: '#c00', padding: '10px 14px', borderRadius: 8, border: '1px solid #fbb', fontSize: 13, marginBottom: 14 },
   successBox: { background: '#e6f7ef', color: '#16a065', padding: '10px 14px', borderRadius: 8, border: '1px solid #b8e6cd', fontSize: 13, marginBottom: 14 },
-
   empty: { textAlign: 'center' as const, padding: 60, color: '#888' },
 }
 
-// ───────────────────────────────────────────────────────────────────────
-// Composant helper pour la modale de génération IA
-// Affiche un bloc de contenu généré avec bouton "Appliquer" ou indicateur
-// "Remplacer le texte actuel" si un contenu existe déjà.
-// ───────────────────────────────────────────────────────────────────────
 function ApplyBlock({ label, content, existing, isMd, onApply }: {
-  label: string
-  content: string
-  existing: string
-  isMd?: boolean
-  onApply: () => void
+  label: string; content: string; existing: string; isMd?: boolean; onApply: () => void
 }) {
   if (!content || !content.trim()) {
     return (
@@ -140,16 +115,13 @@ function ApplyBlock({ label, content, existing, isMd, onApply }: {
   )
 }
 
-// ───────────────────────────────────────────────────────────────────────
-// Component principal — page d'édition d'une marque
-// ───────────────────────────────────────────────────────────────────────
 export default function CodesPromoEditPage() {
   const params = useParams<{ siteId: string; marqueSlug: string }>()
   const router = useRouter()
   const { siteId, marqueSlug } = params
 
   const [brand, setBrand] = useState<Brand | null>(null)
-  const [original, setOriginal] = useState<string>('')   // snapshot JSON pour détecter dirty
+  const [original, setOriginal] = useState<string>('')
   const [allBrands, setAllBrands] = useState<OtherBrandSummary[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -157,18 +129,18 @@ export default function CodesPromoEditPage() {
   const [saveError, setSaveError] = useState<string | null>(null)
   const [saveSuccess, setSaveSuccess] = useState<string | null>(null)
   const [siteDomain, setSiteDomain] = useState<string>('')
-
-  // Vague C : génération IA
   const [generating, setGenerating] = useState(false)
   const [generateError, setGenerateError] = useState<string | null>(null)
   const [showGenerateModal, setShowGenerateModal] = useState<null | { content_md: string; avis_sophie: string; conseil_sophie: string }>(null)
 
-  // ── Load ─────────────────────────────────────────────────────────────
+  // ── Upload logo (même pattern que featured image blog) ───────────────
+  const logoInputRef = useRef<HTMLInputElement | null>(null)
+  const [uploadingLogo, setUploadingLogo] = useState(false)
+
   useEffect(() => {
     let cancelled = false
     async function load() {
-      setLoading(true)
-      setError(null)
+      setLoading(true); setError(null)
       try {
         const [rBrand, rAll] = await Promise.all([
           fetch(`/api/sites/${siteId}/codes-promo/${marqueSlug}`, { cache: 'no-store' }),
@@ -201,7 +173,6 @@ export default function CodesPromoEditPage() {
 
   const dirty = brand !== null && JSON.stringify(brand) !== original
 
-  // ── Helpers de mutation (immutables) ─────────────────────────────────
   function update<K extends keyof Brand>(key: K, value: Brand[K]) {
     if (!brand) return
     setBrand({ ...brand, [key]: value })
@@ -227,8 +198,7 @@ export default function CodesPromoEditPage() {
   function removeCode(idx: number) {
     if (!brand) return
     if (!confirm('Supprimer ce code ?')) return
-    const codes = [...(brand.codes || [])]
-    codes.splice(idx, 1)
+    const codes = [...(brand.codes || [])]; codes.splice(idx, 1)
     setBrand({ ...brand, codes })
   }
   function moveCode(idx: number, dir: -1 | 1) {
@@ -241,8 +211,7 @@ export default function CodesPromoEditPage() {
   }
   function updateFaq(idx: number, patch: Partial<BrandFaq>) {
     if (!brand) return
-    const faq = [...(brand.faq || [])]
-    faq[idx] = { ...faq[idx], ...patch }
+    const faq = [...(brand.faq || [])]; faq[idx] = { ...faq[idx], ...patch }
     setBrand({ ...brand, faq })
   }
   function addFaq() {
@@ -251,8 +220,7 @@ export default function CodesPromoEditPage() {
   }
   function removeFaq(idx: number) {
     if (!brand) return
-    const faq = [...(brand.faq || [])]
-    faq.splice(idx, 1)
+    const faq = [...(brand.faq || [])]; faq.splice(idx, 1)
     setBrand({ ...brand, faq })
   }
   function updateHistory(idx: number, valeur: number) {
@@ -262,7 +230,65 @@ export default function CodesPromoEditPage() {
     setBrand({ ...brand, historique_12_mois: hist })
   }
 
-  // ── Related brands chips ─────────────────────────────────────────────
+  // ── Upload du logo de la marque ───────────────────────────────────────
+  // Pattern repris de uploadFeatured du blog : on lit le fichier en base64,
+  // on push via /api/github/upload, puis on met à jour brand.logo_url avec
+  // le path public (servi par Cloudflare Pages depuis platform/sites/<site>/public/).
+  // L'upload écrase l'ancien logo si présent (même filename `logo.<ext>`).
+  async function uploadLogo(file: File) {
+    if (!file || !brand) return
+    setUploadingLogo(true); setSaveError(null); setSaveSuccess(null)
+    try {
+      const ext = (file.name.split('.').pop() || 'png').toLowerCase()
+      const slug = brand.slug || marqueSlug || 'misc'
+      const filename = `logo.${ext}`
+      const path = `platform/sites/${siteId}/public/codes-promo/${slug}/${filename}`
+
+      // Lire le fichier en base64
+      const base64: string = await new Promise((resolve, reject) => {
+        const r = new FileReader()
+        r.onload = () => resolve(String(r.result).split(',')[1])
+        r.onerror = reject
+        r.readAsDataURL(file)
+      })
+
+      // Récupérer le sha si le fichier existe déjà (sinon création)
+      let sha: string | undefined
+      try {
+        const ex = await fetch(`/api/github?path=${encodeURIComponent(path)}`)
+        if (ex.ok) {
+          const ed = await ex.json()
+          if (ed.sha) sha = ed.sha
+        }
+      } catch { /* création OK */ }
+
+      const r = await fetch('/api/github/upload', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          path, content: base64, sha,
+          message: `HUB: Upload logo ${brand.marque} (${slug})`,
+        }),
+      })
+      if (!r.ok) {
+        const e = await r.json().catch(() => ({}))
+        throw new Error(e.error || `HTTP ${r.status}`)
+      }
+
+      // brand.logo_url = path PUBLIC (sans le préfixe platform/sites/<site>/public/)
+      // Cloudflare Pages sert public/ à la racine du site déployé.
+      const publicUrl = `/codes-promo/${slug}/${filename}`
+      setBrand({ ...brand, logo_url: publicUrl })
+      setSaveSuccess('Logo uploadé ✓ pense à enregistrer la marque.')
+      setTimeout(() => setSaveSuccess(null), 4000)
+    } catch (e: any) {
+      setSaveError(`Upload logo échoué : ${e?.message || 'inconnue'}`)
+    } finally {
+      setUploadingLogo(false)
+      if (logoInputRef.current) logoInputRef.current.value = ''
+    }
+  }
+
   const [relInput, setRelInput] = useState('')
   function addRelated(slug: string) {
     if (!brand) return
@@ -279,12 +305,9 @@ export default function CodesPromoEditPage() {
     .filter(b => !relInput.trim() || b.marque.toLowerCase().includes(relInput.toLowerCase().trim()))
     .slice(0, 8)
 
-  // ── Save ─────────────────────────────────────────────────────────────
   async function save(newStatus?: 'draft' | 'published') {
     if (!brand) return
-    setSaving(true)
-    setSaveError(null)
-    setSaveSuccess(null)
+    setSaving(true); setSaveError(null); setSaveSuccess(null)
     const body = { ...brand }
     if (newStatus) body.status = newStatus
     try {
@@ -295,21 +318,17 @@ export default function CodesPromoEditPage() {
       })
       const data = await r.json()
       if (!r.ok) throw new Error(data.error || `HTTP ${r.status}`)
-      setBrand(body)
-      setOriginal(JSON.stringify(body))
+      setBrand(body); setOriginal(JSON.stringify(body))
       setSaveSuccess(newStatus === 'published' ? 'Marque publiée ✓'
                   : newStatus === 'draft' ? 'Marque dépubliée ✓'
                   : 'Modifications enregistrées ✓')
-      // Si le slug a changé, rediriger
       if (data.slug && data.slug !== marqueSlug) {
         router.replace(`/sites/${siteId}/codes-promo/${data.slug}`)
       }
       setTimeout(() => setSaveSuccess(null), 3000)
     } catch (e: any) {
       setSaveError(e?.message || 'Sauvegarde échouée')
-    } finally {
-      setSaving(false)
-    }
+    } finally { setSaving(false) }
   }
 
   async function doDelete() {
@@ -324,23 +343,19 @@ export default function CodesPromoEditPage() {
       }
       router.push(`/sites/${siteId}/codes-promo`)
     } catch (e: any) {
-      setSaveError(e?.message || 'Suppression échouée')
-      setSaving(false)
+      setSaveError(e?.message || 'Suppression échouée'); setSaving(false)
     }
   }
 
-  // ── Vague C : génération IA des 3 contenus textuels ──────────────────
   async function generateContent() {
     if (!brand) return
-    // Garde-fou : si le contenu existe déjà, prévenir l'utilisateur
     const hasExisting = (brand.content_md && brand.content_md.trim().length > 50)
                       || (brand.avis_sophie && brand.avis_sophie.trim().length > 0)
                       || (brand.conseil_sophie && brand.conseil_sophie.trim().length > 0)
     if (hasExisting) {
       if (!confirm("Tu as déjà du contenu rédigé pour cette marque. La génération va te proposer un nouveau texte que tu pourras choisir d'appliquer ou non. Continuer ?")) return
     }
-    setGenerating(true)
-    setGenerateError(null)
+    setGenerating(true); setGenerateError(null)
     try {
       const r = await fetch(`/api/sites/${siteId}/codes-promo/${marqueSlug}/generate`, {
         method: 'POST',
@@ -354,7 +369,6 @@ export default function CodesPromoEditPage() {
       })
       const data = await r.json()
       if (!r.ok) throw new Error(data.error || `HTTP ${r.status}`)
-      // On affiche le résultat dans une modale, l'utilisateur choisit ce qu'il applique
       setShowGenerateModal({
         content_md: data.content_md || '',
         avis_sophie: data.avis_sophie || '',
@@ -362,9 +376,7 @@ export default function CodesPromoEditPage() {
       })
     } catch (e: any) {
       setGenerateError(e?.message || 'Génération échouée')
-    } finally {
-      setGenerating(false)
-    }
+    } finally { setGenerating(false) }
   }
 
   function applyGenerated(which: { content_md?: boolean; avis_sophie?: boolean; conseil_sophie?: boolean }) {
@@ -379,18 +391,10 @@ export default function CodesPromoEditPage() {
     setTimeout(() => setSaveSuccess(null), 4000)
   }
 
-  // ── Render ───────────────────────────────────────────────────────────
   if (loading) return <div style={S.empty}>Chargement…</div>
   if (error) return <div style={S.empty}><div style={{ color: '#c00' }}>⚠ {error}</div></div>
   if (!brand) return <div style={S.empty}>Marque introuvable.</div>
 
-  // Construit l'URL de preview en gérant proprement les 3 formats possibles
-  // de `siteDomain` retournés par l'API selon ce qu'il y a dans config.yaml :
-  //   - "cadeauclic.com"           → on préfixe avec https://
-  //   - "www.cadeauclic.com"       → on préfixe avec https://
-  //   - "https://cadeauclic.com"   → on utilise tel quel (pas de double protocole)
-  //   - "http://localhost:3000"    → on utilise tel quel
-  // On strippe aussi un éventuel trailing slash pour ne pas avoir // dans l'URL.
   function buildPreviewUrl(domain: string, slug: string): string {
     if (!domain) return ''
     const cleaned = domain.replace(/\/+$/, '')
@@ -399,9 +403,19 @@ export default function CodesPromoEditPage() {
   }
   const previewUrl = buildPreviewUrl(siteDomain, brand.slug)
 
+  // URL d'aperçu du logo : URL absolue → tel quel, sinon construit l'URL raw GitHub
+  function buildLogoPreviewUrl(logoUrl: string): string {
+    if (!logoUrl) return ''
+    if (/^https?:\/\//i.test(logoUrl)) return logoUrl
+    const owner = process.env.NEXT_PUBLIC_GITHUB_OWNER || 'afcavf54-cmd'
+    const repo = process.env.NEXT_PUBLIC_GITHUB_REPO || 'comparatifs-platform'
+    const clean = logoUrl.replace(/^\//, '')
+    return `https://raw.githubusercontent.com/${owner}/${repo}/main/platform/sites/${siteId}/public/${clean}`
+  }
+  const logoPreviewSrc = buildLogoPreviewUrl(brand.logo_url || '')
+
   return (
     <div style={S.shell}>
-      {/* ── Top bar sticky ──────────────────────────────────────────── */}
       <div style={S.topBar}>
         <div style={S.bcrumb}>
           <span style={S.bcrumbLink} onClick={() => router.push(`/sites/${siteId}`)}>{siteId}</span>
@@ -428,20 +442,14 @@ export default function CodesPromoEditPage() {
             {generating ? '✨ Génération…' : '✨ Générer le contenu'}
           </button>
           {brand.status === 'draft' ? (
-            <button style={{ ...S.btn, ...S.btnPub }} onClick={() => save('published')} disabled={saving}>
-              Publier
-            </button>
+            <button style={{ ...S.btn, ...S.btnPub }} onClick={() => save('published')} disabled={saving}>Publier</button>
           ) : (
-            <button style={{ ...S.btn, ...S.btnGhost }} onClick={() => save('draft')} disabled={saving}>
-              Dépublier
-            </button>
+            <button style={{ ...S.btn, ...S.btnGhost }} onClick={() => save('draft')} disabled={saving}>Dépublier</button>
           )}
           <button style={{ ...S.btn, ...S.btnPrimary, opacity: dirty ? 1 : 0.5 }} onClick={() => save()} disabled={!dirty || saving}>
             {saving ? 'Sauvegarde…' : 'Enregistrer'}
           </button>
-          <button style={{ ...S.btn, ...S.btnDanger }} onClick={doDelete} disabled={saving}>
-            🗑
-          </button>
+          <button style={{ ...S.btn, ...S.btnDanger }} onClick={doDelete} disabled={saving}>🗑</button>
         </div>
       </div>
 
@@ -450,7 +458,6 @@ export default function CodesPromoEditPage() {
         {generateError && <div style={S.errorBox}>⚠ Génération : {generateError}</div>}
         {saveSuccess && <div style={S.successBox}>{saveSuccess}</div>}
 
-        {/* ── INFOS GÉNÉRALES ──────────────────────────────────────── */}
         <div style={S.section}>
           <div style={S.sectionTitle}>📋 Infos générales</div>
           <div style={S.grid2}>
@@ -474,10 +481,70 @@ export default function CodesPromoEditPage() {
               <label style={S.label}>URL d'affiliation (utilisée par tous les CTAs)</label>
               <input style={S.input} value={brand.url_affiliation || ''} onChange={e => update('url_affiliation', e.target.value)} placeholder="https://www.shein.com/?ref=…" />
             </div>
+
+            {/* ── LOGO : input + bouton upload + aperçu ──────────────── */}
             <div style={{ ...S.field, gridColumn: 'span 2' }}>
-              <label style={S.label}>URL du logo</label>
-              <input style={S.input} value={brand.logo_url || ''} onChange={e => update('logo_url', e.target.value)} placeholder="/codes-promo/shein/logo.png ou https://…" />
+              <label style={S.label}>Logo de la marque</label>
+              <div style={{ display: 'flex', gap: 8, alignItems: 'stretch' }}>
+                <input
+                  style={{ ...S.input, flex: 1 }}
+                  value={brand.logo_url || ''}
+                  onChange={e => update('logo_url', e.target.value)}
+                  placeholder={`/codes-promo/${brand.slug}/logo.png ou https://…`}
+                />
+                <button
+                  type="button"
+                  onClick={() => logoInputRef.current?.click()}
+                  disabled={uploadingLogo}
+                  style={{
+                    ...S.btn,
+                    background: uploadingLogo ? '#ccc' : '#1a1a1a',
+                    color: '#fff', padding: '0 16px', whiteSpace: 'nowrap',
+                    cursor: uploadingLogo ? 'wait' : 'pointer',
+                  }}
+                  title="Uploader un nouveau logo depuis ton ordinateur"
+                >
+                  {uploadingLogo ? '⏳ Upload…' : '📤 Upload'}
+                </button>
+                <input
+                  ref={logoInputRef}
+                  type="file"
+                  accept="image/png,image/jpeg,image/webp,image/svg+xml,image/avif"
+                  style={{ display: 'none' }}
+                  onChange={e => e.target.files?.[0] && uploadLogo(e.target.files[0])}
+                />
+              </div>
+              {logoPreviewSrc && (
+                <div style={{
+                  marginTop: 10, padding: 10, background: '#fafafa',
+                  borderRadius: 8, border: '1px solid #eee',
+                  display: 'flex', alignItems: 'center', gap: 12, maxWidth: 400,
+                }}>
+                  <img
+                    src={logoPreviewSrc}
+                    alt="Aperçu logo"
+                    style={{
+                      maxHeight: 64, maxWidth: 160,
+                      objectFit: 'contain', display: 'block',
+                      background: '#fff', borderRadius: 6, padding: 4,
+                    }}
+                    onError={e => {
+                      // Image pas encore push ou path invalide : cacher
+                      // l'élément (au lieu d'afficher l'icône broken)
+                      ;(e.currentTarget as HTMLImageElement).style.display = 'none'
+                    }}
+                  />
+                  <div style={{ fontSize: 11, color: '#888', wordBreak: 'break-all' }}>
+                    {brand.logo_url}
+                  </div>
+                </div>
+              )}
+              <div style={{ fontSize: 11, color: '#999', marginTop: 6 }}>
+                PNG / JPG / SVG / WebP — fond transparent recommandé, hauteur ~80px.
+                L'upload écrase l'ancien fichier <code>logo.&lt;ext&gt;</code> du dossier de la marque.
+              </div>
             </div>
+
             <div style={{ ...S.field, gridColumn: 'span 2' }}>
               <label style={S.label}>Description de la marque (sidebar "Qu'est-ce que…")</label>
               <textarea style={S.textarea} rows={3} value={brand.description_marque || ''} onChange={e => update('description_marque', e.target.value)} placeholder="Présente la marque en 2-3 phrases." />
@@ -493,7 +560,6 @@ export default function CodesPromoEditPage() {
           </div>
         </div>
 
-        {/* ── RATING ────────────────────────────────────────────────── */}
         <div style={S.section}>
           <div style={S.sectionTitle}>⭐ Note globale (AggregateRating)</div>
           <div style={S.sectionSub}>Note affichée dans la bannière rating et envoyée à Google pour les étoiles dans les SERP.</div>
@@ -513,13 +579,11 @@ export default function CodesPromoEditPage() {
           </div>
         </div>
 
-        {/* ── CODES PROMO ───────────────────────────────────────────── */}
         <div style={S.section}>
           <div style={S.sectionTitle}>🏷️ Codes promo & offres</div>
           <div style={S.sectionSub}>
             Chaque code/offre apparaît dans une card sur la page. Les codes expirés sont déplacés dans une section dédiée en bas de la page.
           </div>
-
           {(brand.codes || []).map((c, idx) => (
             <div key={c.id || idx} style={{
               ...S.codeRow,
@@ -595,14 +659,12 @@ export default function CodesPromoEditPage() {
               </div>
             </div>
           ))}
-
           <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
             <button style={{ ...S.btn, ...S.btnGhost }} onClick={() => addCode('code')}>+ Ajouter un code promo</button>
             <button style={{ ...S.btn, ...S.btnGhost }} onClick={() => addCode('offer')}>+ Ajouter une offre (sans code)</button>
           </div>
         </div>
 
-        {/* ── AVIS & CONSEIL DE SOPHIE ──────────────────────────────── */}
         <div style={S.section}>
           <div style={S.sectionTitle}>📝 L'avis & le conseil de Sophie</div>
           <div style={S.sectionSub}>L'avis apparaît dans la sidebar avec la photo. Le conseil dans une 2ème card "💡 Le conseil de Sophie".</div>
@@ -616,7 +678,6 @@ export default function CodesPromoEditPage() {
           </div>
         </div>
 
-        {/* ── FAQ ────────────────────────────────────────────────────── */}
         <div style={S.section}>
           <div style={S.sectionTitle}>❓ Foire aux questions</div>
           <div style={S.sectionSub}>Au moins 2 questions pour générer le schéma FAQPage (étoiles SERP).</div>
@@ -630,7 +691,6 @@ export default function CodesPromoEditPage() {
           <button style={{ ...S.btn, ...S.btnGhost, marginTop: 8 }} onClick={addFaq}>+ Ajouter une question</button>
         </div>
 
-        {/* ── HISTORIQUE 12 MOIS ──────────────────────────────────── */}
         <div style={S.section}>
           <div style={S.sectionTitle}>📊 Historique des remises (12 derniers mois)</div>
           <div style={S.sectionSub}>La meilleure remise disponible chaque mois sur les 12 derniers mois (en %). Utilisé pour le mini-graphique.</div>
@@ -653,14 +713,12 @@ export default function CodesPromoEditPage() {
           </div>
         </div>
 
-        {/* ── MARQUES SIMILAIRES ──────────────────────────────────── */}
         <div style={S.section}>
           <div style={S.sectionTitle}>🔗 Marques similaires (bandeau bas de page)</div>
           <div style={S.sectionSub}>
             Si vide, on prend automatiquement 8 marques de la même catégorie "{brand.categorie_marque || '<définis une catégorie>'}", figées au 1er rendu.
             Ajoute des marques pour overrider la sélection automatique.
           </div>
-
           <div style={S.chipsRow}>
             {(brand.related_brands || []).map(slug => {
               const ref = allBrands.find(b => b.slug === slug)
@@ -701,7 +759,6 @@ export default function CodesPromoEditPage() {
           )}
         </div>
 
-        {/* ── CONTENU RÉDIGÉ ─────────────────────────────────────── */}
         <div style={S.section}>
           <div style={S.sectionTitle}>📄 Contenu rédigé ("Comment utiliser un code promo {brand.marque}")</div>
           <div style={S.sectionSub}>
@@ -716,7 +773,6 @@ export default function CodesPromoEditPage() {
         </div>
       </div>
 
-      {/* ── Modale Vague C : preview du contenu généré ──────────────── */}
       {showGenerateModal && (
         <div
           style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.55)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100, padding: 20 }}
@@ -733,7 +789,6 @@ export default function CodesPromoEditPage() {
             <div style={{ fontSize: 13, color: '#666', marginBottom: 18 }}>
               Coche ce que tu veux appliquer. Tu peux relancer une nouvelle génération si le résultat ne te convient pas.
             </div>
-
             <ApplyBlock
               label="Comment utiliser un code promo (4 étapes)"
               content={showGenerateModal.content_md}
@@ -753,31 +808,23 @@ export default function CodesPromoEditPage() {
               existing={brand.conseil_sophie || ''}
               onApply={() => applyGenerated({ conseil_sophie: true })}
             />
-
             <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, marginTop: 20, paddingTop: 16, borderTop: '1px solid #eee' }}>
-              <button
-                style={{ ...S.btn, ...S.btnGhost }}
-                onClick={() => { setShowGenerateModal(null); generateContent() }}
-              >
+              <button style={{ ...S.btn, ...S.btnGhost }}
+                onClick={() => { setShowGenerateModal(null); generateContent() }}>
                 🔄 Relancer une génération
               </button>
               <div style={{ display: 'flex', gap: 8 }}>
-                <button style={{ ...S.btn, ...S.btnGhost }} onClick={() => setShowGenerateModal(null)}>
-                  Annuler
-                </button>
+                <button style={{ ...S.btn, ...S.btnGhost }} onClick={() => setShowGenerateModal(null)}>Annuler</button>
                 <button
                   style={{ ...S.btn, ...S.btnPrimary }}
                   onClick={() => applyGenerated({ content_md: true, avis_sophie: true, conseil_sophie: true })}
-                >
-                  Tout appliquer
-                </button>
+                >Tout appliquer</button>
               </div>
             </div>
           </div>
         </div>
       )}
 
-      {/* ── Save bar sticky bottom (apparaît si dirty) ────────────── */}
       {dirty && (
         <div style={S.saveBar}>
           <span>● Modifications non enregistrées</span>
@@ -788,9 +835,7 @@ export default function CodesPromoEditPage() {
                 if (!confirm('Annuler toutes les modifications non enregistrées ?')) return
                 setBrand(JSON.parse(original))
               }}
-            >
-              Annuler
-            </button>
+            >Annuler</button>
             <button style={{ ...S.btn, ...S.btnPrimary }} onClick={() => save()} disabled={saving}>
               {saving ? 'Sauvegarde…' : 'Enregistrer'}
             </button>
