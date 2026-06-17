@@ -24,6 +24,15 @@ codes:
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
+faq:
+  - question: Combien gagne le parrain et le filleul chez Octopus Energy ?
+    reponse: ""
+  - question: Le parrainage Octopus Energy est-il rétroactif ?
+    reponse: ""
+  - question: Où trouver mon propre lien de parrainage Octopus ?
+    reponse: ""
+  - question: Peut-on cumuler le parrainage avec un code promo Octopus Energy ?
+    reponse: ""
 historique_12_mois:
   - mois: 2025-07
     valeur: 40
