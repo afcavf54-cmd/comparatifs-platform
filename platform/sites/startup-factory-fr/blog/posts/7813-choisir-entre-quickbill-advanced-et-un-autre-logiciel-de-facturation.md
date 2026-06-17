@@ -12,7 +12,8 @@ featured_image: /blog/7813-choisir-entre-quickbill-advanced-et-un-autre-logiciel
 link_anchors:
 - text: comment choisir le logiciel de facturation QuickBill Advanced
   max: 5
-related_posts: []
+related_posts:
+- 8636-facturation-automatisee-billmatic-auto-les-pieges
 ---
 <h2>QuickBill Advanced : mon test après 8 mois d'utilisation</h2>
 

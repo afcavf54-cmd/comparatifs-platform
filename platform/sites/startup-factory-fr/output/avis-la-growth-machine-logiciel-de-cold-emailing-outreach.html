@@ -4,30 +4,31 @@
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plan du site | startup-factory.fr</title>
-<meta name="description" content="Plan du site startup-factory.fr - toutes les pages disponibles.">
-<link rel="canonical" href="https://www.startup-factory.fr/plan-du-site">
+<title>Page introuvable | startup-factory.fr</title>
+<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=startup-factory-fr" rel="stylesheet">
 <style>
 :root{
   --bg:#F8FAFC;
   --surface:#fff;
+  --surface2:#F0ECE5;
   --ink:#0F172A;
   --ink2:#6B6560;
   --ink3:#A09890;
   --accent:#1E293B;
-  --accent2:#6366F1;
-  --cta:#14B8A6;
-  --cta-text:#ffffff;
+  --accent2:#6366F1;--cta:#14B8A6;--cta-text:#ffffff;
   --border:#E2DDD6;
   --r:12px;
   --r2:20px;
+  --green:#1A7A4A;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
-a{text-decoration:none;color:inherit}
-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;height:64px;position:sticky;top:0;z-index:100}
+a{color:inherit;text-decoration:none}
+
+/* ── NAV ── */
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
 .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
 .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
@@ -36,31 +37,28 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;height:6
 .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
 .nav-cta:hover{opacity:.88}
 .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
-.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
 .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
 .nav-mobile.open{display:flex}
 .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
-main{max-width:1200px;margin:0 auto;padding:56px 5vw 80px}
-h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,48px);font-weight:400;letter-spacing:-.02em;margin-bottom:8px}
-.subtitle{font-size:16px;color:var(--ink3);margin-bottom:48px}
-.sitemap-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-.sitemap-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px}
-.sitemap-section h2{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);color:var(--ink)}
-.sitemap-section ul{list-style:none}
-.sitemap-section li{padding:7px 0;border-bottom:0.5px solid var(--border);font-size:15px}
-.sitemap-section li:last-child{border-bottom:none}
-.sitemap-section a{color:var(--ink2);display:flex;align-items:center;gap:8px;transition:.15s}
-.sitemap-section a:hover{color:var(--accent)}
-.sitemap-section a::before{content:"→";color:var(--accent);font-size:12px;flex-shrink:0}
-.sitemap-full{grid-column:1/-1}
-.cat-group-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);padding-bottom:8px;border-bottom:1px solid var(--border);margin-bottom:12px;margin-top:20px}
-.cat-group-title:first-child{margin-top:0}
-.sitemap-count{font-size:13px;color:var(--ink3);font-weight:400;margin-left:6px}
-@media(max-width:768px){.sitemap-grid{grid-template-columns:1fr}.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+.nav-mobile a:hover{color:#fff;background:rgba(255,255,255,.08)}
+
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 5vw;text-align:center}
+.code{font-family:'DM Serif Display',serif;font-size:clamp(80px,15vw,160px);font-weight:400;color:var(--accent);line-height:1;margin-bottom:16px;opacity:.15}
+h1{font-family:'DM Serif Display',serif;font-size:clamp(24px,4vw,40px);font-weight:400;margin-bottom:12px}
+p{font-size:17px;color:#718096;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;background:var(--accent);color:#fff;font-size:16px;font-weight:600;text-decoration:none;transition:.15s}
+.btn:hover{background:var(--cta,var(--accent2))}
+.links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.link-sec{color:var(--accent);font-size:14px;text-decoration:none;padding:8px 16px;border-radius:8px;border:1px solid var(--border)}
+.link-sec:hover{background:var(--border)}
+
 </style>
 </head>
 <body>
-
 <style>
 nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
 nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
@@ -138,67 +136,17 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     });
   });
 })();
-</script>
-<main>
-  <h1>Plan du site</h1>
-  <p class="subtitle">startup-factory.fr — toutes les pages disponibles</p>
-
-  <div class="sitemap-grid">
-
-    <div class="sitemap-section">
-      <h2>Pages principales</h2>
-      <ul>
-        <li><a href="/">Accueil</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="/mentions-legales">Mentions légales</a></li>
-        <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
-      </ul>
+</script><main>
+  <div>
+    <div class="code">404</div>
+    <h1>Page introuvable</h1>
+    <p>La page que vous recherchez n'existe pas ou a été déplacée. Revenez à l'accueil pour trouver votre comparatif.</p>
+    <a href="/" class="btn">← Retour à l'accueil</a>
+    <div class="links">
+      <a href="/nos-comparateurs" class="link-sec">Nos comparateurs</a>
     </div>
-
-    <div class="sitemap-section sitemap-full">
-      <h2>Nos classements</h2>
-        <div class="cat-group-title">Marketing</div>
-        <ul>
-          <li><a href="/meilleur-logiciel-d-emailing">Meilleur Logiciel d’emailing</a></li>
-          <li><a href="/meilleur-logiciel-de-cold-emailing-outreach">Meilleur Logiciel de cold emailing / outreach</a></li>
-          <li><a href="/meilleur-logiciel-de-creation-de-site-web">Meilleur Logiciel de création de site web</a></li>
-        </ul>
-    </div>
-
-    <div class="sitemap-section sitemap-full">
-      <h2>Articles du blog <span class="sitemap-count">(16)</span></h2>
-
-        <div class="cat-group-title">Comptabilité <span class="sitemap-count">(2)</span></div>
-        <ul>
-          <li><a href="/8636-facturation-automatisee-billmatic-auto-les-pieges/">Facturation automatisée Billmatic Auto : les pièges</a></li>
-          <li><a href="/7813-choisir-entre-quickbill-advanced-et-un-autre-logiciel-de-facturation/">Choisir entre QuickBill Advanced et un autre logiciel de facturation</a></li>
-        </ul>
-        <div class="cat-group-title">Gestion d'entreprise <span class="sitemap-count">(12)</span></div>
-        <ul>
-          <li><a href="/7519-erp-bizcore-enterprise-ce-que-le-devis-oublie-de-chiffrer/">ERP BizCore Enterprise : ce que le devis oublie de chiffrer</a></li>
-          <li><a href="/2748-pourquoi-ne-pas-garder-la-config-d-usine-de-leadflow-automation/">Pourquoi ne pas garder la config d'usine de LeadFlow Automation</a></li>
-          <li><a href="/2662-faut-il-configurer-l-erp-dynabiz-pro-en-interne/">Faut-il configurer l'ERP DynaBiz Pro en interne ?</a></li>
-          <li><a href="/5508-ruptures-et-surstocks-les-pieges-sous-inventory-control-smart/">Ruptures et surstocks : les pièges sous Inventory Control Smart</a></li>
-          <li><a href="/7911-projet-erp-bizflow-evolution-en-pme-les-pieges/">Projet ERP BizFlow Evolution en PME : les pièges</a></li>
-          <li><a href="/4204-migrer-vers-l-erp-bizflow-v8-pro-les-pieges/">Migrer vers l'ERP BizFlow V8 Pro : les pièges</a></li>
-          <li><a href="/9178-projet-erp-bizflow-max-les-pieges-qui-font-derailler/">Projet ERP BizFlow Max : les pièges qui font dérailler</a></li>
-          <li><a href="/8123-projet-erp-nextgen-business-suite-les-pieges/">Projet ERP NextGen Business Suite : les pièges</a></li>
-          <li><a href="/4746-projet-erp-smartchain-360-les-pieges-a-anticiper/">Projet ERP SmartChain 360 : les pièges à anticiper</a></li>
-          <li><a href="/7027-integration-de-l-erp-flexmanage-plus-les-pieges-techniques/">Intégration de l'ERP FlexManage Plus : les pièges techniques</a></li>
-          <li><a href="/5187-installation-de-l-erp-cloudmanager-enterprise-les-pieges/">Installation de l'ERP CloudManager Enterprise : les pièges</a></li>
-          <li><a href="/3614-csv-ou-export-natif-des-donnees-salestrack-crm-que-choisir/">CSV ou export natif des données SalesTrack CRM : que choisir</a></li>
-        </ul>
-        <div class="cat-group-title">Création d'entreprise <span class="sitemap-count">(2)</span></div>
-        <ul>
-          <li><a href="/6176-business-plan-financepro-smart-les-pieges-des-debutants/">Business plan FinancePro Smart : les pièges des débutants</a></li>
-          <li><a href="/6367-business-plan-planexpert-les-pieges-frequents/">Business plan PlanExpert : les pièges fréquents</a></li>
-        </ul>
-    </div>
-
   </div>
 </main>
-
 <style>
 .footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
 .footer-inner{max-width:1200px;margin:0 auto}
@@ -238,7 +186,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 startup-factory.fr — Données actualisées le 17 juin 2026
+        © 2026 startup-factory.fr — Données actualisées le 16 juin 2026
       </div>
     </div>
   </div>
@@ -336,7 +284,5 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   // Check immédiat (au cas où la page est rechargée déjà scrollée)
   update();
 })();
-</script>
-
-</body>
+</script></body>
 </html>
