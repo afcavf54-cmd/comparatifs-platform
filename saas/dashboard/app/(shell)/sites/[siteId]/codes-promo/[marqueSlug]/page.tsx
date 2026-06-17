@@ -972,14 +972,31 @@ export default function CodesPromoEditPage() {
               </div>
             ) : blockModal.blockType === 'content_md' || blockModal.blockType === 'content_libre' ? (
               <div>
+                {/* Styles scoped pour l'aperçu HTML rendu. Sans ça, les <h2>,
+                    <p>, <li> héritent du gris pâle du dashboard et le contenu
+                    devient illisible (cf bug capture 17 juin). */}
+                <style>{`
+                  .cp-preview-html { color: #1a1a1a; }
+                  .cp-preview-html h2 { font-size: 18px; font-weight: 700; color: #1a1a1a; margin: 18px 0 10px; line-height: 1.3; }
+                  .cp-preview-html h2:first-child { margin-top: 0; }
+                  .cp-preview-html h3 { font-size: 15px; font-weight: 700; color: #1a1a1a; margin: 14px 0 8px; }
+                  .cp-preview-html p { color: #333; line-height: 1.65; margin: 0 0 12px; font-size: 14px; }
+                  .cp-preview-html p:last-child { margin-bottom: 0; }
+                  .cp-preview-html ul, .cp-preview-html ol { color: #333; padding-left: 24px; margin: 0 0 12px; line-height: 1.65; font-size: 14px; }
+                  .cp-preview-html li { margin-bottom: 4px; color: #333; }
+                  .cp-preview-html strong { color: #1a1a1a; font-weight: 700; }
+                  .cp-preview-html em { color: #1a1a1a; }
+                  .cp-preview-html a { color: #cf2c61; border-bottom: 1px solid #ffd0e0; text-decoration: none; }
+                `}</style>
                 <div style={{ fontSize: 11, color: '#888', marginBottom: 6 }}>Aperçu rendu HTML :</div>
                 <div
-                  style={{ background: '#fff', borderRadius: 8, padding: 16, border: '1px solid #eee', maxHeight: 300, overflowY: 'auto', fontSize: 14, lineHeight: 1.6 }}
+                  className="cp-preview-html"
+                  style={{ background: '#fff', borderRadius: 8, padding: 20, border: '1px solid #eee', maxHeight: 360, overflowY: 'auto' }}
                   dangerouslySetInnerHTML={{ __html: String(blockModal.content || '') }}
                 />
                 <details style={{ marginTop: 10 }}>
                   <summary style={{ fontSize: 11, color: '#888', cursor: 'pointer' }}>Voir le HTML source</summary>
-                  <pre style={{ background: '#fafafa', borderRadius: 6, padding: 12, fontSize: 11, fontFamily: 'ui-monospace,SFMono-Regular,Consolas,monospace', overflowX: 'auto', whiteSpace: 'pre-wrap', maxHeight: 200 }}>
+                  <pre style={{ background: '#fafafa', borderRadius: 6, padding: 12, fontSize: 11, color: '#333', fontFamily: 'ui-monospace,SFMono-Regular,Consolas,monospace', overflowX: 'auto', whiteSpace: 'pre-wrap', maxHeight: 200 }}>
                     {String(blockModal.content || '')}
                   </pre>
                 </details>
