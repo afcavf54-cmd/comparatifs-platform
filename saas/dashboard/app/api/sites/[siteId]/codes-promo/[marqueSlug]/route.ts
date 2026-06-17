@@ -140,6 +140,9 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
       status: body.status === 'published' ? 'published' : 'draft',
       meta_title: body.meta_title || '',
       meta_description: body.meta_description || '',
+      // H1 personnalisé. Supporte variables (substitution faite côté Python
+      // au build). Si vide → fallback hardcodé dans le template Jinja.
+      h1_custom: typeof body.h1_custom === 'string' ? body.h1_custom : '',
       date_creation: body.date_creation || new Date().toISOString().slice(0, 10),
       date_maj: new Date().toISOString().slice(0, 10),
       content_md: body.content_md || '',
