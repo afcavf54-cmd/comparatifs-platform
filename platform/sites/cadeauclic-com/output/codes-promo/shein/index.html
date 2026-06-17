@@ -353,7 +353,6 @@
     .reveal:hover::after { transform: translateX(0); }
     .reveal .label { font-size: .95rem; }
     .reveal .peek { font-family: 'Poppins', sans-serif; font-size: .8rem; opacity: .9; letter-spacing: .1em; font-weight: 600; }
-    /* For offer type (no code) the reveal button shows "Profiter" */
     .reveal[data-type="offer"] .peek { display: none; }
 
     /* Expired section */
@@ -392,6 +391,20 @@
     .faq-item.active .faq-q .plus { transform: rotate(45deg); }
     .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
     .faq-a .inner { padding: 0 0 18px; color: var(--ink-soft); line-height: 1.65; }
+
+    /* ═══ BLOC LIBRE ═══════════════════════════════════════════════════════ */
+    /* Bloc HTML libre saisi par l'auteur dans le HUB. On reset les styles
+       par défaut du <p> ne soit pas écrasé par les règles du panel ci-dessus. */
+    .panel.content-libre h2 { font-size: 1.45rem; margin-top: 28px; margin-bottom: 14px; }
+    .panel.content-libre h2:first-child { margin-top: 0; }
+    .panel.content-libre h3 { font-size: 1.15rem; margin-top: 22px; margin-bottom: 10px; color: var(--ink); }
+    .panel.content-libre p { color: var(--ink-soft); line-height: 1.7; margin-bottom: 14px; }
+    .panel.content-libre p:last-child { margin-bottom: 0; }
+    .panel.content-libre ul, .panel.content-libre ol { padding-left: 24px; margin-bottom: 14px; color: var(--ink-soft); line-height: 1.7; }
+    .panel.content-libre li { margin-bottom: 6px; }
+    .panel.content-libre strong { color: var(--ink); font-weight: 700; }
+    .panel.content-libre a { color: var(--rose-600); border-bottom: 1px solid var(--rose-200); transition: border-color .2s; }
+    .panel.content-libre a:hover { border-color: var(--rose-500); }
 
     /* ═══ SIDEBAR (ASIDE) ══════════════════════════════════════════════════ */
     aside { display: flex; flex-direction: column; gap: 16px; }
@@ -448,7 +461,7 @@
     .modal-cta a { background: var(--green); color: var(--white); padding: 12px 22px; border-radius: 10px; font-weight: 700; font-size: .95rem; transition: all .2s; }
     .modal-cta a:hover { background: #259a62; transform: translateY(-1px); }
 
-    /* ═══ FOOTER (identique aux autres pages cadeauclic) ═══════════════════ */
+    /* ═══ FOOTER ═══════════════════════════════════════════════════════════ */
     footer { background: var(--ink); color: var(--white); padding: 56px 0 24px; }
     .foot-grid { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 36px; }
     .foot-grid h4 { font-size: 1rem; margin-bottom: 16px; }
@@ -841,6 +854,11 @@
 <span>Jui</span><span>Aoû</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Déc</span><span>Jan</span><span>Fév</span><span>Mar</span><span>Avr</span><span>Mai</span><span>Jui</span>        </div>
       </div>
 
+      <!-- ═══ BLOC LIBRE (contenu généré via prompt custom dans le HUB) ═══
+           Affiché juste après l'historique des remises. HTML libre, déjà
+           pré-stylé via .panel.content-libre. Le HTML stocké dans
+           brand.content_libre doit contenir ses propres <h2>/<h3>/<p>. -->
+
       <!-- FAQ -->
       <div class="panel">
         <h2>Foire aux questions</h2>
@@ -1109,7 +1127,6 @@
 
 <!-- ═══ SCRIPTS ═══════════════════════════════════════════════════════════ -->
 <script>
-// Données des codes (pour la popup) — injectées par Jinja
 const COUPONS = {
   "c1": { code: "GIFT30", accroche: "30% de r\u00e9duction d\u00e8s 65\u20ac d\u0027achat avec ce code SHEIN", detail: "Code valable sur une s\u00e9lection mode et accessoires, d\u00e8s 65\u20ac d\u0027achat. Non cumulable avec d\u0027autres promotions.\n- Profil id\u00e9al : ado/jeune adulte qui renouvelle sa garde-robe\n- Mon avis : la meilleure remise du moment, fonce.\n", valeur: 30, unite: "%", type: "code" },
   "c2": { code: "SHEIN18", accroche: "18% de r\u00e9duction sur tout le site SHEIN sans minimum", detail: "Code valable sur tout le catalogue SHEIN, sans minimum d\u0027achat. Utilisable une seule fois par compte.", valeur: 18, unite: "%", type: "code" },
@@ -1121,7 +1138,6 @@ const COUPONS = {
 const URL_AFFILIATION = "https://www.shein.com/?ref=cadeauclic";
 const MARQUE = "SHEIN";
 
-// ── HAMBURGER MOBILE ─────────────────────────────────────────────────
 (function(){
   const ham = document.getElementById('hamburger');
   const backdrop = document.getElementById('navBackdrop');
@@ -1135,7 +1151,6 @@ const MARQUE = "SHEIN";
   backdrop.addEventListener('click', () => toggle(false));
 })();
 
-// ── TABS FILTRES ────────────────────────────────────────────────────
 (function(){
   const tabs = document.querySelectorAll('.tab');
   const coupons = document.querySelectorAll('main#list > .coupon, main#list > .expired .coupon');
@@ -1153,7 +1168,6 @@ const MARQUE = "SHEIN";
   }));
 })();
 
-// ── DETAIL ACCORDÉON ───────────────────────────────────────────────
 document.querySelectorAll('.detail').forEach(btn => {
   btn.addEventListener('click', () => {
     const body = btn.nextElementSibling;
@@ -1163,7 +1177,6 @@ document.querySelectorAll('.detail').forEach(btn => {
   });
 });
 
-// ── FAQ ACCORDÉON ──────────────────────────────────────────────────
 document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', () => {
     const item = q.parentElement;
@@ -1173,7 +1186,6 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 });
 
-// ── REVEAL CODE + POPUP MODALE ─────────────────────────────────────
 (function(){
   const modal = document.getElementById('codeModal');
   const titleEl = document.getElementById('modalTitle');
@@ -1183,18 +1195,15 @@ document.querySelectorAll('.faq-q').forEach(q => {
   const detailEl = document.getElementById('modalDetail');
   const copyBtn = document.getElementById('modalCopy');
   const closeBtn = document.getElementById('modalClose');
-  const cta = document.getElementById('modalCta');
 
   function openModal(id) {
     const c = COUPONS[id];
     if (!c) return;
-    // Titre dynamique
     let valLabel = '';
     if (c.valeur && c.unite === '%') valLabel = `${c.valeur}% de réduction`;
     else if (c.valeur && c.unite === '€') valLabel = `${c.valeur}€ offerts`;
     else valLabel = c.accroche.split(' ').slice(0, 4).join(' ');
     titleEl.innerHTML = `<strong>${valLabel}</strong> avec ce ${c.type === 'code' ? 'code promo' : 'bon plan'} ${MARQUE}`;
-    // Code box (uniquement si type=code et code non vide)
     if (c.code && c.type === 'code') {
       codeEl.textContent = c.code;
       codeBox.style.display = 'flex';
@@ -1207,12 +1216,9 @@ document.querySelectorAll('.faq-q').forEach(q => {
     detailEl.style.display = c.detail ? 'block' : 'none';
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
-    // Reset feedback state
     modal.querySelectorAll('.modal-feedback button').forEach(b => b.classList.remove('active'));
-    // Reset copy state
     copyBtn.classList.remove('copied');
     copyBtn.textContent = 'COPIER';
-    // Ouvre l'URL d'affiliation en parallèle dans un nouvel onglet
     if (URL_AFFILIATION) window.open(URL_AFFILIATION, '_blank', 'noopener,noreferrer');
   }
   function closeModal() {
@@ -1229,7 +1235,6 @@ document.querySelectorAll('.faq-q').forEach(q => {
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
 
-  // Copy
   copyBtn.addEventListener('click', () => {
     const code = codeEl.textContent;
     if (!code) return;
@@ -1244,7 +1249,6 @@ document.querySelectorAll('.faq-q').forEach(q => {
     });
   });
 
-  // Feedback 👍/👎 (visuel uniquement, pas de backend en V1)
   modal.querySelectorAll('.modal-feedback button').forEach(b => {
     b.addEventListener('click', () => {
       modal.querySelectorAll('.modal-feedback button').forEach(x => x.classList.remove('active'));
@@ -1253,7 +1257,6 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 })();
 
-// ── COPIED TOAST ───────────────────────────────────────────────────
 function showToast() {
   const t = document.getElementById('copiedToast');
   t.classList.add('show');
