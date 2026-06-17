@@ -105,8 +105,8 @@
 
     .hero-media{position:relative;aspect-ratio:1/1;max-width:640px;justify-self:center}
     .hero-media .blob{position:absolute;inset:8% -4% 0 -4%;background:var(--grad);border-radius:46% 54% 38% 62% / 48% 42% 58% 52%;opacity:.14;filter:blur(14px);z-index:0}
-    .hero-figure{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;z-index:1}
-    .hero-figure img{width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 18px 32px rgba(207,44,97,.18))}
+    .hero-figure{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;z-index:1;filter:drop-shadow(0 18px 32px rgba(207,44,97,.18))}
+    .hero-figure img,.hero-figure svg{width:100%;height:auto;display:block}
     .float-tag{
       position:absolute;background:#fff;border-radius:50px;padding:10px 16px 10px 10px;
       font-family:"Poppins";font-weight:700;font-size:.86rem;color:var(--ink);
@@ -422,8 +422,60 @@
     <div class="hero-media">
       <div class="blob"></div>
       <div class="hero-figure">
-        <img src="/hero-cadeauclic.svg" alt="Cadeau et bons plans cadeauclic"
-             onerror="this.outerHTML='<span style=&quot;font-size:9rem;filter:drop-shadow(0 16px 30px rgba(207,44,97,.25))&quot;>🎁</span>'">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 680" role="img" aria-labelledby="heroSvgTitle" style="width:100%;height:auto;display:block">
+          <title id="heroSvgTitle">Cadeau et bons plans cadeauclic</title>
+          <circle cx="110" cy="200" r="70" fill="#ffe0eb" opacity="0.7"/>
+          <circle cx="580" cy="540" r="90" fill="#fff0d6" opacity="0.65"/>
+          <circle cx="560" cy="120" r="42" fill="#ffd0d8" opacity="0.5"/>
+          <circle cx="80" cy="470" r="32" fill="#ffe7ef" opacity="0.6"/>
+          <path d="M 120,140 L 126,122 L 144,116 L 126,110 L 120,92 L 114,110 L 96,116 L 114,122 Z" fill="#FFC857"/>
+          <path d="M 610,270 L 614,258 L 626,254 L 614,250 L 610,238 L 606,250 L 594,254 L 606,258 Z" fill="#ff5b8a"/>
+          <path d="M 70,540 L 73,531 L 82,528 L 73,525 L 70,516 L 67,525 L 58,528 L 67,531 Z" fill="#ff7a59"/>
+          <path d="M 620,460 L 622,454 L 628,452 L 622,450 L 620,444 L 618,450 L 612,452 L 618,454 Z" fill="#ec3f76"/>
+          <path d="M 470,160 L 473,151 L 482,148 L 473,145 L 470,136 L 467,145 L 458,148 L 467,151 Z" fill="#FFC857"/>
+          <g transform="translate(530,195)"><path d="M 0,8 q -14,-14 -28,0 q -14,14 0,28 l 28,30 l 28,-30 q 14,-14 0,-28 q -14,-14 -28,0 z" fill="#ec3f76"/></g>
+          <g transform="translate(90,360) scale(0.55)"><path d="M 0,8 q -14,-14 -28,0 q -14,14 0,28 l 28,30 l 28,-30 q 14,-14 0,-28 q -14,-14 -28,0 z" fill="#ff5b8a"/></g>
+          <ellipse cx="340" cy="540" rx="180" ry="13" fill="#ec3f76" opacity="0.12"/>
+          <g transform="translate(180,220)">
+            <rect x="0" y="100" width="320" height="220" rx="10" fill="#ff7a59"/>
+            <rect x="0" y="100" width="40" height="220" rx="10" fill="#ff8c70" opacity="0.5"/>
+            <rect x="140" y="100" width="40" height="220" fill="#FFC857"/>
+            <rect x="158" y="100" width="4" height="220" fill="#f5b73f" opacity="0.6"/>
+            <rect x="-12" y="78" width="344" height="52" rx="8" fill="#ff5b8a"/>
+            <rect x="-12" y="78" width="40" height="52" rx="8" fill="#ff7a9b" opacity="0.5"/>
+            <rect x="140" y="78" width="40" height="52" fill="#FFC857"/>
+            <rect x="158" y="78" width="4" height="52" fill="#f5b73f" opacity="0.6"/>
+            <ellipse cx="118" cy="52" rx="42" ry="28" fill="#FFC857" transform="rotate(-22 118 52)"/>
+            <ellipse cx="118" cy="52" rx="24" ry="11" fill="#f5b73f" transform="rotate(-22 118 52)" opacity="0.45"/>
+            <ellipse cx="202" cy="52" rx="42" ry="28" fill="#FFC857" transform="rotate(22 202 52)"/>
+            <ellipse cx="202" cy="52" rx="24" ry="11" fill="#f5b73f" transform="rotate(22 202 52)" opacity="0.45"/>
+            <rect x="146" y="32" width="28" height="44" rx="6" fill="#ec3f76"/>
+            <rect x="146" y="32" width="6" height="44" rx="2" fill="#cf2c61" opacity="0.6"/>
+            <path d="M 152,76 L 138,118 L 152,114 Z" fill="#FFC857"/>
+            <path d="M 168,76 L 182,118 L 168,114 Z" fill="#FFC857"/>
+          </g>
+          <g transform="translate(70,340) rotate(-12)">
+            <path d="M 22,0 L 110,0 Q 122,0 130,9 L 142,28 Q 148,38 142,48 L 130,67 Q 122,76 110,76 L 22,76 Q 10,76 6,68 L -12,46 Q -18,38 -12,30 L 6,8 Q 10,0 22,0 Z" fill="#ec3f76"/>
+            <circle cx="120" cy="38" r="7" fill="#fff"/>
+            <circle cx="120" cy="38" r="3" fill="#ec3f76"/>
+            <text x="55" y="48" font-family="-apple-system,BlinkMacSystemFont,Helvetica,sans-serif" font-weight="800" font-size="26" fill="#fff" text-anchor="middle">-30%</text>
+          </g>
+          <g transform="translate(490,395) rotate(14)">
+            <path d="M 22,0 L 110,0 Q 122,0 130,9 L 142,28 Q 148,38 142,48 L 130,67 Q 122,76 110,76 L 22,76 Q 10,76 6,68 L -12,46 Q -18,38 -12,30 L 6,8 Q 10,0 22,0 Z" fill="#cf2c61"/>
+            <circle cx="120" cy="38" r="7" fill="#fff"/>
+            <circle cx="120" cy="38" r="3" fill="#cf2c61"/>
+            <text x="55" y="48" font-family="-apple-system,BlinkMacSystemFont,Helvetica,sans-serif" font-weight="800" font-size="26" fill="#fff" text-anchor="middle">-50%</text>
+          </g>
+          <g transform="translate(245,580) rotate(-4)">
+            <rect x="0" y="0" width="190" height="46" rx="23" fill="#FFC857"/>
+            <circle cx="22" cy="23" r="6" fill="#ec3f76"/>
+            <text x="108" y="30" font-family="-apple-system,BlinkMacSystemFont,Helvetica,sans-serif" font-weight="800" font-size="18" fill="#cf2c61" text-anchor="middle" letter-spacing="1">BONS PLANS</text>
+          </g>
+          <circle cx="245" cy="155" r="4" fill="#ec3f76"/>
+          <circle cx="495" cy="170" r="3" fill="#FFC857"/>
+          <circle cx="615" cy="380" r="5" fill="#ff7a59"/>
+          <circle cx="55" cy="250" r="3" fill="#FFC857"/>
+        </svg>
       </div>
       <div class="float-tag one"><span class="ic" style="background:var(--rose-500)">✓</span>Codes promo vérifiés</div>
       <div class="float-tag two"><span class="ic" style="background:var(--coral)">★</span>Sélection sans budget explosé</div>
