@@ -13,7 +13,8 @@ featured_image: /blog/9063-billmatic-auto-face-aux-plateformes-d-abonnement-sur-
 link_anchors:
 - text: le prix de la plateforme de facturation récurrente Billmatic Auto
   max: 5
-related_posts: []
+related_posts:
+- 2004-billmatic-subscription-face-aux-solutions-d-abonnement-sur-le-prix
 ---
 <p>Vingt ans que je gère la comptabilité d'entreprises de taille intermédiaire. J'ai vu passer une bonne dizaine d'outils de facturation, des logiciels installés en local qui plantaient au mauvais moment, des solutions cloud prometteuses qui finissaient par doubler leurs tarifs au bout de deux ans. Alors quand un outil comme Billmatic Auto arrive sur le marché en se comparant aux plateformes d'abonnement classiques, je ne prends pas ça à la légère.</p>
 
