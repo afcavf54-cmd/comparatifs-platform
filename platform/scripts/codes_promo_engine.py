@@ -411,20 +411,72 @@ def substitute_brand_vars(text: str, brand: dict, site: dict, build_ctx: dict,
     else:
         marque_repl = marque
 
-    result = text
-    replacements = {
-        '{marque}': marque_repl,
-        '{categorie}': categorie,
-        '{mois}': mois,
-        '{annee}': annee,
-        '{mois_annee}': mois_annee,
-        '{n_codes}': n_codes,
-        '{n_codes_promo}': n_codes_promo,
-        '{best_remise}': best_remise,
-        '{site_name}': site_name,
+    # Table de base (placeholder minuscule → valeur). On en dérive ensuite
+    # automatiquement les 3 variantes de casse : {mois}, {Mois}, {MOIS}.
+    base = {
+        'marque': marque_repl,
+        'categorie': categorie,
+        'mois': mois,
+        'annee': annee,
+        'mois_annee': mois_annee,
+        'n_codes': n_codes,
+        'n_codes_promo': n_codes_promo,
+        'best_remise': best_remise,
+        'site_name': site_name,
     }
-    for placeholder, value in replacements.items():
-        result = result.replace(placeholder, value)
+
+    def _to_capitalize(s: str) -> str:
+        """Met la 1ère lettre en majuscule. Gère le cas où s commence par
+        une balise HTML (pour {Marque} avec wrap_marque_pink=True : on
+        cherche la 1ère lettre dans le texte, pas dans la balise)."""
+        if not s:
+            return s
+        # Si la valeur commence par une balise (cas wrap_marque_pink), on
+        # capitalize le texte à l'intérieur de la balise.
+        if s.startswith('<') and '>' in s:
+            close = s.index('>') + 1
+            text_part = s[close:]
+            if text_part:
+                # Trouver la fin du texte (avant la prochaine balise fermante)
+                end = text_part.find('<')
+                if end > 0:
+                    inner = text_part[:end]
+                    rest = text_part[end:]
+                    inner = inner[0].upper() + inner[1:] if inner else inner
+                    return s[:close] + inner + rest
+            return s
+        return s[0].upper() + s[1:]
+
+    def _to_upper(s: str) -> str:
+        """Met tout en majuscules. Préserve les balises HTML."""
+        if not s:
+            return s
+        if s.startswith('<') and '>' in s:
+            close = s.index('>') + 1
+            text_part = s[close:]
+            if text_part:
+                end = text_part.find('<')
+                if end > 0:
+                    inner = text_part[:end]
+                    rest = text_part[end:]
+                    return s[:close] + inner.upper() + rest
+            return s
+        return s.upper()
+
+    # On construit toutes les variantes de placeholders. Important : on traite
+    # les variantes UPPERCASE en premier pour éviter qu'un .replace('{mois}')
+    # impacte par erreur... non en fait .replace est case-sensitive donc l'ordre
+    # ne compte pas. Mais on garde une logique claire.
+    result = text
+    for name, value in base.items():
+        # 3 variantes : {mois}, {Mois}, {MOIS}
+        # (et pour multi-mots : {mois_annee}, {Mois_annee}, {MOIS_ANNEE})
+        result = result.replace('{' + name.upper() + '}', _to_upper(value))
+        # Capitalize : 1ère lettre en majuscule, reste inchangé.
+        # Ex : "mois_annee" → "Mois_annee" (PAS "Mois_Annee")
+        cap_name = name[0].upper() + name[1:] if name else name
+        result = result.replace('{' + cap_name + '}', _to_capitalize(value))
+        result = result.replace('{' + name + '}', value)
     return result
 
 
