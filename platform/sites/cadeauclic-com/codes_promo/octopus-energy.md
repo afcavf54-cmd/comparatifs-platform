@@ -35,29 +35,29 @@ faq:
     reponse: "Première chose à vérifier : la date d'expiration du code. Ensuite, assure-toi que tu es bien un nouveau client, car la plupart des codes sont réservés aux premières souscriptions. Si tout semble correct, contacte le service client Octopus Energy directement. Ils sont assez réactifs et peuvent appliquer le crédit manuellement si le code était valide."
 historique_12_mois:
   - mois: 2025-07
-    valeur: 40
+    valeur: 80
   - mois: 2025-08
-    valeur: 40
+    valeur: 80
   - mois: 2025-09
-    valeur: 40
+    valeur: 80
   - mois: 2025-10
-    valeur: 40
+    valeur: 80
   - mois: 2025-11
-    valeur: 40
+    valeur: 80
   - mois: 2025-12
-    valeur: 40
+    valeur: 80
   - mois: 2026-01
-    valeur: 40
+    valeur: 80
   - mois: 2026-02
-    valeur: 40
+    valeur: 80
   - mois: 2026-03
-    valeur: 40
+    valeur: 80
   - mois: 2026-04
-    valeur: 40
+    valeur: 80
   - mois: 2026-05
-    valeur: 40
+    valeur: 80
   - mois: 2026-06
-    valeur: 40
+    valeur: 80
 content_libre: |-
   <h2>Les tarifs</h2>
 
@@ -100,6 +100,7 @@ Lors du processus d'inscription ou de souscription, cherche le champ prévu pour
 
 ## Étape 4
 Colle ton code dans le champ correspondant et valide pour voir la remise ou le bonus s'appliquer directement à ton contrat d'énergie.
+
 
 
 
