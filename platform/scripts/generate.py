@@ -2375,6 +2375,26 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     slug = b.get("slug", "")
                     if not slug:
                         continue
+
+                    # ── Substitution des variables dans meta_title, meta_description
+                    # et h1_custom. Cf docstring de substitute_brand_vars(). Pré-
+                    # calculé ici (au moment du render) plutôt que dans Jinja
+                    # parce que les variables comme {mois_annee} viennent du
+                    # contexte de build, pas du frontmatter.
+                    _build_ctx = {
+                        'mois_fr': _cp_months_fr[today.month],
+                        'annee': today.year,
+                        'mois_annee_fr': _cp_month_year,
+                    }
+                    _cp_site_ctx = {**site, 'url': cp_site_url}
+                    b['meta_title_resolved'] = codes_promo_engine.substitute_brand_vars(
+                        b.get('meta_title', '') or '', b, _cp_site_ctx, _build_ctx)
+                    b['meta_description_resolved'] = codes_promo_engine.substitute_brand_vars(
+                        b.get('meta_description', '') or '', b, _cp_site_ctx, _build_ctx)
+                    b['h1_resolved'] = codes_promo_engine.substitute_brand_vars(
+                        b.get('h1_custom', '') or '', b, _cp_site_ctx, _build_ctx,
+                        wrap_marque_pink=True)
+
                     jsonld_blocks = codes_promo_engine.build_jsonld_blocks(b, cp_site_url)
                     steps = codes_promo_engine.extract_steps_from_content(b)
                     try:
