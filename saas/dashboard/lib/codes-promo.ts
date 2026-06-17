@@ -39,6 +39,11 @@ export interface CodePromo {
   teste_par_sophie: string
   meilleure_remise: boolean
   expired: boolean
+  // Texte du bouton CTA (par défaut "Voir le code 🏷️" pour les codes,
+  // "Profiter de l'offre →" pour les offres). Override par offre quand
+  // tu veux un wording différent (ex : "Profite du parrainage", "Activer
+  // le bonus 80€", etc.).
+  cta_text?: string
 }
 
 export interface BrandFaq {
@@ -174,6 +179,7 @@ export function emptyCode(): CodePromo {
     teste_par_sophie: '',
     meilleure_remise: false,
     expired: false,
+    cta_text: '',
   }
 }
 
