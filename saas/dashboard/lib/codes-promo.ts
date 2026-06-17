@@ -70,6 +70,10 @@ export interface BrandFrontmatter {
   codes?: CodePromo[]
   faq?: BrandFaq[]
   historique_12_mois?: BrandHistoryMonth[]
+  // Unité affichée dans le mini-graphique de l'historique. Globale aux 12
+  // mois (pour 99% des marques, c'est cohérent : soit % toute l'année, soit
+  // € de bons d'achat toute l'année). Defaults to '%'.
+  historique_unite?: '%' | '€'
   related_brands?: string[]
   status?: BrandStatus
   meta_title?: string
@@ -117,7 +121,7 @@ const FIELD_ORDER: (keyof BrandFrontmatter)[] = [
   'rating',
   'codes',
   'faq',
-  'historique_12_mois',
+  'historique_12_mois', 'historique_unite',
   'related_brands',
   'content_libre',           // ← bloc libre HTML, juste avant le SEO/statuts
   'status', 'meta_title', 'meta_description', 'h1_custom',
@@ -212,6 +216,7 @@ export function emptyBrand(marque: string, slug?: string): Brand {
     codes: [],
     faq: [],
     historique_12_mois: emptyHistory12Months(),
+    historique_unite: '%',
     related_brands: [],
     content_libre: '',         // ← nouveau bloc, vide par défaut
     status: 'draft',
