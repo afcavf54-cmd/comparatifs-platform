@@ -394,8 +394,7 @@
       {% if brand.rating and brand.rating.value %}
       <div class="rating">
         <div class="stars">{% for i in range(5) %}{% if i < (brand.rating.value | round(0, 'floor') | int) %}★{% else %}☆{% endif %}{% endfor %}</div>
-        <b>{{ brand.rating.value }} / 5</b>
-        <span style="color:var(--ink-soft);font-size:.9rem">— note des codes {{ brand.marque }} par {{ brand.rating.count }} lecteurs</span>
+        <span>{{ brand.marque }} a obtenu la note de <b>{{ brand.rating.value }}/5</b> de la part de nos lecteurs</span>
       </div>
       {% endif %}
 
