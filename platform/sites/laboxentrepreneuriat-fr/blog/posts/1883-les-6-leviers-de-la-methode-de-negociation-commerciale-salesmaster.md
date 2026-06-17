@@ -15,6 +15,7 @@ link_anchors:
   max: 5
 related_posts:
 - 4812-5-avantages-meconnus-du-cdi-interimaire
+- 2421-les-6-acquis-de-la-formation-negociation-commerciale-dealmaker-intensive
 - 6757-les-6-principes-de-la-methode-de-presentation-a-impact-powerpoint
 ---
 <p>Ça fait douze ans que j'accompagne des dirigeants, des commerciaux et des indépendants dans leur quotidien opérationnel. Et sur le sujet de la négociation commerciale, j'ai vu beaucoup de méthodes passer. Certaines trop théoriques. D'autres trop rigides pour fonctionner en contexte réel. La méthode SalesMaster, je l'ai croisée pour la première fois sur le terrain, auprès d'une PME lyonnaise du secteur BTP qui cherchait à former ses commerciaux terrain. Ce qui m'a frappé, c'est que ses six leviers collent vraiment aux situations concrètes, celles où le client est pressé, les marges serrées et la confiance à construire vite.</p>

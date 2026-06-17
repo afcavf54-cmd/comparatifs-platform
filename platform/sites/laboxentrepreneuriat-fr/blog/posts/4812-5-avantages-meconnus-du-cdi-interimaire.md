@@ -16,6 +16,7 @@ link_anchors:
 related_posts:
 - 6757-les-6-principes-de-la-methode-de-presentation-a-impact-powerpoint
 - 1883-les-6-leviers-de-la-methode-de-negociation-commerciale-salesmaster
+- 2421-les-6-acquis-de-la-formation-negociation-commerciale-dealmaker-intensive
 ---
 <h2>Le CDI intérimaire, ce méconnu qui mérite votre attention</h2>
 

@@ -15,6 +15,7 @@ link_anchors:
 related_posts:
 - 4812-5-avantages-meconnus-du-cdi-interimaire
 - 1883-les-6-leviers-de-la-methode-de-negociation-commerciale-salesmaster
+- 2421-les-6-acquis-de-la-formation-negociation-commerciale-dealmaker-intensive
 ---
 <h2>Pourquoi la plupart des présentations PowerPoint n'ont aucun impact ?</h2>
 
