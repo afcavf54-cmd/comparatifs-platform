@@ -369,6 +369,65 @@ def format_mois_court_fr(mois_iso: str) -> str:
 # RICH SNIPPETS — Génération du JSON-LD pour une marque
 # ═══════════════════════════════════════════════════════════════════════════
 
+def substitute_brand_vars(text: str, brand: dict, site: dict, build_ctx: dict,
+                          wrap_marque_pink: bool = False) -> str:
+    """Remplace les {variables} dans un texte (meta_title, meta_description, h1)
+    par leurs valeurs concrètes calculées à partir du brand + contexte du build.
+
+    Variables supportées :
+      {marque}, {categorie}, {mois}, {annee}, {mois_annee},
+      {n_codes}, {n_codes_promo}, {best_remise}, {site_name}
+
+    Si wrap_marque_pink=True (uniquement pour le H1), {marque} est remplacé par
+    `<span class="pink">Octopus Energy</span>` pour conserver le style coloré.
+    """
+    if not text:
+        return ''
+
+    # Calcul des valeurs (defensive, tous les .get() pour éviter KeyError)
+    marque = brand.get('marque', '')
+    categorie = brand.get('categorie_marque', '') or ''
+    mois = build_ctx.get('mois_fr', '')
+    annee = str(build_ctx.get('annee', ''))
+    mois_annee = build_ctx.get('mois_annee_fr', '')
+    n_codes = str(brand.get('n_total', 0))
+    n_codes_promo = str(brand.get('n_codes', 0))
+    site_name = (site.get('name') or '').strip() or (site.get('domain') or '').replace('https://', '').replace('http://', '').rstrip('/')
+
+    # best_remise : on prend la valeur la plus haute parmi les codes actifs
+    best_remise = ''
+    for c in brand.get('codes_actifs', []) or []:
+        if c.get('valeur') and c.get('unite') in ('%', '€'):
+            try:
+                val = float(c['valeur'])
+                if not best_remise or val > float(best_remise.rstrip('%€')):
+                    best_remise = f"{int(val) if val == int(val) else val}{c['unite']}"
+            except (ValueError, TypeError):
+                pass
+
+    # Substitution {marque}
+    if wrap_marque_pink and marque:
+        marque_repl = f'<span class="pink">{marque}</span>'
+    else:
+        marque_repl = marque
+
+    result = text
+    replacements = {
+        '{marque}': marque_repl,
+        '{categorie}': categorie,
+        '{mois}': mois,
+        '{annee}': annee,
+        '{mois_annee}': mois_annee,
+        '{n_codes}': n_codes,
+        '{n_codes_promo}': n_codes_promo,
+        '{best_remise}': best_remise,
+        '{site_name}': site_name,
+    }
+    for placeholder, value in replacements.items():
+        result = result.replace(placeholder, value)
+    return result
+
+
 def build_jsonld_blocks(brand: dict, site_url: str) -> list[dict]:
     """Construit la liste des blocs JSON-LD pour la page d'une marque.
     Retourne une liste de dicts (1 par schema) que le template sérialisera
