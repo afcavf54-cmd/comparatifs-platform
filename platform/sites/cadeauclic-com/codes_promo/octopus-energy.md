@@ -21,6 +21,19 @@ codes:
     detail: ""
     expire_le: "2028-12-31"
     nb_utilisations: 150
+    teste_par_sophie: Testé par Sophie
+    meilleure_remise: false
+    expired: false
+  - id: cmqi2qgcjupvd
+    type: code
+    valeur: 40
+    unite: €
+    sous_type: Code promo
+    accroche: 40€ OFFERTS A VOTRE INSCRIPTION !
+    code: ""
+    detail: ""
+    expire_le: "2026-12-31"
+    nb_utilisations: 59
     teste_par_sophie: ""
     meilleure_remise: false
     expired: false
