@@ -4,15 +4,21 @@ slug: 4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise
 date: '2026-06-17T06:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Paramétrer l''ERP BusinessCore Enterprise : la liste des points clés'
-meta_description: 'Retour d''expérience concret sur le paramétrage de l''ERP BusinessCore Enterprise dans une PME : plan de comptes, flux, erreurs à éviter et conseils pratiques avant…'
+meta_description: 'Retour d''expérience concret sur le paramétrage de l''ERP BusinessCore
+  Enterprise dans une PME : plan de comptes, flux, erreurs à éviter et conseils pratiques
+  avant…'
 min_words: 910
 status: published
 featured_image: /blog/4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise.jpg
 link_anchors:
 - text: comment paramétrer l'ERP BusinessCore Enterprise
   max: 5
+related_posts:
+- 4820-nettoyer-un-export-csv-de-donnees-salestrack-crm
+- 1047-a-qui-se-destine-le-crm-salestrack-evolution
+- 6768-a-qui-se-prete-le-crm-salesflow-evolution
+- 3741-reussir-le-parametrage-des-modules-financepro-integrated
 ---
-
 <p>Quand on m'a confié le déploiement de BusinessCore Enterprise dans notre structure toulousaine, j'avais déjà eu quelques expériences de mise en place d'ERP. Mais honnêtement, rien ne m'avait vraiment préparé à la densité de paramétrage que demande cet outil. Neuf ans en comptabilité, ça aide. Ça ne suffit pas.</p>
 
 <p>Je partage ici ce que j'ai appris, ce qui a fonctionné, et ce que je referais différemment. Si vous gérez une PME de 100 à 500 salariés et que vous envisagez ce projet, lisez ça avant de commencer.</p>
