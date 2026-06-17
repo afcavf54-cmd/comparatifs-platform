@@ -12,6 +12,7 @@ interface CodePromo {
   sous_type: string; accroche: string; code: string; detail: string
   expire_le: string; nb_utilisations: number; teste_par_sophie: string
   meilleure_remise: boolean; expired: boolean
+  cta_text?: string  // Override du texte du bouton CTA (sinon défaut selon type)
 }
 interface BrandFaq { question: string; reponse: string }
 interface BrandHistoryMonth { mois: string; valeur: number }
@@ -244,7 +245,7 @@ export default function CodesPromoEditPage() {
       sous_type: type === 'code' ? 'Code promo' : 'Bon plan',
       accroche: '', code: '', detail: '',
       expire_le: '', nb_utilisations: 0, teste_par_sophie: '',
-      meilleure_remise: false, expired: false,
+      meilleure_remise: false, expired: false, cta_text: '',
     }
     setBrand({ ...brand, codes: [...(brand.codes || []), newCode] })
   }
@@ -792,6 +793,18 @@ export default function CodesPromoEditPage() {
               <div style={{ ...S.field, marginTop: 10 }}>
                 <label style={S.label}>Détail (texte de l'accordéon "Afficher le détail")</label>
                 <textarea style={{ ...S.textarea, minHeight: 60 }} rows={3} value={c.detail} onChange={e => updateCode(idx, { detail: e.target.value })} placeholder="Conditions, montant min, exclusions… Une ligne par bullet précédée d'un tiret." />
+              </div>
+              <div style={{ ...S.field, marginTop: 10 }}>
+                <label style={S.label}>Texte du bouton CTA (optionnel)</label>
+                <input
+                  style={S.input}
+                  value={c.cta_text || ''}
+                  onChange={e => updateCode(idx, { cta_text: e.target.value })}
+                  placeholder={c.type === 'code' ? 'Voir le code 🏷️ (défaut)' : "Profiter de l'offre → (défaut)"}
+                />
+                <div style={{ fontSize: 11, color: '#999' }}>
+                  Laisse vide pour le texte par défaut. Tu peux mettre des emojis.
+                </div>
               </div>
               <div style={{ ...S.grid3, marginTop: 10 }}>
                 <div style={S.field}>
