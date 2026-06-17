@@ -1,18 +1,25 @@
 ---
-title: 'Démissionner en conservant ses droits liés à l''ancienneté : ce que dit la loi'
+title: 'Démissionner en conservant ses droits liés à l''ancienneté : ce que dit la
+  loi'
 slug: 7798-demissionner-en-conservant-ses-droits-lies-a-l-anciennete-ce-que-dit-la-loi
 date: '2026-06-17T09:00:00+02:00'
 categorie: Salarié
 meta_title: 'Démission et ancienneté : quels droits ?'
-meta_description: 'Démissionner ne signifie pas perdre tous ses droits. Ancienneté, congés payés, préavis : découvrez ce que la loi prévoit vraiment pour protéger vos acquis lors…'
+meta_description: 'Démissionner ne signifie pas perdre tous ses droits. Ancienneté,
+  congés payés, préavis : découvrez ce que la loi prévoit vraiment pour protéger vos
+  acquis lors…'
 min_words: 1200
 status: published
 featured_image: /blog/7798-demissionner-en-conservant-ses-droits-lies-a-l-anciennete-ce-que-dit-la-loi.jpg
 link_anchors:
 - text: droits sur votre ancienneté lors d'une démission
   max: 4
+related_posts:
+- 5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage
+- 4315-comment-fonctionne-le-comite-d-entreprise-credit-mutuel
+- 3695-quels-sont-les-avantages-du-comite-d-entreprise-airbus
+- 2957-travailler-sans-contrat-depuis-15-jours-quels-risques-pour-l-employeur-et-quels-droits-pour-vous
 ---
-
 <p>J'ai mis du temps à comprendre ce que la loi prévoit vraiment quand on démissionne. Pendant longtemps, j'ai cru que partir de son propre chef, c'était repartir de zéro. Perdre ses droits. Tout effacer. La réalité est un peu plus nuancée, et franchement, ça change beaucoup de choses dans la façon dont on aborde une sortie de poste.</p>
 
 <p>Voici ce que j'ai appris, en tant que dirigeant qui gère des équipes depuis plus de dix ans, et qui a vu passer pas mal de situations différentes.</p>
