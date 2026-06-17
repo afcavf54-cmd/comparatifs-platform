@@ -4,15 +4,21 @@ slug: 3472-les-6-acquis-de-la-formation-management-transversal-skillboost
 date: '2026-06-17T08:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation management transversal SkillBoost : 6 compétences'
-meta_description: Découvrez les 6 acquis concrets de la formation management transversal SkillBoost pour coordonner des équipes sans autorité hiérarchique et obtenir des résultats.
+meta_description: Découvrez les 6 acquis concrets de la formation management transversal
+  SkillBoost pour coordonner des équipes sans autorité hiérarchique et obtenir des
+  résultats.
 min_words: 970
 status: published
 featured_image: /blog/3472-les-6-acquis-de-la-formation-management-transversal-skillboost.jpg
 link_anchors:
 - text: la certification de la formation management transversal SkillBoost
   max: 5
+related_posts:
+- 3760-pourquoi-investir-dans-votre-marque-employeur
+- 6997-pourquoi-la-definition-de-la-gestion-des-talents-est-elle-essentielle
+- 6799-comment-preparer-les-futurs-managers-avec-le-succession-planning
+- 7286-comment-renforcer-la-fidelisation-des-talents-durablement
 ---
-
 <p>Le management transversal, c'est un de ces sujets qui revient souvent dans les discussions avec mes clients dirigeants. Et franchement, je comprends pourquoi. Coordonner des équipes sans avoir d'autorité hiérarchique directe sur elles, c'est un exercice délicat. Beaucoup de managers s'y retrouvent perdus, sans outils, sans méthode. Et c'est là que la formation SkillBoost sur le management transversal a attiré mon attention.</p>
 
 <p>J'ai accompagné plusieurs responsables qui l'ont suivie au cours des derniers mois. Voici ce que j'ai observé, concrètement, sur le terrain.</p>
