@@ -16,7 +16,7 @@ codes:
     valeur: 80
     unite: €
     sous_type: Bon plan
-    accroche: Bénéficiez de 80€ de prime à partager en cliquant sur notre lien. Le code est automatiquement appliqué !
+    accroche: Bénéficiez de 80€ de prime à partager en cliquant sur notre lien.
     code: ""
     detail: ""
     expire_le: "2028-12-31"
@@ -71,6 +71,7 @@ historique_12_mois:
     valeur: 80
   - mois: 2026-06
     valeur: 80
+historique_unite: €
 content_libre: |-
   <h2>Les tarifs</h2>
 
