@@ -301,23 +301,32 @@
     .crumb a:hover { color: var(--rose-600); }
     .crumb span { color: var(--ink); font-weight: 600; }
 
-    /* Page head : grid 1fr 340px aligné avec .layout (sidebar). align-items:
-       start = H1 et logo alignés en HAUT. Les .tabs sont placées DANS la
-       colonne gauche de .page-head pour qu'elles soient à 40px précis sous
-       .updated, indépendamment de la hauteur du logo. */
-    .page-head { display: grid; grid-template-columns: 1fr 340px; gap: 36px; padding: 40px 0 0; align-items: start; }
-    .page-head .head-left { display: flex; flex-direction: column; }
+    /* Page head : grid avec 3 zones nommées (text, logo, tabs) qui se réorganisent
+       différemment selon desktop ou mobile via grid-template-areas.
+       Desktop : logo dans la colonne sidebar (340px), texte+tabs à gauche.
+       Mobile  : logo+texte côte à côte sur la 1ère ligne, tabs en pleine largeur. */
+    .page-head {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      grid-template-areas:
+        "text logo"
+        "tabs logo";
+      gap: 0 36px;
+      padding: 40px 0 0;
+      align-items: start;
+    }
+    .head-text { grid-area: text; display: flex; flex-direction: column; }
     .page-head h1 { font-size: 2.4rem; line-height: 1.15; margin-bottom: 8px; }
     .pink { color: var(--rose-600); }
     .updated { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-soft); font-size: .95rem; align-self: flex-start; }
     .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
-    .brandbox { width: 200px; height: 200px; background: var(--white); border-radius: 24px; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 22px; flex-shrink: 0; box-shadow: var(--shadow-sm); margin: 0 auto; }
+    .brandbox { grid-area: logo; width: 200px; height: 200px; background: var(--white); border-radius: 24px; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; padding: 22px; flex-shrink: 0; box-shadow: var(--shadow-sm); margin: 0 auto; align-self: start; }
     .brandbox img { max-width: 100%; max-height: 100%; object-fit: contain; }
     .brandbox .ph { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--rose-600); font-size: 1.3rem; text-align: center; }
 
-    /* Tabs filtres — dans .head-left, à 40px sous .updated */
-    .tabs { display: flex; gap: 8px; padding-bottom: 24px; margin-top: 40px; flex-wrap: wrap; }
+    /* Tabs filtres — zone "tabs" du grid, à 40px sous .head-text */
+    .tabs { grid-area: tabs; display: flex; gap: 8px; padding-bottom: 24px; margin-top: 40px; flex-wrap: wrap; }
     .tab { background: var(--white); border: 1px solid var(--line); padding: 10px 16px; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: .9rem; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 6px; transition: all .2s; }
     .tab .count { background: var(--rose-50); color: var(--rose-600); padding: 2px 8px; border-radius: 999px; font-size: .8rem; font-weight: 700; }
     .tab:hover { border-color: var(--rose-300); color: var(--ink); }
@@ -498,17 +507,66 @@
       .nav-right .btn { width: 100%; justify-content: center; }
       .hamburger { display: block; z-index: 100; }
       .layout { grid-template-columns: 1fr; }
-      .page-head { display: flex; flex-direction: column-reverse; align-items: flex-start; gap: 18px; padding: 24px 0 0; }
-      .page-head h1 { font-size: 1.8rem; }
-      .brandbox { width: 120px; height: 120px; padding: 16px; border-radius: 20px; margin: 0; }
-      .tabs { margin-top: 24px; }
-      .coupon { grid-template-columns: 80px 1fr; padding: 18px; }
-      .coupon .reveal { grid-column: 1 / -1; flex-direction: row; justify-content: center; gap: 10px; }
-      .val .big { font-size: 1.7rem; }
-      .steps { grid-template-columns: 1fr; }
+
+      /* ─── Page head mobile : grid 60px / 1fr / tabs pleine largeur ─── */
+      .page-head {
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        grid-template-areas:
+          "logo text"
+          "tabs tabs";
+        gap: 12px;
+        padding: 16px 0 0;
+        align-items: center;
+      }
+      .brandbox { width: 64px; height: 64px; padding: 6px; border-radius: 14px; margin: 0; align-self: center; }
+      .brandbox .ph { font-size: .7rem; }
+      .head-text { gap: 4px; }
+      .page-head h1 { font-size: 1.3rem; line-height: 1.2; margin-bottom: 4px; }
+      .updated { font-size: .8rem; gap: 6px; }
+      .updated .dot { width: 6px; height: 6px; }
+
+      /* Tabs mobile : compactes pour tenir sur une ligne (avec wrap si vraiment trop) */
+      .tabs { margin-top: 16px; gap: 6px; padding-bottom: 0; }
+      .tab { padding: 7px 11px; font-size: .82rem; }
+      .tab .count { padding: 1px 6px; font-size: .72rem; }
+
+      /* ─── Cards codes promo mobile : layout vertical compact ─── */
+      .coupon {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px;
+        margin-bottom: 12px;
+      }
+      .coupon[data-best="1"]::before { left: 16px; }
+      /* Bloc valeur + accroche sur la même ligne, en haut */
+      .coupon .val {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-align: left;
+      }
+      .coupon .val .big { font-size: 1.7rem; }
+      .coupon .val .kind { margin-top: 0; align-self: center; }
+      .coupon .mid { padding-top: 4px; }
+      .coupon .mid .coupon-title { font-size: .98rem; line-height: 1.3; }
+      .coupon .meta { font-size: .78rem; gap: 10px; flex-wrap: wrap; }
+      .coupon .tested { font-size: .78rem; }
+      /* Bouton CTA en pleine largeur */
+      .coupon .reveal {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        padding: 14px 18px;
+      }
+
+      .page-head h1 { font-size: 1.3rem; }  /* override pour assurer */
       .similar-grid { grid-template-columns: repeat(2, 1fr); }
       .foot-grid { grid-template-columns: 1fr; gap: 28px; }
       .panel { padding: 24px 22px; }
+      .steps { grid-template-columns: 1fr; }
       .chart { gap: 6px; }
       .chart-x { gap: 6px; }
       .chart-x span { font-size: .65rem; }
@@ -519,6 +577,10 @@
       .modal-code-box { max-width: 100%; }
       .modal-code-box .code-text { font-size: .95rem; padding: 12px 14px; }
       .modal-code-box .code-copy-btn { padding: 0 14px; font-size: .8rem; }
+      /* Cards encore plus compactes en très petits écrans */
+      .coupon { padding: 14px; }
+      .coupon .val .big { font-size: 1.5rem; }
+      .coupon .mid .coupon-title { font-size: .92rem; }
     }
   </style>
 </head>
@@ -692,23 +754,22 @@
     <span>SHEIN</span>
   </nav>
 
-  <!-- PAGE HEAD -->
+  <!-- PAGE HEAD : grid avec 3 zones (text / logo / tabs) qui se réorganisent
+       différemment selon desktop ou mobile via grid-template-areas. -->
   <div class="page-head">
-    <div class="head-left">
+    <div class="head-text">
       <h1>Codes promo <span class="pink">SHEIN</span> — juin 2026</h1>
       <span class="updated"><span class="dot"></span>5 codes promo SHEIN vérifiés le 17 juin 2026</span>
-
-      <!-- TABS (dans .head-left pour rester à 40px précis sous .updated) -->
-      <div class="tabs" id="tabs">
-        <button class="tab active" data-filter="all">Tout <span class="count">5</span></button>
-        <button class="tab" data-filter="code">Codes promo <span class="count">3</span></button>
-        <button class="tab" data-filter="offer">Offres <span class="count">2</span></button>
-        <button class="tab" data-filter="best">Meilleure remise</button>
-      </div>
     </div>
     <div class="brandbox">
       <img src="/codes-promo/shein/logo.png" alt="Logo SHEIN" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
       <div class="ph" style="display:none">SHEIN</div>
+    </div>
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-filter="all">Tout <span class="count">5</span></button>
+      <button class="tab" data-filter="code">Codes promo <span class="count">3</span></button>
+      <button class="tab" data-filter="offer">Offres <span class="count">2</span></button>
+      <button class="tab" data-filter="best">Meilleure remise</button>
     </div>
   </div>
 
