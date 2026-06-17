@@ -13,13 +13,13 @@ rating:
 codes:
   - id: cmqhz0aj5bod2
     type: code
-    valeur: 40
+    valeur: 80
     unite: €
     sous_type: Bon plan
-    accroche: "151515"
+    accroche: Bénéficiez de 80€ de prime à partager en cliquant sur notre lien. Le code est automatiquement appliqué !
     code: ""
     detail: ""
-    expire_le: ""
+    expire_le: "2028-12-31"
     nb_utilisations: 150
     teste_par_sophie: ""
     meilleure_remise: false
