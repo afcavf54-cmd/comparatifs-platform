@@ -3,16 +3,19 @@ title: La certification data driven decision making pèse-t-elle sur un CV ?
 slug: 7067-la-certification-data-driven-decision-making-pese-t-elle-sur-un-cv
 date: '2026-06-17T19:00:00+02:00'
 categorie: Salarié
-meta_title: 'Formation certifiante data driven decision making : la certification a-t-elle de la valeur ?'
-meta_description: La certification data driven decision making vaut-elle vraiment quelque chose sur un CV ? Analyse honnête de ce que les recruteurs en pensent vraiment.
+meta_title: 'Formation certifiante data driven decision making : la certification
+  a-t-elle de la valeur ?'
+meta_description: La certification data driven decision making vaut-elle vraiment
+  quelque chose sur un CV ? Analyse honnête de ce que les recruteurs en pensent vraiment.
 min_words: 930
 status: published
 featured_image: /blog/7067-la-certification-data-driven-decision-making-pese-t-elle-sur-un-cv.jpg
 link_anchors:
 - text: la formation certifiante Data Driven Decision Making
   max: 5
+related_posts:
+- 9019-quel-budget-pour-la-formation-caces-mon-institut-du-btp
 ---
-
 <p>J'ai passé du temps à regarder des offres d'emploi en data ces derniers mois. Et une certif revenait souvent dans les profils LinkedIn des candidats : la <strong>certification data driven decision making</strong>. Alors je me suis posé la vraie question : est-ce que ça pèse vraiment sur un CV, ou c'est juste une ligne de plus à cocher ?</p>
 
 <p>Voici mon retour, sans langue de bois.</p>
