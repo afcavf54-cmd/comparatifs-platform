@@ -1395,7 +1395,6 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     blog_expected.add("blog/index.html")
                     for md_file in posts_dir.glob('*.md'):
                         blog_expected.add(f"{md_file.stem}/index.html")
-                        blog_expected.add(f"{md_file.stem}.html")  # version sans slash (cf fix 308)
                     print(f"  🛡 Filet : {len(blog_expected) - 1} slugs blog protégés depuis le disque")
             if blog_posts:
                 site["has_blog"] = True
@@ -1405,7 +1404,6 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     slug = post.get('slug', '')
                     if slug:
                         blog_expected.add(f"{slug}/index.html")
-                        blog_expected.add(f"{slug}.html")  # version sans slash (cf fix 308)
                 for cat in blog_categories:
                     blog_expected.add(f"{cat['slug']}/index.html")
                 # ── Enrichissement des posts (excerpt, date_display, reading_time)
@@ -2317,16 +2315,12 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 )
                 # ── Écriture en /<slug>/index.html (URLs avec slash final) ───
                 # Format WordPress-compatible : URL canonique = /<slug>/.
-                # On écrit AUSSI /<slug>.html à la racine pour que Cloudflare
-                # Pages serve la version sans slash directement en HTTP 200,
-                # au lieu de la rediriger en 308 vers /<slug>/. Bug fix juin
-                # 2026 sur digicube.fr : Screaming Frog signalait des 308
-                # quand il crawlait /<slug> sans slash. Avec les 2 fichiers,
-                # /<slug> et /<slug>/ servent tous deux 200 directement.
+                # Cloudflare Pages sert /<slug>/ en 200 directement, et fait
+                # un 308 sur /<slug>/ (sans slash) vers /<slug>/ (avec slash).
+                # Google traite le 308 comme 301 depuis 2023 → SEO neutre.
                 article_dir = output_dir / slug
                 article_dir.mkdir(parents=True, exist_ok=True)
                 (article_dir / "index.html").write_text(html, encoding="utf-8")
-                (output_dir / f"{slug}.html").write_text(html, encoding="utf-8")
             print(f"  ✓ {len(blog_posts)} articles de blog générés")
 
     # ───────────────────────────────────────────────────────────────────────
