@@ -1,18 +1,25 @@
 ---
-title: 'Redressement judiciaire : quelles options pour quitter son entreprise sereinement ?'
+title: 'Redressement judiciaire : quelles options pour quitter son entreprise sereinement
+  ?'
 slug: 3639-redressement-judiciaire-quelles-options-pour-quitter-son-entreprise-sereinement
 date: '2026-06-18T10:00:00+02:00'
 categorie: Salarié
 meta_title: 'Quitter une entreprise en redressement judiciaire : guide pratique'
-meta_description: 'Redressement judiciaire et droits des salariés : découvrez vos options concrètes pour quitter l''entreprise sereinement, protéger votre salaire et prendre les…'
+meta_description: 'Redressement judiciaire et droits des salariés : découvrez vos
+  options concrètes pour quitter l''entreprise sereinement, protéger votre salaire
+  et prendre les…'
 min_words: 1200
 status: published
 featured_image: /blog/3639-redressement-judiciaire-quelles-options-pour-quitter-son-entreprise-sereinement.jpg
 link_anchors:
 - text: quitter une entreprise en redressement judiciaire
   max: 4
+related_posts:
+- 2230-refus-d-amenagement-d-horaire-avec-une-rqth-les-recours-possibles-face-a-l-employeur
+- 1917-mon-patron-modifie-mes-horaires-du-jour-au-lendemain-quels-sont-mes-droits
+- 1951-repondre-aux-sollicitations-professionnelles-pendant-un-arret-maladie-est-ce-obligatoire
+- 4100-je-fais-moins-d-heures-que-mon-contrat-cdi-comment-faire-respecter-vos-droits
 ---
-
 <p>Je vais vous raconter quelque chose que j'ai vu de près. Un de mes fournisseurs historiques, une PME marseillaise d'une quarantaine de personnes, s'est retrouvé en redressement judiciaire l'an dernier. Ses salariés ne savaient pas quoi faire. Rester ? Partir ? Attendre ? Certains ont pris de mauvaises décisions, pas par manque d'intelligence, mais par manque d'information.</p>
 
 <p>Le redressement judiciaire, c'est une période floue, stressante, où les rumeurs circulent plus vite que les certitudes. Et quand on est salarié, on se retrouve dans une position délicate : on ne contrôle pas grand-chose, mais on a quand même des droits. Pas des droits vagues. Des droits concrets, chiffrés, actionnables.</p>

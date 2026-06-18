@@ -1,18 +1,25 @@
 ---
-title: 'Répondre aux sollicitations professionnelles pendant un arrêt maladie : est-ce obligatoire ?'
+title: 'Répondre aux sollicitations professionnelles pendant un arrêt maladie : est-ce
+  obligatoire ?'
 slug: 1951-repondre-aux-sollicitations-professionnelles-pendant-un-arret-maladie-est-ce-obligatoire
 date: '2026-06-18T11:00:00+02:00'
 categorie: Salarié
 meta_title: 'Mail pro pendant arrêt maladie : peut-on vous solliciter ?'
-meta_description: En arrêt maladie, êtes-vous obligé de répondre aux appels et emails de votre employeur ? Ce que dit vraiment le droit du travail sur vos obligations réelles.
+meta_description: En arrêt maladie, êtes-vous obligé de répondre aux appels et emails
+  de votre employeur ? Ce que dit vraiment le droit du travail sur vos obligations
+  réelles.
 min_words: 1200
 status: published
 featured_image: /blog/1951-repondre-aux-sollicitations-professionnelles-pendant-un-arret-maladie-est-ce-obligatoire.jpg
 link_anchors:
 - text: mail professionnel pendant arrêt maladie
   max: 4
+related_posts:
+- 1340-horaire-decale-reglementation-remuneration-et-organisation-du-travail
+- 8171-fin-de-cdd-sans-nouvelles-de-l-employeur-les-solutions-a-envisager
+- 5670-conge-paternite-syntec-tout-comprendre-sur-vos-droits-et-votre-remuneration
+- 4100-je-fais-moins-d-heures-que-mon-contrat-cdi-comment-faire-respecter-vos-droits
 ---
-
 <p>Votre téléphone sonne. Un message de votre responsable. Un email "urgent" du service RH. Et vous, vous êtes en arrêt maladie depuis cinq jours. La question se pose immédiatement : est-ce qu'on doit répondre ? Est-ce qu'on risque quelque chose si on ne le fait pas ?</p>
 
 <p>J'ai vécu cette situation. Pas une fois, plusieurs. Et franchement, les premières fois, j'ai répondu. Par réflexe. Par culpabilité aussi, soyons honnêtes. Puis j'ai pris le temps de comprendre ce que dit vraiment la loi là-dessus.</p>
