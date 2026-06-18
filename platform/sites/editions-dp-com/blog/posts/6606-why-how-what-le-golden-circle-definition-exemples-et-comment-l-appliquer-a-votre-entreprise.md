@@ -1,18 +1,24 @@
 ---
-title: 'Why How What (le Golden Circle) : définition, exemples et comment l''appliquer à votre entreprise'
+title: 'Why How What (le Golden Circle) : définition, exemples et comment l''appliquer
+  à votre entreprise'
 slug: 6606-why-how-what-le-golden-circle-definition-exemples-et-comment-l-appliquer-a-votre-entreprise
 date: '2026-06-18T08:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Why How What : le cercle d''or de Simon Sinek'
-meta_description: 'Découvrez le Golden Circle de Simon Sinek : définition du Why How What, exemples concrets et méthode pas à pas pour l''appliquer dans votre entreprise.'
+meta_description: 'Découvrez le Golden Circle de Simon Sinek : définition du Why How
+  What, exemples concrets et méthode pas à pas pour l''appliquer dans votre entreprise.'
 min_words: 1800
 status: published
 featured_image: /blog/6606-why-how-what-le-golden-circle-definition-exemples-et-comment-l-appliquer-a-votre-entreprise.jpg
 link_anchors:
 - text: why how what
   max: 4
+related_posts:
+- 8814-comment-installer-erp-cloudmanager-enterprise
+- 9832-la-methode-sepo-expliquee-comment-l-utiliser-pour-analyser-votre-organisation
+- 8532-comment-parametrer-les-modules-erp-financepro-integrated
+- 5728-comment-integrer-erp-flexmanage-plus-a-votre-systeme-d-information
 ---
-
 <p>J'ai découvert le Golden Circle un peu par hasard, lors d'une conférence à Lyon où quelqu'un avait passé la vidéo TED de Simon Sinek. J'avoue que les vingt premières minutes, j'étais sceptique. Encore un concept marketing habillé en philosophie d'entreprise. Et puis quelque chose a cliqué.</p>
 
 <p>Ça faisait onze ans que je gérais mon équipe sans vraiment savoir expliquer <em>pourquoi</em> on faisait ce qu'on faisait. On savait faire. On savait quoi vendre. Mais le "pourquoi"... flou complet.</p>
