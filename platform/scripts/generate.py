@@ -1276,6 +1276,20 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
 
     output_dir = site_dir / "output"
     if not dry_run:
+        # ── Wipe output_dir au début du build ──────────────────────────────
+        # Garantit que le déploiement Cloudflare Pages ne contient QUE les
+        # fichiers générés ce build. Sans ce wipe, les anciens .html (ex:
+        # classements retirés de enabled_classements.json) traînent dans
+        # output_dir si le runner CI conserve son workspace entre runs (cache
+        # actions/cache, runner self-hosted, etc.) → ils sont uploadés à
+        # Cloudflare et restent en ligne. Cf. bug 17 juin 2026 sur startup-
+        # factory : meilleur-logiciel-de-pointage.html toujours servi après
+        # désactivation via le HUB.
+        # Tous les fichiers nécessaires (HTML générés, sitemap, _redirects,
+        # public/ copié récursivement) sont reproduits à chaque build, donc
+        # ce wipe est safe.
+        if output_dir.exists():
+            shutil.rmtree(output_dir)
         output_dir.mkdir(exist_ok=True)
 
     all_slugs = [p["slug"] for p in products]
@@ -1548,30 +1562,6 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
 
             from datetime import datetime as _dt
             redirects += f"# Generated: {_dt.utcnow().isoformat()}\n"
-
-            # ── Bug fix juin 2026 : 410 Gone pour classements désactivés ────
-            # Quand un classement est retiré de enabled_classements.json, son
-            # .html peut traîner sur Cloudflare (cache CDN, déploiement
-            # incomplet, runner CI avec workspace persistant…). Force un
-            # HTTP 410 Gone explicite via _redirects, qui est évalué AVANT
-            # le serving des fichiers statiques → garantit que l'URL renvoie
-            # vraiment 410 même si l'ancien .html est encore là. SEO-friendly
-            # car 410 indique au crawler que la ressource a disparu pour de bon.
-            if _enabled_classements is not None and editorials:
-                _disabled_slugs = []
-                for _key in editorials.keys():
-                    # Format : "classement-{slug}" (mais pas "classement-prod-*"
-                    # qui sont les classements liés à un produit spécifique).
-                    if _key.startswith('classement-') and not _key.startswith('classement-prod-'):
-                        _slug = _key[len('classement-'):]
-                        if _slug and _slug not in _enabled_classements:
-                            _disabled_slugs.append(_slug)
-                if _disabled_slugs:
-                    redirects += "\n# Classements désactivés (410 Gone)\n"
-                    for _slug in sorted(_disabled_slugs):
-                        redirects += f"/meilleur-{_slug} /404.html 410\n"
-                    print(f"  🚫 {len(_disabled_slugs)} classements désactivés → 410 Gone dans _redirects")
-
             (output_dir / "_redirects").write_text(redirects, encoding="utf-8")
             print(f"  ✓ _redirects ({www_preference})")
         copy_shared_assets(output_dir, site_dir)
