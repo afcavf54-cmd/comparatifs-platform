@@ -4,15 +4,20 @@ slug: 4963-combien-de-temps-pour-la-formation-leadership-academy-pro
 date: '2026-06-18T07:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation management Leadership Academy Pro : combien de temps ?'
-meta_description: Découvrez combien de temps demande réellement la formation Leadership Academy Pro, niveau par niveau, selon le profil du manager et le format choisi.
+meta_description: Découvrez combien de temps demande réellement la formation Leadership
+  Academy Pro, niveau par niveau, selon le profil du manager et le format choisi.
 min_words: 1000
 status: published
 featured_image: /blog/4963-combien-de-temps-pour-la-formation-leadership-academy-pro.jpg
 link_anchors:
 - text: la durée de la formation management Leadership Academy Pro
   max: 5
+related_posts:
+- 5564-quel-est-le-meilleur-logiciel-gepp-pour-votre-organisation
+- 3472-les-6-acquis-de-la-formation-management-transversal-skillboost
+- 3760-pourquoi-investir-dans-votre-marque-employeur
+- 3445-quels-leviers-rh-utiliser-pour-ameliorer-la-retention-des-talents
 ---
-
 <h2>Ce que recouvre vraiment le programme Leadership Academy Pro</h2>
 
 <p>La première question que me posent les dirigeants quand on parle de Leadership Academy Pro, c'est rarement "est-ce que ça marche ?" — c'est "combien de temps ça va me prendre ?". Et c'est la bonne question. Parce qu'une formation qui immobilise vos équipes plusieurs semaines sans retour rapide sur le terrain, c'est un coût réel, pas juste une ligne budgétaire.</p>
