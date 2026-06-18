@@ -4,15 +4,21 @@ slug: 8731-preparer-ses-flux-avant-d-implementer-smartchain-360
 date: '2026-06-18T10:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Implémenter l''ERP SmartChain 360 : quelles données préparer ?'
-meta_description: Préparer ses flux avant d'implémenter SmartChain 360 est une étape clé souvent négligée. Découvrez pourquoi cartographier vos processus avant tout déploiement…
+meta_description: Préparer ses flux avant d'implémenter SmartChain 360 est une étape
+  clé souvent négligée. Découvrez pourquoi cartographier vos processus avant tout
+  déploiement…
 min_words: 970
 status: published
 featured_image: /blog/8731-preparer-ses-flux-avant-d-implementer-smartchain-360.jpg
 link_anchors:
 - text: comment implémenter l'ERP SmartChain 360
   max: 5
+related_posts:
+- 2160-6-elements-qui-font-grimper-le-cout-d-implementation-de-bizcore-advanced
+- 3741-reussir-le-parametrage-des-modules-financepro-integrated
+- 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
+- 4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise
 ---
-
 <p>Avant de déployer SmartChain 360, j'ai fait une erreur que je vois répéter dans beaucoup d'entreprises de taille intermédiaire : on installe l'outil, et on espère qu'il va "digérer" des données mal structurées. Ça ne fonctionne pas. Neuf ans à gérer la comptabilité d'une boîte de 200 personnes m'ont appris une chose : un logiciel ne répare pas une organisation désordonnée. Il l'amplifie.</p>
 
 <p>Préparer ses flux avant l'implémentation, c'est le travail ingrat que personne ne veut faire. Pourtant, c'est là que se joue vraiment le succès du déploiement.</p>
