@@ -4,15 +4,21 @@ slug: 5825-conge-paternite-syntec-duree-indemnisation-et-formalites-a-respecter
 date: '2026-06-18T15:00:00+02:00'
 categorie: Salarié
 meta_title: 'Congé paternité Syntec : durée, indemnisation et modalités'
-meta_description: 'Congé paternité sous la convention Syntec : durée légale, maintien de salaire et démarches expliqués clairement pour éviter toute erreur avant votre départ.'
+meta_description: 'Congé paternité sous la convention Syntec : durée légale, maintien
+  de salaire et démarches expliqués clairement pour éviter toute erreur avant votre
+  départ.'
 min_words: 1800
 status: published
 featured_image: /blog/5825-conge-paternite-syntec-duree-indemnisation-et-formalites-a-respecter.jpg
 link_anchors:
 - text: congé paternité syntec
   max: 4
+related_posts:
+- 3837-radiation-pole-emploi-combien-d-avertissements-avant-une-sanction
+- 3650-mon-patron-change-mes-horaires-sans-preavis-ce-que-dit-le-droit-du-travail
+- 8972-horaire-decale-quels-droits-et-obligations-pour-les-salaries-concernes
+- 9279-accord-implicite-de-rupture-conventionnelle-ce-que-prevoit-reellement-la-loi
 ---
-
 <p>Vingt ans à éplucher des conventions collectives, et je dois admettre que la Syntec reste l'une des plus denses à interpréter. Le congé paternité, en particulier, mélange des règles légales et des dispositions conventionnelles qui ne sont pas toujours simples à articuler. J'ai vu trop de salariés partir en congé sans avoir bien vérifié leurs droits, et des RH transmettre des informations incomplètes faute de temps. Cet article, je l'écris pour clarifier tout ça, sans jargon inutile.</p>
 
 <h2>Ce que dit la loi, et ce que Syntec ajoute par-dessus</h2>
