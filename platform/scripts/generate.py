@@ -1395,6 +1395,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     blog_expected.add("blog/index.html")
                     for md_file in posts_dir.glob('*.md'):
                         blog_expected.add(f"{md_file.stem}/index.html")
+                        blog_expected.add(f"{md_file.stem}.html")
                     print(f"  🛡 Filet : {len(blog_expected) - 1} slugs blog protégés depuis le disque")
             if blog_posts:
                 site["has_blog"] = True
@@ -1404,6 +1405,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     slug = post.get('slug', '')
                     if slug:
                         blog_expected.add(f"{slug}/index.html")
+                        blog_expected.add(f"{slug}.html")
                 for cat in blog_categories:
                     blog_expected.add(f"{cat['slug']}/index.html")
                 # ── Enrichissement des posts (excerpt, date_display, reading_time)
@@ -2313,14 +2315,16 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     blog_categories=blog_categories,
                     all_posts=blog_posts,
                 )
-                # ── Écriture en /<slug>/index.html (URLs avec slash final) ───
-                # Format WordPress-compatible : URL canonique = /<slug>/.
-                # Cloudflare Pages sert /<slug>/ en 200 directement, et fait
-                # un 308 sur /<slug>/ (sans slash) vers /<slug>/ (avec slash).
-                # Google traite le 308 comme 301 depuis 2023 → SEO neutre.
+                # ── Double écriture : /<slug>/index.html ET /<slug>.html ─────
+                # URL canonique = /<slug>/ (avec slash final). Le HTML contient
+                # un <link rel="canonical"> qui pointe vers /<slug>/, donc Google
+                # déduplique les 2 URLs automatiquement.
+                # Sans la 2e écriture, Cloudflare Pages ferait un 308 sur /<slug>
+                # → /<slug>/. Demande Julien 18 juin 2026 : pas de redirection.
                 article_dir = output_dir / slug
                 article_dir.mkdir(parents=True, exist_ok=True)
                 (article_dir / "index.html").write_text(html, encoding="utf-8")
+                (output_dir / f"{slug}.html").write_text(html, encoding="utf-8")
             print(f"  ✓ {len(blog_posts)} articles de blog générés")
 
     # ───────────────────────────────────────────────────────────────────────
