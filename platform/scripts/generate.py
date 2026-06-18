@@ -1276,20 +1276,6 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
 
     output_dir = site_dir / "output"
     if not dry_run:
-        # ── Wipe output_dir au début du build ──────────────────────────────
-        # Garantit que le déploiement Cloudflare Pages ne contient QUE les
-        # fichiers générés ce build. Sans ce wipe, les anciens .html (ex:
-        # classements retirés de enabled_classements.json) traînent dans
-        # output_dir si le runner CI conserve son workspace entre runs (cache
-        # actions/cache, runner self-hosted, etc.) → ils sont uploadés à
-        # Cloudflare et restent en ligne. Cf. bug 17 juin 2026 sur startup-
-        # factory : meilleur-logiciel-de-pointage.html toujours servi après
-        # désactivation via le HUB.
-        # Tous les fichiers nécessaires (HTML générés, sitemap, _redirects,
-        # public/ copié récursivement) sont reproduits à chaque build, donc
-        # ce wipe est safe.
-        if output_dir.exists():
-            shutil.rmtree(output_dir)
         output_dir.mkdir(exist_ok=True)
 
     all_slugs = [p["slug"] for p in products]
@@ -1409,6 +1395,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     blog_expected.add("blog/index.html")
                     for md_file in posts_dir.glob('*.md'):
                         blog_expected.add(f"{md_file.stem}/index.html")
+                        blog_expected.add(f"{md_file.stem}.html")  # version sans slash (cf fix 308)
                     print(f"  🛡 Filet : {len(blog_expected) - 1} slugs blog protégés depuis le disque")
             if blog_posts:
                 site["has_blog"] = True
@@ -1418,6 +1405,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     slug = post.get('slug', '')
                     if slug:
                         blog_expected.add(f"{slug}/index.html")
+                        blog_expected.add(f"{slug}.html")  # version sans slash (cf fix 308)
                 for cat in blog_categories:
                     blog_expected.add(f"{cat['slug']}/index.html")
                 # ── Enrichissement des posts (excerpt, date_display, reading_time)
@@ -2328,11 +2316,17 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     all_posts=blog_posts,
                 )
                 # ── Écriture en /<slug>/index.html (URLs avec slash final) ───
-                # Format WordPress-compatible : Cloudflare Pages sert /<slug>/
-                # et redirige automatiquement /<slug> → /<slug>/ en 301.
+                # Format WordPress-compatible : URL canonique = /<slug>/.
+                # On écrit AUSSI /<slug>.html à la racine pour que Cloudflare
+                # Pages serve la version sans slash directement en HTTP 200,
+                # au lieu de la rediriger en 308 vers /<slug>/. Bug fix juin
+                # 2026 sur digicube.fr : Screaming Frog signalait des 308
+                # quand il crawlait /<slug> sans slash. Avec les 2 fichiers,
+                # /<slug> et /<slug>/ servent tous deux 200 directement.
                 article_dir = output_dir / slug
                 article_dir.mkdir(parents=True, exist_ok=True)
                 (article_dir / "index.html").write_text(html, encoding="utf-8")
+                (output_dir / f"{slug}.html").write_text(html, encoding="utf-8")
             print(f"  ✓ {len(blog_posts)} articles de blog générés")
 
     # ───────────────────────────────────────────────────────────────────────
