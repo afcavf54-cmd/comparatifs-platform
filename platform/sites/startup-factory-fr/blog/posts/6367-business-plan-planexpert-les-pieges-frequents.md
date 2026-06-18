@@ -14,6 +14,7 @@ link_anchors:
 - text: comment faire un business plan avec PlanExpert
   max: 5
 related_posts:
+- 2966-pour-qui-est-fait-le-template-de-business-plan-startupkit-premium
 - 6176-business-plan-financepro-smart-les-pieges-des-debutants
 ---
 <h2>PlanExpert : pourquoi je déconseille ce logiciel pour ton business plan</h2>
