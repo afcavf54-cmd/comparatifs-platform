@@ -4,15 +4,21 @@ slug: 1789-faut-il-implementer-l-erp-bizflow-max-soi-meme
 date: '2026-06-18T07:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Implémenter l'ERP BizFlow Max en interne ou via l'éditeur ?
-meta_description: Implémenter l'ERP BizFlow Max soi-même est-il vraiment une bonne idée ? Retour d'expérience concret après 2 ans de galères pour vous aider à faire le bon choix.
+meta_description: Implémenter l'ERP BizFlow Max soi-même est-il vraiment une bonne
+  idée ? Retour d'expérience concret après 2 ans de galères pour vous aider à faire
+  le bon choix.
 min_words: 1000
 status: published
 featured_image: /blog/1789-faut-il-implementer-l-erp-bizflow-max-soi-meme.jpg
 link_anchors:
 - text: comment implémenter l'ERP BizFlow Max
   max: 5
+related_posts:
+- 4312-inventory-control-smart-face-au-suivi-manuel-des-stocks
+- 6543-crm-salestrack-premium-face-a-la-version-classique
+- 3498-comment-choisir-son-agence-web-les-erreurs-frequentes-a-eviter-avant-de-signer
+- 9560-les-vrais-postes-de-cout-de-l-erp-bizcore-enterprise
 ---
-
 <p>Je vais vous dire exactement ce que j'aurais aimé qu'on me dise avant de me lancer là-dedans. Implémenter un ERP soi-même quand on dirige une boîte de 100 à 500 personnes à Marseille, avec des équipes terrain, des contraintes de budget et zéro expérience préalable... c'est une aventure. Pas toujours bonne.</p>
 
 <p>J'ai mis deux ans à comprendre ce que j'aurais pu éviter dès le départ. Cet article, c'est ce retour d'expérience.</p>
