@@ -3,16 +3,19 @@ title: La certification Business Architect Tool a-t-elle du poids ?
 slug: 7493-la-certification-business-architect-tool-a-t-elle-du-poids
 date: '2026-06-18T07:00:00+02:00'
 categorie: Création d'entreprise
-meta_title: 'Formation certifiée Business Architect Tool : la certification est-elle reconnue ?'
-meta_description: 'Certification Business Architect Tool : vaut-elle vraiment le coup pour les petites structures ? Retour d''expérience concret sur ce framework de modélisation…'
+meta_title: 'Formation certifiée Business Architect Tool : la certification est-elle
+  reconnue ?'
+meta_description: 'Certification Business Architect Tool : vaut-elle vraiment le coup
+  pour les petites structures ? Retour d''expérience concret sur ce framework de modélisation…'
 min_words: 940
 status: published
 featured_image: /blog/7493-la-certification-business-architect-tool-a-t-elle-du-poids.jpg
 link_anchors:
 - text: la formation certifiée Business Architect Tool
   max: 5
+related_posts:
+- 9331-le-prix-de-la-formation-business-plan-frenchy-business-pro-est-il-justifie
 ---
-
 <p>Je vais être honnête : quand j'ai entendu parler de la certification Business Architect Tool pour la première fois, j'ai levé les yeux au ciel. Encore un badge à coller sur un LinkedIn pour faire bien. Sauf que depuis, j'ai creusé. Et ce que j'ai trouvé méritait qu'on en parle sérieusement.</p>
 
 <p>Je dirige une petite structure à Bordeaux. Cinq personnes max selon les périodes. On ne peut pas se payer des formations inutiles, et encore moins perdre deux semaines sur un contenu qui n'apporte rien de concret. Donc quand j'évalue une certification, je regarde d'abord une chose : est-ce que ça change quelque chose dans mon quotidien opérationnel ?</p>
