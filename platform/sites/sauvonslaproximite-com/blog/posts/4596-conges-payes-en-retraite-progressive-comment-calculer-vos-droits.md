@@ -4,15 +4,21 @@ slug: 4596-conges-payes-en-retraite-progressive-comment-calculer-vos-droits
 date: '2026-06-18T08:00:00+02:00'
 categorie: Salarié
 meta_title: 'Congés en retraite progressive : calcul et règles applicables'
-meta_description: 'Retraite progressive et congés payés : découvrez comment calculer vos droits à temps partiel sans vous tromper, pour éviter les erreurs coûteuses côté salarié et…'
+meta_description: 'Retraite progressive et congés payés : découvrez comment calculer
+  vos droits à temps partiel sans vous tromper, pour éviter les erreurs coûteuses
+  côté salarié et…'
 min_words: 1200
 status: published
 featured_image: /blog/4596-conges-payes-en-retraite-progressive-comment-calculer-vos-droits.jpg
 link_anchors:
 - text: nombre de jours de congés en retraite progressive
   max: 4
+related_posts:
+- 9279-accord-implicite-de-rupture-conventionnelle-ce-que-prevoit-reellement-la-loi
+- 3017-je-fais-moins-d-heures-que-prevu-dans-mon-cdi-quels-recours-engager
+- 8092-refus-d-amenagement-d-horaire-avec-une-rqth-comment-faire-valoir-vos-droits
+- 3837-radiation-pole-emploi-combien-d-avertissements-avant-une-sanction
 ---
-
 <p>La retraite progressive est une option que j'ai vue passer dans plusieurs dossiers RH ces dernières années. L'idée est séduisante sur le papier : continuer à travailler à temps partiel tout en touchant une fraction de sa pension. Sauf que dans la pratique, quand on arrive à la question des congés payés, les choses se compliquent. Et les salariés, comme leurs employeurs d'ailleurs, ne savent souvent plus où ils en sont.</p>
 
 <p>Alors j'ai décidé de clarifier tout ça. Parce que <strong>les droits à congés en retraite progressive ne fonctionnent pas exactement comme en temps plein</strong>, et se tromper dans le calcul peut coûter cher des deux côtés.</p>
