@@ -14,6 +14,7 @@ link_anchors:
 - text: comment automatiser sa facturation avec Billmatic Auto
   max: 5
 related_posts:
+- 7036-les-limites-de-la-formation-cnam-intec-en-techniques-comptables
 - 7813-choisir-entre-quickbill-advanced-et-un-autre-logiciel-de-facturation
 ---
 <p>J'ai testé Billmatic Auto pendant plusieurs mois avec mon équipe. Résultat ? Un outil qui peut vraiment faire gagner du temps... à condition de ne pas se planter au départ. Parce que les pièges, il y en a. Et ils ne sont pas toujours là où on les attend.</p>

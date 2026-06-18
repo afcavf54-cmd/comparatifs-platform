@@ -4,15 +4,19 @@ slug: 7036-les-limites-de-la-formation-cnam-intec-en-techniques-comptables
 date: '2026-06-18T06:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Étudier au Cnam-Intec : les contraintes à connaître'
-meta_description: 'Formation Cnam-Intec en comptabilité : sérieuse mais inadaptée aux équipes en startup. Découvrez ses limites concrètes avant de vous engager dans ce cursus long.'
+meta_description: 'Formation Cnam-Intec en comptabilité : sérieuse mais inadaptée
+  aux équipes en startup. Découvrez ses limites concrètes avant de vous engager dans
+  ce cursus long.'
 min_words: 910
 status: published
 featured_image: /blog/7036-les-limites-de-la-formation-cnam-intec-en-techniques-comptables.jpg
 link_anchors:
 - text: le CNAM INTEC (institut national des techniques économiques et comptables)
   max: 5
+related_posts:
+- 8636-facturation-automatisee-billmatic-auto-les-pieges
+- 7813-choisir-entre-quickbill-advanced-et-un-autre-logiciel-de-facturation
 ---
-
 <p>J'ai passé du temps à regarder les formations Cnam-Intec de près. Pas pour moi, mais pour deux personnes de mon équipe que je voulais faire monter en comptabilité. Et honnêtement, ce que j'ai trouvé m'a un peu surpris. Pas dans le bon sens.</p>
 
 <p>La réputation de l'Intec est solide. Personne ne dit le contraire. Mais quand tu gères une startup de 30 personnes à Nantes, que ton équipe n'a pas le temps de se former pendant 3 ans, et que tu cherches quelque chose d'opérationnel... t'as vite fait de te retrouver face à un mur.</p>
