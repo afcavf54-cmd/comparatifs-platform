@@ -14,6 +14,7 @@ link_anchors:
 - text: la formation certifiante Data Driven Decision Making
   max: 5
 related_posts:
+- 4981-quel-avenir-apres-une-formation-qualite-aeronautique-et-spatiale
 - 9019-quel-budget-pour-la-formation-caces-mon-institut-du-btp
 ---
 <p>J'ai passé du temps à regarder des offres d'emploi en data ces derniers mois. Et une certif revenait souvent dans les profils LinkedIn des candidats : la <strong>certification data driven decision making</strong>. Alors je me suis posé la vraie question : est-ce que ça pèse vraiment sur un CV, ou c'est juste une ligne de plus à cocher ?</p>
