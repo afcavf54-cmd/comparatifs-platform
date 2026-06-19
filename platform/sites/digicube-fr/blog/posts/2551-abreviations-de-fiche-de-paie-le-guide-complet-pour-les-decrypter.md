@@ -4,15 +4,20 @@ slug: 2551-abreviations-de-fiche-de-paie-le-guide-complet-pour-les-decrypter
 date: '2026-06-19T17:00:00+02:00'
 categorie: Salarié
 meta_title: 'Abréviations bulletin de salaire : guide complet pour les comprendre'
-meta_description: 'Décryptez chaque ligne de votre fiche de paie grâce à ce guide complet sur les abréviations : SB, SN, CSG, CRDS et bien d''autres expliquées simplement.'
+meta_description: 'Décryptez chaque ligne de votre fiche de paie grâce à ce guide
+  complet sur les abréviations : SB, SN, CSG, CRDS et bien d''autres expliquées simplement.'
 min_words: 1200
 status: published
 featured_image: /blog/2551-abreviations-de-fiche-de-paie-le-guide-complet-pour-les-decrypter.jpg
 link_anchors:
 - text: abréviation sur un bulletin de salaire
   max: 4
+related_posts:
+- 5670-conge-paternite-syntec-tout-comprendre-sur-vos-droits-et-votre-remuneration
+- 6505-conges-payes-et-retraite-progressive-quelles-regles-appliquer
+- 7738-demission-et-anciennete-ce-que-vous-pouvez-conserver-apres-votre-depart
+- 2230-refus-d-amenagement-d-horaire-avec-une-rqth-les-recours-possibles-face-a-l-employeur
 ---
-
 <p>J'ai mis du temps avant de vraiment comprendre ma fiche de paie. Deux ans que je gère une équipe de plusieurs dizaines de personnes à Marseille, et j'avais encore des doutes sur certaines lignes. Alors quand j'ai commencé à centraliser les questions de mes salariés, j'ai réalisé que presque tout le monde était dans le même bateau.</p>
 
 <p>Une fiche de paie, c'est un document légal. Pas toujours facile à lire. Et pourtant, chaque ligne compte.</p>
