@@ -3,13 +3,16 @@ title: Les verres à vin sans pied sont-ils un choix œnologique?
 slug: les-verres-a-vin-sans-pied-sont-ils-un-choix-nologique
 date: '2026-06-19T10:52:08+02:00'
 categorie: Vins
-meta_title: 'Verres à vin sans pied : bonne idée pour déguster le vin ou simple tendance ?'
-meta_description: 'Verres à vin sans pied : gadget tendance ou vrai choix pour la dégustation ? Découvrez si ces modèles atypiques méritent leur place dans votre cave.'
+meta_title: 'Verres à vin sans pied : bonne idée pour déguster le vin ou simple tendance
+  ?'
+meta_description: 'Verres à vin sans pied : gadget tendance ou vrai choix pour la
+  dégustation ? Découvrez si ces modèles atypiques méritent leur place dans votre
+  cave.'
 min_words: 1200
 status: published
 featured_image: /blog/les-verres-a-vin-sans-pied-sont-ils-un-choix-nologique.jpg
+related_posts: []
 ---
-
 <p>Je vais t'avouer quelque chose. La première fois qu'on m'a tendu un verre à vin sans pied, j'ai eu un mouvement de recul. C'était lors d'un dîner chez des amis, à Dijon, il y a quelques années. Un verre bas, arrondi, sans queue. J'ai regardé l'hôte avec un sourire poli en me disant intérieurement que ça allait être compliqué.</p>
 
 <p>Et puis j'ai bu.</p>

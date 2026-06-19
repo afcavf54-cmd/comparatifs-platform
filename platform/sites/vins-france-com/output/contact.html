@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | vins-france.com</title>
+<meta name="description" content="Contactez vins-france.com pour toute question ou suggestion.">
+<link rel="canonical" href="https://www.vins-france.com/contact">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=vins-france-com" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F6FB;
+  --surface:#fff;
+  --ink:#0F1A2E;
+  --ink2:#6B6560;
+  --ink3:#A09890;
+  --accent:#1B4FD8;
+  --accent2:#E8410A;
+  --cta:#E8410A;
+  --cta-text:#ffffff;
+  --border:#E2DDD6;
+  --r:12px;
+  --r2:20px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
+a{color:var(--accent);text-decoration:none}
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;height:64px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
+.nav-cta:hover{opacity:.88}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+main{max-width:1200px;margin:0 auto;padding:48px 5vw 80px}
+h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,48px);font-weight:400;letter-spacing:-.02em;margin-bottom:12px}
+.subtitle{font-size:16px;color:var(--ink2);margin-bottom:48px}
+.contact-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:32px;margin-bottom:24px}
+.contact-block h2{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;margin-bottom:16px;color:var(--ink)}
+.contact-block p{color:var(--ink2);font-size:15px;margin-bottom:8px}
+.contact-block a{color:var(--accent);font-weight:600}
+/* Formulaire */
+.contact-form{display:flex;flex-direction:column;gap:18px}
+.contact-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.contact-field{display:flex;flex-direction:column;gap:6px}
+.contact-field label{font-size:13px;font-weight:600;color:var(--ink);text-transform:uppercase;letter-spacing:.04em}
+.contact-field input,.contact-field select,.contact-field textarea{padding:12px 14px;border:1px solid var(--border);border-radius:var(--r);background:#fff;color:var(--ink);font-family:inherit;font-size:15px;line-height:1.5;outline:none;transition:border-color .15s}
+.contact-field input:focus,.contact-field select:focus,.contact-field textarea:focus{border-color:var(--accent)}
+.contact-field textarea{min-height:140px;resize:vertical}
+.contact-field-hint{font-size:12px;color:var(--ink3);margin-top:2px}
+.contact-submit{padding:14px 28px;border-radius:var(--r);background:var(--cta);color:var(--cta-text);font-size:15px;font-weight:700;border:none;cursor:pointer;transition:.15s;align-self:flex-start}
+.contact-submit:hover{opacity:.88}
+.contact-submit:disabled{opacity:.5;cursor:not-allowed}
+.contact-status{padding:14px 18px;border-radius:var(--r);font-size:14px;font-weight:500;display:none}
+.contact-status.success{background:rgba(34,197,94,.08);border:1px solid #22c55e;color:#15803d;display:block}
+.contact-status.error{background:rgba(239,68,68,.08);border:1px solid #ef4444;color:#b91c1c;display:block}
+.contact-honeypot{position:absolute;left:-9999px;opacity:0;pointer-events:none}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}.contact-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<style>
+nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+nav.site-nav .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
+nav.site-nav .nav-logo span{color:var(--accent2)}
+nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
+nav.site-nav .nav-cta:hover{opacity:.88}
+nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+nav.site-nav .nav-mobile.open{display:flex}
+nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
+</style>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">vins-france.com<span></span></a>
+    <div class="nav-links">
+        <a href="/blog/">Blog</a>
+    </div>
+    <a href="/contact" class="nav-cta">Contact</a>
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+      <a href="/blog/">Blog</a>
+    <a href="/contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<script>
+/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
+   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
+   devoir redéfinir la fonction côté template parent.
+
+   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
+   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
+   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
+   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
+   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
+   qui est actif et le parent réécrit derrière s'il en a un.
+
+   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
+   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
+   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
+   ne faisait rien. */
+(function(){
+  if (typeof window.toggleMenu === 'function') return;
+  window.toggleMenu = function(){
+    var menu = document.getElementById('nav-mobile');
+    if (menu) menu.classList.toggle('open');
+  };
+  // UX bonus : fermer le menu mobile en cliquant en dehors
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('nav-mobile');
+    var burger = document.getElementById('burger');
+    if (!menu || !burger) return;
+    if (!menu.classList.contains('open')) return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    menu.classList.remove('open');
+  });
+  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
+  document.addEventListener('DOMContentLoaded', function(){
+    var menu = document.getElementById('nav-mobile');
+    if (!menu) return;
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  });
+})();
+</script>
+<main>
+  <h1>Nous contacter</h1>
+  <p class="subtitle">Une question, une suggestion ou un partenariat ? Écrivez-nous.</p>
+
+  <div class="contact-block">
+    <h2>✉️ Nous écrire</h2>
+    <p style="margin-bottom:24px">Remplissez ce formulaire, nous vous répondrons sous 24 à 48h ouvrées.</p>
+
+    <form class="contact-form" id="contact-form" novalidate>
+      <input type="hidden" name="access_key" value="eabd63c5-1744-4172-b8c0-8984db488f10">
+      <input type="hidden" name="from_name" value="vins-france.com">
+      <input type="hidden" name="redirect" value="false">
+      <input type="hidden" name="subject" id="contact-subject" value="vins-france.com - Nouveau message">
+
+      <div class="contact-row">
+        <div class="contact-field">
+          <label for="contact-name">Nom & Prénom *</label>
+          <input type="text" id="contact-name" name="name" required autocomplete="name" placeholder="Jean Dupont">
+        </div>
+        <div class="contact-field">
+          <label for="contact-email">Email *</label>
+          <input type="email" id="contact-email" name="email" required autocomplete="email" placeholder="jean@exemple.com">
+        </div>
+      </div>
+
+      <div class="contact-field">
+        <label for="contact-objet">Objet *</label>
+        <select id="contact-objet" name="objet" required>
+          <option value="">— Choisissez —</option>
+          <option value="Question générale">Question générale</option>
+          <option value="Partenariat">Partenariat</option>
+          <option value="Signalement d'erreur">Signalement d'erreur</option>
+          <option value="Suggestion d'article">Suggestion d'article</option>
+          <option value="Autre">Autre</option>
+        </select>
+      </div>
+
+      <div class="contact-field">
+        <label for="contact-message">Votre message *</label>
+        <textarea id="contact-message" name="message" required placeholder="Détaillez votre demande…"></textarea>
+      </div>
+
+      <div class="contact-field">
+        <label for="contact-captcha">Question anti-spam : combien font <strong id="captcha-q">3 + 4</strong> ? *</label>
+        <input type="text" id="contact-captcha" name="captcha_answer" required autocomplete="off" inputmode="numeric" style="max-width:120px">
+        <div class="contact-field-hint">Une simple addition pour prouver que vous êtes humain.</div>
+      </div>
+
+      <div class="contact-honeypot" aria-hidden="true">
+        <input type="text" name="botcheck" tabindex="-1" autocomplete="off">
+      </div>
+
+      <button type="submit" class="contact-submit" id="contact-submit">Envoyer le message</button>
+      <div class="contact-status" id="contact-status" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+
+  <script>
+  (function() {
+    var form = document.getElementById('contact-form');
+    var statusBox = document.getElementById('contact-status');
+    var submitBtn = document.getElementById('contact-submit');
+    // Question anti-spam aléatoire (entre 2 et 9, addition simple)
+    var a = Math.floor(Math.random() * 7) + 2;
+    var b = Math.floor(Math.random() * 7) + 2;
+    var expected = a + b;
+    document.getElementById('captcha-q').textContent = a + ' + ' + b;
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      statusBox.className = 'contact-status';
+      statusBox.textContent = '';
+
+      // Vérif anti-spam côté client
+      var captchaInput = document.getElementById('contact-captcha').value.trim();
+      if (parseInt(captchaInput, 10) !== expected) {
+        statusBox.className = 'contact-status error';
+        statusBox.textContent = '✗ La réponse à la question anti-spam est incorrecte.';
+        return;
+      }
+      // Honeypot : si rempli, on bloque silencieusement (bot)
+      if (form.querySelector('input[name="botcheck"]').value !== '') {
+        statusBox.className = 'contact-status success';
+        statusBox.textContent = '✓ Message envoyé. Nous vous répondrons rapidement.';
+        form.reset();
+        return;
+      }
+
+      // Met à jour le sujet avec l'objet choisi : "<site> - <objet>"
+      var objet = document.getElementById('contact-objet').value || 'Message';
+      document.getElementById('contact-subject').value = 'vins-france.com - ' + objet;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = '⏳ Envoi en cours…';
+      try {
+        var formData = new FormData(form);
+        var resp = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData,
+        });
+        var data = await resp.json();
+        if (resp.ok && data.success) {
+          statusBox.className = 'contact-status success';
+          statusBox.textContent = '✓ Message envoyé. Nous vous répondrons rapidement.';
+          form.reset();
+          // Re-génère une nouvelle question anti-spam
+          a = Math.floor(Math.random() * 7) + 2;
+          b = Math.floor(Math.random() * 7) + 2;
+          expected = a + b;
+          document.getElementById('captcha-q').textContent = a + ' + ' + b;
+        } else {
+          statusBox.className = 'contact-status error';
+          statusBox.textContent = '✗ Erreur d\u0027envoi : ' + (data.message || 'merci de réessayer');
+        }
+      } catch (err) {
+        statusBox.className = 'contact-status error';
+        statusBox.textContent = '✗ Erreur réseau : merci de réessayer.';
+      }
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Envoyer le message';
+    });
+  })();
+  </script>
+
+  <div class="contact-block">
+    <h2>⏱️ Délai de réponse</h2>
+    <p>Nous répondons généralement sous 24 à 48h ouvrées.</p>
+  </div>
+
+  <div class="contact-block">
+    <h2>🔗 Liens utiles</h2>
+    <p><a href="/mentions-legales">Mentions légales</a></p>
+    <p><a href="/politique-confidentialite">Politique de confidentialité</a></p>
+  </div>
+</main>
+
+<style>
+.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
+.footer-brand .footer-logo span{color:var(--accent2)}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;max-width:260px;margin:0;padding:0}
+/* Anciennement .footer-col h4 — passé en div pour respecter la hiérarchie Hn (le footer ne doit pas introduire de Hn) */
+.footer-col .footer-col-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
+.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-brand{grid-column:1/-1}
+}
+</style>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">vins-france.com<span></span></div>
+        <p>Comparatifs vins-france.com 2026</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Navigation</div>
+        <a href="/blog/">Blog</a>
+        <a href="/plan-du-site">Plan du site</a>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/politique-confidentialite">Confidentialité</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">À propos</div>
+        <a href="/contact">Nous contacter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        © 2026 vins-france.com — Données actualisées le 19 juin 2026
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button type="button"
+        class="scroll-top-btn"
+        id="scroll-top-btn"
+        aria-label="Remonter en haut de la page"
+        title="Remonter en haut">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2.5"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+</button>
+
+<style>
+.scroll-top-btn{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:9999;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--ink, #0F1419);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .15s;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+  padding:0;
+  font-family:inherit;
+}
+.scroll-top-btn.visible{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.scroll-top-btn:hover{
+  background:var(--accent, #C9A961);
+}
+.scroll-top-btn:focus-visible{
+  outline:2px solid var(--accent, #C9A961);
+  outline-offset:3px;
+}
+@media (max-width:600px){
+  .scroll-top-btn{ bottom:16px; right:16px; width:42px; height:42px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .scroll-top-btn{ transition:opacity .2s, visibility .2s; }
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  var btn = document.getElementById('scroll-top-btn');
+  if (!btn) return;
+
+  var THRESHOLD = 400; // px de scroll avant apparition
+  var ticking = false;
+
+  function update(){
+    if (window.scrollY > THRESHOLD) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+    ticking = false;
+  }
+
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  btn.addEventListener('click', function(){
+    var prefersReduced = window.matchMedia
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  });
+
+  // Check immédiat (au cas où la page est rechargée déjà scrollée)
+  update();
+})();
+</script>
+
+</body>
+</html>
