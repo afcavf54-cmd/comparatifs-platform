@@ -4,15 +4,21 @@ slug: 8759-parametrer-les-modules-de-l-erp-financepro-integrated-point-par-point
 date: '2026-06-19T06:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Comment paramétrer les modules de l'ERP FinancePro Integrated
-meta_description: Paramétrez les modules de l'ERP FinancePro Integrated dans le bon ordre et évitez les erreurs classiques grâce à ce guide conçu pour les TPE sans équipe IT.
+meta_description: Paramétrez les modules de l'ERP FinancePro Integrated dans le bon
+  ordre et évitez les erreurs classiques grâce à ce guide conçu pour les TPE sans
+  équipe IT.
 min_words: 900
 status: published
 featured_image: /blog/8759-parametrer-les-modules-de-l-erp-financepro-integrated-point-par-point.jpg
 link_anchors:
 - text: comment paramétrer les modules de l'ERP FinancePro Integrated
   max: 5
+related_posts:
+- 2823-tarif-mensuel-du-crm-saas-cloudlead-manager-sans-surprise
+- 7831-crm-basique-ou-salesforce-premium-quelle-difference
+- 4096-fieldforce-connect-android-le-crm-mobile-sans-filtre
+- 8404-salesconnect-pro-ou-marketwise-quel-crm-choisir
 ---
-
 <p>Je vais être honnête avec vous : quand j'ai commencé à paramétrer FinancePro Integrated pour mon agence, j'ai failli tout abandonner après deux heures. Pas parce que l'outil est mauvais, mais parce que personne ne m'avait dit dans quel ordre faire les choses. J'ai cliqué dans tous les sens, activé des modules que je n'utilise pas, désactivé des trucs utiles par erreur. Bref, j'ai perdu une demi-journée.</p>
 
 <p>Ce guide, c'est ce que j'aurais voulu lire avant de me lancer. Je le rédige en pensant à une structure comme la mienne : une TPE de six personnes, pas d'équipe IT, pas de consultant ERP à disposition, et un besoin très concret de reprendre le contrôle sur la gestion.</p>
