@@ -15,7 +15,7 @@ link_anchors:
   max: 5
 related_posts:
 - 1981-se-former-a-google-ads-vite-une-formation-ou-seul
-- 8676-l-espace-de-bureau-et-coworking-wework-face-aux-acteurs-locaux
+- 3131-quel-budget-pour-le-logiciel-de-facturation-quickbill-enterprise
 - 7392-btp-chantier-fr-face-a-un-devis-d-artisan
 ---
 <h2>WeWork : le géant qui domine encore le marché</h2>
