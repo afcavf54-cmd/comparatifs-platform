@@ -13,7 +13,8 @@ featured_image: /blog/3019-le-prix-de-la-formation-leadership-nexstep-avance-est
 link_anchors:
 - text: la formation Leadership Method NexStep niveau avancé
   max: 5
-related_posts: []
+related_posts:
+- 5432-a-quel-public-s-adresse-la-formation-lean-management-sigma7
 ---
 <p>Honnêtement, quand j'ai vu le tarif de la formation leadership NexStep Avancé pour la première fois, j'ai failli fermer l'onglet. Entre 2 800€ et 3 500€ selon les formules, c'est pas anodin quand tu tournes avec une équipe de 3 personnes et un budget formation serré. Mais j'ai creusé. Et voilà ce que j'en pense vraiment.</p>
 

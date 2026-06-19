@@ -4,15 +4,17 @@ slug: 5432-a-quel-public-s-adresse-la-formation-lean-management-sigma7
 date: '2026-06-19T11:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation lean management Sigma7 : pour quelle entreprise ?'
-meta_description: 'Découvrez à quel profil s''adresse vraiment la formation lean management Sigma7 : PME, managers et startups qui veulent optimiser leurs process sans consultant…'
+meta_description: 'Découvrez à quel profil s''adresse vraiment la formation lean management
+  Sigma7 : PME, managers et startups qui veulent optimiser leurs process sans consultant…'
 min_words: 980
 status: published
 featured_image: /blog/5432-a-quel-public-s-adresse-la-formation-lean-management-sigma7.jpg
 link_anchors:
 - text: la durée de la formation lean management Sigma7
   max: 5
+related_posts:
+- 3019-le-prix-de-la-formation-leadership-nexstep-avance-est-il-justifie
 ---
-
 <p>J'ai testé pas mal de formations au lean management ces deux dernières années. Par curiosité d'abord, parce que j'avais des process en vrac dans ma boîte, et que j'avais besoin de structurer sans embaucher un consultant à 1500€ la journée. Sigma7 m'a été recommandé par un contact dans une PME lyonnaise. J'ai creusé. Et je comprends maintenant pourquoi ce programme fait parler de lui, mais aussi à qui il s'adresse vraiment, et surtout à qui il ne s'adresse pas.</p>
 
 <h2>Ce que le lean management Sigma7 promet réellement</h2>
