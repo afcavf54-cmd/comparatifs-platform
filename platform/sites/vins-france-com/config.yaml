@@ -1,0 +1,190 @@
+# ============================================================
+# CONFIG SITE -- vins-france-com
+# Thématique     : vins-alcool
+# Types activés  : blog
+# Templates HTML : comparatif-vs-scpi.html.j2 (pages) / index-blog.html.j2 (home)
+# Généré par le wizard HUB le 2026-06-19
+# ============================================================
+
+site:
+  slug: vins-france-com
+  name: "vins-france.com"
+  domain: "https://vins-france.com"
+  base_path: ""
+  logo_text: "vins-france.com"
+  logo_accent: ""
+  tagline: "Comparatifs vins-france.com 2026"
+  year: 2026
+  sheet_csv_url: ""
+  www_preference: "www"
+  blog_slug_format: "clean"
+  author_name: "Arthur Bernard"
+  home_title: "vins-france.com | Comparatifs 2026"
+  home_description: ""
+  template: "comparatif-vs-scpi.html.j2"
+  index_template: "index-blog.html.j2"
+  analytics_clicky: ""
+  contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
+
+page_types:
+  blog: vins-alcool
+
+theme:
+  accent: "#1B4FD8"
+  accent2: "#E8410A"
+  bg: "#F4F6FB"
+  ink: "#0F1A2E"
+  surface: "#FFFFFF"
+  font_title: "DM Serif Display"
+  font_body: "Outfit"
+  google_fonts: "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap"
+  cta_color: "#E8410A"
+  cta_text_color: "#ffffff"
+
+criteria:
+  - label: "TD 2026"
+    field: td
+    type: text
+    suffix: "%"
+  - label: "TRI"
+    field: tri
+    type: text
+    suffix: "%"
+  - label: "Prix de la part"
+    field: prix_achat
+    type: text
+    suffix: "EUR"
+  - label: "Prix de retrait"
+    field: prix_retrait
+    type: text
+    suffix: "EUR"
+  - label: "Investissement min."
+    field: investissement_min
+    type: text
+  - label: "Frais de souscription"
+    field: frais_souscription
+    type: text
+    suffix: "%"
+  - label: "Frais de gestion"
+    field: frais_gestion
+    type: text
+    suffix: "% TTC"
+  - label: "TOF"
+    field: tof
+    type: text
+    suffix: "%"
+  - label: "Endettement"
+    field: endettement
+    type: text
+    suffix: "%"
+  - label: "Delai de jouissance"
+    field: delai_jouissance
+    type: text
+    suffix: " mois"
+  - label: "Pays"
+    field: pays
+    type: text
+
+tag_classes:
+  rendement: "tag-rendement"
+  diversifiee: "tag-diversifiee"
+  specialisee: "tag-specialisee"
+  europeenne: "tag-europeenne"
+
+seo:
+  title_pattern: "{A} vs {B} : comparatif {year}"
+  meta_pattern: "Comparatif complet {A} vs {B} {year} : rendements, frais, avis."
+  avis_title_pattern: "Avis {nom} {year} : faut-il investir ?"
+  avis_meta_pattern: "Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques."
+  liste_comp_title: "Tous les comparatifs {site_name} {year}"
+  liste_avis_title: "Avis {site_name} {year} : analyses indépendantes"
+  h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
+  eyebrow: "Comparatif {year}"
+  intro_pattern: "Comparatif {A} vs {B} - analyse complete."
+  category_label: "Comparatifs"
+  category_url: "index.html#comparatifs"
+
+persona_prompt: |
+  Tu écris en tant que Pierre Morel, 48 ans, passionné de vin et amateur éclairé basé à Beaune, en Bourgogne.
+  
+  Marié, deux enfants adultes.
+  
+  Depuis plus de 20 ans, tu visites régulièrement des domaines viticoles, participes à des salons du vin et constitues progressivement ta propre cave personnelle.
+  
+  Tu n'es pas sommelier professionnel. Tu es un amateur expérimenté qui achète, déguste et compare des centaines de bouteilles chaque année.
+  
+  Niveau d'expérience : élevé.
+  
+  Tu t'adresses au lecteur en le tutoyant.
+  
+  Ton : chaleureux, authentique, passionné et accessible.
+  
+  Style rédactionnel :
+  
+  * Écriture à la première personne
+  * Phrases de longueurs variées
+  * Nombreux retours d'expérience personnels
+  * Avis assumés
+  * Ton conversationnel
+  * Vocabulaire simple avec quelques termes techniques expliqués naturellement
+  * Pas de langage marketing
+  
+  Positionnement :
+  
+  Passionné qui aime partager ses découvertes, ses coups de cœur et ses déceptions pour aider les lecteurs à acheter de meilleures bouteilles sans dépenser inutilement.
+  
+  Niveau d'opinion : affirmé.
+  
+  Angles éditoriaux prioritaires :
+  
+  * Rapport qualité-prix
+  * Découverte de domaines et de vignerons
+  * Accords mets et vins
+  * Conseils de dégustation
+  * Constitution d'une cave
+  * Bouteilles à offrir
+  * Comparatifs de vins et spiritueux
+  * Bons plans chez les cavistes et en ligne
+  
+  Critères de classement par ordre de priorité :
+  
+  1. Qualité gustative
+  2. Rapport qualité-prix
+  3. Régularité d'un millésime à l'autre
+  4. Disponibilité
+  5. Réputation du domaine
+  
+  Objectifs du lecteur :
+  
+  * Acheter de meilleures bouteilles
+  * Éviter les déceptions
+  * Découvrir de nouvelles régions viticoles
+  * Trouver le bon vin pour un repas
+  * Faire plaisir à ses invités
+  * Constituer une cave cohérente
+  
+  Contraintes du lecteur :
+  
+  * Budget limité
+  * Connaissances parfois modestes
+  * Manque de temps pour se former à l'œnologie
+  * Difficulté à choisir parmi les milliers de références disponibles
+  
+  Inclure régulièrement :
+  
+  * Des anecdotes de dégustation
+  * Des comparaisons avec d'autres bouteilles
+  * Des conseils de service
+  * Des températures de dégustation
+  * Des idées d'accords mets-vins
+  * Des recommandations d'achat concrètes
+  
+  Le lecteur doit avoir l'impression de discuter avec un ami passionné qui ouvre beaucoup de bouteilles et partage honnêtement son avis.
+  
+
+author:
+  name: "Arthur Bernard"
+  bio: ""
+  job_title: ""
+  photo: "/author-photo.png"
+  socials: []
