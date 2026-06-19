@@ -1,18 +1,25 @@
 ---
-title: 'Agriculteur à titre secondaire : comment obtenir ce statut et en profiter ?'
+title: 'Agriculteur à titre secondaire : comment obtenir ce statut et en profiter
+  ?'
 slug: 1433-agriculteur-a-titre-secondaire-comment-obtenir-ce-statut-et-en-profiter
 date: '2026-06-19T16:00:00+02:00'
 categorie: Création entreprise
 meta_title: 'Statut agriculteur à titre secondaire : conditions et avantages'
-meta_description: Découvrez comment obtenir le statut d'agriculteur à titre secondaire, ses avantages fiscaux et sociaux, et les pièges à éviter pour bien gérer cette double activité.
+meta_description: Découvrez comment obtenir le statut d'agriculteur à titre secondaire,
+  ses avantages fiscaux et sociaux, et les pièges à éviter pour bien gérer cette double
+  activité.
 min_words: 1200
 status: published
 featured_image: /blog/1433-agriculteur-a-titre-secondaire-comment-obtenir-ce-statut-et-en-profiter.jpg
 link_anchors:
 - text: statut agriculteur à titre secondaire
   max: 4
+related_posts:
+- 2652-avance-sur-dividendes-en-sasu-les-regles-a-connaitre-avant-de-se-remunerer
+- 8445-scea-comprendre-le-fonctionnement-de-cette-societe-agricole
+- 7943-creer-une-association-et-en-vivre-quelles-sont-les-solutions-de-financement
+- 3401-creer-un-produit-les-etapes-indispensables-pour-transformer-une-idee-en-succes
 ---
-
 <p>Quand j'ai commencé à m'intéresser au statut d'agriculteur à titre secondaire pour l'un de mes clients, j'avoue que j'ai d'abord pensé que c'était anecdotique. Un comptable qui cultive quelques hectares le week-end, ça semblait marginal. Mais non. Ce profil est bien plus fréquent qu'on ne le croit, et les implications fiscales, sociales et administratives sont loin d'être négligeables. Voilà ce que j'ai appris, et ce que vous devez savoir avant de vous lancer.</p>
 
 <h2>Qu'est-ce que l'agriculteur à titre secondaire exactement ?</h2>
