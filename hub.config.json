@@ -188,8 +188,27 @@
       "page_types": {
         "blog": "finances-personnelles"
       }
+    },
+    {
+      "id": "vins-france-com",
+      "name": "vins-france.com",
+      "niche": "vins-alcool",
+      "domain": "vins-france.com",
+      "sheet_csv_url": "",
+      "description": "",
+      "status": "pending_generation",
+      "thematic": "vins-alcool",
+      "active_page_types": [
+        "blog"
+      ],
+      "site_type": "comparatif",
+      "blog_slug_format": "clean",
+      "created_at": "2026-06-19T08:28:22.605Z",
+      "page_types": {
+        "blog": "vins-alcool"
+      }
     }
   ],
   "version": "2.0",
-  "updated_at": "2026-06-18T10:53:58.926Z"
+  "updated_at": "2026-06-19T08:28:22.605Z"
 }
