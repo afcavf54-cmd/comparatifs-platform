@@ -17,6 +17,7 @@ related_posts:
 - 7392-btp-chantier-fr-face-a-un-devis-d-artisan
 - 9025-l-espace-de-bureau-et-coworking-wework-face-aux-acteurs-locaux
 - 1981-se-former-a-google-ads-vite-une-formation-ou-seul
+- 9750-le-logiciel-de-facturation-quickbill-pro-face-aux-tarifs-concurrents
 ---
 <p>Vingt ans que je travaille sur des outils de facturation. J'en ai vu passer, des logiciels qui promettent monts et merveilles, puis qui déçoivent dès qu'on monte en charge. QuickBill Enterprise, je l'ai testé pendant plusieurs mois dans mon entreprise lyonnaise d'une soixantaine de salariés. Et la question qui revient systématiquement quand j'en parle à des collègues : combien ça coûte vraiment ?</p>
 
