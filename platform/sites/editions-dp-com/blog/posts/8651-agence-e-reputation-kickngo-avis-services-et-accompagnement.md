@@ -15,8 +15,9 @@ link_anchors:
 - text: l'agence d'e-réputation Kickngo
   max: 5
 related_posts:
-- 5260-devis-gratuit-btp-chantier-fr-comment-faire-une-demande
+- 7001-e-local-fr-devis-travaux-en-ligne-et-comparatif-artisans
 - 1635-devis-deco-lestylechezsoi-comment-obtenir-une-estimation
+- 5260-devis-gratuit-btp-chantier-fr-comment-faire-une-demande
 ---
 <h2>Kickngo, une agence e-réputation qui fait parler d'elle</h2>
 
