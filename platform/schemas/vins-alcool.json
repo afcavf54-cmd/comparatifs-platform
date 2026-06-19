@@ -1,0 +1,101 @@
+{
+  "template": "vins-alcool",
+  "label": "Vins-Alcool",
+  "type": "thematic",
+  "niche": "vins-alcool",
+  "description": "",
+  "variables": [
+    "theme",
+    "year",
+    "site_name"
+  ],
+  "blocks": [],
+  "keywords": {},
+  "global_prompt": "",
+  "default_prompts": {
+    "prompt_intro": {
+      "text": "",
+      "words_min": 100,
+      "words_max": 300
+    },
+    "prompt_en_bref": {
+      "text": "",
+      "words_min": 10,
+      "words_max": 30
+    },
+    "prompt_classement": {
+      "text": "",
+      "words_min": 150,
+      "words_max": 400
+    },
+    "prompt_contenu": {
+      "text": "",
+      "words_min": 200,
+      "words_max": 500
+    },
+    "prompt_faq": {
+      "text": "",
+      "words_min": 50,
+      "words_max": 150
+    }
+  },
+  "avis_config": {
+    "hero": {
+      "words_min": 80,
+      "words_max": 130,
+      "prompt": ""
+    },
+    "en_bref": {
+      "words_min": 50,
+      "words_max": 90,
+      "prompt": ""
+    },
+    "points_forts": {
+      "words_min": 5,
+      "words_max": 14,
+      "prompt": ""
+    },
+    "points_faibles": {
+      "words_min": 5,
+      "words_max": 14,
+      "prompt": ""
+    },
+    "faq": {
+      "words_min": 30,
+      "words_max": 80,
+      "prompt": ""
+    },
+    "verdict": {
+      "words_min": 50,
+      "words_max": 100,
+      "prompt": ""
+    }
+  },
+  "blog_config": {
+    "excerpt": {
+      "words_min": 15,
+      "words_max": 30,
+      "prompt": ""
+    },
+    "intro": {
+      "words_min": 100,
+      "words_max": 200,
+      "prompt": ""
+    },
+    "sections_h2": {
+      "words_min": 250,
+      "words_max": 500,
+      "prompt": ""
+    },
+    "conclusion": {
+      "words_min": 60,
+      "words_max": 130,
+      "prompt": ""
+    },
+    "faq": {
+      "words_min": 40,
+      "words_max": 90,
+      "prompt": ""
+    }
+  }
+}
