@@ -4,15 +4,21 @@ slug: 7738-demission-et-anciennete-ce-que-vous-pouvez-conserver-apres-votre-depa
 date: '2026-06-19T09:00:00+02:00'
 categorie: Salarié
 meta_title: 'Démission et ancienneté : ce que vous conservez après votre départ'
-meta_description: 'Démission et ancienneté : découvrez ce que vous conservez vraiment après votre départ et les droits auxquels vous pouvez encore prétendre malgré la rupture.'
+meta_description: 'Démission et ancienneté : découvrez ce que vous conservez vraiment
+  après votre départ et les droits auxquels vous pouvez encore prétendre malgré la
+  rupture.'
 min_words: 1200
 status: published
 featured_image: /blog/7738-demission-et-anciennete-ce-que-vous-pouvez-conserver-apres-votre-depart.jpg
 link_anchors:
 - text: droits sur votre ancienneté lors d'une démission
   max: 4
+related_posts:
+- 6505-conges-payes-et-retraite-progressive-quelles-regles-appliquer
+- 6793-je-travaille-sans-contrat-depuis-plusieurs-jours-quelles-protections-pour-le-salarie
+- 3639-redressement-judiciaire-quelles-options-pour-quitter-son-entreprise-sereinement
+- 4100-je-fais-moins-d-heures-que-mon-contrat-cdi-comment-faire-respecter-vos-droits
 ---
-
 <p>J'ai mis du temps à comprendre ce que la démission faisait vraiment perdre. Pas juste le salaire du mois. Pas juste les collègues. Mais tous ces droits accumulés, parfois sur des années, qui semblent s'évaporer le jour où on signe la lettre de rupture.</p>
 
 <p>J'ai accompagné plusieurs salariés dans mon équipe qui voulaient partir. Et à chaque fois, la même question revenait : est-ce qu'on perd tout ce qu'on a construit ? La réponse courte : non, pas tout. Mais la réponse longue, elle est plus nuancée.</p>
