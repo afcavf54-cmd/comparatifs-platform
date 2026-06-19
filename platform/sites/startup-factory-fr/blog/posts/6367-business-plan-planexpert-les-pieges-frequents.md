@@ -16,6 +16,8 @@ link_anchors:
 related_posts:
 - 2966-pour-qui-est-fait-le-template-de-business-plan-startupkit-premium
 - 6176-business-plan-financepro-smart-les-pieges-des-debutants
+- 1802-a-quel-public-s-adresse-le-modele-de-business-plan-startupkit-advanced
+- 9108-pour-qui-est-pense-le-generateur-de-business-plan-smartstart-generator
 ---
 <h2>PlanExpert : pourquoi je déconseille ce logiciel pour ton business plan</h2>
 

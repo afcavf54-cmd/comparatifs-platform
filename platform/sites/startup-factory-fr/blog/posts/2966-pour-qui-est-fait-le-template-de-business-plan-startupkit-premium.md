@@ -15,7 +15,9 @@ link_anchors:
   max: 5
 related_posts:
 - 6176-business-plan-financepro-smart-les-pieges-des-debutants
+- 9108-pour-qui-est-pense-le-generateur-de-business-plan-smartstart-generator
 - 6367-business-plan-planexpert-les-pieges-frequents
+- 1802-a-quel-public-s-adresse-le-modele-de-business-plan-startupkit-advanced
 ---
 <p>Je vais être honnête avec toi : quand j'ai monté ma startup à Nantes, j'ai passé des heures à chercher le bon template de business plan. Des gratuits bidons, des usines à gaz à 200€, des modèles en anglais inutilisables. Et puis j'ai testé le <strong>StartupKit Premium</strong>. Voilà ce que j'en pense vraiment, et surtout pour qui c'est fait.</p>
 

@@ -14,8 +14,10 @@ link_anchors:
 - text: comment créer un business plan avec FinancePro Smart
   max: 5
 related_posts:
-- 2966-pour-qui-est-fait-le-template-de-business-plan-startupkit-premium
 - 6367-business-plan-planexpert-les-pieges-frequents
+- 9108-pour-qui-est-pense-le-generateur-de-business-plan-smartstart-generator
+- 1802-a-quel-public-s-adresse-le-modele-de-business-plan-startupkit-advanced
+- 2966-pour-qui-est-fait-le-template-de-business-plan-startupkit-premium
 ---
 <p>J'ai créé ma première startup à 22 ans. J'ai passé trois semaines sur mon business plan. Et j'ai quand même fait à peu près toutes les erreurs possibles.</p>
 

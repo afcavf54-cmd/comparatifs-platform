@@ -4,15 +4,21 @@ slug: 9108-pour-qui-est-pense-le-generateur-de-business-plan-smartstart-generato
 date: '2026-06-19T08:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Avis business plan SmartStart Generator : pour quels profils ?'
-meta_description: 'Découvrez pour qui SmartStart Generator est vraiment conçu : un outil de business plan automatisé pensé pour les créateurs, pas pour les experts financiers.'
+meta_description: 'Découvrez pour qui SmartStart Generator est vraiment conçu : un
+  outil de business plan automatisé pensé pour les créateurs, pas pour les experts
+  financiers.'
 min_words: 920
 status: published
 featured_image: /blog/9108-pour-qui-est-pense-le-generateur-de-business-plan-smartstart-generator.jpg
 link_anchors:
 - text: les avis sur le template de business plan SmartStart Generator
   max: 5
+related_posts:
+- 6176-business-plan-financepro-smart-les-pieges-des-debutants
+- 2966-pour-qui-est-fait-le-template-de-business-plan-startupkit-premium
+- 1802-a-quel-public-s-adresse-le-modele-de-business-plan-startupkit-advanced
+- 6367-business-plan-planexpert-les-pieges-frequents
 ---
-
 <p>J'ai testé pas mal d'outils pour créer un business plan depuis que j'ai lancé ma boîte. Des templates Excel bricolés, des outils SaaS à 80€/mois, des formations longues comme un lundi. Et franchement, la plupart du temps, j'avais l'impression que ces outils étaient pensés pour des consultants financiers, pas pour des créateurs d'entreprise qui démarrent de zéro.</p>
 
 <p>Le <strong>SmartStart Generator</strong> m'a surpris. Pas dans le sens "révolution", mais dans le sens où c'est la première fois que j'ai eu l'impression qu'un outil me parlait vraiment. Pas à un banquier.</p>
