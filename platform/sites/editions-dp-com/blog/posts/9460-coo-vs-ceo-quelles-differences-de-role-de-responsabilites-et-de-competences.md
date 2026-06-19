@@ -1,18 +1,25 @@
 ---
-title: 'COO vs CEO : quelles différences de rôle, de responsabilités et de compétences ?'
+title: 'COO vs CEO : quelles différences de rôle, de responsabilités et de compétences
+  ?'
 slug: 9460-coo-vs-ceo-quelles-differences-de-role-de-responsabilites-et-de-competences
 date: '2026-06-19T15:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'COO vs CEO : différences et rôles clés'
-meta_description: 'CEO et COO : deux rôles souvent confondus mais bien distincts. Découvrez leurs différences de responsabilités, de compétences et de positionnement au sein de la…'
+meta_description: 'CEO et COO : deux rôles souvent confondus mais bien distincts.
+  Découvrez leurs différences de responsabilités, de compétences et de positionnement
+  au sein de la…'
 min_words: 1800
 status: published
 featured_image: /blog/9460-coo-vs-ceo-quelles-differences-de-role-de-responsabilites-et-de-competences.jpg
 link_anchors:
 - text: coo vs ceo
   max: 4
+related_posts:
+- 6829-fiche-de-paie-en-ligne-acces-lecture-et-decryptage
+- 4437-comment-fideliser-les-talents-en-entreprise
+- 6469-externalisation-de-la-paie-grille-tarifaire-et-facteurs-de-cout
+- 4236-logiciel-de-paie-gratuit-fonctionnalites-limites-et-alternatives
 ---
-
 <h2>CEO et COO : deux rôles que beaucoup confondent, et pourtant</h2>
 
 <p>J'ai longtemps cru que le CEO et le COO faisaient plus ou moins la même chose. Un peu comme deux pilotes dans le même cockpit. En pratique, c'est bien plus nuancé que ça, et la confusion entre les deux postes coûte cher aux entreprises qui ne délimitent pas clairement les responsabilités de chacun.</p>

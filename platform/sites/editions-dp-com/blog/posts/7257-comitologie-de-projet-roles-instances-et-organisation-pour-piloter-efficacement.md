@@ -4,15 +4,21 @@ slug: 7257-comitologie-de-projet-roles-instances-et-organisation-pour-piloter-ef
 date: '2026-06-19T14:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Comitologie projet : définition et bonnes pratiques'
-meta_description: 'Comitologie de projet : découvrez comment structurer vos instances de gouvernance pour mieux piloter vos projets et éviter les décisions floues en PME.'
+meta_description: 'Comitologie de projet : découvrez comment structurer vos instances
+  de gouvernance pour mieux piloter vos projets et éviter les décisions floues en
+  PME.'
 min_words: 2500
 status: published
 featured_image: /blog/7257-comitologie-de-projet-roles-instances-et-organisation-pour-piloter-efficacement.jpg
 link_anchors:
 - text: comitologie d'un projet
   max: 4
+related_posts:
+- 5728-comment-integrer-erp-flexmanage-plus-a-votre-systeme-d-information
+- 3401-comment-utiliser-crm-salesflow-evolution-pour-gerer-vos-prospects
+- 3577-comment-implementer-erp-smartchain-360-dans-votre-societe
+- 8532-comment-parametrer-les-modules-erp-financepro-integrated
 ---
-
 <p>On pilote une boîte de 100 à 500 personnes, et un jour quelqu'un vous parle de "comitologie". Premier réflexe : chercher ce que ça veut dire. Deuxième réflexe : réaliser que vous le faisiez déjà, mais sans le nommer. La comitologie de projet, c'est simplement l'organisation de vos instances de gouvernance. Qui décide quoi, quand, avec qui.</p>
 
 <p>J'ai mis des années à structurer ça correctement dans mon entreprise. Des réunions qui ne servaient à rien, des décisions prises dans les couloirs, des projets qui dérapaient faute de bonne gouvernance. Ce guide part de ce vécu. Pas de théorie abstraite.</p>

@@ -4,15 +4,20 @@ slug: 2683-facture-en-ligne-avec-digitalise-tes-factures-comment-faire
 date: '2026-06-19T12:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Facture en ligne Digitalise-Tes-Factures : guide pratique'
-meta_description: Créez votre facture en ligne avec Digitalise-Tes-Factures en quelques minutes. Un outil pensé pour les TPE, simple à prendre en main et conforme aux mentions…
+meta_description: Créez votre facture en ligne avec Digitalise-Tes-Factures en quelques
+  minutes. Un outil pensé pour les TPE, simple à prendre en main et conforme aux mentions…
 min_words: 940
 status: published
 featured_image: /blog/2683-facture-en-ligne-avec-digitalise-tes-factures-comment-faire.jpg
 link_anchors:
 - text: créer une facture en ligne avec Digitalise-Tes-Factures
   max: 5
+related_posts:
+- 4708-cnam-intec-presentation-de-l-institut-national-des-techniques-economiques-et-comptables
+- 9439-comptabilite-cloud-financecore-enterprise-fonctionnalites-et-avis
+- 8171-digitalise-tes-factures-modeles-de-factures-a-telecharger
+- 9861-comptabilite-cloud-financecore-plus-quelles-fonctionnalites
 ---
-
 <p>J'ai découvert <strong>Digitalise-Tes-Factures</strong> un peu par hasard, après en avoir eu assez de passer mes lundis matin à taper des factures dans Word. Oui, Word. Je sais, ça fait sourire. Mais quand on dirige une boîte à Lyon avec une centaine de personnes et qu'on n'est pas un informaticien, on fait avec ce qu'on connaît. Jusqu'au jour où ça coince vraiment.</p>
 
 <p>J'ai mis environ deux heures à prendre en main l'outil la première fois. Pas plus. Et j'ai émis ma première facture dans la journée. C'est ça qui m'a convaincu de creuser le sujet et d'en parler ici.</p>
