@@ -14,6 +14,7 @@ link_anchors:
 - text: le prix de l'outil de facturation récurrente Billmatic Subscription
   max: 5
 related_posts:
+- 3755-le-marketing-alternatif-face-aux-campagnes-classiques
 - 9063-billmatic-auto-face-aux-plateformes-d-abonnement-sur-le-prix
 ---
 <p>Vingt ans que je travaille en comptabilité. J'ai vu défiler des dizaines d'outils de facturation, des tableaux Excel bricolés à la va-vite, des logiciels onéreux mal configurés, et plus récemment cette vague de solutions d'abonnement qui promettent de tout automatiser. Quand mon directeur m'a demandé d'évaluer Billmatic Subscription pour gérer nos contrats récurrents, j'ai pris le sujet au sérieux.</p>

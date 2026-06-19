@@ -4,15 +4,19 @@ slug: 3755-le-marketing-alternatif-face-aux-campagnes-classiques
 date: '2026-06-19T06:00:00+02:00'
 categorie: Comptabilité
 meta_title: Marketing alternatif vs marketing traditionnel
-meta_description: 'Marketing alternatif ou campagne classique : découvrez ce que cachent vraiment ces budgets, leurs différences de traçabilité comptable et comment piloter chaque…'
+meta_description: 'Marketing alternatif ou campagne classique : découvrez ce que cachent
+  vraiment ces budgets, leurs différences de traçabilité comptable et comment piloter
+  chaque…'
 min_words: 930
 status: published
 featured_image: /blog/3755-le-marketing-alternatif-face-aux-campagnes-classiques.jpg
 link_anchors:
 - text: le logiciel Sage en Ille-et-Vilaine
   max: 5
+related_posts:
+- 9063-billmatic-auto-face-aux-plateformes-d-abonnement-sur-le-prix
+- 2004-billmatic-subscription-face-aux-solutions-d-abonnement-sur-le-prix
 ---
-
 <p>Vingt ans à surveiller des lignes budgétaires, à valider des plans de communication et à demander des justifications sur chaque poste de dépense. J'ai vu passer des dizaines de campagnes marketing. Des classiques bien cadrées, avec leurs affichages, leurs spots radio, leurs insertions presse. Et depuis quelques années, quelque chose a changé dans les demandes qui atterrissent sur mon bureau.</p>
 
 <p>Les directions marketing parlent maintenant de "marketing alternatif". Guerrilla marketing, marketing expérientiel, campagnes participatives, street art sponsorisé... Des formats qui coûtent parfois très peu, parfois beaucoup, et dont la <strong>traçabilité comptable</strong> donne régulièrement des maux de tête.</p>
