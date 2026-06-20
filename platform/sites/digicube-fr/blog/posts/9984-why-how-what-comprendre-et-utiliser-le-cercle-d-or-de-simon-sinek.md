@@ -4,15 +4,21 @@ slug: 9984-why-how-what-comprendre-et-utiliser-le-cercle-d-or-de-simon-sinek
 date: '2026-06-20T08:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Why How What : appliquer le cercle d''or à votre entreprise'
-meta_description: Découvrez le cercle d'or de Simon Sinek et la méthode Why How What pour clarifier votre communication, fédérer vos équipes et donner un cap clair à votre entreprise.
+meta_description: Découvrez le cercle d'or de Simon Sinek et la méthode Why How What
+  pour clarifier votre communication, fédérer vos équipes et donner un cap clair à
+  votre entreprise.
 min_words: 1800
 status: published
 featured_image: /blog/9984-why-how-what-comprendre-et-utiliser-le-cercle-d-or-de-simon-sinek.jpg
 link_anchors:
 - text: why how what
   max: 4
+related_posts:
+- 7930-cloudmanager-enterprise-face-a-un-erp-on-premise
+- 5289-matrice-tows-guide-pratique-pour-renforcer-votre-strategie-d-entreprise
+- 1601-bizflow-evolution-est-il-surdimensionne-pour-une-pme
+- 6254-calcul-prix-de-vente-avec-taux-de-marge-comment-garantir-votre-rentabilite
 ---
-
 <p>J'ai découvert le cercle d'or de Simon Sinek un peu par hasard. Un associé m'avait partagé la vidéo TED Talk "Start With Why" pendant le confinement. Je l'ai regardée un dimanche soir, presque sans y croire, et j'avoue que j'ai mis plusieurs semaines avant de vraiment comprendre ce que ça changeait pour mon entreprise.</p>
 
 <p>Spoiler : ça change beaucoup.</p>
