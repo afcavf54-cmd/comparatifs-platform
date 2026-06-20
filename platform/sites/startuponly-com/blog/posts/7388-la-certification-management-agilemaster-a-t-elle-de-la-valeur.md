@@ -15,9 +15,10 @@ link_anchors:
 - text: la durée de la formation management certifiante AgileMaster
   max: 5
 related_posts:
+- 8830-pour-qui-est-fait-la-formation-management-leadership-academy-pro
+- 5432-a-quel-public-s-adresse-la-formation-lean-management-sigma7
 - 4514-la-certification-management-leadpro-vaut-elle-l-investissement
 - 3019-le-prix-de-la-formation-leadership-nexstep-avance-est-il-justifie
-- 5432-a-quel-public-s-adresse-la-formation-lean-management-sigma7
 ---
 <p>Honnêtement, quand j'ai entendu parler de la certification <strong>management AgileMaster</strong> pour la première fois, j'ai levé les yeux au ciel. Encore un truc avec "agile" dans le nom, encore un diplôme vendu comme la clé magique pour manager des équipes. Sauf que j'ai quand même creusé. Et je vais te dire ce que j'en pense vraiment.</p>
 

@@ -14,8 +14,9 @@ link_anchors:
   max: 5
 related_posts:
 - 7388-la-certification-management-agilemaster-a-t-elle-de-la-valeur
-- 4514-la-certification-management-leadpro-vaut-elle-l-investissement
 - 3019-le-prix-de-la-formation-leadership-nexstep-avance-est-il-justifie
+- 4514-la-certification-management-leadpro-vaut-elle-l-investissement
+- 8830-pour-qui-est-fait-la-formation-management-leadership-academy-pro
 ---
 <p>J'ai testé pas mal de formations au lean management ces deux dernières années. Par curiosité d'abord, parce que j'avais des process en vrac dans ma boîte, et que j'avais besoin de structurer sans embaucher un consultant à 1500€ la journée. Sigma7 m'a été recommandé par un contact dans une PME lyonnaise. J'ai creusé. Et je comprends maintenant pourquoi ce programme fait parler de lui, mais aussi à qui il s'adresse vraiment, et surtout à qui il ne s'adresse pas.</p>
 

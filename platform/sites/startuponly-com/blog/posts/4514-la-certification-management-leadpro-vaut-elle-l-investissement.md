@@ -15,9 +15,10 @@ link_anchors:
 - text: la formation management d'équipe LeadPro Certified
   max: 5
 related_posts:
-- 5432-a-quel-public-s-adresse-la-formation-lean-management-sigma7
+- 8830-pour-qui-est-fait-la-formation-management-leadership-academy-pro
 - 7388-la-certification-management-agilemaster-a-t-elle-de-la-valeur
 - 3019-le-prix-de-la-formation-leadership-nexstep-avance-est-il-justifie
+- 5432-a-quel-public-s-adresse-la-formation-lean-management-sigma7
 ---
 <p>J'ai hésité longtemps avant de signer. Une certification en management, ça coûte du temps et de l'argent. Et quand t'es fondateur d'une startup à Bordeaux avec trois personnes dans l'équipe, t'as pas vraiment le luxe de partir en formation trois semaines.</p>
 
