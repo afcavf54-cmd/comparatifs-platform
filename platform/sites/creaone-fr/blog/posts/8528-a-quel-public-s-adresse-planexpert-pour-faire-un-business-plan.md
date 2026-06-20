@@ -4,15 +4,17 @@ slug: 8528-a-quel-public-s-adresse-planexpert-pour-faire-un-business-plan
 date: '2026-06-20T08:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Faire un business plan avec PlanExpert : pour qui ?'
-meta_description: PlanExpert s'adresse aux créateurs sans bagage comptable, aux personnes en reconversion et aux étudiants. Découvrez si cet outil de business plan est fait pour vous.
+meta_description: PlanExpert s'adresse aux créateurs sans bagage comptable, aux personnes
+  en reconversion et aux étudiants. Découvrez si cet outil de business plan est fait
+  pour vous.
 min_words: 980
 status: published
 featured_image: /blog/8528-a-quel-public-s-adresse-planexpert-pour-faire-un-business-plan.jpg
 link_anchors:
 - text: comment faire un business plan avec PlanExpert
   max: 5
+related_posts: []
 ---
-
 <p>J'ai testé pas mal d'outils de business plan ces dernières années, souvent parce qu'un client ou un associé voulait monter un dossier rapidement. PlanExpert revient régulièrement dans les conversations. La question que j'entends le plus souvent : "c'est fait pour qui exactement ?" C'est une bonne question. Parce que selon votre profil, l'outil peut vous faire gagner des heures... ou vous frustrer dès la deuxième page.</p>
 
 <p>Voici mon retour, sans langue de bois.</p>
