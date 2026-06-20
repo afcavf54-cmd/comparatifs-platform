@@ -1,18 +1,24 @@
 ---
-title: 'Redressement judiciaire : comment quitter l''entreprise en protégeant vos droits ?'
+title: 'Redressement judiciaire : comment quitter l''entreprise en protégeant vos
+  droits ?'
 slug: 8249-redressement-judiciaire-comment-quitter-l-entreprise-en-protegeant-vos-droits
 date: '2026-06-20T10:00:00+02:00'
 categorie: Salarié
 meta_title: 'Quitter une entreprise en redressement judiciaire : vos options'
-meta_description: 'Redressement judiciaire de votre employeur : découvrez comment quitter l''entreprise en préservant vos droits, vos indemnités et votre avenir professionnel.'
+meta_description: 'Redressement judiciaire de votre employeur : découvrez comment
+  quitter l''entreprise en préservant vos droits, vos indemnités et votre avenir professionnel.'
 min_words: 1200
 status: published
 featured_image: /blog/8249-redressement-judiciaire-comment-quitter-l-entreprise-en-protegeant-vos-droits.jpg
 link_anchors:
 - text: quitter une entreprise en redressement judiciaire
   max: 4
+related_posts:
+- 9875-je-travaille-sans-contrat-depuis-15-jours-quelles-consequences-pour-l-employeur
+- 3837-radiation-pole-emploi-combien-d-avertissements-avant-une-sanction
+- 4596-conges-payes-en-retraite-progressive-comment-calculer-vos-droits
+- 9279-accord-implicite-de-rupture-conventionnelle-ce-que-prevoit-reellement-la-loi
 ---
-
 <p>Vingt ans que j'accompagne des équipes comptables, et j'ai vu passer pas mal de situations difficiles. Mais le redressement judiciaire d'un employeur, c'est une de celles qui déstabilisent le plus les salariés. Pas parce qu'ils vont forcément tout perdre, mais parce qu'ils ne savent pas quoi faire. Partir ? Rester ? Attendre ? Et surtout : comment quitter l'entreprise sans se retrouver les mains vides ?</p>
 
 <p>Je vais vous expliquer ce que j'ai appris, constaté, et parfois vécu indirectement à travers des collègues ou des salariés d'entreprises clientes. Sans jargon inutile, avec du concret.</p>
