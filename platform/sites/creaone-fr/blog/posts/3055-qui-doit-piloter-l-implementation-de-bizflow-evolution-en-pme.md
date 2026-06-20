@@ -4,15 +4,21 @@ slug: 3055-qui-doit-piloter-l-implementation-de-bizflow-evolution-en-pme
 date: '2026-06-20T18:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Implémenter l''ERP BizFlow Evolution en PME : quelle équipe ?'
-meta_description: 'Découvrez qui doit vraiment piloter l''implémentation de BizFlow Evolution en PME : direction métier ou DSI. Un retour d''expérience concret pour éviter les erreurs…'
+meta_description: 'Découvrez qui doit vraiment piloter l''implémentation de BizFlow
+  Evolution en PME : direction métier ou DSI. Un retour d''expérience concret pour
+  éviter les erreurs…'
 min_words: 1000
 status: published
 featured_image: /blog/3055-qui-doit-piloter-l-implementation-de-bizflow-evolution-en-pme.jpg
 link_anchors:
 - text: comment implémenter l'ERP BizFlow Evolution dans une PME
   max: 5
+related_posts:
+- 6768-a-qui-se-prete-le-crm-salesflow-evolution
+- 4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise
+- 1859-quelle-equipe-pour-implementer-l-erp-bizflow-max
+- 3741-reussir-le-parametrage-des-modules-financepro-integrated
 ---
-
 <p>Quand on m'a demandé de superviser le déploiement de notre ERP il y a trois ans, j'ai commis une erreur classique : j'ai laissé la DSI prendre les rênes seules. Résultat ? Un outil paramétré pour des besoins théoriques, pas pour les contraintes réelles du quotidien comptable. On a passé six mois à corriger le tir. Depuis, j'ai une opinion très tranchée sur la question de qui doit piloter ce genre de projet en PME.</p>
 
 <p>Et quand je vois des équipes chercher aujourd'hui <strong>comment implémenter l'ERP BizFlow Max</strong> ou comment organiser la gouvernance d'un projet BizFlow Evolution, je vois systématiquement la même confusion : on ne sait pas à qui confier le volant.</p>
