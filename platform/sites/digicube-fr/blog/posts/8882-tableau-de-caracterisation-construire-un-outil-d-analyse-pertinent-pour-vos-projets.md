@@ -1,18 +1,25 @@
 ---
-title: 'Tableau de caractérisation : construire un outil d''analyse pertinent pour vos projets'
+title: 'Tableau de caractérisation : construire un outil d''analyse pertinent pour
+  vos projets'
 slug: 8882-tableau-de-caracterisation-construire-un-outil-d-analyse-pertinent-pour-vos-projets
 date: '2026-06-20T20:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Tableau de caractérisation : construire un outil d''analyse efficace'
-meta_description: Découvrez comment construire un tableau de caractérisation efficace pour aligner toutes les parties prenantes, clarifier le périmètre et éviter les malentendus…
+meta_description: Découvrez comment construire un tableau de caractérisation efficace
+  pour aligner toutes les parties prenantes, clarifier le périmètre et éviter les
+  malentendus…
 min_words: 1800
 status: published
 featured_image: /blog/8882-tableau-de-caracterisation-construire-un-outil-d-analyse-pertinent-pour-vos-projets.jpg
 link_anchors:
 - text: tableau de caractérisation
   max: 4
+related_posts:
+- 9378-strategie-de-croissance-construire-un-plan-efficace-pour-gagner-des-parts-de-marche
+- 2498-le-crm-pipedrive-nexus-edition-face-a-l-edition-classique
+- 6395-crm-clientpulse-pro-2024-face-a-la-concurrence
+- 6254-calcul-prix-de-vente-avec-taux-de-marge-comment-garantir-votre-rentabilite
 ---
-
 <p>J'ai mis du temps à comprendre ce que c'est vraiment, un tableau de caractérisation. Pendant longtemps, je pensais que c'était juste un document de plus à remplir avant de commencer un projet. Une case à cocher pour le comité de direction. Et puis j'ai changé d'avis.</p>
 
 <p>Ce qui m'a convaincu, c'est une situation très concrète. On avait lancé un projet de refonte de notre process de facturation. Trois mois de travail, deux prestataires impliqués, et à la livraison... on s'est rendu compte qu'on n'avait pas du tout la même vision du périmètre. Moi je pensais que ça incluait les relances automatiques. Le prestataire, non. Personne n'avait tort. Personne n'avait mis ça par écrit au départ.</p>
