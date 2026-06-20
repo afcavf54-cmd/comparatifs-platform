@@ -4,15 +4,17 @@ slug: 7392-a-quelle-entreprise-s-adresse-l-agence-e-reputation-kickngo
 date: '2026-06-20T06:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'Agence e-réputation KicknGo : pour quelles entreprises ?'
-meta_description: 'Découvrez à quelles entreprises s''adresse l''agence e-réputation KicknGo : PME, startups ou ETI, ce service convient-il vraiment à votre profil et budget ?'
+meta_description: 'Découvrez à quelles entreprises s''adresse l''agence e-réputation
+  KicknGo : PME, startups ou ETI, ce service convient-il vraiment à votre profil et
+  budget ?'
 min_words: 980
 status: published
 featured_image: /blog/7392-a-quelle-entreprise-s-adresse-l-agence-e-reputation-kickngo.jpg
 link_anchors:
 - text: l'agence d'e-réputation Kickngo
   max: 5
+related_posts: []
 ---
-
 <p>J'ai découvert KicknGo un peu par hasard, en cherchant une agence qui pouvait gérer la réputation en ligne de ma startup sans me demander un budget de grande entreprise. Et franchement, le positionnement de cette agence est assez particulier. Pas forcément pour tout le monde. Alors avant de te lancer, voilà ce que j'ai compris sur les types d'entreprises que KicknGo accompagne vraiment bien.</p>
 
 <h2>Ce que fait concrètement KicknGo</h2>
