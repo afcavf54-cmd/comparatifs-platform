@@ -1,18 +1,24 @@
 ---
-title: 'Licenciement pour inaptitude : les pièges à éviter et comment défendre vos droits'
+title: 'Licenciement pour inaptitude : les pièges à éviter et comment défendre vos
+  droits'
 slug: 6523-licenciement-pour-inaptitude-les-pieges-a-eviter-et-comment-defendre-vos-droits
 date: '2026-06-20T09:00:00+02:00'
 categorie: Salarié
 meta_title: Le piège du licenciement pour inaptitude
-meta_description: 'Licenciement pour inaptitude : découvrez les pièges à éviter, vos droits réels et comment défendre chaque étape de la procédure face à votre employeur.'
+meta_description: 'Licenciement pour inaptitude : découvrez les pièges à éviter, vos
+  droits réels et comment défendre chaque étape de la procédure face à votre employeur.'
 min_words: 1200
 status: published
 featured_image: /blog/6523-licenciement-pour-inaptitude-les-pieges-a-eviter-et-comment-defendre-vos-droits.jpg
 link_anchors:
 - text: le piège du licenciement pour inaptitude
   max: 4
+related_posts:
+- 6307-quels-sont-les-avantages-du-comite-d-entreprise-cic
+- 4474-moins-d-heures-que-prevu-dans-mon-cdi-quels-sont-mes-droits-et-recours
+- 1712-mon-patron-change-mes-horaires-du-jour-au-lendemain-est-ce-legal-et-que-faire
+- 1778-comment-fonctionne-le-comite-d-entreprise-loxam
 ---
-
 <p>J'ai vu passer pas mal de dossiers de licenciement pour inaptitude dans mon entourage professionnel. Et à chaque fois, c'est la même chose : le salarié ne comprend pas vraiment ce qui lui arrive, il signe des papiers sans vraiment lire, et il perd des droits qu'il aurait pu garder.</p>
 
 <p>C'est dommage. Parce que la procédure est encadrée, les règles existent, et quelqu'un qui les connaît s'en sort nettement mieux qu'un autre.</p>
