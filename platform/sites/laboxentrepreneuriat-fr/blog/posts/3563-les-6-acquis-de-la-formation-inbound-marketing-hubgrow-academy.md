@@ -4,15 +4,21 @@ slug: 3563-les-6-acquis-de-la-formation-inbound-marketing-hubgrow-academy
 date: '2026-06-20T08:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'Formation inbound marketing HubGrow Academy : 6 compétences'
-meta_description: 'Découvrez les 6 acquis concrets de la formation inbound marketing HubGrow Academy : des compétences terrain applicables dès le lundi, loin des modules purement…'
+meta_description: 'Découvrez les 6 acquis concrets de la formation inbound marketing
+  HubGrow Academy : des compétences terrain applicables dès le lundi, loin des modules
+  purement…'
 min_words: 950
 status: published
 featured_image: /blog/3563-les-6-acquis-de-la-formation-inbound-marketing-hubgrow-academy.jpg
 link_anchors:
 - text: la formation inbound marketing HubGrow Academy
   max: 5
+related_posts:
+- 3933-les-6-atouts-du-coworking-la-cantine-x-french-tech-nantes
+- 9823-les-6-acquis-de-la-formation-seo-vite-une-formation
+- 9770-combien-de-temps-pour-la-certification-strategie-digitale-webmarket
+- 8513-quel-budget-mensuel-pour-le-coworking-lefoyerentrepreneurial
 ---
-
 <p>J'ai croisé HubGrow Academy la première fois par hasard, via une recommandation d'un client qui cherchait à structurer sa prospection digitale. Il m'a envoyé le lien, j'ai parcouru le programme en diagonale, et je me suis dit "ça ressemble à n'importe quel autre programme marketing". Mauvaise première impression. Parce qu'après avoir regardé de plus près le contenu et discuté avec plusieurs entrepreneurs qui l'avaient suivi, j'ai changé d'avis.</p>
 
 <p>Ce qui m'a retenu : les acquis concrets. Pas des modules théoriques sur "la transformation digitale de votre audience", mais des compétences qu'on peut appliquer le lundi matin. C'est rare. Vraiment rare.</p>
