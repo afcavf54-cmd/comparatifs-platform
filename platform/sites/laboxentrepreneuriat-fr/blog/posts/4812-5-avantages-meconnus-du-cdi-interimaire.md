@@ -14,9 +14,10 @@ link_anchors:
 - text: les avantages et inconvénients du CDI intérimaire
   max: 5
 related_posts:
+- 2421-les-6-acquis-de-la-formation-negociation-commerciale-dealmaker-intensive
 - 6757-les-6-principes-de-la-methode-de-presentation-a-impact-powerpoint
 - 1883-les-6-leviers-de-la-methode-de-negociation-commerciale-salesmaster
-- 2421-les-6-acquis-de-la-formation-negociation-commerciale-dealmaker-intensive
+- 1841-les-6-savoir-faire-d-un-inspecteur-qualite-aeronautique-et-spatiale
 ---
 <h2>Le CDI intérimaire, ce méconnu qui mérite votre attention</h2>
 

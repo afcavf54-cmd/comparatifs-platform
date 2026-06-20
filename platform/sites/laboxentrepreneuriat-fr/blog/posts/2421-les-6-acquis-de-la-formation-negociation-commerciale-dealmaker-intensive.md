@@ -15,9 +15,10 @@ link_anchors:
 - text: la formation négociation commerciale DealMaker Intensive
   max: 5
 related_posts:
-- 6757-les-6-principes-de-la-methode-de-presentation-a-impact-powerpoint
 - 1883-les-6-leviers-de-la-methode-de-negociation-commerciale-salesmaster
 - 4812-5-avantages-meconnus-du-cdi-interimaire
+- 6757-les-6-principes-de-la-methode-de-presentation-a-impact-powerpoint
+- 1841-les-6-savoir-faire-d-un-inspecteur-qualite-aeronautique-et-spatiale
 ---
 <p>Ça fait maintenant plusieurs années que j'accompagne des dirigeants et des équipes commerciales dans le choix de leurs outils et de leurs formations. Et si je devais citer une formation qui revient souvent dans les retours positifs que je reçois, c'est la <strong>DealMaker Intensive</strong>. Pas parce qu'elle fait rêver sur le papier, mais parce que les gens qui l'ont suivie changent vraiment leur façon de mener une négociation.</p>
 

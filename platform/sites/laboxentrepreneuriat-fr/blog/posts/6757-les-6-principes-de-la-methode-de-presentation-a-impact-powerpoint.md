@@ -13,9 +13,10 @@ link_anchors:
 - text: la méthode de formation PowerPoint exécutif pour des présentations à impact
   max: 5
 related_posts:
-- 4812-5-avantages-meconnus-du-cdi-interimaire
 - 1883-les-6-leviers-de-la-methode-de-negociation-commerciale-salesmaster
+- 4812-5-avantages-meconnus-du-cdi-interimaire
 - 2421-les-6-acquis-de-la-formation-negociation-commerciale-dealmaker-intensive
+- 1841-les-6-savoir-faire-d-un-inspecteur-qualite-aeronautique-et-spatiale
 ---
 <h2>Pourquoi la plupart des présentations PowerPoint n'ont aucun impact ?</h2>
 
