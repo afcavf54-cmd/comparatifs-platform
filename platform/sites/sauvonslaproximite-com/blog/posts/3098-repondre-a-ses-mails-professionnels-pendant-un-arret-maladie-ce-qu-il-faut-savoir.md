@@ -1,18 +1,24 @@
 ---
-title: 'Répondre à ses mails professionnels pendant un arrêt maladie : ce qu''il faut savoir'
+title: 'Répondre à ses mails professionnels pendant un arrêt maladie : ce qu''il faut
+  savoir'
 slug: 3098-repondre-a-ses-mails-professionnels-pendant-un-arret-maladie-ce-qu-il-faut-savoir
 date: '2026-06-20T11:00:00+02:00'
 categorie: Salarié
 meta_title: 'Mail pro pendant arrêt maladie : obligations et limites'
-meta_description: 'Arrêt maladie et mails professionnels : avez-vous vraiment l''obligation de répondre ? Ce que dit le droit, les risques concrets et comment vous protéger.'
+meta_description: 'Arrêt maladie et mails professionnels : avez-vous vraiment l''obligation
+  de répondre ? Ce que dit le droit, les risques concrets et comment vous protéger.'
 min_words: 1200
 status: published
 featured_image: /blog/3098-repondre-a-ses-mails-professionnels-pendant-un-arret-maladie-ce-qu-il-faut-savoir.jpg
 link_anchors:
 - text: mail professionnel pendant arrêt maladie
   max: 4
+related_posts:
+- 8249-redressement-judiciaire-comment-quitter-l-entreprise-en-protegeant-vos-droits
+- 9875-je-travaille-sans-contrat-depuis-15-jours-quelles-consequences-pour-l-employeur
+- 4596-conges-payes-en-retraite-progressive-comment-calculer-vos-droits
+- 8972-horaire-decale-quels-droits-et-obligations-pour-les-salaries-concernes
 ---
-
 <p>J'ai vu passer cette situation des dizaines de fois dans ma carrière. Un salarié part en arrêt maladie, et deux jours plus tard, il répond encore aux mails de sa hiérarchie. Parfois parce qu'il se sent coupable. Parfois parce que son manager lui écrit comme si de rien n'était. Parfois parce que personne ne lui a dit qu'il n'y était pas obligé.</p>
 
 <p>Ce sujet mérite qu'on en parle franchement, sans détour, avec les règles telles qu'elles sont.</p>

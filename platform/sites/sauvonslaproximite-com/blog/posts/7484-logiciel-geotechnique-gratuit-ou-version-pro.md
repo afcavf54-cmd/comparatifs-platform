@@ -4,15 +4,20 @@ slug: 7484-logiciel-geotechnique-gratuit-ou-version-pro
 date: '2026-06-20T11:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Logiciel géotechnique freeware vs solution payante
-meta_description: 'Logiciel géotechnique gratuit ou version pro : découvrez ce que révèle 20 ans d''expérience BTP pour choisir le bon outil selon vos besoins réels.'
+meta_description: 'Logiciel géotechnique gratuit ou version pro : découvrez ce que
+  révèle 20 ans d''expérience BTP pour choisir le bon outil selon vos besoins réels.'
 min_words: 950
 status: published
 featured_image: /blog/7484-logiciel-geotechnique-gratuit-ou-version-pro.jpg
 link_anchors:
 - text: un logiciel géotechnique freeware
   max: 5
+related_posts:
+- 6202-les-6-phases-qui-rythment-le-deploiement-du-crm-smartsales-enterprise
+- 4127-comment-choisir-son-agence-web-les-criteres-pour-trouver-un-partenaire-fiable
+- 7354-pain-point-identifier-les-freins-qui-empechent-vos-clients-d-acheter
+- 5959-calcul-prix-de-vente-avec-taux-de-marge-methode-simple-et-exemples-detailles
 ---
-
 <p>Ça fait maintenant vingt ans que je gère des dossiers comptables dans le secteur du BTP. Et depuis quelques années, la question revient régulièrement dans les réunions de direction : est-ce qu'on paie pour un logiciel géotechnique, ou est-ce qu'on peut s'en sortir avec une version gratuite ? J'ai fini par creuser le sujet sérieusement. Voici ce que j'en pense, sans détour.</p>
 
 <h2>Ce que j'ai découvert en testant les programmes et logiciels géotechniques gratuits</h2>
