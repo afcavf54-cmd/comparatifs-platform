@@ -4,15 +4,21 @@ slug: 2123-pourquoi-ne-pas-garder-la-config-d-usine-de-businesscore-enterprise
 date: '2026-06-20T19:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Paramétrer l'ERP BusinessCore Enterprise vs réglages par défaut
-meta_description: Garder la config d'usine de BusinessCore Enterprise coûte du temps et de la productivité. Découvrez pourquoi personnaliser votre ERP change vraiment tout.
+meta_description: Garder la config d'usine de BusinessCore Enterprise coûte du temps
+  et de la productivité. Découvrez pourquoi personnaliser votre ERP change vraiment
+  tout.
 min_words: 910
 status: published
 featured_image: /blog/2123-pourquoi-ne-pas-garder-la-config-d-usine-de-businesscore-enterprise.jpg
 link_anchors:
 - text: comment paramétrer l'ERP BusinessCore Enterprise
   max: 5
+related_posts:
+- 6395-crm-clientpulse-pro-2024-face-a-la-concurrence
+- 6432-nextgen-business-suite-face-aux-erp-historiques
+- 9378-strategie-de-croissance-construire-un-plan-efficace-pour-gagner-des-parts-de-marche
+- 3259-configuration-de-l-erp-dynabiz-pro-les-pieges-courants
 ---
-
 <p>J'ai mis deux mois à comprendre mon erreur. Deux mois à me demander pourquoi mes équipes perdaient du temps sur des tâches qui auraient dû prendre cinq minutes. La réponse était simple : j'avais gardé la configuration d'usine de BusinessCore Enterprise sans rien toucher.</p>
 
 <p>Si vous venez d'installer cet ERP ou que vous hésitez encore à creuser ses paramètres, lisez ce qui suit. Je ne suis pas informaticien. Je gère une entreprise à Marseille avec une centaine de salariés, et je parle ici en utilisateur, pas en technicien.</p>
