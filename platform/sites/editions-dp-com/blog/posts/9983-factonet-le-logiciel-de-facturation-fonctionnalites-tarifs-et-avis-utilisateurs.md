@@ -4,15 +4,21 @@ slug: 9983-factonet-le-logiciel-de-facturation-fonctionnalites-tarifs-et-avis-ut
 date: '2026-06-20T19:00:00+02:00'
 categorie: Finance & Comptabilité
 meta_title: 'Factonet : présentation et fonctionnalités'
-meta_description: 'Découvrez mon avis complet sur Factonet, le logiciel de facturation en ligne : fonctionnalités, tarifs détaillés et retour d''expérience concret après plusieurs…'
+meta_description: 'Découvrez mon avis complet sur Factonet, le logiciel de facturation
+  en ligne : fonctionnalités, tarifs détaillés et retour d''expérience concret après
+  plusieurs…'
 min_words: 1000
 status: published
 featured_image: /blog/9983-factonet-le-logiciel-de-facturation-fonctionnalites-tarifs-et-avis-utilisateurs.jpg
 link_anchors:
 - text: factonet
   max: 4
+related_posts:
+- 8982-quasi-usufruit-definition-avantages-inconvenients-et-cas-d-usage-en-gestion-patrimoniale
+- 2405-roce-return-on-capital-employed-comment-le-calculer-et-l-utiliser-pour-evaluer-une-entreprise
+- 1694-assujettissement-a-la-tva-en-cas-d-operations-imposables-sur-option-regles-et-demarches
+- 1015-bordereau-de-situation-fiscale-modele-p-237-a-quoi-sert-il-et-comment-l-obtenir
 ---
-
 <p>J'ai testé Factonet pendant plusieurs mois dans ma structure. Une centaine de salariés, des factures à envoyer régulièrement, des relances à gérer, et une équipe qui n'a pas le temps de suivre une formation de trois jours. Voilà le contexte. Je vais vous dire ce que j'en pense vraiment.</p>
 
 <h2>Ce que fait concrètement Factonet</h2>
