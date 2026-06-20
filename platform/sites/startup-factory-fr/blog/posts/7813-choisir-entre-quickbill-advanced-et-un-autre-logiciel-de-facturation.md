@@ -13,8 +13,9 @@ link_anchors:
 - text: comment choisir le logiciel de facturation QuickBill Advanced
   max: 5
 related_posts:
-- 7036-les-limites-de-la-formation-cnam-intec-en-techniques-comptables
 - 8636-facturation-automatisee-billmatic-auto-les-pieges
+- 7036-les-limites-de-la-formation-cnam-intec-en-techniques-comptables
+- 6598-5-gains-de-temps-de-traitement-avec-l-application-invoicepro-x3
 ---
 <h2>QuickBill Advanced : mon test après 8 mois d'utilisation</h2>
 
