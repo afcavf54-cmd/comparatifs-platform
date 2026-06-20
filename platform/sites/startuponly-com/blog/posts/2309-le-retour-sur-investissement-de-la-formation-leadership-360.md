@@ -4,15 +4,21 @@ slug: 2309-le-retour-sur-investissement-de-la-formation-leadership-360
 date: '2026-06-20T19:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation management méthode Leadership 360 : en vaut-elle le coût ?'
-meta_description: 'Mesurer le ROI d''une formation Leadership 360 en chiffres concrets : découvrez comment cet investissement a transformé le management et libéré du temps précieux.'
+meta_description: 'Mesurer le ROI d''une formation Leadership 360 en chiffres concrets
+  : découvrez comment cet investissement a transformé le management et libéré du temps
+  précieux.'
 min_words: 990
 status: published
 featured_image: /blog/2309-le-retour-sur-investissement-de-la-formation-leadership-360.jpg
 link_anchors:
 - text: la formation management selon la méthode Leadership 360
   max: 5
+related_posts:
+- 8830-pour-qui-est-fait-la-formation-management-leadership-academy-pro
+- 5432-a-quel-public-s-adresse-la-formation-lean-management-sigma7
+- 4514-la-certification-management-leadpro-vaut-elle-l-investissement
+- 3019-le-prix-de-la-formation-leadership-nexstep-avance-est-il-justifie
 ---
-
 <p>Franchement, quand on est fondateur d'une petite boîte, dépenser de l'argent en formation management, ça fait tiquer. J'ai longtemps repoussé le sujet. Trop cher, pas le temps, mes salariés apprendront sur le tas. Grosse erreur.</p>
 
 <p>J'ai fini par investir dans une formation Leadership 360 pour deux de mes collaborateurs l'an dernier. Et là, j'ai voulu mesurer concrètement ce que ça avait changé. Pas juste "l'ambiance est meilleure" ou "ils sont plus motivés". Du concret, des chiffres, des observations terrain.</p>
