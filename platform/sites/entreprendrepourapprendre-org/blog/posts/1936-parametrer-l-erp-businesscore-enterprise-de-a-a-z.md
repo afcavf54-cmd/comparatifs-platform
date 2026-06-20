@@ -4,15 +4,21 @@ slug: 1936-parametrer-l-erp-businesscore-enterprise-de-a-a-z
 date: '2026-06-20T18:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Comment paramétrer l'ERP BusinessCore Enterprise
-meta_description: 'Guide complet pour paramétrer l''ERP BusinessCore Enterprise : retour terrain d''une dirigeante de TPE, avec les étapes clés et les pièges concrets à éviter.'
+meta_description: 'Guide complet pour paramétrer l''ERP BusinessCore Enterprise :
+  retour terrain d''une dirigeante de TPE, avec les étapes clés et les pièges concrets
+  à éviter.'
 min_words: 910
 status: published
 featured_image: /blog/1936-parametrer-l-erp-businesscore-enterprise-de-a-a-z.jpg
 link_anchors:
 - text: comment paramétrer l'ERP BusinessCore Enterprise
   max: 5
+related_posts:
+- 7831-crm-basique-ou-salesforce-premium-quelle-difference
+- 4096-fieldforce-connect-android-le-crm-mobile-sans-filtre
+- 2699-utiliser-le-crm-salesflow-evolution-en-pratique
+- 1377-parametrer-le-crm-pipedrive-nexus-edition-en-quelques-etapes
 ---
-
 <p>Quand j'ai décidé de migrer vers BusinessCore Enterprise, mon associée m'a regardée comme si j'avais annoncé vouloir traverser l'Atlantique à la nage. Et franchement, je comprends. La réputation des ERP, c'est pas toujours celle d'outils qu'on prend en main un mardi après-midi entre deux rendez-vous clients.</p>
 
 <p>Sauf que là, j'avais besoin de centraliser. Mon équipe jonglait entre un outil de facturation, un tableur Excel pour le suivi de trésorerie, et un logiciel de gestion de projet complètement déconnecté du reste. Résultat : personne ne savait vraiment où en était la rentabilité d'un projet avant qu'il soit terminé. Trop tard pour corriger quoi que ce soit.</p>
