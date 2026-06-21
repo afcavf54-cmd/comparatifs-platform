@@ -4,15 +4,21 @@ slug: 9905-implementer-l-erp-smartchain-360-concretement
 date: '2026-06-21T07:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Comment implémenter l'ERP SmartChain 360
-meta_description: 'Retour d''expérience concret sur l''implémentation de l''ERP SmartChain 360 dans une TPE de 6 personnes : onboarding, outils, rentabilité et vraies surprises du…'
+meta_description: 'Retour d''expérience concret sur l''implémentation de l''ERP SmartChain
+  360 dans une TPE de 6 personnes : onboarding, outils, rentabilité et vraies surprises
+  du…'
 min_words: 970
 status: published
 featured_image: /blog/9905-implementer-l-erp-smartchain-360-concretement.jpg
 link_anchors:
 - text: comment implémenter l'ERP SmartChain 360
   max: 5
+related_posts:
+- 4544-sap-l-erp-de-reference-explique-simplement
+- 4839-combien-coute-l-implementation-du-systeme-bizcore-advanced
+- 8759-parametrer-les-modules-de-l-erp-financepro-integrated-point-par-point
+- 2941-utiliser-le-crm-salestrack-evolution-concretement
 ---
-
 <p>Je vais être honnête avec vous : quand j'ai entendu parler de SmartChain 360 pour la première fois, j'étais sceptique. Un autre ERP "révolutionnaire" qui allait tout régler. J'en avais vu défiler quelques-uns. Et à chaque fois, la promesse était belle, mais la réalité du déploiement était une autre histoire.</p>
 
 <p>On est une agence de communication. Six personnes. On fait de la gestion de projet, de la facturation, un peu de RH basique, du suivi client. Pas besoin d'un mastodonte. Mais j'en avais assez d'avoir mon outil de devis d'un côté, mon logiciel de compta de l'autre, et mon tableau de bord bricolé sous Google Sheets pour suivre la rentabilité. <strong>Ce n'est pas tenable sur le long terme.</strong></p>
