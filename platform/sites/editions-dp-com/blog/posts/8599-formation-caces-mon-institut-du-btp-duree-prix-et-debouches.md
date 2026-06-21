@@ -4,15 +4,21 @@ slug: 8599-formation-caces-mon-institut-du-btp-duree-prix-et-debouches
 date: '2026-06-21T17:00:00+02:00'
 categorie: Salarié
 meta_title: 'Formation CACES Mon-Institut-du-BTP : avis et programme'
-meta_description: 'Formation CACES Mon-Institut-du-BTP : découvrez la durée, les tarifs et les débouchés de cet organisme sérieux avant de former vos salariés aux chariots et engins.'
+meta_description: 'Formation CACES Mon-Institut-du-BTP : découvrez la durée, les tarifs
+  et les débouchés de cet organisme sérieux avant de former vos salariés aux chariots
+  et engins.'
 min_words: 920
 status: published
 featured_image: /blog/8599-formation-caces-mon-institut-du-btp-duree-prix-et-debouches.jpg
 link_anchors:
 - text: la formation CACES de Mon-Institut-du-BTP
   max: 5
+related_posts:
+- 1188-que-propose-le-comite-d-entreprise-gmf-aux-salaries
+- 2957-travailler-sans-contrat-depuis-15-jours-quels-risques-pour-l-employeur-et-quels-droits-pour-vous
+- 5669-rqth-et-amenagement-d-horaire-refuse-que-dit-la-loi-et-comment-reagir
+- 2430-que-peut-on-obtenir-avec-le-comite-d-entreprise-orange
 ---
-
 <p>J'ai passé pas mal de temps à chercher une formation CACES sérieuse pour deux de mes caristes. Et franchement, le nombre d'organismes qui proposent ça est vertigineux. Mon-Institut-du-BTP est revenu plusieurs fois dans mes recherches. J'ai creusé le sujet, contacté leur équipe, et voilà ce que j'ai retenu après avoir comparé avec d'autres options.</p>
 
 <h2>Ce que propose Mon-Institut-du-BTP pour le CACES</h2>
