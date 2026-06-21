@@ -4,15 +4,16 @@ slug: 7981-les-6-acquis-de-la-formation-business-architect-tool
 date: '2026-06-21T17:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Formation certifiée Business Architect Tool : 6 compétences clés'
-meta_description: 'Découvrez les 6 acquis concrets de la formation Business Architect Tool : ce que vous repartez vraiment avec, au-dela des objectifs pédagogiques affichés.'
+meta_description: 'Découvrez les 6 acquis concrets de la formation Business Architect
+  Tool : ce que vous repartez vraiment avec, au-dela des objectifs pédagogiques affichés.'
 min_words: 940
 status: published
 featured_image: /blog/7981-les-6-acquis-de-la-formation-business-architect-tool.jpg
 link_anchors:
 - text: la formation certifiée Business Architect Tool
   max: 5
+related_posts: []
 ---
-
 <p>J'ai passé une bonne partie de ma carrière à tester des formations pour entrepreneurs, des courtes, des longues, des payantes, des gratuites. La plupart vous expliquent ce que vous savez déjà, avec de nouveaux slides. Business Architect Tool, c'est différent. Pas révolutionnaire dans son discours, non. Différent dans ce qu'il produit concrètement chez les participants que j'ai pu observer, et dans ce que j'en ai moi-même retiré.</p>
 
 <p>Voici les six acquis réels que cette formation apporte. Pas les objectifs pédagogiques du programme. Ce que vous repartez avec, vraiment.</p>
