@@ -4,15 +4,21 @@ slug: 2367-installer-l-erp-cloudmanager-enterprise-la-marche-a-suivre
 date: '2026-06-21T10:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Comment installer l'ERP CloudManager Enterprise
-meta_description: Installez l'ERP CloudManager Enterprise sans compétences techniques grâce à ce guide concret, pensé pour les équipes qui veulent un outil opérationnel rapidement.
+meta_description: Installez l'ERP CloudManager Enterprise sans compétences techniques
+  grâce à ce guide concret, pensé pour les équipes qui veulent un outil opérationnel
+  rapidement.
 min_words: 950
 status: published
 featured_image: /blog/2367-installer-l-erp-cloudmanager-enterprise-la-marche-a-suivre.jpg
 link_anchors:
 - text: comment installer l'ERP CloudManager Enterprise
   max: 5
+related_posts:
+- 3281-utiliser-le-crm-smartlead-evolution-la-marche-a-suivre
+- 8759-parametrer-les-modules-de-l-erp-financepro-integrated-point-par-point
+- 8975-comment-installer-l-erp-integre-managepro-suite
+- 4096-fieldforce-connect-android-le-crm-mobile-sans-filtre
 ---
-
 <p>Je vais être honnête avec vous : quand j'ai voulu installer un ERP pour mon agence, j'ai failli tout abandonner après la troisième heure de documentation technique. Des schémas d'architecture réseau, des prérequis serveur en anglais, des tableaux de ports à ouvrir... Pas pour moi. Pas pour mon équipe de six personnes qui a besoin de travailler, pas de devenir ingénieure systèmes.</p>
 
 <p>CloudManager Enterprise, je l'ai testé il y a maintenant huit mois. Et ce qui m'a convaincue de rester, c'est que l'installation ne m'a pas demandé d'appeler un prestataire externe. Voilà ce que j'aurais aimé avoir comme guide au départ.</p>
