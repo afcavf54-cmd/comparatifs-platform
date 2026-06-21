@@ -4,15 +4,17 @@ slug: 3919-a-qui-profite-financepro-smart-pour-creer-un-business-plan
 date: '2026-06-21T17:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Créer un business plan avec FinancePro Smart : pour qui ?'
-meta_description: FinancePro Smart convient-il vraiment à votre profil ? Retour d'expérience concret d'un comptable sur cet outil de business plan financier.
+meta_description: FinancePro Smart convient-il vraiment à votre profil ? Retour d'expérience
+  concret d'un comptable sur cet outil de business plan financier.
 min_words: 960
 status: published
 featured_image: /blog/3919-a-qui-profite-financepro-smart-pour-creer-un-business-plan.jpg
 link_anchors:
 - text: comment créer un business plan avec FinancePro Smart
   max: 5
+related_posts:
+- 8528-a-quel-public-s-adresse-planexpert-pour-faire-un-business-plan
 ---
-
 <p>Après 9 ans à jongler entre les bilans, les clôtures de fin d'exercice et les budgets prévisionnels, j'ai testé pas mal d'outils. FinancePro Smart, je l'ai découvert par hasard, quand un chef de projet dans ma boîte m'a demandé de l'aider à monter un business plan pour une nouvelle activité interne. Et franchement, je ne m'attendais pas à ce que ce soit aussi rapide à prendre en main.</p>
 
 <p>Mais avant de vous dire si ça vaut le coup, il faut poser une question honnête : <strong>pour qui FinancePro Smart est-il réellement adapté ?</strong> Parce que ce n'est pas un outil universel. J'ai vu des gens l'acheter, s'y perdre en deux jours, et revenir à Excel. C'est dommage.</p>

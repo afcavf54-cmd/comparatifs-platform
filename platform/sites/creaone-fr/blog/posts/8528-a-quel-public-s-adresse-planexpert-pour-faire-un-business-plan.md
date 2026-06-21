@@ -13,7 +13,8 @@ featured_image: /blog/8528-a-quel-public-s-adresse-planexpert-pour-faire-un-busi
 link_anchors:
 - text: comment faire un business plan avec PlanExpert
   max: 5
-related_posts: []
+related_posts:
+- 3919-a-qui-profite-financepro-smart-pour-creer-un-business-plan
 ---
 <p>J'ai testé pas mal d'outils de business plan ces dernières années, souvent parce qu'un client ou un associé voulait monter un dossier rapidement. PlanExpert revient régulièrement dans les conversations. La question que j'entends le plus souvent : "c'est fait pour qui exactement ?" C'est une bonne question. Parce que selon votre profil, l'outil peut vous faire gagner des heures... ou vous frustrer dès la deuxième page.</p>
 
