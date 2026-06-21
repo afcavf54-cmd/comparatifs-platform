@@ -4,15 +4,21 @@ slug: 6301-salestrack-evolution-face-a-un-suivi-sur-fichier
 date: '2026-06-21T17:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Utiliser le CRM SalesTrack Evolution vs carnet de contacts
-meta_description: 'Deux ans de suivi sur Excel, 47 colonnes et des relances oubliées : découvrez pourquoi SalesTrack Evolution change vraiment la donne pour les équipes commerciales.'
+meta_description: 'Deux ans de suivi sur Excel, 47 colonnes et des relances oubliées
+  : découvrez pourquoi SalesTrack Evolution change vraiment la donne pour les équipes
+  commerciales.'
 min_words: 920
 status: published
 featured_image: /blog/6301-salestrack-evolution-face-a-un-suivi-sur-fichier.jpg
 link_anchors:
 - text: comment utiliser le CRM SalesTrack Evolution
   max: 5
+related_posts:
+- 6236-sepo-comment-exploiter-cette-methode-d-analyse-strategique-en-entreprise
+- 6432-nextgen-business-suite-face-aux-erp-historiques
+- 7930-cloudmanager-enterprise-face-a-un-erp-on-premise
+- 6395-crm-clientpulse-pro-2024-face-a-la-concurrence
 ---
-
 <p>Pendant deux ans, j'ai géré mes prospects dans un tableau Excel. Pas par choix vraiment, plutôt par habitude. On ajoute une colonne, puis une autre, puis une autre... et un jour on se retrouve avec un fichier de 47 colonnes que personne ne comprend à part soi. Mes commerciaux m'envoyaient des versions différentes par mail. On avait des doublons. Des relances oubliées. Des clients perdus bêtement.</p>
 
 <p>J'ai fini par tester SalesTrack Evolution. Et je vais vous dire ce que j'en pense concrètement, en comparant avec ce que je faisais avant sur fichier.</p>

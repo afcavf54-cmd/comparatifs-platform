@@ -1,18 +1,25 @@
 ---
-title: 'COO vs CEO : quelles différences entre direction opérationnelle et direction générale ?'
+title: 'COO vs CEO : quelles différences entre direction opérationnelle et direction
+  générale ?'
 slug: 9270-coo-vs-ceo-quelles-differences-entre-direction-operationnelle-et-direction-generale
 date: '2026-06-21T15:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'COO vs CEO : rôles, missions et différences clés'
-meta_description: 'CEO et COO : deux rôles clés souvent confondus. Découvrez les vraies différences entre direction générale et opérationnelle pour mieux organiser votre entreprise.'
+meta_description: 'CEO et COO : deux rôles clés souvent confondus. Découvrez les vraies
+  différences entre direction générale et opérationnelle pour mieux organiser votre
+  entreprise.'
 min_words: 1800
 status: published
 featured_image: /blog/9270-coo-vs-ceo-quelles-differences-entre-direction-operationnelle-et-direction-generale.jpg
 link_anchors:
 - text: coo vs ceo
   max: 4
+related_posts:
+- 8819-comment-reussir-la-gestion-des-talents-dans-une-pme
+- 7426-comment-choisir-un-logiciel-gepp-adapte-a-votre-entreprise
+- 6542-comment-utiliser-la-matrice-9-box-pour-gerer-les-talents
+- 8102-comment-ameliorer-la-retention-des-talents-dans-votre-entreprise
 ---
-
 <p>J'ai mis du temps à comprendre la vraie différence entre un CEO et un COO. Pendant longtemps, je pensais que c'était juste une question de titre. Un directeur général d'un côté, un directeur des opérations de l'autre. Deux cases dans un organigramme.</p>
 
 <p>Mais quand on dirige une entreprise, même une TPE comme la mienne, on se retrouve vite à jouer les deux rôles en même temps. Et ça, c'est épuisant. Comprendre où s'arrête l'un et où commence l'autre, ça change vraiment la façon dont on organise son travail.</p>
