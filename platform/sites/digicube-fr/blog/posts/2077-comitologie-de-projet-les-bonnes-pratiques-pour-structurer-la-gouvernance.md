@@ -4,15 +4,21 @@ slug: 2077-comitologie-de-projet-les-bonnes-pratiques-pour-structurer-la-gouvern
 date: '2026-06-21T14:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Comitologie projet : bonnes pratiques et organisation efficace'
-meta_description: Découvrez comment structurer la comitologie de votre projet pour clarifier les rôles, fluidifier les décisions et gagner en efficacité, même dans une PME de taille…
+meta_description: Découvrez comment structurer la comitologie de votre projet pour
+  clarifier les rôles, fluidifier les décisions et gagner en efficacité, même dans
+  une PME de taille…
 min_words: 2500
 status: published
 featured_image: /blog/2077-comitologie-de-projet-les-bonnes-pratiques-pour-structurer-la-gouvernance.jpg
 link_anchors:
 - text: comitologie d'un projet
   max: 4
+related_posts:
+- 7930-cloudmanager-enterprise-face-a-un-erp-on-premise
+- 6254-calcul-prix-de-vente-avec-taux-de-marge-comment-garantir-votre-rentabilite
+- 3498-comment-choisir-son-agence-web-les-erreurs-frequentes-a-eviter-avant-de-signer
+- 4312-inventory-control-smart-face-au-suivi-manuel-des-stocks
 ---
-
 <p>Je gère une entreprise de 150 personnes à Marseille. Et pendant longtemps, nos réunions de projet ressemblaient à du théâtre. Tout le monde autour de la table, personne ne savait vraiment qui décidait quoi, et on repartait avec des "on voit ça la semaine prochaine" à la place de décisions claires.</p>
 
 <p>La comitologie, j'en avais entendu parler. Mais franchement, ça me semblait réservé aux grands groupes avec des services entiers dédiés à la gouvernance. J'avais tort.</p>
