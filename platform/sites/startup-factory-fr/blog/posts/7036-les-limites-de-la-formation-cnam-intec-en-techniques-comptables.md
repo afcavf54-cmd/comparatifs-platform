@@ -14,8 +14,9 @@ link_anchors:
 - text: le CNAM INTEC (institut national des techniques économiques et comptables)
   max: 5
 related_posts:
-- 8636-facturation-automatisee-billmatic-auto-les-pieges
+- 3326-le-prix-d-invoicemaster-evolution-justifie-t-il-ce-logiciel-de-facturation
 - 7813-choisir-entre-quickbill-advanced-et-un-autre-logiciel-de-facturation
+- 8636-facturation-automatisee-billmatic-auto-les-pieges
 - 6598-5-gains-de-temps-de-traitement-avec-l-application-invoicepro-x3
 ---
 <p>J'ai passé du temps à regarder les formations Cnam-Intec de près. Pas pour moi, mais pour deux personnes de mon équipe que je voulais faire monter en comptabilité. Et honnêtement, ce que j'ai trouvé m'a un peu surpris. Pas dans le bon sens.</p>

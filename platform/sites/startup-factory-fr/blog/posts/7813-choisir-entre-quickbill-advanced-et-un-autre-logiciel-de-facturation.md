@@ -15,6 +15,7 @@ link_anchors:
 related_posts:
 - 8636-facturation-automatisee-billmatic-auto-les-pieges
 - 7036-les-limites-de-la-formation-cnam-intec-en-techniques-comptables
+- 3326-le-prix-d-invoicemaster-evolution-justifie-t-il-ce-logiciel-de-facturation
 - 6598-5-gains-de-temps-de-traitement-avec-l-application-invoicepro-x3
 ---
 <h2>QuickBill Advanced : mon test après 8 mois d'utilisation</h2>

@@ -13,6 +13,7 @@ link_anchors:
 - text: le temps de traitement de l'application de facturation InvoicePro X3
   max: 5
 related_posts:
+- 3326-le-prix-d-invoicemaster-evolution-justifie-t-il-ce-logiciel-de-facturation
 - 7036-les-limites-de-la-formation-cnam-intec-en-techniques-comptables
 - 8636-facturation-automatisee-billmatic-auto-les-pieges
 - 7813-choisir-entre-quickbill-advanced-et-un-autre-logiciel-de-facturation
