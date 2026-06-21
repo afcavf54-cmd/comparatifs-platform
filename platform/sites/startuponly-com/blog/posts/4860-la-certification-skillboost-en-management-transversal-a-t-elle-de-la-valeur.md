@@ -1,18 +1,25 @@
 ---
-title: La certification SkillBoost en management transversal a-t-elle de la valeur ?
+title: La certification SkillBoost en management transversal a-t-elle de la valeur
+  ?
 slug: 4860-la-certification-skillboost-en-management-transversal-a-t-elle-de-la-valeur
 date: '2026-06-21T10:00:00+02:00'
 categorie: Ressources Humaines
-meta_title: 'Formation management transversal SkillBoost : la certification est-elle reconnue ?'
-meta_description: La certification SkillBoost en management transversal vaut-elle vraiment le coup ? Analyse concrète d'un recruteur qui a creusé le sujet pour vous.
+meta_title: 'Formation management transversal SkillBoost : la certification est-elle
+  reconnue ?'
+meta_description: La certification SkillBoost en management transversal vaut-elle
+  vraiment le coup ? Analyse concrète d'un recruteur qui a creusé le sujet pour vous.
 min_words: 970
 status: published
 featured_image: /blog/4860-la-certification-skillboost-en-management-transversal-a-t-elle-de-la-valeur.jpg
 link_anchors:
 - text: la certification de la formation management transversal SkillBoost
   max: 5
+related_posts:
+- 2833-le-systeme-management-agileframe-vaut-il-l-investissement
+- 7388-la-certification-management-agilemaster-a-t-elle-de-la-valeur
+- 5432-a-quel-public-s-adresse-la-formation-lean-management-sigma7
+- 4514-la-certification-management-leadpro-vaut-elle-l-investissement
 ---
-
 <p>J'ai vu passer cette certification SkillBoost en management transversal sur LinkedIn il y a quelques mois. Plusieurs profils que je suis l'avaient mise en avant sur leur bannière. Ça m'a intrigué. Et comme j'ai justement recruté deux personnes en charge de coordonner des projets transversaux dans ma boîte cette année, j'ai creusé le sujet sérieusement.</p>
 
 <p>Voilà ce que j'en pense vraiment.</p>
