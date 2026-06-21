@@ -14,9 +14,10 @@ link_anchors:
 - text: le tarif du logiciel de facturation QuickBill Pro
   max: 5
 related_posts:
+- 2004-billmatic-subscription-face-aux-solutions-d-abonnement-sur-le-prix
+- 9100-la-generation-automatique-quotepro-smart-face-au-devis-fait-a-la-main
 - 3755-le-marketing-alternatif-face-aux-campagnes-classiques
 - 9063-billmatic-auto-face-aux-plateformes-d-abonnement-sur-le-prix
-- 2004-billmatic-subscription-face-aux-solutions-d-abonnement-sur-le-prix
 ---
 <p>Ça fait vingt ans que je travaille sur des logiciels comptables. J'ai vu passer des ERP bancals, des mises à jour catastrophiques, des prestataires fantômes après la signature du contrat. Alors quand une structure en Ille-et-Vilaine me demande si elle doit passer par un intégrateur Sage local ou souscrire directement une licence en ligne, j'ai un avis assez tranché.</p>
 

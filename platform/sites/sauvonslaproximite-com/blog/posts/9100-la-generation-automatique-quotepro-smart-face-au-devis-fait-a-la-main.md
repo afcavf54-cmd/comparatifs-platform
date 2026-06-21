@@ -4,15 +4,20 @@ slug: 9100-la-generation-automatique-quotepro-smart-face-au-devis-fait-a-la-main
 date: '2026-06-21T07:00:00+02:00'
 categorie: Comptabilité
 meta_title: Logiciel de devis QuotePro Smart vs création manuelle
-meta_description: 'Devis à la main ou génération automatique avec QuotePro Smart : retour d''expérience concret après 3 mois de test dans une PME lyonnaise de 45 personnes.'
+meta_description: 'Devis à la main ou génération automatique avec QuotePro Smart :
+  retour d''expérience concret après 3 mois de test dans une PME lyonnaise de 45 personnes.'
 min_words: 1000
 status: published
 featured_image: /blog/9100-la-generation-automatique-quotepro-smart-face-au-devis-fait-a-la-main.jpg
 link_anchors:
 - text: la génération automatique de devis avec le logiciel QuotePro Smart
   max: 5
+related_posts:
+- 2004-billmatic-subscription-face-aux-solutions-d-abonnement-sur-le-prix
+- 8096-integrateur-du-logiciel-sage-en-ille-et-vilaine-ou-licence-en-ligne
+- 9063-billmatic-auto-face-aux-plateformes-d-abonnement-sur-le-prix
+- 3755-le-marketing-alternatif-face-aux-campagnes-classiques
 ---
-
 <p>Vingt ans à faire des devis à la main. Vingt ans à ressaisir les mêmes lignes, les mêmes tarifs unitaires, les mêmes conditions de paiement. Et puis un jour, on me parle de QuotePro Smart et de sa génération automatique. J'ai été sceptique au début, je ne vais pas vous mentir.</p>
 
 <p>Alors j'ai fait le test. Pendant trois mois, j'ai comparé les deux méthodes côte à côte, dans notre PME lyonnaise de 45 personnes. Ce que je vais vous dire ici, c'est du vécu, pas de la théorie.</p>

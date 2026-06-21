@@ -14,6 +14,7 @@ link_anchors:
 - text: le logiciel Sage en Ille-et-Vilaine
   max: 5
 related_posts:
+- 9100-la-generation-automatique-quotepro-smart-face-au-devis-fait-a-la-main
 - 2004-billmatic-subscription-face-aux-solutions-d-abonnement-sur-le-prix
 - 8096-integrateur-du-logiciel-sage-en-ille-et-vilaine-ou-licence-en-ligne
 - 9063-billmatic-auto-face-aux-plateformes-d-abonnement-sur-le-prix
