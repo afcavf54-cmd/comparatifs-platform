@@ -1,18 +1,25 @@
 ---
-title: 'Démission et ancienneté : quels avantages conservez-vous après votre départ ?'
+title: 'Démission et ancienneté : quels avantages conservez-vous après votre départ
+  ?'
 slug: 2942-demission-et-anciennete-quels-avantages-conservez-vous-apres-votre-depart
 date: '2026-06-21T09:00:00+02:00'
 categorie: Salarié
 meta_title: 'Démission et ancienneté : quels droits conserver ?'
-meta_description: En cas de démission, votre ancienneté ne disparaît pas totalement. Découvrez quels droits vous conservez et lesquels vous perdez définitivement après votre départ.
+meta_description: En cas de démission, votre ancienneté ne disparaît pas totalement.
+  Découvrez quels droits vous conservez et lesquels vous perdez définitivement après
+  votre départ.
 min_words: 1200
 status: published
 featured_image: /blog/2942-demission-et-anciennete-quels-avantages-conservez-vous-apres-votre-depart.jpg
 link_anchors:
 - text: droits sur votre ancienneté lors d'une démission
   max: 4
+related_posts:
+- 8249-redressement-judiciaire-comment-quitter-l-entreprise-en-protegeant-vos-droits
+- 3650-mon-patron-change-mes-horaires-sans-preavis-ce-que-dit-le-droit-du-travail
+- 8567-fin-de-cdd-sans-reponse-de-l-employeur-quelles-demarches-entreprendre
+- 8092-refus-d-amenagement-d-horaire-avec-une-rqth-comment-faire-valoir-vos-droits
 ---
-
 <p>Vingt ans à traiter des paies, des ruptures de contrat, des soldes de tout compte. Et pourtant, à chaque démission dans mon entourage professionnel, la même question revient : qu'est-ce que je garde, qu'est-ce que je perds ? C'est une vraie bonne question. Parce que l'ancienneté, ça ne disparaît pas comme ça le lendemain d'une démission. Certains droits survivent, d'autres s'évaporent. Je vais vous expliquer ce qui en est réellement.</p>
 
 <h2>Ce que la démission efface vraiment</h2>
