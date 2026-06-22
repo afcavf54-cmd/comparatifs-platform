@@ -4,15 +4,20 @@ slug: 4072-comment-leadflow-automation-route-vos-prospects-une-fois-configure
 date: '2026-06-22T07:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Configurer le CRM LeadFlow Automation : automatiser ses leads'
-meta_description: 'Découvrez comment LeadFlow Automation route vos prospects automatiquement après configuration : règles, attribution et suivi concrets expliqués par un utilisateur…'
+meta_description: 'Découvrez comment LeadFlow Automation route vos prospects automatiquement
+  après configuration : règles, attribution et suivi concrets expliqués par un utilisateur…'
 min_words: 940
 status: published
 featured_image: /blog/4072-comment-leadflow-automation-route-vos-prospects-une-fois-configure.jpg
 link_anchors:
 - text: comment configurer le CRM LeadFlow Automation
   max: 5
+related_posts:
+- 4990-bien-demarrer-le-parametrage-de-pipedrive-nexus-edition
+- 4820-nettoyer-un-export-csv-de-donnees-salestrack-crm
+- 6768-a-qui-se-prete-le-crm-salesflow-evolution
+- 7540-qui-mobiliser-pour-implementer-nextgen-business-suite
 ---
-
 <p>Ça fait maintenant deux ans que j'utilise LeadFlow Automation dans mon quotidien. Pas pour la comptabilité directement, mais parce que je travaille avec les équipes commerciales et marketing sur les flux entrants, les relances, et surtout la question qui revient tout le temps : <strong>qui traite quel prospect, et quand ?</strong> Avant LeadFlow, on avait des tableurs. Des tableurs et des oublis. Maintenant c'est différent.</p>
 
 <p>Je vais vous expliquer concrètement comment le routage fonctionne une fois que la configuration est faite. Parce que la configuration, c'est une chose. Mais ce qui se passe après, c'est là que ça devient intéressant ou décevant.</p>
