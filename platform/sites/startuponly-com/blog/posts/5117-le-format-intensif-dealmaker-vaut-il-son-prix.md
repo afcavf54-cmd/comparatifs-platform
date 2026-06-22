@@ -3,16 +3,22 @@ title: Le format intensif DealMaker vaut-il son prix ?
 slug: 5117-le-format-intensif-dealmaker-vaut-il-son-prix
 date: '2026-06-22T08:00:00+02:00'
 categorie: Salarié
-meta_title: 'Formation négociation commerciale DealMaker Intensive : est-elle rentable ?'
-meta_description: 'Formation DealMaker : retour d''expérience complet sur ce format intensif en négociation commerciale facturé entre 1 800 et 2 400 euros HT.'
+meta_title: 'Formation négociation commerciale DealMaker Intensive : est-elle rentable
+  ?'
+meta_description: 'Formation DealMaker : retour d''expérience complet sur ce format
+  intensif en négociation commerciale facturé entre 1 800 et 2 400 euros HT.'
 min_words: 940
 status: published
 featured_image: /blog/5117-le-format-intensif-dealmaker-vaut-il-son-prix.jpg
 link_anchors:
 - text: la formation négociation commerciale DealMaker Intensive
   max: 5
+related_posts:
+- 6446-la-methode-salesmaster-augmente-t-elle-vraiment-vos-marges
+- 4279-le-temps-gagne-grace-a-la-methode-presentation-a-impact
+- 9019-quel-budget-pour-la-formation-caces-mon-institut-du-btp
+- 4981-quel-avenir-apres-une-formation-qualite-aeronautique-et-spatiale
 ---
-
 <p>J'ai testé pas mal de formations courtes ces deux dernières années. Des formats week-end, des intensifs en ligne, des "bootcamps" vendus à grand renfort de promesses. DealMaker, je l'ai découvert via un collègue qui l'avait fait six mois avant moi. Il m'en avait parlé comme d'un truc qui l'avait vraiment changé dans ses négociations commerciales. Bon. J'étais sceptique. Mais intrigué.</p>
 
 <p>Spoiler : j'ai fini par m'inscrire. Et j'ai un avis tranché.</p>

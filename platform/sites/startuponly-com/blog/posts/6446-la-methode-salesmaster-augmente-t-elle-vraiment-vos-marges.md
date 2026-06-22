@@ -14,9 +14,10 @@ link_anchors:
 - text: la formation négociation commerciale selon la méthode SalesMaster
   max: 5
 related_posts:
-- 4981-quel-avenir-apres-une-formation-qualite-aeronautique-et-spatiale
-- 7067-la-certification-data-driven-decision-making-pese-t-elle-sur-un-cv
 - 9019-quel-budget-pour-la-formation-caces-mon-institut-du-btp
+- 7067-la-certification-data-driven-decision-making-pese-t-elle-sur-un-cv
+- 4981-quel-avenir-apres-une-formation-qualite-aeronautique-et-spatiale
+- 4279-le-temps-gagne-grace-a-la-methode-presentation-a-impact
 ---
 <p>On m'a présenté SalesMaster comme un système qui "transforme les commerciaux en machines à marges". J'ai levé les yeux au ciel. Puis j'ai quand même creusé, parce que dans ma startup, chaque deal compte et je n'ai pas les moyens de laisser de l'argent sur la table à chaque négo.</p>
 

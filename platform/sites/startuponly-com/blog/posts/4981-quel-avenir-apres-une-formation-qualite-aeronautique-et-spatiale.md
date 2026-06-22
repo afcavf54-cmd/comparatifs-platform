@@ -16,8 +16,9 @@ link_anchors:
   max: 5
 related_posts:
 - 6446-la-methode-salesmaster-augmente-t-elle-vraiment-vos-marges
-- 9019-quel-budget-pour-la-formation-caces-mon-institut-du-btp
 - 7067-la-certification-data-driven-decision-making-pese-t-elle-sur-un-cv
+- 5117-le-format-intensif-dealmaker-vaut-il-son-prix
+- 9019-quel-budget-pour-la-formation-caces-mon-institut-du-btp
 ---
 <p>J'ai bossé 15 ans dans des boîtes qui tournent sous Excel et des process bricolés. Quand j'ai croisé des profils formés en qualité aéronautique, j'ai compris pourquoi ils trouvaient du boulot facilement. Ces mecs sortent d'un secteur où zéro défaut n'est pas un slogan, c'est une contrainte légale. Et ça, les employeurs le savent.</p>
 

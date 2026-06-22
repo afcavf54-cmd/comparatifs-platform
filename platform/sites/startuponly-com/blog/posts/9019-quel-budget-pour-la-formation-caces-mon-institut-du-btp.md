@@ -13,9 +13,10 @@ link_anchors:
 - text: la formation CACES de Mon-Institut-du-BTP
   max: 5
 related_posts:
-- 7067-la-certification-data-driven-decision-making-pese-t-elle-sur-un-cv
-- 4981-quel-avenir-apres-une-formation-qualite-aeronautique-et-spatiale
+- 5117-le-format-intensif-dealmaker-vaut-il-son-prix
+- 4279-le-temps-gagne-grace-a-la-methode-presentation-a-impact
 - 6446-la-methode-salesmaster-augmente-t-elle-vraiment-vos-marges
+- 7067-la-certification-data-driven-decision-making-pese-t-elle-sur-un-cv
 ---
 <p>Le CACES, ça revient souvent dans les conversations quand tu bosses dans le BTP. Et la première question qui arrive, c'est toujours la même : combien ça coûte ? J'ai creusé le sujet côté Mon-Institut-du-BTP, et je vais te donner une réponse claire, sans jargon inutile.</p>
 
