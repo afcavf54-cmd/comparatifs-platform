@@ -160,24 +160,22 @@ a{text-decoration:none;color:inherit}
 .edp-section-head p{font-size:17px;line-height:1.6;color:var(--edp-muted);margin-top:10px}
 .edp-comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .edp-comp-card{background:#fff;border:1px solid #ECEFF6;border-radius:24px;padding:28px;box-shadow:0 1px 3px rgba(15,26,46,.04);display:flex;flex-direction:column}
-.edp-comp-card-top{display:flex;align-items:center;justify-content:space-between}
-.edp-comp-ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center}
-.edp-comp-count{font-family:'Manrope',sans-serif;font-weight:800;font-size:13px;padding:6px 12px;border-radius:999px}
-.edp-comp-card h3{font-family:'Spectral',serif;font-weight:700;font-size:21px;color:var(--edp-ink);margin-top:16px}
-.edp-comp-links{margin-top:14px;display:flex;flex-direction:column}
+.edp-comp-head{display:flex;align-items:center;gap:14px}
+.edp-comp-ic{flex:none;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.edp-comp-head h3{font-family:'Spectral',serif;font-weight:700;font-size:21px;color:var(--edp-ink);margin:0;line-height:1.2}
+.edp-comp-links{margin-top:18px;display:flex;flex-direction:column}
 .edp-comp-link{display:flex;align-items:center;gap:10px;padding:12px 0;border-top:1px solid #EEF1F7;color:var(--edp-ink);transition:color .15s}
-.edp-comp-link span{flex:1;font-weight:600;font-size:14.5px}
-.edp-comp-link .arr{color:#C7CFDD;transition:color .15s}
+.edp-comp-link span:first-child{flex:1 1 auto;min-width:0;font-weight:600;font-size:14.5px}
+.edp-comp-link .arr{flex:none;color:#C7CFDD;transition:color .15s}
 .edp-comp-link:hover{color:var(--edp-blue)}
 .edp-comp-link:hover .arr{color:var(--edp-blue)}
-.edp-comp-more{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:700;color:var(--edp-muted2);transition:color .15s}
-.edp-comp-more:hover{color:var(--edp-blue)}
+.edp-comp-cta{text-align:center;margin-top:40px}
 
-/* tints (cyclés par catégorie) */
-.tint-0 .edp-comp-ic{background:rgba(27,79,216,.10)}   .tint-0 .edp-comp-count{color:var(--edp-blue);background:rgba(27,79,216,.08)}
-.tint-1 .edp-comp-ic{background:rgba(232,65,10,.10)}   .tint-1 .edp-comp-count{color:var(--edp-orange);background:rgba(232,65,10,.08)}
-.tint-2 .edp-comp-ic{background:rgba(245,158,11,.14)}  .tint-2 .edp-comp-count{color:var(--edp-amber-d);background:rgba(245,158,11,.12)}
-.tint-3 .edp-comp-ic{background:rgba(15,26,46,.07)}    .tint-3 .edp-comp-count{color:var(--edp-ink);background:rgba(15,26,46,.06)}
+/* tints (couleur de l'icône par catégorie) */
+.tint-0 .edp-comp-ic{background:rgba(27,79,216,.10)}
+.tint-1 .edp-comp-ic{background:rgba(232,65,10,.10)}
+.tint-2 .edp-comp-ic{background:rgba(245,158,11,.14)}
+.tint-3 .edp-comp-ic{background:rgba(15,26,46,.07)}
 
 /* ── COMMENT CA MARCHE ── */
 .edp-how{background:var(--edp-ink);position:relative;overflow:hidden;margin-top:48px}
@@ -529,13 +527,12 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <!-- Univers 1 : Ressources Humaines (RH) -->
       <div class="edp-comp-card tint-0">
-        <div class="edp-comp-card-top">
+        <div class="edp-comp-head">
           <span class="edp-comp-ic">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M17 8a3 3 0 0 1 0 6M20 20a5.5 5.5 0 0 0-3-4.9"></path></svg>
           </span>
-          <span class="edp-comp-count">5 comparateurs</span>
+          <h3>Ressources Humaines (RH)</h3>
         </div>
-        <h3>Ressources Humaines (RH)</h3>
         <div class="edp-comp-links">
           <a href="/meilleur-logiciel-de-paie" class="edp-comp-link"><span>Logiciel de paie</span><span class="arr">&rarr;</span></a>
           <a href="/meilleur-logiciel-de-systeme-d-information-rh-sirh" class="edp-comp-link"><span>Logiciel de système d'information RH (SIRH)</span><span class="arr">&rarr;</span></a>
@@ -547,13 +544,12 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <!-- Univers 2 : Finances et comptabilité -->
       <div class="edp-comp-card tint-1">
-        <div class="edp-comp-card-top">
+        <div class="edp-comp-head">
           <span class="edp-comp-ic">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8410A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 10h16M5 10l7-6 7 6M6 10v8M10 10v8M14 10v8M18 10v8"></path></svg>
           </span>
-          <span class="edp-comp-count">5 comparateurs</span>
+          <h3>Finances et comptabilité</h3>
         </div>
-        <h3>Finances et comptabilité</h3>
         <div class="edp-comp-links">
           <a href="/meilleur-logiciel-de-facturation-electronique" class="edp-comp-link"><span>Logiciel de facturation électronique</span><span class="arr">&rarr;</span></a>
           <a href="/meilleur-logiciel-de-notes-de-frais" class="edp-comp-link"><span>Logiciel note de frais</span><span class="arr">&rarr;</span></a>
@@ -565,13 +561,12 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
       <!-- Univers 3 : Marketing -->
       <div class="edp-comp-card tint-2">
-        <div class="edp-comp-card-top">
+        <div class="edp-comp-head">
           <span class="edp-comp-ic">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D98300" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l16-6-3 16-4-5-5 3z"></path></svg>
           </span>
-          <span class="edp-comp-count">3 comparateurs</span>
+          <h3>Marketing</h3>
         </div>
-        <h3>Marketing</h3>
         <div class="edp-comp-links">
           <a href="/meilleur-logiciel-d-emailing" class="edp-comp-link"><span>Logiciel d'emailing</span><span class="arr">&rarr;</span></a>
           <a href="/meilleur-logiciel-de-cold-emailing-outreach" class="edp-comp-link"><span>Logiciel de cold mailing</span><span class="arr">&rarr;</span></a>
@@ -579,6 +574,10 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </div>
       </div>
 
+    </div>
+
+    <div class="edp-comp-cta">
+      <a href="/nos-comparateurs" class="edp-btn-primary">Tous nos comparatifs <span>&rarr;</span></a>
     </div>
   </section>
 
