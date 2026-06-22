@@ -4,15 +4,20 @@ slug: 4640-configuration-de-l-erp-businesscore-enterprise-les-pieges
 date: '2026-06-22T12:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Paramétrer l''ERP BusinessCore Enterprise : les erreurs à éviter'
-meta_description: 'Évitez les erreurs qui coûtent des mois de travail lors de la configuration de BusinessCore Enterprise : droits utilisateurs, workflows, processus métier, les…'
+meta_description: 'Évitez les erreurs qui coûtent des mois de travail lors de la configuration
+  de BusinessCore Enterprise : droits utilisateurs, workflows, processus métier, les…'
 min_words: 910
 status: published
 featured_image: /blog/4640-configuration-de-l-erp-businesscore-enterprise-les-pieges.jpg
 link_anchors:
 - text: comment paramétrer l'ERP BusinessCore Enterprise
   max: 5
+related_posts:
+- 9178-projet-erp-bizflow-max-les-pieges-qui-font-derailler
+- 2748-pourquoi-ne-pas-garder-la-config-d-usine-de-leadflow-automation
+- 3614-csv-ou-export-natif-des-donnees-salestrack-crm-que-choisir
+- 7011-configuration-du-crm-pipedrive-nexus-edition-les-pieges
 ---
-
 <p>On a failli y laisser trois mois de travail. La configuration de BusinessCore Enterprise, c'est pas juste "cocher des cases et cliquer sur Suivant". J'ai vu des équipes entières bloquer sur des paramétrages qui semblaient simples sur le papier. Alors voilà ce que j'aurais voulu qu'on me dise avant de commencer.</p>
 
 <h2>Pourquoi la configuration d'un ERP fait si souvent rater le déploiement ?</h2>
