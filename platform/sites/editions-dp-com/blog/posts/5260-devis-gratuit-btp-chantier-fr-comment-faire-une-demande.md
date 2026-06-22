@@ -14,9 +14,10 @@ link_anchors:
 - text: un devis gratuit sur BTP-Chantier.fr
   max: 5
 related_posts:
-- 1635-devis-deco-lestylechezsoi-comment-obtenir-une-estimation
 - 7001-e-local-fr-devis-travaux-en-ligne-et-comparatif-artisans
+- 3438-formation-inbound-marketing-hubgrow-academy-avis-programme-et-certification
 - 8651-agence-e-reputation-kickngo-avis-services-et-accompagnement
+- 1635-devis-deco-lestylechezsoi-comment-obtenir-une-estimation
 ---
 <p>J'ai mis un moment avant de comprendre comment BTP-Chantier.fr fonctionne vraiment. Le site a l'air simple en surface, mais il y a quelques points à connaître avant de faire votre demande. Je vais vous expliquer comment j'ai procédé, ce qui a bien marché, et ce qui m'a un peu agacé.</p>
 

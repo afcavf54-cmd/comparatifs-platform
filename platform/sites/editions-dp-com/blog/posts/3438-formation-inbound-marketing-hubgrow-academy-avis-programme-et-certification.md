@@ -4,15 +4,21 @@ slug: 3438-formation-inbound-marketing-hubgrow-academy-avis-programme-et-certifi
 date: '2026-06-22T17:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'Formation Inbound Marketing HubGrow Academy : avis complet'
-meta_description: 'Découvrez notre avis complet sur la formation inbound marketing HubGrow Academy : programme détaillé, certification, points forts et limites vus par un dirigeant…'
+meta_description: 'Découvrez notre avis complet sur la formation inbound marketing
+  HubGrow Academy : programme détaillé, certification, points forts et limites vus
+  par un dirigeant…'
 min_words: 950
 status: published
 featured_image: /blog/3438-formation-inbound-marketing-hubgrow-academy-avis-programme-et-certification.jpg
 link_anchors:
 - text: la formation inbound marketing HubGrow Academy
   max: 5
+related_posts:
+- 1635-devis-deco-lestylechezsoi-comment-obtenir-une-estimation
+- 7001-e-local-fr-devis-travaux-en-ligne-et-comparatif-artisans
+- 5260-devis-gratuit-btp-chantier-fr-comment-faire-une-demande
+- 8651-agence-e-reputation-kickngo-avis-services-et-accompagnement
 ---
-
 <p>J'ai découvert HubGrow Academy un peu par hasard. Un de mes collaborateurs m'a envoyé un lien, j'ai jeté un oeil rapide, et j'ai fini par m'y inscrire deux jours plus tard. Ça arrive souvent comme ça, les bonnes décisions.</p>
 
 <p>À Lyon, je dirige une boîte de 150 personnes. On fait tourner pas mal de processus commerciaux et marketing, mais honnêtement, notre équipe n'est pas composée de spécialistes du digital. J'avais besoin d'une formation inbound marketing qui ne nécessite pas trois semaines d'onboarding pour être comprise. HubGrow Academy répondait à peu près à cette attente. Je dis "à peu près" parce que rien n'est parfait, et je vais vous dire ce qui m'a moins convaincu.</p>
