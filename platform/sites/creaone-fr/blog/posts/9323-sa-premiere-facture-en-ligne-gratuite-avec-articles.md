@@ -14,8 +14,9 @@ link_anchors:
   max: 5
 related_posts:
 - 5304-7-points-avant-de-choisir-le-logiciel-de-facturation-quickbill-advanced
-- 9168-pourquoi-choisir-la-comptabilite-cloud-financecore-plus
 - 5170-pourquoi-passer-au-cloud-avec-la-comptabilite-financecore-enterprise
+- 4784-a-qui-profite-l-automatisation-de-facturation-billmatic-auto
+- 9168-pourquoi-choisir-la-comptabilite-cloud-financecore-plus
 ---
 <h2>La facturation en ligne, mon quotidien depuis 9 ans</h2>
 
