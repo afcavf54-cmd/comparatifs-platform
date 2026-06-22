@@ -13,9 +13,10 @@ link_anchors:
 - text: un devis travaux en ligne sur E-Local.fr
   max: 5
 related_posts:
+- 1113-le-prix-de-la-formation-seo-vite-une-formation-est-il-justifie
 - 9420-le-prix-de-la-formation-hubgrow-academy-est-il-justifie
-- 8082-a-quel-profil-convient-lestylechezsoi-pour-un-devis-deco
 - 5141-le-devis-gratuit-btp-chantier-fr-est-il-sans-engagement
+- 8082-a-quel-profil-convient-lestylechezsoi-pour-un-devis-deco
 featured_image: /blog/8293-le-devis-travaux-en-ligne-e-local-fr-est-il-sans-engagement.jpg
 ---
 <h2>E-local.fr : ce que ça promet vraiment pour tes devis</h2>

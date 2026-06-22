@@ -14,9 +14,10 @@ link_anchors:
 - text: un devis déco avec LeStyleChezSoi
   max: 5
 related_posts:
+- 1113-le-prix-de-la-formation-seo-vite-une-formation-est-il-justifie
 - 8293-le-devis-travaux-en-ligne-e-local-fr-est-il-sans-engagement
-- 5141-le-devis-gratuit-btp-chantier-fr-est-il-sans-engagement
 - 9420-le-prix-de-la-formation-hubgrow-academy-est-il-justifie
+- 5141-le-devis-gratuit-btp-chantier-fr-est-il-sans-engagement
 ---
 <h2>Qui peut vraiment tirer parti de LeStyleChezSoi ?</h2>
 

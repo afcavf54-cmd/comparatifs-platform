@@ -14,9 +14,10 @@ link_anchors:
 - text: la formation inbound marketing HubGrow Academy
   max: 5
 related_posts:
-- 8293-le-devis-travaux-en-ligne-e-local-fr-est-il-sans-engagement
-- 8082-a-quel-profil-convient-lestylechezsoi-pour-un-devis-deco
+- 1113-le-prix-de-la-formation-seo-vite-une-formation-est-il-justifie
 - 5141-le-devis-gratuit-btp-chantier-fr-est-il-sans-engagement
+- 8082-a-quel-profil-convient-lestylechezsoi-pour-un-devis-deco
+- 8293-le-devis-travaux-en-ligne-e-local-fr-est-il-sans-engagement
 ---
 <p>J'ai découvert HubGrow Academy il y a quelques mois, en cherchant une formation pour améliorer les process de vente dans ma boîte. On est une petite équipe, budget serré, et je n'ai pas le temps de me planter sur un investissement formation. Alors avant de sortir la carte bleue, j'ai creusé.</p>
 

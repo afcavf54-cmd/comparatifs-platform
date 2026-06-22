@@ -14,9 +14,10 @@ link_anchors:
 - text: un devis gratuit sur BTP-Chantier.fr
   max: 5
 related_posts:
-- 8293-le-devis-travaux-en-ligne-e-local-fr-est-il-sans-engagement
-- 9420-le-prix-de-la-formation-hubgrow-academy-est-il-justifie
 - 8082-a-quel-profil-convient-lestylechezsoi-pour-un-devis-deco
+- 9420-le-prix-de-la-formation-hubgrow-academy-est-il-justifie
+- 1113-le-prix-de-la-formation-seo-vite-une-formation-est-il-justifie
+- 8293-le-devis-travaux-en-ligne-e-local-fr-est-il-sans-engagement
 ---
 <h2>BTP-Chantier.fr : mon retour d'expérience sur leur devis "gratuit"</h2>
 
