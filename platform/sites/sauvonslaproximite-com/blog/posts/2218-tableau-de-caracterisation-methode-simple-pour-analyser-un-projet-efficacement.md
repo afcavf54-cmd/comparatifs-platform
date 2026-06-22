@@ -4,15 +4,21 @@ slug: 2218-tableau-de-caracterisation-methode-simple-pour-analyser-un-projet-eff
 date: '2026-06-22T20:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Tableau de caractérisation : méthode et exemples d''utilisation'
-meta_description: Découvrez comment le tableau de caractérisation permet de cadrer un projet en une page, éviter les dérives et poser les bonnes questions avant de se lancer.
+meta_description: Découvrez comment le tableau de caractérisation permet de cadrer
+  un projet en une page, éviter les dérives et poser les bonnes questions avant de
+  se lancer.
 min_words: 1800
 status: published
 featured_image: /blog/2218-tableau-de-caracterisation-methode-simple-pour-analyser-un-projet-efficacement.jpg
 link_anchors:
 - text: tableau de caractérisation
   max: 4
+related_posts:
+- 6202-les-6-phases-qui-rythment-le-deploiement-du-crm-smartsales-enterprise
+- 1953-le-logiciel-de-gestion-wizica-business-face-aux-autres-outils
+- 7159-rapidesk-solutions-face-aux-erp-surdimensionnes-pour-une-pme
+- 8636-les-6-atouts-de-l-abonnement-tpe-lemagdesentreprises
 ---
-
 <p>Vingt ans à faire de la compta, ça apprend une chose : un projet mal cadré en amont coûte bien plus cher qu'un logiciel raté. J'ai vu des équipes tourner en rond pendant des semaines parce que personne n'avait pris le temps de poser les bonnes questions au départ. Le tableau de caractérisation, je l'ai découvert un peu par hasard, lors d'une formation gestion de projet que ma direction m'avait imposée. Je pensais que ça ne me concernait pas vraiment. J'avais tort.</p>
 
 <p>Depuis, je l'utilise pour cadrer à peu près tout ce qui dépasse deux semaines de travail dans mon service : changement d'outil comptable, révision du processus de clôture mensuelle, migration vers la dématérialisation des factures fournisseurs. Chaque fois, ça m'a évité des réunions inutiles et des retours en arrière coûteux.</p>
