@@ -4,15 +4,21 @@ slug: 2846-ce-que-les-fonctionnalites-de-financecore-enterprise-ne-couvrent-pas
 date: '2026-06-22T18:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Comptabilité cloud FinanceCore Enterprise : fonctionnalités et limites'
-meta_description: 'Découvrez les limites réelles de FinanceCore Enterprise après deux ans d''usage : trésorerie, automatisation, angles morts. Un retour terrain honnête pour les PME.'
+meta_description: 'Découvrez les limites réelles de FinanceCore Enterprise après deux
+  ans d''usage : trésorerie, automatisation, angles morts. Un retour terrain honnête
+  pour les PME.'
 min_words: 950
 status: published
 featured_image: /blog/2846-ce-que-les-fonctionnalites-de-financecore-enterprise-ne-couvrent-pas.jpg
 link_anchors:
 - text: les fonctionnalités de la comptabilité cloud FinanceCore Enterprise
   max: 5
+related_posts:
+- 1332-facturation-pme-fastbill-vs-invoicepro-max
+- 9791-facturation-manuelle-ou-automatisee-avec-billmatic-auto
+- 8853-invoicepro-x3-face-a-la-facturation-manuelle-le-temps-de-traitement
+- 4683-a-quel-profil-convient-le-cnam-intec-en-techniques-economiques-et-comptables
 ---
-
 <p>Je vais être honnête avec vous : j'ai mis du temps avant de réaliser que FinanceCore Enterprise ne faisait pas tout ce que je pensais. Quand on dirige une boîte de 100 à 200 personnes à Marseille, on cherche avant tout un outil qui couvre le maximum de besoins sans avoir à jongler entre dix applications. Sur le papier, FinanceCore Enterprise semblait répondre à ça. Dans la pratique, j'ai découvert quelques angles morts qui m'ont coûté du temps, et parfois de l'argent.</p>
 
 <p>Voilà ce que j'ai observé après deux ans d'utilisation. Pas un bilan exhaustif. Plutôt les points qui m'ont surpris, en bien ou en mal.</p>

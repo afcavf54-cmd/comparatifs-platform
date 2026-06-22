@@ -14,9 +14,10 @@ link_anchors:
 - text: comment automatiser sa facturation avec Billmatic Auto
   max: 5
 related_posts:
-- 4683-a-quel-profil-convient-le-cnam-intec-en-techniques-economiques-et-comptables
 - 1332-facturation-pme-fastbill-vs-invoicepro-max
+- 4683-a-quel-profil-convient-le-cnam-intec-en-techniques-economiques-et-comptables
 - 8853-invoicepro-x3-face-a-la-facturation-manuelle-le-temps-de-traitement
+- 2846-ce-que-les-fonctionnalites-de-financecore-enterprise-ne-couvrent-pas
 ---
 <h2>Billmatic Auto : mes retours après 18 mois d'utilisation</h2>
 

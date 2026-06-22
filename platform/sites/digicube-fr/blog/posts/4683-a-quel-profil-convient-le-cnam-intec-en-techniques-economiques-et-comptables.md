@@ -13,9 +13,10 @@ link_anchors:
 - text: le CNAM INTEC (institut national des techniques économiques et comptables)
   max: 5
 related_posts:
-- 9791-facturation-manuelle-ou-automatisee-avec-billmatic-auto
 - 8853-invoicepro-x3-face-a-la-facturation-manuelle-le-temps-de-traitement
 - 1332-facturation-pme-fastbill-vs-invoicepro-max
+- 9791-facturation-manuelle-ou-automatisee-avec-billmatic-auto
+- 2846-ce-que-les-fonctionnalites-de-financecore-enterprise-ne-couvrent-pas
 featured_image: /blog/4683-a-quel-profil-convient-le-cnam-intec-en-techniques-economiques-et-comptables.jpg
 ---
 <h2>Le Cnam-Intec, c'est quoi exactement ?</h2>
