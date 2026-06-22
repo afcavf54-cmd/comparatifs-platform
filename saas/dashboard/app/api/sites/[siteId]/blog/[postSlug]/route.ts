@@ -155,6 +155,35 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
   const newPath = `platform/sites/${siteId}/blog/posts/${slug}.md`
   const slugChanged = slug !== postSlug
 
+  // ── Auto-update la date au passage draft → published ──────────────────
+  // Bug fix 22 juin 2026 : un article créé en brouillon le 16 juin et
+  // publié le 22 gardait la date 16 juin dans son frontmatter → tri par
+  // date desc → il se retrouvait en page 2 ou 3 du blog, invisible sur la
+  // page 1. Désormais, au passage draft → published (ou nouvel article
+  // créé directement publié), la date du frontmatter est mise à jour à
+  // l'instant T pour que l'article apparaisse en haut du tri.
+  // On garde la date du body si l'article était déjà publié (édition d'un
+  // article existant : pas de raison de toucher à sa date d'origine).
+  let finalDate = date
+  if (status === 'published') {
+    const existing = await ghGet(oldPath)
+    if (existing) {
+      const m = existing.content.match(/^status:\s*['"]?([^'"\n\r]+?)['"]?\s*$/m)
+      const oldStatus = m ? m[1].trim() : ''
+      if (oldStatus === 'draft' || !oldStatus) {
+        const now = new Date()
+        // Format ISO compatible avec le parsing Python du blog_engine :
+        // "YYYY-MM-DD HH:MM:SS+02:00" (timezone France).
+        finalDate = now.toISOString().slice(0, 19).replace('T', ' ') + '+02:00'
+      }
+    } else {
+      // Pas de fichier existant = nouvel article publié directement.
+      // Force la date à aujourd'hui même si le body envoie autre chose.
+      const now = new Date()
+      finalDate = now.toISOString().slice(0, 19).replace('T', ' ') + '+02:00'
+    }
+  }
+
   // Si le slug change et que le nouveau path existe déjà → conflit.
   // Sans ce check, on écraserait silencieusement un article existant.
   if (slugChanged) {
@@ -167,7 +196,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
   }
 
   const post: any = {
-    title, slug, date,
+    title, slug, date: finalDate,
     // Invariant écrit dans le frontmatter : categorie (principale) === categories[0]
     categorie: cats.categorie,
     categories: cats.categories,
