@@ -4,15 +4,21 @@ slug: 7011-configuration-du-crm-pipedrive-nexus-edition-les-pieges
 date: '2026-06-22T06:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Paramétrer le CRM Pipedrive Nexus Edition : les erreurs à éviter'
-meta_description: 'Configuration de Pipedrive Nexus Edition : découvrez les pièges concrets rencontrés lors d''un déploiement réel pour une équipe de 30 personnes et évitez des…'
+meta_description: 'Configuration de Pipedrive Nexus Edition : découvrez les pièges
+  concrets rencontrés lors d''un déploiement réel pour une équipe de 30 personnes
+  et évitez des…'
 min_words: 920
 status: published
 featured_image: /blog/7011-configuration-du-crm-pipedrive-nexus-edition-les-pieges.jpg
 link_anchors:
 - text: comment paramétrer le CRM Pipedrive Nexus Edition
   max: 5
+related_posts:
+- 5187-installation-de-l-erp-cloudmanager-enterprise-les-pieges
+- 2662-faut-il-configurer-l-erp-dynabiz-pro-en-interne
+- 5508-ruptures-et-surstocks-les-pieges-sous-inventory-control-smart
+- 7027-integration-de-l-erp-flexmanage-plus-les-pieges-techniques
 ---
-
 <p>J'ai passé plusieurs semaines à configurer <strong>Pipedrive Nexus Edition</strong> pour mon équipe de 30 personnes. Résultat : j'aurais voulu lire un article comme celui-là avant de commencer. Parce que les pièges sont nombreux, pas toujours documentés, et franchement chronophages quand tu les découvres au mauvais moment.</p>
 
 <p>Voilà ce que j'ai appris, souvent à mes dépens.</p>
