@@ -4,15 +4,17 @@ slug: 3340-les-6-acquis-de-la-formation-business-plan-frenchy-business-pro
 date: '2026-06-22T19:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Formation business plan Frenchy-Business-Pro : 6 acquis'
-meta_description: 'Découvrez les 6 acquis concrets de la formation business plan Frenchy-Business-Pro : structurer, convaincre et rédiger un BP solide pour créer votre entreprise…'
+meta_description: 'Découvrez les 6 acquis concrets de la formation business plan Frenchy-Business-Pro
+  : structurer, convaincre et rédiger un BP solide pour créer votre entreprise…'
 min_words: 910
 status: published
 featured_image: /blog/3340-les-6-acquis-de-la-formation-business-plan-frenchy-business-pro.jpg
 link_anchors:
 - text: la formation business plan Frenchy-Business-Pro
   max: 5
+related_posts:
+- 7981-les-6-acquis-de-la-formation-business-architect-tool
 ---
-
 <h2>Ce que cette formation m'a vraiment appris sur la création d'entreprise</h2>
 
 <p>J'ai accompagné pas mal d'entrepreneurs ces douze dernières années. Et franchement, la majorité d'entre eux arrivent avec la même lacune : ils ont une idée, parfois même une vraie bonne idée, mais ils n'ont aucune idée de comment transformer ça en quelque chose de viable sur le papier. Le business plan reste une étape redoutée, souvent bâclée ou sous-traitée sans vraiment comprendre ce qu'on signe.</p>

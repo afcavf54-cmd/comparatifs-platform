@@ -12,7 +12,8 @@ featured_image: /blog/7981-les-6-acquis-de-la-formation-business-architect-tool.
 link_anchors:
 - text: la formation certifiée Business Architect Tool
   max: 5
-related_posts: []
+related_posts:
+- 3340-les-6-acquis-de-la-formation-business-plan-frenchy-business-pro
 ---
 <p>J'ai passé une bonne partie de ma carrière à tester des formations pour entrepreneurs, des courtes, des longues, des payantes, des gratuites. La plupart vous expliquent ce que vous savez déjà, avec de nouveaux slides. Business Architect Tool, c'est différent. Pas révolutionnaire dans son discours, non. Différent dans ce qu'il produit concrètement chez les participants que j'ai pu observer, et dans ce que j'en ai moi-même retiré.</p>
 
