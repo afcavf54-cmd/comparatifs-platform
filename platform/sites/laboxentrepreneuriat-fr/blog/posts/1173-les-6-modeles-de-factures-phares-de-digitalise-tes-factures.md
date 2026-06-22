@@ -13,7 +13,7 @@ link_anchors:
 - text: les modèles de factures de Digitalise-Tes-Factures
   max: 5
 related_posts:
-- 6162-les-6-modeles-de-factures-phares-de-digitalise-tes-factures
+- 6208-parametrer-la-facturation-recurrente-billmatic-cyclic-etape-par-etape
 ---
 <h2>Pourquoi j'ai testé les modèles de factures de Digitalise-Tes-Factures ?</h2>
 
