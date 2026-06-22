@@ -461,7 +461,7 @@ a{text-decoration:none;color:inherit}
   </section>
   {% endif %}
 
-  <!-- ============ NOS COMPARATEURS (dynamique) ============ -->
+  <!-- ============ NOS COMPARATEURS (sélection éditoriale, 3 univers) ============ -->
   <section id="comparateurs" class="edp-shell edp-comp">
     <div class="edp-section-head">
       <span class="kick">Nos outils</span>
@@ -469,32 +469,61 @@ a{text-decoration:none;color:inherit}
       <p>Choisissez votre univers métier, on vous montre les comparatifs qui comptent.</p>
     </div>
 
-    {% if classements_by_category and classements_by_category | length > 0 %}
     <div class="edp-comp-grid">
-      {% for category, classements in classements_by_category.items() %}
-      {% set tot = classements | sum(attribute='count') %}
-      <div class="edp-comp-card tint-{{ loop.index0 % 4 }}">
+
+      <!-- Univers 1 : Ressources Humaines (RH) -->
+      <div class="edp-comp-card tint-0">
         <div class="edp-comp-card-top">
           <span class="edp-comp-ic">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M17 8a3 3 0 0 1 0 6M20 20a5.5 5.5 0 0 0-3-4.9"></path></svg>
           </span>
-          <span class="edp-comp-count">{{ tot }} logiciel{{ 's' if tot > 1 else '' }}</span>
+          <span class="edp-comp-count">5 comparateurs</span>
         </div>
-        <h3>{{ category }}</h3>
+        <h3>Ressources Humaines (RH)</h3>
         <div class="edp-comp-links">
-          {% for cls in classements[:4] %}
-          <a href="/meilleur-{{ cls.slug }}" class="edp-comp-link">
-            <span>{{ cls.label }}</span><span class="arr">&rarr;</span>
-          </a>
-          {% endfor %}
+          <a href="/meilleur-logiciel-de-paie" class="edp-comp-link"><span>Logiciel de paie</span><span class="arr">&rarr;</span></a>
+          <a href="/meilleur-logiciel-de-systeme-d-information-rh-sirh" class="edp-comp-link"><span>Logiciel de système d'information RH (SIRH)</span><span class="arr">&rarr;</span></a>
+          <a href="/meilleur-logiciels-de-recrutement" class="edp-comp-link"><span>Logiciel de recrutement</span><span class="arr">&rarr;</span></a>
+          <a href="/meilleur-logiciel-de-gestion-des-talents" class="edp-comp-link"><span>Logiciel de gestion des talents</span><span class="arr">&rarr;</span></a>
+          <a href="/meilleur-logiciels-de-gestion-de-planning" class="edp-comp-link"><span>Logiciel de gestion de planning</span><span class="arr">&rarr;</span></a>
         </div>
-        {% if classements | length > 4 %}
-        <a href="/nos-comparateurs" class="edp-comp-more">+ {{ classements | length - 4 }} autre{{ 's' if (classements | length - 4) > 1 else '' }} comparateur{{ 's' if (classements | length - 4) > 1 else '' }} &rarr;</a>
-        {% endif %}
       </div>
-      {% endfor %}
+
+      <!-- Univers 2 : Finances et comptabilité -->
+      <div class="edp-comp-card tint-1">
+        <div class="edp-comp-card-top">
+          <span class="edp-comp-ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8410A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 10h16M5 10l7-6 7 6M6 10v8M10 10v8M14 10v8M18 10v8"></path></svg>
+          </span>
+          <span class="edp-comp-count">5 comparateurs</span>
+        </div>
+        <h3>Finances et comptabilité</h3>
+        <div class="edp-comp-links">
+          <a href="/meilleur-logiciel-de-facturation-electronique" class="edp-comp-link"><span>Logiciel de facturation électronique</span><span class="arr">&rarr;</span></a>
+          <a href="/meilleur-logiciel-de-notes-de-frais" class="edp-comp-link"><span>Logiciel note de frais</span><span class="arr">&rarr;</span></a>
+          <a href="/meilleur-banque-pro-en-ligne" class="edp-comp-link"><span>Banque pro</span><span class="arr">&rarr;</span></a>
+          <a href="/meilleur-logiciel-erp" class="edp-comp-link"><span>Logiciel ERP</span><span class="arr">&rarr;</span></a>
+          <a href="/meilleur-logiciel-de-comptabilite" class="edp-comp-link"><span>Logiciel de comptabilité</span><span class="arr">&rarr;</span></a>
+        </div>
+      </div>
+
+      <!-- Univers 3 : Marketing -->
+      <div class="edp-comp-card tint-2">
+        <div class="edp-comp-card-top">
+          <span class="edp-comp-ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D98300" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l16-6-3 16-4-5-5 3z"></path></svg>
+          </span>
+          <span class="edp-comp-count">3 comparateurs</span>
+        </div>
+        <h3>Marketing</h3>
+        <div class="edp-comp-links">
+          <a href="/meilleur-logiciel-d-emailing" class="edp-comp-link"><span>Logiciel d'emailing</span><span class="arr">&rarr;</span></a>
+          <a href="/meilleur-logiciel-de-cold-emailing-outreach" class="edp-comp-link"><span>Logiciel de cold mailing</span><span class="arr">&rarr;</span></a>
+          <a href="/meilleur-logiciel-de-creation-de-site-web" class="edp-comp-link"><span>Logiciel création de site Web</span><span class="arr">&rarr;</span></a>
+        </div>
+      </div>
+
     </div>
-    {% endif %}
   </section>
 
   <!-- ============ COMMENT CA MARCHE ============ -->
