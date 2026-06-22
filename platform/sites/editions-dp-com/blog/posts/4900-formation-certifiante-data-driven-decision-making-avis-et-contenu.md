@@ -4,15 +4,21 @@ slug: 4900-formation-certifiante-data-driven-decision-making-avis-et-contenu
 date: '2026-06-22T07:00:00+02:00'
 categorie: Salarié
 meta_title: 'Formation Data Driven Decision Making : certification et avis'
-meta_description: 'Avis complet sur la formation certifiante Data Driven Decision Making : programme, contenu et retour d''expérience d''un dirigeant de PME qui l''a suivie sans bagage…'
+meta_description: 'Avis complet sur la formation certifiante Data Driven Decision
+  Making : programme, contenu et retour d''expérience d''un dirigeant de PME qui l''a
+  suivie sans bagage…'
 min_words: 930
 status: published
 featured_image: /blog/4900-formation-certifiante-data-driven-decision-making-avis-et-contenu.jpg
 link_anchors:
 - text: la formation certifiante Data Driven Decision Making
   max: 5
+related_posts:
+- 8440-qu-est-ce-qu-un-comite-d-entreprise
+- 7715-que-propose-le-comite-d-entreprise-generali
+- 8124-combien-d-avertissements-avant-une-radiation-de-pole-emploi-regles-et-procedure
+- 5990-redressement-judiciaire-comment-quitter-l-entreprise-et-quels-sont-vos-droits-en-tant-que-salarie
 ---
-
 <p>J'ai mis un moment avant de me lancer dans une formation certifiante sur la data. Pas parce que le sujet ne m'intéressait pas, mais parce que j'avais peur de ne pas m'y retrouver. J'ai 49 ans, je dirige une PME à Lyon, et mon quotidien c'est surtout des décisions à prendre vite, pas des cours de statistiques. Alors quand on m'a parlé de la formation <strong>Data Driven Decision Making</strong>, j'ai regardé ça d'assez près avant de signer.</p>
 
 <p>Voici ce que j'en pense, sans filtre. Ce que ça m'a apporté, ce qui m'a agacé, et pour qui ça vaut vraiment le coup.</p>
