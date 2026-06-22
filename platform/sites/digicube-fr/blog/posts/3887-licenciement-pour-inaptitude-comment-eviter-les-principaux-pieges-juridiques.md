@@ -4,15 +4,21 @@ slug: 3887-licenciement-pour-inaptitude-comment-eviter-les-principaux-pieges-jur
 date: '2026-06-22T09:00:00+02:00'
 categorie: Salarié
 meta_title: 'Le piège du licenciement pour inaptitude : erreurs à éviter'
-meta_description: 'Licenciement pour inaptitude : découvrez les pièges juridiques les plus courants et comment les éviter pour sécuriser votre procédure et protéger votre entreprise.'
+meta_description: 'Licenciement pour inaptitude : découvrez les pièges juridiques
+  les plus courants et comment les éviter pour sécuriser votre procédure et protéger
+  votre entreprise.'
 min_words: 1200
 status: published
 featured_image: /blog/3887-licenciement-pour-inaptitude-comment-eviter-les-principaux-pieges-juridiques.jpg
 link_anchors:
 - text: le piège du licenciement pour inaptitude
   max: 4
+related_posts:
+- 7738-demission-et-anciennete-ce-que-vous-pouvez-conserver-apres-votre-depart
+- 3761-radiation-pole-emploi-procedure-delais-et-consequences-pour-les-demandeurs-d-emploi
+- 3639-redressement-judiciaire-quelles-options-pour-quitter-son-entreprise-sereinement
+- 2230-refus-d-amenagement-d-horaire-avec-une-rqth-les-recours-possibles-face-a-l-employeur
 ---
-
 <p>Le licenciement pour inaptitude, j'en ai entendu parler pour la première fois quand un de mes managers a été déclaré inapte après un accident. Honnêtement, je ne savais pas du tout par où commencer. Et les erreurs dans ce domaine coûtent cher, très cher.</p>
 
 <p>Je vais vous partager ce que j'ai appris, parfois à mes dépens, sur la procédure et les pièges à éviter absolument.</p>
