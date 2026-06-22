@@ -12,6 +12,8 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.editions-dp.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Spectral:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -30,123 +32,221 @@
 </script>
 
 <style>
+/* ============================================================
+   HOME CUSTOM — editions-dp-com (design « Éditions des Pros »)
+   Classes scopées en .edp-* pour ne pas interférer avec les
+   partials _nav.html.j2 / _footer.html.j2 (header + footer
+   actuels, inchangés).
+   Les variables --ink/--accent/--accent2/--cta/--cta-text/--bg
+   ci-dessous sont REQUISES par les partials nav/footer.
+   ============================================================ */
 :root{
   --bg:#F4F6FB;
   --surface:#fff;
-  --surface2:#F0ECE5;
   --ink:#0F1A2E;
-  --ink2:#6B6560;
-  --ink3:#A09890;
   --accent:#1B4FD8;
-  --accent2:#E8410A;--cta:#F59E0B;--cta-text:#ffffff;
+  --accent2:#E8410A;
+  --cta:#F59E0B;
+  --cta-text:#ffffff;
   --border:#E2DDD6;
-  --r:12px;
-  --r2:20px;
-  --green:#1A7A4A;
+  /* palette locale du design */
+  --edp-ink:#0F1A2E;
+  --edp-blue:#1B4FD8;
+  --edp-orange:#E8410A;
+  --edp-amber:#F59E0B;
+  --edp-amber-d:#D98300;
+  --edp-bg:#F4F6FB;
+  --edp-muted:#5A6679;
+  --edp-muted2:#8893A6;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
-a{color:inherit;text-decoration:none}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',system-ui,-apple-system,sans-serif;background:var(--edp-bg);color:var(--edp-ink);-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+::selection{background:var(--edp-amber);color:#fff}
+@keyframes edp-floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
-/* ── NAV ── */
-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
-.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
-.nav-logo{font-family:'',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
-.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
-.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
-.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
-.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
-.nav-cta:hover{opacity:.88}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
-.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
-.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
-.nav-mobile.open{display:flex}
-.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
-.nav-mobile a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.edp-wrap{overflow-x:hidden}
+.edp-shell{max-width:1280px;margin:0 auto;padding-left:40px;padding-right:40px}
 
 /* ── HERO ── */
-.hero{background:var(--ink);padding:72px 5vw 80px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-50%;left:-20%;width:60%;height:200%;background:radial-gradient(ellipse,rgba(255,255,255,.04) 0%,transparent 70%);pointer-events:none}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);font-size:12px;font-weight:600;padding:5px 14px;border-radius:20px;margin-bottom:20px;letter-spacing:.06em;text-transform:uppercase}
-.hero h1{font-family:'',serif;font-size:clamp(34px,5vw,62px);font-weight:400;color:#fff;line-height:1.1;letter-spacing:-.025em;max-width:800px;margin:0 auto 20px}
-.hero h1 em{font-style:normal;color:var(--accent2)}
-.hero-desc{font-size:18px;color:rgba(255,255,255,.6);max-width:580px;margin:0 auto 40px;line-height:1.7}
+.edp-hero{position:relative;background:#fff;border-bottom:1px solid #ECEFF6;overflow:hidden}
+.edp-hero-glow{position:absolute;top:-180px;right:-120px;width:560px;height:560px;background:radial-gradient(closest-side, rgba(27,79,216,.10), transparent 70%);pointer-events:none}
+.edp-hero-grid{position:relative;display:grid;grid-template-columns:1fr 1.08fr;gap:60px;align-items:center;padding:80px 0 88px}
+.edp-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.15em;color:var(--edp-orange);background:rgba(232,65,10,.08);padding:7px 14px;border-radius:999px;text-transform:uppercase}
+.edp-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--edp-orange);display:inline-block}
+.edp-hero h1{font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(36px,4.4vw,58px);line-height:1.04;color:var(--edp-ink);margin:22px 0 0;letter-spacing:-.025em}
+.edp-hero h1 .hl{color:var(--edp-blue)}
+.edp-hero-desc{font-size:18px;line-height:1.65;color:var(--edp-muted);margin:22px 0 0;max-width:480px}
+.edp-hero-cta{display:flex;align-items:center;gap:14px;margin-top:34px;flex-wrap:wrap}
+.edp-btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--edp-amber);color:#fff;font-weight:700;font-size:16px;padding:16px 28px;border-radius:12px;box-shadow:0 14px 30px -12px rgba(245,158,11,.65);transition:background .15s}
+.edp-btn-primary:hover{background:#e08f06}
+.edp-btn-ghost{display:inline-flex;align-items:center;gap:9px;color:var(--edp-ink);font-weight:700;font-size:16px;padding:16px 22px;border-radius:12px;border:1.5px solid #E1E6F0;transition:border-color .15s}
+.edp-btn-ghost:hover{border-color:var(--edp-ink)}
+.edp-hero-stats{display:flex;gap:38px;margin-top:48px}
+.edp-stat-num{font-family:'Manrope',sans-serif;font-weight:800;font-size:30px;color:var(--edp-ink);letter-spacing:-.02em}
+.edp-stat-num.is-accent{color:var(--edp-orange)}
+.edp-stat-lbl{font-size:13px;color:var(--edp-muted2);margin-top:2px}
+.edp-stat-sep{width:1px;background:#E6EAF2}
 
-/* ── MOTEUR DE RECHERCHE ── */
-.search-wrap{max-width:600px;margin:0 auto;position:relative}
-.search-box{display:flex;align-items:center;background:#fff;border-radius:50px;padding:6px 6px 6px 18px;box-shadow:0 8px 40px rgba(0,0,0,.25);gap:8px}
-.search-box input{flex:1;min-width:0;border:none;outline:none;font-size:15px;font-family:'',sans-serif;color:var(--ink);background:transparent}
-.search-box input::placeholder{color:var(--ink3)}
-.search-btn{padding:11px 20px;border-radius:40px;background:var(--accent);color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer;white-space:nowrap;transition:.15s;flex-shrink:0}
-.search-btn:hover{opacity:.88}
-@media(max-width:480px){
-  .search-box{padding:5px 5px 5px 14px}
-  .search-box input{font-size:13px}
-  .search-btn{padding:9px 14px;font-size:13px}
-}
-.search-suggestions{position:absolute;top:calc(100% + 8px);left:0;right:0;background:#fff;border-radius:var(--r2);box-shadow:0 8px 40px rgba(0,0,0,.15);z-index:50;overflow:hidden;display:none}
-.search-suggestions.open{display:block}
-.suggestion-item{padding:12px 20px;cursor:pointer;font-size:15px;color:var(--ink2);display:flex;align-items:center;gap:10px;transition:.1s;border-bottom:1px solid var(--border)}
-.suggestion-item:last-child{border-bottom:none}
-.suggestion-item:hover{background:var(--bg);color:var(--accent)}
-.suggestion-item::before{content:'🔍';font-size:13px;opacity:.5}
-.suggestion-highlight{font-weight:700;color:var(--ink)}
+/* mockup comparatif (décoratif) */
+.edp-mock-col{position:relative}
+.edp-mock{background:#fff;border:1px solid #E6EAF2;border-radius:18px;box-shadow:0 40px 80px -30px rgba(15,26,46,.35);overflow:hidden}
+.edp-mock-chrome{display:flex;align-items:center;gap:8px;padding:14px 18px;background:var(--edp-ink)}
+.edp-dot{width:11px;height:11px;border-radius:50%;display:inline-block}
+.edp-mock-url{margin-left:14px;flex:1;background:rgba(255,255,255,.07);color:#9AA6BC;font-size:12px;padding:6px 14px;border-radius:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.edp-mock-body{padding:26px 26px 30px}
+.edp-mock-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.edp-mock-kicker{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--edp-blue)}
+.edp-mock-meta{font-size:11px;color:var(--edp-muted2)}
+.edp-mock-h{font-family:'Spectral',serif;font-weight:700;font-size:21px;color:var(--edp-ink);margin-bottom:18px}
+.edp-row{display:flex;align-items:center;gap:14px;padding:13px 14px;border:1px solid #EEF1F7;border-radius:12px;margin-bottom:10px}
+.edp-row.is-top{padding:14px;border:1.5px solid var(--edp-amber);background:rgba(245,158,11,.06)}
+.edp-row-logo{flex:none;width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:17px}
+.edp-row-mid{flex:1;min-width:0}
+.edp-row-name{font-weight:700;font-size:14.5px;color:var(--edp-ink)}
+.edp-row-stars{display:flex;gap:2px;margin-top:3px;font-size:12px}
+.edp-row-stars .on{color:var(--edp-amber)}
+.edp-row-stars .off{color:#D9DEE8}
+.edp-row-stars .val{color:var(--edp-muted2);margin-left:4px}
+.edp-row-right{text-align:right;flex:none}
+.edp-row-price{font-weight:800;font-size:15px;color:var(--edp-ink)}
+.edp-row-price small{font-size:11px;color:var(--edp-muted2);font-weight:600}
+.edp-badge-top{display:inline-block;margin-top:4px;font-size:10px;font-weight:700;letter-spacing:.06em;color:#fff;background:var(--edp-amber);padding:3px 8px;border-radius:6px}
+.edp-float{position:absolute;background:var(--edp-blue);color:#fff;padding:12px 18px;border-radius:14px;box-shadow:0 18px 40px -16px rgba(27,79,216,.7);top:-22px;right:18px;animation:edp-floaty 5s ease-in-out infinite}
+.edp-float .n{font-family:'Manrope',sans-serif;font-weight:800;font-size:20px;line-height:1}
+.edp-float .l{font-size:11px;opacity:.85;margin-top:1px}
+.edp-float2{position:absolute;bottom:-24px;left:-26px;background:#fff;border:1px solid #E6EAF2;padding:13px 16px;border-radius:14px;box-shadow:0 18px 40px -18px rgba(15,26,46,.45);display:flex;align-items:center;gap:11px;animation:edp-floaty 6s ease-in-out infinite}
+.edp-float2 .ic{width:36px;height:36px;border-radius:9px;background:rgba(31,138,91,.12);display:flex;align-items:center;justify-content:center}
+.edp-float2 .t1{font-weight:800;font-size:14px;color:var(--edp-ink)}
+.edp-float2 .t2{font-size:11.5px;color:var(--edp-muted2)}
 
-/* ── STATS ── */
-.stats-bar{background:rgba(255,255,255,.05);border-top:1px solid rgba(255,255,255,.08);padding:20px 5vw;display:flex;justify-content:center;gap:48px}
-.stat-item{text-align:center}
-.stat-value{font-size:24px;font-weight:700;color:#fff;font-family:'',serif}
-.stat-label{font-size:12px;color:rgba(255,255,255,.45);margin-top:2px}
+/* ── VALUE PROPS ── */
+.edp-vp{background:#fff;border-bottom:1px solid #ECEFF6}
+.edp-vp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding:64px 0}
+.edp-vp-item{display:flex;gap:16px;align-items:flex-start}
+.edp-vp-ic{flex:none;width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.edp-vp-item h3{font-family:'Spectral',serif;font-weight:600;font-size:19px;color:var(--edp-ink)}
+.edp-vp-item p{font-size:14.5px;line-height:1.6;color:var(--edp-muted);margin-top:6px}
 
-/* ── CONTENU PRINCIPAL ── */
-main{max-width:1200px;margin:0 auto;padding:64px 5vw 80px}
+/* ── AUTEUR ── */
+.edp-author{background:var(--edp-bg)}
+.edp-author-grid{display:grid;grid-template-columns:420px 1fr;gap:60px;align-items:center;padding:90px 0 20px;max-width:1180px;margin:0 auto}
+.edp-author-photo{position:relative;background:var(--edp-ink);border-radius:26px;padding:22px;overflow:hidden}
+.edp-author-photo .dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);background-size:26px 26px;opacity:.6;pointer-events:none}
+.edp-author-photo .glow{position:absolute;top:-90px;right:-70px;width:260px;height:260px;background:radial-gradient(closest-side, rgba(27,79,216,.45), transparent 70%);pointer-events:none}
+.edp-author-photo .frame{position:relative;border-radius:18px;overflow:hidden;background:#FFD93B}
+.edp-author-photo .frame img{width:100%;height:380px;object-fit:cover;display:block}
+.edp-author-photo .frame .ph{display:flex;align-items:center;justify-content:center;height:380px;color:#0F1A2E;font-weight:700;font-size:15px}
+.edp-author-badge{position:absolute;left:34px;bottom:34px;display:flex;align-items:center;gap:11px;background:#fff;border-radius:14px;padding:11px 15px;box-shadow:0 14px 34px -14px rgba(0,0,0,.6)}
+.edp-author-badge .ic{width:36px;height:36px;border-radius:9px;background:rgba(245,158,11,.16);display:flex;align-items:center;justify-content:center}
+.edp-author-badge .t1{font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:var(--edp-ink);line-height:1}
+.edp-author-badge .t2{font-size:11.5px;color:var(--edp-muted2);margin-top:2px}
+.edp-author-kicker{font-size:12.5px;font-weight:700;letter-spacing:.16em;color:var(--edp-orange);text-transform:uppercase}
+.edp-author-grid h2{font-family:'Spectral',serif;font-weight:700;font-size:42px;color:var(--edp-ink);margin-top:12px;letter-spacing:-.01em;line-height:1.05}
+.edp-author-role{font-size:16px;color:var(--edp-muted);margin-top:6px;font-weight:600}
+.edp-author-bio{font-size:16.5px;line-height:1.75;color:#41506A;margin-top:22px;max-width:620px}
+.edp-author-bio strong{color:var(--edp-ink)}
+.edp-author-quote{position:relative;margin:26px 0 0;padding:18px 22px;background:#fff;border-left:4px solid var(--edp-blue);border-radius:0 14px 14px 0;box-shadow:0 10px 28px -20px rgba(15,26,46,.4)}
+.edp-author-quote p{font-family:'Spectral',serif;font-style:italic;font-weight:500;font-size:18px;line-height:1.5;color:var(--edp-ink)}
+.edp-chips{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.edp-chip{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid #E8ECF4;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;color:var(--edp-ink)}
 
 /* ── COMPARATEURS ── */
-.comparateurs-section{margin-bottom:56px}
-.comparateurs-section h2{font-family:'',serif;font-size:clamp(28px,3.5vw,40px);font-weight:400;letter-spacing:-.02em;margin-bottom:6px}
-/* Section Articles récents (blog) */
-.blog-recent-section{margin:64px 0 80px}
-.blog-recent-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:28px}
-.blog-recent-head h2{font-family:'',serif;font-size:clamp(26px,3.2vw,36px);font-weight:400;letter-spacing:-.02em;margin:0}
-.blog-recent-head .blog-recent-link{color:var(--accent);font-size:14px;font-weight:600;text-decoration:none;transition:.15s}
-.blog-recent-head .blog-recent-link:hover{opacity:.7}
-.blog-recent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.blog-recent-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:.18s;display:flex;flex-direction:column}
-.blog-recent-card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.06);text-decoration:none}
-.blog-recent-card-img{aspect-ratio:16/9;background:linear-gradient(135deg,var(--accent),var(--accent2));position:relative;overflow:hidden}
-.blog-recent-card-img img{width:100%;height:100%;object-fit:cover;display:block}
-.blog-recent-card-img-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:40px;opacity:.4}
-.blog-recent-card-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
-.blog-recent-card-cat{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:8px}
-.blog-recent-card-title{font-size:16px;font-weight:600;color:var(--ink);line-height:1.35;margin-bottom:8px}
-.blog-recent-card-excerpt{font-size:13px;color:var(--ink2);line-height:1.55;flex:1}
-.blog-recent-card-date{font-size:11px;color:var(--ink3);margin-top:12px}
-@media(max-width:900px){.blog-recent-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.blog-recent-grid{grid-template-columns:1fr}}
-.comparateurs-subtitle{font-size:16px;color:var(--ink2);margin-bottom:36px}
-.cat-group{margin-bottom:36px}
-.cat-group-title{font-size:13px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.cat-group-title::after{content:'';flex:1;height:1px;background:var(--border)}
-.cat-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
-.cat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;transition:.15s;cursor:pointer}
-.cat-card:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(0,0,0,.06);transform:translateY(-1px)}
-.cat-card-left{display:flex;align-items:center;gap:12px}
-.cat-card-icon{width:38px;height:38px;border-radius:10px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.cat-card-name{font-size:14px;font-weight:600;color:var(--ink);line-height:1.4}
-.cat-card-count{font-size:11px;color:var(--ink3);margin-top:2px}
-.cat-card-arrow{color:var(--accent);font-size:18px;opacity:0;transition:.15s}
-.cat-card:hover .cat-card-arrow{opacity:1}
+.edp-comp{padding:96px 0 56px}
+.edp-section-head{text-align:center;max-width:640px;margin:0 auto 44px}
+.edp-section-head .kick{font-size:12.5px;font-weight:700;letter-spacing:.16em;color:var(--edp-orange);text-transform:uppercase}
+.edp-section-head h2{font-family:'Spectral',serif;font-weight:700;font-size:clamp(30px,3.6vw,42px);color:var(--edp-ink);margin-top:12px;letter-spacing:-.01em}
+.edp-section-head p{font-size:17px;line-height:1.6;color:var(--edp-muted);margin-top:10px}
+.edp-comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.edp-comp-card{background:#fff;border:1px solid #ECEFF6;border-radius:24px;padding:28px;box-shadow:0 1px 3px rgba(15,26,46,.04);display:flex;flex-direction:column}
+.edp-comp-card-top{display:flex;align-items:center;justify-content:space-between}
+.edp-comp-ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.edp-comp-count{font-family:'Manrope',sans-serif;font-weight:800;font-size:13px;padding:6px 12px;border-radius:999px}
+.edp-comp-card h3{font-family:'Spectral',serif;font-weight:700;font-size:21px;color:var(--edp-ink);margin-top:16px}
+.edp-comp-links{margin-top:14px;display:flex;flex-direction:column}
+.edp-comp-link{display:flex;align-items:center;gap:10px;padding:12px 0;border-top:1px solid #EEF1F7;color:var(--edp-ink);transition:color .15s}
+.edp-comp-link span{flex:1;font-weight:600;font-size:14.5px}
+.edp-comp-link .arr{color:#C7CFDD;transition:color .15s}
+.edp-comp-link:hover{color:var(--edp-blue)}
+.edp-comp-link:hover .arr{color:var(--edp-blue)}
+.edp-comp-more{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:700;color:var(--edp-muted2);transition:color .15s}
+.edp-comp-more:hover{color:var(--edp-blue)}
 
+/* tints (cyclés par catégorie) */
+.tint-0 .edp-comp-ic{background:rgba(27,79,216,.10)}   .tint-0 .edp-comp-count{color:var(--edp-blue);background:rgba(27,79,216,.08)}
+.tint-1 .edp-comp-ic{background:rgba(232,65,10,.10)}   .tint-1 .edp-comp-count{color:var(--edp-orange);background:rgba(232,65,10,.08)}
+.tint-2 .edp-comp-ic{background:rgba(245,158,11,.14)}  .tint-2 .edp-comp-count{color:var(--edp-amber-d);background:rgba(245,158,11,.12)}
+.tint-3 .edp-comp-ic{background:rgba(15,26,46,.07)}    .tint-3 .edp-comp-count{color:var(--edp-ink);background:rgba(15,26,46,.06)}
 
+/* ── COMMENT CA MARCHE ── */
+.edp-how{background:var(--edp-ink);position:relative;overflow:hidden;margin-top:48px}
+.edp-how-glow{position:absolute;bottom:-140px;left:-100px;width:420px;height:420px;background:radial-gradient(closest-side, rgba(27,79,216,.30), transparent 70%);filter:blur(10px);pointer-events:none}
+.edp-how-inner{position:relative;padding:84px 0}
+.edp-how-head{text-align:center;margin-bottom:54px}
+.edp-how-head .kick{font-size:12.5px;font-weight:700;letter-spacing:.16em;color:#FBA94C;text-transform:uppercase}
+.edp-how-head h2{font-family:'Spectral',serif;font-weight:700;font-size:clamp(28px,3.4vw,38px);color:#fff;margin-top:12px;letter-spacing:-.01em}
+.edp-how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.edp-how-card{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:34px}
+.edp-how-num{font-family:'Spectral',serif;font-weight:700;font-size:46px;color:var(--edp-amber);line-height:1}
+.edp-how-card h3{font-family:'Spectral',serif;font-weight:600;font-size:21px;color:#fff;margin-top:18px}
+.edp-how-card p{font-size:14.5px;line-height:1.6;color:#A8B3C7;margin-top:8px}
 
-@media(max-width:768px){
-  .nav-links,.nav-cta{display:none}
-  .nav-burger{display:flex}
-  .stats-bar{gap:24px;flex-wrap:wrap}
-  .cat-cards{grid-template-columns:1fr}
-  .top-grid{grid-template-columns:repeat(2,1fr)}
-  .footer-inner{flex-direction:column;text-align:center}
-  .footer-links{justify-content:center}
+/* ── NEWSLETTER ── */
+.edp-news{background:var(--edp-bg)}
+.edp-news-inner{padding:72px 0}
+.edp-news-box{background:linear-gradient(120deg,#1B4FD8,#1740aa);border-radius:24px;padding:56px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;position:relative;overflow:hidden}
+.edp-news-box .glow{position:absolute;top:-80px;right:-40px;width:300px;height:300px;background:radial-gradient(closest-side, rgba(245,158,11,.35), transparent 70%);pointer-events:none}
+.edp-news-txt{position:relative;max-width:540px}
+.edp-news-txt h2{font-family:'Spectral',serif;font-weight:700;font-size:32px;color:#fff;line-height:1.15}
+.edp-news-txt p{font-size:16px;line-height:1.6;color:#C9D6F5;margin-top:12px}
+.edp-news-form{position:relative;display:flex;gap:10px;flex:1;min-width:300px;max-width:460px}
+.edp-news-form input{flex:1;border:none;outline:none;border-radius:11px;padding:16px 18px;font-family:'Manrope',sans-serif;font-size:15px;color:var(--edp-ink)}
+.edp-news-form button{border:none;cursor:pointer;background:var(--edp-amber);color:#fff;font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;padding:0 26px;border-radius:11px;white-space:nowrap;transition:background .15s}
+.edp-news-form button:hover{background:#e08f06}
+
+/* ── ARTICLES RÉCENTS ── */
+.edp-articles{background:var(--edp-bg)}
+.edp-articles-inner{padding:24px 0 96px}
+.edp-articles-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.edp-articles-head .kick{font-size:12.5px;font-weight:700;letter-spacing:.16em;color:var(--edp-orange);text-transform:uppercase}
+.edp-articles-head h2{font-family:'Spectral',serif;font-weight:700;font-size:clamp(30px,3.5vw,40px);color:var(--edp-ink);margin-top:10px;letter-spacing:-.01em}
+.edp-articles-all{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;color:var(--edp-blue);transition:gap .15s}
+.edp-articles-all:hover{gap:12px}
+.edp-articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.edp-art{display:flex;flex-direction:column;background:#fff;border:1px solid #E8ECF4;border-radius:16px;overflow:hidden;transition:transform .15s ease, box-shadow .15s ease}
+.edp-art:hover{transform:translateY(-4px);box-shadow:0 24px 48px -24px rgba(15,26,46,.30)}
+.edp-art-img{position:relative;height:172px;background:linear-gradient(135deg,#1B4FD8,#243a63);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.edp-art-img img{width:100%;height:100%;object-fit:cover;display:block}
+.edp-art-img .ph{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg, rgba(255,255,255,.10) 0 10px, transparent 10px 20px);opacity:.6}
+.edp-art-img .ph-lbl{position:relative;font-family:'Manrope',monospace;font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.75);text-transform:uppercase}
+.edp-art-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.edp-art-cat{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--edp-blue);text-transform:uppercase}
+.edp-art-title{font-family:'Spectral',serif;font-weight:600;font-size:19px;line-height:1.3;color:var(--edp-ink);margin-top:10px}
+.edp-art-excerpt{font-size:14px;line-height:1.6;color:var(--edp-muted);margin-top:10px;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.edp-art-date{display:flex;align-items:center;gap:7px;margin-top:18px;padding-top:16px;border-top:1px solid #EEF1F7;color:var(--edp-muted2);font-size:13px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .edp-hero-grid{grid-template-columns:1fr;gap:48px;padding:64px 0 72px}
+  .edp-mock-col{max-width:540px}
+  .edp-author-grid{grid-template-columns:1fr;gap:40px;padding:72px 0 12px}
+  .edp-author-photo{max-width:460px}
+}
+@media(max-width:880px){
+  .edp-shell{padding-left:24px;padding-right:24px}
+  .edp-vp-grid{grid-template-columns:1fr;gap:24px;padding:48px 0}
+  .edp-comp-grid{grid-template-columns:1fr 1fr}
+  .edp-how-grid{grid-template-columns:1fr;gap:18px}
+  .edp-articles-grid{grid-template-columns:1fr 1fr}
+  .edp-news-box{padding:40px}
+}
+@media(max-width:600px){
+  .edp-hero-stats{gap:22px}
+  .edp-comp-grid{grid-template-columns:1fr}
+  .edp-articles-grid{grid-template-columns:1fr}
+  .edp-author-photo .frame img,.edp-author-photo .frame .ph{height:320px}
+  .edp-news-form{min-width:0;flex-direction:column}
 }
 </style>
 <meta name="google-site-verification" content="OCcdcUpSRa7rYVvon9usT9XulNaFaOFUY572r-mj1mA">
@@ -154,7 +254,7 @@ main{max-width:1200px;margin:0 auto;padding:64px 5vw 80px}
 </head>
 <body>
 
-<!-- NAV -->
+<!-- NAV (header actuel, inchangé) -->
 <style>
 nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
 nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
@@ -235,469 +335,418 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   });
 })();
 </script>
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-eyebrow">Comparatifs logiciels 2026</div>
-  <h1>Le média des entrepreneurs et des professionnels</h1>
-  <p class="hero-desc">Éditions des Pros accompagne entrepreneurs, dirigeants et indépendants avec des actualités, guides pratiques, avis, outils et conseils pour développer leur activité.</p>
+<div class="edp-wrap">
 
-  <!-- Moteur de recherche -->
-  <div class="search-wrap">
-    <div class="search-box">
-      <input type="text" id="search-input" placeholder="Recherchez un type de logiciel..." autocomplete="off" aria-label="Rechercher">
-      <button class="search-btn" onclick="submitSearch()">Rechercher →</button>
-    </div>
-    <div class="search-suggestions" id="search-suggestions"></div>
-  </div>
+  <!-- ============ HERO ============ -->
+  <section class="edp-hero">
+    <div class="edp-hero-glow"></div>
+    <div class="edp-shell edp-hero-grid">
 
-  <!-- Stats bar -->
-  <div class="stats-bar" style="margin-top:48px;border-radius:var(--r2)">
-    <div class="stat-item">
-      <div class="stat-value" id="stat-logiciels">340+</div>
-      <div class="stat-label">Logiciels analysés</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-value" id="stat-categories">34</div>
-      <div class="stat-label">Catégories</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-value">2026</div>
-      <div class="stat-label">Mis à jour</div>
-    </div>
-  </div>
-</section>
+      <!-- gauche -->
+      <div>
+        <span class="edp-eyebrow"><span class="dot"></span> Comparatifs logiciels 2026</span>
+        <h1>Le média des entrepreneurs et des professionnels</h1>
+        <p class="edp-hero-desc">Éditions des Pros accompagne entrepreneurs, dirigeants et indépendants avec des actualités, guides pratiques, avis, outils et conseils pour développer leur activité.</p>
 
-<!-- MAIN -->
-<main>
-
-  <!-- NOS COMPARATEURS -->
-  <section class="comparateurs-section">
-    <h2>Nos comparateurs</h2>
-    <p class="comparateurs-subtitle">Trouvez le meilleur logiciel selon votre métier et vos besoins</p>
-
-      <div class="cat-group">
-        <div class="cat-group-title">Services aux entreprises</div>
-        <div class="cat-cards">
-          <a href="/meilleur-creation-d-entreprise-en-ligne" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Création d’entreprise en ligne</div>
-                <div class="cat-card-count">5 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
+        <div class="edp-hero-cta">
+          <a href="#comparateurs" class="edp-btn-primary">Comparer les logiciels <span>&rarr;</span></a>
+          <a href="/blog/" class="edp-btn-ghost">Découvrir le blog</a>
         </div>
-      </div>
-      <div class="cat-group">
-        <div class="cat-group-title">Ressources Humaines (RH)</div>
-        <div class="cat-cards">
-          <a href="/meilleur-logiciel-de-paie" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de paie</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-systeme-d-information-rh-sirh" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de système d'information RH (SIRH)</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciels-de-recrutement" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciels de Recrutement</div>
-                <div class="cat-card-count">9 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-bien-etre-des-employes" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de bien-être des employés</div>
-                <div class="cat-card-count">7 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-des-temps" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion des temps</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-des-conges-et-absences" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion des congés et absences</div>
-                <div class="cat-card-count">8 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-engagement-des-collaborateurs" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de engagement des collaborateurs</div>
-                <div class="cat-card-count">6 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-des-competences" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion des compétences</div>
-                <div class="cat-card-count">9 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-des-talents" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion des talents</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciels-de-gestion-de-planning" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciels de gestion de planning</div>
-                <div class="cat-card-count">11 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciels-d-onboarding" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciels d’onboarding</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-pointage" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de pointage</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-        </div>
-      </div>
-      <div class="cat-group">
-        <div class="cat-group-title">Finances et comptabilité</div>
-        <div class="cat-cards">
-          <a href="/meilleur-logiciel-de-facturation-electronique" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de facturation électronique</div>
-                <div class="cat-card-count">12 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-recouvrement" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de recouvrement</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-d-audit-et-commissariat-aux-comptes" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel d'audit et commissariat aux comptes</div>
-                <div class="cat-card-count">7 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-d-abonnements" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion d'abonnements</div>
-                <div class="cat-card-count">9 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-de-caisse" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion de caisse</div>
-                <div class="cat-card-count">11 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-notes-de-frais" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de notes de frais</div>
-                <div class="cat-card-count">9 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-comptabilite-gratuit" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de comptabilité gratuit</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impots" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion de l’avance immédiate de crédit d’impôts</div>
-                <div class="cat-card-count">9 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-banque-pro-en-ligne" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Banque pro en ligne</div>
-                <div class="cat-card-count">12 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-data-visualisation" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de data visualisation</div>
-                <div class="cat-card-count">17 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-financiere" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion financière</div>
-                <div class="cat-card-count">9 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-terminaux-de-paiement" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Terminaux de paiement</div>
-                <div class="cat-card-count">7 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-d-association" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion d’association</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-erp" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel ERP</div>
-                <div class="cat-card-count">9 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-gestion-de-tresorerie" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de gestion de trésorerie</div>
-                <div class="cat-card-count">9 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-facturation" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de facturation</div>
-                <div class="cat-card-count">16 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-comptabilite" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de comptabilité</div>
-                <div class="cat-card-count">18 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-expert-comptable-en-ligne" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Expert-comptable en ligne</div>
-                <div class="cat-card-count">11 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-        </div>
-      </div>
-      <div class="cat-group">
-        <div class="cat-group-title">Marketing</div>
-        <div class="cat-cards">
-          <a href="/meilleur-logiciel-d-emailing" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel d’emailing</div>
-                <div class="cat-card-count">12 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-cold-emailing-outreach" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de cold emailing / outreach</div>
-                <div class="cat-card-count">8 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
-          <a href="/meilleur-logiciel-de-creation-de-site-web" class="cat-card">
-            <div class="cat-card-left">
-              <div class="cat-card-icon">💻</div>
-              <div>
-                <div class="cat-card-name">Logiciel de création de site web</div>
-                <div class="cat-card-count">10 logiciels</div>
-              </div>
-            </div>
-            <span class="cat-card-arrow">→</span>
-          </a>
+
+        <div class="edp-hero-stats">
+          <div>
+            <div class="edp-stat-num">340+</div>
+            <div class="edp-stat-lbl">Logiciels analysés</div>
+          </div>
+          <div class="edp-stat-sep"></div>
+          <div>
+            <div class="edp-stat-num">34</div>
+            <div class="edp-stat-lbl">Catégories</div>
+          </div>
+          <div class="edp-stat-sep"></div>
+          <div>
+            <div class="edp-stat-num is-accent">2026</div>
+            <div class="edp-stat-lbl">Mis à jour</div>
+          </div>
         </div>
       </div>
 
-  </section>
+      <!-- droite : maquette comparatif (décorative) -->
+      <div class="edp-mock-col">
+        <div class="edp-mock">
+          <div class="edp-mock-chrome">
+            <span class="edp-dot" style="background:#E8410A"></span>
+            <span class="edp-dot" style="background:#F59E0B"></span>
+            <span class="edp-dot" style="background:#3a4763"></span>
+            <span class="edp-mock-url">editions-dp.com/meilleur-logiciel-de-paie</span>
+          </div>
+          <div class="edp-mock-body">
+            <div class="edp-mock-top">
+              <span class="edp-mock-kicker">COMPARATIF 2026</span>
+              <span class="edp-mock-meta">10 logiciels</span>
+            </div>
+            <div class="edp-mock-h">Logiciel de paie</div>
 
-  <section class="blog-recent-section">
-    <div class="blog-recent-head">
-      <h2>Articles récents</h2>
-      <a href="/blog" class="blog-recent-link">Voir tous les articles →</a>
-    </div>
-    <div class="blog-recent-grid">
-      <a href="/6347-formation-certifiee-business-architect-tool-faut-il-la-suivre" class="blog-recent-card">
-        <div class="blog-recent-card-img">
-            <img src="/blog/6347-formation-certifiee-business-architect-tool-faut-il-la-suivre.jpg" alt="Formation certifiée Business Architect Tool : faut-il la suivre ?" loading="lazy">
+            <div class="edp-row is-top">
+              <div class="edp-row-logo" style="background:#1B4FD8">P</div>
+              <div class="edp-row-mid">
+                <div class="edp-row-name">PayFlow Pro</div>
+                <div class="edp-row-stars"><span class="on">★★★★★</span><span class="val">4,8</span></div>
+              </div>
+              <div class="edp-row-right">
+                <div class="edp-row-price">29€<small>/mois</small></div>
+                <span class="edp-badge-top">TOP CHOIX</span>
+              </div>
+            </div>
+
+            <div class="edp-row">
+              <div class="edp-row-logo" style="background:#E8410A">N</div>
+              <div class="edp-row-mid">
+                <div class="edp-row-name">Notaly</div>
+                <div class="edp-row-stars"><span class="on">★★★★</span><span class="off">★</span><span class="val">4,3</span></div>
+              </div>
+              <div class="edp-row-right"><div class="edp-row-price">19€<small>/mois</small></div></div>
+            </div>
+
+            <div class="edp-row">
+              <div class="edp-row-logo" style="background:#0F1A2E">S</div>
+              <div class="edp-row-mid">
+                <div class="edp-row-name">Salaria</div>
+                <div class="edp-row-stars"><span class="on">★★★★</span><span class="off">★</span><span class="val">4,1</span></div>
+              </div>
+              <div class="edp-row-right"><div class="edp-row-price">15€<small>/mois</small></div></div>
+            </div>
+          </div>
         </div>
-        <div class="blog-recent-card-body">
-<div class="blog-recent-card-cat">Création d'entreprise</div>          <div class="blog-recent-card-title">Formation certifiée Business Architect Tool : faut-il la suivre ?</div>
-<div class="blog-recent-card-excerpt">Quand on dirige une petite structure à Lyon et qu'on a la tête dans le guidon au quotidien, on n'a pas forcément le luxe de consacrer des semaines entières à se former. Alors…</div><div class="blog-recent-card-date">📅 22 juin 2026</div>        </div>
-      </a>
-      <a href="/4900-formation-certifiante-data-driven-decision-making-avis-et-contenu" class="blog-recent-card">
-        <div class="blog-recent-card-img">
-            <img src="/blog/4900-formation-certifiante-data-driven-decision-making-avis-et-contenu.jpg" alt="Formation certifiante Data Driven Decision Making : avis et contenu" loading="lazy">
+
+        <div class="edp-float">
+          <div class="n">340+</div>
+          <div class="l">logiciels comparés</div>
         </div>
-        <div class="blog-recent-card-body">
-<div class="blog-recent-card-cat">Salarié</div>          <div class="blog-recent-card-title">Formation certifiante Data Driven Decision Making : avis et contenu</div>
-<div class="blog-recent-card-excerpt">J'ai mis un moment avant de me lancer dans une formation certifiante sur la data. Pas parce que le sujet ne m'intéressait pas, mais parce que j'avais peur de ne pas m'y retrouver.…</div><div class="blog-recent-card-date">📅 22 juin 2026</div>        </div>
-      </a>
-      <a href="/8599-formation-caces-mon-institut-du-btp-duree-prix-et-debouches" class="blog-recent-card">
-        <div class="blog-recent-card-img">
-            <img src="/blog/8599-formation-caces-mon-institut-du-btp-duree-prix-et-debouches.jpg" alt="Formation CACES Mon-Institut-du-BTP : durée, prix et débouchés" loading="lazy">
+        <div class="edp-float2">
+          <div class="ic">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F8A5B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+          </div>
+          <div>
+            <div class="t1">100% indépendant</div>
+            <div class="t2">Aucun classement sponsorisé</div>
+          </div>
         </div>
-        <div class="blog-recent-card-body">
-<div class="blog-recent-card-cat">Salarié</div>          <div class="blog-recent-card-title">Formation CACES Mon-Institut-du-BTP : durée, prix et débouchés</div>
-<div class="blog-recent-card-excerpt">J'ai passé pas mal de temps à chercher une formation CACES sérieuse pour deux de mes caristes. Et franchement, le nombre d'organismes qui proposent ça est vertigineux.…</div><div class="blog-recent-card-date">📅 21 juin 2026</div>        </div>
-      </a>
-      <a href="/7347-formation-business-plan-frenchy-business-pro-avis-et-programme" class="blog-recent-card">
-        <div class="blog-recent-card-img">
-            <img src="/blog/7347-formation-business-plan-frenchy-business-pro-avis-et-programme.jpg" alt="Formation Business Plan Frenchy-Business-Pro : avis et programme" loading="lazy">
-        </div>
-        <div class="blog-recent-card-body">
-<div class="blog-recent-card-cat">Création d'entreprise</div>          <div class="blog-recent-card-title">Formation Business Plan Frenchy-Business-Pro : avis et programme</div>
-<div class="blog-recent-card-excerpt">J'ai découvert la formation Frenchy-Business-Pro un peu par hasard, en cherchant un accompagnement concret pour monter mon business plan. Pas un truc théorique. Un vrai outil,…</div><div class="blog-recent-card-date">📅 21 juin 2026</div>        </div>
-      </a>
-      <a href="/9983-factonet-le-logiciel-de-facturation-fonctionnalites-tarifs-et-avis-utilisateurs" class="blog-recent-card">
-        <div class="blog-recent-card-img">
-            <img src="/blog/9983-factonet-le-logiciel-de-facturation-fonctionnalites-tarifs-et-avis-utilisateurs.jpg" alt="Factonet, le logiciel de facturation : fonctionnalités, tarifs et avis utilisateurs" loading="lazy">
-        </div>
-        <div class="blog-recent-card-body">
-<div class="blog-recent-card-cat">Finance & Comptabilité</div>          <div class="blog-recent-card-title">Factonet, le logiciel de facturation : fonctionnalités, tarifs et avis utilisateurs</div>
-<div class="blog-recent-card-excerpt">J'ai testé Factonet pendant plusieurs mois dans ma structure. Une centaine de salariés, des factures à envoyer régulièrement, des relances à gérer, et une équipe qui n'a pas le…</div><div class="blog-recent-card-date">📅 20 juin 2026</div>        </div>
-      </a>
-      <a href="/3907-comment-parametrer-la-facturation-recurrente-billmatic-cyclic" class="blog-recent-card">
-        <div class="blog-recent-card-img">
-            <img src="/blog/3907-comment-parametrer-la-facturation-recurrente-billmatic-cyclic.jpg" alt="Comment paramétrer la facturation récurrente Billmatic Cyclic ?" loading="lazy">
-        </div>
-        <div class="blog-recent-card-body">
-<div class="blog-recent-card-cat">Comptabilité</div>          <div class="blog-recent-card-title">Comment paramétrer la facturation récurrente Billmatic Cyclic ?</div>
-<div class="blog-recent-card-excerpt">J'utilise Billmatic Cyclic depuis plusieurs mois dans mon entreprise. Et franchement, la première fois que j'ai voulu paramétrer la facturation récurrente, j'ai tourné en rond…</div><div class="blog-recent-card-date">📅 20 juin 2026</div>        </div>
-      </a>
+      </div>
+
     </div>
   </section>
 
-</main>
+  <!-- ============ VALUE PROPS ============ -->
+  <section class="edp-vp">
+    <div class="edp-shell edp-vp-grid">
+      <div class="edp-vp-item">
+        <div class="edp-vp-ic" style="background:rgba(27,79,216,.10)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V7l8-4z"></path><path d="M9 12l2 2 4-4"></path></svg>
+        </div>
+        <div>
+          <h3>Comparatifs indépendants</h3>
+          <p>Aucune sélection sponsorisée. Chaque logiciel est évalué sur des critères concrets, pour les pros.</p>
+        </div>
+      </div>
+      <div class="edp-vp-item">
+        <div class="edp-vp-ic" style="background:rgba(232,65,10,.10)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8410A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"></path><path d="M21 4v5h-5"></path></svg>
+        </div>
+        <div>
+          <h3>Analyses à jour 2026</h3>
+          <p>Tarifs, fonctionnalités et conformité réglementaire vérifiés et actualisés en continu.</p>
+        </div>
+      </div>
+      <div class="edp-vp-item">
+        <div class="edp-vp-ic" style="background:rgba(245,158,11,.14)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D98300" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 9.3l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.8L12 3z"></path></svg>
+        </div>
+        <div>
+          <h3>Choisis par des pros</h3>
+          <p>Retours d'entrepreneurs, dirigeants et indépendants qui utilisent ces outils au quotidien.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- FOOTER -->
+  <!-- ============ AUTEUR ============ -->
+  <section class="edp-author">
+    <div class="edp-shell edp-author-grid">
+
+      <div class="edp-author-photo">
+        <div class="dots"></div>
+        <div class="glow"></div>
+        <div class="frame">
+            <img src="/author-photo.png" alt="Pierre Petit">
+        </div>
+        <div class="edp-author-badge">
+          <span class="ic">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D98300" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 9.3l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.8L12 3z"></path></svg>
+          </span>
+          <div>
+            <div class="t1">6 ans</div>
+            <div class="t2">à la tête de sa TPE</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <span class="edp-author-kicker">L'auteur du site</span>
+        <h2>Pierre Petit</h2>
+<div class="edp-author-role">Dirigeant TPE</div>        <p class="edp-author-bio">Vincent Bernard dirige sa TPE depuis 6 ans à Strasbourg, où il accompagne le développement de son équipe avec pragmatisme et bienveillance. Fort de son expérience entrepreneuriale, il privilégie une approche humaine et des solutions concrètes pour faire grandir son entreprise au quotidien.</p>
+        <blockquote class="edp-author-quote">
+          <p>« Je teste chaque outil avec mes propres équipes avant d'en parler. S'il ne nous fait pas gagner du temps, il n'a pas sa place ici. »</p>
+        </blockquote>
+        <div class="edp-chips">
+          <span class="edp-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M17 8a3 3 0 0 1 0 6M20.5 20a5.5 5.5 0 0 0-3-4.9"></path></svg>
+            Une équipe à taille humaine
+          </span>
+          <span class="edp-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8410A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            Strasbourg
+          </span>
+          <span class="edp-chip">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D98300" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V7l8-4z"></path><path d="M9 12l2 2 4-4"></path></svg>
+            100% indépendant
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ NOS COMPARATEURS (dynamique) ============ -->
+  <section id="comparateurs" class="edp-shell edp-comp">
+    <div class="edp-section-head">
+      <span class="kick">Nos outils</span>
+      <h2>Nos comparateurs</h2>
+      <p>Choisissez votre univers métier, on vous montre les comparatifs qui comptent.</p>
+    </div>
+
+    <div class="edp-comp-grid">
+      <div class="edp-comp-card tint-0">
+        <div class="edp-comp-card-top">
+          <span class="edp-comp-ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
+          </span>
+          <span class="edp-comp-count">5 logiciels</span>
+        </div>
+        <h3>Services aux entreprises</h3>
+        <div class="edp-comp-links">
+          <a href="/meilleur-creation-d-entreprise-en-ligne" class="edp-comp-link">
+            <span>Création d’entreprise en ligne</span><span class="arr">&rarr;</span>
+          </a>
+        </div>
+      </div>
+      <div class="edp-comp-card tint-1">
+        <div class="edp-comp-card-top">
+          <span class="edp-comp-ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
+          </span>
+          <span class="edp-comp-count">110 logiciels</span>
+        </div>
+        <h3>Ressources Humaines (RH)</h3>
+        <div class="edp-comp-links">
+          <a href="/meilleur-logiciel-de-paie" class="edp-comp-link">
+            <span>Logiciel de paie</span><span class="arr">&rarr;</span>
+          </a>
+          <a href="/meilleur-logiciel-de-systeme-d-information-rh-sirh" class="edp-comp-link">
+            <span>Logiciel de système d'information RH (SIRH)</span><span class="arr">&rarr;</span>
+          </a>
+          <a href="/meilleur-logiciels-de-recrutement" class="edp-comp-link">
+            <span>Logiciels de Recrutement</span><span class="arr">&rarr;</span>
+          </a>
+          <a href="/meilleur-logiciel-de-bien-etre-des-employes" class="edp-comp-link">
+            <span>Logiciel de bien-être des employés</span><span class="arr">&rarr;</span>
+          </a>
+        </div>
+        <a href="/nos-comparateurs" class="edp-comp-more">+ 8 autres comparateurs &rarr;</a>
+      </div>
+      <div class="edp-comp-card tint-2">
+        <div class="edp-comp-card-top">
+          <span class="edp-comp-ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
+          </span>
+          <span class="edp-comp-count">195 logiciels</span>
+        </div>
+        <h3>Finances et comptabilité</h3>
+        <div class="edp-comp-links">
+          <a href="/meilleur-logiciel-de-facturation-electronique" class="edp-comp-link">
+            <span>Logiciel de facturation électronique</span><span class="arr">&rarr;</span>
+          </a>
+          <a href="/meilleur-logiciel-de-recouvrement" class="edp-comp-link">
+            <span>Logiciel de recouvrement</span><span class="arr">&rarr;</span>
+          </a>
+          <a href="/meilleur-logiciel-d-audit-et-commissariat-aux-comptes" class="edp-comp-link">
+            <span>Logiciel d'audit et commissariat aux comptes</span><span class="arr">&rarr;</span>
+          </a>
+          <a href="/meilleur-logiciel-de-gestion-d-abonnements" class="edp-comp-link">
+            <span>Logiciel de gestion d'abonnements</span><span class="arr">&rarr;</span>
+          </a>
+        </div>
+        <a href="/nos-comparateurs" class="edp-comp-more">+ 14 autres comparateurs &rarr;</a>
+      </div>
+      <div class="edp-comp-card tint-3">
+        <div class="edp-comp-card-top">
+          <span class="edp-comp-ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
+          </span>
+          <span class="edp-comp-count">30 logiciels</span>
+        </div>
+        <h3>Marketing</h3>
+        <div class="edp-comp-links">
+          <a href="/meilleur-logiciel-d-emailing" class="edp-comp-link">
+            <span>Logiciel d’emailing</span><span class="arr">&rarr;</span>
+          </a>
+          <a href="/meilleur-logiciel-de-cold-emailing-outreach" class="edp-comp-link">
+            <span>Logiciel de cold emailing / outreach</span><span class="arr">&rarr;</span>
+          </a>
+          <a href="/meilleur-logiciel-de-creation-de-site-web" class="edp-comp-link">
+            <span>Logiciel de création de site web</span><span class="arr">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMMENT CA MARCHE ============ -->
+  <section class="edp-how">
+    <div class="edp-how-glow"></div>
+    <div class="edp-shell edp-how-inner">
+      <div class="edp-how-head">
+        <span class="kick">En 3 étapes</span>
+        <h2>Le bon logiciel, sans y passer des heures</h2>
+      </div>
+      <div class="edp-how-grid">
+        <div class="edp-how-card">
+          <div class="edp-how-num">01</div>
+          <h3>Choisissez une catégorie</h3>
+          <p>Paie, facturation, ERP, emailing… 34 catégories couvrant tous les besoins d'une entreprise.</p>
+        </div>
+        <div class="edp-how-card">
+          <div class="edp-how-num">02</div>
+          <h3>Comparez les logiciels</h3>
+          <p>Tarifs, fonctionnalités et avis côte à côte, dans des tableaux clairs et objectifs.</p>
+        </div>
+        <div class="edp-how-card">
+          <div class="edp-how-num">03</div>
+          <h3>Faites le bon choix</h3>
+          <p>Décidez en confiance grâce à nos guides et aux retours d'autres professionnels.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEWSLETTER ============ -->
+  <section class="edp-news">
+    <div class="edp-shell edp-news-inner">
+      <div class="edp-news-box">
+        <div class="glow"></div>
+        <div class="edp-news-txt">
+          <h2>Recevez les meilleurs comparatifs chaque mois</h2>
+          <p>Nouveaux comparatifs, guides pratiques et bons plans logiciels — directement dans votre boîte mail. Sans spam.</p>
+        </div>
+        <form class="edp-news-form" action="/contact" method="get">
+          <input type="email" name="email" placeholder="Votre adresse e-mail" aria-label="Votre adresse e-mail">
+          <button type="submit">S'inscrire</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ARTICLES RÉCENTS (automatique) ============ -->
+  <section id="articles" class="edp-articles">
+    <div class="edp-shell edp-articles-inner">
+      <div class="edp-articles-head">
+        <div>
+          <span class="kick">Le blog</span>
+          <h2>Articles récents</h2>
+        </div>
+        <a href="/blog/" class="edp-articles-all">Voir tous les articles &rarr;</a>
+      </div>
+
+      <div class="edp-articles-grid">
+        <a href="/6347-formation-certifiee-business-architect-tool-faut-il-la-suivre" class="edp-art">
+          <div class="edp-art-img">
+              <img src="/blog/6347-formation-certifiee-business-architect-tool-faut-il-la-suivre.jpg" alt="Formation certifiée Business Architect Tool : faut-il la suivre ?" loading="lazy">
+          </div>
+          <div class="edp-art-body">
+<span class="edp-art-cat">Création d'entreprise</span>            <div class="edp-art-title">Formation certifiée Business Architect Tool : faut-il la suivre ?</div>
+<p class="edp-art-excerpt">Quand on dirige une petite structure à Lyon et qu'on a la tête dans le guidon au quotidien, on n'a pas forcément le luxe de consacrer des semaines entières à se former. Alors…</p>            <div class="edp-art-date">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M3 9h18M8 2v4M16 2v4"></path></svg>
+              22 juin 2026
+            </div>
+          </div>
+        </a>
+        <a href="/4900-formation-certifiante-data-driven-decision-making-avis-et-contenu" class="edp-art">
+          <div class="edp-art-img">
+              <img src="/blog/4900-formation-certifiante-data-driven-decision-making-avis-et-contenu.jpg" alt="Formation certifiante Data Driven Decision Making : avis et contenu" loading="lazy">
+          </div>
+          <div class="edp-art-body">
+<span class="edp-art-cat">Salarié</span>            <div class="edp-art-title">Formation certifiante Data Driven Decision Making : avis et contenu</div>
+<p class="edp-art-excerpt">J'ai mis un moment avant de me lancer dans une formation certifiante sur la data. Pas parce que le sujet ne m'intéressait pas, mais parce que j'avais peur de ne pas m'y retrouver.…</p>            <div class="edp-art-date">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M3 9h18M8 2v4M16 2v4"></path></svg>
+              22 juin 2026
+            </div>
+          </div>
+        </a>
+        <a href="/8599-formation-caces-mon-institut-du-btp-duree-prix-et-debouches" class="edp-art">
+          <div class="edp-art-img">
+              <img src="/blog/8599-formation-caces-mon-institut-du-btp-duree-prix-et-debouches.jpg" alt="Formation CACES Mon-Institut-du-BTP : durée, prix et débouchés" loading="lazy">
+          </div>
+          <div class="edp-art-body">
+<span class="edp-art-cat">Salarié</span>            <div class="edp-art-title">Formation CACES Mon-Institut-du-BTP : durée, prix et débouchés</div>
+<p class="edp-art-excerpt">J'ai passé pas mal de temps à chercher une formation CACES sérieuse pour deux de mes caristes. Et franchement, le nombre d'organismes qui proposent ça est vertigineux.…</p>            <div class="edp-art-date">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M3 9h18M8 2v4M16 2v4"></path></svg>
+              21 juin 2026
+            </div>
+          </div>
+        </a>
+        <a href="/7347-formation-business-plan-frenchy-business-pro-avis-et-programme" class="edp-art">
+          <div class="edp-art-img">
+              <img src="/blog/7347-formation-business-plan-frenchy-business-pro-avis-et-programme.jpg" alt="Formation Business Plan Frenchy-Business-Pro : avis et programme" loading="lazy">
+          </div>
+          <div class="edp-art-body">
+<span class="edp-art-cat">Création d'entreprise</span>            <div class="edp-art-title">Formation Business Plan Frenchy-Business-Pro : avis et programme</div>
+<p class="edp-art-excerpt">J'ai découvert la formation Frenchy-Business-Pro un peu par hasard, en cherchant un accompagnement concret pour monter mon business plan. Pas un truc théorique. Un vrai outil,…</p>            <div class="edp-art-date">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M3 9h18M8 2v4M16 2v4"></path></svg>
+              21 juin 2026
+            </div>
+          </div>
+        </a>
+        <a href="/9983-factonet-le-logiciel-de-facturation-fonctionnalites-tarifs-et-avis-utilisateurs" class="edp-art">
+          <div class="edp-art-img">
+              <img src="/blog/9983-factonet-le-logiciel-de-facturation-fonctionnalites-tarifs-et-avis-utilisateurs.jpg" alt="Factonet, le logiciel de facturation : fonctionnalités, tarifs et avis utilisateurs" loading="lazy">
+          </div>
+          <div class="edp-art-body">
+<span class="edp-art-cat">Finance & Comptabilité</span>            <div class="edp-art-title">Factonet, le logiciel de facturation : fonctionnalités, tarifs et avis utilisateurs</div>
+<p class="edp-art-excerpt">J'ai testé Factonet pendant plusieurs mois dans ma structure. Une centaine de salariés, des factures à envoyer régulièrement, des relances à gérer, et une équipe qui n'a pas le…</p>            <div class="edp-art-date">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M3 9h18M8 2v4M16 2v4"></path></svg>
+              20 juin 2026
+            </div>
+          </div>
+        </a>
+        <a href="/3907-comment-parametrer-la-facturation-recurrente-billmatic-cyclic" class="edp-art">
+          <div class="edp-art-img">
+              <img src="/blog/3907-comment-parametrer-la-facturation-recurrente-billmatic-cyclic.jpg" alt="Comment paramétrer la facturation récurrente Billmatic Cyclic ?" loading="lazy">
+          </div>
+          <div class="edp-art-body">
+<span class="edp-art-cat">Comptabilité</span>            <div class="edp-art-title">Comment paramétrer la facturation récurrente Billmatic Cyclic ?</div>
+<p class="edp-art-excerpt">J'utilise Billmatic Cyclic depuis plusieurs mois dans mon entreprise. Et franchement, la première fois que j'ai voulu paramétrer la facturation récurrente, j'ai tourné en rond…</p>            <div class="edp-art-date">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M3 9h18M8 2v4M16 2v4"></path></svg>
+              20 juin 2026
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER (footer actuel, inchangé) -->
 <style>
 .footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
 .footer-inner{max-width:1200px;margin:0 auto}
@@ -836,403 +885,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   // Check immédiat (au cas où la page est rechargée déjà scrollée)
   update();
 })();
-</script>
-
-
-<script>
-// Données de recherche (chargées en JS après DOM pour éviter footprint)
-const ALL_CATEGORIES = [
-  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
-  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
-  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
-  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
-  { label: "Création d’entreprise en ligne", slug: "meilleur-creation-d-entreprise-en-ligne" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de paie", slug: "meilleur-logiciel-de-paie" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciel de système d'information RH (SIRH)", slug: "meilleur-logiciel-de-systeme-d-information-rh-(sirh)" },
-  { label: "Logiciels de Recrutement", slug: "meilleur-logiciels-de-recrutement" },
-  { label: "Logiciels de Recrutement", slug: "meilleur-logiciels-de-recrutement" },
-  { label: "Logiciels de Recrutement", slug: "meilleur-logiciels-de-recrutement" },
-  { label: "Logiciels de Recrutement", slug: "meilleur-logiciels-de-recrutement" },
-  { label: "Logiciels de Recrutement", slug: "meilleur-logiciels-de-recrutement" },
-  { label: "Logiciels de Recrutement", slug: "meilleur-logiciels-de-recrutement" },
-  { label: "Logiciels de Recrutement", slug: "meilleur-logiciels-de-recrutement" },
-  { label: "Logiciels de Recrutement", slug: "meilleur-logiciels-de-recrutement" },
-  { label: "Logiciels de Recrutement", slug: "meilleur-logiciels-de-recrutement" },
-  { label: "Logiciel de bien-être des employés", slug: "meilleur-logiciel-de-bien-etre-des-employes" },
-  { label: "Logiciel de bien-être des employés", slug: "meilleur-logiciel-de-bien-etre-des-employes" },
-  { label: "Logiciel de bien-être des employés", slug: "meilleur-logiciel-de-bien-etre-des-employes" },
-  { label: "Logiciel de bien-être des employés", slug: "meilleur-logiciel-de-bien-etre-des-employes" },
-  { label: "Logiciel de bien-être des employés", slug: "meilleur-logiciel-de-bien-etre-des-employes" },
-  { label: "Logiciel de bien-être des employés", slug: "meilleur-logiciel-de-bien-etre-des-employes" },
-  { label: "Logiciel de bien-être des employés", slug: "meilleur-logiciel-de-bien-etre-des-employes" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des temps", slug: "meilleur-logiciel-de-gestion-des-temps" },
-  { label: "Logiciel de gestion des congés et absences", slug: "meilleur-logiciel-de-gestion-des-conges-et-absences" },
-  { label: "Logiciel de gestion des congés et absences", slug: "meilleur-logiciel-de-gestion-des-conges-et-absences" },
-  { label: "Logiciel de gestion des congés et absences", slug: "meilleur-logiciel-de-gestion-des-conges-et-absences" },
-  { label: "Logiciel de gestion des congés et absences", slug: "meilleur-logiciel-de-gestion-des-conges-et-absences" },
-  { label: "Logiciel de gestion des congés et absences", slug: "meilleur-logiciel-de-gestion-des-conges-et-absences" },
-  { label: "Logiciel de gestion des congés et absences", slug: "meilleur-logiciel-de-gestion-des-conges-et-absences" },
-  { label: "Logiciel de gestion des congés et absences", slug: "meilleur-logiciel-de-gestion-des-conges-et-absences" },
-  { label: "Logiciel de gestion des congés et absences", slug: "meilleur-logiciel-de-gestion-des-conges-et-absences" },
-  { label: "Logiciel de engagement des collaborateurs", slug: "meilleur-logiciel-de-engagement-des-collaborateurs" },
-  { label: "Logiciel de engagement des collaborateurs", slug: "meilleur-logiciel-de-engagement-des-collaborateurs" },
-  { label: "Logiciel de engagement des collaborateurs", slug: "meilleur-logiciel-de-engagement-des-collaborateurs" },
-  { label: "Logiciel de engagement des collaborateurs", slug: "meilleur-logiciel-de-engagement-des-collaborateurs" },
-  { label: "Logiciel de engagement des collaborateurs", slug: "meilleur-logiciel-de-engagement-des-collaborateurs" },
-  { label: "Logiciel de engagement des collaborateurs", slug: "meilleur-logiciel-de-engagement-des-collaborateurs" },
-  { label: "Logiciel de gestion des compétences", slug: "meilleur-logiciel-de-gestion-des-competences" },
-  { label: "Logiciel de gestion des compétences", slug: "meilleur-logiciel-de-gestion-des-competences" },
-  { label: "Logiciel de gestion des compétences", slug: "meilleur-logiciel-de-gestion-des-competences" },
-  { label: "Logiciel de gestion des compétences", slug: "meilleur-logiciel-de-gestion-des-competences" },
-  { label: "Logiciel de gestion des compétences", slug: "meilleur-logiciel-de-gestion-des-competences" },
-  { label: "Logiciel de gestion des compétences", slug: "meilleur-logiciel-de-gestion-des-competences" },
-  { label: "Logiciel de gestion des compétences", slug: "meilleur-logiciel-de-gestion-des-competences" },
-  { label: "Logiciel de gestion des compétences", slug: "meilleur-logiciel-de-gestion-des-competences" },
-  { label: "Logiciel de gestion des compétences", slug: "meilleur-logiciel-de-gestion-des-competences" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciel de gestion des talents", slug: "meilleur-logiciel-de-gestion-des-talents" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels de gestion de planning", slug: "meilleur-logiciels-de-gestion-de-planning" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciels d’onboarding", slug: "meilleur-logiciels-d-onboarding" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de pointage", slug: "meilleur-logiciel-de-pointage" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de facturation électronique", slug: "meilleur-logiciel-de-facturation-electronique" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel de recouvrement", slug: "meilleur-logiciel-de-recouvrement" },
-  { label: "Logiciel d'audit et commissariat aux comptes", slug: "meilleur-logiciel-d-audit-et-commissariat-aux-comptes" },
-  { label: "Logiciel d'audit et commissariat aux comptes", slug: "meilleur-logiciel-d-audit-et-commissariat-aux-comptes" },
-  { label: "Logiciel d'audit et commissariat aux comptes", slug: "meilleur-logiciel-d-audit-et-commissariat-aux-comptes" },
-  { label: "Logiciel d'audit et commissariat aux comptes", slug: "meilleur-logiciel-d-audit-et-commissariat-aux-comptes" },
-  { label: "Logiciel d'audit et commissariat aux comptes", slug: "meilleur-logiciel-d-audit-et-commissariat-aux-comptes" },
-  { label: "Logiciel d'audit et commissariat aux comptes", slug: "meilleur-logiciel-d-audit-et-commissariat-aux-comptes" },
-  { label: "Logiciel d'audit et commissariat aux comptes", slug: "meilleur-logiciel-d-audit-et-commissariat-aux-comptes" },
-  { label: "Logiciel de gestion d'abonnements", slug: "meilleur-logiciel-de-gestion-d-abonnements" },
-  { label: "Logiciel de gestion d'abonnements", slug: "meilleur-logiciel-de-gestion-d-abonnements" },
-  { label: "Logiciel de gestion d'abonnements", slug: "meilleur-logiciel-de-gestion-d-abonnements" },
-  { label: "Logiciel de gestion d'abonnements", slug: "meilleur-logiciel-de-gestion-d-abonnements" },
-  { label: "Logiciel de gestion d'abonnements", slug: "meilleur-logiciel-de-gestion-d-abonnements" },
-  { label: "Logiciel de gestion d'abonnements", slug: "meilleur-logiciel-de-gestion-d-abonnements" },
-  { label: "Logiciel de gestion d'abonnements", slug: "meilleur-logiciel-de-gestion-d-abonnements" },
-  { label: "Logiciel de gestion d'abonnements", slug: "meilleur-logiciel-de-gestion-d-abonnements" },
-  { label: "Logiciel de gestion d'abonnements", slug: "meilleur-logiciel-de-gestion-d-abonnements" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de gestion de caisse", slug: "meilleur-logiciel-de-gestion-de-caisse" },
-  { label: "Logiciel de notes de frais", slug: "meilleur-logiciel-de-notes-de-frais" },
-  { label: "Logiciel de notes de frais", slug: "meilleur-logiciel-de-notes-de-frais" },
-  { label: "Logiciel de notes de frais", slug: "meilleur-logiciel-de-notes-de-frais" },
-  { label: "Logiciel de notes de frais", slug: "meilleur-logiciel-de-notes-de-frais" },
-  { label: "Logiciel de notes de frais", slug: "meilleur-logiciel-de-notes-de-frais" },
-  { label: "Logiciel de notes de frais", slug: "meilleur-logiciel-de-notes-de-frais" },
-  { label: "Logiciel de notes de frais", slug: "meilleur-logiciel-de-notes-de-frais" },
-  { label: "Logiciel de notes de frais", slug: "meilleur-logiciel-de-notes-de-frais" },
-  { label: "Logiciel de notes de frais", slug: "meilleur-logiciel-de-notes-de-frais" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de comptabilité gratuit", slug: "meilleur-logiciel-de-comptabilite-gratuit" },
-  { label: "Logiciel de gestion de l’avance immédiate de crédit d’impôts", slug: "meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impôts" },
-  { label: "Logiciel de gestion de l’avance immédiate de crédit d’impôts", slug: "meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impôts" },
-  { label: "Logiciel de gestion de l’avance immédiate de crédit d’impôts", slug: "meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impôts" },
-  { label: "Logiciel de gestion de l’avance immédiate de crédit d’impôts", slug: "meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impôts" },
-  { label: "Logiciel de gestion de l’avance immédiate de crédit d’impôts", slug: "meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impôts" },
-  { label: "Logiciel de gestion de l’avance immédiate de crédit d’impôts", slug: "meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impôts" },
-  { label: "Logiciel de gestion de l’avance immédiate de crédit d’impôts", slug: "meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impôts" },
-  { label: "Logiciel de gestion de l’avance immédiate de crédit d’impôts", slug: "meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impôts" },
-  { label: "Logiciel de gestion de l’avance immédiate de crédit d’impôts", slug: "meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impôts" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Banque pro en ligne", slug: "meilleur-banque-pro-en-ligne" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de data visualisation", slug: "meilleur-logiciel-de-data-visualisation" },
-  { label: "Logiciel de gestion financière", slug: "meilleur-logiciel-de-gestion-financiere" },
-  { label: "Logiciel de gestion financière", slug: "meilleur-logiciel-de-gestion-financiere" },
-  { label: "Logiciel de gestion financière", slug: "meilleur-logiciel-de-gestion-financiere" },
-  { label: "Logiciel de gestion financière", slug: "meilleur-logiciel-de-gestion-financiere" },
-  { label: "Logiciel de gestion financière", slug: "meilleur-logiciel-de-gestion-financiere" },
-  { label: "Logiciel de gestion financière", slug: "meilleur-logiciel-de-gestion-financiere" },
-  { label: "Logiciel de gestion financière", slug: "meilleur-logiciel-de-gestion-financiere" },
-  { label: "Logiciel de gestion financière", slug: "meilleur-logiciel-de-gestion-financiere" },
-  { label: "Logiciel de gestion financière", slug: "meilleur-logiciel-de-gestion-financiere" },
-  { label: "Terminaux de paiement", slug: "meilleur-terminaux-de-paiement" },
-  { label: "Terminaux de paiement", slug: "meilleur-terminaux-de-paiement" },
-  { label: "Terminaux de paiement", slug: "meilleur-terminaux-de-paiement" },
-  { label: "Terminaux de paiement", slug: "meilleur-terminaux-de-paiement" },
-  { label: "Terminaux de paiement", slug: "meilleur-terminaux-de-paiement" },
-  { label: "Terminaux de paiement", slug: "meilleur-terminaux-de-paiement" },
-  { label: "Terminaux de paiement", slug: "meilleur-terminaux-de-paiement" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel de gestion d’association", slug: "meilleur-logiciel-de-gestion-d-association" },
-  { label: "Logiciel ERP", slug: "meilleur-logiciel-erp" },
-  { label: "Logiciel ERP", slug: "meilleur-logiciel-erp" },
-  { label: "Logiciel ERP", slug: "meilleur-logiciel-erp" },
-  { label: "Logiciel ERP", slug: "meilleur-logiciel-erp" },
-  { label: "Logiciel ERP", slug: "meilleur-logiciel-erp" },
-  { label: "Logiciel ERP", slug: "meilleur-logiciel-erp" },
-  { label: "Logiciel ERP", slug: "meilleur-logiciel-erp" },
-  { label: "Logiciel ERP", slug: "meilleur-logiciel-erp" },
-  { label: "Logiciel ERP", slug: "meilleur-logiciel-erp" },
-  { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
-  { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
-  { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
-  { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
-  { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
-  { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
-  { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
-  { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
-  { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },
-  { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },
-  { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },
-  { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },
-  { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },
-  { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },
-  { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },
-  { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-  { label: "Logiciel de création de site web", slug: "meilleur-logiciel-de-creation-de-site-web" },
-].filter((v,i,a) => a.findIndex(t=>t.label===v.label)===i);
-
-const searchInput = document.getElementById('search-input');
-const suggestions = document.getElementById('search-suggestions');
-
-searchInput.addEventListener('input', function() {
-  const q = this.value.toLowerCase().trim();
-  suggestions.innerHTML = '';
-  if (!q) { suggestions.classList.remove('open'); return; }
-  const matches = ALL_CATEGORIES.filter(c => c.label.toLowerCase().includes(q)).slice(0, 6);
-  if (!matches.length) { suggestions.classList.remove('open'); return; }
-  matches.forEach(m => {
-    const div = document.createElement('div');
-    div.className = 'suggestion-item';
-    const idx = m.label.toLowerCase().indexOf(q);
-    div.innerHTML = '<span class="suggestion-highlight">' + m.label.substring(0,idx) + '</span>'
-      + '<strong>' + m.label.substring(idx, idx+q.length) + '</strong>'
-      + m.label.substring(idx+q.length);
-    div.onclick = () => window.location.href = '/' + m.slug;
-    suggestions.appendChild(div);
-  });
-  suggestions.classList.add('open');
-});
-
-document.addEventListener('click', e => {
-  if (!e.target.closest('.search-wrap')) suggestions.classList.remove('open');
-});
-
-searchInput.addEventListener('keydown', e => {
-  if (e.key === 'Enter') submitSearch();
-});
-
-function submitSearch() {
-  const q = searchInput.value.toLowerCase().trim();
-  if (!q) return;
-  const match = ALL_CATEGORIES.find(c => c.label.toLowerCase().includes(q));
-  if (match) window.location.href = '/' + match.slug;
-}
-
-// Menu mobile
-function toggleMenu() {
-  document.getElementById('nav-mobile').classList.toggle('open');
-  document.getElementById('burger').classList.toggle('open');
-}
-document.addEventListener('click', function(e) {
-  const m = document.getElementById('nav-mobile');
-  const b = document.getElementById('burger');
-  if (m && b && !m.contains(e.target) && !b.contains(e.target)) {
-    m.classList.remove('open'); b.classList.remove('open');
-  }
-});
 </script>
 <!-- build:20260504122856 --></body>
 </html>
