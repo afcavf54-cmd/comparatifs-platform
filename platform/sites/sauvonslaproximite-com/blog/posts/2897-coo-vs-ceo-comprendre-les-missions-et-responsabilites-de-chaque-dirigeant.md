@@ -4,15 +4,21 @@ slug: 2897-coo-vs-ceo-comprendre-les-missions-et-responsabilites-de-chaque-dirig
 date: '2026-06-23T15:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'COO vs CEO : comprendre les différences entre ces fonctions'
-meta_description: 'COO vs CEO : deux rôles complémentaires qu''on confond souvent. Découvrez les missions, responsabilités et différences clés de chaque dirigeant pour mieux…'
+meta_description: 'COO vs CEO : deux rôles complémentaires qu''on confond souvent.
+  Découvrez les missions, responsabilités et différences clés de chaque dirigeant
+  pour mieux…'
 min_words: 1800
 status: published
 featured_image: /blog/2897-coo-vs-ceo-comprendre-les-missions-et-responsabilites-de-chaque-dirigeant.jpg
 link_anchors:
 - text: coo vs ceo
   max: 4
+related_posts:
+- 1267-marque-employeur-comment-attirer-les-meilleurs-talents
+- 4687-definition-de-la-gestion-des-talents-tout-comprendre
+- 5254-entreprise-anonymisee-pourquoi-certaines-informations-sont-elles-masquees
+- 1574-talent-management-comment-developper-les-competences-internes
 ---
-
 <h2>CEO et COO : deux rôles qu'on confond souvent, à tort</h2>
 
 <p>J'ai travaillé avec plusieurs dirigeants au fil de ma carrière, et je dois dire que la confusion entre ces deux postes revient régulièrement, même dans des entreprises bien structurées. Un directeur financier me demandait encore récemment : "mais concrètement, qui décide de quoi ?" C'est une bonne question. Et la réponse est moins évidente qu'on ne le croit.</p>

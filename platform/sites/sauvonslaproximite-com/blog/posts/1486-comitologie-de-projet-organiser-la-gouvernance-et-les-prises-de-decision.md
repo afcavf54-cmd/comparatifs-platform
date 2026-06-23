@@ -4,15 +4,21 @@ slug: 1486-comitologie-de-projet-organiser-la-gouvernance-et-les-prises-de-decis
 date: '2026-06-23T14:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Comitologie projet : organisation, rôles et gouvernance'
-meta_description: Découvrez comment la comitologie de projet structure la gouvernance et les prises de décision pour éviter blocages, dérives budgétaires et confusion des…
+meta_description: Découvrez comment la comitologie de projet structure la gouvernance
+  et les prises de décision pour éviter blocages, dérives budgétaires et confusion
+  des…
 min_words: 2500
 status: published
 featured_image: /blog/1486-comitologie-de-projet-organiser-la-gouvernance-et-les-prises-de-decision.jpg
 link_anchors:
 - text: comitologie d'un projet
   max: 4
+related_posts:
+- 5553-sepo-comprendre-cette-methode-pour-analyser-les-performances-de-votre-organisation
+- 1126-les-5-etapes-d-installation-du-logiciel-crm-mobile-fieldforce-sync
+- 5733-les-modules-mobiles-de-securite-erp-face-a-l-acces-au-bureau-seul
+- 7377-les-7-atouts-du-logiciel-crm-businesspro-x4
 ---
-
 <p>Vingt ans que je travaille dans la finance et la comptabilité d'entreprises de taille intermédiaire. Et vingt ans que j'observe le même problème se répéter : des décisions prises n'importe où, n'importe quand, par n'importe qui. Un directeur commercial qui engage une dépense hors budget. Un chef de projet qui valide seul un prestataire à 80 000 euros. Une équipe entière qui attend une validation bloquée depuis trois semaines parce que personne ne sait à qui s'adresser.</p>
 
 <p>La comitologie de projet, c'est précisément la réponse à ce désordre. Pas une réponse abstraite ou théorique. Une réponse concrète, opérationnelle, qui structure qui décide quoi, quand, comment, et avec qui.</p>
