@@ -4,15 +4,21 @@ slug: 2514-les-7-atouts-du-logiciel-crm-salestrack-360-selon-les-utilisateurs
 date: '2026-06-23T18:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Avis utilisateurs logiciel CRM SalesTrack 360 : 7 fonctions plébiscitées'
-meta_description: 'Retour d''expérience concret sur le CRM SalesTrack 360 : une comptable lyonnaise teste ses 7 atouts réels après deux mois d''utilisation au sein d''une équipe BtoB.'
+meta_description: 'Retour d''expérience concret sur le CRM SalesTrack 360 : une comptable
+  lyonnaise teste ses 7 atouts réels après deux mois d''utilisation au sein d''une
+  équipe BtoB.'
 min_words: 970
 status: published
 featured_image: /blog/2514-les-7-atouts-du-logiciel-crm-salestrack-360-selon-les-utilisateurs.jpg
 link_anchors:
 - text: les avis utilisateurs sur le logiciel CRM SalesTrack 360
   max: 5
+related_posts:
+- 9153-les-6-atouts-du-logiciel-crm-salestrack-evolution
+- 7271-les-7-atouts-du-logiciel-crm-salestrack-pro
+- 2748-la-licence-du-progiciel-erp-bizmaster-360-face-au-saas-sur-le-prix
+- 9602-businesscore-et-tradepulse-departages-pour-choisir-son-erp
 ---
-
 <p>Vingt ans à traiter des balances comptables, des rapprochements bancaires et des relances clients, ça forge des opinions très claires sur les outils qu'on utilise au quotidien. Quand mon directeur commercial m'a demandé d'évaluer SalesTrack 360 pour notre équipe de 12 personnes à Lyon, j'ai accepté à contrecoeur. Un CRM de plus. Soupir.</p>
 
 <p>Deux mois d'utilisation réelle plus tard, j'ai changé d'avis sur plusieurs points. Pas sur tout. Mais sur plusieurs points importants.</p>
