@@ -4,15 +4,16 @@ slug: 8703-avantages-et-inconvenients-du-cdi-interimaire-erreurs-a-eviter
 date: '2026-06-23T18:00:00+02:00'
 categorie: Salarié
 meta_title: 'CDI intérimaire : les inconvénients-pièges du contrat'
-meta_description: 'CDI intérimaire : stabilité, salaire garanti entre les missions et accès au crédit, mais ce contrat comporte aussi des pièges concrets à bien anticiper.'
+meta_description: 'CDI intérimaire : stabilité, salaire garanti entre les missions
+  et accès au crédit, mais ce contrat comporte aussi des pièges concrets à bien anticiper.'
 min_words: 900
 status: published
 featured_image: /blog/8703-avantages-et-inconvenients-du-cdi-interimaire-erreurs-a-eviter.jpg
 link_anchors:
 - text: les avantages et inconvénients du CDI intérimaire
   max: 5
+related_posts: []
 ---
-
 <p>Le CDI intérimaire, c'est un contrat qui fait encore débat dans beaucoup d'entreprises utilisatrices, et franchement, je comprends pourquoi. Côté salarié, c'est encore plus compliqué à décrypter. J'ai vu des collègues hésiter des mois avant de signer, d'autres regretter de ne pas l'avoir fait plus tôt. La réalité est moins tranchée qu'on ne le croit au premier regard.</p>
 
 <p>Avant d'aller plus loin : le CDI intérimaire, c'est un contrat à durée indéterminée signé avec une agence d'intérim, pas avec les entreprises dans lesquelles vous allez travailler. Vous restez salarié permanent de l'agence entre les missions. C'est là que tout se joue, et c'est précisément ce point que beaucoup de gens ratent à la lecture.</p>
