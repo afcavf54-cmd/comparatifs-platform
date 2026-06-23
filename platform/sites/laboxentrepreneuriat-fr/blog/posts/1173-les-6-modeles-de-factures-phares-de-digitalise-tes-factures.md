@@ -14,6 +14,7 @@ link_anchors:
   max: 5
 related_posts:
 - 6208-parametrer-la-facturation-recurrente-billmatic-cyclic-etape-par-etape
+- 2435-emettre-une-facture-en-ligne-avec-digitalise-tes-factures-mode-d-emploi
 ---
 <h2>Pourquoi j'ai testé les modèles de factures de Digitalise-Tes-Factures ?</h2>
 
