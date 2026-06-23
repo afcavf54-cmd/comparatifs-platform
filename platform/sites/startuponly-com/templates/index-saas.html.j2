@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+{% if site.favicon_file is defined and site.favicon_file %}
+<link rel="icon" href="{{ site.favicon_file }}">
+{% else %}
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{% endif %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if home_title is defined and home_title %}{{ home_title }}{% else %}{{ site.name }}{% endif %}</title>
+<meta name="description" content="{% if home_description is defined and home_description %}{{ home_description }}{% else %}Comparatifs et guides pour startups en {{ site.year }}.{% endif %}">
+<link rel="canonical" href="{{ site.domain }}/">
+<meta property="og:title" content="{{ home_title | default(site.name) }}">
+<meta property="og:description" content="{{ home_description | default('') }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.domain }}/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+{% if theme.google_fonts %}<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "WebSite",
+  "name": "{{ site.name }}",
+  "url": "{{ site.domain }}",
+  "description": "{{ home_description | default('') }}",
+  "author": { "@type": "Organization", "name": "{{ site.author_name | default(site.name) }}" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ site.domain }}/recherche?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<style>
+/* ============================================================
+   HOME CUSTOM — startuponly-com (design « Startup Only »)
+   Classes scopées .so-* — n'interfèrent pas avec _nav / _footer.
+   Variables --ink/--accent/--accent2/--cta/--cta-text/--bg
+   REQUISES par les partials nav/footer (header + footer actuels).
+   Marges latérales gérées par .so-shell ; les sections ne
+   touchent QUE padding-top/bottom (pas de raccourci qui
+   remettrait les côtés à 0).
+   ============================================================ */
+:root{
+  --bg:{{ theme.bg }};
+  --surface:#fff;
+  --ink:{{ theme.ink }};
+  --accent:{{ theme.accent }};
+  --accent2:{{ theme.accent2 }};
+  --cta:{{ theme.cta_color if theme.cta_color is defined and theme.cta_color else "#10B981" }};
+  --cta-text:{{ theme.cta_text_color if theme.cta_text_color is defined and theme.cta_text_color else "#ffffff" }};
+  --border:#ECEDF2;
+  /* palette locale du design */
+  --so-navy:#0F172A;
+  --so-purple:#7C3AED;
+  --so-purple-l:#a78bfa;
+  --so-green:#10B981;
+  --so-bg:#FAFAFC;
+  --so-ink:#1E293B;
+  --so-slate:#64748B;
+  --so-slate-l:#94A3B8;
+  --so-line:#ECEDF2;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;background:var(--so-bg);color:var(--so-ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-size:16px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+::selection{background:var(--so-purple);color:#fff}
+@keyframes so-floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+.so-shell{max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
+.so-serif{font-family:'Newsreader',Georgia,serif}
+
+/* ── HERO ── */
+.so-hero{position:relative;background:var(--so-navy);overflow:hidden}
+.so-hero .blob{position:absolute;top:-120px;right:-80px;width:560px;height:520px;background:var(--so-purple);border-radius:46% 54% 58% 42%/52% 44% 56% 48%;opacity:.92;pointer-events:none}
+.so-hero .blob2{position:absolute;top:60px;right:260px;width:150px;height:150px;background:rgba(167,139,250,.35);border-radius:50%;pointer-events:none}
+.so-hero-inner{position:relative;padding-top:84px;padding-bottom:110px;display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:56px;align-items:center}
+.so-hero h1{font-family:'Newsreader',Georgia,serif;font-weight:500;color:#fff;font-size:clamp(38px,5vw,62px);line-height:1.06;letter-spacing:-.015em;margin:0 0 22px}
+.so-hero h1 em,.so-hero h1 .hl{font-style:normal;color:var(--so-purple-l)}
+.so-hero-desc{color:var(--so-slate-l);font-size:clamp(17px,1.6vw,19px);line-height:1.62;max-width:520px;margin:0 0 34px}
+.so-hero-cta{display:flex;flex-wrap:wrap;gap:14px}
+.so-btn-green{display:inline-block;background:var(--so-green);color:#fff;font-weight:700;font-size:16px;padding:14px 28px;border-radius:999px;transition:transform .18s ease,box-shadow .18s ease}
+.so-btn-green:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(16,185,129,.4)}
+.so-btn-ghost{display:inline-block;background:transparent;color:#fff;font-weight:600;font-size:16px;padding:14px 28px;border-radius:999px;border:1px solid rgba(255,255,255,.22);transition:background .18s ease}
+.so-btn-ghost:hover{background:rgba(255,255,255,.07)}
+.so-hero-trust{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:40px;color:rgba(255,255,255,.42);font-size:14px;font-weight:500}
+.so-hero-trust .sep{color:rgba(255,255,255,.22)}
+
+/* mockup dashboard (décoratif) */
+.so-mock-col{position:relative;justify-self:center;width:100%;max-width:624px}
+.so-mock{position:relative;background:#fff;border-radius:18px;box-shadow:0 30px 70px rgba(2,6,23,.45);overflow:hidden}
+.so-mock-bar{display:flex;align-items:center;gap:8px;padding:17px 22px;border-bottom:1px solid #EEF0F4}
+.so-mock-bar .d{width:13px;height:13px;border-radius:50%;background:#e2e5ec}
+.so-mock-bar .u{margin-left:14px;height:22px;flex:1;max-width:240px;background:#F4F5F8;border-radius:999px}
+.so-mock-body{display:flex}
+.so-mock-side{width:74px;background:var(--so-navy);padding:22px 0;display:flex;flex-direction:column;align-items:center;gap:19px}
+.so-mock-side .ic{width:31px;height:31px;border-radius:9px;background:var(--so-purple)}
+.so-mock-side .ln{width:26px;height:7px;border-radius:3px;background:rgba(255,255,255,.14)}
+.so-mock-main{flex:1;padding:24px;display:flex;flex-direction:column;gap:19px}
+.so-mock-cards{display:flex;gap:14px}
+.so-mock-card{flex:1;background:#F7F8FB;border:1px solid #EEF0F4;border-radius:14px;padding:16px}
+.so-mock-card .big{font-family:'Newsreader',Georgia,serif;font-size:26px;font-weight:600;color:var(--so-navy);line-height:1}
+.so-mock-card .bar{height:6px;border-radius:3px;margin-top:11px}
+.so-mock-row{display:flex;gap:17px;align-items:center;background:#F7F8FB;border:1px solid #EEF0F4;border-radius:14px;padding:17px}
+.so-mock-donut{width:89px;height:89px;border-radius:50%;background:conic-gradient(var(--so-purple) 0 45%,var(--so-green) 45% 72%,var(--so-navy) 72% 100%);flex-shrink:0;-webkit-mask:radial-gradient(circle 25px at center,transparent 98%,#000 100%);mask:radial-gradient(circle 25px at center,transparent 98%,#000 100%)}
+.so-mock-lines{flex:1;display:flex;flex-direction:column;gap:11px}
+.so-mock-lines span{height:8px;background:#E6E8EF;border-radius:4px}
+.so-mock-bars{display:flex;align-items:flex-end;gap:12px;height:79px;padding:0 5px}
+.so-mock-bars span{flex:1;border-radius:6px 6px 0 0;background:#dfe3ec}
+.so-badge{position:absolute;bottom:-22px;left:-22px;background:#fff;border-radius:15px;box-shadow:0 16px 36px rgba(2,6,23,.3);padding:16px 19px;display:flex;align-items:center;gap:13px;animation:so-floaty 5.5s ease-in-out infinite}
+.so-badge .ic{width:41px;height:41px;border-radius:11px;background:rgba(16,185,129,.12);color:var(--so-green);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px}
+.so-badge .t1{font-weight:800;color:var(--so-navy);font-size:18px;line-height:1.2}
+.so-badge .t2{color:var(--so-slate-l);font-size:14px;font-weight:600}
+
+/* ── SECTION HEADERS ── */
+.so-kicker{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--so-purple);margin-bottom:16px}
+.so-head-center{max-width:660px;margin:0 auto 48px;text-align:center}
+.so-head-center h2{font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.01em;color:var(--so-navy);margin:0 0 14px}
+.so-head-center p{color:var(--so-slate);font-size:17px;line-height:1.6;margin:0}
+
+/* ── COMPARATIFS ── */
+.so-comp-inner{padding-top:96px;padding-bottom:84px}
+.so-comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:24px}
+.so-comp-card{display:flex;align-items:center;justify-content:space-between;gap:20px;background:#F4F5F8;border:1px solid #EEF0F4;border-radius:14px;padding:26px 28px;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.so-comp-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(15,23,42,.08);background:#fff}
+.so-comp-sub{color:var(--so-purple);font-size:14.5px;font-weight:600;margin-bottom:7px}
+.so-comp-card h3{font-size:21px;font-weight:800;color:var(--so-navy);margin:0 0 10px}
+.so-comp-meta{color:var(--so-slate-l);font-size:13px;font-weight:600}
+.so-comp-ic{color:var(--so-purple);flex-shrink:0;display:flex;align-items:center}
+.so-comp-cta{text-align:center;margin-top:44px}
+.so-btn-dark{display:inline-flex;align-items:center;gap:9px;background:var(--so-navy);color:#fff;font-weight:700;font-size:16px;padding:14px 30px;border-radius:999px;transition:transform .18s ease,box-shadow .18s ease}
+.so-btn-dark:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(15,23,42,.25)}
+
+/* ── MÉTHODOLOGIE ── */
+.so-method{position:relative;background:var(--so-navy);overflow:hidden}
+.so-method .glow{position:absolute;bottom:-200px;right:-120px;width:620px;height:520px;background:radial-gradient(ellipse at center,rgba(124,58,237,.28),rgba(124,58,237,0) 65%);pointer-events:none}
+.so-method-inner{position:relative;padding-top:92px;padding-bottom:92px}
+.so-method .so-head-center h2{color:#fff}
+.so-method .so-head-center p{color:var(--so-slate-l)}
+.so-method .so-kicker{color:var(--so-purple-l)}
+.so-method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px}
+.so-step{padding-top:24px;border-top:1px solid rgba(255,255,255,.13)}
+.so-step .num{font-family:'Newsreader',Georgia,serif;font-size:40px;font-weight:500;color:var(--so-purple-l);line-height:1;margin-bottom:16px}
+.so-step h3{font-size:18px;font-weight:700;color:#fff;margin:0 0 10px}
+.so-step p{color:var(--so-slate-l);font-size:14.5px;line-height:1.6;margin:0}
+
+/* ── AUTEUR ── */
+.so-author-inner{padding-top:96px;padding-bottom:96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:56px;align-items:center}
+.so-author-txt h2{font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.01em;color:var(--so-navy);margin:0 0 16px}
+.so-author-txt p.lead{color:var(--so-slate);font-size:17px;line-height:1.65;margin:0 0 26px}
+.so-author-points{display:flex;flex-direction:column;gap:14px}
+.so-author-points div{display:flex;align-items:center;gap:12px;color:var(--so-ink);font-size:15px;font-weight:600}
+.so-author-points .chk{width:22px;height:22px;border-radius:999px;background:rgba(16,185,129,.12);color:var(--so-green);display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.so-author-card{background:#fff;border:1px solid var(--so-line);border-radius:22px;padding:32px;box-shadow:0 18px 44px rgba(15,23,42,.07)}
+.so-author-top{display:flex;align-items:flex-start;gap:18px;margin-bottom:20px}
+.so-author-ava{width:64px;height:64px;border-radius:999px;object-fit:cover;flex-shrink:0;border:2px solid rgba(124,58,237,.25);background:linear-gradient(135deg,var(--so-purple),var(--so-purple-l));display:flex;align-items:center;justify-content:center;font-family:'Newsreader',Georgia,serif;color:#fff;font-size:22px;font-weight:500}
+.so-author-label{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--so-slate-l);margin-bottom:6px}
+.so-author-card h3{font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:23px;color:var(--so-navy);margin:0 0 4px}
+.so-author-role{color:var(--so-purple);font-size:14.5px;font-weight:600}
+.so-author-bio{color:#475569;font-size:15px;line-height:1.7;margin:0}
+
+/* ── ARTICLES ── */
+.so-articles{background:#fff;border-top:1px solid var(--so-line)}
+.so-articles-inner{padding-top:92px;padding-bottom:92px}
+.so-articles-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+.so-articles-head .so-kicker{margin-bottom:16px}
+.so-articles-head h2{font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.01em;color:var(--so-navy);margin:0}
+.so-articles-all{color:var(--so-purple);font-weight:700;font-size:15px;white-space:nowrap;transition:color .15s}
+.so-articles-all:hover{color:#5b21b6}
+.so-articles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px}
+.so-art{display:flex;flex-direction:column;gap:14px;transition:transform .18s ease}
+.so-art:hover{transform:translateY(-4px)}
+.so-art-img{height:178px;border-radius:14px;overflow:hidden;background:repeating-linear-gradient(135deg,#f2f3f7,#f2f3f7 11px,#eaecf2 11px,#eaecf2 22px);display:flex;align-items:center;justify-content:center}
+.so-art-img img{width:100%;height:100%;object-fit:cover;display:block}
+.so-art-img .ph{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#9aa3b2;letter-spacing:.04em}
+.so-art-body{background:#fff;border:1px solid var(--so-line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:11px;flex:1;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.so-art-body h3{font-weight:800;font-size:18px;line-height:1.25;color:var(--so-navy);margin:0}
+.so-art-cat{color:var(--so-purple);font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.so-art-excerpt{color:var(--so-slate);font-size:14px;line-height:1.55;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.so-art-meta{margin-top:auto;padding-top:14px;border-top:1px solid var(--so-line);color:var(--so-slate-l);font-size:12.5px;font-weight:600}
+
+/* ── RESPONSIVE ── */
+@media(max-width:880px){
+  .so-shell{padding-left:18px;padding-right:18px}
+  .so-comp-grid{grid-template-columns:1fr}
+  .so-comp-card{flex-direction:row}
+}
+@media(max-width:600px){
+  .so-hero-inner{padding-top:48px;padding-bottom:72px;gap:40px}
+  .so-comp-inner{padding-top:64px;padding-bottom:56px}
+  .so-method-inner,.so-author-inner,.so-articles-inner{padding-top:60px;padding-bottom:60px}
+  .so-badge{left:0}
+}
+</style>
+{% if site.google_site_verification is defined and site.google_site_verification %}
+<meta name="google-site-verification" content="{{ site.google_site_verification }}">
+{% endif %}
+{% if site.analytics_clicky is defined and site.analytics_clicky %}
+{% if '<script' in site.analytics_clicky %}
+{{ site.analytics_clicky | safe }}
+{% else %}
+<script async data-id="{{ site.analytics_clicky }}" src="//static.getclicky.com/js"></script>
+{% endif %}
+{% endif %}
+</head>
+<body>
+
+<!-- NAV (header actuel, inchangé) -->
+{% include 'base/_nav.html.j2' %}
+
+<!-- ============ HERO ============ -->
+<section class="so-hero">
+  <div class="blob"></div>
+  <div class="blob2"></div>
+  <div class="so-shell so-hero-inner">
+
+    <div>
+      <h1>{% if site.home_h1 is defined and site.home_h1 %}{{ site.home_h1 | safe }}{% else %}Le média des startups <span class="hl">à fort potentiel</span>{% endif %}</h1>
+      <p class="so-hero-desc">{{ home_description | default('Startup Only partage actualités, analyses, conseils et stratégies pour aider les entrepreneurs à lancer et développer leur startup.') }}</p>
+      <div class="so-hero-cta">
+        <a href="#comparatifs" class="so-btn-green">Découvrir nos comparatifs</a>
+        <a href="/blog/" class="so-btn-ghost">Lire le blog</a>
+      </div>
+      <div class="so-hero-trust">
+        <span>Comparatifs indépendants</span>
+        <span class="sep">·</span>
+        <span>Données vérifiées</span>
+        <span class="sep">·</span>
+        <span>Mise à jour {{ site.year }}</span>
+      </div>
+    </div>
+
+    <div class="so-mock-col">
+      <div class="so-mock">
+        <div class="so-mock-bar">
+          <span class="d"></span><span class="d"></span><span class="d"></span>
+          <span class="u"></span>
+        </div>
+        <div class="so-mock-body">
+          <div class="so-mock-side">
+            <span class="ic"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
+          </div>
+          <div class="so-mock-main">
+            <div class="so-mock-cards">
+              <div class="so-mock-card"><div class="big">€48.2k</div><div class="bar" style="width:60%;background:var(--so-green)"></div></div>
+              <div class="so-mock-card"><div class="big">+12%</div><div class="bar" style="width:40%;background:var(--so-purple)"></div></div>
+            </div>
+            <div class="so-mock-row">
+              <div class="so-mock-donut"></div>
+              <div class="so-mock-lines"><span style="width:90%"></span><span style="width:70%"></span><span style="width:80%"></span></div>
+            </div>
+            <div class="so-mock-bars">
+              <span style="height:42%"></span><span style="height:66%"></span>
+              <span style="height:54%;background:var(--so-purple)"></span><span style="height:88%;background:var(--so-purple)"></span>
+              <span style="height:72%"></span><span style="height:100%;background:var(--so-green)"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="so-badge">
+        <span class="ic">★</span>
+        <div>
+          <div class="t1">{{ total_products | default(products | length) }} logiciels</div>
+          <div class="t2">comparés en {{ site.year }}</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ COMPARATIFS (dynamique : top par nb de solutions) ============ -->
+<section id="comparatifs" class="so-shell so-comp-inner">
+  <div class="so-head-center">
+    <div class="so-kicker">Nos comparatifs</div>
+    <h2>Choisissez le bon logiciel pour votre startup</h2>
+    <p>Des classements indépendants pour équiper votre entreprise sans perdre de temps. Comparez fonctionnalités, prix et ergonomie en un coup d'œil.</p>
+  </div>
+
+  {% set so_icons = [
+    '<rect x="2.5" y="6" width="19" height="12" rx="2"></rect><circle cx="12" cy="12" r="2.6"></circle>',
+    '<rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect>',
+    '<line x1="5" y1="21" x2="5" y2="13"></line><line x1="12" y1="21" x2="12" y2="8"></line><line x1="19" y1="21" x2="19" y2="4"></line>',
+    '<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"></path><line x1="9.5" y1="8" x2="14.5" y2="8"></line><line x1="9.5" y1="12" x2="14.5" y2="12"></line>',
+    '<circle cx="9" cy="8" r="3.2"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M17 8a3 3 0 0 1 0 6M20 20a5.5 5.5 0 0 0-3-4.9"></path>',
+    '<path d="M3 11l16-6-3 16-4-5-5 3z"></path>'
+  ] %}
+  {% if classements_by_category and classements_by_category | length > 0 %}
+  <div class="so-comp-grid">
+    {% for cat, lst in classements_by_category.items() %}
+    {% set c = (lst | sort(attribute='count', reverse=true))[0] %}
+    <a href="/meilleur-{{ c.slug }}" class="so-comp-card">
+      <div>
+        <div class="so-comp-sub">{{ cat }}</div>
+        <h3>{{ c.label }}</h3>
+        <div class="so-comp-meta">{{ c.count }} solution{{ 's' if c.count > 1 else '' }} comparée{{ 's' if c.count > 1 else '' }}</div>
+      </div>
+      <div class="so-comp-ic">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{{ so_icons[loop.index0 % 6] | safe }}</svg>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="so-comp-cta">
+    <a href="/nos-comparateurs" class="so-btn-dark">Voir tous nos comparateurs <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</section>
+
+<!-- ============ MÉTHODOLOGIE ============ -->
+<section class="so-method">
+  <div class="glow"></div>
+  <div class="so-shell so-method-inner">
+    <div class="so-head-center">
+      <div class="so-kicker">Notre méthodologie</div>
+      <h2>Comment nous classons les logiciels ?</h2>
+      <p>Aucun classement n'est sponsorisé. Chaque solution suit le même protocole d'évaluation pour vous garantir des recommandations fiables et transparentes.</p>
+    </div>
+    <div class="so-method-grid">
+      <div class="so-step"><div class="num">01</div><h3>Analyse du marché</h3><p>Nous recensons les solutions réellement pertinentes pour les TPE, PME et startups.</p></div>
+      <div class="so-step"><div class="num">02</div><h3>Tests indépendants</h3><p>Chaque logiciel est éprouvé sur des cas d'usage réels, sans aucun parti pris commercial.</p></div>
+      <div class="so-step"><div class="num">03</div><h3>Critères pondérés</h3><p>Fonctionnalités, tarifs, ergonomie et support sont notés puis pondérés selon leur impact.</p></div>
+      <div class="so-step"><div class="num">04</div><h3>Mise à jour continue</h3><p>Nos classements évoluent avec les nouvelles offres et les retours de la communauté.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUTEUR ============ -->
+{% if site.author_name is defined and site.author_name %}
+<section class="so-shell so-author-inner">
+  <div class="so-author-txt">
+    <div class="so-kicker">La rédaction</div>
+    <h2>Une rédaction qui connaît le terrain</h2>
+    <p class="lead">Derrière chaque analyse, une expertise concrète de la gestion d'entreprise. Nous écrivons pour les fondateurs, avec l'exigence d'une information utile, vérifiée et indépendante.</p>
+    <div class="so-author-points">
+      <div><span class="chk">&#10003;</span> Contenus relus et sourcés</div>
+      <div><span class="chk">&#10003;</span> Indépendance éditoriale totale</div>
+    </div>
+  </div>
+  <div class="so-author-card">
+    <div class="so-author-top">
+      {% if site.author_photo is defined and site.author_photo %}
+      <img class="so-author-ava" src="{{ site.author_photo }}" alt="{{ site.author_name }}">
+      {% else %}
+      <div class="so-author-ava">{{ site.author_name | truncate(2, true, '') | upper }}</div>
+      {% endif %}
+      <div>
+        <div class="so-author-label">Auteur</div>
+        <h3>{{ site.author_name }}</h3>
+        {% if site.author_job is defined and site.author_job %}<div class="so-author-role">{{ site.author_job }}</div>{% endif %}
+      </div>
+    </div>
+    {% if site.author_bio is defined and site.author_bio %}<p class="so-author-bio">{{ site.author_bio }}</p>{% endif %}
+  </div>
+</section>
+{% endif %}
+
+<!-- ============ ARTICLES RÉCENTS (automatique) ============ -->
+{% if recent_blog_posts and recent_blog_posts | length > 0 %}
+<section id="articles" class="so-articles">
+  <div class="so-shell so-articles-inner">
+    <div class="so-articles-head">
+      <div>
+        <div class="so-kicker">Le blog</div>
+        <h2>Articles récents</h2>
+      </div>
+      <a href="/blog/" class="so-articles-all">Voir tout le blog &rarr;</a>
+    </div>
+
+    <div class="so-articles-grid">
+      {% for p in recent_blog_posts %}
+      <a href="/{{ p.slug }}" class="so-art">
+        <div class="so-art-img">
+          {% if p.featured_image %}
+          <img src="{{ p.featured_image }}" alt="{{ p.title }}" loading="lazy">
+          {% else %}
+          <span class="ph">visuel · article</span>
+          {% endif %}
+        </div>
+        <div class="so-art-body">
+          {% if p.categorie %}<span class="so-art-cat">{{ p.categorie }}</span>{% endif %}
+          <h3>{{ p.title }}</h3>
+          {% if p.excerpt %}<p class="so-art-excerpt">{{ p.excerpt }}</p>{% endif %}
+          <div class="so-art-meta">{{ p.date_display }}{% if p.reading_time %} · {{ p.reading_time }} min{% endif %}</div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- FOOTER (footer actuel, inchangé) -->
+{% include "base/_footer.html.j2" %}
+
+</body>
+</html>
