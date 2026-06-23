@@ -73,6 +73,8 @@ a{text-decoration:none;color:inherit}
 
 .edp-wrap{overflow-x:hidden}
 .edp-shell{max-width:1280px;margin:0 auto;padding-left:40px;padding-right:40px}
+/* Garantit la marge latérale : empêche les raccourcis padding des grilles de remettre les côtés à 0 */
+section.edp-shell,div.edp-shell{padding-left:40px;padding-right:40px}
 
 /* ── HERO ── */
 .edp-hero{position:relative;background:#fff;border-bottom:1px solid #ECEFF6;overflow:hidden}
@@ -235,7 +237,7 @@ a{text-decoration:none;color:inherit}
   .edp-author-photo{max-width:460px}
 }
 @media(max-width:880px){
-  .edp-shell{padding-left:24px;padding-right:24px}
+  .edp-shell,section.edp-shell,div.edp-shell{padding-left:24px;padding-right:24px}
   .edp-vp-grid{grid-template-columns:1fr;gap:24px;padding:48px 0}
   .edp-comp-grid{grid-template-columns:1fr 1fr}
   .edp-how-grid{grid-template-columns:1fr;gap:18px}
@@ -244,7 +246,6 @@ a{text-decoration:none;color:inherit}
 }
 @media(max-width:600px){
   .edp-hero-grid{padding:40px 0 56px}
-  .edp-vp-grid{padding:40px 16px}
   .edp-hero-stats{gap:22px}
   .edp-comp-grid{grid-template-columns:1fr}
   .edp-articles-grid{grid-template-columns:1fr}
