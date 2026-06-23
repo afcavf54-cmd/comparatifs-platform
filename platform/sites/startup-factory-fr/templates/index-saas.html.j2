@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+{% if site.favicon_file is defined and site.favicon_file %}
+<link rel="icon" href="{{ site.favicon_file }}">
+{% else %}
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{% endif %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if home_title is defined and home_title %}{{ home_title }}{% else %}{{ site.name }}{% endif %}</title>
+<meta name="description" content="{% if home_description is defined and home_description %}{{ home_description }}{% else %}Idées, stratégies et comparatifs pour startups en {{ site.year }}.{% endif %}">
+<link rel="canonical" href="{{ site.domain }}/">
+<meta property="og:title" content="{{ home_title | default(site.name) }}">
+<meta property="og:description" content="{{ home_description | default('') }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.domain }}/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+{% if theme.google_fonts %}<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "WebSite",
+  "name": "{{ site.name }}",
+  "url": "{{ site.domain }}",
+  "description": "{{ home_description | default('') }}",
+  "author": { "@type": "Organization", "name": "{{ site.author_name | default(site.name) }}" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ site.domain }}/recherche?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<style>
+/* ============================================================
+   HOME CUSTOM — startup-factory-fr (design « Startup Factory »,
+   thème Brume indigo). Classes scopées .sf-* — n'interfèrent
+   pas avec _nav / _footer. Variables --ink/--accent/--accent2/
+   --cta/--cta-text/--bg REQUISES par les partials nav/footer
+   (header + footer actuels conservés).
+   Marges latérales via .sf-shell ; sections en padding-top/bottom
+   uniquement (pas de raccourci qui remettrait les côtés à 0).
+   ============================================================ */
+:root{
+  --bg:{{ theme.bg }};
+  --surface:#fff;
+  --ink:{{ theme.ink }};
+  --accent:{{ theme.accent }};
+  --accent2:{{ theme.accent2 }};
+  --cta:{{ theme.cta_color if theme.cta_color is defined and theme.cta_color else "#14B8A6" }};
+  --cta-text:{{ theme.cta_text_color if theme.cta_text_color is defined and theme.cta_text_color else "#ffffff" }};
+  --border:#E7EAF0;
+  /* palette locale du design */
+  --sf-indigo:#6366F1;
+  --sf-indigo-l:#818CF8;
+  --sf-teal:#14B8A6;
+  --sf-teal-d:#0E3D34;
+  --sf-mint:#5EE6C4;
+  --sf-lime:#DCF26B;
+  --sf-slate:#1E293B;
+  --sf-ink:#0F172A;
+  --sf-sub:#475569;
+  --sf-mut:#64748B;
+  --sf-mut-l:#94A3B8;
+  --sf-line:#EEF1F6;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;background:#fff;color:var(--sf-ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-size:16px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+::selection{background:var(--sf-indigo);color:#fff}
+.sf-shell{max-width:1240px;margin:0 auto;padding-left:48px;padding-right:48px}
+.sf-kick{display:block;color:var(--sf-indigo);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+
+/* ── HERO ── */
+.sf-hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#F4F4FF 0%,#E9EAFB 100%)}
+.sf-hero .grid-ov{position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.08) 1px,transparent 1px);background-size:120px 120px;pointer-events:none}
+.sf-hero .fade{position:absolute;top:0;left:0;right:0;height:340px;background:linear-gradient(180deg,rgba(99,102,241,.07),rgba(99,102,241,0));pointer-events:none}
+.sf-hero-inner{position:relative;padding-top:64px;padding-bottom:56px}
+.sf-hero-head{max-width:1080px;margin:0 auto;text-align:center}
+.sf-hero-eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--sf-ink);font-weight:600;font-size:16px}
+.sf-hero-eyebrow .ic{display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;color:var(--sf-indigo)}
+.sf-hero h1{margin:22px auto 0;max-width:1080px;font-size:clamp(36px,5.4vw,68px);line-height:1.04;font-weight:800;letter-spacing:-.025em;color:var(--sf-ink)}
+.sf-hero-sub{margin:26px auto 0;max-width:680px;font-size:19px;line-height:1.6;color:var(--sf-sub)}
+.sf-hero-cta{margin-top:32px}
+.sf-btn-hero{display:inline-flex;align-items:center;gap:12px;background:var(--sf-indigo);color:#fff;font-weight:700;font-size:16px;padding:16px 18px 16px 28px;border-radius:999px;box-shadow:0 10px 26px rgba(99,102,241,.4)}
+.sf-btn-hero .circ{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border-radius:50%;background:#fff;color:var(--sf-indigo)}
+/* bento */
+.sf-bento{position:relative;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;align-items:stretch;padding-top:64px}
+.sf-bento-card{border-radius:24px;padding:28px;display:flex;flex-direction:column;justify-content:space-between}
+.sf-bento-white{position:relative;background:#fff;box-shadow:0 20px 50px rgba(8,28,23,.28);overflow:hidden}
+.sf-bento-white h3{margin:0 0 24px;font-size:21px;line-height:1.25;font-weight:800;color:var(--sf-ink);max-width:240px}
+.sf-avatars{display:flex;align-items:center;gap:14px}
+.sf-avatars .row{display:flex;align-items:center}
+.sf-ava{width:42px;height:42px;border:3px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px}
+.sf-ava+.sf-ava{margin-left:-14px}
+.sf-avatars .plus{width:48px;height:48px;border-radius:50%;background:#0E2A22;color:#fff;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.sf-bento-lime{background:var(--sf-lime)}
+.sf-bento-lime h3{margin:0 0 20px;font-size:20px;font-weight:800;color:#142019}
+.sf-tags{display:flex;flex-wrap:wrap;gap:10px}
+.sf-tags span{border:1.5px solid rgba(20,32,25,.45);color:#142019;font-size:14px;font-weight:800;padding:9px 16px;border-radius:999px}
+.sf-bento-teal{background:var(--sf-teal-d)}
+.sf-bento-teal h3{margin:0;font-size:24px;line-height:1.2;font-weight:800;color:#fff}
+.sf-bento-teal a{display:inline-flex;align-items:center;gap:10px;color:#fff;font-weight:700;font-size:15px;margin-top:24px}
+.sf-bento-teal a .circ{display:inline-flex;width:28px;height:28px;align-items:center;justify-content:center;border-radius:50%;background:var(--sf-mint);color:#0E2A22}
+
+/* ── LOGICIELS ── */
+.sf-soft-inner{padding-top:96px;padding-bottom:96px}
+.sf-head-center{max-width:680px;margin:0 auto 44px;text-align:center}
+.sf-head-center .sf-kick{margin-bottom:12px}
+.sf-head-center h2{margin:0 0 18px;font-size:clamp(28px,3.4vw,40px);font-weight:800;letter-spacing:-.02em;color:var(--sf-ink)}
+.sf-head-center p{margin:0 auto;max-width:520px;color:var(--sf-sub);font-size:16px;line-height:1.6}
+.sf-soft-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.sf-soft-card{display:flex;flex-direction:column;align-items:center;text-align:center;background:#fff;border:1px solid #E7EAF0;border-radius:18px;padding:40px 30px;box-shadow:0 1px 2px rgba(15,23,42,.04);transition:transform .2s,box-shadow .2s,border-color .2s}
+.sf-soft-card:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(15,23,42,.09);border-color:#DCE1EA}
+.sf-soft-ic{width:62px;height:62px;display:inline-flex;align-items:center;justify-content:center;border-radius:16px;margin-bottom:26px}
+.sf-soft-card h3{margin:0 0 12px;font-size:19px;font-weight:700;color:var(--sf-ink)}
+.sf-soft-card p{margin:0;color:var(--sf-mut);font-size:14.5px;line-height:1.6}
+.sf-soft-cta{margin-top:44px;text-align:center}
+.sf-btn-teal{display:inline-flex;align-items:center;gap:12px;background:var(--sf-teal);color:#fff;font-weight:700;font-size:16px;padding:16px 18px 16px 30px;border-radius:999px;box-shadow:0 10px 24px rgba(20,184,166,.3)}
+.sf-btn-teal .circ{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border-radius:50%;background:#fff;color:var(--sf-teal)}
+/* tints icônes (cyclés) */
+.sf-t0{background:#EEF0FE;color:var(--sf-indigo)}
+.sf-t1{background:#E7F7F4;color:var(--sf-teal)}
+
+/* ── AUTEUR ── */
+.sf-author{position:relative;background:var(--sf-slate);color:#fff;overflow:hidden}
+.sf-author .glow{position:absolute;top:-100px;right:8%;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,.28),rgba(99,102,241,0) 70%);filter:blur(10px);pointer-events:none}
+.sf-author-inner{position:relative;padding-top:96px;padding-bottom:96px}
+.sf-author-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:center}
+.sf-author-photo{position:relative}
+.sf-author-photo .frame{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;background:repeating-linear-gradient(45deg,#27364a,#27364a 12px,#2f3f55 12px,#2f3f55 24px);display:flex;align-items:center;justify-content:center}
+.sf-author-photo .frame img{width:100%;height:100%;object-fit:cover;display:block}
+.sf-author-photo .frame .ph{font-family:'JetBrains Mono',monospace;font-size:13px;color:#94A3B8}
+.sf-author-badge{position:absolute;right:-22px;bottom:28px;background:var(--sf-teal);color:#fff;border-radius:16px;padding:18px 22px;box-shadow:0 14px 30px rgba(0,0,0,.3)}
+.sf-author-badge strong{display:block;font-size:30px;font-weight:800;line-height:1}
+.sf-author-badge span{font-size:13px;opacity:.9}
+.sf-author-txt .sf-kick{color:var(--sf-indigo-l)}
+.sf-author-txt h2{margin:0 0 22px;font-size:clamp(28px,3.4vw,42px);line-height:1.1;font-weight:800;letter-spacing:-.02em}
+.sf-author-txt p{margin:0 0 18px;color:#CBD5E1;font-size:17px;line-height:1.7;max-width:560px}
+.sf-author-id{display:flex;gap:14px;align-items:center;margin-top:14px}
+.sf-author-id strong{display:block;font-size:16px}
+.sf-author-id span{color:#94A3B8;font-size:14px}
+
+/* ── MÉTHODOLOGIE ── */
+.sf-method-inner{padding-top:96px;padding-bottom:96px}
+.sf-method-grid{max-width:1100px;margin:56px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.sf-mcard{background:#fff;border:1px solid var(--sf-line);border-radius:20px;padding:30px;box-shadow:0 10px 30px rgba(15,23,42,.04)}
+.sf-mcard .num{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:14px;background:#EEF0FE;color:var(--sf-indigo);font-family:'JetBrains Mono',monospace;font-weight:700;font-size:16px;margin-bottom:22px}
+.sf-mcard h3{margin:0 0 10px;font-size:18px;font-weight:700;color:var(--sf-ink)}
+.sf-mcard p{margin:0;color:var(--sf-mut);font-size:14.5px;line-height:1.55}
+
+/* ── ARTICLES ── */
+.sf-articles-inner{padding-top:24px;padding-bottom:100px}
+.sf-articles-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.sf-articles-head h2{margin:0;font-size:clamp(28px,3.4vw,40px);font-weight:800;letter-spacing:-.02em;color:var(--sf-ink)}
+.sf-articles-all{padding:13px 26px;border-radius:999px;border:1px solid #E2E8F0;background:#fff;color:var(--sf-ink);font-weight:700;font-size:15px;transition:background .18s,border-color .18s}
+.sf-articles-all:hover{background:#F1F3F7;border-color:#C3CAD6}
+.sf-articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.sf-art{display:flex;flex-direction:column;background:#fff;border:1px solid var(--sf-line);border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.05);transition:transform .2s,box-shadow .2s}
+.sf-art:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(15,23,42,.1)}
+.sf-art-img{position:relative;display:block;aspect-ratio:16/10;background-image:repeating-linear-gradient(135deg,#E3E8FF 0 13px,#EDF1FF 13px 26px);overflow:hidden}
+.sf-art-img img{width:100%;height:100%;object-fit:cover;display:block}
+.sf-art-tag{position:absolute;top:16px;left:16px;background:rgba(255,255,255,.92);color:var(--sf-indigo);font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;padding:6px 12px;border-radius:999px;max-width:calc(100% - 32px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sf-art-body{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
+.sf-art-body h3{margin:0 0 12px;font-size:19px;font-weight:700;line-height:1.3;color:var(--sf-ink)}
+.sf-art-excerpt{margin:0 0 20px;color:var(--sf-mut);font-size:14.5px;line-height:1.55;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.sf-art-meta{display:flex;align-items:center;gap:10px;color:var(--sf-mut-l);font-size:13px;font-weight:500}
+.sf-art-meta .dot{width:4px;height:4px;border-radius:50%;background:#CBD5E1}
+
+/* ── NEWSLETTER ── */
+.sf-news-inner{padding-top:0;padding-bottom:100px}
+.sf-news-box{max-width:1100px;margin:0 auto;position:relative;background:var(--sf-indigo);border-radius:28px;padding:64px 56px;overflow:hidden;color:#fff;text-align:center}
+.sf-news-box .b1{position:absolute;top:-80px;left:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18),rgba(255,255,255,0) 70%)}
+.sf-news-box .b2{position:absolute;bottom:-100px;right:-40px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,.4),rgba(20,184,166,0) 70%)}
+.sf-news-box .inner{position:relative}
+.sf-news-box h2{margin:0 auto;max-width:620px;font-size:clamp(26px,3.2vw,38px);font-weight:800;letter-spacing:-.02em;line-height:1.12}
+.sf-news-box p{margin:18px auto 32px;max-width:520px;font-size:17px;line-height:1.6;color:rgba(255,255,255,.85)}
+.sf-news-form{display:flex;gap:12px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.sf-news-form input{flex:1;min-width:240px;border:none;border-radius:999px;padding:16px 24px;font-size:15px;font-family:inherit;outline:none;color:var(--sf-ink)}
+.sf-news-form button{border:none;cursor:pointer;background:var(--sf-teal);color:#fff;font-weight:700;font-size:15px;font-family:inherit;padding:16px 30px;border-radius:999px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:980px){
+  .sf-bento{grid-template-columns:1fr;gap:18px}
+  .sf-author-grid{grid-template-columns:1fr;gap:48px}
+  .sf-author-photo{max-width:420px}
+  .sf-method-grid{grid-template-columns:1fr 1fr}
+  .sf-articles-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:880px){
+  .sf-shell{padding-left:20px;padding-right:20px}
+}
+@media(max-width:600px){
+  .sf-hero-inner{padding-top:40px;padding-bottom:48px}
+  .sf-bento{padding-top:40px}
+  .sf-soft-inner,.sf-author-inner,.sf-method-inner{padding-top:60px;padding-bottom:60px}
+  .sf-articles-inner{padding-bottom:64px}
+  .sf-news-inner{padding-bottom:64px}
+  .sf-method-grid{grid-template-columns:1fr}
+  .sf-articles-grid{grid-template-columns:1fr}
+  .sf-news-box{padding:44px 28px}
+  .sf-author-badge{right:auto;left:18px;bottom:18px}
+}
+</style>
+{% if site.google_site_verification is defined and site.google_site_verification %}
+<meta name="google-site-verification" content="{{ site.google_site_verification }}">
+{% endif %}
+{% if site.analytics_clicky is defined and site.analytics_clicky %}
+{% if '<script' in site.analytics_clicky %}
+{{ site.analytics_clicky | safe }}
+{% else %}
+<script async data-id="{{ site.analytics_clicky }}" src="//static.getclicky.com/js"></script>
+{% endif %}
+{% endif %}
+</head>
+<body>
+
+<!-- NAV (header actuel, inchangé) -->
+{% include 'base/_nav.html.j2' %}
+
+<!-- ============ HERO ============ -->
+<section class="sf-hero">
+  <div class="grid-ov"></div>
+  <div class="fade"></div>
+  <div class="sf-shell sf-hero-inner">
+    <div class="sf-hero-head">
+      <span class="sf-hero-eyebrow">
+        <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"></polyline><polyline points="15 7 21 7 21 13"></polyline></svg></span>
+        {{ site.tagline | default('Le média des startups à fort potentiel') }}
+      </span>
+      <h1>{% if site.home_h1 is defined and site.home_h1 %}{{ site.home_h1 | safe }}{% else %}Startup Factory : idées, stratégies et croissance pour les startups{% endif %}</h1>
+      <p class="sf-hero-sub">{{ home_description | default("Startup Factory partage actualités, analyses, conseils et stratégies pour aider les entrepreneurs à lancer et développer leur startup.") }}</p>
+      <div class="sf-hero-cta">
+        <a href="#articles" class="sf-btn-hero">Lire les derniers articles
+          <span class="circ"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+        </a>
+      </div>
+    </div>
+
+    <div class="sf-bento">
+      <div class="sf-bento-card sf-bento-white">
+        <h3>Des milliers de créateurs nous font confiance</h3>
+        <div class="sf-avatars">
+          <div class="row">
+            <span class="sf-ava" style="background:#14B8A6">ML</span>
+            <span class="sf-ava" style="background:#6366F1">JD</span>
+            <span class="sf-ava" style="background:#F59E0B">SA</span>
+          </div>
+          <span class="plus"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span>
+        </div>
+      </div>
+      <div class="sf-bento-card sf-bento-lime">
+        <h3>Ce qu'on couvre</h3>
+        <div class="sf-tags">
+          <span>Levée de fonds</span><span>Product-market fit</span><span>Growth</span><span>Et plus encore</span>
+        </div>
+      </div>
+      <div class="sf-bento-card sf-bento-teal">
+        <h3>{{ total_products | default(products | length) }}+ logiciels<br>testés</h3>
+        <a href="#logiciels">Voir les comparatifs
+          <span class="circ"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOGICIELS (comparateurs, dynamique) ============ -->
+<section id="logiciels" class="sf-shell sf-soft-inner">
+  <div class="sf-head-center">
+    <span class="sf-kick">Nos comparatifs</span>
+    <h2>Choisissez le bon logiciel pour votre startup</h2>
+    <p>Des classements indépendants, testés et mis à jour, pour équiper votre startup sans perdre de temps.</p>
+  </div>
+
+  {% set sf_icons = [
+    '<rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2.4"></circle>',
+    '<rect x="3" y="3" width="7" height="7" rx="1.4"></rect><rect x="14" y="3" width="7" height="7" rx="1.4"></rect><rect x="14" y="14" width="7" height="7" rx="1.4"></rect><rect x="3" y="14" width="7" height="7" rx="1.4"></rect>',
+    '<rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="8" y1="11" x2="8" y2="11.01"></line><line x1="12" y1="11" x2="12" y2="11.01"></line><line x1="16" y1="11" x2="16" y2="11.01"></line><line x1="8" y1="15" x2="8" y2="15.01"></line><line x1="12" y1="15" x2="12" y2="15.01"></line>',
+    '<path d="M5 2v20l2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1Z"></path><line x1="9" y1="8" x2="15" y2="8"></line><line x1="9" y1="12" x2="15" y2="12"></line><line x1="9" y1="16" x2="13" y2="16"></line>',
+    '<path d="M3 11l16-6-3 16-4-5-5 3z"></path>',
+    '<circle cx="9" cy="8" r="3.2"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M17 8a3 3 0 0 1 0 6"></path>'
+  ] %}
+  {% set sf_all = [] %}
+  {% for sf_cat, sf_list in classements_by_category.items() %}
+    {% for sf_c in sf_list %}{% set _ = sf_all.append({'cat': sf_cat, 'slug': sf_c.slug, 'label': sf_c.label, 'count': sf_c.count}) %}{% endfor %}
+  {% endfor %}
+  {% if sf_all | length > 0 %}
+  <div class="sf-soft-grid">
+    {% for c in (sf_all | sort(attribute='count', reverse=true))[:8] %}
+    <a href="/meilleur-{{ c.slug }}" class="sf-soft-card">
+      <span class="sf-soft-ic {{ 'sf-t1' if loop.index0 % 2 else 'sf-t0' }}">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">{{ sf_icons[loop.index0 % 6] | safe }}</svg>
+      </span>
+      <h3>{{ c.label }}</h3>
+      <p>{{ c.count }} solution{{ 's' if c.count > 1 else '' }} comparée{{ 's' if c.count > 1 else '' }} · {{ c.cat }}</p>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="sf-soft-cta">
+    <a href="/nos-comparateurs" class="sf-btn-teal">Voir nos comparateurs
+      <span class="circ"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ AUTEUR ============ -->
+{% if site.author_name is defined and site.author_name %}
+<section class="sf-author">
+  <div class="glow"></div>
+  <div class="sf-shell sf-author-inner">
+    <div class="sf-author-grid">
+      <div class="sf-author-photo">
+        <div class="frame">
+          {% if site.author_photo is defined and site.author_photo %}
+          <img src="{{ site.author_photo }}" alt="{{ site.author_name }}">
+          {% else %}
+          <span class="ph">Photo — {{ site.author_name }}</span>
+          {% endif %}
+        </div>
+        <div class="sf-author-badge"><strong>19 ans</strong><span>dans l'écosystème startup</span></div>
+      </div>
+      <div class="sf-author-txt">
+        <span class="sf-kick">Derrière le média</span>
+        <h2>Une entrepreneuse qui écrit pour les fondateurs</h2>
+        {% if site.author_bio is defined and site.author_bio %}<p>{{ site.author_bio }}</p>{% endif %}
+        <div class="sf-author-id">
+          <span><strong>{{ site.author_name }}</strong><span>Fondatrice de Startup Factory</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ============ MÉTHODOLOGIE ============ -->
+<section class="sf-shell sf-method-inner">
+  <div class="sf-head-center">
+    <span class="sf-kick">En toute transparence</span>
+    <h2>Notre méthodologie de classement</h2>
+    <p>Quatre étapes rigoureuses pour que nos recommandations restent fiables, indépendantes et utiles.</p>
+  </div>
+  <div class="sf-method-grid">
+    <div class="sf-mcard"><span class="num">01</span><h3>Sélection du marché</h3><p>Nous recensons les solutions sérieuses et écartons les acteurs sans traction réelle.</p></div>
+    <div class="sf-mcard"><span class="num">02</span><h3>Tests indépendants</h3><p>Nous avons testé des centaines de logiciels sur des cas concrets, pour ne recommander que ceux qui tiennent leurs promesses.</p></div>
+    <div class="sf-mcard"><span class="num">03</span><h3>Critères pondérés</h3><p>Prix, fonctionnalités, support et ergonomie sont notés selon une grille transparente.</p></div>
+    <div class="sf-mcard"><span class="num">04</span><h3>Mises à jour</h3><p>Les classements évoluent avec le marché et les retours de notre communauté.</p></div>
+  </div>
+</section>
+
+<!-- ============ ARTICLES RÉCENTS (automatique) ============ -->
+{% if recent_blog_posts and recent_blog_posts | length > 0 %}
+<section id="articles" class="sf-shell sf-articles-inner">
+  <div class="sf-articles-head">
+    <div>
+      <span class="sf-kick">Le blog</span>
+      <h2>Articles récents</h2>
+    </div>
+    <a href="/blog/" class="sf-articles-all">Tous les articles</a>
+  </div>
+  <div class="sf-articles-grid">
+    {% for p in recent_blog_posts %}
+    <a href="/{{ p.slug }}" class="sf-art">
+      <span class="sf-art-img">
+        {% if p.featured_image %}<img src="{{ p.featured_image }}" alt="{{ p.title }}" loading="lazy">{% endif %}
+        {% if p.categorie %}<span class="sf-art-tag">{{ p.categorie }}</span>{% endif %}
+      </span>
+      <div class="sf-art-body">
+        <h3>{{ p.title }}</h3>
+        {% if p.excerpt %}<p class="sf-art-excerpt">{{ p.excerpt }}</p>{% endif %}
+        <div class="sf-art-meta"><span>{{ p.date_display }}</span>{% if p.reading_time %}<span class="dot"></span><span>{{ p.reading_time }} min</span>{% endif %}</div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<!-- ============ NEWSLETTER ============ -->
+<section id="contact" class="sf-shell sf-news-inner">
+  <div class="sf-news-box">
+    <div class="b1"></div>
+    <div class="b2"></div>
+    <div class="inner">
+      <h2>La dose hebdo d'analyses pour fondateurs</h2>
+      <p>Rejoignez les entrepreneurs qui reçoivent chaque semaine nos meilleurs conseils et comparatifs.</p>
+      <form class="sf-news-form" action="/contact" method="get">
+        <input type="email" name="email" placeholder="Votre adresse e-mail" aria-label="Votre adresse e-mail">
+        <button type="submit">S'inscrire</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER (footer actuel, inchangé) -->
+{% include "base/_footer.html.j2" %}
+
+</body>
+</html>
