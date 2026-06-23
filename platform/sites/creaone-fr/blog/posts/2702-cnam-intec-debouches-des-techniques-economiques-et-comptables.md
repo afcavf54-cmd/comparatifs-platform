@@ -4,15 +4,21 @@ slug: 2702-cnam-intec-debouches-des-techniques-economiques-et-comptables
 date: '2026-06-23T06:00:00+02:00'
 categorie: Comptabilité
 meta_title: Le Cnam-Intec en techniques comptables vaut-il l'investissement ?
-meta_description: 'Diplôme Cnam-Intec en techniques économiques et comptables : découvrez les débouchés concrets, les métiers accessibles et les conseils d''un professionnel de la…'
+meta_description: 'Diplôme Cnam-Intec en techniques économiques et comptables : découvrez
+  les débouchés concrets, les métiers accessibles et les conseils d''un professionnel
+  de la…'
 min_words: 910
 status: published
 featured_image: /blog/2702-cnam-intec-debouches-des-techniques-economiques-et-comptables.jpg
 link_anchors:
 - text: le CNAM INTEC (institut national des techniques économiques et comptables)
   max: 5
+related_posts:
+- 5304-7-points-avant-de-choisir-le-logiciel-de-facturation-quickbill-advanced
+- 9323-sa-premiere-facture-en-ligne-gratuite-avec-articles
+- 5170-pourquoi-passer-au-cloud-avec-la-comptabilite-financecore-enterprise
+- 9168-pourquoi-choisir-la-comptabilite-cloud-financecore-plus
 ---
-
 <p>Neuf ans dans la compta, et j'ai croisé pas mal de profils qui sortaient du Cnam-Intec. Certains sont devenus de très bons collaborateurs. D'autres ont galèrement cherché leur voie pendant un moment, faute d'avoir bien ciblé les débouchés avant de s'engager. C'est dommage, parce que cette formation ouvre vraiment des portes concrètes si vous savez où regarder.</p>
 
 <p>Alors si vous vous posez des questions sur ce que vous pourrez faire après un diplôme en techniques économiques et comptables à l'Intec, voici ce que j'ai observé sur le terrain, depuis un service comptable d'une boîte de taille intermédiaire à Toulouse.</p>
