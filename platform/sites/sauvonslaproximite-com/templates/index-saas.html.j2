@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+{% if site.favicon_file is defined and site.favicon_file %}
+<link rel="icon" href="{{ site.favicon_file }}">
+{% else %}
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{% endif %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if home_title is defined and home_title %}{{ home_title }}{% else %}{{ site.name }}{% endif %}</title>
+<meta name="description" content="{% if home_description is defined and home_description %}{{ home_description }}{% else %}Conseils, comparatifs et actualités pour les commerces et entreprises locales en {{ site.year }}.{% endif %}">
+<link rel="canonical" href="{{ site.domain }}/">
+<meta property="og:title" content="{{ home_title | default(site.name) }}">
+<meta property="og:description" content="{{ home_description | default('') }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.domain }}/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+{% if theme.google_fonts %}<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "WebSite",
+  "name": "{{ site.name }}",
+  "url": "{{ site.domain }}",
+  "description": "{{ home_description | default('') }}",
+  "author": { "@type": "Organization", "name": "{{ site.author_name | default(site.name) }}" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ site.domain }}/recherche?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<style>
+/* ============================================================
+   HOME CUSTOM — sauvonslaproximite-com (design « Sauvons la
+   Proximité »). Classes scopées .slp-* — n'interfèrent pas
+   avec _nav / _footer. Variables --ink/--accent/--accent2/
+   --cta/--cta-text/--bg REQUISES par les partials nav/footer
+   (header + footer actuels conservés).
+   Marges latérales via .slp-shell ; sections en padding-top/
+   bottom uniquement.
+   ============================================================ */
+:root{
+  --bg:{{ theme.bg }};
+  --surface:#fff;
+  --ink:{{ theme.ink }};
+  --accent:{{ theme.accent }};
+  --accent2:{{ theme.accent2 }};
+  --cta:{{ theme.cta_color if theme.cta_color is defined and theme.cta_color else "#0EA5A5" }};
+  --cta-text:{{ theme.cta_text_color if theme.cta_text_color is defined and theme.cta_text_color else "#ffffff" }};
+  --border:#e4e9f1;
+  /* palette locale du design */
+  --slp-navy:#121826;
+  --slp-blue:#2563EB;
+  --slp-teal:#0EA5A5;
+  --slp-teal-d:#0c9090;
+  --slp-bg:#EEF2F7;
+  --slp-ink:#0F172A;
+  --slp-sub:#475569;
+  --slp-mut:#64748b;
+  --slp-mut-l:#94a3b8;
+  --slp-line:#e3e8f0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;background:var(--slp-bg);color:var(--slp-ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-size:16px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+::selection{background:var(--slp-teal);color:#fff}
+.slp-shell{max-width:1200px;margin:0 auto;padding-left:48px;padding-right:48px}
+.slp-kick{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--slp-blue);margin-bottom:14px}
+
+/* ── HERO ── */
+.slp-hero{background:linear-gradient(180deg,#EEF2F7 0%,#E5EBF4 100%)}
+.slp-hero-inner{padding-top:84px;padding-bottom:92px;display:flex;align-items:center;gap:64px;flex-wrap:wrap}
+.slp-hero-txt{flex:1 1 460px;min-width:320px}
+.slp-hero h1{font-size:clamp(38px,4.6vw,58px);line-height:1.06;font-weight:800;letter-spacing:-.02em;margin:0 0 22px;color:var(--slp-ink)}
+.slp-hero-desc{font-size:19px;line-height:1.65;color:var(--slp-sub);margin:0 0 36px;max-width:560px}
+.slp-hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.slp-btn-teal{display:inline-flex;align-items:center;gap:9px;background:var(--slp-teal);color:#fff;font-weight:700;font-size:16px;padding:15px 30px;border-radius:12px;box-shadow:0 10px 24px rgba(14,165,165,.28);transition:background .18s}
+.slp-btn-teal:hover{background:var(--slp-teal-d)}
+.slp-btn-ghost{display:inline-flex;align-items:center;background:#fff;color:var(--slp-ink);font-weight:700;font-size:16px;padding:15px 30px;border-radius:12px;border:1px solid #d7deea;transition:border-color .18s,color .18s}
+.slp-btn-ghost:hover{border-color:var(--slp-blue);color:var(--slp-blue)}
+.slp-hero-stats{display:flex;gap:34px;margin-top:46px;flex-wrap:wrap}
+.slp-hero-stats .n{font-size:28px;font-weight:800;color:var(--slp-ink)}
+.slp-hero-stats .c{font-size:14px;color:var(--slp-mut);font-weight:500}
+.slp-hero-visual{flex:1 1 380px;min-width:300px;position:relative}
+.slp-hero-visual .halo{position:absolute;inset:-18px;background:radial-gradient(circle at 60% 40%,rgba(37,99,235,.12),transparent 65%);border-radius:50%;pointer-events:none}
+.slp-hero-visual .frame{position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;box-shadow:0 24px 50px rgba(18,24,38,.12)}
+.slp-hero-visual svg{width:100%;height:100%;display:block}
+
+/* ── SECTION HEADERS ── */
+.slp-head-center{text-align:center;max-width:660px;margin:0 auto 52px}
+.slp-head-center h2{font-size:clamp(28px,3.2vw,40px);font-weight:800;letter-spacing:-.02em;margin:0 0 14px;color:var(--slp-ink)}
+.slp-head-center p{font-size:17px;line-height:1.6;color:var(--slp-mut);margin:0}
+
+/* ── SERVICES / LOGICIELS ── */
+.slp-serv{background:#fff}
+.slp-serv-inner{padding-top:92px;padding-bottom:92px}
+.slp-serv-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.slp-serv-item{display:block;text-align:center;padding:14px 40px;border-right:1px solid var(--slp-line);transition:opacity .18s}
+.slp-serv-item:last-child{border-right:none}
+.slp-serv-item:hover{opacity:.78}
+.slp-serv-item .ic{display:block;margin:0 auto 22px;color:var(--slp-teal)}
+.slp-serv-item h3{font-size:20px;font-weight:700;margin:0 0 12px;color:var(--slp-ink)}
+.slp-serv-item p{font-size:15px;line-height:1.6;color:var(--slp-mut);margin:0}
+.slp-serv-cta{text-align:center;margin-top:44px}
+.slp-btn-dark{display:inline-flex;align-items:center;gap:10px;background:var(--slp-ink);color:#fff;font-weight:700;font-size:16px;padding:16px 34px;border-radius:12px;transition:background .18s}
+.slp-btn-dark:hover{background:#1e293b}
+.slp-btn-dark .arr{color:var(--slp-teal);font-size:18px}
+
+/* ── MÉTHODOLOGIE ── */
+.slp-method{background:var(--slp-navy)}
+.slp-method-inner{padding-top:96px;padding-bottom:96px;max-width:1140px;margin:0 auto}
+.slp-method .slp-head-center h2{color:#fff}
+.slp-method .slp-head-center p{color:rgba(255,255,255,.6)}
+.slp-method .slp-kick{color:var(--slp-teal)}
+.slp-method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px}
+.slp-step{border-top:2px solid rgba(255,255,255,.12);padding-top:24px}
+.slp-step .num{font-size:15px;font-weight:800;color:var(--slp-teal);margin-bottom:14px}
+.slp-step h3{font-size:18px;font-weight:700;color:#fff;margin:0 0 10px}
+.slp-step p{font-size:15px;line-height:1.6;color:rgba(255,255,255,.58);margin:0}
+
+/* ── AUTEUR ── */
+.slp-author{background:var(--slp-bg)}
+.slp-author-inner{padding-top:92px;padding-bottom:92px;display:flex;align-items:center;gap:60px;flex-wrap:wrap;max-width:1080px;margin:0 auto}
+.slp-author-photo{flex:0 0 300px;max-width:300px}
+.slp-author-photo .frame{aspect-ratio:1/1;border-radius:22px;overflow:hidden;border:1px solid #d7deea;box-shadow:0 20px 44px rgba(18,24,38,.10);background:repeating-linear-gradient(45deg,#dbe2ee,#dbe2ee 11px,#e7ecf4 11px,#e7ecf4 22px);display:flex;align-items:center;justify-content:center}
+.slp-author-photo .frame img{width:100%;height:100%;object-fit:cover;display:block}
+.slp-author-photo .ph{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:#7b879b;background:#fff;padding:7px 14px;border-radius:8px;border:1px solid #d7deea}
+.slp-author-txt{flex:1 1 380px;min-width:300px}
+.slp-author-txt h2{font-size:clamp(26px,3vw,36px);font-weight:800;letter-spacing:-.02em;margin:0 0 18px;color:var(--slp-ink)}
+.slp-author-txt p{font-size:17px;line-height:1.7;color:var(--slp-sub);margin:0 0 26px}
+.slp-author-id{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.slp-author-id .nm{font-weight:800;font-size:18px;color:var(--slp-ink)}
+.slp-author-id .dot{width:5px;height:5px;border-radius:50%;background:#cbd5e1}
+.slp-author-id .role{font-size:15px;color:var(--slp-mut);font-weight:500}
+
+/* ── ARTICLES ── */
+.slp-articles{background:#fff}
+.slp-articles-inner{padding-top:96px;padding-bottom:96px}
+.slp-articles-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+.slp-articles-head h2{font-size:clamp(28px,3.2vw,40px);font-weight:800;letter-spacing:-.02em;margin:0;color:var(--slp-ink)}
+.slp-articles-all{font-size:15px;font-weight:700;color:var(--slp-blue);display:inline-flex;align-items:center;gap:6px}
+.slp-articles-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.slp-art{display:block;background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:box-shadow .2s,transform .2s}
+.slp-art:hover{box-shadow:0 16px 36px rgba(18,24,38,.10);transform:translateY(-3px)}
+.slp-art-img{aspect-ratio:16/9;background:repeating-linear-gradient(45deg,#dbe2ee,#dbe2ee 11px,#e7ecf4 11px,#e7ecf4 22px);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.slp-art-img img{width:100%;height:100%;object-fit:cover;display:block}
+.slp-art-img .ph{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#7b879b;background:#fff;padding:5px 11px;border-radius:7px;border:1px solid #d7deea}
+.slp-art-body{padding:24px}
+.slp-art-cat{display:inline-block;font-size:12px;font-weight:700;color:var(--slp-blue);background:rgba(37,99,235,.08);padding:5px 11px;border-radius:7px;margin-bottom:14px}
+.slp-art-body h3{font-size:18px;font-weight:700;line-height:1.35;margin:0 0 14px;color:var(--slp-ink);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.slp-art-meta{font-size:13px;color:var(--slp-mut-l);font-weight:500}
+
+/* ── NEWSLETTER ── */
+.slp-news{background:var(--slp-teal)}
+.slp-news-inner{padding-top:80px;padding-bottom:80px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;max-width:1080px;margin:0 auto}
+.slp-news-txt{flex:1 1 380px}
+.slp-news-txt h2{font-size:clamp(24px,2.6vw,32px);font-weight:800;letter-spacing:-.02em;margin:0 0 12px;color:#fff}
+.slp-news-txt p{font-size:16px;line-height:1.6;color:rgba(255,255,255,.78);margin:0}
+.slp-news-form{flex:0 1 440px;display:flex;gap:10px;min-width:300px}
+.slp-news-form input{flex:1;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.35);border-radius:11px;padding:15px 18px;color:#fff;font-size:15px;font-family:inherit;outline:none}
+.slp-news-form input::placeholder{color:rgba(255,255,255,.7)}
+.slp-news-form button{background:#fff;color:var(--slp-teal);font-weight:700;font-size:15px;padding:15px 26px;border:none;border-radius:11px;cursor:pointer;white-space:nowrap;transition:background .18s}
+.slp-news-form button:hover{background:#f0fafa}
+
+/* ── RESPONSIVE ── */
+@media(max-width:980px){
+  .slp-serv-grid{grid-template-columns:1fr 1fr}
+  .slp-serv-item{border-right:none;border-bottom:1px solid var(--slp-line);padding:28px 20px}
+  .slp-articles-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:880px){
+  .slp-shell{padding-left:20px;padding-right:20px}
+}
+@media(max-width:600px){
+  .slp-hero-inner{padding-top:52px;padding-bottom:64px;gap:40px}
+  .slp-serv-inner,.slp-method-inner,.slp-author-inner,.slp-articles-inner{padding-top:60px;padding-bottom:60px}
+  .slp-news-inner{padding-top:56px;padding-bottom:56px}
+  .slp-serv-grid{grid-template-columns:1fr}
+  .slp-articles-grid{grid-template-columns:1fr}
+  .slp-news-form{flex-direction:column}
+}
+</style>
+{% if site.google_site_verification is defined and site.google_site_verification %}
+<meta name="google-site-verification" content="{{ site.google_site_verification }}">
+{% endif %}
+{% if site.analytics_clicky is defined and site.analytics_clicky %}
+{% if '<script' in site.analytics_clicky %}
+{{ site.analytics_clicky | safe }}
+{% else %}
+<script async data-id="{{ site.analytics_clicky }}" src="//static.getclicky.com/js"></script>
+{% endif %}
+{% endif %}
+</head>
+<body>
+
+<!-- NAV (header actuel, inchangé) -->
+{% include 'base/_nav.html.j2' %}
+
+<!-- ============ HERO ============ -->
+<section class="slp-hero">
+  <div class="slp-shell slp-hero-inner">
+    <div class="slp-hero-txt">
+      <h1>{% if site.home_h1 is defined and site.home_h1 %}{{ site.home_h1 | safe }}{% else %}Le média engagé pour les commerces et entreprises locales{% endif %}</h1>
+      <p class="slp-hero-desc">{{ home_description | default("Sauvons la Proximité met en lumière les commerces, artisans, indépendants et entreprises locales à travers des conseils, actualités et analyses.") }}</p>
+      <div class="slp-hero-cta">
+        <a href="#services" class="slp-btn-teal">Explorer les comparatifs <span style="font-size:18px;">&rarr;</span></a>
+        <a href="/blog/" class="slp-btn-ghost">Lire le blog</a>
+      </div>
+      <div class="slp-hero-stats">
+        <div><div class="n">{{ total_products | default(products | length) }}+</div><div class="c">Logiciels comparés</div></div>
+        <div><div class="n">{{ total_categories | default(0) }}</div><div class="c">Catégories</div></div>
+        <div><div class="n">100%</div><div class="c">Indépendant</div></div>
+      </div>
+    </div>
+
+    <div class="slp-hero-visual">
+      <div class="halo"></div>
+      <div class="frame">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" aria-label="Illustration : commerces de proximité">
+          <defs>
+            <linearGradient id="slpbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ddeaf8"></stop><stop offset="1" stop-color="#EEF2F7"></stop></linearGradient>
+            <linearGradient id="slpsh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="rgba(255,255,255,0.22)"></stop><stop offset="1" stop-color="rgba(255,255,255,0)"></stop></linearGradient>
+          </defs>
+          <rect width="480" height="360" fill="url(#slpbg)"></rect>
+          <circle cx="400" cy="48" r="90" fill="#2563EB" opacity="0.06"></circle>
+          <circle cx="70" cy="310" r="110" fill="#0EA5A5" opacity="0.07"></circle>
+          <circle cx="440" cy="290" r="70" fill="#2563EB" opacity="0.05"></circle>
+          <rect x="0" y="292" width="480" height="68" fill="#cfdcef"></rect>
+          <rect x="0" y="292" width="480" height="4" fill="#bfcfe6"></rect>
+          <rect x="0" y="304" width="480" height="2" fill="rgba(255,255,255,0.3)"></rect>
+          <rect x="28" y="142" width="126" height="150" fill="#2563EB" rx="5"></rect>
+          <rect x="28" y="142" width="126" height="150" fill="url(#slpsh)" rx="5"></rect>
+          <rect x="46" y="164" width="36" height="28" fill="rgba(255,255,255,0.22)" rx="4"></rect>
+          <rect x="94" y="164" width="36" height="28" fill="rgba(255,255,255,0.22)" rx="4"></rect>
+          <rect x="46" y="208" width="36" height="28" fill="rgba(255,255,255,0.22)" rx="4"></rect>
+          <rect x="94" y="208" width="36" height="28" fill="rgba(255,255,255,0.22)" rx="4"></rect>
+          <rect x="66" y="252" width="36" height="40" fill="rgba(255,255,255,0.16)" rx="4"></rect>
+          <rect x="26" y="135" width="130" height="14" fill="#1a50c0" rx="4"></rect>
+          <rect x="52" y="107" width="78" height="26" fill="#fff" rx="6"></rect>
+          <rect x="60" y="115" width="48" height="7" fill="#d4dff0" rx="2"></rect>
+          <rect x="60" y="126" width="30" height="5" fill="#d4dff0" rx="2"></rect>
+          <rect x="178" y="88" width="124" height="204" fill="#121826" rx="6"></rect>
+          <rect x="178" y="88" width="124" height="204" fill="url(#slpsh)" rx="6"></rect>
+          <rect x="196" y="108" width="32" height="24" fill="#2563EB" opacity="0.55" rx="3"></rect>
+          <rect x="250" y="108" width="32" height="24" fill="#2563EB" opacity="0.55" rx="3"></rect>
+          <rect x="196" y="148" width="32" height="24" fill="#2563EB" opacity="0.55" rx="3"></rect>
+          <rect x="250" y="148" width="32" height="24" fill="#2563EB" opacity="0.55" rx="3"></rect>
+          <rect x="196" y="188" width="32" height="24" fill="#2563EB" opacity="0.55" rx="3"></rect>
+          <rect x="250" y="188" width="32" height="24" fill="#2563EB" opacity="0.55" rx="3"></rect>
+          <rect x="208" y="252" width="40" height="40" fill="#0EA5A5" opacity="0.55" rx="4"></rect>
+          <rect x="178" y="80" width="124" height="16" fill="#0EA5A5" rx="5"></rect>
+          <rect x="186" y="52" width="108" height="30" fill="#0EA5A5" rx="8"></rect>
+          <circle cx="204" cy="67" r="9" fill="rgba(255,255,255,0.28)"></circle>
+          <rect x="218" y="62" width="62" height="7" fill="rgba(255,255,255,0.55)" rx="2"></rect>
+          <rect x="218" y="73" width="42" height="5" fill="rgba(255,255,255,0.38)" rx="2"></rect>
+          <circle cx="240" cy="36" r="11" fill="#2563EB"></circle>
+          <polygon points="232,44 248,44 240,58" fill="#2563EB"></polygon>
+          <circle cx="240" cy="36" r="4.5" fill="white"></circle>
+          <rect x="322" y="158" width="130" height="134" fill="#0EA5A5" rx="5"></rect>
+          <rect x="322" y="158" width="130" height="134" fill="url(#slpsh)" rx="5"></rect>
+          <rect x="340" y="178" width="34" height="26" fill="rgba(255,255,255,0.24)" rx="3"></rect>
+          <rect x="390" y="178" width="34" height="26" fill="rgba(255,255,255,0.24)" rx="3"></rect>
+          <rect x="340" y="220" width="34" height="26" fill="rgba(255,255,255,0.24)" rx="3"></rect>
+          <rect x="390" y="220" width="34" height="26" fill="rgba(255,255,255,0.24)" rx="3"></rect>
+          <rect x="354" y="252" width="32" height="40" fill="rgba(255,255,255,0.18)" rx="3"></rect>
+          <rect x="320" y="151" width="134" height="14" fill="#0b8888" rx="4"></rect>
+          <circle cx="152" cy="268" r="11" fill="#121826"></circle>
+          <rect x="145" y="279" width="14" height="16" fill="#121826" rx="3"></rect>
+          <circle cx="308" cy="266" r="11" fill="#2563EB"></circle>
+          <rect x="301" y="277" width="14" height="16" fill="#2563EB" rx="3"></rect>
+          <rect x="313" y="280" width="10" height="10" fill="#1a50c0" rx="2"></rect>
+          <circle cx="20" cy="264" r="12" fill="#0EA5A5" opacity="0.5"></circle>
+          <circle cx="461" cy="264" r="12" fill="#0EA5A5" opacity="0.5"></circle>
+          <circle cx="455" cy="38" r="6" fill="#0EA5A5" opacity="0.55"></circle>
+          <circle cx="470" cy="58" r="4" fill="#2563EB" opacity="0.45"></circle>
+          <circle cx="18" cy="68" r="5" fill="#2563EB" opacity="0.4"></circle>
+          <circle cx="36" cy="50" r="3" fill="#0EA5A5" opacity="0.5"></circle>
+          <circle cx="170" cy="76" r="3" fill="#0EA5A5" opacity="0.7"></circle>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES / LOGICIELS (dynamique) ============ -->
+<section id="services" class="slp-serv">
+  <div class="slp-shell slp-serv-inner">
+    <div class="slp-head-center">
+      <div class="slp-kick">Nos comparatifs</div>
+      <h2>Les outils qui font gagner du temps aux indépendants</h2>
+      <p>Nous testons et comparons les meilleurs logiciels de gestion pour les entrepreneurs locaux.</p>
+    </div>
+
+    {% set slp_icons = [
+      '<circle cx="12" cy="8" r="3.5"></circle><path d="M5 20c0-4 3-6 7-6s7 2 7 6"></path><path d="M16 4l2 2 3-3"></path>',
+      '<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"></path><line x1="9" y1="8" x2="15" y2="8"></line><line x1="9" y1="12" x2="15" y2="12"></line>',
+      '<rect x="4" y="13" width="4" height="7"></rect><rect x="10" y="8" width="4" height="12"></rect><rect x="16" y="4" width="4" height="16"></rect>',
+      '<path d="M7 3h7l4 4v14H7z"></path><line x1="10" y1="11" x2="16" y2="11"></line><line x1="10" y1="15" x2="16" y2="15"></line><path d="M14 3v4h4"></path>',
+      '<path d="M3 11l16-6-3 16-4-5-5 3z"></path>',
+      '<rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2.4"></circle>'
+    ] %}
+    {% if classements_by_category and classements_by_category | length > 0 %}
+    <div class="slp-serv-grid">
+      {% for cat, lst in classements_by_category.items() %}
+      {% set c = (lst | sort(attribute='count', reverse=true))[0] %}
+      <a href="/meilleur-{{ c.slug }}" class="slp-serv-item">
+        <svg class="ic" width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">{{ slp_icons[loop.index0 % 6] | safe }}</svg>
+        <h3>{{ c.label }}</h3>
+        <p>{{ cat }} · {{ c.count }} logiciel{{ 's' if c.count > 1 else '' }} comparé{{ 's' if c.count > 1 else '' }}.</p>
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="slp-serv-cta">
+      <a href="/nos-comparateurs" class="slp-btn-dark">Tous nos comparateurs <span class="arr">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÉTHODOLOGIE ============ -->
+<section class="slp-method">
+  <div class="slp-shell slp-method-inner">
+    <div class="slp-head-center">
+      <div class="slp-kick">Notre méthode</div>
+      <h2>Comment nous classons les logiciels</h2>
+      <p>Chaque comparatif suit une méthodologie rigoureuse et transparente. Pas de classement payant, uniquement des critères objectifs au service des entrepreneurs.</p>
+    </div>
+    <div class="slp-method-grid">
+      <div class="slp-step"><div class="num">01</div><h3>Test en conditions réelles</h3><p>Chaque logiciel est utilisé sur des cas concrets d'indépendants et de petites structures.</p></div>
+      <div class="slp-step"><div class="num">02</div><h3>Rapport qualité-prix</h3><p>Nous évaluons les fonctionnalités au regard du coût réel, abonnements et options inclus.</p></div>
+      <div class="slp-step"><div class="num">03</div><h3>Avis utilisateurs vérifiés</h3><p>Les retours de la communauté d'entrepreneurs pondèrent et confirment nos tests.</p></div>
+      <div class="slp-step"><div class="num">04</div><h3>Mises à jour régulières</h3><p>Nos classements sont réévalués à chaque évolution majeure des outils testés.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUTEUR ============ -->
+{% if site.author_name is defined and site.author_name %}
+<section class="slp-author">
+  <div class="slp-shell slp-author-inner">
+    <div class="slp-author-photo">
+      <div class="frame">
+        {% if site.author_photo is defined and site.author_photo %}
+        <img src="{{ site.author_photo }}" alt="{{ site.author_name }}">
+        {% else %}
+        <span class="ph">portrait</span>
+        {% endif %}
+      </div>
+    </div>
+    <div class="slp-author-txt">
+      <div class="slp-kick">L'auteur</div>
+      <h2>{{ site.author_name }}</h2>
+      {% if site.author_bio is defined and site.author_bio %}<p>{{ site.author_bio }}</p>{% endif %}
+      <div class="slp-author-id">
+        <span class="nm">{{ site.author_name }}</span>
+        {% if site.author_job is defined and site.author_job %}<span class="dot"></span><span class="role">{{ site.author_job }}</span>{% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ============ ARTICLES RÉCENTS (automatique) ============ -->
+{% if recent_blog_posts and recent_blog_posts | length > 0 %}
+<section id="articles" class="slp-articles">
+  <div class="slp-shell slp-articles-inner">
+    <div class="slp-articles-head">
+      <div>
+        <div class="slp-kick">Le blog</div>
+        <h2>Nos derniers articles</h2>
+      </div>
+      <a href="/blog/" class="slp-articles-all">Tous les articles &rarr;</a>
+    </div>
+    <div class="slp-articles-grid">
+      {% for p in recent_blog_posts %}
+      <a href="/{{ p.slug }}" class="slp-art">
+        <div class="slp-art-img">
+          {% if p.featured_image %}<img src="{{ p.featured_image }}" alt="{{ p.title }}" loading="lazy">{% else %}<span class="ph">photo 16:9</span>{% endif %}
+        </div>
+        <div class="slp-art-body">
+          {% if p.categorie %}<span class="slp-art-cat">{{ p.categorie }}</span>{% endif %}
+          <h3>{{ p.title }}</h3>
+          <div class="slp-art-meta">{{ p.date_display }}{% if p.reading_time %} · {{ p.reading_time }} min de lecture{% endif %}</div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="slp-news">
+  <div class="slp-shell slp-news-inner">
+    <div class="slp-news-txt">
+      <h2>Recevez nos analyses et bons plans</h2>
+      <p>Conseils, comparatifs et actualités pour les entrepreneurs locaux, directement dans votre boîte mail.</p>
+    </div>
+    <form class="slp-news-form" action="/contact" method="get">
+      <input type="email" name="email" placeholder="Votre adresse e-mail" aria-label="Votre adresse e-mail">
+      <button type="submit">S'inscrire</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER (footer actuel, inchangé) -->
+{% include "base/_footer.html.j2" %}
+
+</body>
+</html>
