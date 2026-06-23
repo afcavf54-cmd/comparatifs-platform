@@ -4,15 +4,21 @@ slug: 8466-ce-que-les-fonctionnalites-de-financecore-plus-ne-couvrent-pas
 date: '2026-06-23T06:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Comptabilité cloud FinanceCore Plus : fonctionnalités et limites'
-meta_description: 'Utilisateur de FinanceCore Plus depuis 14 mois, il partage les limites concrètes du logiciel : trésorerie prévisionnelle, flux complexes et fonctions manquantes…'
+meta_description: 'Utilisateur de FinanceCore Plus depuis 14 mois, il partage les
+  limites concrètes du logiciel : trésorerie prévisionnelle, flux complexes et fonctions
+  manquantes…'
 min_words: 960
 status: published
 featured_image: /blog/8466-ce-que-les-fonctionnalites-de-financecore-plus-ne-couvrent-pas.jpg
 link_anchors:
 - text: les fonctionnalités de la comptabilité cloud FinanceCore Plus
   max: 5
+related_posts:
+- 8853-invoicepro-x3-face-a-la-facturation-manuelle-le-temps-de-traitement
+- 4683-a-quel-profil-convient-le-cnam-intec-en-techniques-economiques-et-comptables
+- 2846-ce-que-les-fonctionnalites-de-financecore-enterprise-ne-couvrent-pas
+- 9791-facturation-manuelle-ou-automatisee-avec-billmatic-auto
 ---
-
 <p>J'utilise FinanceCore Plus depuis un peu plus d'un an maintenant. Et je dois dire que dans l'ensemble, pour une TPE comme la mienne, ça couvre pas mal de choses. La facturation, le suivi des règlements, les exports comptables de base. Pour quelqu'un qui n'était pas à l'aise avec la compta au départ, j'ai trouvé la prise en main honnêtement correcte.</p>
 
 <p>Mais voilà. Après quelques mois d'utilisation, j'ai commencé à buter sur des limites concrètes. Des cas où je cherchais une fonction, je farfouillais dans les menus, et finalement... rien. Pas de bouton. Pas d'option cachée. Juste un vide.</p>
