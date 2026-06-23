@@ -4,15 +4,21 @@ slug: 2018-gerer-ses-stocks-avec-inventory-control-smart-sans-se-tromper
 date: '2026-06-23T11:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Comment gérer ses stocks avec Inventory Control Smart
-meta_description: Gérer ses stocks sans Excel ni erreurs de saisie, c'est possible. Découvrez comment Inventory Control Smart simplifie le suivi des stocks pour les petites équipes.
+meta_description: Gérer ses stocks sans Excel ni erreurs de saisie, c'est possible.
+  Découvrez comment Inventory Control Smart simplifie le suivi des stocks pour les
+  petites équipes.
 min_words: 990
 status: published
 featured_image: /blog/2018-gerer-ses-stocks-avec-inventory-control-smart-sans-se-tromper.jpg
 link_anchors:
 - text: comment gérer ses stocks avec Inventory Control Smart
   max: 5
+related_posts:
+- 2367-installer-l-erp-cloudmanager-enterprise-la-marche-a-suivre
+- 9668-implementer-l-erp-nextgen-business-suite-en-pratique
+- 8975-comment-installer-l-erp-integre-managepro-suite
+- 8404-salesconnect-pro-ou-marketwise-quel-crm-choisir
 ---
-
 <p>Gérer les stocks quand on est à la tête d'une agence de communication, ce n'est pas exactement la priorité numéro un. On pense stocks pour une boutique, un entrepôt, une entreprise de produits physiques. Pourtant, entre le matériel photo, les consommables, les équipements prêtés aux clients pour des événements, les licences logicielles attribuées poste par poste... ça représente vite quelque chose. Et si on ne suit pas, ça coûte.</p>
 
 <p>J'ai longtemps géré ça dans un fichier Excel partagé sur Google Drive. Un classique. Sauf que deux collègues modifiaient le fichier en même temps, quelqu'un effaçait une ligne par erreur, et je me retrouvais à commander du matériel qu'on avait déjà en réserve. Temps perdu, argent gaspillé, frustration générale.</p>
