@@ -4,15 +4,21 @@ slug: 1326-configuration-des-modules-financepro-integrated-les-pieges
 date: '2026-06-23T19:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Paramétrer les modules FinancePro Integrated : les erreurs à éviter'
-meta_description: Évitez les erreurs de configuration des modules FinancePro Integrated grâce aux retours d'expérience d'un utilisateur qui a tout appris à la dure sur une PME réelle.
+meta_description: Évitez les erreurs de configuration des modules FinancePro Integrated
+  grâce aux retours d'expérience d'un utilisateur qui a tout appris à la dure sur
+  une PME réelle.
 min_words: 900
 status: published
 featured_image: /blog/1326-configuration-des-modules-financepro-integrated-les-pieges.jpg
 link_anchors:
 - text: comment paramétrer les modules de l'ERP FinancePro Integrated
   max: 5
+related_posts:
+- 7519-erp-bizcore-enterprise-ce-que-le-devis-oublie-de-chiffrer
+- 7011-configuration-du-crm-pipedrive-nexus-edition-les-pieges
+- 5381-mal-utiliser-le-crm-salesflow-evolution-les-pieges
+- 5187-installation-de-l-erp-cloudmanager-enterprise-les-pieges
 ---
-
 <p>J'ai failli perdre trois semaines sur la configuration de FinancePro Integrated. Trois semaines. Pour un outil censé simplifier la gestion financière d'une PME de 30 personnes. Alors je vais te partager ce que j'aurais aimé savoir avant de me lancer.</p>
 
 <p>FinancePro Integrated, c'est un module financier complet, avec de la comptabilité, de la facturation, du suivi de trésorerie et des rapports automatisés. Sur le papier, c'est solide. En pratique, la configuration initiale est un vrai parcours du combattant si tu n'as pas les bons réflexes dès le départ.</p>
