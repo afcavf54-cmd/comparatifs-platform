@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+{% if site.favicon_file is defined and site.favicon_file %}
+<link rel="icon" href="{{ site.favicon_file }}">
+{% else %}
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{% endif %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if home_title is defined and home_title %}{{ home_title }}{% else %}{{ site.name }}{% endif %}</title>
+<meta name="description" content="{% if home_description is defined and home_description %}{{ home_description }}{% else %}Guides, comparatifs et conseils pour entrepreneurs en {{ site.year }}.{% endif %}">
+<link rel="canonical" href="{{ site.domain }}/">
+<meta property="og:title" content="{{ home_title | default(site.name) }}">
+<meta property="og:description" content="{{ home_description | default('') }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.domain }}/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+{% if theme.google_fonts %}<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "WebSite",
+  "name": "{{ site.name }}",
+  "url": "{{ site.domain }}",
+  "description": "{{ home_description | default('') }}",
+  "author": { "@type": "Organization", "name": "{{ site.author_name | default(site.name) }}" },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ site.domain }}/recherche?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<style>
+/* ============================================================
+   HOME CUSTOM — laboxentrepreneuriat-fr (design « La Box »)
+   Classes scopées .lb-* — n'interfèrent pas avec _nav / _footer.
+   Variables --ink/--accent/--accent2/--cta/--cta-text/--bg
+   REQUISES par les partials nav/footer (header + footer actuels).
+   Marges latérales via .lb-shell ; les sections ne touchent
+   QUE padding-top/bottom (pas de raccourci qui remettrait les
+   côtés à 0).
+   ============================================================ */
+:root{
+  --bg:{{ theme.bg }};
+  --surface:#fff;
+  --ink:{{ theme.ink }};
+  --accent:{{ theme.accent }};
+  --accent2:{{ theme.accent2 }};
+  --cta:{{ theme.cta_color if theme.cta_color is defined and theme.cta_color else "#127C8A" }};
+  --cta-text:{{ theme.cta_text_color if theme.cta_text_color is defined and theme.cta_text_color else "#ffffff" }};
+  --border:#E9ECF2;
+  /* palette locale du design */
+  --lb-navy:#0F172A;
+  --lb-teal:#14808A;
+  --lb-green:#10B981;
+  --lb-purple:#7C3AED;
+  --lb-bg:#FAFAFC;
+  --lb-ink:#1C2733;
+  --lb-slate:#64748B;
+  --lb-slate-l:#94A3B8;
+  --lb-muted:#AEBACB;
+  --lb-line:#E9ECF2;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;background:var(--lb-bg);color:var(--lb-ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-size:16px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+::selection{background:var(--lb-teal);color:#fff}
+@keyframes lb-floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+.lb-shell{max-width:1200px;margin:0 auto;padding-left:40px;padding-right:40px}
+.lb-eyebrow{display:inline-block;padding:8px 16px;border-radius:8px;font-size:14px;font-weight:700}
+
+/* ── HERO ── */
+.lb-hero{position:relative;background:var(--lb-navy);color:#fff;overflow:hidden}
+.lb-hero .s1{position:absolute;top:8%;right:46%;width:120px;height:140px;border-radius:60% 40% 55% 45%/50% 55% 45% 50%;background:rgba(20,128,138,.35);pointer-events:none}
+.lb-hero .s2{position:absolute;bottom:-60px;right:-40px;width:220px;height:200px;border-radius:55% 45% 50% 50%/45% 55% 45% 55%;background:rgba(124,58,237,.18);pointer-events:none}
+.lb-hero .s3{position:absolute;top:-140px;left:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(20,128,138,.22),transparent 70%);pointer-events:none}
+.lb-hero-inner{position:relative;padding-top:84px;padding-bottom:88px;display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.lb-hero h1{margin:0;font-size:clamp(34px,4.6vw,54px);line-height:1.08;font-weight:800;letter-spacing:-.02em}
+.lb-hero-desc{margin:24px 0 0;max-width:520px;font-size:clamp(17px,1.6vw,19px);line-height:1.65;color:var(--lb-muted)}
+.lb-hero-cta{margin-top:36px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.lb-btn-cta{display:inline-flex;align-items:center;gap:9px;padding:16px 32px;border-radius:999px;background:var(--lb-green);color:#fff;font-weight:700;font-size:16px;box-shadow:0 10px 28px rgba(16,185,129,.30);transition:transform .18s,box-shadow .18s}
+.lb-btn-cta:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(16,185,129,.42)}
+.lb-btn-blog{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:16px;color:#fff}
+.lb-btn-blog .ic{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center}
+.lb-hero-stats{margin-top:52px;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.lb-hero-stats .lbl{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#8493A8;line-height:1.3}
+.lb-hero-stats .sep{width:1px;height:46px;background:rgba(255,255,255,.12)}
+.lb-hero-stats .nums{display:flex;gap:32px;flex-wrap:wrap}
+.lb-hero-stats .n{font-size:28px;font-weight:800;color:#fff}
+.lb-hero-stats .c{font-size:13px;color:#8493A8}
+.lb-hero-illu{position:relative}
+.lb-hero-illu .frame{position:relative;border-radius:58% 42% 55% 45%/48% 52% 48% 52%;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.35);aspect-ratio:1/1}
+.lb-hero-illu svg{display:block;width:100%;height:100%}
+
+/* ── SECTION HEADER GENERIC ── */
+.lb-kicker-up{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+
+/* ── LOGICIELS ── */
+.lb-soft-inner{padding-top:96px;padding-bottom:30px}
+.lb-soft-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.lb-soft-eyebrow{background:rgba(20,128,138,.12);color:var(--lb-teal)}
+.lb-soft h2{margin:22px 0 0;font-size:clamp(28px,3.4vw,40px);line-height:1.12;font-weight:800;letter-spacing:-.02em;color:var(--lb-navy)}
+.lb-soft-desc{margin:18px 0 0;font-size:18px;line-height:1.6;color:var(--lb-slate);max-width:480px}
+.lb-soft-cards{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.lb-card{display:flex;flex-direction:column;border-radius:18px;padding:24px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.lb-card.is-light{background:#fff;border:1px solid #E9ECF2}
+.lb-card.is-dark{background:var(--lb-navy);border:1px solid var(--lb-navy)}
+.lb-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(15,23,42,.10)}
+.lb-card h3{margin:0;font-size:19px;font-weight:700}
+.lb-card.is-light h3{color:var(--lb-navy)}
+.lb-card.is-dark h3{color:#fff}
+.lb-card p{margin:9px 0 0;font-size:14px;line-height:1.55;flex:1}
+.lb-card.is-light p{color:var(--lb-slate)}
+.lb-card.is-dark p{color:var(--lb-muted)}
+.lb-card .arr{margin-top:18px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.lb-card.is-light .arr{border:1.5px solid #E2E6EE}
+.lb-card.is-dark .arr{background:var(--lb-green)}
+.lb-soft-more{margin-top:24px;display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:15px;color:var(--lb-teal);transition:gap .15s}
+.lb-soft-more:hover{gap:11px}
+.lb-soft-illu svg{display:block;width:100%;height:auto}
+
+/* ── MÉTHODOLOGIE ── */
+.lb-method{margin-top:96px;background:var(--lb-navy);color:#fff}
+.lb-method-inner{padding-top:88px;padding-bottom:88px}
+.lb-method-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.lb-method .lb-kicker-up{color:#9DE6E0}
+.lb-method h2{margin:14px 0 0;font-size:clamp(28px,3.4vw,40px);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.lb-method-desc{margin:20px 0 0;font-size:17px;line-height:1.7;color:var(--lb-muted)}
+.lb-method-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.lb-mcard{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:26px}
+.lb-mcard .num{font-size:15px;font-weight:800;color:var(--lb-green)}
+.lb-mcard h3{margin:12px 0 0;font-size:18px;font-weight:700}
+.lb-mcard p{margin:8px 0 0;font-size:14px;line-height:1.6;color:#8FA0B5}
+
+/* ── AUTEUR ── */
+.lb-author-inner{padding-top:96px;padding-bottom:96px}
+.lb-author-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.lb-author-photo{aspect-ratio:1/1;border-radius:28px;overflow:hidden;background:repeating-linear-gradient(45deg,#EEF0F4,#EEF0F4 12px,#E6E9EF 12px,#E6E9EF 24px);display:flex;align-items:center;justify-content:center}
+.lb-author-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.lb-author-photo .ph{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--lb-slate-l);background:#fff;padding:6px 12px;border-radius:8px}
+.lb-author-eyebrow{background:rgba(16,185,129,.14);color:#0F8B5F}
+.lb-author h2{margin:24px 0 0;font-size:clamp(28px,3.4vw,42px);line-height:1.12;font-weight:800;letter-spacing:-.02em;color:var(--lb-navy)}
+.lb-author-bio{margin:22px 0 0;font-size:17px;line-height:1.7;color:var(--lb-slate);max-width:520px}
+.lb-author-id{margin:18px 0 0;font-size:15px;font-weight:700;color:var(--lb-navy)}
+.lb-author-id span{color:var(--lb-teal);font-weight:600}
+.lb-author-cards{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.lb-acard{border-radius:20px;padding:28px}
+.lb-acard.is-light{background:#fff;border:1px solid #E9ECF2;box-shadow:0 10px 30px rgba(15,23,42,.05)}
+.lb-acard.is-dark{background:var(--lb-navy)}
+.lb-acard .ic{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.lb-acard.is-light .ic{background:var(--lb-navy)}
+.lb-acard.is-dark .ic{background:var(--lb-green)}
+.lb-acard .tag{margin-top:20px;font-size:13px;font-weight:600}
+.lb-acard.is-light .tag{color:var(--lb-slate-l)}
+.lb-acard.is-dark .tag{color:#9DE6E0}
+.lb-acard .val{margin-top:6px;font-size:22px;font-weight:800}
+.lb-acard.is-light .val{color:var(--lb-navy)}
+.lb-acard.is-dark .val{color:#fff}
+
+/* ── ARTICLES ── */
+.lb-articles{background:#fff;border-top:1px solid #EDEFF3}
+.lb-articles-inner{padding-top:90px;padding-bottom:90px}
+.lb-articles-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.lb-articles-head .lb-kicker-up{color:var(--lb-teal)}
+.lb-articles-head h2{margin:14px 0 0;font-size:clamp(28px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;color:var(--lb-navy)}
+.lb-articles-all{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;border:1px solid #D7DCE5;font-weight:700;font-size:15px;color:var(--lb-navy);transition:background .18s,border-color .18s}
+.lb-articles-all:hover{background:#F1F3F7;border-color:#C3CAD6}
+.lb-articles-grid{margin-top:48px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.lb-art{display:flex;flex-direction:column;background:#fff;border:1px solid #E9ECF2;border-radius:18px;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s}
+.lb-art:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(15,23,42,.09);border-color:#DCE1EA}
+.lb-art-img{aspect-ratio:16/10;background:repeating-linear-gradient(45deg,#EEF0F4,#EEF0F4 11px,#E6E9EF 11px,#E6E9EF 22px);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.lb-art-img img{width:100%;height:100%;object-fit:cover;display:block}
+.lb-art-img .ph{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--lb-slate-l);background:#fff;padding:5px 11px;border-radius:7px}
+.lb-art-tag{position:absolute;top:14px;left:14px;padding:6px 13px;border-radius:999px;background:var(--lb-navy);color:#fff;font-size:12px;font-weight:700;letter-spacing:.03em;max-width:calc(100% - 28px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lb-art-body{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
+.lb-art-body h3{margin:0;font-size:19px;line-height:1.35;font-weight:700;color:var(--lb-navy)}
+.lb-art-excerpt{margin:12px 0 0;font-size:14px;line-height:1.6;color:var(--lb-slate);flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.lb-art-meta{margin-top:18px;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--lb-slate-l)}
+
+/* ── CTA BAND ── */
+.lb-band{background:var(--lb-bg)}
+.lb-band-inner{padding-top:80px;padding-bottom:80px}
+.lb-band-box{position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(120deg,#0F172A,#16324a);padding:64px 56px;text-align:center}
+.lb-band-box .glow{position:absolute;top:-120px;right:-80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.28),transparent 70%);pointer-events:none}
+.lb-band-box h2{position:relative;margin:0;font-size:clamp(26px,3.2vw,38px);font-weight:800;color:#fff;letter-spacing:-.02em}
+.lb-band-box p{position:relative;margin:18px auto 0;max-width:560px;font-size:18px;line-height:1.6;color:var(--lb-muted)}
+.lb-band-box a{position:relative;margin-top:32px;display:inline-flex;align-items:center;gap:9px;padding:16px 34px;border-radius:999px;background:var(--lb-green);color:#fff;font-weight:700;font-size:16px;box-shadow:0 10px 28px rgba(16,185,129,.32);transition:transform .18s,box-shadow .18s}
+.lb-band-box a:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(16,185,129,.42)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:980px){
+  .lb-hero-inner,.lb-soft-grid,.lb-method-grid,.lb-author-grid{grid-template-columns:1fr;gap:48px}
+  .lb-hero-illu,.lb-soft-illu{max-width:480px}
+  .lb-articles-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:880px){
+  .lb-shell{padding-left:20px;padding-right:20px}
+}
+@media(max-width:600px){
+  .lb-hero-inner{padding-top:48px;padding-bottom:64px;gap:36px}
+  .lb-soft-inner{padding-top:64px}
+  .lb-method{margin-top:64px}
+  .lb-method-inner,.lb-author-inner,.lb-articles-inner,.lb-band-inner{padding-top:60px;padding-bottom:60px}
+  .lb-soft-cards,.lb-method-cards,.lb-author-cards{grid-template-columns:1fr}
+  .lb-articles-grid{grid-template-columns:1fr}
+  .lb-band-box{padding:44px 28px}
+}
+</style>
+{% if site.google_site_verification is defined and site.google_site_verification %}
+<meta name="google-site-verification" content="{{ site.google_site_verification }}">
+{% endif %}
+{% if site.analytics_clicky is defined and site.analytics_clicky %}
+{% if '<script' in site.analytics_clicky %}
+{{ site.analytics_clicky | safe }}
+{% else %}
+<script async data-id="{{ site.analytics_clicky }}" src="//static.getclicky.com/js"></script>
+{% endif %}
+{% endif %}
+</head>
+<body>
+
+<!-- NAV (header actuel, inchangé) -->
+{% include 'base/_nav.html.j2' %}
+
+<!-- ============ HERO ============ -->
+<section class="lb-hero">
+  <div class="s1"></div><div class="s2"></div><div class="s3"></div>
+  <div class="lb-shell lb-hero-inner">
+    <div>
+      <h1>{% if site.home_h1 is defined and site.home_h1 %}{{ site.home_h1 | safe }}{% else %}Le rendez-vous des créateurs et chefs d'entreprise{% endif %}</h1>
+      <p class="lb-hero-desc">{{ home_description | default("La Box Entrepreneuriat vous aide à lancer et développer votre activité grâce à des guides, actualités, avis et conseils dédiés aux entrepreneurs.") }}</p>
+      <div class="lb-hero-cta">
+        <a href="/nos-comparateurs" class="lb-btn-cta">Découvrir nos outils
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </a>
+        <a href="/blog/" class="lb-btn-blog">
+          <span class="ic">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 3h9l4 4v14H6z" stroke="var(--lb-green)" stroke-width="1.8" stroke-linejoin="round"></path><path d="M9 12h6M9 16h6M9 8h3" stroke="var(--lb-green)" stroke-width="1.8" stroke-linecap="round"></path></svg>
+          </span>Lire le blog
+        </a>
+      </div>
+      <div class="lb-hero-stats">
+        <div class="lbl">La Box Entrepreneuriat<br>en bref</div>
+        <div class="sep"></div>
+        <div class="nums">
+          <div><div class="n">{{ total_products | default(products | length) }}+</div><div class="c">logiciels analysés</div></div>
+          <div><div class="n">{{ total_categories | default(0) }}</div><div class="c">catégories couvertes</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lb-hero-illu">
+      <div class="frame">
+        <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-label="Illustration : la box de l'entrepreneur">
+          <defs><linearGradient id="lbbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EFF4FB"></stop><stop offset="1" stop-color="#D9E4F1"></stop></linearGradient></defs>
+          <rect width="400" height="400" fill="url(#lbbg)"></rect>
+          <circle cx="350" cy="60" r="90" fill="#fff" opacity=".45"></circle>
+          <circle cx="40" cy="360" r="80" fill="#fff" opacity=".4"></circle>
+          <circle cx="120" cy="70" r="4" fill="#14808A" opacity=".5"></circle>
+          <circle cx="300" cy="320" r="5" fill="#10B981" opacity=".5"></circle>
+          <circle cx="60" cy="170" r="4" fill="#7C3AED" opacity=".5"></circle>
+          <rect x="170" y="214" width="15" height="70" rx="3" fill="#14808A"></rect>
+          <rect x="192" y="190" width="15" height="94" rx="3" fill="#10B981"></rect>
+          <rect x="214" y="166" width="15" height="118" rx="3" fill="#14808A"></rect>
+          <polyline points="165,222 192,198 214,206 246,164" fill="none" stroke="#0F172A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          <polyline points="234,160 248,162 246,176" fill="none" stroke="#0F172A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          <rect x="154" y="276" width="92" height="14" rx="2" fill="#11202f"></rect>
+          <polygon points="150,288 124,270 150,280" fill="#14808A"></polygon>
+          <polygon points="250,288 276,270 250,280" fill="#14808A"></polygon>
+          <rect x="150" y="288" width="100" height="60" rx="7" fill="#1f3147"></rect>
+          <rect x="150" y="288" width="100" height="11" rx="7" fill="#2a4561"></rect>
+          <rect x="186" y="306" width="28" height="26" rx="3" fill="#14808A"></rect>
+          <g transform="translate(82,116)"><circle r="36" fill="#7C3AED" opacity=".12"></circle><circle r="30" fill="#fff"></circle><circle cx="0" cy="-3" r="9" fill="none" stroke="#7C3AED" stroke-width="2.4"></circle><line x1="-4" y1="9" x2="4" y2="9" stroke="#7C3AED" stroke-width="2.4" stroke-linecap="round"></line><line x1="-3" y1="13" x2="3" y2="13" stroke="#7C3AED" stroke-width="2.4" stroke-linecap="round"></line></g>
+          <g transform="translate(320,96)"><circle r="34" fill="#14808A" opacity=".12"></circle><circle r="28" fill="#fff"></circle><path d="M-12 -2 L4 -10 L4 10 L-12 2 Z" fill="none" stroke="#14808A" stroke-width="2.4" stroke-linejoin="round"></path></g>
+          <g transform="translate(338,228)"><circle r="33" fill="#10B981" opacity=".14"></circle><circle r="27" fill="#fff"></circle><line x1="-11" y1="-7" x2="11" y2="-7" stroke="#10B981" stroke-width="2.4" stroke-linecap="round"></line><circle cx="3" cy="-7" r="3.2" fill="#fff" stroke="#10B981" stroke-width="2.4"></circle><line x1="-11" y1="0" x2="11" y2="0" stroke="#10B981" stroke-width="2.4" stroke-linecap="round"></line></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOGICIELS (comparateurs, dynamique) ============ -->
+<section id="logiciels" class="lb-shell lb-soft-inner lb-soft">
+  <div class="lb-soft-grid">
+    <div>
+      <span class="lb-eyebrow lb-soft-eyebrow">Nos comparatifs</span>
+      <h2>Trouvez le bon logiciel pour piloter votre activité</h2>
+      <p class="lb-soft-desc">Des classements indépendants et à jour pour chaque besoin de gestion de votre entreprise.</p>
+
+      {% if classements_by_category and classements_by_category | length > 0 %}
+      <div class="lb-soft-cards">
+        {% for cat, lst in classements_by_category.items() %}
+        {% set c = (lst | sort(attribute='count', reverse=true))[0] %}
+        <a href="/meilleur-{{ c.slug }}" class="lb-card {{ 'is-dark' if loop.index0 == 0 else 'is-light' }}">
+          <h3>{{ c.label }}</h3>
+          <p>{{ cat }} · {{ c.count }} solution{{ 's' if c.count > 1 else '' }} comparée{{ 's' if c.count > 1 else '' }}</p>
+          <span class="arr">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="{{ '#fff' if loop.index0 == 0 else 'var(--lb-teal)' }}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </span>
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <a href="/nos-comparateurs" class="lb-soft-more">Voir tous nos comparateurs <span aria-hidden="true">&rarr;</span></a>
+    </div>
+
+    <div class="lb-soft-illu">
+      <svg viewBox="0 0 460 420" aria-label="Illustration : classement des logiciels">
+        <circle cx="410" cy="60" r="70" fill="#10B981" opacity=".08"></circle>
+        <circle cx="50" cy="370" r="64" fill="#7C3AED" opacity=".08"></circle>
+        <rect x="66" y="58" width="330" height="304" rx="22" fill="#0F172A" opacity=".06"></rect>
+        <rect x="58" y="46" width="330" height="304" rx="22" fill="#fff" stroke="#EAEDF2" stroke-width="1.5"></rect>
+        <text x="86" y="92" font-size="19" font-weight="800" fill="#0F172A" font-family="'Plus Jakarta Sans',sans-serif">Top comparatif</text>
+        <rect x="312" y="74" width="56" height="26" rx="13" fill="rgba(16,185,129,0.14)"></rect>
+        <text x="340" y="91" text-anchor="middle" font-size="13" font-weight="700" fill="#0F8B5F" font-family="'Plus Jakarta Sans',sans-serif">{{ site.year }}</text>
+        <rect x="78" y="116" width="290" height="58" rx="14" fill="rgba(20,128,138,0.08)"></rect>
+        <circle cx="108" cy="145" r="15" fill="#14808A"></circle>
+        <text x="108" y="150" text-anchor="middle" font-size="15" font-weight="800" fill="#fff" font-family="'Plus Jakarta Sans',sans-serif">1</text>
+        <rect x="134" y="132" width="92" height="11" rx="5" fill="#1f3147"></rect>
+        <rect x="134" y="150" width="58" height="8" rx="4" fill="#CBD5E1"></rect>
+        <rect x="290" y="140" width="64" height="10" rx="5" fill="#E6EBF1"></rect>
+        <rect x="290" y="140" width="60" height="10" rx="5" fill="#10B981"></rect>
+        <circle cx="108" cy="205" r="15" fill="#10B981"></circle>
+        <text x="108" y="210" text-anchor="middle" font-size="15" font-weight="800" fill="#fff" font-family="'Plus Jakarta Sans',sans-serif">2</text>
+        <rect x="134" y="192" width="80" height="11" rx="5" fill="#334155"></rect>
+        <rect x="134" y="210" width="50" height="8" rx="4" fill="#CBD5E1"></rect>
+        <rect x="290" y="200" width="64" height="10" rx="5" fill="#E6EBF1"></rect>
+        <rect x="290" y="200" width="50" height="10" rx="5" fill="#10B981"></rect>
+        <circle cx="108" cy="265" r="15" fill="#7C3AED"></circle>
+        <text x="108" y="270" text-anchor="middle" font-size="15" font-weight="800" fill="#fff" font-family="'Plus Jakarta Sans',sans-serif">3</text>
+        <rect x="134" y="252" width="86" height="11" rx="5" fill="#334155"></rect>
+        <rect x="134" y="270" width="46" height="8" rx="4" fill="#CBD5E1"></rect>
+        <rect x="290" y="260" width="64" height="10" rx="5" fill="#E6EBF1"></rect>
+        <rect x="290" y="260" width="42" height="10" rx="5" fill="#10B981"></rect>
+        <line x1="86" y1="308" x2="360" y2="308" stroke="#EEF1F5" stroke-width="1.5"></line>
+        <circle cx="94" cy="328" r="4" fill="#14808A"></circle>
+        <rect x="106" y="324" width="150" height="8" rx="4" fill="#E2E8F0"></rect>
+        <g transform="translate(372,300)"><circle r="30" fill="#0F172A"></circle><path d="M-9 0 L-3 7 L10 -7" fill="none" stroke="#10B981" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"></path></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÉTHODOLOGIE ============ -->
+<section class="lb-method">
+  <div class="lb-shell lb-method-inner">
+    <div class="lb-method-grid">
+      <div>
+        <span class="lb-kicker-up">Notre méthode</span>
+        <h2>Comment nous classons les logiciels</h2>
+        <p class="lb-method-desc">Chaque outil présent dans nos classements suit un protocole d'évaluation rigoureux et indépendant. Aucun éditeur ne peut acheter sa place : nos avis restent libres et transparents.</p>
+      </div>
+      <div class="lb-method-cards">
+        <div class="lb-mcard"><div class="num">01</div><h3>Test en conditions réelles</h3><p>Nous prenons en main chaque logiciel pour évaluer son ergonomie et ses fonctionnalités.</p></div>
+        <div class="lb-mcard"><div class="num">02</div><h3>Analyse du rapport qualité-prix</h3><p>Tarifs, options incluses et coûts cachés sont comparés à fonctionnalités équivalentes.</p></div>
+        <div class="lb-mcard"><div class="num">03</div><h3>Avis utilisateurs vérifiés</h3><p>Nous croisons des centaines de retours clients pour refléter l'expérience réelle.</p></div>
+        <div class="lb-mcard"><div class="num">04</div><h3>Mise à jour continue</h3><p>Nos classements sont réévalués à chaque évolution majeure des solutions.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUTEUR ============ -->
+{% if site.author_name is defined and site.author_name %}
+<section class="lb-shell lb-author-inner lb-author">
+  <div class="lb-author-grid">
+    <div class="lb-author-photo">
+      {% if site.author_photo is defined and site.author_photo %}
+      <img src="{{ site.author_photo }}" alt="{{ site.author_name }}">
+      {% else %}
+      <span class="ph">photo — fondateur</span>
+      {% endif %}
+    </div>
+    <div>
+      <span class="lb-eyebrow lb-author-eyebrow">Pourquoi nous faire confiance ?</span>
+      <h2>Des comparatifs honnêtes, au service des entrepreneurs.</h2>
+      {% if site.author_bio is defined and site.author_bio %}<p class="lb-author-bio">{{ site.author_bio }}</p>{% endif %}
+      <div class="lb-author-id">{{ site.author_name }}{% if site.author_job is defined and site.author_job %} — <span>{{ site.author_job }}</span>{% endif %}</div>
+      <div class="lb-author-cards">
+        <div class="lb-acard is-light">
+          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 21h8M12 17v4M5 4h14v5a7 7 0 01-14 0V4z" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><path d="M19 5h2a2 2 0 01-2 4M5 5H3a2 2 0 002 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+          <div class="tag">Comparatifs</div>
+          <div class="val">Indépendants</div>
+        </div>
+        <div class="lb-acard is-dark">
+          <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="#fff" stroke-width="1.8"></circle><path d="M3.5 19a5.5 5.5 0 0111 0" stroke="#fff" stroke-width="1.8" stroke-linecap="round"></path><path d="M16 6.5a3 3 0 010 6M16.5 14.5a5.5 5.5 0 014 4.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"></path></svg></div>
+          <div class="tag">{{ total_products | default(products | length) }}+ logiciels testés</div>
+          <div class="val">En conditions réelles</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ============ ARTICLES RÉCENTS (automatique) ============ -->
+{% if recent_blog_posts and recent_blog_posts | length > 0 %}
+<section id="articles" class="lb-articles">
+  <div class="lb-shell lb-articles-inner">
+    <div class="lb-articles-head">
+      <div>
+        <span class="lb-kicker-up">Le blog</span>
+        <h2>Nos derniers articles</h2>
+      </div>
+      <a href="/blog/" class="lb-articles-all">Voir tous les articles</a>
+    </div>
+
+    <div class="lb-articles-grid">
+      {% for p in recent_blog_posts %}
+      <a href="/{{ p.slug }}" class="lb-art">
+        <div class="lb-art-img">
+          {% if p.featured_image %}
+          <img src="{{ p.featured_image }}" alt="{{ p.title }}" loading="lazy">
+          {% else %}
+          <span class="ph">visuel article</span>
+          {% endif %}
+          {% if p.categorie %}<span class="lb-art-tag">{{ p.categorie }}</span>{% endif %}
+        </div>
+        <div class="lb-art-body">
+          <h3>{{ p.title }}</h3>
+          {% if p.excerpt %}<p class="lb-art-excerpt">{{ p.excerpt }}</p>{% endif %}
+          <div class="lb-art-meta"><span>{{ p.date_display }}</span>{% if p.reading_time %}<span>·</span><span>{{ p.reading_time }} min</span>{% endif %}</div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ============ CTA BAND ============ -->
+<section id="contact" class="lb-band">
+  <div class="lb-shell lb-band-inner">
+    <div class="lb-band-box">
+      <div class="glow"></div>
+      <h2>Une question sur le bon outil pour votre activité ?</h2>
+      <p>Échangeons sur vos besoins. Nos conseils sont gratuits et sans engagement.</p>
+      <a href="/contact">Nous contacter
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER (footer actuel, inchangé) -->
+{% include "base/_footer.html.j2" %}
+
+</body>
+</html>
