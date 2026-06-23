@@ -4,15 +4,21 @@ slug: 9347-formation-lean-management-sigma7-quelle-duree-prevoir
 date: '2026-06-23T17:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation Lean Management Sigma7 : durée et certification'
-meta_description: Découvrez combien de temps prévoir pour une formation Lean Management Sigma7 selon votre niveau visé, avec des conseils concrets pour les TPE et PME aux budgets…
+meta_description: Découvrez combien de temps prévoir pour une formation Lean Management
+  Sigma7 selon votre niveau visé, avec des conseils concrets pour les TPE et PME aux
+  budgets…
 min_words: 980
 status: published
 featured_image: /blog/9347-formation-lean-management-sigma7-quelle-duree-prevoir.jpg
 link_anchors:
 - text: la durée de la formation lean management Sigma7
   max: 5
+related_posts:
+- 7114-comment-gerer-les-talents-dans-une-pme
+- 2849-exemple-de-fiche-de-paie-commente-decryptage-ligne-par-ligne
+- 7371-comment-favoriser-le-developpement-des-talents-en-entreprise
+- 1218-quelle-strategie-adopter-pour-gerer-les-talents-en-2026
 ---
-
 <p>Quand on dirige une TPE avec une centaine de salariés, la question de la formation ne se pose pas de la même façon qu'une multinationale. Le temps, c'est une ressource rare. Et le budget aussi. Alors avant d'envoyer un manager ou un chef de projet en formation Lean Management Sigma7, j'ai passé pas mal de temps à creuser le sujet. Voici ce que j'ai trouvé, et ce que je recommande vraiment.</p>
 
 <h2>Ce que recouvre vraiment une formation Lean Management Sigma7</h2>
