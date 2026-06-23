@@ -1,46 +1,44 @@
 # ============================================================
-# CONFIG SITE -- sauvonslaproximite-com
+# CONFIG SITE -- creaone-fr
 # Type : classement (SaaS)
-# Généré par le wizard HUB le 2026-05-22
+# Généré par le wizard HUB le 2026-06-03
 # ============================================================
 
 site:
-  avis_sheet_edit_url: ""
-  avis_sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQzjzzy_92K4VYhWlu-Gl-l_EZuWzBfQ6QkR8KvnkNXLKQPa1pEx_2nYAl83-G0dUnzmsdb4_6meEdL/pub?gid=0&single=true&output=csv"
-  contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
-  google_site_verification: ""
-  home_h1: "Le média engagé pour les commerces et entreprises locales"
-  blog_sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTMwuNnqOiF9aRVKAnR3RcQzWJkmagoswvz7m4aTP4tiS29FhlIOq6f9EKQfJAg5hT3wPmotGqqsGa9/pub?gid=0&single=true&output=csv"
-  slug: sauvonslaproximite-com
-  name: "sauvonslaproximite.com"
-  domain: "https://sauvonslaproximite.com"
+  blog_sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSMBo6-lumwrF1GOkm7USDzTKR4RDFoERriidaR205hnN4z2HlLiQ88IcO0sF70usMeGpzvI5vuT3_X/pub?gid=0&single=true&output=csv"
+  google_site_verification: "Rz8oi425b-CwU-EHq2QI7jhKg2Iuu6StC_bM6K95-bo"
+  home_h1: "Toutes les clés pour lancer et développer votre activité"
+  slug: creaone-fr
+  name: "creaone.fr"
+  domain: "https://creaone.fr"
   base_path: ""
-  logo_text: "sauvonslaproximite.com"
+  logo_text: "creaone.fr"
   logo_accent: ""
-  tagline: "Comparatifs sauvonslaproximite.com 2026"
+  tagline: "Comparatifs creaone.fr 2026"
   year: 2026
   sheet_csv_url: ""
-  www_preference: "www"
-  author_name: "Marie Simon"
-  home_title: "Sauvons la Proximité : le média des commerces et entreprises locales"
-  home_description: "Sauvons la Proximité met en lumière les commerces, artisans, indépendants et entreprises locales à travers des conseils, actualités et analyses."
+  www_preference: "naked"
+  author_name: "Alexandre Michel"
+  home_title: "CreaOne : le média de la création et du développement d'entreprise"
+  home_description: "CreaOne accompagne les créateurs d'entreprise avec des conseils, actualités, ressources pratiques et analyses pour réussir leurs projets."
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
-  analytics_clicky: '<script async data-id="101506542" src="//static.getclicky.com/js"></script>'
+  analytics_clicky: ""
+  contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
 
 page_types:
   classement: classement-saas
 
 theme:
-  accent: "#121826"
-  accent2: "#2563EB"
-  bg: "#EEF2F7"
-  ink: "#0F172A"
+  accent: "#0F3D5E"
+  accent2: "#1D70A2"
+  bg: "#F4F7FA"
+  ink: "#1C2733"
   surface: "#FFFFFF"
   font_title: "DM Serif Display"
   font_body: "Outfit"
   google_fonts: "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap"
-  cta_color: "#0EA5A5"
+  cta_color: "#168551"
   cta_text_color: "#FFFFFF"
 
 criteria:
@@ -66,27 +64,27 @@ tag_classes:
   europeenne: "tag-europeenne"
 
 seo:
-  title_pattern: "{A} vs {B} : comparatif artisans et PME {year}"
-  meta_pattern: "Comparez {A} et {B} pour artisans, entreprises locales et BTP."
+  title_pattern: "{A} ou {B} : quelle solution choisir en {year} ?"
+  meta_pattern: "Analyse détaillée de {A} et {B} pour les entrepreneurs, indépendants et PME."
   h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
   eyebrow: "Comparatif {year}"
   intro_pattern: "Comparatif {A} vs {B} - analyse complète."
   category_label: "Comparateurs"
   category_url: "/#comparateurs"
-  avis_title_pattern: "Avis {nom} : notre test pour artisans et PME"
-  avis_meta_pattern: "Analyse de {nom} : fonctionnalités, tarifs et avantages pour les professionnels."
-  liste_comp_title: "Comparatifs des meilleurs outils pour PME et artisans"
-  liste_avis_title: "Tests et avis des solutions professionnelles"
+  avis_title_pattern: "Test {nom} : faut-il choisir ce logiciel en {year} ?"
+  avis_meta_pattern: "Notre analyse complète de {nom} : prix, fonctionnalités, support et retour d'expérience."
+  liste_comp_title: "Tous les comparatifs CreaOne {year}"
+  liste_avis_title: "Avis logiciels et SaaS : nos analyses indépendantes"
   classement_title_pattern: "Meilleur {categorie} {year} : mon top {count} comparatif"
   classement_meta_pattern: "Comparez les meilleurs {categories} en {year} : prix, fonctionnalités, avis indépendants."
   classement_h1_pattern: "J'ai testé {count} {categories} : mon comparatif complet {year}"
   classement_titre_analyse_pattern: "Mon classement des meilleurs {categories}"
 
 persona_prompt: |
-  Tu écris en tant que Marie Simon, 54 ans, Responsable comptable basé(e) à Lyon (entreprise de 20-100 salariés). Niveau expert, 20 ans d'expérience. Vouvoie le lecteur. Ton : pédagogique. Phrases mixtes. Niveau pédagogique : moyenne. Positionnement : expert.  Angle éditorial prioritaire : performance. Critères de classement par ordre de priorité : Facilité d'utilisation, Fonctionnalités, Prix, Intégrations. Scoring : note /5, avec un gagnant clairement désigné. Objectifs du lecteur cible : Gagner du temps sur les tâches répétitives, Réduire les coûts logiciels. Contraintes du lecteur : Budget limité, Équipe non technique. Inclure des cas concrets et exemples. Inclure une FAQ. Niveau de détail : approfondi.
+  Tu écris en tant que Alexandre Michel, 31 ans, Responsable comptable basé(e) à Toulouse (entreprise de 100-500 salariés). Niveau expert, 9 ans d'expérience. Vouvoie le lecteur. Ton : pédagogique. Phrases mixtes. Niveau pédagogique : moyenne. Positionnement : utilisateur terrain. Niveau d'opinion : tranché. Angle éditorial prioritaire : performance. Critères de classement par ordre de priorité : Facilité d'utilisation, Fonctionnalités, Prix, Intégrations. Scoring : note /5, avec un gagnant clairement désigné. Objectifs du lecteur cible : Gagner du temps sur les tâches répétitives, Réduire les coûts logiciels. Contraintes du lecteur : Budget limité, Équipe non technique, Peu de temps pour la formation. Inclure des cas concrets et exemples. Inclure une FAQ. Niveau de détail : équilibré.
 author:
-  name: "Marie Simon"
-  bio: "Marie Simon est responsable comptable, spécialisée dans l'accompagnement des TPE, indépendants et commerces de proximité. Elle teste et compare les outils de gestion au quotidien pour aider les entrepreneurs locaux à choisir les bons logiciels, sans jargon."
+  name: "Alexandre Michel"
+  bio: "Alexandre Michel est un Responsable comptable expérimenté avec 9 années d'expertise dans la gestion financière et la supervision d'équipes comptables à Toulouse. Il maîtrise parfaitement les normes comptables françaises et internationales, ainsi que les outils de gestion modernes. Alexandre excelle dans l'optimisation des processus financiers et la formation des collaborateurs aux bonnes pratiques comptables."
   job_title: "Responsable comptable"
-  photo: "https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/sauvonslaproximite-com/public/author-photo.png?t=1779805395937"
+  photo: "blob:https://comparatifs-platform.vercel.app/ca6f34f0-ef29-415c-ade2-661d7b376465"
   socials: []
