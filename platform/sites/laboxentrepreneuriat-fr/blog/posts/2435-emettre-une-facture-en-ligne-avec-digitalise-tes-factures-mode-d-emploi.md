@@ -14,8 +14,9 @@ link_anchors:
 - text: créer une facture en ligne avec Digitalise-Tes-Factures
   max: 5
 related_posts:
-- 1173-les-6-modeles-de-factures-phares-de-digitalise-tes-factures
 - 6208-parametrer-la-facturation-recurrente-billmatic-cyclic-etape-par-etape
+- 1173-les-6-modeles-de-factures-phares-de-digitalise-tes-factures
+- 4871-emettre-une-facture-en-ligne-avec-simplifie-ta-compta-sans-se-tromper
 ---
 <p>J'ai accompagné des dizaines d'indépendants et de dirigeants de TPE sur la facturation. Et la question qui revient le plus souvent, c'est simple : "Comment je fais ma facture sans me tromper et sans y passer une heure ?" Digitalise-Tes-Factures est l'un des outils sur lesquels j'ai passé du temps ces derniers mois. Voici ce que j'en pense vraiment, avec la procédure complète pour émettre une première facture.</p>
 
