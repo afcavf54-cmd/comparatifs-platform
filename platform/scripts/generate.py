@@ -1758,7 +1758,7 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     top_pairs=top_pairs, build_date=date.today().isoformat(),
                     site_editorial=site_editorial,
                     page_types=config.get("page_types", {}),
-                    recent_blog_posts=substitute_template_vars(blog_posts[:6], _global_vars) if blog_posts else [],
+                    recent_blog_posts=substitute_template_vars(blog_posts[:int(site.get('home_recent_count', 6) or 6)], _global_vars) if blog_posts else [],
                     recent_avis=substitute_template_vars(_recent_avis_for_home, _global_vars) if _recent_avis_for_home else [],
                     home_title=home_title, home_description=home_desc, home_h1=site.get('home_h1', ''),
                 )
