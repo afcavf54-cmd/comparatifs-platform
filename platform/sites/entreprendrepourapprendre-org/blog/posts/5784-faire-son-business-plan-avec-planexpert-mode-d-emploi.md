@@ -4,15 +4,18 @@ slug: 5784-faire-son-business-plan-avec-planexpert-mode-d-emploi
 date: '2026-06-23T08:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: Comment faire un business plan avec PlanExpert
-meta_description: Découvrez comment utiliser PlanExpert pour créer votre business plan sans compétences comptables. Guide concret, retours d'expérience et conseils pour un…
+meta_description: Découvrez comment utiliser PlanExpert pour créer votre business
+  plan sans compétences comptables. Guide concret, retours d'expérience et conseils
+  pour un…
 min_words: 980
 status: published
 featured_image: /blog/5784-faire-son-business-plan-avec-planexpert-mode-d-emploi.jpg
 link_anchors:
 - text: comment faire un business plan avec PlanExpert
   max: 5
+related_posts:
+- 7965-la-formation-business-plan-frenchy-business-pro-sous-toutes-les-coutures
 ---
-
 <h2>Ce que j'aurais voulu savoir avant de faire mon premier business plan</h2>
 
 <p>Mon premier business plan, je l'ai rédigé sur un fichier Excel bricolé à 23h, avec des formules qui se cassaient dès que je touchais une cellule. C'était il y a huit ans. Je ne recommande à personne cette expérience.</p>
