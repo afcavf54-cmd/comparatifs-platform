@@ -4,15 +4,20 @@ slug: 9414-a-quel-public-s-adresse-la-comptabilite-cloud-financecore-enterprise
 date: '2026-06-24T11:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Comptabilité cloud FinanceCore Enterprise : pour quelle entreprise ?'
-meta_description: Découvrez à quel profil d'entreprise s'adresse vraiment la comptabilité cloud FinanceCore Enterprise, ses atouts concrets et ses limites avant de vous lancer.
+meta_description: Découvrez à quel profil d'entreprise s'adresse vraiment la comptabilité
+  cloud FinanceCore Enterprise, ses atouts concrets et ses limites avant de vous lancer.
 min_words: 950
 status: published
 featured_image: /blog/9414-a-quel-public-s-adresse-la-comptabilite-cloud-financecore-enterprise.jpg
 link_anchors:
 - text: les fonctionnalités de la comptabilité cloud FinanceCore Enterprise
   max: 5
+related_posts:
+- 3326-le-prix-d-invoicemaster-evolution-justifie-t-il-ce-logiciel-de-facturation
+- 8636-facturation-automatisee-billmatic-auto-les-pieges
+- 7813-choisir-entre-quickbill-advanced-et-un-autre-logiciel-de-facturation
+- 8509-fastbill-vs-invoicepro-max-forces-et-limites-en-facturation
 ---
-
 <p>Je vais te dire ce que j'aurais aimé savoir avant de tester FinanceCore Enterprise pendant trois mois dans ma boîte. Ce logiciel, tout le monde en parle dans les forums de fondateurs, mais personne ne dit vraiment à qui ça convient, et surtout à qui ça ne convient pas.</p>
 
 <p>Spoiler : ce n'est pas fait pour tout le monde.</p>
