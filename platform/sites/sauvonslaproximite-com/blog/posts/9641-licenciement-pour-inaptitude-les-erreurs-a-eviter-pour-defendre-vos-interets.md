@@ -4,15 +4,21 @@ slug: 9641-licenciement-pour-inaptitude-les-erreurs-a-eviter-pour-defendre-vos-i
 date: '2026-06-24T09:00:00+02:00'
 categorie: Salarié
 meta_title: 'Le piège du licenciement pour inaptitude : ce qu''il faut savoir'
-meta_description: 'Licenciement pour inaptitude : découvrez les erreurs fatales à éviter, les délais à respecter et vos droits réels pour mieux défendre votre situation face à…'
+meta_description: 'Licenciement pour inaptitude : découvrez les erreurs fatales à
+  éviter, les délais à respecter et vos droits réels pour mieux défendre votre situation
+  face à…'
 min_words: 1200
 status: published
 featured_image: /blog/9641-licenciement-pour-inaptitude-les-erreurs-a-eviter-pour-defendre-vos-interets.jpg
 link_anchors:
 - text: le piège du licenciement pour inaptitude
   max: 4
+related_posts:
+- 8249-redressement-judiciaire-comment-quitter-l-entreprise-en-protegeant-vos-droits
+- 3650-mon-patron-change-mes-horaires-sans-preavis-ce-que-dit-le-droit-du-travail
+- 1113-abreviations-du-bulletin-de-salaire-comprendre-facilement-chaque-ligne
+- 8092-refus-d-amenagement-d-horaire-avec-une-rqth-comment-faire-valoir-vos-droits
 ---
-
 <p>Vingt ans à travailler sur des paies, des clôtures, des liasses fiscales. Et pourtant, quand une collègue de mon équipe a reçu un avis d'inaptitude l'année dernière, on s'est retrouvés complètement démunis face aux démarches. Pas parce qu'on manquait d'organisation. Juste parce que le droit du travail autour de l'inaptitude est un terrain miné, plein de délais, de formulaires et de décisions qui se prennent vite, souvent mal, parfois sans retour possible.</p>
 
 <p>Cet article, je l'écris pour vous aider à ne pas commettre les erreurs classiques. Celles que j'ai vues. Celles que j'aurais moi-même failli commettre si je n'avais pas creusé le sujet.</p>
