@@ -7,6 +7,7 @@
 # ============================================================
 
 site:
+  home_h1: ""
   slug: monelor-com
   name: "monelor.com"
   domain: "https://monelor.com"
@@ -19,8 +20,8 @@ site:
   www_preference: "www"
   blog_slug_format: "prefix"
   author_name: "Nicolas Lefebvre"
-  home_title: "monelor.com | Comparatifs 2026"
-  home_description: ""
+  home_title: "Monelor, le média pour mieux investir et gérer son patrimoine"
+  home_description: "Découvrez Monelor, le média dédié à l'investissement, à l'épargne et à la gestion de patrimoine. Conseils, analyses et stratégies pour atteindre vos objectifs financiers."
   template: "comparatif-vs-scpi.html.j2"
   index_template: "index-blog.html.j2"
   analytics_clicky: ""
