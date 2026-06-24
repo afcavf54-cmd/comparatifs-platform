@@ -39,7 +39,7 @@ export default function SettingsPage() {
   const [themeForm, setThemeForm] = useState({ accent: '#2563EB', accent2: '#F59E0B', bg: '#F8FAFC', ink: '#0F172A', cta_color: '#F59E0B', cta_text_color: '#ffffff' })
   const [savingTheme, setSavingTheme] = useState(false)
   const [msgTheme, setMsgTheme] = useState('')
-  const [seoForm, setSeoForm] = useState({ home_title: '', home_description: '', home_h1: '', seo_vs_title: '{A} vs {B} : comparatif {year}', seo_vs_meta: 'Comparatif complet {A} vs {B} {year} : rendements, frais, avis.', seo_avis_title: 'Avis {nom} {year} : faut-il investir ?', seo_avis_meta: 'Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques.', seo_liste_comp_title: 'Tous les comparatifs {site_name} {year}', seo_liste_avis_title: 'Avis {site_name} {year} : analyses independantes', seo_classement_title: 'Meilleur {categorie} {year} : Top {count}', seo_classement_meta: 'Comparez les meilleurs {categorie} en {year}.', seo_classement_h1: '', seo_classement_titre_analyse: 'Comparatif complet {categorie}', www_preference: 'www' })
+  const [seoForm, setSeoForm] = useState({ home_title: '', home_description: '', home_h1: '', footer_description: '', seo_vs_title: '{A} vs {B} : comparatif {year}', seo_vs_meta: 'Comparatif complet {A} vs {B} {year} : rendements, frais, avis.', seo_avis_title: 'Avis {nom} {year} : faut-il investir ?', seo_avis_meta: 'Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques.', seo_liste_comp_title: 'Tous les comparatifs {site_name} {year}', seo_liste_avis_title: 'Avis {site_name} {year} : analyses independantes', seo_classement_title: 'Meilleur {categorie} {year} : Top {count}', seo_classement_meta: 'Comparez les meilleurs {categorie} en {year}.', seo_classement_h1: '', seo_classement_titre_analyse: 'Comparatif complet {categorie}', www_preference: 'www' })
   const [pageTypes, setPageTypes] = useState<Record<string, string>>({})
   const [saving, setSaving] = useState(false)
   const [savingSeo, setSavingSeo] = useState(false)
@@ -92,7 +92,7 @@ export default function SettingsPage() {
       if (d) {
         if (d.theme) setThemeForm(t => ({ ...t, ...d.theme, cta_color: d.theme.cta_color || '#F59E0B', cta_text_color: d.theme.cta_text_color || '#ffffff' }))
         setSeoForm(f => ({ ...f, home_title: d.home_title || '', home_description: d.home_description || '',
-              home_h1: d.home_h1 || '', seo_vs_title: d.seo?.title_pattern || f.seo_vs_title, seo_vs_meta: d.seo?.meta_pattern || f.seo_vs_meta, seo_avis_title: d.seo?.avis_title_pattern || f.seo_avis_title, seo_avis_meta: d.seo?.avis_meta_pattern || f.seo_avis_meta, seo_liste_comp_title: d.seo?.liste_comp_title || f.seo_liste_comp_title, seo_liste_avis_title: d.seo?.liste_avis_title || f.seo_liste_avis_title, seo_classement_title: d.seo?.classement_title_pattern || f.seo_classement_title, seo_classement_meta: d.seo?.classement_meta_pattern || f.seo_classement_meta, seo_classement_h1: d.seo?.classement_h1_pattern || f.seo_classement_h1, seo_classement_titre_analyse: d.seo?.classement_titre_analyse_pattern || f.seo_classement_titre_analyse, www_preference: d.www_preference || 'www' }))
+              home_h1: d.home_h1 || '', footer_description: d.footer_description || '', seo_vs_title: d.seo?.title_pattern || f.seo_vs_title, seo_vs_meta: d.seo?.meta_pattern || f.seo_vs_meta, seo_avis_title: d.seo?.avis_title_pattern || f.seo_avis_title, seo_avis_meta: d.seo?.avis_meta_pattern || f.seo_avis_meta, seo_liste_comp_title: d.seo?.liste_comp_title || f.seo_liste_comp_title, seo_liste_avis_title: d.seo?.liste_avis_title || f.seo_liste_avis_title, seo_classement_title: d.seo?.classement_title_pattern || f.seo_classement_title, seo_classement_meta: d.seo?.classement_meta_pattern || f.seo_classement_meta, seo_classement_h1: d.seo?.classement_h1_pattern || f.seo_classement_h1, seo_classement_titre_analyse: d.seo?.classement_titre_analyse_pattern || f.seo_classement_titre_analyse, www_preference: d.www_preference || 'www' }))
         if (d.page_types) setPageTypes(d.page_types)
         // Charger auteur
         if (d.author) {
@@ -238,6 +238,14 @@ export default function SettingsPage() {
             placeholder="Ex: Le comparateur de logiciels qui compare vraiment"
             style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
           <div style={{ fontSize: 11, color: '#4A5568', marginTop: 4 }}>Vous pouvez utiliser &lt;em&gt;texte&lt;/em&gt; pour mettre en italique</div>
+        </div>
+        <div style={{ marginBottom: 14 }}>
+          <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, marginBottom: 4 }}>Footer — description</div>
+          <textarea value={(seoForm as any)['footer_description'] || ''} onChange={e => setSeoForm(f => ({ ...f, footer_description: e.target.value }))}
+            rows={2}
+            placeholder="Ex: Le média qui aide les entrepreneurs à choisir les bons outils."
+            style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const, resize: 'vertical', fontFamily: 'inherit' }} />
+          <div style={{ fontSize: 11, color: '#4A5568', marginTop: 4 }}>Texte affiché sous le logo dans le footer de chaque page. Vide = texte par défaut («&nbsp;Comparatifs {'{site_name}'} {'{year}'}&nbsp;»).</div>
         </div>
         <div style={{ fontSize: 12, color: '#0090FF', fontWeight: 600, margin: '16px 0 10px' }}>Pages comparatifs (A vs B)</div>
         {seoInp('Title pattern', 'seo_vs_title')}{seoInp('Meta pattern', 'seo_vs_meta')}
