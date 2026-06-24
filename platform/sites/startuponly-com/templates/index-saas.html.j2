@@ -70,6 +70,8 @@
 html{scroll-behavior:smooth}
 body{font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;background:var(--so-bg);color:var(--so-ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-size:16px;line-height:1.6}
 a{text-decoration:none;color:inherit}
+/* Aligne header/footer sur la police du site (sinon ils héritent de la police de la home) */
+nav.site-nav .nav-links a,nav.site-nav .nav-cta,nav.site-nav .nav-mobile a,.footer{font-family:'{{ theme.font_body }}',system-ui,-apple-system,sans-serif}
 ::selection{background:var(--so-purple);color:#fff}
 @keyframes so-floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 
