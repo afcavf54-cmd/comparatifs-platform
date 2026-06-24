@@ -4,15 +4,19 @@ slug: 2469-creer-son-business-plan-avec-financepro-smart-concretement
 date: '2026-06-24T19:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: Comment créer un business plan avec FinancePro Smart
-meta_description: 'Retour concret sur FinancePro Smart pour créer son business plan : points forts, limites et avis tranché d''une dirigeante de TPE après 6 mois de tests.'
+meta_description: 'Retour concret sur FinancePro Smart pour créer son business plan
+  : points forts, limites et avis tranché d''une dirigeante de TPE après 6 mois de
+  tests.'
 min_words: 960
 status: published
 featured_image: /blog/2469-creer-son-business-plan-avec-financepro-smart-concretement.jpg
 link_anchors:
 - text: comment créer un business plan avec FinancePro Smart
   max: 5
+related_posts:
+- 7965-la-formation-business-plan-frenchy-business-pro-sous-toutes-les-coutures
+- 5784-faire-son-business-plan-avec-planexpert-mode-d-emploi
 ---
-
 <p>J'ai mis six mois à trouver un outil qui me convienne vraiment pour construire mon business plan. Six mois à essayer des trucs trop complexes, trop génériques, ou franchement inutilisables sans une formation de deux jours. Alors quand j'ai testé FinancePro Smart, j'avais déjà mes critères bien en tête. Et j'ai des choses précises à dire dessus.</p>
 
 <p>Cet article n'est pas une fiche produit. C'est mon retour concret, avec les points qui m'ont convaincue et ceux qui m'ont agacée.</p>

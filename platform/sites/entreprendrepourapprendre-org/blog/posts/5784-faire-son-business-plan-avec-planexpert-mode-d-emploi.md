@@ -15,6 +15,7 @@ link_anchors:
   max: 5
 related_posts:
 - 7965-la-formation-business-plan-frenchy-business-pro-sous-toutes-les-coutures
+- 2469-creer-son-business-plan-avec-financepro-smart-concretement
 ---
 <h2>Ce que j'aurais voulu savoir avant de faire mon premier business plan</h2>
 

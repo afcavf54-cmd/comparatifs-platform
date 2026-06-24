@@ -15,6 +15,7 @@ link_anchors:
 - text: la formation business plan Frenchy-Business-Pro
   max: 5
 related_posts:
+- 2469-creer-son-business-plan-avec-financepro-smart-concretement
 - 5784-faire-son-business-plan-avec-planexpert-mode-d-emploi
 ---
 <h2>Pourquoi j'ai testé cette formation business plan ?</h2>
