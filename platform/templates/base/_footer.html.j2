@@ -25,7 +25,7 @@
         {% else %}
         <div class="footer-logo">{{ site.logo_text }}<span>{{ site.logo_accent }}</span></div>
         {% endif %}
-        <p>{{ site.tagline | default('') }}</p>
+        <p>{% if site.footer_description is defined and site.footer_description %}{{ site.footer_description }}{% else %}{{ site.tagline | default('') }}{% endif %}</p>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Navigation</div>
