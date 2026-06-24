@@ -4,15 +4,21 @@ slug: 9642-exporter-ses-donnees-salestrack-crm-au-format-csv-la-marche-a-suivre
 date: '2026-06-24T07:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Comment exporter les données du CRM SalesTrack en CSV
-meta_description: 'Apprenez à exporter vos données SalesTrack CRM au format CSV sans prise de tête : guide pratique, étapes claires et astuces pour éviter les erreurs courantes.'
+meta_description: 'Apprenez à exporter vos données SalesTrack CRM au format CSV sans
+  prise de tête : guide pratique, étapes claires et astuces pour éviter les erreurs
+  courantes.'
 min_words: 970
 status: published
 featured_image: /blog/9642-exporter-ses-donnees-salestrack-crm-au-format-csv-la-marche-a-suivre.jpg
 link_anchors:
 - text: comment exporter les données du CRM SalesTrack au format CSV
   max: 5
+related_posts:
+- 7831-crm-basique-ou-salesforce-premium-quelle-difference
+- 8975-comment-installer-l-erp-integre-managepro-suite
+- 9905-implementer-l-erp-smartchain-360-concretement
+- 4096-fieldforce-connect-android-le-crm-mobile-sans-filtre
 ---
-
 <p>J'ai passé un bon moment à chercher comment exporter mes données proprement depuis SalesTrack CRM. Pas parce que c'est compliqué en soi, mais parce que la documentation officielle est parfois... disons, optimiste sur la facilité de la chose. Alors je vous écris ce que j'aurais voulu trouver dès le départ.</p>
 
 <p>Dans mon agence, on utilise SalesTrack pour suivre nos prospects et clients. Six personnes, des devis qui circulent, des relances à gérer. Régulièrement, j'ai besoin de sortir les données pour les croiser avec notre outil de facturation, ou simplement pour faire un point de rentabilité dans un tableur. Le CSV, c'est le format qui passe partout. Autant savoir l'utiliser correctement.</p>
