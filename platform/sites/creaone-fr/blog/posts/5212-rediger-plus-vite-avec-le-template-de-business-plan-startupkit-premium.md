@@ -16,6 +16,7 @@ link_anchors:
 related_posts:
 - 8528-a-quel-public-s-adresse-planexpert-pour-faire-un-business-plan
 - 3919-a-qui-profite-financepro-smart-pour-creer-un-business-plan
+- 1665-5-raisons-de-tester-le-generateur-de-business-plan-smartstart-generator
 ---
 <p>J'ai mis les mains dans pas mal de templates de business plan ces dernières années. Certains m'ont fait perdre un temps fou, d'autres ont tenu leurs promesses. Quand un collègue m'a parlé du <strong>template de business plan StartupKit Premium</strong>, j'étais sceptique. Encore un fichier Excel mal foutu avec des graphiques qui ne s'actualisent pas ? Non. Là, c'est différent.</p>
 
