@@ -4,15 +4,21 @@ slug: 7602-formation-management-agilemaster-duree-certification-et-avis
 date: '2026-06-24T07:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation Management AgileMaster : durée et programme'
-meta_description: 'Découvrez un avis complet sur la formation management AgileMaster : durée, contenu, certification et retour d''expérience concret pour les dirigeants de TPE et PME.'
+meta_description: 'Découvrez un avis complet sur la formation management AgileMaster
+  : durée, contenu, certification et retour d''expérience concret pour les dirigeants
+  de TPE et PME.'
 min_words: 990
 status: published
 featured_image: /blog/7602-formation-management-agilemaster-duree-certification-et-avis.jpg
 link_anchors:
 - text: la durée de la formation management certifiante AgileMaster
   max: 5
+related_posts:
+- 7371-comment-favoriser-le-developpement-des-talents-en-entreprise
+- 6481-comment-realiser-une-cartographie-des-competences-efficacement
+- 7114-comment-gerer-les-talents-dans-une-pme
+- 9006-gestionnaire-de-la-paie-quel-est-son-role-dans-l-entreprise
 ---
-
 <p>J'ai mis pas mal de temps avant de m'intéresser sérieusement aux formations management. Honnêtement, quand on dirige une TPE de 100 à 500 personnes à Lyon, on a d'autres priorités que de passer des semaines en salle de cours. Mais à un moment, les problèmes d'organisation répétitifs, les équipes qui tournent en rond, les projets qui dérapent... ça finit par coûter plus cher que n'importe quelle formation.</p>
 
 <p>Alors j'ai regardé ce qui existait. Et <strong>AgileMaster</strong> est revenu souvent dans mes recherches. Voici ce que j'en pense, sans filtre.</p>
