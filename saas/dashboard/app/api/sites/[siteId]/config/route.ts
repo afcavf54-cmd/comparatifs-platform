@@ -23,6 +23,7 @@ export async function GET(_: NextRequest, { params }: Params) {
     home_title: get('home_title'),
     home_description: get('home_description'),
     home_h1: get('home_h1'),
+    footer_description: get('footer_description'),
     analytics_clicky: get('analytics_clicky'),
     google_site_verification: get('google_site_verification'),
     www_preference: get('www_preference') || 'www',
@@ -157,6 +158,7 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   if (body.home_title !== undefined) replaceKey('home_title', body.home_title || '')
   if (body.home_description !== undefined) replaceKey('home_description', body.home_description || '')
   if (body.home_h1 !== undefined) replaceKey('home_h1', body.home_h1 || '')
+  if (body.footer_description !== undefined) replaceKey('footer_description', body.footer_description || '')
   // persona_prompt : bloc scalaire YAML
   if (body.persona_prompt !== undefined) {
     const pp = (body.persona_prompt || '').trim()
