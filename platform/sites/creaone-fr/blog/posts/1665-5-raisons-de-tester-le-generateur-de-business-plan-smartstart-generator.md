@@ -14,9 +14,10 @@ link_anchors:
 - text: les avis sur le template de business plan SmartStart Generator
   max: 5
 related_posts:
-- 5212-rediger-plus-vite-avec-le-template-de-business-plan-startupkit-premium
-- 8528-a-quel-public-s-adresse-planexpert-pour-faire-un-business-plan
 - 3919-a-qui-profite-financepro-smart-pour-creer-un-business-plan
+- 8528-a-quel-public-s-adresse-planexpert-pour-faire-un-business-plan
+- 9477-gagner-du-temps-grace-au-modele-de-business-plan-startupkit-advanced
+- 5212-rediger-plus-vite-avec-le-template-de-business-plan-startupkit-premium
 ---
 <p>J'ai testé pas mal d'outils pour structurer un business plan ces dernières années. Des tableurs Excel faits maison, des modèles Word récupérés sur des forums, quelques SaaS plus ou moins convaincants. SmartStart Generator, je suis tombé dessus un peu par hasard, et franchement, ça m'a surpris. Pas parce que c'est parfait, loin de là. Mais parce que ça répond vraiment aux bonnes questions au bon moment.</p>
 
