@@ -4,15 +4,21 @@ slug: 6692-ce-qui-manque-au-crm-mobile-fieldforce-connect-sur-android
 date: '2026-06-24T07:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'CRM mobile FieldForce Connect Android : les limites'
-meta_description: 'Retour d''expérience sur le CRM mobile FieldForce Connect après un an sur Android : synchronisation hors ligne défaillante, données perdues sur le terrain et…'
+meta_description: 'Retour d''expérience sur le CRM mobile FieldForce Connect après
+  un an sur Android : synchronisation hors ligne défaillante, données perdues sur
+  le terrain et…'
 min_words: 990
 status: published
 featured_image: /blog/6692-ce-qui-manque-au-crm-mobile-fieldforce-connect-sur-android.jpg
 link_anchors:
 - text: le CRM mobile FieldForce Connect en version Android
   max: 5
+related_posts:
+- 5289-matrice-tows-guide-pratique-pour-renforcer-votre-strategie-d-entreprise
+- 6301-salestrack-evolution-face-a-un-suivi-sur-fichier
+- 6254-calcul-prix-de-vente-avec-taux-de-marge-comment-garantir-votre-rentabilite
+- 6395-crm-clientpulse-pro-2024-face-a-la-concurrence
 ---
-
 <p>J'utilise FieldForce Connect depuis un peu plus d'un an sur Android. Au départ, j'étais plutôt convaincu. Un CRM mobile pensé pour les équipes terrain, ça répondait exactement à ce dont j'avais besoin pour mes commerciaux qui bougent beaucoup sur Marseille et la région PACA. Mais au fil des mois, j'ai accumulé des frustrations que je ne peux plus ignorer.</p>
 
 <p>Voici ce que j'ai vraiment constaté, sans filtre.</p>
