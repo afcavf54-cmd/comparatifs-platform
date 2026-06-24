@@ -199,7 +199,9 @@ nav.site-nav .nav-links a,nav.site-nav .nav-cta,nav.site-nav .nav-mobile a,.foot
 /* ── RESPONSIVE ── */
 @media(max-width:980px){
   .cr-hero-inner{flex-direction:column;gap:48px}
-  .cr-hero-illu{flex:0 0 auto;width:100%;max-width:440px;height:auto;aspect-ratio:1/1}
+  .cr-hero-txt{order:1}
+  .cr-hero-illu{order:2;flex:0 0 auto;width:100%;max-width:440px;height:auto;aspect-ratio:1/1}
+  .cr-hero-desc{color:#fff}
   .cr-stats-inner{grid-template-columns:1fr 1fr;gap:32px 0}
   .cr-stat:nth-child(2){border-right:none}
   .cr-themes-grid,.cr-blog-grid{grid-template-columns:1fr 1fr}
