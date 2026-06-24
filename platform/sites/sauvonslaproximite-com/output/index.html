@@ -66,6 +66,8 @@
 html{scroll-behavior:smooth}
 body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;background:var(--slp-bg);color:var(--slp-ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-size:16px;line-height:1.6}
 a{text-decoration:none;color:inherit}
+/* Aligne header/footer sur la police du site (sinon ils héritent de la police de la home) */
+nav.site-nav .nav-links a,nav.site-nav .nav-cta,nav.site-nav .nav-mobile a,.footer{font-family:'Outfit',system-ui,-apple-system,sans-serif}
 ::selection{background:var(--slp-teal);color:#fff}
 .slp-shell{max-width:1200px;margin:0 auto;padding-left:48px;padding-right:48px}
 .slp-kick{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--slp-blue);margin-bottom:14px}
