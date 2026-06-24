@@ -4,15 +4,21 @@ slug: 8169-quel-budget-pour-le-coworking-la-cantine-x-french-tech-nantes
 date: '2026-06-24T10:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'Coworking La Cantine x French Tech Nantes : combien coûte une place ?'
-meta_description: 'Découvrez le budget à prévoir pour coworker à la Cantine x French Tech Nantes : tarifs, formules et conseils d''un fondateur qui gère ses coûts avec rigueur.'
+meta_description: 'Découvrez le budget à prévoir pour coworker à la Cantine x French
+  Tech Nantes : tarifs, formules et conseils d''un fondateur qui gère ses coûts avec
+  rigueur.'
 min_words: 930
 status: published
 featured_image: /blog/8169-quel-budget-pour-le-coworking-la-cantine-x-french-tech-nantes.jpg
 link_anchors:
 - text: l'espace de coworking La Cantine x La French Tech Nantes
   max: 5
+related_posts:
+- 8293-le-devis-travaux-en-ligne-e-local-fr-est-il-sans-engagement
+- 8082-a-quel-profil-convient-lestylechezsoi-pour-un-devis-deco
+- 6453-la-certification-strategie-digitale-webmarket-pese-t-elle-sur-un-cv
+- 9420-le-prix-de-la-formation-hubgrow-academy-est-il-justifie
 ---
-
 <p>La Cantine à Nantes, c'est un lieu que j'entends régulièrement citer dans les cercles startup. Lié à la French Tech Nantes Saint-Nazaire, c'est un espace de coworking qui s'adresse clairement aux fondateurs, freelances tech et porteurs de projets innovants. Mais avant d'y poser ton ordi, la vraie question c'est : ça coûte combien ?</p>
 
 <p>J'ai épluché les formules disponibles parce que, quand on dirige une petite structure avec un budget serré, on ne signe pas les yeux fermés. Voici ce que j'ai trouvé, avec mon regard de fondateur qui gère ses coûts à la loupe.</p>
