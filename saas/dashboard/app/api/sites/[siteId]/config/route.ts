@@ -24,6 +24,10 @@ export async function GET(_: NextRequest, { params }: Params) {
     home_description: get('home_description'),
     home_h1: get('home_h1'),
     footer_description: get('footer_description'),
+    social_facebook: get('social_facebook'),
+    social_linkedin: get('social_linkedin'),
+    social_x: get('social_x'),
+    social_youtube: get('social_youtube'),
     analytics_clicky: get('analytics_clicky'),
     google_site_verification: get('google_site_verification'),
     www_preference: get('www_preference') || 'www',
@@ -159,6 +163,10 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   if (body.home_description !== undefined) replaceKey('home_description', body.home_description || '')
   if (body.home_h1 !== undefined) replaceKey('home_h1', body.home_h1 || '')
   if (body.footer_description !== undefined) replaceKey('footer_description', body.footer_description || '')
+  if (body.social_facebook !== undefined) replaceKey('social_facebook', body.social_facebook || '')
+  if (body.social_linkedin !== undefined) replaceKey('social_linkedin', body.social_linkedin || '')
+  if (body.social_x !== undefined) replaceKey('social_x', body.social_x || '')
+  if (body.social_youtube !== undefined) replaceKey('social_youtube', body.social_youtube || '')
   // persona_prompt : bloc scalaire YAML
   if (body.persona_prompt !== undefined) {
     const pp = (body.persona_prompt || '').trim()
