@@ -154,7 +154,7 @@
             <span class="mark">🎁</span>{{ site.logo_text | default('Cadeau') }}{% if site.logo_accent %}<span class="accent">{{ site.logo_accent }}</span>{% endif %}
           </span>
         </a>
-        <p class="cdc-foot-intro">En manque d'inspiration pour un futur cadeau à offrir&nbsp;? CadeauClic est le site référence pour trouver des idées cadeaux qui plaisent à coup sûr.</p>
+        <p class="cdc-foot-intro">{% if site.footer_description is defined and site.footer_description %}{{ site.footer_description }}{% else %}En manque d'inspiration pour un futur cadeau à offrir&nbsp;? CadeauClic est le site référence pour trouver des idées cadeaux qui plaisent à coup sûr.{% endif %}</p>
         <div class="cdc-foot-socials">
           <a href="https://www.facebook.com/cadeauclic/" target="_blank" rel="nofollow noopener" aria-label="Facebook">
             <svg viewBox="0 0 24 24"><path d="M13 22v-8h2.7l.4-3.1H13V8.9c0-.9.3-1.5 1.6-1.5H16V4.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.4H7.2V14H9.9v8H13z"/></svg>
