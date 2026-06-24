@@ -13,7 +13,8 @@ featured_image: /blog/4224-kickngo-vs-autres-agences-d-e-reputation.jpg
 link_anchors:
 - text: l'agence d'e-réputation Kickngo
   max: 5
-related_posts: []
+related_posts:
+- 4999-quel-budget-pour-un-devis-deco-lestylechezsoi
 ---
 <h2>Pourquoi j'ai comparé KicknGo aux autres agences d'e-réputation ?</h2>
 
