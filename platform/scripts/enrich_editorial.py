@@ -85,10 +85,10 @@ def _keyword_is_enabled(kw_name, enabled):
 # ── Config ────────────────────────────────────────────────────────────────────
 ROOT      = Path(__file__).parent.parent
 SITES_DIR = ROOT / "sites"
-# NB : l'ancien "claude-sonnet-4-20250514" (Sonnet 4) a été retiré par Anthropic
-# → 404 not_found_error sur chaque appel. Remplacé par "claude-sonnet-4-6"
-# (Sonnet 4.6 — même tier de prix). Surchargeable via la variable d'env CLAUDE_MODEL.
-MODEL     = os.environ.get("CLAUDE_MODEL", "claude-sonnet-4-6")
+# Modèle Claude : source de vérité UNIQUE dans platform/scripts/_ai_model.py.
+# Changer la version là-bas la met à jour partout (enrich, blog, avis).
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _ai_model import CLAUDE_MODEL as MODEL
 MAX_TOKENS = 4096
 MAX_RETRIES = 100
 RETRY_CYCLE = [30, 60, 300, 900, 1800, 3600]  # pattern cyclique : 30s, 1min, 5min, 15min, 30min, 1h
