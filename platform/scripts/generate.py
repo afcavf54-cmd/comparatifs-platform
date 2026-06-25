@@ -1161,23 +1161,34 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         site["has_a_propos"] = True
 
     # ── Détection précoce des comparateurs ────────────────────────────────
-    # Un site a des comparateurs si son products.yaml contient au moins
-    # 1 produit. Sinon (cas cadeauclic.com qui est blog-only), on set
-    # explicitement `has_comparateurs = False` pour que le partial _nav.html.j2
-    # commun (et le footer) cachent le lien "Nos comparateurs".
-    # Note : le pattern dans _footer.html.j2 est :
+    # Un site a des comparateurs si :
+    #   - son products.yaml contient ≥1 produit (sites type SCPI), OU
+    #   - c'est un site de "classements" (config page_types.classement défini,
+    #     ex. niches entreprendre/labox/…) AVEC ≥1 classement réellement actif.
+    # Sinon (cadeauclic = blog-only, OU site classement dont TOUS les classements
+    # ont été supprimés), on set has_comparateurs = False pour cacher le lien
+    # "Nos comparateurs" dans le _nav.html.j2 commun et le footer.
+    # Pattern côté template :
     #   {% if site.has_comparateurs is not defined or site.has_comparateurs %}
-    # Donc set False (et non "ne pas définir") pour CACHER le lien — sinon
-    # le fallback rétro-compat l'affiche (sites legacy sans config explicite).
+    #
+    # ⚠ Bug historique corrigé : l'ancienne version ne regardait QUE products.yaml,
+    # donc les sites de niche (sans products.yaml mais avec des classements)
+    # voyaient le lien "Nos comparateurs" disparaître à tort sur home/blog/articles.
     _comparateurs_products = (products_yaml.get("products") or []) if isinstance(products_yaml, dict) else []
-    if not _comparateurs_products:
-        # Pas de produits → pas de comparateurs à afficher sur ce site
-        site["has_comparateurs"] = False
-    elif "has_comparateurs" not in site:
-        # Au moins 1 produit ET pas d'override explicite dans config.yaml
-        site["has_comparateurs"] = True
+    _pt = config.get("page_types") or {}
+    _is_classement_site = isinstance(_pt, dict) and "classement" in _pt
+    # ≥1 classement actif : mode legacy (_enabled_classements is None = tous
+    # activés) OU liste non vide. Liste vide = l'utilisateur a tout
+    # désactivé/supprimé depuis le dashboard → plus aucun comparateur.
+    _has_active_classements = _is_classement_site and (
+        _enabled_classements is None or len(_enabled_classements) > 0
+    )
+    _has_any_comparateur = bool(_comparateurs_products) or _has_active_classements
+    if "has_comparateurs" not in site:
+        # Pas d'override explicite dans config.yaml → on déduit
+        site["has_comparateurs"] = _has_any_comparateur
     # (sinon : la valeur explicite du config.yaml gagne — utile pour forcer
-    #  False même avec un products.yaml présent, ex. site en transition)
+    #  True/False quel que soit le contenu détecté)
 
     # Injecter cta_color et cta_text_color (theme: ou racine du config)
     if "cta_color" not in theme:
