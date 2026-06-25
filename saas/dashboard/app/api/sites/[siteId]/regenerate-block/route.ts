@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { CLAUDE_MODEL } from '../../../../../lib/ai-model'
 import { getFile } from '../../../../../lib/github'
 
 type Params = { params: Promise<{ siteId: string }> }
@@ -51,7 +52,7 @@ export async function POST(req: NextRequest, { params }: Params) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
+      model: CLAUDE_MODEL,
       max_tokens: 1000,
       system: systemPrompt,
       messages: [{ role: 'user', content: prompt }]
