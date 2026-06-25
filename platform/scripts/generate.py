@@ -538,6 +538,37 @@ def products_by_slug(products: list, slug: str) -> dict:
     return next((p for p in products if p["slug"] == slug), None)
 
 
+def _author_photo_src(raw: str) -> str:
+    """Normalise la valeur `author.photo` du config en une URL utilisable dans un
+    <img src>, valable depuis N'IMPORTE QUELLE page (home '/', article '/slug/'…).
+
+    Règles :
+      - vide / blob: / data:        → '' (le template gère le fallback)
+      - URL raw GitHub .../public/X → '/X' (chemin absolu local)
+      - autre URL http(s) absolue   → conservée telle quelle
+      - chemin/filename local        → rendu ABSOLU (préfixe '/' garanti)
+
+    ⚠ Le bug corrigé ici : le dashboard stocke parfois le nom de fichier nu
+    ("author-photo.png", sans slash). Tel quel dans un <img src>, c'est un chemin
+    RELATIF : il fonctionne par hasard sur la home ('/') mais devient
+    '/slug/author-photo.png' (404) sur les pages d'article. On force donc le slash.
+    """
+    s = (raw or "").strip()
+    if not s:
+        return ""
+    if s.startswith("blob:") or s.startswith("data:"):
+        return ""
+    if s.startswith("http://") or s.startswith("https://"):
+        if "/public/" in s:
+            return "/" + s.split("/public/")[-1].split("?")[0]
+        return s  # URL externe quelconque → on la conserve
+    # Chemin local : retirer un éventuel query string et garantir le slash initial
+    s = s.split("?")[0]
+    if not s.startswith("/"):
+        s = "/" + s.lstrip("/")
+    return s
+
+
 def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, site_dir: Path = None, config: dict = None) -> None:
     # Construire le domain avec www_preference
     raw_domain = site["domain"].rstrip("/")
@@ -1509,11 +1540,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         # de certains sites ; la source de vérité est `config.author.*`.
         author_cfg_main = config.get("author", {}) or {}
         if author_cfg_main:
-            _photo_raw_main = author_cfg_main.get("photo", "")
-            if _photo_raw_main and ("http://" in _photo_raw_main or "https://" in _photo_raw_main):
-                _photo_clean_main = "/" + _photo_raw_main.split("/public/")[-1].split("?")[0] if "/public/" in _photo_raw_main else ""
-            else:
-                _photo_clean_main = _photo_raw_main
+            _photo_clean_main = _author_photo_src(author_cfg_main.get("photo", ""))
             site["author_name"] = author_cfg_main.get("name", "") or site.get("author_name", "")
             site["author_bio"] = author_cfg_main.get("bio", "") or site.get("author_bio", "")
             site["author_job"] = author_cfg_main.get("job_title", "") or site.get("author_job", "")
@@ -2138,13 +2165,9 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
 
                 # Données auteur depuis config
                 author_cfg = config.get("author", {})
-                # Nettoyer le path photo (enlever URL raw GitHub si présent)
-                _photo_raw = author_cfg.get("photo", "") or ""
-                if "raw.githubusercontent.com" in _photo_raw:
-                    # Extraire juste le nom de fichier
-                    _photo_clean = "/" + _photo_raw.split("/public/")[-1].split("?")[0] if "/public/" in _photo_raw else ""
-                else:
-                    _photo_clean = _photo_raw
+                # Normaliser le path photo : chemin ABSOLU garanti (cf. _author_photo_src)
+                # — corrige le 404 de la photo auteur sur les pages d'article.
+                _photo_clean = _author_photo_src(author_cfg.get("photo", ""))
 
                 site_with_author = {
                     **site,
