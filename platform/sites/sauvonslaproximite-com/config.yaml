@@ -5,11 +5,6 @@
 # ============================================================
 
 site:
-  social_youtube: "https://www.youtube.com/@sauvonslapoximite"
-  social_x: ""
-  social_linkedin: ""
-  social_facebook: "https://www.facebook.com/sauvonslaproximite/"
-  footer_description: "Sauvons la Proximité est un média dédié aux commerces, artisans et entreprises locales. Retrouvez des actualités, conseils et analyses pour soutenir le développement de l'économie locale et valoriser les acteurs de proximité."
   avis_sheet_edit_url: ""
   avis_sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQzjzzy_92K4VYhWlu-Gl-l_EZuWzBfQ6QkR8KvnkNXLKQPa1pEx_2nYAl83-G0dUnzmsdb4_6meEdL/pub?gid=0&single=true&output=csv"
   contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
@@ -94,7 +89,7 @@ persona_prompt: |
   Tu écris en tant que Marie Simon, 54 ans, Responsable comptable basé(e) à Lyon (entreprise de 20-100 salariés). Niveau expert, 20 ans d'expérience. Vouvoie le lecteur. Ton : pédagogique. Phrases mixtes. Niveau pédagogique : moyenne. Positionnement : expert.  Angle éditorial prioritaire : performance. Critères de classement par ordre de priorité : Facilité d'utilisation, Fonctionnalités, Prix, Intégrations. Scoring : note /5, avec un gagnant clairement désigné. Objectifs du lecteur cible : Gagner du temps sur les tâches répétitives, Réduire les coûts logiciels. Contraintes du lecteur : Budget limité, Équipe non technique. Inclure des cas concrets et exemples. Inclure une FAQ. Niveau de détail : approfondi.
 author:
   name: "Marie Simon"
-  bio: "Marie Simon est une artisane expérimentée établie à Bordeaux depuis 18 ans. Elle développe son savoir-faire en tant qu'auto-entrepreneure, alliant tradition artisanale et approche moderne. Son expertise reconnue lui permet d'accompagner ses clients avec professionnalisme et créativité dans la réalisation de leurs projets."
+  bio: "Marie Simon est responsable comptable, spécialisée dans l'accompagnement des TPE, indépendants et commerces de proximité. Elle teste et compare les outils de gestion au quotidien pour aider les entrepreneurs locaux à choisir les bons logiciels, sans jargon."
   job_title: "Responsable comptable"
-  photo: "author-photo.png"
+  photo: "/author-photo.png"
   socials: []
