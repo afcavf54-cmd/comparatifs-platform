@@ -4,15 +4,21 @@ slug: 3594-pour-qui-est-pense-la-comptabilite-cloud-financecore-plus
 date: '2026-06-25T18:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Comptabilité cloud FinanceCore Plus : pour quelle entreprise ?'
-meta_description: Découvrez si FinanceCore Plus est fait pour votre structure. Cet outil de comptabilité cloud cible les entreprises de 10 à 150 salariés qui veulent gagner du temps…
+meta_description: Découvrez si FinanceCore Plus est fait pour votre structure. Cet
+  outil de comptabilité cloud cible les entreprises de 10 à 150 salariés qui veulent
+  gagner du temps…
 min_words: 960
 status: published
 featured_image: /blog/3594-pour-qui-est-pense-la-comptabilite-cloud-financecore-plus.jpg
 link_anchors:
 - text: les fonctionnalités de la comptabilité cloud FinanceCore Plus
   max: 5
+related_posts:
+- 7036-les-limites-de-la-formation-cnam-intec-en-techniques-comptables
+- 9111-les-pieges-de-la-facture-en-ligne-gratuite-avec-articles
+- 9414-a-quel-public-s-adresse-la-comptabilite-cloud-financecore-enterprise
+- 8509-fastbill-vs-invoicepro-max-forces-et-limites-en-facturation
 ---
-
 <p>Quand j'ai commencé à tester des outils de comptabilité cloud pour ma boîte, j'avais un critère principal : est-ce que mon équipe peut s'en sortir sans moi ? Parce que je n'ai pas le temps de former tout le monde pendant trois semaines. Et je n'ai pas non plus envie de payer une fortune pour des fonctionnalités qu'on n'utilisera jamais.</p>
 
 <p>FinanceCore Plus, je suis tombée dessus un peu par hasard. Un fondateur de ma communauté m'en avait parlé lors d'un événement à Nantes. J'ai creusé. Voilà ce que j'en pense vraiment, sans filtre.</p>
