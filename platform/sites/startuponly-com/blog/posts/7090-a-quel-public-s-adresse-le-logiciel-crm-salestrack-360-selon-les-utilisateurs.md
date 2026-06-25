@@ -4,15 +4,20 @@ slug: 7090-a-quel-public-s-adresse-le-logiciel-crm-salestrack-360-selon-les-util
 date: '2026-06-25T18:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Avis utilisateurs logiciel CRM SalesTrack 360 : pour quelle équipe ?'
-meta_description: SalesTrack 360 s'adresse-t-il vraiment à votre profil ? Découvrez ce que les utilisateurs révèlent sur ce CRM et pour qui il est réellement fait.
+meta_description: SalesTrack 360 s'adresse-t-il vraiment à votre profil ? Découvrez
+  ce que les utilisateurs révèlent sur ce CRM et pour qui il est réellement fait.
 min_words: 970
 status: published
 featured_image: /blog/7090-a-quel-public-s-adresse-le-logiciel-crm-salestrack-360-selon-les-utilisateurs.jpg
 link_anchors:
 - text: les avis utilisateurs sur le logiciel CRM SalesTrack 360
   max: 5
+related_posts:
+- 9906-delai-d-implementation-de-l-erp-bizflow-max
+- 8066-a-qui-se-destine-le-logiciel-crm-businesspro-x4
+- 4765-le-crm-mobile-fieldforce-connect-android-et-le-mode-hors-ligne
+- 6030-crm-basique-ou-salesforce-premium-lequel-pour-une-pme
 ---
-
 <p>Quand j'ai commencé à tester SalesTrack 360, j'avais une question simple : est-ce que c'est fait pour moi, ou pour des équipes commerciales de 50 personnes avec un DSI dédié ? Après quelques semaines d'usage, j'ai une réponse assez claire. Et elle est nuancée.</p>
 
 <p>Ce CRM n'est pas universel. Certains profils vont adorer, d'autres vont décrocher au bout de trois jours. Je te donne mon ressenti terrain, sans langue de bois.</p>
