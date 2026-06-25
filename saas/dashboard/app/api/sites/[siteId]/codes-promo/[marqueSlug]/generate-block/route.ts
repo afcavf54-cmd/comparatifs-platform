@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { CLAUDE_MODEL } from '../../../../../../../lib/ai-model'
 
 /**
  * POST /api/sites/[siteId]/codes-promo/[marqueSlug]/generate-block
@@ -323,7 +324,7 @@ async function callClaude(system: string, user: string, maxTokens: number): Prom
   if (!apiKey) throw new Error('ANTHROPIC_API_KEY manquante côté serveur')
   // Alias non daté pour éviter les futures dépréciations modèle (cf incident
   // Sonnet 4 du 15 juin 2026).
-  const model = process.env.CLAUDE_MODEL || 'claude-sonnet-4-6'
+  const model = CLAUDE_MODEL
   const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
