@@ -963,33 +963,50 @@ export default function ClassementsPage() {
                   <div style={{ marginBottom: 8 }}>
                     <div onClick={() => toggleSection('ordre')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections['ordre'] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>🔢 Ordre du classement</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
                     {expandedSections['ordre'] && <>
-                    <div style={{ fontSize: 12, color: '#4A5568', marginBottom: 10 }}>Par défaut : trié par note. Entrez un numéro pour forcer la position.</div>
-                    <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 6 }}>
-                      {catProducts.map((prod: any) => {
-                        const orderMap = selectedData.products_order || {}
-                        const currentOrder = orderMap[prod.slug] ?? ''
-                        return (
-                          <div key={prod.slug} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 12px', background: '#0A0E1A', borderRadius: 8, border: '1px solid #1E2D3D' }}>
-                            <input
-                              type="number" min="1" max="99"
-                              value={currentOrder}
-                              placeholder="Auto"
-                              onChange={e => {
-                                const val = e.target.value
-                                const newOrder = { ...(selectedData.products_order || {}) }
-                                if (val === '') delete newOrder[prod.slug]
-                                else newOrder[prod.slug] = parseInt(val)
-                                updateField(selected, 'products_order', newOrder)
-                              }}
-                              style={{ width: 60, padding: '5px 8px', borderRadius: 6, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', textAlign: 'center' }}
-                            />
-                            <span style={{ fontSize: 13, color: currentOrder !== '' ? '#00D4AA' : '#8B9CB0', fontWeight: currentOrder !== '' ? 600 : 400 }}>{prod.nom}</span>
-                            {prod.note_redaction && <span style={{ fontSize: 11, color: '#4A5568', marginLeft: 'auto' }}>★ {prod.note_redaction}</span>}
-                            {currentOrder !== '' && <span style={{ fontSize: 10, color: '#00D4AA' }}>Position forcée</span>}
-                          </div>
-                        )
-                      })}
-                    </div>
+                    <div style={{ fontSize: 12, color: '#4A5568', marginBottom: 10 }}>Réordonnez les marques avec ↑ ↓. Sans intervention : tri par note décroissante, puis ordre aléatoire stable (différent par catégorie). « Réinitialiser » revient au tri auto.</div>
+                    {(() => {
+                      const orderMap: Record<string, number> = selectedData.products_order || {}
+                      const hasManual = Object.keys(orderMap).length > 0
+                      // Affiche les marques dans l'ordre EFFECTIF : ordre manuel si
+                      // défini, sinon par note décroissante (aperçu fidèle).
+                      const ordered = [...catProducts].sort((a: any, b: any) => {
+                        const oa = orderMap[a.slug]; const ob = orderMap[b.slug]
+                        if (oa != null && ob != null) return oa - ob
+                        if (oa != null) return -1
+                        if (ob != null) return 1
+                        return (parseFloat(b.note_redaction) || 0) - (parseFloat(a.note_redaction) || 0)
+                      })
+                      // Déplacer une marque d'un cran : on réécrit un products_order
+                      // propre et séquentiel (1..N) pour TOUTE la catégorie.
+                      const move = (idx: number, dir: number) => {
+                        const arr = [...ordered]
+                        const j = idx + dir
+                        if (j < 0 || j >= arr.length) return
+                        const tmp = arr[idx]; arr[idx] = arr[j]; arr[j] = tmp
+                        const newMap: Record<string, number> = {}
+                        arr.forEach((p: any, i: number) => { newMap[p.slug] = i + 1 })
+                        updateField(selected, 'products_order', newMap as any)
+                      }
+                      return (
+                        <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 6 }}>
+                          {ordered.map((prod: any, idx: number) => (
+                            <div key={prod.slug} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 12px', background: '#0A0E1A', borderRadius: 8, border: '1px solid #1E2D3D' }}>
+                              <span style={{ width: 22, textAlign: 'center' as const, fontSize: 13, fontWeight: 700, color: hasManual ? '#00D4AA' : '#8B9CB0' }}>{idx + 1}</span>
+                              <span style={{ flex: 1, fontSize: 13, color: '#E5E9F0' }}>{prod.nom}</span>
+                              {prod.note_redaction && <span style={{ fontSize: 11, color: '#4A5568' }}>★ {prod.note_redaction}</span>}
+                              <button onClick={() => move(idx, -1)} disabled={idx === 0} title="Monter"
+                                style={{ width: 28, height: 28, borderRadius: 6, border: '1px solid #1E2D3D', background: idx === 0 ? '#0A0E1A' : '#0D1117', color: idx === 0 ? '#2A3441' : '#8B9CB0', cursor: idx === 0 ? 'default' : 'pointer', fontSize: 14, lineHeight: 1 }}>↑</button>
+                              <button onClick={() => move(idx, 1)} disabled={idx === ordered.length - 1} title="Descendre"
+                                style={{ width: 28, height: 28, borderRadius: 6, border: '1px solid #1E2D3D', background: idx === ordered.length - 1 ? '#0A0E1A' : '#0D1117', color: idx === ordered.length - 1 ? '#2A3441' : '#8B9CB0', cursor: idx === ordered.length - 1 ? 'default' : 'pointer', fontSize: 14, lineHeight: 1 }}>↓</button>
+                            </div>
+                          ))}
+                          {hasManual && (
+                            <button onClick={() => updateField(selected, 'products_order', {} as any)}
+                              style={{ alignSelf: 'flex-start' as const, marginTop: 4, padding: '5px 12px', borderRadius: 7, border: '1px solid #1E2D3D', background: 'transparent', color: '#8B9CB0', cursor: 'pointer', fontSize: 12 }}>↺ Réinitialiser (tri auto)</button>
+                          )}
+                        </div>
+                      )
+                    })()}
                     </>}
                   </div>
                 )}
