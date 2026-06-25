@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { CLAUDE_MODEL } from '../../../../../../lib/ai-model'
 
 /**
  * POST /api/sites/[siteId]/blog/generate-meta
@@ -49,7 +50,7 @@ Contenu (extrait) : ${plainText.slice(0, 1500)}`
       'anthropic-version': '2023-06-01',
     },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
+      model: CLAUDE_MODEL,
       max_tokens: 200,
       system: systemPrompt,
       messages: [{ role: 'user', content: userPrompt }],
