@@ -4,15 +4,21 @@ slug: 5560-configurer-le-crm-leadflow-automation-sans-se-perdre
 date: '2026-06-25T06:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Comment configurer le CRM LeadFlow Automation
-meta_description: Configurer LeadFlow Automation sans galère, c'est possible. Retour terrain concret d'une dirigeante non-technicienne pour réussir votre CRM dès la première…
+meta_description: Configurer LeadFlow Automation sans galère, c'est possible. Retour
+  terrain concret d'une dirigeante non-technicienne pour réussir votre CRM dès la
+  première…
 min_words: 940
 status: published
 featured_image: /blog/5560-configurer-le-crm-leadflow-automation-sans-se-perdre.jpg
 link_anchors:
 - text: comment configurer le CRM LeadFlow Automation
   max: 5
+related_posts:
+- 2699-utiliser-le-crm-salesflow-evolution-en-pratique
+- 1377-parametrer-le-crm-pipedrive-nexus-edition-en-quelques-etapes
+- 6466-implementer-l-erp-bizflow-max-de-a-a-z
+- 9642-exporter-ses-donnees-salestrack-crm-au-format-csv-la-marche-a-suivre
 ---
-
 <p>Je vais être honnête : quand j'ai commencé à chercher un CRM pour mon agence, j'ai failli abandonner l'idée après trois semaines de tests. Trop complexe, trop cher, trop de fonctionnalités dont je n'avais pas besoin. LeadFlow Automation, j'y suis venue un peu par hasard, via une recommandation d'une autre dirigeante lors d'un déjeuner réseau. Et franchement, je ne m'attendais pas à ce que la configuration soit aussi accessible pour quelqu'un qui n'est pas développeuse.</p>
 
 <p>Voilà ce que j'aurais aimé lire avant de me lancer. Un retour terrain, concret, sans jargon inutile.</p>
