@@ -463,7 +463,7 @@ export default function SettingsPage() {
           // path serait re-préfixé par le code de chargement → 404 récurrent.
           const r = await fetch(`/api/sites/${siteId}/config`, {
             method:'PATCH', headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({ author: { name: authorName, bio: authorBio, job_title: authorJob, photo: authorPhotoFilename, socials: authorSocials } })
+            body: JSON.stringify({ author: { name: authorName, bio: authorBio, job_title: authorJob, photo: authorPhotoFilename ? '/' + authorPhotoFilename.replace(/^\/+/, '') : '', socials: authorSocials } })
           })
           const d = await r.json()
           if (d.ok) alert('✓ Auteur sauvegardé')
