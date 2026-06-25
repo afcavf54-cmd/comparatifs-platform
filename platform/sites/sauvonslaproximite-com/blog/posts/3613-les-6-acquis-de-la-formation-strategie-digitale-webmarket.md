@@ -4,15 +4,21 @@ slug: 3613-les-6-acquis-de-la-formation-strategie-digitale-webmarket
 date: '2026-06-25T06:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'Formation stratégie digitale WebMarket : 6 compétences à acquérir'
-meta_description: Responsable comptable, j'ai suivi la formation stratégie digitale WebMarket après 20 ans de chiffres. Voici les 6 acquis concrets qui ont changé ma façon de…
+meta_description: Responsable comptable, j'ai suivi la formation stratégie digitale
+  WebMarket après 20 ans de chiffres. Voici les 6 acquis concrets qui ont changé ma
+  façon de…
 min_words: 910
 status: published
 featured_image: /blog/3613-les-6-acquis-de-la-formation-strategie-digitale-webmarket.jpg
 link_anchors:
 - text: la durée de la formation certifiante en stratégie digitale WebMarket
   max: 5
+related_posts:
+- 3131-quel-budget-pour-le-logiciel-de-facturation-quickbill-enterprise
+- 9750-le-logiciel-de-facturation-quickbill-pro-face-aux-tarifs-concurrents
+- 9025-l-espace-de-bureau-et-coworking-wework-face-aux-acteurs-locaux
+- 9057-lefoyerentrepreneurial-face-aux-autres-coworkings-sur-les-tarifs
 ---
-
 <p>Vingt ans à tenir des comptes, à surveiller les marges, à négocier avec des prestataires dont les offres changent tous les trimestres. Quand j'ai décidé de suivre la formation stratégie digitale WebMarket, j'avoue que je n'étais pas franchement convaincue que ça s'adresserait à moi. Une responsable comptable qui parle de stratégie digitale... Pas évident.</p>
 
 <p>Et pourtant. Voici ce que j'en ai retiré concrètement, après six semaines de modules suivis le soir après le bureau.</p>
