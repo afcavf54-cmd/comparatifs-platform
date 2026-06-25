@@ -726,6 +726,40 @@ def generate_sitemap(site: dict, pairs: list, products: list, output_dir: Path, 
     print(f"  ✓ sitemap.xml ({len(pairs)} comparatifs + {len(products)} avis-legacy + pages liste{extras_msg})")
 
 
+def generate_robots(site: dict, output_dir: Path, config: dict = None, site_dir: Path = None) -> None:
+    """Génère un robots.txt permissif : accès ouvert à TOUS les robots, y compris
+    les crawlers d'IA (aucun Disallow). Référence le sitemap du site.
+
+    Respecte un éventuel robots.txt personnalisé : si un fichier robots.txt existe
+    en site-local ou dans _shared/, c'est copy_shared_assets() qui le publie et on
+    ne génère rien ici (override prioritaire).
+
+    NB : si la fonctionnalité « managed robots.txt » de Cloudflare est active sur
+    la zone, Cloudflare peut ajouter son propre bloc APRÈS ce fichier. Pour que ce
+    robots.txt fasse foi seul, désactiver le managed robots.txt côté Cloudflare.
+    """
+    import re as _re_rb
+    # Override custom prioritaire (site-local puis partagé) → ne pas écraser.
+    for d in (site_dir, SHARED_DIR):
+        if d is not None and (d / "robots.txt").exists():
+            return
+    # Domaine canonique (même logique que le sitemap)
+    raw_domain = site["domain"].rstrip("/")
+    www_pref = site.get("www_preference") or (config or {}).get("www_preference", "www")
+    bare = _re_rb.sub(r"^https?://(www\.)?", "", raw_domain)
+    domain = f"https://www.{bare}" if www_pref == "www" else f"https://{bare}"
+    content = (
+        "# robots.txt — accès ouvert à tous les robots (moteurs de recherche ET IA).\n"
+        "# Aucun crawler n'est bloqué : le contenu reste accessible aux assistants IA.\n"
+        "User-agent: *\n"
+        "Allow: /\n"
+        "\n"
+        f"Sitemap: {domain}/sitemap.xml\n"
+    )
+    (output_dir / "robots.txt").write_text(content, encoding="utf-8")
+    print(f"  ✓ robots.txt généré (accès ouvert, IA incluse — sitemap → {domain}/sitemap.xml)")
+
+
 def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, all_pairs: list, is_classement_template: bool = False, blog_expected: set | None = None) -> None:
     """Supprime les fichiers HTML et entrées editorial.json des produits supprimés."""
     current_slugs = {p["slug"] for p in products}
@@ -1366,6 +1400,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     if not dry_run:
         print(f"  🟢 DEBUG v15 ENTRÉE bloc 'if not dry_run' (ligne ~923)", flush=True)
         generate_sitemap(site, all_pairs, products, output_dir, site_dir=site_dir, config=config)
+        generate_robots(site, output_dir, config=config, site_dir=site_dir)
         # ── Blog : chargement des articles avant le cleanup ──────────────
         # On marque les pages attendues du blog pour qu'elles ne soient pas
         # supprimées par cleanup_removed_products. Aussi, on set
