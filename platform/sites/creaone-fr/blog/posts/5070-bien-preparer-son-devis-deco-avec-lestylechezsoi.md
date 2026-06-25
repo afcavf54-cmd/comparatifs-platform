@@ -12,7 +12,8 @@ featured_image: /blog/5070-bien-preparer-son-devis-deco-avec-lestylechezsoi.jpg
 link_anchors:
 - text: un devis déco avec LeStyleChezSoi
   max: 5
-related_posts: []
+related_posts:
+- 9414-ce-que-les-clients-pensent-de-l-agence-e-reputation-kickngo
 ---
 <h2>Pourquoi bien préparer son devis déco avant de rencontrer un professionnel ?</h2>
 
