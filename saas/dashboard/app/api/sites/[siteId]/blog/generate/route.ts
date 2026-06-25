@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { CLAUDE_MODEL } from '../../../../../../lib/ai-model'
 
 const BASE = 'https://api.github.com'
 const headers = {
@@ -104,7 +105,7 @@ Longueur cible : ${minW} à ${maxW} mots (minimum ${minW} mots impératif). L'ar
       'anthropic-version': '2023-06-01',
     },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
+      model: CLAUDE_MODEL,
       max_tokens: Math.min(8000, Math.max(2000, maxW * 4)),  // ~1.3 tokens/word + marge HTML
       system: systemPrompt,
       messages: [{ role: 'user', content: userPrompt }],
