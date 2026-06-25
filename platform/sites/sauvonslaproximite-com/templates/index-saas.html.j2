@@ -351,8 +351,9 @@ nav.site-nav .nav-links a,nav.site-nav .nav-cta,nav.site-nav .nav-mobile a,.foot
   <div class="slp-shell slp-author-inner">
     <div class="slp-author-photo">
       <div class="frame">
-        {% if site.author_photo is defined and site.author_photo %}
-        <img src="{{ site.author_photo }}" alt="{{ site.author_name }}">
+        {% set slp_author_img = site.author_photo if (site.author_photo is defined and site.author_photo and not site.author_photo.startswith('blob:') and not site.author_photo.startswith('data:')) else '/author-photo.png' %}
+        {% if slp_author_img %}
+        <img src="{{ slp_author_img }}" alt="{{ site.author_name }}">
         {% else %}
         <span class="ph">portrait</span>
         {% endif %}
