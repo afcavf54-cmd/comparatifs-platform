@@ -417,8 +417,9 @@ section.edp-shell,div.edp-shell{padding-left:40px;padding-right:40px}
         <div class="dots"></div>
         <div class="glow"></div>
         <div class="frame">
-          {% if site.author_photo is defined and site.author_photo %}
-            <img src="{{ site.author_photo }}" alt="{{ site.author_name }}">
+          {% set edp_author_img = site.author_photo if (site.author_photo is defined and site.author_photo and not site.author_photo.startswith('blob:') and not site.author_photo.startswith('data:')) else '/author-photo.png' %}
+          {% if edp_author_img %}
+            <img src="{{ edp_author_img }}" alt="{{ site.author_name }}">
           {% else %}
             <div class="ph">{{ site.author_name }}</div>
           {% endif %}
