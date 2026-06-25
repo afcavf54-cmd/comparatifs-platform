@@ -14,6 +14,12 @@ import Link from 'next/link'
 function extractFilename(raw: string): string {
   if (!raw) return ''
   let s = String(raw).trim()
+  // Rejeter les URLs éphémères du navigateur (jamais persistables) :
+  // un blob:/data: ne correspond à AUCUN fichier réel sur le repo.
+  if (/^(blob:|data:)/i.test(s)) {
+    console.warn('[author photo] URL éphémère ignorée (non persistable) :', raw)
+    return ''
+  }
   // Strip query string si présent (?t=...)
   s = s.split('?')[0]
   // Si URL absolue → prendre le dernier segment du path
@@ -23,8 +29,9 @@ function extractFilename(raw: string): string {
     // Path relatif : prendre le dernier segment (gère "/public/foo.jpg" → "foo.jpg")
     if (s.includes('/')) s = s.split('/').pop() || ''
   }
-  // Validation finale : autoriser uniquement [a-zA-Z0-9._-]
-  if (!/^[a-zA-Z0-9._-]+$/.test(s)) {
+  // Validation finale : autoriser uniquement [a-zA-Z0-9._-] ET exiger une
+  // vraie extension de fichier (sinon ex. l'UUID d'un blob "ca6f3..." passerait).
+  if (!/^[a-zA-Z0-9._-]+\.[a-zA-Z0-9]{2,5}$/.test(s)) {
     console.warn('[author photo] filename invalide après normalisation :', raw, '→', s)
     return ''
   }
@@ -403,17 +410,29 @@ export default function SettingsPage() {
               <input type="file" accept="image/*" style={{display:'none'}} onChange={async e => {
                 const file = e.target.files?.[0]; if (!file) return
                 const fd = new FormData(); fd.append('file', file)
-                // Aperçu immédiat avec l'objet local
-                setAuthorPhotoPreview(URL.createObjectURL(file))
-                const r = await fetch(`/api/sites/${siteId}/author-photo`, {method:'POST',body:fd})
-                const d = await r.json()
-                if (d.rawUrl) {
+                // Aperçu immédiat avec l'objet local (transitoire, jamais sauvegardé)
+                const localPreview = URL.createObjectURL(file)
+                setAuthorPhotoPreview(localPreview)
+                try {
+                  const r = await fetch(`/api/sites/${siteId}/author-photo`, {method:'POST',body:fd})
+                  const d = await r.json()
+                  if (!r.ok || !d.rawUrl) throw new Error(d.error || 'upload échoué')
                   // Extraire le filename de rawUrl (= ce qu'on stocke dans config)
                   // pour s'assurer qu'au prochain save on n'écrit pas l'URL complète.
                   const filename = extractFilename(d.rawUrl)
-                  if (filename) setAuthorPhotoFilename(filename)
-                  // Preview avec cache-bust
+                  if (!filename) throw new Error('nom de fichier invalide')
+                  setAuthorPhotoFilename(filename)
+                  // Preview avec cache-bust (URL réelle, pas le blob)
                   setAuthorPhotoPreview(d.rawUrl + '?t=' + Date.now())
+                } catch (err: any) {
+                  // L'upload a échoué : on NE garde PAS l'aperçu blob (sinon il
+                  // pourrait être pris pour une photo enregistrée → blob: dans config).
+                  alert('✗ Échec de l\'upload de la photo : ' + (err?.message || 'inconnue') + '\nLa photo n\'a pas été enregistrée, réessayez.')
+                  setAuthorPhotoPreview(null)
+                  setAuthorPhotoFilename('')
+                } finally {
+                  URL.revokeObjectURL(localPreview)
+                  e.target.value = ''
                 }
               }} />
             </label>
