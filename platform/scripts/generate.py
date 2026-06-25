@@ -2838,8 +2838,8 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 _sz = _f.stat().st_size
                 # Lit la première vraie ligne H1 ou title pour confirmer le contenu
                 _content = _f.read_text(encoding="utf-8", errors="replace")
-                _title_m = re.search(r"<title[^>]*>([^<]+)</title>", _content)
-                _h1_m = re.search(r"<h1[^>]*>([^<]+)</h1>", _content)
+                _title_m = _re.search(r"<title[^>]*>([^<]+)</title>", _content)
+                _h1_m = _re.search(r"<h1[^>]*>([^<]+)</h1>", _content)
                 _hint = (_title_m.group(1) if _title_m else (_h1_m.group(1) if _h1_m else _content[:60])).strip()[:80]
                 print(f"     • {_f.name} ({_sz}o) → {_hint!r}")
             except Exception as _err:
