@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indicateurs économiques LeTerritoireEntreprise vs données officielles</title>
+<meta name="description" content="Comparatif terrain entre LeTerritoireEntreprise et les données INSEE pour piloter vos indicateurs économiques locaux : fiabilité, usage quotidien et limites…">
+<link rel="canonical" href="https://www.sauvonslaproximite.com/3344-leterritoireentreprise-face-aux-sources-insee-sur-les-indicateurs/">
+<meta property="og:title" content="Indicateurs économiques LeTerritoireEntreprise vs données officielles">
+<meta property="og:description" content="Comparatif terrain entre LeTerritoireEntreprise et les données INSEE pour piloter vos indicateurs économiques locaux : fiabilité, usage quotidien et limites…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.sauvonslaproximite.com/3344-leterritoireentreprise-face-aux-sources-insee-sur-les-indicateurs/">
+<meta property="og:image" content="https://www.sauvonslaproximite.com/blog/3344-leterritoireentreprise-face-aux-sources-insee-sur-les-indicateurs.jpg"><meta property="article:published_time" content="2026-06-25T19:00:00+02:00">
+<meta property="article:section" content="Entrepreneuriat"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=sauvonslaproximite-com" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "LeTerritoireEntreprise face aux sources INSEE sur les indicateurs",
+  "description": "Comparatif terrain entre LeTerritoireEntreprise et les donn\u00e9es INSEE pour piloter vos indicateurs \u00e9conomiques locaux : fiabilit\u00e9, usage quotidien et limites\u2026",
+  "datePublished": "2026-06-25T19:00:00+02:00",
+"image": "https://www.sauvonslaproximite.com/blog/3344-leterritoireentreprise-face-aux-sources-insee-sur-les-indicateurs.jpg",  "author": {
+    "@type": "Person",
+    "name": "Marie Simon"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "sauvonslaproximite.com",
+    "url": "https://www.sauvonslaproximite.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.sauvonslaproximite.com/3344-leterritoireentreprise-face-aux-sources-insee-sur-les-indicateurs/"
+  }
+,"articleSection": "Entrepreneuriat"}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "LeTerritoireEntreprise est-il gratuit ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "L\u0027acc\u00e8s \u00e0 la plateforme est gratuit pour les fonctionnalit\u00e9s de base. Certaines fonctionnalit\u00e9s avanc\u00e9es ou exports enrichis peuvent \u00eatre r\u00e9serv\u00e9s aux structures partenaires. Renseignez-vous directement selon votre statut (CCI, commune, entreprise priv\u00e9e)."
+      }
+    },    {
+      "@type": "Question",
+      "name": "Les donn\u00e9es LeTerritoireEntreprise sont-elles identiques aux donn\u00e9es INSEE ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non. La plateforme r\u00e9alise ses propres retraitements \u00e0 partir de sources officielles. Les valeurs peuvent l\u00e9g\u00e8rement diff\u00e9rer selon la m\u00e9thode d\u0027agr\u00e9gation utilis\u00e9e. Pour un usage r\u00e9glementaire, retournez toujours \u00e0 la source primaire."
+      }
+    },    {
+      "@type": "Question",
+      "name": "Comment v\u00e9rifier la date de mise \u00e0 jour d\u0027un indicateur sur LeTerritoireEntreprise ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Chaque indicateur dispose normalement d\u0027une fiche m\u00e9tadonn\u00e9e accessible en cliquant sur le point d\u0027interrogation ou l\u0027ic\u00f4ne d\u0027information associ\u00e9e. Si cette information est absente ou floue, ne l\u0027utilisez pas sans v\u00e9rification crois\u00e9e."
+      }
+    },    {
+      "@type": "Question",
+      "name": "Ces plateformes sont-elles utilisables par une \u00e9quipe sans comp\u00e9tences en data ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LeTerritoireEntreprise oui, sans h\u00e9sitation. L\u0027interface est pens\u00e9e pour des non-techniciens. Les bases INSEE directes non : il faut savoir manipuler des fichiers CSV de plusieurs millions de lignes, faire des jointures, filtrer par codes g\u00e9ographiques. Ce n\u0027est pas donn\u00e9 \u00e0 tout le monde."
+      }
+    },    {
+      "@type": "Question",
+      "name": "Peut-on int\u00e9grer ces donn\u00e9es dans un logiciel de gestion existant ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "C\u0027est possible via export CSV puis import manuel dans la plupart des outils. Certains logiciels commencent \u00e0 proposer des connecteurs natifs. C\u0027est encore rare mais \u00e7a avance. L\u0027id\u00e9al reste d\u0027automatiser ce flux pour \u00e9viter les ressaisies."
+      }
+    }  ]
+}
+</script>
+
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#EEF2F7;--surface:#FFFFFF;--surface2:#F5F3EE;
+  --ink:#0F172A;--ink2:#3D434B;--ink3:#8B9CB0;
+  --accent:#121826;--accent2:#2563EB;--green:#3D7A4F;
+  --border:#E6E1D8;--r:8px;--r2:14px;
+--cta:#0EA5A5;--cta-text:#FFFFFF;}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1180px;margin:0 auto;padding:0 5vw}
+.article-layout{display:grid;grid-template-columns:1fr 280px;gap:48px;align-items:start}
+.article-main{min-width:0;padding-bottom:80px}
+.article-sidebar{position:sticky;top:88px}
+.sidebar-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px 22px;margin-bottom:20px}
+.sidebar-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin:0 0 14px}
+.sidebar-cat-list{list-style:none;margin:0;padding:0}
+.sidebar-cat-item{padding:0;margin:0}
+.sidebar-cat-link{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);color:var(--ink2);font-size:14px;text-decoration:none;transition:.15s}
+.sidebar-cat-item:last-child .sidebar-cat-link{border-bottom:none}
+.sidebar-cat-link:hover{color:var(--accent);text-decoration:none}
+.sidebar-cat-link.active{color:var(--accent);font-weight:600}
+.sidebar-cat-count{font-size:11px;color:var(--ink3);background:var(--bg);padding:2px 8px;border-radius:10px;flex-shrink:0;margin-left:8px}
+.sidebar-cat-link:hover .sidebar-cat-count{color:var(--accent)}
+.sidebar-recent-list{list-style:none;margin:0;padding:0}
+.sidebar-recent-item{padding:10px 0;border-bottom:1px solid var(--border)}
+.sidebar-recent-item:last-child{border-bottom:none}
+.sidebar-recent-link{color:var(--ink2);font-size:13px;line-height:1.45;text-decoration:none;display:block}
+.sidebar-recent-link:hover{color:var(--accent);text-decoration:none}
+.sidebar-recent-cat{font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+.article-header{padding:23px 0 24px}
+.breadcrumb{font-size:13px;color:var(--ink3);margin-bottom:16px}
+.breadcrumb a{color:var(--ink3)}
+.breadcrumb a:hover{color:var(--accent)}
+.article-cat{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);background:var(--surface2);padding:4px 10px;border-radius:20px;text-decoration:none;transition:.15s}
+.article-cat:hover{background:var(--accent);color:#fff;text-decoration:none}
+.article-title{font-family:'DM Serif Display',serif;font-size:clamp(28px,5vw,48px);font-weight:400;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin-bottom:16px}
+.article-meta{font-size:14px;color:var(--ink3);margin-bottom:7px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.article-meta-item{display:inline-flex;align-items:center;gap:6px}
+.article-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
+.article-featured{width:100%;border-radius:var(--r2);overflow:hidden;margin-bottom:15px;border:1px solid var(--border)}
+.article-featured img{display:block;width:100%;height:auto}
+.article-toc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:22px 26px;margin:0 0 40px;position:relative;z-index:0}
+.article-toc-title{font-family:'DM Serif Display',serif;font-size:18px;font-weight:600;color:var(--ink);margin:0 0 14px;letter-spacing:-.01em}
+.article-toc-list{list-style:none;padding:0;margin:0;counter-reset:toc}
+/* L'incrément du compteur est appliqué UNIQUEMENT sur les items H2 (level-2),
+   pas sur les H3 (level-3). Avant : tous les items incrémentaient → si on avait
+   un H3 entre deux H2, la numérotation visible sautait (1, 3, 4...) car le H3
+   consommait silencieusement le 2 (il affichait ›). Maintenant les H3 ne touchent
+   plus au compteur, et les H2 se suivent proprement (1, 2, 3, ...). */
+.article-toc-item{position:relative;padding:6px 0 6px 28px;line-height:1.5}
+.article-toc-level-2{counter-increment:toc}
+.article-toc-level-2::before{content:counter(toc) ".";position:absolute;left:0;top:6px;color:var(--accent);font-weight:600;font-size:14px;width:22px;text-align:right}
+.article-toc-level-3{padding-left:48px;font-size:14px}
+.article-toc-level-3::before{content:"›";position:absolute;left:24px;top:6px;color:var(--ink2);font-weight:600}
+.article-toc-item a{color:var(--ink2);text-decoration:none;font-size:15px;transition:color .15s}
+.article-toc-item a:hover{color:var(--accent);text-decoration:underline}
+.article-toc-level-3 a{font-size:14px;color:var(--ink2)}
+/* Scroll offset pour que les ancres ne soient pas masquées par un éventuel header sticky */
+.article-body h2,.article-body h3{scroll-margin-top:80px}
+.article-body{font-size:17px;color:var(--ink2);line-height:1.8}
+.article-body p{margin-bottom:20px}
+.article-body h1{font-family:'DM Serif Display',serif;font-size:32px;font-weight:400;color:var(--ink);margin:48px 0 16px;letter-spacing:-.02em}
+.article-body h2{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;color:var(--ink);margin:40px 0 14px;letter-spacing:-.02em}
+.article-body h3{font-size:20px;font-weight:600;color:var(--ink);margin:32px 0 12px}
+.article-body ul,.article-body ol{margin:0 0 20px 24px}
+.article-body li{margin-bottom:8px}
+.article-body img{display:block;max-width:100%;height:auto;border-radius:var(--r);margin:24px auto;border:1px solid var(--border)}
+.article-body blockquote{border-left:3px solid var(--accent);padding:8px 20px;margin:24px 0;color:var(--ink2);font-style:italic;background:var(--surface2);border-radius:0 var(--r) var(--r) 0}
+.article-body code{background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:.92em;font-family:Menlo,Monaco,Consolas,monospace}
+.article-body strong{color:var(--ink);font-weight:700}
+.article-body a{color:var(--accent2);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px}
+.article-body a:hover{text-decoration-color:var(--accent2)}
+/* Author box (réutilise le style de classement-saas) */
+.author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
+.author-avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
+.author-avatar-placeholder{width:72px;height:72px;border-radius:50%;background:var(--bg);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
+.author-info{flex:1}
+.author-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:4px}
+.author-name{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:2px}
+.author-job{font-size:13px;color:var(--ink3);margin-bottom:12px}
+.author-bio{font-size:14px;color:var(--ink2);line-height:1.7}
+@media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}}
+/* Maillage interne */
+.related-section{margin:25px 0 0;padding-top:25px;border-top:1px solid var(--border)}
+.related-title{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
+.related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.related-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px;text-decoration:none;transition:.15s;display:block}
+.related-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,.06);transform:translateY(-1px);text-decoration:none}
+.related-card-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:8px}
+.related-card-title{font-size:15px;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:6px}
+.related-card-excerpt{font-size:13px;color:var(--ink3);line-height:1.5}
+@media(max-width:600px){.related-grid{grid-template-columns:1fr}}
+/* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
+@media(max-width:960px){
+  .article-layout{grid-template-columns:1fr;gap:25px}
+  .article-sidebar{position:static}
+  /* Sur mobile, la sidebar passe sous le contenu : on retire le padding-bottom
+     de article-main qui ne sert plus à rien (l'écart est géré par le gap du
+     grid). 80 (padding) + 32 (gap) = 112px → désormais 0 + 25 = 25px. */
+  .article-main{padding-bottom:0}
+}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+
+/* ── PATCH : tableaux du contenu blog ─────────────────────────────
+   Ajout chirurgical en toute fin du <style>, après les media queries
+   existantes. Aucune modif au CSS au-dessus. */
+.article-body .table-wrap{overflow-x:auto;margin:28px 0;border-radius:10px;border:1px solid var(--border);background:var(--surface)}
+.article-body table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface);margin:28px 0;color:var(--ink)}
+.article-body .table-wrap > table{margin:0;border:none}
+.article-body thead{background:var(--surface2)}
+.article-body thead th{text-align:left;padding:14px 18px;font-weight:600;color:var(--ink);font-size:14px;border-bottom:2px solid var(--border);vertical-align:middle;white-space:nowrap}
+.article-body thead th:not(:last-child){border-right:1px solid var(--border)}
+.article-body tbody td{padding:14px 18px;color:var(--ink);border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+.article-body tbody td:not(:last-child){border-right:1px solid var(--border)}
+.article-body tbody tr:nth-child(even){background:var(--surface2)}
+.article-body tbody tr:hover{background:var(--surface2)}
+.article-body tbody tr:last-child td{border-bottom:none}
+.article-body table caption{caption-side:top;padding:12px 18px;font-weight:600;color:var(--ink);text-align:left;background:var(--surface2);border-bottom:1px solid var(--border)}
+@media (max-width:680px){
+  .article-body table{font-size:14px}
+  .article-body thead th,.article-body tbody td{padding:10px 12px;white-space:normal}
+}
+</style>
+<script async data-id="101506542" src="//static.getclicky.com/js"></script>
+</head>
+<body>
+
+<style>
+nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+nav.site-nav .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
+nav.site-nav .nav-logo span{color:var(--accent2)}
+nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
+nav.site-nav .nav-cta:hover{opacity:.88}
+nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+nav.site-nav .nav-mobile.open{display:flex}
+nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
+</style>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/logo.png" alt="sauvonslaproximite.com" style="height:36px;width:auto;object-fit:contain;vertical-align:middle"></a>
+    <div class="nav-links">
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/avis">Avis</a>
+        <a href="/blog/">Blog</a>
+          <a href="/tools">Tools</a>
+    </div>
+    <a href="/contact" class="nav-cta">Contact</a>
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+      <a href="/nos-comparateurs">Nos comparateurs</a>
+      <a href="/avis">Avis</a>
+      <a href="/blog/">Blog</a>
+        <a href="/tools">Tools</a>
+    <a href="/contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<script>
+/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
+   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
+   devoir redéfinir la fonction côté template parent.
+
+   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
+   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
+   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
+   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
+   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
+   qui est actif et le parent réécrit derrière s'il en a un.
+
+   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
+   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
+   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
+   ne faisait rien. */
+(function(){
+  if (typeof window.toggleMenu === 'function') return;
+  window.toggleMenu = function(){
+    var menu = document.getElementById('nav-mobile');
+    if (menu) menu.classList.toggle('open');
+  };
+  // UX bonus : fermer le menu mobile en cliquant en dehors
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('nav-mobile');
+    var burger = document.getElementById('burger');
+    if (!menu || !burger) return;
+    if (!menu.classList.contains('open')) return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    menu.classList.remove('open');
+  });
+  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
+  document.addEventListener('DOMContentLoaded', function(){
+    var menu = document.getElementById('nav-mobile');
+    if (!menu) return;
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  });
+})();
+</script>
+<div class="container">
+<article class="article-layout">
+  <div class="article-main">
+  <header class="article-header">
+    <div class="breadcrumb">
+      <a href="/">Accueil</a> &rsaquo; <a href="/blog/">Blog</a>
+ &rsaquo; <a href="/categorie-entrepreneuriat/">Entrepreneuriat</a>    </div>
+    <h1 class="article-title">LeTerritoireEntreprise face aux sources INSEE sur les indicateurs</h1>
+    <div class="article-meta">
+<a href="/categorie-entrepreneuriat/" class="article-cat">Entrepreneuriat</a><span class="article-meta-dot"></span><span class="article-meta-item">📅 25 juin 2026</span><span class="article-meta-dot"></span><span class="article-meta-item">⏱ 6 min de lecture</span><span class="article-meta-dot"></span>      <span class="article-meta-item">✍️ Marie Simon</span>
+    </div>
+  </header>
+
+  <div class="article-featured">
+    <img src="/blog/3344-leterritoireentreprise-face-aux-sources-insee-sur-les-indicateurs.jpg" alt="LeTerritoireEntreprise face aux sources INSEE sur les indicateurs" loading="eager">
+  </div>
+
+  <nav class="article-toc" aria-label="Sommaire de l'article">
+    <div class="article-toc-title">📑 Sommaire</div>
+    <ol class="article-toc-list">
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#ce-que-propose-leterritoireentreprise-concretement">Ce que propose LeTerritoireEntreprise, concrètement</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#l-insee-la-reference-mais-pas-toujours-la-plus-pratique">L'INSEE, la référence, mais pas toujours la plus pratique</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#ou-la-difference-devient-vraiment-visible">Où la différence devient vraiment visible ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#la-question-du-logiciel-de-gestion-derriere-les-donnees">La question du logiciel de gestion derrière les données</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#ce-que-je-recommande-en-pratique">Ce que je recommande en pratique</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#faq-leterritoireentreprise-vs-sources-insee">FAQ : LeTerritoireEntreprise vs sources INSEE</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#leterritoireentreprise-est-il-gratuit">LeTerritoireEntreprise est-il gratuit ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#les-donnees-leterritoireentreprise-sont-elles-identiques-aux">Les données LeTerritoireEntreprise sont-elles identiques aux données INSEE ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#comment-verifier-la-date-de-mise-a-jour-d-un-indicateur-sur-">Comment vérifier la date de mise à jour d'un indicateur sur LeTerritoireEntreprise ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#ces-plateformes-sont-elles-utilisables-par-une-equipe-sans-c">Ces plateformes sont-elles utilisables par une équipe sans compétences en data ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#peut-on-integrer-ces-donnees-dans-un-logiciel-de-gestion-exi">Peut-on intégrer ces données dans un logiciel de gestion existant ?</a>
+      </li>
+    </ol>
+  </nav>
+
+  <div class="article-body">
+    <p>Quand on gère la comptabilité d'une PME de 50 personnes à Lyon, on passe beaucoup de temps à chercher des données fiables pour contextualiser les chiffres qu'on produit. Secteur d'activité, évolution du tissu local, densité d'entreprises par zone... Ces informations arrivent souvent de partout, avec des niveaux de fiabilité très variables. Et depuis quelques années, deux sources se retrouvent régulièrement face à face dans nos outils : <strong>LeTerritoireEntreprise</strong> et les données directes de l'INSEE.</p>
+
+<p>J'ai voulu comprendre concrètement ce qui différencie ces deux approches. Pas sur le papier. Dans l'usage quotidien.</p>
+
+<h2 id="ce-que-propose-leterritoireentreprise-concretement">Ce que propose LeTerritoireEntreprise, concrètement</h2>
+
+<p>LeTerritoireEntreprise est une plateforme qui agrège des indicateurs économiques territoriaux, notamment pour les entreprises et les chambres de commerce. L'idée de départ est bonne : rendre accessibles des données qui, autrement, nécessitent plusieurs manipulations sur les bases INSEE, Sirene ou data.gouv.fr.</p>
+
+<p>J'ai utilisé la plateforme pour comparer la densité d'entreprises dans deux zones industrielles de l'agglomération lyonnaise. La navigation est assez intuitive, les cartes interactives chargent vite, et on peut exporter en CSV sans trop galérer. Pour quelqu'un qui n'est pas data analyst, c'est appréciable. Mes collègues sans bagage technique ont réussi à s'en servir sans formation particulière.</p>
+
+<p>Bon, par contre, j'ai remarqué que certains indicateurs affichés ne précisent pas clairement leur millésime. Une donnée sur les créations d'entreprises peut dater de N-2 sans que ce soit mis en avant visuellement. C'est un vrai problème quand on prépare une note de conjoncture pour la direction. On se retrouve à croiser avec l'INSEE pour vérifier.</p>
+
+<h2 id="l-insee-la-reference-mais-pas-toujours-la-plus-pratique">L'INSEE, la référence, mais pas toujours la plus pratique</h2>
+
+<p>Les données INSEE, tout le monde les connaît. Elles font autorité. Le problème, c'est l'accès. Les fichiers Sirene, les bases ESANE, les tableaux de bord régionaux... ça demande du temps, des compétences de manipulation de données, et parfois des scripts pour extraire ce qu'on cherche vraiment.</p>
+
+<p>J'ai passé une bonne heure à retrouver des indicateurs sur le taux de survie des entreprises à 3 ans dans le Rhône. Ce même indicateur est disponible en deux clics sur LeTerritoireEntreprise. Là, honnêtement, le gain de temps est réel. Sauf que la valeur affichée sur LeTerritoireEntreprise et celle que j'ai calculée depuis les fichiers bruts INSEE ne coïncidaient pas exactement, avec un écart d'environ 1,2 points. Petit, mais pas nul.</p>
+
+<p>Ce type d'écart m'a appris quelque chose. LeTerritoireEntreprise n'est pas une simple interface graphique sur l'INSEE. La plateforme effectue ses propres retraitements, ses propres agrégations. Ce qui change parfois le résultat final.</p>
+
+<div class="table-wrap"><table>
+  <thead>
+    <tr>
+      <th>Critère</th>
+      <th>LeTerritoireEntreprise</th>
+      <th>Sources INSEE directes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Facilité d'accès</td>
+      <td>Très accessible, interface visuelle</td>
+      <td>Technique, fichiers bruts à manipuler</td>
+    </tr>
+    <tr>
+      <td>Fiabilité affichée</td>
+      <td>Retraitements internes, millésimes parfois flous</td>
+      <td>Source officielle, millésimes toujours datés</td>
+    </tr>
+    <tr>
+      <td>Granularité territoriale</td>
+      <td>Bonne à l'échelle communale et intercommunale</td>
+      <td>Très fine mais nécessite un traitement manuel</td>
+    </tr>
+    <tr>
+      <td>Export des données</td>
+      <td>CSV disponible facilement</td>
+      <td>CSV brut, souvent lourd et non mis en forme</td>
+    </tr>
+    <tr>
+      <td>Mise à jour</td>
+      <td>Fréquence variable selon les indicateurs</td>
+      <td>Calendrier de publication officiel, traçable</td>
+    </tr>
+    <tr>
+      <td>Usage pour non-techniciens</td>
+      <td>Oui, sans compétences particulières</td>
+      <td>Difficile sans maîtrise des bases de données</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h2 id="ou-la-difference-devient-vraiment-visible">Où la différence devient vraiment visible ?</h2>
+
+<p>Pour préparer un dossier de subvention régionale l'année dernière, j'avais besoin d'indicateurs sur l'évolution du nombre d'établissements dans le secteur des services aux entreprises, sur 5 ans, à l'échelle d'une communauté de communes précise. LeTerritoireEntreprise m'a sorti les graphiques en moins de dix minutes. Propre, lisible, exportable.</p>
+
+<p>Sauf que le service instructeur a demandé des données sourcées directement depuis l'INSEE. Retour à la case départ. J'ai refait le travail depuis les fichiers Sirene. Deux heures supplémentaires.</p>
+
+<p>C'est là que la question de la valeur réelle de LeTerritoireEntreprise se pose. Pour un usage interne, pour des décisions opérationnelles, pour une présentation rapide à la direction commerciale, la plateforme fait très bien le travail. Pour un usage réglementaire ou administratif, elle ne remplace pas la source primaire.</p>
+
+<p>J'ai aussi vu des cas où des équipes marketing, souvent orientées vers <a href="/9750-le-logiciel-de-facturation-quickbill-pro-face-aux-tarifs-concurrents">le marketing alternatif</a> pour trouver des niches locales ou des zones de chalandise peu exploitées, utilisaient LeTerritoireEntreprise comme outil de prospection territoriale. C'est un usage que je n'avais pas anticipé, mais qui a du sens. La plateforme donne des cartes de densité sectorielle assez précises, utiles pour identifier des zones sous-représentées dans un secteur donné.</p>
+
+<h2 id="la-question-du-logiciel-de-gestion-derriere-les-donnees">La question du logiciel de gestion derrière les données</h2>
+
+<p>Un point que j'aborde parfois avec d'autres responsables comptables : l'utilité de connecter ces sources d'indicateurs à son propre outil de gestion. J'ai regardé récemment <a href="/1953-le-logiciel-de-gestion-wizica-business-face-aux-autres-outils">la démo du logiciel de gestion Wizica Business</a>, et ce qui m'a frappé c'est la façon dont ils ont pensé l'import de données externes. L'idée de pouvoir enrichir ses tableaux de bord internes avec des indicateurs territoriaux sans ressaisie manuelle, ça, c'est concret pour nous.</p>
+
+<p>Le problème avec la plupart des logiciels qu'on utilise en PME, c'est qu'ils traitent les données de gestion en silo. Les indicateurs économiques externes restent dans des onglets Excel à côté. La jonction ne se fait jamais vraiment. Et on perd du temps à recopier, comparer, valider à la main.</p>
+
+<p>Ça m'amène à penser que l'enjeu pour les années qui viennent, pour les PME de notre taille, ce n'est pas tant de choisir entre LeTerritoireEntreprise et l'INSEE. C'est de trouver comment intégrer ces données dans un flux de travail cohérent, sans alourdir la charge des équipes.</p>
+
+<h2 id="ce-que-je-recommande-en-pratique">Ce que je recommande en pratique</h2>
+
+<p>Après deux ans à utiliser les deux sources régulièrement, voici ce que j'ai retenu.</p>
+
+<ul>
+  <li>Pour une analyse rapide, une présentation interne ou un diagnostic territorial initial : LeTerritoireEntreprise est largement suffisant. <strong>Ça fait gagner un temps non négligeable.</strong></li>
+  <li>Pour tout ce qui va atterrir dans un dossier officiel, une demande de financement, un rapport annuel auditable : retour à l'INSEE, sans exception.</li>
+  <li>Vérifiez toujours le millésime des données affiché sur LeTerritoireEntreprise. Ce n'est pas toujours visible au premier coup d'oeil.</li>
+  <li>Si vous avez une équipe non technique, LeTerritoireEntreprise réduit vraiment la friction. J'ai formé deux assistants dessus en moins d'une journée.</li>
+  <li>Pour les comparaisons inter-territoriales sur plusieurs années, je croise systématiquement les deux sources. Quand les écarts dépassent 2 points, je repose la question de la méthodologie.</li>
+</ul>
+
+<p>Je déconseille de faire confiance à LeTerritoireEntreprise les yeux fermés si vous n'avez pas vérifié la fraîcheur des données au moins une fois. J'ai eu une mauvaise surprise sur un indicateur de création nette d'emplois qui affichait des chiffres de 2021 alors qu'on était en 2023.</p>
+
+<h2 id="faq-leterritoireentreprise-vs-sources-insee">FAQ : LeTerritoireEntreprise vs sources INSEE</h2>
+
+<h3 id="leterritoireentreprise-est-il-gratuit">LeTerritoireEntreprise est-il gratuit ?</h3>
+<p>L'accès à la plateforme est gratuit pour les fonctionnalités de base. Certaines fonctionnalités avancées ou exports enrichis peuvent être réservés aux structures partenaires. Renseignez-vous directement selon votre statut (CCI, commune, entreprise privée).</p>
+
+<h3 id="les-donnees-leterritoireentreprise-sont-elles-identiques-aux">Les données LeTerritoireEntreprise sont-elles identiques aux données INSEE ?</h3>
+<p>Non. La plateforme réalise ses propres retraitements à partir de sources officielles. Les valeurs peuvent légèrement différer selon la méthode d'agrégation utilisée. Pour un usage réglementaire, retournez toujours à la source primaire.</p>
+
+<h3 id="comment-verifier-la-date-de-mise-a-jour-d-un-indicateur-sur-">Comment vérifier la date de mise à jour d'un indicateur sur LeTerritoireEntreprise ?</h3>
+<p>Chaque indicateur dispose normalement d'une fiche métadonnée accessible en cliquant sur le point d'interrogation ou l'icône d'information associée. Si cette information est absente ou floue, ne l'utilisez pas sans vérification croisée.</p>
+
+<h3 id="ces-plateformes-sont-elles-utilisables-par-une-equipe-sans-c">Ces plateformes sont-elles utilisables par une équipe sans compétences en data ?</h3>
+<p>LeTerritoireEntreprise oui, sans hésitation. <strong>L'interface est pensée pour des non-techniciens.</strong> Les bases INSEE directes non : il faut savoir manipuler des fichiers CSV de plusieurs millions de lignes, faire des jointures, filtrer par codes géographiques. Ce n'est pas donné à tout le monde.</p>
+
+<h3 id="peut-on-integrer-ces-donnees-dans-un-logiciel-de-gestion-exi">Peut-on intégrer ces données dans un logiciel de gestion existant ?</h3>
+<p>C'est possible via export CSV puis import manuel dans la plupart des outils. Certains logiciels commencent à proposer des connecteurs natifs. C'est encore rare mais ça avance. L'idéal reste d'automatiser ce flux pour éviter les ressaisies.</p>
+  </div>
+
+  <div class="author-box">
+    <img src="/author-photo.png" alt="Marie Simon" class="author-avatar">
+    <div class="author-info">
+      <div class="author-label">Auteur</div>
+      <div class="author-name">Marie Simon</div>
+<div class="author-job">Responsable comptable</div><div class="author-bio">Marie Simon est responsable comptable, spécialisée dans l'accompagnement des TPE, indépendants et commerces de proximité. Elle teste et compare les outils de gestion au quotidien pour aider les entrepreneurs locaux à choisir les bons logiciels, sans jargon.</div>    </div>
+  </div>
+
+  <section class="related-section">
+    <h3 class="related-title">À lire aussi</h3>
+    <div class="related-grid">
+      <a href="/9025-l-espace-de-bureau-et-coworking-wework-face-aux-acteurs-locaux/" class="related-card">
+<div class="related-card-cat">Entrepreneuriat</div>        <div class="related-card-title">L'espace de bureau et coworking WeWork face aux acteurs locaux</div>
+<div class="related-card-excerpt">WeWork : le géant qui domine encore le marché Je travaille dans la comptabilité depuis 20 ans et j'ai vu défiler pas mal d'entreprises qui cherchaient des espaces flexibles.…</div>      </a>
+      <a href="/3613-les-6-acquis-de-la-formation-strategie-digitale-webmarket/" class="related-card">
+<div class="related-card-cat">Entrepreneuriat</div>        <div class="related-card-title">Les 6 acquis de la formation stratégie digitale WebMarket</div>
+<div class="related-card-excerpt">Vingt ans à tenir des comptes, à surveiller les marges, à négocier avec des prestataires dont les offres changent tous les trimestres. Quand j'ai décidé de suivre la formation…</div>      </a>
+      <a href="/1981-se-former-a-google-ads-vite-une-formation-ou-seul/" class="related-card">
+<div class="related-card-cat">Entrepreneuriat</div>        <div class="related-card-title">Se former à Google Ads : Vite-une-Formation ou seul ?</div>
+<div class="related-card-excerpt">Ma propre expérience avec Google Ads : un apprentissage chaotique Je me souviens encore de ma première campagne Google Ads. J'avais lu trois articles de blog, regardé deux vidéos…</div>      </a>
+      <a href="/9057-lefoyerentrepreneurial-face-aux-autres-coworkings-sur-les-tarifs/" class="related-card">
+<div class="related-card-cat">Entrepreneuriat</div>        <div class="related-card-title">LeFoyerEntrepreneurial face aux autres coworkings sur les tarifs</div>
+<div class="related-card-excerpt">J'ai comparé pas mal d'espaces de coworking ces dernières années, dans le cadre de mes missions de conseil auprès de petites structures. Et la question du tarif revient…</div>      </a>
+    </div>
+  </section>
+  </div><!-- /.article-main -->
+
+  <aside class="article-sidebar">
+    <div class="sidebar-block">
+      <h3 class="sidebar-title">Catégories</h3>
+      <ul class="sidebar-cat-list">
+        <li class="sidebar-cat-item">
+          <a href="/blog/" class="sidebar-cat-link">
+            <span>Tous les articles</span>
+            <span class="sidebar-cat-count">102</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-gestion-d-entreprise/" class="sidebar-cat-link">
+            <span>Gestion d'entreprise</span>
+            <span class="sidebar-cat-count">33</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-ressources-humaines/" class="sidebar-cat-link">
+            <span>Ressources Humaines</span>
+            <span class="sidebar-cat-count">18</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-salarie/" class="sidebar-cat-link">
+            <span>Salarié</span>
+            <span class="sidebar-cat-count">15</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-finance-comptabilite/" class="sidebar-cat-link">
+            <span>Finance & Comptabilité</span>
+            <span class="sidebar-cat-count">10</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-entrepreneuriat/" class="sidebar-cat-link active">
+            <span>Entrepreneuriat</span>
+            <span class="sidebar-cat-count">9</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-comptabilite/" class="sidebar-cat-link">
+            <span>Comptabilité</span>
+            <span class="sidebar-cat-count">8</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-creation-entreprise/" class="sidebar-cat-link">
+            <span>Création entreprise</span>
+            <span class="sidebar-cat-count">6</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-entreprenariat/" class="sidebar-cat-link">
+            <span>Entreprenariat</span>
+            <span class="sidebar-cat-count">2</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-creation-d-entreprise/" class="sidebar-cat-link">
+            <span>Création d'entreprise</span>
+            <span class="sidebar-cat-count">1</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-block">
+      <h3 class="sidebar-title">Articles récents</h3>
+      <ul class="sidebar-recent-list">
+        <li class="sidebar-recent-item">
+          <a href="/2401-le-customer-relationship-management-hubspot-face-aux-crm-concurrents/" class="sidebar-recent-link">
+<div class="sidebar-recent-cat">Gestion d'entreprise</div>            Le customer relationship management HubSpot face aux CRM concurrents
+          </a>
+        </li>
+        <li class="sidebar-recent-item">
+          <a href="/3613-les-6-acquis-de-la-formation-strategie-digitale-webmarket/" class="sidebar-recent-link">
+<div class="sidebar-recent-cat">Entrepreneuriat</div>            Les 6 acquis de la formation stratégie digitale WebMarket
+          </a>
+        </li>
+        <li class="sidebar-recent-item">
+          <a href="/5554-factonet-decouvrez-les-fonctionnalites-et-l-experience-utilisateur-du-logiciel-de-facturation/" class="sidebar-recent-link">
+<div class="sidebar-recent-cat">Finance & Comptabilité</div>            Factonet : découvrez les fonctionnalités et l'expérience utilisateur du logiciel de facturation
+          </a>
+        </li>
+        <li class="sidebar-recent-item">
+          <a href="/9057-lefoyerentrepreneurial-face-aux-autres-coworkings-sur-les-tarifs/" class="sidebar-recent-link">
+<div class="sidebar-recent-cat">Entrepreneuriat</div>            LeFoyerEntrepreneurial face aux autres coworkings sur les tarifs
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+</article>
+</div>
+
+<style>
+.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
+.footer-brand .footer-logo span{color:var(--accent2)}
+.footer-brand p{font-size:15px;color:rgba(255,255,255,.45);line-height:1.7;max-width:380px;margin:0;padding:0}
+.footer-socials{display:flex;gap:12px;margin-top:20px}
+.footer-socials a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.55);transition:background .15s,color .15s}
+.footer-socials a:hover{background:rgba(255,255,255,.13);color:#fff}
+.footer-socials svg{width:19px;height:19px;fill:currentColor;display:block}
+/* Anciennement .footer-col h4 — passé en div pour respecter la hiérarchie Hn (le footer ne doit pas introduire de Hn) */
+.footer-col .footer-col-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
+.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-brand{grid-column:1/-1}
+}
+</style>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" style="display:block;margin-bottom:12px"><img src="/logo.png" alt="sauvonslaproximite.com" style="height:36px;width:auto;object-fit:contain"></a>
+        <p>Comparatifs sauvonslaproximite.com 2026</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Navigation</div>
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/avis">Avis</a>
+        <a href="/blog/">Blog</a>
+        <a href="/plan-du-site">Plan du site</a>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/politique-confidentialite">Confidentialité</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">À propos</div>
+        <a href="/contact">Nous contacter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        © 2026 sauvonslaproximite.com — Données actualisées le 25 juin 2026
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button type="button"
+        class="scroll-top-btn"
+        id="scroll-top-btn"
+        aria-label="Remonter en haut de la page"
+        title="Remonter en haut">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2.5"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+</button>
+
+<style>
+.scroll-top-btn{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:9999;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--ink, #0F1419);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .15s;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+  padding:0;
+  font-family:inherit;
+}
+.scroll-top-btn.visible{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.scroll-top-btn:hover{
+  background:var(--accent, #C9A961);
+}
+.scroll-top-btn:focus-visible{
+  outline:2px solid var(--accent, #C9A961);
+  outline-offset:3px;
+}
+@media (max-width:600px){
+  .scroll-top-btn{ bottom:16px; right:16px; width:42px; height:42px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .scroll-top-btn{ transition:opacity .2s, visibility .2s; }
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  var btn = document.getElementById('scroll-top-btn');
+  if (!btn) return;
+
+  var THRESHOLD = 400; // px de scroll avant apparition
+  var ticking = false;
+
+  function update(){
+    if (window.scrollY > THRESHOLD) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+    ticking = false;
+  }
+
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  btn.addEventListener('click', function(){
+    var prefersReduced = window.matchMedia
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  });
+
+  // Check immédiat (au cas où la page est rechargée déjà scrollée)
+  update();
+})();
+</script>
+</body>
+</html>
