@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { CLAUDE_MODEL } from '../../../../../../lib/ai-model'
 
 // ── API : génération du contenu rédactionnel sous un outil ───────
 //
@@ -100,7 +101,7 @@ export async function POST(
           'anthropic-version': '2023-06-01',
         },
         body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
+          model: CLAUDE_MODEL,
           max_tokens: 4096,
           system,
           messages: [{ role: 'user', content: user }],
