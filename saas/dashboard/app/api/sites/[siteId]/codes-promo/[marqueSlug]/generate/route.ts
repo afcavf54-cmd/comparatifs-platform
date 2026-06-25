@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { CLAUDE_MODEL } from '../../../../../../../lib/ai-model'
 
 // ─────────────────────────────────────────────────────────────────────────
 // generate route — génère les 3 contenus textuels d'une marque codes promo
@@ -119,7 +120,7 @@ Réponds avec l'objet JSON uniquement.`
       'anthropic-version': '2023-06-01',
     },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-6',          // ⚠ Sonnet 4 (claude-sonnet-4-20250514) retiré le 15 juin 2026, migration vers 4.6
+      model: CLAUDE_MODEL,          // ⚠ Sonnet 4 (claude-sonnet-4-20250514) retiré le 15 juin 2026, migration vers 4.6
       max_tokens: 2000,                    // ~500 mots max, suffit largement pour 3 contenus courts
       system: systemPrompt,
       messages: [{ role: 'user', content: userPrompt }],
@@ -175,7 +176,7 @@ Réponds avec l'objet JSON uniquement.`
     content_md,
     avis_sophie: (parsed.avis_sophie || '').trim(),
     conseil_sophie: (parsed.conseil_sophie || '').trim(),
-    model: 'claude-sonnet-4-6',
+    model: CLAUDE_MODEL,
     usage: data.usage || null,
   })
 }
