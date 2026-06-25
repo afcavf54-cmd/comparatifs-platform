@@ -2149,18 +2149,31 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     {"year": _site_year}
                 )
 
-                # Trier les produits : ordre manuel si défini, sinon par note
+                # Trier les produits : ordre manuel > note > aléatoire STABLE.
+                # ── Pourquoi le départage aléatoire ───────────────────────────
+                # Sans note dans le Sheet, l'ancienne clé (1, -note) valait
+                # (1, 0) pour TOUS les produits → le tri stable conservait
+                # l'ordre brut du Sheet, identique d'une catégorie à l'autre
+                # (→ classements quasi identiques). On ajoute un départage
+                # pseudo-aléatoire DÉTERMINISTE (hash md5 de site+catégorie+slug) :
+                #   • stable d'un build à l'autre (pas de reshuffle = bon pour le SEO),
+                #   • différent d'une catégorie/site à l'autre (classements variés),
+                #   • n'intervient qu'à note égale (ou absente) : dès qu'une note
+                #     existe, elle prime.
                 order_map = cat_editorial.get("products_order", {})
+                def _rand_tiebreak(_slug):
+                    h = hashlib.md5(f"{site_slug}:{cat_slug}:{_slug}".encode("utf-8")).hexdigest()
+                    return int(h[:8], 16) / 0xFFFFFFFF  # float stable dans [0,1[
                 def sort_key(p):
                     slug = p.get("slug", "")
                     if slug in order_map:
-                        return (0, order_map[slug])  # Ordre manuel en priorité
+                        return (0, order_map[slug], 0.0)  # Ordre manuel en priorité
                     note = p.get("note_redaction", 0) or 0
                     try:
                         note = float(note)
                     except:
-                        note = 0
-                    return (1, -note)  # Sinon par note décroissante
+                        note = 0.0
+                    return (1, -note, _rand_tiebreak(slug))  # note ↓ puis aléatoire stable
                 enriched_products.sort(key=sort_key)
 
                 # Données auteur depuis config
