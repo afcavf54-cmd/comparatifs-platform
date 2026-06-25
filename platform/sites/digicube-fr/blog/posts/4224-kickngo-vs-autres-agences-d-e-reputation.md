@@ -14,6 +14,7 @@ link_anchors:
 - text: l'agence d'e-réputation Kickngo
   max: 5
 related_posts:
+- 4472-devis-btp-les-erreurs-a-eviter-sur-btp-chantier-fr
 - 4999-quel-budget-pour-un-devis-deco-lestylechezsoi
 ---
 <h2>Pourquoi j'ai comparé KicknGo aux autres agences d'e-réputation ?</h2>

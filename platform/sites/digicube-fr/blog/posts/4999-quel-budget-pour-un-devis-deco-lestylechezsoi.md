@@ -13,6 +13,7 @@ link_anchors:
 - text: un devis déco avec LeStyleChezSoi
   max: 5
 related_posts:
+- 4472-devis-btp-les-erreurs-a-eviter-sur-btp-chantier-fr
 - 4224-kickngo-vs-autres-agences-d-e-reputation
 ---
 <p>J'ai découvert LeStyleChezSoi il y a environ un an, quand je cherchais à refaire les bureaux de mon entreprise à Marseille. On était une dizaine à travailler dans un espace qui ressemblait plus à un entrepôt qu'à un lieu de travail. L'idée de faire appel à un service de déco professionnel m'a semblé logique, mais la vraie question c'était : combien ça va me coûter, concrètement ?</p>
