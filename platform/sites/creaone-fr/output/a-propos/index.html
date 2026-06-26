@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>À propos · creaone.fr</title>
+<meta name="description" content="À propos de creaone.fr : qui nous sommes, notre méthode éditoriale et notre auteur.">
+<link rel="canonical" href="https://creaone.fr/a-propos/">
+<link rel="icon" href="/favicon.png"><meta name="google-site-verification" content="Rz8oi425b-CwU-EHq2QI7jhKg2Iuu6StC_bM6K95-bo"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- ══ NAV ══ -->
+<style>
+nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+nav.site-nav .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
+nav.site-nav .nav-logo span{color:var(--accent2)}
+nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
+nav.site-nav .nav-cta:hover{opacity:.88}
+nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+nav.site-nav .nav-mobile.open{display:flex}
+nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
+</style>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/logo.png" alt="creaone.fr" style="height:36px;width:auto;object-fit:contain;vertical-align:middle"></a>
+    <div class="nav-links">
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/blog/">Blog</a>
+    </div>
+    <a href="/contact" class="nav-cta">Contact</a>
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+      <a href="/nos-comparateurs">Nos comparateurs</a>
+      <a href="/blog/">Blog</a>
+    <a href="/contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<script>
+/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
+   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
+   devoir redéfinir la fonction côté template parent.
+
+   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
+   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
+   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
+   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
+   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
+   qui est actif et le parent réécrit derrière s'il en a un.
+
+   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
+   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
+   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
+   ne faisait rien. */
+(function(){
+  if (typeof window.toggleMenu === 'function') return;
+  window.toggleMenu = function(){
+    var menu = document.getElementById('nav-mobile');
+    if (menu) menu.classList.toggle('open');
+  };
+  // UX bonus : fermer le menu mobile en cliquant en dehors
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('nav-mobile');
+    var burger = document.getElementById('burger');
+    if (!menu || !burger) return;
+    if (!menu.classList.contains('open')) return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    menu.classList.remove('open');
+  });
+  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
+  document.addEventListener('DOMContentLoaded', function(){
+    var menu = document.getElementById('nav-mobile');
+    if (!menu) return;
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  });
+})();
+</script>
+<!-- ══ 1. HERO ══ -->
+<section style="background: #1C2733; min-height: 560px; position: relative; overflow: hidden; display: flex; align-items: center;">
+  <div style="position: absolute; left: -130px; top: -220px; width: 230px; height: 1060px; background: #0F3D5E; transform: rotate(-22deg); transform-origin: center; z-index: 0;"></div>
+  <div style="position: absolute; left: 62px; top: -220px; width: 155px; height: 1060px; background: #1D70A2; transform: rotate(-22deg); transform-origin: center; opacity: 0.85; z-index: 0;"></div>
+  <div style="position: absolute; right: -100px; top: -220px; width: 320px; height: 1060px; background: #168551; transform: rotate(-22deg); transform-origin: center; opacity: 0.45; z-index: 0;"></div>
+
+  <div style="max-width: 1180px; margin: 0 auto; display: flex; align-items: center; gap: 72px; position: relative; z-index: 1; padding: 72px 56px; width: 100%;">
+    <!-- Photo auteur -->
+    <div style="flex: 0 0 420px; height: 420px; border-radius: 30px; overflow: hidden; position: relative; box-shadow: 0 24px 64px rgba(0,0,0,0.45); flex-shrink: 0;">
+      <img src="/author-photo.png" alt="Alexandre Michel" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+      <!-- Badge Toulouse -->
+      <div style="position: absolute; bottom: 24px; left: 24px; background: rgba(22,133,81,0.9); padding: 7px 14px; border-radius: 999px; display: flex; align-items: center; gap: 7px;">
+        <div style="width: 6px; height: 6px; border-radius: 50%; background: #FFFFFF;"></div>
+        <span style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; color: #FFFFFF; font-weight: 500;">Toulouse, France</span>
+      </div>
+      <!-- Badge expérience -->
+      <div style="position: absolute; top: 24px; right: 24px; background: #0F3D5E; padding: 8px 16px; border-radius: 10px;">
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: #FFFFFF; line-height: 1; text-align: center;">9</div>
+        <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; color: rgba(255,255,255,0.55); line-height: 1.3; text-align: center; margin-top: 2px;">ans d'exp.</div>
+      </div>
+    </div>
+
+    <!-- Texte droite -->
+    <div style="flex: 1; min-width: 0;">
+      <span style="display: inline-block; background: rgba(22,133,81,0.15); color: #168551; font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 16px; border-radius: 999px; margin-bottom: 28px;">À propos de CreaOne</span>
+      <h1 style="font-family: 'Space Grotesk', sans-serif; font-size: 62px; font-weight: 700; line-height: 1.07; color: #FFFFFF; margin: 0 0 26px;">Nous aidons les<br><span style="color: #1D70A2;">créateurs</span><br>à réussir leur<br>lancement.</h1>
+      <p style="font-size: 16px; line-height: 1.75; color: rgba(255,255,255,0.5); margin: 0 0 44px; max-width: 420px;">CreaOne est un média indépendant dédié à l'entrepreneuriat. Analyses rigoureuses, ressources pratiques et conseils d'experts pour chaque étape de votre parcours.</p>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+        <a href="#" style="background: #168551; color: #FFFFFF; padding: 15px 32px; border-radius: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 600; box-shadow: 0 4px 20px rgba(22,133,81,0.3); transition: background 0.18s;" style-hover="background: #137447;">Découvrir nos guides</a>
+        <a href="#methodologie" style="color: rgba(255,255,255,0.7); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; border-bottom: 1.5px solid rgba(255,255,255,0.2); padding-bottom: 3px; padding-top: 15px; transition: border-color 0.18s, color 0.18s;" style-hover="color: #FFFFFF; border-color: rgba(255,255,255,0.5);">Notre méthodologie →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 2. POURQUOI ══ -->
+<section style="background: #FFFFFF; padding: 96px 56px;">
+  <div style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+
+    <div data-fade="1">
+      <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #1D70A2; display: block; margin-bottom: 18px;">Pourquoi CreaOne existe</span>
+      <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; color: #1C2733; margin: 0 0 24px; line-height: 1.18;">Créer une entreprise est<br><em style="font-family: 'Lora', serif; font-style: italic; font-weight: 600; color: #0F3D5E;">l'une des décisions les<br>plus importantes.</em></h2>
+      <p style="font-size: 15px; line-height: 1.82; color: #4A5A6B; margin-bottom: 22px;">Se lancer sans les bonnes informations, c'est risquer des mois perdus, un mauvais statut juridique, des aides ratées. Les conséquences peuvent être lourdes : financières, fiscales, sociales.</p>
+      <p style="font-size: 15px; line-height: 1.82; color: #4A5A6B; margin-bottom: 36px;">CreaOne est né de ce constat : les entrepreneurs méritent des analyses rigoureuses, indépendantes, gratuites, pas des contenus marketing déguisés en conseils.</p>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: #168551; flex-shrink: 0;"></div>
+          <span style="font-size: 14.5px; color: #1C2733;">Éviter les erreurs coûteuses dès le départ</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: #168551; flex-shrink: 0;"></div>
+          <span style="font-size: 14.5px; color: #1C2733;">Accéder à des analyses indépendantes et vérifiées</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: #168551; flex-shrink: 0;"></div>
+          <span style="font-size: 14.5px; color: #1C2733;">Gagner du temps sur les démarches administratives</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="creaone-stats" style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px;">
+      <div data-fade="1" style="background: #F4F7FA; border-radius: 18px; padding: 32px 26px; border: 1px solid #E2E8F0; text-align: center;">
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 50px; font-weight: 700; color: #0F3D5E; line-height: 1; margin-bottom: 10px;"></div>
+        <div style="font-size: 13px; color: #64748B; line-height: 1.5;">Sujets analysés</div>
+      </div>
+      <div data-fade="1" style="background: #1C2733; border-radius: 18px; padding: 32px 26px; text-align: center;">
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 50px; font-weight: 700; color: #FFFFFF; line-height: 1; margin-bottom: 10px;"></div>
+        <div style="font-size: 13px; color: rgba(255,255,255,0.42); line-height: 1.5;">Heures de recherche</div>
+      </div>
+      <div data-fade="1" style="background: #168551; border-radius: 18px; padding: 32px 26px; text-align: center;">
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 50px; font-weight: 700; color: #FFFFFF; line-height: 1; margin-bottom: 10px;"></div>
+        <div style="font-size: 13px; color: rgba(255,255,255,0.68); line-height: 1.5;">Lecteurs / mois</div>
+      </div>
+      <div data-fade="1" style="background: #F4F7FA; border-radius: 18px; padding: 32px 26px; border: 1px solid #E2E8F0; text-align: center;">
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 50px; font-weight: 700; color: #168551; line-height: 1; margin-bottom: 10px;"></div>
+        <div style="font-size: 13px; color: #64748B; line-height: 1.5;">Articles publiés</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 3. VALEURS ══ -->
+<section style="background: #F4F7FA; padding: 96px 56px;">
+  <div style="max-width: 1180px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 60px;">
+      <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #1D70A2;">Nos valeurs</span>
+      <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 700; color: #1C2733; margin: 14px 0 0; line-height: 1.2;">Ce qui nous guide au quotidien</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
+
+      <div data-fade="1" style="background: #FFFFFF; border-radius: 18px; padding: 36px 30px; border: 1px solid #E2E8F0; transition: transform 0.2s ease, box-shadow 0.2s ease;" style-hover="box-shadow: 0 12px 40px rgba(15,61,94,0.1); transform: translateY(-5px);">
+        <div style="width: 54px; height: 54px; background: linear-gradient(135deg, #0F3D5E, #1D70A2); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 19px; font-weight: 700; color: #1C2733; margin-bottom: 12px;">Indépendance</h3>
+        <p style="font-size: 14px; line-height: 1.72; color: #64748B;">Nos analyses sont construites sur des critères objectifs et documentés. Chaque recommandation repose sur une vérification rigoureuse, pas sur des relations commerciales.</p>
+      </div>
+
+      <div data-fade="1" style="background: #FFFFFF; border-radius: 18px; padding: 36px 30px; border: 1px solid #E2E8F0; transition: transform 0.2s ease, box-shadow 0.2s ease;" style-hover="box-shadow: 0 12px 40px rgba(15,61,94,0.1); transform: translateY(-5px);">
+        <div style="width: 54px; height: 54px; background: linear-gradient(135deg, #168551, #0F8060); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 19px; font-weight: 700; color: #1C2733; margin-bottom: 12px;">Transparence</h3>
+        <p style="font-size: 14px; line-height: 1.72; color: #64748B;">Nous expliquons toujours notre raisonnement, nos sources et nos méthodes. Rien n'est opaque dans notre processus éditorial.</p>
+      </div>
+
+      <div data-fade="1" style="background: #FFFFFF; border-radius: 18px; padding: 36px 30px; border: 1px solid #E2E8F0; transition: transform 0.2s ease, box-shadow 0.2s ease;" style-hover="box-shadow: 0 12px 40px rgba(15,61,94,0.1); transform: translateY(-5px);">
+        <div style="width: 54px; height: 54px; background: linear-gradient(135deg, #1D70A2, #0F3D5E); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"></path></svg>
+        </div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 19px; font-weight: 700; color: #1C2733; margin-bottom: 12px;">Expertise</h3>
+        <p style="font-size: 14px; line-height: 1.72; color: #64748B;">Chaque article est rédigé ou relu par un expert du domaine concerné. La précision juridique et fiscale est une priorité absolue.</p>
+      </div>
+
+      <div data-fade="1" style="background: #FFFFFF; border-radius: 18px; padding: 36px 30px; border: 1px solid #E2E8F0; transition: transform 0.2s ease, box-shadow 0.2s ease;" style-hover="box-shadow: 0 12px 40px rgba(15,61,94,0.1); transform: translateY(-5px);">
+        <div style="width: 54px; height: 54px; background: linear-gradient(135deg, #168551, #1D70A2); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        </div>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 19px; font-weight: 700; color: #1C2733; margin-bottom: 12px;">Utilité</h3>
+        <p style="font-size: 14px; line-height: 1.72; color: #64748B;">Notre unique mesure de succès : est-ce que ce contenu aide vraiment l'entrepreneur à prendre une meilleure décision ?</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ 4. MÉTHODOLOGIE ══ -->
+<section id="methodologie" style="background: #FFFFFF; padding: 96px 56px;">
+  <div style="max-width: 1180px; margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: flex-start;">
+
+      <div>
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #1D70A2; display: block; margin-bottom: 18px;">Notre processus</span>
+        <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 700; color: #1C2733; margin: 0 0 22px; line-height: 1.2;">Une méthodologie<br><em style="font-family: 'Lora', serif; font-style: italic; font-weight: 600; color: #0F3D5E;">rigoureuse.</em></h2>
+        <p style="font-size: 15px; line-height: 1.82; color: #4A5A6B; margin-bottom: 0;">Chaque article publié sur CreaOne suit un processus éditorial en 7 étapes. Rien n'est publié sans avoir été vérifié, sourcé et validé par un expert du domaine.</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column;">
+
+        <div data-fade="1" style="display: flex; gap: 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: #0F3D5E; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #FFFFFF; flex-shrink: 0; z-index: 1;">1</div>
+            <div style="width: 2px; background: #E2E8F0; flex: 1; margin: 6px 0; min-height: 36px;"></div>
+          </div>
+          <div style="padding-top: 8px; padding-bottom: 32px; flex: 1;">
+            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733; margin-bottom: 5px;">Identification du sujet</div>
+            <p style="font-size: 13.5px; line-height: 1.7; color: #64748B; margin: 0;">Sélection basée sur les questions réelles des entrepreneurs et les tendances du marché.</p>
+          </div>
+        </div>
+
+        <div data-fade="1" style="display: flex; gap: 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: #1D70A2; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #FFFFFF; flex-shrink: 0; z-index: 1;">2</div>
+            <div style="width: 2px; background: #E2E8F0; flex: 1; margin: 6px 0; min-height: 36px;"></div>
+          </div>
+          <div style="padding-top: 8px; padding-bottom: 32px; flex: 1;">
+            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733; margin-bottom: 5px;">Recherche documentaire</div>
+            <p style="font-size: 13.5px; line-height: 1.7; color: #64748B; margin: 0;">Sources officielles, textes législatifs, jurisprudence, publications expertes et données de terrain.</p>
+          </div>
+        </div>
+
+        <div data-fade="1" style="display: flex; gap: 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: #168551; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #FFFFFF; flex-shrink: 0; z-index: 1;">3</div>
+            <div style="width: 2px; background: #E2E8F0; flex: 1; margin: 6px 0; min-height: 36px;"></div>
+          </div>
+          <div style="padding-top: 8px; padding-bottom: 32px; flex: 1;">
+            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733; margin-bottom: 5px;">Tests et vérifications terrain</div>
+            <p style="font-size: 13.5px; line-height: 1.7; color: #64748B; margin: 0;">Simulation des démarches, vérification des chiffres, contact des organismes officiels si nécessaire.</p>
+          </div>
+        </div>
+
+        <div data-fade="1" style="display: flex; gap: 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: #0F3D5E; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #FFFFFF; flex-shrink: 0; z-index: 1;">4</div>
+            <div style="width: 2px; background: #E2E8F0; flex: 1; margin: 6px 0; min-height: 36px;"></div>
+          </div>
+          <div style="padding-top: 8px; padding-bottom: 32px; flex: 1;">
+            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733; margin-bottom: 5px;">Rédaction structurée</div>
+            <p style="font-size: 13.5px; line-height: 1.7; color: #64748B; margin: 0;">Rédaction claire, sans jargon inutile, avec exemples concrets adaptés à chaque profil d'entrepreneur.</p>
+          </div>
+        </div>
+
+        <div data-fade="1" style="display: flex; gap: 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: #1D70A2; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #FFFFFF; flex-shrink: 0; z-index: 1;">5</div>
+            <div style="width: 2px; background: #E2E8F0; flex: 1; margin: 6px 0; min-height: 36px;"></div>
+          </div>
+          <div style="padding-top: 8px; padding-bottom: 32px; flex: 1;">
+            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733; margin-bottom: 5px;">Relecture expert</div>
+            <p style="font-size: 13.5px; line-height: 1.7; color: #64748B; margin: 0;">Validation de la précision juridique, fiscale ou comptable par un professionnel du domaine.</p>
+          </div>
+        </div>
+
+        <div data-fade="1" style="display: flex; gap: 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: #168551; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #FFFFFF; flex-shrink: 0; z-index: 1;">6</div>
+            <div style="width: 2px; background: #E2E8F0; flex: 1; margin: 6px 0; min-height: 36px;"></div>
+          </div>
+          <div style="padding-top: 8px; padding-bottom: 32px; flex: 1;">
+            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733; margin-bottom: 5px;">Attribution d'un score de fiabilité</div>
+            <p style="font-size: 13.5px; line-height: 1.7; color: #64748B; margin: 0;">Chaque contenu reçoit une note interne sur 6 critères avant d'être approuvé pour publication.</p>
+          </div>
+        </div>
+
+        <div data-fade="1" style="display: flex; gap: 20px;">
+          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: #0F3D5E; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #FFFFFF; flex-shrink: 0; z-index: 1;">7</div>
+          </div>
+          <div style="padding-top: 8px; flex: 1;">
+            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733; margin-bottom: 5px;">Publication et mise à jour continue</div>
+            <p style="font-size: 13.5px; line-height: 1.7; color: #64748B; margin: 0;">Publication + veille active : chaque article est révisé dès qu'une réglementation évolue.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 5. CRITÈRES D'ÉVALUATION ══ -->
+<section style="background: #F4F7FA; padding: 96px 56px;">
+  <div style="max-width: 1180px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 64px;">
+      <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #1D70A2;">Nos critères</span>
+      <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 700; color: #1C2733; margin: 14px 0 0; line-height: 1.2;">Comment nous évaluons nos contenus</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+
+      <div data-fade="1" style="background: #FFFFFF; border-radius: 14px; padding: 28px 30px; border: 1px solid #E9EFF5;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #1C2733;">Actualité de l'information</span>
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #0F3D5E;">92%</span>
+        </div>
+        <div style="height: 7px; background: #F1F5F9; border-radius: 4px; overflow: hidden;">
+          <div data-bar="92" style="height: 100%; background: linear-gradient(90deg, #0F3D5E, #1D70A2); border-radius: 4px;"></div>
+        </div>
+        <p style="font-size: 13px; color: #94A3B8; margin-top: 10px; margin-bottom: 0;">Vérification régulière des dates et changements réglementaires.</p>
+      </div>
+
+      <div data-fade="1" style="background: #FFFFFF; border-radius: 14px; padding: 28px 30px; border: 1px solid #E9EFF5;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #1C2733;">Précision juridique &amp; fiscale</span>
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #168551;">96%</span>
+        </div>
+        <div style="height: 7px; background: #F1F5F9; border-radius: 4px; overflow: hidden;">
+          <div data-bar="96" style="height: 100%; background: linear-gradient(90deg, #168551, #0F8060); border-radius: 4px;"></div>
+        </div>
+        <p style="font-size: 13px; color: #94A3B8; margin-top: 10px; margin-bottom: 0;">Validation par un expert avant toute publication sensible.</p>
+      </div>
+
+      <div data-fade="1" style="background: #FFFFFF; border-radius: 14px; padding: 28px 30px; border: 1px solid #E9EFF5;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #1C2733;">Accessibilité du contenu</span>
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #0F3D5E;">88%</span>
+        </div>
+        <div style="height: 7px; background: #F1F5F9; border-radius: 4px; overflow: hidden;">
+          <div data-bar="88" style="height: 100%; background: linear-gradient(90deg, #0F3D5E, #1D70A2); border-radius: 4px;"></div>
+        </div>
+        <p style="font-size: 13px; color: #94A3B8; margin-top: 10px; margin-bottom: 0;">Lisibilité testée, jargon explicité, vocabulaire adapté.</p>
+      </div>
+
+      <div data-fade="1" style="background: #FFFFFF; border-radius: 14px; padding: 28px 30px; border: 1px solid #E9EFF5;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #1C2733;">Sources vérifiées et citées</span>
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #168551;">94%</span>
+        </div>
+        <div style="height: 7px; background: #F1F5F9; border-radius: 4px; overflow: hidden;">
+          <div data-bar="94" style="height: 100%; background: linear-gradient(90deg, #168551, #0F8060); border-radius: 4px;"></div>
+        </div>
+        <p style="font-size: 13px; color: #94A3B8; margin-top: 10px; margin-bottom: 0;">Légifrance, URSSAF, INSEE, BOFiP : les sources officielles en priorité.</p>
+      </div>
+
+      <div data-fade="1" style="background: #FFFFFF; border-radius: 14px; padding: 28px 30px; border: 1px solid #E9EFF5;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #1C2733;">Exemples concrets</span>
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #0F3D5E;">86%</span>
+        </div>
+        <div style="height: 7px; background: #F1F5F9; border-radius: 4px; overflow: hidden;">
+          <div data-bar="86" style="height: 100%; background: linear-gradient(90deg, #0F3D5E, #1D70A2); border-radius: 4px;"></div>
+        </div>
+        <p style="font-size: 13px; color: #94A3B8; margin-top: 10px; margin-bottom: 0;">Simulations chiffrées, cas pratiques, comparatifs illustrés.</p>
+      </div>
+
+      <div data-fade="1" style="background: #FFFFFF; border-radius: 14px; padding: 28px 30px; border: 1px solid #E9EFF5;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #1C2733;">Mise à jour régulière</span>
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #168551;">82%</span>
+        </div>
+        <div style="height: 7px; background: #F1F5F9; border-radius: 4px; overflow: hidden;">
+          <div data-bar="82" style="height: 100%; background: linear-gradient(90deg, #168551, #0F8060); border-radius: 4px;"></div>
+        </div>
+        <p style="font-size: 13px; color: #94A3B8; margin-top: 10px; margin-bottom: 0;">Révision automatique déclenchée lors de chaque changement légal majeur.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ 6. TRANSPARENCE ══ -->
+<section style="background: #FFFFFF; padding: 96px 56px;">
+  <div style="max-width: 1180px; margin: 0 auto;">
+    <div data-fade="1" style="background: linear-gradient(135deg, #F4F7FA 0%, #EEF4FC 100%); border-radius: 22px; padding: 56px 64px; border: 1px solid #E2E8F0; display: grid; grid-template-columns: 80px 1fr; gap: 40px; align-items: flex-start; position: relative; overflow: hidden;">
+      <div style="position: absolute; right: -40px; bottom: -40px; width: 220px; height: 220px; border-radius: 50%; background: rgba(29,112,162,0.05); pointer-events: none;"></div>
+      <!-- Icône -->
+      <div style="width: 72px; height: 72px; border-radius: 18px; background: #0F3D5E; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+      </div>
+      <!-- Contenu -->
+      <div style="position: relative; z-index: 1;">
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #1D70A2; display: block; margin-bottom: 12px;">Transparence financière</span>
+        <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; color: #1C2733; margin: 0 0 18px; line-height: 1.3;">Notre engagement envers nos lecteurs</h3>
+        <p style="font-size: 15px; line-height: 1.82; color: #4A5A6B; margin-bottom: 28px; max-width: 680px;">CreaOne est un média qui vit de la confiance de ses lecteurs. Chaque article est produit dans le seul objectif d'être utile à l'entrepreneur, avec des informations vérifiées, sourcées et régulièrement mises à jour.</p>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; padding: 14px 20px; border-radius: 10px;">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: #168551; flex-shrink: 0;"></div>
+            <span style="font-size: 14px; color: #1C2733; font-weight: 500;">Contenu 100% gratuit</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; padding: 14px 20px; border-radius: 10px;">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: #168551; flex-shrink: 0;"></div>
+            <span style="font-size: 14px; color: #1C2733; font-weight: 500;">Analyses fondées sur des faits</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; background: #FFFFFF; border: 1px solid #E2E8F0; padding: 14px 20px; border-radius: 10px;">
+            <div style="width: 8px; height: 8px; border-radius: 50%; background: #168551; flex-shrink: 0;"></div>
+            <span style="font-size: 14px; color: #1C2733; font-weight: 500;">Aucune donnée personnelle revendue</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 7. AUTEUR ══ -->
+<section style="background: #1C2733; padding: 96px 56px; position: relative; overflow: hidden;">
+  <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-family: 'Space Grotesk', sans-serif; font-size: 320px; font-weight: 700; color: rgba(255,255,255,0.018); letter-spacing: -16px; white-space: nowrap; pointer-events: none; user-select: none; line-height: 1;">AM</div>
+  <div style="position: absolute; right: -80px; top: -80px; width: 320px; height: 320px; border-radius: 50%; background: rgba(29,112,162,0.06); pointer-events: none;"></div>
+
+  <div style="max-width: 1180px; margin: 0 auto; position: relative; z-index: 1;">
+
+    <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 72px;">
+      <div style="flex: 1; height: 1px; background: rgba(255,255,255,0.1);"></div>
+      <span style="font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); white-space: nowrap;">Qui je suis</span>
+      <div style="flex: 1; height: 1px; background: rgba(255,255,255,0.1);"></div>
+    </div>
+
+    <div data-fade="1" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 56px 64px; display: grid; grid-template-columns: auto 1fr; gap: 60px; align-items: flex-start;">
+
+      <!-- Colonne gauche : identité -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; min-width: 180px;">
+        <div style="position: relative;">
+<img src="/author-photo.png" alt="Alexandre Michel" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; box-shadow: 0 16px 40px rgba(0,0,0,0.35); position: relative; z-index: 1;">          <div style="position: absolute; inset: -6px; border-radius: 50%; border: 1.5px solid rgba(29,112,162,0.3); z-index: 0;"></div>
+          <div style="position: absolute; inset: -13px; border-radius: 50%; border: 1px solid rgba(29,112,162,0.12); z-index: 0;"></div>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: #FFFFFF; margin-bottom: 5px;">Alexandre Michel</div>
+          <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: #1D70A2; font-weight: 500; margin-bottom: 12px;">Responsable comptable</div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <div style="width: 6px; height: 6px; border-radius: 50%; background: #168551;"></div>
+            <span style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; color: rgba(255,255,255,0.32);">Toulouse, France</span>
+          </div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 7px; justify-content: center;">
+          <span style="background: rgba(29,112,162,0.15); color: rgba(255,255,255,0.6); font-size: 11.5px; padding: 4px 11px; border-radius: 6px; border: 1px solid rgba(29,112,162,0.25);">Comptabilité</span>
+          <span style="background: rgba(29,112,162,0.15); color: rgba(255,255,255,0.6); font-size: 11.5px; padding: 4px 11px; border-radius: 6px; border: 1px solid rgba(29,112,162,0.25);">Fiscalité</span>
+          <span style="background: rgba(29,112,162,0.15); color: rgba(255,255,255,0.6); font-size: 11.5px; padding: 4px 11px; border-radius: 6px; border: 1px solid rgba(29,112,162,0.25);">Normes IFRS</span>
+        </div>
+      </div>
+
+      <!-- Colonne droite : bio -->
+      <div>
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #168551; display: block; margin-bottom: 14px;">Fondateur de CreaOne</span>
+        <div style="font-family: 'Lora', serif; font-size: 72px; line-height: 0.72; color: rgba(29,112,162,0.25); margin-bottom: 14px; margin-left: -4px;">"</div>
+        <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; line-height: 1.88; color: rgba(255,255,255,0.6); margin-bottom: 36px;">Je suis Responsable comptable avec 9 années d'expérience dans la gestion financière à Toulouse. J'ai créé CreaOne pour partager ce que j'aurais aimé trouver quand je me suis lancé : des ressources claires, précises et vraiment utiles pour les créateurs d'entreprise. Je maîtrise les normes comptables françaises et internationales, et j'écris chaque article avec le même niveau d'exigence que j'applique à mon travail.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 36px; margin-bottom: 36px;">
+          <div style="padding-right: 32px; border-right: 1px solid rgba(255,255,255,0.08);">
+            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 36px; font-weight: 700; color: #FFFFFF; line-height: 1; margin-bottom: 6px;">200+</div>
+            <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12.5px; color: rgba(255,255,255,0.35);">Entreprises conseillées</div>
+          </div>
+          <div style="padding: 0 32px; border-right: 1px solid rgba(255,255,255,0.08);">
+            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; color: #168551; line-height: 1; margin-bottom: 6px; letter-spacing: 0.04em;">FR &amp; INT</div>
+            <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12.5px; color: rgba(255,255,255,0.35);">Normes maîtrisées</div>
+          </div>
+          <div style="padding-left: 32px;">
+            <div style="font-family: 'Space Grotesk', sans-serif; font-size: 36px; font-weight: 700; color: #1D70A2; line-height: 1; margin-bottom: 6px;">Bac+5</div>
+            <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12.5px; color: rgba(255,255,255,0.35);">Niveau académique</div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 36px;">
+          <a href="#" style="background: #168551; color: #FFFFFF; padding: 13px 28px; border-radius: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 600; transition: background 0.18s;" style-hover="background: #137447;">Lire mes articles →</a>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <!-- LinkedIn -->
+          <a  style="width: 44px; height: 44px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; transition: background 0.18s, border-color 0.18s;" style-hover="background: rgba(29,112,162,0.25); border-color: rgba(29,112,162,0.5);" title="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+          <!-- X / Twitter -->
+          <a  style="width: 44px; height: 44px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; transition: background 0.18s, border-color 0.18s;" style-hover="background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25);" title="X / Twitter">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+          </a>
+          <!-- Facebook -->
+          <a  style="width: 44px; height: 44px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; transition: background 0.18s, border-color 0.18s;" style-hover="background: rgba(24,119,242,0.2); border-color: rgba(24,119,242,0.4);" title="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
+          </a>
+          <!-- YouTube -->
+          <a  style="width: 44px; height: 44px; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; transition: background 0.18s, border-color 0.18s;" style-hover="background: rgba(255,0,0,0.18); border-color: rgba(255,0,0,0.35);" title="YouTube">
+            <svg width="20" height="14" viewBox="0 0 24 17" fill="rgba(255,255,255,0.6)"><path d="M23.498 2.647a3.003 3.003 0 00-2.113-2.127C19.505 0 12 0 12 0S4.495 0 2.615.52A3.003 3.003 0 00.502 2.647C0 4.537 0 8.5 0 8.5s0 3.963.502 5.853a3.003 3.003 0 002.113 2.127C4.495 17 12 17 12 17s7.505 0 9.385-.52a3.003 3.003 0 002.113-2.127C24 12.463 24 8.5 24 8.5s0-3.963-.502-5.853zM9.545 12.068V4.932L15.818 8.5l-6.273 3.568z"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 8. CHARTE ÉDITORIALE ══ -->
+<section style="background: #F4F7FA; padding: 96px 56px;">
+  <div style="max-width: 1180px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 60px;">
+      <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #1D70A2;">Charte éditoriale</span>
+      <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 700; color: #1C2733; margin: 14px 0 0; line-height: 1.2;">Nos engagements envers vous</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;">
+
+      <div data-fade="1" style="background: #FFFFFF; border-radius: 14px; padding: 28px 26px; border: 1px solid #E9EFF5; display: flex; align-items: flex-start; gap: 16px; transition: transform 0.2s ease, box-shadow 0.2s ease;" style-hover="box-shadow: 0 8px 28px rgba(15,61,94,0.09); transform: translateY(-3px);">
+        <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(22,133,81,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#168551" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div>
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #1C2733; margin-bottom: 6px;">Tests réalisés avant publication</div>
+          <p style="font-size: 13.5px; line-height: 1.65; color: #64748B; margin: 0;">Chaque démarche décrite est simulée ou vérifiée directement sur les plateformes officielles.</p>
+        </div>
+      </div>
+
+      <div data-fade="1" style="background: #FFFFFF; border-radius: 14px; padding: 28px 26px; border: 1px solid #E9EFF5; display: flex; align-items: flex-start; gap: 16px; transition: transform 0.2s ease, box-shadow 0.2s ease;" style-hover="box-shadow: 0 8px 28px rgba(15,61,94,0.09); transform: translateY(-3px);">
+        <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(22,133,81,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#168551" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div>
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #1C2733; margin-bottom: 6px;">Informations vérifiées aux sources</div>
+          <p style="font-size: 13.5px; line-height: 1.65; color: #64748B; margin: 0;">Légifrance, URSSAF, INSEE, BOFiP, uniquement des sources officielles et traçables.</p>
+        </div>
+      </div>
+
+      <div data-fade="1" style="background: #FFFFFF; border-radius: 14px; padding: 28px 26px; border: 1px solid #E9EFF5; display: flex; align-items: flex-start; gap: 16px; transition: transform 0.2s ease, box-shadow 0.2s ease;" style-hover="box-shadow: 0 8px 28px rgba(15,61,94,0.09); transform: translateY(-3px);">
+        <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(22,133,81,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#168551" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div>
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #1C2733; margin-bottom: 6px;">Mises à jour régulières</div>
+          <p style="font-size: 13.5px; line-height: 1.65; color: #64748B; margin: 0;">Les articles sont révisés dès qu'une loi, un taux ou une procédure change, avec la date de révision affichée.</p>
+        </div>
+      </div>
+
+      <div data-fade="1" style="background: #FFFFFF; border-radius: 14px; padding: 28px 26px; border: 1px solid #E9EFF5; display: flex; align-items: flex-start; gap: 16px; transition: transform 0.2s ease, box-shadow 0.2s ease;" style-hover="box-shadow: 0 8px 28px rgba(15,61,94,0.09); transform: translateY(-3px);">
+        <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(22,133,81,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#168551" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div>
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #1C2733; margin-bottom: 6px;">Corrections rapides et transparentes</div>
+          <p style="font-size: 13.5px; line-height: 1.65; color: #64748B; margin: 0;">Toute erreur signalée est corrigée sous 48h, avec une note de correction visible dans l'article.</p>
+        </div>
+      </div>
+
+      <div data-fade="1" style="background: #FFFFFF; border-radius: 14px; padding: 28px 26px; border: 1px solid #E9EFF5; display: flex; align-items: flex-start; gap: 16px; transition: transform 0.2s ease, box-shadow 0.2s ease;" style-hover="box-shadow: 0 8px 28px rgba(15,61,94,0.09); transform: translateY(-3px);">
+        <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(22,133,81,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#168551" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div>
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #1C2733; margin-bottom: 6px;">Sources citées et accessibles</div>
+          <p style="font-size: 13.5px; line-height: 1.65; color: #64748B; margin: 0;">Chaque affirmation chiffrée ou légale est accompagnée d'un lien vers la source d'origine.</p>
+        </div>
+      </div>
+
+      <div data-fade="1" style="background: #FFFFFF; border-radius: 14px; padding: 28px 26px; border: 1px solid #E9EFF5; display: flex; align-items: flex-start; gap: 16px; transition: transform 0.2s ease, box-shadow 0.2s ease;" style-hover="box-shadow: 0 8px 28px rgba(15,61,94,0.09); transform: translateY(-3px);">
+        <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(22,133,81,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#168551" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div>
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #1C2733; margin-bottom: 6px;">Veille juridique permanente</div>
+          <p style="font-size: 13.5px; line-height: 1.65; color: #64748B; margin: 0;">Une veille quotidienne sur les textes législatifs, les arrêtés et les circulaires pour ne rien laisser passer.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ 9. ILS NOUS FONT CONFIANCE ══ -->
+<section style="background: #FFFFFF; padding: 80px 56px;">
+  <div style="max-width: 1180px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 52px;">
+      <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #1D70A2;">Références &amp; partenaires</span>
+      <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 700; color: #1C2733; margin: 14px 0 0; line-height: 1.2;">Ils nous font confiance</h2>
+    </div>
+    <div data-fade="1" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+      <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 26px; display: flex; align-items: center; justify-content: center; min-height: 80px; transition: border-color 0.18s, background 0.18s;" style-hover="border-color: #1D70A2; background: #FFFFFF;">
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #94A3B8; letter-spacing: 0.06em;">ANDRH</span>
+      </div>
+      <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 26px; display: flex; align-items: center; justify-content: center; min-height: 80px; transition: border-color 0.18s, background 0.18s;" style-hover="border-color: #1D70A2; background: #FFFFFF;">
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #94A3B8; letter-spacing: 0.06em;">BpiFrance</span>
+      </div>
+      <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 26px; display: flex; align-items: center; justify-content: center; min-height: 80px; transition: border-color 0.18s, background 0.18s;" style-hover="border-color: #1D70A2; background: #FFFFFF;">
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #94A3B8; letter-spacing: 0.06em;">CCI France</span>
+      </div>
+      <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 26px; display: flex; align-items: center; justify-content: center; min-height: 80px; transition: border-color 0.18s, background 0.18s;" style-hover="border-color: #1D70A2; background: #FFFFFF;">
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #94A3B8; letter-spacing: 0.06em;">Les Échos</span>
+      </div>
+      <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 26px; display: flex; align-items: center; justify-content: center; min-height: 80px; transition: border-color 0.18s, background 0.18s;" style-hover="border-color: #1D70A2; background: #FFFFFF;">
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #94A3B8; letter-spacing: 0.06em;">FranceNum</span>
+      </div>
+      <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 26px; display: flex; align-items: center; justify-content: center; min-height: 80px; transition: border-color 0.18s, background 0.18s;" style-hover="border-color: #1D70A2; background: #FFFFFF;">
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #94A3B8; letter-spacing: 0.06em;">Syntec</span>
+      </div>
+      <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 26px; display: flex; align-items: center; justify-content: center; min-height: 80px; transition: border-color 0.18s, background 0.18s;" style-hover="border-color: #1D70A2; background: #FFFFFF;">
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #94A3B8; letter-spacing: 0.06em;">L'Express Business</span>
+      </div>
+      <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 26px; display: flex; align-items: center; justify-content: center; min-height: 80px; transition: border-color 0.18s, background 0.18s;" style-hover="border-color: #1D70A2; background: #FFFFFF;">
+        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #94A3B8; letter-spacing: 0.06em;">Apce.com</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 10. FAQ ══ -->
+<section style="background: #F4F7FA; padding: 96px 56px;">
+  <div style="max-width: 780px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 60px;">
+      <span style="font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #1D70A2;">FAQ</span>
+      <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 700; color: #1C2733; margin: 14px 0 0; line-height: 1.2;">Questions fréquentes</h2>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 0;">
+
+      <!-- Q0 -->
+      <div data-fade="1" style="border-top: 1px solid #E2E8F0; background: #FFFFFF; border-radius: 0;">
+        <button onclick="" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; background: transparent; border: none; cursor: pointer; text-align: left; gap: 16px;">
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733;">Comment rédigez-vous vos articles ?</span>
+          <sc-if value="" hint-placeholder-val="True"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="6 9 12 15 18 9"></polyline></svg></sc-if>
+          <sc-if value="" hint-placeholder-val="False"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="18 15 12 9 6 15"></polyline></svg></sc-if>
+        </button>
+        <sc-if value="" hint-placeholder-val="False">
+          <div style="padding: 0 28px 28px; font-size: 15px; line-height: 1.82; color: #4A5A6B;">Chaque article suit un processus éditorial en 7 étapes : identification du sujet, recherche documentaire, tests terrain, rédaction, relecture experte, notation interne et publication. Aucun contenu n'est mis en ligne sans avoir été validé par un professionnel du domaine concerné.</div>
+        </sc-if>
+      </div>
+
+      <!-- Q1 -->
+      <div data-fade="1" style="border-top: 1px solid #E2E8F0;">
+        <button onclick="" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; background: transparent; border: none; cursor: pointer; text-align: left; gap: 16px;">
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733;">Comment CreaOne se finance-t-il ?</span>
+          <sc-if value="" hint-placeholder-val="True"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="6 9 12 15 18 9"></polyline></svg></sc-if>
+          <sc-if value="" hint-placeholder-val="False"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="18 15 12 9 6 15"></polyline></svg></sc-if>
+        </button>
+        <sc-if value="" hint-placeholder-val="False">
+          <div style="padding: 0 28px 28px; font-size: 15px; line-height: 1.82; color: #4A5A6B;">CreaOne est un projet indépendant financé par la publicité display et les partenariats de contenu. Tous les contenus éditoriaux sont produits librement, sans influence extérieure sur leur angle ou leurs conclusions. Notre priorité absolue reste l'utilité pour nos lecteurs.</div>
+        </sc-if>
+      </div>
+
+      <!-- Q2 -->
+      <div data-fade="1" style="border-top: 1px solid #E2E8F0;">
+        <button onclick="" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; background: transparent; border: none; cursor: pointer; text-align: left; gap: 16px;">
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733;">Pourquoi certains sujets ne sont-ils pas encore couverts ?</span>
+          <sc-if value="" hint-placeholder-val="True"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="6 9 12 15 18 9"></polyline></svg></sc-if>
+          <sc-if value="" hint-placeholder-val="False"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="18 15 12 9 6 15"></polyline></svg></sc-if>
+        </button>
+        <sc-if value="" hint-placeholder-val="False">
+          <div style="padding: 0 28px 28px; font-size: 15px; line-height: 1.82; color: #4A5A6B;">Nous préférons publier moins d'articles mais avec une qualité maximale. Un sujet n'est traité que lorsque notre équipe peut garantir sa précision complète. Si un sujet vous manque, contactez-nous, nous le prioriserons dans notre roadmap éditoriale.</div>
+        </sc-if>
+      </div>
+
+      <!-- Q3 -->
+      <div data-fade="1" style="border-top: 1px solid #E2E8F0;">
+        <button onclick="" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; background: transparent; border: none; cursor: pointer; text-align: left; gap: 16px;">
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733;">À quelle fréquence mettez-vous à jour vos contenus ?</span>
+          <sc-if value="" hint-placeholder-val="True"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="6 9 12 15 18 9"></polyline></svg></sc-if>
+          <sc-if value="" hint-placeholder-val="False"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="18 15 12 9 6 15"></polyline></svg></sc-if>
+        </button>
+        <sc-if value="" hint-placeholder-val="False">
+          <div style="padding: 0 28px 28px; font-size: 15px; line-height: 1.82; color: #4A5A6B;">Nos articles sont révisés automatiquement lors de chaque changement législatif majeur (loi de finances, réforme du droit des sociétés, modification des seuils...). En dehors de ces événements, nous effectuons une révision complète du catalogue chaque trimestre.</div>
+        </sc-if>
+      </div>
+
+      <!-- Q4 -->
+      <div data-fade="1" style="border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0;">
+        <button onclick="" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; background: transparent; border: none; cursor: pointer; text-align: left; gap: 16px;">
+          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733;">Peut-on vous proposer un sujet ou un partenariat ?</span>
+          <sc-if value="" hint-placeholder-val="True"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="6 9 12 15 18 9"></polyline></svg></sc-if>
+          <sc-if value="" hint-placeholder-val="False"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="18 15 12 9 6 15"></polyline></svg></sc-if>
+        </button>
+        <sc-if value="" hint-placeholder-val="False">
+          <div style="padding: 0 28px 28px; font-size: 15px; line-height: 1.82; color: #4A5A6B;">Oui, nous sommes ouverts aux suggestions de sujets via notre formulaire de contact. Pour les partenariats, nous évaluons chaque demande selon deux critères : la valeur réelle pour nos lecteurs et la compatibilité avec notre indépendance éditoriale.</div>
+        </sc-if>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ 11. CTA FINAL ══ -->
+<section id="contact" style="background: #1C2733; min-height: 420px; position: relative; overflow: hidden; display: flex; align-items: center;">
+  <div style="position: absolute; left: -130px; top: -220px; width: 230px; height: 860px; background: #0F3D5E; transform: rotate(-22deg); transform-origin: center; z-index: 0;"></div>
+  <div style="position: absolute; left: 62px; top: -220px; width: 155px; height: 860px; background: #1D70A2; transform: rotate(-22deg); transform-origin: center; opacity: 0.85; z-index: 0;"></div>
+  <div style="position: absolute; right: -100px; top: -220px; width: 320px; height: 860px; background: #168551; transform: rotate(-22deg); transform-origin: center; opacity: 0.45; z-index: 0;"></div>
+
+  <div style="max-width: 1180px; margin: 0 auto; padding: 80px 56px; width: 100%; position: relative; z-index: 1; text-align: center;">
+    <span style="font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.35); display: block; margin-bottom: 20px;">Passez à l'action</span>
+    <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 52px; font-weight: 700; color: #FFFFFF; line-height: 1.1; margin: 0 0 22px;">Prêt à lancer<br>votre entreprise ?</h2>
+    <p style="font-size: 17px; line-height: 1.72; color: rgba(255,255,255,0.5); margin: 0 0 48px; max-width: 520px; margin-left: auto; margin-right: auto;">Découvrez toutes nos ressources, guides et comparatifs pour démarrer avec les meilleures bases, gratuitement.</p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="#" style="background: #168551; color: #FFFFFF; padding: 16px 36px; border-radius: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 600; box-shadow: 0 4px 20px rgba(22,133,81,0.35); transition: background 0.18s;" style-hover="background: #137447;">Découvrir les guides →</a>
+      <a href="#" style="background: rgba(255,255,255,0.1); color: #FFFFFF; padding: 16px 36px; border-radius: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; font-weight: 600; border: 1px solid rgba(255,255,255,0.18); transition: background 0.18s;" style-hover="background: rgba(255,255,255,0.16);">Voir notre classement</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<style>
+.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
+.footer-brand .footer-logo span{color:var(--accent2)}
+.footer-brand p{font-size:15px;color:rgba(255,255,255,.45);line-height:1.7;max-width:380px;margin:0;padding:0}
+.footer-socials{display:flex;gap:12px;margin-top:20px}
+.footer-socials a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.55);transition:background .15s,color .15s}
+.footer-socials a:hover{background:rgba(255,255,255,.13);color:#fff}
+.footer-socials svg{width:19px;height:19px;fill:currentColor;display:block}
+/* Anciennement .footer-col h4 — passé en div pour respecter la hiérarchie Hn (le footer ne doit pas introduire de Hn) */
+.footer-col .footer-col-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
+.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-brand{grid-column:1/-1}
+}
+</style>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" style="display:block;margin-bottom:12px"><img src="/logo.png" alt="creaone.fr" style="height:36px;width:auto;object-fit:contain"></a>
+        <p>Comparatifs creaone.fr 2026</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Navigation</div>
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/blog/">Blog</a>
+        <a href="/plan-du-site">Plan du site</a>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/politique-confidentialite">Confidentialité</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">À propos</div>
+        <a href="/a-propos/">À propos</a>
+        <a href="/contact">Nous contacter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        © 2026 creaone.fr — Données actualisées le 26 juin 2026
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button type="button"
+        class="scroll-top-btn"
+        id="scroll-top-btn"
+        aria-label="Remonter en haut de la page"
+        title="Remonter en haut">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2.5"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+</button>
+
+<style>
+.scroll-top-btn{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:9999;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--ink, #0F1419);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .15s;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+  padding:0;
+  font-family:inherit;
+}
+.scroll-top-btn.visible{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.scroll-top-btn:hover{
+  background:var(--accent, #C9A961);
+}
+.scroll-top-btn:focus-visible{
+  outline:2px solid var(--accent, #C9A961);
+  outline-offset:3px;
+}
+@media (max-width:600px){
+  .scroll-top-btn{ bottom:16px; right:16px; width:42px; height:42px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .scroll-top-btn{ transition:opacity .2s, visibility .2s; }
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  var btn = document.getElementById('scroll-top-btn');
+  if (!btn) return;
+
+  var THRESHOLD = 400; // px de scroll avant apparition
+  var ticking = false;
+
+  function update(){
+    if (window.scrollY > THRESHOLD) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+    ticking = false;
+  }
+
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  btn.addEventListener('click', function(){
+    var prefersReduced = window.matchMedia
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  });
+
+  // Check immédiat (au cas où la page est rechargée déjà scrollée)
+  update();
+})();
+</script></body>
+</html>
