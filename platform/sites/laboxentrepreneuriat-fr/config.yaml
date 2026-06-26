@@ -14,6 +14,7 @@
 # ============================================================
 
 site:
+  linkavista_verification: "<meta name=\"linkavista\" content=\"89c4b362b160e4e3a890896fb4c2c7c0aadb9199\">"
   social_youtube: "https://www.youtube.com/@laboxentrepreneuriat"
   social_x: ""
   social_linkedin: ""
@@ -38,7 +39,7 @@ site:
   home_h1: "Le rendez-vous des créateurs et chefs d'entreprise"
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
-  analytics_clicky: '<script async data-id="101506541" src="//static.getclicky.com/js"></script>'
+  analytics_clicky: "<script async data-id=\"101506541\" src=\"//static.getclicky.com/js\"></script>"
 
   outils_menu:
     - label: Nos Outils
