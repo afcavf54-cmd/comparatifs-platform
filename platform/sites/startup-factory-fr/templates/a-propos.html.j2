@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>À propos · {{ site.name }}</title>
+<meta name="description" content="À propos de {{ site.name }} : notre média de comparatifs de logiciels RH, notre méthodologie de test et notre auteure.">
+<link rel="canonical" href="{{ site.domain }}/a-propos/">
+{% if site.favicon_file is defined and site.favicon_file %}<link rel="icon" href="{{ site.favicon_file }}">{% else %}<link rel="icon" href="/favicon.svg" type="image/svg+xml">{% endif %}
+{% if site.google_site_verification is defined and site.google_site_verification %}<meta name="google-site-verification" content="{{ site.google_site_verification }}">{% endif %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===================================================================
+   A PROPOS - startup-factory-fr.
+   Design « Startup Factory » (Claude Design), aplati en statique.
+   En-tete + pied = partials _nav / _footer (autoportants) : ils ne
+   reclament que les variables :root ci-dessous (theme.*).
+   Le corps du design garde sa palette inline (#6366F1 / #14B8A6 /
+   #1E293B) et ses polices Plus Jakarta Sans + JetBrains Mono.
+   =================================================================== */
+:root{
+  --bg:{{ theme.bg }};
+  --surface:#fff;
+  --ink:{{ theme.ink }};
+  --accent:{{ theme.accent }};
+  --accent2:{{ theme.accent2 }};
+  --cta:{{ theme.cta_color if theme.cta_color is defined and theme.cta_color else "#14B8A6" }};
+  --cta-text:{{ theme.cta_text_color if theme.cta_text_color is defined and theme.cta_text_color else "#ffffff" }};
+  --border:#E2E8F0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;background:var(--bg);color:#0F172A;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{text-decoration:none;color:inherit}
+nav.site-nav .nav-logo{font-family:'{{ theme.font_title }}',serif}
+nav.site-nav .nav-links a,nav.site-nav .nav-cta,nav.site-nav .nav-mobile a,.footer{font-family:'{{ theme.font_body }}',system-ui,-apple-system,sans-serif}
+/* FAQ accordeon natif (indicateur + / - du design, sans JS) */
+details.faq-item{border:1px solid #E7EAF0;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 2px 10px rgba(15,23,42,0.04)}
+details.faq-item>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:22px 26px}
+details.faq-item>summary::-webkit-details-marker{display:none}
+details.faq-item>summary .faq-q{font-size:17px;font-weight:700;color:#0F172A;padding-right:20px;line-height:1.4}
+details.faq-item>summary .faq-ico{display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:50%;background:#F1F5F9;color:#475569;font-size:20px;line-height:1;flex:none}
+details.faq-item>summary .faq-ico::after{content:"+"}
+details.faq-item[open]>summary .faq-ico::after{content:"\2212"}
+details.faq-item>.faq-a{padding:0 26px 24px}
+details.faq-item>.faq-a p{margin:0;color:#475569;font-size:16px;line-height:1.7;border-top:1px solid #F1F5F9;padding-top:18px}
+</style>
+</head>
+<body>
+{% include 'base/_nav.html.j2' %}
+<div id="top" style="font-family:'Plus Jakarta Sans',sans-serif;background:#F8FAFC;color:#0F172A;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;">
+
+<!-- ===== HEADER ===== -->
+
+<!-- ===== HERO ===== -->
+<section style="position:relative;padding:80px 48px 56px;overflow:hidden;background:linear-gradient(180deg,#0F172A 0%,#1E293B 60%,#283548 100%);">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:100px 100px;pointer-events:none;"></div>
+  <div style="position:absolute;top:-80px;right:12%;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,0.14),transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:0;left:8%;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,0.16),transparent 70%);pointer-events:none;"></div>
+  <div style="position:relative;max-width:1240px;margin:0 auto;text-align:center;">
+    <span style="display:inline-flex;align-items:center;gap:9px;color:rgba(255,255,255,0.72);font-weight:600;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;">
+      <span style="width:6px;height:6px;border-radius:50%;background:#14B8A6;display:inline-block;"></span>
+      À propos de Startup Factory
+    </span>
+    <h1 style="margin:20px auto 0;max-width:860px;font-size:64px;line-height:1.06;font-weight:800;letter-spacing:-0.025em;color:#fff;text-wrap:balance;">Nous aidons les entreprises à choisir les meilleurs logiciels RH.</h1>
+    <p style="margin:24px auto 0;max-width:640px;font-size:19px;line-height:1.65;color:rgba(255,255,255,0.72);">Depuis 2018, Startup Factory analyse, teste et classe les logiciels RH, paie et SIRH pour que vous fassiez le bon choix, sans perdre de temps ni d'argent.</p>
+    <div style="margin-top:36px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="/nos-comparateurs" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;background:#14B8A6;color:#fff;font-weight:700;font-size:16px;padding:16px 18px 16px 28px;border-radius:999px;box-shadow:0 10px 26px rgba(20,184,166,0.32);">
+        Découvrir nos comparatifs
+        <span style="display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,0.25);color:#fff;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span>
+      </a>
+      <a href="#methodologie" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.18);color:#fff;font-weight:700;font-size:16px;padding:16px 28px;border-radius:999px;">Notre méthodologie</a>
+    </div>
+  </div>
+  <!-- bento cards -->
+  <div style="position:relative;max-width:1240px;margin:52px auto 0;">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;">
+      <!-- carte 1 : confiance (blanc) -->
+      <div style="background:#fff;border-radius:24px;padding:28px;box-shadow:0 20px 50px rgba(8,28,23,0.32);overflow:hidden;position:relative;">
+        <h3 style="margin:0 0 22px;font-size:20px;line-height:1.25;font-weight:800;color:#0F172A;max-width:220px;">Des milliers d'entreprises nous font confiance</h3>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div style="display:flex;align-items:center;">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%2314B8A6'/%3E%3Ctext x='40' y='53' font-family='sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EML%3C/text%3E%3C/svg%3E" alt="" style="width:40px;height:40px;display:inline-block;border:3px solid #fff;border-radius:50%;flex:none;">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%236366F1'/%3E%3Ctext x='40' y='53' font-family='sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EJD%3C/text%3E%3C/svg%3E" alt="" style="width:40px;height:40px;display:inline-block;border:3px solid #fff;border-radius:50%;flex:none;margin-left:-12px;">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%23F59E0B'/%3E%3Ctext x='40' y='53' font-family='sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3ESR%3C/text%3E%3C/svg%3E" alt="" style="width:40px;height:40px;display:inline-block;border:3px solid #fff;border-radius:50%;flex:none;margin-left:-12px;">
+          </div>
+          <span style="display:inline-flex;width:46px;height:46px;align-items:center;justify-content:center;border-radius:50%;background:#0E2A22;color:#fff;flex:none;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </span>
+        </div>
+        <svg style="position:absolute;right:16px;bottom:16px;" width="90" height="66" viewBox="0 0 104 78" fill="none" stroke="#142019" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M95 12 C 104 29, 91 44, 79 37 C 70 32, 79 21, 87 28 C 95 35, 88 53, 69 58 C 50 63, 30 58, 15 47"></path><path d="M28 41 L13 49 L24 61"></path></svg>
+      </div>
+      <!-- carte 2 : engagement (lime) -->
+      <div style="background:#DCF26B;border-radius:24px;padding:28px;box-shadow:0 20px 50px rgba(8,28,23,0.22);display:flex;flex-direction:column;justify-content:space-between;">
+        <h3 style="margin:0 0 20px;font-size:20px;font-weight:800;color:#142019;">Notre engagement</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;">
+          <span style="border:1.5px solid rgba(20,32,25,0.4);color:#142019;font-size:14px;font-weight:800;padding:9px 16px;border-radius:999px;">Tests terrain</span>
+          <span style="border:1.5px solid rgba(20,32,25,0.4);color:#142019;font-size:14px;font-weight:800;padding:9px 16px;border-radius:999px;">Critères objectifs</span>
+          <span style="border:1.5px solid rgba(20,32,25,0.4);color:#142019;font-size:14px;font-weight:800;padding:9px 16px;border-radius:999px;">Mis à jour</span>
+          <span style="border:1.5px solid rgba(20,32,25,0.4);color:#142019;font-size:14px;font-weight:800;padding:9px 16px;border-radius:999px;">Vérifiés</span>
+        </div>
+      </div>
+      <!-- carte 3 : stat (teal foncé) -->
+      <div style="background:#0E3D34;border-radius:24px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;">
+        <h3 style="margin:0;font-size:24px;line-height:1.2;font-weight:800;color:#fff;">120+ logiciels<br>analysés et classés</h3>
+        <a href="#methodologie" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:700;font-size:15px;margin-top:24px;">
+          Voir la méthodologie
+          <span style="display:inline-flex;width:28px;height:28px;align-items:center;justify-content:center;border-radius:50%;background:#5EE6C4;color:#0E2A22;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== POURQUOI ===== -->
+<section style="padding:100px 48px;background:#fff;">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;">
+    <div>
+      <span style="display:block;color:#6366F1;font-weight:700;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;">Pourquoi nous existons</span>
+      <h2 style="margin:0 0 22px;font-size:38px;font-weight:800;letter-spacing:-0.02em;line-height:1.15;text-wrap:balance;">Choisir le mauvais logiciel RH peut coûter très cher.</h2>
+      <p style="margin:0 0 32px;color:#475569;font-size:17px;line-height:1.7;">Changer de logiciel de paie ou de SIRH représente souvent plusieurs milliers d'euros, plusieurs mois de déploiement et un impact direct sur les équipes. Notre mission : vous éviter ces erreurs grâce à des analyses approfondies réalisées par des experts du terrain.</p>
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;align-items:flex-start;gap:16px;">
+          <span style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border-radius:14px;background:#E7F7F4;color:#14B8A6;flex:none;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+          </span>
+          <div><strong style="display:block;font-size:16px;margin-bottom:4px;">Des analyses expertes</strong><span style="color:#64748B;font-size:15px;line-height:1.55;">Chaque logiciel est évalué par des spécialistes du domaine RH, sur la base de critères objectifs et documentés.</span></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:16px;">
+          <span style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border-radius:14px;background:#EEF0FE;color:#6366F1;flex:none;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </span>
+          <div><strong style="display:block;font-size:16px;margin-bottom:4px;">Du temps économisé</strong><span style="color:#64748B;font-size:15px;line-height:1.55;">Nos comparatifs font le travail de recherche à votre place, en quelques minutes.</span></div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:16px;">
+          <span style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border-radius:14px;background:#E7F7F4;color:#14B8A6;flex:none;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </span>
+          <div><strong style="display:block;font-size:16px;margin-bottom:4px;">Des décisions éclairées</strong><span style="color:#64748B;font-size:15px;line-height:1.55;">Comparez sur des critères objectifs et faites le bon choix pour votre budget.</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- animated stat counters -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div style="background:#EEF0FE;border-radius:24px;padding:32px 28px;">
+        <strong style="display:block;font-size:48px;font-weight:800;color:#6366F1;letter-spacing:-0.03em;line-height:1;">120+</strong>
+        <span style="display:block;margin-top:8px;font-size:15px;font-weight:600;color:#4338CA;">logiciels analysés</span>
+      </div>
+      <div style="background:#E7F7F4;border-radius:24px;padding:32px 28px;">
+        <strong style="display:block;font-size:48px;font-weight:800;color:#14B8A6;letter-spacing:-0.03em;line-height:1;">2400h+</strong>
+        <span style="display:block;margin-top:8px;font-size:15px;font-weight:600;color:#0D9488;">de tests réalisés</span>
+      </div>
+      <div style="background:#1E293B;border-radius:24px;padding:32px 28px;">
+        <strong style="display:block;font-size:48px;font-weight:800;color:#fff;letter-spacing:-0.03em;line-height:1;">50k+</strong>
+        <span style="display:block;margin-top:8px;font-size:15px;font-weight:600;color:#94A3B8;">lecteurs / mois</span>
+      </div>
+      <div style="background:#DCF26B;border-radius:24px;padding:32px 28px;">
+        <strong style="display:block;font-size:48px;font-weight:800;color:#142019;letter-spacing:-0.03em;line-height:1;">85+</strong>
+        <span style="display:block;margin-top:8px;font-size:15px;font-weight:600;color:#3f5022;">comparatifs publiés</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VALEURS ===== -->
+<section style="padding:0 48px 96px;background:#F8FAFC;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:52px;">
+      <span style="display:block;color:#6366F1;font-weight:700;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;">Ce qui nous guide</span>
+      <h2 style="margin:0 auto;max-width:560px;font-size:40px;font-weight:800;letter-spacing:-0.02em;text-wrap:balance;">Nos valeurs</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;">
+      <div style="background:#fff;border:1px solid #E7EAF0;border-radius:20px;padding:32px;box-shadow:0 4px 16px rgba(15,23,42,0.04);">
+        <span style="display:inline-flex;width:60px;height:60px;align-items:center;justify-content:center;border-radius:18px;background:#EEF0FE;color:#6366F1;margin-bottom:22px;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </span>
+        <h3 style="margin:0 0 12px;font-size:18px;font-weight:700;">Rigueur</h3>
+        <p style="margin:0;color:#64748B;font-size:14.5px;line-height:1.6;">Chaque classement repose sur une grille de notation précise, identique pour tous les logiciels, sans raccourci ni approximation.</p>
+      </div>
+      <div style="background:#fff;border:1px solid #E7EAF0;border-radius:20px;padding:32px;box-shadow:0 4px 16px rgba(15,23,42,0.04);">
+        <span style="display:inline-flex;width:60px;height:60px;align-items:center;justify-content:center;border-radius:18px;background:#E7F7F4;color:#14B8A6;margin-bottom:22px;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </span>
+        <h3 style="margin:0 0 12px;font-size:18px;font-weight:700;">Transparence</h3>
+        <p style="margin:0;color:#64748B;font-size:14.5px;line-height:1.6;">Nous expliquons toujours pourquoi un logiciel est mieux classé qu'un autre. Critères, méthode, sources : tout est visible.</p>
+      </div>
+      <div style="background:#fff;border:1px solid #E7EAF0;border-radius:20px;padding:32px;box-shadow:0 4px 16px rgba(15,23,42,0.04);">
+        <span style="display:inline-flex;width:60px;height:60px;align-items:center;justify-content:center;border-radius:18px;background:#EEF0FE;color:#6366F1;margin-bottom:22px;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        </span>
+        <h3 style="margin:0 0 12px;font-size:18px;font-weight:700;">Expertise</h3>
+        <p style="margin:0;color:#64748B;font-size:14.5px;line-height:1.6;">Chaque logiciel est étudié en profondeur par un expert du domaine avant toute publication ou mise à jour.</p>
+      </div>
+      <div style="background:#fff;border:1px solid #E7EAF0;border-radius:20px;padding:32px;box-shadow:0 4px 16px rgba(15,23,42,0.04);">
+        <span style="display:inline-flex;width:60px;height:60px;align-items:center;justify-content:center;border-radius:18px;background:#E7F7F4;color:#14B8A6;margin-bottom:22px;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </span>
+        <h3 style="margin:0 0 12px;font-size:18px;font-weight:700;">Utilité</h3>
+        <p style="margin:0;color:#64748B;font-size:14.5px;line-height:1.6;">Notre priorité absolue : vous faire gagner du temps et vous aider à prendre la meilleure décision pour votre entreprise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== METHODOLOGIE ===== -->
+<section id="methodologie" style="padding:96px 48px;background:#fff;">
+  <div style="max-width:820px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:64px;">
+      <span style="display:block;color:#6366F1;font-weight:700;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;">Notre processus</span>
+      <h2 style="margin:0 auto;max-width:640px;font-size:40px;font-weight:800;letter-spacing:-0.02em;text-wrap:balance;">Comment nous analysons un logiciel</h2>
+      <p style="margin:20px auto 0;max-width:540px;color:#475569;font-size:17px;line-height:1.65;">7 étapes rigoureuses pour garantir des recommandations fiables, documentées et utiles.</p>
+    </div>
+      <div style="display:flex;gap:28px;"><div style="display:flex;flex-direction:column;align-items:center;flex:none;width:52px;"><span style="display:inline-flex;width:52px;height:52px;align-items:center;justify-content:center;border-radius:50%;background:#EEF0FE;color:#6366F1;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;flex:none;box-shadow:0 0 0 6px #fff;">01</span><span style="flex:1;width:2px;background:linear-gradient(#C7D2FE,#EEF0FE);margin:8px 0;min-height:32px;"></span></div><div style="padding-top:12px;padding-bottom:40px;flex:1;"><h3 style="margin:0 0 8px;font-size:19px;font-weight:700;">Sélection des logiciels</h3><p style="margin:0;color:#64748B;font-size:15.5px;line-height:1.65;">Nous recensons tous les acteurs sérieux du marché et écartons les solutions sans référence ni traction réelle.</p></div></div>
+      <div style="display:flex;gap:28px;"><div style="display:flex;flex-direction:column;align-items:center;flex:none;width:52px;"><span style="display:inline-flex;width:52px;height:52px;align-items:center;justify-content:center;border-radius:50%;background:#EEF0FE;color:#6366F1;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;flex:none;box-shadow:0 0 0 6px #fff;">02</span><span style="flex:1;width:2px;background:linear-gradient(#C7D2FE,#EEF0FE);margin:8px 0;min-height:32px;"></span></div><div style="padding-top:12px;padding-bottom:40px;flex:1;"><h3 style="margin:0 0 8px;font-size:19px;font-weight:700;">Création d'un compte</h3><p style="margin:0;color:#64748B;font-size:15.5px;line-height:1.65;">Nous créons un compte utilisateur réel pour tester le logiciel dans des conditions authentiques, sans démo commerciale.</p></div></div>
+      <div style="display:flex;gap:28px;"><div style="display:flex;flex-direction:column;align-items:center;flex:none;width:52px;"><span style="display:inline-flex;width:52px;height:52px;align-items:center;justify-content:center;border-radius:50%;background:#EEF0FE;color:#6366F1;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;flex:none;box-shadow:0 0 0 6px #fff;">03</span><span style="flex:1;width:2px;background:linear-gradient(#C7D2FE,#EEF0FE);margin:8px 0;min-height:32px;"></span></div><div style="padding-top:12px;padding-bottom:40px;flex:1;"><h3 style="margin:0 0 8px;font-size:19px;font-weight:700;">Test des fonctionnalités</h3><p style="margin:0;color:#64748B;font-size:15.5px;line-height:1.65;">Chaque fonctionnalité clé est testée sur des cas concrets correspondant aux besoins réels des entreprises françaises.</p></div></div>
+      <div style="display:flex;gap:28px;"><div style="display:flex;flex-direction:column;align-items:center;flex:none;width:52px;"><span style="display:inline-flex;width:52px;height:52px;align-items:center;justify-content:center;border-radius:50%;background:#EEF0FE;color:#6366F1;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;flex:none;box-shadow:0 0 0 6px #fff;">04</span><span style="flex:1;width:2px;background:linear-gradient(#C7D2FE,#EEF0FE);margin:8px 0;min-height:32px;"></span></div><div style="padding-top:12px;padding-bottom:40px;flex:1;"><h3 style="margin:0 0 8px;font-size:19px;font-weight:700;">Analyse des tarifs</h3><p style="margin:0;color:#64748B;font-size:15.5px;line-height:1.65;">Nous décryptons toutes les grilles tarifaires, options cachées et conditions de résiliation pour une transparence totale.</p></div></div>
+      <div style="display:flex;gap:28px;"><div style="display:flex;flex-direction:column;align-items:center;flex:none;width:52px;"><span style="display:inline-flex;width:52px;height:52px;align-items:center;justify-content:center;border-radius:50%;background:#EEF0FE;color:#6366F1;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;flex:none;box-shadow:0 0 0 6px #fff;">05</span><span style="flex:1;width:2px;background:linear-gradient(#C7D2FE,#EEF0FE);margin:8px 0;min-height:32px;"></span></div><div style="padding-top:12px;padding-bottom:40px;flex:1;"><h3 style="margin:0 0 8px;font-size:19px;font-weight:700;">Comparaison avec les concurrents</h3><p style="margin:0;color:#64748B;font-size:15.5px;line-height:1.65;">Chaque outil est mis en perspective avec ses principaux concurrents selon les mêmes critères de notation.</p></div></div>
+      <div style="display:flex;gap:28px;"><div style="display:flex;flex-direction:column;align-items:center;flex:none;width:52px;"><span style="display:inline-flex;width:52px;height:52px;align-items:center;justify-content:center;border-radius:50%;background:#EEF0FE;color:#6366F1;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;flex:none;box-shadow:0 0 0 6px #fff;">06</span><span style="flex:1;width:2px;background:linear-gradient(#C7D2FE,#EEF0FE);margin:8px 0;min-height:32px;"></span></div><div style="padding-top:12px;padding-bottom:40px;flex:1;"><h3 style="margin:0 0 8px;font-size:19px;font-weight:700;">Attribution d'une note</h3><p style="margin:0;color:#64748B;font-size:15.5px;line-height:1.65;">Nous calculons une note finale pondérée sur 6 critères : ergonomie, fonctions, prix, support, intégrations, évolutivité.</p></div></div>
+      <div style="display:flex;gap:28px;"><div style="display:flex;flex-direction:column;align-items:center;flex:none;width:52px;"><span style="display:inline-flex;width:52px;height:52px;align-items:center;justify-content:center;border-radius:50%;background:#EEF0FE;color:#6366F1;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;flex:none;box-shadow:0 0 0 6px #fff;">07</span></div><div style="padding-top:12px;padding-bottom:40px;flex:1;"><h3 style="margin:0 0 8px;font-size:19px;font-weight:700;">Publication et mise à jour</h3><p style="margin:0;color:#64748B;font-size:15.5px;line-height:1.65;">Le comparatif est publié, puis révisé dès qu'une évolution significative du logiciel ou du marché l'exige.</p></div></div>
+  </div>
+</section>
+
+<!-- ===== NOTATION ===== -->
+<section style="padding:96px 48px;background:#1E293B;color:#fff;overflow:hidden;position:relative;">
+  <div style="position:absolute;top:-80px;right:5%;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,0.22),transparent 70%);pointer-events:none;"></div>
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:56px;">
+      <span style="display:block;color:#818CF8;font-weight:700;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;">Nos critères d'évaluation</span>
+      <h2 style="margin:0 auto;max-width:640px;font-size:40px;font-weight:800;letter-spacing:-0.02em;text-wrap:balance;">Comment nous notons les logiciels</h2>
+      <p style="margin:20px auto 0;max-width:540px;color:#94A3B8;font-size:17px;line-height:1.65;">Six dimensions évaluées selon une grille pondérée, identique pour tous les logiciels.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:28px;">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+          <span style="display:inline-flex;width:46px;height:46px;align-items:center;justify-content:center;border-radius:14px;background:rgba(99,102,241,0.2);color:#818CF8;flex:none;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></span>
+          <h3 style="margin:0;font-size:17px;font-weight:700;">Facilité d'utilisation</h3>
+        </div>
+        <p style="margin:0 0 16px;color:#94A3B8;font-size:14px;line-height:1.55;">Interface, prise en main et courbe d'apprentissage.</p>
+        <div style="background:rgba(255,255,255,0.08);border-radius:999px;height:8px;overflow:hidden;"><div style="background:#6366F1;height:100%;border-radius:999px;width:92%;"></div></div>
+        <span style="display:block;margin-top:8px;font-size:13px;font-weight:700;color:#818CF8;text-align:right;">9.2 / 10</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:28px;">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+          <span style="display:inline-flex;width:46px;height:46px;align-items:center;justify-content:center;border-radius:14px;background:rgba(20,184,166,0.18);color:#14B8A6;flex:none;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span>
+          <h3 style="margin:0;font-size:17px;font-weight:700;">Fonctionnalités</h3>
+        </div>
+        <p style="margin:0 0 16px;color:#94A3B8;font-size:14px;line-height:1.55;">Couverture fonctionnelle et profondeur des features.</p>
+        <div style="background:rgba(255,255,255,0.08);border-radius:999px;height:8px;overflow:hidden;"><div style="background:#14B8A6;height:100%;border-radius:999px;width:88%;"></div></div>
+        <span style="display:block;margin-top:8px;font-size:13px;font-weight:700;color:#14B8A6;text-align:right;">8.8 / 10</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:28px;">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+          <span style="display:inline-flex;width:46px;height:46px;align-items:center;justify-content:center;border-radius:14px;background:rgba(220,242,107,0.15);color:#DCF26B;flex:none;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></span>
+          <h3 style="margin:0;font-size:17px;font-weight:700;">Rapport qualité / prix</h3>
+        </div>
+        <p style="margin:0 0 16px;color:#94A3B8;font-size:14px;line-height:1.55;">Valeur délivrée par rapport au tarif pratiqué.</p>
+        <div style="background:rgba(255,255,255,0.08);border-radius:999px;height:8px;overflow:hidden;"><div style="background:#DCF26B;height:100%;border-radius:999px;width:85%;"></div></div>
+        <span style="display:block;margin-top:8px;font-size:13px;font-weight:700;color:#DCF26B;text-align:right;">8.5 / 10</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:28px;">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+          <span style="display:inline-flex;width:46px;height:46px;align-items:center;justify-content:center;border-radius:14px;background:rgba(99,102,241,0.2);color:#818CF8;flex:none;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></span>
+          <h3 style="margin:0;font-size:17px;font-weight:700;">Support client</h3>
+        </div>
+        <p style="margin:0 0 16px;color:#94A3B8;font-size:14px;line-height:1.55;">Réactivité, disponibilité et qualité d'accompagnement.</p>
+        <div style="background:rgba(255,255,255,0.08);border-radius:999px;height:8px;overflow:hidden;"><div style="background:#6366F1;height:100%;border-radius:999px;width:78%;"></div></div>
+        <span style="display:block;margin-top:8px;font-size:13px;font-weight:700;color:#818CF8;text-align:right;">7.8 / 10</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:28px;">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+          <span style="display:inline-flex;width:46px;height:46px;align-items:center;justify-content:center;border-radius:14px;background:rgba(20,184,166,0.18);color:#14B8A6;flex:none;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect></svg></span>
+          <h3 style="margin:0;font-size:17px;font-weight:700;">Intégrations</h3>
+        </div>
+        <p style="margin:0 0 16px;color:#94A3B8;font-size:14px;line-height:1.55;">Compatibilité avec les outils tiers et APIs disponibles.</p>
+        <div style="background:rgba(255,255,255,0.08);border-radius:999px;height:8px;overflow:hidden;"><div style="background:#14B8A6;height:100%;border-radius:999px;width:72%;"></div></div>
+        <span style="display:block;margin-top:8px;font-size:13px;font-weight:700;color:#14B8A6;text-align:right;">7.2 / 10</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:28px;">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+          <span style="display:inline-flex;width:46px;height:46px;align-items:center;justify-content:center;border-radius:14px;background:rgba(220,242,107,0.15);color:#DCF26B;flex:none;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></span>
+          <h3 style="margin:0;font-size:17px;font-weight:700;">Évolutivité</h3>
+        </div>
+        <p style="margin:0 0 16px;color:#94A3B8;font-size:14px;line-height:1.55;">Capacité à grandir avec les besoins de l'entreprise.</p>
+        <div style="background:rgba(255,255,255,0.08);border-radius:999px;height:8px;overflow:hidden;"><div style="background:#DCF26B;height:100%;border-radius:999px;width:80%;"></div></div>
+        <span style="display:block;margin-top:8px;font-size:13px;font-weight:700;color:#DCF26B;text-align:right;">8.0 / 10</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRANSPARENCE ===== -->
+<section style="padding:96px 48px;background:#fff;">
+  <div style="max-width:880px;margin:0 auto;">
+    <div style="background:#F8FAFC;border:1px solid #E7EAF0;border-radius:28px;padding:52px;box-shadow:0 8px 32px rgba(15,23,42,0.06);display:flex;gap:44px;align-items:flex-start;">
+      <span style="display:inline-flex;width:72px;height:72px;align-items:center;justify-content:center;border-radius:22px;background:#E7F7F4;color:#14B8A6;flex:none;">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+      </span>
+      <div style="flex:1;">
+        <span style="display:block;color:#14B8A6;font-weight:700;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;">Notre engagement qualité</span>
+        <h2 style="margin:0 0 16px;font-size:28px;font-weight:800;letter-spacing:-0.02em;line-height:1.25;">Une méthodologie rigoureuse, appliquée à chaque logiciel testé.</h2>
+        <p style="margin:0 0 24px;color:#475569;font-size:16px;line-height:1.7;">Chaque comparatif publié sur Startup Factory engage notre réputation. C'est pourquoi nous appliquons la même grille d'évaluation à tous les logiciels, sans exception, et documentons chaque note avec des preuves concrètes issues de nos tests.</p>
+        <div style="display:flex;flex-direction:column;gap:13px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;border-radius:50%;background:#E7F7F4;color:#14B8A6;flex:none;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+            <span style="color:#0F172A;font-size:15px;font-weight:600;">Grille de notation identique pour tous les logiciels.</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;border-radius:50%;background:#E7F7F4;color:#14B8A6;flex:none;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+            <span style="color:#0F172A;font-size:15px;font-weight:600;">Chaque note est justifiée par des éléments concrets.</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;border-radius:50%;background:#E7F7F4;color:#14B8A6;flex:none;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+            <span style="color:#0F172A;font-size:15px;font-weight:600;">Mises à jour régulières pour refléter les évolutions du marché.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EQUIPE ===== -->
+<section style="padding:96px 48px;background:#1E293B;color:#fff;overflow:hidden;position:relative;">
+  <div style="position:absolute;bottom:-120px;left:5%;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,0.14),transparent 70%);pointer-events:none;"></div>
+  <div style="max-width:900px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:56px;">
+      <span style="display:block;color:#818CF8;font-weight:700;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;">Derrière le site</span>
+      <h2 style="margin:0 auto;max-width:580px;font-size:40px;font-weight:800;letter-spacing:-0.02em;text-wrap:balance;">Je suis Startup Factory</h2>
+      <p style="margin:20px auto 0;max-width:500px;color:#94A3B8;font-size:17px;line-height:1.65;">Une seule personne, une passion : vous aider à choisir les bons outils.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:52px;align-items:center;">
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;">
+        {% if site.author_photo is defined and site.author_photo %}<img src="{{ site.author_photo }}" alt="{{ author.name or 'Léa Petit' }}" style="width:160px;height:160px;display:block;border-radius:50%;margin-bottom:22px;border:4px solid rgba(255,255,255,0.15);object-fit:cover;">{% else %}<div style="width:160px;height:160px;display:flex;align-items:center;justify-content:center;border-radius:50%;margin-bottom:22px;border:4px solid rgba(255,255,255,0.15);background:#334155;color:#fff;font-size:48px;font-weight:800;">LP</div>{% endif %}
+        <h3 style="margin:0 0 6px;font-size:22px;font-weight:800;">{{ author.name or 'Léa Petit' }}</h3>
+        <span style="display:block;color:#94A3B8;font-size:15px;margin-bottom:14px;">Fondatrice de Startup Factory</span>
+        <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(20,184,166,0.15);color:#5EE6C4;font-size:13px;font-weight:600;padding:7px 16px;border-radius:999px;margin-bottom:20px;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          19 ans d'expérience
+        </span>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:22px;">
+          <span style="border:1px solid rgba(255,255,255,0.16);color:rgba(255,255,255,0.78);font-size:12.5px;font-weight:500;padding:6px 14px;border-radius:999px;">Stratégie startup</span>
+          <span style="border:1px solid rgba(255,255,255,0.16);color:rgba(255,255,255,0.78);font-size:12.5px;font-weight:500;padding:6px 14px;border-radius:999px;">Logiciels RH</span>
+          <span style="border:1px solid rgba(255,255,255,0.16);color:rgba(255,255,255,0.78);font-size:12.5px;font-weight:500;padding:6px 14px;border-radius:999px;">Growth</span>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+          <!-- LinkedIn -->
+          <a {% if site.social_linkedin is defined and site.social_linkedin %}href="{{ site.social_linkedin }}" target="_blank" rel="noopener noreferrer nofollow"{% endif %} style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.16);color:#fff;text-decoration:none;" title="LinkedIn">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+          <!-- Facebook -->
+          <a {% if site.social_facebook is defined and site.social_facebook %}href="{{ site.social_facebook }}" target="_blank" rel="noopener noreferrer nofollow"{% endif %} style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.16);color:#fff;text-decoration:none;" title="Facebook">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <!-- YouTube -->
+          <a {% if site.social_youtube is defined and site.social_youtube %}href="{{ site.social_youtube }}" target="_blank" rel="noopener noreferrer nofollow"{% endif %} style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.16);color:#fff;text-decoration:none;" title="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1E293B"></polygon></svg>
+          </a>
+          <!-- X / Twitter -->
+          <a {% if site.social_x is defined and site.social_x %}href="{{ site.social_x }}" target="_blank" rel="noopener noreferrer nofollow"{% endif %} style="display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.16);color:#fff;text-decoration:none;" title="X">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <p style="margin:0 0 20px;color:#CBD5E1;font-size:18px;line-height:1.75;font-weight:500;">"J’ai passé 19 ans dans l’écosystème startup avant de créer Startup Factory. J’ai perçu la vraie difficulté : chaque mauvais choix d’outil coûte cher en temps, en argent et en énergie."</p>
+        <p style="margin:0 0 28px;color:#94A3B8;font-size:16px;line-height:1.7;">J’ai donc décidé de tester moi-même les logiciels RH, de paie et de SIRH pour produire des comparatifs honnêtes et précis. Je suis basée à Nantes, je travaille seule et je mets à jour chaque guide dès que le marché évolue.</p>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;align-items:center;gap:14px;">
+            <span style="display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:12px;background:rgba(20,184,166,0.15);color:#5EE6C4;flex:none;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+            </span>
+            <span style="color:#E2E8F0;font-size:15px;">Je teste chaque logiciel en conditions réelles, avec un vrai compte utilisateur.</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <span style="display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:12px;background:rgba(99,102,241,0.2);color:#818CF8;flex:none;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </span>
+            <span style="color:#E2E8F0;font-size:15px;">Je mets à jour mes guides régulièrement pour qu’ils restent fiables dans le temps.</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;">
+            <span style="display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:12px;background:rgba(220,242,107,0.15);color:#DCF26B;flex:none;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </span>
+            <span style="color:#E2E8F0;font-size:15px;">Je réponds personnellement à toutes les questions de mes lecteurs.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHARTE ===== -->
+<section style="padding:96px 48px;background:#fff;">
+  <div style="max-width:960px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:52px;">
+      <span style="display:block;color:#6366F1;font-weight:700;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;">Notre engagement</span>
+      <h2 style="margin:0 auto;max-width:560px;font-size:40px;font-weight:800;letter-spacing:-0.02em;text-wrap:balance;">Notre charte éditoriale</h2>
+      <p style="margin:20px auto 0;max-width:500px;color:#475569;font-size:17px;line-height:1.65;">Les règles que nous nous imposons pour rester dignes de votre confiance.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div style="display:flex;align-items:center;gap:18px;background:#fff;border:1px solid #E7EAF0;border-radius:16px;padding:22px 24px;box-shadow:0 2px 10px rgba(15,23,42,0.04);">
+        <span style="display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:50%;background:#E7F7F4;color:#14B8A6;flex:none;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+        <span style="font-size:15.5px;font-weight:600;color:#0F172A;">Tests réalisés avant chaque publication</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:18px;background:#fff;border:1px solid #E7EAF0;border-radius:16px;padding:22px 24px;box-shadow:0 2px 10px rgba(15,23,42,0.04);">
+        <span style="display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:50%;background:#EEF0FE;color:#6366F1;flex:none;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+        <span style="font-size:15.5px;font-weight:600;color:#0F172A;">Avis régulièrement mis à jour</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:18px;background:#fff;border:1px solid #E7EAF0;border-radius:16px;padding:22px 24px;box-shadow:0 2px 10px rgba(15,23,42,0.04);">
+        <span style="display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:50%;background:#E7F7F4;color:#14B8A6;flex:none;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+        <span style="font-size:15.5px;font-weight:600;color:#0F172A;">Sources citées et vérifiées</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:18px;background:#fff;border:1px solid #E7EAF0;border-radius:16px;padding:22px 24px;box-shadow:0 2px 10px rgba(15,23,42,0.04);">
+        <span style="display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:50%;background:#EEF0FE;color:#6366F1;flex:none;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+        <span style="font-size:15.5px;font-weight:600;color:#0F172A;">Corrections rapides si erreur détectée</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:18px;background:#fff;border:1px solid #E7EAF0;border-radius:16px;padding:22px 24px;box-shadow:0 2px 10px rgba(15,23,42,0.04);">
+        <span style="display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:50%;background:#E7F7F4;color:#14B8A6;flex:none;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+        <span style="font-size:15.5px;font-weight:600;color:#0F172A;">Veille permanente sur les évolutions marché</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:18px;background:#fff;border:1px solid #E7EAF0;border-radius:16px;padding:22px 24px;box-shadow:0 2px 10px rgba(15,23,42,0.04);">
+        <span style="display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:50%;background:#EEF0FE;color:#6366F1;flex:none;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+        <span style="font-size:15.5px;font-weight:600;color:#0F172A;">Grille d'évaluation documentée et reproductible</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ILS NOUS FONT CONFIANCE ===== -->
+<section style="padding:0 48px 96px;background:#F8FAFC;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:48px;">
+      <span style="display:block;color:#6366F1;font-weight:700;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;">Logiciels testés</span>
+      <h2 style="margin:0;font-size:36px;font-weight:800;letter-spacing:-0.02em;">Ils font partie de nos comparatifs</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+        <div style="background:#fff;border:1px solid #E7EAF0;border-radius:16px;padding:20px 22px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 8px rgba(15,23,42,0.04);"><span style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border-radius:12px;background:#EEF0FE;color:#6366F1;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;flex:none;">SG</span><span style="font-weight:700;font-size:15px;color:#0F172A;">Sage</span></div>
+        <div style="background:#fff;border:1px solid #E7EAF0;border-radius:16px;padding:20px 22px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 8px rgba(15,23,42,0.04);"><span style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border-radius:12px;background:#EEF0FE;color:#6366F1;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;flex:none;">SL</span><span style="font-weight:700;font-size:15px;color:#0F172A;">Silae</span></div>
+        <div style="background:#fff;border:1px solid #E7EAF0;border-radius:16px;padding:20px 22px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 8px rgba(15,23,42,0.04);"><span style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border-radius:12px;background:#EEF0FE;color:#6366F1;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;flex:none;">PF</span><span style="font-weight:700;font-size:15px;color:#0F172A;">PayFit</span></div>
+        <div style="background:#fff;border:1px solid #E7EAF0;border-radius:16px;padding:20px 22px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 8px rgba(15,23,42,0.04);"><span style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border-radius:12px;background:#EEF0FE;color:#6366F1;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;flex:none;">LC</span><span style="font-weight:700;font-size:15px;color:#0F172A;">Lucca</span></div>
+        <div style="background:#fff;border:1px solid #E7EAF0;border-radius:16px;padding:20px 22px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 8px rgba(15,23,42,0.04);"><span style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border-radius:12px;background:#EEF0FE;color:#6366F1;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;flex:none;">WD</span><span style="font-weight:700;font-size:15px;color:#0F172A;">Workday</span></div>
+        <div style="background:#fff;border:1px solid #E7EAF0;border-radius:16px;padding:20px 22px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 8px rgba(15,23,42,0.04);"><span style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border-radius:12px;background:#EEF0FE;color:#6366F1;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;flex:none;">SP</span><span style="font-weight:700;font-size:15px;color:#0F172A;">SAP</span></div>
+        <div style="background:#fff;border:1px solid #E7EAF0;border-radius:16px;padding:20px 22px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 8px rgba(15,23,42,0.04);"><span style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border-radius:12px;background:#EEF0FE;color:#6366F1;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;flex:none;">CG</span><span style="font-weight:700;font-size:15px;color:#0F172A;">Cegid</span></div>
+        <div style="background:#fff;border:1px solid #E7EAF0;border-radius:16px;padding:20px 22px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 8px rgba(15,23,42,0.04);"><span style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border-radius:12px;background:#EEF0FE;color:#6366F1;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;flex:none;">AD</span><span style="font-weight:700;font-size:15px;color:#0F172A;">ADP</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section style="padding:96px 48px;background:#fff;">
+  <div style="max-width:760px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:56px;">
+      <span style="display:block;color:#6366F1;font-weight:700;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;">FAQ</span>
+      <h2 style="margin:0;font-size:40px;font-weight:800;letter-spacing:-0.02em;">Questions fréquentes</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+        <details class="faq-item"><summary><span class="faq-q">Comment testez-vous les logiciels ?</span><span class="faq-ico"></span></summary><div class="faq-a"><p>Chaque logiciel fait l'objet d'un test en conditions réelles : nous créons un compte utilisateur, configurons le logiciel selon un profil type d'entreprise, et évaluons chaque fonctionnalité clé sur une grille de critères prédéfinie. La durée minimale de test est de 2 semaines par outil.</p></div></details>
+        <details class="faq-item"><summary><span class="faq-q">Comment garantissez-vous la qualité de vos analyses ?</span><span class="faq-ico"></span></summary><div class="faq-a"><p>Chaque comparatif est réalisé par un expert du domaine RH selon une grille de notation stricte, identique pour tous les logiciels testés. Chaque note est justifiée par des éléments concrets issus de tests en conditions réelles. Les comparatifs sont ensuite relus avant publication et mis à jour dès qu'une évolution significative du marché l'exige.</p></div></details>
+        <details class="faq-item"><summary><span class="faq-q">Pourquoi certains logiciels sont-ils absents ?</span><span class="faq-ico"></span></summary><div class="faq-a"><p>Nous sélectionnons uniquement les solutions ayant une présence significative sur le marché français, des références clients vérifiables et un niveau de documentation suffisant pour être évalué rigoureusement. Vous pouvez nous proposer un logiciel via notre formulaire de contact.</p></div></details>
+        <details class="faq-item"><summary><span class="faq-q">À quelle fréquence les comparatifs sont-ils mis à jour ?</span><span class="faq-ico"></span></summary><div class="faq-a"><p>Nos classements sont révisés au minimum une fois par an, et plus fréquemment si un logiciel publie une mise à jour majeure, modifie ses tarifs ou si notre communauté nous signale un changement important. La date de mise à jour est indiquée en haut de chaque comparatif.</p></div></details>
+        <details class="faq-item"><summary><span class="faq-q">Peut-on vous proposer un logiciel à tester ?</span><span class="faq-ico"></span></summary><div class="faq-a"><p>Oui ! Nous sommes toujours à la recherche de nouvelles solutions à analyser. Contactez-nous via notre formulaire de contact avec une présentation du logiciel et ses principales fonctionnalités. Nous reviendrons vers vous sous 5 jours ouvrés pour vous indiquer si nous pouvons l'intégrer à nos prochains tests.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA FINAL ===== -->
+<section style="padding:0 48px 100px;background:#F8FAFC;">
+  <div style="max-width:1100px;margin:0 auto;position:relative;background:#6366F1;border-radius:28px;padding:72px 56px;overflow:hidden;color:#fff;text-align:center;">
+    <div style="position:absolute;top:-80px;left:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.18),rgba(255,255,255,0) 70%);pointer-events:none;"></div>
+    <div style="position:absolute;bottom:-100px;right:-40px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,0.4),rgba(20,184,166,0) 70%);pointer-events:none;"></div>
+    <div style="position:relative;">
+      <h2 style="margin:0 auto;max-width:700px;font-size:44px;font-weight:800;letter-spacing:-0.02em;line-height:1.1;text-wrap:balance;">Prêt à trouver le logiciel RH adapté à votre entreprise ?</h2>
+      <p style="margin:20px auto 36px;max-width:520px;font-size:17px;line-height:1.65;color:rgba(255,255,255,0.85);">Nos comparatifs experts vous guident vers la meilleure solution en quelques minutes.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="/nos-comparateurs" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;background:#fff;color:#6366F1;font-weight:700;font-size:16px;padding:16px 18px 16px 28px;border-radius:999px;box-shadow:0 10px 26px rgba(0,0,0,0.2);">
+          Découvrir les comparatifs
+          <span style="display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border-radius:50%;background:#6366F1;color:#fff;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+        </a>
+        <a href="/nos-comparateurs" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;font-weight:700;font-size:16px;padding:16px 28px;border-radius:999px;">Voir notre classement</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<a href="#top" aria-label="Haut de page" style="position:fixed;right:28px;bottom:28px;z-index:60;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);background:#1E293B;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(15,23,42,0.25);">
+  <span style="display:inline-block;width:10px;height:10px;border-top:2px solid #fff;border-left:2px solid #fff;transform:rotate(45deg);margin-top:3px;"></span>
+</a>
+
+</div>
+{% include 'base/_footer.html.j2' %}
+</body>
+</html>
