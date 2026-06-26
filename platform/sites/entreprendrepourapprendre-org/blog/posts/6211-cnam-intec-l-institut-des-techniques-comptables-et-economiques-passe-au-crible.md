@@ -3,16 +3,23 @@ title: Cnam-Intec, l'institut des techniques comptables et économiques passé a
 slug: 6211-cnam-intec-l-institut-des-techniques-comptables-et-economiques-passe-au-crible
 date: '2026-06-26T08:00:00+02:00'
 categorie: Comptabilité
-meta_title: 'Cnam-Intec : que vaut l''institut des techniques économiques et comptables ?'
-meta_description: Découvrez le Cnam-Intec, l'institut comptable fondé en 1931 qui prépare au DCG et DSCG en formation à distance ou en présentiel, idéal pour les actifs en poste.
+meta_title: 'Cnam-Intec : que vaut l''institut des techniques économiques et comptables
+  ?'
+meta_description: Découvrez le Cnam-Intec, l'institut comptable fondé en 1931 qui
+  prépare au DCG et DSCG en formation à distance ou en présentiel, idéal pour les
+  actifs en poste.
 min_words: 910
 status: published
 featured_image: /blog/6211-cnam-intec-l-institut-des-techniques-comptables-et-economiques-passe-au-crible.jpg
 link_anchors:
 - text: le CNAM INTEC (institut national des techniques économiques et comptables)
   max: 5
+related_posts:
+- 2211-faire-ses-factures-en-ligne-avec-digitalise-tes-factures
+- 6741-comment-parametrer-la-facturation-recurrente-billmatic-cyclic
+- 7766-les-fonctionnalites-de-la-comptabilite-cloud-financecore-plus
+- 6452-les-modeles-de-factures-digitalise-tes-factures-au-banc-d-essai
 ---
-
 <p>Je vais être honnête : avant de me pencher sérieusement sur le Cnam-Intec, je n'y connaissais pas grand-chose. Je savais vaguement que c'était une formation comptable reconnue, que ça existait depuis longtemps, et que certains salariés l'utilisaient pour évoluer. Mais entre "avoir entendu parler de" et "vraiment comprendre ce que ça vaut", il y a un gouffre.</p>
 
 <p>Alors j'ai creusé. Parce que dans une petite structure comme la mienne, la question de la formation comptable revient régulièrement. Pas pour moi directement, mais pour mieux comprendre ce que font mes prestataires, pour évaluer un profil en recrutement, ou simplement pour savoir si ça vaut le coup d'encourager un salarié à se former via cette voie.</p>
