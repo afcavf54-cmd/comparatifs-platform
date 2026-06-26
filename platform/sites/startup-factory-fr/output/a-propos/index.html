@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>À propos · startup-factory.fr</title>
-<meta name="description" content="À propos de startup-factory.fr : notre média de comparatifs de logiciels RH, notre méthodologie de test et notre auteure.">
+<meta name="description" content="À propos de startup-factory.fr : notre média de comparatifs de logiciels pour créer et gérer son entreprise, notre méthodologie de test et notre auteure.">
 <link rel="canonical" href="https://www.startup-factory.fr/a-propos/">
 <link rel="icon" href="/favicon.png"><meta name="google-site-verification" content="aJ6dZaO-dy_qnh037a17U9GUPAmfx2DsoxnYAQTi4d4"><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ===================================================================
    A PROPOS - startup-factory-fr.
@@ -32,8 +32,6 @@
 html{scroll-behavior:smooth}
 body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;background:var(--bg);color:#0F172A;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{text-decoration:none;color:inherit}
-nav.site-nav .nav-logo{font-family:'DM Serif Display',serif}
-nav.site-nav .nav-links a,nav.site-nav .nav-cta,nav.site-nav .nav-mobile a,.footer{font-family:'Outfit',system-ui,-apple-system,sans-serif}
 /* FAQ accordeon natif (indicateur + / - du design, sans JS) */
 details.faq-item{border:1px solid #E7EAF0;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 2px 10px rgba(15,23,42,0.04)}
 details.faq-item>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:22px 26px}
@@ -44,6 +42,43 @@ details.faq-item>summary .faq-ico::after{content:"+"}
 details.faq-item[open]>summary .faq-ico::after{content:"\2212"}
 details.faq-item>.faq-a{padding:0 26px 24px}
 details.faq-item>.faq-a p{margin:0;color:#475569;font-size:16px;line-height:1.7;border-top:1px solid #F1F5F9;padding-top:18px}
+/* ===== Responsive mobile (ajoute apres coup : export Claude Design en styles inline figes, sans media query) ===== */
+@media(max-width:768px){
+.ap-root [style*="grid-template-columns"]:not([style*="columns:52px"]):not([style*="columns: 52px"]):not([style*="columns:80px"]):not([style*="columns: 80px"]):not([style*="columns:auto"]):not([style*="columns: auto"]){grid-template-columns:1fr !important}
+.ap-root [style*="padding:48px"]{padding:28px 20px !important}
+.ap-root [style*="padding:96px 48px"]{padding:56px 20px !important}
+.ap-root [style*="padding:80px 48px"]{padding:48px 20px !important}
+.ap-root [style*="padding:44px 48px"]{padding:32px 20px !important}
+.ap-root [style*="padding:48px 52px"]{padding:30px 22px !important}
+.ap-root [style*="padding:100px 48px"]{padding:56px 20px !important}
+.ap-root [style*="padding:0 48px 96px"]{padding:0 20px 56px !important}
+.ap-root [style*="padding:0 48px 100px"]{padding:0 20px 56px !important}
+.ap-root [style*="padding:84px 48px 92px"]{padding:48px 20px 52px !important}
+.ap-root [style*="padding:80px 48px 56px"]{padding:44px 20px 36px !important}
+.ap-root [style*="font-size:80px"]{font-size:40px !important}
+.ap-root [style*="font-size:64px"]{font-size:34px !important}
+.ap-root [style*="font-size:52px"]{font-size:32px !important}
+.ap-root [style*="font-size:48px"]{font-size:30px !important}
+.ap-root [style*="font-size:46px"]{font-size:29px !important}
+.ap-root [style*="font-size:44px"]{font-size:28px !important}
+.ap-root [style*="font-size:42px"]{font-size:27px !important}
+.ap-root [style*="font-size:40px"]{font-size:26px !important}
+.ap-root [style*="font-size:38px"]{font-size:25px !important}
+.ap-root [style*="font-size:36px"]{font-size:24px !important}
+.ap-root [style*="font-size:34px"]{font-size:23px !important}
+.ap-root [style*="gap:72px"]{gap:34px !important}
+.ap-root [style*="gap:64px"]{gap:32px !important}
+.ap-root [style*="gap:52px"]{gap:30px !important}
+.ap-root [style*="gap:44px"]{gap:26px !important}
+.ap-root [style*="gap:40px"]{gap:24px !important}
+.ap-root [style*="gap:36px"]{gap:22px !important}
+.ap-root [style*="gap:34px"]{gap:21px !important}
+.ap-root [style*="gap:32px"]{gap:20px !important}
+.ap-root [style*="gap:30px"]{gap:19px !important}
+.ap-root [style*="gap:28px"]{gap:18px !important}
+.ap-root{overflow-x:hidden}
+.ap-root img{max-width:100%;height:auto}
+}
 </style>
 </head>
 <body>
@@ -126,7 +161,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     });
   });
 })();
-</script><div id="top" style="font-family:'Plus Jakarta Sans',sans-serif;background:#F8FAFC;color:#0F172A;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;">
+</script><div class="ap-root" id="top" style="font-family:'Plus Jakarta Sans',sans-serif;background:#F8FAFC;color:#0F172A;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;">
 
 <!-- ===== HEADER ===== -->
 
@@ -140,8 +175,8 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       <span style="width:6px;height:6px;border-radius:50%;background:#14B8A6;display:inline-block;"></span>
       À propos de Startup Factory
     </span>
-    <h1 style="margin:20px auto 0;max-width:860px;font-size:64px;line-height:1.06;font-weight:800;letter-spacing:-0.025em;color:#fff;text-wrap:balance;">Nous aidons les entreprises à choisir les meilleurs logiciels RH.</h1>
-    <p style="margin:24px auto 0;max-width:640px;font-size:19px;line-height:1.65;color:rgba(255,255,255,0.72);">Depuis 2018, Startup Factory analyse, teste et classe les logiciels RH, paie et SIRH pour que vous fassiez le bon choix, sans perdre de temps ni d'argent.</p>
+    <h1 style="margin:20px auto 0;max-width:860px;font-size:64px;line-height:1.06;font-weight:800;letter-spacing:-0.025em;color:#fff;text-wrap:balance;">Nous aidons les entrepreneurs à créer et gérer leur entreprise avec les bons outils.</h1>
+    <p style="margin:24px auto 0;max-width:640px;font-size:19px;line-height:1.65;color:rgba(255,255,255,0.72);">Depuis 2018, Startup Factory décrypte la création et la gestion d'entreprise et teste les logiciels du quotidien des dirigeants pour que vous fassiez le bon choix, sans perdre de temps ni d'argent.</p>
     <div style="margin-top:36px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
       <a href="/nos-comparateurs" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;background:#14B8A6;color:#fff;font-weight:700;font-size:16px;padding:16px 18px 16px 28px;border-radius:999px;box-shadow:0 10px 26px rgba(20,184,166,0.32);">
         Découvrir nos comparatifs
@@ -199,14 +234,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;">
     <div>
       <span style="display:block;color:#6366F1;font-weight:700;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;">Pourquoi nous existons</span>
-      <h2 style="margin:0 0 22px;font-size:38px;font-weight:800;letter-spacing:-0.02em;line-height:1.15;text-wrap:balance;">Choisir le mauvais logiciel RH peut coûter très cher.</h2>
-      <p style="margin:0 0 32px;color:#475569;font-size:17px;line-height:1.7;">Changer de logiciel de paie ou de SIRH représente souvent plusieurs milliers d'euros, plusieurs mois de déploiement et un impact direct sur les équipes. Notre mission : vous éviter ces erreurs grâce à des analyses approfondies réalisées par des experts du terrain.</p>
+      <h2 style="margin:0 0 22px;font-size:38px;font-weight:800;letter-spacing:-0.02em;line-height:1.15;text-wrap:balance;">Choisir le mauvais outil de gestion peut coûter très cher.</h2>
+      <p style="margin:0 0 32px;color:#475569;font-size:17px;line-height:1.7;">Changer d'outil de gestion ou de comptabilité représente souvent plusieurs milliers d'euros, plusieurs mois de déploiement et un impact direct sur les équipes. Notre mission : vous éviter ces erreurs grâce à des analyses approfondies réalisées par des experts du terrain.</p>
       <div style="display:flex;flex-direction:column;gap:20px;">
         <div style="display:flex;align-items:flex-start;gap:16px;">
           <span style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border-radius:14px;background:#E7F7F4;color:#14B8A6;flex:none;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
           </span>
-          <div><strong style="display:block;font-size:16px;margin-bottom:4px;">Des analyses expertes</strong><span style="color:#64748B;font-size:15px;line-height:1.55;">Chaque logiciel est évalué par des spécialistes du domaine RH, sur la base de critères objectifs et documentés.</span></div>
+          <div><strong style="display:block;font-size:16px;margin-bottom:4px;">Des analyses expertes</strong><span style="color:#64748B;font-size:15px;line-height:1.55;">Chaque logiciel est évalué par des spécialistes de la gestion d'entreprise, sur la base de critères objectifs et documentés.</span></div>
         </div>
         <div style="display:flex;align-items:flex-start;gap:16px;">
           <span style="display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;border-radius:14px;background:#EEF0FE;color:#6366F1;flex:none;">
@@ -419,7 +454,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </span>
         <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:22px;">
           <span style="border:1px solid rgba(255,255,255,0.16);color:rgba(255,255,255,0.78);font-size:12.5px;font-weight:500;padding:6px 14px;border-radius:999px;">Stratégie startup</span>
-          <span style="border:1px solid rgba(255,255,255,0.16);color:rgba(255,255,255,0.78);font-size:12.5px;font-weight:500;padding:6px 14px;border-radius:999px;">Logiciels RH</span>
+          <span style="border:1px solid rgba(255,255,255,0.16);color:rgba(255,255,255,0.78);font-size:12.5px;font-weight:500;padding:6px 14px;border-radius:999px;">Gestion d'entreprise</span>
           <span style="border:1px solid rgba(255,255,255,0.16);color:rgba(255,255,255,0.78);font-size:12.5px;font-weight:500;padding:6px 14px;border-radius:999px;">Growth</span>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
@@ -443,7 +478,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
       <div>
         <p style="margin:0 0 20px;color:#CBD5E1;font-size:18px;line-height:1.75;font-weight:500;">"J’ai passé 19 ans dans l’écosystème startup avant de créer Startup Factory. J’ai perçu la vraie difficulté : chaque mauvais choix d’outil coûte cher en temps, en argent et en énergie."</p>
-        <p style="margin:0 0 28px;color:#94A3B8;font-size:16px;line-height:1.7;">J’ai donc décidé de tester moi-même les logiciels RH, de paie et de SIRH pour produire des comparatifs honnêtes et précis. Je suis basée à Nantes, je travaille seule et je mets à jour chaque guide dès que le marché évolue.</p>
+        <p style="margin:0 0 28px;color:#94A3B8;font-size:16px;line-height:1.7;">J’ai donc décidé de tester moi-même les logiciels de gestion, de comptabilité et de facturation pour produire des comparatifs honnêtes et précis. Je suis basée à Nantes, je travaille seule et je mets à jour chaque guide dès que le marché évolue.</p>
         <div style="display:flex;flex-direction:column;gap:16px;">
           <div style="display:flex;align-items:center;gap:14px;">
             <span style="display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:12px;background:rgba(20,184,166,0.15);color:#5EE6C4;flex:none;">
@@ -535,7 +570,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </div>
     <div style="display:flex;flex-direction:column;gap:12px;">
         <details class="faq-item"><summary><span class="faq-q">Comment testez-vous les logiciels ?</span><span class="faq-ico"></span></summary><div class="faq-a"><p>Chaque logiciel fait l'objet d'un test en conditions réelles : nous créons un compte utilisateur, configurons le logiciel selon un profil type d'entreprise, et évaluons chaque fonctionnalité clé sur une grille de critères prédéfinie. La durée minimale de test est de 2 semaines par outil.</p></div></details>
-        <details class="faq-item"><summary><span class="faq-q">Comment garantissez-vous la qualité de vos analyses ?</span><span class="faq-ico"></span></summary><div class="faq-a"><p>Chaque comparatif est réalisé par un expert du domaine RH selon une grille de notation stricte, identique pour tous les logiciels testés. Chaque note est justifiée par des éléments concrets issus de tests en conditions réelles. Les comparatifs sont ensuite relus avant publication et mis à jour dès qu'une évolution significative du marché l'exige.</p></div></details>
+        <details class="faq-item"><summary><span class="faq-q">Comment garantissez-vous la qualité de vos analyses ?</span><span class="faq-ico"></span></summary><div class="faq-a"><p>Chaque comparatif est réalisé par un expert de la gestion d'entreprise selon une grille de notation stricte, identique pour tous les logiciels testés. Chaque note est justifiée par des éléments concrets issus de tests en conditions réelles. Les comparatifs sont ensuite relus avant publication et mis à jour dès qu'une évolution significative du marché l'exige.</p></div></details>
         <details class="faq-item"><summary><span class="faq-q">Pourquoi certains logiciels sont-ils absents ?</span><span class="faq-ico"></span></summary><div class="faq-a"><p>Nous sélectionnons uniquement les solutions ayant une présence significative sur le marché français, des références clients vérifiables et un niveau de documentation suffisant pour être évalué rigoureusement. Vous pouvez nous proposer un logiciel via notre formulaire de contact.</p></div></details>
         <details class="faq-item"><summary><span class="faq-q">À quelle fréquence les comparatifs sont-ils mis à jour ?</span><span class="faq-ico"></span></summary><div class="faq-a"><p>Nos classements sont révisés au minimum une fois par an, et plus fréquemment si un logiciel publie une mise à jour majeure, modifie ses tarifs ou si notre communauté nous signale un changement important. La date de mise à jour est indiquée en haut de chaque comparatif.</p></div></details>
         <details class="faq-item"><summary><span class="faq-q">Peut-on vous proposer un logiciel à tester ?</span><span class="faq-ico"></span></summary><div class="faq-a"><p>Oui ! Nous sommes toujours à la recherche de nouvelles solutions à analyser. Contactez-nous via notre formulaire de contact avec une présentation du logiciel et ses principales fonctionnalités. Nous reviendrons vers vous sous 5 jours ouvrés pour vous indiquer si nous pouvons l'intégrer à nos prochains tests.</p></div></details>
@@ -549,7 +584,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <div style="position:absolute;top:-80px;left:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.18),rgba(255,255,255,0) 70%);pointer-events:none;"></div>
     <div style="position:absolute;bottom:-100px;right:-40px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,0.4),rgba(20,184,166,0) 70%);pointer-events:none;"></div>
     <div style="position:relative;">
-      <h2 style="margin:0 auto;max-width:700px;font-size:44px;font-weight:800;letter-spacing:-0.02em;line-height:1.1;text-wrap:balance;">Prêt à trouver le logiciel RH adapté à votre entreprise ?</h2>
+      <h2 style="margin:0 auto;max-width:700px;font-size:44px;font-weight:800;letter-spacing:-0.02em;line-height:1.1;text-wrap:balance;">Prêt à trouver les bons outils pour votre entreprise ?</h2>
       <p style="margin:20px auto 36px;max-width:520px;font-size:17px;line-height:1.65;color:rgba(255,255,255,0.85);">Nos comparatifs experts vous guident vers la meilleure solution en quelques minutes.</p>
       <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
         <a href="/nos-comparateurs" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;background:#fff;color:#6366F1;font-weight:700;font-size:16px;padding:16px 18px 16px 28px;border-radius:999px;box-shadow:0 10px 26px rgba(0,0,0,0.2);">
