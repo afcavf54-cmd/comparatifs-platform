@@ -14,8 +14,9 @@ link_anchors:
 - text: comment faire un business plan avec PlanExpert
   max: 5
 related_posts:
-- 7965-la-formation-business-plan-frenchy-business-pro-sous-toutes-les-coutures
 - 2469-creer-son-business-plan-avec-financepro-smart-concretement
+- 7965-la-formation-business-plan-frenchy-business-pro-sous-toutes-les-coutures
+- 9399-business-plan-startupkit-premium-ce-template-en-vaut-il-le-prix
 ---
 <h2>Ce que j'aurais voulu savoir avant de faire mon premier business plan</h2>
 

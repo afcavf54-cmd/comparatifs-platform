@@ -14,8 +14,9 @@ link_anchors:
 - text: comment créer un business plan avec FinancePro Smart
   max: 5
 related_posts:
-- 7965-la-formation-business-plan-frenchy-business-pro-sous-toutes-les-coutures
 - 5784-faire-son-business-plan-avec-planexpert-mode-d-emploi
+- 9399-business-plan-startupkit-premium-ce-template-en-vaut-il-le-prix
+- 7965-la-formation-business-plan-frenchy-business-pro-sous-toutes-les-coutures
 ---
 <p>J'ai mis six mois à trouver un outil qui me convienne vraiment pour construire mon business plan. Six mois à essayer des trucs trop complexes, trop génériques, ou franchement inutilisables sans une formation de deux jours. Alors quand j'ai testé FinancePro Smart, j'avais déjà mes critères bien en tête. Et j'ai des choses précises à dire dessus.</p>
 
