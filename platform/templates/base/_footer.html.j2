@@ -67,6 +67,9 @@
         <a href="/a-propos/">À propos</a>
         {% endif %}
         <a href="/contact">Nous contacter</a>
+        {% if site.has_a_propos is defined and site.has_a_propos %}
+        <a href="/a-propos/">Notre équipe</a>
+        {% endif %}
       </div>
     </div>
     <div class="footer-bottom">
