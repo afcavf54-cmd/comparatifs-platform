@@ -4,13 +4,199 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>À propos · {{ site.name }}</title>
-<meta name="description" content="À propos de {{ site.name }} : qui nous sommes, notre méthode éditoriale et notre auteur.">
+<meta name="description" content="À propos de {{ site.name }} : notre méthode éditoriale et notre auteur.">
 <link rel="canonical" href="{{ site.domain }}/a-propos/">
 {% if site.favicon_file is defined and site.favicon_file %}<link rel="icon" href="{{ site.favicon_file }}">{% else %}<link rel="icon" href="/favicon.svg" type="image/svg+xml">{% endif %}
 {% if site.google_site_verification is defined and site.google_site_verification %}<meta name="google-site-verification" content="{{ site.google_site_verification }}">{% endif %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   HOME CUSTOM — creaone-fr (design « CreaOne », éditorial).
+   Classes scopées .cr-* — n'interfèrent pas avec _nav / _footer.
+   Variables --ink/--accent/--accent2/--cta/--cta-text/--bg
+   REQUISES par les partials nav/footer (header + footer actuels).
+   Marges latérales via .cr-shell ; sections en padding-top/bottom.
+   ============================================================ */
+:root{
+  --bg:{{ theme.bg }};
+  --surface:#fff;
+  --ink:{{ theme.ink }};
+  --accent:{{ theme.accent }};
+  --accent2:{{ theme.accent2 }};
+  --cta:{{ theme.cta_color if theme.cta_color is defined and theme.cta_color else "#168551" }};
+  --cta-text:{{ theme.cta_text_color if theme.cta_text_color is defined and theme.cta_text_color else "#ffffff" }};
+  --border:#E2E8F0;
+  /* palette locale du design */
+  --cr-navy:#1C2733;
+  --cr-petrol:#0F3D5E;
+  --cr-blue:#1D70A2;
+  --cr-green:#168551;
+  --cr-green-d:#137447;
+  --cr-bg:#F4F7FA;
+  --cr-ink:#1C2733;
+  --cr-sub:#64748B;
+  --cr-mut:#94A3B8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;background:#fff;color:var(--cr-ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-size:16px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+/* Aligne header/footer sur la police du site (sinon ils héritent de la police de la home) */
+nav.site-nav .nav-links a,nav.site-nav .nav-cta,nav.site-nav .nav-mobile a,.footer{font-family:'{{ theme.font_body }}',system-ui,-apple-system,sans-serif}
+::selection{background:var(--cr-blue);color:#fff}
+.cr-shell{max-width:1180px;margin:0 auto;padding-left:56px;padding-right:56px}
+.cr-sg{font-family:'Space Grotesk',sans-serif}
+.cr-kick{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+
+/* ── HERO ── */
+.cr-hero{background:var(--cr-navy);position:relative;overflow:hidden;display:flex;align-items:center;min-height:560px}
+.cr-hero .stripe{position:absolute;top:-220px;height:1060px;transform:rotate(-22deg);transform-origin:center;z-index:0;pointer-events:none}
+.cr-hero .st1{left:-130px;width:230px;background:var(--cr-petrol)}
+.cr-hero .st2{left:62px;width:155px;background:var(--cr-blue);opacity:.85}
+.cr-hero .st3{right:-100px;width:320px;background:var(--cr-green);opacity:.45}
+.cr-hero-inner{position:relative;z-index:1;display:flex;align-items:center;gap:72px;padding-top:72px;padding-bottom:72px;width:100%}
+.cr-hero-illu{flex:0 0 440px;height:440px;border-radius:30px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.45);background:linear-gradient(135deg,#0D1C28 0%,#1A2D3E 100%);display:flex;align-items:center;justify-content:center}
+.cr-hero-illu svg{width:100%;height:100%;display:block}
+.cr-hero-txt{flex:1;min-width:0}
+.cr-hero-txt h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(40px,5.4vw,74px);font-weight:700;line-height:1.05;color:#fff;margin:0 0 26px}
+.cr-hero-txt h1 .hl{color:var(--cr-blue)}
+.cr-hero-desc{font-size:16px;line-height:1.72;color:rgba(255,255,255,.5);margin:0 0 44px;max-width:430px}
+.cr-hero-cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.cr-btn-green{background:var(--cr-green);color:#fff;padding:15px 36px;border-radius:8px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:600;box-shadow:0 4px 20px rgba(22,133,81,.3);transition:background .18s}
+.cr-btn-green:hover{background:var(--cr-green-d)}
+.cr-btn-ghost{color:#fff;padding:15px 30px;border-radius:8px;font-size:15px;font-weight:600;border:1px solid rgba(255,255,255,.2);transition:border-color .18s,background .18s}
+.cr-btn-ghost:hover{border-color:rgba(255,255,255,.45);background:rgba(255,255,255,.05)}
+
+/* ── STATS ── */
+.cr-stats{background:var(--cr-navy)}
+.cr-stats-inner{padding-top:56px;padding-bottom:56px;display:grid;grid-template-columns:repeat(4,1fr)}
+.cr-stat{text-align:center;padding:0 20px;border-right:1px solid rgba(255,255,255,.08)}
+.cr-stat:last-child{border-right:none}
+.cr-stat .n{font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:700;color:#fff;line-height:1;margin-bottom:8px}
+.cr-stat .c{font-size:13.5px;color:rgba(255,255,255,.45)}
+
+/* ── THÉMATIQUES ── */
+.cr-themes{background:#fff}
+.cr-themes-inner{padding-top:96px;padding-bottom:96px}
+.cr-head-center{text-align:center;margin-bottom:60px}
+.cr-head-center .cr-kick{color:var(--cr-blue)}
+.cr-head-center h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,3vw,38px);font-weight:700;color:var(--cr-ink);margin:14px 0 0;line-height:1.2}
+.cr-themes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.cr-theme{background:var(--cr-bg);border-radius:18px;padding:38px 34px;border:1px solid var(--border);transition:transform .2s,box-shadow .2s,background .2s}
+.cr-theme:hover{background:#fff;box-shadow:0 12px 40px rgba(15,61,94,.09);transform:translateY(-5px)}
+.cr-theme .ic{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+.cr-theme h3{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--cr-ink);margin-bottom:12px}
+.cr-theme p{font-size:14px;line-height:1.72;color:var(--cr-sub);margin:0}
+
+/* ── POURQUOI ── */
+.cr-why{background:#fff;border-top:1px solid #F0F4F8}
+.cr-why-inner{padding-top:96px;padding-bottom:96px}
+.cr-why-head{text-align:center;margin-bottom:68px}
+.cr-why-head .cr-kick{color:var(--cr-green)}
+.cr-why-head h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(30px,3.6vw,46px);font-weight:700;color:var(--cr-ink);margin:16px 0 0;line-height:1.15}
+.cr-why-head h2 em{font-family:'Lora',serif;font-style:italic;font-weight:600;color:var(--cr-petrol)}
+.cr-why-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cr-pill{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 32px;border:1.5px solid var(--border);border-radius:999px;transition:background .18s,border-color .18s}
+.cr-pill:hover{background:var(--cr-bg);border-color:#CBD5E1}
+.cr-pill .l{display:flex;align-items:center;gap:18px}
+.cr-pill .num{font-family:'Space Grotesk',sans-serif;font-size:13.5px;font-weight:700;color:var(--cr-blue);flex-shrink:0;min-width:26px}
+.cr-pill .tx{font-size:15px;color:var(--cr-ink)}
+.cr-pill svg{flex-shrink:0}
+
+/* ── BLOG ── */
+.cr-blog{background:#F8FAFC}
+.cr-blog-inner{padding-top:96px;padding-bottom:96px}
+.cr-blog-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:52px;gap:24px;flex-wrap:wrap}
+.cr-blog-head .cr-kick{color:var(--cr-blue)}
+.cr-blog-head h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,3vw,38px);font-weight:700;color:var(--cr-ink);margin:12px 0 0;line-height:1.2}
+.cr-blog-all{background:var(--cr-petrol);color:#fff;padding:13px 26px;border-radius:8px;font-size:14px;font-weight:600;flex-shrink:0;transition:background .18s}
+.cr-blog-all:hover{background:var(--cr-blue)}
+.cr-blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.cr-art{display:flex;flex-direction:column;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 12px rgba(0,0,0,.06);border:1px solid #EBF0F7;transition:transform .2s,box-shadow .2s}
+.cr-art:hover{box-shadow:0 8px 32px rgba(15,61,94,.12);transform:translateY(-4px)}
+.cr-art-img{height:210px;background:repeating-linear-gradient(-45deg,#EEF3F8 0px,#EEF3F8 12px,#E2EAF3 12px,#E2EAF3 24px);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cr-art-img img{width:100%;height:100%;object-fit:cover;display:block}
+.cr-art-img .ph{opacity:.45}
+.cr-art-body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.cr-art-cat{display:flex;align-items:center;gap:7px;margin-bottom:11px;font-size:13px;color:var(--cr-blue);font-weight:500}
+.cr-art-body h3{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;line-height:1.45;color:var(--cr-ink);margin-bottom:20px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.cr-art-foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #F1F5F9;padding-top:14px;margin-top:auto;gap:10px}
+.cr-art-date{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--cr-mut)}
+.cr-art-auth{display:flex;align-items:center;gap:7px}
+.cr-art-auth .av{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--cr-petrol),var(--cr-blue));display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;color:#fff;flex-shrink:0}
+.cr-art-auth .nm{font-size:12px;color:var(--cr-sub)}
+
+/* ── AUTEUR ── */
+.cr-author{background:var(--cr-navy)}
+.cr-author-inner{padding-top:90px;padding-bottom:90px}
+.cr-author-label{display:flex;align-items:center;gap:18px;margin-bottom:44px}
+.cr-author-label span{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.cr-author-label .ln{flex:1;height:1px;background:rgba(255,255,255,.1)}
+.cr-author-grid{display:grid;grid-template-columns:220px 1fr 200px;gap:64px;align-items:start}
+.cr-author-id{display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px}
+.cr-author-ava{position:relative;width:144px;height:144px}
+.cr-author-ava .ph{width:144px;height:144px;border-radius:50%;overflow:hidden;background:linear-gradient(135deg,var(--cr-petrol),var(--cr-blue));display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:44px;font-weight:700;color:#fff;position:relative;z-index:1;box-shadow:0 12px 36px rgba(0,0,0,.3)}
+.cr-author-ava .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.cr-author-ava .r1{position:absolute;inset:-6px;border-radius:50%;border:1.5px solid rgba(29,112,162,.35);z-index:0}
+.cr-author-ava .r2{position:absolute;inset:-12px;border-radius:50%;border:1px solid rgba(29,112,162,.15);z-index:0}
+.cr-author-id .nm{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:6px;line-height:1.2}
+.cr-author-id .role{font-size:13.5px;color:var(--cr-blue);font-weight:500}
+.cr-author-id .loc{display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,.35)}
+.cr-author-id .loc .dot{width:6px;height:6px;border-radius:50%;background:var(--cr-green)}
+.cr-author-bio{padding-top:6px}
+.cr-author-bio .q{font-family:'Lora',serif;font-style:italic;font-size:80px;line-height:.7;color:rgba(29,112,162,.3);margin-bottom:12px;margin-left:-6px}
+.cr-author-bio p{font-size:16px;line-height:1.85;color:rgba(255,255,255,.6);margin-bottom:36px}
+.cr-author-bio a{font-size:14px;font-weight:600;color:var(--cr-green);display:inline-flex;align-items:center;gap:8px;border-bottom:1.5px solid rgba(22,133,81,.35);padding-bottom:3px;transition:border-color .18s}
+.cr-author-bio a:hover{border-color:var(--cr-green)}
+.cr-author-metrics{display:flex;flex-direction:column;padding-top:6px}
+.cr-metric{padding:22px 0;border-top:1px solid rgba(255,255,255,.1)}
+.cr-metric:last-child{border-bottom:1px solid rgba(255,255,255,.1)}
+.cr-metric .n{font-family:'Space Grotesk',sans-serif;font-weight:700;line-height:1;margin-bottom:5px}
+.cr-metric .c{font-size:12.5px;color:rgba(255,255,255,.38)}
+
+/* ── NEWSLETTER ── */
+.cr-news{background:linear-gradient(135deg,#0F3D5E 0%,#1C2733 100%);position:relative;overflow:hidden}
+.cr-news .b1{position:absolute;right:-60px;bottom:-60px;width:420px;height:420px;border-radius:50%;background:rgba(29,112,162,.12);pointer-events:none}
+.cr-news .b2{position:absolute;left:-80px;top:-80px;width:300px;height:300px;border-radius:50%;background:rgba(22,133,81,.07);pointer-events:none}
+.cr-news-inner{padding-top:100px;padding-bottom:100px;max-width:660px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.cr-news .cr-kick{color:rgba(255,255,255,.4);font-weight:600}
+.cr-news h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(30px,3.4vw,40px);font-weight:700;color:#fff;margin:16px 0 18px;line-height:1.2}
+.cr-news-desc{font-size:16px;line-height:1.75;color:rgba(255,255,255,.6);margin-bottom:44px}
+.cr-news-form{display:flex;gap:12px;max-width:480px;margin:0 auto}
+.cr-news-form input{flex:1;padding:15px 20px;border-radius:8px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);color:#fff;font-family:inherit;font-size:15px;outline:none;min-width:0}
+.cr-news-form input::placeholder{color:rgba(255,255,255,.4)}
+.cr-news-form button{background:var(--cr-green);color:#fff;padding:15px 28px;border-radius:8px;border:none;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;flex-shrink:0;white-space:nowrap;transition:background .18s}
+.cr-news-form button:hover{background:var(--cr-green-d)}
+.cr-news-fine{font-size:12px;color:rgba(255,255,255,.28);margin-top:16px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:980px){
+  .cr-hero-inner{flex-direction:column;gap:48px}
+  .cr-hero-txt{order:1}
+  .cr-hero-illu{order:2;flex:0 0 auto;width:100%;max-width:440px;height:auto;aspect-ratio:1/1}
+  .cr-hero-desc{color:#fff}
+  .cr-stats-inner{grid-template-columns:1fr 1fr;gap:32px 0}
+  .cr-stat:nth-child(2){border-right:none}
+  .cr-themes-grid,.cr-blog-grid{grid-template-columns:1fr 1fr}
+  .cr-author-grid{grid-template-columns:1fr;gap:48px;justify-items:center;text-align:center}
+  .cr-author-metrics{width:100%;max-width:360px}
+}
+@media(max-width:880px){
+  .cr-shell{padding-left:22px;padding-right:22px}
+}
+@media(max-width:600px){
+  .cr-hero{min-height:0}
+  .cr-hero-inner{padding-top:56px;padding-bottom:56px}
+  .cr-themes-inner,.cr-why-inner,.cr-blog-inner,.cr-author-inner{padding-top:60px;padding-bottom:60px}
+  .cr-news-inner{padding-top:64px;padding-bottom:64px}
+  .cr-stats-inner{grid-template-columns:1fr 1fr;gap:28px 0}
+  .cr-themes-grid,.cr-blog-grid,.cr-why-grid{grid-template-columns:1fr}
+  .cr-news-form{flex-direction:column}
+}
+</style>
+<style>details.faq-item>summary::-webkit-details-marker{display:none}details.faq-item>summary{list-style:none;cursor:pointer}.faq-chev{display:inline-flex;transition:transform .2s;flex-shrink:0}details.faq-item[open] .faq-chev{transform:rotate(180deg)}</style>
 </head>
 <body>
 <!-- ══ NAV ══ -->
@@ -57,7 +243,7 @@
       <h1 style="font-family: 'Space Grotesk', sans-serif; font-size: 62px; font-weight: 700; line-height: 1.07; color: #FFFFFF; margin: 0 0 26px;">Nous aidons les<br><span style="color: #1D70A2;">créateurs</span><br>à réussir leur<br>lancement.</h1>
       <p style="font-size: 16px; line-height: 1.75; color: rgba(255,255,255,0.5); margin: 0 0 44px; max-width: 420px;">CreaOne est un média indépendant dédié à l'entrepreneuriat. Analyses rigoureuses, ressources pratiques et conseils d'experts pour chaque étape de votre parcours.</p>
       <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-        <a href="#" style="background: #168551; color: #FFFFFF; padding: 15px 32px; border-radius: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 600; box-shadow: 0 4px 20px rgba(22,133,81,0.3); transition: background 0.18s;" style-hover="background: #137447;">Découvrir nos guides</a>
+        <a href="/blog/" style="background: #168551; color: #FFFFFF; padding: 15px 32px; border-radius: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 600; box-shadow: 0 4px 20px rgba(22,133,81,0.3); transition: background 0.18s;" style-hover="background: #137447;">Découvrir nos guides</a>
         <a href="#methodologie" style="color: rgba(255,255,255,0.7); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; border-bottom: 1.5px solid rgba(255,255,255,0.2); padding-bottom: 3px; padding-top: 15px; transition: border-color 0.18s, color 0.18s;" style-hover="color: #FFFFFF; border-color: rgba(255,255,255,0.5);">Notre méthodologie →</a>
       </div>
     </div>
@@ -91,19 +277,19 @@
 
     <div id="creaone-stats" style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px;">
       <div data-fade="1" style="background: #F4F7FA; border-radius: 18px; padding: 32px 26px; border: 1px solid #E2E8F0; text-align: center;">
-        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 50px; font-weight: 700; color: #0F3D5E; line-height: 1; margin-bottom: 10px;">{{ cA }}</div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 50px; font-weight: 700; color: #0F3D5E; line-height: 1; margin-bottom: 10px;">120+</div>
         <div style="font-size: 13px; color: #64748B; line-height: 1.5;">Sujets analysés</div>
       </div>
       <div data-fade="1" style="background: #1C2733; border-radius: 18px; padding: 32px 26px; text-align: center;">
-        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 50px; font-weight: 700; color: #FFFFFF; line-height: 1; margin-bottom: 10px;">{{ cB }}</div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 50px; font-weight: 700; color: #FFFFFF; line-height: 1; margin-bottom: 10px;">2 400+</div>
         <div style="font-size: 13px; color: rgba(255,255,255,0.42); line-height: 1.5;">Heures de recherche</div>
       </div>
       <div data-fade="1" style="background: #168551; border-radius: 18px; padding: 32px 26px; text-align: center;">
-        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 50px; font-weight: 700; color: #FFFFFF; line-height: 1; margin-bottom: 10px;">{{ cC }}</div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 50px; font-weight: 700; color: #FFFFFF; line-height: 1; margin-bottom: 10px;">50K+</div>
         <div style="font-size: 13px; color: rgba(255,255,255,0.68); line-height: 1.5;">Lecteurs / mois</div>
       </div>
       <div data-fade="1" style="background: #F4F7FA; border-radius: 18px; padding: 32px 26px; border: 1px solid #E2E8F0; text-align: center;">
-        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 50px; font-weight: 700; color: #168551; line-height: 1; margin-bottom: 10px;">{{ cD }}</div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 50px; font-weight: 700; color: #168551; line-height: 1; margin-bottom: 10px;">500+</div>
         <div style="font-size: 13px; color: #64748B; line-height: 1.5;">Articles publiés</div>
       </div>
     </div>
@@ -379,7 +565,7 @@
       <!-- Colonne gauche : identité -->
       <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; min-width: 180px;">
         <div style="position: relative;">
-          {% if site.author_photo is defined and site.author_photo %}<img src="{{ site.author_photo }}" alt="{{ author.name or 'Alexandre Michel' }}" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; box-shadow: 0 16px 40px rgba(0,0,0,0.35); position: relative; z-index: 1;">{% else %}<div style="width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg, #0F3D5E 0%, #1D70A2 100%); display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 42px; font-weight: 700; color: #FFFFFF; box-shadow: 0 16px 40px rgba(0,0,0,0.35); position: relative; z-index: 1;">AM</div>{% endif %}
+          {% if site.author_photo is defined and site.author_photo %}<img src="{{ site.author_photo }}" alt="{{ author.name or 'Alexandre Michel' }}" style="width:140px;height:140px;border-radius:50%;object-fit:cover;box-shadow:0 16px 40px rgba(0,0,0,0.35);position:relative;z-index:1;">{% else %}<div style="width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg, #0F3D5E 0%, #1D70A2 100%); display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 42px; font-weight: 700; color: #FFFFFF; box-shadow: 0 16px 40px rgba(0,0,0,0.35); position: relative; z-index: 1;">AM</div>{% endif %}
           <div style="position: absolute; inset: -6px; border-radius: 50%; border: 1.5px solid rgba(29,112,162,0.3); z-index: 0;"></div>
           <div style="position: absolute; inset: -13px; border-radius: 50%; border: 1px solid rgba(29,112,162,0.12); z-index: 0;"></div>
         </div>
@@ -420,7 +606,7 @@
         </div>
 
         <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 36px;">
-          <a href="#" style="background: #168551; color: #FFFFFF; padding: 13px 28px; border-radius: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 600; transition: background 0.18s;" style-hover="background: #137447;">Lire mes articles →</a>
+          <a href="/blog/" style="background: #168551; color: #FFFFFF; padding: 13px 28px; border-radius: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 600; transition: background 0.18s;" style-hover="background: #137447;">Lire mes articles →</a>
         </div>
         <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
           <!-- LinkedIn -->
@@ -565,64 +751,19 @@
     <div style="display: flex; flex-direction: column; gap: 0;">
 
       <!-- Q0 -->
-      <div data-fade="1" style="border-top: 1px solid #E2E8F0; background: #FFFFFF; border-radius: 0;">
-        <button onclick="{{ tog0 }}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; background: transparent; border: none; cursor: pointer; text-align: left; gap: 16px;">
-          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733;">Comment rédigez-vous vos articles ?</span>
-          <sc-if value="{{ faq0Closed }}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="6 9 12 15 18 9"></polyline></svg></sc-if>
-          <sc-if value="{{ faq0Open }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="18 15 12 9 6 15"></polyline></svg></sc-if>
-        </button>
-        <sc-if value="{{ faq0Open }}" hint-placeholder-val="{{ false }}">
-          <div style="padding: 0 28px 28px; font-size: 15px; line-height: 1.82; color: #4A5A6B;">Chaque article suit un processus éditorial en 7 étapes : identification du sujet, recherche documentaire, tests terrain, rédaction, relecture experte, notation interne et publication. Aucun contenu n'est mis en ligne sans avoir été validé par un professionnel du domaine concerné.</div>
-        </sc-if>
-      </div>
+      <details class="faq-item" style="border-top: 1px solid #E2E8F0; background: #FFFFFF; border-radius: 0;"><summary class="faq-summary" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; background: transparent; border: none; cursor: pointer; text-align: left; gap: 16px;list-style:none;"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733;">Comment rédigez-vous vos articles ?</span><span class="faq-chev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary><div style="padding: 0 28px 28px; font-size: 15px; line-height: 1.82; color: #4A5A6B;">Chaque article suit un processus éditorial en 7 étapes : identification du sujet, recherche documentaire, tests terrain, rédaction, relecture experte, notation interne et publication. Aucun contenu n'est mis en ligne sans avoir été validé par un professionnel du domaine concerné.</div></details>
 
       <!-- Q1 -->
-      <div data-fade="1" style="border-top: 1px solid #E2E8F0;">
-        <button onclick="{{ tog1 }}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; background: transparent; border: none; cursor: pointer; text-align: left; gap: 16px;">
-          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733;">Comment CreaOne se finance-t-il ?</span>
-          <sc-if value="{{ faq1Closed }}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="6 9 12 15 18 9"></polyline></svg></sc-if>
-          <sc-if value="{{ faq1Open }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="18 15 12 9 6 15"></polyline></svg></sc-if>
-        </button>
-        <sc-if value="{{ faq1Open }}" hint-placeholder-val="{{ false }}">
-          <div style="padding: 0 28px 28px; font-size: 15px; line-height: 1.82; color: #4A5A6B;">CreaOne est un projet indépendant financé par la publicité display et les partenariats de contenu. Tous les contenus éditoriaux sont produits librement, sans influence extérieure sur leur angle ou leurs conclusions. Notre priorité absolue reste l'utilité pour nos lecteurs.</div>
-        </sc-if>
-      </div>
+      <details class="faq-item" style="border-top: 1px solid #E2E8F0;"><summary class="faq-summary" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; background: transparent; border: none; cursor: pointer; text-align: left; gap: 16px;list-style:none;"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733;">Comment CreaOne se finance-t-il ?</span><span class="faq-chev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary><div style="padding: 0 28px 28px; font-size: 15px; line-height: 1.82; color: #4A5A6B;">CreaOne est un projet indépendant financé par la publicité display et les partenariats de contenu. Tous les contenus éditoriaux sont produits librement, sans influence extérieure sur leur angle ou leurs conclusions. Notre priorité absolue reste l'utilité pour nos lecteurs.</div></details>
 
       <!-- Q2 -->
-      <div data-fade="1" style="border-top: 1px solid #E2E8F0;">
-        <button onclick="{{ tog2 }}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; background: transparent; border: none; cursor: pointer; text-align: left; gap: 16px;">
-          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733;">Pourquoi certains sujets ne sont-ils pas encore couverts ?</span>
-          <sc-if value="{{ faq2Closed }}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="6 9 12 15 18 9"></polyline></svg></sc-if>
-          <sc-if value="{{ faq2Open }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="18 15 12 9 6 15"></polyline></svg></sc-if>
-        </button>
-        <sc-if value="{{ faq2Open }}" hint-placeholder-val="{{ false }}">
-          <div style="padding: 0 28px 28px; font-size: 15px; line-height: 1.82; color: #4A5A6B;">Nous préférons publier moins d'articles mais avec une qualité maximale. Un sujet n'est traité que lorsque notre équipe peut garantir sa précision complète. Si un sujet vous manque, contactez-nous, nous le prioriserons dans notre roadmap éditoriale.</div>
-        </sc-if>
-      </div>
+      <details class="faq-item" style="border-top: 1px solid #E2E8F0;"><summary class="faq-summary" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; background: transparent; border: none; cursor: pointer; text-align: left; gap: 16px;list-style:none;"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733;">Pourquoi certains sujets ne sont-ils pas encore couverts ?</span><span class="faq-chev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary><div style="padding: 0 28px 28px; font-size: 15px; line-height: 1.82; color: #4A5A6B;">Nous préférons publier moins d'articles mais avec une qualité maximale. Un sujet n'est traité que lorsque notre équipe peut garantir sa précision complète. Si un sujet vous manque, contactez-nous, nous le prioriserons dans notre roadmap éditoriale.</div></details>
 
       <!-- Q3 -->
-      <div data-fade="1" style="border-top: 1px solid #E2E8F0;">
-        <button onclick="{{ tog3 }}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; background: transparent; border: none; cursor: pointer; text-align: left; gap: 16px;">
-          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733;">À quelle fréquence mettez-vous à jour vos contenus ?</span>
-          <sc-if value="{{ faq3Closed }}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="6 9 12 15 18 9"></polyline></svg></sc-if>
-          <sc-if value="{{ faq3Open }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="18 15 12 9 6 15"></polyline></svg></sc-if>
-        </button>
-        <sc-if value="{{ faq3Open }}" hint-placeholder-val="{{ false }}">
-          <div style="padding: 0 28px 28px; font-size: 15px; line-height: 1.82; color: #4A5A6B;">Nos articles sont révisés automatiquement lors de chaque changement législatif majeur (loi de finances, réforme du droit des sociétés, modification des seuils...). En dehors de ces événements, nous effectuons une révision complète du catalogue chaque trimestre.</div>
-        </sc-if>
-      </div>
+      <details class="faq-item" style="border-top: 1px solid #E2E8F0;"><summary class="faq-summary" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; background: transparent; border: none; cursor: pointer; text-align: left; gap: 16px;list-style:none;"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733;">À quelle fréquence mettez-vous à jour vos contenus ?</span><span class="faq-chev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary><div style="padding: 0 28px 28px; font-size: 15px; line-height: 1.82; color: #4A5A6B;">Nos articles sont révisés automatiquement lors de chaque changement législatif majeur (loi de finances, réforme du droit des sociétés, modification des seuils...). En dehors de ces événements, nous effectuons une révision complète du catalogue chaque trimestre.</div></details>
 
       <!-- Q4 -->
-      <div data-fade="1" style="border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0;">
-        <button onclick="{{ tog4 }}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; background: transparent; border: none; cursor: pointer; text-align: left; gap: 16px;">
-          <span style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733;">Peut-on vous proposer un sujet ou un partenariat ?</span>
-          <sc-if value="{{ faq4Closed }}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="6 9 12 15 18 9"></polyline></svg></sc-if>
-          <sc-if value="{{ faq4Open }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="18 15 12 9 6 15"></polyline></svg></sc-if>
-        </button>
-        <sc-if value="{{ faq4Open }}" hint-placeholder-val="{{ false }}">
-          <div style="padding: 0 28px 28px; font-size: 15px; line-height: 1.82; color: #4A5A6B;">Oui, nous sommes ouverts aux suggestions de sujets via notre formulaire de contact. Pour les partenariats, nous évaluons chaque demande selon deux critères : la valeur réelle pour nos lecteurs et la compatibilité avec notre indépendance éditoriale.</div>
-        </sc-if>
-      </div>
+      <details class="faq-item" style="border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0;"><summary class="faq-summary" style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 24px 28px; background: transparent; border: none; cursor: pointer; text-align: left; gap: 16px;list-style:none;"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #1C2733;">Peut-on vous proposer un sujet ou un partenariat ?</span><span class="faq-chev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D70A2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary><div style="padding: 0 28px 28px; font-size: 15px; line-height: 1.82; color: #4A5A6B;">Oui, nous sommes ouverts aux suggestions de sujets via notre formulaire de contact. Pour les partenariats, nous évaluons chaque demande selon deux critères : la valeur réelle pour nos lecteurs et la compatibilité avec notre indépendance éditoriale.</div></details>
 
     </div>
   </div>
