@@ -16,6 +16,7 @@ link_anchors:
 related_posts:
 - 7898-la-formation-caces-de-mon-institut-du-btp-au-scanner
 - 7190-la-formation-intensive-de-negociation-commerciale-dealmaker-de-fond-en-comble
+- 1816-les-avantages-et-inconvenients-du-cdi-interimaire
 ---
 <h2>Pourquoi j'ai décidé de me former au data driven decision making ?</h2>
 

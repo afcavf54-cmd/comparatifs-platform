@@ -15,8 +15,9 @@ link_anchors:
 - text: la formation négociation commerciale DealMaker Intensive
   max: 5
 related_posts:
-- 4296-la-formation-certifiante-en-data-driven-decision-making-sans-complaisance
 - 7898-la-formation-caces-de-mon-institut-du-btp-au-scanner
+- 1816-les-avantages-et-inconvenients-du-cdi-interimaire
+- 4296-la-formation-certifiante-en-data-driven-decision-making-sans-complaisance
 ---
 <h2>Pourquoi j'ai testé la formation DealMaker ?</h2>
 

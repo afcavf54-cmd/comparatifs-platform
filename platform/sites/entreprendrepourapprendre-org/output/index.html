@@ -254,7 +254,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <!-- Stats bar -->
   <div class="stats-bar" style="margin-top:48px;border-radius:var(--r2)">
     <div class="stat-item">
-      <div class="stat-value" id="stat-logiciels">324+</div>
+      <div class="stat-value" id="stat-logiciels">328+</div>
       <div class="stat-label">Logiciels analysés</div>
     </div>
     <div class="stat-item">
@@ -645,6 +645,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       <a href="/blog" class="blog-recent-link">Voir tous les articles →</a>
     </div>
     <div class="blog-recent-grid">
+      <a href="/1816-les-avantages-et-inconvenients-du-cdi-interimaire" class="blog-recent-card">
+        <div class="blog-recent-card-img">
+            <img src="/blog/1816-les-avantages-et-inconvenients-du-cdi-interimaire.jpg" alt="Les avantages et inconvénients du CDI intérimaire" loading="lazy">
+        </div>
+        <div class="blog-recent-card-body">
+<div class="blog-recent-card-cat">Salarié</div>          <div class="blog-recent-card-title">Les avantages et inconvénients du CDI intérimaire</div>
+<div class="blog-recent-card-excerpt">Ce que le CDI intérimaire m'a appris sur la flexibilité au travail Quand on gère une agence de communication avec six personnes, on finit toujours par se poser la question des…</div><div class="blog-recent-card-date">📅 26 juin 2026</div>        </div>
+      </a>
       <a href="/9399-business-plan-startupkit-premium-ce-template-en-vaut-il-le-prix" class="blog-recent-card">
         <div class="blog-recent-card-img">
             <img src="/blog/9399-business-plan-startupkit-premium-ce-template-en-vaut-il-le-prix.jpg" alt="Business plan StartupKit Premium : ce template en vaut-il le prix ?" loading="lazy">
@@ -684,14 +692,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <div class="blog-recent-card-body">
 <div class="blog-recent-card-cat">Gestion d'entreprise</div>          <div class="blog-recent-card-title">Configurer le CRM LeadFlow Automation sans se perdre</div>
 <div class="blog-recent-card-excerpt">Je vais être honnête : quand j'ai commencé à chercher un CRM pour mon agence, j'ai failli abandonner l'idée après trois semaines de tests. Trop complexe, trop cher, trop de…</div><div class="blog-recent-card-date">📅 25 juin 2026</div>        </div>
-      </a>
-      <a href="/2469-creer-son-business-plan-avec-financepro-smart-concretement" class="blog-recent-card">
-        <div class="blog-recent-card-img">
-            <img src="/blog/2469-creer-son-business-plan-avec-financepro-smart-concretement.jpg" alt="Créer son business plan avec FinancePro Smart, concrètement" loading="lazy">
-        </div>
-        <div class="blog-recent-card-body">
-<div class="blog-recent-card-cat">Création d'entreprise</div>          <div class="blog-recent-card-title">Créer son business plan avec FinancePro Smart, concrètement</div>
-<div class="blog-recent-card-excerpt">J'ai mis six mois à trouver un outil qui me convienne vraiment pour construire mon business plan. Six mois à essayer des trucs trop complexes, trop génériques, ou franchement…</div><div class="blog-recent-card-date">📅 24 juin 2026</div>        </div>
       </a>
     </div>
   </section>
@@ -1112,6 +1112,22 @@ const ALL_CATEGORIES = [
   { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
   { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
   { label: "Logiciel de gestion de trésorerie", slug: "meilleur-logiciel-de-gestion-de-tresorerie" },
+  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
+  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
+  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
+  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
+  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
+  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
+  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
+  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
+  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
+  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
+  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
+  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
+  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
+  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
+  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
+  { label: "Logiciel de facturation", slug: "meilleur-logiciel-de-facturation" },
   { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
   { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
   { label: "Logiciel de comptabilité", slug: "meilleur-logiciel-de-comptabilite" },
@@ -1141,18 +1157,6 @@ const ALL_CATEGORIES = [
   { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
   { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
   { label: "Expert-comptable en ligne", slug: "meilleur-expert-comptable-en-ligne" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
-  { label: "Logiciel d’emailing", slug: "meilleur-logiciel-d-emailing" },
   { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },
   { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },
   { label: "Logiciel de cold emailing / outreach", slug: "meilleur-logiciel-de-cold-emailing-/-outreach" },

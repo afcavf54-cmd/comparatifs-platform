@@ -4,15 +4,20 @@ slug: 1816-les-avantages-et-inconvenients-du-cdi-interimaire
 date: '2026-06-26T17:00:00+02:00'
 categorie: Salarié
 meta_title: 'CDI intérimaire : avantages et inconvénients'
-meta_description: 'Découvrez les vrais avantages et inconvénients du CDI intérimaire : stabilité du contrat, rémunération garantie entre missions et flexibilité au travail décryptés.'
+meta_description: 'Découvrez les vrais avantages et inconvénients du CDI intérimaire
+  : stabilité du contrat, rémunération garantie entre missions et flexibilité au travail
+  décryptés.'
 min_words: 900
 status: published
 featured_image: /blog/1816-les-avantages-et-inconvenients-du-cdi-interimaire.jpg
 link_anchors:
 - text: les avantages et inconvénients du CDI intérimaire
   max: 5
+related_posts:
+- 7898-la-formation-caces-de-mon-institut-du-btp-au-scanner
+- 4296-la-formation-certifiante-en-data-driven-decision-making-sans-complaisance
+- 7190-la-formation-intensive-de-negociation-commerciale-dealmaker-de-fond-en-comble
 ---
-
 <h2>Ce que le CDI intérimaire m'a appris sur la flexibilité au travail</h2>
 
 <p>Quand on gère une agence de communication avec six personnes, on finit toujours par se poser la question des contrats. Pas forcément pour soi, mais pour comprendre ce que vivent les profils qu'on recrute, ce qui les attire, ce qui les freine. Le CDI intérimaire, j'en entends parler depuis un moment, et franchement j'ai voulu creuser le sujet pour de vrai. Pas pour répéter les fiches RH classiques, mais pour comprendre ce que ça change concrètement pour un salarié.</p>
