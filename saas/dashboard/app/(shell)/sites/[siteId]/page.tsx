@@ -26,6 +26,7 @@ export default function SiteDetailPage() {
   const [pageTypes, setPageTypes] = useState<Record<string, string>>({})
   const [analyticsClicky, setAnalyticsClicky] = useState('')
   const [googleVerification, setGoogleVerification] = useState('')
+  const [linkavistaVerification, setLinkavistaVerification] = useState('')
   const [contactFormKey, setContactFormKey] = useState('')
   const [savingTracking, setSavingTracking] = useState(false)
   const [trackingMsg, setTrackingMsg] = useState('')
@@ -45,6 +46,7 @@ export default function SiteDetailPage() {
       if (d.page_types) setPageTypes(d.page_types)
       if (d.analytics_clicky) setAnalyticsClicky(d.analytics_clicky)
       if (d.google_site_verification) setGoogleVerification(d.google_site_verification)
+      if (d.linkavista_verification) setLinkavistaVerification(d.linkavista_verification)
       if (d.contact_form_key) setContactFormKey(d.contact_form_key)
     }).catch(() => {})
   }, [siteId])
@@ -64,6 +66,7 @@ export default function SiteDetailPage() {
       body: JSON.stringify({
         analytics_clicky: analyticsClicky,
         google_site_verification: googleVerification,
+        linkavista_verification: linkavistaVerification,
         contact_form_key: contactFormKey,
       })
     })
@@ -221,6 +224,19 @@ export default function SiteDetailPage() {
                 style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const, fontFamily: 'monospace' }} />
               <div style={{ fontSize: 11, color: '#4A5568', marginTop: 6, lineHeight: 1.5 }}>
                 Crée une clé gratuite sur <a href="https://web3forms.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#00D4AA', textDecoration: 'none' }}>web3forms.com</a> en renseignant <code style={{ color: '#00D4AA' }}>contact@viseoweb.fr</code> comme email destinataire. Sans clé, la page /contact affiche juste un mailto.
+              </div>
+            </div>
+            <div style={{ gridColumn: '1 / -1', borderTop: '1px solid #1E2D3D', paddingTop: 18, marginTop: 4 }}>
+              <div style={{ fontSize: 13, color: '#fff', fontWeight: 600, marginBottom: 4 }}>🔗 Vente de lien</div>
+              <div style={{ fontSize: 11, color: '#4A5568', marginBottom: 14, lineHeight: 1.5 }}>
+                Codes de vérification des plateformes de vente de liens. Le meta correspondant est injecté dans le <code style={{ color: '#00D4AA' }}>{'<head>'}</code> de la page d'accueil au build, pour prouver la possession du site.
+              </div>
+              <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', marginBottom: 8 }}>🟣 Linkavista</div>
+              <input value={linkavistaVerification} onChange={e => setLinkavistaVerification(e.target.value)}
+                placeholder="d92294280149faa1d5064096a735a59c5ea6350b"
+                style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const, fontFamily: 'monospace' }} />
+              <div style={{ fontSize: 11, color: '#4A5568', marginTop: 6, lineHeight: 1.5 }}>
+                Colle le hash seul, ou le tag complet <code style={{ color: '#00D4AA' }}>{'<meta name="linkavista" content="…">'}</code> fourni par Linkavista — seul le contenu est conservé. Au build, il est injecté tel que <code style={{ color: '#00D4AA' }}>{'<meta name="linkavista" content="…">'}</code> dans la home.
               </div>
             </div>
           </div>
