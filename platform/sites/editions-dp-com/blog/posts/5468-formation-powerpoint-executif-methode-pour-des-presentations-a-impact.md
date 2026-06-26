@@ -4,15 +4,20 @@ slug: 5468-formation-powerpoint-executif-methode-pour-des-presentations-a-impact
 date: '2026-06-26T17:00:00+02:00'
 categorie: Salarié
 meta_title: 'Formation PowerPoint Exécutif : méthode et certification'
-meta_description: Maîtrisez la formation PowerPoint Exécutif avec une méthode concrète pour structurer vos présentations et convaincre votre audience dès la première slide.
+meta_description: Maîtrisez la formation PowerPoint Exécutif avec une méthode concrète
+  pour structurer vos présentations et convaincre votre audience dès la première slide.
 min_words: 930
 status: published
 featured_image: /blog/5468-formation-powerpoint-executif-methode-pour-des-presentations-a-impact.jpg
 link_anchors:
 - text: la méthode de formation PowerPoint exécutif pour des présentations à impact
   max: 5
+related_posts:
+- 4315-comment-fonctionne-le-comite-d-entreprise-credit-mutuel
+- 7798-demissionner-en-conservant-ses-droits-lies-a-l-anciennete-ce-que-dit-la-loi
+- 1712-mon-patron-change-mes-horaires-du-jour-au-lendemain-est-ce-legal-et-que-faire
+- 9545-quels-avantages-offre-le-comite-d-entreprise-maaf
 ---
-
 <p>J'ai passé des années à regarder des slides PowerPoint qui endormaient tout le monde. Y compris moi. Puis j'ai décidé que ça allait changer, d'abord pour mes propres présentations, ensuite pour les équipes que je dirige.</p>
 
 <p>Une présentation exécutive, ça ne s'improvise pas. Et pourtant, la majorité des gens ouvrent PowerPoint comme si c'était Word. Ils remplissent des slides. Ils copient un graphique depuis Excel. Ils pensent que plus il y a d'informations, mieux c'est.</p>
