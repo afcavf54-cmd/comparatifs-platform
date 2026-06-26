@@ -13,9 +13,10 @@ link_anchors:
 - text: les modèles de factures de Digitalise-Tes-Factures
   max: 5
 related_posts:
-- 2435-emettre-une-facture-en-ligne-avec-digitalise-tes-factures-mode-d-emploi
-- 6208-parametrer-la-facturation-recurrente-billmatic-cyclic-etape-par-etape
 - 4871-emettre-une-facture-en-ligne-avec-simplifie-ta-compta-sans-se-tromper
+- 6208-parametrer-la-facturation-recurrente-billmatic-cyclic-etape-par-etape
+- 2435-emettre-une-facture-en-ligne-avec-digitalise-tes-factures-mode-d-emploi
+- 5698-facture-en-ligne-gratuite-creer-et-inserer-ses-articles
 ---
 <h2>Pourquoi j'ai testé les modèles de factures de Digitalise-Tes-Factures ?</h2>
 
