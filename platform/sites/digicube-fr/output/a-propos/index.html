@@ -1,0 +1,2352 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos · digicube.fr</title>
+<link rel="canonical" href="https://www.digicube.fr/a-propos/">
+<link rel="icon" href="/favicon.png"><meta name="google-site-verification" content="Z-e8_S0P4zqIuKmxV2BeaMrmzfgHnS2-ha8joI_6oI8"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DIGICUBE — Design system
+   Navy + orange, big bold sans (Archivo / Hanken Grotesk)
+   ============================================================ */
+
+:root{
+  /* Brand */
+  --navy-950:#0d141f;
+  --navy-900:#111a26;
+  --navy-800:#16202e;
+  --navy:#1f2937;
+  --navy-700:#273548;
+  --slate:#374151;
+
+  --ink:#111827;
+  --muted:#5b6573;
+  --muted-2:#8b94a3;
+  --bg:#f9fafb;
+  --bg-2:#f1f3f6;
+  --surface:#ffffff;
+  --line:rgba(17,24,39,.09);
+  --line-strong:rgba(17,24,39,.16);
+
+  /* Accent */
+  --accent:#f97316;
+  --accent-600:#e9650b;
+  --accent-700:#c9540a;
+  --accent-tint:#fff1e7;
+  --accent-soft:rgba(249,115,22,.12);
+
+  /* Variables requises par le header/footer partagés (_nav / _footer) */
+  --accent2:#f97316;
+  --cta:#f97316;
+  --cta-text:#ffffff;
+  --cool:#3b6ea5;
+
+  /* Type */
+  --font-display:'Archivo', system-ui, sans-serif;
+  --font-body:'Hanken Grotesk', system-ui, sans-serif;
+
+  /* Shape */
+  --radius:18px;
+  --radius-sm:12px;
+  --radius-pill:999px;
+
+  --maxw:1200px;
+  --gut:clamp(20px,4vw,48px);
+
+  --shadow-sm:0 1px 2px rgba(16,24,40,.05);
+  --shadow:0 6px 24px -8px rgba(16,24,40,.14);
+  --shadow-lg:0 28px 60px -24px rgba(13,20,31,.45);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  line-height:1.55;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  font-weight:800;
+  line-height:1.04;
+  letter-spacing:-.022em;
+  margin:0;
+  color:var(--ink);
+  text-wrap:balance;
+}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.section{padding-block:75px}
+.eyebrow{
+  font-family:var(--font-body);
+  font-weight:700;
+  font-size:12.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--accent-700);
+  margin:0 0 14px;
+  display:inline-flex;align-items:center;gap:9px;
+}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--accent);border-radius:2px}
+.eyebrow--center{justify-content:center}
+.lead{font-size:clamp(16px,1.4vw,18px);color:var(--muted);max-width:60ch;line-height:1.6}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-display);font-weight:700;font-size:15px;
+  padding:14px 22px;border-radius:var(--radius-pill);
+  border:1px solid transparent;cursor:pointer;transition:.18s ease;
+  letter-spacing:-.01em;
+}
+.btn .arr{transition:transform .2s ease}
+.btn:hover .arr{transform:translateX(3px)}
+.btn--accent{background:var(--accent);color:#fff}
+.btn--accent:hover{background:var(--accent-600)}
+.btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.28)}
+.btn--ghost:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.06)}
+.btn--dark{background:var(--navy);color:#fff}
+.btn--dark:hover{background:var(--navy-700)}
+.btn--light{background:#fff;color:var(--ink);border-color:var(--line-strong)}
+.btn--light:hover{border-color:var(--ink)}
+.btn--sm{padding:10px 16px;font-size:13.5px}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;
+  background:
+    radial-gradient(120% 90% at 85% -10%, rgba(249,115,22,.18), transparent 55%),
+    radial-gradient(80% 70% at 0% 0%, rgba(59,110,165,.16), transparent 50%),
+    linear-gradient(180deg,var(--navy-950),var(--navy-900) 60%,var(--navy-800));
+  color:#fff;overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:46px 46px;mask-image:radial-gradient(120% 80% at 50% 0%,#000,transparent 80%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;padding-block:clamp(48px,7vw,86px) 0}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,72px);align-items:center}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--radius-pill);padding:7px 15px 7px 11px;
+  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.82);margin-bottom:26px;
+}
+.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 0 4px var(--accent-soft)}
+.hero h1{
+  color:#fff;font-size:clamp(40px,5.6vw,72px);line-height:1.0;
+  letter-spacing:-.03em;font-weight:800;
+}
+.hero h1 .hl{color:var(--accent)}
+.hero p.lead{color:rgba(255,255,255,.72);margin-top:22px;max-width:46ch;font-size:clamp(16px,1.45vw,18.5px)}
+
+/* hero CTA (remplace l'ancien searchbar) */
+.hero-cta-block{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+/* Boutons hero en MAJUSCULES (uniquement les CTA du hero, pas les .btn ailleurs) */
+.hero-cta-block .btn{text-transform:uppercase;letter-spacing:.06em;font-size:13.5px}
+
+/* hero visual */
+.hero-visual{position:relative}
+.hero-figure{position:relative;border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-lg);aspect-ratio:4/3.4}
+
+/* hero mockup : composite dashboard SaaS avec 5 cards empilées */
+.hero-mockup{position:absolute;inset:0;
+  background:
+    radial-gradient(120% 80% at 70% 20%,rgba(249,115,22,.14),transparent 55%),
+    linear-gradient(160deg,var(--navy-900),var(--navy-800));
+}
+.hero-mockup::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:24px 24px;pointer-events:none;
+}
+.mk-card{position:absolute;background:rgba(20,30,45,.94);border:1px solid rgba(255,255,255,.09);
+  border-radius:12px;padding:13px;backdrop-filter:blur(8px);color:#fff;
+  font-family:var(--font-body);box-shadow:0 10px 28px rgba(0,0,0,.35)}
+.mk-card-h{display:flex;align-items:center;gap:7px;margin-bottom:9px}
+.mk-icon{width:18px;height:18px;border-radius:5px;background:var(--accent);display:grid;
+  place-items:center;color:#fff;font-size:10px;font-weight:800;flex:none}
+.mk-title{font-family:var(--font-display);font-weight:700;font-size:11.5px;color:#fff;letter-spacing:-.005em}
+
+/* Card Comparatif CRM (top-left) */
+.mk-card-crm{top:5%;left:-2%;width:46%}
+.mk-bars{width:100%;height:30px;margin-bottom:8px;display:block}
+.mk-row{display:flex;align-items:center;justify-content:space-between;font-size:10px;
+  color:rgba(255,255,255,.78);padding:4px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.mk-row:last-child{border-bottom:0}
+.mk-row .mk-name{display:flex;align-items:center;gap:6px;font-weight:600}
+.mk-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
+.mk-stars{color:var(--accent);font-size:9px;letter-spacing:.5px;white-space:nowrap}
+
+/* Card Avis logiciel (top-right) */
+.mk-card-avis{top:7%;right:-2%;width:38%}
+.mk-avis-name{font-family:var(--font-display);font-weight:700;font-size:13px;margin-bottom:6px;
+  display:flex;align-items:center;gap:6px}
+.mk-avis-name::before{content:"";width:18px;height:18px;border-radius:50%;background:var(--accent);
+  display:inline-block;flex:none}
+.mk-avis-score{display:flex;align-items:center;gap:8px}
+.mk-score{font-family:var(--font-display);font-weight:800;font-size:22px;color:#fff;letter-spacing:-.02em}
+.mk-avis-score .mk-stars{font-size:12px;letter-spacing:1.5px}
+
+/* Card Tableau de bord (centre, gros) */
+.mk-card-main{top:35%;left:6%;right:6%;background:rgba(247,247,250,.97);color:var(--ink);
+  border-color:rgba(0,0,0,.06)}
+.mk-card-main .mk-title{color:var(--ink)}
+.mk-card-main .mk-icon{background:var(--navy)}
+.mk-main-body{display:grid;grid-template-columns:1.5fr 1fr;gap:10px;align-items:center}
+.mk-line{width:100%;height:48px;display:block}
+.mk-stats{display:flex;gap:12px;margin-top:8px}
+.mk-stat{flex:1}
+.mk-stat-l{font-size:8px;color:var(--muted-2);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.mk-stat-v{font-family:var(--font-display);font-weight:800;font-size:12px;color:var(--ink);margin-top:1px;letter-spacing:-.01em}
+.mk-stat-d{font-size:9px;font-weight:700;margin-top:1px}
+.mk-stat-d.up{color:#1a7a4a}
+.mk-stat-d.down{color:#c9540a}
+.mk-donuts{display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center}
+.mk-donut{width:48px;height:48px;display:block}
+
+/* Card Facturation (bottom-left) */
+.mk-card-fact{bottom:5%;left:-2%;width:30%}
+.mk-fact-sub{font-size:9.5px;color:rgba(255,255,255,.6);margin-bottom:3px;font-weight:500}
+.mk-fact-amount{display:flex;align-items:center;gap:7px;font-family:var(--font-display);
+  font-weight:800;font-size:14px;letter-spacing:-.01em}
+.mk-check{width:17px;height:17px;border-radius:50%;background:#1a7a4a;color:#fff;
+  display:inline-grid;place-items:center;font-size:9px;font-weight:800;flex:none}
+
+/* Card IA (bottom-right) */
+.mk-card-ai{bottom:4%;right:-2%;width:36%}
+.mk-ai-text{font-size:9.5px;color:rgba(255,255,255,.72);line-height:1.4;padding-right:32px}
+.mk-robot{position:absolute;right:8px;bottom:8px;width:34px;height:34px}
+
+/* hero chips strip */
+.hero-chips{
+  position:relative;margin-top:clamp(40px,5vw,64px);
+  border-top:1px solid rgba(255,255,255,.1);
+  padding-block:22px 30px;
+  display:flex;flex-wrap:wrap;gap:10px 26px;align-items:center;justify-content:center;
+}
+.hero-chips .chip{display:inline-flex;align-items:center;gap:11px;
+  color:rgba(255,255,255,.82);font-weight:700;font-size:15px;letter-spacing:-.01em}
+.hero-chips .chip .pl{color:var(--accent);font-weight:800}
+
+/* ============================================================
+   TRUST BAND
+   ============================================================ */
+.trust{background:var(--navy-800);color:#fff;border-top:1px solid rgba(255,255,255,.06);
+  padding-block:clamp(42px,6vw,68px) clamp(34px,4vw,52px)}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:rgba(255,255,255,.08);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-lg)}
+.trust-cell{background:var(--navy-900);padding:30px 26px;text-align:center}
+.trust-cell .t-num{font-family:var(--font-display);font-weight:800;font-size:clamp(30px,3.4vw,42px);
+  letter-spacing:-.03em;color:#fff}
+.trust-cell .t-num .u{color:var(--accent)}
+.trust-cell .t-lbl{font-size:13px;color:rgba(255,255,255,.6);font-weight:600;margin-top:6px;letter-spacing:.01em}
+.trust-logos{display:flex;gap:30px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.trust-logos .lg{color:#fff;font-weight:700;font-family:var(--font-display);
+  letter-spacing:-.005em;font-size:14.5px;display:inline-flex;align-items:center;gap:9px}
+.trust-logos .lg-ic{color:var(--accent);flex:none;width:18px;height:18px}
+
+/* ============================================================
+   SECTION HEADER
+   ============================================================ */
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:42px}
+.sec-head h2{font-size:clamp(28px,3.4vw,44px)}
+.sec-head .lead{margin-top:14px}
+.sec-head--center{flex-direction:column;align-items:center;text-align:center}
+.link-more{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);
+  font-weight:700;color:var(--ink);font-size:15px;white-space:nowrap;border-bottom:2px solid var(--accent);padding-bottom:3px}
+.link-more .arr{transition:transform .2s}
+.link-more:hover .arr{transform:translateX(3px)}
+
+/* ============================================================
+   COMPARATEURS
+   ============================================================ */
+.cmp-group{margin-bottom:40px}
+.cmp-group-h{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.cmp-group-h .gtag{font-family:var(--font-body);font-weight:700;font-size:12.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--slate)}
+.cmp-group-h .gline{flex:1;height:1px;background:var(--line)}
+.cmp-group-h .gcount{font-size:12.5px;color:var(--muted-2);font-weight:600}
+
+.cmp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cmp-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:20px;display:flex;flex-direction:column;gap:12px;transition:.18s ease;position:relative;
+  min-height:148px;
+}
+.cmp-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--shadow)}
+.cmp-ic{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;flex:none;
+  background:var(--accent-tint);color:var(--accent-700)}
+/* Titre de card comparateur (anciennement h4 — rétrogradé en div pour respect de la hiérarchie Hn) */
+.cmp-card .cmp-title{font-family:var(--font-display);font-weight:700;font-size:16px;
+  letter-spacing:-.015em;line-height:1.18;color:var(--ink);margin:0}
+.cmp-card .cdesc{font-size:13px;color:var(--muted);line-height:1.45;margin:0}
+.cmp-card .cfoot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:6px}
+.cmp-card .ccount{font-size:12.5px;color:var(--muted-2);font-weight:600;white-space:nowrap}
+.cmp-card .cgo{color:var(--accent);opacity:0;transform:translateX(-4px);transition:.18s}
+.cmp-card:hover .cgo{opacity:1;transform:translateX(0)}
+.cmp-card.is-featured{grid-column:span 2;background:var(--navy-900);color:#fff;border-color:transparent}
+.cmp-card.is-featured .cmp-title{color:#fff;font-size:22px}
+.cmp-card.is-featured .cdesc{color:rgba(255,255,255,.66)}
+.cmp-card.is-featured .cmp-ic{background:var(--accent);color:#fff}
+.cmp-card.is-featured .ccount{color:rgba(255,255,255,.6)}
+
+/* ============================================================
+   GENERIC SPLIT (methodology / audience)
+   ============================================================ */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,5vw,72px);align-items:center}
+.split.rev .split-media{order:-1}
+.steps{display:flex;flex-direction:column;gap:8px;margin-top:30px}
+.step{display:flex;gap:18px;padding:18px;border-radius:var(--radius-sm);transition:.15s;border:1px solid transparent}
+.step:hover{background:var(--surface);border-color:var(--line);box-shadow:var(--shadow-sm)}
+.step .sn{font-family:var(--font-display);font-weight:800;font-size:15px;color:#fff;background:var(--navy);
+  width:34px;height:34px;border-radius:9px;display:grid;place-items:center;flex:none}
+/* Titres d'étapes méthode : passage en h3 (au lieu de h4 précédemment).
+   On force la taille au niveau de la classe pour ne pas hériter de la taille h3 par défaut. */
+.step h3{font-size:17px;margin-bottom:5px;letter-spacing:-.015em;line-height:1.18}
+.step p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.5}
+.step:nth-child(1) .sn{background:var(--accent)}
+
+/* audience cards */
+.aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+.aud-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:26px 24px;transition:.18s}
+.aud-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:transparent}
+.aud-ic{width:46px;height:46px;border-radius:12px;background:var(--accent-tint);color:var(--accent-700);
+  display:grid;place-items:center;margin-bottom:16px}
+/* Titres cards audience : passage en h3 (force la taille pour ne pas hériter de h3 par défaut) */
+.aud-card h3{font-size:18px;margin-bottom:8px;line-height:1.18}
+.aud-card p{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
+
+/* ============================================================
+   AVIS (software reviews, stars)
+   ============================================================ */
+.avis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.avis-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:22px;display:flex;flex-direction:column;gap:13px;transition:.18s;position:relative}
+.avis-card:hover{box-shadow:var(--shadow);border-color:transparent;transform:translateY(-3px)}
+.avis-top{display:flex;align-items:center;gap:13px}
+.avis-logo{width:46px;height:46px;border-radius:11px;background:var(--bg-2);border:1px solid var(--line);
+  display:grid;place-items:center;font-family:var(--font-display);font-weight:800;color:var(--navy);font-size:17px;flex:none}
+.avis-name{font-family:var(--font-display);font-weight:700;font-size:16px;letter-spacing:-.01em}
+.avis-cat{font-size:12px;color:var(--muted-2);font-weight:600}
+.avis-score{margin-left:auto;text-align:right}
+.avis-score .sc{font-family:var(--font-display);font-weight:800;font-size:20px;letter-spacing:-.02em}
+.stars{color:var(--accent);letter-spacing:2px;font-size:14px}
+.stars .off{color:var(--line-strong)}
+.avis-card p{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
+.avis-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:6px;
+  border-top:1px solid var(--line);font-size:12.5px;color:var(--muted-2);font-weight:600}
+.avis-foot .verdict{color:var(--accent-700);font-weight:700;font-family:var(--font-display)}
+
+/* ============================================================
+   BLOG
+   ============================================================ */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.post{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-sm);overflow:hidden;transition:.18s;position:relative}
+.post:hover{box-shadow:var(--shadow);transform:translateY(-4px);border-color:transparent}
+.post .ph{aspect-ratio:16/10}
+.post-image{aspect-ratio:16/10;width:100%;object-fit:cover;display:block}
+.card-link{position:absolute;inset:0;z-index:2;text-indent:-9999px;overflow:hidden}
+.post-body{padding:20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.post-cat{font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--accent-700)}
+/* Titre d'article blog (anciennement h4 — rétrogradé en div pour respect de la hiérarchie Hn) */
+.post .post-title{font-family:var(--font-display);font-weight:800;font-size:18px;
+  line-height:1.22;letter-spacing:-.015em;color:var(--ink);margin:0}
+.post p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.5}
+.post-meta{margin-top:auto;display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted-2);
+  font-weight:600;padding-top:8px}
+
+/* ============================================================
+   EDITO / AUTHOR
+   ============================================================ */
+.edito{background:var(--navy-900);color:#fff;position:relative;overflow:hidden}
+.edito::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(70% 90% at 90% 10%,rgba(249,115,22,.16),transparent 55%);pointer-events:none}
+.edito-grid{position:relative;display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(34px,5vw,68px);align-items:center}
+.edito blockquote{margin:0;font-family:var(--font-display);font-weight:700;letter-spacing:-.02em;
+  font-size:clamp(24px,2.7vw,36px);line-height:1.18;color:#fff}
+.edito blockquote .hl{color:var(--accent)}
+.edito .eyebrow{color:var(--accent)}
+.author-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--radius);padding:30px;backdrop-filter:blur(6px)}
+.author-top{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.author-photo{width:72px;height:72px;border-radius:50%;flex:none;overflow:hidden;
+  background:var(--accent);position:relative}
+.author-photo .ph{width:100%;height:100%}
+.author-role{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.author-name{font-family:var(--font-display);font-weight:800;font-size:24px;letter-spacing:-.02em;color:#fff;margin-top:2px}
+.author-meta{font-size:13.5px;color:rgba(255,255,255,.6);margin-top:3px}
+.author-card p{font-size:14.5px;color:rgba(255,255,255,.74);line-height:1.62;margin:0}
+.author-sign{margin-top:18px;font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--accent)}
+
+/* ============================================================
+   CTA / NEWSLETTER
+   ============================================================ */
+.cta{background:var(--accent);color:#fff;border-radius:var(--radius);padding:clamp(34px,5vw,60px);
+  display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;
+  background:rgba(255,255,255,.1)}
+.cta h2{color:#fff;font-size:clamp(26px,3vw,40px);position:relative}
+.cta p{color:rgba(255,255,255,.9);margin:14px 0 0;position:relative;font-size:16px}
+.cta-form{position:relative;display:flex;gap:8px;background:#fff;border-radius:var(--radius-pill);padding:7px 7px 7px 8px}
+.cta-form input{flex:1;border:0;outline:none;background:transparent;padding:12px 14px;font-family:var(--font-body);
+  font-size:15px;min-width:0;color:var(--ink)}
+.cta-note{position:relative;font-size:12.5px;color:rgba(255,255,255,.85);margin-top:12px}
+
+/* ============================================================
+   PLACEHOLDER (flat-orange illustration slots)
+   ============================================================ */
+.ph{
+  position:relative;width:100%;height:100%;
+  background:
+    repeating-linear-gradient(135deg,rgba(249,115,22,.10) 0 2px,transparent 2px 13px),
+    linear-gradient(150deg,var(--navy-800),var(--navy-900));
+  display:grid;place-items:center;overflow:hidden;
+}
+.ph::before{content:"";position:absolute;width:46%;aspect-ratio:1;border-radius:50%;right:-6%;top:-12%;
+  background:radial-gradient(circle,var(--accent) 0%,transparent 70%);opacity:.5}
+.ph .ph-tag{
+  position:relative;z-index:1;
+  font-family:ui-monospace,'SFMono-Regular',Menlo,monospace;font-size:10.5px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:rgba(255,255,255,.66);
+  border:1px dashed rgba(255,255,255,.3);border-radius:8px;padding:7px 12px;background:rgba(13,20,31,.4);
+  text-align:center;max-width:84%;line-height:1.35;
+}
+.ph--light{background:
+    repeating-linear-gradient(135deg,rgba(249,115,22,.10) 0 2px,transparent 2px 13px),
+    linear-gradient(150deg,var(--bg-2),#e9edf2)}
+.ph--light .ph-tag{color:var(--slate);border-color:rgba(17,24,39,.22);background:rgba(255,255,255,.55)}
+
+.sec-alt{background:var(--bg-2)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-visual{max-width:520px}
+  .cmp-grid{grid-template-columns:repeat(3,1fr)}
+  .cmp-card.is-featured{grid-column:span 3}
+  .split,.edito-grid,.cta{grid-template-columns:1fr}
+  .split.rev .split-media{order:0}
+}
+@media (max-width:760px){
+  .trust-grid{grid-template-columns:1fr 1fr}
+  .cmp-grid,.avis-grid,.blog-grid,.aud-grid{grid-template-columns:1fr}
+  .cmp-card.is-featured{grid-column:span 1}
+  .sec-head{flex-direction:column;align-items:flex-start}
+  /* Affirmation : on garde 75px de padding vertical sur les sections (= 75px d'espace au-dessus de chaque H2 type "Nos comparateurs") */
+  .section{padding-block:75px}
+  /* CTA Newsletter — fix débordement mobile :
+     - réduit le padding interne
+     - cache le cercle décoratif (300x300) qui dépasse à droite
+     - passe le formulaire en colonne pour que input et bouton aient toute la largeur */
+  .cta{padding:28px 22px;gap:18px;border-radius:var(--radius)}
+  .cta::before{display:none}
+  .cta h2{font-size:clamp(22px,6vw,28px)}
+  .cta p{font-size:14.5px}
+  .cta-form{flex-direction:column;background:transparent;padding:0;gap:10px;border-radius:0}
+  .cta-form input{background:#fff;border-radius:var(--radius-pill);width:100%;padding:14px 18px;color:var(--ink)}
+  .cta-form .btn{justify-content:center;width:100%}
+}
+</style>
+<style>/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("a8bca26f-1cd6-464c-a33f-4875f64c6691") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("2c1e070c-2f3c-4868-8dde-f039a6b471f3") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("d3f75157-f937-476a-becd-5c38a55848a5") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("a8bca26f-1cd6-464c-a33f-4875f64c6691") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("2c1e070c-2f3c-4868-8dde-f039a6b471f3") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("d3f75157-f937-476a-becd-5c38a55848a5") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("a8bca26f-1cd6-464c-a33f-4875f64c6691") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("2c1e070c-2f3c-4868-8dde-f039a6b471f3") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("d3f75157-f937-476a-becd-5c38a55848a5") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("a8bca26f-1cd6-464c-a33f-4875f64c6691") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("2c1e070c-2f3c-4868-8dde-f039a6b471f3") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("d3f75157-f937-476a-becd-5c38a55848a5") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("a8bca26f-1cd6-464c-a33f-4875f64c6691") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("2c1e070c-2f3c-4868-8dde-f039a6b471f3") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("d3f75157-f937-476a-becd-5c38a55848a5") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("4429516c-1898-4b2d-973a-c9232b1a293d") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("919cb0b8-b5d7-472e-b129-343f9b0f7ad6") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("bee30ed5-e96b-494d-9200-92d26071042e") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("c4de2203-308a-4286-9d52-bddb1cebbf66") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("4429516c-1898-4b2d-973a-c9232b1a293d") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("919cb0b8-b5d7-472e-b129-343f9b0f7ad6") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("bee30ed5-e96b-494d-9200-92d26071042e") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("c4de2203-308a-4286-9d52-bddb1cebbf66") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("4429516c-1898-4b2d-973a-c9232b1a293d") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("919cb0b8-b5d7-472e-b129-343f9b0f7ad6") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("bee30ed5-e96b-494d-9200-92d26071042e") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("c4de2203-308a-4286-9d52-bddb1cebbf66") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("4429516c-1898-4b2d-973a-c9232b1a293d") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("919cb0b8-b5d7-472e-b129-343f9b0f7ad6") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("bee30ed5-e96b-494d-9200-92d26071042e") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("c4de2203-308a-4286-9d52-bddb1cebbf66") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style><style>/* ============================================================
+   DIGICUBE — Design system
+   Navy + orange, big bold sans (Labrix-adapted)
+   ============================================================ */
+
+:root{
+  /* Brand */
+  --navy-950:#0d141f;
+  --navy-900:#111a26;
+  --navy-800:#16202e;
+  --navy:#1f2937;
+  --navy-700:#273548;
+  --slate:#374151;
+
+  --ink:#111827;
+  --muted:#5b6573;
+  --muted-2:#8b94a3;
+  --bg:#f9fafb;
+  --bg-2:#f1f3f6;
+  --surface:#ffffff;
+  --line:rgba(17,24,39,.09);
+  --line-strong:rgba(17,24,39,.16);
+
+  /* Accent (overridable by Tweaks) */
+  --accent:#f97316;
+  --accent-600:#e9650b;
+  --accent-700:#c9540a;
+  --accent-tint:#fff1e7;
+  --accent-soft:rgba(249,115,22,.12);
+  --cool:#3b6ea5;            /* secondary cool used only in "mix" accent */
+
+  /* Type */
+  --font-display:'Archivo', system-ui, sans-serif;
+  --font-body:'Hanken Grotesk', system-ui, sans-serif;
+
+  /* Shape */
+  --radius:18px;
+  --radius-sm:12px;
+  --radius-pill:999px;
+
+  --maxw:1200px;
+  --gut:clamp(20px,4vw,48px);
+
+  --shadow-sm:0 1px 2px rgba(16,24,40,.05);
+  --shadow:0 6px 24px -8px rgba(16,24,40,.14);
+  --shadow-lg:0 28px 60px -24px rgba(13,20,31,.45);
+}
+
+/* Sharp-corner variant */
+[data-radius="sharp"]{ --radius:6px; --radius-sm:4px; }
+
+/* Accent variants */
+[data-accent="mix"]{
+  --cool:#3b6ea5;
+}
+[data-accent="terracotta"]{
+  --accent:#e2613a; --accent-600:#cf5230; --accent-700:#b24527;
+  --accent-tint:#fcefe9; --accent-soft:rgba(226,97,58,.13);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  line-height:1.55;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  font-weight:800;
+  line-height:1.04;
+  letter-spacing:-.022em;
+  margin:0;
+  color:var(--ink);
+  text-wrap:balance;
+}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+.section{padding-block:clamp(56px,8vw,104px)}
+.eyebrow{
+  font-family:var(--font-body);
+  font-weight:700;
+  font-size:12.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--accent-700);
+  margin:0 0 14px;
+  display:inline-flex;align-items:center;gap:9px;
+}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--accent);border-radius:2px}
+.eyebrow--center{justify-content:center}
+.lead{font-size:clamp(16px,1.4vw,18px);color:var(--muted);max-width:60ch;line-height:1.6}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-display);font-weight:700;font-size:15px;
+  padding:14px 22px;border-radius:var(--radius-pill);
+  border:1px solid transparent;cursor:pointer;transition:.18s ease;
+  letter-spacing:-.01em;
+}
+.btn .arr{transition:transform .2s ease}
+.btn:hover .arr{transform:translateX(3px)}
+.btn--accent{background:var(--accent);color:#fff;box-shadow:0 8px 20px -8px var(--accent)}
+.btn--accent:hover{background:var(--accent-600)}
+.btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.28)}
+.btn--ghost:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.06)}
+.btn--dark{background:var(--navy);color:#fff}
+.btn--dark:hover{background:var(--navy-700)}
+.btn--light{background:#fff;color:var(--ink);border-color:var(--line-strong)}
+.btn--light:hover{border-color:var(--ink)}
+.btn--sm{padding:10px 16px;font-size:13.5px}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(13,20,31,.72);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);
+  font-weight:800;font-size:20px;letter-spacing:-.02em;color:#fff}
+.cube{width:30px;height:30px;flex:none}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{color:rgba(255,255,255,.72);font-weight:600;font-size:14.5px;
+  letter-spacing:-.01em;transition:color .15s;position:relative;padding:6px 0}
+.nav-links a:hover{color:#fff}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
+  background:var(--accent);transition:width .2s}
+.nav-links a:hover::after{width:100%}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.burger{display:none}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;
+  background:
+    radial-gradient(120% 90% at 85% -10%, rgba(249,115,22,.18), transparent 55%),
+    radial-gradient(80% 70% at 0% 0%, rgba(59,110,165,.16), transparent 50%),
+    linear-gradient(180deg,var(--navy-950),var(--navy-900) 60%,var(--navy-800));
+  color:#fff;overflow:hidden;
+}
+.hero::before{ /* grid texture */
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:46px 46px;mask-image:radial-gradient(120% 80% at 50% 0%,#000,transparent 80%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;padding-block:clamp(48px,7vw,86px) 0}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,72px);align-items:center}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--radius-pill);padding:7px 15px 7px 11px;
+  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.82);margin-bottom:26px;
+}
+.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 0 4px var(--accent-soft)}
+.hero h1{
+  color:#fff;font-size:clamp(40px,5.6vw,72px);line-height:1.0;
+  letter-spacing:-.03em;font-weight:800;
+}
+.hero h1 .hl{color:var(--accent)}
+.hero p.lead{color:rgba(255,255,255,.72);margin-top:22px;max-width:46ch;font-size:clamp(16px,1.45vw,18.5px)}
+
+/* search */
+.searchbar{
+  margin-top:32px;display:flex;align-items:center;gap:8px;
+  background:#fff;border-radius:var(--radius-pill);padding:7px 7px 7px 8px;
+  max-width:520px;box-shadow:var(--shadow-lg);
+}
+.searchbar svg{flex:none;margin-left:10px;color:var(--muted-2)}
+.searchbar input{
+  flex:1;border:0;outline:none;background:transparent;font-family:var(--font-body);
+  font-size:15.5px;color:var(--ink);padding:10px 4px;min-width:0;
+}
+.searchbar input::placeholder{color:var(--muted-2)}
+.search-tags{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+.search-tags span{font-size:12.5px;color:rgba(255,255,255,.55);font-weight:600}
+.search-tags a{
+  font-size:12.5px;font-weight:600;color:rgba(255,255,255,.78);
+  border:1px solid rgba(255,255,255,.16);border-radius:var(--radius-pill);
+  padding:5px 12px;transition:.15s;white-space:nowrap;
+}
+.search-tags a:hover{border-color:var(--accent);color:#fff}
+
+/* hero visual */
+.hero-visual{position:relative}
+.hero-figure{position:relative;border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-lg);aspect-ratio:4/3.4}
+.float-card{
+  position:absolute;background:rgba(255,255,255,.96);color:var(--ink);
+  border-radius:14px;padding:13px 16px;box-shadow:var(--shadow-lg);
+  display:flex;align-items:center;gap:12px;backdrop-filter:blur(8px);
+}
+.float-card .fc-num{font-family:var(--font-display);font-weight:800;font-size:24px;line-height:1;letter-spacing:-.02em}
+.float-card .fc-lbl{font-size:11.5px;color:var(--muted);font-weight:600;line-height:1.2}
+.float-card .fc-ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
+  background:var(--accent-tint);color:var(--accent-700);flex:none}
+.float-a{top:18px;left:-26px}
+.float-b{bottom:22px;right:-22px}
+.float-stars{color:var(--accent);letter-spacing:2px;font-size:13px}
+
+/* hero chips strip */
+.hero-chips{
+  position:relative;margin-top:clamp(40px,5vw,64px);
+  border-top:1px solid rgba(255,255,255,.1);
+  padding-block:22px 30px;
+  display:flex;flex-wrap:wrap;gap:10px 26px;align-items:center;justify-content:center;
+}
+.hero-chips .chip{display:inline-flex;align-items:center;gap:11px;
+  color:rgba(255,255,255,.82);font-weight:700;font-size:15px;letter-spacing:-.01em}
+.hero-chips .chip .pl{color:var(--accent);font-weight:800}
+
+/* centered hero variant */
+[data-hero="centered"] .hero-grid{grid-template-columns:1fr;text-align:center;justify-items:center}
+[data-hero="centered"] .hero p.lead{margin-inline:auto}
+[data-hero="centered"] .searchbar{margin-inline:auto}
+[data-hero="centered"] .search-tags{justify-content:center}
+[data-hero="centered"] .hero-visual{display:none}
+[data-hero="centered"] .hero h1{font-size:clamp(42px,6.2vw,82px);max-width:16ch}
+
+/* ============================================================
+   TRUST BAND
+   ============================================================ */
+.trust{background:var(--navy-800);color:#fff;border-top:1px solid rgba(255,255,255,.06);
+  padding-block:clamp(42px,6vw,68px) clamp(34px,4vw,52px)}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:rgba(255,255,255,.08);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-lg)}
+.trust-cell{background:var(--navy-900);padding:30px 26px;text-align:center}
+.trust-cell .t-num{font-family:var(--font-display);font-weight:800;font-size:clamp(30px,3.4vw,42px);
+  letter-spacing:-.03em;color:#fff}
+.trust-cell .t-num .u{color:var(--accent)}
+.trust-cell .t-lbl{font-size:13px;color:rgba(255,255,255,.6);font-weight:600;margin-top:6px;letter-spacing:.01em}
+.trust-logos{display:flex;gap:34px;align-items:center;justify-content:center;flex-wrap:wrap;
+  margin-top:30px;opacity:.55}
+.trust-logos .lg{height:22px;color:rgba(255,255,255,.7);font-weight:800;font-family:var(--font-display);
+  letter-spacing:.02em;font-size:15px;display:flex;align-items:center;gap:6px}
+
+/* ============================================================
+   SECTION HEADER
+   ============================================================ */
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:42px}
+.sec-head h2{font-size:clamp(28px,3.4vw,44px)}
+.sec-head .lead{margin-top:14px}
+.sec-head--center{flex-direction:column;align-items:center;text-align:center}
+.link-more{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);
+  font-weight:700;color:var(--ink);font-size:15px;white-space:nowrap;border-bottom:2px solid var(--accent);padding-bottom:3px}
+.link-more .arr{transition:transform .2s}
+.link-more:hover .arr{transform:translateX(3px)}
+
+/* ============================================================
+   COMPARATEURS
+   ============================================================ */
+.cmp-group{margin-bottom:40px}
+.cmp-group-h{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.cmp-group-h .gtag{font-family:var(--font-body);font-weight:700;font-size:12.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--slate)}
+.cmp-group-h .gline{flex:1;height:1px;background:var(--line)}
+.cmp-group-h .gcount{font-size:12.5px;color:var(--muted-2);font-weight:600}
+
+.cmp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cmp-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:20px;display:flex;flex-direction:column;gap:12px;transition:.18s ease;position:relative;
+  min-height:148px;
+}
+.cmp-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--shadow)}
+.cmp-ic{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;flex:none;
+  background:var(--accent-tint);color:var(--accent-700)}
+.cmp-card h4{font-size:16px;font-weight:700;letter-spacing:-.015em;line-height:1.18}
+.cmp-card .cdesc{font-size:13px;color:var(--muted);line-height:1.45;margin:0}
+.cmp-card .cfoot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:6px}
+.cmp-card .ccount{font-size:12.5px;color:var(--muted-2);font-weight:600;white-space:nowrap}
+.cmp-card .cgo{color:var(--accent);opacity:0;transform:translateX(-4px);transition:.18s}
+.cmp-card:hover .cgo{opacity:1;transform:translateX(0)}
+.cmp-card.is-featured{grid-column:span 2;background:var(--navy-900);color:#fff;border-color:transparent}
+.cmp-card.is-featured h4{color:#fff;font-size:22px}
+.cmp-card.is-featured .cdesc{color:rgba(255,255,255,.66)}
+.cmp-card.is-featured .cmp-ic{background:var(--accent);color:#fff}
+.cmp-card.is-featured .ccount{color:rgba(255,255,255,.6)}
+
+/* card style variants */
+[data-cards="minimal"] .cmp-card .cdesc{display:none}
+[data-cards="minimal"] .cmp-card{min-height:auto;padding:18px}
+[data-cards="minimal"] .cmp-ic{width:38px;height:38px}
+[data-cards="outline"] .cmp-card{background:transparent;border-color:var(--line-strong)}
+[data-cards="outline"] .cmp-ic{background:transparent;border:1.5px solid var(--accent);border-radius:11px}
+[data-cards="outline"] .cmp-card:hover{background:var(--surface)}
+
+/* ============================================================
+   GENERIC SPLIT (methodology / audience)
+   ============================================================ */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,5vw,72px);align-items:center}
+.split.rev .split-media{order:-1}
+.steps{display:flex;flex-direction:column;gap:8px;margin-top:30px}
+.step{display:flex;gap:18px;padding:18px;border-radius:var(--radius-sm);transition:.15s;border:1px solid transparent}
+.step:hover{background:var(--surface);border-color:var(--line);box-shadow:var(--shadow-sm)}
+.step .sn{font-family:var(--font-display);font-weight:800;font-size:15px;color:#fff;background:var(--navy);
+  width:34px;height:34px;border-radius:9px;display:grid;place-items:center;flex:none}
+.step h4{font-size:17px;margin-bottom:5px;letter-spacing:-.015em}
+.step p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.5}
+.step:nth-child(1) .sn{background:var(--accent)}
+
+/* audience cards */
+.aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+.aud-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:26px 24px;transition:.18s}
+.aud-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:transparent}
+.aud-ic{width:46px;height:46px;border-radius:12px;background:var(--accent-tint);color:var(--accent-700);
+  display:grid;place-items:center;margin-bottom:16px}
+.aud-card h4{font-size:18px;margin-bottom:8px}
+.aud-card p{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
+
+/* ============================================================
+   AVIS (software reviews, stars)
+   ============================================================ */
+.avis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.avis-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:22px;display:flex;flex-direction:column;gap:13px;transition:.18s}
+.avis-card:hover{box-shadow:var(--shadow);border-color:transparent;transform:translateY(-3px)}
+.avis-top{display:flex;align-items:center;gap:13px}
+.avis-logo{width:46px;height:46px;border-radius:11px;background:var(--bg-2);border:1px solid var(--line);
+  display:grid;place-items:center;font-family:var(--font-display);font-weight:800;color:var(--navy);font-size:17px;flex:none}
+.avis-name{font-family:var(--font-display);font-weight:700;font-size:16px;letter-spacing:-.01em}
+.avis-cat{font-size:12px;color:var(--muted-2);font-weight:600}
+.avis-score{margin-left:auto;text-align:right}
+.avis-score .sc{font-family:var(--font-display);font-weight:800;font-size:20px;letter-spacing:-.02em}
+.stars{color:var(--accent);letter-spacing:2px;font-size:14px}
+.stars .off{color:var(--line-strong)}
+.avis-card p{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
+.avis-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:6px;
+  border-top:1px solid var(--line);font-size:12.5px;color:var(--muted-2);font-weight:600}
+.avis-foot .verdict{color:var(--accent-700);font-weight:700;font-family:var(--font-display)}
+
+/* ============================================================
+   BLOG
+   ============================================================ */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.post{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-sm);overflow:hidden;transition:.18s}
+.post:hover{box-shadow:var(--shadow);transform:translateY(-4px);border-color:transparent}
+.post .ph{aspect-ratio:16/10}
+.post-body{padding:20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.post-cat{font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--accent-700)}
+.post h4{font-size:18px;line-height:1.22;letter-spacing:-.015em}
+.post p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.5}
+.post-meta{margin-top:auto;display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted-2);
+  font-weight:600;padding-top:8px}
+
+/* ============================================================
+   EDITO / AUTHOR
+   ============================================================ */
+.edito{background:var(--navy-900);color:#fff;position:relative;overflow:hidden}
+.edito::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(70% 90% at 90% 10%,rgba(249,115,22,.16),transparent 55%);pointer-events:none}
+.edito-grid{position:relative;display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(34px,5vw,68px);align-items:center}
+.edito blockquote{margin:0;font-family:var(--font-display);font-weight:700;letter-spacing:-.02em;
+  font-size:clamp(24px,2.7vw,36px);line-height:1.18;color:#fff}
+.edito blockquote .hl{color:var(--accent)}
+.edito .eyebrow{color:var(--accent)}
+.author-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--radius);padding:30px;backdrop-filter:blur(6px)}
+.author-top{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.author-photo{width:72px;height:72px;border-radius:50%;flex:none;overflow:hidden;
+  background:var(--accent);position:relative}
+.author-photo .ph{width:100%;height:100%}
+.author-role{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.author-name{font-family:var(--font-display);font-weight:800;font-size:24px;letter-spacing:-.02em;color:#fff;margin-top:2px}
+.author-meta{font-size:13.5px;color:rgba(255,255,255,.6);margin-top:3px}
+.author-card p{font-size:14.5px;color:rgba(255,255,255,.74);line-height:1.62;margin:0}
+.author-sign{margin-top:18px;font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--accent)}
+
+/* ============================================================
+   CTA / NEWSLETTER
+   ============================================================ */
+.cta{background:var(--accent);color:#fff;border-radius:var(--radius);padding:clamp(34px,5vw,60px);
+  display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;
+  background:rgba(255,255,255,.1)}
+.cta h2{color:#fff;font-size:clamp(26px,3vw,40px);position:relative}
+.cta p{color:rgba(255,255,255,.9);margin:14px 0 0;position:relative;font-size:16px}
+.cta-form{position:relative;display:flex;gap:8px;background:#fff;border-radius:var(--radius-pill);padding:7px 7px 7px 8px}
+.cta-form input{flex:1;border:0;outline:none;background:transparent;padding:12px 14px;font-family:var(--font-body);
+  font-size:15px;min-width:0;color:var(--ink)}
+.cta-note{position:relative;font-size:12.5px;color:rgba(255,255,255,.85);margin-top:12px}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{background:var(--navy-950);color:rgba(255,255,255,.7);padding-block:60px 30px;
+  border-top:1px solid rgba(255,255,255,.06)}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px}
+.foot-brand .brand{margin-bottom:14px}
+.foot-brand p{font-size:13.5px;color:rgba(255,255,255,.5);max-width:30ch;line-height:1.6}
+.foot-col h5{font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:rgba(255,255,255,.45);margin:0 0 16px}
+.foot-col a{display:block;font-size:14px;padding:6px 0;color:rgba(255,255,255,.72);transition:color .15s}
+.foot-col a:hover{color:var(--accent)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
+  margin-top:46px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);
+  font-size:12.5px;color:rgba(255,255,255,.4)}
+
+/* ============================================================
+   PLACEHOLDER (flat-orange illustration slots)
+   ============================================================ */
+.ph{
+  position:relative;width:100%;height:100%;
+  background:
+    repeating-linear-gradient(135deg,rgba(249,115,22,.10) 0 2px,transparent 2px 13px),
+    linear-gradient(150deg,var(--navy-800),var(--navy-900));
+  display:grid;place-items:center;overflow:hidden;
+}
+.ph::before{content:"";position:absolute;width:46%;aspect-ratio:1;border-radius:50%;right:-6%;top:-12%;
+  background:radial-gradient(circle,var(--accent) 0%,transparent 70%);opacity:.5}
+.ph .ph-tag{
+  position:relative;z-index:1;
+  font-family:ui-monospace,'SFMono-Regular',Menlo,monospace;font-size:10.5px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:rgba(255,255,255,.66);
+  border:1px dashed rgba(255,255,255,.3);border-radius:8px;padding:7px 12px;background:rgba(13,20,31,.4);
+  text-align:center;max-width:84%;line-height:1.35;
+}
+.ph--light{background:
+    repeating-linear-gradient(135deg,rgba(249,115,22,.10) 0 2px,transparent 2px 13px),
+    linear-gradient(150deg,var(--bg-2),#e9edf2)}
+.ph--light .ph-tag{color:var(--slate);border-color:rgba(17,24,39,.22);background:rgba(255,255,255,.55)}
+
+/* contrast rhythm variant: tint alternating sections */
+[data-rhythm="contrast"] .sec-alt{background:var(--bg-2)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-visual{max-width:520px}
+  .cmp-grid{grid-template-columns:repeat(3,1fr)}
+  .cmp-card.is-featured{grid-column:span 3}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .split,.edito-grid,.cta{grid-template-columns:1fr}
+  .split.rev .split-media{order:0}
+}
+@media (max-width:760px){
+  .nav-links{display:none}
+  .burger{display:grid;place-items:center;width:42px;height:42px;border-radius:10px;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#fff;cursor:pointer}
+  .trust-grid{grid-template-columns:1fr 1fr}
+  .cmp-grid,.avis-grid,.blog-grid,.aud-grid{grid-template-columns:1fr}
+  .cmp-card.is-featured{grid-column:span 1}
+  .sec-head{flex-direction:column;align-items:flex-start}
+  .float-a{left:0}.float-b{right:0}
+}
+</style><style>/* ============================================================
+   DIGICUBE — Page À propos — composants spécifiques
+   Extends styles.css — même tokens, même vocabulaire
+   ============================================================ */
+
+/* ---- Scroll fade (animations discrètes) ---- */
+.fade-up{
+  opacity:0;transform:translateY(26px);
+  transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1);
+}
+.fade-up.in{opacity:1;transform:none}
+.fade-up.d1{transition-delay:.08s}
+.fade-up.d2{transition-delay:.16s}
+.fade-up.d3{transition-delay:.24s}
+.fade-up.d4{transition-delay:.32s}
+
+/* ============================================================
+   HERO À PROPOS
+   ============================================================ */
+.about-hero{
+  position:relative;
+  background:
+    radial-gradient(120% 90% at 85% -10%, rgba(249,115,22,.18), transparent 55%),
+    radial-gradient(80% 70% at 0% 0%, rgba(59,110,165,.16), transparent 50%),
+    linear-gradient(180deg,var(--navy-950),var(--navy-900) 60%,var(--navy-800));
+  color:#fff;overflow:hidden;padding-block:clamp(64px,8vw,110px);
+}
+.about-hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:46px 46px;
+  mask-image:radial-gradient(120% 80% at 50% 0%,#000,transparent 80%);
+  pointer-events:none;
+}
+.about-hero-grid{
+  position:relative;
+  display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(40px,5vw,80px);align-items:center;
+}
+.about-hero h1{
+  color:#fff;font-size:clamp(38px,5vw,66px);line-height:1.0;
+  letter-spacing:-.03em;font-weight:800;
+}
+.about-hero h1 .hl{color:var(--accent)}
+.about-hero p.lead{color:rgba(255,255,255,.72);margin-top:20px;max-width:48ch;font-size:clamp(16px,1.4vw,18.5px);line-height:1.6}
+.about-hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.about-hero-fig{position:relative;border-radius:var(--radius);overflow:hidden;
+  aspect-ratio:4/3.2;box-shadow:var(--shadow-lg)}
+/* breadcrumb */
+.breadcrumb{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;
+  color:rgba(255,255,255,.45);margin-bottom:22px}
+.breadcrumb a{color:rgba(255,255,255,.55);transition:color .15s}
+.breadcrumb a:hover{color:#fff}
+.breadcrumb .sep{color:rgba(255,255,255,.25)}
+
+/* ============================================================
+   POURQUOI CE MÉDIA — story + stats
+   ============================================================ */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,72px);align-items:center}
+.story-text p{font-size:clamp(15px,1.3vw,17px);color:var(--muted);line-height:1.72;margin:0 0 18px}
+.story-text p:last-child{margin:0}
+.story-text strong{color:var(--ink);font-weight:700}
+.story-stats{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:var(--line);border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--line)}
+.stat-cell{background:var(--surface);padding:24px 20px;text-align:center}
+.stat-cell .s-num{
+  font-family:var(--font-display);font-weight:800;font-size:clamp(28px,3vw,38px);
+  letter-spacing:-.03em;color:var(--ink);display:block;
+}
+.stat-cell .s-num .u{color:var(--accent)}
+.stat-cell .s-lbl{font-size:12.5px;color:var(--muted);font-weight:600;margin-top:5px;display:block}
+
+/* ============================================================
+   VALEURS — 4 cartes
+   ============================================================ */
+.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px}
+.value-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:28px 24px;transition:.2s ease;position:relative;overflow:hidden;
+}
+.value-card::before{
+  content:"";position:absolute;bottom:-40px;right:-40px;width:120px;height:120px;
+  border-radius:50%;background:var(--accent-soft);transition:transform .3s ease;
+}
+.value-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--accent)}
+.value-card:hover::before{transform:scale(1.5)}
+.value-ic{
+  width:50px;height:50px;border-radius:13px;background:var(--accent-tint);color:var(--accent-700);
+  display:grid;place-items:center;margin-bottom:18px;
+}
+.value-card h4{font-size:19px;margin-bottom:10px;letter-spacing:-.015em}
+.value-card p{margin:0;font-size:14px;color:var(--muted);line-height:1.55}
+.value-badge{
+  display:inline-flex;align-items:center;gap:7px;margin-top:18px;
+  font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--accent-700);
+}
+.value-badge::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px}
+
+/* ============================================================
+   TIMELINE MÉTHODOLOGIE — 7 étapes verticales
+   ============================================================ */
+.timeline-wrap{position:relative;max-width:860px;margin:0 auto}
+.timeline-line{
+  position:absolute;left:28px;top:0;bottom:0;width:2px;
+  background:linear-gradient(to bottom,var(--accent) 0%,var(--line) 100%);
+  border-radius:2px;
+}
+.tl-item{
+  display:flex;gap:28px;align-items:flex-start;position:relative;
+  padding:0 0 42px 72px;
+}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{
+  position:absolute;left:16px;top:6px;
+  width:26px;height:26px;border-radius:50%;
+  background:var(--surface);border:2.5px solid var(--line);
+  display:grid;place-items:center;z-index:1;flex:none;
+  transition:.2s;
+}
+.tl-dot svg{color:var(--muted-2);transition:.2s}
+.tl-item.active .tl-dot,
+.tl-item:hover .tl-dot{border-color:var(--accent);background:var(--accent-tint)}
+.tl-item.active .tl-dot svg,
+.tl-item:hover .tl-dot svg{color:var(--accent-700)}
+.tl-num{
+  position:absolute;left:0;top:4px;
+  width:58px;height:58px;
+}
+.tl-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:22px 24px;flex:1;transition:.18s;
+}
+.tl-item:hover .tl-card{border-color:var(--accent);box-shadow:var(--shadow)}
+.tl-card-head{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.tl-ic{width:42px;height:42px;border-radius:11px;background:var(--accent-tint);
+  color:var(--accent-700);display:grid;place-items:center;flex:none}
+.tl-step-num{font-family:var(--font-display);font-weight:800;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted-2)}
+.tl-card h4{font-size:17px;margin:0 0 6px;letter-spacing:-.015em}
+.tl-card p{margin:0;font-size:14px;color:var(--muted);line-height:1.52}
+
+/* ============================================================
+   CRITÈRES DE NOTATION
+   ============================================================ */
+.criteria-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.criteria-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:22px 24px;display:flex;flex-direction:column;gap:12px;transition:.18s;
+}
+.criteria-card:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.criteria-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.criteria-label{display:flex;align-items:center;gap:12px}
+.criteria-ic{width:40px;height:40px;border-radius:10px;background:var(--accent-tint);
+  color:var(--accent-700);display:grid;place-items:center;flex:none}
+.criteria-head h4{font-size:16px;margin:0;letter-spacing:-.01em}
+.criteria-score{font-family:var(--font-display);font-weight:800;font-size:20px;
+  letter-spacing:-.02em;color:var(--ink)}
+.criteria-score .denom{font-size:13px;color:var(--muted-2);font-weight:600}
+.criteria-stars{color:var(--accent);font-size:14px;letter-spacing:2px}
+.criteria-bar-track{height:5px;background:var(--bg-2);border-radius:3px;overflow:hidden}
+.criteria-bar{height:5px;border-radius:3px;background:linear-gradient(90deg,var(--accent-700),var(--accent));
+  width:0;transition:width 1.2s cubic-bezier(.22,1,.36,1)}
+.criteria-card p{margin:0;font-size:13px;color:var(--muted);line-height:1.5}
+
+/* ============================================================
+   TRANSPARENCE FINANCIÈRE
+   ============================================================ */
+.transparency-box{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(28px,3.5vw,48px);display:grid;grid-template-columns:.8fr 2fr;gap:clamp(28px,3vw,48px);
+  align-items:start;box-shadow:var(--shadow-sm);
+  position:relative;overflow:hidden;
+}
+.transparency-box::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-600));
+}
+.transp-icon-wrap{
+  background:var(--accent-tint);border-radius:var(--radius-sm);
+  display:grid;place-items:center;padding:28px;
+}
+.transp-icon-wrap svg{color:var(--accent-700)}
+.transp-body h3{font-size:clamp(22px,2.4vw,30px);margin:0 0 12px;letter-spacing:-.02em}
+.transp-body .lead{font-size:clamp(14.5px,1.2vw,16.5px);color:var(--muted);margin:0 0 20px}
+.transp-checks{display:flex;flex-direction:column;gap:10px}
+.t-check{display:flex;align-items:flex-start;gap:13px;font-size:14.5px;color:var(--ink);line-height:1.5}
+.t-check .ck{
+  width:22px;height:22px;border-radius:6px;background:var(--accent-tint);color:var(--accent-700);
+  display:grid;place-items:center;flex:none;margin-top:1px;
+}
+
+/* ============================================================
+   ÉQUIPE — team cards
+   ============================================================ */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.team-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:28px;display:flex;flex-direction:column;align-items:center;text-align:center;
+  gap:0;transition:.2s;position:relative;overflow:hidden;
+}
+.team-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-600));
+  transform:scaleX(0);transform-origin:left;transition:transform .3s ease;
+}
+.team-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
+.team-card:hover::before{transform:scaleX(1)}
+.team-photo{
+  width:84px;height:84px;border-radius:50%;overflow:hidden;
+  border:3px solid var(--bg-2);margin-bottom:18px;flex:none;
+  background:var(--accent);
+}
+.team-photo .ph{width:100%;height:100%}
+.team-name{font-family:var(--font-display);font-weight:800;font-size:20px;
+  letter-spacing:-.02em;margin-bottom:4px}
+.team-role{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent-700);margin-bottom:6px}
+.team-exp{font-size:13px;color:var(--muted-2);font-weight:600;margin-bottom:14px}
+.team-tags{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:18px}
+.team-tag{
+  font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:var(--radius-pill);
+  background:var(--bg-2);color:var(--slate);
+}
+.team-bio{font-size:13.5px;color:var(--muted);line-height:1.55;margin-bottom:22px;flex:1}
+.team-foot{display:flex;gap:10px;width:100%;margin-top:auto}
+.team-foot .btn{flex:1;justify-content:center}
+.team-li{
+  width:40px;height:40px;border-radius:var(--radius-sm);border:1px solid var(--line);
+  display:grid;place-items:center;color:var(--muted);transition:.15s;flex:none;
+}
+.team-li:hover{border-color:var(--accent);color:var(--accent-700);background:var(--accent-tint)}
+
+/* ============================================================
+   CHARTE ÉDITORIALE — checklist
+   ============================================================ */
+.charter-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.charter-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:20px 22px;display:flex;align-items:flex-start;gap:14px;transition:.18s;
+}
+.charter-card:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.charter-ck{
+  width:32px;height:32px;border-radius:9px;background:var(--accent-tint);color:var(--accent-700);
+  display:grid;place-items:center;flex:none;margin-top:1px;
+}
+.charter-card h5{font-size:15px;margin:0 0 5px;letter-spacing:-.01em;font-weight:700}
+.charter-card p{margin:0;font-size:13px;color:var(--muted);line-height:1.45}
+
+/* ============================================================
+   LOGOS PARTENAIRES / CONFIANCE
+   ============================================================ */
+.logos-section{background:var(--navy-800);color:#fff;padding-block:clamp(48px,6vw,80px)}
+.logos-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:1px;
+  background:rgba(255,255,255,.08);border-radius:var(--radius-sm);overflow:hidden;
+  margin-top:40px;
+}
+.logo-cell{
+  background:var(--navy-900);padding:26px 18px;display:grid;place-items:center;
+  transition:.18s;cursor:default;
+}
+.logo-cell:hover{background:var(--navy-700)}
+.logo-pill{
+  font-family:var(--font-display);font-weight:800;font-size:14px;letter-spacing:.04em;
+  color:rgba(255,255,255,.55);transition:.18s;
+}
+.logo-cell:hover .logo-pill{color:rgba(255,255,255,.88)}
+
+/* ============================================================
+   FAQ ACCORDÉON
+   ============================================================ */
+.faq-list{display:flex;flex-direction:column;gap:8px;max-width:800px;margin:0 auto}
+.faq-item{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  overflow:hidden;transition:.18s;
+}
+.faq-item.open{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.faq-trigger{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  padding:20px 22px;background:none;border:none;cursor:pointer;gap:16px;
+  text-align:left;
+}
+.faq-trigger h4{
+  font-family:var(--font-display);font-size:17px;font-weight:700;margin:0;
+  letter-spacing:-.015em;color:var(--ink);transition:color .15s;
+}
+.faq-item.open .faq-trigger h4{color:var(--accent-700)}
+.faq-chevron{
+  width:32px;height:32px;border-radius:8px;background:var(--bg-2);
+  display:grid;place-items:center;flex:none;color:var(--muted);
+  transition:background .15s,transform .3s cubic-bezier(.22,1,.36,1);
+}
+.faq-item.open .faq-chevron{background:var(--accent-tint);color:var(--accent-700);transform:rotate(180deg)}
+.faq-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .4s cubic-bezier(.22,1,.36,1),padding .3s;
+}
+.faq-item.open .faq-body{max-height:600px}
+.faq-body p{
+  margin:0;padding:0 22px 22px;font-size:15px;color:var(--muted);line-height:1.65;
+  border-top:1px solid var(--line);padding-top:16px;
+}
+
+/* ============================================================
+   CTA FINAL — fond hero identique
+   ============================================================ */
+.cta-final{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 85% -10%, rgba(249,115,22,.22), transparent 55%),
+    radial-gradient(80% 70% at 0% 0%, rgba(59,110,165,.16), transparent 50%),
+    linear-gradient(180deg,var(--navy-950),var(--navy-900));
+  color:#fff;padding-block:clamp(64px,8vw,110px);
+}
+.cta-final::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:46px 46px;
+  mask-image:radial-gradient(120% 80% at 50% 0%,#000,transparent 80%);
+  pointer-events:none;
+}
+.cta-final-inner{
+  position:relative;text-align:center;display:flex;flex-direction:column;
+  align-items:center;gap:24px;
+}
+.cta-final h2{color:#fff;font-size:clamp(32px,4.5vw,60px);max-width:18ch}
+.cta-final p.lead{color:rgba(255,255,255,.7);max-width:50ch;text-align:center}
+.cta-final-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+
+/* ============================================================
+   RESPONSIVE À PROPOS
+   ============================================================ */
+@media (max-width:1024px){
+  .about-hero-grid{grid-template-columns:1fr}
+  .about-hero-fig{max-width:500px}
+  .story-grid{grid-template-columns:1fr}
+  .values-grid{grid-template-columns:repeat(2,1fr)}
+  .criteria-grid{grid-template-columns:1fr}
+  .transparency-box{grid-template-columns:1fr}
+  .transp-icon-wrap{display:none}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .charter-grid{grid-template-columns:repeat(2,1fr)}
+  .logos-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:760px){
+  .values-grid,.team-grid,.charter-grid{grid-template-columns:1fr}
+  .logos-grid{grid-template-columns:repeat(2,1fr)}
+  .about-hero-ctas{flex-direction:column}
+  .timeline-line{left:18px}
+  .tl-item{padding-left:56px}
+}
+</style>
+<style>.fade-up,.fade{opacity:1 !important;transform:none !important}</style>
+</head>
+<body>
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<style>
+nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+nav.site-nav .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
+nav.site-nav .nav-logo span{color:var(--accent2)}
+nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
+nav.site-nav .nav-cta:hover{opacity:.88}
+nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+nav.site-nav .nav-mobile.open{display:flex}
+nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
+</style>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/logo.png" alt="digicube.fr" style="height:36px;width:auto;object-fit:contain;vertical-align:middle"></a>
+    <div class="nav-links">
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/blog/">Blog</a>
+          <a href="/outils">Outils</a>
+    </div>
+    <a href="/contact" class="nav-cta">Contact</a>
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+      <a href="/nos-comparateurs">Nos comparateurs</a>
+      <a href="/blog/">Blog</a>
+        <a href="/outils">Outils</a>
+    <a href="/contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<script>
+/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
+   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
+   devoir redéfinir la fonction côté template parent.
+
+   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
+   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
+   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
+   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
+   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
+   qui est actif et le parent réécrit derrière s'il en a un.
+
+   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
+   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
+   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
+   ne faisait rien. */
+(function(){
+  if (typeof window.toggleMenu === 'function') return;
+  window.toggleMenu = function(){
+    var menu = document.getElementById('nav-mobile');
+    if (menu) menu.classList.toggle('open');
+  };
+  // UX bonus : fermer le menu mobile en cliquant en dehors
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('nav-mobile');
+    var burger = document.getElementById('burger');
+    if (!menu || !burger) return;
+    if (!menu.classList.contains('open')) return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    menu.classList.remove('open');
+  });
+  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
+  document.addEventListener('DOMContentLoaded', function(){
+    var menu = document.getElementById('nav-mobile');
+    if (!menu) return;
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  });
+})();
+</script>
+<!-- ============================================================
+     1. HERO
+     ============================================================ -->
+<section class="about-hero" data-screen-label="Hero À propos">
+  <div class="wrap">
+    <div class="about-hero-grid">
+      <div>
+        <div class="breadcrumb fade-up">
+          <a href="Digicube Home.html">Accueil</a>
+          <span class="sep">/</span>
+          <span>À propos</span>
+        </div>
+        <span class="eyebrow fade-up" style="color:var(--accent)">Le média Digicube</span>
+        <h1 class="fade-up d1">J'aide les entreprises à choisir les meilleurs <span class="hl">logiciels</span></h1>
+        <p class="lead fade-up d2">Digicube est un média indépendant spécialisé dans les solutions numériques pour les TPE et PME françaises. Je teste, compare et explique sans jargon, sans conflit d'intérêts.</p>
+        <div class="about-hero-ctas fade-up d3">
+          <a href="Digicube Home.html#comparateurs" class="btn btn--accent">Découvrir nos comparatifs <span class="arr">→</span></a>
+          <a href="#methode" class="btn btn--ghost">Notre méthodologie</a>
+        </div>
+      </div>
+      <div class="about-hero-fig fade-up d2">
+        <div class="ph"><span class="ph-tag">Illustration flat · équipe et logiciels</span></div>
+        <div class="float-card float-a">
+          <div class="fc-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="9"></circle></svg></div>
+          <div><div class="fc-num">100%</div><div class="fc-lbl">Indépendant</div></div>
+        </div>
+        <div class="float-card float-b">
+          <div class="fc-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 11 18-5v12L3 14z"></path></svg></div>
+          <div><div class="fc-num">340+</div><div class="fc-lbl">Logiciels testés</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     2. POURQUOI CE MÉDIA EXISTE
+     ============================================================ -->
+<section class="section" id="histoire" data-screen-label="Pourquoi ce média">
+  <div class="wrap">
+    <div class="story-grid">
+      <div class="story-text fade-up">
+        <span class="eyebrow">Notre histoire</span>
+        <h2 style="margin-bottom:24px">Choisir un logiciel, c'est souvent plus risqué qu'on ne le pense</h2>
+        <p>Un mauvais choix de logiciel, c'est <strong>plusieurs milliers d'euros</strong> dépensés, <strong>des mois de déploiement</strong> perdus et une équipe perturbée. Pourtant, la plupart des comparatifs disponibles sont opaques, rédigés sans jamais avoir ouvert le logiciel, et sans expliquer pourquoi un outil est recommandé plutôt qu'un autre.</p>
+        <p>Nicolas Roux, dirigeant d'une TPE à Marseille, en a fait les frais. Il a créé Digicube pour que plus personne n'ait à naviguer à vue dans la jungle des SaaS professionnels.</p>
+        <p>Aujourd'hui, Digicube c'est une équipe de testeurs et rédacteurs qui passent chaque outil au crible <strong>en conditions réelles</strong>, documentent chaque critère et publient des analyses que vous pouvez vérifier.</p>
+      </div>
+      <div class="fade-up d1">
+        <div class="story-stats">
+          <div class="stat-cell">
+            <span class="s-num"><span class="count" data-target="340">340</span><span class="u">+</span></span>
+            <span class="s-lbl">Logiciels analysés</span>
+          </div>
+          <div class="stat-cell">
+            <span class="s-num"><span class="count" data-target="1200">1200</span><span class="u">h</span></span>
+            <span class="s-lbl">Heures de tests</span>
+          </div>
+          <div class="stat-cell">
+            <span class="s-num"><span class="count" data-target="48000">48000</span><span class="u">+</span></span>
+            <span class="s-lbl">Lecteurs / mois</span>
+          </div>
+          <div class="stat-cell">
+            <span class="s-num"><span class="count" data-target="120">120</span><span class="u">+</span></span>
+            <span class="s-lbl">Comparatifs publiés</span>
+          </div>
+        </div>
+        <div style="margin-top:16px;border-radius:var(--radius-sm);overflow:hidden;aspect-ratio:16/9">
+          <div class="ph"><span class="ph-tag">Illustration flat · coulisses de test</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     3. NOS VALEURS
+     ============================================================ -->
+<section class="section sec-alt" id="valeurs" data-screen-label="Valeurs">
+  <div class="wrap">
+    <div class="sec-head--center sec-head fade-up" style="margin-bottom:42px">
+      <div>
+        <span class="eyebrow eyebrow--center">Ce qui me guide</span>
+        <h2>Nos valeurs</h2>
+        <p class="lead" style="margin-inline:auto">Quatre principes non négociables qui gouvernent chaque article, chaque comparatif, chaque note que je publie sur Digicube.</p>
+      </div>
+    </div>
+    <div class="values-grid">
+      <div class="value-card fade-up">
+        <div class="value-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"></path></svg></div>
+        <h4>Rigueur</h4>
+        <p>Chaque logiciel classé a été ouvert, configuré et testé par mes soins selon un protocole identique. Mes notes reposent sur des critères documentés et vérifiables, pas sur des impressions ou des communiqués de presse.</p>
+        <span class="value-badge">Engagement fondateur</span>
+      </div>
+      <div class="value-card fade-up d1">
+        <div class="value-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4l3 3"></path></svg></div>
+        <h4>Transparence</h4>
+        <p>J'explique toujours pourquoi un logiciel est mieux classé qu'un autre. Mes critères sont publics, ma méthodologie détaillée, mes sources citées.</p>
+        <span class="value-badge">Méthodologie documentée</span>
+      </div>
+      <div class="value-card fade-up d2">
+        <div class="value-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.1V12a10 10 0 1 1-5.9-9.1"></path><path d="m22 4-10 10-3-3"></path></svg></div>
+        <h4>Expertise</h4>
+        <p>Chaque logiciel est étudié avant publication. J'ouvre un vrai compte, teste en production et confronte mes résultats aux retours d'utilisateurs réels.</p>
+        <span class="value-badge">Tests en conditions réelles</span>
+      </div>
+      <div class="value-card fade-up d3">
+        <div class="value-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 9.5V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v4.5"></path><path d="M2 14.5h20v5a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-5z"></path><path d="M12 12v2"></path></svg></div>
+        <h4>Utilité</h4>
+        <p>Notre priorité est d'aider les entreprises, pas d'impressionner. Chaque article répond à une vraie question d'un vrai dirigeant. On écrit pour décider, pas pour informer.</p>
+        <span class="value-badge">Pragmatisme avant tout</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     4. MÉTHODOLOGIE timeline
+     ============================================================ -->
+<section class="section" id="methode" data-screen-label="Méthodologie">
+  <div class="wrap">
+    <div class="sec-head--center sec-head fade-up" style="margin-bottom:52px">
+      <div>
+        <span class="eyebrow eyebrow--center">Notre méthode</span>
+        <h2>Comment on teste les logiciels</h2>
+        <p class="lead" style="margin-inline:auto">Un protocole en 7 étapes, identique pour chaque logiciel. Aucun raccourci, aucun comparatif rédigé depuis un communiqué de presse.</p>
+      </div>
+    </div>
+    <div class="timeline-wrap">
+      <div class="timeline-line"></div>
+      <div class="tl-item active fade-up">
+        <div class="tl-dot"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m3 11 18-5v12L3 14z"></path></svg></div>
+        <div class="tl-card">
+          <div class="tl-card-head">
+            <div class="tl-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg></div>
+            <div><div class="tl-step-num">Étape 01</div><h4>Sélection des logiciels</h4></div>
+          </div>
+          <p>J'identifie les acteurs du marché à partir de ma veille sectorielle, des demandes lecteurs et des lancements récents. Seuls les logiciels accessibles aux TPE/PME françaises sont retenus.</p>
+        </div>
+      </div>
+      <div class="tl-item fade-up d1">
+        <div class="tl-dot"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m2 7 10 6 10-6"></path></svg></div>
+        <div class="tl-card">
+          <div class="tl-card-head">
+            <div class="tl-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><path d="M9 3v4l3-1 3 1V3"></path></svg></div>
+            <div><div class="tl-step-num">Étape 02</div><h4>Création d'un compte réel</h4></div>
+          </div>
+          <p>Essai gratuit ou abonnement payé par mes soins, jamais de compte "démo". Je m'inscris comme n'importe quel dirigeant, sans traitement de faveur de l'éditeur.</p>
+        </div>
+      </div>
+      <div class="tl-item fade-up d2">
+        <div class="tl-dot"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4"></path></svg></div>
+        <div class="tl-card">
+          <div class="tl-card-head">
+            <div class="tl-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H4z"></path><path d="M2 20h20"></path><path d="M8 12h.01M12 10l2 2-2 2"></path></svg></div>
+            <div><div class="tl-step-num">Étape 03</div><h4>Test des fonctionnalités</h4></div>
+          </div>
+          <p>Je configure l'outil, importe des données réelles, crée des scénarios métier (ex : faire une fiche de paie, éditer une facture conforme) et documente chaque étape.</p>
+        </div>
+      </div>
+      <div class="tl-item fade-up">
+        <div class="tl-dot"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg></div>
+        <div class="tl-card">
+          <div class="tl-card-head">
+            <div class="tl-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"></path><path d="M9.5 9.5h5M9.5 14.5h4"></path></svg></div>
+            <div><div class="tl-step-num">Étape 04</div><h4>Analyse des tarifs</h4></div>
+          </div>
+          <p>Coût réel à l'usage (pas seulement le prix affiché), options cachées, frais d'onboarding, limites des plans on décortique la grille tarifaire pour 1, 10 et 50 utilisateurs.</p>
+        </div>
+      </div>
+      <div class="tl-item fade-up d1">
+        <div class="tl-dot"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 3v18h18"></path><path d="m7 14 4-4 3 3 5-6"></path></svg></div>
+        <div class="tl-card">
+          <div class="tl-card-head">
+            <div class="tl-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"></path><rect x="7" y="11" width="3" height="6"></rect><rect x="13" y="7" width="3" height="10"></rect></svg></div>
+            <div><div class="tl-step-num">Étape 05</div><h4>Comparaison avec les concurrents</h4></div>
+          </div>
+          <p>On positionne le logiciel par rapport à ses 3–5 principaux concurrents sur les critères qui comptent vraiment. Les tableaux comparatifs sont vérifiés chaque trimestre.</p>
+        </div>
+      </div>
+      <div class="tl-item fade-up d2">
+        <div class="tl-dot"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l2 7h7l-6 4 2 7-5-4-5 4 2-7-6-4h7z"></path></svg></div>
+        <div class="tl-card">
+          <div class="tl-card-head">
+            <div class="tl-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2 7h7l-6 4 2 7-5-4-5 4 2-7-6-4h7z"></path></svg></div>
+            <div><div class="tl-step-num">Étape 06</div><h4>Attribution d'une note</h4></div>
+          </div>
+          <p>Une note globale sur 10, calculée à partir de 6 critères pondérés (voir section suivante). La note est revue dès qu'une mise à jour majeure du logiciel est détectée.</p>
+        </div>
+      </div>
+      <div class="tl-item fade-up d3">
+        <div class="tl-dot"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></div>
+        <div class="tl-card">
+          <div class="tl-card-head">
+            <div class="tl-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg></div>
+            <div><div class="tl-step-num">Étape 07</div><h4>Publication &amp; mise à jour</h4></div>
+          </div>
+          <p>L'article est relu par un second testeur, les sources sont vérifiées, puis publié avec une date de dernière mise à jour visible. On corrige publiquement si on se trompe.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     5. CRITÈRES DE NOTATION
+     ============================================================ -->
+<section class="section sec-alt" id="notation" data-screen-label="Critères de notation">
+  <div class="wrap">
+    <div class="sec-head--center sec-head fade-up" style="margin-bottom:42px">
+      <div>
+        <span class="eyebrow eyebrow--center">Notre grille</span>
+        <h2>Comment je note les logiciels</h2>
+        <p class="lead" style="margin-inline:auto">Six critères pondérés, construits à partir de mes tests terrain et des retours de lecteurs. Chaque note est documentée et argumentée.</p>
+      </div>
+    </div>
+    <div class="criteria-grid">
+      <div class="criteria-card fade-up">
+        <div class="criteria-head">
+          <div class="criteria-label">
+            <div class="criteria-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5z"></path><path d="M9 9h6M9 13h4"></path></svg></div>
+            <h4>Facilité d'utilisation</h4>
+          </div>
+          <div><div class="criteria-stars">★★★★★</div></div>
+        </div>
+        <div class="criteria-bar-track"><div class="criteria-bar" data-width="92%"></div></div>
+        <p>Prise en main sans formation, interface claire, onboarding guidé. On simule la première semaine d'utilisation d'un dirigeant non-technique.</p>
+      </div>
+      <div class="criteria-card fade-up d1">
+        <div class="criteria-head">
+          <div class="criteria-label">
+            <div class="criteria-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"></path></svg></div>
+            <h4>Fonctionnalités</h4>
+          </div>
+          <div><div class="criteria-stars">★★★★★</div></div>
+        </div>
+        <div class="criteria-bar-track"><div class="criteria-bar" data-width="88%"></div></div>
+        <p>Couverture des cas d'usage clés, richesse des modules disponibles, feuille de route produit et rythme des mises à jour.</p>
+      </div>
+      <div class="criteria-card fade-up d2">
+        <div class="criteria-head">
+          <div class="criteria-label">
+            <div class="criteria-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg></div>
+            <h4>Rapport qualité / prix</h4>
+          </div>
+          <div><div class="criteria-stars">★★★★★</div></div>
+        </div>
+        <div class="criteria-bar-track"><div class="criteria-bar" data-width="80%"></div></div>
+        <p>Prix réel à l'usage comparé aux alternatives, coût total de possession sur 12 mois, transparence de la grille tarifaire.</p>
+      </div>
+      <div class="criteria-card fade-up d3">
+        <div class="criteria-head">
+          <div class="criteria-label">
+            <div class="criteria-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+            <h4>Support client</h4>
+          </div>
+          <div><div class="criteria-stars">★★★★<span style="opacity:.3">★</span></div></div>
+        </div>
+        <div class="criteria-bar-track"><div class="criteria-bar" data-width="74%"></div></div>
+        <p>Délai de réponse mesuré en conditions réelles, qualité des réponses, documentation disponible et communauté utilisateurs.</p>
+      </div>
+      <div class="criteria-card fade-up">
+        <div class="criteria-head">
+          <div class="criteria-label">
+            <div class="criteria-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"></path><path d="M8 9h1M8 13h6"></path><path d="M18 2l-4 4 4 4"></path></svg></div>
+            <h4>Intégrations</h4>
+          </div>
+          <div><div class="criteria-stars">★★★★<span style="opacity:.3">★</span></div></div>
+        </div>
+        <div class="criteria-bar-track"><div class="criteria-bar" data-width="76%"></div></div>
+        <p>Connecteurs natifs avec les outils courants (comptabilité, CRM, paie), qualité de l'API, compatibilité avec l'écosystème français.</p>
+      </div>
+      <div class="criteria-card fade-up d1">
+        <div class="criteria-head">
+          <div class="criteria-label">
+            <div class="criteria-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"></path><path d="m7 14 4-4 3 3 5-6"></path></svg></div>
+            <h4>Évolutivité</h4>
+          </div>
+          <div><div class="criteria-stars">★★★★<span style="opacity:.3">★</span></div></div>
+        </div>
+        <div class="criteria-bar-track"><div class="criteria-bar" data-width="78%"></div></div>
+        <p>Capacité à suivre la croissance de l'entreprise, plans supérieurs disponibles, solidité financière et pérennité de l'éditeur.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     6. TRANSPARENCE FINANCIÈRE
+     ============================================================ -->
+<section class="section" id="transparence" data-screen-label="Transparence financière">
+  <div class="wrap">
+    <div class="sec-head--center sec-head fade-up" style="margin-bottom:42px">
+      <div>
+        <span class="eyebrow eyebrow--center">Notre modèle</span>
+        <h2>Transparence financière</h2>
+      </div>
+    </div>
+    <div class="transparency-box fade-up">
+      <div class="transp-icon-wrap">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          <path d="m9 12 2 2 4-4"></path>
+        </svg>
+      </div>
+      <div class="transp-body">
+        <h3>Comment Digicube se finance</h3>
+        <p class="lead">Je peux toucher une commission d'affiliation lorsque vous passez par certains de mes liens pour vous inscrire à un logiciel. Ce modèle me permet de garder Digicube gratuit pour vous.</p>
+        <div class="transp-checks">
+          <div class="t-check">
+            <div class="ck"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m20 6-11 11-5-5"></path></svg></div>
+            <span><strong>Nos notes sont basées sur des critères objectifs et documentés.</strong> Facilité d'utilisation, fonctionnalités, prix réel, support : chaque critère est argumenté et vérifiable.</span>
+          </div>
+          <div class="t-check">
+            <div class="ck"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m20 6-11 11-5-5"></path></svg></div>
+            <span><strong>Notre grille de notation est publique et identique pour tous.</strong> Les mêmes 6 critères, le même protocole de test, quelle que soit la notoriété de l'éditeur.</span>
+          </div>
+          <div class="t-check">
+            <div class="ck"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m20 6-11 11-5-5"></path></svg></div>
+            <span><strong>Certains liens présents sur ce site sont des liens d'affiliation.</strong> Leur présence ne conditionne pas les notes ni l'ordre des comparatifs.</span>
+          </div>
+          <div class="t-check">
+            <div class="ck"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m20 6-11 11-5-5"></path></svg></div>
+            <span><strong>Je teste aussi des logiciels sans accord d'affiliation</strong> s'ils méritent d'être dans le comparatif.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     7. L'ÉQUIPE
+     ============================================================ -->
+<section class="section sec-alt" id="equipe" data-screen-label="Équipe">
+  <div class="wrap">
+    <div class="sec-head fade-up">
+      <div>
+        <span class="eyebrow">Derrière Digicube</span>
+        <h2>Qui je suis</h2>
+        <p class="lead">Je suis seul derrière Digicube. Je teste, je rédige, je mets à jour chaque comparatif porte ma signature et mon regard de dirigeant de TPE.</p>
+      </div>
+    </div>
+    <div class="team-grid" style="grid-template-columns:1fr;max-width:460px">
+      <!-- Nicolas -->
+      <article class="team-card fade-up">
+        <div class="team-photo"><div class="ph"></div></div>
+        <div class="team-name">Nicolas Roux</div>
+        <div class="team-role">Fondateur &amp; rédacteur en chef</div>
+        <div class="team-exp">Dirigeant TPE · 6 ans d'expérience</div>
+        <div class="team-tags">
+          <span class="team-tag">Logiciels RH</span>
+          <span class="team-tag">Paie</span>
+          <span class="team-tag">Comptabilité</span>
+          <span class="team-tag">Gestion</span>
+        </div>
+        <p class="team-bio">Je dirige ma TPE à Marseille depuis 6 ans. Convaincu que les TPE méritent les mêmes outils que les grands groupes, j'ai créé Digicube pour partager mes tests et analyses sans filtre. Chaque logiciel que je publie, je l'ai ouvert, configuré et utilisé en conditions réelles.</p>
+        <div class="team-foot" style="justify-content:center;gap:10px">
+          <a  class="team-li" aria-label="LinkedIn" title="LinkedIn">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+          <a href="https://www.facebook.com/digicubefr/" target="_blank" rel="noopener noreferrer nofollow" class="team-li" aria-label="Facebook" title="Facebook">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="https://www.youtube.com/channel/UCsBs4Kc78SsPu1Oit7dspqA" target="_blank" rel="noopener noreferrer nofollow" class="team-li" aria-label="YouTube" title="YouTube">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+          </a>
+          <a  class="team-li" aria-label="X (Twitter)" title="X">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l16 16M4 20L20 4"></path></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     8. CHARTE ÉDITORIALE
+     ============================================================ -->
+<section class="section" id="charte" data-screen-label="Charte éditoriale">
+  <div class="wrap">
+    <div class="sec-head--center sec-head fade-up" style="margin-bottom:42px">
+      <div>
+        <span class="eyebrow eyebrow--center">Ce que vous pouvez exiger de moi</span>
+        <h2>Ma charte éditoriale</h2>
+        <p class="lead" style="margin-inline:auto">Des règles simples que je m'impose pour que chaque article publié mérite votre confiance.</p>
+      </div>
+    </div>
+    <div class="charter-grid">
+      <div class="charter-card fade-up">
+        <div class="charter-ck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m20 6-11 11-5-5"></path></svg></div>
+        <div><h5>Tests réalisés avant publication</h5><p>Je n'publie aucun comparatif sans avoir ouvert et utilisé le logiciel moi-même.</p></div>
+      </div>
+      <div class="charter-card fade-up d1">
+        <div class="charter-ck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m20 6-11 11-5-5"></path></svg></div>
+        <div><h5>Avis régulièrement mis à jour</h5><p>Chaque comparatif affiche sa date de dernière révision. Je mets à jour dès qu'un tarif ou une fonctionnalité change.</p></div>
+      </div>
+      <div class="charter-card fade-up d2">
+        <div class="charter-ck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m20 6-11 11-5-5"></path></svg></div>
+        <div><h5>Sources citées</h5><p>Toute affirmation factuelle est sourcée. Tarifs : capture d'écran datée. Études : lien vers la source originale.</p></div>
+      </div>
+      <div class="charter-card fade-up">
+        <div class="charter-ck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m20 6-11 11-5-5"></path></svg></div>
+        <div><h5>Vérification des informations</h5><p>Chaque article passe par une relecture croisée. Les chiffres, noms de produits et fonctionnalités sont validés avant publication.</p></div>
+      </div>
+      <div class="charter-card fade-up d1">
+        <div class="charter-ck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m20 6-11 11-5-5"></path></svg></div>
+        <div><h5>Corrections rapides et publiques</h5><p>Si une erreur est signalée, je la corrige dans les 24 h et ajoute une note de correction visible dans l'article.</p></div>
+      </div>
+      <div class="charter-card fade-up d2">
+        <div class="charter-ck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m20 6-11 11-5-5"></path></svg></div>
+        <div><h5>Veille sectorielle permanente</h5><p>Je suis en permanence les éditeurs, les forums d'utilisateurs et les retours lecteurs pour détecter les évolutions importantes rapidement.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     9. ILS NOUS FONT CONFIANCE
+     ============================================================ -->
+<section class="logos-section" id="references" data-screen-label="Références">
+  <div class="wrap">
+    <div class="sec-head--center sec-head fade-up" style="margin-bottom:0">
+      <div>
+        <span class="eyebrow eyebrow--center" style="color:var(--accent)">Ils nous font confiance</span>
+        <h2 style="color:#fff">Des logiciels déjà testés &amp; analysés</h2>
+        <p class="lead" style="color:rgba(255,255,255,.65);margin-inline:auto">Les solutions que j'ai passées au crible, parmi les 340+ logiciels de ma base.</p>
+      </div>
+    </div>
+    <div class="logos-grid fade-up d1">
+      <div class="logo-cell"><span class="logo-pill">PayFit</span></div>
+      <div class="logo-cell"><span class="logo-pill">Pennylane</span></div>
+      <div class="logo-cell"><span class="logo-pill">Lucca</span></div>
+      <div class="logo-cell"><span class="logo-pill">Factorial</span></div>
+      <div class="logo-cell"><span class="logo-pill">Silae</span></div>
+      <div class="logo-cell"><span class="logo-pill">Sage</span></div>
+      <div class="logo-cell"><span class="logo-pill">QualiPaye</span></div>
+      <div class="logo-cell"><span class="logo-pill">Cegid</span></div>
+      <div class="logo-cell"><span class="logo-pill">Notion</span></div>
+      <div class="logo-cell"><span class="logo-pill">Monday</span></div>
+      <div class="logo-cell"><span class="logo-pill">Brevo</span></div>
+      <div class="logo-cell"><span class="logo-pill">HubSpot</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     10. FAQ
+     ============================================================ -->
+<section class="section" id="faq" data-screen-label="FAQ">
+  <div class="wrap">
+    <div class="sec-head--center sec-head fade-up" style="margin-bottom:44px">
+      <div>
+        <span class="eyebrow eyebrow--center">Questions fréquentes</span>
+        <h2>Vous avez des questions sur Digicube ?</h2>
+        <p class="lead" style="margin-inline:auto">Les réponses directes aux questions que je reçois le plus souvent de mes lecteurs.</p>
+      </div>
+    </div>
+    <div class="faq-list fade-up">
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <h4>Comment testez-vous vraiment les logiciels ?</h4>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"></path></svg></div>
+        </button>
+        <div class="faq-body"><p>J'ouvre un compte réel, essai gratuit ou abonnement payé par mes soins. Je configure l'outil selon un scénario métier réaliste (ex : gérer la paie de 8 salariés, émettre une facture conforme à la réforme 2026), je documente chaque étape et je teste le support en soumettant une vraie demande. Mon protocole complet est détaillé dans la section Méthodologie.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <h4>Êtes-vous rémunérés par les éditeurs de logiciels ?</h4>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"></path></svg></div>
+        </button>
+        <div class="faq-body"><p>Je peux percevoir une commission d'affiliation lorsque vous cliquez sur un lien partenaire et souscrivez à un abonnement. Ce modèle me permet de garder Digicube gratuit pour les lecteurs, tout en maintenant une grille de notation basée sur des critères objectifs et documentés, identiques pour tous les logiciels testés.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <h4>Pourquoi certains logiciels sont absents de vos comparatifs ?</h4>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"></path></svg></div>
+        </button>
+        <div class="faq-body"><p>Plusieurs raisons possibles : le logiciel n'est pas accessible aux TPE/PME françaises, il n'offre pas de période d'essai permettant un test sérieux, ou je n'ai pas encore eu le temps de le tester selon mon protocole. Si vous souhaitez me proposer un logiciel à analyser, utilisez le formulaire de contact.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <h4>À quelle fréquence les comparatifs sont-ils mis à jour ?</h4>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"></path></svg></div>
+        </button>
+        <div class="faq-body"><p>Chaque comparatif affiche une date de dernière mise à jour. En règle générale, nous révisons les articles à chaque mise à jour majeure du logiciel, et au minimum tous les 6 mois pour les catégories très actives (paie, comptabilité, facturation). Les tarifs sont les données les plus volatiles ils sont vérifiés chaque mois.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <h4>Peut-on vous proposer un logiciel à tester ?</h4>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"></path></svg></div>
+        </button>
+        <div class="faq-body"><p>Oui, absolument. Si vous êtes éditeur ou utilisateur d'un logiciel que vous souhaitez voir analysé, contactez-moi via le formulaire. J'étudie toutes les suggestions. Si le logiciel répond à mes critères (TPE/PME française, essai accessible), il sera ajouté à ma file de test. Aucune garantie de traitement prioritaire ni de note positive.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" aria-expanded="false">
+          <h4>Comment contacter l'équipe Digicube ?</h4>
+          <div class="faq-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"></path></svg></div>
+        </button>
+        <div class="faq-body"><p>Vous pouvez me joindre via le formulaire de contact, accessible depuis la page d'accueil. Pour les demandes presse ou partenariat, indiquez-le clairement dans l'objet de votre message. Je lis personnellement tous les emails et réponds sous 48 h en semaine.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     11. CTA FINAL
+     ============================================================ -->
+<section class="cta-final" id="cta" data-screen-label="CTA final">
+  <div class="wrap cta-final-inner">
+    <span class="eyebrow" style="color:var(--accent)">Prêt à bien choisir ?</span>
+    <h2 class="fade-up">Prêt à trouver le logiciel adapté à votre entreprise ?</h2>
+    <p class="lead fade-up d1">340+ logiciels testés, comparés et notés par des experts. Trouvez celui qui correspond vraiment à votre métier et à votre budget.</p>
+    <div class="cta-final-btns fade-up d2">
+      <a href="Digicube Home.html#comparateurs" class="btn btn--accent">Découvrir les comparatifs <span class="arr">→</span></a>
+      <a href="#notation" class="btn btn--ghost">Voir notre classement</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER (identique à la home)
+     ============================================================ -->
+<style>
+.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
+.footer-brand .footer-logo span{color:var(--accent2)}
+.footer-brand p{font-size:15px;color:rgba(255,255,255,.45);line-height:1.7;max-width:380px;margin:0;padding:0}
+.footer-socials{display:flex;gap:12px;margin-top:20px}
+.footer-socials a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.55);transition:background .15s,color .15s}
+.footer-socials a:hover{background:rgba(255,255,255,.13);color:#fff}
+.footer-socials svg{width:19px;height:19px;fill:currentColor;display:block}
+/* Anciennement .footer-col h4 — passé en div pour respecter la hiérarchie Hn (le footer ne doit pas introduire de Hn) */
+.footer-col .footer-col-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
+.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-brand{grid-column:1/-1}
+}
+</style>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" style="display:block;margin-bottom:12px"><img src="/logo.png" alt="digicube.fr" style="height:36px;width:auto;object-fit:contain"></a>
+        <p>Digicube est un média spécialisé dans la digitalisation des entreprises. Découvrez des analyses, conseils et actualités sur les logiciels, services numériques, innovations technologiques et solutions digitales professionnelles.</p>
+        <div class="footer-socials">
+<a href="https://www.facebook.com/digicubefr/" target="_blank" rel="noopener noreferrer nofollow" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13 22v-8h2.7l.4-3.1H13V8.9c0-.9.3-1.5 1.6-1.5H16V4.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.4H7.2V14H9.9v8H13z"/></svg></a><a href="https://www.youtube.com/channel/UCsBs4Kc78SsPu1Oit7dspqA" target="_blank" rel="noopener noreferrer nofollow" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.8-1.8C19.4 5.1 12 5.1 12 5.1s-7.4 0-8.8.4a2.5 2.5 0 0 0-1.8 1.8C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.8 1.8c1.4.4 8.8.4 8.8.4s7.4 0 8.8-.4a2.5 2.5 0 0 0 1.8-1.8C23 15.2 23 12 23 12zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg></a>        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Navigation</div>
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/blog/">Blog</a>
+        <a href="/plan-du-site">Plan du site</a>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/politique-confidentialite">Confidentialité</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">À propos</div>
+        <a href="/a-propos/">À propos</a>
+        <a href="/contact">Nous contacter</a>
+        <a href="/a-propos/">Notre équipe</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        © 2026 digicube.fr — Données actualisées le 26 juin 2026
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button type="button"
+        class="scroll-top-btn"
+        id="scroll-top-btn"
+        aria-label="Remonter en haut de la page"
+        title="Remonter en haut">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2.5"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+</button>
+
+<style>
+.scroll-top-btn{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:9999;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--ink, #0F1419);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .15s;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+  padding:0;
+  font-family:inherit;
+}
+.scroll-top-btn.visible{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.scroll-top-btn:hover{
+  background:var(--accent, #C9A961);
+}
+.scroll-top-btn:focus-visible{
+  outline:2px solid var(--accent, #C9A961);
+  outline-offset:3px;
+}
+@media (max-width:600px){
+  .scroll-top-btn{ bottom:16px; right:16px; width:42px; height:42px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .scroll-top-btn{ transition:opacity .2s, visibility .2s; }
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  var btn = document.getElementById('scroll-top-btn');
+  if (!btn) return;
+
+  var THRESHOLD = 400; // px de scroll avant apparition
+  var ticking = false;
+
+  function update(){
+    if (window.scrollY > THRESHOLD) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+    ticking = false;
+  }
+
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  btn.addEventListener('click', function(){
+    var prefersReduced = window.matchMedia
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  });
+
+  // Check immédiat (au cas où la page est rechargée déjà scrollée)
+  update();
+})();
+</script>
+<!-- ============================================================
+     JS Compteurs animés + FAQ accordéon + Scroll fade
+     ============================================================ -->
+</body>
+</html>
