@@ -192,38 +192,61 @@ a{text-decoration:none;color:inherit}
   .cr-themes-grid,.cr-blog-grid,.cr-why-grid{grid-template-columns:1fr}
   .cr-news-form{flex-direction:column}
 }
-/* ===== Responsive mobile (inline grids/styles, syntaxe espacée incluse) ===== */
+/* ===== Responsive mobile creaone (grids/flex/headings/paddings, 2 syntaxes) ===== */
 @media(max-width:768px){
-.ap-root [style*="grid-template-columns"]:not([style*="columns:52px"]):not([style*="columns: 52px"]):not([style*="columns:80px"]):not([style*="columns: 80px"]):not([style*="columns:auto"]):not([style*="columns: auto"]){grid-template-columns:1fr !important}
+.ap-root [style*="grid-template-columns"]{grid-template-columns:1fr !important}
+.ap-root h1[style]{font-size:clamp(30px,8vw,40px) !important;line-height:1.12 !important}
+.ap-root h2[style]{font-size:clamp(23px,5.6vw,30px) !important;line-height:1.2 !important}
+.ap-root h3[style]{font-size:clamp(16px,4.4vw,20px) !important}
 .ap-root [style*="min-width:"]{min-width:0 !important}
 .ap-root [style*="display:flex"],.ap-root [style*="display: flex"]{flex-wrap:wrap !important}
 .ap-root [style*="flex: 0 0 420px"],.ap-root [style*="flex:0 0 420px"],.ap-root [style*="flex: 0 0 440px"],.ap-root [style*="flex:0 0 440px"]{flex:1 1 100% !important;max-width:100% !important}
-.ap-root [style*="padding:48px"]{padding:26px 20px !important}
-.ap-root [style*="padding: 48px"]{padding:26px 20px !important}
-.ap-root [style*="padding:96px 56px"]{padding:48px 20px !important}
-.ap-root [style*="padding: 96px 56px"]{padding:48px 20px !important}
+.ap-root [style*="padding:96px 56px"]{padding:44px 20px !important}
+.ap-root [style*="padding: 96px 56px"]{padding:44px 20px !important}
 .ap-root [style*="padding:80px 56px"]{padding:40px 20px !important}
 .ap-root [style*="padding: 80px 56px"]{padding:40px 20px !important}
-.ap-root [style*="padding:96px 48px"]{padding:48px 20px !important}
-.ap-root [style*="padding: 96px 48px"]{padding:48px 20px !important}
+.ap-root [style*="padding:72px 56px"]{padding:40px 20px !important}
+.ap-root [style*="padding: 72px 56px"]{padding:40px 20px !important}
+.ap-root [style*="padding:96px 48px"]{padding:44px 20px !important}
+.ap-root [style*="padding: 96px 48px"]{padding:44px 20px !important}
 .ap-root [style*="padding:80px 48px"]{padding:40px 20px !important}
 .ap-root [style*="padding: 80px 48px"]{padding:40px 20px !important}
-.ap-root [style*="padding:44px 48px"]{padding:30px 20px !important}
-.ap-root [style*="padding: 44px 48px"]{padding:30px 20px !important}
-.ap-root [style*="padding:100px 56px"]{padding:48px 20px !important}
-.ap-root [style*="padding: 100px 56px"]{padding:48px 20px !important}
-.ap-root [style*="padding:100px 48px"]{padding:48px 20px !important}
-.ap-root [style*="padding: 100px 48px"]{padding:48px 20px !important}
-.ap-root [style*="padding:0 48px 96px"]{padding:0 20px 48px !important}
-.ap-root [style*="padding: 0 48px 96px"]{padding:0 20px 48px !important}
-.ap-root [style*="padding:0 48px 100px"]{padding:0 20px 48px !important}
-.ap-root [style*="padding: 0 48px 100px"]{padding:0 20px 48px !important}
-.ap-root [style*="font-size:80px"]{font-size:38px !important}
-.ap-root [style*="font-size: 80px"]{font-size:38px !important}
-.ap-root [style*="font-size:64px"]{font-size:34px !important}
-.ap-root [style*="font-size: 64px"]{font-size:34px !important}
+.ap-root [style*="padding:44px 48px"]{padding:32px 20px !important}
+.ap-root [style*="padding: 44px 48px"]{padding:32px 20px !important}
+.ap-root [style*="padding:44px 56px"]{padding:32px 20px !important}
+.ap-root [style*="padding: 44px 56px"]{padding:32px 20px !important}
+.ap-root [style*="padding:56px 64px"]{padding:28px 22px !important}
+.ap-root [style*="padding: 56px 64px"]{padding:28px 22px !important}
+.ap-root [style*="padding:38px 34px"]{padding:26px 20px !important}
+.ap-root [style*="padding: 38px 34px"]{padding:26px 20px !important}
+.ap-root [style*="padding:36px 30px"]{padding:26px 20px !important}
+.ap-root [style*="padding: 36px 30px"]{padding:26px 20px !important}
+.ap-root [style*="padding:28px 30px"]{padding:24px 20px !important}
+.ap-root [style*="padding: 28px 30px"]{padding:24px 20px !important}
+.ap-root [style*="padding:28px 26px"]{padding:24px 20px !important}
+.ap-root [style*="padding: 28px 26px"]{padding:24px 20px !important}
+.ap-root [style*="padding:32px 26px"]{padding:24px 20px !important}
+.ap-root [style*="padding: 32px 26px"]{padding:24px 20px !important}
+.ap-root [style*="padding:24px 28px"]{padding:22px 20px !important}
+.ap-root [style*="padding: 24px 28px"]{padding:22px 20px !important}
+.ap-root [style*="padding:22px 32px"]{padding:20px 20px !important}
+.ap-root [style*="padding: 22px 32px"]{padding:20px 20px !important}
+.ap-root [style*="padding:20px 22px"]{padding:18px 18px !important}
+.ap-root [style*="padding: 20px 22px"]{padding:18px 18px !important}
+.ap-root [style*="padding:100px 56px"]{padding:44px 20px !important}
+.ap-root [style*="padding: 100px 56px"]{padding:44px 20px !important}
+.ap-root [style*="padding:100px 48px"]{padding:44px 20px !important}
+.ap-root [style*="padding: 100px 48px"]{padding:44px 20px !important}
+.ap-root [style*="font-size:62px"]{font-size:34px !important}
+.ap-root [style*="font-size: 62px"]{font-size:34px !important}
+.ap-root [style*="font-size:60px"]{font-size:33px !important}
+.ap-root [style*="font-size: 60px"]{font-size:33px !important}
+.ap-root [style*="font-size:58px"]{font-size:33px !important}
+.ap-root [style*="font-size: 58px"]{font-size:33px !important}
 .ap-root [style*="font-size:56px"]{font-size:32px !important}
 .ap-root [style*="font-size: 56px"]{font-size:32px !important}
+.ap-root [style*="font-size:54px"]{font-size:32px !important}
+.ap-root [style*="font-size: 54px"]{font-size:32px !important}
 .ap-root [style*="font-size:52px"]{font-size:31px !important}
 .ap-root [style*="font-size: 52px"]{font-size:31px !important}
 .ap-root [style*="font-size:50px"]{font-size:30px !important}
