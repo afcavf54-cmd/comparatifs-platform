@@ -35,8 +35,6 @@ html{scroll-behavior:smooth}
 body{font-family:'Manrope',system-ui,-apple-system,sans-serif;background:var(--bg);color:#0F1A2E;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{text-decoration:none;color:inherit}
 /* Ce site n'a pas de theme.font_title / font_body en config -> fallback sur les polices du design */
-nav.site-nav .nav-logo{font-family:'{{ theme.font_title if theme.font_title is defined and theme.font_title else "Spectral" }}',serif}
-nav.site-nav .nav-links a,nav.site-nav .nav-cta,nav.site-nav .nav-mobile a,.footer{font-family:'{{ theme.font_body if theme.font_body is defined and theme.font_body else "Manrope" }}',system-ui,-apple-system,sans-serif}
 /* FAQ accordeon natif (indicateur « + » qui pivote en croix, sans JS) */
 details.faq-item:not(:last-child){border-bottom:1px solid #EEF1F7}
 details.faq-item>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:22px 28px}
@@ -46,11 +44,48 @@ details.faq-item>summary .faq-ico{display:inline-flex;align-items:center;justify
 details.faq-item[open]>summary .faq-ico{transform:rotate(45deg);color:#1B4FD8;background:rgba(27,79,216,.10)}
 details.faq-item>.faq-a{padding:0 28px 24px}
 details.faq-item>.faq-a p{margin:0;font-size:15px;line-height:1.75;color:#5A6679}
+/* ===== Responsive mobile (ajoute apres coup : export Claude Design en styles inline figes, sans media query) ===== */
+@media(max-width:768px){
+.ap-root [style*="grid-template-columns"]:not([style*="columns:52px"]):not([style*="columns: 52px"]):not([style*="columns:80px"]):not([style*="columns: 80px"]):not([style*="columns:auto"]):not([style*="columns: auto"]){grid-template-columns:1fr !important}
+.ap-root [style*="padding:48px"]{padding:28px 20px !important}
+.ap-root [style*="padding:96px 48px"]{padding:56px 20px !important}
+.ap-root [style*="padding:80px 48px"]{padding:48px 20px !important}
+.ap-root [style*="padding:44px 48px"]{padding:32px 20px !important}
+.ap-root [style*="padding:48px 52px"]{padding:30px 22px !important}
+.ap-root [style*="padding:100px 48px"]{padding:56px 20px !important}
+.ap-root [style*="padding:0 48px 96px"]{padding:0 20px 56px !important}
+.ap-root [style*="padding:0 48px 100px"]{padding:0 20px 56px !important}
+.ap-root [style*="padding:84px 48px 92px"]{padding:48px 20px 52px !important}
+.ap-root [style*="padding:80px 48px 56px"]{padding:44px 20px 36px !important}
+.ap-root [style*="font-size:80px"]{font-size:40px !important}
+.ap-root [style*="font-size:64px"]{font-size:34px !important}
+.ap-root [style*="font-size:52px"]{font-size:32px !important}
+.ap-root [style*="font-size:48px"]{font-size:30px !important}
+.ap-root [style*="font-size:46px"]{font-size:29px !important}
+.ap-root [style*="font-size:44px"]{font-size:28px !important}
+.ap-root [style*="font-size:42px"]{font-size:27px !important}
+.ap-root [style*="font-size:40px"]{font-size:26px !important}
+.ap-root [style*="font-size:38px"]{font-size:25px !important}
+.ap-root [style*="font-size:36px"]{font-size:24px !important}
+.ap-root [style*="font-size:34px"]{font-size:23px !important}
+.ap-root [style*="gap:72px"]{gap:34px !important}
+.ap-root [style*="gap:64px"]{gap:32px !important}
+.ap-root [style*="gap:52px"]{gap:30px !important}
+.ap-root [style*="gap:44px"]{gap:26px !important}
+.ap-root [style*="gap:40px"]{gap:24px !important}
+.ap-root [style*="gap:36px"]{gap:22px !important}
+.ap-root [style*="gap:34px"]{gap:21px !important}
+.ap-root [style*="gap:32px"]{gap:20px !important}
+.ap-root [style*="gap:30px"]{gap:19px !important}
+.ap-root [style*="gap:28px"]{gap:18px !important}
+.ap-root{overflow-x:hidden}
+.ap-root img{max-width:100%;height:auto}
+}
 </style>
 </head>
 <body>
 {% include 'base/_nav.html.j2' %}
-<div id="top" style="background:#F4F6FB;min-height:100vh;overflow-x:hidden">
+<div class="ap-root" id="top" style="background:#F4F6FB;min-height:100vh;overflow-x:hidden">
 
 <!-- ===== HEADER ===== -->
 
