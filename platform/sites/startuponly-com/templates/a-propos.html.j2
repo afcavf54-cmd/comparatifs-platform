@@ -10,7 +10,7 @@
 {% if site.google_site_verification is defined and site.google_site_verification %}<meta name="google-site-verification" content="{{ site.google_site_verification }}">{% endif %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
 /* ===================================================================
    À PROPOS - startuponly-com.
@@ -35,8 +35,6 @@ html{scroll-behavior:smooth}
 body{font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;background:var(--bg);color:#1E293B;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{text-decoration:none;color:inherit}
 /* Aligne header/footer sur les polices du site (sinon herites du corps du design) */
-nav.site-nav .nav-logo{font-family:'{{ theme.font_title }}',serif}
-nav.site-nav .nav-links a,nav.site-nav .nav-cta,nav.site-nav .nav-mobile a,.footer{font-family:'{{ theme.font_body }}',system-ui,-apple-system,sans-serif}
 /* FAQ accordeon natif (look « + / - » du design, sans JS) */
 details.faq-item{border-top:1px solid #ECEDF2}
 details.faq-item:last-of-type{border-bottom:1px solid #ECEDF2}
@@ -47,11 +45,48 @@ details.faq-item>summary .faq-ico{font-size:20px;font-weight:400;color:#7C3AED;f
 details.faq-item>summary .faq-ico::after{content:"+"}
 details.faq-item[open]>summary .faq-ico::after{content:"\2212"}
 details.faq-item>.faq-a{padding:0 0 24px;color:#64748B;font-size:15.5px;line-height:1.7}
+/* ===== Responsive mobile (ajoute apres coup : export Claude Design en styles inline figes, sans media query) ===== */
+@media(max-width:768px){
+.ap-root [style*="grid-template-columns"]:not([style*="columns:52px"]):not([style*="columns: 52px"]):not([style*="columns:80px"]):not([style*="columns: 80px"]):not([style*="columns:auto"]):not([style*="columns: auto"]){grid-template-columns:1fr !important}
+.ap-root [style*="padding:48px"]{padding:28px 20px !important}
+.ap-root [style*="padding:96px 48px"]{padding:56px 20px !important}
+.ap-root [style*="padding:80px 48px"]{padding:48px 20px !important}
+.ap-root [style*="padding:44px 48px"]{padding:32px 20px !important}
+.ap-root [style*="padding:48px 52px"]{padding:30px 22px !important}
+.ap-root [style*="padding:100px 48px"]{padding:56px 20px !important}
+.ap-root [style*="padding:0 48px 96px"]{padding:0 20px 56px !important}
+.ap-root [style*="padding:0 48px 100px"]{padding:0 20px 56px !important}
+.ap-root [style*="padding:84px 48px 92px"]{padding:48px 20px 52px !important}
+.ap-root [style*="padding:80px 48px 56px"]{padding:44px 20px 36px !important}
+.ap-root [style*="font-size:80px"]{font-size:40px !important}
+.ap-root [style*="font-size:64px"]{font-size:34px !important}
+.ap-root [style*="font-size:52px"]{font-size:32px !important}
+.ap-root [style*="font-size:48px"]{font-size:30px !important}
+.ap-root [style*="font-size:46px"]{font-size:29px !important}
+.ap-root [style*="font-size:44px"]{font-size:28px !important}
+.ap-root [style*="font-size:42px"]{font-size:27px !important}
+.ap-root [style*="font-size:40px"]{font-size:26px !important}
+.ap-root [style*="font-size:38px"]{font-size:25px !important}
+.ap-root [style*="font-size:36px"]{font-size:24px !important}
+.ap-root [style*="font-size:34px"]{font-size:23px !important}
+.ap-root [style*="gap:72px"]{gap:34px !important}
+.ap-root [style*="gap:64px"]{gap:32px !important}
+.ap-root [style*="gap:52px"]{gap:30px !important}
+.ap-root [style*="gap:44px"]{gap:26px !important}
+.ap-root [style*="gap:40px"]{gap:24px !important}
+.ap-root [style*="gap:36px"]{gap:22px !important}
+.ap-root [style*="gap:34px"]{gap:21px !important}
+.ap-root [style*="gap:32px"]{gap:20px !important}
+.ap-root [style*="gap:30px"]{gap:19px !important}
+.ap-root [style*="gap:28px"]{gap:18px !important}
+.ap-root{overflow-x:hidden}
+.ap-root img{max-width:100%;height:auto}
+}
 </style>
 </head>
 <body>
 {% include 'base/_nav.html.j2' %}
-<div id="top" style="background:#FAFAFC;color:#1E293B;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility">
+<div class="ap-root" id="top" style="background:#FAFAFC;color:#1E293B;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility">
 
   <!-- ============ HERO ============ -->
   <section style="position:relative;background:#0F172A;overflow:hidden">
@@ -130,7 +165,7 @@ details.faq-item>.faq-a{padding:0 0 24px;color:#64748B;font-size:15.5px;line-hei
       <div>
         <div style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#7C3AED;margin-bottom:16px">Notre origine</div>
         <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-0.01em;color:#0F172A;margin:0 0 20px">Pourquoi ce média existe</h2>
-        <p style="color:#64748B;font-size:17px;line-height:1.68;margin:0 0 16px">Choisir un logiciel RH engage votre entreprise sur plusieurs années. Un mauvais choix représente plusieurs milliers d'euros perdus, des mois de déploiement raté et un impact direct sur vos équipes.</p>
+        <p style="color:#64748B;font-size:17px;line-height:1.68;margin:0 0 16px">Créer et gérer une entreprise, c'est faire des choix d'outils qui engagent sur plusieurs années. Un mauvais choix représente plusieurs milliers d'euros perdus, des mois de déploiement raté et un impact direct sur vos équipes.</p>
         <p style="color:#64748B;font-size:17px;line-height:1.68;margin:0">Notre objectif est simple : vous faire <strong style="color:#0F172A">gagner du temps</strong>, vous aider à <strong style="color:#0F172A">éviter les erreurs</strong> et vous proposer des analyses indépendantes vraiment utiles.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:18px">
@@ -140,7 +175,7 @@ details.faq-item>.faq-a{padding:0 0 24px;color:#64748B;font-size:15.5px;line-hei
           </div>
           <div>
             <h3 style="font-size:16px;font-weight:700;color:#0F172A;margin:0 0 6px">Un coût souvent sous-estimé</h3>
-            <p style="color:#64748B;font-size:14.5px;line-height:1.55;margin:0">Un mauvais logiciel RH coûte en moyenne <strong style="color:#7C3AED">3 à 6 mois</strong> de reconfiguration et plusieurs milliers d'euros en frais cachés.</p>
+            <p style="color:#64748B;font-size:14.5px;line-height:1.55;margin:0">Un mauvais outil de gestion coûte en moyenne <strong style="color:#7C3AED">3 à 6 mois</strong> de reconfiguration et plusieurs milliers d'euros en frais cachés.</p>
           </div>
         </div>
         <div style="background:#F4F5F8;border:1px solid #EEF0F4;border-radius:16px;padding:24px 28px;display:flex;align-items:flex-start;gap:16px">
@@ -192,7 +227,7 @@ details.faq-item>.faq-a{padding:0 0 24px;color:#64748B;font-size:15.5px;line-hei
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
           </div>
           <h3 style="font-size:19px;font-weight:800;color:#0F172A;margin:0 0 10px">Expertise</h3>
-          <p style="color:#64748B;font-size:15px;line-height:1.6;margin:0">Chaque logiciel est étudié en profondeur avant publication, par des professionnels du domaine RH et Finance.</p>
+          <p style="color:#64748B;font-size:15px;line-height:1.6;margin:0">Chaque logiciel est étudié en profondeur avant publication, par des professionnels de la gestion d'entreprise et de la finance.</p>
         </div>
         <div style="background:#fff;border:1px solid #ECEDF2;border-radius:18px;padding:30px;box-shadow:0 1px 2px rgba(15,23,42,0.04);transition:transform .18s ease,box-shadow .18s ease" style-hover="transform:translateY(-4px);box-shadow:0 16px 34px rgba(15,23,42,0.08)">
           <div style="width:48px;height:48px;border-radius:14px;background:rgba(16,185,129,0.09);display:flex;align-items:center;justify-content:center;color:#10B981;margin-bottom:18px">
@@ -245,7 +280,7 @@ details.faq-item>.faq-a{padding:0 0 24px;color:#64748B;font-size:15.5px;line-hei
           </div>
           <div style="padding-bottom:36px;flex:1">
             <h3 style="font-size:17px;font-weight:700;color:#fff;margin:0 0 8px">Test des fonctionnalités</h3>
-            <p style="color:#94A3B8;font-size:14.5px;line-height:1.62;margin:0">Chaque module est testé sur des scénarios réels : bulletins de paie, exports DSN, gestion des congés, intégration comptable…</p>
+            <p style="color:#94A3B8;font-size:14.5px;line-height:1.62;margin:0">Chaque module est testé sur des scénarios réels : facturation, exports comptables, suivi de trésorerie, intégrations bancaires…</p>
           </div>
         </div>
 
@@ -342,7 +377,7 @@ details.faq-item>.faq-a{padding:0 0 24px;color:#64748B;font-size:15.5px;line-hei
           <span style="font-family:'Newsreader',Georgia,serif;font-size:18px;font-weight:500;color:#7C3AED">10%</span>
         </div>
         <div style="height:6px;background:#E6E8EF;border-radius:3px;margin-bottom:10px"><div style="height:6px;width:10%;background:#7C3AED;border-radius:3px"></div></div>
-        <p style="color:#64748B;font-size:14px;line-height:1.55;margin:0">Connexions natives avec les outils comptables, SIRH, banques et CRM du marché français.</p>
+        <p style="color:#64748B;font-size:14px;line-height:1.55;margin:0">Connexions natives avec les outils comptables, de gestion, banques et CRM du marché français.</p>
       </div>
       <div style="background:#F4F5F8;border:1px solid #EEF0F4;border-radius:14px;padding:24px 26px;transition:transform .18s ease,box-shadow .18s ease,background .18s ease" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px rgba(15,23,42,0.08);background:#fff">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
@@ -414,11 +449,11 @@ details.faq-item>.faq-a{padding:0 0 24px;color:#64748B;font-size:15.5px;line-hei
           <div style="flex:1;min-width:260px">
             <h3 style="font-size:22px;font-weight:800;color:#0F172A;margin:0 0 4px">Thomas Bertrand</h3>
             <div style="color:#7C3AED;font-size:14px;font-weight:600;margin-bottom:16px">Fondateur · Startup Only</div>
-            <p style="color:#64748B;font-size:15.5px;line-height:1.7;margin:0 0 14px">J'ai créé Startup Only après avoir constaté que la plupart des comparatifs en ligne manquaient de profondeur ou de transparence sur leur méthode. J'ai accompagné de nombreuses entreprises dans le choix de leurs outils RH, et j'ai voulu mettre cette expérience au service des entrepreneurs.</p>
+            <p style="color:#64748B;font-size:15.5px;line-height:1.7;margin:0 0 14px">J'ai créé Startup Only après avoir constaté que la plupart des comparatifs en ligne manquaient de profondeur ou de transparence sur leur méthode. J'ai accompagné de nombreuses entreprises dans le choix de leurs outils de gestion, et j'ai voulu mettre cette expérience au service des entrepreneurs.</p>
             <p style="color:#64748B;font-size:15.5px;line-height:1.7;margin:0 0 22px">Je teste chaque logiciel personnellement, en conditions réelles, et je documente chaque étape. Mon objectif : vous faire gagner du temps et vous aider à prendre la meilleure décision pour votre structure.</p>
             <div style="display:flex;flex-wrap:wrap;gap:7px">
-              <span style="font-size:12.5px;font-weight:700;color:#7C3AED;background:rgba(124,58,237,0.09);padding:5px 11px;border-radius:999px">Logiciels RH</span>
-              <span style="font-size:12.5px;font-weight:700;color:#7C3AED;background:rgba(124,58,237,0.09);padding:5px 11px;border-radius:999px">Paie &amp; SIRH</span>
+              <span style="font-size:12.5px;font-weight:700;color:#7C3AED;background:rgba(124,58,237,0.09);padding:5px 11px;border-radius:999px">Gestion d'entreprise</span>
+              <span style="font-size:12.5px;font-weight:700;color:#7C3AED;background:rgba(124,58,237,0.09);padding:5px 11px;border-radius:999px">Comptabilité &amp; finance</span>
               <span style="font-size:12.5px;font-weight:700;color:#7C3AED;background:rgba(124,58,237,0.09);padding:5px 11px;border-radius:999px">Comptabilité</span>
               <span style="font-size:12.5px;font-weight:700;color:#7C3AED;background:rgba(124,58,237,0.09);padding:5px 11px;border-radius:999px">Facturation</span>
             </div>
