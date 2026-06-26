@@ -10,7 +10,7 @@
 {% if site.google_site_verification is defined and site.google_site_verification %}<meta name="google-site-verification" content="{{ site.google_site_verification }}">{% endif %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ===================================================================
    A PROPOS - laboxentrepreneuriat-fr.
@@ -34,8 +34,6 @@
 html{scroll-behavior:smooth}
 body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;background:var(--bg);color:#1C2733;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 a{text-decoration:none;color:inherit}
-nav.site-nav .nav-logo{font-family:'{{ theme.font_title }}',serif}
-nav.site-nav .nav-links a,nav.site-nav .nav-cta,nav.site-nav .nav-mobile a,.footer{font-family:'{{ theme.font_body }}',system-ui,-apple-system,sans-serif}
 /* FAQ accordeon natif (icone « + » qui pivote en croix sur fond vert, sans JS) */
 details.faq-item{background:#fff;border:1px solid #E9ECF2;border-radius:16px;overflow:hidden}
 details.faq-item>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 26px}
@@ -46,11 +44,48 @@ details.faq-item[open]>summary .faq-ico{transform:rotate(45deg);background:#10B9
 details.faq-item[open]>summary .faq-ico svg path{stroke:#fff}
 details.faq-item>.faq-a{padding:0 26px 24px}
 details.faq-item>.faq-a p{margin:0;font-size:16px;line-height:1.75;color:#475569}
+/* ===== Responsive mobile (ajoute apres coup : export Claude Design en styles inline figes, sans media query) ===== */
+@media(max-width:768px){
+.ap-root [style*="grid-template-columns"]:not([style*="columns:52px"]):not([style*="columns: 52px"]):not([style*="columns:80px"]):not([style*="columns: 80px"]):not([style*="columns:auto"]):not([style*="columns: auto"]){grid-template-columns:1fr !important}
+.ap-root [style*="padding:48px"]{padding:28px 20px !important}
+.ap-root [style*="padding:96px 48px"]{padding:56px 20px !important}
+.ap-root [style*="padding:80px 48px"]{padding:48px 20px !important}
+.ap-root [style*="padding:44px 48px"]{padding:32px 20px !important}
+.ap-root [style*="padding:48px 52px"]{padding:30px 22px !important}
+.ap-root [style*="padding:100px 48px"]{padding:56px 20px !important}
+.ap-root [style*="padding:0 48px 96px"]{padding:0 20px 56px !important}
+.ap-root [style*="padding:0 48px 100px"]{padding:0 20px 56px !important}
+.ap-root [style*="padding:84px 48px 92px"]{padding:48px 20px 52px !important}
+.ap-root [style*="padding:80px 48px 56px"]{padding:44px 20px 36px !important}
+.ap-root [style*="font-size:80px"]{font-size:40px !important}
+.ap-root [style*="font-size:64px"]{font-size:34px !important}
+.ap-root [style*="font-size:52px"]{font-size:32px !important}
+.ap-root [style*="font-size:48px"]{font-size:30px !important}
+.ap-root [style*="font-size:46px"]{font-size:29px !important}
+.ap-root [style*="font-size:44px"]{font-size:28px !important}
+.ap-root [style*="font-size:42px"]{font-size:27px !important}
+.ap-root [style*="font-size:40px"]{font-size:26px !important}
+.ap-root [style*="font-size:38px"]{font-size:25px !important}
+.ap-root [style*="font-size:36px"]{font-size:24px !important}
+.ap-root [style*="font-size:34px"]{font-size:23px !important}
+.ap-root [style*="gap:72px"]{gap:34px !important}
+.ap-root [style*="gap:64px"]{gap:32px !important}
+.ap-root [style*="gap:52px"]{gap:30px !important}
+.ap-root [style*="gap:44px"]{gap:26px !important}
+.ap-root [style*="gap:40px"]{gap:24px !important}
+.ap-root [style*="gap:36px"]{gap:22px !important}
+.ap-root [style*="gap:34px"]{gap:21px !important}
+.ap-root [style*="gap:32px"]{gap:20px !important}
+.ap-root [style*="gap:30px"]{gap:19px !important}
+.ap-root [style*="gap:28px"]{gap:18px !important}
+.ap-root{overflow-x:hidden}
+.ap-root img{max-width:100%;height:auto}
+}
 </style>
 </head>
 <body>
 {% include 'base/_nav.html.j2' %}
-<div style="background:#FAFAFC; min-height:100vh; overflow-x:hidden;">
+<div class="ap-root" style="background:#FAFAFC; min-height:100vh; overflow-x:hidden;">
 
   <!-- ======== HEADER ======== -->
 
