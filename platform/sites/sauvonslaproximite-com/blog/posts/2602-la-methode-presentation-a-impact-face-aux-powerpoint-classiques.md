@@ -4,15 +4,20 @@ slug: 2602-la-methode-presentation-a-impact-face-aux-powerpoint-classiques
 date: '2026-06-26T11:00:00+02:00'
 categorie: Salarié
 meta_title: Formation PowerPoint exécutif vs slides surchargés
-meta_description: Découvrez pourquoi les PowerPoint classiques échouent à convaincre et comment la méthode présentation à impact transforme vos prises de parole en réunion.
+meta_description: Découvrez pourquoi les PowerPoint classiques échouent à convaincre
+  et comment la méthode présentation à impact transforme vos prises de parole en réunion.
 min_words: 930
 status: published
 featured_image: /blog/2602-la-methode-presentation-a-impact-face-aux-powerpoint-classiques.jpg
 link_anchors:
 - text: la méthode de formation PowerPoint exécutif pour des présentations à impact
   max: 5
+related_posts:
+- 1113-abreviations-du-bulletin-de-salaire-comprendre-facilement-chaque-ligne
+- 8972-horaire-decale-quels-droits-et-obligations-pour-les-salaries-concernes
+- 3098-repondre-a-ses-mails-professionnels-pendant-un-arret-maladie-ce-qu-il-faut-savoir
+- 2942-demission-et-anciennete-quels-avantages-conservez-vous-apres-votre-depart
 ---
-
 <p>J'ai longtemps cru qu'une bonne présentation, c'était avant tout un beau PowerPoint. Des couleurs cohérentes, des icônes bien placées, un fond sombre qui fait "pro". Et puis un jour, en réunion de direction, j'ai regardé les visages autour de la table. Personne ne regardait l'écran. Certains vérifiaient leurs mails. Un directeur commercial pianotait discrètement sous la table. La présentation durait depuis 18 minutes. C'était la mienne.</p>
 
 <p>Ce jour-là, j'ai compris que le problème n'était pas les slides. C'était la méthode.</p>
