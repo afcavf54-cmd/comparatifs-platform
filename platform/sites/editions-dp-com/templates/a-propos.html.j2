@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>À propos · {{ site.name }}</title>
+<meta name="description" content="À propos de {{ site.name }} : notre média de comparatifs de logiciels pour dirigeants de TPE et PME, notre méthodologie de test et notre auteur.">
+<link rel="canonical" href="{{ site.domain }}/a-propos/">
+{% if site.favicon_file is defined and site.favicon_file %}<link rel="icon" href="{{ site.favicon_file }}">{% else %}<link rel="icon" href="/favicon.svg" type="image/svg+xml">{% endif %}
+{% if site.google_site_verification is defined and site.google_site_verification %}<meta name="google-site-verification" content="{{ site.google_site_verification }}">{% endif %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+/* ===================================================================
+   A PROPOS - editions-dp-com.
+   Design « Editions des Pros » (Claude Design), aplati en statique.
+   En-tete + pied = partials _nav / _footer (autoportants) : ils ne
+   reclament que les variables :root ci-dessous (theme.*).
+   Le corps du design garde sa palette inline (#1B4FD8 / #E8410A /
+   #0F1A2E) et ses polices Manrope + Spectral.
+   =================================================================== */
+:root{
+  --bg:{{ theme.bg }};
+  --surface:{{ theme.surface if theme.surface is defined and theme.surface else "#fff" }};
+  --ink:{{ theme.ink }};
+  --accent:{{ theme.accent }};
+  --accent2:{{ theme.accent2 }};
+  --cta:{{ theme.cta_color if theme.cta_color is defined and theme.cta_color else "#F59E0B" }};
+  --cta-text:{{ theme.cta_text_color if theme.cta_text_color is defined and theme.cta_text_color else "#ffffff" }};
+  --border:#E2E8F0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',system-ui,-apple-system,sans-serif;background:var(--bg);color:#0F1A2E;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{text-decoration:none;color:inherit}
+/* Ce site n'a pas de theme.font_title / font_body en config -> fallback sur les polices du design */
+nav.site-nav .nav-logo{font-family:'{{ theme.font_title if theme.font_title is defined and theme.font_title else "Spectral" }}',serif}
+nav.site-nav .nav-links a,nav.site-nav .nav-cta,nav.site-nav .nav-mobile a,.footer{font-family:'{{ theme.font_body if theme.font_body is defined and theme.font_body else "Manrope" }}',system-ui,-apple-system,sans-serif}
+/* FAQ accordeon natif (indicateur « + » qui pivote en croix, sans JS) */
+details.faq-item:not(:last-child){border-bottom:1px solid #EEF1F7}
+details.faq-item>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:22px 28px}
+details.faq-item>summary::-webkit-details-marker{display:none}
+details.faq-item>summary .faq-q{flex:1;font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;color:#0F1A2E;line-height:1.4}
+details.faq-item>summary .faq-ico{display:inline-flex;align-items:center;justify-content:center;flex:none;width:28px;height:28px;border-radius:8px;font-size:20px;font-weight:300;line-height:1;color:#8893A6;background:rgba(15,26,46,.05);transition:transform .3s ease,background .2s ease,color .2s ease}
+details.faq-item[open]>summary .faq-ico{transform:rotate(45deg);color:#1B4FD8;background:rgba(27,79,216,.10)}
+details.faq-item>.faq-a{padding:0 28px 24px}
+details.faq-item>.faq-a p{margin:0;font-size:15px;line-height:1.75;color:#5A6679}
+</style>
+</head>
+<body>
+{% include 'base/_nav.html.j2' %}
+<div id="top" style="background:#F4F6FB;min-height:100vh;overflow-x:hidden">
+
+<!-- ===== HEADER ===== -->
+
+<!-- ===== 1. HERO ===== -->
+<section style="position:relative;background:#0F1A2E;overflow:hidden">
+  <div style="position:absolute;top:-160px;left:50%;transform:translateX(-50%);width:760px;height:520px;background:radial-gradient(closest-side,rgba(27,79,216,.45),transparent 70%);filter:blur(20px);animation:glowpulse 7s ease-in-out infinite;pointer-events:none"></div>
+  <div style="position:absolute;top:120px;right:-120px;width:460px;height:460px;background:radial-gradient(closest-side,rgba(232,65,10,.22),transparent 70%);filter:blur(20px);pointer-events:none"></div>
+  <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:34px 34px;opacity:.5;pointer-events:none"></div>
+  <div style="position:relative;max-width:1280px;margin:0 auto;padding:88px 40px 104px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+
+    <div>
+      <span style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FBA94C;background:rgba(245,158,11,.10);border:1px solid rgba(245,158,11,.28);padding:8px 16px;border-radius:999px">
+        <span style="width:6px;height:6px;border-radius:50%;background:#F59E0B;display:inline-block"></span>
+        MON HISTOIRE
+      </span>
+      <h1 style="font-family:'Spectral',serif;font-weight:700;font-size:52px;line-height:1.06;color:#fff;margin:24px 0 0;letter-spacing:-.01em;text-wrap:balance">J'aide les entrepreneurs et les dirigeants à mieux piloter leur entreprise.</h1>
+      <p style="font-size:17px;line-height:1.7;color:#A8B3C7;margin:20px 0 0;max-width:500px">Comparatifs de logiciels, guides de gestion, conseils RH et financiers : tout ce qu'un dirigeant de TPE ou PME doit savoir, écrit par quelqu'un qui le vit au quotidien.</p>
+      <div style="display:flex;align-items:center;gap:14px;margin-top:34px;flex-wrap:wrap">
+        <a href="/nos-comparateurs" style="display:inline-flex;align-items:center;gap:10px;background:#F59E0B;color:#fff;font-weight:700;font-size:16px;padding:16px 28px;border-radius:12px;box-shadow:0 14px 30px -12px rgba(245,158,11,.65)">Nos comparatifs →</a>
+        <a href="#methodologie" style="display:inline-flex;align-items:center;gap:9px;color:#E7ECF5;font-weight:700;font-size:16px;padding:16px 22px;border-radius:12px;border:1.5px solid rgba(255,255,255,.18)">Notre méthodologie</a>
+      </div>
+    </div>
+
+    <div style="position:relative">
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);border-radius:26px;padding:36px 32px">
+        <div style="display:flex;justify-content:center;margin-bottom:22px">
+          <div style="width:100px;height:100px;border-radius:50%;border:3px solid #1B3A6B;background:#1B4FD8;overflow:hidden">
+            {% if site.author_photo is defined and site.author_photo %}<img src="{{ site.author_photo }}" alt="{{ author.name or 'Pierre Petit' }}" style="width:100px;height:100px;display:block;object-fit:cover">{% else %}<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Spectral',serif;font-weight:700;font-size:34px">PP</div>{% endif %}
+          </div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-family:'Spectral',serif;font-weight:700;font-size:20px;color:#fff">{{ author.name or 'Pierre Petit' }}</div>
+          <p style="font-size:14px;color:#A8B3C7;margin-top:4px">Fondateur · Dirigeant TPE · Strasbourg</p>
+          <p style="font-size:13px;color:#7E8AA0;margin-top:4px">Logiciels · Gestion · RH · Finances · Marketing</p>
+        </div>
+        <div style="display:flex;margin-top:26px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:14px;overflow:hidden">
+          <div style="flex:1;padding:16px 8px;text-align:center;border-right:1px solid rgba(255,255,255,.08)">
+            <div style="font-family:'Spectral',serif;font-weight:700;font-size:26px;color:#fff">340+</div>
+            <div style="font-size:11.5px;color:#8E9AB0;margin-top:2px">Logiciels</div>
+          </div>
+          <div style="flex:1;padding:16px 8px;text-align:center;border-right:1px solid rgba(255,255,255,.08)">
+            <div style="font-family:'Spectral',serif;font-weight:700;font-size:26px;color:#fff">48</div>
+            <div style="font-size:11.5px;color:#8E9AB0;margin-top:2px">Comparatifs</div>
+          </div>
+          <div style="flex:1;padding:16px 8px;text-align:center">
+            <div style="font-family:'Spectral',serif;font-weight:700;font-size:26px;color:#F59E0B">2020</div>
+            <div style="font-size:11.5px;color:#8E9AB0;margin-top:2px">Depuis</div>
+          </div>
+        </div>
+      </div>
+      <div style="position:absolute;top:-18px;right:20px;background:#1B4FD8;color:#fff;padding:10px 16px;border-radius:12px;box-shadow:0 18px 40px -16px rgba(27,79,216,.7);animation:floaty 5s ease-in-out infinite;font-size:13px;font-weight:700;white-space:nowrap">✓ 100 % indépendant</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== 2. POURQUOI CE MÉDIA EXISTE ===== -->
+<section style="background:#fff;border-bottom:1px solid #ECEFF6">
+  <div style="max-width:1280px;margin:0 auto;padding:88px 40px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center">
+    <div>
+      <span style="font-size:12.5px;font-weight:700;letter-spacing:.16em;color:#E8410A">MA MISSION</span>
+      <h2 style="font-family:'Spectral',serif;font-weight:700;font-size:40px;color:#0F1A2E;margin-top:12px;letter-spacing:-.01em;line-height:1.1">Pourquoi j'ai créé ce média</h2>
+      <p style="font-size:16px;line-height:1.75;color:#41506A;margin-top:20px">Gérer une entreprise, c'est prendre des dizaines de décisions chaque semaine : quel logiciel adopter, comment structurer ses RH, comment piloter sa trésorerie. Chaque mauvais choix coûte <strong style="color:#0F1A2E">du temps et de l'argent</strong>. Pourtant, les bons contenus pour les dirigeants de TPE et PME sont rares, souvent biaisés ou réservés aux grandes entreprises.</p>
+      <p style="font-size:16px;line-height:1.75;color:#41506A;margin-top:14px">J'ai créé Éditions des Pros par frustration : je ne trouvais pas de contenus vraiment fiables, écrits par quelqu'un qui utilise ces outils au quotidien dans sa propre entreprise.</p>
+      <p style="font-size:16px;line-height:1.75;color:#41506A;margin-top:14px">Mon objectif : <strong style="color:#0F1A2E">vous faire gagner du temps</strong>, vous aider à éviter les mauvais choix coûteux, et vous offrir des analyses fondées sur mes propres tests en conditions réelles.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div style="background:#F4F6FB;border:1px solid #E8ECF4;border-radius:20px;padding:28px 22px;text-align:center">
+        <div style="font-family:'Spectral',serif;font-weight:700;font-size:44px;color:#1B4FD8;letter-spacing:-.02em;line-height:1">340+</div>
+        <div style="font-size:14px;font-weight:600;color:#5A6679;margin-top:8px">Logiciels analysés</div>
+      </div>
+      <div style="background:#F4F6FB;border:1px solid #E8ECF4;border-radius:20px;padding:28px 22px;text-align:center">
+        <div style="font-family:'Spectral',serif;font-weight:700;font-size:44px;color:#E8410A;letter-spacing:-.02em;line-height:1">1 200h</div>
+        <div style="font-size:14px;font-weight:600;color:#5A6679;margin-top:8px">Heures de tests</div>
+      </div>
+      <div style="background:#0F1A2E;border-radius:20px;padding:28px 22px;text-align:center">
+        <div style="font-family:'Spectral',serif;font-weight:700;font-size:44px;color:#F59E0B;letter-spacing:-.02em;line-height:1">85k+</div>
+        <div style="font-size:14px;font-weight:600;color:#A8B3C7;margin-top:8px">Lecteurs / mois</div>
+      </div>
+      <div style="background:#1B4FD8;border-radius:20px;padding:28px 22px;text-align:center">
+        <div style="font-family:'Spectral',serif;font-weight:700;font-size:44px;color:#fff;letter-spacing:-.02em;line-height:1">48</div>
+        <div style="font-size:14px;font-weight:600;color:#C9D6F5;margin-top:8px">Comparatifs publiés</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. NOS VALEURS ===== -->
+<section style="background:#F4F6FB">
+  <div style="max-width:1280px;margin:0 auto;padding:88px 40px">
+    <div style="text-align:center;margin-bottom:52px">
+      <span style="font-size:12.5px;font-weight:700;letter-spacing:.16em;color:#E8410A">CE QUI NOUS GUIDE</span>
+      <h2 style="font-family:'Spectral',serif;font-weight:700;font-size:40px;color:#0F1A2E;margin-top:12px;letter-spacing:-.01em">Nos valeurs</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:22px">
+
+      <div style="background:#fff;border:1px solid #ECEFF6;border-radius:24px;padding:32px 26px;box-shadow:0 1px 3px rgba(15,26,46,.04);transition:transform .15s ease,box-shadow .15s ease" style-hover="transform:translateY(-4px);box-shadow:0 24px 48px -24px rgba(15,26,46,.28)">
+        <div style="width:50px;height:50px;border-radius:14px;background:rgba(27,79,216,.10);display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V7l8-4z"></path><path d="M9 12l2 2 4-4"></path></svg>
+        </div>
+        <h3 style="font-family:'Spectral',serif;font-weight:700;font-size:21px;color:#0F1A2E">Indépendance</h3>
+        <p style="font-size:14.5px;line-height:1.65;color:#5A6679;margin-top:10px">Nos évaluations reposent sur une grille de 6 critères objectifs, testés en conditions réelles. Les notes sont documentées et consultables par tous.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid #ECEFF6;border-radius:24px;padding:32px 26px;box-shadow:0 1px 3px rgba(15,26,46,.04);transition:transform .15s ease,box-shadow .15s ease" style-hover="transform:translateY(-4px);box-shadow:0 24px 48px -24px rgba(15,26,46,.28)">
+        <div style="width:50px;height:50px;border-radius:14px;background:rgba(232,65,10,.10);display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8410A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4M12 16h.01"></path></svg>
+        </div>
+        <h3 style="font-family:'Spectral',serif;font-weight:700;font-size:21px;color:#0F1A2E">Transparence</h3>
+        <p style="font-size:14.5px;line-height:1.65;color:#5A6679;margin-top:10px">Nous expliquons toujours pourquoi un logiciel est mieux classé. Nos critères sont publics et vérifiables.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid #ECEFF6;border-radius:24px;padding:32px 26px;box-shadow:0 1px 3px rgba(15,26,46,.04);transition:transform .15s ease,box-shadow .15s ease" style-hover="transform:translateY(-4px);box-shadow:0 24px 48px -24px rgba(15,26,46,.28)">
+        <div style="width:50px;height:50px;border-radius:14px;background:rgba(245,158,11,.14);display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D98300" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 9.3l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.8L12 3z"></path></svg>
+        </div>
+        <h3 style="font-family:'Spectral',serif;font-weight:700;font-size:21px;color:#0F1A2E">Expertise</h3>
+        <p style="font-size:14.5px;line-height:1.65;color:#5A6679;margin-top:10px">Chaque logiciel est étudié en profondeur avant publication. Nos rédacteurs sont des praticiens RH, pas des journalistes généralistes.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid #ECEFF6;border-radius:24px;padding:32px 26px;box-shadow:0 1px 3px rgba(15,26,46,.04);transition:transform .15s ease,box-shadow .15s ease" style-hover="transform:translateY(-4px);box-shadow:0 24px 48px -24px rgba(15,26,46,.28)">
+        <div style="width:50px;height:50px;border-radius:14px;background:rgba(27,79,216,.10);display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4l3 3"></path></svg>
+        </div>
+        <h3 style="font-family:'Spectral',serif;font-weight:700;font-size:21px;color:#0F1A2E">Utilité</h3>
+        <p style="font-size:14.5px;line-height:1.65;color:#5A6679;margin-top:10px">Notre priorité est d'aider concrètement les entreprises pas de générer du trafic pour son propre compte.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. MÉTHODOLOGIE ===== -->
+<section id="methodologie" style="background:#0F1A2E;position:relative;overflow:hidden">
+  <div style="position:absolute;bottom:-140px;left:-100px;width:420px;height:420px;background:radial-gradient(closest-side,rgba(27,79,216,.30),transparent 70%);filter:blur(10px);pointer-events:none"></div>
+  <div style="position:absolute;top:-80px;right:-80px;width:320px;height:320px;background:radial-gradient(closest-side,rgba(232,65,10,.20),transparent 70%);filter:blur(10px);pointer-events:none"></div>
+  <div style="position:relative;max-width:860px;margin:0 auto;padding:88px 40px">
+    <div style="text-align:center;margin-bottom:60px">
+      <span style="font-size:12.5px;font-weight:700;letter-spacing:.16em;color:#FBA94C">EN 7 ÉTAPES</span>
+      <h2 style="font-family:'Spectral',serif;font-weight:700;font-size:40px;color:#fff;margin-top:12px;letter-spacing:-.01em">Notre méthodologie</h2>
+      <p style="font-size:16px;color:#A8B3C7;margin-top:12px;max-width:540px;margin-left:auto;margin-right:auto">Chaque comparatif suit un processus rigoureux en 7 étapes pour garantir des analyses fiables et indépendantes.</p>
+    </div>
+
+    <div style="position:relative;display:flex;flex-direction:column;gap:0">
+      <div style="position:absolute;left:27px;top:56px;bottom:56px;width:2px;background:linear-gradient(to bottom, rgba(27,79,216,.6), rgba(27,79,216,.1));pointer-events:none"></div>
+
+      <div style="display:flex;gap:28px;align-items:flex-start;padding-bottom:36px">
+        <div style="flex:none;width:56px;height:56px;border-radius:50%;background:#1B4FD8;border:3px solid rgba(27,79,216,.3);display:flex;align-items:center;justify-content:center;font-family:'Spectral',serif;font-weight:700;font-size:17px;color:#fff;z-index:1">01</div>
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:22px 24px;flex:1">
+          <h3 style="font-family:'Spectral',serif;font-weight:600;font-size:19px;color:#fff">Sélection des logiciels</h3>
+          <p style="font-size:14.5px;line-height:1.6;color:#A8B3C7;margin-top:8px">Nous identifions toutes les solutions disponibles sur le marché français, en ciblant celles adaptées aux TPE, PME et ETI.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:28px;align-items:flex-start;padding-bottom:36px">
+        <div style="flex:none;width:56px;height:56px;border-radius:50%;background:#1B4FD8;border:3px solid rgba(27,79,216,.3);display:flex;align-items:center;justify-content:center;font-family:'Spectral',serif;font-weight:700;font-size:17px;color:#fff;z-index:1">02</div>
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:22px 24px;flex:1">
+          <h3 style="font-family:'Spectral',serif;font-weight:600;font-size:19px;color:#fff">Création d'un compte réel</h3>
+          <p style="font-size:14.5px;line-height:1.6;color:#A8B3C7;margin-top:8px">Notre équipe crée un compte réel (version d'essai ou démonstration planifiée) pour tester chaque fonctionnalité de manière authentique.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:28px;align-items:flex-start;padding-bottom:36px">
+        <div style="flex:none;width:56px;height:56px;border-radius:50%;background:#1B4FD8;border:3px solid rgba(27,79,216,.3);display:flex;align-items:center;justify-content:center;font-family:'Spectral',serif;font-weight:700;font-size:17px;color:#fff;z-index:1">03</div>
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:22px 24px;flex:1">
+          <h3 style="font-family:'Spectral',serif;font-weight:600;font-size:19px;color:#fff">Test des fonctionnalités</h3>
+          <p style="font-size:14.5px;line-height:1.6;color:#A8B3C7;margin-top:8px">Nous parcourons l'ensemble du produit selon notre grille de 6 critères, en simulant des scénarios réels d'entreprise.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:28px;align-items:flex-start;padding-bottom:36px">
+        <div style="flex:none;width:56px;height:56px;border-radius:50%;background:#E8410A;border:3px solid rgba(232,65,10,.3);display:flex;align-items:center;justify-content:center;font-family:'Spectral',serif;font-weight:700;font-size:17px;color:#fff;z-index:1">04</div>
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:22px 24px;flex:1">
+          <h3 style="font-family:'Spectral',serif;font-weight:600;font-size:19px;color:#fff">Analyse des tarifs</h3>
+          <p style="font-size:14.5px;line-height:1.6;color:#A8B3C7;margin-top:8px">Nous comparons les plans tarifaires, les coûts cachés, les engagements minimaux et le rapport qualité/prix sur l'ensemble du marché.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:28px;align-items:flex-start;padding-bottom:36px">
+        <div style="flex:none;width:56px;height:56px;border-radius:50%;background:#E8410A;border:3px solid rgba(232,65,10,.3);display:flex;align-items:center;justify-content:center;font-family:'Spectral',serif;font-weight:700;font-size:17px;color:#fff;z-index:1">05</div>
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:22px 24px;flex:1">
+          <h3 style="font-family:'Spectral',serif;font-weight:600;font-size:19px;color:#fff">Comparaison concurrentielle</h3>
+          <p style="font-size:14.5px;line-height:1.6;color:#A8B3C7;margin-top:8px">Chaque logiciel est mis en perspective avec ses concurrents directs pour identifier objectivement ses forces et ses limites.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:28px;align-items:flex-start;padding-bottom:36px">
+        <div style="flex:none;width:56px;height:56px;border-radius:50%;background:#F59E0B;border:3px solid rgba(245,158,11,.3);display:flex;align-items:center;justify-content:center;font-family:'Spectral',serif;font-weight:700;font-size:17px;color:#fff;z-index:1">06</div>
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:22px 24px;flex:1">
+          <h3 style="font-family:'Spectral',serif;font-weight:600;font-size:19px;color:#fff">Attribution d'une note</h3>
+          <p style="font-size:14.5px;line-height:1.6;color:#A8B3C7;margin-top:8px">Une note globale et par critère est calculée selon notre méthodologie pondérée, sans aucune influence externe.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:28px;align-items:flex-start">
+        <div style="flex:none;width:56px;height:56px;border-radius:50%;background:#F59E0B;border:3px solid rgba(245,158,11,.3);display:flex;align-items:center;justify-content:center;font-family:'Spectral',serif;font-weight:700;font-size:17px;color:#fff;z-index:1">07</div>
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:22px 24px;flex:1">
+          <h3 style="font-family:'Spectral',serif;font-weight:600;font-size:19px;color:#fff">Publication et mise à jour</h3>
+          <p style="font-size:14.5px;line-height:1.6;color:#A8B3C7;margin-top:8px">L'article est relu, sourcé et publié. Il est mis à jour dès qu'un changement significatif survient tarif, fonctionnalité ou nouveau concurrent.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. COMMENT NOUS NOTONS ===== -->
+<section style="background:#fff;border-bottom:1px solid #ECEFF6">
+  <div style="max-width:1280px;margin:0 auto;padding:88px 40px">
+    <div style="text-align:center;margin-bottom:52px">
+      <span style="font-size:12.5px;font-weight:700;letter-spacing:.16em;color:#E8410A">GRILLE D'ÉVALUATION</span>
+      <h2 style="font-family:'Spectral',serif;font-weight:700;font-size:40px;color:#0F1A2E;margin-top:12px;letter-spacing:-.01em">Comment nous notons les logiciels</h2>
+      <p style="font-size:16px;color:#5A6679;margin-top:12px;max-width:520px;margin-left:auto;margin-right:auto">6 critères pondérés, évalués de manière indépendante sur chaque logiciel testé.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
+
+      <div style="background:#F4F6FB;border:1px solid #ECEFF6;border-radius:20px;padding:28px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h3 style="font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;color:#0F1A2E">Facilité d'utilisation</h3>
+          <span style="color:#F59E0B;font-size:15px;letter-spacing:1px">★★★★★</span>
+        </div>
+        <div style="height:4px;background:#E8ECF4;border-radius:4px;margin-bottom:12px"><div style="height:4px;background:#F59E0B;border-radius:4px;width:100%"></div></div>
+        <p style="font-size:13.5px;color:#5A6679;line-height:1.6">Prise en main intuitive, qualité de l'interface et courbe d'apprentissage pour les équipes.</p>
+      </div>
+
+      <div style="background:#F4F6FB;border:1px solid #ECEFF6;border-radius:20px;padding:28px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h3 style="font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;color:#0F1A2E">Fonctionnalités</h3>
+          <span style="color:#F59E0B;font-size:15px;letter-spacing:1px">★★★★★</span>
+        </div>
+        <div style="height:4px;background:#E8ECF4;border-radius:4px;margin-bottom:12px"><div style="height:4px;background:#F59E0B;border-radius:4px;width:100%"></div></div>
+        <p style="font-size:13.5px;color:#5A6679;line-height:1.6">Richesse et pertinence des fonctions proposées par rapport aux besoins métier réels.</p>
+      </div>
+
+      <div style="background:#F4F6FB;border:1px solid #ECEFF6;border-radius:20px;padding:28px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h3 style="font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;color:#0F1A2E">Rapport qualité / prix</h3>
+          <span style="color:#F59E0B;font-size:15px;letter-spacing:1px">★★★★★</span>
+        </div>
+        <div style="height:4px;background:#E8ECF4;border-radius:4px;margin-bottom:12px"><div style="height:4px;background:#F59E0B;border-radius:4px;width:100%"></div></div>
+        <p style="font-size:13.5px;color:#5A6679;line-height:1.6">Adéquation entre le tarif pratiqué et la valeur réellement délivrée à l'entreprise.</p>
+      </div>
+
+      <div style="background:#F4F6FB;border:1px solid #ECEFF6;border-radius:20px;padding:28px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h3 style="font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;color:#0F1A2E">Support client</h3>
+          <span style="color:#F59E0B;font-size:15px;letter-spacing:1px">★★★★★</span>
+        </div>
+        <div style="height:4px;background:#E8ECF4;border-radius:4px;margin-bottom:12px"><div style="height:4px;background:#F59E0B;border-radius:4px;width:100%"></div></div>
+        <p style="font-size:13.5px;color:#5A6679;line-height:1.6">Réactivité, qualité des réponses et disponibilité des équipes support de l'éditeur.</p>
+      </div>
+
+      <div style="background:#F4F6FB;border:1px solid #ECEFF6;border-radius:20px;padding:28px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h3 style="font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;color:#0F1A2E">Intégrations</h3>
+          <span style="color:#F59E0B;font-size:15px;letter-spacing:1px">★★★★★</span>
+        </div>
+        <div style="height:4px;background:#E8ECF4;border-radius:4px;margin-bottom:12px"><div style="height:4px;background:#F59E0B;border-radius:4px;width:100%"></div></div>
+        <p style="font-size:13.5px;color:#5A6679;line-height:1.6">Capacité à se connecter aux autres outils de l'entreprise via API, connecteurs natifs ou Zapier.</p>
+      </div>
+
+      <div style="background:#F4F6FB;border:1px solid #ECEFF6;border-radius:20px;padding:28px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <h3 style="font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;color:#0F1A2E">Évolutivité</h3>
+          <span style="color:#F59E0B;font-size:15px;letter-spacing:1px">★★★★★</span>
+        </div>
+        <div style="height:4px;background:#E8ECF4;border-radius:4px;margin-bottom:12px"><div style="height:4px;background:#F59E0B;border-radius:4px;width:100%"></div></div>
+        <p style="font-size:13.5px;color:#5A6679;line-height:1.6">Capacité à accompagner la croissance de l'entreprise dans la durée, sans changer de solution.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. TRANSPARENCE FINANCIÈRE ===== -->
+<section style="background:#F4F6FB">
+  <div style="max-width:920px;margin:0 auto;padding:88px 40px">
+    <div style="background:#fff;border:1.5px solid #ECEFF6;border-radius:28px;padding:50px;box-shadow:0 10px 40px -24px rgba(15,26,46,.18);display:flex;gap:36px;align-items:flex-start">
+      <div style="flex:none;width:60px;height:60px;border-radius:16px;background:rgba(27,79,216,.10);display:flex;align-items:center;justify-content:center;margin-top:4px">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V7l8-4z"></path><path d="M9 12l2 2 4-4"></path></svg>
+      </div>
+      <div>
+        <span style="font-size:12.5px;font-weight:700;letter-spacing:.16em;color:#1B4FD8">TRANSPARENCE FINANCIÈRE</span>
+        <h2 style="font-family:'Spectral',serif;font-weight:700;font-size:30px;color:#0F1A2E;margin-top:10px;letter-spacing:-.01em">Comment ce site est financé</h2>
+        <p style="font-size:16px;line-height:1.75;color:#41506A;margin-top:16px">Éditions des Pros peut percevoir une <strong style="color:#0F1A2E">commission d'affiliation</strong> lorsqu'un lecteur souscrit à un logiciel via l'un de nos liens partenaires.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:22px">
+          <div style="display:flex;align-items:flex-start;gap:12px">
+            <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(27,79,216,.12);display:flex;align-items:center;justify-content:center;margin-top:1px">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+            </span>
+            <p style="font-size:15px;color:#41506A;line-height:1.6">Nos notes reposent sur une <strong style="color:#0F1A2E">grille de 6 critères fixes et documentés</strong>, appliquée de la même façon à chaque logiciel, quel que soit son statut.</p>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px">
+            <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(27,79,216,.12);display:flex;align-items:center;justify-content:center;margin-top:1px">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+            </span>
+            <p style="font-size:15px;color:#41506A;line-height:1.6">Chaque évaluation est réalisée sur la base de <strong style="color:#0F1A2E">tests réels effectués par notre équipe</strong>, selon un protocole identique pour tous les logiciels.</p>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:12px">
+            <span style="flex:none;width:22px;height:22px;border-radius:50%;background:rgba(27,79,216,.12);display:flex;align-items:center;justify-content:center;margin-top:1px">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+            </span>
+            <p style="font-size:15px;color:#41506A;line-height:1.6">Les liens d'affiliation sont <strong style="color:#0F1A2E">toujours identifiés</strong>. Vous savez toujours quand vous cliquez sur un lien partenaire.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7. QUI SUIS-JE ===== -->
+<section style="background:#fff;border-bottom:1px solid #ECEFF6">
+  <div style="max-width:1080px;margin:0 auto;padding:88px 40px">
+    <div style="text-align:center;margin-bottom:52px">
+      <span style="font-size:12.5px;font-weight:700;letter-spacing:.16em;color:#E8410A">QUI SUIS-JE</span>
+      <h2 style="font-family:'Spectral',serif;font-weight:700;font-size:40px;color:#0F1A2E;margin-top:12px;letter-spacing:-.01em">Le créateur du site</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:320px 1fr;gap:52px;align-items:center;background:#F4F6FB;border:1px solid #ECEFF6;border-radius:28px;padding:48px">
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center">
+        <div style="width:160px;height:160px;border-radius:50%;background:#1B4FD8;overflow:hidden;margin-bottom:22px;border:4px solid #fff;box-shadow:0 12px 36px -12px rgba(27,79,216,.55)">
+          {% if site.author_photo is defined and site.author_photo %}<img src="{{ site.author_photo }}" alt="{{ author.name or 'Pierre Petit' }}" style="width:160px;height:160px;display:block;object-fit:cover">{% else %}<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Spectral',serif;font-weight:700;font-size:52px">PP</div>{% endif %}
+        </div>
+        <h3 style="font-family:'Spectral',serif;font-weight:700;font-size:24px;color:#0F1A2E">{{ author.name or 'Pierre Petit' }}</h3>
+        <div style="font-size:14px;color:#8893A6;margin-top:4px;font-weight:600">Fondateur &amp; Dirigeant</div>
+        <div style="display:flex;align-items:center;gap:6px;margin-top:14px;background:rgba(27,79,216,.08);padding:7px 16px;border-radius:999px">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 9.3l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.8L12 3z"></path></svg>
+          <span style="font-size:12.5px;font-weight:700;color:#1B4FD8">6 ans d'expérience</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px">
+          <span style="font-size:12px;font-weight:600;color:#1B4FD8;background:rgba(27,79,216,.08);padding:5px 11px;border-radius:999px">RH</span>
+          <span style="font-size:12px;font-weight:600;color:#1B4FD8;background:rgba(27,79,216,.08);padding:5px 11px;border-radius:999px">Paie</span>
+          <span style="font-size:12px;font-weight:600;color:#1B4FD8;background:rgba(27,79,216,.08);padding:5px 11px;border-radius:999px">Gestion</span>
+          <span style="font-size:12px;font-weight:600;color:#1B4FD8;background:rgba(27,79,216,.08);padding:5px 11px;border-radius:999px">Finances</span>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:22px;justify-content:center">
+          <a {% if site.social_linkedin is defined and site.social_linkedin %}href="{{ site.social_linkedin }}" target="_blank" rel="noopener noreferrer nofollow"{% endif %} aria-label="LinkedIn" style="width:40px;height:40px;border-radius:10px;background:#fff;border:1px solid #E8ECF4;display:flex;align-items:center;justify-content:center;color:#5A6679;transition:border-color .15s,color .15s" style-hover="border-color:#0A66C2;color:#0A66C2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"></path><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+          <a {% if site.social_facebook is defined and site.social_facebook %}href="{{ site.social_facebook }}" target="_blank" rel="noopener noreferrer nofollow"{% endif %} aria-label="Facebook" style="width:40px;height:40px;border-radius:10px;background:#fff;border:1px solid #E8ECF4;display:flex;align-items:center;justify-content:center;color:#5A6679;transition:border-color .15s,color .15s" style-hover="border-color:#1877F2;color:#1877F2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a {% if site.social_youtube is defined and site.social_youtube %}href="{{ site.social_youtube }}" target="_blank" rel="noopener noreferrer nofollow"{% endif %} aria-label="YouTube" style="width:40px;height:40px;border-radius:10px;background:#fff;border:1px solid #E8ECF4;display:flex;align-items:center;justify-content:center;color:#5A6679;transition:border-color .15s,color .15s" style-hover="border-color:#FF0000;color:#FF0000">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#fff"></polygon></svg>
+          </a>
+          <a {% if site.social_x is defined and site.social_x %}href="{{ site.social_x }}" target="_blank" rel="noopener noreferrer nofollow"{% endif %} aria-label="X / Twitter" style="width:40px;height:40px;border-radius:10px;background:#fff;border:1px solid #E8ECF4;display:flex;align-items:center;justify-content:center;color:#5A6679;transition:border-color .15s,color .15s" style-hover="border-color:#000;color:#000">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:17px;line-height:1.75;color:#41506A">Je dirige une TPE de 12 personnes à Strasbourg depuis 6 ans. Au fil du temps, j'ai été confronté des dizaines de fois au même problème : <strong style="color:#0F1A2E">choisir le bon logiciel pour mon entreprise</strong>, sans y passer des semaines.</p>
+        <p style="font-size:17px;line-height:1.75;color:#41506A;margin-top:16px">J'ai créé Éditions des Pros pour partager ce que j'aurais aimé trouver : des comparatifs écrits par quelqu'un qui utilise vraiment ces outils, avec ses propres équipes, en conditions réelles.</p>
+        <blockquote style="position:relative;margin:26px 0 0;padding:18px 22px;background:#fff;border-left:4px solid #1B4FD8;border-radius:0 14px 14px 0;box-shadow:0 10px 28px -20px rgba(15,26,46,.4)">
+          <p style="font-family:'Spectral',serif;font-style:italic;font-weight:500;font-size:18px;line-height:1.5;color:#0F1A2E">« Je teste chaque outil avec mes propres équipes avant d'en parler. S'il ne nous fait pas gagner du temps, il n'a pas sa place ici. »</p>
+        </blockquote>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:26px">
+          <span style="display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid #E8ECF4;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;color:#0F1A2E">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M17 8a3 3 0 0 1 0 6M20.5 20a5.5 5.5 0 0 0-3-4.9"></path></svg>
+            12 personnes dans mon équipe
+          </span>
+          <span style="display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid #E8ECF4;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;color:#0F1A2E">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#E8410A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            Strasbourg
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 8. CHARTE ÉDITORIALE ===== -->
+<section style="background:#F4F6FB">
+  <div style="max-width:1280px;margin:0 auto;padding:88px 40px">
+    <div style="text-align:center;margin-bottom:52px">
+      <span style="font-size:12.5px;font-weight:700;letter-spacing:.16em;color:#E8410A">MES ENGAGEMENTS</span>
+      <h2 style="font-family:'Spectral',serif;font-weight:700;font-size:40px;color:#0F1A2E;margin-top:12px;letter-spacing:-.01em">Ma charte éditoriale</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        <div style="display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid #ECEFF6;border-radius:16px;padding:20px 22px"><span style="flex:none;width:28px;height:28px;border-radius:8px;background:rgba(27,79,216,.10);display:flex;align-items:center;justify-content:center;margin-top:1px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg></span><span style="font-size:15px;font-weight:600;color:#0F1A2E;line-height:1.4">Tests réalisés avant toute publication</span></div>
+        <div style="display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid #ECEFF6;border-radius:16px;padding:20px 22px"><span style="flex:none;width:28px;height:28px;border-radius:8px;background:rgba(27,79,216,.10);display:flex;align-items:center;justify-content:center;margin-top:1px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg></span><span style="font-size:15px;font-weight:600;color:#0F1A2E;line-height:1.4">Avis régulièrement mis à jour</span></div>
+        <div style="display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid #ECEFF6;border-radius:16px;padding:20px 22px"><span style="flex:none;width:28px;height:28px;border-radius:8px;background:rgba(27,79,216,.10);display:flex;align-items:center;justify-content:center;margin-top:1px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg></span><span style="font-size:15px;font-weight:600;color:#0F1A2E;line-height:1.4">Sources et références citées</span></div>
+        <div style="display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid #ECEFF6;border-radius:16px;padding:20px 22px"><span style="flex:none;width:28px;height:28px;border-radius:8px;background:rgba(27,79,216,.10);display:flex;align-items:center;justify-content:center;margin-top:1px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg></span><span style="font-size:15px;font-weight:600;color:#0F1A2E;line-height:1.4">Vérification indépendante des informations</span></div>
+        <div style="display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid #ECEFF6;border-radius:16px;padding:20px 22px"><span style="flex:none;width:28px;height:28px;border-radius:8px;background:rgba(27,79,216,.10);display:flex;align-items:center;justify-content:center;margin-top:1px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg></span><span style="font-size:15px;font-weight:600;color:#0F1A2E;line-height:1.4">Corrections rapides en cas d'erreur signalée</span></div>
+        <div style="display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid #ECEFF6;border-radius:16px;padding:20px 22px"><span style="flex:none;width:28px;height:28px;border-radius:8px;background:rgba(27,79,216,.10);display:flex;align-items:center;justify-content:center;margin-top:1px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg></span><span style="font-size:15px;font-weight:600;color:#0F1A2E;line-height:1.4">Veille permanente sur les évolutions du marché</span></div>
+        <div style="display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid #ECEFF6;border-radius:16px;padding:20px 22px"><span style="flex:none;width:28px;height:28px;border-radius:8px;background:rgba(27,79,216,.10);display:flex;align-items:center;justify-content:center;margin-top:1px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg></span><span style="font-size:15px;font-weight:600;color:#0F1A2E;line-height:1.4">Tous les partenariats commerciaux sont clairement identifiés</span></div>
+        <div style="display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid #ECEFF6;border-radius:16px;padding:20px 22px"><span style="flex:none;width:28px;height:28px;border-radius:8px;background:rgba(27,79,216,.10);display:flex;align-items:center;justify-content:center;margin-top:1px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg></span><span style="font-size:15px;font-weight:600;color:#0F1A2E;line-height:1.4">Droit de réponse accordé aux éditeurs</span></div>
+        <div style="display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid #ECEFF6;border-radius:16px;padding:20px 22px"><span style="flex:none;width:28px;height:28px;border-radius:8px;background:rgba(27,79,216,.10);display:flex;align-items:center;justify-content:center;margin-top:1px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1B4FD8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg></span><span style="font-size:15px;font-weight:600;color:#0F1A2E;line-height:1.4">Notation objective et pondérée selon des critères fixes</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 9. ILS NOUS FONT CONFIANCE ===== -->
+<section style="background:#fff;border-bottom:1px solid #ECEFF6">
+  <div style="max-width:1280px;margin:0 auto;padding:72px 40px">
+    <div style="text-align:center;margin-bottom:40px">
+      <span style="font-size:12.5px;font-weight:700;letter-spacing:.16em;color:#E8410A">DÉJÀ TESTÉS</span>
+      <h2 style="font-family:'Spectral',serif;font-weight:700;font-size:36px;color:#0F1A2E;margin-top:10px;letter-spacing:-.01em">Logiciels que j'ai analysés</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:14px">
+        <div style="background:#F4F6FB;border:1px solid #ECEFF6;border-radius:14px;padding:18px 12px;text-align:center"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#41506A;letter-spacing:-.01em">PayFit</div></div>
+        <div style="background:#F4F6FB;border:1px solid #ECEFF6;border-radius:14px;padding:18px 12px;text-align:center"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#41506A;letter-spacing:-.01em">Silae</div></div>
+        <div style="background:#F4F6FB;border:1px solid #ECEFF6;border-radius:14px;padding:18px 12px;text-align:center"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#41506A;letter-spacing:-.01em">Lucca</div></div>
+        <div style="background:#F4F6FB;border:1px solid #ECEFF6;border-radius:14px;padding:18px 12px;text-align:center"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#41506A;letter-spacing:-.01em">Sage</div></div>
+        <div style="background:#F4F6FB;border:1px solid #ECEFF6;border-radius:14px;padding:18px 12px;text-align:center"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#41506A;letter-spacing:-.01em">Cegid</div></div>
+        <div style="background:#F4F6FB;border:1px solid #ECEFF6;border-radius:14px;padding:18px 12px;text-align:center"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#41506A;letter-spacing:-.01em">ADP</div></div>
+        <div style="background:#F4F6FB;border:1px solid #ECEFF6;border-radius:14px;padding:18px 12px;text-align:center"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#41506A;letter-spacing:-.01em">Kelio</div></div>
+        <div style="background:#F4F6FB;border:1px solid #ECEFF6;border-radius:14px;padding:18px 12px;text-align:center"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#41506A;letter-spacing:-.01em">Nibelis</div></div>
+        <div style="background:#F4F6FB;border:1px solid #ECEFF6;border-radius:14px;padding:18px 12px;text-align:center"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#41506A;letter-spacing:-.01em">HiBob</div></div>
+        <div style="background:#F4F6FB;border:1px solid #ECEFF6;border-radius:14px;padding:18px 12px;text-align:center"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#41506A;letter-spacing:-.01em">BambooHR</div></div>
+        <div style="background:#F4F6FB;border:1px solid #ECEFF6;border-radius:14px;padding:18px 12px;text-align:center"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#41506A;letter-spacing:-.01em">Workday</div></div>
+        <div style="background:#F4F6FB;border:1px solid #ECEFF6;border-radius:14px;padding:18px 12px;text-align:center"><div style="font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;color:#41506A;letter-spacing:-.01em">Eurécia</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 10. FAQ ===== -->
+<section style="background:#F4F6FB">
+  <div style="max-width:860px;margin:0 auto;padding:88px 40px">
+    <div style="text-align:center;margin-bottom:52px">
+      <span style="font-size:12.5px;font-weight:700;letter-spacing:.16em;color:#E8410A">VOS QUESTIONS</span>
+      <h2 style="font-family:'Spectral',serif;font-weight:700;font-size:40px;color:#0F1A2E;margin-top:12px;letter-spacing:-.01em">Questions fréquentes</h2>
+    </div>
+    <div style="background:#fff;border:1px solid #ECEFF6;border-radius:24px;overflow:hidden;box-shadow:0 1px 4px rgba(15,26,46,.05)">
+        <details class="faq-item"><summary><span class="faq-q">Comment testez-vous les logiciels ?</span><span class="faq-ico">+</span></summary><div class="faq-a"><p>Je teste chaque logiciel moi-même via un compte réel ou une démonstration approfondie. J'évalue les fonctionnalités, l'ergonomie, le support client et les tarifs sur ma grille de 6 critères pondérés.</p></div></details>
+        <details class="faq-item"><summary><span class="faq-q">Comment gagnez-vous de l'argent ?</span><span class="faq-ico">+</span></summary><div class="faq-a"><p>Je peux percevoir une commission d'affiliation lorsqu'un lecteur souscrit à un logiciel via mes liens. Mes évaluations sont réalisées à partir de tests réels et d'une grille de 6 critères pondérés, documentés et publics, appliquée de façon identique à tous les logiciels.</p></div></details>
+        <details class="faq-item"><summary><span class="faq-q">Pourquoi certains logiciels sont-ils absents ?</span><span class="faq-ico">+</span></summary><div class="faq-a"><p>Nous priorisons les logiciels adaptés aux TPE, PME et ETI françaises. Un logiciel absent n'a pas encore été testé, ne répond pas à nos critères minimaux de qualité, ou n'est pas disponible sur le marché français.</p></div></details>
+        <details class="faq-item"><summary><span class="faq-q">À quelle fréquence les comparatifs sont-ils mis à jour ?</span><span class="faq-ico">+</span></summary><div class="faq-a"><p>Chaque comparatif est actualisé au minimum une fois par an, et plus fréquemment si un éditeur modifie ses tarifs, ses fonctionnalités ou son positionnement. La date de mise à jour est toujours visible en haut de chaque article.</p></div></details>
+        <details class="faq-item"><summary><span class="faq-q">Peut-on vous proposer un logiciel à tester ?</span><span class="faq-ico">+</span></summary><div class="faq-a"><p>Oui, vous pouvez nous contacter via le formulaire dédié. Nous étudions toutes les propositions, mais nous nous réservons le droit de ne pas publier si le logiciel ne correspond pas aux attentes de nos lecteurs professionnels.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 11. CTA FINAL ===== -->
+<section style="background:#0F1A2E;position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:34px 34px;opacity:.5;pointer-events:none"></div>
+  <div style="position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(closest-side,rgba(27,79,216,.4),transparent 70%);filter:blur(20px);animation:glowpulse 7s ease-in-out infinite;pointer-events:none"></div>
+  <div style="position:relative;max-width:760px;margin:0 auto;padding:96px 40px;text-align:center">
+    <span style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.16em;color:#FBA94C;background:rgba(245,158,11,.10);border:1px solid rgba(245,158,11,.28);padding:8px 16px;border-radius:999px">
+      <span style="width:6px;height:6px;border-radius:50%;background:#F59E0B;display:inline-block"></span>
+      PRÊT À CHOISIR ?
+    </span>
+    <h2 style="font-family:'Spectral',serif;font-weight:700;font-size:46px;line-height:1.08;color:#fff;margin:22px 0 0;letter-spacing:-.01em;text-wrap:balance">Prêt à mieux équiper et piloter votre entreprise ?</h2>
+    <p style="font-size:17px;line-height:1.65;color:#A8B3C7;margin:18px 0 0;max-width:540px;margin-left:auto;margin-right:auto">Nos comparatifs sont mis à jour en 2026. Commencez par la catégorie qui vous correspond.</p>
+    <div style="display:flex;justify-content:center;align-items:center;gap:14px;margin-top:36px;flex-wrap:wrap">
+      <a href="/nos-comparateurs" style="display:inline-flex;align-items:center;gap:10px;background:#F59E0B;color:#fff;font-weight:700;font-size:16px;padding:18px 32px;border-radius:12px;box-shadow:0 14px 30px -12px rgba(245,158,11,.65)">Découvrir les comparatifs →</a>
+      <a href="/blog/" style="display:inline-flex;align-items:center;gap:9px;color:#E7ECF5;font-weight:700;font-size:16px;padding:18px 28px;border-radius:12px;border:1.5px solid rgba(255,255,255,.18)">Voir le blog</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+
+<a href="#top" aria-label="Haut de page" style="position:fixed;bottom:28px;right:28px;z-index:60;width:46px;height:46px;border-radius:50%;background:#0F1A2E;border:1px solid rgba(255,255,255,.14);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px -10px rgba(0,0,0,.5)" style-hover="background:#1B4FD8;border-color:#1B4FD8">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
+</a>
+
+</div>
+{% include 'base/_footer.html.j2' %}
+</body>
+</html>
