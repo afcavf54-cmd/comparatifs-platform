@@ -1606,7 +1606,7 @@ h1,h2,h3,h4{
     <div class="about-hero-grid">
       <div>
         <div class="breadcrumb fade-up">
-          <a href="Digicube Home.html">Accueil</a>
+          <a href="/">Accueil</a>
           <span class="sep">/</span>
           <span>À propos</span>
         </div>
@@ -1614,12 +1614,12 @@ h1,h2,h3,h4{
         <h1 class="fade-up d1">J'aide les entreprises à choisir les meilleurs <span class="hl">logiciels</span></h1>
         <p class="lead fade-up d2">Digicube est un média indépendant spécialisé dans les solutions numériques pour les TPE et PME françaises. Je teste, compare et explique sans jargon, sans conflit d'intérêts.</p>
         <div class="about-hero-ctas fade-up d3">
-          <a href="Digicube Home.html#comparateurs" class="btn btn--accent">Découvrir nos comparatifs <span class="arr">→</span></a>
+          <a href="/nos-comparateurs" class="btn btn--accent">Découvrir nos comparatifs <span class="arr">→</span></a>
           <a href="#methode" class="btn btn--ghost">Notre méthodologie</a>
         </div>
       </div>
       <div class="about-hero-fig fade-up d2">
-        <div class="ph"><span class="ph-tag">Illustration flat · équipe et logiciels</span></div>
+        <div class="ph">{% if site.author_photo %}<img src="{{ site.author_photo }}" alt="{{ site.author_name }}" style="width:100%;height:100%;object-fit:cover;display:block">{% else %}<span class="ph-tag">Illustration flat · équipe et logiciels</span>{% endif %}</div>
         <div class="float-card float-a">
           <div class="fc-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="9"></circle></svg></div>
           <div><div class="fc-num">100%</div><div class="fc-lbl">Indépendant</div></div>
@@ -1944,7 +1944,7 @@ h1,h2,h3,h4{
     <div class="team-grid" style="grid-template-columns:1fr;max-width:460px">
       <!-- Nicolas -->
       <article class="team-card fade-up">
-        <div class="team-photo"><div class="ph"></div></div>
+        <div class="team-photo">{% if site.author_photo %}<img src="{{ site.author_photo }}" alt="{{ site.author_name }}" style="width:100%;height:100%;object-fit:cover;display:block">{% else %}<div class="ph"></div>{% endif %}</div>
         <div class="team-name">Nicolas Roux</div>
         <div class="team-role">Fondateur &amp; rédacteur en chef</div>
         <div class="team-exp">Dirigeant TPE · 6 ans d'expérience</div>
@@ -2113,7 +2113,7 @@ h1,h2,h3,h4{
     <h2 class="fade-up">Prêt à trouver le logiciel adapté à votre entreprise ?</h2>
     <p class="lead fade-up d1">340+ logiciels testés, comparés et notés par des experts. Trouvez celui qui correspond vraiment à votre métier et à votre budget.</p>
     <div class="cta-final-btns fade-up d2">
-      <a href="Digicube Home.html#comparateurs" class="btn btn--accent">Découvrir les comparatifs <span class="arr">→</span></a>
+      <a href="/nos-comparateurs" class="btn btn--accent">Découvrir les comparatifs <span class="arr">→</span></a>
       <a href="#notation" class="btn btn--ghost">Voir notre classement</a>
     </div>
   </div>
