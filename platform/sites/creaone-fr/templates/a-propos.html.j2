@@ -194,12 +194,96 @@ a{text-decoration:none;color:inherit}
   .cr-themes-grid,.cr-blog-grid,.cr-why-grid{grid-template-columns:1fr}
   .cr-news-form{flex-direction:column}
 }
+/* ===== Responsive mobile (inline grids/styles, syntaxe espacée incluse) ===== */
+@media(max-width:768px){
+.ap-root [style*="grid-template-columns"]:not([style*="columns:52px"]):not([style*="columns: 52px"]):not([style*="columns:80px"]):not([style*="columns: 80px"]):not([style*="columns:auto"]):not([style*="columns: auto"]){grid-template-columns:1fr !important}
+.ap-root [style*="min-width:"]{min-width:0 !important}
+.ap-root [style*="padding:48px"]{padding:26px 20px !important}
+.ap-root [style*="padding: 48px"]{padding:26px 20px !important}
+.ap-root [style*="padding:96px 56px"]{padding:48px 20px !important}
+.ap-root [style*="padding: 96px 56px"]{padding:48px 20px !important}
+.ap-root [style*="padding:80px 56px"]{padding:40px 20px !important}
+.ap-root [style*="padding: 80px 56px"]{padding:40px 20px !important}
+.ap-root [style*="padding:96px 48px"]{padding:48px 20px !important}
+.ap-root [style*="padding: 96px 48px"]{padding:48px 20px !important}
+.ap-root [style*="padding:80px 48px"]{padding:40px 20px !important}
+.ap-root [style*="padding: 80px 48px"]{padding:40px 20px !important}
+.ap-root [style*="padding:44px 48px"]{padding:30px 20px !important}
+.ap-root [style*="padding: 44px 48px"]{padding:30px 20px !important}
+.ap-root [style*="padding:100px 56px"]{padding:48px 20px !important}
+.ap-root [style*="padding: 100px 56px"]{padding:48px 20px !important}
+.ap-root [style*="padding:100px 48px"]{padding:48px 20px !important}
+.ap-root [style*="padding: 100px 48px"]{padding:48px 20px !important}
+.ap-root [style*="padding:0 48px 96px"]{padding:0 20px 48px !important}
+.ap-root [style*="padding: 0 48px 96px"]{padding:0 20px 48px !important}
+.ap-root [style*="padding:0 48px 100px"]{padding:0 20px 48px !important}
+.ap-root [style*="padding: 0 48px 100px"]{padding:0 20px 48px !important}
+.ap-root [style*="font-size:80px"]{font-size:38px !important}
+.ap-root [style*="font-size: 80px"]{font-size:38px !important}
+.ap-root [style*="font-size:64px"]{font-size:34px !important}
+.ap-root [style*="font-size: 64px"]{font-size:34px !important}
+.ap-root [style*="font-size:56px"]{font-size:32px !important}
+.ap-root [style*="font-size: 56px"]{font-size:32px !important}
+.ap-root [style*="font-size:52px"]{font-size:31px !important}
+.ap-root [style*="font-size: 52px"]{font-size:31px !important}
+.ap-root [style*="font-size:50px"]{font-size:30px !important}
+.ap-root [style*="font-size: 50px"]{font-size:30px !important}
+.ap-root [style*="font-size:48px"]{font-size:29px !important}
+.ap-root [style*="font-size: 48px"]{font-size:29px !important}
+.ap-root [style*="font-size:46px"]{font-size:28px !important}
+.ap-root [style*="font-size: 46px"]{font-size:28px !important}
+.ap-root [style*="font-size:44px"]{font-size:27px !important}
+.ap-root [style*="font-size: 44px"]{font-size:27px !important}
+.ap-root [style*="font-size:42px"]{font-size:26px !important}
+.ap-root [style*="font-size: 42px"]{font-size:26px !important}
+.ap-root [style*="font-size:40px"]{font-size:25px !important}
+.ap-root [style*="font-size: 40px"]{font-size:25px !important}
+.ap-root [style*="font-size:38px"]{font-size:24px !important}
+.ap-root [style*="font-size: 38px"]{font-size:24px !important}
+.ap-root [style*="font-size:36px"]{font-size:23px !important}
+.ap-root [style*="font-size: 36px"]{font-size:23px !important}
+.ap-root [style*="font-size:34px"]{font-size:22px !important}
+.ap-root [style*="font-size: 34px"]{font-size:22px !important}
+.ap-root [style*="gap:72px"]{gap:30px !important}
+.ap-root [style*="gap: 72px"]{gap:30px !important}
+.ap-root [style*="gap:64px"]{gap:28px !important}
+.ap-root [style*="gap: 64px"]{gap:28px !important}
+.ap-root [style*="gap:56px"]{gap:26px !important}
+.ap-root [style*="gap: 56px"]{gap:26px !important}
+.ap-root [style*="gap:52px"]{gap:24px !important}
+.ap-root [style*="gap: 52px"]{gap:24px !important}
+.ap-root [style*="gap:48px"]{gap:24px !important}
+.ap-root [style*="gap: 48px"]{gap:24px !important}
+.ap-root [style*="gap:44px"]{gap:22px !important}
+.ap-root [style*="gap: 44px"]{gap:22px !important}
+.ap-root [style*="gap:40px"]{gap:22px !important}
+.ap-root [style*="gap: 40px"]{gap:22px !important}
+.ap-root [style*="gap:36px"]{gap:20px !important}
+.ap-root [style*="gap: 36px"]{gap:20px !important}
+.ap-root [style*="gap:34px"]{gap:18px !important}
+.ap-root [style*="gap: 34px"]{gap:18px !important}
+.ap-root [style*="gap:32px"]{gap:18px !important}
+.ap-root [style*="gap: 32px"]{gap:18px !important}
+.ap-root [style*="gap:30px"]{gap:16px !important}
+.ap-root [style*="gap: 30px"]{gap:16px !important}
+.ap-root [style*="gap:28px"]{gap:16px !important}
+.ap-root [style*="gap: 28px"]{gap:16px !important}
+.ap-root [style*="gap:26px"]{gap:14px !important}
+.ap-root [style*="gap: 26px"]{gap:14px !important}
+.ap-root [style*="gap:24px"]{gap:14px !important}
+.ap-root [style*="gap: 24px"]{gap:14px !important}
+.ap-root [style*="gap:22px"]{gap:14px !important}
+.ap-root [style*="gap: 22px"]{gap:14px !important}
+.ap-root{overflow-x:hidden}
+.ap-root img{max-width:100%;height:auto}
+}
 </style>
 <style>details.faq-item>summary::-webkit-details-marker{display:none}details.faq-item>summary{list-style:none;cursor:pointer}.faq-chev{display:inline-flex;transition:transform .2s;flex-shrink:0}details.faq-item[open] .faq-chev{transform:rotate(180deg)}</style>
 </head>
 <body>
 <!-- ══ NAV ══ -->
 {% include 'base/_nav.html.j2' %}
+<div class="ap-root">
 
 <!-- ══ 1. HERO ══ -->
 <section style="background: #1C2733; min-height: 560px; position: relative; overflow: hidden; display: flex; align-items: center;">
@@ -785,6 +869,7 @@ a{text-decoration:none;color:inherit}
   </div>
 </section>
 
+</div>
 <!-- ══ FOOTER ══ -->
 {% include 'base/_footer.html.j2' %}
 </body>
