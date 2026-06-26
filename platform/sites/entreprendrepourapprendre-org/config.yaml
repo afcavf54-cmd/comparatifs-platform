@@ -3,6 +3,7 @@
 # ============================================================
 
 site:
+  linkavista_verification: "<meta name=\"linkavista\" content=\"35c672ed230809eb5476df431501cc6e0afabe62\">"
   footer_description: "Entreprendre pour Apprendre est un média dédié à la création et au développement d'entreprise. Retrouvez des conseils, guides pratiques et actualités pour lancer votre activité et réussir votre parcours entrepreneurial."
   blog_sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vT_vOvE2GOsNqWNprNDphEluvmedZMbLm9Xvs3WeqUqpvV4rgkdDDrb0HTcKY9VGLv0z-MAQlqwZm7y/pub?gid=0&single=true&output=csv"
   slug: entreprendrepourapprendre-org
@@ -20,13 +21,13 @@ site:
   home_description: "Découvrez des conseils, guides pratiques, actualités et ressources pour créer, gérer et développer votre entreprise à chaque étape de votre parcours entrepreneurial."
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
-  analytics_clicky: '<script async data-id="101505107" src="//static.getclicky.com/js"></script>'
+  analytics_clicky: "<script async data-id=\"101505107\" src=\"//static.getclicky.com/js\"></script>"
   google_site_verification: "8qExRLvDtjV8AY9eKfy1-yNAgx7JTZAPDM-Cs4CE4WU"
 
   outils_menu:
     - label: Outils
       url: /outils
-  contact_form_key: eabd63c5-1744-4172-b8c0-8984db488f10
+  contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
 page_types:
   classement: classement-saas
 
