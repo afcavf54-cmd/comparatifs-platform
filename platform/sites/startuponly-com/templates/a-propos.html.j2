@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>À propos · {{ site.name }}</title>
+<meta name="description" content="À propos de {{ site.name }} : notre média de comparatifs de logiciels, notre méthodologie de test et notre auteur.">
+<link rel="canonical" href="{{ site.domain }}/a-propos/">
+{% if site.favicon_file is defined and site.favicon_file %}<link rel="icon" href="{{ site.favicon_file }}">{% else %}<link rel="icon" href="/favicon.svg" type="image/svg+xml">{% endif %}
+{% if site.google_site_verification is defined and site.google_site_verification %}<meta name="google-site-verification" content="{{ site.google_site_verification }}">{% endif %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===================================================================
+   À PROPOS - startuponly-com.
+   Design « Startup Only » (Claude Design), aplati en statique.
+   En-tete + pied = partials _nav / _footer (autoportants) : ils ne
+   reclament que les variables :root ci-dessous (theme.*).
+   Le corps du design garde sa palette inline (#0F172A / #7C3AED /
+   #10B981) et ses polices Hanken Grotesk + Newsreader.
+   =================================================================== */
+:root{
+  --bg:{{ theme.bg }};
+  --surface:#fff;
+  --ink:{{ theme.ink }};
+  --accent:{{ theme.accent }};
+  --accent2:{{ theme.accent2 }};
+  --cta:{{ theme.cta_color if theme.cta_color is defined and theme.cta_color else "#10B981" }};
+  --cta-text:{{ theme.cta_text_color if theme.cta_text_color is defined and theme.cta_text_color else "#ffffff" }};
+  --border:#E2E8F0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;background:var(--bg);color:#1E293B;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{text-decoration:none;color:inherit}
+/* Aligne header/footer sur les polices du site (sinon herites du corps du design) */
+nav.site-nav .nav-logo{font-family:'{{ theme.font_title }}',serif}
+nav.site-nav .nav-links a,nav.site-nav .nav-cta,nav.site-nav .nav-mobile a,.footer{font-family:'{{ theme.font_body }}',system-ui,-apple-system,sans-serif}
+/* FAQ accordeon natif (look « + / - » du design, sans JS) */
+details.faq-item{border-top:1px solid #ECEDF2}
+details.faq-item:last-of-type{border-bottom:1px solid #ECEDF2}
+details.faq-item>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0}
+details.faq-item>summary::-webkit-details-marker{display:none}
+details.faq-item>summary .faq-q{font-size:17px;font-weight:700;color:#0F172A}
+details.faq-item>summary .faq-ico{font-size:20px;font-weight:400;color:#7C3AED;flex-shrink:0;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:999px;background:rgba(124,58,237,0.09)}
+details.faq-item>summary .faq-ico::after{content:"+"}
+details.faq-item[open]>summary .faq-ico::after{content:"\2212"}
+details.faq-item>.faq-a{padding:0 0 24px;color:#64748B;font-size:15.5px;line-height:1.7}
+</style>
+</head>
+<body>
+{% include 'base/_nav.html.j2' %}
+<div id="top" style="background:#FAFAFC;color:#1E293B;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility">
+
+  <!-- ============ HERO ============ -->
+  <section style="position:relative;background:#0F172A;overflow:hidden">
+    <div style="position:absolute;top:-120px;right:-80px;width:560px;height:520px;background:#7C3AED;border-radius:46% 54% 58% 42%/52% 44% 56% 48%;opacity:0.85;pointer-events:none"></div>
+    <div style="position:absolute;top:60px;right:260px;width:150px;height:150px;background:rgba(167,139,250,0.3);border-radius:50%;pointer-events:none"></div>
+    <div style="position:relative;max-width:1200px;margin:0 auto;padding:84px 24px 110px;display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:56px;align-items:center">
+      <div>
+        <div style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#a78bfa;margin-bottom:20px">À propos</div>
+        <h1 style="font-family:'Newsreader',Georgia,serif;font-weight:500;color:#fff;font-size:clamp(36px,4.8vw,58px);line-height:1.06;letter-spacing:-0.015em;margin:0 0 22px">Nous aidons les startups à choisir les <span style="color:#a78bfa">meilleurs logiciels</span></h1>
+        <p style="color:#94A3B8;font-size:clamp(17px,1.6vw,19px);line-height:1.62;max-width:520px;margin:0 0 34px">Startup Only est un média spécialisé dans les comparatifs de logiciels pour startups et PME : paie, ERP, comptabilité, facturation, RH et bien plus. Notre mission : vous faire gagner du temps grâce à des analyses approfondies, documentées et réellement utiles.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px">
+          <a href="/nos-comparateurs" style="display:inline-block;background:#10B981;color:#fff;text-decoration:none;font-weight:700;font-size:16px;padding:14px 28px;border-radius:999px;transition:transform .18s ease,box-shadow .18s ease" style-hover="transform:translateY(-2px);box-shadow:0 12px 28px rgba(16,185,129,0.4)">Découvrir nos comparatifs</a>
+          <a href="#methodologie" style="display:inline-block;background:transparent;color:#fff;text-decoration:none;font-weight:600;font-size:16px;padding:14px 28px;border-radius:999px;border:1px solid rgba(255,255,255,0.22);transition:background .18s ease" style-hover="background:rgba(255,255,255,0.07)">Notre méthodologie</a>
+        </div>
+      </div>
+      <!-- illustration -->
+      <div style="position:relative;width:100%;max-width:480px;height:300px;justify-self:center">
+        <div style="position:absolute;top:0;left:0;background:#fff;border-radius:16px;padding:20px 22px;box-shadow:0 22px 52px rgba(2,6,23,0.42);width:215px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+            <div style="width:32px;height:32px;border-radius:9px;background:rgba(124,58,237,0.1);display:flex;align-items:center;justify-content:center">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+            <span style="font-weight:700;color:#0F172A;font-size:14px">Prise en main</span>
+          </div>
+          <div style="height:5px;background:#F1F2F6;border-radius:3px;margin-bottom:8px"><div style="height:5px;width:82%;background:#7C3AED;border-radius:3px"></div></div>
+          <div style="color:#94A3B8;font-size:12.5px;font-weight:600">Test complet réalisé</div>
+        </div>
+        <div style="position:absolute;top:80px;right:0;background:#fff;border-radius:16px;padding:20px 22px;box-shadow:0 22px 52px rgba(2,6,23,0.42);width:215px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+            <div style="width:32px;height:32px;border-radius:9px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="21" x2="5" y2="13"></line><line x1="12" y1="21" x2="12" y2="8"></line><line x1="19" y1="21" x2="19" y2="4"></line></svg>
+            </div>
+            <span style="font-weight:700;color:#0F172A;font-size:14px">Analyse critères</span>
+          </div>
+          <div style="height:5px;background:#F1F2F6;border-radius:3px;margin-bottom:8px"><div style="height:5px;width:68%;background:#10B981;border-radius:3px"></div></div>
+          <div style="color:#94A3B8;font-size:12.5px;font-weight:600">6 critères évalués</div>
+        </div>
+        <div style="position:absolute;bottom:0;left:50px;background:#0F172A;border:1px solid rgba(124,58,237,0.4);border-radius:16px;padding:18px 22px;box-shadow:0 22px 52px rgba(2,6,23,0.5);width:215px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <div style="width:32px;height:32px;border-radius:9px;background:rgba(16,185,129,0.15);display:flex;align-items:center;justify-content:center">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <span style="font-weight:700;color:#fff;font-size:14px">Verdict publié</span>
+          </div>
+          <div style="font-family:'Newsreader',Georgia,serif;font-size:28px;font-weight:500;color:#a78bfa;line-height:1">4.7<span style="font-size:16px;color:#64748B">/5</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS COMPTEURS ============ -->
+  <section style="background:#fff;border-bottom:1px solid #ECEDF2">
+    <div style="max-width:1200px;margin:0 auto;padding:72px 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0">
+      <div style="text-align:center;padding:0 24px;border-right:1px solid #ECEDF2">
+        <div style="font-family:'Newsreader',Georgia,serif;font-size:clamp(44px,5vw,64px);font-weight:500;color:#0F172A;line-height:1">59</div>
+        <div style="color:#7C3AED;font-weight:700;font-size:14px;margin-top:8px">logiciels analysés</div>
+      </div>
+      <div style="text-align:center;padding:0 24px;border-right:1px solid #ECEDF2">
+        <div style="font-family:'Newsreader',Georgia,serif;font-size:clamp(44px,5vw,64px);font-weight:500;color:#0F172A;line-height:1">+200h</div>
+        <div style="color:#7C3AED;font-weight:700;font-size:14px;margin-top:8px">de tests réalisés</div>
+      </div>
+      <div style="text-align:center;padding:0 24px;border-right:1px solid #ECEDF2">
+        <div style="font-family:'Newsreader',Georgia,serif;font-size:clamp(44px,5vw,64px);font-weight:500;color:#0F172A;line-height:1">12k</div>
+        <div style="color:#7C3AED;font-weight:700;font-size:14px;margin-top:8px">lecteurs par mois</div>
+      </div>
+      <div style="text-align:center;padding:0 24px">
+        <div style="font-family:'Newsreader',Georgia,serif;font-size:clamp(44px,5vw,64px);font-weight:500;color:#0F172A;line-height:1">4</div>
+        <div style="color:#7C3AED;font-weight:700;font-size:14px;margin-top:8px">catégories couvertes</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ POURQUOI ============ -->
+  <section style="max-width:1200px;margin:0 auto;padding:96px 24px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:64px;align-items:center">
+      <div>
+        <div style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#7C3AED;margin-bottom:16px">Notre origine</div>
+        <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(30px,3.6vw,44px);line-height:1.08;letter-spacing:-0.01em;color:#0F172A;margin:0 0 20px">Pourquoi ce média existe</h2>
+        <p style="color:#64748B;font-size:17px;line-height:1.68;margin:0 0 16px">Choisir un logiciel RH engage votre entreprise sur plusieurs années. Un mauvais choix représente plusieurs milliers d'euros perdus, des mois de déploiement raté et un impact direct sur vos équipes.</p>
+        <p style="color:#64748B;font-size:17px;line-height:1.68;margin:0">Notre objectif est simple : vous faire <strong style="color:#0F172A">gagner du temps</strong>, vous aider à <strong style="color:#0F172A">éviter les erreurs</strong> et vous proposer des analyses indépendantes vraiment utiles.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div style="background:#F4F5F8;border:1px solid #EEF0F4;border-radius:16px;padding:24px 28px;display:flex;align-items:flex-start;gap:16px">
+          <div style="width:44px;height:44px;flex-shrink:0;border-radius:12px;background:rgba(124,58,237,0.1);display:flex;align-items:center;justify-content:center;color:#7C3AED">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          </div>
+          <div>
+            <h3 style="font-size:16px;font-weight:700;color:#0F172A;margin:0 0 6px">Un coût souvent sous-estimé</h3>
+            <p style="color:#64748B;font-size:14.5px;line-height:1.55;margin:0">Un mauvais logiciel RH coûte en moyenne <strong style="color:#7C3AED">3 à 6 mois</strong> de reconfiguration et plusieurs milliers d'euros en frais cachés.</p>
+          </div>
+        </div>
+        <div style="background:#F4F5F8;border:1px solid #EEF0F4;border-radius:16px;padding:24px 28px;display:flex;align-items:flex-start;gap:16px">
+          <div style="width:44px;height:44px;flex-shrink:0;border-radius:12px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center;color:#10B981">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6s2-2 7-2 7 2 7 2"></path><path d="M1 12s2-2 7-2 7 2 7 2"></path><path d="M1 18s2-2 7-2 7 2 7 2"></path></svg>
+          </div>
+          <div>
+            <h3 style="font-size:16px;font-weight:700;color:#0F172A;margin:0 0 6px">Un marché saturé et opaque</h3>
+            <p style="color:#64748B;font-size:14.5px;line-height:1.55;margin:0">Des centaines de logiciels existent. La plupart des comparatifs sont biaisés par des partenariats commerciaux non déclarés.</p>
+          </div>
+        </div>
+        <div style="background:#F4F5F8;border:1px solid #EEF0F4;border-radius:16px;padding:24px 28px;display:flex;align-items:flex-start;gap:16px">
+          <div style="width:44px;height:44px;flex-shrink:0;border-radius:12px;background:rgba(124,58,237,0.1);display:flex;align-items:center;justify-content:center;color:#7C3AED">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <div>
+            <h3 style="font-size:16px;font-weight:700;color:#0F172A;margin:0 0 6px">Notre réponse : la rigueur méthodologique</h3>
+            <p style="color:#64748B;font-size:14.5px;line-height:1.55;margin:0">Chaque logiciel suit le même protocole d'évaluation, avec des critères publics et une grille de notation identique pour tous.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VALEURS ============ -->
+  <section style="background:#FAFAFC;border-top:1px solid #ECEDF2;border-bottom:1px solid #ECEDF2">
+    <div style="max-width:1200px;margin:0 auto;padding:96px 24px">
+      <div style="max-width:560px;margin:0 auto 52px;text-align:center">
+        <div style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#7C3AED;margin-bottom:16px">Nos valeurs</div>
+        <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-0.01em;color:#0F172A;margin:0">Ce en quoi nous croyons</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px">
+        <div style="background:#fff;border:1px solid #ECEDF2;border-radius:18px;padding:30px;box-shadow:0 1px 2px rgba(15,23,42,0.04);transition:transform .18s ease,box-shadow .18s ease" style-hover="transform:translateY(-4px);box-shadow:0 16px 34px rgba(15,23,42,0.08)">
+          <div style="width:48px;height:48px;border-radius:14px;background:rgba(124,58,237,0.09);display:flex;align-items:center;justify-content:center;color:#7C3AED;margin-bottom:18px">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h3 style="font-size:19px;font-weight:800;color:#0F172A;margin:0 0 10px">Rigueur</h3>
+          <p style="color:#64748B;font-size:15px;line-height:1.6;margin:0">Nos classements reposent sur une grille d'évaluation publique, appliquée de façon identique à chaque logiciel testé.</p>
+        </div>
+        <div style="background:#fff;border:1px solid #ECEDF2;border-radius:18px;padding:30px;box-shadow:0 1px 2px rgba(15,23,42,0.04);transition:transform .18s ease,box-shadow .18s ease" style-hover="transform:translateY(-4px);box-shadow:0 16px 34px rgba(15,23,42,0.08)">
+          <div style="width:48px;height:48px;border-radius:14px;background:rgba(16,185,129,0.09);display:flex;align-items:center;justify-content:center;color:#10B981;margin-bottom:18px">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <h3 style="font-size:19px;font-weight:800;color:#0F172A;margin:0 0 10px">Transparence</h3>
+          <p style="color:#64748B;font-size:15px;line-height:1.6;margin:0">Nous expliquons toujours pourquoi un logiciel est mieux classé. Nos critères et leur pondération sont publics.</p>
+        </div>
+        <div style="background:#fff;border:1px solid #ECEDF2;border-radius:18px;padding:30px;box-shadow:0 1px 2px rgba(15,23,42,0.04);transition:transform .18s ease,box-shadow .18s ease" style-hover="transform:translateY(-4px);box-shadow:0 16px 34px rgba(15,23,42,0.08)">
+          <div style="width:48px;height:48px;border-radius:14px;background:rgba(124,58,237,0.09);display:flex;align-items:center;justify-content:center;color:#7C3AED;margin-bottom:18px">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          </div>
+          <h3 style="font-size:19px;font-weight:800;color:#0F172A;margin:0 0 10px">Expertise</h3>
+          <p style="color:#64748B;font-size:15px;line-height:1.6;margin:0">Chaque logiciel est étudié en profondeur avant publication, par des professionnels du domaine RH et Finance.</p>
+        </div>
+        <div style="background:#fff;border:1px solid #ECEDF2;border-radius:18px;padding:30px;box-shadow:0 1px 2px rgba(15,23,42,0.04);transition:transform .18s ease,box-shadow .18s ease" style-hover="transform:translateY(-4px);box-shadow:0 16px 34px rgba(15,23,42,0.08)">
+          <div style="width:48px;height:48px;border-radius:14px;background:rgba(16,185,129,0.09);display:flex;align-items:center;justify-content:center;color:#10B981;margin-bottom:18px">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          </div>
+          <h3 style="font-size:19px;font-weight:800;color:#0F172A;margin:0 0 10px">Utilité</h3>
+          <p style="color:#64748B;font-size:15px;line-height:1.6;margin:0">Notre priorité : vous aider à prendre la bonne décision. Chaque contenu est conçu pour être directement actionnable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MÉTHODOLOGIE TIMELINE ============ -->
+  <section id="methodologie" style="position:relative;background:#0F172A;overflow:hidden">
+    <div style="position:absolute;bottom:-200px;left:-100px;width:600px;height:500px;background:radial-gradient(ellipse at center,rgba(124,58,237,0.22),rgba(124,58,237,0) 65%);pointer-events:none"></div>
+    <div style="position:relative;max-width:1200px;margin:0 auto;padding:96px 24px">
+      <div style="max-width:640px;margin:0 auto 64px;text-align:center">
+        <div style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#a78bfa;margin-bottom:16px">Notre processus</div>
+        <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-0.01em;color:#fff;margin:0 0 14px">Notre méthodologie, pas à pas</h2>
+        <p style="color:#94A3B8;font-size:17px;line-height:1.62;margin:0">Chaque logiciel suit le même protocole d'évaluation rigoureux, de la sélection à la publication.</p>
+      </div>
+      <div style="max-width:720px;margin:0 auto">
+
+        <div style="display:flex;gap:24px">
+          <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:48px">
+            <div style="width:48px;height:48px;border-radius:50%;background:#7C3AED;border:2px solid rgba(167,139,250,0.5);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:16px;flex-shrink:0">1</div>
+            <div style="width:2px;flex:1;background:rgba(124,58,237,0.28);min-height:40px;margin-top:4px"></div>
+          </div>
+          <div style="padding-bottom:36px;flex:1">
+            <h3 style="font-size:17px;font-weight:700;color:#fff;margin:0 0 8px">Sélection des logiciels</h3>
+            <p style="color:#94A3B8;font-size:14.5px;line-height:1.62;margin:0">Nous recensons toutes les solutions présentes sur le marché français, en ciblant celles réellement utilisées par les TPE, PME et startups.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:24px">
+          <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:48px">
+            <div style="width:48px;height:48px;border-radius:50%;background:rgba(124,58,237,0.2);border:2px solid rgba(167,139,250,0.3);display:flex;align-items:center;justify-content:center;color:#a78bfa;font-weight:800;font-size:16px;flex-shrink:0">2</div>
+            <div style="width:2px;flex:1;background:rgba(124,58,237,0.28);min-height:40px;margin-top:4px"></div>
+          </div>
+          <div style="padding-bottom:36px;flex:1">
+            <h3 style="font-size:17px;font-weight:700;color:#fff;margin:0 0 8px">Création d'un compte réel</h3>
+            <p style="color:#94A3B8;font-size:14.5px;line-height:1.62;margin:0">Nous créons un vrai compte dans les mêmes conditions qu'un utilisateur lambda, sans accès presse ni démo guidée par l'éditeur.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:24px">
+          <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:48px">
+            <div style="width:48px;height:48px;border-radius:50%;background:rgba(124,58,237,0.2);border:2px solid rgba(167,139,250,0.3);display:flex;align-items:center;justify-content:center;color:#a78bfa;font-weight:800;font-size:16px;flex-shrink:0">3</div>
+            <div style="width:2px;flex:1;background:rgba(124,58,237,0.28);min-height:40px;margin-top:4px"></div>
+          </div>
+          <div style="padding-bottom:36px;flex:1">
+            <h3 style="font-size:17px;font-weight:700;color:#fff;margin:0 0 8px">Test des fonctionnalités</h3>
+            <p style="color:#94A3B8;font-size:14.5px;line-height:1.62;margin:0">Chaque module est testé sur des scénarios réels : bulletins de paie, exports DSN, gestion des congés, intégration comptable…</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:24px">
+          <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:48px">
+            <div style="width:48px;height:48px;border-radius:50%;background:rgba(124,58,237,0.2);border:2px solid rgba(167,139,250,0.3);display:flex;align-items:center;justify-content:center;color:#a78bfa;font-weight:800;font-size:16px;flex-shrink:0">4</div>
+            <div style="width:2px;flex:1;background:rgba(124,58,237,0.28);min-height:40px;margin-top:4px"></div>
+          </div>
+          <div style="padding-bottom:36px;flex:1">
+            <h3 style="font-size:17px;font-weight:700;color:#fff;margin:0 0 8px">Analyse des tarifs</h3>
+            <p style="color:#94A3B8;font-size:14.5px;line-height:1.62;margin:0">Nous simulons le coût réel pour 5, 15 et 50 salariés, en intégrant les frais d'installation, de formation et de support.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:24px">
+          <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:48px">
+            <div style="width:48px;height:48px;border-radius:50%;background:rgba(124,58,237,0.2);border:2px solid rgba(167,139,250,0.3);display:flex;align-items:center;justify-content:center;color:#a78bfa;font-weight:800;font-size:16px;flex-shrink:0">5</div>
+            <div style="width:2px;flex:1;background:rgba(124,58,237,0.28);min-height:40px;margin-top:4px"></div>
+          </div>
+          <div style="padding-bottom:36px;flex:1">
+            <h3 style="font-size:17px;font-weight:700;color:#fff;margin:0 0 8px">Comparaison concurrentielle</h3>
+            <p style="color:#94A3B8;font-size:14.5px;line-height:1.62;margin:0">Chaque logiciel est évalué dans son contexte concurrentiel. Ses forces et faiblesses sont mises en perspective avec les alternatives.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:24px">
+          <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:48px">
+            <div style="width:48px;height:48px;border-radius:50%;background:rgba(124,58,237,0.2);border:2px solid rgba(167,139,250,0.3);display:flex;align-items:center;justify-content:center;color:#a78bfa;font-weight:800;font-size:16px;flex-shrink:0">6</div>
+            <div style="width:2px;flex:1;background:rgba(124,58,237,0.28);min-height:40px;margin-top:4px"></div>
+          </div>
+          <div style="padding-bottom:36px;flex:1">
+            <h3 style="font-size:17px;font-weight:700;color:#fff;margin:0 0 8px">Attribution d'une note</h3>
+            <p style="color:#94A3B8;font-size:14.5px;line-height:1.62;margin:0">Six critères pondérés (ergonomie, fonctionnalités, tarifs, support, intégrations, évolutivité) composent la note finale sur 5.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:24px">
+          <div style="flex-shrink:0;width:48px;display:flex;justify-content:center">
+            <div style="width:48px;height:48px;border-radius:50%;background:#10B981;border:2px solid rgba(16,185,129,0.5);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:16px">7</div>
+          </div>
+          <div style="flex:1">
+            <h3 style="font-size:17px;font-weight:700;color:#fff;margin:0 0 8px">Publication &amp; mise à jour</h3>
+            <p style="color:#94A3B8;font-size:14.5px;line-height:1.62;margin:0">L'article est publié, relu et sourcé. Nos classements sont ensuite mis à jour à chaque évolution majeure des logiciels testés.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GRILLE DE NOTATION ============ -->
+  <section style="max-width:1200px;margin:0 auto;padding:96px 24px">
+    <div style="max-width:640px;margin:0 auto 52px;text-align:center">
+      <div style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#7C3AED;margin-bottom:16px">Grille d'évaluation</div>
+      <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-0.01em;color:#0F172A;margin:0 0 14px">Comment nous notons les logiciels</h2>
+      <p style="color:#64748B;font-size:17px;line-height:1.6;margin:0">Six critères pondérés, appliqués de façon identique à tous les logiciels testés.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px">
+      <div style="background:#F4F5F8;border:1px solid #EEF0F4;border-radius:14px;padding:24px 26px;transition:transform .18s ease,box-shadow .18s ease,background .18s ease" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px rgba(15,23,42,0.08);background:#fff">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <h3 style="font-size:16px;font-weight:700;color:#0F172A;margin:0">Facilité d'utilisation</h3>
+          <span style="font-family:'Newsreader',Georgia,serif;font-size:18px;font-weight:500;color:#7C3AED">25%</span>
+        </div>
+        <div style="height:6px;background:#E6E8EF;border-radius:3px;margin-bottom:10px"><div style="height:6px;width:25%;background:#7C3AED;border-radius:3px"></div></div>
+        <p style="color:#64748B;font-size:14px;line-height:1.55;margin:0">Prise en main, courbe d'apprentissage, clarté de l'interface et qualité de l'expérience utilisateur.</p>
+      </div>
+      <div style="background:#F4F5F8;border:1px solid #EEF0F4;border-radius:14px;padding:24px 26px;transition:transform .18s ease,box-shadow .18s ease,background .18s ease" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px rgba(15,23,42,0.08);background:#fff">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <h3 style="font-size:16px;font-weight:700;color:#0F172A;margin:0">Fonctionnalités</h3>
+          <span style="font-family:'Newsreader',Georgia,serif;font-size:18px;font-weight:500;color:#7C3AED">25%</span>
+        </div>
+        <div style="height:6px;background:#E6E8EF;border-radius:3px;margin-bottom:10px"><div style="height:6px;width:25%;background:#10B981;border-radius:3px"></div></div>
+        <p style="color:#64748B;font-size:14px;line-height:1.55;margin:0">Richesse fonctionnelle, couverture des cas d'usage métier et niveau d'automatisation disponible.</p>
+      </div>
+      <div style="background:#F4F5F8;border:1px solid #EEF0F4;border-radius:14px;padding:24px 26px;transition:transform .18s ease,box-shadow .18s ease,background .18s ease" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px rgba(15,23,42,0.08);background:#fff">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <h3 style="font-size:16px;font-weight:700;color:#0F172A;margin:0">Rapport qualité/prix</h3>
+          <span style="font-family:'Newsreader',Georgia,serif;font-size:18px;font-weight:500;color:#7C3AED">20%</span>
+        </div>
+        <div style="height:6px;background:#E6E8EF;border-radius:3px;margin-bottom:10px"><div style="height:6px;width:20%;background:#7C3AED;border-radius:3px"></div></div>
+        <p style="color:#64748B;font-size:14px;line-height:1.55;margin:0">Coût total réel (abonnement, installation, formation) rapporté à la valeur fonctionnelle délivrée.</p>
+      </div>
+      <div style="background:#F4F5F8;border:1px solid #EEF0F4;border-radius:14px;padding:24px 26px;transition:transform .18s ease,box-shadow .18s ease,background .18s ease" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px rgba(15,23,42,0.08);background:#fff">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <h3 style="font-size:16px;font-weight:700;color:#0F172A;margin:0">Support client</h3>
+          <span style="font-family:'Newsreader',Georgia,serif;font-size:18px;font-weight:500;color:#7C3AED">15%</span>
+        </div>
+        <div style="height:6px;background:#E6E8EF;border-radius:3px;margin-bottom:10px"><div style="height:6px;width:15%;background:#10B981;border-radius:3px"></div></div>
+        <p style="color:#64748B;font-size:14px;line-height:1.55;margin:0">Disponibilité, réactivité et qualité du support par chat, téléphone et documentation en ligne.</p>
+      </div>
+      <div style="background:#F4F5F8;border:1px solid #EEF0F4;border-radius:14px;padding:24px 26px;transition:transform .18s ease,box-shadow .18s ease,background .18s ease" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px rgba(15,23,42,0.08);background:#fff">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <h3 style="font-size:16px;font-weight:700;color:#0F172A;margin:0">Intégrations</h3>
+          <span style="font-family:'Newsreader',Georgia,serif;font-size:18px;font-weight:500;color:#7C3AED">10%</span>
+        </div>
+        <div style="height:6px;background:#E6E8EF;border-radius:3px;margin-bottom:10px"><div style="height:6px;width:10%;background:#7C3AED;border-radius:3px"></div></div>
+        <p style="color:#64748B;font-size:14px;line-height:1.55;margin:0">Connexions natives avec les outils comptables, SIRH, banques et CRM du marché français.</p>
+      </div>
+      <div style="background:#F4F5F8;border:1px solid #EEF0F4;border-radius:14px;padding:24px 26px;transition:transform .18s ease,box-shadow .18s ease,background .18s ease" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px rgba(15,23,42,0.08);background:#fff">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <h3 style="font-size:16px;font-weight:700;color:#0F172A;margin:0">Évolutivité</h3>
+          <span style="font-family:'Newsreader',Georgia,serif;font-size:18px;font-weight:500;color:#7C3AED">5%</span>
+        </div>
+        <div style="height:6px;background:#E6E8EF;border-radius:3px;margin-bottom:10px"><div style="height:6px;width:5%;background:#10B981;border-radius:3px"></div></div>
+        <p style="color:#64748B;font-size:14px;line-height:1.55;margin:0">Capacité à grandir avec l'entreprise : offres avancées, API ouverte, personnalisation possible.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRANSPARENCE FINANCIÈRE ============ -->
+  <section style="background:#FAFAFC;border-top:1px solid #ECEDF2">
+    <div style="max-width:1200px;margin:0 auto;padding:96px 24px">
+      <div style="max-width:840px;margin:0 auto;background:#fff;border:1px solid #ECEDF2;border-radius:22px;padding:48px;box-shadow:0 18px 44px rgba(15,23,42,0.07);display:flex;gap:36px;align-items:flex-start;flex-wrap:wrap">
+        <div style="width:56px;height:56px;flex-shrink:0;border-radius:16px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center;color:#10B981">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+        </div>
+        <div style="flex:1;min-width:260px">
+          <div style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#10B981;margin-bottom:14px">Transparence financière</div>
+          <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(26px,3vw,34px);line-height:1.1;color:#0F172A;margin:0 0 16px">Comment nous sommes rémunérés</h2>
+          <p style="color:#64748B;font-size:16px;line-height:1.68;margin:0 0 24px">Startup Only peut percevoir une commission lorsqu'un visiteur souscrit via l'un de nos liens. Nos comparatifs peuvent inclure des partenariats commerciaux, toujours signalés de façon claire.</p>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="width:22px;height:22px;border-radius:999px;background:rgba(16,185,129,0.12);color:#10B981;display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700">✓</span>
+              <span style="color:#1E293B;font-size:15px;font-weight:600">Nos critères d'évaluation sont publics et appliqués uniformément</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="width:22px;height:22px;border-radius:999px;background:rgba(16,185,129,0.12);color:#10B981;display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700">✓</span>
+              <span style="color:#1E293B;font-size:15px;font-weight:600">Chaque note est justifiée et s'appuie sur des tests concrets réalisés en conditions réelles</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="width:22px;height:22px;border-radius:999px;background:rgba(16,185,129,0.12);color:#10B981;display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700">✓</span>
+              <span style="color:#1E293B;font-size:15px;font-weight:600">Les liens d'affiliation sont toujours clairement signalés</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ÉQUIPE ============ -->
+  <section id="equipe" style="background:#fff;border-top:1px solid #ECEDF2">
+    <div style="max-width:1200px;margin:0 auto;padding:96px 24px">
+      <div style="max-width:560px;margin:0 auto 52px;text-align:center">
+        <div style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#7C3AED;margin-bottom:16px">L'auteur</div>
+        <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-0.01em;color:#0F172A;margin:0">Qui se cache derrière Startup Only ?</h2>
+      </div>
+      <div style="max-width:760px;margin:0 auto">
+        <div style="background:#fff;border:1px solid #ECEDF2;border-radius:22px;padding:40px;box-shadow:0 1px 2px rgba(15,23,42,0.04);transition:transform .18s ease,box-shadow .18s ease;display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start" style-hover="transform:translateY(-4px);box-shadow:0 18px 44px rgba(15,23,42,0.1)">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:16px;flex-shrink:0">
+            {% if site.author_photo is defined and site.author_photo %}<img src="{{ site.author_photo }}" alt="{{ author.name or 'Thomas Bertrand' }}" style="width:96px;height:96px;border-radius:999px;object-fit:cover">{% else %}<div style="width:96px;height:96px;border-radius:999px;background:linear-gradient(135deg,#7C3AED,#a78bfa);display:flex;align-items:center;justify-content:center;font-family:'Newsreader',Georgia,serif;color:#fff;font-size:32px;font-weight:500">TB</div>{% endif %}
+            <div style="display:flex;gap:10px">
+              <a {% if site.social_linkedin is defined and site.social_linkedin %}href="{{ site.social_linkedin }}" target="_blank" rel="noopener noreferrer nofollow"{% endif %} title="LinkedIn" style="width:38px;height:38px;border-radius:999px;border:1px solid #ECEDF2;display:flex;align-items:center;justify-content:center;color:#64748B;text-decoration:none;transition:border-color .18s ease,color .18s ease,background .18s ease" style-hover="border-color:#0077B5;color:#0077B5;background:rgba(0,119,181,0.06)">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+              </a>
+              <a {% if site.social_x is defined and site.social_x %}href="{{ site.social_x }}" target="_blank" rel="noopener noreferrer nofollow"{% endif %} title="X / Twitter" style="width:38px;height:38px;border-radius:999px;border:1px solid #ECEDF2;display:flex;align-items:center;justify-content:center;color:#64748B;text-decoration:none;transition:border-color .18s ease,color .18s ease,background .18s ease" style-hover="border-color:#000;color:#000;background:rgba(0,0,0,0.05)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.263 5.638 5.9-5.638zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+              </a>
+              <a {% if site.social_facebook is defined and site.social_facebook %}href="{{ site.social_facebook }}" target="_blank" rel="noopener noreferrer nofollow"{% endif %} title="Facebook" style="width:38px;height:38px;border-radius:999px;border:1px solid #ECEDF2;display:flex;align-items:center;justify-content:center;color:#64748B;text-decoration:none;transition:border-color .18s ease,color .18s ease,background .18s ease" style-hover="border-color:#1877F2;color:#1877F2;background:rgba(24,119,242,0.06)">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+              </a>
+              <a {% if site.social_youtube is defined and site.social_youtube %}href="{{ site.social_youtube }}" target="_blank" rel="noopener noreferrer nofollow"{% endif %} title="YouTube" style="width:38px;height:38px;border-radius:999px;border:1px solid #ECEDF2;display:flex;align-items:center;justify-content:center;color:#64748B;text-decoration:none;transition:border-color .18s ease,color .18s ease,background .18s ease" style-hover="border-color:#FF0000;color:#FF0000;background:rgba(255,0,0,0.06)">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+              </a>
+            </div>
+          </div>
+          <div style="flex:1;min-width:260px">
+            <h3 style="font-size:22px;font-weight:800;color:#0F172A;margin:0 0 4px">Thomas Bertrand</h3>
+            <div style="color:#7C3AED;font-size:14px;font-weight:600;margin-bottom:16px">Fondateur · Startup Only</div>
+            <p style="color:#64748B;font-size:15.5px;line-height:1.7;margin:0 0 14px">J'ai créé Startup Only après avoir constaté que la plupart des comparatifs en ligne manquaient de profondeur ou de transparence sur leur méthode. J'ai accompagné de nombreuses entreprises dans le choix de leurs outils RH, et j'ai voulu mettre cette expérience au service des entrepreneurs.</p>
+            <p style="color:#64748B;font-size:15.5px;line-height:1.7;margin:0 0 22px">Je teste chaque logiciel personnellement, en conditions réelles, et je documente chaque étape. Mon objectif : vous faire gagner du temps et vous aider à prendre la meilleure décision pour votre structure.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:7px">
+              <span style="font-size:12.5px;font-weight:700;color:#7C3AED;background:rgba(124,58,237,0.09);padding:5px 11px;border-radius:999px">Logiciels RH</span>
+              <span style="font-size:12.5px;font-weight:700;color:#7C3AED;background:rgba(124,58,237,0.09);padding:5px 11px;border-radius:999px">Paie &amp; SIRH</span>
+              <span style="font-size:12.5px;font-weight:700;color:#7C3AED;background:rgba(124,58,237,0.09);padding:5px 11px;border-radius:999px">Comptabilité</span>
+              <span style="font-size:12.5px;font-weight:700;color:#7C3AED;background:rgba(124,58,237,0.09);padding:5px 11px;border-radius:999px">Facturation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHARTE ÉDITORIALE ============ -->
+  <section style="background:#FAFAFC;border-top:1px solid #ECEDF2">
+    <div style="max-width:1200px;margin:0 auto;padding:96px 24px">
+      <div style="max-width:560px;margin:0 auto 52px;text-align:center">
+        <div style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#7C3AED;margin-bottom:16px">Nos engagements</div>
+        <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-0.01em;color:#0F172A;margin:0">Notre charte éditoriale</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">
+        <div style="background:#fff;border:1px solid #ECEDF2;border-radius:14px;padding:20px 24px;display:flex;align-items:center;gap:14px;box-shadow:0 1px 2px rgba(15,23,42,0.04)">
+          <span style="width:28px;height:28px;border-radius:999px;background:rgba(16,185,129,0.12);color:#10B981;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;font-weight:700">✓</span>
+          <span style="color:#0F172A;font-size:15px;font-weight:600">Tests réalisés avant chaque publication</span>
+        </div>
+        <div style="background:#fff;border:1px solid #ECEDF2;border-radius:14px;padding:20px 24px;display:flex;align-items:center;gap:14px;box-shadow:0 1px 2px rgba(15,23,42,0.04)">
+          <span style="width:28px;height:28px;border-radius:999px;background:rgba(16,185,129,0.12);color:#10B981;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;font-weight:700">✓</span>
+          <span style="color:#0F172A;font-size:15px;font-weight:600">Avis régulièrement mis à jour</span>
+        </div>
+        <div style="background:#fff;border:1px solid #ECEDF2;border-radius:14px;padding:20px 24px;display:flex;align-items:center;gap:14px;box-shadow:0 1px 2px rgba(15,23,42,0.04)">
+          <span style="width:28px;height:28px;border-radius:999px;background:rgba(16,185,129,0.12);color:#10B981;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;font-weight:700">✓</span>
+          <span style="color:#0F172A;font-size:15px;font-weight:600">Sources citées et vérifiables</span>
+        </div>
+        <div style="background:#fff;border:1px solid #ECEDF2;border-radius:14px;padding:20px 24px;display:flex;align-items:center;gap:14px;box-shadow:0 1px 2px rgba(15,23,42,0.04)">
+          <span style="width:28px;height:28px;border-radius:999px;background:rgba(16,185,129,0.12);color:#10B981;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;font-weight:700">✓</span>
+          <span style="color:#0F172A;font-size:15px;font-weight:600">Informations factuelles vérifiées</span>
+        </div>
+        <div style="background:#fff;border:1px solid #ECEDF2;border-radius:14px;padding:20px 24px;display:flex;align-items:center;gap:14px;box-shadow:0 1px 2px rgba(15,23,42,0.04)">
+          <span style="width:28px;height:28px;border-radius:999px;background:rgba(16,185,129,0.12);color:#10B981;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;font-weight:700">✓</span>
+          <span style="color:#0F172A;font-size:15px;font-weight:600">Corrections rapides et signalées</span>
+        </div>
+        <div style="background:#fff;border:1px solid #ECEDF2;border-radius:14px;padding:20px 24px;display:flex;align-items:center;gap:14px;box-shadow:0 1px 2px rgba(15,23,42,0.04)">
+          <span style="width:28px;height:28px;border-radius:999px;background:rgba(16,185,129,0.12);color:#10B981;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;font-weight:700">✓</span>
+          <span style="color:#0F172A;font-size:15px;font-weight:600">Veille permanente du marché</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ILS NOUS FONT CONFIANCE ============ -->
+  <section style="background:#fff;border-top:1px solid #ECEDF2">
+    <div style="max-width:1200px;margin:0 auto;padding:80px 24px">
+      <div style="text-align:center;margin-bottom:44px">
+        <div style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#7C3AED;margin-bottom:14px">Ils nous font confiance</div>
+        <p style="color:#94A3B8;font-size:16px;font-weight:500;margin:0">Logiciels testés, médias partenaires et événements couverts</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px">
+        <div style="height:62px;background:#F4F5F8;border:1px solid #EEF0F4;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#64748B;font-size:13.5px;font-weight:700;letter-spacing:0.04em;transition:background .18s ease,border-color .18s ease" style-hover="background:#fff;border-color:#d9ccfb;color:#7C3AED">Sage</div>
+        <div style="height:62px;background:#F4F5F8;border:1px solid #EEF0F4;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#64748B;font-size:13.5px;font-weight:700;letter-spacing:0.04em;transition:background .18s ease,border-color .18s ease" style-hover="background:#fff;border-color:#d9ccfb;color:#7C3AED">Silae</div>
+        <div style="height:62px;background:#F4F5F8;border:1px solid #EEF0F4;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#64748B;font-size:13.5px;font-weight:700;letter-spacing:0.04em;transition:background .18s ease,border-color .18s ease" style-hover="background:#fff;border-color:#d9ccfb;color:#7C3AED">PayFit</div>
+        <div style="height:62px;background:#F4F5F8;border:1px solid #EEF0F4;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#64748B;font-size:13.5px;font-weight:700;letter-spacing:0.04em;transition:background .18s ease,border-color .18s ease" style-hover="background:#fff;border-color:#d9ccfb;color:#7C3AED">Factorial</div>
+        <div style="height:62px;background:#F4F5F8;border:1px solid #EEF0F4;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#64748B;font-size:13.5px;font-weight:700;letter-spacing:0.04em;transition:background .18s ease,border-color .18s ease" style-hover="background:#fff;border-color:#d9ccfb;color:#7C3AED">Lucca</div>
+        <div style="height:62px;background:#F4F5F8;border:1px solid #EEF0F4;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#64748B;font-size:13.5px;font-weight:700;letter-spacing:0.04em;transition:background .18s ease,border-color .18s ease" style-hover="background:#fff;border-color:#d9ccfb;color:#7C3AED">Pennylane</div>
+        <div style="height:62px;background:#F4F5F8;border:1px solid #EEF0F4;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#64748B;font-size:13.5px;font-weight:700;letter-spacing:0.04em;transition:background .18s ease,border-color .18s ease" style-hover="background:#fff;border-color:#d9ccfb;color:#7C3AED">Odoo</div>
+        <div style="height:62px;background:#F4F5F8;border:1px solid #EEF0F4;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#64748B;font-size:13.5px;font-weight:700;letter-spacing:0.04em;transition:background .18s ease,border-color .18s ease" style-hover="background:#fff;border-color:#d9ccfb;color:#7C3AED">Axonaut</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq" style="background:#FAFAFC;border-top:1px solid #ECEDF2">
+    <div style="max-width:800px;margin:0 auto;padding:96px 24px">
+      <div style="text-align:center;margin-bottom:56px">
+        <div style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#7C3AED;margin-bottom:16px">FAQ</div>
+        <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:500;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-0.01em;color:#0F172A;margin:0">Questions fréquentes</h2>
+      </div>
+      <div>
+      <details class="faq-item"><summary><span class="faq-q">Comment testez-vous les logiciels ?</span><span class="faq-ico"></span></summary><div class="faq-a">Nous créons un compte réel et testons chaque fonctionnalité sur des cas d'usage métier concrets, sans accès presse ni démo guidée par l'éditeur. Nos tests durent en moyenne 2 à 3 semaines par logiciel.</div></details>
+      <details class="faq-item"><summary><span class="faq-q">Êtes-vous rémunérés par les éditeurs ?</span><span class="faq-ico"></span></summary><div class="faq-a">Nous pouvons percevoir une commission d'affiliation lorsqu'un lecteur souscrit via nos liens. Ces partenariats sont toujours clairement signalés dans nos articles. Nos comparatifs peuvent inclure des solutions mises en avant dans ce cadre.</div></details>
+      <details class="faq-item"><summary><span class="faq-q">Pourquoi certains logiciels sont absents ?</span><span class="faq-ico"></span></summary><div class="faq-a">Nous priorisons les logiciels adaptés aux TPE/PME françaises. Un outil peut être absent parce qu'il cible uniquement les grandes entreprises, qu'il manque de maturité ou que son test est en cours de réalisation.</div></details>
+      <details class="faq-item"><summary><span class="faq-q">À quelle fréquence les comparatifs sont-ils mis à jour ?</span><span class="faq-ico"></span></summary><div class="faq-a">Nos comparatifs sont revus au minimum tous les 6 mois, ou à chaque évolution tarifaire ou fonctionnelle majeure d'un logiciel. La date de dernière mise à jour est toujours indiquée en haut de chaque article.</div></details>
+      <details class="faq-item"><summary><span class="faq-q">Peut-on vous proposer un logiciel à tester ?</span><span class="faq-ico"></span></summary><div class="faq-a">Oui ! Vous pouvez nous soumettre un logiciel via notre formulaire de contact. Nous étudions toutes les demandes mais sélectionnons uniquement les solutions pertinentes pour nos lecteurs. Aucun paiement ne garantit un test ni une note positive.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section style="position:relative;background:#0F172A;overflow:hidden">
+    <div style="position:absolute;top:-100px;left:-60px;width:500px;height:440px;background:#7C3AED;border-radius:46% 54% 58% 42%/52% 44% 56% 48%;opacity:0.8;pointer-events:none"></div>
+    <div style="position:absolute;bottom:-80px;right:-40px;width:300px;height:300px;background:rgba(167,139,250,0.22);border-radius:50%;pointer-events:none"></div>
+    <div style="position:relative;max-width:800px;margin:0 auto;padding:112px 24px;text-align:center">
+      <div style="font-size:12.5px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#a78bfa;margin-bottom:20px">Prêt à décider ?</div>
+      <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:500;color:#fff;font-size:clamp(34px,4.5vw,54px);line-height:1.06;letter-spacing:-0.015em;margin:0 0 22px">Prêt à équiper votre startup avec les bons outils ?</h2>
+      <p style="color:#94A3B8;font-size:18px;line-height:1.62;max-width:540px;margin:0 auto 38px">Paie, ERP, comptabilité, facturation, RH… Des comparatifs approfondis et une méthodologie documentée pour choisir sereinement.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center">
+        <a href="/nos-comparateurs" style="display:inline-block;background:#10B981;color:#fff;text-decoration:none;font-weight:700;font-size:16px;padding:14px 32px;border-radius:999px;transition:transform .18s ease,box-shadow .18s ease" style-hover="transform:translateY(-2px);box-shadow:0 12px 28px rgba(16,185,129,0.4)">Découvrir les comparatifs</a>
+        <a href="/nos-comparateurs" style="display:inline-block;background:transparent;color:#fff;text-decoration:none;font-weight:600;font-size:16px;padding:14px 32px;border-radius:999px;border:1px solid rgba(255,255,255,0.22);transition:background .18s ease" style-hover="background:rgba(255,255,255,0.07)">Voir notre classement</a>
+      </div>
+    </div>
+  </section>
+
+  <a href="#top" aria-label="Haut de page" style="position:fixed;bottom:28px;right:28px;z-index:70;width:46px;height:46px;border-radius:999px;background:#fff;border:1px solid #ECEDF2;box-shadow:0 8px 22px rgba(15,23,42,0.14);display:flex;align-items:center;justify-content:center;text-decoration:none;color:#0F172A;transition:transform .18s ease" style-hover="transform:translateY(-3px)">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+  </a>
+
+</div>
+{% include 'base/_footer.html.j2' %}
+</body>
+</html>
