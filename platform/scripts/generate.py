@@ -1139,7 +1139,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     # utilisent `site.<key>` continuent de marcher quel que soit l'historique
     # d'édition. Si la clé existe DÉJÀ dans `site`, on ne touche à rien.
     SITE_KEYS_TO_RESCUE = [
-        'analytics_clicky', 'google_site_verification',
+        'analytics_clicky', 'google_site_verification', 'linkavista_verification',
         'www_preference', 'home_title', 'home_description', 'home_h1',
         'blog_sheet_csv_url', 'blog_sheet_edit_url', 'contact_form_key',
     ]
@@ -1173,6 +1173,16 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             site["domain"] = f"https://www.{_bare}"
         else:
             site["domain"] = f"https://{_bare}"
+
+    # ── Normalisation linkavista_verification ─────────────────────────────
+    # L'utilisateur peut coller soit le hash seul ("d92294...a59c5ea6350b"),
+    # soit le tag complet (<meta name="linkavista" content="d92294...">).
+    # On extrait le contenu pour ne garder que le hash, sinon le template
+    # produirait un content="" cassé.
+    _lv_raw = (site.get("linkavista_verification") or "").strip()
+    if _lv_raw:
+        _lv_m = _re_dom.search(r'content\s*=\s*["\']([^"\']+)["\']', _lv_raw)
+        site["linkavista_verification"] = _lv_m.group(1).strip() if _lv_m else _lv_raw
 
     # ── Détection précoce des avis ────────────────────────────────────────
     # On set `site["has_avis"] = True` AU TOUT DÉBUT de generate_site pour
@@ -1837,6 +1847,18 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 )
                 # Cache-buster pour forcer Cloudflare à re-uploader
                 html = html.replace("</body>", f"<!-- build:20260504122856 --></body>", 1)
+                # ── Vérification "Vente de lien" (Linkavista, etc.) ───────────
+                # Injecte le meta de vérification dans le <head> de la home, quel
+                # que soit le template du site (les plateformes de vente de lien
+                # vérifient la possession via l'accueil). Valeur déjà normalisée
+                # en hash plus haut (cf. linkavista_verification).
+                _lv = site.get("linkavista_verification")
+                if _lv and 'name="linkavista"' not in html:
+                    html = html.replace(
+                        "<head>",
+                        f'<head>\n<meta name="linkavista" content="{_lv}">',
+                        1,
+                    )
                 (output_dir / "index.html").write_text(html, encoding="utf-8")
                 _placeholder_written = False
                 print(f"  ✓ index.html ({len(products)} produits, {len(all_pairs)} comparatifs)")
