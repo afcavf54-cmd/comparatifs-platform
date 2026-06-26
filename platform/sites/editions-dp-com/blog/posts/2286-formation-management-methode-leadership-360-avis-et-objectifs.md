@@ -4,15 +4,20 @@ slug: 2286-formation-management-methode-leadership-360-avis-et-objectifs
 date: '2026-06-25T07:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation Leadership 360 : avis et programme'
-meta_description: 'Découvrez un avis concret sur la formation management Méthode Leadership 360 : ses objectifs, son utilité en TPE et ce qu''elle change vraiment sur le terrain.'
+meta_description: 'Découvrez un avis concret sur la formation management Méthode Leadership
+  360 : ses objectifs, son utilité en TPE et ce qu''elle change vraiment sur le terrain.'
 min_words: 990
 status: published
 featured_image: /blog/2286-formation-management-methode-leadership-360-avis-et-objectifs.jpg
 link_anchors:
 - text: la formation management selon la méthode Leadership
   max: 360
+related_posts:
+- 9399-externalisation-de-la-paie-tout-ce-qu-il-faut-savoir-avant-de-se-lancer
+- 8407-automatisation-de-la-paie-comment-ca-marche-et-pourquoi-l-adopter
+- 6481-comment-realiser-une-cartographie-des-competences-efficacement
+- 6641-gestion-de-la-paie-fonctionnement-etapes-et-obligations
 ---
-
 <p>J'ai passé pas mal de temps à chercher une formation management qui colle vraiment à la réalité d'une TPE. Pas un truc théorique sorti d'une grande école, pas un module PowerPoint qu'on oublie trois jours après. Quelque chose d'utilisable, avec des résultats visibles sur le terrain.</p>
 
 <p>La méthode Leadership 360 est revenue souvent dans mes recherches. Alors j'ai creusé. Voici ce que j'en pense, sans filtre.</p>

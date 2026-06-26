@@ -4,15 +4,21 @@ slug: 5907-formation-management-transversal-skillboost-certification-et-avis
 date: '2026-06-25T17:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation SkillBoost Certification : avis et contenu'
-meta_description: 'Découvrez mon avis sincère sur la formation management transversal SkillBoost : certification, contenu, formats hybrides et ce que cela change concrètement en…'
+meta_description: 'Découvrez mon avis sincère sur la formation management transversal
+  SkillBoost : certification, contenu, formats hybrides et ce que cela change concrètement
+  en…'
 min_words: 970
 status: published
 featured_image: /blog/5907-formation-management-transversal-skillboost-certification-et-avis.jpg
 link_anchors:
 - text: la certification de la formation management transversal SkillBoost
   max: 5
+related_posts:
+- 6956-formation-management-d-equipe-leadpro-certified-avis-et-certification
+- 9006-gestionnaire-de-la-paie-quel-est-son-role-dans-l-entreprise
+- 5959-comment-construire-une-marque-employeur-attractive
+- 6829-fiche-de-paie-en-ligne-acces-lecture-et-decryptage
 ---
-
 <p>J'ai découvert SkillBoost un peu par hasard. Un confrère lyonnais m'en avait parlé lors d'un déjeuner, et j'avoue que mon premier réflexe a été la méfiance. On nous vend tellement de formations "révolutionnaires" que j'avais du mal à y croire. Mais avec une équipe qui grandit, j'avais besoin de structurer quelque chose autour du management transversal. Alors j'ai regardé, comparé, demandé des devis.</p>
 
 <p>Voici ce que j'ai trouvé, honnêtement.</p>

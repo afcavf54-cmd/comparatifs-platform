@@ -4,15 +4,21 @@ slug: 3632-formation-negociation-commerciale-dealmaker-intensive-avis-et-contenu
 date: '2026-06-26T12:00:00+02:00'
 categorie: Salarié
 meta_title: 'Formation Dealmaker Intensive : avis et programme'
-meta_description: 'Découvrez un avis détaillé et honnête sur la formation Dealmaker Intensive en négociation commerciale : contenu du programme, points forts et limites concrets.'
+meta_description: 'Découvrez un avis détaillé et honnête sur la formation Dealmaker
+  Intensive en négociation commerciale : contenu du programme, points forts et limites
+  concrets.'
 min_words: 940
 status: published
 featured_image: /blog/3632-formation-negociation-commerciale-dealmaker-intensive-avis-et-contenu.jpg
 link_anchors:
 - text: la formation négociation commerciale DealMaker Intensive
   max: 5
+related_posts:
+- 5709-licencie-pour-faute-ai-je-droit-aux-allocations-chomage
+- 2957-travailler-sans-contrat-depuis-15-jours-quels-risques-pour-l-employeur-et-quels-droits-pour-vous
+- 5359-formation-negociation-commerciale-salesmaster-methode-et-resultats
+- 3695-quels-sont-les-avantages-du-comite-d-entreprise-airbus
 ---
-
 <p>J'ai mis les pieds dans cette formation un peu par hasard. Mon directeur commercial m'avait glissé le nom "Dealmaker Intensive" lors d'un déjeuner, en disant que ça l'avait aidé à structurer ses cycles de vente. Honnêtement, je n'y croyais pas trop. J'ai 11 ans d'expérience dans le développement commercial, et j'avais l'impression d'avoir déjà vu toutes les formations du marché. Spoiler : j'avais tort sur certains points.</p>
 
 <p>Je vais vous raconter ce que j'ai vécu concrètement, sans vous vendre du rêve. Ce n'est pas parfait. Mais pour une TPE comme la mienne, c'était pertinent à plusieurs niveaux.</p>
