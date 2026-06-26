@@ -4,15 +4,21 @@ slug: 8990-dealmaker-intensive-face-aux-formations-negociation-longues
 date: '2026-06-26T08:00:00+02:00'
 categorie: Salarié
 meta_title: Formation négociation commerciale DealMaker Intensive vs cursus étalé
-meta_description: DealMaker Intensive est-il vraiment une alternative aux formations négociation longues ? Retour d'expérience d'un DAF en PME sur le format et l'efficacité réelle.
+meta_description: DealMaker Intensive est-il vraiment une alternative aux formations
+  négociation longues ? Retour d'expérience d'un DAF en PME sur le format et l'efficacité
+  réelle.
 min_words: 940
 status: published
 featured_image: /blog/8990-dealmaker-intensive-face-aux-formations-negociation-longues.jpg
 link_anchors:
 - text: la formation négociation commerciale DealMaker Intensive
   max: 5
+related_posts:
+- 3650-mon-patron-change-mes-horaires-sans-preavis-ce-que-dit-le-droit-du-travail
+- 1113-abreviations-du-bulletin-de-salaire-comprendre-facilement-chaque-ligne
+- 9279-accord-implicite-de-rupture-conventionnelle-ce-que-prevoit-reellement-la-loi
+- 2942-demission-et-anciennete-quels-avantages-conservez-vous-apres-votre-depart
 ---
-
 <p>Vingt ans à faire de la compta, ça forge un certain rapport au temps. Chaque heure passée en formation, c'est une heure qui ne va pas aux clôtures, aux rapprochements bancaires, aux relances fournisseurs. Alors quand un commercial m'a présenté le <strong>DealMaker Intensive</strong> comme une alternative aux formations négociation classiques, j'ai été sceptique. Très sceptique, même.</p>
 
 <p>J'ai quand même regardé de plus près. Parce que dans une PME de 50 personnes, savoir négocier, ça concerne tout le monde. Les achats, les contrats de prestation, les renégociations de loyers ou de licences logicielles. Ce n'est pas réservé aux commerciaux. Et là, j'avais un vrai problème : les formations longues, je n'ai pas le temps de les faire suivre à mon équipe.</p>
