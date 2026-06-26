@@ -2,6 +2,7 @@
 # CONFIG SITE -- editions-dp-com
 # ============================================================
 site:
+  linkavista_verification: "<meta name=\"linkavista\" content=\"3526f77662fab7d9e097b8b419a6872f865ed01c\">"
   social_youtube: "https://www.youtube.com/@editionsdespros"
   social_x: ""
   social_linkedin: ""
@@ -26,7 +27,7 @@ site:
   home_description: "Éditions des Pros accompagne entrepreneurs, dirigeants et indépendants avec des actualités, guides pratiques, avis, outils et conseils pour développer leur activité."
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
-  analytics_clicky: '<script async data-id="101505645" src="//static.getclicky.com/js"></script>'
+  analytics_clicky: "<script async data-id=\"101505645\" src=\"//static.getclicky.com/js\"></script>"
   home_h1: "Le média des entrepreneurs et des professionnels"
   outils_menu:
     - label: Outils pratiques
