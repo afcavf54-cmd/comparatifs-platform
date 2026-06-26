@@ -4,15 +4,20 @@ slug: 3309-pour-qui-est-fait-le-logiciel-crm-salestrack-pro
 date: '2026-06-26T12:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Avis logiciel CRM SalesTrack Pro : pour quelle équipe ?'
-meta_description: 'Logiciel CRM SalesTrack Pro : pour qui est-il vraiment fait ? Découvrez ce test terrain de 2 mois, idéal pour freelances, TPE et startups.'
+meta_description: 'Logiciel CRM SalesTrack Pro : pour qui est-il vraiment fait ? Découvrez
+  ce test terrain de 2 mois, idéal pour freelances, TPE et startups.'
 min_words: 990
 status: published
 featured_image: /blog/3309-pour-qui-est-fait-le-logiciel-crm-salestrack-pro.jpg
 link_anchors:
 - text: les avis sur le logiciel CRM SalesTrack Pro
   max: 5
+related_posts:
+- 4060-delai-d-integration-de-l-erp-flexibiz-avec-la-comptabilite
+- 1481-pour-qui-est-pense-le-logiciel-crm-salestrack-evolution
+- 7371-jusqu-ou-le-crm-hubspot-reste-t-il-gratuit
+- 4437-quel-budget-pour-un-erp-sap
 ---
-
 <p>J'ai testé pas mal de CRM ces dernières années. Pour ma startup à Bordeaux, j'ai besoin d'un truc qui tourne vite, qui automatise les relances et qui ne me coûte pas un bras. SalesTrack Pro est revenu souvent dans mes recherches. Alors je l'ai essayé sérieusement pendant deux mois, et voilà ce que j'en pense vraiment.</p>
 
 <h2>C'est fait pour qui exactement ?</h2>
