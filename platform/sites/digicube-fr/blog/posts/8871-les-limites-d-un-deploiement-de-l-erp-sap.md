@@ -4,15 +4,21 @@ slug: 8871-les-limites-d-un-deploiement-de-l-erp-sap
 date: '2026-06-27T07:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'ERP SAP : les inconvénients à connaître'
-meta_description: 'Retour d''expérience sans filtre sur le déploiement de l''ERP SAP : coûts cachés, complexité réelle et limites concrètes pour les PME qui veulent éviter les…'
+meta_description: 'Retour d''expérience sans filtre sur le déploiement de l''ERP SAP
+  : coûts cachés, complexité réelle et limites concrètes pour les PME qui veulent
+  éviter les…'
 min_words: 920
 status: published
 featured_image: /blog/8871-les-limites-d-un-deploiement-de-l-erp-sap.jpg
 link_anchors:
 - text: l'ERP (Enterprise Resource Planning) SAP
   max: 5
+related_posts:
+- 5949-ce-que-le-devis-d-implementation-bizcore-advanced-oublie
+- 7360-salesflow-evolution-face-au-suivi-manuel-des-ventes
+- 3259-configuration-de-l-erp-dynabiz-pro-les-pieges-courants
+- 6543-crm-salestrack-premium-face-a-la-version-classique
 ---
-
 <p>J'ai déployé SAP dans mon entreprise il y a un peu moins de deux ans. On avait une cinquantaine de salariés à l'époque, un système de gestion qui tenait sur des fichiers Excel et un logiciel de facturation vieillissant. L'idée de passer sur un ERP "sérieux" semblait logique. Sur le papier, SAP, c'est la référence. Dans les faits, j'ai découvert une réalité bien plus compliquée.</p>
 
 <p>Je vais vous raconter ce que personne ne vous dit lors du rendez-vous commercial.</p>
