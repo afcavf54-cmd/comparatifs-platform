@@ -14,6 +14,7 @@ link_anchors:
   max: 5
 related_posts:
 - 9414-ce-que-les-clients-pensent-de-l-agence-e-reputation-kickngo
+- 8615-bien-decrire-son-chantier-sur-btp-chantier-fr
 ---
 <h2>Pourquoi bien préparer son devis déco avant de rencontrer un professionnel ?</h2>
 
