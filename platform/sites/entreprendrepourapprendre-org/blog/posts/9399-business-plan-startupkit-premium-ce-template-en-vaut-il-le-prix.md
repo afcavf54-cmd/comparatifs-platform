@@ -17,6 +17,7 @@ link_anchors:
 related_posts:
 - 2469-creer-son-business-plan-avec-financepro-smart-concretement
 - 5784-faire-son-business-plan-avec-planexpert-mode-d-emploi
+- 4713-business-plan-smartstart-generator-ce-template-tient-il-la-route
 - 7965-la-formation-business-plan-frenchy-business-pro-sous-toutes-les-coutures
 ---
 <h2>Un template de business plan à 97 euros, j'ai failli passer mon chemin</h2>

@@ -4,15 +4,21 @@ slug: 4713-business-plan-smartstart-generator-ce-template-tient-il-la-route
 date: '2026-06-27T07:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: Avis sur le générateur de business plan SmartStart Generator
-meta_description: 'Avis concret sur le template business plan SmartStart Generator : points forts, limites et verdict d''une dirigeante qui l''a testé pour un vrai projet de création.'
+meta_description: 'Avis concret sur le template business plan SmartStart Generator
+  : points forts, limites et verdict d''une dirigeante qui l''a testé pour un vrai
+  projet de création.'
 min_words: 920
 status: published
 featured_image: /blog/4713-business-plan-smartstart-generator-ce-template-tient-il-la-route.jpg
 link_anchors:
 - text: les avis sur le template de business plan SmartStart Generator
   max: 5
+related_posts:
+- 2469-creer-son-business-plan-avec-financepro-smart-concretement
+- 5784-faire-son-business-plan-avec-planexpert-mode-d-emploi
+- 7965-la-formation-business-plan-frenchy-business-pro-sous-toutes-les-coutures
+- 9399-business-plan-startupkit-premium-ce-template-en-vaut-il-le-prix
 ---
-
 <p>J'ai testé beaucoup de templates de business plan depuis que j'ai lancé mon agence. Et honnêtement, la plupart m'ont déçue. Soit c'est trop générique, soit c'est une usine à gaz avec des onglets Excel imbriqués les uns dans les autres que même mon comptable ne comprend pas. Alors quand j'ai entendu parler du SmartStart Generator, j'étais curieuse mais sceptique.</p>
 
 <p>Je vais vous dire ce que j'en pense vraiment, après l'avoir utilisé pour accompagner une amie qui monte son auto-école. Pas en tant qu'experte en gestion, mais en tant que dirigeante qui a déjà monté son propre projet et qui sait ce que c'est que de remplir un business plan à minuit avec un café froid.</p>

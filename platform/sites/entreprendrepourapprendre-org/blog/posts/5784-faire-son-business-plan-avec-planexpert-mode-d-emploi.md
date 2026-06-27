@@ -15,8 +15,9 @@ link_anchors:
   max: 5
 related_posts:
 - 2469-creer-son-business-plan-avec-financepro-smart-concretement
-- 7965-la-formation-business-plan-frenchy-business-pro-sous-toutes-les-coutures
 - 9399-business-plan-startupkit-premium-ce-template-en-vaut-il-le-prix
+- 4713-business-plan-smartstart-generator-ce-template-tient-il-la-route
+- 7965-la-formation-business-plan-frenchy-business-pro-sous-toutes-les-coutures
 ---
 <h2>Ce que j'aurais voulu savoir avant de faire mon premier business plan</h2>
 

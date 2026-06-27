@@ -15,9 +15,10 @@ link_anchors:
 - text: la formation business plan Frenchy-Business-Pro
   max: 5
 related_posts:
-- 9399-business-plan-startupkit-premium-ce-template-en-vaut-il-le-prix
-- 5784-faire-son-business-plan-avec-planexpert-mode-d-emploi
+- 4713-business-plan-smartstart-generator-ce-template-tient-il-la-route
 - 2469-creer-son-business-plan-avec-financepro-smart-concretement
+- 5784-faire-son-business-plan-avec-planexpert-mode-d-emploi
+- 9399-business-plan-startupkit-premium-ce-template-en-vaut-il-le-prix
 ---
 <h2>Pourquoi j'ai testé cette formation business plan ?</h2>
 
