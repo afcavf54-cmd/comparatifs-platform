@@ -4,15 +4,20 @@ slug: 6876-le-systeme-agileframe-face-au-management-en-silos
 date: '2026-06-27T07:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: Formation management AgileFrame vs méthodes classiques
-meta_description: Découvrez comment le système AgileFrame répond concrètement au management en silos et réduit les frictions entre services dans les PME de 20 à 100 salariés.
+meta_description: Découvrez comment le système AgileFrame répond concrètement au management
+  en silos et réduit les frictions entre services dans les PME de 20 à 100 salariés.
 min_words: 980
 status: published
 featured_image: /blog/6876-le-systeme-agileframe-face-au-management-en-silos.jpg
 link_anchors:
 - text: la formation management avec le système AgileFrame
   max: 5
+related_posts:
+- 5254-entreprise-anonymisee-pourquoi-certaines-informations-sont-elles-masquees
+- 8081-matrice-9-box-comment-evaluer-le-potentiel-des-collaborateurs
+- 4853-cartographie-des-competences-comment-identifier-les-savoir-faire-cles
+- 3972-promesse-d-embauche-modele-obligations-legales-et-valeur-juridique
 ---
-
 <p>Vingt ans de comptabilité, ça vous apprend une chose : les silos, c'est le plus grand gaspillage d'énergie qu'une entreprise puisse s'infliger. J'ai vu des équipes passer des heures à ressaisir des données qu'un autre service avait déjà produites, juste parce que personne ne se parlait. J'ai vu des projets échouer non pas par manque de compétences, mais parce que la comptabilité ignorait ce que faisait la production, et la production ignorait les contraintes du commercial.</p>
 
 <p>Quand on m'a parlé d'AgileFrame pour la première fois, j'avoue que j'étais sceptique. Un autre cadre méthodologique parmi d'autres. Mais après l'avoir observé à l'œuvre dans deux structures de taille comparable à la nôtre, j'ai changé d'avis.</p>
