@@ -4,15 +4,19 @@ slug: 4613-a-quels-chantiers-s-adresse-btp-chantier-fr
 date: '2026-06-27T11:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'Devis gratuit BTP-Chantier.fr : pour quels travaux ?'
-meta_description: 'Découvrez à quels chantiers BTP-Chantier.fr s''adresse vraiment : retour terrain d''un chef de projet nantais sur cette plateforme dédiée aux pros du bâtiment.'
+meta_description: 'Découvrez à quels chantiers BTP-Chantier.fr s''adresse vraiment
+  : retour terrain d''un chef de projet nantais sur cette plateforme dédiée aux pros
+  du bâtiment.'
 min_words: 990
 status: published
 featured_image: /blog/4613-a-quels-chantiers-s-adresse-btp-chantier-fr.jpg
 link_anchors:
 - text: un devis gratuit sur BTP-Chantier.fr
   max: 5
+related_posts:
+- 9552-devis-deco-les-erreurs-a-eviter-avec-lestylechezsoi
+- 7392-a-quelle-entreprise-s-adresse-l-agence-e-reputation-kickngo
 ---
-
 <p>J'ai découvert BTP-Chantier.fr un peu par hasard, en cherchant une ressource centralisée pour mes équipes terrain. Et franchement, ça m'a surpris. Pas parce que la plateforme est parfaite, mais parce qu'elle couvre un périmètre que je n'attendais pas d'un site spécialisé BTP.</p>
 
 <p>Avant d'aller plus loin : je gère une structure de 30 personnes à Nantes, on fait du pilotage de chantiers pour des clients dans le second œuvre. Donc quand je parle de BTP-Chantier.fr, c'est pas depuis un bureau avec une théorie. C'est depuis des situations réelles, avec des vraies contraintes de délai, de budget et d'équipe non technique.</p>
