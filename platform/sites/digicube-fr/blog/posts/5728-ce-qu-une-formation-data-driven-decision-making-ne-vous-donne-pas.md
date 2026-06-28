@@ -4,15 +4,20 @@ slug: 5728-ce-qu-une-formation-data-driven-decision-making-ne-vous-donne-pas
 date: '2026-06-28T18:00:00+02:00'
 categorie: Salarié
 meta_title: 'Formation certifiante data driven decision making : les limites'
-meta_description: Une formation data driven decision making vous apprend à raisonner, mais rarement à agir sur vos vraies données. Voici ce qu'elle ne couvre pas vraiment.
+meta_description: Une formation data driven decision making vous apprend à raisonner,
+  mais rarement à agir sur vos vraies données. Voici ce qu'elle ne couvre pas vraiment.
 min_words: 930
 status: published
 featured_image: /blog/5728-ce-qu-une-formation-data-driven-decision-making-ne-vous-donne-pas.jpg
 link_anchors:
 - text: la formation certifiante Data Driven Decision Making
   max: 5
+related_posts:
+- 1917-mon-patron-modifie-mes-horaires-du-jour-au-lendemain-quels-sont-mes-droits
+- 3761-radiation-pole-emploi-procedure-delais-et-consequences-pour-les-demandeurs-d-emploi
+- 2242-accord-implicite-de-rupture-conventionnelle-mythe-ou-realite-juridique
+- 8171-fin-de-cdd-sans-nouvelles-de-l-employeur-les-solutions-a-envisager
 ---
-
 <p>J'ai suivi une formation <strong>data driven decision making</strong> il y a un peu plus d'un an. Deux jours complets, pas vraiment donnés, avec des slides bien construites et un formateur qui maîtrisait son sujet. J'en suis ressorti avec des notions claires sur les KPIs, les tableaux de bord, la logique de décision par les données. Bien.</p>
 
 <p>Mais voilà ce que personne ne m'avait prévenu : la formation m'a appris à raisonner. Pas à agir.</p>
