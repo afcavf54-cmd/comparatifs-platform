@@ -4,15 +4,20 @@ slug: 8553-a-quels-chantiers-s-adresse-le-devis-travaux-en-ligne-e-local-fr
 date: '2026-06-28T12:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'Devis travaux en ligne e-local.fr : pour quels travaux ?'
-meta_description: Découvrez quels types de chantiers sont couverts par e-local.fr, la plateforme de devis travaux en ligne qui met en relation artisans locaux et particuliers en…
+meta_description: Découvrez quels types de chantiers sont couverts par e-local.fr,
+  la plateforme de devis travaux en ligne qui met en relation artisans locaux et particuliers
+  en…
 min_words: 950
 status: published
 featured_image: /blog/8553-a-quels-chantiers-s-adresse-le-devis-travaux-en-ligne-e-local-fr.jpg
 link_anchors:
 - text: un devis travaux en ligne sur E-Local.fr
   max: 5
+related_posts:
+- 7392-a-quelle-entreprise-s-adresse-l-agence-e-reputation-kickngo
+- 4613-a-quels-chantiers-s-adresse-btp-chantier-fr
+- 9552-devis-deco-les-erreurs-a-eviter-avec-lestylechezsoi
 ---
-
 <p>J'ai découvert e-local.fr un peu par hasard, en cherchant à automatiser la phase de devis sur un chantier de rénovation de nos locaux à Nantes. Et franchement, je ne m'attendais pas à ce que la plateforme couvre autant de types de travaux. Voilà ce que j'ai trouvé après avoir testé l'outil en conditions réelles.</p>
 
 <h2>C'est quoi concrètement e-local.fr ?</h2>

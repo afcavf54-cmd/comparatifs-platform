@@ -14,8 +14,9 @@ link_anchors:
 - text: un devis gratuit sur BTP-Chantier.fr
   max: 5
 related_posts:
-- 9552-devis-deco-les-erreurs-a-eviter-avec-lestylechezsoi
+- 8553-a-quels-chantiers-s-adresse-le-devis-travaux-en-ligne-e-local-fr
 - 7392-a-quelle-entreprise-s-adresse-l-agence-e-reputation-kickngo
+- 9552-devis-deco-les-erreurs-a-eviter-avec-lestylechezsoi
 ---
 <p>J'ai découvert BTP-Chantier.fr un peu par hasard, en cherchant une ressource centralisée pour mes équipes terrain. Et franchement, ça m'a surpris. Pas parce que la plateforme est parfaite, mais parce qu'elle couvre un périmètre que je n'attendais pas d'un site spécialisé BTP.</p>
 
