@@ -4,15 +4,17 @@ slug: 2522-quel-budget-pour-un-bureau-au-coworking-mama-works-bordeaux
 date: '2026-06-28T18:00:00+02:00'
 categorie: Finance & Comptabilité
 meta_title: 'Coworking Mama Works Bordeaux : combien coûte un bureau ?'
-meta_description: 'Tarifs, abonnements et passes journée au coworking Mama Works Bordeaux : tout ce qu''il faut savoir avant de s''engager, pour freelances, startups et petites équipes.'
+meta_description: 'Tarifs, abonnements et passes journée au coworking Mama Works Bordeaux
+  : tout ce qu''il faut savoir avant de s''engager, pour freelances, startups et petites
+  équipes.'
 min_words: 940
 status: published
 featured_image: /blog/2522-quel-budget-pour-un-bureau-au-coworking-mama-works-bordeaux.jpg
 link_anchors:
 - text: le logiciel de gestion de trésorerie CashMaster Ultimate
   max: 5
+related_posts: []
 ---
-
 <p>J'ai testé pas mal d'espaces de coworking à Bordeaux ces deux dernières années. Mama Works, c'est celui dont on m'a le plus parlé dans mon réseau. Et honnêtement, quand j'ai commencé à regarder les tarifs de près, j'ai eu quelques surprises. Bonnes et mauvaises.</p>
 
 <p>Si tu es fondateur de startup, freelance ou que tu gères une petite équipe, voilà ce que tu dois savoir avant de sortir ta carte bleue.</p>
