@@ -4,15 +4,21 @@ slug: 3223-peut-on-calculer-serieusement-avec-un-logiciel-geotechnique-freeware
 date: '2026-06-28T11:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Logiciel géotechnique freeware : fiable pour un projet réel ?'
-meta_description: 'Logiciel géotechnique freeware : peut-on calculer sérieusement pour de vrais projets ? Retour d''expérience concret sur les outils gratuits testés en conditions…'
+meta_description: 'Logiciel géotechnique freeware : peut-on calculer sérieusement
+  pour de vrais projets ? Retour d''expérience concret sur les outils gratuits testés
+  en conditions…'
 min_words: 950
 status: published
 featured_image: /blog/3223-peut-on-calculer-serieusement-avec-un-logiciel-geotechnique-freeware.jpg
 link_anchors:
 - text: un logiciel géotechnique freeware
   max: 5
+related_posts:
+- 1481-pour-qui-est-pense-le-logiciel-crm-salestrack-evolution
+- 9906-delai-d-implementation-de-l-erp-bizflow-max
+- 7090-a-quel-public-s-adresse-le-logiciel-crm-salestrack-360-selon-les-utilisateurs
+- 8066-a-qui-se-destine-le-logiciel-crm-businesspro-x4
 ---
-
 <p>Bonne question. Et je vais y répondre honnêtement, parce que j'ai passé du temps là-dessus avant de me décider.</p>
 
 <p>Quand on lance une boîte avec 3 personnes, chaque logiciel à 200€/mois se justifie difficilement. Donc j'ai regardé du côté des freewares géotechniques. Pas par curiosité, par nécessité. Et le résultat m'a surpris, dans les deux sens.</p>
