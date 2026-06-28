@@ -4,15 +4,21 @@ slug: 3510-combien-coute-un-projet-du-logiciel-sage-en-local
 date: '2026-06-28T08:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Logiciel Sage Ille-et-Vilaine : quel budget d''accompagnement ?'
-meta_description: 'Coût réel d''un projet logiciel Sage en local : licence, installation, formation et maintenance. Découvrez les fourchettes de prix avant de lancer votre budget.'
+meta_description: 'Coût réel d''un projet logiciel Sage en local : licence, installation,
+  formation et maintenance. Découvrez les fourchettes de prix avant de lancer votre
+  budget.'
 min_words: 970
 status: published
 featured_image: /blog/3510-combien-coute-un-projet-du-logiciel-sage-en-local.jpg
 link_anchors:
 - text: le tarif du logiciel de facturation QuickBill Pro
   max: 5
+related_posts:
+- 7289-premiers-pas-dans-le-logiciel-devis-et-facture-quotepro-builder
+- 8215-combien-coute-l-installation-du-logiciel-ebp-en-local
+- 4559-le-gain-de-temps-reel-avec-la-generation-automatique-quotepro-smart
+- 7957-a-qui-se-prete-la-facture-en-ligne-digitalise-tes-factures
 ---
-
 <p>J'ai passé pas mal de temps à comparer les options avant de me décider pour une installation Sage en local. Et honnêtement, trouver des infos claires sur le prix réel d'un projet comme ça, c'est pas simple. Tout le monde parle de "tarif sur devis" ou de "contactez-nous". Alors je vais te donner ce que j'aurais aimé trouver dès le départ.</p>
 
 <p>Sage en local, ça reste une vraie option pour les boîtes qui veulent garder leurs données chez elles, sans dépendre d'une connexion ou d'un abonnement cloud qui monte chaque année. Mais le ticket d'entrée est souvent plus élevé qu'on ne le pense.</p>
