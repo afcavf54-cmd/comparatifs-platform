@@ -4,15 +4,21 @@ slug: 7560-la-methode-leadership-360-face-au-management-traditionnel
 date: '2026-06-28T19:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: Formation Leadership 360 vs management directif classique
-meta_description: Découvrez pourquoi le Leadership 360 surpasse le management traditionnel selon un expert terrain de 20 ans, avec des arguments concrets et sans promesses excessives.
+meta_description: Découvrez pourquoi le Leadership 360 surpasse le management traditionnel
+  selon un expert terrain de 20 ans, avec des arguments concrets et sans promesses
+  excessives.
 min_words: 990
 status: published
 featured_image: /blog/7560-la-methode-leadership-360-face-au-management-traditionnel.jpg
 link_anchors:
 - text: la formation management selon la méthode Leadership 360
   max: 5
+related_posts:
+- 5254-entreprise-anonymisee-pourquoi-certaines-informations-sont-elles-masquees
+- 4853-cartographie-des-competences-comment-identifier-les-savoir-faire-cles
+- 5779-retention-des-talents-comment-limiter-le-turnover
+- 2168-skillboost-face-au-management-vertical-classique
 ---
-
 <p>Vingt ans à travailler dans des entreprises de taille intermédiaire, ça vous donne une vraie perspective sur les modes de management qui défilent. J'ai vu passer beaucoup de tendances. Certaines disparaissent aussi vite qu'elles arrivent. D'autres, par contre, changent vraiment quelque chose dans le quotidien des équipes. Le Leadership 360 fait partie de la deuxième catégorie, et je vais vous expliquer pourquoi j'y crois, sans vous vendre du rêve.</p>
 
 <h2>Ce que le management traditionnel fait bien (et ce qu'il rate)</h2>
