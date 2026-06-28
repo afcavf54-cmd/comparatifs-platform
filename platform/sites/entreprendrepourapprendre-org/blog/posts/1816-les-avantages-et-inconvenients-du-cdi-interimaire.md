@@ -14,9 +14,10 @@ link_anchors:
 - text: les avantages et inconvénients du CDI intérimaire
   max: 5
 related_posts:
-- 7898-la-formation-caces-de-mon-institut-du-btp-au-scanner
 - 4296-la-formation-certifiante-en-data-driven-decision-making-sans-complaisance
 - 7190-la-formation-intensive-de-negociation-commerciale-dealmaker-de-fond-en-comble
+- 6129-devenir-inspecteur-qualite-aeronautique-et-spatiale-la-formation
+- 7898-la-formation-caces-de-mon-institut-du-btp-au-scanner
 ---
 <h2>Ce que le CDI intérimaire m'a appris sur la flexibilité au travail</h2>
 

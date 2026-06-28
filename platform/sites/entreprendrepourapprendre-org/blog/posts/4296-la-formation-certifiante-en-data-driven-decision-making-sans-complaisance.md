@@ -14,9 +14,10 @@ link_anchors:
 - text: la formation certifiante Data Driven Decision Making
   max: 5
 related_posts:
-- 7898-la-formation-caces-de-mon-institut-du-btp-au-scanner
 - 7190-la-formation-intensive-de-negociation-commerciale-dealmaker-de-fond-en-comble
+- 6129-devenir-inspecteur-qualite-aeronautique-et-spatiale-la-formation
 - 1816-les-avantages-et-inconvenients-du-cdi-interimaire
+- 7898-la-formation-caces-de-mon-institut-du-btp-au-scanner
 ---
 <h2>Pourquoi j'ai décidé de me former au data driven decision making ?</h2>
 
