@@ -4,15 +4,20 @@ slug: 4666-ce-qu-il-faut-savoir-avant-la-formation-caces-mon-institut-du-btp
 date: '2026-06-28T11:00:00+02:00'
 categorie: Salarié
 meta_title: 'Formation CACES Mon-Institut-du-BTP : les limites'
-meta_description: Avant d'envoyer vos salariés en formation CACES chez Mon-Institut-du-BTP, découvrez ce qu'il faut vraiment savoir pour éviter les erreurs coûteuses.
+meta_description: Avant d'envoyer vos salariés en formation CACES chez Mon-Institut-du-BTP,
+  découvrez ce qu'il faut vraiment savoir pour éviter les erreurs coûteuses.
 min_words: 920
 status: published
 featured_image: /blog/4666-ce-qu-il-faut-savoir-avant-la-formation-caces-mon-institut-du-btp.jpg
 link_anchors:
 - text: la formation CACES de Mon-Institut-du-BTP
   max: 5
+related_posts:
+- 7738-demission-et-anciennete-ce-que-vous-pouvez-conserver-apres-votre-depart
+- 6793-je-travaille-sans-contrat-depuis-plusieurs-jours-quelles-protections-pour-le-salarie
+- 2242-accord-implicite-de-rupture-conventionnelle-mythe-ou-realite-juridique
+- 6505-conges-payes-et-retraite-progressive-quelles-regles-appliquer
 ---
-
 <p>J'ai passé la formation CACES il y a un peu plus d'un an. Honnêtement, je ne savais pas trop à quoi m'attendre. On m'avait dit que c'était "une journée et puis c'est bon". Spoiler : c'est un peu plus compliqué que ça, surtout quand on dirige une équipe et qu'on veut que les choses soient faites correctement.</p>
 
 <p>Voici ce que j'aurais aimé savoir avant d'envoyer mes salariés en formation CACES chez Mon-Institut-du-BTP.</p>
