@@ -3,16 +3,22 @@ title: La formation inbound marketing HubGrow Academy sans détour
 slug: 3251-la-formation-inbound-marketing-hubgrow-academy-sans-detour
 date: '2026-06-28T17:00:00+02:00'
 categorie: Entrepreneuriat
-meta_title: 'Formation inbound marketing HubGrow Academy : tient-elle ses promesses ?'
-meta_description: 'Avis honnête sur la formation inbound marketing HubGrow Academy : programme, contenu concret et retour terrain d''une agence qui l''a testée sans complaisance.'
+meta_title: 'Formation inbound marketing HubGrow Academy : tient-elle ses promesses
+  ?'
+meta_description: 'Avis honnête sur la formation inbound marketing HubGrow Academy
+  : programme, contenu concret et retour terrain d''une agence qui l''a testée sans
+  complaisance.'
 min_words: 950
 status: published
 featured_image: /blog/3251-la-formation-inbound-marketing-hubgrow-academy-sans-detour.jpg
 link_anchors:
 - text: la formation inbound marketing HubGrow Academy
   max: 5
+related_posts:
+- 1058-demander-un-devis-gratuit-sur-btp-chantier-fr
+- 7583-demander-un-devis-travaux-en-ligne-sur-e-local-fr
+- 9790-demander-un-devis-deco-chez-lestylechezsoi
 ---
-
 <p>J'ai testé pas mal de formations marketing ces deux dernières années. Certaines m'ont appris des choses utiles, d'autres m'ont surtout fait perdre du temps. Alors quand on m'a parlé de HubGrow Academy et de leur approche inbound marketing, j'ai eu la réaction habituelle : scepticisme modéré, mais curiosité quand même.</p>
 
 <p>Je gère une agence de communication à Lyon depuis 8 ans. Six personnes. Des clients variés, des budgets serrés, et une vraie pression sur la rentabilité. Ce qui m'intéresse dans une formation, c'est la capacité à changer quelque chose de concret dans mon quotidien. Pas une certification pour décorer un profil LinkedIn.</p>
