@@ -4,15 +4,21 @@ slug: 9049-integration-erp-flexibiz-avec-la-comptabilite-mode-d-emploi
 date: '2026-06-28T12:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Intégration ERP FlexiBiz avec comptabilité : guide complet'
-meta_description: 'Connecter FlexiBiz à votre logiciel comptable sans erreurs coûteuses : découvrez le mode d''emploi concret d''un dirigeant de TPE après deux ans de tests et…'
+meta_description: 'Connecter FlexiBiz à votre logiciel comptable sans erreurs coûteuses
+  : découvrez le mode d''emploi concret d''un dirigeant de TPE après deux ans de tests
+  et…'
 min_words: 920
 status: published
 featured_image: /blog/9049-integration-erp-flexibiz-avec-la-comptabilite-mode-d-emploi.jpg
 link_anchors:
 - text: l'intégration de l'ERP FlexiBiz avec la comptabilité
   max: 5
+related_posts:
+- 9812-comment-exporter-les-donnees-salestrack-crm-au-format-csv
+- 3861-les-criteres-essentiels-pour-bien-choisir-son-agence-web-et-eviter-les-mauvaises-surprises
+- 4489-comment-calculer-son-prix-de-vente-a-partir-du-taux-de-marge-formule-et-exemples
+- 2220-avis-crm-salestrack-premium-edition-fonctionnalites-et-retour-d-experience
 ---
-
 <p>J'ai mis du temps avant de vraiment comprendre comment faire tourner FlexiBiz avec notre logiciel de comptabilité. Deux ans à bricoler, à appeler le support, à rater des exports. Aujourd'hui, le lien entre les deux tient la route. Je vous explique ce qui a fonctionné, et ce qui m'a coûté du temps inutilement.</p>
 
 <h2>Pourquoi l'intégration ERP-comptabilité fait souvent peur aux dirigeants de TPE</h2>
