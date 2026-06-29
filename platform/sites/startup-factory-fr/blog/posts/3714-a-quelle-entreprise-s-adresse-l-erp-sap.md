@@ -4,15 +4,20 @@ slug: 3714-a-quelle-entreprise-s-adresse-l-erp-sap
 date: '2026-06-29T10:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'ERP SAP : convient-il à une PME ?'
-meta_description: SAP est-il fait pour votre entreprise ? Découvrez le profil type des structures qui en ont vraiment besoin et évitez un déploiement coûteux et inadapté.
+meta_description: SAP est-il fait pour votre entreprise ? Découvrez le profil type
+  des structures qui en ont vraiment besoin et évitez un déploiement coûteux et inadapté.
 min_words: 920
 status: published
 featured_image: /blog/3714-a-quelle-entreprise-s-adresse-l-erp-sap.jpg
 link_anchors:
 - text: l'ERP (Enterprise Resource Planning) SAP
   max: 5
+related_posts:
+- 7011-configuration-du-crm-pipedrive-nexus-edition-les-pieges
+- 1524-mal-exploiter-le-crm-salestrack-evolution-les-pieges
+- 4640-configuration-de-l-erp-businesscore-enterprise-les-pieges
+- 7280-a-qui-profite-le-crm-salestrack-premium-edition
 ---
-
 <p>SAP. Ce nom revient souvent quand on parle d'ERP. Trop souvent, même. Au point que beaucoup de fondateurs de startups croient que c'est fait pour eux. Spoiler : dans la plupart des cas, non.</p>
 
 <p>J'ai côtoyé plusieurs boîtes qui ont tenté de déployer SAP trop tôt. Résultat : des mois de configuration, des consultants facturés à prix d'or, et une équipe complètement perdue. Alors j'ai voulu comprendre : <strong>à qui s'adresse vraiment SAP ?</strong> Pas la version marketing, la vraie.</p>
