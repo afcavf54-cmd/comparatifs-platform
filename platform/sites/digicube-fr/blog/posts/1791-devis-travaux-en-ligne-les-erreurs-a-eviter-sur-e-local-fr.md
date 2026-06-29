@@ -17,6 +17,7 @@ related_posts:
 - 4999-quel-budget-pour-un-devis-deco-lestylechezsoi
 - 4224-kickngo-vs-autres-agences-d-e-reputation
 - 4472-devis-btp-les-erreurs-a-eviter-sur-btp-chantier-fr
+- 9832-ce-que-la-formation-hubgrow-academy-ne-vous-apprend-pas
 ---
 <p>Je vais vous expliquer quelque chose que j'aurais aimé qu'on me dise bien avant de créer mon premier devis sur e-local.fr. J'ai perdu pas mal de temps, quelques clients, et franchement, quelques euros aussi. Pas parce que la plateforme est mauvaise. Juste parce que je ne savais pas comment l'utiliser correctement.</p>
 

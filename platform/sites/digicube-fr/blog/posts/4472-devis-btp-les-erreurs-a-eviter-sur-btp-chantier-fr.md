@@ -14,8 +14,9 @@ link_anchors:
 - text: un devis gratuit sur BTP-Chantier.fr
   max: 5
 related_posts:
-- 1791-devis-travaux-en-ligne-les-erreurs-a-eviter-sur-e-local-fr
 - 4224-kickngo-vs-autres-agences-d-e-reputation
+- 1791-devis-travaux-en-ligne-les-erreurs-a-eviter-sur-e-local-fr
+- 9832-ce-que-la-formation-hubgrow-academy-ne-vous-apprend-pas
 - 4999-quel-budget-pour-un-devis-deco-lestylechezsoi
 ---
 <p>J'utilise <strong>BTP-Chantier.fr</strong> depuis un peu plus de deux ans maintenant. Au début, j'ai fait des erreurs. Des erreurs bêtes, qui m'ont coûté du temps, parfois de l'argent, et surtout de la crédibilité auprès de mes clients. Aujourd'hui je vous partage ce que j'aurais aimé qu'on me dise avant de me lancer.</p>
