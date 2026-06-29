@@ -4,15 +4,21 @@ slug: 7610-les-6-acquis-de-la-formation-management-agilemaster
 date: '2026-06-29T18:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation management AgileMaster certifiante : 6 compétences agiles'
-meta_description: 'Découvrez les 6 acquis concrets de la formation management AgileMaster : priorisation, leadership et outils directement applicables pour transformer vos équipes.'
+meta_description: 'Découvrez les 6 acquis concrets de la formation management AgileMaster
+  : priorisation, leadership et outils directement applicables pour transformer vos
+  équipes.'
 min_words: 990
 status: published
 featured_image: /blog/7610-les-6-acquis-de-la-formation-management-agilemaster.jpg
 link_anchors:
 - text: la durée de la formation management certifiante AgileMaster
   max: 5
+related_posts:
+- 4608-gestion-des-talents-rh-quelles-bonnes-pratiques-adopter
+- 4687-definition-de-la-gestion-des-talents-tout-comprendre
+- 4129-bracelet-electronique-au-travail-quelles-limites-pour-l-employeur
+- 9300-experience-collaborateur-quels-leviers-pour-engager-vos-equipes
 ---
-
 <p>Vingt ans à travailler dans des services comptables m'ont appris une chose : les équipes qui dysfonctionnent, ce n'est presque jamais un problème de compétences techniques. C'est un problème de management. Et quand on gère une structure de 50 personnes à Lyon, on ne peut pas se permettre d'avoir des chefs de projet qui improvisent.</p>
 
 <p>J'ai suivi <strong>la formation management avec le système AgileFrame</strong> il y a deux ans, dans le cadre d'un projet de réorganisation de notre service. Honnêtement, je n'attendais pas grand-chose. Les formations "management" ont souvent mauvaise réputation dans les équipes non techniques : trop théoriques, trop abstraites, peu applicables le lundi matin. Là, ça a été différent. Voici ce que j'en ai retenu concrètement, sans enjoliver.</p>
