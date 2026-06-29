@@ -4,15 +4,20 @@ slug: 3154-7-leviers-de-marketing-alternatif-a-connaitre
 date: '2026-06-29T18:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Marketing alternatif : 7 techniques qui sortent du lot'
-meta_description: 'Découvrez 7 leviers de marketing alternatif concrets pour les TPE et PME : des approches moins chères, efficaces et souvent ignorées par les dirigeants.'
+meta_description: 'Découvrez 7 leviers de marketing alternatif concrets pour les TPE
+  et PME : des approches moins chères, efficaces et souvent ignorées par les dirigeants.'
 min_words: 930
 status: published
 featured_image: /blog/3154-7-leviers-de-marketing-alternatif-a-connaitre.jpg
 link_anchors:
 - text: le logiciel Sage en Ille-et-Vilaine
   max: 5
+related_posts:
+- 5698-facture-en-ligne-gratuite-creer-et-inserer-ses-articles
+- 6548-les-6-atouts-du-logiciel-de-gestion-de-tresorerie-cashmaster-ultimate
+- 1119-les-5-avantages-d-un-revendeur-du-logiciel-sage-de-proximite
+- 4871-emettre-une-facture-en-ligne-avec-simplifie-ta-compta-sans-se-tromper
 ---
-
 <p>Le marketing, c'est souvent le parent pauvre des TPE et PME. Entre les devis à envoyer, les factures à suivre et les relances clients, on n'a pas forcément le temps de penser à comment attirer de nouveaux prospects. Et quand on pense "marketing", on pense pub Facebook, Google Ads, budget conséquent... et parfois résultats décevants.</p>
 
 <p>Depuis douze ans que j'accompagne des entrepreneurs à Lyon et partout en France, j'ai vu des dizaines de petites structures tester autre chose. Des approches moins chères, parfois surprenantes, qui ont généré des résultats concrets sans nécessiter une agence à plein temps. Voici sept leviers que je trouve vraiment utiles, et que beaucoup de dirigeants n'exploitent pas assez.</p>
