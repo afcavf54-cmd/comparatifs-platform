@@ -4,15 +4,20 @@ slug: 3102-les-6-acquis-de-la-formation-lean-management-sigma7
 date: '2026-06-29T11:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation lean management Sigma7 : 6 compétences en quelques semaines'
-meta_description: Découvrez les 6 acquis concrets de la formation lean management Sigma7 selon un responsable comptable avec 20 ans d'expérience, sans discours marketing.
+meta_description: Découvrez les 6 acquis concrets de la formation lean management
+  Sigma7 selon un responsable comptable avec 20 ans d'expérience, sans discours marketing.
 min_words: 980
 status: published
 featured_image: /blog/3102-les-6-acquis-de-la-formation-lean-management-sigma7.jpg
 link_anchors:
 - text: la durée de la formation lean management Sigma7
   max: 5
+related_posts:
+- 9778-nexstep-avance-face-aux-programmes-de-leadership-traditionnels
+- 6876-le-systeme-agileframe-face-au-management-en-silos
+- 6041-strategie-de-gestion-des-talents-comment-structurer-votre-politique-rh
+- 1574-talent-management-comment-developper-les-competences-internes
 ---
-
 <p>Vingt ans à éplucher des tableaux de bord, à chercher comment gagner dix minutes ici et là sur les clôtures mensuelles, sur les réconciliations, sur les relances fournisseurs. Alors quand mon directeur général m'a proposé de suivre la formation lean management Sigma7, j'ai d'abord eu un réflexe de comptable : quel est le retour sur investissement ? Je vais vous dire ce que j'en pense aujourd'hui, concrètement, sans vous vendre du rêve.</p>
 
 <p>Avant de rentrer dans le détail des six acquis, un point de contexte. Nous sommes une entreprise de 45 salariés, basée à Lyon, secteur services. Mon équipe comptable compte trois personnes dont deux qui n'ont jamais fait une seule formation managériale de leur vie. C'est important de le savoir, parce que la question de la prise en main a pesé lourd dans mon évaluation.</p>
