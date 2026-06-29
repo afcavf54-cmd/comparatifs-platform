@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" href="/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Installer CRM Mobile FieldForce Sync : tutoriel</title>
+<meta name="description" content="Guide complet pour installer CRM Mobile FieldForce Sync sur le terrain : prérequis, configuration serveur, droits MDM et synchronisation des données expliqués…">
+<link rel="canonical" href="https://www.editions-dp.com/2985-installation-du-logiciel-crm-mobile-fieldforce-sync-guide-complet/">
+<meta property="og:title" content="Installer CRM Mobile FieldForce Sync : tutoriel">
+<meta property="og:description" content="Guide complet pour installer CRM Mobile FieldForce Sync sur le terrain : prérequis, configuration serveur, droits MDM et synchronisation des données expliqués…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.editions-dp.com/2985-installation-du-logiciel-crm-mobile-fieldforce-sync-guide-complet/">
+<meta property="og:image" content="https://www.editions-dp.com/blog/2985-installation-du-logiciel-crm-mobile-fieldforce-sync-guide-complet.jpg"><meta property="article:published_time" content="2026-06-29T17:00:00+02:00">
+<meta property="article:section" content="Gestion d'entreprise"><link rel="preconnect" href="https://fonts.googleapis.com">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Installation du logiciel CRM Mobile FieldForce Sync : guide complet",
+  "description": "Guide complet pour installer CRM Mobile FieldForce Sync sur le terrain : pr\u00e9requis, configuration serveur, droits MDM et synchronisation des donn\u00e9es expliqu\u00e9s\u2026",
+  "datePublished": "2026-06-29T17:00:00+02:00",
+"image": "https://www.editions-dp.com/blog/2985-installation-du-logiciel-crm-mobile-fieldforce-sync-guide-complet.jpg",  "author": {
+    "@type": "Person",
+    "name": "Pierre Petit"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "editions-dp.com",
+    "url": "https://www.editions-dp.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.editions-dp.com/2985-installation-du-logiciel-crm-mobile-fieldforce-sync-guide-complet/"
+  }
+,"articleSection": "Gestion d\u0027entreprise"}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "FieldForce Sync fonctionne-t-il sans connexion internet ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, c\u0027est une de ses forces. Les donn\u00e9es sont stock\u00e9es localement sur l\u0027appareil. Le commercial peut saisir ses visites, consulter les fiches clients et enregistrer des bons de commande m\u00eame sans r\u00e9seau. La synchronisation se fait automatiquement d\u00e8s que la connexion revient. Attention cependant : en mode hors ligne, certaines fonctions comme les notifications de stock en temps r\u00e9el ne sont pas disponibles."
+      }
+    },    {
+      "@type": "Question",
+      "name": "Combien de temps dure le d\u00e9ploiement pour une \u00e9quipe de 10 commerciaux ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sur 10 appareils, comptez une journ\u00e9e compl\u00e8te pour un d\u00e9ploiement propre : configuration, synchronisation initiale, tests et courte formation. Si vous passez par une MDM pour d\u00e9ployer l\u0027application \u00e0 distance, vous pouvez r\u00e9duire ce temps, mais il faut que votre console soit d\u00e9j\u00e0 en place."
+      }
+    },    {
+      "@type": "Question",
+      "name": "Peut-on importer des donn\u00e9es existantes depuis un autre CRM ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, via import CSV ou via API. L\u0027import CSV est accessible sans d\u00e9veloppement. Pour l\u0027import API depuis un CRM tiers, il faudra une intervention technique. La qualit\u00e9 de l\u0027import d\u00e9pend beaucoup de la propret\u00e9 de vos donn\u00e9es de d\u00e9part. Si vos fiches clients ont des doublons ou des champs mal renseign\u00e9s, nettoyez-les avant d\u0027importer."
+      }
+    },    {
+      "@type": "Question",
+      "name": "Le support client est-il disponible en fran\u00e7ais ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, et c\u0027est un point positif. Le support par email r\u00e9pond g\u00e9n\u00e9ralement en moins de 24 heures en semaine. Le support t\u00e9l\u00e9phonique est disponible sur certains forfaits. Pour les questions urgentes un vendredi apr\u00e8s-midi, c\u0027est parfois un peu long. Je le dis clairement : pr\u00e9voyez de ne pas avoir de d\u00e9ploiement critique en fin de semaine."
+      }
+    },    {
+      "@type": "Question",
+      "name": "FieldForce Sync est-il adapt\u00e9 \u00e0 une \u00e9quipe non technique ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pour l\u0027utilisation quotidienne, oui. Pour la configuration initiale, il vaut mieux avoir quelqu\u0027un \u00e0 l\u0027aise avec les param\u00e8tres r\u00e9seau et les droits d\u0027acc\u00e8s. Si personne dans votre \u00e9quipe ne peut tenir ce r\u00f4le, faites appel au prestataire pour l\u0027installation. Le co\u00fbt est limit\u00e9 et \u00e7a \u00e9vite beaucoup de frustrations."
+      }
+    }  ]
+}
+</script>
+
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#F4F6FB;--surface:#FFFFFF;--surface2:#F5F3EE;
+  --ink:#0F1A2E;--ink2:#3D434B;--ink3:#8B9CB0;
+  --accent:#1B4FD8;--accent2:#E8410A;--green:#3D7A4F;
+  --border:#E6E1D8;--r:8px;--r2:14px;
+--cta:#F59E0B;--cta-text:#ffffff;}
+body{font-family:'',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1180px;margin:0 auto;padding:0 5vw}
+.article-layout{display:grid;grid-template-columns:1fr 280px;gap:48px;align-items:start}
+.article-main{min-width:0;padding-bottom:80px}
+.article-sidebar{position:sticky;top:88px}
+.sidebar-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px 22px;margin-bottom:20px}
+.sidebar-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin:0 0 14px}
+.sidebar-cat-list{list-style:none;margin:0;padding:0}
+.sidebar-cat-item{padding:0;margin:0}
+.sidebar-cat-link{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);color:var(--ink2);font-size:14px;text-decoration:none;transition:.15s}
+.sidebar-cat-item:last-child .sidebar-cat-link{border-bottom:none}
+.sidebar-cat-link:hover{color:var(--accent);text-decoration:none}
+.sidebar-cat-link.active{color:var(--accent);font-weight:600}
+.sidebar-cat-count{font-size:11px;color:var(--ink3);background:var(--bg);padding:2px 8px;border-radius:10px;flex-shrink:0;margin-left:8px}
+.sidebar-cat-link:hover .sidebar-cat-count{color:var(--accent)}
+.sidebar-recent-list{list-style:none;margin:0;padding:0}
+.sidebar-recent-item{padding:10px 0;border-bottom:1px solid var(--border)}
+.sidebar-recent-item:last-child{border-bottom:none}
+.sidebar-recent-link{color:var(--ink2);font-size:13px;line-height:1.45;text-decoration:none;display:block}
+.sidebar-recent-link:hover{color:var(--accent);text-decoration:none}
+.sidebar-recent-cat{font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
+.article-header{padding:23px 0 24px}
+.breadcrumb{font-size:13px;color:var(--ink3);margin-bottom:16px}
+.breadcrumb a{color:var(--ink3)}
+.breadcrumb a:hover{color:var(--accent)}
+.article-cat{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);background:var(--surface2);padding:4px 10px;border-radius:20px;text-decoration:none;transition:.15s}
+.article-cat:hover{background:var(--accent);color:#fff;text-decoration:none}
+.article-title{font-family:'',serif;font-size:clamp(28px,5vw,48px);font-weight:400;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin-bottom:16px}
+.article-meta{font-size:14px;color:var(--ink3);margin-bottom:7px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.article-meta-item{display:inline-flex;align-items:center;gap:6px}
+.article-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
+.article-featured{width:100%;border-radius:var(--r2);overflow:hidden;margin-bottom:15px;border:1px solid var(--border)}
+.article-featured img{display:block;width:100%;height:auto}
+.article-toc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:22px 26px;margin:0 0 40px;position:relative;z-index:0}
+.article-toc-title{font-family:'',serif;font-size:18px;font-weight:600;color:var(--ink);margin:0 0 14px;letter-spacing:-.01em}
+.article-toc-list{list-style:none;padding:0;margin:0;counter-reset:toc}
+/* L'incrément du compteur est appliqué UNIQUEMENT sur les items H2 (level-2),
+   pas sur les H3 (level-3). Avant : tous les items incrémentaient → si on avait
+   un H3 entre deux H2, la numérotation visible sautait (1, 3, 4...) car le H3
+   consommait silencieusement le 2 (il affichait ›). Maintenant les H3 ne touchent
+   plus au compteur, et les H2 se suivent proprement (1, 2, 3, ...). */
+.article-toc-item{position:relative;padding:6px 0 6px 28px;line-height:1.5}
+.article-toc-level-2{counter-increment:toc}
+.article-toc-level-2::before{content:counter(toc) ".";position:absolute;left:0;top:6px;color:var(--accent);font-weight:600;font-size:14px;width:22px;text-align:right}
+.article-toc-level-3{padding-left:48px;font-size:14px}
+.article-toc-level-3::before{content:"›";position:absolute;left:24px;top:6px;color:var(--ink2);font-weight:600}
+.article-toc-item a{color:var(--ink2);text-decoration:none;font-size:15px;transition:color .15s}
+.article-toc-item a:hover{color:var(--accent);text-decoration:underline}
+.article-toc-level-3 a{font-size:14px;color:var(--ink2)}
+/* Scroll offset pour que les ancres ne soient pas masquées par un éventuel header sticky */
+.article-body h2,.article-body h3{scroll-margin-top:80px}
+.article-body{font-size:17px;color:var(--ink2);line-height:1.8}
+.article-body p{margin-bottom:20px}
+.article-body h1{font-family:'',serif;font-size:32px;font-weight:400;color:var(--ink);margin:48px 0 16px;letter-spacing:-.02em}
+.article-body h2{font-family:'',serif;font-size:28px;font-weight:400;color:var(--ink);margin:40px 0 14px;letter-spacing:-.02em}
+.article-body h3{font-size:20px;font-weight:600;color:var(--ink);margin:32px 0 12px}
+.article-body ul,.article-body ol{margin:0 0 20px 24px}
+.article-body li{margin-bottom:8px}
+.article-body img{display:block;max-width:100%;height:auto;border-radius:var(--r);margin:24px auto;border:1px solid var(--border)}
+.article-body blockquote{border-left:3px solid var(--accent);padding:8px 20px;margin:24px 0;color:var(--ink2);font-style:italic;background:var(--surface2);border-radius:0 var(--r) var(--r) 0}
+.article-body code{background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:.92em;font-family:Menlo,Monaco,Consolas,monospace}
+.article-body strong{color:var(--ink);font-weight:700}
+.article-body a{color:var(--accent2);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px}
+.article-body a:hover{text-decoration-color:var(--accent2)}
+/* Author box (réutilise le style de classement-saas) */
+.author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
+.author-avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
+.author-avatar-placeholder{width:72px;height:72px;border-radius:50%;background:var(--bg);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
+.author-info{flex:1}
+.author-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:4px}
+.author-name{font-family:'',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:2px}
+.author-job{font-size:13px;color:var(--ink3);margin-bottom:12px}
+.author-bio{font-size:14px;color:var(--ink2);line-height:1.7}
+@media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}}
+/* Maillage interne */
+.related-section{margin:25px 0 0;padding-top:25px;border-top:1px solid var(--border)}
+.related-title{font-family:'',serif;font-size:24px;font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
+.related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.related-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px;text-decoration:none;transition:.15s;display:block}
+.related-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,.06);transform:translateY(-1px);text-decoration:none}
+.related-card-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:8px}
+.related-card-title{font-size:15px;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:6px}
+.related-card-excerpt{font-size:13px;color:var(--ink3);line-height:1.5}
+@media(max-width:600px){.related-grid{grid-template-columns:1fr}}
+/* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
+@media(max-width:960px){
+  .article-layout{grid-template-columns:1fr;gap:25px}
+  .article-sidebar{position:static}
+  /* Sur mobile, la sidebar passe sous le contenu : on retire le padding-bottom
+     de article-main qui ne sert plus à rien (l'écart est géré par le gap du
+     grid). 80 (padding) + 32 (gap) = 112px → désormais 0 + 25 = 25px. */
+  .article-main{padding-bottom:0}
+}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+
+/* ── PATCH : tableaux du contenu blog ─────────────────────────────
+   Ajout chirurgical en toute fin du <style>, après les media queries
+   existantes. Aucune modif au CSS au-dessus. */
+.article-body .table-wrap{overflow-x:auto;margin:28px 0;border-radius:10px;border:1px solid var(--border);background:var(--surface)}
+.article-body table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface);margin:28px 0;color:var(--ink)}
+.article-body .table-wrap > table{margin:0;border:none}
+.article-body thead{background:var(--surface2)}
+.article-body thead th{text-align:left;padding:14px 18px;font-weight:600;color:var(--ink);font-size:14px;border-bottom:2px solid var(--border);vertical-align:middle;white-space:nowrap}
+.article-body thead th:not(:last-child){border-right:1px solid var(--border)}
+.article-body tbody td{padding:14px 18px;color:var(--ink);border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+.article-body tbody td:not(:last-child){border-right:1px solid var(--border)}
+.article-body tbody tr:nth-child(even){background:var(--surface2)}
+.article-body tbody tr:hover{background:var(--surface2)}
+.article-body tbody tr:last-child td{border-bottom:none}
+.article-body table caption{caption-side:top;padding:12px 18px;font-weight:600;color:var(--ink);text-align:left;background:var(--surface2);border-bottom:1px solid var(--border)}
+@media (max-width:680px){
+  .article-body table{font-size:14px}
+  .article-body thead th,.article-body tbody td{padding:10px 12px;white-space:normal}
+}
+</style>
+<meta name="google-site-verification" content="OCcdcUpSRa7rYVvon9usT9XulNaFaOFUY572r-mj1mA">
+<script async data-id="101505645" src="//static.getclicky.com/js"></script>
+</head>
+<body>
+
+<style>
+nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+nav.site-nav .nav-logo{font-family:'',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
+nav.site-nav .nav-logo span{color:var(--accent2)}
+nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
+nav.site-nav .nav-cta:hover{opacity:.88}
+nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+nav.site-nav .nav-mobile.open{display:flex}
+nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
+</style>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/logo.png" alt="editions-dp.com" style="height:36px;width:auto;object-fit:contain;vertical-align:middle"></a>
+    <div class="nav-links">
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/avis">Avis</a>
+        <a href="/blog/">Blog</a>
+          <a href="/outils-pratiques">Outils pratiques</a>
+    </div>
+    <a href="/contact" class="nav-cta">Contact</a>
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+      <a href="/nos-comparateurs">Nos comparateurs</a>
+      <a href="/avis">Avis</a>
+      <a href="/blog/">Blog</a>
+        <a href="/outils-pratiques">Outils pratiques</a>
+    <a href="/contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<script>
+/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
+   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
+   devoir redéfinir la fonction côté template parent.
+
+   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
+   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
+   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
+   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
+   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
+   qui est actif et le parent réécrit derrière s'il en a un.
+
+   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
+   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
+   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
+   ne faisait rien. */
+(function(){
+  if (typeof window.toggleMenu === 'function') return;
+  window.toggleMenu = function(){
+    var menu = document.getElementById('nav-mobile');
+    if (menu) menu.classList.toggle('open');
+  };
+  // UX bonus : fermer le menu mobile en cliquant en dehors
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('nav-mobile');
+    var burger = document.getElementById('burger');
+    if (!menu || !burger) return;
+    if (!menu.classList.contains('open')) return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    menu.classList.remove('open');
+  });
+  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
+  document.addEventListener('DOMContentLoaded', function(){
+    var menu = document.getElementById('nav-mobile');
+    if (!menu) return;
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  });
+})();
+</script>
+<div class="container">
+<article class="article-layout">
+  <div class="article-main">
+  <header class="article-header">
+    <div class="breadcrumb">
+      <a href="/">Accueil</a> &rsaquo; <a href="/blog/">Blog</a>
+ &rsaquo; <a href="/categorie-gestion-d-entreprise/">Gestion d'entreprise</a>    </div>
+    <h1 class="article-title">Installation du logiciel CRM Mobile FieldForce Sync : guide complet</h1>
+    <div class="article-meta">
+<a href="/categorie-gestion-d-entreprise/" class="article-cat">Gestion d'entreprise</a><span class="article-meta-dot"></span><span class="article-meta-item">📅 29 juin 2026</span><span class="article-meta-dot"></span><span class="article-meta-item">⏱ 8 min de lecture</span><span class="article-meta-dot"></span>      <span class="article-meta-item">✍️ Pierre Petit</span>
+    </div>
+  </header>
+
+  <div class="article-featured">
+    <img src="/blog/2985-installation-du-logiciel-crm-mobile-fieldforce-sync-guide-complet.jpg" alt="Installation du logiciel CRM Mobile FieldForce Sync : guide complet" loading="eager">
+  </div>
+
+  <nav class="article-toc" aria-label="Sommaire de l'article">
+    <div class="article-toc-title">📑 Sommaire</div>
+    <ol class="article-toc-list">
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#ce-qu-il-faut-verifier-avant-meme-de-telecharger-quoi-que-ce">Ce qu'il faut vérifier avant même de télécharger quoi que ce soit</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#l-installation-pas-a-pas-sans-jargon-inutile">L'installation pas à pas, sans jargon inutile</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#etape-1-telechargement-et-premiere-connexion">Étape 1 : téléchargement et première connexion</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#etape-2-synchronisation-initiale-des-donnees">Étape 2 : synchronisation initiale des données</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#etape-3-configuration-des-droits-et-des-profils">Étape 3 : configuration des droits et des profils</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#l-integration-avec-vos-outils-existants-la-ou-ca-se-compliqu">L'intégration avec vos outils existants : là où ça se complique</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#former-vos-equipes-sans-y-passer-une-semaine">Former vos équipes sans y passer une semaine</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#ce-que-ca-coute-vraiment-au-dela-de-la-licence">Ce que ça coûte vraiment, au-delà de la licence</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#questions-frequentes">Questions fréquentes</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#fieldforce-sync-fonctionne-t-il-sans-connexion-internet">FieldForce Sync fonctionne-t-il sans connexion internet ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#combien-de-temps-dure-le-deploiement-pour-une-equipe-de-10-c">Combien de temps dure le déploiement pour une équipe de 10 commerciaux ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#peut-on-importer-des-donnees-existantes-depuis-un-autre-crm">Peut-on importer des données existantes depuis un autre CRM ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#le-support-client-est-il-disponible-en-francais">Le support client est-il disponible en français ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#fieldforce-sync-est-il-adapte-a-une-equipe-non-technique">FieldForce Sync est-il adapté à une équipe non technique ?</a>
+      </li>
+    </ol>
+  </nav>
+
+  <div class="article-body">
+    <p>Installer un CRM mobile sur le terrain, ça paraît simple. Jusqu'au moment où ça ne l'est plus. J'ai accompagné plusieurs équipes commerciales dans ce type de déploiement, et honnêtement, <strong>les premières heures font souvent gagner ou perdre des semaines</strong>. Voici ce que j'ai appris, sans filtre.</p>
+
+<h2 id="ce-qu-il-faut-verifier-avant-meme-de-telecharger-quoi-que-ce">Ce qu'il faut vérifier avant même de télécharger quoi que ce soit</h2>
+
+<p>Le premier réflexe, c'est souvent de foncer sur le store et d'installer l'appli directement. Mauvaise idée. J'ai vu des équipes bloquer pendant deux jours parce que leur version Android était trop ancienne, ou parce que leur serveur interne ne supportait pas la synchronisation bidirectionnelle.</p>
+
+<p>Vérifiez ces points avant tout :</p>
+
+<ul>
+  <li>Version minimale de l'OS mobile (Android 10+ ou iOS 14+ pour FieldForce Sync)</li>
+  <li>Connexion au serveur CRM : URL de l'instance, port ouvert, certificat SSL valide</li>
+  <li>Droits administrateur sur les appareils des commerciaux</li>
+  <li>Espace disque disponible : compter au moins 500 Mo pour les données hors ligne</li>
+</ul>
+
+<p>Bon, par contre, si vos appareils sont gérés par une MDM (Mobile Device Management), l'installation se fait différemment. Il faudra passer par votre console d'administration. Ce n'est pas compliqué, mais c'est une étape que beaucoup oublient de mentionner.</p>
+
+<p>Un point que j'ai appris à la dure : vérifiez aussi les autorisations réseau côté pare-feu. FieldForce Sync utilise le port 443 (HTTPS) pour la synchronisation, mais aussi parfois un port dédié selon la configuration de votre CRM central. Demandez cette info à votre prestataire CRM avant de commencer.</p>
+
+<h2 id="l-installation-pas-a-pas-sans-jargon-inutile">L'installation pas à pas, sans jargon inutile</h2>
+
+<p>Une fois les prérequis validés, l'installation en elle-même prend environ 15 à 20 minutes par appareil. Voici comment j'organise ça.</p>
+
+<h3 id="etape-1-telechargement-et-premiere-connexion">Étape 1 : téléchargement et première connexion</h3>
+
+<p>Téléchargez FieldForce Sync depuis le Google Play Store ou l'App Store. L'application pèse environ 85 Mo. Au premier lancement, elle vous demande l'URL de votre serveur CRM. Copiez-collez cette URL, ne la tapez pas à la main. J'ai perdu du temps là-dessus avec une équipe qui avait un tiret manquant dans l'adresse.</p>
+
+<p>Ensuite, entrez vos identifiants. Si votre entreprise utilise un SSO (authentification unique), activez cette option dès la première connexion. Ça évite que chaque commercial gère un mot de passe séparé.</p>
+
+<h3 id="etape-2-synchronisation-initiale-des-donnees">Étape 2 : synchronisation initiale des données</h3>
+
+<p>La première synchronisation peut prendre du temps. Beaucoup de temps. J'ai connu des cas où <strong>le temps de déploiement du CRM SmartSales Enterprise</strong> avait été sous-estimé simplement parce que personne n'avait prévu la durée de cette première synchro : avec 10 000 fiches clients et trois ans d'historique, comptez facilement 45 minutes sur une connexion Wi-Fi correcte.</p>
+
+<p>Mon conseil : faites cette étape le soir, en branchant les appareils sur secteur et en Wi-Fi. Ne la faites pas en 4G, sauf si vous avez un forfait data illimité. Le volume de données peut dépasser plusieurs gigaoctets selon la taille de votre base.</p>
+
+<h3 id="etape-3-configuration-des-droits-et-des-profils">Étape 3 : configuration des droits et des profils</h3>
+
+<p>C'est l'étape que les dirigeants sautent le plus souvent. Et c'est dommage, parce que c'est là que vous évitez les mauvaises surprises.</p>
+
+<p>Dans l'interface d'administration de FieldForce Sync, vous définissez qui voit quoi. Un commercial terrain n'a pas besoin de voir les marges brutes ou les conditions tarifaires des autres clients. Créez des profils par rôle : commercial, manager, direction. Ça prend 30 minutes une fois, et ça évite des discussions gênantes ensuite.</p>
+
+<p>Le tableau ci-dessous résume les droits que je configure en général par défaut :</p>
+
+<div class="table-wrap"><table>
+  <thead>
+    <tr>
+      <th>Profil</th>
+      <th>Fiches clients</th>
+      <th>Historique commandes</th>
+      <th>Conditions tarifaires</th>
+      <th>Rapports</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Commercial terrain</td>
+      <td>Lecture + modification</td>
+      <td>Lecture seule</td>
+      <td>Non visible</td>
+      <td>Les siennes uniquement</td>
+    </tr>
+    <tr>
+      <td>Manager régional</td>
+      <td>Lecture + modification</td>
+      <td>Lecture seule</td>
+      <td>Lecture seule</td>
+      <td>Équipe complète</td>
+    </tr>
+    <tr>
+      <td>Direction</td>
+      <td>Accès complet</td>
+      <td>Accès complet</td>
+      <td>Accès complet</td>
+      <td>Accès complet</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h2 id="l-integration-avec-vos-outils-existants-la-ou-ca-se-compliqu">L'intégration avec vos outils existants : là où ça se complique</h2>
+
+<p>FieldForce Sync ne travaille pas seul. Pour que ça serve vraiment à quelque chose, il doit être connecté à votre CRM central, votre ERP si vous en avez un, et parfois à des modules complémentaires.</p>
+
+<p>J'ai récemment accompagné une équipe qui voulait connecter FieldForce Sync à leur système de fidélisation client. La question s'est posée très concrètement autour de <strong>l'intégration du module de fidélisation LoyaltyMax au CRM</strong> : il fallait que les commerciaux terrain voient en temps réel le statut fidélité de chaque client, les points accumulés, les offres actives. Techniquement, ça passe par une API REST. FieldForce Sync supporte ce type de connexion nativement, mais il faut que LoyaltyMax expose correctement ses endpoints. Si votre prestataire LoyaltyMax ne fournit pas de documentation API claire, prévoyez une journée de développement supplémentaire.</p>
+
+<p>Pour les intégrations avec un ERP type Sage ou Cegid, le chemin est souvent plus balisé. Des connecteurs natifs existent. Vérifiez simplement la version de votre ERP : certains connecteurs ne fonctionnent qu'à partir de versions spécifiques.</p>
+
+<p>Là j'ai un vrai reproche à faire à FieldForce Sync : la documentation des webhooks est vraiment légère. J'ai dû appeler le support deux fois pour comprendre comment déclencher une synchro automatique après une mise à jour de fiche client. Ce n'est pas bloquant, mais c'est agaçant quand on cherche à aller vite.</p>
+
+<h2 id="former-vos-equipes-sans-y-passer-une-semaine">Former vos équipes sans y passer une semaine</h2>
+
+<p>Je sais que vous n'avez pas le temps de faire une formation de deux jours. Vos commerciaux non plus. La bonne nouvelle : FieldForce Sync a une prise en main assez rapide pour les fonctions de base. Créer une fiche visite, enregistrer un compte rendu, consulter l'historique d'un client, ça s'apprend en moins d'une heure.</p>
+
+<p>Ce que je recommande : une session de 45 minutes en groupe, avec un appareil configuré à l'avance et des vraies données clients (anonymisées si besoin). On part d'un cas concret : "vous venez de rendre visite à ce client, voilà comment vous enregistrez la visite et planifiez le suivi". C'est beaucoup plus efficace qu'un manuel de 40 pages que personne ne lira.</p>
+
+<p>Pour les fonctions avancées comme les workflows de relance automatique ou l'export des rapports de tournée en PDF, une deuxième session courte suffit. Vingt minutes, pas plus. Ces fonctions-là, les commerciaux les découvrent souvent seuls une fois qu'ils sont à l'aise avec le reste.</p>
+
+<p>Attention quand même : si vous avez des salariés peu à l'aise avec les smartphones, prévoyez du temps individuel. J'ai formé deux salariés dessus en une semaine, mais l'un d'eux avait vraiment besoin d'un accompagnement personnalisé pour les réglages de synchronisation hors ligne.</p>
+
+<h2 id="ce-que-ca-coute-vraiment-au-dela-de-la-licence">Ce que ça coûte vraiment, au-delà de la licence</h2>
+
+<p>Le tarif affiché de FieldForce Sync démarre autour de <strong>18 à 25 euros par utilisateur et par mois</strong> selon le nombre de licences. C'est raisonnable. Mais ce n'est pas le seul coût à prévoir.</p>
+
+<p>Voici ce qu'on oublie souvent :</p>
+
+<ul>
+  <li>Le temps de configuration initiale : comptez 1 à 2 jours si vous le faites en interne</li>
+  <li>Les éventuels développements d'intégration API : entre 500 et 2 000 euros selon la complexité</li>
+  <li>Le support technique pour les premiers mois : certains prestataires facturent ce service séparément</li>
+  <li>La gestion des mises à jour sur les appareils MDM : pas de coût direct, mais du temps administratif</li>
+</ul>
+
+<p>Sur le rapport qualité/prix, franchement, FieldForce Sync tient bien la comparaison avec les alternatives. J'ai testé d'autres solutions qui coûtaient deux fois plus cher pour des fonctionnalités similaires, avec un support encore plus lent. Ce n'est pas parfait, mais pour une TPE ou une PME avec une équipe terrain, c'est une option sérieuse.</p>
+
+<h2 id="questions-frequentes">Questions fréquentes</h2>
+
+<h3 id="fieldforce-sync-fonctionne-t-il-sans-connexion-internet">FieldForce Sync fonctionne-t-il sans connexion internet ?</h3>
+
+<p>Oui, c'est une de ses forces. Les données sont stockées localement sur l'appareil. Le commercial peut saisir ses visites, consulter les fiches clients et enregistrer des bons de commande même sans réseau. La synchronisation se fait automatiquement dès que la connexion revient. Attention cependant : en mode hors ligne, certaines fonctions comme les notifications de stock en temps réel ne sont pas disponibles.</p>
+
+<h3 id="combien-de-temps-dure-le-deploiement-pour-une-equipe-de-10-c">Combien de temps dure le déploiement pour une équipe de 10 commerciaux ?</h3>
+
+<p>Sur 10 appareils, comptez une journée complète pour un déploiement propre : configuration, synchronisation initiale, tests et courte formation. Si vous passez par une MDM pour déployer l'application à distance, vous pouvez réduire ce temps, mais il faut que votre console soit déjà en place.</p>
+
+<h3 id="peut-on-importer-des-donnees-existantes-depuis-un-autre-crm">Peut-on importer des données existantes depuis un autre CRM ?</h3>
+
+<p>Oui, via import CSV ou via API. L'import CSV est accessible sans développement. Pour l'import API depuis un CRM tiers, il faudra une intervention technique. La qualité de l'import dépend beaucoup de la propreté de vos données de départ. Si vos fiches clients ont des doublons ou des champs mal renseignés, nettoyez-les avant d'importer.</p>
+
+<h3 id="le-support-client-est-il-disponible-en-francais">Le support client est-il disponible en français ?</h3>
+
+<p>Oui, et c'est un point positif. Le support par email répond généralement en moins de 24 heures en semaine. Le support téléphonique est disponible sur certains forfaits. Pour les questions urgentes un vendredi après-midi, c'est parfois un peu long. Je le dis clairement : prévoyez de ne pas avoir de déploiement critique en fin de semaine.</p>
+
+<h3 id="fieldforce-sync-est-il-adapte-a-une-equipe-non-technique">FieldForce Sync est-il adapté à une équipe non technique ?</h3>
+
+<p>Pour l'utilisation quotidienne, oui. Pour la configuration initiale, il vaut mieux avoir quelqu'un à l'aise avec les paramètres réseau et les droits d'accès. Si personne dans votre équipe ne peut tenir ce rôle, faites appel au prestataire pour l'installation. Le coût est limité et ça évite beaucoup de frustrations.</p>
+  </div>
+
+  <div class="author-box">
+    <img src="/author-photo.png" alt="Pierre Petit" class="author-avatar">
+    <div class="author-info">
+      <div class="author-label">Auteur</div>
+      <div class="author-name">Pierre Petit</div>
+<div class="author-job">Dirigeant TPE</div><div class="author-bio">Pierre Petit dirige sa TPE depuis 6 ans à Strasbourg, où il accompagne le développement de son équipe avec pragmatisme et bienveillance. Fort de son expérience entrepreneuriale, il privilégie une approche humaine et des solutions concrètes pour faire grandir son entreprise au quotidien.</div>    </div>
+  </div>
+
+  <section class="related-section">
+    <h3 class="related-title">À lire aussi</h3>
+    <div class="related-grid">
+      <a href="/9008-comment-implementer-erp-bizflow-max-dans-votre-entreprise/" class="related-card">
+<div class="related-card-cat">Gestion d'entreprise</div>        <div class="related-card-title">Comment implémenter ERP BizFlow Max dans votre entreprise ?</div>
+<div class="related-card-excerpt">Fixer le budget et valider le projet J'ai vu trop d'entreprises se lancer dans l'implémentation d'un ERP sans cadrage financier sérieux. Erreur fatale . Commencez par définir…</div>      </a>
+      <a href="/5728-comment-integrer-erp-flexmanage-plus-a-votre-systeme-d-information/" class="related-card">
+<div class="related-card-cat">Gestion d'entreprise</div>        <div class="related-card-title">Comment intégrer ERP FlexManage Plus à votre système d'information</div>
+<div class="related-card-excerpt">Pourquoi FlexManage Plus mérite votre attention ? Après 11 ans à gérer ma TPE lyonnaise, je peux vous dire que choisir un ERP n'est jamais simple . FlexManage Plus m'a tapé dans…</div>      </a>
+      <a href="/8604-comment-implementer-erp-bizflow-evolution-dans-une-pme/" class="related-card">
+<div class="related-card-cat">Gestion d'entreprise</div>        <div class="related-card-title">Comment implémenter ERP BizFlow Evolution dans une PME ?</div>
+<div class="related-card-excerpt">Pourquoi l'ERP BizFlow Evolution répond aux besoins spécifiques des PME ? J'ai accompagné plusieurs PME dans leur choix d'ERP ces dernières années. BizFlow Evolution revient…</div>      </a>
+      <a href="/8532-comment-parametrer-les-modules-erp-financepro-integrated/" class="related-card">
+<div class="related-card-cat">Gestion d'entreprise</div>        <div class="related-card-title">Comment paramétrer les modules ERP FinancePro Integrated ?</div>
+<div class="related-card-excerpt">Mon retour d'expérience après 3 ans d'utilisation Je configure des ERP depuis onze ans maintenant. FinancePro Integrated m'a donné du fil à retordre au début. L'interface n'est…</div>      </a>
+    </div>
+  </section>
+  </div><!-- /.article-main -->
+
+  <aside class="article-sidebar">
+    <div class="sidebar-block">
+      <h3 class="sidebar-title">Catégories</h3>
+      <ul class="sidebar-cat-list">
+        <li class="sidebar-cat-item">
+          <a href="/blog/" class="sidebar-cat-link">
+            <span>Tous les articles</span>
+            <span class="sidebar-cat-count">196</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-gestion-d-entreprise/" class="sidebar-cat-link active">
+            <span>Gestion d'entreprise</span>
+            <span class="sidebar-cat-count">43</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-salarie/" class="sidebar-cat-link">
+            <span>Salarié</span>
+            <span class="sidebar-cat-count">41</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-ressources-humaines/" class="sidebar-cat-link">
+            <span>Ressources Humaines</span>
+            <span class="sidebar-cat-count">40</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-creation-entreprise/" class="sidebar-cat-link">
+            <span>Création entreprise</span>
+            <span class="sidebar-cat-count">23</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-comptabilite/" class="sidebar-cat-link">
+            <span>Comptabilité</span>
+            <span class="sidebar-cat-count">12</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-entreprenariat/" class="sidebar-cat-link">
+            <span>Entreprenariat</span>
+            <span class="sidebar-cat-count">12</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-entrepreneuriat/" class="sidebar-cat-link">
+            <span>Entrepreneuriat</span>
+            <span class="sidebar-cat-count">10</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-finance-comptabilite/" class="sidebar-cat-link">
+            <span>Finance & Comptabilité</span>
+            <span class="sidebar-cat-count">8</span>
+          </a>
+        </li>
+        <li class="sidebar-cat-item">
+          <a href="/categorie-creation-d-entreprise/" class="sidebar-cat-link">
+            <span>Création d'entreprise</span>
+            <span class="sidebar-cat-count">7</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-block">
+      <h3 class="sidebar-title">Articles récents</h3>
+      <ul class="sidebar-recent-list">
+        <li class="sidebar-recent-item">
+          <a href="/8166-logiciel-crm-businesspro-x4-avis-fonctionnalites-et-tarifs/" class="sidebar-recent-link">
+<div class="sidebar-recent-cat">Gestion d'entreprise</div>            Logiciel CRM BusinessPro X4 : avis, fonctionnalités et tarifs
+          </a>
+        </li>
+        <li class="sidebar-recent-item">
+          <a href="/1082-lefoyerentrepreneurial-tarifs-et-services-de-coworking/" class="sidebar-recent-link">
+<div class="sidebar-recent-cat">Entrepreneuriat</div>            LeFoyerEntrepreneurial : tarifs et services de coworking
+          </a>
+        </li>
+        <li class="sidebar-recent-item">
+          <a href="/9457-la-cantine-x-la-french-tech-nantes-avis-sur-cet-espace-de-coworking/" class="sidebar-recent-link">
+<div class="sidebar-recent-cat">Entrepreneuriat</div>            La Cantine x La French Tech Nantes : avis sur cet espace de coworking
+          </a>
+        </li>
+        <li class="sidebar-recent-item">
+          <a href="/9049-integration-erp-flexibiz-avec-la-comptabilite-mode-d-emploi/" class="sidebar-recent-link">
+<div class="sidebar-recent-cat">Gestion d'entreprise</div>            Intégration ERP FlexiBiz avec la comptabilité : mode d'emploi
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+</article>
+</div>
+
+<style>
+.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .footer-logo{font-family:'',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
+.footer-brand .footer-logo span{color:var(--accent2)}
+.footer-brand p{font-size:15px;color:rgba(255,255,255,.45);line-height:1.7;max-width:380px;margin:0;padding:0}
+.footer-socials{display:flex;gap:12px;margin-top:20px}
+.footer-socials a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.55);transition:background .15s,color .15s}
+.footer-socials a:hover{background:rgba(255,255,255,.13);color:#fff}
+.footer-socials svg{width:19px;height:19px;fill:currentColor;display:block}
+/* Anciennement .footer-col h4 — passé en div pour respecter la hiérarchie Hn (le footer ne doit pas introduire de Hn) */
+.footer-col .footer-col-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
+.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-brand{grid-column:1/-1}
+}
+</style>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" style="display:block;margin-bottom:12px"><img src="/logo.png" alt="editions-dp.com" style="height:36px;width:auto;object-fit:contain"></a>
+        <p>Éditions des Pros est un média dédié aux entrepreneurs, indépendants et dirigeants. Retrouvez des guides, actualités, avis et conseils pratiques pour développer votre activité et prendre les bonnes décisions professionnelles.</p>
+        <div class="footer-socials">
+<a href="https://www.facebook.com/editionsdespros/" target="_blank" rel="noopener noreferrer nofollow" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13 22v-8h2.7l.4-3.1H13V8.9c0-.9.3-1.5 1.6-1.5H16V4.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.4H7.2V14H9.9v8H13z"/></svg></a><a href="https://www.youtube.com/@editionsdespros" target="_blank" rel="noopener noreferrer nofollow" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.8-1.8C19.4 5.1 12 5.1 12 5.1s-7.4 0-8.8.4a2.5 2.5 0 0 0-1.8 1.8C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.8 1.8c1.4.4 8.8.4 8.8.4s7.4 0 8.8-.4a2.5 2.5 0 0 0 1.8-1.8C23 15.2 23 12 23 12zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg></a>        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Navigation</div>
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        <a href="/avis">Avis</a>
+        <a href="/blog/">Blog</a>
+        <a href="/plan-du-site">Plan du site</a>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/politique-confidentialite">Confidentialité</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">À propos</div>
+        <a href="/a-propos/">À propos</a>
+        <a href="/contact">Nous contacter</a>
+        <a href="/a-propos/">Notre équipe</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        © 2026 editions-dp.com — Données actualisées le 29 juin 2026
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button type="button"
+        class="scroll-top-btn"
+        id="scroll-top-btn"
+        aria-label="Remonter en haut de la page"
+        title="Remonter en haut">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2.5"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+</button>
+
+<style>
+.scroll-top-btn{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:9999;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--ink, #0F1419);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .15s;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+  padding:0;
+  font-family:inherit;
+}
+.scroll-top-btn.visible{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.scroll-top-btn:hover{
+  background:var(--accent, #C9A961);
+}
+.scroll-top-btn:focus-visible{
+  outline:2px solid var(--accent, #C9A961);
+  outline-offset:3px;
+}
+@media (max-width:600px){
+  .scroll-top-btn{ bottom:16px; right:16px; width:42px; height:42px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .scroll-top-btn{ transition:opacity .2s, visibility .2s; }
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  var btn = document.getElementById('scroll-top-btn');
+  if (!btn) return;
+
+  var THRESHOLD = 400; // px de scroll avant apparition
+  var ticking = false;
+
+  function update(){
+    if (window.scrollY > THRESHOLD) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+    ticking = false;
+  }
+
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  btn.addEventListener('click', function(){
+    var prefersReduced = window.matchMedia
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  });
+
+  // Check immédiat (au cas où la page est rechargée déjà scrollée)
+  update();
+})();
+</script>
+</body>
+</html>
