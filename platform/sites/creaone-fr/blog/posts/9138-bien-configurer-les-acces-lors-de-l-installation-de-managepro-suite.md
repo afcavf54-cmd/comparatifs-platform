@@ -4,15 +4,21 @@ slug: 9138-bien-configurer-les-acces-lors-de-l-installation-de-managepro-suite
 date: '2026-06-29T19:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Installation ManagePro Suite : quels accès préparer ?'
-meta_description: Configurez correctement les accès ManagePro Suite dès l'installation pour éviter les erreurs de droits, les corrections longues et les profils mal attribués dans…
+meta_description: Configurez correctement les accès ManagePro Suite dès l'installation
+  pour éviter les erreurs de droits, les corrections longues et les profils mal attribués
+  dans…
 min_words: 910
 status: published
 featured_image: /blog/9138-bien-configurer-les-acces-lors-de-l-installation-de-managepro-suite.jpg
 link_anchors:
 - text: l'installation de l'ERP intégré ManagePro Suite
   max: 5
+related_posts:
+- 4072-comment-leadflow-automation-route-vos-prospects-une-fois-configure
+- 7255-le-surcout-de-salesforce-premium-face-a-un-crm-basique-est-il-justifie
+- 8165-reussir-la-mise-en-place-du-crm-powerlink-advance
+- 8198-reussir-la-configuration-de-l-erp-dynabiz-pro
 ---
-
 <p>Quand j'ai déployé ManagePro Suite pour la première fois dans notre structure, j'ai fait une erreur que beaucoup font : j'ai configuré les accès à la dernière minute, presque en passant. Résultat ? Trois semaines de corrections, des droits mal attribués, et une comptable qui avait accès aux modules RH sans que personne ne l'ait voulu. Pas dramatique, mais clairement évitable.</p>
 
 <p>Je vous explique comment faire ça proprement, sans prise de tête, même si votre équipe n'est pas technique.</p>
