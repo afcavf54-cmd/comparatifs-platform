@@ -4,15 +4,20 @@ slug: 5440-duree-de-la-formation-lean-management-sigma7-decortiquee
 date: '2026-06-29T18:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation lean management Sigma7 : quelle durée ?'
-meta_description: 'Durée de la formation lean management Sigma7 : décryptage complet des formats, niveaux et temps réels pour choisir la formule adaptée à votre organisation.'
+meta_description: 'Durée de la formation lean management Sigma7 : décryptage complet
+  des formats, niveaux et temps réels pour choisir la formule adaptée à votre organisation.'
 min_words: 980
 status: published
 featured_image: /blog/5440-duree-de-la-formation-lean-management-sigma7-decortiquee.jpg
 link_anchors:
 - text: la durée de la formation lean management Sigma7
   max: 5
+related_posts:
+- 9076-pourquoi-utiliser-une-matrice-9-box-en-ressources-humaines
+- 3780-pourquoi-le-talent-management-est-devenu-essentiel-en-rh
+- 3838-comment-mettre-en-place-un-logiciel-gepp-dans-votre-entreprise
+- 6596-comment-creer-une-meilleure-experience-collaborateur
 ---
-
 <p>Je vais être honnête : quand j'ai commencé à chercher une formation en lean management pour moi et potentiellement un de mes collaborateurs, j'étais complètement perdue face aux durées affichées. Six jours, douze jours, cent heures en e-learning... chaque organisme présente ça différemment, et impossible de comparer correctement. Alors j'ai creusé le sujet, notamment autour de <strong>Sigma7</strong>, et je vais vous dire ce que j'en ai compris concrètement.</p>
 
 <h2>Ce que "durée de formation" veut vraiment dire chez Sigma7</h2>
