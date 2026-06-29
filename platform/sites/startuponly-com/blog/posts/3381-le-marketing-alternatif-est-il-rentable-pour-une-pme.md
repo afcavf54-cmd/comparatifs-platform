@@ -4,15 +4,21 @@ slug: 3381-le-marketing-alternatif-est-il-rentable-pour-une-pme
 date: '2026-06-29T06:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Marketing alternatif : un bon rapport coût-impact ?'
-meta_description: 'Marketing alternatif rentable pour une PME : retour d''expérience concret d''un fondateur bordelais sur les coûts réels, les pièges et les résultats obtenus sans…'
+meta_description: 'Marketing alternatif rentable pour une PME : retour d''expérience
+  concret d''un fondateur bordelais sur les coûts réels, les pièges et les résultats
+  obtenus sans…'
 min_words: 930
 status: published
 featured_image: /blog/3381-le-marketing-alternatif-est-il-rentable-pour-une-pme.jpg
 link_anchors:
 - text: le logiciel Sage en Ille-et-Vilaine
   max: 5
+related_posts:
+- 8740-a-qui-se-destine-la-facture-en-ligne-simplifie-ta-compta
+- 8215-combien-coute-l-installation-du-logiciel-ebp-en-local
+- 7289-premiers-pas-dans-le-logiciel-devis-et-facture-quotepro-builder
+- 4559-le-gain-de-temps-reel-avec-la-generation-automatique-quotepro-smart
 ---
-
 <p>J'ai lancé ma boîte à Bordeaux il y a trois ans. Budget serré, équipe réduite, et un vrai besoin de faire parler de nous sans claquer 2000€/mois en pub Google. Forcément, j'ai commencé à creuser le sujet du marketing alternatif. Pas par idéologie, par nécessité.</p>
 
 <p>Et la question que tout fondateur de PME finit par se poser : est-ce que ça rapporte vraiment ? Ou c'est juste une façon sympa de se donner bonne conscience en évitant les canaux classiques ?</p>
