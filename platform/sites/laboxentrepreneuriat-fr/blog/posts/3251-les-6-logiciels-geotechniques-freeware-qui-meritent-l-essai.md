@@ -4,15 +4,21 @@ slug: 3251-les-6-logiciels-geotechniques-freeware-qui-meritent-l-essai
 date: '2026-06-29T08:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Logiciel géotechnique freeware : 6 outils gratuits à connaître'
-meta_description: Découvrez 6 logiciels géotechniques freeware réellement gratuits et testés sur des projets réels, pour travailler sérieusement sans budget logiciel conséquent.
+meta_description: Découvrez 6 logiciels géotechniques freeware réellement gratuits
+  et testés sur des projets réels, pour travailler sérieusement sans budget logiciel
+  conséquent.
 min_words: 950
 status: published
 featured_image: /blog/3251-les-6-logiciels-geotechniques-freeware-qui-meritent-l-essai.jpg
 link_anchors:
 - text: un logiciel géotechnique freeware
   max: 5
+related_posts:
+- 2981-les-6-atouts-du-crm-mobile-fieldforce-connect-sous-android
+- 3948-le-vrai-cout-d-implementation-du-systeme-bizcore-advanced
+- 6182-les-retours-utilisateurs-sur-le-logiciel-crm-salestrack-360
+- 7015-les-7-piliers-de-l-erp-sap
 ---
-
 <p>Gérer un bureau d'études géotechniques sans budget logiciel conséquent, c'est le quotidien de beaucoup de TPE et d'indépendants dans le secteur. J'ai accompagné plusieurs structures dans ce cas, et la question revient toujours : est-ce qu'on peut vraiment travailler sérieusement avec des outils gratuits ? Ma réponse, après avoir testé une bonne dizaine de solutions freeware sur des projets réels, c'est oui. Pas pour tout, pas dans tous les contextes. Mais pour une grande partie des besoins courants, il existe des alternatives solides.</p>
 
 <p>Avant d'entrer dans le détail, une précision utile : quand je parle de freeware, je parle d'outils réellement gratuits, sans limitation de durée ni de fonctionnalités cachées derrière un paywall. Pas des trials 30 jours déguisés en "version gratuite". Ce tour d'horizon couvre <strong>les programmes et logiciels géotechniques gratuits</strong> que j'ai effectivement utilisés ou fait tester à des équipes terrain.</p>
