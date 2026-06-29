@@ -4,15 +4,21 @@ slug: 5066-projet-erp-sap-les-pieges-a-eviter
 date: '2026-06-29T12:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'ERP SAP : les erreurs classiques de déploiement'
-meta_description: 'Évitez les erreurs qui font dérailler un projet ERP SAP : cadrage bâclé, gestion du changement négligée et bien d''autres pièges concrets décryptés par un expert…'
+meta_description: 'Évitez les erreurs qui font dérailler un projet ERP SAP : cadrage
+  bâclé, gestion du changement négligée et bien d''autres pièges concrets décryptés
+  par un expert…'
 min_words: 920
 status: published
 featured_image: /blog/5066-projet-erp-sap-les-pieges-a-eviter.jpg
 link_anchors:
 - text: l'ERP (Enterprise Resource Planning) SAP
   max: 5
+related_posts:
+- 8731-preparer-ses-flux-avant-d-implementer-smartchain-360
+- 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
+- 9219-5-points-a-verifier-sur-le-tarif-mensuel-de-cloudlead-manager
+- 6768-a-qui-se-prete-le-crm-salesflow-evolution
 ---
-
 <p>Neuf ans à bosser sur des projets de transformation comptable, j'en ai vu des implémentations SAP partir en vrille. Certaines dès les premières semaines. D'autres six mois après le go-live, quand tout le monde pensait que c'était gagné.</p>
 
 <p>Un projet ERP SAP, c'est une machine complexe. Pas parce que la technologie est inaccessible, mais parce que les erreurs viennent rarement de là où on les attend. J'ai compilé ici les pièges que j'ai observés, vécus, ou que mes collègues m'ont racontés autour d'un café. Rien de théorique.</p>
