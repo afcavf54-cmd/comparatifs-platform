@@ -4,15 +4,21 @@ slug: 7159-duree-de-la-formation-management-agilemaster-certifiante
 date: '2026-06-29T06:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation management AgileMaster certifiante : quelle durée ?'
-meta_description: Découvrez la durée réelle de la formation management AgileMaster certifiante, les examens à passer et comment financer votre parcours via le CPF en tant que…
+meta_description: Découvrez la durée réelle de la formation management AgileMaster
+  certifiante, les examens à passer et comment financer votre parcours via le CPF
+  en tant que…
 min_words: 990
 status: published
 featured_image: /blog/7159-duree-de-la-formation-management-agilemaster-certifiante.jpg
 link_anchors:
 - text: la durée de la formation management certifiante AgileMaster
   max: 5
+related_posts:
+- 6152-cartographie-des-competences-quelles-etapes-suivre
+- 9076-pourquoi-utiliser-une-matrice-9-box-en-ressources-humaines
+- 3838-comment-mettre-en-place-un-logiciel-gepp-dans-votre-entreprise
+- 2651-quels-sont-les-avantages-du-succession-planning-en-entreprise
 ---
-
 <p>J'ai mis du temps avant de vraiment comprendre ce que "formation certifiante en management agile" voulait dire concrètement. Est-ce que c'est une certification valable ? Est-ce que ça va m'immobiliser une semaine ? Qui va gérer l'agence pendant ce temps-là ? Autant de questions que je me suis posées avant de me lancer, et que j'entends régulièrement quand j'en parle à d'autres dirigeants de petites structures.</p>
 
 <p>Voilà ce que j'ai appris, à force de comparer, de tester, et parfois de me tromper.</p>
