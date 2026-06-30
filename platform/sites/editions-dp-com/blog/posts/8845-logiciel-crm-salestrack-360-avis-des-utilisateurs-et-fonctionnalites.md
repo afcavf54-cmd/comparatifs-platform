@@ -4,15 +4,21 @@ slug: 8845-logiciel-crm-salestrack-360-avis-des-utilisateurs-et-fonctionnalites
 date: '2026-06-30T07:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'CRM SalesTrack 360 : avis utilisateurs et test'
-meta_description: 'Découvrez l''avis complet sur SalesTrack 360 : fonctionnalités CRM, automatisation des relances, reporting et limites constatées par un dirigeant après plusieurs…'
+meta_description: 'Découvrez l''avis complet sur SalesTrack 360 : fonctionnalités
+  CRM, automatisation des relances, reporting et limites constatées par un dirigeant
+  après plusieurs…'
 min_words: 970
 status: published
 featured_image: /blog/8845-logiciel-crm-salestrack-360-avis-des-utilisateurs-et-fonctionnalites.jpg
 link_anchors:
 - text: les avis utilisateurs sur le logiciel CRM SalesTrack
   max: 360
+related_posts:
+- 2220-avis-crm-salestrack-premium-edition-fonctionnalites-et-retour-d-experience
+- 4005-comparatif-crm-salesconnect-pro-vs-marketwise-lequel-choisir
+- 8532-comment-parametrer-les-modules-erp-financepro-integrated
+- 6020-crm-saas-cloudlead-manager-quel-est-le-tarif-mensuel
 ---
-
 <p>J'ai testé pas mal de CRM ces dernières années. On en a changé deux fois depuis qu'on a dépassé les 80 salariés. SalesTrack 360, j'y suis arrivé un peu par hasard, via une recommandation d'un autre dirigeant sur un forum local. Je vais vous dire ce que j'en pense vraiment, sans filtre.</p>
 
 <p>Spoiler : c'est pas parfait. Mais pour une structure comme la nôtre, ça tourne.</p>
