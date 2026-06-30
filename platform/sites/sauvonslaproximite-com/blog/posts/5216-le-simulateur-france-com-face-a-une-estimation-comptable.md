@@ -12,7 +12,8 @@ status: published
 link_anchors:
 - text: le simulateur de revenu indépendant de Création-Entreprise-France.com
   max: 5
-related_posts: []
+related_posts:
+- 5395-business-architect-tool-face-aux-cursus-strategie-classiques
 featured_image: /blog/5216-le-simulateur-france-com-face-a-une-estimation-comptable.jpg
 ---
 <h2>Simulateur France.com : un outil pratique mais limité pour vos projections</h2>
