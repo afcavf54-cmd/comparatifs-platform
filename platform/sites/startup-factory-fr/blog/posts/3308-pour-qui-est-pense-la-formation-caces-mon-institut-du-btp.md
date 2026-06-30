@@ -14,6 +14,7 @@ link_anchors:
   max: 5
 related_posts:
 - 6343-le-fonctionnement-du-cdi-interimaire-avantages-et-inconvenients
+- 3313-pour-qui-est-fait-la-formation-data-driven-decision-making
 ---
 <p>J'ai découvert Mon-Institut-du-BTP un peu par hasard, quand on cherchait une solution rapide pour former deux de nos salariés sur des engins de chantier. Et franchement, je ne m'attendais pas à ce que ce soit aussi bien ciblé. Le CACES, c'est pas une formation glamour, mais c'est une obligation légale dans pas mal de secteurs, et mal choisir son organisme, ça coûte du temps et de l'argent.</p>
 

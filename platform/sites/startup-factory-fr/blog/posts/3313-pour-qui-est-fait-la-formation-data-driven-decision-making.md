@@ -4,15 +4,18 @@ slug: 3313-pour-qui-est-fait-la-formation-data-driven-decision-making
 date: '2026-06-30T12:00:00+02:00'
 categorie: Salarié
 meta_title: 'Formation data driven decision making : pour quel profil ?'
-meta_description: Découvrez pour qui est vraiment faite la formation data driven decision making et si elle peut vous aider à prendre de meilleures décisions grâce aux données.
+meta_description: Découvrez pour qui est vraiment faite la formation data driven decision
+  making et si elle peut vous aider à prendre de meilleures décisions grâce aux données.
 min_words: 930
 status: published
 featured_image: /blog/3313-pour-qui-est-fait-la-formation-data-driven-decision-making.jpg
 link_anchors:
 - text: la formation certifiante Data Driven Decision Making
   max: 5
+related_posts:
+- 3308-pour-qui-est-pense-la-formation-caces-mon-institut-du-btp
+- 6343-le-fonctionnement-du-cdi-interimaire-avantages-et-inconvenients
 ---
-
 <p>Tu bosses dans une boîte, tu reçois des tableaux Excel tous les lundis matin, et personne ne sait vraiment quoi en faire. Ça te parle ? Moi, au début de ma vie entrepreneuriale, j'étais exactement dans cette situation. On avait des données partout, et on prenait nos décisions... à l'intuition. Spoiler : c'est une mauvaise idée.</p>
 
 <p>La formation <strong>data driven decision making</strong>, c'est précisément pour ça. Mais la vraie question, c'est : est-ce que c'est fait pour toi ? Parce que non, ce n'est pas une formation universelle. Et si tu y vas sans savoir ce que tu cherches, tu risques de perdre ton temps et ton argent.</p>
