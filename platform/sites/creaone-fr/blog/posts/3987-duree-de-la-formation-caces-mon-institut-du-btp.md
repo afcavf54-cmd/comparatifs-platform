@@ -4,15 +4,18 @@ slug: 3987-duree-de-la-formation-caces-mon-institut-du-btp
 date: '2026-06-30T17:00:00+02:00'
 categorie: Salarié
 meta_title: 'Formation CACES Mon-Institut-du-BTP : combien de temps ?'
-meta_description: 'Durée de formation CACES : de 2 à 5 jours selon la catégorie d''engin. Découvrez comment planifier les absences et maîtriser votre budget formation.'
+meta_description: 'Durée de formation CACES : de 2 à 5 jours selon la catégorie d''engin.
+  Découvrez comment planifier les absences et maîtriser votre budget formation.'
 min_words: 920
 status: published
 featured_image: /blog/3987-duree-de-la-formation-caces-mon-institut-du-btp.jpg
 link_anchors:
 - text: la formation CACES de Mon-Institut-du-BTP
   max: 5
+related_posts:
+- 7625-quel-budget-pour-une-formation-data-driven-decision-making
+- 8703-avantages-et-inconvenients-du-cdi-interimaire-erreurs-a-eviter
 ---
-
 <p>Quand on parle de CACES, la première question qui revient, c'est toujours la même : combien de temps ça prend ? Et c'est une question légitime. En tant que responsable comptable, j'ai régulièrement à gérer les absences de salariés partis en formation. L'organisation, les remplacements, les coûts indirects... tout ça compte. Alors oui, la durée d'une formation CACES, c'est un élément concret qui influe directement sur le planning d'une équipe et sur le budget formation.</p>
 
 <p>Je vais vous donner une vision claire de ce que représente vraiment ce type de formation, sans langue de bois.</p>
