@@ -4,15 +4,21 @@ slug: 4020-duree-et-rythme-de-la-formation-business-plan-frenchy-business-pro
 date: '2026-06-30T10:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Formation business plan Frenchy-Business-Pro : combien de temps ?'
-meta_description: 'Découvrez la durée réelle et le rythme de la formation business plan Frenchy-Business-Pro : 25 à 30h de contenu dense, flexible, idéale pour les actifs en…'
+meta_description: 'Découvrez la durée réelle et le rythme de la formation business
+  plan Frenchy-Business-Pro : 25 à 30h de contenu dense, flexible, idéale pour les
+  actifs en…'
 min_words: 910
 status: published
 featured_image: /blog/4020-duree-et-rythme-de-la-formation-business-plan-frenchy-business-pro.jpg
 link_anchors:
 - text: la formation business plan Frenchy-Business-Pro
   max: 5
+related_posts:
+- 3919-a-qui-profite-financepro-smart-pour-creer-un-business-plan
+- 8528-a-quel-public-s-adresse-planexpert-pour-faire-un-business-plan
+- 1665-5-raisons-de-tester-le-generateur-de-business-plan-smartstart-generator
+- 5212-rediger-plus-vite-avec-le-template-de-business-plan-startupkit-premium
 ---
-
 <p>J'ai testé pas mal de formations à distance ces dernières années. Des courtes, des longues, des bien foutues, des vraiment pas adaptées à quelqu'un qui travaille en parallèle. La formation business plan de Frenchy-Business-Pro, je l'ai regardée de près il y a quelques mois, et honnêtement, le premier truc qui m'a surpris, c'est la façon dont elle est structurée dans le temps.</p>
 
 <p>Si vous cherchez à créer votre entreprise tout en gardant une activité professionnelle, la question du rythme de formation n'est pas anecdotique. C'est souvent ce qui fait que vous allez au bout, ou pas.</p>
