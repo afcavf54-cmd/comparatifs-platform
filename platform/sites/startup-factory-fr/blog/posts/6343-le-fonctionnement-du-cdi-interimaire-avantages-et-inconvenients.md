@@ -12,7 +12,8 @@ featured_image: /blog/6343-le-fonctionnement-du-cdi-interimaire-avantages-et-inc
 link_anchors:
 - text: les avantages et inconvénients du CDI intérimaire
   max: 5
-related_posts: []
+related_posts:
+- 3308-pour-qui-est-pense-la-formation-caces-mon-institut-du-btp
 ---
 <p>Le CDI intérimaire, ça fait pas vraiment rêver au premier abord. CDI + intérim dans la même phrase, beaucoup de gens trouvent ça contradictoire. Pourtant, depuis que ce contrat existe, j'ai vu des collègues et des salariés dans mon réseau l'utiliser vraiment à leur avantage. Alors j'ai creusé le sujet. Voilà ce que j'en pense, sans filtre.</p>
 
