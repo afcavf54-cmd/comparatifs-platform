@@ -4,15 +4,21 @@ slug: 7122-sigma7-face-aux-formations-lean-management-classiques-sur-la-duree
 date: '2026-06-30T10:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: Formation lean management Sigma7 vs cursus long en présentiel
-meta_description: 'Sigma7 ou formation lean management classique : quel format tient vraiment dans la durée pour ancrer les pratiques au quotidien dans votre équipe ?'
+meta_description: 'Sigma7 ou formation lean management classique : quel format tient
+  vraiment dans la durée pour ancrer les pratiques au quotidien dans votre équipe
+  ?'
 min_words: 980
 status: published
 featured_image: /blog/7122-sigma7-face-aux-formations-lean-management-classiques-sur-la-duree.jpg
 link_anchors:
 - text: la durée de la formation lean management Sigma7
   max: 5
+related_posts:
+- 8514-bracelet-electronique-au-travail-reglementation-et-respect-de-la-vie-privee
+- 6596-comment-realiser-une-cartographie-des-competences-efficace
+- 9270-coo-vs-ceo-quelles-differences-entre-direction-operationnelle-et-direction-generale
+- 3951-qu-est-ce-que-la-definition-de-la-gestion-des-talents
 ---
-
 <p>Ça fait maintenant deux ans que je gère une équipe de plus en plus grande à Marseille. Et deux ans que je me pose la question du lean management. Pas par effet de mode, plutôt parce que j'ai des tâches qui se répètent, des process qui se dupliquent, et des salariés qui perdent du temps sur des choses qu'on aurait pu automatiser ou standardiser depuis longtemps.</p>
 
 <p>Alors j'ai regardé ce qui existe. Les formations classiques, les nouveaux outils comme Sigma7. Et franchement, la comparaison n'est pas aussi simple que ce que j'imaginais au départ.</p>
