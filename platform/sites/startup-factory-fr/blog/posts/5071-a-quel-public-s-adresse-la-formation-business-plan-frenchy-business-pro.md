@@ -3,16 +3,23 @@ title: À quel public s'adresse la formation business plan Frenchy-Business-Pro
 slug: 5071-a-quel-public-s-adresse-la-formation-business-plan-frenchy-business-pro
 date: '2026-06-30T18:00:00+02:00'
 categorie: Création d'entreprise
-meta_title: 'Formation business plan Frenchy-Business-Pro : pour quel porteur de projet ?'
-meta_description: La formation business plan Frenchy-Business-Pro s'adresse aux futurs indépendants, salariés en reconversion et créateurs sans bagage comptable qui veulent des…
+meta_title: 'Formation business plan Frenchy-Business-Pro : pour quel porteur de projet
+  ?'
+meta_description: La formation business plan Frenchy-Business-Pro s'adresse aux futurs
+  indépendants, salariés en reconversion et créateurs sans bagage comptable qui veulent
+  des…
 min_words: 910
 status: published
 featured_image: /blog/5071-a-quel-public-s-adresse-la-formation-business-plan-frenchy-business-pro.jpg
 link_anchors:
 - text: la formation business plan Frenchy-Business-Pro
   max: 5
+related_posts:
+- 6176-business-plan-financepro-smart-les-pieges-des-debutants
+- 2966-pour-qui-est-fait-le-template-de-business-plan-startupkit-premium
+- 9108-pour-qui-est-pense-le-generateur-de-business-plan-smartstart-generator
+- 6367-business-plan-planexpert-les-pieges-frequents
 ---
-
 <p>Je vais être honnête : quand j'ai découvert la formation business plan de Frenchy-Business-Pro, j'avais un peu peur de tomber sur un truc générique, du genre "voici comment remplir un Excel avec vos charges fixes". Spoiler : c'est pas du tout ça.</p>
 
 <p>Après avoir accompagné plusieurs personnes de mon entourage dans leur projet de création d'entreprise, j'ai commencé à chercher des ressources concrètes à leur recommander. Pas des théories. Des outils qui font gagner du temps, qui automatisent les calculs chiants, qui donnent une vraie vision. Et là, Frenchy-Business-Pro m'a surpris.</p>
