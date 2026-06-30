@@ -4,15 +4,21 @@ slug: 4743-duree-de-la-formation-management-leadership-academy-pro
 date: '2026-06-30T19:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation management Leadership Academy Pro : quelle durée ?'
-meta_description: Découvrez la durée de la formation management Leadership Academy Pro et comment elle s'adapte aux agendas chargés des dirigeants de TPE qui veulent progresser vite.
+meta_description: Découvrez la durée de la formation management Leadership Academy
+  Pro et comment elle s'adapte aux agendas chargés des dirigeants de TPE qui veulent
+  progresser vite.
 min_words: 1000
 status: published
 featured_image: /blog/4743-duree-de-la-formation-management-leadership-academy-pro.jpg
 link_anchors:
 - text: la durée de la formation management Leadership Academy Pro
   max: 5
+related_posts:
+- 2321-comment-definir-une-strategie-efficace-de-gestion-des-talents
+- 8603-la-formation-management-d-equipe-leadpro-certified-sans-filtre
+- 2651-quels-sont-les-avantages-du-succession-planning-en-entreprise
+- 9076-pourquoi-utiliser-une-matrice-9-box-en-ressources-humaines
 ---
-
 <p>Quand on gère une agence de six personnes, la question du management revient souvent. Pas parce qu'on cherche à devenir un grand groupe, mais parce qu'on réalise rapidement que les compétences techniques ne suffisent pas à faire tourner une équipe. J'ai moi-même passé plusieurs années à improviser, à apprendre sur le tas, avant de me pencher sérieusement sur des formations structurées. Et la première chose que je regarde avant de m'engager ? La durée.</p>
 
 <p>Pas par flemme. Parce que le temps d'une dirigeante de TPE n'est tout simplement pas extensible.</p>
