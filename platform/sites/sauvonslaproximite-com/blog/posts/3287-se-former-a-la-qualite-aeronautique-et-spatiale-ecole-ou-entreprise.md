@@ -3,16 +3,23 @@ title: 'Se former à la qualité aéronautique et spatiale : école ou entrepris
 slug: 3287-se-former-a-la-qualite-aeronautique-et-spatiale-ecole-ou-entreprise
 date: '2026-06-30T17:00:00+02:00'
 categorie: Salarié
-meta_title: 'Formation inspecteur qualité aéronautique : en centre ou sur le terrain ?'
-meta_description: 'Formation qualité aéronautique et spatiale : école ou entreprise, quelle voie choisir pour monter en compétences efficacement et sans perdre de temps ni d''argent ?'
+meta_title: 'Formation inspecteur qualité aéronautique : en centre ou sur le terrain
+  ?'
+meta_description: 'Formation qualité aéronautique et spatiale : école ou entreprise,
+  quelle voie choisir pour monter en compétences efficacement et sans perdre de temps
+  ni d''argent ?'
 min_words: 960
 status: published
 featured_image: /blog/3287-se-former-a-la-qualite-aeronautique-et-spatiale-ecole-ou-entreprise.jpg
 link_anchors:
 - text: la formation d'inspecteur qualité aéronautique et spatiale
   max: 5
+related_posts:
+- 3098-repondre-a-ses-mails-professionnels-pendant-un-arret-maladie-ce-qu-il-faut-savoir
+- 3837-radiation-pole-emploi-combien-d-avertissements-avant-une-sanction
+- 9279-accord-implicite-de-rupture-conventionnelle-ce-que-prevoit-reellement-la-loi
+- 2942-demission-et-anciennete-quels-avantages-conservez-vous-apres-votre-depart
 ---
-
 <p>Vingt ans dans la comptabilité, et j'ai quand même appris un truc il y a quelques mois : la façon dont on se forme change tout. Pas le contenu, non. La façon. Et cette réflexion, je l'ai eue en discutant avec une responsable RH dans une PME de 40 personnes qui cherchait à structurer les montées en compétences de son équipe qualité. Elle m'a posé une question simple : école ou entreprise ? Pour la qualité aéronautique et spatiale, la réponse est loin d'être évidente.</p>
 
 <p>Je ne suis pas ingénieure qualité. Mais j'ai travaillé avec suffisamment d'équipes techniques pour voir ce qui fonctionne, ce qui coûte trop cher, et ce qui ne sert à rien. Et sur ce sujet, j'ai une opinion.</p>
