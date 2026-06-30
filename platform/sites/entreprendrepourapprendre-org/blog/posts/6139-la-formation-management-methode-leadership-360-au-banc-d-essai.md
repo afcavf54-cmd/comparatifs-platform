@@ -4,15 +4,21 @@ slug: 6139-la-formation-management-methode-leadership-360-au-banc-d-essai
 date: '2026-06-30T07:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation management méthode Leadership 360 : faut-il y aller ?'
-meta_description: 'Formation management Leadership 360 : retour d''expérience sincère d''une dirigeante de TPE sur une méthode qui promet de transformer le leadership au quotidien.'
+meta_description: 'Formation management Leadership 360 : retour d''expérience sincère
+  d''une dirigeante de TPE sur une méthode qui promet de transformer le leadership
+  au quotidien.'
 min_words: 990
 status: published
 featured_image: /blog/6139-la-formation-management-methode-leadership-360-au-banc-d-essai.jpg
 link_anchors:
 - text: la formation management selon la méthode Leadership 360
   max: 5
+related_posts:
+- 3755-pourquoi-la-retention-des-talents-est-elle-strategique
+- 3780-pourquoi-le-talent-management-est-devenu-essentiel-en-rh
+- 3838-comment-mettre-en-place-un-logiciel-gepp-dans-votre-entreprise
+- 6596-comment-creer-une-meilleure-experience-collaborateur
 ---
-
 <p>Je vais être honnête : quand on m'a parlé pour la première fois de la méthode Leadership 360, j'ai levé les yeux au ciel. Encore une formation management qui promet de transformer vos équipes en quelques jours, avec un beau certificat à la clé et des concepts qui s'évaporent dès le lundi matin. J'en avais déjà testé deux ou trois dans le genre. Résultat : des post-its sur les murs, une équipe qui sourit poliment, et aucun changement concret dans le quotidien.</p>
 
 <p>Mais là, quelque chose m'a poussée à creuser. Peut-être parce que j'en avais vraiment besoin.</p>
