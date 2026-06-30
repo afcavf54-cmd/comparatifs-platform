@@ -4,15 +4,20 @@ slug: 4022-se-former-a-l-inbound-hubgrow-academy-ou-seul
 date: '2026-06-30T10:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: Formation inbound marketing HubGrow Academy vs autodidacte
-meta_description: 'Inbound marketing en solo ou avec HubGrow Academy : découvrez ce que révèle cette expérience concrète pour choisir la bonne méthode selon votre profil.'
+meta_description: 'Inbound marketing en solo ou avec HubGrow Academy : découvrez ce
+  que révèle cette expérience concrète pour choisir la bonne méthode selon votre profil.'
 min_words: 950
 status: published
 featured_image: /blog/4022-se-former-a-l-inbound-hubgrow-academy-ou-seul.jpg
 link_anchors:
 - text: la formation inbound marketing HubGrow Academy
   max: 5
+related_posts:
+- 1981-se-former-a-google-ads-vite-une-formation-ou-seul
+- 6115-la-cantine-nantes-face-aux-autres-coworkings-de-la-ville
+- 7392-btp-chantier-fr-face-a-un-devis-d-artisan
+- 3131-quel-budget-pour-le-logiciel-de-facturation-quickbill-enterprise
 ---
-
 <p>Vingt ans à gérer des clôtures comptables, des audits, des reportings à n'en plus finir. Et un jour, j'ai décidé de m'intéresser à l'inbound marketing. Pas par vocation soudaine, plutôt parce que notre direction voulait qu'on comprenne mieux les outils qu'on finançait. Résultat : j'ai dû choisir comment me former. Seule, avec YouTube et des articles en anglais, ou via une structure comme HubGrow Academy.</p>
 
 <p>Voilà ce que j'ai appris de cette expérience, et ce que je recommande selon votre profil.</p>
