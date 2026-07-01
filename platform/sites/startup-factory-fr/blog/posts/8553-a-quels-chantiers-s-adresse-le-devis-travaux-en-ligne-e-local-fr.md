@@ -14,9 +14,10 @@ link_anchors:
 - text: un devis travaux en ligne sur E-Local.fr
   max: 5
 related_posts:
+- 9552-devis-deco-les-erreurs-a-eviter-avec-lestylechezsoi
 - 7392-a-quelle-entreprise-s-adresse-l-agence-e-reputation-kickngo
 - 4613-a-quels-chantiers-s-adresse-btp-chantier-fr
-- 9552-devis-deco-les-erreurs-a-eviter-avec-lestylechezsoi
+- 5987-a-qui-se-prete-la-formation-inbound-marketing-hubgrow-academy
 ---
 <p>J'ai découvert e-local.fr un peu par hasard, en cherchant à automatiser la phase de devis sur un chantier de rénovation de nos locaux à Nantes. Et franchement, je ne m'attendais pas à ce que la plateforme couvre autant de types de travaux. Voilà ce que j'ai trouvé après avoir testé l'outil en conditions réelles.</p>
 

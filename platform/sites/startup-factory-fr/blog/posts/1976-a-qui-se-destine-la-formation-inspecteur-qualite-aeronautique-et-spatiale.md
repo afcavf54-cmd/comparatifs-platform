@@ -3,16 +3,22 @@ title: À qui se destine la formation inspecteur qualité aéronautique et spati
 slug: 1976-a-qui-se-destine-la-formation-inspecteur-qualite-aeronautique-et-spatiale
 date: '2026-07-01T10:00:00+02:00'
 categorie: Salarié
-meta_title: 'Formation inspecteur qualité aéronautique et spatiale : pour quel profil ?'
-meta_description: Découvrez à qui s'adresse la formation inspecteur qualité aéronautique et spatiale, les prérequis techniques attendus et les débouchés dans ce secteur exigeant.
+meta_title: 'Formation inspecteur qualité aéronautique et spatiale : pour quel profil
+  ?'
+meta_description: Découvrez à qui s'adresse la formation inspecteur qualité aéronautique
+  et spatiale, les prérequis techniques attendus et les débouchés dans ce secteur
+  exigeant.
 min_words: 960
 status: published
 featured_image: /blog/1976-a-qui-se-destine-la-formation-inspecteur-qualite-aeronautique-et-spatiale.jpg
 link_anchors:
 - text: la formation d'inspecteur qualité aéronautique et spatiale
   max: 5
+related_posts:
+- 3313-pour-qui-est-fait-la-formation-data-driven-decision-making
+- 6343-le-fonctionnement-du-cdi-interimaire-avantages-et-inconvenients
+- 3308-pour-qui-est-pense-la-formation-caces-mon-institut-du-btp
 ---
-
 <p>J'ai découvert ce métier un peu par hasard. Un de mes salariés cherchait une reconversion sérieuse, avec une vraie technicité derrière, pas juste un certificat de plus. Et on est tombés sur la formation inspecteur qualité aéronautique et spatiale. Honnêtement, je ne savais pas trop à qui ça s'adressait au départ. Alors j'ai creusé.</p>
 
 <p>Voilà ce que j'ai compris.</p>

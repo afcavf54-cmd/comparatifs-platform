@@ -13,6 +13,7 @@ link_anchors:
 - text: la formation CACES de Mon-Institut-du-BTP
   max: 5
 related_posts:
+- 1976-a-qui-se-destine-la-formation-inspecteur-qualite-aeronautique-et-spatiale
 - 6343-le-fonctionnement-du-cdi-interimaire-avantages-et-inconvenients
 - 3313-pour-qui-est-fait-la-formation-data-driven-decision-making
 ---

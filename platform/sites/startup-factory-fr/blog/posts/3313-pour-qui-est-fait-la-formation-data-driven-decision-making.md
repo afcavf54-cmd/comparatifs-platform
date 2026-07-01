@@ -13,6 +13,7 @@ link_anchors:
 - text: la formation certifiante Data Driven Decision Making
   max: 5
 related_posts:
+- 1976-a-qui-se-destine-la-formation-inspecteur-qualite-aeronautique-et-spatiale
 - 3308-pour-qui-est-pense-la-formation-caces-mon-institut-du-btp
 - 6343-le-fonctionnement-du-cdi-interimaire-avantages-et-inconvenients
 ---

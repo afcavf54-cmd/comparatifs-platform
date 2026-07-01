@@ -15,6 +15,7 @@ link_anchors:
 related_posts:
 - 3308-pour-qui-est-pense-la-formation-caces-mon-institut-du-btp
 - 3313-pour-qui-est-fait-la-formation-data-driven-decision-making
+- 1976-a-qui-se-destine-la-formation-inspecteur-qualite-aeronautique-et-spatiale
 ---
 <p>Le CDI intérimaire, ça fait pas vraiment rêver au premier abord. CDI + intérim dans la même phrase, beaucoup de gens trouvent ça contradictoire. Pourtant, depuis que ce contrat existe, j'ai vu des collègues et des salariés dans mon réseau l'utiliser vraiment à leur avantage. Alors j'ai creusé le sujet. Voilà ce que j'en pense, sans filtre.</p>
 
