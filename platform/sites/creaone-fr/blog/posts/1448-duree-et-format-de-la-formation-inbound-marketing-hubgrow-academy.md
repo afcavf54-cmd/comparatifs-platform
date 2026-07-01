@@ -4,15 +4,21 @@ slug: 1448-duree-et-format-de-la-formation-inbound-marketing-hubgrow-academy
 date: '2026-07-01T18:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'Formation inbound marketing HubGrow Academy : combien de temps ?'
-meta_description: 'Découvrez la durée et le format de la formation inbound marketing HubGrow Academy : modules courts, accès 100 % asynchrone et contenu dense pour apprendre à votre…'
+meta_description: 'Découvrez la durée et le format de la formation inbound marketing
+  HubGrow Academy : modules courts, accès 100 % asynchrone et contenu dense pour apprendre
+  à votre…'
 min_words: 950
 status: published
 featured_image: /blog/1448-duree-et-format-de-la-formation-inbound-marketing-hubgrow-academy.jpg
 link_anchors:
 - text: la formation inbound marketing HubGrow Academy
   max: 5
+related_posts:
+- 9414-ce-que-les-clients-pensent-de-l-agence-e-reputation-kickngo
+- 5070-bien-preparer-son-devis-deco-avec-lestylechezsoi
+- 8615-bien-decrire-son-chantier-sur-btp-chantier-fr
+- 3118-bien-decrire-son-projet-pour-un-devis-travaux-en-ligne-e-local-fr
 ---
-
 <p>Quand on cherche une formation en inbound marketing, la première question qu'on se pose ce n'est pas "est-ce que ça va m'apprendre quelque chose ?" mais plutôt "est-ce que j'ai le temps de faire ça ?" Avec un agenda chargé, une équipe à gérer et des clôtures mensuelles qui ne attendent pas, je comprends tout à fait cette logique. J'ai donc regardé de près ce que propose HubGrow Academy, notamment sur la durée et le format de ses formations.</p>
 
 <p>Voici ce que j'ai trouvé, sans fioriture.</p>
