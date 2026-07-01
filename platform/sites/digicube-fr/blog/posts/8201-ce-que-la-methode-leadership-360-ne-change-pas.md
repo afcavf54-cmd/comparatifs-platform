@@ -4,15 +4,21 @@ slug: 8201-ce-que-la-methode-leadership-360-ne-change-pas
 date: '2026-07-01T18:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation management méthode Leadership 360 : les limites'
-meta_description: 'Retour d''expérience concret sur la méthode Leadership 360 : ce qu''elle révèle vraiment en entreprise, et pourquoi elle ne transforme pas tout comme promis.'
+meta_description: 'Retour d''expérience concret sur la méthode Leadership 360 : ce
+  qu''elle révèle vraiment en entreprise, et pourquoi elle ne transforme pas tout
+  comme promis.'
 min_words: 990
 status: published
 featured_image: /blog/8201-ce-que-la-methode-leadership-360-ne-change-pas.jpg
 link_anchors:
 - text: la formation management selon la méthode Leadership 360
   max: 5
+related_posts:
+- 6596-comment-realiser-une-cartographie-des-competences-efficace
+- 7426-comment-choisir-un-logiciel-gepp-adapte-a-votre-entreprise
+- 1586-comment-ameliorer-la-fidelisation-des-talents-en-entreprise
+- 8731-comment-ameliorer-l-experience-collaborateur-en-entreprise
 ---
-
 <p>J'ai testé pas mal d'approches managériales ces deux dernières années. Le Leadership 360, c'est celle qui revenait le plus souvent dans les discussions entre dirigeants de ma région. Tout le monde en parlait comme d'un outil qui "transforme les équipes". Alors j'ai essayé.</p>
 
 <p>Résultat ? Mitigé. Pas nul. Mais loin des promesses qu'on m'avait faites.</p>
