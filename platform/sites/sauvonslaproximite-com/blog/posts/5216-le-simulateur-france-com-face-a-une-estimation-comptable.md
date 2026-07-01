@@ -13,6 +13,7 @@ link_anchors:
 - text: le simulateur de revenu indépendant de Création-Entreprise-France.com
   max: 5
 related_posts:
+- 5495-frenchy-business-pro-face-aux-formations-business-plan-classiques
 - 5395-business-architect-tool-face-aux-cursus-strategie-classiques
 featured_image: /blog/5216-le-simulateur-france-com-face-a-une-estimation-comptable.jpg
 ---
