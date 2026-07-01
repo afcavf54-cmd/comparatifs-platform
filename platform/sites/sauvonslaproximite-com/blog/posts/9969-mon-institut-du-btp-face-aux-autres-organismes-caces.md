@@ -4,15 +4,20 @@ slug: 9969-mon-institut-du-btp-face-aux-autres-organismes-caces
 date: '2026-07-01T12:00:00+02:00'
 categorie: Salarié
 meta_title: Formation CACES Mon-Institut-du-BTP vs autres centres
-meta_description: 'Comparatif honnête de Mon-Institut-du-BTP face aux autres organismes CACES : prix, délais et gestion administrative vus par une comptable du bâtiment.'
+meta_description: 'Comparatif honnête de Mon-Institut-du-BTP face aux autres organismes
+  CACES : prix, délais et gestion administrative vus par une comptable du bâtiment.'
 min_words: 920
 status: published
 featured_image: /blog/9969-mon-institut-du-btp-face-aux-autres-organismes-caces.jpg
 link_anchors:
 - text: la formation CACES de Mon-Institut-du-BTP
   max: 5
+related_posts:
+- 9875-je-travaille-sans-contrat-depuis-15-jours-quelles-consequences-pour-l-employeur
+- 3650-mon-patron-change-mes-horaires-sans-preavis-ce-que-dit-le-droit-du-travail
+- 8567-fin-de-cdd-sans-reponse-de-l-employeur-quelles-demarches-entreprendre
+- 9279-accord-implicite-de-rupture-conventionnelle-ce-que-prevoit-reellement-la-loi
 ---
-
 <p>Ça fait maintenant plus de vingt ans que je traite des factures, des paies, des notes de frais et des déclarations en tout genre. Et depuis quelques années, une nouvelle problématique s'est invitée dans mon quotidien : la gestion des formations obligatoires pour les salariés du bâtiment. Le CACES, notamment. Parce que oui, quand vous avez des conducteurs d'engins dans votre effectif, vous ne pouvez pas faire l'impasse là-dessus.</p>
 
 <p>J'ai donc passé du temps à comparer les organismes qui proposent ces certifications. Et je vais vous dire ce que j'en pense vraiment, sans tourner autour du pot.</p>
