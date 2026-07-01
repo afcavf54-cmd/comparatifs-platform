@@ -4,15 +4,21 @@ slug: 8147-la-formation-au-systeme-management-agileframe-sous-toutes-les-couture
 date: '2026-07-01T10:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation management système AgileFrame : que donne-t-elle ?'
-meta_description: 'Découvrez un retour d''expérience sincère sur la formation au système management AgileFrame : méthode, contenus, formats et utilité réelle pour une petite équipe.'
+meta_description: 'Découvrez un retour d''expérience sincère sur la formation au système
+  management AgileFrame : méthode, contenus, formats et utilité réelle pour une petite
+  équipe.'
 min_words: 980
 status: published
 featured_image: /blog/8147-la-formation-au-systeme-management-agileframe-sous-toutes-les-coutures.jpg
 link_anchors:
 - text: la formation management avec le système AgileFrame
   max: 5
+related_posts:
+- 1153-la-formation-leadership-nexstep-avance-passe-a-la-loupe
+- 2651-quels-sont-les-avantages-du-succession-planning-en-entreprise
+- 4847-gestion-des-talents-dans-une-pme-comment-structurer-votre-rh
+- 3755-pourquoi-la-retention-des-talents-est-elle-strategique
 ---
-
 <p>Quand on gère une agence de communication avec six salariés, la question de la formation au management revient régulièrement. Comment organiser les équipes ? Comment faire en sorte que tout le monde avance dans le même sens sans qu'on soit obligée de tout superviser soi-même ? J'ai exploré plusieurs systèmes, et AgileFrame m'a été recommandé à deux reprises par des pairs du réseau BNI. Alors j'ai creusé.</p>
 
 <p>Voilà ce que j'en pense, après avoir passé du temps à comparer les formats, les contenus, et surtout l'utilité concrète pour une structure comme la mienne.</p>
