@@ -13,7 +13,8 @@ featured_image: /blog/2522-quel-budget-pour-un-bureau-au-coworking-mama-works-bo
 link_anchors:
 - text: le logiciel de gestion de trésorerie CashMaster Ultimate
   max: 5
-related_posts: []
+related_posts:
+- 4631-le-prix-de-l-outil-de-reporting-financier-cashflow-analytics-v4-est-il-justifie
 ---
 <p>J'ai testé pas mal d'espaces de coworking à Bordeaux ces deux dernières années. Mama Works, c'est celui dont on m'a le plus parlé dans mon réseau. Et honnêtement, quand j'ai commencé à regarder les tarifs de près, j'ai eu quelques surprises. Bonnes et mauvaises.</p>
 
