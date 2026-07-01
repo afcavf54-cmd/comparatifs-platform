@@ -3,16 +3,23 @@ title: La certification SkillBoost en management transversal au scanner
 slug: 2380-la-certification-skillboost-en-management-transversal-au-scanner
 date: '2026-07-01T17:00:00+02:00'
 categorie: Ressources Humaines
-meta_title: 'Formation management transversal SkillBoost : que vaut la certification ?'
-meta_description: 'Analyse complète de la certification SkillBoost en management transversal : est-elle vraiment utile pour les PME et vaut-il le coup d''y envoyer un membre de son…'
+meta_title: 'Formation management transversal SkillBoost : que vaut la certification
+  ?'
+meta_description: 'Analyse complète de la certification SkillBoost en management transversal
+  : est-elle vraiment utile pour les PME et vaut-il le coup d''y envoyer un membre
+  de son…'
 min_words: 970
 status: published
 featured_image: /blog/2380-la-certification-skillboost-en-management-transversal-au-scanner.jpg
 link_anchors:
 - text: la certification de la formation management transversal SkillBoost
   max: 5
+related_posts:
+- 1786-quels-outils-utiliser-pour-la-gestion-des-talents-rh
+- 4847-gestion-des-talents-dans-une-pme-comment-structurer-votre-rh
+- 1300-comment-accompagner-le-developpement-des-talents-internes
+- 3755-pourquoi-la-retention-des-talents-est-elle-strategique
 ---
-
 <p>J'entends beaucoup parler de SkillBoost en ce moment dans mon réseau. Des dirigeants de PME, des RH, des managers qui reviennent d'une formation et qui m'en parlent avec beaucoup d'enthousiasme. Alors j'ai décidé de creuser vraiment le sujet, pas juste lire le catalogue, mais comprendre ce que ça vaut concrètement pour quelqu'un qui gère une petite structure et qui n'a pas six mois à perdre en formation théorique.</p>
 
 <p>Ce que je vais vous partager ici, c'est mon analyse de la certification SkillBoost en management transversal. Pas un résumé de brochure. Un regard terrain, avec des questions pratiques : est-ce que c'est utile ? Pour qui ? Et est-ce que ça vaut vraiment le coup d'y envoyer quelqu'un de son équipe ?</p>
