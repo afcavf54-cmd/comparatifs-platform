@@ -4,15 +4,21 @@ slug: 8569-a-quel-profil-convient-la-formation-certifiee-business-architect-tool
 date: '2026-07-01T19:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Formation Business Architect Tool : pour quel profil ?'
-meta_description: 'Découvrez à quel profil correspond vraiment la formation certifiée Business Architect Tool : fondateurs, consultants ou managers, voici ce que vous devez savoir…'
+meta_description: 'Découvrez à quel profil correspond vraiment la formation certifiée
+  Business Architect Tool : fondateurs, consultants ou managers, voici ce que vous
+  devez savoir…'
 min_words: 940
 status: published
 featured_image: /blog/8569-a-quel-profil-convient-la-formation-certifiee-business-architect-tool.jpg
 link_anchors:
 - text: la formation certifiée Business Architect Tool
   max: 5
+related_posts:
+- 2966-pour-qui-est-fait-le-template-de-business-plan-startupkit-premium
+- 5071-a-quel-public-s-adresse-la-formation-business-plan-frenchy-business-pro
+- 6367-business-plan-planexpert-les-pieges-frequents
+- 6176-business-plan-financepro-smart-les-pieges-des-debutants
 ---
-
 <p>J'ai mis du temps avant de me pencher sérieusement sur <strong>Business Architect Tool</strong>. Pas parce que ça ne m'intéressait pas, mais parce que j'avais la tête dans le guidon comme tout fondateur de startup. Et puis un jour, face à un projet de structuration de mon offre qui partait dans tous les sens, j'ai décidé de tester la formation certifiée qui va avec. Verdict ? Ça dépend vraiment de qui tu es et de ce que tu cherches à faire de ta boîte.</p>
 
 <p>Voilà ce que j'ai observé, après avoir parlé à une dizaine de porteurs de projet autour de moi, et après l'avoir suivie moi-même.</p>
