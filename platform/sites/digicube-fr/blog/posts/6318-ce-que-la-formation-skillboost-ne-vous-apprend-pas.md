@@ -4,15 +4,20 @@ slug: 6318-ce-que-la-formation-skillboost-ne-vous-apprend-pas
 date: '2026-07-02T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation management transversal SkillBoost : les limites'
-meta_description: 'Retour d''expérience après un an sur SkillBoost : ce que la formation ne vous apprend pas vraiment et ce que j''aurais voulu savoir avant de signer.'
+meta_description: 'Retour d''expérience après un an sur SkillBoost : ce que la formation
+  ne vous apprend pas vraiment et ce que j''aurais voulu savoir avant de signer.'
 min_words: 970
 status: published
 featured_image: /blog/6318-ce-que-la-formation-skillboost-ne-vous-apprend-pas.jpg
 link_anchors:
 - text: la certification de la formation management transversal SkillBoost
   max: 5
+related_posts:
+- 7122-sigma7-face-aux-formations-lean-management-classiques-sur-la-duree
+- 7364-comment-construire-une-marque-employeur-attractive
+- 5868-promesse-d-embauche-ce-qu-il-faut-inclure-pour-etre-en-conformite
+- 8819-comment-reussir-la-gestion-des-talents-dans-une-pme
 ---
-
 <p>J'ai suivi SkillBoost il y a un peu plus d'un an. Honnêtement, au départ j'étais convaincu que c'était la solution pour former mes équipes rapidement, sans exploser le budget. Et sur le papier, ça ressemble à quelque chose de solide. Des modules clairs, une interface assez simple, des certifications reconnues.</p>
 
 <p>Mais après plusieurs mois d'utilisation, j'ai réalisé qu'il y avait des angles morts. Des choses que la plateforme ne vous prépare pas vraiment à affronter. Je ne dis pas que SkillBoost est mauvais. Je dis qu'il y a des limites que personne ne vous signale au moment de l'achat.</p>
