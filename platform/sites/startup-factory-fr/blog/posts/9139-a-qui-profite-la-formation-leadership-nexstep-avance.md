@@ -4,15 +4,19 @@ slug: 9139-a-qui-profite-la-formation-leadership-nexstep-avance
 date: '2026-07-02T17:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation leadership NexStep Avancé : pour quel manager ?'
-meta_description: 'Formation leadership NexStep Avancé : découvrez à qui ce programme s''adresse vraiment, ce qu''il apporte aux managers expérimentés et pourquoi même les PME y…'
+meta_description: 'Formation leadership NexStep Avancé : découvrez à qui ce programme
+  s''adresse vraiment, ce qu''il apporte aux managers expérimentés et pourquoi même
+  les PME y…'
 min_words: 970
 status: published
 featured_image: /blog/9139-a-qui-profite-la-formation-leadership-nexstep-avance.jpg
 link_anchors:
 - text: la formation Leadership Method NexStep niveau avancé
   max: 5
+related_posts:
+- 2463-ce-que-la-formation-lean-sigma7-ne-peut-pas-condenser
+- 3441-ce-que-la-formation-management-agilemaster-ne-couvre-pas
 ---
-
 <p>Je vais être honnête avec toi : quand j'ai entendu parler de la formation leadership NexStep Avancé pour la première fois, j'étais sceptique. On est une boîte de 30 personnes à Nantes, pas une multinationale avec un DRH à plein temps. Ce genre de programme, j'avais tendance à penser que c'était pour les grands groupes, pas pour nous.</p>
 
 <p>Et puis j'ai regardé de plus près. Et là, j'ai changé d'avis.</p>
