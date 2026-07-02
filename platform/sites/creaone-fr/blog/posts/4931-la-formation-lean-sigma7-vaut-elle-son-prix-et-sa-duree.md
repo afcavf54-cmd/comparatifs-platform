@@ -4,15 +4,19 @@ slug: 4931-la-formation-lean-sigma7-vaut-elle-son-prix-et-sa-duree
 date: '2026-07-02T19:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation lean management Sigma7 : est-elle rentable ?'
-meta_description: 'Formation Lean Sigma7 : prix justifié ou budget gaspillé ? Analyse terrain d''une responsable RH après avoir accompagné deux collaborateurs dans ce parcours…'
+meta_description: 'Formation Lean Sigma7 : prix justifié ou budget gaspillé ? Analyse
+  terrain d''une responsable RH après avoir accompagné deux collaborateurs dans ce
+  parcours…'
 min_words: 980
 status: published
 featured_image: /blog/4931-la-formation-lean-sigma7-vaut-elle-son-prix-et-sa-duree.jpg
 link_anchors:
 - text: la durée de la formation lean management Sigma7
   max: 5
+related_posts:
+- 7987-combien-coute-la-formation-management-agilemaster-certifiante
+- 3490-duree-et-rythme-de-la-formation-leadership-nexstep-avance
 ---
-
 <p>Neuf ans à faire tourner des clôtures comptables, à gérer des équipes en sous-effectif et à trier des formations RH qui promettent beaucoup et livrent peu. Quand mon DRH m'a parlé de la formation Lean Sigma7 pour nos chefs de projet et responsables d'équipe, j'ai réagi comme d'habitude : j'ai demandé le prix, la durée, et ce qu'on allait vraiment en retirer. Pas les plaquettes marketing. Le vrai retour terrain.</p>
 
 <p>Ce que je vais vous partager ici, c'est mon analyse après avoir suivi le parcours de près, accompagné deux collaborateurs dans le dispositif, et surtout comparé ce format à d'autres certifications que j'ai croisées dans ma carrière.</p>

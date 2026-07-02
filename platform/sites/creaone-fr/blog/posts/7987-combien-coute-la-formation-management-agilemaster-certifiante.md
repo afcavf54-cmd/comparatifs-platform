@@ -13,7 +13,9 @@ featured_image: /blog/7987-combien-coute-la-formation-management-agilemaster-cer
 link_anchors:
 - text: la durée de la formation management certifiante AgileMaster
   max: 5
-related_posts: []
+related_posts:
+- 4931-la-formation-lean-sigma7-vaut-elle-son-prix-et-sa-duree
+- 3490-duree-et-rythme-de-la-formation-leadership-nexstep-avance
 ---
 <p>Quand j'ai commencé à m'intéresser aux certifications en management agile pour mon équipe, j'ai vite réalisé que les informations sur les tarifs étaient éparpillées partout. Un peu nébuleux. Les organismes affichent rarement un prix clair dès la première page. Alors j'ai fait le travail de terrain pour vous.</p>
 
