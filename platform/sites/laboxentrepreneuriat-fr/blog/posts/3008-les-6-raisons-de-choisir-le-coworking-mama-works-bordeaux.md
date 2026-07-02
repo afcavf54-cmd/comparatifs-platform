@@ -13,7 +13,8 @@ featured_image: /blog/3008-les-6-raisons-de-choisir-le-coworking-mama-works-bord
 link_anchors:
 - text: le logiciel de gestion de trésorerie CashMaster Ultimate
   max: 5
-related_posts: []
+related_posts:
+- 7935-les-6-atouts-de-l-outil-de-reporting-financier-cashflow-analytics-v4
 ---
 <p>Bordeaux, je connais bien. J'accompagne des clients dans cette ville depuis une bonne dizaine d'années, et la question du lieu de travail revient souvent dans mes échanges avec des indépendants ou des petites équipes qui cherchent à s'organiser sans exploser leur budget. Le coworking, c'est une option que je recommande régulièrement, à condition de bien choisir l'espace. Et Mama Works Bordeaux, j'ai eu l'occasion de le tester, d'y travailler quelques jours, et d'en parler avec plusieurs membres. Voici ce que j'en retiens vraiment.</p>
 
