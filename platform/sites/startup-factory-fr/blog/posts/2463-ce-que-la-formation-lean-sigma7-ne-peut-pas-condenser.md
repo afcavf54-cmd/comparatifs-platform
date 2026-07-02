@@ -12,7 +12,8 @@ featured_image: /blog/2463-ce-que-la-formation-lean-sigma7-ne-peut-pas-condenser
 link_anchors:
 - text: la durée de la formation lean management Sigma7
   max: 5
-related_posts: []
+related_posts:
+- 3441-ce-que-la-formation-management-agilemaster-ne-couvre-pas
 ---
 <p>On parle beaucoup de lean, de Six Sigma, de green belt, black belt. J'entends ça partout depuis que je gère une équipe. Et honnêtement, j'ai mis du temps à comprendre ce que ce type de formation apporte vraiment, et surtout ce qu'il ne couvre pas.</p>
 
