@@ -4,15 +4,21 @@ slug: 8256-presentation-a-impact-la-formation-powerpoint-executif-pour-dirigeant
 date: '2026-07-02T18:00:00+02:00'
 categorie: Salarié
 meta_title: 'Formation PowerPoint exécutif : la méthode de présentation à impact'
-meta_description: 'Maîtrisez PowerPoint comme un dirigeant : structurez vos présentations avec impact, clarté et persuasion grâce à une formation exécutive pensée pour les décideurs.'
+meta_description: 'Maîtrisez PowerPoint comme un dirigeant : structurez vos présentations
+  avec impact, clarté et persuasion grâce à une formation exécutive pensée pour les
+  décideurs.'
 min_words: 930
 status: published
 featured_image: /blog/8256-presentation-a-impact-la-formation-powerpoint-executif-pour-dirigeants.jpg
 link_anchors:
 - text: la méthode de formation PowerPoint exécutif pour des présentations à impact
   max: 5
+related_posts:
+- 7898-la-formation-caces-de-mon-institut-du-btp-au-scanner
+- 7130-la-methode-de-negociation-commerciale-salesmaster-sans-complaisance
+- 6129-devenir-inspecteur-qualite-aeronautique-et-spatiale-la-formation
+- 7190-la-formation-intensive-de-negociation-commerciale-dealmaker-de-fond-en-comble
 ---
-
 <p>J'ai mis du temps avant de comprendre pourquoi certaines présentations font mouche et d'autres non. Pendant des années, j'envoyais des slides chargées à mes clients, avec des listes à puces, des graphiques en tout sens, des polices qui changeaient selon mon humeur du moment. Résultat : des réunions molles, des décisions qui traînaient, et des prospects qui ne rappelaient pas.</p>
 
 <p>La prise de conscience est venue d'une réunion avec un grand compte. Mon interlocuteur avait préparé exactement 8 slides. Propres. Lisibles depuis l'autre bout de la salle. Un seul message par slide. Je suis sortie de là en me demandant pourquoi je ne savais pas faire ça, moi qui me présentais comme dirigeante d'une agence de communication.</p>
