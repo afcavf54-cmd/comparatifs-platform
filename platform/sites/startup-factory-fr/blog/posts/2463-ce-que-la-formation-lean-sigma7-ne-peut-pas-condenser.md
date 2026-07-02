@@ -4,15 +4,16 @@ slug: 2463-ce-que-la-formation-lean-sigma7-ne-peut-pas-condenser
 date: '2026-07-02T08:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation lean management Sigma7 : les limites du format court'
-meta_description: 'Formation lean Sigma7 : outils process solides, mais quelles compétences restent dans l''angle mort pour manager une équipe en croissance rapide ?'
+meta_description: 'Formation lean Sigma7 : outils process solides, mais quelles compétences
+  restent dans l''angle mort pour manager une équipe en croissance rapide ?'
 min_words: 980
 status: published
 featured_image: /blog/2463-ce-que-la-formation-lean-sigma7-ne-peut-pas-condenser.jpg
 link_anchors:
 - text: la durée de la formation lean management Sigma7
   max: 5
+related_posts: []
 ---
-
 <p>On parle beaucoup de lean, de Six Sigma, de green belt, black belt. J'entends ça partout depuis que je gère une équipe. Et honnêtement, j'ai mis du temps à comprendre ce que ce type de formation apporte vraiment, et surtout ce qu'il ne couvre pas.</p>
 
 <p>Lean Sigma7 est une certification solide. Je ne dis pas le contraire. Mais après avoir envoyé plusieurs collaborateurs en formation, j'ai réalisé qu'il y a des angles morts. Des compétences que personne ne développe pendant ces parcours, et qui font pourtant la différence au quotidien dans une équipe de 30 personnes.</p>
