@@ -16,8 +16,9 @@ link_anchors:
   max: 5
 related_posts:
 - 1058-demander-un-devis-gratuit-sur-btp-chantier-fr
-- 7583-demander-un-devis-travaux-en-ligne-sur-e-local-fr
 - 9790-demander-un-devis-deco-chez-lestylechezsoi
+- 7583-demander-un-devis-travaux-en-ligne-sur-e-local-fr
+- 9053-la-formation-seo-vite-une-formation-sans-detour
 ---
 <p>J'ai testé pas mal de formations marketing ces deux dernières années. Certaines m'ont appris des choses utiles, d'autres m'ont surtout fait perdre du temps. Alors quand on m'a parlé de HubGrow Academy et de leur approche inbound marketing, j'ai eu la réaction habituelle : scepticisme modéré, mais curiosité quand même.</p>
 
