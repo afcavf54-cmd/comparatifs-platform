@@ -4,15 +4,21 @@ slug: 8530-logiciel-geotechnique-freeware-les-meilleures-solutions-gratuites
 date: '2026-07-02T17:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Logiciel géotechnique freeware : comparatif des solutions gratuites'
-meta_description: 'Découvrez les meilleurs logiciels géotechniques freeware testés par un professionnel de TPE : comparatif honnête, points forts, limites et conseils pour bien…'
+meta_description: 'Découvrez les meilleurs logiciels géotechniques freeware testés
+  par un professionnel de TPE : comparatif honnête, points forts, limites et conseils
+  pour bien…'
 min_words: 950
 status: published
 featured_image: /blog/8530-logiciel-geotechnique-freeware-les-meilleures-solutions-gratuites.jpg
 link_anchors:
 - text: un logiciel géotechnique freeware
   max: 5
+related_posts:
+- 9948-cout-d-implementation-du-systeme-bizcore-advanced-budget-a-prevoir
+- 8604-comment-implementer-erp-bizflow-evolution-dans-une-pme
+- 9008-comment-implementer-erp-bizflow-max-dans-votre-entreprise
+- 9049-integration-erp-flexibiz-avec-la-comptabilite-mode-d-emploi
 ---
-
 <p>J'ai cherché pendant des mois un logiciel géotechnique sans sortir le chéquier. Quand on dirige une TPE à Lyon avec une équipe terrain qui n'a pas forcément le temps de se former sur des outils complexes, on regarde d'abord le prix. Et franchement, les solutions commerciales du secteur sont souvent hors de portée pour une structure comme la mienne.</p>
 
 <p>Voilà ce que j'ai trouvé, testé, et parfois regretté d'avoir utilisé.</p>
