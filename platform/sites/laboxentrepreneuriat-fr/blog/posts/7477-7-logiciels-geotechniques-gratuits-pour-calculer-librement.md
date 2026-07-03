@@ -4,15 +4,21 @@ slug: 7477-7-logiciels-geotechniques-gratuits-pour-calculer-librement
 date: '2026-07-03T18:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Programmes et logiciels géotechniques gratuits : 7 outils sans payer'
-meta_description: 'Découvrez 7 logiciels géotechniques gratuits vraiment utilisables en bureau d''études : forces, limites et profils adaptés pour chaque outil open source.'
+meta_description: 'Découvrez 7 logiciels géotechniques gratuits vraiment utilisables
+  en bureau d''études : forces, limites et profils adaptés pour chaque outil open
+  source.'
 min_words: 990
 status: published
 featured_image: /blog/7477-7-logiciels-geotechniques-gratuits-pour-calculer-librement.jpg
 link_anchors:
 - text: les programmes et logiciels géotechniques gratuits
   max: 5
+related_posts:
+- 5476-quel-budget-pour-la-licence-du-progiciel-erp-bizmaster-360
+- 3948-le-vrai-cout-d-implementation-du-systeme-bizcore-advanced
+- 2981-les-6-atouts-du-crm-mobile-fieldforce-connect-sous-android
+- 2841-le-logiciel-crm-salestrack-evolution-sans-detour
 ---
-
 <p>Quand on travaille dans les métiers du bâtiment, des travaux publics ou de la géotechnique, les logiciels de calcul coûtent souvent une fortune. Des licences annuelles à plusieurs milliers d'euros, des mises à jour payantes, parfois même un système de tokens pour exporter un simple rapport. J'ai accompagné des dizaines de bureaux d'études et de PME du BTP dans leurs choix logiciels, et je vois régulièrement des équipes qui paient pour des outils qu'elles n'utilisent qu'à 20% de leurs capacités.</p>
 
 <p>Bonne nouvelle : il existe des alternatives sérieuses, <strong>gratuites ou open source</strong>, qui couvrent les besoins courants en calcul géotechnique. Je ne parle pas de démos bridées ou d'outils jouets. Certains sont utilisés dans des contextes académiques avancés, d'autres dans des cabinets d'ingénierie qui ont simplement décidé de ne plus dépendre d'éditeurs propriétaires.</p>
