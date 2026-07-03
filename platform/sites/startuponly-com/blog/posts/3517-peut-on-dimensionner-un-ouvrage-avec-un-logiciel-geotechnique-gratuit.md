@@ -3,16 +3,23 @@ title: Peut-on dimensionner un ouvrage avec un logiciel géotechnique gratuit ?
 slug: 3517-peut-on-dimensionner-un-ouvrage-avec-un-logiciel-geotechnique-gratuit
 date: '2026-07-03T07:00:00+02:00'
 categorie: Gestion d'entreprise
-meta_title: 'Programmes et logiciels géotechniques gratuits : fiables pour un vrai calcul ?'
-meta_description: Peut-on vraiment dimensionner un ouvrage avec un logiciel géotechnique gratuit ? Tour d'horizon honnête des outils disponibles, entre limites réelles et bonnes…
+meta_title: 'Programmes et logiciels géotechniques gratuits : fiables pour un vrai
+  calcul ?'
+meta_description: Peut-on vraiment dimensionner un ouvrage avec un logiciel géotechnique
+  gratuit ? Tour d'horizon honnête des outils disponibles, entre limites réelles et
+  bonnes…
 min_words: 990
 status: published
 featured_image: /blog/3517-peut-on-dimensionner-un-ouvrage-avec-un-logiciel-geotechnique-gratuit.jpg
 link_anchors:
 - text: les programmes et logiciels géotechniques gratuits
   max: 5
+related_posts:
+- 3309-pour-qui-est-fait-le-logiciel-crm-salestrack-pro
+- 4060-delai-d-integration-de-l-erp-flexibiz-avec-la-comptabilite
+- 3223-peut-on-calculer-serieusement-avec-un-logiciel-geotechnique-freeware
+- 3813-6-elements-qui-font-varier-le-prix-de-licence-de-bizmaster-360
 ---
-
 <p>J'ai passé un bon moment à tester des logiciels géotechniques gratuits pour savoir si on pouvait vraiment s'y fier pour dimensionner un ouvrage. Spoiler : c'est plus nuancé que le simple "gratuit = nul" qu'on entend partout.</p>
 
 <p>Quand t'as une petite structure et un budget serré, la question se pose vite. Payer plusieurs milliers d'euros par an pour un logiciel géotechnique, ça fait mal. Alors on regarde ce qui existe côté open source ou freemium. Et franchement, j'ai été surpris par certaines choses, dans les deux sens.</p>
