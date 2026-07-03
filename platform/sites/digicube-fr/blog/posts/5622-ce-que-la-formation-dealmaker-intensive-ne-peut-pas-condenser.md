@@ -3,16 +3,23 @@ title: Ce que la formation DealMaker Intensive ne peut pas condenser
 slug: 5622-ce-que-la-formation-dealmaker-intensive-ne-peut-pas-condenser
 date: '2026-07-03T07:00:00+02:00'
 categorie: Salarié
-meta_title: 'Formation négociation commerciale DealMaker Intensive : les limites du format'
-meta_description: La formation DealMaker Intensive apporte un cadre solide, mais trois jours ne suffisent pas à tout changer. Voici ce qu'elle ne peut pas faire à votre place.
+meta_title: 'Formation négociation commerciale DealMaker Intensive : les limites du
+  format'
+meta_description: La formation DealMaker Intensive apporte un cadre solide, mais trois
+  jours ne suffisent pas à tout changer. Voici ce qu'elle ne peut pas faire à votre
+  place.
 min_words: 940
 status: published
 featured_image: /blog/5622-ce-que-la-formation-dealmaker-intensive-ne-peut-pas-condenser.jpg
 link_anchors:
 - text: la formation négociation commerciale DealMaker Intensive
   max: 5
+related_posts:
+- 1917-mon-patron-modifie-mes-horaires-du-jour-au-lendemain-quels-sont-mes-droits
+- 3887-licenciement-pour-inaptitude-comment-eviter-les-principaux-pieges-juridiques
+- 6793-je-travaille-sans-contrat-depuis-plusieurs-jours-quelles-protections-pour-le-salarie
+- 2242-accord-implicite-de-rupture-conventionnelle-mythe-ou-realite-juridique
 ---
-
 <p>J'ai suivi la formation DealMaker Intensive l'année dernière. Trois jours intensifs, un programme chargé, des intervenants qui connaissent leur sujet. Honnêtement ? Je ne regrette pas d'y être allé. Mais j'ai compris assez vite qu'il y avait un écart entre ce qu'on apprend là-bas et ce qu'on peut vraiment appliquer le lundi matin en arrivant au bureau.</p>
 
 <p>C'est ça que je veux vous expliquer ici. Pas descendre cette formation. Juste être honnête sur ce qu'elle ne peut pas faire à votre place.</p>
