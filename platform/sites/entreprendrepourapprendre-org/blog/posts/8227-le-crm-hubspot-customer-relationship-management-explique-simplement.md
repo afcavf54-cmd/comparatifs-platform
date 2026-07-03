@@ -4,15 +4,21 @@ slug: 8227-le-crm-hubspot-customer-relationship-management-explique-simplement
 date: '2026-07-03T19:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'HubSpot CRM : à quoi sert ce customer relationship management ?'
-meta_description: 'Découvrez le CRM HubSpot expliqué simplement : ce qu''il fait vraiment pour une petite structure, version gratuite incluse, avec un retour d''expérience concret en…'
+meta_description: 'Découvrez le CRM HubSpot expliqué simplement : ce qu''il fait vraiment
+  pour une petite structure, version gratuite incluse, avec un retour d''expérience
+  concret en…'
 min_words: 900
 status: published
 featured_image: /blog/8227-le-crm-hubspot-customer-relationship-management-explique-simplement.jpg
 link_anchors:
 - text: la solution HubSPot de Customer Relationship Management
   max: 5
+related_posts:
+- 1936-parametrer-l-erp-businesscore-enterprise-de-a-a-z
+- 9905-implementer-l-erp-smartchain-360-concretement
+- 2367-installer-l-erp-cloudmanager-enterprise-la-marche-a-suivre
+- 8759-parametrer-les-modules-de-l-erp-financepro-integrated-point-par-point
 ---
-
 <h2>Ce que HubSpot fait vraiment pour une petite structure comme la mienne</h2>
 
 <p>J'ai mis du temps avant de me décider à tester HubSpot. L'outil a une réputation un peu intimidante, souvent présenté comme une solution pour les grosses équipes commerciales avec des pipelines complexes et des process bien huilés. Rien à voir avec mon quotidien : six personnes, des clients qu'on gère souvent à la force du poignet, et des devis qui traînent dans les mails depuis trois semaines.</p>
