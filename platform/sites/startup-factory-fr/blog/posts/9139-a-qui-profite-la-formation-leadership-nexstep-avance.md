@@ -17,6 +17,7 @@ related_posts:
 - 6839-ce-que-la-formation-leadership-academy-pro-ne-vous-apporte-pas
 - 3441-ce-que-la-formation-management-agilemaster-ne-couvre-pas
 - 2463-ce-que-la-formation-lean-sigma7-ne-peut-pas-condenser
+- 2803-a-quel-profil-convient-la-formation-management-methode-leadership-360
 ---
 <p>Je vais être honnête avec toi : quand j'ai entendu parler de la formation leadership NexStep Avancé pour la première fois, j'étais sceptique. On est une boîte de 30 personnes à Nantes, pas une multinationale avec un DRH à plein temps. Ce genre de programme, j'avais tendance à penser que c'était pour les grands groupes, pas pour nous.</p>
 

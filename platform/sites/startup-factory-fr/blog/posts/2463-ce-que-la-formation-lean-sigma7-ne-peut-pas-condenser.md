@@ -13,8 +13,9 @@ link_anchors:
 - text: la durée de la formation lean management Sigma7
   max: 5
 related_posts:
-- 6839-ce-que-la-formation-leadership-academy-pro-ne-vous-apporte-pas
 - 9139-a-qui-profite-la-formation-leadership-nexstep-avance
+- 6839-ce-que-la-formation-leadership-academy-pro-ne-vous-apporte-pas
+- 2803-a-quel-profil-convient-la-formation-management-methode-leadership-360
 - 3441-ce-que-la-formation-management-agilemaster-ne-couvre-pas
 ---
 <p>On parle beaucoup de lean, de Six Sigma, de green belt, black belt. J'entends ça partout depuis que je gère une équipe. Et honnêtement, j'ai mis du temps à comprendre ce que ce type de formation apporte vraiment, et surtout ce qu'il ne couvre pas.</p>

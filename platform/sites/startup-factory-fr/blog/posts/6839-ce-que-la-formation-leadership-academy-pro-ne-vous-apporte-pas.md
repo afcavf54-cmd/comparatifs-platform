@@ -15,6 +15,7 @@ link_anchors:
   max: 5
 related_posts:
 - 9139-a-qui-profite-la-formation-leadership-nexstep-avance
+- 2803-a-quel-profil-convient-la-formation-management-methode-leadership-360
 - 2463-ce-que-la-formation-lean-sigma7-ne-peut-pas-condenser
 - 3441-ce-que-la-formation-management-agilemaster-ne-couvre-pas
 ---

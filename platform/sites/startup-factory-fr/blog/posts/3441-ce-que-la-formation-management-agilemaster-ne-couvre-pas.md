@@ -13,8 +13,9 @@ link_anchors:
 - text: la durée de la formation management certifiante AgileMaster
   max: 5
 related_posts:
-- 9139-a-qui-profite-la-formation-leadership-nexstep-avance
 - 2463-ce-que-la-formation-lean-sigma7-ne-peut-pas-condenser
+- 9139-a-qui-profite-la-formation-leadership-nexstep-avance
+- 2803-a-quel-profil-convient-la-formation-management-methode-leadership-360
 - 6839-ce-que-la-formation-leadership-academy-pro-ne-vous-apporte-pas
 ---
 <p>J'ai passé pas mal de temps à creuser les formations management ces derniers mois. Onboarding d'une équipe qui grossit vite, besoin de structurer, de déléguer. Bref, le classique quand une startup dépasse les 20 personnes et que tu ne peux plus tout gérer toi-même.</p>
