@@ -14,6 +14,7 @@ link_anchors:
 - text: la formation Leadership Method NexStep niveau avancé
   max: 5
 related_posts:
+- 4910-duree-d-apprentissage-de-la-methode-management-leadership-360
 - 7987-combien-coute-la-formation-management-agilemaster-certifiante
 - 4931-la-formation-lean-sigma7-vaut-elle-son-prix-et-sa-duree
 ---

@@ -4,15 +4,19 @@ slug: 4910-duree-d-apprentissage-de-la-methode-management-leadership-360
 date: '2026-07-03T08:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation management méthode Leadership 360 : combien de temps ?'
-meta_description: Découvrez combien de temps demande vraiment la méthode Leadership 360 et ce qui influence la durée d'apprentissage selon votre contexte managérial.
+meta_description: Découvrez combien de temps demande vraiment la méthode Leadership
+  360 et ce qui influence la durée d'apprentissage selon votre contexte managérial.
 min_words: 990
 status: published
 featured_image: /blog/4910-duree-d-apprentissage-de-la-methode-management-leadership-360.jpg
 link_anchors:
 - text: la formation management selon la méthode Leadership 360
   max: 5
+related_posts:
+- 4931-la-formation-lean-sigma7-vaut-elle-son-prix-et-sa-duree
+- 7987-combien-coute-la-formation-management-agilemaster-certifiante
+- 3490-duree-et-rythme-de-la-formation-leadership-nexstep-avance
 ---
-
 <p>Neuf ans à travailler sur des sujets RH connexes m'ont appris une chose : quand on parle de formation management, les gens posent toujours la même question en premier. Pas "est-ce que ça marche ?", pas "combien ça coûte ?". Non. La première question, c'est presque toujours "combien de temps ça prend ?"</p>
 
 <p>C'est une question légitime. Une équipe non technique, un budget serré, des agendas déjà chargés... personne n'a envie de s'engager dans un cycle de formation qui va mobiliser des managers pendant six mois sans visibilité claire sur ce qu'on y gagne.</p>
