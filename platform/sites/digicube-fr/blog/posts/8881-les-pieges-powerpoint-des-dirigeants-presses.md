@@ -3,16 +3,23 @@ title: Les pièges PowerPoint des dirigeants pressés
 slug: 8881-les-pieges-powerpoint-des-dirigeants-presses
 date: '2026-07-03T10:00:00+02:00'
 categorie: Salarié
-meta_title: 'Formation PowerPoint exécutif : les erreurs qui tuent une présentation à impact'
-meta_description: 'Évitez les erreurs PowerPoint qui sabotent vos réunions de direction. Slides surchargés, mauvais rythme, message dilué : découvrez les pièges les plus fréquents et…'
+meta_title: 'Formation PowerPoint exécutif : les erreurs qui tuent une présentation
+  à impact'
+meta_description: 'Évitez les erreurs PowerPoint qui sabotent vos réunions de direction.
+  Slides surchargés, mauvais rythme, message dilué : découvrez les pièges les plus
+  fréquents et…'
 min_words: 930
 status: published
 featured_image: /blog/8881-les-pieges-powerpoint-des-dirigeants-presses.jpg
 link_anchors:
 - text: la méthode de formation PowerPoint exécutif pour des présentations à impact
   max: 5
+related_posts:
+- 1951-repondre-aux-sollicitations-professionnelles-pendant-un-arret-maladie-est-ce-obligatoire
+- 2551-abreviations-de-fiche-de-paie-le-guide-complet-pour-les-decrypter
+- 6505-conges-payes-et-retraite-progressive-quelles-regles-appliquer
+- 7738-demission-et-anciennete-ce-que-vous-pouvez-conserver-apres-votre-depart
 ---
-
 <p>J'ai mis du temps à l'admettre, mais mes présentations PowerPoint étaient catastrophiques. Pas visuellement, non, elles étaient même plutôt propres. Le problème, c'est qu'elles ne servaient à rien. Mes équipes sortaient des réunions sans avoir retenu l'essentiel, et moi je passais des heures à préparer des slides que personne ne regardait vraiment.</p>
 
 <p>Après deux ans à gérer une boîte de plus de cent personnes à Marseille, j'ai compris que PowerPoint n'est pas le problème. C'est la façon dont on l'utilise qui sabote la communication. Voilà ce que j'aurais aimé qu'on me dise dès le départ.</p>
