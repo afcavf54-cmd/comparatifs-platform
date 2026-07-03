@@ -14,9 +14,10 @@ link_anchors:
 - text: la durée de la formation lean management Sigma7
   max: 5
 related_posts:
-- 4910-duree-d-apprentissage-de-la-methode-management-leadership-360
 - 3490-duree-et-rythme-de-la-formation-leadership-nexstep-avance
+- 5052-quel-budget-pour-la-formation-management-d-equipe-leadpro-certified
 - 7987-combien-coute-la-formation-management-agilemaster-certifiante
+- 4910-duree-d-apprentissage-de-la-methode-management-leadership-360
 ---
 <p>Neuf ans à faire tourner des clôtures comptables, à gérer des équipes en sous-effectif et à trier des formations RH qui promettent beaucoup et livrent peu. Quand mon DRH m'a parlé de la formation Lean Sigma7 pour nos chefs de projet et responsables d'équipe, j'ai réagi comme d'habitude : j'ai demandé le prix, la durée, et ce qu'on allait vraiment en retirer. Pas les plaquettes marketing. Le vrai retour terrain.</p>
 

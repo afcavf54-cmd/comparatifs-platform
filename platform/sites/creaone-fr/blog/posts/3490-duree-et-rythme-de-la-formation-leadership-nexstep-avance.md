@@ -14,9 +14,10 @@ link_anchors:
 - text: la formation Leadership Method NexStep niveau avancé
   max: 5
 related_posts:
-- 4910-duree-d-apprentissage-de-la-methode-management-leadership-360
-- 7987-combien-coute-la-formation-management-agilemaster-certifiante
 - 4931-la-formation-lean-sigma7-vaut-elle-son-prix-et-sa-duree
+- 7987-combien-coute-la-formation-management-agilemaster-certifiante
+- 4910-duree-d-apprentissage-de-la-methode-management-leadership-360
+- 5052-quel-budget-pour-la-formation-management-d-equipe-leadpro-certified
 ---
 <p>Neuf ans à gérer des équipes comptables, à suivre des formations internes, à me retrouver dans des salles où le formateur parle pendant trois heures sans que personne ne pose une seule question. J'ai fini par en tirer une leçon simple : la durée d'une formation ne dit rien de son efficacité. Ce qui compte, c'est le rythme, la progressivité, et la façon dont les apprentissages s'intègrent dans un emploi du temps déjà bien chargé.</p>
 

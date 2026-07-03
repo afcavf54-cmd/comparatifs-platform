@@ -15,8 +15,9 @@ link_anchors:
   max: 5
 related_posts:
 - 3490-duree-et-rythme-de-la-formation-leadership-nexstep-avance
-- 4910-duree-d-apprentissage-de-la-methode-management-leadership-360
 - 4931-la-formation-lean-sigma7-vaut-elle-son-prix-et-sa-duree
+- 5052-quel-budget-pour-la-formation-management-d-equipe-leadpro-certified
+- 4910-duree-d-apprentissage-de-la-methode-management-leadership-360
 ---
 <p>Quand j'ai commencé à m'intéresser aux certifications en management agile pour mon équipe, j'ai vite réalisé que les informations sur les tarifs étaient éparpillées partout. Un peu nébuleux. Les organismes affichent rarement un prix clair dès la première page. Alors j'ai fait le travail de terrain pour vous.</p>
 

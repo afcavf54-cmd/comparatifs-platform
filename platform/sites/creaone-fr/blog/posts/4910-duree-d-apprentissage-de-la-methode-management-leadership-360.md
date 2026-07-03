@@ -13,9 +13,10 @@ link_anchors:
 - text: la formation management selon la méthode Leadership 360
   max: 5
 related_posts:
-- 4931-la-formation-lean-sigma7-vaut-elle-son-prix-et-sa-duree
 - 7987-combien-coute-la-formation-management-agilemaster-certifiante
 - 3490-duree-et-rythme-de-la-formation-leadership-nexstep-avance
+- 4931-la-formation-lean-sigma7-vaut-elle-son-prix-et-sa-duree
+- 5052-quel-budget-pour-la-formation-management-d-equipe-leadpro-certified
 ---
 <p>Neuf ans à travailler sur des sujets RH connexes m'ont appris une chose : quand on parle de formation management, les gens posent toujours la même question en premier. Pas "est-ce que ça marche ?", pas "combien ça coûte ?". Non. La première question, c'est presque toujours "combien de temps ça prend ?"</p>
 
