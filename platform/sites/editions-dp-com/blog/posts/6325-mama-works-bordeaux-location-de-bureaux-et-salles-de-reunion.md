@@ -4,15 +4,21 @@ slug: 6325-mama-works-bordeaux-location-de-bureaux-et-salles-de-reunion
 date: '2026-07-03T17:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'Mama Works Bordeaux : avis, tarifs et espaces de coworking'
-meta_description: Mama Works Bordeaux propose bureaux privatifs, postes de coworking et salles de réunion professionnelles. Un espace fiable, bien équipé et flexible, testé et…
+meta_description: Mama Works Bordeaux propose bureaux privatifs, postes de coworking
+  et salles de réunion professionnelles. Un espace fiable, bien équipé et flexible,
+  testé et…
 min_words: 920
 status: published
 featured_image: /blog/6325-mama-works-bordeaux-location-de-bureaux-et-salles-de-reunion.jpg
 link_anchors:
 - text: la location de bureaux et salles de réunion chez Mama Works coworking à Bordeaux
   max: 5
+related_posts:
+- 5758-indicateurs-de-territoire-economiques-comment-utiliser-leterritoireentreprise
+- 3438-formation-inbound-marketing-hubgrow-academy-avis-programme-et-certification
+- 8651-agence-e-reputation-kickngo-avis-services-et-accompagnement
+- 1082-lefoyerentrepreneurial-tarifs-et-services-de-coworking
 ---
-
 <p>J'ai testé pas mal d'espaces de coworking à Bordeaux ces deux dernières années. Des grandes enseignes, des petits indépendants, des trucs à la mode qui ferment six mois après. Et Mama Works, je vais être honnête, c'est l'un des rares endroits qui m'a donné envie de revenir sans qu'on m'y oblige.</p>
 
 <p>Je gère une structure de 100 à 500 salariés à Lyon, mais on a des équipes qui bougent régulièrement sur Bordeaux. Trouver un bureau correct pour quelques jours, ou une salle de réunion qui ne ressemble pas à un placard à balais avec un vidéoprojecteur poussif, c'est plus compliqué qu'on ne le croit. Mama Works a répondu à ce besoin de façon assez directe.</p>
