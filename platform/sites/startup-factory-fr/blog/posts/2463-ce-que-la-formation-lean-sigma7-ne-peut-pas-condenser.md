@@ -13,6 +13,7 @@ link_anchors:
 - text: la durée de la formation lean management Sigma7
   max: 5
 related_posts:
+- 6839-ce-que-la-formation-leadership-academy-pro-ne-vous-apporte-pas
 - 9139-a-qui-profite-la-formation-leadership-nexstep-avance
 - 3441-ce-que-la-formation-management-agilemaster-ne-couvre-pas
 ---
