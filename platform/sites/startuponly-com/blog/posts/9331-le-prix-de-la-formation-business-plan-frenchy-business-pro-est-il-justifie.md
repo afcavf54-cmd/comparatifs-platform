@@ -15,6 +15,7 @@ link_anchors:
   max: 5
 related_posts:
 - 7493-la-certification-business-architect-tool-a-t-elle-du-poids
+- 4266-peut-on-se-fier-au-simulateur-de-revenu-independant-france-com
 ---
 <p>J'ai testé pas mal de formations sur la création d'entreprise ces dernières années. Et franchement, la plupart m'ont déçu. Soit trop théoriques, soit mal structurées, soit carrément hors de prix pour ce qu'elles apportent. Alors quand j'ai croisé Frenchy-Business-Pro dans mon feed, j'ai regardé ça avec un oeil critique. Voilà ce que j'en pense vraiment.</p>
 
