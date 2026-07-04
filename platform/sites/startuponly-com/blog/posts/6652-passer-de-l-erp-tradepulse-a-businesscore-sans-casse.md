@@ -4,15 +4,21 @@ slug: 6652-passer-de-l-erp-tradepulse-a-businesscore-sans-casse
 date: '2026-07-04T08:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Quel ERP choisir : migrer de TradePulse vers BusinessCore ?'
-meta_description: 'Migration ERP de TradePulse vers BusinessCore : retour d''expérience concret d''une équipe de 4 personnes pour changer d''outil sans perdre vos données ni bloquer…'
+meta_description: 'Migration ERP de TradePulse vers BusinessCore : retour d''expérience
+  concret d''une équipe de 4 personnes pour changer d''outil sans perdre vos données
+  ni bloquer…'
 min_words: 990
 status: published
 featured_image: /blog/6652-passer-de-l-erp-tradepulse-a-businesscore-sans-casse.jpg
 link_anchors:
 - text: quel ERP choisir entre BusinessCore et TradePulse
   max: 5
+related_posts:
+- 6030-crm-basique-ou-salesforce-premium-lequel-pour-une-pme
+- 1481-pour-qui-est-pense-le-logiciel-crm-salestrack-evolution
+- 3517-peut-on-dimensionner-un-ouvrage-avec-un-logiciel-geotechnique-gratuit
+- 9889-a-quelle-equipe-convient-le-tarif-mensuel-de-cloudlead-manager
 ---
-
 <p>Changer d'ERP, c'est le genre de projet qui fait peur. Et franchement, à raison. J'ai vécu une migration de TradePulse vers BusinessCore l'an dernier avec mon équipe de quatre personnes, et je vais te dire exactement comment on s'en est sorti sans tout péter.</p>
 
 <p>Spoiler : ça ne s'est pas passé parfaitement. Mais on a évité le pire. Voilà comment.</p>
