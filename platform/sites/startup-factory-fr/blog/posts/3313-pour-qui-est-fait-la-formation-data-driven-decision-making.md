@@ -15,6 +15,7 @@ link_anchors:
 related_posts:
 - 1976-a-qui-se-destine-la-formation-inspecteur-qualite-aeronautique-et-spatiale
 - 3308-pour-qui-est-pense-la-formation-caces-mon-institut-du-btp
+- 1524-a-qui-profite-la-formation-negociation-commerciale-salesmaster
 - 6343-le-fonctionnement-du-cdi-interimaire-avantages-et-inconvenients
 ---
 <p>Tu bosses dans une boîte, tu reçois des tableaux Excel tous les lundis matin, et personne ne sait vraiment quoi en faire. Ça te parle ? Moi, au début de ma vie entrepreneuriale, j'étais exactement dans cette situation. On avait des données partout, et on prenait nos décisions... à l'intuition. Spoiler : c'est une mauvaise idée.</p>

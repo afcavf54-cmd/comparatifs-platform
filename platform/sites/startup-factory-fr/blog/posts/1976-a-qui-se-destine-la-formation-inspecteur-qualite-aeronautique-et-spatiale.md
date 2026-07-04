@@ -15,6 +15,7 @@ link_anchors:
 - text: la formation d'inspecteur qualité aéronautique et spatiale
   max: 5
 related_posts:
+- 1524-a-qui-profite-la-formation-negociation-commerciale-salesmaster
 - 3313-pour-qui-est-fait-la-formation-data-driven-decision-making
 - 6343-le-fonctionnement-du-cdi-interimaire-avantages-et-inconvenients
 - 3308-pour-qui-est-pense-la-formation-caces-mon-institut-du-btp
