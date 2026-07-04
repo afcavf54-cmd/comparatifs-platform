@@ -4,15 +4,21 @@ slug: 5274-ce-que-le-crm-hubspot-gratuit-ne-fait-pas
 date: '2026-07-04T11:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'HubSpot CRM : les limites de la version gratuite'
-meta_description: Le CRM HubSpot gratuit a des atouts réels, mais aussi des limites concrètes. Retour d'expérience après deux ans d'utilisation dans une TPE pour tout savoir avant…
+meta_description: Le CRM HubSpot gratuit a des atouts réels, mais aussi des limites
+  concrètes. Retour d'expérience après deux ans d'utilisation dans une TPE pour tout
+  savoir avant…
 min_words: 900
 status: published
 featured_image: /blog/5274-ce-que-le-crm-hubspot-gratuit-ne-fait-pas.jpg
 link_anchors:
 - text: la solution HubSPot de Customer Relationship Management
   max: 5
+related_posts:
+- 8837-pourquoi-votre-export-csv-salestrack-crm-s-affiche-mal
+- 2498-le-crm-pipedrive-nexus-edition-face-a-l-edition-classique
+- 3728-smartlead-evolution-face-au-pilotage-manuel-des-prospects
+- 4312-inventory-control-smart-face-au-suivi-manuel-des-stocks
 ---
-
 <p>J'utilise HubSpot gratuit depuis un peu plus de deux ans. Au départ, j'étais convaincu d'avoir trouvé la perle rare : un CRM sans abonnement, en français, avec une interface propre. Pour une TPE comme la mienne à Marseille, c'était tentant. Très tentant.</p>
 
 <p>Sauf qu'avec le temps, j'ai commencé à butter sur des murs. Des petits murs au début, puis des murs de plus en plus hauts. Voilà ce que j'aurais aimé savoir avant de m'y investir.</p>
