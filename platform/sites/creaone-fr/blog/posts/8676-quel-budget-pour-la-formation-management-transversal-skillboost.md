@@ -4,15 +4,21 @@ slug: 8676-quel-budget-pour-la-formation-management-transversal-skillboost
 date: '2026-07-04T18:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation management transversal SkillBoost : combien ça coûte ?'
-meta_description: 'Découvrez le budget réel d''une formation management transversal SkillBoost : tarifs, modules, retours terrain et conseils pour justifier l''investissement à votre…'
+meta_description: 'Découvrez le budget réel d''une formation management transversal
+  SkillBoost : tarifs, modules, retours terrain et conseils pour justifier l''investissement
+  à votre…'
 min_words: 970
 status: published
 featured_image: /blog/8676-quel-budget-pour-la-formation-management-transversal-skillboost.jpg
 link_anchors:
 - text: la certification de la formation management transversal SkillBoost
   max: 5
+related_posts:
+- 4910-duree-d-apprentissage-de-la-methode-management-leadership-360
+- 3972-delai-d-adoption-du-systeme-management-agileframe
+- 5052-quel-budget-pour-la-formation-management-d-equipe-leadpro-certified
+- 3490-duree-et-rythme-de-la-formation-leadership-nexstep-avance
 ---
-
 <p>Quand on gère une équipe comptable et qu'on doit justifier chaque ligne budgétaire à sa direction, la question du coût d'une formation ne se pose pas à la légère. J'ai été confronté à ce sujet plusieurs fois ces deux dernières années, notamment autour des formations SkillBoost en management transversal. Et je vais vous partager ce que j'ai compris, chiffres et retours concrets à l'appui.</p>
 
 <h2>Ce que recouvre vraiment la formation management transversal SkillBoost</h2>
