@@ -14,8 +14,9 @@ link_anchors:
   max: 5
 related_posts:
 - 7625-quel-budget-pour-une-formation-data-driven-decision-making
-- 8703-avantages-et-inconvenients-du-cdi-interimaire-erreurs-a-eviter
 - 3744-duree-d-une-formation-inspecteur-qualite-aeronautique-et-spatiale
+- 4503-duree-d-assimilation-de-la-methode-de-negociation-salesmaster
+- 8703-avantages-et-inconvenients-du-cdi-interimaire-erreurs-a-eviter
 ---
 <p>Quand on parle de CACES, la première question qui revient, c'est toujours la même : combien de temps ça prend ? Et c'est une question légitime. En tant que responsable comptable, j'ai régulièrement à gérer les absences de salariés partis en formation. L'organisation, les remplacements, les coûts indirects... tout ça compte. Alors oui, la durée d'une formation CACES, c'est un élément concret qui influe directement sur le planning d'une équipe et sur le budget formation.</p>
 

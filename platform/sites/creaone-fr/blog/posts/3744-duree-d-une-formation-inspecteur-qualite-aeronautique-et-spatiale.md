@@ -15,9 +15,10 @@ link_anchors:
 - text: la formation d'inspecteur qualité aéronautique et spatiale
   max: 5
 related_posts:
+- 4503-duree-d-assimilation-de-la-methode-de-negociation-salesmaster
 - 8703-avantages-et-inconvenients-du-cdi-interimaire-erreurs-a-eviter
-- 7625-quel-budget-pour-une-formation-data-driven-decision-making
 - 3987-duree-de-la-formation-caces-mon-institut-du-btp
+- 7625-quel-budget-pour-une-formation-data-driven-decision-making
 ---
 <p>Neuf ans à croiser des dossiers de formation, des plans de développement des compétences et des budgets serrés, ça forge une opinion. Quand un collaborateur vient me voir pour parler de reconversion vers l'inspection qualité en aéronautique et spatiale, ma première question c'est toujours : "Tu as regardé combien de temps ça prend vraiment ?" Parce que la durée d'une formation inspecteur qualité aéronautique et spatiale, c'est rarement ce qu'on imagine au premier coup d'œil.</p>
 

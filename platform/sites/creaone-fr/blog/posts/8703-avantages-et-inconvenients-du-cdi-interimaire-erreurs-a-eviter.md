@@ -13,9 +13,10 @@ link_anchors:
 - text: les avantages et inconvénients du CDI intérimaire
   max: 5
 related_posts:
-- 3744-duree-d-une-formation-inspecteur-qualite-aeronautique-et-spatiale
 - 7625-quel-budget-pour-une-formation-data-driven-decision-making
+- 4503-duree-d-assimilation-de-la-methode-de-negociation-salesmaster
 - 3987-duree-de-la-formation-caces-mon-institut-du-btp
+- 3744-duree-d-une-formation-inspecteur-qualite-aeronautique-et-spatiale
 ---
 <p>Le CDI intérimaire, c'est un contrat qui fait encore débat dans beaucoup d'entreprises utilisatrices, et franchement, je comprends pourquoi. Côté salarié, c'est encore plus compliqué à décrypter. J'ai vu des collègues hésiter des mois avant de signer, d'autres regretter de ne pas l'avoir fait plus tôt. La réalité est moins tranchée qu'on ne le croit au premier regard.</p>
 
