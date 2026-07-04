@@ -3,16 +3,23 @@ title: À qui se destine la formation management transversal SkillBoost
 slug: 6799-a-qui-se-destine-la-formation-management-transversal-skillboost
 date: '2026-07-04T10:00:00+02:00'
 categorie: Ressources Humaines
-meta_title: 'Formation management transversal SkillBoost : pour quel chef de projet ?'
-meta_description: Découvrez à qui s'adresse vraiment la formation management transversal SkillBoost, un programme ciblé pour coordonner sans autorité hiérarchique et gagner en…
+meta_title: 'Formation management transversal SkillBoost : pour quel chef de projet
+  ?'
+meta_description: Découvrez à qui s'adresse vraiment la formation management transversal
+  SkillBoost, un programme ciblé pour coordonner sans autorité hiérarchique et gagner
+  en…
 min_words: 970
 status: published
 featured_image: /blog/6799-a-qui-se-destine-la-formation-management-transversal-skillboost.jpg
 link_anchors:
 - text: la certification de la formation management transversal SkillBoost
   max: 5
+related_posts:
+- 8120-pour-qui-est-pense-la-formation-management-d-equipe-leadpro-certified
+- 6839-ce-que-la-formation-leadership-academy-pro-ne-vous-apporte-pas
+- 2803-a-quel-profil-convient-la-formation-management-methode-leadership-360
+- 2463-ce-que-la-formation-lean-sigma7-ne-peut-pas-condenser
 ---
-
 <p>Quand j'ai commencé à chercher une formation en management transversal pour mon équipe, j'ai vite réalisé que l'offre est immense. Et souvent floue. Des dizaines de programmes qui disent à peu près la même chose, avec les mêmes mots, les mêmes promesses. SkillBoost sort du lot pour une raison simple : le ciblage est clair. Le programme sait à qui il parle. Et ça, dans la formation pro, c'est rare.</p>
 
 <p>Je vais te dire ce que j'ai compris sur ce programme, pour qui ça fait vraiment sens, et surtout pour qui ça ne marchera pas.</p>
