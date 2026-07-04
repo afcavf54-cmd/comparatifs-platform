@@ -4,15 +4,21 @@ slug: 9891-le-coworking-la-cantine-x-french-tech-nantes-sans-filtre
 date: '2026-07-04T17:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'Coworking La Cantine x French Tech Nantes : que vaut l''espace ?'
-meta_description: 'Découvrez La Cantine x French Tech Nantes à travers un retour d''expérience sincère : ambiance, communauté, événements et pour qui ce coworking est vraiment fait.'
+meta_description: 'Découvrez La Cantine x French Tech Nantes à travers un retour d''expérience
+  sincère : ambiance, communauté, événements et pour qui ce coworking est vraiment
+  fait.'
 min_words: 930
 status: published
 featured_image: /blog/9891-le-coworking-la-cantine-x-french-tech-nantes-sans-filtre.jpg
 link_anchors:
 - text: l'espace de coworking La Cantine x La French Tech Nantes
   max: 5
+related_posts:
+- 9790-demander-un-devis-deco-chez-lestylechezsoi
+- 4540-les-indicateurs-economiques-territoriaux-de-leterritoireentreprise-passe-a-la-loupe
+- 6025-duree-de-la-formation-strategie-digitale-webmarket-certifiante
+- 3251-la-formation-inbound-marketing-hubgrow-academy-sans-detour
 ---
-
 <p>J'ai mis les pieds à La Cantine pour la première fois il y a trois ans. Une journée de passage à Nantes, un rendez-vous annulé au dernier moment, et un ami qui m'avait dit "va travailler là-bas, tu vas voir". Franchement, je ne m'attendais pas à grand-chose. Un espace de coworking comme les autres, avec des néons, des tables en bois recyclé et un café trop fort.</p>
 
 <p>Ce n'était pas du tout ça.</p>
