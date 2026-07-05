@@ -3,16 +3,23 @@ title: Durée et rythme de la formation négociation DealMaker Intensive
 slug: 6365-duree-et-rythme-de-la-formation-negociation-dealmaker-intensive
 date: '2026-07-05T12:00:00+02:00'
 categorie: Salarié
-meta_title: 'Formation négociation commerciale DealMaker Intensive : combien de jours ?'
-meta_description: 'Découvrez comment la formation DealMaker Intensive est structurée : 3 jours intensifs en présentiel, 21 heures de pratique, compatibles avec un emploi à temps plein.'
+meta_title: 'Formation négociation commerciale DealMaker Intensive : combien de jours
+  ?'
+meta_description: 'Découvrez comment la formation DealMaker Intensive est structurée
+  : 3 jours intensifs en présentiel, 21 heures de pratique, compatibles avec un emploi
+  à temps plein.'
 min_words: 940
 status: published
 featured_image: /blog/6365-duree-et-rythme-de-la-formation-negociation-dealmaker-intensive.jpg
 link_anchors:
 - text: la formation négociation commerciale DealMaker Intensive
   max: 5
+related_posts:
+- 3744-duree-d-une-formation-inspecteur-qualite-aeronautique-et-spatiale
+- 7625-quel-budget-pour-une-formation-data-driven-decision-making
+- 3987-duree-de-la-formation-caces-mon-institut-du-btp
+- 4503-duree-d-assimilation-de-la-methode-de-negociation-salesmaster
 ---
-
 <p>Quand on gère une équipe comptable et qu'on doit aussi négocier des contrats fournisseurs, des conditions bancaires ou des budgets avec la direction, on se retrouve vite à la limite de ce qu'on a appris sur le tas. C'est exactement ce qui m'a poussé à m'intéresser à la formation <strong>DealMaker Intensive</strong>. Pas par envie de changer de métier, mais parce que j'ai réalisé que mes compétences en négociation n'étaient pas à la hauteur de mes responsabilités.</p>
 
 <p>Avant d'investir du temps et de l'argent, j'ai voulu comprendre précisément comment cette formation était structurée. Combien de jours ? Quel rythme ? Est-ce compatible avec un poste à temps plein ? Voilà les vraies questions que je me suis posées.</p>
