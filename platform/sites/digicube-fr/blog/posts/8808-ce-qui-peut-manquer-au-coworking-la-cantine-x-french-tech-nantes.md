@@ -4,15 +4,21 @@ slug: 8808-ce-qui-peut-manquer-au-coworking-la-cantine-x-french-tech-nantes
 date: '2026-07-05T12:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'Coworking La Cantine x French Tech Nantes : les limites'
-meta_description: 'Retour d''expérience sur La Cantine x French Tech Nantes : ambiance tech motivante, mais quelles limites pour une équipe de plus de cent personnes au quotidien ?'
+meta_description: 'Retour d''expérience sur La Cantine x French Tech Nantes : ambiance
+  tech motivante, mais quelles limites pour une équipe de plus de cent personnes au
+  quotidien ?'
 min_words: 930
 status: published
 featured_image: /blog/8808-ce-qui-peut-manquer-au-coworking-la-cantine-x-french-tech-nantes.jpg
 link_anchors:
 - text: l'espace de coworking La Cantine x La French Tech Nantes
   max: 5
+related_posts:
+- 1791-devis-travaux-en-ligne-les-erreurs-a-eviter-sur-e-local-fr
+- 9832-ce-que-la-formation-hubgrow-academy-ne-vous-apprend-pas
+- 4182-ce-que-les-indicateurs-de-leterritoireentreprise-ne-mesurent-pas
+- 4999-quel-budget-pour-un-devis-deco-lestylechezsoi
 ---
-
 <p>J'ai passé plusieurs mois à travailler depuis La Cantine x French Tech à Nantes. Honnêtement, c'est un endroit que j'apprécie. L'ambiance est bonne, les gens sont motivés, et on sent que l'écosystème tech nantais tourne autour de ce lieu. Mais depuis que je gère une équipe qui dépasse maintenant la centaine de personnes, j'ai commencé à voir les limites. Et certaines de ces limites, elles me coûtent vraiment du temps et de l'argent.</p>
 
 <p>Je vous partage ici ce que j'ai constaté. Pas pour descendre l'endroit, il a ses qualités. Mais parce que si vous cherchez un espace de coworking pour une structure un peu plus grande qu'une startup de trois personnes, vous devez savoir ce que vous allez trouver, et ce que vous n'allez pas trouver.</p>
