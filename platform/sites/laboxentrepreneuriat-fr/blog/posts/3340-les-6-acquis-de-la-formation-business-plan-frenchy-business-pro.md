@@ -14,6 +14,7 @@ link_anchors:
   max: 5
 related_posts:
 - 7981-les-6-acquis-de-la-formation-business-architect-tool
+- 7627-les-5-variables-du-simulateur-de-revenu-independant-france-com
 ---
 <h2>Ce que cette formation m'a vraiment appris sur la création d'entreprise</h2>
 
