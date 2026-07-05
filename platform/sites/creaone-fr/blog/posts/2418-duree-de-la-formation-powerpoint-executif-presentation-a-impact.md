@@ -4,15 +4,21 @@ slug: 2418-duree-de-la-formation-powerpoint-executif-presentation-a-impact
 date: '2026-07-05T19:00:00+02:00'
 categorie: Salarié
 meta_title: 'Formation PowerPoint exécutif : combien de temps ?'
-meta_description: Découvrez combien de temps dure une formation PowerPoint exécutif orientée présentation à impact et ce qu'elle couvre vraiment pour convaincre décideurs et CODIR.
+meta_description: Découvrez combien de temps dure une formation PowerPoint exécutif
+  orientée présentation à impact et ce qu'elle couvre vraiment pour convaincre décideurs
+  et CODIR.
 min_words: 930
 status: published
 featured_image: /blog/2418-duree-de-la-formation-powerpoint-executif-presentation-a-impact.jpg
 link_anchors:
 - text: la méthode de formation PowerPoint exécutif pour des présentations à impact
   max: 5
+related_posts:
+- 6365-duree-et-rythme-de-la-formation-negociation-dealmaker-intensive
+- 7625-quel-budget-pour-une-formation-data-driven-decision-making
+- 3987-duree-de-la-formation-caces-mon-institut-du-btp
+- 3744-duree-d-une-formation-inspecteur-qualite-aeronautique-et-spatiale
 ---
-
 <p>Neuf ans à travailler sur des reportings financiers, des présentations de clôture, des synthèses de bilan pour le comité de direction. J'ai dû en produire des centaines. Et pendant longtemps, j'ai sous-estimé PowerPoint. Je le voyais comme un outil basique, pas vraiment un sujet de formation sérieux.</p>
 
 <p>Jusqu'au jour où j'ai assisté à une présentation d'un collègue chef de projet qui a retourné une salle entière en 20 minutes. Même données que les miennes. Même contexte. Résultat complètement différent. C'est là que j'ai compris que le fond ne suffit pas. La forme compte, surtout quand on s'adresse à des décideurs.</p>
