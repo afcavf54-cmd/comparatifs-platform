@@ -4,15 +4,20 @@ slug: 5837-pour-qui-est-fait-la-formation-seo-vite-une-formation
 date: '2026-07-05T18:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'Formation SEO Vite-une-Formation : pour quel niveau ?'
-meta_description: 'Découvrez pour qui est vraiment faite la formation SEO Vite-une-Formation : entrepreneurs, responsables marketing ou chefs de projet, sans jargon ni prérequis…'
+meta_description: 'Découvrez pour qui est vraiment faite la formation SEO Vite-une-Formation
+  : entrepreneurs, responsables marketing ou chefs de projet, sans jargon ni prérequis…'
 min_words: 920
 status: published
 featured_image: /blog/5837-pour-qui-est-fait-la-formation-seo-vite-une-formation.jpg
 link_anchors:
 - text: la formation SEO de Vite-Une-Formation
   max: 5
+related_posts:
+- 4613-a-quels-chantiers-s-adresse-btp-chantier-fr
+- 5987-a-qui-se-prete-la-formation-inbound-marketing-hubgrow-academy
+- 9552-devis-deco-les-erreurs-a-eviter-avec-lestylechezsoi
+- 8553-a-quels-chantiers-s-adresse-le-devis-travaux-en-ligne-e-local-fr
 ---
-
 <p>Je vais être honnête avec toi. Quand j'ai cherché une formation SEO pour mon équipe chez Vite-Une-Formation, ma première question c'était pas "est-ce que c'est bien ?" mais plutôt : "est-ce que mes salariés vont pouvoir suivre sans que ça devienne une galère pendant trois semaines ?"</p>
 
 <p>Parce que j'ai une startup de 30 personnes à Nantes. Personne n'a le temps de passer des heures sur des modules indigestes. Et moi non plus.</p>
