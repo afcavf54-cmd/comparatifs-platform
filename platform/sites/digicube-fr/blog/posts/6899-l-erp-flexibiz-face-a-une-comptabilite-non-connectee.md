@@ -4,15 +4,21 @@ slug: 6899-l-erp-flexibiz-face-a-une-comptabilite-non-connectee
 date: '2026-07-05T06:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Intégration ERP FlexiBiz vs double saisie comptable
-meta_description: 'Retour d''expérience concret sur FlexiBiz utilisé sans comptabilité connectée : erreurs de saisie, écarts inexpliqués et deux jours perdus chaque mois pour…'
+meta_description: 'Retour d''expérience concret sur FlexiBiz utilisé sans comptabilité
+  connectée : erreurs de saisie, écarts inexpliqués et deux jours perdus chaque mois
+  pour…'
 min_words: 920
 status: published
 featured_image: /blog/6899-l-erp-flexibiz-face-a-une-comptabilite-non-connectee.jpg
 link_anchors:
 - text: l'intégration de l'ERP FlexiBiz avec la comptabilité
   max: 5
+related_posts:
+- 8139-ce-que-la-mensualite-du-crm-saas-cloudlead-manager-n-inclut-pas
+- 5928-mal-configurer-le-crm-leadflow-automation-ce-qui-plante
+- 3259-configuration-de-l-erp-dynabiz-pro-les-pieges-courants
+- 4465-smartchain-360-face-aux-erp-generalistes
 ---
-
 <p>On a pas mal tâtonné avant d'arriver là. Deux ans d'expérience sur FlexiBiz, une équipe qui grandissait, et une comptabilité qui tournait encore sur un fichier Excel partagé par trois personnes. Le genre de situation qui semble tenir, jusqu'au jour où ça ne tient plus.</p>
 
 <p>Je vais vous expliquer ce qu'on a vécu concrètement, ce qui a coincé, et ce que j'aurais fait différemment si c'était à refaire.</p>
