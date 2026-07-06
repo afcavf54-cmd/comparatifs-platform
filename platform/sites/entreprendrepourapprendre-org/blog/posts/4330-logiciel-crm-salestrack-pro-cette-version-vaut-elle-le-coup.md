@@ -4,15 +4,21 @@ slug: 4330-logiciel-crm-salestrack-pro-cette-version-vaut-elle-le-coup
 date: '2026-07-06T19:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Avis sur le logiciel CRM SalesTrack Pro
-meta_description: 'Test complet du logiciel CRM SalesTrack Pro par une gérante de TPE : interface, relances automatiques, suivi client et verdict honnête pour les petites équipes.'
+meta_description: 'Test complet du logiciel CRM SalesTrack Pro par une gérante de
+  TPE : interface, relances automatiques, suivi client et verdict honnête pour les
+  petites équipes.'
 min_words: 990
 status: published
 featured_image: /blog/4330-logiciel-crm-salestrack-pro-cette-version-vaut-elle-le-coup.jpg
 link_anchors:
 - text: les avis sur le logiciel CRM SalesTrack Pro
   max: 5
+related_posts:
+- 6718-implementer-l-erp-bizflow-v8-pro-point-par-point
+- 1377-parametrer-le-crm-pipedrive-nexus-edition-en-quelques-etapes
+- 7831-crm-basique-ou-salesforce-premium-quelle-difference
+- 4752-integrer-l-erp-flexmanage-plus-mode-d-emploi
 ---
-
 <p>J'ai testé pas mal de CRM ces dernières années. Trop, probablement. Chaque fois qu'un commercial me vante "la solution qui va tout changer", j'ai appris à rester méfiante. Avec SalesTrack Pro, j'avoue que j'étais sceptique dès le départ, parce que le nom seul sent le logiciel américain pensé pour des équipes de 200 personnes, pas pour une agence de six.</p>
 
 <p>J'ai quand même creusé. Voilà ce que j'en pense vraiment, sans filtre.</p>
