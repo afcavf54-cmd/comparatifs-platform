@@ -4,15 +4,21 @@ slug: 7992-logiciel-crm-salestrack-evolution-ce-qu-on-en-retient
 date: '2026-07-06T12:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Avis sur le logiciel CRM SalesTrack Evolution
-meta_description: 'Avis concret sur le logiciel CRM SalesTrack Evolution après plusieurs semaines d''utilisation en petite agence : prise en main, automatisation des relances et…'
+meta_description: 'Avis concret sur le logiciel CRM SalesTrack Evolution après plusieurs
+  semaines d''utilisation en petite agence : prise en main, automatisation des relances
+  et…'
 min_words: 980
 status: published
 featured_image: /blog/7992-logiciel-crm-salestrack-evolution-ce-qu-on-en-retient.jpg
 link_anchors:
 - text: les avis sur le logiciel CRM SalesTrack Evolution
   max: 5
+related_posts:
+- 7831-crm-basique-ou-salesforce-premium-quelle-difference
+- 2699-utiliser-le-crm-salesflow-evolution-en-pratique
+- 5585-logiciel-crm-salestrack-360-que-disent-les-utilisateurs
+- 4839-combien-coute-l-implementation-du-systeme-bizcore-advanced
 ---
-
 <p>J'avais entendu parler de SalesTrack Evolution par une autre dirigeante d'une petite agence, lors d'un déjeuner réseau à Lyon. Elle en parlait bien. Trop bien, peut-être. Du coup j'ai voulu tester par moi-même, sans me laisser influencer. Voilà ce que j'en retiens, après plusieurs semaines d'utilisation avec mon équipe de six personnes.</p>
 
 <h2>Pourquoi on cherchait un CRM à ce moment-là</h2>
