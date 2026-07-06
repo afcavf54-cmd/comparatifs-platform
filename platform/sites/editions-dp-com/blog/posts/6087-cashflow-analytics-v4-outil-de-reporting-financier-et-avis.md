@@ -4,15 +4,21 @@ slug: 6087-cashflow-analytics-v4-outil-de-reporting-financier-et-avis
 date: '2026-07-06T07:00:00+02:00'
 categorie: Finance & Comptabilité
 meta_title: 'Cashflow Analytics V4 : avis et fonctionnalités'
-meta_description: 'Avis terrain sur Cashflow Analytics V4 : cet outil de reporting financier vaut-il vraiment pour une PME sans DSI ? Retour d''expérience après deux ans d''utilisation.'
+meta_description: 'Avis terrain sur Cashflow Analytics V4 : cet outil de reporting
+  financier vaut-il vraiment pour une PME sans DSI ? Retour d''expérience après deux
+  ans d''utilisation.'
 min_words: 950
 status: published
 featured_image: /blog/6087-cashflow-analytics-v4-outil-de-reporting-financier-et-avis.jpg
 link_anchors:
 - text: l'outil de reporting financier Cashflow Analytics V4
   max: 5
+related_posts:
+- 2924-logiciel-de-gestion-de-tresorerie-cashmaster-ultimate-avis-et-fonctionnalites
+- 8982-quasi-usufruit-definition-avantages-inconvenients-et-cas-d-usage-en-gestion-patrimoniale
+- 3413-actif-net-reevalue-anr-comment-le-calculer-et-l-interpreter-en-analyse-financiere
+- 4958-infonet-l-outil-de-reference-pour-surveiller-les-entreprises-francaises
 ---
-
 <p>J'utilise Cashflow Analytics depuis un peu plus de deux ans. Version 3, puis V4 depuis le printemps dernier. Et je vais vous dire franchement ce que j'en pense, en tant que dirigeant d'une PME lyonnaise sans DSI, sans contrôleur de gestion dédié, et avec une équipe qui n'a pas le temps de se former pendant des semaines.</p>
 
 <p>Le reporting financier, c'est souvent le parent pauvre dans les petites structures. On jongle entre les exports Excel, les relances manuelles, et un comptable qu'on appelle trop tard. Cashflow Analytics V4 m'a été recommandé par un confrère qui cherchait à automatiser ses tableaux de trésorerie. J'ai testé. Voilà ce que j'ai trouvé.</p>
