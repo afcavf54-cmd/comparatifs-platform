@@ -4,15 +4,21 @@ slug: 5160-le-temps-de-deploiement-du-crm-smartsales-enterprise-sans-surprise
 date: '2026-07-06T06:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'CRM SmartSales Enterprise : quel délai de déploiement ?'
-meta_description: 'Découvrez le temps de déploiement réel du CRM SmartSales Enterprise, phase par phase, sans discours commercial : technique, configuration et prise en main des…'
+meta_description: 'Découvrez le temps de déploiement réel du CRM SmartSales Enterprise,
+  phase par phase, sans discours commercial : technique, configuration et prise en
+  main des…'
 min_words: 940
 status: published
 featured_image: /blog/5160-le-temps-de-deploiement-du-crm-smartsales-enterprise-sans-surprise.jpg
 link_anchors:
 - text: le temps de déploiement du CRM SmartSales Enterprise
   max: 5
+related_posts:
+- 3727-les-6-atouts-de-l-erp-rapidesk-solutions-pour-une-pme
+- 3948-le-vrai-cout-d-implementation-du-systeme-bizcore-advanced
+- 1469-businesscore-ou-tradepulse-le-match-pour-choisir-son-erp
+- 5947-integration-du-module-de-fidelisation-loyaltymax-au-crm-en-pratique
 ---
-
 <p>Déployer un CRM, c'est rarement une partie de plaisir. J'ai accompagné des dizaines d'entreprises là-dedans, et la question qui revient le plus souvent, c'est : "Combien de temps ça va vraiment prendre ?" Pas la réponse du commercial. La vraie.</p>
 
 <p>Avec <strong>SmartSales Enterprise</strong>, j'ai eu l'occasion de suivre plusieurs déploiements de bout en bout, de la configuration initiale jusqu'à la prise en main par les équipes terrain. Ce que je vais vous partager ici, c'est du concret. Pas une plaquette marketing.</p>
