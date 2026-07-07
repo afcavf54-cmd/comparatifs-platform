@@ -4,15 +4,21 @@ slug: 1428-reussir-l-integration-de-l-erp-flexibiz-avec-la-comptabilite
 date: '2026-07-07T11:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Intégration de l''ERP FlexiBiz avec la comptabilité : la liste de contrôle'
-meta_description: Intégrer FlexiBiz à votre comptabilité sans erreurs coûteuses, c'est possible. Découvrez les étapes clés, les pièges concrets et les bonnes pratiques testées sur…
+meta_description: Intégrer FlexiBiz à votre comptabilité sans erreurs coûteuses, c'est
+  possible. Découvrez les étapes clés, les pièges concrets et les bonnes pratiques
+  testées sur…
 min_words: 920
 status: published
 featured_image: /blog/1428-reussir-l-integration-de-l-erp-flexibiz-avec-la-comptabilite.jpg
 link_anchors:
 - text: l'intégration de l'ERP FlexiBiz avec la comptabilité
   max: 5
+related_posts:
+- 4820-nettoyer-un-export-csv-de-donnees-salestrack-crm
+- 7255-le-surcout-de-salesforce-premium-face-a-un-crm-basique-est-il-justifie
+- 7540-qui-mobiliser-pour-implementer-nextgen-business-suite
+- 6698-erp-bizcore-enterprise-amorti-en-combien-de-temps
 ---
-
 <p>Ça fait neuf ans que je fais de la comptabilité dans des structures de taille moyenne. Et honnêtement, l'intégration ERP-comptabilité, c'est le sujet qui revient le plus souvent dans les discussions entre responsables comptables. Pas parce que c'est glamour. Parce que quand ça rate, ça coûte cher. En temps, en argent, en nerfs.</p>
 
 <p>J'ai vécu plusieurs projets de ce type chez des clients ou en interne. Des réussites, quelques galères mémorables. Ce que je vais vous partager ici, c'est du concret, pas de la théorie.</p>
