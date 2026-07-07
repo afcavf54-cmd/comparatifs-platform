@@ -3,16 +3,22 @@ title: Comment bien sélectionner le coworking La Cantine x French Tech Nantes
 slug: 8299-comment-bien-selectionner-le-coworking-la-cantine-x-french-tech-nantes
 date: '2026-07-07T18:00:00+02:00'
 categorie: Entrepreneuriat
-meta_title: 'Coworking La Cantine x French Tech Nantes : la liste des vérifications avant de s''installer'
-meta_description: 'Découvrez si La Cantine x French Tech Nantes est le bon coworking pour vous : sélection, profils recherchés et ce qu''il faut savoir avant de candidater.'
+meta_title: 'Coworking La Cantine x French Tech Nantes : la liste des vérifications
+  avant de s''installer'
+meta_description: 'Découvrez si La Cantine x French Tech Nantes est le bon coworking
+  pour vous : sélection, profils recherchés et ce qu''il faut savoir avant de candidater.'
 min_words: 930
 status: published
 featured_image: /blog/8299-comment-bien-selectionner-le-coworking-la-cantine-x-french-tech-nantes.jpg
 link_anchors:
 - text: l'espace de coworking La Cantine x La French Tech Nantes
   max: 5
+related_posts:
+- 8615-bien-decrire-son-chantier-sur-btp-chantier-fr
+- 2492-formule-flex-ou-dediee-les-tarifs-coworking-lefoyerentrepreneurial
+- 1448-duree-et-format-de-la-formation-inbound-marketing-hubgrow-academy
+- 8712-bien-exploiter-les-indicateurs-economiques-de-leterritoireentreprise
 ---
-
 <p>J'ai mis un moment avant de vraiment comprendre ce que proposait <strong>La Cantine x French Tech Nantes</strong>. De l'extérieur, ça ressemble à un espace de coworking parmi d'autres. En réalité, c'est un lieu pensé pour les profils tech, les startups en phase d'amorçage et les entrepreneurs qui veulent être entourés d'un vrai écosystème. Neuf ans à travailler avec des dirigeants, des freelances et des équipes en croissance m'ont appris à faire la différence entre un espace qui se contente de louer des bureaux et un lieu qui crée des dynamiques.</p>
 
 <p>Celui-ci appartient clairement à la deuxième catégorie. Mais est-ce que ça en fait forcément le bon choix pour vous ? Pas nécessairement.</p>
