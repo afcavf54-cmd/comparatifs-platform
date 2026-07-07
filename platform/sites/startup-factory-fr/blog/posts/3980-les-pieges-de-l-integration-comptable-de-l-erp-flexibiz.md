@@ -4,15 +4,21 @@ slug: 3980-les-pieges-de-l-integration-comptable-de-l-erp-flexibiz
 date: '2026-07-07T07:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Intégration de l''ERP FlexiBiz avec la comptabilité : les erreurs à éviter'
-meta_description: 'Evitez les erreurs de configuration comptable avec l''ERP FlexiBiz. Mapping des comptes, TVA, rapprochements : découvrez les pièges courants et comment les…'
+meta_description: 'Evitez les erreurs de configuration comptable avec l''ERP FlexiBiz.
+  Mapping des comptes, TVA, rapprochements : découvrez les pièges courants et comment
+  les…'
 min_words: 920
 status: published
 featured_image: /blog/3980-les-pieges-de-l-integration-comptable-de-l-erp-flexibiz.jpg
 link_anchors:
 - text: l'intégration de l'ERP FlexiBiz avec la comptabilité
   max: 5
+related_posts:
+- 7126-salesconnect-pro-vs-marketwise-forces-et-faiblesses-du-crm
+- 5026-a-quel-moment-passer-d-un-crm-basique-a-salesforce-premium
+- 2748-pourquoi-ne-pas-garder-la-config-d-usine-de-leadflow-automation
+- 9178-projet-erp-bizflow-max-les-pieges-qui-font-derailler
 ---
-
 <p>J'ai failli perdre trois semaines de données comptables à cause d'une mauvaise config d'intégration. Pas de panique, j'ai rattrapé le coup, mais ça m'a appris quelque chose : FlexiBiz est un outil puissant, et c'est exactement ce qui le rend piégeux. Plus c'est flexible, plus il y a de trucs à rater.</p>
 
 <p>Si tu es en train de déployer FlexiBiz dans ta boîte ou si tu envisages de le faire, cet article est pour toi. Je vais te montrer les erreurs que j'ai vues, celles que j'ai faites moi-même, et comment les éviter sans y passer des mois.</p>
