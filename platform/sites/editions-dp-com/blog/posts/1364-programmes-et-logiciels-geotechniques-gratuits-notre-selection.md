@@ -4,15 +4,21 @@ slug: 1364-programmes-et-logiciels-geotechniques-gratuits-notre-selection
 date: '2026-07-07T12:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Logiciels géotechniques gratuits : comparatif complet'
-meta_description: 'Découvrez notre sélection de logiciels géotechniques gratuits testés par un dirigeant de PME BTP : calculs de fondations, capacité portante et coupes de sol sans…'
+meta_description: 'Découvrez notre sélection de logiciels géotechniques gratuits testés
+  par un dirigeant de PME BTP : calculs de fondations, capacité portante et coupes
+  de sol sans…'
 min_words: 990
 status: published
 featured_image: /blog/1364-programmes-et-logiciels-geotechniques-gratuits-notre-selection.jpg
 link_anchors:
 - text: les programmes et logiciels géotechniques gratuits
   max: 5
+related_posts:
+- 2141-comment-parametrer-erp-businesscore-enterprise-etape-par-etape
+- 3611-crm-mobile-fieldforce-connect-android-fonctionnalites-et-utilisation
+- 3861-les-criteres-essentiels-pour-bien-choisir-son-agence-web-et-eviter-les-mauvaises-surprises
+- 5728-comment-integrer-erp-flexmanage-plus-a-votre-systeme-d-information
 ---
-
 <p>Je gère une PME dans le bâtiment depuis onze ans. Et pendant longtemps, j'ai dépensé des sommes folles en logiciels géotechniques que mes équipes utilisaient... deux fois par an. Pas rentable. Du tout.</p>
 
 <p>Alors j'ai passé quelques semaines à tester ce qui existe en gratuit. Vraiment gratuit, pas "gratuit pendant 14 jours puis 290€/mois". Voici ce que j'ai trouvé, ce qui m'a convaincu, et ce qui m'a déçu.</p>
