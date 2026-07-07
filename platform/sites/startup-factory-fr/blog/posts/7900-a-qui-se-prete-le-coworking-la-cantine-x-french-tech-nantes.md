@@ -4,15 +4,21 @@ slug: 7900-a-qui-se-prete-le-coworking-la-cantine-x-french-tech-nantes
 date: '2026-07-07T10:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'Coworking La Cantine x French Tech Nantes : pour quel profil ?'
-meta_description: 'Coworking La Cantine x French Tech Nantes : découvrez à qui cet espace dédié aux startups et profils tech s''adresse vraiment, ses avantages et son ambiance unique.'
+meta_description: 'Coworking La Cantine x French Tech Nantes : découvrez à qui cet
+  espace dédié aux startups et profils tech s''adresse vraiment, ses avantages et
+  son ambiance unique.'
 min_words: 930
 status: published
 featured_image: /blog/7900-a-qui-se-prete-le-coworking-la-cantine-x-french-tech-nantes.jpg
 link_anchors:
 - text: l'espace de coworking La Cantine x La French Tech Nantes
   max: 5
+related_posts:
+- 9262-a-qui-servent-les-indicateurs-economiques-de-leterritoireentreprise
+- 5987-a-qui-se-prete-la-formation-inbound-marketing-hubgrow-academy
+- 4613-a-quels-chantiers-s-adresse-btp-chantier-fr
+- 9055-ce-que-la-formation-strategie-digitale-webmarket-ne-couvre-pas
 ---
-
 <p>Je vais être honnête : quand j'ai cherché un espace de coworking à Nantes pour ma startup, j'ai mis un temps fou à démêler ce qui existait. La Cantine x French Tech Nantes, j'en avais entendu parler par d'autres fondateurs. Mais à qui ça s'adresse vraiment ? C'est la question que je me posais avant d'y mettre les pieds.</p>
 
 <p>Voilà ce que j'ai compris après plusieurs mois à fréquenter l'endroit, à discuter avec les équipes et à observer qui y travaillait.</p>
