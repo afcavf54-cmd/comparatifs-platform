@@ -4,15 +4,20 @@ slug: 2704-les-5-reflexes-utiles-sur-le-crm-smartlead-evolution
 date: '2026-07-07T06:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Utiliser le CRM SmartLead Evolution : 5 actions pour démarrer'
-meta_description: 'Découvrez 5 réflexes concrets pour maîtriser le CRM SmartLead Evolution, testés deux ans en cabinet comptable. Filtres, relances, config : des conseils terrain…'
+meta_description: 'Découvrez 5 réflexes concrets pour maîtriser le CRM SmartLead Evolution,
+  testés deux ans en cabinet comptable. Filtres, relances, config : des conseils terrain…'
 min_words: 930
 status: published
 featured_image: /blog/2704-les-5-reflexes-utiles-sur-le-crm-smartlead-evolution.jpg
 link_anchors:
 - text: comment utiliser le CRM SmartLead Evolution
   max: 5
+related_posts:
+- 9589-les-5-points-de-connexion-entre-l-erp-flexibiz-et-la-comptabilite
+- 4501-la-plateforme-erp-businesscore-max-face-aux-prix-du-marche
+- 7001-clientfinder-ai-face-a-la-prospection-classique-sur-l-efficacite
+- 2639-strategie-de-croissance-comment-developper-votre-entreprise-sur-le-long-terme
 ---
-
 <p>Voilà bientôt deux ans que j'utilise SmartLead Evolution au quotidien dans mon cabinet comptable. Vingt ans de métier, des dizaines d'outils testés, et je dois admettre que ce CRM m'a pris par surprise, en bien comme en mal. Ce que je partage ici, ce sont des réflexes concrets, pas une brochure commerciale.</p>
 
 <p>Avant d'aller plus loin : si vous cherchez des comparatifs sur <strong>comment configurer le CRM LeadFlow Automation</strong> ou <strong>comment mettre en place le CRM PowerLink Advance</strong>, j'aborde ces questions aussi en fin d'article, parce que beaucoup de responsables comptables me les posent régulièrement lors de nos échanges sur LinkedIn.</p>
