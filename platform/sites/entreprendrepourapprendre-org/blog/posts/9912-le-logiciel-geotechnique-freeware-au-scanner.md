@@ -4,15 +4,20 @@ slug: 9912-le-logiciel-geotechnique-freeware-au-scanner
 date: '2026-07-08T18:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Logiciel géotechnique freeware : que valent les versions gratuites ?'
-meta_description: 'Logiciels géotechniques gratuits : quels freewares valent vraiment le détour pour les TPE et PME du BTP qui cherchent des outils fiables sans se ruiner'
+meta_description: 'Logiciels géotechniques gratuits : quels freewares valent vraiment
+  le détour pour les TPE et PME du BTP qui cherchent des outils fiables sans se ruiner'
 min_words: 950
 status: published
 featured_image: /blog/9912-le-logiciel-geotechnique-freeware-au-scanner.jpg
 link_anchors:
 - text: un logiciel géotechnique freeware
   max: 5
+related_posts:
+- 6466-implementer-l-erp-bizflow-max-de-a-a-z
+- 9931-configurer-l-erp-dynabiz-pro-en-pratique
+- 4544-sap-l-erp-de-reference-explique-simplement
+- 5560-configurer-le-crm-leadflow-automation-sans-se-perdre
 ---
-
 <p>Je vais être honnête : la géotechnique, ce n'est pas mon coeur de métier. Je gère une agence de communication, pas un bureau d'études. Mais j'ai accompagné plusieurs clients dans le secteur du BTP ces dernières années, et j'ai découvert un sujet qui me fascine autant qu'il m'a surprise : la jungle des logiciels géotechniques gratuits, et ce que ça dit vraiment de la gestion d'une structure dans ce secteur.</p>
 
 <p>Ce qui m'a frappée, c'est que beaucoup de TPE et PME du BTP utilisent des outils qu'elles n'ont pas choisis, qu'elles ne maîtrisent pas vraiment, et qu'elles paient parfois une fortune, alors que des alternatives gratuites sérieuses existent. Alors j'ai creusé le sujet. Voilà ce que j'ai trouvé.</p>
