@@ -4,15 +4,21 @@ slug: 1234-ce-que-les-utilisateurs-reprochent-au-logiciel-crm-salestrack-360
 date: '2026-07-08T18:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Avis utilisateurs logiciel CRM SalesTrack 360 : les reproches'
-meta_description: 'Retours d''utilisateurs sur le CRM SalesTrack 360 : interface lourde, onboarding difficile et fonctionnalités avancées mal documentées. Un avis honnête avant de…'
+meta_description: 'Retours d''utilisateurs sur le CRM SalesTrack 360 : interface lourde,
+  onboarding difficile et fonctionnalités avancées mal documentées. Un avis honnête
+  avant de…'
 min_words: 970
 status: published
 featured_image: /blog/1234-ce-que-les-utilisateurs-reprochent-au-logiciel-crm-salestrack-360.jpg
 link_anchors:
 - text: les avis utilisateurs sur le logiciel CRM SalesTrack 360
   max: 5
+related_posts:
+- 1524-mal-exploiter-le-crm-salestrack-evolution-les-pieges
+- 1400-installer-le-logiciel-crm-mobile-fieldforce-sync-les-pieges
+- 4640-configuration-de-l-erp-businesscore-enterprise-les-pieges
+- 7011-configuration-du-crm-pipedrive-nexus-edition-les-pieges
 ---
-
 <p>J'ai testé beaucoup de CRM. Vraiment beaucoup. Et SalesTrack 360 fait partie de ceux qui m'ont laissé un sentiment mitigé, pour ne pas dire frustrant par moments. Pas nul. Pas excellent. Quelque part entre les deux, avec des défauts qui commencent sérieusement à agacer les équipes commerciales qui l'utilisent au quotidien.</p>
 
 <p>Je vais te donner mon retour honnête, basé sur ce que j'ai vu en interne et ce que remontent les utilisateurs un peu partout. Pas de langue de bois.</p>
