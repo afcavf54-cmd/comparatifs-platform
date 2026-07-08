@@ -4,15 +4,21 @@ slug: 9103-le-prix-du-logiciel-crm-salestrack-360-vu-par-les-utilisateurs
 date: '2026-07-08T07:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Avis utilisateurs logiciel CRM SalesTrack 360 : quel budget ?'
-meta_description: 'Découvrez ce que les vrais utilisateurs pensent du prix de SalesTrack 360 : tarifs de base, coûts cachés et modules payants analysés pour vous aider à décider.'
+meta_description: 'Découvrez ce que les vrais utilisateurs pensent du prix de SalesTrack
+  360 : tarifs de base, coûts cachés et modules payants analysés pour vous aider à
+  décider.'
 min_words: 970
 status: published
 featured_image: /blog/9103-le-prix-du-logiciel-crm-salestrack-360-vu-par-les-utilisateurs.jpg
 link_anchors:
 - text: les avis utilisateurs sur le logiciel CRM SalesTrack 360
   max: 5
+related_posts:
+- 8559-bien-cadrer-l-implementation-de-l-erp-bizflow-v8-pro
+- 8929-pour-qui-est-pense-inventory-control-smart-pour-gerer-les-stocks
+- 2160-6-elements-qui-font-grimper-le-cout-d-implementation-de-bizcore-advanced
+- 4820-nettoyer-un-export-csv-de-donnees-salestrack-crm
 ---
-
 <p>Ça fait maintenant neuf ans que je travaille en comptabilité, et j'ai testé un nombre déraisonnable de CRM. Quand mon directeur commercial m'a demandé d'évaluer SalesTrack 360 pour notre équipe de 80 personnes à Toulouse, j'ai pris ça au sérieux. Pas question de faire confiance au site officiel. J'ai regardé les retours d'utilisateurs réels, demandé des démos, et surtout épluché la grille tarifaire en détail.</p>
 
 <p>Voilà ce que j'ai trouvé.</p>
