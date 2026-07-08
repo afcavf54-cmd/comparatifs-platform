@@ -4,15 +4,21 @@ slug: 5536-quel-erp-pour-pme-notre-avis-sur-rapidesk-solutions
 date: '2026-07-08T17:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'RapidEsk Solutions : quel ERP pour PME choisir ?'
-meta_description: Avis honnête sur RapidEsk Solutions, un ERP pour PME de 180 salariés. Retour terrain sans langue de bois sur les fonctionnalités, le prix et la mise en place.
+meta_description: Avis honnête sur RapidEsk Solutions, un ERP pour PME de 180 salariés.
+  Retour terrain sans langue de bois sur les fonctionnalités, le prix et la mise en
+  place.
 min_words: 980
 status: published
 featured_image: /blog/5536-quel-erp-pour-pme-notre-avis-sur-rapidesk-solutions.jpg
 link_anchors:
 - text: RapiDesk Solutions qui est un ERP pensé pour les PME
   max: 5
+related_posts:
+- 8689-comment-implementer-erp-bizflow-v8-pro-avec-succes
+- 4228-comment-implementer-erp-bizflow-evolution-dans-une-pme
+- 9049-integration-erp-flexibiz-avec-la-comptabilite-mode-d-emploi
+- 1209-combien-coute-erp-bizcore-enterprise-prix-et-deploiement
 ---
-
 <p>J'ai testé pas mal d'ERP ces dernières années. Certains m'ont coûté du temps, d'autres de l'argent. Quelques-uns, les deux. Alors quand un commercial de RapidEsk Solutions m'a contacté il y a un an et demi, j'étais plutôt sceptique. Une PME de notre taille, 180 salariés, avec des équipes terrain et des profils peu tech, ça ne correspond pas toujours aux outils qu'on nous vend.</p>
 
 <p>Voilà mon retour honnête. Pas un article sponsorisé. Juste ce que j'ai vu, ce qui m'a agacé, et ce qui m'a surpris en bien.</p>
