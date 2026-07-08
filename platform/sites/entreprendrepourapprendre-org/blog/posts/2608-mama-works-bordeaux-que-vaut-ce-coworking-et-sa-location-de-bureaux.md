@@ -4,15 +4,17 @@ slug: 2608-mama-works-bordeaux-que-vaut-ce-coworking-et-sa-location-de-bureaux
 date: '2026-07-08T06:00:00+02:00'
 categorie: Finance & Comptabilité
 meta_title: 'Coworking Mama Works Bordeaux : location de bureaux et salles de réunion'
-meta_description: 'Avis complet sur Mama Works Bordeaux : ambiance, prix et location de bureaux passés au crible par une utilisatrice qui partage son expérience sans filtre.'
+meta_description: 'Avis complet sur Mama Works Bordeaux : ambiance, prix et location
+  de bureaux passés au crible par une utilisatrice qui partage son expérience sans
+  filtre.'
 min_words: 940
 status: published
 featured_image: /blog/2608-mama-works-bordeaux-que-vaut-ce-coworking-et-sa-location-de-bureaux.jpg
 link_anchors:
 - text: le logiciel de gestion de trésorerie CashMaster Ultimate
   max: 5
+related_posts: []
 ---
-
 <p>J'ai découvert Mama Works Bordeaux il y a environ un an, dans un moment où mon agence tournait à plein régime et où je cherchais un espace pour recevoir des clients sans les accueillir dans mon salon. On m'en avait parlé plusieurs fois. J'avais regardé le site, fermé l'onglet, rouvert, fermé encore. Et finalement j'y suis allée.</p>
 
 <p>Voici ce que j'en pense vraiment, sans chercher à plaire à personne.</p>
