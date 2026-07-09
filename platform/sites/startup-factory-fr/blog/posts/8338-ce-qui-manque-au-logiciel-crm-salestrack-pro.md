@@ -4,15 +4,21 @@ slug: 8338-ce-qui-manque-au-logiciel-crm-salestrack-pro
 date: '2026-07-09T12:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Avis logiciel CRM SalesTrack Pro : les limites'
-meta_description: 'Retour d''expérience après 8 mois sur SalesTrack Pro : onboarding trompeur, automatisation décevante et navigation confuse pour une équipe commerciale de 20…'
+meta_description: 'Retour d''expérience après 8 mois sur SalesTrack Pro : onboarding
+  trompeur, automatisation décevante et navigation confuse pour une équipe commerciale
+  de 20…'
 min_words: 990
 status: published
 featured_image: /blog/8338-ce-qui-manque-au-logiciel-crm-salestrack-pro.jpg
 link_anchors:
 - text: les avis sur le logiciel CRM SalesTrack Pro
   max: 5
+related_posts:
+- 7280-a-qui-profite-le-crm-salestrack-premium-edition
+- 2662-faut-il-configurer-l-erp-dynabiz-pro-en-interne
+- 4150-mise-en-place-du-crm-powerlink-advance-les-pieges
+- 1234-ce-que-les-utilisateurs-reprochent-au-logiciel-crm-salestrack-360
 ---
-
 <p>J'utilise SalesTrack Pro depuis un peu plus de huit mois maintenant. Et franchement, j'avais de vraies attentes. On est une vingtaine dans l'équipe, le budget logiciel est serré, et j'avais besoin d'un CRM qui automatise un maximum sans transformer la vie de mes commerciaux en cauchemar d'onboarding.</p>
 
 <p>Résultat ? C'est mitigé. Pas catastrophique. Mais loin du compte sur plusieurs points qui me semblaient pourtant basiques.</p>
