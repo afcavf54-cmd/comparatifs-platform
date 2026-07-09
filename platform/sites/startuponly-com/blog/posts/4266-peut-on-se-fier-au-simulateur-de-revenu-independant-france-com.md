@@ -14,9 +14,10 @@ link_anchors:
 - text: le simulateur de revenu indépendant de Création-Entreprise-France.com
   max: 5
 related_posts:
-- 9331-le-prix-de-la-formation-business-plan-frenchy-business-pro-est-il-justifie
-- 7493-la-certification-business-architect-tool-a-t-elle-du-poids
 - 2981-ce-que-le-modele-de-business-plan-startupkit-advanced-ne-fait-pas
+- 7493-la-certification-business-architect-tool-a-t-elle-du-poids
+- 3123-ce-que-le-generateur-de-business-plan-smartstart-generator-ne-remplace-pas
+- 9331-le-prix-de-la-formation-business-plan-frenchy-business-pro-est-il-justifie
 ---
 <p>J'ai testé le simulateur de revenu indépendant de France.com il y a quelques mois, quand je cherchais à comprendre combien je pourrais ramener à la maison en passant en freelance à temps partiel. Verdict ? C'est utile. Mais pas fiable à 100%. Et je vais t'expliquer pourquoi.</p>
 

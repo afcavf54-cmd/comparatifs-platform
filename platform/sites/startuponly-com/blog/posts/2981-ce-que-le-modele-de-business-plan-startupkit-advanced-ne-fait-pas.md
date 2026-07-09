@@ -14,8 +14,9 @@ link_anchors:
 - text: le modèle de business plan StartupKit Advanced
   max: 5
 related_posts:
-- 7493-la-certification-business-architect-tool-a-t-elle-du-poids
 - 9331-le-prix-de-la-formation-business-plan-frenchy-business-pro-est-il-justifie
+- 7493-la-certification-business-architect-tool-a-t-elle-du-poids
+- 3123-ce-que-le-generateur-de-business-plan-smartstart-generator-ne-remplace-pas
 - 4266-peut-on-se-fier-au-simulateur-de-revenu-independant-france-com
 ---
 <p>J'ai acheté le modèle StartupKit Advanced il y a quelques mois pour structurer le business plan de ma deuxième boîte. Et honnêtement, j'aurais aimé que quelqu'un me dise avant ce que je vais te dire maintenant. Pas pour le descendre, il a des vraies qualités. Mais il y a des trucs qu'il ne fait pas, et ça peut te coûter du temps si tu t'en aperçois trop tard.</p>
