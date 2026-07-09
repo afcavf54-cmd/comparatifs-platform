@@ -14,8 +14,9 @@ link_anchors:
 - text: la formation certifiée Business Architect Tool
   max: 5
 related_posts:
-- 9331-le-prix-de-la-formation-business-plan-frenchy-business-pro-est-il-justifie
+- 2981-ce-que-le-modele-de-business-plan-startupkit-advanced-ne-fait-pas
 - 4266-peut-on-se-fier-au-simulateur-de-revenu-independant-france-com
+- 9331-le-prix-de-la-formation-business-plan-frenchy-business-pro-est-il-justifie
 ---
 <p>Je vais être honnête : quand j'ai entendu parler de la certification Business Architect Tool pour la première fois, j'ai levé les yeux au ciel. Encore un badge à coller sur un LinkedIn pour faire bien. Sauf que depuis, j'ai creusé. Et ce que j'ai trouvé méritait qu'on en parle sérieusement.</p>
 

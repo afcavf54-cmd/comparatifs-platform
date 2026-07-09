@@ -4,15 +4,20 @@ slug: 2981-ce-que-le-modele-de-business-plan-startupkit-advanced-ne-fait-pas
 date: '2026-07-09T12:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Modèle de business plan StartupKit Advanced : ses limites'
-meta_description: 'Retour terrain sur le modèle StartupKit Advanced : ce qu''il ne fait pas, ses vraies limites et ce que cela peut vous coûter avant de structurer votre business plan.'
+meta_description: 'Retour terrain sur le modèle StartupKit Advanced : ce qu''il ne
+  fait pas, ses vraies limites et ce que cela peut vous coûter avant de structurer
+  votre business plan.'
 min_words: 930
 status: published
 featured_image: /blog/2981-ce-que-le-modele-de-business-plan-startupkit-advanced-ne-fait-pas.jpg
 link_anchors:
 - text: le modèle de business plan StartupKit Advanced
   max: 5
+related_posts:
+- 7493-la-certification-business-architect-tool-a-t-elle-du-poids
+- 9331-le-prix-de-la-formation-business-plan-frenchy-business-pro-est-il-justifie
+- 4266-peut-on-se-fier-au-simulateur-de-revenu-independant-france-com
 ---
-
 <p>J'ai acheté le modèle StartupKit Advanced il y a quelques mois pour structurer le business plan de ma deuxième boîte. Et honnêtement, j'aurais aimé que quelqu'un me dise avant ce que je vais te dire maintenant. Pas pour le descendre, il a des vraies qualités. Mais il y a des trucs qu'il ne fait pas, et ça peut te coûter du temps si tu t'en aperçois trop tard.</p>
 
 <p>Donc voilà un retour terrain, sans filtre.</p>
