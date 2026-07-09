@@ -4,15 +4,21 @@ slug: 9356-le-marketing-alternatif-explique-simplement
 date: '2026-07-09T12:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Marketing alternatif : de quoi parle-t-on vraiment ?'
-meta_description: 'Découvrez ce qu''est vraiment le marketing alternatif : guerilla, viral, street marketing... Des approches créatives expliquées simplement, avec des exemples…'
+meta_description: 'Découvrez ce qu''est vraiment le marketing alternatif : guerilla,
+  viral, street marketing... Des approches créatives expliquées simplement, avec des
+  exemples…'
 min_words: 930
 status: published
 featured_image: /blog/9356-le-marketing-alternatif-explique-simplement.jpg
 link_anchors:
 - text: le logiciel Sage en Ille-et-Vilaine
   max: 5
+related_posts:
+- 6211-cnam-intec-l-institut-des-techniques-comptables-et-economiques-passe-au-crible
+- 4737-trouver-un-revendeur-du-logiciel-ebp-a-la-roche-sur-yon
+- 7766-les-fonctionnalites-de-la-comptabilite-cloud-financecore-plus
+- 1868-le-temps-de-prise-en-main-du-logiciel-devis-et-facture-quotepro-builder
 ---
-
 <p>Le marketing alternatif, j'en entends parler depuis quelques années, mais honnêtement, pendant longtemps je ne savais pas vraiment ce que ça recouvrait. Guerilla marketing, street marketing, marketing viral... des mots qu'on balance dans les réunions sans toujours bien les définir. Alors j'ai décidé de creuser le sujet, d'abord pour ma propre culture, et aussi parce que pour une agence comme la mienne, ça peut être une vraie piste.</p>
 
 <p>Voici ce que j'ai compris, avec des exemples concrets et sans jargon inutile.</p>
