@@ -4,15 +4,21 @@ slug: 2676-ce-qui-manque-au-logiciel-crm-salestrack-evolution
 date: '2026-07-09T06:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Avis logiciel CRM SalesTrack Evolution : les limites'
-meta_description: 'Avis terrain sur SalesTrack Evolution : interface correcte, pipeline lisible, mais des lacunes sérieuses en automatisation qui pèsent sur la productivité au…'
+meta_description: 'Avis terrain sur SalesTrack Evolution : interface correcte, pipeline
+  lisible, mais des lacunes sérieuses en automatisation qui pèsent sur la productivité
+  au…'
 min_words: 980
 status: published
 featured_image: /blog/2676-ce-qui-manque-au-logiciel-crm-salestrack-evolution.jpg
 link_anchors:
 - text: les avis sur le logiciel CRM SalesTrack Evolution
   max: 5
+related_posts:
+- 8318-mal-utiliser-le-crm-smartlead-evolution-les-pieges
+- 7519-erp-bizcore-enterprise-ce-que-le-devis-oublie-de-chiffrer
+- 9565-installer-l-erp-integre-managepro-suite-les-pieges
+- 5026-a-quel-moment-passer-d-un-crm-basique-a-salesforce-premium
 ---
-
 <p>J'utilise des CRM depuis des années. Trop d'années. Et franchement, j'en ai testé des dizaines pour mon équipe à Nantes. SalesTrack Evolution, je l'ai eu entre les mains pendant plusieurs mois. Mon avis est tranché.</p>
 
 <p>Spoiler : ça m'a autant agacée que soulagée. Et surtout, j'ai réalisé que ce logiciel a de vraies lacunes qu'on ne voit pas tout de suite dans les démos commerciales.</p>
