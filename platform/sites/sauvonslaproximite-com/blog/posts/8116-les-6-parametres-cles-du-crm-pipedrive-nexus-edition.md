@@ -4,15 +4,21 @@ slug: 8116-les-6-parametres-cles-du-crm-pipedrive-nexus-edition
 date: '2026-07-09T10:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Paramétrer le CRM Pipedrive Nexus Edition : 6 réglages prioritaires'
-meta_description: 'Découvrez les 6 paramètres clés de Pipedrive Nexus Edition analysés par une comptable de PME : pipelines, automatisations et suivi client passés au crible du…'
+meta_description: 'Découvrez les 6 paramètres clés de Pipedrive Nexus Edition analysés
+  par une comptable de PME : pipelines, automatisations et suivi client passés au
+  crible du…'
 min_words: 920
 status: published
 featured_image: /blog/8116-les-6-parametres-cles-du-crm-pipedrive-nexus-edition.jpg
 link_anchors:
 - text: comment paramétrer le CRM Pipedrive Nexus Edition
   max: 5
+related_posts:
+- 8636-les-6-atouts-de-l-abonnement-tpe-lemagdesentreprises
+- 7354-pain-point-identifier-les-freins-qui-empechent-vos-clients-d-acheter
+- 9672-les-6-phases-de-mise-en-place-du-crm-powerlink-advance
+- 9602-businesscore-et-tradepulse-departages-pour-choisir-son-erp
 ---
-
 <p>Ça fait maintenant une vingtaine d'années que je travaille en comptabilité, et j'ai vu passer beaucoup d'outils de gestion. Des bons, des mauvais, des prometteurs qui ont déçu après six mois. Quand notre direction a décidé de tester Pipedrive Nexus Edition pour centraliser le suivi client et alléger la charge administrative de l'équipe commerciale, j'ai regardé ça de près. Très près. Parce que quand vous gérez les finances d'une PME de 50 personnes à Lyon, chaque outil qui entre dans le SI doit se justifier.</p>
 
 <p>Voici ce que j'ai retenu des six paramètres qui font vraiment la différence avec cette édition. Pas une liste marketing. Du concret.</p>
