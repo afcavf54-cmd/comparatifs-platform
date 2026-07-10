@@ -4,15 +4,21 @@ slug: 3579-les-7-phases-d-un-projet-erp-smartchain-360
 date: '2026-07-10T06:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Implémenter l''ERP SmartChain 360 : 7 étapes'
-meta_description: 'Découvrez les 7 phases d''un projet ERP SmartChain 360 vues de l''intérieur : conseils terrain, erreurs à éviter et jalons clés pour réussir votre déploiement.'
+meta_description: 'Découvrez les 7 phases d''un projet ERP SmartChain 360 vues de
+  l''intérieur : conseils terrain, erreurs à éviter et jalons clés pour réussir votre
+  déploiement.'
 min_words: 970
 status: published
 featured_image: /blog/3579-les-7-phases-d-un-projet-erp-smartchain-360.jpg
 link_anchors:
 - text: comment implémenter l'ERP SmartChain 360
   max: 5
+related_posts:
+- 2860-les-6-usages-cles-du-crm-salestrack-evolution
+- 7354-pain-point-identifier-les-freins-qui-empechent-vos-clients-d-acheter
+- 4501-la-plateforme-erp-businesscore-max-face-aux-prix-du-marche
+- 3669-le-compliance-kit-rgpd-de-protection-des-donnees-face-a-un-consultant
 ---
-
 <p>Vingt ans à piloter des projets de migration comptable, ça vous forge une opinion. Les projets ERP, j'en ai vu réussir. J'en ai vu planter. Et quand on m'a demandé d'accompagner le déploiement de SmartChain 360 dans notre structure, j'ai tout de suite compris que la clé, c'était de respecter les phases dans l'ordre. Pas de raccourcis. Pas de "on verra en cours de route".</p>
 
 <p>Voici ce que j'ai observé, vécu et parfois subi, pour vous aider à ne pas répéter les mêmes erreurs.</p>
