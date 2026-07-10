@@ -3,16 +3,23 @@ title: Premiers réglages de la génération automatique de QuotePro Smart
 slug: 7085-premiers-reglages-de-la-generation-automatique-de-quotepro-smart
 date: '2026-07-10T07:00:00+02:00'
 categorie: Comptabilité
-meta_title: 'Logiciel de devis QuotePro Smart : par où commencer la génération automatique ?'
-meta_description: Configurez correctement la génération automatique de QuotePro Smart dès le départ pour éviter les erreurs de prix, de TVA ou de mentions légales dans vos devis.
+meta_title: 'Logiciel de devis QuotePro Smart : par où commencer la génération automatique
+  ?'
+meta_description: Configurez correctement la génération automatique de QuotePro Smart
+  dès le départ pour éviter les erreurs de prix, de TVA ou de mentions légales dans
+  vos devis.
 min_words: 1000
 status: published
 featured_image: /blog/7085-premiers-reglages-de-la-generation-automatique-de-quotepro-smart.jpg
 link_anchors:
 - text: la génération automatique de devis avec le logiciel QuotePro Smart
   max: 5
+related_posts:
+- 3326-le-prix-d-invoicemaster-evolution-justifie-t-il-ce-logiciel-de-facturation
+- 9414-a-quel-public-s-adresse-la-comptabilite-cloud-financecore-enterprise
+- 7813-choisir-entre-quickbill-advanced-et-un-autre-logiciel-de-facturation
+- 4972-prise-en-main-du-logiciel-devis-et-facture-quotepro-builder-les-pieges
 ---
-
 <p>J'ai mis deux heures à comprendre comment fonctionne la génération automatique de QuotePro Smart. Deux heures que j'aurais pu éviter si quelqu'un m'avait expliqué les réglages de base avant de me lancer. Voilà pourquoi j'écris cet article.</p>
 
 <p>Si tu viens d'activer le module, ou si tu testes QuotePro Smart pour automatiser tes devis, ne saute pas les réglages initiaux. C'est là que tout se joue.</p>
