@@ -4,15 +4,21 @@ slug: 1063-6-choses-a-savoir-sur-le-cnam-intec
 date: '2026-07-10T17:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Cnam-Intec : 6 questions avant de s''inscrire en techniques comptables'
-meta_description: 'Découvrez 6 points essentiels sur le Cnam-Intec avant de vous inscrire : diplômes d''État, formation à distance, tarifs accessibles et cursus adapté aux actifs.'
+meta_description: 'Découvrez 6 points essentiels sur le Cnam-Intec avant de vous inscrire
+  : diplômes d''État, formation à distance, tarifs accessibles et cursus adapté aux
+  actifs.'
 min_words: 910
 status: published
 featured_image: /blog/1063-6-choses-a-savoir-sur-le-cnam-intec.jpg
 link_anchors:
 - text: le CNAM INTEC (institut national des techniques économiques et comptables)
   max: 5
+related_posts:
+- 3381-le-marketing-alternatif-est-il-rentable-pour-une-pme
+- 3510-combien-coute-un-projet-du-logiciel-sage-en-local
+- 9490-a-qui-s-adresse-le-logiciel-de-facturation-quickbill-advanced
+- 7137-le-prix-du-logiciel-de-gestion-de-tresorerie-cashmaster-ultimate-est-il-justifie
 ---
-
 <p>J'ai découvert le Cnam-Intec un peu par hasard, à une époque où je cherchais une formation sérieuse en comptabilité sans me ruiner ni abandonner mon activité. Et franchement, j'ai été surpris par ce que cette institution propose. Pas parfait, mais vraiment solide. Voilà ce que j'aurais aimé savoir avant de me lancer.</p>
 
 <h2>C'est quoi exactement le Cnam-Intec ?</h2>
