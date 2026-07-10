@@ -4,15 +4,21 @@ slug: 5641-temps-de-deploiement-crm-smartsales-enterprise-a-quoi-s-attendre
 date: '2026-07-10T07:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Temps de déploiement CRM SmartSales Enterprise
-meta_description: 'Déploiement CRM SmartSales Enterprise : découvrez les phases concrètes, les durées réelles et les facteurs clés qui font passer de 3 semaines à 3 mois de mise en…'
+meta_description: 'Déploiement CRM SmartSales Enterprise : découvrez les phases concrètes,
+  les durées réelles et les facteurs clés qui font passer de 3 semaines à 3 mois de
+  mise en…'
 min_words: 940
 status: published
 featured_image: /blog/5641-temps-de-deploiement-crm-smartsales-enterprise-a-quoi-s-attendre.jpg
 link_anchors:
 - text: le temps de déploiement du CRM SmartSales Enterprise
   max: 5
+related_posts:
+- 1843-pain-point-client-comment-identifier-et-resoudre-les-points-de-douleur-de-vos-clients
+- 9241-prix-de-la-licence-erp-bizmaster-360-combien-prevoir
+- 7257-comitologie-de-projet-roles-instances-et-organisation-pour-piloter-efficacement
+- 4005-comparatif-crm-salesconnect-pro-vs-marketwise-lequel-choisir
 ---
-
 <p>On m'a posé la question il y a quelques mois, et je n'avais pas vraiment de réponse claire à donner. Combien de temps faut-il pour déployer SmartSales Enterprise dans une entreprise de taille intermédiaire ? J'ai cherché, j'ai testé, j'ai parlé à d'autres dirigeants. Voilà ce que j'ai retenu.</p>
 
 <p>Parce que quand on gère une boîte avec une centaine de personnes, on n'a pas six mois à perdre sur un projet informatique. Et on n'a pas non plus une équipe IT dédiée pour piloter ça.</p>
