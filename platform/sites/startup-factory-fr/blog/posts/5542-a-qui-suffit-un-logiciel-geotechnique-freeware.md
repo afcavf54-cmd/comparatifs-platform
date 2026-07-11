@@ -4,15 +4,21 @@ slug: 5542-a-qui-suffit-un-logiciel-geotechnique-freeware
 date: '2026-07-11T06:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Logiciel géotechnique freeware : pour quel usage ?'
-meta_description: 'Logiciel géotechnique freeware ou solution payante : découvrez quel profil professionnel peut réellement se contenter des outils gratuits pour ses missions au…'
+meta_description: 'Logiciel géotechnique freeware ou solution payante : découvrez
+  quel profil professionnel peut réellement se contenter des outils gratuits pour
+  ses missions au…'
 min_words: 950
 status: published
 featured_image: /blog/5542-a-qui-suffit-un-logiciel-geotechnique-freeware.jpg
 link_anchors:
 - text: un logiciel géotechnique freeware
   max: 5
+related_posts:
+- 5187-installation-de-l-erp-cloudmanager-enterprise-les-pieges
+- 3512-pour-qui-est-fait-le-crm-mobile-fieldforce-connect-sous-android
+- 1234-ce-que-les-utilisateurs-reprochent-au-logiciel-crm-salestrack-360
+- 9178-projet-erp-bizflow-max-les-pieges-qui-font-derailler
 ---
-
 <p>On va parler d'un sujet que j'entends souvent dans les discussions avec des chefs de projet ou des géotechniciens freelance : est-ce qu'un logiciel géotechnique gratuit suffit vraiment pour bosser sérieusement ? J'ai creusé la question. Et ma réponse est tranchée.</p>
 
 <p>Ça dépend pas de ton budget. Ça dépend de <strong>ce que tu fais concrètement</strong> au quotidien.</p>
