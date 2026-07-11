@@ -4,15 +4,21 @@ slug: 5523-wizica-business-demonstration-et-avis-sur-le-logiciel-de-gestion
 date: '2026-07-11T12:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Wizica Business : démo, avis et fonctionnalités'
-meta_description: Découvrez notre avis sans filtre sur Wizica Business, le logiciel de gestion testé en conditions réelles dans une TPE lyonnaise de cent salariés. Démonstration…
+meta_description: Découvrez notre avis sans filtre sur Wizica Business, le logiciel
+  de gestion testé en conditions réelles dans une TPE lyonnaise de cent salariés.
+  Démonstration…
 min_words: 900
 status: published
 featured_image: /blog/5523-wizica-business-demonstration-et-avis-sur-le-logiciel-de-gestion.jpg
 link_anchors:
 - text: la démo du logiciel de gestion Wizica Business
   max: 5
+related_posts:
+- 5536-quel-erp-pour-pme-notre-avis-sur-rapidesk-solutions
+- 8021-difference-entre-crm-basique-et-salesforce-premium
+- 8804-matrice-tows-comment-l-utiliser-pour-construire-une-strategie-efficace
+- 3611-crm-mobile-fieldforce-connect-android-fonctionnalites-et-utilisation
 ---
-
 <p>J'ai découvert Wizica Business un peu par hasard, en cherchant une alternative à mon ancien logiciel de gestion qui me coûtait beaucoup trop cher pour ce qu'il faisait vraiment. On m'en avait parlé dans un groupe de dirigeants lyonnais. J'ai testé. Et voilà ce que j'en pense, sans filtre.</p>
 
 <p>Pour vous situer : je dirige une TPE à Lyon, une centaine de salariés, des équipes terrain, des process pas toujours bien rodés. Mon niveau sur les outils numériques est honnête mais je ne suis pas développeur. Ce que je cherche, c'est simple et efficace. <strong>Pas de formation de trois jours.</strong> Pas de manuel de 200 pages.</p>
