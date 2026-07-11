@@ -4,15 +4,20 @@ slug: 1766-wework-avis-sur-les-espaces-de-bureau-et-coworking
 date: '2026-07-11T07:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'WeWork : avis, tarifs et espaces de coworking'
-meta_description: 'Avis complet sur WeWork à Lyon et dans les grandes villes françaises : offres, tarifs, qualité des espaces et ce que personne ne vous dit avant de signer.'
+meta_description: 'Avis complet sur WeWork à Lyon et dans les grandes villes françaises
+  : offres, tarifs, qualité des espaces et ce que personne ne vous dit avant de signer.'
 min_words: 910
 status: published
 featured_image: /blog/1766-wework-avis-sur-les-espaces-de-bureau-et-coworking.jpg
 link_anchors:
 - text: espace de bureau et coworking WeWork
   max: 5
+related_posts:
+- 7001-e-local-fr-devis-travaux-en-ligne-et-comparatif-artisans
+- 1635-devis-deco-lestylechezsoi-comment-obtenir-une-estimation
+- 5260-devis-gratuit-btp-chantier-fr-comment-faire-une-demande
+- 1082-lefoyerentrepreneurial-tarifs-et-services-de-coworking
 ---
-
 <p>J'ai testé WeWork à Lyon pendant plusieurs mois. Pas par choix idéologique, juste parce que j'avais besoin d'un bureau décent pour recevoir des clients, sans signer un bail commercial de trois ans. Je vais vous dire ce que j'en pense vraiment, sans filtre.</p>
 
 <p>Depuis 11 ans que je dirige ma structure, j'ai vu défiler pas mal de solutions de bureaux. Le coworking façon "open space branché avec plantes vertes" m'a longtemps laissé sceptique. Mais le marché a changé. Les prix de l'immobilier de bureau ont grimpé, les équipes bougent plus, et franchement, louer 300 m² pour 40 personnes qui ne sont pas toutes là en même temps, c'est souvent une dépense que vous ne justifiez plus.</p>
