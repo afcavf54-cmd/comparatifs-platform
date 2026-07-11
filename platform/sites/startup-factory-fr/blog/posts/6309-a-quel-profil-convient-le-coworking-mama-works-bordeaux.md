@@ -4,15 +4,16 @@ slug: 6309-a-quel-profil-convient-le-coworking-mama-works-bordeaux
 date: '2026-07-11T12:00:00+02:00'
 categorie: Finance & Comptabilité
 meta_title: 'Coworking Mama Works Bordeaux : pour quel professionnel ?'
-meta_description: 'Retour honnête sur le coworking Mama Works Bordeaux : profils concernés, ambiance, tarifs et ce qui distingue cet espace des autres options de la ville.'
+meta_description: 'Retour honnête sur le coworking Mama Works Bordeaux : profils concernés,
+  ambiance, tarifs et ce qui distingue cet espace des autres options de la ville.'
 min_words: 940
 status: published
 featured_image: /blog/6309-a-quel-profil-convient-le-coworking-mama-works-bordeaux.jpg
 link_anchors:
 - text: le logiciel de gestion de trésorerie CashMaster Ultimate
   max: 5
+related_posts: []
 ---
-
 <p>J'ai testé pas mal d'espaces de coworking à Bordeaux ces deux dernières années. Mama Works, je l'ai découvert un peu par hasard, via une recommandation d'une autre fondatrice de ma région. Et franchement, ça m'a surprise. Pas forcément dans le sens où je l'imaginais.</p>
 
 <p>Donc voilà mon retour, honnête, sans filtre marketing. Si tu cherches un espace pour toi, ton équipe ou même juste pour changer de cadre quelques jours par semaine, ça peut t'aider à décider.</p>
