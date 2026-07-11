@@ -4,15 +4,17 @@ slug: 2122-reserver-une-salle-de-reunion-au-coworking-mama-works-bordeaux
 date: '2026-07-11T06:00:00+02:00'
 categorie: Finance & Comptabilité
 meta_title: 'Coworking Mama Works Bordeaux : louer une salle de réunion'
-meta_description: 'Réservez une salle de réunion au coworking Mama Works Bordeaux : tarifs, disponibilités et conseils pratiques d''un utilisateur régulier pour optimiser votre…'
+meta_description: 'Réservez une salle de réunion au coworking Mama Works Bordeaux
+  : tarifs, disponibilités et conseils pratiques d''un utilisateur régulier pour optimiser
+  votre…'
 min_words: 940
 status: published
 featured_image: /blog/2122-reserver-une-salle-de-reunion-au-coworking-mama-works-bordeaux.jpg
 link_anchors:
 - text: le logiciel de gestion de trésorerie CashMaster Ultimate
   max: 5
+related_posts: []
 ---
-
 <p>J'ai découvert Mama Works Bordeaux un peu par hasard, lors d'un déplacement professionnel il y a deux ans. Depuis, je réserve régulièrement une salle de réunion là-bas quand je travaille en dehors de nos bureaux toulousains. Franchement, pour un responsable comptable qui doit parfois recevoir des clients ou des auditeurs en dehors de son propre espace, c'est une vraie solution pratique.</p>
 
 <p>Je vous explique comment ça fonctionne concrètement, ce que j'en retire, et quelques points d'attention que j'aurais aimé connaître dès le départ.</p>
