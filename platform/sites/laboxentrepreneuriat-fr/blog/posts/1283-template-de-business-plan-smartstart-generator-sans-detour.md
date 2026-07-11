@@ -15,9 +15,10 @@ link_anchors:
 - text: les avis sur le template de business plan SmartStart Generator
   max: 5
 related_posts:
-- 3340-les-6-acquis-de-la-formation-business-plan-frenchy-business-pro
 - 7981-les-6-acquis-de-la-formation-business-architect-tool
+- 3340-les-6-acquis-de-la-formation-business-plan-frenchy-business-pro
 - 7627-les-5-variables-du-simulateur-de-revenu-independant-france-com
+- 7941-startupkit-premium-ce-modele-de-business-plan-tient-il-la-route
 ---
 <p>J'ai testé pas mal de générateurs de business plan ces dernières années. La plupart vous promettent un document clé en main en quinze minutes. Dans les faits, vous passez deux heures à remplir des champs flous, vous obtenez un PDF générique que vous honteux de montrer à votre banquier, et vous recommencez à zéro sur Excel.</p>
 
