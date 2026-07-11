@@ -13,7 +13,8 @@ featured_image: /blog/2608-mama-works-bordeaux-que-vaut-ce-coworking-et-sa-locat
 link_anchors:
 - text: le logiciel de gestion de trésorerie CashMaster Ultimate
   max: 5
-related_posts: []
+related_posts:
+- 2242-l-outil-de-reporting-financier-cashflow-analytics-v4-sans-detour
 ---
 <p>J'ai découvert Mama Works Bordeaux il y a environ un an, dans un moment où mon agence tournait à plein régime et où je cherchais un espace pour recevoir des clients sans les accueillir dans mon salon. On m'en avait parlé plusieurs fois. J'avais regardé le site, fermé l'onglet, rouvert, fermé encore. Et finalement j'y suis allée.</p>
 
