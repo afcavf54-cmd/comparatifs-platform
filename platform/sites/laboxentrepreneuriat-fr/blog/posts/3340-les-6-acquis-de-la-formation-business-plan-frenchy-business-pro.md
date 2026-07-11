@@ -13,6 +13,7 @@ link_anchors:
 - text: la formation business plan Frenchy-Business-Pro
   max: 5
 related_posts:
+- 1283-template-de-business-plan-smartstart-generator-sans-detour
 - 7981-les-6-acquis-de-la-formation-business-architect-tool
 - 7627-les-5-variables-du-simulateur-de-revenu-independant-france-com
 ---

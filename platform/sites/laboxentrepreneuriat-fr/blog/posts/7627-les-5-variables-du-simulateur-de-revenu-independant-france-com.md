@@ -13,8 +13,9 @@ link_anchors:
 - text: le simulateur de revenu indépendant de Création-Entreprise-France.com
   max: 5
 related_posts:
-- 3340-les-6-acquis-de-la-formation-business-plan-frenchy-business-pro
+- 1283-template-de-business-plan-smartstart-generator-sans-detour
 - 7981-les-6-acquis-de-la-formation-business-architect-tool
+- 3340-les-6-acquis-de-la-formation-business-plan-frenchy-business-pro
 ---
 <p>Quand on envisage de quitter le salariat pour se lancer à son compte, la question du revenu revient systématiquement dans les premières discussions. Combien vais-je vraiment gagner ? Est-ce que je vais pouvoir maintenir mon niveau de vie ? Ces interrogations sont légitimes, et elles méritent des réponses chiffrées, pas des estimations vagues.</p>
 
