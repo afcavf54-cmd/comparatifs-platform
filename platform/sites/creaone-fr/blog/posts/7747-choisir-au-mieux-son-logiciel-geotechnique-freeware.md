@@ -4,15 +4,21 @@ slug: 7747-choisir-au-mieux-son-logiciel-geotechnique-freeware
 date: '2026-07-11T18:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Logiciel géotechnique freeware : par où commencer ?'
-meta_description: Trouver le bon logiciel géotechnique freeware sans sacrifier la qualité est possible. Découvrez notre comparatif terrain pour choisir l'outil adapté à votre équipe…
+meta_description: Trouver le bon logiciel géotechnique freeware sans sacrifier la
+  qualité est possible. Découvrez notre comparatif terrain pour choisir l'outil adapté
+  à votre équipe…
 min_words: 950
 status: published
 featured_image: /blog/7747-choisir-au-mieux-son-logiciel-geotechnique-freeware.jpg
 link_anchors:
 - text: un logiciel géotechnique freeware
   max: 5
+related_posts:
+- 2824-7-atouts-du-crm-salestrack-premium-edition
+- 9103-le-prix-du-logiciel-crm-salestrack-360-vu-par-les-utilisateurs
+- 4421-reussir-l-integration-de-l-erp-flexmanage-plus
+- 4820-nettoyer-un-export-csv-de-donnees-salestrack-crm
 ---
-
 <p>Neuf ans à gérer des comptes dans une PME du secteur BTP, ça forge des réflexes. L'un d'eux : ne jamais payer pour un logiciel si une version gratuite fait le même travail correctement. Quand notre bureau d'études m'a demandé de les aider à choisir un outil géotechnique sans exploser le budget, j'ai donc passé quelques semaines à tester, comparer, et parfois pester devant mon écran.</p>
 
 <p>Voici ce que j'en retiens. Un retour terrain, pas une brochure commerciale.</p>
