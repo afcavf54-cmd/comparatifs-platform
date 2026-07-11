@@ -4,15 +4,20 @@ slug: 4161-bien-cadrer-son-projet-du-logiciel-sage-avec-un-local
 date: '2026-07-11T11:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Logiciel Sage Ille-et-Vilaine : la liste des vérifications avant de signer'
-meta_description: Cadrer un projet logiciel Sage avec un partenaire local évite délais et budgets explosés. Découvrez pourquoi cette phase est décisive pour votre déploiement.
+meta_description: Cadrer un projet logiciel Sage avec un partenaire local évite délais
+  et budgets explosés. Découvrez pourquoi cette phase est décisive pour votre déploiement.
 min_words: 970
 status: published
 featured_image: /blog/4161-bien-cadrer-son-projet-du-logiciel-sage-avec-un-local.jpg
 link_anchors:
 - text: le tarif du logiciel de facturation QuickBill Pro
   max: 5
+related_posts:
+- 9585-adapter-un-modele-de-facture-digitalise-tes-factures-a-son-activite
+- 2149-bien-cadrer-son-projet-du-logiciel-ebp-avec-un-local
+- 9323-sa-premiere-facture-en-ligne-gratuite-avec-articles
+- 2702-cnam-intec-debouches-des-techniques-economiques-et-comptables
 ---
-
 <p>Neuf ans à travailler sur des projets de déploiement logiciel, dont plusieurs avec Sage, et je peux vous dire une chose : la phase de cadrage, c'est là que tout se joue. Pas pendant les tests, pas pendant la formation. Avant. Bien avant.</p>
 
 <p>Un projet mal cadré, c'est un projet qui dérape. Délais, budget explosé, équipes perdues. J'ai vu ça trop souvent dans des structures de taille comparable à la mienne, entre 100 et 500 salariés, où on croit à tort que l'outil va "s'adapter tout seul" au terrain.</p>
