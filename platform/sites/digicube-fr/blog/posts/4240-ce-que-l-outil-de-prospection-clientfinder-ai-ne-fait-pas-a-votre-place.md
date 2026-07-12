@@ -4,15 +4,21 @@ slug: 4240-ce-que-l-outil-de-prospection-clientfinder-ai-ne-fait-pas-a-votre-pla
 date: '2026-07-12T10:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Outil de prospection ClientFinder AI : les limites de l''IA'
-meta_description: 'Retour d''expérience concret sur ClientFinder AI : ce que l''outil fait vraiment et tout ce qu''il laisse à votre charge en matière de prospection commerciale.'
+meta_description: 'Retour d''expérience concret sur ClientFinder AI : ce que l''outil
+  fait vraiment et tout ce qu''il laisse à votre charge en matière de prospection
+  commerciale.'
 min_words: 940
 status: published
 featured_image: /blog/4240-ce-que-l-outil-de-prospection-clientfinder-ai-ne-fait-pas-a-votre-place.jpg
 link_anchors:
 - text: l'efficacité de l'outil de prospection ClientFinder AI
   max: 5
+related_posts:
+- 5240-ce-que-les-modules-mobiles-de-securite-erp-ne-couvrent-pas
+- 7235-financepro-integrated-face-aux-briques-financieres-independantes
+- 1458-le-logiciel-crm-salestrack-evolution-face-a-la-version-pro
+- 1245-ce-que-le-logiciel-geotechnique-freeware-ne-fait-pas
 ---
-
 <p>J'ai testé ClientFinder AI pendant un peu plus de trois mois. Et la première chose que j'ai apprise, c'est que le nom de l'outil est parfois trompeur. "AI" laisse entendre que la machine fait tout. Ce n'est pas le cas. Loin de là.</p>
 
 <p>Je gère une entreprise à Marseille, une centaine de salariés. J'ai voulu automatiser notre prospection pour libérer du temps à mes commerciaux. Résultat : ça a fonctionné, mais pas comme je l'imaginais. L'outil fait des choses très précises. Et il ne fait pas tout le reste.</p>
