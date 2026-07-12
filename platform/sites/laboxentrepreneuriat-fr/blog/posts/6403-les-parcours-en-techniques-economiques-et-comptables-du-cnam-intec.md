@@ -4,15 +4,21 @@ slug: 6403-les-parcours-en-techniques-economiques-et-comptables-du-cnam-intec
 date: '2026-07-12T08:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Cnam-Intec : quels diplômes en techniques comptables viser ?'
-meta_description: 'Découvrez les parcours comptables et financiers du Cnam-Intec : formations flexibles par unités capitalisables, idéales pour les professionnels en activité qui…'
+meta_description: 'Découvrez les parcours comptables et financiers du Cnam-Intec :
+  formations flexibles par unités capitalisables, idéales pour les professionnels
+  en activité qui…'
 min_words: 910
 status: published
 featured_image: /blog/6403-les-parcours-en-techniques-economiques-et-comptables-du-cnam-intec.jpg
 link_anchors:
 - text: le CNAM INTEC (institut national des techniques économiques et comptables)
   max: 5
+related_posts:
+- 6194-facturation-fastbill-contre-invoicepro-max
+- 6208-parametrer-la-facturation-recurrente-billmatic-cyclic-etape-par-etape
+- 8110-les-5-avantages-d-un-integrateur-du-logiciel-ebp-local
+- 1119-les-5-avantages-d-un-revendeur-du-logiciel-sage-de-proximite
 ---
-
 <p>J'accompagne des dirigeants depuis douze ans. Et régulièrement, la même question revient : comment monter en compétences comptables et financières sans tout plaquer ? Le <strong>Cnam-Intec</strong> est souvent la réponse que je donne. Pas parce que c'est une institution connue, mais parce que j'ai vu des gérants de TPE, des comptables en poste, des indépendants transformer leur façon de piloter leur activité grâce à ces parcours.</p>
 
 <p>Je vais vous expliquer concrètement ce que propose l'Intec, quels parcours existent, et surtout pour qui ça vaut vraiment le coup.</p>
