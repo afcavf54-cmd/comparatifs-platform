@@ -4,15 +4,21 @@ slug: 1144-delai-de-configuration-de-l-erp-dynabiz-pro
 date: '2026-07-12T06:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Configurer l''ERP DynaBiz Pro : combien de temps ?'
-meta_description: 'Configurer l''ERP DynaBiz Pro prend bien plus de temps que prévu : retour d''expérience honnête sur les délais réels, les phases critiques et les pièges à éviter.'
+meta_description: 'Configurer l''ERP DynaBiz Pro prend bien plus de temps que prévu
+  : retour d''expérience honnête sur les délais réels, les phases critiques et les
+  pièges à éviter.'
 min_words: 950
 status: published
 featured_image: /blog/1144-delai-de-configuration-de-l-erp-dynabiz-pro.jpg
 link_anchors:
 - text: comment configurer l'ERP DynaBiz Pro
   max: 5
+related_posts:
+- 4060-delai-d-integration-de-l-erp-flexibiz-avec-la-comptabilite
+- 4765-le-crm-mobile-fieldforce-connect-android-et-le-mode-hors-ligne
+- 4374-crm-clientpulse-pro-2024-ce-qui-peche-encore
+- 6772-6-elements-qui-font-varier-le-prix-de-businesscore-max
 ---
-
 <p>J'ai failli me planter sur ce projet. Sérieusement. Quand j'ai lancé la mise en place de DynaBiz Pro dans ma boîte, j'avais prévu deux semaines. Résultat : on était encore en train de tweaker des paramètres six semaines plus tard. Donc si t'es là pour savoir combien de temps ça prend vraiment de configurer un ERP, je vais te donner une réponse honnête, pas le discours commercial du revendeur.</p>
 
 <h2>Pourquoi le délai de configuration est toujours sous-estimé</h2>
