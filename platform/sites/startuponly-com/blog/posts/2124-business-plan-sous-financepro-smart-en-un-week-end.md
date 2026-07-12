@@ -4,15 +4,21 @@ slug: 2124-business-plan-sous-financepro-smart-en-un-week-end
 date: '2026-07-12T12:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Créer un business plan avec FinancePro Smart : combien de temps ?'
-meta_description: Faire son business plan avec FinancePro Smart en un week-end, c'est possible, mais sous conditions. Retour honnête sur les points forts, les limites et le temps…
+meta_description: Faire son business plan avec FinancePro Smart en un week-end, c'est
+  possible, mais sous conditions. Retour honnête sur les points forts, les limites
+  et le temps…
 min_words: 960
 status: published
 featured_image: /blog/2124-business-plan-sous-financepro-smart-en-un-week-end.jpg
 link_anchors:
 - text: comment créer un business plan avec FinancePro Smart
   max: 5
+related_posts:
+- 3123-ce-que-le-generateur-de-business-plan-smartstart-generator-ne-remplace-pas
+- 9784-ce-que-le-template-de-business-plan-startupkit-premium-ne-fera-pas
+- 9331-le-prix-de-la-formation-business-plan-frenchy-business-pro-est-il-justifie
+- 4266-peut-on-se-fier-au-simulateur-de-revenu-independant-france-com
 ---
-
 <p>J'ai passé un week-end entier à essayer de boucler mon business plan avec FinancePro Smart. Verdict ? Pas si simple. Mais pas aussi galère que je le craignais.</p>
 
 <p>Je te raconte comment ça s'est passé, ce que l'outil fait vraiment bien, ce qui m'a agacé, et si tu peux honnêtement finir ton BP en 48 heures avec ça.</p>
