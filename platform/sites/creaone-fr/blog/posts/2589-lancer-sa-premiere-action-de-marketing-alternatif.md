@@ -4,15 +4,21 @@ slug: 2589-lancer-sa-premiere-action-de-marketing-alternatif
 date: '2026-07-12T12:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Marketing alternatif : par où commencer ?'
-meta_description: 'Lancez votre première action de marketing alternatif sans agence ni gros budget : stratégies concrètes pour valoriser votre service comptable en interne et attirer…'
+meta_description: 'Lancez votre première action de marketing alternatif sans agence
+  ni gros budget : stratégies concrètes pour valoriser votre service comptable en
+  interne et attirer…'
 min_words: 930
 status: published
 featured_image: /blog/2589-lancer-sa-premiere-action-de-marketing-alternatif.jpg
 link_anchors:
 - text: le logiciel Sage en Ille-et-Vilaine
   max: 5
+related_posts:
+- 6415-vos-factures-en-ligne-simplifie-ta-compta-sont-elles-conformes
+- 2967-le-delai-de-prise-en-main-du-logiciel-quotepro-builder
+- 9222-a-qui-se-prete-le-logiciel-de-devis-quotepro-smart
+- 9168-pourquoi-choisir-la-comptabilite-cloud-financecore-plus
 ---
-
 <p>Le marketing alternatif, c'est un sujet que j'aurais du mal à expliquer à mon DAF il y a encore trois ans. Aujourd'hui, je le vois différemment. Pas parce que c'est une tendance, mais parce que ça fonctionne, y compris pour des fonctions support comme la comptabilité, qui ont souvent peu de budget communication et encore moins de temps.</p>
 
 <p>Je vais vous parler de comment lancer une première action concrète, sans agence, sans budget pharaonique, et sans y passer ses nuits.</p>
