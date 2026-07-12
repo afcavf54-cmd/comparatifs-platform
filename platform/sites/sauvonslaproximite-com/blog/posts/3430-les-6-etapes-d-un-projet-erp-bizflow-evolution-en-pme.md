@@ -4,15 +4,20 @@ slug: 3430-les-6-etapes-d-un-projet-erp-bizflow-evolution-en-pme
 date: '2026-07-12T17:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Implémenter l''ERP BizFlow Evolution en PME : 6 phases'
-meta_description: 'Découvrez les 6 étapes clés pour réussir un projet ERP BizFlow Evolution en PME : cadrage, migration, formation et go-live sans mauvaises surprises.'
+meta_description: 'Découvrez les 6 étapes clés pour réussir un projet ERP BizFlow
+  Evolution en PME : cadrage, migration, formation et go-live sans mauvaises surprises.'
 min_words: 1000
 status: published
 featured_image: /blog/3430-les-6-etapes-d-un-projet-erp-bizflow-evolution-en-pme.jpg
 link_anchors:
 - text: comment implémenter l'ERP BizFlow Evolution dans une PME
   max: 5
+related_posts:
+- 2639-strategie-de-croissance-comment-developper-votre-entreprise-sur-le-long-terme
+- 5674-les-6-atouts-de-l-outil-d-analyse-de-performance-bizmetrics-dashboard
+- 9874-les-5-bons-usages-du-crm-salesflow-evolution
+- 7484-logiciel-geotechnique-gratuit-ou-version-pro
 ---
-
 <p>Vingt ans à suivre des projets ERP de toutes tailles, dans des PME lyonnaises et ailleurs. J'ai vu des déploiements réussis en trois mois, et d'autres qui ont failli couler une direction comptable entière. La vérité, c'est que la réussite d'un projet ERP tient rarement à l'outil lui-même. Elle tient à la méthode.</p>
 
 <p>BizFlow Evolution, je l'ai vu déployé dans plusieurs structures de 30 à 80 salariés. Et à chaque fois, les projets qui se passaient bien suivaient peu ou prou les mêmes étapes. Ceux qui déraillaient, c'était toujours pour les mêmes raisons : un périmètre mal cadré, une migration de données bâclée, ou une équipe pas formée avant le go-live.</p>
