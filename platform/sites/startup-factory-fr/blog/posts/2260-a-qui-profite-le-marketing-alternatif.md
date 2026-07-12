@@ -4,15 +4,21 @@ slug: 2260-a-qui-profite-le-marketing-alternatif
 date: '2026-07-12T19:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Marketing alternatif : pour quelle entreprise ?'
-meta_description: 'Découvrez à qui profite vraiment le marketing alternatif : équipes, clients ou fondateurs. Analyse concrète pour les entreprises de 20 à 100 personnes avec budget…'
+meta_description: 'Découvrez à qui profite vraiment le marketing alternatif : équipes,
+  clients ou fondateurs. Analyse concrète pour les entreprises de 20 à 100 personnes
+  avec budget…'
 min_words: 930
 status: published
 featured_image: /blog/2260-a-qui-profite-le-marketing-alternatif.jpg
 link_anchors:
 - text: le logiciel Sage en Ille-et-Vilaine
   max: 5
+related_posts:
+- 3326-le-prix-d-invoicemaster-evolution-justifie-t-il-ce-logiciel-de-facturation
+- 7036-les-limites-de-la-formation-cnam-intec-en-techniques-comptables
+- 8509-fastbill-vs-invoicepro-max-forces-et-limites-en-facturation
+- 9111-les-pieges-de-la-facture-en-ligne-gratuite-avec-articles
 ---
-
 <p>Le marketing alternatif, j'en entends parler depuis quelques années. Au début j'étais sceptique, franchement. Et puis j'ai commencé à creuser le sujet, à regarder ce que d'autres fondateurs faisaient dans des contextes similaires au mien, et là j'ai compris que derrière ce terme un peu vague, il y a des réalités très concrètes, surtout quand on gère une boîte avec une équipe de 20 à 100 personnes et un budget qui n'est pas extensible à l'infini.</p>
 
 <p>Parce que la vraie question c'est : qui gagne vraiment quand une entreprise adopte des stratégies marketing alternatives ? Est-ce que c'est l'équipe ? Le client ? Le fondateur qui veut réduire ses coûts ? Spoiler : ça dépend de comment c'est fait. Et je vais te dire ce que j'ai observé.</p>
