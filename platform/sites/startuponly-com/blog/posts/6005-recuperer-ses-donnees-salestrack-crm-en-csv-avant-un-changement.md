@@ -4,15 +4,21 @@ slug: 6005-recuperer-ses-donnees-salestrack-crm-en-csv-avant-un-changement
 date: '2026-07-12T19:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Exporter les données SalesTrack CRM en CSV pour migrer de CRM
-meta_description: Exportez vos données SalesTrack CRM en CSV avant toute migration pour sécuriser contacts, deals et historiques. Guide pratique pour ne rien perdre lors d'un…
+meta_description: Exportez vos données SalesTrack CRM en CSV avant toute migration
+  pour sécuriser contacts, deals et historiques. Guide pratique pour ne rien perdre
+  lors d'un…
 min_words: 970
 status: published
 featured_image: /blog/6005-recuperer-ses-donnees-salestrack-crm-en-csv-avant-un-changement.jpg
 link_anchors:
 - text: comment exporter les données du CRM SalesTrack au format CSV
   max: 5
+related_posts:
+- 4788-delai-pour-configurer-le-crm-leadflow-automation
+- 3309-pour-qui-est-fait-le-logiciel-crm-salestrack-pro
+- 9079-pour-qui-est-pense-l-abonnement-tpe-lemagdesentreprises
+- 3223-peut-on-calculer-serieusement-avec-un-logiciel-geotechnique-freeware
 ---
-
 <p>Changer de CRM, c'est souvent le genre de décision qu'on prend un lundi matin avec de l'énergie, et qu'on regrette le jeudi quand on réalise qu'on n'a pas sauvegardé grand-chose. J'ai vécu ça. Pas complètement, mais presque. Et depuis, avant n'importe quelle migration, la première chose que je fais c'est exporter mes données en CSV. Proprement.</p>
 
 <p>SalesTrack CRM est un outil que j'ai utilisé pendant plus de deux ans avec mon équipe. Correct pour suivre des pipelines simples, mais quand on a voulu scaler et automatiser davantage, on a cherché autre chose. Le problème : avant de partir, il faut récupérer tout ce qu'on y a mis. Contacts, deals, historiques d'activités, notes. Rien ne doit rester coincé derrière un accès qu'on va fermer.</p>
