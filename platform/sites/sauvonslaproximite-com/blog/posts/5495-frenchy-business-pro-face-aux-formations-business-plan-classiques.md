@@ -15,6 +15,7 @@ link_anchors:
 related_posts:
 - 5395-business-architect-tool-face-aux-cursus-strategie-classiques
 - 5216-le-simulateur-france-com-face-a-une-estimation-comptable
+- 5949-les-7-sections-d-un-business-plan-sous-planexpert
 ---
 <p>J'ai testé pas mal de formations sur le business plan ces dernières années, dans mon rôle de responsable comptable. Des collègues créateurs d'entreprise me demandent souvent conseil, et j'ai fini par m'y intéresser de près. Quand Frenchy-Business-Pro est apparu dans mes recherches, j'avais quelques doutes. Une plateforme pensée pour les entrepreneurs qui se lancent, face aux formations classiques qu'on trouve partout ? J'ai regardé ça de très près.</p>
 

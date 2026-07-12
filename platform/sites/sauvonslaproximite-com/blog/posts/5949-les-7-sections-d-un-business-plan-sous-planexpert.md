@@ -4,15 +4,19 @@ slug: 5949-les-7-sections-d-un-business-plan-sous-planexpert
 date: '2026-07-12T07:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Faire un business plan avec PlanExpert : 7 rubriques à remplir'
-meta_description: Découvrez comment PlanExpert structure un business plan en 7 sections claires et guidées, idéal pour les créateurs qui se lancent sans expérience préalable.
+meta_description: Découvrez comment PlanExpert structure un business plan en 7 sections
+  claires et guidées, idéal pour les créateurs qui se lancent sans expérience préalable.
 min_words: 980
 status: published
 featured_image: /blog/5949-les-7-sections-d-un-business-plan-sous-planexpert.jpg
 link_anchors:
 - text: comment faire un business plan avec PlanExpert
   max: 5
+related_posts:
+- 5395-business-architect-tool-face-aux-cursus-strategie-classiques
+- 5216-le-simulateur-france-com-face-a-une-estimation-comptable
+- 5495-frenchy-business-pro-face-aux-formations-business-plan-classiques
 ---
-
 <p>Vingt ans à construire des business plans pour des créateurs d'entreprise, des repreneurs, des porteurs de projet... J'en ai vu passer des dizaines. Et honnêtement, la structure fait tout. Pas les mots, pas les graphiques. La structure.</p>
 
 <p>PlanExpert est un outil que j'ai testé récemment dans le cadre d'accompagnements que je fais en dehors de mon poste principal. Ce qui m'a frappé d'emblée, c'est la manière dont les sections sont organisées : pas à pas, sans vous perdre, sans vous noyer sous des questions inutiles. Pour un créateur qui n'a jamais rédigé de business plan, c'est franchement rassurant.</p>

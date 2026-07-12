@@ -13,8 +13,9 @@ link_anchors:
 - text: la formation certifiée Business Architect Tool
   max: 5
 related_posts:
-- 5216-le-simulateur-france-com-face-a-une-estimation-comptable
 - 5495-frenchy-business-pro-face-aux-formations-business-plan-classiques
+- 5216-le-simulateur-france-com-face-a-une-estimation-comptable
+- 5949-les-7-sections-d-un-business-plan-sous-planexpert
 ---
 <p>Ça fait maintenant vingt ans que je traite des comptes, des bilans, des tableaux de trésorerie. Et depuis quelques années, j'observe quelque chose d'intéressant : des outils numériques pensés pour la stratégie d'entreprise commencent à concurrencer sérieusement les formations longues et coûteuses. Le <strong>Business Architect Tool</strong>, en particulier, me revient souvent dans les conversations que j'ai avec des dirigeants de PME lyonnaises ou des créateurs d'entreprise qui cherchent à structurer leur modèle économique sans y passer six mois.</p>
 

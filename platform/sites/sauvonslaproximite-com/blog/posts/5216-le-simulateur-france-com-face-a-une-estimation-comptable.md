@@ -14,6 +14,7 @@ link_anchors:
   max: 5
 related_posts:
 - 5495-frenchy-business-pro-face-aux-formations-business-plan-classiques
+- 5949-les-7-sections-d-un-business-plan-sous-planexpert
 - 5395-business-architect-tool-face-aux-cursus-strategie-classiques
 featured_image: /blog/5216-le-simulateur-france-com-face-a-une-estimation-comptable.jpg
 ---
