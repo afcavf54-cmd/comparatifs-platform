@@ -4,15 +4,21 @@ slug: 6240-business-plan-sous-planexpert-delai-realiste
 date: '2026-07-13T07:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Faire un business plan avec PlanExpert : combien de temps ?'
-meta_description: Combien de temps faut-il pour créer un business plan avec PlanExpert ? Retour d'expérience concret sur les délais réels et les fonctions qui font vraiment gagner…
+meta_description: Combien de temps faut-il pour créer un business plan avec PlanExpert
+  ? Retour d'expérience concret sur les délais réels et les fonctions qui font vraiment
+  gagner…
 min_words: 980
 status: published
 featured_image: /blog/6240-business-plan-sous-planexpert-delai-realiste.jpg
 link_anchors:
 - text: comment faire un business plan avec PlanExpert
   max: 5
+related_posts:
+- 2981-ce-que-le-modele-de-business-plan-startupkit-advanced-ne-fait-pas
+- 9784-ce-que-le-template-de-business-plan-startupkit-premium-ne-fera-pas
+- 4266-peut-on-se-fier-au-simulateur-de-revenu-independant-france-com
+- 2124-business-plan-sous-financepro-smart-en-un-week-end
 ---
-
 <p>J'ai utilisé PlanExpert pendant trois semaines pour monter le business plan de mon deuxième projet. Et franchement, la question qui m'a le plus obsédé avant de commencer, c'était pas "est-ce que ça marche ?" mais "combien de temps ça va me prendre ?"</p>
 
 <p>Spoiler : beaucoup moins que ce que je pensais. Mais pas pour les raisons que j'imaginais.</p>
