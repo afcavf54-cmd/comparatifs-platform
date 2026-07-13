@@ -4,15 +4,21 @@ slug: 5004-les-programmes-et-logiciels-geotechniques-gratuits-a-connaitre
 date: '2026-07-13T10:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Où trouver des programmes et logiciels géotechniques gratuits ?
-meta_description: 'Découvrez les meilleurs logiciels géotechniques gratuits pour le BTP : outils de calcul de sols, fondations et talus accessibles sans budget licence élevé.'
+meta_description: 'Découvrez les meilleurs logiciels géotechniques gratuits pour le
+  BTP : outils de calcul de sols, fondations et talus accessibles sans budget licence
+  élevé.'
 min_words: 990
 status: published
 featured_image: /blog/5004-les-programmes-et-logiciels-geotechniques-gratuits-a-connaitre.jpg
 link_anchors:
 - text: les programmes et logiciels géotechniques gratuits
   max: 5
+related_posts:
+- 4544-sap-l-erp-de-reference-explique-simplement
+- 7617-erp-bizcore-enterprise-combien-ca-coute-vraiment
+- 4839-combien-coute-l-implementation-du-systeme-bizcore-advanced
+- 9912-le-logiciel-geotechnique-freeware-au-scanner
 ---
-
 <p>Je vais être honnête : quand j'ai commencé à chercher des outils géotechniques gratuits pour un projet client dans le secteur du BTP, je m'attendais à trouver des logiciels datés, impossibles à utiliser sans un doctorat en génie civil. Et puis j'ai découvert qu'il existait des options vraiment utilisables, même pour quelqu'un comme moi qui gère une agence de communication et accompagne des clients dans des secteurs très techniques.</p>
 
 <p>Parce que oui, certains de mes clients travaillent dans le BTP, la géotechnique, les infrastructures. Et quand ils me demandent de créer du contenu ou de les aider à structurer leur communication autour de leurs outils métier, j'ai besoin de comprendre ce dont ils parlent. Voici ce que j'ai retenu après pas mal d'heures de recherche et de conversations avec des professionnels du secteur.</p>
