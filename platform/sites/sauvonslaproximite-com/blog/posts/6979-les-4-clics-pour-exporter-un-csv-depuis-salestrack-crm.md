@@ -4,15 +4,20 @@ slug: 6979-les-4-clics-pour-exporter-un-csv-depuis-salestrack-crm
 date: '2026-07-13T19:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Exporter les données SalesTrack CRM en CSV : 4 étapes'
-meta_description: Exportez facilement vos données depuis SalesTrack CRM en seulement 4 clics. Tutoriel concret pour obtenir un fichier CSV propre, sans compétences techniques…
+meta_description: Exportez facilement vos données depuis SalesTrack CRM en seulement
+  4 clics. Tutoriel concret pour obtenir un fichier CSV propre, sans compétences techniques…
 min_words: 970
 status: published
 featured_image: /blog/6979-les-4-clics-pour-exporter-un-csv-depuis-salestrack-crm.jpg
 link_anchors:
 - text: comment exporter les données du CRM SalesTrack au format CSV
   max: 5
+related_posts:
+- 4389-les-6-phases-d-un-projet-erp-bizflow-v8-pro
+- 2704-les-5-reflexes-utiles-sur-le-crm-smartlead-evolution
+- 2207-salesconnect-pro-et-marketwise-departages-en-6-points
+- 9589-les-5-points-de-connexion-entre-l-erp-flexibiz-et-la-comptabilite
 ---
-
 <p>Vingt ans à jongler avec des exports de données, des tableaux croisés dynamiques et des comptables qui me demandent "t'as le fichier CSV ?" à 17h le vendredi. Je connais bien ce moment où on perd dix minutes à chercher comment sortir ses données d'un CRM. Avec SalesTrack, j'ai eu la bonne surprise : c'est honnêtement l'une des manipulations les plus rapides que j'aie faites depuis longtemps.</p>
 
 <p>Je vous explique exactement comment ça se passe. Pas de détour.</p>
