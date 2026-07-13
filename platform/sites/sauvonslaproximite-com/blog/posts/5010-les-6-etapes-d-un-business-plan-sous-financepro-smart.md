@@ -4,15 +4,20 @@ slug: 5010-les-6-etapes-d-un-business-plan-sous-financepro-smart
 date: '2026-07-13T12:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Créer un business plan avec FinancePro Smart : 6 étapes'
-meta_description: Découvrez les 6 étapes pour construire un business plan solide avec FinancePro Smart, sans vous perdre dans les menus ni fausser vos projections financières.
+meta_description: Découvrez les 6 étapes pour construire un business plan solide avec
+  FinancePro Smart, sans vous perdre dans les menus ni fausser vos projections financières.
 min_words: 960
 status: published
 featured_image: /blog/5010-les-6-etapes-d-un-business-plan-sous-financepro-smart.jpg
 link_anchors:
 - text: comment créer un business plan avec FinancePro Smart
   max: 5
+related_posts:
+- 5395-business-architect-tool-face-aux-cursus-strategie-classiques
+- 5495-frenchy-business-pro-face-aux-formations-business-plan-classiques
+- 5216-le-simulateur-france-com-face-a-une-estimation-comptable
+- 5949-les-7-sections-d-un-business-plan-sous-planexpert
 ---
-
 <p>J'ai accompagné pas mal de porteurs de projet ces dernières années, et la question revient toujours : par où commencer avec FinancePro Smart ? L'outil est puissant, mais il faut connaître la logique derrière pour ne pas se perdre dans les menus dès la première heure. Voici ce que j'aurais voulu qu'on m'explique au départ.</p>
 
 <h2>Avant de lancer quoi que ce soit : poser les bases dans FinancePro Smart</h2>
