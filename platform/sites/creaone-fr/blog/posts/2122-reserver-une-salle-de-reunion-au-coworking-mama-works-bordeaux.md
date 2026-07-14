@@ -13,7 +13,8 @@ featured_image: /blog/2122-reserver-une-salle-de-reunion-au-coworking-mama-works
 link_anchors:
 - text: le logiciel de gestion de trésorerie CashMaster Ultimate
   max: 5
-related_posts: []
+related_posts:
+- 9467-ce-que-la-v4-change-dans-l-outil-de-reporting-financier-cashflow-analytics
 ---
 <p>J'ai découvert Mama Works Bordeaux un peu par hasard, lors d'un déplacement professionnel il y a deux ans. Depuis, je réserve régulièrement une salle de réunion là-bas quand je travaille en dehors de nos bureaux toulousains. Franchement, pour un responsable comptable qui doit parfois recevoir des clients ou des auditeurs en dehors de son propre espace, c'est une vraie solution pratique.</p>
 

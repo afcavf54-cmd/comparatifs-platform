@@ -3,16 +3,20 @@ title: Ce que la V4 change dans l'outil de reporting financier Cashflow Analytic
 slug: 9467-ce-que-la-v4-change-dans-l-outil-de-reporting-financier-cashflow-analytics
 date: '2026-07-14T08:00:00+02:00'
 categorie: Finance & Comptabilité
-meta_title: 'Outil de reporting financier Cashflow Analytics V4 : les nouveautés de la V4'
-meta_description: 'Découvrez ce que la V4 de Cashflow Analytics change vraiment : synchronisation en temps réel, filtres persistants et reporting repensé, analysés par un utilisateur…'
+meta_title: 'Outil de reporting financier Cashflow Analytics V4 : les nouveautés de
+  la V4'
+meta_description: 'Découvrez ce que la V4 de Cashflow Analytics change vraiment :
+  synchronisation en temps réel, filtres persistants et reporting repensé, analysés
+  par un utilisateur…'
 min_words: 950
 status: published
 featured_image: /blog/9467-ce-que-la-v4-change-dans-l-outil-de-reporting-financier-cashflow-analytics.jpg
 link_anchors:
 - text: l'outil de reporting financier Cashflow Analytics V4
   max: 5
+related_posts:
+- 2122-reserver-une-salle-de-reunion-au-coworking-mama-works-bordeaux
 ---
-
 <p>J'utilise Cashflow Analytics depuis la V2. Autant dire que j'ai vu l'outil évoluer, parfois en bien, parfois avec des ratés qu'on espérait voir corriger. La V4 est sortie il y a quelques mois et honnêtement, c'est la mise à jour qui m'a le plus convaincu depuis le début.</p>
 
 <p>Je vais vous expliquer ce qui change concrètement, ce qui reste perfectible, et pour quel type d'équipe ça fait vraiment sens en 2024.</p>
