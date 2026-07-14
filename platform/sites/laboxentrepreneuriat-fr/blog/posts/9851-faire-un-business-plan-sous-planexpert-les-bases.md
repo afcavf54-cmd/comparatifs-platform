@@ -4,15 +4,20 @@ slug: 9851-faire-un-business-plan-sous-planexpert-les-bases
 date: '2026-07-14T10:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Business plan PlanExpert : par où commencer ?'
-meta_description: Découvrez comment fonctionne PlanExpert pour construire un business plan structuré, du tableau de bord au prévisionnel financier, avec un retour d'expérience…
+meta_description: Découvrez comment fonctionne PlanExpert pour construire un business
+  plan structuré, du tableau de bord au prévisionnel financier, avec un retour d'expérience…
 min_words: 980
 status: published
 featured_image: /blog/9851-faire-un-business-plan-sous-planexpert-les-bases.jpg
 link_anchors:
 - text: comment faire un business plan avec PlanExpert
   max: 5
+related_posts:
+- 7627-les-5-variables-du-simulateur-de-revenu-independant-france-com
+- 7981-les-6-acquis-de-la-formation-business-architect-tool
+- 3340-les-6-acquis-de-la-formation-business-plan-frenchy-business-pro
+- 8786-startupkit-advanced-ce-modele-de-business-plan-vaut-il-le-coup
 ---
-
 <p>PlanExpert, je suis tombé dessus par hasard, en accompagnant un client qui devait monter un dossier de financement pour une banque régionale. On avait deux semaines. Pas le temps d'improviser. Et franchement, je ne m'attendais pas à ce que le logiciel soit aussi directif dans le bon sens du terme. Pas de page blanche. Pas de question piège. Une structure qui guide sans enfermer.</p>
 
 <p>Voilà ce que j'ai envie de vous raconter ici : comment fonctionne concrètement PlanExpert pour faire un business plan, ce que l'outil fait bien, ce qu'il fait moins bien, et pour quel type de porteur de projet c'est vraiment adapté.</p>
