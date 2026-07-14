@@ -4,15 +4,21 @@ slug: 6473-localiser-l-export-csv-des-donnees-dans-salestrack-crm
 date: '2026-07-14T07:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'CRM SalesTrack : où trouver l''export de données en CSV ?'
-meta_description: Trouvez facilement l'export CSV dans SalesTrack CRM grâce à ce guide pas à pas. Accédez à vos données contacts et clients en quelques clics, sans perdre de temps.
+meta_description: Trouvez facilement l'export CSV dans SalesTrack CRM grâce à ce guide
+  pas à pas. Accédez à vos données contacts et clients en quelques clics, sans perdre
+  de temps.
 min_words: 970
 status: published
 featured_image: /blog/6473-localiser-l-export-csv-des-donnees-dans-salestrack-crm.jpg
 link_anchors:
 - text: comment exporter les données du CRM SalesTrack au format CSV
   max: 5
+related_posts:
+- 4183-les-7-piliers-du-crm-hubspot
+- 5476-quel-budget-pour-la-licence-du-progiciel-erp-bizmaster-360
+- 6769-installer-le-logiciel-crm-mobile-fieldforce-sync-point-par-point
+- 5626-les-6-atouts-d-efficacite-de-l-outil-de-prospection-clientfinder-ai
 ---
-
 <p>Ça fait maintenant douze ans que j'accompagne des dirigeants sur le choix et la prise en main de leurs outils de gestion. Et une question revient régulièrement, plus souvent qu'on ne le croit : <strong>où trouver l'export CSV dans SalesTrack CRM ?</strong> Pas parce que le logiciel est mauvais. Simplement parce que cette fonctionnalité est parfois mal documentée, enfouie dans des menus peu visibles, et que la plupart des utilisateurs n'ont ni le temps ni l'envie de fouiller pendant une heure.</p>
 
 <p>Cet article répond précisément à cette question. Étape par étape, sans jargon inutile, avec des exemples concrets tirés de situations réelles que j'ai rencontrées sur le terrain.</p>
