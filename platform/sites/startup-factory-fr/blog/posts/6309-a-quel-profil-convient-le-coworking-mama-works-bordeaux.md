@@ -12,7 +12,8 @@ featured_image: /blog/6309-a-quel-profil-convient-le-coworking-mama-works-bordea
 link_anchors:
 - text: le logiciel de gestion de trésorerie CashMaster Ultimate
   max: 5
-related_posts: []
+related_posts:
+- 9220-a-quel-profil-convient-l-outil-de-reporting-financier-cashflow-analytics-v4
 ---
 <p>J'ai testé pas mal d'espaces de coworking à Bordeaux ces deux dernières années. Mama Works, je l'ai découvert un peu par hasard, via une recommandation d'une autre fondatrice de ma région. Et franchement, ça m'a surprise. Pas forcément dans le sens où je l'imaginais.</p>
 
