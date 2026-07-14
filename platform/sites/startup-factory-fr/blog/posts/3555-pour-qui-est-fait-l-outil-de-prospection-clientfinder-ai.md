@@ -3,16 +3,23 @@ title: Pour qui est fait l'outil de prospection ClientFinder AI
 slug: 3555-pour-qui-est-fait-l-outil-de-prospection-clientfinder-ai
 date: '2026-07-14T12:00:00+02:00'
 categorie: Gestion d'entreprise
-meta_title: 'Outil de prospection ClientFinder AI : pour quelle équipe commerciale ?'
-meta_description: 'Découvrez si ClientFinder AI est fait pour vous : analyse concrète de cet outil de prospection B2B, ses fonctions clés et pour qui il vaut vraiment le coup.'
+meta_title: 'Outil de prospection ClientFinder AI : pour quelle équipe commerciale
+  ?'
+meta_description: 'Découvrez si ClientFinder AI est fait pour vous : analyse concrète
+  de cet outil de prospection B2B, ses fonctions clés et pour qui il vaut vraiment
+  le coup.'
 min_words: 940
 status: published
 featured_image: /blog/3555-pour-qui-est-fait-l-outil-de-prospection-clientfinder-ai.jpg
 link_anchors:
 - text: l'efficacité de l'outil de prospection ClientFinder AI
   max: 5
+related_posts:
+- 4150-mise-en-place-du-crm-powerlink-advance-les-pieges
+- 7027-integration-de-l-erp-flexmanage-plus-les-pieges-techniques
+- 1400-installer-le-logiciel-crm-mobile-fieldforce-sync-les-pieges
+- 5508-ruptures-et-surstocks-les-pieges-sous-inventory-control-smart
 ---
-
 <p>Honnêtement, j'ai testé beaucoup d'outils de prospection depuis que j'ai lancé ma boîte. Trop. Et la majorité du temps, je me retrouvais avec un truc hyper complet que mon équipe n'utilisait pas parce que c'était trop compliqué, ou un outil basique qui ne m'épargnait aucune tâche répétitive. <strong>ClientFinder AI</strong>, j'en ai entendu parler via une connaissance qui dirige une agence à Lyon. J'ai décidé de creuser le sujet sérieusement.</p>
 
 <p>Ce que je vais te partager ici, c'est mon analyse réelle de l'outil : pour qui ça a du sens, pour qui c'est une perte de temps, et ce que ça automatise vraiment.</p>
