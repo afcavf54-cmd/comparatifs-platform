@@ -4,15 +4,20 @@ slug: 7722-ce-que-les-logiciels-geotechniques-gratuits-ne-couvrent-pas
 date: '2026-07-14T06:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Programmes et logiciels géotechniques gratuits : les limites'
-meta_description: 'Logiciels géotechniques gratuits : exports limités, pas de synchronisation, rapports non formatés. Découvrez ce qu''ils ne couvrent pas vraiment en entreprise.'
+meta_description: 'Logiciels géotechniques gratuits : exports limités, pas de synchronisation,
+  rapports non formatés. Découvrez ce qu''ils ne couvrent pas vraiment en entreprise.'
 min_words: 990
 status: published
 featured_image: /blog/7722-ce-que-les-logiciels-geotechniques-gratuits-ne-couvrent-pas.jpg
 link_anchors:
 - text: les programmes et logiciels géotechniques gratuits
   max: 5
+related_posts:
+- 2498-le-crm-pipedrive-nexus-edition-face-a-l-edition-classique
+- 3132-powerlink-advance-face-au-pilotage-commercial-sur-excel
+- 9560-les-vrais-postes-de-cout-de-l-erp-bizcore-enterprise
+- 6692-ce-qui-manque-au-crm-mobile-fieldforce-connect-sur-android
 ---
-
 <p>J'ai mis du temps à m'en rendre compte. Pendant presque un an, j'ai utilisé des outils géotechniques gratuits pour gérer certaines analyses sur nos chantiers à Marseille. Je pensais faire une bonne affaire. Réduire les coûts logiciels, c'est une priorité quand on dirige une structure de 100 à 500 salariés avec des marges sous pression.</p>
 
 <p>Et puis un jour, un de mes chefs de projet m'a posé une question simple : "Nicolas, t'as un export PDF avec les logs de sondage formatés pour le client ?" J'ai cherché. Cherché encore. La fonctionnalité n'existait pas dans l'outil gratuit qu'on utilisait.</p>
