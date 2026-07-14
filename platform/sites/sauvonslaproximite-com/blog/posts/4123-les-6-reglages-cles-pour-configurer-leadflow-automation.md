@@ -4,15 +4,20 @@ slug: 4123-les-6-reglages-cles-pour-configurer-leadflow-automation
 date: '2026-07-14T18:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Configurer le CRM LeadFlow Automation : 6 réglages prioritaires'
-meta_description: Découvrez les 6 réglages essentiels pour configurer LeadFlow Automation, testés en conditions réelles dans une PME pour gagner du temps sans expertise technique.
+meta_description: Découvrez les 6 réglages essentiels pour configurer LeadFlow Automation,
+  testés en conditions réelles dans une PME pour gagner du temps sans expertise technique.
 min_words: 940
 status: published
 featured_image: /blog/4123-les-6-reglages-cles-pour-configurer-leadflow-automation.jpg
 link_anchors:
 - text: comment configurer le CRM LeadFlow Automation
   max: 5
+related_posts:
+- 5959-calcul-prix-de-vente-avec-taux-de-marge-methode-simple-et-exemples-detailles
+- 3669-le-compliance-kit-rgpd-de-protection-des-donnees-face-a-un-consultant
+- 2514-les-7-atouts-du-logiciel-crm-salestrack-360-selon-les-utilisateurs
+- 2748-la-licence-du-progiciel-erp-bizmaster-360-face-au-saas-sur-le-prix
 ---
-
 <p>Vingt ans à jongler avec les chiffres, les relances fournisseurs et les clôtures mensuelles, ça forge des habitudes. Et l'une d'elles, c'est de ne jamais laisser un outil tourner "par défaut". LeadFlow Automation, je l'ai déployé dans notre PME lyonnaise il y a un peu plus d'un an. Bonne surprise globale, mais je vais vous dire une chose : sorti de la boîte, il est loin d'être optimisé. Les six réglages que je vous présente ici, c'est le résultat de plusieurs semaines de tests, quelques erreurs et quelques gains de temps réels.</p>
 
 <p>Je précise d'emblée : notre équipe comptabilité est de taille modeste, pas d'ingénieur informatique interne. Ce que je cherche, c'est que ça marche <strong>sans maintenance constante</strong>, que ça s'intègre avec notre logiciel comptable, et que mes collaborateurs n'aient pas besoin d'une formation de trois jours pour s'en sortir.</p>
