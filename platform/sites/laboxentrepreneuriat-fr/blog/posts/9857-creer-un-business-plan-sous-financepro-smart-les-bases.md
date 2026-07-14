@@ -4,15 +4,21 @@ slug: 9857-creer-un-business-plan-sous-financepro-smart-les-bases
 date: '2026-07-14T19:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Business plan FinancePro Smart : par où commencer ?'
-meta_description: Créer un business plan avec FinancePro Smart est plus simple qu'il n'y paraît. Découvrez comment structurer votre projet pas à pas, même sans formation financière.
+meta_description: Créer un business plan avec FinancePro Smart est plus simple qu'il
+  n'y paraît. Découvrez comment structurer votre projet pas à pas, même sans formation
+  financière.
 min_words: 960
 status: published
 featured_image: /blog/9857-creer-un-business-plan-sous-financepro-smart-les-bases.jpg
 link_anchors:
 - text: comment créer un business plan avec FinancePro Smart
   max: 5
+related_posts:
+- 7941-startupkit-premium-ce-modele-de-business-plan-tient-il-la-route
+- 8786-startupkit-advanced-ce-modele-de-business-plan-vaut-il-le-coup
+- 1283-template-de-business-plan-smartstart-generator-sans-detour
+- 9851-faire-un-business-plan-sous-planexpert-les-bases
 ---
-
 <p>J'ai accompagné des dizaines de porteurs de projet sur la construction de leur business plan. Et à chaque fois, la même question revient : quel outil utiliser pour structurer tout ça sans y passer trois semaines ? Pendant longtemps, j'orientais vers Excel ou vers des templates Word bricolés. Mais depuis que j'ai testé <strong>FinancePro Smart</strong> en conditions réelles avec plusieurs clients, ma réponse a changé.</p>
 
 <p>Ce n'est pas l'outil le plus connu du marché. Il ne fait pas l'objet de grandes campagnes publicitaires. Mais sur le terrain, pour des TPE, des indépendants ou des porteurs de projet en phase de création, il fait un travail sérieux. Je vais vous expliquer pourquoi, comment le prendre en main, et surtout ce qu'il faut éviter.</p>
