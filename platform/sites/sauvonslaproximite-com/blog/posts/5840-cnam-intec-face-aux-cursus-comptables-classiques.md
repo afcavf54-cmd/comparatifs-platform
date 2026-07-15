@@ -4,15 +4,21 @@ slug: 5840-cnam-intec-face-aux-cursus-comptables-classiques
 date: '2026-07-15T17:00:00+02:00'
 categorie: Comptabilité
 meta_title: Cnam-Intec vs écoles privées de comptabilité
-meta_description: 'Cnam-Intec ou cursus classique pour votre DCG : découvrez les vraies différences entre ces deux voies, selon un professionnel avec 20 ans d''expérience en…'
+meta_description: 'Cnam-Intec ou cursus classique pour votre DCG : découvrez les vraies
+  différences entre ces deux voies, selon un professionnel avec 20 ans d''expérience
+  en…'
 min_words: 910
 status: published
 featured_image: /blog/5840-cnam-intec-face-aux-cursus-comptables-classiques.jpg
 link_anchors:
 - text: le CNAM INTEC (institut national des techniques économiques et comptables)
   max: 5
+related_posts:
+- 6121-financecore-plus-face-a-la-version-enterprise-sur-les-fonctionnalites
+- 6815-les-5-etapes-pour-prendre-en-main-quotepro-builder
+- 1817-les-5-automatisations-de-facturation-a-activer-dans-billmatic-auto
+- 8096-integrateur-du-logiciel-sage-en-ille-et-vilaine-ou-licence-en-ligne
 ---
-
 <p>J'ai fait mon DCG en formation continue via le Cnam-Intec. Pas en IUT, pas en lycée, pas dans une école de commerce. Et honnêtement, je ne regrette rien, mais je comprends pourquoi beaucoup hésitent avant de sauter le pas.</p>
 
 <p>La question qu'on me pose souvent dans mon réseau : est-ce que le Cnam-Intec vaut vraiment un parcours classique ? Voilà ce que j'en pense, après 20 ans de terrain et pas mal d'échanges avec des collaborateurs formés par les deux voies.</p>
