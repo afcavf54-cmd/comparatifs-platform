@@ -4,15 +4,21 @@ slug: 8120-delai-d-installation-de-l-erp-cloudmanager-enterprise
 date: '2026-07-15T12:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Installer l''ERP CloudManager Enterprise : combien de temps ?'
-meta_description: 'Découvrez le délai réel d''installation de l''ERP CloudManager Enterprise : entre promesses marketing et réalité terrain, un retour d''expérience concret de 4 semaines.'
+meta_description: 'Découvrez le délai réel d''installation de l''ERP CloudManager
+  Enterprise : entre promesses marketing et réalité terrain, un retour d''expérience
+  concret de 4 semaines.'
 min_words: 950
 status: published
 featured_image: /blog/8120-delai-d-installation-de-l-erp-cloudmanager-enterprise.jpg
 link_anchors:
 - text: comment installer l'ERP CloudManager Enterprise
   max: 5
+related_posts:
+- 4985-a-quelle-vitesse-deployer-le-crm-smartsales-enterprise
+- 9079-pour-qui-est-pense-l-abonnement-tpe-lemagdesentreprises
+- 4676-delai-d-integration-du-module-de-fidelisation-loyaltymax-au-crm
+- 7371-jusqu-ou-le-crm-hubspot-reste-t-il-gratuit
 ---
-
 <p>J'ai monté ma startup à Bordeaux avec 3 personnes au départ. Quand on a décidé de passer à un ERP, la première question c'était pas "lequel choisir" — c'était <strong>"combien de temps on va perdre à l'installer"</strong>. Parce qu'on n'avait pas de DSI, pas de consultant attitré, juste nous trois avec du boulot qui s'accumulait.</p>
 
 <p>CloudManager Enterprise est arrivé dans notre radar assez naturellement. Bon prix, belles promesses, interface qui avait l'air propre. Mais le délai d'installation, personne n'en parlait vraiment. Alors je vais te dire ce que j'ai vécu.</p>
