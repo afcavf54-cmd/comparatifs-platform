@@ -4,15 +4,20 @@ slug: 8085-cdi-interimaire-ou-cdi-classique-avantages-et-inconvenients
 date: '2026-07-15T10:00:00+02:00'
 categorie: Salarié
 meta_title: 'CDI intérimaire : avantages vs inconvénients face au CDI classique'
-meta_description: 'CDI intérimaire ou CDI classique : lequel choisir vraiment. Avantages, inconvénients et différences concrètes expliqués par un expert RH en comptabilité.'
+meta_description: 'CDI intérimaire ou CDI classique : lequel choisir vraiment. Avantages,
+  inconvénients et différences concrètes expliqués par un expert RH en comptabilité.'
 min_words: 900
 status: published
 featured_image: /blog/8085-cdi-interimaire-ou-cdi-classique-avantages-et-inconvenients.jpg
 link_anchors:
 - text: les avantages et inconvénients du CDI intérimaire
   max: 5
+related_posts:
+- 2602-la-methode-presentation-a-impact-face-aux-powerpoint-classiques
+- 8249-redressement-judiciaire-comment-quitter-l-entreprise-en-protegeant-vos-droits
+- 1113-abreviations-du-bulletin-de-salaire-comprendre-facilement-chaque-ligne
+- 8567-fin-de-cdd-sans-reponse-de-l-employeur-quelles-demarches-entreprendre
 ---
-
 <p>Vingt ans à pointer les écritures, à valider des clôtures, à gérer des équipes comptables... et je me retrouve encore à expliquer à des candidats ce que signifie vraiment un CDI intérimaire. Parce que, franchement, la confusion est totale. Beaucoup de personnes pensent que "CDI" veut automatiquement dire sécurité, stabilité, siège fixe. Ce n'est pas si simple.</p>
 
 <p>Si vous cherchez à arbitrer entre ces deux formes de contrat, ce que je vais vous exposer ici est basé sur ce que j'observe concrètement, aussi bien du côté RH que du côté des collaborateurs qui passent par mon service comptable.</p>
