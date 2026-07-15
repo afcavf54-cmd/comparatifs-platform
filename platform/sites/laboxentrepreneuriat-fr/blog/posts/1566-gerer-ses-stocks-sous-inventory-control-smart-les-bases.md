@@ -4,15 +4,21 @@ slug: 1566-gerer-ses-stocks-sous-inventory-control-smart-les-bases
 date: '2026-07-15T17:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Gestion des stocks Inventory Control Smart : par où commencer ?'
-meta_description: 'Découvrez comment gérer vos stocks efficacement avec Inventory Control Smart : fiches articles, alertes de réapprovisionnement et suivi en temps réel pour TPE et…'
+meta_description: 'Découvrez comment gérer vos stocks efficacement avec Inventory
+  Control Smart : fiches articles, alertes de réapprovisionnement et suivi en temps
+  réel pour TPE et…'
 min_words: 990
 status: published
 featured_image: /blog/1566-gerer-ses-stocks-sous-inventory-control-smart-les-bases.jpg
 link_anchors:
 - text: comment gérer ses stocks avec Inventory Control Smart
   max: 5
+related_posts:
+- 4761-configuration-de-l-erp-dynabiz-pro-les-priorites
+- 5787-installer-l-erp-integre-managepro-suite-en-quelques-etapes
+- 6769-installer-le-logiciel-crm-mobile-fieldforce-sync-point-par-point
+- 7015-les-7-piliers-de-l-erp-sap
 ---
-
 <p>La gestion de stock, c'est souvent le parent pauvre de l'organisation d'entreprise. On y pense quand il y a une rupture, quand un client appelle pour une commande introuvable, ou quand l'inventaire de fin d'année révèle des écarts inexplicables. J'ai accompagné des dizaines de dirigeants dans cette situation. Et dans la majorité des cas, le problème n'est pas le stock lui-même, c'est l'absence d'outil adapté pour le suivre.</p>
 
 <p>Inventory Control Smart est l'un des logiciels que j'ai eu l'occasion de tester en conditions réelles, avec plusieurs TPE et PME de secteurs différents. Un négoce de matériaux à Grenoble, un atelier de fabrication de meubles sur mesure près de Lyon, une petite boutique e-commerce. Autant de contextes différents pour mettre l'outil à l'épreuve.</p>
