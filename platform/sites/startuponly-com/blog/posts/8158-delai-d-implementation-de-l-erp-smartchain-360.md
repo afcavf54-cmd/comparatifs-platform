@@ -4,15 +4,21 @@ slug: 8158-delai-d-implementation-de-l-erp-smartchain-360
 date: '2026-07-15T06:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Implémenter l''ERP SmartChain 360 : combien de temps ?'
-meta_description: 'Délai d''implémentation ERP SmartChain 360 : découvrez combien de temps prévoir vraiment, les phases clés et les pièges à éviter pour une PME qui veut aller vite.'
+meta_description: 'Délai d''implémentation ERP SmartChain 360 : découvrez combien
+  de temps prévoir vraiment, les phases clés et les pièges à éviter pour une PME qui
+  veut aller vite.'
 min_words: 970
 status: published
 featured_image: /blog/8158-delai-d-implementation-de-l-erp-smartchain-360.jpg
 link_anchors:
 - text: comment implémenter l'ERP SmartChain 360
   max: 5
+related_posts:
+- 9378-delai-d-installation-du-logiciel-crm-mobile-fieldforce-sync
+- 1976-le-prix-du-crm-salesforge-compact-est-il-adapte-aux-pme
+- 9889-a-quelle-equipe-convient-le-tarif-mensuel-de-cloudlead-manager
+- 1952-a-quel-public-s-adresse-l-outil-d-analyse-de-performance-bizmetrics-dashboard
 ---
-
 <p>J'ai failli me planter sur ce projet. Vraiment. On avait choisi SmartChain 360 en pensant que l'intégration prendrait deux mois max. On en a mis cinq. Voilà ce que personne ne te dit quand tu signes le contrat.</p>
 
 <p>Alors j'écris cet article pour que tu aies une vision honnête de ce qui t'attend, surtout si t'es comme moi : une petite structure, peu de temps, et zéro envie de passer six mois à configurer un ERP au lieu de développer ton activité.</p>
