@@ -4,15 +4,21 @@ slug: 3333-espace-de-bureau-et-coworking-wework-sous-toutes-les-coutures
 date: '2026-07-16T10:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'WeWork : que vaut l''espace de bureau et de coworking ?'
-meta_description: 'Retour d''expérience honnête sur WeWork : espaces de coworking, bureaux privés et hot desks testés à Paris et Lyon pour un avis concret et sans filtre marketing.'
+meta_description: 'Retour d''expérience honnête sur WeWork : espaces de coworking,
+  bureaux privés et hot desks testés à Paris et Lyon pour un avis concret et sans
+  filtre marketing.'
 min_words: 910
 status: published
 featured_image: /blog/3333-espace-de-bureau-et-coworking-wework-sous-toutes-les-coutures.jpg
 link_anchors:
 - text: espace de bureau et coworking WeWork
   max: 5
+related_posts:
+- 4540-les-indicateurs-economiques-territoriaux-de-leterritoireentreprise-passe-a-la-loupe
+- 3556-combien-coute-le-logiciel-de-facturation-quickbill-enterprise
+- 9897-les-tarifs-coworking-de-lefoyerentrepreneurial-decortiques
+- 3251-la-formation-inbound-marketing-hubgrow-academy-sans-detour
 ---
-
 <p>J'ai testé WeWork à deux reprises. La première fois en 2019, quand j'avais besoin d'une adresse professionnelle à Paris pour un client. La deuxième, l'année dernière, pour installer temporairement deux de mes salariés pendant des travaux dans nos locaux lyonnais. Ces deux expériences m'ont appris beaucoup, et pas uniquement sur les open spaces avec canapés en velours vert.</p>
 
 <p>Alors voilà mon retour honnête. Pas un article de presse. Pas une brochure marketing. Juste ce que j'ai observé, testé, aimé et parfois regretté.</p>
