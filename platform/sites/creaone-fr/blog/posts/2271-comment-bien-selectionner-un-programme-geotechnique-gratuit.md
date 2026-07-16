@@ -4,15 +4,21 @@ slug: 2271-comment-bien-selectionner-un-programme-geotechnique-gratuit
 date: '2026-07-16T12:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Programmes et logiciels géotechniques gratuits : par où commencer ?'
-meta_description: 'Bien choisir un programme géotechnique gratuit demande plus que regarder le prix. Compatibilité, exports, maintenance : les critères essentiels pour ne pas perdre…'
+meta_description: 'Bien choisir un programme géotechnique gratuit demande plus que
+  regarder le prix. Compatibilité, exports, maintenance : les critères essentiels
+  pour ne pas perdre…'
 min_words: 990
 status: published
 featured_image: /blog/2271-comment-bien-selectionner-un-programme-geotechnique-gratuit.jpg
 link_anchors:
 - text: les programmes et logiciels géotechniques gratuits
   max: 5
+related_posts:
+- 8731-preparer-ses-flux-avant-d-implementer-smartchain-360
+- 2726-bien-configurer-les-acces-lors-de-l-installation-de-cloudmanager-enterprise
+- 1125-premiers-pas-avec-le-customer-relationship-management-hubspot
+- 7255-le-surcout-de-salesforce-premium-face-a-un-crm-basique-est-il-justifie
 ---
-
 <p>Choisir un programme géotechnique gratuit sans se tromper, c'est plus compliqué qu'il n'y paraît. J'ai vu des équipes perdre des semaines à tester des outils inadaptés, des données saisies deux fois, des exports qui plantent. Après 9 ans à gérer la comptabilité de bureaux d'études et d'entreprises de construction à Toulouse, j'ai eu l'occasion de croiser pas mal de ces logiciels, de près ou de loin. Voilà ce que j'en retiens.</p>
 
 <h2>Ce que vous devez vraiment regarder avant de télécharger quoi que ce soit</h2>
