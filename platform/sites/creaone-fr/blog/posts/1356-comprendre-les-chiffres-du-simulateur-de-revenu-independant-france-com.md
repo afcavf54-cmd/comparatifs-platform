@@ -4,15 +4,21 @@ slug: 1356-comprendre-les-chiffres-du-simulateur-de-revenu-independant-france-co
 date: '2026-07-17T06:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Simulateur de revenu indépendant France.com : brut, net, après charges'
-meta_description: 'Simulateur de revenu indépendant France.com : apprenez à lire les chiffres affichés pour ne pas confondre revenu net estimé, revenu imposable et revenu réellement…'
+meta_description: 'Simulateur de revenu indépendant France.com : apprenez à lire les
+  chiffres affichés pour ne pas confondre revenu net estimé, revenu imposable et revenu
+  réellement…'
 min_words: 970
 status: published
 featured_image: /blog/1356-comprendre-les-chiffres-du-simulateur-de-revenu-independant-france-com.jpg
 link_anchors:
 - text: le simulateur de revenu indépendant de Création-Entreprise-France.com
   max: 5
+related_posts:
+- 8528-a-quel-public-s-adresse-planexpert-pour-faire-un-business-plan
+- 1665-5-raisons-de-tester-le-generateur-de-business-plan-smartstart-generator
+- 4020-duree-et-rythme-de-la-formation-business-plan-frenchy-business-pro
+- 3919-a-qui-profite-financepro-smart-pour-creer-un-business-plan
 ---
-
 <p>J'ai découvert le simulateur de revenu indépendant de France.com il y a quelques mois, un peu par hasard, alors qu'un de mes collaborateurs envisageait de passer en freelance. Autant vous dire que j'ai passé pas mal de temps à décortiquer les chiffres avec lui. Et ce que j'ai vu m'a autant surpris qu'agacé, parce que les résultats bruts du simulateur sont faciles à mal interpréter si vous ne savez pas ce qui se cache derrière.</p>
 
 <p>Voici ce que j'ai appris, depuis mon poste de responsable comptable, sur ce que ces chiffres veulent vraiment dire.</p>
