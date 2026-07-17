@@ -4,15 +4,20 @@ slug: 3624-le-delai-de-mise-en-place-de-l-erp-rapidesk-solutions-en-pme
 date: '2026-07-17T17:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'ERP pour PME RapiDesk Solutions : rapide à déployer ?'
-meta_description: 'Retour d''expérience honnête sur le délai de mise en place de l''ERP RapiDesk Solutions en PME : ce que les commerciaux ne vous disent pas avant de signer.'
+meta_description: 'Retour d''expérience honnête sur le délai de mise en place de l''ERP
+  RapiDesk Solutions en PME : ce que les commerciaux ne vous disent pas avant de signer.'
 min_words: 980
 status: published
 featured_image: /blog/3624-le-delai-de-mise-en-place-de-l-erp-rapidesk-solutions-en-pme.jpg
 link_anchors:
 - text: RapiDesk Solutions qui est un ERP pensé pour les PME
   max: 5
+related_posts:
+- 4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise
+- 2726-bien-configurer-les-acces-lors-de-l-installation-de-cloudmanager-enterprise
+- 2160-6-elements-qui-font-grimper-le-cout-d-implementation-de-bizcore-advanced
+- 8198-reussir-la-configuration-de-l-erp-dynabiz-pro
 ---
-
 <p>Quand on m'a demandé d'évaluer le déploiement de RapiDesk Solutions dans notre structure de 180 personnes, j'avoue que je n'avais pas de repère clair. On entend tellement de choses sur les ERP, entre les promesses commerciales et les retours d'expérience catastrophiques qui circulent dans les forums RH. J'ai donc documenté tout ce que j'ai vécu, semaine par semaine, pour que vous puissiez vous faire une idée réaliste avant de vous engager.</p>
 
 <p>Voilà ce que personne ne vous dit franchement au moment du devis : <strong>le délai officiel affiché par l'éditeur est rarement le délai réel</strong>. Ce n'est pas forcément de la mauvaise foi. C'est juste que chaque PME a son lot de spécificités comptables, ses processus maison, ses fichiers Excel datant de 2011 qu'on ne sait plus très bien comment lire.</p>
