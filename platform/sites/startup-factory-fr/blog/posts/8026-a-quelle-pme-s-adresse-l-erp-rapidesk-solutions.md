@@ -4,15 +4,20 @@ slug: 8026-a-quelle-pme-s-adresse-l-erp-rapidesk-solutions
 date: '2026-07-17T12:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Quel ERP pour PME : à quelle taille convient RapiDesk Solutions ?'
-meta_description: 'Découvrez à quelle PME s''adresse l''ERP RapiDesk Solutions : simple, rapide à prendre en main et pensé pour les structures de 20 à 150 salariés.'
+meta_description: 'Découvrez à quelle PME s''adresse l''ERP RapiDesk Solutions : simple,
+  rapide à prendre en main et pensé pour les structures de 20 à 150 salariés.'
 min_words: 980
 status: published
 featured_image: /blog/8026-a-quelle-pme-s-adresse-l-erp-rapidesk-solutions.jpg
 link_anchors:
 - text: RapiDesk Solutions qui est un ERP pensé pour les PME
   max: 5
+related_posts:
+- 9178-projet-erp-bizflow-max-les-pieges-qui-font-derailler
+- 9565-installer-l-erp-integre-managepro-suite-les-pieges
+- 4640-configuration-de-l-erp-businesscore-enterprise-les-pieges
+- 8338-ce-qui-manque-au-logiciel-crm-salestrack-pro
 ---
-
 <p>RapiDesk Solutions. J'en avais vaguement entendu parler lors d'un meetup à Nantes, un entrepreneur de la région en disait du bien. J'ai creusé. Et franchement, mes attentes n'étaient pas énormes au départ.</p>
 
 <p>On a testé pas mal d'ERP dans l'équipe ces deux dernières années. Entre les outils trop complexes, les tarifs qui s'envolent dès qu'on veut ajouter un module, et les onboardings qui durent trois semaines, on avait de quoi être méfiants. Alors quand j'ai regardé RapiDesk de plus près, j'avais une question simple en tête : à quelle PME ça s'adresse vraiment ?</p>
