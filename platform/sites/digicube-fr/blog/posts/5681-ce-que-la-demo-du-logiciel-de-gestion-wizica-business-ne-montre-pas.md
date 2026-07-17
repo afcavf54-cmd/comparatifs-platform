@@ -4,15 +4,21 @@ slug: 5681-ce-que-la-demo-du-logiciel-de-gestion-wizica-business-ne-montre-pas
 date: '2026-07-17T19:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Logiciel de gestion Wizica Business : les limites repérables en démo'
-meta_description: 'Avant de signer pour Wizica Business, lisez ce retour d''expérience : ce que la démo ne montre pas peut coûter des semaines de travail et de mauvaises surprises.'
+meta_description: 'Avant de signer pour Wizica Business, lisez ce retour d''expérience
+  : ce que la démo ne montre pas peut coûter des semaines de travail et de mauvaises
+  surprises.'
 min_words: 900
 status: published
 featured_image: /blog/5681-ce-que-la-demo-du-logiciel-de-gestion-wizica-business-ne-montre-pas.jpg
 link_anchors:
 - text: la démo du logiciel de gestion Wizica Business
   max: 5
+related_posts:
+- 8139-ce-que-la-mensualite-du-crm-saas-cloudlead-manager-n-inclut-pas
+- 2498-le-crm-pipedrive-nexus-edition-face-a-l-edition-classique
+- 3728-smartlead-evolution-face-au-pilotage-manuel-des-prospects
+- 3498-comment-choisir-son-agence-web-les-erreurs-frequentes-a-eviter-avant-de-signer
 ---
-
 <p>J'ai demandé une démo de Wizica Business il y a quelques mois. Le commercial était sympa, la présentation bien rodée, les slides propres. Et puis j'ai signé. Et là, j'ai découvert ce qu'on ne m'avait pas montré.</p>
 
 <p>Je gère une entreprise à Marseille, une centaine de salariés, et j'ai cherché pendant des mois un outil pour centraliser la gestion : facturation, suivi des dépenses, reporting RH, tableau de bord opérationnel. Wizica Business cochait les cases sur le papier. La démo aussi, d'ailleurs. Trop bien, en fait.</p>
