@@ -4,15 +4,21 @@ slug: 4786-delai-de-parametrage-des-modules-financepro-integrated
 date: '2026-07-17T08:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Paramétrer l''ERP FinancePro Integrated : combien de temps ?'
-meta_description: 'Délai de paramétrage de FinancePro Integrated : retour d''expérience sans filtre sur les vraies durées, les étapes clés et ce que les fiches produits ne vous disent…'
+meta_description: 'Délai de paramétrage de FinancePro Integrated : retour d''expérience
+  sans filtre sur les vraies durées, les étapes clés et ce que les fiches produits
+  ne vous disent…'
 min_words: 900
 status: published
 featured_image: /blog/4786-delai-de-parametrage-des-modules-financepro-integrated.jpg
 link_anchors:
 - text: comment paramétrer les modules de l'ERP FinancePro Integrated
   max: 5
+related_posts:
+- 9906-delai-d-implementation-de-l-erp-bizflow-max
+- 3223-peut-on-calculer-serieusement-avec-un-logiciel-geotechnique-freeware
+- 6005-recuperer-ses-donnees-salestrack-crm-en-csv-avant-un-changement
+- 1976-le-prix-du-crm-salesforge-compact-est-il-adapte-aux-pme
 ---
-
 <p>On a passé plusieurs semaines à paramétrer les modules de FinancePro Integrated l'année dernière. Et franchement, je ne m'attendais pas à ce que ça prenne autant de temps. Pas parce que l'outil est mauvais, mais parce que personne ne t'explique vraiment ce qui t'attend avant de commencer.</p>
 
 <p>Donc voilà mon retour, sans filtre.</p>
