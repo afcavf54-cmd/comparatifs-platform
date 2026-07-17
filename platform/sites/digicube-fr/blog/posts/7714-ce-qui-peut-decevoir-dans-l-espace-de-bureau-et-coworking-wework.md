@@ -4,15 +4,21 @@ slug: 7714-ce-qui-peut-decevoir-dans-l-espace-de-bureau-et-coworking-wework
 date: '2026-07-17T12:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'WeWork : les limites de l''espace de bureau et coworking'
-meta_description: 'Retour d''expérience sans filtre sur WeWork : prix cachés, crédits salles épuisés, coût réel 40 % plus élevé. Ce que personne ne vous dit avant de signer un contrat…'
+meta_description: 'Retour d''expérience sans filtre sur WeWork : prix cachés, crédits
+  salles épuisés, coût réel 40 % plus élevé. Ce que personne ne vous dit avant de
+  signer un contrat…'
 min_words: 910
 status: published
 featured_image: /blog/7714-ce-qui-peut-decevoir-dans-l-espace-de-bureau-et-coworking-wework.jpg
 link_anchors:
 - text: espace de bureau et coworking WeWork
   max: 5
+related_posts:
+- 4224-kickngo-vs-autres-agences-d-e-reputation
+- 6612-ce-que-la-formation-seo-vite-une-formation-ne-vous-apprend-pas
+- 9830-ce-que-le-tarif-du-logiciel-de-facturation-quickbill-pro-n-inclut-pas
+- 8808-ce-qui-peut-manquer-au-coworking-la-cantine-x-french-tech-nantes
 ---
-
 <p>J'ai testé WeWork pendant plusieurs mois avec une partie de mon équipe. Je vais vous dire ce que les brochures commerciales ne disent pas. Pas pour descendre en flammes un acteur du coworking, mais parce que quand on gère une boîte de 100 à 500 personnes avec un budget serré, les mauvaises surprises coûtent cher.</p>
 
 <p>Marseille, deux sites WeWork testés. Voilà mon retour, sans filtre.</p>
