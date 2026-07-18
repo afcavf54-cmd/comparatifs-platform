@@ -4,15 +4,21 @@ slug: 7680-parametrer-le-crm-pipedrive-nexus-edition-les-bases
 date: '2026-07-18T08:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'CRM Pipedrive Nexus Edition : par où commencer le paramétrage ?'
-meta_description: Paramétrer Pipedrive Nexus Edition sans méthode, c'est perdre des semaines. Découvrez les bases concrètes pour configurer votre CRM et gagner un temps réel dès le…
+meta_description: Paramétrer Pipedrive Nexus Edition sans méthode, c'est perdre des
+  semaines. Découvrez les bases concrètes pour configurer votre CRM et gagner un temps
+  réel dès le…
 min_words: 920
 status: published
 featured_image: /blog/7680-parametrer-le-crm-pipedrive-nexus-edition-les-bases.jpg
 link_anchors:
 - text: comment paramétrer le CRM Pipedrive Nexus Edition
   max: 5
+related_posts:
+- 9610-le-vrai-cout-de-l-erp-bizcore-enterprise
+- 1691-quel-investissement-pour-la-solution-de-conformite-rgpd-dataprotect-manager
+- 3948-le-vrai-cout-d-implementation-du-systeme-bizcore-advanced
+- 7638-les-6-atouts-du-crm-salesforge-compact-pour-une-pme
 ---
-
 <p>Pipedrive Nexus Edition, j'ai mis la main dessus il y a environ huit mois, lors d'un accompagnement avec un client dans le secteur du conseil en recrutement. Et franchement, le paramétrage initial m'a pris plus de temps que prévu, pas parce que c'est compliqué, mais parce qu'on ne sait pas forcément par où commencer. Voici ce que j'aurais aimé qu'on m'explique dès le départ.</p>
 
 <h2>Pourquoi le paramétrage de départ change tout</h2>
