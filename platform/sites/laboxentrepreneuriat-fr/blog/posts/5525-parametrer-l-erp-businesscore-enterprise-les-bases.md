@@ -4,15 +4,21 @@ slug: 5525-parametrer-l-erp-businesscore-enterprise-les-bases
 date: '2026-07-18T11:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'ERP BusinessCore Enterprise : par où commencer le paramétrage ?'
-meta_description: Paramétrer l'ERP BusinessCore Enterprise sans méthode, c'est la garantie d'un échec. Découvrez les bases essentielles pour réussir votre déploiement pas à pas.
+meta_description: Paramétrer l'ERP BusinessCore Enterprise sans méthode, c'est la
+  garantie d'un échec. Découvrez les bases essentielles pour réussir votre déploiement
+  pas à pas.
 min_words: 910
 status: published
 featured_image: /blog/5525-parametrer-l-erp-businesscore-enterprise-les-bases.jpg
 link_anchors:
 - text: comment paramétrer l'ERP BusinessCore Enterprise
   max: 5
+related_posts:
+- 5476-quel-budget-pour-la-licence-du-progiciel-erp-bizmaster-360
+- 7432-crm-clientpulse-pro-2024-passe-sous-toutes-les-coutures
+- 6182-les-retours-utilisateurs-sur-le-logiciel-crm-salestrack-360
+- 7638-les-6-atouts-du-crm-salesforge-compact-pour-une-pme
 ---
-
 <p>Ça fait maintenant douze ans que j'accompagne des dirigeants dans le choix et la mise en place de leurs outils de gestion. Et franchement, le paramétrage d'un ERP reste le moment où j'en vois le plus craquer. Pas parce que c'est insurmontable, mais parce qu'on s'y prend mal. On sous-estime le temps de configuration, on lance tout en même temps, et trois semaines plus tard, les équipes ont abandonné.</p>
 
 <p>BusinessCore Enterprise est un ERP que j'ai eu l'occasion de déployer dans plusieurs structures entre 8 et 80 salariés. Voici ce que j'ai appris, souvent à la dure.</p>
