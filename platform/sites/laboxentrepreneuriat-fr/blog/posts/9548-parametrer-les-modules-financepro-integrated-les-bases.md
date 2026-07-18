@@ -3,16 +3,23 @@ title: 'Paramétrer les modules FinancePro Integrated : les bases'
 slug: 9548-parametrer-les-modules-financepro-integrated-les-bases
 date: '2026-07-18T18:00:00+02:00'
 categorie: Gestion d'entreprise
-meta_title: 'ERP FinancePro Integrated : par quel module commencer le paramétrage ?'
-meta_description: Apprenez à paramétrer les modules FinancePro Integrated sans erreurs grâce à une méthode structurée, pensée pour les TPE et PME qui veulent des bases solides.
+meta_title: 'ERP FinancePro Integrated : par quel module commencer le paramétrage
+  ?'
+meta_description: Apprenez à paramétrer les modules FinancePro Integrated sans erreurs
+  grâce à une méthode structurée, pensée pour les TPE et PME qui veulent des bases
+  solides.
 min_words: 900
 status: published
 featured_image: /blog/9548-parametrer-les-modules-financepro-integrated-les-bases.jpg
 link_anchors:
 - text: comment paramétrer les modules de l'ERP FinancePro Integrated
   max: 5
+related_posts:
+- 3948-le-vrai-cout-d-implementation-du-systeme-bizcore-advanced
+- 1469-businesscore-ou-tradepulse-le-match-pour-choisir-son-erp
+- 6182-les-retours-utilisateurs-sur-le-logiciel-crm-salestrack-360
+- 5520-configuration-du-crm-leadflow-automation-point-par-point
 ---
-
 <p>Quand un client m'appelle pour me parler de FinancePro Integrated, c'est rarement pour me dire que tout va bien. La plupart du temps, il a déjà passé deux ou trois semaines à tâtonner, les modules sont installés mais rien n'est vraiment configuré, et les données partent dans tous les sens. Je comprends. C'est un logiciel qui a du potentiel, mais qui demande un minimum de méthode au départ.</p>
 
 <p>Je vais vous expliquer comment j'aborde le paramétrage de base, dans l'ordre qui me semble le plus logique après des années à accompagner des TPE et PME sur ce type d'outil.</p>
