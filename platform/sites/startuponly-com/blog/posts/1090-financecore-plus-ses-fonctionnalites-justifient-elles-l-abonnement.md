@@ -3,16 +3,23 @@ title: 'FinanceCore Plus : ses fonctionnalités justifient-elles l''abonnement ?
 slug: 1090-financecore-plus-ses-fonctionnalites-justifient-elles-l-abonnement
 date: '2026-07-19T07:00:00+02:00'
 categorie: Comptabilité
-meta_title: 'Comptabilité cloud FinanceCore Plus : les fonctionnalités valent-elles le prix ?'
-meta_description: 'Après 8 mois d''utilisation intensive, découvrez si les fonctionnalités de FinanceCore Plus justifient vraiment son abonnement : automatisation, exports, API et…'
+meta_title: 'Comptabilité cloud FinanceCore Plus : les fonctionnalités valent-elles
+  le prix ?'
+meta_description: 'Après 8 mois d''utilisation intensive, découvrez si les fonctionnalités
+  de FinanceCore Plus justifient vraiment son abonnement : automatisation, exports,
+  API et…'
 min_words: 960
 status: published
 featured_image: /blog/1090-financecore-plus-ses-fonctionnalites-justifient-elles-l-abonnement.jpg
 link_anchors:
 - text: les fonctionnalités de la comptabilité cloud FinanceCore Plus
   max: 5
+related_posts:
+- 3381-le-marketing-alternatif-est-il-rentable-pour-une-pme
+- 9490-a-qui-s-adresse-le-logiciel-de-facturation-quickbill-advanced
+- 8546-mentions-obligatoires-les-modeles-de-factures-digitalise-tes-factures-sont-ils-a-jour
+- 7289-premiers-pas-dans-le-logiciel-devis-et-facture-quotepro-builder
 ---
-
 <p>J'utilise FinanceCore Plus depuis un peu plus de huit mois. Pas par choix au départ, disons que c'est un client qui me l'a recommandé et que j'ai voulu tester sérieusement avant de potentiellement basculer toute ma compta dessus. Résultat : j'ai un avis assez tranché. Pas forcément celui que tu attends.</p>
 
 <p>Spoiler : c'est un bon outil. Mais ce n'est pas pour tout le monde. Et l'abonnement, selon ce que tu fais tourner, peut vite sembler cher pour ce que tu en tires réellement.</p>
