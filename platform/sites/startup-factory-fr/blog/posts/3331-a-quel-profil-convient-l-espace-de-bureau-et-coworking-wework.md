@@ -4,15 +4,20 @@ slug: 3331-a-quel-profil-convient-l-espace-de-bureau-et-coworking-wework
 date: '2026-07-19T18:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'WeWork : pour quel professionnel cet espace de bureau et coworking ?'
-meta_description: 'WeWork s''adresse à des profils bien précis : découvrez si cette solution de coworking premium correspond à votre situation avant de vous engager.'
+meta_description: 'WeWork s''adresse à des profils bien précis : découvrez si cette
+  solution de coworking premium correspond à votre situation avant de vous engager.'
 min_words: 910
 status: published
 featured_image: /blog/3331-a-quel-profil-convient-l-espace-de-bureau-et-coworking-wework.jpg
 link_anchors:
 - text: espace de bureau et coworking WeWork
   max: 5
+related_posts:
+- 9262-a-qui-servent-les-indicateurs-economiques-de-leterritoireentreprise
+- 7900-a-qui-se-prete-le-coworking-la-cantine-x-french-tech-nantes
+- 8553-a-quels-chantiers-s-adresse-le-devis-travaux-en-ligne-e-local-fr
+- 8103-le-logiciel-de-facturation-quickbill-enterprise-face-aux-prix-du-marche
 ---
-
 <p>Quand j'ai lancé ma startup à Nantes, j'ai testé pas mal de solutions de bureau. L'appartement, trop de distractions. Les espaces de coworking locaux, sympa mais pas toujours pro. Et puis j'ai regardé WeWork. Pas par hasard, plutôt parce que plusieurs fondateurs de mon réseau en parlaient.</p>
 
 <p>Résultat après plusieurs mois à observer, tester, comparer : WeWork, c'est pas fait pour tout le monde. Loin de là.</p>
