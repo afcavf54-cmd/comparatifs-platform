@@ -4,15 +4,21 @@ slug: 3355-utiliser-le-crm-salestrack-evolution-les-bases
 date: '2026-07-19T12:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'CRM SalesTrack Evolution : par où démarrer pour bien l''utiliser ?'
-meta_description: 'Découvrez les bases du CRM SalesTrack Evolution : prise en main, pipeline visuel et suivi commercial expliqués depuis un déploiement réel en TPE, sans jargon…'
+meta_description: 'Découvrez les bases du CRM SalesTrack Evolution : prise en main,
+  pipeline visuel et suivi commercial expliqués depuis un déploiement réel en TPE,
+  sans jargon…'
 min_words: 920
 status: published
 featured_image: /blog/3355-utiliser-le-crm-salestrack-evolution-les-bases.jpg
 link_anchors:
 - text: comment utiliser le CRM SalesTrack Evolution
   max: 5
+related_posts:
+- 8452-les-5-choses-a-verifier-en-demo-du-logiciel-de-gestion-wizica-business
+- 3699-integrer-l-erp-flexibiz-a-la-comptabilite-de-a-a-z
+- 9610-le-vrai-cout-de-l-erp-bizcore-enterprise
+- 3948-le-vrai-cout-d-implementation-du-systeme-bizcore-advanced
 ---
-
 <p>J'ai commencé à tester SalesTrack Evolution il y a quelques mois, à la demande d'un client qui cherchait à structurer son suivi commercial sans passer à une usine à gaz. Un indépendant, 3 salariés, un carnet de contacts qui débordait de partout entre Excel, WhatsApp et des post-it. Vous voyez le tableau.</p>
 
 <p>Voilà ce que j'ai observé après plusieurs semaines d'utilisation réelle — pas un tour du produit en 20 minutes, mais un vrai déploiement terrain avec des utilisateurs qui ne sont pas des techniciens.</p>
