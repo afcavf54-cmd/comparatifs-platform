@@ -4,15 +4,21 @@ slug: 4000-utiliser-le-crm-salesflow-evolution-les-bases
 date: '2026-07-19T06:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'CRM SalesFlow Evolution : par où commencer pour bien l''utiliser ?'
-meta_description: Découvrez comment prendre en main le CRM SalesFlow Evolution au quotidien, sans jargon, avec des cas concrets pour structurer vos contacts et vos opportunités dès…
+meta_description: Découvrez comment prendre en main le CRM SalesFlow Evolution au
+  quotidien, sans jargon, avec des cas concrets pour structurer vos contacts et vos
+  opportunités dès…
 min_words: 910
 status: published
 featured_image: /blog/4000-utiliser-le-crm-salesflow-evolution-les-bases.jpg
 link_anchors:
 - text: comment utiliser le CRM SalesFlow Evolution
   max: 5
+related_posts:
+- 9355-implementer-l-erp-smartchain-360-les-bases
+- 9640-quel-investissement-pour-la-plateforme-erp-businesscore-max
+- 3699-integrer-l-erp-flexibiz-a-la-comptabilite-de-a-a-z
+- 5525-parametrer-l-erp-businesscore-enterprise-les-bases
 ---
-
 <p>Quand un client m'a contacté l'été dernier pour me parler de son nouveau CRM, il m'a dit : "Hugo, j'ai payé l'abonnement il y a trois mois, j'ai regardé la démo deux fois, et je n'ai encore rentré aucun contact." J'entends ça souvent. Trop souvent. Le problème n'est pas le logiciel. C'est qu'on n'a jamais pris le temps de partir des bases, vraiment.</p>
 
 <p>Cet article parle de <strong>SalesFlow Evolution</strong>, un CRM qui circule de plus en plus dans les petites structures que j'accompagne à Lyon. Je vais vous expliquer concrètement comment l'utiliser au quotidien, sans jargon inutile, avec quelques cas réels pour que vous puissiez vous projeter.</p>
