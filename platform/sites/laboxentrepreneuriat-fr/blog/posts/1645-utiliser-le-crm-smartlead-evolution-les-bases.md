@@ -4,15 +4,21 @@ slug: 1645-utiliser-le-crm-smartlead-evolution-les-bases
 date: '2026-07-19T19:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'CRM SmartLead Evolution : par où commencer pour bien l''utiliser ?'
-meta_description: 'Découvrez comment utiliser le CRM SmartLead Evolution efficacement : prise en main, automatisation des relances et bonnes pratiques pour les TPE qui veulent…'
+meta_description: 'Découvrez comment utiliser le CRM SmartLead Evolution efficacement
+  : prise en main, automatisation des relances et bonnes pratiques pour les TPE qui
+  veulent…'
 min_words: 930
 status: published
 featured_image: /blog/1645-utiliser-le-crm-smartlead-evolution-les-bases.jpg
 link_anchors:
 - text: comment utiliser le CRM SmartLead Evolution
   max: 5
+related_posts:
+- 5787-installer-l-erp-integre-managepro-suite-en-quelques-etapes
+- 6769-installer-le-logiciel-crm-mobile-fieldforce-sync-point-par-point
+- 3355-utiliser-le-crm-salestrack-evolution-les-bases
+- 2841-le-logiciel-crm-salestrack-evolution-sans-detour
 ---
-
 <p>J'ai passé du temps avec SmartLead Evolution ces derniers mois, dans le cadre d'un accompagnement auprès d'une dizaine de TPE lyonnaises. Le verdict ? Un CRM qui mérite vraiment qu'on s'y attarde, mais qui demande un minimum de méthode pour en tirer quelque chose de concret. Je vous explique comment l'aborder sans perdre de temps.</p>
 
 <h2>Ce que fait vraiment SmartLead Evolution (et ce qu'on lui demande souvent à tort)</h2>
