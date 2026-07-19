@@ -4,15 +4,21 @@ slug: 1082-une-facture-en-ligne-gratuite-avec-articles-reste-t-elle-valable
 date: '2026-07-19T17:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Créer une facture en ligne gratuite : est-ce conforme ?'
-meta_description: Une facture en ligne gratuite avec articles est-elle légalement valide ? Découvrez les mentions obligatoires pour qu'elle soit irréprochable face aux clients et au…
+meta_description: Une facture en ligne gratuite avec articles est-elle légalement
+  valide ? Découvrez les mentions obligatoires pour qu'elle soit irréprochable face
+  aux clients et au…
 min_words: 980
 status: published
 featured_image: /blog/1082-une-facture-en-ligne-gratuite-avec-articles-reste-t-elle-valable.jpg
 link_anchors:
 - text: créer une facture avec article en ligne gratuitement
   max: 5
+related_posts:
+- 3907-migrer-de-fastbill-vers-invoicepro-max-pour-sa-facturation
+- 8215-combien-coute-l-installation-du-logiciel-ebp-en-local
+- 2193-choisir-la-bonne-offre-de-la-plateforme-billmatic-auto
+- 7137-le-prix-du-logiciel-de-gestion-de-tresorerie-cashmaster-ultimate-est-il-justifie
 ---
-
 <p>Bonne question. Et j'entends souvent des fondateurs dans ma situation se la poser : est-ce qu'une facture gratuite, générée en ligne avec des articles détaillés dedans, tient vraiment la route légalement ? Est-ce qu'un client peut me la retourner ? Est-ce que l'admin fiscale va tiquer ?</p>
 
 <p>J'ai cherché, testé, et surtout fait des erreurs. Voilà ce que j'ai appris.</p>
