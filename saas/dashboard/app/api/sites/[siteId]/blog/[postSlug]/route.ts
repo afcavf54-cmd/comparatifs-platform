@@ -226,23 +226,44 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
 export async function DELETE(req: NextRequest, { params }: { params: Promise<{ siteId: string; postSlug: string }> }) {
   const { siteId, postSlug } = await params
   const path = `platform/sites/${siteId}/blog/posts/${postSlug}.md`
-  const file = await ghGet(path)
-  if (!file) return NextResponse.json({ error: `Article introuvable : ${postSlug}` }, { status: 404 })
 
-  // Appel GitHub direct pour capturer le vrai motif d'échec (le repo étant
-  // public, la LECTURE marche même sans token valide ; seule l'ÉCRITURE
-  // exige un token avec droits → c'est là que ça casse le plus souvent).
+  // 1) Récupère le SHA — avec diagnostic explicite. Le repo étant PUBLIC, un
+  // token manquant/invalide ne donne PAS un 404 « fichier absent » mais un
+  // 401 (mauvais token) ou 403 (rate-limit anonyme : 60 req/h). On distingue
+  // donc le vrai « article absent » d'un souci d'authentification.
+  const getRes = await fetch(`${BASE}/repos/${repoPath()}/contents/${path}`, { headers, cache: 'no-store' })
+  if (!getRes.ok) {
+    if (getRes.status === 404) {
+      return NextResponse.json({
+        error: `Article introuvable : ${postSlug} — soit le fichier n'existe pas, soit GITHUB_OWNER/GITHUB_REPO sont mal configurés (Vercel).`,
+      }, { status: 404 })
+    }
+    const rlRemaining = getRes.headers.get('x-ratelimit-remaining')
+    const hint =
+      getRes.status === 401 ? 'token GitHub invalide ou expiré (Vercel → env GITHUB_TOKEN)' :
+      getRes.status === 403 ? (rlRemaining === '0'
+          ? 'limite de requêtes GitHub atteinte — le token est manquant/invalide (60 req/h en anonyme au lieu de 5000 authentifié). Attends la réinitialisation OU corrige GITHUB_TOKEN.'
+          : "accès refusé — token sans droit de lecture/écriture") :
+      `réponse GitHub inattendue (${getRes.status})`
+    return NextResponse.json({ error: `Lecture impossible — ${hint}` }, { status: 502 })
+  }
+  const data = await getRes.json()
+  if (Array.isArray(data)) {
+    return NextResponse.json({ error: `Chemin invalide (dossier au lieu d'un fichier) : ${postSlug}` }, { status: 400 })
+  }
+  const sha = data.sha
+
+  // 2) Suppression (écriture) — surface le vrai motif GitHub si échec.
   const res = await fetch(`${BASE}/repos/${repoPath()}/contents/${path}`, {
     method: 'DELETE', headers: { ...headers, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message: `HUB: Delete blog post ${postSlug}`, sha: file.sha }),
+    body: JSON.stringify({ message: `HUB: Delete blog post ${postSlug}`, sha }),
   })
   if (!res.ok) {
     let detail = ''
     try { const j = await res.json(); detail = j?.message || '' } catch { /* noop */ }
     const hint =
       res.status === 401 ? 'token GitHub invalide ou expiré (Vercel → env GITHUB_TOKEN)' :
-      res.status === 403 ? "token sans droit d'écriture (scope repo/contents) ou rate-limit GitHub" :
-      res.status === 404 ? 'dépôt/branche introuvable (vérifie GITHUB_OWNER / GITHUB_REPO)' :
+      res.status === 403 ? "token sans droit d'écriture (scope repo / Contents: Read and write) ou rate-limit GitHub" :
       res.status === 409 ? 'conflit de version (SHA) — recharge la page et réessaie' :
       res.status === 422 ? 'branche protégée : les commits directs sont refusés' : ''
     return NextResponse.json({
