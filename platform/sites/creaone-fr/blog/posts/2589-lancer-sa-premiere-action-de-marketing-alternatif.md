@@ -14,10 +14,10 @@ link_anchors:
 - text: le logiciel Sage en Ille-et-Vilaine
   max: 5
 related_posts:
-- 6415-vos-factures-en-ligne-simplifie-ta-compta-sont-elles-conformes
-- 2967-le-delai-de-prise-en-main-du-logiciel-quotepro-builder
+- 4161-bien-cadrer-son-projet-du-logiciel-sage-avec-un-local
+- 2702-cnam-intec-debouches-des-techniques-economiques-et-comptables
 - 9222-a-qui-se-prete-le-logiciel-de-devis-quotepro-smart
-- 9168-pourquoi-choisir-la-comptabilite-cloud-financecore-plus
+- 2619-le-ticket-d-entree-de-la-plateforme-de-facturation-recurrente-billmatic-auto
 ---
 <p>Le marketing alternatif, c'est un sujet que j'aurais du mal à expliquer à mon DAF il y a encore trois ans. Aujourd'hui, je le vois différemment. Pas parce que c'est une tendance, mais parce que ça fonctionne, y compris pour des fonctions support comme la comptabilité, qui ont souvent peu de budget communication et encore moins de temps.</p>
 

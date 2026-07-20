@@ -15,9 +15,9 @@ link_anchors:
   max: 5
 related_posts:
 - 9865-le-ticket-d-entree-de-l-outil-de-facturation-recurrente-billmatic-subscription
-- 3963-vos-factures-en-ligne-digitalise-tes-factures-sont-elles-valables
-- 2967-le-delai-de-prise-en-main-du-logiciel-quotepro-builder
-- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
+- 6415-vos-factures-en-ligne-simplifie-ta-compta-sont-elles-conformes
+- 4161-bien-cadrer-son-projet-du-logiciel-sage-avec-un-local
+- 9222-a-qui-se-prete-le-logiciel-de-devis-quotepro-smart
 ---
 <p>Une note de frais. Tout le monde sait vaguement ce que c'est, mais dans la pratique, c'est souvent là que les choses se compliquent. Un salarié avance des frais professionnels, il veut être remboursé, et c'est à moi, côté comptabilité, de m'assurer que tout est conforme. Ça paraît simple. Ça ne l'est pas toujours.</p>
 

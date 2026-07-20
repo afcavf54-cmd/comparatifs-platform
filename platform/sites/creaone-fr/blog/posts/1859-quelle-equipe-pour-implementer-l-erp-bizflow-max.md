@@ -14,10 +14,10 @@ link_anchors:
 - text: comment implémenter l'ERP BizFlow Max
   max: 5
 related_posts:
-- 9027-ce-que-la-solution-dataprotect-manager-met-reellement-en-conformite
-- 9103-le-prix-du-logiciel-crm-salestrack-360-vu-par-les-utilisateurs
-- 8929-pour-qui-est-pense-inventory-control-smart-pour-gerer-les-stocks
-- 9681-a-qui-se-prete-le-module-de-fidelisation-loyaltymax
+- 7540-qui-mobiliser-pour-implementer-nextgen-business-suite
+- 4990-bien-demarrer-le-parametrage-de-pipedrive-nexus-edition
+- 8198-reussir-la-configuration-de-l-erp-dynabiz-pro
+- 2824-7-atouts-du-crm-salestrack-premium-edition
 ---
 <p>Neuf ans à gérer la comptabilité d'une entreprise de 300 personnes, ça vous apprend une chose : un projet ERP mal staffé, c'est six mois de galère minimum. J'ai vécu une implémentation ratée en 2018, et une réussie en 2022. La différence ? Pas le budget. Pas le logiciel. <strong>L'équipe projet.</strong></p>
 

@@ -14,10 +14,10 @@ link_anchors:
 - text: le prix de l'outil de facturation récurrente Billmatic Subscription
   max: 5
 related_posts:
-- 2967-le-delai-de-prise-en-main-du-logiciel-quotepro-builder
-- 2702-cnam-intec-debouches-des-techniques-economiques-et-comptables
+- 4784-a-qui-profite-l-automatisation-de-facturation-billmatic-auto
+- 2619-le-ticket-d-entree-de-la-plateforme-de-facturation-recurrente-billmatic-auto
+- 9323-sa-premiere-facture-en-ligne-gratuite-avec-articles
 - 3963-vos-factures-en-ligne-digitalise-tes-factures-sont-elles-valables
-- 9222-a-qui-se-prete-le-logiciel-de-devis-quotepro-smart
 ---
 <p>Quand on gère la comptabilité d'une boîte de 200 personnes, les abonnements clients et les factures récurrentes, ça finit par représenter un volume qui se gère très mal à la main. J'ai testé Billmatic Subscription il y a quelques mois, après une recommandation d'un confrère responsable compta dans une PME similaire à la nôtre. Voici ce que j'en pense vraiment, sans filtre.</p>
 
