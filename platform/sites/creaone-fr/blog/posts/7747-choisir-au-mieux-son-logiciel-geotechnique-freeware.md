@@ -14,10 +14,10 @@ link_anchors:
 - text: un logiciel géotechnique freeware
   max: 5
 related_posts:
-- 8165-reussir-la-mise-en-place-du-crm-powerlink-advance
-- 2356-eviter-les-retards-de-deploiement-du-crm-smartsales-enterprise
-- 8198-reussir-la-configuration-de-l-erp-dynabiz-pro
-- 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
+- 9219-5-points-a-verifier-sur-le-tarif-mensuel-de-cloudlead-manager
+- 9103-le-prix-du-logiciel-crm-salestrack-360-vu-par-les-utilisateurs
+- 7255-le-surcout-de-salesforce-premium-face-a-un-crm-basique-est-il-justifie
+- 3214-tirer-le-meilleur-de-la-demo-du-logiciel-de-gestion-wizica-business
 ---
 <p>Neuf ans à gérer des comptes dans une PME du secteur BTP, ça forge des réflexes. L'un d'eux : ne jamais payer pour un logiciel si une version gratuite fait le même travail correctement. Quand notre bureau d'études m'a demandé de les aider à choisir un outil géotechnique sans exploser le budget, j'ai donc passé quelques semaines à tester, comparer, et parfois pester devant mon écran.</p>
 

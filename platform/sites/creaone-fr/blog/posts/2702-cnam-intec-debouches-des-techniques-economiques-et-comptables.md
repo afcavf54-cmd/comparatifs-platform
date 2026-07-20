@@ -14,10 +14,10 @@ link_anchors:
 - text: le CNAM INTEC (institut national des techniques économiques et comptables)
   max: 5
 related_posts:
-- 5304-7-points-avant-de-choisir-le-logiciel-de-facturation-quickbill-advanced
-- 9323-sa-premiere-facture-en-ligne-gratuite-avec-articles
-- 5170-pourquoi-passer-au-cloud-avec-la-comptabilite-financecore-enterprise
-- 9168-pourquoi-choisir-la-comptabilite-cloud-financecore-plus
+- 9067-logiciel-de-facturation-invoicemaster-evolution-face-aux-prix-du-marche
+- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
+- 9585-adapter-un-modele-de-facture-digitalise-tes-factures-a-son-activite
+- 9222-a-qui-se-prete-le-logiciel-de-devis-quotepro-smart
 ---
 <p>Neuf ans dans la compta, et j'ai croisé pas mal de profils qui sortaient du Cnam-Intec. Certains sont devenus de très bons collaborateurs. D'autres ont galèrement cherché leur voie pendant un moment, faute d'avoir bien ciblé les débouchés avant de s'engager. C'est dommage, parce que cette formation ouvre vraiment des portes concrètes si vous savez où regarder.</p>
 

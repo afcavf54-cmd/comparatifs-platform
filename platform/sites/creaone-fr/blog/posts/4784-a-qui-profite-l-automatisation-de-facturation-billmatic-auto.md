@@ -14,10 +14,10 @@ link_anchors:
 - text: comment automatiser sa facturation avec Billmatic Auto
   max: 5
 related_posts:
-- 9323-sa-premiere-facture-en-ligne-gratuite-avec-articles
-- 5304-7-points-avant-de-choisir-le-logiciel-de-facturation-quickbill-advanced
-- 9168-pourquoi-choisir-la-comptabilite-cloud-financecore-plus
-- 5170-pourquoi-passer-au-cloud-avec-la-comptabilite-financecore-enterprise
+- 2589-lancer-sa-premiere-action-de-marketing-alternatif
+- 5363-application-de-facturation-invoicepro-x3-raccourcir-le-temps-de-traitement
+- 2619-le-ticket-d-entree-de-la-plateforme-de-facturation-recurrente-billmatic-auto
+- 6771-vitesse-de-facturation-fastbill-contre-invoicepro-max
 ---
 <p>Après neuf ans à gérer la comptabilité d'une PME de 200 personnes à Toulouse, j'ai vu passer beaucoup d'outils de facturation. Certains promettaient monts et merveilles, d'autres disparaissaient six mois après leur lancement. Billmatic Auto, je l'ai testé sérieusement pendant quatre mois, sur des flux réels, avec de vraies contraintes de volume. Ce que je vais vous dire ici, c'est mon retour honnête, pas un résumé de fiche produit.</p>
 

@@ -14,10 +14,10 @@ link_anchors:
 - text: le temps de traitement de l'application de facturation InvoicePro X3
   max: 5
 related_posts:
-- 5304-7-points-avant-de-choisir-le-logiciel-de-facturation-quickbill-advanced
-- 4784-a-qui-profite-l-automatisation-de-facturation-billmatic-auto
-- 9323-sa-premiere-facture-en-ligne-gratuite-avec-articles
-- 2702-cnam-intec-debouches-des-techniques-economiques-et-comptables
+- 4568-note-de-frais-definition-et-fonctionnement
+- 3963-vos-factures-en-ligne-digitalise-tes-factures-sont-elles-valables
+- 9222-a-qui-se-prete-le-logiciel-de-devis-quotepro-smart
+- 9168-pourquoi-choisir-la-comptabilite-cloud-financecore-plus
 ---
 <p>Ça fait maintenant neuf ans que je traite des cycles de facturation, des rapprochements bancaires et des clôtures mensuelles sous pression. J'ai testé beaucoup d'outils. Vraiment beaucoup. Et j'ai appris à reconnaître, assez vite, ceux qui font gagner du temps et ceux qui en font perdre.</p>
 

@@ -14,10 +14,10 @@ link_anchors:
 - text: comparatif entre le logiciel de facturation Fastbill et InvoicePro Max
   max: 5
 related_posts:
-- 2702-cnam-intec-debouches-des-techniques-economiques-et-comptables
-- 9168-pourquoi-choisir-la-comptabilite-cloud-financecore-plus
+- 5363-application-de-facturation-invoicepro-x3-raccourcir-le-temps-de-traitement
+- 3963-vos-factures-en-ligne-digitalise-tes-factures-sont-elles-valables
 - 4784-a-qui-profite-l-automatisation-de-facturation-billmatic-auto
-- 5304-7-points-avant-de-choisir-le-logiciel-de-facturation-quickbill-advanced
+- 9456-prevoir-sa-tresorerie-avec-le-logiciel-cashmaster-ultimate
 ---
 <p>Fastbill ou InvoicePro Max ? J'ai testé les deux pendant plusieurs semaines dans notre service comptable, et je vais vous dire exactement ce que j'en pense. Pas de langue de bois. On gère une centaine de factures par mois, entre les clients récurrents, les prestataires ponctuels et les régularisations de fin de trimestre. La vitesse de facturation, c'est pas un détail pour nous. C'est ce qui détermine si on finit à 18h ou à 20h un vendredi.</p>
 

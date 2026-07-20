@@ -13,10 +13,10 @@ link_anchors:
 - text: les fonctionnalités de la comptabilité cloud FinanceCore Enterprise
   max: 5
 related_posts:
-- 9323-sa-premiere-facture-en-ligne-gratuite-avec-articles
-- 4784-a-qui-profite-l-automatisation-de-facturation-billmatic-auto
-- 9168-pourquoi-choisir-la-comptabilite-cloud-financecore-plus
-- 5304-7-points-avant-de-choisir-le-logiciel-de-facturation-quickbill-advanced
+- 4161-bien-cadrer-son-projet-du-logiciel-sage-avec-un-local
+- 9585-adapter-un-modele-de-facture-digitalise-tes-factures-a-son-activite
+- 9865-le-ticket-d-entree-de-l-outil-de-facturation-recurrente-billmatic-subscription
+- 6771-vitesse-de-facturation-fastbill-contre-invoicepro-max
 featured_image: /blog/5170-pourquoi-passer-au-cloud-avec-la-comptabilite-financecore-enterprise.jpg
 ---
 <h2>Les avantages concrets du passage au cloud pour la comptabilité</h2>

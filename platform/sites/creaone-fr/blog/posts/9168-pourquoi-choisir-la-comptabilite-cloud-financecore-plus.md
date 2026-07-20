@@ -14,10 +14,10 @@ link_anchors:
 - text: les fonctionnalités de la comptabilité cloud FinanceCore Plus
   max: 5
 related_posts:
-- 4784-a-qui-profite-l-automatisation-de-facturation-billmatic-auto
-- 5170-pourquoi-passer-au-cloud-avec-la-comptabilite-financecore-enterprise
-- 9323-sa-premiere-facture-en-ligne-gratuite-avec-articles
-- 5304-7-points-avant-de-choisir-le-logiciel-de-facturation-quickbill-advanced
+- 2589-lancer-sa-premiere-action-de-marketing-alternatif
+- 2619-le-ticket-d-entree-de-la-plateforme-de-facturation-recurrente-billmatic-auto
+- 3963-vos-factures-en-ligne-digitalise-tes-factures-sont-elles-valables
+- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
 ---
 <h2>Mon retour après 18 mois d'utilisation de FinanceCore Plus</h2>
 
