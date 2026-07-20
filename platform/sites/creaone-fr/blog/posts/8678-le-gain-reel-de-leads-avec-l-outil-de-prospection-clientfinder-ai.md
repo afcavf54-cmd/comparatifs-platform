@@ -14,10 +14,10 @@ link_anchors:
 - text: l'efficacité de l'outil de prospection ClientFinder AI
   max: 5
 related_posts:
-- 8198-reussir-la-configuration-de-l-erp-dynabiz-pro
-- 2726-bien-configurer-les-acces-lors-de-l-installation-de-cloudmanager-enterprise
-- 2732-marketing-et-vente-le-crm-salesconnect-pro-contre-marketwise
-- 9507-le-prix-du-logiciel-crm-salestrack-pro-en-vaut-il-la-peine
+- 8574-le-tarif-de-l-abonnement-tpe-lemagdesentreprises-est-il-justifie
+- 8869-le-ticket-d-entree-de-la-licence-du-progiciel-erp-bizmaster-360
+- 4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise
+- 2824-7-atouts-du-crm-salestrack-premium-edition
 ---
 <p>J'utilise ClientFinder AI depuis un peu plus de huit mois maintenant. Au départ, franchement, j'étais sceptique. On nous vend tellement d'outils "révolutionnaires" dans la gestion d'entreprise que j'avais développé un certain cynisme. Et puis un collègue d'un cabinet toulousain m'en a parlé lors d'un déjeuner, j'ai testé, et là j'ai dû revoir mon jugement assez rapidement.</p>
 

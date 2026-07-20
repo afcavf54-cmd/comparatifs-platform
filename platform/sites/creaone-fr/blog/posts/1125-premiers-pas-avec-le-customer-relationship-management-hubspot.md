@@ -14,10 +14,10 @@ link_anchors:
 - text: la solution HubSPot de Customer Relationship Management
   max: 5
 related_posts:
-- 2726-bien-configurer-les-acces-lors-de-l-installation-de-cloudmanager-enterprise
-- 9219-5-points-a-verifier-sur-le-tarif-mensuel-de-cloudlead-manager
-- 4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise
-- 8198-reussir-la-configuration-de-l-erp-dynabiz-pro
+- 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
+- 9681-a-qui-se-prete-le-module-de-fidelisation-loyaltymax
+- 6698-erp-bizcore-enterprise-amorti-en-combien-de-temps
+- 7747-choisir-au-mieux-son-logiciel-geotechnique-freeware
 ---
 <p>Je vais vous dire exactement ce que j'ai vécu quand j'ai mis en place HubSpot CRM dans notre service. Neuf ans de comptabilité, des dizaines d'outils testés, et une règle que je n'abandonne plus : si mes collègues non techniques ne comprennent pas l'outil en moins d'une semaine, l'outil ne reste pas. HubSpot a passé ce test. Pas sans accrocs, mais il l'a passé.</p>
 

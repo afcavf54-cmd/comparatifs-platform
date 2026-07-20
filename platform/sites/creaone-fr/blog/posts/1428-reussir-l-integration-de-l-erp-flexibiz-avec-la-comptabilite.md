@@ -14,10 +14,10 @@ link_anchors:
 - text: l'intégration de l'ERP FlexiBiz avec la comptabilité
   max: 5
 related_posts:
-- 4820-nettoyer-un-export-csv-de-donnees-salestrack-crm
-- 7255-le-surcout-de-salesforce-premium-face-a-un-crm-basique-est-il-justifie
-- 7540-qui-mobiliser-pour-implementer-nextgen-business-suite
-- 6698-erp-bizcore-enterprise-amorti-en-combien-de-temps
+- 2160-6-elements-qui-font-grimper-le-cout-d-implementation-de-bizcore-advanced
+- 4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise
+- 7633-la-prise-en-main-du-crm-salesforge-compact-en-pme
+- 8559-bien-cadrer-l-implementation-de-l-erp-bizflow-v8-pro
 ---
 <p>Ça fait neuf ans que je fais de la comptabilité dans des structures de taille moyenne. Et honnêtement, l'intégration ERP-comptabilité, c'est le sujet qui revient le plus souvent dans les discussions entre responsables comptables. Pas parce que c'est glamour. Parce que quand ça rate, ça coûte cher. En temps, en argent, en nerfs.</p>
 

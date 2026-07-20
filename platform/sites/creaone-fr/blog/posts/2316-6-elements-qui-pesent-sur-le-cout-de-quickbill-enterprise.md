@@ -14,10 +14,10 @@ link_anchors:
 - text: la location de bureaux et salles de réunion chez Mama Works coworking à Bordeaux
   max: 5
 related_posts:
-- 3118-bien-decrire-son-projet-pour-un-devis-travaux-en-ligne-e-local-fr
+- 8615-bien-decrire-son-chantier-sur-btp-chantier-fr
 - 8712-bien-exploiter-les-indicateurs-economiques-de-leterritoireentreprise
-- 8299-comment-bien-selectionner-le-coworking-la-cantine-x-french-tech-nantes
-- 2878-quel-budget-pour-la-formation-strategie-digitale-webmarket-certifiante
+- 9414-ce-que-les-clients-pensent-de-l-agence-e-reputation-kickngo
+- 1448-duree-et-format-de-la-formation-inbound-marketing-hubgrow-academy
 ---
 <p>J'utilise QuickBill Enterprise depuis un peu plus de deux ans dans mon équipe comptable. Quand j'ai présenté le projet à ma direction, j'avais fait une estimation du coût. Erreur classique : je n'avais compté que la licence. Le vrai budget final était presque le double. Voici ce que j'aurais aimé qu'on me dise avant de signer.</p>
 

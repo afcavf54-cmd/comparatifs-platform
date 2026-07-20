@@ -4,15 +4,21 @@ slug: 4568-note-de-frais-definition-et-fonctionnement
 date: '2026-07-20T16:19:40+02:00'
 categorie: Comptabilité
 meta_title: 'Note de frais : définition et fonctionnement'
-meta_description: 'Note de frais : découvrez ce que c''est vraiment, comment fonctionne le remboursement et les règles légales à respecter pour une gestion comptable sans erreur.'
+meta_description: 'Note de frais : découvrez ce que c''est vraiment, comment fonctionne
+  le remboursement et les règles légales à respecter pour une gestion comptable sans
+  erreur.'
 min_words: 900
 status: published
 featured_image: /blog/4568-note-de-frais-definition-et-fonctionnement.jpg
 link_anchors:
 - text: définition d'une note de frais
   max: 5
+related_posts:
+- 9865-le-ticket-d-entree-de-l-outil-de-facturation-recurrente-billmatic-subscription
+- 3963-vos-factures-en-ligne-digitalise-tes-factures-sont-elles-valables
+- 2967-le-delai-de-prise-en-main-du-logiciel-quotepro-builder
+- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
 ---
-
 <p>Une note de frais. Tout le monde sait vaguement ce que c'est, mais dans la pratique, c'est souvent là que les choses se compliquent. Un salarié avance des frais professionnels, il veut être remboursé, et c'est à moi, côté comptabilité, de m'assurer que tout est conforme. Ça paraît simple. Ça ne l'est pas toujours.</p>
 
 <p>Voici comment ça fonctionne réellement, et ce qu'il faut savoir pour gérer ça proprement dans une structure de taille moyenne.</p>

@@ -14,10 +14,10 @@ link_anchors:
 - text: comment implémenter l'ERP BizFlow Max
   max: 5
 related_posts:
-- 2732-marketing-et-vente-le-crm-salesconnect-pro-contre-marketwise
-- 9219-5-points-a-verifier-sur-le-tarif-mensuel-de-cloudlead-manager
-- 4421-reussir-l-integration-de-l-erp-flexmanage-plus
-- 4820-nettoyer-un-export-csv-de-donnees-salestrack-crm
+- 9027-ce-que-la-solution-dataprotect-manager-met-reellement-en-conformite
+- 9103-le-prix-du-logiciel-crm-salestrack-360-vu-par-les-utilisateurs
+- 8929-pour-qui-est-pense-inventory-control-smart-pour-gerer-les-stocks
+- 9681-a-qui-se-prete-le-module-de-fidelisation-loyaltymax
 ---
 <p>Neuf ans à gérer la comptabilité d'une entreprise de 300 personnes, ça vous apprend une chose : un projet ERP mal staffé, c'est six mois de galère minimum. J'ai vécu une implémentation ratée en 2018, et une réussie en 2022. La différence ? Pas le budget. Pas le logiciel. <strong>L'équipe projet.</strong></p>
 

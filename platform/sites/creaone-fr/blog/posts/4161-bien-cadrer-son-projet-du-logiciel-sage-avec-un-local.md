@@ -14,9 +14,9 @@ link_anchors:
   max: 5
 related_posts:
 - 9585-adapter-un-modele-de-facture-digitalise-tes-factures-a-son-activite
-- 2149-bien-cadrer-son-projet-du-logiciel-ebp-avec-un-local
+- 5170-pourquoi-passer-au-cloud-avec-la-comptabilite-financecore-enterprise
+- 9168-pourquoi-choisir-la-comptabilite-cloud-financecore-plus
 - 9323-sa-premiere-facture-en-ligne-gratuite-avec-articles
-- 2702-cnam-intec-debouches-des-techniques-economiques-et-comptables
 ---
 <p>Neuf ans à travailler sur des projets de déploiement logiciel, dont plusieurs avec Sage, et je peux vous dire une chose : la phase de cadrage, c'est là que tout se joue. Pas pendant les tests, pas pendant la formation. Avant. Bien avant.</p>
 

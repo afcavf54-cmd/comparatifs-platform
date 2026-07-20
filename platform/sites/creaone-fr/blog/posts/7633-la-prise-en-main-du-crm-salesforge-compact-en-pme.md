@@ -14,10 +14,10 @@ link_anchors:
 - text: SalesForge Compact qui est un CRM adapté aux PME
   max: 5
 related_posts:
-- 4990-bien-demarrer-le-parametrage-de-pipedrive-nexus-edition
-- 4820-nettoyer-un-export-csv-de-donnees-salestrack-crm
-- 2726-bien-configurer-les-acces-lors-de-l-installation-de-cloudmanager-enterprise
-- 8251-le-ticket-d-entree-de-la-plateforme-erp-businesscore-max
+- 3055-qui-doit-piloter-l-implementation-de-bizflow-evolution-en-pme
+- 8165-reussir-la-mise-en-place-du-crm-powerlink-advance
+- 3624-le-delai-de-mise-en-place-de-l-erp-rapidesk-solutions-en-pme
+- 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
 ---
 <p>On m'a demandé de tester SalesForge Compact pendant trois mois dans notre structure. Cent-vingt salariés, une équipe commerciale de huit personnes, un service comptable (le mien) qui avait besoin de visibilité sur les devis et les encours clients. Voilà le contexte. Je vais vous dire ce que j'en pense vraiment.</p>
 

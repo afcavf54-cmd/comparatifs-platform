@@ -13,10 +13,10 @@ link_anchors:
 - text: comment configurer le CRM LeadFlow Automation
   max: 5
 related_posts:
-- 4990-bien-demarrer-le-parametrage-de-pipedrive-nexus-edition
-- 4820-nettoyer-un-export-csv-de-donnees-salestrack-crm
-- 6768-a-qui-se-prete-le-crm-salesflow-evolution
-- 7540-qui-mobiliser-pour-implementer-nextgen-business-suite
+- 8929-pour-qui-est-pense-inventory-control-smart-pour-gerer-les-stocks
+- 9681-a-qui-se-prete-le-module-de-fidelisation-loyaltymax
+- 1428-reussir-l-integration-de-l-erp-flexibiz-avec-la-comptabilite
+- 5458-8-atouts-du-crm-clientpulse-pro-a-connaitre-en-2024
 ---
 <p>Ça fait maintenant deux ans que j'utilise LeadFlow Automation dans mon quotidien. Pas pour la comptabilité directement, mais parce que je travaille avec les équipes commerciales et marketing sur les flux entrants, les relances, et surtout la question qui revient tout le temps : <strong>qui traite quel prospect, et quand ?</strong> Avant LeadFlow, on avait des tableurs. Des tableurs et des oublis. Maintenant c'est différent.</p>
 

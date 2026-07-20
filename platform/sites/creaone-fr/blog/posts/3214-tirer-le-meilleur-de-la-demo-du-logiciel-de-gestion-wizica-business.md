@@ -14,10 +14,10 @@ link_anchors:
 - text: la démo du logiciel de gestion Wizica Business
   max: 5
 related_posts:
+- 6768-a-qui-se-prete-le-crm-salesflow-evolution
 - 7540-qui-mobiliser-pour-implementer-nextgen-business-suite
-- 2323-le-prix-du-logiciel-crm-salestrack-evolution-est-il-justifie
-- 3624-le-delai-de-mise-en-place-de-l-erp-rapidesk-solutions-en-pme
-- 1047-a-qui-se-destine-le-crm-salestrack-evolution
+- 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
+- 8731-preparer-ses-flux-avant-d-implementer-smartchain-360
 ---
 <p>J'utilise des logiciels de gestion depuis près de dix ans. Et ce qui m'agace le plus, c'est de perdre deux heures sur une démo pour finalement me retrouver noyé sous des slides marketing sans jamais voir comment l'outil fonctionne vraiment au quotidien. Avec Wizica Business, j'ai voulu faire autrement. Voici comment j'ai abordé cette démo, ce que j'en ai tiré, et comment vous pouvez faire mieux que moi.</p>
 

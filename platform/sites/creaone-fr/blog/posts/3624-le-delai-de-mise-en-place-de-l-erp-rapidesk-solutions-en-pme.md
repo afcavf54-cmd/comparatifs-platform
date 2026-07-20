@@ -13,9 +13,9 @@ link_anchors:
 - text: RapiDesk Solutions qui est un ERP pensé pour les PME
   max: 5
 related_posts:
-- 4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise
-- 2726-bien-configurer-les-acces-lors-de-l-installation-de-cloudmanager-enterprise
-- 2160-6-elements-qui-font-grimper-le-cout-d-implementation-de-bizcore-advanced
+- 7544-a-qui-profite-le-crm-smartlead-evolution
+- 8165-reussir-la-mise-en-place-du-crm-powerlink-advance
+- 5503-le-logiciel-crm-mobile-fieldforce-sync-et-le-mode-hors-connexion
 - 8198-reussir-la-configuration-de-l-erp-dynabiz-pro
 ---
 <p>Quand on m'a demandé d'évaluer le déploiement de RapiDesk Solutions dans notre structure de 180 personnes, j'avoue que je n'avais pas de repère clair. On entend tellement de choses sur les ERP, entre les promesses commerciales et les retours d'expérience catastrophiques qui circulent dans les forums RH. J'ai donc documenté tout ce que j'ai vécu, semaine par semaine, pour que vous puissiez vous faire une idée réaliste avant de vous engager.</p>

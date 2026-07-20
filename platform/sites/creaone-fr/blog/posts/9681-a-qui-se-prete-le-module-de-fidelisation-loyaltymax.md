@@ -14,10 +14,10 @@ link_anchors:
 - text: l'intégration du module de fidélisation LoyaltyMax au CRM
   max: 5
 related_posts:
-- 8559-bien-cadrer-l-implementation-de-l-erp-bizflow-v8-pro
-- 2323-le-prix-du-logiciel-crm-salestrack-evolution-est-il-justifie
 - 7255-le-surcout-de-salesforce-premium-face-a-un-crm-basique-est-il-justifie
-- 4072-comment-leadflow-automation-route-vos-prospects-une-fois-configure
+- 4421-reussir-l-integration-de-l-erp-flexmanage-plus
+- 8678-le-gain-reel-de-leads-avec-l-outil-de-prospection-clientfinder-ai
+- 9103-le-prix-du-logiciel-crm-salestrack-360-vu-par-les-utilisateurs
 ---
 <p>J'ai testé pas mal d'outils de fidélisation client depuis que je travaille en lien étroit avec les équipes commerciales de notre boîte. Et LoyaltyMax, je l'ai découvert un peu par hasard, lors d'un projet transversal avec notre responsable marketing. Autant dire que j'avais des attentes modestes au départ. Ce que j'ai vu m'a plutôt surpris, dans le bon sens, même si ce n'est pas un outil fait pour tout le monde.</p>
 

@@ -14,10 +14,10 @@ link_anchors:
 - text: comment paramétrer l'ERP BusinessCore Enterprise
   max: 5
 related_posts:
-- 4820-nettoyer-un-export-csv-de-donnees-salestrack-crm
-- 1047-a-qui-se-destine-le-crm-salestrack-evolution
+- 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
 - 6768-a-qui-se-prete-le-crm-salesflow-evolution
-- 3741-reussir-le-parametrage-des-modules-financepro-integrated
+- 2732-marketing-et-vente-le-crm-salesconnect-pro-contre-marketwise
+- 8731-preparer-ses-flux-avant-d-implementer-smartchain-360
 ---
 <p>Quand on m'a confié le déploiement de BusinessCore Enterprise dans notre structure toulousaine, j'avais déjà eu quelques expériences de mise en place d'ERP. Mais honnêtement, rien ne m'avait vraiment préparé à la densité de paramétrage que demande cet outil. Neuf ans en comptabilité, ça aide. Ça ne suffit pas.</p>
 
