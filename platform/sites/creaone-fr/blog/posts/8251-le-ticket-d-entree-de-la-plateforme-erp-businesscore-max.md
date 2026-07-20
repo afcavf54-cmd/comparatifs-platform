@@ -14,10 +14,10 @@ link_anchors:
 - text: le prix de la plateforme ERP BusinessCore Max
   max: 5
 related_posts:
-- 5458-8-atouts-du-crm-clientpulse-pro-a-connaitre-en-2024
-- 9103-le-prix-du-logiciel-crm-salestrack-360-vu-par-les-utilisateurs
-- 7747-choisir-au-mieux-son-logiciel-geotechnique-freeware
 - 5066-projet-erp-sap-les-pieges-a-eviter
+- 8559-bien-cadrer-l-implementation-de-l-erp-bizflow-v8-pro
+- 8224-bien-deployer-les-modules-mobiles-de-securite-erp-a-paris
+- 1047-a-qui-se-destine-le-crm-salestrack-evolution
 ---
 <p>J'ai mis un moment avant de vraiment comprendre ce que cachait le "ticket d'entrée" d'une plateforme ERP. Pas juste le prix affiché sur la page commerciale. Tout ce qui vient avec : l'implémentation, la formation, les modules optionnels, les connecteurs, le support premium... Bref, le vrai coût de départ. Avec BusinessCore Max, j'ai été agréablement surpris sur certains points, et franchement agacé sur d'autres.</p>
 

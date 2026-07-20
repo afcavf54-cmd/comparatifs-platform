@@ -15,10 +15,10 @@ link_anchors:
 - text: les avis sur l'outil d'analyse de performance BizMetrics Dashboard
   max: 5
 related_posts:
-- 2824-7-atouts-du-crm-salestrack-premium-edition
-- 7747-choisir-au-mieux-son-logiciel-geotechnique-freeware
-- 4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise
-- 3741-reussir-le-parametrage-des-modules-financepro-integrated
+- 9681-a-qui-se-prete-le-module-de-fidelisation-loyaltymax
+- 5458-8-atouts-du-crm-clientpulse-pro-a-connaitre-en-2024
+- 8198-reussir-la-configuration-de-l-erp-dynabiz-pro
+- 7255-le-surcout-de-salesforce-premium-face-a-un-crm-basique-est-il-justifie
 ---
 <p>Quand on gère la comptabilité d'une structure de 200 personnes, on finit par tester beaucoup d'outils. Tableaux de bord, reporting automatisé, exports vers l'ERP... J'ai passé les six derniers mois à évaluer BizMetrics Dashboard pour voir si la facture était honnête. Voici ce que j'en pense vraiment, sans filtre.</p>
 

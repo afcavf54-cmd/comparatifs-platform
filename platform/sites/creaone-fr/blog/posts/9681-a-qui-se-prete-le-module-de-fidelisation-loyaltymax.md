@@ -14,10 +14,10 @@ link_anchors:
 - text: l'intégration du module de fidélisation LoyaltyMax au CRM
   max: 5
 related_posts:
-- 5503-le-logiciel-crm-mobile-fieldforce-sync-et-le-mode-hors-connexion
-- 7255-le-surcout-de-salesforce-premium-face-a-un-crm-basique-est-il-justifie
-- 8224-bien-deployer-les-modules-mobiles-de-securite-erp-a-paris
-- 4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise
+- 6768-a-qui-se-prete-le-crm-salesflow-evolution
+- 8869-le-ticket-d-entree-de-la-licence-du-progiciel-erp-bizmaster-360
+- 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
+- 2160-6-elements-qui-font-grimper-le-cout-d-implementation-de-bizcore-advanced
 ---
 <p>J'ai testé pas mal d'outils de fidélisation client depuis que je travaille en lien étroit avec les équipes commerciales de notre boîte. Et LoyaltyMax, je l'ai découvert un peu par hasard, lors d'un projet transversal avec notre responsable marketing. Autant dire que j'avais des attentes modestes au départ. Ce que j'ai vu m'a plutôt surpris, dans le bon sens, même si ce n'est pas un outil fait pour tout le monde.</p>
 

@@ -13,10 +13,10 @@ link_anchors:
 - text: le prix du logiciel de facturation InvoiceMaster Evolution
   max: 5
 related_posts:
+- 4568-note-de-frais-definition-et-fonctionnement
 - 1282-a-qui-profite-la-facturation-recurrente-billmatic-cyclic
 - 9323-sa-premiere-facture-en-ligne-gratuite-avec-articles
-- 2589-lancer-sa-premiere-action-de-marketing-alternatif
-- 2619-le-ticket-d-entree-de-la-plateforme-de-facturation-recurrente-billmatic-auto
+- 5170-pourquoi-passer-au-cloud-avec-la-comptabilite-financecore-enterprise
 ---
 <p>Ça fait maintenant neuf ans que je gère la comptabilité d'une boîte de taille intermédiaire. Toulouse, secteur industriel, une centaine de lignes de facturation par mois, des équipes qui n'ont pas toujours le temps de se former sur un nouvel outil. Autant vous dire que le choix d'un logiciel de facturation, je ne le prends pas à la légère.</p>
 

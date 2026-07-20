@@ -16,9 +16,9 @@ link_anchors:
   max: 5
 related_posts:
 - 8615-bien-decrire-son-chantier-sur-btp-chantier-fr
+- 8712-bien-exploiter-les-indicateurs-economiques-de-leterritoireentreprise
 - 9414-ce-que-les-clients-pensent-de-l-agence-e-reputation-kickngo
-- 5070-bien-preparer-son-devis-deco-avec-lestylechezsoi
-- 1448-duree-et-format-de-la-formation-inbound-marketing-hubgrow-academy
+- 8299-comment-bien-selectionner-le-coworking-la-cantine-x-french-tech-nantes
 ---
 <p>J'ai traité des dizaines de devis travaux au cours de ma carrière. Et franchement, le problème vient rarement de l'artisan. Il vient de la façon dont le projet a été décrit. Trop vague, trop flou, ou au contraire noyé sous des détails inutiles. Le résultat : un devis qui ne correspond pas à la réalité, une renégociation en cours de chantier, et souvent une addition bien plus salée que prévue.</p>
 

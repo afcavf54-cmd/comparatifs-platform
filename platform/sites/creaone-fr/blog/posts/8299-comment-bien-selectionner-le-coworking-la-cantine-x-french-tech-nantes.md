@@ -14,10 +14,10 @@ link_anchors:
 - text: l'espace de coworking La Cantine x La French Tech Nantes
   max: 5
 related_posts:
-- 8615-bien-decrire-son-chantier-sur-btp-chantier-fr
-- 2492-formule-flex-ou-dediee-les-tarifs-coworking-lefoyerentrepreneurial
+- 9414-ce-que-les-clients-pensent-de-l-agence-e-reputation-kickngo
+- 6983-duree-et-rythme-de-la-formation-seo-vite-une-formation
 - 1448-duree-et-format-de-la-formation-inbound-marketing-hubgrow-academy
-- 8712-bien-exploiter-les-indicateurs-economiques-de-leterritoireentreprise
+- 8615-bien-decrire-son-chantier-sur-btp-chantier-fr
 ---
 <p>J'ai mis un moment avant de vraiment comprendre ce que proposait <strong>La Cantine x French Tech Nantes</strong>. De l'extérieur, ça ressemble à un espace de coworking parmi d'autres. En réalité, c'est un lieu pensé pour les profils tech, les startups en phase d'amorçage et les entrepreneurs qui veulent être entourés d'un vrai écosystème. Neuf ans à travailler avec des dirigeants, des freelances et des équipes en croissance m'ont appris à faire la différence entre un espace qui se contente de louer des bureaux et un lieu qui crée des dynamiques.</p>
 

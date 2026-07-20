@@ -14,10 +14,10 @@ link_anchors:
 - text: créer une facture en ligne avec Simplifie-Ta-Compta
   max: 5
 related_posts:
-- 4784-a-qui-profite-l-automatisation-de-facturation-billmatic-auto
-- 4161-bien-cadrer-son-projet-du-logiciel-sage-avec-un-local
-- 1282-a-qui-profite-la-facturation-recurrente-billmatic-cyclic
-- 4568-note-de-frais-definition-et-fonctionnement
+- 9585-adapter-un-modele-de-facture-digitalise-tes-factures-a-son-activite
+- 9168-pourquoi-choisir-la-comptabilite-cloud-financecore-plus
+- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
+- 5170-pourquoi-passer-au-cloud-avec-la-comptabilite-financecore-enterprise
 ---
 <p>Ça fait maintenant neuf ans que je gère la comptabilité d'une boîte de taille intermédiaire. Et je peux vous dire que la question de la conformité des factures en ligne, on y revient souvent. Pas parce que c'est passionnant, mais parce que les conséquences d'une erreur sont vraiment pénalisantes. Un redressement fiscal, un litige client, une TVA mal déclarée... ça coûte cher en temps et en argent.</p>
 

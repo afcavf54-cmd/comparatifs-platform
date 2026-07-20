@@ -13,10 +13,10 @@ link_anchors:
 - text: créer une facture avec article en ligne gratuitement
   max: 5
 related_posts:
-- 2589-lancer-sa-premiere-action-de-marketing-alternatif
-- 5363-application-de-facturation-invoicepro-x3-raccourcir-le-temps-de-traitement
-- 9222-a-qui-se-prete-le-logiciel-de-devis-quotepro-smart
-- 1282-a-qui-profite-la-facturation-recurrente-billmatic-cyclic
+- 9585-adapter-un-modele-de-facture-digitalise-tes-factures-a-son-activite
+- 9067-logiciel-de-facturation-invoicemaster-evolution-face-aux-prix-du-marche
+- 9168-pourquoi-choisir-la-comptabilite-cloud-financecore-plus
+- 6771-vitesse-de-facturation-fastbill-contre-invoicepro-max
 ---
 <h2>La facturation en ligne, mon quotidien depuis 9 ans</h2>
 

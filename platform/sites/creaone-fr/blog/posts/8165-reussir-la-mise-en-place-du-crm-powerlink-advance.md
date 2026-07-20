@@ -14,10 +14,10 @@ link_anchors:
 - text: comment mettre en place le CRM PowerLink Advance
   max: 5
 related_posts:
+- 8731-preparer-ses-flux-avant-d-implementer-smartchain-360
+- 8224-bien-deployer-les-modules-mobiles-de-securite-erp-a-paris
 - 8869-le-ticket-d-entree-de-la-licence-du-progiciel-erp-bizmaster-360
-- 7633-la-prise-en-main-du-crm-salesforge-compact-en-pme
-- 8251-le-ticket-d-entree-de-la-plateforme-erp-businesscore-max
-- 1428-reussir-l-integration-de-l-erp-flexibiz-avec-la-comptabilite
+- 2732-marketing-et-vente-le-crm-salesconnect-pro-contre-marketwise
 ---
 <p>Mettre en place un CRM quand on gère une équipe comptable de taille intermédiaire, ce n'est pas une mince affaire. J'ai accompagné ce type de projet deux fois au cours de mes neuf ans de carrière, et à chaque fois, les mêmes erreurs revenaient : mauvais paramétrage, résistance des utilisateurs, données qui ne remontent pas correctement. Avec <strong>PowerLink Advance</strong>, j'ai eu une expérience assez différente, pas parfaite, mais honnêtement plus fluide que ce à quoi je m'attendais.</p>
 

@@ -15,10 +15,10 @@ link_anchors:
 - text: la formation négociation commerciale DealMaker Intensive
   max: 5
 related_posts:
-- 3744-duree-d-une-formation-inspecteur-qualite-aeronautique-et-spatiale
-- 7625-quel-budget-pour-une-formation-data-driven-decision-making
-- 3987-duree-de-la-formation-caces-mon-institut-du-btp
 - 4503-duree-d-assimilation-de-la-methode-de-negociation-salesmaster
+- 8703-avantages-et-inconvenients-du-cdi-interimaire-erreurs-a-eviter
+- 2418-duree-de-la-formation-powerpoint-executif-presentation-a-impact
+- 3987-duree-de-la-formation-caces-mon-institut-du-btp
 ---
 <p>Quand on gère une équipe comptable et qu'on doit aussi négocier des contrats fournisseurs, des conditions bancaires ou des budgets avec la direction, on se retrouve vite à la limite de ce qu'on a appris sur le tas. C'est exactement ce qui m'a poussé à m'intéresser à la formation <strong>DealMaker Intensive</strong>. Pas par envie de changer de métier, mais parce que j'ai réalisé que mes compétences en négociation n'étaient pas à la hauteur de mes responsabilités.</p>
 

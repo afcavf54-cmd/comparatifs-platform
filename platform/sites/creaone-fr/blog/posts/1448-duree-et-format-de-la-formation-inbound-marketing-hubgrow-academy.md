@@ -14,10 +14,10 @@ link_anchors:
 - text: la formation inbound marketing HubGrow Academy
   max: 5
 related_posts:
+- 8299-comment-bien-selectionner-le-coworking-la-cantine-x-french-tech-nantes
 - 9414-ce-que-les-clients-pensent-de-l-agence-e-reputation-kickngo
-- 5070-bien-preparer-son-devis-deco-avec-lestylechezsoi
-- 8615-bien-decrire-son-chantier-sur-btp-chantier-fr
-- 3118-bien-decrire-son-projet-pour-un-devis-travaux-en-ligne-e-local-fr
+- 8712-bien-exploiter-les-indicateurs-economiques-de-leterritoireentreprise
+- 6983-duree-et-rythme-de-la-formation-seo-vite-une-formation
 ---
 <p>Quand on cherche une formation en inbound marketing, la première question qu'on se pose ce n'est pas "est-ce que ça va m'apprendre quelque chose ?" mais plutôt "est-ce que j'ai le temps de faire ça ?" Avec un agenda chargé, une équipe à gérer et des clôtures mensuelles qui ne attendent pas, je comprends tout à fait cette logique. J'ai donc regardé de près ce que propose HubGrow Academy, notamment sur la durée et le format de ses formations.</p>
 

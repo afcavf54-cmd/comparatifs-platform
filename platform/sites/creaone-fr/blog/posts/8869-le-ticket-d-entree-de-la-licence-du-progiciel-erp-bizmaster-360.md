@@ -13,10 +13,10 @@ link_anchors:
 - text: le prix de la licence du progiciel ERP BizMaster 360
   max: 5
 related_posts:
-- 2160-6-elements-qui-font-grimper-le-cout-d-implementation-de-bizcore-advanced
-- 8165-reussir-la-mise-en-place-du-crm-powerlink-advance
-- 7633-la-prise-en-main-du-crm-salesforge-compact-en-pme
-- 2824-7-atouts-du-crm-salestrack-premium-edition
+- 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
+- 8929-pour-qui-est-pense-inventory-control-smart-pour-gerer-les-stocks
+- 7544-a-qui-profite-le-crm-smartlead-evolution
+- 8251-le-ticket-d-entree-de-la-plateforme-erp-businesscore-max
 ---
 <p>Quand on reçoit une première proposition commerciale pour un ERP comme BizMaster 360, la première réaction c'est souvent un silence gêné devant les chiffres. J'ai vécu ça il y a quelques années dans une entreprise de taille intermédiaire, et je peux vous dire que comprendre ce que recouvre exactement le "ticket d'entrée" d'une licence ERP, ça demande un vrai décryptage. Pas seulement lire le devis, mais comprendre ce qui se cache derrière chaque ligne.</p>
 

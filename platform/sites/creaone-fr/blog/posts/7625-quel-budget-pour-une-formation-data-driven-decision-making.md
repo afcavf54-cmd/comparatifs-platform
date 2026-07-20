@@ -14,10 +14,10 @@ link_anchors:
 - text: la formation certifiante Data Driven Decision Making
   max: 5
 related_posts:
-- 3987-duree-de-la-formation-caces-mon-institut-du-btp
-- 8703-avantages-et-inconvenients-du-cdi-interimaire-erreurs-a-eviter
+- 2418-duree-de-la-formation-powerpoint-executif-presentation-a-impact
 - 4503-duree-d-assimilation-de-la-methode-de-negociation-salesmaster
-- 3744-duree-d-une-formation-inspecteur-qualite-aeronautique-et-spatiale
+- 8703-avantages-et-inconvenients-du-cdi-interimaire-erreurs-a-eviter
+- 3987-duree-de-la-formation-caces-mon-institut-du-btp
 ---
 <p>Quand j'ai voulu me former au <strong>data driven decision making</strong> il y a trois ans, j'ai passé plus de temps à comparer les offres qu'à vraiment comprendre ce que je voulais apprendre. Les prix varient du simple au quadruple selon les organismes, les formats, les durées. Et personne ne vous donne jamais de fourchette claire. Cet article, c'est ce que j'aurais aimé lire avant de sortir ma carte bleue.</p>
 

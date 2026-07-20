@@ -16,8 +16,8 @@ link_anchors:
 related_posts:
 - 6365-duree-et-rythme-de-la-formation-negociation-dealmaker-intensive
 - 7625-quel-budget-pour-une-formation-data-driven-decision-making
+- 8703-avantages-et-inconvenients-du-cdi-interimaire-erreurs-a-eviter
 - 3987-duree-de-la-formation-caces-mon-institut-du-btp
-- 3744-duree-d-une-formation-inspecteur-qualite-aeronautique-et-spatiale
 ---
 <p>Neuf ans à travailler sur des reportings financiers, des présentations de clôture, des synthèses de bilan pour le comité de direction. J'ai dû en produire des centaines. Et pendant longtemps, j'ai sous-estimé PowerPoint. Je le voyais comme un outil basique, pas vraiment un sujet de formation sérieux.</p>
 

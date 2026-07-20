@@ -14,10 +14,10 @@ link_anchors:
 - text: les avis sur le logiciel CRM BusinessPro X4
   max: 5
 related_posts:
-- 4421-reussir-l-integration-de-l-erp-flexmanage-plus
-- 5066-projet-erp-sap-les-pieges-a-eviter
-- 4072-comment-leadflow-automation-route-vos-prospects-une-fois-configure
-- 1428-reussir-l-integration-de-l-erp-flexibiz-avec-la-comptabilite
+- 8929-pour-qui-est-pense-inventory-control-smart-pour-gerer-les-stocks
+- 9219-5-points-a-verifier-sur-le-tarif-mensuel-de-cloudlead-manager
+- 1859-quelle-equipe-pour-implementer-l-erp-bizflow-max
+- 9138-bien-configurer-les-acces-lors-de-l-installation-de-managepro-suite
 ---
 <p>J'ai testé pas mal de CRM ces dernières années. Et quand un commercial m'a présenté BusinessPro X4 l'an dernier, j'ai eu un peu cette réaction automatique : "encore un outil cher qui promet la lune". Spoiler, c'est plus nuancé que ça. Mais pas forcément dans le bon sens.</p>
 

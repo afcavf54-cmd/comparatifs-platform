@@ -14,10 +14,10 @@ link_anchors:
 - text: faire une note de frais
   max: 5
 related_posts:
-- 9067-logiciel-de-facturation-invoicemaster-evolution-face-aux-prix-du-marche
-- 9222-a-qui-se-prete-le-logiciel-de-devis-quotepro-smart
+- 9585-adapter-un-modele-de-facture-digitalise-tes-factures-a-son-activite
 - 4784-a-qui-profite-l-automatisation-de-facturation-billmatic-auto
 - 4568-note-de-frais-definition-et-fonctionnement
+- 2702-cnam-intec-debouches-des-techniques-economiques-et-comptables
 ---
 <h2>Ce que recouvre vraiment une note de frais</h2>
 

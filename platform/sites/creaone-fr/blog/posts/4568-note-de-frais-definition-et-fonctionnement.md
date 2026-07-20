@@ -14,10 +14,10 @@ link_anchors:
 - text: définition d'une note de frais
   max: 5
 related_posts:
-- 9865-le-ticket-d-entree-de-l-outil-de-facturation-recurrente-billmatic-subscription
-- 6415-vos-factures-en-ligne-simplifie-ta-compta-sont-elles-conformes
-- 4161-bien-cadrer-son-projet-du-logiciel-sage-avec-un-local
-- 9222-a-qui-se-prete-le-logiciel-de-devis-quotepro-smart
+- 2702-cnam-intec-debouches-des-techniques-economiques-et-comptables
+- 5170-pourquoi-passer-au-cloud-avec-la-comptabilite-financecore-enterprise
+- 5363-application-de-facturation-invoicepro-x3-raccourcir-le-temps-de-traitement
+- 9067-logiciel-de-facturation-invoicemaster-evolution-face-aux-prix-du-marche
 ---
 <p>Une note de frais. Tout le monde sait vaguement ce que c'est, mais dans la pratique, c'est souvent là que les choses se compliquent. Un salarié avance des frais professionnels, il veut être remboursé, et c'est à moi, côté comptabilité, de m'assurer que tout est conforme. Ça paraît simple. Ça ne l'est pas toujours.</p>
 

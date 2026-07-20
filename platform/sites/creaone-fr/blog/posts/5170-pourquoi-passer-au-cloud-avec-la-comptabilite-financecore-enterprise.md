@@ -13,10 +13,10 @@ link_anchors:
 - text: les fonctionnalités de la comptabilité cloud FinanceCore Enterprise
   max: 5
 related_posts:
-- 4161-bien-cadrer-son-projet-du-logiciel-sage-avec-un-local
-- 9585-adapter-un-modele-de-facture-digitalise-tes-factures-a-son-activite
-- 9865-le-ticket-d-entree-de-l-outil-de-facturation-recurrente-billmatic-subscription
+- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
 - 6771-vitesse-de-facturation-fastbill-contre-invoicepro-max
+- 4568-note-de-frais-definition-et-fonctionnement
+- 2702-cnam-intec-debouches-des-techniques-economiques-et-comptables
 featured_image: /blog/5170-pourquoi-passer-au-cloud-avec-la-comptabilite-financecore-enterprise.jpg
 ---
 <h2>Les avantages concrets du passage au cloud pour la comptabilité</h2>

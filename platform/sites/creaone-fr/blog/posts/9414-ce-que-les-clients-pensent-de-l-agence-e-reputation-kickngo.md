@@ -14,10 +14,10 @@ link_anchors:
 - text: l'agence d'e-réputation Kickngo
   max: 5
 related_posts:
-- 1448-duree-et-format-de-la-formation-inbound-marketing-hubgrow-academy
+- 8299-comment-bien-selectionner-le-coworking-la-cantine-x-french-tech-nantes
+- 6983-duree-et-rythme-de-la-formation-seo-vite-une-formation
+- 8712-bien-exploiter-les-indicateurs-economiques-de-leterritoireentreprise
 - 8615-bien-decrire-son-chantier-sur-btp-chantier-fr
-- 3118-bien-decrire-son-projet-pour-un-devis-travaux-en-ligne-e-local-fr
-- 5070-bien-preparer-son-devis-deco-avec-lestylechezsoi
 ---
 <p>Quand on gère la comptabilité d'une PME de 200 personnes, on n'a pas vraiment le temps de s'improviser expert en réputation en ligne. Moi, ce sujet m'a rattrapé il y a deux ans, quand notre directeur commercial m'a montré des avis Google catastrophiques sur un concurrent direct. Sa réaction : "Et nous, comment on est perçus ?" Honnêtement, je n'en savais rien. Et c'est là que j'ai commencé à m'intéresser aux agences spécialisées en e-réputation.</p>
 
