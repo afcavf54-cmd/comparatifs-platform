@@ -148,6 +148,14 @@ def _get_current_month_fr() -> str:
     return months[date.today().month - 1]
 
 
+def _apply_month_vars(txt: str) -> str:
+    """Substitue {month}/{Month}/{mois}/{Mois} par le mois courant (français).
+    {year} est déjà géré par ailleurs (site["year"] aligné sur l'année courante)."""
+    m = _get_current_month_fr()
+    return (str(txt).replace("{month}", m).replace("{Month}", m.capitalize())
+                    .replace("{mois}", m).replace("{Mois}", m.capitalize()))
+
+
 def _load_enabled_classements(site_dir: Path):
     """Charge la liste blanche des classements activés pour ce site, depuis
     `platform/sites/<siteId>/enabled_classements.json`.
@@ -503,15 +511,20 @@ def load_editorial(site_dir: Path) -> dict:
 # ── SEO ────────────────────────────────────────────────────────────────────────
 def build_seo(site: dict, seo_config: dict, prod_a: dict, prod_b: dict) -> dict:
     year = site["year"]
-    return {
-        "title": seo_config["title_pattern"]
-            .replace("{A}", str(prod_a["nom"])).replace("{B}", str(prod_b["nom"])).replace("{year}", str(year)),
-        "meta": seo_config["meta_pattern"]
-            .replace("{A}", str(prod_a["nom"])).replace("{B}", str(prod_b["nom"])).replace("{year}", str(year)),
-        "h1": seo_config["h1_pattern"]
-            .replace("{A}", str(prod_a["nom"])).replace("{B}", str(prod_b["nom"])).replace("{year}", str(year)),
-        "intro": seo_config["intro_pattern"]
+    mois = _get_current_month_fr()
+
+    def _sub(txt: str) -> str:
+        return (str(txt)
             .replace("{A}", str(prod_a["nom"])).replace("{B}", str(prod_b["nom"]))
+            .replace("{year}", str(year)).replace("{Year}", str(year))
+            .replace("{month}", mois).replace("{Month}", mois.capitalize())
+            .replace("{mois}", mois).replace("{Mois}", mois.capitalize()))
+
+    return {
+        "title": _sub(seo_config["title_pattern"]),
+        "meta": _sub(seo_config["meta_pattern"]),
+        "h1": _sub(seo_config["h1_pattern"]),
+        "intro": _sub(seo_config["intro_pattern"])
             .replace("{prix_a}", f"{prod_a.get('prix_achat', '')}€")
             .replace("{prix_b}", f"{prod_b.get('prix_achat', '')}€"),
     }
@@ -1111,6 +1124,16 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     products_yaml = load_yaml(products_yaml_path) if products_yaml_path.exists() else {"products": []}
     site          = config["site"]
     theme         = config["theme"]
+
+    # ── Année & mois toujours dynamiques (calculés au moment du build) ──
+    # Par défaut, {year} suit l'année courante : un simple rebuild (ex. cron
+    # début janvier) met à jour TOUS les titres/metas du site. Le `year:` du
+    # config n'est plus figé — pour épingler une année précise, mettre
+    # `year_auto: false` (+ un `year:` fixe) dans le config du site.
+    if str(site.get("year_auto", True)).strip().lower() not in ("false", "0", "no"):
+        site["year"] = date.today().year
+    site.setdefault("month", _get_current_month_fr())
+    site.setdefault("Month", _get_current_month_fr().capitalize())
 
     # ── Liste blanche des classements activés pour ce site ────────────
     # Fichier `enabled_classements.json` édité depuis le dashboard
@@ -1821,6 +1844,7 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
             zero_frais = sum(1 for p in products if str(p.get("frais_souscription", 99)).replace('.0','') == "0")
             top_pairs  = [{"url": f"{a}-vs-{b}", "label": f"{products_by_slug(products, a)['nom']} vs {products_by_slug(products, b)['nom']}"} for a, b in all_pairs[:8]]
             home_title = site.get("home_title") or f"{site.get('name', '')} | Comparatifs {site.get('year', '')}"
+            home_title = _apply_month_vars(home_title)
             home_desc = site.get("home_description", "")
             # ── Stats home ────────────────────────────────────────────────
             # `total_categories` = nombre de types de logiciels (= nombre
@@ -1889,6 +1913,7 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
         if not is_classement_template and (TEMPLATES_DIR / "comparatifs-scpi.html.j2").exists():
             seo_cfg = config.get("seo", {})
             liste_comp_title = seo_cfg.get("liste_comp_title", "Tous les comparatifs {site_name} {year}")                 .replace("{site_name}", site.get("name", ""))                 .replace("{year}", str(site.get("year", "")))                 .replace("{total}", str(len(all_pairs)))
+            liste_comp_title = _apply_month_vars(liste_comp_title)
             html = env.get_template("comparatifs-scpi.html.j2").render(
                 site={**site, "seo": config.get("seo", {})}, theme=theme,
                 products=products, total_pairs=len(all_pairs),
@@ -1953,7 +1978,9 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
 
                 seo_cfg = config.get("seo", {})
                 avis_title = seo_cfg.get("avis_title_pattern", "Avis {nom} {year}")                     .replace("{nom}", avis_prod.get("nom", ""))                     .replace("{marque}", avis_prod.get("marque", ""))                     .replace("{td}", str(avis_prod.get("td", "")))                     .replace("{year}", str(site.get("year", "")))
+                avis_title = _apply_month_vars(avis_title)
                 avis_meta = seo_cfg.get("avis_meta_pattern", "")                     .replace("{nom}", avis_prod.get("nom", ""))                     .replace("{marque}", avis_prod.get("marque", ""))                     .replace("{td}", str(avis_prod.get("td", "")))                     .replace("{year}", str(site.get("year", "")))
+                avis_meta = _apply_month_vars(avis_meta)
                 html = env.get_template(avis_tpl_name).render(
                     site={**site, "seo": config.get("seo", {})},
                     theme=theme,
