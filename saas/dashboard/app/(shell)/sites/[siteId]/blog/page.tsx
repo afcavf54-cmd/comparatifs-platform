@@ -265,7 +265,10 @@ export default function BlogListPage() {
   async function del(slug: string, title: string) {
     if (!confirm(`Supprimer l'article "${title}" ?`)) return
     const r = await fetch(`/api/sites/${siteId}/blog/${slug}`, { method: 'DELETE' })
-    if (r.ok) load(); else alert('Erreur suppression')
+    if (r.ok) { load(); return }
+    let msg = 'Erreur suppression'
+    try { const d = await r.json(); if (d?.error) msg = d.error } catch { /* noop */ }
+    alert(msg)
   }
 
   async function publishNow(title: string) {
