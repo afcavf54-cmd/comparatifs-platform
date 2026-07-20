@@ -13,10 +13,10 @@ link_anchors:
 - text: comment utiliser le CRM SmartLead Evolution
   max: 5
 related_posts:
-- 6768-a-qui-se-prete-le-crm-salesflow-evolution
-- 9138-bien-configurer-les-acces-lors-de-l-installation-de-managepro-suite
-- 5458-8-atouts-du-crm-clientpulse-pro-a-connaitre-en-2024
-- 8869-le-ticket-d-entree-de-la-licence-du-progiciel-erp-bizmaster-360
+- 4990-bien-demarrer-le-parametrage-de-pipedrive-nexus-edition
+- 5066-projet-erp-sap-les-pieges-a-eviter
+- 4072-comment-leadflow-automation-route-vos-prospects-une-fois-configure
+- 2160-6-elements-qui-font-grimper-le-cout-d-implementation-de-bizcore-advanced
 ---
 <h2>Mon retour d'expérience sur SmartLead Evolution : 3 ans d'utilisation</h2>
 

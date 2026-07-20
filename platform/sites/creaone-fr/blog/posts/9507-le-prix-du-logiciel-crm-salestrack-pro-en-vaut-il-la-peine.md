@@ -14,10 +14,10 @@ link_anchors:
 - text: les avis sur le logiciel CRM SalesTrack Pro
   max: 5
 related_posts:
-- 1125-premiers-pas-avec-le-customer-relationship-management-hubspot
-- 8224-bien-deployer-les-modules-mobiles-de-securite-erp-a-paris
 - 8929-pour-qui-est-pense-inventory-control-smart-pour-gerer-les-stocks
-- 3055-qui-doit-piloter-l-implementation-de-bizflow-evolution-en-pme
+- 1125-premiers-pas-avec-le-customer-relationship-management-hubspot
+- 4421-reussir-l-integration-de-l-erp-flexmanage-plus
+- 4072-comment-leadflow-automation-route-vos-prospects-une-fois-configure
 ---
 <p>Ça fait maintenant trois ans que je cherche le bon CRM pour notre équipe commerciale. J'ai testé, comparé, déployé, parfois regretté. Et quand j'ai vu passer SalesTrack Pro dans une discussion sur un forum comptable, j'ai décidé de creuser. Pas pour faire joli, mais parce que la question du prix d'un CRM, dans une boîte de notre taille, c'est une décision qui se répercute sur tout le budget logiciel annuel.</p>
 
