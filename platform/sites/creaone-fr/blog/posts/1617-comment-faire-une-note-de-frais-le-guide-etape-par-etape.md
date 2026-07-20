@@ -4,15 +4,21 @@ slug: 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
 date: '2026-07-20T15:37:52+02:00'
 categorie: Comptabilité
 meta_title: 'Comment faire une note de frais : guide complet 2026'
-meta_description: 'Apprenez à faire une note de frais sans erreur grâce à un guide étape par étape : justificatifs, règles légales et conseils pour un remboursement rapide.'
+meta_description: 'Apprenez à faire une note de frais sans erreur grâce à un guide
+  étape par étape : justificatifs, règles légales et conseils pour un remboursement
+  rapide.'
 min_words: 1200
 status: published
 featured_image: /blog/1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape.jpg
 link_anchors:
 - text: faire une note de frais
   max: 5
+related_posts:
+- 2967-le-delai-de-prise-en-main-du-logiciel-quotepro-builder
+- 9323-sa-premiere-facture-en-ligne-gratuite-avec-articles
+- 5170-pourquoi-passer-au-cloud-avec-la-comptabilite-financecore-enterprise
+- 2702-cnam-intec-debouches-des-techniques-economiques-et-comptables
 ---
-
 <h2>Ce que recouvre vraiment une note de frais</h2>
 
 <p>La définition d'une note de frais, c'est plus large qu'on ne le croit. Il ne s'agit pas juste d'un reçu de restaurant agrafé à un bout de papier. C'est un document comptable officiel qui prouve qu'un salarié a engagé une dépense professionnelle de sa poche, et qu'il doit être remboursé par son employeur. Repas avec un client, billet de train, nuit d'hôtel, abonnement de parking... tout ça peut entrer dans ce cadre, à condition de respecter certaines règles.</p>
