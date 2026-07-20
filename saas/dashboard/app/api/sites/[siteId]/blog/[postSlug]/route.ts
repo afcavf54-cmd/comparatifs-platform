@@ -227,8 +227,27 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ s
   const { siteId, postSlug } = await params
   const path = `platform/sites/${siteId}/blog/posts/${postSlug}.md`
   const file = await ghGet(path)
-  if (!file) return NextResponse.json({ error: 'Article introuvable' }, { status: 404 })
-  const ok = await ghDelete(path, file.sha, `HUB: Delete blog post ${postSlug}`)
-  if (!ok) return NextResponse.json({ error: 'Erreur suppression' }, { status: 500 })
+  if (!file) return NextResponse.json({ error: `Article introuvable : ${postSlug}` }, { status: 404 })
+
+  // Appel GitHub direct pour capturer le vrai motif d'échec (le repo étant
+  // public, la LECTURE marche même sans token valide ; seule l'ÉCRITURE
+  // exige un token avec droits → c'est là que ça casse le plus souvent).
+  const res = await fetch(`${BASE}/repos/${repoPath()}/contents/${path}`, {
+    method: 'DELETE', headers: { ...headers, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: `HUB: Delete blog post ${postSlug}`, sha: file.sha }),
+  })
+  if (!res.ok) {
+    let detail = ''
+    try { const j = await res.json(); detail = j?.message || '' } catch { /* noop */ }
+    const hint =
+      res.status === 401 ? 'token GitHub invalide ou expiré (Vercel → env GITHUB_TOKEN)' :
+      res.status === 403 ? "token sans droit d'écriture (scope repo/contents) ou rate-limit GitHub" :
+      res.status === 404 ? 'dépôt/branche introuvable (vérifie GITHUB_OWNER / GITHUB_REPO)' :
+      res.status === 409 ? 'conflit de version (SHA) — recharge la page et réessaie' :
+      res.status === 422 ? 'branche protégée : les commits directs sont refusés' : ''
+    return NextResponse.json({
+      error: `Erreur suppression — GitHub ${res.status}${hint ? ` (${hint})` : ''}${detail ? ` : ${detail}` : ''}`,
+    }, { status: 500 })
+  }
   return NextResponse.json({ ok: true })
 }
