@@ -14,10 +14,10 @@ link_anchors:
 - text: comment automatiser sa facturation avec Billmatic Auto
   max: 5
 related_posts:
-- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
-- 4568-note-de-frais-definition-et-fonctionnement
-- 2702-cnam-intec-debouches-des-techniques-economiques-et-comptables
+- 9585-adapter-un-modele-de-facture-digitalise-tes-factures-a-son-activite
 - 9301-note-de-frais-et-code-du-travail-ce-que-dit-la-loi
+- 4568-note-de-frais-definition-et-fonctionnement
+- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
 ---
 <p>Après neuf ans à gérer la comptabilité d'une PME de 200 personnes à Toulouse, j'ai vu passer beaucoup d'outils de facturation. Certains promettaient monts et merveilles, d'autres disparaissaient six mois après leur lancement. Billmatic Auto, je l'ai testé sérieusement pendant quatre mois, sur des flux réels, avec de vraies contraintes de volume. Ce que je vais vous dire ici, c'est mon retour honnête, pas un résumé de fiche produit.</p>
 

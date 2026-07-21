@@ -14,10 +14,10 @@ link_anchors:
 - text: faire une note de frais
   max: 5
 related_posts:
-- 9585-adapter-un-modele-de-facture-digitalise-tes-factures-a-son-activite
-- 4784-a-qui-profite-l-automatisation-de-facturation-billmatic-auto
 - 4568-note-de-frais-definition-et-fonctionnement
-- 2702-cnam-intec-debouches-des-techniques-economiques-et-comptables
+- 4784-a-qui-profite-l-automatisation-de-facturation-billmatic-auto
+- 9585-adapter-un-modele-de-facture-digitalise-tes-factures-a-son-activite
+- 9301-note-de-frais-et-code-du-travail-ce-que-dit-la-loi
 ---
 <h2>Ce que recouvre vraiment une note de frais</h2>
 
