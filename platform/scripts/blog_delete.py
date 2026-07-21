@@ -8,7 +8,7 @@ Lit un fichier liste (par défaut platform/blog_to_delete.txt), chaque ligne :
 Supprime le fichier .md ET retire l'entrée de posts-index.json, puis vide le
 fichier liste (ne garde que l'en-tête). Conçu pour tourner dans GitHub Actions.
 """
-import sys, json, argparse, pathlib, datetime, re
+import sys, json, argparse, pathlib, datetime, re, os
 
 HEADER = """# Suppression groupée d'articles de blog.
 # Ajoute UNE ligne par article, puis commit ce fichier : la GitHub Action
@@ -63,6 +63,7 @@ def main():
         return
 
     total_deleted = total_ghost = 0
+    affected_sites: set[str] = set()
     for site, t in targets.items():
         posts_dir = pathlib.Path(args.root) / site / "blog" / "posts"
         index_path = pathlib.Path(args.root) / site / "blog" / "posts-index.json"
@@ -110,6 +111,8 @@ def main():
                 print(f"::warning::[{site}] index non mis à jour: {e}")
 
         total_deleted += len(deleted); total_ghost += len(ghost)
+        if deleted or ghost or idx_changed:
+            affected_sites.add(site)
         print(f"[{site}] .md supprimés: {len(deleted)} | fantômes nettoyés: {len(ghost)} | index: {idx_changed}")
         for s in deleted: print(f"   - {s}")
         for s in ghost:   print(f"   - (fantôme) {s}")
@@ -119,6 +122,17 @@ def main():
         list_path.write_text(HEADER, encoding="utf-8")
 
     print(f"::notice::Total: {total_deleted} article(s) supprimé(s), {total_ghost} fantôme(s) nettoyé(s).")
+
+    # Expose les sites impactés (pour régénération/déploiement par le workflow)
+    sites_str = " ".join(sorted(affected_sites))
+    print(f"AFFECTED_SITES={sites_str}")
+    gh_out = os.environ.get("GITHUB_OUTPUT")
+    if gh_out:
+        try:
+            with open(gh_out, "a", encoding="utf-8") as f:
+                f.write(f"sites={sites_str}\n")
+        except Exception as e:
+            print(f"::warning::GITHUB_OUTPUT non écrit: {e}")
 
 if __name__ == "__main__":
     main()
