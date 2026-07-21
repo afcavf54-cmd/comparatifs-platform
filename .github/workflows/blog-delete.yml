@@ -1,8 +1,9 @@
 name: Blog — suppression groupée
 
 # Édite platform/blog_to_delete.txt (une ligne par article), commit → cette
-# action supprime les .md ciblés + met posts-index.json à jour, en un commit,
-# puis vide le fichier. Lançable aussi à la main (workflow_dispatch).
+# action supprime les .md ciblés + met posts-index.json à jour, PUIS régénère
+# et redéploie les sites impactés (sinon les vieilles pages restent en ligne
+# sur Cloudflare). Lançable aussi à la main (workflow_dispatch).
 on:
   push:
     paths:
@@ -11,25 +12,62 @@ on:
 
 jobs:
   delete:
-    # Évite toute boucle : le commit de nettoyage ne se re-déclenche pas.
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     permissions:
       contents: write
+    env:
+      TZ: 'Europe/Paris'
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-      - name: Suppression groupée des articles
+          python-version: '3.12'
+
+      - name: Suppression groupée (.md + index)
+        id: del
         run: python3 platform/scripts/blog_delete.py --file platform/blog_to_delete.txt
-      - name: Commit & push
+
+      - name: Install deps (génération)
+        if: steps.del.outputs.sites != ''
+        run: pip install pyyaml jinja2 requests
+
+      - name: Régénérer les sites impactés
+        if: steps.del.outputs.sites != ''
+        run: |
+          for s in ${{ steps.del.outputs.sites }}; do
+            echo "→ Régénération $s"
+            python3 platform/scripts/generate.py --site "$s"
+          done
+
+      - name: Commit & push (avec retry anti-collision)
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet && git diff --cached --quiet; then
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git add -A
+          if git diff --cached --quiet; then
             echo "Rien à committer."; exit 0
           fi
-          git add -A
-          git commit -m "Blog: suppression groupée d'articles"
-          git push
+          git commit -m "Blog: suppression groupée + régénération"
+          for i in 1 2 3 4 5; do
+            git fetch origin main
+            if ! git rebase origin/main; then git rebase --abort 2>/dev/null || true; sleep $((i*2)); continue; fi
+            if git push origin HEAD:main; then echo "✓ push OK"; break; fi
+            echo "collision, retry $i/5"; sleep $((i*2))
+          done
+
+      - name: Deploy Cloudflare Pages (sites impactés)
+        if: steps.del.outputs.sites != ''
+        run: |
+          npm install -g wrangler
+          for s in ${{ steps.del.outputs.sites }}; do
+            echo "→ Deploy $s"
+            wrangler pages deploy "platform/sites/$s/output" \
+              --project-name="$s" --branch=main --commit-dirty=true
+          done
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
