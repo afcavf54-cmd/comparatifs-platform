@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="/favicon.png">
+
+<title>Calcul salaire brut net : simulateur instantané</title>
+<meta name="description" content="Convertissez votre salaire brut en net en 1 clic. Horaire, mensuel, annuel, selon votre statut (cadre, non-cadre, fonction publique, libéral, portage).">
+<link rel="canonical" href="https://startuponly.com/simulateur-salaire-brut-net">
+<meta property="og:title" content="Calcul salaire brut net : simulateur instantané">
+<meta property="og:description" content="Convertissez votre salaire brut en net en 1 clic. Horaire, mensuel, annuel, selon votre statut (cadre, non-cadre, fonction publique, libéral, portage).">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://startuponly.com/simulateur-salaire-brut-net">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=startuponly-com" rel="stylesheet">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calcul salaire brut net : simulateur instantan\u00e9",
+  "url": "https://startuponly.com/simulateur-salaire-brut-net",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+}
+</script>
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    
+    {
+      "@type": "Question",
+      "name": "Quel salaire net correspond \u00e0 2 000 euros brut mensuels ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Avec 2 000 euros brut mensuels, tu toucheras environ 1 540 euros net pour un non-cadre et 1 520 euros net si tu es cadre. Cette diff\u00e9rence s\u0027explique par les cotisations retraite cadre l\u00e9g\u00e8rement plus \u00e9lev\u00e9es. Le pourcentage de conversion se situe g\u00e9n\u00e9ralement entre 76% et 77% du brut." }
+    },
+    
+    {
+      "@type": "Question",
+      "name": "Quel salaire net percevoir avec un SMIC brut ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Le SMIC brut 2024 \u00e0 1 766 euros mensuels te donnera environ 1 383 euros net par mois. C\u0027est le salaire minimum que tu dois percevoir en France pour un temps plein. Ce montant peut l\u00e9g\u00e8rement varier selon ta convention collective et tes avantages sp\u00e9cifiques." }
+    },
+    
+    {
+      "@type": "Question",
+      "name": "Faut-il n\u00e9gocier son salaire en brut ou en net ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "N\u00e9gocie toujours en brut car c\u0027est la r\u00e9f\u00e9rence l\u00e9gale et contractuelle. Le brut permet de comparer facilement les offres et reste stable dans le temps. Le net peut varier selon les changements de cotisations ou ta situation personnelle, ce qui rend la n\u00e9gociation moins fiable." }
+    }
+    
+  ]
+}
+</script>
+
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAFAFC;--surface:#FFFFFF;--surface2:#F5F3EE;
+  --ink:#1E293B;--ink2:#3D434B;--ink3:#8B9CB0;
+  --accent:#0F172A;--accent2:#7C3AED;
+  --green:#3D7A4F;--red:#C0392B;
+  --border:#E6E1D8;--r:10px;--r2:16px;
+  --cta:#10B981;--cta-text:#ffffff;
+  --calc-bg: var(--cta, #E55A5A);
+  --calc-bg-dark: color-mix(in srgb, var(--calc-bg) 88%, #000);
+}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
+a{color:var(--accent2);text-decoration:none}
+/* ─── Wrapper principal (aligné sur les autres outils du site) ─── */
+main.tool-main{max-width:1200px;margin:0 auto;padding:32px 5vw 60px}
+
+/* ─── Hero ─── */
+.tool-hero{background:var(--bg);padding:50px 0 8px;text-align:center}
+.tool-hero-inner{max-width:1200px;margin:0 auto;padding:0 5vw;text-align:center}
+.tool-hero h1{font-family:'DM Serif Display',serif;font-size:clamp(28px,4vw,42px);font-weight:400;color:var(--ink);margin:0 0 12px;line-height:1.2;letter-spacing:-.02em}
+
+/* ─── Carte calculateur (fond couleur) ─── */
+.calc-card{background:var(--calc-bg);color:#fff;border-radius:14px;padding:36px 32px;box-shadow:0 8px 32px rgba(0,0,0,.08);margin:0 0 32px}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media (max-width:920px){.calc-grid{grid-template-columns:1fr;gap:32px}.calc-card{padding:24px 18px}}
+.calc-col{display:flex;flex-direction:column;gap:28px;min-width:0}
+
+/* ─── Section header (uppercase) ─── */
+.calc-section-title{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin:0 0 14px;color:#fff;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.calc-section-title .value{font-weight:400;font-size:13px;letter-spacing:0;text-transform:none}
+.calc-section-title .badge{display:inline-block;background:var(--calc-bg-dark);color:#fff;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:500;text-transform:none;letter-spacing:0;white-space:nowrap}
+
+/* ─── Champ input ─── */
+.calc-field{display:flex;flex-direction:column;gap:6px}
+.calc-field-label{font-size:13px;color:rgba(255,255,255,.85);font-weight:500;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.calc-input{width:100%;background:#fff;color:#1A1A1A;border:1px solid transparent;border-radius:6px;padding:11px 14px;font-size:16px;font-weight:500;font-family:inherit;outline:none;transition:border-color .15s}
+.calc-input:focus{border-color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.4)}
+.calc-input[readonly]{cursor:not-allowed;color:#555}
+
+/* ─── Section salaire (brut/net côte à côte) ─── */
+.calc-salaire{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:480px){.calc-salaire{grid-template-columns:1fr;gap:12px}}
+.calc-salaire .calc-fields-stack{display:flex;flex-direction:column;gap:14px}
+
+/* ─── Radio cards horizontales ─── */
+.calc-radios{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;background:transparent}
+@media (max-width:600px){.calc-radios{grid-template-columns:repeat(2,1fr)}}
+.calc-radio{position:relative;border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:14px 8px;text-align:center;cursor:pointer;background:transparent;transition:border-color .15s,background .15s;min-height:84px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:8px}
+.calc-radio input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.calc-radio:hover{border-color:rgba(255,255,255,.6)}
+.calc-radio-bullet{width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;background:transparent}
+.calc-radio input:checked ~ .calc-radio-bullet{background:#fff;border-color:#fff}
+.calc-radio input:checked ~ .calc-radio-bullet::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--calc-bg)}
+.calc-radio-label{font-size:13px;line-height:1.3;color:#fff;font-weight:500}
+
+/* ─── Slider ─── */
+.calc-slider{-webkit-appearance:none;appearance:none;width:100%;height:6px;background:rgba(255,255,255,.3);border-radius:3px;outline:none;margin-top:6px}
+.calc-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:20px;height:32px;background:#fff;border:1px solid var(--calc-bg-dark);border-radius:4px;cursor:pointer}
+.calc-slider::-moz-range-thumb{width:20px;height:32px;background:#fff;border:1px solid var(--calc-bg-dark);border-radius:4px;cursor:pointer;border-style:solid}
+
+/* ─── Estimation après impôts ─── */
+.calc-pas-result{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:480px){.calc-pas-result{grid-template-columns:1fr}}
+
+/* ─── Bouton effacer ─── */
+.calc-reset{background:transparent;color:#fff;border:1px solid #fff;padding:9px 18px;border-radius:6px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;align-self:flex-start;transition:background .15s,color .15s}
+.calc-reset:hover{background:#fff;color:var(--calc-bg)}
+
+/* ─── Contenu rédactionnel ─── */
+.tool-content{padding:0;margin:0 0 40px}
+.tool-content h2{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;margin:40px 0 16px;color:var(--ink);line-height:1.3}
+.tool-content h2:first-child{margin-top:0}
+.tool-content h3{font-family:'DM Serif Display',serif;font-size:20px;font-weight:600;margin:28px 0 12px;color:var(--ink)}
+.tool-content p{margin:0 0 16px;color:var(--ink2)}
+.tool-content ul,.tool-content ol{margin:8px 0 20px;padding-left:24px;color:var(--ink2)}
+.tool-content li{margin-bottom:8px;line-height:1.7}
+.tool-content strong{color:var(--ink);font-weight:600}
+.tool-content .table-wrap{overflow-x:auto;margin:24px 0;border-radius:10px;border:1px solid var(--border)}
+.tool-content table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface)}
+.tool-content thead{background:var(--surface2)}
+.tool-content thead th{text-align:left;padding:14px 18px;font-weight:600;color:var(--ink);font-size:14px;border-bottom:2px solid var(--border);white-space:nowrap}
+.tool-content thead th:not(:last-child){border-right:1px solid var(--border)}
+.tool-content tbody td{padding:12px 18px;color:var(--ink);border-bottom:1px solid var(--border);vertical-align:top}
+.tool-content tbody td:not(:last-child){border-right:1px solid var(--border)}
+.tool-content tbody tr:nth-child(even){background:var(--surface2)}
+.tool-content tbody tr:hover{background:var(--surface2)}
+.tool-content tbody tr:last-child td{border-bottom:none}
+@media (max-width:680px){.tool-content table{font-size:14px}.tool-content thead th,.tool-content tbody td{padding:10px 12px}}
+
+/* ─── FAQ ─── */
+.faq-section{margin:0 0 40px;padding:0}
+.faq-section h2{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,32px);font-weight:400;margin:0 0 16px;color:var(--ink);letter-spacing:-.02em}
+.faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+.faq-q{font-weight:600;color:var(--ink);margin:0 0 10px;font-size:17px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-q::after{content:"+";font-size:24px;font-weight:300;color:var(--ink2);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-r{color:var(--ink2);line-height:1.7;display:none;margin-top:10px}
+.faq-item.open .faq-r{display:block}
+</style></style>
+</head>
+<body>
+
+
+<style>
+nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+nav.site-nav .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
+nav.site-nav .nav-logo span{color:var(--accent2)}
+nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
+nav.site-nav .nav-cta:hover{opacity:.88}
+nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+nav.site-nav .nav-mobile.open{display:flex}
+nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
+</style>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/logo.png" alt="startuponly.com" style="height:36px;width:auto;object-fit:contain;vertical-align:middle"></a>
+    <div class="nav-links">
+      
+      
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+      
+      
+      
+        <a href="/blog/">Blog</a>
+      
+      
+        
+          <a href="/outils">Outils</a>
+        
+      
+    </div>
+    <a href="/contact" class="nav-cta">Contact</a>
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    
+      <a href="/nos-comparateurs">Nos comparateurs</a>
+    
+    
+    
+      <a href="/blog/">Blog</a>
+    
+    
+      
+        <a href="/outils">Outils</a>
+      
+    
+    <a href="/contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<script>
+/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
+   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
+   devoir redéfinir la fonction côté template parent.
+
+   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
+   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
+   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
+   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
+   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
+   qui est actif et le parent réécrit derrière s'il en a un.
+
+   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
+   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
+   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
+   ne faisait rien. */
+(function(){
+  if (typeof window.toggleMenu === 'function') return;
+  window.toggleMenu = function(){
+    var menu = document.getElementById('nav-mobile');
+    if (menu) menu.classList.toggle('open');
+  };
+  // UX bonus : fermer le menu mobile en cliquant en dehors
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('nav-mobile');
+    var burger = document.getElementById('burger');
+    if (!menu || !burger) return;
+    if (!menu.classList.contains('open')) return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    menu.classList.remove('open');
+  });
+  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
+  document.addEventListener('DOMContentLoaded', function(){
+    var menu = document.getElementById('nav-mobile');
+    if (!menu) return;
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  });
+})();
+</script>
+
+
+<header class="tool-hero">
+  <div class="tool-hero-inner">
+    <h1>Salaire brut → net : simulateur instantané</h1>
+  </div>
+</header>
+
+<main class="tool-main">
+
+  <div class="calc-card">
+    <div class="calc-grid">
+
+      
+      <div class="calc-col">
+        <div>
+          <div class="calc-salaire">
+            <div>
+              <div class="calc-section-title">INDIQUEZ VOTRE SALAIRE BRUT</div>
+              <div class="calc-fields-stack">
+                <div class="calc-field">
+                  <label class="calc-field-label" for="horaire-brut">Horaire brut</label>
+                  <input type="number" id="horaire-brut" class="calc-input" placeholder="0" min="0" step="0.01">
+                </div>
+                <div class="calc-field">
+                  <label class="calc-field-label" for="mensuel-brut">
+                    Mensuel brut
+                    <span class="badge" id="taux-badge">Non-cadre -22%</span>
+                  </label>
+                  <input type="number" id="mensuel-brut" class="calc-input" placeholder="0" min="0" step="0.01">
+                </div>
+                <div class="calc-field">
+                  <label class="calc-field-label" for="annuel-brut">Annuel brut</label>
+                  <input type="number" id="annuel-brut" class="calc-input" placeholder="0" min="0" step="0.01">
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="calc-section-title">RÉSULTAT DE VOTRE SALAIRE NET</div>
+              <div class="calc-fields-stack">
+                <div class="calc-field">
+                  <label class="calc-field-label" for="horaire-net">Horaire net</label>
+                  <input type="text" id="horaire-net" class="calc-input" placeholder="0" readonly>
+                </div>
+                <div class="calc-field">
+                  <label class="calc-field-label" for="mensuel-net">Mensuel net</label>
+                  <input type="text" id="mensuel-net" class="calc-input" placeholder="0" readonly>
+                </div>
+                <div class="calc-field">
+                  <label class="calc-field-label" for="annuel-net">Annuel net</label>
+                  <input type="text" id="annuel-net" class="calc-input" placeholder="0" readonly>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="calc-section-title">SÉLECTIONNEZ VOTRE STATUT :</div>
+          <div class="calc-radios" id="statut-group">
+            <label class="calc-radio">
+              <input type="radio" name="statut" value="non-cadre" data-label="Non-cadre" data-taux="22" checked>
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">Salarié<br>non-cadre</span>
+            </label>
+            <label class="calc-radio">
+              <input type="radio" name="statut" value="cadre" data-label="Cadre" data-taux="25">
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">Salarié cadre</span>
+            </label>
+            <label class="calc-radio">
+              <input type="radio" name="statut" value="fonction-publique" data-label="Fonction publique" data-taux="17">
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">Fonction<br>publique</span>
+            </label>
+            <label class="calc-radio">
+              <input type="radio" name="statut" value="liberal" data-label="Libéral" data-taux="35">
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">Profession<br>libérale</span>
+            </label>
+            <label class="calc-radio">
+              <input type="radio" name="statut" value="portage" data-label="Portage" data-taux="47">
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">Portage<br>salarial</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="calc-col">
+
+        <div>
+          <div class="calc-section-title">
+            SÉLECTIONNEZ VOTRE TEMPS DE TRAVAIL :
+            <span class="value"><strong id="temps-value">100 %</strong></span>
+          </div>
+          <input type="range" id="temps-slider" class="calc-slider" min="50" max="100" step="1" value="100">
+        </div>
+
+        <div>
+          <div class="calc-section-title">SÉLECTIONNEZ LE NOMBRE DE MOIS DE PRIME CONVENTIONNELLE:</div>
+          <div class="calc-radios" id="mois-group">
+            <label class="calc-radio">
+              <input type="radio" name="mois" value="12" checked>
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">12 mois</span>
+            </label>
+            <label class="calc-radio">
+              <input type="radio" name="mois" value="13">
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">13 mois</span>
+            </label>
+            <label class="calc-radio">
+              <input type="radio" name="mois" value="14">
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">14 mois</span>
+            </label>
+            <label class="calc-radio">
+              <input type="radio" name="mois" value="15">
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">15 mois</span>
+            </label>
+            <label class="calc-radio">
+              <input type="radio" name="mois" value="16">
+              <span class="calc-radio-bullet"></span>
+              <span class="calc-radio-label">16 mois</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <div class="calc-section-title">
+            SÉLECTIONNEZ LE TAUX DE PRÉLÈVEMENT À LA SOURCE :
+            <span class="value"><strong id="pas-value">0.0 %</strong></span>
+          </div>
+          <input type="range" id="pas-slider" class="calc-slider" min="0" max="25" step="0.1" value="0">
+        </div>
+
+        <div>
+          <div class="calc-section-title">ESTIMATION DE VOTRE SALAIRE NET APRÈS LE PRÉLÈVEMENT À LA SOURCE</div>
+          <div class="calc-pas-result">
+            <div class="calc-field">
+              <label class="calc-field-label" for="mensuel-net-pas">Mensuel net après impôts</label>
+              <input type="text" id="mensuel-net-pas" class="calc-input" placeholder="0" readonly>
+            </div>
+            <div class="calc-field">
+              <label class="calc-field-label" for="annuel-net-pas">Annuel net après impôts</label>
+              <input type="text" id="annuel-net-pas" class="calc-input" placeholder="0" readonly>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="calc-reset" id="reset-btn">Effacer les champs</button>
+
+      </div>
+
+    </div>
+  </div>
+
+  
+  
+  <article class="tool-content">
+    <h2>Comment passer du brut au net ?</h2>
+
+<p>Le calcul du salaire brut en net, c'est un passage obligé quand tu veux savoir ce qui va réellement tomber sur ton compte. <strong>Le salaire brut</strong> correspond à ta rémunération avant toute déduction. <strong>Le salaire net</strong>, c'est ce qui reste après que l'État et les organismes sociaux ont prélevé leur part.</p>
+
+<p>En gros, tu pars de ton brut et tu enlèves environ 22 à 25% pour obtenir ton net. Mais attention, ce pourcentage varie selon ton statut et ton niveau de salaire.</p>
+
+<h3>Le pourcentage de conversion le plus courant</h3>
+
+<p>Pour un salarié non-cadre, <strong>le taux de conversion</strong> tourne autour de 22-23%. Concrètement, si tu gagnes 2000€ brut, tu touches environ 1540€ net.</p>
+
+<p>Pour les cadres, c'est plutôt 24-25% de charges. Avec 3000€ brut, tu récupères environ 2250€ net. Cette différence vient principalement des <strong>cotisations retraite cadre</strong> plus élevées.</p>
+
+<p>Ces pourcentages sont des moyennes. Ton taux exact dépend de ta convention collective et de ton âge (les cotisations retraite augmentent après 65 ans).</p>
+
+<h3>Quelle différence entre net imposable et net à payer ?</h3>
+
+<p><strong>Le net imposable</strong> sert de base au calcul de l'impôt sur le revenu. Il inclut la CSG déductible (environ 6,8% de ton brut).</p>
+
+<p><strong>Le net à payer</strong>, c'est ce qui arrive vraiment sur ton compte. C'est le net imposable moins le prélèvement à la source de l'impôt sur le revenu.</p>
+
+<p>Exemple concret : avec 2500€ brut, tu as environ 1950€ de net imposable et peut-être 1750€ de net à payer (selon ton taux d'imposition).</p>
+
+<h2>Quelles retenues sont déduites du salaire brut ?</h2>
+
+<p>Plusieurs organismes se servent directement sur ton salaire brut. C'est automatique et obligatoire.</p>
+
+<h3>Les charges sociales obligatoires</h3>
+
+<p><strong>L'assurance maladie</strong> représente 0,75% de ton brut. Elle finance tes remboursements médicaux.</p>
+
+<p><strong>L'assurance chômage</strong> prend 2,4% de ton salaire brut. C'est ce qui te permet de toucher les allocations Pôle Emploi si tu perds ton job.</p>
+
+<p><strong>Les cotisations retraite</strong> varient entre 10 et 12% selon ton statut. Elles alimentent ta future pension de retraite de base et complémentaire.</p>
+
+<h3>La CSG et la CRDS sur le salaire</h3>
+
+<p><strong>La CSG (Contribution Sociale Généralisée)</strong> représente 9,2% de ton brut. Elle finance la Sécurité sociale.</p>
+
+<p><strong>La CRDS (Contribution au Remboursement de la Dette Sociale)</strong> prélève 0,5% supplémentaire.</p>
+
+<p>Au total, CSG + CRDS = 9,7% de ton brut. Une partie de la CSG (6,8%) est déductible de tes impôts, l'autre (2,4%) ne l'est pas.</p>
+
+<h3>L'impôt directement prélevé sur le salaire</h3>
+
+<p>Depuis 2019, <strong>le prélèvement à la source</strong> retire directement ton impôt sur le revenu de ta fiche de paie. Le taux dépend de ta situation fiscale.</p>
+
+<p>Si c'est ton premier job, tu commences avec un taux neutre (entre 0 et 14,6% selon ton salaire). Ensuite, le fisc ajuste selon ta déclaration.</p>
+
+<p>Tu peux modifier ton taux en ligne sur impots.gouv.fr pour coller à ta situation réelle.</p>
+
+<h2>Calculer son salaire net mensuel</h2>
+
+<p>Voici un tableau de conversion pour t'aider à estimer ton salaire net selon différents montants bruts :</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>Salaire brut mensuel</th><th>Net salarié / mois</th></tr>
+</thead>
+<tbody>
+<tr><td>1 500 €</td><td>1 170 €</td></tr>
+<tr><td>1 600 €</td><td>1 248 €</td></tr>
+<tr><td>1 700 €</td><td>1 326 €</td></tr>
+<tr><td>1 800 €</td><td>1 404 €</td></tr>
+<tr><td>1 900 €</td><td>1 482 €</td></tr>
+<tr><td>2 000 €</td><td>1 560 €</td></tr>
+<tr><td>2 100 €</td><td>1 638 €</td></tr>
+<tr><td>2 200 €</td><td>1 716 €</td></tr>
+<tr><td>2 300 €</td><td>1 794 €</td></tr>
+<tr><td>2 400 €</td><td>1 872 €</td></tr>
+<tr><td>2 500 €</td><td>1 950 €</td></tr>
+<tr><td>2 600 €</td><td>2 028 €</td></tr>
+<tr><td>2 700 €</td><td>2 106 €</td></tr>
+<tr><td>2 800 €</td><td>2 184 €</td></tr>
+<tr><td>2 900 €</td><td>2 262 €</td></tr>
+<tr><td>3 000 €</td><td>2 340 €</td></tr>
+<tr><td>3 100 €</td><td>2 418 €</td></tr>
+<tr><td>3 200 €</td><td>2 496 €</td></tr>
+<tr><td>3 300 €</td><td>2 574 €</td></tr>
+<tr><td>3 400 €</td><td>2 652 €</td></tr>
+<tr><td>3 500 €</td><td>2 730 €</td></tr>
+<tr><td>3 600 €</td><td>2 808 €</td></tr>
+<tr><td>3 700 €</td><td>2 886 €</td></tr>
+<tr><td>3 800 €</td><td>2 964 €</td></tr>
+<tr><td>3 900 €</td><td>3 042 €</td></tr>
+<tr><td>4 000 €</td><td>3 120 €</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>Ces montants sont des estimations pour un salarié non-cadre du privé, sans prélèvement à la source. Ton net réel peut varier selon ta convention collective et ta mutuelle.</p>
+
+<h2>Le calcul du net selon votre statut professionnel</h2>
+
+<p>Tous les salariés ne sont pas logés à la même enseigne. Ton statut influence directement le montant des cotisations.</p>
+
+<h3>Calcul du salaire net pour les non-cadres</h3>
+
+<p>En tant que <strong>non-cadre</strong>, tes cotisations sont plus légères. Tu cotises moins pour la retraite complémentaire et tu n'as pas la cotisation APEC.</p>
+
+<p>Le taux global de prélèvement tourne autour de <strong>22-23%</strong> de ton brut. Avec le SMIC à 1766€ brut, tu touches environ 1383€ net.</p>
+
+<p>Ton avantage : plus de net immédiat. L'inconvénient : une retraite potentiellement plus faible qu'un cadre.</p>
+
+<h3>Les spécificités du calcul pour les cadres</h3>
+
+<p>Comme <strong>cadre</strong>, tu paies des cotisations supplémentaires qui grèvent ton net :</p>
+
+<p>La <strong>cotisation APEC</strong> (0,024% de ton brut) finance l'accompagnement des cadres en recherche d'emploi. La <strong>cotisation retraite cadre</strong> est plus élevée pour compenser de meilleures pensions.</p>
+
+<p>Au final, tes prélèvements atteignent <strong>24-25%</strong> de ton brut. Sur 4000€ brut, tu récupères environ 3000€ net.</p>
+
+<h3>Fonctionnaires, apprentis et salariés en alternance</h3>
+
+<p><strong>Les fonctionnaires</strong> ont un système à part. Ils cotisent différemment pour la retraite et bénéficient d'exonérations spécifiques. Leur taux de prélèvement avoisine les 20%.</p>
+
+<p><strong>Les apprentis et alternants</strong> profitent d'exonérations majeures. Pas de cotisations chômage ni de CSG/CRDS sur la partie de salaire sous le SMIC. Résultat : un taux de prélèvement souvent inférieur à 15%.</p>
+
+<p>Exemple : un apprenti à 1200€ brut touche environ 1050€ net, soit seulement 12% de prélèvements.</p>
+
+<p>Ces statuts particuliers rendent le calcul brut-net moins standardisé. Utilise un simulateur spécialisé pour affiner tes estimations selon ta situation exacte.</p>
+  </article>
+  
+
+  
+  
+  <section class="faq-section">
+  <h2>Foire aux questions</h2>
+  
+  <div class="faq-item">
+    <div class="faq-q">Quel salaire net correspond à 2 000 euros brut mensuels ?</div>
+    <div class="faq-r">Avec 2 000 euros brut mensuels, tu toucheras environ 1 540 euros net pour un non-cadre et 1 520 euros net si tu es cadre. Cette différence s'explique par les cotisations retraite cadre légèrement plus élevées. Le pourcentage de conversion se situe généralement entre 76% et 77% du brut.</div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-q">Quel salaire net percevoir avec un SMIC brut ?</div>
+    <div class="faq-r">Le SMIC brut 2024 à 1 766 euros mensuels te donnera environ 1 383 euros net par mois. C'est le salaire minimum que tu dois percevoir en France pour un temps plein. Ce montant peut légèrement varier selon ta convention collective et tes avantages spécifiques.</div>
+  </div>
+  
+  <div class="faq-item">
+    <div class="faq-q">Faut-il négocier son salaire en brut ou en net ?</div>
+    <div class="faq-r">Négocie toujours en brut car c'est la référence légale et contractuelle. Le brut permet de comparer facilement les offres et reste stable dans le temps. Le net peut varier selon les changements de cotisations ou ta situation personnelle, ce qui rend la négociation moins fiable.</div>
+  </div>
+  
+  </section>
+  
+
+</main>
+
+<style>
+.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
+.footer-brand .footer-logo span{color:var(--accent2)}
+.footer-brand p{font-size:15px;color:rgba(255,255,255,.45);line-height:1.7;max-width:380px;margin:0;padding:0}
+.footer-socials{display:flex;gap:12px;margin-top:20px}
+.footer-socials a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.55);transition:background .15s,color .15s}
+.footer-socials a:hover{background:rgba(255,255,255,.13);color:#fff}
+.footer-socials svg{width:19px;height:19px;fill:currentColor;display:block}
+/* Anciennement .footer-col h4 — passé en div pour respecter la hiérarchie Hn (le footer ne doit pas introduire de Hn) */
+.footer-col .footer-col-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
+.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-brand{grid-column:1/-1}
+}
+</style>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        
+        <a href="/" style="display:block;margin-bottom:12px"><img src="/logo.png" alt="startuponly.com" style="height:36px;width:auto;object-fit:contain"></a>
+        
+        <p>Startup Only est un média consacré aux startups et à l'innovation. Retrouvez les dernières actualités, des analyses et des conseils pour lancer, développer et faire grandir votre startup.</p>
+        
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/startuponlycom/" target="_blank" rel="noopener noreferrer nofollow" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13 22v-8h2.7l.4-3.1H13V8.9c0-.9.3-1.5 1.6-1.5H16V4.6c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.4H7.2V14H9.9v8H13z"/></svg></a>
+          
+          
+          <a href="https://www.youtube.com/@startuponlycom" target="_blank" rel="noopener noreferrer nofollow" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.8-1.8C19.4 5.1 12 5.1 12 5.1s-7.4 0-8.8.4a2.5 2.5 0 0 0-1.8 1.8C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.8 1.8c1.4.4 8.8.4 8.8.4s7.4 0 8.8-.4a2.5 2.5 0 0 0 1.8-1.8C23 15.2 23 12 23 12zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg></a>
+        </div>
+        
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Navigation</div>
+        
+        
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        
+        
+        
+        <a href="/blog/">Blog</a>
+        
+        <a href="/plan-du-site">Plan du site</a>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/politique-confidentialite">Confidentialité</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">À propos</div>
+        
+        
+        <a href="/contact">Nous contacter</a>
+        
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        © 2026 startuponly.com — Données actualisées le 21 juillet 2026
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<button type="button"
+        class="scroll-top-btn"
+        id="scroll-top-btn"
+        aria-label="Remonter en haut de la page"
+        title="Remonter en haut">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2.5"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+</button>
+
+<style>
+.scroll-top-btn{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:9999;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--ink, #0F1419);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .15s;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+  padding:0;
+  font-family:inherit;
+}
+.scroll-top-btn.visible{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.scroll-top-btn:hover{
+  background:var(--accent, #C9A961);
+}
+.scroll-top-btn:focus-visible{
+  outline:2px solid var(--accent, #C9A961);
+  outline-offset:3px;
+}
+@media (max-width:600px){
+  .scroll-top-btn{ bottom:16px; right:16px; width:42px; height:42px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .scroll-top-btn{ transition:opacity .2s, visibility .2s; }
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  var btn = document.getElementById('scroll-top-btn');
+  if (!btn) return;
+
+  var THRESHOLD = 400; // px de scroll avant apparition
+  var ticking = false;
+
+  function update(){
+    if (window.scrollY > THRESHOLD) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+    ticking = false;
+  }
+
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  btn.addEventListener('click', function(){
+    var prefersReduced = window.matchMedia
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  });
+
+  // Check immédiat (au cas où la page est rechargée déjà scrollée)
+  update();
+})();
+</script>
+
+
+
+<script>
+(function(){
+  'use strict';
+  const HEURES_MENSUELLES = 151.67;
+  const $ = sel => document.querySelector(sel);
+  const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+  const inputs = {
+    horaireBrut: $('#horaire-brut'),
+    mensuelBrut: $('#mensuel-brut'),
+    annuelBrut: $('#annuel-brut'),
+    horaireNet: $('#horaire-net'),
+    mensuelNet: $('#mensuel-net'),
+    annuelNet: $('#annuel-net'),
+    mensuelNetPas: $('#mensuel-net-pas'),
+    annuelNetPas: $('#annuel-net-pas'),
+    tempsSlider: $('#temps-slider'),
+    tempsValue: $('#temps-value'),
+    pasSlider: $('#pas-slider'),
+    pasValue: $('#pas-value'),
+    tauxBadge: $('#taux-badge'),
+    resetBtn: $('#reset-btn'),
+  };
+
+  function fmt(n){
+    if (!isFinite(n) || n <= 0) return '';
+    return n.toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' €';
+  }
+
+  let mensuelBrut = 0;
+  let lastEditedField = null;
+
+  function getStatut(){
+    const c = document.querySelector('input[name="statut"]:checked');
+    if (!c) return { value: 'non-cadre', label: 'Non-cadre', taux: 22 };
+    return { value: c.value, label: c.dataset.label, taux: parseFloat(c.dataset.taux) };
+  }
+  function getMois(){
+    const c = document.querySelector('input[name="mois"]:checked');
+    return c ? parseInt(c.value, 10) : 12;
+  }
+  function getTemps(){ return parseFloat(inputs.tempsSlider.value); }
+  function getPas(){ return parseFloat(inputs.pasSlider.value); }
+
+  function recompute(){
+    const statut = getStatut();
+    const mois = getMois();
+    const temps = getTemps();
+    const pas = getPas();
+    const tauxCharges = statut.taux / 100;
+    const facteurTemps = temps / 100;
+
+    inputs.tauxBadge.textContent = statut.label + ' -' + statut.taux + '%';
+
+    const horaireV = parseFloat(inputs.horaireBrut.value) || 0;
+    const mensuelV = parseFloat(inputs.mensuelBrut.value) || 0;
+    const annuelV = parseFloat(inputs.annuelBrut.value) || 0;
+
+    if (lastEditedField === 'horaire' && horaireV > 0) {
+      mensuelBrut = horaireV * HEURES_MENSUELLES * facteurTemps;
+      inputs.mensuelBrut.value = mensuelBrut.toFixed(2);
+      inputs.annuelBrut.value = (mensuelBrut * mois).toFixed(2);
+    } else if (lastEditedField === 'mensuel' && mensuelV > 0) {
+      mensuelBrut = mensuelV;
+      inputs.horaireBrut.value = (mensuelBrut / HEURES_MENSUELLES / facteurTemps).toFixed(2);
+      inputs.annuelBrut.value = (mensuelBrut * mois).toFixed(2);
+    } else if (lastEditedField === 'annuel' && annuelV > 0) {
+      mensuelBrut = annuelV / mois;
+      inputs.mensuelBrut.value = mensuelBrut.toFixed(2);
+      inputs.horaireBrut.value = (mensuelBrut / HEURES_MENSUELLES / facteurTemps).toFixed(2);
+    } else if (!lastEditedField) {
+      if (mensuelV > 0) mensuelBrut = mensuelV;
+      else if (horaireV > 0) mensuelBrut = horaireV * HEURES_MENSUELLES * facteurTemps;
+      else if (annuelV > 0) mensuelBrut = annuelV / mois;
+      else mensuelBrut = 0;
+    }
+
+    const horaireBrutNum = parseFloat(inputs.horaireBrut.value) || 0;
+    const horaireNet = horaireBrutNum * (1 - tauxCharges);
+    const mensuelNet = mensuelBrut * (1 - tauxCharges);
+    const annuelNet = mensuelNet * mois;
+    inputs.horaireNet.value = fmt(horaireNet);
+    inputs.mensuelNet.value = fmt(mensuelNet);
+    inputs.annuelNet.value = fmt(annuelNet);
+
+    const facteurPas = 1 - (pas / 100);
+    inputs.mensuelNetPas.value = fmt(mensuelNet * facteurPas);
+    inputs.annuelNetPas.value = fmt(annuelNet * facteurPas);
+  }
+
+  inputs.horaireBrut.addEventListener('input', function(){ lastEditedField = 'horaire'; recompute(); });
+  inputs.mensuelBrut.addEventListener('input', function(){ lastEditedField = 'mensuel'; recompute(); });
+  inputs.annuelBrut.addEventListener('input', function(){ lastEditedField = 'annuel'; recompute(); });
+
+  inputs.tempsSlider.addEventListener('input', function(){
+    inputs.tempsValue.textContent = inputs.tempsSlider.value + ' %';
+    recompute();
+  });
+  inputs.pasSlider.addEventListener('input', function(){
+    inputs.pasValue.textContent = parseFloat(inputs.pasSlider.value).toFixed(1) + ' %';
+    recompute();
+  });
+
+  $$('input[name="statut"]').forEach(function(r){ r.addEventListener('change', recompute); });
+  $$('input[name="mois"]').forEach(function(r){ r.addEventListener('change', recompute); });
+
+  inputs.resetBtn.addEventListener('click', function(){
+    inputs.horaireBrut.value = '';
+    inputs.mensuelBrut.value = '';
+    inputs.annuelBrut.value = '';
+    inputs.horaireNet.value = '';
+    inputs.mensuelNet.value = '';
+    inputs.annuelNet.value = '';
+    inputs.mensuelNetPas.value = '';
+    inputs.annuelNetPas.value = '';
+    inputs.tempsSlider.value = 100;
+    inputs.tempsValue.textContent = '100 %';
+    inputs.pasSlider.value = 0;
+    inputs.pasValue.textContent = '0.0 %';
+    document.querySelector('input[name="statut"][value="non-cadre"]').checked = true;
+    document.querySelector('input[name="mois"][value="12"]').checked = true;
+    mensuelBrut = 0;
+    lastEditedField = null;
+    recompute();
+  });
+
+  $$('.faq-item .faq-q').forEach(function(q){
+    q.addEventListener('click', function(){ q.parentElement.classList.toggle('open'); });
+  });
+
+  recompute();
+})();
+</script>
+
+</body>
+</html>
