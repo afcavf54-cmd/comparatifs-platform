@@ -15,9 +15,9 @@ link_anchors:
 - text: la durée de la formation certifiante en stratégie digitale WebMarket
   max: 5
 related_posts:
-- 7583-demander-un-devis-travaux-en-ligne-sur-e-local-fr
-- 3251-la-formation-inbound-marketing-hubgrow-academy-sans-detour
 - 9790-demander-un-devis-deco-chez-lestylechezsoi
+- 4540-les-indicateurs-economiques-territoriaux-de-leterritoireentreprise-passe-a-la-loupe
+- 9891-le-coworking-la-cantine-x-french-tech-nantes-sans-filtre
 - 1058-demander-un-devis-gratuit-sur-btp-chantier-fr
 ---
 <p>Quand j'ai commencé à chercher une formation en stratégie digitale, j'avais une seule vraie question : combien de temps ça allait me prendre ? Pas par flemme, mais parce que gérer une agence de six personnes, ça laisse peu de créneaux libres. Et je ne suis pas la seule dans ce cas. La majorité des dirigeants de petites structures que je connais se posent exactement la même chose avant de s'engager.</p>

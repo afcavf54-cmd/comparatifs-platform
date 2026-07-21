@@ -15,10 +15,10 @@ link_anchors:
 - text: les indicateurs économiques du territoire sur LeTerritoireEntreprise
   max: 5
 related_posts:
-- 9790-demander-un-devis-deco-chez-lestylechezsoi
+- 6025-duree-de-la-formation-strategie-digitale-webmarket-certifiante
+- 9891-le-coworking-la-cantine-x-french-tech-nantes-sans-filtre
 - 9053-la-formation-seo-vite-une-formation-sans-detour
-- 1058-demander-un-devis-gratuit-sur-btp-chantier-fr
-- 7583-demander-un-devis-travaux-en-ligne-sur-e-local-fr
+- 8410-kickngo-que-vaut-cette-agence-d-e-reputation
 ---
 <p>Je vais être honnête : quand on gère une TPE à Lyon avec six salariés, on n'a pas forcément le réflexe de se plonger dans les données territoriales. On fait tourner la boîte, on gère les clients, on survit aux fins de mois compliquées. Et pourtant, depuis que j'ai commencé à regarder ce que propose <strong>LeTerritoireEntreprise</strong>, j'ai compris que j'étais passée à côté d'informations vraiment utiles pour piloter mon activité.</p>
 

@@ -14,10 +14,10 @@ link_anchors:
 - text: la formation SEO de Vite-Une-Formation
   max: 5
 related_posts:
-- 3251-la-formation-inbound-marketing-hubgrow-academy-sans-detour
-- 7583-demander-un-devis-travaux-en-ligne-sur-e-local-fr
+- 3556-combien-coute-le-logiciel-de-facturation-quickbill-enterprise
+- 8410-kickngo-que-vaut-cette-agence-d-e-reputation
+- 9891-le-coworking-la-cantine-x-french-tech-nantes-sans-filtre
 - 9790-demander-un-devis-deco-chez-lestylechezsoi
-- 1058-demander-un-devis-gratuit-sur-btp-chantier-fr
 ---
 <p>J'ai mis du temps avant de m'y mettre, au SEO. Longtemps, j'ai délégué ça à une prestataire externe, en me disant que c'était trop technique pour moi, trop complexe, trop chronophage. Et puis un jour, j'ai regardé ma facture mensuelle et j'ai fait le calcul. Pas très glorieux.</p>
 
