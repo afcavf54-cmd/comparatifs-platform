@@ -13,8 +13,9 @@ link_anchors:
 - text: les modèles de factures de Digitalise-Tes-Factures
   max: 5
 related_posts:
-- 2282-temps-de-traitement-de-l-application-de-facturation-invoicepro-x3
+- 3876-les-5-automatisations-de-devis-du-logiciel-quotepro-smart
 - 6194-facturation-fastbill-contre-invoicepro-max
+- 2282-temps-de-traitement-de-l-application-de-facturation-invoicepro-x3
 ---
 <h2>Pourquoi j'ai testé les modèles de factures de Digitalise-Tes-Factures ?</h2>
 

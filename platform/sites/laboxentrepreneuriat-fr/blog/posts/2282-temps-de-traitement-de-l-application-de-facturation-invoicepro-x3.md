@@ -15,8 +15,9 @@ link_anchors:
 - text: le temps de traitement de l'application de facturation InvoicePro X3
   max: 5
 related_posts:
-- 6194-facturation-fastbill-contre-invoicepro-max
 - 1173-les-6-modeles-de-factures-phares-de-digitalise-tes-factures
+- 3876-les-5-automatisations-de-devis-du-logiciel-quotepro-smart
+- 6194-facturation-fastbill-contre-invoicepro-max
 ---
 <p>J'ai testé pas mal d'outils de facturation ces dernières années. Et à chaque fois que je présente un nouveau logiciel à un client, la première question qui revient c'est : "Combien de temps ça prend pour générer une facture ?" Pas les fonctionnalités. Pas le prix. Le temps. Parce que quand vous gérez une TPE ou une activité en solo, chaque minute compte.</p>
 

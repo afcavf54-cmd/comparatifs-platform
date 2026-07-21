@@ -14,8 +14,9 @@ link_anchors:
 - text: comparatif entre le logiciel de facturation Fastbill et InvoicePro Max
   max: 5
 related_posts:
-- 1173-les-6-modeles-de-factures-phares-de-digitalise-tes-factures
+- 3876-les-5-automatisations-de-devis-du-logiciel-quotepro-smart
 - 2282-temps-de-traitement-de-l-application-de-facturation-invoicepro-x3
+- 1173-les-6-modeles-de-factures-phares-de-digitalise-tes-factures
 ---
 <p>Deux outils. Un choix à faire. Et souvent, pas assez de temps pour tester les deux sérieusement avant de se décider.</p>
 
