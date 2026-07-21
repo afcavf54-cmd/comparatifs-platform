@@ -13,10 +13,10 @@ link_anchors:
 - text: comment implémenter l'ERP BizFlow V8 Pro
   max: 5
 related_posts:
-- 7432-crm-clientpulse-pro-2024-passe-sous-toutes-les-coutures
-- 6473-localiser-l-export-csv-des-donnees-dans-salestrack-crm
-- 5787-installer-l-erp-integre-managepro-suite-en-quelques-etapes
-- 5626-les-6-atouts-d-efficacite-de-l-outil-de-prospection-clientfinder-ai
+- 7638-les-6-atouts-du-crm-salesforge-compact-pour-une-pme
+- 1645-utiliser-le-crm-smartlead-evolution-les-bases
+- 6005-salesconnect-pro-contre-marketwise-le-match-crm
+- 4130-mettre-en-place-le-crm-powerlink-advance-les-bases
 ---
 <p>Implémenter un ERP, c'est souvent l'un des projets les plus stressants qu'un dirigeant de TPE ou PME puisse traverser. J'ai accompagné des dizaines d'entreprises sur ce type de déploiement ces douze dernières années, et je peux vous dire que la majorité des échecs ne viennent pas du logiciel lui-même. Ils viennent d'une préparation bâclée, d'objectifs flous, ou d'une équipe qui n'a jamais vraiment adhéré au projet.</p>
 

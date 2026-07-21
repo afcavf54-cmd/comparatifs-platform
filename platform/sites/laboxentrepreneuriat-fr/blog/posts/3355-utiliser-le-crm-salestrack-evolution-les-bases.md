@@ -14,10 +14,10 @@ link_anchors:
 - text: comment utiliser le CRM SalesTrack Evolution
   max: 5
 related_posts:
-- 8452-les-5-choses-a-verifier-en-demo-du-logiciel-de-gestion-wizica-business
-- 3699-integrer-l-erp-flexibiz-a-la-comptabilite-de-a-a-z
-- 9610-le-vrai-cout-de-l-erp-bizcore-enterprise
-- 3948-le-vrai-cout-d-implementation-du-systeme-bizcore-advanced
+- 1645-utiliser-le-crm-smartlead-evolution-les-bases
+- 4130-mettre-en-place-le-crm-powerlink-advance-les-bases
+- 7680-parametrer-le-crm-pipedrive-nexus-edition-les-bases
+- 6005-salesconnect-pro-contre-marketwise-le-match-crm
 ---
 <p>J'ai commencé à tester SalesTrack Evolution il y a quelques mois, à la demande d'un client qui cherchait à structurer son suivi commercial sans passer à une usine à gaz. Un indépendant, 3 salariés, un carnet de contacts qui débordait de partout entre Excel, WhatsApp et des post-it. Vous voyez le tableau.</p>
 

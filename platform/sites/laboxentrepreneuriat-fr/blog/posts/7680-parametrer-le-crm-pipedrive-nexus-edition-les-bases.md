@@ -14,10 +14,10 @@ link_anchors:
 - text: comment paramétrer le CRM Pipedrive Nexus Edition
   max: 5
 related_posts:
-- 9610-le-vrai-cout-de-l-erp-bizcore-enterprise
-- 1691-quel-investissement-pour-la-solution-de-conformite-rgpd-dataprotect-manager
-- 3948-le-vrai-cout-d-implementation-du-systeme-bizcore-advanced
+- 3355-utiliser-le-crm-salestrack-evolution-les-bases
 - 7638-les-6-atouts-du-crm-salesforge-compact-pour-une-pme
+- 9548-parametrer-les-modules-financepro-integrated-les-bases
+- 1645-utiliser-le-crm-smartlead-evolution-les-bases
 ---
 <p>Pipedrive Nexus Edition, j'ai mis la main dessus il y a environ huit mois, lors d'un accompagnement avec un client dans le secteur du conseil en recrutement. Et franchement, le paramétrage initial m'a pris plus de temps que prévu, pas parce que c'est compliqué, mais parce qu'on ne sait pas forcément par où commencer. Voici ce que j'aurais aimé qu'on m'explique dès le départ.</p>
 

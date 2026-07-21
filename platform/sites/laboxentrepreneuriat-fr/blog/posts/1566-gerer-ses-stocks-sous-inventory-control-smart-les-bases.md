@@ -14,10 +14,10 @@ link_anchors:
 - text: comment gérer ses stocks avec Inventory Control Smart
   max: 5
 related_posts:
-- 4761-configuration-de-l-erp-dynabiz-pro-les-priorites
-- 5787-installer-l-erp-integre-managepro-suite-en-quelques-etapes
-- 6769-installer-le-logiciel-crm-mobile-fieldforce-sync-point-par-point
-- 7015-les-7-piliers-de-l-erp-sap
+- 1645-utiliser-le-crm-smartlead-evolution-les-bases
+- 4130-mettre-en-place-le-crm-powerlink-advance-les-bases
+- 3833-implementer-l-erp-bizflow-v8-pro-les-fondamentaux
+- 9548-parametrer-les-modules-financepro-integrated-les-bases
 ---
 <p>La gestion de stock, c'est souvent le parent pauvre de l'organisation d'entreprise. On y pense quand il y a une rupture, quand un client appelle pour une commande introuvable, ou quand l'inventaire de fin d'année révèle des écarts inexplicables. J'ai accompagné des dizaines de dirigeants dans cette situation. Et dans la majorité des cas, le problème n'est pas le stock lui-même, c'est l'absence d'outil adapté pour le suivre.</p>
 

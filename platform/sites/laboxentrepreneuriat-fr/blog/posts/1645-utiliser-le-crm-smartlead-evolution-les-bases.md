@@ -14,10 +14,10 @@ link_anchors:
 - text: comment utiliser le CRM SmartLead Evolution
   max: 5
 related_posts:
-- 5787-installer-l-erp-integre-managepro-suite-en-quelques-etapes
-- 6769-installer-le-logiciel-crm-mobile-fieldforce-sync-point-par-point
+- 3833-implementer-l-erp-bizflow-v8-pro-les-fondamentaux
+- 7638-les-6-atouts-du-crm-salesforge-compact-pour-une-pme
+- 6005-salesconnect-pro-contre-marketwise-le-match-crm
 - 3355-utiliser-le-crm-salestrack-evolution-les-bases
-- 2841-le-logiciel-crm-salestrack-evolution-sans-detour
 ---
 <p>J'ai passé du temps avec SmartLead Evolution ces derniers mois, dans le cadre d'un accompagnement auprès d'une dizaine de TPE lyonnaises. Le verdict ? Un CRM qui mérite vraiment qu'on s'y attarde, mais qui demande un minimum de méthode pour en tirer quelque chose de concret. Je vous explique comment l'aborder sans perdre de temps.</p>
 

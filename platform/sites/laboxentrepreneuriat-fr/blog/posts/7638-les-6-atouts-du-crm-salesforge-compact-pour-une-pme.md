@@ -14,10 +14,10 @@ link_anchors:
 - text: SalesForge Compact qui est un CRM adapté aux PME
   max: 5
 related_posts:
-- 3251-les-6-logiciels-geotechniques-freeware-qui-meritent-l-essai
-- 6182-les-retours-utilisateurs-sur-le-logiciel-crm-salestrack-360
-- 8888-quel-investissement-pour-le-compliance-kit-rgpd-de-protection-des-donnees
-- 2981-les-6-atouts-du-crm-mobile-fieldforce-connect-sous-android
+- 3833-implementer-l-erp-bizflow-v8-pro-les-fondamentaux
+- 6005-salesconnect-pro-contre-marketwise-le-match-crm
+- 1566-gerer-ses-stocks-sous-inventory-control-smart-les-bases
+- 1645-utiliser-le-crm-smartlead-evolution-les-bases
 ---
 <p>J'accompagne des dirigeants de PME depuis plus de douze ans, et une question revient régulièrement lors de mes premières consultations : "Hugo, on a besoin d'un CRM, mais les grosses solutions, c'est trop compliqué pour nous." Cette phrase, je l'ai entendue des dizaines de fois. Et franchement, ils n'ont pas tort.</p>
 

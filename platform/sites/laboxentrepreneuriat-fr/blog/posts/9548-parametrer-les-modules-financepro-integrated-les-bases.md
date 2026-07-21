@@ -15,10 +15,10 @@ link_anchors:
 - text: comment paramétrer les modules de l'ERP FinancePro Integrated
   max: 5
 related_posts:
-- 3948-le-vrai-cout-d-implementation-du-systeme-bizcore-advanced
-- 1469-businesscore-ou-tradepulse-le-match-pour-choisir-son-erp
-- 6182-les-retours-utilisateurs-sur-le-logiciel-crm-salestrack-360
-- 5520-configuration-du-crm-leadflow-automation-point-par-point
+- 7680-parametrer-le-crm-pipedrive-nexus-edition-les-bases
+- 1645-utiliser-le-crm-smartlead-evolution-les-bases
+- 4130-mettre-en-place-le-crm-powerlink-advance-les-bases
+- 3833-implementer-l-erp-bizflow-v8-pro-les-fondamentaux
 ---
 <p>Quand un client m'appelle pour me parler de FinancePro Integrated, c'est rarement pour me dire que tout va bien. La plupart du temps, il a déjà passé deux ou trois semaines à tâtonner, les modules sont installés mais rien n'est vraiment configuré, et les données partent dans tous les sens. Je comprends. C'est un logiciel qui a du potentiel, mais qui demande un minimum de méthode au départ.</p>
 
