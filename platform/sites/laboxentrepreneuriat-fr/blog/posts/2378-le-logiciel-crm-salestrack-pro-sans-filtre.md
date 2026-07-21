@@ -4,15 +4,21 @@ slug: 2378-le-logiciel-crm-salestrack-pro-sans-filtre
 date: '2026-07-21T07:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: Avis logiciel CRM SalesTrack Pro à la loupe
-meta_description: 'Test terrain de SalesTrack Pro pendant plusieurs semaines avec deux PME lyonnaises : découvrez un avis utilisateur concret, sans discours commercial sur ce CRM.'
+meta_description: 'Test terrain de SalesTrack Pro pendant plusieurs semaines avec
+  deux PME lyonnaises : découvrez un avis utilisateur concret, sans discours commercial
+  sur ce CRM.'
 min_words: 990
 status: published
 featured_image: /blog/2378-le-logiciel-crm-salestrack-pro-sans-filtre.jpg
 link_anchors:
 - text: les avis sur le logiciel CRM SalesTrack Pro
   max: 5
+related_posts:
+- 5023-implementer-l-erp-bizflow-max-les-fondamentaux
+- 6473-localiser-l-export-csv-des-donnees-dans-salestrack-crm
+- 9548-parametrer-les-modules-financepro-integrated-les-bases
+- 9610-le-vrai-cout-de-l-erp-bizcore-enterprise
 ---
-
 <p>J'ai passé plusieurs semaines à tester SalesTrack Pro avec deux clients lyonnais, une agence de communication de 8 personnes et un cabinet de conseil indépendant. Voici ce que j'ai réellement observé, sans le discours commercial habituel.</p>
 
 <p>Avant de rentrer dans le détail, une précision utile. SalesTrack Pro fait partie d'un écosystème plus large. Vous trouverez en cherchant sur le web <strong>les avis utilisateurs sur le logiciel CRM SalesTrack 360</strong>, qui est une version orientée grands comptes avec des modules analytiques plus poussés. Ce n'est pas le même produit. SalesTrack Pro cible clairement les TPE et PME, avec une promesse de simplicité que j'ai voulu vérifier sur le terrain.</p>
