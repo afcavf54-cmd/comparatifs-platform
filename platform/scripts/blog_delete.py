@@ -85,12 +85,21 @@ def main():
             continue
 
         deleted, ghost = [], []
+        img_removed = 0
+        public_blog = pathlib.Path(args.root) / site / "public" / "blog"
+        IMG_EXT = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif")
         for slug in sorted(to_del):
             p = existing.get(slug)
             if p and p.exists():
                 p.unlink(); deleted.append(slug)
             else:
                 ghost.append(slug)   # .md déjà absent -> nettoyage index seulement
+            # Image featured source : on la retire aussi, sinon la copie
+            # récursive de public/ dans generate.py recréerait une image orpheline.
+            for ext in IMG_EXT:
+                img = public_blog / f"{slug}{ext}"
+                if img.exists():
+                    img.unlink(); img_removed += 1
 
         # Mise à jour de posts-index.json (retire les slugs supprimés)
         idx_changed = False
@@ -113,7 +122,7 @@ def main():
         total_deleted += len(deleted); total_ghost += len(ghost)
         if deleted or ghost or idx_changed:
             affected_sites.add(site)
-        print(f"[{site}] .md supprimés: {len(deleted)} | fantômes nettoyés: {len(ghost)} | index: {idx_changed}")
+        print(f"[{site}] .md supprimés: {len(deleted)} | fantômes nettoyés: {len(ghost)} | images: {img_removed} | index: {idx_changed}")
         for s in deleted: print(f"   - {s}")
         for s in ghost:   print(f"   - (fantôme) {s}")
 
