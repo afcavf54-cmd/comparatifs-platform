@@ -884,6 +884,60 @@ def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, a
             print(f"  🧹 {len(orphan_keys)} paires supprimées de editorial.json")
 
 
+def cleanup_blog_output(output_dir: Path, current_blog_slugs: set) -> None:
+    """Supprime les sorties d'articles de blog DÉPUBLIÉS.
+
+    Les articles sont générés HORS de output/blog/ : un dossier output/{slug}/
+    (contenant index.html) + un fichier output/{slug}.html, tandis que l'image
+    featured est dans output/blog/{slug}.{jpg,png,...}.
+    `cleanup_removed_products` ne gère que les fichiers .html à la RACINE : il
+    supprime bien output/{slug}.html d'un article dépublié, mais laisse en place
+    le DOSSIER output/{slug}/ (donc /{slug}/ répond encore) et ne touche jamais
+    au sous-dossier output/blog/. Résultat : après suppression d'articles, les
+    vieilles pages restaient déployées.
+
+    Ce helper, pour chaque slug généré mais plus publié, supprime :
+      - le dossier output/{slug}/          (page article)
+      - le fichier output/{slug}.html      (variante sans slash)
+      - l'image output/blog/{slug}.{img}   (featured)
+    Et si PLUS AUCUN article n'est publié, il retire toute la liste output/blog/
+    (index + pagination) pour que /blog/ renvoie un vrai 404.
+
+    Les slugs déjà générés sont détectés via les images output/blog/{slug}.{img}
+    (chaque article en a une). current_blog_slugs protège les articles publiés.
+    """
+    IMG_EXT = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"}
+    blog_dir = output_dir / "blog"
+
+    generated_slugs: set[str] = set()
+    if blog_dir.exists():
+        for img in blog_dir.iterdir():
+            if img.is_file() and img.suffix.lower() in IMG_EXT:
+                generated_slugs.add(img.stem)
+
+    removed = 0
+    for slug in sorted(generated_slugs - current_blog_slugs):
+        if not slug:
+            continue
+        for ext in IMG_EXT:
+            p = blog_dir / f"{slug}{ext}"
+            if p.exists():
+                p.unlink(); removed += 1
+        d = output_dir / slug
+        if d.is_dir():
+            shutil.rmtree(d); removed += 1
+        f = output_dir / f"{slug}.html"
+        if f.exists():
+            f.unlink(); removed += 1
+
+    # Plus aucun article publié -> supprimer la liste blog (index + pagination).
+    if not current_blog_slugs and blog_dir.exists():
+        shutil.rmtree(blog_dir); removed += 1
+
+    if removed:
+        print(f"  🧹 Blog : {removed} sortie(s) d'article dépublié nettoyée(s)")
+
+
 # ── Index JSON pré-calculé pour le dashboard ──────────────────────────────────
 # PROBLÈME résolu : avant cet index, le dashboard lisait chaque .md du blog
 # individuellement via l'API GitHub (1 requête par article). À 122 articles,
@@ -1589,6 +1643,15 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 _avis_protected.add(f"{_md.stem}.html")
         _protected = (blog_expected or set()) | _avis_protected
         cleanup_removed_products(output_dir, site_dir, products, all_pairs, is_classement_template, blog_expected=_protected)
+        # ── Nettoyage des pages d'articles de blog dépubliés ─────────────────
+        # cleanup_removed_products ne gère que les .html à la racine ; il laisse
+        # les dossiers output/{slug}/ et le sous-dossier output/blog/ intacts.
+        # Sans ça, un article supprimé restait en ligne (/{slug}/ + /blog/).
+        # On ne le fait PAS si le chargement des posts a échoué (sécurité : on
+        # ne veut pas vider le blog à cause d'une erreur transitoire).
+        if not blog_load_failed:
+            _current_blog_slugs = {p.get("slug") for p in blog_posts if p.get("slug")}
+            cleanup_blog_output(output_dir, _current_blog_slugs)
         print(f"  🟢 DEBUG v15 APRÈS cleanup, avant la suite (is_classement_template={is_classement_template})", flush=True)
 
         # ── Détection précoce des avis ────────────────────────────────────
