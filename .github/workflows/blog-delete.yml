@@ -1,0 +1,35 @@
+name: Blog — suppression groupée
+
+# Édite platform/blog_to_delete.txt (une ligne par article), commit → cette
+# action supprime les .md ciblés + met posts-index.json à jour, en un commit,
+# puis vide le fichier. Lançable aussi à la main (workflow_dispatch).
+on:
+  push:
+    paths:
+      - 'platform/blog_to_delete.txt'
+  workflow_dispatch: {}
+
+jobs:
+  delete:
+    # Évite toute boucle : le commit de nettoyage ne se re-déclenche pas.
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Suppression groupée des articles
+        run: python3 platform/scripts/blog_delete.py --file platform/blog_to_delete.txt
+      - name: Commit & push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "Rien à committer."; exit 0
+          fi
+          git add -A
+          git commit -m "Blog: suppression groupée d'articles"
+          git push
