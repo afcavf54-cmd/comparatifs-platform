@@ -14,9 +14,9 @@ link_anchors:
   max: 5
 related_posts:
 - 1981-se-former-a-google-ads-vite-une-formation-ou-seul
-- 6115-la-cantine-nantes-face-aux-autres-coworkings-de-la-ville
-- 7392-btp-chantier-fr-face-a-un-devis-d-artisan
-- 3131-quel-budget-pour-le-logiciel-de-facturation-quickbill-enterprise
+- 9489-e-local-fr-face-au-demarchage-classique-d-artisans
+- 2799-lestylechezsoi-face-a-un-deco-freelance-pour-un-devis
+- 3344-leterritoireentreprise-face-aux-sources-insee-sur-les-indicateurs
 ---
 <p>Vingt ans à gérer des clôtures comptables, des audits, des reportings à n'en plus finir. Et un jour, j'ai décidé de m'intéresser à l'inbound marketing. Pas par vocation soudaine, plutôt parce que notre direction voulait qu'on comprenne mieux les outils qu'on finançait. Résultat : j'ai dû choisir comment me former. Seule, avec YouTube et des articles en anglais, ou via une structure comme HubGrow Academy.</p>
 

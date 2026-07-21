@@ -15,10 +15,10 @@ link_anchors:
 - text: le template de business plan StartupKit Premium
   max: 5
 related_posts:
-- 5010-les-6-etapes-d-un-business-plan-sous-financepro-smart
-- 5949-les-7-sections-d-un-business-plan-sous-planexpert
+- 5495-frenchy-business-pro-face-aux-formations-business-plan-classiques
 - 5216-le-simulateur-france-com-face-a-une-estimation-comptable
 - 5395-business-architect-tool-face-aux-cursus-strategie-classiques
+- 6552-ce-que-couvre-le-modele-de-business-plan-startupkit-advanced
 ---
 <p>J'ai mis la main sur le template StartupKit Premium il y a quelques mois, dans un contexte un peu particulier : une cliente dirigeait une petite structure de 30 personnes et voulait convaincre son banquier de financer une nouvelle activité. Elle avait déjà passé deux semaines à compiler des chiffres dans Excel. Résultat ? Un document illisible, sans cohérence visuelle, avec des formules qui sautaient dès qu'on touchait une cellule.</p>
 

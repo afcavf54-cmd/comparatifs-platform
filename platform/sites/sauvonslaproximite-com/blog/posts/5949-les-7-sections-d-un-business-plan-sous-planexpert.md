@@ -13,10 +13,10 @@ link_anchors:
 - text: comment faire un business plan avec PlanExpert
   max: 5
 related_posts:
-- 5495-frenchy-business-pro-face-aux-formations-business-plan-classiques
-- 5216-le-simulateur-france-com-face-a-une-estimation-comptable
+- 7678-ce-que-debloque-le-template-de-business-plan-startupkit-premium
 - 5395-business-architect-tool-face-aux-cursus-strategie-classiques
-- 5010-les-6-etapes-d-un-business-plan-sous-financepro-smart
+- 6552-ce-que-couvre-le-modele-de-business-plan-startupkit-advanced
+- 5216-le-simulateur-france-com-face-a-une-estimation-comptable
 ---
 <p>Vingt ans à construire des business plans pour des créateurs d'entreprise, des repreneurs, des porteurs de projet... J'en ai vu passer des dizaines. Et honnêtement, la structure fait tout. Pas les mots, pas les graphiques. La structure.</p>
 

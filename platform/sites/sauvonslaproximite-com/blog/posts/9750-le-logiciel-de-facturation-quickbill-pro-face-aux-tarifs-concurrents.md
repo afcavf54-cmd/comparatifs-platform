@@ -13,10 +13,10 @@ link_anchors:
 - text: le marketing alternatif
   max: 5
 related_posts:
-- 3131-quel-budget-pour-le-logiciel-de-facturation-quickbill-enterprise
-- 7392-btp-chantier-fr-face-a-un-devis-d-artisan
-- 9025-l-espace-de-bureau-et-coworking-wework-face-aux-acteurs-locaux
+- 6115-la-cantine-nantes-face-aux-autres-coworkings-de-la-ville
+- 4022-se-former-a-l-inbound-hubgrow-academy-ou-seul
 - 1981-se-former-a-google-ads-vite-une-formation-ou-seul
+- 3613-les-6-acquis-de-la-formation-strategie-digitale-webmarket
 ---
 <p>Ça fait maintenant un bon moment que je teste des logiciels de facturation pour notre cabinet comptable. Vingt ans à jongler avec des outils plus ou moins adaptés, des exports bancals, des interfaces pensées par des ingénieurs qui n'ont jamais fait une seule facture de leur vie. Quand QuickBill Pro est apparu sur mon radar, j'ai voulu voir ce que ça valait vraiment face à la concurrence. Voici ce que j'en pense, sans détour.</p>
 

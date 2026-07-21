@@ -13,10 +13,10 @@ link_anchors:
 - text: le simulateur de revenu indépendant de Création-Entreprise-France.com
   max: 5
 related_posts:
-- 5010-les-6-etapes-d-un-business-plan-sous-financepro-smart
+- 6552-ce-que-couvre-le-modele-de-business-plan-startupkit-advanced
 - 5395-business-architect-tool-face-aux-cursus-strategie-classiques
+- 7678-ce-que-debloque-le-template-de-business-plan-startupkit-premium
 - 5495-frenchy-business-pro-face-aux-formations-business-plan-classiques
-- 5949-les-7-sections-d-un-business-plan-sous-planexpert
 featured_image: /blog/5216-le-simulateur-france-com-face-a-une-estimation-comptable.jpg
 ---
 <h2>Simulateur France.com : un outil pratique mais limité pour vos projections</h2>

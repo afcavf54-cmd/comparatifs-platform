@@ -13,10 +13,10 @@ link_anchors:
 - text: l'espace de coworking La Cantine x La French Tech Nantes
   max: 5
 related_posts:
+- 2799-lestylechezsoi-face-a-un-deco-freelance-pour-un-devis
+- 3613-les-6-acquis-de-la-formation-strategie-digitale-webmarket
 - 1981-se-former-a-google-ads-vite-une-formation-ou-seul
-- 7392-btp-chantier-fr-face-a-un-devis-d-artisan
-- 9750-le-logiciel-de-facturation-quickbill-pro-face-aux-tarifs-concurrents
-- 9025-l-espace-de-bureau-et-coworking-wework-face-aux-acteurs-locaux
+- 2900-se-former-au-seo-vite-une-formation-ou-seul
 ---
 <p>J'ai testé pas mal d'espaces de coworking à Nantes ces dernières années. Et honnêtement, La Cantine Nantes revient souvent dans les conversations dès qu'on parle d'entrepreneuriat local. Mais est-ce que ça tient vraiment la route face à la concurrence ? J'ai voulu comparer sérieusement, chiffres et ressenti à l'appui.</p>
 

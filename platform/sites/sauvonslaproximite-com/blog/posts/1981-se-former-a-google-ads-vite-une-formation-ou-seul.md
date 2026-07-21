@@ -14,10 +14,10 @@ link_anchors:
 - text: la formation Google Ads de Vite-Une-Formation
   max: 5
 related_posts:
-- 3131-quel-budget-pour-le-logiciel-de-facturation-quickbill-enterprise
-- 9750-le-logiciel-de-facturation-quickbill-pro-face-aux-tarifs-concurrents
-- 7392-btp-chantier-fr-face-a-un-devis-d-artisan
-- 9025-l-espace-de-bureau-et-coworking-wework-face-aux-acteurs-locaux
+- 2799-lestylechezsoi-face-a-un-deco-freelance-pour-un-devis
+- 6115-la-cantine-nantes-face-aux-autres-coworkings-de-la-ville
+- 3344-leterritoireentreprise-face-aux-sources-insee-sur-les-indicateurs
+- 3613-les-6-acquis-de-la-formation-strategie-digitale-webmarket
 ---
 <h2>Ma propre expérience avec Google Ads : un apprentissage chaotique</h2>
 
