@@ -14,10 +14,10 @@ link_anchors:
 - text: comment utiliser le CRM SalesTrack Evolution
   max: 5
 related_posts:
-- 7544-a-qui-profite-le-crm-smartlead-evolution
+- 8929-pour-qui-est-pense-inventory-control-smart-pour-gerer-les-stocks
+- 8559-bien-cadrer-l-implementation-de-l-erp-bizflow-v8-pro
+- 4072-comment-leadflow-automation-route-vos-prospects-une-fois-configure
 - 2732-marketing-et-vente-le-crm-salesconnect-pro-contre-marketwise
-- 2160-6-elements-qui-font-grimper-le-cout-d-implementation-de-bizcore-advanced
-- 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
 ---
 <p>Je vais vous parler d'un outil que j'ai eu l'occasion d'étudier de près ces derniers mois, dans le cadre d'un projet de refonte de notre gestion commerciale. Chez nous, la comptabilité et le suivi client sont liés, et quand le commercial ne documente rien correctement, c'est moi qui ramasse les pots cassés en fin de trimestre. Alors quand la direction m'a demandé de participer à l'évaluation de plusieurs CRM, j'ai pris ça au sérieux.</p>
 

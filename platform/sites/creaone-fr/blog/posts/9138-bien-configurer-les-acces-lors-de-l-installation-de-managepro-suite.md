@@ -14,10 +14,10 @@ link_anchors:
 - text: l'installation de l'ERP intégré ManagePro Suite
   max: 5
 related_posts:
-- 4072-comment-leadflow-automation-route-vos-prospects-une-fois-configure
-- 7255-le-surcout-de-salesforce-premium-face-a-un-crm-basique-est-il-justifie
-- 8165-reussir-la-mise-en-place-du-crm-powerlink-advance
-- 8198-reussir-la-configuration-de-l-erp-dynabiz-pro
+- 1859-quelle-equipe-pour-implementer-l-erp-bizflow-max
+- 3055-qui-doit-piloter-l-implementation-de-bizflow-evolution-en-pme
+- 8731-preparer-ses-flux-avant-d-implementer-smartchain-360
+- 6768-a-qui-se-prete-le-crm-salesflow-evolution
 ---
 <p>Quand j'ai déployé ManagePro Suite pour la première fois dans notre structure, j'ai fait une erreur que beaucoup font : j'ai configuré les accès à la dernière minute, presque en passant. Résultat ? Trois semaines de corrections, des droits mal attribués, et une comptable qui avait accès aux modules RH sans que personne ne l'ait voulu. Pas dramatique, mais clairement évitable.</p>
 

@@ -14,10 +14,10 @@ link_anchors:
 - text: les modèles de factures de Digitalise-Tes-Factures
   max: 5
 related_posts:
+- 6415-vos-factures-en-ligne-simplifie-ta-compta-sont-elles-conformes
+- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
 - 2702-cnam-intec-debouches-des-techniques-economiques-et-comptables
-- 9067-logiciel-de-facturation-invoicemaster-evolution-face-aux-prix-du-marche
-- 4784-a-qui-profite-l-automatisation-de-facturation-billmatic-auto
-- 6771-vitesse-de-facturation-fastbill-contre-invoicepro-max
+- 4568-note-de-frais-definition-et-fonctionnement
 ---
 <p>Adapter un modèle de facture à son activité, c'est l'une de ces tâches qu'on remet toujours à plus tard. Et puis un jour, un client vous renvoie une facture parce qu'il manque votre numéro de TVA intracommunautaire, ou parce que les mentions légales sont incomplètes. Là, on réalise qu'on aurait dû s'en occuper bien plus tôt.</p>
 

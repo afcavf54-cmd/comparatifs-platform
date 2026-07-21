@@ -4,15 +4,21 @@ slug: 9301-note-de-frais-et-code-du-travail-ce-que-dit-la-loi
 date: '2026-07-21T07:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Note de frais et code du travail : la réglementation'
-meta_description: 'Note de frais et code du travail : découvrez ce que la loi impose vraiment aux employeurs en matière de remboursement des frais professionnels des salariés.'
+meta_description: 'Note de frais et code du travail : découvrez ce que la loi impose
+  vraiment aux employeurs en matière de remboursement des frais professionnels des
+  salariés.'
 min_words: 1200
 status: published
 featured_image: /blog/9301-note-de-frais-et-code-du-travail-ce-que-dit-la-loi.jpg
 link_anchors:
 - text: note de frais et Code du travail
   max: 5
+related_posts:
+- 9585-adapter-un-modele-de-facture-digitalise-tes-factures-a-son-activite
+- 6415-vos-factures-en-ligne-simplifie-ta-compta-sont-elles-conformes
+- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
+- 4568-note-de-frais-definition-et-fonctionnement
 ---
-
 <h2>Ce que le code du travail dit vraiment sur les notes de frais</h2>
 
 <p>Neuf ans à gérer la comptabilité d'une entreprise de taille intermédiaire, et je peux vous dire que les notes de frais restent l'un des sujets les plus mal compris côté RH comme côté compta. Pas parce que c'est compliqué sur le fond, mais parce que personne ne prend le temps de lire ce que dit réellement la loi. On fait "comme d'habitude", on applique des règles floues transmises par oral, et on découvre les problèmes lors d'un contrôle URSSAF.</p>

@@ -14,10 +14,10 @@ link_anchors:
 - text: comment implémenter l'ERP SmartChain 360
   max: 5
 related_posts:
-- 2160-6-elements-qui-font-grimper-le-cout-d-implementation-de-bizcore-advanced
-- 3741-reussir-le-parametrage-des-modules-financepro-integrated
-- 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
 - 4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise
+- 4421-reussir-l-integration-de-l-erp-flexmanage-plus
+- 6768-a-qui-se-prete-le-crm-salesflow-evolution
+- 3055-qui-doit-piloter-l-implementation-de-bizflow-evolution-en-pme
 ---
 <p>Avant de déployer SmartChain 360, j'ai fait une erreur que je vois répéter dans beaucoup d'entreprises de taille intermédiaire : on installe l'outil, et on espère qu'il va "digérer" des données mal structurées. Ça ne fonctionne pas. Neuf ans à gérer la comptabilité d'une boîte de 200 personnes m'ont appris une chose : un logiciel ne répare pas une organisation désordonnée. Il l'amplifie.</p>
 

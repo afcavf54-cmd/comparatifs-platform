@@ -13,10 +13,8 @@ link_anchors:
 - text: la formation management d'équipe LeadPro Certified
   max: 5
 related_posts:
-- 4910-duree-d-apprentissage-de-la-methode-management-leadership-360
-- 4931-la-formation-lean-sigma7-vaut-elle-son-prix-et-sa-duree
+- 8220-le-prix-de-la-formation-leadership-academy-pro-est-il-justifie
 - 3490-duree-et-rythme-de-la-formation-leadership-nexstep-avance
-- 7987-combien-coute-la-formation-management-agilemaster-certifiante
 ---
 <p>Quand on gère la comptabilité d'une entreprise de 200 personnes, on pense rarement à la formation management comme à une dépense "comptable". Et pourtant, c'est bien moi qui dois valider les budgets de formation chaque année. Alors quand la DRH m'a soumis une demande de financement pour LeadPro Certified, j'ai épluché le dossier comme j'aurais audité un fournisseur.</p>
 

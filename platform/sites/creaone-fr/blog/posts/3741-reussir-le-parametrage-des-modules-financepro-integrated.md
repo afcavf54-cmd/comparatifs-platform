@@ -15,10 +15,10 @@ link_anchors:
 - text: comment paramétrer les modules de l'ERP FinancePro Integrated
   max: 5
 related_posts:
+- 8929-pour-qui-est-pense-inventory-control-smart-pour-gerer-les-stocks
+- 1859-quelle-equipe-pour-implementer-l-erp-bizflow-max
 - 2732-marketing-et-vente-le-crm-salesconnect-pro-contre-marketwise
-- 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
-- 7544-a-qui-profite-le-crm-smartlead-evolution
-- 9219-5-points-a-verifier-sur-le-tarif-mensuel-de-cloudlead-manager
+- 4421-reussir-l-integration-de-l-erp-flexmanage-plus
 ---
 <h2>Ce que j'ai appris en paramétrant FinancePro Integrated de zéro</h2>
 

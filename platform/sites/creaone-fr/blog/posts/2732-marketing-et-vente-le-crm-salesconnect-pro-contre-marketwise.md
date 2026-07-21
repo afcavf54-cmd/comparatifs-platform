@@ -14,10 +14,10 @@ link_anchors:
 - text: comparatif entre les CRM SalesConnect Pro et MarketWise
   max: 5
 related_posts:
-- 4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise
-- 8165-reussir-la-mise-en-place-du-crm-powerlink-advance
-- 6698-erp-bizcore-enterprise-amorti-en-combien-de-temps
+- 7544-a-qui-profite-le-crm-smartlead-evolution
 - 3055-qui-doit-piloter-l-implementation-de-bizflow-evolution-en-pme
+- 6698-erp-bizcore-enterprise-amorti-en-combien-de-temps
+- 9138-bien-configurer-les-acces-lors-de-l-installation-de-managepro-suite
 ---
 <p>J'utilise des CRM depuis bientôt neuf ans. Et si je devais résumer ce que j'ai appris, ce serait ça : un mauvais choix d'outil coûte bien plus cher qu'un bon outil un peu cher. J'ai vu des équipes commerciales perdre des semaines à cause d'un CRM mal adapté. Des données en double, des relances qui partent au mauvais moment, des pipelines illisibles. Donc quand on m'a demandé de comparer SalesConnect Pro et MarketWise pour notre structure de 200 personnes à Toulouse, j'ai pris ça au sérieux.</p>
 

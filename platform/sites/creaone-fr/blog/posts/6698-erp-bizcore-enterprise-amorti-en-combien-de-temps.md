@@ -14,10 +14,10 @@ link_anchors:
 - text: combien coûte l'ERP BizCore Enterprise
   max: 5
 related_posts:
-- 6768-a-qui-se-prete-le-crm-salesflow-evolution
-- 8929-pour-qui-est-pense-inventory-control-smart-pour-gerer-les-stocks
-- 4990-bien-demarrer-le-parametrage-de-pipedrive-nexus-edition
-- 8731-preparer-ses-flux-avant-d-implementer-smartchain-360
+- 7540-qui-mobiliser-pour-implementer-nextgen-business-suite
+- 2732-marketing-et-vente-le-crm-salesconnect-pro-contre-marketwise
+- 4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise
+- 9138-bien-configurer-les-acces-lors-de-l-installation-de-managepro-suite
 ---
 <p>Quand on m'a demandé de valider le budget pour notre nouveau système ERP, j'ai passé deux semaines à éplucher des devis, des comparatifs, des témoignages clients. Et la question qui revenait sans cesse dans ma tête : <strong>combien de temps avant de récupérer la mise ?</strong> Parce qu'un ERP, ça coûte cher à l'entrée. Et BizCore Enterprise ne fait pas exception.</p>
 

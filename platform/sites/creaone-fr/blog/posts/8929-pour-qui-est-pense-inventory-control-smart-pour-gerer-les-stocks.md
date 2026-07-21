@@ -14,10 +14,10 @@ link_anchors:
 - text: comment gérer ses stocks avec Inventory Control Smart
   max: 5
 related_posts:
-- 4990-bien-demarrer-le-parametrage-de-pipedrive-nexus-edition
-- 4421-reussir-l-integration-de-l-erp-flexmanage-plus
-- 8559-bien-cadrer-l-implementation-de-l-erp-bizflow-v8-pro
-- 7540-qui-mobiliser-pour-implementer-nextgen-business-suite
+- 9138-bien-configurer-les-acces-lors-de-l-installation-de-managepro-suite
+- 6698-erp-bizcore-enterprise-amorti-en-combien-de-temps
+- 1047-a-qui-se-destine-le-crm-salestrack-evolution
+- 4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise
 ---
 <p>J'ai eu l'occasion de tester plusieurs outils de gestion des stocks ces dernières années. Certains m'ont fait gagner du temps, d'autres m'ont coûté des heures de paramétrage pour un résultat décevant. Inventory Control Smart, je l'ai découvert presque par accident, en cherchant une alternative à un outil devenu trop lourd pour notre structure. Et la question qui m'est venue immédiatement : pour qui est-il vraiment conçu ?</p>
 

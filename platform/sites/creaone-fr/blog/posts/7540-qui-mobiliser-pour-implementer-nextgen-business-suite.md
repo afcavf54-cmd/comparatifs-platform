@@ -14,10 +14,10 @@ link_anchors:
 - text: comment implémenter l'ERP NextGen Business Suite
   max: 5
 related_posts:
-- 8165-reussir-la-mise-en-place-du-crm-powerlink-advance
 - 4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise
-- 6768-a-qui-se-prete-le-crm-salesflow-evolution
-- 2160-6-elements-qui-font-grimper-le-cout-d-implementation-de-bizcore-advanced
+- 1859-quelle-equipe-pour-implementer-l-erp-bizflow-max
+- 3055-qui-doit-piloter-l-implementation-de-bizflow-evolution-en-pme
+- 1047-a-qui-se-destine-le-crm-salestrack-evolution
 ---
 <p>Quand on m'a demandé de piloter l'implémentation de NextGen Business Suite dans notre structure, j'ai d'abord pensé que c'était un projet IT. Erreur classique. C'est surtout un projet humain. Et croyez-moi, après neuf ans à gérer des clôtures comptables, des rapprochements bancaires et des exports vers le commissaire aux comptes, j'ai appris à mes dépens que le bon logiciel sans les bonnes personnes autour de la table, ça ne vaut rien.</p>
 

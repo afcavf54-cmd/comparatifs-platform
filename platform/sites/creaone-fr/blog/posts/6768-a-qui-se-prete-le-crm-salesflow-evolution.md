@@ -14,10 +14,10 @@ link_anchors:
 - text: comment utiliser le CRM SalesFlow Evolution
   max: 5
 related_posts:
-- 3741-reussir-le-parametrage-des-modules-financepro-integrated
+- 7544-a-qui-profite-le-crm-smartlead-evolution
+- 1047-a-qui-se-destine-le-crm-salestrack-evolution
+- 1859-quelle-equipe-pour-implementer-l-erp-bizflow-max
 - 2732-marketing-et-vente-le-crm-salesconnect-pro-contre-marketwise
-- 2827-installer-le-crm-mobile-fieldforce-connect-sur-android
-- 9219-5-points-a-verifier-sur-le-tarif-mensuel-de-cloudlead-manager
 ---
 <p>J'ai testé pas mal d'outils CRM ces dernières années. Certains m'ont fait perdre du temps, d'autres ont vraiment changé ma façon de travailler. SalesFlow Evolution, je l'ai découvert un peu par hasard, sur la recommandation d'un collègue RRH qui cherchait à rationaliser le suivi client dans une PME de 200 salariés. Et franchement, la première impression n'était pas celle que j'attendais.</p>
 
