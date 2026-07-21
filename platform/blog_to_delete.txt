@@ -1,0 +1,14 @@
+# Suppression groupée d'articles de blog.
+# Ajoute UNE ligne par article, puis commit ce fichier : la GitHub Action
+# supprime les .md correspondants + met l'index à jour, en un seul commit.
+#
+# Format d'une ligne :   <site-slug> <article-slug>
+#   - <article-slug> : nom exact (avec ou sans .md)
+#   - ~texte         : supprime tous les articles du site dont le slug contient "texte"
+#
+# Exemples :
+#   creaone-fr 9507-le-prix-du-logiciel-crm-salestrack-pro-en-vaut-il-la-peine
+#   creaone-fr ~salestrack
+#
+# Ce fichier est vidé automatiquement après traitement.
+# ---------------------------------------------------------------------------
