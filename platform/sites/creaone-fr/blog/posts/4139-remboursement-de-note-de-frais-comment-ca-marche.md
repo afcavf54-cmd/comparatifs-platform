@@ -4,15 +4,19 @@ slug: 4139-remboursement-de-note-de-frais-comment-ca-marche
 date: '2026-07-21T10:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Remboursement note de frais : le guide pratique'
-meta_description: 'Remboursement de note de frais : fonctionnement, catégories de dépenses et processus complet expliqués par une experte-comptable pour ne rien oublier.'
+meta_description: 'Remboursement de note de frais : fonctionnement, catégories de
+  dépenses et processus complet expliqués par une experte-comptable pour ne rien oublier.'
 min_words: 1300
 status: published
 featured_image: /blog/4139-remboursement-de-note-de-frais-comment-ca-marche.jpg
 link_anchors:
 - text: remboursement des notes de frais
   max: 5
+related_posts:
+- 9301-note-de-frais-et-code-du-travail-ce-que-dit-la-loi
+- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
+- 4568-note-de-frais-definition-et-fonctionnement
 ---
-
 <h2>Ce que couvre vraiment une note de frais (et ce qu'on oublie souvent)</h2>
 
 <p>Neuf ans que je travaille en comptabilité, et j'ai encore des collègues qui confondent note de frais et avance sur frais. Alors posons les bases. Une note de frais, c'est un document qu'un salarié transmet à son employeur pour se faire rembourser des dépenses professionnelles qu'il a avancées sur ses deniers personnels. Repas client, déplacement en train, nuit d'hôtel, parking, abonnement professionnel... Le champ est large.</p>

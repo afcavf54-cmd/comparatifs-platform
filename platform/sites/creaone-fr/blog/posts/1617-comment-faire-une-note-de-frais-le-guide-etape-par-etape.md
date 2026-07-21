@@ -15,8 +15,7 @@ link_anchors:
   max: 5
 related_posts:
 - 4568-note-de-frais-definition-et-fonctionnement
-- 4784-a-qui-profite-l-automatisation-de-facturation-billmatic-auto
-- 9585-adapter-un-modele-de-facture-digitalise-tes-factures-a-son-activite
+- 4139-remboursement-de-note-de-frais-comment-ca-marche
 - 9301-note-de-frais-et-code-du-travail-ce-que-dit-la-loi
 ---
 <h2>Ce que recouvre vraiment une note de frais</h2>
