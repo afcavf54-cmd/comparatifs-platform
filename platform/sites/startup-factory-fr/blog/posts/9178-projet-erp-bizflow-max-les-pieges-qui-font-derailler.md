@@ -4,20 +4,18 @@ slug: 9178-projet-erp-bizflow-max-les-pieges-qui-font-derailler
 date: '2026-06-14T12:00:00+02:00'
 categorie: Gestion d'entreprise
 meta_title: 'Implémenter l''ERP BizFlow Max : les erreurs à éviter'
-meta_description: 'Découvrez les 5 erreurs fatales qui font échouer les projets ERP comme BizFlow Max. Budget fantaisie, équipe non formée, intégration ratée : évitez ces pièges.'
+meta_description: 'Découvrez les 5 erreurs fatales qui font échouer les projets ERP
+  comme BizFlow Max. Budget fantaisie, équipe non formée, intégration ratée : évitez
+  ces pièges.'
 min_words: 1000
 status: published
 link_anchors:
 - text: comment implémenter l'ERP BizFlow Max
   max: 5
 related_posts:
-- 8123-projet-erp-nextgen-business-suite-les-pieges
-- 3614-csv-ou-export-natif-des-donnees-salestrack-crm-que-choisir
-- 7027-integration-de-l-erp-flexmanage-plus-les-pieges-techniques
-- 4746-projet-erp-smartchain-360-les-pieges-a-anticiper
+- 2662-faut-il-configurer-l-erp-dynabiz-pro-en-interne
 featured_image: /blog/9178-projet-erp-bizflow-max-les-pieges-qui-font-derailler.jpg
 ---
-
 <h2>J'ai vu trop d'ERP partir en vrille</h2>
 
 <p>Après 19 ans à voir des startups grandir, j'ai assisté à des dizaines de projets ERP. Certains transforment littéralement l'entreprise. D'autres ? Catastrophe totale. J'ai même vu une boîte perdre 6 mois de croissance à cause d'un ERP mal foutu.</p>

@@ -14,10 +14,7 @@ link_anchors:
 - text: comment configurer l'ERP DynaBiz Pro
   max: 5
 related_posts:
-- 7027-integration-de-l-erp-flexmanage-plus-les-pieges-techniques
-- 4204-migrer-vers-l-erp-bizflow-v8-pro-les-pieges
-- 5187-installation-de-l-erp-cloudmanager-enterprise-les-pieges
-- 8123-projet-erp-nextgen-business-suite-les-pieges
+- 9178-projet-erp-bizflow-max-les-pieges-qui-font-derailler
 ---
 <p>On m'a posé la question plusieurs fois ces derniers mois, alors autant y répondre clairement : est-ce qu'on configure DynaBiz Pro en interne, ou est-ce qu'on passe par un intégrateur ? J'ai vécu les deux situations. Et franchement, le choix n'est pas aussi évident qu'il y paraît.</p>
 
