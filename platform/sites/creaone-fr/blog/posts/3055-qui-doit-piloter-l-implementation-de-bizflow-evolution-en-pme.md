@@ -14,10 +14,10 @@ link_anchors:
 - text: comment implémenter l'ERP BizFlow Evolution dans une PME
   max: 5
 related_posts:
-- 6768-a-qui-se-prete-le-crm-salesflow-evolution
-- 4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise
-- 1859-quelle-equipe-pour-implementer-l-erp-bizflow-max
-- 3741-reussir-le-parametrage-des-modules-financepro-integrated
+- 8929-pour-qui-est-pense-inventory-control-smart-pour-gerer-les-stocks
+- 8731-preparer-ses-flux-avant-d-implementer-smartchain-360
+- 8559-bien-cadrer-l-implementation-de-l-erp-bizflow-v8-pro
+- 7540-qui-mobiliser-pour-implementer-nextgen-business-suite
 ---
 <p>Quand on m'a demandé de superviser le déploiement de notre ERP il y a trois ans, j'ai commis une erreur classique : j'ai laissé la DSI prendre les rênes seules. Résultat ? Un outil paramétré pour des besoins théoriques, pas pour les contraintes réelles du quotidien comptable. On a passé six mois à corriger le tir. Depuis, j'ai une opinion très tranchée sur la question de qui doit piloter ce genre de projet en PME.</p>
 

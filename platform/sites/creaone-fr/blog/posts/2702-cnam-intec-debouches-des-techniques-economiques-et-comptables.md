@@ -15,9 +15,9 @@ link_anchors:
   max: 5
 related_posts:
 - 9301-note-de-frais-et-code-du-travail-ce-que-dit-la-loi
-- 4568-note-de-frais-definition-et-fonctionnement
-- 6415-vos-factures-en-ligne-simplifie-ta-compta-sont-elles-conformes
+- 4784-a-qui-profite-l-automatisation-de-facturation-billmatic-auto
 - 9585-adapter-un-modele-de-facture-digitalise-tes-factures-a-son-activite
+- 4568-note-de-frais-definition-et-fonctionnement
 ---
 <p>Neuf ans dans la compta, et j'ai croisé pas mal de profils qui sortaient du Cnam-Intec. Certains sont devenus de très bons collaborateurs. D'autres ont galèrement cherché leur voie pendant un moment, faute d'avoir bien ciblé les débouchés avant de s'engager. C'est dommage, parce que cette formation ouvre vraiment des portes concrètes si vous savez où regarder.</p>
 

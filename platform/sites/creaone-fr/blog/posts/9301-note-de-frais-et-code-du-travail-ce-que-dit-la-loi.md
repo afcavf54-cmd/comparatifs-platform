@@ -14,9 +14,9 @@ link_anchors:
 - text: note de frais et Code du travail
   max: 5
 related_posts:
+- 4784-a-qui-profite-l-automatisation-de-facturation-billmatic-auto
+- 2702-cnam-intec-debouches-des-techniques-economiques-et-comptables
 - 9585-adapter-un-modele-de-facture-digitalise-tes-factures-a-son-activite
-- 6415-vos-factures-en-ligne-simplifie-ta-compta-sont-elles-conformes
-- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
 - 4568-note-de-frais-definition-et-fonctionnement
 ---
 <h2>Ce que le code du travail dit vraiment sur les notes de frais</h2>

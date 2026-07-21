@@ -14,10 +14,10 @@ link_anchors:
 - text: comment implémenter l'ERP BizFlow V8 Pro
   max: 5
 related_posts:
-- 4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise
+- 7540-qui-mobiliser-pour-implementer-nextgen-business-suite
 - 3055-qui-doit-piloter-l-implementation-de-bizflow-evolution-en-pme
-- 9138-bien-configurer-les-acces-lors-de-l-installation-de-managepro-suite
-- 6698-erp-bizcore-enterprise-amorti-en-combien-de-temps
+- 4072-comment-leadflow-automation-route-vos-prospects-une-fois-configure
+- 8929-pour-qui-est-pense-inventory-control-smart-pour-gerer-les-stocks
 ---
 <p>On m'a demandé de piloter l'implémentation de BizFlow V8 Pro dans notre structure. Cent-cinquante salariés, une équipe comptable de six personnes, des habitudes bien ancrées sur l'ancien logiciel. Je ne vais pas vous raconter que c'était simple.</p>
 
