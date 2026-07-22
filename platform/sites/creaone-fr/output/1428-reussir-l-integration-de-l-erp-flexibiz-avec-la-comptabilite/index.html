@@ -4,235 +4,61 @@
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Intégration de l'ERP FlexiBiz avec la comptabilité : la liste de contrôle</title>
-<meta name="description" content="Intégrer FlexiBiz à votre comptabilité sans erreurs coûteuses, c'est possible. Découvrez les étapes clés, les pièges concrets et les bonnes pratiques testées sur…">
-<link rel="canonical" href="https://creaone.fr/1428-reussir-l-integration-de-l-erp-flexibiz-avec-la-comptabilite/">
-<meta property="og:title" content="Intégration de l'ERP FlexiBiz avec la comptabilité : la liste de contrôle">
-<meta property="og:description" content="Intégrer FlexiBiz à votre comptabilité sans erreurs coûteuses, c'est possible. Découvrez les étapes clés, les pièges concrets et les bonnes pratiques testées sur…">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://creaone.fr/1428-reussir-l-integration-de-l-erp-flexibiz-avec-la-comptabilite/">
-<meta property="og:image" content="https://creaone.fr/blog/1428-reussir-l-integration-de-l-erp-flexibiz-avec-la-comptabilite.jpg"><meta property="article:published_time" content="2026-07-07T11:00:00+02:00">
-<meta property="article:section" content="Gestion d'entreprise"><link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Page introuvable | creaone.fr</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=creaone-fr" rel="stylesheet">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "R\u00e9ussir l\u0027int\u00e9gration de l\u0027ERP FlexiBiz avec la comptabilit\u00e9",
-  "description": "Int\u00e9grer FlexiBiz \u00e0 votre comptabilit\u00e9 sans erreurs co\u00fbteuses, c\u0027est possible. D\u00e9couvrez les \u00e9tapes cl\u00e9s, les pi\u00e8ges concrets et les bonnes pratiques test\u00e9es sur\u2026",
-  "datePublished": "2026-07-07T11:00:00+02:00",
-"image": "https://creaone.fr/blog/1428-reussir-l-integration-de-l-erp-flexibiz-avec-la-comptabilite.jpg",  "author": {
-    "@type": "Person",
-    "name": "Alexandre Michel"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "creaone.fr",
-    "url": "https://creaone.fr"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://creaone.fr/1428-reussir-l-integration-de-l-erp-flexibiz-avec-la-comptabilite/"
-  }
-,"articleSection": "Gestion d\u0027entreprise"}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Combien de temps faut-il pour une int\u00e9gration compl\u00e8te ?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Dans une entreprise de 100 \u00e0 500 salari\u00e9s, comptez entre six et douze semaines pour une int\u00e9gration s\u00e9rieuse. Moins que \u00e7a, vous prenez des risques sur la qualit\u00e9 de la configuration. Les projets qu\u0027on boucle en trois semaines, c\u0027est souvent ceux qui reviennent en maintenance corrective six mois apr\u00e8s."
-      }
-    },    {
-      "@type": "Question",
-      "name": "FlexiBiz est-il adapt\u00e9 aux \u00e9quipes sans profil technique ?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Oui, avec des nuances. L\u0027interface est globalement accessible. Mais certains modules de configuration avanc\u00e9e, notamment les r\u00e8gles d\u0027automatisation et le param\u00e9trage OCR, demandent un minimum de rigueur. Si votre \u00e9quipe n\u0027a vraiment aucun app\u00e9tit pour ce type de configuration, pr\u00e9voyez une journ\u00e9e d\u0027accompagnement avec un int\u00e9grateur certifi\u00e9 FlexiBiz au d\u00e9marrage. \u00c7a co\u00fbte quelques centaines d\u0027euros et \u00e7a \u00e9vite des semaines de t\u00e2tonnement."
-      }
-    },    {
-      "@type": "Question",
-      "name": "Peut-on connecter FlexiBiz \u00e0 un logiciel de paie externalis\u00e9 ?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Oui via les exports FEC et les connecteurs standards. J\u0027ai test\u00e9 avec deux prestataires de paie diff\u00e9rents, \u00e7a fonctionne bien pour les journaux de paie. Par contre, si vous avez des besoins sp\u00e9cifiques sur la ventilation analytique des charges de personnel, v\u00e9rifiez les param\u00e8tres de r\u00e9partition avant le premier import. C\u0027est un point que j\u0027ai d\u00fb reconfigurer apr\u00e8s coup."
-      }
-    },    {
-      "@type": "Question",
-      "name": "Que faire si les donn\u00e9es comptables import\u00e9es contiennent des erreurs ?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "FlexiBiz dispose d\u0027un module de contr\u00f4le de coh\u00e9rence avant validation d\u00e9finitive des imports. Activez-le syst\u00e9matiquement. Il d\u00e9tecte les d\u00e9s\u00e9quilibres de journaux, les comptes manquants, les doublons d\u0027\u00e9critures. C\u0027est basique mais franchement efficace. Ne validez jamais un import sans avoir pass\u00e9 ce contr\u00f4le, m\u00eame quand on est press\u00e9 en fin de mois. L\u0027int\u00e9gration d\u0027un ERP avec la comptabilit\u00e9, c\u0027est un projet qui m\u00e9rite du temps et de la m\u00e9thode. FlexiBiz n\u0027est pas parfait, mais pour une \u00e9quipe de taille moyenne avec un budget raisonnable et peu de ressources techniques, c\u0027est un outil qui tient ses promesses si on le configure correctement d\u00e8s le d\u00e9part."
-      }
-    }  ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  "name": "R\u00e9ussir l\u0027int\u00e9gration de l\u0027ERP FlexiBiz avec la comptabilit\u00e9",
-  "description": "Int\u00e9grer FlexiBiz \u00e0 votre comptabilit\u00e9 sans erreurs co\u00fbteuses, c\u0027est possible. D\u00e9couvrez les \u00e9tapes cl\u00e9s, les pi\u00e8ges concrets et les bonnes pratiques test\u00e9es sur\u2026",
-"image": "https://creaone.fr/blog/1428-reussir-l-integration-de-l-erp-flexibiz-avec-la-comptabilite.jpg",  "step": [
-    {
-      "@type": "HowToStep",
-      "position": 1,
-      "name": "Commencer par un audit de vos donn\u00e9es comptables",
-      "text": "Avant de toucher \u00e0 quoi que ce soit dans FlexiBiz, sortez un export complet de votre comptabilit\u00e9 actuelle. Balances, journaux, plan de comptes, tout. Comparez-le avec la structure attendue par l\u0027ERP. Les \u00e9carts que vous trouvez \u00e0 cette \u00e9tape, vous les \u00e9vitez comme erreurs de synchronisation apr\u00e8s le d\u00e9ploiement.",
-      "url": "https://creaone.fr/1428-reussir-l-integration-de-l-erp-flexibiz-avec-la-comptabilite/#commencer-par-un-audit-de-vos-donnees-comptables"
-    },    {
-      "@type": "HowToStep",
-      "position": 2,
-      "name": "Param\u00e9trer les flux automatiques d\u00e8s le d\u00e9part",
-      "text": "C\u0027est l\u00e0 que FlexiBiz devient vraiment int\u00e9ressant. L\u0027outil propose des automatisations sur les \u00e9critures r\u00e9currentes, les rapprochements bancaires, et les relances clients. Mais ces automatisations ne s\u0027activent pas seules.",
-      "url": "https://creaone.fr/1428-reussir-l-integration-de-l-erp-flexibiz-avec-la-comptabilite/#parametrer-les-flux-automatiques-des-le-depart"
-    },    {
-      "@type": "HowToStep",
-      "position": 3,
-      "name": "Former l\u0027\u00e9quipe de fa\u00e7on r\u00e9aliste",
-      "text": "Je vais \u00eatre direct l\u00e0-dessus. Les formations de deux jours \"cl\u00e9s en main\" fournies par les \u00e9diteurs, \u00e7a ne suffit pas pour une \u00e9quipe non technique. \u00c7a donne une vue d\u0027ensemble, rien de plus.",
-      "url": "https://creaone.fr/1428-reussir-l-integration-de-l-erp-flexibiz-avec-la-comptabilite/#former-l-equipe-de-facon-realiste"
-    }  ]
-}
-</script>
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
 :root{
-  --bg:#F4F7FA;--surface:#FFFFFF;--surface2:#F5F3EE;
-  --ink:#1C2733;--ink2:#3D434B;--ink3:#8B9CB0;
-  --accent:#0F3D5E;--accent2:#1D70A2;--green:#3D7A4F;
-  --border:#E6E1D8;--r:8px;--r2:14px;
---cta:#168551;--cta-text:#FFFFFF;}
-body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
-a{color:var(--accent2);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:1180px;margin:0 auto;padding:0 5vw}
-.article-layout{display:grid;grid-template-columns:1fr 280px;gap:48px;align-items:start}
-.article-main{min-width:0;padding-bottom:80px}
-.article-sidebar{position:sticky;top:88px}
-.sidebar-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px 22px;margin-bottom:20px}
-.sidebar-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin:0 0 14px}
-.sidebar-cat-list{list-style:none;margin:0;padding:0}
-.sidebar-cat-item{padding:0;margin:0}
-.sidebar-cat-link{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);color:var(--ink2);font-size:14px;text-decoration:none;transition:.15s}
-.sidebar-cat-item:last-child .sidebar-cat-link{border-bottom:none}
-.sidebar-cat-link:hover{color:var(--accent);text-decoration:none}
-.sidebar-cat-link.active{color:var(--accent);font-weight:600}
-.sidebar-cat-count{font-size:11px;color:var(--ink3);background:var(--bg);padding:2px 8px;border-radius:10px;flex-shrink:0;margin-left:8px}
-.sidebar-cat-link:hover .sidebar-cat-count{color:var(--accent)}
-.sidebar-recent-list{list-style:none;margin:0;padding:0}
-.sidebar-recent-item{padding:10px 0;border-bottom:1px solid var(--border)}
-.sidebar-recent-item:last-child{border-bottom:none}
-.sidebar-recent-link{color:var(--ink2);font-size:13px;line-height:1.45;text-decoration:none;display:block}
-.sidebar-recent-link:hover{color:var(--accent);text-decoration:none}
-.sidebar-recent-cat{font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
-.article-header{padding:23px 0 24px}
-.breadcrumb{font-size:13px;color:var(--ink3);margin-bottom:16px}
-.breadcrumb a{color:var(--ink3)}
-.breadcrumb a:hover{color:var(--accent)}
-.article-cat{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);background:var(--surface2);padding:4px 10px;border-radius:20px;text-decoration:none;transition:.15s}
-.article-cat:hover{background:var(--accent);color:#fff;text-decoration:none}
-.article-title{font-family:'DM Serif Display',serif;font-size:clamp(28px,5vw,48px);font-weight:400;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin-bottom:16px}
-.article-meta{font-size:14px;color:var(--ink3);margin-bottom:7px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.article-meta-item{display:inline-flex;align-items:center;gap:6px}
-.article-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
-.article-featured{width:100%;border-radius:var(--r2);overflow:hidden;margin-bottom:15px;border:1px solid var(--border)}
-.article-featured img{display:block;width:100%;height:auto}
-.article-toc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:22px 26px;margin:0 0 40px;position:relative;z-index:0}
-.article-toc-title{font-family:'DM Serif Display',serif;font-size:18px;font-weight:600;color:var(--ink);margin:0 0 14px;letter-spacing:-.01em}
-.article-toc-list{list-style:none;padding:0;margin:0;counter-reset:toc}
-/* L'incrément du compteur est appliqué UNIQUEMENT sur les items H2 (level-2),
-   pas sur les H3 (level-3). Avant : tous les items incrémentaient → si on avait
-   un H3 entre deux H2, la numérotation visible sautait (1, 3, 4...) car le H3
-   consommait silencieusement le 2 (il affichait ›). Maintenant les H3 ne touchent
-   plus au compteur, et les H2 se suivent proprement (1, 2, 3, ...). */
-.article-toc-item{position:relative;padding:6px 0 6px 28px;line-height:1.5}
-.article-toc-level-2{counter-increment:toc}
-.article-toc-level-2::before{content:counter(toc) ".";position:absolute;left:0;top:6px;color:var(--accent);font-weight:600;font-size:14px;width:22px;text-align:right}
-.article-toc-level-3{padding-left:48px;font-size:14px}
-.article-toc-level-3::before{content:"›";position:absolute;left:24px;top:6px;color:var(--ink2);font-weight:600}
-.article-toc-item a{color:var(--ink2);text-decoration:none;font-size:15px;transition:color .15s}
-.article-toc-item a:hover{color:var(--accent);text-decoration:underline}
-.article-toc-level-3 a{font-size:14px;color:var(--ink2)}
-/* Scroll offset pour que les ancres ne soient pas masquées par un éventuel header sticky */
-.article-body h2,.article-body h3{scroll-margin-top:80px}
-.article-body{font-size:17px;color:var(--ink2);line-height:1.8}
-.article-body p{margin-bottom:20px}
-.article-body h1{font-family:'DM Serif Display',serif;font-size:32px;font-weight:400;color:var(--ink);margin:48px 0 16px;letter-spacing:-.02em}
-.article-body h2{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;color:var(--ink);margin:40px 0 14px;letter-spacing:-.02em}
-.article-body h3{font-size:20px;font-weight:600;color:var(--ink);margin:32px 0 12px}
-.article-body ul,.article-body ol{margin:0 0 20px 24px}
-.article-body li{margin-bottom:8px}
-.article-body img{display:block;max-width:100%;height:auto;border-radius:var(--r);margin:24px auto;border:1px solid var(--border)}
-.article-body blockquote{border-left:3px solid var(--accent);padding:8px 20px;margin:24px 0;color:var(--ink2);font-style:italic;background:var(--surface2);border-radius:0 var(--r) var(--r) 0}
-.article-body code{background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:.92em;font-family:Menlo,Monaco,Consolas,monospace}
-.article-body strong{color:var(--ink);font-weight:700}
-.article-body a{color:var(--accent2);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px}
-.article-body a:hover{text-decoration-color:var(--accent2)}
-/* Author box (réutilise le style de classement-saas) */
-.author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
-.author-avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
-.author-avatar-placeholder{width:72px;height:72px;border-radius:50%;background:var(--bg);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
-.author-info{flex:1}
-.author-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:4px}
-.author-name{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:2px}
-.author-job{font-size:13px;color:var(--ink3);margin-bottom:12px}
-.author-bio{font-size:14px;color:var(--ink2);line-height:1.7}
-@media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}}
-/* Maillage interne */
-.related-section{margin:25px 0 0;padding-top:25px;border-top:1px solid var(--border)}
-.related-title{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
-.related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.related-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px;text-decoration:none;transition:.15s;display:block}
-.related-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,.06);transform:translateY(-1px);text-decoration:none}
-.related-card-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:8px}
-.related-card-title{font-size:15px;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:6px}
-.related-card-excerpt{font-size:13px;color:var(--ink3);line-height:1.5}
-@media(max-width:600px){.related-grid{grid-template-columns:1fr}}
-/* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
-@media(max-width:960px){
-  .article-layout{grid-template-columns:1fr;gap:25px}
-  .article-sidebar{position:static}
-  /* Sur mobile, la sidebar passe sous le contenu : on retire le padding-bottom
-     de article-main qui ne sert plus à rien (l'écart est géré par le gap du
-     grid). 80 (padding) + 32 (gap) = 112px → désormais 0 + 25 = 25px. */
-  .article-main{padding-bottom:0}
+  --bg:#F4F7FA;
+  --surface:#fff;
+  --surface2:#F0ECE5;
+  --ink:#1C2733;
+  --ink2:#6B6560;
+  --ink3:#A09890;
+  --accent:#0F3D5E;
+  --accent2:#1D70A2;--cta:#168551;--cta-text:#FFFFFF;
+  --border:#E2DDD6;
+  --r:12px;
+  --r2:20px;
+  --green:#1A7A4A;
 }
-@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
+a{color:inherit;text-decoration:none}
 
-/* ── PATCH : tableaux du contenu blog ─────────────────────────────
-   Ajout chirurgical en toute fin du <style>, après les media queries
-   existantes. Aucune modif au CSS au-dessus. */
-.article-body .table-wrap{overflow-x:auto;margin:28px 0;border-radius:10px;border:1px solid var(--border);background:var(--surface)}
-.article-body table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface);margin:28px 0;color:var(--ink)}
-.article-body .table-wrap > table{margin:0;border:none}
-.article-body thead{background:var(--surface2)}
-.article-body thead th{text-align:left;padding:14px 18px;font-weight:600;color:var(--ink);font-size:14px;border-bottom:2px solid var(--border);vertical-align:middle;white-space:nowrap}
-.article-body thead th:not(:last-child){border-right:1px solid var(--border)}
-.article-body tbody td{padding:14px 18px;color:var(--ink);border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
-.article-body tbody td:not(:last-child){border-right:1px solid var(--border)}
-.article-body tbody tr:nth-child(even){background:var(--surface2)}
-.article-body tbody tr:hover{background:var(--surface2)}
-.article-body tbody tr:last-child td{border-bottom:none}
-.article-body table caption{caption-side:top;padding:12px 18px;font-weight:600;color:var(--ink);text-align:left;background:var(--surface2);border-bottom:1px solid var(--border)}
-@media (max-width:680px){
-  .article-body table{font-size:14px}
-  .article-body thead th,.article-body tbody td{padding:10px 12px;white-space:normal}
-}
+/* ── NAV ── */
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
+.nav-cta:hover{opacity:.88}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+.nav-mobile a:hover{color:#fff;background:rgba(255,255,255,.08)}
+
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 5vw;text-align:center}
+.code{font-family:'DM Serif Display',serif;font-size:clamp(80px,15vw,160px);font-weight:400;color:var(--accent);line-height:1;margin-bottom:16px;opacity:.15}
+h1{font-family:'DM Serif Display',serif;font-size:clamp(24px,4vw,40px);font-weight:400;margin-bottom:12px}
+p{font-size:17px;color:#718096;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;background:var(--accent);color:#fff;font-size:16px;font-weight:600;text-decoration:none;transition:.15s}
+.btn:hover{background:var(--cta,var(--accent2))}
+.links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.link-sec{color:var(--accent);font-size:14px;text-decoration:none;padding:8px 16px;border-radius:8px;border:1px solid var(--border)}
+.link-sec:hover{background:var(--border)}
+
 </style>
-<meta name="google-site-verification" content="Rz8oi425b-CwU-EHq2QI7jhKg2Iuu6StC_bM6K95-bo">
 </head>
 <body>
-
 <style>
 nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
 nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
@@ -310,309 +136,17 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     });
   });
 })();
-</script>
-<div class="container">
-<article class="article-layout">
-  <div class="article-main">
-  <header class="article-header">
-    <div class="breadcrumb">
-      <a href="/">Accueil</a> &rsaquo; <a href="/blog/">Blog</a>
- &rsaquo; <a href="/categorie-gestion-d-entreprise/">Gestion d'entreprise</a>    </div>
-    <h1 class="article-title">Réussir l'intégration de l'ERP FlexiBiz avec la comptabilité</h1>
-    <div class="article-meta">
-<a href="/categorie-gestion-d-entreprise/" class="article-cat">Gestion d'entreprise</a><span class="article-meta-dot"></span><span class="article-meta-item">📅 7 juillet 2026</span><span class="article-meta-dot"></span><span class="article-meta-item">⏱ 7 min de lecture</span><span class="article-meta-dot"></span>      <span class="article-meta-item">✍️ Alexandre Michel</span>
+</script><main>
+  <div>
+    <div class="code">404</div>
+    <h1>Page introuvable</h1>
+    <p>La page que vous recherchez n'existe pas ou a été déplacée. Revenez à l'accueil pour trouver votre comparatif.</p>
+    <a href="/" class="btn">← Retour à l'accueil</a>
+    <div class="links">
+      <a href="/nos-comparateurs" class="link-sec">Nos comparateurs</a>
     </div>
-  </header>
-
-  <div class="article-featured">
-    <img src="/blog/1428-reussir-l-integration-de-l-erp-flexibiz-avec-la-comptabilite.jpg" alt="Réussir l'intégration de l'ERP FlexiBiz avec la comptabilité" loading="eager">
   </div>
-
-  <nav class="article-toc" aria-label="Sommaire de l'article">
-    <div class="article-toc-title">📑 Sommaire</div>
-    <ol class="article-toc-list">
-      <li class="article-toc-item article-toc-level-2">
-        <a href="#pourquoi-l-integration-erp-comptabilite-est-souvent-baclee">Pourquoi l'intégration ERP-comptabilité est souvent bâclée ?</a>
-      </li>
-      <li class="article-toc-item article-toc-level-2">
-        <a href="#les-etapes-concretes-pour-une-integration-qui-tient-la-route">Les étapes concrètes pour une intégration qui tient la route</a>
-      </li>
-      <li class="article-toc-item article-toc-level-3">
-        <a href="#commencer-par-un-audit-de-vos-donnees-comptables">Commencer par un audit de vos données comptables</a>
-      </li>
-      <li class="article-toc-item article-toc-level-3">
-        <a href="#parametrer-les-flux-automatiques-des-le-depart">Paramétrer les flux automatiques dès le départ</a>
-      </li>
-      <li class="article-toc-item article-toc-level-3">
-        <a href="#former-l-equipe-de-facon-realiste">Former l'équipe de façon réaliste</a>
-      </li>
-      <li class="article-toc-item article-toc-level-2">
-        <a href="#ce-que-j-ai-appris-en-comparant-flexibiz-avec-d-autres-solut">Ce que j'ai appris en comparant FlexiBiz avec d'autres solutions</a>
-      </li>
-      <li class="article-toc-item article-toc-level-2">
-        <a href="#les-points-de-vigilance-que-personne-ne-vous-dit">Les points de vigilance que personne ne vous dit</a>
-      </li>
-      <li class="article-toc-item article-toc-level-2">
-        <a href="#tableau-recapitulatif-criteres-cles-pour-votre-integration">Tableau récapitulatif : critères clés pour votre intégration</a>
-      </li>
-      <li class="article-toc-item article-toc-level-2">
-        <a href="#questions-frequentes-sur-l-integration-de-flexibiz">Questions fréquentes sur l'intégration de FlexiBiz</a>
-      </li>
-      <li class="article-toc-item article-toc-level-3">
-        <a href="#combien-de-temps-faut-il-pour-une-integration-complete">Combien de temps faut-il pour une intégration complète ?</a>
-      </li>
-      <li class="article-toc-item article-toc-level-3">
-        <a href="#flexibiz-est-il-adapte-aux-equipes-sans-profil-technique">FlexiBiz est-il adapté aux équipes sans profil technique ?</a>
-      </li>
-      <li class="article-toc-item article-toc-level-3">
-        <a href="#peut-on-connecter-flexibiz-a-un-logiciel-de-paie-externalise">Peut-on connecter FlexiBiz à un logiciel de paie externalisé ?</a>
-      </li>
-      <li class="article-toc-item article-toc-level-3">
-        <a href="#que-faire-si-les-donnees-comptables-importees-contiennent-de">Que faire si les données comptables importées contiennent des erreurs ?</a>
-      </li>
-    </ol>
-  </nav>
-
-  <div class="article-body">
-    <p>Ça fait neuf ans que je fais de la comptabilité dans des structures de taille moyenne. Et honnêtement, l'intégration ERP-comptabilité, c'est le sujet qui revient le plus souvent dans les discussions entre responsables comptables. Pas parce que c'est glamour. Parce que quand ça rate, ça coûte cher. En temps, en argent, en nerfs.</p>
-
-<p>J'ai vécu plusieurs projets de ce type chez des clients ou en interne. Des réussites, quelques galères mémorables. Ce que je vais vous partager ici, c'est du concret, pas de la théorie.</p>
-
-<h2 id="pourquoi-l-integration-erp-comptabilite-est-souvent-baclee">Pourquoi l'intégration ERP-comptabilité est souvent bâclée ?</h2>
-
-<p>Le problème numéro un : on sous-estime la phase de préparation. On installe l'ERP, on branche la compta par-dessus, et on espère que ça tourne tout seul. Ça ne tourne jamais tout seul.</p>
-
-<p>Avec FlexiBiz spécifiquement, j'ai remarqué que beaucoup d'équipes se lancent sans avoir cartographié leurs flux comptables existants. Les données arrivent dans le mauvais format, les comptes ne correspondent pas au plan comptable, les exports automatiques tombent dans le vide. Résultat : on ressaisit manuellement ce qu'on voulait automatiser. C'est exactement l'inverse de l'objectif.</p>
-
-<p>Autre point noir fréquent : la gestion des droits utilisateurs. Dans une équipe non technique, personne ne veut toucher aux paramètres système. Du coup, personne ne le fait. Et trois mois après le déploiement, les validations comptables passent encore en manuel parce qu'on n'a jamais configuré les workflows d'approbation.</p>
-
-<p>Bon, la bonne nouvelle : tout ça s'anticipe. Voici comment j'aborde les choses.</p>
-
-<h2 id="les-etapes-concretes-pour-une-integration-qui-tient-la-route">Les étapes concrètes pour une intégration qui tient la route</h2>
-
-<h3 id="commencer-par-un-audit-de-vos-donnees-comptables">Commencer par un audit de vos données comptables</h3>
-
-<p>Avant de toucher à quoi que ce soit dans FlexiBiz, sortez un export complet de votre comptabilité actuelle. Balances, journaux, plan de comptes, tout. Comparez-le avec la structure attendue par l'ERP. Les écarts que vous trouvez à cette étape, vous les évitez comme erreurs de synchronisation après le déploiement.</p>
-
-<p>Chez nous à Toulouse, on a un plan comptable un peu personnalisé avec des sous-comptes spécifiques à notre activité. FlexiBiz ne les reconnaissait pas nativement. On a passé deux jours à créer les correspondances dans le module de mapping. <strong>Deux jours investis en amont, contre des semaines de corrections potentielles</strong> si on avait sauté cette étape.</p>
-
-<h3 id="parametrer-les-flux-automatiques-des-le-depart">Paramétrer les flux automatiques dès le départ</h3>
-
-<p>C'est là que FlexiBiz devient vraiment intéressant. L'outil propose des automatisations sur les écritures récurrentes, les rapprochements bancaires, et les relances clients. Mais ces automatisations ne s'activent pas seules.</p>
-
-<p>Prenez le rapprochement bancaire. Par défaut, le module importe les relevés bancaires au format OFX ou CSV. Si votre banque exporte dans un autre format, vous allez bloquer. J'ai perdu deux semaines à comprendre pourquoi les imports ne passaient pas, avant de réaliser que notre banque régionale générait un format légèrement non standard. La solution existait dans les paramètres avancés, mais il fallait la chercher.</p>
-
-<p>Pareil pour les exports vers votre logiciel de comptabilité tiers. FlexiBiz gère bien les exports FEC, ce qui simplifie la vie pour les clôtures. Mais il faut définir les règles de lettrage et les journaux cibles avant le premier import, sinon tout part dans un fourre-tout.</p>
-
-<h3 id="former-l-equipe-de-facon-realiste">Former l'équipe de façon réaliste</h3>
-
-<p>Je vais être direct là-dessus. Les formations de deux jours "clés en main" fournies par les éditeurs, ça ne suffit pas pour une équipe non technique. Ça donne une vue d'ensemble, rien de plus.</p>
-
-<p>Ce qui fonctionne vraiment : <strong>former deux personnes en profondeur</strong>, qui deviennent les référents internes. Pas tout le monde en même temps. Deux personnes qui connaissent vraiment l'outil, qui peuvent répondre aux questions de leurs collègues sans appeler le support à chaque fois.</p>
-
-<p>J'ai formé deux collaboratrices sur FlexiBiz en trois semaines, en travaillant sur nos vrais dossiers comptables, pas des données fictives. Le fait de traiter des situations concrètes accélère massivement l'apprentissage. Un mois après, elles autonomisaient les autres membres de l'équipe.</p>
-
-<h2 id="ce-que-j-ai-appris-en-comparant-flexibiz-avec-d-autres-solut">Ce que j'ai appris en comparant FlexiBiz avec d'autres solutions</h2>
-
-<p>Pour avoir une perspective honnête sur FlexiBiz, je dois mentionner ce que j'ai vu ailleurs. Certains de mes homologues ont opté pour des solutions concurrentes, avec des résultats très variables.</p>
-
-<p>J'ai accompagné un collègue dans <strong><a href="/9138-bien-configurer-les-acces-lors-de-l-installation-de-managepro-suite">l'installation de l'ERP intégré ManagePro Suite</a></strong> dans une structure similaire à la nôtre, environ 200 salariés, secteur services. L'onboarding était plus guidé que FlexiBiz, c'est vrai. Les assistants de configuration vous prennent par la main. Mais la contrepartie, c'est une rigidité assez frustrante sur la personnalisation du plan comptable. On ne pouvait pas adapter certains comptes sans passer par le support éditeur, avec des délais de 48 à 72 heures. Pour une équipe qui a besoin de réactivité en période de clôture, c'est problématique.</p>
-
-<p>J'ai aussi documenté pour un autre contact la question de <strong><a href="/4421-reussir-l-integration-de-l-erp-flexmanage-plus">comment intégrer l'ERP FlexManage Plus</a></strong> dans un contexte PME avec un système de paie externalisé. L'API proposée par FlexManage Plus est techniquement solide, mais elle demande des compétences que la majorité des équipes comptables n'ont pas en interne. Si vous n'avez pas de développeur ou de prestataire technique sous la main, vous allez dépendre entièrement de l'éditeur pour chaque évolution. C'est un vrai point de vigilance.</p>
-
-<p>FlexiBiz se situe entre les deux. Moins assisté que ManagePro Suite sur l'onboarding, mais plus flexible sur la configuration. Plus accessible techniquement que FlexManage Plus pour les équipes sans profil IT.</p>
-
-<h2 id="les-points-de-vigilance-que-personne-ne-vous-dit">Les points de vigilance que personne ne vous dit</h2>
-
-<p>Quelques choses que j'aurais aimé savoir avant de démarrer.</p>
-
-<p>Les <strong>synchronisations en temps réel</strong> entre FlexiBiz et un logiciel de comptabilité tiers peuvent générer des doublons si les deux systèmes sont ouverts simultanément et qu'une écriture est modifiée des deux côtés. C'est arrivé une fois chez nous en période de clôture trimestrielle. Pas catastrophique, mais ça m'a pris une demi-journée à corriger et j'ai eu un peu chaud.</p>
-
-<p>Le support de FlexiBiz est correct sur les questions standard, mais lent dès qu'on sort des cas habituels. J'ai attendu cinq jours ouvrés pour une réponse sur un problème de configuration OCR sur les factures fournisseurs. Cinq jours. En période normale ça passe, en clôture c'est inacceptable. Anticipez en ouvrant les tickets non urgents dès qu'ils apparaissent, même si le problème ne bloque pas encore.</p>
-
-<p>Autre point : les mises à jour automatiques de FlexiBiz peuvent modifier des paramètres de configuration. Ça m'est arrivé une fois sur les règles de lettrage automatique. Elles avaient été réinitialisées après une mise à jour majeure. Depuis, je fais une vérification systématique après chaque update.</p>
-
-<h2 id="tableau-recapitulatif-criteres-cles-pour-votre-integration">Tableau récapitulatif : critères clés pour votre intégration</h2>
-
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>Critère</th>
-<th>Ce qu'il faut vérifier</th>
-<th>Niveau de priorité</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Compatibilité du plan comptable</td>
-<td>Mapping avec votre plan existant</td>
-<td>Haute</td>
-</tr>
-<tr>
-<td>Format des exports bancaires</td>
-<td>OFX, CSV, format propriétaire</td>
-<td>Haute</td>
-</tr>
-<tr>
-<td>Workflows de validation</td>
-<td>Approbation des écritures, limites de montants</td>
-<td>Moyenne</td>
-</tr>
-<tr>
-<td>Synchronisation temps réel</td>
-<td>Risque de doublons, règles de priorité</td>
-<td>Moyenne</td>
-</tr>
-<tr>
-<td>Formation des référents internes</td>
-<td>Minimum 2 personnes formées en profondeur</td>
-<td>Haute</td>
-</tr>
-<tr>
-<td>Suivi des mises à jour</td>
-<td>Vérification post-update des paramètres critiques</td>
-<td>Moyenne</td>
-</tr>
-</tbody>
-</table></div>
-
-<h2 id="questions-frequentes-sur-l-integration-de-flexibiz">Questions fréquentes sur l'intégration de FlexiBiz</h2>
-
-<h3 id="combien-de-temps-faut-il-pour-une-integration-complete">Combien de temps faut-il pour une intégration complète ?</h3>
-
-<p>Dans une entreprise de 100 à 500 salariés, comptez entre six et douze semaines pour une intégration sérieuse. Moins que ça, vous prenez des risques sur la qualité de la configuration. Les projets qu'on boucle en trois semaines, c'est souvent ceux qui reviennent en maintenance corrective six mois après.</p>
-
-<h3 id="flexibiz-est-il-adapte-aux-equipes-sans-profil-technique">FlexiBiz est-il adapté aux équipes sans profil technique ?</h3>
-
-<p>Oui, avec des nuances. L'interface est globalement accessible. Mais certains modules de configuration avancée, notamment les règles d'automatisation et le paramétrage OCR, demandent un minimum de rigueur. Si votre équipe n'a vraiment aucun appétit pour ce type de configuration, prévoyez une journée d'accompagnement avec un intégrateur certifié FlexiBiz au démarrage. Ça coûte quelques centaines d'euros et ça évite des semaines de tâtonnement.</p>
-
-<h3 id="peut-on-connecter-flexibiz-a-un-logiciel-de-paie-externalise">Peut-on connecter FlexiBiz à un logiciel de paie externalisé ?</h3>
-
-<p>Oui via les exports FEC et les connecteurs standards. J'ai testé avec deux prestataires de paie différents, ça fonctionne bien pour les journaux de paie. Par contre, si vous avez des besoins spécifiques sur la ventilation analytique des charges de personnel, vérifiez les paramètres de répartition avant le premier import. C'est un point que j'ai dû reconfigurer après coup.</p>
-
-<h3 id="que-faire-si-les-donnees-comptables-importees-contiennent-de">Que faire si les données comptables importées contiennent des erreurs ?</h3>
-
-<p>FlexiBiz dispose d'un module de contrôle de cohérence avant validation définitive des imports. Activez-le systématiquement. Il détecte les déséquilibres de journaux, les comptes manquants, les doublons d'écritures. C'est basique mais franchement efficace. Ne validez jamais un import sans avoir passé ce contrôle, même quand on est pressé en fin de mois.</p>
-
-<p>L'intégration d'un ERP avec la comptabilité, c'est un projet qui mérite du temps et de la méthode. FlexiBiz n'est pas parfait, mais pour une équipe de taille moyenne avec un budget raisonnable et peu de ressources techniques, c'est un outil qui tient ses promesses si on le configure correctement dès le départ.</p>
-  </div>
-
-  <div class="author-box">
-    <img src="/author-photo.png" alt="Alexandre Michel" class="author-avatar">
-    <div class="author-info">
-      <div class="author-label">Auteur</div>
-      <div class="author-name">Alexandre Michel</div>
-<div class="author-job">Responsable comptable</div><div class="author-bio">Alexandre Michel est un Responsable comptable expérimenté avec 9 années d'expertise dans la gestion financière et la supervision d'équipes comptables à Toulouse. Il maîtrise parfaitement les normes comptables françaises et internationales, ainsi que les outils de gestion modernes. Alexandre excelle dans l'optimisation des processus financiers et la formation des collaborateurs aux bonnes pratiques comptables.</div>    </div>
-  </div>
-
-  <section class="related-section">
-    <h3 class="related-title">À lire aussi</h3>
-    <div class="related-grid">
-      <a href="/2160-6-elements-qui-font-grimper-le-cout-d-implementation-de-bizcore-advanced/" class="related-card">
-<div class="related-card-cat">Gestion d'entreprise</div>        <div class="related-card-title">6 éléments qui font grimper le coût d'implémentation de BizCore Advanced</div>
-<div class="related-card-excerpt">Pourquoi les coûts d'implémentation explosent-ils souvent ? Après avoir accompagné trois implémentations de BizCore Advanced dans mon entreprise et chez nos filiales, je peux vous…</div>      </a>
-      <a href="/4346-reussir-le-parametrage-de-l-erp-businesscore-enterprise/" class="related-card">
-<div class="related-card-cat">Gestion d'entreprise</div>        <div class="related-card-title">Réussir le paramétrage de l'ERP BusinessCore Enterprise</div>
-<div class="related-card-excerpt">Quand on m'a confié le déploiement de BusinessCore Enterprise dans notre structure toulousaine, j'avais déjà eu quelques expériences de mise en place d'ERP. Mais honnêtement, rien…</div>      </a>
-      <a href="/7633-la-prise-en-main-du-crm-salesforge-compact-en-pme/" class="related-card">
-<div class="related-card-cat">Gestion d'entreprise</div>        <div class="related-card-title">La prise en main du CRM SalesForge Compact en PME</div>
-<div class="related-card-excerpt">On m'a demandé de tester SalesForge Compact pendant trois mois dans notre structure. Cent-vingt salariés, une équipe commerciale de huit personnes, un service comptable (le mien)…</div>      </a>
-      <a href="/8559-bien-cadrer-l-implementation-de-l-erp-bizflow-v8-pro/" class="related-card">
-<div class="related-card-cat">Gestion d'entreprise</div>        <div class="related-card-title">Bien cadrer l'implémentation de l'ERP BizFlow V8 Pro</div>
-<div class="related-card-excerpt">On m'a demandé de piloter l'implémentation de BizFlow V8 Pro dans notre structure. Cent-cinquante salariés, une équipe comptable de six personnes, des habitudes bien ancrées sur…</div>      </a>
-    </div>
-  </section>
-  </div><!-- /.article-main -->
-
-  <aside class="article-sidebar">
-    <div class="sidebar-block">
-      <h3 class="sidebar-title">Catégories</h3>
-      <ul class="sidebar-cat-list">
-        <li class="sidebar-cat-item">
-          <a href="/blog/" class="sidebar-cat-link">
-            <span>Tous les articles</span>
-            <span class="sidebar-cat-count">94</span>
-          </a>
-        </li>
-        <li class="sidebar-cat-item">
-          <a href="/categorie-gestion-d-entreprise/" class="sidebar-cat-link active">
-            <span>Gestion d'entreprise</span>
-            <span class="sidebar-cat-count">41</span>
-          </a>
-        </li>
-        <li class="sidebar-cat-item">
-          <a href="/categorie-comptabilite/" class="sidebar-cat-link">
-            <span>Comptabilité</span>
-            <span class="sidebar-cat-count">20</span>
-          </a>
-        </li>
-        <li class="sidebar-cat-item">
-          <a href="/categorie-entrepreneuriat/" class="sidebar-cat-link">
-            <span>Entrepreneuriat</span>
-            <span class="sidebar-cat-count">10</span>
-          </a>
-        </li>
-        <li class="sidebar-cat-item">
-          <a href="/categorie-ressources-humaines/" class="sidebar-cat-link">
-            <span>Ressources Humaines</span>
-            <span class="sidebar-cat-count">8</span>
-          </a>
-        </li>
-        <li class="sidebar-cat-item">
-          <a href="/categorie-salarie/" class="sidebar-cat-link">
-            <span>Salarié</span>
-            <span class="sidebar-cat-count">7</span>
-          </a>
-        </li>
-        <li class="sidebar-cat-item">
-          <a href="/categorie-creation-d-entreprise/" class="sidebar-cat-link">
-            <span>Création d'entreprise</span>
-            <span class="sidebar-cat-count">7</span>
-          </a>
-        </li>
-        <li class="sidebar-cat-item">
-          <a href="/categorie-finance-comptabilite/" class="sidebar-cat-link">
-            <span>Finance & Comptabilité</span>
-            <span class="sidebar-cat-count">1</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="sidebar-block">
-      <h3 class="sidebar-title">Articles récents</h3>
-      <ul class="sidebar-recent-list">
-        <li class="sidebar-recent-item">
-          <a href="/4568-note-de-frais-definition-et-fonctionnement/" class="sidebar-recent-link">
-<div class="sidebar-recent-cat">Comptabilité</div>            Note de frais : définition et fonctionnement
-          </a>
-        </li>
-        <li class="sidebar-recent-item">
-          <a href="/1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape/" class="sidebar-recent-link">
-<div class="sidebar-recent-cat">Comptabilité</div>            Comment faire une note de frais : le guide étape par étape
-          </a>
-        </li>
-        <li class="sidebar-recent-item">
-          <a href="/3214-tirer-le-meilleur-de-la-demo-du-logiciel-de-gestion-wizica-business/" class="sidebar-recent-link">
-<div class="sidebar-recent-cat">Gestion d'entreprise</div>            Tirer le meilleur de la démo du logiciel de gestion Wizica Business
-          </a>
-        </li>
-        <li class="sidebar-recent-item">
-          <a href="/3624-le-delai-de-mise-en-place-de-l-erp-rapidesk-solutions-en-pme/" class="sidebar-recent-link">
-<div class="sidebar-recent-cat">Gestion d'entreprise</div>            Le délai de mise en place de l'ERP RapiDesk Solutions en PME
-          </a>
-        </li>
-        <li class="sidebar-recent-item">
-          <a href="/7633-la-prise-en-main-du-crm-salesforge-compact-en-pme/" class="sidebar-recent-link">
-<div class="sidebar-recent-cat">Gestion d'entreprise</div>            La prise en main du CRM SalesForge Compact en PME
-          </a>
-        </li>
-      </ul>
-    </div>
-  </aside>
-</article>
-</div>
-
+</main>
 <style>
 .footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
 .footer-inner{max-width:1200px;margin:0 auto}
@@ -659,7 +193,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 creaone.fr — Données actualisées le 20 juillet 2026
+        © 2026 creaone.fr — Données actualisées le 26 juin 2026
       </div>
     </div>
   </div>
@@ -757,6 +291,5 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   // Check immédiat (au cas où la page est rechargée déjà scrollée)
   update();
 })();
-</script>
-</body>
+</script></body>
 </html>

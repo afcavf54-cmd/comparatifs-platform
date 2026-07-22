@@ -4,199 +4,61 @@
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Exporter les données SalesTrack CRM en CSV : bien préparer le fichier</title>
-<meta name="description" content="Découvrez comment nettoyer efficacement un export CSV SalesTrack CRM pour éliminer doublons, corriger les formats de dates et optimiser vos données comptables.">
-<link rel="canonical" href="https://creaone.fr/4820-nettoyer-un-export-csv-de-donnees-salestrack-crm/">
-<meta property="og:title" content="Exporter les données SalesTrack CRM en CSV : bien préparer le fichier">
-<meta property="og:description" content="Découvrez comment nettoyer efficacement un export CSV SalesTrack CRM pour éliminer doublons, corriger les formats de dates et optimiser vos données comptables.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://creaone.fr/4820-nettoyer-un-export-csv-de-donnees-salestrack-crm/">
-<meta property="og:image" content="https://creaone.fr/blog/4820-nettoyer-un-export-csv-de-donnees-salestrack-crm.jpg"><meta property="article:published_time" content="2026-06-12T14:53:49+02:00">
-<meta property="article:section" content="Gestion d'entreprise"><link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Page introuvable | creaone.fr</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=creaone-fr" rel="stylesheet">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Nettoyer un export CSV de donn\u00e9es SalesTrack CRM",
-  "description": "D\u00e9couvrez comment nettoyer efficacement un export CSV SalesTrack CRM pour \u00e9liminer doublons, corriger les formats de dates et optimiser vos donn\u00e9es comptables.",
-  "datePublished": "2026-06-12T14:53:49+02:00",
-"image": "https://creaone.fr/blog/4820-nettoyer-un-export-csv-de-donnees-salestrack-crm.jpg",  "author": {
-    "@type": "Person",
-    "name": "Alexandre Michel"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "creaone.fr",
-    "url": "https://creaone.fr"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://creaone.fr/4820-nettoyer-un-export-csv-de-donnees-salestrack-crm/"
-  }
-,"articleSection": "Gestion d\u0027entreprise"}
-</script>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  "name": "Nettoyer un export CSV de donn\u00e9es SalesTrack CRM",
-  "description": "D\u00e9couvrez comment nettoyer efficacement un export CSV SalesTrack CRM pour \u00e9liminer doublons, corriger les formats de dates et optimiser vos donn\u00e9es comptables.",
-"image": "https://creaone.fr/blog/4820-nettoyer-un-export-csv-de-donnees-salestrack-crm.jpg",  "step": [
-    {
-      "@type": "HowToStep",
-      "position": 1,
-      "name": "\u00c9limination des doublons",
-      "text": "Excel propose une fonction native \u00ab Supprimer les doublons \u00bb dans l\u0027onglet Donn\u00e9es. Je la configure en s\u00e9lectionnant les colonnes ID client + Montant + Date cr\u00e9ation. Cette combinaison capture 90% des vrais doublons sans supprimer des opportunit\u00e9s l\u00e9gitimes du m\u00eame client.",
-      "url": "https://creaone.fr/4820-nettoyer-un-export-csv-de-donnees-salestrack-crm/#elimination-des-doublons"
-    },    {
-      "@type": "HowToStep",
-      "position": 2,
-      "name": "Standardisation des formats de dates",
-      "text": "SalesTrack m\u00e9lange parfois les formats am\u00e9ricain et europ\u00e9en. Ma technique : cr\u00e9er une colonne de conversion avec la formule SI(JOUR(A2)\u003e12;DATEVAL(SUBSTITUE(A2;\"/\";\"-\"));A2).",
-      "url": "https://creaone.fr/4820-nettoyer-un-export-csv-de-donnees-salestrack-crm/#standardisation-des-formats-de-dates"
-    },    {
-      "@type": "HowToStep",
-      "position": 3,
-      "name": "Harmonisation des montants",
-      "text": "Les commerciaux saisissent parfois \u00ab 15,500.00 \u00bb (format anglo-saxon) dans un SalesTrack configur\u00e9 en fran\u00e7ais. Je normalise avec cette formule : =NBVAL(SUBSTITUE(SUBSTITUE(A2;\" \";\"\");\",\";\".\"))",
-      "url": "https://creaone.fr/4820-nettoyer-un-export-csv-de-donnees-salestrack-crm/#harmonisation-des-montants"
-    }  ]
-}
-</script>
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
 :root{
-  --bg:#F4F7FA;--surface:#FFFFFF;--surface2:#F5F3EE;
-  --ink:#1C2733;--ink2:#3D434B;--ink3:#8B9CB0;
-  --accent:#0F3D5E;--accent2:#1D70A2;--green:#3D7A4F;
-  --border:#E6E1D8;--r:8px;--r2:14px;
---cta:#168551;--cta-text:#FFFFFF;}
-body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px}
-a{color:var(--accent2);text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:1180px;margin:0 auto;padding:0 5vw}
-.article-layout{display:grid;grid-template-columns:1fr 280px;gap:48px;align-items:start}
-.article-main{min-width:0;padding-bottom:80px}
-.article-sidebar{position:sticky;top:88px}
-.sidebar-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px 22px;margin-bottom:20px}
-.sidebar-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin:0 0 14px}
-.sidebar-cat-list{list-style:none;margin:0;padding:0}
-.sidebar-cat-item{padding:0;margin:0}
-.sidebar-cat-link{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);color:var(--ink2);font-size:14px;text-decoration:none;transition:.15s}
-.sidebar-cat-item:last-child .sidebar-cat-link{border-bottom:none}
-.sidebar-cat-link:hover{color:var(--accent);text-decoration:none}
-.sidebar-cat-link.active{color:var(--accent);font-weight:600}
-.sidebar-cat-count{font-size:11px;color:var(--ink3);background:var(--bg);padding:2px 8px;border-radius:10px;flex-shrink:0;margin-left:8px}
-.sidebar-cat-link:hover .sidebar-cat-count{color:var(--accent)}
-.sidebar-recent-list{list-style:none;margin:0;padding:0}
-.sidebar-recent-item{padding:10px 0;border-bottom:1px solid var(--border)}
-.sidebar-recent-item:last-child{border-bottom:none}
-.sidebar-recent-link{color:var(--ink2);font-size:13px;line-height:1.45;text-decoration:none;display:block}
-.sidebar-recent-link:hover{color:var(--accent);text-decoration:none}
-.sidebar-recent-cat{font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
-.article-header{padding:23px 0 24px}
-.breadcrumb{font-size:13px;color:var(--ink3);margin-bottom:16px}
-.breadcrumb a{color:var(--ink3)}
-.breadcrumb a:hover{color:var(--accent)}
-.article-cat{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);background:var(--surface2);padding:4px 10px;border-radius:20px;text-decoration:none;transition:.15s}
-.article-cat:hover{background:var(--accent);color:#fff;text-decoration:none}
-.article-title{font-family:'DM Serif Display',serif;font-size:clamp(28px,5vw,48px);font-weight:400;letter-spacing:-.02em;line-height:1.15;color:var(--ink);margin-bottom:16px}
-.article-meta{font-size:14px;color:var(--ink3);margin-bottom:7px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.article-meta-item{display:inline-flex;align-items:center;gap:6px}
-.article-meta-dot{width:3px;height:3px;border-radius:50%;background:var(--ink3)}
-.article-featured{width:100%;border-radius:var(--r2);overflow:hidden;margin-bottom:15px;border:1px solid var(--border)}
-.article-featured img{display:block;width:100%;height:auto}
-.article-toc{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:22px 26px;margin:0 0 40px;position:relative;z-index:0}
-.article-toc-title{font-family:'DM Serif Display',serif;font-size:18px;font-weight:600;color:var(--ink);margin:0 0 14px;letter-spacing:-.01em}
-.article-toc-list{list-style:none;padding:0;margin:0;counter-reset:toc}
-/* L'incrément du compteur est appliqué UNIQUEMENT sur les items H2 (level-2),
-   pas sur les H3 (level-3). Avant : tous les items incrémentaient → si on avait
-   un H3 entre deux H2, la numérotation visible sautait (1, 3, 4...) car le H3
-   consommait silencieusement le 2 (il affichait ›). Maintenant les H3 ne touchent
-   plus au compteur, et les H2 se suivent proprement (1, 2, 3, ...). */
-.article-toc-item{position:relative;padding:6px 0 6px 28px;line-height:1.5}
-.article-toc-level-2{counter-increment:toc}
-.article-toc-level-2::before{content:counter(toc) ".";position:absolute;left:0;top:6px;color:var(--accent);font-weight:600;font-size:14px;width:22px;text-align:right}
-.article-toc-level-3{padding-left:48px;font-size:14px}
-.article-toc-level-3::before{content:"›";position:absolute;left:24px;top:6px;color:var(--ink2);font-weight:600}
-.article-toc-item a{color:var(--ink2);text-decoration:none;font-size:15px;transition:color .15s}
-.article-toc-item a:hover{color:var(--accent);text-decoration:underline}
-.article-toc-level-3 a{font-size:14px;color:var(--ink2)}
-/* Scroll offset pour que les ancres ne soient pas masquées par un éventuel header sticky */
-.article-body h2,.article-body h3{scroll-margin-top:80px}
-.article-body{font-size:17px;color:var(--ink2);line-height:1.8}
-.article-body p{margin-bottom:20px}
-.article-body h1{font-family:'DM Serif Display',serif;font-size:32px;font-weight:400;color:var(--ink);margin:48px 0 16px;letter-spacing:-.02em}
-.article-body h2{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;color:var(--ink);margin:40px 0 14px;letter-spacing:-.02em}
-.article-body h3{font-size:20px;font-weight:600;color:var(--ink);margin:32px 0 12px}
-.article-body ul,.article-body ol{margin:0 0 20px 24px}
-.article-body li{margin-bottom:8px}
-.article-body img{display:block;max-width:100%;height:auto;border-radius:var(--r);margin:24px auto;border:1px solid var(--border)}
-.article-body blockquote{border-left:3px solid var(--accent);padding:8px 20px;margin:24px 0;color:var(--ink2);font-style:italic;background:var(--surface2);border-radius:0 var(--r) var(--r) 0}
-.article-body code{background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:.92em;font-family:Menlo,Monaco,Consolas,monospace}
-.article-body strong{color:var(--ink);font-weight:700}
-.article-body a{color:var(--accent2);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px}
-.article-body a:hover{text-decoration-color:var(--accent2)}
-/* Author box (réutilise le style de classement-saas) */
-.author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
-.author-avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
-.author-avatar-placeholder{width:72px;height:72px;border-radius:50%;background:var(--bg);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
-.author-info{flex:1}
-.author-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);margin-bottom:4px}
-.author-name{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:2px}
-.author-job{font-size:13px;color:var(--ink3);margin-bottom:12px}
-.author-bio{font-size:14px;color:var(--ink2);line-height:1.7}
-@media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}}
-/* Maillage interne */
-.related-section{margin:25px 0 0;padding-top:25px;border-top:1px solid var(--border)}
-.related-title{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
-.related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.related-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px;text-decoration:none;transition:.15s;display:block}
-.related-card:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(0,0,0,.06);transform:translateY(-1px);text-decoration:none}
-.related-card-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:8px}
-.related-card-title{font-size:15px;font-weight:600;color:var(--ink);line-height:1.4;margin-bottom:6px}
-.related-card-excerpt{font-size:13px;color:var(--ink3);line-height:1.5}
-@media(max-width:600px){.related-grid{grid-template-columns:1fr}}
-/* Footer : on n'override PLUS — c'est _footer.html.j2 qui gère son propre CSS */
-@media(max-width:960px){
-  .article-layout{grid-template-columns:1fr;gap:25px}
-  .article-sidebar{position:static}
-  /* Sur mobile, la sidebar passe sous le contenu : on retire le padding-bottom
-     de article-main qui ne sert plus à rien (l'écart est géré par le gap du
-     grid). 80 (padding) + 32 (gap) = 112px → désormais 0 + 25 = 25px. */
-  .article-main{padding-bottom:0}
+  --bg:#F4F7FA;
+  --surface:#fff;
+  --surface2:#F0ECE5;
+  --ink:#1C2733;
+  --ink2:#6B6560;
+  --ink3:#A09890;
+  --accent:#0F3D5E;
+  --accent2:#1D70A2;--cta:#168551;--cta-text:#FFFFFF;
+  --border:#E2DDD6;
+  --r:12px;
+  --r2:20px;
+  --green:#1A7A4A;
 }
-@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
+a{color:inherit;text-decoration:none}
 
-/* ── PATCH : tableaux du contenu blog ─────────────────────────────
-   Ajout chirurgical en toute fin du <style>, après les media queries
-   existantes. Aucune modif au CSS au-dessus. */
-.article-body .table-wrap{overflow-x:auto;margin:28px 0;border-radius:10px;border:1px solid var(--border);background:var(--surface)}
-.article-body table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface);margin:28px 0;color:var(--ink)}
-.article-body .table-wrap > table{margin:0;border:none}
-.article-body thead{background:var(--surface2)}
-.article-body thead th{text-align:left;padding:14px 18px;font-weight:600;color:var(--ink);font-size:14px;border-bottom:2px solid var(--border);vertical-align:middle;white-space:nowrap}
-.article-body thead th:not(:last-child){border-right:1px solid var(--border)}
-.article-body tbody td{padding:14px 18px;color:var(--ink);border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
-.article-body tbody td:not(:last-child){border-right:1px solid var(--border)}
-.article-body tbody tr:nth-child(even){background:var(--surface2)}
-.article-body tbody tr:hover{background:var(--surface2)}
-.article-body tbody tr:last-child td{border-bottom:none}
-.article-body table caption{caption-side:top;padding:12px 18px;font-weight:600;color:var(--ink);text-align:left;background:var(--surface2);border-bottom:1px solid var(--border)}
-@media (max-width:680px){
-  .article-body table{font-size:14px}
-  .article-body thead th,.article-body tbody td{padding:10px 12px;white-space:normal}
-}
+/* ── NAV ── */
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
+.nav-cta:hover{opacity:.88}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+.nav-mobile a:hover{color:#fff;background:rgba(255,255,255,.08)}
+
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 5vw;text-align:center}
+.code{font-family:'DM Serif Display',serif;font-size:clamp(80px,15vw,160px);font-weight:400;color:var(--accent);line-height:1;margin-bottom:16px;opacity:.15}
+h1{font-family:'DM Serif Display',serif;font-size:clamp(24px,4vw,40px);font-weight:400;margin-bottom:12px}
+p{font-size:17px;color:#718096;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;background:var(--accent);color:#fff;font-size:16px;font-weight:600;text-decoration:none;transition:.15s}
+.btn:hover{background:var(--cta,var(--accent2))}
+.links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.link-sec{color:var(--accent);font-size:14px;text-decoration:none;padding:8px 16px;border-radius:8px;border:1px solid var(--border)}
+.link-sec:hover{background:var(--border)}
+
 </style>
-<meta name="google-site-verification" content="Rz8oi425b-CwU-EHq2QI7jhKg2Iuu6StC_bM6K95-bo">
 </head>
 <body>
-
 <style>
 nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
 nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
@@ -274,324 +136,17 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     });
   });
 })();
-</script>
-<div class="container">
-<article class="article-layout">
-  <div class="article-main">
-  <header class="article-header">
-    <div class="breadcrumb">
-      <a href="/">Accueil</a> &rsaquo; <a href="/blog/">Blog</a>
- &rsaquo; <a href="/categorie-gestion-d-entreprise/">Gestion d'entreprise</a>    </div>
-    <h1 class="article-title">Nettoyer un export CSV de données SalesTrack CRM</h1>
-    <div class="article-meta">
-<a href="/categorie-gestion-d-entreprise/" class="article-cat">Gestion d'entreprise</a><span class="article-meta-dot"></span><span class="article-meta-item">📅 12 juin 2026</span><span class="article-meta-dot"></span><span class="article-meta-item">⏱ 7 min de lecture</span><span class="article-meta-dot"></span>      <span class="article-meta-item">✍️ Alexandre Michel</span>
+</script><main>
+  <div>
+    <div class="code">404</div>
+    <h1>Page introuvable</h1>
+    <p>La page que vous recherchez n'existe pas ou a été déplacée. Revenez à l'accueil pour trouver votre comparatif.</p>
+    <a href="/" class="btn">← Retour à l'accueil</a>
+    <div class="links">
+      <a href="/nos-comparateurs" class="link-sec">Nos comparateurs</a>
     </div>
-  </header>
-
-  <div class="article-featured">
-    <img src="/blog/4820-nettoyer-un-export-csv-de-donnees-salestrack-crm.jpg" alt="Nettoyer un export CSV de données SalesTrack CRM" loading="eager">
   </div>
-
-  <nav class="article-toc" aria-label="Sommaire de l'article">
-    <div class="article-toc-title">📑 Sommaire</div>
-    <ol class="article-toc-list">
-      <li class="article-toc-item article-toc-level-2">
-        <a href="#l-export-csv-salestrack-un-format-pratique-mais-imparfait">L'export CSV SalesTrack : un format pratique mais imparfait</a>
-      </li>
-      <li class="article-toc-item article-toc-level-2">
-        <a href="#identifier-les-problemes-courants-dans-un-export-salestrack">Identifier les problèmes courants dans un export SalesTrack</a>
-      </li>
-      <li class="article-toc-item article-toc-level-3">
-        <a href="#analyse-preliminaire-du-fichier">Analyse préliminaire du fichier</a>
-      </li>
-      <li class="article-toc-item article-toc-level-2">
-        <a href="#methodes-de-nettoyage-etape-par-etape">Méthodes de nettoyage étape par étape</a>
-      </li>
-      <li class="article-toc-item article-toc-level-3">
-        <a href="#elimination-des-doublons">Élimination des doublons</a>
-      </li>
-      <li class="article-toc-item article-toc-level-3">
-        <a href="#standardisation-des-formats-de-dates">Standardisation des formats de dates</a>
-      </li>
-      <li class="article-toc-item article-toc-level-3">
-        <a href="#harmonisation-des-montants">Harmonisation des montants</a>
-      </li>
-      <li class="article-toc-item article-toc-level-2">
-        <a href="#outils-recommandes-pour-automatiser-le-nettoyage">Outils recommandés pour automatiser le nettoyage</a>
-      </li>
-      <li class="article-toc-item article-toc-level-3">
-        <a href="#integration-avec-d-autres-crm">Intégration avec d'autres CRM</a>
-      </li>
-      <li class="article-toc-item article-toc-level-2">
-        <a href="#validation-et-controle-qualite-des-donnees-nettoyees">Validation et contrôle qualité des données nettoyées</a>
-      </li>
-      <li class="article-toc-item article-toc-level-3">
-        <a href="#tests-de-coherence-metier">Tests de cohérence métier</a>
-      </li>
-      <li class="article-toc-item article-toc-level-2">
-        <a href="#automatisation-et-bonnes-pratiques-pour-l-avenir">Automatisation et bonnes pratiques pour l'avenir</a>
-      </li>
-      <li class="article-toc-item article-toc-level-2">
-        <a href="#questions-frequentes">Questions fréquentes</a>
-      </li>
-    </ol>
-  </nav>
-
-  <div class="article-body">
-    <h2 id="l-export-csv-salestrack-un-format-pratique-mais-imparfait">L'export CSV SalesTrack : un format pratique mais imparfait</h2>
-
-<p>Je travaille quotidiennement avec des exports CSV issus de différents CRM, dont SalesTrack. <strong>Le format CSV reste incontournable</strong> pour transférer des données entre systèmes, mais j'ai remarqué qu'il arrive souvent « sale » avec des incohérences qui peuvent fausser vos analyses comptables.</p>
-
-<p>SalesTrack génère des fichiers CSV plutôt bien structurés. Problème : les données remontées contiennent parfois des doublons, des formats de dates variables, ou des champs mal renseignés par les commerciaux. <strong>Résultat ? Votre tableau de bord financier devient inexploitable.</strong></p>
-
-<p>L'objectif de ce guide pratique : vous donner une méthode claire pour nettoyer efficacement ces exports avant de les intégrer dans votre système comptable ou vos outils de pilotage.</p>
-
-<h2 id="identifier-les-problemes-courants-dans-un-export-salestrack">Identifier les problèmes courants dans un export SalesTrack</h2>
-
-<p>Avant de commencer le nettoyage, j'examine toujours la structure du fichier CSV. <strong>SalesTrack exporte généralement ces colonnes principales</strong> : ID client, nom société, montant deal, statut opportunité, date création, commercial assigné, et commentaires.</p>
-
-<p>Les dysfonctionnements que je rencontre le plus souvent :</p>
-
-<ul>
-<li><strong>Doublons d'opportunités</strong> : même client avec plusieurs lignes identiques mais des ID différents</li>
-<li>Formats de dates incohérents : DD/MM/YYYY mélangé avec MM/DD/YYYY</li>
-<li>Montants avec des séparateurs variables (virgule ou point décimal)</li>
-<li>Champs texte avec des caractères parasites ou des espaces en début/fin</li>
-<li>Statuts mal orthographiés : "En cours", "en cours", "EN COURS"</li>
-</ul>
-
-<p>Ces anomalies semblent anodines mais elles faussent complètement vos calculs de chiffre d'affaires prévisionnel. <strong>J'ai déjà vu des écarts de 15% sur des prévisions trimestrielles</strong> à cause de doublons non détectés.</p>
-
-<h3 id="analyse-preliminaire-du-fichier">Analyse préliminaire du fichier</h3>
-
-<p>J'ouvre systématiquement le CSV avec Excel ou LibreOffice pour un premier diagnostic. <strong>Attention aux caractères d'encodage</strong> : SalesTrack utilise parfois de l'UTF-8 qui peut mal s'afficher avec certaines versions d'Excel.</p>
-
-<p>Mon réflexe : trier par colonne « ID client » pour repérer visuellement les doublons évidents. Ensuite, je regarde la cohérence des montants. Des valeurs aberrantes comme « 50000000 » au lieu de « 50 000 » trahissent souvent une erreur de saisie commerciale.</p>
-
-<h2 id="methodes-de-nettoyage-etape-par-etape">Méthodes de nettoyage étape par étape</h2>
-
-<p>Mon processus s'articule autour de trois phases : suppression des doublons, standardisation des formats, et validation des données critiques.</p>
-
-<h3 id="elimination-des-doublons">Élimination des doublons</h3>
-
-<p><strong>Excel propose une fonction native</strong> « Supprimer les doublons » dans l'onglet Données. Je la configure en sélectionnant les colonnes ID client + Montant + Date création. Cette combinaison capture 90% des vrais doublons sans supprimer des opportunités légitimes du même client.</p>
-
-<p>Pour les cas complexes, j'utilise une formule conditionnelle. En colonne auxiliaire, j'écris : =NB.SI.ENS($A:$A;A2;$C:$C;C2)>1. Cette formule marque « 1 » si la combinaison Client/Montant apparaît plusieurs fois.</p>
-
-<p>Je filtre ensuite sur cette colonne pour examiner manuellement les doublons potentiels. <strong>Cette vérification manuelle évite de supprimer par erreur</strong> des deals légitimes d'un même client pour des montants identiques.</p>
-
-<h3 id="standardisation-des-formats-de-dates">Standardisation des formats de dates</h3>
-
-<p>SalesTrack mélange parfois les formats américain et européen. <strong>Ma technique : créer une colonne de conversion</strong> avec la formule SI(JOUR(A2)>12;DATEVAL(SUBSTITUE(A2;"/";"-"));A2).</p>
-
-<p>Cette formule détecte automatiquement les dates au format MM/DD/YYYY (jour > 12) et les convertit. Pour les dates ambiguës comme 05/03/2024, je compare avec la date de création du compte client si elle est disponible dans l'export.</p>
-
-<p>Alternative plus robuste : j'utilise la fonction REGEX d'Excel (versions récentes) ou un outil comme OpenRefine pour traiter les formats de dates en lot.</p>
-
-<h3 id="harmonisation-des-montants">Harmonisation des montants</h3>
-
-<p>Les commerciaux saisissent parfois « 15,500.00 » (format anglo-saxon) dans un SalesTrack configuré en français. <strong>Je normalise avec cette formule</strong> : =NBVAL(SUBSTITUE(SUBSTITUE(A2;" ";"");",";"."))</p>
-
-<p>Pour les montants aberrants, je créé un filtre conditionnel qui marque en rouge les valeurs supérieures à 10 fois la médiane ou inférieures au dixième de la médiane. Cette règle capture les erreurs de frappe évidentes.</p>
-
-<h2 id="outils-recommandes-pour-automatiser-le-nettoyage">Outils recommandés pour automatiser le nettoyage</h2>
-
-<p>Excel reste mon outil principal mais j'ai testé plusieurs alternatives selon la complexité du fichier SalesTrack.</p>
-
-<p><strong>OpenRefine</strong> excelle pour les gros volumes (+ 10 000 lignes). Interface moins intuitive qu'Excel mais puissant pour détecter des patterns complexes. Je l'utilise notamment pour regrouper des variantes de noms de société : "SARL Martin", "Sarl Martin", "Martin SARL".</p>
-
-<p>Pour automatiser complètement le processus, <strong>Power Query d'Excel</strong> permet de créer des scripts de nettoyage réutilisables. Une fois configuré, je peux traiter un nouvel export SalesTrack en un clic.</p>
-
-<div class="table-wrap"><table>
-<thead><tr>
-<th>Outil</th>
-<th>Avantage principal</th>
-<th>Inconvénient</th>
-<th>Adapté pour</th>
-</tr></thead><tbody>
-<tr>
-<td>Excel standard</td>
-<td>Simplicité d'usage</td>
-<td>Lenteur sur gros fichiers</td>
-<td>< 5000 lignes</td>
-</tr>
-<tr>
-<td>Power Query</td>
-<td>Automatisation</td>
-<td>Courbe d'apprentissage</td>
-<td>Process récurrents</td>
-</tr>
-<tr>
-<td>OpenRefine</td>
-<td>Détection de patterns</td>
-<td>Interface technique</td>
-<td>Nettoyage complexe</td>
-</tr>
-</tbody></table></div>
-
-<p>J'ai aussi expérimenté avec des solutions cloud comme Trifacta ou des scripts Python pandas, mais <strong>leur temps de prise en main ne se justifie que pour des volumes très importants</strong> ou des traitements quotidiens.</p>
-
-<h3 id="integration-avec-d-autres-crm">Intégration avec d'autres CRM</h3>
-
-<p>Quand je dois migrer des données SalesTrack vers un autre système, je rencontre des problématiques similaires. Par exemple, savoir <strong><a href="/6768-a-qui-se-prete-le-crm-salesflow-evolution">comment utiliser le CRM SalesFlow Evolution</a></strong> devient important car ce logiciel a ses propres exigences de format pour l'import CSV. SalesFlow Evolution accepte mieux les dates au format ISO (YYYY-MM-DD) que SalesTrack.</p>
-
-<p>De même, comprendre <strong><a href="/7544-a-qui-profite-le-crm-smartlead-evolution">comment utiliser le CRM SmartLead Evolution</a></strong> aide à préparer l'export SalesTrack selon les standards attendus. SmartLead Evolution impose par exemple une limite de 255 caractères sur le champ commentaires, alors que SalesTrack peut exporter des textes plus longs.</p>
-
-<h2 id="validation-et-controle-qualite-des-donnees-nettoyees">Validation et contrôle qualité des données nettoyées</h2>
-
-<p>Une fois le nettoyage terminé, <strong>je vérifie systématiquement trois indicateurs</strong> : cohérence des totaux, distribution des statuts, et intégrité des relations client-opportunité.</p>
-
-<p>Contrôle des totaux : je compare la somme des montants avant/après nettoyage. Un écart supérieur à 2% signale généralement un problème dans le processus de déduplication.</p>
-
-<p>Distribution des statuts : j'utilise un tableau croisé dynamique pour vérifier que les proportions « Prospect/En cours/Gagné/Perdu » restent cohérentes. <strong>Une chute brutale d'une catégorie révèle souvent une suppression excessive</strong>.</p>
-
-<p>Relations client-opportunité : je compte le nombre moyen d'opportunités par client avant/après. Cette métrique doit rester stable sauf suppression volontaire de doublons.</p>
-
-<h3 id="tests-de-coherence-metier">Tests de cohérence métier</h3>
-
-<p>Au-delà des contrôles techniques, je valide la logique business. Par exemple : aucune opportunité « Gagnée » avec un montant à zéro, pas de date de clôture antérieure à la date de création, cohérence entre le statut et le commercial assigné.</p>
-
-<p>Pour les montants, je vérifie que la médiane reste dans la fourchette habituelle de votre entreprise. <strong>Si elle chute de 20%, c'est suspect</strong>. Soit j'ai supprimé des deals légitimes, soit l'export SalesTrack initial était biaisé.</p>
-
-<h2 id="automatisation-et-bonnes-pratiques-pour-l-avenir">Automatisation et bonnes pratiques pour l'avenir</h2>
-
-<p>Le nettoyage manuel prend du temps. <strong>J'ai donc créé une macro Excel</strong> qui automatise 80% du processus pour les exports SalesTrack récurrents. Cette macro applique systématiquement : suppression des lignes vides, standardisation des formats de dates, détection des doublons évidents.</p>
-
-<p>Pour les équipes non techniques, je recommande de formaliser une check-list de nettoyage. Cinq étapes maximum, avec des captures d'écran pour chaque manipulation. <strong>Objectif : permettre à un assistant comptable de traiter l'export en 30 minutes</strong> au lieu de deux heures.</p>
-
-<p>Autre astuce : négocier avec l'équipe commerciale des règles de saisie plus strictes dans SalesTrack. Formats de dates imposés, listes déroulantes pour les statuts, validation automatique des montants. <strong>Mieux vaut prévenir que nettoyer.</strong></p>
-
-<h2 id="questions-frequentes">Questions fréquentes</h2>
-
-<p><strong>Faut-il nettoyer systématiquement tous les exports SalesTrack ?</strong><br>
-Pas forcément. Pour un simple contrôle visuel ou un usage ponctuel, le nettoyage peut être superflu. En revanche, pour intégrer les données dans votre système comptable ou construire des tableaux de bord, c'est indispensable.</p>
-
-<p><strong>Combien de temps prévoir pour nettoyer un export de 1000 lignes ?</strong><br>
-Avec Excel et un processus rodé : 45 minutes à 1h30 selon le niveau de "saleté" des données. Les premières fois, comptez facilement 3 heures pour apprivoiser les spécificités de votre instance SalesTrack.</p>
-
-<p><strong>Peut-on automatiser complètement le nettoyage ?</strong><br>
-Partiellement seulement. Les règles métier (distinction entre doublons et opportunités multiples légitimes) nécessitent souvent une validation humaine. <strong>L'automatisation traite 70-80% des cas standard</strong>, le reste demande un œil expert.</p>
-
-<p><strong>Comment éviter la perte de données importantes pendant le nettoyage ?</strong><br>
-Toujours travailler sur une copie de l'export original. Je garde systématiquement le fichier brut en sauvegarde. De plus, je documente chaque étape de nettoyage dans un fichier de log pour pouvoir revenir en arrière si nécessaire.</p>
-  </div>
-
-  <div class="author-box">
-    <img src="/author-photo.png" alt="Alexandre Michel" class="author-avatar">
-    <div class="author-info">
-      <div class="author-label">Auteur</div>
-      <div class="author-name">Alexandre Michel</div>
-<div class="author-job">Responsable comptable</div><div class="author-bio">Alexandre Michel est un Responsable comptable expérimenté avec 9 années d'expertise dans la gestion financière et la supervision d'équipes comptables à Toulouse. Il maîtrise parfaitement les normes comptables françaises et internationales, ainsi que les outils de gestion modernes. Alexandre excelle dans l'optimisation des processus financiers et la formation des collaborateurs aux bonnes pratiques comptables.</div>    </div>
-  </div>
-
-  <section class="related-section">
-    <h3 class="related-title">À lire aussi</h3>
-    <div class="related-grid">
-      <a href="/2160-6-elements-qui-font-grimper-le-cout-d-implementation-de-bizcore-advanced/" class="related-card">
-<div class="related-card-cat">Gestion d'entreprise</div>        <div class="related-card-title">6 éléments qui font grimper le coût d'implémentation de BizCore Advanced</div>
-<div class="related-card-excerpt">Pourquoi les coûts d'implémentation explosent-ils souvent ? Après avoir accompagné trois implémentations de BizCore Advanced dans mon entreprise et chez nos filiales, je peux vous…</div>      </a>
-      <a href="/7544-a-qui-profite-le-crm-smartlead-evolution/" class="related-card">
-<div class="related-card-cat">Gestion d'entreprise</div>        <div class="related-card-title">À qui profite le CRM SmartLead Evolution</div>
-<div class="related-card-excerpt">Mon retour d'expérience sur SmartLead Evolution : 3 ans d'utilisation Je travaille avec SmartLead Evolution depuis trois ans maintenant dans notre société de conseil. Première…</div>      </a>
-      <a href="/2827-installer-le-crm-mobile-fieldforce-connect-sur-android/" class="related-card">
-<div class="related-card-cat">Gestion d'entreprise</div>        <div class="related-card-title">Installer le CRM mobile FieldForce Connect sur Android</div>
-<div class="related-card-excerpt">FieldForce Connect : un CRM mobile qui change la donne Je l'avoue, installer un CRM mobile sur Android me stressait un peu au départ. Entre les compatibilités douteuses et les…</div>      </a>
-      <a href="/9219-5-points-a-verifier-sur-le-tarif-mensuel-de-cloudlead-manager/" class="related-card">
-<div class="related-card-cat">Gestion d'entreprise</div>        <div class="related-card-title">5 points à vérifier sur le tarif mensuel de CloudLead Manager</div>
-<div class="related-card-excerpt">Pourquoi surveiller de près votre abonnement CloudLead Manager ? Après neuf ans dans la comptabilité, j'ai vu passer de nombreuses factures de logiciels qui cachaient des…</div>      </a>
-    </div>
-  </section>
-  </div><!-- /.article-main -->
-
-  <aside class="article-sidebar">
-    <div class="sidebar-block">
-      <h3 class="sidebar-title">Catégories</h3>
-      <ul class="sidebar-cat-list">
-        <li class="sidebar-cat-item">
-          <a href="/blog/" class="sidebar-cat-link">
-            <span>Tous les articles</span>
-            <span class="sidebar-cat-count">112</span>
-          </a>
-        </li>
-        <li class="sidebar-cat-item">
-          <a href="/categorie-gestion-d-entreprise/" class="sidebar-cat-link active">
-            <span>Gestion d'entreprise</span>
-            <span class="sidebar-cat-count">51</span>
-          </a>
-        </li>
-        <li class="sidebar-cat-item">
-          <a href="/categorie-comptabilite/" class="sidebar-cat-link">
-            <span>Comptabilité</span>
-            <span class="sidebar-cat-count">22</span>
-          </a>
-        </li>
-        <li class="sidebar-cat-item">
-          <a href="/categorie-entrepreneuriat/" class="sidebar-cat-link">
-            <span>Entrepreneuriat</span>
-            <span class="sidebar-cat-count">14</span>
-          </a>
-        </li>
-        <li class="sidebar-cat-item">
-          <a href="/categorie-creation-d-entreprise/" class="sidebar-cat-link">
-            <span>Création d'entreprise</span>
-            <span class="sidebar-cat-count">8</span>
-          </a>
-        </li>
-        <li class="sidebar-cat-item">
-          <a href="/categorie-ressources-humaines/" class="sidebar-cat-link">
-            <span>Ressources Humaines</span>
-            <span class="sidebar-cat-count">8</span>
-          </a>
-        </li>
-        <li class="sidebar-cat-item">
-          <a href="/categorie-salarie/" class="sidebar-cat-link">
-            <span>Salarié</span>
-            <span class="sidebar-cat-count">7</span>
-          </a>
-        </li>
-        <li class="sidebar-cat-item">
-          <a href="/categorie-finance-comptabilite/" class="sidebar-cat-link">
-            <span>Finance & Comptabilité</span>
-            <span class="sidebar-cat-count">2</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="sidebar-block">
-      <h3 class="sidebar-title">Articles récents</h3>
-      <ul class="sidebar-recent-list">
-        <li class="sidebar-recent-item">
-          <a href="/1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape/" class="sidebar-recent-link">
-<div class="sidebar-recent-cat">Comptabilité</div>            Comment faire une note de frais : le guide étape par étape
-          </a>
-        </li>
-        <li class="sidebar-recent-item">
-          <a href="/3214-tirer-le-meilleur-de-la-demo-du-logiciel-de-gestion-wizica-business/" class="sidebar-recent-link">
-<div class="sidebar-recent-cat">Gestion d'entreprise</div>            Tirer le meilleur de la démo du logiciel de gestion Wizica Business
-          </a>
-        </li>
-        <li class="sidebar-recent-item">
-          <a href="/8853-choisir-entre-bureau-ferme-et-coworking-dans-l-espace-wework/" class="sidebar-recent-link">
-<div class="sidebar-recent-cat">Entrepreneuriat</div>            Choisir entre bureau fermé et coworking dans l'espace WeWork
-          </a>
-        </li>
-        <li class="sidebar-recent-item">
-          <a href="/4108-duree-de-la-formation-google-ads-vite-une-formation/" class="sidebar-recent-link">
-<div class="sidebar-recent-cat">Entrepreneuriat</div>            Durée de la formation Google Ads Vite-une-Formation
-          </a>
-        </li>
-        <li class="sidebar-recent-item">
-          <a href="/2356-eviter-les-retards-de-deploiement-du-crm-smartsales-enterprise/" class="sidebar-recent-link">
-<div class="sidebar-recent-cat">Gestion d'entreprise</div>            Éviter les retards de déploiement du CRM SmartSales Enterprise
-          </a>
-        </li>
-      </ul>
-    </div>
-  </aside>
-</article>
-</div>
-
+</main>
 <style>
 .footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
 .footer-inner{max-width:1200px;margin:0 auto}
@@ -638,7 +193,7 @@ Toujours travailler sur une copie de l'export original. Je garde systématiqueme
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 creaone.fr — Données actualisées le 20 juillet 2026
+        © 2026 creaone.fr — Données actualisées le 26 juin 2026
       </div>
     </div>
   </div>
@@ -736,6 +291,5 @@ Toujours travailler sur une copie de l'export original. Je garde systématiqueme
   // Check immédiat (au cas où la page est rechargée déjà scrollée)
   update();
 })();
-</script>
-</body>
+</script></body>
 </html>

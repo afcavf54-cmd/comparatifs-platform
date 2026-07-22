@@ -14,8 +14,9 @@ link_anchors:
 - text: note de frais et Code du travail
   max: 5
 related_posts:
-- 4568-note-de-frais-definition-et-fonctionnement
 - 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
+- 4568-note-de-frais-definition-et-fonctionnement
+- 1820-note-de-frais-gratuite-modeles-a-telecharger
 - 4139-remboursement-de-note-de-frais-comment-ca-marche
 ---
 <h2>Ce que le code du travail dit vraiment sur les notes de frais</h2>

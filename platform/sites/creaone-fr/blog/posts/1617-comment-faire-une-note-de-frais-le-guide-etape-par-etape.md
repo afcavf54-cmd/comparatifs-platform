@@ -14,9 +14,10 @@ link_anchors:
 - text: faire une note de frais
   max: 5
 related_posts:
-- 4568-note-de-frais-definition-et-fonctionnement
 - 4139-remboursement-de-note-de-frais-comment-ca-marche
+- 4568-note-de-frais-definition-et-fonctionnement
 - 9301-note-de-frais-et-code-du-travail-ce-que-dit-la-loi
+- 1820-note-de-frais-gratuite-modeles-a-telecharger
 ---
 <h2>Ce que recouvre vraiment une note de frais</h2>
 

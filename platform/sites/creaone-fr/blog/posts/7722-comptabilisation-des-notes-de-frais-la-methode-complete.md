@@ -4,15 +4,20 @@ slug: 7722-comptabilisation-des-notes-de-frais-la-methode-complete
 date: '2026-07-22T17:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Comptabilisation note de frais : guide comptable 2026'
-meta_description: 'Comptabilisation des notes de frais : comptes PCG, traitement TVA et cas particuliers expliqués par une comptable avec 9 ans d''expérience terrain.'
+meta_description: 'Comptabilisation des notes de frais : comptes PCG, traitement TVA
+  et cas particuliers expliqués par une comptable avec 9 ans d''expérience terrain.'
 min_words: 1500
 status: published
 featured_image: /blog/7722-comptabilisation-des-notes-de-frais-la-methode-complete.jpg
 link_anchors:
 - text: comptabilisation des notes de frais
   max: 5
+related_posts:
+- 1820-note-de-frais-gratuite-modeles-a-telecharger
+- 4568-note-de-frais-definition-et-fonctionnement
+- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
+- 9301-note-de-frais-et-code-du-travail-ce-que-dit-la-loi
 ---
-
 <h2>Ce que cache vraiment une note de frais côté comptabilité</h2>
 
 <p>Neuf ans que je fais de la compta. Et je peux vous dire que les notes de frais, c'est le sujet qui revient le plus souvent en réunion de clôture. Pas parce que c'est compliqué en soi. Mais parce que les erreurs s'accumulent, les justificatifs manquent, et les comptes finissent par ne pas tomber juste.</p>

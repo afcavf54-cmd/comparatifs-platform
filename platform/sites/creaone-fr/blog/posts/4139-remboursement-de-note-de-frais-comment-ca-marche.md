@@ -13,9 +13,10 @@ link_anchors:
 - text: remboursement des notes de frais
   max: 5
 related_posts:
-- 9301-note-de-frais-et-code-du-travail-ce-que-dit-la-loi
-- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
 - 4568-note-de-frais-definition-et-fonctionnement
+- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
+- 9301-note-de-frais-et-code-du-travail-ce-que-dit-la-loi
+- 1820-note-de-frais-gratuite-modeles-a-telecharger
 ---
 <h2>Ce que couvre vraiment une note de frais (et ce qu'on oublie souvent)</h2>
 

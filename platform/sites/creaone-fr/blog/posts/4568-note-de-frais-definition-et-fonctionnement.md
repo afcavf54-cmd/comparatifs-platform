@@ -14,9 +14,10 @@ link_anchors:
 - text: définition d'une note de frais
   max: 5
 related_posts:
-- 9301-note-de-frais-et-code-du-travail-ce-que-dit-la-loi
-- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
 - 4139-remboursement-de-note-de-frais-comment-ca-marche
+- 9301-note-de-frais-et-code-du-travail-ce-que-dit-la-loi
+- 1820-note-de-frais-gratuite-modeles-a-telecharger
+- 7722-comptabilisation-des-notes-de-frais-la-methode-complete
 ---
 <p>Une note de frais. Tout le monde sait vaguement ce que c'est, mais dans la pratique, c'est souvent là que les choses se compliquent. Un salarié avance des frais professionnels, il veut être remboursé, et c'est à moi, côté comptabilité, de m'assurer que tout est conforme. Ça paraît simple. Ça ne l'est pas toujours.</p>
 
