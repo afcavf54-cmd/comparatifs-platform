@@ -71,7 +71,11 @@ jobs:
           git config user.name "Viseoweb HUB"
           git config user.email "hub@viseoweb.com"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git add platform/sites/${{ inputs.site }}/
+          # On stage TOUT le build : generate.py écrit aussi hors du dossier du
+          # site (editorial/dates partagés). Ne stager que platform/sites/<site>/
+          # laissait ces fichiers non stagés → `git rebase` échouait avec
+          # "cannot rebase: You have unstaged changes".
+          git add -A
 
           if git diff --cached --quiet; then
             echo "ℹ Aucun changement à commiter — push skip"
@@ -84,7 +88,7 @@ jobs:
           for i in 1 2 3 4 5; do
             echo "→ Push tentative $i/5..."
             git fetch origin main
-            if ! git rebase origin/main; then
+            if ! git rebase --autostash origin/main; then
               echo "  ⚠ Rebase a échoué (conflits ?), abort et retry"
               git rebase --abort 2>/dev/null || true
               sleep $((i * 2))
@@ -169,7 +173,7 @@ jobs:
           PUSH_OK=0
           for i in 1 2 3 4 5; do
             git fetch origin main
-            if ! git rebase origin/main; then
+            if ! git rebase --autostash origin/main; then
               git rebase --abort 2>/dev/null || true
               sleep $((i * 2))
               continue
