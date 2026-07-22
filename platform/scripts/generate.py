@@ -885,57 +885,69 @@ def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, a
 
 
 def cleanup_blog_output(output_dir: Path, current_blog_slugs: set) -> None:
-    """Supprime les sorties d'articles de blog DÉPUBLIÉS.
+    """Écrase les sorties d'articles de blog DÉPUBLIÉS par une page 404.
 
-    Les articles sont générés HORS de output/blog/ : un dossier output/{slug}/
-    (contenant index.html) + un fichier output/{slug}.html, tandis que l'image
-    featured est dans output/blog/{slug}.{jpg,png,...}.
-    `cleanup_removed_products` ne gère que les fichiers .html à la RACINE : il
-    supprime bien output/{slug}.html d'un article dépublié, mais laisse en place
-    le DOSSIER output/{slug}/ (donc /{slug}/ répond encore) et ne touche jamais
-    au sous-dossier output/blog/. Résultat : après suppression d'articles, les
-    vieilles pages restaient déployées.
+    ⚠ Cloudflare Pages CONSERVE les fichiers des anciens déploiements (rétention
+    du magasin d'assets). SUPPRIMER output/{slug}/index.html ne suffit donc pas :
+    Pages ressert l'ancienne version (constaté : /{slug}/ renvoyait encore 200
+    avec l'article, cf-cache-status=DYNAMIC, alors que le fichier n'était plus
+    dans output/). La seule méthode fiable — déjà utilisée pour les pages avis —
+    est d'ÉCRASER ces URLs par le contenu de 404.html, pour que le nouveau
+    déploiement l'emporte sur la version retenue.
 
-    Ce helper, pour chaque slug généré mais plus publié, supprime :
-      - le dossier output/{slug}/          (page article)
-      - le fichier output/{slug}.html      (variante sans slash)
-      - l'image output/blog/{slug}.{img}   (featured)
-    Et si PLUS AUCUN article n'est publié, il retire toute la liste output/blog/
-    (index + pagination) pour que /blog/ renvoie un vrai 404.
+    Pour chaque slug généré mais plus publié, on (re)crée donc, avec le HTML 404 :
+      - output/{slug}/index.html   (page article, URL /{slug}/)
+      - output/{slug}.html         (variante sans slash)
+    Et si PLUS AUCUN article n'est publié, on écrase aussi la liste output/blog/
+    (index + pagination).
 
-    Les slugs déjà générés sont détectés via les images output/blog/{slug}.{img}
-    (chaque article en a une). current_blog_slugs protège les articles publiés.
+    Détection des slugs déjà générés : images output/blog/{slug}.{img} ET
+    dossiers/fichiers top-level à préfixe numérique (les articles ont un slug
+    du type '1234-...'). current_blog_slugs protège les articles publiés.
     """
     IMG_EXT = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"}
     blog_dir = output_dir / "blog"
+
+    # Contenu 404 à écrire (lu depuis 404.html du build précédent, sinon minimal).
+    try:
+        html_404 = (output_dir / "404.html").read_text(encoding="utf-8")
+    except Exception:
+        html_404 = ("<!DOCTYPE html><html><head><meta charset='UTF-8'>"
+                    "<title>Page introuvable</title></head><body>"
+                    "<h1>Page introuvable</h1></body></html>")
 
     generated_slugs: set[str] = set()
     if blog_dir.exists():
         for img in blog_dir.iterdir():
             if img.is_file() and img.suffix.lower() in IMG_EXT:
                 generated_slugs.add(img.stem)
+    # Aussi : dossiers/fichiers top-level à préfixe numérique (slugs d'articles),
+    # au cas où l'image aurait disparu mais la page serait encore là.
+    for child in output_dir.iterdir():
+        nm = child.name[:-5] if child.name.endswith(".html") else child.name
+        if _re.match(r"^\d+-", nm):
+            generated_slugs.add(nm)
 
-    removed = 0
+    overwritten = 0
     for slug in sorted(generated_slugs - current_blog_slugs):
         if not slug:
             continue
-        for ext in IMG_EXT:
-            p = blog_dir / f"{slug}{ext}"
-            if p.exists():
-                p.unlink(); removed += 1
+        # (re)crée le dossier article et écrase index.html avec la 404
         d = output_dir / slug
-        if d.is_dir():
-            shutil.rmtree(d); removed += 1
-        f = output_dir / f"{slug}.html"
-        if f.exists():
-            f.unlink(); removed += 1
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "index.html").write_text(html_404, encoding="utf-8")
+        # écrase la variante {slug}.html
+        (output_dir / f"{slug}.html").write_text(html_404, encoding="utf-8")
+        overwritten += 1
 
-    # Plus aucun article publié -> supprimer la liste blog (index + pagination).
+    # Plus aucun article publié -> écraser la liste blog (index + pagination)
+    # par la 404 (là encore : écraser, pas supprimer, à cause de la rétention).
     if not current_blog_slugs and blog_dir.exists():
-        shutil.rmtree(blog_dir); removed += 1
+        for idx in blog_dir.rglob("index.html"):
+            idx.write_text(html_404, encoding="utf-8")
 
-    if removed:
-        print(f"  🧹 Blog : {removed} sortie(s) d'article dépublié nettoyée(s)")
+    if overwritten:
+        print(f"  🧹 Blog : {overwritten} article(s) dépublié(s) écrasé(s) avec 404")
 
 
 # ── Index JSON pré-calculé pour le dashboard ──────────────────────────────────
