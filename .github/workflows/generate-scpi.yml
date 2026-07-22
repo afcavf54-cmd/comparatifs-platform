@@ -133,7 +133,7 @@ jobs:
           git config user.email "hub@viseoweb.com"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
 
-          git add platform/sites/${{ inputs.site }}/
+          git add -A
           if git diff --cached --quiet; then
             echo "ℹ Pas de changement à commit"
             exit 0
@@ -149,7 +149,7 @@ jobs:
 
             # Rebase sur la dernière version de main
             git fetch origin main
-            if ! git rebase -X theirs origin/main; then
+            if ! git rebase -X theirs --autostash origin/main; then
               echo "⚠ Conflit de rebase, abort"
               git rebase --abort 2>/dev/null || true
               # Conflit non auto-résolvable, on tente quand même un retry après pause
@@ -246,7 +246,7 @@ jobs:
             echo "─── Push indexation tentative $attempt/$MAX_ATTEMPTS ───"
 
             git fetch origin main
-            if ! git rebase -X theirs origin/main; then
+            if ! git rebase -X theirs --autostash origin/main; then
               git rebase --abort 2>/dev/null || true
               SLEEP=$((RANDOM % 10 + 5))
               echo "⏳ Pause ${SLEEP}s avant retry"
