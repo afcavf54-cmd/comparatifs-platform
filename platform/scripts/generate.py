@@ -940,9 +940,21 @@ def cleanup_blog_output(output_dir: Path, current_blog_slugs: set) -> None:
         (output_dir / f"{slug}.html").write_text(html_404, encoding="utf-8")
         overwritten += 1
 
-    # Plus aucun article publié -> écraser la liste blog (index + pagination)
-    # par la 404 (là encore : écraser, pas supprimer, à cause de la rétention).
-    if not current_blog_slugs and blog_dir.exists():
+    # Plus aucun article publié -> RECRÉER la liste blog (index + pagination)
+    # avec la 404. On ne se contente pas d'écraser l'existant : un run précédent
+    # a pu SUPPRIMER output/blog/, or Cloudflare Pages ressert alors l'ancienne
+    # liste (rétention). On recrée donc index.html + un large éventail de pages
+    # de pagination /blog/{n}/ pour écraser toute page retenue.
+    if not current_blog_slugs:
+        blog_dir.mkdir(parents=True, exist_ok=True)
+        (blog_dir / "index.html").write_text(html_404, encoding="utf-8")
+        # Nb de pages inconnu (dossier supprimé) : on couvre large.
+        n_pages = max(8, (len(generated_slugs) + 9) // 10 + 2)
+        for n in range(2, n_pages + 1):
+            pdir = blog_dir / str(n)
+            pdir.mkdir(parents=True, exist_ok=True)
+            (pdir / "index.html").write_text(html_404, encoding="utf-8")
+        # Écrase aussi toute autre page déjà présente sous blog/ (sécurité).
         for idx in blog_dir.rglob("index.html"):
             idx.write_text(html_404, encoding="utf-8")
 
