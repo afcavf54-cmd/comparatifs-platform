@@ -14,10 +14,10 @@ link_anchors:
 - text: tableau de caractérisation
   max: 4
 related_posts:
-- 6202-les-6-phases-qui-rythment-le-deploiement-du-crm-smartsales-enterprise
-- 1953-le-logiciel-de-gestion-wizica-business-face-aux-autres-outils
-- 7159-rapidesk-solutions-face-aux-erp-surdimensionnes-pour-une-pme
-- 8636-les-6-atouts-de-l-abonnement-tpe-lemagdesentreprises
+- 6906-matrice-tows-transformer-votre-analyse-swot-en-actions-concretes
+- 4127-comment-choisir-son-agence-web-les-criteres-pour-trouver-un-partenaire-fiable
+- 7354-pain-point-identifier-les-freins-qui-empechent-vos-clients-d-acheter
+- 1486-comitologie-de-projet-organiser-la-gouvernance-et-les-prises-de-decision
 ---
 <p>Vingt ans à faire de la compta, ça apprend une chose : un projet mal cadré en amont coûte bien plus cher qu'un logiciel raté. J'ai vu des équipes tourner en rond pendant des semaines parce que personne n'avait pris le temps de poser les bonnes questions au départ. Le tableau de caractérisation, je l'ai découvert un peu par hasard, lors d'une formation gestion de projet que ma direction m'avait imposée. Je pensais que ça ne me concernait pas vraiment. J'avais tort.</p>
 

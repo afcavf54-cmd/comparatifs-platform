@@ -14,10 +14,7 @@ link_anchors:
 - text: créer une facture avec article en ligne gratuitement
   max: 5
 related_posts:
-- 9063-billmatic-auto-face-aux-plateformes-d-abonnement-sur-le-prix
-- 1106-integrateur-du-logiciel-ebp-a-la-roche-sur-yon-ou-licence-directe
-- 2004-billmatic-subscription-face-aux-solutions-d-abonnement-sur-le-prix
-- 3419-cashmaster-ultimate-face-au-tableur-de-tresorerie
+- 3755-le-marketing-alternatif-face-aux-campagnes-classiques
 ---
 <p>Vingt ans que je gère des factures. Au début, c'était Word, un tableau approximatif, et une imprimante qui coinçait trois fois sur quatre. Aujourd'hui, on peut créer une facture propre, conforme et envoyée en moins de cinq minutes, depuis un navigateur, sans rien installer. Mais encore faut-il savoir par où commencer.</p>
 

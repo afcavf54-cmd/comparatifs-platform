@@ -12,10 +12,10 @@ featured_image: /blog/2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-i
 status: published
 min_words: 1800
 related_posts:
-- 4967-infonet-comment-utiliser-cette-plateforme-pour-surveiller-les-entreprises
-- 6014-trimbox-analyse-complete-des-fonctionnalites-et-retours-utilisateurs
 - 1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise
+- 9079-tva-sur-option-comment-fonctionne-l-assujettissement-volontaire
 - 5780-roce-comment-evaluer-l-efficacite-du-capital-investi-dans-une-entreprise
+- 6014-trimbox-analyse-complete-des-fonctionnalites-et-retours-utilisateurs
 link_anchors:
 - text: avantages et inconvénients du quasi-usufruit
   max: 4

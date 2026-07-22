@@ -13,10 +13,10 @@ link_anchors:
 - text: actif net réévalué
   max: 4
 related_posts:
-- 2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-implications-patrimoniales
-- 4967-infonet-comment-utiliser-cette-plateforme-pour-surveiller-les-entreprises
-- 6014-trimbox-analyse-complete-des-fonctionnalites-et-retours-utilisateurs
+- 8253-bordereau-fiscal-modele-p-237-utilite-obtention-et-demarches-administratives
+- 9079-tva-sur-option-comment-fonctionne-l-assujettissement-volontaire
 - 5780-roce-comment-evaluer-l-efficacite-du-capital-investi-dans-une-entreprise
+- 2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-implications-patrimoniales
 ---
 <h2>Pourquoi l'actif net comptable ne suffit plus ?</h2>
 

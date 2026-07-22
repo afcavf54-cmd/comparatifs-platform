@@ -14,10 +14,10 @@ link_anchors:
 - text: assujettissement à la tva en cas d'opérations imposables sur option
   max: 4
 related_posts:
-- 1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise
-- 4967-infonet-comment-utiliser-cette-plateforme-pour-surveiller-les-entreprises
-- 6014-trimbox-analyse-complete-des-fonctionnalites-et-retours-utilisateurs
 - 5780-roce-comment-evaluer-l-efficacite-du-capital-investi-dans-une-entreprise
+- 1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise
+- 8253-bordereau-fiscal-modele-p-237-utilite-obtention-et-demarches-administratives
+- 2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-implications-patrimoniales
 ---
 <h2>Pourquoi choisir l'assujettissement volontaire à la TVA ?</h2>
 

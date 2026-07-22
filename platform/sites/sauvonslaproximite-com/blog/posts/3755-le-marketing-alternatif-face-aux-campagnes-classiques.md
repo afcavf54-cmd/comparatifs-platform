@@ -14,10 +14,7 @@ link_anchors:
 - text: le logiciel Sage en Ille-et-Vilaine
   max: 5
 related_posts:
-- 9100-la-generation-automatique-quotepro-smart-face-au-devis-fait-a-la-main
-- 2004-billmatic-subscription-face-aux-solutions-d-abonnement-sur-le-prix
-- 8096-integrateur-du-logiciel-sage-en-ille-et-vilaine-ou-licence-en-ligne
-- 9063-billmatic-auto-face-aux-plateformes-d-abonnement-sur-le-prix
+- 8135-les-5-etapes-pour-creer-une-facture-en-ligne-gratuite
 ---
 <p>Vingt ans à surveiller des lignes budgétaires, à valider des plans de communication et à demander des justifications sur chaque poste de dépense. J'ai vu passer des dizaines de campagnes marketing. Des classiques bien cadrées, avec leurs affichages, leurs spots radio, leurs insertions presse. Et depuis quelques années, quelque chose a changé dans les demandes qui atterrissent sur mon bureau.</p>
 

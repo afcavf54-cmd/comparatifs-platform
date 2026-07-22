@@ -14,10 +14,10 @@ link_anchors:
 - text: why how what
   max: 4
 related_posts:
-- 1953-le-logiciel-de-gestion-wizica-business-face-aux-autres-outils
-- 9153-les-6-atouts-du-logiciel-crm-salestrack-evolution
-- 8245-la-solution-de-conformite-rgpd-dataprotect-manager-face-a-un-consultant
-- 3982-les-5-etapes-pour-integrer-loyaltymax-a-votre-crm
+- 2639-strategie-de-croissance-comment-developper-votre-entreprise-sur-le-long-terme
+- 2218-tableau-de-caracterisation-methode-simple-pour-analyser-un-projet-efficacement
+- 5553-sepo-comprendre-cette-methode-pour-analyser-les-performances-de-votre-organisation
+- 6906-matrice-tows-transformer-votre-analyse-swot-en-actions-concretes
 ---
 <p>Vingt ans à construire des clôtures mensuelles, à piloter des budgets prévisionnels, à expliquer des écarts de charges à des directeurs généraux qui veulent des réponses en trente secondes. Ce que j'ai appris dans tout ça, c'est qu'une entreprise qui ne sait pas <em>pourquoi</em> elle existe aura toujours du mal à aligner ses équipes sur le <em>comment</em> faire. Et ça, ce n'est pas une intuition de comptable. C'est ce que Simon Sinek a formalisé dans son concept du <strong>Golden Circle</strong>, et franchement, depuis que je l'ai appliqué à ma propre façon de travailler, j'ai changé ma lecture de pas mal de situations.</p>
 

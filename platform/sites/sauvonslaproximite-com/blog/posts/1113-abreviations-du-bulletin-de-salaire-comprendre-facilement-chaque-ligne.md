@@ -14,10 +14,10 @@ link_anchors:
 - text: abréviation sur un bulletin de salaire
   max: 4
 related_posts:
-- 2942-demission-et-anciennete-quels-avantages-conservez-vous-apres-votre-depart
-- 5825-conge-paternite-syntec-duree-indemnisation-et-formalites-a-respecter
-- 4596-conges-payes-en-retraite-progressive-comment-calculer-vos-droits
+- 9641-licenciement-pour-inaptitude-les-erreurs-a-eviter-pour-defendre-vos-interets
 - 3017-je-fais-moins-d-heures-que-prevu-dans-mon-cdi-quels-recours-engager
+- 3837-radiation-pole-emploi-combien-d-avertissements-avant-une-sanction
+- 8972-horaire-decale-quels-droits-et-obligations-pour-les-salaries-concernes
 ---
 <p>Vingt ans que je traite des bulletins de paie. Et pourtant, chaque fois que j'en explique un à un salarié, je vois le même regard : un mélange de curiosité et de légère panique. Les abréviations s'enchaînent, les montants se soustraient, et à la fin, on ne comprend pas vraiment pourquoi le net à payer est si loin du brut annoncé à l'embauche.</p>
 

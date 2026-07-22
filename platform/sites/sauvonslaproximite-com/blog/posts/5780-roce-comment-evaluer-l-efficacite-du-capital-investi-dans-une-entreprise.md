@@ -14,10 +14,10 @@ link_anchors:
 - text: roce
   max: 4
 related_posts:
+- 6014-trimbox-analyse-complete-des-fonctionnalites-et-retours-utilisateurs
+- 8253-bordereau-fiscal-modele-p-237-utilite-obtention-et-demarches-administratives
 - 2960-quasi-usufruit-comprendre-son-fonctionnement-et-ses-implications-patrimoniales
 - 1150-actif-net-reevalue-comment-mesurer-la-valeur-reelle-d-une-entreprise
-- 4967-infonet-comment-utiliser-cette-plateforme-pour-surveiller-les-entreprises
-- 6014-trimbox-analyse-complete-des-fonctionnalites-et-retours-utilisateurs
 ---
 <h2>Le ROCE, votre meilleur indicateur pour piloter la rentabilité</h2>
 

@@ -15,9 +15,9 @@ link_anchors:
   max: 4
 related_posts:
 - 5553-sepo-comprendre-cette-methode-pour-analyser-les-performances-de-votre-organisation
-- 1126-les-5-etapes-d-installation-du-logiciel-crm-mobile-fieldforce-sync
-- 5733-les-modules-mobiles-de-securite-erp-face-a-l-acces-au-bureau-seul
-- 7377-les-7-atouts-du-logiciel-crm-businesspro-x4
+- 3324-why-how-what-appliquer-le-golden-circle-pour-renforcer-votre-strategie
+- 4127-comment-choisir-son-agence-web-les-criteres-pour-trouver-un-partenaire-fiable
+- 2639-strategie-de-croissance-comment-developper-votre-entreprise-sur-le-long-terme
 ---
 <p>Vingt ans que je travaille dans la finance et la comptabilité d'entreprises de taille intermédiaire. Et vingt ans que j'observe le même problème se répéter : des décisions prises n'importe où, n'importe quand, par n'importe qui. Un directeur commercial qui engage une dépense hors budget. Un chef de projet qui valide seul un prestataire à 80 000 euros. Une équipe entière qui attend une validation bloquée depuis trois semaines parce que personne ne sait à qui s'adresser.</p>
 
