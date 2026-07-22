@@ -121,6 +121,24 @@ def main():
         else:
             print(f"  ⚠ Page Rule : {rule_result.get('errors', '')}")
 
+    # ── 4. Purge le cache de la zone ─────────────────────────────────────────
+    # Sans ça, les pages supprimées (articles, classements dépubliés…) restent
+    # servies depuis le cache edge Cloudflare jusqu'à expiration de leur TTL.
+    # On purge donc toute la zone après chaque déploiement pour que les
+    # changements soient visibles immédiatement.
+    purge = cf_request(
+        "POST",
+        f"{base}/zones/{zone_id}/purge_cache",
+        api_token,
+        {"purge_everything": True}
+    )
+    if purge.get("success"):
+        print(f"  ✓ Cache Cloudflare purgé (zone {raw_domain})")
+    else:
+        print(f"  ⚠ Purge cache échouée : {purge.get('errors', '')}")
+        print("    → le token CLOUDFLARE_API_TOKEN doit avoir la permission "
+              "« Zone → Cache Purge → Purge ».")
+
 
 if __name__ == "__main__":
     main()
