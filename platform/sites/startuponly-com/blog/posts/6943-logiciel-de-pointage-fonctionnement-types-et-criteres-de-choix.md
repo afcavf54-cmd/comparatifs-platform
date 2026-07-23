@@ -4,15 +4,17 @@ slug: 6943-logiciel-de-pointage-fonctionnement-types-et-criteres-de-choix
 date: '2026-07-23T22:36:46+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logiciel de pointage : fonctionnement et types'
-meta_description: Découvrez comment fonctionne un logiciel de pointage, les différents types disponibles et les critères essentiels pour choisir la solution adaptée à votre équipe.
+meta_description: Découvrez comment fonctionne un logiciel de pointage, les différents
+  types disponibles et les critères essentiels pour choisir la solution adaptée à
+  votre équipe.
 min_words: 1800
 status: published
 featured_image: /blog/6943-logiciel-de-pointage-fonctionnement-types-et-criteres-de-choix.jpg
 link_anchors:
 - text: logiciel de pointage
   max: 5
+related_posts: []
 ---
-
 <p>J'ai mis du temps avant de prendre ça au sérieux. Pendant longtemps, on gérait les horaires de l'équipe sur un Google Sheet partagé. Chacun renseignait ses heures, on vérifiait à la fin du mois, et... on espérait que tout le monde était honnête. Pas très pro. Et franchement, source de tensions.</p>
 
 <p>Quand on a passé les 3 salariés, j'ai compris qu'il fallait changer de méthode. C'est là que je me suis plongé dans le sujet des logiciels de pointage. Et j'ai vite réalisé que c'est un marché bien plus varié que ce que je pensais.</p>
