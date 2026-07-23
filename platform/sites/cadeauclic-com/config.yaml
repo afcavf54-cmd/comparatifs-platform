@@ -7,7 +7,8 @@
 # ============================================================
 
 site:
-  google_site_verification: ""
+  linkavista_verification: ""
+  google_site_verification: "hTiQv0OoOegRqMIVqNkP7gheM-GhSoY_S2ex1ZfPJws"
   home_h1: ""
   blog_sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ6VAYBGV15Prr0PtBYDzmUR5vkn7sBJAcAdq2cYQftfIi7CN2ahf8WhJx299YcqLCoYC-N7I4gY2p0/pub?gid=0&single=true&output=csv"
   slug: cadeauclic-com
@@ -26,7 +27,7 @@ site:
   home_description: "CadeauCLic : votre source d'inspiration pour trouver des idées cadeaux pour toutes les occasions de la vie ..."
   template: "comparatif-vs-scpi.html.j2"
   index_template: "index.html.j2"
-  analytics_clicky: "<script async data-id=\"101505106\" src=\"//static.getclicky.com/js\"></script>"
+  analytics_clicky: "<script async data-id=\\\"101505106\\\" src=\\\"//static.getclicky.com/js\\\"></script>"
   contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
 
 page_types:
