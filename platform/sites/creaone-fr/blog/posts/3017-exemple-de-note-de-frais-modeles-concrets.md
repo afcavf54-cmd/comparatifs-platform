@@ -4,15 +4,21 @@ slug: 3017-exemple-de-note-de-frais-modeles-concrets
 date: '2026-07-23T11:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Note de frais exemple : nos modèles concrets'
-meta_description: Téléchargez des exemples concrets de notes de frais prêts à l'emploi. Modèles par type de dépense, champs obligatoires et erreurs fréquentes à éviter absolument.
+meta_description: Téléchargez des exemples concrets de notes de frais prêts à l'emploi.
+  Modèles par type de dépense, champs obligatoires et erreurs fréquentes à éviter
+  absolument.
 min_words: 1000
 status: published
 featured_image: /blog/3017-exemple-de-note-de-frais-modeles-concrets.jpg
 link_anchors:
 - text: exemple de note de frais
   max: 5
+related_posts:
+- 9301-note-de-frais-et-code-du-travail-ce-que-dit-la-loi
+- 4568-note-de-frais-definition-et-fonctionnement
+- 1820-note-de-frais-gratuite-modeles-a-telecharger
+- 7722-comptabilisation-des-notes-de-frais-la-methode-complete
 ---
-
 <p>Neuf ans que je gère des notes de frais. Neuf ans que je vois des salariés débarquer avec des tickets illisibles, des justificatifs dans tous les sens, parfois un bout de serviette en guise de reçu de restaurant. Et la question qui revient systématiquement : "T'as pas un modèle à me donner ?"</p>
 
 <p>Alors voilà. Je vous partage ce que j'utilise vraiment au quotidien, avec des exemples concrets, les erreurs à éviter, et les cas de figure les plus fréquents dans une entreprise de taille intermédiaire.</p>
