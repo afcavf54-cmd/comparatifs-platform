@@ -4,30 +4,31 @@
 <meta charset="UTF-8">
 <link rel="icon" href="/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plan du site | creaone.fr</title>
-<meta name="description" content="Plan du site creaone.fr - toutes les pages disponibles.">
-<link rel="canonical" href="https://creaone.fr/plan-du-site">
+<title>Page introuvable | creaone.fr</title>
+<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=creaone-fr" rel="stylesheet">
 <style>
 :root{
   --bg:#F4F7FA;
   --surface:#fff;
+  --surface2:#F0ECE5;
   --ink:#1C2733;
   --ink2:#6B6560;
   --ink3:#A09890;
   --accent:#0F3D5E;
-  --accent2:#1D70A2;
-  --cta:#168551;
-  --cta-text:#FFFFFF;
+  --accent2:#1D70A2;--cta:#168551;--cta-text:#FFFFFF;
   --border:#E2DDD6;
   --r:12px;
   --r2:20px;
+  --green:#1A7A4A;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
-a{text-decoration:none;color:inherit}
-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;height:64px;position:sticky;top:0;z-index:100}
+a{color:inherit;text-decoration:none}
+
+/* ── NAV ── */
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
 .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
 .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
 .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
@@ -36,31 +37,28 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;height:6
 .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s;flex-shrink:0}
 .nav-cta:hover{opacity:.88}
 .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
-.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
 .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
 .nav-mobile.open{display:flex}
 .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
-main{max-width:1200px;margin:0 auto;padding:56px 5vw 80px}
-h1{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,48px);font-weight:400;letter-spacing:-.02em;margin-bottom:8px}
-.subtitle{font-size:16px;color:var(--ink3);margin-bottom:48px}
-.sitemap-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-.sitemap-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px}
-.sitemap-section h2{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);color:var(--ink)}
-.sitemap-section ul{list-style:none}
-.sitemap-section li{padding:7px 0;border-bottom:0.5px solid var(--border);font-size:15px}
-.sitemap-section li:last-child{border-bottom:none}
-.sitemap-section a{color:var(--ink2);display:flex;align-items:center;gap:8px;transition:.15s}
-.sitemap-section a:hover{color:var(--accent)}
-.sitemap-section a::before{content:"→";color:var(--accent);font-size:12px;flex-shrink:0}
-.sitemap-full{grid-column:1/-1}
-.cat-group-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink3);padding-bottom:8px;border-bottom:1px solid var(--border);margin-bottom:12px;margin-top:20px}
-.cat-group-title:first-child{margin-top:0}
-.sitemap-count{font-size:13px;color:var(--ink3);font-weight:400;margin-left:6px}
-@media(max-width:768px){.sitemap-grid{grid-template-columns:1fr}.nav-links,.nav-cta{display:none}.nav-burger{display:flex}}
+.nav-mobile a:hover{color:#fff;background:rgba(255,255,255,.08)}
+
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 5vw;text-align:center}
+.code{font-family:'DM Serif Display',serif;font-size:clamp(80px,15vw,160px);font-weight:400;color:var(--accent);line-height:1;margin-bottom:16px;opacity:.15}
+h1{font-family:'DM Serif Display',serif;font-size:clamp(24px,4vw,40px);font-weight:400;margin-bottom:12px}
+p{font-size:17px;color:#718096;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;background:var(--accent);color:#fff;font-size:16px;font-weight:600;text-decoration:none;transition:.15s}
+.btn:hover{background:var(--cta,var(--accent2))}
+.links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.link-sec{color:var(--accent);font-size:14px;text-decoration:none;padding:8px 16px;border-radius:8px;border:1px solid var(--border)}
+.link-sec:hover{background:var(--border)}
+
 </style>
 </head>
 <body>
-
 <style>
 nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
 nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
@@ -138,96 +136,17 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     });
   });
 })();
-</script>
-<main>
-  <h1>Plan du site</h1>
-  <p class="subtitle">creaone.fr — toutes les pages disponibles</p>
-
-  <div class="sitemap-grid">
-
-    <div class="sitemap-section">
-      <h2>Pages principales</h2>
-      <ul>
-        <li><a href="/">Accueil</a></li>
-        <li><a href="/a-propos/">À propos</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/nos-comparateurs">Nos comparateurs</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="/mentions-legales">Mentions légales</a></li>
-        <li><a href="/politique-confidentialite">Politique de confidentialité</a></li>
-      </ul>
+</script><main>
+  <div>
+    <div class="code">404</div>
+    <h1>Page introuvable</h1>
+    <p>La page que vous recherchez n'existe pas ou a été déplacée. Revenez à l'accueil pour trouver votre comparatif.</p>
+    <a href="/" class="btn">← Retour à l'accueil</a>
+    <div class="links">
+      <a href="/nos-comparateurs" class="link-sec">Nos comparateurs</a>
     </div>
-
-    <div class="sitemap-section sitemap-full">
-      <h2>Nos classements</h2>
-        <div class="cat-group-title">Services aux entreprises</div>
-        <ul>
-          <li><a href="/meilleur-creation-d-entreprise-en-ligne">Meilleur Création d’entreprise en ligne</a></li>
-        </ul>
-        <div class="cat-group-title">Ressources Humaines (RH)</div>
-        <ul>
-          <li><a href="/meilleur-logiciel-de-paie">Meilleur Logiciel de paie</a></li>
-          <li><a href="/meilleur-logiciel-de-systeme-d-information-rh-sirh">Meilleur Logiciel de système d'information RH (SIRH)</a></li>
-          <li><a href="/meilleur-logiciels-de-recrutement">Meilleur Logiciels de Recrutement</a></li>
-          <li><a href="/meilleur-logiciel-de-bien-etre-des-employes">Meilleur Logiciel de bien-être des employés</a></li>
-          <li><a href="/meilleur-logiciel-de-gestion-des-temps">Meilleur Logiciel de gestion des temps</a></li>
-          <li><a href="/meilleur-logiciel-de-gestion-des-conges-et-absences">Meilleur Logiciel de gestion des congés et absences</a></li>
-          <li><a href="/meilleur-logiciel-de-engagement-des-collaborateurs">Meilleur Logiciel de engagement des collaborateurs</a></li>
-          <li><a href="/meilleur-logiciel-de-gestion-des-competences">Meilleur Logiciel de gestion des compétences</a></li>
-          <li><a href="/meilleur-logiciel-de-gestion-des-talents">Meilleur Logiciel de gestion des talents</a></li>
-          <li><a href="/meilleur-logiciels-de-gestion-de-planning">Meilleur Logiciels de gestion de planning</a></li>
-          <li><a href="/meilleur-logiciels-d-onboarding">Meilleur Logiciels d’onboarding</a></li>
-          <li><a href="/meilleur-logiciel-de-pointage">Meilleur Logiciel de pointage</a></li>
-        </ul>
-        <div class="cat-group-title">Finances et comptabilité</div>
-        <ul>
-          <li><a href="/meilleur-logiciel-de-facturation-electronique">Meilleur Logiciel de facturation électronique</a></li>
-          <li><a href="/meilleur-logiciel-de-recouvrement">Meilleur Logiciel de recouvrement</a></li>
-          <li><a href="/meilleur-logiciel-d-audit-et-commissariat-aux-comptes">Meilleur Logiciel d'audit et commissariat aux comptes</a></li>
-          <li><a href="/meilleur-logiciel-de-gestion-d-abonnements">Meilleur Logiciel de gestion d'abonnements</a></li>
-          <li><a href="/meilleur-logiciel-de-gestion-de-caisse">Meilleur Logiciel de gestion de caisse</a></li>
-          <li><a href="/meilleur-logiciel-de-notes-de-frais">Meilleur Logiciel de notes de frais</a></li>
-          <li><a href="/meilleur-logiciel-de-comptabilite-gratuit">Meilleur Logiciel de comptabilité gratuit</a></li>
-          <li><a href="/meilleur-logiciel-de-gestion-de-l-avance-immediate-de-credit-d-impots">Meilleur Logiciel de gestion de l’avance immédiate de crédit d’impôts</a></li>
-          <li><a href="/meilleur-banque-pro-en-ligne">Meilleur Banque pro en ligne</a></li>
-          <li><a href="/meilleur-logiciel-de-data-visualisation">Meilleur Logiciel de data visualisation</a></li>
-          <li><a href="/meilleur-logiciel-de-gestion-financiere">Meilleur Logiciel de gestion financière</a></li>
-          <li><a href="/meilleur-terminaux-de-paiement">Meilleur Terminaux de paiement</a></li>
-          <li><a href="/meilleur-logiciel-de-gestion-d-association">Meilleur Logiciel de gestion d’association</a></li>
-          <li><a href="/meilleur-logiciel-erp">Meilleur Logiciel ERP</a></li>
-          <li><a href="/meilleur-logiciel-de-gestion-de-tresorerie">Meilleur Logiciel de gestion de trésorerie</a></li>
-          <li><a href="/meilleur-logiciel-de-facturation">Meilleur Logiciel de facturation</a></li>
-          <li><a href="/meilleur-logiciel-de-comptabilite">Meilleur Logiciel de comptabilité</a></li>
-          <li><a href="/meilleur-expert-comptable-en-ligne">Meilleur Expert-comptable en ligne</a></li>
-        </ul>
-        <div class="cat-group-title">Marketing</div>
-        <ul>
-          <li><a href="/meilleur-logiciel-d-emailing">Meilleur Logiciel d’emailing</a></li>
-          <li><a href="/meilleur-logiciel-de-cold-emailing-outreach">Meilleur Logiciel de cold emailing / outreach</a></li>
-          <li><a href="/meilleur-logiciel-de-creation-de-site-web">Meilleur Logiciel de création de site web</a></li>
-        </ul>
-    </div>
-
-    <div class="sitemap-section sitemap-full">
-      <h2>Articles du blog <span class="sitemap-count">(9)</span></h2>
-
-        <div class="cat-group-title">Comptabilité <span class="sitemap-count">(9)</span></div>
-        <ul>
-          <li><a href="/6831-note-de-frais-a-imprimer-modele-pdf-gratuit/">Note de frais à imprimer : modèle PDF gratuit</a></li>
-          <li><a href="/2063-note-de-frais-excel-modele-pret-a-l-emploi/">Note de frais Excel : modèle prêt à l'emploi</a></li>
-          <li><a href="/3017-exemple-de-note-de-frais-modeles-concrets/">Exemple de note de frais : modèles concrets</a></li>
-          <li><a href="/7722-comptabilisation-des-notes-de-frais-la-methode-complete/">Comptabilisation des notes de frais : la méthode complète</a></li>
-          <li><a href="/1820-note-de-frais-gratuite-modeles-a-telecharger/">Note de frais gratuite : modèles à télécharger</a></li>
-          <li><a href="/4139-remboursement-de-note-de-frais-comment-ca-marche/">Remboursement de note de frais : comment ça marche</a></li>
-          <li><a href="/9301-note-de-frais-et-code-du-travail-ce-que-dit-la-loi/">Note de frais et code du travail : ce que dit la loi</a></li>
-          <li><a href="/4568-note-de-frais-definition-et-fonctionnement/">Note de frais : définition et fonctionnement</a></li>
-          <li><a href="/1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape/">Comment faire une note de frais : le guide étape par étape</a></li>
-        </ul>
-    </div>
-
   </div>
 </main>
-
 <style>
 .footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
 .footer-inner{max-width:1200px;margin:0 auto}
@@ -274,7 +193,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 creaone.fr — Données actualisées le 24 juillet 2026
+        © 2026 creaone.fr — Données actualisées le 26 juin 2026
       </div>
     </div>
   </div>
@@ -372,7 +291,5 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   // Check immédiat (au cas où la page est rechargée déjà scrollée)
   update();
 })();
-</script>
-
-</body>
+</script></body>
 </html>
