@@ -4,15 +4,18 @@ slug: 6425-logiciel-de-gestion-des-temps-de-travail-a-quoi-ca-sert-vraiment
 date: '2026-07-24T08:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logiciel gestion des temps de travail : à quoi ça sert ?'
-meta_description: 'Découvrez à quoi sert vraiment un logiciel de gestion des temps de travail : suivi des heures, congés, paie sans erreurs. Un outil concret pour managers.'
+meta_description: 'Découvrez à quoi sert vraiment un logiciel de gestion des temps
+  de travail : suivi des heures, congés, paie sans erreurs. Un outil concret pour
+  managers.'
 min_words: 1500
 status: published
 featured_image: /blog/6425-logiciel-de-gestion-des-temps-de-travail-a-quoi-ca-sert-vraiment.jpg
 link_anchors:
 - text: logiciel de gestion du temps de travail
   max: 5
+related_posts:
+- 6943-logiciel-de-pointage-fonctionnement-types-et-criteres-de-choix
 ---
-
 <h2>Gérer le temps de travail sans outil adapté, c'est une perte sèche</h2>
 
 <p>Quand j'ai lancé ma boîte, je gérais tout à la main. Feuilles Excel, messages WhatsApp pour les absences, estimations à la louche pour les heures sup. Résultat : des erreurs de paie, des tensions avec mes deux premiers salariés, et moi qui passais deux heures chaque fin de mois à réconcilier des données qui ne collaient jamais vraiment.</p>

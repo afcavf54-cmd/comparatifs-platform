@@ -13,7 +13,8 @@ featured_image: /blog/6943-logiciel-de-pointage-fonctionnement-types-et-criteres
 link_anchors:
 - text: logiciel de pointage
   max: 5
-related_posts: []
+related_posts:
+- 6425-logiciel-de-gestion-des-temps-de-travail-a-quoi-ca-sert-vraiment
 ---
 <p>J'ai mis du temps avant de prendre ça au sérieux. Pendant longtemps, on gérait les horaires de l'équipe sur un Google Sheet partagé. Chacun renseignait ses heures, on vérifiait à la fin du mois, et... on espérait que tout le monde était honnête. Pas très pro. Et franchement, source de tensions.</p>
 
