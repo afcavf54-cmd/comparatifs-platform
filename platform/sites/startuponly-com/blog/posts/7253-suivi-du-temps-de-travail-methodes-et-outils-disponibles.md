@@ -4,15 +4,19 @@ slug: 7253-suivi-du-temps-de-travail-methodes-et-outils-disponibles
 date: '2026-07-25T11:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Suivi du temps de travail : méthodes et outils'
-meta_description: 'Découvrez les meilleures méthodes et outils pour le suivi du temps de travail : du tableur Excel aux logiciels spécialisés, trouvez la solution adaptée à votre…'
+meta_description: 'Découvrez les meilleures méthodes et outils pour le suivi du temps
+  de travail : du tableur Excel aux logiciels spécialisés, trouvez la solution adaptée
+  à votre…'
 min_words: 1400
 status: published
 featured_image: /blog/7253-suivi-du-temps-de-travail-methodes-et-outils-disponibles.jpg
 link_anchors:
 - text: suivi du temps de travail en entreprise
   max: 5
+related_posts:
+- 6425-logiciel-de-gestion-des-temps-de-travail-a-quoi-ca-sert-vraiment
+- 6943-logiciel-de-pointage-fonctionnement-types-et-criteres-de-choix
 ---
-
 <h2>Pourquoi le suivi du temps de travail est devenu mon obsession (et comment j'ai trouvé la bonne méthode)</h2>
 
 <p>Quand j'ai lancé ma startup à Bordeaux, je gérais tout à l'intuition. Les heures travaillées par mes premiers salariés ? Personne ne les comptait vraiment. Résultat : un flou total sur qui faisait quoi, combien de temps ça prenait, et surtout pourquoi certains projets dérapaient systématiquement. J'ai mis presque six mois à réaliser que mon problème de rentabilité venait de là.</p>
