@@ -4,15 +4,21 @@ slug: 6246-justificatif-de-note-de-frais-ce-qu-il-faut-savoir
 date: '2026-07-25T07:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Justificatif note de frais : le guide complet'
-meta_description: 'Justificatif de note de frais : découvrez quelles informations sont obligatoires, quand un ticket suffit et comment éviter les erreurs lors d''un contrôle fiscal.'
+meta_description: 'Justificatif de note de frais : découvrez quelles informations
+  sont obligatoires, quand un ticket suffit et comment éviter les erreurs lors d''un
+  contrôle fiscal.'
 min_words: 1000
 status: published
 featured_image: /blog/6246-justificatif-de-note-de-frais-ce-qu-il-faut-savoir.jpg
 link_anchors:
 - text: justificatif de note de frais
   max: 5
+related_posts:
+- 9857-modele-de-note-de-frais-lequel-utiliser
+- 4139-remboursement-de-note-de-frais-comment-ca-marche
+- 4568-note-de-frais-definition-et-fonctionnement
+- 2063-note-de-frais-excel-modele-pret-a-l-emploi
 ---
-
 <h2>Ce que le justificatif de note de frais doit vraiment contenir</h2>
 
 <p>On me pose souvent la question en interne : "Est-ce que je peux rembourser sans ticket ?" La réponse courte, c'est non. La réponse longue, c'est... aussi non, mais avec des nuances qu'il vaut mieux connaître avant de valider quoi que ce soit.</p>
