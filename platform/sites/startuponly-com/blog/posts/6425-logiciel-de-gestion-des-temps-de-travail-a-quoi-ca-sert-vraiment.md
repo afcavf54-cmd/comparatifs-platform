@@ -16,6 +16,7 @@ link_anchors:
 related_posts:
 - 6943-logiciel-de-pointage-fonctionnement-types-et-criteres-de-choix
 - 7253-suivi-du-temps-de-travail-methodes-et-outils-disponibles
+- 5662-suivi-du-temps-de-travail-quelles-sont-les-obligations-legales
 ---
 <h2>Gérer le temps de travail sans outil adapté, c'est une perte sèche</h2>
 

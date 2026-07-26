@@ -4,15 +4,20 @@ slug: 5662-suivi-du-temps-de-travail-quelles-sont-les-obligations-legales
 date: '2026-07-26T18:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Suivi du temps de travail : obligations légales en France'
-meta_description: 'Suivi du temps de travail : découvrez vos obligations légales en tant qu''employeur et les risques concrets si vous ne respectez pas les règles du Code du travail.'
+meta_description: 'Suivi du temps de travail : découvrez vos obligations légales en
+  tant qu''employeur et les risques concrets si vous ne respectez pas les règles du
+  Code du travail.'
 min_words: 1400
 status: published
 featured_image: /blog/5662-suivi-du-temps-de-travail-quelles-sont-les-obligations-legales.jpg
 link_anchors:
 - text: obligations liées au suivi du temps de travail
   max: 5
+related_posts:
+- 6943-logiciel-de-pointage-fonctionnement-types-et-criteres-de-choix
+- 6425-logiciel-de-gestion-des-temps-de-travail-a-quoi-ca-sert-vraiment
+- 7253-suivi-du-temps-de-travail-methodes-et-outils-disponibles
 ---
-
 <p>Quand j'ai lancé ma boîte, le suivi du temps de travail c'était la dernière chose à laquelle je pensais. On était trois, on se connaissait, tout le monde bossait. Et puis on a grossi, j'ai embauché, et là j'ai commencé à me poser des questions. Est-ce que je dois vraiment pointer les heures de tout le monde ? C'est quoi exactement mes obligations ? Est-ce que je risque quelque chose si je ne le fais pas ?</p>
 
 <p>Spoiler : oui, tu risques quelque chose. Et les règles sont plus précises qu'on ne le croit.</p>
