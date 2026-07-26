@@ -4,15 +4,20 @@ slug: 2861-note-de-frais-sans-justificatif-est-ce-possible
 date: '2026-07-26T10:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Note de frais sans justificatif : que dit la loi'
-meta_description: 'Note de frais sans justificatif : découvrez quand c''est légalement possible, les règles URSSAF à respecter et comment éviter tout redressement fiscal.'
+meta_description: 'Note de frais sans justificatif : découvrez quand c''est légalement
+  possible, les règles URSSAF à respecter et comment éviter tout redressement fiscal.'
 min_words: 900
 status: published
 featured_image: /blog/2861-note-de-frais-sans-justificatif-est-ce-possible.jpg
 link_anchors:
 - text: note de frais sans justificatif
   max: 5
+related_posts:
+- 4568-note-de-frais-definition-et-fonctionnement
+- 2063-note-de-frais-excel-modele-pret-a-l-emploi
+- 6831-note-de-frais-a-imprimer-modele-pdf-gratuit
+- 9301-note-de-frais-et-code-du-travail-ce-que-dit-la-loi
 ---
-
 <h2>Ce que dit vraiment la réglementation</h2>
 
 <p>Je vais poser la question clairement : peut-on valider une note de frais sans justificatif ? La réponse courte, c'est non. La réponse complète, c'est que ça dépend du montant, du type de dépense, et de ce que votre entreprise a décidé dans sa politique interne. Mais ne vous faites pas d'illusions, l'administration fiscale ne laisse aucune place à l'improvisation là-dessus.</p>
