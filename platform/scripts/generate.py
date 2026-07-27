@@ -854,10 +854,22 @@ def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, a
     for slug_a, slug_b in all_pairs:
         expected_files.add(f"{slug_a}-vs-{slug_b}.html")
 
-    # Supprimer les fichiers HTML orphelins
+    # Supprimer les fichiers HTML orphelins (mais JAMAIS les fichiers de
+    # vérification de moteurs/analytics : Google Search Console, Clicky, Bing…
+    # qui doivent rester à la racine et ne sont pas des pages « attendues »).
+    def _is_verification_file(name: str) -> bool:
+        n = name.lower()
+        return (
+            (n.startswith("google") and n.endswith(".html")) or   # googleXXXX.html (Search Console)
+            n.startswith("clicky") or                              # clicky auth
+            "site-verification" in n or "-verification" in n or
+            n == "bingsiteauth.xml" or
+            n.startswith("yandex_") or n.startswith("pinterest-")
+        )
+
     removed = []
     for f in output_dir.glob("*.html"):
-        if f.name not in expected_files:
+        if f.name not in expected_files and not _is_verification_file(f.name):
             f.unlink()
             removed.append(f.name)
     for f in output_dir.glob("*.png"):
