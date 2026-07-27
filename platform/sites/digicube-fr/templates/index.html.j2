@@ -10,6 +10,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% if site.google_site_verification is defined and site.google_site_verification %}
+<meta name="google-site-verification" content="{{ site.google_site_verification }}">
+{% endif %}
+{% if site.analytics_clicky is defined and site.analytics_clicky %}
+{% if '<script' in site.analytics_clicky %}
+{{ site.analytics_clicky | safe }}
+{% else %}
+<script async data-id="{{ site.analytics_clicky }}" src="//static.getclicky.com/js"></script>
+{% endif %}
+{% endif %}
 
 <title>{{ site.home_title | default("Digicube : l'information dédiée à la digitalisation des entreprises") }}</title>
 <meta name="description" content="{{ site.home_description | default('Digicube décrypte les logiciels, services numériques, innovations technologiques et tendances digitales qui accompagnent les entreprises.') }}">
@@ -1096,7 +1106,7 @@ h1,h2,h3,h4{
       {% if recent_blog_posts is defined and recent_blog_posts %}
         {% for p in recent_blog_posts[:6] %}
         <article class="post">
-          <a class="card-link" href="/{{ p.slug }}/">Lire : {{ p.title }}</a>
+          <a class="card-link" href="/{{ p.slug }}">Lire : {{ p.title }}</a>
           {% if p.featured_image %}
           <img class="post-image" src="{{ p.featured_image }}" alt="{{ p.title }}" loading="lazy">
           {% else %}
