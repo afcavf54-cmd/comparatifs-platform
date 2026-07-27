@@ -15,6 +15,7 @@ link_anchors:
   max: 5
 related_posts:
 - 6943-logiciel-de-pointage-fonctionnement-types-et-criteres-de-choix
+- 1727-badgeuse-en-entreprise-cadre-reglementaire-et-obligations
 - 7253-suivi-du-temps-de-travail-methodes-et-outils-disponibles
 - 5662-suivi-du-temps-de-travail-quelles-sont-les-obligations-legales
 ---

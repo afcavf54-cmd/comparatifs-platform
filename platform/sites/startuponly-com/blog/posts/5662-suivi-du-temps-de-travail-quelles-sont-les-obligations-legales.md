@@ -15,8 +15,9 @@ link_anchors:
   max: 5
 related_posts:
 - 6943-logiciel-de-pointage-fonctionnement-types-et-criteres-de-choix
-- 6425-logiciel-de-gestion-des-temps-de-travail-a-quoi-ca-sert-vraiment
 - 7253-suivi-du-temps-de-travail-methodes-et-outils-disponibles
+- 1727-badgeuse-en-entreprise-cadre-reglementaire-et-obligations
+- 6425-logiciel-de-gestion-des-temps-de-travail-a-quoi-ca-sert-vraiment
 ---
 <p>Quand j'ai lancé ma boîte, le suivi du temps de travail c'était la dernière chose à laquelle je pensais. On était trois, on se connaissait, tout le monde bossait. Et puis on a grossi, j'ai embauché, et là j'ai commencé à me poser des questions. Est-ce que je dois vraiment pointer les heures de tout le monde ? C'est quoi exactement mes obligations ? Est-ce que je risque quelque chose si je ne le fais pas ?</p>
 

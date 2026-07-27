@@ -14,9 +14,10 @@ link_anchors:
 - text: suivi du temps de travail en entreprise
   max: 5
 related_posts:
-- 5662-suivi-du-temps-de-travail-quelles-sont-les-obligations-legales
 - 6425-logiciel-de-gestion-des-temps-de-travail-a-quoi-ca-sert-vraiment
+- 1727-badgeuse-en-entreprise-cadre-reglementaire-et-obligations
 - 6943-logiciel-de-pointage-fonctionnement-types-et-criteres-de-choix
+- 5662-suivi-du-temps-de-travail-quelles-sont-les-obligations-legales
 ---
 <h2>Pourquoi le suivi du temps de travail est devenu mon obsession (et comment j'ai trouvé la bonne méthode)</h2>
 

@@ -14,9 +14,10 @@ link_anchors:
 - text: logiciel de pointage
   max: 5
 related_posts:
-- 6425-logiciel-de-gestion-des-temps-de-travail-a-quoi-ca-sert-vraiment
 - 5662-suivi-du-temps-de-travail-quelles-sont-les-obligations-legales
 - 7253-suivi-du-temps-de-travail-methodes-et-outils-disponibles
+- 6425-logiciel-de-gestion-des-temps-de-travail-a-quoi-ca-sert-vraiment
+- 1727-badgeuse-en-entreprise-cadre-reglementaire-et-obligations
 ---
 <p>J'ai mis du temps avant de prendre ça au sérieux. Pendant longtemps, on gérait les horaires de l'équipe sur un Google Sheet partagé. Chacun renseignait ses heures, on vérifiait à la fin du mois, et... on espérait que tout le monde était honnête. Pas très pro. Et franchement, source de tensions.</p>
 
