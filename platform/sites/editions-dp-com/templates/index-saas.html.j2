@@ -590,7 +590,7 @@ section.edp-shell,div.edp-shell{padding-left:40px;padding-right:40px}
 
       <div class="edp-articles-grid">
         {% for p in recent_blog_posts %}
-        <a href="/{{ p.slug }}" class="edp-art">
+        <a href="/{{ p.slug }}/" class="edp-art">
           <div class="edp-art-img">
             {% if p.featured_image %}
               <img src="{{ p.featured_image }}" alt="{{ p.title }}" loading="lazy">
