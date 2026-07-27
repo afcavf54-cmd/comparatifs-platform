@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+
+<link rel="icon" href="/favicon.png">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulateur HT TTC : calcul de TVA pour entrepreneurs</title>
+<meta name="description" content="Convertissez vos prix HT ou TTC instantanément avec notre outil de calcul TVA destiné aux entreprises et auto-entrepreneurs.">
+<link rel="canonical" href="https://www.sauvonslaproximite.com/simulateur-prix-ht-ttc">
+<meta property="og:title" content="Simulateur HT TTC : calcul de TVA pour entrepreneurs">
+<meta property="og:description" content="Convertissez vos prix HT ou TTC instantanément avec notre outil de calcul TVA destiné aux entreprises et auto-entrepreneurs.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sauvonslaproximite.com/simulateur-prix-ht-ttc">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap&v=sauvonslaproximite-com" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#EEF2F7;--surface:#fff;--surface2:#F0ECE5;--ink:#0F172A;
+  --ink2:#6B6560;--ink3:#A09890;--accent:#121826;--accent2:#2563EB;
+  --cta:#0EA5A5;
+  --cta-text:#FFFFFF;
+  --border:#E2DDD6;--r:12px;--r2:20px;--green:#1A7A4A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.75}
+a{color:inherit;text-decoration:none}
+
+/* ─── NAV (identique à classement-saas.html.j2) ─────────────── */
+nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+.nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}.nav-logo span{color:var(--accent2)}
+.nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
+.nav-cta:hover{opacity:.88}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+
+/* ─── Hero ──────────────────────────────────────────────────── */
+.hero{background:var(--ink);padding:48px 5vw 40px;text-align:center}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(28px,4vw,48px);font-weight:400;color:#fff;line-height:1.15;letter-spacing:-.02em;max-width:800px;margin:0 auto 16px}
+
+/* ─── Main container ────────────────────────────────────────── */
+main{max-width:1200px;margin:0 auto;padding:48px 5vw 80px}
+
+/* ─── Widget outil ──────────────────────────────────────────── */
+.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin:0 0 32px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.tool-header{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:18px 24px;font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;display:flex;align-items:center;gap:10px}
+.tool-header .icon{font-size:22px}
+.tool-body{padding:24px}
+.tool-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+@media(max-width:540px){.tool-row{grid-template-columns:1fr}}
+.tool-field label{display:block;font-size:12px;color:var(--ink3);margin-bottom:6px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.tool-input-wrap{position:relative}
+.tool-input-wrap .currency{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--ink3);font-size:15px;font-weight:500;pointer-events:none}
+.tool-input-wrap input,.tool-field select{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:8px;font-size:16px;font-family:inherit;color:var(--ink);background:var(--surface);outline:none;transition:border-color .15s}
+.tool-input-wrap input{padding-left:36px}
+.tool-input-wrap input:focus,.tool-field select:focus{border-color:var(--accent)}
+.tool-input-wrap input[readonly]{background:var(--bg);color:var(--ink3);cursor:not-allowed}
+.tool-instructions{margin-top:16px;padding-top:14px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--ink2)}
+.tool-instructions span.step{display:inline-block;width:22px;height:22px;border-radius:50%;background:var(--cta);color:var(--cta-text);text-align:center;line-height:22px;font-size:12px;font-weight:700;margin-right:10px}
+
+/* ─── Contenu rédactionnel ─────────────────────────────────── */
+article{font-size:16px;color:var(--ink2);line-height:1.8;padding:0 0 24px}
+article p{margin:0 0 16px}
+article strong{color:var(--ink);font-weight:700}
+article h2{font-family:'DM Serif Display',serif;font-size:clamp(22px,2.5vw,28px);font-weight:400;color:var(--ink);margin:32px 0 12px;letter-spacing:-.01em}
+article h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
+article ul,article ol{padding-left:20px;margin:0 0 16px}
+article li{margin:6px 0}
+
+/* ─── FAQ ──────────────────────────────────────────────────── */
+.faq{margin:32px 0 0}
+.faq-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,32px);font-weight:400;letter-spacing:-.02em;margin:0 0 16px;color:var(--ink)}
+.faq details{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px 20px;margin:8px 0;transition:border-color .15s}
+.faq details[open]{border-color:var(--accent)}
+.faq summary{font-weight:600;cursor:pointer;padding-right:8px;color:var(--ink);font-size:16px;list-style:none;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:20px;color:var(--accent);font-weight:300;transition:transform .2s}
+.faq details[open] summary::after{content:"−"}
+.faq details > div{margin-top:12px;color:var(--ink2);font-size:15px;line-height:1.7}
+
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .nav-burger{display:flex}
+}
+</style>
+
+<meta name="google-site-verification" content="6p9AISaYGMm2jJG8TFHXNOZ8fCN_CyJR10-WDztdaB0">
+
+
+
+<script async data-id=\"101506542\" src=\"//static.getclicky.com/js\"></script>
+
+
+</head>
+<body>
+
+
+<style>
+nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+nav.site-nav .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
+nav.site-nav .nav-logo span{color:var(--accent2)}
+nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
+nav.site-nav .nav-cta:hover{opacity:.88}
+nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+nav.site-nav .nav-mobile.open{display:flex}
+nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
+</style>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/logo.png" alt="sauvonslaproximite.com" style="height:36px;width:auto;object-fit:contain;vertical-align:middle"></a>
+    <div class="nav-links">
+      
+      
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+      
+      
+        <a href="/avis">Avis</a>
+      
+      
+        <a href="/blog/">Blog</a>
+      
+      
+        
+          <a href="/tools">Tools</a>
+        
+      
+    </div>
+    <a href="/contact" class="nav-cta">Contact</a>
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    
+      <a href="/nos-comparateurs">Nos comparateurs</a>
+    
+    
+      <a href="/avis">Avis</a>
+    
+    
+      <a href="/blog/">Blog</a>
+    
+    
+      
+        <a href="/tools">Tools</a>
+      
+    
+    <a href="/contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<script>
+/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
+   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
+   devoir redéfinir la fonction côté template parent.
+
+   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
+   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
+   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
+   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
+   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
+   qui est actif et le parent réécrit derrière s'il en a un.
+
+   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
+   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
+   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
+   ne faisait rien. */
+(function(){
+  if (typeof window.toggleMenu === 'function') return;
+  window.toggleMenu = function(){
+    var menu = document.getElementById('nav-mobile');
+    if (menu) menu.classList.toggle('open');
+  };
+  // UX bonus : fermer le menu mobile en cliquant en dehors
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('nav-mobile');
+    var burger = document.getElementById('burger');
+    if (!menu || !burger) return;
+    if (!menu.classList.contains('open')) return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    menu.classList.remove('open');
+  });
+  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
+  document.addEventListener('DOMContentLoaded', function(){
+    var menu = document.getElementById('nav-mobile');
+    if (!menu) return;
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  });
+})();
+</script>
+
+
+<div class="hero">
+  <h1>Simulateur de TVA pour convertir vos prix HT TTC</h1>
+</div>
+
+<main>
+
+  
+  <div class="tool-card">
+    <div class="tool-header">
+      <span class="icon">⇄</span>
+      <span>Convertisseur HT / TTC</span>
+    </div>
+    <div class="tool-body">
+      <div class="tool-row">
+        <div class="tool-field">
+          <label for="ttc-ht">Prix HT</label>
+          <div class="tool-input-wrap">
+            <span class="currency">€</span>
+            <input id="ttc-ht" type="number" step="0.01" placeholder="Montant HT">
+          </div>
+        </div>
+        <div class="tool-field">
+          <label for="ttc-ttc">Prix TTC</label>
+          <div class="tool-input-wrap">
+            <span class="currency">€</span>
+            <input id="ttc-ttc" type="number" step="0.01" placeholder="Montant TTC">
+          </div>
+        </div>
+      </div>
+      <div class="tool-row">
+        <div class="tool-field">
+          <label for="ttc-rate">Taux de TVA</label>
+          <select id="ttc-rate">
+            <option value="0.20">20 % — taux normal</option>
+            <option value="0.10">10 % — taux intermédiaire</option>
+            <option value="0.055">5,5 % — taux réduit</option>
+            <option value="0.021">2,1 % — taux particulier</option>
+          </select>
+        </div>
+        <div class="tool-field">
+          <label for="ttc-tva">Montant de la TVA</label>
+          <div class="tool-input-wrap">
+            <span class="currency">€</span>
+            <input id="ttc-tva" readonly placeholder="Montant TVA">
+          </div>
+        </div>
+      </div>
+      <div class="tool-instructions">
+        <div><span class="step">1</span>Modifiez le montant HT ou TTC</div>
+        <div><span class="step">2</span>Choisissez votre taux de TVA</div>
+      </div>
+    </div>
+  </div>
+
+  
+  
+  <article><h2>Comprendre les prix HT et TTC</h2>
+
+<p>La différence entre <strong>prix HT (Hors Taxes)</strong> et <strong>prix TTC (Toutes Taxes Comprises)</strong> constitue un élément fondamental de la comptabilité française. Cette distinction impacte directement vos calculs de rentabilité, vos devis et votre facturation au quotidien.</p>
+
+<p>Le montant <strong>HT</strong> correspond au prix du bien ou service avant l'ajout de la TVA. Le montant <strong>TTC</strong> inclut cette taxe et représente le prix final payé par l'acheteur. Cette différence s'explique par le mécanisme de la TVA, taxe collectée par les entreprises pour le compte de l'État.</p>
+
+<p>Comprendre ces notions vous permet d'optimiser vos processus de facturation et d'éviter les erreurs coûteuses dans vos relations commerciales. Selon votre interlocuteur (professionnel ou particulier), l'affichage des prix suit des règles précises qu'il convient de maîtriser.</p>
+
+<h3>Le prix HT : le montant utilisé entre professionnels</h3>
+
+<p>Le <strong>prix hors taxe</strong> constitue la référence dans les échanges entre entreprises assujetties à la TVA. Cette pratique s'explique par le mécanisme de déduction fiscale : les professionnels récupèrent la TVA payée sur leurs achats.</p>
+
+<p>Dans vos <strong>factures professionnelles</strong>, vous devez obligatoirement faire apparaître le montant HT, le taux et le montant de TVA appliqués, puis le total TTC. Cette transparence facilite la gestion comptable de vos clients et respecte les obligations légales.</p>
+
+<p>L'utilisation du HT simplifie également les comparaisons tarifaires et les négociations commerciales entre entreprises.</p>
+
+<h3>Le prix TTC : le montant affiché au consommateur</h3>
+
+<p>Pour les ventes aux <strong>particuliers</strong>, l'affichage des prix <strong>toutes taxes comprises</strong> devient obligatoire. Cette règle protège le consommateur final qui ne peut pas déduire la TVA et doit connaître le prix réel qu'il va payer.</p>
+
+<p>Dans ce contexte B2C, la TVA constitue un coût définitif pour l'acheteur. Votre responsabilité consiste alors à collecter cette taxe et à la reverser aux services fiscaux selon les échéances réglementaires.</p>
+
+<p>Cette distinction fondamentale entre professionnels et particuliers guide vos choix d'affichage et de communication tarifaire.</p>
+
+<h2>Méthodes de calcul TVA</h2>
+
+<p>La maîtrise des <strong>formules de calcul TVA</strong> vous fait gagner un temps précieux au quotidien. Ces conversions entre montants HT et TTC interviennent constamment dans vos activités de chiffrage, facturation et contrôle.</p>
+
+<p>Trois calculs principaux régissent ces conversions : passer du HT au TTC en ajoutant la TVA, retrouver le HT à partir d'un prix TTC, ou isoler uniquement le montant de TVA sur un document. Chaque calcul utilise une formule spécifique que vous devez appliquer selon le taux de TVA concerné.</p>
+
+<p>La précision de ces calculs conditionne la justesse de vos prix de vente, la conformité de vos factures et la fiabilité de vos analyses de marge. Une erreur dans ces conversions peut entraîner des écarts significatifs sur vos résultats financiers.</p>
+
+<h3>Ajouter la TVA à un prix HT pour obtenir le TTC</h3>
+
+<p>Pour <strong>calculer le TTC</strong> à partir d'un montant hors taxe, utilisez la formule : HT × (1 + taux de TVA). Avec un taux de <strong>TVA de 20%</strong>, multipliez votre prix HT par 1,20.</p>
+
+<p>Exemple concret : un service facturé 100 € HT devient 120 € TTC (100 × 1,20). Pour la TVA à 10%, le coefficient est 1,10. Pour la TVA à 5,5%, utilisez 1,055.</p>
+
+<p>Cette méthode garantit une conversion précise et rapide, particulièrement utile lors de l'établissement de devis ou de factures. Mémorisez ces coefficients pour accélérer vos calculs quotidiens.</p>
+
+<h3>Retirer la TVA d'un prix TTC pour retrouver le HT</h3>
+
+<p>Pour <strong>convertir un montant TTC en HT</strong>, divisez le prix TTC par (1 + taux de TVA). Avec la TVA à 20%, divisez par 1,20. Cette <strong>formule TVA</strong> inverse nécessite plus d'attention pour éviter les erreurs.</p>
+
+<p>Exemple : 120 € TTC ÷ 1,20 = 100 € HT. Une erreur fréquente consiste à retirer 20% du montant TTC (120 - 24 = 96), ce qui donne un résultat incorrect. La division reste la seule méthode fiable.</p>
+
+<p>Cette conversion s'avère indispensable lors de l'analyse de factures fournisseurs ou de la vérification de calculs transmis par des tiers.</p>
+
+<h3>Trouver uniquement le montant de TVA</h3>
+
+<p>Pour isoler le <strong>montant de TVA</strong> sur une facture, deux méthodes s'offrent à vous : TVA = HT × taux de TVA, ou TVA = TTC - HT. La première méthode part du montant hors taxe, la seconde utilise la différence entre TTC et HT.</p>
+
+<p>Exemple : sur 120 € TTC avec TVA 20%, la taxe représente 20 € (soit 100 × 0,20 ou 120 - 100). Cette information facilite vos déclarations de TVA et vos contrôles comptables.</p>
+
+<p>L'identification rapide du montant de TVA optimise votre gestion administrative et renforce la fiabilité de vos processus fiscaux.</p>
+
+<h2>Références pratiques</h2>
+
+<p>Ce <strong>tableau de conversion HT TTC</strong> vous donne une vision immédiate des équivalences selon les principaux taux de TVA français. Ces références accélèrent vos calculs et réduisent les risques d'erreur dans vos conversions quotidiennes.</p>
+
+<div class="table-wrap"><table style="border-collapse: collapse; width: 100%; margin: 20px 0;">
+<thead>
+<tr style="background-color: #f8f9fa;">
+<th style="border: 1px solid #dee2e6; padding: 12px; text-align: left;"><strong>Montant HT</strong></th>
+<th style="border: 1px solid #dee2e6; padding: 12px; text-align: left;"><strong>TVA 20%</strong></th>
+<th style="border: 1px solid #dee2e6; padding: 12px; text-align: left;"><strong>TTC 20%</strong></th>
+<th style="border: 1px solid #dee2e6; padding: 12px; text-align: left;"><strong>TVA 10%</strong></th>
+<th style="border: 1px solid #dee2e6; padding: 12px; text-align: left;"><strong>TTC 10%</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border: 1px solid #dee2e6; padding: 8px;">100 €</td>
+<td style="border: 1px solid #dee2e6; padding: 8px;">20 €</td>
+<td style="border: 1px solid #dee2e6; padding: 8px;">120 €</td>
+<td style="border: 1px solid #dee2e6; padding: 8px;">10 €</td>
+<td style="border: 1px solid #dee2e6; padding: 8px;">110 €</td>
+</tr>
+<tr>
+<td style="border: 1px solid #dee2e6; padding: 8px;">500 €</td>
+<td style="border: 1px solid #dee2e6; padding: 8px;">100 €</td>
+<td style="border: 1px solid #dee2e6; padding: 8px;">600 €</td>
+<td style="border: 1px solid #dee2e6; padding: 8px;">50 €</td>
+<td style="border: 1px solid #dee2e6; padding: 8px;">550 €</td>
+</tr>
+<tr>
+<td style="border: 1px solid #dee2e6; padding: 8px;">1 000 €</td>
+<td style="border: 1px solid #dee2e6; padding: 8px;">200 €</td>
+<td style="border: 1px solid #dee2e6; padding: 8px;">1 200 €</td>
+<td style="border: 1px solid #dee2e6; padding: 8px;">100 €</td>
+<td style="border: 1px solid #dee2e6; padding: 8px;">1 100 €</td>
+</tr>
+</tbody>
+</table></div>
+
+<p>Ces montants de référence constituent des repères utiles pour vos estimations rapides et vos vérifications de cohérence. Gardez ce <strong>simulateur HT TTC</strong> à portée de main pour optimiser votre productivité administrative.</p>
+
+<h2>Les taux de TVA français</h2>
+
+<p>La législation française prévoit quatre <strong>taux de TVA</strong> distincts selon la nature des biens et services concernés. Cette diversité tarifaire répond à des objectifs de politique fiscale et sociale, mais complexifie vos calculs quotidiens.</p>
+
+<p>Le <strong>taux normal de 20%</strong> s'applique par défaut à la majorité des transactions. Les <strong>taux réduits</strong> (10%, 5,5% et 2,1%) concernent des secteurs spécifiques définis par le Code général des impôts. Cette hiérarchisation vise à alléger la fiscalité sur les biens de première nécessité.</p>
+
+<p>Une bonne connaissance de ces taux vous évite les erreurs de facturation et garantit la conformité de vos documents commerciaux. En cas de doute sur le taux applicable, consultez votre expert-comptable ou les services fiscaux.</p>
+
+<p>L'évolution de ces taux suit les décisions gouvernementales et peut impacter vos prix de vente. Restez informé des modifications réglementaires pour adapter rapidement vos systèmes de facturation.</p>
+
+<h3>TVA 20 % : le taux standard utilisé par défaut</h3>
+
+<p>La <strong>TVA à 20%</strong> concerne la plupart des biens et services commercialisés en France. Ce <strong>taux normal</strong> s'applique automatiquement sauf disposition contraire explicite du Code général des impôts.</p>
+
+<p>Les <strong>services</strong> aux entreprises (conseil, formation, maintenance), les produits manufacturés, l'électronique et l'ameublement relèvent généralement de ce taux. Cette règle par défaut simplifie vos calculs dans la majorité des cas.</p>
+
+<p>Vérifiez régulièrement que vos factures appliquent bien ce taux de référence pour éviter tout redressement fiscal.</p>
+
+<h3>TVA 10 % : le taux intermédiaire dans certains secteurs</h3>
+
+<p>Le taux de <strong>TVA à 10%</strong> concerne principalement la <strong>restauration</strong> et certains travaux de <strong>rénovation</strong> dans l'habitat ancien. Cette mesure vise à soutenir des secteurs d'activité jugés prioritaires.</p>
+
+<p>Les travaux d'amélioration énergétique, la transformation de locaux d'habitation et les services d'hébergement touristique bénéficient également de ce taux préférentiel sous conditions.</p>
+
+<p>Vérifiez l'éligibilité de vos prestations à ce taux réduit pour optimiser votre compétitivité commerciale.</p>
+
+<h3>TVA 5,5 % : le taux réduit pour certains produits</h3>
+
+<p>La <strong>TVA à 5,5%</strong> s'applique aux produits alimentaires de base, aux abonnements de gaz et d'électricité, ainsi qu'aux livres et à certains travaux d'amélioration énergétique.</p>
+
+<p>Ce taux privilégié vise à réduire le coût des biens de première nécessité pour les consommateurs. Les produits concernés sont limitativement énumérés par la réglementation.</p>
+
+<p>Cette mesure sociale impacte positivement votre marge si vous commercialisez des produits éligibles.</p>
+
+<h3>TVA 2,1 % : le taux super réduit en France</h3>
+
+<p>Le taux de <strong>TVA à 2,1%</strong> concerne un nombre très restreint de produits : la <strong>presse</strong>, les <strong>médicaments</strong> remboursés par la Sécurité sociale et certains spectacles.</p>
+
+<p>Cette fiscalité allégée reflète des choix de politique publique en faveur de l'information, de la santé et de la culture. Son application reste marginale dans la plupart des activités économiques.</p>
+
+<p>Consultez la documentation fiscale officielle pour vérifier l'éligibilité de vos produits à ce taux exceptionnel.</p>
+
+<h2>Cas pratiques professionnels</h2>
+
+<p>L'utilisation concrète des montants <strong>HT et TTC</strong> varie selon vos interlocuteurs et vos obligations légales. Une entreprise de services facturant d'autres professionnels raisonne systématiquement en hors taxe, tandis qu'un commerce de détail affiche ses prix TTC aux particuliers.</p>
+
+<p>Ces différences d'approche impactent vos processus de <strong>facturation</strong>, vos stratégies tarifaires et vos analyses de rentabilité. Un service vendu 100 € HT coûte réellement 100 € à une entreprise assujettie, mais 120 € à un particulier avec la TVA à 20%.</p>
+
+<p>Cette dualité nécessite une adaptation constante de votre communication commerciale et de vos outils de gestion. Automatisez ces conversions pour réduire les risques d'erreur et optimiser votre productivité administrative.</p>
+
+<h3>Facture : quelles informations TVA afficher ?</h3>
+
+<p>Votre <strong>facture HT TTC</strong> doit impérativement mentionner le montant hors taxe, le taux de TVA appliqué, le <strong>montant de TVA</strong> et le total TTC. Cette décomposition facilite la comptabilisation chez votre client et respecte les obligations légales.</p>
+
+<p>En cas de <strong>taux multiples</strong>, détaillez chaque catégorie séparément : produits à 20%, services à 10%, par exemple. Cette clarté évite les contestations et simplifie les contrôles fiscaux.</p>
+
+<p>L'identification de votre numéro de TV</article>
+  
+
+  
+  
+
+</main>
+
+<style>
+.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
+.footer-brand .footer-logo span{color:var(--accent2)}
+.footer-brand p{font-size:15px;color:rgba(255,255,255,.45);line-height:1.7;max-width:380px;margin:0;padding:0}
+.footer-socials{display:flex;gap:12px;margin-top:20px}
+.footer-socials a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.55);transition:background .15s,color .15s}
+.footer-socials a:hover{background:rgba(255,255,255,.13);color:#fff}
+.footer-socials svg{width:19px;height:19px;fill:currentColor;display:block}
+/* Anciennement .footer-col h4 — passé en div pour respecter la hiérarchie Hn (le footer ne doit pas introduire de Hn) */
+.footer-col .footer-col-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
+.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-brand{grid-column:1/-1}
+}
+</style>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        
+        <a href="/" style="display:block;margin-bottom:12px"><img src="/logo.png" alt="sauvonslaproximite.com" style="height:36px;width:auto;object-fit:contain"></a>
+        
+        <p>Comparatifs sauvonslaproximite.com 2026</p>
+        
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Navigation</div>
+        
+        
+        <a href="/nos-comparateurs">Nos comparateurs</a>
+        
+        
+        <a href="/avis">Avis</a>
+        
+        
+        <a href="/blog/">Blog</a>
+        
+        <a href="/plan-du-site">Plan du site</a>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/politique-confidentialite">Confidentialité</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">À propos</div>
+        
+        
+        <a href="/contact">Nous contacter</a>
+        
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        © 2026 sauvonslaproximite.com — Données actualisées le 27 juillet 2026
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<button type="button"
+        class="scroll-top-btn"
+        id="scroll-top-btn"
+        aria-label="Remonter en haut de la page"
+        title="Remonter en haut">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2.5"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+</button>
+
+<style>
+.scroll-top-btn{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:9999;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--ink, #0F1419);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .15s;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+  padding:0;
+  font-family:inherit;
+}
+.scroll-top-btn.visible{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.scroll-top-btn:hover{
+  background:var(--accent, #C9A961);
+}
+.scroll-top-btn:focus-visible{
+  outline:2px solid var(--accent, #C9A961);
+  outline-offset:3px;
+}
+@media (max-width:600px){
+  .scroll-top-btn{ bottom:16px; right:16px; width:42px; height:42px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .scroll-top-btn{ transition:opacity .2s, visibility .2s; }
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  var btn = document.getElementById('scroll-top-btn');
+  if (!btn) return;
+
+  var THRESHOLD = 400; // px de scroll avant apparition
+  var ticking = false;
+
+  function update(){
+    if (window.scrollY > THRESHOLD) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+    ticking = false;
+  }
+
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  btn.addEventListener('click', function(){
+    var prefersReduced = window.matchMedia
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  });
+
+  // Check immédiat (au cas où la page est rechargée déjà scrollée)
+  update();
+})();
+</script>
+
+
+
+<script>
+function toggleMenu(){
+  document.getElementById('nav-mobile').classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  var m=document.getElementById('nav-mobile'),b=document.getElementById('burger');
+  if(m&&b&&!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');}
+});
+
+(function() {
+  const ht = document.getElementById('ttc-ht');
+  const ttc = document.getElementById('ttc-ttc');
+  const rate = document.getElementById('ttc-rate');
+  const tva = document.getElementById('ttc-tva');
+  let lastEdited = 'ht';
+  function getRate() { return parseFloat(rate.value); }
+  function fmt(n) { return (Math.round(n * 100) / 100).toFixed(2); }
+  function fromHT() {
+    const v = parseFloat(ht.value);
+    if (isNaN(v)) { ttc.value = ''; tva.value = ''; return; }
+    const r = getRate();
+    ttc.value = fmt(v * (1 + r));
+    tva.value = fmt(v * r);
+  }
+  function fromTTC() {
+    const v = parseFloat(ttc.value);
+    if (isNaN(v)) { ht.value = ''; tva.value = ''; return; }
+    const r = getRate();
+    const htV = v / (1 + r);
+    ht.value = fmt(htV);
+    tva.value = fmt(v - htV);
+  }
+  ht.addEventListener('input', function() { lastEdited = 'ht'; fromHT(); });
+  ttc.addEventListener('input', function() { lastEdited = 'ttc'; fromTTC(); });
+  rate.addEventListener('change', function() { if (lastEdited === 'ttc') fromTTC(); else fromHT(); });
+})();
+</script>
+
+
+
+
+</body>
+</html>
