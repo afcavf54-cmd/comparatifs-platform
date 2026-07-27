@@ -13,10 +13,10 @@ link_anchors:
 - text: les avis sur l'abonnement TPE+ de LeMagDesEntreprises
   max: 5
 related_posts:
-- 8139-ce-que-la-mensualite-du-crm-saas-cloudlead-manager-n-inclut-pas
-- 8871-les-limites-d-un-deploiement-de-l-erp-sap
-- 8221-ce-que-l-erp-rapidesk-solutions-ne-couvre-pas-pour-une-pme
-- 3498-comment-choisir-son-agence-web-les-erreurs-frequentes-a-eviter-avant-de-signer
+- 6870-ce-que-le-prix-de-la-plateforme-erp-businesscore-max-n-inclut-pas
+- 7722-ce-que-les-logiciels-geotechniques-gratuits-ne-couvrent-pas
+- 3728-smartlead-evolution-face-au-pilotage-manuel-des-prospects
+- 3484-flexmanage-plus-face-aux-erp-peu-ouverts
 ---
 <p>Ça fait maintenant deux ans que je gère mon entreprise à Marseille. Cent à cinq cents salariés, ça fait du monde à piloter. Et l'une des premières questions que je me suis posée, c'est celle-là : est-ce que je dois payer pour m'informer sur ma boîte, ou est-ce que le gratuit suffit ?</p>
 
