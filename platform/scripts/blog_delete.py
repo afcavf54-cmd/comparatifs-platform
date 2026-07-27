@@ -26,6 +26,25 @@ HEADER = """# Suppression groupée d'articles de blog.
 # ---------------------------------------------------------------------------
 """
 
+def _normalize_slug(s: str) -> str:
+    """Normalise un slug d'article saisi dans la liste.
+
+    Tolère : URL complète collée, slash de début/fin, suffixe /index.html,
+    .html ou .md. Ainsi coller `https://site.fr/1245-truc/` ou `1245-truc/`
+    ou `1245-truc.md` cible bien le fichier posts/1245-truc.md.
+    """
+    s = s.strip()
+    if "://" in s:                       # URL complète -> garde le chemin
+        rest = s.split("://", 1)[1]
+        s = rest.split("/", 1)[1] if "/" in rest else ""
+    s = s.strip().strip("/")             # slashes début/fin
+    for suf in ("/index.html", ".html", ".md"):
+        if s.endswith(suf):
+            s = s[: -len(suf)]
+            break
+    return s.strip("/")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--file", default="platform/blog_to_delete.txt")
@@ -50,13 +69,13 @@ def main():
         site, token = parts[0].strip(), parts[1].strip()
         t = targets.setdefault(site, {"exact": set(), "contains": set()})
         if token.startswith("~"):
-            frag = token[1:].strip()
+            frag = token[1:].strip().strip("/")
             if frag:
                 t["contains"].add(frag)
         else:
-            if token.endswith(".md"):
-                token = token[:-3]
-            t["exact"].add(token)
+            slug = _normalize_slug(token)
+            if slug:
+                t["exact"].add(slug)
 
     if not targets:
         print("::notice::rien à supprimer.")
