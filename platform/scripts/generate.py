@@ -1294,8 +1294,20 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     # produirait un content="" cassé.
     _lv_raw = (site.get("linkavista_verification") or "").strip()
     if _lv_raw:
-        _lv_m = _re_dom.search(r'content\s*=\s*["\']([^"\']+)["\']', _lv_raw)
-        site["linkavista_verification"] = _lv_m.group(1).strip() if _lv_m else _lv_raw
+        # Robuste aux quotes échappées accumulées (\", \\\", …) venues du
+        # dashboard : on retire tout backslash (aucun hash/tag légitime n'en a),
+        # puis on extrait le contenu.
+        _lv_clean = _lv_raw.replace("\\", "")
+        _lv_m = _re_dom.search(r'content\s*=\s*["\']([^"\']+)["\']', _lv_clean)
+        site["linkavista_verification"] = _lv_m.group(1).strip() if _lv_m else _lv_clean
+
+    # ── Normalisation analytics_clicky ────────────────────────────────────
+    # Même souci : le snippet <script> peut arriver avec des quotes échappées
+    # (data-id=\"…\") qui, rendues | safe, cassent le tag. On retire les
+    # backslashes parasites.
+    _ac_raw = (site.get("analytics_clicky") or "")
+    if "\\" in _ac_raw:
+        site["analytics_clicky"] = _ac_raw.replace("\\", "")
 
     # ── Détection précoce des avis ────────────────────────────────────────
     # On set `site["has_avis"] = True` AU TOUT DÉBUT de generate_site pour
