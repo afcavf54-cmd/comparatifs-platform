@@ -14,10 +14,10 @@ link_anchors:
 - text: le tarif mensuel du CRM SaaS CloudLead Manager
   max: 5
 related_posts:
+- 5240-ce-que-les-modules-mobiles-de-securite-erp-ne-couvrent-pas
+- 6904-ce-que-salesforce-premium-offre-en-plus-d-un-crm-basique
+- 1024-le-logiciel-crm-salestrack-pro-face-a-la-version-evolution
 - 7851-pain-point-pourquoi-cette-notion-est-essentielle-en-marketing-et-en-vente
-- 9378-strategie-de-croissance-construire-un-plan-efficace-pour-gagner-des-parts-de-marche
-- 9434-quel-crm-entre-salesconnect-pro-et-marketwise-pour-une-pme
-- 6432-nextgen-business-suite-face-aux-erp-historiques
 ---
 <p>J'utilise CloudLead Manager depuis un peu plus d'un an. Au départ, j'ai regardé le prix de la mensualité, j'ai trouvé ça raisonnable, et j'ai signé. Grosse erreur : je n'avais pas lu les petits caractères. Ou plutôt, je ne savais pas quelles questions poser.</p>
 

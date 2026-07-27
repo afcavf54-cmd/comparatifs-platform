@@ -14,10 +14,10 @@ link_anchors:
 - text: comment utiliser le CRM SalesTrack Evolution
   max: 5
 related_posts:
-- 6236-sepo-comment-exploiter-cette-methode-d-analyse-strategique-en-entreprise
-- 6432-nextgen-business-suite-face-aux-erp-historiques
-- 7930-cloudmanager-enterprise-face-a-un-erp-on-premise
-- 6395-crm-clientpulse-pro-2024-face-a-la-concurrence
+- 7851-pain-point-pourquoi-cette-notion-est-essentielle-en-marketing-et-en-vente
+- 1614-l-abonnement-tpe-lemagdesentreprises-face-aux-contenus-gratuits
+- 3498-comment-choisir-son-agence-web-les-erreurs-frequentes-a-eviter-avant-de-signer
+- 6254-calcul-prix-de-vente-avec-taux-de-marge-comment-garantir-votre-rentabilite
 ---
 <p>Pendant deux ans, j'ai géré mes prospects dans un tableau Excel. Pas par choix vraiment, plutôt par habitude. On ajoute une colonne, puis une autre, puis une autre... et un jour on se retrouve avec un fichier de 47 colonnes que personne ne comprend à part soi. Mes commerciaux m'envoyaient des versions différentes par mail. On avait des doublons. Des relances oubliées. Des clients perdus bêtement.</p>
 

@@ -14,10 +14,10 @@ link_anchors:
 - text: la formation Leadership Method NexStep niveau avancé
   max: 5
 related_posts:
-- 3958-quelle-strategie-de-gestion-des-talents-adopter-en-year
-- 9270-coo-vs-ceo-quelles-differences-entre-direction-operationnelle-et-direction-generale
-- 8819-comment-reussir-la-gestion-des-talents-dans-une-pme
 - 8731-comment-ameliorer-l-experience-collaborateur-en-entreprise
+- 9695-comment-favoriser-le-developpement-des-talents-en-entreprise
+- 8168-comment-ameliorer-la-gestion-des-talents-rh-en-entreprise
+- 5868-promesse-d-embauche-ce-qu-il-faut-inclure-pour-etre-en-conformite
 ---
 <p>J'ai suivi la formation leadership NexStep Avancé l'année dernière. Deux jours en présentiel, un formateur dynamique, des exercices en sous-groupes. Sur le papier, ça cochait toutes les cases. Et franchement, je ne regrette pas d'y être allé.</p>
 

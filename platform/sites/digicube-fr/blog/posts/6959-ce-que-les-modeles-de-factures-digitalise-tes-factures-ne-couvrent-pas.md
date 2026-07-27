@@ -14,10 +14,8 @@ link_anchors:
 - text: les modèles de factures de Digitalise-Tes-Factures
   max: 5
 related_posts:
-- 1332-facturation-pme-fastbill-vs-invoicepro-max
-- 2846-ce-que-les-fonctionnalites-de-financecore-enterprise-ne-couvrent-pas
-- 4683-a-quel-profil-convient-le-cnam-intec-en-techniques-economiques-et-comptables
-- 9791-facturation-manuelle-ou-automatisee-avec-billmatic-auto
+- 8853-invoicepro-x3-face-a-la-facturation-manuelle-le-temps-de-traitement
+- 9801-ce-que-le-logiciel-de-gestion-de-tresorerie-cashmaster-ultimate-ne-fait-pas
 ---
 <p>J'utilise des modèles de factures depuis un moment maintenant. Deux ans que je gère la facturation de mon équipe à Marseille, et pendant longtemps, j'ai cru que télécharger un bon modèle Word ou Excel suffisait. Spoiler : ça ne suffit pas.</p>
 

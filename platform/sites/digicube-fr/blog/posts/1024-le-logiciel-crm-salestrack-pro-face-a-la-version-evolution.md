@@ -13,10 +13,10 @@ link_anchors:
 - text: les avis sur le logiciel CRM SalesTrack Pro
   max: 5
 related_posts:
-- 6432-nextgen-business-suite-face-aux-erp-historiques
-- 6236-sepo-comment-exploiter-cette-methode-d-analyse-strategique-en-entreprise
-- 2123-pourquoi-ne-pas-garder-la-config-d-usine-de-businesscore-enterprise
-- 7930-cloudmanager-enterprise-face-a-un-erp-on-premise
+- 3259-configuration-de-l-erp-dynabiz-pro-les-pieges-courants
+- 6904-ce-que-salesforce-premium-offre-en-plus-d-un-crm-basique
+- 8139-ce-que-la-mensualite-du-crm-saas-cloudlead-manager-n-inclut-pas
+- 3498-comment-choisir-son-agence-web-les-erreurs-frequentes-a-eviter-avant-de-signer
 ---
 <p>J'utilise des outils CRM depuis deux ans maintenant. Pas suffisamment longtemps pour me considérer expert, mais assez pour avoir fait quelques erreurs coûteuses. Choisir le mauvais outil quand on gère une équipe entre 100 et 500 personnes, ça ne pardonne pas. Alors quand j'ai eu à comparer SalesTrack Pro et SalesTrack Evolution, j'ai voulu aller au fond des choses avant de trancher.</p>
 

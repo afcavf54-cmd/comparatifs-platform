@@ -14,10 +14,10 @@ link_anchors:
 - text: les modules mobiles de sécurité ERP à Paris
   max: 5
 related_posts:
-- 9434-quel-crm-entre-salesconnect-pro-et-marketwise-pour-une-pme
-- 8699-strategie-corporate-comment-definir-les-orientations-globales-de-votre-entreprise
-- 2123-pourquoi-ne-pas-garder-la-config-d-usine-de-businesscore-enterprise
-- 3728-smartlead-evolution-face-au-pilotage-manuel-des-prospects
+- 8139-ce-que-la-mensualite-du-crm-saas-cloudlead-manager-n-inclut-pas
+- 6904-ce-que-salesforce-premium-offre-en-plus-d-un-crm-basique
+- 1024-le-logiciel-crm-salestrack-pro-face-a-la-version-evolution
+- 1643-le-logiciel-crm-salestrack-360-face-aux-autres-crm
 ---
 <p>J'utilise un ERP depuis deux ans maintenant. Pas le plus sophistiqué du marché, mais ça tourne. Et depuis quelques mois, on m'a vendu l'idée des modules mobiles de sécurité intégrés à la solution. L'argument : gérer les accès, les droits utilisateurs, les alertes, directement depuis son téléphone. Sur le papier, c'est séduisant. Dans la vraie vie de chef d'entreprise à Marseille avec une équipe de 150 personnes, c'est une autre histoire.</p>
 

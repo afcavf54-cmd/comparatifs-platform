@@ -14,10 +14,8 @@ link_anchors:
 - text: le temps de traitement de l'application de facturation InvoicePro X3
   max: 5
 related_posts:
-- 1332-facturation-pme-fastbill-vs-invoicepro-max
-- 2846-ce-que-les-fonctionnalites-de-financecore-enterprise-ne-couvrent-pas
-- 4683-a-quel-profil-convient-le-cnam-intec-en-techniques-economiques-et-comptables
-- 9791-facturation-manuelle-ou-automatisee-avec-billmatic-auto
+- 9801-ce-que-le-logiciel-de-gestion-de-tresorerie-cashmaster-ultimate-ne-fait-pas
+- 6959-ce-que-les-modeles-de-factures-digitalise-tes-factures-ne-couvrent-pas
 ---
 <h2>Ma méthode manuelle m'a coûté une fortune en temps</h2>
 

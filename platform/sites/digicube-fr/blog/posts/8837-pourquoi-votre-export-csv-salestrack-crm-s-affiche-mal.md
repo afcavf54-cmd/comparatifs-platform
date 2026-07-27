@@ -14,10 +14,10 @@ link_anchors:
 - text: comment exporter les données du CRM SalesTrack au format CSV
   max: 5
 related_posts:
-- 6254-calcul-prix-de-vente-avec-taux-de-marge-comment-garantir-votre-rentabilite
-- 8699-strategie-corporate-comment-definir-les-orientations-globales-de-votre-entreprise
-- 5928-mal-configurer-le-crm-leadflow-automation-ce-qui-plante
-- 6395-crm-clientpulse-pro-2024-face-a-la-concurrence
+- 5240-ce-que-les-modules-mobiles-de-securite-erp-ne-couvrent-pas
+- 6301-salestrack-evolution-face-a-un-suivi-sur-fichier
+- 9378-strategie-de-croissance-construire-un-plan-efficace-pour-gagner-des-parts-de-marche
+- 1789-faut-il-implementer-l-erp-bizflow-max-soi-meme
 ---
 <p>J'ai perdu presque une heure là-dessus la semaine dernière. Mon export CSV depuis SalesTrack CRM s'ouvrait dans Excel avec tout sur une seule colonne, des caractères bizarres à la place des accents, et des dates complètement illisibles. Résultat : mon assistante a dû tout retraiter à la main avant de pouvoir envoyer les relances clients. Une heure de travail inutile, juste à cause d'un mauvais paramétrage d'export.</p>
 

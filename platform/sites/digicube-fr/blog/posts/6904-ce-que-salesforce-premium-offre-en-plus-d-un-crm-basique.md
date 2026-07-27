@@ -13,10 +13,10 @@ link_anchors:
 - text: la différence entre un CRM basique et Salesforce Premium
   max: 5
 related_posts:
-- 8699-strategie-corporate-comment-definir-les-orientations-globales-de-votre-entreprise
-- 8882-tableau-de-caracterisation-construire-un-outil-d-analyse-pertinent-pour-vos-projets
-- 9984-why-how-what-comprendre-et-utiliser-le-cercle-d-or-de-simon-sinek
 - 3498-comment-choisir-son-agence-web-les-erreurs-frequentes-a-eviter-avant-de-signer
+- 6254-calcul-prix-de-vente-avec-taux-de-marge-comment-garantir-votre-rentabilite
+- 5240-ce-que-les-modules-mobiles-de-securite-erp-ne-couvrent-pas
+- 9378-strategie-de-croissance-construire-un-plan-efficace-pour-gagner-des-parts-de-marche
 ---
 <p>J'ai mis du temps à comprendre la différence. Pendant presque un an, j'ai utilisé un CRM basique pour gérer mes contacts, mes relances, mes opportunités commerciales. Ça faisait le boulot. À peine.</p>
 

@@ -14,10 +14,10 @@ link_anchors:
 - text: les avis utilisateurs sur le logiciel CRM SalesTrack 360
   max: 5
 related_posts:
-- 9560-les-vrais-postes-de-cout-de-l-erp-bizcore-enterprise
 - 8699-strategie-corporate-comment-definir-les-orientations-globales-de-votre-entreprise
-- 6904-ce-que-salesforce-premium-offre-en-plus-d-un-crm-basique
-- 2077-comitologie-de-projet-les-bonnes-pratiques-pour-structurer-la-gouvernance
+- 5240-ce-que-les-modules-mobiles-de-securite-erp-ne-couvrent-pas
+- 6301-salestrack-evolution-face-a-un-suivi-sur-fichier
+- 9378-strategie-de-croissance-construire-un-plan-efficace-pour-gagner-des-parts-de-marche
 ---
 <p>J'utilise SalesTrack 360 depuis un peu plus d'un an et demi. Avant ça, on était sur un tableau Excel partagé, avec toutes les galères que ça implique : doublons, données écrasées, impossible de savoir qui avait rappelé quel client. Quand on a cherché un CRM pour notre équipe, j'ai comparé pas mal d'outils. Voici ce que j'en retiens vraiment, sans langue de bois.</p>
 

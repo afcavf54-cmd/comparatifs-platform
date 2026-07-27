@@ -13,10 +13,10 @@ link_anchors:
 - text: comment configurer l'ERP DynaBiz Pro
   max: 5
 related_posts:
-- 6236-sepo-comment-exploiter-cette-methode-d-analyse-strategique-en-entreprise
-- 8699-strategie-corporate-comment-definir-les-orientations-globales-de-votre-entreprise
-- 6543-crm-salestrack-premium-face-a-la-version-classique
-- 7851-pain-point-pourquoi-cette-notion-est-essentielle-en-marketing-et-en-vente
+- 6301-salestrack-evolution-face-a-un-suivi-sur-fichier
+- 6528-l-erp-integre-managepro-suite-face-a-un-assemblage-de-briques
+- 1789-faut-il-implementer-l-erp-bizflow-max-soi-meme
+- 5240-ce-que-les-modules-mobiles-de-securite-erp-ne-couvrent-pas
 ---
 <p>J'ai mis six mois à stabiliser notre configuration DynaBiz Pro. Six mois pendant lesquels mes équipes ont perdu du temps, fait des erreurs de saisie, et moi j'ai passé des soirées entières à chercher pourquoi les exports comptables ne correspondaient pas à la réalité. Si vous démarrez avec cet ERP, ou si vous êtes en train de le reconfigurer, lisez ce qui suit. Ça m'aurait évité beaucoup de frustration.</p>
 

@@ -14,10 +14,10 @@ link_anchors:
 - text: comment implémenter l'ERP BizFlow Max
   max: 5
 related_posts:
-- 4312-inventory-control-smart-face-au-suivi-manuel-des-stocks
-- 6543-crm-salestrack-premium-face-a-la-version-classique
-- 3498-comment-choisir-son-agence-web-les-erreurs-frequentes-a-eviter-avant-de-signer
-- 9560-les-vrais-postes-de-cout-de-l-erp-bizcore-enterprise
+- 6254-calcul-prix-de-vente-avec-taux-de-marge-comment-garantir-votre-rentabilite
+- 1458-le-logiciel-crm-salestrack-evolution-face-a-la-version-pro
+- 9378-strategie-de-croissance-construire-un-plan-efficace-pour-gagner-des-parts-de-marche
+- 1614-l-abonnement-tpe-lemagdesentreprises-face-aux-contenus-gratuits
 ---
 <p>Je vais vous dire exactement ce que j'aurais aimé qu'on me dise avant de me lancer là-dedans. Implémenter un ERP soi-même quand on dirige une boîte de 100 à 500 personnes à Marseille, avec des équipes terrain, des contraintes de budget et zéro expérience préalable... c'est une aventure. Pas toujours bonne.</p>
 

@@ -14,10 +14,10 @@ link_anchors:
 - text: les avis sur le logiciel CRM SalesTrack Evolution
   max: 5
 related_posts:
-- 6528-l-erp-integre-managepro-suite-face-a-un-assemblage-de-briques
-- 3484-flexmanage-plus-face-aux-erp-peu-ouverts
-- 4312-inventory-control-smart-face-au-suivi-manuel-des-stocks
-- 6543-crm-salestrack-premium-face-a-la-version-classique
+- 8837-pourquoi-votre-export-csv-salestrack-crm-s-affiche-mal
+- 3259-configuration-de-l-erp-dynabiz-pro-les-pieges-courants
+- 8139-ce-que-la-mensualite-du-crm-saas-cloudlead-manager-n-inclut-pas
+- 1643-le-logiciel-crm-salestrack-360-face-aux-autres-crm
 ---
 <p>J'utilise des outils CRM depuis un peu plus de deux ans maintenant. Pas par plaisir, soyons honnêtes. Mais parce qu'à un moment, gérer 80 commerciaux avec des fichiers Excel, ça devient juste ingérable. J'ai testé plusieurs solutions avant d'atterrir sur SalesTrack. Et la question qui revient souvent dans mon équipe : faut-il prendre la version <strong>Evolution</strong> ou directement la version <strong>Pro</strong> ?</p>
 

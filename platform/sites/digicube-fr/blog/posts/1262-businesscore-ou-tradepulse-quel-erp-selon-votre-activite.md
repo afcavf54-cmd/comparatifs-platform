@@ -14,10 +14,10 @@ link_anchors:
 - text: quel ERP choisir entre BusinessCore et TradePulse
   max: 5
 related_posts:
-- 7349-l-outil-bizmetrics-dashboard-face-aux-dashboards-concurrents
-- 9560-les-vrais-postes-de-cout-de-l-erp-bizcore-enterprise
-- 5928-mal-configurer-le-crm-leadflow-automation-ce-qui-plante
-- 8464-ce-que-le-prix-du-compliance-kit-rgpd-n-inclut-pas
+- 6301-salestrack-evolution-face-a-un-suivi-sur-fichier
+- 9378-strategie-de-croissance-construire-un-plan-efficace-pour-gagner-des-parts-de-marche
+- 5240-ce-que-les-modules-mobiles-de-securite-erp-ne-couvrent-pas
+- 3498-comment-choisir-son-agence-web-les-erreurs-frequentes-a-eviter-avant-de-signer
 ---
 <p>Je vais être honnête avec vous : quand on dirige une boîte de 100 à 500 personnes à Marseille, choisir un ERP c'est une décision qui fait un peu peur. J'ai mis deux ans avant de vraiment comprendre ce que ça change au quotidien. Deux ans à tâtonner, à comparer, à me planter parfois sur des détails qui semblaient anodins.</p>
 

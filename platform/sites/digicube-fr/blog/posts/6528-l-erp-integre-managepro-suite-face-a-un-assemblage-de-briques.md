@@ -14,10 +14,10 @@ link_anchors:
 - text: l'installation de l'ERP intégré ManagePro Suite
   max: 5
 related_posts:
-- 3484-flexmanage-plus-face-aux-erp-peu-ouverts
-- 4312-inventory-control-smart-face-au-suivi-manuel-des-stocks
-- 7235-financepro-integrated-face-aux-briques-financieres-independantes
-- 1583-passer-a-l-erp-bizflow-v8-pro-ce-qui-change
+- 6904-ce-que-salesforce-premium-offre-en-plus-d-un-crm-basique
+- 8139-ce-que-la-mensualite-du-crm-saas-cloudlead-manager-n-inclut-pas
+- 7851-pain-point-pourquoi-cette-notion-est-essentielle-en-marketing-et-en-vente
+- 9378-strategie-de-croissance-construire-un-plan-efficace-pour-gagner-des-parts-de-marche
 ---
 <p>Pendant longtemps, j'ai géré mon entreprise avec un ensemble d'outils qui ne se parlaient pas vraiment entre eux. Un logiciel de facturation par-ci, un outil RH par-là, un tableur Excel pour le stock. Ça tenait debout, mais à peine. Chaque semaine, je perdais des heures à ressaisir des données d'un outil à l'autre. Et mes équipes aussi.</p>
 
