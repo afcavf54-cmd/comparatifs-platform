@@ -222,53 +222,132 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
   return NextResponse.json({ ok: true, slug })
 }
 
-// ─── DELETE : supprime un article ──────────────────────────────────────────
+// ─── Helper : retire une entrée de posts-index.json (évite les fantômes) ────
+// La liste du dashboard est lue depuis posts-index.json. Si on supprime un .md
+// sans mettre l'index à jour, l'article reste affiché → re-suppression → 404.
+// Ce helper retire l'entrée du slug et réécrit l'index. No-op si index absent
+// ou entrée déjà absente.
+async function removeFromBlogIndex(siteId: string, slug: string): Promise<void> {
+  const indexPath = `platform/sites/${siteId}/blog/posts-index.json`
+  const file = await ghGet(indexPath)
+  if (!file) return
+  let data: any
+  try { data = JSON.parse(file.content) } catch { return }
+  if (!Array.isArray(data?.posts)) return
+  const before = data.posts.length
+  data.posts = data.posts.filter((p: any) => p?.slug !== slug)
+  if (data.posts.length === before) return   // rien à retirer
+  if (typeof data.count === 'number') data.count = data.posts.length
+  data.updated_at = new Date().toISOString()
+  await ghPut(indexPath, JSON.stringify(data, null, 2), `HUB: Sync index (retrait ${slug})`, file.sha)
+}
+
+// ─── DELETE : supprime un article (idempotent + resync index) ───────────────
+// ─── Blacklist : empêche le cron de republier un article supprimé ───────────
+// La sheet reste la source du programmé ; supprimer un .md ne l'en retire pas,
+// donc le cron le republierait. On ajoute le TITRE de l'article supprimé à
+// blog/schedule_blacklist.json ; le cron ignore les titres qui y figurent.
+function extractMdTitle(md: string): string {
+  if (!md.startsWith('---')) return ''
+  const end = md.indexOf('---', 3)
+  if (end < 0) return ''
+  for (const line of md.slice(3, end).split('\n')) {
+    const s = line.trim()
+    if (s.startsWith('title:')) {
+      let t = s.slice('title:'.length).trim()
+      if (t.length >= 2 && (t[0] === '"' || t[0] === "'") && t[t.length - 1] === t[0]) t = t.slice(1, -1)
+      return t
+    }
+  }
+  return ''
+}
+function normTitle(t: string): string {
+  return (t || '').toLowerCase().split(/\s+/).filter(Boolean).join(' ')
+}
+async function titleFromIndex(siteId: string, slug: string): Promise<string> {
+  const f = await ghGet(`platform/sites/${siteId}/blog/posts-index.json`)
+  if (!f) return ''
+  try {
+    const data = JSON.parse(f.content)
+    const post = (data?.posts || []).find((p: any) => p?.slug === slug)
+    return post?.title || ''
+  } catch { return '' }
+}
+async function addToBlacklist(siteId: string, title: string): Promise<void> {
+  const norm = normTitle(title)
+  if (!norm) return
+  const path = `platform/sites/${siteId}/blog/schedule_blacklist.json`
+  const f = await ghGet(path)
+  let list: string[] = []
+  if (f) { try { list = JSON.parse(f.content) } catch { list = [] } }
+  const set = new Set(list.map(normTitle))
+  if (set.has(norm)) return
+  set.add(norm)
+  const merged = Array.from(set).sort()
+  await ghPut(path, JSON.stringify(merged, null, 2), `HUB: Blacklist blog "${title.slice(0, 40)}"`, f?.sha)
+}
+
 export async function DELETE(req: NextRequest, { params }: { params: Promise<{ siteId: string; postSlug: string }> }) {
   const { siteId, postSlug } = await params
   const path = `platform/sites/${siteId}/blog/posts/${postSlug}.md`
 
-  // 1) Récupère le SHA — avec diagnostic explicite. Le repo étant PUBLIC, un
-  // token manquant/invalide ne donne PAS un 404 « fichier absent » mais un
-  // 401 (mauvais token) ou 403 (rate-limit anonyme : 60 req/h). On distingue
-  // donc le vrai « article absent » d'un souci d'authentification.
+  // 1) Cherche le .md — avec diagnostic auth/rate-limit (repo public : un token
+  // manquant/invalide donne 401/403, pas un « fichier absent »).
   const getRes = await fetch(`${BASE}/repos/${repoPath()}/contents/${path}`, { headers, cache: 'no-store' })
-  if (!getRes.ok) {
-    if (getRes.status === 404) {
-      return NextResponse.json({
-        error: `Article introuvable : ${postSlug} — soit le fichier n'existe pas, soit GITHUB_OWNER/GITHUB_REPO sont mal configurés (Vercel).`,
-      }, { status: 404 })
+  let mdSha: string | null = null
+  let mdTitle = ''
+  if (getRes.ok) {
+    const data = await getRes.json()
+    if (!Array.isArray(data)) {
+      mdSha = data.sha
+      try { mdTitle = extractMdTitle(Buffer.from(data.content || '', 'base64').toString('utf-8')) } catch { /* noop */ }
     }
+  } else if (getRes.status !== 404) {
     const rlRemaining = getRes.headers.get('x-ratelimit-remaining')
     const hint =
       getRes.status === 401 ? 'token GitHub invalide ou expiré (Vercel → env GITHUB_TOKEN)' :
       getRes.status === 403 ? (rlRemaining === '0'
-          ? 'limite de requêtes GitHub atteinte — le token est manquant/invalide (60 req/h en anonyme au lieu de 5000 authentifié). Attends la réinitialisation OU corrige GITHUB_TOKEN.'
-          : "accès refusé — token sans droit de lecture/écriture") :
+          ? 'limite de requêtes GitHub atteinte — token manquant/invalide (60 req/h en anonyme au lieu de 5000). Corrige GITHUB_TOKEN.'
+          : 'accès refusé — token sans droit de lecture/écriture') :
       `réponse GitHub inattendue (${getRes.status})`
     return NextResponse.json({ error: `Lecture impossible — ${hint}` }, { status: 502 })
   }
-  const data = await getRes.json()
-  if (Array.isArray(data)) {
-    return NextResponse.json({ error: `Chemin invalide (dossier au lieu d'un fichier) : ${postSlug}` }, { status: 400 })
-  }
-  const sha = data.sha
+  // getRes.status === 404 (mdSha reste null) => article « fantôme » : le .md
+  // n'existe plus, mais il est encore dans l'index. On nettoie juste l'index.
 
-  // 2) Suppression (écriture) — surface le vrai motif GitHub si échec.
-  const res = await fetch(`${BASE}/repos/${repoPath()}/contents/${path}`, {
-    method: 'DELETE', headers: { ...headers, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message: `HUB: Delete blog post ${postSlug}`, sha }),
-  })
-  if (!res.ok) {
-    let detail = ''
-    try { const j = await res.json(); detail = j?.message || '' } catch { /* noop */ }
-    const hint =
-      res.status === 401 ? 'token GitHub invalide ou expiré (Vercel → env GITHUB_TOKEN)' :
-      res.status === 403 ? "token sans droit d'écriture (scope repo / Contents: Read and write) ou rate-limit GitHub" :
-      res.status === 409 ? 'conflit de version (SHA) — recharge la page et réessaie' :
-      res.status === 422 ? 'branche protégée : les commits directs sont refusés' : ''
-    return NextResponse.json({
-      error: `Erreur suppression — GitHub ${res.status}${hint ? ` (${hint})` : ''}${detail ? ` : ${detail}` : ''}`,
-    }, { status: 500 })
+  // 2) Supprime le .md s'il existe encore
+  if (mdSha) {
+    const res = await fetch(`${BASE}/repos/${repoPath()}/contents/${path}`, {
+      method: 'DELETE', headers: { ...headers, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: `HUB: Delete blog post ${postSlug}`, sha: mdSha }),
+    })
+    if (!res.ok) {
+      let detail = ''
+      try { const j = await res.json(); detail = j?.message || '' } catch { /* noop */ }
+      const hint =
+        res.status === 401 ? 'token GitHub invalide ou expiré (Vercel → env GITHUB_TOKEN)' :
+        res.status === 403 ? "token sans droit d'écriture (scope repo / Contents: Read and write) ou rate-limit" :
+        res.status === 409 ? 'conflit de version (SHA) — recharge la page et réessaie' :
+        res.status === 422 ? 'branche protégée : les commits directs sont refusés' : ''
+      return NextResponse.json({
+        error: `Erreur suppression — GitHub ${res.status}${hint ? ` (${hint})` : ''}${detail ? ` : ${detail}` : ''}`,
+      }, { status: 500 })
+    }
   }
-  return NextResponse.json({ ok: true })
+
+  // 3) Récupère le titre pour le blacklist AVANT de retirer l'entrée d'index.
+  let titleForBlacklist = mdTitle
+  if (!titleForBlacklist) {
+    try { titleForBlacklist = await titleFromIndex(siteId, postSlug) } catch { /* noop */ }
+  }
+
+  // 4) Resync l'index (retire l'entrée) — que le .md ait existé ou non.
+  //    C'est ce qui évite que l'article « fantôme » reste affiché.
+  try { await removeFromBlogIndex(siteId, postSlug) } catch { /* best-effort */ }
+
+  // 5) Blacklist le titre : le cron ne republiera plus cet article depuis la
+  //    Google Sheet (sinon il revenait en brouillon avec une date passée).
+  try { if (titleForBlacklist) await addToBlacklist(siteId, titleForBlacklist) } catch { /* best-effort */ }
+
+  return NextResponse.json({ ok: true, ghost: mdSha === null })
 }
