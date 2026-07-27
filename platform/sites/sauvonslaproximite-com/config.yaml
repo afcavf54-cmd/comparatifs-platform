@@ -5,11 +5,11 @@
 # ============================================================
 
 site:
-  linkavista_verification: "<meta name=\"linkavista\" content=\"72c1a330118f86fe4bea82baaa0cc356ecb0b34d\">"
+  linkavista_verification: "<meta name=\\\"linkavista\\\" content=\\\"72c1a330118f86fe4bea82baaa0cc356ecb0b34d\\\">"
   avis_sheet_edit_url: ""
   avis_sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vQzjzzy_92K4VYhWlu-Gl-l_EZuWzBfQ6QkR8KvnkNXLKQPa1pEx_2nYAl83-G0dUnzmsdb4_6meEdL/pub?gid=0&single=true&output=csv"
   contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
-  google_site_verification: ""
+  google_site_verification: "6p9AISaYGMm2jJG8TFHXNOZ8fCN_CyJR10-WDztdaB0"
   home_h1: "Le média engagé pour les commerces et entreprises locales"
   blog_sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTMwuNnqOiF9aRVKAnR3RcQzWJkmagoswvz7m4aTP4tiS29FhlIOq6f9EKQfJAg5hT3wPmotGqqsGa9/pub?gid=0&single=true&output=csv"
   slug: sauvonslaproximite-com
@@ -27,7 +27,7 @@ site:
   home_description: "Sauvons la Proximité met en lumière les commerces, artisans, indépendants et entreprises locales à travers des conseils, actualités et analyses."
   template: "classement-saas.html.j2"
   index_template: "index-saas.html.j2"
-  analytics_clicky: "<script async data-id=\"101506542\" src=\"//static.getclicky.com/js\"></script>"
+  analytics_clicky: "<script async data-id=\\\"101506542\\\" src=\\\"//static.getclicky.com/js\\\"></script>"
 
   outils_menu:
     - label: Tools
