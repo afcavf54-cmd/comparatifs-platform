@@ -358,7 +358,7 @@ nav.site-nav .nav-links a,nav.site-nav .nav-cta,nav.site-nav .nav-mobile a,.foot
     </div>
     <div class="cr-blog-grid">
       {% for p in recent_blog_posts %}
-      <a href="/{{ p.slug }}" class="cr-art">
+      <a href="/{{ p.slug }}/" class="cr-art">
         <div class="cr-art-img">
           {% if p.featured_image %}<img src="{{ p.featured_image }}" alt="{{ p.title }}" loading="lazy">{% else %}<span class="ph"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg></span>{% endif %}
         </div>
