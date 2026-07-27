@@ -4,15 +4,21 @@ slug: 6542-note-de-frais-kilometrique-bareme-et-calcul
 date: '2026-07-27T10:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Note de frais kilométrique : barème 2026'
-meta_description: 'Calculez votre note de frais kilométrique avec le barème 2024 : tranches, puissance fiscale et formules expliquées pour un remboursement simple et conforme.'
+meta_description: 'Calculez votre note de frais kilométrique avec le barème 2024 :
+  tranches, puissance fiscale et formules expliquées pour un remboursement simple
+  et conforme.'
 min_words: 1200
 status: published
 featured_image: /blog/6542-note-de-frais-kilometrique-bareme-et-calcul.jpg
 link_anchors:
 - text: note de frais kilométrique
   max: 5
+related_posts:
+- 4568-note-de-frais-definition-et-fonctionnement
+- 3017-exemple-de-note-de-frais-modeles-concrets
+- 6246-justificatif-de-note-de-frais-ce-qu-il-faut-savoir
+- 3478-note-de-frais-et-urssaf-ce-qu-il-faut-savoir
 ---
-
 <h2>Ce que le barème kilométrique change vraiment dans votre quotidien</h2>
 
 <p>Chaque année, je traite des centaines de notes de frais dans mon service. Et franchement, la note de frais kilométrique reste celle qui génère le plus de questions de la part des salariés. Pas forcément parce que c'est compliqué, mais parce que les règles changent, les barèmes bougent, et tout le monde ne roule pas le même véhicule.</p>
