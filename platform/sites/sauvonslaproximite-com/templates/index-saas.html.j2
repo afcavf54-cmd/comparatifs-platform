@@ -385,7 +385,7 @@ nav.site-nav .nav-links a,nav.site-nav .nav-cta,nav.site-nav .nav-mobile a,.foot
     </div>
     <div class="slp-articles-grid">
       {% for p in recent_blog_posts %}
-      <a href="/{{ p.slug }}" class="slp-art">
+      <a href="/{{ p.slug }}/" class="slp-art">
         <div class="slp-art-img">
           {% if p.featured_image %}<img src="{{ p.featured_image }}" alt="{{ p.title }}" loading="lazy">{% else %}<span class="ph">photo 16:9</span>{% endif %}
         </div>
