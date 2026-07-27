@@ -422,7 +422,7 @@ nav.site-nav .nav-links a,nav.site-nav .nav-cta,nav.site-nav .nav-mobile a,.foot
 
     <div class="lb-articles-grid">
       {% for p in recent_blog_posts %}
-      <a href="/{{ p.slug }}" class="lb-art">
+      <a href="/{{ p.slug }}/" class="lb-art">
         <div class="lb-art-img">
           {% if p.featured_image %}
           <img src="{{ p.featured_image }}" alt="{{ p.title }}" loading="lazy">
