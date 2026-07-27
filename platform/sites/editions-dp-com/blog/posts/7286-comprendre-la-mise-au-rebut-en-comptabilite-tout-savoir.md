@@ -5,20 +5,21 @@ date: 2026-05-12 12:02:05
 updated: 2026-05-12 12:57:50
 categorie: Comptabilité
 meta_title: 'La mise au rebut des immobilisations en comptabilité : défintion et explications'
-meta_description: 'Découvrez comment gérer la mise au rebut en comptabilité : définition, situations concrètes, écritures comptables et règles à respecter pour sortir vos biens de…'
+meta_description: 'Découvrez comment gérer la mise au rebut en comptabilité : définition,
+  situations concrètes, écritures comptables et règles à respecter pour sortir vos
+  biens de…'
 featured_image: /blog/7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir/featured-65459.jpg
 status: published
 min_words: 900
 related_posts:
+- 1230-creer-une-facture-avec-article-en-ligne-gratuitement
 - 6027-application-facturation-invoicepro-x3-quel-temps-de-traitement-prevoir
-- 4708-cnam-intec-presentation-de-l-institut-national-des-techniques-economiques-et-comptables
-- 2133-comment-automatiser-la-facturation-avec-billmatic-auto
 - 2138-comptabiliser-une-provision-pour-depreciation-des-stocks
+- 4708-cnam-intec-presentation-de-l-institut-national-des-techniques-economiques-et-comptables
 link_anchors:
 - text: mise au rebut
   max: 10
 ---
-
 <h2>La mise au rebut : quand l'entreprise dit adieu à ses équipements</h2>
 
 <p>J'ai eu affaire à la mise au rebut plusieurs fois dans mon entreprise. Une machine qui tombe en panne définitive, un ordinateur obsolète, du matériel endommagé lors d'un transport... <strong>À chaque fois, même question : comment bien traiter ça en comptabilité ?</strong></p>

@@ -1,24 +1,26 @@
 ---
-title: "CNAM INTEC : présentation de l'Institut National des Techniques Économiques et Comptables"
+title: 'CNAM INTEC : présentation de l''Institut National des Techniques Économiques
+  et Comptables'
 slug: 4708-cnam-intec-presentation-de-l-institut-national-des-techniques-economiques-et-comptables
 date: 2026-06-07 17:00:00+02:00
-updated: 2026-06-08T11:33:03
+updated: 2026-06-08 11:33:03
 categorie: Comptabilité
-meta_title: "CNAM INTEC : formations et diplômes en comptabilité"
-meta_description: "Découvrez le CNAM INTEC : formation comptable diplômante à tarifs publics pour préparer DCG et DSCG. Cours du soir, formation à distance, rythme adapté aux salariés."
+meta_title: 'CNAM INTEC : formations et diplômes en comptabilité'
+meta_description: 'Découvrez le CNAM INTEC : formation comptable diplômante à tarifs
+  publics pour préparer DCG et DSCG. Cours du soir, formation à distance, rythme adapté
+  aux salariés.'
 featured_image: /blog/4708-cnam-intec-presentation-de-l-institut-national-des-techniques-economiques-et-comptables/featured-3470.jpg
 status: published
 min_words: 910
 related_posts:
 - 7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir
 - 2138-comptabiliser-une-provision-pour-depreciation-des-stocks
-- 2133-comment-automatiser-la-facturation-avec-billmatic-auto
 - 6027-application-facturation-invoicepro-x3-quel-temps-de-traitement-prevoir
+- 1230-creer-une-facture-avec-article-en-ligne-gratuitement
 link_anchors:
 - text: le CNAM INTEC (institut national des techniques économiques et comptables)
   max: 5
 ---
-
 <p>Après 11 ans passés à gérer mon entreprise, je me suis souvent posé la question de la formation comptable pour mes équipes. Quand j'ai découvert le CNAM INTEC, j'ai compris qu'il y avait là une opportunité intéressante. Mais attention, ce n'est pas forcément fait pour tout le monde.</p>
 
 <h2>L'INTEC du CNAM : qu'est-ce que c'est vraiment ?</h2>

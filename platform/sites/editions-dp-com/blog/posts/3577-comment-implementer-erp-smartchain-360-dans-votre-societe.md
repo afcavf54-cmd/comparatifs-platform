@@ -14,10 +14,10 @@ link_anchors:
 - text: comment implémenter l'ERP SmartChain
   max: 360
 related_posts:
-- 9812-comment-exporter-les-donnees-salestrack-crm-au-format-csv
-- 8604-comment-implementer-erp-bizflow-evolution-dans-une-pme
-- 2575-strategie-corporate-qu-est-ce-que-c-est-et-comment-la-differencier-de-la-strategie-business
-- 3423-qu-est-ce-qu-une-strategie-de-croissance-et-comment-la-construire-pour-votre-entreprise
+- 4489-comment-calculer-son-prix-de-vente-a-partir-du-taux-de-marge-formule-et-exemples
+- 6606-why-how-what-le-golden-circle-definition-exemples-et-comment-l-appliquer-a-votre-entreprise
+- 3861-les-criteres-essentiels-pour-bien-choisir-son-agence-web-et-eviter-les-mauvaises-surprises
+- 4578-tableau-de-caracterisation-comment-le-construire-et-l-utiliser-dans-vos-projets
 ---
 <h2>ERP SmartChain 360 : mon retour après 6 mois d'implémentation</h2>
 

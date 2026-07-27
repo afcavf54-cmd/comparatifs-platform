@@ -14,10 +14,10 @@ link_anchors:
 - text: comment configurer le CRM LeadFlow Automation
   max: 5
 related_posts:
-- 3861-les-criteres-essentiels-pour-bien-choisir-son-agence-web-et-eviter-les-mauvaises-surprises
 - 1843-pain-point-client-comment-identifier-et-resoudre-les-points-de-douleur-de-vos-clients
+- 6606-why-how-what-le-golden-circle-definition-exemples-et-comment-l-appliquer-a-votre-entreprise
 - 3423-qu-est-ce-qu-une-strategie-de-croissance-et-comment-la-construire-pour-votre-entreprise
-- 1209-combien-coute-erp-bizcore-enterprise-prix-et-deploiement
+- 7257-comitologie-de-projet-roles-instances-et-organisation-pour-piloter-efficacement
 ---
 <h2>Ma découverte de LeadFlow Automation : premiers pas et configuration de base</h2>
 

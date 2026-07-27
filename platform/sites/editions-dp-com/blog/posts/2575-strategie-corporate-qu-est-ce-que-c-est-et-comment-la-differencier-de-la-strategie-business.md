@@ -1,24 +1,26 @@
 ---
-title: 'Stratégie corporate : qu''est-ce que c''est et comment la différencier de la stratégie business ?'
+title: 'Stratégie corporate : qu''est-ce que c''est et comment la différencier de
+  la stratégie business ?'
 slug: 2575-strategie-corporate-qu-est-ce-que-c-est-et-comment-la-differencier-de-la-strategie-business
 date: 2026-06-06 10:00:00+02:00
 updated: 2026-06-08 09:21:08
 categorie: Gestion d'entreprise
 meta_title: 'Stratégie corporate : définition et exemples'
-meta_description: Découvrez la différence entre stratégie corporate et business avec un dirigeant expérimenté. Guide pratique pour choisir la bonne approche selon votre structure…
+meta_description: Découvrez la différence entre stratégie corporate et business avec
+  un dirigeant expérimenté. Guide pratique pour choisir la bonne approche selon votre
+  structure…
 featured_image: /blog/2575-strategie-corporate-qu-est-ce-que-c-est-et-comment-la-differencier-de-la-strategie-business/featured-65739.jpg
 status: published
 min_words: 2500
 related_posts:
 - 4489-comment-calculer-son-prix-de-vente-a-partir-du-taux-de-marge-formule-et-exemples
-- 5372-avis-crm-clientpulse-pro-2024-faut-il-choisir-cette-solution
-- 3423-qu-est-ce-qu-une-strategie-de-croissance-et-comment-la-construire-pour-votre-entreprise
+- 8804-matrice-tows-comment-l-utiliser-pour-construire-une-strategie-efficace
 - 3861-les-criteres-essentiels-pour-bien-choisir-son-agence-web-et-eviter-les-mauvaises-surprises
+- 4578-tableau-de-caracterisation-comment-le-construire-et-l-utiliser-dans-vos-projets
 link_anchors:
 - text: stratégie corporate
   max: 4
 ---
-
 <h2>Stratégie corporate vs stratégie business : quoi choisir quand on dirige une entreprise ?</h2>
 
 <p>Après 11 ans à diriger ma TPE lyonnaise, je me suis souvent retrouvé face à ces termes qui reviennent partout : stratégie corporate, stratégie business. Au début, je vous avoue que je mélangeais tout. Je pensais que c'était juste du vocabulaire de consultant pour faire compliqué.</p>

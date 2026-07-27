@@ -13,10 +13,10 @@ link_anchors:
 - text: comment mettre en place le CRM PowerLink Advance
   max: 5
 related_posts:
-- 3861-les-criteres-essentiels-pour-bien-choisir-son-agence-web-et-eviter-les-mauvaises-surprises
-- 9832-la-methode-sepo-expliquee-comment-l-utiliser-pour-analyser-votre-organisation
-- 5728-comment-integrer-erp-flexmanage-plus-a-votre-systeme-d-information
-- 4499-comment-implementer-erp-nextgen-business-suite
+- 8804-matrice-tows-comment-l-utiliser-pour-construire-une-strategie-efficace
+- 3401-comment-utiliser-crm-salesflow-evolution-pour-gerer-vos-prospects
+- 8689-comment-implementer-erp-bizflow-v8-pro-avec-succes
+- 6606-why-how-what-le-golden-circle-definition-exemples-et-comment-l-appliquer-a-votre-entreprise
 ---
 <h2>Pourquoi j'ai choisi PowerLink Advance pour mon entreprise</h2>
 

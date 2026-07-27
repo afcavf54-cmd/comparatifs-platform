@@ -14,10 +14,10 @@ link_anchors:
 - text: comitologie d'un projet
   max: 4
 related_posts:
-- 5728-comment-integrer-erp-flexmanage-plus-a-votre-systeme-d-information
-- 3401-comment-utiliser-crm-salesflow-evolution-pour-gerer-vos-prospects
+- 3107-comment-configurer-crm-leadflow-automation-etape-par-etape
+- 4489-comment-calculer-son-prix-de-vente-a-partir-du-taux-de-marge-formule-et-exemples
+- 6606-why-how-what-le-golden-circle-definition-exemples-et-comment-l-appliquer-a-votre-entreprise
 - 3577-comment-implementer-erp-smartchain-360-dans-votre-societe
-- 8532-comment-parametrer-les-modules-erp-financepro-integrated
 ---
 <p>On pilote une boîte de 100 à 500 personnes, et un jour quelqu'un vous parle de "comitologie". Premier réflexe : chercher ce que ça veut dire. Deuxième réflexe : réaliser que vous le faisiez déjà, mais sans le nommer. La comitologie de projet, c'est simplement l'organisation de vos instances de gouvernance. Qui décide quoi, quand, avec qui.</p>
 

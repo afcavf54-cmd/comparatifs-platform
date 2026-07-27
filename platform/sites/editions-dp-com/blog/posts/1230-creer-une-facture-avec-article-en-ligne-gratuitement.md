@@ -14,10 +14,10 @@ link_anchors:
 - text: créer une facture avec article en ligne gratuitement
   max: 5
 related_posts:
-- 2133-comment-automatiser-la-facturation-avec-billmatic-auto
+- 6027-application-facturation-invoicepro-x3-quel-temps-de-traitement-prevoir
 - 7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir
+- 2138-comptabiliser-une-provision-pour-depreciation-des-stocks
 - 4708-cnam-intec-presentation-de-l-institut-national-des-techniques-economiques-et-comptables
-- 9861-comptabilite-cloud-financecore-plus-quelles-fonctionnalites
 ---
 <p>J'ai cherché pendant un bon moment comment faire une facture propre sans passer par un comptable à chaque fois. Quand on dirige une TPE à Lyon avec une équipe qui n'est pas du tout technique, on ne peut pas se permettre de passer deux heures sur un logiciel compliqué juste pour facturer un client.</p>
 

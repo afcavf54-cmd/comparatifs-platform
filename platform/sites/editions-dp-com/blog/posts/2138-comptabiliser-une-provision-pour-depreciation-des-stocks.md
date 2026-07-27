@@ -5,17 +5,18 @@ date: 2026-05-12 12:02:05
 updated: 2026-05-12 12:52:45
 categorie: Comptabilité
 meta_title: Comptabilisation des stocks et des dépréciations de stocks
-meta_description: Découvrez comment comptabiliser une provision pour dépréciation des stocks selon le principe de prudence. Méthodes de calcul, écritures comptables et conseils…
+meta_description: Découvrez comment comptabiliser une provision pour dépréciation
+  des stocks selon le principe de prudence. Méthodes de calcul, écritures comptables
+  et conseils…
 featured_image: /blog/2138-comptabiliser-une-provision-pour-depreciation-des-stocks/featured-60109.jpg
 status: published
 min_words: 900
 related_posts:
-- 7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir
-- 6027-application-facturation-invoicepro-x3-quel-temps-de-traitement-prevoir
 - 4708-cnam-intec-presentation-de-l-institut-national-des-techniques-economiques-et-comptables
-- 2133-comment-automatiser-la-facturation-avec-billmatic-auto
+- 6027-application-facturation-invoicepro-x3-quel-temps-de-traitement-prevoir
+- 1230-creer-une-facture-avec-article-en-ligne-gratuitement
+- 7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir
 ---
-
 <h2>Pourquoi prévoir une dépréciation de stock dans sa comptabilité</h2>
 
 <p>On a tous des produits qui traînent dans nos entrepôts. Certains depuis des mois. Je me souviens d'un stock de pièces détachées que j'avais gardé trois ans en me disant qu'on finirait bien par les écouler. <strong>Erreur classique</strong> : ces produits perdaient de la valeur chaque jour.</p>

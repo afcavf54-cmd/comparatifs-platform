@@ -14,10 +14,10 @@ link_anchors:
 - text: why how what
   max: 4
 related_posts:
-- 8814-comment-installer-erp-cloudmanager-enterprise
-- 9832-la-methode-sepo-expliquee-comment-l-utiliser-pour-analyser-votre-organisation
-- 8532-comment-parametrer-les-modules-erp-financepro-integrated
-- 5728-comment-integrer-erp-flexmanage-plus-a-votre-systeme-d-information
+- 3401-comment-utiliser-crm-salesflow-evolution-pour-gerer-vos-prospects
+- 2575-strategie-corporate-qu-est-ce-que-c-est-et-comment-la-differencier-de-la-strategie-business
+- 7257-comitologie-de-projet-roles-instances-et-organisation-pour-piloter-efficacement
+- 8804-matrice-tows-comment-l-utiliser-pour-construire-une-strategie-efficace
 ---
 <p>J'ai découvert le Golden Circle un peu par hasard, lors d'une conférence à Lyon où quelqu'un avait passé la vidéo TED de Simon Sinek. J'avoue que les vingt premières minutes, j'étais sceptique. Encore un concept marketing habillé en philosophie d'entreprise. Et puis quelque chose a cliqué.</p>
 

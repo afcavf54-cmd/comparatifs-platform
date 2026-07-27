@@ -5,20 +5,21 @@ date: 2026-06-05 12:00:00+02:00
 updated: 2026-06-08 09:23:32
 categorie: Comptabilité
 meta_title: 'Application facturation InvoicePro X3 : temps de traitement et avis'
-meta_description: 'Découvrez les temps de traitement réels d''InvoicePro X3 : 3-8 secondes par facture, 15-20 secondes pour l''export PDF et jusqu''à 12 minutes pour les relances…'
+meta_description: 'Découvrez les temps de traitement réels d''InvoicePro X3 : 3-8
+  secondes par facture, 15-20 secondes pour l''export PDF et jusqu''à 12 minutes pour
+  les relances…'
 featured_image: /blog/6027-application-facturation-invoicepro-x3-quel-temps-de-traitement-prevoir/featured-9801.jpg
 status: published
 min_words: 970
 related_posts:
-- 2138-comptabiliser-une-provision-pour-depreciation-des-stocks
-- 7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir
 - 4708-cnam-intec-presentation-de-l-institut-national-des-techniques-economiques-et-comptables
-- 2133-comment-automatiser-la-facturation-avec-billmatic-auto
+- 2138-comptabiliser-une-provision-pour-depreciation-des-stocks
+- 1230-creer-une-facture-avec-article-en-ligne-gratuitement
+- 7286-comprendre-la-mise-au-rebut-en-comptabilite-tout-savoir
 link_anchors:
 - text: le temps de traitement de l'application de facturation InvoicePro
   max: 3
 ---
-
 <h2>InvoicePro X3 : des temps de traitement qui peuvent surprendre</h2>
 
 <p>Quand j'ai installé InvoicePro X3 pour la première fois, je m'attendais à des temps de traitement plutôt corrects. Après tout, pour <strong>79€ par mois</strong>, on peut espérer de la réactivité. La réalité m'a vite rattrapé.</p>

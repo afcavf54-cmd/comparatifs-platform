@@ -15,10 +15,10 @@ link_anchors:
 - text: tableau de caractérisation
   max: 4
 related_posts:
-- 1628-comment-gerer-ses-stocks-avec-inventory-control-smart
-- 9832-comment-configurer-erp-solutions-dynabiz-pro-efficacement
-- 9008-comment-implementer-erp-bizflow-max-dans-votre-entreprise
-- 3577-comment-implementer-erp-smartchain-360-dans-votre-societe
+- 7257-comitologie-de-projet-roles-instances-et-organisation-pour-piloter-efficacement
+- 3774-comment-mettre-en-place-crm-powerlink-advance-efficacement
+- 2575-strategie-corporate-qu-est-ce-que-c-est-et-comment-la-differencier-de-la-strategie-business
+- 6606-why-how-what-le-golden-circle-definition-exemples-et-comment-l-appliquer-a-votre-entreprise
 ---
 <p>J'ai mis du temps à comprendre ce qu'était vraiment un tableau de caractérisation. Pendant des années, j'ai géré mes projets avec des fichiers Excel bricolés, des notes griffonnées dans des réunions, et beaucoup de bonne volonté. Résultat : des projets qui démarrent dans le flou, des équipes qui ne savent pas exactement quoi faire, et des clients (ou des partenaires) qui ont des attentes différentes des miennes.</p>
 
