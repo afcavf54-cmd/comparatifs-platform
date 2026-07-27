@@ -270,7 +270,7 @@ main{max-width:1200px;margin:0 auto;padding:64px 5vw 80px}
     </div>
     <div class="blog-recent-grid">
       {% for p in recent_blog_posts %}
-      <a href="/{{ p.slug }}" class="blog-recent-card">
+      <a href="/{{ p.slug }}/" class="blog-recent-card">
         <div class="blog-recent-card-img">
           {% if p.featured_image %}
             <img src="{{ p.featured_image }}" alt="{{ p.title }}" loading="lazy">
