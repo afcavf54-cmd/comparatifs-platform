@@ -9,7 +9,10 @@ export async function GET(_: NextRequest, { params }: Params) {
   const yaml = file.content
   const get = (key: string) => {
     const match = yaml.match(new RegExp(`^[ ]*${key}:\\s*["']?(.+?)["']?\\s*$`, 'm'))
-    return match ? match[1].trim().replace(/^["']|["']$/g, '') : ''
+    // Dé-échappe (\" -> ", \\ -> \) l'inverse de escapeYamlValue : sans ça, le
+    // champ réaffiché contenait les \" et un nouveau save les ré-échappait
+    // (accumulation \" -> \\" -> \\\"). On casse le cycle ici.
+    return match ? match[1].trim().replace(/^["']|["']$/g, '').replace(/\\([\\"])/g, '$1') : ''
   }
   const pageTypesMatch = yaml.match(/page_types:\s*\n((?:[ ]+\w+:[ ]+\S+\n?)+)/)
   const pageTypes: Record<string, string> = {}
