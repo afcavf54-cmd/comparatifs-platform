@@ -45,6 +45,31 @@ def _normalize_slug(s: str) -> str:
     return s.strip("/")
 
 
+def _norm_title(t: str) -> str:
+    return " ".join(str(t or "").lower().split())
+
+
+def _read_md_title(path: pathlib.Path) -> str:
+    """Extrait le champ `title:` du frontmatter YAML d'un .md."""
+    try:
+        content = path.read_text(encoding="utf-8")
+    except Exception:
+        return ""
+    if not content.startswith("---"):
+        return ""
+    end = content.find("---", 3)
+    if end < 0:
+        return ""
+    for line in content[3:end].splitlines():
+        s = line.strip()
+        if s.startswith("title:"):
+            t = s.split(":", 1)[1].strip()
+            if len(t) >= 2 and t[0] in "'\"" and t[-1] == t[0]:
+                t = t[1:-1].replace("''", "'").replace('\\"', '"')
+            return t
+    return ""
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--file", default="platform/blog_to_delete.txt")
@@ -103,12 +128,32 @@ def main():
             print(f"[{site}] aucun article ciblé.")
             continue
 
+        # Titres à blacklister (pour que le cron ne republie pas depuis la
+        # sheet). Source : frontmatter du .md, ou posts-index.json pour les
+        # fantômes dont le .md a déjà disparu.
+        slug_to_title = {}
+        if index_path.exists():
+            try:
+                _idx = json.loads(index_path.read_text(encoding="utf-8"))
+                for x in _idx.get("posts", []):
+                    if x.get("slug") and x.get("title"):
+                        slug_to_title[x["slug"]] = x["title"]
+            except Exception:
+                pass
+
         deleted, ghost = [], []
         img_removed = 0
+        bl_titles = set()
         public_blog = pathlib.Path(args.root) / site / "public" / "blog"
         IMG_EXT = (".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif")
         for slug in sorted(to_del):
             p = existing.get(slug)
+            # Titre pour le blacklist (avant suppression du .md)
+            title = _read_md_title(p) if (p and p.exists()) else ""
+            if not title:
+                title = slug_to_title.get(slug, "")
+            if title:
+                bl_titles.add(_norm_title(title))
             if p and p.exists():
                 p.unlink(); deleted.append(slug)
             else:
@@ -119,6 +164,18 @@ def main():
                 img = public_blog / f"{slug}{ext}"
                 if img.exists():
                     img.unlink(); img_removed += 1
+
+        # Blacklist : ajoute les titres supprimés (le cron les ignorera).
+        if bl_titles:
+            bl_file = pathlib.Path(args.root) / site / "blog" / "schedule_blacklist.json"
+            try:
+                current = json.loads(bl_file.read_text(encoding="utf-8")) if bl_file.exists() else []
+            except Exception:
+                current = []
+            merged = sorted(set(_norm_title(t) for t in current) | bl_titles)
+            bl_file.parent.mkdir(parents=True, exist_ok=True)
+            bl_file.write_text(json.dumps(merged, ensure_ascii=False, indent=2), encoding="utf-8")
+            print(f"[{site}] blacklist : {len(bl_titles)} titre(s) ajouté(s) ({len(merged)} au total)")
 
         # Mise à jour de posts-index.json (retire les slugs supprimés)
         idx_changed = False
