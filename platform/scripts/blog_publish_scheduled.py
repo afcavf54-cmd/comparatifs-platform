@@ -793,6 +793,18 @@ def process_site(site_id: str, site_dir: Path, config: dict,
         processed = []
     processed_set = set(processed)
 
+    # ── Blacklist : titres d'articles SUPPRIMÉS à ne jamais republier ────────
+    # La sheet reste la source du programmé ; supprimer un .md ne l'en retire
+    # pas, donc le cron le republierait. On tient une liste de titres supprimés
+    # (alimentée par la suppression dashboard + le script groupé) que le cron
+    # ignore. Fichier : blog/schedule_blacklist.json (liste de titres normalisés).
+    blacklist_file = site_dir / "blog" / "schedule_blacklist.json"
+    try:
+        _bl = json.loads(blacklist_file.read_text(encoding="utf-8")) if blacklist_file.exists() else []
+    except Exception:
+        _bl = []
+    blacklist_set = {_normalize_title(t) for t in _bl if t}
+
     existing_slugs = {p.stem for p in posts_dir.glob("*.md")} if posts_dir.exists() else set()
     existing_titles_normalized: set[str] = set()
     if posts_dir.exists():
@@ -872,6 +884,9 @@ def process_site(site_id: str, site_dir: Path, config: dict,
         title = substitute_placeholders(title, pub_dt)
 
         title_normalized = " ".join(title.lower().split())
+        if title_normalized in blacklist_set:
+            print(f"   🚫 '{title[:50]}' supprimé (blacklist) — non republié")
+            continue
         if title_normalized in existing_titles_normalized:
             print(f"   ⏭ '{title[:50]}' déjà publié (titre existant) — ajout au registre")
             processed_set.add(key)
