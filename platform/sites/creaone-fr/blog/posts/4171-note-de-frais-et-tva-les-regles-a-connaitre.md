@@ -4,15 +4,20 @@ slug: 4171-note-de-frais-et-tva-les-regles-a-connaitre
 date: '2026-07-26T17:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Note de frais et TVA : guide fiscal 2026'
-meta_description: 'TVA sur notes de frais : taux applicables, justificatifs conformes et erreurs à éviter pour récupérer la TVA sans risquer un redressement fiscal.'
+meta_description: 'TVA sur notes de frais : taux applicables, justificatifs conformes
+  et erreurs à éviter pour récupérer la TVA sans risquer un redressement fiscal.'
 min_words: 1100
 status: published
 featured_image: /blog/4171-note-de-frais-et-tva-les-regles-a-connaitre.jpg
 link_anchors:
 - text: récupération de la TVA sur les notes de frais
   max: 5
+related_posts:
+- 6831-note-de-frais-a-imprimer-modele-pdf-gratuit
+- 2582-faire-une-note-de-frais-la-methode-simple
+- 3017-exemple-de-note-de-frais-modeles-concrets
+- 6246-justificatif-de-note-de-frais-ce-qu-il-faut-savoir
 ---
-
 <p>La TVA sur les notes de frais, c'est l'un de ces sujets qui paraît simple au premier abord, et qui devient vite un vrai casse-tête dès qu'on creuse un peu. Neuf ans de compta, et je continue à voir des erreurs récurrentes sur ce point, même dans des équipes rodées. Des dépenses récupérables traitées en charges simples, des justificatifs incomplets, des taux mal appliqués... Le coût de ces approximations est réel.</p>
 
 <p>Alors voici ce que je sais, ce que j'applique au quotidien, et ce que je vous recommande de mettre en place si vous gérez des notes de frais dans votre entreprise.</p>

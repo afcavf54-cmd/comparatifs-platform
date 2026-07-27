@@ -4,15 +4,21 @@ slug: 3478-note-de-frais-et-urssaf-ce-qu-il-faut-savoir
 date: '2026-07-27T07:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Note de frais et URSSAF : la réglementation 2026'
-meta_description: 'Maîtrisez les règles URSSAF sur les notes de frais pour éviter un redressement : remboursement au réel, forfaits, barèmes et exonérations de cotisations sociales…'
+meta_description: 'Maîtrisez les règles URSSAF sur les notes de frais pour éviter
+  un redressement : remboursement au réel, forfaits, barèmes et exonérations de cotisations
+  sociales…'
 min_words: 1000
 status: published
 featured_image: /blog/3478-note-de-frais-et-urssaf-ce-qu-il-faut-savoir.jpg
 link_anchors:
 - text: règles URSSAF sur les notes de frais
   max: 5
+related_posts:
+- 4171-note-de-frais-et-tva-les-regles-a-connaitre
+- 4568-note-de-frais-definition-et-fonctionnement
+- 2861-note-de-frais-sans-justificatif-est-ce-possible
+- 9857-modele-de-note-de-frais-lequel-utiliser
 ---
-
 <h2>URSSAF et notes de frais : les règles du jeu que vous devez maîtriser</h2>
 
 <p>Je vais être honnête avec vous : quand j'ai pris mon poste de responsable comptable, la gestion des notes de frais côté URSSAF était un vrai angle mort. On savait rembourser, on savait vérifier les justificatifs, mais les règles d'exonération de cotisations sociales, c'est un sujet qui mérite vraiment qu'on s'y arrête. Parce qu'un remboursement mal catégorisé, c'est potentiellement un redressement qui coûte cher.</p>
