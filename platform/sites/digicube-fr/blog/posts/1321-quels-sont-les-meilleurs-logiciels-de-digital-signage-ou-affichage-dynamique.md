@@ -17,7 +17,8 @@ min_words: 2000
 link_anchors:
 - text: meilleurs logiciels de digital signage
   max: 5
-related_posts: []
+related_posts:
+- 9576-qu-est-ce-que-le-digital-signage-ou-affichage-dynamique
 ---
 <p>J'utilise des outils d'affichage dynamique depuis un peu plus d'un an dans mes locaux marseillais. Au départ, je cherchais juste à diffuser les plannings d'équipe sur un écran dans l'espace commun. Résultat : j'ai testé plusieurs solutions, perdu du temps sur certaines, économisé sur d'autres. Voici ce que j'en retiens concrètement.</p><h2>Quels sont les meilleurs logiciels d'affichage numérique du marché ?</h2>
 
