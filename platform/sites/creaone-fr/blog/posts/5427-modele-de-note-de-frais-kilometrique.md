@@ -4,15 +4,21 @@ slug: 5427-modele-de-note-de-frais-kilometrique
 date: '2026-07-28T17:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Note de frais kilométrique : modèle à télécharger'
-meta_description: 'Téléchargez notre modèle de note de frais kilométrique et évitez les erreurs courantes : motif, barème fiscal, puissance du véhicule, tout ce qu''il faut inclure.'
+meta_description: 'Téléchargez notre modèle de note de frais kilométrique et évitez
+  les erreurs courantes : motif, barème fiscal, puissance du véhicule, tout ce qu''il
+  faut inclure.'
 min_words: 900
 status: published
 featured_image: /blog/5427-modele-de-note-de-frais-kilometrique.jpg
 link_anchors:
 - text: modèle de note de frais kilométrique
   max: 5
+related_posts:
+- 2063-note-de-frais-excel-modele-pret-a-l-emploi
+- 2861-note-de-frais-sans-justificatif-est-ce-possible
+- 4171-note-de-frais-et-tva-les-regles-a-connaitre
+- 9383-note-de-frais-de-deplacement-ce-qui-est-remboursable
 ---
-
 <h2>Ce que doit vraiment contenir une note de frais kilométrique</h2>
 
 <p>Je vais vous poser une question simple : combien de notes de frais kilométriques mal remplies avez-vous reçues ce mois-ci ? Dans mon équipe, la réponse est "trop". Des dates manquantes, des trajets vagues comme "client Paris", aucune mention du véhicule utilisé. Résultat : on relance, on corrige, on perd du temps. Et le salarié attend son remboursement.</p>
