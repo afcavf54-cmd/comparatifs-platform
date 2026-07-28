@@ -4,15 +4,21 @@ slug: 7114-legislation-sur-la-badgeuse-en-entreprise-ce-que-dit-la-loi
 date: '2026-07-28T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Législation badgeuse en entreprise : ce que dit la loi'
-meta_description: 'Badgeuse en entreprise : la loi n''en impose pas, mais le suivi du temps de travail est obligatoire. Découvrez vos obligations légales et les risques en cas de…'
+meta_description: 'Badgeuse en entreprise : la loi n''en impose pas, mais le suivi
+  du temps de travail est obligatoire. Découvrez vos obligations légales et les risques
+  en cas de…'
 min_words: 1200
 status: published
 featured_image: /blog/7114-legislation-sur-la-badgeuse-en-entreprise-ce-que-dit-la-loi.jpg
 link_anchors:
 - text: législation sur les badgeuses en entreprise
   max: 5
+related_posts:
+- 7253-suivi-du-temps-de-travail-methodes-et-outils-disponibles
+- 6943-logiciel-de-pointage-fonctionnement-types-et-criteres-de-choix
+- 6425-logiciel-de-gestion-des-temps-de-travail-a-quoi-ca-sert-vraiment
+- 5662-suivi-du-temps-de-travail-quelles-sont-les-obligations-legales
 ---
-
 <h2>Ce que la loi dit vraiment sur le suivi du temps de travail</h2>
 
 <p>Je vais pas te faire un cours de droit. Mais quand j'ai lancé ma boîte, j'ai rapidement réalisé que je n'avais aucune idée de ce que j'étais obligé de faire côté gestion des heures. Et franchement, l'erreur que tu peux commettre là-dessus, elle coûte cher. Pas que financièrement, mais aussi en cas de litige avec un salarié.</p>
