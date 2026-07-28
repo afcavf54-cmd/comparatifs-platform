@@ -4,15 +4,20 @@ slug: 9383-note-de-frais-de-deplacement-ce-qui-est-remboursable
 date: '2026-07-28T08:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Note de frais de déplacement : le guide 2026'
-meta_description: 'Note de frais de déplacement : découvrez ce qui est vraiment remboursable, les barèmes URSSAF en vigueur et comment éviter les erreurs qui bloquent vos…'
+meta_description: 'Note de frais de déplacement : découvrez ce qui est vraiment remboursable,
+  les barèmes URSSAF en vigueur et comment éviter les erreurs qui bloquent vos…'
 min_words: 1000
 status: published
 featured_image: /blog/9383-note-de-frais-de-deplacement-ce-qui-est-remboursable.jpg
 link_anchors:
 - text: frais de déplacement professionnels
   max: 5
+related_posts:
+- 7722-comptabilisation-des-notes-de-frais-la-methode-complete
+- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
+- 9301-note-de-frais-et-code-du-travail-ce-que-dit-la-loi
+- 3017-exemple-de-note-de-frais-modeles-concrets
 ---
-
 <h2>Ce que l'employeur peut réellement rembourser sur vos déplacements</h2>
 
 <p>Quand on gère des notes de frais au quotidien, on se rend vite compte que les salariés ne savent pas toujours ce qui est remboursable. Et franchement, c'est compréhensible. Les règles ne sont pas toujours claires, les plafonds changent, et chaque entreprise a sa propre politique interne. Après neuf ans à traiter des dizaines de dossiers par mois, j'ai décidé de poser les choses à plat, sans jargon inutile.</p>
