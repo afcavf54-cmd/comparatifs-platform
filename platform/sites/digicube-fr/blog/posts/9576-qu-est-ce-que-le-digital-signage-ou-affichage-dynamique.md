@@ -12,6 +12,7 @@ featured_image: /blog/9576-qu-est-ce-que-le-digital-signage-ou-affichage-dynamiq
 status: published
 min_words: 1200
 related_posts:
+- 4081-digital-signage-definition-fonctionnement-et-usages
 - 1321-quels-sont-les-meilleurs-logiciels-de-digital-signage-ou-affichage-dynamique
 link_anchors:
 - text: digital signage
@@ -19,7 +20,6 @@ link_anchors:
 - text: affichage numérique
   max: 10
 ---
-
 <p>J'ai mis du temps avant de comprendre ce que recouvrait vraiment le terme "digital signage". Pendant longtemps, je pensais que c'était juste une télé branchée dans un couloir avec un diaporama PowerPoint. Spoiler : c'est beaucoup plus que ça. Et quand on gère une boîte de 100 à 500 personnes à Marseille, avec des équipes réparties sur plusieurs sites, la question de comment faire circuler l'information devient vite un vrai sujet.</p>
 
 <p>Voici ce que j'ai compris, et surtout ce que ça peut changer concrètement dans une organisation comme la vôtre.</p>
