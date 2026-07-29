@@ -13,7 +13,8 @@ featured_image: /blog/5334-logiciel-de-facturation-definition-role-et-fonctionne
 link_anchors:
 - text: rôle d'un logiciel de facturation
   max: 8
-related_posts: []
+related_posts:
+- 2521-logiciel-de-facturation-definition-role-et-fonctionnement
 ---
 <h2>Ce que fait vraiment un logiciel de facturation (et pourquoi ça change tout au quotidien)</h2>
 
