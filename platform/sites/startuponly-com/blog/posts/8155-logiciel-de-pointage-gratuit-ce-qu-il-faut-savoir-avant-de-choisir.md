@@ -4,15 +4,20 @@ slug: 8155-logiciel-de-pointage-gratuit-ce-qu-il-faut-savoir-avant-de-choisir
 date: '2026-07-29T19:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logiciel de pointage gratuit : avantages et limites'
-meta_description: 'Logiciel de pointage gratuit : vraiment sans frais ou piège marketing ? Découvrez ce qu''il faut vérifier avant de créer un compte pour éviter les mauvaises…'
+meta_description: 'Logiciel de pointage gratuit : vraiment sans frais ou piège marketing
+  ? Découvrez ce qu''il faut vérifier avant de créer un compte pour éviter les mauvaises…'
 min_words: 1400
 status: published
 featured_image: /blog/8155-logiciel-de-pointage-gratuit-ce-qu-il-faut-savoir-avant-de-choisir.jpg
 link_anchors:
 - text: logiciel de pointage gratuit
   max: 5
+related_posts:
+- 6943-logiciel-de-pointage-fonctionnement-types-et-criteres-de-choix
+- 7253-suivi-du-temps-de-travail-methodes-et-outils-disponibles
+- 5662-suivi-du-temps-de-travail-quelles-sont-les-obligations-legales
+- 6425-logiciel-de-gestion-des-temps-de-travail-a-quoi-ca-sert-vraiment
 ---
-
 <h2>Logiciel de pointage gratuit : vraiment gratuit ou juste gratuit au début ?</h2>
 
 <p>J'ai cherché un logiciel de pointage gratuit pour ma petite équipe l'année dernière. Cinq personnes, des horaires un peu variables, et une feuille Excel qui commençait sérieusement à montrer ses limites. Je pensais trouver facilement un outil propre, sans frais. Spoiler : c'est plus compliqué que ça.</p>
