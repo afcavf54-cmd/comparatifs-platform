@@ -4,15 +4,20 @@ slug: 5233-note-de-frais-restaurant-les-regles-et-plafonds
 date: '2026-07-29T11:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Note de frais restaurant : plafonds et règles 2026'
-meta_description: 'Note de frais restaurant : règles, plafonds et justificatifs obligatoires pour éviter un rejet URSSAF. Découvrez ce que l''administration fiscale exige vraiment.'
+meta_description: 'Note de frais restaurant : règles, plafonds et justificatifs obligatoires
+  pour éviter un rejet URSSAF. Découvrez ce que l''administration fiscale exige vraiment.'
 min_words: 900
 status: published
 featured_image: /blog/5233-note-de-frais-restaurant-les-regles-et-plafonds.jpg
 link_anchors:
 - text: note de frais de restaurant
   max: 5
+related_posts:
+- 9383-note-de-frais-de-deplacement-ce-qui-est-remboursable
+- 6542-note-de-frais-kilometrique-bareme-et-calcul
+- 9857-modele-de-note-de-frais-lequel-utiliser
+- 4568-note-de-frais-definition-et-fonctionnement
 ---
-
 <h2>Ce que couvre vraiment une note de frais restaurant</h2>
 
 <p>Un repas d'affaires, ça peut sembler simple à justifier. Et pourtant, c'est l'une des rubriques les plus contestées lors des contrôles URSSAF. J'ai vu des dossiers retoqués pour un détail : un ticket de caisse sans nom du restaurant, une addition sans liste des convives, une date qui ne coïncide pas avec un déplacement. Les règles existent, elles sont précises, et les connaître vous évite des mauvaises surprises.</p>
