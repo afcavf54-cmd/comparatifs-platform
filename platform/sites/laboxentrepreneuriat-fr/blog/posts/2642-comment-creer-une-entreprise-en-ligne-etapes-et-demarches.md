@@ -13,7 +13,8 @@ featured_image: /blog/2642-comment-creer-une-entreprise-en-ligne-etapes-et-demar
 link_anchors:
 - text: créer son entreprise en ligne
   max: 8
-related_posts: []
+related_posts:
+- 4887-comment-creer-une-entreprise-en-ligne-etapes-et-demarches
 ---
 <h2>Ce que personne ne vous dit vraiment avant de se lancer</h2>
 
