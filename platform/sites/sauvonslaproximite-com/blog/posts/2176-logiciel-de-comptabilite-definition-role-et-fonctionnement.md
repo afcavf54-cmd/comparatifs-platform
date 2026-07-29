@@ -15,6 +15,7 @@ link_anchors:
 related_posts:
 - 8135-les-5-etapes-pour-creer-une-facture-en-ligne-gratuite
 - 3755-le-marketing-alternatif-face-aux-campagnes-classiques
+- 9274-logiciel-de-comptabilite-definition-role-et-fonctionnement
 ---
 <h2>Ce qu'on entend vraiment par "logiciel de comptabilité"</h2>
 
