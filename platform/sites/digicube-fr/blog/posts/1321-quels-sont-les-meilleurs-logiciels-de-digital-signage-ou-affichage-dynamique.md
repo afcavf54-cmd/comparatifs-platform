@@ -16,6 +16,7 @@ status: published
 min_words: 2000
 related_posts:
 - 9576-qu-est-ce-que-le-digital-signage-ou-affichage-dynamique
+- 4720-digital-signage-definition-fonctionnement-et-usages
 - 4081-digital-signage-definition-fonctionnement-et-usages
 link_anchors:
 - text: meilleurs logiciels de digital signage

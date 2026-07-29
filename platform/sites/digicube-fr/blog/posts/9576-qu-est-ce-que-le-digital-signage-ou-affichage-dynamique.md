@@ -13,6 +13,7 @@ status: published
 min_words: 1200
 related_posts:
 - 4081-digital-signage-definition-fonctionnement-et-usages
+- 4720-digital-signage-definition-fonctionnement-et-usages
 - 1321-quels-sont-les-meilleurs-logiciels-de-digital-signage-ou-affichage-dynamique
 link_anchors:
 - text: digital signage
