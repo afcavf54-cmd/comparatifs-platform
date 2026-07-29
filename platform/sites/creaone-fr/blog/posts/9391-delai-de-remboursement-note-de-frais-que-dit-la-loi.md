@@ -4,15 +4,21 @@ slug: 9391-delai-de-remboursement-note-de-frais-que-dit-la-loi
 date: '2026-07-29T18:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Délai remboursement note de frais : la réglementation'
-meta_description: 'Délai de remboursement des notes de frais : la loi ne fixe aucun délai précis. Découvrez ce qui s''applique vraiment en entreprise et vos recours en cas de retard.'
+meta_description: 'Délai de remboursement des notes de frais : la loi ne fixe aucun
+  délai précis. Découvrez ce qui s''applique vraiment en entreprise et vos recours
+  en cas de retard.'
 min_words: 900
 status: published
 featured_image: /blog/9391-delai-de-remboursement-note-de-frais-que-dit-la-loi.jpg
 link_anchors:
 - text: délai de remboursement des notes de frais
   max: 5
+related_posts:
+- 7722-comptabilisation-des-notes-de-frais-la-methode-complete
+- 9383-note-de-frais-de-deplacement-ce-qui-est-remboursable
+- 1820-note-de-frais-gratuite-modeles-a-telecharger
+- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
 ---
-
 <h2>Ce que la loi dit vraiment sur les délais de remboursement</h2>
 
 <p>Je vais vous dire quelque chose que beaucoup de salariés ignorent : il n'existe <strong>aucun délai légal précis</strong> fixé par le Code du travail pour le remboursement des notes de frais. Oui. Aucun. Ni 30 jours, ni 15 jours. Rien de gravé dans le marbre législatif côté délai chiffré.</p>
