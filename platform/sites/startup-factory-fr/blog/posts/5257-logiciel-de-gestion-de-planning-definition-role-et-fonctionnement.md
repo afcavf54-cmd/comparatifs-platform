@@ -4,15 +4,17 @@ slug: 5257-logiciel-de-gestion-de-planning-definition-role-et-fonctionnement
 date: '2026-07-29T17:19:47+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logiciel de gestion de planning : définition et rôle'
-meta_description: Découvrez ce qu'est vraiment un logiciel de gestion de planning, son rôle et son fonctionnement concret, pour ne plus perdre de temps sur des conflits d'horaires…
+meta_description: Découvrez ce qu'est vraiment un logiciel de gestion de planning,
+  son rôle et son fonctionnement concret, pour ne plus perdre de temps sur des conflits
+  d'horaires…
 min_words: 1600
 status: published
 featured_image: /blog/5257-logiciel-de-gestion-de-planning-definition-role-et-fonctionnement.jpg
 link_anchors:
 - text: rôle d'un logiciel de gestion de planning
   max: 5
+related_posts: []
 ---
-
 <p>Je vais être honnête avec toi : avant de mettre en place un outil dédié, je gérais les plannings de mon équipe sur un Google Sheet partagé. Ça fonctionnait... jusqu'au moment où ça ne fonctionnait plus. Absences non répercutées, doublons sur des créneaux, salariés qui ne savaient pas où regarder. J'ai perdu un temps fou à arbitrer des conflits de planning qui auraient pu être évités. C'est là que j'ai vraiment compris ce que vaut un bon <strong>logiciel de gestion du temps et des plannings</strong>.</p>
 
 <p>Cet article, c'est ce que j'aurais aimé lire avant de faire mes recherches. Pas une liste marketing. Un vrai retour d'expérience, avec les questions concrètes que tu dois te poser.</p>
