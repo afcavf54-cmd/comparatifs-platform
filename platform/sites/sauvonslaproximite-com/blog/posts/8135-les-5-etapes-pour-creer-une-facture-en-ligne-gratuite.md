@@ -14,6 +14,7 @@ link_anchors:
 - text: créer une facture avec article en ligne gratuitement
   max: 5
 related_posts:
+- 2176-logiciel-de-comptabilite-definition-role-et-fonctionnement
 - 3755-le-marketing-alternatif-face-aux-campagnes-classiques
 ---
 <p>Vingt ans que je gère des factures. Au début, c'était Word, un tableau approximatif, et une imprimante qui coinçait trois fois sur quatre. Aujourd'hui, on peut créer une facture propre, conforme et envoyée en moins de cinq minutes, depuis un navigateur, sans rien installer. Mais encore faut-il savoir par où commencer.</p>
