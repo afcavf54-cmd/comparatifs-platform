@@ -14,7 +14,7 @@ link_anchors:
 - text: rôle d'un logiciel d'emailing
   max: 8
 related_posts:
-- 4181-logiciel-d-emailing-definition-role-et-fonctionnement
+- 7295-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
 ---
 <p>J'utilise des outils d'emailing depuis une dizaine d'années. Au début, j'envoyais mes newsletters depuis Outlook. Oui, à la main. Un par un. Vous imaginez le temps perdu.</p>
 
