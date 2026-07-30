@@ -570,6 +570,7 @@ export default function BlogEditPage() {
           value={post.content_md}
           onChange={(html) => update('content_md', html)}
           onImageUpload={() => fileInputRef.current?.click()}
+          imagePreviewBase={`https://raw.githubusercontent.com/${process.env.NEXT_PUBLIC_GITHUB_OWNER || 'afcavf54-cmd'}/${process.env.NEXT_PUBLIC_GITHUB_REPO || 'comparatifs-platform'}/main/platform/sites/${siteId}/public`}
           height={520}
         />
         <input ref={fileInputRef} type="file" accept="image/*" style={{ display: 'none' }}
