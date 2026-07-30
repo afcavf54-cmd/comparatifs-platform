@@ -867,11 +867,27 @@ def cleanup_removed_products(output_dir: Path, site_dir: Path, products: list, a
             n.startswith("yandex_") or n.startswith("pinterest-")
         )
 
+    # Charge la page 404 pour ÉCRASER les pages orphelines (au lieu de les
+    # supprimer). Cloudflare Pages conserve les fichiers des anciens déploiements :
+    # supprimer une page (classement, avis, comparatif…) ne suffit pas, Pages
+    # ressert l'ancienne version. On la remplace donc par la 404.
+    try:
+        _html_404 = (output_dir / "404.html").read_text(encoding="utf-8")
+    except Exception:
+        _html_404 = ("<!DOCTYPE html><html><head><meta charset='UTF-8'>"
+                     "<title>Page introuvable</title></head><body>"
+                     "<h1>Page introuvable</h1></body></html>")
+
     removed = []
     for f in output_dir.glob("*.html"):
         if f.name not in expected_files and not _is_verification_file(f.name):
-            f.unlink()
+            f.write_text(_html_404, encoding="utf-8")   # écrase (≠ supprime) → bat la rétention
             removed.append(f.name)
+            # Écrase aussi la variante en dossier /{slug}/index.html si elle existe
+            _stem = f.name[:-5]
+            _d = output_dir / _stem / "index.html"
+            if _d.exists():
+                _d.write_text(_html_404, encoding="utf-8")
     for f in output_dir.glob("*.png"):
         if f.name not in expected_files and f.name not in {f"{s}.png" for s in current_slugs}:
             f.unlink()
@@ -972,6 +988,49 @@ def cleanup_blog_output(output_dir: Path, current_blog_slugs: set) -> None:
 
     if overwritten:
         print(f"  🧹 Blog : {overwritten} article(s) dépublié(s) écrasé(s) avec 404")
+
+
+def apply_deleted_url_tombstones(output_dir: Path, site_dir: Path) -> None:
+    """Écrase par une 404 les URLs listées dans _deleted_urls.txt.
+
+    Cloudflare Pages conserve les pages des anciens déploiements : une page
+    supprimée AVANT ce correctif est déjà absente de output/ (rien à écraser),
+    donc Pages continue de la servir. On liste ces URLs dans
+    platform/sites/<site>/_deleted_urls.txt (un slug ou une URL par ligne) et on
+    (re)crée une 404 à leur place — output/{slug}.html ET output/{slug}/index.html.
+    Le fichier est persistant → le tombstone est régénéré à chaque build.
+    """
+    tomb = site_dir / "_deleted_urls.txt"
+    if not tomb.exists():
+        return
+    try:
+        html_404 = (output_dir / "404.html").read_text(encoding="utf-8")
+    except Exception:
+        html_404 = ("<!DOCTYPE html><html><head><meta charset='UTF-8'>"
+                    "<title>Page introuvable</title></head><body>"
+                    "<h1>Page introuvable</h1></body></html>")
+    n = 0
+    for line in tomb.read_text(encoding="utf-8").splitlines():
+        s = line.strip()
+        if not s or s.startswith("#"):
+            continue
+        if "://" in s:                       # URL complète -> chemin
+            rest = s.split("://", 1)[1]
+            s = rest.split("/", 1)[1] if "/" in rest else ""
+        s = s.strip().strip("/")
+        for suf in ("/index.html", ".html"):
+            if s.endswith(suf):
+                s = s[: -len(suf)]
+        s = s.strip("/")
+        if not s:
+            continue
+        (output_dir / f"{s}.html").write_text(html_404, encoding="utf-8")
+        d = output_dir / s
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "index.html").write_text(html_404, encoding="utf-8")
+        n += 1
+    if n:
+        print(f"  🪦 {n} URL(s) forcée(s) en 404 (_deleted_urls.txt)")
 
 
 # ── Index JSON pré-calculé pour le dashboard ──────────────────────────────────
@@ -1719,6 +1778,9 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         if not blog_load_failed:
             _current_blog_slugs = {p.get("slug") for p in blog_posts if p.get("slug")}
             cleanup_blog_output(output_dir, _current_blog_slugs)
+        # Tombstones : force en 404 les URLs listées dans _deleted_urls.txt
+        # (pages déjà supprimées que Cloudflare Pages ressert encore).
+        apply_deleted_url_tombstones(output_dir, site_dir)
         print(f"  🟢 DEBUG v15 APRÈS cleanup, avant la suite (is_classement_template={is_classement_template})", flush=True)
 
         # ── Détection précoce des avis ────────────────────────────────────
