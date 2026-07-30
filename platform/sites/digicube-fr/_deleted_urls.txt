@@ -1,0 +1,11 @@
+# URLs de pages supprimées à forcer en 404.
+# Cloudflare Pages conserve les pages des anciens déploiements : une page
+# supprimée reste servie tant qu'on ne la remplace pas par une 404. Ce fichier
+# recrée un tombstone 404 à chaque build pour les URLs listées ici.
+#
+# Un slug OU une URL complète par ligne (le .html / le slash final sont tolérés).
+# Exemples :
+#   meilleur-logiciels-de-gestion-de-planning
+#   https://www.digicube.fr/mon-ancien-classement/
+# ---------------------------------------------------------------------------
+meilleur-logiciels-de-gestion-de-planning
