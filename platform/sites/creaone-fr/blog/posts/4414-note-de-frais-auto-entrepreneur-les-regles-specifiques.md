@@ -4,15 +4,21 @@ slug: 4414-note-de-frais-auto-entrepreneur-les-regles-specifiques
 date: '2026-07-30T06:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Note de frais auto-entrepreneur : le guide 2026'
-meta_description: 'Note de frais auto-entrepreneur : découvrez les règles spécifiques à ce statut et évitez les erreurs courantes qui peuvent attirer l''attention du fisc.'
+meta_description: 'Note de frais auto-entrepreneur : découvrez les règles spécifiques
+  à ce statut et évitez les erreurs courantes qui peuvent attirer l''attention du
+  fisc.'
 min_words: 1000
 status: published
 featured_image: /blog/4414-note-de-frais-auto-entrepreneur-les-regles-specifiques.jpg
 link_anchors:
 - text: note de frais pour auto-entrepreneur
   max: 5
+related_posts:
+- 9391-delai-de-remboursement-note-de-frais-que-dit-la-loi
+- 6542-note-de-frais-kilometrique-bareme-et-calcul
+- 4171-note-de-frais-et-tva-les-regles-a-connaitre
+- 1820-note-de-frais-gratuite-modeles-a-telecharger
 ---
-
 <h2>Auto-entrepreneur et notes de frais : ce que la plupart des guides ne vous disent pas</h2>
 
 <p>Quand j'accompagne des freelances sur leurs questions comptables, le sujet des notes de frais revient systématiquement. Et à chaque fois, je vois la même confusion. On mélange les règles du salariat avec celles de l'auto-entreprise, et ça crée des erreurs qui peuvent coûter cher, ou pire, attirer l'attention de l'administration fiscale.</p>
