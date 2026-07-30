@@ -15,8 +15,8 @@ link_anchors:
   max: 5
 related_posts:
 - 8135-les-5-etapes-pour-creer-une-facture-en-ligne-gratuite
+- 7491-comment-fonctionne-un-logiciel-de-comptabilite-en-entreprise
 - 2176-logiciel-de-comptabilite-definition-role-et-fonctionnement
-- 9274-logiciel-de-comptabilite-definition-role-et-fonctionnement
 ---
 <p>Vingt ans à surveiller des lignes budgétaires, à valider des plans de communication et à demander des justifications sur chaque poste de dépense. J'ai vu passer des dizaines de campagnes marketing. Des classiques bien cadrées, avec leurs affichages, leurs spots radio, leurs insertions presse. Et depuis quelques années, quelque chose a changé dans les demandes qui atterrissent sur mon bureau.</p>
 
