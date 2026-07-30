@@ -4,15 +4,21 @@ slug: 9550-note-de-frais-freelance-comment-bien-les-gerer
 date: '2026-07-30T12:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Note de frais freelance : guide pratique 2026'
-meta_description: 'Notes de frais freelance : découvrez quelles dépenses sont déductibles, comment les documenter et éviter de perdre des centaines d''euros chaque année sur votre…'
+meta_description: 'Notes de frais freelance : découvrez quelles dépenses sont déductibles,
+  comment les documenter et éviter de perdre des centaines d''euros chaque année sur
+  votre…'
 min_words: 900
 status: published
 featured_image: /blog/9550-note-de-frais-freelance-comment-bien-les-gerer.jpg
 link_anchors:
 - text: note de frais pour freelance
   max: 5
+related_posts:
+- 1617-comment-faire-une-note-de-frais-le-guide-etape-par-etape
+- 6831-note-de-frais-a-imprimer-modele-pdf-gratuit
+- 3017-exemple-de-note-de-frais-modeles-concrets
+- 2063-note-de-frais-excel-modele-pret-a-l-emploi
 ---
-
 <h2>Note de frais freelance : ce que vous devez vraiment savoir</h2>
 
 <p>Quand on démarre en freelance, on pense aux missions, aux clients, aux tarifs. Rarement aux notes de frais. Et pourtant, c'est là que beaucoup perdent de l'argent, parfois sans s'en rendre compte. Après 9 ans en comptabilité, j'ai vu des indépendants laisser des centaines d'euros sur la table chaque année, faute d'une gestion rigoureuse de leurs dépenses professionnelles.</p>
