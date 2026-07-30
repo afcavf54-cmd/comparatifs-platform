@@ -1254,6 +1254,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     SITE_KEYS_TO_RESCUE = [
         'analytics_clicky', 'google_site_verification', 'linkavista_verification',
         'rocketlink_verification',
+        'develink_verification',
         'www_preference', 'home_title', 'home_description', 'home_h1',
         'blog_sheet_csv_url', 'blog_sheet_edit_url', 'contact_form_key',
     ]
@@ -1318,6 +1319,14 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     if _rl_raw:
         _rl_m = _re_dom.search(r'<!--\s*(.*?)\s*-->', _rl_raw)
         site["rocketlink_verification"] = (_rl_m.group(1).strip() if _rl_m else _rl_raw).strip()
+
+    # ── Normalisation develink_verification ────────────────────────────────
+    # Develink se vérifie via une META <meta name="verify" content="CODE">.
+    # On tolère : le tag complet, le code seul (6a6b...-...), backslashes parasites.
+    _dl_raw = (site.get("develink_verification") or "").strip().replace("\\", "")
+    if _dl_raw:
+        _dl_m = _re_dom.search(r'content\s*=\s*["\']([^"\']+)["\']', _dl_raw)
+        site["develink_verification"] = (_dl_m.group(1).strip() if _dl_m else _dl_raw).strip()
 
     # ── Détection précoce des avis ────────────────────────────────────────
     # On set `site["has_avis"] = True` AU TOUT DÉBUT de generate_site pour
@@ -2011,6 +2020,14 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     html = html.replace(
                         "<head>",
                         f"<head>\n<!-- {_rl} -->",
+                        1,
+                    )
+                # Develink : vérification par META <meta name="verify" content="CODE">
+                _dl = site.get("develink_verification")
+                if _dl and 'name="verify"' not in html:
+                    html = html.replace(
+                        "<head>",
+                        f'<head>\n<meta name="verify" content="{_dl}">',
                         1,
                     )
                 (output_dir / "index.html").write_text(html, encoding="utf-8")
