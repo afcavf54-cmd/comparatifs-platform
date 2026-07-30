@@ -15,6 +15,7 @@ link_anchors:
   max: 8
 related_posts:
 - 5612-logiciel-d-emailing-definition-role-et-fonctionnement
+- 6443-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
 ---
 <h2>Ce que fait vraiment un logiciel d'emailing au quotidien</h2>
 

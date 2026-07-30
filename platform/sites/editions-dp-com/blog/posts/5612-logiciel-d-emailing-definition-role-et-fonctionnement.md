@@ -15,6 +15,7 @@ link_anchors:
   max: 8
 related_posts:
 - 7295-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
+- 6443-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
 ---
 <p>J'utilise des outils d'emailing depuis une dizaine d'années. Au début, j'envoyais mes newsletters depuis Outlook. Oui, à la main. Un par un. Vous imaginez le temps perdu.</p>
 
