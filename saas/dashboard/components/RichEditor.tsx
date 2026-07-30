@@ -7,6 +7,7 @@ interface RichEditorProps {
   onImageUpload?: () => void   // déclenche le file picker du parent
   placeholder?: string
   height?: number
+  imagePreviewBase?: string    // base pour AFFICHER les images relatives (raw GitHub) sans changer le src stocké
 }
 
 /**
@@ -19,11 +20,41 @@ interface RichEditorProps {
  * fonctionne dans tous les navigateurs majeurs et reste l'API la plus simple
  * pour de l'édition rich-text basique.
  */
-export default function RichEditor({ value, onChange, onImageUpload, placeholder = 'Écris ton article ici…', height = 500 }: RichEditorProps) {
+/**
+ * Nettoie le HTML : rééquilibre les balises (via le parseur du navigateur) et
+ * SUPPRIME les tableaux vides. Un tableau mal fermé / vide faisait perdre tout
+ * le contenu au retour du mode source (le navigateur réorganise le DOM et
+ * éjecte ce qui suit une table invalide). On normalise donc systématiquement.
+ */
+function sanitizeHtml(html: string): string {
+  if (typeof document === 'undefined') return html
+  const tmp = document.createElement('div')
+  tmp.innerHTML = html // le navigateur rééquilibre les balises ouvertes/fermées
+  tmp.querySelectorAll('table').forEach((table) => {
+    const txt = (table.textContent || '').replace(/\u00a0/g, '').trim()
+    const media = table.querySelector('img, iframe')
+    if (!txt && !media) table.remove() // tableau entièrement vide -> on l'enlève
+  })
+  return tmp.innerHTML
+}
+
+export default function RichEditor({ value, onChange, onImageUpload, placeholder = 'Écris ton article ici…', height = 500, imagePreviewBase = '' }: RichEditorProps) {
   const ref = useRef<HTMLDivElement | null>(null)
   const [showSource, setShowSource] = useState(false)
   const [sourceValue, setSourceValue] = useState(value)
   const lastEmittedRef = useRef<string>('\u0000__INIT__\u0000')
+
+  // Les images sont stockées avec un chemin RELATIF (/blog/...) pour le site
+  // en ligne, mais l'éditeur tourne sur un autre domaine → l'image ne s'affiche
+  // pas. On réécrit donc le src en URL raw GitHub POUR L'AFFICHAGE uniquement,
+  // et on reconvertit en relatif à la sauvegarde (toStored).
+  const _base = (imagePreviewBase || '').replace(/\/$/, '')
+  const toPreview = (html: string) => _base
+    ? html.replace(/(<img\b[^>]*\bsrc=["'])\/(?!\/)/gi, `$1${_base}/`)
+    : html
+  const toStored = (html: string) => _base
+    ? html.replace(new RegExp('(<img\\b[^>]*\\bsrc=["\'])' + _base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '/', 'gi'), '$1/')
+    : html
 
   // ─── État de la modale "Insérer / éditer un lien" ──────────────────────
   // execCommand('createLink') ne permet ni target ni rel. On gère donc
@@ -48,8 +79,9 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
 
   useEffect(() => {
     if (!ref.current) return
-    if (value !== lastEmittedRef.current && value !== ref.current.innerHTML) {
-      ref.current.innerHTML = value || ''
+    const stored = toStored(ref.current.innerHTML)
+    if (value !== lastEmittedRef.current && value !== stored) {
+      ref.current.innerHTML = toPreview(value || '')
       lastEmittedRef.current = value
     }
   }, [value])
@@ -58,6 +90,7 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
     if (!ref.current) return
     let html = ref.current.innerHTML
     html = html.replace(/<div(\s[^>]*)?>/gi, '<p>').replace(/<\/div>/gi, '</p>')
+    html = toStored(html)   // images preview -> chemin relatif (stocké)
     lastEmittedRef.current = html
     onChange(html)
   }
@@ -194,11 +227,15 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
 
   function toggleSource() {
     if (!showSource) {
-      setSourceValue(ref.current?.innerHTML || '')
+      setSourceValue(toStored(ref.current?.innerHTML || '')) // source montre le relatif
     } else {
-      onChange(sourceValue)
-      lastEmittedRef.current = sourceValue
-      if (ref.current) ref.current.innerHTML = sourceValue
+      // Retour du mode source : on NETTOIE avant de réinjecter, sinon un
+      // tableau mal fermé fait perdre le contenu.
+      const clean = toStored(sanitizeHtml(sourceValue))
+      onChange(clean)
+      lastEmittedRef.current = clean
+      if (ref.current) ref.current.innerHTML = toPreview(clean)
+      setSourceValue(clean)
     }
     setShowSource(s => !s)
   }
@@ -423,6 +460,19 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
           max-width: 100%; height: auto; border-radius: 6px;
           margin: 12px 0; border: 1px solid #1E2D3D;
         }
+        /* Tableaux : bordures visibles pour voir les colonnes dans l'éditeur */
+        .rich-editor table {
+          border-collapse: collapse; width: 100%; margin: 14px 0;
+          font-size: 14px; background: #0D1117;
+        }
+        .rich-editor th, .rich-editor td {
+          border: 1px solid #2A3A4D; padding: 8px 12px;
+          text-align: left; vertical-align: top; color: #fff;
+        }
+        .rich-editor th {
+          background: #16202E; font-weight: 700;
+        }
+        .rich-editor tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
       `}</style>
     </div>
   )
