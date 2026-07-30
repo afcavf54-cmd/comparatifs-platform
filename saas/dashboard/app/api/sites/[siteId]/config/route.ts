@@ -35,6 +35,7 @@ export async function GET(_: NextRequest, { params }: Params) {
     google_site_verification: get('google_site_verification'),
     linkavista_verification: get('linkavista_verification'),
     rocketlink_verification: get('rocketlink_verification'),
+    develink_verification: get('develink_verification'),
     www_preference: get('www_preference') || 'www',
     blog_sheet_csv_url: get('blog_sheet_csv_url'),
     blog_sheet_edit_url: get('blog_sheet_edit_url'),
@@ -188,6 +189,7 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   if (body.google_site_verification !== undefined) replaceKey('google_site_verification', body.google_site_verification || '')
   if (body.linkavista_verification !== undefined) replaceKey('linkavista_verification', body.linkavista_verification || '')
   if (body.rocketlink_verification !== undefined) replaceKey('rocketlink_verification', body.rocketlink_verification || '')
+  if (body.develink_verification !== undefined) replaceKey('develink_verification', body.develink_verification || '')
   if (body.contact_form_key !== undefined) replaceKey('contact_form_key', body.contact_form_key || '')
   if (body.www_preference !== undefined) replaceKey('www_preference', body.www_preference || 'www')
   if (body.blog_sheet_csv_url !== undefined) replaceKey('blog_sheet_csv_url', body.blog_sheet_csv_url || '')
