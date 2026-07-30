@@ -28,6 +28,7 @@ export default function SiteDetailPage() {
   const [googleVerification, setGoogleVerification] = useState('')
   const [linkavistaVerification, setLinkavistaVerification] = useState('')
   const [rocketlinkVerification, setRocketlinkVerification] = useState('')
+  const [develinkVerification, setDevelinkVerification] = useState('')
   const [contactFormKey, setContactFormKey] = useState('')
   const [savingTracking, setSavingTracking] = useState(false)
   const [trackingMsg, setTrackingMsg] = useState('')
@@ -49,6 +50,7 @@ export default function SiteDetailPage() {
       if (d.google_site_verification) setGoogleVerification(d.google_site_verification)
       if (d.linkavista_verification) setLinkavistaVerification(d.linkavista_verification)
       if (d.rocketlink_verification) setRocketlinkVerification(d.rocketlink_verification)
+      if (d.develink_verification) setDevelinkVerification(d.develink_verification)
       if (d.contact_form_key) setContactFormKey(d.contact_form_key)
     }).catch(() => {})
   }, [siteId])
@@ -70,6 +72,7 @@ export default function SiteDetailPage() {
         google_site_verification: googleVerification,
         linkavista_verification: linkavistaVerification,
         rocketlink_verification: rocketlinkVerification,
+        develink_verification: develinkVerification,
         contact_form_key: contactFormKey,
       })
     })
@@ -247,6 +250,13 @@ export default function SiteDetailPage() {
                 style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const, fontFamily: 'monospace' }} />
               <div style={{ fontSize: 11, color: '#4A5568', marginTop: 6, lineHeight: 1.5 }}>
                 Colle le code seul, ou le commentaire complet <code style={{ color: '#00D4AA' }}>{'<!-- 97ec5dc3c934ab42 -->'}</code> fourni par Rocketlink. Au build, il est injecté en commentaire HTML <code style={{ color: '#00D4AA' }}>{'<!-- … -->'}</code> dans la home (invisible pour les visiteurs).
+              </div>
+              <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', margin: '16px 0 8px' }}>🟢 Develink</div>
+              <input value={develinkVerification} onChange={e => setDevelinkVerification(e.target.value)}
+                placeholder="6a6b4dd9c7ef6-5khUcrKz"
+                style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const, fontFamily: 'monospace' }} />
+              <div style={{ fontSize: 11, color: '#4A5568', marginTop: 6, lineHeight: 1.5 }}>
+                Colle le code seul, ou le tag complet <code style={{ color: '#00D4AA' }}>{'<meta name="verify" content="…">'}</code> fourni par Develink. Au build, il est injecté tel que <code style={{ color: '#00D4AA' }}>{'<meta name="verify" content="…">'}</code> dans la home.
               </div>
             </div>
           </div>
