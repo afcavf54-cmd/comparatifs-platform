@@ -982,6 +982,7 @@ def process_site(site_id: str, site_dir: Path, config: dict,
                 fm["link_anchors"] = anchors_parsed
         write_post(posts_dir / f"{slug}.md", fm, html)
         existing_slugs.add(slug)
+        existing_titles_normalized.add(title_normalized)  # évite un doublon si le même titre revient dans le même run
         processed.append(key)
         processed_set.add(key)
         new_count += 1
