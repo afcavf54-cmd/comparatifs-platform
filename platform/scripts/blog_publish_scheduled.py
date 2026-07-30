@@ -428,7 +428,28 @@ CONTRAINTES DE PONCTUATION (impératif) :
     # Re-strip après les wraps (ceinture + bretelles) — _wrap_first_occurrence
     # skippe déjà les <hN> mais on protège contre un éventuel bug de regex.
     html = strip_links_from_headings(html)
+    html = strip_empty_tables(html)   # retire les tableaux vides (bloc noir) générés par l'IA
     return html
+
+
+def strip_empty_tables(html: str) -> str:
+    """Retire les tableaux ENTIÈREMENT vides (cellules vides / <br>), y compris
+    mal fermés, générés parfois par l'IA (ils apparaissent en « bloc noir »
+    dans l'éditeur et sur le site). Utilise bs4 pour gérer le HTML malformé."""
+    if not html or "<table" not in html:
+        return html
+    try:
+        from bs4 import BeautifulSoup
+        soup = BeautifulSoup(html, "html.parser")
+        removed = False
+        for table in soup.find_all("table"):
+            txt = table.get_text(strip=True).replace("\u00a0", "").strip()
+            if not txt and not table.find(["img", "iframe"]):
+                table.decompose()
+                removed = True
+        return str(soup) if removed else html
+    except Exception:
+        return html
 
 
 DEFAULT_ANCHOR_MAX = 5
