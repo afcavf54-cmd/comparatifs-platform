@@ -2,7 +2,7 @@
 title: Les 15 meilleurs logiciels de planification en 2026 en France
 slug: 1360-logiciel-planning
 date: 2026-07-30T17:04:00+02:00
-updated: 2026-07-30T19:45:48
+updated: 2026-07-30T19:52:11
 categorie: Ressources Humaines
 categories:
 - Ressources Humaines
@@ -118,9 +118,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>Snapshift (devenu Combo)</h3><p><img src="/blog/1360-logiciel-planning/snapshift-devenu-combo-2724.jpg" alt="Snapshift (devenu Combo)"></p><p><br></p>
-
-<p>Snapshift a fusionné avec Combo. Je le mentionne car beaucoup de dirigeants cherchent encore ce nom. L'outil que vous connaissiez sous Snapshift vit aujourd'hui sous la marque Combo, avec des fonctionnalités enrichies. Si vous étiez client Snapshift, la migration s'est faite automatiquement. Je renvoie donc vers la section Combo ci-dessus pour les détails.</p>
+<h3>Snapshift (devenu Combo)</h3><p><img src="/blog/1360-logiciel-planning/snapshift-devenu-combo-2724.jpg" alt="Snapshift (devenu Combo)"></p><p>Snapshift a fusionné avec Combo. Je le mentionne car beaucoup de dirigeants cherchent encore ce nom. L'outil que vous connaissiez sous Snapshift vit aujourd'hui sous la marque Combo, avec des fonctionnalités enrichies. Si vous étiez client Snapshift, la migration s'est faite automatiquement. Je renvoie donc vers la section Combo ci-dessus pour les détails.</p>
 
 <table>
   <thead>
@@ -133,9 +131,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>monday.com</h3><p><img src="/blog/1360-logiciel-planning/monday-2019.jpg" alt="monday"></p><p><br></p>
-
-<p>monday.com n'est pas un logiciel RH. C'est un outil de gestion de projet qui peut, avec les bons templates, servir de planning d'équipe. Je l'ai utilisé pendant six mois avant de passer à Skello.</p>
+<h3>monday.com</h3><p><img src="/blog/1360-logiciel-planning/monday-2019.jpg" alt="monday"></p><p>monday.com n'est pas un logiciel RH. C'est un outil de gestion de projet qui peut, avec les bons templates, servir de planning d'équipe. Je l'ai utilisé pendant six mois avant de passer à Skello.</p>
 
 <p>Ce qui fonctionne : la flexibilité. Vous construisez votre planning exactement comme vous le voulez. Les automatisations sont puissantes. Par exemple, j'avais créé un workflow qui envoyait automatiquement un email récapitulatif au salarié chaque lundi matin.</p>
 
@@ -154,9 +150,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>Octime</h3>
-
-<p>Octime est une référence en France pour les grandes organisations. Hôpitaux, collectivités, industries. Si vous avez plus de 200 salariés avec des contraintes de planification complexes (équipes postées, 3x8, cycles variables), Octime est probablement ce qu'il vous faut.</p>
+<h3>Octime</h3><p><img src="/blog/1360-logiciel-planning/octime-4168.jpg" alt="Octime"></p><p>Octime est une référence en France pour les grandes organisations. Hôpitaux, collectivités, industries. Si vous avez plus de 200 salariés avec des contraintes de planification complexes (équipes postées, 3x8, cycles variables), Octime est probablement ce qu'il vous faut.</p>
 
 <p>Le moteur de planification est vraiment puissant. Il peut générer des plannings automatiques en tenant compte de dizaines de contraintes simultanées : qualifications, préférences, règles légales, budgets. J'ai vu une démo sur un planning hospitalier de 300 infirmières. Impressionnant.</p>
 
@@ -175,9 +169,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>Kelio (ex-Bodet Software)</h3>
-
-<p>Kelio, anciennement Bodet Software, c'est une solution française solide avec une longue histoire. Gestion des temps, plannings, badgeage physique ou mobile, contrôle d'accès. Un ensemble cohérent.</p>
+<h3>Kelio (ex-Bodet Software)</h3><p><img src="/blog/1360-logiciel-planning/kelio-1127.jpg" alt="Kelio"></p><p>Kelio, anciennement Bodet Software, c'est une solution française solide avec une longue histoire. Gestion des temps, plannings, badgeage physique ou mobile, contrôle d'accès. Un ensemble cohérent.</p>
 
 <p>Ce que j'aime : le module de badgeage est vraiment bien intégré. Quand vos salariés pointent, le planning se met à jour en temps réel. Vous voyez en un coup d'oeil qui est présent, qui est en retard, qui n'est pas encore arrivé. Pour mes responsables d'équipe, c'est devenu leur tableau de bord quotidien.</p>
 
@@ -196,9 +188,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>Planday</h3>
-
-<p>Planday vient du Danemark mais est bien implanté en France. Il cible les secteurs avec des équipes importantes et une forte rotation : hôtellerie, restauration, santé, sécurité.</p>
+<h3>Planday</h3><p><img src="/blog/1360-logiciel-planning/planday-67.jpg" alt="Planday"></p><p>Planday vient du Danemark mais est bien implanté en France. Il cible les secteurs avec des équipes importantes et une forte rotation : hôtellerie, restauration, santé, sécurité.</p>
 
 <p>Son atout principal : la communication interne intégrée. Les salariés peuvent échanger leurs créneaux directement dans l'appli, sous validation managériale. Ça réduit vraiment le nombre d'appels et de SMS que je recevais le week-end. Significativement.</p>
 
@@ -219,9 +209,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>Figgo (Lucca)</h3>
-
-<p>Figgo fait partie de la suite Lucca, un éditeur français reconnu pour ses outils RH. Figgo gère les congés et absences. Le planning au sens strict n'est pas son coeur de métier, mais combiné avec Timmi (le module de gestion du temps de Lucca), vous obtenez une vraie solution de planification.</p>
+<h3>Figgo (Lucca)</h3><p><img src="/blog/1360-logiciel-planning/figgo-lucca-8050.jpg" alt="Figgo (Lucca)"></p><p>Figgo fait partie de la suite Lucca, un éditeur français reconnu pour ses outils RH. Figgo gère les congés et absences. Le planning au sens strict n'est pas son coeur de métier, mais combiné avec Timmi (le module de gestion du temps de Lucca), vous obtenez une vraie solution de planification.</p>
 
 <p>Ce que j'ai trouvé vraiment bien : la gestion des compteurs de congés est irréprochable. RTT, congés légaux, congés conventionnels, récupérations... tout est calculé automatiquement. Fini les erreurs de calcul en fin d'année.</p>
 
@@ -261,9 +249,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>Workteam Planner</h3><p><img src="/blog/1360-logiciel-planning/workteam-planner-8355.jpg" alt="Workteam Planner"></p><p><br></p>
-
-<p>Workteam Planner est moins présent dans les comparatifs habituels. C'est un outil SaaS assez complet, avec une approche visuelle du planning que j'ai trouvée agréable. La vue par semaine, la gestion des roulements, les alertes de chevauchement d'horaires : c'est bien fait.</p>
+<h3>Workteam Planner</h3><p><img src="/blog/1360-logiciel-planning/workteam-planner-8355.jpg" alt="Workteam Planner"></p><p>Workteam Planner est moins présent dans les comparatifs habituels. C'est un outil SaaS assez complet, avec une approche visuelle du planning que j'ai trouvée agréable. La vue par semaine, la gestion des roulements, les alertes de chevauchement d'horaires : c'est bien fait.</p>
 
 <p>Ce qui m'a intéressé : la gestion des disponibilités déclaratives. Vos salariés renseignent eux-mêmes leurs créneaux disponibles, et le logiciel vous propose un planning optimisé. Sur le papier, ça libère du temps de planification. En pratique, ça demande que vos équipes soient disciplinées pour mettre à jour leurs dispo.</p>
 
@@ -280,9 +266,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>Timetastic</h3><p><img src="/blog/1360-logiciel-planning/timetastic-1461.jpg" alt="Timetastic"></p><p><br></p>
-
-<p>Timetastic est un outil britannique, très simple, pensé pour les petites équipes. Il gère principalement les congés et absences avec un calendrier visuel très lisible. Ce n'est pas un logiciel de planification au sens strict, mais pour une TPE qui veut juste avoir une vue claire des présences et absences, c'est parfait.</p>
+<h3>Timetastic</h3><p><img src="/blog/1360-logiciel-planning/timetastic-1461.jpg" alt="Timetastic"></p><p>Timetastic est un outil britannique, très simple, pensé pour les petites équipes. Il gère principalement les congés et absences avec un calendrier visuel très lisible. Ce n'est pas un logiciel de planification au sens strict, mais pour une TPE qui veut juste avoir une vue claire des présences et absences, c'est parfait.</p>
 
 <p>J'ai un collègue dirigeant d'une agence de communication de 12 personnes qui l'utilise depuis trois ans. Il en est fan. Son besoin : savoir qui est là, qui est en vacances, sans rien de compliqué.</p>
 
@@ -301,9 +285,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>Shiftbase</h3><p><img src="/blog/1360-logiciel-planning/shiftbase-7700.jpg" alt="Shiftbase"></p><p><br></p>
-
-<p>Shiftbase est un outil néerlandais bien localisé pour la France. Il couvre la planification des équipes, la gestion des heures, les absences, le suivi des présences. C'est une solution complète pour le prix qu'il demande.</p>
+<h3>Shiftbase</h3><p><img src="/blog/1360-logiciel-planning/shiftbase-7700.jpg" alt="Shiftbase"></p><p>Shiftbase est un outil néerlandais bien localisé pour la France. Il couvre la planification des équipes, la gestion des heures, les absences, le suivi des présences. C'est une solution complète pour le prix qu'il demande.</p>
 
 <p>Ce que j'ai aimé : la fonction de copier un planning d'une semaine à l'autre. Ça paraît basique, mais quand vos roulements sont fixes, ça vous fait gagner 30 minutes chaque semaine. Multiplié par 52 semaines, ça compte.</p>
 
@@ -360,5 +342,6 @@ related_posts:
 <ul>
   <li>Combien de salariés devront utiliser l'outil ? (le
 </li></ul>
+
 
 
