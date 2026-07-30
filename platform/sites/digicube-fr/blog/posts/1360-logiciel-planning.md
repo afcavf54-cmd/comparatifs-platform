@@ -2,7 +2,7 @@
 title: Les 14 meilleurs logiciels de planification en 2026 en France
 slug: 1360-logiciel-planning
 date: 2026-07-30T17:04:00+02:00
-updated: 2026-07-30T19:54:17
+updated: 2026-07-30T20:01:25
 categorie: Ressources Humaines
 categories:
 - Ressources Humaines
@@ -334,3 +334,4 @@ related_posts:
 <p>La première question à vous poser : <strong>quel est votre vrai besoin</strong> ? Planifier des équipes en rotation avec des horaires variables, c'est très différent de simplement gérer les congés d'une équipe de bureau.</p>
 
 <p>Si vous avez des équipes terrain, des horaires décalés, du travail le week-end ou les jours fériés : il vous faut un vrai logiciel de planification avec gestion des temps, alertes légales, et appli mobile pour les salariés. Skello, Combo, Planday ou Shiftbase seront adaptés.</p><p>Si vous avez des équipes principalement en bureau, en horaires fixes, avec peu de rotation : un outil de gestion des congés et absences comme Figgo ou Timetastic peut suffire. Pas besoin de payer pour des fonctionnalités que vous n'utiliserez jamais.</p>
+
