@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState, useMemo, useRef } from 'react'
 
 type Site = { id: string; name: string; domain?: string }
 type Sale = { id: string; site: string; platform: string; price_ht: number; date: string; note?: string }
@@ -48,6 +48,16 @@ export default function LinkSalesPage() {
   const activeSites = useMemo(() => sites.filter(s => !removedSites.includes(s.id)), [sites, removedSites])
   const removed = useMemo(() => sites.filter(s => removedSites.includes(s.id)), [sites, removedSites])
   const siteName = (id: string) => sites.find(s => s.id === id)?.name || id
+
+  // ── Auto-save (débounce) : persiste automatiquement après chaque modif ──────
+  const firstLoad = useRef(true)
+  useEffect(() => {
+    if (loading) return
+    if (firstLoad.current) { firstLoad.current = false; return } // ne pas sauver au chargement initial
+    const t = setTimeout(() => { save() }, 800)
+    return () => clearTimeout(t)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [platforms, removedSites, registrations, sales])
 
   // ── Totaux CA ─────────────────────────────────────────────────────────────
   const caBySite: Record<string, number> = {}
@@ -112,12 +122,14 @@ export default function LinkSalesPage() {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
         <h1 style={{ fontSize: 22, color: C.text, margin: 0 }}>🔗 Vente de liens</h1>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          {saveMsg && <span style={{ fontSize: 12, color: saveMsg.startsWith('✓') ? C.accent : '#FC8181' }}>{saveMsg}</span>}
-          {dirty && !saveMsg && <span style={{ fontSize: 12, color: '#F6AD55' }}>Modifications non enregistrées</span>}
-          <button onClick={save} disabled={saving || !dirty}
+          {saving && <span style={{ fontSize: 12, color: C.dim }}>💾 Enregistrement…</span>}
+          {!saving && saveMsg && <span style={{ fontSize: 12, color: saveMsg.startsWith('✓') ? C.accent : '#FC8181' }}>{saveMsg}</span>}
+          {!saving && !saveMsg && dirty && <span style={{ fontSize: 12, color: '#F6AD55' }}>Modifications en attente…</span>}
+          {!saving && !saveMsg && !dirty && <span style={{ fontSize: 12, color: C.faint }}>✓ Tout est enregistré</span>}
+          <button onClick={save} disabled={saving}
             style={{ padding: '9px 20px', borderRadius: 8, border: 'none', fontWeight: 600, fontSize: 13,
-              background: (saving || !dirty) ? C.border : 'linear-gradient(135deg, #00D4AA, #0090FF)',
-              color: (saving || !dirty) ? C.faint : '#fff', cursor: (saving || !dirty) ? 'not-allowed' : 'pointer' }}>
+              background: saving ? C.border : 'linear-gradient(135deg, #00D4AA, #0090FF)',
+              color: saving ? C.faint : '#fff', cursor: saving ? 'not-allowed' : 'pointer' }}>
             {saving ? '⏳…' : '💾 Enregistrer'}
           </button>
         </div>
