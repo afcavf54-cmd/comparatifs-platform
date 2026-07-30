@@ -162,8 +162,18 @@ export default function LinkSalesPage() {
                   <td style={{ ...td, position: 'sticky', left: 0, background: C.card, fontWeight: 500 }}>{s.name}</td>
                   {platforms.map(p => (
                     <td key={p} style={{ ...td, textAlign: 'center' }}>
-                      <input type="checkbox" checked={!!registrations[s.id]?.[p]} onChange={() => toggleReg(s.id, p)}
-                        style={{ width: 17, height: 17, accentColor: C.accent, cursor: 'pointer' }} />
+                      <span onClick={() => toggleReg(s.id, p)}
+                        title={registrations[s.id]?.[p] ? 'Inscrit — clique pour passer en « non inscrit »' : 'Non inscrit — clique pour passer en « inscrit »'}
+                        style={{
+                          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                          width: 26, height: 26, borderRadius: '50%', cursor: 'pointer', fontSize: 14, fontWeight: 700,
+                          userSelect: 'none',
+                          background: registrations[s.id]?.[p] ? 'rgba(0,212,170,0.15)' : 'rgba(252,129,129,0.12)',
+                          color: registrations[s.id]?.[p] ? C.accent : '#FC8181',
+                          border: `1px solid ${registrations[s.id]?.[p] ? C.accent : '#FC8181'}`,
+                        }}>
+                        {registrations[s.id]?.[p] ? '✓' : '✗'}
+                      </span>
                     </td>
                   ))}
                   {platforms.length === 0 && <td style={td}></td>}
