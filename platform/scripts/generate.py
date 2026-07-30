@@ -1253,6 +1253,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     # d'édition. Si la clé existe DÉJÀ dans `site`, on ne touche à rien.
     SITE_KEYS_TO_RESCUE = [
         'analytics_clicky', 'google_site_verification', 'linkavista_verification',
+        'rocketlink_verification',
         'www_preference', 'home_title', 'home_description', 'home_h1',
         'blog_sheet_csv_url', 'blog_sheet_edit_url', 'contact_form_key',
     ]
@@ -1308,6 +1309,15 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     _ac_raw = (site.get("analytics_clicky") or "")
     if "\\" in _ac_raw:
         site["analytics_clicky"] = _ac_raw.replace("\\", "")
+
+    # ── Normalisation rocketlink_verification ──────────────────────────────
+    # Rocketlink se vérifie via un COMMENTAIRE HTML <!-- code --> dans la home.
+    # On tolère : le commentaire complet (<!-- 97ec... -->), le code seul
+    # (97ec...), et d'éventuels backslashes parasites venus du dashboard.
+    _rl_raw = (site.get("rocketlink_verification") or "").strip().replace("\\", "")
+    if _rl_raw:
+        _rl_m = _re_dom.search(r'<!--\s*(.*?)\s*-->', _rl_raw)
+        site["rocketlink_verification"] = (_rl_m.group(1).strip() if _rl_m else _rl_raw).strip()
 
     # ── Détection précoce des avis ────────────────────────────────────────
     # On set `site["has_avis"] = True` AU TOUT DÉBUT de generate_site pour
@@ -1992,6 +2002,15 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     html = html.replace(
                         "<head>",
                         f'<head>\n<meta name="linkavista" content="{_lv}">',
+                        1,
+                    )
+                # Rocketlink : vérification par COMMENTAIRE HTML <!-- code -->
+                # (invisible pour les internautes), injecté dans la home.
+                _rl = site.get("rocketlink_verification")
+                if _rl and f"<!-- {_rl} -->" not in html:
+                    html = html.replace(
+                        "<head>",
+                        f"<head>\n<!-- {_rl} -->",
                         1,
                     )
                 (output_dir / "index.html").write_text(html, encoding="utf-8")
