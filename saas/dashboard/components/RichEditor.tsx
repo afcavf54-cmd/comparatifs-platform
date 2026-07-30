@@ -28,14 +28,31 @@ interface RichEditorProps {
  */
 function sanitizeHtml(html: string): string {
   if (typeof document === 'undefined') return html
+  const textLen = (s: string) => {
+    const d = document.createElement('div'); d.innerHTML = s
+    return (d.textContent || '').replace(/\s+/g, '').length
+  }
+  const before = textLen(html)
+  // 1) Retrait des tableaux VIDES au niveau de la CHAÎNE, avant tout parse.
+  //    On gère aussi les tableaux NON fermés (le cas qui casse tout) : on
+  //    capture jusqu'à </table> OU jusqu'au prochain bloc (<h1-6>/<p>/fin).
+  //    Sans ça, le navigateur « foster-parent » le contenu suivant hors du
+  //    tableau et le déplace → l'utilisateur croit que le contenu a disparu.
+  const cleaned = html.replace(
+    /<table\b[^>]*>([\s\S]*?)(?:<\/table>|(?=<h[1-6]\b|<p\b|$))/gi,
+    (m, inner) => {
+      const txt = String(inner).replace(/<[^>]+>/g, '').replace(/&nbsp;/g, '').trim()
+      return txt === '' ? '' : m
+    }
+  )
+  // 2) Rééquilibrage léger des balises via le DOM.
   const tmp = document.createElement('div')
-  tmp.innerHTML = html // le navigateur rééquilibre les balises ouvertes/fermées
-  tmp.querySelectorAll('table').forEach((table) => {
-    const txt = (table.textContent || '').replace(/\u00a0/g, '').trim()
-    const media = table.querySelector('img, iframe')
-    if (!txt && !media) table.remove() // tableau entièrement vide -> on l'enlève
-  })
-  return tmp.innerHTML
+  tmp.innerHTML = cleaned
+  const out = tmp.innerHTML
+  // 3) Garde-fou anti-perte : si malgré tout du texte a disparu, on renvoie
+  //    la source d'origine (mieux vaut un tableau moche que du contenu perdu).
+  if (textLen(out) < before - 2) return html
+  return out
 }
 
 export default function RichEditor({ value, onChange, onImageUpload, placeholder = 'Écris ton article ici…', height = 500, imagePreviewBase = '' }: RichEditorProps) {
