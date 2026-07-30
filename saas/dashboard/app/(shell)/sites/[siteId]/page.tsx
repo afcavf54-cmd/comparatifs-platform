@@ -27,6 +27,7 @@ export default function SiteDetailPage() {
   const [analyticsClicky, setAnalyticsClicky] = useState('')
   const [googleVerification, setGoogleVerification] = useState('')
   const [linkavistaVerification, setLinkavistaVerification] = useState('')
+  const [rocketlinkVerification, setRocketlinkVerification] = useState('')
   const [contactFormKey, setContactFormKey] = useState('')
   const [savingTracking, setSavingTracking] = useState(false)
   const [trackingMsg, setTrackingMsg] = useState('')
@@ -47,6 +48,7 @@ export default function SiteDetailPage() {
       if (d.analytics_clicky) setAnalyticsClicky(d.analytics_clicky)
       if (d.google_site_verification) setGoogleVerification(d.google_site_verification)
       if (d.linkavista_verification) setLinkavistaVerification(d.linkavista_verification)
+      if (d.rocketlink_verification) setRocketlinkVerification(d.rocketlink_verification)
       if (d.contact_form_key) setContactFormKey(d.contact_form_key)
     }).catch(() => {})
   }, [siteId])
@@ -67,6 +69,7 @@ export default function SiteDetailPage() {
         analytics_clicky: analyticsClicky,
         google_site_verification: googleVerification,
         linkavista_verification: linkavistaVerification,
+        rocketlink_verification: rocketlinkVerification,
         contact_form_key: contactFormKey,
       })
     })
@@ -237,6 +240,13 @@ export default function SiteDetailPage() {
                 style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const, fontFamily: 'monospace' }} />
               <div style={{ fontSize: 11, color: '#4A5568', marginTop: 6, lineHeight: 1.5 }}>
                 Colle le hash seul, ou le tag complet <code style={{ color: '#00D4AA' }}>{'<meta name="linkavista" content="…">'}</code> fourni par Linkavista — seul le contenu est conservé. Au build, il est injecté tel que <code style={{ color: '#00D4AA' }}>{'<meta name="linkavista" content="…">'}</code> dans la home.
+              </div>
+              <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em', margin: '16px 0 8px' }}>🚀 Rocketlink</div>
+              <input value={rocketlinkVerification} onChange={e => setRocketlinkVerification(e.target.value)}
+                placeholder="97ec5dc3c934ab42"
+                style={{ width: '100%', padding: '10px 14px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const, fontFamily: 'monospace' }} />
+              <div style={{ fontSize: 11, color: '#4A5568', marginTop: 6, lineHeight: 1.5 }}>
+                Colle le code seul, ou le commentaire complet <code style={{ color: '#00D4AA' }}>{'<!-- 97ec5dc3c934ab42 -->'}</code> fourni par Rocketlink. Au build, il est injecté en commentaire HTML <code style={{ color: '#00D4AA' }}>{'<!-- … -->'}</code> dans la home (invisible pour les visiteurs).
               </div>
             </div>
           </div>
