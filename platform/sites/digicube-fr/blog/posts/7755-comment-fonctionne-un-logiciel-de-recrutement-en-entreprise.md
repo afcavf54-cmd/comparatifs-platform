@@ -4,12 +4,17 @@ slug: 7755-comment-fonctionne-un-logiciel-de-recrutement-en-entreprise
 date: '2026-07-30T17:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: Fonctionnement d'un logiciel de recrutement en entreprise
-meta_description: Découvrez comment un logiciel de recrutement centralise les candidatures, automatise les tâches et aide vos équipes RH à ne plus rater aucun bon profil.
+meta_description: Découvrez comment un logiciel de recrutement centralise les candidatures,
+  automatise les tâches et aide vos équipes RH à ne plus rater aucun bon profil.
 min_words: 1400
 status: published
 featured_image: /blog/7755-comment-fonctionne-un-logiciel-de-recrutement-en-entreprise.jpg
+related_posts:
+- 1360-logiciel-planning
+- 3958-quelle-strategie-de-gestion-des-talents-adopter-en-year
+- 8168-comment-ameliorer-la-gestion-des-talents-rh-en-entreprise
+- 6542-comment-utiliser-la-matrice-9-box-pour-gerer-les-talents
 ---
-
 <h2>Ce qu'un logiciel de recrutement fait vraiment au quotidien</h2>
 
 <p>Je vais vous raconter comment j'ai découvert ces outils. On avait un besoin urgent : recruter trois techniciens en moins de six semaines. Mes RH géraient tout à la main, entre les mails, les tableurs Excel et les post-it. On a raté deux bons candidats parce qu'on avait oublié de les recontacter à temps. C'est là que j'ai commencé à chercher une solution.</p>
