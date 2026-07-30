@@ -60,6 +60,7 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
   const [showSource, setShowSource] = useState(false)
   const [sourceValue, setSourceValue] = useState(value)
   const lastEmittedRef = useRef<string>('\u0000__INIT__\u0000')
+  const pendingSourceRef = useRef<string | null>(null)
 
   // Les images sont stockées avec un chemin RELATIF (/blog/...) pour le site
   // en ligne, mais l'éditeur tourne sur un autre domaine → l'image ne s'affiche
@@ -245,17 +246,27 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
   function toggleSource() {
     if (!showSource) {
       setSourceValue(toStored(ref.current?.innerHTML || '')) // source montre le relatif
+      setShowSource(true)
     } else {
-      // Retour du mode source : on NETTOIE avant de réinjecter, sinon un
-      // tableau mal fermé fait perdre le contenu.
       const clean = toStored(sanitizeHtml(sourceValue))
-      onChange(clean)
-      lastEmittedRef.current = clean
-      if (ref.current) ref.current.innerHTML = toPreview(clean)
+      pendingSourceRef.current = clean   // valeur à réinjecter une fois le div re-monté
       setSourceValue(clean)
+      onChange(clean)
+      setShowSource(false)
     }
-    setShowSource(s => !s)
   }
+
+  // Repeuple le contentEditable quand on revient du mode source (le div vient
+  // d'être re-monté, donc vide). On lit la valeur mise de côté (pendingSourceRef)
+  // pour ne pas dépendre du timing de propagation de `value`.
+  useEffect(() => {
+    if (showSource || !ref.current) return
+    const html = pendingSourceRef.current != null ? pendingSourceRef.current : (value || '')
+    ref.current.innerHTML = toPreview(html)
+    lastEmittedRef.current = html
+    pendingSourceRef.current = null
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showSource])
 
   const currentText = (showSource ? sourceValue : value)
     .replace(/<[^>]+>/g, ' ')
