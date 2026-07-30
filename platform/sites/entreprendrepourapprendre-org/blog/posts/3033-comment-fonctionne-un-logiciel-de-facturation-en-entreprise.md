@@ -4,15 +4,18 @@ slug: 3033-comment-fonctionne-un-logiciel-de-facturation-en-entreprise
 date: '2026-07-30T17:00:00+02:00'
 categorie: Comptabilité
 meta_title: Fonctionnement d'un logiciel de facturation en entreprise
-meta_description: 'Découvrez comment un logiciel de facturation fonctionne vraiment au quotidien en entreprise : de la création du devis à l''encaissement, sans prise de tête.'
+meta_description: 'Découvrez comment un logiciel de facturation fonctionne vraiment
+  au quotidien en entreprise : de la création du devis à l''encaissement, sans prise
+  de tête.'
 min_words: 1400
 status: published
 featured_image: /blog/3033-comment-fonctionne-un-logiciel-de-facturation-en-entreprise.jpg
 link_anchors:
 - text: fonctionnement d'un logiciel de facturation
   max: 8
+related_posts:
+- 5334-logiciel-de-facturation-definition-role-et-fonctionnement
 ---
-
 <p>Quand j'ai lancé mon agence il y a huit ans, je gérais mes factures sur Excel. Un tableau par client, un par mois, des formules qui sautaient dès qu'on ajoutait une ligne. À l'époque je trouvais ça acceptable. Aujourd'hui je ne comprends pas comment j'ai tenu aussi longtemps comme ça.</p>
 
 <p>La réalité d'une TPE, c'est que la facturation prend un temps fou si on ne l'automatise pas. Entre la création du document, l'envoi, la relance des impayés, le suivi de ce qui a été payé ou pas... sans outil dédié, on passe facilement deux à trois heures par semaine sur des tâches qui pourraient être bouclées en vingt minutes. Et ça, c'est du temps que je ne passe pas sur mes clients.</p>
