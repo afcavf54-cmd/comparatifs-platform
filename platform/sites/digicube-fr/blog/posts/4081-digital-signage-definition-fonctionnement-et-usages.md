@@ -13,9 +13,9 @@ link_anchors:
 - text: principes du digital signage
   max: 8
 related_posts:
-- 4720-digital-signage-definition-fonctionnement-et-usages
 - 9576-qu-est-ce-que-le-digital-signage-ou-affichage-dynamique
 - 1321-quels-sont-les-meilleurs-logiciels-de-digital-signage-ou-affichage-dynamique
+- 5686-affichage-dynamique-qu-est-ce-que-c-est-et-comment-ca-fonctionne
 ---
 <h2>Ce que recouvre vraiment le digital signage</h2>
 

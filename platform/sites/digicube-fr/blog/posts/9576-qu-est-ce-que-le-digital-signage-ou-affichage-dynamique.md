@@ -12,8 +12,8 @@ featured_image: /blog/9576-qu-est-ce-que-le-digital-signage-ou-affichage-dynamiq
 status: published
 min_words: 1200
 related_posts:
+- 5686-affichage-dynamique-qu-est-ce-que-c-est-et-comment-ca-fonctionne
 - 4081-digital-signage-definition-fonctionnement-et-usages
-- 4720-digital-signage-definition-fonctionnement-et-usages
 - 1321-quels-sont-les-meilleurs-logiciels-de-digital-signage-ou-affichage-dynamique
 link_anchors:
 - text: digital signage
