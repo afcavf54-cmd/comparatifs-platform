@@ -1,24 +1,26 @@
 ---
 title: Les 15 meilleurs logiciels de planification en 2026 en France
 slug: 1360-logiciel-planning
-date: '2026-07-30T17:04:00+02:00'
+date: 2026-07-30T17:04:00+02:00
+updated: 2026-07-30T19:31:59
 categorie: Ressources Humaines
-meta_title: 'Logiciels de planning : les 15 meilleurs outils en 2026'
-meta_description: Découvrez les 15 meilleurs logiciels de planification en France
-  en 2026, testés par un dirigeant. Comparatif honnête pour choisir l'outil adapté
-  à votre équipe.
-min_words: 3000
-status: published
+categories:
+- Ressources Humaines
+meta_title: "Logiciels de planning : les 15 meilleurs outils en 2026"
+meta_description: "Comparez les 15 meilleurs logiciels de planification en 2026 en France : fonctionnalités, tarifs, avis, avantages et conseils pour choisir l'outil le plus adapté à votre entreprise."
 featured_image: /blog/1360-logiciel-planning.jpg
+status: published
+min_words: 3000
 related_posts:
 - 6553-logiciel-de-recrutement-definition-role-et-fonctionnement
 - 8514-bracelet-electronique-au-travail-reglementation-et-respect-de-la-vie-privee
 - 7219-comment-reussir-un-succession-planning-efficace
 - 8102-comment-ameliorer-la-retention-des-talents-dans-votre-entreprise
 ---
+
 <p>J'utilise des logiciels de planning depuis deux ans maintenant. Pas en expert, plutôt en patron qui cherche à ne plus passer ses dimanches soir à faire les tableaux de la semaine à venir. Avec une équipe qui tourne entre 100 et 500 personnes selon les saisons, j'ai testé pas mal d'outils. Certains m'ont fait gagner un temps fou. D'autres m'ont coûté plus cher en frustration qu'en licences.</p>
 
-<p>Voici mon retour honnête sur les 15 meilleurs logiciels de planification disponibles en France en 2026.</p>
+<p>Voici mon retour sur les 15 meilleurs logiciels de planification disponibles en France en 2026.</p>
 
 <h2>Mon top 3 rapide</h2>
 
@@ -34,7 +36,7 @@ related_posts:
 
 <h2>Les 15 meilleurs logiciels de planification en 2026</h2>
 
-<h3>1. Skello</h3>
+<h3>Skello</h3>
 
 <p>Skello, c'est le logiciel que je recommande en premier à n'importe quel dirigeant d'une TPE ou PME avec des équipes en rotation. Il a été conçu pour le marché français, ce qui n'est pas anodin : les règles de temps de travail, les conventions collectives, les alertes légales... tout ça est intégré nativement.</p>
 
@@ -57,7 +59,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>2. Combo</h3>
+<h3>&nbsp;Combo</h3>
 
 <p>Combo m'a surpris. Je ne m'attendais pas à un outil aussi complet pour ce prix-là. C'est pensé pour la restauration et le commerce, ça se sent dans chaque écran : gestion des coupures, des heures supplémentaires, des contrats à temps partiel modulable.</p>
 
@@ -80,7 +82,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>3. Factorial</h3>
+<h3>Factorial</h3>
 
 <p>Factorial, c'est une solution RH globale. Le planning n'est pas le coeur du produit, c'est une brique parmi d'autres : congés, absences, onboarding RH, dossiers salariés. Si vous cherchez uniquement un outil de planning, c'est probablement trop.</p>
 
@@ -103,7 +105,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>4. Instaff</h3>
+<h3>Instaff</h3>
 
 <p>Instaff est moins connu que les précédents, mais je l'ai croisé plusieurs fois dans des groupes de dirigeants marseillais. Il cible les petites structures, souvent entre 10 et 80 salariés.</p>
 
@@ -126,7 +128,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>5. Eurécia</h3>
+<h3>Eurécia</h3>
 
 <p>Eurécia est un acteur français bien établi. Leur point fort : la gestion du temps et des absences. Le planning est intégré dans un module de gestion des temps vraiment complet, avec badgeage, compteurs d'heures, gestion des modulations.</p>
 
@@ -147,7 +149,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>6. Snapshift (devenu Combo)</h3>
+<h3>Snapshift (devenu Combo)</h3>
 
 <p>Snapshift a fusionné avec Combo. Je le mentionne car beaucoup de dirigeants cherchent encore ce nom. L'outil que vous connaissiez sous Snapshift vit aujourd'hui sous la marque Combo, avec des fonctionnalités enrichies. Si vous étiez client Snapshift, la migration s'est faite automatiquement. Je renvoie donc vers la section Combo ci-dessus pour les détails.</p>
 
@@ -162,7 +164,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>7. monday.com</h3>
+<h3>monday.com</h3>
 
 <p>monday.com n'est pas un logiciel RH. C'est un outil de gestion de projet qui peut, avec les bons templates, servir de planning d'équipe. Je l'ai utilisé pendant six mois avant de passer à Skello.</p>
 
@@ -183,7 +185,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>8. Octime</h3>
+<h3>Octime</h3>
 
 <p>Octime est une référence en France pour les grandes organisations. Hôpitaux, collectivités, industries. Si vous avez plus de 200 salariés avec des contraintes de planification complexes (équipes postées, 3x8, cycles variables), Octime est probablement ce qu'il vous faut.</p>
 
@@ -204,7 +206,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>9. Kelio (ex-Bodet Software)</h3>
+<h3>Kelio (ex-Bodet Software)</h3>
 
 <p>Kelio, anciennement Bodet Software, c'est une solution française solide avec une longue histoire. Gestion des temps, plannings, badgeage physique ou mobile, contrôle d'accès. Un ensemble cohérent.</p>
 
@@ -225,7 +227,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>10. Planday</h3>
+<h3>Planday</h3>
 
 <p>Planday vient du Danemark mais est bien implanté en France. Il cible les secteurs avec des équipes importantes et une forte rotation : hôtellerie, restauration, santé, sécurité.</p>
 
@@ -248,7 +250,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>11. Figgo (Lucca)</h3>
+<h3>Figgo (Lucca)</h3>
 
 <p>Figgo fait partie de la suite Lucca, un éditeur français reconnu pour ses outils RH. Figgo gère les congés et absences. Le planning au sens strict n'est pas son coeur de métier, mais combiné avec Timmi (le module de gestion du temps de Lucca), vous obtenez une vraie solution de planification.</p>
 
@@ -269,9 +271,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>12. Google Sheets / Excel</h3>
-
-<p>Oui, je le mets dans cette liste. Parce que beaucoup d'entre vous l'utilisent encore, et c'est une réalité du terrain.</p>
+<h3>Google Sheets / Excel</h3><p><img src="/blog/1360-logiciel-planning/google-sheets-excel-1470.jpg" alt="Google Sheets Excel"></p><p>Oui, je le mets dans cette liste. Parce que beaucoup d'entre vous l'utilisent encore, et c'est une réalité du terrain.</p>
 
 <p>Excel ou Google Sheets pour faire un planning, ça fonctionne. J'ai commencé comme ça. Vous faites votre tableau, vous colorez les cases, vous partagez le fichier. Gratuit. Flexible. Tout le monde sait s'en servir.</p>
 
@@ -292,7 +292,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>13. Workteam Planner</h3>
+<h3>Workteam Planner</h3><p><img src="/blog/1360-logiciel-planning/workteam-planner-8355.jpg" alt="Workteam Planner"></p><p><br></p>
 
 <p>Workteam Planner est moins présent dans les comparatifs habituels. C'est un outil SaaS assez complet, avec une approche visuelle du planning que j'ai trouvée agréable. La vue par semaine, la gestion des roulements, les alertes de chevauchement d'horaires : c'est bien fait.</p>
 
@@ -311,7 +311,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>14. Timetastic</h3>
+<h3>Timetastic</h3><p><img src="/blog/1360-logiciel-planning/timetastic-1461.jpg" alt="Timetastic"></p><p><br></p>
 
 <p>Timetastic est un outil britannique, très simple, pensé pour les petites équipes. Il gère principalement les congés et absences avec un calendrier visuel très lisible. Ce n'est pas un logiciel de planification au sens strict, mais pour une TPE qui veut juste avoir une vue claire des présences et absences, c'est parfait.</p>
 
@@ -332,7 +332,7 @@ related_posts:
   </tbody>
 </table>
 
-<h3>15. Shiftbase</h3>
+<h3>Shiftbase</h3><p><img src="/blog/1360-logiciel-planning/shiftbase-7700.jpg" alt="Shiftbase"></p><p><br></p>
 
 <p>Shiftbase est un outil néerlandais bien localisé pour la France. Il couvre la planification des équipes, la gestion des heures, les absences, le suivi des présences. C'est une solution complète pour le prix qu'il demande.</p>
 
@@ -390,3 +390,4 @@ related_posts:
 
 <ul>
   <li>Combien de salariés devront utiliser l'outil ? (le
+</li></ul>
