@@ -1106,7 +1106,7 @@ h1,h2,h3,h4{
       {% if recent_blog_posts is defined and recent_blog_posts %}
         {% for p in recent_blog_posts[:6] %}
         <article class="post">
-          <a class="card-link" href="/{{ p.slug }}">Lire : {{ p.title }}</a>
+          <a class="card-link" href="/{{ p.slug }}/">Lire : {{ p.title }}</a>
           {% if p.featured_image %}
           <img class="post-image" src="{{ p.featured_image }}" alt="{{ p.title }}" loading="lazy">
           {% else %}
