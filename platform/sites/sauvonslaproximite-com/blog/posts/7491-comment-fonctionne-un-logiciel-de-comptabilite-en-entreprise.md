@@ -14,8 +14,9 @@ link_anchors:
 - text: fonctionnement d'un logiciel de comptabilité
   max: 8
 related_posts:
-- 3755-le-marketing-alternatif-face-aux-campagnes-classiques
 - 8135-les-5-etapes-pour-creer-une-facture-en-ligne-gratuite
+- 5884-logiciel-de-comptabilite-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire
+- 3755-le-marketing-alternatif-face-aux-campagnes-classiques
 - 2176-logiciel-de-comptabilite-definition-role-et-fonctionnement
 ---
 <h2>Ce que fait vraiment un logiciel de comptabilité au quotidien</h2>

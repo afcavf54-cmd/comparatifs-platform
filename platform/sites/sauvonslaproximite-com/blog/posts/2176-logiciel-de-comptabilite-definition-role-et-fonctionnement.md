@@ -13,9 +13,10 @@ link_anchors:
 - text: rôle d'un logiciel de comptabilité
   max: 8
 related_posts:
-- 3755-le-marketing-alternatif-face-aux-campagnes-classiques
-- 8135-les-5-etapes-pour-creer-une-facture-en-ligne-gratuite
 - 7491-comment-fonctionne-un-logiciel-de-comptabilite-en-entreprise
+- 3755-le-marketing-alternatif-face-aux-campagnes-classiques
+- 5884-logiciel-de-comptabilite-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire
+- 8135-les-5-etapes-pour-creer-une-facture-en-ligne-gratuite
 ---
 <h2>Ce qu'on entend vraiment par "logiciel de comptabilité"</h2>
 
