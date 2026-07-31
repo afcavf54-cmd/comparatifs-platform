@@ -15,9 +15,10 @@ featured_image: /blog/1321-quels-sont-les-meilleurs-logiciels-de-digital-signage
 status: published
 min_words: 2000
 related_posts:
-- 4081-digital-signage-definition-fonctionnement-et-usages
 - 9576-qu-est-ce-que-le-digital-signage-ou-affichage-dynamique
+- 8313-digital-signage-vs-affichage-dynamique-quelle-difference
 - 5686-affichage-dynamique-qu-est-ce-que-c-est-et-comment-ca-fonctionne
+- 4081-digital-signage-definition-fonctionnement-et-usages
 link_anchors:
 - text: meilleurs logiciels de digital signage
   max: 5

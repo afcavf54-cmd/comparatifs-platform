@@ -14,9 +14,10 @@ link_anchors:
 - text: fonctionnement de l'affichage dynamique
   max: 8
 related_posts:
+- 1321-quels-sont-les-meilleurs-logiciels-de-digital-signage-ou-affichage-dynamique
 - 4081-digital-signage-definition-fonctionnement-et-usages
 - 9576-qu-est-ce-que-le-digital-signage-ou-affichage-dynamique
-- 1321-quels-sont-les-meilleurs-logiciels-de-digital-signage-ou-affichage-dynamique
+- 8313-digital-signage-vs-affichage-dynamique-quelle-difference
 ---
 <h2>L'affichage dynamique, c'est quoi exactement ?</h2>
 
