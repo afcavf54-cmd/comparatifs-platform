@@ -4,15 +4,20 @@ slug: 2890-logiciel-d-emailing-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire
 date: '2026-07-31T07:00:00+02:00'
 categorie: Marketing
 meta_title: 'Logiciel emailing gratuit : capacités et limites'
-meta_description: 'Logiciel d''emailing gratuit : fonctionnalités utiles, limites cachées et pièges à éviter avant de choisir un outil pour gérer vos campagnes et votre liste de…'
+meta_description: 'Logiciel d''emailing gratuit : fonctionnalités utiles, limites
+  cachées et pièges à éviter avant de choisir un outil pour gérer vos campagnes et
+  votre liste de…'
 min_words: 1400
 status: published
 featured_image: /blog/2890-logiciel-d-emailing-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire.jpg
 link_anchors:
 - text: logiciel d'emailing disponible gratuitement
   max: 8
+related_posts:
+- 6443-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
+- 7295-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
+- 5612-logiciel-d-emailing-definition-role-et-fonctionnement
 ---
-
 <p>J'ai testé pas mal d'outils d'emailing ces dernières années. Et à chaque fois que je parle de mes choix autour de moi, la même question revient : "Mais pourquoi tu paies, y'a pas des trucs gratuits ?" La réponse courte : oui, il y en a. La réponse longue, c'est cet article.</p>
 
 <p>Parce que "gratuit" ne veut pas dire grand-chose si on ne sait pas ce qu'on obtient, ni ce qu'on sacrifie. J'ai vu des dirigeants de PME se lancer sur un outil freemium, tout contents, puis se retrouver bloqués six mois plus tard parce que leur liste avait grossi de 200 contacts.</p>

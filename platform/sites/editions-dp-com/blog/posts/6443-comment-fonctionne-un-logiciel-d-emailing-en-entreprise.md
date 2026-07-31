@@ -14,6 +14,7 @@ link_anchors:
 - text: fonctionnement d'un logiciel d'emailing
   max: 8
 related_posts:
+- 2890-logiciel-d-emailing-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire
 - 5612-logiciel-d-emailing-definition-role-et-fonctionnement
 - 7295-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
 ---
