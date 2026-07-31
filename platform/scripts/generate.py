@@ -1839,17 +1839,38 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         www_preference = site.get("www_preference") or config.get("www_preference", "www")
         domain_raw = site.get("domain", "").replace("https://", "").replace("http://", "").replace("www.", "").rstrip("/")
         if domain_raw:
+            redirect_lines = []
+            # Redirections 301 « sans slash → avec slash » par page (SEO : évite
+            # le doublon /slug vs /slug/). Les règles _redirects sont évaluées
+            # AVANT de servir un fichier statique, donc ça marche même si
+            # {slug}.html existe encore (rétention Cloudflare comprise).
+            # On les met en PREMIER pour un seul saut de redirection.
+            fs_file = site_dir / "_force_slash.txt"
+            if fs_file.exists():
+                for line in fs_file.read_text(encoding="utf-8").splitlines():
+                    s = line.strip()
+                    if not s or s.startswith("#"):
+                        continue
+                    if "://" in s:
+                        rest = s.split("://", 1)[1]
+                        s = rest.split("/", 1)[1] if "/" in rest else ""
+                    s = s.strip().strip("/")
+                    for suf in ("/index.html", ".html"):
+                        if s.endswith(suf):
+                            s = s[: -len(suf)]
+                    s = s.strip("/")
+                    if s:
+                        redirect_lines.append(f"/{s} /{s}/ 301")
             if www_preference == "www":
-                # Redirige naked → www
-                redirects = f"https://{domain_raw}/* https://www.{domain_raw}/:splat 301\n"
+                redirect_lines.append(f"https://{domain_raw}/* https://www.{domain_raw}/:splat 301")
             else:
-                # Redirige www → naked
-                redirects = f"https://www.{domain_raw}/* https://{domain_raw}/:splat 301\n"
+                redirect_lines.append(f"https://www.{domain_raw}/* https://{domain_raw}/:splat 301")
 
             from datetime import datetime as _dt
+            redirects = "\n".join(redirect_lines) + "\n"
             redirects += f"# Generated: {_dt.utcnow().isoformat()}\n"
             (output_dir / "_redirects").write_text(redirects, encoding="utf-8")
-            print(f"  ✓ _redirects ({www_preference})")
+            print(f"  ✓ _redirects ({www_preference}, {len(redirect_lines)} règle(s))")
         copy_shared_assets(output_dir, site_dir)
         # ── Index JSON pour le dashboard (1 requête GitHub au lieu de N) ──
         # Doit être appelé AVANT le post-process des dates pour avoir tous
