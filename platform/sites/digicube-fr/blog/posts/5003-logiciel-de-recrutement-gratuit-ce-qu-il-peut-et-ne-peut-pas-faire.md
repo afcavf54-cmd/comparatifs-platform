@@ -4,12 +4,18 @@ slug: 5003-logiciel-de-recrutement-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire
 date: '2026-07-31T07:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logiciel de recrutement gratuit : capacités et limites'
-meta_description: 'Logiciel de recrutement gratuit : découvrez ce qu''il fait vraiment, ses limites réelles et comment choisir le bon outil pour votre PME sans perdre de temps.'
+meta_description: 'Logiciel de recrutement gratuit : découvrez ce qu''il fait vraiment,
+  ses limites réelles et comment choisir le bon outil pour votre PME sans perdre de
+  temps.'
 min_words: 1300
 status: published
 featured_image: /blog/5003-logiciel-de-recrutement-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire.jpg
+related_posts:
+- 1586-comment-ameliorer-la-fidelisation-des-talents-en-entreprise
+- 6553-logiciel-de-recrutement-definition-role-et-fonctionnement
+- 3958-quelle-strategie-de-gestion-des-talents-adopter-en-year
+- 1360-logiciel-planning
 ---
-
 <h2>Ce qu'on attend d'un outil gratuit pour recruter</h2>
 
 <p>J'ai commencé à chercher un logiciel de recrutement il y a deux ans. Budget serré, équipe RH réduite, et des recrutements qui s'organisaient encore sur des tablettes Excel partagées par mail. Pas idéal. Avant de passer à un outil payant, j'ai voulu tester ce que les solutions gratuites pouvaient vraiment offrir. La réponse est nuancée.</p>
