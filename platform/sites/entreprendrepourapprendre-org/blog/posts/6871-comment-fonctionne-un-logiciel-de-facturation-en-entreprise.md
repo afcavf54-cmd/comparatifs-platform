@@ -14,6 +14,7 @@ link_anchors:
   max: 8
 related_posts:
 - 3033-comment-fonctionne-un-logiciel-de-facturation-en-entreprise
+- 7056-logiciel-de-facturation-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire
 - 5334-logiciel-de-facturation-definition-role-et-fonctionnement
 ---
 <p>Quand j'ai lancé mon agence il y a huit ans, je gérais mes factures sur Excel. Un fichier, deux fichiers, trois fichiers... et puis un jour j'ai perdu une relance client, raté un paiement, et passé une soirée entière à retrouver une erreur de TVA. C'est là que j'ai compris que la question n'était pas "est-ce qu'un logiciel de facturation peut m'aider" mais "pourquoi j'ai attendu aussi longtemps".</p>

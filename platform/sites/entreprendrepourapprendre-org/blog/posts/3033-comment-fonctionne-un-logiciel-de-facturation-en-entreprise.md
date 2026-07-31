@@ -14,8 +14,9 @@ link_anchors:
 - text: fonctionnement d'un logiciel de facturation
   max: 8
 related_posts:
-- 6871-comment-fonctionne-un-logiciel-de-facturation-en-entreprise
 - 5334-logiciel-de-facturation-definition-role-et-fonctionnement
+- 6871-comment-fonctionne-un-logiciel-de-facturation-en-entreprise
+- 7056-logiciel-de-facturation-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire
 ---
 <p>Quand j'ai lancé mon agence il y a huit ans, je gérais mes factures sur Excel. Un tableau par client, un par mois, des formules qui sautaient dès qu'on ajoutait une ligne. À l'époque je trouvais ça acceptable. Aujourd'hui je ne comprends pas comment j'ai tenu aussi longtemps comme ça.</p>
 
