@@ -15,8 +15,9 @@ link_anchors:
   max: 8
 related_posts:
 - 6443-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
-- 7295-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
 - 5612-logiciel-d-emailing-definition-role-et-fonctionnement
+- 7389-logiciel-d-emailing-open-source-avantages-limites-et-cas-d-usage
+- 7295-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
 ---
 <p>J'ai testé pas mal d'outils d'emailing ces dernières années. Et à chaque fois que je parle de mes choix autour de moi, la même question revient : "Mais pourquoi tu paies, y'a pas des trucs gratuits ?" La réponse courte : oui, il y en a. La réponse longue, c'est cet article.</p>
 

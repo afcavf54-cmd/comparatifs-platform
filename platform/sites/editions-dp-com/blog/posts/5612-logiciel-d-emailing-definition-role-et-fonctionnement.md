@@ -15,6 +15,7 @@ link_anchors:
   max: 8
 related_posts:
 - 7295-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
+- 7389-logiciel-d-emailing-open-source-avantages-limites-et-cas-d-usage
 - 2890-logiciel-d-emailing-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire
 - 6443-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
 ---
