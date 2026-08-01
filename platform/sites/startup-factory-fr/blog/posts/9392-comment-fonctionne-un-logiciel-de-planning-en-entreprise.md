@@ -13,9 +13,10 @@ link_anchors:
 - text: fonctionnement d'un logiciel de planning
   max: 5
 related_posts:
-- 7333-comment-fonctionne-un-logiciel-de-planning-en-entreprise
+- 3925-logiciel-de-gestion-de-planning-open-source-avantages-et-limites
 - 7613-logiciel-de-gestion-de-planning-gratuit-ce-qu-il-peut-faire
 - 5257-logiciel-de-gestion-de-planning-definition-role-et-fonctionnement
+- 7333-comment-fonctionne-un-logiciel-de-planning-en-entreprise
 ---
 <p>J'ai mis en place des outils de planning dans deux boîtes différentes. Et franchement, la deuxième fois, j'ai évité pas mal d'erreurs grâce à la première. Avant, on gérait les plannings sur Excel. Un fichier partagé sur Google Drive, des couleurs à la main, et une personne qui passait deux heures chaque lundi matin à tout mettre à jour. Quand l'équipe a grandi, ça a tenu environ six semaines. Puis tout a explosé.</p>
 

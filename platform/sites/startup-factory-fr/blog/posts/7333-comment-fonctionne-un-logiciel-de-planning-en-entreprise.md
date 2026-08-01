@@ -14,8 +14,9 @@ link_anchors:
 - text: fonctionnement d'un logiciel de planning
   max: 5
 related_posts:
-- 5257-logiciel-de-gestion-de-planning-definition-role-et-fonctionnement
+- 3925-logiciel-de-gestion-de-planning-open-source-avantages-et-limites
 - 9392-comment-fonctionne-un-logiciel-de-planning-en-entreprise
+- 5257-logiciel-de-gestion-de-planning-definition-role-et-fonctionnement
 - 7613-logiciel-de-gestion-de-planning-gratuit-ce-qu-il-peut-faire
 ---
 <p>Gérer les plannings à la main, c'est une perte de temps monstre. J'ai vécu ça pendant des mois avant de comprendre qu'il existait des outils faits exactement pour ça. Spreadsheets, post-its, messages WhatsApp à 22h pour couvrir un créneau... Tu connais probablement.</p>

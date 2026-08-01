@@ -13,9 +13,10 @@ link_anchors:
 - text: logiciel de planning disponible gratuitement
   max: 5
 related_posts:
-- 9392-comment-fonctionne-un-logiciel-de-planning-en-entreprise
 - 7333-comment-fonctionne-un-logiciel-de-planning-en-entreprise
 - 5257-logiciel-de-gestion-de-planning-definition-role-et-fonctionnement
+- 9392-comment-fonctionne-un-logiciel-de-planning-en-entreprise
+- 3925-logiciel-de-gestion-de-planning-open-source-avantages-et-limites
 ---
 <p>Gérer les plannings d'une équipe de vingt personnes avec un tableau Excel bricolé un dimanche soir, j'ai connu. Longtemps même. Et franchement, au bout d'un moment, tu passes plus de temps à corriger des erreurs de formule qu'à vraiment planifier. Alors j'ai cherché. J'ai testé. Et voilà ce que j'ai trouvé.</p>
 

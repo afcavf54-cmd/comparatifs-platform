@@ -14,9 +14,10 @@ link_anchors:
 - text: rôle d'un logiciel de gestion de planning
   max: 5
 related_posts:
-- 7333-comment-fonctionne-un-logiciel-de-planning-en-entreprise
-- 7613-logiciel-de-gestion-de-planning-gratuit-ce-qu-il-peut-faire
+- 3925-logiciel-de-gestion-de-planning-open-source-avantages-et-limites
 - 9392-comment-fonctionne-un-logiciel-de-planning-en-entreprise
+- 7613-logiciel-de-gestion-de-planning-gratuit-ce-qu-il-peut-faire
+- 7333-comment-fonctionne-un-logiciel-de-planning-en-entreprise
 ---
 <p>Je vais être honnête avec toi : avant de mettre en place un outil dédié, je gérais les plannings de mon équipe sur un Google Sheet partagé. Ça fonctionnait... jusqu'au moment où ça ne fonctionnait plus. Absences non répercutées, doublons sur des créneaux, salariés qui ne savaient pas où regarder. J'ai perdu un temps fou à arbitrer des conflits de planning qui auraient pu être évités. C'est là que j'ai vraiment compris ce que vaut un bon <strong>logiciel de gestion du temps et des plannings</strong>.</p>
 
