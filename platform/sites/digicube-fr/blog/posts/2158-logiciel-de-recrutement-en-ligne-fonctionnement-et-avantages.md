@@ -4,12 +4,18 @@ slug: 2158-logiciel-de-recrutement-en-ligne-fonctionnement-et-avantages
 date: '2026-08-01T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logiciel de recrutement en ligne : fonctionnement'
-meta_description: Découvrez comment un logiciel de recrutement centralise vos candidatures, automatise la diffusion des offres et vous fait gagner un temps précieux à chaque embauche.
+meta_description: Découvrez comment un logiciel de recrutement centralise vos candidatures,
+  automatise la diffusion des offres et vous fait gagner un temps précieux à chaque
+  embauche.
 min_words: 1300
 status: published
 featured_image: /blog/2158-logiciel-de-recrutement-en-ligne-fonctionnement-et-avantages.jpg
+related_posts:
+- 9121-comment-mettre-en-place-une-strategie-de-talent-management
+- 8731-comment-ameliorer-l-experience-collaborateur-en-entreprise
+- 7426-comment-choisir-un-logiciel-gepp-adapte-a-votre-entreprise
+- 8102-comment-ameliorer-la-retention-des-talents-dans-votre-entreprise
 ---
-
 <h2>Ce que fait vraiment un logiciel de recrutement (et pourquoi ça change la vie)</h2>
 
 <p>J'ai longtemps géré mes recrutements à la main. Des tableaux Excel, des emails qui s'accumulent, des CV qu'on retrouve plus au bon moment. Franchement, c'est épuisant. Quand on dirige une entreprise avec plusieurs dizaines de salariés, chaque embauche prend un temps fou si on n'a pas les bons outils.</p>
