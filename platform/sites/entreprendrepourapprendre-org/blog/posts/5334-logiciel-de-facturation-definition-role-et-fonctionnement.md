@@ -14,9 +14,10 @@ link_anchors:
 - text: rôle d'un logiciel de facturation
   max: 8
 related_posts:
-- 3033-comment-fonctionne-un-logiciel-de-facturation-en-entreprise
 - 7056-logiciel-de-facturation-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire
 - 6871-comment-fonctionne-un-logiciel-de-facturation-en-entreprise
+- 3033-comment-fonctionne-un-logiciel-de-facturation-en-entreprise
+- 2073-logiciel-de-facturation-en-ligne-fonctionnement-et-avantages
 ---
 <h2>Ce que fait vraiment un logiciel de facturation (et pourquoi ça change tout au quotidien)</h2>
 

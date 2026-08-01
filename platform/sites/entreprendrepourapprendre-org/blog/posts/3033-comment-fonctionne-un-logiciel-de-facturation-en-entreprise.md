@@ -14,6 +14,7 @@ link_anchors:
 - text: fonctionnement d'un logiciel de facturation
   max: 8
 related_posts:
+- 2073-logiciel-de-facturation-en-ligne-fonctionnement-et-avantages
 - 5334-logiciel-de-facturation-definition-role-et-fonctionnement
 - 6871-comment-fonctionne-un-logiciel-de-facturation-en-entreprise
 - 7056-logiciel-de-facturation-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire
