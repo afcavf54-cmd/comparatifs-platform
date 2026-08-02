@@ -4,15 +4,20 @@ slug: 5109-logiciel-de-gestion-de-planning-chantier-fonctionnement-et-utilite
 date: '2026-08-02T17:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logiciel planning chantier : fonctionnement et utilité'
-meta_description: Découvrez comment un logiciel de gestion de planning chantier remplace Excel, évite les conflits d'affectation et fait gagner un temps précieux sur plusieurs…
+meta_description: Découvrez comment un logiciel de gestion de planning chantier remplace
+  Excel, évite les conflits d'affectation et fait gagner un temps précieux sur plusieurs…
 min_words: 1300
 status: published
 featured_image: /blog/5109-logiciel-de-gestion-de-planning-chantier-fonctionnement-et-utilite.jpg
 link_anchors:
 - text: logiciel de planning pour les chantiers
   max: 5
+related_posts:
+- 7333-comment-fonctionne-un-logiciel-de-planning-en-entreprise
+- 5257-logiciel-de-gestion-de-planning-definition-role-et-fonctionnement
+- 7613-logiciel-de-gestion-de-planning-gratuit-ce-qu-il-peut-faire
+- 9392-comment-fonctionne-un-logiciel-de-planning-en-entreprise
 ---
-
 <p>On gère une startup à Nantes, 35 personnes, plusieurs chantiers en parallèle. Pendant longtemps, on s'est débrouillés avec un tableau Excel partagé sur Google Drive. Résultat : des conflits de planning, des gens affectés deux fois au même créneau, et des chefs de chantier qui m'appelaient chaque matin pour savoir qui était disponible. C'était une perte de temps colossale.</p>
 
 <p>J'ai fini par tester un <strong>logiciel de planning d'équipe</strong> dédié aux chantiers. Spoiler : ça a changé pas mal de choses. Pas parfaitement, mais vraiment beaucoup.</p>
