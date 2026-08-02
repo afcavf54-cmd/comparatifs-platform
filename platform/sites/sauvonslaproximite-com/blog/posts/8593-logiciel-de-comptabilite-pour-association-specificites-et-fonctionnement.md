@@ -4,15 +4,21 @@ slug: 8593-logiciel-de-comptabilite-pour-association-specificites-et-fonctionnem
 date: '2026-08-02T07:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Logiciel comptabilité association : fonctionnement'
-meta_description: 'Choisir un logiciel de comptabilité pour association demande de connaître ses spécificités : plan CRC 99-01, fonds dédiés, subventions. Voici comment bien choisir.'
+meta_description: 'Choisir un logiciel de comptabilité pour association demande de
+  connaître ses spécificités : plan CRC 99-01, fonds dédiés, subventions. Voici comment
+  bien choisir.'
 min_words: 1300
 status: published
 featured_image: /blog/8593-logiciel-de-comptabilite-pour-association-specificites-et-fonctionnement.jpg
 link_anchors:
 - text: logiciel comptable adapté aux associations
   max: 8
+related_posts:
+- 5567-logiciel-de-comptabilite-en-ligne-fonctionnement-et-avantages
+- 7491-comment-fonctionne-un-logiciel-de-comptabilite-en-entreprise
+- 8135-les-5-etapes-pour-creer-une-facture-en-ligne-gratuite
+- 3755-le-marketing-alternatif-face-aux-campagnes-classiques
 ---
-
 <h2>Ce que la comptabilité associative a de vraiment différent</h2>
 
 <p>Vingt ans de comptabilité en entreprise, et pourtant, la première fois qu'on m'a demandé d'accompagner une association loi 1901 sur sa gestion financière, j'ai dû revoir pas mal de mes réflexes. Pas parce que les chiffres fonctionnent autrement. Mais parce que le cadre, lui, est totalement différent.</p>
