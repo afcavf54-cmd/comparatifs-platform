@@ -14,9 +14,10 @@ link_anchors:
 - text: créer une entreprise en ligne sans frais
   max: 8
 related_posts:
-- 2642-comment-creer-une-entreprise-en-ligne-etapes-et-demarches
 - 3581-immatriculation-d-une-entreprise-en-ligne-comment-ca-fonctionne
 - 7173-demarches-de-creation-d-entreprise-le-guide-complet
+- 2642-comment-creer-une-entreprise-en-ligne-etapes-et-demarches
+- 5114-comment-creer-une-micro-entreprise-en-ligne-etapes-et-formalites
 ---
 <h2>La promesse du "100% gratuit" : ce que ça cache vraiment</h2>
 
