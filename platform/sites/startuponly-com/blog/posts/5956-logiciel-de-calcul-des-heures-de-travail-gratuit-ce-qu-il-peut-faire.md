@@ -4,15 +4,20 @@ slug: 5956-logiciel-de-calcul-des-heures-de-travail-gratuit-ce-qu-il-peut-faire
 date: '2026-08-02T08:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logiciel calcul heures de travail gratuit : que faire ?'
-meta_description: Découvrez ce qu'un logiciel de calcul des heures de travail gratuit peut vraiment faire pour votre équipe, sans Excel ni erreurs de saisie manuelle.
+meta_description: Découvrez ce qu'un logiciel de calcul des heures de travail gratuit
+  peut vraiment faire pour votre équipe, sans Excel ni erreurs de saisie manuelle.
 min_words: 1300
 status: published
 featured_image: /blog/5956-logiciel-de-calcul-des-heures-de-travail-gratuit-ce-qu-il-peut-faire.jpg
 link_anchors:
 - text: logiciel gratuit de calcul des heures de travail
   max: 5
+related_posts:
+- 6425-logiciel-de-gestion-des-temps-de-travail-a-quoi-ca-sert-vraiment
+- 6943-logiciel-de-pointage-fonctionnement-types-et-criteres-de-choix
+- 1216-logiciel-de-pointage-journalier-utilite-et-cas-d-usage
+- 1727-badgeuse-en-entreprise-cadre-reglementaire-et-obligations
 ---
-
 <p>Quand t'as une petite équipe et pas de DRH, le suivi des heures ça devient vite un enfer. Moi j'ai passé des mois à bricoler des fichiers Excel à la main. Un salarié en mi-temps, un autre avec des heures sup non déclarées, un troisième en congé partiel... J'additionnais tout ça à la main chaque fin de mois. Autant te dire que c'était douloureux.</p>
 
 <p>Depuis, j'ai testé pas mal d'outils. Et j'ai découvert que les versions gratuites des logiciels de calcul des heures de travail peuvent vraiment faire le taf, à condition de savoir ce qu'elles couvrent réellement. Parce que "gratuit" ne veut pas dire "complet".</p>
