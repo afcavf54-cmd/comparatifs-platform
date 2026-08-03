@@ -4,15 +4,21 @@ slug: 2738-comment-calculer-les-heures-de-travail-de-ses-salaries
 date: '2026-08-03T11:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Calcul des heures de travail : méthode et formules'
-meta_description: Calculer les heures de travail de vos salariés sans erreur est essentiel pour éviter litiges et paie incorrecte. Méthodes, outils et bonnes pratiques pour enfin…
+meta_description: Calculer les heures de travail de vos salariés sans erreur est essentiel
+  pour éviter litiges et paie incorrecte. Méthodes, outils et bonnes pratiques pour
+  enfin…
 min_words: 1600
 status: published
 featured_image: /blog/2738-comment-calculer-les-heures-de-travail-de-ses-salaries.jpg
 link_anchors:
 - text: calcul des heures de travail
   max: 5
+related_posts:
+- 6943-logiciel-de-pointage-fonctionnement-types-et-criteres-de-choix
+- 7114-legislation-sur-la-badgeuse-en-entreprise-ce-que-dit-la-loi
+- 6425-logiciel-de-gestion-des-temps-de-travail-a-quoi-ca-sert-vraiment
+- 7782-logiciel-de-pointage-des-heures-de-travail-principes-et-fonctionnement
 ---
-
 <p>Calculer les heures de travail de ses salariés, ça paraît simple. Et pourtant, c'est là que beaucoup de petites boîtes se plantent, souvent sans s'en rendre compte. Entre les heures sup' qui s'accumulent, les absences à déduire, et les plannings qui changent en cours de route, tu te retrouves vite avec des données approximatives. Et des données approximatives, ça coûte cher, que ce soit en litiges ou en paie mal calculée.</p>
 
 <p>J'ai monté ma startup il y a quelques années. Au début, je gérais tout ça à la main. Feuilles Excel, captures d'écran des timesheets, notes Slack. Un vrai bazar. J'ai mis du temps à structurer le truc. Cet article, c'est ce que j'aurais aimé lire à l'époque.</p>
