@@ -1871,6 +1871,28 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             redirects += f"# Generated: {_dt.utcnow().isoformat()}\n"
             (output_dir / "_redirects").write_text(redirects, encoding="utf-8")
             print(f"  ✓ _redirects ({www_preference}, {len(redirect_lines)} règle(s))")
+
+        # ── Simulateur de dividendes (page publique) ──────────────────────
+        # Si le site a le template + le fichier d'actions, on génère la page en
+        # injectant les actions ACTIVES dans window.MONELOR_STOCKS. On évite
+        # Jinja (le HTML est plein d'accolades CSS/JS) → simple remplacement.
+        _sim_tpl = site_dir / "templates" / "simulateur-dividendes.html"
+        _sim_data = site_dir / "dividendes-actions.json"
+        if _sim_tpl.exists() and _sim_data.exists():
+            try:
+                import json as _json_sim
+                _acts = _json_sim.loads(_sim_data.read_text(encoding="utf-8")).get("actions", [])
+                _active = [a for a in _acts if a.get("active", True)]
+                _payload = _json_sim.dumps(_active, ensure_ascii=False)
+                _script = f"<script>window.MONELOR_STOCKS = {_payload};</script>"
+                _html_sim = _sim_tpl.read_text(encoding="utf-8").replace("<!--INJECT_STOCKS-->", _script)
+                _sim_out = output_dir / "simulateur-dividendes"
+                _sim_out.mkdir(parents=True, exist_ok=True)
+                (_sim_out / "index.html").write_text(_html_sim, encoding="utf-8")
+                print(f"  ✓ Simulateur de dividendes ({len(_active)} action(s) active(s))")
+            except Exception as _e_sim:
+                print(f"  ⚠ Simulateur de dividendes : {_e_sim}")
+
         copy_shared_assets(output_dir, site_dir)
         # ── Index JSON pour le dashboard (1 requête GitHub au lieu de N) ──
         # Doit être appelé AVANT le post-process des dates pour avoir tous
