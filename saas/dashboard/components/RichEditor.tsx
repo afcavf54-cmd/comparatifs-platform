@@ -61,6 +61,7 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
   const [sourceValue, setSourceValue] = useState(value)
   const lastEmittedRef = useRef<string>('\u0000__INIT__\u0000')
   const pendingSourceRef = useRef<string | null>(null)
+  const [inTable, setInTable] = useState(false)
 
   // Les images sont stockées avec un chemin RELATIF (/blog/...) pour le site
   // en ligne, mais l'éditeur tourne sur un autre domaine → l'image ne s'affiche
@@ -136,6 +137,81 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
     document.execCommand('insertHTML', false, t)
     emit()
   }
+
+  // ── Édition de tableau (lignes / colonnes) ──────────────────────────────
+  function currentCell(): HTMLTableCellElement | null {
+    const sel = typeof window !== 'undefined' ? window.getSelection() : null
+    if (!sel || !sel.rangeCount || !ref.current) return null
+    let n: Node | null = sel.getRangeAt(0).startContainer
+    while (n && n !== ref.current) {
+      if (n instanceof HTMLTableCellElement) return n
+      n = n.parentNode
+    }
+    return null
+  }
+  function currentTable(cell: HTMLTableCellElement | null): HTMLTableElement | null {
+    let n: Node | null = cell
+    while (n && n !== ref.current) { if (n instanceof HTMLTableElement) return n; n = n.parentNode }
+    return null
+  }
+  function colIndex(cell: HTMLTableCellElement): number {
+    return Array.prototype.indexOf.call(cell.parentElement!.children, cell)
+  }
+  function mkCell(tag: 'td' | 'th') { const c = document.createElement(tag); c.textContent = '—'; return c }
+
+  function addRow() {
+    const cell = currentCell(); if (!cell) return
+    const row = cell.closest('tr')!; const cols = row.children.length
+    const nr = document.createElement('tr')
+    for (let i = 0; i < cols; i++) nr.appendChild(mkCell('td'))
+    row.after(nr); emit(); syncTableState()
+  }
+  function delRow() {
+    const cell = currentCell(); if (!cell) return
+    const table = currentTable(cell); const row = cell.closest('tr')
+    if (row) row.remove()
+    if (table && !table.querySelector('tr')) table.remove()
+    emit(); syncTableState()
+  }
+  function addCol() {
+    const cell = currentCell(); if (!cell) return
+    const table = currentTable(cell); if (!table) return
+    const idx = colIndex(cell)
+    table.querySelectorAll('tr').forEach(tr => {
+      const refCell = tr.children[idx] as HTMLElement | undefined
+      const isHead = (tr.children[0] as HTMLElement | undefined)?.tagName === 'TH'
+      const nc = mkCell(isHead ? 'th' : 'td')
+      if (refCell) refCell.after(nc); else tr.appendChild(nc)
+    })
+    emit(); syncTableState()
+  }
+  function delCol() {
+    const cell = currentCell(); if (!cell) return
+    const table = currentTable(cell); if (!table) return
+    const idx = colIndex(cell)
+    table.querySelectorAll('tr').forEach(tr => { const c = tr.children[idx]; if (c) c.remove() })
+    if (!table.querySelector('td,th')) table.remove()
+    emit(); syncTableState()
+  }
+  function delTable() {
+    const t = currentTable(currentCell()); if (t) { t.remove(); emit(); syncTableState() }
+  }
+  function syncTableState() { setInTable(!!currentTable(currentCell())) }
+
+  // Détecte quand le curseur entre/sort d'un tableau (pour afficher les
+  // boutons lignes/colonnes).
+  useEffect(() => {
+    const handler = () => {
+      if (showSource) { setInTable(false); return }
+      const sel = window.getSelection()
+      if (!sel || !sel.rangeCount || !ref.current) return
+      if (!ref.current.contains(sel.anchorNode)) return
+      setInTable(!!currentTable(currentCell()))
+    }
+    document.addEventListener('selectionchange', handler)
+    return () => document.removeEventListener('selectionchange', handler)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showSource])
 
   /** Ouvre la modale d'insertion/édition de lien.
    * Si le curseur est positionné dans un <a> existant, pré-remplit la modale
@@ -329,6 +405,16 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
           {onImageUpload && <Btn onClick={onImageUpload} title="Insérer une image">📷</Btn>}
           <Btn onClick={insertTable} title="Insérer un tableau">▦</Btn>
         </BtnGroup>
+        {inTable && <>
+          <Sep />
+          <BtnGroup>
+            <Btn onClick={addRow} title="Ajouter une ligne">＋ Ligne</Btn>
+            <Btn onClick={delRow} title="Supprimer la ligne">− Ligne</Btn>
+            <Btn onClick={addCol} title="Ajouter une colonne">＋ Col.</Btn>
+            <Btn onClick={delCol} title="Supprimer la colonne">− Col.</Btn>
+            <Btn onClick={delTable} title="Supprimer le tableau">🗑 Tableau</Btn>
+          </BtnGroup>
+        </>}
         <Sep />
         <BtnGroup>
           <Btn onClick={() => exec('removeFormat')} title="Effacer la mise en forme">⊘</Btn>
