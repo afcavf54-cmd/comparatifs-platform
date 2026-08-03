@@ -2,7 +2,7 @@
 title: Quelles sont les meilleures SCPI du contrat Lixea Spirit 2 ?
 slug: 4296-meilleures-scpi-linxea-spirit-2
 date: 2026-08-03T15:25:43+02:00
-updated: 2026-08-03T13:54:41
+updated: 2026-08-03T14:39:39
 categorie: Assurance vie
 categories:
 - Assurance vie
@@ -26,7 +26,7 @@ link_anchors:
 
 <p><strong>Accès Valeur Pierre</strong> est une SCPI diversifiée gérée par BNP Paribas REIM, la filiale immobilière du groupe BNP. Elle investit principalement dans des bureaux et des commerces situés en France, avec une préférence pour les grandes métropoles et la région parisienne. C'est une SCPI assez classique dans son positionnement, avec un patrimoine bien établi.</p>
 
-<p>Elle s'adresse à des profils qui cherchent une exposition à l'immobilier de bureau français sans trop de prise de risque géographique. Le rendement est correct, sans être exceptionnel. On est sur une gestion plutôt patrimoniale, avec un gestionnaire qui a du recul et de l'expérience. Si tu veux une base solide dans ton allocation SCPI, elle peut jouer ce rôle.</p><p>Répartition géographique :&nbsp;<br>- Paris : 73,3%<br>- Ile-de-France : 21,3%<br>- Régions : 5%<br>- Etranger : 0%<br><br>Répartition sectorielle :&nbsp;<br></p><ul><li>Bureaux : 92,4%</li><li>Commerces : 7,6%</li></ul><h3>Activimmo, gérée par Alderan</h3>
+<p>Elle s'adresse à des profils qui cherchent une exposition à l'immobilier de bureau français sans trop de prise de risque géographique. Le rendement est correct, sans être exceptionnel. On est sur une gestion plutôt patrimoniale, avec un gestionnaire qui a du recul et de l'expérience. Si tu veux une base solide dans ton allocation SCPI, elle peut jouer ce rôle.</p><table><thead><tr><th>Répartition géographique</th><th>Répartition sectorielle :&nbsp;</th></tr></thead><tbody><tr><td>- Paris : 73,3%<br>- Ile-de-France : 21,3%<br>- Régions : 5%<br>- Etranger : 0%</td><td>Bureaux : 92,4%<br>Commerces : 7,6%</td></tr><tr><td>—</td><td>—</td></tr></tbody></table><p><br><br></p><p><br></p><p>Répartition géographique :&nbsp;<br>- Paris : 73,3%<br>- Ile-de-France : 21,3%<br>- Régions : 5%<br>- Etranger : 0%<br><br>Répartition sectorielle :&nbsp;<br></p><ul><li>Bureaux : 92,4%</li><li>Commerces : 7,6%</li></ul><h3>Activimmo, gérée par Alderan</h3>
 
 <p><strong>Activimmo</strong> est une SCPI spécialisée dans la <strong>logistique et les locaux d'activité</strong>. Autrement dit, elle investit dans des entrepôts, des plateformes de distribution, des locaux artisanaux. Un segment qui a vraiment eu le vent en poupe avec l'essor du e-commerce ces dernières années.</p>
 
@@ -247,4 +247,5 @@ link_anchors:
 <p>Et une dernière chose : <strong>via Linxea Spirit 2, les frais d'entrée sur les SCPI sont souvent réduits par rapport à un investissement en direct</strong>. C'est un vrai avantage. En direct, les SCPI ont des frais de souscription qui peuvent atteindre 8 à 10 % du montant investi. Via l'assurance vie, ces frais sont généralement nettement inférieurs, ce qui améliore ta performance nette dès le départ.</p>
 
 <p>Voilà, tu as maintenant une vision complète des SCPI disponibles sur Linxea Spirit 2. La prochaine étape, c'est de définir ce que tu veux faire avec ton argent, sur quel horizon, et avec quelle tolérance aux fluctuations. Et si tu veux aller plus loin, j'ai d'autres articles sur le site qui rentrent dans le détail de chaque type de stratégie. Bonne construction de portefeuille.</p>
+
 
