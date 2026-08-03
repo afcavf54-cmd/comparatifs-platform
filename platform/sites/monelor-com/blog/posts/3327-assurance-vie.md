@@ -4,15 +4,17 @@ slug: 3327-assurance-vie
 date: '2026-08-03T13:49:16+02:00'
 categorie: Assurance vie
 meta_title: 'Assurance-vie : définition, principe et fonctionnement'
-meta_description: 'Découvrez comment fonctionne vraiment l''assurance vie : versements, gestion, fiscalité et retrait. Le placement le plus polyvalent en France, enfin expliqué…'
+meta_description: 'Découvrez comment fonctionne vraiment l''assurance vie : versements,
+  gestion, fiscalité et retrait. Le placement le plus polyvalent en France, enfin
+  expliqué…'
 min_words: 2500
 status: published
 featured_image: /blog/3327-assurance-vie.jpg
 link_anchors:
 - text: assurance vie
   max: 20
+related_posts: []
 ---
-
 <p>Quand j'ai découvert l'assurance vie, je pensais que c'était réservé aux personnes proches de la retraite. Un truc pour les seniors qui voulaient transmettre leur patrimoine à leurs enfants. Bref, quelque chose qui ne me concernait pas du tout.</p>
 
 <p>Grosse erreur.</p>
