@@ -2,7 +2,7 @@
 title: Quelles sont les meilleures SCPI du contrat Lixea Spirit 2 ?
 slug: 4296-meilleures-scpi-linxea-spirit-2
 date: 2026-08-03T15:25:43+02:00
-updated: 2026-08-03T15:23:29
+updated: 2026-08-03T15:26:11
 categorie: Assurance vie
 categories:
 - Assurance vie
@@ -22,9 +22,7 @@ link_anchors:
 
 <p>Avant d'aller plus loin, une info importante : <strong>la SCPI Iroko Zen n'est plus disponible sur Linxea Spirit 2</strong>, ni à l'achat en versement libre, ni en arbitrage. Si tu l'avais repérée dans d'anciens comparatifs ou articles, c'est une information qui date. On ne peut plus y accéder via ce contrat aujourd'hui.</p><p>Maintenant, regardons ce qui est disponible. Je vais te présenter chaque SCPI une par une, avec les infos qui comptent vraiment : ce qu'elle fait, comment elle se positionne, et à qui elle peut convenir. L'idée, c'est que tu ressortes de cet article avec une vraie vision d'ensemble, pas juste une liste de noms barbares.</p><h2>Les 3 SCPI qui ont le meilleur rendement sur Linxea Spirit 2</h2><p>Pour les plus impatients, je vous ai listé les 3 SCPI disponibles dans le contrat Linxea Spirit 2 qui ont les meilleurs rendements sur les 5 dernières années. Bien entendu, on ne juge pas une SCPI sur son rendement uniquement, je vous ai donc indiqué plus bas les caractéristiques de chaque SCPI pour vous permettre de faire votre propre opinion.</p><table><thead><tr><th>&nbsp;SCPI</th><th>Moyenne 5 ans</th><th>2025</th><th>2024</th><th>2023</th><th>2022</th><th>2021</th></tr><tr><td>PERIAL Opportunités Europe</td><td>5,69%</td><td>6,1%</td><td>6,27%</td><td>5,7%</td><td>5,57%</td><td>4,82%</td></tr></thead><tbody><tr><td>ACTIVIMMO</td><td>5,6%</td><td>5,49%</td><td>5,5%</td><td>5,52%</td><td>5,5%</td><td>6,02%</td></tr><tr><td>Altixia Cadence XII</td><td>5,48%</td><td>5,15%</td><td>5,73%</td><td>5,6%</td><td>5,51%</td><td>5,15%</td></tr></tbody></table><h2>Liste des SCPI disponibles sur Linxea Spirit 2</h2>
 
-<h3>Accès Valeur Pierre, gérée par BNP Paribas REIM</h3>
-
-<p><strong>Accès Valeur Pierre</strong> est une SCPI diversifiée gérée par BNP Paribas REIM, la filiale immobilière du groupe BNP. Elle investit principalement dans des bureaux et des commerces situés en France, avec une préférence pour les grandes métropoles et la région parisienne. C'est une SCPI assez classique dans son positionnement, avec un patrimoine bien établi.</p>
+<h3>Accès Valeur Pierre, gérée par BNP Paribas REIM</h3><p>Rendement sur 5 ans : <b>5%<br></b>Rendement 2025 :&nbsp; <b>5%</b><br>Rendement 2024 :&nbsp; <b>5%</b><br>Rendement 2023 :&nbsp; <b>5%</b><br>Prix de la part : <b>200€</b><br>Frais de souscription : <b>10%</b></p><p><strong>Accès Valeur Pierre</strong> est une SCPI diversifiée gérée par BNP Paribas REIM, la filiale immobilière du groupe BNP. Elle investit principalement dans des bureaux et des commerces situés en France, avec une préférence pour les grandes métropoles et la région parisienne. C'est une SCPI assez classique dans son positionnement, avec un patrimoine bien établi.</p>
 
 <p>Elle s'adresse à des profils qui cherchent une exposition à l'immobilier de bureau français sans trop de prise de risque géographique. Le rendement est correct, sans être exceptionnel. On est sur une gestion plutôt patrimoniale, avec un gestionnaire qui a du recul et de l'expérience. Si tu veux une base solide dans ton allocation SCPI, elle peut jouer ce rôle.</p><table><thead><tr><th>Répartition géographique</th><th>Répartition sectorielle</th></tr></thead><tbody><tr><td><ul><li>Paris : 73,3%</li><li>Ile-de-France : 21,3%</li><li>Régions : 5%</li><li>Etranger : 0%</li></ul></td><td><ul><li>Bureaux : 92,4%</li><li>Commerces : 7,6%</li></ul></td></tr></tbody></table><h3>Activimmo, gérée par Alderan</h3>
 
@@ -221,6 +219,7 @@ link_anchors:
 <p>Et une dernière chose : <strong>via Linxea Spirit 2, les frais d'entrée sur les SCPI sont souvent réduits par rapport à un investissement en direct</strong>. C'est un vrai avantage. En direct, les SCPI ont des frais de souscription qui peuvent atteindre 8 à 10 % du montant investi. Via l'assurance vie, ces frais sont généralement nettement inférieurs, ce qui améliore ta performance nette dès le départ.</p>
 
 <p>Voilà, tu as maintenant une vision complète des SCPI disponibles sur Linxea Spirit 2. La prochaine étape, c'est de définir ce que tu veux faire avec ton argent, sur quel horizon, et avec quelle tolérance aux fluctuations. Et si tu veux aller plus loin, j'ai d'autres articles sur le site qui rentrent dans le détail de chaque type de stratégie. Bonne construction de portefeuille.</p>
+
 
 
 
