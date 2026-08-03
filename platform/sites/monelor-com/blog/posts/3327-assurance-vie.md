@@ -13,7 +13,8 @@ featured_image: /blog/3327-assurance-vie.jpg
 link_anchors:
 - text: assurance vie
   max: 20
-related_posts: []
+related_posts:
+- 4296-meilleures-scpi-linxea-spirit-2
 ---
 <p>Quand j'ai découvert l'assurance vie, je pensais que c'était réservé aux personnes proches de la retraite. Un truc pour les seniors qui voulaient transmettre leur patrimoine à leurs enfants. Bref, quelque chose qui ne me concernait pas du tout.</p>
 

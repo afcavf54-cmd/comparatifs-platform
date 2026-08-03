@@ -3,16 +3,20 @@ title: Quelles sont les meilleures SCPI du contrat Lixea Spirit 2 ?
 slug: 4296-meilleures-scpi-linxea-spirit-2
 date: '2026-08-03T15:25:43+02:00'
 categorie: Assurance vie
-meta_title: 'SCPI Linxea Spirit 2 : quelles sont les plus performantes ? (Liste à jour)'
-meta_description: 'Découvrez les meilleures SCPI disponibles sur Linxea Spirit 2 : comparatif complet, rendements, profils et conseils pour bien choisir via votre assurance vie.'
+meta_title: 'SCPI Linxea Spirit 2 : quelles sont les plus performantes ? (Liste à
+  jour)'
+meta_description: 'Découvrez les meilleures SCPI disponibles sur Linxea Spirit 2 :
+  comparatif complet, rendements, profils et conseils pour bien choisir via votre
+  assurance vie.'
 min_words: 2000
 status: published
 featured_image: /blog/4296-meilleures-scpi-linxea-spirit-2.jpg
 link_anchors:
 - text: meilleure scpi Linxea Spirit 2
   max: 2
+related_posts:
+- 3327-assurance-vie
 ---
-
 <p>J'ai passé un bon moment à éplucher le catalogue complet de <strong>Linxea Spirit 2</strong> pour te faire un tour d'horizon des SCPI disponibles. Parce que franchement, quand on ouvre ce contrat pour la première fois, on se retrouve face à une liste assez longue et on ne sait pas vraiment par où commencer. Alors voilà, je t'ai fait le travail.</p>
 
 <p>Avant d'aller plus loin, une info importante : <strong>la SCPI Iroko Zen n'est plus disponible sur Linxea Spirit 2</strong>, ni à l'achat en versement libre, ni en arbitrage. Si tu l'avais repérée dans d'anciens comparatifs ou articles, c'est une information qui date. On ne peut plus y accéder via ce contrat aujourd'hui.</p>
