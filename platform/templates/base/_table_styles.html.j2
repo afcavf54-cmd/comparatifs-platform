@@ -133,6 +133,15 @@ article thead th:not(:last-child),
   border-right:1px solid var(--border, #E6E1D8);
 }
 
+/* ── Fallback alignement : aligne à gauche TOUT th, même sans <thead>
+   (certains tableaux IA n'ont qu'un <tr><th>…) et les en-têtes de ligne.
+   Évite le défaut navigateur (th centré) qui désaligne les colonnes. ── */
+main th, article th, .article-body th, .tool-content th,
+.classement-content th, .blog-content th, .contenu-genere th,
+.avis-content th, .avis-body th, .editorial-content th, .comparatif-content th{
+  text-align:left;
+}
+
 /* ── Caption (titre de tableau) ───────────────────────────────────── */
 main table caption,
 article table caption,
