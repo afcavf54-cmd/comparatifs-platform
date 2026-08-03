@@ -4,12 +4,17 @@ slug: 9153-ats-qu-est-ce-qu-un-logiciel-de-recrutement-ats-et-comment-ca-marche
 date: '2026-08-03T07:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'ATS logiciel de recrutement : définition et fonctionnement'
-meta_description: Découvrez ce qu'est un logiciel ATS, comment il centralise vos candidatures et pourquoi cet outil de recrutement peut vous faire gagner plusieurs semaines sur…
+meta_description: Découvrez ce qu'est un logiciel ATS, comment il centralise vos candidatures
+  et pourquoi cet outil de recrutement peut vous faire gagner plusieurs semaines sur…
 min_words: 1500
 status: published
 featured_image: /blog/9153-ats-qu-est-ce-qu-un-logiciel-de-recrutement-ats-et-comment-ca-marche.jpg
+related_posts:
+- 1543-ce-que-la-formation-leadership-nexstep-avance-ne-transforme-pas
+- 5868-promesse-d-embauche-ce-qu-il-faut-inclure-pour-etre-en-conformite
+- 6553-logiciel-de-recrutement-definition-role-et-fonctionnement
+- 6758-entreprise-anonymisee-definition-fonctionnement-et-enjeux-de-confidentialite
 ---
-
 <h2>ATS : ce que c'est vraiment, et pourquoi j'en avais besoin sans le savoir</h2>
 
 <p>J'ai mis deux ans avant de comprendre ce qu'était un ATS. Deux ans à gérer des candidatures dans des tableurs Excel, à perdre des CV dans ma boîte mail, à rappeler des candidats que j'avais oublié de relancer. C'était chronophage, approximatif, et franchement épuisant pour mon équipe RH.</p>
