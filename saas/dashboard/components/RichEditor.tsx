@@ -124,6 +124,19 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
     exec('formatBlock', `<${tag}>`)
   }
 
+  // Insère un tableau de départ (2 colonnes, en-tête + 2 lignes). Les cellules
+  // ont un contenu (« — ») pour ne pas être vues comme un tableau vide (qui
+  // serait retiré par le nettoyage). Modifiable ensuite comme du texte.
+  function insertTable() {
+    if (!ref.current) return
+    ref.current.focus()
+    const t =
+      '<table><thead><tr><th>Colonne 1</th><th>Colonne 2</th></tr></thead>' +
+      '<tbody><tr><td>—</td><td>—</td></tr><tr><td>—</td><td>—</td></tr></tbody></table><p><br></p>'
+    document.execCommand('insertHTML', false, t)
+    emit()
+  }
+
   /** Ouvre la modale d'insertion/édition de lien.
    * Si le curseur est positionné dans un <a> existant, pré-remplit la modale
    * avec ses valeurs (URL, target, rel). Sinon, prépare un nouveau lien
@@ -289,7 +302,7 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
   })()
 
   return (
-    <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 10, overflow: 'hidden' }}>
+    <div style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 10 }}>
       {/* Toolbar */}
       <div style={toolbar}>
         <BtnGroup>
@@ -314,6 +327,7 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
           <Btn onClick={openLinkModal} title="Insérer / éditer un lien">🔗</Btn>
           <Btn onClick={unlink} title="Supprimer le lien">⛓</Btn>
           {onImageUpload && <Btn onClick={onImageUpload} title="Insérer une image">📷</Btn>}
+          <Btn onClick={insertTable} title="Insérer un tableau">▦</Btn>
         </BtnGroup>
         <Sep />
         <BtnGroup>
@@ -517,6 +531,8 @@ function escapeText(s: string): string {
 const toolbar: React.CSSProperties = {
   display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'wrap',
   padding: 8, background: '#0A0E1A', borderBottom: '1px solid #1E2D3D',
+  position: 'sticky', top: 48, zIndex: 20,
+  borderTopLeftRadius: 10, borderTopRightRadius: 10,
 }
 
 const modalLabel: React.CSSProperties = {
