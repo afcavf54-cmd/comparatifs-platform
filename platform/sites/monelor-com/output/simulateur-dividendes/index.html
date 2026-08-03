@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<script>window.MONELOR_STOCKS = [{"id": "tte", "name": "TotalEnergies", "ticker": "TTE", "logo": "", "country": "France", "currency": "EUR", "price": 58.2, "dividend": 3.22, "active": true}, {"id": "san", "name": "Sanofi", "ticker": "SAN", "logo": "", "country": "France", "currency": "EUR", "price": 88.4, "dividend": 3.76, "active": true}, {"id": "bnp", "name": "BNP Paribas", "ticker": "BNP", "logo": "", "country": "France", "currency": "EUR", "price": 64.1, "dividend": 4.6, "active": true}];</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulateur de dividendes — Monelor</title>
+<style>
+  /* ============================================================
+     SIMULATEUR DE DIVIDENDES — Monelor
+     Palette : base claire · encre ardoise · émeraude (croissance)
+               · or (dividendes qui tombent)
+     Chiffres en tabular-nums pour un rendu « relevé financier ».
+     Vanilla JS, zéro dépendance, calculs côté client.
+     ============================================================ */
+  :root{
+    --bg:#F6F7F5;
+    --surface:#FFFFFF;
+    --ink:#12181F;
+    --muted:#5B6670;
+    --faint:#8A959E;
+    --line:#E6E9E5;
+    --emerald:#0B7A57;
+    --emerald-d:#075F44;
+    --emerald-soft:#E7F3EE;
+    --gold:#B8862E;
+    --gold-soft:#FBF3E0;
+    --danger:#C0483B;
+    --radius:14px;
+    --shadow:0 1px 2px rgba(18,24,31,.04), 0 12px 28px -18px rgba(18,24,31,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.55;
+    font-size:15px;-webkit-font-smoothing:antialiased;
+  }
+  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+  .wrap{max-width:960px;margin:0 auto;padding:32px 20px 96px}
+
+  /* ── Hero ── */
+  .hero{margin-bottom:28px}
+  .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--emerald);
+    background:var(--emerald-soft);padding:5px 11px;border-radius:999px}
+  .hero h1{font-size:clamp(26px,4.4vw,38px);line-height:1.1;letter-spacing:-.02em;margin:16px 0 8px;font-weight:700}
+  .hero p{color:var(--muted);max-width:560px;font-size:15.5px}
+
+  /* ── Carte ── */
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+  .card + .card{margin-top:20px}
+  .card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:18px 20px;border-bottom:1px solid var(--line)}
+  .card-head h2{font-size:16px;font-weight:700;letter-spacing:-.01em}
+  .card-head .sub{font-size:12.5px;color:var(--faint)}
+
+  /* ── Boutons ── */
+  .btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:600;font-size:14px;
+    border:none;border-radius:10px;padding:10px 16px;cursor:pointer;transition:.15s;white-space:nowrap}
+  .btn-primary{background:var(--emerald);color:#fff}
+  .btn-primary:hover{background:var(--emerald-d)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--ink)}
+  .btn-icon{background:transparent;border:none;cursor:pointer;color:var(--faint);padding:6px;border-radius:8px;display:inline-flex;transition:.15s}
+  .btn-icon:hover{color:var(--danger);background:#FBEEEC}
+
+  /* ── Tableau portefeuille ── */
+  .pf-table{width:100%;border-collapse:collapse}
+  .pf-table th{font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+    color:var(--faint);text-align:right;padding:12px 14px;border-bottom:1px solid var(--line)}
+  .pf-table th:first-child{text-align:left}
+  .pf-table td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:right;vertical-align:middle}
+  .pf-table td:first-child{text-align:left}
+  .pf-table tr:last-child td{border-bottom:none}
+  .pf-empty td{text-align:center;color:var(--faint);padding:32px 14px;font-size:14px}
+  .cell-invest{color:var(--muted)}
+  .cell-div{color:var(--gold);font-weight:700}
+  .cell-price{color:var(--muted)}
+  .qty-input{width:84px;text-align:right;font:inherit;font-variant-numeric:tabular-nums;
+    border:1px solid var(--line);border-radius:8px;padding:7px 10px;background:var(--bg);color:var(--ink);outline:none}
+  .qty-input:focus{border-color:var(--emerald);background:#fff}
+
+  /* ── Select recherche ── */
+  .picker{position:relative;min-width:190px}
+  .picker-btn{display:flex;align-items:center;gap:9px;width:100%;text-align:left;font:inherit;
+    border:1px solid var(--line);border-radius:9px;padding:7px 11px;background:var(--bg);cursor:pointer;color:var(--ink)}
+  .picker-btn:hover{border-color:var(--faint)}
+  .picker-btn .logo{width:22px;height:22px;border-radius:5px;object-fit:contain;background:#fff;border:1px solid var(--line);flex:none}
+  .picker-btn .logo-ph{width:22px;height:22px;border-radius:5px;flex:none;display:flex;align-items:center;justify-content:center;
+    background:var(--emerald-soft);color:var(--emerald);font-size:11px;font-weight:700}
+  .picker-btn .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600;font-size:14px}
+  .picker-btn .chev{color:var(--faint);flex:none}
+  .picker-btn.placeholder .nm{color:var(--faint);font-weight:500}
+  .picker-pop{position:absolute;z-index:30;top:calc(100% + 6px);left:0;width:280px;max-width:76vw;
+    background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;display:none}
+  .picker-pop.open{display:block}
+  .picker-search{width:100%;border:none;border-bottom:1px solid var(--line);padding:12px 14px;font:inherit;outline:none}
+  .picker-list{max-height:260px;overflow-y:auto;padding:6px}
+  .picker-opt{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;cursor:pointer}
+  .picker-opt:hover,.picker-opt.active{background:var(--emerald-soft)}
+  .picker-opt .logo,.picker-opt .logo-ph{width:26px;height:26px}
+  .picker-opt .meta{flex:1;min-width:0}
+  .picker-opt .meta .o-nm{font-weight:600;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .picker-opt .meta .o-sub{font-size:12px;color:var(--faint)}
+  .picker-opt .o-yield{font-size:12.5px;font-weight:700;color:var(--emerald);font-variant-numeric:tabular-nums}
+  .picker-none{padding:18px 14px;text-align:center;color:var(--faint);font-size:13.5px}
+
+  /* ── Résultat portefeuille ── */
+  .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-radius:var(--radius);overflow:hidden}
+  .summary .s-cell{background:var(--surface);padding:20px}
+  .summary .s-cell.hero-cell{background:linear-gradient(180deg,#fff, #FCFAF3)}
+  .s-lbl{font-size:12px;color:var(--faint);font-weight:600;letter-spacing:.03em;text-transform:uppercase}
+  .s-val{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-top:6px;font-variant-numeric:tabular-nums}
+  .s-val.gold{color:var(--gold)}
+  .s-val.emerald{color:var(--emerald)}
+  .s-sub{font-size:12.5px;color:var(--faint);margin-top:3px}
+
+  /* ── Fiscalité ── */
+  .fisc-controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line)}
+  .select{font:inherit;font-size:14px;border:1px solid var(--line);border-radius:10px;padding:9px 12px;background:var(--bg);color:var(--ink);outline:none;cursor:pointer}
+  .select:focus{border-color:var(--emerald)}
+  .fisc-custom{display:none;align-items:center;gap:8px;font-size:14px;color:var(--muted)}
+  .fisc-custom.show{display:flex}
+  .fisc-custom input{width:70px;text-align:right;font:inherit;font-variant-numeric:tabular-nums;border:1px solid var(--line);border-radius:8px;padding:7px 9px;background:var(--bg);outline:none}
+  .fisc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+  .fisc-grid .f-cell{background:var(--surface);padding:18px 20px}
+  .f-lbl{font-size:12px;color:var(--faint);font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+  .f-val{font-size:22px;font-weight:700;margin-top:5px;font-variant-numeric:tabular-nums}
+  .f-val.net{color:var(--emerald)}
+  .f-val.tax{color:var(--danger)}
+
+  /* ── Classement ── */
+  .rank-table{width:100%;border-collapse:collapse}
+  .rank-table th{font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--faint);
+    text-align:right;padding:11px 14px;border-bottom:1px solid var(--line)}
+  .rank-table th:nth-child(1),.rank-table th:nth-child(2){text-align:left}
+  .rank-table td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+  .rank-table td:nth-child(1),.rank-table td:nth-child(2){text-align:left}
+  .rank-table tr:last-child td{border-bottom:none}
+  .rank-pos{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;
+    font-size:12.5px;font-weight:700;background:var(--bg);color:var(--muted)}
+  .rank-pos.top{background:var(--gold-soft);color:var(--gold)}
+  .rank-name{display:flex;align-items:center;gap:9px}
+  .rank-name .logo,.rank-name .logo-ph{width:24px;height:24px;border-radius:6px}
+  .rank-yield{color:var(--emerald);font-weight:700}
+
+  .disclaimer{margin-top:22px;font-size:12.5px;color:var(--faint);line-height:1.6;text-align:center}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;
+    background:var(--ink);color:#fff;padding:11px 18px;border-radius:10px;font-size:14px;font-weight:600;
+    transition:.25s;pointer-events:none;z-index:99}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media(max-width:640px){
+    .wrap{padding:20px 14px 80px}
+    .summary,.fisc-grid{grid-template-columns:1fr}
+    .card-head{flex-wrap:wrap}
+    .pf-table thead{display:none}
+    .pf-table,.pf-table tbody,.pf-table tr,.pf-table td{display:block;width:100%}
+    .pf-table tr{border-bottom:1px solid var(--line);padding:8px 0}
+    .pf-table tr:last-child{border-bottom:none}
+    .pf-table td{text-align:right;border:none;padding:6px 14px;display:flex;justify-content:space-between;align-items:center}
+    .pf-table td:first-child{padding-top:12px}
+    .pf-table td[data-label]::before{content:attr(data-label);font-size:12px;color:var(--faint);font-weight:600;text-transform:uppercase;letter-spacing:.03em}
+    .picker{width:100%}
+    .rank-table th:nth-child(3),.rank-table td:nth-child(3){display:none} /* masque Prix sur mobile */
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ══════════ HERO ══════════ -->
+  <header class="hero">
+    <span class="eyebrow">● Revenus passifs</span>
+    <h1>Simulateur de dividendes</h1>
+    <p>Estimez les dividendes annuels de votre portefeuille en une seule saisie : le nombre d'actions. Le reste se calcule tout seul.</p>
+  </header>
+
+  <!-- ══════════ PORTEFEUILLE ══════════ -->
+  <section class="card">
+    <div class="card-head">
+      <div>
+        <h2>Mon portefeuille</h2>
+        <div class="sub">Ajoutez vos lignes, saisissez les quantités.</div>
+      </div>
+      <button class="btn btn-primary" id="addRow">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        Ajouter une action
+      </button>
+    </div>
+    <div style="overflow-x:auto">
+      <div class="table-wrap"><table class="pf-table">
+        <thead>
+          <tr>
+            <th>Action</th>
+            <th>Nombre d'actions</th>
+            <th>Prix actuel</th>
+            <th>Investissement</th>
+            <th>Dividendes annuels</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="pfBody"></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <!-- ══════════ RÉSULTAT ══════════ -->
+  <section class="summary" id="summary" style="margin-top:20px">
+    <div class="s-cell">
+      <div class="s-lbl">Investissement total</div>
+      <div class="s-val num" id="sInvest">0 €</div>
+    </div>
+    <div class="s-cell hero-cell">
+      <div class="s-lbl">Dividendes annuels estimés</div>
+      <div class="s-val gold num" id="sDiv">0 €</div>
+      <div class="s-sub" id="sDivMonthly">soit 0 € / mois</div>
+    </div>
+    <div class="s-cell">
+      <div class="s-lbl">Rendement brut moyen</div>
+      <div class="s-val emerald num" id="sYield">0,00 %</div>
+    </div>
+  </section>
+
+  <!-- ══════════ FISCALITÉ ══════════ -->
+  <section class="card">
+    <div class="card-head">
+      <div><h2>Fiscalité</h2><div class="sub">Estimation après impôts selon votre enveloppe.</div></div>
+    </div>
+    <div class="fisc-controls">
+      <select class="select" id="fiscSelect"></select>
+      <div class="fisc-custom" id="fiscCustom">
+        <label for="fiscRate">Taux d'imposition</label>
+        <input type="number" id="fiscRate" value="30" min="0" max="100" step="0.1"> %
+      </div>
+    </div>
+    <div class="fisc-grid">
+      <div class="f-cell"><div class="f-lbl">Dividendes bruts</div><div class="f-val num" id="fBrut">0 €</div></div>
+      <div class="f-cell"><div class="f-lbl">Impôts estimés</div><div class="f-val tax num" id="fTax">0 €</div></div>
+      <div class="f-cell"><div class="f-lbl">Dividendes nets</div><div class="f-val net num" id="fNet">0 €</div></div>
+    </div>
+  </section>
+
+  <!-- ══════════ ACTIONS ══════════ -->
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+    <button class="btn btn-ghost" id="shareBtn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+      Partager mon portefeuille
+    </button>
+    <button class="btn btn-ghost" id="resetBtn">Réinitialiser</button>
+  </div>
+
+  <!-- ══════════ CLASSEMENT ══════════ -->
+  <section class="card" style="margin-top:32px">
+    <div class="card-head">
+      <div><h2>Top actions à dividendes</h2><div class="sub">Classées par rendement décroissant.</div></div>
+    </div>
+    <div style="overflow-x:auto">
+      <div class="table-wrap"><table class="rank-table">
+        <thead>
+          <tr><th>Rang</th><th>Action</th><th>Prix</th><th>Dividende annuel</th><th>Rendement</th></tr>
+        </thead>
+        <tbody id="rankBody"></tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <p class="disclaimer">
+    Outil d'estimation à titre informatif — ne constitue pas un conseil financier.
+    Les dividendes passés ne préjugent pas des versements futurs.
+  </p>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================================
+   1) DONNÉES  —  À BRANCHER SUR LA BASE DE MONELOR
+   ----------------------------------------------------------------------------
+   Remplace le tableau STOCKS par les actions ACTIVES de ta base.
+   Ton back-end peut injecter ce tableau (rendu serveur) OU tu peux le charger
+   depuis un fichier JSON local de ton site (pas d'API externe requise) :
+
+     <script>window.MONELOR_STOCKS = [ ...depuis la BDD... ]<\/script>
+
+   Champs par action :
+     id        (identifiant unique — utilisé pour le partage par URL)
+     name      (nom affiché)
+     ticker    (optionnel)
+     logo      (URL du logo, optionnel)
+     country   (optionnel)
+     currency  ('EUR' | 'USD' | ...)
+     price     (prix actuel, nombre)
+     dividend  (dividende annuel par action, nombre)
+   ========================================================================== */
+const STOCKS = (window.MONELOR_STOCKS && window.MONELOR_STOCKS.length) ? window.MONELOR_STOCKS : [
+  { id:'tte',  name:'TotalEnergies',  ticker:'TTE',  country:'France',   currency:'EUR', price:58.20, dividend:3.22, logo:'' },
+  { id:'san',  name:'Sanofi',         ticker:'SAN',  country:'France',   currency:'EUR', price:88.40, dividend:3.76, logo:'' },
+  { id:'bnp',  name:'BNP Paribas',    ticker:'BNP',  country:'France',   currency:'EUR', price:64.10, dividend:4.60, logo:'' },
+  { id:'or',   name:"L'Oréal",        ticker:'OR',   country:'France',   currency:'EUR', price:378.00,dividend:6.60, logo:'' },
+  { id:'ko',   name:'Coca-Cola',      ticker:'KO',   country:'USA',      currency:'USD', price:62.30, dividend:1.94, logo:'' },
+  { id:'mc',   name:'LVMH',           ticker:'MC',   country:'France',   currency:'EUR', price:642.00,dividend:13.00,logo:'' },
+  { id:'eng',  name:'Engie',          ticker:'ENGI', country:'France',   currency:'EUR', price:15.60, dividend:1.43, logo:'' },
+  { id:'aca',  name:'Crédit Agricole',ticker:'ACA',  country:'France',   currency:'EUR', price:14.20, dividend:1.05, logo:'' },
+];
+
+/* ============================================================================
+   2) RÈGLES FISCALES  —  FACILES À MODIFIER
+   ----------------------------------------------------------------------------
+   Chaque enveloppe = un taux effectif sur les dividendes (estimation simplifiée).
+   Pour faire évoluer : change `rate`, ou remplace par une fonction
+   calc(brut) => impots  pour des règles plus fines (abattements, tranches…).
+   Taux indicatifs France 2026 — ajuste selon ta doctrine.
+   ========================================================================== */
+const TAX_REGIMES = [
+  { key:'cto',        label:'Compte-titres (Flat Tax)',            rate:0.30  },
+  { key:'pea_lt5',    label:'PEA de moins de 5 ans',               rate:0.30  },
+  { key:'pea_gt5',    label:'PEA de plus de 5 ans',                rate:0.172 },
+  { key:'av_lt8',     label:'Assurance-vie de moins de 8 ans',     rate:0.30  },
+  { key:'av_gt8',     label:'Assurance-vie de plus de 8 ans',      rate:0.247 },
+  { key:'perso',      label:'Fiscalité personnalisée',             rate:null  },
+];
+
+/* ============================================================================
+   3) LOGIQUE  (calculs côté client, instantanés)
+   ========================================================================== */
+const byId = Object.fromEntries(STOCKS.map(s => [String(s.id), s]));
+let rows = [];            // [{ uid, stockId, qty }]
+let uidSeq = 1;
+
+const fmt = (n, cur='EUR') => new Intl.NumberFormat('fr-FR',{style:'currency',currency:cur,maximumFractionDigits:2}).format(n||0);
+const fmtPct = n => new Intl.NumberFormat('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2}).format(n||0)+' %';
+const yieldOf = s => s.price>0 ? (s.dividend/s.price)*100 : 0;
+
+// ── Rendu d'une ligne du portefeuille
+function rowHtml(r){
+  const s = byId[r.stockId];
+  const invest = s ? s.price*r.qty : 0;
+  const divs   = s ? s.dividend*r.qty : 0;
+  const cur    = s ? s.currency : 'EUR';
+  return `<tr data-uid="${r.uid}">
+    <td>${pickerHtml(r)}</td>
+    <td data-label="Nombre"><input class="qty-input num" type="number" min="0" step="1" value="${r.qty||''}" placeholder="0" data-qty></td>
+    <td data-label="Prix" class="cell-price num">${s?fmt(s.price,cur):'—'}</td>
+    <td data-label="Investissement" class="cell-invest num">${s?fmt(invest,cur):'—'}</td>
+    <td data-label="Dividendes" class="cell-div num">${s?fmt(divs,cur):'—'}</td>
+    <td><button class="btn-icon" title="Supprimer" data-del><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2M6 7l1 13a1 1 0 001 1h8a1 1 0 001-1l1-13"/></svg></button></td>
+  </tr>`;
+}
+function logoHtml(s, cls){
+  if(s && s.logo) return `<img class="logo" src="${s.logo}" alt="">`;
+  const initials = s ? s.name.trim().slice(0,2).toUpperCase() : '?';
+  return `<span class="logo-ph">${initials}</span>`;
+}
+function pickerHtml(r){
+  const s = byId[r.stockId];
+  return `<div class="picker" data-picker>
+    <button type="button" class="picker-btn ${s?'':'placeholder'}" data-picker-btn>
+      ${s?logoHtml(s):'<span class="logo-ph">+</span>'}
+      <span class="nm">${s?s.name:'Choisir une action…'}</span>
+      <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="picker-pop" data-picker-pop>
+      <input class="picker-search" placeholder="Rechercher…" data-picker-search>
+      <div class="picker-list" data-picker-list></div>
+    </div>
+  </div>`;
+}
+
+function render(){
+  const body = document.getElementById('pfBody');
+  if(rows.length===0){
+    body.innerHTML = `<tr class="pf-empty"><td colspan="6">Aucune action. Cliquez sur « Ajouter une action » pour commencer.</td></tr>`;
+  } else {
+    body.innerHTML = rows.map(rowHtml).join('');
+  }
+  computeTotals();
+  renderRanking();
+  updateShareUrl();
+}
+
+function computeTotals(){
+  let invest=0, divs=0;
+  rows.forEach(r=>{ const s=byId[r.stockId]; if(s){ invest+=s.price*r.qty; divs+=s.dividend*r.qty; }});
+  const yieldPct = invest>0 ? (divs/invest)*100 : 0;
+  document.getElementById('sInvest').textContent = fmt(invest);
+  document.getElementById('sDiv').textContent    = fmt(divs);
+  document.getElementById('sDivMonthly').textContent = 'soit '+fmt(divs/12)+' / mois';
+  document.getElementById('sYield').textContent  = fmtPct(yieldPct);
+  computeTax(divs);
+}
+
+function computeTax(brut){
+  const sel = document.getElementById('fiscSelect').value;
+  const regime = TAX_REGIMES.find(t=>t.key===sel) || TAX_REGIMES[0];
+  let rate = regime.rate;
+  if(regime.key==='perso'){ rate = (parseFloat(document.getElementById('fiscRate').value)||0)/100; }
+  const tax = brut*rate;
+  document.getElementById('fBrut').textContent = fmt(brut);
+  document.getElementById('fTax').textContent  = '– '+fmt(tax);
+  document.getElementById('fNet').textContent  = fmt(brut-tax);
+}
+
+function renderRanking(){
+  const top = [...STOCKS].sort((a,b)=>yieldOf(b)-yieldOf(a)).slice(0,20);
+  document.getElementById('rankBody').innerHTML = top.map((s,i)=>`
+    <tr>
+      <td><span class="rank-pos ${i<3?'top':''}">${i+1}</span></td>
+      <td><span class="rank-name">${logoHtml(s)}<span>${s.name}</span></span></td>
+      <td class="num">${fmt(s.price,s.currency)}</td>
+      <td class="num">${fmt(s.dividend,s.currency)}</td>
+      <td class="rank-yield num">${fmtPct(yieldOf(s))}</td>
+    </tr>`).join('');
+}
+
+/* ── Interactions ─────────────────────────────────────────────────────────── */
+function addRow(stockId='', qty=0){ rows.push({uid:uidSeq++, stockId:String(stockId), qty:Number(qty)||0}); render(); }
+
+document.getElementById('addRow').addEventListener('click',()=>addRow());
+document.getElementById('resetBtn').addEventListener('click',()=>{ rows=[]; history.replaceState(null,'',location.pathname); render(); });
+
+// délégation : quantités + suppression + picker
+document.getElementById('pfBody').addEventListener('input', e=>{
+  if(e.target.matches('[data-qty]')){
+    const uid=+e.target.closest('tr').dataset.uid;
+    const r=rows.find(x=>x.uid===uid); if(r){ r.qty=Math.max(0,parseInt(e.target.value)||0); computeTotals(); updateShareUrl();
+      // maj des cellules calculées de la ligne sans tout re-render (garde le focus)
+      const s=byId[r.stockId], tr=e.target.closest('tr');
+      if(s){ tr.querySelector('.cell-invest').textContent=fmt(s.price*r.qty,s.currency); tr.querySelector('.cell-div').textContent=fmt(s.dividend*r.qty,s.currency); }
+    }
+  }
+});
+document.getElementById('pfBody').addEventListener('click', e=>{
+  const delBtn=e.target.closest('[data-del]');
+  if(delBtn){ const uid=+delBtn.closest('tr').dataset.uid; rows=rows.filter(x=>x.uid!==uid); render(); return; }
+  const pBtn=e.target.closest('[data-picker-btn]');
+  if(pBtn){ togglePicker(pBtn.closest('[data-picker]')); return; }
+});
+document.getElementById('pfBody').addEventListener('input', e=>{
+  if(e.target.matches('[data-picker-search]')){ filterPicker(e.target.closest('[data-picker]'), e.target.value); }
+});
+
+function togglePicker(picker){
+  document.querySelectorAll('.picker-pop.open').forEach(p=>{ if(p!==picker.querySelector('[data-picker-pop]')) p.classList.remove('open'); });
+  const pop=picker.querySelector('[data-picker-pop]');
+  const open=!pop.classList.contains('open');
+  pop.classList.toggle('open',open);
+  if(open){ fillPicker(picker,''); const s=pop.querySelector('[data-picker-search]'); s.value=''; setTimeout(()=>s.focus(),10); }
+}
+function fillPicker(picker, q){
+  const list=picker.querySelector('[data-picker-list]');
+  const term=(q||'').toLowerCase().trim();
+  const items=STOCKS.filter(s=>!term || s.name.toLowerCase().includes(term) || (s.ticker||'').toLowerCase().includes(term));
+  list.innerHTML = items.length ? items.map(s=>`
+    <div class="picker-opt" data-opt="${s.id}">
+      ${logoHtml(s)}
+      <div class="meta"><div class="o-nm">${s.name}</div><div class="o-sub">${[s.ticker,s.country].filter(Boolean).join(' · ')}</div></div>
+      <span class="o-yield">${fmtPct(yieldOf(s))}</span>
+    </div>`).join('') : `<div class="picker-none">Aucune action trouvée</div>`;
+  list.querySelectorAll('[data-opt]').forEach(el=>el.addEventListener('click',()=>{
+    const uid=+picker.closest('tr').dataset.uid;
+    const r=rows.find(x=>x.uid===uid); if(r){ r.stockId=el.dataset.opt; render(); }
+  }));
+}
+function filterPicker(picker,q){ fillPicker(picker,q); }
+document.addEventListener('click', e=>{ if(!e.target.closest('[data-picker]')) document.querySelectorAll('.picker-pop.open').forEach(p=>p.classList.remove('open')); });
+
+// Fiscalité
+const fiscSel=document.getElementById('fiscSelect');
+fiscSel.innerHTML=TAX_REGIMES.map(t=>`<option value="${t.key}">${t.label}</option>`).join('');
+fiscSel.addEventListener('change',()=>{ document.getElementById('fiscCustom').classList.toggle('show', fiscSel.value==='perso'); computeTotals(); });
+document.getElementById('fiscRate').addEventListener('input',()=>computeTotals());
+
+// Partage par URL
+function updateShareUrl(){
+  const enc = rows.filter(r=>r.stockId&&r.qty>0).map(r=>`${r.stockId}:${r.qty}`).join(',');
+  const url = new URL(location.href); url.hash = enc ? 'p='+encodeURIComponent(enc) : '';
+  history.replaceState(null,'',url.toString());
+}
+function loadFromUrl(){
+  const m=(location.hash||'').match(/p=([^&]+)/); if(!m) return false;
+  try{ decodeURIComponent(m[1]).split(',').forEach(pair=>{ const [id,q]=pair.split(':'); if(byId[id]) addRow(id, q); }); return rows.length>0; }
+  catch(_){ return false; }
+}
+document.getElementById('shareBtn').addEventListener('click',()=>{
+  updateShareUrl();
+  const done=()=>toast('Lien copié — partagez votre simulation');
+  if(navigator.clipboard){ navigator.clipboard.writeText(location.href).then(done).catch(()=>toast('Copiez le lien depuis la barre d’adresse')); }
+  else toast('Copiez le lien depuis la barre d’adresse');
+});
+function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),2600); }
+
+/* ── Init ─────────────────────────────────────────────────────────────────── */
+if(!loadFromUrl()) render(); else render();
+</script>
+</body>
+</html>
