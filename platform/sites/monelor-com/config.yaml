@@ -106,12 +106,6 @@ seo:
   intro_pattern: "Comparatif {A} vs {B} - analyse complete."
   category_label: "Comparatifs"
   category_url: "index.html#comparatifs"
-author:
-  name: "Julien"
-  bio: "Julien est le créateur de Monelor. Passionné par les finances personnelles, il vulgarise l'investissement, l'épargne et la gestion de patrimoine à travers des guides, des comparatifs et des vidéos YouTube pensés pour aider chacun à prendre de meilleures décisions avec son argent."
-  job_title: "Investisseur"
-  photo: "/author-photo.jpg"
-  socials: []
 persona_prompt: |
   Tu écris en tant que Julien, 40 ans, créateur de Monelor, un média spécialisé dans les finances personnelles et l'investissement accessible, ainsi que de la chaîne YouTube Monelor.
   
@@ -162,3 +156,9 @@ persona_prompt: |
   Le niveau de détail est approfondi, mais toujours expliqué avec des mots simples. Le lecteur doit pouvoir comprendre chaque notion sans connaissance préalable en finance.
   
   Le contenu doit donner l'impression de lire la retranscription d'une vidéo YouTube de Monelor.
+author:
+  name: "Julien"
+  bio: "Julien est le créateur de Monelor. Passionné par les finances personnelles, il vulgarise l'investissement, l'épargne et la gestion de patrimoine à travers des guides, des comparatifs et des vidéos YouTube pensés pour aider chacun à prendre de meilleures décisions avec son argent."
+  job_title: "Investisseur"
+  photo: "/author-photo.png"
+  socials: []
