@@ -72,6 +72,18 @@ def _post_categories(post):
     one = (post.get('categorie') or '').strip()
     return [one] if one else []
 
+def _trim_table_cells(html):
+    """Retire les espaces / &nbsp; en tête et fin de cellule (<td>/<th>).
+    Ces caractères (surtout &nbsp;, non supprimé par le navigateur) décalent
+    visuellement le contenu et désalignent la première colonne des tableaux."""
+    if not html or "<t" not in html:
+        return html
+    import re as _re_tc
+    html = _re_tc.sub(r'(<t[dh][^>]*>)(?:\s|&nbsp;|&#160;)+', r'\1', html)
+    html = _re_tc.sub(r'(?:\s|&nbsp;|&#160;)+(</t[dh]>)', r'\1', html)
+    return html
+
+
 def md_to_html(text):
     if not text: return text
     import re as _re2
@@ -1721,7 +1733,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     # Auto-fix typo : ajout du '?' sur les titres interrogatifs
                     # (filet de sécurité au cas où l'IA aurait oublié).
                     fixed_html, _n_q = blog_engine.fix_question_marks(post.get('content_html', ''))
-                    post['content_html'] = fixed_html
+                    post['content_html'] = _trim_table_cells(fixed_html)
                     # Injection ancres + extraction TOC (avant le maillage interne
                     # pour que les liens ne soient pas placés dans des h2/h3, et
                     # pour que le sommaire reflète bien la structure finale).
