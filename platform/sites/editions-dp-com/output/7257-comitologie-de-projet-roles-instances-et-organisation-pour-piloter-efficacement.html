@@ -116,7 +116,7 @@ body{font-family:'',system-ui,sans-serif;background:var(--bg);color:var(--ink);l
 a{color:var(--accent2);text-decoration:none}
 a:hover{text-decoration:underline}
 .container{max-width:1180px;margin:0 auto;padding:0 5vw}
-.article-layout{display:grid;grid-template-columns:1fr 280px;gap:48px;align-items:start}
+.article-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:48px;align-items:start}
 .article-main{min-width:0;padding-bottom:80px}
 .article-sidebar{position:sticky;top:88px}
 .sidebar-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px 22px;margin-bottom:20px}
@@ -235,6 +235,258 @@ a:hover{text-decoration:underline}
 <body>
 
 <style>
+/* ── Wrapper scroll horizontal ─────────────────────────────────────
+   Le post-process Python normalize_table_html() enveloppe les <div class="table-wrap"><table>
+   nues dans <div class="table-wrap"> au build. Pour les contenus déjà
+   wrappés (markdown conforme, IA bien dressée), c'est idempotent. */
+main .table-wrap,
+article .table-wrap,
+.article-body .table-wrap,
+.tool-content .table-wrap,
+.classement-content .table-wrap,
+.blog-content .table-wrap,
+.contenu-genere .table-wrap,
+.avis-content .table-wrap,
+.avis-body .table-wrap,
+.editorial-content .table-wrap,
+.comparatif-content .table-wrap{
+  overflow-x:auto;
+  margin:28px 0;
+  border-radius:10px;
+  border:1px solid var(--border, #E6E1D8);
+  background:var(--surface, #fff);
+}
+
+/* ── Table de base ─────────────────────────────────────────────────
+   Spécificité 0,1,1 (classe + élément) — emporte sur tout `table { }`
+   nu déclaré ailleurs. */
+main table,
+article table,
+.article-body table,
+.tool-content table,
+.classement-content table,
+.blog-content table,
+.contenu-genere table,
+.avis-content table,
+.avis-body table,
+.editorial-content table,
+.comparatif-content table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:15px;
+  background:var(--surface, #fff);
+  margin:28px 0;
+  color:var(--ink, #0F1419);
+}
+main .table-wrap > table,
+article .table-wrap > table,
+.article-body .table-wrap > table,
+.tool-content .table-wrap > table,
+.classement-content .table-wrap > table,
+.blog-content .table-wrap > table,
+.contenu-genere .table-wrap > table,
+.avis-content .table-wrap > table,
+.avis-body .table-wrap > table,
+.editorial-content .table-wrap > table,
+.comparatif-content .table-wrap > table{
+  margin:0;
+  border:none;
+}
+
+/* ── Headers ──────────────────────────────────────────────────────── */
+main thead,
+article thead,
+.article-body thead,
+.tool-content thead,
+.classement-content thead,
+.blog-content thead,
+.contenu-genere thead,
+.avis-content thead,
+.avis-body thead,
+.editorial-content thead,
+.comparatif-content thead{
+  background:var(--surface2, #F5F3EE);
+}
+main thead th,
+article thead th,
+.article-body thead th,
+.tool-content thead th,
+.classement-content thead th,
+.blog-content thead th,
+.contenu-genere thead th,
+.avis-content thead th,
+.avis-body thead th,
+.editorial-content thead th,
+.comparatif-content thead th{
+  text-align:left;
+  padding:14px 18px;
+  font-weight:600;
+  color:var(--ink, #0F1419);
+  font-size:14px;
+  letter-spacing:0;
+  text-transform:none;
+  border-bottom:2px solid var(--border, #E6E1D8);
+  vertical-align:middle;
+}
+main thead th:not(:last-child),
+article thead th:not(:last-child),
+.article-body thead th:not(:last-child),
+.tool-content thead th:not(:last-child),
+.classement-content thead th:not(:last-child),
+.blog-content thead th:not(:last-child),
+.contenu-genere thead th:not(:last-child),
+.avis-content thead th:not(:last-child),
+.avis-body thead th:not(:last-child),
+.editorial-content thead th:not(:last-child),
+.comparatif-content thead th:not(:last-child){
+  border-right:1px solid var(--border, #E6E1D8);
+}
+
+/* ── Fallback alignement : aligne à gauche TOUT th, même sans <thead>
+   (certains tableaux IA n'ont qu'un <tr><th>…) et les en-têtes de ligne.
+   Évite le défaut navigateur (th centré) qui désaligne les colonnes. ── */
+main th, article th, .article-body th, .tool-content th,
+.classement-content th, .blog-content th, .contenu-genere th,
+.avis-content th, .avis-body th, .editorial-content th, .comparatif-content th{
+  text-align:left;
+}
+
+/* ── Caption (titre de tableau) ───────────────────────────────────── */
+main table caption,
+article table caption,
+.article-body table caption,
+.tool-content table caption,
+.classement-content table caption,
+.blog-content table caption,
+.contenu-genere table caption,
+.avis-content table caption,
+.avis-body table caption,
+.editorial-content table caption,
+.comparatif-content table caption{
+  caption-side:top;
+  padding:12px 18px;
+  font-weight:600;
+  color:var(--ink, #0F1419);
+  text-align:left;
+  background:var(--surface2, #F5F3EE);
+  border-bottom:1px solid var(--border, #E6E1D8);
+}
+
+/* ── Cellules ─────────────────────────────────────────────────────── */
+main tbody td,
+article tbody td,
+.article-body tbody td,
+.tool-content tbody td,
+.classement-content tbody td,
+.blog-content tbody td,
+.contenu-genere tbody td,
+.avis-content tbody td,
+.avis-body tbody td,
+.editorial-content tbody td,
+.comparatif-content tbody td{
+  padding:14px 18px;
+  color:var(--ink, #0F1419);
+  border-bottom:1px solid var(--border, #E6E1D8);
+  vertical-align:top;
+  line-height:1.5;
+}
+main tbody td:not(:last-child),
+article tbody td:not(:last-child),
+.article-body tbody td:not(:last-child),
+.tool-content tbody td:not(:last-child),
+.classement-content tbody td:not(:last-child),
+.blog-content tbody td:not(:last-child),
+.contenu-genere tbody td:not(:last-child),
+.avis-content tbody td:not(:last-child),
+.avis-body tbody td:not(:last-child),
+.editorial-content tbody td:not(:last-child),
+.comparatif-content tbody td:not(:last-child){
+  border-right:1px solid var(--border, #E6E1D8);
+}
+
+/* ── Alternance + hover ───────────────────────────────────────────── */
+main tbody tr:nth-child(even),
+article tbody tr:nth-child(even),
+.article-body tbody tr:nth-child(even),
+.tool-content tbody tr:nth-child(even),
+.classement-content tbody tr:nth-child(even),
+.blog-content tbody tr:nth-child(even),
+.contenu-genere tbody tr:nth-child(even),
+.avis-content tbody tr:nth-child(even),
+.avis-body tbody tr:nth-child(even),
+.editorial-content tbody tr:nth-child(even),
+.comparatif-content tbody tr:nth-child(even){
+  background:color-mix(in srgb, var(--surface, #fff) 70%, var(--surface2, #F5F3EE));
+}
+main tbody tr:hover,
+article tbody tr:hover,
+.article-body tbody tr:hover,
+.tool-content tbody tr:hover,
+.classement-content tbody tr:hover,
+.blog-content tbody tr:hover,
+.contenu-genere tbody tr:hover,
+.avis-content tbody tr:hover,
+.avis-body tbody tr:hover,
+.editorial-content tbody tr:hover,
+.comparatif-content tbody tr:hover{
+  background:var(--surface2, #F5F3EE);
+}
+main tbody tr:last-child td,
+article tbody tr:last-child td,
+.article-body tbody tr:last-child td,
+.tool-content tbody tr:last-child td,
+.classement-content tbody tr:last-child td,
+.blog-content tbody tr:last-child td,
+.contenu-genere tbody tr:last-child td,
+.avis-content tbody tr:last-child td,
+.avis-body tbody tr:last-child td,
+.editorial-content tbody tr:last-child td,
+.comparatif-content tbody tr:last-child td{
+  border-bottom:none;
+}
+
+/* ── Mobile ───────────────────────────────────────────────────────── */
+@media (max-width:680px){
+  main table,
+  article table,
+  .article-body table,
+  .tool-content table,
+  .classement-content table,
+  .blog-content table,
+  .contenu-genere table,
+  .avis-content table,
+  .avis-body table,
+  .editorial-content table,
+  .comparatif-content table{
+    font-size:14px;
+  }
+  main thead th,
+  article thead th,
+  .article-body thead th,
+  .tool-content thead th,
+  .classement-content thead th,
+  .blog-content thead th,
+  .contenu-genere thead th,
+  .avis-content thead th,
+  .avis-body thead th,
+  .editorial-content thead th,
+  .comparatif-content thead th,
+  main tbody td,
+  article tbody td,
+  .article-body tbody td,
+  .tool-content tbody td,
+  .classement-content tbody td,
+  .blog-content tbody td,
+  .contenu-genere tbody td,
+  .avis-content tbody td,
+  .avis-body tbody td,
+  .editorial-content tbody td,
+  .comparatif-content tbody td{
+    padding:10px 12px;
+    white-space:normal;
+  }
+}
+</style><style>
 nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
 nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
 nav.site-nav .nav-logo{font-family:'',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
@@ -528,7 +780,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
 <p>Voici un exemple de tableau de caractérisation simplifié pour un projet de déploiement logiciel :</p>
 
-<div class="table-wrap"><table>
+<table>
   <thead>
     <tr>
       <th>Instance</th>
@@ -706,7 +958,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <li class="sidebar-cat-item">
           <a href="/blog/" class="sidebar-cat-link">
             <span>Tous les articles</span>
-            <span class="sidebar-cat-count">132</span>
+            <span class="sidebar-cat-count">133</span>
           </a>
         </li>
         <li class="sidebar-cat-item">
@@ -742,7 +994,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <li class="sidebar-cat-item">
           <a href="/categorie-marketing/" class="sidebar-cat-link">
             <span>Marketing</span>
-            <span class="sidebar-cat-count">7</span>
+            <span class="sidebar-cat-count">8</span>
           </a>
         </li>
         <li class="sidebar-cat-item">
@@ -764,6 +1016,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       <h3 class="sidebar-title">Articles récents</h3>
       <ul class="sidebar-recent-list">
         <li class="sidebar-recent-item">
+          <a href="/9102-logiciel-d-envoi-d-emails-en-masse-fonctionnement-et-bonnes-pratiques/" class="sidebar-recent-link">
+<div class="sidebar-recent-cat">Marketing</div>            Logiciel d'envoi d'emails en masse : fonctionnement et bonnes pratiques
+          </a>
+        </li>
+        <li class="sidebar-recent-item">
           <a href="/1552-comment-choisir-son-logiciel-d-emailing-criteres-et-methode/" class="sidebar-recent-link">
 <div class="sidebar-recent-cat">Marketing</div>            Comment choisir son logiciel d'emailing : critères et méthode
           </a>
@@ -781,11 +1038,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         <li class="sidebar-recent-item">
           <a href="/2890-logiciel-d-emailing-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire/" class="sidebar-recent-link">
 <div class="sidebar-recent-cat">Marketing</div>            Logiciel d'emailing gratuit : ce qu'il peut (et ne peut pas) faire
-          </a>
-        </li>
-        <li class="sidebar-recent-item">
-          <a href="/7295-comment-fonctionne-un-logiciel-d-emailing-en-entreprise/" class="sidebar-recent-link">
-<div class="sidebar-recent-cat">Marketing</div>            Comment fonctionne un logiciel d'emailing en entreprise ?
           </a>
         </li>
       </ul>
@@ -843,7 +1095,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 editions-dp.com — Données actualisées le 3 août 2026
+        © 2026 editions-dp.com — Données actualisées le 4 août 2026
       </div>
     </div>
   </div>
