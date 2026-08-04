@@ -207,8 +207,27 @@
       "page_types": {
         "blog": "vins-alcool"
       }
+    },
+    {
+      "id": "intertni-fr",
+      "name": "intertni.fr",
+      "niche": "classement-saas",
+      "domain": "intertni.fr",
+      "sheet_csv_url": "",
+      "description": "",
+      "status": "pending_generation",
+      "thematic": "classement-saas",
+      "active_page_types": [
+        "blog"
+      ],
+      "site_type": "comparatif",
+      "blog_slug_format": "clean",
+      "created_at": "2026-08-04T05:28:47.139Z",
+      "page_types": {
+        "blog": "classement-saas"
+      }
     }
   ],
   "version": "2.0",
-  "updated_at": "2026-08-03T15:48:19.705Z"
+  "updated_at": "2026-08-04T05:28:47.139Z"
 }
