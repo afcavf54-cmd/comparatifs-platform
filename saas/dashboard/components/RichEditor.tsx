@@ -392,6 +392,18 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
           <Btn onClick={() => exec('italic')} title="Italique (Ctrl+I)"><i>I</i></Btn>
           <Btn onClick={() => exec('underline')} title="Souligné"><u>U</u></Btn>
         </BtnGroup>
+
+        <BtnGroup>
+          <Btn onClick={() => exec('justifyLeft')} title="Aligner à gauche">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h13"/></svg>
+          </Btn>
+          <Btn onClick={() => exec('justifyCenter')} title="Centrer">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M6 18h12"/></svg>
+          </Btn>
+          <Btn onClick={() => exec('justifyRight')} title="Aligner à droite">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M10 12h10M7 18h13"/></svg>
+          </Btn>
+        </BtnGroup>
         <Sep />
         <BtnGroup>
           <Btn onClick={() => exec('insertUnorderedList')} title="Liste à puces">• ≡</Btn>
