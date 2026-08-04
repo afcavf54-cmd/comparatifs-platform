@@ -131,7 +131,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ site
 export async function PUT(req: NextRequest, { params }: { params: Promise<{ siteId: string; postSlug: string }> }) {
   const { siteId, postSlug } = await params
   const body = await req.json()
-  const { title, slug: rawSlug, date, meta_title, meta_description, featured_image, status, content_md, related_posts, link_anchors, min_words, sha } = body
+  const { title, slug: rawSlug, date, meta_title, meta_description, featured_image, status, content_md, related_posts, link_anchors, min_words, show_toc, sha } = body
   if (!title || !rawSlug) return NextResponse.json({ error: 'title et slug requis' }, { status: 400 })
 
   // ── Sanitize le slug AVANT toute construction de path. ────────────────
@@ -202,6 +202,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
     categories: cats.categories,
     updated: new Date().toISOString().replace(/\.\d+Z$/, ''),
     meta_title, meta_description, featured_image, status,
+    show_toc: show_toc !== false,
     related_posts: Array.isArray(related_posts) ? related_posts : undefined,
     link_anchors: Array.isArray(link_anchors) ? link_anchors : undefined,
     content_md: content_md || '',
