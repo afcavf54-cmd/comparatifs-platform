@@ -4,12 +4,18 @@ slug: 2681-logiciel-de-gestion-des-candidatures-role-et-fonctionnement
 date: '2026-08-04T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logiciel gestion des candidatures : rôle et fonctionnement'
-meta_description: Découvrez le rôle et le fonctionnement d'un logiciel de gestion des candidatures (ATS) pour centraliser vos recrutements, trier les CV et gagner en efficacité.
+meta_description: Découvrez le rôle et le fonctionnement d'un logiciel de gestion
+  des candidatures (ATS) pour centraliser vos recrutements, trier les CV et gagner
+  en efficacité.
 min_words: 1400
 status: published
 featured_image: /blog/2681-logiciel-de-gestion-des-candidatures-role-et-fonctionnement.jpg
+related_posts:
+- 6542-comment-utiliser-la-matrice-9-box-pour-gerer-les-talents
+- 7219-comment-reussir-un-succession-planning-efficace
+- 1360-logiciel-planning
+- 5868-promesse-d-embauche-ce-qu-il-faut-inclure-pour-etre-en-conformite
 ---
-
 <h2>Ce que fait vraiment un logiciel de gestion des candidatures</h2>
 
 <p>On a longtemps géré les recrutements à la main. Des tableaux Excel, des mails qui s'accumulent dans une boîte partagée, des CV imprimés qui traînent sur un bureau. Je suis passé par là. Et franchement, quand vous recevez 80 candidatures pour un seul poste, c'est vite le chaos.</p>
