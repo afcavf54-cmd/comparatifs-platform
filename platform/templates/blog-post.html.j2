@@ -256,7 +256,7 @@ a:hover{text-decoration:underline}
   </div>
   {% endif %}
 
-  {% if post.toc and post.toc | length > 1 %}
+  {% if (post.show_toc | default(true)) and post.toc and post.toc | length > 1 %}
   <nav class="article-toc" aria-label="Sommaire de l'article">
     <div class="article-toc-title">📑 Sommaire</div>
     <ol class="article-toc-list">
