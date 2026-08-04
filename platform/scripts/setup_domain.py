@@ -91,35 +91,46 @@ def main():
 
     zone_id = zones[0]["id"]
 
-    # ── 3. Crée la règle de redirection 301 via Page Rules ───────────────────
+    # ── 3. Redirection 301 www ↔ naked via REDIRECT RULES ────────────────────
+    # (Les Page Rules sont dépréciées par Cloudflare et leur création via l'API
+    #  échoue sur les zones récentes. On utilise le phase dynamic_redirect.)
     if www_pref == "www":
-        match_url  = f"http://{raw_domain}/*"
-        target_url = f"https://www.{raw_domain}/$1"
-        match_https = f"https://{raw_domain}/*"
+        expr   = '(not starts_with(http.host, "www."))'
+        target = f'concat("https://www.{raw_domain}", http.request.uri.path)'
+        desc   = "Redirect naked to www"
     else:
-        match_url  = f"http://www.{raw_domain}/*"
-        target_url = f"https://{raw_domain}/$1"
-        match_https = f"https://www.{raw_domain}/*"
+        expr   = '(starts_with(http.host, "www."))'
+        target = f'concat("https://{raw_domain}", http.request.uri.path)'
+        desc   = "Redirect www to naked"
 
-    for pattern in [match_url, match_https]:
-        rule_payload = {
-            "targets": [{"target": "url", "constraint": {"operator": "matches", "value": pattern}}],
-            "actions": [{"id": "forwarding_url", "value": {"url": target_url, "status_code": 301}}],
-            "status": "active",
-            "priority": 1
-        }
-        rule_result = cf_request(
-            "POST",
-            f"{base}/zones/{zone_id}/pagerules",
-            api_token,
-            rule_payload
-        )
-        if rule_result.get("success"):
-            print(f"  ✓ Page Rule 301 : {pattern} → {target_url}")
-        elif any("already exists" in str(e) for e in rule_result.get("errors", [])):
-            print(f"  ✓ Page Rule déjà existante : {pattern}")
-        else:
-            print(f"  ⚠ Page Rule : {rule_result.get('errors', '')}")
+    new_rule = {
+        "action": "redirect",
+        "expression": expr,
+        "description": desc,
+        "enabled": True,
+        "action_parameters": {
+            "from_value": {
+                "status_code": 301,
+                "target_url": {"expression": target},
+                "preserve_query_string": True,
+            }
+        },
+    }
+
+    ep_url = f"{base}/zones/{zone_id}/rulesets/phases/http_request_dynamic_redirect/entrypoint"
+    existing = cf_request("GET", ep_url, api_token)
+    rules = (existing.get("result") or {}).get("rules", []) if existing.get("success") else []
+    # On retire une éventuelle ancienne règle www/naked qu'on gère, puis on ajoute la bonne.
+    rules = [r for r in rules if r.get("description") not in ("Redirect naked to www", "Redirect www to naked")]
+    rules.append(new_rule)
+
+    rr = cf_request("PUT", ep_url, api_token, {"rules": rules})
+    if rr.get("success"):
+        print(f"  ✓ Redirect Rule 301 : {desc}")
+    else:
+        print(f"  ⚠ Redirect Rule : {rr.get('errors', '')}")
+        print("    → le token CLOUDFLARE_API_TOKEN doit avoir la permission "
+              "« Zone → Dynamic Redirect → Edit ».")
 
     # ── 4. Purge le cache de la zone ─────────────────────────────────────────
     # Sans ça, les pages supprimées (articles, classements dépubliés…) restent
