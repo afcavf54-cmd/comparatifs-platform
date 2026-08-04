@@ -1,0 +1,115 @@
+# ============================================================
+# CONFIG SITE -- intertni-fr
+# Thématique     : classement-saas
+# Types activés  : blog
+# Templates HTML : comparatif-vs-scpi.html.j2 (pages) / index-blog.html.j2 (home)
+# Généré par le wizard HUB le 2026-08-04
+# ============================================================
+
+site:
+  slug: intertni-fr
+  name: "intertni.fr"
+  domain: "https://intertni.fr"
+  base_path: ""
+  logo_text: "intertni.fr"
+  logo_accent: ""
+  tagline: "Comparatifs intertni.fr 2026"
+  year: 2026
+  sheet_csv_url: ""
+  www_preference: "naked"
+  blog_slug_format: "clean"
+  author_name: "Nicolas Moreau"
+  home_title: "intertni.fr | Comparatifs 2026"
+  home_description: ""
+  template: "comparatif-vs-scpi.html.j2"
+  index_template: "index-blog.html.j2"
+  analytics_clicky: ""
+  contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
+
+page_types:
+  blog: classement-saas
+
+theme:
+  accent: "#408080"
+  accent2: "#f44a4a"
+  bg: "#F4F6FB"
+  ink: "#0F1A2E"
+  surface: "#FFFFFF"
+  font_title: "DM Serif Display"
+  font_body: "Outfit"
+  google_fonts: "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap"
+  cta_color: "#f44a4a"
+  cta_text_color: "#ffffff"
+
+criteria:
+  - label: "TD 2026"
+    field: td
+    type: text
+    suffix: "%"
+  - label: "TRI"
+    field: tri
+    type: text
+    suffix: "%"
+  - label: "Prix de la part"
+    field: prix_achat
+    type: text
+    suffix: "EUR"
+  - label: "Prix de retrait"
+    field: prix_retrait
+    type: text
+    suffix: "EUR"
+  - label: "Investissement min."
+    field: investissement_min
+    type: text
+  - label: "Frais de souscription"
+    field: frais_souscription
+    type: text
+    suffix: "%"
+  - label: "Frais de gestion"
+    field: frais_gestion
+    type: text
+    suffix: "% TTC"
+  - label: "TOF"
+    field: tof
+    type: text
+    suffix: "%"
+  - label: "Endettement"
+    field: endettement
+    type: text
+    suffix: "%"
+  - label: "Delai de jouissance"
+    field: delai_jouissance
+    type: text
+    suffix: " mois"
+  - label: "Pays"
+    field: pays
+    type: text
+
+tag_classes:
+  rendement: "tag-rendement"
+  diversifiee: "tag-diversifiee"
+  specialisee: "tag-specialisee"
+  europeenne: "tag-europeenne"
+
+seo:
+  title_pattern: "{A} vs {B} : comparatif {year}"
+  meta_pattern: "Comparatif complet {A} vs {B} {year} : rendements, frais, avis."
+  avis_title_pattern: "Avis {nom} {year} : faut-il investir ?"
+  avis_meta_pattern: "Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques."
+  liste_comp_title: "Tous les comparatifs {site_name} {year}"
+  liste_avis_title: "Avis {site_name} {year} : analyses indépendantes"
+  h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
+  eyebrow: "Comparatif {year}"
+  intro_pattern: "Comparatif {A} vs {B} - analyse complete."
+  category_label: "Comparatifs"
+  category_url: "index.html#comparatifs"
+
+persona_prompt: |
+  Tu écris en tant que Nicolas Moreau, 40 ans, Responsable Marketing & Communication basé à Nantes (entreprise de 50 à 250 salariés). Niveau intermédiaire, 12 ans d'expérience. Vouvoie le lecteur. Ton : professionnel, accessible et pragmatique. Phrases courtes. Niveau pédagogique : élevé. Positionnement : utilisateur terrain. Niveau d'opinion : objectif, avec des recommandations assumées lorsque les écarts entre les solutions sont significatifs. Angle éditorial prioritaire : facilité de déploiement et retour sur investissement (ROI). Critères de classement par ordre de priorité : Facilité d'utilisation, Fonctionnalités, Prix, Qualité du support client, Intégrations, Scalabilité. Scoring : note sur 5, avec un gagnant clairement désigné et une justification pour chaque note. Objectifs du lecteur cible : Moderniser sa communication en point de vente, Gagner du temps dans la gestion des écrans, Centraliser les contenus, Augmenter l'impact des campagnes marketing, Améliorer l'expérience client et la communication interne. Contraintes du lecteur : Budget maîtrisé, Peu de ressources techniques, Déploiement sur plusieurs sites, Besoin d'une solution simple à administrer. Inclure des cas concrets, des exemples d'utilisation, des conseils pratiques et des retours d'expérience. Niveau de détail : approfondi. Toujours privilégier des explications claires, sans jargon inutile, en s'adressant à des décideurs marketing, communication ou dirigeants de PME qui découvrent souvent le digital signage. Les comparatifs doivent mettre en avant les fonctionnalités réellement utiles au quotidien, la facilité de prise en main, le coût total de possession, la qualité du support, les possibilités de gestion à distance, les intégrations et la fiabilité de la solution. Les recommandations doivent rester factuelles, argumentées et basées sur les besoins réels des entreprises plutôt que sur le discours marketing des éditeurs.
+
+author:
+  name: "Nicolas Moreau"
+  bio: "Julien Moreau est Responsable Marketing & Communication depuis plus de 12 ans au sein d'entreprises multi-sites. Spécialiste de l'affichage dynamique et du digital signage, il accompagne les entreprises dans le choix des solutions les plus adaptées à leurs besoins. Sur ce blog, il partage des conseils concrets, des comparatifs objectifs et des retours d'expérience pour aider les professionnels à moderniser leur communication."
+  job_title: "Responsable Marketing"
+  photo: "/author-photo.png"
+  socials: []
