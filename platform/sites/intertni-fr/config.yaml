@@ -7,6 +7,12 @@
 # ============================================================
 
 site:
+  social_youtube: ""
+  social_x: ""
+  social_linkedin: ""
+  social_facebook: ""
+  footer_description: ""
+  home_h1: "Intertni"
   slug: intertni-fr
   name: "intertni.fr"
   domain: "https://intertni.fr"
@@ -19,7 +25,7 @@ site:
   www_preference: "naked"
   blog_slug_format: "clean"
   author_name: "Nicolas Moreau"
-  home_title: "intertni.fr | Comparatifs 2026"
+  home_title: "Intertni"
   home_description: ""
   template: "comparatif-vs-scpi.html.j2"
   index_template: "index-blog.html.j2"
