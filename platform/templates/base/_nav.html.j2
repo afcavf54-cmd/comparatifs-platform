@@ -29,10 +29,6 @@
    (fallback safe). Les templates qui la définissent eux-mêmes en
    amont conservent leur version (pattern `window.x = window.x || …`).
 ============================================================ #}
-{# Styles de tableaux partagés — inclus ici pour couvrir TOUTES les pages
-   (blog, avis, comparatif, classement…). Corrige l'alignement (en-têtes et
-   valeurs cohérents) au lieu du défaut navigateur (th centré / td à gauche). #}
-{% include "base/_table_styles.html.j2" ignore missing %}
 <style>
 nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
 nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
