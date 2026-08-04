@@ -236,6 +236,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="nav-inner">
     <a href="/" class="nav-logo">intertni.fr<span></span></a>
     <div class="nav-links">
+        <a href="/blog/">Blog</a>
     </div>
     <a href="/contact" class="nav-cta">Contact</a>
     <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
@@ -243,6 +244,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </button>
   </div>
   <div class="nav-mobile" id="nav-mobile">
+      <a href="/blog/">Blog</a>
     <a href="/contact" class="nav-cta">Contact</a>
   </div>
 </nav>
@@ -299,12 +301,36 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <h2 class="section-title">Derniers articles</h2>
   <p class="section-subtitle">Explorez nos guides, conseils et analyses</p>
 
-  <div class="empty-state">
-    <div style="font-size: 32px; margin-bottom: 12px; opacity: 0.4;">📝</div>
-    <div>Les premiers articles arrivent bientôt</div>
+  <div class="articles-grid">
+    <article class="article-card">
+      <a class="card-link" href="/c-est-quoi-une-tv-connectee-tizen/">
+        <div class="image">
+            <img src="/blog/c-est-quoi-une-tv-connectee-tizen.jpg" alt="C'est quoi une TV connectée Tizen ?" loading="lazy">
+        </div>
+        <div class="content">
+          <div class="meta">
+<span class="cat">Affichage dynamique</span><span>4 août 2026</span><span>· 9 min</span>          </div>
+          <h3>C'est quoi une TV connectée Tizen ?</h3>
+<p class="excerpt">Tizen. Je me souviens avoir entendu ce mot pour la première fois lors d'un échange avec un prestataire audiovisuel. J'avais hoché la tête poliment, sans vraiment savoir de quoi il…</p>        </div>
+      </a>
+    </article>
+  </div>
+
+  <div style="margin-top: 36px; text-align: center;">
+    <a class="all-articles-cta" href="/blog/">
+      Voir tous les articles
+      <span>→</span>
+    </a>
   </div>
 </section>
 
+<section class="section-categories">
+  <h2 class="section-title">Catégories</h2>
+  <p class="section-subtitle">Parcourez par thématique</p>
+  <div class="cats-list">
+      <a href="/categorie-affichage-dynamique/" class="cat-pill">Affichage dynamique</a>
+  </div>
+</section>
 
 <style>
 .footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
@@ -337,6 +363,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Navigation</div>
+        <a href="/blog/">Blog</a>
         <a href="/plan-du-site">Plan du site</a>
         <a href="/mentions-legales">Mentions légales</a>
         <a href="/politique-confidentialite">Confidentialité</a>

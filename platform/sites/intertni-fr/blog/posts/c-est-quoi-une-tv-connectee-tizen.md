@@ -4,15 +4,17 @@ slug: c-est-quoi-une-tv-connectee-tizen
 date: '2026-08-04T16:59:13+02:00'
 categorie: Affichage dynamique
 meta_title: 'TV connectée Tizen : quel est le principe ?'
-meta_description: Découvrez ce qu'est une TV connectée Tizen, le système Samsung intégré à vos écrans pour piloter l'affichage dynamique sans boîtier externe grâce au mode SoC.
+meta_description: Découvrez ce qu'est une TV connectée Tizen, le système Samsung intégré
+  à vos écrans pour piloter l'affichage dynamique sans boîtier externe grâce au mode
+  SoC.
 min_words: 1800
 status: published
 featured_image: /blog/c-est-quoi-une-tv-connectee-tizen.jpg
 link_anchors:
 - text: Tizen
   max: 15
+related_posts: []
 ---
-
 <p>Tizen. Je me souviens avoir entendu ce mot pour la première fois lors d'un échange avec un prestataire audiovisuel. J'avais hoché la tête poliment, sans vraiment savoir de quoi il parlait. Un système d'exploitation pour TV, apparemment. Développé par Samsung. Rien de plus dans ma tête à ce moment-là.</p>
 
 <p>Depuis, j'ai eu l'occasion de déployer des écrans dans trois de nos sites, dont deux équipés de TV Samsung sous Tizen. Et j'ai compris pourquoi ce sujet revient souvent dans les discussions autour de l'affichage dynamique. Pas parce que c'est une révolution. Mais parce que ça change vraiment certaines choses dans la pratique.</p>
