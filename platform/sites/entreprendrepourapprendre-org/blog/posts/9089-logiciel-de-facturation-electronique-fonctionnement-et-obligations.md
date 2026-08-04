@@ -4,15 +4,21 @@ slug: 9089-logiciel-de-facturation-electronique-fonctionnement-et-obligations
 date: '2026-08-04T12:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Logiciel facturation électronique : fonctionnement'
-meta_description: Envoyer des PDF par mail ne suffit plus. Découvrez ce qu'est vraiment une facture électronique, comment fonctionne un logiciel dédié et quelles obligations vous…
+meta_description: Envoyer des PDF par mail ne suffit plus. Découvrez ce qu'est vraiment
+  une facture électronique, comment fonctionne un logiciel dédié et quelles obligations
+  vous…
 min_words: 1500
 status: published
 featured_image: /blog/9089-logiciel-de-facturation-electronique-fonctionnement-et-obligations.jpg
 link_anchors:
 - text: outil dédié à la facturation électronique
   max: 8
+related_posts:
+- 2073-logiciel-de-facturation-en-ligne-fonctionnement-et-avantages
+- 8544-logiciel-de-facturation-et-devis-comment-les-deux-s-articulent
+- 6871-comment-fonctionne-un-logiciel-de-facturation-en-entreprise
+- 5334-logiciel-de-facturation-definition-role-et-fonctionnement
 ---
-
 <p>J'ai mis du temps à vraiment comprendre ce que signifiait "facture électronique" au sens légal du terme. Pendant des années, j'envoyais mes factures en PDF par mail et je pensais honnêtement que c'était suffisant. Spoiler : ça ne l'est pas, et la réforme qui arrive va changer beaucoup de choses pour des structures comme la mienne.</p>
 
 <p>Voilà ce que j'aurais aimé qu'on m'explique simplement, sans jargon, sans me noyer dans des textes officiels incompréhensibles.</p>
