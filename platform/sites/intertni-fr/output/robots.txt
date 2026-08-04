@@ -1,0 +1,6 @@
+# robots.txt — accès ouvert à tous les robots (moteurs de recherche ET IA).
+# Aucun crawler n'est bloqué : le contenu reste accessible aux assistants IA.
+User-agent: *
+Allow: /
+
+Sitemap: https://intertni.fr/sitemap.xml
