@@ -106,7 +106,7 @@ a:hover{text-decoration:underline}
 .article-body h1{font-family:'DM Serif Display',serif;font-size:32px;font-weight:400;color:var(--ink);margin:48px 0 16px;letter-spacing:-.02em}
 .article-body h2{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;color:var(--ink);margin:40px 0 14px;letter-spacing:-.02em}
 .article-body h3{font-size:20px;font-weight:600;color:var(--ink);margin:32px 0 12px}
-.article-body ul,.article-body ol{margin:0 0 20px 24px}
+.article-body ul,.article-body ol{margin:0 0 20px;padding-left:26px}
 .article-body li{margin-bottom:8px}
 .article-body img{display:block;max-width:100%;height:auto;border-radius:var(--r);margin:24px auto;border:1px solid var(--border)}
 .article-body blockquote{border-left:3px solid var(--accent);padding:8px 20px;margin:24px 0;color:var(--ink2);font-style:italic;background:var(--surface2);border-radius:0 var(--r) var(--r) 0}
@@ -152,11 +152,10 @@ a:hover{text-decoration:underline}
 .article-body table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface);margin:28px 0;color:var(--ink)}
 .article-body .table-wrap > table{margin:0;border:none}
 .article-body thead{background:var(--surface2)}
-.article-body thead th{text-align:left;padding:14px 18px;font-weight:600;color:var(--ink);font-size:14px;border-bottom:2px solid var(--border);vertical-align:middle;white-space:nowrap}
+.article-body th{text-align:left;padding:14px 18px;font-weight:600;color:var(--ink);font-size:14px;border-bottom:2px solid var(--border);vertical-align:middle}
 .article-body thead th:not(:last-child){border-right:1px solid var(--border)}
-.article-body tbody td{padding:14px 18px;color:var(--ink);border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+.article-body tbody td{padding:14px 18px;color:var(--ink);border-bottom:1px solid var(--border);vertical-align:middle;line-height:1.5}
 .article-body tbody td:not(:last-child){border-right:1px solid var(--border)}
-.article-body tbody tr:nth-child(even){background:var(--surface2)}
 .article-body tbody tr:hover{background:var(--surface2)}
 .article-body tbody tr:last-child td{border-bottom:none}
 .article-body table caption{caption-side:top;padding:12px 18px;font-weight:600;color:var(--ink);text-align:left;background:var(--surface2);border-bottom:1px solid var(--border)}
@@ -391,8 +390,7 @@ a:hover{text-decoration:underline}
 <p>Avant de plonger dans les détails, voilà un récapitulatif rapide des idées que je recommande vraiment, avec les infos utiles en un coup d'oeil :</p>
 
 <div class="table-wrap"><table>
-  <thead>
-    <tr>
+  <thead><tr>
       <th>Idée cadeau</th>
       <th>Budget</th>
       <th>Personnalisation</th>
