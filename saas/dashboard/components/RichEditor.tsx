@@ -48,6 +48,13 @@ function sanitizeHtml(html: string): string {
   // 2) Rééquilibrage léger des balises via le DOM.
   const tmp = document.createElement('div')
   tmp.innerHTML = cleaned
+  // 2b) Nettoie les espaces / &nbsp; en tête et fin de cellule : ils décalent
+  //     visuellement le contenu (le &nbsp; n'est PAS supprimé par le navigateur),
+  //     ce qui désaligne la première colonne des tableaux.
+  tmp.querySelectorAll('td, th').forEach((cell) => {
+    const trimmed = cell.innerHTML.replace(/^(?:\s|&nbsp;|\u00a0)+/i, '').replace(/(?:\s|&nbsp;|\u00a0)+$/i, '')
+    if (trimmed !== cell.innerHTML) cell.innerHTML = trimmed
+  })
   const out = tmp.innerHTML
   // 3) Garde-fou anti-perte : si malgré tout du texte a disparu, on renvoie
   //    la source d'origine (mieux vaut un tableau moche que du contenu perdu).
