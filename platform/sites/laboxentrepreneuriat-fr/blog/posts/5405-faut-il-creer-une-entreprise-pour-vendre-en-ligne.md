@@ -4,15 +4,20 @@ slug: 5405-faut-il-creer-une-entreprise-pour-vendre-en-ligne
 date: '2026-08-04T17:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: Faut-il créer une entreprise pour vendre en ligne ?
-meta_description: Vendre en ligne oblige-t-il à créer une entreprise ? Découvrez ce que dit vraiment la loi, quel statut juridique choisir et comment démarrer sereinement.
+meta_description: Vendre en ligne oblige-t-il à créer une entreprise ? Découvrez ce
+  que dit vraiment la loi, quel statut juridique choisir et comment démarrer sereinement.
 min_words: 1300
 status: published
 featured_image: /blog/5405-faut-il-creer-une-entreprise-pour-vendre-en-ligne.jpg
 link_anchors:
 - text: obligation de créer une entreprise pour vendre en ligne
   max: 8
+related_posts:
+- 2642-comment-creer-une-entreprise-en-ligne-etapes-et-demarches
+- 2556-creer-une-entreprise-individuelle-en-ligne-demarches-et-specificites
+- 2732-creer-une-entreprise-en-ligne-gratuitement-est-ce-vraiment-possible
+- 3581-immatriculation-d-une-entreprise-en-ligne-comment-ca-fonctionne
 ---
-
 <h2>Ce que la loi dit vraiment sur la vente en ligne</h2>
 
 <p>Beaucoup d'entrepreneurs démarrent sur les plateformes comme Vinted, Etsy ou même Instagram en pensant que tant que les sommes restent modestes, ils n'ont rien à déclarer. C'est une idée reçue qui peut coûter cher. En France, dès lors que vous vendez de manière régulière et avec une intention de profit, vous exercez une activité commerciale. Et une activité commerciale doit être déclarée.</p>
