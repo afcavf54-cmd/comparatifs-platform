@@ -106,7 +106,7 @@ body{font-family:'{{ theme.font_body }}',system-ui,sans-serif;background:var(--b
 a{color:var(--accent2);text-decoration:none}
 a:hover{text-decoration:underline}
 .container{max-width:1180px;margin:0 auto;padding:0 5vw}
-.article-layout{display:grid;grid-template-columns:1fr 280px;gap:48px;align-items:start}
+.article-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:48px;align-items:start}
 .article-main{min-width:0;padding-bottom:80px}
 .article-sidebar{position:sticky;top:88px}
 .sidebar-block{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px 22px;margin-bottom:20px}
