@@ -17,6 +17,7 @@ interface PostData {
   status: string
   content_md: string
   min_words?: number
+  show_toc?: boolean
   related_posts?: string[]
   link_anchors?: { text: string; max: number }[]
   sha?: string
@@ -28,6 +29,7 @@ const empty: PostData = {
   meta_title: '', meta_description: '', featured_image: '',
   status: 'draft', content_md: '',
   min_words: 750,
+  show_toc: true,
   link_anchors: [],
 }
 
@@ -505,6 +507,14 @@ export default function BlogEditPage() {
               }}
               title="Longueur minimale demandée à l'IA lors de la génération de l'article"
               style={input} />
+          </Field>
+          <Field label="Sommaire">
+            <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: 13, color: '#fff' }}>
+              <input type="checkbox" checked={post.show_toc !== false}
+                onChange={e => update('show_toc', e.target.checked)}
+                style={{ width: 16, height: 16, accentColor: '#00D4AA', cursor: 'pointer' }} />
+              Afficher le sommaire
+            </label>
           </Field>
         </div>
         <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid #1E2D3D' }}>
