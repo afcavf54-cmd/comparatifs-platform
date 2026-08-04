@@ -4,15 +4,21 @@ slug: 7543-gestion-du-planning-du-personnel-methodes-et-bonnes-pratiques
 date: '2026-08-04T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Gestion du planning du personnel : méthodes et pratiques'
-meta_description: Gérer le planning de 30 à 80 salariés sans y passer vos nuits, c'est possible. Méthodes concrètes, outils testés et pièges à éviter pour organiser vos équipes…
+meta_description: Gérer le planning de 30 à 80 salariés sans y passer vos nuits, c'est
+  possible. Méthodes concrètes, outils testés et pièges à éviter pour organiser vos
+  équipes…
 min_words: 1500
 status: published
 featured_image: /blog/7543-gestion-du-planning-du-personnel-methodes-et-bonnes-pratiques.jpg
 link_anchors:
 - text: pilotage du planning du personnel
   max: 5
+related_posts:
+- 9392-comment-fonctionne-un-logiciel-de-planning-en-entreprise
+- 5109-logiciel-de-gestion-de-planning-chantier-fonctionnement-et-utilite
+- 5257-logiciel-de-gestion-de-planning-definition-role-et-fonctionnement
+- 3231-logiciel-de-gestion-de-planning-en-restauration-comment-ca-marche
 ---
-
 <p>Gérer le planning de ton équipe quand tu as 30, 50 ou 80 salariés, c'est une autre paire de manches. J'ai fondé ma startup il y a quelques années à Nantes, et pendant longtemps j'ai géré ça à la main. Fichiers Excel partagés, messages WhatsApp pour les absences, tableaux bricolés sur Google Sheets. Résultat : des erreurs, des doublons, des tensions inutiles.</p>
 
 <p>J'ai mis du temps à prendre ça au sérieux. Trop longtemps, honnêtement.</p>
