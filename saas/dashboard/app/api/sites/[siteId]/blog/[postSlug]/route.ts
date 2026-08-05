@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { parseFrontmatter, serializePost } from '../../../../../../lib/blog'
+
 export const maxDuration = 60
 export const dynamic = 'force-dynamic'
-import { parseFrontmatter, serializePost } from '../../../../../../lib/blog'
 
 const BASE = 'https://api.github.com'
 const headers = {
@@ -45,11 +46,19 @@ function sanitizeSlug(rawSlug: any): string {
 }
 
 async function ghGet(path: string): Promise<{ content: string; sha: string } | null> {
-  const res = await fetch(`${BASE}/repos/${repoPath()}/contents/${path}`, { headers, cache: 'no-store' })
-  if (!res.ok) return null
-  const data = await res.json()
-  if (Array.isArray(data)) return null
-  return { content: Buffer.from(data.content, 'base64').toString('utf-8'), sha: data.sha }
+  const ctrl = new AbortController()
+  const to = setTimeout(() => ctrl.abort(), 30000)
+  try {
+    const res = await fetch(`${BASE}/repos/${repoPath()}/contents/${path}`, { headers, cache: 'no-store', signal: ctrl.signal })
+    if (!res.ok) return null
+    const data = await res.json()
+    if (Array.isArray(data)) return null
+    return { content: Buffer.from(data.content, 'base64').toString('utf-8'), sha: data.sha }
+  } catch {
+    return null // timeout / réseau → on ne bloque pas la fonction
+  } finally {
+    clearTimeout(to)
+  }
 }
 
 async function ghPut(path: string, content: string, message: string, sha?: string): Promise<boolean> {
@@ -75,11 +84,19 @@ async function ghPut(path: string, content: string, message: string, sha?: strin
 }
 
 async function ghDelete(path: string, sha: string, message: string): Promise<boolean> {
-  const res = await fetch(`${BASE}/repos/${repoPath()}/contents/${path}`, {
-    method: 'DELETE', headers: { ...headers, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message, sha }),
-  })
-  return res.ok
+  const ctrl = new AbortController()
+  const to = setTimeout(() => ctrl.abort(), 30000)
+  try {
+    const res = await fetch(`${BASE}/repos/${repoPath()}/contents/${path}`, {
+      method: 'DELETE', headers: { ...headers, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, sha }), signal: ctrl.signal,
+    })
+    return res.ok
+  } catch {
+    return false
+  } finally {
+    clearTimeout(to)
+  }
 }
 
 // ─── Helper : normaliser les catégories d'un body de requête ──────────────
