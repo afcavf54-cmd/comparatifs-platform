@@ -4,15 +4,21 @@ slug: 7208-logiciel-de-facturation-est-il-obligatoire-en-entreprise
 date: '2026-08-05T17:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Logiciel de facturation obligatoire : ce que dit la loi'
-meta_description: Logiciel de facturation obligatoire ou simple confort ? Découvrez ce que la loi impose vraiment aux entreprises françaises et pourquoi la frontière évolue vite.
+meta_description: Logiciel de facturation obligatoire ou simple confort ? Découvrez
+  ce que la loi impose vraiment aux entreprises françaises et pourquoi la frontière
+  évolue vite.
 min_words: 1300
 status: published
 featured_image: /blog/7208-logiciel-de-facturation-est-il-obligatoire-en-entreprise.jpg
 link_anchors:
 - text: caractère obligatoire d'un logiciel de facturation
   max: 8
+related_posts:
+- 2073-logiciel-de-facturation-en-ligne-fonctionnement-et-avantages
+- 3033-comment-fonctionne-un-logiciel-de-facturation-en-entreprise
+- 5404-logiciel-de-facturation-pour-auto-entrepreneur-ce-qu-il-faut-savoir
+- 7056-logiciel-de-facturation-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire
 ---
-
 <p>Quand on gère une petite structure, la facturation c'est souvent la partie qu'on fait en dernier, à la va-vite, entre deux réunions clients. Pendant longtemps, j'ai utilisé un simple modèle Word que je remplissais à la main. Ça marchait. Jusqu'au jour où un client m'a demandé un duplicata de facture de six mois plus tôt et que j'ai passé une heure à fouiller mes dossiers. C'est là que j'ai vraiment commencé à me poser la question : est-ce qu'un logiciel de facturation est une obligation légale, ou juste un confort qu'on finit par s'imposer à force de galérer ?</p>
 
 <p>La réponse courte : c'est un peu des deux. Et la frontière entre "pratique" et "obligatoire" est en train de se réduire très vite.</p>
