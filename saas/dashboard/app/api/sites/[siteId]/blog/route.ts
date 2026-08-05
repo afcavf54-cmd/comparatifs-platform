@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { getFile, listDir } from '../../../../../lib/github'
+
 export const maxDuration = 60
 export const dynamic = 'force-dynamic'
-import { getFile, listDir } from '../../../../../lib/github'
 
 /**
  * GET /api/sites/[siteId]/blog
