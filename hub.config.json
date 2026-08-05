@@ -226,8 +226,27 @@
       "page_types": {
         "blog": "classement-saas"
       }
+    },
+    {
+      "id": "numivio-com",
+      "name": "numivio.com",
+      "niche": "numismatique",
+      "domain": "numivio.com",
+      "sheet_csv_url": "",
+      "description": "",
+      "status": "pending_generation",
+      "thematic": "numismatique",
+      "active_page_types": [
+        "blog"
+      ],
+      "site_type": "comparatif",
+      "blog_slug_format": "clean",
+      "created_at": "2026-08-05T21:39:09.267Z",
+      "page_types": {
+        "blog": "numismatique"
+      }
     }
   ],
   "version": "2.0",
-  "updated_at": "2026-08-05T21:22:21.589Z"
+  "updated_at": "2026-08-05T21:39:09.267Z"
 }
