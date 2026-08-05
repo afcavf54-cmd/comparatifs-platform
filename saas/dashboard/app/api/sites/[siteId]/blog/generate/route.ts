@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { CLAUDE_MODEL } from '../../../../../../lib/ai-model'
 
+// Génération IA longue → on autorise jusqu'à 300s (Vercel Pro) pour éviter que
+// la fonction ne soit coupée par le timeout par défaut (ce qui laissait le
+// bouton « Générer » bloqué sur « Génération… »).
+export const maxDuration = 300
+export const dynamic = 'force-dynamic'
+
 const BASE = 'https://api.github.com'
 const headers = {
   'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
@@ -106,7 +112,7 @@ Longueur cible : ${minW} à ${maxW} mots (minimum ${minW} mots impératif). L'ar
     },
     body: JSON.stringify({
       model: CLAUDE_MODEL,
-      max_tokens: Math.min(24000, Math.max(3000, maxW * 5)),  // marge tokens/mot + HTML
+      max_tokens: Math.min(16000, Math.max(3000, maxW * 4)),  // tient dans maxDuration=300s
       system: systemPrompt,
       messages: [{ role: 'user', content: userPrompt }],
     }),
