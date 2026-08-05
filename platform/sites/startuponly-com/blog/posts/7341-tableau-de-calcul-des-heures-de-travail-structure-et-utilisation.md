@@ -4,15 +4,21 @@ slug: 7341-tableau-de-calcul-des-heures-de-travail-structure-et-utilisation
 date: '2026-08-05T06:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Tableau calcul des heures de travail : comment l''utiliser'
-meta_description: Créez un tableau de calcul des heures de travail fiable et bien structuré pour éviter les erreurs de paie, détecter les heures sup et gagner du temps chaque semaine.
+meta_description: Créez un tableau de calcul des heures de travail fiable et bien
+  structuré pour éviter les erreurs de paie, détecter les heures sup et gagner du
+  temps chaque semaine.
 min_words: 1300
 status: published
 featured_image: /blog/7341-tableau-de-calcul-des-heures-de-travail-structure-et-utilisation.jpg
 link_anchors:
 - text: tableau de calcul des heures de travail
   max: 5
+related_posts:
+- 7114-legislation-sur-la-badgeuse-en-entreprise-ce-que-dit-la-loi
+- 6136-calcul-des-heures-de-travail-par-mois-methode-et-formules
+- 5956-logiciel-de-calcul-des-heures-de-travail-gratuit-ce-qu-il-peut-faire
+- 8517-logiciel-de-pointage-en-ligne-comment-ca-fonctionne
 ---
-
 <p>J'ai mis en place mon premier tableau de suivi des heures dans ma boîte il y a environ deux ans. On était trois à l'époque, et je gérais les plannings à la main sur un cahier. Résultat : des erreurs de calcul, des heures supplémentaires non détectées, et une paie du mois qui partait dans tous les sens. C'est là que j'ai décidé de structurer tout ça proprement.</p>
 
 <p>Voilà ce que j'ai appris depuis, et comment je structure maintenant un tableau de calcul des heures de travail qui tourne vraiment.</p>
