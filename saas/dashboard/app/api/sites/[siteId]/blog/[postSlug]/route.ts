@@ -58,10 +58,20 @@ async function ghPut(path: string, content: string, message: string, sha?: strin
     content: Buffer.from(content, 'utf-8').toString('base64'),
   }
   if (sha) body.sha = sha
-  const res = await fetch(`${BASE}/repos/${repoPath()}/contents/${path}`, {
-    method: 'PUT', headers: { ...headers, 'Content-Type': 'application/json' }, body: JSON.stringify(body),
-  })
-  return res.ok
+  const ctrl = new AbortController()
+  const to = setTimeout(() => ctrl.abort(), 45000) // évite que la fonction se bloque si GitHub ne répond pas
+  try {
+    const res = await fetch(`${BASE}/repos/${repoPath()}/contents/${path}`, {
+      method: 'PUT', headers: { ...headers, 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: ctrl.signal,
+    })
+    if (!res.ok) {
+      const txt = await res.text().catch(() => '')
+      console.error(`[ghPut] ${path} → HTTP ${res.status}`, txt.slice(0, 300))
+    }
+    return res.ok
+  } finally {
+    clearTimeout(to)
+  }
 }
 
 async function ghDelete(path: string, sha: string, message: string): Promise<boolean> {
@@ -131,6 +141,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ site
 
 // ─── PUT : sauvegarde un article (override complet) ───────────────────────
 export async function PUT(req: NextRequest, { params }: { params: Promise<{ siteId: string; postSlug: string }> }) {
+  try {
   const { siteId, postSlug } = await params
   const body = await req.json()
   const { title, slug: rawSlug, date, meta_title, meta_description, featured_image, status, content_md, related_posts, link_anchors, min_words, show_toc, sha } = body
@@ -223,6 +234,10 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
     if (!ok) return NextResponse.json({ error: 'Erreur sauvegarde' }, { status: 500 })
   }
   return NextResponse.json({ ok: true, slug })
+  } catch (e: any) {
+    console.error('[blog PUT] échec sauvegarde:', e)
+    return NextResponse.json({ error: 'Erreur serveur : ' + (e?.message || String(e)) }, { status: 500 })
+  }
 }
 
 // ─── Helper : retire une entrée de posts-index.json (évite les fantômes) ────
