@@ -56,7 +56,7 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ sit
   const body = await req.json()
   const { title, categorie, prompt_custom, min_words } = body
   if (!title) return NextResponse.json({ error: 'title requis' }, { status: 400 })
-  const minW = Math.max(300, Math.min(3000, parseInt(min_words, 10) || 750))
+  const minW = Math.max(300, Math.min(5000, parseInt(min_words, 10) || 750))
   const maxW = Math.round(minW * 1.5)
 
   const apiKey = process.env.ANTHROPIC_API_KEY
@@ -106,7 +106,7 @@ Longueur cible : ${minW} à ${maxW} mots (minimum ${minW} mots impératif). L'ar
     },
     body: JSON.stringify({
       model: CLAUDE_MODEL,
-      max_tokens: Math.min(8000, Math.max(2000, maxW * 4)),  // ~1.3 tokens/word + marge HTML
+      max_tokens: Math.min(24000, Math.max(3000, maxW * 5)),  // marge tokens/mot + HTML
       system: systemPrompt,
       messages: [{ role: 'user', content: userPrompt }],
     }),
