@@ -176,10 +176,14 @@ export default function BlogEditPage() {
     if (!metaDesc?.trim() && post.content_md?.trim()) {
       try {
         setMsg('🤖 Génération de la meta description...')
+        const ctrl = new AbortController()
+        const to = setTimeout(() => ctrl.abort(), 20000) // ne jamais bloquer la sauvegarde
         const r = await fetch(`/api/sites/${siteId}/blog/generate-meta`, {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ title: post.title, content_html: post.content_md }),
+          signal: ctrl.signal,
         })
+        clearTimeout(to)
         const data = await r.json()
         if (r.ok && data.meta_description) {
           metaDesc = data.meta_description
@@ -217,6 +221,7 @@ export default function BlogEditPage() {
       date: post.date || new Date().toISOString().replace(/\.\d+Z$/, ''),
       link_anchors,
     }
+    try {
     if (isNew) {
       const r = await fetch(`/api/sites/${siteId}/blog`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -233,7 +238,6 @@ export default function BlogEditPage() {
         }),
       })
       const data = await r.json()
-      setSaving(false)
       if (r.ok && data.slug) {
         setMsg('✓ Article créé')
         router.push(`/sites/${siteId}/blog/${data.slug}`)
@@ -246,7 +250,6 @@ export default function BlogEditPage() {
         body: JSON.stringify(payload),
       })
       const data = await r.json()
-      setSaving(false)
       if (r.ok) {
         setMsg('✓ Sauvegardé')
         if (data.slug && data.slug !== postSlug) router.replace(`/sites/${siteId}/blog/${data.slug}`)
@@ -254,6 +257,11 @@ export default function BlogEditPage() {
       } else {
         setMsg(`✗ ${data.error || 'Erreur sauvegarde'}`)
       }
+    }
+    } catch (e: any) {
+      setMsg(`✗ ${e?.message || 'Erreur réseau — réessaie'}`)
+    } finally {
+      setSaving(false)
     }
   }
 
