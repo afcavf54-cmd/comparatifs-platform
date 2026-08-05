@@ -1,0 +1,157 @@
+# ============================================================
+# CONFIG SITE -- numivio-com
+# Thématique     : numismatique
+# Types activés  : blog
+# Templates HTML : comparatif-vs-scpi.html.j2 (pages) / index-blog.html.j2 (home)
+# Généré par le wizard HUB le 2026-08-05
+# ============================================================
+
+site:
+  slug: numivio-com
+  name: "numivio.com"
+  domain: "https://numivio.com"
+  base_path: ""
+  logo_text: "numivio.com"
+  logo_accent: ""
+  tagline: "Comparatifs numivio.com 2026"
+  year: 2026
+  sheet_csv_url: ""
+  www_preference: "naked"
+  blog_slug_format: "clean"
+  author_name: "Julien"
+  home_title: "numivio.com | Comparatifs 2026"
+  home_description: ""
+  template: "comparatif-vs-scpi.html.j2"
+  index_template: "index-blog.html.j2"
+  analytics_clicky: ""
+  contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
+
+page_types:
+  blog: numismatique
+
+theme:
+  accent: "#1B4FD8"
+  accent2: "#E8410A"
+  bg: "#F4F6FB"
+  ink: "#0F1A2E"
+  surface: "#FFFFFF"
+  font_title: "DM Serif Display"
+  font_body: "Outfit"
+  google_fonts: "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap"
+  cta_color: "#E8410A"
+  cta_text_color: "#ffffff"
+
+criteria:
+  - label: "TD 2026"
+    field: td
+    type: text
+    suffix: "%"
+  - label: "TRI"
+    field: tri
+    type: text
+    suffix: "%"
+  - label: "Prix de la part"
+    field: prix_achat
+    type: text
+    suffix: "EUR"
+  - label: "Prix de retrait"
+    field: prix_retrait
+    type: text
+    suffix: "EUR"
+  - label: "Investissement min."
+    field: investissement_min
+    type: text
+  - label: "Frais de souscription"
+    field: frais_souscription
+    type: text
+    suffix: "%"
+  - label: "Frais de gestion"
+    field: frais_gestion
+    type: text
+    suffix: "% TTC"
+  - label: "TOF"
+    field: tof
+    type: text
+    suffix: "%"
+  - label: "Endettement"
+    field: endettement
+    type: text
+    suffix: "%"
+  - label: "Delai de jouissance"
+    field: delai_jouissance
+    type: text
+    suffix: " mois"
+  - label: "Pays"
+    field: pays
+    type: text
+
+tag_classes:
+  rendement: "tag-rendement"
+  diversifiee: "tag-diversifiee"
+  specialisee: "tag-specialisee"
+  europeenne: "tag-europeenne"
+
+seo:
+  title_pattern: "{A} vs {B} : comparatif {year}"
+  meta_pattern: "Comparatif complet {A} vs {B} {year} : rendements, frais, avis."
+  avis_title_pattern: "Avis {nom} {year} : faut-il investir ?"
+  avis_meta_pattern: "Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques."
+  liste_comp_title: "Tous les comparatifs {site_name} {year}"
+  liste_avis_title: "Avis {site_name} {year} : analyses indépendantes"
+  h1_pattern: "<em>{A}</em> vs <em>{B}</em> : lequel choisir en {year} ?"
+  eyebrow: "Comparatif {year}"
+  intro_pattern: "Comparatif {A} vs {B} - analyse complete."
+  category_label: "Comparatifs"
+  category_url: "index.html#comparatifs"
+
+persona_prompt: |
+  Tu écris en tant que Julien Guignard, 39 ans, investisseur particulier et entrepreneur basé à Nancy. Passionné par l'investissement en métaux précieux depuis plusieurs années, tu constitues progressivement un patrimoine composé de pièces d'or, de pièces d'argent et de quelques lingotins. Tu suis quotidiennement les cours de l'or et de l'argent, compares les primes des différentes pièces d'investissement et tiens à jour ton portefeuille sur Numivio.
+  
+  Niveau expert, 8 ans d'expérience dans l'investissement en métaux précieux. Vouvoie le lecteur. Ton : pédagogue, passionné et affirmé. Phrases de longueurs variées. Niveau pédagogique : élevé. Positionnement : investisseur terrain. Niveau d'opinion : affirmé.
+  
+  Tu privilégies toujours les explications concrètes plutôt que la théorie. Tu partages régulièrement ton retour d'expérience, les erreurs que tu as pu commettre, ainsi que les enseignements tirés de tes achats de Napoléons, Krugerrands, Maple Leaf, Souverains, Philharmoniker ou lingots.
+  
+  Angle éditorial prioritaire : investissement patrimonial long terme.
+  
+  Critères d'analyse par ordre de priorité :
+  
+  1. Liquidité de la pièce
+  2. Prime à l'achat
+  3. Facilité de revente
+  4. Reconnaissance internationale
+  5. Qualité de conservation
+  6. Fiscalité
+  7. Potentiel numismatique
+  8. Prix d'acquisition
+  
+  Objectifs du lecteur cible :
+  
+  - Comprendre l'investissement en or et argent physique.
+  - Choisir les bonnes pièces d'investissement.
+  - Éviter les erreurs d'achat.
+  - Suivre la valeur réelle de son patrimoine.
+  - Comprendre la fiscalité française.
+  - Construire progressivement un portefeuille de métaux précieux.
+  - Diversifier son patrimoine face à l'inflation et aux crises économiques.
+  
+  Contraintes du lecteur :
+  
+  - Budget souvent limité.
+  - Débute ou possède seulement quelques pièces.
+  - Craint les contrefaçons.
+  - Ne connaît pas toujours la fiscalité.
+  - Hésite entre plusieurs types de pièces ou entre pièces et lingots.
+  - Cherche des informations fiables plutôt qu'un discours commercial.
+  
+  Tu privilégies toujours les pièces d'investissement liquides (Napoléon 20 Francs, Maple Leaf, Krugerrand, Philharmoniker, Britannia, American Eagle...) plutôt que les pièces de collection spéculatives. Tu rappelles régulièrement qu'un faible spread, une prime raisonnable et une excellente liquidité comptent souvent davantage qu'un millésime rare lorsqu'on cherche avant tout à investir.
+  
+  Tu accordes également une grande importance au suivi des performances. Tu expliques fréquemment qu'un investisseur connaît généralement le poids d'or qu'il possède, mais beaucoup plus rarement la valeur réelle de son portefeuille, son prix de revient moyen ou sa performance globale. Tu utilises Numivio pour suivre tes achats, l'évolution de ton patrimoine et recevoir des alertes sur les cours de l'or et de l'argent.
+  
+  Niveau de détail : très approfondi.
+
+author:
+  name: "Julien"
+  bio: "Julien Guignard est entrepreneur et investisseur particulier, passionné par les métaux précieux depuis plusieurs années. Il analyse l'or physique, l'argent d'investissement et la numismatique à travers une approche patrimoniale, en privilégiant les données concrètes, la liquidité et le suivi de performance. Sur Numivio, il partage des guides pratiques pour aider les investisseurs à mieux comprendre, acheter et suivre leur portefeuille de métaux précieux."
+  job_title: "Collectionneur"
+  photo: "/author-photo.png"
+  socials: []
