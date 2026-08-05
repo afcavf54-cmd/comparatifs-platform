@@ -417,7 +417,7 @@ CONTRAINTES DE PONCTUATION (impératif) :
             f"Titre : {title}{cat_line}{custom_line}{mots_line}\n\n"
             f"Longueur cible : {min_words} à {max_w} mots (minimum {min_words} mots impératif). "
             f"L'article doit être informatif, structuré, et utile au lecteur cible défini dans ton persona.")
-    html = strip_code_fences(call_claude(system, user, max_tokens=min(8000, max(2000, max_w * 4))))
+    html = strip_code_fences(call_claude(system, user, max_tokens=min(24000, max(3000, max_w * 5))))
     # Defensive : retirer les liens que Claude aurait pu mettre dans les <hN>
     # malgré l'interdiction explicite dans le prompt. Cas rare mais arrivé.
     html = strip_links_from_headings(html)
