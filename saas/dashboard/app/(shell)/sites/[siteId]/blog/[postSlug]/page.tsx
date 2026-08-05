@@ -237,25 +237,27 @@ export default function BlogEditPage() {
           schedule_date: payload.status === 'scheduled' ? payload.date : undefined,
         }),
       })
-      const data = await r.json()
+      const raw = await r.text().catch(() => '')
+      let data: any = {}; try { data = raw ? JSON.parse(raw) : {} } catch {}
       if (r.ok && data.slug) {
         setMsg('✓ Article créé')
         router.push(`/sites/${siteId}/blog/${data.slug}`)
       } else {
-        setMsg(`✗ ${data.error || 'Erreur création'}`)
+        setMsg(`✗ ${data.error || `HTTP ${r.status} — ${raw.slice(0, 140) || 'réponse vide (timeout serveur ?)'}`}`)
       }
     } else {
       const r = await fetch(`/api/sites/${siteId}/blog/${postSlug}`, {
         method: 'PUT', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       })
-      const data = await r.json()
+      const raw = await r.text().catch(() => '')
+      let data: any = {}; try { data = raw ? JSON.parse(raw) : {} } catch {}
       if (r.ok) {
         setMsg('✓ Sauvegardé')
         if (data.slug && data.slug !== postSlug) router.replace(`/sites/${siteId}/blog/${data.slug}`)
         setTimeout(() => setMsg(''), 2500)
       } else {
-        setMsg(`✗ ${data.error || 'Erreur sauvegarde'}`)
+        setMsg(`✗ ${data.error || `HTTP ${r.status} — ${raw.slice(0, 140) || 'réponse vide (timeout serveur ?)'}`}`)
       }
     }
     } catch (e: any) {
