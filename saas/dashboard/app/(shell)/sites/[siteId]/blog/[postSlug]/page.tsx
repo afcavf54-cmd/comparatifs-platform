@@ -498,10 +498,10 @@ export default function BlogEditPage() {
             </select>
           </Field>
           <Field label="Mots min. (IA)">
-            <input type="number" min={300} max={3000} step={100}
+            <input type="number" min={300} max={5000} step={100}
               value={genMinWords}
               onChange={e => {
-                const v = Math.max(300, Math.min(3000, parseInt(e.target.value, 10) || 750))
+                const v = Math.max(300, Math.min(5000, parseInt(e.target.value, 10) || 750))
                 setGenMinWords(v)
                 update('min_words', v)
               }}
@@ -611,7 +611,7 @@ export default function BlogEditPage() {
             {' '}seront utilisés.
           </div>
           <Field label="Nombre de mots minimum">
-            <input type="number" min={300} max={3000} step={100} value={genMinWords}
+            <input type="number" min={300} max={5000} step={100} value={genMinWords}
               onChange={e => setGenMinWords(Math.max(300, parseInt(e.target.value, 10) || 750))}
               style={{ ...input, maxWidth: 160 }} />
           </Field>
