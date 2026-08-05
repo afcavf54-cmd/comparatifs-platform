@@ -4,15 +4,21 @@ slug: 4028-logiciel-emailing-et-sms-comment-combiner-les-deux-canaux
 date: '2026-08-05T17:00:00+02:00'
 categorie: Marketing
 meta_title: 'Logiciel emailing SMS : combiner les deux canaux'
-meta_description: 'Logiciel emailing et SMS : découvrez comment combiner ces deux canaux pour booster vos campagnes marketing sans doubler vos coûts ni fatiguer vos contacts.'
+meta_description: 'Logiciel emailing et SMS : découvrez comment combiner ces deux
+  canaux pour booster vos campagnes marketing sans doubler vos coûts ni fatiguer vos
+  contacts.'
 min_words: 1200
 status: published
 featured_image: /blog/4028-logiciel-emailing-et-sms-comment-combiner-les-deux-canaux.jpg
 link_anchors:
 - text: combiner emailing et SMS
   max: 8
+related_posts:
+- 1552-comment-choisir-son-logiciel-d-emailing-criteres-et-methode
+- 7295-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
+- 2890-logiciel-d-emailing-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire
+- 9102-logiciel-d-envoi-d-emails-en-masse-fonctionnement-et-bonnes-pratiques
 ---
-
 <p>J'ai mis du temps avant de comprendre que l'email et le SMS ne sont pas concurrents. Pendant longtemps, j'ai utilisé l'un ou l'autre, jamais les deux en même temps. C'était une erreur. Aujourd'hui, j'ai une vision assez claire de comment les combiner sans exploser son budget ni y passer ses nuits.</p>
 
 <p>Voici ce que j'ai appris, concrètement, en dirigeant une structure de taille intermédiaire où chaque euro dépensé en marketing doit être justifié.</p>
