@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getFile, listDir } from '../../../../../lib/github'
+import { getFile, listDir, putFile } from '../../../../../lib/github'
+import { serializePost } from '../../../../../lib/blog'
 
 export const maxDuration = 60
 export const dynamic = 'force-dynamic'
@@ -135,5 +136,86 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ siteId
       error: `Impossible de lister les articles : ${e?.message || 'erreur inconnue'}`,
       posts: [],
     }, { status: 500 })
+  }
+}
+
+// ─── Génère un slug propre à partir d'un titre ─────────────────────────────
+function slugify(s: string): string {
+  return String(s || '')
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // enlève les accents
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 80)
+    .replace(/-+$/g, '')
+}
+
+/**
+ * POST /api/sites/[siteId]/blog
+ * Crée un NOUVEL article (le slug est dérivé du titre).
+ * Manquait totalement → tout « Nouvel article » renvoyait 405.
+ */
+export async function POST(req: NextRequest, { params }: { params: Promise<{ siteId: string }> }) {
+  try {
+    const { siteId } = await params
+    const body = await req.json()
+    const {
+      title, categorie, categories, content_md, meta_title, meta_description,
+      featured_image, status, min_words, link_anchors, schedule_date, show_toc,
+    } = body
+
+    if (!title || !String(title).trim()) {
+      return NextResponse.json({ error: 'Le titre est obligatoire' }, { status: 400 })
+    }
+    const cats: string[] = Array.isArray(categories) && categories.length
+      ? categories.map((c: any) => String(c).trim()).filter(Boolean)
+      : (categorie ? [String(categorie).trim()] : [])
+    if (cats.length === 0) {
+      return NextResponse.json({ error: 'Au moins une catégorie est obligatoire' }, { status: 400 })
+    }
+
+    const slug = slugify(title)
+    if (!slug || slug.length < 2) {
+      return NextResponse.json({ error: `Titre invalide pour générer un slug ("${title}")` }, { status: 400 })
+    }
+
+    const path = `platform/sites/${siteId}/blog/posts/${slug}.md`
+    const existing = await getFile(path)
+    if (existing) {
+      return NextResponse.json({ error: `Un article existe déjà avec le slug « ${slug} ». Change le titre.` }, { status: 409 })
+    }
+
+    const now = new Date()
+    const isoFr = now.toISOString().slice(0, 19).replace('T', ' ') + '+02:00'
+    const date = (status === 'scheduled' && schedule_date) ? schedule_date : isoFr
+
+    const post: any = {
+      title: String(title).trim(),
+      slug,
+      date,
+      categorie: cats[0],
+      categories: cats,
+      updated: now.toISOString().replace(/\.\d+Z$/, ''),
+      meta_title: meta_title || '',
+      meta_description: meta_description || '',
+      featured_image: featured_image || '',
+      status: status || 'draft',
+      show_toc: show_toc !== false,
+      related_posts: undefined,
+      link_anchors: Array.isArray(link_anchors) ? link_anchors : undefined,
+      content_md: content_md || '',
+    }
+    if (min_words && Number(min_words) > 0) post.min_words = Number(min_words)
+
+    const raw = serializePost(post as any)
+    const ok = await putFile(path, raw, `HUB: Nouvel article — ${post.title}`)
+    if (!ok) {
+      return NextResponse.json({ error: "Écriture GitHub échouée (token ?)" }, { status: 500 })
+    }
+    return NextResponse.json({ ok: true, slug })
+  } catch (e: any) {
+    console.error('[blog POST] création échouée:', e)
+    return NextResponse.json({ error: 'Erreur serveur : ' + (e?.message || String(e)) }, { status: 500 })
   }
 }
