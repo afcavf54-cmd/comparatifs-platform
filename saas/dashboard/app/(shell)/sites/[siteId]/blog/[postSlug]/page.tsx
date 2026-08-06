@@ -254,6 +254,7 @@ export default function BlogEditPage() {
       let data: any = {}; try { data = raw ? JSON.parse(raw) : {} } catch {}
       if (r.ok) {
         setMsg('✓ Sauvegardé')
+        if (data.sha) update('sha', data.sha)   // ← évite l'erreur au 2e save sans F5
         if (data.slug && data.slug !== postSlug) router.replace(`/sites/${siteId}/blog/${data.slug}`)
         setTimeout(() => setMsg(''), 2500)
       } else {
