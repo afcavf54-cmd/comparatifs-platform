@@ -4,15 +4,17 @@ slug: einstruction-interwrite-learning
 date: '2026-08-06T08:00:00+02:00'
 categorie: Logiciels
 meta_title: 'EInstruction et Interwrite Workspace : tableaux numériques'
-meta_description: 'Découvrez eInstruction et Interwrite Workspace : logiciel de tableau blanc interactif pour salles de formation et établissements scolaires. Fonctionnalités, avis…'
+meta_description: 'Découvrez eInstruction et Interwrite Workspace : logiciel de tableau
+  blanc interactif pour salles de formation et établissements scolaires. Fonctionnalités,
+  avis…'
 min_words: 2000
 status: published
 featured_image: /blog/einstruction-interwrite-learning.jpg
 link_anchors:
 - text: eInstruction
   max: 5
+related_posts: []
 ---
-
 <p>Quand on cherche une solution pour animer des réunions, des formations ou des présentations en salle, on tombe forcément sur des noms comme eInstruction et Interwrite Workspace. Deux marques qui ont longtemps occupé le terrain des tableaux blancs interactifs et des logiciels associés. Je vais vous expliquer concrètement ce que ça vaut, ce que ça fait au quotidien, et pour qui c'est réellement utile.</p>
 
 <p>Petit contexte avant de rentrer dans le détail : eInstruction est un éditeur américain spécialisé dans les technologies éducatives interactives. Interwrite Workspace est leur logiciel phare, conçu pour piloter des tableaux blancs interactifs, des tablettes graphiques et des boîtiers de vote. Historiquement très présent dans les établissements scolaires et universitaires, cet environnement a aussi trouvé sa place dans des salles de formation en entreprise. Je l'ai testé dans des contextes très différents, et mon avis est nuancé.</p>
