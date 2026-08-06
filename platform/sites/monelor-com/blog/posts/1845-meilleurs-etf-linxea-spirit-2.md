@@ -2,7 +2,7 @@
 title: "Les meilleurs ETF disponibles sur Linxea Spirit 2 : liste complète et comparatif"
 slug: 1845-meilleurs-etf-linxea-spirit-2
 date: 2026-08-06 08:30:18+02:00
-updated: 2026-08-06T08:57:25
+updated: 2026-08-06T09:14:14
 categorie: Assurance vie
 categories:
 - Assurance vie
@@ -29,13 +29,13 @@ related_posts:
 
 <p>J'inclus ces classements parce qu'ils sont utiles pour comprendre quels secteurs ont été porteurs, et pour ceux qui souhaitent prendre des positions plus ciblées en complément d'un portefeuille diversifié. Mais si tu débutes, attarde-toi surtout sur les sections dédiées au MSCI World, au S&amp;P 500 et au Nasdaq, qui correspondent mieux à une stratégie de long terme accessible à tous.</p>
 
-<h2>Les 5 ETF les plus performants sur 1 an</h2><table><thead><tr><th>Colonne 1</th><th>Colonne 2</th></tr></thead><tbody><tr><td>—Amundi MSCI Korea UCITS ETF Acc</td><td>—+147,87 %</td></tr><tr><td>—iShares Copper Miners UCITS ETF USD Acc</td><td>—+90,00 %</td></tr><tr><td>—Amundi MSCI Semiconductors UCITS ETF Acc</td><td>—+89,10 %</td></tr><tr><td>—iShares STOXX Europe 600 Basic Resources UCITS ETF</td><td>—+74,35 %</td></tr><tr><td>—iShares MSCI EM Islamic UCITS ETF USD Dist</td><td>—+71,82 %</td></tr></tbody></table><h3>1. Amundi MSCI Korea UCITS ETF Acc : +147,87 %</h3><p>Cet ETF suit l'indice MSCI Korea, qui regroupe les plus grandes entreprises cotées en Bourse de Corée du Sud. On y trouve des géants comme Samsung, SK Hynix, ou encore LG Electronics. La Corée du Sud est l'une des économies les plus dynamiques d'Asie, avec une forte concentration dans les secteurs technologiques et industriels.</p>
+<h2>Les 5 ETF les plus performants sur 1 an</h2><table><thead><tr><th>ETF</th><th>Rendement</th></tr></thead><tbody><tr><td>Amundi MSCI Korea UCITS ETF Acc</td><td>+147,87 %</td></tr><tr><td>iShares Copper Miners UCITS ETF USD Acc</td><td>+90,00 %</td></tr><tr><td>Amundi MSCI Semiconductors UCITS ETF Acc</td><td>+89,10 %</td></tr><tr><td>iShares STOXX Europe 600 Basic Resources UCITS ETF</td><td>+74,35 %</td></tr><tr><td>iShares MSCI EM Islamic UCITS ETF USD Dist</td><td>+71,82 %</td></tr></tbody></table><h3>1. Amundi MSCI Korea UCITS ETF Acc (LU1900066975) : +147,87 %</h3><p>Cet ETF suit l'indice MSCI Korea, qui regroupe les plus grandes entreprises cotées en Bourse de Corée du Sud. On y trouve des géants comme Samsung, SK Hynix, ou encore LG Electronics. La Corée du Sud est l'une des économies les plus dynamiques d'Asie, avec une forte concentration dans les secteurs technologiques et industriels.</p>
 
 <p>La performance spectaculaire sur un an s'explique en grande partie par la montée en puissance des semi-conducteurs, dont la Corée est un acteur mondial majeur. L'engouement autour de l'intelligence artificielle a boosté la demande en mémoires et en puces électroniques, et SK Hynix en particulier a été un bénéficiaire direct de cette dynamique.</p>
 
 <p>Les risques sont réels. La Corée est exposée aux tensions géopolitiques avec la Corée du Nord, aux relations commerciales avec la Chine, et à la cyclicité des secteurs technologiques. Cet ETF s'adresse à des investisseurs avec un profil dynamique, capables de supporter une forte volatilité et qui ont déjà un portefeuille bien diversifié sur lequel ils souhaitent ajouter une exposition géographique ciblée.</p>
 
-<h3>2. iShares Copper Miners UCITS ETF USD Acc : +90,00 %</h3>
+<h3>2. iShares Copper Miners UCITS ETF USD Acc (IE00063FT9K6) : +90,00 %</h3>
 
 <p>Cet ETF te donne accès aux entreprises minières spécialisées dans l'extraction du cuivre à travers le monde. On parle d'acteurs comme Freeport-McMoRan, Southern Copper ou encore Antofagasta. Le cuivre est un métal stratégique, indispensable à l'électrification de l'économie mondiale : câbles électriques, batteries, véhicules électriques, infrastructures énergétiques...</p>
 
@@ -43,7 +43,7 @@ related_posts:
 
 <p>Le risque est élevé. Le secteur minier est cyclique, très sensible aux cours des matières premières, aux décisions politiques dans les pays d'extraction (souvent en Amérique latine ou en Afrique), et aux fluctuations du dollar. Cet ETF convient à des investisseurs aguerris qui veulent jouer la thématique de la transition énergétique avec une exposition directe aux matières premières.</p>
 
-<h3>3. Amundi MSCI Semiconductors UCITS ETF Acc : +89,10 %</h3>
+<h3>3. Amundi MSCI Semiconductors UCITS ETF Acc (LU1900066033) : +89,10 %</h3>
 
 <p>Cet ETF suit un indice regroupant les plus grandes entreprises mondiales du secteur des semi-conducteurs : Nvidia, TSMC, ASML, Broadcom, Intel, et bien d'autres. Les semi-conducteurs sont les composants qui font fonctionner tous les appareils électroniques modernes : smartphones, ordinateurs, voitures, serveurs d'IA...</p>
 
@@ -51,7 +51,7 @@ related_posts:
 
 <p>Le risque principal : une valorisation qui peut sembler élevée, une forte dépendance aux dépenses des géants du cloud, et une cyclicité historique importante du secteur. Ce n'est pas un ETF pour profil prudent. Il convient aux investisseurs qui croient au long terme dans la technologie et qui acceptent des drawdowns potentiellement importants.</p>
 
-<h3>4. iShares STOXX Europe 600 Basic Resources UCITS ETF : +74,35 %</h3>
+<h3>4. iShares STOXX Europe 600 Basic Resources UCITS ETF (DE000A0F5UK5) : +74,35 %</h3>
 
 <p>Cet ETF investit dans les entreprises européennes du secteur des ressources naturelles et des matières premières : métaux, mines, papier, chimie de base. On y retrouve des groupes comme Rio Tinto, Glencore, Anglo American ou encore Holcim. C'est un ETF qui joue sur la demande mondiale en matières premières industrielles.</p>
 
@@ -59,7 +59,7 @@ related_posts:
 
 <p>Les risques sont ceux classiques des matières premières : cyclicité forte, sensibilité à la croissance économique mondiale, exposition aux devises et aux risques politiques dans les pays producteurs. Cet ETF convient à des investisseurs qui cherchent une exposition aux matières premières via des entreprises européennes cotées, avec un profil de risque dynamique.</p>
 
-<h3>5. iShares MSCI EM Islamic UCITS ETF USD Dist : +71,82 %</h3>
+<h3>5. iShares MSCI EM Islamic UCITS ETF USD Dist (IE00B27YCP72) : +71,82 %</h3>
 
 <p>Cet ETF suit un indice composé d'entreprises des marchés émergents conformes aux principes de la finance islamique (Sharia). Concrètement, cela exclut les entreprises du secteur financier classique (banques, assurances), les producteurs d'alcool, de tabac, d'armement, et toute activité liée aux intérêts financiers. On y retrouve principalement des entreprises technologiques, industrielles et de consommation.</p>
 
@@ -67,9 +67,9 @@ related_posts:
 
 <p>Le risque est celui des marchés émergents en général, avec en plus une contrainte de sélectivité sectorielle qui peut pénaliser l'ETF si les secteurs exclus surperforment. Cet ETF intéressera notamment les investisseurs qui souhaitent une exposition aux émergents tout en respectant des critères d'investissement responsable compatibles avec les principes islamiques.</p>
 
-<h2>Les 5 ETF les plus performants sur 3 ans</h2><p><table><thead><tr><th>Colonne 1</th><th>Colonne 2</th></tr></thead><tbody><tr><td>—Amundi MSCI Semiconductors UCITS ETF Acc</td><td>—+286,65 %</td></tr><tr><td>—Amundi Euro Stoxx Banks UCITS ETF Acc</td><td>—+231,05 %</td></tr><tr><td>—Amundi STOXX Europe 600 Banks UCITS ETF Acc</td><td>—+211,46 %</td></tr><tr><td>—Amundi Nasdaq-100 Daily (2x) Leveraged UCITS ETF</td><td>—+171,55 %</td></tr><tr><td>—Amundi MSCI Korea UCITS ETF Acc</td><td>—+169,67 %</td></tr></tbody></table></p>
+<h2>Les 5 ETF les plus performants sur 3 ans</h2><p></p><table><thead><tr><th>ETF</th><th>Rendement</th></tr></thead><tbody><tr><td>Amundi MSCI Semiconductors UCITS ETF Acc</td><td>+286,65 %</td></tr><tr><td>Amundi Euro Stoxx Banks UCITS ETF Acc</td><td>+231,05 %</td></tr><tr><td>Amundi STOXX Europe 600 Banks UCITS ETF Acc</td><td>+211,46 %</td></tr><tr><td>Amundi Nasdaq-100 Daily (2x) Leveraged UCITS ETF</td><td>+171,55 %</td></tr><tr><td>Amundi MSCI Korea UCITS ETF Acc</td><td>+169,67 %</td></tr></tbody></table><p></p>
 
-<h3>1. Amundi MSCI Semiconductors UCITS ETF Acc : +286,65 %</h3>
+<h3>1. Amundi MSCI Semiconductors UCITS ETF Acc (LU1900066033) : +286,65 %</h3>
 
 <p>On retrouve cet ETF en tête sur 3 ans également, ce qui confirme que la performance des semi-conducteurs n'est pas un simple feu de paille. Sur trois ans, presque tripler sa mise, c'est exceptionnel. Mais il faut garder la tête froide : cette performance s'est construite après une phase de baisse importante en 2022, ce qui amplifie mécaniquement le rebond affiché.</p>
 
@@ -77,7 +77,7 @@ related_posts:
 
 <p>Les risques restent les mêmes que sur un an, avec en plus un risque de valorisation élevé après une telle hausse. Cet ETF s'adresse clairement à des investisseurs avec un horizon long terme et un profil dynamique, capables de traverser des baisses de 30 à 50 % sans paniquer.</p>
 
-<h3>2. Amundi Euro Stoxx Banks UCITS ETF Acc : +231,05 %</h3>
+<h3>2. Amundi Euro Stoxx Banks UCITS ETF Acc (LU1829219390) : +231,05 %</h3>
 
 <p>Cet ETF réplique l'indice Euro Stoxx Banks, qui regroupe les principales banques de la zone euro. On y retrouve des établissements comme BNP Paribas, Santander, UniCredit, ING ou encore BBVA. C'est un ETF purement centré sur le secteur bancaire européen.</p>
 
@@ -85,7 +85,7 @@ related_posts:
 
 <p>Le risque principal : si les taux baissent (ce qui est en cours en 2024-2025), les marges des banques se compriment. S'y ajoute le risque de crédit en cas de ralentissement économique. Cet ETF convient à des profils qui veulent jouer un cycle économique précis, pas à des investisseurs cherchant une exposition long terme tranquille.</p>
 
-<h3>3. Amundi STOXX Europe 600 Banks UCITS ETF Acc : +211,46 %</h3>
+<h3>3. Amundi STOXX Europe 600 Banks UCITS ETF Acc (LU1834983477) : +211,46 %</h3>
 
 <p>Très similaire au précédent, cet ETF suit l'indice STOXX Europe 600 Banks, qui élargit l'univers à toutes les banques européennes, y compris celles du Royaume-Uni et de Suisse. On y retrouve donc en plus des acteurs comme HSBC, Barclays ou UBS. La diversification géographique est légèrement plus large que l'ETF zone euro.</p>
 
@@ -93,7 +93,7 @@ related_posts:
 
 <p>Les risques sont similaires à l'ETF précédent, avec une exposition supplémentaire à la livre sterling et au franc suisse. L'instabilité politique au Royaume-Uni peut aussi peser sur les valorisations. Ce type d'ETF sectoriel est à manier avec précaution, en complément d'un portefeuille plus diversifié.</p>
 
-<h3>4. Amundi Nasdaq-100 Daily (2x) Leveraged UCITS ETF : +171,55 %</h3>
+<h3>4. Amundi Nasdaq-100 Daily (2x) Leveraged UCITS ETF (FR0010342592) : +171,55 %</h3>
 
 <p>Attention, celui-ci est très particulier. C'est un ETF à effet de levier 2x sur le Nasdaq-100. Concrètement, si le Nasdaq-100 monte de 1 % dans la journée, cet ETF monte de 2 %. Si le Nasdaq baisse de 1 %, il perd 2 %. C'est un produit extrêmement volatile, réservé aux investisseurs très expérimentés.</p>
 
@@ -101,7 +101,7 @@ related_posts:
 
 <p>Je te le dis clairement : si tu débutes, cet ETF n'est pas fait pour toi. Il n'est pas fait pour 95 % des investisseurs particuliers. C'est un outil de trading court terme, pas un placement de long terme. Je le présente ici car il figure dans les performances, mais il mérite une mise en garde ferme.</p>
 
-<h3>5. Amundi MSCI Korea UCITS ETF Acc : +169,67 %</h3>
+<h3>5. Amundi MSCI Korea UCITS ETF Acc (LU1900066975) : +169,67 %</h3>
 
 <p>On retrouve ici la Corée du Sud sur 3 ans, ce qui confirme la tendance structurelle portée par les semi-conducteurs et le dynamisme de l'économie coréenne. SK Hynix et Samsung ont été des moteurs majeurs sur cette période, portés par la révolution de l'IA et la demande mondiale en mémoires HBM (High Bandwidth Memory) indispensables aux puces d'entraînement des modèles d'IA.</p>
 
@@ -109,9 +109,9 @@ related_posts:
 
 <p>Ce type d'ETF géographique concentré peut faire des ravages à la baisse en cas de crise économique mondiale ou de tensions géopolitiques dans la région. Il s'adresse à des investisseurs qui souhaitent une exposition ciblée à l'Asie technologique, en complément d'un portefeuille diversifié.</p>
 
-<h2>Les 5 ETF les plus performants sur 5 ans</h2><p><table><thead><tr><th>Colonne 1</th><th>Colonne 2</th></tr></thead><tbody><tr><td>—Amundi Euro Stoxx Banks UCITS ETF Acc</td><td>—+344,03 %</td></tr><tr><td>—Amundi MSCI Semiconductors UCITS ETF Acc</td><td>—+323,17 %</td></tr><tr><td>—Amundi STOXX Europe 600 Banks UCITS ETF Acc</td><td>—+312,95 %</td></tr><tr><td>—Amundi Global Hydrogen UCITS ETF Acc</td><td>—+234,06 %</td></tr><tr><td>—Amundi MSCI Greece UCITS ETF Dist</td><td>—+230,89 %</td></tr></tbody></table></p>
+<h2>Les 5 ETF les plus performants sur 5 ans</h2><p></p><table><thead><tr><th>ETF</th><th>Rendement</th></tr></thead><tbody><tr><td>Amundi Euro Stoxx Banks UCITS ETF Acc</td><td>+344,03 %</td></tr><tr><td>Amundi MSCI Semiconductors UCITS ETF Acc</td><td>+323,17 %</td></tr><tr><td>Amundi STOXX Europe 600 Banks UCITS ETF Acc</td><td>+312,95 %</td></tr><tr><td>Amundi Global Hydrogen UCITS ETF Acc</td><td>+234,06 %</td></tr><tr><td>Amundi MSCI Greece UCITS ETF Dist</td><td>+230,89 %</td></tr></tbody></table><p></p>
 
-<h3>1. Amundi Euro Stoxx Banks UCITS ETF Acc : +344,03 %</h3>
+<h3>1. Amundi Euro Stoxx Banks UCITS ETF Acc (LU1829219390) : +344,03 %</h3>
 
 <p>Quadrupler sa mise sur 5 ans via un ETF bancaire européen, c'est une performance qui aurait paru totalement irréaliste en 2020, quand le secteur était à genoux. La Covid, les taux zéro, les doutes sur la solidité des bilans bancaires... tout pesait sur le secteur. Et pourtant, le retournement a été magistral.</p>
 
@@ -119,7 +119,7 @@ related_posts:
 
 <p>Est-ce que ça va continuer ? Difficile à dire. Avec des taux qui commencent à baisser, une partie du vent favorable s'estompe. Cet ETF reste intéressant dans une optique de diversification sectorielle, mais il ne faut pas extrapoler les performances passées. Un profil dynamique, avec un horizon de 5 à 10 ans minimum, peut envisager d'y allouer une petite part de son portefeuille.</p>
 
-<h3>2. Amundi MSCI Semiconductors UCITS ETF Acc : +323,17 %</h3>
+<h3>2. Amundi MSCI Semiconductors UCITS ETF Acc (LU1900066033) : +323,17 %</h3>
 
 <p>Encore et toujours les semi-conducteurs. Sur 5 ans, cet ETF affiche une performance de +323 %, ce qui en fait l'un des meilleurs ETF sectoriels disponibles sur Linxea Spirit 2. La tendance de fond est claire : l'explosion des besoins en calcul, portée par l'IA, les véhicules autonomes, les objets connectés et la digitalisation de l'économie mondiale, a propulsé les valorisations des fabricants de puces.</p>
 
@@ -127,7 +127,7 @@ related_posts:
 
 <p>Sur 5 ans, les risques se lissent un peu, mais restent bien présents. La concentration sectorielle est le principal danger : si le secteur subit une correction, tout le portefeuille en pâtit. Cet ETF convient à des investisseurs qui veulent parier sur la technologie de manière concentrée, en complément d'un socle plus défensif et diversifié.</p>
 
-<h3>3. Amundi STOXX Europe 600 Banks UCITS ETF Acc : +312,95 %</h3>
+<h3>3. Amundi STOXX Europe 600 Banks UCITS ETF Acc (LU1834983477) : +312,95 %</h3>
 
 <p>Troisième place pour le frère jumeau de l'ETF bancaire zone euro, avec une performance de +312 % sur 5 ans. Les explications sont identiques à celles du deuxième rang sur 5 ans : effet de base très favorable, hausse des taux, amélioration des bilans bancaires et regain d'intérêt des investisseurs pour un secteur longtemps décrié.</p>
 
@@ -135,7 +135,7 @@ related_posts:
 
 <p>Même profil d'investisseur cible : dynamique, à l'aise avec la volatilité, et qui considère cet ETF comme une ligne satellite dans un portefeuille plus large.</p>
 
-<h3>4. Amundi Global Hydrogen UCITS ETF Acc : +234,06 %</h3>
+<h3>4. Amundi Global Hydrogen UCITS ETF Acc (FR0010930644) : +234,06 %</h3>
 
 <p>Cet ETF mise sur l'hydrogène, présenté comme l'une des sources d'énergie du futur. Il investit dans des entreprises qui développent, produisent ou utilisent l'hydrogène comme vecteur énergétique : électrolyseurs, piles à combustible, stockage, transport... Des acteurs comme Air Liquide, Nel ASA, ITM Power ou Ballard Power Systems figurent parmi ses positions.</p>
 
@@ -143,7 +143,7 @@ related_posts:
 
 <p>Cet ETF reste très risqué, avec une forte exposition à des entreprises qui ne sont pas encore rentables. Il s'adresse à des investisseurs convaincus par la thématique hydrogène sur le très long terme, conscients que le chemin sera semé d'embûches et de volatilité forte.</p>
 
-<h3>5. Amundi MSCI Greece UCITS ETF Dist : +230,89 %</h3>
+<h3>5. Amundi MSCI Greece UCITS ETF Dist (FR0010405431) : +230,89 %</h3>
 
 <p>La Grèce, oui. Cet ETF suit les plus grandes entreprises cotées sur la Bourse d'Athènes. Après la crise de la dette grecque des années 2010 et des années de récession, l'économie grecque a entamé un remarquable redressement. Les réformes structurelles, l'assainissement des finances publiques et le retour de la croissance ont redonné confiance aux investisseurs.</p>
 
@@ -155,14 +155,12 @@ related_posts:
 
 <p>Le MSCI World est l'indice de référence pour un investisseur particulier qui veut diversifier son portefeuille à l'échelle mondiale. Il regroupe plus de 1 400 grandes et moyennes entreprises issues de 23 pays développés, avec une forte pondération vers les États-Unis (environ 70 %), suivis du Japon, du Royaume-Uni, de la France et de l'Allemagne.</p>
 
-<p>C'est l'ETF que je recommande en premier lieu à la plupart des investisseurs débutants. Pas besoin de choisir les bonnes actions, pas besoin de surveiller l'actualité économique en permanence. Tu investis dans une part de l'économie mondiale, et tu laisses le temps faire son travail. Sur le long terme, les données historiques montrent que les marchés actions mondiaux ont toujours fini par remonter après chaque crise.</p><table><thead><tr><th>Colonne 1</th><th>Colonne 2</th></tr></thead><tbody><tr><td>—Amundi MSCI World II UCITS ETF Dist</td><td>—+78,57 %</td></tr><tr><td>—Amundi MSCI World Swap UCITS ETF EUR Acc</td><td>—+76,22 %</td></tr><tr><td>—iShares Core MSCI World ETF EUR H Dist&nbsp;</td><td>—+63,99 %</td></tr></tbody></table><p><br><br></p><p><br></p>
-
-<p>Sur Linxea Spirit 2, voici les meilleurs ETF MSCI World disponibles sur 5 ans :</p>
+<p>C'est l'ETF que je recommande en premier lieu à la plupart des investisseurs débutants. Pas besoin de choisir les bonnes actions, pas besoin de surveiller l'actualité économique en permanence. Tu investis dans une part de l'économie mondiale, et tu laisses le temps faire son travail. Sur le long terme, les données historiques montrent que les marchés actions mondiaux ont toujours fini par remonter après chaque crise.</p><table><thead><tr><th>ETF</th><th>Rendement</th></tr></thead><tbody><tr><td>Amundi MSCI World II UCITS ETF Dist</td><td>+78,57 %</td></tr><tr><td>Amundi MSCI World Swap UCITS ETF EUR Acc</td><td>+76,22 %</td></tr><tr><td>iShares Core MSCI World ETF EUR H Dist&nbsp;</td><td>+63,99 %</td></tr></tbody></table><p>Sur Linxea Spirit 2, voici les meilleurs ETF MSCI World disponibles sur 5 ans :</p>
 
 <ol>
-<li><strong>Amundi MSCI World II UCITS ETF Dist : +78,57 % sur 5 ans.</strong> C'est ma recommandation principale parmi les ETF MSCI World disponibles sur le contrat. Il est géré par Amundi, le premier gestionnaire d'actifs européen, avec des frais très compétitifs. La version "Dist" distribue les dividendes, mais dans une assurance-vie, ces dividendes sont automatiquement réinvestis dans le contrat, ce qui revient au même qu'une version capitalisante en pratique.</li>
-<li><strong>Amundi MSCI World Swap UCITS ETF EUR Acc : +76,22 %.</strong> Très proche du précédent en termes de performance. La différence principale réside dans la méthode de réplication : cet ETF utilise des swaps (des contrats dérivés) pour répliquer l'indice plutôt que d'acheter physiquement les actions. Cela peut avoir des implications fiscales dans certains cas, mais dans une assurance-vie, ça ne change généralement rien pour toi.</li>
-<li><strong>iShares Core MSCI World ETF EUR H Dist : +63,99 %.</strong> La mention "H" signifie que cet ETF est couvert contre les fluctuations du dollar (hedgé). Comme le MSCI World est très exposé aux États-Unis, la performance dépend en partie de l'évolution euro/dollar. La couverture de change élimine ce risque, mais elle a un coût, ce qui explique la performance légèrement inférieure sur 5 ans. Si tu veux éviter le risque de change, c'est une option intéressante.</li>
+<li><strong>Amundi MSCI World II UCITS ETF Dist (FR0010315770) : +78,57 % sur 5 ans.</strong> C'est ma recommandation principale parmi les ETF MSCI World disponibles sur le contrat. Il est géré par Amundi, le premier gestionnaire d'actifs européen, avec des frais très compétitifs. La version "Dist" distribue les dividendes, mais dans une assurance-vie, ces dividendes sont automatiquement réinvestis dans le contrat, ce qui revient au même qu'une version capitalisante en pratique.</li>
+<li><strong>Amundi MSCI World Swap UCITS ETF EUR Acc (LU1681043599) : +76,22 %.</strong> Très proche du précédent en termes de performance. La différence principale réside dans la méthode de réplication : cet ETF utilise des swaps (des contrats dérivés) pour répliquer l'indice plutôt que d'acheter physiquement les actions. Cela peut avoir des implications fiscales dans certains cas, mais dans une assurance-vie, ça ne change généralement rien pour toi.</li>
+<li><strong>iShares Core MSCI World ETF EUR H Dist (IE00BKBF6H24) : +63,99 %.</strong> La mention "H" signifie que cet ETF est couvert contre les fluctuations du dollar (hedgé). Comme le MSCI World est très exposé aux États-Unis, la performance dépend en partie de l'évolution euro/dollar. La couverture de change élimine ce risque, mais elle a un coût, ce qui explique la performance légèrement inférieure sur 5 ans. Si tu veux éviter le risque de change, c'est une option intéressante.</li>
 </ol>
 
 <p>Ma recommandation : pour une stratégie simple et efficace de long terme, l'Amundi MSCI World II UCITS ETF Dist est un excellent choix de base. Il offre une diversification maximale, des frais bas, et une performance en ligne avec les marchés mondiaux.</p>
@@ -171,12 +169,12 @@ related_posts:
 
 <p>Le S&amp;P 500, c'est le grand indice américain. Il regroupe les 500 plus grandes entreprises cotées aux États-Unis : Apple, Microsoft, Amazon, Alphabet, Nvidia, Tesla, JPMorgan... C'est l'indice le plus suivi au monde, et il a historiquement généré des performances très solides sur le long terme, de l'ordre de 10 % par an en moyenne sur les 50 dernières années (avant inflation).</p>
 
-<p>Le S&amp;P 500 est souvent comparé au MSCI World. La différence principale : le S&amp;P 500 est exclusivement américain, tandis que le MSCI World diversifie sur 23 pays. Comme les États-Unis représentent environ 70 % du MSCI World, les deux indices ont tendance à évoluer de manière très corrélée. Choisir l'un ou l'autre est souvent une question de préférence et de conviction sur la place de l'Amérique dans l'économie mondiale.</p><table><thead><tr><th>Colonne 1</th><th>Colonne 2</th></tr></thead><tbody><tr><td>—Amundi S&amp;P 500 II UCITS ETF EUR Dist</td><td>—+92,18 %</td></tr><tr><td>—Amundi S&amp;P 500 UCITS ETF EUR (C)</td><td>—+91,55 %</td></tr><tr><td>—BNP Paribas Easy S&amp;P 500 UCITS ETF EUR C&nbsp;</td><td>—+89,79 %</td></tr></tbody></table><p><br>Sur Linxea Spirit 2, voici les meilleurs ETF S&amp;P 500 sur 5 ans :</p>
+<p>Le S&amp;P 500 est souvent comparé au MSCI World. La différence principale : le S&amp;P 500 est exclusivement américain, tandis que le MSCI World diversifie sur 23 pays. Comme les États-Unis représentent environ 70 % du MSCI World, les deux indices ont tendance à évoluer de manière très corrélée. Choisir l'un ou l'autre est souvent une question de préférence et de conviction sur la place de l'Amérique dans l'économie mondiale.</p><table><thead><tr><th>ETF</th><th>Rendement</th></tr></thead><tbody><tr><td>Amundi S&amp;P 500 II UCITS ETF EUR Dist</td><td>+92,18 %</td></tr><tr><td>Amundi S&amp;P 500 UCITS ETF EUR (C)</td><td>+91,55 %</td></tr><tr><td>BNP Paribas Easy S&amp;P 500 UCITS ETF EUR C&nbsp;</td><td>+89,79 %</td></tr></tbody></table><p><br>Sur Linxea Spirit 2, voici les meilleurs ETF S&amp;P 500 sur 5 ans :</p>
 
 <ol>
-<li><strong>Amundi S&amp;P 500 II UCITS ETF EUR Dist : +92,18 % sur 5 ans.</strong> Excellent ETF, avec des frais parmi les plus bas du marché pour cet indice. La version distribuante permet de voir les dividendes crédités, mais dans une assurance-vie, ils sont réinvestis automatiquement. C'est mon premier choix pour une exposition au S&amp;P 500 via Linxea Spirit 2.</li>
-<li><strong>Amundi S&amp;P 500 UCITS ETF EUR (C) : +91,55 %.</strong> Même ETF, version capitalisante. Les dividendes sont réinvestis directement dans le fonds, ce qui est plus efficace fiscalement et pratiquement. La performance est légèrement inférieure sur 5 ans, ce qui peut s'expliquer par des différences de timing dans le réinvestissement des dividendes ou de légères variations dans les frais. Les deux versions sont excellentes.</li>
-<li><strong>BNP Paribas Easy S&amp;P 500 UCITS ETF EUR C : +89,79 %.</strong> Alternative proposée par BNP Paribas Asset Management. Performance très proche des deux précédents. Si les deux premiers ne sont pas disponibles à un moment donné ou si tu préfères diversifier les émetteurs d'ETF, c'est une bonne option de substitution.</li>
+<li><strong>Amundi S&amp;P 500 II UCITS ETF EUR Dist (LU0496786574) : +92,18 % sur 5 ans.</strong> Excellent ETF, avec des frais parmi les plus bas du marché pour cet indice. La version distribuante permet de voir les dividendes crédités, mais dans une assurance-vie, ils sont réinvestis automatiquement. C'est mon premier choix pour une exposition au S&amp;P 500 via Linxea Spirit 2.</li>
+<li><strong>Amundi S&amp;P 500 UCITS ETF EUR (C) (LU1681048804) : +91,55 %.</strong> Même ETF, version capitalisante. Les dividendes sont réinvestis directement dans le fonds, ce qui est plus efficace fiscalement et pratiquement. La performance est légèrement inférieure sur 5 ans, ce qui peut s'expliquer par des différences de timing dans le réinvestissement des dividendes ou de légères variations dans les frais. Les deux versions sont excellentes.</li>
+<li><strong>BNP Paribas Easy S&amp;P 500 UCITS ETF EUR C (FR0011550185) : +89,79 %.</strong> Alternative proposée par BNP Paribas Asset Management. Performance très proche des deux précédents. Si les deux premiers ne sont pas disponibles à un moment donné ou si tu préfères diversifier les émetteurs d'ETF, c'est une bonne option de substitution.</li>
 </ol>
 
 <p>À noter : les performances du S&amp;P 500 sur 5 ans (+92 %) sont supérieures à celles du MSCI World (+78 %). Cela reflète la surperformance des actions américaines sur la période récente. Rien ne garantit que cette dynamique continuera indéfiniment. Les investisseurs qui veulent éviter de concentrer tous leurs œufs dans le panier américain préféreront le MSCI World.</p>
@@ -185,14 +183,12 @@ related_posts:
 
 <p>Le Nasdaq-100, c'est l'indice des 100 plus grandes entreprises technologiques cotées sur le Nasdaq américain. On y retrouve les monstres de la tech : Apple, Microsoft, Nvidia, Meta, Amazon, Alphabet, Tesla, Netflix... C'est l'indice le plus performant de ces 15 dernières années, mais aussi l'un des plus volatils. En 2022, il a perdu plus de 30 %. En 2023, il a rebondi de plus de 50 %.</p>
 
-<p>Investir dans le Nasdaq-100, c'est faire un pari concentré sur la technologie américaine. C'est une excellente chose si tu crois que les grandes entreprises tech continueront à dominer l'économie mondiale. C'est un pari risqué si tu t'attends à un retournement de valorisation dans le secteur.</p><table><thead><tr><th>Colonne 1</th><th>Colonne 2</th></tr></thead><tbody><tr><td>—Amundi Nasdaq-100 II UCITS ETF Acc</td><td>—+106,58 % sur 5 ans</td></tr><tr><td>—Amundi Nasdaq-100 II UCITS ETF EUR Hedged Acc</td><td>—+78,40 %</td></tr><tr><td>—BNP Paribas Easy II Nasdaq 100 UCITS ETF USD Acc</td><td>—NC</td></tr></tbody></table><p><br><br></p><p><br></p>
-
-<p>Sur Linxea Spirit 2, voici les meilleurs ETF Nasdaq-100 sur 5 ans :</p>
+<p>Investir dans le Nasdaq-100, c'est faire un pari concentré sur la technologie américaine. C'est une excellente chose si tu crois que les grandes entreprises tech continueront à dominer l'économie mondiale. C'est un pari risqué si tu t'attends à un retournement de valorisation dans le secteur.</p><table><thead><tr><th>ETF</th><th>Rendement</th></tr></thead><tbody><tr><td>Amundi Nasdaq-100 II UCITS ETF Acc</td><td>+106,58 % sur 5 ans</td></tr><tr><td>Amundi Nasdaq-100 II UCITS ETF EUR Hedged Acc</td><td>+78,40 %</td></tr><tr><td>BNP Paribas Easy II Nasdaq 100 UCITS ETF USD Acc</td><td>NC</td></tr></tbody></table><p>Sur Linxea Spirit 2, voici les meilleurs ETF Nasdaq-100 sur 5 ans :</p>
 
 <ol>
-<li><strong>Amundi Nasdaq-100 II UCITS ETF Acc : +106,58 % sur 5 ans.</strong> C'est l'ETF Nasdaq le plus performant sur 5 ans disponible sur le contrat. La version capitalisante réinvestit automatiquement les dividendes (qui sont très faibles sur cet indice), ce qui est optimal dans une assurance-vie. C'est mon premier choix pour une exposition au Nasdaq-100.</li>
-<li><strong>Amundi Nasdaq-100 II UCITS ETF EUR Hedged Acc : +78,40 %.</strong> Même indice, mais avec une couverture contre le risque de change euro/dollar. La performance sur 5 ans est nettement inférieure (+78 % contre +106 %), ce qui montre que le dollar a été favorable aux investisseurs européens sur cette période. Si tu veux te protéger contre une éventuelle baisse du dollar par rapport à l'euro, cette version couverte est là, mais elle a un coût réel.</li>
-<li><strong>BNP Paribas Easy II Nasdaq 100 UCITS ETF USD Acc.</strong> Alternative de BNP Paribas, bonne option pour diversifier les émetteurs. Les performances sont comparables à l'ETF Amundi non couvert. C'est un choix valide si tu préfères ne pas concentrer tous tes ETF chez le même gestionnaire.</li>
+<li><strong>Amundi Nasdaq-100 II UCITS ETF Acc (LU1829221024) : +106,58 % sur 5 ans.</strong> C'est l'ETF Nasdaq le plus performant sur 5 ans disponible sur le contrat. La version capitalisante réinvestit automatiquement les dividendes (qui sont très faibles sur cet indice), ce qui est optimal dans une assurance-vie. C'est mon premier choix pour une exposition au Nasdaq-100.</li>
+<li><strong>Amundi Nasdaq-100 II UCITS ETF EUR Hedged Acc (LU1954152853) : +78,40 %.</strong> Même indice, mais avec une couverture contre le risque de change euro/dollar. La performance sur 5 ans est nettement inférieure (+78 % contre +106 %), ce qui montre que le dollar a été favorable aux investisseurs européens sur cette période. Si tu veux te protéger contre une éventuelle baisse du dollar par rapport à l'euro, cette version couverte est là, mais elle a un coût réel.</li>
+<li><strong>BNP Paribas Easy II Nasdaq 100 UCITS ETF USD Acc (IE000QDFFK00).</strong> Alternative de BNP Paribas, bonne option pour diversifier les émetteurs. Les performances sont comparables à l'ETF Amundi non couvert. C'est un choix valide si tu préfères ne pas concentrer tous tes ETF chez le même gestionnaire.</li>
 </ol>
 
 <p>Une précision importante : le Nasdaq-100 n'est pas synonyme de diversification. Avec seulement 100 entreprises et une forte concentration sur quelques géants (Apple, Microsoft et Nvidia représentent souvent plus de 20 % de l'indice à eux trois), c'est un pari sectoriel plus qu'une stratégie de diversification. Je le recommande en complément d'un socle MSCI World, pas à la place.</p>
@@ -201,14 +197,12 @@ related_posts:
 
 <p>Les marchés émergents, ce sont les pays dont l'économie est en plein développement : Chine, Inde, Brésil, Taïwan, Corée du Sud (parfois classée en développé), Mexique, Afrique du Sud... Ces pays représentent une part croissante du PIB mondial et offrent un potentiel de croissance supérieur aux marchés développés. En contrepartie, ils s'accompagnent de risques spécifiques : instabilité politique, risque de change, transparence comptable variable, dépendance aux matières premières...</p>
 
-<p>Sur 5 ans, les marchés émergents ont sous-performé les marchés développés, notamment à cause des difficultés de l'économie chinoise (bulle immobilière, tensions géopolitiques, politique zéro Covid prolongée). Mais beaucoup d'experts estiment que cette sous-performance crée une opportunité pour les investisseurs à long terme, notamment via l'Inde qui pourrait devenir le moteur de croissance mondial des prochaines décennies.</p><table><thead><tr><th>Colonne 1</th><th>Colonne 2</th></tr></thead><tbody><tr><td>—iShares Core MSCI EM IMI UCITS ETF USD (Acc)</td><td>—+49,03 %</td></tr><tr><td>—Amundi MSCI Emerging Markets UCITS ETF EUR (C)</td><td>—+48,82 %</td></tr><tr><td>—BNP Paribas Easy MSCI Emerging Min TE UCITS ETF</td><td>—+46,43 %</td></tr></tbody></table><p><br><br></p><p><br></p>
-
-<p>Sur Linxea Spirit 2, voici les meilleurs ETF Marchés émergents sur 5 ans :</p>
+<p>Sur 5 ans, les marchés émergents ont sous-performé les marchés développés, notamment à cause des difficultés de l'économie chinoise (bulle immobilière, tensions géopolitiques, politique zéro Covid prolongée). Mais beaucoup d'experts estiment que cette sous-performance crée une opportunité pour les investisseurs à long terme, notamment via l'Inde qui pourrait devenir le moteur de croissance mondial des prochaines décennies.</p><table><thead><tr><th>ETF</th><th>Rendement</th></tr></thead><tbody><tr><td>iShares Core MSCI EM IMI UCITS ETF USD (Acc)</td><td>+49,03 %</td></tr><tr><td>Amundi MSCI Emerging Markets UCITS ETF EUR (C)</td><td>+48,82 %</td></tr><tr><td>BNP Paribas Easy MSCI Emerging Min TE UCITS ETF</td><td>+46,43 %</td></tr></tbody></table><p>Sur Linxea Spirit 2, voici les meilleurs ETF Marchés émergents sur 5 ans :</p>
 
 <ol>
-<li><strong>iShares Core MSCI EM IMI UCITS ETF USD (Acc) : +49,03 % sur 5 ans.</strong> C'est l'ETF marchés émergents le plus complet disponible sur le contrat. La mention IMI (Investable Market Index) signifie qu'il inclut les grandes, moyennes et petites capitalisations, ce qui offre une exposition très large. C'est mon premier choix pour les émergents.</li>
-<li><strong>Amundi MSCI Emerging Markets UCITS ETF EUR (C) : +48,82 %.</strong> Performance très proche du précédent. ETF classique sur les marchés émergents, géré par Amundi. Une bonne alternative si tu préfères rester chez un gérant européen.</li>
-<li><strong>BNP Paribas Easy MSCI Emerging Min TE UCITS ETF : +46,43 %.</strong> Cet ETF cherche à minimiser l'erreur de suivi (tracking error) par rapport à l'indice MSCI Emerging Markets. En pratique, la performance est légèrement inférieure aux deux précédents sur 5 ans, mais reste dans le même ordre de grandeur.</li>
+<li><strong>iShares Core MSCI EM IMI UCITS ETF USD (Acc) (IE00BKM4GZ66) : +49,03 % sur 5 ans.</strong> C'est l'ETF marchés émergents le plus complet disponible sur le contrat. La mention IMI (Investable Market Index) signifie qu'il inclut les grandes, moyennes et petites capitalisations, ce qui offre une exposition très large. C'est mon premier choix pour les émergents.</li>
+<li><strong>Amundi MSCI Emerging Markets UCITS ETF EUR (C) (LU1681045370) : +48,82 %.</strong> Performance très proche du précédent. ETF classique sur les marchés émergents, géré par Amundi. Une bonne alternative si tu préfères rester chez un gérant européen.</li>
+<li><strong>BNP Paribas Easy MSCI Emerging Min TE UCITS ETF (LU1291097779) : +46,43 %.</strong> Cet ETF cherche à minimiser l'erreur de suivi (tracking error) par rapport à l'indice MSCI Emerging Markets. En pratique, la performance est légèrement inférieure aux deux précédents sur 5 ans, mais reste dans le même ordre de grandeur.</li>
 </ol>
 
 <p>Une allocation typique pour un investisseur diversifié pourrait être d'inclure 10 à 20 % de son portefeuille sur les marchés émergents, en complément d'un ETF MSCI World ou S&amp;P 500. Mais ce n'est pas obligatoire. Si les marchés émergents t'inquiètent, un simple ETF MSCI World couvre déjà une partie de ces pays (Chine et Inde commencent à y figurer de plus en plus).</p>
@@ -220,7 +214,7 @@ related_posts:
 <p>Sur Linxea Spirit 2, l'offre d'ETF directement liés au cours de l'or est limitée. Le seul ETF "or" disponible sur 5 ans dans les données que j'ai est le suivant :</p>
 
 <ol>
-<li><strong>Amundi NYSE Arca Gold Bugs UCITS ETF Dist : +106,45 % sur 5 ans.</strong></li>
+<li><strong>Amundi NYSE Arca Gold Bugs UCITS ETF Dist (LU2611731824) : +106,45 % sur 5 ans.</strong></li>
 </ol>
 
 <p>Attention, point très important : cet ETF n'est pas un ETF qui réplique directement le cours de l'or. C'est un ETF qui investit dans des entreprises minières aurifères, c'est-à-dire des sociétés qui extraient de l'or. L'indice qu'il suit (NYSE Arca Gold Bugs) regroupe des mines d'or non couvertes contre les fluctuations du cours de l'or.</p>
@@ -236,9 +230,9 @@ related_posts:
 <p>Mais la période 2020-2023 a été catastrophique pour les obligations. La hausse brutale des taux d'intérêt par les banques centrales a fait chuter mécaniquement les prix des obligations (quand les taux montent, les prix des obligations baissent, c'est une loi fondamentale). C'est pourquoi les performances sur 5 ans des ETF obligataires disponibles sur Linxea Spirit 2 sont négatives :</p>
 
 <ol>
-<li><strong>Amundi Euro Government Bond 3-5Y UCITS ETF Acc : -2,40 % sur 5 ans.</strong> Le moins mauvais des trois. Il investit dans des obligations d'État de la zone euro avec des maturités de 3 à 5 ans. Les obligations courtes durent ont moins souffert de la hausse des taux que les longues durées.</li>
-<li><strong>iShares $ Treasury Bond 7-10Y UCITS ETF USD Acc : -5,28 %.</strong> Obligations américaines d'État à 7-10 ans. La performance intègre également le risque de change euro/dollar sur la période.</li>
-<li><strong>Amundi Euro Government Bond 5-7Y UCITS ETF Acc : -6,71 %.</strong> Obligations d'État zone euro à 5-7 ans. Performance logiquement plus négative que le 3-5Y, car les longues durées souffrent davantage quand les taux montent.</li>
+<li><strong>Amundi Euro Government Bond 3-5Y UCITS ETF Acc (LU1650488494) : -2,40 % sur 5 ans.</strong> Le moins mauvais des trois. Il investit dans des obligations d'État de la zone euro avec des maturités de 3 à 5 ans. Les obligations courtes durent ont moins souffert de la hausse des taux que les longues durées.</li>
+<li><strong>iShares $ Treasury Bond 7-10Y UCITS ETF USD Acc (IE00B3VWN518) : -5,28 %.</strong> Obligations américaines d'État à 7-10 ans. La performance intègre également le risque de change euro/dollar sur la période.</li>
+<li><strong>Amundi Euro Government Bond 5-7Y UCITS ETF Acc (LU1287023003) : -6,71 %.</strong> Obligations d'État zone euro à 5-7 ans. Performance logiquement plus négative que le 3-5Y, car les longues durées souffrent davantage quand les taux montent.</li>
 </ol>
 
 <p>Est-ce que les ETF obligataires ont encore un intérêt ? Oui, mais dans un contexte différent. Maintenant que les taux ont atteint des niveaux élevés et commencent à baisser, les obligations redeviennent attractives. Les prix des obligations devraient mécaniquement monter si les taux continuent de baisser. Les ETF obligataires ont leur place dans un portefeuille diversifié, surtout pour les profils qui veulent réduire la volatilité globale de leur allocation.</p>
@@ -324,5 +318,6 @@ related_posts:
 <p>Je mettrai cet article à jour au fur et à mesure que de nouveaux ETF intéressants seront ajoutés au catalogue de Linxea Spirit 2. Linxea annonce régulièrement de nouveaux fonds, et je surveille de près les ajouts qui pourraient créer des opportunités supplémentaires pour les investisseurs. Si tu veux être prévenu des mises à jour, abonne-toi à la newsletter Monelor ou suis la chaîne YouTube.</p>
 
 <p>En attendant, si tu devais retenir une seule chose de cet article, c'est celle-ci : commence par un ETF MSCI World ou S&amp;P 500 sur Linxea Spirit 2, mets en place des versements réguliers, et laisse le temps faire son travail. C'est simple, c'est efficace, et c'est ce que font la plupart des investisseurs qui s'en sortent bien sur le long terme. Tout le reste, les ETF sectoriels, les thématiques spécialisées, les effets de levier... c'est du bonus pour ceux qui veulent aller plus loin, pas la priorité pour commencer.</p>
+
 
 
