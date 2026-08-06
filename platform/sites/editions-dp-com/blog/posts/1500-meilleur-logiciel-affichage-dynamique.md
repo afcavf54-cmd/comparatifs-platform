@@ -1,8 +1,8 @@
 ---
-title: test
+title: Meilleur logiciel affichage dynamique
 slug: 1500-meilleur-logiciel-affichage-dynamique
 date: 2026-08-06 15:31:58+02:00
-updated: 2026-08-06T15:32:44
+updated: 2026-08-06T15:33:00
 categorie: Marketing
 categories:
 - Marketing
@@ -15,3 +15,4 @@ show_toc: true
 ---
 
 <p>1</p>
+
