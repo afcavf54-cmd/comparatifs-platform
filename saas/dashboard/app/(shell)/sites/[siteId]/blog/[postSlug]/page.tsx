@@ -320,7 +320,8 @@ export default function BlogEditPage() {
       body: JSON.stringify({ path, content: dataUrl, message: `HUB: Blog featured image ${imgName}` }),
     })
     setUploadingFeatured(false)
-    if (!r.ok) { setMsg('✗ Erreur upload'); return }
+    const dataF = await r.json().catch(() => ({}))
+    if (!r.ok || !dataF.ok) { setMsg(`✗ Upload featured échoué : ${dataF.error || 'HTTP ' + r.status}`); return }
     update('featured_image', `/blog/${slug}/${imgName}`)
     setMsg('✓ Featured image uploadée')
     setTimeout(() => setMsg(''), 2500)
@@ -343,7 +344,8 @@ export default function BlogEditPage() {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ path, content: dataUrl, message: `HUB: Blog image ${imgName}` }),
     })
-    if (!r.ok) { setMsg('✗ Erreur upload'); return }
+    const data = await r.json().catch(() => ({}))
+    if (!r.ok || !data.ok) { setMsg(`✗ Upload image échoué : ${data.error || 'HTTP ' + r.status}`); return }
     const publicUrl = `/blog/${slug}/${imgName}`
     const alt = file.name.replace(/\.[^.]+$/, '')
     const imgHtml = `<p><img src="${publicUrl}" alt="${alt}" /></p>`
