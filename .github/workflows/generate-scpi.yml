@@ -128,6 +128,7 @@ jobs:
       # fetch + rebase + push, avec backoff aléatoire pour éviter que tous
       # les workflows retrient simultanément. Max 8 tentatives sur ~2 min.
       - name: Commit generated files
+        continue-on-error: true   # si le push échoue (repo lourd / conflit), on déploie quand même
         run: |
           git config user.name "Viseoweb HUB"
           git config user.email "hub@viseoweb.com"
