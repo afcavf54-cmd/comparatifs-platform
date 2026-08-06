@@ -1,23 +1,26 @@
 ---
 title: Quelles sont les meilleures SCPI du contrat Lixea Spirit 2 ?
 slug: 4296-meilleures-scpi-linxea-spirit-2
-date: 2026-08-03T15:25:43+02:00
-updated: 2026-08-04T14:22:25
+date: 2026-08-03 15:25:43+02:00
+updated: 2026-08-04 14:22:25
 categorie: Assurance vie
 categories:
 - Assurance vie
-meta_title: "SCPI Linxea Spirit 2 : quelles sont les plus performantes ? (Liste à jour)"
-meta_description: "Découvrez les meilleures SCPI disponibles sur Linxea Spirit 2 : comparatif complet, rendements, profils et conseils pour bien choisir via votre assurance vie."
+meta_title: 'SCPI Linxea Spirit 2 : quelles sont les plus performantes ? (Liste à
+  jour)'
+meta_description: 'Découvrez les meilleures SCPI disponibles sur Linxea Spirit 2 :
+  comparatif complet, rendements, profils et conseils pour bien choisir via votre
+  assurance vie.'
 featured_image: /blog/4296-meilleures-scpi-linxea-spirit-2/featured-68786.png
 status: published
 min_words: 2000
 related_posts:
+- 1845-meilleurs-etf-linxea-spirit-2
 - 3327-assurance-vie
 link_anchors:
 - text: meilleure scpi Linxea Spirit 2
   max: 2
 ---
-
 <p>J'ai passé un bon moment à analyser le catalogue complet de <strong>Linxea Spirit 2</strong> pour te faire un tour d'horizon des SCPI disponibles. Parce que franchement, quand on ouvre ce contrat pour la première fois, on se retrouve face à une liste assez longue et on ne sait pas vraiment par où commencer.&nbsp;</p>
 
 <p>Avant d'aller plus loin, une info importante : <strong>la SCPI Iroko Zen n'est plus disponible sur Linxea Spirit 2</strong>, ni à l'achat en versement libre, ni en arbitrage. Si tu l'avais repérée dans d'anciens comparatifs ou articles, c'est une information qui date. On ne peut plus y accéder via ce contrat aujourd'hui.</p><p>Maintenant, regardons ce qui est disponible. Je vais te présenter chaque SCPI une par une, avec les infos qui comptent vraiment : ce qu'elle fait, comment elle se positionne, et à qui elle peut convenir. L'idée, c'est que tu ressortes de cet article avec une vraie vision d'ensemble, pas juste une liste de noms barbares.</p><h2>Les 3 SCPI qui ont le meilleur rendement sur Linxea Spirit 2</h2><p>Pour les plus impatients, je vous ai listé les 3 SCPI disponibles dans le contrat Linxea Spirit 2 qui ont les meilleurs rendements sur les 5 dernières années. Bien entendu, on ne juge pas une SCPI sur son rendement uniquement, je vous ai donc indiqué plus bas les caractéristiques de chaque SCPI pour vous permettre de faire votre propre opinion.</p><table><thead><tr><th>SCPI</th><th>Moyenne 5 ans</th><th>2025</th><th>2024</th><th>2023</th><th>2022</th><th>2021</th></tr></thead><tbody><tr><td>PERIAL Opportunités Europe</td><td>5,69%</td><td>6,1%</td><td>6,27%</td><td>5,70%</td><td>5,57%</td><td>4,82%</td></tr><tr><td>ACTIVIMMO</td><td>5,60%</td><td>5,49%</td><td>5,50%</td><td>5,52%</td><td>5,50%</td><td>6,02%</td></tr><tr><td>Altixia Cadence XII</td><td>5,48%</td><td>5,15%</td><td>5,73%</td><td>5,60%</td><td>5,51%</td><td>5,15%</td></tr></tbody></table><h2>Liste des SCPI disponibles sur Linxea Spirit 2</h2><p>Tu retrouveras ci-dessous la liste des différentes SCPI disponibles si tu souhaites investir en SCPI sur ton contrat d'assurance vie Linxea Spirit 2.&nbsp;</p><p>Quelques rappels importants :&nbsp;<br></p><ul><li>Montant minimum : <b>50 € par SCPI</b>.</li><li>Part maximale en SCPI :<b> jusqu'à 50 %</b> de chaque versement (dans la limite de 1 000 000 €).</li><li>Délai de jouissance : perception des loyers à partir <b>du 1er jour du mois suivant l'investissement</b> (loyers réinvestis sur le fonds en euros général Spirica).</li><li>Durée de détention recommandée : <b>au moins 3 ans pour éviter une pénalité</b>.</li><li>Pénalité de sortie anticipée : <b>3 % sur les sommes brutes rachetées en cas d'arbitrage ou de rachat dans les 3 ans suivant l'investissement</b>.</li><li>Versements programmés : non disponibles sur les SCPI.</li></ul>
