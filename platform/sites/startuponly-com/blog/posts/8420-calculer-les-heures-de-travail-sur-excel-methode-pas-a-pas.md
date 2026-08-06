@@ -4,15 +4,20 @@ slug: 8420-calculer-les-heures-de-travail-sur-excel-methode-pas-a-pas
 date: '2026-08-06T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Calculer ses heures de travail sur Excel : méthode'
-meta_description: Calculer les heures de travail sur Excel sans erreur, c'est possible. Formules, formats de cellules et tableau pas à pas pour un suivi fiable dès aujourd'hui.
+meta_description: Calculer les heures de travail sur Excel sans erreur, c'est possible.
+  Formules, formats de cellules et tableau pas à pas pour un suivi fiable dès aujourd'hui.
 min_words: 1400
 status: published
 featured_image: /blog/8420-calculer-les-heures-de-travail-sur-excel-methode-pas-a-pas.jpg
 link_anchors:
 - text: calcul des heures de travail avec Excel
   max: 5
+related_posts:
+- 7341-tableau-de-calcul-des-heures-de-travail-structure-et-utilisation
+- 8517-logiciel-de-pointage-en-ligne-comment-ca-fonctionne
+- 2738-comment-calculer-les-heures-de-travail-de-ses-salaries
+- 7253-suivi-du-temps-de-travail-methodes-et-outils-disponibles
 ---
-
 <h2>Pourquoi j'ai passé 3 heures sur un tableau Excel avant de comprendre que je faisais faux</h2>
 
 <p>J'ai lancé ma boîte il y a 4 ans. Petite équipe, budget serré. Pendant longtemps, le <strong>calcul des heures de travail</strong> se faisait à la main, dans un carnet. Puis j'ai basculé sur Excel en me disant que ça allait tout régler. Spoiler : ça ne règle rien si tu ne sais pas quelles formules utiliser.</p>
