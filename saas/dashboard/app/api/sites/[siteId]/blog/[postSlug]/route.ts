@@ -61,7 +61,7 @@ async function ghGet(path: string): Promise<{ content: string; sha: string } | n
   }
 }
 
-async function ghPut(path: string, content: string, message: string, sha?: string): Promise<boolean> {
+async function ghPut(path: string, content: string, message: string, sha?: string): Promise<{ ok: boolean; sha?: string }> {
   const body: any = {
     message,
     content: Buffer.from(content, 'utf-8').toString('base64'),
@@ -76,8 +76,12 @@ async function ghPut(path: string, content: string, message: string, sha?: strin
     if (!res.ok) {
       const txt = await res.text().catch(() => '')
       console.error(`[ghPut] ${path} → HTTP ${res.status}`, txt.slice(0, 300))
+      return { ok: false }
     }
-    return res.ok
+    const data = await res.json().catch(() => ({} as any))
+    return { ok: true, sha: data?.content?.sha }
+  } catch {
+    return { ok: false }
   } finally {
     clearTimeout(to)
   }
@@ -240,17 +244,20 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
   if (min_words && Number(min_words) > 0) post.min_words = Number(min_words)
   const raw = serializePost(post as any)
 
+  let newSha: string | undefined
   if (slugChanged) {
     // Créer le nouveau, supprimer l'ancien
-    const okCreate = await ghPut(newPath, raw, `HUB: Rename blog post → ${slug}`)
-    if (!okCreate) return NextResponse.json({ error: 'Erreur création (slug changé)' }, { status: 500 })
+    const created = await ghPut(newPath, raw, `HUB: Rename blog post → ${slug}`)
+    if (!created.ok) return NextResponse.json({ error: 'Erreur création (slug changé)' }, { status: 500 })
+    newSha = created.sha
     const oldFile = await ghGet(oldPath)
     if (oldFile) await ghDelete(oldPath, oldFile.sha, `HUB: Delete old slug ${postSlug}`)
   } else {
-    const ok = await ghPut(newPath, raw, `HUB: Update blog post — ${title}`, sha)
-    if (!ok) return NextResponse.json({ error: 'Erreur sauvegarde' }, { status: 500 })
+    const updated = await ghPut(newPath, raw, `HUB: Update blog post — ${title}`, sha)
+    if (!updated.ok) return NextResponse.json({ error: 'Erreur sauvegarde (conflit de version ? réessaie)' }, { status: 409 })
+    newSha = updated.sha
   }
-  return NextResponse.json({ ok: true, slug })
+  return NextResponse.json({ ok: true, slug, sha: newSha })
   } catch (e: any) {
     console.error('[blog PUT] échec sauvegarde:', e)
     return NextResponse.json({ error: 'Erreur serveur : ' + (e?.message || String(e)) }, { status: 500 })
