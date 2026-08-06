@@ -21,6 +21,9 @@
 <html lang="fr">
 <head>
 {% include "base/_head.html.j2" ignore missing %}
+{% if site.google_site_verification is defined and site.google_site_verification %}
+<meta name="google-site-verification" content="{{ site.google_site_verification }}">
+{% endif %}
 <title>{{ home_title or (site.name + ' — Blog') }}</title>
 <meta name="description" content="{{ home_description or (site.tagline or '') }}">
 <link rel="canonical" href="{{ site.domain }}/">
