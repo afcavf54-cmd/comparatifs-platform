@@ -4,15 +4,21 @@ slug: 2650-email-marketing-definition-objectifs-et-fonctionnement
 date: '2026-08-06T07:00:00+02:00'
 categorie: Marketing
 meta_title: 'Email marketing : définition et objectifs'
-meta_description: Découvrez ce qu'est vraiment l'email marketing, ses objectifs, ses formats et comment il fonctionne pour vendre, fidéliser et engager vos contacts efficacement.
+meta_description: Découvrez ce qu'est vraiment l'email marketing, ses objectifs, ses
+  formats et comment il fonctionne pour vendre, fidéliser et engager vos contacts
+  efficacement.
 min_words: 1600
 status: published
 featured_image: /blog/2650-email-marketing-definition-objectifs-et-fonctionnement.jpg
 link_anchors:
 - text: principes de l'email marketing
   max: 8
+related_posts:
+- 4028-logiciel-emailing-et-sms-comment-combiner-les-deux-canaux
+- 1552-comment-choisir-son-logiciel-d-emailing-criteres-et-methode
+- 5612-logiciel-d-emailing-definition-role-et-fonctionnement
+- 7295-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
 ---
-
 <h2>Ce que l'email marketing veut vraiment dire</h2>
 
 <p>L'email marketing, c'est l'envoi d'emails commerciaux ou informatifs à une liste de contacts, dans le but de vendre, fidéliser ou informer. Simple sur le papier. Mais dans la pratique, c'est une discipline à part entière, avec ses règles, ses outils, ses métriques.</p>
