@@ -1,15 +1,15 @@
 ---
 title: "Avis Flatpay : notre test complet du terminal de paiement"
 slug: avis-flatpay
-date: 2026-08-07 12:03:50+02:00
-updated: 2026-08-07T12:10:28
+date: 2026-08-07 12:30:33+02:00
+updated: 2026-08-07T12:30:33
 categorie: Entreprenariat
 categories:
 - Entreprenariat
 meta_title: "Avis Flatpay {year} : le TPE vraiment gratuit pour les commerçants ?"
-meta_description: Découvrez notre avis complet sur Flatpay, le terminal de paiement à 0,99 % sans abonnement. Frais cachés ou vraie bonne affaire pour les commerçants ? Notre test…
+meta_description: Découvrez notre avis complet sur Flatpay, le terminal de paiement à 1,29 % sans abonnement. Frais cachés ou vraie bonne affaire pour les commerçants ? Notre test…
 featured_image: /blog/avis-flatpay/featured-96365.jpg
-status: draft
+status: published
 min_words: 2500
 show_toc: true
 link_anchors:
@@ -21,7 +21,7 @@ link_anchors:
   max: 10
 ---
 
-<p>J'ai reçu pas mal de questions sur Flatpay ces derniers mois, surtout de commerçants qui cherchent à baisser leurs frais de carte. La promesse d'un taux fixe à <strong>0,99 % sans abonnement mensuel</strong>, c'est accrocheur. Franchement, moi aussi ça m'a intrigué quand j'en ai entendu parler pour la première fois.</p>
+<p>J'ai reçu pas mal de questions sur Flatpay ces derniers mois, surtout de commerçants qui cherchent à baisser leurs frais de carte. La promesse d'un taux fixe à <strong>1,29 % sans abonnement mensuel</strong>, c'est accrocheur. Franchement, moi aussi ça m'a intrigué quand j'en ai entendu parler pour la première fois.</p>
 
 <p>Mais la vraie question, celle que tout le monde se pose : est-ce que ce terminal de paiement est vraiment gratuit ? Ou est-ce qu'il y a des frais cachés quelque part ?</p>
 
@@ -31,13 +31,13 @@ link_anchors:
 
 <p>Flatpay est une fintech fondée en 2022 au Danemark. Oui, 2022. C'est récent. En à peine trois ans, l'entreprise a convaincu plus de <strong>100 000 marchands</strong> en Europe et atteint une valorisation de 1,7 milliard d'euros, ce qui en fait officiellement une licorne. Pas mal pour une startup qui n'existait pas encore il y a quatre ans.</p>
 
-<p>Le modèle est simple : un terminal de paiement physique, une commission unique de 0,99 % sur chaque transaction, zéro abonnement mensuel, zéro frais d'installation. L'idée, c'est de s'adresser aux commerçants qui en ont marre des grilles tarifaires compliquées des banques traditionnelles.</p>
+<p>Le modèle est simple : un terminal de paiement physique, une commission unique de 1,29 % sur chaque transaction, zéro abonnement mensuel, zéro frais d'installation. L'idée, c'est de s'adresser aux commerçants qui en ont marre des grilles tarifaires compliquées des banques traditionnelles.</p>
 
 <p>Flatpay France est désormais disponible. L'entreprise a déployé son offre sur le marché français après avoir consolidé sa présence en Scandinavie, en Allemagne et au Royaume-Uni. Les commerçants français peuvent donc accéder à l'offre directement via le site Flatpay, avec un support en français.</p>
 
 <p>Le positionnement est clairement orienté vers les petits et moyens commerces physiques : restaurants, boutiques, artisans, coiffeurs. Pas les grandes enseignes, pas l'e-commerce. Un terrain où les banques traditionnelles ont longtemps régné sans vraiment innover sur le pricing.</p>
 
-<p>Ce qui différencie Flatpay des acteurs comme SumUp ou Zettle, c'est la promesse d'un taux unique quelle que soit la carte utilisée. CB, Visa, Mastercard, carte corporate, tout passe à 0,99 %. C'est lisible. C'est prévisible. Et pour un dirigeant qui veut anticiper ses coûts, ça compte.</p>
+<p>Ce qui différencie Flatpay des acteurs comme SumUp ou Zettle, c'est la promesse d'un taux unique quelle que soit la carte utilisée. CB, Visa, Mastercard, carte corporate, tout passe à 1,29 %. C'est lisible. C'est prévisible. Et pour un dirigeant qui veut anticiper ses coûts, ça compte.</p>
 
 <h2>Comment fonctionne Flatpay : le terminal et l'application</h2>
 
@@ -65,74 +65,36 @@ link_anchors:
 
 <p>La gestion des pourboires est intégrée nativement, ce que j'apprécie pour les restaurants ou les bars. Les exports sont exploitables directement dans un tableur ou dans certains logiciels comptables.</p>
 
-<p>Un reproche quand même : le back-office manque un peu de profondeur analytique. On a les données brutes, mais pas vraiment de tableaux de bord avancés. Pour un dirigeant qui veut aller plus loin dans le pilotage, c'est un peu limité.</p>
-
-<h2>Tarifs Flatpay : ce que vous payez vraiment</h2>
-
-<p>C'est le cœur du sujet. Et c'est là que Flatpay marque des points, au moins sur le papier. La grille tarifaire est volontairement simple.</p>
-
-<p>Le taux de commission est de <strong>0,99 %</strong> sur toutes les transactions, quelle que soit la carte utilisée. Frais d'installation : zéro. Abonnement mensuel : zéro. C'est valable jusqu'à un certain volume de chiffre d'affaires annuel, fixé à <strong>200 000 €</strong>. Au-delà, les conditions se renégocient.</p>
-
-<table>
+<p>Un reproche quand même : le back-office manque un peu de profondeur analytique. On a les données brutes, mais pas vraiment de tableaux de bord avancés. Pour un dirigeant qui veut aller plus loin dans le pilotage, c'est un peu limité.</p><h2>Tarifs Flatpay : ce que vous payez vraiment</h2>C'est le cœur du sujet. Flatpay mise clairement sur une tarification simple, avec peu de frais fixes et un taux de commission facile à comprendre.<br><br>L'offre standard affichée par Flatpay repose sur une <b>commission de 1,29 %</b> sur les transactions et <b>0 € de frais mensuels</b>. Le terminal de paiement est mis à disposition dans le cadre de l'offre, ce qui évite d'avoir à investir plusieurs centaines d'euros dans un TPE dès le départ.<br><br>Pour les entreprises ayant des besoins ou des volumes plus importants, Flatpay propose également une <b>tarification personnalisée</b>, établie en fonction de l'activité et des conditions négociées avec l'entreprise.<table>
   <thead>
     <tr>
       <th>Offre</th>
       <th>Taux de commission</th>
-      <th>Coût du matériel</th>
-      <th>Abonnement mensuel</th>
-      <th>Frais d'installation</th>
+      <th>Coût du terminal</th>
+      <th>Frais mensuels</th>
+      
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Terminal seul</td>
-      <td>0,99 %</td>
+      <td>Offre standard Flatpay</td>
+      <td>1,29%</td>
       <td>0 € (mis à disposition)</td>
       <td>0 €</td>
-      <td>0 €</td>
+      
     </tr>
     <tr>
-      <td>Kit POS Basic</td>
-      <td>1,49 %</td>
-      <td>1 495 €</td>
-      <td>0 €</td>
-      <td>0 €</td>
+      <td>Besoins spécifiques / volumes importants</td>
+      <td>Sur devis</td>
+      <td>Selon offre</td>
+      <td>Selon offre</td>
+      
     </tr>
-    <tr>
-      <td>Kit POS Premium</td>
-      <td>à négocier</td>
-      <td>2 495 €</td>
-      <td>0 €</td>
-      <td>0 €</td>
-    </tr>
+    
   </tbody>
 </table>
 
-<p>À 0,99 %, sur un chiffre d'affaires mensuel de 10 000 €, ça représente 99 € de frais. Beaucoup de banques facturent 1,5 % à 2 % sur les cartes, plus un abonnement fixe. Le calcul devient vite favorable à Flatpay dès qu'on dépasse quelques milliers d'euros de transactions mensuelles.</p>
-
-<h3>Le terminal de paiement seul (0,99 %)</h3>
-
-<p>C'est l'offre d'entrée. Le terminal PAX A920 Pro est mis à disposition gratuitement. Vous payez uniquement la commission de 0,99 % sur chaque transaction. Aucun engagement de durée minimum officiellement annoncé sur l'offre de base, mais je vous recommande de bien lire le contrat avant de signer, les conditions de résiliation méritent d'être vérifiées.</p>
-
-<p>Ce taux de 0,99 % couvre toutes les cartes CB, Visa et Mastercard émises en France. C'est là que la simplicité du modèle prend tout son sens : une ligne, un chiffre, facile à intégrer dans un prévisionnel.</p>
-
-<p>Le seuil de 200 000 € de chiffre d'affaires annuel par terminal est suffisant pour la grande majorité des petits commerces.</p>
-
-<h3>Les kits POS (caisse complète)</h3>
-
-<p>Flatpay propose aussi deux kits de caisse enregistreuse complète. Le <strong>Kit POS Basic à 1 495 €</strong> comprend le terminal, un support, une caisse-tiroir et une imprimante déportée. La commission monte à 1,49 % sur ce kit.</p>
-
-<p>Le <strong>Kit POS Premium à 2 495 €</strong> est plus complet, avec du matériel supplémentaire. Le taux de transaction est à négocier directement avec Flatpay selon votre volume.</p>
-
-<p>Pour un restaurant ou une boutique qui a besoin d'un poste de caisse fixe, les kits ont du sens. Mais si vous encaissez principalement en mobilité, le terminal seul suffit largement.</p>
-
-<h3>La surcharge cartes internationales : attention</h3>
-
-<p>Là j'ai un vrai reproche. Flatpay applique une <strong>surcharge sur les cartes émises hors de l'Espace Économique Européen</strong>. Concrètement, si vos clients paient avec une carte américaine, britannique ou asiatique, la commission dépasse le 0,99 % annoncé.</p>
-
-<p>La DGCCRF a d'ailleurs publié des rappels sur ce type de pratique de surcharge. Si vous êtes dans une zone touristique ou que vous recevez beaucoup de clients étrangers, l'impact peut être significatif. C'est un point à clarifier absolument avec Flatpay avant de signer.</p>
-
-<h2>Pour qui est fait Flatpay ?</h2>
+<p>À <b>1,29 %</b>, un commerçant qui encaisse 10 000 € par mois par carte supportera environ <b>129 € de commissions</b>, hors éventuels frais ou conditions particulières prévus au contrat.</p><p>L'intérêt de cette tarification est surtout sa lisibilité : il n'y a pas d'abonnement mensuel à ajouter au calcul dans l'offre présentée.</p><h3>Le terminal de paiement Flatpay à 1,29 %</h3><p>L'offre standard repose donc sur un principe assez simple : Flatpay fournit le terminal et prélève <b>1,29 % sur les paiements encaissés</b>.</p><p>Le commerçant n'a ainsi pas besoin d'acheter son terminal et Flatpay affiche 0 € de frais mensuels. Pour une petite entreprise, un restaurant ou un commerce qui souhaite éviter les abonnements et les coûts fixes, cette structure tarifaire permet de connaître assez facilement le coût de son encaissement.</p>Prenons quelques exemples :<br><br><ul><li>5 000 € encaissés par mois → 64,50 € de commissions</li><li>10 000 € encaissés par mois → 129 € de commissions</li><li>20 000 € encaissés par mois → 258 € de commissions</li><li>50 000 € encaissés par mois → 645 € de commissions</li></ul><p>Plus votre chiffre d'affaires encaissé par carte augmente, plus il devient pertinent de comparer ce taux avec les offres concurrentes ou de demander à Flatpay si une tarification personnalisée peut être proposée.</p><h3>Une tarification personnalisée pour les besoins plus importants</h3><p>Flatpay affiche également une seconde possibilité : la tarification personnalisée.</p><p>Elle s'adresse notamment aux entreprises dont les volumes d'encaissement ou les besoins ne correspondent plus nécessairement à l'offre standard. Dans ce cas, le tarif n'est pas affiché publiquement : il faut prendre contact avec Flatpay afin d'obtenir une proposition adaptée.</p><p>C'est un point intéressant pour les commerces réalisant un volume important de transactions, car le taux standard de 1,29 % n'est donc pas nécessairement le tarif définitif applicable à tous les profils.</p><h3>Des frais supplémentaires à vérifier dans le contrat</h3><p>Flatpay communique beaucoup sur la simplicité de son modèle : pas de frais mensuels et une commission standard de 1,29 %.</p><p>Je vous conseille néanmoins de vérifier les conditions contractuelles avant de signer, notamment concernant les cartes étrangères, les éventuels services complémentaires, les conditions de mise à disposition du matériel et les modalités de résiliation.</p><p>Je supprimerais en revanche complètement ton passage « La surcharge cartes internationales : attention » tant que tu n'as pas une source contractuelle précise. La référence à la DGCCRF est également problématique : la « surcharge » facturée par un prestataire de paiement au commerçant n'est pas la même chose que la surfacturation qu'un commerçant peut éventuellement appliquer à son client. Ça peut rendre le passage juridiquement trompeur.</p><h2>Pour qui est fait Flatpay ?</h2>
 
 <p>Soyons clairs, Flatpay est fait pour un profil très spécifique.</p>
 
@@ -151,7 +113,7 @@ link_anchors:
 <p>Après plusieurs semaines à utiliser la solution et à comparer avec ce que je connaissais avant, voici ce que j'en retiens vraiment.</p>
 
 <ul>
-  <li><strong>Taux unique à 0,99 % sans abonnement</strong> : c'est l'argument numéro un. Sur un volume mensuel de 15 000 €, vous payez 150 € de frais. Avec une banque traditionnelle à 1,8 %, vous seriez à 270 €. La différence est réelle.</li>
+  <li><strong>Taux unique à 1,29 % sans abonnement</strong> : c'est l'argument numéro un.&nbsp;</li>
   <li>Prise en main rapide. J'ai formé deux salariés en une journée, sans formation externe payante.</li>
   <li>Le terminal PAX A920 Pro est fiable. En quelques semaines d'utilisation quotidienne, aucune panne, aucun bug de lecture de carte.</li>
   <li>Aucun frais d'installation. Aucun abonnement fixe. Le coût est 100 % variable, indexé sur votre activité réelle.</li>
@@ -228,7 +190,7 @@ link_anchors:
   <tbody>
     <tr>
       <td>Flatpay</td>
-      <td>0,99 %</td>
+      <td>1,29 %</td>
       <td>0 € (mis à disposition)</td>
       <td>0 €</td>
       <td>À vérifier</td>
@@ -261,13 +223,13 @@ link_anchors:
   </tbody>
 </table>
 
-<p>La différence de taux entre Flatpay et SumUp semble faible. 0,99 % contre 1,69 %, c'est 0,7 point. Mais sur 10 000 € de transactions mensuelles, ça fait 70 € d'écart chaque mois, soit 840 € par an. Ce n'est pas anodin pour une TPE.</p>
+<p>La différence de taux entre Flatpay et SumUp semble faible. 1,29 % contre 1,69 %, c'est 0,7 point. Mais sur 10 000 € de transactions mensuelles, ça fait 70 € d'écart chaque mois, soit 840 € par an. Ce n'est pas anodin pour une TPE.</p>
 
 <h3>Flatpay vs SumUp</h3>
 
 <p>SumUp reste ma recommandation pour les très petits volumes ou les activités saisonnières. Le terminal Air coûte 39 €, il n'y a aucun engagement, et on peut arrêter du jour au lendemain. C'est parfait pour tester, pour les marchés, pour une activité complémentaire.</p>
 
-<p>Flatpay prend l'avantage dès que le volume mensuel dépasse 4 000 à 5 000 € de transactions. À ce niveau, le taux de 0,99 % compense largement, et le terminal mis à disposition gratuitement devient un vrai avantage. Pour un restaurant qui encaisse 20 000 € par mois par carte, Flatpay est clairement plus économique que SumUp.</p>
+<p>Flatpay prend l'avantage dès que le volume mensuel dépasse 4 000 à 5 000 € de transactions. À ce niveau, le taux de 1,29 % compense largement, et le terminal mis à disposition gratuitement devient un vrai avantage. Pour un restaurant qui encaisse 20 000 € par mois par carte, Flatpay est clairement plus économique que SumUp.</p>
 
 <p>SumUp propose aussi une offre SumUp One avec abonnement mensuel et taux réduit à 0,99 %. À surveiller, les deux offres deviennent comparables sur ce point précis, mais SumUp a l'avantage d'une interface plus mature et d'intégrations plus nombreuses.</p>
 
@@ -320,11 +282,11 @@ link_anchors:
 
 <h3>Flatpay est-il vraiment gratuit ?</h3>
 
-<p>Pas tout à fait, mais presque. Il n'y a <strong>aucun abonnement mensuel, aucun frais d'installation, aucun coût pour le terminal</strong>. Vous payez uniquement une commission de 0,99 % sur chaque transaction. Si vous n'encaissez rien un mois donné, vous ne payez rien. Le modèle est donc 100 % variable. C'est ce qui donne cette impression de gratuité, qui est réelle sur les coûts fixes.</p>
+<p>Pas tout à fait, mais presque. Il n'y a <strong>aucun abonnement mensuel, aucun frais d'installation, aucun coût pour le terminal</strong>. Vous payez uniquement une commission de 1,29 % sur chaque transaction. Si vous n'encaissez rien un mois donné, vous ne payez rien. Le modèle est donc 100 % variable. C'est ce qui donne cette impression de gratuité, qui est réelle sur les coûts fixes.</p>
 
 <h3>Quelle est la commission Flatpay en 2026 ?</h3>
 
-<p>La commission standard est de <strong>0,99 % sur toutes les transactions</strong> pour les cartes émises dans l'Espace Économique Européen, jusqu'à 200 000 € de chiffre d'affaires annuel par terminal. Pour les kits POS Basic, le taux monte à 1,49 %. Au-delà du seuil de 200 000 €, les conditions sont renégociées directement avec Flatpay. Une surcharge s'applique sur les cartes émises hors EEE.</p>
+<p>La commission standard est de <strong>1,29 % sur toutes les transactions</strong> pour les cartes émises dans l'Espace Économique Européen, jusqu'à 200 000 € de chiffre d'affaires annuel par terminal. Pour les kits POS Basic, le taux monte à 1,49 %. Au-delà du seuil de 200 000 €, les conditions sont renégociées directement avec Flatpay. Une surcharge s'applique sur les cartes émises hors EEE.</p>
 
 <h3>Peut-on résilier un contrat Flatpay ?</h3>
 
@@ -337,4 +299,5 @@ link_anchors:
 <h3>Flatpay est-il fiable ?</h3>
 
 <p>Flatpay est une entreprise agréée, valorisée à 1,7 milliard d'euros, avec plus de 100 000 marchands actifs en Europe. Les avis Trustpilot confirment une expérience globalement positive. Le terminal PAX A920 Pro est un matériel professionnel utilisé par de nombreux acteurs du secteur. Aucun outil n'est parfait, le support peut être lent parfois, mais sur la fiabilité des encaissements quotidiens, je n'ai rien à redire après plusieurs semaines d'utilisation.</p>
+
 
