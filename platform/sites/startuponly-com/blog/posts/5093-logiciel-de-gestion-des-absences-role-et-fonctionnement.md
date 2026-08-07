@@ -4,15 +4,21 @@ slug: 5093-logiciel-de-gestion-des-absences-role-et-fonctionnement
 date: '2026-08-07T19:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logiciel de gestion des absences : rôle et fonctionnement'
-meta_description: Découvrez à quoi sert vraiment un logiciel de gestion des absences, comment il fonctionne et pourquoi il remplace avantageusement vos tableaux Excel dès le premier…
+meta_description: Découvrez à quoi sert vraiment un logiciel de gestion des absences,
+  comment il fonctionne et pourquoi il remplace avantageusement vos tableaux Excel
+  dès le premier…
 min_words: 1400
 status: published
 featured_image: /blog/5093-logiciel-de-gestion-des-absences-role-et-fonctionnement.jpg
 link_anchors:
 - text: logiciel de gestion des absences
   max: 5
+related_posts:
+- 7253-suivi-du-temps-de-travail-methodes-et-outils-disponibles
+- 6943-logiciel-de-pointage-fonctionnement-types-et-criteres-de-choix
+- 1727-badgeuse-en-entreprise-cadre-reglementaire-et-obligations
+- 8420-calculer-les-heures-de-travail-sur-excel-methode-pas-a-pas
 ---
-
 <p>Gérer les absences à la main, j'ai essayé. Tableau Excel, fichier partagé sur Google Drive, post-its sur le bureau... Au bout de six mois, c'était le chaos total. Un salarié pose ses congés, un autre ne sait pas que le premier est absent, et moi je passe vingt minutes à recroiser des données pour vérifier qui est là le jeudi suivant. Franchement, ça m'a agacé au plus haut point.</p>
 
 <p>C'est là que j'ai commencé à chercher un <strong>logiciel de gestion des congés et des absences</strong> digne de ce nom. Et j'ai vite compris que le sujet était beaucoup plus large que ce que j'imaginais au départ.</p>
