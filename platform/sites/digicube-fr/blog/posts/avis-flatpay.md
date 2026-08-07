@@ -1,13 +1,15 @@
 ---
-title: "Avis Flatpay : notre test complet du terminal de paiement"
+title: 'Avis Flatpay : notre test complet du terminal de paiement'
 slug: avis-flatpay
 date: 2026-08-07 12:30:33+02:00
-updated: 2026-08-07T12:30:33
+updated: 2026-08-07 12:30:33
 categorie: Entreprenariat
 categories:
 - Entreprenariat
-meta_title: "Avis Flatpay {year} : le TPE vraiment gratuit pour les commerçants ?"
-meta_description: Découvrez notre avis complet sur Flatpay, le terminal de paiement à 1,29 % sans abonnement. Frais cachés ou vraie bonne affaire pour les commerçants ? Notre test…
+meta_title: 'Avis Flatpay {year} : le TPE vraiment gratuit pour les commerçants ?'
+meta_description: Découvrez notre avis complet sur Flatpay, le terminal de paiement
+  à 1,29 % sans abonnement. Frais cachés ou vraie bonne affaire pour les commerçants
+  ? Notre test…
 featured_image: /blog/avis-flatpay/featured-96365.jpg
 status: published
 min_words: 2500
@@ -19,8 +21,9 @@ link_anchors:
   max: 10
 - text: flatpay
   max: 10
+related_posts:
+- 9961-quel-est-le-tarif-du-logiciel-de-facturation-invoicemaster-evolution
 ---
-
 <p>J'ai reçu pas mal de questions sur Flatpay ces derniers mois, surtout de commerçants qui cherchent à baisser leurs frais de carte. La promesse d'un taux fixe à <strong>1,29 % sans abonnement mensuel</strong>, c'est accrocheur. Franchement, moi aussi ça m'a intrigué quand j'en ai entendu parler pour la première fois.</p>
 
 <p>Mais la vraie question, celle que tout le monde se pose : est-ce que ce terminal de paiement est vraiment gratuit ? Ou est-ce qu'il y a des frais cachés quelque part ?</p>
