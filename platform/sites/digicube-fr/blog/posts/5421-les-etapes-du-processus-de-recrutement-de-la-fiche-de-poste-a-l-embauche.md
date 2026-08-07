@@ -4,12 +4,18 @@ slug: 5421-les-etapes-du-processus-de-recrutement-de-la-fiche-de-poste-a-l-embau
 date: '2026-08-07T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Étapes du processus de recrutement : guide complet'
-meta_description: Découvrez toutes les étapes du processus de recrutement, de la fiche de poste à l'embauche, pour éviter les erreurs de casting et recruter efficacement dès le…
+meta_description: Découvrez toutes les étapes du processus de recrutement, de la fiche
+  de poste à l'embauche, pour éviter les erreurs de casting et recruter efficacement
+  dès le…
 min_words: 1600
 status: published
 featured_image: /blog/5421-les-etapes-du-processus-de-recrutement-de-la-fiche-de-poste-a-l-embauche.jpg
+related_posts:
+- 7426-comment-choisir-un-logiciel-gepp-adapte-a-votre-entreprise
+- 3951-qu-est-ce-que-la-definition-de-la-gestion-des-talents
+- 1586-comment-ameliorer-la-fidelisation-des-talents-en-entreprise
+- 1543-ce-que-la-formation-leadership-nexstep-avance-ne-transforme-pas
 ---
-
 <h2>Ce que j'ai appris en recrutant une vingtaine de personnes en deux ans</h2>
 
 <p>Quand j'ai repris les rênes de ma boîte à Marseille, je ne savais pas vraiment comment structurer un recrutement. Je faisais comme beaucoup : je publiais une annonce rapide, je recevais des CV, je convoquais les gens qui me semblaient bien, et je choisissais à l'instinct. Résultat ? Deux erreurs de casting en moins d'un an. Des gens qui partaient au bout de trois mois. Du temps perdu. De l'argent perdu.</p>
