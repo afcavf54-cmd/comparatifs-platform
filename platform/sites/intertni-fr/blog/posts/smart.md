@@ -1,18 +1,22 @@
 ---
-title: Pourquoi choisir Smart Meeting Pro pour vos tableaux blancs interactifs en entreprise ?
+title: Pourquoi choisir Smart Meeting Pro pour vos tableaux blancs interactifs en
+  entreprise ?
 slug: smart
 date: '2026-08-07T08:00:00+02:00'
 categorie: Logiciels
 meta_title: 'Smart Meeting Pro : le logiciel interactif pour TBI en entreprise'
-meta_description: 'Découvrez pourquoi Smart Meeting Pro s''impose face à Miro ou Klaxoon pour les tableaux blancs interactifs en entreprise : simplicité, compatibilité native et prise…'
+meta_description: 'Découvrez pourquoi Smart Meeting Pro s''impose face à Miro ou Klaxoon
+  pour les tableaux blancs interactifs en entreprise : simplicité, compatibilité native
+  et prise…'
 min_words: 900
 status: published
 featured_image: /blog/smart.jpg
 link_anchors:
 - text: TNI Smart
   max: 5
+related_posts:
+- einstruction-interwrite-learning
 ---
-
 <p>J'ai testé beaucoup de solutions de collaboration visuelle ces deux dernières années. Paperboard, Miro, Klaxoon, et quelques autres moins connus. Quand <strong>Smart Meeting Pro</strong> est arrivé dans notre écosystème, j'avoue que je n'en attendais pas grand-chose. Un outil de plus pour faire des post-its virtuels ? Pas vraiment ce dont on avait besoin.</p>
 
 <p>Et pourtant.</p>

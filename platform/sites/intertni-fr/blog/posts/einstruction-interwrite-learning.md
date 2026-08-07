@@ -13,7 +13,8 @@ featured_image: /blog/einstruction-interwrite-learning.jpg
 link_anchors:
 - text: eInstruction
   max: 5
-related_posts: []
+related_posts:
+- smart
 ---
 <p>Quand on cherche une solution pour animer des réunions, des formations ou des présentations en salle, on tombe forcément sur des noms comme eInstruction et Interwrite Workspace. Deux marques qui ont longtemps occupé le terrain des tableaux blancs interactifs et des logiciels associés. Je vais vous expliquer concrètement ce que ça vaut, ce que ça fait au quotidien, et pour qui c'est réellement utile.</p>
 
