@@ -4,15 +4,21 @@ slug: 5981-plan-comptable-pour-association-structure-et-specificites
 date: '2026-08-08T07:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Plan comptable association : structure et spécificités'
-meta_description: Découvrez la structure du plan comptable pour association loi 1901, ses spécificités par rapport aux entreprises et vos obligations selon la taille de votre…
+meta_description: Découvrez la structure du plan comptable pour association loi 1901,
+  ses spécificités par rapport aux entreprises et vos obligations selon la taille
+  de votre…
 min_words: 1400
 status: published
 featured_image: /blog/5981-plan-comptable-pour-association-structure-et-specificites.jpg
 link_anchors:
 - text: plan comptable propre aux associations
   max: 8
+related_posts:
+- 7173-logiciel-de-comptabilite-et-facturation-comment-les-deux-s-articulent
+- 8673-logiciel-de-comptabilite-simple-a-qui-s-adresse-t-il-et-que-fait-il
+- 7491-comment-fonctionne-un-logiciel-de-comptabilite-en-entreprise
+- 3755-le-marketing-alternatif-face-aux-campagnes-classiques
 ---
-
 <p>Gérer la comptabilité d'une association, c'est un exercice qui ne ressemble à rien d'autre. J'ai accompagné plusieurs structures associatives dans leur mise en conformité comptable, et à chaque fois, la même question revient : est-ce qu'on applique les mêmes règles qu'une entreprise classique ? La réponse courte, c'est non. La réponse longue, c'est ce que je vous explique ici.</p>
 
 <p>Une association loi 1901 n'a pas vocation à générer des bénéfices. Ça paraît évident, mais ça change tout dans la façon d'organiser les comptes. Pas d'actionnaires, pas de dividendes, pas de capital social au sens classique du terme. Les enjeux sont différents, les parties prenantes aussi (financeurs publics, donateurs, bénévoles...), et le plan comptable s'adapte à cette réalité.</p>
