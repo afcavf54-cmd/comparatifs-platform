@@ -4,15 +4,21 @@ slug: 2892-creer-un-planning-du-personnel-sur-excel-methode-pas-a-pas
 date: '2026-08-08T17:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Planning du personnel sur Excel : méthode pas à pas'
-meta_description: 'Créez un planning du personnel sur Excel pas à pas : structure, formules et automatisation pour gérer une équipe de 10 à 30 personnes sans abonnement logiciel.'
+meta_description: 'Créez un planning du personnel sur Excel pas à pas : structure,
+  formules et automatisation pour gérer une équipe de 10 à 30 personnes sans abonnement
+  logiciel.'
 min_words: 1400
 status: published
 featured_image: /blog/2892-creer-un-planning-du-personnel-sur-excel-methode-pas-a-pas.jpg
 link_anchors:
 - text: planning du personnel construit sous Excel
   max: 5
+related_posts:
+- 4773-comment-organiser-un-planning-du-personnel-etapes-et-conseils
+- 9392-comment-fonctionne-un-logiciel-de-planning-en-entreprise
+- 5109-logiciel-de-gestion-de-planning-chantier-fonctionnement-et-utilite
+- 7543-gestion-du-planning-du-personnel-methodes-et-bonnes-pratiques
 ---
-
 <p>Excel, j'y suis revenue plus souvent que je ne le pensais. Même avec des outils SaaS partout, j'ai continué à gérer les plannings de mon équipe sur des fichiers. Pas par nostalgie. Par pragmatisme. Quand ton équipe grossit vite et que tu n'as pas envie de payer un abonnement pour vingt postes, Excel fait le job. À condition de savoir comment le construire correctement.</p>
 
 <p>Je vais te montrer exactement comment je structure un planning du personnel sur Excel, depuis la base jusqu'à l'automatisation partielle. Pas de théorie. Du concret.</p>
