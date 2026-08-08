@@ -4,15 +4,21 @@ slug: 8467-campagne-emailing-comment-la-creer-et-la-piloter
 date: '2026-08-08T17:00:00+02:00'
 categorie: Marketing
 meta_title: 'Campagne emailing : création et pilotage'
-meta_description: 'Créer une campagne emailing efficace demande bien plus qu''écrire un texte. Stratégie, segmentation, délivrabilité : découvrez comment piloter vos envois avec…'
+meta_description: 'Créer une campagne emailing efficace demande bien plus qu''écrire
+  un texte. Stratégie, segmentation, délivrabilité : découvrez comment piloter vos
+  envois avec…'
 min_words: 1500
 status: published
 featured_image: /blog/8467-campagne-emailing-comment-la-creer-et-la-piloter.jpg
 link_anchors:
 - text: piloter une campagne emailing
   max: 8
+related_posts:
+- 6443-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
+- 9102-logiciel-d-envoi-d-emails-en-masse-fonctionnement-et-bonnes-pratiques
+- 9852-strategie-email-marketing-comment-la-construire-efficacement
+- 7295-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
 ---
-
 <h2>Ce que j'ai appris en pilotant mes premières campagnes emailing</h2>
 
 <p>Quand j'ai lancé mes premières campagnes, je pensais que l'emailing c'était simple. On écrit un texte, on appuie sur envoyer, les clients répondent. Spoiler : non. J'ai mis plusieurs mois à comprendre pourquoi mes taux d'ouverture stagnaient autour de 12%, pourquoi certains emails partaient directement en spam, et pourquoi je perdais des abonnés à chaque envoi.</p>
