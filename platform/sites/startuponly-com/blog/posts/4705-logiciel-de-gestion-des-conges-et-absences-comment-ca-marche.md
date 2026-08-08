@@ -4,15 +4,21 @@ slug: 4705-logiciel-de-gestion-des-conges-et-absences-comment-ca-marche
 date: '2026-08-08T07:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logiciel gestion des congés et absences : fonctionnement'
-meta_description: 'Découvrez comment un logiciel de gestion des congés remplace Excel et WhatsApp : demandes, validations, soldes automatisés et zéro erreur pour vos équipes.'
+meta_description: 'Découvrez comment un logiciel de gestion des congés remplace Excel
+  et WhatsApp : demandes, validations, soldes automatisés et zéro erreur pour vos
+  équipes.'
 min_words: 1300
 status: published
 featured_image: /blog/4705-logiciel-de-gestion-des-conges-et-absences-comment-ca-marche.jpg
 link_anchors:
 - text: logiciel de gestion des congés et des absences
   max: 5
+related_posts:
+- 6425-logiciel-de-gestion-des-temps-de-travail-a-quoi-ca-sert-vraiment
+- 6943-logiciel-de-pointage-fonctionnement-types-et-criteres-de-choix
+- 5956-logiciel-de-calcul-des-heures-de-travail-gratuit-ce-qu-il-peut-faire
+- 6136-calcul-des-heures-de-travail-par-mois-methode-et-formules
 ---
-
 <h2>Un logiciel de gestion des congés, c'est quoi concrètement ?</h2>
 
 <p>Quand j'ai lancé ma boîte, je gérais les congés à la main. Un tableau Excel partagé sur Google Drive, des messages WhatsApp du genre "je serai absent la semaine prochaine", et moi qui tentais de tout centraliser le dimanche soir. Spoiler : ça ne marche pas. On se retrouve avec des doublons, des absences non anticipées, et des erreurs de solde qui énervent tout le monde.</p>
