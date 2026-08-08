@@ -12,7 +12,8 @@ featured_image: /blog/idees-cadeau-de-noel-pour-homme-notre-selection-2026.jpg
 link_anchors:
 - text: idée de cadeau de Noël pour un homme
   max: 5
-related_posts: []
+related_posts:
+- idees-cadeau-de-noel-pour-ado-les-meilleures-idees
 ---
 <h2>Trouver le bon cadeau de Noël pour un homme, c'est toujours un défi</h2>
 
