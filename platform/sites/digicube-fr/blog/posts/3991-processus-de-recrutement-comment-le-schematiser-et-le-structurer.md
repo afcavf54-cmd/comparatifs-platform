@@ -4,12 +4,18 @@ slug: 3991-processus-de-recrutement-comment-le-schematiser-et-le-structurer
 date: '2026-08-08T17:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Processus de recrutement : schéma et structure'
-meta_description: Schématiser son processus de recrutement permet d'identifier les blocages, de déléguer efficacement et de garantir une expérience candidat cohérente à chaque étape.
+meta_description: Schématiser son processus de recrutement permet d'identifier les
+  blocages, de déléguer efficacement et de garantir une expérience candidat cohérente
+  à chaque étape.
 min_words: 1300
 status: published
 featured_image: /blog/3991-processus-de-recrutement-comment-le-schematiser-et-le-structurer.jpg
+related_posts:
+- 9121-comment-mettre-en-place-une-strategie-de-talent-management
+- 6542-comment-utiliser-la-matrice-9-box-pour-gerer-les-talents
+- 7426-comment-choisir-un-logiciel-gepp-adapte-a-votre-entreprise
+- 8102-comment-ameliorer-la-retention-des-talents-dans-votre-entreprise
 ---
-
 <h2>Pourquoi schématiser son processus de recrutement ?</h2>
 
 <p>J'ai recruté une vingtaine de personnes en deux ans. Et pendant longtemps, chaque recrutement ressemblait à une improvisation. Un CV reçu par mail, une réponse oubliée, un entretien planifié à la dernière minute. Résultat : des candidats perdus en route, des délais qui s'allongent, et une image employeur qui en prend un coup.</p>
