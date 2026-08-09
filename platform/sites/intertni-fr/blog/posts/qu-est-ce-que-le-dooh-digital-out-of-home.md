@@ -4,15 +4,19 @@ slug: qu-est-ce-que-le-dooh-digital-out-of-home
 date: '2026-08-09T08:00:00+02:00'
 categorie: Affichage dynamique
 meta_title: DOOH, qu'est ce c'est ? (digital out-of-home)
-meta_description: 'Découvrez ce qu''est le DOOH ou digital out-of-home : définition claire, exemples concrets et ce que cette forme de publicité numérique change pour votre…'
+meta_description: 'Découvrez ce qu''est le DOOH ou digital out-of-home : définition
+  claire, exemples concrets et ce que cette forme de publicité numérique change pour
+  votre…'
 min_words: 2500
 status: published
 featured_image: /blog/qu-est-ce-que-le-dooh-digital-out-of-home.jpg
 link_anchors:
 - text: dooh
   max: 15
+related_posts:
+- qu-est-ce-que-le-digital-signage-ou-affichage-dynamique
+- c-est-quoi-une-tv-connectee-tizen
 ---
-
 <p>Le DOOH, c'est un acronyme qu'on entend de plus en plus souvent. Dans les agences media, chez les régies publicitaires, et maintenant dans les couloirs des PME qui réfléchissent à moderniser leur communication. Mais concrètement, qu'est-ce que c'est ? Et surtout, est-ce que ça vous concerne vraiment si vous gérez la comm d'une entreprise de taille intermédiaire ?</p>
 
 <p>Je vais essayer de répondre à ça sans jargon inutile, avec des exemples que vous reconnaîtrez sans doute.</p>

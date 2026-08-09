@@ -14,6 +14,7 @@ link_anchors:
 - text: Tizen
   max: 15
 related_posts:
+- qu-est-ce-que-le-dooh-digital-out-of-home
 - qu-est-ce-que-le-digital-signage-ou-affichage-dynamique
 ---
 <p>Tizen. Je me souviens avoir entendu ce mot pour la première fois lors d'un échange avec un prestataire audiovisuel. J'avais hoché la tête poliment, sans vraiment savoir de quoi il parlait. Un système d'exploitation pour TV, apparemment. Développé par Samsung. Rien de plus dans ma tête à ce moment-là.</p>

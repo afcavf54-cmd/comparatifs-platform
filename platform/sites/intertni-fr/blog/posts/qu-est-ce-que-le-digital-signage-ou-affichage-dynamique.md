@@ -13,6 +13,7 @@ link_anchors:
 - text: digital signage
   max: 20
 related_posts:
+- qu-est-ce-que-le-dooh-digital-out-of-home
 - c-est-quoi-une-tv-connectee-tizen
 ---
 <p>J'ai découvert le digital signage un peu par hasard, lors d'un projet de refonte de notre communication en point de vente. On cherchait à remplacer nos affiches papier par quelque chose de plus moderne, plus réactif. Et là, on m'a parlé d'affichage dynamique. Honnêtement, au départ, je ne savais pas vraiment ce que ça recouvrait. Un écran dans un magasin ? Un tableau de bord dans une usine ? Les deux ? Les définitions que je trouvais étaient soit trop techniques, soit trop vagues.</p>
