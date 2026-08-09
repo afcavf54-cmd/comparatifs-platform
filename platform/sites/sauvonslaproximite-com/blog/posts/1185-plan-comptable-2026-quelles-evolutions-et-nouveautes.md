@@ -4,15 +4,21 @@ slug: 1185-plan-comptable-2026-quelles-evolutions-et-nouveautes
 date: '2026-08-09T12:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Plan comptable 2026 : évolutions et nouveautés'
-meta_description: 'Découvrez les évolutions du plan comptable 2026 : actifs numériques, contrats de location et nouvelles précisions de l''ANC qui changent la pratique comptable au…'
+meta_description: 'Découvrez les évolutions du plan comptable 2026 : actifs numériques,
+  contrats de location et nouvelles précisions de l''ANC qui changent la pratique
+  comptable au…'
 min_words: 1300
 status: published
 featured_image: /blog/1185-plan-comptable-2026-quelles-evolutions-et-nouveautes.jpg
 link_anchors:
 - text: évolutions du plan comptable en 2026
   max: 8
+related_posts:
+- 8135-les-5-etapes-pour-creer-une-facture-en-ligne-gratuite
+- 5884-logiciel-de-comptabilite-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire
+- 4915-plan-comptable-general-structure-numerotation-et-utilisation
+- 3755-le-marketing-alternatif-face-aux-campagnes-classiques
 ---
-
 <p>Vingt ans que je suis les évolutions du plan comptable général. Et franchement, 2026 s'annonce comme une année avec quelques vraies nouveautés, pas juste des ajustements cosmétiques. J'ai passé du temps à éplucher les textes de l'ANC (Autorité des Normes Comptables) et à croiser ça avec ce que je vois au quotidien dans mon travail. Voici ce que vous devez retenir, concrètement.</p>
 
 <h2>Ce qui change vraiment dans la structure du plan comptable général</h2>
