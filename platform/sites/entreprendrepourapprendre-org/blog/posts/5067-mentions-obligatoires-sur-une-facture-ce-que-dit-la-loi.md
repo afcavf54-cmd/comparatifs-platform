@@ -4,15 +4,21 @@ slug: 5067-mentions-obligatoires-sur-une-facture-ce-que-dit-la-loi
 date: '2026-08-09T07:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Mentions obligatoires facture : obligations légales'
-meta_description: 'Mentions légales sur une facture : découvrez ce que la loi impose vraiment pour éviter un refus client, un rejet fiscal ou un redressement lors d''un contrôle.'
+meta_description: 'Mentions légales sur une facture : découvrez ce que la loi impose
+  vraiment pour éviter un refus client, un rejet fiscal ou un redressement lors d''un
+  contrôle.'
 min_words: 1500
 status: published
 featured_image: /blog/5067-mentions-obligatoires-sur-une-facture-ce-que-dit-la-loi.jpg
 link_anchors:
 - text: mentions légales à faire figurer sur une facture
   max: 8
+related_posts:
+- 5334-logiciel-de-facturation-definition-role-et-fonctionnement
+- 4276-comment-creer-une-facture-etapes-et-regles-a-respecter
+- 3033-comment-fonctionne-un-logiciel-de-facturation-en-entreprise
+- 7564-logiciel-de-facturation-professionnel-quelles-fonctionnalites-attendre
 ---
-
 <h2>Ce qu'on oublie souvent sur une facture (et qui peut coûter cher)</h2>
 
 <p>J'ai mis des années à vraiment maîtriser ce sujet. Au début, je faisais mes factures un peu à l'instinct, avec un modèle Word récupéré sur internet. Je mettais mon nom, l'adresse du client, le montant, et basta. Jusqu'au jour où un client m'a demandé mon numéro de TVA intracommunautaire pour une facture internationale. Je ne savais même pas qu'il fallait l'indiquer dans ce cas précis.</p>
