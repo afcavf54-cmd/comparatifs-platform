@@ -4,12 +4,18 @@ slug: 6852-comment-ameliorer-son-processus-de-recrutement-en-entreprise
 date: '2026-08-09T07:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Améliorer son processus de recrutement : méthodes'
-meta_description: Améliorer son processus de recrutement est urgent quand les échecs se répètent. Découvrez les ajustements concrets qui font vraiment la différence en entreprise.
+meta_description: Améliorer son processus de recrutement est urgent quand les échecs
+  se répètent. Découvrez les ajustements concrets qui font vraiment la différence
+  en entreprise.
 min_words: 1400
 status: published
 featured_image: /blog/6852-comment-ameliorer-son-processus-de-recrutement-en-entreprise.jpg
+related_posts:
+- 5868-promesse-d-embauche-ce-qu-il-faut-inclure-pour-etre-en-conformite
+- 8168-comment-ameliorer-la-gestion-des-talents-rh-en-entreprise
+- 8514-bracelet-electronique-au-travail-reglementation-et-respect-de-la-vie-privee
+- 5003-logiciel-de-recrutement-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire
 ---
-
 <h2>Ce que j'ai changé dans ma façon de recruter, et pourquoi c'était urgent</h2>
 
 <p>J'ai recruté trois personnes en deux ans. Deux ont quitté l'entreprise avant la fin de leur période d'essai. Une au bout de six semaines. Quand vous gérez une structure de taille intermédiaire à Marseille, ce genre d'échec vous coûte cher, en temps, en argent, en énergie pour le reste de l'équipe. J'ai fini par me dire que le problème venait peut-être autant de moi que des candidats.</p>
