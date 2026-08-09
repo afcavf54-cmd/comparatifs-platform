@@ -4,15 +4,21 @@ slug: 9884-planning-du-personnel-sur-excel-gratuit-comment-le-construire
 date: '2026-08-09T07:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Planning du personnel Excel gratuit : comment le construire'
-meta_description: Créer un planning du personnel sur Excel gratuitement est possible avec la bonne méthode. Découvrez comment structurer votre fichier pour gérer efficacement une…
+meta_description: Créer un planning du personnel sur Excel gratuitement est possible
+  avec la bonne méthode. Découvrez comment structurer votre fichier pour gérer efficacement
+  une…
 min_words: 1300
 status: published
 featured_image: /blog/9884-planning-du-personnel-sur-excel-gratuit-comment-le-construire.jpg
 link_anchors:
 - text: modèle de planning Excel gratuit
   max: 5
+related_posts:
+- 7613-logiciel-de-gestion-de-planning-gratuit-ce-qu-il-peut-faire
+- 5109-logiciel-de-gestion-de-planning-chantier-fonctionnement-et-utilite
+- 4773-comment-organiser-un-planning-du-personnel-etapes-et-conseils
+- 9392-comment-fonctionne-un-logiciel-de-planning-en-entreprise
 ---
-
 <p>J'ai longtemps géré les plannings de mon équipe sur Excel. Pas parce que c'était parfait. Parce que c'était là, gratuit, et que tout le monde savait à peu près s'en servir. Résultat : des fichiers qui traînent dans cinq dossiers différents, des formules qui explosent quand quelqu'un change une cellule, et un vendredi soir à ressaisir tout à la main parce qu'un salarié a changé d'horaires.</p>
 
 <p>Mais bon. Avec une petite équipe et un budget serré, un <strong>planning du personnel sans frais</strong> reste souvent le premier réflexe. Et ça peut très bien fonctionner, à condition de savoir comment le construire correctement dès le départ.</p>
