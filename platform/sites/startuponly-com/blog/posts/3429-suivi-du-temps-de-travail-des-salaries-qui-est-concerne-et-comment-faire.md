@@ -1,18 +1,25 @@
 ---
-title: 'Suivi du temps de travail des salariés : qui est concerné et comment faire ?'
+title: 'Suivi du temps de travail des salariés : qui est concerné et comment faire
+  ?'
 slug: 3429-suivi-du-temps-de-travail-des-salaries-qui-est-concerne-et-comment-faire
 date: '2026-08-09T10:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Suivi du temps de travail des salariés : qui est concerné'
-meta_description: 'Suivi du temps de travail des salariés : toutes les entreprises sont concernées, quelle que soit leur taille. Découvrez vos obligations légales et comment vous y…'
+meta_description: 'Suivi du temps de travail des salariés : toutes les entreprises
+  sont concernées, quelle que soit leur taille. Découvrez vos obligations légales
+  et comment vous y…'
 min_words: 1400
 status: published
 featured_image: /blog/3429-suivi-du-temps-de-travail-des-salaries-qui-est-concerne-et-comment-faire.jpg
 link_anchors:
 - text: suivi du temps de travail des salariés
   max: 5
+related_posts:
+- 5662-suivi-du-temps-de-travail-quelles-sont-les-obligations-legales
+- 4705-logiciel-de-gestion-des-conges-et-absences-comment-ca-marche
+- 6943-logiciel-de-pointage-fonctionnement-types-et-criteres-de-choix
+- 6425-logiciel-de-gestion-des-temps-de-travail-a-quoi-ca-sert-vraiment
 ---
-
 <h2>Le suivi du temps de travail, c'est pour qui exactement ?</h2>
 
 <p>Bonne question. Parce que non, ce n'est pas réservé aux grandes boîtes avec des DRH et des services juridiques. Quand j'ai lancé ma startup à Bordeaux, j'avais deux salariés. Et j'ai quand même dû m'y coller.</p>
