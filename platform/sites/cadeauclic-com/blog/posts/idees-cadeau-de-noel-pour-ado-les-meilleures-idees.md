@@ -14,6 +14,7 @@ link_anchors:
   max: 5
 related_posts:
 - idees-cadeau-de-noel-pour-homme-notre-selection-2026
+- idees-cadeau-de-noel-pour-un-couple
 ---
 <p>Trouver un cadeau de Noël pour un ado, c'est souvent le casse-tête numéro un de décembre. Trop banal, il fera la grimace. Trop décalé, il ne s'en servira jamais. Et entre les modes qui changent toutes les cinq minutes et les budgets qui s'envolent, difficile de s'y retrouver. J'ai deux enfants, dont un ado de 14 ans, et je peux te dire que j'ai connu les deux extrêmes : le cadeau qui a cartonné et celui qui a fini au fond d'un tiroir dès le lendemain de Noël.</p>
 
