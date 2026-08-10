@@ -2,7 +2,7 @@
 title: 100 Francs Argent 1982 - 2002
 slug: 100-francs-argent-1982-2002
 date: 2026-08-10 16:04:55+02:00
-updated: 2026-08-10T16:04:55
+updated: 2026-08-10T16:06:20
 categorie: blog
 categories:
 - blog
@@ -70,3 +70,4 @@ show_toc: true
 <p>Troisièmement, méfiez-vous des <strong>tirages limités présentés comme des placements</strong> par certains opérateurs. Une pièce commémorative de 100 Francs Argent à 10 000 exemplaires peut se vendre bien au-dessus de sa valeur métal à l'émission, mais la liquidité secondaire reste parfois décevante. Pour l'investissement pur, je privilégie personnellement les millésimes courants de la série Panthéon, disponibles en quantité raisonnable et reconnus par tous.</p>
 
 <p>Enfin, sur le plan fiscal, les pièces en argent ne bénéficient pas du même régime que les pièces d'or. En France, les cessions d'argent physique sont soumises à la <strong>taxe forfaitaire sur les métaux précieux</strong> (11,5 % sur le prix de cession, prélèvements sociaux inclus) ou, sur option, au régime des plus-values. Ce point mérite d'être intégré dans votre calcul de rentabilité avant tout achat.</p>
+
