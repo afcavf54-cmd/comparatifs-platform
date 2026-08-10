@@ -4,15 +4,19 @@ slug: idees-cadeau-de-noel-a-petit-budget
 date: '2026-08-10T18:00:00+02:00'
 categorie: Noël
 meta_title: 'Idée cadeau Noël petit budget : 50 idées sans se ruiner'
-meta_description: 'Trouvez les meilleures idées cadeau de Noël à petit budget : sélection testée et comparée pour faire plaisir sans dépenser plus de 30 euros.'
+meta_description: 'Trouvez les meilleures idées cadeau de Noël à petit budget : sélection
+  testée et comparée pour faire plaisir sans dépenser plus de 30 euros.'
 min_words: 1100
 status: published
 featured_image: /blog/idees-cadeau-de-noel-a-petit-budget.jpg
 link_anchors:
 - text: idée de cadeau de Noël à petit budget
   max: 5
+related_posts:
+- idees-cadeau-de-noel-pour-ado-les-meilleures-idees
+- idees-cadeau-de-noel-pour-un-couple
+- idees-cadeau-de-noel-pour-homme-notre-selection-2026
 ---
-
 <p>Chaque année, c'est la même histoire. On veut faire plaisir à tout le monde sans vider son compte en banque avant même le 25 décembre. Et franchement, avec deux enfants, des cadeaux pour les beaux-parents, ma sœur, ma meilleure amie et les collègues du bureau, le budget grimpe vite. Vraiment vite.</p>
 
 <p>Mais j'ai appris, avec les années, qu'un petit budget ne veut pas dire cadeau décevant. Ça demande juste un peu plus de réflexion et quelques bonnes adresses. Je partage ici tout ce que j'ai testé, comparé et parfois regretté, pour que toi tu gagnes du temps.</p>

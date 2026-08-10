@@ -15,6 +15,7 @@ link_anchors:
   max: 5
 related_posts:
 - idees-cadeau-de-noel-pour-ado-les-meilleures-idees
+- idees-cadeau-de-noel-a-petit-budget
 - idees-cadeau-de-noel-pour-homme-notre-selection-2026
 ---
 <p>Trouver un cadeau pour un couple, c'est souvent l'une des missions les plus casse-tête de décembre. Trop banal, ça fait sourire poliment. Trop personnel, ça peut mettre mal à l'aise. Et si tu achètes deux cadeaux séparés, tu risques de finir avec un budget qui double sans vraiment faire d'effet. J'ai vécu ça des dizaines de fois. Alors avec les années, j'ai fini par trouver quelques formules qui fonctionnent vraiment, que le couple soit récent ou installé depuis longtemps.</p>
