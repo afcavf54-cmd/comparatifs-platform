@@ -4,15 +4,21 @@ slug: 1824-planning-de-rotation-du-personnel-sur-excel-structure-et-mise-en-plac
 date: '2026-08-10T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Planning rotation du personnel Excel : mise en place'
-meta_description: Créer un planning de rotation du personnel sur Excel sans que tout s'effondre, c'est possible. Découvrez la structure et les formules clés pour un fichier fiable.
+meta_description: Créer un planning de rotation du personnel sur Excel sans que tout
+  s'effondre, c'est possible. Découvrez la structure et les formules clés pour un
+  fichier fiable.
 min_words: 1300
 status: published
 featured_image: /blog/1824-planning-de-rotation-du-personnel-sur-excel-structure-et-mise-en-place.jpg
 link_anchors:
 - text: planning de rotation sur Excel
   max: 5
+related_posts:
+- 3925-logiciel-de-gestion-de-planning-open-source-avantages-et-limites
+- 9884-planning-du-personnel-sur-excel-gratuit-comment-le-construire
+- 4773-comment-organiser-un-planning-du-personnel-etapes-et-conseils
+- 2892-creer-un-planning-du-personnel-sur-excel-methode-pas-a-pas
 ---
-
 <p>Gérer les rotations de personnel sur Excel, c'est souvent le premier réflexe. C'est gratuit, tout le monde connaît, et on peut bricoler un truc fonctionnel assez vite. J'ai moi-même démarré comme ça avec mon équipe. Résultat : un fichier de 12 onglets, des formules qui sautent dès qu'on insère une ligne, et des managers qui m'appellent le dimanche pour me dire que le planning est cassé.</p>
 
 <p>Bon. On peut faire mieux. Même sur Excel.</p>
