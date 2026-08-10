@@ -4,12 +4,18 @@ slug: 7356-processus-de-recrutement-innovant-quelles-approches-adopter
 date: '2026-08-10T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Processus de recrutement innovant : approches et outils'
-meta_description: 'Découvrez comment moderniser votre processus de recrutement : attirer les bons candidats, réduire les délais et éviter les erreurs coûteuses grâce à des approches…'
+meta_description: 'Découvrez comment moderniser votre processus de recrutement : attirer
+  les bons candidats, réduire les délais et éviter les erreurs coûteuses grâce à des
+  approches…'
 min_words: 1300
 status: published
 featured_image: /blog/7356-processus-de-recrutement-innovant-quelles-approches-adopter.jpg
+related_posts:
+- 3951-qu-est-ce-que-la-definition-de-la-gestion-des-talents
+- 7364-comment-construire-une-marque-employeur-attractive
+- 8819-comment-reussir-la-gestion-des-talents-dans-une-pme
+- 5421-les-etapes-du-processus-de-recrutement-de-la-fiche-de-poste-a-l-embauche
 ---
-
 <h2>Ce qui a changé dans le recrutement ces dernières années</h2>
 
 <p>J'ai recruté pendant des années de façon assez classique. On publiait une annonce, on attendait, on triait des CV à la main, on rappelait les candidats qui semblaient corrects. Résultat : on perdait deux à trois semaines à chaque recrutement, et on se retrouvait parfois avec quelqu'un qui ne collait pas vraiment au poste. Ou pire, qui partait au bout de trois mois.</p>
