@@ -13,9 +13,10 @@ link_anchors:
 - text: idée de cadeau de Noël pour un homme
   max: 5
 related_posts:
-- idees-cadeau-de-noel-pour-ado-les-meilleures-idees
-- idees-cadeau-de-noel-pour-un-couple
+- les-cadeaux-de-noel-les-plus-originaux
 - idees-cadeau-de-noel-a-petit-budget
+- idees-cadeau-de-noel-pour-un-couple
+- idees-cadeau-de-noel-pour-ado-les-meilleures-idees
 ---
 <h2>Trouver le bon cadeau de Noël pour un homme, c'est toujours un défi</h2>
 

@@ -13,9 +13,10 @@ link_anchors:
 - text: idée de cadeau de Noël à petit budget
   max: 5
 related_posts:
+- idees-cadeau-de-noel-pour-homme-notre-selection-2026
+- les-cadeaux-de-noel-les-plus-originaux
 - idees-cadeau-de-noel-pour-ado-les-meilleures-idees
 - idees-cadeau-de-noel-pour-un-couple
-- idees-cadeau-de-noel-pour-homme-notre-selection-2026
 ---
 <p>Chaque année, c'est la même histoire. On veut faire plaisir à tout le monde sans vider son compte en banque avant même le 25 décembre. Et franchement, avec deux enfants, des cadeaux pour les beaux-parents, ma sœur, ma meilleure amie et les collègues du bureau, le budget grimpe vite. Vraiment vite.</p>
 

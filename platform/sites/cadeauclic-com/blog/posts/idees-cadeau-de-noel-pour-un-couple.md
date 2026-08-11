@@ -14,6 +14,7 @@ link_anchors:
 - text: idée de cadeau de Noël pour un couple
   max: 5
 related_posts:
+- les-cadeaux-de-noel-les-plus-originaux
 - idees-cadeau-de-noel-pour-ado-les-meilleures-idees
 - idees-cadeau-de-noel-a-petit-budget
 - idees-cadeau-de-noel-pour-homme-notre-selection-2026
