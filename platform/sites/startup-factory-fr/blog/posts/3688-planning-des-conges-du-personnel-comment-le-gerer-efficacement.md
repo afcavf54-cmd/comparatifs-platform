@@ -4,15 +4,21 @@ slug: 3688-planning-des-conges-du-personnel-comment-le-gerer-efficacement
 date: '2026-08-11T17:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Planning des congés du personnel : gestion et organisation'
-meta_description: Gérer le planning des congés du personnel sans erreurs ni conflits demande la bonne méthode. Découvrez les outils et pratiques qui simplifient vraiment la gestion…
+meta_description: Gérer le planning des congés du personnel sans erreurs ni conflits
+  demande la bonne méthode. Découvrez les outils et pratiques qui simplifient vraiment
+  la gestion…
 min_words: 1400
 status: published
 featured_image: /blog/3688-planning-des-conges-du-personnel-comment-le-gerer-efficacement.jpg
 link_anchors:
 - text: suivi des congés du personnel
   max: 5
+related_posts:
+- 3231-logiciel-de-gestion-de-planning-en-restauration-comment-ca-marche
+- 2892-creer-un-planning-du-personnel-sur-excel-methode-pas-a-pas
+- 9392-comment-fonctionne-un-logiciel-de-planning-en-entreprise
+- 2543-comment-faire-un-planning-du-personnel-efficacement
 ---
-
 <p>Gérer les congés de vingt personnes à la main, c'est possible. Gérer les congés de vingt personnes à la main <em>sans se planter</em>, c'est une autre histoire. J'ai fondé ma boîte il y a quelques années, et pendant longtemps j'ai bricolé avec des fichiers partagés, des messages Slack et une feuille collée au mur. Résultat : des doublons, des oublis, un commercial parti en vacances pendant la semaine de notre plus gros salon. Bref.</p>
 
 <p>Depuis, j'ai testé pas mal de méthodes et d'outils. Ce que je partage ici, c'est ce qui fonctionne vraiment pour une équipe de cette taille, avec un budget serré et des collaborateurs qui n'ont pas envie de passer deux heures à apprendre un nouveau logiciel.</p>
