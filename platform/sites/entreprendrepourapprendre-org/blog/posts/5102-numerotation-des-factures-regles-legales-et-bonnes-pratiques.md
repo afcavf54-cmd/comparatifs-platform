@@ -4,15 +4,21 @@ slug: 5102-numerotation-des-factures-regles-legales-et-bonnes-pratiques
 date: '2026-08-11T17:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Numérotation factures : règles légales'
-meta_description: 'Numérotation des factures : découvrez les règles légales à respecter, les formats acceptés et les bonnes pratiques pour éviter tout risque lors d''un contrôle fiscal.'
+meta_description: 'Numérotation des factures : découvrez les règles légales à respecter,
+  les formats acceptés et les bonnes pratiques pour éviter tout risque lors d''un
+  contrôle fiscal.'
 min_words: 1300
 status: published
 featured_image: /blog/5102-numerotation-des-factures-regles-legales-et-bonnes-pratiques.jpg
 link_anchors:
 - text: règles de numérotation des factures
   max: 8
+related_posts:
+- 6148-comment-choisir-son-logiciel-de-facturation-criteres-et-methode
+- 4276-comment-creer-une-facture-etapes-et-regles-a-respecter
+- 6871-comment-fonctionne-un-logiciel-de-facturation-en-entreprise
+- 9089-logiciel-de-facturation-electronique-fonctionnement-et-obligations
 ---
-
 <h2>Ce que dit vraiment la loi sur la numérotation des factures</h2>
 
 <p>J'ai mis du temps à comprendre que la numérotation d'une facture, ce n'est pas juste une question d'organisation interne. C'est une obligation légale. Et quand on gère une petite structure comme la mienne, avec des factures qui partent dans tous les sens entre les clients, les prestataires et les abonnements récurrents, ça peut vite devenir le bazar si on n'a pas mis en place un système dès le départ.</p>
