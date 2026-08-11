@@ -4,15 +4,21 @@ slug: 1461-logiciel-de-suivi-du-temps-de-travail-gratuit-que-peut-on-en-attendre
 date: '2026-08-11T08:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logiciel suivi temps de travail gratuit : ce qu''il offre'
-meta_description: 'Logiciel de suivi du temps de travail gratuit : découvrez ce que ces outils font vraiment bien, leurs limites et comment choisir sans exploser votre budget.'
+meta_description: 'Logiciel de suivi du temps de travail gratuit : découvrez ce que
+  ces outils font vraiment bien, leurs limites et comment choisir sans exploser votre
+  budget.'
 min_words: 1200
 status: published
 featured_image: /blog/1461-logiciel-de-suivi-du-temps-de-travail-gratuit-que-peut-on-en-attendre.jpg
 link_anchors:
 - text: logiciel gratuit de suivi du temps de travail
   max: 5
+related_posts:
+- 7114-legislation-sur-la-badgeuse-en-entreprise-ce-que-dit-la-loi
+- 5093-logiciel-de-gestion-des-absences-role-et-fonctionnement
+- 1727-badgeuse-en-entreprise-cadre-reglementaire-et-obligations
+- 6425-logiciel-de-gestion-des-temps-de-travail-a-quoi-ca-sert-vraiment
 ---
-
 <p>On va être honnêtes deux secondes. Quand on lance une boîte avec 3 ou 4 personnes et un budget serré, payer 30 ou 40 euros par mois pour un logiciel de suivi du temps, c'est pas la priorité. Donc logiquement, on commence à chercher une solution gratuite. Et là, c'est la jungle.</p>
 
 <p>J'ai fait ce chemin. J'ai testé plusieurs outils, gratuits ou en version freemium, pour suivre les heures de mon équipe sans exploser mon budget. Voici ce que j'en retiens vraiment, sans le discours commercial.</p>
