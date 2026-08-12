@@ -2,7 +2,7 @@
 title: Comment acheter un etf sur Linxea Spirit 2 ?
 slug: comment-acheter-un-etf-sur-linxea-spirit-2
 date: 2026-08-12 14:54:49+02:00
-updated: 2026-08-12T15:04:32
+updated: 2026-08-12T15:16:02
 categorie: Assurance vie
 categories:
 - Assurance vie
@@ -60,7 +60,7 @@ show_toc: true
 
 <p>C'est l'étape clé. Tu vas maintenant choisir l'ETF sur lequel réinvestir tes 400 euros.</p>
 
-<p>Commence par vérifier que la case <strong>Je souhaite choisir seul mes supports (Gestion libre)</strong> est bien cochée. Fais défiler la page vers le bas jusqu'à la section <strong>Gestion libre</strong>, puis <strong>Sélection parmi les supports disponibles</strong>.</p>
+<p>Commence par vérifier que la case <strong>Je souhaite choisir seul(e) mes supports (Gestion libre) et/ou déléguer la gestion de tout ou partie de mon épargne à des allocataires experts en gestion financière (Gestion pilotée)&nbsp;</strong>est bien cochée.&nbsp;</p><p>Fais défiler la page vers le bas jusqu'à la section <strong>Gestion libre</strong>, puis <strong>Sélection parmi les supports disponibles</strong>.</p>
 
 <p>Dans le formulaire de recherche, clique sur <strong>Type</strong> et sélectionne <strong>ETF</strong>. Tu verras alors apparaître la liste complète des ETF disponibles sur Linxea Spirit 2. Tu y retrouveras notamment des ETF permettant de s'exposer au MSCI World, au S&amp;P 500 ou encore au Nasdaq 100.</p>
 
@@ -234,4 +234,5 @@ show_toc: true
 <p>Dans les trois cas, le processus passe par la plateforme Sylvéa de Spirica, et les étapes de recherche et sélection de l'ETF sont pratiquement identiques.</p><p>Si tu as une question sur l'achat d'un ETF sur Linxea Spirit 2 ou sur le fonctionnement du contrat en général, pose-la en commentaire sous la vidéo ou directement sur le site. Je lis tous les messages et j'y réponds avec plaisir.</p>
 
 <p>Et si tu n'as pas encore de contrat Linxea Spirit 2, pense à vérifier l'offre de bienvenue disponible en ce moment via mon lien partenaire. Je mets régulièrement ce lien à jour pour te proposer le meilleur bonus du moment.</p>
+
 
