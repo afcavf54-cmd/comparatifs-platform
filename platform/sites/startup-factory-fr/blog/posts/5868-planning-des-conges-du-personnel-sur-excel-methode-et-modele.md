@@ -4,15 +4,21 @@ slug: 5868-planning-des-conges-du-personnel-sur-excel-methode-et-modele
 date: '2026-08-12T07:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Planning congés du personnel sur Excel : méthode et modèle'
-meta_description: 'Gérez les congés de votre équipe avec un planning Excel efficace : calendrier automatisé, compteurs de jours et alertes pour éviter les conflits d''absences.'
+meta_description: 'Gérez les congés de votre équipe avec un planning Excel efficace
+  : calendrier automatisé, compteurs de jours et alertes pour éviter les conflits
+  d''absences.'
 min_words: 1300
 status: published
 featured_image: /blog/5868-planning-des-conges-du-personnel-sur-excel-methode-et-modele.jpg
 link_anchors:
 - text: planning des congés sous Excel
   max: 5
+related_posts:
+- 7613-logiciel-de-gestion-de-planning-gratuit-ce-qu-il-peut-faire
+- 2892-creer-un-planning-du-personnel-sur-excel-methode-pas-a-pas
+- 3688-planning-des-conges-du-personnel-comment-le-gerer-efficacement
+- 4773-comment-organiser-un-planning-du-personnel-etapes-et-conseils
 ---
-
 <p>J'ai longtemps géré les congés de mon équipe avec un simple fichier Excel. Pas glamour. Mais franchement, pour une boîte de 20 à 50 personnes avec zéro budget RH, ça fait le job si tu le construis correctement.</p>
 
 <p>Le problème, c'est que la plupart des plannings que j'ai vus sont des catastrophes : couleurs aléatoires, pas de compteur de jours, aucune règle d'absence simultanée. Le fichier existe, mais personne ne le comprend vraiment. Résultat : des conflits d'absences en pleine période de rush, et des managers qui improvisent.</p>
