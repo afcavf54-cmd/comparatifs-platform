@@ -4,15 +4,20 @@ slug: 6571-facture-proforma-qu-est-ce-que-c-est-et-quand-l-utiliser
 date: '2026-08-12T07:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Facture proforma : définition et utilisation'
-meta_description: 'Facture proforma : découvrez ce qu''est vraiment ce document commercial, quand l''utiliser et comment éviter les erreurs comptables fréquentes.'
+meta_description: 'Facture proforma : découvrez ce qu''est vraiment ce document commercial,
+  quand l''utiliser et comment éviter les erreurs comptables fréquentes.'
 min_words: 1300
 status: published
 featured_image: /blog/6571-facture-proforma-qu-est-ce-que-c-est-et-quand-l-utiliser.jpg
 link_anchors:
 - text: facture proforma et son usage
   max: 8
+related_posts:
+- 3033-comment-fonctionne-un-logiciel-de-facturation-en-entreprise
+- 5102-numerotation-des-factures-regles-legales-et-bonnes-pratiques
+- 7056-logiciel-de-facturation-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire
+- 5334-logiciel-de-facturation-definition-role-et-fonctionnement
 ---
-
 <p>La facture proforma, je l'ai découverte un peu par hasard, lors d'un projet avec un client à l'international qui me demandait un document "avant la vraie facture". J'ai mis un moment à comprendre ce que c'était exactement, ce que ça impliquait, et surtout comment l'utiliser sans me retrouver en tort sur le plan comptable. Depuis, c'est un document que j'utilise régulièrement. Voici ce que j'aurais aimé qu'on m'explique à l'époque.</p>
 
 <h2>Une facture proforma, c'est quoi concrètement ?</h2>
