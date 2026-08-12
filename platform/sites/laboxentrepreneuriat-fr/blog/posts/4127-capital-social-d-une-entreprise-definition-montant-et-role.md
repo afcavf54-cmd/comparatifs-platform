@@ -4,15 +4,20 @@ slug: 4127-capital-social-d-une-entreprise-definition-montant-et-role
 date: '2026-08-12T12:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Capital social entreprise : définition et rôle'
-meta_description: 'Comprenez le rôle du capital social dans votre entreprise : définition claire, montant adapté et impact réel sur vos partenaires, banques et crédits professionnels.'
+meta_description: 'Comprenez le rôle du capital social dans votre entreprise : définition
+  claire, montant adapté et impact réel sur vos partenaires, banques et crédits professionnels.'
 min_words: 1400
 status: published
 featured_image: /blog/4127-capital-social-d-une-entreprise-definition-montant-et-role.jpg
 link_anchors:
 - text: capital social d'une société
   max: 8
+related_posts:
+- 7173-demarches-de-creation-d-entreprise-le-guide-complet
+- 9591-comment-creer-une-entreprise-de-vente-en-ligne-etapes-cles
+- 3581-immatriculation-d-une-entreprise-en-ligne-comment-ca-fonctionne
+- 1781-statut-juridique-d-une-entreprise-definition-et-types
 ---
-
 <h2>Ce que cache vraiment la notion de capital social</h2>
 
 <p>Quand on crée une entreprise, le capital social est l'une des premières décisions à prendre. Et pourtant, c'est souvent l'une des moins bien comprises. J'ai accompagné des dizaines de créateurs d'entreprise à Lyon ces douze dernières années, et je vois encore des gens fixer un montant au hasard, parfois parce qu'un ami leur a dit "mets 1 euro, c'est suffisant". Ça m'a toujours un peu agacé, parce que cette décision a de vraies conséquences.</p>
