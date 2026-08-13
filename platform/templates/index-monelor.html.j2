@@ -228,7 +228,7 @@ a { text-decoration: none; color: inherit; }
             </div>
             <div class="c-hvid-body">
               {% if v.tag %}<span class="c-hvid-tag mono">{{ v.tag }}</span>{% endif %}
-              <h4 class="c-hvid-title">{{ v.title }}</h4>
+              <div class="c-hvid-title">{{ v.title }}</div>
               {% if v.views or v.age %}<div class="c-hvid-meta mono">{% if v.views %}{{ v.views }} vues · {% endif %}{{ v.age }}</div>{% endif %}
             </div>
           </a>
@@ -287,7 +287,7 @@ a { text-decoration: none; color: inherit; }
         {% for post in recent_blog_posts %}
         <a class="c-art" href="/{{ post.slug }}/">
           <div class="c-art-cat">{{ post.categorie or 'Article' }}</div>
-          <h4 class="c-art-title">{{ post.title }}</h4>
+          <div class="c-art-title">{{ post.title }}</div>
           <div class="c-art-meta mono">{% if post.date_display %}{{ post.date_display }}{% endif %}{% if post.reading_time %} · {{ post.reading_time }} min de lecture{% endif %}</div>
           <span class="c-art-arrow">→</span>
         </a>
