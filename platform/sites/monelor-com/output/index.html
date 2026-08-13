@@ -38,7 +38,7 @@ a { text-decoration: none; color: inherit; }
 /* ── Charte "Confiance" — scopée sur .dir-corporate pour ne PAS toucher
    au header / footer monelor (qui gardent leurs propres styles) ────── */
 .dir-corporate{
-  --navy:#000921; --navy-2:#0a1430; --navy-3:#14224a;
+  --navy:var(--ink, #0F1A2E); --navy-2:#0a1430; --navy-3:#14224a;
   --orange:#F68D00; --orange-700:#d97a00;
   --paper:#ffffff; --paper-2:#f4f5f8; --paper-3:#eceef3;
   --ink:#000921; --muted:#5b6478; --line:rgba(0,9,33,0.12);
@@ -300,6 +300,38 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </div>
   </section>
 
+  <section class="c-news" id="newsletter">
+    <div class="c-wrap c-news-in">
+      <div class="c-news-text">
+        <h2 class="c-news-h">Mon suivi de patrimoine, chaque mois.</h2>
+        <p class="c-news-p">Recevez le bilan détaillé de mes investissements, mes arbitrages et mes analyses directement par e-mail. Gratuit, sans spam.</p>
+      </div>
+      <form class="c-news-form" action="#" method="post" onsubmit="return false">
+        <input type="email" class="c-news-input" name="email" placeholder="votre@email.com" aria-label="E-mail" required>
+        <button class="c-btn c-btn-solid c-btn-lg" type="submit">Je m'inscris</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="c-section" id="apropos">
+    <div class="c-wrap c-about">
+      <div class="c-about-photo">
+        <img src="/apropos-julien.jpg" alt="Julien — Monelor" loading="lazy">
+      </div>
+      <div class="c-about-text">
+        <div class="c-sec-kicker">À propos</div>
+        <h2 class="c-h2">Bonjour, moi c'est Julien.</h2>
+        <p class="c-about-p">Investisseur particulier, je partage sur Monelor mon parcours complet vers l'indépendance financière. Pas de promesse miracle : des chiffres réels, mes erreurs, et une méthode patiente répartie entre <b>immobilier locatif</b>, <b>assurance vie</b> et <b>bourse</b>.</p>
+        <p class="c-about-p">Mon ambition : atteindre 1&nbsp;000&nbsp;000&nbsp;€ de patrimoine investi et en vivre. Vous suivez chaque étape ici et sur YouTube.</p>
+        <div class="c-about-stats">
+          <div><span class="mono">203 k€</span><small>investis</small></div>
+          <div><span class="mono">3</span><small>classes d'actifs</small></div>
+          <div><span class="mono">898</span><small>abonnés</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="c-section c-section-alt" id="blog">
     <div class="c-wrap">
       <div class="c-sec-head">
@@ -344,38 +376,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </div>
   </section>
 
-  <section class="c-section" id="apropos">
-    <div class="c-wrap c-about">
-      <div class="c-about-photo">
-        <img src="/apropos-julien.jpg" alt="Julien — Monelor" loading="lazy">
-      </div>
-      <div class="c-about-text">
-        <div class="c-sec-kicker">À propos</div>
-        <h2 class="c-h2">Bonjour, moi c'est Julien.</h2>
-        <p class="c-about-p">Investisseur particulier, je partage sur Monelor mon parcours complet vers l'indépendance financière. Pas de promesse miracle : des chiffres réels, mes erreurs, et une méthode patiente répartie entre <b>immobilier locatif</b>, <b>assurance vie</b> et <b>bourse</b>.</p>
-        <p class="c-about-p">Mon ambition : atteindre 1&nbsp;000&nbsp;000&nbsp;€ de patrimoine investi et en vivre. Vous suivez chaque étape ici et sur YouTube.</p>
-        <div class="c-about-stats">
-          <div><span class="mono">203 k€</span><small>investis</small></div>
-          <div><span class="mono">3</span><small>classes d'actifs</small></div>
-          <div><span class="mono">898</span><small>abonnés</small></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="c-news" id="newsletter">
-    <div class="c-wrap c-news-in">
-      <div class="c-news-text">
-        <h2 class="c-news-h">Mon suivi de patrimoine, chaque mois.</h2>
-        <p class="c-news-p">Recevez le bilan détaillé de mes investissements, mes arbitrages et mes analyses directement par e-mail. Gratuit, sans spam.</p>
-      </div>
-      <form class="c-news-form" action="#" method="post" onsubmit="return false">
-        <input type="email" class="c-news-input" name="email" placeholder="votre@email.com" aria-label="E-mail" required>
-        <button class="c-btn c-btn-solid c-btn-lg" type="submit">Je m'inscris</button>
-      </form>
-    </div>
-  </section>
-
 </div>
 
 <style>
@@ -406,6 +406,8 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       <div class="footer-brand">
         <a href="/" style="display:block;margin-bottom:12px"><img src="/logo.png" alt="monelor.com" style="height:36px;width:auto;object-fit:contain"></a>
         <p>Les contenus, analyses, comparatifs et avis publiés sur Monelor.com sont proposés à titre purement informatif. Ils ne constituent ni un conseil en investissement, ni une recommandation personnalisée au sens des articles L.321-1 et D.321-1 du Code monétaire et financier. Avant toute décision d'investissement, d'épargne ou de placement, nous vous recommandons de consulter un professionnel habilité, en mesure d'évaluer votre situation personnelle et vos objectifs.</p>
+        <div class="footer-socials">
+<a href="https://www.youtube.com/@monelor-com" target="_blank" rel="noopener noreferrer nofollow" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.8-1.8C19.4 5.1 12 5.1 12 5.1s-7.4 0-8.8.4a2.5 2.5 0 0 0-1.8 1.8C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.8 1.8c1.4.4 8.8.4 8.8.4s7.4 0 8.8-.4a2.5 2.5 0 0 0 1.8-1.8C23 15.2 23 12 23 12zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg></a>        </div>
       </div>
       <div class="footer-col">
         <div class="footer-col-label">Navigation</div>
