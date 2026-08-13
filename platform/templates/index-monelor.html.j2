@@ -33,6 +33,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+/* ── Variables de thème (identiques à index-blog) : indispensables pour que
+   les includes _nav / _footer retrouvent leurs couleurs. On NE touche pas
+   au menu ni au footer, on leur redonne juste leur environnement. ────── */
+:root {
+  --accent: {{ theme.accent or '#1B4FD8' }};
+  --accent2: {{ theme.accent2 or '#E8410A' }};
+  --bg: {{ theme.bg or '#FAF9F6' }};
+  --ink: {{ theme.ink or '#0F1419' }};
+  --ink2: #4A5568;
+  --ink3: #8B9CB0;
+  --surface: {{ theme.surface or '#FFFFFF' }};
+  --border: rgba(15, 26, 46, 0.08);
+  --cta: {{ theme.cta_color if theme.cta_color is defined and theme.cta_color else '#F59E0B' }};
+  --cta-text: {{ theme.cta_text_color if theme.cta_text_color is defined and theme.cta_text_color else '#ffffff' }};
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { font-family: {{ theme.font_body or '"Outfit", system-ui, sans-serif' }}; background: var(--bg); color: var(--ink); line-height: 1.65; }
+
 /* ── Charte "Confiance" — scopée sur .dir-corporate pour ne PAS toucher
    au header / footer monelor (qui gardent leurs propres styles) ────── */
 .dir-corporate{
@@ -188,22 +207,24 @@
           <span class="c-hvids-kicker">Les dernières vidéos</span>
         </div>
         <div class="c-hvids">
-          {% set videos = site.youtube_videos | default([
+          {% set _fallback = site.youtube_videos | default([
             {'title': "Mon PEA après 2 mois d'investissement en bourse", 'duration': "5:09", 'views': "705", 'age': "il y a 1 mois", 'tag': "Bourse"},
             {'title': "Gestion pilotée Linxea Spirit 2 : Yomoni vs OTEA vs Natixis", 'duration': "17:37", 'views': "347", 'age': "il y a 2 mois", 'tag': "Assurance vie"},
             {'title': "Gestion libre ou pilotée (Linxea Spirit 2) : laquelle choisir ?", 'duration': "26:51", 'views': "1,1 k", 'age': "il y a 2 mois", 'tag': "Assurance vie"},
             {'title': "TUTO Linxea Spirit 2 : tour complet de l'espace client", 'duration': "14:35", 'views': "3,3 k", 'age': "il y a 3 mois", 'tag': "Tuto"}
           ]) %}
+          {% set videos = youtube_videos if (youtube_videos is defined and youtube_videos) else _fallback %}
           {% for v in videos[:4] %}
-          <a class="c-hvid" href="{{ site.youtube_url | default('https://www.youtube.com/@monelor-com') }}" target="_blank" rel="noopener">
+          <a class="c-hvid" href="{{ v.url | default(site.youtube_url | default('https://www.youtube.com/@monelor-com')) }}" target="_blank" rel="noopener">
             <div class="c-hvid-thumb ph">
+              {% if v.thumbnail %}<img src="{{ v.thumbnail }}" alt="{{ v.title }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">{% endif %}
               <span class="ph-play"></span>
-              <span class="c-hvid-dur mono">{{ v.duration }}</span>
+              {% if v.duration %}<span class="c-hvid-dur mono">{{ v.duration }}</span>{% endif %}
             </div>
             <div class="c-hvid-body">
-              <span class="c-hvid-tag mono">{{ v.tag }}</span>
+              {% if v.tag %}<span class="c-hvid-tag mono">{{ v.tag }}</span>{% endif %}
               <h4 class="c-hvid-title">{{ v.title }}</h4>
-              <div class="c-hvid-meta mono">{{ v.views }} vues · {{ v.age }}</div>
+              {% if v.views or v.age %}<div class="c-hvid-meta mono">{% if v.views %}{{ v.views }} vues · {% endif %}{{ v.age }}</div>{% endif %}
             </div>
           </a>
           {% endfor %}
