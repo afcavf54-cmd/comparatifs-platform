@@ -1,15 +1,15 @@
 ---
 title: Comment acheter un etf sur Linxea Spirit 2 ?
 slug: comment-acheter-un-etf-sur-linxea-spirit-2
-date: 2026-08-12 14:54:49+02:00
-updated: 2026-08-12T15:16:02
+date: 2026-08-13 12:07:07+02:00
+updated: 2026-08-13T12:07:07
 categorie: Assurance vie
 categories:
 - Assurance vie
 meta_title: "Comment acheter des ETF sur l'assurance vie Linxea Spirit 2 ? TUTO {year}"
 meta_description: "Découvrez comment acheter un ETF sur Linxea Spirit 2 en 3 méthodes simples : arbitrage, versement libre ou programmé. Guide pas à pas pour investir facilement."
 featured_image: ""
-status: draft
+status: published
 min_words: 2000
 show_toc: true
 ---
@@ -234,5 +234,6 @@ show_toc: true
 <p>Dans les trois cas, le processus passe par la plateforme Sylvéa de Spirica, et les étapes de recherche et sélection de l'ETF sont pratiquement identiques.</p><p>Si tu as une question sur l'achat d'un ETF sur Linxea Spirit 2 ou sur le fonctionnement du contrat en général, pose-la en commentaire sous la vidéo ou directement sur le site. Je lis tous les messages et j'y réponds avec plaisir.</p>
 
 <p>Et si tu n'as pas encore de contrat Linxea Spirit 2, pense à vérifier l'offre de bienvenue disponible en ce moment via mon lien partenaire. Je mets régulièrement ce lien à jour pour te proposer le meilleur bonus du moment.</p>
+
 
 
