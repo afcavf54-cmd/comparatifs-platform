@@ -1,15 +1,15 @@
 ---
 title: Comment acheter une SCPI sur Linxea Spirit 2 ?
 slug: 4857-comment-acheter-une-scpi-sur-linxea-spirit-2
-date: 2026-08-13 12:06:10+02:00
-updated: 2026-08-13T12:06:53
+date: 2026-08-13 12:07:11+02:00
+updated: 2026-08-13T12:07:11
 categorie: Assurance vie
 categories:
 - Assurance vie
 meta_title: "Comment acheter des SCPI sur l'assurance vie Linxea Spirit 2 ? TUTO {year}"
 meta_description: "Découvrez comment acheter des SCPI sur Linxea Spirit 2 : arbitrage ou versement libre, règles à respecter et étapes à suivre pour investir simplement."
 featured_image: ""
-status: draft
+status: published
 min_words: 2000
 show_toc: true
 ---
@@ -150,4 +150,5 @@ show_toc: true
 <p>Et si tu n'as pas encore de contrat Linxea Spirit 2, c'est le moment d'y penser. C'est l'une des meilleures assurances-vie du marché en termes de frais et de qualité des supports disponibles.&nbsp;</p>
 
 <p>J'espère que cet article t'a aidé à comprendre comment acheter des parts de SCPI sur Linxea Spirit 2. Si tu as une question, n'hésite pas à la poser en commentaire, je fais de mon mieux pour répondre à tout le monde.&nbsp;</p>
+
 
