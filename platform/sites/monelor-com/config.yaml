@@ -7,9 +7,6 @@
 # ============================================================
 
 site:
-  develink_verification: ""
-  rocketlink_verification: ""
-  linkavista_verification: ""
   google_site_verification: "a46aEwx-UfSZyKlK43d0In76yFYjBe9VPKVaCtfVtTE"
   social_youtube: ""
   social_x: ""
@@ -33,8 +30,8 @@ site:
   home_title: "Monelor, le média pour mieux investir et gérer son patrimoine"
   home_description: "Découvrez Monelor, le média dédié à l'investissement, à l'épargne et à la gestion de patrimoine. Conseils, analyses et stratégies pour atteindre vos objectifs financiers."
   template: "comparatif-vs-scpi.html.j2"
-  index_template: "index-blog.html.j2"
-  analytics_clicky: "<script async data-id=\"101510236\" src=\"//static.getclicky.com/js\"></script>"
+  index_template: "index-monelor.html.j2"
+  analytics_clicky: ""
   contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
 
 page_types:
