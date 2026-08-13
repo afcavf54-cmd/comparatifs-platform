@@ -1,0 +1,280 @@
+{# ============================================================
+   index-monelor.html.j2 — Home PERSONNALISÉE monelor.com
+   Direction « Confiance » (design Claude Design, corporate clair).
+   IMPORTANT :
+     - Header (nav) et Footer = includes EXISTANTS (_nav / _footer),
+       donc identiques au reste du site. On ne modifie QUE le contenu
+       central (hero, articles, à propos, newsletter).
+     - Les articles sont les VRAIS articles récents (recent_blog_posts).
+     - Les données créateur (YouTube, patrimoine) sont surchargeables via
+       config.yaml (site.youtube_url, site.youtube_subs, etc.) avec les
+       valeurs réelles par défaut.
+   Contexte fourni par generate.py :
+     site, theme, recent_blog_posts, home_title, home_description, blog_cats
+   ============================================================ #}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+{% include "base/_head.html.j2" ignore missing %}
+{% if site.google_site_verification is defined and site.google_site_verification %}
+<meta name="google-site-verification" content="{{ site.google_site_verification }}">
+{% endif %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ home_title or (site.name + ' — Investir et gérer son patrimoine') }}</title>
+<meta name="description" content="{{ home_description or (site.tagline or '') }}">
+<link rel="canonical" href="{{ site.domain }}/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ home_title or site.name }}">
+<meta property="og:description" content="{{ home_description or (site.tagline or '') }}">
+<meta property="og:url" content="{{ site.domain }}/">
+{% if site.favicon %}<link rel="icon" href="{{ site.favicon }}">{% else %}<link rel="icon" href="/favicon.png">{% endif %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── Charte "Confiance" — scopée sur .dir-corporate pour ne PAS toucher
+   au header / footer monelor (qui gardent leurs propres styles) ────── */
+.dir-corporate{
+  --navy:#000921; --navy-2:#0a1430; --navy-3:#14224a;
+  --orange:#F68D00; --orange-700:#d97a00;
+  --paper:#ffffff; --paper-2:#f4f5f8; --paper-3:#eceef3;
+  --ink:#000921; --muted:#5b6478; --line:rgba(0,9,33,0.12);
+  --green:#16a35a; --blue:#2e7cf6;
+  font-family:"Hanken Grotesk",system-ui,sans-serif; color:var(--ink);
+  background:var(--paper); -webkit-font-smoothing:antialiased;
+}
+.dir-corporate *{box-sizing:border-box;}
+.dir-corporate .mono{font-family:"Spline Sans Mono",monospace;font-feature-settings:"tnum" 1;}
+.dir-corporate .c-wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+.dir-corporate a{text-decoration:none;color:inherit;}
+
+/* Placeholders d'image (vignettes YouTube) */
+.dir-corporate .ph{position:relative;overflow:hidden;background-color:var(--paper-3);
+  background-image:repeating-linear-gradient(135deg,rgba(0,9,33,0.05) 0 10px,transparent 10px 20px);}
+.dir-corporate .ph-label{position:absolute;left:12px;bottom:12px;font-family:"Spline Sans Mono",monospace;
+  font-size:11px;letter-spacing:.02em;color:var(--muted);background:rgba(255,255,255,0.82);padding:4px 8px;border-radius:6px;}
+.dir-corporate .ph-play{position:absolute;inset:0;margin:auto;width:56px;height:56px;display:grid;place-items:center;
+  border-radius:999px;background:rgba(0,9,33,0.6);backdrop-filter:blur(2px);}
+.dir-corporate .ph-play::after{content:"";width:0;height:0;margin-left:4px;border-left:16px solid #fff;
+  border-top:10px solid transparent;border-bottom:10px solid transparent;}
+
+/* Boutons */
+.dir-corporate .c-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:"Hanken Grotesk";
+  font-weight:600;font-size:14.5px;padding:10px 18px;border-radius:10px;cursor:pointer;
+  transition:transform .12s,background .15s,box-shadow .15s;border:1px solid transparent;}
+.dir-corporate .c-btn-lg{padding:14px 24px;font-size:15.5px;}
+.dir-corporate .c-btn-solid{background:var(--orange);color:#1c1300;box-shadow:0 1px 0 rgba(0,0,0,0.04);}
+.dir-corporate .c-btn-solid:hover{background:var(--orange-700);transform:translateY(-1px);}
+.dir-corporate .c-btn-yt{background:#E62117;color:#fff;border-radius:8px;font-weight:700;gap:12px;padding-left:16px;}
+.dir-corporate .c-btn-yt:hover{background:#c81a12;transform:translateY(-1px);}
+.dir-corporate .c-yt-badge{position:relative;display:block;width:34px;height:24px;border-radius:6px;background:#fff;flex:none;}
+.dir-corporate .c-yt-badge::after{content:"";position:absolute;inset:0;margin:auto;width:0;height:0;
+  border-left:11px solid #E62117;border-top:7px solid transparent;border-bottom:7px solid transparent;}
+
+/* Hero */
+.dir-corporate .c-hero{background:radial-gradient(1100px 480px at 85% -10%,rgba(246,141,0,0.10),transparent 60%),
+  linear-gradient(180deg,#fbfbfc,#ffffff);padding:72px 0 60px;}
+.dir-corporate .c-hero-in{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
+.dir-corporate .c-h1{font-family:"Schibsted Grotesk",sans-serif;font-weight:800;font-size:52px;line-height:1.04;
+  letter-spacing:-0.025em;color:var(--navy);margin:0;text-wrap:balance;}
+.dir-corporate .c-hl{color:var(--orange);}
+.dir-corporate .c-lead{font-size:18px;line-height:1.55;color:#44506b;max-width:520px;margin:20px 0 0;}
+.dir-corporate .c-hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;}
+.dir-corporate .c-proof{display:flex;align-items:center;gap:16px;margin-top:30px;color:var(--muted);font-size:14px;}
+.dir-corporate .c-proof b{color:var(--navy);}
+.dir-corporate .c-proof-sep{width:4px;height:4px;border-radius:50%;background:var(--line);}
+
+.dir-corporate .c-hvids-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px;}
+.dir-corporate .c-hvids-kicker{font-family:"Schibsted Grotesk",sans-serif;font-size:24px;font-weight:800;
+  letter-spacing:-0.02em;color:var(--navy);}
+.dir-corporate .c-hvids{display:flex;flex-direction:column;gap:12px;}
+.dir-corporate .c-hvid{display:grid;grid-template-columns:132px 1fr;gap:15px;align-items:center;background:#fff;
+  border:1px solid var(--line);border-radius:12px;padding:10px;transition:transform .14s,box-shadow .14s,border-color .14s;}
+.dir-corporate .c-hvid:hover{transform:translateY(-2px);border-color:rgba(246,141,0,0.5);box-shadow:0 16px 32px -20px rgba(0,9,33,0.3);}
+.dir-corporate .c-hvid-thumb{aspect-ratio:16/9;border-radius:8px;}
+.dir-corporate .c-hvid-thumb .ph-play{width:34px;height:34px;}
+.dir-corporate .c-hvid-thumb .ph-play::after{border-left-width:10px;border-top-width:6px;border-bottom-width:6px;}
+.dir-corporate .c-hvid-dur{position:absolute;right:6px;bottom:6px;background:rgba(0,9,33,0.85);color:#fff;
+  font-size:10.5px;padding:2px 6px;border-radius:4px;}
+.dir-corporate .c-hvid-tag{font-size:10.5px;letter-spacing:0.05em;text-transform:uppercase;color:var(--orange-700);}
+.dir-corporate .c-hvid-title{font-family:"Schibsted Grotesk",sans-serif;font-weight:700;font-size:15px;line-height:1.25;
+  letter-spacing:-0.01em;color:var(--navy);margin:4px 0 5px;}
+.dir-corporate .c-hvid-meta{font-size:11.5px;color:var(--muted);}
+
+/* Sections */
+.dir-corporate .c-section{padding:76px 0;}
+.dir-corporate .c-section-alt{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.dir-corporate .c-sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:34px;}
+.dir-corporate .c-sec-kicker{font-family:"Spline Sans Mono";font-size:12px;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--orange-700);margin-bottom:8px;}
+.dir-corporate .c-h2{font-family:"Schibsted Grotesk";font-weight:800;font-size:34px;letter-spacing:-0.02em;color:var(--navy);margin:0;}
+.dir-corporate .c-link{font-weight:600;font-size:14.5px;color:var(--navy);border-bottom:2px solid var(--orange);padding-bottom:2px;}
+
+/* Articles */
+.dir-corporate .c-arts{display:flex;flex-direction:column;}
+.dir-corporate .c-art{position:relative;display:grid;grid-template-columns:150px 1fr auto;gap:24px;align-items:center;
+  padding:22px 14px;border-top:1px solid var(--line);transition:background .15s,padding .15s;}
+.dir-corporate .c-art:last-child{border-bottom:1px solid var(--line);}
+.dir-corporate .c-art:hover{background:#fff;padding-left:22px;}
+.dir-corporate .c-art-cat{font-family:"Spline Sans Mono";font-size:12px;letter-spacing:0.04em;text-transform:uppercase;color:var(--orange-700);}
+.dir-corporate .c-art-title{font-family:"Schibsted Grotesk";font-weight:700;font-size:20px;letter-spacing:-0.01em;
+  color:var(--navy);margin:0;line-height:1.25;}
+.dir-corporate .c-art-meta{font-size:13px;color:var(--muted);white-space:nowrap;}
+.dir-corporate .c-art-arrow{position:absolute;right:14px;bottom:18px;color:var(--orange);font-size:18px;opacity:0;
+  transition:opacity .15s,transform .15s;}
+.dir-corporate .c-art:hover .c-art-arrow{opacity:1;transform:translateX(4px);}
+
+/* À propos */
+.dir-corporate .c-about{display:grid;grid-template-columns:0.8fr 1.2fr;gap:56px;align-items:center;}
+.dir-corporate .c-about-photo{aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:var(--paper-3);}
+.dir-corporate .c-about-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.dir-corporate .c-about-p{font-size:17px;line-height:1.6;color:#44506b;margin:16px 0 0;max-width:560px;}
+.dir-corporate .c-about-p b{color:var(--navy);}
+.dir-corporate .c-about-stats{display:flex;gap:40px;margin-top:30px;}
+.dir-corporate .c-about-stats div{display:flex;flex-direction:column;align-items:center;text-align:center;}
+.dir-corporate .c-about-stats span{font-family:"Spline Sans Mono";font-size:26px;font-weight:600;color:var(--orange-700);}
+.dir-corporate .c-about-stats small{font-size:13px;color:var(--muted);margin-top:2px;}
+
+/* Newsletter */
+.dir-corporate .c-news{background:var(--navy);color:#fff;padding:64px 0;}
+.dir-corporate .c-news-in{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+.dir-corporate .c-news-h{font-family:"Schibsted Grotesk";font-weight:800;font-size:32px;letter-spacing:-0.02em;margin:0;}
+.dir-corporate .c-news-p{color:#aeb6cb;font-size:16px;line-height:1.55;margin:14px 0 0;max-width:440px;}
+.dir-corporate .c-news-form{display:flex;gap:12px;}
+.dir-corporate .c-news-input{flex:1;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);
+  border-radius:10px;padding:15px 18px;color:#fff;font-family:"Hanken Grotesk";font-size:15px;}
+.dir-corporate .c-news-input::placeholder{color:#7c87a3;}
+.dir-corporate .c-news-input:focus{outline:none;border-color:var(--orange);}
+
+@media (max-width:980px){
+  .dir-corporate .c-hero-in,.dir-corporate .c-about,.dir-corporate .c-news-in{grid-template-columns:1fr;}
+  .dir-corporate .c-h1{font-size:40px;}
+}
+@media (max-width:640px){
+  .dir-corporate .c-art{grid-template-columns:1fr;gap:6px;}
+  .dir-corporate .c-wrap{padding:0 20px;}
+  .dir-corporate .c-hvid{grid-template-columns:110px 1fr;}
+}
+</style>
+</head>
+<body>
+
+{% include "base/_nav.html.j2" ignore missing %}
+
+<div class="dir-corporate">
+
+  {# ── HERO : projet + dernières vidéos ─────────────────────────── #}
+  <section class="c-hero" id="objectif">
+    <div class="c-wrap c-hero-in">
+      <div class="c-hero-left">
+        <h1 class="c-h1">Je documente ma route vers la <span class="c-hl">liberté financière</span></h1>
+        <p class="c-lead">Bourse, assurance vie et immobilier : chaque euro placé, chaque arbitrage et chaque rendement, en toute transparence. Le but ? Vivre de mes revenus passifs.</p>
+        <div class="c-hero-actions">
+          <a class="c-btn c-btn-solid c-btn-lg" href="/blog/">Lire le blog</a>
+          <a class="c-btn c-btn-yt c-btn-lg" href="{{ site.youtube_url | default('https://www.youtube.com/@monelor-com') }}" target="_blank" rel="noopener"><span class="c-yt-badge"></span>S'abonner sur YouTube</a>
+        </div>
+        <div class="c-proof">
+          <div class="c-proof-i"><b class="mono">{{ site.youtube_subs | default('898') }}</b> abonnés</div>
+          <span class="c-proof-sep"></span>
+          <div class="c-proof-i"><b class="mono">{{ site.youtube_videos_count | default('40') }}</b> vidéos</div>
+          <span class="c-proof-sep"></span>
+          <div class="c-proof-i">{{ site.youtube_handle | default('@monelor-com') }}</div>
+        </div>
+      </div>
+
+      <div class="c-hero-right" id="videos">
+        <div class="c-hvids-head">
+          <span class="c-hvids-kicker">Les dernières vidéos</span>
+        </div>
+        <div class="c-hvids">
+          {% set videos = site.youtube_videos | default([
+            {'title': "Mon PEA après 2 mois d'investissement en bourse", 'duration': "5:09", 'views': "705", 'age': "il y a 1 mois", 'tag': "Bourse"},
+            {'title': "Gestion pilotée Linxea Spirit 2 : Yomoni vs OTEA vs Natixis", 'duration': "17:37", 'views': "347", 'age': "il y a 2 mois", 'tag': "Assurance vie"},
+            {'title': "Gestion libre ou pilotée (Linxea Spirit 2) : laquelle choisir ?", 'duration': "26:51", 'views': "1,1 k", 'age': "il y a 2 mois", 'tag': "Assurance vie"},
+            {'title': "TUTO Linxea Spirit 2 : tour complet de l'espace client", 'duration': "14:35", 'views': "3,3 k", 'age': "il y a 3 mois", 'tag': "Tuto"}
+          ]) %}
+          {% for v in videos[:4] %}
+          <a class="c-hvid" href="{{ site.youtube_url | default('https://www.youtube.com/@monelor-com') }}" target="_blank" rel="noopener">
+            <div class="c-hvid-thumb ph">
+              <span class="ph-play"></span>
+              <span class="c-hvid-dur mono">{{ v.duration }}</span>
+            </div>
+            <div class="c-hvid-body">
+              <span class="c-hvid-tag mono">{{ v.tag }}</span>
+              <h4 class="c-hvid-title">{{ v.title }}</h4>
+              <div class="c-hvid-meta mono">{{ v.views }} vues · {{ v.age }}</div>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# ── DERNIERS ARTICLES (vrais articles récents) ───────────────── #}
+  <section class="c-section c-section-alt" id="blog">
+    <div class="c-wrap">
+      <div class="c-sec-head">
+        <div>
+          <div class="c-sec-kicker">Le blog</div>
+          <h2 class="c-h2">Derniers articles</h2>
+        </div>
+        <a class="c-link" href="/blog/">Tous les articles →</a>
+      </div>
+      {% if recent_blog_posts and recent_blog_posts | length > 0 %}
+      <div class="c-arts">
+        {% for post in recent_blog_posts %}
+        <a class="c-art" href="/{{ post.slug }}/">
+          <div class="c-art-cat">{{ post.categorie or 'Article' }}</div>
+          <h4 class="c-art-title">{{ post.title }}</h4>
+          <div class="c-art-meta mono">{% if post.date_display %}{{ post.date_display }}{% endif %}{% if post.reading_time %} · {{ post.reading_time }} min de lecture{% endif %}</div>
+          <span class="c-art-arrow">→</span>
+        </a>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="c-lead">Les premiers articles arrivent bientôt.</p>
+      {% endif %}
+    </div>
+  </section>
+
+  {# ── À PROPOS ─────────────────────────────────────────────────── #}
+  <section class="c-section" id="apropos">
+    <div class="c-wrap c-about">
+      <div class="c-about-photo">
+        <img src="{{ site.about_photo | default('/apropos-julien.jpg') }}" alt="Julien — Monelor" loading="lazy">
+      </div>
+      <div class="c-about-text">
+        <div class="c-sec-kicker">À propos</div>
+        <h2 class="c-h2">Bonjour, moi c'est Julien.</h2>
+        <p class="c-about-p">Investisseur particulier, je partage sur Monelor mon parcours complet vers l'indépendance financière. Pas de promesse miracle : des chiffres réels, mes erreurs, et une méthode patiente répartie entre <b>immobilier locatif</b>, <b>assurance vie</b> et <b>bourse</b>.</p>
+        <p class="c-about-p">Mon ambition : atteindre 1&nbsp;000&nbsp;000&nbsp;€ de patrimoine investi et en vivre. Vous suivez chaque étape ici et sur YouTube.</p>
+        <div class="c-about-stats">
+          <div><span class="mono">{{ site.patrimoine_display | default('203 k€') }}</span><small>investis</small></div>
+          <div><span class="mono">3</span><small>classes d'actifs</small></div>
+          <div><span class="mono">{{ site.youtube_subs | default('898') }}</span><small>abonnés</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# ── NEWSLETTER ───────────────────────────────────────────────── #}
+  <section class="c-news" id="newsletter">
+    <div class="c-wrap c-news-in">
+      <div class="c-news-text">
+        <h2 class="c-news-h">Mon suivi de patrimoine, chaque mois.</h2>
+        <p class="c-news-p">Recevez le bilan détaillé de mes investissements, mes arbitrages et mes analyses directement par e-mail. Gratuit, sans spam.</p>
+      </div>
+      <form class="c-news-form" action="{{ site.newsletter_action | default('#') }}" method="post"{% if not site.newsletter_action %} onsubmit="return false"{% endif %}>
+        <input type="email" class="c-news-input" name="email" placeholder="votre@email.com" aria-label="E-mail" required>
+        <button class="c-btn c-btn-solid c-btn-lg" type="submit">Je m'inscris</button>
+      </form>
+    </div>
+  </section>
+
+</div>
+
+{% include "base/_footer.html.j2" ignore missing %}
+</body>
+</html>
