@@ -31,6 +31,10 @@
 {% if site.favicon %}<link rel="icon" href="{{ site.favicon }}">{% else %}<link rel="icon" href="/favicon.png">{% endif %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{# Polices du THÈME (DM Serif Display / Outfit…) — indispensables pour que le
+   logo et le menu s'affichent EXACTEMENT comme sur le reste du site. #}
+{% if theme.google_fonts %}<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">{% endif %}
+{# Polices spécifiques au design "Confiance" (contenu central). #}
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ── Variables de thème (identiques à index-blog) : indispensables pour que
@@ -51,6 +55,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body { font-family: {{ theme.font_body or '"Outfit", system-ui, sans-serif' }}; background: var(--bg); color: var(--ink); line-height: 1.65; }
+a { text-decoration: none; color: inherit; }
 
 /* ── Charte "Confiance" — scopée sur .dir-corporate pour ne PAS toucher
    au header / footer monelor (qui gardent leurs propres styles) ────── */
