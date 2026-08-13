@@ -5,6 +5,23 @@
 <!--INJECT_STOCKS-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simulateur de dividendes — Monelor</title>
+<meta name="description" content="Estimez les dividendes annuels de votre portefeuille d'actions en une saisie. Rendement, fiscalité et classement, calculés instantanément.">
+<link rel="canonical" href="{{ site.domain }}/simulateur-dividendes/">
+{% if site.favicon %}<link rel="icon" href="{{ site.favicon }}">{% else %}<link rel="icon" href="/favicon.png">{% endif %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{% if theme.google_fonts %}<link href="{{ theme.google_fonts }}&v={{ site.slug }}" rel="stylesheet">{% endif %}
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Variables de thème (pour le nav/footer inclus) */
+:root{
+  --accent:{{ theme.accent or '#1B4FD8' }};
+  --accent2:{{ theme.accent2 or '#E8410A' }};
+  --cta:{{ theme.cta_color if theme.cta_color is defined and theme.cta_color else '#E8410A' }};
+  --cta-text:{{ theme.cta_text_color if theme.cta_text_color is defined and theme.cta_text_color else '#ffffff' }};
+}
+a{text-decoration:none}
+</style>
 <style>
   /* ============================================================
      SIMULATEUR DE DIVIDENDES — Monelor
@@ -14,29 +31,29 @@
      Vanilla JS, zéro dépendance, calculs côté client.
      ============================================================ */
   :root{
-    --bg:#F6F7F5;
+    --bg:#f4f5f8;
     --surface:#FFFFFF;
-    --ink:#12181F;
-    --muted:#5B6670;
-    --faint:#8A959E;
-    --line:#E6E9E5;
-    --emerald:#0B7A57;
-    --emerald-d:#075F44;
-    --emerald-soft:#E7F3EE;
-    --gold:#B8862E;
-    --gold-soft:#FBF3E0;
+    --ink:{{ theme.ink or '#000921' }};
+    --muted:#5b6478;
+    --faint:#8a95a8;
+    --line:rgba(0,9,33,0.12);
+    --emerald:{{ theme.cta_color if theme.cta_color is defined and theme.cta_color else '#E8410A' }};
+    --emerald-d:#c5380a;
+    --emerald-soft:rgba(232,65,10,.09);
+    --gold:#16a35a;
+    --gold-soft:rgba(22,163,90,.10);
     --danger:#C0483B;
     --radius:14px;
-    --shadow:0 1px 2px rgba(18,24,31,.04), 0 12px 28px -18px rgba(18,24,31,.18);
+    --shadow:0 1px 2px rgba(0,9,33,.04), 0 12px 28px -18px rgba(0,9,33,.18);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-text-size-adjust:100%}
   body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-family:"Hanken Grotesk",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
     background:var(--bg);color:var(--ink);line-height:1.55;
     font-size:15px;-webkit-font-smoothing:antialiased;
   }
-  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;font-family:"Spline Sans Mono",monospace}
   .wrap{max-width:960px;margin:0 auto;padding:32px 20px 96px}
 
   /* ── Hero ── */
@@ -44,7 +61,7 @@
   .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;
     letter-spacing:.08em;text-transform:uppercase;color:var(--emerald);
     background:var(--emerald-soft);padding:5px 11px;border-radius:999px}
-  .hero h1{font-size:clamp(26px,4.4vw,38px);line-height:1.1;letter-spacing:-.02em;margin:16px 0 8px;font-weight:700}
+  .hero h1{font-family:"Schibsted Grotesk",sans-serif;font-size:clamp(26px,4.4vw,38px);line-height:1.05;letter-spacing:-.025em;margin:16px 0 8px;font-weight:800;color:var(--ink)}
   .hero p{color:var(--muted);max-width:560px;font-size:15.5px}
 
   /* ── Carte ── */
@@ -52,7 +69,7 @@
   .card + .card{margin-top:20px}
   .card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;
     padding:18px 20px;border-bottom:1px solid var(--line)}
-  .card-head h2{font-size:16px;font-weight:700;letter-spacing:-.01em}
+  .card-head h2{font-family:"Schibsted Grotesk",sans-serif;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
   .card-head .sub{font-size:12.5px;color:var(--faint)}
 
   /* ── Boutons ── */
@@ -168,6 +185,7 @@
 </style>
 </head>
 <body>
+{% include "base/_nav.html.j2" ignore missing %}
 <div class="wrap">
 
   <!-- ══════════ HERO ══════════ -->
@@ -272,6 +290,7 @@
   </p>
 </div>
 
+{% include "base/_footer.html.j2" ignore missing %}
 <div class="toast" id="toast"></div>
 
 <script>
