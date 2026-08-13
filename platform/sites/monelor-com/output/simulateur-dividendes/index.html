@@ -5,6 +5,21 @@
 <script>window.MONELOR_STOCKS = [{"id": "tte", "name": "TotalEnergies", "ticker": "TTE", "logo": "", "country": "France", "currency": "EUR", "price": 58.2, "dividend": 3.22, "active": true}, {"id": "san", "name": "Sanofi", "ticker": "SAN", "logo": "", "country": "France", "currency": "EUR", "price": 88.4, "dividend": 3.76, "active": true}, {"id": "bnp", "name": "BNP Paribas", "ticker": "BNP", "logo": "", "country": "France", "currency": "EUR", "price": 64.1, "dividend": 4.6, "active": true}];</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simulateur de dividendes — Monelor</title>
+<meta name="description" content="Estimez les dividendes annuels de votre portefeuille d'actions en une saisie. Rendement, fiscalité et classement, calculés instantanément.">
+<link rel="canonical" href="https://www.monelor.com/simulateur-dividendes/">
+<link rel="icon" href="/favicon.png"><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Outfit:wght@300;400;500;600&amp;display=swap&v=monelor-com" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Variables de thème (pour le nav/footer inclus) */
+:root{
+  --accent:#1B4FD8;
+  --accent2:#E8410A;
+  --cta:#E8410A;
+  --cta-text:#ffffff;
+}
+a{text-decoration:none}
+</style>
 <style>
   /* ============================================================
      SIMULATEUR DE DIVIDENDES — Monelor
@@ -14,29 +29,29 @@
      Vanilla JS, zéro dépendance, calculs côté client.
      ============================================================ */
   :root{
-    --bg:#F6F7F5;
+    --bg:#f4f5f8;
     --surface:#FFFFFF;
-    --ink:#12181F;
-    --muted:#5B6670;
-    --faint:#8A959E;
-    --line:#E6E9E5;
-    --emerald:#0B7A57;
-    --emerald-d:#075F44;
-    --emerald-soft:#E7F3EE;
-    --gold:#B8862E;
-    --gold-soft:#FBF3E0;
+    --ink:#000921;
+    --muted:#5b6478;
+    --faint:#8a95a8;
+    --line:rgba(0,9,33,0.12);
+    --emerald:#E8410A;
+    --emerald-d:#c5380a;
+    --emerald-soft:rgba(232,65,10,.09);
+    --gold:#16a35a;
+    --gold-soft:rgba(22,163,90,.10);
     --danger:#C0483B;
     --radius:14px;
-    --shadow:0 1px 2px rgba(18,24,31,.04), 0 12px 28px -18px rgba(18,24,31,.18);
+    --shadow:0 1px 2px rgba(0,9,33,.04), 0 12px 28px -18px rgba(0,9,33,.18);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-text-size-adjust:100%}
   body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-family:"Hanken Grotesk",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
     background:var(--bg);color:var(--ink);line-height:1.55;
     font-size:15px;-webkit-font-smoothing:antialiased;
   }
-  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;font-family:"Spline Sans Mono",monospace}
   .wrap{max-width:960px;margin:0 auto;padding:32px 20px 96px}
 
   /* ── Hero ── */
@@ -44,7 +59,7 @@
   .eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;
     letter-spacing:.08em;text-transform:uppercase;color:var(--emerald);
     background:var(--emerald-soft);padding:5px 11px;border-radius:999px}
-  .hero h1{font-size:clamp(26px,4.4vw,38px);line-height:1.1;letter-spacing:-.02em;margin:16px 0 8px;font-weight:700}
+  .hero h1{font-family:"Schibsted Grotesk",sans-serif;font-size:clamp(26px,4.4vw,38px);line-height:1.05;letter-spacing:-.025em;margin:16px 0 8px;font-weight:800;color:var(--ink)}
   .hero p{color:var(--muted);max-width:560px;font-size:15.5px}
 
   /* ── Carte ── */
@@ -52,7 +67,7 @@
   .card + .card{margin-top:20px}
   .card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;
     padding:18px 20px;border-bottom:1px solid var(--line)}
-  .card-head h2{font-size:16px;font-weight:700;letter-spacing:-.01em}
+  .card-head h2{font-family:"Schibsted Grotesk",sans-serif;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
   .card-head .sub{font-size:12.5px;color:var(--faint)}
 
   /* ── Boutons ── */
@@ -168,7 +183,84 @@
 </style>
 </head>
 <body>
-<div class="wrap">
+<style>
+nav.site-nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100}
+nav.site-nav .nav-inner{max-width:1200px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative}
+nav.site-nav .nav-logo{font-family:'DM Serif Display',serif;font-weight:400;font-size:17px;color:#fff;flex-shrink:0}
+nav.site-nav .nav-logo span{color:var(--accent2)}
+nav.site-nav .nav-links{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:4px 8px;position:absolute;left:50%;transform:translateX(-50%)}
+nav.site-nav .nav-links a{color:rgba(255,255,255,.65);font-size:13px;font-weight:500;padding:6px 14px;border-radius:24px;transition:.15s}
+nav.site-nav .nav-links a:hover{color:#fff;background:rgba(255,255,255,.1)}
+nav.site-nav .nav-cta{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:var(--cta);color:var(--cta-text);font-size:13px;font-weight:700;transition:.15s}
+nav.site-nav .nav-cta:hover{opacity:.88}
+nav.site-nav .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+nav.site-nav .nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:var(--ink);border-top:1px solid rgba(255,255,255,.08);padding:16px 5vw;flex-direction:column;gap:4px;z-index:99}
+nav.site-nav .nav-mobile.open{display:flex}
+nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
+@media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
+/* Option site : texte du menu en blanc (activée via theme.nav_footer_white) */
+nav.site-nav .nav-links a,nav.site-nav .nav-mobile a{color:#fff}
+</style>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">monelor.com<span></span></a>
+    <div class="nav-links">
+        <a href="/blog/">Blog</a>
+    </div>
+    <a href="/contact" class="nav-cta">Contact</a>
+    <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+      <a href="/blog/">Blog</a>
+    <a href="/contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<script>
+/* Fallback safe pour toggleMenu() : déclarée ici pour que TOUS les templates
+   qui incluent _nav.html.j2 aient un burger fonctionnel par défaut, sans
+   devoir redéfinir la fonction côté template parent.
+
+   Pattern `window.x = window.x || …` : on ne remplace pas une éventuelle
+   définition déjà existante en amont (cf. classement-saas.html.j2 et autres
+   templates standards qui peuvent vouloir une version enrichie). Ils gagnent
+   s'ils déclarent toggleMenu AVANT l'include _nav. Dans le cas (le plus
+   fréquent) où l'include arrive AVANT le script du parent, c'est ce fallback
+   qui est actif et le parent réécrit derrière s'il en a un.
+
+   Bug d'origine corrigé (juin 2026) : blog-post.html.j2 et blog-index.html.j2
+   ne définissaient pas toggleMenu → onclick="toggleMenu()" donnait
+   "ReferenceError: toggleMenu is not defined" sur mobile, et le burger
+   ne faisait rien. */
+(function(){
+  if (typeof window.toggleMenu === 'function') return;
+  window.toggleMenu = function(){
+    var menu = document.getElementById('nav-mobile');
+    if (menu) menu.classList.toggle('open');
+  };
+  // UX bonus : fermer le menu mobile en cliquant en dehors
+  document.addEventListener('click', function(e){
+    var menu = document.getElementById('nav-mobile');
+    var burger = document.getElementById('burger');
+    if (!menu || !burger) return;
+    if (!menu.classList.contains('open')) return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    menu.classList.remove('open');
+  });
+  // Et fermer aussi en cliquant sur un lien du menu (pour les ancres internes)
+  document.addEventListener('DOMContentLoaded', function(){
+    var menu = document.getElementById('nav-mobile');
+    if (!menu) return;
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ menu.classList.remove('open'); });
+    });
+  });
+})();
+</script><div class="wrap">
 
   <!-- ══════════ HERO ══════════ -->
   <header class="hero">
@@ -272,7 +364,150 @@
   </p>
 </div>
 
-<div class="toast" id="toast"></div>
+<style>
+.footer{background:var(--ink);color:rgba(255,255,255,.5);padding:56px 5vw 32px;font-size:14px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .footer-logo{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:#fff;margin-bottom:12px;display:block}
+.footer-brand .footer-logo span{color:var(--accent2)}
+.footer-brand p{font-size:15px;color:rgba(255,255,255,.45);line-height:1.7;max-width:380px;margin:0;padding:0}
+.footer-socials{display:flex;gap:12px;margin-top:20px}
+.footer-socials a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.55);transition:background .15s,color .15s}
+.footer-socials a:hover{background:rgba(255,255,255,.13);color:#fff}
+.footer-socials svg{width:19px;height:19px;fill:currentColor;display:block}
+/* Anciennement .footer-col h4 — passé en div pour respecter la hiérarchie Hn (le footer ne doit pas introduire de Hn) */
+.footer-col .footer-col-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:16px}
+.footer-col a{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-bottom:10px;transition:.15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;text-align:center}
+.footer-bottom-left{font-size:13px;color:rgba(255,255,255,.3)}
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .footer-brand{grid-column:1/-1}
+}
+/* Option site : texte du footer en blanc (activée via theme.nav_footer_white) */
+.footer,.footer p,.footer a,.footer-brand p,.footer-socials a,.footer-col a,.footer-col .footer-col-label,.footer-bottom-left{color:#fff}
+</style>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">monelor.com<span></span></div>
+        <p>Les contenus, analyses, comparatifs et avis publiés sur Monelor.com sont proposés à titre purement informatif. Ils ne constituent ni un conseil en investissement, ni une recommandation personnalisée au sens des articles L.321-1 et D.321-1 du Code monétaire et financier. Avant toute décision d'investissement, d'épargne ou de placement, nous vous recommandons de consulter un professionnel habilité, en mesure d'évaluer votre situation personnelle et vos objectifs.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Navigation</div>
+        <a href="/blog/">Blog</a>
+        <a href="/plan-du-site">Plan du site</a>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/politique-confidentialite">Confidentialité</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">À propos</div>
+        <a href="/contact">Nous contacter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        © 2026 monelor.com — Données actualisées le 13 août 2026
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button type="button"
+        class="scroll-top-btn"
+        id="scroll-top-btn"
+        aria-label="Remonter en haut de la page"
+        title="Remonter en haut">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="2.5"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+</button>
+
+<style>
+.scroll-top-btn{
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:9999;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--ink, #0F1419);
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s ease, transform .25s ease, visibility .25s ease, background .15s;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);
+  padding:0;
+  font-family:inherit;
+}
+.scroll-top-btn.visible{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+.scroll-top-btn:hover{
+  background:var(--accent, #C9A961);
+}
+.scroll-top-btn:focus-visible{
+  outline:2px solid var(--accent, #C9A961);
+  outline-offset:3px;
+}
+@media (max-width:600px){
+  .scroll-top-btn{ bottom:16px; right:16px; width:42px; height:42px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .scroll-top-btn{ transition:opacity .2s, visibility .2s; }
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  var btn = document.getElementById('scroll-top-btn');
+  if (!btn) return;
+
+  var THRESHOLD = 400; // px de scroll avant apparition
+  var ticking = false;
+
+  function update(){
+    if (window.scrollY > THRESHOLD) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+    ticking = false;
+  }
+
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  btn.addEventListener('click', function(){
+    var prefersReduced = window.matchMedia
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+  });
+
+  // Check immédiat (au cas où la page est rechargée déjà scrollée)
+  update();
+})();
+</script><div class="toast" id="toast"></div>
 
 <script>
 /* ============================================================================
