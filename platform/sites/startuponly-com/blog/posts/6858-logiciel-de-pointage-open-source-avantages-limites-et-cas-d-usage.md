@@ -4,15 +4,21 @@ slug: 6858-logiciel-de-pointage-open-source-avantages-limites-et-cas-d-usage
 date: '2026-08-13T18:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logiciel de pointage open source : avantages et limites'
-meta_description: 'Logiciel de pointage open source : coûts réduits, données maîtrisées, mais exigences techniques réelles. Découvrez avantages, limites et cas d''usage concrets.'
+meta_description: 'Logiciel de pointage open source : coûts réduits, données maîtrisées,
+  mais exigences techniques réelles. Découvrez avantages, limites et cas d''usage
+  concrets.'
 min_words: 1300
 status: published
 featured_image: /blog/6858-logiciel-de-pointage-open-source-avantages-limites-et-cas-d-usage.jpg
 link_anchors:
 - text: logiciel de pointage open source
   max: 5
+related_posts:
+- 1727-badgeuse-en-entreprise-cadre-reglementaire-et-obligations
+- 8420-calculer-les-heures-de-travail-sur-excel-methode-pas-a-pas
+- 5093-logiciel-de-gestion-des-absences-role-et-fonctionnement
+- 2738-comment-calculer-les-heures-de-travail-de-ses-salaries
 ---
-
 <h2>Open source pour gérer le temps de travail : bonne idée ou fausse économie ?</h2>
 
 <p>J'ai passé pas mal de temps à tester des solutions de pointage pour ma boîte. Au début, j'avais le réflexe classique : aller vers les gros éditeurs, payer un abonnement mensuel, et croiser les doigts pour que ça marche. Puis j'ai commencé à creuser du côté des logiciels open source. Et là, c'est une autre histoire.</p>
