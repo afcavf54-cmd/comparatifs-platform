@@ -19,6 +19,10 @@
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
   .footer-brand{grid-column:1/-1}
 }
+{% if theme.nav_footer_white %}
+/* Option site : texte du footer en blanc (activée via theme.nav_footer_white) */
+.footer,.footer p,.footer a,.footer-brand p,.footer-socials a,.footer-col a,.footer-col .footer-col-label,.footer-bottom-left{color:#fff}
+{% endif %}
 </style>
 <footer class="footer">
   <div class="footer-inner">
