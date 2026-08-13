@@ -1,7 +1,38 @@
 {
   "actions": [
-    { "id": "tte", "name": "TotalEnergies", "ticker": "TTE", "isin": "FR0000120271", "fmp_symbol": "TTE.PA", "logo": "", "country": "France", "currency": "EUR", "price": 58.20, "price_updated_at": "", "dividend": 3.22, "dividend_year": "2024", "dividend_updated_at": "", "eligible_pea": true, "active": true },
-    { "id": "san", "name": "Sanofi", "ticker": "SAN", "isin": "FR0000120578", "fmp_symbol": "SAN.PA", "logo": "", "country": "France", "currency": "EUR", "price": 88.40, "price_updated_at": "", "dividend": 3.76, "dividend_year": "2024", "dividend_updated_at": "", "eligible_pea": true, "active": true },
-    { "id": "bnp", "name": "BNP Paribas", "ticker": "BNP", "isin": "FR0000131104", "fmp_symbol": "BNP.PA", "logo": "", "country": "France", "currency": "EUR", "price": 64.10, "price_updated_at": "", "dividend": 4.60, "dividend_year": "2024", "dividend_updated_at": "", "eligible_pea": true, "active": true }
-  ]
+    {
+      "id": "tte",
+      "name": "TotalEnergies",
+      "ticker": "TTE",
+      "logo": "",
+      "country": "France",
+      "currency": "EUR",
+      "price": 58.2,
+      "dividend": 3.22,
+      "active": true
+    },
+    {
+      "id": "san",
+      "name": "Sanofi",
+      "ticker": "SAN",
+      "logo": "",
+      "country": "France",
+      "currency": "EUR",
+      "price": 88.4,
+      "dividend": 3.76,
+      "active": true
+    },
+    {
+      "id": "bnp",
+      "name": "BNP Paribas",
+      "ticker": "BNP",
+      "logo": "",
+      "country": "France",
+      "currency": "EUR",
+      "price": 64.1,
+      "dividend": 4.6,
+      "active": true
+    }
+  ],
+  "updated_at": "2026-08-13T15:42:34.742Z"
 }
