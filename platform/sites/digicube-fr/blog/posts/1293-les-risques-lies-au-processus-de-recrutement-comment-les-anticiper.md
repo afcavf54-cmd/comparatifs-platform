@@ -4,12 +4,18 @@ slug: 1293-les-risques-lies-au-processus-de-recrutement-comment-les-anticiper
 date: '2026-08-13T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Risques du processus de recrutement : comment les éviter'
-meta_description: 'Recrutement raté, fraude sur le CV, mauvaise intégration : découvrez les risques cachés du processus de recrutement et les méthodes concrètes pour les anticiper.'
+meta_description: 'Recrutement raté, fraude sur le CV, mauvaise intégration : découvrez
+  les risques cachés du processus de recrutement et les méthodes concrètes pour les
+  anticiper.'
 min_words: 1300
 status: published
 featured_image: /blog/1293-les-risques-lies-au-processus-de-recrutement-comment-les-anticiper.jpg
+related_posts:
+- 9121-comment-mettre-en-place-une-strategie-de-talent-management
+- 1543-ce-que-la-formation-leadership-nexstep-avance-ne-transforme-pas
+- 2158-logiciel-de-recrutement-en-ligne-fonctionnement-et-avantages
+- 5406-base-de-donnees-recrutement-comment-un-logiciel-la-gere-t-il
 ---
-
 <h2>Ce que personne ne vous dit avant de recruter</h2>
 
 <p>J'ai recruté pour la première fois il y a deux ans. Franchement, je pensais que c'était simple : poster une annonce, recevoir des CV, faire passer des entretiens, choisir. En réalité, j'ai failli embaucher quelqu'un qui m'avait menti sur toute sa ligne de compétences techniques. Je m'en suis rendu compte pendant la période d'essai. Trop tard pour éviter les frais, le temps perdu, la réorganisation en urgence.</p>
