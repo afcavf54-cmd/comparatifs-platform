@@ -61,7 +61,7 @@ a { text-decoration: none; color: inherit; }
    au header / footer monelor (qui gardent leurs propres styles) ────── */
 .dir-corporate{
   --navy:var(--ink, #0F1A2E); --navy-2:#0a1430; --navy-3:#14224a;
-  --orange:#F68D00; --orange-700:#d97a00;
+  --orange:var(--cta, #E8410A); --orange-700:#c5380a;
   --paper:#ffffff; --paper-2:#f4f5f8; --paper-3:#eceef3;
   --ink:#000921; --muted:#5b6478; --line:rgba(0,9,33,0.12);
   --green:#16a35a; --blue:#2e7cf6;
@@ -97,7 +97,7 @@ a { text-decoration: none; color: inherit; }
   border-left:11px solid #E62117;border-top:7px solid transparent;border-bottom:7px solid transparent;}
 
 /* Hero */
-.dir-corporate .c-hero{background:radial-gradient(1100px 480px at 85% -10%,rgba(246,141,0,0.10),transparent 60%),
+.dir-corporate .c-hero{background:radial-gradient(1100px 480px at 85% -10%,rgba(232,65,10,0.10),transparent 60%),
   linear-gradient(180deg,#fbfbfc,#ffffff);padding:50px 0 60px;}
 .dir-corporate .c-hero-in{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center;}
 .dir-corporate .c-h1{font-family:"Schibsted Grotesk",sans-serif;font-weight:800;font-size:52px;line-height:1.04;
@@ -115,7 +115,7 @@ a { text-decoration: none; color: inherit; }
 .dir-corporate .c-hvids{display:flex;flex-direction:column;gap:12px;}
 .dir-corporate .c-hvid{display:grid;grid-template-columns:132px 1fr;gap:15px;align-items:center;background:#fff;
   border:1px solid var(--line);border-radius:12px;padding:10px;transition:transform .14s,box-shadow .14s,border-color .14s;}
-.dir-corporate .c-hvid:hover{transform:translateY(-2px);border-color:rgba(246,141,0,0.5);box-shadow:0 16px 32px -20px rgba(0,9,33,0.3);}
+.dir-corporate .c-hvid:hover{transform:translateY(-2px);border-color:rgba(232,65,10,0.5);box-shadow:0 16px 32px -20px rgba(0,9,33,0.3);}
 .dir-corporate .c-hvid-thumb{aspect-ratio:16/9;border-radius:8px;}
 .dir-corporate .c-hvid-thumb .ph-play{width:34px;height:34px;}
 .dir-corporate .c-hvid-thumb .ph-play::after{border-left-width:10px;border-top-width:6px;border-bottom-width:6px;}
@@ -164,7 +164,7 @@ a { text-decoration: none; color: inherit; }
 .dir-corporate .c-news{background:var(--navy);color:#fff;padding:64px 0;}
 .dir-corporate .c-news-in{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
 .dir-corporate .c-news-h{font-family:"Schibsted Grotesk";font-weight:800;font-size:32px;letter-spacing:-0.02em;margin:0;}
-.dir-corporate .c-news-p{color:#aeb6cb;font-size:16px;line-height:1.55;margin:14px 0 0;max-width:440px;}
+.dir-corporate .c-news-p{color:#fff;font-size:16px;line-height:1.55;margin:14px 0 0;max-width:440px;}
 .dir-corporate .c-news-form{display:flex;gap:12px;}
 .dir-corporate .c-news-input{flex:1;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);
   border-radius:10px;padding:15px 18px;color:#fff;font-family:"Hanken Grotesk";font-size:15px;}
@@ -302,5 +302,21 @@ a { text-decoration: none; color: inherit; }
 </div>
 
 {% include "base/_footer.html.j2" ignore missing %}
+
+<style>
+  /* ── Surcharge monelor : texte du menu et du footer en BLANC ──────
+     (placée après les includes pour gagner en cascade, sans toucher aux
+      partials partagés _nav / _footer utilisés par les autres sites). */
+  nav.site-nav .nav-links a { color: #fff; }
+  nav.site-nav .nav-links a:hover { color: #fff; background: rgba(255,255,255,.14); }
+  .footer,
+  .footer p,
+  .footer a,
+  .footer-brand p,
+  .footer-cols a,
+  .footer-socials a { color: #fff; }
+  .footer-cols a:hover,
+  .footer-socials a:hover { color: #fff; opacity: .82; }
+</style>
 </body>
 </html>
