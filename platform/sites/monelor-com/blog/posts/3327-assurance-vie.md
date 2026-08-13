@@ -14,9 +14,9 @@ link_anchors:
 - text: assurance vie
   max: 20
 related_posts:
-- 1845-meilleurs-etf-linxea-spirit-2
-- comment-acheter-un-etf-sur-linxea-spirit-2
 - 4296-meilleures-scpi-linxea-spirit-2
+- 1453-comment-acheter-un-etf-sur-linxea-spirit-2
+- 1845-meilleurs-etf-linxea-spirit-2
 - 4857-comment-acheter-une-scpi-sur-linxea-spirit-2
 ---
 <p>Quand j'ai découvert l'assurance vie, je pensais que c'était réservé aux personnes proches de la retraite. Un truc pour les seniors qui voulaient transmettre leur patrimoine à leurs enfants. Bref, quelque chose qui ne me concernait pas du tout.</p>

@@ -15,9 +15,9 @@ min_words: 2000
 show_toc: true
 related_posts:
 - 3327-assurance-vie
-- comment-acheter-un-etf-sur-linxea-spirit-2
-- 1845-meilleurs-etf-linxea-spirit-2
 - 4296-meilleures-scpi-linxea-spirit-2
+- 1453-comment-acheter-un-etf-sur-linxea-spirit-2
+- 1845-meilleurs-etf-linxea-spirit-2
 ---
 <p>Si tu as déjà un contrat Linxea Spirit 2 et que tu te demandes comment investir sur des SCPI, tu es au bon endroit. Dans cet article, je t'explique pas à pas comment procéder, que tu veuilles utiliser de l'argent déjà présent sur ton contrat ou que tu souhaites effectuer un nouveau versement.</p>
 

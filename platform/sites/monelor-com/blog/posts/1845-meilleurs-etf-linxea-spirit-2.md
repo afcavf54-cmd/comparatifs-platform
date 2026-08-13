@@ -16,10 +16,10 @@ status: published
 min_words: 750
 show_toc: true
 related_posts:
-- 3327-assurance-vie
 - 4857-comment-acheter-une-scpi-sur-linxea-spirit-2
-- comment-acheter-un-etf-sur-linxea-spirit-2
+- 3327-assurance-vie
 - 4296-meilleures-scpi-linxea-spirit-2
+- 1453-comment-acheter-un-etf-sur-linxea-spirit-2
 link_anchors:
 - text: ETF Linxea Spirit 2
   max: 10
