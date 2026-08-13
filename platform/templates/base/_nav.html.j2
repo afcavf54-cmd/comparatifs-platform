@@ -72,6 +72,12 @@ nav.site-nav .nav-links a,nav.site-nav .nav-mobile a{color:#fff}
           <a href="{{ outil.url }}">{{ outil.label }}</a>
         {% endfor %}
       {% endif %}
+      {# Liens de menu manuels, jamais touchés par _sync_outils_menu #}
+      {% if site.custom_menu is defined and site.custom_menu %}
+        {% for item in site.custom_menu %}
+          <a href="{{ item.url }}">{{ item.label }}</a>
+        {% endfor %}
+      {% endif %}
     </div>
     <a href="/contact" class="nav-cta">Contact</a>
     <button class="nav-burger" id="burger" onclick="toggleMenu()" aria-label="Menu">
@@ -91,6 +97,11 @@ nav.site-nav .nav-links a,nav.site-nav .nav-mobile a{color:#fff}
     {% if site.outils_menu is defined and site.outils_menu %}
       {% for outil in site.outils_menu %}
         <a href="{{ outil.url }}">{{ outil.label }}</a>
+      {% endfor %}
+    {% endif %}
+    {% if site.custom_menu is defined and site.custom_menu %}
+      {% for item in site.custom_menu %}
+        <a href="{{ item.url }}">{{ item.label }}</a>
       {% endfor %}
     {% endif %}
     <a href="/contact" class="nav-cta">Contact</a>
