@@ -4,15 +4,21 @@ slug: 2434-automation-en-email-marketing-fonctionnement-et-cas-d-usage
 date: '2026-08-13T12:00:00+02:00'
 categorie: Marketing
 meta_title: 'Automation email marketing : fonctionnement'
-meta_description: Découvrez comment l'automation en email marketing fonctionne et quels cas d'usage en tirer pour envoyer le bon message au bon contact, sans effort manuel.
+meta_description: Découvrez comment l'automation en email marketing fonctionne et
+  quels cas d'usage en tirer pour envoyer le bon message au bon contact, sans effort
+  manuel.
 min_words: 1500
 status: published
 featured_image: /blog/2434-automation-en-email-marketing-fonctionnement-et-cas-d-usage.jpg
 link_anchors:
 - text: automatiser ses envois d'emails
   max: 8
+related_posts:
+- 7040-taux-de-clic-en-email-marketing-comment-l-ameliorer
+- 1500-meilleur-logiciel-affichage-dynamique
+- 4028-logiciel-emailing-et-sms-comment-combiner-les-deux-canaux
+- 9394-newsletter-d-entreprise-comment-la-creer-et-la-gerer
 ---
-
 <h2>Ce que l'automation en email marketing change vraiment au quotidien</h2>
 
 <p>J'ai mis du temps à comprendre ce que "automation" voulait dire concrètement. Pendant des années, j'envoyais des emails à la main. Une newsletter le lundi, un email promotionnel avant les fêtes, une relance client quand j'y pensais. Résultat : beaucoup de temps perdu, des oublis réguliers, et des contacts qui recevaient le mauvais message au mauvais moment.</p>
