@@ -60,7 +60,7 @@ a { text-decoration: none; color: inherit; }
 /* ── Charte "Confiance" — scopée sur .dir-corporate pour ne PAS toucher
    au header / footer monelor (qui gardent leurs propres styles) ────── */
 .dir-corporate{
-  --navy:#000921; --navy-2:#0a1430; --navy-3:#14224a;
+  --navy:var(--ink, #0F1A2E); --navy-2:#0a1430; --navy-3:#14224a;
   --orange:#F68D00; --orange-700:#d97a00;
   --paper:#ffffff; --paper-2:#f4f5f8; --paper-3:#eceef3;
   --ink:#000921; --muted:#5b6478; --line:rgba(0,9,33,0.12);
@@ -238,30 +238,17 @@ a { text-decoration: none; color: inherit; }
     </div>
   </section>
 
-  {# ── DERNIERS ARTICLES (vrais articles récents) ───────────────── #}
-  <section class="c-section c-section-alt" id="blog">
-    <div class="c-wrap">
-      <div class="c-sec-head">
-        <div>
-          <div class="c-sec-kicker">Le blog</div>
-          <h2 class="c-h2">Derniers articles</h2>
-        </div>
-        <a class="c-link" href="/blog/">Tous les articles →</a>
+  {# ── NEWSLETTER ───────────────────────────────────────────────── #}
+  <section class="c-news" id="newsletter">
+    <div class="c-wrap c-news-in">
+      <div class="c-news-text">
+        <h2 class="c-news-h">Mon suivi de patrimoine, chaque mois.</h2>
+        <p class="c-news-p">Recevez le bilan détaillé de mes investissements, mes arbitrages et mes analyses directement par e-mail. Gratuit, sans spam.</p>
       </div>
-      {% if recent_blog_posts and recent_blog_posts | length > 0 %}
-      <div class="c-arts">
-        {% for post in recent_blog_posts %}
-        <a class="c-art" href="/{{ post.slug }}/">
-          <div class="c-art-cat">{{ post.categorie or 'Article' }}</div>
-          <h4 class="c-art-title">{{ post.title }}</h4>
-          <div class="c-art-meta mono">{% if post.date_display %}{{ post.date_display }}{% endif %}{% if post.reading_time %} · {{ post.reading_time }} min de lecture{% endif %}</div>
-          <span class="c-art-arrow">→</span>
-        </a>
-        {% endfor %}
-      </div>
-      {% else %}
-      <p class="c-lead">Les premiers articles arrivent bientôt.</p>
-      {% endif %}
+      <form class="c-news-form" action="{{ site.newsletter_action | default('#') }}" method="post"{% if not site.newsletter_action %} onsubmit="return false"{% endif %}>
+        <input type="email" class="c-news-input" name="email" placeholder="votre@email.com" aria-label="E-mail" required>
+        <button class="c-btn c-btn-solid c-btn-lg" type="submit">Je m'inscris</button>
+      </form>
     </div>
   </section>
 
@@ -285,17 +272,30 @@ a { text-decoration: none; color: inherit; }
     </div>
   </section>
 
-  {# ── NEWSLETTER ───────────────────────────────────────────────── #}
-  <section class="c-news" id="newsletter">
-    <div class="c-wrap c-news-in">
-      <div class="c-news-text">
-        <h2 class="c-news-h">Mon suivi de patrimoine, chaque mois.</h2>
-        <p class="c-news-p">Recevez le bilan détaillé de mes investissements, mes arbitrages et mes analyses directement par e-mail. Gratuit, sans spam.</p>
+  {# ── DERNIERS ARTICLES (en DERNIÈRE position) ─────────────────── #}
+  <section class="c-section c-section-alt" id="blog">
+    <div class="c-wrap">
+      <div class="c-sec-head">
+        <div>
+          <div class="c-sec-kicker">Le blog</div>
+          <h2 class="c-h2">Derniers articles</h2>
+        </div>
+        <a class="c-link" href="/blog/">Tous les articles →</a>
       </div>
-      <form class="c-news-form" action="{{ site.newsletter_action | default('#') }}" method="post"{% if not site.newsletter_action %} onsubmit="return false"{% endif %}>
-        <input type="email" class="c-news-input" name="email" placeholder="votre@email.com" aria-label="E-mail" required>
-        <button class="c-btn c-btn-solid c-btn-lg" type="submit">Je m'inscris</button>
-      </form>
+      {% if recent_blog_posts and recent_blog_posts | length > 0 %}
+      <div class="c-arts">
+        {% for post in recent_blog_posts %}
+        <a class="c-art" href="/{{ post.slug }}/">
+          <div class="c-art-cat">{{ post.categorie or 'Article' }}</div>
+          <h4 class="c-art-title">{{ post.title }}</h4>
+          <div class="c-art-meta mono">{% if post.date_display %}{{ post.date_display }}{% endif %}{% if post.reading_time %} · {{ post.reading_time }} min de lecture{% endif %}</div>
+          <span class="c-art-arrow">→</span>
+        </a>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="c-lead">Les premiers articles arrivent bientôt.</p>
+      {% endif %}
     </div>
   </section>
 
