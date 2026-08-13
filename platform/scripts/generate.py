@@ -1956,9 +1956,10 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             print(f"  ✓ _redirects ({www_preference}, {len(redirect_lines)} règle(s))")
 
         # ── Simulateur de dividendes (page publique) ──────────────────────
-        # Si le site a le template + le fichier d'actions, on génère la page en
-        # injectant les actions ACTIVES dans window.MONELOR_STOCKS. On évite
-        # Jinja (le HTML est plein d'accolades CSS/JS) → simple remplacement.
+        # Rendu Jinja (pour intégrer le nav/footer du site + les couleurs du
+        # thème), PUIS injection des actions ACTIVES via le marqueur. Le JS du
+        # template ne contient aucune séquence Jinja ({{ }} / {% %} / {#),
+        # donc le rendu est sûr. Repli sur remplacement brut si Jinja échoue.
         _sim_tpl = site_dir / "templates" / "simulateur-dividendes.html"
         _sim_data = site_dir / "dividendes-actions.json"
         if _sim_tpl.exists() and _sim_data.exists():
@@ -1968,7 +1969,15 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                 _active = [a for a in _acts if a.get("active", True)]
                 _payload = _json_sim.dumps(_active, ensure_ascii=False)
                 _script = f"<script>window.MONELOR_STOCKS = {_payload};</script>"
-                _html_sim = _sim_tpl.read_text(encoding="utf-8").replace("<!--INJECT_STOCKS-->", _script)
+                try:
+                    _rendered = env.get_template("simulateur-dividendes.html").render(
+                        site={**site, "seo": config.get("seo", {})}, theme=theme,
+                        build_date=date.today().isoformat(),
+                    )
+                except Exception as _e_jinja:
+                    print(f"  ⚠ Simulateur : rendu Jinja KO ({_e_jinja}) → remplacement brut")
+                    _rendered = _sim_tpl.read_text(encoding="utf-8")
+                _html_sim = _rendered.replace("<!--INJECT_STOCKS-->", _script)
                 _sim_out = output_dir / "simulateur-dividendes"
                 _sim_out.mkdir(parents=True, exist_ok=True)
                 (_sim_out / "index.html").write_text(_html_sim, encoding="utf-8")
