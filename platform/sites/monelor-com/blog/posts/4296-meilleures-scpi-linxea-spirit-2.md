@@ -15,8 +15,10 @@ featured_image: /blog/4296-meilleures-scpi-linxea-spirit-2/featured-68786.png
 status: published
 min_words: 2000
 related_posts:
+- comment-acheter-un-etf-sur-linxea-spirit-2
 - 1845-meilleurs-etf-linxea-spirit-2
 - 3327-assurance-vie
+- 4857-comment-acheter-une-scpi-sur-linxea-spirit-2
 link_anchors:
 - text: meilleure scpi Linxea Spirit 2
   max: 2
