@@ -1,0 +1,51 @@
+name: Sync dividend prices
+
+# Synchronise les prix des actions du simulateur de dividendes.
+# - Automatique : toutes les heures pendant les heures de marché (jours ouvrés).
+#   Cron en UTC. La bourse de Paris ouvre ~08:00 UTC et ferme ~16:30 UTC.
+# - Manuel : bouton "Mettre à jour les prix" du dashboard (via workflow_dispatch).
+on:
+  schedule:
+    - cron: '2 8-16 * * 1-5'   # à HH:02, de 08h à 16h UTC, du lundi au vendredi
+  workflow_dispatch:
+    inputs:
+      site:
+        description: "Slug du site"
+        required: false
+        default: "monelor-com"
+
+concurrency:
+  group: sync-dividend-prices-${{ github.event.inputs.site || 'monelor-com' }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Sync prices
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+        run: python platform/scripts/sync_dividend_prices.py "${{ github.event.inputs.site || 'monelor-com' }}"
+
+      - name: Commit updated prices
+        continue-on-error: true   # ne jamais bloquer sur un échec de push
+        run: |
+          SITE="${{ github.event.inputs.site || 'monelor-com' }}"
+          git config user.name "Viseoweb HUB"
+          git config user.email "hub@viseoweb.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git add "platform/sites/$SITE/dividendes-actions.json"
+          if git diff --cached --quiet; then
+            echo "Aucun changement de prix — rien à committer."
+            exit 0
+          fi
+          git commit -m "chore: sync prix dividendes ($SITE) [skip ci]"
+          for i in 1 2 3 4 5; do
+            git pull --rebase --autostash origin main && git push origin HEAD:main && break || sleep $((i*4))
+          done
