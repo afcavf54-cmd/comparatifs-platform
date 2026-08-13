@@ -302,21 +302,5 @@ a { text-decoration: none; color: inherit; }
 </div>
 
 {% include "base/_footer.html.j2" ignore missing %}
-
-<style>
-  /* ── Surcharge monelor : texte du menu et du footer en BLANC ──────
-     (placée après les includes pour gagner en cascade, sans toucher aux
-      partials partagés _nav / _footer utilisés par les autres sites). */
-  nav.site-nav .nav-links a { color: #fff; }
-  nav.site-nav .nav-links a:hover { color: #fff; background: rgba(255,255,255,.14); }
-  .footer,
-  .footer p,
-  .footer a,
-  .footer-brand p,
-  .footer-cols a,
-  .footer-socials a { color: #fff; }
-  .footer-cols a:hover,
-  .footer-socials a:hover { color: #fff; opacity: .82; }
-</style>
 </body>
 </html>
