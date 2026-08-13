@@ -2,7 +2,7 @@
 title: Quelles sont les meilleures SCPI du contrat Lixea Spirit 2 ?
 slug: 4296-meilleures-scpi-linxea-spirit-2
 date: 2026-08-03 15:25:43+02:00
-updated: 2026-08-13T13:59:53
+updated: 2026-08-13T14:00:12
 categorie: Assurance vie
 categories:
 - Assurance vie
