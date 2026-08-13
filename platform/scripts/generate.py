@@ -84,6 +84,77 @@ def _trim_table_cells(html):
     return html
 
 
+def _fetch_youtube_videos(site, limit=4):
+    """Récupère les dernières vidéos YouTube d'une chaîne via son flux RSS
+    (titre + miniature + URL, sans clé API). Retourne [] si indisponible.
+
+    - channel_id : lu depuis site['youtube_channel_id'] si présent, sinon
+      résolu depuis site['youtube_url'] (page de la chaîne → "channelId").
+    - miniature : https://i.ytimg.com/vi/<id>/hqdefault.jpg (toujours dispo).
+    Tolérant aux pannes : toute erreur réseau → [] (le template retombe alors
+    sur les vidéos de config / valeurs par défaut)."""
+    import re as _re_yt
+    import urllib.request as _u
+    from html import unescape as _unescape
+    cid = (site.get("youtube_channel_id") or "").strip()
+    url = (site.get("youtube_url") or "").strip()
+    if not cid and not url:
+        return []
+    try:
+        if not cid:
+            req = _u.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            with _u.urlopen(req, timeout=15) as r:
+                page = r.read().decode("utf-8", "ignore")
+            m = (_re_yt.search(r'"channelId":"(UC[0-9A-Za-z_-]{20,})"', page)
+                 or _re_yt.search(r'/channel/(UC[0-9A-Za-z_-]{20,})', page))
+            if not m:
+                print("  ⚠ YouTube : channelId introuvable depuis l'URL de la chaîne")
+                return []
+            cid = m.group(1)
+        rss_url = f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}"
+        req = _u.Request(rss_url, headers={"User-Agent": "Mozilla/5.0"})
+        with _u.urlopen(req, timeout=15) as r:
+            xml = r.read().decode("utf-8", "ignore")
+    except Exception as e:
+        print(f"  ⚠ YouTube RSS indisponible : {e}")
+        return []
+    vids = []
+    for entry in _re_yt.findall(r"<entry>(.*?)</entry>", xml, _re_yt.S)[:limit]:
+        mv = _re_yt.search(r"<yt:videoId>([^<]+)</yt:videoId>", entry)
+        mt = _re_yt.search(r"<title>(.*?)</title>", entry, _re_yt.S)
+        mp = _re_yt.search(r"<published>([^<]+)</published>", entry)
+        if not mv or not mt:
+            continue
+        vid = mv.group(1).strip()
+        title = _unescape(mt.group(1).strip())
+        age = ""
+        if mp:
+            try:
+                from datetime import datetime, timezone
+                d = datetime.fromisoformat(mp.group(1).strip().replace("Z", "+00:00"))
+                days = (datetime.now(timezone.utc) - d).days
+                if days <= 1:
+                    age = "hier" if days == 1 else "aujourd'hui"
+                elif days < 30:
+                    age = f"il y a {days} j"
+                elif days < 365:
+                    age = f"il y a {days // 30} mois"
+                else:
+                    yrs = days // 365
+                    age = f"il y a {yrs} an" + ("s" if yrs > 1 else "")
+            except Exception:
+                age = ""
+        vids.append({
+            "title": title,
+            "url": f"https://www.youtube.com/watch?v={vid}",
+            "thumbnail": f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg",
+            "age": age,
+        })
+    if vids:
+        print(f"  ✓ YouTube : {len(vids)} vidéo(s) récupérée(s) via RSS")
+    return vids
+
+
 def md_to_html(text):
     if not text: return text
     import re as _re2
@@ -2103,6 +2174,9 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 total_categories = sum(len(v) for v in classements_by_category.values())
             else:
                 total_categories = len({p.get("categorie") for p in products if p.get("categorie")})
+            # ── Vidéos YouTube (home monelor) : récupérées via RSS si la
+            # chaîne est configurée (youtube_url / youtube_channel_id). [] sinon.
+            _yt_videos = _fetch_youtube_videos(site) if (site.get("youtube_url") or site.get("youtube_channel_id")) else []
             try:
                 html = _index_template_obj.render(
                     site={**site, "seo": config.get("seo", {})}, theme=theme, products=products,
@@ -2114,6 +2188,7 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     page_types=config.get("page_types", {}),
                     recent_blog_posts=substitute_template_vars(blog_posts[:int(site.get('home_recent_count', 6) or 6)], _global_vars) if blog_posts else [],
                     recent_avis=substitute_template_vars(_recent_avis_for_home, _global_vars) if _recent_avis_for_home else [],
+                    youtube_videos=_yt_videos,
                     home_title=home_title, home_description=home_desc, home_h1=site.get('home_h1', ''),
                 )
                 # Cache-buster pour forcer Cloudflare à re-uploader
