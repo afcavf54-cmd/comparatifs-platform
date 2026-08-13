@@ -2,7 +2,7 @@
 title: "Les meilleurs ETF disponibles sur Linxea Spirit 2 : liste complète et comparatif"
 slug: 1845-meilleurs-etf-linxea-spirit-2
 date: 2026-08-06 08:30:18+02:00
-updated: 2026-08-13T13:59:46
+updated: 2026-08-13T14:00:15
 categorie: Assurance vie
 categories:
 - Assurance vie
