@@ -66,7 +66,7 @@ a { text-decoration: none; color: inherit; }
   font-weight:600;font-size:14.5px;padding:10px 18px;border-radius:10px;cursor:pointer;
   transition:transform .12s,background .15s,box-shadow .15s;border:1px solid transparent;}
 .dir-corporate .c-btn-lg{padding:14px 24px;font-size:15.5px;}
-.dir-corporate .c-btn-solid{background:var(--orange);color:#1c1300;box-shadow:0 1px 0 rgba(0,0,0,0.04);}
+.dir-corporate .c-btn-solid{background:var(--orange);color:#fff;box-shadow:0 1px 0 rgba(0,0,0,0.04);}
 .dir-corporate .c-btn-solid:hover{background:var(--orange-700);transform:translateY(-1px);}
 .dir-corporate .c-btn-yt{background:#E62117;color:#fff;border-radius:8px;font-weight:700;gap:12px;padding-left:16px;}
 .dir-corporate .c-btn-yt:hover{background:#c81a12;transform:translateY(-1px);}
@@ -146,7 +146,7 @@ a { text-decoration: none; color: inherit; }
 .dir-corporate .c-news-form{display:flex;gap:12px;}
 .dir-corporate .c-news-input{flex:1;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18);
   border-radius:10px;padding:15px 18px;color:#fff;font-family:"Hanken Grotesk";font-size:15px;}
-.dir-corporate .c-news-input::placeholder{color:#7c87a3;}
+.dir-corporate .c-news-input::placeholder{color:rgba(255,255,255,.85);}
 .dir-corporate .c-news-input:focus{outline:none;border-color:var(--orange);}
 
 @media (max-width:980px){
@@ -178,6 +178,8 @@ nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;
 nav.site-nav .nav-mobile.open{display:flex}
 nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
 @media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
+/* Option site : texte du menu en blanc (activée via theme.nav_footer_white) */
+nav.site-nav .nav-links a,nav.site-nav .nav-mobile a{color:#fff}
 </style>
 
 <nav class="site-nav">
@@ -320,7 +322,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
       <div class="c-about-text">
         <div class="c-sec-kicker">À propos</div>
-        <h2 class="c-h2">Bonjour, moi c'est Julien.</h2>
+        <h2 class="c-h2">À propos de Monelor</h2>
         <p class="c-about-p">Investisseur particulier, je partage sur Monelor mon parcours complet vers l'indépendance financière. Pas de promesse miracle : des chiffres réels, mes erreurs, et une méthode patiente répartie entre <b>immobilier locatif</b>, <b>assurance vie</b> et <b>bourse</b>.</p>
         <p class="c-about-p">Mon ambition : atteindre 1&nbsp;000&nbsp;000&nbsp;€ de patrimoine investi et en vivre. Vous suivez chaque étape ici et sur YouTube.</p>
         <div class="c-about-stats">
@@ -399,6 +401,8 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
   .footer-brand{grid-column:1/-1}
 }
+/* Option site : texte du footer en blanc (activée via theme.nav_footer_white) */
+.footer,.footer p,.footer a,.footer-brand p,.footer-socials a,.footer-col a,.footer-col .footer-col-label,.footer-bottom-left{color:#fff}
 </style>
 <footer class="footer">
   <div class="footer-inner">
@@ -519,21 +523,5 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   // Check immédiat (au cas où la page est rechargée déjà scrollée)
   update();
 })();
-</script>
-<style>
-  /* ── Surcharge monelor : texte du menu et du footer en BLANC ──────
-     (placée après les includes pour gagner en cascade, sans toucher aux
-      partials partagés _nav / _footer utilisés par les autres sites). */
-  nav.site-nav .nav-links a { color: #fff; }
-  nav.site-nav .nav-links a:hover { color: #fff; background: rgba(255,255,255,.14); }
-  .footer,
-  .footer p,
-  .footer a,
-  .footer-brand p,
-  .footer-cols a,
-  .footer-socials a { color: #fff; }
-  .footer-cols a:hover,
-  .footer-socials a:hover { color: #fff; opacity: .82; }
-</style>
-<!-- build:20260504122856 --></body>
+</script><!-- build:20260504122856 --></body>
 </html>

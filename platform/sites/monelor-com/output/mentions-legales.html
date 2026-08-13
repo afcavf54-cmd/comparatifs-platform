@@ -69,6 +69,8 @@ nav.site-nav .nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;
 nav.site-nav .nav-mobile.open{display:flex}
 nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12px 16px;border-radius:10px;transition:.15s}
 @media(max-width:768px){nav.site-nav .nav-links,nav.site-nav .nav-cta{display:none}nav.site-nav .nav-burger{display:flex}}
+/* Option site : texte du menu en blanc (activée via theme.nav_footer_white) */
+nav.site-nav .nav-links a,nav.site-nav .nav-mobile a{color:#fff}
 </style>
 
 <nav class="site-nav">
@@ -198,6 +200,8 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
   .footer-brand{grid-column:1/-1}
 }
+/* Option site : texte du footer en blanc (activée via theme.nav_footer_white) */
+.footer,.footer p,.footer a,.footer-brand p,.footer-socials a,.footer-col a,.footer-col .footer-col-label,.footer-bottom-left{color:#fff}
 </style>
 <footer class="footer">
   <div class="footer-inner">
