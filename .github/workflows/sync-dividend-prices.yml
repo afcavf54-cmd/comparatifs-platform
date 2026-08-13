@@ -29,8 +29,6 @@ jobs:
           python-version: '3.12'
 
       - name: Sync prices
-        env:
-          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
         run: python platform/scripts/sync_dividend_prices.py "${{ github.event.inputs.site || 'monelor-com' }}"
 
       - name: Commit updated prices
