@@ -120,6 +120,8 @@ a{text-decoration:none}
   .picker-opt .meta{flex:1;min-width:0}
   .picker-opt .meta .o-nm{font-weight:600;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .picker-opt .meta .o-sub{font-size:12px;color:var(--faint)}
+  .price-date{display:block;font-size:11px;color:var(--faint);font-family:"Spline Sans Mono",monospace;font-weight:400;margin-top:2px}
+  .pea-tag{color:var(--gold);font-weight:700;font-family:"Spline Sans Mono",monospace;font-size:11px}
   .picker-opt .o-yield{font-size:12.5px;font-weight:700;color:var(--emerald);font-variant-numeric:tabular-nums}
   .picker-none{padding:18px 14px;text-align:center;color:var(--faint);font-size:13.5px}
 
@@ -351,6 +353,7 @@ let uidSeq = 1;
 
 const fmt = (n, cur='EUR') => new Intl.NumberFormat('fr-FR',{style:'currency',currency:cur,maximumFractionDigits:2}).format(n||0);
 const fmtPct = n => new Intl.NumberFormat('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2}).format(n||0)+' %';
+const fmtDay = iso => { if(!iso) return ''; const d=new Date(iso); return isNaN(d.getTime())?'':d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}); };
 const yieldOf = s => s.price>0 ? (s.dividend/s.price)*100 : 0;
 // dividende/action de la ligne : override utilisateur (r.div) sinon valeur de l'action
 const divOf = (r,s) => (r && r.div!=null) ? r.div : (s ? s.dividend : 0);
@@ -365,7 +368,7 @@ function rowHtml(r){
   return `<tr data-uid="${r.uid}">
     <td>${pickerHtml(r)}</td>
     <td data-label="Nombre"><input class="qty-input num" type="number" min="0" step="1" value="${r.qty||''}" placeholder="0" data-qty></td>
-    <td data-label="Prix" class="cell-price num">${s?fmt(s.price,cur):'—'}</td>
+    <td data-label="Prix" class="cell-price num">${s?`${fmt(s.price,cur)}${s.price_updated_at?`<span class="price-date">au ${fmtDay(s.price_updated_at)}</span>`:''}`:'—'}</td>
     <td data-label="Dividende / action" class="num">${s?`<input class="qty-input num" style="width:98px" type="number" min="0" step="0.01" value="${dps||''}" placeholder="0" title="Dividende annuel par action — modifiable" data-div>`:'—'}</td>
     <td data-label="Investissement" class="cell-invest num">${s?fmt(invest,cur):'—'}</td>
     <td data-label="Dividendes" class="cell-div num">${s?fmt(divs,cur):'—'}</td>
@@ -489,7 +492,7 @@ function fillPicker(picker, q){
   list.innerHTML = items.length ? items.map(s=>`
     <div class="picker-opt" data-opt="${s.id}">
       ${logoHtml(s)}
-      <div class="meta"><div class="o-nm">${s.name}</div><div class="o-sub">${[s.ticker,s.country].filter(Boolean).join(' · ')}</div></div>
+      <div class="meta"><div class="o-nm">${s.name}</div><div class="o-sub">${[s.ticker,s.country].filter(Boolean).join(' · ')}${s.eligible_pea?' · <span class="pea-tag">PEA</span>':''}</div></div>
       <span class="o-yield">${fmtPct(yieldOf(s))}</span>
     </div>`).join('') : `<div class="picker-none">Aucune action trouvée</div>`;
   list.querySelectorAll('[data-opt]').forEach(el=>el.addEventListener('click',()=>{
