@@ -152,7 +152,7 @@ export default function DividendesPage() {
   const arrow = (k: SortKey) => sortKey === k ? (sortDir === 1 ? ' ▲' : ' ▼') : ''
 
   return (
-    <div style={{ maxWidth: 1320 }}>
+    <div style={{ maxWidth: 1560 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
         <div>
           <h1 style={{ fontSize: 22, color: C.text, margin: 0 }}>💰 Simulation de dividendes — Actions</h1>
@@ -181,13 +181,13 @@ export default function DividendesPage() {
       {/* Tableau */}
       <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, overflow: 'hidden' }}>
         <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 1120 }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 1280 }}>
             <thead>
               <tr>
                 <th style={{ ...thSort, width: '17%' }} onClick={() => toggleSort('name')}>Nom{arrow('name')}</th>
                 <th style={{ ...thSort, width: 80 }} onClick={() => toggleSort('ticker')}>Ticker{arrow('ticker')}</th>
-                <th style={{ ...th, width: 120 }}>ISIN</th>
-                <th style={{ ...th, width: 96 }}>Symbole API</th>
+                <th style={{ ...th, width: 150 }}>ISIN</th>
+                <th style={{ ...th, width: 118 }}>Symbole API</th>
                 <th style={{ ...thSort, width: 96 }} onClick={() => toggleSort('country')}>Pays{arrow('country')}</th>
                 <th style={{ ...th, width: 70 }}>Devise</th>
                 <th style={{ ...thSort, width: 118, textAlign: 'right' }} onClick={() => toggleSort('price')}>Prix (auto){arrow('price')}</th>
