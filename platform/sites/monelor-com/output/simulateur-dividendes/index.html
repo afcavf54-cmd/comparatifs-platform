@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<script>window.MONELOR_STOCKS = [{"id": "tte", "name": "TotalEnergies", "ticker": "TTE", "logo": "", "country": "France", "currency": "EUR", "price": 87.05, "dividend": 3.22, "active": true, "price_updated_at": "2026-08-14T09:14:51+00:00"}, {"id": "san", "name": "Sanofi", "ticker": "SAN", "logo": "", "country": "France", "currency": "EUR", "price": 14.78, "dividend": 3.76, "active": true, "price_updated_at": "2026-08-14T09:14:51+00:00"}, {"id": "bnp", "name": "BNP Paribas", "ticker": "BNP", "logo": "", "country": "France", "currency": "EUR", "price": 64.1, "dividend": 4.6, "active": true}];</script>
+<script>window.MONELOR_STOCKS = [{"id": "tte", "name": "TotalEnergies", "ticker": "TTE", "logo": "", "country": "France", "currency": "EUR", "price": 87.05, "dividend": 3.22, "active": true, "price_updated_at": "2026-08-14T11:03:33+00:00"}, {"id": "san", "name": "Sanofi", "ticker": "SAN", "logo": "", "country": "France", "currency": "EUR", "price": 14.78, "dividend": 3.76, "active": true, "price_updated_at": "2026-08-14T11:03:33+00:00"}, {"id": "bnp", "name": "BNP Paribas", "ticker": "BNP", "logo": "", "country": "France", "currency": "EUR", "price": 64.1, "dividend": 4.6, "active": true}];</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simulateur de dividendes — Monelor</title>
 <meta name="description" content="Estimez les dividendes annuels de votre portefeuille d'actions en une saisie. Rendement, fiscalité et classement, calculés instantanément.">
@@ -107,7 +107,7 @@ a{text-decoration:none}
   .picker-btn .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600;font-size:14px}
   .picker-btn .chev{color:var(--faint);flex:none}
   .picker-btn.placeholder .nm{color:var(--faint);font-weight:500}
-  .picker-pop{position:absolute;z-index:30;top:calc(100% + 6px);left:0;width:280px;max-width:76vw;
+  .picker-pop{position:fixed;z-index:1000;width:280px;max-width:90vw;
     background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;display:none}
   .picker-pop.open{display:block}
   .picker-search{width:100%;border:none;border-bottom:1px solid var(--line);padding:12px 14px;font:inherit;outline:none}
@@ -118,6 +118,8 @@ a{text-decoration:none}
   .picker-opt .meta{flex:1;min-width:0}
   .picker-opt .meta .o-nm{font-weight:600;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .picker-opt .meta .o-sub{font-size:12px;color:var(--faint)}
+  .price-date{display:block;font-size:11px;color:var(--faint);font-family:"Spline Sans Mono",monospace;font-weight:400;margin-top:2px}
+  .pea-tag{color:var(--gold);font-weight:700;font-family:"Spline Sans Mono",monospace;font-size:11px}
   .picker-opt .o-yield{font-size:12.5px;font-weight:700;color:var(--emerald);font-variant-numeric:tabular-nums}
   .picker-none{padding:18px 14px;text-align:center;color:var(--faint);font-size:13.5px}
 
@@ -283,13 +285,14 @@ nav.site-nav .nav-links a,nav.site-nav .nav-mobile a{color:#fff}
         Ajouter une action
       </button>
     </div>
-    <div style="overflow-x:auto">
+    <div style="overflow:visible">
       <div class="table-wrap"><table class="pf-table">
         <thead>
           <tr>
             <th>Action</th>
             <th>Nombre d'actions</th>
             <th>Prix actuel</th>
+            <th>Dividende / action</th>
             <th>Investissement</th>
             <th>Dividendes annuels</th>
             <th></th>
@@ -568,18 +571,23 @@ let uidSeq = 1;
 
 const fmt = (n, cur='EUR') => new Intl.NumberFormat('fr-FR',{style:'currency',currency:cur,maximumFractionDigits:2}).format(n||0);
 const fmtPct = n => new Intl.NumberFormat('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2}).format(n||0)+' %';
+const fmtDay = iso => { if(!iso) return ''; const d=new Date(iso); return isNaN(d.getTime())?'':d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}); };
 const yieldOf = s => s.price>0 ? (s.dividend/s.price)*100 : 0;
+// dividende/action de la ligne : override utilisateur (r.div) sinon valeur de l'action
+const divOf = (r,s) => (r && r.div!=null) ? r.div : (s ? s.dividend : 0);
 
 // ── Rendu d'une ligne du portefeuille
 function rowHtml(r){
   const s = byId[r.stockId];
+  const dps    = divOf(r,s);
   const invest = s ? s.price*r.qty : 0;
-  const divs   = s ? s.dividend*r.qty : 0;
+  const divs   = s ? dps*r.qty : 0;
   const cur    = s ? s.currency : 'EUR';
   return `<tr data-uid="${r.uid}">
     <td>${pickerHtml(r)}</td>
     <td data-label="Nombre"><input class="qty-input num" type="number" min="0" step="1" value="${r.qty||''}" placeholder="0" data-qty></td>
-    <td data-label="Prix" class="cell-price num">${s?fmt(s.price,cur):'—'}</td>
+    <td data-label="Prix" class="cell-price num">${s?`${fmt(s.price,cur)}${s.price_updated_at?`<span class="price-date">au ${fmtDay(s.price_updated_at)}</span>`:''}`:'—'}</td>
+    <td data-label="Dividende / action" class="num">${s?`<input class="qty-input num" style="width:98px" type="number" min="0" step="0.01" value="${dps||''}" placeholder="0" title="Dividende annuel par action — modifiable" data-div>`:'—'}</td>
     <td data-label="Investissement" class="cell-invest num">${s?fmt(invest,cur):'—'}</td>
     <td data-label="Dividendes" class="cell-div num">${s?fmt(divs,cur):'—'}</td>
     <td><button class="btn-icon" title="Supprimer" data-del><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2M6 7l1 13a1 1 0 001 1h8a1 1 0 001-1l1-13"/></svg></button></td>
@@ -608,7 +616,7 @@ function pickerHtml(r){
 function render(){
   const body = document.getElementById('pfBody');
   if(rows.length===0){
-    body.innerHTML = `<tr class="pf-empty"><td colspan="6">Aucune action. Cliquez sur « Ajouter une action » pour commencer.</td></tr>`;
+    body.innerHTML = `<tr class="pf-empty"><td colspan="7">Aucune action. Cliquez sur « Ajouter une action » pour commencer.</td></tr>`;
   } else {
     body.innerHTML = rows.map(rowHtml).join('');
   }
@@ -619,7 +627,7 @@ function render(){
 
 function computeTotals(){
   let invest=0, divs=0;
-  rows.forEach(r=>{ const s=byId[r.stockId]; if(s){ invest+=s.price*r.qty; divs+=s.dividend*r.qty; }});
+  rows.forEach(r=>{ const s=byId[r.stockId]; if(s){ invest+=s.price*r.qty; divs+=divOf(r,s)*r.qty; }});
   const yieldPct = invest>0 ? (divs/invest)*100 : 0;
   document.getElementById('sInvest').textContent = fmt(invest);
   document.getElementById('sDiv').textContent    = fmt(divs);
@@ -664,7 +672,17 @@ document.getElementById('pfBody').addEventListener('input', e=>{
     const r=rows.find(x=>x.uid===uid); if(r){ r.qty=Math.max(0,parseInt(e.target.value)||0); computeTotals(); updateShareUrl();
       // maj des cellules calculées de la ligne sans tout re-render (garde le focus)
       const s=byId[r.stockId], tr=e.target.closest('tr');
-      if(s){ tr.querySelector('.cell-invest').textContent=fmt(s.price*r.qty,s.currency); tr.querySelector('.cell-div').textContent=fmt(s.dividend*r.qty,s.currency); }
+      if(s){ tr.querySelector('.cell-invest').textContent=fmt(s.price*r.qty,s.currency); tr.querySelector('.cell-div').textContent=fmt(divOf(r,s)*r.qty,s.currency); }
+    }
+  }
+  if(e.target.matches('[data-div]')){
+    const uid=+e.target.closest('tr').dataset.uid;
+    const r=rows.find(x=>x.uid===uid);
+    if(r){
+      const v=parseFloat(e.target.value); r.div = isNaN(v)?null:Math.max(0,v);
+      computeTotals(); updateShareUrl();
+      const s=byId[r.stockId], tr=e.target.closest('tr');
+      if(s){ tr.querySelector('.cell-div').textContent=fmt(divOf(r,s)*r.qty,s.currency); }
     }
   }
 });
@@ -678,13 +696,32 @@ document.getElementById('pfBody').addEventListener('input', e=>{
   if(e.target.matches('[data-picker-search]')){ filterPicker(e.target.closest('[data-picker]'), e.target.value); }
 });
 
+function positionPop(picker){
+  const btn=picker.querySelector('[data-picker-btn]');
+  const pop=picker.querySelector('[data-picker-pop]');
+  if(!btn||!pop) return;
+  const r=btn.getBoundingClientRect();
+  const w=Math.min(280, window.innerWidth*0.9);
+  let left=r.left;
+  if(left + w > window.innerWidth - 8) left = window.innerWidth - 8 - w;
+  pop.style.width=w+'px';
+  pop.style.left=Math.max(8,left)+'px';
+  pop.style.top=(r.bottom + 6)+'px';
+}
 function togglePicker(picker){
   document.querySelectorAll('.picker-pop.open').forEach(p=>{ if(p!==picker.querySelector('[data-picker-pop]')) p.classList.remove('open'); });
   const pop=picker.querySelector('[data-picker-pop]');
   const open=!pop.classList.contains('open');
   pop.classList.toggle('open',open);
-  if(open){ fillPicker(picker,''); const s=pop.querySelector('[data-picker-search]'); s.value=''; setTimeout(()=>s.focus(),10); }
+  if(open){ positionPop(picker); fillPicker(picker,''); const s=pop.querySelector('[data-picker-search]'); s.value=''; setTimeout(()=>s.focus(),10); }
 }
+// Repositionne le popup ouvert au scroll/redimensionnement (position:fixed)
+function repositionOpenPicker(){
+  const openPop=document.querySelector('.picker-pop.open');
+  if(openPop){ const picker=openPop.closest('[data-picker]'); if(picker) positionPop(picker); }
+}
+window.addEventListener('scroll', repositionOpenPicker, true);
+window.addEventListener('resize', repositionOpenPicker);
 function fillPicker(picker, q){
   const list=picker.querySelector('[data-picker-list]');
   const term=(q||'').toLowerCase().trim();
@@ -692,12 +729,12 @@ function fillPicker(picker, q){
   list.innerHTML = items.length ? items.map(s=>`
     <div class="picker-opt" data-opt="${s.id}">
       ${logoHtml(s)}
-      <div class="meta"><div class="o-nm">${s.name}</div><div class="o-sub">${[s.ticker,s.country].filter(Boolean).join(' · ')}</div></div>
+      <div class="meta"><div class="o-nm">${s.name}</div><div class="o-sub">${[s.ticker,s.country].filter(Boolean).join(' · ')}${s.eligible_pea?' · <span class="pea-tag">PEA</span>':''}</div></div>
       <span class="o-yield">${fmtPct(yieldOf(s))}</span>
     </div>`).join('') : `<div class="picker-none">Aucune action trouvée</div>`;
   list.querySelectorAll('[data-opt]').forEach(el=>el.addEventListener('click',()=>{
     const uid=+picker.closest('tr').dataset.uid;
-    const r=rows.find(x=>x.uid===uid); if(r){ r.stockId=el.dataset.opt; render(); }
+    const r=rows.find(x=>x.uid===uid); if(r){ r.stockId=el.dataset.opt; r.div=null; render(); }
   }));
 }
 function filterPicker(picker,q){ fillPicker(picker,q); }
