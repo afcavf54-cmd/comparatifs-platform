@@ -1,15 +1,22 @@
 ---
-title: 'L''intégration dans le processus de recrutement : pourquoi c''est crucial ?'
+title: 'L''intégration dans le processus de recrutement : pourquoi c''est crucial
+  ?'
 slug: 1948-l-integration-dans-le-processus-de-recrutement-pourquoi-c-est-crucial
 date: '2026-08-14T17:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Intégration dans le processus de recrutement : enjeux'
-meta_description: L'intégration dans le recrutement est une étape clé souvent négligée. Découvrez pourquoi un onboarding réussi fidélise vos collaborateurs dès le premier jour.
+meta_description: L'intégration dans le recrutement est une étape clé souvent négligée.
+  Découvrez pourquoi un onboarding réussi fidélise vos collaborateurs dès le premier
+  jour.
 min_words: 1300
 status: published
 featured_image: /blog/1948-l-integration-dans-le-processus-de-recrutement-pourquoi-c-est-crucial.jpg
+related_posts:
+- 2681-logiciel-de-gestion-des-candidatures-role-et-fonctionnement
+- 5603-processus-de-recrutement-definition-et-objectifs
+- 7364-comment-construire-une-marque-employeur-attractive
+- 6596-comment-realiser-une-cartographie-des-competences-efficace
 ---
-
 <h2>L'intégration, cette étape qu'on oublie trop souvent</h2>
 
 <p>J'ai recruté plusieurs personnes depuis que je gère mon entreprise à Marseille. Et pendant longtemps, j'ai cru que mon travail s'arrêtait au moment de la signature du contrat. Le candidat est validé, le dossier est bouclé, circulez. Grosse erreur.</p>
