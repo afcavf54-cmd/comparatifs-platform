@@ -4,15 +4,21 @@ slug: 1158-gestion-de-tresorerie-en-entreprise-methodes-et-outils
 date: '2026-08-14T07:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Gestion de trésorerie entreprise : méthodes et outils'
-meta_description: Maîtrisez la gestion de trésorerie en entreprise grâce à des méthodes concrètes et des outils fiables pour anticiper vos flux et éviter les crises de liquidités.
+meta_description: Maîtrisez la gestion de trésorerie en entreprise grâce à des méthodes
+  concrètes et des outils fiables pour anticiper vos flux et éviter les crises de
+  liquidités.
 min_words: 1500
 status: published
 featured_image: /blog/1158-gestion-de-tresorerie-en-entreprise-methodes-et-outils.jpg
 link_anchors:
 - text: piloter la trésorerie de son entreprise
   max: 8
+related_posts:
+- 9206-logiciel-de-facturation-pour-auto-entrepreneur-ce-qu-il-faut-savoir
+- 2176-logiciel-de-comptabilite-definition-role-et-fonctionnement
+- 7491-comment-fonctionne-un-logiciel-de-comptabilite-en-entreprise
+- 8673-logiciel-de-comptabilite-simple-a-qui-s-adresse-t-il-et-que-fait-il
 ---
-
 <p>Vingt ans à tenir des comptes, à croiser des chiffres, à anticiper des décalages de trésorerie qui peuvent mettre une boîte à genoux en trois semaines. Ce que j'ai appris, c'est que la trésorerie n'attend pas. Elle ne pardonne pas non plus les approximations. Et pourtant, je vois encore des responsables comptables gérer leurs flux dans des fichiers Excel bricolés à la main, sans aucune vision à 30 jours. C'est risqué.</p>
 
 <p>Cet article, je l'écris pour vous donner une méthode concrète, des outils qui fonctionnent vraiment, et quelques mises en garde que j'aurais aimé recevoir plus tôt dans ma carrière.</p>
