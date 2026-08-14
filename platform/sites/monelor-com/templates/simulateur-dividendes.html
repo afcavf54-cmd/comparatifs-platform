@@ -109,7 +109,7 @@ a{text-decoration:none}
   .picker-btn .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600;font-size:14px}
   .picker-btn .chev{color:var(--faint);flex:none}
   .picker-btn.placeholder .nm{color:var(--faint);font-weight:500}
-  .picker-pop{position:absolute;z-index:30;top:calc(100% + 6px);left:0;width:280px;max-width:76vw;
+  .picker-pop{position:fixed;z-index:1000;width:280px;max-width:90vw;
     background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden;display:none}
   .picker-pop.open{display:block}
   .picker-search{width:100%;border:none;border-bottom:1px solid var(--line);padding:12px 14px;font:inherit;outline:none}
@@ -478,13 +478,32 @@ document.getElementById('pfBody').addEventListener('input', e=>{
   if(e.target.matches('[data-picker-search]')){ filterPicker(e.target.closest('[data-picker]'), e.target.value); }
 });
 
+function positionPop(picker){
+  const btn=picker.querySelector('[data-picker-btn]');
+  const pop=picker.querySelector('[data-picker-pop]');
+  if(!btn||!pop) return;
+  const r=btn.getBoundingClientRect();
+  const w=Math.min(280, window.innerWidth*0.9);
+  let left=r.left;
+  if(left + w > window.innerWidth - 8) left = window.innerWidth - 8 - w;
+  pop.style.width=w+'px';
+  pop.style.left=Math.max(8,left)+'px';
+  pop.style.top=(r.bottom + 6)+'px';
+}
 function togglePicker(picker){
   document.querySelectorAll('.picker-pop.open').forEach(p=>{ if(p!==picker.querySelector('[data-picker-pop]')) p.classList.remove('open'); });
   const pop=picker.querySelector('[data-picker-pop]');
   const open=!pop.classList.contains('open');
   pop.classList.toggle('open',open);
-  if(open){ fillPicker(picker,''); const s=pop.querySelector('[data-picker-search]'); s.value=''; setTimeout(()=>s.focus(),10); }
+  if(open){ positionPop(picker); fillPicker(picker,''); const s=pop.querySelector('[data-picker-search]'); s.value=''; setTimeout(()=>s.focus(),10); }
 }
+// Repositionne le popup ouvert au scroll/redimensionnement (position:fixed)
+function repositionOpenPicker(){
+  const openPop=document.querySelector('.picker-pop.open');
+  if(openPop){ const picker=openPop.closest('[data-picker]'); if(picker) positionPop(picker); }
+}
+window.addEventListener('scroll', repositionOpenPicker, true);
+window.addEventListener('resize', repositionOpenPicker);
 function fillPicker(picker, q){
   const list=picker.querySelector('[data-picker-list]');
   const term=(q||'').toLowerCase().trim();
