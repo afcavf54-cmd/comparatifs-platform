@@ -1966,7 +1966,10 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             try:
                 import json as _json_sim
                 _acts = _json_sim.loads(_sim_data.read_text(encoding="utf-8")).get("actions", [])
-                _active = [a for a in _acts if a.get("active", True)]
+                # Actives ET avec un dividende renseigné (>0) : une action sans
+                # dividende n'a pas de sens dans le simulateur → on l'exclut du public
+                # (elle reste visible/éditable dans le dashboard).
+                _active = [a for a in _acts if a.get("active", True) and (float(a.get("dividend") or 0) > 0)]
                 _payload = _json_sim.dumps(_active, ensure_ascii=False)
                 _script = f"<script>window.MONELOR_STOCKS = {_payload};</script>"
                 try:
