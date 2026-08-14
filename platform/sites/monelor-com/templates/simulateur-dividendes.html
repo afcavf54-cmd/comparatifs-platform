@@ -316,7 +316,7 @@ a{text-decoration:none}
      price     (prix actuel, nombre)
      dividend  (dividende annuel par action, nombre)
    ========================================================================== */
-const STOCKS = (window.MONELOR_STOCKS && window.MONELOR_STOCKS.length) ? window.MONELOR_STOCKS : [
+let STOCKS = (window.MONELOR_STOCKS && window.MONELOR_STOCKS.length) ? window.MONELOR_STOCKS : [
   { id:'tte',  name:'TotalEnergies',  ticker:'TTE',  country:'France',   currency:'EUR', price:58.20, dividend:3.22, logo:'' },
   { id:'san',  name:'Sanofi',         ticker:'SAN',  country:'France',   currency:'EUR', price:88.40, dividend:3.76, logo:'' },
   { id:'bnp',  name:'BNP Paribas',    ticker:'BNP',  country:'France',   currency:'EUR', price:64.10, dividend:4.60, logo:'' },
@@ -347,7 +347,7 @@ const TAX_REGIMES = [
 /* ============================================================================
    3) LOGIQUE  (calculs côté client, instantanés)
    ========================================================================== */
-const byId = Object.fromEntries(STOCKS.map(s => [String(s.id), s]));
+let byId = Object.fromEntries(STOCKS.map(s => [String(s.id), s]));
 let rows = [];            // [{ uid, stockId, qty }]
 let uidSeq = 1;
 
@@ -547,8 +547,28 @@ document.getElementById('shareBtn').addEventListener('click',()=>{
 });
 function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),2600); }
 
+/* ── Chargement DYNAMIQUE des actions (sans redéploiement) ──────────────────
+   Les données injectées au build s'affichent instantanément (fallback), puis on
+   rafraîchit en direct depuis le JSON du repo. Ajout d'action / prix synchronisés
+   → visibles au simple rechargement de la page. Filtre : active + dividende > 0. */
+const DIVIDENDES_URL = 'https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/monelor-com/dividendes-actions.json';
+async function refreshStocks(){
+  try{
+    const r = await fetch(DIVIDENDES_URL, {cache:'default'});
+    if(!r.ok) return;
+    const d = await r.json();
+    const list = (d.actions||[]).filter(a => a.active!==false && (Number(a.dividend)||0) > 0);
+    if(list.length){
+      STOCKS = list;
+      byId = Object.fromEntries(STOCKS.map(s => [String(s.id), s]));
+      render();   // recalcule tout avec les données fraîches (prix, nouvelles actions)
+    }
+  }catch(e){ /* réseau KO → on garde les données du build */ }
+}
+
 /* ── Init ─────────────────────────────────────────────────────────────────── */
 if(!loadFromUrl()) render(); else render();
+refreshStocks();
 </script>
 </body>
 </html>
