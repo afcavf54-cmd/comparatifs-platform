@@ -79,6 +79,35 @@ def _stooq(ticker: str) -> float:
     raise ValueError(f"Stooq: prix absent ({csv[:2]})")
 
 
+# Suffixe de place Yahoo Finance dérivé du pays (si fmp_symbol non renseigné).
+# Sans suffixe, "TTE" tape la cotation US (TotalEnergies NYSE) au lieu de Paris !
+EXCHANGE_SUFFIX = {
+    "france": ".PA",
+    "allemagne": ".DE", "germany": ".DE",
+    "pays-bas": ".AS", "netherlands": ".AS",
+    "belgique": ".BR", "belgium": ".BR",
+    "espagne": ".MC", "spain": ".MC",
+    "italie": ".MI", "italy": ".MI",
+    "portugal": ".LS",
+    "royaume-uni": ".L", "uk": ".L", "united kingdom": ".L",
+    "suisse": ".SW", "switzerland": ".SW",
+    "états-unis": "", "etats-unis": "", "usa": "", "us": "", "": "",
+}
+
+
+def market_symbol(a: dict) -> str:
+    """Symbole marché pour Yahoo : `fmp_symbol` si renseigné, sinon
+    ticker + suffixe de place déduit du pays (ex. TTE + France => TTE.PA)."""
+    sym = (a.get("fmp_symbol") or "").strip()
+    if sym:
+        return sym
+    tk = (a.get("ticker") or "").strip()
+    if not tk or "." in tk:
+        return tk
+    suf = EXCHANGE_SUFFIX.get((a.get("country") or "").strip().lower(), "")
+    return tk + suf
+
+
 def fetch_price(symbol: str, ticker: str) -> tuple[float, str]:
     """Essaie Yahoo puis Stooq. Retourne (prix, source)."""
     errs = []
@@ -117,7 +146,7 @@ def main(site_slug: str) -> int:
     touched = False
 
     for a in active:
-        symbol = (a.get("fmp_symbol") or "").strip()
+        symbol = market_symbol(a)
         ticker = (a.get("ticker") or "").strip()
         name = a.get("name", "?")
         if not symbol and not ticker:
