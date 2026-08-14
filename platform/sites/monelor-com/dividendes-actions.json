@@ -1,7 +1,56 @@
 {
   "actions": [
-    { "id": "tte", "name": "TotalEnergies", "ticker": "TTE", "isin": "FR0000120271", "fmp_symbol": "TTE.PA", "logo": "", "country": "France", "currency": "EUR", "price": 58.20, "price_updated_at": "", "dividend": 3.22, "dividend_year": "2026", "dividend_updated_at": "", "eligible_pea": true, "active": true },
-    { "id": "san", "name": "Sanofi", "ticker": "SAN", "isin": "FR0000120578", "fmp_symbol": "SAN.PA", "logo": "", "country": "France", "currency": "EUR", "price": 88.40, "price_updated_at": "", "dividend": 3.76, "dividend_year": "2026", "dividend_updated_at": "", "eligible_pea": true, "active": true },
-    { "id": "bnp", "name": "BNP Paribas", "ticker": "BNP", "isin": "FR0000131104", "fmp_symbol": "BNP.PA", "logo": "", "country": "France", "currency": "EUR", "price": 64.10, "price_updated_at": "", "dividend": 4.60, "dividend_year": "2026", "dividend_updated_at": "", "eligible_pea": true, "active": true }
-  ]
+    {
+      "id": "tte",
+      "name": "TotalEnergies",
+      "ticker": "TTE",
+      "isin": "FR0000120271",
+      "fmp_symbol": "TTE.PA",
+      "logo": "",
+      "country": "France",
+      "currency": "EUR",
+      "price": 75.31,
+      "price_updated_at": "2026-08-14T12:00:27+00:00",
+      "dividend": 3.22,
+      "dividend_year": "2026",
+      "dividend_updated_at": "",
+      "eligible_pea": true,
+      "active": true
+    },
+    {
+      "id": "san",
+      "name": "Sanofi",
+      "ticker": "SAN",
+      "isin": "FR0000120578",
+      "fmp_symbol": "SAN.PA",
+      "logo": "",
+      "country": "France",
+      "currency": "EUR",
+      "price": 75.46,
+      "price_updated_at": "2026-08-14T12:00:27+00:00",
+      "dividend": 3.76,
+      "dividend_year": "2026",
+      "dividend_updated_at": "",
+      "eligible_pea": true,
+      "active": true
+    },
+    {
+      "id": "bnp",
+      "name": "BNP Paribas",
+      "ticker": "BNP",
+      "isin": "FR0000131104",
+      "fmp_symbol": "BNP.PA",
+      "logo": "",
+      "country": "France",
+      "currency": "EUR",
+      "price": 111.88,
+      "price_updated_at": "2026-08-14T12:00:27+00:00",
+      "dividend": 4.6,
+      "dividend_year": "2026",
+      "dividend_updated_at": "",
+      "eligible_pea": true,
+      "active": true
+    }
+  ],
+  "prices_synced_at": "2026-08-14T12:00:27+00:00"
 }
