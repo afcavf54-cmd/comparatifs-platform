@@ -38,6 +38,8 @@ export default function DividendesPage() {
   const [sortDir, setSortDir] = useState<1 | -1>(1)
   const [syncing, setSyncing] = useState(false)
   const [syncMsg, setSyncMsg] = useState('')
+  const [importMsg, setImportMsg] = useState('')
+  const fileRef = useRef<HTMLInputElement>(null)
   const firstLoad = useRef(true)
 
   useEffect(() => {
@@ -112,6 +114,90 @@ export default function DividendesPage() {
     setActions(prev => prev.filter(x => x.id !== id))
   }
 
+  // ── Import CSV (ajout en masse) ─────────────────────────────────────────
+  const normHead = (s: string) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim()
+  const HEADER_MAP: Record<string, keyof Action> = {
+    'name': 'name', 'nom': 'name',
+    'ticker': 'ticker', 'symbole boursier': 'ticker',
+    'isin': 'isin', 'code isin': 'isin',
+    'symbole': 'fmp_symbol', 'symbole api': 'fmp_symbol', 'fmp_symbol': 'fmp_symbol', 'symbole_api': 'fmp_symbol',
+    'pays': 'country', 'country': 'country',
+    'devise': 'currency', 'currency': 'currency',
+    'dividende': 'dividend', 'dividend': 'dividend', 'dividende an': 'dividend', 'dividende annuel': 'dividend', 'dividende / an': 'dividend',
+    'annee': 'dividend_year', 'annee de reference': 'dividend_year', 'year': 'dividend_year', 'dividend_year': 'dividend_year',
+    'pea': 'eligible_pea', 'eligible pea': 'eligible_pea', 'eligible_pea': 'eligible_pea',
+  }
+  function parseCSV(text: string): string[][] {
+    const head = (text.split(/\r?\n/)[0] || '')
+    const sep = head.split(';').length > head.split(',').length ? ';' : ','
+    const out: string[][] = []
+    let field = '', row: string[] = [], q = false
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i]
+      if (q) {
+        if (c === '"') { if (text[i + 1] === '"') { field += '"'; i++ } else q = false } else field += c
+      } else {
+        if (c === '"') q = true
+        else if (c === sep) { row.push(field); field = '' }
+        else if (c === '\n') { row.push(field); out.push(row); row = []; field = '' }
+        else if (c === '\r') { /* skip */ }
+        else field += c
+      }
+    }
+    if (field.length || row.length) { row.push(field); out.push(row) }
+    return out.filter(r => r.some(x => x.trim()))
+  }
+  function importCSV(text: string) {
+    const rows = parseCSV(text)
+    if (rows.length < 2) { setImportMsg('✗ CSV vide ou sans lignes de données'); return }
+    const headers = rows[0].map(h => HEADER_MAP[normHead(h)] || '')
+    if (!headers.includes('name')) { setImportMsg('✗ Colonne « nom » introuvable dans l\'entête'); return }
+    const existing = new Set(actions.map(a => (a.ticker || a.isin || a.name).toLowerCase()))
+    const added: Action[] = []
+    let skipped = 0
+    for (let i = 1; i < rows.length; i++) {
+      const r = rows[i]
+      const get = (f: keyof Action) => { const idx = headers.indexOf(f); return idx >= 0 ? (r[idx] || '').trim() : '' }
+      const name = get('name'); if (!name) continue
+      const ticker = get('ticker'), isin = get('isin')
+      const key = (ticker || isin || name).toLowerCase()
+      if (existing.has(key)) { skipped++; continue }
+      existing.add(key)
+      const pea = normHead(get('eligible_pea'))
+      added.push({
+        id: uid(), name, ticker, isin: isin.toUpperCase(), logo: '',
+        fmp_symbol: get('fmp_symbol'), country: get('country'),
+        currency: (get('currency') || 'EUR').toUpperCase().slice(0, 3) || 'EUR',
+        price: 0, price_updated_at: '',
+        dividend: parseFloat(get('dividend').replace(',', '.')) || 0,
+        dividend_year: get('dividend_year') || String(new Date().getFullYear()),
+        dividend_updated_at: '',
+        eligible_pea: ['oui', 'yes', 'true', '1', 'o', 'y', 'vrai'].includes(pea),
+        active: true,
+      })
+    }
+    if (added.length) { setActions(prev => [...added, ...prev]); setPage(1); setQuery(''); setSortKey(null) }
+    setImportMsg(`✓ ${added.length} action(s) importée(s)${skipped ? `, ${skipped} doublon(s) ignoré(s)` : ''}. Renseignez le dividende manquant si besoin, puis synchronisez les prix.`)
+    setTimeout(() => setImportMsg(''), 9000)
+  }
+  function onFilePicked(e: React.ChangeEvent<HTMLInputElement>) {
+    const f = e.target.files?.[0]; if (!f) return
+    const reader = new FileReader()
+    reader.onload = () => importCSV(String(reader.result || ''))
+    reader.onerror = () => setImportMsg('✗ Lecture du fichier impossible')
+    reader.readAsText(f)
+    e.target.value = ''
+  }
+  function downloadTemplate() {
+    const csv = 'nom;ticker;isin;symbole_api;pays;devise;dividende;annee;pea\n'
+      + 'TotalEnergies;TTE;FR0000120271;;France;EUR;3.22;2026;oui\n'
+      + 'Air Liquide;AI;FR0000120073;;France;EUR;3.20;2026;oui\n'
+      + 'LVMH;MC;FR0000121014;;France;EUR;13.00;2026;oui\n'
+    const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }))
+    const a = document.createElement('a'); a.href = url; a.download = 'modele-actions-dividendes.csv'; a.click()
+    URL.revokeObjectURL(url)
+  }
+
   const toggleSort = (k: SortKey) => {
     if (sortKey === k) setSortDir(d => (d === 1 ? -1 : 1))
     else { setSortKey(k); setSortDir(1) }
@@ -166,11 +252,21 @@ export default function DividendesPage() {
             style={{ padding: '9px 16px', borderRadius: 8, border: `1px solid ${C.border}`, background: 'transparent', color: syncing ? C.faint : C.text, fontWeight: 600, fontSize: 13, cursor: syncing ? 'wait' : 'pointer' }}>
             {syncing ? '⏳ Lancement…' : '↻ Mettre à jour les prix'}
           </button>
+          <input ref={fileRef} type="file" accept=".csv,text/csv" onChange={onFilePicked} style={{ display: 'none' }} />
+          <button onClick={() => fileRef.current?.click()} title="Importer des actions en masse depuis un fichier CSV"
+            style={{ padding: '9px 16px', borderRadius: 8, border: `1px solid ${C.border}`, background: 'transparent', color: C.text, fontWeight: 600, fontSize: 13, cursor: 'pointer' }}>
+            ⇪ Importer CSV
+          </button>
           <button onClick={addAction} style={{ padding: '9px 18px', borderRadius: 8, border: 'none', background: 'linear-gradient(135deg,#00D4AA,#0090FF)', color: '#fff', fontWeight: 600, fontSize: 13, cursor: 'pointer' }}>+ Ajouter une action</button>
         </div>
       </div>
 
       {syncMsg && <div style={{ marginTop: 10, fontSize: 12.5, color: syncMsg.startsWith('✓') ? C.accent : C.danger }}>{syncMsg}</div>}
+      {importMsg && <div style={{ marginTop: 10, fontSize: 12.5, color: importMsg.startsWith('✓') ? C.accent : C.danger }}>{importMsg}</div>}
+      <div style={{ marginTop: 8, fontSize: 12, color: C.faint }}>
+        Import en masse : colonnes <code>nom ; ticker ; isin ; symbole_api ; pays ; devise ; dividende ; annee ; pea</code> (séparateur <code>,</code> ou <code>;</code>). Le prix n'est pas importé (il vient de la synchro).{' '}
+        <span onClick={downloadTemplate} style={{ color: C.accent, cursor: 'pointer', textDecoration: 'underline' }}>Télécharger le modèle CSV</span>
+      </div>
 
       {/* Recherche */}
       <div style={{ margin: '18px 0 12px' }}>
