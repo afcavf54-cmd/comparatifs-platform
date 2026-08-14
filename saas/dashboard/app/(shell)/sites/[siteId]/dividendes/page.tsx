@@ -101,7 +101,7 @@ export default function DividendesPage() {
   const addAction = () => {
     setActions(prev => [{
       id: uid(), name: '', ticker: '', isin: '', logo: '', country: '', currency: 'EUR', fmp_symbol: '',
-      price: 0, price_updated_at: '', dividend: 0, dividend_year: '', dividend_updated_at: '',
+      price: 0, price_updated_at: '', dividend: 0, dividend_year: String(new Date().getFullYear()), dividend_updated_at: '',
       eligible_pea: false, active: true,
     }, ...prev])
     setPage(1); setQuery(''); setSortKey(null)
