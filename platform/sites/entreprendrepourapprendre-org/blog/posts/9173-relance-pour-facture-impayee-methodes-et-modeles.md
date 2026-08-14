@@ -4,15 +4,21 @@ slug: 9173-relance-pour-facture-impayee-methodes-et-modeles
 date: '2026-08-14T17:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Relance facture impayée : méthodes et modèles'
-meta_description: 'Relance pour facture impayée : découvrez une procédure concrète et des modèles prêts à l''emploi pour récupérer vos paiements sans détruire la relation client.'
+meta_description: 'Relance pour facture impayée : découvrez une procédure concrète
+  et des modèles prêts à l''emploi pour récupérer vos paiements sans détruire la relation
+  client.'
 min_words: 1400
 status: published
 featured_image: /blog/9173-relance-pour-facture-impayee-methodes-et-modeles.jpg
 link_anchors:
 - text: relancer une facture impayée
   max: 8
+related_posts:
+- 5102-numerotation-des-factures-regles-legales-et-bonnes-pratiques
+- 5404-logiciel-de-facturation-pour-auto-entrepreneur-ce-qu-il-faut-savoir
+- 6571-facture-proforma-qu-est-ce-que-c-est-et-quand-l-utiliser
+- 2073-logiciel-de-facturation-en-ligne-fonctionnement-et-avantages
 ---
-
 <p>Une facture envoyée, un client silencieux. On attend. On attend encore. Et à un moment, il faut bien se résoudre à relancer. C'est l'une des situations que je déteste le plus dans mon quotidien de dirigeante, parce que c'est inconfortable, chronophage, et ça crée parfois des tensions avec des clients qu'on apprécie par ailleurs.</p>
 
 <p>Mais voilà : les impayés, ça peut tuer une petite structure. J'ai vu des TPE saines techniquement faire face à de vraies crises de trésorerie uniquement parce que deux ou trois clients avaient pris un peu trop leurs aises avec les délais. Alors j'ai mis en place une vraie procédure de relance, et je vais vous partager ce qui fonctionne concrètement.</p>
