@@ -207,13 +207,14 @@ a{text-decoration:none}
         Ajouter une action
       </button>
     </div>
-    <div style="overflow-x:auto">
+    <div style="overflow:visible">
       <table class="pf-table">
         <thead>
           <tr>
             <th>Action</th>
             <th>Nombre d'actions</th>
             <th>Prix actuel</th>
+            <th>Dividende / action</th>
             <th>Investissement</th>
             <th>Dividendes annuels</th>
             <th></th>
@@ -351,17 +352,21 @@ let uidSeq = 1;
 const fmt = (n, cur='EUR') => new Intl.NumberFormat('fr-FR',{style:'currency',currency:cur,maximumFractionDigits:2}).format(n||0);
 const fmtPct = n => new Intl.NumberFormat('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2}).format(n||0)+' %';
 const yieldOf = s => s.price>0 ? (s.dividend/s.price)*100 : 0;
+// dividende/action de la ligne : override utilisateur (r.div) sinon valeur de l'action
+const divOf = (r,s) => (r && r.div!=null) ? r.div : (s ? s.dividend : 0);
 
 // ── Rendu d'une ligne du portefeuille
 function rowHtml(r){
   const s = byId[r.stockId];
+  const dps    = divOf(r,s);
   const invest = s ? s.price*r.qty : 0;
-  const divs   = s ? s.dividend*r.qty : 0;
+  const divs   = s ? dps*r.qty : 0;
   const cur    = s ? s.currency : 'EUR';
   return `<tr data-uid="${r.uid}">
     <td>${pickerHtml(r)}</td>
     <td data-label="Nombre"><input class="qty-input num" type="number" min="0" step="1" value="${r.qty||''}" placeholder="0" data-qty></td>
     <td data-label="Prix" class="cell-price num">${s?fmt(s.price,cur):'—'}</td>
+    <td data-label="Dividende / action" class="num">${s?`<input class="qty-input num" style="width:98px" type="number" min="0" step="0.01" value="${dps||''}" placeholder="0" title="Dividende annuel par action — modifiable" data-div>`:'—'}</td>
     <td data-label="Investissement" class="cell-invest num">${s?fmt(invest,cur):'—'}</td>
     <td data-label="Dividendes" class="cell-div num">${s?fmt(divs,cur):'—'}</td>
     <td><button class="btn-icon" title="Supprimer" data-del><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2M6 7l1 13a1 1 0 001 1h8a1 1 0 001-1l1-13"/></svg></button></td>
@@ -390,7 +395,7 @@ function pickerHtml(r){
 function render(){
   const body = document.getElementById('pfBody');
   if(rows.length===0){
-    body.innerHTML = `<tr class="pf-empty"><td colspan="6">Aucune action. Cliquez sur « Ajouter une action » pour commencer.</td></tr>`;
+    body.innerHTML = `<tr class="pf-empty"><td colspan="7">Aucune action. Cliquez sur « Ajouter une action » pour commencer.</td></tr>`;
   } else {
     body.innerHTML = rows.map(rowHtml).join('');
   }
@@ -401,7 +406,7 @@ function render(){
 
 function computeTotals(){
   let invest=0, divs=0;
-  rows.forEach(r=>{ const s=byId[r.stockId]; if(s){ invest+=s.price*r.qty; divs+=s.dividend*r.qty; }});
+  rows.forEach(r=>{ const s=byId[r.stockId]; if(s){ invest+=s.price*r.qty; divs+=divOf(r,s)*r.qty; }});
   const yieldPct = invest>0 ? (divs/invest)*100 : 0;
   document.getElementById('sInvest').textContent = fmt(invest);
   document.getElementById('sDiv').textContent    = fmt(divs);
@@ -446,7 +451,17 @@ document.getElementById('pfBody').addEventListener('input', e=>{
     const r=rows.find(x=>x.uid===uid); if(r){ r.qty=Math.max(0,parseInt(e.target.value)||0); computeTotals(); updateShareUrl();
       // maj des cellules calculées de la ligne sans tout re-render (garde le focus)
       const s=byId[r.stockId], tr=e.target.closest('tr');
-      if(s){ tr.querySelector('.cell-invest').textContent=fmt(s.price*r.qty,s.currency); tr.querySelector('.cell-div').textContent=fmt(s.dividend*r.qty,s.currency); }
+      if(s){ tr.querySelector('.cell-invest').textContent=fmt(s.price*r.qty,s.currency); tr.querySelector('.cell-div').textContent=fmt(divOf(r,s)*r.qty,s.currency); }
+    }
+  }
+  if(e.target.matches('[data-div]')){
+    const uid=+e.target.closest('tr').dataset.uid;
+    const r=rows.find(x=>x.uid===uid);
+    if(r){
+      const v=parseFloat(e.target.value); r.div = isNaN(v)?null:Math.max(0,v);
+      computeTotals(); updateShareUrl();
+      const s=byId[r.stockId], tr=e.target.closest('tr');
+      if(s){ tr.querySelector('.cell-div').textContent=fmt(divOf(r,s)*r.qty,s.currency); }
     }
   }
 });
@@ -479,7 +494,7 @@ function fillPicker(picker, q){
     </div>`).join('') : `<div class="picker-none">Aucune action trouvée</div>`;
   list.querySelectorAll('[data-opt]').forEach(el=>el.addEventListener('click',()=>{
     const uid=+picker.closest('tr').dataset.uid;
-    const r=rows.find(x=>x.uid===uid); if(r){ r.stockId=el.dataset.opt; render(); }
+    const r=rows.find(x=>x.uid===uid); if(r){ r.stockId=el.dataset.opt; r.div=null; render(); }
   }));
 }
 function filterPicker(picker,q){ fillPicker(picker,q); }
