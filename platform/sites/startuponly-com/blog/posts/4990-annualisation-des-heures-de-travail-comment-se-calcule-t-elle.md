@@ -4,15 +4,21 @@ slug: 4990-annualisation-des-heures-de-travail-comment-se-calcule-t-elle
 date: '2026-08-15T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Annualisation des heures de travail : comment la calculer ?'
-meta_description: Découvrez comment fonctionne l'annualisation des heures de travail, comment calculer les 1 607 heures annuelles et adapter vos plannings selon votre activité.
+meta_description: Découvrez comment fonctionne l'annualisation des heures de travail,
+  comment calculer les 1 607 heures annuelles et adapter vos plannings selon votre
+  activité.
 min_words: 1300
 status: published
 featured_image: /blog/4990-annualisation-des-heures-de-travail-comment-se-calcule-t-elle.jpg
 link_anchors:
 - text: calcul de l'annualisation du temps de travail
   max: 5
+related_posts:
+- 1727-badgeuse-en-entreprise-cadre-reglementaire-et-obligations
+- 4927-logiciel-de-pointage-du-personnel-fonctionnement-et-utilisation
+- 3429-suivi-du-temps-de-travail-des-salaries-qui-est-concerne-et-comment-faire
+- 5896-pointeuse-virtuelle-qu-est-ce-que-c-est-et-comment-ca-fonctionne
 ---
-
 <h2>C'est quoi concrètement l'annualisation des heures ?</h2>
 
 <p>L'idée est simple : au lieu de fixer un nombre d'heures identique chaque semaine, tu lisses le temps de travail sur toute l'année. Le total doit atteindre <strong>1 607 heures annuelles</strong> pour un temps plein, mais la répartition peut varier fortement d'un mois à l'autre. Certaines semaines à 45 heures, d'autres à 28 heures. Tant que la moyenne tient sur 12 mois, c'est légal.</p>
