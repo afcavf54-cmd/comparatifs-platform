@@ -4,15 +4,21 @@ slug: 1286-delais-de-paiement-des-factures-regles-legales-et-recours
 date: '2026-08-15T07:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Délai de paiement facture : règles légales'
-meta_description: 'Délais de paiement des factures : découvrez les règles légales en vigueur, les plafonds imposés par le Code de commerce et les recours disponibles en cas de retard.'
+meta_description: 'Délais de paiement des factures : découvrez les règles légales
+  en vigueur, les plafonds imposés par le Code de commerce et les recours disponibles
+  en cas de retard.'
 min_words: 1400
 status: published
 featured_image: /blog/1286-delais-de-paiement-des-factures-regles-legales-et-recours.jpg
 link_anchors:
 - text: délais légaux de paiement d'une facture
   max: 8
+related_posts:
+- 5404-logiciel-de-facturation-pour-auto-entrepreneur-ce-qu-il-faut-savoir
+- 7208-logiciel-de-facturation-est-il-obligatoire-en-entreprise
+- 5102-numerotation-des-factures-regles-legales-et-bonnes-pratiques
+- 5260-devis-et-facture-quelles-differences-et-quand-les-utiliser
 ---
-
 <h2>Ce que dit vraiment la loi sur les délais de paiement</h2>
 
 <p>Je vais être honnête : quand j'ai lancé mon agence il y a huit ans, je ne savais pas vraiment qu'il existait des règles précises sur les délais de paiement. Je pensais que c'était une question de négociation entre les parties, un peu comme le tarif ou les conditions de livraison. Et puis j'ai eu mon premier gros client qui a payé à 90 jours. Sans me prévenir. Sans que ça choque personne dans son service comptable.</p>
