@@ -4,12 +4,18 @@ slug: 7807-logigramme-du-processus-de-recrutement-comment-le-construire
 date: '2026-08-15T07:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logigramme processus de recrutement : construction'
-meta_description: Apprenez à construire un logigramme de recrutement clair et efficace pour structurer chaque étape du processus, éviter les oublis et gagner en cohérence dans vos…
+meta_description: Apprenez à construire un logigramme de recrutement clair et efficace
+  pour structurer chaque étape du processus, éviter les oublis et gagner en cohérence
+  dans vos…
 min_words: 1200
 status: published
 featured_image: /blog/7807-logigramme-du-processus-de-recrutement-comment-le-construire.jpg
+related_posts:
+- 5603-processus-de-recrutement-definition-et-objectifs
+- 8514-bracelet-electronique-au-travail-reglementation-et-respect-de-la-vie-privee
+- 6542-comment-utiliser-la-matrice-9-box-pour-gerer-les-talents
+- 3951-qu-est-ce-que-la-definition-de-la-gestion-des-talents
 ---
-
 <p>J'ai mis du temps avant de comprendre pourquoi mes recrutements partaient dans tous les sens. Un candidat relancé deux fois, un autre jamais rappelé, un entretien planifié sans que personne n'ait prévenu le manager. Bref, un vrai chantier. C'est en voulant remettre de l'ordre que j'ai découvert l'utilité d'un logigramme. Pas le truc ultra-complexe avec des formes géométriques incompréhensibles. Non. Un schéma simple, lisible, que tout le monde dans l'équipe peut suivre.</p>
 
 <p>Si vous gérez une équipe de plusieurs dizaines de personnes et que vos recrutements ressemblent à une improvisation permanente, cet article est pour vous.</p>
