@@ -4,15 +4,21 @@ slug: 3496-extrait-kbis-qu-est-ce-que-c-est-et-comment-l-obtenir
 date: '2026-08-15T12:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'Extrait Kbis : définition et obtention'
-meta_description: Découvrez ce qu'est l'extrait Kbis, la carte d'identité officielle de votre société, et comment l'obtenir rapidement auprès du greffe du tribunal de commerce.
+meta_description: Découvrez ce qu'est l'extrait Kbis, la carte d'identité officielle
+  de votre société, et comment l'obtenir rapidement auprès du greffe du tribunal de
+  commerce.
 min_words: 1300
 status: published
 featured_image: /blog/3496-extrait-kbis-qu-est-ce-que-c-est-et-comment-l-obtenir.jpg
 link_anchors:
 - text: obtenir un extrait Kbis
   max: 8
+related_posts:
+- 1781-statut-juridique-d-une-entreprise-definition-et-types
+- 3581-immatriculation-d-une-entreprise-en-ligne-comment-ca-fonctionne
+- 8254-quel-statut-choisir-pour-son-entreprise-comparatif-et-criteres
+- 2642-comment-creer-une-entreprise-en-ligne-etapes-et-demarches
 ---
-
 <h2>Le Kbis, c'est quoi exactement ?</h2>
 
 <p>Si vous créez une société pour la première fois, vous allez entendre parler du Kbis très rapidement. C'est souvent le premier document qu'on vous réclame, que ce soit pour ouvrir un compte bancaire professionnel, répondre à un appel d'offres, ou signer un contrat avec un fournisseur. Et pourtant, beaucoup d'entrepreneurs ne savent pas précisément ce qu'il contient ni comment le lire.</p>
