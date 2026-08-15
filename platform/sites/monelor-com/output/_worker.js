@@ -87,7 +87,6 @@ async function sharePage(code) {
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(desc)}">
 <meta name="twitter:image" content="${esc(ogImage)}">
-<meta http-equiv="refresh" content="0; url=${esc(simUrl)}">
 <script>location.replace(${JSON.stringify(simUrl)});</script>
 </head>
 <body style="font-family:system-ui,sans-serif;text-align:center;padding:60px 20px;color:#000921;background:#fff">
