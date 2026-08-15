@@ -41,23 +41,34 @@ export default function DividendesPage() {
   const [importMsg, setImportMsg] = useState('')
   const fileRef = useRef<HTMLInputElement>(null)
   const firstLoad = useRef(true)
+  const loadOk = useRef(false)
 
   useEffect(() => {
-    fetch(`/api/sites/${siteId}/dividendes`).then(r => r.json()).then(d => {
-      setActions((d.actions || []).map((a: any) => ({
+    fetch(`/api/sites/${siteId}/dividendes`).then(r => {
+      if (!r.ok) throw new Error('HTTP ' + r.status)
+      return r.json()
+    }).then(d => {
+      if (!d || !Array.isArray(d.actions)) throw new Error('réponse invalide')
+      setActions(d.actions.map((a: any) => ({
         id: a.id || uid(), name: a.name || '', ticker: a.ticker || '', isin: a.isin || '', logo: a.logo || '',
         country: a.country || '', currency: a.currency || 'EUR', fmp_symbol: a.fmp_symbol || '',
         price: Number(a.price) || 0, price_updated_at: a.price_updated_at || '',
         dividend: Number(a.dividend) || 0, dividend_year: a.dividend_year || '', dividend_updated_at: a.dividend_updated_at || '',
         eligible_pea: a.eligible_pea === true, active: a.active !== false,
       })))
+      loadOk.current = true   // ⬅ l'auto-save n'est autorisé QUE si le chargement a réussi
       setLoading(false)
-    }).catch(() => setLoading(false))
+    }).catch(() => {
+      // Chargement KO → on N'ACTIVE PAS l'auto-save : sinon une liste vide
+      // écraserait le fichier sur GitHub (c'est déjà arrivé). Lecture seule.
+      setSaveMsg('✗ Chargement impossible — enregistrement désactivé, rechargez la page')
+      setLoading(false)
+    })
   }, [siteId])
 
-  // Auto-save (debounce)
+  // Auto-save (debounce) — uniquement si le chargement initial a réussi
   useEffect(() => {
-    if (loading) return
+    if (loading || !loadOk.current) return
     if (firstLoad.current) { firstLoad.current = false; return }
     const t = setTimeout(save, 800)
     return () => clearTimeout(t)
