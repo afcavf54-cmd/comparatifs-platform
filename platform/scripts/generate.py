@@ -1995,21 +1995,18 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         # generate-site.yml qui add platform/sites/<site>/blog/).
         write_posts_index(site_dir)
 
-        # ── Copie functions/ (Cloudflare Pages Functions) ────────────────
-        # Si le site a un dossier `functions/`, on le copie tel quel dans
-        # l'output → wrangler pages deploy le déploie comme fonctions serveur
-        # (ex. functions/p/[code].js sert monelor.com/p/<code>).
-        functions_dir = site_dir / "functions"
-        if functions_dir.exists():
-            _fn_count = 0
-            for src in functions_dir.rglob("*"):
-                if src.is_file():
-                    dst = output_dir / "functions" / src.relative_to(functions_dir)
-                    dst.parent.mkdir(parents=True, exist_ok=True)
-                    shutil.copy2(src, dst)
-                    _fn_count += 1
-            if _fn_count:
-                print(f"  ✓ functions/ copié ({_fn_count} fichier(s))")
+        # ── Copie _worker.js + _routes.json (Cloudflare Pages, mode avancé) ──
+        # `wrangler pages deploy <output>` ne compile PAS un dossier functions/
+        # placé dans l'output (il le traiterait comme des assets statiques).
+        # La méthode supportée en upload direct : un `_worker.js` à la RACINE de
+        # l'output (wrangler log alors "Compiled Worker successfully").
+        # `_routes.json` limite le worker à /p/* → tout le reste du site est
+        # servi en statique normal (_redirects et _headers restent appliqués).
+        for _cf_file in ("_worker.js", "_routes.json"):
+            _src_cf = site_dir / _cf_file
+            if _src_cf.exists():
+                shutil.copy2(_src_cf, output_dir / _cf_file)
+                print(f"  ✓ {_cf_file} copié (Cloudflare Pages worker)")
 
         # ── Copie public/ (récursif) ─────────────────────────────────────
         # On copie tout l'arbre public/ tel quel, ce qui inclut :
