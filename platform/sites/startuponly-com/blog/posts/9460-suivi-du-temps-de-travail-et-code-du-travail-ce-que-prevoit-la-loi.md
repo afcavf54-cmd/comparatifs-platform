@@ -4,15 +4,21 @@ slug: 9460-suivi-du-temps-de-travail-et-code-du-travail-ce-que-prevoit-la-loi
 date: '2026-08-16T19:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Temps de travail et Code du travail : obligations légales'
-meta_description: 'Suivi du temps de travail et Code du travail : découvrez ce que la loi impose vraiment aux employeurs et comment éviter les erreurs qui coûtent cher.'
+meta_description: 'Suivi du temps de travail et Code du travail : découvrez ce que
+  la loi impose vraiment aux employeurs et comment éviter les erreurs qui coûtent
+  cher.'
 min_words: 1200
 status: published
 featured_image: /blog/9460-suivi-du-temps-de-travail-et-code-du-travail-ce-que-prevoit-la-loi.jpg
 link_anchors:
 - text: suivi du temps de travail selon le Code du travail
   max: 5
+related_posts:
+- 1727-badgeuse-en-entreprise-cadre-reglementaire-et-obligations
+- 8517-logiciel-de-pointage-en-ligne-comment-ca-fonctionne
+- 7114-legislation-sur-la-badgeuse-en-entreprise-ce-que-dit-la-loi
+- 6858-logiciel-de-pointage-open-source-avantages-limites-et-cas-d-usage
 ---
-
 <p>Le Code du travail sur le suivi du temps, c'est un sujet que j'ai longtemps négligé. À tort. Quand j'ai monté ma boîte, j'étais surtout concentré sur le produit, les clients, les premières embauches. Et puis un jour, un ami fondateur m'a raconté qu'il avait pris un redressement à cause d'un suivi des heures mal fait. Ça m'a obligé à creuser le sujet sérieusement.</p>
 
 <p>Voilà ce que j'ai compris, et ce que tu dois savoir si tu gères une équipe, même petite.</p>
