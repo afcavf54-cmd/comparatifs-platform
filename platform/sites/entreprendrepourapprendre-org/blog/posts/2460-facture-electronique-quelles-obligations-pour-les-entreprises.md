@@ -4,15 +4,21 @@ slug: 2460-facture-electronique-quelles-obligations-pour-les-entreprises
 date: '2026-08-16T12:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Facture électronique : obligations et calendrier'
-meta_description: 'Facture électronique obligatoire pour toutes les entreprises assujetties à la TVA : découvrez le calendrier 2026, vos obligations concrètes et ce qui change pour…'
+meta_description: 'Facture électronique obligatoire pour toutes les entreprises assujetties
+  à la TVA : découvrez le calendrier 2026, vos obligations concrètes et ce qui change
+  pour…'
 min_words: 1500
 status: published
 featured_image: /blog/2460-facture-electronique-quelles-obligations-pour-les-entreprises.jpg
 link_anchors:
 - text: obligations liées à la facture électronique
   max: 8
+related_posts:
+- 8544-logiciel-de-facturation-et-devis-comment-les-deux-s-articulent
+- 7208-logiciel-de-facturation-est-il-obligatoire-en-entreprise
+- 6148-comment-choisir-son-logiciel-de-facturation-criteres-et-methode
+- 5067-mentions-obligatoires-sur-une-facture-ce-que-dit-la-loi
 ---
-
 <p>La facture électronique, j'en entends parler depuis un bon moment déjà. Et franchement, entre les annonces gouvernementales, les reports de calendrier et les informations qui circulent un peu partout, c'est difficile de savoir exactement ce qui va changer et quand. Pourtant, pour une TPE comme la mienne, c'est loin d'être anecdotique.</p>
 
 <p>J'ai pris le temps de creuser le sujet sérieusement. Parce que si je dois changer ma façon de facturer, autant comprendre ce qui m'attend concrètement, plutôt que de me retrouver dans l'illégalité sans même le savoir.</p>
