@@ -4,15 +4,21 @@ slug: 3796-se-former-a-la-gestion-du-planning-du-personnel-ce-qu-il-faut-savoir
 date: '2026-08-16T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Formation gestion du planning du personnel : l''essentiel'
-meta_description: Apprendre la gestion du planning du personnel sans formation RH, c'est possible. Découvrez les bases essentielles, les outils utiles et les erreurs à éviter…
+meta_description: Apprendre la gestion du planning du personnel sans formation RH,
+  c'est possible. Découvrez les bases essentielles, les outils utiles et les erreurs
+  à éviter…
 min_words: 1200
 status: published
 featured_image: /blog/3796-se-former-a-la-gestion-du-planning-du-personnel-ce-qu-il-faut-savoir.jpg
 link_anchors:
 - text: se former à la gestion des plannings
   max: 5
+related_posts:
+- 7613-logiciel-de-gestion-de-planning-gratuit-ce-qu-il-peut-faire
+- 3688-planning-des-conges-du-personnel-comment-le-gerer-efficacement
+- 3925-logiciel-de-gestion-de-planning-open-source-avantages-et-limites
+- 3231-logiciel-de-gestion-de-planning-en-restauration-comment-ca-marche
 ---
-
 <p>J'ai passé pas mal de temps à galérer avec les plannings avant de comprendre comment bien m'y prendre. Quand j'ai lancé ma startup à Nantes, on était 5. Maintenant on est une trentaine, et crois-moi, planifier les équipes à 30 c'est un autre niveau. Si tu lis cet article, c'est probablement que tu cherches à te former sur le sujet ou que tu en as marre de gérer ça à la main. Bonne nouvelle : c'est tout à fait faisable, même sans formation RH.</p>
 
 <p>Je vais te partager ce que j'ai appris, souvent à la dure, sur la <strong>gestion des plannings en entreprise</strong>. Ce n'est pas une science mystérieuse, mais il y a des bases à maîtriser si tu veux éviter les erreurs classiques.</p>
