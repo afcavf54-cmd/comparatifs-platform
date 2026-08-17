@@ -4,12 +4,17 @@ slug: 2200-logiciel-rh-avec-module-recrutement-comment-ca-s-articule
 date: '2026-08-17T17:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logiciel RH recrutement : fonctionnement et articulation'
-meta_description: 'Découvrez comment un logiciel RH avec module recrutement fonctionne vraiment : avantages, limites et ce qui change au quotidien pour votre équipe RH.'
+meta_description: 'Découvrez comment un logiciel RH avec module recrutement fonctionne
+  vraiment : avantages, limites et ce qui change au quotidien pour votre équipe RH.'
 min_words: 1400
 status: published
 featured_image: /blog/2200-logiciel-rh-avec-module-recrutement-comment-ca-s-articule.jpg
+related_posts:
+- 1543-ce-que-la-formation-leadership-nexstep-avance-ne-transforme-pas
+- 3991-processus-de-recrutement-comment-le-schematiser-et-le-structurer
+- 5263-politique-de-recrutement-vs-processus-de-recrutement-quelles-differences
+- 5421-les-etapes-du-processus-de-recrutement-de-la-fiche-de-poste-a-l-embauche
 ---
-
 <p>Quand j'ai commencé à chercher un logiciel RH pour mon équipe, j'avais une question simple en tête : est-ce qu'un logiciel RH "tout en un" peut vraiment gérer le recrutement correctement, ou est-ce qu'il faut un outil séparé ? Deux ans plus tard, j'ai une réponse claire. Mais avant d'en arriver là, j'ai perdu pas mal de temps à tester des solutions qui ne correspondaient pas à ce que je cherchais.</p>
 
 <p>Je vais vous expliquer comment ça fonctionne concrètement, ce que vous pouvez attendre d'un module recrutement intégré dans un logiciel RH, et ce qui change vraiment dans le quotidien d'une équipe comme la mienne.</p>
