@@ -6,7 +6,7 @@ type Action = {
   id: string; name: string; ticker: string; isin: string; logo: string
   country: string; currency: string; fmp_symbol: string; market_index: string
   price: number; price_updated_at: string
-  dividend: number; dividend_year: string; dividend_updated_at: string
+  dividend: number; dividend_year: string; dividend_updated_at: string; dividend_verified: boolean
   eligible_pea: boolean; active: boolean
 }
 
@@ -53,7 +53,7 @@ export default function DividendesPage() {
         id: a.id || uid(), name: a.name || '', ticker: a.ticker || '', isin: a.isin || '', logo: a.logo || '',
         country: a.country || '', currency: a.currency || 'EUR', fmp_symbol: a.fmp_symbol || '', market_index: a.market_index || '',
         price: Number(a.price) || 0, price_updated_at: a.price_updated_at || '',
-        dividend: Number(a.dividend) || 0, dividend_year: a.dividend_year || '', dividend_updated_at: a.dividend_updated_at || '',
+        dividend: Number(a.dividend) || 0, dividend_year: a.dividend_year || '', dividend_updated_at: a.dividend_updated_at || '', dividend_verified: a.dividend_verified === true,
         eligible_pea: a.eligible_pea === true, active: a.active !== false,
       })))
       loadOk.current = true   // ⬅ l'auto-save n'est autorisé QUE si le chargement a réussi
@@ -114,7 +114,7 @@ export default function DividendesPage() {
   const addAction = () => {
     setActions(prev => [{
       id: uid(), name: '', ticker: '', isin: '', logo: '', country: 'France', currency: 'EUR', fmp_symbol: '', market_index: 'CAC 40',
-      price: 0, price_updated_at: '', dividend: 0, dividend_year: String(new Date().getFullYear()), dividend_updated_at: '',
+      price: 0, price_updated_at: '', dividend: 0, dividend_year: String(new Date().getFullYear()), dividend_updated_at: '', dividend_verified: false,
       eligible_pea: false, active: true,
     }, ...prev])
     setPage(1); setQuery(''); setSortKey(null)
@@ -183,7 +183,7 @@ export default function DividendesPage() {
         price: 0, price_updated_at: '',
         dividend: parseFloat(get('dividend').replace(',', '.')) || 0,
         dividend_year: get('dividend_year') || String(new Date().getFullYear()),
-        dividend_updated_at: '',
+        dividend_updated_at: '', dividend_verified: false,
         eligible_pea: ['oui', 'yes', 'true', '1', 'o', 'y', 'vrai'].includes(pea),
         active: true,
       })
@@ -334,6 +334,14 @@ export default function DividendesPage() {
                     <div style={{ display: 'flex', gap: 4, marginTop: 3, alignItems: 'center' }}>
                       <input value={a.dividend_year} onChange={e => patch(a.id, 'dividend_year', e.target.value)} placeholder="année" title="Année de référence du dividende"
                         style={{ ...inp, width: 60, padding: '3px 6px', fontSize: 11, textAlign: 'right' }} />
+                      <span onClick={() => patch(a.id, 'dividend_verified', !a.dividend_verified)}
+                        title={a.dividend_verified ? 'Dividende vérifié manuellement — cliquer pour annuler' : 'Non vérifié — cliquer pour marquer comme vérifié'}
+                        style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 22, height: 22, borderRadius: 6, cursor: 'pointer', fontSize: 12, fontWeight: 700, userSelect: 'none', flex: 'none',
+                          background: a.dividend_verified ? 'rgba(0,212,170,0.15)' : 'rgba(252,129,129,0.12)',
+                          color: a.dividend_verified ? C.accent : C.danger,
+                          border: `1px solid ${a.dividend_verified ? C.accent : C.danger}` }}>
+                        {a.dividend_verified ? '✓' : '✗'}
+                      </span>
                       <span style={{ fontSize: 10.5, color: C.faint, whiteSpace: 'nowrap' }}>{fmtDate(a.dividend_updated_at)}</span>
                     </div>
                   </td>
