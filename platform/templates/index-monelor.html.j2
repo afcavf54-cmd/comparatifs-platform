@@ -181,6 +181,7 @@ a { text-decoration: none; color: inherit; }
   .dir-corporate .c-hvid{grid-template-columns:110px 1fr;}
 }
 </style>
+  {% if site.analytics_clicky is defined and site.analytics_clicky %}{% if '<script' in site.analytics_clicky %}{{ site.analytics_clicky | safe }}{% else %}<script async data-id="{{ site.analytics_clicky }}" src="//static.getclicky.com/js"></script>{% endif %}{% endif %}
 </head>
 <body>
 
