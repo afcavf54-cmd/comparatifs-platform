@@ -163,6 +163,10 @@ a{text-decoration:none}
   .share-fb:hover{background:#0f6ae0}
   .share-copy{background:transparent;color:var(--ink);border-color:var(--line)}
   .share-copy:hover{border-color:var(--emerald);color:var(--emerald)}
+  .picker-add{border-top:1px solid var(--line);margin-top:4px;color:var(--emerald);font-weight:600;font-size:13.5px;justify-content:flex-start}
+  .picker-add:hover{background:var(--emerald-soft)}
+  .custom-name{width:100%;min-width:150px;border:1px solid var(--line);border-radius:9px;padding:9px 11px;font:inherit;font-weight:600;outline:none;background:#fff}
+  .custom-name:focus{border-color:var(--emerald)}
   .picker-opt .o-yield{font-size:12.5px;font-weight:700;color:var(--emerald);font-variant-numeric:tabular-nums}
   .picker-none{padding:18px 14px;text-align:center;color:var(--faint);font-size:13.5px}
 
@@ -421,6 +425,7 @@ const divOf = (r,s) => (r && r.div!=null) ? r.div : (s ? s.dividend : 0);
 // ── Rendu d'une ligne du portefeuille
 function rowHtml(r){
   const s = byId[r.stockId];
+  if(s && s.custom) return customRowHtml(r,s);
   const dps    = divOf(r,s);
   const invest = s ? s.price*r.qty : 0;
   const divs   = s ? dps*r.qty : 0;
@@ -486,7 +491,21 @@ function computeTotals(){
   renderChart();
 }
 
-// ── Barres : dividendes annuels par action (triées décroissant) ────────────
+// Ligne d'une action ajoutée MANUELLEMENT (nom/prix/dividende éditables)
+function customRowHtml(r,s){
+  const invest = s.price*r.qty, divs = s.dividend*r.qty, cur = s.currency||'EUR';
+  const qtyDisp = r.qty ? (Number.isInteger(r.qty) ? r.qty : +r.qty.toFixed(2)) : '';
+  const nm = (s.name||'').replace(/"/g,'&quot;');
+  return `<tr data-uid="${r.uid}">
+    <td><input class="custom-name" type="text" value="${nm}" placeholder="Nom de l'action" data-cname></td>
+    <td data-label="Montant investi" class="num"><input class="qty-input num" style="width:118px" type="number" min="0" step="0.01" value="${invest?(+invest.toFixed(2)):''}" placeholder="0" data-invest></td>
+    <td data-label="Prix" class="num"><input class="qty-input num" style="width:96px" type="number" min="0" step="0.01" value="${s.price||''}" placeholder="Prix €" title="Prix de l'action" data-cprice></td>
+    <td data-label="Nombre" class="num"><input class="qty-input num" type="number" min="0" step="any" value="${qtyDisp}" placeholder="0" data-qty></td>
+    <td data-label="Dividende / action" class="num"><input class="qty-input num" style="width:96px" type="number" min="0" step="0.01" value="${s.dividend||''}" placeholder="Div. €" title="Dividende annuel par action" data-cdiv></td>
+    <td data-label="Dividendes" class="cell-div num">${fmt(divs,cur)}</td>
+    <td><button class="btn-icon" title="Supprimer" data-del><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2M6 7l1 13a1 1 0 001 1h8a1 1 0 001-1l1-13"/></svg></button></td>
+  </tr>`;
+}
 const CHART_COLORS = ['#E8410A','#16a35a','#2e7cf6','#F6A800','#9b51e0','#00b8a9','#ff5c8a','#e0b000','#7d8597','#c0392b','#3498db','#8e44ad'];
 function renderChart(){
   const wrap = document.getElementById('pfChartWrap');
@@ -585,14 +604,26 @@ document.getElementById('pfBody').addEventListener('input', e=>{
       if(s){ const qi=tr.querySelector('[data-qty]'); if(qi) qi.value=r.qty?(Number.isInteger(r.qty)?r.qty:+r.qty.toFixed(2)):''; tr.querySelector('.cell-div').textContent=fmt(divOf(r,s)*r.qty,s.currency); }
     }
   }
-  if(e.target.matches('[data-div]')){
-    const uid=+e.target.closest('tr').dataset.uid;
-    const r=rows.find(x=>x.uid===uid);
-    if(r){
-      const v=parseFloat(e.target.value); r.div = isNaN(v)?null:Math.max(0,v);
+  if(e.target.matches('[data-cname]')){
+    const uid=+e.target.closest('tr').dataset.uid; const r=rows.find(x=>x.uid===uid);
+    const s=r&&byId[r.stockId]; if(s){ s.name=e.target.value; computeTotals(); }
+  }
+  if(e.target.matches('[data-cprice]')){
+    const uid=+e.target.closest('tr').dataset.uid; const r=rows.find(x=>x.uid===uid);
+    const s=r&&byId[r.stockId]; if(s){
+      s.price=Math.max(0,parseFloat(e.target.value)||0);
+      const tr=e.target.closest('tr'), iv=tr.querySelector('[data-invest]');
+      if(iv) iv.value=r.qty?(+(s.price*r.qty).toFixed(2)):'';
+      tr.querySelector('.cell-div').textContent=fmt(s.dividend*r.qty,s.currency);
       computeTotals(); updateShareUrl();
-      const s=byId[r.stockId], tr=e.target.closest('tr');
-      if(s){ tr.querySelector('.cell-div').textContent=fmt(divOf(r,s)*r.qty,s.currency); }
+    }
+  }
+  if(e.target.matches('[data-cdiv]')){
+    const uid=+e.target.closest('tr').dataset.uid; const r=rows.find(x=>x.uid===uid);
+    const s=r&&byId[r.stockId]; if(s){
+      s.dividend=Math.max(0,parseFloat(e.target.value)||0);
+      e.target.closest('tr').querySelector('.cell-div').textContent=fmt(s.dividend*r.qty,s.currency);
+      computeTotals(); updateShareUrl();
     }
   }
 });
@@ -635,13 +666,15 @@ window.addEventListener('resize', repositionOpenPicker);
 function fillPicker(picker, q){
   const list=picker.querySelector('[data-picker-list]');
   const term=(q||'').toLowerCase().trim();
-  const items=STOCKS.filter(s=>!term || s.name.toLowerCase().includes(term) || (s.ticker||'').toLowerCase().includes(term));
-  list.innerHTML = items.length ? items.map(s=>`
+  const items=STOCKS.filter(s=>!s.custom && (!term || s.name.toLowerCase().includes(term) || (s.ticker||'').toLowerCase().includes(term)));
+  const opts = items.map(s=>`
     <div class="picker-opt" data-opt="${s.id}">
       ${logoHtml(s)}
       <div class="meta"><div class="o-nm">${s.name}</div><div class="o-sub">${[s.ticker,s.country].filter(Boolean).join(' · ')}${s.eligible_pea?' · <span class="pea-tag">PEA</span>':''}</div></div>
       <span class="o-yield">${fmtPct(yieldOf(s))}</span>
-    </div>`).join('') : `<div class="picker-none">Aucune action trouvée</div>`;
+    </div>`).join('');
+  const manual = `<div class="picker-opt picker-add" data-add-manual>➕ Ajouter une action manuellement</div>`;
+  list.innerHTML = (items.length ? opts : `<div class="picker-none">Aucune action trouvée</div>`) + manual;
   list.querySelectorAll('[data-opt]').forEach(el=>el.addEventListener('click',()=>{
     const uid=+picker.closest('tr').dataset.uid;
     const r=rows.find(x=>x.uid===uid);
@@ -656,6 +689,18 @@ function fillPicker(picker, q){
       render();
     }
   }));
+  const addEl=list.querySelector('[data-add-manual]');
+  if(addEl) addEl.addEventListener('click',()=>{
+    const uid=+picker.closest('tr').dataset.uid;
+    const r=rows.find(x=>x.uid===uid);
+    if(r){
+      const id='custom_'+Math.random().toString(36).slice(2,8);
+      const cs={id, name:(term?q.trim():''), ticker:'', price:0, dividend:0, currency:'EUR', country:'', custom:true};
+      STOCKS.push(cs); byId[id]=cs;
+      r.stockId=id; r.div=null; render();
+      setTimeout(()=>{ const tr=document.querySelector('tr[data-uid="'+uid+'"]'); const nm=tr&&tr.querySelector('[data-cname]'); if(nm) nm.focus(); },30);
+    }
+  });
 }
 function filterPicker(picker,q){ fillPicker(picker,q); }
 document.addEventListener('click', e=>{ if(!e.target.closest('[data-picker]')) document.querySelectorAll('.picker-pop.open').forEach(p=>p.classList.remove('open')); });
@@ -668,7 +713,7 @@ document.getElementById('fiscRate').addEventListener('input',()=>computeTotals()
 
 // Partage par URL
 function updateShareUrl(){
-  const enc = rows.filter(r=>r.stockId&&r.qty>0).map(r=>`${r.stockId}:${r.qty}`).join(',');
+  const enc = rows.filter(r=>r.stockId&&r.qty>0&&!(byId[r.stockId]&&byId[r.stockId].custom)).map(r=>`${r.stockId}:${r.qty}`).join(',');
   const url = new URL(location.href); url.hash = enc ? 'p='+encodeURIComponent(enc) : '';
   history.replaceState(null,'',url.toString());
 }
@@ -691,7 +736,8 @@ async function refreshStocks(){
     const d = await r.json();
     const list = (d.actions||[]).filter(a => a.active!==false && (Number(a.dividend)||0) > 0);
     if(list.length){
-      STOCKS = list;
+      const customs = STOCKS.filter(s=>s.custom);
+      STOCKS = list.concat(customs);
       byId = Object.fromEntries(STOCKS.map(s => [String(s.id), s]));
       render();   // recalcule tout avec les données fraîches (prix, nouvelles actions)
     }
@@ -706,7 +752,7 @@ function currentSummary(){
   return { invest, divs, yieldPct: invest>0 ? divs/invest*100 : 0, positions };
 }
 function shareCode(){
-  const enc = rows.filter(r=>r.stockId&&r.qty>0).map(r=>`${r.stockId}:${+(+r.qty).toFixed(4)}`).join(',');
+  const enc = rows.filter(r=>r.stockId&&r.qty>0&&!(byId[r.stockId]&&byId[r.stockId].custom)).map(r=>`${r.stockId}:${+(+r.qty).toFixed(4)}`).join(',');
   if(!enc) return '';
   try{ return btoa(enc).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''); }catch(_){ return ''; }
 }
