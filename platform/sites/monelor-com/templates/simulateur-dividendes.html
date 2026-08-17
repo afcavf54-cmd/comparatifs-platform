@@ -238,6 +238,7 @@ a{text-decoration:none}
     .rank-table th:nth-child(3),.rank-table td:nth-child(3){display:none} /* masque Prix sur mobile */
   }
 </style>
+  {% if site.analytics_clicky is defined and site.analytics_clicky %}{% if '<script' in site.analytics_clicky %}{{ site.analytics_clicky | safe }}{% else %}<script async data-id="{{ site.analytics_clicky }}" src="//static.getclicky.com/js"></script>{% endif %}{% endif %}
 </head>
 <body>
 {% include "base/_nav.html.j2" ignore missing %}
