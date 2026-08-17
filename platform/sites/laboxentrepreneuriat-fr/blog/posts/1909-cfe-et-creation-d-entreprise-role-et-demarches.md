@@ -4,15 +4,21 @@ slug: 1909-cfe-et-creation-d-entreprise-role-et-demarches
 date: '2026-08-17T12:00:00+02:00'
 categorie: Création d'entreprise
 meta_title: 'CFE création d''entreprise : rôle et démarches'
-meta_description: Créer une entreprise implique de passer par le CFE, guichet unique des formalités. Découvrez son rôle, son fonctionnement et les démarches à suivre pour…
+meta_description: Créer une entreprise implique de passer par le CFE, guichet unique
+  des formalités. Découvrez son rôle, son fonctionnement et les démarches à suivre
+  pour…
 min_words: 1200
 status: published
 featured_image: /blog/1909-cfe-et-creation-d-entreprise-role-et-demarches.jpg
 link_anchors:
 - text: rôle du CFE dans la création d'entreprise
   max: 8
+related_posts:
+- 3270-domiciliation-d-entreprise-en-ligne-fonctionnement-et-avantages
+- 8254-quel-statut-choisir-pour-son-entreprise-comparatif-et-criteres
+- 9605-tableau-comparatif-des-statuts-juridiques-d-entreprise-sas-sarl-ei
+- 3496-extrait-kbis-qu-est-ce-que-c-est-et-comment-l-obtenir
 ---
-
 <p>Quand on lance une entreprise, on pense au statut juridique, au business plan, au compte bancaire professionnel. Le CFE, lui, arrive souvent en dernier dans la liste. Et pourtant, c'est l'un des premiers interlocuteurs que vous allez devoir contacter pour officialiser votre activité. Je vais vous expliquer exactement ce qu'est ce Centre de Formalités des Entreprises, ce qu'il fait concrètement, et comment l'aborder sans perdre de temps.</p>
 
 <h2>Le CFE, c'est quoi exactement ?</h2>
