@@ -4,15 +4,20 @@ slug: 2249-facture-electronique-comment-ca-fonctionne-concretement
 date: '2026-08-17T17:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Facture électronique : fonctionnement et mise en place'
-meta_description: La facture électronique n'est pas un simple PDF par mail. Découvrez comment elle fonctionne vraiment et ce que la réforme change pour les petites entreprises.
+meta_description: La facture électronique n'est pas un simple PDF par mail. Découvrez
+  comment elle fonctionne vraiment et ce que la réforme change pour les petites entreprises.
 min_words: 1400
 status: published
 featured_image: /blog/2249-facture-electronique-comment-ca-fonctionne-concretement.jpg
 link_anchors:
 - text: fonctionnement concret de la facture électronique
   max: 8
+related_posts:
+- 5067-mentions-obligatoires-sur-une-facture-ce-que-dit-la-loi
+- 2073-logiciel-de-facturation-en-ligne-fonctionnement-et-avantages
+- 3894-modele-de-facture-structure-contenu-et-bonnes-pratiques
+- 8544-logiciel-de-facturation-et-devis-comment-les-deux-s-articulent
 ---
-
 <p>Honnêtement, quand j'ai entendu parler de la réforme sur la facturation électronique pour la première fois, j'ai levé les yeux au ciel. Encore une obligation administrative, encore un truc à mettre en place, encore du temps perdu. Et avec six salariés à gérer et des clients à satisfaire, franchement, je n'avais pas ça en tête comme priorité.</p>
 
 <p>Mais j'ai creusé. Et ce que j'ai découvert est finalement moins compliqué que ce que les experts-comptables laissent entendre. Voici ce que j'ai compris, concrètement, en tant que gérante d'une petite agence de communication.</p>
