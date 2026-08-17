@@ -55,10 +55,11 @@ async function sharePage(code) {
       });
       positions.sort((x, y) => y.div - x.div);
       const yieldPct = invest > 0 ? (divs / invest * 100) : 0;
+      const yieldStr = yieldPct.toFixed(2).replace('.', ',');
       const medals = ['🥇', '🥈', '🥉'];
       const top = positions.slice(0, 3).map((p, i) => `${medals[i]} ${p.name}`).join(' · ');
-      title = `Mon portefeuille génère ${fmtEur0(divs)} de dividendes par an`;
-      desc = `Rendement ${yieldPct.toFixed(2).replace('.', ',')} %.${top ? ' ' + top + '.' : ''} Découvre la simulation et crée la tienne gratuitement sur Monelor.`;
+      title = `🏆 Mon portefeuille rend ${yieldStr} % — et le tien ?`;
+      desc = `${fmtEur0(divs)} de dividendes par an.${top ? ' ' + top + '.' : ''} Découvre la simulation et crée la tienne gratuitement sur Monelor.`;
     } catch (_) { /* valeurs par défaut */ }
   }
 
