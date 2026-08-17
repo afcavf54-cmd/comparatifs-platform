@@ -6,7 +6,7 @@ const filePath = (siteId: string) => `platform/sites/${siteId}/dividendes-action
 
 type Action = {
   id: string; name: string; ticker: string; isin: string; logo: string
-  country: string; currency: string; fmp_symbol: string
+  country: string; currency: string; fmp_symbol: string; market_index: string
   price: number; price_updated_at: string
   dividend: number; dividend_year: string; dividend_updated_at: string
   eligible_pea: boolean; active: boolean
@@ -25,6 +25,7 @@ function sanitize(a: any, i: number): Action | null {
     currency: String(a?.currency || 'EUR').trim() || 'EUR',
     // Symbole exact pour l'API de prix (ex. "TTE.PA"). Vide => on tentera le ticker.
     fmp_symbol: String(a?.fmp_symbol || '').trim(),
+    market_index: String(a?.market_index || '').trim(),
     price: Number(a?.price) || 0,
     price_updated_at: String(a?.price_updated_at || '').trim(),
     dividend: Number(a?.dividend) || 0,
