@@ -4,15 +4,21 @@ slug: 5438-liste-de-diffusion-email-comment-la-constituer-et-la-gerer
 date: '2026-08-17T17:00:00+02:00'
 categorie: Marketing
 meta_title: 'Liste de diffusion email : constitution et gestion'
-meta_description: 'Constituez et gérez une liste de diffusion email performante : conseils concrets, outils et bonnes pratiques pour des contacts engagés et des campagnes rentables.'
+meta_description: 'Constituez et gérez une liste de diffusion email performante :
+  conseils concrets, outils et bonnes pratiques pour des contacts engagés et des campagnes
+  rentables.'
 min_words: 1400
 status: published
 featured_image: /blog/5438-liste-de-diffusion-email-comment-la-constituer-et-la-gerer.jpg
 link_anchors:
 - text: constituer une liste de diffusion
   max: 8
+related_posts:
+- 4028-logiciel-emailing-et-sms-comment-combiner-les-deux-canaux
+- 2434-automation-en-email-marketing-fonctionnement-et-cas-d-usage
+- 8467-campagne-emailing-comment-la-creer-et-la-piloter
+- 7389-logiciel-d-emailing-open-source-avantages-limites-et-cas-d-usage
 ---
-
 <h2>Ce que j'ai appris en constituant ma liste de diffusion from scratch</h2>
 
 <p>Quand j'ai lancé ma première campagne email, j'avais en tout et pour tout 47 contacts. Des collègues, quelques clients, deux ou trois prospects récupérés sur des salons. Pas vraiment une base solide. Aujourd'hui, après onze ans à gérer une entreprise à Lyon, j'ai compris que la liste de diffusion email, c'est probablement l'actif marketing le plus rentable qu'on puisse construire. Mais encore faut-il s'y prendre correctement.</p>
