@@ -8,7 +8,7 @@ type Action = {
   id: string; name: string; ticker: string; isin: string; logo: string
   country: string; currency: string; fmp_symbol: string; market_index: string
   price: number; price_updated_at: string
-  dividend: number; dividend_year: string; dividend_updated_at: string
+  dividend: number; dividend_year: string; dividend_updated_at: string; dividend_verified: boolean
   eligible_pea: boolean; active: boolean
 }
 
@@ -31,6 +31,7 @@ function sanitize(a: any, i: number): Action | null {
     dividend: Number(a?.dividend) || 0,
     dividend_year: String(a?.dividend_year || '').trim(),
     dividend_updated_at: String(a?.dividend_updated_at || '').trim(),
+    dividend_verified: a?.dividend_verified === true,
     eligible_pea: a?.eligible_pea === true,
     active: a?.active !== false,
   }
