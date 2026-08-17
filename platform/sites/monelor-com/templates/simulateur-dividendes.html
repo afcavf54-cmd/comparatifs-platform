@@ -713,7 +713,7 @@ function shareCode(){
 function shareUrl(){ const c=shareCode(); return c ? `${location.origin}/p/${c}` : ''; }
 function shareText(){
   const s=currentSummary();
-  return `💰 Mon portefeuille génère ${fmtEur0(s.divs)} de dividendes par an.\n📈 Rendement : ${fmtPct(s.yieldPct)}\nCrée gratuitement ta simulation 👇`;
+  return `🏆 Mon portefeuille offre un rendement estimé de ${fmtPct(s.yieldPct)}.\nEst-ce que le tien fait mieux ?\n👇`;
 }
 function shareX(){
   const url=shareUrl(); if(!url) return toast('Ajoute au moins une action');
