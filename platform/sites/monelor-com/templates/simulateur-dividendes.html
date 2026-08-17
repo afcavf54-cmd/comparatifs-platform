@@ -133,6 +133,25 @@ a{text-decoration:none}
   .bar-track{height:12px;border-radius:7px;background:rgba(0,9,33,0.06);overflow:hidden}
   .bar-fill{height:100%;border-radius:7px;transition:width .35s ease}
   /* Partage */
+  .share-phrase{padding:20px 22px 0;font-family:"Schibsted Grotesk",sans-serif;font-size:17px;line-height:1.5;color:var(--ink);font-weight:600}
+  .share-phrase:empty{display:none}
+  .yield-val{font-weight:700;color:var(--emerald);cursor:help}
+  /* Détail fiscalité dépliable */
+  .fisc-detail{border-top:1px solid var(--line);padding:22px 20px 24px}
+  .fisc-detail summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--emerald);list-style:none;user-select:none;display:inline-flex;align-items:center;gap:6px}
+  .fisc-detail summary::-webkit-details-marker{display:none}
+  .fisc-detail summary::before{content:"▸";font-size:11px;transition:transform .15s}
+  .fisc-detail[open] summary::before{transform:rotate(90deg)}
+  .fisc-detail #fiscDetail{margin-top:14px}
+  .fisc-detail #fiscDetail p{margin:0 0 12px;font-size:14px;line-height:1.6;color:var(--muted)}
+  .fisc-detail #fiscDetail strong{color:var(--ink);font-weight:600}
+  .fisc-breakdown{background:var(--emerald-soft);border:1px solid var(--line);border-radius:12px;padding:6px 16px;margin:4px 0 10px}
+  .fisc-line{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:11px 0;font-size:14px;color:var(--muted)}
+  .fisc-line + .fisc-line{border-top:1px solid var(--line)}
+  .fisc-line .num{font-variant-numeric:tabular-nums;color:var(--ink);font-weight:500}
+  .fisc-total{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:13px 16px;margin-top:2px;background:var(--ink);border-radius:12px;color:#fff;font-weight:700;font-size:15px}
+  .fisc-total .num{font-variant-numeric:tabular-nums}
+  .fisc-note{font-size:12.5px;font-style:italic;color:var(--faint);line-height:1.55;margin:10px 0 0}
   .share-in{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:20px 22px}
   .share-h{font-family:"Schibsted Grotesk",sans-serif;font-size:17px;font-weight:700;color:var(--ink)}
   .share-sub{font-size:13px;color:var(--muted);margin-top:3px}
@@ -225,20 +244,23 @@ a{text-decoration:none}
         <h2>Mon portefeuille</h2>
         <div class="sub">Ajoutez vos lignes, saisissez les quantités.</div>
       </div>
-      <button class="btn btn-primary" id="addRow">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-        Ajouter une action
-      </button>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn btn-ghost" id="resetBtn">Réinitialiser</button>
+        <button class="btn btn-primary" id="addRow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          Ajouter une action
+        </button>
+      </div>
     </div>
     <div style="overflow:visible">
       <table class="pf-table">
         <thead>
           <tr>
             <th>Action</th>
-            <th>Nombre d'actions</th>
+            <th>Montant investi</th>
             <th>Prix actuel</th>
-            <th>Dividende / action</th>
-            <th>Investissement</th>
+            <th>Nombre d'actions</th>
+            <th>Rendement actuel</th>
             <th>Dividendes annuels</th>
             <th></th>
           </tr>
@@ -261,7 +283,8 @@ a{text-decoration:none}
     <div class="s-cell hero-cell">
       <div class="s-lbl">Dividendes annuels estimés</div>
       <div class="s-val gold num" id="sDiv">0 €</div>
-      <div class="s-sub" id="sDivMonthly">soit 0 € / mois</div>
+      <div class="s-sub" id="sDivMonthly">≈ 0 € / mois</div>
+      <div class="s-sub" id="sDivDaily">≈ 0 € / jour</div>
     </div>
     <div class="s-cell">
       <div class="s-lbl">Rendement brut moyen</div>
@@ -271,6 +294,7 @@ a{text-decoration:none}
 
   <!-- ══════════ FISCALITÉ ══════════ -->
   <section class="card share-card" id="shareCard" style="margin-top:20px">
+    <div class="share-phrase" id="sharePhrase"></div>
     <div class="share-in">
       <div class="share-txt">
         <div class="share-h">📢 Partager ma simulation</div>
@@ -300,17 +324,13 @@ a{text-decoration:none}
       <div class="f-cell"><div class="f-lbl">Impôts estimés</div><div class="f-val tax num" id="fTax">0 €</div></div>
       <div class="f-cell"><div class="f-lbl">Dividendes nets</div><div class="f-val net num" id="fNet">0 €</div></div>
     </div>
+    <details class="fisc-detail">
+      <summary>Détail du calcul</summary>
+      <div id="fiscDetail"></div>
+    </details>
   </section>
 
   <!-- ══════════ ACTIONS ══════════ -->
-  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
-    <button class="btn btn-ghost" id="shareBtn">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
-      Partager mon portefeuille
-    </button>
-    <button class="btn btn-ghost" id="resetBtn">Réinitialiser</button>
-  </div>
-
   <!-- ══════════ CLASSEMENT ══════════ -->
   <section class="card" style="margin-top:32px">
     <div class="card-head">
@@ -393,6 +413,7 @@ let uidSeq = 1;
 const fmt = (n, cur='EUR') => new Intl.NumberFormat('fr-FR',{style:'currency',currency:cur,maximumFractionDigits:2}).format(n||0);
 const fmtPct = n => new Intl.NumberFormat('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2}).format(n||0)+' %';
 const fmtDay = iso => { if(!iso) return ''; const d=new Date(iso); return isNaN(d.getTime())?'':d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'}); };
+const fmtEur0 = n => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(Math.round(n||0));
 const yieldOf = s => s.price>0 ? (s.dividend/s.price)*100 : 0;
 // dividende/action de la ligne : override utilisateur (r.div) sinon valeur de l'action
 const divOf = (r,s) => (r && r.div!=null) ? r.div : (s ? s.dividend : 0);
@@ -404,13 +425,14 @@ function rowHtml(r){
   const invest = s ? s.price*r.qty : 0;
   const divs   = s ? dps*r.qty : 0;
   const cur    = s ? s.currency : 'EUR';
+  const yld    = (s && s.price>0) ? (dps/s.price*100) : 0;
   const qtyDisp = r.qty ? (Number.isInteger(r.qty) ? r.qty : +r.qty.toFixed(2)) : '';
   return `<tr data-uid="${r.uid}">
     <td>${pickerHtml(r)}</td>
-    <td data-label="Nombre"><input class="qty-input num" type="number" min="0" step="any" value="${qtyDisp}" placeholder="0" data-qty></td>
+    <td data-label="Montant investi" class="num">${s?`<input class="qty-input num" style="width:118px" type="number" min="0" step="0.01" value="${invest?(+invest.toFixed(2)):''}" placeholder="0" title="Montant investi — modifiable (recalcule le nombre d'actions)" data-invest>`:'—'}</td>
     <td data-label="Prix" class="cell-price num">${s?`${fmt(s.price,cur)}${s.price_updated_at?`<span class="price-date">au ${fmtDay(s.price_updated_at)}</span>`:''}`:'—'}</td>
-    <td data-label="Dividende / action" class="num">${s?`<input class="qty-input num" style="width:98px" type="number" min="0" step="0.01" value="${dps||''}" placeholder="0" title="Dividende annuel par action — modifiable" data-div>`:'—'}</td>
-    <td data-label="Investissement" class="num">${s?`<input class="qty-input num" style="width:118px" type="number" min="0" step="0.01" value="${invest?(+invest.toFixed(2)):''}" placeholder="0" title="Montant investi — modifiable (recalcule le nombre d'actions)" data-invest>`:'—'}</td>
+    <td data-label="Nombre" class="num"><input class="qty-input num" type="number" min="0" step="any" value="${qtyDisp}" placeholder="0" data-qty></td>
+    <td data-label="Rendement" class="cell-yield num">${s?`<span class="yield-val" title="Dividende : ${fmt(dps,cur)} / action">${fmtPct(yld)}</span>`:'—'}</td>
     <td data-label="Dividendes" class="cell-div num">${s?fmt(divs,cur):'—'}</td>
     <td><button class="btn-icon" title="Supprimer" data-del><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2M6 7l1 13a1 1 0 001 1h8a1 1 0 001-1l1-13"/></svg></button></td>
   </tr>`;
@@ -453,7 +475,12 @@ function computeTotals(){
   const yieldPct = invest>0 ? (divs/invest)*100 : 0;
   document.getElementById('sInvest').textContent = fmt(invest);
   document.getElementById('sDiv').textContent    = fmt(divs);
-  document.getElementById('sDivMonthly').textContent = 'soit '+fmt(divs/12)+' / mois';
+  document.getElementById('sDivMonthly').textContent = '≈ '+fmt(divs/12)+' / mois';
+  document.getElementById('sDivDaily').textContent = '≈ '+fmt(divs/365)+' / jour';
+  const ph = document.getElementById('sharePhrase');
+  if(ph) ph.textContent = invest>0
+    ? `💰 Avec un investissement de ${fmtEur0(invest)}, ce portefeuille pourrait générer ${fmtEur0(divs)} de dividendes par an, soit ${fmtEur0(divs/12)} par mois.`
+    : '';
   document.getElementById('sYield').textContent  = fmtPct(yieldPct);
   computeTax(divs);
   renderChart();
@@ -488,7 +515,35 @@ function computeTax(brut){
   document.getElementById('fBrut').textContent = fmt(brut);
   document.getElementById('fTax').textContent  = '– '+fmt(tax);
   document.getElementById('fNet').textContent  = fmt(brut-tax);
+  const det = TAX_DETAIL[regime.key];
+  document.getElementById('fiscDetail').innerHTML = det ? det(brut, rate) : '';
 }
+
+// Détail pédagogique du calcul, par régime (b = dividendes bruts)
+const line = (lbl,val)=>`<div class="fisc-line"><span>${lbl}</span><span class="num">${val}</span></div>`;
+const box = inner => `<div class="fisc-breakdown">${inner}</div>`;
+const total = (lbl,val)=>`<div class="fisc-total"><span>${lbl}</span><span class="num">${val}</span></div>`;
+const TAX_DETAIL = {
+  cto: b => `<p><strong>Flat Tax (PFU) — 30 %</strong>, appliquée par défaut sur les dividendes d'un compte-titres ordinaire.</p>
+    ${box(line('Impôt sur le revenu · 12,8 %', fmt(b*0.128)) + line('Prélèvements sociaux · 17,2 %', fmt(b*0.172)))}
+    ${total('Total impôts · 30 %', fmt(b*0.30))}
+    <p class="fisc-note">Option possible pour le barème progressif de l'impôt si c'est plus avantageux (non simulé ici).</p>`,
+  pea_lt5: b => `<p>Tant que les dividendes restent dans le PEA, ils ne sont <strong>pas imposés</strong>. En cas de retrait <strong>avant 5 ans</strong>, les gains sont taxés au PFU :</p>
+    ${box(line('Impôt sur le revenu · 12,8 %', fmt(b*0.128)) + line('Prélèvements sociaux · 17,2 %', fmt(b*0.172)))}
+    ${total('Total en cas de retrait · 30 %', fmt(b*0.30))}`,
+  pea_gt5: b => `<p>Après <strong>5 ans</strong> : exonération d'impôt sur le revenu. Seuls les prélèvements sociaux s'appliquent lors d'un retrait.</p>
+    ${box(line('Impôt sur le revenu', '0 € — exonéré') + line('Prélèvements sociaux · 17,2 %', fmt(b*0.172)))}
+    ${total('Total · 17,2 %', fmt(b*0.172))}`,
+  av_lt8: b => `<p><strong>Avant 8 ans</strong>, les gains rachetés d'une assurance-vie sont imposés au PFU :</p>
+    ${box(line('Impôt sur le revenu · 12,8 %', fmt(b*0.128)) + line('Prélèvements sociaux · 17,2 %', fmt(b*0.172)))}
+    ${total('Total · 30 %', fmt(b*0.30))}`,
+  av_gt8: b => `<p>Après <strong>8 ans</strong>, l'imposition est réduite :</p>
+    ${box(line('Impôt sur le revenu · 7,5 %', fmt(b*0.075)) + line('Prélèvements sociaux · 17,2 %', fmt(b*0.172)))}
+    ${total('Total · 24,7 %', fmt(b*0.247))}
+    <p class="fisc-note">Un abattement annuel de 4 600 € (seul) ou 9 200 € (couple) s'applique en plus sur les gains — non pris en compte ici, donc la fiscalité réelle est souvent plus faible.</p>`,
+  perso: (b,rate) => `<p><strong>Taux personnalisé — ${(rate*100).toFixed(2).replace('.',',')} %</strong></p>
+    ${total(`${fmt(b)} × ${(rate*100).toFixed(2).replace('.',',')} %`, fmt(b*rate))}`,
+};
 
 function renderRanking(){
   const top = [...STOCKS].sort((a,b)=>yieldOf(b)-yieldOf(a)).slice(0,20);
@@ -589,7 +644,17 @@ function fillPicker(picker, q){
     </div>`).join('') : `<div class="picker-none">Aucune action trouvée</div>`;
   list.querySelectorAll('[data-opt]').forEach(el=>el.addEventListener('click',()=>{
     const uid=+picker.closest('tr').dataset.uid;
-    const r=rows.find(x=>x.uid===uid); if(r){ r.stockId=el.dataset.opt; r.div=null; render(); }
+    const r=rows.find(x=>x.uid===uid);
+    if(r){
+      // On conserve le MONTANT INVESTI en changeant d'action (et on recalcule le
+      // nombre d'actions) → permet de comparer les rendements à investissement égal.
+      const oldS=byId[r.stockId];
+      const oldInvest=(oldS && r.qty>0) ? oldS.price*r.qty : 0;
+      r.stockId=el.dataset.opt; r.div=null;
+      const newS=byId[r.stockId];
+      if(oldInvest>0 && newS && newS.price>0) r.qty=oldInvest/newS.price;
+      render();
+    }
   }));
 }
 function filterPicker(picker,q){ fillPicker(picker,q); }
@@ -612,12 +677,6 @@ function loadFromUrl(){
   try{ decodeURIComponent(m[1]).split(',').forEach(pair=>{ const [id,q]=pair.split(':'); if(byId[id]) addRow(id, q); }); return rows.length>0; }
   catch(_){ return false; }
 }
-document.getElementById('shareBtn').addEventListener('click',()=>{
-  updateShareUrl();
-  const done=()=>toast('Lien copié — partagez votre simulation');
-  if(navigator.clipboard){ navigator.clipboard.writeText(location.href).then(done).catch(()=>toast('Copiez le lien depuis la barre d’adresse')); }
-  else toast('Copiez le lien depuis la barre d’adresse');
-});
 function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),2600); }
 
 /* ── Chargement DYNAMIQUE des actions (sans redéploiement) ──────────────────
@@ -640,7 +699,6 @@ async function refreshStocks(){
 }
 
 /* ── Partage viral ──────────────────────────────────────────────────────── */
-const fmtEur0 = n => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(Math.round(n||0));
 function currentSummary(){
   let invest=0, divs=0; const positions=[];
   rows.forEach(r=>{ const s=byId[r.stockId]; if(s && r.qty>0){ const d=divOf(r,s)*r.qty; invest+=s.price*r.qty; divs+=d; positions.push({name:s.name, div:d}); }});
