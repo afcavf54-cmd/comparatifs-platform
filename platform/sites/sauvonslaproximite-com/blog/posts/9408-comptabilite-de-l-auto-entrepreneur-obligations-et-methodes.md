@@ -4,15 +4,21 @@ slug: 9408-comptabilite-de-l-auto-entrepreneur-obligations-et-methodes
 date: '2026-08-17T12:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Comptabilité auto-entrepreneur : obligations et méthodes'
-meta_description: 'Comptabilité auto-entrepreneur : découvrez vos vraies obligations légales, les registres à tenir et les erreurs à éviter pour rester en conformité avec…'
+meta_description: 'Comptabilité auto-entrepreneur : découvrez vos vraies obligations
+  légales, les registres à tenir et les erreurs à éviter pour rester en conformité
+  avec…'
 min_words: 1500
 status: published
 featured_image: /blog/9408-comptabilite-de-l-auto-entrepreneur-obligations-et-methodes.jpg
 link_anchors:
 - text: obligations comptables de l'auto-entrepreneur
   max: 8
+related_posts:
+- 8593-logiciel-de-comptabilite-pour-association-specificites-et-fonctionnement
+- 5567-logiciel-de-comptabilite-en-ligne-fonctionnement-et-avantages
+- 5981-plan-comptable-pour-association-structure-et-specificites
+- 8673-logiciel-de-comptabilite-simple-a-qui-s-adresse-t-il-et-que-fait-il
 ---
-
 <h2>Ce que la comptabilité d'auto-entrepreneur implique vraiment</h2>
 
 <p>J'ai accompagné plusieurs auto-entrepreneurs dans mon entourage professionnel. Et à chaque fois, la même confusion revient : beaucoup pensent que le régime micro-entrepreneur dispense de toute comptabilité. C'est faux. Allégé, oui. Inexistant, non.</p>
