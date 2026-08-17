@@ -163,6 +163,14 @@ a{text-decoration:none}
   .share-fb:hover{background:#0f6ae0}
   .share-copy{background:transparent;color:var(--ink);border-color:var(--line)}
   .share-copy:hover{border-color:var(--emerald);color:var(--emerald)}
+  .rank-sortable{cursor:pointer;user-select:none;white-space:nowrap}
+  .rank-sortable:hover{color:var(--emerald)}
+  .rank-tabs{display:flex;gap:8px;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--line)}
+  .rank-tab{border:1px solid var(--line);background:#fff;color:var(--muted);font:inherit;font-size:13px;font-weight:600;padding:7px 14px;border-radius:999px;cursor:pointer;transition:.15s}
+  .rank-tab:hover{border-color:var(--emerald);color:var(--emerald)}
+  .rank-tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .rank-add{width:30px;height:30px;border-radius:8px;border:1px solid var(--emerald);background:var(--emerald-soft);color:var(--emerald);font-size:20px;font-weight:600;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:.15s}
+  .rank-add:hover{background:var(--emerald);color:#fff}
   .picker-add{border-top:1px solid var(--line);margin-top:4px;color:var(--emerald);font-weight:600;font-size:13.5px;justify-content:flex-start}
   .picker-add:hover{background:var(--emerald-soft)}
   .custom-name{width:100%;min-width:150px;border:1px solid var(--line);border-radius:9px;padding:9px 11px;font:inherit;font-weight:600;outline:none;background:#fff}
@@ -340,10 +348,11 @@ a{text-decoration:none}
     <div class="card-head">
       <div><h2>Top actions à dividendes</h2><div class="sub">Classées par rendement décroissant.</div></div>
     </div>
+    <div class="rank-tabs" id="rankTabs"></div>
     <div style="overflow-x:auto">
       <table class="rank-table">
         <thead>
-          <tr><th>Rang</th><th>Action</th><th>Prix</th><th>Dividende annuel</th><th>Rendement</th></tr>
+          <tr id="rankHead"><th>Rang</th><th>Action</th><th>Prix</th><th>Dividende annuel</th><th>Rendement</th><th></th></tr>
         </thead>
         <tbody id="rankBody"></tbody>
       </table>
@@ -470,6 +479,8 @@ function render(){
     body.innerHTML = rows.map(rowHtml).join('');
   }
   computeTotals();
+  renderRankHead();
+  renderRankTabs();
   renderRanking();
   updateShareUrl();
 }
@@ -564,16 +575,63 @@ const TAX_DETAIL = {
     ${total(`${fmt(b)} × ${(rate*100).toFixed(2).replace('.',',')} %`, fmt(b*rate))}`,
 };
 
+let rankTab = 'all';
+let rankSort = 'yield', rankDir = -1;   // défaut : rendement décroissant
+function rankIndices(){
+  const set = new Set();
+  STOCKS.forEach(s=>{ if(!s.custom && s.market_index) set.add(s.market_index); });
+  return [...set].sort();
+}
+function renderRankTabs(){
+  const el = document.getElementById('rankTabs');
+  if(!el) return;
+  const tabs = [{k:'all',label:'Toutes'}].concat(rankIndices().map(i=>({k:i,label:i})));
+  if(!rankIndices().includes(rankTab) && rankTab!=='all') rankTab='all';
+  el.innerHTML = tabs.map(t=>`<button class="rank-tab ${rankTab===t.k?'active':''}" data-rtab="${t.k.replace(/"/g,'&quot;')}">${t.label}</button>`).join('');
+  el.querySelectorAll('[data-rtab]').forEach(b=>b.addEventListener('click',()=>{ rankTab=b.dataset.rtab; renderRankTabs(); renderRanking(); }));
+}
+function renderRankHead(){
+  const head = document.getElementById('rankHead');
+  if(!head) return;
+  const cols = [
+    {k:null, label:'Rang'}, {k:'name', label:'Action'}, {k:'price', label:'Prix'},
+    {k:'dividend', label:'Dividende annuel'}, {k:'yield', label:'Rendement'}, {k:null, label:''},
+  ];
+  const arrow = k => rankSort===k ? (rankDir===1?' ▲':' ▼') : '';
+  head.innerHTML = cols.map(c => c.k
+    ? `<th class="rank-sortable" data-rsort="${c.k}">${c.label}${arrow(c.k)}</th>`
+    : `<th>${c.label}</th>`).join('');
+  head.querySelectorAll('[data-rsort]').forEach(th=>th.addEventListener('click',()=>{
+    const k=th.dataset.rsort;
+    if(rankSort===k) rankDir = -rankDir;
+    else { rankSort=k; rankDir = (k==='name') ? 1 : -1; }  // texte → A→Z, chiffres → décroissant
+    renderRankHead(); renderRanking();
+  }));
+}
 function renderRanking(){
-  const top = [...STOCKS].sort((a,b)=>yieldOf(b)-yieldOf(a)).slice(0,20);
-  document.getElementById('rankBody').innerHTML = top.map((s,i)=>`
+  let pool = STOCKS.filter(s=>!s.custom && s.price>0 && s.dividend>0);
+  if(rankTab!=='all') pool = pool.filter(s=>s.market_index===rankTab);
+  const val = s => rankSort==='name' ? (s.name||'').toLowerCase()
+    : rankSort==='price' ? s.price
+    : rankSort==='dividend' ? s.dividend
+    : yieldOf(s);
+  pool.sort((a,b)=>{ const va=val(a), vb=val(b); if(va<vb) return -1*rankDir; if(va>vb) return 1*rankDir; return 0; });
+  const top = pool.slice(0,20);
+  const body = document.getElementById('rankBody');
+  body.innerHTML = top.length ? top.map((s,i)=>`
     <tr>
       <td><span class="rank-pos ${i<3?'top':''}">${i+1}</span></td>
       <td><span class="rank-name">${logoHtml(s)}<span>${s.name}</span></span></td>
       <td class="num">${fmt(s.price,s.currency)}</td>
       <td class="num">${fmt(s.dividend,s.currency)}</td>
       <td class="rank-yield num">${fmtPct(yieldOf(s))}</td>
-    </tr>`).join('');
+      <td><button class="rank-add" data-rankadd="${s.id}" title="Ajouter au simulateur">+</button></td>
+    </tr>`).join('') : `<tr><td colspan="6" style="text-align:center;padding:26px;color:var(--faint)">Aucune action à dividende dans cet indice.</td></tr>`;
+  body.querySelectorAll('[data-rankadd]').forEach(b=>b.addEventListener('click',()=>{
+    addRow(b.dataset.rankadd, 0);
+    toast('Action ajoutée au portefeuille ✓');
+    const pf=document.querySelector('.pf-table'); if(pf) pf.scrollIntoView({behavior:'smooth',block:'start'});
+  }));
 }
 
 /* ── Interactions ─────────────────────────────────────────────────────────── */
@@ -740,6 +798,7 @@ async function refreshStocks(){
       STOCKS = list.concat(customs);
       byId = Object.fromEntries(STOCKS.map(s => [String(s.id), s]));
       render();   // recalcule tout avec les données fraîches (prix, nouvelles actions)
+      renderRankTabs(); renderRanking();
     }
   }catch(e){ /* réseau KO → on garde les données du build */ }
 }
