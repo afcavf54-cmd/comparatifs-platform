@@ -4,7 +4,7 @@ import { useParams } from 'next/navigation'
 
 type Action = {
   id: string; name: string; ticker: string; isin: string; logo: string
-  country: string; currency: string; fmp_symbol: string
+  country: string; currency: string; fmp_symbol: string; market_index: string
   price: number; price_updated_at: string
   dividend: number; dividend_year: string; dividend_updated_at: string
   eligible_pea: boolean; active: boolean
@@ -51,7 +51,7 @@ export default function DividendesPage() {
       if (!d || !Array.isArray(d.actions)) throw new Error('réponse invalide')
       setActions(d.actions.map((a: any) => ({
         id: a.id || uid(), name: a.name || '', ticker: a.ticker || '', isin: a.isin || '', logo: a.logo || '',
-        country: a.country || '', currency: a.currency || 'EUR', fmp_symbol: a.fmp_symbol || '',
+        country: a.country || '', currency: a.currency || 'EUR', fmp_symbol: a.fmp_symbol || '', market_index: a.market_index || '',
         price: Number(a.price) || 0, price_updated_at: a.price_updated_at || '',
         dividend: Number(a.dividend) || 0, dividend_year: a.dividend_year || '', dividend_updated_at: a.dividend_updated_at || '',
         eligible_pea: a.eligible_pea === true, active: a.active !== false,
@@ -113,7 +113,7 @@ export default function DividendesPage() {
 
   const addAction = () => {
     setActions(prev => [{
-      id: uid(), name: '', ticker: '', isin: '', logo: '', country: '', currency: 'EUR', fmp_symbol: '',
+      id: uid(), name: '', ticker: '', isin: '', logo: '', country: 'France', currency: 'EUR', fmp_symbol: '', market_index: 'CAC 40',
       price: 0, price_updated_at: '', dividend: 0, dividend_year: String(new Date().getFullYear()), dividend_updated_at: '',
       eligible_pea: false, active: true,
     }, ...prev])
@@ -133,6 +133,7 @@ export default function DividendesPage() {
     'isin': 'isin', 'code isin': 'isin',
     'symbole': 'fmp_symbol', 'symbole api': 'fmp_symbol', 'fmp_symbol': 'fmp_symbol', 'symbole_api': 'fmp_symbol',
     'pays': 'country', 'country': 'country',
+    'indice': 'market_index', 'bourse': 'market_index', 'market_index': 'market_index', 'indice boursier': 'market_index',
     'devise': 'currency', 'currency': 'currency',
     'dividende': 'dividend', 'dividend': 'dividend', 'dividende an': 'dividend', 'dividende annuel': 'dividend', 'dividende / an': 'dividend',
     'annee': 'dividend_year', 'annee de reference': 'dividend_year', 'year': 'dividend_year', 'dividend_year': 'dividend_year',
@@ -177,7 +178,7 @@ export default function DividendesPage() {
       const pea = normHead(get('eligible_pea'))
       added.push({
         id: uid(), name, ticker, isin: isin.toUpperCase(), logo: '',
-        fmp_symbol: get('fmp_symbol'), country: get('country'),
+        fmp_symbol: get('fmp_symbol'), country: get('country'), market_index: get('market_index') || 'CAC 40',
         currency: (get('currency') || 'EUR').toUpperCase().slice(0, 3) || 'EUR',
         price: 0, price_updated_at: '',
         dividend: parseFloat(get('dividend').replace(',', '.')) || 0,
@@ -249,7 +250,8 @@ export default function DividendesPage() {
   const arrow = (k: SortKey) => sortKey === k ? (sortDir === 1 ? ' ▲' : ' ▼') : ''
 
   return (
-    <div style={{ maxWidth: 1560 }}>
+    <div style={{ maxWidth: 1680 }}>
+      <datalist id="indices-list"><option value="CAC 40" /><option value="SBF 120" /><option value="Euronext Paris" /><option value="Euronext Growth" /><option value="DAX" /><option value="AEX" /><option value="IBEX 35" /><option value="FTSE MIB" /><option value="S&P 500" /><option value="Nasdaq" /></datalist>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
         <div>
           <h1 style={{ fontSize: 22, color: C.text, margin: 0 }}>💰 Simulation de dividendes — Actions</h1>
@@ -288,7 +290,7 @@ export default function DividendesPage() {
       {/* Tableau */}
       <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, overflow: 'hidden' }}>
         <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 1280 }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 1400 }}>
             <thead>
               <tr>
                 <th style={{ ...thSort, width: '17%' }} onClick={() => toggleSort('name')}>Nom{arrow('name')}</th>
@@ -296,6 +298,7 @@ export default function DividendesPage() {
                 <th style={{ ...th, width: 150 }}>ISIN</th>
                 <th style={{ ...th, width: 118 }}>Symbole API</th>
                 <th style={{ ...thSort, width: 96 }} onClick={() => toggleSort('country')}>Pays{arrow('country')}</th>
+                <th style={{ ...th, width: 110 }}>Indice</th>
                 <th style={{ ...th, width: 70 }}>Devise</th>
                 <th style={{ ...thSort, width: 118, textAlign: 'right' }} onClick={() => toggleSort('price')}>Prix (auto){arrow('price')}</th>
                 <th style={{ ...thSort, width: 130, textAlign: 'right' }} onClick={() => toggleSort('dividend')}>Dividende / an{arrow('dividend')}</th>
@@ -316,6 +319,7 @@ export default function DividendesPage() {
                   <td style={td}><input value={a.isin} onChange={e => patch(a.id, 'isin', e.target.value.toUpperCase())} placeholder="FR000…" style={inp} /></td>
                   <td style={td}><input value={a.fmp_symbol} onChange={e => patch(a.id, 'fmp_symbol', e.target.value)} placeholder="ex: TTE.PA" title="Symbole exact pour l'API de prix (ex: TTE.PA). Vide = on tente le ticker." style={inp} /></td>
                   <td style={td}><input value={a.country} onChange={e => patch(a.id, 'country', e.target.value)} placeholder="—" style={inp} /></td>
+                  <td style={td}><input list="indices-list" value={a.market_index} onChange={e => patch(a.id, 'market_index', e.target.value)} placeholder="—" style={inp} /></td>
                   <td style={td}>
                     <select value={a.currency} onChange={e => patch(a.id, 'currency', e.target.value)} style={{ ...inp, cursor: 'pointer' }}>
                       <option value="EUR">€ EUR</option><option value="USD">$ USD</option><option value="GBP">£ GBP</option><option value="CHF">CHF</option>
