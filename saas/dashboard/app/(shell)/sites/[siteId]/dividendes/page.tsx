@@ -201,10 +201,10 @@ export default function DividendesPage() {
     e.target.value = ''
   }
   function downloadTemplate() {
-    const csv = 'nom;ticker;isin;symbole_api;pays;devise;dividende;annee;pea\n'
-      + 'TotalEnergies;TTE;FR0000120271;;France;EUR;3.22;2026;oui\n'
-      + 'Air Liquide;AI;FR0000120073;;France;EUR;3.20;2026;oui\n'
-      + 'LVMH;MC;FR0000121014;;France;EUR;13.00;2026;oui\n'
+    const csv = 'nom;ticker;isin;symbole_api;pays;devise;indice;dividende;annee;pea\n'
+      + 'TotalEnergies;TTE;FR0000120271;;France;EUR;CAC 40;3.22;2026;oui\n'
+      + 'Air Liquide;AI;FR0000120073;;France;EUR;CAC 40;3.20;2026;oui\n'
+      + 'Rubis;RUI;FR0013269123;;France;EUR;SBF 120;1.98;2026;oui\n'
     const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }))
     const a = document.createElement('a'); a.href = url; a.download = 'modele-actions-dividendes.csv'; a.click()
     URL.revokeObjectURL(url)
@@ -277,7 +277,7 @@ export default function DividendesPage() {
       {syncMsg && <div style={{ marginTop: 10, fontSize: 12.5, color: syncMsg.startsWith('✓') ? C.accent : C.danger }}>{syncMsg}</div>}
       {importMsg && <div style={{ marginTop: 10, fontSize: 12.5, color: importMsg.startsWith('✓') ? C.accent : C.danger }}>{importMsg}</div>}
       <div style={{ marginTop: 8, fontSize: 12, color: C.faint }}>
-        Import en masse : colonnes <code>nom ; ticker ; isin ; symbole_api ; pays ; devise ; dividende ; annee ; pea</code> (séparateur <code>,</code> ou <code>;</code>). Le prix n'est pas importé (il vient de la synchro).{' '}
+        Import en masse : colonnes <code>nom ; ticker ; isin ; symbole_api ; pays ; devise ; indice ; dividende ; annee ; pea</code> (séparateur <code>,</code> ou <code>;</code>). Le prix n'est pas importé (il vient de la synchro).{' '}
         <span onClick={downloadTemplate} style={{ color: C.accent, cursor: 'pointer', textDecoration: 'underline' }}>Télécharger le modèle CSV</span>
       </div>
 
