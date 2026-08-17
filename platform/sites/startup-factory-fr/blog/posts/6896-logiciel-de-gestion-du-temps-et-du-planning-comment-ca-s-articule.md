@@ -4,15 +4,21 @@ slug: 6896-logiciel-de-gestion-du-temps-et-du-planning-comment-ca-s-articule
 date: '2026-08-17T17:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logiciel gestion du temps et planning : fonctionnement'
-meta_description: 'Découvrez comment un logiciel de gestion du temps et du planning transforme concrètement votre quotidien : automatisation, absences, conflits de créneaux et export…'
+meta_description: 'Découvrez comment un logiciel de gestion du temps et du planning
+  transforme concrètement votre quotidien : automatisation, absences, conflits de
+  créneaux et export…'
 min_words: 1300
 status: published
 featured_image: /blog/6896-logiciel-de-gestion-du-temps-et-du-planning-comment-ca-s-articule.jpg
 link_anchors:
 - text: logiciel de gestion du temps et des plannings
   max: 5
+related_posts:
+- 3688-planning-des-conges-du-personnel-comment-le-gerer-efficacement
+- 1824-planning-de-rotation-du-personnel-sur-excel-structure-et-mise-en-place
+- 6001-planning-des-conges-du-personnel-en-pdf-utilite-et-limites
+- 9884-planning-du-personnel-sur-excel-gratuit-comment-le-construire
 ---
-
 <p>Gérer les plannings d'une équipe de 20 à 50 personnes à la main, c'est une erreur que j'ai faite pendant trop longtemps. Tableurs Excel, post-its, WhatsApp à 23h pour prévenir d'un changement de shift... J'ai perdu un temps fou là-dessus. Et mes salariés aussi. Alors quand j'ai migré vers un vrai outil dédié, ça a changé quelque chose de concret dans mon quotidien.</p>
 
 <p>Cet article, c'est ce que j'aurais voulu lire avant de tester cinq outils différents en six mois.</p>
