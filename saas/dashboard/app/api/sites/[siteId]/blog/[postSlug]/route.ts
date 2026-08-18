@@ -165,7 +165,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
   try {
   const { siteId, postSlug } = await params
   const body = await req.json()
-  const { title, slug: rawSlug, date, meta_title, meta_description, featured_image, status, content_md, related_posts, link_anchors, min_words, show_toc, sha } = body
+  const { title, slug: rawSlug, date, meta_title, meta_description, featured_image, status, content_md, related_posts, link_anchors, min_words, show_toc, cta_enabled, cta_text, cta_color, cta_link, cta_button, sha } = body
   if (!title || !rawSlug) return NextResponse.json({ error: 'title et slug requis' }, { status: 400 })
 
   // ── Sanitize le slug AVANT toute construction de path. ────────────────
@@ -239,6 +239,11 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
     show_toc: show_toc !== false,
     related_posts: Array.isArray(related_posts) ? related_posts : undefined,
     link_anchors: Array.isArray(link_anchors) ? link_anchors : undefined,
+    cta_enabled: cta_enabled === true ? true : undefined,
+    cta_text: cta_text || undefined,
+    cta_color: cta_color || undefined,
+    cta_link: cta_link || undefined,
+    cta_button: cta_button || undefined,
     content_md: content_md || '',
   }
   if (min_words && Number(min_words) > 0) post.min_words = Number(min_words)
