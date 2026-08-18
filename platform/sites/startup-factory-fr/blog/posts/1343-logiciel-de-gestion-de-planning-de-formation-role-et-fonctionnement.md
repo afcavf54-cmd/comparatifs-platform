@@ -4,15 +4,21 @@ slug: 1343-logiciel-de-gestion-de-planning-de-formation-role-et-fonctionnement
 date: '2026-08-18T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logiciel planning formation : rôle et fonctionnement'
-meta_description: Découvrez comment un logiciel de gestion de planning de formation remplace les fichiers Excel par un outil centralisé qui planifie, relance et suit vos sessions…
+meta_description: Découvrez comment un logiciel de gestion de planning de formation
+  remplace les fichiers Excel par un outil centralisé qui planifie, relance et suit
+  vos sessions…
 min_words: 1200
 status: published
 featured_image: /blog/1343-logiciel-de-gestion-de-planning-de-formation-role-et-fonctionnement.jpg
 link_anchors:
 - text: logiciel de planning de formation
   max: 5
+related_posts:
+- 5868-planning-des-conges-du-personnel-sur-excel-methode-et-modele
+- 5109-logiciel-de-gestion-de-planning-chantier-fonctionnement-et-utilite
+- 5257-logiciel-de-gestion-de-planning-definition-role-et-fonctionnement
+- 2892-creer-un-planning-du-personnel-sur-excel-methode-pas-a-pas
 ---
-
 <p>On a longtemps géré les plannings de formation sur Excel. Des fichiers qui se multiplient, des versions qui se contredisent, des emails qui se perdent. Et un jour, j'ai pris le temps de tester un vrai outil dédié. La différence était brutale.</p>
 
 <p>Si tu gères une équipe et que tu dois organiser des sessions de formation en parallèle de l'activité courante, tu sais à quel point c'est chronophage. Qui est disponible ? Qui a déjà suivi cette formation ? Quelle salle ? Quel formateur ? C'est un puzzle permanent. Un <strong>logiciel de gestion de planning de formation</strong> est fait exactement pour ça.</p>
