@@ -18,6 +18,11 @@ interface PostData {
   content_md: string
   min_words?: number
   show_toc?: boolean
+  cta_enabled?: boolean
+  cta_text?: string
+  cta_color?: string
+  cta_link?: string
+  cta_button?: string
   related_posts?: string[]
   link_anchors?: { text: string; max: number }[]
   sha?: string
@@ -30,6 +35,7 @@ const empty: PostData = {
   status: 'draft', content_md: '',
   min_words: 750,
   show_toc: true,
+  cta_enabled: false, cta_text: '', cta_color: '', cta_link: '', cta_button: '',
   link_anchors: [],
 }
 
@@ -531,7 +537,44 @@ export default function BlogEditPage() {
           </Field>
         </div>
         <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid #1E2D3D' }}>
-          <div style={{ fontSize: 11, color: '#8B9CB0', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 10 }}>SEO</div>
+          <div style={{ fontSize: 11, color: '#8B9CB0', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 10 }}>CTA STICKY</div>
+          <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: 13, color: '#fff', marginBottom: post.cta_enabled ? 12 : 0 }}>
+            <input type="checkbox" checked={post.cta_enabled === true}
+              onChange={e => update('cta_enabled', e.target.checked)}
+              style={{ width: 16, height: 16, accentColor: '#00D4AA', cursor: 'pointer' }} />
+            Afficher une barre CTA en bas de l'article
+          </label>
+          {post.cta_enabled && (
+            <>
+              <Field label="Texte (vide = défaut du site)">
+                <input type="text" value={post.cta_text || ''} onChange={e => update('cta_text', e.target.value)}
+                  placeholder="Profitez de cette offre exclusive" style={input} />
+              </Field>
+              <div style={{ marginTop: 12, display: 'flex', gap: 10 }}>
+                <div style={{ flex: '0 0 90px' }}>
+                  <label style={{ display: 'block', fontSize: 11, color: '#8B9CB0', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 6 }}>Couleur</label>
+                  <input type="color" value={post.cta_color || '#1a4fd6'} onChange={e => update('cta_color', e.target.value)}
+                    style={{ width: '100%', height: 38, padding: 2, background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 8, cursor: 'pointer' }} />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <label style={{ display: 'block', fontSize: 11, color: '#8B9CB0', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 6 }}>Texte du bouton</label>
+                  <input type="text" value={post.cta_button || ''} onChange={e => update('cta_button', e.target.value)}
+                    placeholder="En profiter" style={input} />
+                </div>
+              </div>
+              <div style={{ marginTop: 12 }}>
+                <Field label="Lien du CTA (obfusqué, nofollow, nouvel onglet)">
+                  <input type="text" value={post.cta_link || ''} onChange={e => update('cta_link', e.target.value)}
+                    placeholder="https://exemple.com/offre?ref=..." style={input} />
+                </Field>
+                <div style={{ fontSize: 11, color: '#8B9CB0', marginTop: 6 }}>
+                  Le lien n'apparaît pas en clair dans le code (encodé), avec rel="nofollow sponsored" et ouverture dans un nouvel onglet.
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+        <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid #1E2D3D' }}>
           <Field label="Meta title">
             <input type="text" value={post.meta_title} onChange={e => update('meta_title', e.target.value)} style={input} />
           </Field>
