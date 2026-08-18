@@ -32,7 +32,7 @@ jobs:
 
       - name: Install deps (génération)
         if: steps.del.outputs.sites != ''
-        run: pip install pyyaml jinja2 requests
+        run: pip install pyyaml jinja2 requests pillow
 
       - name: Régénérer les sites impactés
         if: steps.del.outputs.sites != ''
