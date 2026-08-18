@@ -4,15 +4,21 @@ slug: 7694-creer-une-facture-sur-excel-methode-et-modele-pas-a-pas
 date: '2026-08-18T12:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Créer une facture sur Excel : méthode pas à pas'
-meta_description: Créer une facture sur Excel est simple au démarrage, mais comporte des limites légales et pratiques. Découvrez la méthode pas à pas et un modèle prêt à l'emploi.
+meta_description: Créer une facture sur Excel est simple au démarrage, mais comporte
+  des limites légales et pratiques. Découvrez la méthode pas à pas et un modèle prêt
+  à l'emploi.
 min_words: 1300
 status: published
 featured_image: /blog/7694-creer-une-facture-sur-excel-methode-et-modele-pas-a-pas.jpg
 link_anchors:
 - text: créer une facture sous Excel
   max: 8
+related_posts:
+- 6148-comment-choisir-son-logiciel-de-facturation-criteres-et-methode
+- 7208-logiciel-de-facturation-est-il-obligatoire-en-entreprise
+- 3033-comment-fonctionne-un-logiciel-de-facturation-en-entreprise
+- 7564-logiciel-de-facturation-professionnel-quelles-fonctionnalites-attendre
 ---
-
 <h2>Pourquoi j'ai longtemps utilisé Excel pour mes factures, et pourquoi ça a ses limites</h2>
 
 <p>Quand j'ai lancé mon agence il y a huit ans, je faisais mes factures sur Excel. Comme beaucoup d'indépendants ou de petites structures. C'est rapide à mettre en place, ça ne coûte rien si vous avez déjà la suite Office, et franchement, pour deux ou trois clients, ça suffit amplement. Je ne vais pas vous vendre du rêve : un tableur bien construit peut très bien faire le job au démarrage.</p>
