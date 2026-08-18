@@ -4,12 +4,17 @@ slug: 4734-logiciel-de-gestion-du-recrutement-quelles-fonctionnalites-attendre
 date: '2026-08-18T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Logiciel gestion du recrutement : fonctionnalités clés'
-meta_description: 'Logiciel de gestion du recrutement : découvrez les fonctionnalités vraiment utiles pour une PME, celles qui font gagner du temps et celles à éviter.'
+meta_description: 'Logiciel de gestion du recrutement : découvrez les fonctionnalités
+  vraiment utiles pour une PME, celles qui font gagner du temps et celles à éviter.'
 min_words: 1400
 status: published
 featured_image: /blog/4734-logiciel-de-gestion-du-recrutement-quelles-fonctionnalites-attendre.jpg
+related_posts:
+- 7807-logigramme-du-processus-de-recrutement-comment-le-construire
+- 2681-logiciel-de-gestion-des-candidatures-role-et-fonctionnement
+- 8168-comment-ameliorer-la-gestion-des-talents-rh-en-entreprise
+- 5868-promesse-d-embauche-ce-qu-il-faut-inclure-pour-etre-en-conformite
 ---
-
 <h2>Ce qu'on attend vraiment d'un logiciel de recrutement quand on gère une PME</h2>
 
 <p>J'ai mis du temps avant de comprendre pourquoi nos recrutements prenaient autant de temps. On recevait des CV par mail, on les triait à la main, on perdait des candidatures entre deux dossiers. Parfois, on rappelait quelqu'un trois semaines après sa candidature. Pas terrible pour notre image.</p>
