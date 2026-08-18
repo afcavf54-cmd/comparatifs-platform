@@ -23,6 +23,7 @@ interface PostData {
   cta_color?: string
   cta_link?: string
   cta_button?: string
+  cta_btn_color?: string
   related_posts?: string[]
   link_anchors?: { text: string; max: number }[]
   sha?: string
@@ -35,7 +36,7 @@ const empty: PostData = {
   status: 'draft', content_md: '',
   min_words: 750,
   show_toc: true,
-  cta_enabled: false, cta_text: '', cta_color: '', cta_link: '', cta_button: '',
+  cta_enabled: false, cta_text: '', cta_color: '', cta_link: '', cta_button: '', cta_btn_color: '',
   link_anchors: [],
 }
 
@@ -551,9 +552,16 @@ export default function BlogEditPage() {
                   placeholder="Profitez de cette offre exclusive" style={input} />
               </Field>
               <div style={{ marginTop: 12, display: 'flex', gap: 10 }}>
-                <div style={{ flex: '0 0 90px' }}>
-                  <label style={{ display: 'block', fontSize: 11, color: '#8B9CB0', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 6 }}>Couleur</label>
+                <div style={{ flex: '0 0 88px' }}>
+                  <label style={{ display: 'block', fontSize: 11, color: '#8B9CB0', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 6 }}>Bandeau</label>
                   <input type="color" value={post.cta_color || '#1a4fd6'} onChange={e => update('cta_color', e.target.value)}
+                    title="Couleur du bandeau"
+                    style={{ width: '100%', height: 38, padding: 2, background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 8, cursor: 'pointer' }} />
+                </div>
+                <div style={{ flex: '0 0 88px' }}>
+                  <label style={{ display: 'block', fontSize: 11, color: '#8B9CB0', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 6 }}>Bouton</label>
+                  <input type="color" value={post.cta_btn_color || '#ffffff'} onChange={e => update('cta_btn_color', e.target.value)}
+                    title="Couleur du bouton"
                     style={{ width: '100%', height: 38, padding: 2, background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 8, cursor: 'pointer' }} />
                 </div>
                 <div style={{ flex: 1 }}>
