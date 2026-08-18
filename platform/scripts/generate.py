@@ -1600,6 +1600,8 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
         except Exception:
             return d
     env.filters["fr_date"] = fr_date
+    import base64 as _b64
+    env.filters["b64"] = lambda s: _b64.b64encode(str(s or "").encode("utf-8")).decode("ascii")
 
     template_file = site.get("template", "comparatif-vs.html.j2")
     # Si le template est un classement, pas de pages VS à générer
