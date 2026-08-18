@@ -46,7 +46,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install dependencies
-        run: pip install pyyaml jinja2 requests ruamel.yaml
+        run: pip install pyyaml jinja2 requests ruamel.yaml pillow
       - name: Generate AI editorial content
         if: ${{ !inputs.skip_enrich }}
         run: |
