@@ -48,6 +48,7 @@ export interface BlogPostFrontmatter {
   cta_color?: string
   cta_link?: string
   cta_button?: string
+  cta_btn_color?: string
 }
 
 export interface BlogPost extends BlogPostFrontmatter {
@@ -174,7 +175,7 @@ export function serializePost(post: BlogPost): string {
     'title', 'slug', 'date', 'updated', 'categorie', 'categories',
     'meta_title', 'meta_description', 'featured_image',
     'status', 'min_words', 'show_toc', 'related_posts', 'link_anchors',
-    'cta_enabled', 'cta_text', 'cta_color', 'cta_link', 'cta_button',
+    'cta_enabled', 'cta_text', 'cta_color', 'cta_link', 'cta_button', 'cta_btn_color',
   ]
   for (const key of ordered) {
     const val = (post as any)[key]
