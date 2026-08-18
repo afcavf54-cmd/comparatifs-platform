@@ -98,6 +98,8 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
   const [linkNofollow, setLinkNofollow] = useState(false)
   const editingLinkRef = useRef<HTMLAnchorElement | null>(null) // <a> à éditer, ou null si nouveau lien
   const savedRangeRef = useRef<Range | null>(null)              // sélection sauvegardée à la restoration
+  const [showYtModal, setShowYtModal] = useState(false)
+  const [ytUrl, setYtUrl] = useState('')
 
   useEffect(() => {
     try { document.execCommand('defaultParagraphSeparator', false, 'p') } catch {}
@@ -339,6 +341,32 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
     exec('unlink')
   }
 
+  // ── Vidéo YouTube (embed responsive plein largeur) ──────────────────────
+  function openYoutube() {
+    const sel = typeof window !== 'undefined' ? window.getSelection() : null
+    if (sel && sel.rangeCount) savedRangeRef.current = sel.getRangeAt(0).cloneRange()
+    setYtUrl('')
+    setShowYtModal(true)
+  }
+  function applyYoutube() {
+    const id = youtubeId(ytUrl.trim())
+    if (!id) { setShowYtModal(false); return }
+    if (!ref.current) return
+    ref.current.focus()
+    const sel = window.getSelection()
+    if (sel && savedRangeRef.current) { sel.removeAllRanges(); sel.addRange(savedRangeRef.current) }
+    // iframe seul en aspect-ratio 16:9 → responsive plein largeur (mobile + PC),
+    // et commence par "<iframe" donc préservé tel quel par le rendu du blog.
+    const embed =
+      `<iframe class="video-embed" src="https://www.youtube.com/embed/${id}" title="Vidéo YouTube" loading="lazy" ` +
+      'allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen ' +
+      'style="width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:12px;margin:28px 0;display:block"></iframe><p><br></p>'
+    document.execCommand('insertHTML', false, embed)
+    emit()
+    setShowYtModal(false)
+    savedRangeRef.current = null
+  }
+
   function toggleSource() {
     if (!showSource) {
       setSourceValue(toStored(ref.current?.innerHTML || '')) // source montre le relatif
@@ -422,6 +450,7 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
           <Btn onClick={openLinkModal} title="Insérer / éditer un lien">🔗</Btn>
           <Btn onClick={unlink} title="Supprimer le lien">⛓</Btn>
           {onImageUpload && <Btn onClick={onImageUpload} title="Insérer une image">📷</Btn>}
+          <Btn onClick={openYoutube} title="Insérer une vidéo YouTube">▶</Btn>
           <Btn onClick={insertTable} title="Insérer un tableau">▦</Btn>
         </BtnGroup>
         {inTable && <>
@@ -556,6 +585,39 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
         </div>
       )}
 
+      {showYtModal && (
+        <div onClick={() => setShowYtModal(false)}
+             style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.75)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 200 }}>
+          <div onClick={e => e.stopPropagation()}
+               style={{ background: '#0D1117', border: '1px solid #1E2D3D', borderRadius: 14,
+                        padding: 28, width: '90%', maxWidth: 560 }}>
+            <h3 style={{ color: '#fff', fontSize: 18, fontWeight: 600, margin: '0 0 4px' }}>▶ Insérer une vidéo YouTube</h3>
+            <p style={{ color: '#8B9CB0', fontSize: 12, margin: '0 0 20px' }}>
+              Colle l'URL de la vidéo. Elle s'affichera en pleine largeur de l'article (responsive mobile + PC).
+            </p>
+            <label style={modalLabel}>URL YouTube *</label>
+            <input value={ytUrl} onChange={e => setYtUrl(e.target.value)}
+                   onKeyDown={e => { if (e.key === 'Enter') applyYoutube() }}
+                   placeholder="https://www.youtube.com/watch?v=… ou https://youtu.be/…" autoFocus
+                   style={modalInput} />
+            {ytUrl.trim() && !youtubeId(ytUrl.trim()) && (
+              <div style={{ color: '#FC8181', fontSize: 12, marginTop: 8 }}>URL YouTube non reconnue.</div>
+            )}
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10, marginTop: 22 }}>
+              <button onClick={() => setShowYtModal(false)}
+                      style={{ padding: '10px 18px', borderRadius: 8, background: '#1E2D3D', color: '#fff', border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 600 }}>
+                Annuler
+              </button>
+              <button onClick={applyYoutube} disabled={!youtubeId(ytUrl.trim())}
+                      style={{ padding: '10px 18px', borderRadius: 8, background: youtubeId(ytUrl.trim()) ? '#00D4AA' : '#1E2D3D', color: youtubeId(ytUrl.trim()) ? '#0A0E1A' : '#4A5568', border: 'none', cursor: youtubeId(ytUrl.trim()) ? 'pointer' : 'not-allowed', fontSize: 13, fontWeight: 700 }}>
+                ✓ Insérer
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <style jsx global>{`
         .rich-editor:empty::before {
           content: attr(data-placeholder);
@@ -626,6 +688,16 @@ export default function RichEditor({ value, onChange, onImageUpload, placeholder
 }
 
 // Helpers d'échappement HTML pour construire le <a> manuellement
+function youtubeId(url: string): string {
+  if (!url) return ''
+  const patterns = [
+    /youtu\.be\/([\w-]{11})/,
+    /youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|v\/)([\w-]{11})/,
+  ]
+  for (const p of patterns) { const m = url.match(p); if (m) return m[1] }
+  const m = url.match(/[\w-]{11}/); return m ? m[0] : ''
+}
+
 function escapeAttr(s: string): string {
   return s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
