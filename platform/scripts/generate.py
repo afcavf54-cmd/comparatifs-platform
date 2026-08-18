@@ -1367,6 +1367,19 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     site.setdefault("month", _get_current_month_fr())
     site.setdefault("Month", _get_current_month_fr().capitalize())
 
+    # ── Favicon détecté TÔT (avant tout rendu de page) ────────────────
+    # Sinon les pages rendues avant la copie public/ retombent sur le repli
+    # `/favicon.svg` (404, car les sites utilisent favicon.png). On fixe donc
+    # `favicon_file` dès maintenant si un favicon existe.
+    if "favicon_file" not in site:
+        for _fav_dir in [site_dir / "public", site_dir]:
+            for _fav_ext in ("png", "svg", "ico"):
+                if (_fav_dir / f"favicon.{_fav_ext}").exists():
+                    site["favicon_file"] = f"/favicon.{_fav_ext}"
+                    break
+            if "favicon_file" in site:
+                break
+
     # ── Liste blanche des classements activés pour ce site ────────────
     # Fichier `enabled_classements.json` édité depuis le dashboard
     # `/sites/<siteId>/classements`. Si absent → mode legacy (tous activés)
@@ -2020,12 +2033,29 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     rel = src.relative_to(public_dir)
                     dst = output_dir / rel
                     dst.parent.mkdir(parents=True, exist_ok=True)
+                    # Favicon PNG au top-level : Google exige un carré multiple de
+                    # 48px pour l'afficher dans les SERP. On normalise à 192x192 et
+                    # on génère un favicon.ico (fallback navigateurs + Google).
+                    # try/except : si Pillow indisponible, copie brute (build jamais cassé).
+                    if src.parent == public_dir and src.stem == "favicon" and src.suffix.lower() == ".png":
+                        try:
+                            from PIL import Image as _PILImage
+                            _fav = _PILImage.open(src).convert("RGBA").resize((192, 192), _PILImage.LANCZOS)
+                            _fav.save(dst, "PNG")
+                            _fav.save(output_dir / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48)])
+                            site["favicon_file"] = "/favicon.png"
+                            print("  ✓ favicon.png normalisé 192x192 + favicon.ico généré")
+                        except Exception as _fav_err:
+                            shutil.copy2(src, dst)
+                            site["favicon_file"] = f"/{src.name}"
+                            print(f"  ⚠ favicon non redimensionné ({_fav_err}) — copie brute")
+                        continue
                     shutil.copy2(src, dst)
                     # Détecter logo/favicon au top-level pour les variables `site.*`
                     if src.parent == public_dir:
                         if src.stem == "logo":
                             site["logo_img"] = f"/{src.name}"
-                        elif src.stem == "favicon":
+                        elif src.stem == "favicon" and "favicon_file" not in site:
                             site["favicon_file"] = f"/{src.name}"
             logos = [f for f in public_dir.iterdir() if f.is_file() and f.stem == "logo"]
             if logos:
