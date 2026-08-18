@@ -4,15 +4,21 @@ slug: 5637-rgpd-et-email-marketing-quelles-obligations-respecter
 date: '2026-08-18T12:00:00+02:00'
 categorie: Marketing
 meta_title: 'RGPD email marketing : obligations et conformité'
-meta_description: 'RGPD et email marketing : découvrez les obligations concrètes à respecter pour vos campagnes, du consentement opt-in à la preuve de collecte, pour rester conforme.'
+meta_description: 'RGPD et email marketing : découvrez les obligations concrètes à
+  respecter pour vos campagnes, du consentement opt-in à la preuve de collecte, pour
+  rester conforme.'
 min_words: 1500
 status: published
 featured_image: /blog/5637-rgpd-et-email-marketing-quelles-obligations-respecter.jpg
 link_anchors:
 - text: obligations RGPD en email marketing
   max: 8
+related_posts:
+- 2650-email-marketing-definition-objectifs-et-fonctionnement
+- 9394-newsletter-d-entreprise-comment-la-creer-et-la-gerer
+- 3351-logiciel-d-emailing-professionnel-quelles-fonctionnalites-attendre
+- 2434-automation-en-email-marketing-fonctionnement-et-cas-d-usage
 ---
-
 <h2>Ce que le RGPD change vraiment pour vos campagnes email</h2>
 
 <p>J'ai mis du temps à comprendre ce que le RGPD impliquait concrètement pour mes envois d'emails. On lit beaucoup de choses vagues sur le sujet. Des articles qui parlent de "conformité" sans jamais dire ce qu'on doit faire exactement le lundi matin. Alors voilà ce que j'ai appris, en pratique, après avoir géré des campagnes email pour une entreprise de taille intermédiaire.</p>
