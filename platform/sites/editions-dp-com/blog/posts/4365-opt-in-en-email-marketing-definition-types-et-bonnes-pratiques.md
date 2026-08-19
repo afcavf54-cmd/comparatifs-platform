@@ -4,15 +4,21 @@ slug: 4365-opt-in-en-email-marketing-definition-types-et-bonnes-pratiques
 date: '2026-08-19T17:00:00+02:00'
 categorie: Marketing
 meta_title: 'Opt-in email marketing : définition et bonnes pratiques'
-meta_description: Découvrez ce qu'est l'opt-in en email marketing, ses différents types et les bonnes pratiques pour collecter un consentement valide et construire une liste efficace.
+meta_description: Découvrez ce qu'est l'opt-in en email marketing, ses différents
+  types et les bonnes pratiques pour collecter un consentement valide et construire
+  une liste efficace.
 min_words: 1300
 status: published
 featured_image: /blog/4365-opt-in-en-email-marketing-definition-types-et-bonnes-pratiques.jpg
 link_anchors:
 - text: recueil du consentement opt-in
   max: 8
+related_posts:
+- 9852-strategie-email-marketing-comment-la-construire-efficacement
+- 7389-logiciel-d-emailing-open-source-avantages-limites-et-cas-d-usage
+- 7295-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
+- 7068-segmentation-en-email-marketing-methodes-et-bonnes-pratiques
 ---
-
 <h2>Ce que signifie vraiment l'opt-in quand on gère une petite entreprise</h2>
 
 <p>J'ai mis du temps à comprendre la différence entre un contact qui <em>tolère</em> mes emails et un contact qui les <em>attend</em>. L'opt-in, c'est exactement ça. C'est le moment où quelqu'un dit explicitement "oui, vous pouvez m'envoyer des emails". Pas un oui implicite. Pas un case cochée par défaut. Un vrai consentement.</p>
