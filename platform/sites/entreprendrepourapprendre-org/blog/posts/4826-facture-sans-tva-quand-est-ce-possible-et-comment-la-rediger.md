@@ -4,15 +4,20 @@ slug: 4826-facture-sans-tva-quand-est-ce-possible-et-comment-la-rediger
 date: '2026-08-19T17:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Facture sans TVA : conditions et rédaction'
-meta_description: 'Facturez sans TVA en toute légalité : franchise en base, auto-entrepreneur ou export. Découvrez les 3 cas autorisés et comment rédiger votre facture correctement.'
+meta_description: 'Facturez sans TVA en toute légalité : franchise en base, auto-entrepreneur
+  ou export. Découvrez les 3 cas autorisés et comment rédiger votre facture correctement.'
 min_words: 1300
 status: published
 featured_image: /blog/4826-facture-sans-tva-quand-est-ce-possible-et-comment-la-rediger.jpg
 link_anchors:
 - text: facture émise sans TVA
   max: 8
+related_posts:
+- 5260-devis-et-facture-quelles-differences-et-quand-les-utiliser
+- 3894-modele-de-facture-structure-contenu-et-bonnes-pratiques
+- 7694-creer-une-facture-sur-excel-methode-et-modele-pas-a-pas
+- 6148-comment-choisir-son-logiciel-de-facturation-criteres-et-methode
 ---
-
 <h2>Ce que signifie vraiment "facturer sans TVA"</h2>
 
 <p>Quand j'ai lancé mon agence, je pensais que toutes les factures devaient obligatoirement mentionner la TVA. J'avais tort. Et je ne suis clairement pas la seule à avoir eu cette confusion au départ. La réalité, c'est que ne pas faire apparaître la TVA sur une facture est parfaitement légal dans plusieurs situations, à condition de savoir lesquelles et de bien les justifier par écrit.</p>
