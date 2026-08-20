@@ -4,15 +4,21 @@ slug: 5015-facture-avec-tva-comment-la-calculer-et-la-faire-apparaitre
 date: '2026-08-20T07:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Facture avec TVA : calcul et présentation'
-meta_description: Apprenez à calculer la TVA sur vos factures et à la faire apparaître correctement, avec des exemples concrets et une méthode simple pour ne plus faire d'erreurs.
+meta_description: Apprenez à calculer la TVA sur vos factures et à la faire apparaître
+  correctement, avec des exemples concrets et une méthode simple pour ne plus faire
+  d'erreurs.
 min_words: 1300
 status: published
 featured_image: /blog/5015-facture-avec-tva-comment-la-calculer-et-la-faire-apparaitre.jpg
 link_anchors:
 - text: faire apparaître la TVA sur une facture
   max: 8
+related_posts:
+- 5102-numerotation-des-factures-regles-legales-et-bonnes-pratiques
+- 2249-facture-electronique-comment-ca-fonctionne-concretement
+- 4276-comment-creer-une-facture-etapes-et-regles-a-respecter
+- 7208-logiciel-de-facturation-est-il-obligatoire-en-entreprise
 ---
-
 <h2>La TVA sur une facture, c'est moins compliqué qu'on ne le croit</h2>
 
 <p>Quand j'ai lancé mon agence il y a huit ans, la TVA me semblait être un sujet réservé aux comptables. Je voyais des taux, des cases à remplir, des mentions à ne pas oublier, et j'avais surtout peur de me tromper. Aujourd'hui, je gère ça presque les yeux fermés, mais je comprends totalement pourquoi ça peut bloquer au départ.</p>
