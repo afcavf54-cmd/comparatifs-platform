@@ -4,12 +4,18 @@ slug: 6144-sourcing-de-candidats-methodes-et-outils-pour-recruter-efficacement
 date: '2026-08-20T07:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Sourcing candidats : méthodes et outils efficaces'
-meta_description: Découvrez les méthodes et outils de sourcing de candidats testés par un dirigeant de TPE pour recruter efficacement, sans attendre passivement les CV.
+meta_description: Découvrez les méthodes et outils de sourcing de candidats testés
+  par un dirigeant de TPE pour recruter efficacement, sans attendre passivement les
+  CV.
 min_words: 1500
 status: published
 featured_image: /blog/6144-sourcing-de-candidats-methodes-et-outils-pour-recruter-efficacement.jpg
+related_posts:
+- 5406-base-de-donnees-recrutement-comment-un-logiciel-la-gere-t-il
+- 5003-logiciel-de-recrutement-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire
+- 7356-processus-de-recrutement-innovant-quelles-approches-adopter
+- 3951-qu-est-ce-que-la-definition-de-la-gestion-des-talents
 ---
-
 <p>J'ai mis du temps avant de vraiment structurer mon sourcing. Pendant presque un an, je publiais une offre, j'attendais des CV, et je me demandais pourquoi je tombais toujours sur les mêmes profils. Ou pire : personne ne répondait. À Marseille, sur certains métiers techniques, la concurrence est rude. J'ai dû apprendre à aller chercher les candidats, pas juste les attendre.</p>
 
 <p>Voici ce que j'ai mis en place, ce qui a fonctionné, et quelques outils que j'ai testés concrètement avec mon équipe.</p>
