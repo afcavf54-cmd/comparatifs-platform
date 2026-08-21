@@ -4,15 +4,21 @@ slug: 1499-logiciel-de-facturation-pour-pme-specificites-et-fonctionnalites
 date: '2026-08-21T12:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Logiciel facturation PME : spécificités et fonctions'
-meta_description: 'Logiciel de facturation pour PME : découvrez les fonctionnalités vraiment utiles pour une petite structure, sans la complexité des outils pensés pour les grands…'
+meta_description: 'Logiciel de facturation pour PME : découvrez les fonctionnalités
+  vraiment utiles pour une petite structure, sans la complexité des outils pensés
+  pour les grands…'
 min_words: 1300
 status: published
 featured_image: /blog/1499-logiciel-de-facturation-pour-pme-specificites-et-fonctionnalites.jpg
 link_anchors:
 - text: logiciel de facturation adapté aux PME
   max: 8
+related_posts:
+- 7694-creer-une-facture-sur-excel-methode-et-modele-pas-a-pas
+- 1286-delais-de-paiement-des-factures-regles-legales-et-recours
+- 6871-comment-fonctionne-un-logiciel-de-facturation-en-entreprise
+- 4826-facture-sans-tva-quand-est-ce-possible-et-comment-la-rediger
 ---
-
 <h2>Ce que j'ai appris après avoir testé (et abandonné) plusieurs logiciels de facturation</h2>
 
 <p>Huit ans à gérer une agence de communication, et pendant longtemps, ma facturation ressemblait à une pile de fichiers Excel qui se contredisaient. Un fichier pour les devis, un autre pour les factures, un troisième pour suivre les paiements en retard. Mes salariés ne savaient jamais quel document était à jour. Moi non plus, pour être honnête.</p>
