@@ -4,15 +4,21 @@ slug: 3256-email-marketing-b2b-specificites-et-bonnes-pratiques
 date: '2026-08-21T12:00:00+02:00'
 categorie: Marketing
 meta_title: 'Email marketing B2B : spécificités et pratiques'
-meta_description: 'Email marketing B2B : découvrez les spécificités, bonnes pratiques et principes clés pour cibler, convaincre et engager des décideurs professionnels efficacement.'
+meta_description: 'Email marketing B2B : découvrez les spécificités, bonnes pratiques
+  et principes clés pour cibler, convaincre et engager des décideurs professionnels
+  efficacement.'
 min_words: 1400
 status: published
 featured_image: /blog/3256-email-marketing-b2b-specificites-et-bonnes-pratiques.jpg
 link_anchors:
 - text: email marketing en contexte B2B
   max: 8
+related_posts:
+- 4365-opt-in-en-email-marketing-definition-types-et-bonnes-pratiques
+- 7295-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
+- 4028-logiciel-emailing-et-sms-comment-combiner-les-deux-canaux
+- 2434-automation-en-email-marketing-fonctionnement-et-cas-d-usage
 ---
-
 <h2>Ce que l'email B2B a de vraiment différent</h2>
 
 <p>J'ai longtemps cru que l'email marketing, c'était l'email marketing. Un message, une liste, un envoi. Et puis en gérant les campagnes de ma boîte à Lyon, j'ai vite compris que le B2B, c'est un autre monde. Vos destinataires ne sont pas des particuliers qui parcourent leur boîte mail le dimanche soir. Ce sont des acheteurs, des directeurs, des responsables qui reçoivent des dizaines de sollicitations par semaine et qui n'ont aucune patience pour un message mal ciblé.</p>
