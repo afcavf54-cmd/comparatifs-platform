@@ -1,15 +1,22 @@
 ---
-title: 'Marque employeur et recrutement : quel impact sur l''attraction des talents ?'
+title: 'Marque employeur et recrutement : quel impact sur l''attraction des talents
+  ?'
 slug: 7903-marque-employeur-et-recrutement-quel-impact-sur-l-attraction-des-talents
 date: '2026-08-21T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Marque employeur et recrutement : impact et enjeux'
-meta_description: Découvrez comment la marque employeur transforme concrètement votre recrutement et attire les meilleurs talents, bien au-delà d'une simple communication RH soignée.
+meta_description: Découvrez comment la marque employeur transforme concrètement votre
+  recrutement et attire les meilleurs talents, bien au-delà d'une simple communication
+  RH soignée.
 min_words: 1400
 status: published
 featured_image: /blog/7903-marque-employeur-et-recrutement-quel-impact-sur-l-attraction-des-talents.jpg
+related_posts:
+- 1293-les-risques-lies-au-processus-de-recrutement-comment-les-anticiper
+- 8514-bracelet-electronique-au-travail-reglementation-et-respect-de-la-vie-privee
+- 9695-comment-favoriser-le-developpement-des-talents-en-entreprise
+- 1360-logiciel-planning
 ---
-
 <h2>Ce que j'ai compris sur la marque employeur après deux ans à recruter</h2>
 
 <p>Quand j'ai pris la direction de cette boîte à Marseille, le recrutement c'était simple : on publiait une annonce sur un job board, on attendait, et on recevait des CV. Parfois beaucoup, parfois très peu. On ne comprenait pas vraiment pourquoi.</p>
