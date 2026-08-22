@@ -4,12 +4,18 @@ slug: 6593-entretien-de-recrutement-comment-le-preparer-et-le-structurer
 date: '2026-08-22T17:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Entretien de recrutement : préparation et structure'
-meta_description: 'Préparer un entretien de recrutement évite les erreurs coûteuses. Fiche de poste, sourcing, structure : découvrez comment recruter efficacement et choisir le bon…'
+meta_description: 'Préparer un entretien de recrutement évite les erreurs coûteuses.
+  Fiche de poste, sourcing, structure : découvrez comment recruter efficacement et
+  choisir le bon…'
 min_words: 1500
 status: published
 featured_image: /blog/6593-entretien-de-recrutement-comment-le-preparer-et-le-structurer.jpg
+related_posts:
+- 3951-qu-est-ce-que-la-definition-de-la-gestion-des-talents
+- 6542-comment-utiliser-la-matrice-9-box-pour-gerer-les-talents
+- 6596-comment-realiser-une-cartographie-des-competences-efficace
+- 5603-processus-de-recrutement-definition-et-objectifs
 ---
-
 <h2>Avant même le premier entretien, tout se joue en amont</h2>
 
 <p>Je vais vous dire quelque chose que j'aurais aimé entendre quand j'ai commencé à recruter : un mauvais entretien, ça coûte cher. Pas juste en temps. En argent, en énergie, en désorganisation. J'ai embauché quelqu'un qui semblait parfait en entretien et qui est parti au bout de trois mois. Résultat : tout à recommencer, perte de productivité, équipe démotivée.</p>
