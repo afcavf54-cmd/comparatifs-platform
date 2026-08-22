@@ -4,15 +4,21 @@ slug: 8862-creer-un-planning-du-personnel-par-ou-commencer
 date: '2026-08-22T17:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Créer un planning du personnel : guide de démarrage'
-meta_description: Créer un planning du personnel sans méthode, c'est la garantie du chaos. Découvrez par où commencer pour structurer vos plannings et éviter les erreurs classiques.
+meta_description: Créer un planning du personnel sans méthode, c'est la garantie du
+  chaos. Découvrez par où commencer pour structurer vos plannings et éviter les erreurs
+  classiques.
 min_words: 1300
 status: published
 featured_image: /blog/8862-creer-un-planning-du-personnel-par-ou-commencer.jpg
 link_anchors:
 - text: créer un planning du personnel de A à Z
   max: 5
+related_posts:
+- 6001-planning-des-conges-du-personnel-en-pdf-utilite-et-limites
+- 7543-gestion-du-planning-du-personnel-methodes-et-bonnes-pratiques
+- 6602-logiciel-de-gestion-de-planning-d-equipe-fonctionnement-et-utilite
+- 9392-comment-fonctionne-un-logiciel-de-planning-en-entreprise
 ---
-
 <p>Honnêtement, quand j'ai dû <strong>organiser le planning de mes équipes</strong> pour la première fois, j'ai ouvert un Google Sheet et j'ai bricolé un truc pendant deux heures. Résultat : un tableau illisible, des doublons sur les créneaux, et un salarié qui m'a appelé le lundi matin parce qu'il ne savait pas à quelle heure il commençait.</p>
 
 <p>Ça m'a coûté du temps, de l'énergie, et franchement un peu de crédibilité. Depuis, j'ai structuré tout ça différemment. Voilà ce que j'aurais voulu savoir au départ.</p>
