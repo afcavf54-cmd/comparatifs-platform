@@ -4,15 +4,21 @@ slug: 3561-archivage-des-factures-duree-legale-et-methodes
 date: '2026-08-23T07:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Archivage factures : durée légale et méthodes'
-meta_description: 'Archivage des factures : la durée légale est de 10 ans en France, pas 3 ou 5 ans. Découvrez les obligations du Code de commerce et les meilleures méthodes pour…'
+meta_description: 'Archivage des factures : la durée légale est de 10 ans en France,
+  pas 3 ou 5 ans. Découvrez les obligations du Code de commerce et les meilleures
+  méthodes pour…'
 min_words: 1300
 status: published
 featured_image: /blog/3561-archivage-des-factures-duree-legale-et-methodes.jpg
 link_anchors:
 - text: durée légale d'archivage des factures
   max: 8
+related_posts:
+- 4276-comment-creer-une-facture-etapes-et-regles-a-respecter
+- 1286-delais-de-paiement-des-factures-regles-legales-et-recours
+- 6571-facture-proforma-qu-est-ce-que-c-est-et-quand-l-utiliser
+- 2073-logiciel-de-facturation-en-ligne-fonctionnement-et-avantages
 ---
-
 <h2>Ce que dit vraiment la loi sur la durée de conservation</h2>
 
 <p>Quand j'ai lancé mon agence, j'ai longtemps gardé mes factures dans un carton sous le bureau. Pas très glorieux. Et surtout, je n'avais aucune idée de combien de temps je devais les conserver. Spoiler : ce n'est pas 3 ans, comme beaucoup le croient.</p>
