@@ -4,12 +4,18 @@ slug: 4117-fiche-de-poste-pour-le-recrutement-comment-la-rediger-efficacement
 date: '2026-08-23T07:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Fiche de poste recrutement : rédaction et structure'
-meta_description: Rédigez une fiche de poste claire et efficace pour recruter le bon candidat du premier coup. Méthode pratique, erreurs à éviter et conseils terrain pour structurer…
+meta_description: Rédigez une fiche de poste claire et efficace pour recruter le bon
+  candidat du premier coup. Méthode pratique, erreurs à éviter et conseils terrain
+  pour structurer…
 min_words: 1400
 status: published
 featured_image: /blog/4117-fiche-de-poste-pour-le-recrutement-comment-la-rediger-efficacement.jpg
+related_posts:
+- 1543-ce-que-la-formation-leadership-nexstep-avance-ne-transforme-pas
+- 1225-quels-sont-les-objectifs-d-un-processus-de-recrutement-efficace
+- 1293-les-risques-lies-au-processus-de-recrutement-comment-les-anticiper
+- 4734-logiciel-de-gestion-du-recrutement-quelles-fonctionnalites-attendre
 ---
-
 <h2>Ce que j'ai appris en rédigeant mes premières fiches de poste</h2>
 
 <p>Quand j'ai commencé à recruter pour mon entreprise à Marseille, j'ai fait une erreur classique. J'ai publié une annonce vague, genre "commercial dynamique cherché", et j'ai reçu 80 candidatures dont 75 complètement à côté. Résultat : trois semaines perdues à trier des CV qui ne correspondaient pas du tout à ce que je cherchais.</p>
