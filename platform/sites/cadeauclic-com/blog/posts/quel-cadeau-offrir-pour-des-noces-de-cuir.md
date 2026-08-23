@@ -4,15 +4,18 @@ slug: quel-cadeau-offrir-pour-des-noces-de-cuir
 date: '2026-08-23T19:00:00+02:00'
 categorie: Anniversaire de mariage
 meta_title: 'Noces de cuir cadeau : nos meilleures idées pour vos 2 ans de mariage'
-meta_description: 'Idées cadeaux originaux pour des noces de cuir : découvrez des suggestions personnalisées et symboliques pour célébrer 3 ans de mariage avec style et sincérité.'
+meta_description: 'Idées cadeaux originaux pour des noces de cuir : découvrez des
+  suggestions personnalisées et symboliques pour célébrer 3 ans de mariage avec style
+  et sincérité.'
 min_words: 850
 status: published
 featured_image: /blog/quel-cadeau-offrir-pour-des-noces-de-cuir.jpg
 link_anchors:
 - text: idée de cadeau pour des noces de cuir
   max: 5
+related_posts:
+- quel-cadeau-offrir-pour-des-noces-de-coton
 ---
-
 <p>Trois ans de mariage. Trois ans à construire quelque chose ensemble, à traverser les premières vraies épreuves du quotidien, à apprendre à vivre à deux pour de vrai. Les noces de cuir, c'est ça. Et c'est loin d'être une petite étape. Alors quand il s'agit de trouver le cadeau parfait pour célébrer ça, autant prendre le temps de chercher quelque chose qui a du sens.</p>
 
 <p>J'ai moi-même cherché des idées l'année dernière pour un couple d'amis proches. Je pensais que ce serait simple. Spoiler : pas du tout. Entre les cadeaux trop génériques, les trucs trop chers, et les idées vues et revues, j'ai mis du temps avant de trouver quelque chose qui m'a vraiment convaincue. Voilà pourquoi je t'écris cet article.</p>
