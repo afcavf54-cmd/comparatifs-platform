@@ -4,15 +4,20 @@ slug: 1789-logiciel-de-comptabilite-open-source-avantages-limites-et-cas-d-usage
 date: '2026-08-23T12:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Logiciel comptabilité open source : avantages et limites'
-meta_description: 'Logiciel de comptabilité open source : avantages réels, limites concrètes et cas d''usage selon un expert comptable avec 20 ans d''expérience terrain.'
+meta_description: 'Logiciel de comptabilité open source : avantages réels, limites
+  concrètes et cas d''usage selon un expert comptable avec 20 ans d''expérience terrain.'
 min_words: 1300
 status: published
 featured_image: /blog/1789-logiciel-de-comptabilite-open-source-avantages-limites-et-cas-d-usage.jpg
 link_anchors:
 - text: solution comptable open source
   max: 8
+related_posts:
+- 4915-plan-comptable-general-structure-numerotation-et-utilisation
+- 5324-plan-comptable-agricole-structure-et-particularites
+- 9206-logiciel-de-facturation-pour-auto-entrepreneur-ce-qu-il-faut-savoir
+- 9375-logiciel-de-comptabilite-sur-mac-ce-qu-il-faut-savoir
 ---
-
 <p>Ça fait maintenant vingt ans que je travaille en comptabilité, et je peux vous dire que la question du logiciel revient souvent, surtout quand une entreprise cherche à réduire ses coûts. Les solutions open source suscitent beaucoup de curiosité, parfois de l'enthousiasme un peu trop rapide, parfois de la méfiance injustifiée. J'ai testé plusieurs outils de ce type, parfois pour des missions ponctuelles, parfois pour conseiller des dirigeants qui voulaient s'y mettre sérieusement. Voilà ce que j'en pense vraiment.</p>
 
 <h2>Ce que "open source" veut dire en pratique pour un comptable</h2>
