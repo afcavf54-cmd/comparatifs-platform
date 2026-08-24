@@ -1,0 +1,17 @@
+name: Newsletter — envoi échelonné (drip)
+
+on:
+  schedule:
+    - cron: '0 8 * * *'   # tous les jours à 08:00 UTC
+  workflow_dispatch:       # déclenchement manuel possible
+
+jobs:
+  drip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Déclencher le lot du jour
+        run: |
+          curl -sS -X POST "https://comparatifs-platform.vercel.app/api/newsletter/process-drip" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            -H "Content-Type: application/json" \
+            --fail-with-body
