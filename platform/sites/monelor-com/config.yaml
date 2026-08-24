@@ -44,6 +44,33 @@ site:
   blog_cta_btn_color: "#ffffff"
   blog_cta_link: ""
   contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
+  # ── Page /bons-plans (linktree : réseaux sociaux + codes promo / parrainages) ──
+  linktree:
+    enabled: true
+    title: "Mes codes promo & parrainages"
+    subtitle: "Les plateformes que j'utilise, et leurs offres de bienvenue 🎁"
+    socials:
+      youtube: "https://www.youtube.com/@monelor-com"
+      instagram: ""      # ← mets ton lien Instagram
+      tiktok: ""         # ← mets ton lien TikTok
+    # disclaimer: "..."  # optionnel, sinon texte par défaut
+    categories:
+      - name: "Assurance-vie"
+        items:
+          - name: "Parrainage Linxea"
+            desc: "75€ offerts, code à saisir à l'inscription."
+            code: "MON-CODE"                 # optionnel (retire la ligne si pas de code)
+            url: "https://exemple.com/linxea?ref=xxx"
+            color: "#F5820A"                 # couleur d'accent + bouton
+            # logo: "/bons-plans/linxea.png" # optionnel (sinon initiale colorée)
+      - name: "PEA et CTO"
+        items:
+          - name: "Offre XTB"
+            desc: "0% de commission sur les actions et ETF."
+            code: "MON-CODE"
+            url: "https://exemple.com/xtb?ref=xxx"
+            color: "#E30613"
+
 
 page_types:
   blog: finances-personnelles
