@@ -101,7 +101,10 @@
     </div>
     {% if it.url %}
     <div class="card-cta">
-      <a class="btn-offer" style="background:{{ acc }}" href="{{ it.url }}" target="_blank" rel="noopener nofollow sponsored">{{ it.btn | default("Profitez de l'offre") }} ›</a>
+      <a class="btn-offer" style="background:{{ acc }}" role="button" tabindex="0"
+         data-l="{{ it.url | b64 }}" rel="noopener nofollow sponsored"
+         onclick="window.open(atob(this.getAttribute('data-l')),'_blank','noopener');return false"
+         onkeydown="if(event.key==='Enter'){window.open(atob(this.getAttribute('data-l')),'_blank','noopener');return false}">{{ it.btn | default("Profitez de l'offre") }} ›</a>
     </div>
     {% endif %}
   </div>
