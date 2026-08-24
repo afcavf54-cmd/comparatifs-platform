@@ -4,15 +4,21 @@ slug: 8423-avoir-sur-facture-definition-utilite-et-comment-en-emettre-un
 date: '2026-08-24T12:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Avoir sur facture : définition et émission'
-meta_description: 'Avoir sur facture : définition claire, cas d''usage concrets et étapes pour en émettre un sans erreur comptable. Tout ce qu''il faut savoir sur la note de crédit.'
+meta_description: 'Avoir sur facture : définition claire, cas d''usage concrets et
+  étapes pour en émettre un sans erreur comptable. Tout ce qu''il faut savoir sur
+  la note de crédit.'
 min_words: 1200
 status: published
 featured_image: /blog/8423-avoir-sur-facture-definition-utilite-et-comment-en-emettre-un.jpg
 link_anchors:
 - text: émettre un avoir sur facture
   max: 8
+related_posts:
+- 5260-devis-et-facture-quelles-differences-et-quand-les-utiliser
+- 5015-facture-avec-tva-comment-la-calculer-et-la-faire-apparaitre
+- 8544-logiciel-de-facturation-et-devis-comment-les-deux-s-articulent
+- 3860-logiciel-de-facturation-open-source-avantages-limites-et-cas-d-usage
 ---
-
 <h2>Ce qu'est vraiment un avoir sur facture (et pourquoi c'est moins compliqué qu'on croit)</h2>
 
 <p>Un avoir. Le mot revient souvent dans les échanges avec les clients, mais j'ai mis un moment avant de vraiment comprendre ce que ça implique comptablement. En résumé : c'est un document qui annule ou corrige une facture déjà émise. Rien de plus, rien de moins. On parle aussi de "note de crédit" selon les outils ou les interlocuteurs.</p>
