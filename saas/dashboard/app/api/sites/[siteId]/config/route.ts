@@ -31,6 +31,8 @@ export async function GET(_: NextRequest, { params }: Params) {
     social_linkedin: get('social_linkedin'),
     social_x: get('social_x'),
     social_youtube: get('social_youtube'),
+    social_instagram: get('social_instagram'),
+    social_tiktok: get('social_tiktok'),
     analytics_clicky: get('analytics_clicky'),
     google_site_verification: get('google_site_verification'),
     linkavista_verification: get('linkavista_verification'),
@@ -173,6 +175,8 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   if (body.social_linkedin !== undefined) replaceKey('social_linkedin', body.social_linkedin || '')
   if (body.social_x !== undefined) replaceKey('social_x', body.social_x || '')
   if (body.social_youtube !== undefined) replaceKey('social_youtube', body.social_youtube || '')
+  if (body.social_instagram !== undefined) replaceKey('social_instagram', body.social_instagram || '')
+  if (body.social_tiktok !== undefined) replaceKey('social_tiktok', body.social_tiktok || '')
   // persona_prompt : bloc scalaire YAML
   if (body.persona_prompt !== undefined) {
     const pp = (body.persona_prompt || '').trim()
