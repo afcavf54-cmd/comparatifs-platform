@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {% set lt = site.linktree %}
 <title>{{ lt.title | default('Bons plans') }} — {{ site.name }}</title>
-<meta name="description" content="{{ lt.subtitle | default('Mes codes promo et parrainages.') }}">
+<meta name="description" content="{{ lt.meta_description | default(lt.subtitle) | default('Mes codes promo et parrainages.') }}">
 <link rel="canonical" href="{{ site.domain }}/bons-plans/">
 <meta property="og:title" content="{{ lt.title | default('Bons plans') }} — {{ site.name }}">
-<meta property="og:description" content="{{ lt.subtitle | default('') }}">
+<meta property="og:description" content="{{ lt.meta_description | default(lt.subtitle) | default('') }}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ site.domain }}/bons-plans/">
 {% if site.favicon_file is defined and site.favicon_file %}<link rel="icon" href="{{ site.favicon_file }}" type="image/png">{% else %}<link rel="icon" href="/favicon.png" type="image/png">{% endif %}
@@ -101,7 +101,7 @@
     </div>
     {% if it.url %}
     <div class="card-cta">
-      <a class="btn-offer" style="background:{{ acc }}" href="{{ it.url }}" target="_blank" rel="noopener nofollow sponsored">VOIR L'OFFRE ›</a>
+      <a class="btn-offer" style="background:{{ acc }}" href="{{ it.url }}" target="_blank" rel="noopener nofollow sponsored">{{ it.btn | default("Profitez de l'offre") }} ›</a>
     </div>
     {% endif %}
   </div>
