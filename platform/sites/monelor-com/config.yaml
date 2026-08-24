@@ -12,12 +12,12 @@ site:
   custom_menu:
     - label: "Simulateur dividendes"
       url: "/simulateur-dividendes/"
-  social_youtube: "https://www.youtube.com/@monelor-com?sub_confirmation=1"
-  social_instagram: "https://www.instagram.com/monelorcom/"
-  social_tiktok: "https://www.tiktok.com/@monelorcom"
-  social_x: "https://x.com/monelorcom"
+  social_youtube: ""
+  social_instagram: ""
+  social_tiktok: ""
+  social_x: ""
   social_linkedin: ""
-  social_facebook: "https://www.facebook.com/monelorcom/"
+  social_facebook: ""
   blog_sheet_csv_url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvxILdwfZvRsDpyUy2HGPwK-FLgeBDzjWDywqK1qgHXbJ3oRbGQYgy4DUu8pj_DqWYNy1t1v_oCKkp/pub?gid=0&single=true&output=csv"
   footer_description: "Les contenus, analyses, comparatifs et avis publiés sur Monelor.com sont proposés à titre purement informatif. Ils ne constituent ni un conseil en investissement, ni une recommandation personnalisée au sens des articles L.321-1 et D.321-1 du Code monétaire et financier. Avant toute décision d'investissement, d'épargne ou de placement, nous vous recommandons de consulter un professionnel habilité, en mesure d'évaluer votre situation personnelle et vos objectifs."
   home_h1: ""
@@ -51,24 +51,22 @@ site:
     enabled: true
     title: "Mes codes promo & parrainages"
     subtitle: "Les plateformes que j'utilise, et leurs offres de bienvenue 🎁"
+    meta_description: "Retrouvez mes codes promo et parrainages exclusifs sur les plateformes d'investissement que j'utilise et recommande. Offre du moment : 75€ offerts chez Linxea (assurance-vie) à saisir à l'inscription, valables en carte cadeau Carrefour, Amazon ou Decathlon."
     # disclaimer: "..."  # optionnel, sinon texte par défaut
     categories:
       - name: "Assurance-vie"
         items:
           - name: "Parrainage Linxea"
-            desc: "75€ offerts, code à saisir à l'inscription."
-            code: "MON-CODE"                 # optionnel (retire la ligne si pas de code)
-            url: "https://exemple.com/linxea?ref=xxx"
-            color: "#F5820A"                 # couleur d'accent + bouton
-            # logo: "/bons-plans/linxea.png" # optionnel (sinon initiale colorée)
-      - name: "PEA et CTO"
-        items:
-          - name: "Offre XTB"
-            desc: "0% de commission sur les actions et ETF."
-            code: "MON-CODE"
-            url: "https://exemple.com/xtb?ref=xxx"
-            color: "#E30613"
-
+            desc: "75€ offerts, code à saisir à l'inscription. Valable en carte cadeau Carrefour, Amazon ou Decathlon."
+            url: "https://exemple.com/linxea?ref=xxx"   # ← mets ton vrai lien de parrainage
+            color: "#F5820A"
+            # logo: "/bons-plans/linxea.png"  # ← voir explications (fichier à déposer)
+            # btn: "Profitez de l'offre"      # optionnel (texte du bouton, défaut déjà = "Profitez de l'offre")
+          - name: "Bonus de bienvenue Linxea"
+            desc: "Jusqu'à 150€ offerts pour toute ouverture d'un contrat Linxea. Assurance-vie, PER, SCPI... (voir offre en cours)"
+            url: "https://exemple.com/linxea-bonus?ref=xxx"   # ← mets ton vrai lien
+            color: "#F5820A"
+            # logo: "/bons-plans/linxea.png"  # optionnel
 
 page_types:
   blog: finances-personnelles
