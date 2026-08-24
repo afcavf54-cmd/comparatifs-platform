@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase } from '../../../../../lib/supabase'
+import { supabase, supabaseConfigured } from '../../../../../lib/supabase'
 
 const FROM = 'Monelor <info@monelor.com>'
 const RESEND_KEY = process.env.RESEND_API_KEY
@@ -37,6 +37,8 @@ async function resendBatch(items: { to: string; subject: string; html: string }[
 
 // ─── GET : historique des newsletters ───────────────────────────────────
 export async function GET() {
+  if (!supabaseConfigured) return NextResponse.json({ error: 'Supabase non configuré : vérifie SUPABASE_URL et SUPABASE_SERVICE_ROLE dans Vercel, puis redéploie.' }, { status: 503 })
+
   const { data, error } = await supabase
     .from('newsletters')
     .select('id,subject,status,target_tags,recipient_count,sent_count,fail_count,scheduled_at,sent_at,error,created_at')
@@ -49,6 +51,8 @@ export async function GET() {
 // ─── POST : test / envoi / programmation ────────────────────────────────
 // body = { mode: 'test'|'send'|'schedule', subject, html, target_tags?:[ids], test_email?, scheduled_at? }
 export async function POST(req: NextRequest) {
+  if (!supabaseConfigured) return NextResponse.json({ error: 'Supabase non configuré : vérifie SUPABASE_URL et SUPABASE_SERVICE_ROLE dans Vercel, puis redéploie.' }, { status: 503 })
+
   if (!RESEND_KEY) return NextResponse.json({ error: 'RESEND_API_KEY manquante (Vercel)' }, { status: 500 })
   const body = await req.json().catch(() => ({}))
   const mode = body.mode || 'send'
