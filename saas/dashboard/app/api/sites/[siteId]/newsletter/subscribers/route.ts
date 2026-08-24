@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase } from '../../../../../../lib/supabase'
+import { supabase, supabaseConfigured } from '../../../../../../lib/supabase'
 
 // ─── GET : liste des abonnés + leurs tags ───────────────────────────────
 export async function GET() {
+  if (!supabaseConfigured) return NextResponse.json({ error: 'Supabase non configuré : vérifie SUPABASE_URL et SUPABASE_SERVICE_ROLE dans Vercel, puis redéploie.' }, { status: 503 })
+
   const { data: subs, error } = await supabase
     .from('subscribers')
     .select('id,email,name,status,source,created_at')
@@ -23,6 +25,8 @@ export async function GET() {
 // ─── POST : import en masse (ou ajout unique) ───────────────────────────
 // body = { subscribers: [{email,name,tags?:[names]}], defaultTags?:[names] }
 export async function POST(req: NextRequest) {
+  if (!supabaseConfigured) return NextResponse.json({ error: 'Supabase non configuré : vérifie SUPABASE_URL et SUPABASE_SERVICE_ROLE dans Vercel, puis redéploie.' }, { status: 503 })
+
   const body = await req.json().catch(() => ({}))
   const rows: any[] = Array.isArray(body.subscribers) ? body.subscribers : [body]
   const defaultTags: string[] = Array.isArray(body.defaultTags) ? body.defaultTags : []
@@ -102,6 +106,8 @@ export async function POST(req: NextRequest) {
 
 // ─── PATCH : modifier le statut d'un abonné ─────────────────────────────
 export async function PATCH(req: NextRequest) {
+  if (!supabaseConfigured) return NextResponse.json({ error: 'Supabase non configuré : vérifie SUPABASE_URL et SUPABASE_SERVICE_ROLE dans Vercel, puis redéploie.' }, { status: 503 })
+
   const { id, status } = await req.json().catch(() => ({}))
   if (!id || !status) return NextResponse.json({ error: 'id + status requis' }, { status: 400 })
   const patch: any = { status }
@@ -113,6 +119,8 @@ export async function PATCH(req: NextRequest) {
 
 // ─── DELETE : supprimer un abonné ───────────────────────────────────────
 export async function DELETE(req: NextRequest) {
+  if (!supabaseConfigured) return NextResponse.json({ error: 'Supabase non configuré : vérifie SUPABASE_URL et SUPABASE_SERVICE_ROLE dans Vercel, puis redéploie.' }, { status: 503 })
+
   const { id } = await req.json().catch(() => ({}))
   if (!id) return NextResponse.json({ error: 'id requis' }, { status: 400 })
   const { error } = await supabase.from('subscribers').delete().eq('id', id)
