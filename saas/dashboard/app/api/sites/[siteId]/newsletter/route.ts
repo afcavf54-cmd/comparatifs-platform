@@ -1,39 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase, supabaseConfigured } from '../../../../../lib/supabase'
+import { wrapEmail, resendBatch } from '../../../../../lib/newsletter-send'
 
-const FROM = 'Monelor <info@monelor.com>'
 const RESEND_KEY = process.env.RESEND_API_KEY
-
-// Enrobe le contenu dans un template email simple + lien de désinscription perso.
-function wrapEmail(html: string, subject: string, unsubUrl: string) {
-  return `<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;background:#f4f5f8;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">
-<div style="max-width:600px;margin:0 auto;background:#fff">
-  <div style="padding:28px 32px;color:#000921;font-size:16px;line-height:1.6">${html}</div>
-  <div style="padding:18px 32px;border-top:1px solid #eee;color:#8a95a8;font-size:12px;line-height:1.5">
-    Vous recevez cet email car vous êtes inscrit à la newsletter Monelor.<br>
-    <a href="${unsubUrl}" style="color:#8a95a8">Se désabonner</a>
-  </div>
-</div></body></html>`
-}
-
-// Envoi par lots de 100 via l'API batch Resend (chaque destinataire = email individuel).
-async function resendBatch(items: { to: string; subject: string; html: string }[]) {
-  let sent = 0, failed = 0
-  for (let i = 0; i < items.length; i += 100) {
-    const chunk = items.slice(i, i + 100).map(e => ({ from: FROM, to: [e.to], subject: e.subject, html: e.html }))
-    try {
-      const r = await fetch('https://api.resend.com/emails/batch', {
-        method: 'POST',
-        headers: { Authorization: `Bearer ${RESEND_KEY}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify(chunk),
-      })
-      if (r.ok) sent += chunk.length
-      else { failed += chunk.length }
-    } catch { failed += chunk.length }
-  }
-  return { sent, failed }
-}
 
 // ─── GET : historique des newsletters ───────────────────────────────────
 export async function GET() {
@@ -69,7 +38,7 @@ export async function POST(req: NextRequest) {
   if (mode === 'test') {
     const to = String(body.test_email || '').trim()
     if (!to) return NextResponse.json({ error: 'Email de test requis' }, { status: 400 })
-    const { sent, failed } = await resendBatch([{ to, subject: `[TEST] ${subject}`, html: wrapEmail(html, subject, unsub('test')) }])
+    const { sent, failed } = await resendBatch([{ to, subject: `[TEST] ${subject}`, html: wrapEmail(html, unsub('test')) }])
     if (failed) return NextResponse.json({ error: 'Échec de l\'envoi test (vérifie la clé Resend / le domaine)' }, { status: 500 })
     return NextResponse.json({ ok: true, sent })
   }
@@ -100,12 +69,43 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true, scheduled: true, id: data.id, recipient_count: recipients.length })
   }
 
-  // ── ENVOI IMMÉDIAT ──
+  // ── ENVOI IMMÉDIAT ou ÉCHELONNÉ (drip) ──
+  const dripPerDay = Math.max(0, parseInt(body.drip_per_day, 10) || 0)
+
+  // Envoi échelonné : on prépare la campagne + la liste, on envoie le 1er lot,
+  // le cron quotidien enverra les lots suivants.
+  if (dripPerDay > 0) {
+    const { data: nl, error: nlErr } = await supabase.from('newsletters').insert({
+      subject, html, status: 'sending', target_tags: targetTags,
+      recipient_count: recipients.length, drip_per_day: dripPerDay,
+      last_batch_at: new Date().toISOString(),
+    }).select('id').single()
+    if (nlErr || !nl) return NextResponse.json({ error: nlErr?.message || 'Création campagne KO' }, { status: 500 })
+
+    // Liste des destinataires (tous en attente)
+    const rows = recipients.map(r => ({ newsletter_id: nl.id, subscriber_id: r.id, email: r.email, status: 'pending' }))
+    for (let i = 0; i < rows.length; i += 500) {
+      await supabase.from('newsletter_recipients').insert(rows.slice(i, i + 500))
+    }
+
+    // 1er lot tout de suite
+    const firstBatch = recipients.slice(0, dripPerDay)
+    const items = firstBatch.map(r => ({ to: r.email, subject, html: wrapEmail(html, unsub(r.id)) }))
+    const { sent, failed } = await resendBatch(items)
+    const ids = firstBatch.map(r => r.id)
+    await supabase.from('newsletter_recipients').update({ status: 'sent', sent_at: new Date().toISOString() })
+      .eq('newsletter_id', nl.id).in('subscriber_id', ids)
+    await supabase.from('newsletters').update({ sent_count: sent, fail_count: failed }).eq('id', nl.id)
+
+    return NextResponse.json({ ok: true, drip: true, per_day: dripPerDay, first_batch: sent, total: recipients.length })
+  }
+
+  // ── ENVOI IMMÉDIAT (tout d'un coup) ──
   const { data: nl } = await supabase.from('newsletters').insert({
     subject, html, status: 'sending', target_tags: targetTags, recipient_count: recipients.length,
   }).select('id').single()
 
-  const items = recipients.map(r => ({ to: r.email, subject, html: wrapEmail(html, subject, unsub(r.id)) }))
+  const items = recipients.map(r => ({ to: r.email, subject, html: wrapEmail(html, unsub(r.id)) }))
   const { sent, failed } = await resendBatch(items)
 
   const status = failed === 0 ? 'sent' : (sent === 0 ? 'failed' : 'sent')
