@@ -1,18 +1,25 @@
 ---
-title: 'KPIs de l''email marketing : quels indicateurs suivre et comment les analyser ?'
+title: 'KPIs de l''email marketing : quels indicateurs suivre et comment les analyser
+  ?'
 slug: 3129-kpis-de-l-email-marketing-quels-indicateurs-suivre-et-comment-les-analyser
 date: '2026-08-24T12:00:00+02:00'
 categorie: Marketing
 meta_title: 'KPI email marketing : indicateurs clés et analyse'
-meta_description: 'Taux d''ouverture, taux de clic, délivrabilité : découvrez quels KPIs email marketing suivre vraiment et comment les analyser pour améliorer vos campagnes.'
+meta_description: 'Taux d''ouverture, taux de clic, délivrabilité : découvrez quels
+  KPIs email marketing suivre vraiment et comment les analyser pour améliorer vos
+  campagnes.'
 min_words: 1400
 status: published
 featured_image: /blog/3129-kpis-de-l-email-marketing-quels-indicateurs-suivre-et-comment-les-analyser.jpg
 link_anchors:
 - text: indicateurs à suivre en emailing
   max: 8
+related_posts:
+- 4028-logiciel-emailing-et-sms-comment-combiner-les-deux-canaux
+- 7068-segmentation-en-email-marketing-methodes-et-bonnes-pratiques
+- 1500-meilleur-logiciel-affichage-dynamique
+- 6443-comment-fonctionne-un-logiciel-d-emailing-en-entreprise
 ---
-
 <h2>Ce que vos emails vous disent vraiment (si vous savez quoi regarder)</h2>
 
 <p>J'ai mis des années à envoyer des campagnes email sans vraiment comprendre ce que je lisais dans mes rapports. Un taux d'ouverture à 22 %, je trouvais ça correct. Un taux de clic à 1,8 %, pareil. Mais est-ce que c'était vraiment bien ? Est-ce que mes emails travaillaient pour moi ou je les envoyais dans le vide ?</p>
