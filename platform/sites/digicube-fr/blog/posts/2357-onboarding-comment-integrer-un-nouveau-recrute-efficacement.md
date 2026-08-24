@@ -4,12 +4,17 @@ slug: 2357-onboarding-comment-integrer-un-nouveau-recrute-efficacement
 date: '2026-08-24T12:00:00+02:00'
 categorie: Ressources Humaines
 meta_title: 'Onboarding recrutement : intégration et bonnes pratiques'
-meta_description: Découvrez comment structurer un onboarding efficace pour fidéliser vos recrues dès la signature du contrat et réduire le turnover dans votre entreprise.
+meta_description: Découvrez comment structurer un onboarding efficace pour fidéliser
+  vos recrues dès la signature du contrat et réduire le turnover dans votre entreprise.
 min_words: 1400
 status: published
 featured_image: /blog/2357-onboarding-comment-integrer-un-nouveau-recrute-efficacement.jpg
+related_posts:
+- 1225-quels-sont-les-objectifs-d-un-processus-de-recrutement-efficace
+- 6542-comment-utiliser-la-matrice-9-box-pour-gerer-les-talents
+- 2681-logiciel-de-gestion-des-candidatures-role-et-fonctionnement
+- 6852-comment-ameliorer-son-processus-de-recrutement-en-entreprise
 ---
-
 <p>Recruter quelqu'un, c'est une chose. Mais le garder, l'aider à devenir vraiment opérationnel, à se sentir à sa place... c'est une autre histoire. J'ai mis du temps à comprendre ça. Pendant longtemps, j'ai pensé que signer le contrat était la partie difficile. L'intégration, c'était presque secondaire. Un bureau, un ordinateur, une présentation à l'équipe. Et hop, au boulot.</p>
 
 <p>Grosse erreur. J'ai vu des profils très bien partir au bout de deux mois parce que personne ne les avait vraiment accueillis. Pas de mauvaise volonté de notre côté. Juste un manque de structure.</p>
