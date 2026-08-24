@@ -2003,6 +2003,22 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             except Exception as _e_sim:
                 print(f"  ⚠ Simulateur de dividendes : {_e_sim}")
 
+        # ── Page « bons plans » (linktree : réseaux + codes promo/parrainages) ──
+        # Rendue si le config du site a `linktree.enabled: true`. Sortie: /bons-plans/
+        if site.get("linktree") and site["linktree"].get("enabled") and (TEMPLATES_DIR / "linktree.html.j2").exists():
+            try:
+                _lt_html = env.get_template("linktree.html.j2").render(
+                    site={**site, "seo": config.get("seo", {})}, theme=theme,
+                    build_date=date.today().isoformat(),
+                )
+                _lt_out = output_dir / "bons-plans"
+                _lt_out.mkdir(parents=True, exist_ok=True)
+                (_lt_out / "index.html").write_text(_lt_html, encoding="utf-8")
+                _n_items = sum(len(c.get("items") or []) for c in site["linktree"].get("categories") or [])
+                print(f"  ✓ Page bons-plans ({_n_items} offre(s))")
+            except Exception as _e_lt:
+                print(f"  ⚠ Page bons-plans : {_e_lt}")
+
         copy_shared_assets(output_dir, site_dir)
         # ── Index JSON pour le dashboard (1 requête GitHub au lieu de N) ──
         # Doit être appelé AVANT le post-process des dates pour avoir tous
