@@ -38,6 +38,8 @@ export default function NewsletterPage() {
   const [selTags, setSelTags] = useState<Set<string>>(new Set())
   const [schedOn, setSchedOn] = useState(false)
   const [schedAt, setSchedAt] = useState('')
+  const [dripOn, setDripOn] = useState(false)
+  const [dripPerDay, setDripPerDay] = useState(20)
   const [sending, setSending] = useState(false)
 
   // Abonnés
@@ -67,7 +69,12 @@ export default function NewsletterPage() {
   async function doSend(mode: 'test' | 'send' | 'schedule') {
     if (!subject.trim()) return flash('✗ Sujet requis')
     if (!content.trim() || content === '<p></p>') return flash('✗ Contenu requis')
-    if (mode === 'send' && !confirm(`Envoyer à ${targetSubs.length} abonné(s) ?`)) return
+    if (mode === 'send') {
+      const q = dripOn
+        ? `Démarrer l'envoi échelonné de ${dripPerDay}/jour vers ${targetSubs.length} abonné(s) ?`
+        : `Envoyer à ${targetSubs.length} abonné(s) ?`
+      if (!confirm(q)) return
+    }
     if (mode === 'schedule' && !schedAt) return flash('✗ Choisis une date de programmation')
     let test_email = ''
     if (mode === 'test') {
@@ -78,12 +85,13 @@ export default function NewsletterPage() {
     try {
       const r = await fetch(base, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ mode, subject, html: content, target_tags: [...selTags], test_email, scheduled_at: schedOn ? schedAt : undefined }),
+        body: JSON.stringify({ mode, subject, html: content, target_tags: [...selTags], test_email, scheduled_at: schedOn ? schedAt : undefined, drip_per_day: (mode === 'send' && dripOn) ? dripPerDay : 0 }),
       })
       const d = await r.json()
       if (d.error) throw new Error(d.error)
       if (mode === 'test') flash('✓ Email de test envoyé')
       else if (mode === 'schedule') { flash(`✓ Programmée pour ${targetSubs.length} abonné(s)`); setSubject(''); setContent(''); }
+      else if (d.drip) { flash(`✓ Envoi échelonné démarré : ${d.first_batch} aujourd'hui, ${d.total - d.first_batch} à suivre (${d.per_day}/jour)`); setSubject(''); setContent(''); }
       else { flash(`✓ Envoyée : ${d.sent} ok${d.failed ? `, ${d.failed} échec(s)` : ''}`); setSubject(''); setContent(''); }
       load()
     } catch (e: any) { flash('✗ ' + (e.message || 'Erreur envoi')) }
@@ -200,11 +208,25 @@ export default function NewsletterPage() {
             </label>
             {schedOn && <input type="datetime-local" value={schedAt} onChange={e => setSchedAt(e.target.value)} style={{ ...inp, marginTop: 10 }} />}
 
+            <label style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 12, cursor: 'pointer', fontSize: 14 }}>
+              <input type="checkbox" checked={dripOn} onChange={e => { setDripOn(e.target.checked); if (e.target.checked) setSchedOn(false) }} style={{ width: 16, height: 16, accentColor: C.accent }} />
+              🐢 Envoi échelonné (warm-up)
+            </label>
+            {dripOn && (
+              <div style={{ marginTop: 10, padding: '12px 14px', background: '#0A0E1A', border: `1px solid ${C.border}`, borderRadius: 10 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+                  <input type="number" min={1} max={500} value={dripPerDay} onChange={e => setDripPerDay(Math.max(1, parseInt(e.target.value) || 1))} style={{ width: 80, padding: '8px 10px', background: C.card, border: `1px solid ${C.border}`, borderRadius: 8, color: '#fff', fontSize: 14, outline: 'none' }} />
+                  <span style={{ fontSize: 13, color: C.dim }}>emails / jour</span>
+                </div>
+                {targetSubs.length > 0 && <div style={{ fontSize: 12, color: C.faint, marginTop: 8 }}>≈ {Math.ceil(targetSubs.length / dripPerDay)} jour(s) pour {targetSubs.length} abonnés. Le 1er lot part aujourd'hui, les suivants automatiquement chaque jour.</div>}
+              </div>
+            )}
+
             <div style={{ display: 'flex', gap: 10, marginTop: 18 }}>
               <button onClick={() => doSend('test')} disabled={sending} style={{ padding: '11px 18px', borderRadius: 9, background: C.border, color: '#fff', border: 0, fontWeight: 700, fontSize: 13, cursor: 'pointer' }}>✈ Tester</button>
               {schedOn
                 ? <button onClick={() => doSend('schedule')} disabled={sending} style={btnSend}>📅 Programmer l'envoi</button>
-                : <button onClick={() => doSend('send')} disabled={sending} style={btnSend}>{sending ? 'Envoi…' : `➤ Envoyer à ${targetSubs.length} abonnés`}</button>}
+                : <button onClick={() => doSend('send')} disabled={sending} style={btnSend}>{sending ? 'Envoi…' : (dripOn ? `🐢 Démarrer (${dripPerDay}/jour)` : `➤ Envoyer à ${targetSubs.length} abonnés`)}</button>}
             </div>
           </div>
 
