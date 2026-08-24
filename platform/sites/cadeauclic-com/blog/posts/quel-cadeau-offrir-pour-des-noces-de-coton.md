@@ -14,6 +14,7 @@ link_anchors:
   max: 5
 related_posts:
 - quel-cadeau-offrir-pour-des-noces-de-cuir
+- quel-cadeau-offrir-pour-des-noces-de-bois
 ---
 <p>Deux ans de mariage. Ça passe vite, non ? Je me souviens encore de mes propres noces de coton, et franchement, on n'avait aucune idée de ce qu'on allait s'offrir. Mon mari et moi, on avait cherché des idées pendant des heures avant de trouver quelque chose qui nous semblait vraiment à la hauteur du moment. Alors si toi aussi tu te retrouves à scruter internet à la recherche du cadeau parfait pour des noces de coton, je t'explique tout ce que j'ai appris depuis.</p>
 

@@ -15,6 +15,7 @@ link_anchors:
   max: 5
 related_posts:
 - quel-cadeau-offrir-pour-des-noces-de-coton
+- quel-cadeau-offrir-pour-des-noces-de-bois
 ---
 <p>Trois ans de mariage. Trois ans à construire quelque chose ensemble, à traverser les premières vraies épreuves du quotidien, à apprendre à vivre à deux pour de vrai. Les noces de cuir, c'est ça. Et c'est loin d'être une petite étape. Alors quand il s'agit de trouver le cadeau parfait pour célébrer ça, autant prendre le temps de chercher quelque chose qui a du sens.</p>
 

@@ -4,15 +4,19 @@ slug: quel-cadeau-offrir-pour-des-noces-de-bois
 date: '2026-08-24T07:00:00+02:00'
 categorie: Anniversaire de mariage
 meta_title: 'Noces de bois cadeau : des inspirations pour fêter vos 5 ans de mariage'
-meta_description: 'Découvrez les meilleures idées cadeaux pour des noces de bois : objets personnalisés, souvenirs gravés et présents chargés de sens pour célébrer 5 ans de mariage.'
+meta_description: 'Découvrez les meilleures idées cadeaux pour des noces de bois :
+  objets personnalisés, souvenirs gravés et présents chargés de sens pour célébrer
+  5 ans de mariage.'
 min_words: 900
 status: published
 featured_image: /blog/quel-cadeau-offrir-pour-des-noces-de-bois.jpg
 link_anchors:
 - text: idée de cadeau pour des noces de bois
   max: 5
+related_posts:
+- quel-cadeau-offrir-pour-des-noces-de-coton
+- quel-cadeau-offrir-pour-des-noces-de-cuir
 ---
-
 <p>Cinq ans de mariage. C'est à la fois peu et beaucoup. Cinq ans de vie commune, de projets partagés, de petits bonheurs et de moments difficiles traversés ensemble. Les noces de bois marquent cette étape avec une symbolique forte : le bois, c'est solide, c'est chaleureux, ça dure. Et ça donne plein d'idées cadeaux vraiment sympas, pour peu qu'on cherche au bon endroit.</p>
 
 <p>J'ai vécu ça l'an dernier avec mes beaux-parents qui fêtaient leurs noces de bois. On voulait quelque chose de marquant, pas juste un bouquet de fleurs ou une bouteille de champagne. On a cherché, comparé, hésité... et finalement on a trouvé. Voilà tout ce que j'aurais aimé avoir sous la main à ce moment-là.</p>
