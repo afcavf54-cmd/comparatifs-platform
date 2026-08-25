@@ -4,15 +4,21 @@ slug: 9019-chorus-pro-qu-est-ce-que-c-est-et-comment-l-utiliser
 date: '2026-08-25T12:00:00+02:00'
 categorie: Comptabilité
 meta_title: 'Chorus Pro facturation : définition et utilisation'
-meta_description: Chorus Pro est la plateforme obligatoire pour facturer les entités publiques en France. Découvrez comment créer votre compte, déposer vos factures et suivre vos…
+meta_description: Chorus Pro est la plateforme obligatoire pour facturer les entités
+  publiques en France. Découvrez comment créer votre compte, déposer vos factures
+  et suivre vos…
 min_words: 1300
 status: published
 featured_image: /blog/9019-chorus-pro-qu-est-ce-que-c-est-et-comment-l-utiliser.jpg
 link_anchors:
 - text: plateforme Chorus Pro
   max: 8
+related_posts:
+- 7208-logiciel-de-facturation-est-il-obligatoire-en-entreprise
+- 2249-facture-electronique-comment-ca-fonctionne-concretement
+- 3894-modele-de-facture-structure-contenu-et-bonnes-pratiques
+- 1499-logiciel-de-facturation-pour-pme-specificites-et-fonctionnalites
 ---
-
 <h2>Chorus Pro, c'est quoi exactement ?</h2>
 
 <p>Quand j'ai entendu parler de Chorus Pro pour la première fois, j'ai cru que c'était un outil réservé aux grandes administrations avec des équipes entières dédiées à la facturation. Eh bien, pas tout à fait. Chorus Pro, c'est la plateforme officielle de l'État français qui gère la transmission des factures entre les fournisseurs privés et les organismes publics. En clair : si vous vendez des prestations à une mairie, à un ministère, à un hôpital public ou à n'importe quelle entité publique, vous êtes obligé de passer par là.</p>
