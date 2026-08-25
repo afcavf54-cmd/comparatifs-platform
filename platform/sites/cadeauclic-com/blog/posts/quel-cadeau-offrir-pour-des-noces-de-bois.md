@@ -14,8 +14,9 @@ link_anchors:
 - text: idée de cadeau pour des noces de bois
   max: 5
 related_posts:
-- quel-cadeau-offrir-pour-des-noces-de-coton
+- quel-cadeau-offrir-pour-des-noces-de-muguet
 - quel-cadeau-offrir-pour-des-noces-de-cuir
+- quel-cadeau-offrir-pour-des-noces-de-coton
 ---
 <p>Cinq ans de mariage. C'est à la fois peu et beaucoup. Cinq ans de vie commune, de projets partagés, de petits bonheurs et de moments difficiles traversés ensemble. Les noces de bois marquent cette étape avec une symbolique forte : le bois, c'est solide, c'est chaleureux, ça dure. Et ça donne plein d'idées cadeaux vraiment sympas, pour peu qu'on cherche au bon endroit.</p>
 
