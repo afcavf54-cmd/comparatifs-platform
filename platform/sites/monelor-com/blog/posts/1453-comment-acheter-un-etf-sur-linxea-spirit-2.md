@@ -2,7 +2,7 @@
 title: Comment acheter un ETF sur Linxea Spirit 2 ?
 slug: 1453-comment-acheter-un-etf-sur-linxea-spirit-2
 date: 2026-08-12 14:54:49+02:00
-updated: 2026-08-26T13:16:10
+updated: 2026-08-26T13:18:27
 categorie: Assurance vie
 categories:
 - Assurance vie
