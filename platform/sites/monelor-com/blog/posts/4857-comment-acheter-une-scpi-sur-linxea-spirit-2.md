@@ -2,7 +2,7 @@
 title: Comment acheter une SCPI sur Linxea Spirit 2 ?
 slug: 4857-comment-acheter-une-scpi-sur-linxea-spirit-2
 date: 2026-08-13 12:07:11+02:00
-updated: 2026-08-26T10:37:16
+updated: 2026-08-26T11:24:41
 categorie: Assurance vie
 categories:
 - Assurance vie
@@ -34,27 +34,15 @@ cta_btn_color: "#e8410a"
 
 <p>L'arbitrage, c'est la méthode que je recommande si tu as déjà des sommes investies sur ton contrat et que tu veux les réorienter vers des SCPI. Tu ne touches pas à ton compte bancaire, tu déplaces simplement de l'argent d'un support à un autre à l'intérieur de ton contrat.</p>
 
-<h3>Étape 1 : lancer l'arbitrage depuis ton espace client</h3>
+<h3>Étape 1 : lancer l'arbitrage depuis ton espace client</h3><p><img src="/blog/4857-comment-acheter-une-scpi-sur-linxea-spirit-2/lancer-l-arbitrage-depuis-ton-espace-client-4903.png" alt="lancer l'arbitrage depuis ton espace client"></p><p>Connecte-toi à ton espace personnel sur Linxea. Une fois connecté, clique sur <strong>Faire une opération</strong>, puis sur <strong>Arbitrage</strong>. Une fenêtre s'ouvre sur la droite. Clique sur <strong>Ok on y va</strong>. Tu es alors redirigé vers la plateforme Sylvéa de Spirica.</p><p><img src="/blog/4857-comment-acheter-une-scpi-sur-linxea-spirit-2/desinvestir-et-reinvestir-une-partie-ou-la-totalite-de-mon-epargne-1139.png" alt="Désinvestir et réinvestir une partie ou la totalité de mon épargne"></p><p>Sur cette interface, sélectionne l'option <strong>Désinvestir et réinvestir une partie ou la totalité de mon épargne</strong>, puis clique sur <strong>Valider</strong>.</p>
 
-<p>Connecte-toi à ton espace personnel sur Linxea. Une fois connecté, clique sur <strong>Faire une opération</strong>, puis sur <strong>Arbitrage</strong>. Une fenêtre s'ouvre sur la droite. Clique sur <strong>Ok on y va</strong>. Tu es alors redirigé vers la plateforme Sylvéa de Spirica.</p>
-
-<p>Sur cette interface, sélectionne l'option <strong>Désinvestir et réinvestir une partie ou la totalité de mon épargne</strong>, puis clique sur <strong>Valider</strong>.</p>
-
-<h3>Étape 2 : choisir le support à désinvestir</h3>
-
-<p>Tu arrives maintenant sur une page qui affiche les supports sur lesquels ton épargne est actuellement investie. C'est ici que tu vas indiquer d'où doit venir l'argent que tu veux réorienter vers ta SCPI.</p>
+<h3>Étape 2 : choisir le support à désinvestir</h3><p><img src="/blog/4857-comment-acheter-une-scpi-sur-linxea-spirit-2/choisir-le-support-a-desinvestir-scpi-52.png" alt="choisir le support à désinvestir scpi"></p><p>Tu arrives maintenant sur une page qui affiche les supports sur lesquels ton épargne est actuellement investie. C'est ici que tu vas indiquer d'où doit venir l'argent que tu veux réorienter vers ta SCPI.</p>
 
 <p>Tu peux désinvestir un seul support ou plusieurs à la fois. Pour chacun, tu peux indiquer soit un montant en euros, soit un pourcentage. Dans mon exemple, je souhaite récupérer 400 € investis sur l'ETF Amundi Core S&amp;P 500 Swap UCITS ETF EUR Hedged Acc pour les réorienter vers une SCPI. Je sélectionne donc <strong>Montant</strong>, j'indique <strong>400 €</strong>, puis je clique sur <strong>Suivant</strong>.</p>
 
-<h3>Étape 3 : rechercher et sélectionner ta SCPI</h3>
+<h3>Étape 3 : rechercher et sélectionner ta SCPI</h3><p><img src="/blog/4857-comment-acheter-une-scpi-sur-linxea-spirit-2/support-scpi-linxea-spirit-2-3643.png" alt="support scpi linxea spirit 2"></p><p>Tu arrives maintenant sur la page qui te permet de choisir le ou les supports sur lesquels réinvestir tes 400 €. Vérifie d'abord que la case <strong>Je souhaite choisir seul(e) mes supports (Gestion libre)</strong> est bien cochée.</p>
 
-<p>Tu arrives maintenant sur la page qui te permet de choisir le ou les supports sur lesquels réinvestir tes 400 €. Vérifie d'abord que la case <strong>Je souhaite choisir seul(e) mes supports (Gestion libre)</strong> est bien cochée.</p>
-
-<p>Ensuite, fais défiler la page vers le bas jusqu'à la section <strong>Gestion libre</strong>, puis <strong>Sélection parmi les supports disponibles</strong>. Dans le formulaire de recherche, clique sur <strong>Type</strong> et sélectionne <strong>SCPI</strong>. La liste de toutes les SCPI disponibles sur Linxea Spirit 2 apparaît alors.</p>
-
-<p>Tu peux ensuite affiner ta recherche. Dans mon exemple, je recherche la SCPI <strong>PERIAL Opportunités Europe</strong>. Je la saisis dans le champ <strong>Libellé</strong>, puis je clique sur <strong>Rechercher</strong>. La SCPI apparaît dans les résultats. Je clique sur le petit <strong>+ vert</strong> situé à droite pour l'ajouter à ma sélection.</p>
-
-<p>La SCPI choisie apparaît maintenant dans la partie <strong>Gestion libre</strong> en haut de page. Si tu veux investir la totalité de tes 400 € sur cette SCPI, sélectionne simplement <strong>Solde</strong>. Cela signifie que l'intégralité de la somme désinvestie sera réinvestie sur ce support.</p>
+<p>Ensuite, fais défiler la page vers le bas jusqu'à la section <strong>Gestion libre</strong>, puis <strong>Sélection parmi les supports disponibles</strong>. Dans le formulaire de recherche, clique sur <strong>Type</strong> et sélectionne <strong>SCPI</strong>. La liste de toutes les SCPI disponibles sur Linxea Spirit 2 apparaît alors.</p><p>Tu peux ensuite affiner ta recherche. Dans mon exemple, je recherche la SCPI <strong>PERIAL Opportunités Europe</strong>. Je la saisis dans le champ <strong>Libellé</strong>, puis je clique sur <strong>Rechercher</strong>. La SCPI apparaît dans les résultats. Je clique sur le petit <strong>+ vert</strong> situé à droite pour l'ajouter à ma sélection.</p><p><img src="/blog/4857-comment-acheter-une-scpi-sur-linxea-spirit-2/gestion-libre-scpi-linxea-spirit-2-3881.png" alt="gestion libre scpi linxea spirit 2"></p><p>La SCPI choisie apparaît maintenant dans la partie <strong>Gestion libre</strong> en haut de page. Si tu veux investir la totalité de tes 400 € sur cette SCPI, sélectionne simplement <strong>Solde</strong>. Cela signifie que l'intégralité de la somme désinvestie sera réinvestie sur ce support.</p>
 
 <p>Si tu avais sélectionné plusieurs SCPI, tu pourrais répartir la somme entre elles en indiquant un montant ou un pourcentage pour chacune. C'est utile si tu veux diversifier ton exposition entre différentes SCPI, par exemple une SCPI orientée bureaux et une autre orientée commerces ou santé.</p>
 
@@ -72,13 +60,9 @@ cta_btn_color: "#e8410a"
 
 <p>Et je te précise également un point : Linxea ne propose pas de versements programmés sur les SCPI. Donc si tu veux investir régulièrement en SCPI sur ce contrat, tu devras le faire manuellement à chaque fois, en effectuant des versements libres ou des arbitrages.</p>
 
-<h3>Étape 1 : lancer un versement libre</h3>
+<h3>Étape 1 : lancer un versement libre</h3><p><img src="/blog/4857-comment-acheter-une-scpi-sur-linxea-spirit-2/lancer-un-versement-libre-3451.png" alt="lancer un versement libre"></p><p>Depuis ton espace personnel Linxea, clique sur <strong>Faire une opération</strong>, puis sur <strong>Versement libre et programmé</strong>, et enfin sur <strong>Faire un versement libre</strong>. Tu es à nouveau redirigé vers la plateforme Sylvéa de Spirica.</p>
 
-<p>Depuis ton espace personnel Linxea, clique sur <strong>Faire une opération</strong>, puis sur <strong>Versement libre et programmé</strong>, et enfin sur <strong>Faire un versement libre</strong>. Tu es à nouveau redirigé vers la plateforme Sylvéa de Spirica.</p>
-
-<h3>Étape 2 : renseigner les informations du versement</h3>
-
-<p>Commence par indiquer le montant que tu souhaites verser. Dans mon exemple, je verse <strong>500 €</strong>. Dans le champ <strong>Objectif du versement</strong>, je sélectionne <strong>Faire une opération d'épargne</strong>.</p>
+<h3>Étape 2 : renseigner les informations du versement</h3><p><img src="/blog/4857-comment-acheter-une-scpi-sur-linxea-spirit-2/renseigner-les-informations-du-versement-1878.png" alt="renseigner les informations du versement"></p><p>Commence par indiquer le montant que tu souhaites verser. Dans mon exemple, je verse <strong>500 €</strong>. Dans le champ <strong>Objectif du versement</strong>, je sélectionne <strong>Faire une opération d'épargne</strong>.</p>
 
 <p>Tu dois ensuite préciser l'origine des fonds. Dans mon cas, les 500 € proviennent de mon épargne, plus précisément de mon Livret A. J'indique donc 500 € dans la ligne <strong>Épargne</strong> et je clique sur <strong>Solde</strong> pour valider que la totalité provient de cette source. J'indique la date du jour, puis je précise que l'épargne provient de mon Livret A.</p>
 
@@ -158,6 +142,7 @@ cta_btn_color: "#e8410a"
 <p>Et si tu n'as pas encore de contrat Linxea Spirit 2, c'est le moment d'y penser. C'est l'une des meilleures assurances-vie du marché en termes de frais et de qualité des supports disponibles.&nbsp;</p>
 
 <p>J'espère que cet article t'a aidé à comprendre comment acheter des parts de SCPI sur Linxea Spirit 2. Si tu as une question, n'hésite pas à la poser en commentaire, je fais de mon mieux pour répondre à tout le monde.&nbsp;</p>
+
 
 
 
