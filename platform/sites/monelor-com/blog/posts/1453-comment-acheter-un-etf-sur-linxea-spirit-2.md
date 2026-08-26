@@ -2,7 +2,7 @@
 title: Comment acheter un ETF sur Linxea Spirit 2 ?
 slug: 1453-comment-acheter-un-etf-sur-linxea-spirit-2
 date: 2026-08-12 14:54:49+02:00
-updated: 2026-08-18T15:10:00
+updated: 2026-08-26T09:21:11
 categorie: Assurance vie
 categories:
 - Assurance vie
@@ -17,7 +17,6 @@ related_posts:
 - 4857-comment-acheter-une-scpi-sur-linxea-spirit-2
 - 3327-assurance-vie
 - 4296-meilleures-scpi-linxea-spirit-2
-cta_enabled: true
 cta_text: "Linxea Spirit 2 : Jusqu'à 150€ à l'ouverture"
 cta_color: "#000921"
 cta_link: https://www.financeads.net/tc.php?t=74753C432496072T&subid=S-monelor-acheter-etf-spirit2
@@ -47,19 +46,13 @@ cta_btn_color: "#e8410a"
 
 <p>Imaginons que tu aies de l'argent investi sur le fonds euro et que tu veuilles en transférer une partie sur un ETF MSCI World. C'est exactement ce que permet l'arbitrage.</p>
 
-<h3>Étape 1 : lancer l'arbitrage depuis ton espace personnel</h3>
-
-<p>Connecte-toi à ton espace client Linxea avec tes identifiants habituels. Une fois connecté, clique sur <strong>Faire une opération</strong>, puis sur <strong>Arbitrage</strong>. Une fenêtre s'ouvre sur la droite, clique sur <strong>Ok on y va</strong>.</p>
+<h3>Étape 1 : lancer l'arbitrage depuis ton espace personnel</h3><p><img src="/blog/1453-comment-acheter-un-etf-sur-linxea-spirit-2/lancer-l-arbitrage-depuis-ton-espace-personnel-8210.png" alt="lancer l'arbitrage depuis ton espace personnel"></p><p>Connecte-toi à ton espace client Linxea avec tes identifiants habituels. Une fois connecté, clique sur <strong>Faire une opération</strong>, puis sur <strong>Arbitrage</strong>. Une fenêtre s'ouvre sur la droite, clique sur <strong>Ok on y va</strong>.</p>
 
 <p>Tu es maintenant redirigé vers Sylvéa, la plateforme de Spirica. C'est ici que tu vas effectuer l'ensemble des étapes de ton arbitrage.</p>
 
-<h3>Étape 2 : choisir le type d'opération</h3>
+<h3>Étape 2 : choisir le type d'opération</h3><p><img src="/blog/1453-comment-acheter-un-etf-sur-linxea-spirit-2/choisir-le-type-d-operation-2365.png" alt="choisir le type d'opération"></p><p>Sur la plateforme Sylvéa, sélectionne <strong>Désinvestir et réinvestir une partie ou la totalité de mon épargne</strong>, puis clique sur <strong>Valider</strong>.</p>
 
-<p>Sur la plateforme Sylvéa, sélectionne <strong>Désinvestir et réinvestir une partie ou la totalité de mon épargne</strong>, puis clique sur <strong>Valider</strong>.</p>
-
-<h3>Étape 3 : choisir le support à désinvestir</h3>
-
-<p>Tu dois maintenant sélectionner le ou les supports depuis lesquels tu vas récupérer la somme à réinvestir. En clair, tu indiques d'où vient l'argent que tu veux déplacer.</p>
+<h3>Étape 3 : choisir le support à désinvestir</h3><p><img src="/blog/1453-comment-acheter-un-etf-sur-linxea-spirit-2/choisir-le-support-a-desinvestir-4615.png" alt="choisir le support à désinvestir"></p><p>Tu dois maintenant sélectionner le ou les supports depuis lesquels tu vas récupérer la somme à réinvestir. En clair, tu indiques d'où vient l'argent que tu veux déplacer.</p>
 
 <p>Tu peux désinvestir un seul support ou plusieurs en même temps. Pour chaque support, tu peux indiquer soit un montant en euros, soit un pourcentage de ton investissement actuel.</p>
 
@@ -69,19 +62,13 @@ cta_btn_color: "#e8410a"
 
 <p>C'est l'étape clé. Tu vas maintenant choisir l'ETF sur lequel réinvestir tes 400 euros.</p>
 
-<p>Commence par vérifier que la case <strong>Je souhaite choisir seul(e) mes supports (Gestion libre) et/ou déléguer la gestion de tout ou partie de mon épargne à des allocataires experts en gestion financière (Gestion pilotée)&nbsp;</strong>est bien cochée.&nbsp;</p><p>Fais défiler la page vers le bas jusqu'à la section <strong>Gestion libre</strong>, puis <strong>Sélection parmi les supports disponibles</strong>.</p>
+<p>Commence par vérifier que la case <strong>Je souhaite choisir seul(e) mes supports (Gestion libre) et/ou déléguer la gestion de tout ou partie de mon épargne à des allocataires experts en gestion financière (Gestion pilotée)&nbsp;</strong>est bien cochée.&nbsp;</p><p><img src="/blog/1453-comment-acheter-un-etf-sur-linxea-spirit-2/rechercher-et-selectionner-l-etf-que-tu-veux-acheter-3072.png" alt="rechercher et sélectionner l'ETF que tu veux acheter"></p><p>Fais défiler la page vers le bas jusqu'à la section <strong>Gestion libre</strong>, puis <strong>Sélection parmi les supports disponibles</strong>.</p>
 
 <p>Dans le formulaire de recherche, clique sur <strong>Type</strong> et sélectionne <strong>ETF</strong>. Tu verras alors apparaître la liste complète des ETF disponibles sur Linxea Spirit 2. Tu y retrouveras notamment des ETF permettant de s'exposer au MSCI World, au S&amp;P 500 ou encore au Nasdaq 100.</p>
 
-<p>Pour affiner ta recherche, utilise le champ <strong>Libellé</strong>. Si tu recherches un ETF MSCI World par exemple, tape simplement <em>MSCI World</em> dans ce champ et clique sur <strong>Rechercher</strong>.</p>
+<p>Pour affiner ta recherche, utilise le champ <strong>Libellé</strong>. Si tu recherches un ETF MSCI World par exemple, tape simplement <em>MSCI World</em> dans ce champ et clique sur <strong>Rechercher</strong>.</p><p><img src="/blog/1453-comment-acheter-un-etf-sur-linxea-spirit-2/chercher-un-etf-linxea-spirit-2-arbitrage-9168.png" alt="chercher un etf linxea spirit 2 arbitrage"></p><p>Plusieurs résultats vont apparaître. Fais attention ici : tous les ETF qui s'affichent ne suivent pas nécessairement le même indice, même si leur nom se ressemble. Appuie-toi sur le nom complet de l'ETF et sur son code ISIN pour identifier précisément celui que tu recherches.</p>
 
-<p>Plusieurs résultats vont apparaître. Fais attention ici : tous les ETF qui s'affichent ne suivent pas nécessairement le même indice, même si leur nom se ressemble. Appuie-toi sur le nom complet de l'ETF et sur son code ISIN pour identifier précisément celui que tu recherches.</p>
-
-<p>Une fois que tu as trouvé le bon ETF, clique sur le petit <strong>+</strong> vert situé à droite. L'ETF apparaît alors dans la partie <strong>Gestion libre</strong>, juste au-dessus du formulaire de recherche.</p>
-
-<h3>Étape 5 : répartir la somme et valider</h3>
-
-<p>Si tu n'as sélectionné qu'un seul ETF et que tu veux y investir la totalité des 400 euros, sélectionne simplement <strong>Solde</strong>. Cela signifie que la totalité de la somme désinvestie sera réinvestie sur cet ETF.</p>
+<p>Une fois que tu as trouvé le bon ETF, clique sur le petit <strong>+</strong> vert situé à droite. L'ETF apparaît alors dans la partie <strong>Gestion libre</strong>, juste au-dessus du formulaire de recherche.</p><h3>Étape 5 : répartir la somme et valider</h3><p><img src="/blog/1453-comment-acheter-un-etf-sur-linxea-spirit-2/repartir-la-somme-et-valider-4277.png" alt="répartir la somme et valider"></p><p>Si tu n'as sélectionné qu'un seul ETF et que tu veux y investir la totalité des 400 euros, sélectionne simplement <strong>Solde</strong>. Cela signifie que la totalité de la somme désinvestie sera réinvestie sur cet ETF.</p>
 
 <p>Si tu as sélectionné plusieurs ETF, tu peux au contraire répartir la somme entre eux selon ta stratégie.</p>
 
@@ -104,13 +91,9 @@ cta_btn_color: "#e8410a"
 
 <p>C'est la méthode à utiliser quand tu veux abonder ton contrat ponctuellement, par exemple après avoir reçu une prime ou avoir mis de côté une somme que tu veux investir.</p>
 
-<h3>Étape 1 : lancer le versement libre depuis ton espace personnel</h3>
+<h3>Étape 1 : lancer le versement libre depuis ton espace personnel</h3><p><img src="/blog/1453-comment-acheter-un-etf-sur-linxea-spirit-2/lancer-le-versement-libre-depuis-ton-espace-personnel-4437.png" alt="lancer le versement libre depuis ton espace personnel"></p><p>Depuis ton espace personnel Linxea, clique sur <strong>Faire une opération</strong>, puis sur <strong>Versement libre et programmé</strong>, et enfin sur <strong>Faire un versement libre</strong>. Tu es à nouveau redirigé vers la plateforme Sylvéa de Spirica.</p>
 
-<p>Depuis ton espace personnel Linxea, clique sur <strong>Faire une opération</strong>, puis sur <strong>Versement libre et programmé</strong>, et enfin sur <strong>Faire un versement libre</strong>. Tu es à nouveau redirigé vers la plateforme Sylvéa de Spirica.</p>
-
-<h3>Étape 2 : renseigner les informations sur ton versement</h3>
-
-<p>Tu vas d'abord indiquer le montant que tu souhaites verser. Dans notre exemple, je vais effectuer un versement de 500 euros.</p>
+<h3>Étape 2 : renseigner les informations sur ton versement</h3><p><img src="/blog/1453-comment-acheter-un-etf-sur-linxea-spirit-2/renseigner-les-informations-sur-ton-versement-457.png" alt="renseigner les informations sur ton versement"></p><p>Tu vas d'abord indiquer le montant que tu souhaites verser. Dans notre exemple, je vais effectuer un versement de 500 euros.</p>
 
 <p>Dans <strong>Objectif du versement</strong>, sélectionne <strong>Faire une opération d'épargne</strong>.</p>
 
@@ -243,6 +226,7 @@ cta_btn_color: "#e8410a"
 <p>Dans les trois cas, le processus passe par la plateforme Sylvéa de Spirica, et les étapes de recherche et sélection de l'ETF sont pratiquement identiques.</p><p>Si tu as une question sur l'achat d'un ETF sur Linxea Spirit 2 ou sur le fonctionnement du contrat en général, pose-la en commentaire sous la vidéo ou directement sur le site. Je lis tous les messages et j'y réponds avec plaisir.</p>
 
 <p>Et si tu n'as pas encore de contrat Linxea Spirit 2, pense à vérifier l'offre de bienvenue disponible en ce moment via mon lien partenaire. Je mets régulièrement ce lien à jour pour te proposer le meilleur bonus du moment.</p>
+
 
 
 
