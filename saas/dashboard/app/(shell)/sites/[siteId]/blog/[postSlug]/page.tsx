@@ -86,6 +86,8 @@ export default function BlogEditPage() {
             content_md: content,
             categories: cats,
             categorie: cats[0] || '',
+            // Le frontmatter est relu en chaînes ("true"/"false") → on force le booléen
+            cta_enabled: data.post.cta_enabled === true || data.post.cta_enabled === 'true',
           })
           if (data.site?.domain && data.post.slug) {
             const dom = data.site.domain.replace(/\/$/, '')
