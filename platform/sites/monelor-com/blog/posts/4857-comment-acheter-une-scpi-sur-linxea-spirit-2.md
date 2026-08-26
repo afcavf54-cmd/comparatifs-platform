@@ -2,7 +2,7 @@
 title: Comment acheter une SCPI sur Linxea Spirit 2 ?
 slug: 4857-comment-acheter-une-scpi-sur-linxea-spirit-2
 date: 2026-08-13 12:07:11+02:00
-updated: 2026-08-26T13:16:04
+updated: 2026-08-26T13:18:29
 categorie: Assurance vie
 categories:
 - Assurance vie
