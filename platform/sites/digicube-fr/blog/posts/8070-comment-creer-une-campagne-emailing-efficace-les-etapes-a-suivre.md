@@ -14,10 +14,10 @@ link_anchors:
 - text: créer une campagne emailing
   max: 15
 related_posts:
-- elephant-cast-presentation-du-logiciel-d-affichage-dynamique-digital-signage
-- 2709-affichage-dynamique-avec-raspberry-pi-comment-le-mettre-en-place
+- 4081-digital-signage-definition-fonctionnement-et-usages
 - 2311-affichage-dynamique-pour-hotel-usages-et-solutions
-- 7751-logiciel-d-affichage-dynamique-gratuit-ce-qu-il-peut-et-ne-peut-pas-faire
+- 5686-affichage-dynamique-qu-est-ce-que-c-est-et-comment-ca-fonctionne
+- 4146-ecran-d-affichage-dynamique-en-vitrine-fonctionnement-et-avantages
 ---
 <p>J'ai mis du temps avant de me lancer. Vraiment. Pendant des mois, j'ai regardé mes concurrents envoyer des emails à leurs clients sans trop comprendre comment ils faisaient. Et puis un jour, j'ai décidé de m'y mettre. Résultat : on a gagné du temps sur la relance client, on a arrêté de payer des prestataires pour des tâches qu'on pouvait faire nous-mêmes, et deux de mes commerciaux ont commencé à utiliser les campagnes comme un vrai outil de suivi.</p>
 
