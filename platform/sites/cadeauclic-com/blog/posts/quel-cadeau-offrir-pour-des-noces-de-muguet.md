@@ -14,8 +14,9 @@ link_anchors:
   max: 5
 related_posts:
 - quel-cadeau-offrir-pour-des-noces-de-bois
-- quel-cadeau-offrir-pour-des-noces-de-coton
+- quel-cadeau-offrir-pour-des-noces-de-cristal
 - quel-cadeau-offrir-pour-des-noces-de-cuir
+- quel-cadeau-offrir-pour-des-noces-de-coton
 ---
 <p>Les noces de muguet, ça sonne doux et printanier. Mais quand on doit trouver le cadeau qui va avec, on se retrouve souvent un peu perdu. Deux ans de mariage, c'est encore récent, c'est fragile et beau à la fois, comme cette petite fleur blanche. Alors oui, le symbole est joli. Mais concrètement, qu'est-ce qu'on offre ?</p>
 
