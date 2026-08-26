@@ -84,13 +84,48 @@ def _trim_table_cells(html):
     return html
 
 
-def _fetch_youtube_videos(site, limit=4):
+_YT_CACHE: dict = {}
+
+
+def _is_youtube_short(vid, timeout=5):
+    """True si la vidéo <vid> est un Short. Méthode sans clé API : l'URL
+    https://www.youtube.com/shorts/<id> reste en 200 pour un Short, mais
+    redirige (3xx) vers /watch pour une vidéo classique. Tolérant : en cas
+    de doute (erreur réseau) → False, on garde la vidéo plutôt que de la cacher."""
+    import urllib.request as _u
+
+    class _NoRedirect(_u.HTTPRedirectHandler):
+        def redirect_request(self, *a, **k):
+            return None  # ne pas suivre les redirections
+
+    try:
+        opener = _u.build_opener(_NoRedirect)
+        # GET (sans lire le corps) : plus fiable que HEAD, que YouTube refuse
+        # parfois en 405. On regarde juste le code de statut.
+        req = _u.Request(f"https://www.youtube.com/shorts/{vid}",
+                         headers={"User-Agent": "Mozilla/5.0"})
+        resp = opener.open(req, timeout=timeout)
+        status = getattr(resp, "status", 200)
+        try:
+            resp.close()
+        except Exception:
+            pass
+        return status == 200  # reste sur /shorts/ → Short
+    except _u.HTTPError:
+        return False   # 3xx → redirige vers /watch → vidéo classique
+    except Exception:
+        return False   # doute → on garde
+
+
+def _fetch_youtube_videos(site, limit=4, skip_shorts=True):
     """Récupère les dernières vidéos YouTube d'une chaîne via son flux RSS
     (titre + miniature + URL, sans clé API). Retourne [] si indisponible.
 
     - channel_id : lu depuis site['youtube_channel_id'] si présent, sinon
       résolu depuis site['youtube_url'] (page de la chaîne → "channelId").
     - miniature : https://i.ytimg.com/vi/<id>/hqdefault.jpg (toujours dispo).
+    - skip_shorts (défaut True) : ignore les Shorts (garde les vidéos longues).
+    Résultat mis en cache par chaîne (le build appelle 2x : home + sidebar blog).
     Tolérant aux pannes : toute erreur réseau → [] (le template retombe alors
     sur les vidéos de config / valeurs par défaut)."""
     import re as _re_yt
@@ -100,6 +135,9 @@ def _fetch_youtube_videos(site, limit=4):
     url = (site.get("youtube_url") or "").strip()
     if not cid and not url:
         return []
+    cache_key = f"{cid}|{url}|{skip_shorts}"
+    if cache_key in _YT_CACHE:
+        return _YT_CACHE[cache_key][:limit]
     try:
         if not cid:
             req = _u.Request(url, headers={"User-Agent": "Mozilla/5.0"})
@@ -118,14 +156,21 @@ def _fetch_youtube_videos(site, limit=4):
     except Exception as e:
         print(f"  ⚠ YouTube RSS indisponible : {e}")
         return []
+    want = max(limit, 6)   # on garde un petit cache pour les 2 appels (home + blog)
     vids = []
-    for entry in _re_yt.findall(r"<entry>(.*?)</entry>", xml, _re_yt.S)[:limit]:
+    n_shorts = 0
+    for entry in _re_yt.findall(r"<entry>(.*?)</entry>", xml, _re_yt.S):
+        if len(vids) >= want:
+            break
         mv = _re_yt.search(r"<yt:videoId>([^<]+)</yt:videoId>", entry)
         mt = _re_yt.search(r"<title>(.*?)</title>", entry, _re_yt.S)
         mp = _re_yt.search(r"<published>([^<]+)</published>", entry)
         if not mv or not mt:
             continue
         vid = mv.group(1).strip()
+        if skip_shorts and _is_youtube_short(vid):
+            n_shorts += 1
+            continue
         title = _unescape(mt.group(1).strip())
         age = ""
         if mp:
@@ -150,9 +195,12 @@ def _fetch_youtube_videos(site, limit=4):
             "thumbnail": f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg",
             "age": age,
         })
+    if n_shorts:
+        print(f"  ↳ {n_shorts} Short(s) YouTube ignoré(s)")
     if vids:
-        print(f"  ✓ YouTube : {len(vids)} vidéo(s) récupérée(s) via RSS")
-    return vids
+        print(f"  ✓ YouTube : {len(vids)} vidéo(s) longue(s) récupérée(s) via RSS")
+    _YT_CACHE[cache_key] = vids
+    return vids[:limit]
 
 
 def md_to_html(text):
@@ -2832,6 +2880,10 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
         # 3) Articles individuels
         if (TEMPLATES_DIR / "blog-post.html.j2").exists():
             tpl_post = env.get_template("blog-post.html.j2")
+            # Dernière vidéo YouTube (récupérée UNE fois) pour la sidebar blog.
+            # Ne s'active que si le site a une chaîne (youtube_url) → monelor.
+            _blog_yt = _fetch_youtube_videos(site, limit=1) if site.get("youtube_url") else []
+            _blog_yt_latest = _blog_yt[0] if _blog_yt else None
             for post in blog_posts:
                 slug = post.get('slug', '')
                 if not slug:
@@ -2857,6 +2909,7 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     post=post_rendered, related_posts=related_rendered,
                     blog_categories=blog_categories,
                     all_posts=blog_posts,
+                    youtube_latest=_blog_yt_latest,
                 )
                 # ── Double écriture : /<slug>/index.html ET /<slug>.html ─────
                 # URL canonique = /<slug>/ (avec slash final). Le HTML contient
