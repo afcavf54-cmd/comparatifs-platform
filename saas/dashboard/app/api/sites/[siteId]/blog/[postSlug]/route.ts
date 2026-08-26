@@ -239,7 +239,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ site
     show_toc: show_toc !== false,
     related_posts: Array.isArray(related_posts) ? related_posts : undefined,
     link_anchors: Array.isArray(link_anchors) ? link_anchors : undefined,
-    cta_enabled: cta_enabled === true ? true : undefined,
+    cta_enabled: (cta_enabled === true || cta_enabled === 'true') ? true : undefined,
     cta_text: cta_text || undefined,
     cta_color: cta_color || undefined,
     cta_link: cta_link || undefined,
