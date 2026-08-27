@@ -157,10 +157,10 @@ def _fetch_youtube_videos(site, limit=4, skip_shorts=True):
         print(f"  ⚠ YouTube RSS indisponible : {e}")
         return []
     want = max(limit, 6)   # on garde un petit cache pour les 2 appels (home + blog)
-    vids = []
-    n_shorts = 0
+    # On collecte d'abord TOUTES les vidéos (avec drapeau Short), puis on décide.
+    all_vids = []
     for entry in _re_yt.findall(r"<entry>(.*?)</entry>", xml, _re_yt.S):
-        if len(vids) >= want:
+        if len(all_vids) >= want + 4:
             break
         mv = _re_yt.search(r"<yt:videoId>([^<]+)</yt:videoId>", entry)
         mt = _re_yt.search(r"<title>(.*?)</title>", entry, _re_yt.S)
@@ -168,9 +168,6 @@ def _fetch_youtube_videos(site, limit=4, skip_shorts=True):
         if not mv or not mt:
             continue
         vid = mv.group(1).strip()
-        if skip_shorts and _is_youtube_short(vid):
-            n_shorts += 1
-            continue
         title = _unescape(mt.group(1).strip())
         age = ""
         if mp:
@@ -189,16 +186,32 @@ def _fetch_youtube_videos(site, limit=4, skip_shorts=True):
                     age = f"il y a {yrs} an" + ("s" if yrs > 1 else "")
             except Exception:
                 age = ""
-        vids.append({
+        is_short = _is_youtube_short(vid) if skip_shorts else False
+        all_vids.append({
             "title": title,
             "url": f"https://www.youtube.com/watch?v={vid}",
             "thumbnail": f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg",
             "age": age,
+            "_short": is_short,
         })
-    if n_shorts:
-        print(f"  ↳ {n_shorts} Short(s) YouTube ignoré(s)")
+    long_vids = [v for v in all_vids if not v.get("_short")]
+    n_shorts = len(all_vids) - len(long_vids)
+    # GARDE-FOU : si la détection a marqué PLUS DE LA MOITIÉ des vidéos comme
+    # Shorts, c'est quasi sûrement un faux positif (YouTube bloque le build →
+    # 200 pour tout). Dans ce cas on NE filtre PAS → jamais de liste vide.
+    if skip_shorts and n_shorts <= len(all_vids) / 2 and long_vids:
+        chosen = long_vids
+        if n_shorts:
+            print(f"  ↳ {n_shorts} Short(s) YouTube ignoré(s)")
+    else:
+        chosen = all_vids
+        if skip_shorts and n_shorts:
+            print(f"  ↳ détection Shorts peu fiable ({n_shorts}/{len(all_vids)}) → non filtré")
+    for v in chosen:
+        v.pop("_short", None)
+    vids = chosen[:want]
     if vids:
-        print(f"  ✓ YouTube : {len(vids)} vidéo(s) longue(s) récupérée(s) via RSS")
+        print(f"  ✓ YouTube : {len(vids)} vidéo(s) récupérée(s) via RSS")
     _YT_CACHE[cache_key] = vids
     return vids[:limit]
 
@@ -2067,32 +2080,6 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             except Exception as _e_lt:
                 print(f"  ⚠ Page bons-plans : {_e_lt}")
 
-        # ── Service worker push (écrit à la racine si push activé) ──────────
-        if site.get("push_enabled"):
-            try:
-                _sw = (
-                    "// Service worker push notifications (Viseoweb)\n"
-                    "self.addEventListener('push', function(e){\n"
-                    "  var d = {};\n"
-                    "  try { d = e.data.json(); } catch(err){ d = { title: 'Notification', body: e.data ? e.data.text() : '' }; }\n"
-                    "  var title = d.title || " + repr(site.get("name", "Notification")) + ";\n"
-                    "  var opts = { body: d.body || '', icon: d.icon || '/favicon.png', badge: '/favicon.png',\n"
-                    "               data: { url: d.url || '/' }, tag: d.tag || undefined };\n"
-                    "  e.waitUntil(self.registration.showNotification(title, opts));\n"
-                    "});\n"
-                    "self.addEventListener('notificationclick', function(e){\n"
-                    "  e.notification.close();\n"
-                    "  var url = (e.notification.data && e.notification.data.url) || '/';\n"
-                    "  e.waitUntil(clients.matchAll({type:'window'}).then(function(cl){\n"
-                    "    for (var i=0;i<cl.length;i++){ if(cl[i].url===url && 'focus' in cl[i]) return cl[i].focus(); }\n"
-                    "    if (clients.openWindow) return clients.openWindow(url);\n"
-                    "  }));\n"
-                    "});\n"
-                )
-                (output_dir / "sw.js").write_text(_sw, encoding="utf-8")
-                print("  ✓ Service worker push (sw.js) écrit")
-            except Exception as _e_sw:
-                print(f"  ⚠ Service worker push : {_e_sw}")
 
         copy_shared_assets(output_dir, site_dir)
         # ── Index JSON pour le dashboard (1 requête GitHub au lieu de N) ──
