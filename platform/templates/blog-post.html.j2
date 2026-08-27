@@ -360,12 +360,6 @@ a:hover{text-decoration:underline}
       <div class="nl-msg" aria-live="polite"></div>
     </div>
     {% endif %}
-    {% if site.push_enabled and site.push_public_key %}
-    <div class="sidebar-block">
-      <h3 class="sidebar-title">Notifications</h3>
-      {% include 'base/_push-optin.html.j2' ignore missing %}
-    </div>
-    {% endif %}
     {% if blog_categories and blog_categories | length > 0 %}
     <div class="sidebar-block">
       <h3 class="sidebar-title">Catégories</h3>
