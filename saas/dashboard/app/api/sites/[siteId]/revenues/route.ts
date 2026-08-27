@@ -39,6 +39,29 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ sit
   return NextResponse.json({ ok: true, id: data.id })
 }
 
+// PUT : modifier un revenu { id, category, brand?, amount, month, note? }
+export async function PUT(req: NextRequest, { params }: { params: Promise<{ siteId: string }> }) {
+  if (!supabaseConfigured) return guard()
+  const { siteId } = await params
+  const b = await req.json().catch(() => ({}))
+  const id = String(b.id || '')
+  if (!id) return NextResponse.json({ error: 'id requis' }, { status: 400 })
+  const category = String(b.category || '').trim()
+  if (!CATS.includes(category)) return NextResponse.json({ error: 'Catégorie invalide' }, { status: 400 })
+  const amount = Number(b.amount)
+  if (!isFinite(amount) || amount < 0) return NextResponse.json({ error: 'Montant invalide' }, { status: 400 })
+  const month = String(b.month || '').trim()
+  if (!/^\d{4}-\d{2}$/.test(month)) return NextResponse.json({ error: 'Mois invalide (attendu AAAA-MM)' }, { status: 400 })
+  const patch = {
+    category, amount, month,
+    brand: category === 'affiliation' ? String(b.brand || '').trim().slice(0, 80) : '',
+    note: String(b.note || '').trim().slice(0, 200),
+  }
+  const { error } = await supabase.from('revenues').update(patch).eq('site', siteId).eq('id', id)
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  return NextResponse.json({ ok: true })
+}
+
 // DELETE : supprimer un revenu (?id=)
 export async function DELETE(req: NextRequest, { params }: { params: Promise<{ siteId: string }> }) {
   if (!supabaseConfigured) return guard()
