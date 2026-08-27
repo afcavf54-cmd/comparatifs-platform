@@ -2067,6 +2067,33 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             except Exception as _e_lt:
                 print(f"  ⚠ Page bons-plans : {_e_lt}")
 
+        # ── Service worker push (écrit à la racine si push activé) ──────────
+        if site.get("push_enabled"):
+            try:
+                _sw = (
+                    "// Service worker push notifications (Viseoweb)\n"
+                    "self.addEventListener('push', function(e){\n"
+                    "  var d = {};\n"
+                    "  try { d = e.data.json(); } catch(err){ d = { title: 'Notification', body: e.data ? e.data.text() : '' }; }\n"
+                    "  var title = d.title || " + repr(site.get("name", "Notification")) + ";\n"
+                    "  var opts = { body: d.body || '', icon: d.icon || '/favicon.png', badge: '/favicon.png',\n"
+                    "               data: { url: d.url || '/' }, tag: d.tag || undefined };\n"
+                    "  e.waitUntil(self.registration.showNotification(title, opts));\n"
+                    "});\n"
+                    "self.addEventListener('notificationclick', function(e){\n"
+                    "  e.notification.close();\n"
+                    "  var url = (e.notification.data && e.notification.data.url) || '/';\n"
+                    "  e.waitUntil(clients.matchAll({type:'window'}).then(function(cl){\n"
+                    "    for (var i=0;i<cl.length;i++){ if(cl[i].url===url && 'focus' in cl[i]) return cl[i].focus(); }\n"
+                    "    if (clients.openWindow) return clients.openWindow(url);\n"
+                    "  }));\n"
+                    "});\n"
+                )
+                (output_dir / "sw.js").write_text(_sw, encoding="utf-8")
+                print("  ✓ Service worker push (sw.js) écrit")
+            except Exception as _e_sw:
+                print(f"  ⚠ Service worker push : {_e_sw}")
+
         copy_shared_assets(output_dir, site_dir)
         # ── Index JSON pour le dashboard (1 requête GitHub au lieu de N) ──
         # Doit être appelé AVANT le post-process des dates pour avoir tous
