@@ -39,6 +39,10 @@ export default function RevenuesPage() {
   const [saving, setSaving] = useState(false)
   const [newBrand, setNewBrand] = useState('')
 
+  // édition d'une ligne
+  const [editId, setEditId] = useState<string | null>(null)
+  const [ed, setEd] = useState({ category: 'adsense', brand: '', amount: '', month: '', note: '' })
+
   const flash = (m: string) => { setMsg(m); setTimeout(() => setMsg(''), 3500) }
 
   async function load() {
@@ -71,6 +75,22 @@ export default function RevenuesPage() {
     if (!confirm('Supprimer ce revenu ?')) return
     await fetch(`${base}?id=${id}`, { method: 'DELETE' })
     load()
+  }
+  function startEdit(r: Revenue) {
+    setEditId(r.id)
+    setEd({ category: r.category, brand: r.brand || '', amount: String(r.amount), month: r.month, note: r.note || '' })
+  }
+  async function saveEdit() {
+    if (!editId) return
+    if (!ed.amount || isNaN(Number(ed.amount))) return flash('✗ Montant invalide')
+    try {
+      const d = await fetch(base, {
+        method: 'PUT', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: editId, category: ed.category, brand: ed.category === 'affiliation' ? ed.brand : '', amount: Number(ed.amount), month: ed.month, note: ed.note }),
+      }).then(r => r.json())
+      if (d.error) throw new Error(d.error)
+      flash('✓ Revenu modifié'); setEditId(null); load()
+    } catch (e: any) { flash('✗ ' + (e.message || 'Erreur')) }
   }
   async function addBrand() {
     const name = newBrand.trim()
@@ -273,6 +293,33 @@ export default function RevenuesPage() {
               {revenues.length === 0 && <tr><td colSpan={6} style={{ ...td, color: C.faint, textAlign: 'center', padding: 20 }}>Aucun revenu enregistré.</td></tr>}
               {revenues.map(r => {
                 const c = catOf(r.category)
+                if (editId === r.id) {
+                  const edInp: React.CSSProperties = { ...inp, padding: '6px 8px', fontSize: 12.5, width: '100%' }
+                  return (
+                    <tr key={r.id} style={{ background: 'rgba(0,212,170,.05)' }}>
+                      <td style={td}><input type="month" value={ed.month} onChange={e => setEd({ ...ed, month: e.target.value })} style={edInp} /></td>
+                      <td style={td}>
+                        <select value={ed.category} onChange={e => setEd({ ...ed, category: e.target.value })} style={edInp}>
+                          {CATS.map(x => <option key={x.key} value={x.key}>{x.label}</option>)}
+                        </select>
+                      </td>
+                      <td style={td}>
+                        {ed.category === 'affiliation'
+                          ? <select value={ed.brand} onChange={e => setEd({ ...ed, brand: e.target.value })} style={edInp}>
+                              <option value="">—</option>
+                              {brands.map(b => <option key={b.id} value={b.name}>{b.name}</option>)}
+                            </select>
+                          : <span style={{ color: C.faint }}>—</span>}
+                      </td>
+                      <td style={td}><input type="number" step="0.01" min="0" value={ed.amount} onChange={e => setEd({ ...ed, amount: e.target.value })} style={{ ...edInp, textAlign: 'right' }} /></td>
+                      <td style={td}><input value={ed.note} onChange={e => setEd({ ...ed, note: e.target.value })} style={edInp} /></td>
+                      <td style={{ ...td, textAlign: 'center', whiteSpace: 'nowrap' }}>
+                        <span onClick={saveEdit} title="Enregistrer" style={{ cursor: 'pointer', color: C.accent, marginRight: 10 }}>✓</span>
+                        <span onClick={() => setEditId(null)} title="Annuler" style={{ cursor: 'pointer', color: C.faint }}>✕</span>
+                      </td>
+                    </tr>
+                  )
+                }
                 return (
                   <tr key={r.id}>
                     <td style={{ ...td, color: C.dim, whiteSpace: 'nowrap' }}>{fmtMonth(r.month)}</td>
@@ -280,7 +327,10 @@ export default function RevenuesPage() {
                     <td style={{ ...td, color: C.dim }}>{r.brand || '—'}</td>
                     <td style={{ ...td, textAlign: 'right', color: C.accent, fontWeight: 600, whiteSpace: 'nowrap' }}>{euro(r.amount)}</td>
                     <td style={{ ...td, color: C.dim }}>{r.note}</td>
-                    <td style={{ ...td, textAlign: 'center' }}><span onClick={() => delRevenue(r.id)} title="Supprimer" style={{ cursor: 'pointer', color: C.faint }}>🗑</span></td>
+                    <td style={{ ...td, textAlign: 'center', whiteSpace: 'nowrap' }}>
+                      <span onClick={() => startEdit(r)} title="Modifier" style={{ cursor: 'pointer', color: C.faint, marginRight: 10 }}>✏️</span>
+                      <span onClick={() => delRevenue(r.id)} title="Supprimer" style={{ cursor: 'pointer', color: C.faint }}>🗑</span>
+                    </td>
                   </tr>
                 )
               })}
