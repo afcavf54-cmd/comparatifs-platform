@@ -1,0 +1,63 @@
+{# ── Opt-in Push notifications ──────────────────────────────────────────
+   Requiert : site.push_enabled = true ET site.push_public_key = <clé VAPID publique>.
+   Affiche un bouton discret. La permission est demandée AU CLIC (obligatoire
+   sur iOS). En cas de succès, la subscription est envoyée à l'endpoint public. #}
+{% if site.push_enabled and site.push_public_key %}
+<div class="push-optin" id="pushOptin" hidden>
+  <button type="button" class="push-btn" id="pushBtn">🔔 {{ site.push_label | default("Suivre les nouveaux articles") }}</button>
+  <span class="push-msg" id="pushMsg" aria-live="polite"></span>
+</div>
+<style>
+  .push-optin{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .push-btn{background:var(--accent2,#E8410A);color:#fff;border:0;padding:10px 16px;border-radius:9px;font-weight:700;font-size:13.5px;cursor:pointer;font-family:inherit;transition:filter .15s}
+  .push-btn:hover{filter:brightness(1.08)}
+  .push-btn:disabled{opacity:.55;cursor:default}
+  .push-msg{font-size:12.5px;color:var(--ink3,#8a95a8)}
+</style>
+<script>
+(function(){
+  var PUBLIC_KEY = "{{ site.push_public_key }}";
+  var SITE = "{{ site.slug }}";
+  var ENDPOINT = "https://comparatifs-platform.vercel.app/api/push/subscribe";
+  var wrap = document.getElementById('pushOptin');
+  var btn = document.getElementById('pushBtn');
+  var msg = document.getElementById('pushMsg');
+  // Support requis : service workers + Push API + Notification
+  if (!('serviceWorker' in navigator) || !('PushManager' in window) || !('Notification' in window)) return;
+  if (Notification.permission === 'denied') return;      // refusé : on n'insiste pas
+  wrap.hidden = false;
+
+  function b64ToUint8(base64){
+    var pad = '='.repeat((4 - base64.length % 4) % 4);
+    var b = (base64 + pad).replace(/-/g,'+').replace(/_/g,'/');
+    var raw = atob(b); var arr = new Uint8Array(raw.length);
+    for (var i=0;i<raw.length;i++) arr[i] = raw.charCodeAt(i);
+    return arr;
+  }
+
+  // Déjà abonné ? → on masque le bouton
+  navigator.serviceWorker.getRegistration().then(function(reg){
+    if(!reg) return;
+    reg.pushManager.getSubscription().then(function(sub){ if(sub) wrap.hidden = true; });
+  });
+
+  btn.addEventListener('click', function(){
+    btn.disabled = true; msg.textContent = 'Activation…';
+    Notification.requestPermission().then(function(perm){
+      if (perm !== 'granted'){ msg.textContent = 'Notifications refusées.'; btn.disabled = false; return; }
+      navigator.serviceWorker.register('/sw.js').then(function(reg){
+        return reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64ToUint8(PUBLIC_KEY) });
+      }).then(function(sub){
+        return fetch(ENDPOINT, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ subscription: sub, site: SITE })
+        });
+      }).then(function(r){ return r.json(); }).then(function(d){
+        if (d && d.ok){ msg.textContent = '✓ Notifications activées !'; setTimeout(function(){ wrap.hidden = true; }, 2500); }
+        else { msg.textContent = 'Erreur, réessaie.'; btn.disabled = false; }
+      }).catch(function(){ msg.textContent = 'Erreur, réessaie.'; btn.disabled = false; });
+    });
+  });
+})();
+</script>
+{% endif %}
