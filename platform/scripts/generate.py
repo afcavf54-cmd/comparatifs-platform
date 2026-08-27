@@ -103,6 +103,15 @@ def _fetch_youtube_videos(site, limit=4):
     import re as _re_yt
     import urllib.request as _u
     from html import unescape as _unescape
+    # En-têtes pour contourner le blocage des IP datacenter (GitHub Actions) :
+    # le cookie CONSENT saute la page de consentement UE, le User-Agent complet
+    # + Accept-Language évitent les réponses 403/challenge.
+    _yt_headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                      "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept-Language": "fr-FR,fr;q=0.9,en;q=0.8",
+        "Cookie": "CONSENT=YES+cb; SOCS=CAISEwgDEgk...",
+    }
     cid = (site.get("youtube_channel_id") or "").strip()
     url = (site.get("youtube_url") or "").strip()
     if not cid and not url:
@@ -112,17 +121,18 @@ def _fetch_youtube_videos(site, limit=4):
         return _YT_CACHE[cache_key][:limit]
     try:
         if not cid:
-            req = _u.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            req = _u.Request(url, headers=_yt_headers)
             with _u.urlopen(req, timeout=15) as r:
                 page = r.read().decode("utf-8", "ignore")
             m = (_re_yt.search(r'"channelId":"(UC[0-9A-Za-z_-]{20,})"', page)
+                 or _re_yt.search(r'"externalId":"(UC[0-9A-Za-z_-]{20,})"', page)
                  or _re_yt.search(r'/channel/(UC[0-9A-Za-z_-]{20,})', page))
             if not m:
                 print("  ⚠ YouTube : channelId introuvable depuis l'URL de la chaîne")
                 return []
             cid = m.group(1)
         rss_url = f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}"
-        req = _u.Request(rss_url, headers={"User-Agent": "Mozilla/5.0"})
+        req = _u.Request(rss_url, headers=_yt_headers)
         with _u.urlopen(req, timeout=15) as r:
             xml = r.read().decode("utf-8", "ignore")
     except Exception as e:
