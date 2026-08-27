@@ -87,47 +87,19 @@ def _trim_table_cells(html):
 _YT_CACHE: dict = {}
 
 
-def _is_youtube_short(vid, timeout=5):
-    """True si la vidéo <vid> est un Short. Méthode sans clé API : l'URL
-    https://www.youtube.com/shorts/<id> reste en 200 pour un Short, mais
-    redirige (3xx) vers /watch pour une vidéo classique. Tolérant : en cas
-    de doute (erreur réseau) → False, on garde la vidéo plutôt que de la cacher."""
-    import urllib.request as _u
-
-    class _NoRedirect(_u.HTTPRedirectHandler):
-        def redirect_request(self, *a, **k):
-            return None  # ne pas suivre les redirections
-
-    try:
-        opener = _u.build_opener(_NoRedirect)
-        # GET (sans lire le corps) : plus fiable que HEAD, que YouTube refuse
-        # parfois en 405. On regarde juste le code de statut.
-        req = _u.Request(f"https://www.youtube.com/shorts/{vid}",
-                         headers={"User-Agent": "Mozilla/5.0"})
-        resp = opener.open(req, timeout=timeout)
-        status = getattr(resp, "status", 200)
-        try:
-            resp.close()
-        except Exception:
-            pass
-        return status == 200  # reste sur /shorts/ → Short
-    except _u.HTTPError:
-        return False   # 3xx → redirige vers /watch → vidéo classique
-    except Exception:
-        return False   # doute → on garde
-
-
-def _fetch_youtube_videos(site, limit=4, skip_shorts=True):
+def _fetch_youtube_videos(site, limit=4):
     """Récupère les dernières vidéos YouTube d'une chaîne via son flux RSS
     (titre + miniature + URL, sans clé API). Retourne [] si indisponible.
 
     - channel_id : lu depuis site['youtube_channel_id'] si présent, sinon
       résolu depuis site['youtube_url'] (page de la chaîne → "channelId").
     - miniature : https://i.ytimg.com/vi/<id>/hqdefault.jpg (toujours dispo).
-    - skip_shorts (défaut True) : ignore les Shorts (garde les vidéos longues).
     Résultat mis en cache par chaîne (le build appelle 2x : home + sidebar blog).
     Tolérant aux pannes : toute erreur réseau → [] (le template retombe alors
-    sur les vidéos de config / valeurs par défaut)."""
+    sur les vidéos de config / valeurs par défaut).
+
+    NB : pas de filtrage des Shorts — la détection côté serveur (requêtes
+    /shorts/) n'est pas fiable et faisait bloquer le build par YouTube."""
     import re as _re_yt
     import urllib.request as _u
     from html import unescape as _unescape
@@ -135,7 +107,7 @@ def _fetch_youtube_videos(site, limit=4, skip_shorts=True):
     url = (site.get("youtube_url") or "").strip()
     if not cid and not url:
         return []
-    cache_key = f"{cid}|{url}|{skip_shorts}"
+    cache_key = f"{cid}|{url}"
     if cache_key in _YT_CACHE:
         return _YT_CACHE[cache_key][:limit]
     try:
@@ -156,11 +128,10 @@ def _fetch_youtube_videos(site, limit=4, skip_shorts=True):
     except Exception as e:
         print(f"  ⚠ YouTube RSS indisponible : {e}")
         return []
-    want = max(limit, 6)   # on garde un petit cache pour les 2 appels (home + blog)
-    # On collecte d'abord TOUTES les vidéos (avec drapeau Short), puis on décide.
-    all_vids = []
+    want = max(limit, 6)   # petit cache pour les 2 appels (home + blog)
+    vids = []
     for entry in _re_yt.findall(r"<entry>(.*?)</entry>", xml, _re_yt.S):
-        if len(all_vids) >= want + 4:
+        if len(vids) >= want:
             break
         mv = _re_yt.search(r"<yt:videoId>([^<]+)</yt:videoId>", entry)
         mt = _re_yt.search(r"<title>(.*?)</title>", entry, _re_yt.S)
@@ -186,30 +157,12 @@ def _fetch_youtube_videos(site, limit=4, skip_shorts=True):
                     age = f"il y a {yrs} an" + ("s" if yrs > 1 else "")
             except Exception:
                 age = ""
-        is_short = _is_youtube_short(vid) if skip_shorts else False
-        all_vids.append({
+        vids.append({
             "title": title,
             "url": f"https://www.youtube.com/watch?v={vid}",
             "thumbnail": f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg",
             "age": age,
-            "_short": is_short,
         })
-    long_vids = [v for v in all_vids if not v.get("_short")]
-    n_shorts = len(all_vids) - len(long_vids)
-    # GARDE-FOU : si la détection a marqué PLUS DE LA MOITIÉ des vidéos comme
-    # Shorts, c'est quasi sûrement un faux positif (YouTube bloque le build →
-    # 200 pour tout). Dans ce cas on NE filtre PAS → jamais de liste vide.
-    if skip_shorts and n_shorts <= len(all_vids) / 2 and long_vids:
-        chosen = long_vids
-        if n_shorts:
-            print(f"  ↳ {n_shorts} Short(s) YouTube ignoré(s)")
-    else:
-        chosen = all_vids
-        if skip_shorts and n_shorts:
-            print(f"  ↳ détection Shorts peu fiable ({n_shorts}/{len(all_vids)}) → non filtré")
-    for v in chosen:
-        v.pop("_short", None)
-    vids = chosen[:want]
     if vids:
         print(f"  ✓ YouTube : {len(vids)} vidéo(s) récupérée(s) via RSS")
     _YT_CACHE[cache_key] = vids
