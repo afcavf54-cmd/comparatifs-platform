@@ -12,7 +12,7 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.editions-dp.com/1500-meilleur-logiciel-affichage-dynamique/">
 <meta property="og:image" content="https://www.editions-dp.com/blog/1500-meilleur-logiciel-affichage-dynamique/featured-54383.jpg"><meta property="article:published_time" content="2026-08-06 15:42:30+02:00">
-<meta property="article:modified_time" content="2026-08-07 11:34:33"><meta property="article:section" content="Marketing"><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta property="article:modified_time" content="2026-08-27 08:50:24"><meta property="article:section" content="Marketing"><link rel="preconnect" href="https://fonts.googleapis.com">
 
 <script type="application/ld+json">
 {
@@ -21,7 +21,7 @@
   "headline": "Comparatif des meilleurs logiciels d\u0027affichage dynamique (digital signage)",
   "description": "D\u00e9couvrez notre comparatif des meilleurs logiciels d\u0027affichage dynamique. Fonctionnalit\u00e9s, prix, avantages, cloud, gestion multi-\u00e9crans : trouvez la solution de digital signage adapt\u00e9e \u00e0 votre entreprise.",
   "datePublished": "2026-08-06 15:42:30+02:00",
-"dateModified": "2026-08-07 11:34:33","image": "https://www.editions-dp.com/blog/1500-meilleur-logiciel-affichage-dynamique/featured-54383.jpg",  "author": {
+"dateModified": "2026-08-27 08:50:24","image": "https://www.editions-dp.com/blog/1500-meilleur-logiciel-affichage-dynamique/featured-54383.jpg",  "author": {
     "@type": "Person",
     "name": "Pierre Petit"
   },
@@ -142,6 +142,24 @@ a:hover{text-decoration:underline}
 .sidebar-cat-link:hover{color:var(--accent);text-decoration:none}
 .sidebar-cat-link.active{color:var(--accent);font-weight:600}
 .sidebar-cat-count{font-size:11px;color:var(--ink3);background:var(--bg);padding:2px 8px;border-radius:10px;flex-shrink:0;margin-left:8px}
+.yt-video{display:block;text-decoration:none;color:var(--ink);margin-bottom:12px}
+.yt-thumb{position:relative;display:block;border-radius:10px;overflow:hidden;aspect-ratio:16/9;background:#000}
+.yt-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.yt-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;text-shadow:0 2px 8px rgba(0,0,0,.55);opacity:.92}
+.yt-vtitle{display:block;font-size:13.5px;font-weight:600;line-height:1.35;margin-top:9px;color:var(--ink)}
+.yt-video:hover .yt-vtitle{color:var(--accent)}
+.yt-age{display:block;font-size:12px;color:var(--ink3);margin-top:3px}
+.yt-cta{display:flex;align-items:center;justify-content:center;gap:9px;background:#FF0000;color:#fff;font-weight:700;font-size:14px;padding:11px 14px;border-radius:9px;text-decoration:none;transition:filter .15s}
+.yt-cta:hover{filter:brightness(1.08);text-decoration:none;color:#fff}
+/* Newsletter signup (sidebar) */
+.nl-desc{font-size:13px;color:var(--ink3);line-height:1.5;margin:0 0 12px}
+.nl-form{display:flex;flex-direction:column;gap:8px}
+.nl-input{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:9px;font-size:14px;font-family:inherit;box-sizing:border-box;outline:none;color:var(--ink)}
+.nl-input:focus{border-color:var(--accent2,#E8410A)}
+.nl-btn{background:var(--accent2,#E8410A);color:#fff;border:0;padding:11px 14px;border-radius:9px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;transition:filter .15s}
+.nl-btn:hover{filter:brightness(1.08)}
+.nl-btn:disabled{opacity:.6;cursor:default}
+.nl-msg{font-size:12.5px;margin-top:9px;line-height:1.4}
 .sidebar-cat-link:hover .sidebar-cat-count{color:var(--accent)}
 .sidebar-recent-list{list-style:none;margin:0;padding:0}
 .sidebar-recent-item{padding:10px 0;border-bottom:1px solid var(--border)}
@@ -187,10 +205,21 @@ a:hover{text-decoration:underline}
 .article-body ul,.article-body ol{margin:0 0 20px;padding-left:26px}
 .article-body li{margin-bottom:8px}
 .article-body img{display:block;max-width:100%;height:auto;border-radius:var(--r);margin:24px auto;border:1px solid var(--border)}
+/* Zoom images (lightbox) */
+.zoom-wrap{position:relative;display:table;margin:24px auto;cursor:zoom-in}
+.zoom-wrap img{margin:0!important}
+.zoom-badge{position:absolute;top:10px;right:10px;width:34px;height:34px;border-radius:50%;background:rgba(0,9,33,.6);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0;transition:opacity .18s;pointer-events:none;backdrop-filter:blur(2px)}
+.zoom-wrap:hover .zoom-badge{opacity:1}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:99999;cursor:zoom-out;padding:20px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:95%;max-height:92%;object-fit:contain;border-radius:6px;box-shadow:0 12px 50px rgba(0,0,0,.5)}
+.lightbox-close{position:absolute;top:16px;right:26px;color:#fff;font-size:40px;line-height:1;cursor:pointer;font-weight:300;opacity:.85}
+.lightbox-close:hover{opacity:1}
 .article-body blockquote{border-left:3px solid var(--accent);padding:8px 20px;margin:24px 0;color:var(--ink2);font-style:italic;background:var(--surface2);border-radius:0 var(--r) var(--r) 0}
 .article-body code{background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:.92em;font-family:Menlo,Monaco,Consolas,monospace}
 .article-body strong{color:var(--ink);font-weight:700}
 .article-body a{color:var(--accent2);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px}
+.article-body a[href^="http"]{font-weight:700;text-decoration-color:var(--accent2)}
 .article-body a:hover{text-decoration-color:var(--accent2)}
 /* Author box (réutilise le style de classement-saas) */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
@@ -338,7 +367,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
  &rsaquo; <a href="/categorie-marketing/">Marketing</a>    </div>
     <h1 class="article-title">Comparatif des meilleurs logiciels d'affichage dynamique (digital signage)</h1>
     <div class="article-meta">
-<a href="/categorie-marketing/" class="article-cat">Marketing</a><span class="article-meta-dot"></span><span class="article-meta-item">📅 6 août 2026</span><span class="article-meta-dot"></span><span class="article-meta-item">⏱ 19 min de lecture</span><span class="article-meta-dot"></span>      <span class="article-meta-item">✍️ Pierre Petit</span>
+<a href="/categorie-marketing/" class="article-cat">Marketing</a><span class="article-meta-dot"></span><span class="article-meta-item">📅 6 août 2026</span><span class="article-meta-dot"></span><span class="article-meta-item">⏱ 20 min de lecture</span><span class="article-meta-dot"></span>      <span class="article-meta-item">✍️ Pierre Petit</span>
     </div>
   </header>
 
@@ -346,6 +375,188 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <img src="/blog/1500-meilleur-logiciel-affichage-dynamique/featured-54383.jpg" alt="Comparatif des meilleurs logiciels d'affichage dynamique (digital signage)" loading="eager">
   </div>
 
+  <nav class="article-toc" aria-label="Sommaire de l'article">
+    <div class="article-toc-title">📑 Sommaire</div>
+    <ol class="article-toc-list">
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#tableau-comparatif-des-meilleurs-logiciels-d-affichage-dynam">Tableau comparatif des meilleurs logiciels d'affichage dynamique</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#les-meilleurs-logiciels-d-affichage-dynamique">Les meilleurs logiciels d'affichage dynamique</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#elephant-cast">Elephant Cast</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#signao">SIGNAO</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#cenareo">Cenareo</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#yodeck">Yodeck</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#optisigns">OptiSigns</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#screencloud">ScreenCloud</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#viewneo">Viewneo</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#novisign">NoviSign</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#telelogos">Telelogos</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#scala">Scala</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#rise-vision">Rise Vision</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#disign-signao-com-play-screenhub">Disign, Signao, Com'Play, ScreenHub</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#qu-est-ce-qu-un-logiciel-d-affichage-dynamique">Qu'est-ce qu'un logiciel d'affichage dynamique ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#affichage-dynamique-ou-digital-signage-quelle-difference">Affichage dynamique ou digital signage : quelle différence ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#le-role-du-cms-et-du-player">Le rôle du CMS et du player</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#pourquoi-utiliser-une-solution-d-affichage-dynamique">Pourquoi utiliser une solution d'affichage dynamique ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#comment-choisir-son-logiciel-d-affichage-dynamique">Comment choisir son logiciel d'affichage dynamique ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#facilite-d-utilisation">Facilité d'utilisation</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#compatibilite-materielle">Compatibilité matérielle</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#gestion-cloud">Gestion cloud</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#gestion-multi-ecrans">Gestion multi-écrans</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#planification">Planification</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#widgets-et-contenus-dynamiques">Widgets et contenus dynamiques</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#personnalisation">Personnalisation</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#securite">Sécurité</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#support-technique">Support technique</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#tarification">Tarification</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#integrations">Intégrations</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#logiciel-gratuit-ou-payant">Logiciel gratuit ou payant ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#quels-secteurs-utilisent-l-affichage-dynamique">Quels secteurs utilisent l'affichage dynamique ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#commerce-et-retail">Commerce et retail</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#restaurants-et-food">Restaurants et food</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#hotels-et-hebergement">Hôtels et hébergement</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#entreprises-et-communication-interne">Entreprises et communication interne</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#industrie">Industrie</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#sante-et-salles-d-attente">Santé et salles d'attente</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#collectivites-mairies-ecoles">Collectivités, mairies, écoles</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#concessions-automobiles-et-immobilier">Concessions automobiles et immobilier</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#bonnes-pratiques-pour-l-affichage-dynamique">Bonnes pratiques pour l'affichage dynamique</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#duree-et-rotation-des-contenus">Durée et rotation des contenus</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#lisibilite-avant-tout">Lisibilité avant tout</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#couleurs-et-identite-visuelle">Couleurs et identité visuelle</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#videos-et-animations">Vidéos et animations</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#planification-saisonniere">Planification saisonnière</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#call-to-action">Call to action</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#organisation-des-playlists">Organisation des playlists</a>
+      </li>
+      <li class="article-toc-item article-toc-level-2">
+        <a href="#faq-logiciel-d-affichage-dynamique">FAQ : logiciel d'affichage dynamique</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#quel-est-le-meilleur-logiciel-d-affichage-dynamique">Quel est le meilleur logiciel d'affichage dynamique ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#quelle-difference-entre-affichage-dynamique-et-digital-signa">Quelle différence entre affichage dynamique et digital signage ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#peut-on-utiliser-une-television-classique-pour-l-affichage-d">Peut-on utiliser une télévision classique pour l'affichage dynamique ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#faut-il-obligatoirement-un-player">Faut-il obligatoirement un player ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#quel-budget-prevoir-pour-un-logiciel-d-affichage-dynamique">Quel budget prévoir pour un logiciel d'affichage dynamique ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#existe-t-il-des-logiciels-d-affichage-dynamique-gratuits">Existe-t-il des logiciels d'affichage dynamique gratuits ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#comment-gerer-plusieurs-ecrans-dans-des-lieux-differents">Comment gérer plusieurs écrans dans des lieux différents ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#quel-logiciel-choisir-pour-un-commerce">Quel logiciel choisir pour un commerce ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#quel-logiciel-choisir-pour-la-communication-interne-en-entre">Quel logiciel choisir pour la communication interne en entreprise ?</a>
+      </li>
+      <li class="article-toc-item article-toc-level-3">
+        <a href="#comment-fonctionne-un-cms-d-affichage-dynamique">Comment fonctionne un CMS d'affichage dynamique ?</a>
+      </li>
+    </ol>
+  </nav>
 
   <div class="article-body">
     <p>J'ai testé pas mal de solutions d'affichage dynamique ces dernières années. Certaines m'ont fait perdre du temps. D'autres étaient trop complexes pour mes équipes. Quelques-unes coûtaient bien trop cher pour ce qu'elles proposaient.</p>
@@ -374,7 +585,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       <td>Oui</td>
       <td>Oui</td>
       <td>Le meilleur rapport simplicité/prix du marché</td>
-    </tr>
+    </tr><tr><td>Signao</td><td>SaaS français</td><td>Oui</td><td>Oui</td><td>Logiciel généraliste, très bon rapport qualité/prix, prise en main rapide</td></tr>
     <tr>
       <td>Cenareo</td>
       <td>SaaS français</td>
@@ -445,13 +656,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       <td>Oui</td>
       <td>Simple et abordable, bon pour débuter</td>
     </tr>
-    <tr>
-      <td>Signao</td>
-      <td>SaaS français</td>
-      <td>Oui</td>
-      <td>Oui</td>
-      <td>Orienté retail, interface claire</td>
-    </tr>
+    
     <tr>
       <td>Com'Play</td>
       <td>SaaS français</td>
@@ -494,7 +699,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Bon, par contre, Elephant Cast n'est pas la solution la plus avancée pour des projets très complexes avec intégrations API multiples. Pour une grande enseigne nationale avec des besoins de personnalisation extrêmement poussés, il faudra probablement aller voir ailleurs. Mais pour 90 % des PME et TPE françaises, c'est largement suffisant.</p>
 
 <p><strong>Pour qui :</strong> commerces, restaurants, hôtels, collectivités, entreprises de taille intermédiaire, communication interne.</p>
-<p><strong>Pas adapté pour :</strong> les projets nécessitant une personnalisation très technique ou des intégrations ERP complexes.</p>
+<p><strong>Pas adapté pour :</strong> les projets nécessitant une personnalisation très technique ou des intégrations ERP complexes.</p><h3 id="signao">SIGNAO</h3><p><img src="/blog/1500-meilleur-logiciel-affichage-dynamique/signao-494.jpg" alt="SIGNAO"></p><p><a href="https://www.signao.com/" target="_blank" rel="noopener noreferrer">SIGNAO</a>&nbsp;est une solution logicielle d'affichage dynamique qui permet de diffuser des informations et communications en temps réel sur tout type d'écrans : moniteur TV, totem vidéo, borne tactile, mur d'images... Conçus pour les entreprises, associations et collectivités, son&nbsp;<a href="https://www.signao.com/notre-solution/le-logiciel-affichage-dynamique-connecte" target="_blank" rel="noopener noreferrer">interface de gestion</a>&nbsp;est facile et rapide à prendre en main pour les équipes.&nbsp;<br><br>Avec SIGNAO, vous créez, programmez et diffusez des boucles de communication facilement sur l'ensemble de vos sites. Entièrement personnalisables, les contenus s'actualisent automatiquement et vous pouvez dynamiser vos programmes en ajoutant des applications utiles comme la météo, les actualités du jour...&nbsp;<br><br><b>SIGNAO</b> est une solution complète avec un accompagnement sur mesure : du choix de votre matériel, à la prise en main du logiciel jusqu'à l'installation sur site des écrans. Un support informatique français est même disponible en cas de besoin. Un des meilleurs prix du marché !&nbsp;<br><br><b>Pour qui </b>: transport, santé, commerces, restauration, immobilier, collectivités, entreprises, communication interne, tourisme et culture.</p>
 
 <h3 id="cenareo">Cenareo</h3><p><img src="/blog/1500-meilleur-logiciel-affichage-dynamique/cenareo-598.jpg" alt="Cenareo"></p><p>Cenareo est une autre solution française, basée à Toulouse. L'interface est propre, le cloud bien géré, et la plateforme tient bien la charge sur de grands parcs d'écrans.</p>
 
@@ -943,7 +1148,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 editions-dp.com — Données actualisées le 24 août 2026
+        © 2026 editions-dp.com — Données actualisées le 27 août 2026
       </div>
     </div>
   </div>
@@ -1041,6 +1246,46 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   // Check immédiat (au cas où la page est rechargée déjà scrollée)
   update();
 })();
+</script>
+<div id="lightbox" class="lightbox" role="dialog" aria-label="Image agrandie">
+  <span class="lightbox-close" aria-label="Fermer">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+<script>
+(function(){
+  var body = document.querySelector('.article-body');
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightbox-img');
+  if(!body || !lb) return;
+  // Rendre chaque image de l'article cliquable (loupe + agrandissement)
+  Array.prototype.forEach.call(body.querySelectorAll('img'), function(img){
+    var w = document.createElement('span'); w.className = 'zoom-wrap';
+    img.parentNode.insertBefore(w, img); w.appendChild(img);
+    var b = document.createElement('span'); b.className = 'zoom-badge'; b.textContent = '🔍';
+    w.appendChild(b);
+    w.addEventListener('click', function(){
+      lbImg.src = img.currentSrc || img.src; lbImg.alt = img.alt || '';
+      lb.classList.add('open');
+    });
+  });
+  function close(){ lb.classList.remove('open'); }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+})();
+function nlSubscribe(f){
+  var email = (f.email.value || '').trim();
+  var box = f.parentNode, msg = box.querySelector('.nl-msg'), btn = f.querySelector('.nl-btn');
+  if(!email){ return false; }
+  btn.disabled = true; msg.style.color = '#8a95a8'; msg.textContent = 'Inscription…';
+  fetch('https://comparatifs-platform.vercel.app/api/newsletter/subscribe', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, tag: 'Blog' })
+  }).then(function(r){ return r.json(); }).then(function(d){
+    if(d && d.ok){ msg.style.color = '#1a9d6e'; msg.textContent = '✓ Inscription confirmée, merci !'; f.reset(); }
+    else { msg.style.color = '#d64040'; msg.textContent = (d && d.error) || 'Une erreur est survenue.'; btn.disabled = false; }
+  }).catch(function(){ msg.style.color = '#d64040'; msg.textContent = 'Erreur réseau, réessaie.'; btn.disabled = false; });
+  return false;
+}
 </script>
 
 </body>
