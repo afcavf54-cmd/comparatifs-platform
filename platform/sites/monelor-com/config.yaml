@@ -48,7 +48,7 @@ site:
   newsletter_signup: true
   # Push notifications (clé publique VAPID à générer — voir instructions)
   push_enabled: true
-  push_public_key: ""   # ← colle ici ta clé VAPID PUBLIQUE
+  push_public_key: "BM9pgkSM-k_YLEc2dMIyCbTvUtx8Sezb67oLKnXx6rNAJHzl6LjHquVYBoKa4IEWTj9A3uQYMJsaE9PktjYn5wI"   # ← colle ici ta clé VAPID PUBLIQUE
   push_label: "Suivre les nouveaux articles"
   contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
   # ── Page /bons-plans (linktree : réseaux sociaux + codes promo / parrainages) ──
