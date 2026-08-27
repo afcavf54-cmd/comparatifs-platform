@@ -102,6 +102,7 @@ def _fetch_youtube_videos(site, limit=4):
     /shorts/) n'est pas fiable et faisait bloquer le build par YouTube."""
     import re as _re_yt
     import urllib.request as _u
+    import json as _json_yt
     from html import unescape as _unescape
     # En-têtes pour contourner le blocage des IP datacenter (GitHub Actions) :
     # le cookie CONSENT saute la page de consentement UE, le User-Agent complet
@@ -119,6 +120,24 @@ def _fetch_youtube_videos(site, limit=4):
     cache_key = f"{cid}|{url}"
     if cache_key in _YT_CACHE:
         return _YT_CACHE[cache_key][:limit]
+    # Cache PERSISTANT (fichier commité) : survit aux blocages YouTube du build.
+    # Si un build échoue à récupérer les vidéos, on réutilise les dernières
+    # connues → elles ne disparaissent jamais du site.
+    _slug = site.get("slug") or ""
+    _cache_file = (SITES_DIR / _slug / "_yt_cache.json") if _slug else None
+
+    def _load_persistent():
+        if _cache_file and _cache_file.exists():
+            try:
+                data = _json_yt.loads(_cache_file.read_text(encoding="utf-8"))
+                if isinstance(data, list) and data:
+                    print(f"  ↳ YouTube : {len(data)} vidéo(s) réutilisée(s) du cache persistant")
+                    _YT_CACHE[cache_key] = data
+                    return data
+            except Exception:
+                pass
+        return []
+
     try:
         if not cid:
             req = _u.Request(url, headers=_yt_headers)
@@ -128,16 +147,16 @@ def _fetch_youtube_videos(site, limit=4):
                  or _re_yt.search(r'"externalId":"(UC[0-9A-Za-z_-]{20,})"', page)
                  or _re_yt.search(r'/channel/(UC[0-9A-Za-z_-]{20,})', page))
             if not m:
-                print("  ⚠ YouTube : channelId introuvable depuis l'URL de la chaîne")
-                return []
+                print("  ⚠ YouTube : channelId introuvable → fallback cache")
+                return _load_persistent()[:limit]
             cid = m.group(1)
         rss_url = f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}"
         req = _u.Request(rss_url, headers=_yt_headers)
         with _u.urlopen(req, timeout=15) as r:
             xml = r.read().decode("utf-8", "ignore")
     except Exception as e:
-        print(f"  ⚠ YouTube RSS indisponible : {e}")
-        return []
+        print(f"  ⚠ YouTube indisponible ({e}) → fallback cache")
+        return _load_persistent()[:limit]
     want = max(limit, 6)   # petit cache pour les 2 appels (home + blog)
     vids = []
     for entry in _re_yt.findall(r"<entry>(.*?)</entry>", xml, _re_yt.S):
@@ -175,6 +194,16 @@ def _fetch_youtube_videos(site, limit=4):
         })
     if vids:
         print(f"  ✓ YouTube : {len(vids)} vidéo(s) récupérée(s) via RSS")
+        # Sauvegarde du cache persistant (commité par le workflow via git add -A)
+        if _cache_file:
+            try:
+                _cache_file.write_text(
+                    _json_yt.dumps(vids, ensure_ascii=False, indent=1), encoding="utf-8")
+            except Exception:
+                pass
+    else:
+        # RSS accessible mais vide → on réutilise le cache plutôt que rien
+        vids = _load_persistent()
     _YT_CACHE[cache_key] = vids
     return vids[:limit]
 
