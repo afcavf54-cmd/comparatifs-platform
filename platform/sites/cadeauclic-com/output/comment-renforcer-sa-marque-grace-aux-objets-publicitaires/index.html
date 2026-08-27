@@ -110,6 +110,24 @@ a:hover{text-decoration:underline}
 .sidebar-cat-link:hover{color:var(--accent);text-decoration:none}
 .sidebar-cat-link.active{color:var(--accent);font-weight:600}
 .sidebar-cat-count{font-size:11px;color:var(--ink3);background:var(--bg);padding:2px 8px;border-radius:10px;flex-shrink:0;margin-left:8px}
+.yt-video{display:block;text-decoration:none;color:var(--ink);margin-bottom:12px}
+.yt-thumb{position:relative;display:block;border-radius:10px;overflow:hidden;aspect-ratio:16/9;background:#000}
+.yt-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.yt-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;text-shadow:0 2px 8px rgba(0,0,0,.55);opacity:.92}
+.yt-vtitle{display:block;font-size:13.5px;font-weight:600;line-height:1.35;margin-top:9px;color:var(--ink)}
+.yt-video:hover .yt-vtitle{color:var(--accent)}
+.yt-age{display:block;font-size:12px;color:var(--ink3);margin-top:3px}
+.yt-cta{display:flex;align-items:center;justify-content:center;gap:9px;background:#FF0000;color:#fff;font-weight:700;font-size:14px;padding:11px 14px;border-radius:9px;text-decoration:none;transition:filter .15s}
+.yt-cta:hover{filter:brightness(1.08);text-decoration:none;color:#fff}
+/* Newsletter signup (sidebar) */
+.nl-desc{font-size:13px;color:var(--ink3);line-height:1.5;margin:0 0 12px}
+.nl-form{display:flex;flex-direction:column;gap:8px}
+.nl-input{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:9px;font-size:14px;font-family:inherit;box-sizing:border-box;outline:none;color:var(--ink)}
+.nl-input:focus{border-color:var(--accent2,#E8410A)}
+.nl-btn{background:var(--accent2,#E8410A);color:#fff;border:0;padding:11px 14px;border-radius:9px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;transition:filter .15s}
+.nl-btn:hover{filter:brightness(1.08)}
+.nl-btn:disabled{opacity:.6;cursor:default}
+.nl-msg{font-size:12.5px;margin-top:9px;line-height:1.4}
 .sidebar-cat-link:hover .sidebar-cat-count{color:var(--accent)}
 .sidebar-recent-list{list-style:none;margin:0;padding:0}
 .sidebar-recent-item{padding:10px 0;border-bottom:1px solid var(--border)}
@@ -155,10 +173,21 @@ a:hover{text-decoration:underline}
 .article-body ul,.article-body ol{margin:0 0 20px;padding-left:26px}
 .article-body li{margin-bottom:8px}
 .article-body img{display:block;max-width:100%;height:auto;border-radius:var(--r);margin:24px auto;border:1px solid var(--border)}
+/* Zoom images (lightbox) */
+.zoom-wrap{position:relative;display:table;margin:24px auto;cursor:zoom-in}
+.zoom-wrap img{margin:0!important}
+.zoom-badge{position:absolute;top:10px;right:10px;width:34px;height:34px;border-radius:50%;background:rgba(0,9,33,.6);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;opacity:0;transition:opacity .18s;pointer-events:none;backdrop-filter:blur(2px)}
+.zoom-wrap:hover .zoom-badge{opacity:1}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:99999;cursor:zoom-out;padding:20px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:95%;max-height:92%;object-fit:contain;border-radius:6px;box-shadow:0 12px 50px rgba(0,0,0,.5)}
+.lightbox-close{position:absolute;top:16px;right:26px;color:#fff;font-size:40px;line-height:1;cursor:pointer;font-weight:300;opacity:.85}
+.lightbox-close:hover{opacity:1}
 .article-body blockquote{border-left:3px solid var(--accent);padding:8px 20px;margin:24px 0;color:var(--ink2);font-style:italic;background:var(--surface2);border-radius:0 var(--r) var(--r) 0}
 .article-body code{background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:.92em;font-family:Menlo,Monaco,Consolas,monospace}
 .article-body strong{color:var(--ink);font-weight:700}
 .article-body a{color:var(--accent2);text-decoration:underline;text-decoration-color:var(--border);text-underline-offset:3px}
+.article-body a[href^="http"]{font-weight:700;text-decoration-color:var(--accent2)}
 .article-body a:hover{text-decoration-color:var(--accent2)}
 /* Author box (réutilise le style de classement-saas) */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
@@ -555,7 +584,7 @@ a:hover{text-decoration:underline}
         <li class="sidebar-cat-item">
           <a href="/blog/" class="sidebar-cat-link">
             <span>Tous les articles</span>
-            <span class="sidebar-cat-count">160</span>
+            <span class="sidebar-cat-count">161</span>
           </a>
         </li>
         <li class="sidebar-cat-item">
@@ -597,7 +626,7 @@ a:hover{text-decoration:underline}
         <li class="sidebar-cat-item">
           <a href="/categorie-anniversaire-de-mariage/" class="sidebar-cat-link">
             <span>Anniversaire de mariage</span>
-            <span class="sidebar-cat-count">5</span>
+            <span class="sidebar-cat-count">6</span>
           </a>
         </li>
         <li class="sidebar-cat-item">
@@ -625,6 +654,11 @@ a:hover{text-decoration:underline}
       <h3 class="sidebar-title">Articles récents</h3>
       <ul class="sidebar-recent-list">
         <li class="sidebar-recent-item">
+          <a href="/quel-cadeau-offrir-pour-des-noces-de-perle/" class="sidebar-recent-link">
+<div class="sidebar-recent-cat">Anniversaire de mariage</div>            Quel cadeau offrir pour des noces de perle ?
+          </a>
+        </li>
+        <li class="sidebar-recent-item">
           <a href="/quel-cadeau-offrir-pour-des-noces-de-cristal/" class="sidebar-recent-link">
 <div class="sidebar-recent-cat">Anniversaire de mariage</div>            Quel cadeau offrir pour des noces de cristal ?
           </a>
@@ -642,11 +676,6 @@ a:hover{text-decoration:underline}
         <li class="sidebar-recent-item">
           <a href="/quel-cadeau-offrir-pour-des-noces-de-cuir/" class="sidebar-recent-link">
 <div class="sidebar-recent-cat">Anniversaire de mariage</div>            Quel cadeau offrir pour des noces de cuir ?
-          </a>
-        </li>
-        <li class="sidebar-recent-item">
-          <a href="/quel-cadeau-offrir-pour-des-noces-de-coton/" class="sidebar-recent-link">
-<div class="sidebar-recent-cat">Anniversaire de mariage</div>            Quel cadeau offrir pour des noces de coton ?
           </a>
         </li>
       </ul>
@@ -832,6 +861,46 @@ a:hover{text-decoration:underline}
     </div>
   </div>
 </footer>
+<div id="lightbox" class="lightbox" role="dialog" aria-label="Image agrandie">
+  <span class="lightbox-close" aria-label="Fermer">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+<script>
+(function(){
+  var body = document.querySelector('.article-body');
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightbox-img');
+  if(!body || !lb) return;
+  // Rendre chaque image de l'article cliquable (loupe + agrandissement)
+  Array.prototype.forEach.call(body.querySelectorAll('img'), function(img){
+    var w = document.createElement('span'); w.className = 'zoom-wrap';
+    img.parentNode.insertBefore(w, img); w.appendChild(img);
+    var b = document.createElement('span'); b.className = 'zoom-badge'; b.textContent = '🔍';
+    w.appendChild(b);
+    w.addEventListener('click', function(){
+      lbImg.src = img.currentSrc || img.src; lbImg.alt = img.alt || '';
+      lb.classList.add('open');
+    });
+  });
+  function close(){ lb.classList.remove('open'); }
+  lb.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+})();
+function nlSubscribe(f){
+  var email = (f.email.value || '').trim();
+  var box = f.parentNode, msg = box.querySelector('.nl-msg'), btn = f.querySelector('.nl-btn');
+  if(!email){ return false; }
+  btn.disabled = true; msg.style.color = '#8a95a8'; msg.textContent = 'Inscription…';
+  fetch('https://comparatifs-platform.vercel.app/api/newsletter/subscribe', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, tag: 'Blog' })
+  }).then(function(r){ return r.json(); }).then(function(d){
+    if(d && d.ok){ msg.style.color = '#1a9d6e'; msg.textContent = '✓ Inscription confirmée, merci !'; f.reset(); }
+    else { msg.style.color = '#d64040'; msg.textContent = (d && d.error) || 'Une erreur est survenue.'; btn.disabled = false; }
+  }).catch(function(){ msg.style.color = '#d64040'; msg.textContent = 'Erreur réseau, réessaie.'; btn.disabled = false; });
+  return false;
+}
+</script>
 
 </body>
 </html>
