@@ -110,7 +110,7 @@ def _fetch_youtube_videos(site, limit=4):
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                       "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Accept-Language": "fr-FR,fr;q=0.9,en;q=0.8",
-        "Cookie": "CONSENT=YES+cb; SOCS=CAISEwgDEgk...",
+        "Cookie": "CONSENT=YES+cb",
     }
     cid = (site.get("youtube_channel_id") or "").strip()
     url = (site.get("youtube_url") or "").strip()
