@@ -72,6 +72,28 @@ export default function LinkSalesPage() {
     caTotal += s.price_ht
   }
 
+  // ── Évolution mensuelle du CA par site (pour le graphique) ─────────────────
+  const monthsSet = new Set<string>()
+  const perSiteMonth: Record<string, Record<string, number>> = {}
+  for (const s of sales) {
+    const m = (s.date || '').slice(0, 7) // YYYY-MM
+    if (!/^\d{4}-\d{2}$/.test(m)) continue
+    monthsSet.add(m)
+    perSiteMonth[s.site] = perSiteMonth[s.site] || {}
+    perSiteMonth[s.site][m] = (perSiteMonth[s.site][m] || 0) + s.price_ht
+  }
+  const chartMonths = Array.from(monthsSet).sort()
+  const chartSites = Object.keys(perSiteMonth).sort((a, b) => (caBySite[b] || 0) - (caBySite[a] || 0))
+  const maxMonthly = Math.max(1, ...chartSites.flatMap(si => chartMonths.map(m => perSiteMonth[si][m] || 0)))
+  const SITE_COLORS = ['#00D4AA', '#4C9AFF', '#F5820A', '#E8410A', '#B78AF7', '#F76D82', '#54C7EC', '#F2C744', '#57D9A3', '#FF8AB4']
+  const MONTHS_FR = ['janv', 'févr', 'mars', 'avr', 'mai', 'juin', 'juil', 'août', 'sept', 'oct', 'nov', 'déc']
+  const fmtMonth = (m: string) => { const [y, mo] = m.split('-'); return `${MONTHS_FR[parseInt(mo, 10) - 1]} ${y.slice(2)}` }
+  // Géométrie du graphique
+  const CW = 820, CH = 340, ML = 58, MR = 20, MT = 20, MB = 46
+  const plotW = CW - ML - MR, plotH = CH - MT - MB
+  const xAt = (i: number) => chartMonths.length <= 1 ? ML + plotW / 2 : ML + (i / (chartMonths.length - 1)) * plotW
+  const yAt = (v: number) => MT + plotH * (1 - v / maxMonthly)
+
   // ── Mutations ─────────────────────────────────────────────────────────────
   const mark = () => setDirty(true)
   const addPlatform = () => {
@@ -280,6 +302,58 @@ export default function LinkSalesPage() {
             </tbody>
           </table>
         </div>
+      </div>
+
+      {/* ── Évolution du CA par site (mois par mois) ──────────────────────── */}
+      <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: 20, marginTop: 24 }}>
+        <div style={{ fontSize: 15, color: C.text, fontWeight: 600, marginBottom: 4 }}>Évolution du CA par site</div>
+        <div style={{ fontSize: 12, color: C.faint, marginBottom: 16 }}>Chiffre d'affaires HT mois par mois, une courbe par site.</div>
+        {chartMonths.length === 0 ? (
+          <div style={{ fontSize: 13, color: C.faint, padding: 20, textAlign: 'center' }}>Aucune vente enregistrée pour le moment.</div>
+        ) : (
+          <>
+            <svg viewBox={`0 0 ${CW} ${CH}`} style={{ width: '100%', height: 'auto', display: 'block' }}>
+              {/* grille + labels Y */}
+              {[0, 0.25, 0.5, 0.75, 1].map((f, i) => {
+                const v = maxMonthly * (1 - f)
+                const y = MT + plotH * f
+                return (
+                  <g key={i}>
+                    <line x1={ML} y1={y} x2={CW - MR} y2={y} stroke={C.border} strokeWidth={1} />
+                    <text x={ML - 8} y={y + 4} textAnchor="end" fontSize={11} fill={C.faint}>{Math.round(v)}€</text>
+                  </g>
+                )
+              })}
+              {/* labels X (mois) */}
+              {chartMonths.map((m, i) => (
+                <text key={m} x={xAt(i)} y={CH - MB + 20} textAnchor="middle" fontSize={11} fill={C.dim}>{fmtMonth(m)}</text>
+              ))}
+              {/* une courbe par site */}
+              {chartSites.map((si, idx) => {
+                const col = SITE_COLORS[idx % SITE_COLORS.length]
+                const pts = chartMonths.map((m, i) => `${xAt(i)},${yAt(perSiteMonth[si][m] || 0)}`).join(' ')
+                return (
+                  <g key={si}>
+                    <polyline points={pts} fill="none" stroke={col} strokeWidth={2.5} strokeLinejoin="round" strokeLinecap="round" />
+                    {chartMonths.map((m, i) => (
+                      <circle key={m} cx={xAt(i)} cy={yAt(perSiteMonth[si][m] || 0)} r={3.5} fill={col} />
+                    ))}
+                  </g>
+                )
+              })}
+            </svg>
+            {/* légende */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 18px', marginTop: 14 }}>
+              {chartSites.map((si, idx) => (
+                <div key={si} style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 12.5, color: C.dim }}>
+                  <span style={{ width: 12, height: 12, borderRadius: 3, background: SITE_COLORS[idx % SITE_COLORS.length], display: 'inline-block' }} />
+                  {siteName(si)}
+                  <span style={{ color: C.faint }}>· {euro(caBySite[si] || 0)}</span>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   )
