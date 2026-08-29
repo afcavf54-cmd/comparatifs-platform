@@ -4,15 +4,20 @@ slug: 8271-automatisation-emailing-comment-mettre-en-place-ses-premiers-scenario
 date: '2026-08-29T11:00:00+02:00'
 categorie: Marketing
 meta_title: 'Automatisation emailing : guide et exemples'
-meta_description: Découvrez comment mettre en place vos premiers scénarios d'automatisation emailing, même sans équipe marketing. Un guide concret pour gagner du temps et mieux…
+meta_description: Découvrez comment mettre en place vos premiers scénarios d'automatisation
+  emailing, même sans équipe marketing. Un guide concret pour gagner du temps et mieux…
 min_words: 2000
 status: published
 featured_image: /blog/8271-automatisation-emailing-comment-mettre-en-place-ses-premiers-scenarios.jpg
 link_anchors:
 - text: automatisation de l'emailing
   max: 15
+related_posts:
+- 8070-comment-creer-une-campagne-emailing-efficace-les-etapes-a-suivre
+- 4081-digital-signage-definition-fonctionnement-et-usages
+- 1321-quels-sont-les-meilleurs-logiciels-de-digital-signage-ou-affichage-dynamique
+- 2292-roi-du-digital-signage-comment-mesurer-l-impact-de-l-affichage-dynamique
 ---
-
 <p>Pendant longtemps, j'ai envoyé mes emails à la main. Un par un. Ou presque. Je copiais, je collais, je changeais les prénoms, je cliquais sur "Envoyer". Et quand j'avais oublié quelqu'un, je m'en rendais compte le lendemain. C'était du temps perdu, beaucoup de temps perdu, et franchement, ça m'a agacé de réaliser que des outils existaient depuis des années pour faire ça automatiquement.</p>
 
 <p>J'ai mis du temps à me lancer dans l'<strong>automatisation de l'emailing</strong>. J'avais peur que ce soit complexe, réservé aux grandes boîtes avec une équipe marketing dédiée. Spoiler : ce n'est pas le cas. Avec 100 à 500 salariés, on a clairement les ressources et les besoins pour s'y mettre. Le vrai problème, c'est de savoir par où commencer.</p>
