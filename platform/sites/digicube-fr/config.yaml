@@ -5,6 +5,8 @@
 # ============================================================
 
 site:
+  social_tiktok: ""
+  social_instagram: ""
   develink_verification: ""
   rocketlink_verification: "<!-- 2ed9c13a0cfa54e1e654a9acef532633 -->"
   legal_verification_note: "VERIRL"
@@ -29,7 +31,7 @@ site:
   sheet_csv_url: ""
   www_preference: "www"
   author_name: "Nicolas Roux"
-  home_title: "Digicube : l'information dédiée à la digitalisation des entreprises"
+  home_title: "Digicube (FR) : l'information dédiée à la digitalisation des entreprises"
   home_description: "Digicube décrypte les logiciels, services numériques, innovations technologiques et tendances digitales qui accompagnent les entreprises."
   template: "classement-saas.html.j2"
   index_template: "index.html.j2"
