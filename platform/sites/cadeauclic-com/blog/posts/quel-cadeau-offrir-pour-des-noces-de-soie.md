@@ -4,15 +4,20 @@ slug: quel-cadeau-offrir-pour-des-noces-de-soie
 date: '2026-08-30T12:00:00+02:00'
 categorie: Anniversaire de mariage
 meta_title: 'Noces de soie cadeau : les plus belles idées pour vos 12 ans de mariage'
-meta_description: 'Noces de soie : 12 ans de mariage méritent un cadeau à la hauteur. Découvrez les meilleures idées, triées par budget et par profil, pour faire mouche.'
+meta_description: 'Noces de soie : 12 ans de mariage méritent un cadeau à la hauteur.
+  Découvrez les meilleures idées, triées par budget et par profil, pour faire mouche.'
 min_words: 750
 status: published
 featured_image: /blog/quel-cadeau-offrir-pour-des-noces-de-soie.jpg
 link_anchors:
 - text: idée de cadeau pour des noces de soie
   max: 5
+related_posts:
+- quel-cadeau-offrir-pour-des-noces-de-muguet
+- quel-cadeau-offrir-pour-des-noces-d-argent
+- quel-cadeau-offrir-pour-des-noces-d-or
+- quel-cadeau-offrir-pour-des-noces-de-perle
 ---
-
 <p>Les noces de soie, c'est douze ans de vie commune. Douze ans de moments partagés, de compromis, de fous rires et de projets construits à deux. Franchement, ça mérite mieux qu'une carte et un bouquet de fleurs acheté à la va-vite. Et pourtant, trouver le bon cadeau pour cet anniversaire précis reste compliqué. La soie, c'est beau comme symbole, mais ça n'oriente pas forcément vers une idée concrète.</p>
 
 <p>J'ai préparé cet article pour t'aider à y voir plus clair, sans te noyer sous des dizaines d'options. Voilà ce que j'ai sélectionné après pas mal de recherches et quelques achats testés de mon côté.</p>
