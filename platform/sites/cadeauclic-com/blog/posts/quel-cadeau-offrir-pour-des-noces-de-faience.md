@@ -4,15 +4,21 @@ slug: quel-cadeau-offrir-pour-des-noces-de-faience
 date: '2026-08-31T19:00:00+02:00'
 categorie: Anniversaire de mariage
 meta_title: 'Noces de faïence cadeau : des cadeaux symboliques pour vos 9 ans'
-meta_description: 'Noces de faïence : découvrez les meilleures idées cadeaux pour célébrer 9 ans de mariage, des objets artisanaux aux expériences inoubliables en duo.'
+meta_description: 'Noces de faïence : découvrez les meilleures idées cadeaux pour
+  célébrer 9 ans de mariage, des objets artisanaux aux expériences inoubliables en
+  duo.'
 min_words: 750
 status: published
 featured_image: /blog/quel-cadeau-offrir-pour-des-noces-de-faience.jpg
 link_anchors:
 - text: idée de cadeau pour des noces de faïence
   max: 5
+related_posts:
+- quel-cadeau-offrir-pour-des-noces-de-perle
+- quel-cadeau-offrir-pour-des-noces-d-or
+- quel-cadeau-offrir-pour-des-noces-d-argent
+- quel-cadeau-offrir-pour-des-noces-de-cristal
 ---
-
 <h2>Les noces de faïence, c'est quoi exactement ?</h2>
 
 <p>Neuf ans de mariage. Pas un chiffre rond, pas une étape dont tout le monde parle, et pourtant c'est une vraie date à fêter. Les noces de faïence marquent neuf années de vie commune, et comme la faïence, cette matière à la fois fragile et résistante, ça dit quelque chose de beau sur un couple qui dure. J'aime beaucoup ce symbole. C'est un mariage entre la délicatesse et la solidité.</p>
