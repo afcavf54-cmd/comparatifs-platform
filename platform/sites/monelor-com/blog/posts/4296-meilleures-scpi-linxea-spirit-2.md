@@ -2,7 +2,7 @@
 title: Quelles sont les meilleures SCPI du contrat Lixea Spirit 2 ?
 slug: 4296-meilleures-scpi-linxea-spirit-2
 date: 2026-08-03 15:25:43+02:00
-updated: 2026-08-18T15:09:52
+updated: 2026-08-31T14:00:22
 categorie: Assurance vie
 categories:
 - Assurance vie
@@ -28,7 +28,7 @@ cta_button: En profiter
 cta_btn_color: "#e8410a"
 ---
 
-<p>J'ai passé un bon moment à analyser le catalogue complet de <strong>Linxea Spirit 2</strong> pour te faire un tour d'horizon des SCPI disponibles. Parce que franchement, quand on ouvre ce contrat pour la première fois, on se retrouve face à une liste assez longue et on ne sait pas vraiment par où commencer.&nbsp;</p>
+<p>J'ai passé un bon moment à analyser le catalogue complet de&nbsp;<a href="https://www.monelor.com/4878-avis-assurance-vie-linxea-spirit-2/">Linxea Spirit 2</a>&nbsp;pour te faire un tour d'horizon des SCPI disponibles. Parce que franchement, quand on ouvre ce contrat pour la première fois, on se retrouve face à une liste assez longue et on ne sait pas vraiment par où commencer.&nbsp;</p>
 
 <p>Avant d'aller plus loin, une info importante : <strong>la SCPI Iroko Zen n'est plus disponible sur Linxea Spirit 2</strong>, ni à l'achat en versement libre, ni en arbitrage. Si tu l'avais repérée dans d'anciens comparatifs ou articles, c'est une information qui date. On ne peut plus y accéder via ce contrat aujourd'hui.</p><p>Maintenant, regardons ce qui est disponible. Je vais te présenter chaque SCPI une par une, avec les infos qui comptent vraiment : ce qu'elle fait, comment elle se positionne, et à qui elle peut convenir. L'idée, c'est que tu ressortes de cet article avec une vraie vision d'ensemble, pas juste une liste de noms barbares.</p><p>Et si tu ne sais pas comment acheter une SCPI, va voir mon tutoriel pour comprendre&nbsp;<a href="https://www.monelor.com/4857-comment-acheter-une-scpi-sur-linxea-spirit-2">comment acheter une SCPI avec Linxea Spirit 2</a>.</p><h2>Les 3 SCPI qui ont le meilleur rendement sur Linxea Spirit 2</h2><p>Pour les plus impatients, je vous ai listé les 3 SCPI disponibles dans le contrat Linxea Spirit 2 qui ont les meilleurs rendements sur les 5 dernières années. Bien entendu, on ne juge pas une SCPI sur son rendement uniquement, je vous ai donc indiqué plus bas les caractéristiques de chaque SCPI pour vous permettre de faire votre propre opinion.</p><table><thead><tr><th>SCPI</th><th>Moyenne 5 ans</th><th>2025</th><th>2024</th><th>2023</th><th>2022</th><th>2021</th></tr></thead><tbody><tr><td>PERIAL Opportunités Europe</td><td>5,69%</td><td>6,1%</td><td>6,27%</td><td>5,70%</td><td>5,57%</td><td>4,82%</td></tr><tr><td>ACTIVIMMO</td><td>5,60%</td><td>5,49%</td><td>5,50%</td><td>5,52%</td><td>5,50%</td><td>6,02%</td></tr><tr><td>Altixia Cadence XII</td><td>5,48%</td><td>5,15%</td><td>5,73%</td><td>5,60%</td><td>5,51%</td><td>5,15%</td></tr></tbody></table><h2>Liste des SCPI disponibles sur Linxea Spirit 2</h2><p>Tu retrouveras ci-dessous la liste des différentes SCPI disponibles si tu souhaites investir en SCPI sur ton contrat d'assurance vie Linxea Spirit 2.&nbsp;</p><p>Quelques rappels importants :&nbsp;<br></p><ul><li>Montant minimum : <b>50 € par SCPI</b>.</li><li>Part maximale en SCPI :<b> jusqu'à 50 %</b> de chaque versement (dans la limite de 1 000 000 €).</li><li>Délai de jouissance : perception des loyers à partir <b>du 1er jour du mois suivant l'investissement</b> (loyers réinvestis sur le fonds en euros général Spirica).</li><li>Durée de détention recommandée : <b>au moins 3 ans pour éviter une pénalité</b>.</li><li>Pénalité de sortie anticipée : <b>3 % sur les sommes brutes rachetées en cas d'arbitrage ou de rachat dans les 3 ans suivant l'investissement</b>.</li><li>Versements programmés : non disponibles sur les SCPI.</li></ul>
 
@@ -203,6 +203,7 @@ cta_btn_color: "#e8410a"
 <p>Et une dernière chose : <strong>via Linxea Spirit 2, les frais d'entrée sur les SCPI sont souvent réduits par rapport à un investissement en direct</strong>. C'est un vrai avantage. En direct, les SCPI ont des frais de souscription qui peuvent atteindre 8 à 10 % du montant investi. Via l'assurance vie, ces frais sont généralement nettement inférieurs, ce qui améliore ta performance nette dès le départ.</p>
 
 <p>Voilà, tu as maintenant une vision complète des SCPI disponibles sur Linxea Spirit 2. La prochaine étape, c'est de définir ce que tu veux faire avec ton argent, sur quel horizon, et avec quelle tolérance aux fluctuations. Et si tu veux aller plus loin, j'ai d'autres articles sur le site qui rentrent dans le détail de chaque type de stratégie. Bonne construction de portefeuille.</p>
+
 
 
 
