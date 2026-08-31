@@ -2,7 +2,7 @@
 title: "Avis Linxea Spirit 2 : mon retour après 1 an d’utilisation"
 slug: 4878-avis-assurance-vie-linxea-spirit-2
 date: 2026-08-31 12:43:58+02:00
-updated: 2026-08-31T13:53:22
+updated: 2026-08-31T14:41:30
 categorie: Assurance vie
 categories:
 - Assurance vie
@@ -11,7 +11,7 @@ meta_description: "Découvrez mon avis sur Linxea Spirit 2 après 1 an d’utili
 featured_image: ""
 status: published
 min_words: 3500
-show_toc: false
+show_toc: true
 related_posts:
 - 3327-assurance-vie
 - 4296-meilleures-scpi-linxea-spirit-2
@@ -88,9 +88,7 @@ cta_btn_color: "#e9420a"
 
 <p>Et c'est là qu'il y a une notion vraiment importante à comprendre : <strong>l'ancienneté fiscale de l'assurance-vie commence à la date d'ouverture du contrat</strong>, pas à la date des versements.&nbsp;</p><p>C'est après 8 ans d'existence que l'assurance-vie bénéficie d'un régime fiscal plus avantageux sur les gains retirés, avec notamment un abattement annuel sous certaines conditions. Donc même si tu n'as que 500 euros à placer aujourd'hui, ouvrir le contrat maintenant permet de faire tourner le compteur fiscal immédiatement. C'est ce qu'on appelle "prendre date".</p>
 
-<h2>Les frais de Linxea Spirit 2</h2>
-
-<p>C'est probablement l'un des premiers arguments qui rend Linxea Spirit 2 attractif. Les frais sont vraiment faibles comparés à ce qu'on peut trouver ailleurs.</p>
+<h2>Les frais de Linxea Spirit 2</h2><table><thead><tr><th>Type de frais</th><th>Linxea Spirit 2</th><th>À retenir</th></tr></thead><tbody><tr><td>Frais d'entrée</td><td>0 %</td><td>Aucun frais à l'ouverture</td></tr><tr><td>Frais sur versement</td><td>0 %</td><td>1 000 € versés = 1 000 € investis</td></tr><tr><td>Frais d'arbitrage en ligne</td><td>0 %</td><td>Changement de support gratuit*</td></tr><tr><td>Frais de gestion des UC</td><td>0,50 % / an</td><td>Prélevés chaque année sur les unités de compte</td></tr><tr><td>Transaction sur ETF</td><td>0,10 %</td><td>À l'achat et à la vente</td></tr><tr><td>Frais internes des ETF</td><td>Variable</td><td>Souvent autour de 0,10 à 0,40 % / an</td></tr><tr><td>Frais des SCPI</td><td>Variable</td><td>Dépendent de chaque SCPI</td></tr><tr><td>Frais des fonds</td><td>Variable</td><td>Peuvent être nettement plus élevés</td></tr></tbody></table><p><br>C'est probablement l'un des premiers arguments qui rend Linxea Spirit 2 attractif. Les frais sont vraiment faibles comparés à ce qu'on peut trouver ailleurs.</p>
 
 <p>Premier point : <strong>aucun frais d'entrée et aucun frais sur les versements</strong>. Quand tu verses 1 000 euros sur ton contrat, ce sont 1 000 euros qui sont réellement investis. C'est loin d'être systématique dans le monde des assurances-vie. Certains contrats prélèvent encore 2 à 3 % à chaque versement, ce qui est une hérésie selon moi.</p>
 
@@ -109,19 +107,13 @@ cta_btn_color: "#e9420a"
 
 <p>Ce qu'il faut toujours regarder, c'est le coût global de ton investissement, pas uniquement les frais du contrat.</p>
 
-<h2>Les fonds euros de Linxea Spirit 2</h2>
-
-<p>Passons à la poche la plus sécurisée du contrat. Linxea Spirit 2 propose deux fonds euros : <strong>Nouvelle Génération</strong> et <strong>Objectif Climat</strong>.</p>
+<h2>Les fonds euros de Linxea Spirit 2</h2><table><thead><tr><th>Caractéristique</th><th>Nouvelle Génération</th><th align="center">Objectif Climat</th></tr><tr><td>Capital garanti</td><td>98 %*</td><td align="center">98 %*</td></tr><tr><td>Investissement maximum</td><td>Jusqu'à 100 % du contrat</td><td align="center">Jusqu'à 100 % du contrat</td></tr><tr><td>Plafond</td><td>5 millions €</td><td align="center">5 millions €</td></tr><tr><td>Versement libre</td><td>✅ Oui</td><td align="center">✅ Oui</td></tr><tr><td>Versement programmé</td><td>✅ Oui</td><td align="center">✅ Oui</td></tr><tr><td>Arbitrage entrant</td><td>✅ Oui</td><td align="center">❌ Non</td></tr><tr><td>Classification SFDR</td><td>Article 8</td><td align="center">Article 9</td></tr><tr><td>Orientation</td><td>Obligations + diversification</td><td align="center">Transition écologique / obligations vertes</td></tr></thead><tbody></tbody></table><p><br>Passons à la poche la plus sécurisée du contrat. Linxea Spirit 2 propose deux fonds euros : <strong>Nouvelle Génération</strong> et <strong>Objectif Climat</strong>.</p>
 
 <p>Et premier point que je trouve vraiment important : <strong>tu peux investir 100 % de ton contrat sur les fonds euros</strong>, sans obligation d'avoir une partie en unités de compte. Beaucoup d'assurances-vie imposent une proportion minimale d'unités de compte (souvent 30 à 40 %) pour accéder aux fonds euros, ce qui n'est pas le cas ici.</p>
 
-<h3>Fonds Euro Nouvelle Génération</h3>
+<h3>Fonds Euro Nouvelle Génération</h3><table><thead><tr><th>Année</th><th>Rendement</th></tr></thead><tbody><tr><td>2025</td><td>3,08 %</td></tr><tr><td>2024</td><td>3,13 %</td></tr><tr><td>2023</td><td>3,13 %</td></tr></tbody></table><p><br>Le Fonds Euro Nouvelle Génération est accessible jusqu'à 100 % de ton investissement, sans condition particulière, dans la limite de 5 millions d'euros. Il est majoritairement investi en obligations, mais possède également une poche de diversification avec de l'immobilier, des actions et du private equity.&nbsp;</p><p>Il est classé article 8 selon la réglementation SFDR, ce qui signifie qu'il intègre des critères environnementaux et sociaux dans sa gestion.</p>
 
-<p>Le Fonds Euro Nouvelle Génération est accessible jusqu'à 100 % de ton investissement, sans condition particulière, dans la limite de 5 millions d'euros. Il est majoritairement investi en obligations, mais possède également une poche de diversification avec de l'immobilier, des actions et du private equity. Il est classé article 8 selon la réglementation SFDR, ce qui signifie qu'il intègre des critères environnementaux et sociaux dans sa gestion.</p>
-
-<h3>Fonds Euro Objectif Climat</h3>
-
-<p>Le Fonds Euro Objectif Climat est lui aussi accessible jusqu'à 100 % de ton investissement, dans la limite de 5 millions d'euros. Sa particularité, c'est son orientation environnementale beaucoup plus marquée. Il est classé article 9 selon la réglementation SFDR et sa poche obligataire est notamment orientée vers des obligations vertes, qui financent des projets liés à la transition écologique.</p>
+<h3>Fonds Euro Objectif Climat</h3><table><thead><tr><th>Année</th><th>Rendement</th></tr></thead><tbody><tr><td>2025</td><td>3,26 %</td></tr><tr><td>2024</td><td>3,31 %</td></tr><tr><td>2023</td><td>3,31 %</td></tr></tbody></table><p><br>Le Fonds Euro Objectif Climat est lui aussi accessible jusqu'à 100 % de ton investissement, dans la limite de 5 millions d'euros. Sa particularité, c'est son orientation environnementale beaucoup plus marquée. Il est classé article 9 selon la réglementation SFDR et sa poche obligataire est notamment orientée vers des obligations vertes, qui financent des projets liés à la transition écologique.</p>
 
 <p>Il y a cependant une contrainte importante à connaître sur ce fonds : <strong>tu peux l'alimenter lors d'un versement libre ou d'un versement programmé, mais pas par arbitrage</strong>. Autrement dit, si tu as déjà de l'argent investi ailleurs dans ton contrat, tu ne peux pas simplement le déplacer vers Objectif Climat. Il faut passer par un nouveau versement.</p>
 
@@ -137,9 +129,7 @@ cta_btn_color: "#e9420a"
 
 <p>Et c'est là que Spirit 2 devient vraiment intéressant. Le contrat donne accès à plusieurs centaines de supports. Mais ce qui m'importe plus que le nombre brut, c'est leur diversité. Sur ce point, Spirit 2 est particulièrement complet.</p>
 
-<h3>Les ETF : mon support préféré sur ce contrat</h3>
-
-<p>Linxea Spirit 2 donne accès à un choix important d'ETF depuis l'assurance-vie. Tu vas notamment trouver des ETF permettant de s'exposer au MSCI World, au S&amp;P 500, au Nasdaq, et à de nombreux autres marchés et thématiques.</p>
+<h3>Les ETF : mon support préféré sur ce contrat</h3><table><thead><tr><th>Caractéristique</th><th>ETF sur Linxea Spirit 2</th></tr></thead><tbody><tr><td>Frais de gestion du contrat</td><td>0,50 % / an sur les UC</td></tr><tr><td>Frais internes de l'ETF</td><td>Variables selon l'ETF</td></tr><tr><td>Frais de transaction à l'achat</td><td>0,10 %</td></tr><tr><td>Frais de transaction à la vente</td><td>0,10 %</td></tr><tr><td>Exemple pour 1 000 € investis</td><td>1 € de frais de transaction à l'achat</td></tr><tr><td>Investir par arbitrage</td><td>✅ Oui</td></tr><tr><td>Investir par versement libre</td><td>✅ Oui</td></tr><tr><td>Versements programmés</td><td>Oui, dès 100 € / mois</td></tr><tr><td>Indices disponibles</td><td>MSCI World, S&amp;P 500, Nasdaq…</td></tr></tbody></table><p><br>Linxea Spirit 2 donne accès à un choix important d'ETF depuis l'assurance-vie. Tu vas notamment trouver des ETF permettant de s'exposer au MSCI World, au S&amp;P 500, au Nasdaq, et à de nombreux autres marchés et thématiques.</p>
 
 <p>C'est personnellement l'une des principales raisons pour lesquelles j'utilise ce contrat. Investir sur des ETF depuis une assurance-vie, c'est combiner la fiscalité avantageuse de l'enveloppe avec les frais contenus des fonds indiciels. C'est une combinaison très efficace sur le long terme.</p>
 
@@ -158,9 +148,7 @@ cta_btn_color: "#e9420a"
 
 <p>Un petit détail pratique à connaître : si tu effectues un arbitrage, l'heure à laquelle tu valides ta demande peut avoir une incidence sur sa prise en compte. Une demande effectuée avant 16h30 est généralement prise en compte le jour ouvré suivant. Après 16h30, elle peut l'être au plus tard le deuxième jour ouvré suivant. Et attention : date de prise en compte ne signifie pas nécessairement cours d'achat ou de vente de l'ETF. La valorisation dépend des règles du support concerné.</p>
 
-<h3>Les SCPI : un vrai point fort, avec des nuances</h3>
-
-<p>Les SCPI sont le deuxième gros point fort de Spirit 2. Pour rappel, une SCPI te permet d'investir indirectement dans un parc immobilier et de percevoir une partie des revenus générés par cet immobilier. C'est de l'investissement immobilier accessible sans avoir à acheter un bien en direct.</p>
+<h3>Les SCPI : un vrai point fort, avec des nuances</h3><table><thead><tr><th>Caractéristique</th><th>SCPI sur Linxea Spirit 2</th></tr></thead><tbody><tr><td>Choix de SCPI</td><td>+ 20 SCPI disponibles</td></tr><tr><td>Loyers reversés</td><td>100 % des revenus distribués</td></tr><tr><td>SCPI lors d'un versement</td><td>50 % maximum du versement</td></tr><tr><td>Investissement par arbitrage</td><td>✅ Oui</td></tr><tr><td>Versement libre</td><td>✅ Oui</td></tr><tr><td>Versements programmés</td><td>❌ Non</td></tr><tr><td>Début de perception des revenus</td><td>1er jour du mois suivant l'investissement</td></tr><tr><td>Réinvestissement des loyers</td><td>Versés sur le fonds euro Spirica</td></tr><tr><td>Sortie avant 3 ans</td><td>⚠️ Pénalité de 3 % des sommes brutes désinvesties</td></tr><tr><td>Frais des SCPI</td><td>Variables selon chaque SCPI</td></tr><tr><td>Horizon recommandé</td><td>Long terme</td></tr></tbody></table><p>Les SCPI sont le deuxième gros point fort de Spirit 2. Pour rappel, une SCPI te permet d'investir indirectement dans un parc immobilier et de percevoir une partie des revenus générés par cet immobilier. C'est de l'investissement immobilier accessible sans avoir à acheter un bien en direct.</p>
 
 <p>Spirit 2 donne accès à un choix relativement large de SCPI. Et surtout, <strong>100 % des loyers distribués par les SCPI éligibles sont reversés</strong> selon les conditions du contrat. C'est loin d'être la norme : certaines assurances-vie ne reversent qu'une partie des revenus distribués par les SCPI. C'est un vrai avantage.</p>
 
@@ -178,9 +166,7 @@ cta_btn_color: "#e9420a"
 
 <p>Sur ce point, je dois être honnête : <strong>l'offre SCPI de Spirit 2 est aujourd'hui un peu moins attractive qu'elle a pu l'être</strong>. Certaines SCPI sans frais de souscription, comme Iroko Zen, ne sont plus accessibles sur ce contrat. Ça ne remet pas en cause l'intérêt global des SCPI disponibles, mais c'est un élément à peser si tu cherches à comparer Spirit 2 avec d'autres solutions pour investir en SCPI.</p>
 
-<h3>Les actions en direct : une fonctionnalité rare</h3>
-
-<p>Une particularité assez intéressante de Spirit 2, c'est la possibilité d'investir directement dans certaines actions, ce qu'on appelle des titres vifs. C'est quelque chose qui reste relativement rare dans une assurance-vie.</p>
+<h3>Les actions en direct : une fonctionnalité rare</h3><table><thead><tr><th>Caractéristique</th><th>Actions en direct sur Linxea Spirit 2</th></tr></thead><tbody><tr><td>Nombre d'actions disponibles</td><td>406</td></tr><tr><td>Marchés accessibles</td><td>France, Europe, États-Unis…</td></tr><tr><td>Exemples de valeurs</td><td>Apple, Microsoft, Nvidia…</td></tr><tr><td>Investissement minimum</td><td>1 000 € par action</td></tr><tr><td>Frais à l'achat</td><td>0,60 %</td></tr><tr><td>Frais à la vente</td><td>0,60 %</td></tr><tr><td>Exemple pour 1 000 €</td><td>6 € de frais à l'achat</td></tr><tr><td>Achat par arbitrage</td><td>✅ Oui</td></tr><tr><td>Achat par versement libre</td><td>✅ Oui</td></tr><tr><td>Versements programmés</td><td>❌ Non</td></tr></tbody></table><p>Une particularité assez intéressante de Spirit 2, c'est la possibilité d'investir directement dans certaines actions, ce qu'on appelle des titres vifs. C'est quelque chose qui reste relativement rare dans une assurance-vie.</p>
 
 <p>Le choix est d'ailleurs assez conséquent : 406 actions sont actuellement disponibles sur Linxea Spirit 2. On retrouve de grandes entreprises françaises et européennes, mais aussi certaines grandes valeurs américaines comme Apple, Microsoft ou Nvidia. Tu peux donc acheter directement des titres sans passer obligatoirement par un fonds ou un ETF.</p>
 
@@ -304,6 +290,7 @@ cta_btn_color: "#e9420a"
 <p>Si je débutais aujourd'hui et que je cherchais une assurance-vie pour investir sur le long terme, je regarderais Linxea Spirit 2 en priorité. Je l'ouvrirais avec au moins 500 euros pour prendre date fiscale, et je mettrais en place un versement programmé mensuel de 100 euros minimum vers un ETF MSCI World ou S&amp;P 500.</p>
 
 <p>Je garderais probablement une petite partie en fonds euro pour avoir une poche sécurisée, et j'envisagerais d'ajouter une ou deux SCPI sur le long terme une fois que j'aurais bien compris leur fonctionnement et les contraintes associées.</p><p>C'est simple, c'est progressif, et c'est dans une enveloppe fiscalement avantageuse avec des frais vraiment maîtrisés. Pour moi, c'est une bonne combinaison de départ.</p><p><em>Cet article ne constitue pas un conseil personnalisé en investissement. Investir comporte des risques de perte en capital, notamment sur les unités de compte. Les performances passées ne préjugent pas des performances futures.</em></p>
+
 
 
 
