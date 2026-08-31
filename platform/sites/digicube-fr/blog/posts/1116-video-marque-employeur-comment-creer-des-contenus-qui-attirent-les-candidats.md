@@ -1,18 +1,25 @@
 ---
-title: 'Vidéo marque employeur : comment créer des contenus qui attirent les candidats ?'
+title: 'Vidéo marque employeur : comment créer des contenus qui attirent les candidats
+  ?'
 slug: 1116-video-marque-employeur-comment-creer-des-contenus-qui-attirent-les-candidats
 date: '2026-08-31T17:00:00+02:00'
 categorie: Marketing
 meta_title: 'Vidéo marque employeur : conseils et exemples en {year}'
-meta_description: Découvrez comment la vidéo marque employeur attire des candidats qualifiés grâce à l'authenticité, sans budget hollywoodien ni production corporate froide.
+meta_description: Découvrez comment la vidéo marque employeur attire des candidats
+  qualifiés grâce à l'authenticité, sans budget hollywoodien ni production corporate
+  froide.
 min_words: 1500
 status: published
 featured_image: /blog/1116-video-marque-employeur-comment-creer-des-contenus-qui-attirent-les-candidats.jpg
 link_anchors:
 - text: vidéo marque employeur
   max: 15
+related_posts:
+- 8070-comment-creer-une-campagne-emailing-efficace-les-etapes-a-suivre
+- 7521-comment-creer-une-newsletter-professionnelle-et-developper-son-audience
+- 4081-digital-signage-definition-fonctionnement-et-usages
+- 7318-affichage-dynamique-en-entreprise-usages-et-avantages
 ---
-
 <p>J'ai mis plusieurs mois à comprendre pourquoi nos offres d'emploi ne généraient pas de candidatures. Bonne localisation, salaires corrects, conditions de travail honnêtes. Et pourtant, rien. Ou presque. Un jour, un candidat m'a dit directement : "Je ne savais pas ce que c'était vraiment de travailler chez vous." C'est là que j'ai compris le problème.</p>
 
 <p>On publiait des textes. Tout le monde publie des textes. Ce qu'on ne montrait pas, c'était l'ambiance, les visages, les locaux, les petits moments du quotidien. La <strong>vidéo marque employeur</strong> a changé ça pour nous, et pour un coût bien inférieur à ce que j'imaginais.</p>
