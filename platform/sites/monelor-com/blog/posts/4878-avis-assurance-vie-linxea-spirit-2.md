@@ -2,7 +2,7 @@
 title: "Avis Linxea Spirit 2 : mon retour après 1 an d’utilisation"
 slug: 4878-avis-assurance-vie-linxea-spirit-2
 date: 2026-08-31 12:43:58+02:00
-updated: 2026-08-31T14:41:30
+updated: 2026-08-31T14:58:40
 categorie: Assurance vie
 categories:
 - Assurance vie
@@ -187,9 +187,7 @@ cta_btn_color: "#e9420a"
 
 <p>Je ne vais pas te détailler le fonctionnement de chacun dans cet article. Mais il y a un conseil que je trouve vraiment important à donner : <strong>ce n'est pas parce qu'un support est disponible dans Spirit 2 qu'il est forcément intéressant</strong>. Le catalogue est énorme, et certains fonds d'investissement traditionnels peuvent avoir des frais relativement élevés qui vont grignoter ta performance sur le long terme.&nbsp;</p><p>Avant d'investir sur n'importe quel support, prends le temps de consulter le document d'informations clés, les frais, le niveau de risque et la stratégie. L'interface te permet d'accéder à ces informations directement.</p>
 
-<h2>Gestion libre ou gestion pilotée ?</h2>
-
-<p>Pour gérer tes investissements dans Spirit 2, tu as deux grandes options.</p>
+<h2>Gestion libre ou gestion pilotée sur Spirit 2 ?</h2><table><thead><tr><th>Caractéristique</th><th>Gestion libre</th><th>Gestion pilotée</th></tr></thead><tbody><tr><td>Qui choisit les supports ?</td><td>Vous-même</td><td>Le gestionnaire</td></tr><tr><td>Choix des ETF, SCPI, fonds…</td><td>✅ Libre</td><td>Selon le mandat choisi</td></tr><tr><td>Rééquilibrages</td><td>À réaliser soi-même</td><td>✅ Gérés automatiquement</td></tr><tr><td>Maîtrise des frais</td><td>⭐ Plus importante</td><td>Dépend de la gestion et des supports</td></tr><tr><td>Temps à consacrer</td><td>Plus important</td><td>Faible</td></tr><tr><td>Investissement initial minimum</td><td>Selon les supports</td><td>1 000 €</td></tr><tr><td>Versements programmés</td><td>✅ Oui</td><td>✅ Oui, après investissement initial</td></tr><tr><td>Gestionnaires disponibles</td><td>-</td><td>OTEA Capital, Yomoni, Natixis</td></tr><tr><td>Combinaison des deux modes</td><td>✅ Possible dans le même contrat</td><td>✅ Possible dans le même contrat</td></tr><tr><td>Pour quel profil ?</td><td>Investisseur autonome</td><td>Investisseur souhaitant déléguer</td></tr></tbody></table><p>Pour gérer tes investissements dans Spirit 2, tu as deux grandes options.</p>
 
 <p>La première, c'est la <strong>gestion libre</strong>. C'est celle que j'utilise personnellement. Tu choisis toi-même tes supports et leur répartition. Tu construis ton allocation comme tu le souhaites : fonds euro pour la partie sécurisée, ETF pour les marchés financiers, SCPI pour l'immobilier, etc. C'est toi qui décides et qui réalises tes opérations.</p>
 
@@ -290,6 +288,7 @@ cta_btn_color: "#e9420a"
 <p>Si je débutais aujourd'hui et que je cherchais une assurance-vie pour investir sur le long terme, je regarderais Linxea Spirit 2 en priorité. Je l'ouvrirais avec au moins 500 euros pour prendre date fiscale, et je mettrais en place un versement programmé mensuel de 100 euros minimum vers un ETF MSCI World ou S&amp;P 500.</p>
 
 <p>Je garderais probablement une petite partie en fonds euro pour avoir une poche sécurisée, et j'envisagerais d'ajouter une ou deux SCPI sur le long terme une fois que j'aurais bien compris leur fonctionnement et les contraintes associées.</p><p>C'est simple, c'est progressif, et c'est dans une enveloppe fiscalement avantageuse avec des frais vraiment maîtrisés. Pour moi, c'est une bonne combinaison de départ.</p><p><em>Cet article ne constitue pas un conseil personnalisé en investissement. Investir comporte des risques de perte en capital, notamment sur les unités de compte. Les performances passées ne préjugent pas des performances futures.</em></p>
+
 
 
 
