@@ -1,17 +1,19 @@
 ---
-title: "Mon avis sur l'assurance vie Linxea Spirit 2"
+title: "Avis Linxea Spirit 2 : mon retour après 1 an d’utilisation"
 slug: 4878-mon-avis-sur-l-assurance-vie-linxea-spirit-2
 date: 2026-08-31 08:42:35+02:00
-updated: 2026-08-31T12:39:42
+updated: 2026-08-31T12:43:13
 categorie: Assurance vie
 categories:
 - Assurance vie
-meta_title: ""
-meta_description: "Découvrez l'avis d'un client sur l'assurance vie Linxea Spirit 2 : frais, ETF, SCPI, fonds euro et interface passés au crible après plus d'un an d'utilisation."
+meta_title: "Assurance vie Linxea Spirit 2 : mon avis après 1 an d’utilisation"
+meta_description: "Découvrez mon avis sur Linxea Spirit 2 après 1 an d’utilisation : frais, ETF, SCPI, performances et retour d’expérience sur cette assurance vie."
 featured_image: ""
 status: draft
 min_words: 3500
 show_toc: true
+cta_enabled: true
+cta_link: https://www.financeads.net/tc.php?t=74753C432496072T&subid=S-monelor-avis-spirit2
 ---
 
 <p>Je suis client de Linxea Spirit 2 depuis plus d'un an. Et dans cet article, je vais te donner mon avis complet sur ce contrat d'assurance-vie : comment il fonctionne, quels sont les frais, dans quoi tu peux investir, et ce que j'aime ou j'aime moins après l'avoir utilisé au quotidien.</p>
