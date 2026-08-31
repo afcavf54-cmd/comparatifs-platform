@@ -2,7 +2,7 @@
 title: Comment fonctionne une assurance vie ?
 slug: 3327-assurance-vie
 date: 2026-08-03T13:49:16+02:00
-updated: 2026-08-31T13:59:27
+updated: 2026-08-31T13:59:49
 categorie: Assurance vie
 categories:
 - Assurance vie
