@@ -1,24 +1,27 @@
 ---
 title: Comment fonctionne une assurance vie ?
 slug: 3327-assurance-vie
-date: '2026-08-03T13:49:16+02:00'
+date: 2026-08-03T13:49:16+02:00
+updated: 2026-08-31T13:59:27
 categorie: Assurance vie
-meta_title: 'Assurance-vie : définition, principe et fonctionnement'
-meta_description: 'Découvrez comment fonctionne vraiment l''assurance vie : versements,
-  gestion, fiscalité et retrait. Le placement le plus polyvalent en France, enfin
-  expliqué…'
-min_words: 2500
-status: published
+categories:
+- Assurance vie
+meta_title: "Assurance-vie : définition, principe et fonctionnement"
+meta_description: "Découvrez comment fonctionne vraiment l'assurance vie : versements, gestion, fiscalité et retrait. Le placement le plus polyvalent en France, enfin expliqué…"
 featured_image: /blog/3327-assurance-vie.jpg
-link_anchors:
-- text: assurance vie
-  max: 20
+status: published
+min_words: 2500
+show_toc: true
 related_posts:
 - 4296-meilleures-scpi-linxea-spirit-2
 - 1453-comment-acheter-un-etf-sur-linxea-spirit-2
 - 1845-meilleurs-etf-linxea-spirit-2
 - 4857-comment-acheter-une-scpi-sur-linxea-spirit-2
+link_anchors:
+- text: assurance vie
+  max: 20
 ---
+
 <p>Quand j'ai découvert l'assurance vie, je pensais que c'était réservé aux personnes proches de la retraite. Un truc pour les seniors qui voulaient transmettre leur patrimoine à leurs enfants. Bref, quelque chose qui ne me concernait pas du tout.</p>
 
 <p>Grosse erreur.</p>
@@ -51,7 +54,7 @@ related_posts:
 
 <h3>Les unités de compte</h3>
 
-<p>Les unités de compte (ou UC pour les initiés), c'est tout le reste. Ce sont des placements investis sur les marchés financiers : des actions, des obligations (les obligations, c'est comme prêter de l'argent à une entreprise ou à un État en échange d'intérêts), des fonds immobiliers, des ETF (des paniers d'actions qui répliquent la performance d'un indice boursier comme le CAC 40 ou le S&P 500), etc.</p>
+<p>Les unités de compte (ou UC pour les initiés), c'est tout le reste. Ce sont des placements investis sur les marchés financiers : des actions, des obligations (les obligations, c'est comme prêter de l'argent à une entreprise ou à un État en échange d'intérêts), des fonds immobiliers, des ETF (des paniers d'actions qui répliquent la performance d'un indice boursier comme le CAC 40 ou le S&amp;P 500), etc.</p>
 
 <p>Ici, le capital n'est pas garanti. La valeur de tes unités de compte peut monter... mais aussi baisser. C'est le prix à payer pour avoir accès à des rendements potentiellement bien plus élevés sur la durée.</p>
 
@@ -289,7 +292,7 @@ related_posts:
 
 <p><strong>L'interface et la simplicité.</strong> Ça peut paraître secondaire, mais si l'interface est nulle et que tu ne comprends rien à ton contrat, tu vas le délaisser. Les assureurs en ligne proposent en général des interfaces bien plus claires que les applications bancaires traditionnelles.</p>
 
-<p>Parmi les contrats que je cite régulièrement sur Monelor : Linxea Spirit 2, Lucya Cardif (ex-BforBank Vie), et Boursorama Vie. Ce ne sont pas les seuls bons contrats, mais ce sont des références solides avec des frais compétitifs et un bon accès aux ETF.</p>
+<p>Parmi les contrats que je cite régulièrement sur Monelor :&nbsp;<a href="https://www.monelor.com/4878-avis-assurance-vie-linxea-spirit-2/">Linxea Spirit 2</a>, Lucya Cardif (ex-BforBank Vie), et Boursorama Vie. Ce ne sont pas les seuls bons contrats, mais ce sont des références solides avec des frais compétitifs et un bon accès aux ETF.</p>
 
 <h2>Ce que l'assurance vie n'est pas</h2>
 
@@ -306,3 +309,4 @@ related_posts:
 <p>Voilà. Maintenant tu sais comment fonctionne une assurance vie. Ce n'était pas si compliqué, non ? L'idée que ce produit est réservé aux retraités ou aux gens riches, c'est vraiment un mythe. Avec 100 euros et un bon contrat en ligne, tu peux ouvrir la tienne aujourd'hui et faire tourner l'horloge fiscale dès maintenant.</p>
 
 <p>Et si tu veux aller plus loin, je te recommande de jeter un oeil aux articles sur le choix du meilleur contrat d'assurance vie et sur la stratégie ETF en assurance vie. On creuse encore plus les détails pratiques.</p>
+
