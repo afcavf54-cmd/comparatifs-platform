@@ -2,7 +2,7 @@
 title: "Mon avis sur l'assurance vie Linxea Spirit 2"
 slug: 4878-mon-avis-sur-l-assurance-vie-linxea-spirit-2
 date: 2026-08-31 08:42:35+02:00
-updated: 2026-08-31T08:46:29
+updated: 2026-08-31T12:39:42
 categorie: Assurance vie
 categories:
 - Assurance vie
@@ -16,11 +16,7 @@ show_toc: true
 
 <p>Je suis client de Linxea Spirit 2 depuis plus d'un an. Et dans cet article, je vais te donner mon avis complet sur ce contrat d'assurance-vie : comment il fonctionne, quels sont les frais, dans quoi tu peux investir, et ce que j'aime ou j'aime moins après l'avoir utilisé au quotidien.</p>
 
-<p>On va voir ensemble les fonds euros, les ETF, les SCPI, les actions en direct et les autres supports disponibles. Je vais également t'expliquer comment fonctionne l'interface, ce qu'il faut savoir sur la gestion libre et la gestion pilotée, et à qui ce contrat s'adresse vraiment selon moi.</p>
-
-<p>Avant de commencer, rappel important : cet article ne constitue pas un conseil personnalisé en investissement. Investir comporte des risques de perte en capital.</p>
-
-<h2>Mon avis sur Linxea Spirit 2 en bref</h2>
+<p>On va voir ensemble les fonds euros, les ETF, les SCPI, les actions en direct et les autres supports disponibles. Je vais également t'expliquer comment fonctionne l'interface, ce qu'il faut savoir sur la gestion libre et la gestion pilotée, et à qui ce contrat s'adresse vraiment selon moi.</p><h2>Mon avis sur Linxea Spirit 2 en bref</h2>
 
 <p>Avant d'entrer dans le détail, voici ce que je retiens en quelques points clés :</p>
 
@@ -31,9 +27,7 @@ show_toc: true
 <li><strong>Le fonds euro est accessible à 100 %</strong>, sans obligation d'investir en unités de compte.</li>
 <li><strong>L'interface est double</strong> (Linxea et Sylvéa), ce qui peut demander un temps d'adaptation.</li>
 <li><strong>Pas d'application mobile dédiée</strong> pour le moment.</li>
-<li><strong>Certaines SCPI sans frais de souscription ont disparu</strong> du catalogue, ce qui rend cette partie un peu moins attractive qu'avant.</li>
-<li><strong>Mon avis global</strong> : un très bon contrat pour celui qui veut gérer lui-même son assurance-vie avec des frais maîtrisés et une grande liberté de choix.</li>
-</ul>
+<li><strong>Certaines SCPI sans frais de souscription ont disparu</strong> du catalogue, ce qui rend cette partie un peu moins attractive qu'avant.</li></ul>
 
 <h2>Les avantages et les inconvénients de Linxea Spirit 2</h2>
 
@@ -47,7 +41,7 @@ show_toc: true
 <li>100 % des loyers reversés sur les SCPI éligibles</li>
 <li>Possibilité de combiner gestion libre et gestion pilotée dans le même contrat</li>
 <li>Versements programmés disponibles dès 100 euros par mois</li>
-<li>Accès à des ETF sur les grands indices mondiaux (MSCI World, S&P 500, Nasdaq...)</li>
+<li>Accès à des ETF sur les grands indices mondiaux (MSCI World, S&amp;P 500, Nasdaq...)</li>
 <li>Contrat accessible dès 500 euros de versement initial</li>
 <li>Possibilité d'investir en actions en direct, ce qui est rare dans une assurance-vie</li>
 </ul>
@@ -81,17 +75,17 @@ show_toc: true
 
 <p>Il n'y a aucune obligation de verser de l'argent régulièrement. Tu peux ouvrir le contrat avec 500 euros, puis n'y toucher que lorsque tu en as envie ou les moyens.</p>
 
-<p>Et c'est là qu'il y a une notion vraiment importante à comprendre : <strong>l'ancienneté fiscale de l'assurance-vie commence à la date d'ouverture du contrat</strong>, pas à la date des versements. C'est après 8 ans d'existence que l'assurance-vie bénéficie d'un régime fiscal plus avantageux sur les gains retirés, avec notamment un abattement annuel sous certaines conditions. Donc même si tu n'as que 500 euros à placer aujourd'hui, ouvrir le contrat maintenant permet de faire tourner le compteur fiscal immédiatement. C'est ce qu'on appelle "prendre date".</p>
+<p>Et c'est là qu'il y a une notion vraiment importante à comprendre : <strong>l'ancienneté fiscale de l'assurance-vie commence à la date d'ouverture du contrat</strong>, pas à la date des versements.&nbsp;</p><p>C'est après 8 ans d'existence que l'assurance-vie bénéficie d'un régime fiscal plus avantageux sur les gains retirés, avec notamment un abattement annuel sous certaines conditions. Donc même si tu n'as que 500 euros à placer aujourd'hui, ouvrir le contrat maintenant permet de faire tourner le compteur fiscal immédiatement. C'est ce qu'on appelle "prendre date".</p>
 
 <h2>Les frais de Linxea Spirit 2</h2>
 
-<p>C'est probablement l'un des premiers arguments qui me rend Linxea Spirit 2 attractif. Les frais sont vraiment faibles comparés à ce qu'on peut trouver ailleurs.</p>
+<p>C'est probablement l'un des premiers arguments qui rend Linxea Spirit 2 attractif. Les frais sont vraiment faibles comparés à ce qu'on peut trouver ailleurs.</p>
 
 <p>Premier point : <strong>aucun frais d'entrée et aucun frais sur les versements</strong>. Quand tu verses 1 000 euros sur ton contrat, ce sont 1 000 euros qui sont réellement investis. C'est loin d'être systématique dans le monde des assurances-vie. Certains contrats prélèvent encore 2 à 3 % à chaque versement, ce qui est une hérésie selon moi.</p>
 
 <p>Deuxième point : <strong>aucun frais d'arbitrage en ligne</strong>. Un arbitrage, c'est simplement le fait de déplacer de l'argent déjà présent dans ton contrat d'un support vers un autre. Par exemple, tu veux passer d'un fonds euro vers un ETF. Sur Spirit 2, cette opération ne te coûte rien (hors frais de transaction propres à certains supports).</p>
 
-<p>Troisième point, et c'est le plus important à mes yeux : <strong>les frais de gestion annuels sur les unités de compte sont de seulement 0,50 % par an</strong>. C'est très faible. Ces frais sont prélevés chaque année sur l'ensemble de tes unités de compte. Et sur 10, 20 ou 30 ans, quelques dixièmes de pourcentage de différence peuvent finir par représenter des milliers d'euros perdus. Les frais de gestion, c'est l'ennemi silencieux de la performance à long terme.</p>
+<p>Troisième point, et c'est le plus important à mes yeux : <strong>les frais de gestion annuels sur les unités de compte sont de seulement 0,50 % par an</strong>. C'est très faible. Ces frais sont prélevés chaque année sur l'ensemble de tes unités de compte.</p><p>Et sur 10, 20 ou 30 ans, quelques dixièmes de pourcentage de différence peuvent finir par représenter des milliers d'euros perdus. Les frais de gestion, c'est l'ennemi silencieux de la performance à long terme.</p>
 
 <p>Attention toutefois à une erreur assez fréquente : <strong>les 0,50 % ne représentent pas le coût total de ton investissement</strong>. Il faut toujours distinguer les frais du contrat des frais propres aux supports que tu choisis.</p>
 
@@ -122,9 +116,9 @@ show_toc: true
 
 <h3>Ce qu'il faut savoir sur la garantie du capital</h3>
 
-<p>Sur les deux fonds euros, le capital est garanti à hauteur de 98 %. Ce chiffre peut surprendre parce qu'on entend souvent dire que les fonds euros garantissent 100 % du capital. Sur Spirit 2, cette garantie est exprimée nette des frais de gestion maximum du fonds. En pratique, cela reste une protection très solide et, historiquement, les fonds euros n'ont jamais perdu de valeur en brut. Mais c'est une nuance à connaître.</p>
+<p>Sur les deux fonds euros, le capital est garanti à hauteur de 98 %. Ce chiffre peut surprendre parce qu'on entend souvent dire que les fonds euros garantissent 100 % du capital.&nbsp;</p><p>Sur Spirit 2, cette garantie est exprimée nette des frais de gestion maximum du fonds. En pratique, cela reste une protection très solide et, historiquement, les fonds euros n'ont jamais perdu de valeur en brut.&nbsp;</p><p>Mais c'est une nuance à connaître.</p>
 
-<p>Autre point pratique : les rendements communiqués pour les fonds euros sont déjà nets des frais de gestion du fonds, mais hors fiscalité. C'est-à-dire que les prélèvements sociaux et l'impôt éventuel ne sont pas encore déduits.</p>
+<p><b>Autre point pratique</b> : les rendements communiqués pour les fonds euros sont déjà nets des frais de gestion du fonds, mais hors fiscalité. C'est-à-dire que les prélèvements sociaux et l'impôt éventuel ne sont pas encore déduits.</p>
 
 <p>Pour moi, le fonds euro joue un rôle très précis dans un portefeuille : c'est la poche sécurisée. Tu peux t'en servir pour équilibrer des investissements plus dynamiques comme les ETF, ou simplement pour placer une partie de ton épargne à l'abri des fluctuations des marchés.</p>
 
@@ -134,7 +128,7 @@ show_toc: true
 
 <h3>Les ETF : mon support préféré sur ce contrat</h3>
 
-<p>Linxea Spirit 2 donne accès à un choix important d'ETF depuis l'assurance-vie. Tu vas notamment trouver des ETF permettant de s'exposer au MSCI World, au S&P 500, au Nasdaq, et à de nombreux autres marchés et thématiques.</p>
+<p>Linxea Spirit 2 donne accès à un choix important d'ETF depuis l'assurance-vie. Tu vas notamment trouver des ETF permettant de s'exposer au MSCI World, au S&amp;P 500, au Nasdaq, et à de nombreux autres marchés et thématiques.</p>
 
 <p>C'est personnellement l'une des principales raisons pour lesquelles j'utilise ce contrat. Investir sur des ETF depuis une assurance-vie, c'est combiner la fiscalité avantageuse de l'enveloppe avec les frais contenus des fonds indiciels. C'est une combinaison très efficace sur le long terme.</p>
 
@@ -161,7 +155,7 @@ show_toc: true
 
 <p>Mais il y a plusieurs particularités importantes à connaître avant d'investir en SCPI via Spirit 2.</p>
 
-<p><strong>Première particularité :</strong> lors d'un nouveau versement, tu ne peux investir que <strong>50 % maximum de ce versement en SCPI</strong>. Si tu verses 1 000 euros, tu pourras placer au maximum 500 euros en SCPI. Les 500 euros restants devront aller sur d'autres supports. Attention toutefois à une nuance importante : cette limite concerne les versements. Si tu as déjà de l'argent sur ton contrat, tu peux très bien faire un arbitrage pour en déplacer une plus grande proportion vers des SCPI.</p>
+<p><strong>Première particularité :</strong> lors d'un nouveau versement, tu ne peux investir que <strong>50 % maximum de ce versement en SCPI</strong>. Si tu verses 1 000 euros, tu pourras placer au maximum 500 euros en SCPI.&nbsp;</p><p>Les 500 euros restants devront aller sur d'autres supports. Attention toutefois à une nuance importante : cette limite concerne les versements. Si tu as déjà de l'argent sur ton contrat, tu peux très bien faire un arbitrage pour en déplacer une plus grande proportion vers des SCPI.</p>
 
 <p><strong>Deuxième particularité :</strong> les versements programmés ne sont pas disponibles pour acheter des parts de SCPI. Tu ne peux pas automatiser un investissement mensuel sur une SCPI.</p>
 
@@ -194,7 +188,7 @@ show_toc: true
 
 <p>Et ce n'est pas tout. Au-delà des ETF, des SCPI et des actions, tu trouves également sur Spirit 2 de nombreux fonds d'investissement traditionnels, des FCP, des SICAV, des SCI, des OPCI, et des produits plus spécifiques comme des EMTN ou des ETC.</p>
 
-<p>Je ne vais pas te détailler le fonctionnement de chacun dans cet article. Mais il y a un conseil que je trouve vraiment important à donner : <strong>ce n'est pas parce qu'un support est disponible dans Spirit 2 qu'il est forcément intéressant</strong>. Le catalogue est énorme, et certains fonds d'investissement traditionnels peuvent avoir des frais relativement élevés qui vont grignoter ta performance sur le long terme. Avant d'investir sur n'importe quel support, prends le temps de consulter le document d'informations clés, les frais, le niveau de risque et la stratégie. L'interface te permet d'accéder à ces informations directement.</p>
+<p>Je ne vais pas te détailler le fonctionnement de chacun dans cet article. Mais il y a un conseil que je trouve vraiment important à donner : <strong>ce n'est pas parce qu'un support est disponible dans Spirit 2 qu'il est forcément intéressant</strong>. Le catalogue est énorme, et certains fonds d'investissement traditionnels peuvent avoir des frais relativement élevés qui vont grignoter ta performance sur le long terme.&nbsp;</p><p>Avant d'investir sur n'importe quel support, prends le temps de consulter le document d'informations clés, les frais, le niveau de risque et la stratégie. L'interface te permet d'accéder à ces informations directement.</p>
 
 <h2>Gestion libre ou gestion pilotée ?</h2>
 
@@ -202,7 +196,7 @@ show_toc: true
 
 <p>La première, c'est la <strong>gestion libre</strong>. C'est celle que j'utilise personnellement. Tu choisis toi-même tes supports et leur répartition. Tu construis ton allocation comme tu le souhaites : fonds euro pour la partie sécurisée, ETF pour les marchés financiers, SCPI pour l'immobilier, etc. C'est toi qui décides et qui réalises tes opérations.</p>
 
-<p>La deuxième, c'est la <strong>gestion pilotée</strong>. Si tu ne souhaites pas gérer toi-même ton portefeuille, tu confies cette gestion à un expert. Spirit 2 propose trois options de gestion pilotée :</p>
+<p>La deuxième, c'est la <strong>gestion pilotée</strong>. Si tu ne souhaites pas gérer toi-même ton portefeuille, tu confies cette gestion à un expert.</p><p>Spirit 2 propose trois options de gestion pilotée :</p>
 
 <ul>
 <li><strong>OTEA Capital</strong> : une gestion plutôt traditionnelle, qui utilise notamment le fonds euro pour réduire le risque du portefeuille.</li>
@@ -212,7 +206,7 @@ show_toc: true
 
 <p>Dans chaque cas, tu choisis également ton niveau de risque. Et c'est une vraie différence par rapport à certains contrats qui ne proposent qu'un seul gestionnaire et quelques profils standardisés.</p>
 
-<p>Attention cependant à une erreur fréquente avec la gestion pilotée : ne regarde pas uniquement les frais supplémentaires annoncés pour la gestion. Les supports sélectionnés par le gestionnaire ont leurs propres frais internes. Et les opérations de rééquilibrage du portefeuille peuvent aussi générer des frais de transaction. C'est un coût souvent oublié, mais qui peut peser sur ta performance à long terme.</p>
+<p>Attention cependant à une <b>erreur fréquente</b> avec la gestion pilotée : ne regarde pas uniquement les frais supplémentaires annoncés pour la gestion. Les supports sélectionnés par le gestionnaire ont leurs propres frais internes. Et les opérations de rééquilibrage du portefeuille peuvent aussi générer des frais de transaction. C'est un coût souvent oublié, mais qui peut peser sur ta performance à long terme.</p>
 
 <p>Pour accéder à la gestion pilotée, il faut investir au minimum 1 000 euros au départ. Une fois ce seuil atteint, tu peux ensuite mettre en place des versements programmés.</p>
 
@@ -230,11 +224,7 @@ show_toc: true
 
 <p>L'espace Linxea est ton point d'entrée principal. C'est là que tu arrives quand tu te connectes à ton compte. Tu peux y consulter le solde de ton contrat, sa performance globale, la répartition entre tes différents supports, et un graphique de l'évolution de la valeur de ton contrat dans le temps.</p>
 
-<p>Tu peux également y retrouver le versement initial, ton mode de gestion, l'existence ou non de versements programmés, et même un indicateur du niveau de risque de ton portefeuille. L'historique des opérations est aussi accessible (arbitrages, versements, frais prélevés). Et enfin, tu peux consulter les documents du contrat et accéder aux informations sur les supports disponibles.</p>
-
-<p>Une petite précision importante lorsque tu regardes le graphique d'évolution de ton contrat : <strong>une hausse brutale de la valeur ne signifie pas forcément que tes investissements ont fortement progressé</strong>. Elle peut simplement correspondre à un nouveau versement que tu as effectué. C'est un détail qui peut dérouter au départ.</p>
-
-<p>L'espace Linxea est donc particulièrement pratique pour suivre et analyser ton contrat. C'est une interface claire, lisible, et agréable à utiliser.</p>
+<p>Tu peux également y retrouver le versement initial, ton mode de gestion, l'existence ou non de versements programmés, et même un indicateur du niveau de risque de ton portefeuille. L'historique des opérations est aussi accessible (arbitrages, versements, frais prélevés).&nbsp;</p><p>Et enfin, tu peux consulter les documents du contrat et accéder aux informations sur les supports disponibles.</p><p>L'espace Linxea est donc particulièrement pratique pour suivre et analyser ton contrat. C'est une interface claire, lisible, et agréable à utiliser.</p>
 
 <h3>L'interface Sylvéa de Spirica</h3>
 
@@ -260,7 +250,7 @@ show_toc: true
 
 <p>C'est donc une interface complète, même si j'aurais personnellement préféré pouvoir tout gérer depuis une seule interface plus moderne et unifiée.</p>
 
-<h3>Un point sur les démarches administratives</h3>
+<h3>Un point sur les avis clients</h3>
 
 <p>Parmi les avis clients que tu peux trouver sur Linxea, certains mentionnent des démarches administratives parfois perçues comme lourdes. Par exemple, lorsque tu effectues un nouveau versement depuis Sylvéa, Spirica peut te demander d'indiquer précisément l'origine des fonds versés et, selon ta situation, de fournir un justificatif.</p>
 
@@ -300,27 +290,8 @@ show_toc: true
 
 <h3>Ce que je ferais si je débutais aujourd'hui</h3>
 
-<p>Si je débutais aujourd'hui et que je cherchais une assurance-vie pour investir sur le long terme, je regarderais Linxea Spirit 2 en priorité. Je l'ouvrirais avec au moins 500 euros pour prendre date fiscale, et je mettrais en place un versement programmé mensuel de 100 euros minimum vers un ETF MSCI World ou S&P 500.</p>
+<p>Si je débutais aujourd'hui et que je cherchais une assurance-vie pour investir sur le long terme, je regarderais Linxea Spirit 2 en priorité. Je l'ouvrirais avec au moins 500 euros pour prendre date fiscale, et je mettrais en place un versement programmé mensuel de 100 euros minimum vers un ETF MSCI World ou S&amp;P 500.</p>
 
-<p>Je garderais probablement une petite partie en fonds euro pour avoir une poche sécurisée, et j'envisagerais d'ajouter une ou deux SCPI sur le long terme une fois que j'aurais bien compris leur fonctionnement et les contraintes associées.</p>
+<p>Je garderais probablement une petite partie en fonds euro pour avoir une poche sécurisée, et j'envisagerais d'ajouter une ou deux SCPI sur le long terme une fois que j'aurais bien compris leur fonctionnement et les contraintes associées.</p><p>C'est simple, c'est progressif, et c'est dans une enveloppe fiscalement avantageuse avec des frais vraiment maîtrisés. Pour moi, c'est une bonne combinaison de départ.</p><p><em>Cet article ne constitue pas un conseil personnalisé en investissement. Investir comporte des risques de perte en capital, notamment sur les unités de compte. Les performances passées ne préjugent pas des performances futures.</em></p>
 
-<p>C'est simple, c'est progressif, et c'est dans une enveloppe fiscalement avantageuse avec des frais vraiment maîtrisés. Pour moi, c'est une bonne combinaison de départ.</p>
-
-<h2>Résumé et conclusion</h2>
-
-<p>Voilà pour mon avis complet sur Linxea Spirit 2. Laisse-moi te faire un résumé rapide de ce qu'on a vu ensemble.</p>
-
-<p><strong>Linxea Spirit 2 est commercialisé par Linxea et géré par Spirica.</strong> Tu interagis avec deux interfaces : l'espace Linxea pour consulter et suivre ton contrat, et Sylvéa pour réaliser les opérations. Le contrat est accessible dès 500 euros de versement initial, avec des versements libres possibles dès 100 euros et des versements programmés dès 100 euros par mois.</p>
-
-<p><strong>Les frais sont parmi les plus bas du marché</strong> : 0,50 % de frais de gestion annuels sur les unités de compte, aucun frais d'entrée, de versement ou d'arbitrage en ligne. C'est son premier grand avantage.</p>
-
-<p><strong>La diversité des supports est un autre point fort majeur</strong> : deux fonds euros, une large gamme d'ETF, des SCPI avec 100 % des loyers reversés sur les SCPI éligibles, des actions en direct et de nombreux autres fonds. Tout ça dans une seule enveloppe.</p>
-
-<p><strong>Les quelques points à surveiller</strong> : la double interface qui demande un temps d'adaptation, l'absence d'application mobile, la garantie du capital à 98 % sur les fonds euros (et non 100 %), les contraintes spécifiques aux SCPI (plafond de 50 % lors des versements, pénalité de sortie dans les trois premières années, absence de versements programmés), et la disparition de certaines SCPI sans frais de souscription du catalogue.</p>
-
-<p>Après plus d'un an d'utilisation, je reste très satisfait de ce contrat pour ce que je lui demande : gérer moi-même mon allocation avec des ETF, un fonds euro et quelques SCPI, en maîtrisant mes frais au maximum. Ce n'est pas parfait, mais pour un investisseur qui souhaite construire une assurance-vie complète et peu chargée en frais, Spirit 2 reste selon moi l'une des meilleures options disponibles sur le marché.</p>
-
-<p>Si tu as des questions sur Linxea Spirit 2, n'hésite pas à les poser en commentaire sous la vidéo YouTube correspondante, j'y réponds avec plaisir. Et si tu veux retrouver mes tutoriels complets sur comment acheter un ETF sur Spirit 2, comment investir en SCPI, ou encore comment comparer les gestions pilotées disponibles, je t'invite à consulter la chaîne YouTube Monelor où tu retrouveras tous ces contenus.</p>
-
-<p><em>Cet article ne constitue pas un conseil personnalisé en investissement. Investir comporte des risques de perte en capital, notamment sur les unités de compte. Les performances passées ne préjugent pas des performances futures.</em></p>
 
