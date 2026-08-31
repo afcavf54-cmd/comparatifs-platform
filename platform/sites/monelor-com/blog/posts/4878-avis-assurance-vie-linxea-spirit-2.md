@@ -2,7 +2,7 @@
 title: "Avis Linxea Spirit 2 : mon retour après 1 an d’utilisation"
 slug: 4878-avis-assurance-vie-linxea-spirit-2
 date: 2026-08-31 12:43:58+02:00
-updated: 2026-08-31T14:58:40
+updated: 2026-08-31T15:01:15
 categorie: Assurance vie
 categories:
 - Assurance vie
