@@ -1,26 +1,30 @@
 ---
-title: 'Avis Linxea Spirit 2 : mon retour après 1 an d’utilisation'
+title: "Avis Linxea Spirit 2 : mon retour après 1 an d’utilisation"
 slug: 4878-avis-assurance-vie-linxea-spirit-2
 date: 2026-08-31 12:43:58+02:00
-updated: 2026-08-31 13:08:27
+updated: 2026-08-31T13:53:22
 categorie: Assurance vie
 categories:
 - Assurance vie
-meta_title: 'Assurance vie Linxea Spirit 2 : mon avis après 1 an d’utilisation'
-meta_description: 'Découvrez mon avis sur Linxea Spirit 2 après 1 an d’utilisation
-  : frais, ETF, SCPI, performances et retour d’expérience sur cette assurance vie.'
-featured_image: ''
+meta_title: "Assurance vie Linxea Spirit 2 : mon avis après 1 an d’utilisation"
+meta_description: "Découvrez mon avis sur Linxea Spirit 2 après 1 an d’utilisation : frais, ETF, SCPI, performances et retour d’expérience sur cette assurance vie."
+featured_image: ""
 status: published
 min_words: 3500
-show_toc: true
-cta_enabled: true
-cta_link: https://www.financeads.net/tc.php?t=74753C432496072T&subid=S-monelor-avis-spirit2
+show_toc: false
 related_posts:
 - 3327-assurance-vie
 - 4296-meilleures-scpi-linxea-spirit-2
 - 4857-comment-acheter-une-scpi-sur-linxea-spirit-2
 - 1453-comment-acheter-un-etf-sur-linxea-spirit-2
+cta_enabled: true
+cta_text: "Linxea Spirit 2 : Jusqu'à 150€ à l'ouverture"
+cta_color: "#000a22"
+cta_link: https://www.financeads.net/tc.php?t=74753C432496072T&subid=S-monelor-avis-spirit2
+cta_button: En profiter
+cta_btn_color: "#e9420a"
 ---
+
 <p>Je suis client de Linxea Spirit 2 depuis plus d'un an. Et dans cet article, je vais te donner mon avis complet sur ce contrat d'assurance-vie : comment il fonctionne, quels sont les frais, dans quoi tu peux investir, et ce que j'aime ou j'aime moins après l'avoir utilisé au quotidien.</p>
 
 <p>On va voir ensemble les fonds euros, les ETF, les SCPI, les actions en direct et les autres supports disponibles. Je vais également t'expliquer comment fonctionne l'interface, ce qu'il faut savoir sur la gestion libre et la gestion pilotée, et à qui ce contrat s'adresse vraiment selon moi.</p><h2>Mon avis sur Linxea Spirit 2 en bref</h2>
@@ -300,6 +304,7 @@ related_posts:
 <p>Si je débutais aujourd'hui et que je cherchais une assurance-vie pour investir sur le long terme, je regarderais Linxea Spirit 2 en priorité. Je l'ouvrirais avec au moins 500 euros pour prendre date fiscale, et je mettrais en place un versement programmé mensuel de 100 euros minimum vers un ETF MSCI World ou S&amp;P 500.</p>
 
 <p>Je garderais probablement une petite partie en fonds euro pour avoir une poche sécurisée, et j'envisagerais d'ajouter une ou deux SCPI sur le long terme une fois que j'aurais bien compris leur fonctionnement et les contraintes associées.</p><p>C'est simple, c'est progressif, et c'est dans une enveloppe fiscalement avantageuse avec des frais vraiment maîtrisés. Pour moi, c'est une bonne combinaison de départ.</p><p><em>Cet article ne constitue pas un conseil personnalisé en investissement. Investir comporte des risques de perte en capital, notamment sur les unités de compte. Les performances passées ne préjugent pas des performances futures.</em></p>
+
 
 
 
