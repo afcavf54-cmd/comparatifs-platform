@@ -2,7 +2,7 @@
 title: "Avis Linxea Spirit 2 : mon retour après 1 an d’utilisation"
 slug: 4878-avis-assurance-vie-linxea-spirit-2
 date: 2026-08-31 12:43:58+02:00
-updated: 2026-09-01T22:13:37
+updated: 2026-09-01T22:24:07
 categorie: Assurance vie
 categories:
 - Assurance vie
@@ -107,7 +107,7 @@ cta_btn_color: "#e9420a"
 
 <p>Ce qu'il faut toujours regarder, c'est le coût global de ton investissement, pas uniquement les frais du contrat.</p>
 
-<h2>Les fonds euros de Linxea Spirit 2</h2><p></p><table><thead><tr><th>Caractéristique</th><th>Nouvelle Génération</th><th>Objectif Climat</th></tr><tr><td>Capital garanti</td><td>98 %</td><td>98 %</td></tr><tr><td>Investissement maximum</td><td>Jusqu'à 100 % du contrat</td><td>Jusqu'à 100 % du contrat</td></tr><tr><td>Plafond</td><td>5 millions €</td><td>5 millions €</td></tr><tr><td>Versement libre</td><td>✅ Oui</td><td>✅ Oui</td></tr><tr><td>Versement programmé</td><td>✅ Oui</td><td>✅ Oui</td></tr><tr><td>Arbitrage entrant</td><td>✅ Oui</td><td>❌ Non</td></tr></thead><tbody><tr><td>Classification SFDR</td><td>Article 8</td><td>Article 9</td></tr><tr><td>Orientation</td><td>Obligations + diversification</td><td>Transition écologique / obligations vertes</td></tr></tbody></table><p></p><p>Passons à la poche la plus sécurisée du contrat. Linxea Spirit 2 propose deux fonds euros : <strong>Nouvelle Génération</strong> et <strong>Objectif Climat</strong>.</p>
+<h2>Les fonds euros de Linxea Spirit 2</h2><p></p><table><thead><tr><th>Caractéristique</th><th>Nouvelle Génération</th><th>Objectif Climat</th></tr><tr><td>Capital garanti</td><td>98 %</td><td>98 %</td></tr><tr><td>Investissement maximum</td><td>Jusqu'à 100 % du contrat</td><td>Jusqu'à 100 % du contrat</td></tr><tr><td>Plafond</td><td>5 millions €</td><td>5 millions €</td></tr><tr><td>Versement libre</td><td>✅ Oui</td><td>✅ Oui</td></tr><tr><td>Versement programmé</td><td>✅ Oui</td><td>✅ Oui</td></tr><tr><td>Arbitrage entrant</td><td>✅ Oui</td><td>❌ Non</td></tr></thead><tbody><tr><td>Classification SFDR</td><td>Article 8</td><td>Article 9</td></tr><tr><td>Orientation</td><td>Obligations + diversification</td><td>Transition écologique / obligations vertes</td></tr></tbody></table><p></p><table><thead><tr><th>Caractéristique</th><th>Nouvelle Génération</th><th>Objectif Climat</th></tr></thead><tbody><tr><td>Capital garanti</td><td>98 %</td><td>98 %</td></tr><tr><td>Investissement maximum</td><td>Jusqu'à 100 % du contrat</td><td>Jusqu'à 100 % du contrat</td></tr><tr><td>Plafond</td><td>5 millions €</td><td>5 millions €</td></tr><tr><td>Versement libre</td><td>✅ Oui</td><td>✅ Oui</td></tr><tr><td>Versement programmé</td><td>✅ Oui</td><td>✅ Oui</td></tr><tr><td>Arbitrage entrant</td><td>✅ Oui</td><td>❌ Non</td></tr><tr><td>Classification SFDR</td><td>Article 8</td><td>Article 9</td></tr><tr><td>Orientation</td><td>Obligations + diversification</td><td>Transition écologique / obligations vertes</td></tr></tbody></table><p>Passons à la poche la plus sécurisée du contrat. Linxea Spirit 2 propose deux fonds euros : <strong>Nouvelle Génération</strong> et <strong>Objectif Climat</strong>.</p>
 
 <p>Et premier point que je trouve vraiment important : <strong>tu peux investir 100 % de ton contrat sur les fonds euros</strong>, sans obligation d'avoir une partie en unités de compte. Beaucoup d'assurances-vie imposent une proportion minimale d'unités de compte (souvent 30 à 40 %) pour accéder aux fonds euros, ce qui n'est pas le cas ici.</p>
 
@@ -282,6 +282,7 @@ cta_btn_color: "#e9420a"
 <p>Si je débutais aujourd'hui et que je cherchais une assurance-vie pour investir sur le long terme, je regarderais Linxea Spirit 2 en priorité. Je l'ouvrirais avec au moins 500 euros pour prendre date fiscale, et je mettrais en place un versement programmé mensuel de 100 euros minimum vers un ETF MSCI World ou S&amp;P 500.</p>
 
 <p>Je garderais probablement une petite partie en fonds euro pour avoir une poche sécurisée, et j'envisagerais d'ajouter une ou deux SCPI sur le long terme une fois que j'aurais bien compris leur fonctionnement et les contraintes associées.</p><p>C'est simple, c'est progressif, et c'est dans une enveloppe fiscalement avantageuse avec des frais vraiment maîtrisés. Pour moi, c'est une bonne combinaison de départ.</p><p><em>Cet article ne constitue pas un conseil personnalisé en investissement. Investir comporte des risques de perte en capital, notamment sur les unités de compte. Les performances passées ne préjugent pas des performances futures.</em></p>
+
 
 
 
