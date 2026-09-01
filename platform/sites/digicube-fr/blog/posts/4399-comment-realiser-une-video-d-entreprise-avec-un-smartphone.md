@@ -4,15 +4,21 @@ slug: 4399-comment-realiser-une-video-d-entreprise-avec-un-smartphone
 date: '2026-09-01T08:00:00+02:00'
 categorie: Marketing
 meta_title: 'Faire une vidéo d’entreprise avec un smartphone : guide {year}'
-meta_description: 'Réalisez une vidéo d''entreprise professionnelle avec votre smartphone grâce à nos conseils pratiques : stabilisateur, son, lumière et cadrage pour un rendu crédible.'
+meta_description: 'Réalisez une vidéo d''entreprise professionnelle avec votre smartphone
+  grâce à nos conseils pratiques : stabilisateur, son, lumière et cadrage pour un
+  rendu crédible.'
 min_words: 1200
 status: published
 featured_image: /blog/4399-comment-realiser-une-video-d-entreprise-avec-un-smartphone.jpg
 link_anchors:
 - text: faire une vidéo avec un smartphone
   max: 15
+related_posts:
+- 4788-email-marketing-quels-outils-choisir-pour-creer-et-envoyer-ses-campagnes
+- 7336-comment-installer-un-systeme-d-affichage-dynamique-en-entreprise
+- elephant-cast-presentation-du-logiciel-d-affichage-dynamique-digital-signage
+- 7318-affichage-dynamique-en-entreprise-usages-et-avantages
 ---
-
 <p>On a tous vu ces vidéos d'entreprise tournées avec un budget conséquent, un réalisateur, une équipe de production. Et on s'est dit : jamais on ne pourra faire pareil. Moi le premier, j'ai longtemps cru que sans matériel professionnel, c'était inutile de se lancer.</p>
 
 <p>Puis j'ai testé. Et j'ai changé d'avis.</p>
