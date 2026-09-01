@@ -2,7 +2,7 @@
 title: "Avis Linxea Spirit 2 : mon retour après 1 an d’utilisation"
 slug: 4878-avis-assurance-vie-linxea-spirit-2
 date: 2026-08-31 12:43:58+02:00
-updated: 2026-09-01T22:24:59
+updated: 2026-09-01T22:26:57
 categorie: Assurance vie
 categories:
 - Assurance vie
@@ -107,7 +107,7 @@ cta_btn_color: "#e9420a"
 
 <p>Ce qu'il faut toujours regarder, c'est le coût global de ton investissement, pas uniquement les frais du contrat.</p>
 
-<h2>Les fonds euros de Linxea Spirit 2</h2><p></p><table><thead><tr><th>Caractéristique</th><th>Nouvelle Génération</th><th>Objectif Climat</th></tr><tr><td>Capital garanti</td><td>98 %</td><td>98 %</td></tr><tr><td>Investissement maximum</td><td>Jusqu'à 100 % du contrat</td><td>Jusqu'à 100 % du contrat</td></tr><tr><td>Plafond</td><td>5 millions €</td><td>5 millions €</td></tr><tr><td>Versement libre</td><td>✅ Oui</td><td>✅ Oui</td></tr><tr><td>Versement programmé</td><td>✅ Oui</td><td>✅ Oui</td></tr><tr><td>Arbitrage entrant</td><td>✅ Oui</td><td>❌ Non</td></tr></thead><tbody><tr><td>Classification SFDR</td><td>Article 8</td><td>Article 9</td></tr><tr><td>Orientation</td><td>Obligations + diversification</td><td>Transition écologique / obligations vertes</td></tr></tbody></table><p></p><table><thead><tr><th>Caractéristique</th><th>Nouvelle Génération</th><th>Objectif Climat</th></tr></thead><tbody><tr><td>Capital garanti</td><td>98 %</td><td>98 %</td></tr><tr><td>Investissement maximum</td><td>Jusqu'à 100 % du contrat</td><td>Jusqu'à 100 % du contrat</td></tr><tr><td>Plafond</td><td>5 millions €</td><td>5 millions €</td></tr><tr><td>Versement libre</td><td>✅ Oui</td><td>✅ Oui</td></tr><tr><td>Versement programmé</td><td>✅ Oui</td><td>✅ Oui</td></tr><tr><td>Arbitrage entrant</td><td>✅ Oui</td><td>❌ Non</td></tr><tr><td>Classification SFDR</td><td>Article 8</td><td>Article 9</td></tr><tr><td>Orientation</td><td>Obligations + diversification</td><td>Transition écologique / obligations vertes</td></tr></tbody></table><p>Passons à la poche la plus sécurisée du contrat. Linxea Spirit 2 propose deux fonds euros : <strong>Nouvelle Génération</strong> et <strong>Objectif Climat</strong>.</p>
+<h2>Les fonds euros de Linxea Spirit 2</h2><p></p><p></p><table><thead><tr><th>Caractéristique</th><th>Nouvelle Génération</th><th>Objectif Climat</th></tr></thead><tbody><tr><td>Capital garanti</td><td>98 %</td><td>98 %</td></tr><tr><td>Investissement maximum</td><td>Jusqu'à 100 % du contrat</td><td>Jusqu'à 100 % du contrat</td></tr><tr><td>Plafond</td><td>5 millions €</td><td>5 millions €</td></tr><tr><td>Versement libre</td><td>✅ Oui</td><td>✅ Oui</td></tr><tr><td>Versement programmé</td><td>✅ Oui</td><td>✅ Oui</td></tr><tr><td>Arbitrage entrant</td><td>✅ Oui</td><td>❌ Non</td></tr><tr><td>Classification SFDR</td><td>Article 8</td><td>Article 9</td></tr><tr><td>Orientation</td><td>Obligations + diversification</td><td>Transition écologique / obligations vertes</td></tr></tbody></table><p>Passons à la poche la plus sécurisée du contrat. Linxea Spirit 2 propose deux fonds euros : <strong>Nouvelle Génération</strong> et <strong>Objectif Climat</strong>.</p>
 
 <p>Et premier point que je trouve vraiment important : <strong>tu peux investir 100 % de ton contrat sur les fonds euros</strong>, sans obligation d'avoir une partie en unités de compte. Beaucoup d'assurances-vie imposent une proportion minimale d'unités de compte (souvent 30 à 40 %) pour accéder aux fonds euros, ce qui n'est pas le cas ici.</p>
 
