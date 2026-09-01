@@ -2,7 +2,7 @@
 title: "Code promo Linxea PER en Septembre 2026 : jusqu’à 200€ offerts"
 slug: code-promo-linxea-per
 date: 2026-06-15T22:04:00+02:00
-updated: 2026-09-01T10:39:41
+updated: 2026-09-01T10:40:17
 categorie: Bons plans & Parrainage
 categories:
 - Bons plans & Parrainage
@@ -11,7 +11,7 @@ meta_description: "Profite du code promo Linxea PER et touche jusqu'à 200 euros
 featured_image: /blog/code-promo-linxea-per.jpg
 status: published
 min_words: 1000
-show_toc: true
+show_toc: false
 related_posts:
 - parrainage-n26-100-euros
 - boursobank-150-euros
@@ -145,6 +145,7 @@ link_anchors:
 <p>Et si tu es déjà client Linxea et que tu veux parrainer quelqu'un, ton espace personnel te donne accès à ton propre code personnel à partager. Simple, rapide, et ça peut te rapporter jusqu'à <strong>100 €</strong> par filleul, sans limite précisée sur le nombre de parrainages réussis.</p>
 
 <p>En résumé : si tu penses à ouvrir un PER cette année et que tu connais quelqu'un chez Linxea, ne passe pas à côté de cette opportunité. 200 € offerts pour une démarche que tu allais faire de toute façon, c'est difficile de refuser.</p>
+
 
 
 
