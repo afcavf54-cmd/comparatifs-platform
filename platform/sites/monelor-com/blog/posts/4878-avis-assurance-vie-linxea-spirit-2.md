@@ -2,7 +2,7 @@
 title: "Avis Linxea Spirit 2 : mon retour après 1 an d’utilisation"
 slug: 4878-avis-assurance-vie-linxea-spirit-2
 date: 2026-08-31 12:43:58+02:00
-updated: 2026-09-01T21:38:35
+updated: 2026-09-01T22:09:25
 categorie: Assurance vie
 categories:
 - Assurance vie
@@ -74,11 +74,11 @@ cta_btn_color: "#e9420a"
 
 <p>Avant de rentrer dans le détail, il y a une distinction importante à comprendre. Linxea n'est pas une compagnie d'assurance. C'est un courtier en assurance. Son rôle, c'est de négocier des contrats auprès de différentes compagnies et de les distribuer à ses clients.</p>
 
-<p>Linxea propose ainsi plusieurs contrats d'assurance-vie. Mais dans cet article, on va se concentrer uniquement sur Linxea Spirit 2. Ce contrat est commercialisé par Linxea, mais c'est Spirica qui est l'assureur derrière. C'est Spirica qui gère réellement le contrat.</p>
+<p>Linxea propose ainsi plusieurs contrats d'assurance-vie. Mais dans cet article, on va se concentrer uniquement sur Linxea Spirit 2. Ce contrat est commercialisé par Linxea, mais c'est Spirica qui est l'assureur derrière et qui gère réellement le contrat.</p>
 
 <p>Et cette distinction est importante parce que tu vas la ressentir concrètement dans ton quotidien d'investisseur. L'espace Linxea te permet de consulter ton contrat, de suivre ses performances et d'accéder à certaines informations. Mais pour effectuer des opérations (versement, arbitrage, rachat...), tu vas souvent être redirigé vers Sylvéa, qui est l'interface de Spirica. On y reviendra plus loin.</p>
 
-<h3>Combien faut-il pour ouvrir Linxea Spirit 2 ?</h3>
+<h3>Combien faut-il pour ouvrir Linxea Spirit 2 ?</h3><p><table><thead><tr><th>Élément</th><th>Linxea Spirit 2</th></tr></thead><tbody><tr><td>Versement initial minimum</td><td>500 €</td></tr><tr><td>Versement libre minimum</td><td>100 €</td></tr><tr><td>Versement programmé minimum</td><td>100 €/mois</td></tr><tr><td>Obligation de versement régulier</td><td>Non</td></tr><tr><td>Début de l’ancienneté fiscale</td><td>Dès l’ouverture du contrat</td></tr><tr><td>Cap fiscal important</td><td>8 ans</td></tr><tr><td>Intérêt d’ouvrir tôt</td><td>Prendre date, même avec seulement 500 €</td></tr></tbody></table></p>
 
 <p>Linxea Spirit 2 est accessible dès 500 euros de versement initial. C'est un seuil raisonnable pour une assurance-vie avec autant de fonctionnalités.</p>
 
@@ -107,7 +107,7 @@ cta_btn_color: "#e9420a"
 
 <p>Ce qu'il faut toujours regarder, c'est le coût global de ton investissement, pas uniquement les frais du contrat.</p>
 
-<h2>Les fonds euros de Linxea Spirit 2</h2><table><thead><tr><th>Caractéristique</th><th>Nouvelle Génération</th><th align="center">Objectif Climat</th></tr><tr><td>Capital garanti</td><td>98 %*</td><td align="center">98 %*</td></tr><tr><td>Investissement maximum</td><td>Jusqu'à 100 % du contrat</td><td align="center">Jusqu'à 100 % du contrat</td></tr><tr><td>Plafond</td><td>5 millions €</td><td align="center">5 millions €</td></tr><tr><td>Versement libre</td><td>✅ Oui</td><td align="center">✅ Oui</td></tr><tr><td>Versement programmé</td><td>✅ Oui</td><td align="center">✅ Oui</td></tr><tr><td>Arbitrage entrant</td><td>✅ Oui</td><td align="center">❌ Non</td></tr><tr><td>Classification SFDR</td><td>Article 8</td><td align="center">Article 9</td></tr><tr><td>Orientation</td><td>Obligations + diversification</td><td align="center">Transition écologique / obligations vertes</td></tr></thead><tbody></tbody></table><p><br>Passons à la poche la plus sécurisée du contrat. Linxea Spirit 2 propose deux fonds euros : <strong>Nouvelle Génération</strong> et <strong>Objectif Climat</strong>.</p>
+<h2>Les fonds euros de Linxea Spirit 2</h2><p><table><thead><tr><th>Caractéristique</th><th>Nouvelle Génération</th><th>Objectif Climat</th></tr><tr><td>Capital garanti</td><td>98 %</td><td>98 %</td></tr><tr><td>Investissement maximum</td><td>Jusqu'à 100 % du contrat</td><td>Jusqu'à 100 % du contrat</td></tr><tr><td>Plafond</td><td>5 millions €</td><td>5 millions €</td></tr><tr><td>Versement libre</td><td>✅ Oui</td><td>✅ Oui</td></tr><tr><td>Versement programmé</td><td>✅ Oui</td><td>✅ Oui</td></tr><tr><td>Arbitrage entrant</td><td>✅ Oui</td><td>❌ Non</td></tr></thead><tbody><tr><td>Classification SFDR</td><td>Article 8</td><td>Article 9</td></tr><tr><td>Orientation</td><td>Obligations + diversification</td><td>Transition écologique / obligations vertes</td></tr></tbody></table></p><p>Passons à la poche la plus sécurisée du contrat. Linxea Spirit 2 propose deux fonds euros : <strong>Nouvelle Génération</strong> et <strong>Objectif Climat</strong>.</p>
 
 <p>Et premier point que je trouve vraiment important : <strong>tu peux investir 100 % de ton contrat sur les fonds euros</strong>, sans obligation d'avoir une partie en unités de compte. Beaucoup d'assurances-vie imposent une proportion minimale d'unités de compte (souvent 30 à 40 %) pour accéder aux fonds euros, ce qui n'est pas le cas ici.</p>
 
@@ -215,15 +215,11 @@ cta_btn_color: "#e9420a"
 
 <p>Parlons maintenant de quelque chose de très concret : les interfaces que tu vas utiliser au quotidien.</p>
 
-<h3>L'espace client Linxea</h3>
-
-<p>L'espace Linxea est ton point d'entrée principal. C'est là que tu arrives quand tu te connectes à ton compte. Tu peux y consulter le solde de ton contrat, sa performance globale, la répartition entre tes différents supports, et un graphique de l'évolution de la valeur de ton contrat dans le temps.</p>
+<h3>L'espace client Linxea</h3><p><p><img src="/blog/4878-avis-assurance-vie-linxea-spirit-2/l-espace-client-linxea-585.png" alt="L'espace client Linxea"></p>L'espace Linxea est ton point d'entrée principal. C'est là que tu arrives quand tu te connectes à ton compte. Tu peux y consulter le solde de ton contrat, sa performance globale, la répartition entre tes différents supports, et un graphique de l'évolution de la valeur de ton contrat dans le temps.</p>
 
 <p>Tu peux également y retrouver le versement initial, ton mode de gestion, l'existence ou non de versements programmés, et même un indicateur du niveau de risque de ton portefeuille. L'historique des opérations est aussi accessible (arbitrages, versements, frais prélevés).&nbsp;</p><p>Et enfin, tu peux consulter les documents du contrat et accéder aux informations sur les supports disponibles.</p><p>L'espace Linxea est donc particulièrement pratique pour suivre et analyser ton contrat. C'est une interface claire, lisible, et agréable à utiliser.</p>
 
-<h3>L'interface Sylvéa de Spirica</h3>
-
-<p>Pour effectuer des opérations (versement libre, arbitrage, rachat, versements programmés, modification de gestion pilotée...), tu vas être redirigé vers Sylvéa, l'interface de Spirica.</p>
+<h3>L'interface Sylvéa de Spirica</h3><p><p><img src="/blog/4878-avis-assurance-vie-linxea-spirit-2/l-interface-sylvea-de-spirica-2110.png" alt="L'interface Sylvéa de Spirica"></p>Pour effectuer des opérations (versement libre, arbitrage, rachat, versements programmés, modification de gestion pilotée...), tu vas être redirigé vers Sylvéa, l'interface de Spirica.</p>
 
 <p>Et là, je dois être honnête : au départ, cette interface peut sembler moins intuitive. Il y a énormément de possibilités disponibles, et il faut un peu de temps pour comprendre où se trouvent les différentes opérations. Ce n'est clairement pas la plus moderne des interfaces que j'ai pu utiliser.</p>
 
@@ -245,9 +241,7 @@ cta_btn_color: "#e9420a"
 
 <p>C'est donc une interface complète, même si j'aurais personnellement préféré pouvoir tout gérer depuis une seule interface plus moderne et unifiée.</p>
 
-<h3>Un point sur les avis clients</h3>
-
-<p>Parmi les avis clients que tu peux trouver sur Linxea, certains mentionnent des démarches administratives parfois perçues comme lourdes. Par exemple, lorsque tu effectues un nouveau versement depuis Sylvéa, Spirica peut te demander d'indiquer précisément l'origine des fonds versés et, selon ta situation, de fournir un justificatif.</p>
+<h3>Un point sur les avis clients</h3><p><p><img src="/blog/4878-avis-assurance-vie-linxea-spirit-2/avis-clients-linxea-spirit-2-1338.png" alt="avis clients linxea spirit 2"></p>Parmi les avis clients que tu peux trouver sur Linxea, certains mentionnent des démarches administratives parfois perçues comme lourdes. Par exemple, lorsque tu effectues un nouveau versement depuis Sylvéa, Spirica peut te demander d'indiquer précisément l'origine des fonds versés et, selon ta situation, de fournir un justificatif.</p>
 
 <p>Je veux relativiser ce point. Les assureurs sont soumis à des obligations réglementaires importantes : vérification de l'identité, lutte contre le blanchiment d'argent, justification de l'origine des fonds. Ce n'est pas spécifique à Linxea, c'est le fonctionnement normal de toute compagnie d'assurance sérieuse. Ce n'est donc pas forcément un défaut du contrat, mais une réalité réglementaire qu'il vaut mieux anticiper.</p>
 
@@ -288,6 +282,7 @@ cta_btn_color: "#e9420a"
 <p>Si je débutais aujourd'hui et que je cherchais une assurance-vie pour investir sur le long terme, je regarderais Linxea Spirit 2 en priorité. Je l'ouvrirais avec au moins 500 euros pour prendre date fiscale, et je mettrais en place un versement programmé mensuel de 100 euros minimum vers un ETF MSCI World ou S&amp;P 500.</p>
 
 <p>Je garderais probablement une petite partie en fonds euro pour avoir une poche sécurisée, et j'envisagerais d'ajouter une ou deux SCPI sur le long terme une fois que j'aurais bien compris leur fonctionnement et les contraintes associées.</p><p>C'est simple, c'est progressif, et c'est dans une enveloppe fiscalement avantageuse avec des frais vraiment maîtrisés. Pour moi, c'est une bonne combinaison de départ.</p><p><em>Cet article ne constitue pas un conseil personnalisé en investissement. Investir comporte des risques de perte en capital, notamment sur les unités de compte. Les performances passées ne préjugent pas des performances futures.</em></p>
+
 
 
 
