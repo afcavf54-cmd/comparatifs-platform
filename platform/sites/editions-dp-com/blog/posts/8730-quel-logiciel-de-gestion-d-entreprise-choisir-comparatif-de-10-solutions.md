@@ -1,21 +1,24 @@
 ---
 title: Quel logiciel de gestion d’entreprise choisir ? Comparatif de 10 solutions
 slug: 8730-quel-logiciel-de-gestion-d-entreprise-choisir-comparatif-de-10-solutions
-date: '2026-09-01T23:18:44+02:00'
-categorie: Gestion d'entreprise
-meta_title: 'Meilleur logiciel de gestion d’entreprise : mon Top 10 en {year}'
-meta_description: 'J’ai comparé 10 logiciels de gestion d’entreprise : fonctionnalités,
-  tarifs, simplicité et points forts. Découvrez les solutions que je recommande en
-  {year}.'
-min_words: 3000
-status: published
+date: 2026-09-01T23:18:44+02:00
+updated: 2026-09-01T21:27:56
+categorie: "Gestion d'entreprise"
+categories:
+- "Gestion d'entreprise"
+meta_title: "Meilleur logiciel de gestion d’entreprise : mon Top 10 en {year}"
+meta_description: "J’ai comparé 10 logiciels de gestion d’entreprise : fonctionnalités, tarifs, simplicité et points forts. Découvrez les solutions que je recommande en {year}."
 featured_image: /blog/8730-quel-logiciel-de-gestion-d-entreprise-choisir-comparatif-de-10-solutions.jpg
+status: published
+min_words: 3000
+show_toc: true
 related_posts:
 - 4578-tableau-de-caracterisation-comment-le-construire-et-l-utiliser-dans-vos-projets
 - 3577-comment-implementer-erp-smartchain-360-dans-votre-societe
 - 2575-strategie-corporate-qu-est-ce-que-c-est-et-comment-la-differencier-de-la-strategie-business
 - 3401-comment-utiliser-crm-salesflow-evolution-pour-gerer-vos-prospects
 ---
+
 <p>J'ai testé pas mal de logiciels de gestion ces dernières années. Certains m'ont fait gagner un temps fou. D'autres m'ont juste donné des maux de tête. Je dirige une entreprise à Lyon, une centaine de salariés, et je n'ai pas de DSI sous la main. Alors quand je cherche un outil, je veux quelque chose qui fonctionne vraiment, pas une démo qui brille et un produit qui déçoit.</p>
 
 <p>Ce comparatif, je l'ai écrit pour les dirigeants comme moi. Ceux qui n'ont pas forcément une équipe technique derrière eux, qui regardent le prix avant tout, et qui n'ont pas trois semaines à consacrer à la formation de leurs équipes.</p>
@@ -372,4 +375,5 @@ related_posts:
 <p>Pas forcément trop complexe dans l'absolu. Mais trop complexe à mettre en place sans aide. J'ai vu des dirigeants de petites structures réussir avec Odoo parce qu'ils avaient un prestataire de confiance qui a fait l'implémentation proprement. Le problème, c'est que ce prestataire a un coût. Et si quelque chose déraille après, on est dépendant de lui. Pour une TPE qui veut garder la main sur son outil, c'est un risque à peser.</p>
 
 <p>Voilà l'essentiel de ce que j'ai à partager. Si vous avez des questions sur un logiciel en particulier, ou si votre situation est un peu atypique (secteur d'activité spécifique, contrainte réglementaire...), n'hésitez pas à m'en parler dans les commentaires. Je réponds quand je peux.</p>
+
 
