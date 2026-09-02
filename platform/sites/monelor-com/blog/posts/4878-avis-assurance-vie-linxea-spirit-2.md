@@ -2,7 +2,7 @@
 title: "Avis Linxea Spirit 2 : mon retour après 1 an d’utilisation"
 slug: 4878-avis-assurance-vie-linxea-spirit-2
 date: 2026-08-31 12:43:58+02:00
-updated: 2026-09-01T22:26:57
+updated: 2026-09-02T11:12:57
 categorie: Assurance vie
 categories:
 - Assurance vie
@@ -34,7 +34,7 @@ cta_btn_color: "#e9420a"
 <ul>
 <li><strong>Les frais sont parmi les plus faibles du marché</strong> : 0,50 % de frais de gestion annuels sur les unités de compte, aucun frais d'entrée, aucun frais sur les versements, aucun frais d'arbitrage en ligne.</li>
 <li><strong>Le choix de supports est excellent</strong> : ETF, fonds euros, SCPI, actions en direct, fonds d'investissement, produits immobiliers. Tout ça dans une seule enveloppe.</li>
-<li><strong>100 % des loyers des SCPI éligibles sont reversés</strong>, ce qui est loin d'être la norme dans les assurances-vie.</li>
+<li><strong>100 % des loyers des SCPI éligibles sont reversés</strong>, ce qui est loin d'être la norme dans&nbsp;<a href="https://www.monelor.com/3327-assurance-vie/">les assurances-vie</a>.</li>
 <li><strong>Le fonds euro est accessible à 100 %</strong>, sans obligation d'investir en unités de compte.</li>
 <li><strong>L'interface est double</strong> (Linxea et Sylvéa), ce qui peut demander un temps d'adaptation.</li>
 <li><strong>Pas d'application mobile dédiée</strong> pour le moment.</li>
@@ -129,7 +129,7 @@ cta_btn_color: "#e9420a"
 
 <p>Et c'est là que Spirit 2 devient vraiment intéressant. Le contrat donne accès à plusieurs centaines de supports. Mais ce qui m'importe plus que le nombre brut, c'est leur diversité. Sur ce point, Spirit 2 est particulièrement complet.</p>
 
-<h3>Les ETF : mon support préféré sur ce contrat</h3><table><thead><tr><th>Caractéristique</th><th>ETF sur Linxea Spirit 2</th></tr></thead><tbody><tr><td>Frais de gestion du contrat</td><td>0,50 % / an sur les UC</td></tr><tr><td>Frais internes de l'ETF</td><td>Variables selon l'ETF</td></tr><tr><td>Frais de transaction à l'achat</td><td>0,10 %</td></tr><tr><td>Frais de transaction à la vente</td><td>0,10 %</td></tr><tr><td>Exemple pour 1 000 € investis</td><td>1 € de frais de transaction à l'achat</td></tr><tr><td>Investir par arbitrage</td><td>✅ Oui</td></tr><tr><td>Investir par versement libre</td><td>✅ Oui</td></tr><tr><td>Versements programmés</td><td>Oui, dès 100 € / mois</td></tr><tr><td>Indices disponibles</td><td>MSCI World, S&amp;P 500, Nasdaq…</td></tr></tbody></table><p><br>Linxea Spirit 2 donne accès à un choix important d'ETF depuis l'assurance-vie. Tu vas notamment trouver des ETF permettant de s'exposer au MSCI World, au S&amp;P 500, au Nasdaq, et à de nombreux autres marchés et thématiques.</p>
+<h3>Les ETF : mon support préféré sur ce contrat</h3><table><thead><tr><th>Caractéristique</th><th>ETF sur Linxea Spirit 2</th></tr></thead><tbody><tr><td>Frais de gestion du contrat</td><td>0,50 % / an sur les UC</td></tr><tr><td>Frais internes de l'ETF</td><td>Variables selon l'ETF</td></tr><tr><td>Frais de transaction à l'achat</td><td>0,10 %</td></tr><tr><td>Frais de transaction à la vente</td><td>0,10 %</td></tr><tr><td>Exemple pour 1 000 € investis</td><td>1 € de frais de transaction à l'achat</td></tr><tr><td>Investir par arbitrage</td><td>✅ Oui</td></tr><tr><td>Investir par versement libre</td><td>✅ Oui</td></tr><tr><td>Versements programmés</td><td>Oui, dès 100 € / mois</td></tr><tr><td>Indices disponibles</td><td>MSCI World, S&amp;P 500, Nasdaq…</td></tr></tbody></table><p><br><a href="https://www.monelor.com/1845-meilleurs-etf-linxea-spirit-2/">Linxea Spirit 2 donne accès à un choix important d'ETF</a>&nbsp;depuis l'assurance-vie. Tu vas notamment trouver des ETF permettant de s'exposer au MSCI World, au S&amp;P 500, au Nasdaq, et à de nombreux autres marchés et thématiques.</p>
 
 <p>C'est personnellement l'une des principales raisons pour lesquelles j'utilise ce contrat. Investir sur des ETF depuis une assurance-vie, c'est combiner la fiscalité avantageuse de l'enveloppe avec les frais contenus des fonds indiciels. C'est une combinaison très efficace sur le long terme.</p>
 
@@ -144,7 +144,7 @@ cta_btn_color: "#e9420a"
 
 <p>Concrètement, si tu investis 1 000 euros sur un ETF, les frais de transaction à l'achat représentent 1 euro. C'est vraiment négligeable.</p>
 
-<p>Tu as trois façons d'investir sur un ETF dans Spirit 2. Tu peux effectuer un arbitrage (utiliser de l'argent déjà présent sur ton contrat), réaliser un versement libre (ajouter ponctuellement de l'argent), ou mettre en place un versement programmé dès 100 euros par mois pour investir automatiquement et régulièrement. C'est particulièrement pratique si tu veux mettre en place une stratégie d'investissement progressive sans avoir à faire manuellement une opération chaque mois.</p>
+<p>Tu as trois façons&nbsp;<a href="https://www.monelor.com/1453-comment-acheter-un-etf-sur-linxea-spirit-2/">d'acheter un ETF dans Spirit 2</a>. Tu peux effectuer un arbitrage (utiliser de l'argent déjà présent sur ton contrat), réaliser un versement libre (ajouter ponctuellement de l'argent), ou mettre en place un versement programmé dès 100 euros par mois pour investir automatiquement et régulièrement. C'est particulièrement pratique si tu veux mettre en place une stratégie d'investissement progressive sans avoir à faire manuellement une opération chaque mois.</p>
 
 <p>Un petit détail pratique à connaître : si tu effectues un arbitrage, l'heure à laquelle tu valides ta demande peut avoir une incidence sur sa prise en compte. Une demande effectuée avant 16h30 est généralement prise en compte le jour ouvré suivant. Après 16h30, elle peut l'être au plus tard le deuxième jour ouvré suivant. Et attention : date de prise en compte ne signifie pas nécessairement cours d'achat ou de vente de l'ETF. La valorisation dépend des règles du support concerné.</p>
 
@@ -152,7 +152,7 @@ cta_btn_color: "#e9420a"
 
 <p>Spirit 2 donne accès à un choix relativement large de SCPI. Et surtout, <strong>100 % des loyers distribués par les SCPI éligibles sont reversés</strong> selon les conditions du contrat. C'est loin d'être la norme : certaines assurances-vie ne reversent qu'une partie des revenus distribués par les SCPI. C'est un vrai avantage.</p>
 
-<p>Mais il y a plusieurs particularités importantes à connaître avant d'investir en SCPI via Spirit 2.</p>
+<p>Mais il y a plusieurs particularités importantes à connaître avant&nbsp;<a href="https://www.monelor.com/4857-comment-acheter-une-scpi-sur-linxea-spirit-2/">d'acheter une SCPI via Spirit 2</a>.</p>
 
 <p><strong>Première particularité :</strong> lors d'un nouveau versement, tu ne peux investir que <strong>50 % maximum de ce versement en SCPI</strong>. Si tu verses 1 000 euros, tu pourras placer au maximum 500 euros en SCPI.&nbsp;</p><p>Les 500 euros restants devront aller sur d'autres supports. Attention toutefois à une nuance importante : cette limite concerne les versements. Si tu as déjà de l'argent sur ton contrat, tu peux très bien faire un arbitrage pour en déplacer une plus grande proportion vers des SCPI.</p>
 
@@ -164,7 +164,7 @@ cta_btn_color: "#e9420a"
 
 <p>Et encore une nuance : ne confonds pas l'absence de frais d'entrée du contrat Spirit 2 avec l'absence de frais sur les SCPI elles-mêmes. Chaque SCPI a ses propres conditions et peut avoir des frais de souscription et de gestion.</p>
 
-<p>Sur ce point, je dois être honnête : <strong>l'offre SCPI de Spirit 2 est aujourd'hui un peu moins attractive qu'elle a pu l'être</strong>. Certaines SCPI sans frais de souscription, comme Iroko Zen, ne sont plus accessibles sur ce contrat. Ça ne remet pas en cause l'intérêt global des SCPI disponibles, mais c'est un élément à peser si tu cherches à comparer Spirit 2 avec d'autres solutions pour investir en SCPI.</p>
+<p>Sur ce point, je dois être honnête : <strong>l'offre SCPI de Spirit 2 est aujourd'hui un peu moins attractive qu'elle a pu l'être</strong>. Certaines SCPI sans frais de souscription, comme Iroko Zen, ne sont plus accessibles sur ce contrat. Ça ne remet pas en cause l'intérêt global des SCPI disponibles, mais c'est un élément à peser si tu cherches à comparer Spirit 2 avec d'autres solutions pour investir en SCPI.</p><p>Va jeter un oeil sur le classement que j'ai réalisé des&nbsp;<a href="https://www.monelor.com/4296-meilleures-scpi-linxea-spirit-2/">meilleures SCPI sur Linxea Spirit 2</a>.</p>
 
 <h3>Les actions en direct : une fonctionnalité rare</h3><table><thead><tr><th>Caractéristique</th><th>Actions en direct sur Linxea Spirit 2</th></tr></thead><tbody><tr><td>Nombre d'actions disponibles</td><td>406</td></tr><tr><td>Marchés accessibles</td><td>France, Europe, États-Unis…</td></tr><tr><td>Exemples de valeurs</td><td>Apple, Microsoft, Nvidia…</td></tr><tr><td>Investissement minimum</td><td>1 000 € par action</td></tr><tr><td>Frais à l'achat</td><td>0,60 %</td></tr><tr><td>Frais à la vente</td><td>0,60 %</td></tr><tr><td>Exemple pour 1 000 €</td><td>6 € de frais à l'achat</td></tr><tr><td>Achat par arbitrage</td><td>✅ Oui</td></tr><tr><td>Achat par versement libre</td><td>✅ Oui</td></tr><tr><td>Versements programmés</td><td>❌ Non</td></tr></tbody></table><p>Une particularité assez intéressante de Spirit 2, c'est la possibilité d'investir directement dans certaines actions, ce qu'on appelle des titres vifs. C'est quelque chose qui reste relativement rare dans une assurance-vie.</p>
 
@@ -282,6 +282,7 @@ cta_btn_color: "#e9420a"
 <p>Si je débutais aujourd'hui et que je cherchais une assurance-vie pour investir sur le long terme, je regarderais Linxea Spirit 2 en priorité. Je l'ouvrirais avec au moins 500 euros pour prendre date fiscale, et je mettrais en place un versement programmé mensuel de 100 euros minimum vers un ETF MSCI World ou S&amp;P 500.</p>
 
 <p>Je garderais probablement une petite partie en fonds euro pour avoir une poche sécurisée, et j'envisagerais d'ajouter une ou deux SCPI sur le long terme une fois que j'aurais bien compris leur fonctionnement et les contraintes associées.</p><p>C'est simple, c'est progressif, et c'est dans une enveloppe fiscalement avantageuse avec des frais vraiment maîtrisés. Pour moi, c'est une bonne combinaison de départ.</p><p><em>Cet article ne constitue pas un conseil personnalisé en investissement. Investir comporte des risques de perte en capital, notamment sur les unités de compte. Les performances passées ne préjugent pas des performances futures.</em></p>
+
 
 
 
