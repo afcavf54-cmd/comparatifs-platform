@@ -4,15 +4,21 @@ slug: quel-cadeau-offrir-pour-des-noces-de-coquelicot
 date: '2026-09-02T10:00:00+02:00'
 categorie: Anniversaire de mariage
 meta_title: 'Noces de coquelicot cadeau : les meilleures idées pour vos 8 ans de mariage'
-meta_description: Idées de cadeaux originaux pour célébrer des noces de coquelicot, le premier anniversaire de mariage. Symboles, budget et conseils pour offrir quelque chose de…
+meta_description: Idées de cadeaux originaux pour célébrer des noces de coquelicot,
+  le premier anniversaire de mariage. Symboles, budget et conseils pour offrir quelque
+  chose de…
 min_words: 750
 status: published
 featured_image: /blog/quel-cadeau-offrir-pour-des-noces-de-coquelicot.jpg
 link_anchors:
 - text: idée de cadeau pour des noces de coquelicot
   max: 5
+related_posts:
+- quel-cadeau-offrir-pour-des-noces-de-cuivre
+- quel-cadeau-offrir-pour-des-noces-de-bois
+- quel-cadeau-offrir-pour-des-noces-de-cuir
+- quel-cadeau-offrir-pour-des-noces-de-muguet
 ---
-
 <p>Les noces de coquelicot, c'est la première année de mariage. Un an déjà. Pour certains couples, ça passe à toute vitesse. Pour d'autres, c'est une année bien chargée entre les remerciements, le tri des photos, et les premières vraies habitudes de vie commune. Offrir un cadeau pour cette occasion, c'est une belle façon de marquer le coup sans attendre les grandes étapes.</p>
 
 <p>Mais voilà le problème : la première année, on ne sait jamais vraiment quoi offrir. Trop tôt pour quelque chose de trop sérieux, trop tard pour rester dans les cadeaux de mariage classiques. J'ai vécu ça avec ma cousine l'an dernier, et franchement, j'ai tourné en rond un bon moment avant de trouver quelque chose qui lui ressemble vraiment.</p>
