@@ -4,15 +4,21 @@ slug: 7056-communication-video-quels-formats-utiliser-sur-les-reseaux-sociaux
 date: '2026-09-02T11:00:00+02:00'
 categorie: Marketing
 meta_title: 'Communication vidéo : quels formats choisir en {year} ?'
-meta_description: 'Formats vidéo réseaux sociaux : ratio, durée, cadrage... Découvrez comment adapter vos vidéos à chaque plateforme pour éviter les erreurs qui nuisent à votre image.'
+meta_description: 'Formats vidéo réseaux sociaux : ratio, durée, cadrage... Découvrez
+  comment adapter vos vidéos à chaque plateforme pour éviter les erreurs qui nuisent
+  à votre image.'
 min_words: 1000
 status: published
 featured_image: /blog/7056-communication-video-quels-formats-utiliser-sur-les-reseaux-sociaux.jpg
 link_anchors:
 - text: format vidéo réseaux sociaux
   max: 15
+related_posts:
+- 1116-video-marque-employeur-comment-creer-des-contenus-qui-attirent-les-candidats
+- 2709-affichage-dynamique-avec-raspberry-pi-comment-le-mettre-en-place
+- elephant-cast-presentation-du-logiciel-d-affichage-dynamique-digital-signage
+- 9576-qu-est-ce-que-le-digital-signage-ou-affichage-dynamique
 ---
-
 <p>J'ai mis du temps à comprendre que la vidéo sur les réseaux, c'est pas qu'une question de contenu. C'est aussi une question de format. Et ça, personne ne me l'avait dit clairement au départ. J'ai publié des vidéos mal cadrées, recadrées automatiquement par les plateformes, avec des bords coupés, du texte illisible. Résultat : des vidéos qui donnaient une image amateur alors qu'on avait mis du temps à les préparer.</p>
 
 <p>Depuis, j'ai appris. Parfois à mes dépens. Voilà ce que je sais aujourd'hui sur le <strong>format vidéo réseaux sociaux</strong>, et comment on s'y prend concrètement dans une petite structure comme la mienne.</p>
