@@ -4,15 +4,21 @@ slug: quel-cadeau-offrir-pour-des-noces-de-lin
 date: '2026-09-03T17:00:00+02:00'
 categorie: Anniversaire de mariage
 meta_title: 'Noces de lin cadeau : que choisir pour vos 4 ans de mariage ?'
-meta_description: 'Idées cadeaux originales pour les noces de lin et 12 ans de mariage : linge de maison, déco ou accessoires en lin pour surprendre le couple sans se ruiner.'
+meta_description: 'Idées cadeaux originales pour les noces de lin et 12 ans de mariage
+  : linge de maison, déco ou accessoires en lin pour surprendre le couple sans se
+  ruiner.'
 min_words: 750
 status: published
 featured_image: /blog/quel-cadeau-offrir-pour-des-noces-de-lin.jpg
 link_anchors:
 - text: idée de cadeau pour des noces de lin
   max: 5
+related_posts:
+- quel-cadeau-offrir-pour-des-noces-de-muguet
+- quel-cadeau-offrir-pour-des-noces-de-coton
+- quel-cadeau-offrir-pour-des-noces-de-perle
+- quel-cadeau-offrir-pour-des-noces-d-or
 ---
-
 <p>Les noces de lin, ça marque 12 ans de mariage. Pas encore la grande étape des 20 ou 25 ans, mais déjà une belle décennie derrière eux. Et franchement, trouver un cadeau qui colle vraiment à cette occasion, c'est moins évident qu'il n'y paraît. Le lin, comme matière, ça ouvre des pistes sympas, à condition de ne pas tomber dans le piège des idées trop génériques.</p>
 
 <p>J'ai cherché pour une amie dont le couple fêtait ses 12 ans l'été dernier. On voulait quelque chose qui sorte un peu des sentiers battus, sans pour autant exploser notre budget collectif. Voilà ce que j'ai retenu de cette recherche.</p>
