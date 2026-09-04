@@ -4,12 +4,18 @@ slug: 2517-comparatif-des-logiciels-de-marketing-automation-12-solutions-a-decou
 date: '2026-09-04T12:00:00+02:00'
 categorie: Marketing
 meta_title: 'Marketing automation : les 12 meilleurs logiciels en {year}'
-meta_description: Automatisez vos campagnes marketing avec le bon outil. Voici ma sélection de 12 logiciels de marketing automation, comparés sur leurs fonctions et leurs tarifs.
+meta_description: Automatisez vos campagnes marketing avec le bon outil. Voici ma
+  sélection de 12 logiciels de marketing automation, comparés sur leurs fonctions
+  et leurs tarifs.
 min_words: 3000
 status: published
 featured_image: /blog/2517-comparatif-des-logiciels-de-marketing-automation-12-solutions-a-decouvrir.jpg
+related_posts:
+- 7040-taux-de-clic-en-email-marketing-comment-l-ameliorer
+- 9695-desabonnement-email-obligations-legales-et-bonnes-pratiques
+- 7389-logiciel-d-emailing-open-source-avantages-limites-et-cas-d-usage
+- 9102-logiciel-d-envoi-d-emails-en-masse-fonctionnement-et-bonnes-pratiques
 ---
-
 <p>J'ai testé beaucoup de logiciels de marketing automation ces dernières années. Certains m'ont fait gagner des heures chaque semaine. D'autres m'ont surtout fait perdre du temps et de l'argent. Je gère une entreprise à Lyon, une centaine de personnes, et je n'ai pas d'équipe technique dédiée au marketing. Tout ce que je cherche, c'est un outil qui fonctionne sans avoir besoin d'un développeur à côté.</p>
 
 <p>Ce comparatif, je l'ai construit à partir de ce que j'ai réellement utilisé ou testé. Je ne vous vendrai pas du rêve. Je vous dirai ce qui marche, ce qui coûte trop cher, et ce qui m'a franchement agacé.</p>
