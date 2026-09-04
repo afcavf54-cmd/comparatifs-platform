@@ -2,7 +2,7 @@
 title: "Avis Linxea Spirit 2 : mon retour après 1 an d’utilisation"
 slug: 4878-avis-assurance-vie-linxea-spirit-2
 date: 2026-08-31 12:43:58+02:00
-updated: 2026-09-04T13:33:46
+updated: 2026-09-04T13:38:56
 categorie: Assurance vie
 categories:
 - Assurance vie
@@ -67,7 +67,7 @@ cta_btn_color: "#e9420a"
 <li>Pénalité de 3 % si tu sors d'une SCPI dans les trois premières années</li>
 <li>Pas de versements programmés possibles sur les SCPI et les actions en direct</li>
 <li>Certaines SCPI sans frais de souscription (comme Iroko Zen) ne sont plus disponibles</li>
-<li>Tous les supports du catalogue ne sont pas forcément intéressants, il faut faire le tri</li></ul><p><iframe class="video-embed" src="https://www.youtube.com/embed/DqoF38ps4WE" title="Vidéo YouTube" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen="" style="width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:12px;margin:28px 0;display:block"></iframe></p><p><br><br></p><p><br></p><ul>
+<li>Tous les supports du catalogue ne sont pas forcément intéressants, il faut faire le tri</li></ul><p><iframe class="video-embed" src="https://www.youtube.com/embed/DqoF38ps4WE" title="Vidéo YouTube" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen="" style="width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:12px;margin:28px 0;display:block"></iframe></p><ul>
 </ul>
 
 <h2>Linxea Spirit 2, c'est quoi exactement ?</h2>
