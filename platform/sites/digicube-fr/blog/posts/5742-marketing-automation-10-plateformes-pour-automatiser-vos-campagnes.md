@@ -4,12 +4,18 @@ slug: 5742-marketing-automation-10-plateformes-pour-automatiser-vos-campagnes
 date: '2026-09-04T12:00:00+02:00'
 categorie: Marketing
 meta_title: Les 10 meilleurs outils de marketing automation en {year}
-meta_description: 'Email, segmentation, scénarios et lead nurturing : découvrez notre comparatif des plateformes de marketing automation et trouvez celle adaptée à votre stratégie.'
+meta_description: 'Email, segmentation, scénarios et lead nurturing : découvrez notre
+  comparatif des plateformes de marketing automation et trouvez celle adaptée à votre
+  stratégie.'
 min_words: 3000
 status: published
 featured_image: /blog/5742-marketing-automation-10-plateformes-pour-automatiser-vos-campagnes.jpg
+related_posts:
+- 1152-affichage-dynamique-en-ecole-et-universite-usages-et-mise-en-place
+- 4081-digital-signage-definition-fonctionnement-et-usages
+- 1116-video-marque-employeur-comment-creer-des-contenus-qui-attirent-les-candidats
+- 8313-digital-signage-vs-affichage-dynamique-quelle-difference
 ---
-
 <p>J'ai mis du temps avant de me lancer. Trop long. On avait une petite équipe marketing, des campagnes email qui partaient à la main, des relances oubliées, des prospects qui tombaient dans le vide. J'ai passé des semaines à comparer des outils avant de trouver ce qui correspondait à notre budget et à notre niveau.</p>
 
 <p>Voici ce que j'aurais voulu lire à l'époque. Un comparatif honnête, avec des prix réels, des limites assumées, et des avis d'utilisateur terrain. Pas un article écrit par quelqu'un qui n'a jamais ouvert ces plateformes.</p>
