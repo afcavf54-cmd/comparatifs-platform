@@ -2,7 +2,7 @@
 title: "Avis Linxea Spirit 2 : mon retour après 1 an d’utilisation"
 slug: 4878-avis-assurance-vie-linxea-spirit-2
 date: 2026-08-31 12:43:58+02:00
-updated: 2026-09-04T07:47:54
+updated: 2026-09-04T13:33:46
 categorie: Assurance vie
 categories:
 - Assurance vie
@@ -67,7 +67,7 @@ cta_btn_color: "#e9420a"
 <li>Pénalité de 3 % si tu sors d'une SCPI dans les trois premières années</li>
 <li>Pas de versements programmés possibles sur les SCPI et les actions en direct</li>
 <li>Certaines SCPI sans frais de souscription (comme Iroko Zen) ne sont plus disponibles</li>
-<li>Tous les supports du catalogue ne sont pas forcément intéressants, il faut faire le tri</li>
+<li>Tous les supports du catalogue ne sont pas forcément intéressants, il faut faire le tri</li></ul><p><iframe class="video-embed" src="https://www.youtube.com/embed/DqoF38ps4WE" title="Vidéo YouTube" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen="" style="width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:12px;margin:28px 0;display:block"></iframe></p><p><br><br></p><p><br></p><ul>
 </ul>
 
 <h2>Linxea Spirit 2, c'est quoi exactement ?</h2>
@@ -282,6 +282,7 @@ cta_btn_color: "#e9420a"
 <p>Si je débutais aujourd'hui et que je cherchais une assurance-vie pour investir sur le long terme, je regarderais Linxea Spirit 2 en priorité. Je l'ouvrirais avec au moins 500 euros pour prendre date fiscale, et je mettrais en place un versement programmé mensuel de 100 euros minimum vers un ETF MSCI World ou S&amp;P 500.</p>
 
 <p>Je garderais probablement une petite partie en fonds euro pour avoir une poche sécurisée, et j'envisagerais d'ajouter une ou deux SCPI sur le long terme une fois que j'aurais bien compris leur fonctionnement et les contraintes associées.</p><p>C'est simple, c'est progressif, et c'est dans une enveloppe fiscalement avantageuse avec des frais vraiment maîtrisés. Pour moi, c'est une bonne combinaison de départ.</p><p><em>Cet article ne constitue pas un conseil personnalisé en investissement. Investir comporte des risques de perte en capital, notamment sur les unités de compte. Les performances passées ne préjugent pas des performances futures.</em></p>
+
 
 
 
