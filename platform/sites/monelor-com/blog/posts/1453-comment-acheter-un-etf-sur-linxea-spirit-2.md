@@ -2,7 +2,7 @@
 title: Comment acheter un ETF sur Linxea Spirit 2 ?
 slug: 1453-comment-acheter-un-etf-sur-linxea-spirit-2
 date: 2026-08-12 14:54:49+02:00
-updated: 2026-08-31T14:01:07
+updated: 2026-09-04T07:48:01
 categorie: Assurance vie
 categories:
 - Assurance vie
@@ -18,7 +18,7 @@ related_posts:
 - 3327-assurance-vie
 - 4296-meilleures-scpi-linxea-spirit-2
 cta_enabled: true
-cta_text: "Linxea Spirit 2 : Jusqu'à 150€ à l'ouverture"
+cta_text: "Linxea Spirit 2 : Jusqu'à 150€ de bonus à l'ouverture"
 cta_color: "#000921"
 cta_link: https://www.financeads.net/tc.php?t=74753C432496072T&subid=S-monelor-acheter-etf-spirit2
 cta_button: En profiter
@@ -227,6 +227,7 @@ cta_btn_color: "#e8410a"
 <p>Dans les trois cas, le processus passe par la plateforme Sylvéa de Spirica, et les étapes de recherche et sélection de l'ETF sont pratiquement identiques.</p><p>Si tu as une question sur l'achat d'un ETF sur Linxea Spirit 2 ou sur le fonctionnement du contrat en général, pose-la en commentaire sous la vidéo ou directement sur le site. Je lis tous les messages et j'y réponds avec plaisir.</p>
 
 <p>Et si tu n'as pas encore de contrat Linxea Spirit 2, pense à vérifier l'offre de bienvenue disponible en ce moment via mon lien partenaire. Je mets régulièrement ce lien à jour pour te proposer le meilleur bonus du moment.</p>
+
 
 
 
