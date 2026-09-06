@@ -2,7 +2,7 @@ name: Newsletter — envoi échelonné (drip)
 
 on:
   schedule:
-    - cron: '0 8 * * *'   # tous les jours à 08:00 UTC
+    - cron: '*/15 * * * *'   # toutes les 15 min (programmées + drip)
   workflow_dispatch:       # déclenchement manuel possible
 
 jobs:
