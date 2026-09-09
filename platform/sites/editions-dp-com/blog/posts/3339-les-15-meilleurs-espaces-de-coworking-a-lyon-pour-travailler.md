@@ -4,12 +4,14 @@ slug: 3339-les-15-meilleurs-espaces-de-coworking-a-lyon-pour-travailler
 date: '2026-09-09T12:00:00+02:00'
 categorie: Entrepreneuriat
 meta_title: 'Coworking à Lyon : 15 espaces à découvrir en {year}'
-meta_description: Je vous présente 15 espaces de coworking à Lyon adaptés aux freelances, entrepreneurs et entreprises, avec leurs services et leurs particularités.
+meta_description: Je vous présente 15 espaces de coworking à Lyon adaptés aux freelances,
+  entrepreneurs et entreprises, avec leurs services et leurs particularités.
 min_words: 2500
 status: published
 featured_image: /blog/3339-les-15-meilleurs-espaces-de-coworking-a-lyon-pour-travailler.jpg
+related_posts:
+- 2151-ou-travailler-a-paris-8-espaces-de-coworking-que-j-ai-selectionnes
 ---
-
 <h2>Pourquoi chercher un espace de coworking à Lyon quand on dirige une TPE ?</h2>
 
 <p>J'ai passé plusieurs mois à travailler depuis mon bureau à domicile. Réunions dans la cuisine, salariés éparpillés, concentration difficile. À un moment, ça bloque vraiment la productivité. Trouver un espace de coworking à Lyon, c'est devenu une décision pratique avant d'être une décision financière.</p>

@@ -9,7 +9,8 @@ meta_description: Besoin d’un bureau ou d’un espace flexible à Paris ? Déc
 min_words: 3000
 status: published
 featured_image: /blog/2151-ou-travailler-a-paris-8-espaces-de-coworking-que-j-ai-selectionnes.jpg
-related_posts: []
+related_posts:
+- 3339-les-15-meilleurs-espaces-de-coworking-a-lyon-pour-travailler
 ---
 <p>J'ai passé pas mal de temps à chercher un endroit pour travailler correctement à Paris. Entre les cafés bruyants, les bureaux partagés hors de prix et les espaces fancy qui ressemblent plus à un décor Instagram qu'à un vrai lieu de travail, le tri est long. Très long.</p>
 
