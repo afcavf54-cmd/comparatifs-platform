@@ -9,7 +9,8 @@ meta_description: 'Bureau privatif, open space ou poste nomade : découvrez notr
 min_words: 3000
 status: published
 featured_image: /blog/8629-notre-selection-des-meilleurs-espaces-de-coworking-parisiens.jpg
-related_posts: []
+related_posts:
+- 1148-coworking-a-lyon-ou-installer-son-bureau-en-2026
 ---
 <p>J'ai passé plusieurs mois à tester des espaces de coworking à Paris. Pas par plaisir particulier, mais parce que j'avais besoin de trouver quelque chose de correct pour deux de mes salariés qui travaillent parfois depuis la capitale. Budget limité, pas envie de payer pour des trucs qu'on n'utilise pas. Voici ce que j'ai retenu.</p>
 
