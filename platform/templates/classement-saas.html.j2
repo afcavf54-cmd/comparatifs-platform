@@ -285,6 +285,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
       {% set pfa = prod.points_faibles if (prod.points_faibles is defined and prod.points_faibles) else [] %}
       {% if pf or pfa %}
       <table class="avantages-table">
+        {% if pf and pfa %}
         <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
         <tbody>
           {% for i in range([pf | length, pfa | length] | max) %}
@@ -294,6 +295,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
           </tr>
           {% endfor %}
         </tbody>
+        {% elif pf %}
+        <thead><tr><th>✅<br>Avantages</th></tr></thead>
+        <tbody>{% for x in pf %}<tr><td>{{ x }}</td></tr>{% endfor %}</tbody>
+        {% else %}
+        <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+        <tbody>{% for x in pfa %}<tr><td>{{ x }}</td></tr>{% endfor %}</tbody>
+        {% endif %}
       </table>
       {% else %}
       <p style="font-size:13px;color:var(--ink3);font-style:italic">Analyse en cours...</p>
