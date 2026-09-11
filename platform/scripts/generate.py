@@ -2690,6 +2690,18 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     {"year": _site_year}
                 )
 
+                # ── Épinglage : produits à afficher en 1er (editorial "pin_first") ──
+                # pin_first = liste de slugs à remonter en tête du classement,
+                # dans l'ordre indiqué. Les autres gardent leur ordre d'origine.
+                _pin = cat_editorial.get("pin_first") or []
+                if _pin:
+                    _pin = [str(s).strip().lower() for s in (_pin if isinstance(_pin, list) else [_pin])]
+                    enriched_products = sorted(
+                        enriched_products,
+                        key=lambda p: _pin.index(str(p.get("slug", "")).strip().lower())
+                        if str(p.get("slug", "")).strip().lower() in _pin else len(_pin)
+                    )
+
                 # Trier les produits : ordre manuel > note > aléatoire STABLE.
                 # ── Pourquoi le départage aléatoire ───────────────────────────
                 # Sans note dans le Sheet, l'ancienne clé (1, -note) valait
