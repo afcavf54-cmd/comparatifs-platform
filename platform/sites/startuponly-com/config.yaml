@@ -32,6 +32,10 @@ site:
   index_template: "index-saas.html.j2"
   analytics_clicky: ""
   contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
+  head_verify: |
+    <!-- 7158e79828c6a628 -->
+    <meta name="publisuites-verify-code" content="aHR0cHM6Ly9zdGFydHVwb25seS5jb20=" />
+    <meta name="verify" content="XzsngHxafIrUFfm9jHGrTVtmulVu2MNF" />
 
   outils_menu:
     - label: Outils
