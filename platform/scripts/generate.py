@@ -2700,18 +2700,6 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     {"year": _site_year}
                 )
 
-                # ── Épinglage : produits à afficher en 1er (editorial "pin_first") ──
-                # pin_first = liste de slugs à remonter en tête du classement,
-                # dans l'ordre indiqué. Les autres gardent leur ordre d'origine.
-                _pin = cat_editorial.get("pin_first") or []
-                if _pin:
-                    _pin = [str(s).strip().lower() for s in (_pin if isinstance(_pin, list) else [_pin])]
-                    enriched_products = sorted(
-                        enriched_products,
-                        key=lambda p: _pin.index(str(p.get("slug", "")).strip().lower())
-                        if str(p.get("slug", "")).strip().lower() in _pin else len(_pin)
-                    )
-
                 # Trier les produits : ordre manuel > note > aléatoire STABLE.
                 # ── Pourquoi le départage aléatoire ───────────────────────────
                 # Sans note dans le Sheet, l'ancienne clé (1, -note) valait
@@ -2724,11 +2712,15 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 #   • n'intervient qu'à note égale (ou absente) : dès qu'une note
                 #     existe, elle prime.
                 order_map = cat_editorial.get("products_order", {})
+                pin_list = [str(s).strip().lower() for s in (cat_editorial.get("pin_first") or [])]
                 def _rand_tiebreak(_slug):
                     h = hashlib.md5(f"{site_slug}:{cat_slug}:{_slug}".encode("utf-8")).hexdigest()
                     return int(h[:8], 16) / 0xFFFFFFFF  # float stable dans [0,1[
                 def sort_key(p):
                     slug = p.get("slug", "")
+                    slug_l = str(slug).strip().lower()
+                    if slug_l in pin_list:
+                        return (-1, pin_list.index(slug_l), 0.0)  # épinglés tout en haut, dans l'ordre
                     if slug in order_map:
                         return (0, order_map[slug], 0.0)  # Ordre manuel en priorité
                     note = p.get("note_redaction", 0) or 0
