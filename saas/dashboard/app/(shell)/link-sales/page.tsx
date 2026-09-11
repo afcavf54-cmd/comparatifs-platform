@@ -367,7 +367,7 @@ export default function LinkSalesPage() {
                 const y = mt + ph - h
                 return (
                   <g key={m}>
-                    <rect x={x} y={y} width={bw} height={h} rx={4} fill={C.accent} />
+                    <rect x={x} y={y} width={bw} height={h} rx={4} fill={SITE_COLORS[i % SITE_COLORS.length]} />
                     <text x={x + bw / 2} y={y - 7} textAnchor="middle" fontSize={12.5} fontWeight={700} fill={C.text}>{euro(v)}</text>
                     <text x={x + bw / 2} y={ch - mb + 20} textAnchor="middle" fontSize={11} fill={C.dim}>{fmtMonth(m)}</text>
                   </g>
