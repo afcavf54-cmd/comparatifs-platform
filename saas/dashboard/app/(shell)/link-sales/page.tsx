@@ -93,6 +93,10 @@ export default function LinkSalesPage() {
   const plotW = CW - ML - MR, plotH = CH - MT - MB
   const xAt = (i: number) => chartMonths.length <= 1 ? ML + plotW / 2 : ML + (i / (chartMonths.length - 1)) * plotW
   const yAt = (v: number) => MT + plotH * (1 - v / maxMonthly)
+  // CA total mensuel (pour le graphique en colonnes)
+  const caByMonth: Record<string, number> = {}
+  for (const m of chartMonths) caByMonth[m] = chartSites.reduce((sum, si) => sum + (perSiteMonth[si][m] || 0), 0)
+  const maxBar = Math.max(1, ...chartMonths.map(m => caByMonth[m]))
 
   // ── Mutations ─────────────────────────────────────────────────────────────
   const mark = () => setDirty(true)
@@ -119,6 +123,17 @@ export default function LinkSalesPage() {
     setSalePrice(''); setSaleNote(''); mark()
   }
   const deleteSale = (id: string) => { setSales(sales.filter(s => s.id !== id)); mark() }
+
+  // édition d'une vente
+  const [editSaleId, setEditSaleId] = useState<string | null>(null)
+  const [es, setEs] = useState({ site: '', platform: '', price_ht: '', date: '', note: '' })
+  const startEditSale = (s: Sale) => { setEditSaleId(s.id); setEs({ site: s.site, platform: s.platform, price_ht: String(s.price_ht), date: s.date, note: s.note || '' }) }
+  const saveEditSale = () => {
+    const price = parseFloat(es.price_ht.replace(',', '.'))
+    if (isNaN(price)) { alert('Prix HT invalide.'); return }
+    setSales(sales.map(s => s.id === editSaleId ? { ...s, site: es.site, platform: es.platform, price_ht: price, date: es.date, note: es.note.trim() } : s))
+    setEditSaleId(null); mark()
+  }
 
   async function save() {
     setSaving(true); setSaveMsg('')
@@ -287,21 +302,80 @@ export default function LinkSalesPage() {
             </thead>
             <tbody>
               {sales.length === 0 && <tr><td colSpan={6} style={{ ...td, color: C.faint, textAlign: 'center', padding: 20 }}>Aucune vente enregistrée.</td></tr>}
-              {sales.map(s => (
-                <tr key={s.id}>
-                  <td style={{ ...td, color: C.dim, whiteSpace: 'nowrap' }}>{s.date}</td>
-                  <td style={td}>{siteName(s.site)}</td>
-                  <td style={td}>{s.platform}</td>
-                  <td style={{ ...td, textAlign: 'right', color: C.accent, fontWeight: 600, whiteSpace: 'nowrap' }}>{euro(s.price_ht)}</td>
-                  <td style={{ ...td, color: C.dim }}>{s.note}</td>
-                  <td style={{ ...td, textAlign: 'center' }}>
-                    <span onClick={() => deleteSale(s.id)} title="Supprimer" style={{ cursor: 'pointer', color: C.faint }}>🗑</span>
-                  </td>
-                </tr>
-              ))}
+              {sales.map(s => {
+                if (editSaleId === s.id) {
+                  const ei: React.CSSProperties = { ...td, padding: '6px 8px' }
+                  const eInp: React.CSSProperties = { width: '100%', padding: '6px 8px', background: C.bg, border: `1px solid ${C.border}`, borderRadius: 6, color: C.text, fontSize: 12.5, outline: 'none', boxSizing: 'border-box' }
+                  return (
+                    <tr key={s.id} style={{ background: 'rgba(0,212,170,.05)' }}>
+                      <td style={ei}><input type="date" value={es.date} onChange={e => setEs({ ...es, date: e.target.value })} style={eInp} /></td>
+                      <td style={ei}>
+                        <select value={es.site} onChange={e => setEs({ ...es, site: e.target.value })} style={eInp}>
+                          {activeSites.map(x => <option key={x.id} value={x.id}>{x.name}</option>)}
+                        </select>
+                      </td>
+                      <td style={ei}>
+                        <select value={es.platform} onChange={e => setEs({ ...es, platform: e.target.value })} style={eInp}>
+                          {platforms.map(p => <option key={p} value={p}>{p}</option>)}
+                        </select>
+                      </td>
+                      <td style={ei}><input type="number" step="0.01" value={es.price_ht} onChange={e => setEs({ ...es, price_ht: e.target.value })} style={{ ...eInp, textAlign: 'right' }} /></td>
+                      <td style={ei}><input value={es.note} onChange={e => setEs({ ...es, note: e.target.value })} style={eInp} /></td>
+                      <td style={{ ...ei, textAlign: 'center', whiteSpace: 'nowrap' }}>
+                        <span onClick={saveEditSale} title="Enregistrer" style={{ cursor: 'pointer', color: C.accent, marginRight: 10 }}>✓</span>
+                        <span onClick={() => setEditSaleId(null)} title="Annuler" style={{ cursor: 'pointer', color: C.faint }}>✕</span>
+                      </td>
+                    </tr>
+                  )
+                }
+                return (
+                  <tr key={s.id}>
+                    <td style={{ ...td, color: C.dim, whiteSpace: 'nowrap' }}>{s.date}</td>
+                    <td style={td}>{siteName(s.site)}</td>
+                    <td style={td}>{s.platform}</td>
+                    <td style={{ ...td, textAlign: 'right', color: C.accent, fontWeight: 600, whiteSpace: 'nowrap' }}>{euro(s.price_ht)}</td>
+                    <td style={{ ...td, color: C.dim }}>{s.note}</td>
+                    <td style={{ ...td, textAlign: 'center', whiteSpace: 'nowrap' }}>
+                      <span onClick={() => startEditSale(s)} title="Modifier" style={{ cursor: 'pointer', color: C.faint, marginRight: 10 }}>✏️</span>
+                      <span onClick={() => deleteSale(s.id)} title="Supprimer" style={{ cursor: 'pointer', color: C.faint }}>🗑</span>
+                    </td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>
+      </div>
+
+      {/* ── CA total mois par mois (colonnes) ─────────────────────────────── */}
+      <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: 20, marginTop: 24 }}>
+        <div style={{ fontSize: 15, color: C.text, fontWeight: 600, marginBottom: 4 }}>Évolution du CA (mois par mois)</div>
+        <div style={{ fontSize: 12, color: C.faint, marginBottom: 16 }}>Chiffre d'affaires HT total par mois, tous sites confondus.</div>
+        {chartMonths.length === 0 ? (
+          <div style={{ fontSize: 13, color: C.faint, padding: 20, textAlign: 'center' }}>Aucune vente enregistrée pour le moment.</div>
+        ) : (
+          <svg viewBox="0 0 820 320" style={{ width: '100%', height: 'auto', display: 'block' }}>
+            {(() => {
+              const cw = 820, ch = 320, ml = 20, mr = 20, mt = 34, mb = 40
+              const pw = cw - ml - mr, ph = ch - mt - mb
+              const slot = pw / chartMonths.length
+              const bw = Math.min(64, slot * 0.6)
+              return chartMonths.map((m, i) => {
+                const v = caByMonth[m]
+                const h = ph * (v / maxBar)
+                const x = ml + i * slot + (slot - bw) / 2
+                const y = mt + ph - h
+                return (
+                  <g key={m}>
+                    <rect x={x} y={y} width={bw} height={h} rx={4} fill={C.accent} />
+                    <text x={x + bw / 2} y={y - 7} textAnchor="middle" fontSize={12.5} fontWeight={700} fill={C.text}>{euro(v)}</text>
+                    <text x={x + bw / 2} y={ch - mb + 20} textAnchor="middle" fontSize={11} fill={C.dim}>{fmtMonth(m)}</text>
+                  </g>
+                )
+              })
+            })()}
+          </svg>
+        )}
       </div>
 
       {/* ── Évolution du CA par site (mois par mois) ──────────────────────── */}
