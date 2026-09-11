@@ -1740,6 +1740,16 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     except Exception as _e:
                         print(f"  ⚠ Sheet '{_kw_name}': {_e}")
 
+    # ── Exclusion de produits par site (config site: excluded_products) ──────
+    # Liste de slugs à retirer des classements de CE site (les autres sites
+    # gardent le produit). Ex: excluded_products: ["malibou"]
+    _excluded = set(str(s).strip().lower() for s in (site.get("excluded_products") or []))
+    if _excluded:
+        _before = len(products)
+        products = [p for p in products if str(p.get("slug", "")).strip().lower() not in _excluded]
+        if len(products) < _before:
+            print(f"  ⛔ {_before - len(products)} produit(s) exclu(s) via excluded_products")
+
     output_dir = site_dir / "output"
     if not dry_run:
         output_dir.mkdir(exist_ok=True)
