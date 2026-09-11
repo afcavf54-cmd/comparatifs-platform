@@ -482,6 +482,32 @@ def _post_process_normalize_tables(output_dir: Path) -> None:
         print(f"  📋 Tables normalisées : {touched}/{scanned} fichiers HTML touchés")
 
 
+def _post_process_inject_head(output_dir: Path, head_html: str) -> None:
+    """Injecte un bloc HTML brut juste après <head> dans toutes les pages.
+    Sert aux balises de vérification des plateformes (temporaire, via config
+    'head_verify'). Idempotent : ne réinjecte pas si déjà présent."""
+    if not head_html or not head_html.strip():
+        return
+    import re as _re_h
+    marker = head_html.strip()
+    snippet = "\n" + marker + "\n"
+    touched = 0
+    for html_file in sorted(output_dir.rglob("*.html")):
+        try:
+            html = html_file.read_text(encoding="utf-8")
+        except Exception:
+            continue
+        if marker in html:
+            continue  # déjà injecté
+        m = _re_h.search(r"<head[^>]*>", html)
+        if not m:
+            continue
+        html_file.write_text(html[:m.end()] + snippet + html[m.end():], encoding="utf-8")
+        touched += 1
+    if touched:
+        print(f"  🏷 Balises de vérification injectées : {touched} page(s)")
+
+
 # ── Chargement Sheet CSV ───────────────────────────────────────────────────────
 STRING_FIELDS = {
     'geo', 'secteurs', 'pays', 'investissement_min', 'tri_horizon',
@@ -3409,6 +3435,12 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
             _post_process_normalize_tables(output_dir)
         except Exception as e:
             print(f"  ⚠ Normalisation tables a échoué : {e}")
+
+        # Balises de vérification plateformes (temporaire, via config head_verify)
+        try:
+            _post_process_inject_head(output_dir, site.get("head_verify", ""))
+        except Exception as e:
+            print(f"  ⚠ Injection balises de vérification a échoué : {e}")
 
 
 # ── CLI ───────────────────────────────────────────────────────────────────────
