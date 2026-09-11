@@ -29,6 +29,8 @@ site:
   index_template: "index.html.j2"
   analytics_clicky: "<script async data-id=\"101505106\" src=\"//static.getclicky.com/js\"></script>"
   contact_form_key: "eabd63c5-1744-4172-b8c0-8984db488f10"
+  head_verify: |
+    <meta name="publisuites-verify-code" content="aHR0cHM6Ly93d3cuY2FkZWF1Y2xpYy5jb20=" />
 
 page_types:
   blog: cadeau-code-promo
