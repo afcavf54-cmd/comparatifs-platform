@@ -4,15 +4,20 @@ slug: les-meilleurs-cadeaux-originaux-pour-un-collegue
 date: '2026-09-13T18:00:00+02:00'
 categorie: Idées cadeaux
 meta_title: 'Cadeau original collègue : des idées qui feront toujours plaisir'
-meta_description: Découvrez les meilleures idées de cadeaux originaux pour un collègue, entre 20 et 50 euros, sans risquer le faux pas devant tout le bureau.
+meta_description: Découvrez les meilleures idées de cadeaux originaux pour un collègue,
+  entre 20 et 50 euros, sans risquer le faux pas devant tout le bureau.
 min_words: 750
 status: published
 featured_image: /blog/les-meilleurs-cadeaux-originaux-pour-un-collegue.jpg
 link_anchors:
 - text: idée de cadeau originale pour un collègue
   max: 5
+related_posts:
+- idees-cadeau-d-anniversaire-pour-maman-les-plus-belles-inspirations-en-2026
+- bougies-parfumees-cadeau-intemporel
+- cadeau-homme-21-ans
+- idees-de-cadeaux-de-noel-pour-toute-la-famille
 ---
-
 <p>Trouver un cadeau pour un collègue, c'est souvent le casse-tête qu'on s'impose en dernière minute. Trop personnel, ça fait bizarre. Pas assez original, ça fait peine. Et puis il y a cette peur universelle d'offrir quelque chose de complètement raté devant tout le bureau. J'ai vécu ça des dizaines de fois, et j'ai fini par développer quelques réflexes qui m'évitent les mauvaises surprises.</p>
 
 <p>Alors voilà ce que j'ai retenu après des années à gérer les collectes de bureau, les départs en retraite et les anniversaires de collègues que je connais à peine.</p>
