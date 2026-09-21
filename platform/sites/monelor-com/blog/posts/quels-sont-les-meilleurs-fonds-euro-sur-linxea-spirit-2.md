@@ -1,0 +1,160 @@
+---
+title: Quels sont les meilleurs fonds euro sur Linxea Spirit 2 ?
+slug: quels-sont-les-meilleurs-fonds-euro-sur-linxea-spirit-2
+date: 2026-09-21 11:19:03+02:00
+updated: 2026-09-21T11:19:03
+categorie: Assurance vie
+categories:
+- Assurance vie
+meta_title: "Fonds euros Linxea Spirit 2 : Nouvelle Génération ou Objectif Climat ?"
+meta_description: Découvrez les deux fonds euro de Linxea Spirit 2, leurs rendements 2024 et leurs stratégies pour choisir le meilleur placement sécurisé selon votre profil.
+featured_image: ""
+status: draft
+min_words: 1400
+show_toc: true
+---
+
+<p>Linxea Spirit 2 propose deux fonds euros : Nouvelle Génération et Objectif Climat. Tous deux offrent une garantie du capital à 98 %, mais suivent des stratégies différentes.<br><br>Nouvelle Génération mise sur une diversification plus large, avec environ 70 % d'obligations complétées par de l'immobilier, des actions et du private equity. Objectif Climat privilégie quant à lui les investissements à vocation environnementale, notamment les obligations vertes, et bénéficie d'une classification Article 9 SFDR.<br><br>Côté rendement, Objectif Climat a légèrement mieux performé sur les trois dernières années : 3,31 % en 2023, 3,31 % en 2024 et 3,26 % en 2025, contre respectivement 3,13 %, 3,13 % et 3,08 % pour Nouvelle Génération.<br><br>👉 À retenir : Nouvelle Génération se distingue par sa diversification, tandis qu'Objectif Climat combine investissement responsable et rendements récents légèrement supérieurs. Les deux fonds peuvent également être combinés au sein du contrat Linxea Spirit 2.</p><h2>Rappel rapide : qu'est-ce qu'un fonds euro ?</h2>
+
+<p>Avant de plonger dans la comparaison, posons les bases. Si tu connais déjà le principe du fonds euro, tu peux passer directement à la section suivante. Mais si tu débutes, ce rappel va t'aider à mieux comprendre ce que tu choisis réellement.</p>
+
+<p>Un fonds euro, c'est la poche sécurisée d'une assurance-vie. C'est le support qui te permet de placer ton argent sans prendre de risque majeur. Sur Linxea Spirit 2, le capital est garanti à hauteur de 98 %. Pas 100 %, et c'est important de comprendre pourquoi.</p>
+
+<p>Cette légère différence s'explique simplement : les fonds euros supportent 2 % de frais de gestion annuels, prélevés par l'assureur. Ces frais viennent mécaniquement diminuer la garantie brute. Donc si tu places 10 000 euros, la garantie porte sur 9 800 euros. En pratique, cela ne change pas grand-chose si ton fonds performe, mais c'est une nuance à connaître.</p>
+
+<p>Autre point essentiel : les rendements que je vais te présenter dans cet article sont exprimés <strong>nets de frais de gestion</strong>, mais hors fiscalité. Autrement dit, ce que tu lis, c'est ce que le fonds a vraiment rapporté après déduction des frais internes. La fiscalité dépend ensuite de ta situation personnelle et de la durée de détention de ton contrat.</p>
+
+<p>Enfin, un fonds euro est majoritairement investi en obligations. Ce type d'actif offre un rendement régulier et prévisible, sans la volatilité des marchés actions. C'est pour ça qu'on l'utilise comme socle stable dans une assurance-vie, pour équilibrer des unités de compte plus dynamiques et lisser le risque global de ton portefeuille.</p>
+
+<h2>Pourquoi comparer Nouvelle Génération et Objectif Climat ?</h2>
+
+<p>Sur Linxea Spirit 2, deux fonds euros sont disponibles : <strong>Nouvelle Génération</strong> et <strong>Objectif Climat</strong>. Les deux sont distribués par Spirica, accessibles dès 50 euros, avec un plafond de versement fixé à 5 millions d'euros. Jusqu'ici, rien ne les différencie.</p>
+
+<p>Mais dès qu'on regarde leur composition et leur stratégie d'investissement, tout change. Ce ne sont pas deux fonds euros interchangeables. Ils ne répondent pas aux mêmes objectifs, et leurs performances sur les dernières années le montrent clairement.</p>
+
+<p>Voilà pourquoi il vaut la peine de les comparer sérieusement, plutôt que de choisir l'un ou l'autre au hasard.</p>
+
+<h3>Le fonds Nouvelle Génération : diversification et rendement élargi</h3>
+
+<p>Le fonds Nouvelle Génération repose sur une allocation cible diversifiée. Sa composition approximative ressemble à ça :</p>
+
+<ul>
+<li>70 % en obligations</li>
+<li>10 % en immobilier</li>
+<li>10 % en actions</li>
+<li>10 % en private equity</li>
+</ul>
+
+<p>L'idée, c'est d'aller chercher un rendement supérieur aux fonds euros traditionnels en intégrant des actifs plus dynamiques. Plutôt que de tout miser sur les obligations, ce fonds diversifie vers l'immobilier, les actions et le capital-investissement. Ce dernier, le private equity, désigne des investissements dans des entreprises non cotées en Bourse, souvent porteuses d'un potentiel de croissance plus élevé.</p>
+
+<p>Ce fonds est classé <strong>Article 8 SFDR</strong>. La SFDR, ou Sustainable Finance Disclosure Regulation, c'est une réglementation européenne qui classe les produits financiers selon leur niveau d'engagement en matière de durabilité. Trois niveaux existent :</p>
+
+<ul>
+<li><strong>Article 6 :</strong> pas d'objectif durable particulier.</li>
+<li><strong>Article 8 :</strong> le fonds promeut des caractéristiques environnementales et/ou sociales.</li>
+<li><strong>Article 9 :</strong> le fonds a un objectif d'investissement durable clairement défini, avec un impact mesurable.</li>
+</ul>
+
+<p>Le fonds Nouvelle Génération, classé Article 8, intègre donc des critères ESG dans la sélection de ses investissements. ESG, ça signifie Environnement, Social et Gouvernance. Concrètement, les gérants tiennent compte des émissions de CO2, des conditions de travail, de la transparence des entreprises, etc. Mais contrairement à un fonds Article 9, il n'a pas l'obligation de démontrer un impact environnemental précis et mesurable.</p>
+
+<p>Un dernier détail important sur ce fonds : il a été lancé en 2020, dans un contexte de taux bas. Cela peut sembler un inconvénient de prime abord, mais en réalité, ce jeune historique lui permet aujourd'hui de bénéficier plus rapidement de la remontée des taux obligataires. Les nouvelles obligations intégrées au portefeuille profitent pleinement des taux actuels, plus élevés qu'il y a quelques années.</p>
+
+<h3>Le fonds Objectif Climat : engagement environnemental au coeur de la stratégie</h3>
+
+<p>Le fonds Objectif Climat, lui, monte d'un cran sur l'échelle de l'engagement durable. Il est classé <strong>Article 9 SFDR</strong>, le niveau le plus exigeant. Cela signifie que chaque euro investi doit contribuer à un objectif environnemental mesurable. Ce n'est pas une promesse marketing, c'est une obligation réglementaire.</p>
+
+<p>Sa structure se compose de deux grandes poches :</p>
+
+<ul>
+<li>Une poche de diversification investie exclusivement dans des supports eux-mêmes classés Article 9.</li>
+<li>Un mandat obligataire géré par Amundi, investi majoritairement en <strong>obligations vertes</strong>.</li>
+</ul>
+
+<p>Tu te demandes peut-être ce qu'est une obligation verte. C'est simplement une obligation classique, donc un emprunt émis par une entreprise, une banque ou un État, avec une contrainte supplémentaire : les fonds levés doivent obligatoirement financer des projets à impact environnemental positif. Par exemple :</p>
+
+<ul>
+<li>La production d'énergies renouvelables (éolien, solaire, etc.)</li>
+<li>La rénovation énergétique de bâtiments</li>
+<li>Le développement de transports propres</li>
+<li>La gestion durable de l'eau ou des déchets</li>
+</ul>
+
+<p>L'émetteur de l'obligation s'engage à utiliser l'argent exclusivement pour ces projets et à publier des rapports de transparence pour en attester. Dans le cas du fonds Objectif Climat, la partie obligataire est donc massivement orientée vers la transition écologique.</p>
+
+<p>Ce qui est intéressant ici, c'est que la logique sécurisée du fonds euro est préservée : tu gardes la garantie du capital à 98 %, les mêmes frais de gestion, le même niveau d'accessibilité. Mais derrière, ton épargne finance concrètement des projets liés à la transformation de notre modèle énergétique. Pour certains investisseurs, ça fait une vraie différence.</p>
+
+<h2>La comparaison des performances : les chiffres parlent d'eux-mêmes</h2>
+
+<p>Passons maintenant aux performances. C'est souvent ce qui fait pencher la balance, et les chiffres 2025 viennent d'être officiellement publiés. Voilà ce que ça donne, net de frais de gestion et hors fiscalité.</p>
+
+<h3>Fonds Nouvelle Génération</h3>
+
+<ul>
+<li>2021 : 1,65 %</li>
+<li>2022 : 2,30 %</li>
+<li>2023 : 3,13 %</li>
+<li>2024 : 3,13 %</li>
+<li>2025 : 3,08 %</li>
+</ul>
+
+<h3>Fonds Objectif Climat</h3>
+
+<ul>
+<li>2023 : 3,31 %</li>
+<li>2024 : 3,31 %</li>
+<li>2025 : 3,26 %</li>
+</ul>
+
+<p>Attention, le fonds Objectif Climat n'a pas de données antérieures à 2023 car il est plus récent. La comparaison directe ne peut donc se faire que sur les trois dernières années. Et sur cette période, le verdict est clair : <strong>Objectif Climat fait mieux chaque année</strong>, avec un écart d'environ 0,18 point de pourcentage.</p>
+
+<p>Prenons un exemple concret pour voir si ça change vraiment quelque chose. Imaginons que tu places 10 000 euros sur chaque fonds au 1er janvier 2023 et que tu laisses fructifier pendant trois ans, sans toucher à rien.</p>
+
+<p>Avec le fonds Nouvelle Génération, à 3,13 % en 2023, 3,13 % en 2024 et 3,08 % en 2025, ton capital après trois ans s'élève à environ <strong>10 954 euros</strong>.</p>
+
+<p>Avec le fonds Objectif Climat, à 3,31 % en 2023, 3,31 % en 2024 et 3,26 % en 2025, ton capital grimpe à environ <strong>10 999 euros</strong>.</p>
+
+<p>La différence est d'environ 45 euros sur 10 000 euros investis sur trois ans. Ce n'est pas spectaculaire, mais c'est réel. Et sur des montants plus élevés ou sur une durée plus longue, l'écart se creuse progressivement, grâce aux intérêts composés.</p>
+
+<p>Ce qu'il faut retenir, c'est que cette différence de rendement ne vient pas du hasard. Elle reflète des choix de gestion différents. Le fonds Objectif Climat, investi massivement en obligations vertes via Amundi, a su profiter de la remontée des taux tout en maintenant une sélectivité forte. Le fonds Nouvelle Génération, lui, diversifie davantage, ce qui peut générer plus de rendement à long terme, mais introduit aussi plus de variabilité selon les conditions de marché.</p>
+
+<h2>Quel fonds euro choisir selon ton profil ?</h2>
+
+<p>Maintenant que tu connais la composition, la philosophie et les performances de chaque fonds, la vraie question, c'est : lequel te correspond le mieux ?</p>
+
+<p>Mon avis est assez tranché, mais je vais te donner les deux angles pour que tu puisses décider par toi-même.</p>
+
+<h3>Tu priorises la performance et la diversification</h3>
+
+<p>Si ton seul critère est d'optimiser le rendement sur le long terme, le fonds <strong>Nouvelle Génération</strong> mérite ton attention. Sa diversification vers l'immobilier, les actions et le private equity peut lui permettre, dans des conditions de marché favorables, de surperformer un fonds obligataire plus classique. La part de private equity notamment peut générer des retours attractifs sur le long terme, même si elle introduit un peu plus d'incertitude à court terme.</p>
+
+<p>Ce fonds est aussi pertinent si tu veux une poche sécurisée au sein d'un portefeuille déjà bien équilibré, avec des unités de compte dynamiques à côté. La diversification interne du fonds complète bien une stratégie globale.</p>
+
+<h3>Tu veux allier rendement et impact environnemental</h3>
+
+<p>Si tu accordes de l'importance à l'impact de ton épargne, ou si tu veux donner un sens concret à ton investissement, le fonds <strong>Objectif Climat</strong> est clairement le bon choix. Et ce n'est pas un choix sacrifié sur l'autel des convictions : sur les trois dernières années, ce fonds fait mieux que son concurrent, année après année.</p>
+
+<p>C'est rare de pouvoir dire qu'un investissement responsable surperforme un investissement standard. Ici, c'est le cas. Bien sûr, les performances passées ne préjugent pas des performances futures, et cet écart peut se réduire ou s'inverser. Mais pour l'instant, les données sont favorables au fonds Objectif Climat.</p>
+
+<p>Sa classification Article 9 SFDR, la plus exigeante du marché, te garantit aussi que ce n'est pas du greenwashing. Chaque euro investi est tracé, chaque projet financé doit démontrer un impact environnemental concret. C'est une garantie supplémentaire de cohérence.</p>
+
+<h3>Et si tu n'arrivais pas à choisir ?</h3>
+
+<p>Bonne nouvelle : Linxea Spirit 2 te permet de répartir ton épargne sur les deux fonds simultanément. Tu n'es pas obligé de tout mettre d'un côté. Tu peux très bien allouer 60 % sur Objectif Climat et 40 % sur Nouvelle Génération, par exemple, selon tes priorités. Cette flexibilité est l'un des atouts du contrat.</p>
+
+<p>Dans tous les cas, les deux fonds partagent les mêmes conditions essentielles : garantie du capital à 98 %, 2 % de frais de gestion annuels, accessibilité dès 50 euros. La différence se joue sur la stratégie d'investissement, les convictions et quelques dixièmes de pourcentage de rendement.</p>
+
+<h2>Mon verdict final</h2>
+
+<p>Si je devais résumer la situation en quelques mots, voilà ce que je dirais.</p>
+
+<p>Le fonds <strong>Objectif Climat prend l'avantage</strong> sur les trois dernières années, à la fois sur la performance et sur l'engagement environnemental. Pour quelqu'un qui veut sécuriser une partie de son épargne tout en donnant un sens à son investissement, c'est le choix le plus cohérent en 2025.</p>
+
+<p>Le fonds <strong>Nouvelle Génération reste une excellente option</strong> pour ceux qui recherchent une diversification plus large et qui ne souhaitent pas nécessairement orienter leur épargne vers des thématiques environnementales. Sa composition plus variée peut être un atout dans certains contextes de marché.</p>
+
+<p>Dans les deux cas, tu restes dans le cadre protecteur d'un fonds euro, avec une garantie du capital à 98 % et une volatilité très faible. Ce sont des supports adaptés à la partie sécurisée d'une assurance-vie, conçus pour préserver ton capital tout en lui faisant générer un rendement régulier.</p>
+
+<p>Le choix final dépend surtout de toi : de tes valeurs, de ta vision à long terme et de la place que tu accordes à l'impact environnemental dans ta stratégie d'investissement. Ce que je te conseille, c'est d'éviter de choisir au hasard. Maintenant que tu as toutes les cartes en main, prends le temps de te positionner clairement.</p>
+
+<p>Si tu as des questions sur Linxea Spirit 2, sur les fonds euros ou sur la stratégie à adopter pour ton assurance-vie, n'hésite pas à les poser en commentaire. Je lis tout et je réponds avec plaisir. Et si cet article t'a été utile, pense à consulter les autres contenus de Monelor, il y a de quoi faire pour construire une stratégie d'investissement simple et efficace, même quand on part de zéro.</p>
+
+<blockquote>Cet article ne constitue pas un conseil personnalisé en investissement. Investir comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures.</blockquote>
