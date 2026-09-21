@@ -2,7 +2,7 @@
 title: "BoursoBank 150€ : profitez de cette prime parrainage"
 slug: boursobank-150-euros
 date: 2026-06-15T21:19:25+02:00
-updated: 2026-09-01T10:43:44
+updated: 2026-09-21T20:04:14
 categorie: Bons plans & Parrainage
 categories:
 - Bons plans & Parrainage
@@ -169,6 +169,7 @@ link_anchors:
 <p>J'ai ouvert mon compte BoursoBank il y a maintenant deux ans et je ne regrette pas. Les frais sont quasi nuls, l'application est claire, et la prime d'ouverture m'a offert un dîner en amoureux sans mordre sur mon budget mensuel. C'est peut-être anecdotique, mais symboliquement, se faire payer pour ouvrir un compte qu'on allait ouvrir de toute façon, ça fait toujours plaisir.</p>
 
 <p>Si tu passes par un lien de parrainage valide aujourd'hui, tu peux viser les <strong>150€</strong> sans que ça te coûte quoi que ce soit. À toi de jouer.</p>
+
 
 
 
