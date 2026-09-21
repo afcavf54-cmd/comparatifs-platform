@@ -2,18 +2,25 @@
 title: Quels sont les meilleurs fonds euro sur Linxea Spirit 2 ?
 slug: quels-sont-les-meilleurs-fonds-euro-sur-linxea-spirit-2
 date: 2026-09-21 11:30:11+02:00
-updated: 2026-09-21T11:30:11
+updated: 2026-09-21 11:30:11
 categorie: Assurance vie
 categories:
 - Assurance vie
-meta_title: "Fonds euros Linxea Spirit 2 : Nouvelle Génération ou Objectif Climat ?"
-meta_description: Découvrez les deux fonds euro de Linxea Spirit 2, leurs rendements 2025 et leurs stratégies pour choisir le meilleur placement sécurisé selon votre profil.
+meta_title: 'Fonds euros Linxea Spirit 2 : Nouvelle Génération ou Objectif Climat
+  ?'
+meta_description: Découvrez les deux fonds euro de Linxea Spirit 2, leurs rendements
+  2025 et leurs stratégies pour choisir le meilleur placement sécurisé selon votre
+  profil.
 featured_image: /blog/quels-sont-les-meilleurs-fonds-euro-sur-linxea-spirit-2/featured-65908.png
 status: published
 min_words: 1400
 show_toc: true
+related_posts:
+- 1845-meilleurs-etf-linxea-spirit-2
+- 4857-comment-acheter-une-scpi-sur-linxea-spirit-2
+- 1453-comment-acheter-un-etf-sur-linxea-spirit-2
+- 3327-assurance-vie
 ---
-
 <p><a href="https://www.monelor.com/4878-avis-assurance-vie-linxea-spirit-2/">Linxea Spirit 2</a>&nbsp;propose deux fonds euros : <b>Nouvelle Génération</b> et <b>Objectif Climat</b>. Tous deux offrent <b>une garantie du capital à 98 %</b>, mais suivent des stratégies différentes.<br><br><b>Nouvelle Génération</b> mise sur une diversification plus large, avec environ 70 % d'obligations complétées par de l'immobilier, des actions et du private equity.&nbsp;</p><p><b>Objectif Climat</b> privilégie quant à lui les investissements à vocation environnementale, notamment les obligations vertes, et bénéficie d'une classification Article 9 SFDR.<br><br>Côté rendement, <b>Objectif Climat a légèrement mieux performé sur les trois dernières années</b> : 3,31 % en 2023, 3,31 % en 2024 et 3,26 % en 2025, contre respectivement 3,13 %, 3,13 % et 3,08 % pour Nouvelle Génération.<br><br>👉 <b>À retenir</b> : Nouvelle Génération se distingue par sa diversification, tandis qu'Objectif Climat combine investissement responsable et rendements récents légèrement supérieurs. Les deux fonds peuvent également être combinés au sein du contrat Linxea Spirit 2.</p><h2>Qu'est-ce qu'un fonds euro ?</h2>
 
 <p>Avant de comparer, posons les bases. Si tu connais déjà le principe du fonds euro, tu peux passer directement à la section suivante. Mais si tu débutes, ce rappel va t'aider à mieux comprendre ce que tu choisis réellement.</p>
