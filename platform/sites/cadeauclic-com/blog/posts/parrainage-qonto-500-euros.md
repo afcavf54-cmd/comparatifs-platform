@@ -1,21 +1,25 @@
 ---
-title: 'Parrainage Qonto 500€ Juin 2026 : comment en bénéficier?'
+title: "Parrainage Qonto 500€ {Month} {year} : comment en bénéficier?"
 slug: parrainage-qonto-500-euros
-date: '2026-06-15T21:19:25+02:00'
+date: 2026-06-15T21:19:25+02:00
+updated: 2026-09-21T20:02:47
 categorie: Bons plans & Parrainage
-meta_title: 'Parrainage Qonto Juin 2026 : 500€ offerts'
-meta_description: Découvrez comment profiter du parrainage Qonto et obtenir jusqu'à 500 euros pour ouvrir votre compte pro de néobanque en toute simplicité, sans mauvaise surprise.
-min_words: 1000
-status: published
+categories:
+- Bons plans & Parrainage
+meta_title: "Parrainage Qonto {Month} {year} : 500€ offerts"
+meta_description: "Découvrez comment profiter du parrainage Qonto et obtenir jusqu'à 500 euros pour ouvrir votre compte pro de néobanque en toute simplicité, sans mauvaise surprise."
 featured_image: /blog/parrainage-qonto-500-euros.jpg
-link_anchors:
-- text: parrainage qonto 500€
-  max: 5
+status: published
+min_words: 1000
+show_toc: false
 related_posts:
 - parrainage-qonto
 - parrainage-qonto-300-euros
 - code-promo-qonto
 - boursobank-150-euros
+link_anchors:
+- text: parrainage qonto 500€
+  max: 5
 ---
 
 <p>Je vais être honnête avec toi : quand on m'a parlé du <strong>parrainage Qonto</strong> pour la première fois, j'ai mis du temps à creuser le sujet. Pourtant, mon mari a lancé son activité en micro-entreprise il y a deux ans, et on cherchait justement une banque pro qui ne nous prendrait pas la tête. On a fini par franchir le pas, et franchement, je regrette de ne pas l'avoir fait plus tôt. Surtout avec les avantages liés au parrainage.</p>
@@ -137,3 +141,4 @@ related_posts:
 <p>Une dernière chose. Les récompenses créditées sur l'abonnement, c'est concret. Mon mari a profité de plusieurs mois d'abonnement offerts grâce au parrainage. Sur un an, ça représente une économie réelle, pas symbolique.</p>
 
 <p>Donc si tu lances ton activité ou si tu cherches à changer de banque pro, autant profiter du système. Le parrainage Qonto est l'un des rares programmes où les deux parties y gagnent vraiment, à condition de ne pas rater les étapes clés. Et maintenant, tu sais exactement lesquelles.</p>
+
