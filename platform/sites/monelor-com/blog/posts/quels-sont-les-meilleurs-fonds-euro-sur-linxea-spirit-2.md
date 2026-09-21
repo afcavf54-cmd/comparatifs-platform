@@ -2,15 +2,12 @@
 title: Quels sont les meilleurs fonds euro sur Linxea Spirit 2 ?
 slug: quels-sont-les-meilleurs-fonds-euro-sur-linxea-spirit-2
 date: 2026-09-21 11:30:11+02:00
-updated: 2026-09-21 11:30:11
+updated: 2026-09-21T11:41:37
 categorie: Assurance vie
 categories:
 - Assurance vie
-meta_title: 'Fonds euros Linxea Spirit 2 : Nouvelle Génération ou Objectif Climat
-  ?'
+meta_title: "Fonds euros Linxea Spirit 2 : Nouvelle Génération ou Objectif Climat ?"
 meta_description: Découvrez les deux fonds euro de Linxea Spirit 2, leurs rendements
-  2025 et leurs stratégies pour choisir le meilleur placement sécurisé selon votre
-  profil.
 featured_image: /blog/quels-sont-les-meilleurs-fonds-euro-sur-linxea-spirit-2/featured-65908.png
 status: published
 min_words: 1400
@@ -21,7 +18,8 @@ related_posts:
 - 1453-comment-acheter-un-etf-sur-linxea-spirit-2
 - 3327-assurance-vie
 ---
-<p><a href="https://www.monelor.com/4878-avis-assurance-vie-linxea-spirit-2/">Linxea Spirit 2</a>&nbsp;propose deux fonds euros : <b>Nouvelle Génération</b> et <b>Objectif Climat</b>. Tous deux offrent <b>une garantie du capital à 98 %</b>, mais suivent des stratégies différentes.<br><br><b>Nouvelle Génération</b> mise sur une diversification plus large, avec environ 70 % d'obligations complétées par de l'immobilier, des actions et du private equity.&nbsp;</p><p><b>Objectif Climat</b> privilégie quant à lui les investissements à vocation environnementale, notamment les obligations vertes, et bénéficie d'une classification Article 9 SFDR.<br><br>Côté rendement, <b>Objectif Climat a légèrement mieux performé sur les trois dernières années</b> : 3,31 % en 2023, 3,31 % en 2024 et 3,26 % en 2025, contre respectivement 3,13 %, 3,13 % et 3,08 % pour Nouvelle Génération.<br><br>👉 <b>À retenir</b> : Nouvelle Génération se distingue par sa diversification, tandis qu'Objectif Climat combine investissement responsable et rendements récents légèrement supérieurs. Les deux fonds peuvent également être combinés au sein du contrat Linxea Spirit 2.</p><h2>Qu'est-ce qu'un fonds euro ?</h2>
+
+<p><a href="https://www.monelor.com/4878-avis-assurance-vie-linxea-spirit-2/">Linxea Spirit 2</a>&nbsp;propose deux fonds euros : <b>Nouvelle Génération</b> et <b>Objectif Climat</b>. Tous deux offrent <b>une garantie du capital à 98 %</b>, mais suivent des stratégies différentes.<br><br><b>Nouvelle Génération</b> mise sur une diversification plus large, avec environ 70 % d'obligations complétées par de l'immobilier, des actions et du private equity.&nbsp;</p><p><b>Objectif Climat</b> privilégie quant à lui les investissements à vocation environnementale, notamment les obligations vertes, et bénéficie d'une classification Article 9 SFDR.<br><br>Côté rendement, <b>Objectif Climat a légèrement mieux performé sur les trois dernières années</b> : 3,31 % en 2023, 3,31 % en 2024 et 3,26 % en 2025, contre respectivement 3,13 %, 3,13 % et 3,08 % pour Nouvelle Génération.<br><br>👉 <b>À retenir</b> : Nouvelle Génération se distingue par sa diversification, tandis qu'Objectif Climat combine investissement responsable et rendements récents légèrement supérieurs. Les deux fonds peuvent également être combinés au sein du contrat Linxea Spirit 2.</p><table><thead><tr><th>Critère</th><th>Nouvelle Génération</th><th>Objectif Climat</th></tr></thead><tbody><tr><td><b>Garantie du capital</b></td><td>98 %</td><td>98 %</td></tr><tr><td><b>Frais de gestion</b></td><td>2 % / an</td><td>2 % / an</td></tr><tr><td><b>Versement minimum</b></td><td>50 €</td><td>50 €</td></tr><tr><td><b>Orientation</b></td><td>Diversification</td><td>Environnement / climat</td></tr><tr><td><b>Investissements</b></td><td>Obligations, immobilier, actions, private equity</td><td>Obligations vertes et supports durables</td></tr><tr><td><b>Classification SFDR</b></td><td>Article 8</td><td>Article 9</td></tr><tr><td><b>Particularité</b></td><td>Diversification plus large</td><td>Engagement environnemental plus fort</td></tr></tbody></table><p><iframe class="video-embed" src="https://www.youtube.com/embed/7D720ePVuQE" title="Vidéo YouTube" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen="" style="width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:12px;margin:28px 0;display:block"></iframe></p><h2>Qu'est-ce qu'un fonds euro ?</h2>
 
 <p>Avant de comparer, posons les bases. Si tu connais déjà le principe du fonds euro, tu peux passer directement à la section suivante. Mais si tu débutes, ce rappel va t'aider à mieux comprendre ce que tu choisis réellement.</p>
 
@@ -92,27 +90,7 @@ related_posts:
 
 <h2>La comparaison des performances : les chiffres parlent d'eux-mêmes</h2>
 
-<p>Passons maintenant aux performances. C'est souvent ce qui fait pencher la balance, et les chiffres 2025 viennent d'être officiellement publiés. Voilà ce que ça donne, net de frais de gestion et hors fiscalité.</p>
-
-<h3>Fonds Nouvelle Génération</h3>
-
-<ul>
-<li>2021 : 1,65 %</li>
-<li>2022 : 2,30 %</li>
-<li>2023 : 3,13 %</li>
-<li>2024 : 3,13 %</li>
-<li>2025 : 3,08 %</li>
-</ul>
-
-<h3>Fonds Objectif Climat</h3>
-
-<ul>
-<li>2023 : 3,31 %</li>
-<li>2024 : 3,31 %</li>
-<li>2025 : 3,26 %</li>
-</ul>
-
-<p>Attention, le fonds Objectif Climat n'a pas de données antérieures à 2023 car il est plus récent. La comparaison directe ne peut donc se faire que sur les trois dernières années. Et sur cette période, le verdict est clair : <strong>Objectif Climat fait mieux chaque année</strong>, avec un écart d'environ 0,18 point de pourcentage.</p>
+<p>Passons maintenant aux performances. C'est souvent ce qui fait pencher la balance, et les chiffres 2025 viennent d'être officiellement publiés. Voilà ce que ça donne, net de frais de gestion et hors fiscalité.</p><table><thead><tr><th>Année</th><th>Nouvelle Génération</th><th>Objectif Climat</th></tr><tr><td><b>2021</b></td><td>1,65 %</td><td>—</td></tr><tr><td><b>2022</b></td><td>2,30 %</td><td>—</td></tr><tr><td><b>2023</b></td><td>3,13 %</td><td>3,31 %</td></tr></thead><tbody><tr><td><b>2024</b></td><td>3,13 %</td><td>3,31 %</td></tr><tr><td><b>2025</b></td><td>3,08 %</td><td>3,26 %</td></tr></tbody></table><p>Attention, le fonds Objectif Climat n'a pas de données antérieures à 2023 car il est plus récent. La comparaison directe ne peut donc se faire que sur les trois dernières années. Et sur cette période, le verdict est clair : <strong>Objectif Climat fait mieux chaque année</strong>, avec un écart d'environ 0,18 point de pourcentage.</p>
 
 <p>Prenons un exemple concret pour voir si ça change vraiment quelque chose. Imaginons que tu places 10 000 euros sur chaque fonds au 1er janvier 2023 et que tu laisses fructifier pendant trois ans, sans toucher à rien.</p>
 
@@ -124,9 +102,7 @@ related_posts:
 
 <p>Ce qu'il faut retenir, c'est que cette différence de rendement ne vient pas du hasard. Elle reflète des choix de gestion différents. Le fonds Objectif Climat, investi massivement en obligations vertes via Amundi, a su profiter de la remontée des taux tout en maintenant une sélectivité forte. Le fonds Nouvelle Génération, lui, diversifie davantage, ce qui peut générer plus de rendement à long terme, mais introduit aussi plus de variabilité selon les conditions de marché.</p>
 
-<h2>Quel fonds euro choisir selon ton profil ?</h2>
-
-<p>Maintenant que tu connais la composition, la philosophie et les performances de chaque fonds, la vraie question, c'est : lequel te correspond le mieux ?</p>
+<h2>Quel fonds euro choisir selon ton profil ?</h2><table><thead><tr><th>Ton objectif</th><th>Fonds à considérer</th><th>Pourquoi ?</th></tr></thead><tbody><tr><td>Diversifier davantage</td><td>Nouvelle Génération</td><td>Immobilier, actions et private equity en complément des obligations</td></tr><tr><td>Privilégier l'environnement</td><td>Objectif Climat</td><td>Article 9 SFDR et obligations vertes</td></tr><tr><td>Regarder les rendements récents</td><td>Objectif Climat</td><td>Rendement supérieur en 2023, 2024 et 2025</td></tr><tr><td>Diversifier entre les deux stratégies</td><td>Les deux</td><td>Linxea Spirit 2 permet de répartir l'épargne entre les deux fonds</td></tr></tbody></table><p>Maintenant que tu connais la composition, la philosophie et les performances de chaque fonds, la vraie question, c'est : lequel te correspond le mieux ?</p>
 
 <p>Mon avis est assez tranché, mais je vais te donner les deux angles pour que tu puisses décider par toi-même.</p>
 
@@ -157,3 +133,4 @@ related_posts:
 <p>Dans les deux cas, tu restes dans le cadre protecteur d'un fonds euro, avec une garantie du capital à 98 % et une volatilité très faible. Ce sont des supports adaptés à la partie sécurisée d'une assurance-vie, conçus pour préserver ton capital tout en lui faisant générer un rendement régulier.</p>
 
 <p>Le choix final dépend surtout de toi : de tes valeurs, de ta vision à long terme et de la place que tu accordes à l'impact environnemental dans ta stratégie d'investissement. Ce que je te conseille, c'est d'éviter de choisir au hasard. Maintenant que tu as toutes les cartes en main, prends le temps de te positionner clairement.</p>
+
