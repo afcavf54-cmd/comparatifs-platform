@@ -2,7 +2,7 @@
 title: Quels sont les meilleurs fonds euro sur Linxea Spirit 2 ?
 slug: quels-sont-les-meilleurs-fonds-euro-sur-linxea-spirit-2
 date: 2026-09-21 11:30:11+02:00
-updated: 2026-09-21T11:46:57
+updated: 2026-09-21T11:58:25
 categorie: Assurance vie
 categories:
 - Assurance vie
@@ -17,6 +17,12 @@ related_posts:
 - 4857-comment-acheter-une-scpi-sur-linxea-spirit-2
 - 1453-comment-acheter-un-etf-sur-linxea-spirit-2
 - 3327-assurance-vie
+cta_enabled: true
+cta_text: "Linxea Spirit 2 : Jusqu'à 150€ de bonus à l'ouverture"
+cta_color: "#000b22"
+cta_link: https://www.financeads.net/tc.php?t=74753C432496072T&subid=S-monelor-fonds-euros
+cta_button: En profiter
+cta_btn_color: "#e9420a"
 ---
 
 <p><a href="https://www.monelor.com/4878-avis-assurance-vie-linxea-spirit-2/">Linxea Spirit 2</a>&nbsp;propose deux fonds euros : <b>Nouvelle Génération</b> et <b>Objectif Climat</b>. Tous deux offrent <b>une garantie du capital à 98 %</b>, mais suivent des stratégies différentes.<br><br><b>Nouvelle Génération</b> mise sur une diversification plus large, avec environ 70 % d'obligations complétées par de l'immobilier, des actions et du private equity.&nbsp;</p>
@@ -187,4 +193,5 @@ related_posts:
 <p>Dans les deux cas, tu restes dans le cadre protecteur d'un fonds euro, avec une garantie du capital à 98 % et une volatilité très faible. Ce sont des supports adaptés à la partie sécurisée d'une assurance-vie, conçus pour préserver ton capital tout en lui faisant générer un rendement régulier.</p>
 
 <p>Le choix final dépend surtout de toi : de tes valeurs, de ta vision à long terme et de la place que tu accordes à l'impact environnemental dans ta stratégie d'investissement. Ce que je te conseille, c'est d'éviter de choisir au hasard. Maintenant que tu as toutes les cartes en main, prends le temps de te positionner clairement.</p>
+
 
