@@ -1,21 +1,25 @@
 ---
-title: 'Parrainage Shine Juin 2026 : jusqu’à 200€ de gains + 2 mois offerts !'
+title: "Parrainage Shine Septembre 2026 : jusqu’à 200€ de gains + 2 mois offerts !"
 slug: parrainage-shine
-date: '2026-06-15T21:44:18+02:00'
+date: 2026-06-15T21:44:18+02:00
+updated: 2026-09-21T18:39:03
 categorie: Bons plans & Parrainage
-meta_title: 'Parrainage Shine Juin 2026 : jusqu''à 200€ de gains'
-meta_description: Découvrez le parrainage Shine et gagnez jusqu'à 200 euros en parrainant vos proches. Votre filleul profite de 2 mois offerts sur son compte pro freelance.
-min_words: 1000
-status: published
+categories:
+- Bons plans & Parrainage
+meta_title: "Parrainage Shine Septembre 2026 : jusqu'à 200€ de gains"
+meta_description: "Découvrez le parrainage Shine et gagnez jusqu'à 200 euros en parrainant vos proches. Votre filleul profite de 2 mois offerts sur son compte pro freelance."
 featured_image: /blog/parrainage-shine.jpg
-link_anchors:
-- text: parrainage shine
-  max: 5
+status: published
+min_words: 1000
+show_toc: true
 related_posts:
 - parrainage-n26-80-euros
 - boursobank-150-euros
 - parrainage-qonto-100e
 - boursobank-80-euros
+link_anchors:
+- text: parrainage shine
+  max: 5
 ---
 
 <p>Je suis tombée sur le programme de parrainage Shine un peu par hasard, au moment où je cherchais une banque pro simple pour mon activité de freelance. Et franchement, j'ai eu une bonne surprise. Non seulement le compte est pratique, mais en plus le système de parrainage est l'un des plus généreux que j'ai testés dans cette catégorie. Alors autant partager ce que j'ai trouvé, parce que ça vaut vraiment le coup d'y jeter un œil.</p>
@@ -133,3 +137,4 @@ related_posts:
 <p>Ce n'est pas un gadget marketing. C'est une vraie récompense, pour un service qui tient ses promesses au quotidien. Et ça, c'est plus rare qu'on ne le croit.</p>
 
 <p>Si tu veux profiter des 2 mois offerts, cherche un lien de parrainage actif partagé par un utilisateur Shine, ouvre ton compte via ce lien, et suis bien les étapes d'activation. Tout le reste se fait naturellement.</p>
+
