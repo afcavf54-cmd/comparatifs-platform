@@ -1,21 +1,25 @@
 ---
-title: 'Parrainage Qonto Juin 2026 : 160€ offerts'
+title: "Parrainage Qonto {Month} {year} : 160€ offerts"
 slug: parrainage-qonto
-date: '2026-06-15T21:19:25+02:00'
+date: 2026-06-15T21:19:25+02:00
+updated: 2026-09-21T20:02:36
 categorie: Bons plans & Parrainage
-meta_title: 'Parrainage Qonto Juin 2026 : 160€ offerts'
+categories:
+- Bons plans & Parrainage
+meta_title: "Parrainage Qonto {Month} {year} : 160€ offerts"
 meta_description: Ouvre un compte Qonto via un lien de parrainage et profite de 160 euros offerts sur ton compte pro. Conditions, fonctionnement et astuces pour ne rien rater.
-min_words: 1000
-status: published
 featured_image: /blog/parrainage-qonto.jpg
-link_anchors:
-- text: parrainage qonto
-  max: 5
+status: published
+min_words: 1000
+show_toc: false
 related_posts:
 - parrainage-qonto-500-euros
 - boursobank-80-euros
 - carte-cadeau-prefere-salaries-noel
 - code-promo-qonto
+link_anchors:
+- text: parrainage qonto
+  max: 5
 ---
 
 <p>Je vais être honnête avec toi : quand j'ai lancé mon activité de conseil en organisation d'événements il y a deux ans, j'ai mis un temps fou à choisir un compte pro. J'ai testé plusieurs banques en ligne, comparé les offres, et finalement je suis tombée sur Qonto. Et là, j'ai découvert qu'en passant par un lien de parrainage, on pouvait gratter une belle somme à l'ouverture. Aujourd'hui je te partage tout ce que j'ai compris sur le <strong>parrainage Qonto</strong>, comment ça fonctionne vraiment, et surtout comment récupérer les 160€ offerts sans te prendre la tête.</p>
@@ -134,3 +138,4 @@ related_posts:
 <p>Et si tu hésite encore entre le parrainage et un code promo Qonto, fais le calcul simple que je t'ai décrit plus haut. Dans la majorité des cas, le parrainage gagne. Mais chaque situation est différente, et toi seul connais tes besoins et le forfait que tu vas choisir.</p>
 
 <p>En tout cas, si tu lances ton activité en ce moment, ne passe pas à côté de cette offre. 160€ offerts à l'ouverture d'un compte pro, c'est loin d'être négligeable. Moi, à l'époque, ça m'avait permis de couvrir quasiment six mois d'abonnement. Pas mal pour quelques clics.</p>
+
