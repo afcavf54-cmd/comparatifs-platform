@@ -1,21 +1,25 @@
 ---
-title: 'Parrainage Qonto 200€ Juin 2026 : comment en bénéficier ?'
+title: "Parrainage Qonto 200€ {Month} {year} : comment en bénéficier ?"
 slug: parrainage-qonto-200-euros
-date: '2026-06-15T21:19:25+02:00'
+date: 2026-06-15T21:19:25+02:00
+updated: 2026-09-21T20:02:41
 categorie: Bons plans & Parrainage
-meta_title: 'Parrainage Qonto Juin 2026 : 200€ offerts'
-meta_description: 'Découvrez comment obtenir 200€ grâce au parrainage Qonto : conditions, étapes et conseils pour en profiter facilement en tant qu''indépendant ou petite entreprise.'
-min_words: 1000
-status: published
+categories:
+- Bons plans & Parrainage
+meta_title: "Parrainage Qonto {Month} {year} : 200€ offerts"
+meta_description: "Découvrez comment obtenir 200€ grâce au parrainage Qonto : conditions, étapes et conseils pour en profiter facilement en tant qu'indépendant ou petite entreprise."
 featured_image: /blog/parrainage-qonto-200-euros.jpg
-link_anchors:
-- text: parrainage qonto 200€
-  max: 5
+status: published
+min_words: 1000
+show_toc: false
 related_posts:
 - code-promo-qonto
 - parrainage-qonto-500-euros
 - boursobank-150-euros
 - parrainage-qonto
+link_anchors:
+- text: parrainage qonto 200€
+  max: 5
 ---
 
 <p>Je vais être honnête : quand on m'a parlé pour la première fois du <strong>parrainage Qonto</strong>, j'ai mis du temps à creuser le sujet. Et pourtant, c'est l'un des rares avantages bancaires qui mérite vraiment qu'on s'y attarde, surtout quand on cherche à lancer ou gérer une petite structure sans y laisser une fortune.</p>
@@ -142,3 +146,4 @@ related_posts:
 <p>Si tu connais quelqu'un qui est déjà client Qonto, demande-lui son lien de parrainage. C'est la façon la plus simple et la plus sûre de profiter du bonus à l'ouverture. Et si tu veux parrainer à ton tour une fois inscrit, tu récupères aussi ta part, ce qui fait que le système a du sens dans les deux sens.</p>
 
 <p>Bref, je recommande. Pas pour tout le monde, pas dans toutes les situations, mais pour le profil freelance ou auto-entrepreneur qui cherche un compte pro sans prise de tête, c'est une bonne piste.</p>
+
