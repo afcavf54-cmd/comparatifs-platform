@@ -1,21 +1,25 @@
 ---
-title: 'Parrainage Qonto 300€ : comment en bénéficier en Juin 2026?'
+title: "Parrainage Qonto 300€ : comment en bénéficier en {Month} {year} ?"
 slug: parrainage-qonto-300-euros
-date: '2026-06-15T21:19:25+02:00'
+date: 2026-06-15T21:19:25+02:00
+updated: 2026-09-21T20:02:38
 categorie: Bons plans & Parrainage
-meta_title: 'Parrainage Qonto Juin 2026 : 300€ offerts'
-meta_description: 'Parrainage Qonto 300€ : découvrez comment en profiter vraiment, les conditions à remplir et ce que l''offre vaut concrètement pour un freelance ou auto-entrepreneur.'
-min_words: 1000
-status: published
+categories:
+- Bons plans & Parrainage
+meta_title: "Parrainage Qonto {Month} {year} : 300€ offerts"
+meta_description: "Parrainage Qonto 300€ : découvrez comment en profiter vraiment, les conditions à remplir et ce que l'offre vaut concrètement pour un freelance ou auto-entrepreneur."
 featured_image: /blog/parrainage-qonto-300-euros.jpg
-link_anchors:
-- text: parrainage qonto 300€
-  max: 5
+status: published
+min_words: 1000
+show_toc: false
 related_posts:
 - parrainage-qonto
 - parrainage-qonto-200-euros
 - boursobank-80-euros
 - carte-cadeau-prefere-salaries-noel
+link_anchors:
+- text: parrainage qonto 300€
+  max: 5
 ---
 
 <p>Je vais être honnête avec toi : je ne suis pas du genre à recommander un service juste pour gratter quelques euros de parrainage. Mais quand l'offre est vraiment intéressante, je le dis sans détour. Et le <strong>parrainage Qonto</strong>, j'en parle parce que plusieurs personnes de mon entourage en ont bénéficié concrètement, dont mon mari qui a monté sa micro-entreprise l'année dernière.</p>
@@ -136,3 +140,4 @@ related_posts:
 <p>Ce que je retiens surtout : utilise un lien de parrainage plutôt qu'un simple <strong>code promo Qonto</strong> si tu as le choix. La valeur est généralement supérieure, et les deux parties y gagnent. Et surtout, lis les conditions avant de compter sur un montant précis. Les offres bougent, les conditions aussi.</p>
 
 <p>Si tu hésite encore entre Qonto et une autre néobanque pro, je te prépare prochainement un comparatif complet. En attendant, si tu as des questions sur le fonctionnement du parrainage, dis-le moi en commentaire, je réponds toujours.</p>
+
