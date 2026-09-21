@@ -2,7 +2,7 @@
 title: "Parrainage Trade Republic {Month} {year} : jusqu’à 100€ en actions offerts !"
 slug: parrainage-trade-republic-100-euros
 date: 2026-06-15T21:44:18+02:00
-updated: 2026-09-21T18:55:37
+updated: 2026-09-21T19:06:37
 categorie: Bons plans & Parrainage
 categories:
 - Bons plans & Parrainage
@@ -22,8 +22,10 @@ link_anchors:
   max: 5
 cta_enabled: true
 cta_text: Parrainage Trade Republic 100€
+cta_color: "#0f1a2d"
 cta_link: https://refnocode.trade.re/vv8fp9xz
 cta_button: En profiter
+cta_btn_color: "#ff8181"
 ---
 
 <p>Vous souhaitez ouvrir un compte Trade Republic ? <strong>Ne vous inscrivez pas directement sans passer par une offre de parrainage.</strong> Vous pouvez actuellement profiter d'un <strong>bonus de 100 €</strong> en utilisant notre lien.</p>
@@ -175,4 +177,5 @@ cta_button: En profiter
 </table>
 
 <p>Le <strong>parrainage trade republic</strong> reste l'une des offres de bienvenue les plus accessibles du moment dans l'univers de l'investissement en ligne. Pas de prise de tête, pas de conditions tordues. Juste une action gratuite pour commencer, et une appli qui tient ses promesses pour le quotidien.</p>
+
 
