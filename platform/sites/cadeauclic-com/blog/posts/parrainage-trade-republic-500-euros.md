@@ -2,7 +2,7 @@
 title: "Parrainage Trade Republic : jusqu’à 500 euros offerts"
 slug: parrainage-trade-republic-500-euros
 date: 2026-06-15T21:44:18+02:00
-updated: 2026-09-21T19:02:06
+updated: 2026-09-21T19:05:30
 categorie: Bons plans & Parrainage
 categories:
 - Bons plans & Parrainage
@@ -11,7 +11,7 @@ meta_description: "Parrainage Trade Republic : découvrez comment parrainer vos 
 featured_image: /blog/parrainage-trade-republic-500-euros.jpg
 status: published
 min_words: 1000
-show_toc: true
+show_toc: false
 related_posts:
 - parrainage-qonto-300-euros
 - parrainage-qonto-100e
