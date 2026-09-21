@@ -2,7 +2,7 @@
 title: "Parrainage N26 {Month} {year} : 60€ offerts"
 slug: parrainage-n26-60-euros
 date: 2026-06-15T21:44:18+02:00
-updated: 2026-09-21T20:15:42
+updated: 2026-09-21T20:15:49
 categorie: Bons plans & Parrainage
 categories:
 - Bons plans & Parrainage
