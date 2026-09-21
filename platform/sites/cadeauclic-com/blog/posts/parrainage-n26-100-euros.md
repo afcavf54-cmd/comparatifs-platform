@@ -1,16 +1,17 @@
 ---
-title: "Parrainage N26 Juin 2026 : 100€ offerts"
+title: "Parrainage N26 {Month} {year} : 100€ offerts"
 slug: parrainage-n26-100-euros
 date: 2026-06-15T21:44:18+02:00
-updated: 2026-06-16T14:43:09
+updated: 2026-09-21T20:03:19
 categorie: Bons plans & Parrainage
 categories:
 - Bons plans & Parrainage
-meta_title: "Parrainage N26 : 100€ offerts Juin 2026"
+meta_title: "Parrainage N26 : 100€ offerts {Month} {year}"
 meta_description: "Utilisez un lien de parrainage N26 pour obtenir jusqu'à 100€ offerts à l'ouverture de votre compte. Conditions simples, prime rapide : on vous explique tout étape…"
 featured_image: /blog/parrainage-n26-100-euros.jpg
 status: published
 min_words: 1000
+show_toc: false
 related_posts:
 - boursobank-220-euros
 - parrainage-qonto
@@ -128,4 +129,5 @@ link_anchors:
 <p>En revanche, si tu cherches uniquement la néobanque avec le plus de fonctionnalités pour les investissements ou le trading, N26 n'est pas le bon choix. Revolut ou Trade Republic seront plus adaptés à ce profil-là.</p>
 
 <p>Et si quelqu'un dans ton entourage hésite encore à sauter le pas, transmets-lui ce lien. Parce qu'une prime de <strong>100€</strong> à partager entre deux personnes, pour cinq petits paiements par carte, c'est vraiment l'un des meilleurs plans du moment dans l'univers des néobanques. Je ne dis pas ça pour rien.</p>
+
 
