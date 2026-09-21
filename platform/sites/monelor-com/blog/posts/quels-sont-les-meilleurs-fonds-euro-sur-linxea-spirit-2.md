@@ -1,22 +1,22 @@
 ---
 title: Quels sont les meilleurs fonds euro sur Linxea Spirit 2 ?
 slug: quels-sont-les-meilleurs-fonds-euro-sur-linxea-spirit-2
-date: 2026-09-21 11:19:03+02:00
-updated: 2026-09-21T11:19:03
+date: 2026-09-21 11:30:11+02:00
+updated: 2026-09-21T11:30:11
 categorie: Assurance vie
 categories:
 - Assurance vie
 meta_title: "Fonds euros Linxea Spirit 2 : Nouvelle Génération ou Objectif Climat ?"
-meta_description: Découvrez les deux fonds euro de Linxea Spirit 2, leurs rendements 2024 et leurs stratégies pour choisir le meilleur placement sécurisé selon votre profil.
-featured_image: ""
-status: draft
+meta_description: Découvrez les deux fonds euro de Linxea Spirit 2, leurs rendements 2025 et leurs stratégies pour choisir le meilleur placement sécurisé selon votre profil.
+featured_image: /blog/quels-sont-les-meilleurs-fonds-euro-sur-linxea-spirit-2/featured-65908.png
+status: published
 min_words: 1400
 show_toc: true
 ---
 
-<p>Linxea Spirit 2 propose deux fonds euros : Nouvelle Génération et Objectif Climat. Tous deux offrent une garantie du capital à 98 %, mais suivent des stratégies différentes.<br><br>Nouvelle Génération mise sur une diversification plus large, avec environ 70 % d'obligations complétées par de l'immobilier, des actions et du private equity. Objectif Climat privilégie quant à lui les investissements à vocation environnementale, notamment les obligations vertes, et bénéficie d'une classification Article 9 SFDR.<br><br>Côté rendement, Objectif Climat a légèrement mieux performé sur les trois dernières années : 3,31 % en 2023, 3,31 % en 2024 et 3,26 % en 2025, contre respectivement 3,13 %, 3,13 % et 3,08 % pour Nouvelle Génération.<br><br>👉 À retenir : Nouvelle Génération se distingue par sa diversification, tandis qu'Objectif Climat combine investissement responsable et rendements récents légèrement supérieurs. Les deux fonds peuvent également être combinés au sein du contrat Linxea Spirit 2.</p><h2>Rappel rapide : qu'est-ce qu'un fonds euro ?</h2>
+<p><a href="https://www.monelor.com/4878-avis-assurance-vie-linxea-spirit-2/">Linxea Spirit 2</a>&nbsp;propose deux fonds euros : <b>Nouvelle Génération</b> et <b>Objectif Climat</b>. Tous deux offrent <b>une garantie du capital à 98 %</b>, mais suivent des stratégies différentes.<br><br><b>Nouvelle Génération</b> mise sur une diversification plus large, avec environ 70 % d'obligations complétées par de l'immobilier, des actions et du private equity.&nbsp;</p><p><b>Objectif Climat</b> privilégie quant à lui les investissements à vocation environnementale, notamment les obligations vertes, et bénéficie d'une classification Article 9 SFDR.<br><br>Côté rendement, <b>Objectif Climat a légèrement mieux performé sur les trois dernières années</b> : 3,31 % en 2023, 3,31 % en 2024 et 3,26 % en 2025, contre respectivement 3,13 %, 3,13 % et 3,08 % pour Nouvelle Génération.<br><br>👉 <b>À retenir</b> : Nouvelle Génération se distingue par sa diversification, tandis qu'Objectif Climat combine investissement responsable et rendements récents légèrement supérieurs. Les deux fonds peuvent également être combinés au sein du contrat Linxea Spirit 2.</p><h2>Qu'est-ce qu'un fonds euro ?</h2>
 
-<p>Avant de plonger dans la comparaison, posons les bases. Si tu connais déjà le principe du fonds euro, tu peux passer directement à la section suivante. Mais si tu débutes, ce rappel va t'aider à mieux comprendre ce que tu choisis réellement.</p>
+<p>Avant de comparer, posons les bases. Si tu connais déjà le principe du fonds euro, tu peux passer directement à la section suivante. Mais si tu débutes, ce rappel va t'aider à mieux comprendre ce que tu choisis réellement.</p>
 
 <p>Un fonds euro, c'est la poche sécurisée d'une assurance-vie. C'est le support qui te permet de placer ton argent sans prendre de risque majeur. Sur Linxea Spirit 2, le capital est garanti à hauteur de 98 %. Pas 100 %, et c'est important de comprendre pourquoi.</p>
 
@@ -143,18 +143,10 @@ show_toc: true
 
 <p>Dans tous les cas, les deux fonds partagent les mêmes conditions essentielles : garantie du capital à 98 %, 2 % de frais de gestion annuels, accessibilité dès 50 euros. La différence se joue sur la stratégie d'investissement, les convictions et quelques dixièmes de pourcentage de rendement.</p>
 
-<h2>Mon verdict final</h2>
-
-<p>Si je devais résumer la situation en quelques mots, voilà ce que je dirais.</p>
-
-<p>Le fonds <strong>Objectif Climat prend l'avantage</strong> sur les trois dernières années, à la fois sur la performance et sur l'engagement environnemental. Pour quelqu'un qui veut sécuriser une partie de son épargne tout en donnant un sens à son investissement, c'est le choix le plus cohérent en 2025.</p>
+<h2>Mon verdict final</h2><p>Le fonds <strong>Objectif Climat prend l'avantage</strong> sur les trois dernières années, à la fois sur la performance et sur l'engagement environnemental. Pour quelqu'un qui veut sécuriser une partie de son épargne tout en donnant un sens à son investissement, c'est le choix le plus cohérent en 2025.</p>
 
 <p>Le fonds <strong>Nouvelle Génération reste une excellente option</strong> pour ceux qui recherchent une diversification plus large et qui ne souhaitent pas nécessairement orienter leur épargne vers des thématiques environnementales. Sa composition plus variée peut être un atout dans certains contextes de marché.</p>
 
 <p>Dans les deux cas, tu restes dans le cadre protecteur d'un fonds euro, avec une garantie du capital à 98 % et une volatilité très faible. Ce sont des supports adaptés à la partie sécurisée d'une assurance-vie, conçus pour préserver ton capital tout en lui faisant générer un rendement régulier.</p>
 
 <p>Le choix final dépend surtout de toi : de tes valeurs, de ta vision à long terme et de la place que tu accordes à l'impact environnemental dans ta stratégie d'investissement. Ce que je te conseille, c'est d'éviter de choisir au hasard. Maintenant que tu as toutes les cartes en main, prends le temps de te positionner clairement.</p>
-
-<p>Si tu as des questions sur Linxea Spirit 2, sur les fonds euros ou sur la stratégie à adopter pour ton assurance-vie, n'hésite pas à les poser en commentaire. Je lis tout et je réponds avec plaisir. Et si cet article t'a été utile, pense à consulter les autres contenus de Monelor, il y a de quoi faire pour construire une stratégie d'investissement simple et efficace, même quand on part de zéro.</p>
-
-<blockquote>Cet article ne constitue pas un conseil personnalisé en investissement. Investir comporte des risques de perte en capital. Les performances passées ne préjugent pas des performances futures.</blockquote>
