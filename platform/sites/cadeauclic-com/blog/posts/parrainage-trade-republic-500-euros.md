@@ -2,7 +2,7 @@
 title: "Parrainage Trade Republic : jusqu’à 500 euros offerts"
 slug: parrainage-trade-republic-500-euros
 date: 2026-06-15T21:44:18+02:00
-updated: 2026-09-21T18:55:31
+updated: 2026-09-21T19:02:06
 categorie: Bons plans & Parrainage
 categories:
 - Bons plans & Parrainage
@@ -11,7 +11,7 @@ meta_description: "Parrainage Trade Republic : découvrez comment parrainer vos 
 featured_image: /blog/parrainage-trade-republic-500-euros.jpg
 status: published
 min_words: 1000
-show_toc: false
+show_toc: true
 related_posts:
 - parrainage-qonto-300-euros
 - parrainage-qonto-100e
@@ -22,10 +22,10 @@ link_anchors:
   max: 5
 cta_enabled: true
 cta_text: Parrainage Trade Republic 100€
-cta_color: "#0000a0"
+cta_color: "#0f1a2d"
 cta_link: https://refnocode.trade.re/vv8fp9xz
 cta_button: En profiter
-cta_btn_color: "#ff8080"
+cta_btn_color: "#ff8181"
 ---
 
 <p>Vous cherchez un <strong>parrainage Trade Republic</strong> pour profiter de l'offre actuellement disponible ? En passant par mon lien de parrainage, vous pouvez bénéficier de <strong>100 € offerts</strong> lors de l'ouverture de votre compte.</p>
@@ -157,5 +157,6 @@ cta_btn_color: "#ff8080"
 <p>Si tu as déjà un lien de parrainage d'un ami, utilise-le sans attendre. Si tu n'en as pas, cherches-en un sur les forums ou communautés dédiées, ils circulent beaucoup. Et si tu explores d'autres placements en parallèle, notamment l'assurance-vie, jette un coup d'oeil aux offres du côté de Linxea aussi, les deux peuvent très bien coexister dans une stratégie d'épargne cohérente.</p>
 
 <p>En tout cas, cette offre mérite vraiment qu'on en parle. Et si ça peut décider quelqu'un à finalement commencer à investir, alors l'article aura servi à quelque chose.</p>
+
 
 
