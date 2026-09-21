@@ -2,7 +2,7 @@
 title: "BoursoBank 80€ offerts : obtenez cette prime parrainage"
 slug: boursobank-80-euros
 date: 2026-06-15T21:19:25+02:00
-updated: 2026-09-01T10:42:59
+updated: 2026-09-21T20:04:07
 categorie: Bons plans & Parrainage
 categories:
 - Bons plans & Parrainage
@@ -136,6 +136,7 @@ link_anchors:
 <p>Pour un adolescent ou quelqu'un qui préfère garder sa banque physique avec conseiller dédié, je passerais plutôt mon tour sur cette offre. BoursoBank, c'est une banque 100% en ligne. Si tu as besoin de pointer en agence, ce n'est pas la bonne option.</p>
 
 <p>Mais pour le reste ? <strong>Oui, 80€ offerts pour ouvrir un compte dont tu auras de toute façon besoin, c'est clairement une bonne affaire.</strong></p>
+
 
 
 
