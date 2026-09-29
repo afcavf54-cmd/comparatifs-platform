@@ -95,6 +95,7 @@ function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string,
       {mode === 'visual' && (
         <div
           ref={editorRef}
+          className="cls-hedit"
           contentEditable
           suppressContentEditableWarning
           onInput={onVisualInput}
@@ -104,6 +105,7 @@ function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string,
           }}
         />
       )}
+      <style>{`.cls-hedit p{margin:0 0 14px}.cls-hedit p:last-child{margin-bottom:0}.cls-hedit ul,.cls-hedit ol{margin:0 0 14px 20px}.cls-hedit h2{font-size:18px;font-weight:700;margin:16px 0 8px}.cls-hedit h3{font-size:15px;font-weight:700;margin:14px 0 6px}.cls-hedit:empty:before{content:attr(data-ph);color:#4A5568}`}</style>
 
       {mode === 'source' && (
         <textarea ref={taRef} value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder}
