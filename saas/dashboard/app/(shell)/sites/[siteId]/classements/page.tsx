@@ -23,6 +23,16 @@ function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string,
     setMode(m)
   }
 
+  // Synchronise le contenu de l'éditeur UNIQUEMENT lors d'un changement externe
+  // (ouverture, changement de produit, mode source→visuel). Pendant la frappe,
+  // innerHTML === value déjà → on ne réécrit PAS le DOM, donc le curseur ne
+  // saute plus au début.
+  React.useEffect(() => {
+    if (mode === 'visual' && editorRef.current && editorRef.current.innerHTML !== (value || '')) {
+      editorRef.current.innerHTML = value || ''
+    }
+  }, [value, mode])
+
   function exec(cmd: string, val?: string) {
     editorRef.current?.focus()
     document.execCommand(cmd, false, val)
@@ -88,7 +98,6 @@ function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string,
           contentEditable
           suppressContentEditableWarning
           onInput={onVisualInput}
-          dangerouslySetInnerHTML={{ __html: value }}
           style={{
             minHeight: (rows * 22) + 'px', padding: 14, background: '#0D1117', color: '#E2E8F0',
             fontSize: 14, lineHeight: 1.7, outline: 'none', fontFamily: 'inherit'
