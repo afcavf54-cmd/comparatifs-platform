@@ -2633,15 +2633,24 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 for prod in cat_products:
                     p = dict(prod)
                     slug = prod.get("slug", "")
-                    # Résolution screenshot — premier fichier trouvé parmi les
-                    # extensions usuelles. Si aucune n'existe, on tombe sur le
-                    # default .png (qui déclenchera le `onerror` côté template).
-                    if slug and _schema_imgs_dir:
+                    # Résolution screenshot — priorité à l'image PROPRE au site
+                    # (platform/sites/<site>/public/screenshots/<slug>-screenshot.*),
+                    # sinon image partagée du schema, sinon default .png.
+                    _resolved = False
+                    _site_shot_dir = site_dir / "public" / "screenshots"
+                    if slug and _site_shot_dir.exists():
+                        for _ext in ("png", "jpg", "jpeg", "webp"):
+                            if (_site_shot_dir / f"{slug}-screenshot.{_ext}").exists():
+                                p["screenshot_file"] = f"screenshots/{slug}-screenshot.{_ext}"
+                                _resolved = True
+                                break
+                    if not _resolved and slug and _schema_imgs_dir:
                         for _ext in ("png", "jpg", "jpeg", "webp"):
                             if (_schema_imgs_dir / f"{slug}-screenshot.{_ext}").exists():
                                 p["screenshot_file"] = f"{slug}-screenshot.{_ext}"
+                                _resolved = True
                                 break
-                    if "screenshot_file" not in p and slug:
+                    if not _resolved and slug:
                         p["screenshot_file"] = f"{slug}-screenshot.png"
                     # descriptions_produits ignoré — classement-prod-{slug} a la priorité
                     # Points forts/faibles depuis classement-prod-{slug}
