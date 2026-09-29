@@ -1105,6 +1105,32 @@ export default function ClassementsPage() {
                                     style={{ width: '100%', padding: '8px 12px', borderRadius: 7, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
                                 </div>
                               </div>
+                              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 2fr', gap: 10, marginBottom: 14 }}>
+                                <div>
+                                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5 }}>★ Note /5</div>
+                                  <input type="number" step="0.1" min="0" max="5" value={prodData.note_redaction ?? ''} onChange={e => updateField(selected, `prod_${prodKey}`, { ...prodData, note_redaction: e.target.value })}
+                                    placeholder="ex. 4.6"
+                                    style={{ width: '100%', padding: '8px 12px', borderRadius: 7, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+                                </div>
+                                <div>
+                                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5 }}>💶 Prix /mois</div>
+                                  <input type="number" step="0.01" min="0" value={prodData.prix_achat ?? ''} onChange={e => updateField(selected, `prod_${prodKey}`, { ...prodData, prix_achat: e.target.value })}
+                                    placeholder="ex. 28"
+                                    style={{ width: '100%', padding: '8px 12px', borderRadius: 7, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+                                </div>
+                                <div>
+                                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5 }}>Note prix</div>
+                                  <input value={prodData.prix_note || ''} onChange={e => updateField(selected, `prod_${prodKey}`, { ...prodData, prix_note: e.target.value })}
+                                    placeholder="ex. sans engagement"
+                                    style={{ width: '100%', padding: '8px 12px', borderRadius: 7, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+                                </div>
+                                <div>
+                                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5 }}>Tagline (accroche)</div>
+                                  <input value={prodData.tagline || ''} onChange={e => updateField(selected, `prod_${prodKey}`, { ...prodData, tagline: e.target.value })}
+                                    placeholder="Courte phrase d'accroche"
+                                    style={{ width: '100%', padding: '8px 12px', borderRadius: 7, background: '#0D1117', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+                                </div>
+                              </div>
                               <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 6 }}>Description</div>
                               <HtmlEditor
                                 value={prodData.description || ''}
