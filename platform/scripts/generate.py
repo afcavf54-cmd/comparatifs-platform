@@ -2648,12 +2648,16 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     prod_ed_key = f"classement-prod-{slug}"
                     if prod_ed_key in editorials_fresh:
                         prod_ed = editorials_fresh[prod_ed_key]
-                        if not p.get("points_forts") and prod_ed.get("points_forts"):
-                            p["points_forts"] = prod_ed["points_forts"]
-                        if not p.get("points_faibles") and prod_ed.get("points_faibles"):
-                            p["points_faibles"] = prod_ed["points_faibles"]
-                        if not p.get("description") and prod_ed.get("description"):
-                            p["description"] = md_to_html(prod_ed["description"])
+                        # Le contenu édité au dashboard (classement-prod-<slug>) fait
+                        # autorité et écrase les données du Sheet, champ par champ.
+                        for _f in ("description", "points_forts", "points_faibles",
+                                   "url_affiliation", "cta_text", "prix_note", "tagline"):
+                            if prod_ed.get(_f):
+                                p[_f] = prod_ed[_f]
+                        if prod_ed.get("prix_achat") is not None:
+                            p["prix_achat"] = prod_ed["prix_achat"]
+                        if prod_ed.get("note_redaction") not in (None, ""):
+                            p["note_redaction"] = prod_ed["note_redaction"]
                     # Données éditées manuellement via dashboard (prod_{slug})
                     manual_key = f"prod_{slug}"
                     if manual_key in cat_editorial:
