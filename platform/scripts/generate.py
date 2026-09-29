@@ -2672,6 +2672,10 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                             p["prix_achat"] = manual["prix_achat"]
                         if manual.get("prix_note"):
                             p["prix_note"] = manual["prix_note"]
+                        if manual.get("note_redaction") not in (None, ""):
+                            p["note_redaction"] = manual["note_redaction"]
+                        if manual.get("tagline"):
+                            p["tagline"] = manual["tagline"]
                     # Convertir markdown en HTML pour la description
                     if p.get("description"):
                         p["description"] = md_to_html(p["description"])
