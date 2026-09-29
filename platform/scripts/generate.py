@@ -2668,6 +2668,10 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                             p["url_affiliation"] = manual["url_affiliation"]
                         if manual.get("cta_text"):
                             p["cta_text"] = manual["cta_text"]
+                        if manual.get("prix_achat") is not None:
+                            p["prix_achat"] = manual["prix_achat"]
+                        if manual.get("prix_note"):
+                            p["prix_note"] = manual["prix_note"]
                     # Convertir markdown en HTML pour la description
                     if p.get("description"):
                         p["description"] = md_to_html(p["description"])
