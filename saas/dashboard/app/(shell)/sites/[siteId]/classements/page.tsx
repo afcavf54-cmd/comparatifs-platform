@@ -313,18 +313,29 @@ export default function ClassementsPage() {
       // stockées top-level en `classement-prod-X`. Sans extraction, on POUSSE
       // cette duplication dans GitHub → 19 MB au lieu de ~200 Ko sur startuponly.
       const cleanedClassements: Record<string, any> = {}
-      const extractedProds: Record<string, any> = {}
+      // Chaque produit est injecté dans TOUS les classements au load (prod_X).
+      // On collecte donc toutes les copies par slug, puis on retient la copie
+      // RÉELLEMENT modifiée (celle qui diffère de la version GitHub), pour qu'une
+      // copie périmée d'un autre classement n'écrase pas l'édition.
+      const prodCopies: Record<string, any[]> = {}
       for (const [clsKey, clsVal] of Object.entries(classements)) {
         const cleaned: Record<string, any> = {}
         for (const [field, value] of Object.entries(clsVal as Record<string, any>)) {
           if (field.startsWith('prod_')) {
             const slug = field.replace('prod_', '')
-            extractedProds[`classement-prod-${slug}`] = value
+            ;(prodCopies[slug] = prodCopies[slug] || []).push(value)
           } else {
             cleaned[field] = value
           }
         }
         cleanedClassements[clsKey] = cleaned
+      }
+      const extractedProds: Record<string, any> = {}
+      for (const [slug, copies] of Object.entries(prodCopies)) {
+        const key = `classement-prod-${slug}`
+        const original = JSON.stringify(allEditorial[key] || {})
+        const edited = copies.find(c => JSON.stringify(c) !== original)
+        extractedProds[key] = edited !== undefined ? edited : copies[0]
       }
       // Merge : existant top-level + classements nettoyés + produits extraits.
       // Les produits extraits écrasent ceux d'existant (dernière édition gagne).
