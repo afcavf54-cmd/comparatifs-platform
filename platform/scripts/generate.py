@@ -211,6 +211,11 @@ def _fetch_youtube_videos(site, limit=4):
 def md_to_html(text):
     if not text: return text
     import re as _re2
+    # Si le contenu est DÉJÀ du HTML (balises de bloc présentes), on le laisse
+    # tel quel : il vient de l'éditeur riche du dashboard, pas du markdown.
+    # Évite le double-emballage en <p> et les sauts de ligne parasites.
+    if _re2.search(r'</?(p|ul|ol|li|h[1-6]|blockquote|div|br|table)\b', text, _re2.I):
+        return text
     # ── PRÉ-NORMALISATION DES BULLETS UNICODE ─────────────────────────────
     # L'IA renvoie parfois `• item` (U+2022) ou `· item` (U+00B7) au lieu
     # du markdown standard `- item`. On normalise pour que la logique de
