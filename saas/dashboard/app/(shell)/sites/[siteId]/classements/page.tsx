@@ -160,6 +160,8 @@ export default function ClassementsPage() {
   const [deploying, setDeploying] = useState(false)
   const [generatingMeta, setGeneratingMeta] = useState(false)
   const [expandedBrands, setExpandedBrands] = useState<Record<string, boolean>>({})
+  const [uploadingImg, setUploadingImg] = useState<string | null>(null)
+  const [imgVersion, setImgVersion] = useState<Record<string, number>>({})
   const [collapsedCats, setCollapsedCats] = useState<Record<string, boolean>>({})
   const [keywordCategories, setKeywordCategories] = useState<Record<string, string>>({})
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({ seo: true })
@@ -457,6 +459,29 @@ export default function ClassementsPage() {
     }
     setRegenerating(prev => ({ ...prev, [catKey]: false }))
     setDeploying(false)
+  }
+
+  async function uploadScreenshot(slug: string, file: File) {
+    setUploadingImg(slug)
+    setMsg('📷 Envoi de l\'image…')
+    try {
+      const b64: string = await new Promise((res, rej) => {
+        const r = new FileReader()
+        r.onload = () => res(String(r.result).split(',')[1])
+        r.onerror = rej
+        r.readAsDataURL(file)
+      })
+      // Nom fixe .png (écrase à chaque upload) → résolution déterministe côté build
+      const path = `platform/sites/${siteId}/public/screenshots/${slug}-screenshot.png`
+      const r = await fetch('/api/github/upload', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path, content: b64, message: `HUB: Screenshot ${slug} (${siteId})` }),
+      })
+      const d = await r.json().catch(() => ({}))
+      if (!r.ok || !d.ok) { setMsg(`✗ Upload échoué : ${d.error || 'HTTP ' + r.status}`) }
+      else { setMsg('✓ Image mise à jour — déploie pour l\'appliquer en ligne'); setImgVersion(v => ({ ...v, [slug]: (v[slug] || 0) + 1 })) }
+    } catch (e: any) { setMsg('✗ ' + (e.message || 'Erreur upload')) }
+    setUploadingImg(null)
   }
 
   function updateField(catKey: string, field: string, value: string) {
@@ -1098,6 +1123,23 @@ export default function ClassementsPage() {
                           </div>
                           {isExpanded && (
                             <div style={{ padding: 14 }}>
+                              <div style={{ marginBottom: 14 }}>
+                                <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 6 }}>🖼 Image de la marque (propre à ce site)</div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                                  <img src={`https://raw.githubusercontent.com/afcavf54-cmd/comparatifs-platform/main/platform/sites/${siteId}/public/screenshots/${prodKey}-screenshot.png?v=${imgVersion[prodKey] || 0}`}
+                                    alt="" onError={(e) => { (e.target as HTMLImageElement).style.opacity = '0.12' }}
+                                    onLoad={(e) => { (e.target as HTMLImageElement).style.opacity = '1' }}
+                                    style={{ width: 130, height: 80, objectFit: 'cover', borderRadius: 8, border: '1px solid #1E2D3D', background: '#0D1117' }} />
+                                  <div>
+                                    <label style={{ display: 'inline-block', padding: '8px 14px', borderRadius: 7, background: '#00D4AA', color: '#04121C', fontWeight: 700, fontSize: 12.5, cursor: uploadingImg === prodKey ? 'default' : 'pointer' }}>
+                                      {uploadingImg === prodKey ? 'Envoi…' : '📤 Changer l\'image'}
+                                      <input type="file" accept="image/png,image/jpeg,image/webp" style={{ display: 'none' }} disabled={uploadingImg === prodKey}
+                                        onChange={e => e.target.files?.[0] && uploadScreenshot(prodKey, e.target.files[0])} />
+                                    </label>
+                                    <div style={{ fontSize: 11, color: '#4A5568', marginTop: 6, maxWidth: 240 }}>PNG/JPG/WebP, format paysage (~16/10). Remplace l'image partagée, uniquement sur ce site.</div>
+                                  </div>
+                                </div>
+                              </div>
                               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 14 }}>
                                 <div>
                                   <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5 }}>🔗 Lien d'affiliation</div>
