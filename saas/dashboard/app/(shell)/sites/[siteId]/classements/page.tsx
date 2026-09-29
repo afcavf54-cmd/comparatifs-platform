@@ -1076,7 +1076,14 @@ export default function ClassementsPage() {
                       </div>
                     )}
 
-                    {catProducts.map((prod: any) => {
+                    {[...catProducts].sort((a: any, b: any) => {
+                      const om: Record<string, number> = selectedData.products_order || {}
+                      const oa = om[a.slug]; const ob = om[b.slug]
+                      if (oa != null && ob != null) return oa - ob
+                      if (oa != null) return -1
+                      if (ob != null) return 1
+                      return (parseFloat(b.note_redaction) || 0) - (parseFloat(a.note_redaction) || 0)
+                    }).map((prod: any) => {
                       const prodKey = prod.slug
                       const prodData = selectedData[`prod_${prodKey}`] || {}
                       const isExpanded = expandedBrands[prodKey] || false
