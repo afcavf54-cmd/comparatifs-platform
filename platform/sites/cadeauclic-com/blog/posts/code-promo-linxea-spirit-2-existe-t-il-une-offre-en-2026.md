@@ -1,27 +1,28 @@
 ---
-title: 'Code promo Linxea Spirit 2 : existe-t-il une offre en 2026'
+title: "Code promo Linxea Spirit 2 : existe-t-il une offre en 2026"
 slug: code-promo-linxea-spirit-2-existe-t-il-une-offre-en-2026
-date: '2026-09-20T10:00:00+02:00'
+date: 2026-09-20T10:00:00+02:00
+updated: 2026-09-30T06:12:18
 categorie: Bons plans & Parrainage
-meta_title: 'Code promo Linxea Spirit 2 : promotion, bonus et offres en 2026'
-meta_description: 'Pas de code promo Linxea Spirit 2 en 2026 : découvre ce qui existe
-  vraiment comme avantages et offres sur cette assurance-vie reconnue pour ses frais
-  réduits.'
-min_words: 800
+categories:
+- Bons plans & Parrainage
+meta_title: "Code promo Linxea Spirit 2 : promotion, bonus et offres en 2026"
+meta_description: "Pas de code promo Linxea Spirit 2 en 2026 : découvre ce qui existe vraiment comme avantages et offres sur cette assurance-vie reconnue pour ses frais réduits."
+featured_image: /blog/code-promo-linxea-spirit-2-existe-t-il-une-offre-en-2026/featured-55262.jpg
 status: published
-featured_image: /blog/code-promo-linxea-spirit-2-existe-t-il-une-offre-en-2026.jpg
-link_anchors:
-- text: profiter d'un code promo Linxea Spirit 2
-  max: 5
+min_words: 800
+show_toc: true
 related_posts:
 - parrainage-n26-60-euros
 - parrainage-n26-100-euros
 - parrainage-fortuneo-bonus-offre-et-fonctionnement-en-2026
 - code-promo-trade-republic-les-offres-disponibles-en-2026
+link_anchors:
+- text: "profiter d'un code promo Linxea Spirit 2"
+  max: 5
 ---
-<p>Franchement, j'ai passé un bon moment à chercher un code promo Linxea Spirit 2 avant de me rendre compte que ça n'existait tout simplement pas. Ou du moins, pas de la façon dont on l'imagine habituellement. Si tu es là pour la même raison, voici ce que j'ai trouvé, sans te faire perdre de temps.</p>
 
-<h2>Linxea Spirit 2 : c'est quoi exactement ?</h2>
+<p>🎁 Pourquoi te priver de 50 € ? Pour profiter de 50€ offerts en carte cadeau Amazon, Carrefour ou Decathlon,&nbsp;<a href="https://clikme.xyz/parrainage-linxea" target="_blank" rel="noopener noreferrer nofollow">il suffit de se rendre sur ce lien et d'indiquer ton e-mail</a>.</p><p><iframe class="video-embed" src="https://www.youtube.com/embed/8CnH_euqaGI" title="Vidéo YouTube" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen="" style="width:100%;aspect-ratio:16/9;height:auto;border:0;border-radius:12px;margin:28px 0;display:block"></iframe></p><h2>Linxea Spirit 2 : c'est quoi exactement ?</h2>
 
 <p>Le Linxea Spirit 2, c'est une assurance-vie en ligne qui attire beaucoup de monde pour ses frais réduits et son accès aux unités de compte. J'en ai entendu parler pour la première fois par une amie qui cherchait à placer un peu d'argent de côté sans passer par une banque classique. Elle était convaincue, et honnêtement, après avoir creusé un peu, je comprends pourquoi.</p>
 
@@ -114,3 +115,4 @@ related_posts:
 <p>Sinon, surveille les offres temporaires sur le site. Linxea communique dessus sans grande fanfare, ce qui fait qu'on peut facilement les manquer. Mais quand elles arrivent, elles valent clairement le détour.</p>
 
 <p>Pour un contrat d'assurance-vie avec peu de frais et une belle sélection d'unités de compte, Linxea Spirit 2 reste l'une de mes recommandations en 2026. Pas parfait, les options de personnalisation de l'interface sont un peu limitées, et le service client peut parfois mettre du temps à répondre. Mais sur le fond, le produit tient ses promesses. Et ça, c'est plus important qu'un code promo.</p>
+
