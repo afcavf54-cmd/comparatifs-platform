@@ -2561,8 +2561,42 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 page_slug = f"meilleur-{cat_slug}"
                 seo_cfg = config.get("seo", {})
                 cat_editorial = editorials_fresh.get(f"classement-{cat_slug}", {})
-                # ── Substitution des placeholders {year}, {categorie}, {Categorie}, {count}, {site_name}
-                # Bug d'origine : seul le H1 et les fallbacks de pattern recevaient un .replace().
+
+                def _build_prod_from_editorial(_sl, _cat):
+                    _sl = str(_sl).strip()
+                    _ed = editorials_fresh.get(f"classement-prod-{_sl}", {})
+                    return {
+                        "slug": _sl,
+                        "nom": _ed.get("nom") or _ed.get("marque") or _sl.capitalize(),
+                        "marque": _ed.get("marque") or _ed.get("nom") or _sl.capitalize(),
+                        "categorie": _cat,
+                        "note_redaction": _ed.get("note_redaction", 0),
+                        "description": _ed.get("description", ""),
+                        "points_forts": _ed.get("points_forts", []),
+                        "points_faibles": _ed.get("points_faibles", []),
+                        "prix_achat": _ed.get("prix_achat"),
+                        "prix_note": _ed.get("prix_note", ""),
+                        "url_affiliation": _ed.get("url_affiliation", ""),
+                        "cta_text": _ed.get("cta_text", ""),
+                        "tagline": _ed.get("tagline", ""),
+                    }
+
+                if cat_editorial.get("autonome") and cat_editorial.get("products_snapshot"):
+                    # ── Mode AUTONOME : liste 100% éditoriale, le Sheet est ignoré.
+                    #    Ajout / suppression / édition / ordre gérés au dashboard.
+                    cat_products = [_build_prod_from_editorial(_sl, cat)
+                                    for _sl in cat_editorial["products_snapshot"] if str(_sl).strip()]
+                else:
+                    # ── Marques ajoutées manuellement au dashboard (extra_products) :
+                    #    on injecte les produits éditoriaux-only absents du Sheet.
+                    _extra_slugs = cat_editorial.get("extra_products") or []
+                    if _extra_slugs:
+                        _existing_sl = {p.get("slug") for p in cat_products}
+                        _added_prods = [_build_prod_from_editorial(_es, cat)
+                                        for _es in _extra_slugs
+                                        if str(_es).strip() and str(_es).strip() not in _existing_sl]
+                        if _added_prods:
+                            cat_products = list(cat_products) + _added_prods
                 # Si l'utilisateur éditait meta_title / meta_description / titre_analyse via
                 # le dashboard, son texte était passé tel quel au template → {year} brut visible.
                 # Fix : on substitue récursivement TOUTES les strings de cat_editorial
