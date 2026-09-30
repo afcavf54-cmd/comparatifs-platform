@@ -2952,6 +2952,8 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
             # Ne s'active que si le site a une chaîne (youtube_url) → monelor.
             _blog_yt = _fetch_youtube_videos(site, limit=1) if site.get("youtube_url") else []
             _blog_yt_latest = _blog_yt[0] if _blog_yt else None
+            # Liste substituée ({Month}/{year}/…) pour la sidebar « Articles récents »
+            _all_posts_rendered = substitute_template_vars(blog_posts, _global_vars)
             for post in blog_posts:
                 slug = post.get('slug', '')
                 if not slug:
@@ -2976,7 +2978,7 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     build_date=date.today().isoformat(),
                     post=post_rendered, related_posts=related_rendered,
                     blog_categories=blog_categories,
-                    all_posts=blog_posts,
+                    all_posts=_all_posts_rendered,
                     youtube_latest=_blog_yt_latest,
                 )
                 # ── Double écriture : /<slug>/index.html ET /<slug>.html ─────
