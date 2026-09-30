@@ -530,7 +530,8 @@ export default function ClassementsPage() {
     return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
       .replace(/[\u2019\u2018']/g, '-').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
   }
-  const catProducts = selectedData
+  const isAutonome = !!(selectedData as any)?.autonome && Array.isArray((selectedData as any)?.products_snapshot)
+  const sheetProducts = selectedData
     ? products.filter(p => {
         const slugByCat = slugifyCat(p.categorie || '')
         const slugByKeyword = slugifyCat(selected.replace('classement-', ''))
@@ -543,6 +544,68 @@ export default function ClassementsPage() {
                (p.__keyword && slugifyCat(p.__keyword) === slugByKeyword)
       })
     : []
+  // Marques ajoutées manuellement (extra_products) → on les ajoute à la liste
+  const extraSlugs: string[] = (selectedData?.extra_products || [])
+  const sheetSlugs = new Set(sheetProducts.map((p: any) => p.slug))
+  const extraProducts = extraSlugs.filter((s: string) => !sheetSlugs.has(s)).map((slug: string) => {
+    const ed: any = (selectedData as any)?.[`prod_${slug}`] || {}
+    return { slug, nom: ed.nom || ed.marque || slug, marque: ed.marque || ed.nom || slug, note_redaction: ed.note_redaction, categorie: selectedData?.categorie || '', __extra: true }
+  })
+  const sheetPlusExtra = [...sheetProducts, ...extraProducts]
+  // Mode AUTONOME (figé) : liste 100% éditoriale, on ignore le Sheet
+  const snapProducts = isAutonome
+    ? ((selectedData as any).products_snapshot as string[]).map((slug: string) => {
+        const ed: any = (selectedData as any)?.[`prod_${slug}`] || {}
+        return { slug, nom: ed.nom || ed.marque || slug, marque: ed.marque || ed.nom || slug, note_redaction: ed.note_redaction, categorie: selectedData?.categorie || '', __extra: true }
+      })
+    : []
+  const catProducts = isAutonome ? snapProducts : sheetPlusExtra
+
+  // Fige le classement : capture la liste actuelle (Sheet + edits) dans
+  // l'éditorial → les builds suivants ignorent le Sheet pour ce classement.
+  function makeAutonome() {
+    if (!selected || !selectedData) return
+    if (!confirm('Rendre ce classement autonome ?\n\nLa liste des produits sera figée dans le dashboard et ne dépendra plus du Sheet. Tu pourras ajouter, retirer, réordonner et éditer chaque marque librement.')) return
+    const snap: string[] = []
+    setClassements(prev => {
+      const cur: any = { ...(prev[selected] || {}) }
+      for (const p of sheetPlusExtra) {
+        const slug = p.slug
+        snap.push(slug)
+        const ed: any = cur[`prod_${slug}`] || {}
+        cur[`prod_${slug}`] = {
+          nom: ed.nom || p.nom || p.marque || slug,
+          marque: ed.marque || p.marque || p.nom || slug,
+          note_redaction: ed.note_redaction ?? p.note_redaction ?? '',
+          prix_achat: ed.prix_achat ?? p.prix_achat ?? '',
+          prix_note: ed.prix_note ?? p.prix_note ?? '',
+          url_affiliation: ed.url_affiliation || p.url_affiliation || '',
+          cta_text: ed.cta_text || p.cta_text || '',
+          tagline: ed.tagline || p.tagline || '',
+          description: ed.description || p.description || '',
+          points_forts: ed.points_forts || p.points_forts || [],
+          points_faibles: ed.points_faibles || p.points_faibles || [],
+        }
+      }
+      cur.autonome = true
+      cur.products_snapshot = snap
+      return { ...prev, [selected]: cur }
+    })
+    setMsg('✓ Classement figé (autonome). Pense à Sauvegarder.')
+  }
+
+  // Retire une marque d'un classement autonome (de la liste figée).
+  function removeBrand(slug: string) {
+    if (!selected) return
+    if (!confirm(`Retirer « ${slug} » de ce classement ?`)) return
+    setClassements(prev => {
+      const cur: any = { ...(prev[selected] || {}) }
+      cur.products_snapshot = ((cur.products_snapshot || []) as string[]).filter(s => s !== slug)
+      cur.extra_products = ((cur.extra_products || []) as string[]).filter(s => s !== slug)
+      return { ...prev, [selected]: cur }
+    })
+    setMsg('✓ Marque retirée. Pense à Sauvegarder.')
+  }
 
   async function saveEnabledClassements() {
     setSavingEnabled(true)
@@ -865,7 +928,7 @@ export default function ClassementsPage() {
               </div>
             ) : (
               <div style={{ flex: 1, overflowY: 'auto', padding: 24 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
                   <h3 style={{ color: '#00D4AA', margin: 0, fontSize: 15 }}>
                     {selectedData.categorie || selected.replace('classement-', '')}
                   </h3>
@@ -875,6 +938,16 @@ export default function ClassementsPage() {
                       {regenerating[selected] ? '⏳...' : '🔄 Régénérer'}
                     </button>
                   </div>
+                </div>
+                <div style={{ marginBottom: 18, padding: '12px 14px', borderRadius: 10, border: `1px solid ${isAutonome ? 'rgba(0,212,170,.4)' : '#F6AD55'}`, background: isAutonome ? 'rgba(0,212,170,.06)' : 'rgba(246,173,85,.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
+                  {isAutonome ? (
+                    <div style={{ fontSize: 12.5, color: '#00D4AA' }}>🔒 <b>Classement autonome</b> — la liste est figée dans le dashboard, indépendante du Sheet. Ajout/retrait/ordre gérés ici.</div>
+                  ) : (
+                    <>
+                      <div style={{ fontSize: 12.5, color: '#8B9CB0' }}>⚠️ Ce classement dépend encore du <b>Sheet</b>. Fige-le pour tout gérer depuis le dashboard (indépendant du Sheet).</div>
+                      <button onClick={makeAutonome} style={{ padding: '7px 14px', borderRadius: 8, border: 'none', background: '#00D4AA', color: '#04121C', fontWeight: 700, fontSize: 12.5, cursor: 'pointer', whiteSpace: 'nowrap' }}>🔒 Rendre autonome</button>
+                    </>
+                  )}
                 </div>
 
                 <div onClick={() => toggleSection('seo')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections['seo'] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>🔍 SEO</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
@@ -1103,7 +1176,10 @@ export default function ClassementsPage() {
                                 try {
                                   const parsed = JSON.parse(d.text)
                                   const key = `prod_${newBrand.slug}`
-                                  updateField(selected, key, { description: parsed.description || '', points_forts: parsed.points_forts || [], points_faibles: parsed.points_faibles || [] })
+                                  updateField(selected, key, { nom: newBrand.nom, marque: newBrand.nom, description: parsed.description || '', points_forts: parsed.points_forts || [], points_faibles: parsed.points_faibles || [] })
+                                  // Enregistrer la marque comme ajoutée manuellement (pour qu'elle apparaisse dans le classement)
+                                  const _extra = ((selectedData as any)?.extra_products || []) as string[]
+                                  if (!_extra.includes(newBrand.slug)) updateField(selected, 'extra_products', [..._extra, newBrand.slug])
                                   setExpandedBrands(p => ({ ...p, [newBrand.slug]: true }))
                                 } catch {}
                               }
@@ -1161,6 +1237,12 @@ export default function ClassementsPage() {
                                     <div style={{ fontSize: 11, color: '#4A5568', marginTop: 6, maxWidth: 240 }}>PNG/JPG/WebP, format paysage (~16/10). Remplace l'image partagée, uniquement sur ce site.</div>
                                   </div>
                                 </div>
+                                {isAutonome && (
+                                  <button onClick={() => removeBrand(prodKey)}
+                                    style={{ marginTop: 12, padding: '7px 14px', borderRadius: 7, border: '1px solid #FC8181', background: 'transparent', color: '#FC8181', fontWeight: 600, fontSize: 12.5, cursor: 'pointer' }}>
+                                    🗑 Retirer cette marque du classement
+                                  </button>
+                                )}
                               </div>
                               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 14 }}>
                                 <div>
