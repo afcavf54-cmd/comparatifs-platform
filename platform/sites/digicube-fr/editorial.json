@@ -1436,7 +1436,10 @@
     ],
     "h1": "J'ai testé {count} logiciels d'onboarding : comparatif et classement",
     "meta_title": "Mon classement du meilleur logiciel d'onboarding après {count} tests {year}",
-    "meta_description": "J'ai évalué {count} logiciels d'onboarding afin d'identifier les plus performants pour les équipes RH."
+    "meta_description": "J'ai évalué {count} logiciels d'onboarding afin d'identifier les plus performants pour les équipes RH.",
+    "extra_products": [
+      "kelia-onboarding"
+    ]
   },
   "classement-logiciels-de-recrutement": {
     "intro": "Je cherchais un logiciel de recrutement adapté à ma TPE de 100 salariés depuis des mois. Entre les tarifs qui explosent dès qu'on dépasse 10 utilisateurs et les interfaces complexes qui découragent mes équipes RH, j'ai vite compris qu'il fallait faire le bon choix dès le départ.\n\n<strong>Budget serré, fonctionnalités indispensables, prise en main rapide</strong> : voilà mes trois critères non négociables. J'ai donc testé 8 solutions pendant 6 mois pour vous éviter les mauvaises surprises.\n\nDans ce comparatif, je vous présente Flatchr, Jobaffinity, Softy, Taleez, WeRecruit, Workable, Recruitee et Teamtailor avec leurs vrais prix, leurs points forts et surtout leurs limites. Un classement détaillé vous attend en fin d'article pour trancher définitivement.",
@@ -5796,6 +5799,21 @@
     "points_faibles": [
       "Les fonctionnalités d'onboarding restent moins avancées que celles des solutions spécialisées, avec des options de personnalisation et de gamification limitées par rapport aux outils dédiés",
       "L'interface utilisateur peut paraître moins moderne et moins engageante que celle de concurrents plus récents, ce qui peut nuire à l'expérience des nouvelles recrues"
+    ]
+  },
+  "classement-prod-kelia-onboarding": {
+    "nom": "Kelia",
+    "marque": "Kelia",
+    "description": "<p>L'intégration d'un collaborateur est une étape décisive pour sa rétention. Le module <strong>d'onboarding de Kelio</strong> permet de structurer et d'automatiser l'ensemble du parcours d'accueil, de la promesse d'embauche jusqu'à la fin de la période d'essai.</p>\n\n<p>Grâce au portail RH, la collecte des documents et la signature électronique des contrats s'effectuent sans papier. L'outil déclenche automatiquement les tâches destinées aux managers et aux équipes internes (préparation du matériel, création du badge, accès aux locaux). Le nouvel arrivant accède à un espace personnalisé pour compléter son dossier et découvrir l'entreprise.</p>\n\n<p><strong>Idéal pour les structures de plus de 50 salariés</strong> souhaitant moderniser leur image employeur et sécuriser leurs parcours d'intégration sans perdre de temps en tâches administratives.</p>",
+    "points_forts": [
+      "Digitalisation complète et automatisée des parcours d'intégration",
+      "Lien direct avec la gestion du matériel et les droits d'accès",
+      "Portail collaboratif fluide et moderne pour le nouvel arrivant",
+      "Suivi en temps réel de l'avancement des tâches par les RH"
+    ],
+    "points_faibles": [
+      "Paramétrage initial nécessitant du temps et de la rigueur",
+      "Tarif peu adapté aux besoins des très petites TPE"
     ]
   }
 }
