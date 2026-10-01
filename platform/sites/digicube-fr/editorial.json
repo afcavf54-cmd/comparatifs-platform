@@ -1511,7 +1511,19 @@
     "meta_description": "J'ai évalué {count} logiciels de recrutement afin d'identifier les plus performants pour les équipes RH.",
     "extra_products": [
       "kelio-recrutement"
-    ]
+    ],
+    "products_order": {
+      "kelio-recrutement": 1,
+      "flatchr-logiciel-de-recrutement": 2,
+      "jobaffinity-logiciel-de-recrutement": 3,
+      "softy-logiciel-de-recrutement": 4,
+      "taleez-logiciel-de-recrutement": 5,
+      "werecruit-logiciel-de-recrutement": 6,
+      "workable-logiciel-de-recrutement": 7,
+      "recruitee-logiciel-de-recrutement": 8,
+      "teamtailor-logiciel-de-recrutement": 9,
+      "greenhouse-logiciel-de-recrutement": 10
+    }
   },
   "classement-terminaux-de-paiement": {
     "intro": "<p>Je viens de passer plusieurs mois à tester différents <strong>terminaux de paiement</strong> pour mon entreprise de 150 salariés. Franchement, le choix n'est pas évident quand on veut éviter les frais cachés et trouver un appareil fiable.</p>\n\n<p>Entre les commissions variables, les coûts d'abonnement parfois flous et les fonctionnalités qui diffèrent énormément d'un modèle à l'autre, j'ai perdu pas mal de temps. <strong>Square Reader, Zettle Reader 2, SumUp Solo Lite, myPOS Go 2, Revolut Reader, Smile&Pay Mini et Stancer</strong> : j'ai tout testé.</p>\n\n<p>Dans ce comparatif, je vous donne mon classement personnel avec les vrais prix, les points forts et surtout les défauts que j'ai découverts à l'usage.</p>",
@@ -5936,7 +5948,7 @@
   "classement-prod-kelio-onboarding": {
     "nom": "Kelio",
     "marque": "Kelio",
-    "description": "<p>L'intégration d'un collaborateur est une étape décisive pour sa rétention. Le module <strong>d'onboarding de Kelio</strong> permet de structurer et d'automatiser l'ensemble du parcours d'accueil, de la promesse d'embauche jusqu'à la fin de la période d'essai.</p>\n\n<p>Grâce au portail RH, la collecte des documents et la signature électronique des contrats s'effectuent sans papier. L'outil déclenche automatiquement les tâches destinées aux managers et aux équipes internes (préparation du matériel, création du badge, accès aux locaux). Le nouvel arrivant accède à un espace personnalisé pour compléter son dossier et découvrir l'entreprise.</p>\n\n<p><strong>Idéal pour les structures de plus de 50 salariés</strong> souhaitant moderniser leur image employeur et sécuriser leurs parcours d'intégration sans perdre de temps en tâches administratives.</p>",
+    "description": "<p>L'intégration d'un collaborateur est une étape décisive pour sa rétention. Le module <strong>d'onboarding de Kelio</strong> permet de structurer et d'automatiser l'ensemble du parcours d'accueil, de la promesse d'embauche jusqu'à la fin de la période d'essai.</p><p>Grâce au portail RH, la collecte des documents et la signature électronique des contrats s'effectuent sans papier. L'outil déclenche automatiquement les tâches destinées aux managers et aux équipes internes (préparation du matériel, création du badge, accès aux locaux). Le nouvel arrivant accède à un espace personnalisé pour compléter son dossier et découvrir l'entreprise.</p>\n\n<p><strong>Idéal pour les structures de plus de 50 salariés</strong> souhaitant moderniser leur image employeur et sécuriser leurs parcours d'intégration sans perdre de temps en tâches administratives.</p>",
     "points_forts": [
       "Digitalisation complète et automatisée des parcours d'intégration",
       "Lien direct avec la gestion du matériel et les droits d'accès",
