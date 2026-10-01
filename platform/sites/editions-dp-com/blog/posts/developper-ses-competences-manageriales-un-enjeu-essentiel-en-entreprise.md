@@ -2,7 +2,7 @@
 title: "Développer ses compétences managériales : un enjeu essentiel en entreprise"
 slug: developper-ses-competences-manageriales-un-enjeu-essentiel-en-entreprise
 date: 2026-10-01 14:03:17+02:00
-updated: 2026-10-01T14:09:10
+updated: 2026-10-01T14:12:16
 categorie: "Gestion d'entreprise"
 categories:
 - "Gestion d'entreprise"
