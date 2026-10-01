@@ -2,7 +2,7 @@
 title: "Développer ses compétences managériales : un enjeu essentiel en entreprise"
 slug: developper-ses-competences-manageriales-un-enjeu-essentiel-en-entreprise
 date: 2026-10-01 13:45:17+02:00
-updated: 2026-10-01T13:45:17
+updated: 2026-10-01T14:03:14
 categorie: "Gestion d'entreprise"
 categories:
 - "Gestion d'entreprise"
@@ -12,9 +12,12 @@ featured_image: ""
 status: draft
 min_words: 1400
 show_toc: true
+link_anchors:
+- text: formation en management
+  max: 10
 ---
 
-<p>J'ai passé onze ans à diriger une structure qui a grandi progressivement. Et je peux vous dire que le moment où j'ai compris que le management ne s'improvise pas, c'est le jour où j'ai perdu deux bons éléments en l'espace d'un mois. Pas à cause du salaire. À cause du manager intermédiaire que j'avais promu trop vite, sans l'accompagner. Depuis, j'ai une conviction simple : <strong>les compétences managériales s'apprennent</strong>. Elles ne tombent pas du ciel avec le titre. Voici ce que j'ai observé, ce que j'ai testé, et ce que je recommande à tout dirigeant qui veut éviter les mêmes erreurs.</p>
+<p>J'ai passé onze ans à diriger une structure qui a grandi progressivement. Et je peux vous dire que le moment où j'ai compris que le management ne s'improvise pas, c'est le jour où j'ai perdu deux bons éléments en l'espace d'un mois.&nbsp;</p><p>Pas à cause du salaire. À cause du manager intermédiaire que j'avais promu trop vite, sans l'accompagner. Depuis, j'ai une conviction simple : <strong>les compétences managériales s'apprennent</strong>. Elles ne tombent pas du ciel avec le titre. Voici ce que j'ai observé, ce que j'ai testé, et ce que je recommande à tout dirigeant qui veut éviter les mêmes erreurs.</p>
 
 <h2>Le rôle du manager face aux nouvelles attentes des entreprises</h2>
 
@@ -50,7 +53,7 @@ show_toc: true
 
 <p>Le leadership, c'est la capacité à embarquer les gens dans une direction. Pas en criant plus fort que les autres. En étant clair, cohérent, et en montrant l'exemple.</p>
 
-<img src="competences-manageriales.jpg" alt="Manager en réunion avec son équipe, travaillant sur des compétences managériales" />
+<img src="competences-manageriales.jpg" alt="Manager en réunion avec son équipe, travaillant sur des compétences managériales">
 
 <p>Un manager organisé, ça libère de l'énergie pour tout le monde. Quand les priorités sont claires, quand les réunions ont un ordre du jour, quand les décisions sont prises sans traîner, l'équipe avance. À l'inverse, un manager brouillon génère de l'anxiété. Les gens ne savent plus où mettre leur énergie.</p>
 
@@ -97,3 +100,4 @@ show_toc: true
 <p>Une entreprise qui dispose de managers capables de s'adapter, de gérer des équipes hétérogènes, de faire face aux moments de tension sans perdre pied : c'est une entreprise plus solide. Pas sur le papier. Dans les faits, au quotidien, sur le terrain.</p>
 
 <p>Si vous dirigez une TPE ou une PME, vous savez que vous n'avez pas le droit à beaucoup d'erreurs. Chaque poste mal tenu coûte cher. Miser sur des managers bien formés, c'est l'un des leviers les plus directs sur la performance globale. C'est ce que j'ai fini par comprendre, un peu tard peut-être, mais pas trop.</p>
+
