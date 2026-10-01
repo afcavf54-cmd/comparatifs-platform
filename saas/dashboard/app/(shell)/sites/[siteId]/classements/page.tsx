@@ -559,7 +559,8 @@ export default function ClassementsPage() {
         return { slug, nom: ed.nom || ed.marque || slug, marque: ed.marque || ed.nom || slug, note_redaction: ed.note_redaction, categorie: selectedData?.categorie || '', __extra: true }
       })
     : []
-  const catProducts = isAutonome ? snapProducts : sheetPlusExtra
+  const catProducts = (isAutonome ? snapProducts : sheetPlusExtra)
+    .filter((p: any) => !(((selectedData as any)?.removed_products || []) as string[]).includes(p.slug))
 
   // Fige le classement : capture la liste actuelle (Sheet + edits) dans
   // l'éditorial → les builds suivants ignorent le Sheet pour ce classement.
@@ -600,8 +601,12 @@ export default function ClassementsPage() {
     if (!confirm(`Retirer « ${slug} » de ce classement ?`)) return
     setClassements(prev => {
       const cur: any = { ...(prev[selected] || {}) }
-      cur.products_snapshot = ((cur.products_snapshot || []) as string[]).filter(s => s !== slug)
-      cur.extra_products = ((cur.extra_products || []) as string[]).filter(s => s !== slug)
+      cur.products_snapshot = ((cur.products_snapshot || []) as string[]).filter((s: string) => s !== slug)
+      cur.extra_products = ((cur.extra_products || []) as string[]).filter((s: string) => s !== slug)
+      // produit venant du Sheet (non figé) → on l'ajoute à la liste des retirés
+      const rm = new Set(((cur.removed_products || []) as string[]))
+      rm.add(slug)
+      cur.removed_products = Array.from(rm)
       return { ...prev, [selected]: cur }
     })
     setMsg('✓ Marque retirée. Pense à Sauvegarder.')
@@ -1160,6 +1165,26 @@ export default function ClassementsPage() {
                         <div style={{ display: 'flex', gap: 8 }}>
                           <button onClick={async () => {
                             if (!newBrand.nom || !newBrand.slug) return
+                            const slug = newBrand.slug.trim()
+                            const nom = newBrand.nom.trim()
+                            const key = `prod_${slug}`
+                            // 1) Ajouter la marque TOUT DE SUITE (indépendant de l'IA)
+                            updateField(selected, key, { nom, marque: nom, description: '', points_forts: [], points_faibles: [] })
+                            if (isAutonome) {
+                              const snap = ((selectedData as any)?.products_snapshot || []) as string[]
+                              if (!snap.includes(slug)) updateField(selected, 'products_snapshot', [...snap, slug])
+                            } else {
+                              const extra = ((selectedData as any)?.extra_products || []) as string[]
+                              if (!extra.includes(slug)) updateField(selected, 'extra_products', [...extra, slug])
+                            }
+                            // retirer d'une éventuelle liste de suppression
+                            const _rm = ((selectedData as any)?.removed_products || []) as string[]
+                            if (_rm.includes(slug)) updateField(selected, 'removed_products', _rm.filter(s => s !== slug))
+                            setExpandedBrands(p => ({ ...p, [slug]: true }))
+                            setShowAddBrand(false)
+                            setNewBrand({ nom: '', slug: '', description: '', points_forts: '', points_faibles: '' })
+                            setMsg('✓ Marque ajoutée — génération du contenu…')
+                            // 2) Générer le contenu via IA (optionnel, non bloquant)
                             setGeneratingBrand(true)
                             const cat = selectedData.categorie || selected.replace('classement-', '')
                             try {
@@ -1168,28 +1193,21 @@ export default function ClassementsPage() {
                                 body: JSON.stringify({
                                   max_tokens: 1000,
                                   system: 'Tu es un expert rédacteur SEO. Réponds UNIQUEMENT en JSON valide sans backticks.',
-                                  prompt: `Génère une description HTML et des avantages/inconvénients pour ${newBrand.nom} dans un classement des meilleurs ${cat}. Réponds en JSON: {"description": "<p>...</p>", "points_forts": ["avantage 1", "avantage 2", "avantage 3"], "points_faibles": ["inconvénient 1", "inconvénient 2"]}`
+                                  prompt: `Génère une description HTML et des avantages/inconvénients pour ${nom} dans un classement des meilleurs ${cat}. Réponds en JSON: {"description": "<p>...</p>", "points_forts": ["avantage 1", "avantage 2", "avantage 3"], "points_faibles": ["inconvénient 1", "inconvénient 2"]}`
                                 })
                               })
                               const d = await r.json()
-                              if (d.text) {
-                                try {
-                                  const parsed = JSON.parse(d.text)
-                                  const key = `prod_${newBrand.slug}`
-                                  updateField(selected, key, { nom: newBrand.nom, marque: newBrand.nom, description: parsed.description || '', points_forts: parsed.points_forts || [], points_faibles: parsed.points_faibles || [] })
-                                  // Enregistrer la marque comme ajoutée manuellement (pour qu'elle apparaisse dans le classement)
-                                  const _extra = ((selectedData as any)?.extra_products || []) as string[]
-                                  if (!_extra.includes(newBrand.slug)) updateField(selected, 'extra_products', [..._extra, newBrand.slug])
-                                  setExpandedBrands(p => ({ ...p, [newBrand.slug]: true }))
-                                } catch {}
-                              }
-                            } catch {}
+                              const txt = (d.text || '').trim().replace(/^```[a-z]*/i, '').replace(/```$/, '').trim()
+                              try {
+                                const parsed = JSON.parse(txt)
+                                updateField(selected, key, { nom, marque: nom, description: parsed.description || '', points_forts: parsed.points_forts || [], points_faibles: parsed.points_faibles || [] })
+                                setMsg('✓ Marque ajoutée avec contenu IA. Pense à Sauvegarder.')
+                              } catch { setMsg('✓ Marque ajoutée (contenu à compléter). Pense à Sauvegarder.') }
+                            } catch { setMsg('✓ Marque ajoutée (contenu à compléter). Pense à Sauvegarder.') }
                             setGeneratingBrand(false)
-                            setShowAddBrand(false)
-                            setNewBrand({ nom: '', slug: '', description: '', points_forts: '', points_faibles: '' })
                           }} disabled={generatingBrand || !newBrand.nom || !newBrand.slug}
                             style={{ flex: 1, padding: '8px', borderRadius: 7, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>
-                            {generatingBrand ? '⏳ Génération...' : '✨ Générer avec IA'}
+                            {generatingBrand ? '⏳ Ajout…' : '➕ Ajouter la marque'}
                           </button>
                           <button onClick={() => { setShowAddBrand(false); setNewBrand({ nom: '', slug: '', description: '', points_forts: '', points_faibles: '' }) }}
                             style={{ padding: '8px 14px', borderRadius: 7, border: '1px solid #1E2D3D', background: 'transparent', color: '#8B9CB0', cursor: 'pointer', fontSize: 13 }}>
@@ -1237,7 +1255,7 @@ export default function ClassementsPage() {
                                     <div style={{ fontSize: 11, color: '#4A5568', marginTop: 6, maxWidth: 240 }}>PNG/JPG/WebP, format paysage (~16/10). Remplace l'image partagée, uniquement sur ce site.</div>
                                   </div>
                                 </div>
-                                {isAutonome && (
+                                {!(p as any).__fixed && (
                                   <button onClick={() => removeBrand(prodKey)}
                                     style={{ marginTop: 12, padding: '7px 14px', borderRadius: 7, border: '1px solid #FC8181', background: 'transparent', color: '#FC8181', fontWeight: 600, fontSize: 12.5, cursor: 'pointer' }}>
                                     🗑 Retirer cette marque du classement
