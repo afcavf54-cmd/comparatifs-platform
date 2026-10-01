@@ -145,6 +145,9 @@ a:hover{text-decoration:underline}
 .article-body a:hover{text-decoration-color:var(--accent2)}
 /* Author box (réutilise le style de classement-saas) */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
+.author-socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;background:none;padding:0;height:auto;min-height:0;position:static;top:auto;justify-content:flex-start}
+.author-social{display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:20px;border:1px solid var(--border);background:var(--surface);font-size:12.5px;font-weight:600;color:var(--ink2);text-decoration:none;transition:.15s}
+.author-social:hover{border-color:var(--accent);color:var(--accent)}
 .author-avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
 .author-avatar-placeholder{width:72px;height:72px;border-radius:50%;background:var(--bg);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
 .author-info{flex:1}
@@ -511,7 +514,12 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <div class="author-info">
       <div class="author-label">Auteur</div>
       <div class="author-name">Hugo Simon</div>
-<div class="author-job">Expert outils entrepreneurs</div><div class="author-bio">Je m'appelle Hugo Simon, j'accompagne les entrepreneurs dans le choix de leurs outils du quotidien. Mon objectif : vous aider à trouver les logiciels qui vous feront vraiment gagner du temps.</div>    </div>
+<div class="author-job">Expert outils entrepreneurs</div><div class="author-bio">Je m'appelle Hugo Simon, j'accompagne les entrepreneurs dans le choix de leurs outils du quotidien. Mon objectif : vous aider à trouver les logiciels qui vous feront vraiment gagner du temps.</div>      <div class="author-socials" aria-label="Réseaux sociaux de Hugo Simon">
+        <a href="https://www.youtube.com/@laboxentrepreneuriat" class="author-social" rel="noopener noreferrer" target="_blank">YouTube</a>
+        <a href="https://www.linkedin.com/in/hugo-simon-b064a0440/" class="author-social" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+        <a href="https://www.facebook.com/laboxentrepreneuriat/" class="author-social" rel="noopener noreferrer" target="_blank">Facebook</a>
+      </div>
+    </div>
   </div>
 
   <section class="related-section">
