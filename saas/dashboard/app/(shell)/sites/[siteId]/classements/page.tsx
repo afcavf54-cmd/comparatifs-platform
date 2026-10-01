@@ -101,11 +101,11 @@ function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string,
           onInput={onVisualInput}
           style={{
             minHeight: (rows * 22) + 'px', padding: 14, background: '#0D1117', color: '#E2E8F0',
-            fontSize: 14, lineHeight: 1.7, outline: 'none', fontFamily: 'inherit'
+            fontSize: 16, lineHeight: 1.75, outline: 'none', fontFamily: 'inherit'
           }}
         />
       )}
-      <style>{`.cls-hedit p{margin:0 0 14px}.cls-hedit p:last-child{margin-bottom:0}.cls-hedit ul,.cls-hedit ol{margin:0 0 14px 20px}.cls-hedit h2{font-size:18px;font-weight:700;margin:16px 0 8px}.cls-hedit h3{font-size:15px;font-weight:700;margin:14px 0 6px}.cls-hedit:empty:before{content:attr(data-ph);color:#4A5568}`}</style>
+      <style>{`.cls-hedit p{margin:0 0 14px}.cls-hedit p:last-child{margin-bottom:0}.cls-hedit ul,.cls-hedit ol{margin:0 0 14px 20px}.cls-hedit li{margin-bottom:4px}.cls-hedit strong{font-weight:700;color:#fff}.cls-hedit a{font-weight:700;text-decoration:underline;text-underline-offset:2px;color:#00D4AA}.cls-hedit h2{font-size:18px;font-weight:700;margin:16px 0 8px}.cls-hedit h3{font-size:15px;font-weight:700;margin:14px 0 6px}.cls-hedit:empty:before{content:attr(data-ph);color:#4A5568}`}</style>
 
       {mode === 'source' && (
         <textarea ref={taRef} value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder}
