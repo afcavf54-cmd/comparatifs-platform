@@ -1976,6 +1976,16 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             site["author_bio"] = author_cfg_main.get("bio", "") or site.get("author_bio", "")
             site["author_job"] = author_cfg_main.get("job_title", "") or site.get("author_job", "")
             site["author_photo"] = _photo_clean_main or site.get("author_photo", "")
+        # Liens sociaux de la box auteur : author.socials si défini, sinon on
+        # reprend les réseaux sociaux du site (social_*, saisis dans les réglages).
+        _SOCIAL_LABELS = [("social_youtube", "YouTube"), ("social_x", "X"),
+                          ("social_linkedin", "LinkedIn"), ("social_facebook", "Facebook"),
+                          ("social_instagram", "Instagram"), ("social_tiktok", "TikTok")]
+        _auth_soc = (author_cfg_main.get("socials") if author_cfg_main else None) or []
+        if not _auth_soc:
+            _auth_soc = [{"url": site.get(_k), "label": _lbl}
+                         for _k, _lbl in _SOCIAL_LABELS if site.get(_k)]
+        site["author_socials"] = _auth_soc
         # Protection des pages d'avis (similaire à blog_expected) pour ne pas
         # qu'elles soient supprimées comme orphelines par cleanup_removed_products.
         # Le set est unioné à blog_expected avant l'appel.
@@ -2830,7 +2840,7 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     "author_bio": author_cfg.get("bio", ""),
                     "author_job": author_cfg.get("job_title", ""),
                     "author_photo": _photo_clean,
-                    "author_socials": author_cfg.get("socials", []),
+                    "author_socials": site.get("author_socials") or author_cfg.get("socials", []),
                 }
                 # Trouver les siblings (même catégorie parente, max 8, triés, fixes)
                 _cat_parent = _kw_data.get("__categorie", "Autres") or "Autres"
