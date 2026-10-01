@@ -2,14 +2,14 @@
 title: "Développer ses compétences managériales : un enjeu essentiel en entreprise"
 slug: developper-ses-competences-manageriales-un-enjeu-essentiel-en-entreprise
 date: 2026-10-01 14:03:17+02:00
-updated: 2026-10-01T14:20:52
+updated: 2026-10-01T14:23:30
 categorie: "Gestion d'entreprise"
 categories:
 - "Gestion d'entreprise"
 meta_title: "Formation management : pourquoi développer ses compétences managériales ?"
 meta_description: Développer ses compétences managériales est crucial pour tout dirigeant.
 featured_image: /blog/developper-ses-competences-manageriales-un-enjeu-essentiel-en-entreprise/featured-66908.jpg
-status: published
+status: draft
 min_words: 1400
 show_toc: true
 related_posts:
@@ -40,7 +40,7 @@ link_anchors:
 
 <p>La communication interne, la capacité à créer une dynamique collective, à donner du cap, à gérer les périodes de tension : tout ça repose sur des compétences réelles, pas sur du bon vouloir ou une bonne intuition. L'intuition aide. Mais ça ne suffit pas.</p>
 
-<h2>Quelles compétences développer pour mieux manager une équipe ?</h2><p><p><img src="/blog/developper-ses-competences-manageriales-un-enjeu-essentiel-en-entreprise/quelles-competences-developper-pour-mieux-manager-une-equipe-4816.jpg" alt="Quelles compétences développer pour mieux manager une équipe"></p>Quand on me demande par où commencer, je dis toujours la même chose : commencez par observer comment vos managers communiquent. Vraiment. Pas juste en réunion, mais au quotidien, dans les échanges informels, dans la façon dont ils répondent à une difficulté. </p>
+<h2>Quelles compétences développer pour mieux manager une équipe ?</h2><div><p><img src="/blog/developper-ses-competences-manageriales-un-enjeu-essentiel-en-entreprise/quelles-competences-developper-pour-mieux-manager-une-equipe-4816.jpg" alt="Quelles compétences développer pour mieux manager une équipe"></p>Quand on me demande par où commencer, je dis toujours la même chose : commencez par observer comment vos managers communiquent. Vraiment. Pas juste en réunion, mais au quotidien, dans les échanges informels, dans la façon dont ils répondent à une difficulté. </div>
 
 <h3>Communication, écoute et gestion des relations</h3>
 
