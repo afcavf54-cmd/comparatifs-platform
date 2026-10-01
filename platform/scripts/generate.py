@@ -2597,6 +2597,10 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                                         if str(_es).strip() and str(_es).strip() not in _existing_sl]
                         if _added_prods:
                             cat_products = list(cat_products) + _added_prods
+                # Marques retirées au dashboard (removed_products) → masquées
+                _removed_sl = {str(s).strip() for s in (cat_editorial.get("removed_products") or []) if str(s).strip()}
+                if _removed_sl:
+                    cat_products = [p for p in cat_products if str(p.get("slug", "")).strip() not in _removed_sl]
                 # Si l'utilisateur éditait meta_title / meta_description / titre_analyse via
                 # le dashboard, son texte était passé tel quel au template → {year} brut visible.
                 # Fix : on substitue récursivement TOUTES les strings de cat_editorial
