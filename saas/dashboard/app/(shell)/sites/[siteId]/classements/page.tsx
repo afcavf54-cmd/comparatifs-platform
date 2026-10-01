@@ -16,6 +16,24 @@ function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string,
     if (editorRef.current) onChange(editorRef.current.innerHTML)
   }
 
+  // Collage propre : le texte collé devient des paragraphes <p> (ligne vide =
+  // nouveau paragraphe, retour à la ligne simple = espace). Évite les <div>/<br>
+  // par ligne que le navigateur insère sinon (→ saut après chaque phrase).
+  function onVisualPaste(e: React.ClipboardEvent<HTMLDivElement>) {
+    const text = e.clipboardData.getData('text/plain')
+    if (!text) return
+    e.preventDefault()
+    const html = text
+      .replace(/\r\n/g, '\n')
+      .split(/\n\s*\n+/)
+      .map(block => block.trim().replace(/\n+/g, ' ').trim())
+      .filter(Boolean)
+      .map(p => `<p>${p.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>`)
+      .join('')
+    document.execCommand('insertHTML', false, html)
+    if (editorRef.current) onChange(editorRef.current.innerHTML)
+  }
+
   function switchMode(m: 'visual'|'source') {
     if (m === 'visual' && editorRef.current) {
       editorRef.current.innerHTML = value
@@ -99,6 +117,7 @@ function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string,
           contentEditable
           suppressContentEditableWarning
           onInput={onVisualInput}
+          onPaste={onVisualPaste}
           style={{
             minHeight: (rows * 22) + 'px', padding: 14, background: '#0D1117', color: '#E2E8F0',
             fontSize: 16, lineHeight: 1.75, outline: 'none', fontFamily: 'inherit'
