@@ -1184,7 +1184,21 @@
     ],
     "h1": "Comparatif de {count} logiciels de gestion des congés et absences pour les entreprises",
     "meta_title": "J'ai comparé {count} logiciels de gestion des congés et absences en {year}",
-    "meta_description": "J'ai évalué {count} logiciels de gestion des congés et absences afin d'identifier les plus performants."
+    "meta_description": "J'ai évalué {count} logiciels de gestion des congés et absences afin d'identifier les plus performants.",
+    "extra_products": [
+      "kelio-absences"
+    ],
+    "products_order": {
+      "kelio-absences": 1,
+      "lucca-logiciel-gestion-conges-absences": 2,
+      "eurecia-logiciel-gestion-conges-absences": 3,
+      "payfit-logiciel-gestion-conges-absences": 4,
+      "keeple-logiciel-gestion-conges-absences": 5,
+      "personio-logiciel-gestion-conges-absences": 6,
+      "attendancebot-logiciel-gestion-conges-absences": 7,
+      "factorial-logiciel-gestion-conges-absences": 8,
+      "zoho-people-logiciel-gestion-conges-absences": 9
+    }
   },
   "classement-logiciel-de-gestion-des-temps": {
     "intro": "<p>Je gère une équipe de 150 personnes à Marseille et j'ai testé 8 <strong>logiciels de gestion des temps</strong> en 18 mois. Entre les retards non comptabilisés, les heures sup qui explosent et les arrêts maladie mal suivis, je perdais 3 heures par semaine rien qu'en pointage manuel.</p>\n\n<p>Vous cherchez probablement à automatiser vos feuilles de temps, réduire les erreurs de paie ou simplement arrêter de courir après vos salariés pour leurs congés. <strong>J'ai comparé Lucca, Combo, Skello, Agendrix, Eurécia, Kelio, Clockify et Deputy</strong> selon quatre critères : prix, rapport qualité-prix, facilité d'utilisation et support client.</p>\n\n<p>Voici mon classement avec notes détaillées pour vous aider à choisir.</p>",
@@ -5964,7 +5978,7 @@
   "classement-prod-kelio-onboarding": {
     "nom": "Kelio",
     "marque": "Kelio",
-    "description": "<p>L'intégration d'un collaborateur est une étape décisive pour sa rétention. Le module <strong>d'onboarding de Kelio</strong> permet de structurer et d'automatiser l'ensemble du parcours d'accueil, de la promesse d'embauche jusqu'à la fin de la période d'essai.</p>\n\n<p>Grâce au portail RH, la collecte des documents et la signature électronique des contrats s'effectuent sans papier. L'outil déclenche automatiquement les tâches destinées aux managers et aux équipes internes (préparation du matériel, création du badge, accès aux locaux). Le nouvel arrivant accède à un espace personnalisé pour compléter son dossier et découvrir l'entreprise.</p>\n\n<p><strong>Idéal pour les structures de plus de 50 salariés</strong> souhaitant moderniser leur image employeur et sécuriser leurs parcours d'intégration sans perdre de temps en tâches administratives.</p>",
+    "description": "<p>L'intégration d'un collaborateur est une étape décisive pour sa rétention. Le module <strong>d'onboarding de Kelio</strong> permet de structurer et d'automatiser l'ensemble du parcours d'accueil, de la promesse d'embauche jusqu'à la fin de la période d'essai.</p><p>Grâce au portail RH, la collecte des documents et la signature électronique des contrats s'effectuent sans papier. L'outil déclenche automatiquement les tâches destinées aux managers et aux équipes internes (préparation du matériel, création du badge, accès aux locaux). Le nouvel arrivant accède à un espace personnalisé pour compléter son dossier et découvrir l'entreprise.</p>\n\n<p><strong>Idéal pour les structures de plus de 50 salariés</strong> souhaitant moderniser leur image employeur et sécuriser leurs parcours d'intégration sans perdre de temps en tâches administratives.</p>",
     "points_forts": [
       "Digitalisation complète et automatisée des parcours d'intégration",
       "Lien direct avec la gestion du matériel et les droits d'accès",
@@ -6007,5 +6021,21 @@
       "Mise en œuvre demandant une vraie phase d'accompagnement",
       "Interface riche qui demande une formation préalable"
     ]
+  },
+  "classement-prod-kelio-absences": {
+    "nom": "Kelio",
+    "marque": "Kelio",
+    "description": "<p>Élément central de la vie d'équipe, le module de <strong>gestion des congés et absences de Kelio</strong> simplifie le dépôt et la validation des demandes (CP, RTT, maladie, télétravail) directement depuis le portail web RH.</p>\n\n<p>L'un des grands atouts de Kelio est sa prise en compte des règles légales, des accords d'entreprise et des conventions collectives complexes. Les compteurs sont mis à jour en temps réel et les absences validées s'intègrent automatiquement aux plannings d'équipe et à la préparation de la paie, évitant toute ressaisie.</p>\n\n<p><strong>Indispensable pour les RH</strong> qui gèrent des plannings complexes et souhaitent fiabiliser leurs variables de paie sans risque d'erreur.</p>",
+    "points_forts": [
+      "Prise en compte fine des règles d'entreprise et conventions",
+      "Mise à jour automatique des soldes et transfert direct en paie",
+      "Visibilité temps réel sur les plannings et les présents",
+      "Saisie et validation rapides depuis l'interface web (portail RH)"
+    ],
+    "points_faibles": [
+      "Paramétrage initial rigoureux des compteurs de congés",
+      "Pas d'application mobile dédiée pour la pose des congés"
+    ],
+    "url_affiliation": "https://www.kelio.com/fr/fonctionnalites/gestion-des-temps-gta/conges-et-absences.html"
   }
 }
