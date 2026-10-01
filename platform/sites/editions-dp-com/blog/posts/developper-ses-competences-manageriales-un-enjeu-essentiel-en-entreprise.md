@@ -1,15 +1,15 @@
 ---
 title: "Développer ses compétences managériales : un enjeu essentiel en entreprise"
 slug: developper-ses-competences-manageriales-un-enjeu-essentiel-en-entreprise
-date: 2026-10-01 13:45:17+02:00
-updated: 2026-10-01T14:03:14
+date: 2026-10-01 14:03:17+02:00
+updated: 2026-10-01T14:03:17
 categorie: "Gestion d'entreprise"
 categories:
 - "Gestion d'entreprise"
 meta_title: "Formation management : pourquoi développer ses compétences managériales ?"
 meta_description: Développer ses compétences managériales est crucial pour tout dirigeant. Découvrez comment former vos managers et éviter les erreurs qui coûtent vos meilleurs…
 featured_image: ""
-status: draft
+status: published
 min_words: 1400
 show_toc: true
 link_anchors:
