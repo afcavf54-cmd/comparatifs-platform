@@ -1,13 +1,14 @@
 ---
-title: "Kelio : présentation, fonctionnalités et avis sur le logiciel RH"
+title: 'Kelio : présentation, fonctionnalités et avis sur le logiciel RH'
 slug: kelio-presentation-fonctionnalites-et-avis-sur-le-logiciel-rh
 date: 2026-10-01 13:02:56+02:00
-updated: 2026-10-01T13:02:56
-categorie: "Gestion d'entreprise"
+updated: 2026-10-01 13:02:56
+categorie: Gestion d'entreprise
 categories:
-- "Gestion d'entreprise"
-meta_title: "Kelio Avis {year} : mon test complet du logiciel RH"
-meta_description: Kelio est-il un bon logiciel RH ? Découvrez notre avis complet, ses fonctionnalités, ses avantages et inconvénients après un an d’utilisation.
+- Gestion d'entreprise
+meta_title: 'Kelio Avis {year} : mon test complet du logiciel RH'
+meta_description: Kelio est-il un bon logiciel RH ? Découvrez notre avis complet,
+  ses fonctionnalités, ses avantages et inconvénients après un an d’utilisation.
 featured_image: /blog/kelio-presentation-fonctionnalites-et-avis-sur-le-logiciel-rh/featured-66020.png
 status: published
 min_words: 1500
@@ -15,8 +16,12 @@ show_toc: true
 link_anchors:
 - text: Kelio
   max: 10
+related_posts:
+- 3498-comment-choisir-son-agence-web-les-erreurs-frequentes-a-eviter-avant-de-signer
+- 1789-faut-il-implementer-l-erp-bizflow-max-soi-meme
+- 1643-le-logiciel-crm-salestrack-360-face-aux-autres-crm
+- 6236-sepo-comment-exploiter-cette-methode-d-analyse-strategique-en-entreprise
 ---
-
 <p>J'ai découvert Kelio il y a environ un an, après avoir passé des mois à jongler entre trois outils différents pour gérer les congés, la paie et les plannings de mes équipes. Honnêtement, j'en pouvais plus. Un tableau Excel pour les absences, un logiciel de paie externe, et un fichier partagé sur le serveur pour les plannings. Chaque mois, je passais des heures à ressaisir les mêmes informations partout.</p>
 
 <p>Alors quand un autre dirigeant marseillais m'a parlé du site <a href="https://www.kelio.com/fr">https://www.kelio.com/fr</a>, j'ai regardé ça avec un oeil sceptique. Une plateforme qui couvre tout, du recrutement à la paie ? Je me suis dit que ça allait être soit trop cher, soit trop complexe pour une structure comme la mienne.</p>
