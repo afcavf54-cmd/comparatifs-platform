@@ -1437,9 +1437,7 @@
     "h1": "J'ai testé {count} logiciels d'onboarding : comparatif et classement",
     "meta_title": "Mon classement du meilleur logiciel d'onboarding après {count} tests {year}",
     "meta_description": "J'ai évalué {count} logiciels d'onboarding afin d'identifier les plus performants pour les équipes RH.",
-    "extra_products": [
-      "kelia-onboarding"
-    ],
+    "extra_products": [],
     "autonome": true,
     "products_snapshot": [
       "heyteam-logiciel-onboarding",
@@ -1452,6 +1450,9 @@
       "sapling-logiciel-onboarding",
       "talmundo-logiciel-onboarding",
       "appical-logiciel-onboarding",
+      "kelio-onboarding"
+    ],
+    "removed_products": [
       "kelia-onboarding"
     ]
   },
@@ -5915,5 +5916,21 @@
       "Paramétrage initial nécessitant du temps et de la rigueur",
       "Tarif peu adapté aux besoins des très petites TPE"
     ]
+  },
+  "classement-prod-kelio-onboarding": {
+    "nom": "Kelio",
+    "marque": "Kelio",
+    "description": "<p>L'intégration d'un collaborateur est une étape décisive pour sa rétention. Le module <strong>d'onboarding de Kelio</strong> permet de structurer et d'automatiser l'ensemble du parcours d'accueil, de la promesse d'embauche jusqu'à la fin de la période d'essai.</p>\n\n<p>Grâce au portail RH, la collecte des documents et la signature électronique des contrats s'effectuent sans papier. L'outil déclenche automatiquement les tâches destinées aux managers et aux équipes internes (préparation du matériel, création du badge, accès aux locaux). Le nouvel arrivant accède à un espace personnalisé pour compléter son dossier et découvrir l'entreprise.</p>\n\n<p><strong>Idéal pour les structures de plus de 50 salariés</strong> souhaitant moderniser leur image employeur et sécuriser leurs parcours d'intégration sans perdre de temps en tâches administratives.</p>",
+    "points_forts": [
+      "Digitalisation complète et automatisée des parcours d'intégration",
+      "Lien direct avec la gestion du matériel et les droits d'accès",
+      "Portail collaboratif fluide et moderne pour le nouvel arrivant",
+      "Suivi en temps réel de l'avancement des tâches par les RH"
+    ],
+    "points_faibles": [
+      "Paramétrage initial nécessitant du temps et de la rigueur",
+      "Tarif peu adapté aux besoins des très petites TPE"
+    ],
+    "url_affiliation": "https://www.kelio.com/fr/fonctionnalites/gestion-des-talents/onboarding-rh.html"
   }
 }
