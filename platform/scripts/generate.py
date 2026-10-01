@@ -240,28 +240,43 @@ def md_to_html(text):
     # Convertir les titres emoji (🎯 Titre, ⚠️ Titre, etc.)
     text = _re2.sub(r'^([\U0001F3AF\u26A0\U0001F4BC\u2705\U0001F511\U0001F4CC\u274C\u2713\u2192\u2022\u00B7]+)[ ]+(.+)$', lambda m: '<h3>' + m.group(2) + '</h3>', text, flags=_re2.MULTILINE)
     lines = text.split('\n')
-    result = []; in_list = False
+    result = []; in_list = False; para_buf = []
+
+    def _flush_para():
+        if para_buf:
+            joined = ' '.join(para_buf)
+            p = _re2.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', joined)
+            p = _re2.sub(r'\*(.+?)\*', r'<em>\1</em>', p)
+            result.append('<p>' + p + '</p>')
+            para_buf.clear()
+
     for line in lines:
         ls = line.strip()
         if not ls:
+            # ligne vide → fin du paragraphe en cours
+            _flush_para()
             if in_list: result.append('</ul>'); in_list = False
             continue
-        if '[' in ls and ']' in ls: continue
-        if ls.startswith('### '): 
+        if '[' in ls and ']' in ls:
+            _flush_para(); continue
+        if ls.startswith('### '):
+            _flush_para()
             if in_list: result.append('</ul>'); in_list = False
             result.append('<h4>' + ls[4:] + '</h4>')
         elif ls.startswith('## ') or ls.startswith('# '):
+            _flush_para()
             if in_list: result.append('</ul>'); in_list = False
             result.append('<h3>' + ls.lstrip('#').strip() + '</h3>')
         elif ls.startswith('- ') or ls.startswith('* '):
+            _flush_para()
             if not in_list: result.append('<ul>'); in_list = True
             item = _re2.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', ls[2:])
             result.append('<li>' + item + '</li>')
         else:
-            if in_list: result.append('</ul>'); in_list = False
-            para = _re2.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', ls)
-            para = _re2.sub(r'\*(.+?)\*', r'<em>\1</em>', para)
-            result.append('<p>' + para + '</p>')
+            # ligne de texte normale → on l'accumule dans le paragraphe courant
+            # (un retour à la ligne SIMPLE devient une espace, pas un saut)
+            para_buf.append(ls)
+    _flush_para()
     if in_list: result.append('</ul>')
     return '\n'.join(result)
 
