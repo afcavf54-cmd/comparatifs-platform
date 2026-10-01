@@ -1255,12 +1255,10 @@ export default function ClassementsPage() {
                                     <div style={{ fontSize: 11, color: '#4A5568', marginTop: 6, maxWidth: 240 }}>PNG/JPG/WebP, format paysage (~16/10). Remplace l'image partagée, uniquement sur ce site.</div>
                                   </div>
                                 </div>
-                                {!(p as any).__fixed && (
-                                  <button onClick={() => removeBrand(prodKey)}
-                                    style={{ marginTop: 12, padding: '7px 14px', borderRadius: 7, border: '1px solid #FC8181', background: 'transparent', color: '#FC8181', fontWeight: 600, fontSize: 12.5, cursor: 'pointer' }}>
-                                    🗑 Retirer cette marque du classement
-                                  </button>
-                                )}
+                                <button onClick={() => removeBrand(prodKey)}
+                                  style={{ marginTop: 12, padding: '7px 14px', borderRadius: 7, border: '1px solid #FC8181', background: 'transparent', color: '#FC8181', fontWeight: 600, fontSize: 12.5, cursor: 'pointer' }}>
+                                  🗑 Retirer cette marque du classement
+                                </button>
                               </div>
                               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 14 }}>
                                 <div>
