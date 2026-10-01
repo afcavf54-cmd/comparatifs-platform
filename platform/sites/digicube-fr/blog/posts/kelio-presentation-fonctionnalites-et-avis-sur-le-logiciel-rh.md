@@ -2,13 +2,13 @@
 title: "Kelio : présentation, fonctionnalités et avis sur le logiciel RH"
 slug: kelio-presentation-fonctionnalites-et-avis-sur-le-logiciel-rh
 date: 2026-10-01 13:01:55+02:00
-updated: 2026-10-01T13:01:55
+updated: 2026-10-01T13:02:50
 categorie: "Gestion d'entreprise"
 categories:
 - "Gestion d'entreprise"
 meta_title: "Kelio Avis {year} : mon test complet du logiciel RH"
 meta_description: Kelio est-il un bon logiciel RH ? Découvrez notre avis complet, ses fonctionnalités, ses avantages et inconvénients après un an d’utilisation.
-featured_image: ""
+featured_image: /blog/kelio-presentation-fonctionnalites-et-avis-sur-le-logiciel-rh/featured-66020.png
 status: draft
 min_words: 1500
 show_toc: true
@@ -171,3 +171,4 @@ link_anchors:
 <p>Ce n'est pas parfait. L'interface mobile a des ratés, certains paramètres manquent de souplesse, et le démarrage demande de l'investissement. Mais dans l'ensemble, c'est solide, bien supporté, et honnêtement, le fait que ce soit 100 % français avec un hébergement souverain, ça compte pour moi.</p>
 
 <p>Si vous hésitez encore, demandez une démo. L'équipe commerciale prend le temps d'expliquer, sans pression. C'est déjà un bon signe.</p>
+
