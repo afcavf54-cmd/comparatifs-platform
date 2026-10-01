@@ -211,10 +211,21 @@ def _fetch_youtube_videos(site, limit=4):
 def md_to_html(text):
     if not text: return text
     import re as _re2
-    # Si le contenu est DÉJÀ du HTML (balises de bloc présentes), on le laisse
-    # tel quel : il vient de l'éditeur riche du dashboard, pas du markdown.
-    # Évite le double-emballage en <p> et les sauts de ligne parasites.
-    if _re2.search(r'</?(p|ul|ol|li|h[1-6]|blockquote|div|br|table)\b', text, _re2.I):
+    # Contenu issu du contentEditable avec des <div>/<br> par ligne (sans <p>) :
+    # on normalise en paragraphes. Un <div> vide ou un <br> isolé = saut de
+    # paragraphe ; une frontière entre deux <div> = espace (phrase qui continue).
+    # Évite le « saut après chaque phrase » quand on colle du texte.
+    _low = text.lower()
+    if ('<div' in _low or '<br' in _low) and '<p' not in _low:
+        t = text
+        t = _re2.sub(r'<div>\s*(?:<br\s*/?>)?\s*</div>', '\x00PARA\x00', t, flags=_re2.I)  # div vide = paragraphe
+        t = _re2.sub(r'</div>\s*<div[^>]*>', ' ', t, flags=_re2.I)                          # frontière div = espace
+        t = _re2.sub(r'</?div[^>]*>', '', t, flags=_re2.I)                                   # strip restants
+        t = _re2.sub(r'<br\s*/?>', '\n', t, flags=_re2.I)                                    # br = retour simple (→ espace)
+        t = t.replace('\x00PARA\x00', '\n\n')                                               # placeholder = vrai paragraphe
+        text = t  # → traité comme texte ci-dessous (retour simple = espace)
+    # Contenu DÉJÀ du HTML propre (balises de bloc) → laissé tel quel.
+    elif _re2.search(r'</?(p|ul|ol|li|h[1-6]|blockquote|table)\b', text, _re2.I):
         return text
     # ── PRÉ-NORMALISATION DES BULLETS UNICODE ─────────────────────────────
     # L'IA renvoie parfois `• item` (U+2022) ou `· item` (U+00B7) au lieu
