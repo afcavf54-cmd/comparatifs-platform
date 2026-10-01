@@ -1,22 +1,28 @@
 ---
-title: "Développer ses compétences managériales : un enjeu essentiel en entreprise"
+title: 'Développer ses compétences managériales : un enjeu essentiel en entreprise'
 slug: developper-ses-competences-manageriales-un-enjeu-essentiel-en-entreprise
 date: 2026-10-01 14:03:17+02:00
-updated: 2026-10-01T14:03:17
-categorie: "Gestion d'entreprise"
+updated: 2026-10-01 14:03:17
+categorie: Gestion d'entreprise
 categories:
-- "Gestion d'entreprise"
-meta_title: "Formation management : pourquoi développer ses compétences managériales ?"
-meta_description: Développer ses compétences managériales est crucial pour tout dirigeant. Découvrez comment former vos managers et éviter les erreurs qui coûtent vos meilleurs…
-featured_image: ""
+- Gestion d'entreprise
+meta_title: 'Formation management : pourquoi développer ses compétences managériales
+  ?'
+meta_description: Développer ses compétences managériales est crucial pour tout dirigeant.
+  Découvrez comment former vos managers et éviter les erreurs qui coûtent vos meilleurs…
+featured_image: ''
 status: published
 min_words: 1400
 show_toc: true
 link_anchors:
 - text: formation en management
   max: 10
+related_posts:
+- 3577-comment-implementer-erp-smartchain-360-dans-votre-societe
+- 6606-why-how-what-le-golden-circle-definition-exemples-et-comment-l-appliquer-a-votre-entreprise
+- 8804-matrice-tows-comment-l-utiliser-pour-construire-une-strategie-efficace
+- 3401-comment-utiliser-crm-salesflow-evolution-pour-gerer-vos-prospects
 ---
-
 <p>J'ai passé onze ans à diriger une structure qui a grandi progressivement. Et je peux vous dire que le moment où j'ai compris que le management ne s'improvise pas, c'est le jour où j'ai perdu deux bons éléments en l'espace d'un mois.&nbsp;</p><p>Pas à cause du salaire. À cause du manager intermédiaire que j'avais promu trop vite, sans l'accompagner. Depuis, j'ai une conviction simple : <strong>les compétences managériales s'apprennent</strong>. Elles ne tombent pas du ciel avec le titre. Voici ce que j'ai observé, ce que j'ai testé, et ce que je recommande à tout dirigeant qui veut éviter les mêmes erreurs.</p>
 
 <h2>Le rôle du manager face aux nouvelles attentes des entreprises</h2>
