@@ -1372,7 +1372,23 @@
     ],
     "h1": "J'ai testé {count} logiciels de système d'information RH : mon comparatif",
     "meta_title": "J'ai comparé {count} logiciels SIRH pour trouver le meilleur",
-    "meta_description": "J'ai évalué {count} logiciels de système d'information RH afin d'identifier les plus complets."
+    "meta_description": "J'ai évalué {count} logiciels de système d'information RH afin d'identifier les plus complets.",
+    "extra_products": [
+      "kelio-sirh"
+    ],
+    "products_order": {
+      "kelio-sirh": 1,
+      "payfit-logiciel-systeme-information-rh-sirh": 2,
+      "lucca-logiciel-systeme-information-rh-sirh": 3,
+      "eurecia-logiciel-systeme-information-rh-sirh": 4,
+      "sage-business-cloud-logiciel-systeme-information-rh-sirh": 5,
+      "factorial-logiciel-systeme-information-rh-sirh": 6,
+      "personio-logiciel-systeme-information-rh-sirh": 7,
+      "rippling-logiciel-systeme-information-rh-sirh": 8,
+      "bamboohr-logiciel-systeme-information-rh-sirh": 9,
+      "gusto-logiciel-systeme-information-rh-sirh": 10,
+      "monday-com-logiciel-systeme-information-rh-sirh": 11
+    }
   },
   "classement-logiciel-erp": {
     "intro": "<p>Choisir un <strong>logiciel ERP</strong> adapté à votre TPE, je sais que c'est un vrai casse-tête. Entre les budgets serrés et le manque de temps pour comparer toutes les solutions, on peut vite s'y perdre.</p>\n\n<p>J'ai testé pendant plusieurs mois huit solutions : Odoo, Axonaut, Sellsy, Dolibarr, Microsoft Dynamics 365 Business Central, Sage 100, Cegid XRP Flex et Divalto Infinity. Mon objectif ? Vous faire gagner du temps en vous donnant un classement concret basé sur les <strong>prix réels</strong>, la facilité d'utilisation et le rapport qualité-prix.</p>\n\n<p>Vous trouverez ici mes notes détaillées sur chaque outil, avec leurs vrais défauts et avantages.</p>",
@@ -5948,7 +5964,7 @@
   "classement-prod-kelio-onboarding": {
     "nom": "Kelio",
     "marque": "Kelio",
-    "description": "<p>L'intégration d'un collaborateur est une étape décisive pour sa rétention. Le module <strong>d'onboarding de Kelio</strong> permet de structurer et d'automatiser l'ensemble du parcours d'accueil, de la promesse d'embauche jusqu'à la fin de la période d'essai.</p><p>Grâce au portail RH, la collecte des documents et la signature électronique des contrats s'effectuent sans papier. L'outil déclenche automatiquement les tâches destinées aux managers et aux équipes internes (préparation du matériel, création du badge, accès aux locaux). Le nouvel arrivant accède à un espace personnalisé pour compléter son dossier et découvrir l'entreprise.</p>\n\n<p><strong>Idéal pour les structures de plus de 50 salariés</strong> souhaitant moderniser leur image employeur et sécuriser leurs parcours d'intégration sans perdre de temps en tâches administratives.</p>",
+    "description": "<p>L'intégration d'un collaborateur est une étape décisive pour sa rétention. Le module <strong>d'onboarding de Kelio</strong> permet de structurer et d'automatiser l'ensemble du parcours d'accueil, de la promesse d'embauche jusqu'à la fin de la période d'essai.</p>\n\n<p>Grâce au portail RH, la collecte des documents et la signature électronique des contrats s'effectuent sans papier. L'outil déclenche automatiquement les tâches destinées aux managers et aux équipes internes (préparation du matériel, création du badge, accès aux locaux). Le nouvel arrivant accède à un espace personnalisé pour compléter son dossier et découvrir l'entreprise.</p>\n\n<p><strong>Idéal pour les structures de plus de 50 salariés</strong> souhaitant moderniser leur image employeur et sécuriser leurs parcours d'intégration sans perdre de temps en tâches administratives.</p>",
     "points_forts": [
       "Digitalisation complète et automatisée des parcours d'intégration",
       "Lien direct avec la gestion du matériel et les droits d'accès",
@@ -5976,5 +5992,20 @@
       "Modèle tarifaire sur devis selon la taille de la structure"
     ],
     "url_affiliation": "https://www.kelio.com/fr/fonctionnalites/gestion-des-talents/recrutement.html"
+  },
+  "classement-prod-kelio-sirh": {
+    "nom": "Kelio",
+    "marque": "Kelio",
+    "description": "<p><strong>Kelio propose un SIRH</strong> complet et centralisé qui regroupe la gestion administrative du personnel et le suivi des talents au sein d'une seule interface. Du dossier salarié à la gestion des compétences, en passant par le plan de formation et les entretiens annuels, l'outil unifie toutes vos données.</p>\n\n<p>Le portail RH permet aux collaborateurs et aux managers de consulter leurs informations, d'effectuer des demandes et de valider les circuits administratifs via des workflows paramétrables. Kelio s'interface nativement avec la gestion des temps, la paie et le contrôle d'accès.</p>\n\n<p>Une solution robuste pour les <strong>entreprises et collectivités</strong> souhaitant digitaliser l'intégralité de leur gestion RH avec un outil évolutif et sécurisé.</p>",
+    "points_forts": [
+      "Centralisation parfaite de l'ensemble des données collaborateur",
+      "Couverture fonctionnelle très large (entretiens, formation, compétences)",
+      "Workflows de validation personnalisables par service",
+      "Haut niveau de sécurité et conformité réglementaire"
+    ],
+    "points_faibles": [
+      "Mise en œuvre demandant une vraie phase d'accompagnement",
+      "Interface riche qui demande une formation préalable"
+    ]
   }
 }
