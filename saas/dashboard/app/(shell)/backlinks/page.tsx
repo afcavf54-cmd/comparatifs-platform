@@ -64,9 +64,27 @@ export default function BacklinksPage() {
   const setEvent = (i: number, e: Partial<Event>) => setS(x => ({ ...x, events: (x.events || []).map((ev, j) => j === i ? { ...ev, ...e } : ev) }))
   const delEvent = (i: number) => setS(x => ({ ...x, events: (x.events || []).filter((_, j) => j !== i) }))
 
+  // Nettoyage d'un nom de marque (retire le mot-clé collé : "Abby-logiciel-…" → "Abby")
+  const cleanBrand = (n: string) => String(n || '')
+    .replace(/-(?:logiciels?|outils?)\b.*$/i, '')
+    .replace(/-expert-comptable-en-ligne$/i, '')
+    .replace(/-banque-pro-en-ligne$/i, '')
+    .replace(/^[-\s]+|[-\s]+$/g, '')
+  const normBrand = (n: string) => cleanBrand(n).replace(/[-\s]+/g, ' ').trim().toLowerCase()
+
+  // Agrège les marques découvertes NETTOYÉES (dédoublonnées casse + tiret/espace)
   const counts = useMemo(() => {
+    const byNorm: Record<string, { display: string; count: number }> = {}
+    for (const site of Object.values(discovered)) for (const [b, n] of Object.entries(site || {})) {
+      const cb = cleanBrand(b); if (!cb) continue
+      const k = normBrand(b)
+      if (byNorm[k]) {
+        byNorm[k].count += Number(n) || 0
+        if (cb.includes(' ') && !byNorm[k].display.includes(' ')) byNorm[k].display = cb
+      } else byNorm[k] = { display: cb, count: Number(n) || 0 }
+    }
     const c: Record<string, number> = {}
-    for (const site of Object.values(discovered)) for (const [b, n] of Object.entries(site || {})) c[b] = (c[b] || 0) + (Number(n) || 0)
+    for (const v of Object.values(byNorm)) c[v.display] = v.count
     return c
   }, [discovered])
   const brandNames = useMemo(() => Array.from(new Set([...Object.keys(s.brands), ...Object.keys(counts)]))
