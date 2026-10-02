@@ -2543,16 +2543,19 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
         editorials_fresh = load_editorial(site_dir)
         classement_tpl = env.get_template(template_file)
         # ── Rotations de liens « backlink bait » (demandes entrantes) ──────────
-        # Config commitée : platform/sites/<site>/backlink-rotations.json
-        # { "rotations": [ { "comparatif_slug", "brands":[{name,url}],
+        # UN SEUL fichier partagé : platform/backlink-rotations.json
+        # { "rotations": [ { "site", "comparatif_slug", "brands":[{name,url}],
         #   "rotation_days", "simultaneous", "started_at", "active", "anchor" } ] }
+        # On ne garde que les rotations du site courant.
         _backlink_rotations = {}
-        _bl_path = site_dir / "backlink-rotations.json"
+        _bl_path = ROOT / "backlink-rotations.json"
         if _bl_path.exists():
             try:
                 import json as _json_bl
                 _bl_data = _json_bl.loads(_bl_path.read_text(encoding="utf-8"))
                 for _rot in _bl_data.get("rotations", []):
+                    if str(_rot.get("site", "")).strip() != site_slug:
+                        continue
                     _sl = str(_rot.get("comparatif_slug", "")).strip()
                     if _sl:
                         _backlink_rotations[_sl] = _rot
