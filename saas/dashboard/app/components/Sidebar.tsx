@@ -5,6 +5,7 @@ const NAV = [
   { href: '/sites', icon: '🌐', label: 'Sites' },
   { href: '/sites/new', icon: '➕', label: 'Nouveau site' },
   { href: '/link-sales', icon: '🔗', label: 'Vente de liens' },
+  { href: '/backlinks', icon: '🧲', label: 'Rotations backlinks' },
   { href: '/templates', icon: '📐', label: 'Modèles de pages' },
   { href: '/deploy', icon: '🚀', label: 'Déploiements' },
 ]
