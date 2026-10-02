@@ -42,12 +42,79 @@ export default function BacklinksPage() {
     })()
   }, [])
 
+  // ── Nettoyage + normalisation des noms de marques ──
+  const cleanBrand = (n: string) => String(n || '')
+    .replace(/-(?:logiciels?|outils?)\b.*$/i, '')
+    .replace(/-expert-comptable-en-ligne$/i, '')
+    .replace(/-banque-pro-en-ligne$/i, '')
+    .replace(/^[-\s]+|[-\s]+$/g, '')
+  const normBrand = (n: string) => cleanBrand(n).replace(/[-\s]+/g, ' ').trim().toLowerCase()
+  // Préférer le display le plus propre (avec espaces, puis initiale majuscule)
+  const pickDisplay = (cur: string, cand: string) => {
+    if (cand.includes(' ') && !cur.includes(' ')) return cand
+    if (!cur.includes(' ') && cand && cand[0] === cand[0].toUpperCase() && cur[0] !== cur[0].toUpperCase()) return cand
+    return cur
+  }
+
+  // Carte unifiée : découvertes + référentiel fusionnés par clé normalisée
+  // → un nom propre, un compteur de comparateurs, une URL.
+  const brandMap = useMemo(() => {
+    const m: Record<string, { display: string; count: number; url: string }> = {}
+    for (const site of Object.values(discovered)) for (const [b, n] of Object.entries(site || {})) {
+      const cb = cleanBrand(b); if (!cb) continue
+      const k = normBrand(b)
+      if (!m[k]) m[k] = { display: cb, count: 0, url: '' }
+      m[k].count += Number(n) || 0
+      m[k].display = pickDisplay(m[k].display, cb)
+    }
+    for (const [b, url] of Object.entries(s.brands || {})) {
+      const cb = cleanBrand(b); if (!cb) continue
+      const k = normBrand(b)
+      if (!m[k]) m[k] = { display: cb, count: 0, url: '' }
+      if (url && url.trim()) m[k].url = url.trim()
+      m[k].display = pickDisplay(m[k].display, cb)
+    }
+    return m
+  }, [discovered, s.brands])
+
+  const brands = useMemo(() => Object.values(brandMap)
+    .sort((a, b) => b.count - a.count || a.display.localeCompare(b.display)), [brandMap])
+  const allBrands = useMemo(() => {
+    let list = brands
+    if (q.trim()) list = list.filter(b => b.display.toLowerCase().includes(q.toLowerCase()))
+    if (onlyMissing) list = list.filter(b => !b.url)
+    return list
+  }, [brands, q, onlyMissing])
+  const withUrl = brands.filter(b => b.url).length
+  const brandDisplayNames = useMemo(() => brands.map(b => b.display), [brands])
+
+  // Éditer l'URL : on écrit sous la clé propre + on retire les variantes (slug/casse)
+  const setURL = (display: string, url: string) => setS(x => {
+    const k = normBrand(display)
+    const nb: Record<string, string> = {}
+    for (const [bn, bu] of Object.entries(x.brands || {})) if (normBrand(bn) !== k) nb[bn] = bu
+    nb[display] = url
+    return { ...x, brands: nb }
+  })
+  const addEvent = () => setS(x => ({ ...x, events: [...(x.events || []), { link_brand: '', contact_brand: '', date: new Date().toISOString().slice(0, 10), amount: 0, notes: '' }] }))
+  const setEvent = (i: number, e: Partial<Event>) => setS(x => ({ ...x, events: (x.events || []).map((ev, j) => j === i ? { ...ev, ...e } : ev) }))
+  const delEvent = (i: number) => setS(x => ({ ...x, events: (x.events || []).filter((_, j) => j !== i) }))
+
   async function save() {
     setSaving(true)
     try {
-      const brands: Record<string, string> = {}
-      for (const [k, v] of Object.entries(s.brands)) if (v && v.trim()) brands[k] = v.trim()
-      const payload = { ...s, brands }
+      // Nettoyer + dédupliquer : une clé propre par marque, URL non vide uniquement
+      const merged: Record<string, { display: string; url: string }> = {}
+      for (const [b, url] of Object.entries(s.brands || {})) {
+        const cb = cleanBrand(b); if (!cb) continue
+        const k = normBrand(b)
+        if (!merged[k]) merged[k] = { display: cb, url: '' }
+        if (url && url.trim()) merged[k].url = url.trim()
+        merged[k].display = pickDisplay(merged[k].display, cb)
+      }
+      const brandsOut: Record<string, string> = {}
+      for (const v of Object.values(merged)) if (v.url) brandsOut[v.display] = v.url
+      const payload = { ...s, brands: brandsOut }
       const r = await fetch('/api/github', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ path: PATH, content: JSON.stringify(payload, null, 2), message: 'HUB: backlink settings' }),
@@ -58,44 +125,6 @@ export default function BacklinksPage() {
     } catch (e: any) { flash('✗ ' + (e.message || 'Erreur sauvegarde')) }
     setSaving(false)
   }
-
-  const setURL = (brand: string, url: string) => setS(x => ({ ...x, brands: { ...x.brands, [brand]: url } }))
-  const addEvent = () => setS(x => ({ ...x, events: [...(x.events || []), { link_brand: '', contact_brand: '', date: new Date().toISOString().slice(0, 10), amount: 0, notes: '' }] }))
-  const setEvent = (i: number, e: Partial<Event>) => setS(x => ({ ...x, events: (x.events || []).map((ev, j) => j === i ? { ...ev, ...e } : ev) }))
-  const delEvent = (i: number) => setS(x => ({ ...x, events: (x.events || []).filter((_, j) => j !== i) }))
-
-  // Nettoyage d'un nom de marque (retire le mot-clé collé : "Abby-logiciel-…" → "Abby")
-  const cleanBrand = (n: string) => String(n || '')
-    .replace(/-(?:logiciels?|outils?)\b.*$/i, '')
-    .replace(/-expert-comptable-en-ligne$/i, '')
-    .replace(/-banque-pro-en-ligne$/i, '')
-    .replace(/^[-\s]+|[-\s]+$/g, '')
-  const normBrand = (n: string) => cleanBrand(n).replace(/[-\s]+/g, ' ').trim().toLowerCase()
-
-  // Agrège les marques découvertes NETTOYÉES (dédoublonnées casse + tiret/espace)
-  const counts = useMemo(() => {
-    const byNorm: Record<string, { display: string; count: number }> = {}
-    for (const site of Object.values(discovered)) for (const [b, n] of Object.entries(site || {})) {
-      const cb = cleanBrand(b); if (!cb) continue
-      const k = normBrand(b)
-      if (byNorm[k]) {
-        byNorm[k].count += Number(n) || 0
-        if (cb.includes(' ') && !byNorm[k].display.includes(' ')) byNorm[k].display = cb
-      } else byNorm[k] = { display: cb, count: Number(n) || 0 }
-    }
-    const c: Record<string, number> = {}
-    for (const v of Object.values(byNorm)) c[v.display] = v.count
-    return c
-  }, [discovered])
-  const brandNames = useMemo(() => Array.from(new Set([...Object.keys(s.brands), ...Object.keys(counts)]))
-    .sort((a, b) => (counts[b] || 0) - (counts[a] || 0) || a.localeCompare(b)), [s.brands, counts])
-  const allBrands = useMemo(() => {
-    let list = brandNames
-    if (q.trim()) list = list.filter(n => n.toLowerCase().includes(q.toLowerCase()))
-    if (onlyMissing) list = list.filter(n => !(s.brands[n] && s.brands[n].trim()))
-    return list
-  }, [brandNames, q, onlyMissing, s.brands])
-  const withUrl = Object.values(s.brands).filter(v => v && v.trim()).length
 
   const matrix = useMemo(() => {
     const m: Record<string, Record<string, number>> = {}
@@ -139,7 +168,7 @@ export default function BacklinksPage() {
       <div style={{ ...card, marginBottom: 16 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10, marginBottom: 6 }}>
           <div style={{ fontSize: 15, color: C.text, fontWeight: 600 }}>Référentiel marques → URL</div>
-          <div style={{ fontSize: 12, color: C.faint }}>{withUrl} active(s) · {brandNames.length} connue(s)</div>
+          <div style={{ fontSize: 12, color: C.faint }}>{withUrl} active(s) · {brands.length} connue(s)</div>
         </div>
         <div style={{ fontSize: 12, color: C.faint, marginBottom: 12 }}>Mets l'URL du <b>site officiel</b> de la marque (pas ton lien d'affiliation). Les marques sans URL sont ignorées. La liste se remplit automatiquement au fil des builds, triée par nombre de comparateurs (les plus fréquentes d'abord).</div>
         <div style={{ display: 'flex', gap: 10, marginBottom: 12, flexWrap: 'wrap' }}>
@@ -156,17 +185,14 @@ export default function BacklinksPage() {
           <div style={{ fontSize: 12.5, color: C.faint }}>Aucune marque {onlyMissing ? 'sans URL' : ''}. Elles apparaîtront après un build des comparatifs, ou ajoute-les à la main.</div>
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6, maxHeight: 420, overflowY: 'auto' }}>
-            {allBrands.map(b => {
-              const has = !!(s.brands[b] && s.brands[b].trim())
-              return (
-                <div key={b} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <span style={{ width: 8, height: 8, borderRadius: '50%', background: has ? C.accent : C.border, flexShrink: 0 }} />
-                  <span style={{ width: 150, fontSize: 13, color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{b}</span>
-                  <span title="comparateurs où la marque apparaît" style={{ width: 42, textAlign: 'center', fontSize: 11.5, color: counts[b] ? C.accent : C.faint, flexShrink: 0 }}>{counts[b] ? `×${counts[b]}` : '—'}</span>
-                  <input value={s.brands[b] || ''} onChange={e => setURL(b, e.target.value)} placeholder="https://www.marque.com/" style={{ ...inp, flex: 1 }} />
-                </div>
-              )
-            })}
+            {allBrands.map(b => (
+              <div key={b.display} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: b.url ? C.accent : C.border, flexShrink: 0 }} />
+                <span style={{ width: 150, fontSize: 13, color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{b.display}</span>
+                <span title="comparateurs où la marque apparaît" style={{ width: 42, textAlign: 'center', fontSize: 11.5, color: b.count ? C.accent : C.faint, flexShrink: 0 }}>{b.count ? `×${b.count}` : '—'}</span>
+                <input value={b.url} onChange={e => setURL(b.display, e.target.value)} placeholder="https://www.marque.com/" style={{ ...inp, flex: 1 }} />
+              </div>
+            ))}
           </div>
         )}
       </div>
@@ -209,7 +235,7 @@ export default function BacklinksPage() {
               ))}
             </tbody>
           </table>
-          <datalist id="bl-brands">{brandNames.map(b => <option key={b} value={b} />)}</datalist>
+          <datalist id="bl-brands">{brandDisplayNames.map(b => <option key={b} value={b} />)}</datalist>
         </div>
         <button onClick={addEvent} style={{ marginTop: 10, padding: '6px 12px', borderRadius: 7, border: `1px solid ${C.border}`, background: 'transparent', color: C.dim, fontSize: 12, cursor: 'pointer' }}>+ Demande entrante</button>
       </div>
