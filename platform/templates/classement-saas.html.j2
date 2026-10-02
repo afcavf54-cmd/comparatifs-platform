@@ -153,6 +153,9 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .author-social:hover{border-color:var(--accent);color:var(--accent)}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
+.backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
+.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'{{ theme.font_title }}',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
 .maillage-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -385,6 +388,14 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
       {% endif %}
     </div>
   </aside>
+
+  {% if backlink_brands %}
+  <aside class="backlink-note">
+    <p>Pour approfondir le sujet, découvrez également
+      {% for b in backlink_brands %}<a href="{{ b.url }}" target="_blank" rel="noopener">{{ b.anchor or backlink_anchor or b.name }}</a>{% if not loop.last %} et {% endif %}{% endfor %},
+      {% if backlink_brands | length > 1 %}deux acteurs reconnus{% else %}un acteur reconnu{% endif %} de ce secteur.</p>
+  </aside>
+  {% endif %}
 
   {# Schema.org JSON-LD Person #}
   <script type="application/ld+json">
