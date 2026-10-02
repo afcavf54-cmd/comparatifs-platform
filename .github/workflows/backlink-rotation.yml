@@ -1,0 +1,40 @@
+name: Backlink rotation — rebuild périodique
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'     # tous les lundis à 06:00 UTC
+  workflow_dispatch:         # déclenchement manuel possible
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild des sites ayant une rotation active
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - << 'PY'
+          import json, subprocess, os
+          from pathlib import Path
+          p = Path("platform/backlink-rotations.json")
+          if not p.exists():
+              print("Pas de backlink-rotations.json"); raise SystemExit(0)
+          data = json.loads(p.read_text(encoding="utf-8"))
+          sites = sorted({ str(r.get("site","")).strip()
+                           for r in data.get("rotations", [])
+                           if r.get("active", True) and str(r.get("site","")).strip() })
+          if not sites:
+              print("Aucune rotation active."); raise SystemExit(0)
+          print("Sites à rebuild :", sites)
+          for s in sites:
+              print(f"→ déclenche generate-site pour {s}")
+              subprocess.run([
+                  "gh","workflow","run","generate-site.yml",
+                  "-f",f"site={s}","-f","skip_enrich=true"
+              ], check=False)
+          PY
