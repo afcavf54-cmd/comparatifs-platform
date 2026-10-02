@@ -1719,8 +1719,19 @@
       "mypos-go-2-terminaux-de-paiement",
       "revolut-reader-terminaux-de-paiement",
       "smile-pay-mini-terminaux-de-paiement",
-      "stancer-terminaux-de-paiement"
-    ]
+      "stancer-terminaux-de-paiement",
+      "Flatpay-tpe"
+    ],
+    "products_order": {
+      "Flatpay-tpe": 1,
+      "square-reader-terminaux-de-paiement": 2,
+      "zettle-reader-2-terminaux-de-paiement": 3,
+      "sumup-solo-lite-terminaux-de-paiement": 4,
+      "mypos-go-2-terminaux-de-paiement": 5,
+      "revolut-reader-terminaux-de-paiement": 6,
+      "smile-pay-mini-terminaux-de-paiement": 7,
+      "stancer-terminaux-de-paiement": 8
+    }
   },
   "classement-prod-legalplace": {
     "description": "<p>J'ai testé LegalPlace il y a six mois pour créer ma société et franchement, le service m'a surpris. La plateforme combine création d'entreprise 100% en ligne avec un vrai accompagnement juridique par des avocats. <strong>En 48h j'avais mes statuts rédigés</strong> et l'immatriculation était lancée.</p><p>Contrairement à d'autres services automatisés, LegalPlace mise tout sur l'humain. Chaque dossier est vérifié par un juriste avant envoi au greffe. Les tarifs restent corrects : <strong>à partir de 149€ pour une SARL</strong>, avec possibilité de paiement en plusieurs fois.</p><p>Le gros plus ? L'accès permanent à des avocats spécialisés après création. J'ai pu poser mes questions sur un contrat commercial trois mois plus tard sans frais supplémentaires. Par contre, si vous voulez juste déposer vos statuts rapidement sans conseil, d'autres plateformes seront plus directes.</p>",
@@ -6354,5 +6365,20 @@
       "Courbe d'apprentissage élevée pour les débutants complets",
       "Coût total parfois sous-estimé avec hébergement et extensions premium"
     ]
+  },
+  "classement-prod-Flatpay-tpe": {
+    "nom": "Flatpay",
+    "marque": "Flatpay",
+    "description": "<p><strong>Flatpay</strong> est une solution de paiement scandinave innovante qui révolutionne le marché des terminaux de paiement grâce à son modèle tarifaire transparent et ultra-simplifié. Conçue spécifiquement pour les <strong>petites et moyennes entreprises</strong>, Flatpay propose un terminal moderne avec une connectivité 4G et Wi-Fi intégrée, permettant d'accepter tous les moyens de paiement sans contact, cartes bancaires et paiements mobiles. Son principal atout réside dans sa <strong>tarification fixe mensuelle</strong> sans commission sur les transactions, offrant ainsi une visibilité totale sur les coûts pour les commerçants. L'installation est rapide et intuitive, le service client est disponible 7j/7, et l'ensemble de l'écosystème est pensé pour maximiser la <strong>simplicité opérationnelle</strong> au quotidien.</p>",
+    "points_forts": [
+      "Tarification fixe mensuelle sans commission par transaction, idéale pour les commerces à fort volume de ventes",
+      "Terminal moderne tout-en-un avec connectivité 4G et Wi-Fi, acceptant carte, NFC et paiements mobiles (Apple Pay, Google Pay)",
+      "Installation rapide et interface intuitive avec un support client disponible 7 jours sur 7"
+    ],
+    "points_faibles": [
+      "Disponibilité géographique encore limitée, principalement présent dans les pays nordiques et en cours d'expansion en Europe",
+      "Absence de fonctionnalités avancées de gestion des stocks ou d'intégrations e-commerce natives pour les besoins complexes"
+    ],
+    "url_affiliation": "https://www.financeads.net/tc.php?t=86140C5654135202T"
   }
 }
