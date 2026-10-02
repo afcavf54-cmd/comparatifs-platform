@@ -188,6 +188,9 @@ a:hover{text-decoration:underline}
 .article-body a:hover{text-decoration-color:var(--accent2)}
 /* Author box (réutilise le style de classement-saas) */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
+.author-socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;background:none;padding:0;height:auto;min-height:0;position:static;top:auto;justify-content:flex-start}
+.author-social{display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:20px;border:1px solid var(--border);background:var(--surface);font-size:12.5px;font-weight:600;color:var(--ink2);text-decoration:none;transition:.15s}
+.author-social:hover{border-color:var(--accent);color:var(--accent)}
 .author-avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
 .author-avatar-placeholder{width:72px;height:72px;border-radius:50%;background:var(--bg);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
 .author-info{flex:1}
@@ -590,7 +593,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <div class="author-info">
       <div class="author-label">Auteur</div>
       <div class="author-name">Léa Petit</div>
-<div class="author-job">Fondateur startup</div><div class="author-bio">Léa Petit est une entrepreneuse passionnée basée à Nantes, forte de 19 ans d'expérience dans l'écosystème startup. Elle accompagne les jeunes entreprises innovantes dans leur développement et leur croissance. Son expertise couvre la stratégie digitale, le financement et l'accélération business.</div>    </div>
+<div class="author-job">Fondateur startup</div><div class="author-bio">Léa Petit est une entrepreneuse passionnée basée à Nantes, forte de 19 ans d'expérience dans l'écosystème startup. Elle accompagne les jeunes entreprises innovantes dans leur développement et leur croissance. Son expertise couvre la stratégie digitale, le financement et l'accélération business.</div>      <div class="author-socials" aria-label="Réseaux sociaux de Léa Petit">
+        <a href="https://www.youtube.com/@startupfactoryfr" class="author-social" rel="noopener noreferrer" target="_blank">YouTube</a>
+        <a href="https://www.facebook.com/startupfactoryfr/" class="author-social" rel="noopener noreferrer" target="_blank">Facebook</a>
+      </div>
+    </div>
   </div>
 
   <section class="related-section">
@@ -719,7 +726,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 startup-factory.fr — Données actualisées le 27 août 2026
+        © 2026 startup-factory.fr — Données actualisées le 2 octobre 2026
       </div>
     </div>
   </div>
