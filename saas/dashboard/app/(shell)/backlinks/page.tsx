@@ -45,10 +45,13 @@ export default function BacklinksPage() {
   // ── Nettoyage + normalisation des noms de marques ──
   const cleanBrand = (n: string) => String(n || '')
     .replace(/-(?:logiciels?|outils?)\b.*$/i, '')
+    .replace(/-terminaux-de-paiement$/i, '')
     .replace(/-expert-comptable-en-ligne$/i, '')
     .replace(/-banque-pro-en-ligne$/i, '')
     .replace(/^[-\s]+|[-\s]+$/g, '')
-  const normBrand = (n: string) => cleanBrand(n).replace(/[-\s]+/g, ' ').trim().toLowerCase()
+  const normBrand = (n: string) => cleanBrand(n)
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[-._/\s]+/g, ' ').trim().toLowerCase()
   // Préférer le display le plus propre (avec espaces, puis initiale majuscule)
   const pickDisplay = (cur: string, cand: string) => {
     if (cand.includes(' ') && !cur.includes(' ')) return cand
