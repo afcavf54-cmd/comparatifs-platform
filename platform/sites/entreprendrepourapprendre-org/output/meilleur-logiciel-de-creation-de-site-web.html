@@ -126,6 +126,9 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .author-social:hover{border-color:var(--accent);color:var(--accent)}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
+.backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
+.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
 .maillage-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -1231,24 +1234,7 @@ Le choix d'un logiciel de création de site web dépend vraiment de vos besoins 
   </div>
 
 
-  <aside class="author-box" itemscope itemtype="https://schema.org/Person">
-    <img src="/author-photo.png" alt="Photo de Camille Lefevre" class="author-avatar" loading="lazy" itemprop="image">
-    <div class="author-info">
-      <div class="author-label">À propos de l'auteur</div>
-      <div class="author-name" itemprop="name">Camille Lefevre</div>
-      <div class="author-job" itemprop="jobTitle">Gérante agence de communication</div>
-      <p class="author-bio" itemprop="description">Je m'appelle Camille Lefèvre, j'ai 34 ans et je dirige une agence de communication de 6 personnes à Lyon. Entre gestion client et administratif, je cherche des outils simples pour gagner du temps et centraliser mes process.</p>
-    </div>
-  </aside>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Camille Lefevre",
-"jobTitle": "Gérante agence de communication","description": "Je m'appelle Camille Lefèvre, j'ai 34 ans et je dirige une agence de communication de 6 personnes à Lyon. Entre gestion client et administratif, je cherche des outils simples pour gagner du temps et centraliser mes process.","image": "https://www.entreprendrepourapprendre.org/author-photo.png",    "url": "https://www.entreprendrepourapprendre.org"
-  }
-  </script>
 
   <section class="maillage-section">
     <h3>Nos autres comparateurs <span style="color:var(--accent)">Marketing</span></h3>
@@ -1275,6 +1261,26 @@ Le choix d'un logiciel de création de site web dépend vraiment de vos besoins 
       </a>
     </div>
   </section>
+
+
+  <aside class="author-box" itemscope itemtype="https://schema.org/Person">
+    <img src="/author-photo.png" alt="Photo de Camille Lefevre" class="author-avatar" loading="lazy" itemprop="image">
+    <div class="author-info">
+      <div class="author-label">À propos de l'auteur</div>
+      <div class="author-name" itemprop="name">Camille Lefevre</div>
+      <div class="author-job" itemprop="jobTitle">Gérante agence de communication</div>
+      <p class="author-bio" itemprop="description">Je m'appelle Camille Lefèvre, j'ai 34 ans et je dirige une agence de communication de 6 personnes à Lyon. Entre gestion client et administratif, je cherche des outils simples pour gagner du temps et centraliser mes process.</p>
+    </div>
+  </aside>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Camille Lefevre",
+"jobTitle": "Gérante agence de communication","description": "Je m'appelle Camille Lefèvre, j'ai 34 ans et je dirige une agence de communication de 6 personnes à Lyon. Entre gestion client et administratif, je cherche des outils simples pour gagner du temps et centraliser mes process.","image": "https://www.entreprendrepourapprendre.org/author-photo.png",    "url": "https://www.entreprendrepourapprendre.org"
+  }
+  </script>
 
 </main>
 
