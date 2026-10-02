@@ -19,7 +19,7 @@ const euro = (n: number) => (n || 0).toLocaleString('fr-FR') + ' €'
 
 export default function BacklinksPage() {
   const [s, setS] = useState<Settings>({ enabled: false, rotation_days: 21, simultaneous: 1, anchor: '', brands: {}, events: [], excluded_sites: [], excluded_comparatifs: [] })
-  const [discovered, setDiscovered] = useState<string[]>([])
+  const [discovered, setDiscovered] = useState<Record<string, Record<string, number>>>({})
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [msg, setMsg] = useState('')
@@ -36,7 +36,7 @@ export default function BacklinksPage() {
           fetch(`/api/github?path=${encodeURIComponent(DISC_PATH)}&nocache=1`).then(r => r.json()).catch(() => ({})),
         ])
         if (setRes.content) { try { setS({ brands: {}, events: [], ...JSON.parse(setRes.content) }) } catch {} }
-        if (discRes.content) { try { setDiscovered(JSON.parse(discRes.content) || []) } catch {} }
+        if (discRes.content) { try { const d = JSON.parse(discRes.content); setDiscovered(d && typeof d === 'object' && !Array.isArray(d) ? d : {}) } catch {} }
       } catch (e: any) { flash('✗ ' + (e.message || 'Erreur chargement')) }
       setLoading(false)
     })()
@@ -64,7 +64,13 @@ export default function BacklinksPage() {
   const setEvent = (i: number, e: Partial<Event>) => setS(x => ({ ...x, events: (x.events || []).map((ev, j) => j === i ? { ...ev, ...e } : ev) }))
   const delEvent = (i: number) => setS(x => ({ ...x, events: (x.events || []).filter((_, j) => j !== i) }))
 
-  const brandNames = useMemo(() => Array.from(new Set([...Object.keys(s.brands), ...discovered])).sort((a, b) => a.localeCompare(b)), [s.brands, discovered])
+  const counts = useMemo(() => {
+    const c: Record<string, number> = {}
+    for (const site of Object.values(discovered)) for (const [b, n] of Object.entries(site || {})) c[b] = (c[b] || 0) + (Number(n) || 0)
+    return c
+  }, [discovered])
+  const brandNames = useMemo(() => Array.from(new Set([...Object.keys(s.brands), ...Object.keys(counts)]))
+    .sort((a, b) => (counts[b] || 0) - (counts[a] || 0) || a.localeCompare(b)), [s.brands, counts])
   const allBrands = useMemo(() => {
     let list = brandNames
     if (q.trim()) list = list.filter(n => n.toLowerCase().includes(q.toLowerCase()))
@@ -117,7 +123,7 @@ export default function BacklinksPage() {
           <div style={{ fontSize: 15, color: C.text, fontWeight: 600 }}>Référentiel marques → URL</div>
           <div style={{ fontSize: 12, color: C.faint }}>{withUrl} active(s) · {brandNames.length} connue(s)</div>
         </div>
-        <div style={{ fontSize: 12, color: C.faint, marginBottom: 12 }}>Mets l'URL du <b>site officiel</b> de la marque (pas ton lien d'affiliation). Les marques sans URL sont ignorées. La liste se remplit automatiquement au fil des builds.</div>
+        <div style={{ fontSize: 12, color: C.faint, marginBottom: 12 }}>Mets l'URL du <b>site officiel</b> de la marque (pas ton lien d'affiliation). Les marques sans URL sont ignorées. La liste se remplit automatiquement au fil des builds, triée par nombre de comparateurs (les plus fréquentes d'abord).</div>
         <div style={{ display: 'flex', gap: 10, marginBottom: 12, flexWrap: 'wrap' }}>
           <input value={q} onChange={e => setQ(e.target.value)} placeholder="🔎 Rechercher une marque…" style={{ ...inp, flex: 1, minWidth: 180 }} />
           <label style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 12.5, color: C.dim, cursor: 'pointer' }}>
@@ -138,6 +144,7 @@ export default function BacklinksPage() {
                 <div key={b} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                   <span style={{ width: 8, height: 8, borderRadius: '50%', background: has ? C.accent : C.border, flexShrink: 0 }} />
                   <span style={{ width: 150, fontSize: 13, color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{b}</span>
+                  <span title="comparateurs où la marque apparaît" style={{ width: 42, textAlign: 'center', fontSize: 11.5, color: counts[b] ? C.accent : C.faint, flexShrink: 0 }}>{counts[b] ? `×${counts[b]}` : '—'}</span>
                   <input value={s.brands[b] || ''} onChange={e => setURL(b, e.target.value)} placeholder="https://www.marque.com/" style={{ ...inp, flex: 1 }} />
                 </div>
               )
