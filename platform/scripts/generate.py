@@ -2542,6 +2542,41 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
     if not dry_run and is_classement_template:
         editorials_fresh = load_editorial(site_dir)
         classement_tpl = env.get_template(template_file)
+        # ── Rotations de liens « backlink bait » (demandes entrantes) ──────────
+        # Config commitée : platform/sites/<site>/backlink-rotations.json
+        # { "rotations": [ { "comparatif_slug", "brands":[{name,url}],
+        #   "rotation_days", "simultaneous", "started_at", "active", "anchor" } ] }
+        _backlink_rotations = {}
+        _bl_path = site_dir / "backlink-rotations.json"
+        if _bl_path.exists():
+            try:
+                import json as _json_bl
+                _bl_data = _json_bl.loads(_bl_path.read_text(encoding="utf-8"))
+                for _rot in _bl_data.get("rotations", []):
+                    _sl = str(_rot.get("comparatif_slug", "")).strip()
+                    if _sl:
+                        _backlink_rotations[_sl] = _rot
+            except Exception as _e_bl:
+                print(f"  ⚠ backlink-rotations.json illisible : {_e_bl}")
+
+        def _active_backlink_brands(rot):
+            """Marque(s) active(s) maintenant selon started_at + rotation_days."""
+            from datetime import date as _date, datetime as _dt
+            brands = [b for b in (rot.get("brands") or []) if b.get("url") and b.get("name")]
+            if not brands or not rot.get("active", True):
+                return []
+            days = int(rot.get("rotation_days") or 21) or 21
+            sim = max(1, int(rot.get("simultaneous") or 1))
+            try:
+                start = _dt.fromisoformat(str(rot.get("started_at"))[:10]).date()
+            except Exception:
+                start = _date.today()
+            elapsed = max(0, (_date.today() - start).days)
+            period = elapsed // days
+            n = len(brands)
+            idx = (period * sim) % n
+            return [brands[(idx + i) % n] for i in range(min(sim, n))]
+
         # Filtrer par selected_keywords si défini dans config
         selected_keywords = config.get('selected_keywords', [])
 
@@ -2863,6 +2898,8 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     siblings=_siblings,
                     cat_parent=_cat_parent,
                     cat_name=cat,
+                    backlink_brands=_active_backlink_brands(_backlink_rotations.get(cat_slug, {})) if cat_slug in _backlink_rotations else [],
+                    backlink_anchor=_backlink_rotations.get(cat_slug, {}).get("anchor", ""),
                 )
                 (output_dir / f"{page_slug}.html").write_text(html, encoding="utf-8")
                 classement_count += 1
