@@ -2542,43 +2542,54 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
     if not dry_run and is_classement_template:
         editorials_fresh = load_editorial(site_dir)
         classement_tpl = env.get_template(template_file)
-        # ── Rotations de liens « backlink bait » (demandes entrantes) ──────────
-        # UN SEUL fichier partagé : platform/backlink-rotations.json
-        # { "rotations": [ { "site", "comparatif_slug", "brands":[{name,url}],
-        #   "rotation_days", "simultaneous", "started_at", "active", "anchor" } ] }
-        # On ne garde que les rotations du site courant.
-        _backlink_rotations = {}
-        _bl_path = ROOT / "backlink-rotations.json"
+        # ── Rotation de liens « backlink bait » (demandes entrantes) ──────────
+        # Référentiel CENTRAL unique : platform/backlink-settings.json
+        #   { "enabled", "rotation_days", "simultaneous", "anchor",
+        #     "brands": { "Pennylane": "https://…", … },   ← URL propre par marque
+        #     "excluded_sites": [], "excluded_comparatifs": [] }
+        # Rotation AUTOMATIQUE : pour chaque comparatif, on prend SES marques
+        # présentes qui ont une URL au référentiel, et on fait tourner le lien.
+        # Aucune config par comparatif.
+        _bl_settings = {}
+        _bl_brands_repo = {}          # nom normalisé → (nom affiché, url)
+        _bl_path = ROOT / "backlink-settings.json"
         if _bl_path.exists():
             try:
                 import json as _json_bl
-                _bl_data = _json_bl.loads(_bl_path.read_text(encoding="utf-8"))
-                for _rot in _bl_data.get("rotations", []):
-                    if str(_rot.get("site", "")).strip() != site_slug:
-                        continue
-                    _sl = str(_rot.get("comparatif_slug", "")).strip()
-                    if _sl:
-                        _backlink_rotations[_sl] = _rot
+                _bl_settings = _json_bl.loads(_bl_path.read_text(encoding="utf-8"))
+                for _bn, _bu in (_bl_settings.get("brands") or {}).items():
+                    if _bn and _bu:
+                        _bl_brands_repo[str(_bn).strip().lower()] = (str(_bn).strip(), str(_bu).strip())
             except Exception as _e_bl:
-                print(f"  ⚠ backlink-rotations.json illisible : {_e_bl}")
+                print(f"  ⚠ backlink-settings.json illisible : {_e_bl}")
+        _bl_enabled = bool(_bl_settings.get("enabled")) and site_slug not in (_bl_settings.get("excluded_sites") or [])
+        _bl_anchor = _bl_settings.get("anchor", "") or ""
+        _bl_discovered = set()        # marques rencontrées (suggestions dashboard)
 
-        def _active_backlink_brands(rot):
-            """Marque(s) active(s) maintenant selon started_at + rotation_days."""
-            from datetime import date as _date, datetime as _dt
-            brands = [b for b in (rot.get("brands") or []) if b.get("url") and b.get("name")]
-            if not brands or not rot.get("active", True):
+        def _active_backlink_for(cat_slug, product_names):
+            """Marque(s) active(s) pour CE comparatif : parmi ses marques ayant
+            une URL au référentiel, rotation déterministe décalée par comparatif."""
+            import hashlib as _hb
+            from datetime import date as _date
+            pool, seen = [], set()
+            for _nm in product_names:
+                if not _nm:
+                    continue
+                _k = str(_nm).strip().lower()
+                _bl_discovered.add(str(_nm).strip())
+                if _bl_enabled and cat_slug not in (_bl_settings.get("excluded_comparatifs") or []) \
+                        and _k in _bl_brands_repo and _k not in seen:
+                    seen.add(_k)
+                    pool.append({"name": _bl_brands_repo[_k][0], "url": _bl_brands_repo[_k][1]})
+            if not pool:
                 return []
-            days = int(rot.get("rotation_days") or 21) or 21
-            sim = max(1, int(rot.get("simultaneous") or 1))
-            try:
-                start = _dt.fromisoformat(str(rot.get("started_at"))[:10]).date()
-            except Exception:
-                start = _date.today()
-            elapsed = max(0, (_date.today() - start).days)
-            period = elapsed // days
-            n = len(brands)
-            idx = (period * sim) % n
-            return [brands[(idx + i) % n] for i in range(min(sim, n))]
+            days = int(_bl_settings.get("rotation_days") or 21) or 21
+            sim = max(1, int(_bl_settings.get("simultaneous") or 1))
+            period = max(0, (_date.today() - _date(2026, 1, 1)).days) // days
+            offset = int(_hb.md5(cat_slug.encode()).hexdigest()[:6], 16)  # décalage par comparatif
+            n = len(pool)
+            idx = ((period + offset) * sim) % n
+            return [pool[(idx + i) % n] for i in range(min(sim, n))]
 
         # Filtrer par selected_keywords si défini dans config
         selected_keywords = config.get('selected_keywords', [])
@@ -2901,13 +2912,27 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     siblings=_siblings,
                     cat_parent=_cat_parent,
                     cat_name=cat,
-                    backlink_brands=_active_backlink_brands(_backlink_rotations.get(cat_slug, {})) if cat_slug in _backlink_rotations else [],
-                    backlink_anchor=_backlink_rotations.get(cat_slug, {}).get("anchor", ""),
+                    backlink_brands=_active_backlink_for(cat_slug, [(_p.get("nom") or _p.get("marque") or "") for _p in enriched_products]),
+                    backlink_anchor=_bl_anchor,
                 )
                 (output_dir / f"{page_slug}.html").write_text(html, encoding="utf-8")
                 classement_count += 1
                 print(f"  ✓ {page_slug}.html")
             print(f"  ✓ {classement_count} pages classement générées")
+            # Référentiel des marques découvertes (fusion globale, suggestions dashboard)
+            if _bl_discovered:
+                try:
+                    import json as _json_d
+                    _disc_path = ROOT / "backlink-discovered-brands.json"
+                    _existing = set()
+                    if _disc_path.exists():
+                        _existing = set(_json_d.loads(_disc_path.read_text(encoding="utf-8")) or [])
+                    _merged = sorted(_existing | _bl_discovered)
+                    if set(_merged) != _existing:
+                        _disc_path.write_text(_json_d.dumps(_merged, ensure_ascii=False, indent=0), encoding="utf-8")
+                        print(f"  ↳ {len(_merged)} marque(s) au référentiel découvert")
+                except Exception:
+                    pass
 
         # ── Page Nos comparateurs ──────────────────────────────────────────
         nos_comp_tpl_path = TEMPLATES_DIR / "nos-comparateurs.html.j2"
