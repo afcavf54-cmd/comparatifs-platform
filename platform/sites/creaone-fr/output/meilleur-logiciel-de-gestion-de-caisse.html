@@ -22,7 +22,7 @@
   "url": "https://creaone.fr/meilleur-logiciel-de-gestion-de-caisse",
   "author": { "@type": "Organization", "name": "Alexandre Michel" },
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "item": { "@type": "SoftwareApplication", "name": "Lightspeed", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "79", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 2, "item": { "@type": "SoftwareApplication", "name": "L'Addition", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "49", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 3, "item": { "@type": "SoftwareApplication", "name": "Hiboutik", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "14,9", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 4, "item": { "@type": "SoftwareApplication", "name": "SumUp Caisse Pro", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "79", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 5, "item": { "@type": "SoftwareApplication", "name": "Zettle by PayPal", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "39", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 6, "item": { "@type": "SoftwareApplication", "name": "SumUp POS Lite", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "325", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 7, "item": { "@type": "SoftwareApplication", "name": "KerAwen", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "59", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 8, "item": { "@type": "SoftwareApplication", "name": "Square", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "15", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 9, "item": { "@type": "SoftwareApplication", "name": "Tactill", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "29", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 10, "item": { "@type": "SoftwareApplication", "name": "TopOrder", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "47", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 11, "item": { "@type": "SoftwareApplication", "name": "Zelty", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "70", "priceCurrency": "EUR" } } }  ]
+    { "@type": "ListItem", "position": 1, "item": { "@type": "SoftwareApplication", "name": "Lightspeed-logiciel-gestion-caisse", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 2, "item": { "@type": "SoftwareApplication", "name": "L-addition-logiciel-gestion-caisse", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 3, "item": { "@type": "SoftwareApplication", "name": "Hiboutik-logiciel-gestion-caisse", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 4, "item": { "@type": "SoftwareApplication", "name": "Sumup-caisse-pro-logiciel-gestion-caisse", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 5, "item": { "@type": "SoftwareApplication", "name": "Zettle-by-paypal-logiciel-gestion-caisse", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 6, "item": { "@type": "SoftwareApplication", "name": "Sumup-pos-lite-logiciel-gestion-caisse", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 7, "item": { "@type": "SoftwareApplication", "name": "Kerawen-logiciel-gestion-caisse", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 8, "item": { "@type": "SoftwareApplication", "name": "Square-logiciel-gestion-caisse", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 9, "item": { "@type": "SoftwareApplication", "name": "Tactill-logiciel-gestion-caisse", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 10, "item": { "@type": "SoftwareApplication", "name": "Toporder-logiciel-gestion-caisse", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 11, "item": { "@type": "SoftwareApplication", "name": "Zelty-logiciel-gestion-caisse", "applicationCategory": "BusinessApplication" } }  ]
 }
 </script>
 
@@ -126,6 +126,9 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .author-social:hover{border-color:var(--accent);color:var(--accent)}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
+.backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
+.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
 .maillage-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -513,15 +516,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="lightspeed-logiciel-gestion-caisse">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Lightspeed</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">79€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Lightspeed-logiciel-gestion-caisse</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/lightspeed-logiciel-gestion-caisse-screenshot.png" alt="Aperçu Lightspeed"
+      <img src="/lightspeed-logiciel-gestion-caisse-screenshot.png" alt="Aperçu Lightspeed-logiciel-gestion-caisse"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -568,15 +567,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="l-addition-logiciel-gestion-caisse">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">L'Addition</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">49€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">L-addition-logiciel-gestion-caisse</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/l-addition-logiciel-gestion-caisse-screenshot.png" alt="Aperçu L'Addition"
+      <img src="/l-addition-logiciel-gestion-caisse-screenshot.png" alt="Aperçu L-addition-logiciel-gestion-caisse"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -623,15 +618,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="hiboutik-logiciel-gestion-caisse">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Hiboutik</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">14,9€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Hiboutik-logiciel-gestion-caisse</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/hiboutik-logiciel-gestion-caisse-screenshot.png" alt="Aperçu Hiboutik"
+      <img src="/hiboutik-logiciel-gestion-caisse-screenshot.png" alt="Aperçu Hiboutik-logiciel-gestion-caisse"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -682,15 +673,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="sumup-caisse-pro-logiciel-gestion-caisse">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">SumUp Caisse Pro</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">79€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Sumup-caisse-pro-logiciel-gestion-caisse</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/sumup-caisse-pro-logiciel-gestion-caisse-screenshot.png" alt="Aperçu SumUp Caisse Pro"
+      <img src="/sumup-caisse-pro-logiciel-gestion-caisse-screenshot.png" alt="Aperçu Sumup-caisse-pro-logiciel-gestion-caisse"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -741,15 +728,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="zettle-by-paypal-logiciel-gestion-caisse">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Zettle by PayPal</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">39€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Zettle-by-paypal-logiciel-gestion-caisse</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/zettle-by-paypal-logiciel-gestion-caisse-screenshot.png" alt="Aperçu Zettle by PayPal"
+      <img src="/zettle-by-paypal-logiciel-gestion-caisse-screenshot.png" alt="Aperçu Zettle-by-paypal-logiciel-gestion-caisse"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -796,15 +779,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="sumup-pos-lite-logiciel-gestion-caisse">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">SumUp POS Lite</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">325€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Sumup-pos-lite-logiciel-gestion-caisse</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/sumup-pos-lite-logiciel-gestion-caisse-screenshot.png" alt="Aperçu SumUp POS Lite"
+      <img src="/sumup-pos-lite-logiciel-gestion-caisse-screenshot.png" alt="Aperçu Sumup-pos-lite-logiciel-gestion-caisse"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -851,15 +830,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="kerawen-logiciel-gestion-caisse">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">KerAwen</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">59€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Kerawen-logiciel-gestion-caisse</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/kerawen-logiciel-gestion-caisse-screenshot.png" alt="Aperçu KerAwen"
+      <img src="/kerawen-logiciel-gestion-caisse-screenshot.png" alt="Aperçu Kerawen-logiciel-gestion-caisse"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -904,15 +879,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="square-logiciel-gestion-caisse">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Square</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">15€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Square-logiciel-gestion-caisse</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/square-logiciel-gestion-caisse-screenshot.png" alt="Aperçu Square"
+      <img src="/square-logiciel-gestion-caisse-screenshot.png" alt="Aperçu Square-logiciel-gestion-caisse"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -959,15 +930,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="tactill-logiciel-gestion-caisse">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Tactill</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">29€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Tactill-logiciel-gestion-caisse</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/tactill-logiciel-gestion-caisse-screenshot.png" alt="Aperçu Tactill"
+      <img src="/tactill-logiciel-gestion-caisse-screenshot.png" alt="Aperçu Tactill-logiciel-gestion-caisse"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -1014,15 +981,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="toporder-logiciel-gestion-caisse">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">TopOrder</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">47€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Toporder-logiciel-gestion-caisse</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/toporder-logiciel-gestion-caisse-screenshot.png" alt="Aperçu TopOrder"
+      <img src="/toporder-logiciel-gestion-caisse-screenshot.png" alt="Aperçu Toporder-logiciel-gestion-caisse"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -1071,15 +1034,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="zelty-logiciel-gestion-caisse">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Zelty</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">70€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Zelty-logiciel-gestion-caisse</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/zelty-logiciel-gestion-caisse-screenshot.png" alt="Aperçu Zelty"
+      <img src="/zelty-logiciel-gestion-caisse-screenshot.png" alt="Aperçu Zelty-logiciel-gestion-caisse"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -1270,24 +1229,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   </div>
 
 
-  <aside class="author-box" itemscope itemtype="https://schema.org/Person">
-    <img src="/author-photo.png" alt="Photo de Alexandre Michel" class="author-avatar" loading="lazy" itemprop="image">
-    <div class="author-info">
-      <div class="author-label">À propos de l'auteur</div>
-      <div class="author-name" itemprop="name">Alexandre Michel</div>
-      <div class="author-job" itemprop="jobTitle">Responsable comptable</div>
-      <p class="author-bio" itemprop="description">Alexandre Michel est un Responsable comptable expérimenté avec 9 années d'expertise dans la gestion financière et la supervision d'équipes comptables à Toulouse. Il maîtrise parfaitement les normes comptables françaises et internationales, ainsi que les outils de gestion modernes. Alexandre excelle dans l'optimisation des processus financiers et la formation des collaborateurs aux bonnes pratiques comptables.</p>
-    </div>
-  </aside>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Alexandre Michel",
-"jobTitle": "Responsable comptable","description": "Alexandre Michel est un Responsable comptable expérimenté avec 9 années d'expertise dans la gestion financière et la supervision d'équipes comptables à Toulouse. Il maîtrise parfaitement les normes comptables françaises et internationales, ainsi que les outils de gestion modernes. Alexandre excelle dans l'optimisation des processus financiers et la formation des collaborateurs aux bonnes pratiques comptables.","image": "https://creaone.fr/author-photo.png",    "url": "https://creaone.fr"
-  }
-  </script>
 
   <section class="maillage-section">
     <h3>Nos autres comparateurs <span style="color:var(--accent)">Marketing</span></h3>
@@ -1324,6 +1266,26 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
     </div>
   </section>
+
+
+  <aside class="author-box" itemscope itemtype="https://schema.org/Person">
+    <img src="/author-photo.png" alt="Photo de Alexandre Michel" class="author-avatar" loading="lazy" itemprop="image">
+    <div class="author-info">
+      <div class="author-label">À propos de l'auteur</div>
+      <div class="author-name" itemprop="name">Alexandre Michel</div>
+      <div class="author-job" itemprop="jobTitle">Responsable comptable</div>
+      <p class="author-bio" itemprop="description">Alexandre Michel est un Responsable comptable expérimenté avec 9 années d'expertise dans la gestion financière et la supervision d'équipes comptables à Toulouse. Il maîtrise parfaitement les normes comptables françaises et internationales, ainsi que les outils de gestion modernes. Alexandre excelle dans l'optimisation des processus financiers et la formation des collaborateurs aux bonnes pratiques comptables.</p>
+    </div>
+  </aside>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Alexandre Michel",
+"jobTitle": "Responsable comptable","description": "Alexandre Michel est un Responsable comptable expérimenté avec 9 années d'expertise dans la gestion financière et la supervision d'équipes comptables à Toulouse. Il maîtrise parfaitement les normes comptables françaises et internationales, ainsi que les outils de gestion modernes. Alexandre excelle dans l'optimisation des processus financiers et la formation des collaborateurs aux bonnes pratiques comptables.","image": "https://creaone.fr/author-photo.png",    "url": "https://creaone.fr"
+  }
+  </script>
 
 </main>
 
