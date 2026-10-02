@@ -2550,8 +2550,20 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
         # Rotation AUTOMATIQUE : pour chaque comparatif, on prend SES marques
         # présentes qui ont une URL au référentiel, et on fait tourner le lien.
         # Aucune config par comparatif.
+        import re as _re_bl
+        # Nettoyage d'un nom de marque : retire le mot-clé collé
+        # ("Abby-logiciel-de-comptabilite" → "Abby", "Beeye-logiciels-audit-…" → "Beeye").
+        _KW_STRIP = _re_bl.compile(
+            r'-(?:logiciels?|outils?)\b.*$|-expert-comptable-en-ligne$|-banque-pro-en-ligne$',
+            _re_bl.I)
+        def _clean_brand(_n):
+            return _KW_STRIP.sub('', str(_n or '')).strip(' -')
+        # Clé de matching : insensible à la casse ET aux tirets/espaces
+        def _bl_norm(_n):
+            return _re_bl.sub(r'[-\s]+', ' ', str(_n or '').strip().lower()).strip()
+
         _bl_settings = {}
-        _bl_brands_repo = {}          # nom normalisé → (nom affiché, url)
+        _bl_brands_repo = {}          # clé normalisée → (nom affiché, url)
         _bl_path = ROOT / "backlink-settings.json"
         if _bl_path.exists():
             try:
@@ -2559,7 +2571,7 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 _bl_settings = _json_bl.loads(_bl_path.read_text(encoding="utf-8"))
                 for _bn, _bu in (_bl_settings.get("brands") or {}).items():
                     if _bn and _bu:
-                        _bl_brands_repo[str(_bn).strip().lower()] = (str(_bn).strip(), str(_bu).strip())
+                        _bl_brands_repo[_bl_norm(_bn)] = (str(_bn).strip(), str(_bu).strip())
             except Exception as _e_bl:
                 print(f"  ⚠ backlink-settings.json illisible : {_e_bl}")
         _bl_enabled = bool(_bl_settings.get("enabled")) and site_slug not in (_bl_settings.get("excluded_sites") or [])
@@ -2575,16 +2587,11 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
             for _nm in product_names:
                 if not _nm:
                     continue
-                _disp = str(_nm).strip()
-                # Nettoyage : retirer le suffixe mot-clé collé au nom (données Sheet
-                # parfois polluées). On teste TOUS les mots-clés connus du site
-                # (plus longs d'abord) → "Axonaut-logiciel-de-comptabilite" → "Axonaut".
-                _low = _disp.lower()
-                for _kw in _all_kw_slugs:
-                    if _kw and _low.endswith("-" + _kw):
-                        _disp = _disp[:-(len(_kw) + 1)].strip(" -")
-                        break
-                _k = _disp.lower()
+                # Nettoyage : retirer le mot-clé collé au nom (données Sheet polluées)
+                _disp = _clean_brand(_nm)
+                if not _disp:
+                    continue
+                _k = _bl_norm(_disp)   # clé insensible casse + tirets/espaces
                 if _k not in counted:            # +1 comparateur par marque (dédoublonné)
                     counted.add(_k)
                     _bl_discovered[_disp] = _bl_discovered.get(_disp, 0) + 1
@@ -2630,9 +2637,6 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                          if any(kw.lower() in k.lower() or k.lower() in kw.lower() for kw in selected_keywords)}
             if categories:
                 print(f"  🎯 {len(categories)} catégories actives (filtre selected_keywords)")
-
-        # Tous les slugs de mots-clés du site (pour nettoyer les noms de marques backlink)
-        _all_kw_slugs = sorted({slugify_cat(_c) for _c in categories if _c}, key=len, reverse=True)
 
         if categories:
             classement_count = 0
