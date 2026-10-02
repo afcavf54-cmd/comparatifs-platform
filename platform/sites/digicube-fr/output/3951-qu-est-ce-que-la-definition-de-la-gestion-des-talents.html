@@ -145,6 +145,9 @@ a:hover{text-decoration:underline}
 .article-body a:hover{text-decoration-color:var(--accent2)}
 /* Author box (réutilise le style de classement-saas) */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
+.author-socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;background:none;padding:0;height:auto;min-height:0;position:static;top:auto;justify-content:flex-start}
+.author-social{display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:20px;border:1px solid var(--border);background:var(--surface);font-size:12.5px;font-weight:600;color:var(--ink2);text-decoration:none;transition:.15s}
+.author-social:hover{border-color:var(--accent);color:var(--accent)}
 .author-avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
 .author-avatar-placeholder{width:72px;height:72px;border-radius:50%;background:var(--bg);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
 .author-info{flex:1}
@@ -606,7 +609,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     <div class="author-info">
       <div class="author-label">Auteur</div>
       <div class="author-name">Nicolas Roux</div>
-<div class="author-job">Dirigeant TPE</div><div class="author-bio">Nicolas Roux dirige sa TPE depuis 2 ans à Marseille, où il développe son expertise entrepreneuriale au quotidien. Fort de son expérience terrain, il accompagne la croissance de son entreprise avec pragmatisme et détermination. Sa connaissance du tissu économique local lui permet d'adapter ses stratégies aux spécificités du marché marseillais.</div>    </div>
+<div class="author-job">Dirigeant TPE</div><div class="author-bio">Nicolas Roux dirige sa TPE depuis 2 ans à Marseille, où il développe son expertise entrepreneuriale au quotidien. Fort de son expérience terrain, il accompagne la croissance de son entreprise avec pragmatisme et détermination. Sa connaissance du tissu économique local lui permet d'adapter ses stratégies aux spécificités du marché marseillais.</div>      <div class="author-socials" aria-label="Réseaux sociaux de Nicolas Roux">
+        <a href="https://www.youtube.com/channel/UCsBs4Kc78SsPu1Oit7dspqA" class="author-social" rel="noopener noreferrer" target="_blank">YouTube</a>
+        <a href="https://www.facebook.com/digicubefr/" class="author-social" rel="noopener noreferrer" target="_blank">Facebook</a>
+      </div>
+    </div>
   </div>
 
   <section class="related-section">
@@ -777,7 +784,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 digicube.fr — Données actualisées le 1 octobre 2026
+        © 2026 digicube.fr — Données actualisées le 2 octobre 2026
       </div>
     </div>
   </div>
