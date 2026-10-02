@@ -2571,11 +2571,16 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
             une URL au référentiel, rotation déterministe décalée par comparatif."""
             import hashlib as _hb
             from datetime import date as _date
+            _sfx = "-" + cat_slug
             pool, seen, counted = [], set(), set()
             for _nm in product_names:
                 if not _nm:
                     continue
                 _disp = str(_nm).strip()
+                # Nettoyage : retirer le suffixe mot-clé collé au nom (données Sheet
+                # parfois polluées) → "Abby-logiciel-de-comptabilite" devient "Abby".
+                if cat_slug and _disp.lower().endswith(_sfx.lower()):
+                    _disp = _disp[:-len(_sfx)].strip(" -")
                 _k = _disp.lower()
                 if _k not in counted:            # +1 comparateur par marque (dédoublonné)
                     counted.add(_k)
