@@ -126,6 +126,9 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .author-social:hover{border-color:var(--accent);color:var(--accent)}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
+.backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
+.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
 .maillage-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -1201,32 +1204,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   </div>
 
 
-  <aside class="author-box" itemscope itemtype="https://schema.org/Person">
-    <img src="/author-photo.png" alt="Photo de Léa Petit" class="author-avatar" loading="lazy" itemprop="image">
-    <div class="author-info">
-      <div class="author-label">À propos de l'auteur</div>
-      <div class="author-name" itemprop="name">Léa Petit</div>
-      <div class="author-job" itemprop="jobTitle">Fondateur startup</div>
-      <p class="author-bio" itemprop="description">Léa Petit est une entrepreneuse passionnée basée à Nantes, forte de 19 ans d'expérience dans l'écosystème startup. Elle accompagne les jeunes entreprises innovantes dans leur développement et leur croissance. Son expertise couvre la stratégie digitale, le financement et l'accélération business.</p>
-      <nav class="author-socials" aria-label="Réseaux sociaux de Léa Petit">
-        <a href="https://www.youtube.com/@startupfactoryfr" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
-          YouTube
-        </a>
-        <a href="https://www.facebook.com/startupfactoryfr/" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
-          Facebook
-        </a>
-      </nav>
-    </div>
-  </aside>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Léa Petit",
-"jobTitle": "Fondateur startup","description": "Léa Petit est une entrepreneuse passionnée basée à Nantes, forte de 19 ans d'expérience dans l'écosystème startup. Elle accompagne les jeunes entreprises innovantes dans leur développement et leur croissance. Son expertise couvre la stratégie digitale, le financement et l'accélération business.","image": "https://www.startup-factory.fr/author-photo.png","sameAs": ["https://www.youtube.com/@startupfactoryfr","https://www.facebook.com/startupfactoryfr/"],    "url": "https://www.startup-factory.fr"
-  }
-  </script>
 
   <section class="maillage-section">
     <h3>Nos autres comparateurs <span style="color:var(--accent)">Marketing</span></h3>
@@ -1263,6 +1241,34 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
     </div>
   </section>
+
+
+  <aside class="author-box" itemscope itemtype="https://schema.org/Person">
+    <img src="/author-photo.png" alt="Photo de Léa Petit" class="author-avatar" loading="lazy" itemprop="image">
+    <div class="author-info">
+      <div class="author-label">À propos de l'auteur</div>
+      <div class="author-name" itemprop="name">Léa Petit</div>
+      <div class="author-job" itemprop="jobTitle">Fondateur startup</div>
+      <p class="author-bio" itemprop="description">Léa Petit est une entrepreneuse passionnée basée à Nantes, forte de 19 ans d'expérience dans l'écosystème startup. Elle accompagne les jeunes entreprises innovantes dans leur développement et leur croissance. Son expertise couvre la stratégie digitale, le financement et l'accélération business.</p>
+      <nav class="author-socials" aria-label="Réseaux sociaux de Léa Petit">
+        <a href="https://www.youtube.com/@startupfactoryfr" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
+          YouTube
+        </a>
+        <a href="https://www.facebook.com/startupfactoryfr/" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
+          Facebook
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Léa Petit",
+"jobTitle": "Fondateur startup","description": "Léa Petit est une entrepreneuse passionnée basée à Nantes, forte de 19 ans d'expérience dans l'écosystème startup. Elle accompagne les jeunes entreprises innovantes dans leur développement et leur croissance. Son expertise couvre la stratégie digitale, le financement et l'accélération business.","image": "https://www.startup-factory.fr/author-photo.png","sameAs": ["https://www.youtube.com/@startupfactoryfr","https://www.facebook.com/startupfactoryfr/"],    "url": "https://www.startup-factory.fr"
+  }
+  </script>
 
 </main>
 
