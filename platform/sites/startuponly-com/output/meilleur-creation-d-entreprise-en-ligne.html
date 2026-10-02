@@ -22,7 +22,7 @@
   "url": "https://startuponly.com/meilleur-creation-d-entreprise-en-ligne",
   "author": { "@type": "Organization", "name": "Thomas Bertrand" },
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "item": { "@type": "SoftwareApplication", "name": "LegalPlace", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "50", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 2, "item": { "@type": "SoftwareApplication", "name": "Legal Start", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "60", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 3, "item": { "@type": "SoftwareApplication", "name": "Dougs", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "45", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 4, "item": { "@type": "SoftwareApplication", "name": "Qonto", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "59", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 5, "item": { "@type": "SoftwareApplication", "name": "Swapn", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "189", "priceCurrency": "EUR" } } }  ]
+    { "@type": "ListItem", "position": 1, "item": { "@type": "SoftwareApplication", "name": "Qonto", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 2, "item": { "@type": "SoftwareApplication", "name": "Swapn", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 3, "item": { "@type": "SoftwareApplication", "name": "Legalstart", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 4, "item": { "@type": "SoftwareApplication", "name": "Legalplace", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 5, "item": { "@type": "SoftwareApplication", "name": "Dougs", "applicationCategory": "BusinessApplication" } }  ]
 }
 </script>
 
@@ -126,6 +126,9 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .author-social:hover{border-color:var(--accent);color:var(--accent)}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
+.backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
+.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
 .maillage-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -514,192 +517,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
   <h2 class="section-title">Mon classement des meilleurs créations d’entreprise en ligne</h2>
 
-  <div class="logiciel-card" id="legalplace">
-    <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">LegalPlace</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">50€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
-      </div>
-    </div>
-    <div class="logiciel-body">
-      <a href="https://www.legalplace.fr/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/legalplace-screenshot.png" alt="Aperçu LegalPlace"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
-
-      <div class="logiciel-desc">
-            <p>J'ai testé LegalPlace il y a six mois pour créer ma société et franchement, le service m'a surpris. La plateforme combine création d'entreprise <strong>100%</strong> en ligne avec un vrai accompagnement juridique par des avocats.
-
-<p><strong>En 48h j'avais mes statuts rédigés</strong> et l'immatriculation était lancée.</p><p>Contrairement à d'autres services automatisés, LegalPlace mise tout sur l'humain. Chaque dossier est vérifié par un juriste avant envoi au greffe.</p>
-
-<p>Les tarifs restent corrects : <strong>à partir de <strong>149€</strong> pour une SARL</strong>, avec possibilité de paiement en plusieurs fois.</p><p>Le gros plus ? L'accès permanent à des avocats spécialisés après création.</p>
-
-<p>J'ai pu poser mes questions sur un contrat commercial trois mois plus tard <strong>sans frais</strong> supplémentaires. Par contre, si vous voulez juste déposer vos statuts rapidement sans conseil, d'autres plateformes seront plus directes.</p></p>
-      </div>
-
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Accompagnement par de vrais avocats spécialisés</td>
-            <td>Plus cher que les solutions 100% automatisées</td>
-          </tr>
-          <tr>
-            <td>Vérification juridique systématique des dossiers</td>
-            <td>Délais légèrement plus longs à cause des vérifications</td>
-          </tr>
-          <tr>
-            <td>Support client réactif par téléphone et email</td>
-            <td>Interface parfois confuse pour les modifications</td>
-          </tr>
-          <tr>
-            <td>Accès permanent aux conseils juridiques après création</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
-
-      <a href="https://www.legalplace.fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer LegalPlace
-      </a>
-    </div>
-  </div>
-  <div class="logiciel-card" id="legalstart">
-    <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">Legal Start</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">60€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
-      </div>
-    </div>
-    <div class="logiciel-body">
-      <a href="https://www.legalstart.fr/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/legalstart-screenshot.png" alt="Aperçu Legal Start"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
-
-      <div class="logiciel-desc">
-            <p>J'ai testé <strong>Legal Start</strong> pour créer ma SAS l'année dernière, et je dois dire que leur approche m'a plutôt convaincu.
-
-<p>Contrairement aux plateformes qui automatisent tout, ici on a affaire à de vrais juristes qui relisent chaque dossier.</p>
-
-<p>Le processus prend <strong>entre 7 et 15 jours</strong>, mais au moins je savais que mes statuts étaient vérifiés par un professionnel.</p><p>Ce qui m'a marqué, c'est leur interface claire pour remplir les informations.</p>
-
-<p>Pas de jargon juridique incompréhensible. Ils posent les bonnes questions au bon moment. J'ai particulièrement apprécié leurs conseils personnalisés sur le capital social et la répartition des parts.</p>
-
-<p><strong>Le forfait SAS à <strong>169€</strong> HT</strong> inclut la rédaction des statuts, le dépôt au greffe et l'obtention du Kbis.</p><p>Legal Start propose aussi des services complémentaires comme l'ouverture de compte bancaire professionnel, la domiciliation ou la comptabilité.</p>
-
-<p>Pratique pour centraliser toutes les démarches de création d'entreprise en ligne, même si ça fait grimper la facture. Leur support client répond rapidement par téléphone, ce qui rassure quand on débute.</p></p>
-      </div>
-
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Vérification humaine des statuts par des juristes qualifiés</td>
-            <td>Délais plus longs que la concurrence automatisée</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive avec questions guidées pour éviter les erreurs</td>
-            <td>Tarifs supérieurs aux plateformes low-cost</td>
-          </tr>
-          <tr>
-            <td>Forfaits transparents sans frais cachés</td>
-            <td>Services complémentaires qui font vite monter l'addition</td>
-          </tr>
-          <tr>
-            <td>Support téléphonique réactif et compétent</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
-
-      <a href="https://www.legalstart.fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Legal Start
-      </a>
-    </div>
-  </div>
-  <div class="logiciel-card" id="dougs">
-    <div class="logiciel-header">
-      <div style="flex:1">
-        <h2 class="logiciel-name">Dougs</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">45€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
-      </div>
-    </div>
-    <div class="logiciel-body">
-      <a href="https://www.dougs.fr/creation-entreprise/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/dougs-screenshot.png" alt="Aperçu Dougs"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
-
-      <div class="logiciel-desc">
-            <p>Dougs se concentre sur la <strong>création et la gestion d'entreprise en mode tout-en-un</strong>.
-
-<p>Contrairement aux plateformes basiques qui se contentent des formalités, Dougs propose un accompagnement comptable intégré dès le démarrage.</p>
-
-<p>Je trouve cette approche pratique pour éviter de jongler entre plusieurs prestataires.</p><p>L'interface guide vraiment dans les choix de statut juridique.</p>
-
-<p>Plutôt que de laisser l'entrepreneur seul face aux options SASU/SARL/auto-entrepreneur, Dougs pose les bonnes questions sur le chiffre d'affaires prévisionnel et les associés.</p>
-
-<p><strong>Le questionnaire prend 10 minutes</strong> et oriente vers la structure la plus adaptée.</p><p>Ce qui m'a marqué : l'équipe attribue un expert-comptable dédié dès la création.</p>
-
-<p>Pas de call center anonyme, on a un interlocuteur fixe qui connaît le dossier. Pour quelqu'un qui démarre son activité et n'y connaît rien en comptabilité, ça rassure énormément.</p></p>
-      </div>
-
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Expert-comptable attitré dès la création de l'entreprise</td>
-            <td>Tarifs plus élevés que les plateformes de création pure</td>
-          </tr>
-          <tr>
-            <td>Questionnaire intelligent pour choisir le bon statut juridique</td>
-            <td>Pas de création express en 24h comme chez certains concurrents</td>
-          </tr>
-          <tr>
-            <td>Gestion comptable incluse dans l'offre de création</td>
-            <td>Obligation de prendre l'abonnement comptable même si on a déjà un comptable</td>
-          </tr>
-          <tr>
-            <td>Interface claire qui guide les débutants étape par étape</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
-
-      <a href="https://www.dougs.fr/creation-entreprise/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Dougs
-      </a>
-    </div>
-  </div>
   <div class="logiciel-card" id="qonto">
     <div class="logiciel-header">
       <div style="flex:1">
         <h2 class="logiciel-name">Qonto</h2>
       </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">59€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
-      </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://qonto.com/fr/start-a-business" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/qonto-screenshot.png" alt="Aperçu Qonto"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/qonto-screenshot.png" alt="Aperçu Qonto"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p>Qonto fait partie de ces néobanques qui ont <strong>révolutionné la gestion bancaire</strong> des entreprises.
@@ -715,7 +542,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Vous devrez quand même passer par les formalités administratives classiques avant d'ouvrir votre compte professionnel. Mais une fois votre entreprise créée, <strong>l'onboarding est redoutablement efficace</strong>.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
+      <table class="avantages-table">
         <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
         <tbody>
           <tr>
@@ -737,9 +564,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://qonto.com/fr/start-a-business" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Qonto
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="swapn">
@@ -747,17 +571,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       <div style="flex:1">
         <h2 class="logiciel-name">Swapn</h2>
       </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">189€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
-      </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://www.swapn.fr/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/swapn-screenshot.png" alt="Aperçu Swapn"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/swapn-screenshot.png" alt="Aperçu Swapn"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p>J'ai découvert <strong>Swapn</strong> en cherchant une solution simple pour créer ma société en ligne sans me prendre la tête avec la paperasse administrative.
@@ -795,9 +613,149 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://www.swapn.fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Swapn
-      </a>
+    </div>
+  </div>
+  <div class="logiciel-card" id="legalstart">
+    <div class="logiciel-header">
+      <div style="flex:1">
+        <h2 class="logiciel-name">Legalstart</h2>
+      </div>
+    </div>
+    <div class="logiciel-body">
+      <img src="/legalstart-screenshot.png" alt="Aperçu Legalstart"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
+
+      <div class="logiciel-desc">
+            <p>J'ai testé <strong>Legal Start</strong> pour créer ma SAS l'année dernière, et je dois dire que leur approche m'a plutôt convaincu.
+
+<p>Contrairement aux plateformes qui automatisent tout, ici on a affaire à de vrais juristes qui relisent chaque dossier.</p>
+
+<p>Le processus prend <strong>entre 7 et 15 jours</strong>, mais au moins je savais que mes statuts étaient vérifiés par un professionnel.</p><p>Ce qui m'a marqué, c'est leur interface claire pour remplir les informations.</p>
+
+<p>Pas de jargon juridique incompréhensible. Ils posent les bonnes questions au bon moment. J'ai particulièrement apprécié leurs conseils personnalisés sur le capital social et la répartition des parts.</p>
+
+<p><strong>Le forfait SAS à <strong>169€</strong> HT</strong> inclut la rédaction des statuts, le dépôt au greffe et l'obtention du Kbis.</p><p>Legal Start propose aussi des services complémentaires comme l'ouverture de compte bancaire professionnel, la domiciliation ou la comptabilité.</p>
+
+<p>Pratique pour centraliser toutes les démarches de création d'entreprise en ligne, même si ça fait grimper la facture. Leur support client répond rapidement par téléphone, ce qui rassure quand on débute.</p></p>
+      </div>
+
+      <div class="table-wrap"><table class="avantages-table">
+        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Vérification humaine des statuts par des juristes qualifiés</td>
+            <td>Délais plus longs que la concurrence automatisée</td>
+          </tr>
+          <tr>
+            <td>Interface intuitive avec questions guidées pour éviter les erreurs</td>
+            <td>Tarifs supérieurs aux plateformes low-cost</td>
+          </tr>
+          <tr>
+            <td>Forfaits transparents sans frais cachés</td>
+            <td>Services complémentaires qui font vite monter l'addition</td>
+          </tr>
+          <tr>
+            <td>Support téléphonique réactif et compétent</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table></div>
+
+    </div>
+  </div>
+  <div class="logiciel-card" id="legalplace">
+    <div class="logiciel-header">
+      <div style="flex:1">
+        <h2 class="logiciel-name">Legalplace</h2>
+      </div>
+    </div>
+    <div class="logiciel-body">
+      <img src="/legalplace-screenshot.png" alt="Aperçu Legalplace"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
+
+      <div class="logiciel-desc">
+            <p>J'ai testé LegalPlace il y a six mois pour créer ma société et franchement, le service m'a surpris. La plateforme combine création d'entreprise <strong>100%</strong> en ligne avec un vrai accompagnement juridique par des avocats.
+
+<p><strong>En 48h j'avais mes statuts rédigés</strong> et l'immatriculation était lancée.</p><p>Contrairement à d'autres services automatisés, LegalPlace mise tout sur l'humain. Chaque dossier est vérifié par un juriste avant envoi au greffe.</p>
+
+<p>Les tarifs restent corrects : <strong>à partir de <strong>149€</strong> pour une SARL</strong>, avec possibilité de paiement en plusieurs fois.</p><p>Le gros plus ? L'accès permanent à des avocats spécialisés après création.</p>
+
+<p>J'ai pu poser mes questions sur un contrat commercial trois mois plus tard <strong>sans frais</strong> supplémentaires. Par contre, si vous voulez juste déposer vos statuts rapidement sans conseil, d'autres plateformes seront plus directes.</p></p>
+      </div>
+
+      <div class="table-wrap"><table class="avantages-table">
+        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Accompagnement par de vrais avocats spécialisés</td>
+            <td>Plus cher que les solutions 100% automatisées</td>
+          </tr>
+          <tr>
+            <td>Vérification juridique systématique des dossiers</td>
+            <td>Délais légèrement plus longs à cause des vérifications</td>
+          </tr>
+          <tr>
+            <td>Support client réactif par téléphone et email</td>
+            <td>Interface parfois confuse pour les modifications</td>
+          </tr>
+          <tr>
+            <td>Accès permanent aux conseils juridiques après création</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table></div>
+
+    </div>
+  </div>
+  <div class="logiciel-card" id="dougs">
+    <div class="logiciel-header">
+      <div style="flex:1">
+        <h2 class="logiciel-name">Dougs</h2>
+      </div>
+    </div>
+    <div class="logiciel-body">
+      <img src="/dougs-screenshot.png" alt="Aperçu Dougs"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
+
+      <div class="logiciel-desc">
+            <p>Dougs se concentre sur la <strong>création et la gestion d'entreprise en mode tout-en-un</strong>.
+
+<p>Contrairement aux plateformes basiques qui se contentent des formalités, Dougs propose un accompagnement comptable intégré dès le démarrage.</p>
+
+<p>Je trouve cette approche pratique pour éviter de jongler entre plusieurs prestataires.</p><p>L'interface guide vraiment dans les choix de statut juridique.</p>
+
+<p>Plutôt que de laisser l'entrepreneur seul face aux options SASU/SARL/auto-entrepreneur, Dougs pose les bonnes questions sur le chiffre d'affaires prévisionnel et les associés.</p>
+
+<p><strong>Le questionnaire prend 10 minutes</strong> et oriente vers la structure la plus adaptée.</p><p>Ce qui m'a marqué : l'équipe attribue un expert-comptable dédié dès la création.</p>
+
+<p>Pas de call center anonyme, on a un interlocuteur fixe qui connaît le dossier. Pour quelqu'un qui démarre son activité et n'y connaît rien en comptabilité, ça rassure énormément.</p></p>
+      </div>
+
+      <div class="table-wrap"><table class="avantages-table">
+        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Expert-comptable attitré dès la création de l'entreprise</td>
+            <td>Tarifs plus élevés que les plateformes de création pure</td>
+          </tr>
+          <tr>
+            <td>Questionnaire intelligent pour choisir le bon statut juridique</td>
+            <td>Pas de création express en 24h comme chez certains concurrents</td>
+          </tr>
+          <tr>
+            <td>Gestion comptable incluse dans l'offre de création</td>
+            <td>Obligation de prendre l'abonnement comptable même si on a déjà un comptable</td>
+          </tr>
+          <tr>
+            <td>Interface claire qui guide les débutants étape par étape</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table></div>
+
     </div>
   </div>
 
@@ -939,32 +897,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   </div>
 
 
-  <aside class="author-box" itemscope itemtype="https://schema.org/Person">
-    <img src="/author-photo.png" alt="Photo de Thomas Bertrand" class="author-avatar" loading="lazy" itemprop="image">
-    <div class="author-info">
-      <div class="author-label">À propos de l'auteur</div>
-      <div class="author-name" itemprop="name">Thomas Bertrand</div>
-      <div class="author-job" itemprop="jobTitle">Fondateur startup</div>
-      <p class="author-bio" itemprop="description">Thomas Bertrand est un Directeur Administratif et Financier expérimenté avec 19 années d'expertise dans la gestion financière et le pilotage stratégique d'entreprises. Basé à Nantes, il maîtrise l'optimisation des performances financières, la structuration budgétaire et l'accompagnement de la croissance organisationnelle avec rigueur et vision stratégique.</p>
-      <nav class="author-socials" aria-label="Réseaux sociaux de Thomas Bertrand">
-        <a href="https://www.youtube.com/@startuponlycom" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
-          YouTube
-        </a>
-        <a href="https://www.facebook.com/startuponlycom/" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
-          Facebook
-        </a>
-      </nav>
-    </div>
-  </aside>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Thomas Bertrand",
-"jobTitle": "Fondateur startup","description": "Thomas Bertrand est un Directeur Administratif et Financier expérimenté avec 19 années d'expertise dans la gestion financière et le pilotage stratégique d'entreprises. Basé à Nantes, il maîtrise l'optimisation des performances financières, la structuration budgétaire et l'accompagnement de la croissance organisationnelle avec rigueur et vision stratégique.","image": "https://startuponly.com/author-photo.png","sameAs": ["https://www.youtube.com/@startuponlycom","https://www.facebook.com/startuponlycom/"],    "url": "https://startuponly.com"
-  }
-  </script>
 
   <section class="maillage-section">
     <h3>Nos autres comparateurs <span style="color:var(--accent)">Marketing</span></h3>
@@ -1001,6 +934,34 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
     </div>
   </section>
+
+
+  <aside class="author-box" itemscope itemtype="https://schema.org/Person">
+    <img src="/author-photo.png" alt="Photo de Thomas Bertrand" class="author-avatar" loading="lazy" itemprop="image">
+    <div class="author-info">
+      <div class="author-label">À propos de l'auteur</div>
+      <div class="author-name" itemprop="name">Thomas Bertrand</div>
+      <div class="author-job" itemprop="jobTitle">Fondateur startup</div>
+      <p class="author-bio" itemprop="description">Thomas Bertrand est un Directeur Administratif et Financier expérimenté avec 19 années d'expertise dans la gestion financière et le pilotage stratégique d'entreprises. Basé à Nantes, il maîtrise l'optimisation des performances financières, la structuration budgétaire et l'accompagnement de la croissance organisationnelle avec rigueur et vision stratégique.</p>
+      <nav class="author-socials" aria-label="Réseaux sociaux de Thomas Bertrand">
+        <a href="https://www.youtube.com/@startuponlycom" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
+          YouTube
+        </a>
+        <a href="https://www.facebook.com/startuponlycom/" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
+          Facebook
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Thomas Bertrand",
+"jobTitle": "Fondateur startup","description": "Thomas Bertrand est un Directeur Administratif et Financier expérimenté avec 19 années d'expertise dans la gestion financière et le pilotage stratégique d'entreprises. Basé à Nantes, il maîtrise l'optimisation des performances financières, la structuration budgétaire et l'accompagnement de la croissance organisationnelle avec rigueur et vision stratégique.","image": "https://startuponly.com/author-photo.png","sameAs": ["https://www.youtube.com/@startuponlycom","https://www.facebook.com/startuponlycom/"],    "url": "https://startuponly.com"
+  }
+  </script>
 
 </main>
 
