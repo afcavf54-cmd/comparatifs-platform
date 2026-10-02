@@ -2554,13 +2554,16 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
         # Nettoyage d'un nom de marque : retire le mot-clé collé
         # ("Abby-logiciel-de-comptabilite" → "Abby", "Beeye-logiciels-audit-…" → "Beeye").
         _KW_STRIP = _re_bl.compile(
-            r'-(?:logiciels?|outils?)\b.*$|-expert-comptable-en-ligne$|-banque-pro-en-ligne$',
+            r'-(?:logiciels?|outils?)\b.*$|-terminaux-de-paiement$'
+            r'|-expert-comptable-en-ligne$|-banque-pro-en-ligne$',
             _re_bl.I)
         def _clean_brand(_n):
             return _KW_STRIP.sub('', str(_n or '')).strip(' -')
-        # Clé de matching : insensible à la casse ET aux tirets/espaces
+        # Clé de matching : nettoyée, sans accents, insensible casse / tirets / points
         def _bl_norm(_n):
-            return _re_bl.sub(r'[-\s]+', ' ', str(_n or '').strip().lower()).strip()
+            _c = _clean_brand(_n)
+            _c = _unicodedata.normalize('NFD', _c).encode('ascii', 'ignore').decode('ascii')
+            return _re_bl.sub(r'[-._/\s]+', ' ', _c).strip().lower()
 
         _bl_settings = {}
         _bl_brands_repo = {}          # clé normalisée → (nom affiché, url)
