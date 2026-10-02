@@ -2113,8 +2113,19 @@
       "mypos-go-2-terminaux-de-paiement",
       "revolut-reader-terminaux-de-paiement",
       "smile-pay-mini-terminaux-de-paiement",
-      "stancer-terminaux-de-paiement"
-    ]
+      "stancer-terminaux-de-paiement",
+      "Flatpay-tpe"
+    ],
+    "products_order": {
+      "Flatpay-tpe": 1,
+      "square-reader-terminaux-de-paiement": 2,
+      "zettle-reader-2-terminaux-de-paiement": 3,
+      "sumup-solo-lite-terminaux-de-paiement": 4,
+      "mypos-go-2-terminaux-de-paiement": 5,
+      "revolut-reader-terminaux-de-paiement": 6,
+      "smile-pay-mini-terminaux-de-paiement": 7,
+      "stancer-terminaux-de-paiement": 8
+    }
   },
   "classement-prod-payfit-logiciel-systeme-information-rh-sirh": {
     "description": "<p>Je connais <strong>PayFit</strong> depuis pas mal de temps maintenant, et je peux dire que ce SIRH français a vraiment trouvé sa place. Contrairement à beaucoup d'autres solutions, PayFit mise tout sur la simplicité d'usage avec une interface qui ressemble plus à une app mobile qu'à un vieux logiciel corporate. Le truc qui m'a marqué : j'ai pu paramétrer la paie de base en moins d'une heure, là où d'autres outils me demandent une demi-journée.</p><p>L'approche est claire. PayFit cible les PME de 10 à 500 salariés qui veulent arrêter de galérer avec Excel et les calculettes pour la paie. Leurs algorithmes gèrent automatiquement les cotisations, les congés payés, les heures sup. <strong>Ça évite pas mal d'erreurs humaines</strong> qu'on voit encore trop souvent. Par contre, si vous cherchez un outil ultra-personnalisable pour des besoins RH complexes, passez votre chemin.</p><p>Ce qui fait la différence selon moi : leur service client français répond vite et comprend les vraies questions métier. Quand j'ai eu un souci avec les déclarations sociales, ils ont résolu ça en 24h. Pas comme certains concurrents où on attend une semaine pour avoir une réponse générique.</p>",
@@ -6391,5 +6402,20 @@
       "Courbe d'apprentissage raide pour les débutants complets",
       "Performance dégradée avec trop de plugins mal optimisés"
     ]
+  },
+  "classement-prod-Flatpay-tpe": {
+    "nom": "Flatpay",
+    "marque": "Flatpay",
+    "description": "<p><strong>Flatpay</strong> est une solution de paiement scandinave innovante qui révolutionne la façon dont les commerçants acceptent les paiements par carte. Conçu pour les petites et moyennes entreprises, ce terminal de paiement se distingue par son modèle tarifaire ultra-transparent avec un <strong>taux unique fixe</strong>, sans frais cachés ni abonnements complexes. Flatpay propose un terminal moderne et intuitif, compatible avec toutes les cartes bancaires (Visa, Mastercard, American Express) ainsi que les paiements sans contact et via smartphone (Apple Pay, Google Pay). Son application dédiée permet de suivre les transactions en temps réel et de gérer facilement l'activité commerciale depuis un tableau de bord simplifié. Idéal pour les restaurants, commerces de détail et prestataires de services souhaitant une solution <strong>clé en main sans mauvaise surprise</strong> sur leur relevé de compte.</p>",
+    "points_forts": [
+      "Tarification simple et transparente avec un taux unique tout compris, sans frais mensuels cachés ni contrat d'engagement longue durée",
+      "Terminal moderne et performant acceptant tous types de paiements : cartes bancaires, NFC, Apple Pay et Google Pay pour une expérience client optimale",
+      "Tableau de bord analytique intuitif permettant un suivi en temps réel des transactions et une gestion simplifiée de la comptabilité quotidienne"
+    ],
+    "points_faibles": [
+      "Disponibilité géographique encore limitée, principalement concentrée sur les marchés nordiques et quelques pays européens, ce qui restreint son accessibilité pour les commerçants français",
+      "Absence de fonctionnalités avancées telles que la gestion des stocks intégrée ou les programmes de fidélité, nécessitant des outils tiers complémentaires pour les besoins plus complexes"
+    ],
+    "url_affiliation": "https://www.financeads.net/tc.php?t=86140C5654135202T"
   }
 }
