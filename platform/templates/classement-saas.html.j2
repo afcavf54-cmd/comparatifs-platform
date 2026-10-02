@@ -358,8 +358,38 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
   {% endif %}
 
 
+  {% if backlink_brands %}
+  <aside class="backlink-note">
+    <p>Pour approfondir le sujet, découvrez également
+      {% for b in backlink_brands %}<a href="{{ b.url }}" target="_blank" rel="noopener">{{ b.anchor or backlink_anchor or b.name }}</a>{% if not loop.last %} et {% endif %}{% endfor %},
+      {% if backlink_brands | length > 1 %}deux acteurs reconnus{% else %}un acteur reconnu{% endif %} de ce secteur.</p>
+  </aside>
+  {% endif %}
+
+
+  {% if siblings is defined and siblings | length > 0 %}
+  <section class="maillage-section">
+    <h3>Nos autres comparateurs <span style="color:var(--accent)">{{ cat_parent }}</span></h3>
+    <div class="maillage-grid">
+      {% for cls in siblings %}
+      <a href="/meilleur-{{ cls.slug }}" class="maillage-card">
+        <div class="maillage-card-left">
+          <div class="maillage-card-icon">💻</div>
+          <div>
+            <div class="maillage-card-name">{{ cls.label }}</div>
+            <div class="maillage-card-count">{{ cls.count }} logiciel{{ 's' if cls.count > 1 else '' }}</div>
+          </div>
+        </div>
+        <span class="maillage-card-arrow">→</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
   {% if site.author_name is defined and site.author_name %}
   {# ── BOX AUTEUR ── #}
+
   <aside class="author-box" itemscope itemtype="https://schema.org/Person">
     {% if site.author_photo is defined and site.author_photo %}
     <img src="{{ site.author_photo }}" alt="Photo de {{ site.author_name }}" class="author-avatar" loading="lazy" itemprop="image">
@@ -389,14 +419,6 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
     </div>
   </aside>
 
-  {% if backlink_brands %}
-  <aside class="backlink-note">
-    <p>Pour approfondir le sujet, découvrez également
-      {% for b in backlink_brands %}<a href="{{ b.url }}" target="_blank" rel="noopener">{{ b.anchor or backlink_anchor or b.name }}</a>{% if not loop.last %} et {% endif %}{% endfor %},
-      {% if backlink_brands | length > 1 %}deux acteurs reconnus{% else %}un acteur reconnu{% endif %} de ce secteur.</p>
-  </aside>
-  {% endif %}
-
   {# Schema.org JSON-LD Person #}
   <script type="application/ld+json">
   {
@@ -410,26 +432,6 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
     "url": "{{ site.domain }}"
   }
   </script>
-  {% endif %}
-
-  {% if siblings is defined and siblings | length > 0 %}
-  <section class="maillage-section">
-    <h3>Nos autres comparateurs <span style="color:var(--accent)">{{ cat_parent }}</span></h3>
-    <div class="maillage-grid">
-      {% for cls in siblings %}
-      <a href="/meilleur-{{ cls.slug }}" class="maillage-card">
-        <div class="maillage-card-left">
-          <div class="maillage-card-icon">💻</div>
-          <div>
-            <div class="maillage-card-name">{{ cls.label }}</div>
-            <div class="maillage-card-count">{{ cls.count }} logiciel{{ 's' if cls.count > 1 else '' }}</div>
-          </div>
-        </div>
-        <span class="maillage-card-arrow">→</span>
-      </a>
-      {% endfor %}
-    </div>
-  </section>
   {% endif %}
 
 </main>
