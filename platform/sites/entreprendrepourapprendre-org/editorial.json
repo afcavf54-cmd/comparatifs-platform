@@ -8054,8 +8054,19 @@
       "mypos-go-2-terminaux-de-paiement",
       "revolut-reader-terminaux-de-paiement",
       "smile-pay-mini-terminaux-de-paiement",
-      "stancer-terminaux-de-paiement"
-    ]
+      "stancer-terminaux-de-paiement",
+      "Flatpay-tpe"
+    ],
+    "products_order": {
+      "Flatpay-tpe": 1,
+      "square-reader-terminaux-de-paiement": 2,
+      "zettle-reader-2-terminaux-de-paiement": 3,
+      "sumup-solo-lite-terminaux-de-paiement": 4,
+      "mypos-go-2-terminaux-de-paiement": 5,
+      "revolut-reader-terminaux-de-paiement": 6,
+      "smile-pay-mini-terminaux-de-paiement": 7,
+      "stancer-terminaux-de-paiement": 8
+    }
   },
   "classement-logiciel-erp": {
     "intro": "<p>Choisir un <strong>logiciel ERP</strong> pour une TPE comme la mienne, c'est un vrai casse-tête. Entre les solutions trop complexes qui nécessitent trois mois de formation et celles qui ne font que la moitié du travail, je comprends pourquoi beaucoup d'entrepreneurs abandonnent avant même de commencer.</p>\n\n<p>Après avoir testé personnellement plusieurs solutions pour mon agence, je me suis rendue compte que la plupart des comparatifs passent à côté de l'essentiel : <strong>est-ce que ça marche vraiment</strong> pour une structure de 6 salariés ? Est-ce que mes équipes vont s'y retrouver ? Et surtout, est-ce que ça vaut le coût ?</p>\n\n<p>J'ai donc classé 8 logiciels ERP selon des critères concrets. Avec mes retours d'expérience et mes recommandations pour éviter les pièges.</p>",
@@ -8928,5 +8939,20 @@
       "Maintenance technique régulière obligatoire",
       "Vulnérable aux piratages si mal configuré"
     ]
+  },
+  "classement-prod-Flatpay-tpe": {
+    "nom": "Flatpay",
+    "marque": "Flatpay",
+    "description": "<p><strong>Flatpay</strong> est une solution de paiement nordique en pleine expansion qui se distingue par sa transparence tarifaire absolue et sa simplicité d'utilisation. Conçue pour les commerçants européens, cette fintech propose un terminal de paiement moderne associé à un modèle de tarification unique : <strong>un taux fixe sans frais cachés</strong>, quelle que soit la carte utilisée. Flatpay mise sur une expérience utilisateur épurée, une installation rapide et un support client réactif pour séduire les petites et moyennes entreprises qui souhaitent maîtriser leurs coûts de traitement des paiements. Son terminal accepte toutes les méthodes de paiement modernes, incluant les cartes sans contact, Apple Pay et Google Pay.</p>",
+    "points_forts": [
+      "Tarification transparente avec un taux unique et fixe, sans frais cachés ni surprises sur la facture mensuelle",
+      "Installation ultra-rapide et prise en main intuitive, idéale pour les commerçants non techniques",
+      "Acceptation de tous les moyens de paiement modernes : cartes, NFC, Apple Pay et Google Pay"
+    ],
+    "points_faibles": [
+      "Disponibilité géographique encore limitée, principalement déployé dans les pays nordiques et quelques marchés européens",
+      "Fonctionnalités analytiques et de gestion back-office moins avancées que certains concurrents bien établis"
+    ],
+    "url_affiliation": "https://www.financeads.net/tc.php?t=86140C5654135202T"
   }
 }
