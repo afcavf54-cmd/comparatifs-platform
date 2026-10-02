@@ -22,7 +22,7 @@
   "url": "https://www.editions-dp.com/meilleur-logiciels-de-gestion-de-planning",
   "author": { "@type": "Organization", "name": "Pierre Petit" },
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "item": { "@type": "SoftwareApplication", "name": "Workday", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "7", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 2, "item": { "@type": "SoftwareApplication", "name": "Skello", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "59", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 3, "item": { "@type": "SoftwareApplication", "name": "Octime", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "2,49", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 4, "item": { "@type": "SoftwareApplication", "name": "Kelio", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "9", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 5, "item": { "@type": "SoftwareApplication", "name": "Asana", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "10,99", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 6, "item": { "@type": "SoftwareApplication", "name": "Toggl Plan", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "8", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 7, "item": { "@type": "SoftwareApplication", "name": "Planday", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "2,99", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 8, "item": { "@type": "SoftwareApplication", "name": "Agendrix", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "2,93", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 9, "item": { "@type": "SoftwareApplication", "name": "Monday.com", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "9", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 10, "item": { "@type": "SoftwareApplication", "name": "Deputy", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "5", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 11, "item": { "@type": "SoftwareApplication", "name": "Combo", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "49", "priceCurrency": "EUR" } } }  ]
+    { "@type": "ListItem", "position": 1, "item": { "@type": "SoftwareApplication", "name": "Workday-logiciel-gestion-planning", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 2, "item": { "@type": "SoftwareApplication", "name": "Skello-logiciel-gestion-planning", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 3, "item": { "@type": "SoftwareApplication", "name": "Octime-logiciel-gestion-planning", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 4, "item": { "@type": "SoftwareApplication", "name": "Kelio-logiciel-gestion-planning", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 5, "item": { "@type": "SoftwareApplication", "name": "Asana-logiciel-gestion-planning", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 6, "item": { "@type": "SoftwareApplication", "name": "Toggl-plan-logiciel-gestion-planning", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 7, "item": { "@type": "SoftwareApplication", "name": "Planday-logiciel-gestion-planning", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 8, "item": { "@type": "SoftwareApplication", "name": "Agendrix-logiciel-gestion-planning", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 9, "item": { "@type": "SoftwareApplication", "name": "Monday-com-logiciel-gestion-planning", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 10, "item": { "@type": "SoftwareApplication", "name": "Deputy-logiciel-gestion-planning", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 11, "item": { "@type": "SoftwareApplication", "name": "Combo-logiciel-gestion-planning", "applicationCategory": "BusinessApplication" } }  ]
 }
 </script>
 
@@ -126,6 +126,9 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .author-social:hover{border-color:var(--accent);color:var(--accent)}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
+.backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
+.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
 .maillage-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -520,19 +523,13 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="workday-logiciel-gestion-planning">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Workday</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">7€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Workday-logiciel-gestion-planning</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://www.workday.com/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/workday-logiciel-gestion-planning-screenshot.png" alt="Aperçu Workday"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/workday-logiciel-gestion-planning-screenshot.png" alt="Aperçu Workday-logiciel-gestion-planning"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p><strong>Workday</strong> s'adresse avant tout aux grandes entreprises qui cherchent à unifier leur gestion RH et leur planification.
@@ -570,27 +567,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://www.workday.com/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Workday
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="skello-logiciel-gestion-planning">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Skello</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">59€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Skello-logiciel-gestion-planning</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://www.skello.io/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/skello-logiciel-gestion-planning-screenshot.png" alt="Aperçu Skello"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/skello-logiciel-gestion-planning-screenshot.png" alt="Aperçu Skello-logiciel-gestion-planning"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p><strong>Skello</strong> se focalise vraiment sur la gestion des équipes retail et restauration.
@@ -626,27 +614,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://www.skello.io/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Skello
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="octime-logiciel-gestion-planning">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Octime</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">2,49€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Octime-logiciel-gestion-planning</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://www.octime.com/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/octime-logiciel-gestion-planning-screenshot.png" alt="Aperçu Octime"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/octime-logiciel-gestion-planning-screenshot.png" alt="Aperçu Octime-logiciel-gestion-planning"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p><strong>Octime</strong> se concentre exclusivement sur la <strong>gestion des temps</strong> et des plannings pour les entreprises qui ont besoin de traçabilité rigoureuse.
@@ -682,27 +661,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://www.octime.com/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Octime
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="kelio-logiciel-gestion-planning">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Kelio</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">9€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Kelio-logiciel-gestion-planning</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://www.kelio.com/fr" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/kelio-logiciel-gestion-planning-screenshot.png" alt="Aperçu Kelio"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/kelio-logiciel-gestion-planning-screenshot.png" alt="Aperçu Kelio-logiciel-gestion-planning"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p><strong>Kelio</strong> n'est pas qu'un simple logiciel de gestion de planning. C'est une solution complète qui gère à la fois les temps de travail, les congés et la planification des équipes.
@@ -738,27 +708,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://www.kelio.com/fr" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Kelio
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="asana-logiciel-gestion-planning">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Asana</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">10,99€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Asana-logiciel-gestion-planning</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://asana.com/fr" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/asana-logiciel-gestion-planning-screenshot.png" alt="Aperçu Asana"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/asana-logiciel-gestion-planning-screenshot.png" alt="Aperçu Asana-logiciel-gestion-planning"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p>Je vais être direct : <strong>Asana</strong> n'est pas juste un énième <strong>logiciel de gestion de planning</strong>. C'est probablement l'outil le plus polyvalent que j'aie testé pour organiser les projets d'équipe.
@@ -794,27 +755,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://asana.com/fr" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Asana
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="toggl-plan-logiciel-gestion-planning">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Toggl Plan</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">8€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Toggl-plan-logiciel-gestion-planning</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://toggl.com/focus/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/toggl-plan-logiciel-gestion-planning-screenshot.png" alt="Aperçu Toggl Plan"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/toggl-plan-logiciel-gestion-planning-screenshot.png" alt="Aperçu Toggl-plan-logiciel-gestion-planning"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p>J'ai testé <strong>Toggl Plan</strong> après avoir galéré avec des plannings Excel qui partaient en vrille dès qu'on dépassait 5 projets.
@@ -850,27 +802,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://toggl.com/focus/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Toggl Plan
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="planday-logiciel-gestion-planning">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Planday</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">2,99€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Planday-logiciel-gestion-planning</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://www.planday.com/fr" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/planday-logiciel-gestion-planning-screenshot.png" alt="Aperçu Planday"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/planday-logiciel-gestion-planning-screenshot.png" alt="Aperçu Planday-logiciel-gestion-planning"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p>J'ai testé <strong>Planday</strong> dans plusieurs structures et je dois dire que ce logiciel de gestion de planning me surprend par sa simplicité d'approche. Pas de fioritures, juste l'essentiel pour organiser les équipes.
@@ -906,27 +849,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://www.planday.com/fr" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Planday
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="agendrix-logiciel-gestion-planning">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Agendrix</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">2,93€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Agendrix-logiciel-gestion-planning</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://www.agendrix.com/fr" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/agendrix-logiciel-gestion-planning-screenshot.png" alt="Aperçu Agendrix"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/agendrix-logiciel-gestion-planning-screenshot.png" alt="Aperçu Agendrix-logiciel-gestion-planning"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p>Je dois avouer qu'<strong>Agendrix</strong> m'a agréablement surpris quand je l'ai testé pour nos équipes de vente.
@@ -964,27 +898,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://www.agendrix.com/fr" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Agendrix
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="monday-com-logiciel-gestion-planning">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Monday.com</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">9€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Monday-com-logiciel-gestion-planning</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://monday.com/lang/fr" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/monday-com-logiciel-gestion-planning-screenshot.png" alt="Aperçu Monday.com"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/monday-com-logiciel-gestion-planning-screenshot.png" alt="Aperçu Monday-com-logiciel-gestion-planning"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p>Je place <strong>Monday.com</strong> dans le trio de tête des logiciels de gestion de planning les plus visuels du marché.
@@ -1024,27 +949,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://monday.com/lang/fr" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Monday.com
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="deputy-logiciel-gestion-planning">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Deputy</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">5€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Deputy-logiciel-gestion-planning</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://www.deputy.com/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/deputy-logiciel-gestion-planning-screenshot.png" alt="Aperçu Deputy"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/deputy-logiciel-gestion-planning-screenshot.png" alt="Aperçu Deputy-logiciel-gestion-planning"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p><strong>Deputy</strong> se concentre sur les commerces et restaurants qui veulent automatiser leur <strong>gestion de planning</strong> sans prise de tête.
@@ -1082,27 +998,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://www.deputy.com/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Deputy
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="combo-logiciel-gestion-planning">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Combo</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">49€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Combo-logiciel-gestion-planning</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://combohr.com/fr/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/combo-logiciel-gestion-planning-screenshot.png" alt="Aperçu Combo"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/combo-logiciel-gestion-planning-screenshot.png" alt="Aperçu Combo-logiciel-gestion-planning"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p>J'ai testé <strong>Combo</strong> pendant plusieurs mois et je dois dire que ce logiciel de gestion de planning m'a surpris par sa simplicité d'approche.
@@ -1140,9 +1047,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://combohr.com/fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Combo
-      </a>
     </div>
   </div>
 
@@ -1281,32 +1185,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   </div>
 
 
-  <aside class="author-box" itemscope itemtype="https://schema.org/Person">
-    <img src="/author-photo.png" alt="Photo de Pierre Petit" class="author-avatar" loading="lazy" itemprop="image">
-    <div class="author-info">
-      <div class="author-label">À propos de l'auteur</div>
-      <div class="author-name" itemprop="name">Pierre Petit</div>
-      <div class="author-job" itemprop="jobTitle">Dirigeant TPE</div>
-      <p class="author-bio" itemprop="description">Pierre Petit dirige sa TPE depuis 6 ans à Strasbourg, où il accompagne le développement de son équipe avec pragmatisme et bienveillance. Fort de son expérience entrepreneuriale, il privilégie une approche humaine et des solutions concrètes pour faire grandir son entreprise au quotidien.</p>
-      <nav class="author-socials" aria-label="Réseaux sociaux de Pierre Petit">
-        <a href="https://www.youtube.com/@editionsdespros" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
-          YouTube
-        </a>
-        <a href="https://www.facebook.com/editionsdespros/" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
-          Facebook
-        </a>
-      </nav>
-    </div>
-  </aside>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Pierre Petit",
-"jobTitle": "Dirigeant TPE","description": "Pierre Petit dirige sa TPE depuis 6 ans à Strasbourg, où il accompagne le développement de son équipe avec pragmatisme et bienveillance. Fort de son expérience entrepreneuriale, il privilégie une approche humaine et des solutions concrètes pour faire grandir son entreprise au quotidien.","image": "https://www.editions-dp.com/author-photo.png","sameAs": ["https://www.youtube.com/@editionsdespros","https://www.facebook.com/editionsdespros/"],    "url": "https://www.editions-dp.com"
-  }
-  </script>
 
   <section class="maillage-section">
     <h3>Nos autres comparateurs <span style="color:var(--accent)">Marketing</span></h3>
@@ -1343,6 +1222,34 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
     </div>
   </section>
+
+
+  <aside class="author-box" itemscope itemtype="https://schema.org/Person">
+    <img src="/author-photo.png" alt="Photo de Pierre Petit" class="author-avatar" loading="lazy" itemprop="image">
+    <div class="author-info">
+      <div class="author-label">À propos de l'auteur</div>
+      <div class="author-name" itemprop="name">Pierre Petit</div>
+      <div class="author-job" itemprop="jobTitle">Dirigeant TPE</div>
+      <p class="author-bio" itemprop="description">Pierre Petit dirige sa TPE depuis 6 ans à Strasbourg, où il accompagne le développement de son équipe avec pragmatisme et bienveillance. Fort de son expérience entrepreneuriale, il privilégie une approche humaine et des solutions concrètes pour faire grandir son entreprise au quotidien.</p>
+      <nav class="author-socials" aria-label="Réseaux sociaux de Pierre Petit">
+        <a href="https://www.youtube.com/@editionsdespros" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
+          YouTube
+        </a>
+        <a href="https://www.facebook.com/editionsdespros/" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
+          Facebook
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Pierre Petit",
+"jobTitle": "Dirigeant TPE","description": "Pierre Petit dirige sa TPE depuis 6 ans à Strasbourg, où il accompagne le développement de son équipe avec pragmatisme et bienveillance. Fort de son expérience entrepreneuriale, il privilégie une approche humaine et des solutions concrètes pour faire grandir son entreprise au quotidien.","image": "https://www.editions-dp.com/author-photo.png","sameAs": ["https://www.youtube.com/@editionsdespros","https://www.facebook.com/editionsdespros/"],    "url": "https://www.editions-dp.com"
+  }
+  </script>
 
 </main>
 

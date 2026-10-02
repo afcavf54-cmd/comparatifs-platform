@@ -22,7 +22,7 @@
   "url": "https://www.editions-dp.com/meilleur-logiciel-de-systeme-d-information-rh-sirh",
   "author": { "@type": "Organization", "name": "Pierre Petit" },
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "item": { "@type": "SoftwareApplication", "name": "Gusto", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "54", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 2, "item": { "@type": "SoftwareApplication", "name": "BambooHR", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "10", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 3, "item": { "@type": "SoftwareApplication", "name": "Personio", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "5", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 4, "item": { "@type": "SoftwareApplication", "name": "Monday.com", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "9", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 5, "item": { "@type": "SoftwareApplication", "name": "Factorial", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "6", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 6, "item": { "@type": "SoftwareApplication", "name": "Lucca", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "3", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 7, "item": { "@type": "SoftwareApplication", "name": "Rippling", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "8", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 8, "item": { "@type": "SoftwareApplication", "name": "Sage Business Cloud", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "20", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 9, "item": { "@type": "SoftwareApplication", "name": "Eurécia", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "69", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 10, "item": { "@type": "SoftwareApplication", "name": "PayFit", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "26", "priceCurrency": "EUR" } } }  ]
+    { "@type": "ListItem", "position": 1, "item": { "@type": "SoftwareApplication", "name": "Gusto-logiciel-systeme-information-rh-sirh", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 2, "item": { "@type": "SoftwareApplication", "name": "Bamboohr-logiciel-systeme-information-rh-sirh", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 3, "item": { "@type": "SoftwareApplication", "name": "Personio-logiciel-systeme-information-rh-sirh", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 4, "item": { "@type": "SoftwareApplication", "name": "Monday-com-logiciel-systeme-information-rh-sirh", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 5, "item": { "@type": "SoftwareApplication", "name": "Factorial-logiciel-systeme-information-rh-sirh", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 6, "item": { "@type": "SoftwareApplication", "name": "Lucca-logiciel-systeme-information-rh-sirh", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 7, "item": { "@type": "SoftwareApplication", "name": "Rippling-logiciel-systeme-information-rh-sirh", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 8, "item": { "@type": "SoftwareApplication", "name": "Sage-business-cloud-logiciel-systeme-information-rh-sirh", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 9, "item": { "@type": "SoftwareApplication", "name": "Eurecia-logiciel-systeme-information-rh-sirh", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 10, "item": { "@type": "SoftwareApplication", "name": "Payfit-logiciel-systeme-information-rh-sirh", "applicationCategory": "BusinessApplication" } }  ]
 }
 </script>
 
@@ -126,6 +126,9 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .author-social:hover{border-color:var(--accent);color:var(--accent)}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
+.backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
+.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
 .maillage-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -520,19 +523,13 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="gusto-logiciel-systeme-information-rh-sirh">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Gusto</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">54€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Gusto-logiciel-systeme-information-rh-sirh</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://gusto.com/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/gusto-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu Gusto"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/gusto-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu Gusto-logiciel-systeme-information-rh-sirh"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p><strong>Gusto</strong> m'a tapé dans l'oeil pour sa simplicité déconcertante.
@@ -572,27 +569,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://gusto.com/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Gusto
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="bamboohr-logiciel-systeme-information-rh-sirh">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">BambooHR</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">10€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Bamboohr-logiciel-systeme-information-rh-sirh</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://www.bamboohr.com/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/bamboohr-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu BambooHR"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/bamboohr-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu Bamboohr-logiciel-systeme-information-rh-sirh"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p>J'avoue que <strong>BambooHR</strong> m'a surpris par sa simplicité d'approche. Pas de fioritures, juste l'essentiel d'un <strong>SIRH moderne</strong> qui fonctionne vraiment.
@@ -632,27 +620,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://www.bamboohr.com/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer BambooHR
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="personio-logiciel-systeme-information-rh-sirh">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Personio</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">5€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Personio-logiciel-systeme-information-rh-sirh</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://www.personio.fr/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/personio-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu Personio"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/personio-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu Personio-logiciel-systeme-information-rh-sirh"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p><strong>Personio</strong> s'adresse directement aux PME européennes qui cherchent un <strong>SIRH complet</strong> sans la complexité des mastodontes du marché.
@@ -690,27 +669,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://www.personio.fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Personio
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="monday-com-logiciel-systeme-information-rh-sirh">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Monday.com</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">9€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Monday-com-logiciel-systeme-information-rh-sirh</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://monday.com/lang/fr" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/monday-com-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu Monday.com"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/monday-com-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu Monday-com-logiciel-systeme-information-rh-sirh"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p>Je vais être direct : <strong>Monday.com</strong> n'est pas un SIRH traditionnel, mais plutôt une plateforme de gestion de projet qui s'adapte aux RH.
@@ -748,27 +718,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://monday.com/lang/fr" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Monday.com
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="factorial-logiciel-systeme-information-rh-sirh">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Factorial</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">6€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Factorial-logiciel-systeme-information-rh-sirh</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://factorial.fr/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/factorial-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu Factorial"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/factorial-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu Factorial-logiciel-systeme-information-rh-sirh"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p><strong>Factorial</strong> mise beaucoup sur la simplicité d'usage.
@@ -806,27 +767,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://factorial.fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Factorial
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="lucca-logiciel-systeme-information-rh-sirh">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Lucca</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">3€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Lucca-logiciel-systeme-information-rh-sirh</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://www.lucca.fr" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/lucca-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu Lucca"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/lucca-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu Lucca-logiciel-systeme-information-rh-sirh"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p><strong>Lucca</strong> fait partie de ces <strong>SIRH français</strong> qui ont su garder une interface simple tout en proposant des fonctions avancées.
@@ -864,27 +816,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://www.lucca.fr" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Lucca
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="rippling-logiciel-systeme-information-rh-sirh">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Rippling</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">8€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Rippling-logiciel-systeme-information-rh-sirh</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://www.rippling.com/fr-FR/produits/mondial" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/rippling-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu Rippling"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/rippling-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu Rippling-logiciel-systeme-information-rh-sirh"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p><strong>Rippling</strong> pousse très loin l'automatisation RH en connectant directement la gestion des employés aux outils IT.
@@ -924,27 +867,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://www.rippling.com/fr-FR/produits/mondial" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Rippling
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="sage-business-cloud-logiciel-systeme-information-rh-sirh">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Sage Business Cloud</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">20€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Sage-business-cloud-logiciel-systeme-information-rh-sirh</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://www.sage.com/fr-fr/sage-business-cloud/logiciels/gestionnaire-de-paie/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/sage-business-cloud-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu Sage Business Cloud"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/sage-business-cloud-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu Sage-business-cloud-logiciel-systeme-information-rh-sirh"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p>J'ai testé <strong>Sage Business Cloud</strong> dans plusieurs PME et franchement, ce SIRH me surprend par sa simplicité d'usage.
@@ -980,27 +914,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://www.sage.com/fr-fr/sage-business-cloud/logiciels/gestionnaire-de-paie/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Sage Business Cloud
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="eurecia-logiciel-systeme-information-rh-sirh">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Eurécia</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">69€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Eurecia-logiciel-systeme-information-rh-sirh</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://www.eurecia.com/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/eurecia-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu Eurécia"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/eurecia-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu Eurecia-logiciel-systeme-information-rh-sirh"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p><strong>Eurécia</strong> se présente comme une suite RH française plutôt complète, avec une approche modulaire qui permet d'activer les fonctions au fur et à mesure.
@@ -1036,27 +961,18 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://www.eurecia.com/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer Eurécia
-      </a>
     </div>
   </div>
   <div class="logiciel-card" id="payfit-logiciel-systeme-information-rh-sirh">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">PayFit</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">26€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Payfit-logiciel-systeme-information-rh-sirh</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <a href="https://payfit.com/fr/" rel="nofollow" target="_blank" style="display:block;margin:0 0 16px">
-        <img src="/payfit-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu PayFit"
-          class="logiciel-screenshot"
-          onerror="this.style.display='none'">
-      </a>
+      <img src="/payfit-logiciel-systeme-information-rh-sirh-screenshot.png" alt="Aperçu Payfit-logiciel-systeme-information-rh-sirh"
+        class="logiciel-screenshot" style="margin:0 0 16px"
+        onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
             <p><strong>PayFit</strong> s'attaque à la paie française avec une approche très différente des logiciels SIRH classiques.
@@ -1092,9 +1008,6 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         </tbody>
       </table></div>
 
-      <a href="https://payfit.com/fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
-        → Essayer PayFit
-      </a>
     </div>
   </div>
 
@@ -1195,32 +1108,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   </div>
 
 
-  <aside class="author-box" itemscope itemtype="https://schema.org/Person">
-    <img src="/author-photo.png" alt="Photo de Pierre Petit" class="author-avatar" loading="lazy" itemprop="image">
-    <div class="author-info">
-      <div class="author-label">À propos de l'auteur</div>
-      <div class="author-name" itemprop="name">Pierre Petit</div>
-      <div class="author-job" itemprop="jobTitle">Dirigeant TPE</div>
-      <p class="author-bio" itemprop="description">Pierre Petit dirige sa TPE depuis 6 ans à Strasbourg, où il accompagne le développement de son équipe avec pragmatisme et bienveillance. Fort de son expérience entrepreneuriale, il privilégie une approche humaine et des solutions concrètes pour faire grandir son entreprise au quotidien.</p>
-      <nav class="author-socials" aria-label="Réseaux sociaux de Pierre Petit">
-        <a href="https://www.youtube.com/@editionsdespros" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
-          YouTube
-        </a>
-        <a href="https://www.facebook.com/editionsdespros/" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
-          Facebook
-        </a>
-      </nav>
-    </div>
-  </aside>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Pierre Petit",
-"jobTitle": "Dirigeant TPE","description": "Pierre Petit dirige sa TPE depuis 6 ans à Strasbourg, où il accompagne le développement de son équipe avec pragmatisme et bienveillance. Fort de son expérience entrepreneuriale, il privilégie une approche humaine et des solutions concrètes pour faire grandir son entreprise au quotidien.","image": "https://www.editions-dp.com/author-photo.png","sameAs": ["https://www.youtube.com/@editionsdespros","https://www.facebook.com/editionsdespros/"],    "url": "https://www.editions-dp.com"
-  }
-  </script>
 
   <section class="maillage-section">
     <h3>Nos autres comparateurs <span style="color:var(--accent)">Marketing</span></h3>
@@ -1257,6 +1145,34 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
     </div>
   </section>
+
+
+  <aside class="author-box" itemscope itemtype="https://schema.org/Person">
+    <img src="/author-photo.png" alt="Photo de Pierre Petit" class="author-avatar" loading="lazy" itemprop="image">
+    <div class="author-info">
+      <div class="author-label">À propos de l'auteur</div>
+      <div class="author-name" itemprop="name">Pierre Petit</div>
+      <div class="author-job" itemprop="jobTitle">Dirigeant TPE</div>
+      <p class="author-bio" itemprop="description">Pierre Petit dirige sa TPE depuis 6 ans à Strasbourg, où il accompagne le développement de son équipe avec pragmatisme et bienveillance. Fort de son expérience entrepreneuriale, il privilégie une approche humaine et des solutions concrètes pour faire grandir son entreprise au quotidien.</p>
+      <nav class="author-socials" aria-label="Réseaux sociaux de Pierre Petit">
+        <a href="https://www.youtube.com/@editionsdespros" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
+          YouTube
+        </a>
+        <a href="https://www.facebook.com/editionsdespros/" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
+          Facebook
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Pierre Petit",
+"jobTitle": "Dirigeant TPE","description": "Pierre Petit dirige sa TPE depuis 6 ans à Strasbourg, où il accompagne le développement de son équipe avec pragmatisme et bienveillance. Fort de son expérience entrepreneuriale, il privilégie une approche humaine et des solutions concrètes pour faire grandir son entreprise au quotidien.","image": "https://www.editions-dp.com/author-photo.png","sameAs": ["https://www.youtube.com/@editionsdespros","https://www.facebook.com/editionsdespros/"],    "url": "https://www.editions-dp.com"
+  }
+  </script>
 
 </main>
 

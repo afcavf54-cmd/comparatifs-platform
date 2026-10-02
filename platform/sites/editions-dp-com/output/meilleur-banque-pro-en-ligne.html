@@ -22,7 +22,7 @@
   "url": "https://www.editions-dp.com/meilleur-banque-pro-en-ligne",
   "author": { "@type": "Organization", "name": "Pierre Petit" },
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "item": { "@type": "SoftwareApplication", "name": "BoursoBank Pro", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "9", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 2, "item": { "@type": "SoftwareApplication", "name": "Qonto", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "9", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 3, "item": { "@type": "SoftwareApplication", "name": "Revolut Business", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 4, "item": { "@type": "SoftwareApplication", "name": "Fiducial Banque", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "12", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 5, "item": { "@type": "SoftwareApplication", "name": "Hello Business (Hello bank!)", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "10,9", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 6, "item": { "@type": "SoftwareApplication", "name": "Monabanq Pro", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "9", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 7, "item": { "@type": "SoftwareApplication", "name": "Finom", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 8, "item": { "@type": "SoftwareApplication", "name": "Shine", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 9, "item": { "@type": "SoftwareApplication", "name": "Blank", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "9", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 10, "item": { "@type": "SoftwareApplication", "name": "Anytime", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "9,5", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 11, "item": { "@type": "SoftwareApplication", "name": "Indy", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" } } },    { "@type": "ListItem", "position": 12, "item": { "@type": "SoftwareApplication", "name": "Propulse by CA", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": "8", "priceCurrency": "EUR" } } }  ]
+    { "@type": "ListItem", "position": 1, "item": { "@type": "SoftwareApplication", "name": "Boursobank-pro-banque-pro-en-ligne", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 2, "item": { "@type": "SoftwareApplication", "name": "Qonto-banque-pro-en-ligne", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 3, "item": { "@type": "SoftwareApplication", "name": "Revolut-business-banque-pro-en-ligne", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 4, "item": { "@type": "SoftwareApplication", "name": "Fiducial-banque-banque-pro-en-ligne", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 5, "item": { "@type": "SoftwareApplication", "name": "Hello-business-hello-bank-banque-pro-en-ligne", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 6, "item": { "@type": "SoftwareApplication", "name": "Monabanq-pro-banque-pro-en-ligne", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 7, "item": { "@type": "SoftwareApplication", "name": "Finom-banque-pro-en-ligne", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 8, "item": { "@type": "SoftwareApplication", "name": "Shine-banque-pro-en-ligne", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 9, "item": { "@type": "SoftwareApplication", "name": "Blank-banque-pro-en-ligne", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 10, "item": { "@type": "SoftwareApplication", "name": "Anytime-banque-pro-en-ligne", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 11, "item": { "@type": "SoftwareApplication", "name": "Indy-banque-pro-en-ligne", "applicationCategory": "BusinessApplication" } },    { "@type": "ListItem", "position": 12, "item": { "@type": "SoftwareApplication", "name": "Propulse-by-ca-banque-pro-en-ligne", "applicationCategory": "BusinessApplication" } }  ]
 }
 </script>
 
@@ -126,6 +126,9 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .author-social:hover{border-color:var(--accent);color:var(--accent)}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
+.backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
+.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
 .maillage-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -520,15 +523,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="boursobank-pro-banque-pro-en-ligne">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">BoursoBank Pro</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">9€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Boursobank-pro-banque-pro-en-ligne</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/boursobank-pro-banque-pro-en-ligne-screenshot.png" alt="Aperçu BoursoBank Pro"
+      <img src="/boursobank-pro-banque-pro-en-ligne-screenshot.png" alt="Aperçu Boursobank-pro-banque-pro-en-ligne"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -571,15 +570,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="qonto-banque-pro-en-ligne">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Qonto</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">9€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Qonto-banque-pro-en-ligne</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/qonto-banque-pro-en-ligne-screenshot.png" alt="Aperçu Qonto"
+      <img src="/qonto-banque-pro-en-ligne-screenshot.png" alt="Aperçu Qonto-banque-pro-en-ligne"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -624,15 +619,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="revolut-business-banque-pro-en-ligne">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Revolut Business</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">0€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Revolut-business-banque-pro-en-ligne</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/revolut-business-banque-pro-en-ligne-screenshot.png" alt="Aperçu Revolut Business"
+      <img src="/revolut-business-banque-pro-en-ligne-screenshot.png" alt="Aperçu Revolut-business-banque-pro-en-ligne"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -679,15 +670,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="fiducial-banque-banque-pro-en-ligne">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Fiducial Banque</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">12€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Fiducial-banque-banque-pro-en-ligne</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/fiducial-banque-banque-pro-en-ligne-screenshot.png" alt="Aperçu Fiducial Banque"
+      <img src="/fiducial-banque-banque-pro-en-ligne-screenshot.png" alt="Aperçu Fiducial-banque-banque-pro-en-ligne"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -732,15 +719,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="hello-business-hello-bank-banque-pro-en-ligne">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Hello Business (Hello bank!)</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">10,9€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Hello-business-hello-bank-banque-pro-en-ligne</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/hello-business-hello-bank-banque-pro-en-ligne-screenshot.png" alt="Aperçu Hello Business (Hello bank!)"
+      <img src="/hello-business-hello-bank-banque-pro-en-ligne-screenshot.png" alt="Aperçu Hello-business-hello-bank-banque-pro-en-ligne"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -787,15 +770,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="monabanq-pro-banque-pro-en-ligne">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Monabanq Pro</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">9€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Monabanq-pro-banque-pro-en-ligne</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/monabanq-pro-banque-pro-en-ligne-screenshot.png" alt="Aperçu Monabanq Pro"
+      <img src="/monabanq-pro-banque-pro-en-ligne-screenshot.png" alt="Aperçu Monabanq-pro-banque-pro-en-ligne"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -840,15 +819,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="finom-banque-pro-en-ligne">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Finom</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">0€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Finom-banque-pro-en-ligne</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/finom-banque-pro-en-ligne-screenshot.png" alt="Aperçu Finom"
+      <img src="/finom-banque-pro-en-ligne-screenshot.png" alt="Aperçu Finom-banque-pro-en-ligne"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -889,15 +864,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="shine-banque-pro-en-ligne">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Shine</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">0€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Shine-banque-pro-en-ligne</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/shine-banque-pro-en-ligne-screenshot.png" alt="Aperçu Shine"
+      <img src="/shine-banque-pro-en-ligne-screenshot.png" alt="Aperçu Shine-banque-pro-en-ligne"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -940,15 +911,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="blank-banque-pro-en-ligne">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Blank</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">9€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Blank-banque-pro-en-ligne</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/blank-banque-pro-en-ligne-screenshot.png" alt="Aperçu Blank"
+      <img src="/blank-banque-pro-en-ligne-screenshot.png" alt="Aperçu Blank-banque-pro-en-ligne"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -991,15 +958,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="anytime-banque-pro-en-ligne">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Anytime</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">9,5€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Anytime-banque-pro-en-ligne</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/anytime-banque-pro-en-ligne-screenshot.png" alt="Aperçu Anytime"
+      <img src="/anytime-banque-pro-en-ligne-screenshot.png" alt="Aperçu Anytime-banque-pro-en-ligne"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -1042,15 +1005,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="indy-banque-pro-en-ligne">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Indy</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">0€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Indy-banque-pro-en-ligne</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/indy-banque-pro-en-ligne-screenshot.png" alt="Aperçu Indy"
+      <img src="/indy-banque-pro-en-ligne-screenshot.png" alt="Aperçu Indy-banque-pro-en-ligne"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -1093,15 +1052,11 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
   <div class="logiciel-card" id="propulse-by-ca-banque-pro-en-ligne">
     <div class="logiciel-header">
       <div style="flex:1">
-        <h2 class="logiciel-name">Propulse by CA</h2>
-      </div>
-      <div style="text-align:right;flex-shrink:0">
-        <div style="font-size:13px;color:rgba(255,255,255,.5)">À partir de</div>
-        <div style="font-size:20px;font-weight:700;color:#fff">8€<span style="font-size:12px;font-weight:400;color:rgba(255,255,255,.5)">/mois</span></div>
+        <h2 class="logiciel-name">Propulse-by-ca-banque-pro-en-ligne</h2>
       </div>
     </div>
     <div class="logiciel-body">
-      <img src="/propulse-by-ca-banque-pro-en-ligne-screenshot.png" alt="Aperçu Propulse by CA"
+      <img src="/propulse-by-ca-banque-pro-en-ligne-screenshot.png" alt="Aperçu Propulse-by-ca-banque-pro-en-ligne"
         class="logiciel-screenshot" style="margin:0 0 16px"
         onerror="this.style.display='none'">
 
@@ -1266,32 +1221,7 @@ Une banque pro en ligne bien choisie transforme votre gestion quotidienne. Mais 
   </div>
 
 
-  <aside class="author-box" itemscope itemtype="https://schema.org/Person">
-    <img src="/author-photo.png" alt="Photo de Pierre Petit" class="author-avatar" loading="lazy" itemprop="image">
-    <div class="author-info">
-      <div class="author-label">À propos de l'auteur</div>
-      <div class="author-name" itemprop="name">Pierre Petit</div>
-      <div class="author-job" itemprop="jobTitle">Dirigeant TPE</div>
-      <p class="author-bio" itemprop="description">Pierre Petit dirige sa TPE depuis 6 ans à Strasbourg, où il accompagne le développement de son équipe avec pragmatisme et bienveillance. Fort de son expérience entrepreneuriale, il privilégie une approche humaine et des solutions concrètes pour faire grandir son entreprise au quotidien.</p>
-      <nav class="author-socials" aria-label="Réseaux sociaux de Pierre Petit">
-        <a href="https://www.youtube.com/@editionsdespros" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
-          YouTube
-        </a>
-        <a href="https://www.facebook.com/editionsdespros/" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
-          Facebook
-        </a>
-      </nav>
-    </div>
-  </aside>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Pierre Petit",
-"jobTitle": "Dirigeant TPE","description": "Pierre Petit dirige sa TPE depuis 6 ans à Strasbourg, où il accompagne le développement de son équipe avec pragmatisme et bienveillance. Fort de son expérience entrepreneuriale, il privilégie une approche humaine et des solutions concrètes pour faire grandir son entreprise au quotidien.","image": "https://www.editions-dp.com/author-photo.png","sameAs": ["https://www.youtube.com/@editionsdespros","https://www.facebook.com/editionsdespros/"],    "url": "https://www.editions-dp.com"
-  }
-  </script>
 
   <section class="maillage-section">
     <h3>Nos autres comparateurs <span style="color:var(--accent)">Marketing</span></h3>
@@ -1328,6 +1258,34 @@ Une banque pro en ligne bien choisie transforme votre gestion quotidienne. Mais 
       </a>
     </div>
   </section>
+
+
+  <aside class="author-box" itemscope itemtype="https://schema.org/Person">
+    <img src="/author-photo.png" alt="Photo de Pierre Petit" class="author-avatar" loading="lazy" itemprop="image">
+    <div class="author-info">
+      <div class="author-label">À propos de l'auteur</div>
+      <div class="author-name" itemprop="name">Pierre Petit</div>
+      <div class="author-job" itemprop="jobTitle">Dirigeant TPE</div>
+      <p class="author-bio" itemprop="description">Pierre Petit dirige sa TPE depuis 6 ans à Strasbourg, où il accompagne le développement de son équipe avec pragmatisme et bienveillance. Fort de son expérience entrepreneuriale, il privilégie une approche humaine et des solutions concrètes pour faire grandir son entreprise au quotidien.</p>
+      <nav class="author-socials" aria-label="Réseaux sociaux de Pierre Petit">
+        <a href="https://www.youtube.com/@editionsdespros" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
+          YouTube
+        </a>
+        <a href="https://www.facebook.com/editionsdespros/" class="author-social" rel="noopener noreferrer" target="_blank" itemprop="sameAs">
+          Facebook
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Pierre Petit",
+"jobTitle": "Dirigeant TPE","description": "Pierre Petit dirige sa TPE depuis 6 ans à Strasbourg, où il accompagne le développement de son équipe avec pragmatisme et bienveillance. Fort de son expérience entrepreneuriale, il privilégie une approche humaine et des solutions concrètes pour faire grandir son entreprise au quotidien.","image": "https://www.editions-dp.com/author-photo.png","sameAs": ["https://www.youtube.com/@editionsdespros","https://www.facebook.com/editionsdespros/"],    "url": "https://www.editions-dp.com"
+  }
+  </script>
 
 </main>
 
