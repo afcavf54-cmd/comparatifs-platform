@@ -2915,7 +2915,7 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     siblings=_siblings,
                     cat_parent=_cat_parent,
                     cat_name=cat,
-                    backlink_brands=_active_backlink_for(cat_slug, [(_p.get("nom") or _p.get("marque") or "") for _p in enriched_products]),
+                    backlink_brands=_active_backlink_for(cat_slug, [(_p.get("marque") or _p.get("nom") or "") for _p in enriched_products]),
                     backlink_anchor=_bl_anchor,
                 )
                 (output_dir / f"{page_slug}.html").write_text(html, encoding="utf-8")
