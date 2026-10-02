@@ -2571,16 +2571,19 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
             une URL au référentiel, rotation déterministe décalée par comparatif."""
             import hashlib as _hb
             from datetime import date as _date
-            _sfx = "-" + cat_slug
             pool, seen, counted = [], set(), set()
             for _nm in product_names:
                 if not _nm:
                     continue
                 _disp = str(_nm).strip()
                 # Nettoyage : retirer le suffixe mot-clé collé au nom (données Sheet
-                # parfois polluées) → "Abby-logiciel-de-comptabilite" devient "Abby".
-                if cat_slug and _disp.lower().endswith(_sfx.lower()):
-                    _disp = _disp[:-len(_sfx)].strip(" -")
+                # parfois polluées). On teste TOUS les mots-clés connus du site
+                # (plus longs d'abord) → "Axonaut-logiciel-de-comptabilite" → "Axonaut".
+                _low = _disp.lower()
+                for _kw in _all_kw_slugs:
+                    if _kw and _low.endswith("-" + _kw):
+                        _disp = _disp[:-(len(_kw) + 1)].strip(" -")
+                        break
                 _k = _disp.lower()
                 if _k not in counted:            # +1 comparateur par marque (dédoublonné)
                     counted.add(_k)
@@ -2627,6 +2630,9 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                          if any(kw.lower() in k.lower() or k.lower() in kw.lower() for kw in selected_keywords)}
             if categories:
                 print(f"  🎯 {len(categories)} catégories actives (filtre selected_keywords)")
+
+        # Tous les slugs de mots-clés du site (pour nettoyer les noms de marques backlink)
+        _all_kw_slugs = sorted({slugify_cat(_c) for _c in categories if _c}, key=len, reverse=True)
 
         if categories:
             classement_count = 0
