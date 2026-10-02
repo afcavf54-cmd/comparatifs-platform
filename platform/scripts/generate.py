@@ -2564,19 +2564,22 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 print(f"  ⚠ backlink-settings.json illisible : {_e_bl}")
         _bl_enabled = bool(_bl_settings.get("enabled")) and site_slug not in (_bl_settings.get("excluded_sites") or [])
         _bl_anchor = _bl_settings.get("anchor", "") or ""
-        _bl_discovered = set()        # marques rencontrées (suggestions dashboard)
+        _bl_discovered = {}           # marque → nb de comparateurs (ce site)
 
         def _active_backlink_for(cat_slug, product_names):
             """Marque(s) active(s) pour CE comparatif : parmi ses marques ayant
             une URL au référentiel, rotation déterministe décalée par comparatif."""
             import hashlib as _hb
             from datetime import date as _date
-            pool, seen = [], set()
+            pool, seen, counted = [], set(), set()
             for _nm in product_names:
                 if not _nm:
                     continue
-                _k = str(_nm).strip().lower()
-                _bl_discovered.add(str(_nm).strip())
+                _disp = str(_nm).strip()
+                _k = _disp.lower()
+                if _k not in counted:            # +1 comparateur par marque (dédoublonné)
+                    counted.add(_k)
+                    _bl_discovered[_disp] = _bl_discovered.get(_disp, 0) + 1
                 if _bl_enabled and cat_slug not in (_bl_settings.get("excluded_comparatifs") or []) \
                         and _k in _bl_brands_repo and _k not in seen:
                     seen.add(_k)
@@ -2919,20 +2922,25 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 classement_count += 1
                 print(f"  ✓ {page_slug}.html")
             print(f"  ✓ {classement_count} pages classement générées")
-            # Référentiel des marques découvertes (fusion globale, suggestions dashboard)
-            if _bl_discovered:
-                try:
-                    import json as _json_d
-                    _disc_path = ROOT / "backlink-discovered-brands.json"
-                    _existing = set()
-                    if _disc_path.exists():
-                        _existing = set(_json_d.loads(_disc_path.read_text(encoding="utf-8")) or [])
-                    _merged = sorted(_existing | _bl_discovered)
-                    if set(_merged) != _existing:
-                        _disc_path.write_text(_json_d.dumps(_merged, ensure_ascii=False, indent=0), encoding="utf-8")
-                        print(f"  ↳ {len(_merged)} marque(s) au référentiel découvert")
-                except Exception:
-                    pass
+            # Référentiel des marques découvertes : { site: { marque: nb_comparateurs } }
+            # On remplace la contribution de CE site (pas de double comptage au rebuild).
+            try:
+                import json as _json_d
+                _disc_path = ROOT / "backlink-discovered-brands.json"
+                _all = {}
+                if _disc_path.exists():
+                    _loaded = _json_d.loads(_disc_path.read_text(encoding="utf-8"))
+                    if isinstance(_loaded, dict):
+                        _all = _loaded  # ancien format liste → repart à neuf
+                if _all.get(site_slug) != _bl_discovered:
+                    if _bl_discovered:
+                        _all[site_slug] = _bl_discovered
+                    else:
+                        _all.pop(site_slug, None)
+                    _disc_path.write_text(_json_d.dumps(_all, ensure_ascii=False, indent=0), encoding="utf-8")
+                    print(f"  ↳ {len(_bl_discovered)} marque(s) découverte(s) sur ce site")
+            except Exception:
+                pass
 
         # ── Page Nos comparateurs ──────────────────────────────────────────
         nos_comp_tpl_path = TEMPLATES_DIR / "nos-comparateurs.html.j2"
