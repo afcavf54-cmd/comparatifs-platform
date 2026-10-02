@@ -2785,6 +2785,15 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 for prod in cat_products:
                     p = dict(prod)
                     slug = prod.get("slug", "")
+                    # Nom d'affichage : si le nom est vide ou slugifié (mot-clé collé),
+                    # on le nettoie + embellit → "square-reader-terminaux-de-paiement"
+                    # devient "Square Reader" (sur le site, le titre, l'alt, etc.).
+                    _raw_nom = (p.get("nom") or p.get("marque") or slug or "").strip()
+                    _clean_nom = _KW_STRIP.sub('', _raw_nom).strip(' -')
+                    if _re_bl.match(r'^[a-z0-9]+(?:-[a-z0-9]+)+$', _clean_nom):
+                        _clean_nom = _clean_nom.replace('-', ' ').title()
+                    if _clean_nom:
+                        p["nom"] = _clean_nom
                     # Résolution screenshot — priorité à l'image PROPRE au site
                     # (platform/sites/<site>/public/screenshots/<slug>-screenshot.*),
                     # sinon image partagée du schema, sinon default .png.
