@@ -126,6 +126,9 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .author-social:hover{border-color:var(--accent);color:var(--accent)}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
+.backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
+.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
 .maillage-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -1017,24 +1020,7 @@ La reprise d'historique n'est pas toujours nécessaire. Concentrez-vous sur les 
   </div>
 
 
-  <aside class="author-box" itemscope itemtype="https://schema.org/Person">
-    <img src="/author-photo.png" alt="Photo de Marie Simon" class="author-avatar" loading="lazy" itemprop="image">
-    <div class="author-info">
-      <div class="author-label">À propos de l'auteur</div>
-      <div class="author-name" itemprop="name">Marie Simon</div>
-      <div class="author-job" itemprop="jobTitle">Responsable comptable</div>
-      <p class="author-bio" itemprop="description">Marie Simon est responsable comptable, spécialisée dans l'accompagnement des TPE, indépendants et commerces de proximité. Elle teste et compare les outils de gestion au quotidien pour aider les entrepreneurs locaux à choisir les bons logiciels, sans jargon.</p>
-    </div>
-  </aside>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Marie Simon",
-"jobTitle": "Responsable comptable","description": "Marie Simon est responsable comptable, spécialisée dans l'accompagnement des TPE, indépendants et commerces de proximité. Elle teste et compare les outils de gestion au quotidien pour aider les entrepreneurs locaux à choisir les bons logiciels, sans jargon.","image": "https://www.sauvonslaproximite.com/author-photo.png",    "url": "https://www.sauvonslaproximite.com"
-  }
-  </script>
 
   <section class="maillage-section">
     <h3>Nos autres comparateurs <span style="color:var(--accent)">Marketing</span></h3>
@@ -1071,6 +1057,26 @@ La reprise d'historique n'est pas toujours nécessaire. Concentrez-vous sur les 
       </a>
     </div>
   </section>
+
+
+  <aside class="author-box" itemscope itemtype="https://schema.org/Person">
+    <img src="/author-photo.png" alt="Photo de Marie Simon" class="author-avatar" loading="lazy" itemprop="image">
+    <div class="author-info">
+      <div class="author-label">À propos de l'auteur</div>
+      <div class="author-name" itemprop="name">Marie Simon</div>
+      <div class="author-job" itemprop="jobTitle">Responsable comptable</div>
+      <p class="author-bio" itemprop="description">Marie Simon est responsable comptable, spécialisée dans l'accompagnement des TPE, indépendants et commerces de proximité. Elle teste et compare les outils de gestion au quotidien pour aider les entrepreneurs locaux à choisir les bons logiciels, sans jargon.</p>
+    </div>
+  </aside>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Marie Simon",
+"jobTitle": "Responsable comptable","description": "Marie Simon est responsable comptable, spécialisée dans l'accompagnement des TPE, indépendants et commerces de proximité. Elle teste et compare les outils de gestion au quotidien pour aider les entrepreneurs locaux à choisir les bons logiciels, sans jargon.","image": "https://www.sauvonslaproximite.com/author-photo.png",    "url": "https://www.sauvonslaproximite.com"
+  }
+  </script>
 
 </main>
 
