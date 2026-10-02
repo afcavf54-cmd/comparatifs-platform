@@ -1457,8 +1457,19 @@
       "mypos-go-2-terminaux-de-paiement",
       "revolut-reader-terminaux-de-paiement",
       "smile-pay-mini-terminaux-de-paiement",
-      "stancer-terminaux-de-paiement"
-    ]
+      "stancer-terminaux-de-paiement",
+      "Flatpay-tpe"
+    ],
+    "products_order": {
+      "Flatpay-tpe": 1,
+      "square-reader-terminaux-de-paiement": 2,
+      "zettle-reader-2-terminaux-de-paiement": 3,
+      "sumup-solo-lite-terminaux-de-paiement": 4,
+      "mypos-go-2-terminaux-de-paiement": 5,
+      "revolut-reader-terminaux-de-paiement": 6,
+      "smile-pay-mini-terminaux-de-paiement": 7,
+      "stancer-terminaux-de-paiement": 8
+    }
   },
   "classement-prod-legalplace": {
     "description": "<p>LegalPlace, je l'ai découvert quand j'ai monté ma micro-entreprise l'année dernière. <strong>Plutôt que de me limiter aux formalités de base</strong>, ils proposent un vrai accompagnement juridique avec des avocats partenaires. J'ai pu créer ma société en ligne, mais aussi obtenir des réponses précises sur mes statuts et mes responsabilités.</p><p>Ce qui m'a marqué ? Le suivi personnalisé après création. Mon conseiller m'a appelé pour vérifier que tout était en ordre et m'expliquer mes obligations comptables. <strong>Beaucoup plus rassurant qu'un simple formulaire en ligne.</strong> Leurs tarifs sont transparents : 149€ pour une SASU, 199€ pour une SARL, avec possibilité de paiement en 3 fois.</p><p>Je recommande LegalPlace aux entrepreneurs qui veulent <strong>sécuriser juridiquement leur projet</strong> dès le départ. Si vous cherchez juste à déposer des statuts basiques sans conseil, passez votre chemin. Ici, on paie aussi pour l'expertise et la tranquillité d'esprit.</p>",
@@ -6212,5 +6223,20 @@
     "description": "",
     "points_forts": [],
     "points_faibles": []
+  },
+  "classement-prod-Flatpay-tpe": {
+    "nom": "Flatpay",
+    "marque": "Flatpay",
+    "description": "<p><strong>Flatpay</strong> est une solution de paiement scandinave innovante qui révolutionne la façon dont les commerçants acceptent les paiements par carte. Fondée sur un modèle tarifaire ultra-transparent, Flatpay propose un <strong>taux unique et fixe</strong> sans frais cachés ni abonnements mensuels, ce qui en fait une option particulièrement attractive pour les petites et moyennes entreprises. Le terminal Flatpay se distingue par son design épuré et moderne, combiné à une technologie de pointe acceptant toutes les méthodes de paiement populaires : carte à puce, sans contact et paiements mobiles (Apple Pay, Google Pay). Son application de gestion intuitive offre aux commerçants un tableau de bord clair pour suivre leurs transactions en temps réel, gérer leurs ventes et accéder à des rapports détaillés. Flatpay mise sur la <strong>simplicité d'utilisation</strong> et la rapidité d'onboarding, permettant aux commerces d'être opérationnels en quelques heures seulement.</p>",
+    "points_forts": [
+      "Tarification fixe et transparente avec un taux unique sans frais cachés ni abonnement mensuel surprenant",
+      "Mise en service ultra-rapide permettant au commerçant d'accepter des paiements en quelques heures seulement",
+      "Interface intuitive et design moderne avec une application de gestion complète pour suivre les ventes en temps réel"
+    ],
+    "points_faibles": [
+      "Disponibilité géographique encore limitée, principalement concentrée sur les marchés scandinaves et quelques pays européens",
+      "Offre de fonctionnalités avancées moins étendue que certains concurrents établis pour les grandes entreprises avec des besoins complexes"
+    ],
+    "url_affiliation": "https://www.financeads.net/tc.php?t=86140C5654135202T"
   }
 }
