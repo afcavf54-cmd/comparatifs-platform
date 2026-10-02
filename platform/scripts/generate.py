@@ -2607,7 +2607,10 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
             days = int(_bl_settings.get("rotation_days") or 21) or 21
             sim = max(1, int(_bl_settings.get("simultaneous") or 1))
             period = max(0, (_date.today() - _date(2026, 1, 1)).days) // days
-            offset = int(_hb.md5(cat_slug.encode()).hexdigest()[:6], 16)  # décalage par comparatif
+            # Décalage par (SITE + comparatif) : le même comparatif pointe vers une
+            # marque DIFFÉRENTE selon le site → à un instant donné, l'ensemble des sites
+            # couvre toutes les marques (détection plus rapide de qui réagit).
+            offset = int(_hb.md5(f"{site_slug}|{cat_slug}".encode()).hexdigest()[:6], 16)
             n = len(pool)
             idx = ((period + offset) * sim) % n
             return [pool[(idx + i) % n] for i in range(min(sim, n))]
