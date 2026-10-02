@@ -1500,8 +1500,19 @@
       "mypos-go-2-terminaux-de-paiement",
       "revolut-reader-terminaux-de-paiement",
       "smile-pay-mini-terminaux-de-paiement",
-      "stancer-terminaux-de-paiement"
-    ]
+      "stancer-terminaux-de-paiement",
+      "Flatpay-tpe"
+    ],
+    "products_order": {
+      "Flatpay-tpe": 1,
+      "square-reader-terminaux-de-paiement": 2,
+      "zettle-reader-2-terminaux-de-paiement": 3,
+      "sumup-solo-lite-terminaux-de-paiement": 4,
+      "mypos-go-2-terminaux-de-paiement": 5,
+      "revolut-reader-terminaux-de-paiement": 6,
+      "smile-pay-mini-terminaux-de-paiement": 7,
+      "stancer-terminaux-de-paiement": 8
+    }
   },
   "classement-prod-legalplace": {
     "nom": "LegalPlace",
@@ -8982,5 +8993,20 @@
       "Coûts cachés d'hébergement et de plugins premium",
       "Vulnérable aux attaques si mal sécurisé"
     ]
+  },
+  "classement-prod-Flatpay-tpe": {
+    "nom": "Flatpay",
+    "marque": "Flatpay",
+    "description": "<p>Flatpay est une solution de paiement scandinave qui se distingue par sa <strong>transparence tarifaire exceptionnelle</strong> et sa simplicité d'utilisation. Conçue spécialement pour les petites et moyennes entreprises, cette fintech propose un modèle de tarification unique avec un <strong>taux fixe par transaction</strong>, sans frais cachés ni abonnement mensuel complexe. Ses terminaux de paiement élégants et intuitifs acceptent toutes les méthodes de paiement modernes : cartes bancaires, paiements sans contact, Apple Pay et Google Pay. Flatpay mise sur une <strong>installation ultra-rapide</strong> et un support client réactif pour permettre aux commerçants de se concentrer sur leur activité principale sans se soucier de la complexité technique des paiements.</p>",
+    "points_forts": [
+      "Tarification transparente avec un taux fixe unique sans frais cachés ni mauvaises surprises sur la facture",
+      "Mise en service extrêmement rapide et interface intuitive ne nécessitant aucune formation technique particulière",
+      "Support client dédié et réactif disponible pour accompagner les commerçants à chaque étape"
+    ],
+    "points_faibles": [
+      "Disponibilité géographique encore limitée, principalement concentrée sur les marchés nordiques et quelques pays européens",
+      "Fonctionnalités avancées et intégrations tierces moins nombreuses comparées aux acteurs historiques comme SumUp ou Stripe"
+    ],
+    "url_affiliation": "https://www.financeads.net/tc.php?t=86140C5654135202T"
   }
 }
