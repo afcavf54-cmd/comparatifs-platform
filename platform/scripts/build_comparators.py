@@ -179,7 +179,10 @@ def gen(user: str, system: str) -> str:
     if not call_claude_fast:
         return ""
     try:
-        return (call_claude_fast(user, system=system) or "").strip()
+        raw = (call_claude_fast(user, system=system) or "").strip()
+        raw = re.sub(r"^\s*```[a-zA-Z]*\s*", "", raw)   # retirer fence ```html
+        raw = re.sub(r"\s*```\s*$", "", raw)
+        return raw.strip()
     except Exception as e:
         print(f"    ⚠ génération : {e}")
         return ""
