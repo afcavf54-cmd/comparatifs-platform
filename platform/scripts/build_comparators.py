@@ -225,6 +225,7 @@ def main(site: str, force: bool = False):
             editorial = {}
 
     repo = load_backlink_repo()
+    bl_sheet_urls: dict = {}   # norm(nom) -> (nom, url) à injecter dans le référentiel backlinks
     s_index = site_index_for(site)
     global_prompt, persona = load_schema_prompts(site_dir, config)
     shots_dir = site_dir / "public" / "screenshots"
@@ -239,6 +240,10 @@ def main(site: str, force: bool = False):
         if not titre or not marques_cell.strip():
             continue
         brands = parse_brands(marques_cell)
+        for _b in brands:
+            _bu = (_b.get("url") or "").strip()
+            if _bu:
+                bl_sheet_urls[norm(_b["name"])] = (_b["name"], _bu)
         if not brands:
             continue
         cat_slug = slugify(titre)
@@ -358,6 +363,30 @@ def main(site: str, force: bool = False):
 
     ed_path.write_text(json.dumps(editorial, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"  ✓ editorial.json mis à jour ({len(rows)} comparateur(s))")
+
+    # ── Référentiel backlinks : injecter les URLs du Sheet (sans écraser l'existant) ──
+    if bl_sheet_urls:
+        bl_path = ROOT / "backlink-settings.json"
+        bl = {}
+        if bl_path.exists():
+            try:
+                bl = json.loads(bl_path.read_text(encoding="utf-8"))
+            except Exception:
+                bl = {}
+        bl.setdefault("brands", {})
+        existing_norm = {norm(k): k for k in bl["brands"]}
+        changed = 0
+        for n, (name, url) in bl_sheet_urls.items():
+            k = existing_norm.get(n)
+            if k is None:
+                bl["brands"][name] = url
+                changed += 1
+            elif not str(bl["brands"].get(k) or "").strip():
+                bl["brands"][k] = url
+                changed += 1
+        if changed:
+            bl_path.write_text(json.dumps(bl, ensure_ascii=False, indent=2), encoding="utf-8")
+            print(f"  🔗 référentiel backlinks : {changed} URL(s) ajoutée(s)")
 
 
 if __name__ == "__main__":
