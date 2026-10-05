@@ -211,6 +211,9 @@ def _fetch_youtube_videos(site, limit=4):
 def md_to_html(text):
     if not text: return text
     import re as _re2
+    # Retirer d'éventuelles fences markdown (```html ... ```) que l'IA ajoute parfois.
+    text = _re2.sub(r'^\s*```[a-zA-Z]*\s*', '', text)
+    text = _re2.sub(r'\s*```\s*$', '', text)
     # Contenu issu du contentEditable avec des <div>/<br> par ligne (sans <p>) :
     # on normalise en paragraphes. Un <div> vide ou un <br> isolé = saut de
     # paragraphe ; une frontière entre deux <div> = espace (phrase qui continue).
