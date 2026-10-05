@@ -59,7 +59,7 @@ _API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 def call_claude_fast(prompt: str, system: str = None, max_retries: int = 3) -> str:
     if not _API_KEY:
         return ""
-    body = {"model": MODEL, "max_tokens": 2000,
+    body = {"model": MODEL, "max_tokens": 4000,
             "messages": [{"role": "user", "content": prompt}]}
     if system:
         body["system"] = system
@@ -264,6 +264,10 @@ def main(site: str, force: bool = False):
         })
         if categorie_parente:
             cls["cat_parent"] = categorie_parente   # catégorie parente (maillage + listing)
+        # Titre H2 avant le classement : on retire un éventuel "Meilleur(s)/Top N"
+        # en tête du titre pour éviter "Mon classement des meilleurs Meilleurs …".
+        _ta = re.sub(r"^(?:meilleur[es]?s?|top\s*\d*)\s+", "", titre, flags=re.I).strip()
+        cls["titre_analyse"] = f"Mon classement des meilleurs {_ta}" if _ta else titre
         # Fallbacks (si l'IA échoue)
         cls.setdefault("h1", titre)
         cls.setdefault("meta_title", f"{titre} ({YEAR})")
@@ -294,11 +298,15 @@ def main(site: str, force: bool = False):
                 f"Accroche concrète, à la première personne, sans lister les marques.",
                 build_system(global_prompt, persona, brand_names, False))
         if force or not str(cls.get("en_bref", "")).strip():
+            # "En bref" = seulement les 5 PREMIÈRES marques du classement (ordre figé)
+            _slug2name = {slugify(b["name"]): b["name"] for b in brands}
+            _top5 = [_slug2name.get(_s, _s) for _s in order[:5]]
             cls["en_bref"] = gen(
-                f"Pour le comparatif « {titre} », rédige un bloc « En bref » : une puce <li> par marque "
-                f"(marque en <strong>) indiquant pour quel profil elle est idéale. "
-                f"Réponds en HTML <li>…</li> uniquement, une puce par marque, marques : {', '.join(brand_names)}.",
-                build_system(global_prompt, persona, brand_names, False))
+                f"Pour le comparatif « {titre} », rédige un bloc « En bref » : une puce <li> pour CHACUNE "
+                f"de ces 5 marques (et UNIQUEMENT celles-ci, dans cet ordre), marque en <strong>, indiquant "
+                f"pour quel profil elle est idéale. Réponds en HTML <li>…</li> uniquement, exactement 5 puces. "
+                f"Marques : {', '.join(_top5)}.",
+                build_system(global_prompt, persona, _top5, False))
         if force or not str(cls.get("contenu_custom", "")).strip():
             cls["contenu_custom"] = gen(
                 f"Rédige un contenu éditorial SEO complet en HTML sur le thème « {titre} », à placer APRÈS le classement. "
