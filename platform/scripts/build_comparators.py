@@ -106,6 +106,7 @@ def fetch_csv(url: str) -> list[dict]:
     try:
         r = requests.get(url, timeout=60)
         r.raise_for_status()
+        r.encoding = "utf-8"   # Google Sheets CSV = UTF-8 ; sinon mojibake (é→Ã©, '→â€™)
         return list(csv.DictReader(io.StringIO(r.text)))
     except Exception as e:
         print(f"⚠ fetch Sheet comparateurs : {e}")
@@ -176,6 +177,15 @@ def build_system(global_prompt: str, persona: str, brand_names: list[str], is_js
     return "\n\n".join([p for p in [global_prompt, persona, products, base] if p])
 
 
+def _no_long_dash(t: str) -> str:
+    """Le prompt interdit les tirets longs — on garantit leur absence."""
+    t = re.sub(r"\s*—\s*", ", ", t)                 # em-dash → virgule
+    t = re.sub(r"(\d)\s*–\s*(\d)", r"\1-\2", t)     # en-dash entre chiffres → trait d'union (plages)
+    t = re.sub(r"\s*–\s*", ", ", t)                 # en-dash restant → virgule
+    t = re.sub(r",\s*,", ",", t)                    # nettoie les virgules doublées
+    return t
+
+
 def gen(user: str, system: str) -> str:
     if not call_claude_fast:
         return ""
@@ -183,7 +193,7 @@ def gen(user: str, system: str) -> str:
         raw = (call_claude_fast(user, system=system) or "").strip()
         raw = re.sub(r"^\s*```[a-zA-Z]*\s*", "", raw)   # retirer fence ```html
         raw = re.sub(r"\s*```\s*$", "", raw)
-        return raw.strip()
+        return _no_long_dash(raw.strip())
     except Exception as e:
         print(f"    ⚠ génération : {e}")
         return ""
