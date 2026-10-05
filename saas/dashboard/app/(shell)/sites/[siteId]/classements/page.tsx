@@ -943,7 +943,9 @@ export default function ClassementsPage() {
               {(() => {
                 const grouped: Record<string, string[]> = {}
                 Object.keys(classements).forEach(key => {
-                  const cat = keywordCategories[key] || 'Autres'
+                  // cat_parent (défini sur le comparateur, ex. autonome via Sheet/admin)
+                  // prime sur la catégorie du schema.
+                  const cat = (classements[key] as any)?.cat_parent || keywordCategories[key] || 'Autres'
                   if (!grouped[cat]) grouped[cat] = []
                   grouped[cat].push(key)
                 })
@@ -1003,6 +1005,17 @@ export default function ClassementsPage() {
                       <button onClick={makeAutonome} style={{ padding: '7px 14px', borderRadius: 8, border: 'none', background: '#00D4AA', color: '#04121C', fontWeight: 700, fontSize: 12.5, cursor: 'pointer', whiteSpace: 'nowrap' }}>🔒 Rendre autonome</button>
                     </>
                   )}
+                </div>
+
+                <div style={{ marginBottom: 16 }}>
+                  <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5 }}>Catégorie <span style={{ color: '#4A5568', fontWeight: 400, textTransform: 'none' as const }}>(regroupe les comparateurs : /nos-comparateurs + maillage)</span></div>
+                  <input value={selectedData.cat_parent || ''} onChange={e => updateField(selected, 'cat_parent', e.target.value)}
+                    placeholder={keywordCategories[selected] || 'Ex : Goodies & objets pub'}
+                    list="cat-parent-list"
+                    style={{ width: '100%', padding: '9px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
+                  <datalist id="cat-parent-list">
+                    {[...new Set([...Object.values(keywordCategories), ...Object.values(classements).map((c: any) => c?.cat_parent).filter(Boolean)])].map((c: any) => <option key={c} value={c} />)}
+                  </datalist>
                 </div>
 
                 <div onClick={() => toggleSection('seo')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections['seo'] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>🔍 SEO</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
