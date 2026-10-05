@@ -46,7 +46,7 @@ export default function SettingsPage() {
   const [themeForm, setThemeForm] = useState({ accent: '#2563EB', accent2: '#F59E0B', bg: '#F8FAFC', ink: '#0F172A', cta_color: '#F59E0B', cta_text_color: '#ffffff' })
   const [savingTheme, setSavingTheme] = useState(false)
   const [msgTheme, setMsgTheme] = useState('')
-  const [seoForm, setSeoForm] = useState({ home_title: '', home_description: '', home_h1: '', footer_description: '', social_facebook: '', social_linkedin: '', social_x: '', social_youtube: '', social_instagram: '', social_tiktok: '', seo_vs_title: '{A} vs {B} : comparatif {year}', seo_vs_meta: 'Comparatif complet {A} vs {B} {year} : rendements, frais, avis.', seo_avis_title: 'Avis {nom} {year} : faut-il investir ?', seo_avis_meta: 'Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques.', seo_liste_comp_title: 'Tous les comparatifs {site_name} {year}', seo_liste_avis_title: 'Avis {site_name} {year} : analyses independantes', seo_classement_title: 'Meilleur {categorie} {year} : Top {count}', seo_classement_meta: 'Comparez les meilleurs {categorie} en {year}.', seo_classement_h1: '', seo_classement_titre_analyse: 'Comparatif complet {categorie}', www_preference: 'www' })
+  const [seoForm, setSeoForm] = useState({ home_title: '', home_description: '', home_h1: '', footer_description: '', social_facebook: '', social_linkedin: '', social_x: '', social_youtube: '', social_instagram: '', social_tiktok: '', seo_vs_title: '{A} vs {B} : comparatif {year}', seo_vs_meta: 'Comparatif complet {A} vs {B} {year} : rendements, frais, avis.', seo_avis_title: 'Avis {nom} {year} : faut-il investir ?', seo_avis_meta: 'Notre avis complet sur {nom} {year} : rendement {td}%, frais, points forts et risques.', seo_liste_comp_title: 'Tous les comparatifs {site_name} {year}', seo_liste_avis_title: 'Avis {site_name} {year} : analyses independantes', seo_classement_title: 'Meilleur {categorie} {year} : Top {count}', seo_classement_meta: 'Comparez les meilleurs {categorie} en {year}.', seo_classement_h1: '', seo_classement_titre_analyse: 'Comparatif complet {categorie}', www_preference: 'www', comparators_sheet_csv_url: '' })
   const [pageTypes, setPageTypes] = useState<Record<string, string>>({})
   const [saving, setSaving] = useState(false)
   const [savingSeo, setSavingSeo] = useState(false)
@@ -99,7 +99,7 @@ export default function SettingsPage() {
       if (d) {
         if (d.theme) setThemeForm(t => ({ ...t, ...d.theme, cta_color: d.theme.cta_color || '#F59E0B', cta_text_color: d.theme.cta_text_color || '#ffffff' }))
         setSeoForm(f => ({ ...f, home_title: d.home_title || '', home_description: d.home_description || '',
-              home_h1: d.home_h1 || '', footer_description: d.footer_description || '', social_facebook: d.social_facebook || '', social_linkedin: d.social_linkedin || '', social_x: d.social_x || '', social_youtube: d.social_youtube || '', social_instagram: d.social_instagram || '', social_tiktok: d.social_tiktok || '', seo_vs_title: d.seo?.title_pattern || f.seo_vs_title, seo_vs_meta: d.seo?.meta_pattern || f.seo_vs_meta, seo_avis_title: d.seo?.avis_title_pattern || f.seo_avis_title, seo_avis_meta: d.seo?.avis_meta_pattern || f.seo_avis_meta, seo_liste_comp_title: d.seo?.liste_comp_title || f.seo_liste_comp_title, seo_liste_avis_title: d.seo?.liste_avis_title || f.seo_liste_avis_title, seo_classement_title: d.seo?.classement_title_pattern || f.seo_classement_title, seo_classement_meta: d.seo?.classement_meta_pattern || f.seo_classement_meta, seo_classement_h1: d.seo?.classement_h1_pattern || f.seo_classement_h1, seo_classement_titre_analyse: d.seo?.classement_titre_analyse_pattern || f.seo_classement_titre_analyse, www_preference: d.www_preference || 'www' }))
+              home_h1: d.home_h1 || '', footer_description: d.footer_description || '', social_facebook: d.social_facebook || '', social_linkedin: d.social_linkedin || '', social_x: d.social_x || '', social_youtube: d.social_youtube || '', social_instagram: d.social_instagram || '', social_tiktok: d.social_tiktok || '', seo_vs_title: d.seo?.title_pattern || f.seo_vs_title, seo_vs_meta: d.seo?.meta_pattern || f.seo_vs_meta, seo_avis_title: d.seo?.avis_title_pattern || f.seo_avis_title, seo_avis_meta: d.seo?.avis_meta_pattern || f.seo_avis_meta, seo_liste_comp_title: d.seo?.liste_comp_title || f.seo_liste_comp_title, seo_liste_avis_title: d.seo?.liste_avis_title || f.seo_liste_avis_title, seo_classement_title: d.seo?.classement_title_pattern || f.seo_classement_title, seo_classement_meta: d.seo?.classement_meta_pattern || f.seo_classement_meta, seo_classement_h1: d.seo?.classement_h1_pattern || f.seo_classement_h1, seo_classement_titre_analyse: d.seo?.classement_titre_analyse_pattern || f.seo_classement_titre_analyse, www_preference: d.www_preference || 'www', comparators_sheet_csv_url: d.comparators_sheet_csv_url || '' }))
         if (d.page_types) setPageTypes(d.page_types)
         // Charger auteur
         if (d.author) {
@@ -334,6 +334,22 @@ export default function SettingsPage() {
         <button onClick={uploadFavicon} disabled={uploadingFavicon || !faviconFile} style={{ padding: '10px 22px', borderRadius: 9, border: 'none', fontWeight: 600, fontSize: 13, background: faviconFile ? 'linear-gradient(135deg, #00D4AA, #0090FF)' : '#1E2D3D', color: faviconFile ? '#fff' : '#4A5568', cursor: faviconFile ? 'pointer' : 'not-allowed' }}>
           {uploadingFavicon ? '⏳ Upload...' : '💾 Sauvegarder le favicon'}
         </button>
+      </div>
+
+      {/* ── COMPARATEURS EN MASSE ── */}
+      <div style={{background:'#0D1117',border:'1px solid #1E2D3D',borderRadius:12,padding:24,marginBottom:24}}>
+        <h3 style={{color:'#fff',fontSize:16,fontWeight:600,marginBottom:6}}>⚡ Comparateurs en masse</h3>
+        <p style={{color:'#8B9CB0',fontSize:13,marginBottom:16,lineHeight:1.6}}>
+          URL CSV d'un Google Sheet (colonnes <b>Titre</b>, <b>Marques</b>, <b>Date</b>). Chaque ligne génère un comparateur : classement, screenshots des sites (décalés par site), descriptions, avantages/inconvénients, bloc générique et FAQ. Marques séparées par <b>;</b>, lien optionnel après <b>|</b> (ex. <i>Marque | https://marque.fr</i>).
+        </p>
+        <input value={(seoForm as any)['comparators_sheet_csv_url'] || ''} onChange={e => setSeoForm(f => ({ ...f, comparators_sheet_csv_url: e.target.value }))}
+          placeholder="https://docs.google.com/spreadsheets/d/e/…/pub?gid=0&single=true&output=csv"
+          style={{ width: '100%', padding: '11px 14px', borderRadius: 10, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 12, fontFamily: 'monospace', outline: 'none', boxSizing: 'border-box' as const, marginBottom: 14 }} />
+        <div>
+          <button onClick={saveSeo} disabled={savingSeo} style={{ padding: '10px 20px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #00D4AA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>{savingSeo ? 'Sauvegarde...' : '💾 Sauvegarder'}</button>
+          <button onClick={saveSeoAndDeploy} disabled={deployingSeo} style={{ marginLeft: 10, padding: '10px 20px', borderRadius: 10, border: 'none', background: 'linear-gradient(135deg, #9F7AEA, #0090FF)', color: '#fff', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}>{deployingSeo ? '🚀 Déploiement...' : '🚀 Sauvegarder et générer'}</button>
+          {msgSeo && <span style={{ marginLeft: 12, fontSize: 13, color: msgSeo.startsWith('✓') ? '#00D4AA' : '#FC8181' }}>{msgSeo}</span>}
+        </div>
       </div>
 
       {/* ── PERSONA ── */}
