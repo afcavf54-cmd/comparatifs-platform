@@ -7,6 +7,20 @@ import Link from 'next/link'
 
 
 // ── HtmlEditor v2 (visuel + source) ─────────────────────────────────────
+// Nom d'affichage propre : retire le mot-clé collé et embellit les slugs
+// ("square-reader-terminaux-de-paiement" → "Square Reader").
+function prettyName(raw: any): string {
+  let c = String(raw || '')
+    .replace(/-(?:logiciels?|outils?)\b.*$/i, '')
+    .replace(/-terminaux-de-paiement$/i, '')
+    .replace(/-expert-comptable-en-ligne$/i, '')
+    .replace(/-banque-pro-en-ligne$/i, '')
+    .replace(/^[-\s]+|[-\s]+$/g, '')
+  if (/^[a-z0-9]+(?:-[a-z0-9]+)+$/.test(c)) c = c.replace(/-/g, ' ').replace(/\b\w/g, m => m.toUpperCase())
+  else if (c && c === c.toLowerCase() && !c.includes(' ')) c = c.charAt(0).toUpperCase() + c.slice(1)
+  return c
+}
+
 function HtmlEditor({ value, onChange, rows = 8, placeholder }: { value: string, onChange: (v: string) => void, rows?: number, placeholder?: string }) {
   const [mode, setMode] = React.useState<'visual'|'source'>('visual')
   const editorRef = React.useRef<HTMLDivElement>(null)
@@ -1136,7 +1150,7 @@ export default function ClassementsPage() {
                           {ordered.map((prod: any, idx: number) => (
                             <div key={prod.slug} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 12px', background: '#0A0E1A', borderRadius: 8, border: '1px solid #1E2D3D' }}>
                               <span style={{ width: 22, textAlign: 'center' as const, fontSize: 13, fontWeight: 700, color: hasManual ? '#00D4AA' : '#8B9CB0' }}>{idx + 1}</span>
-                              <span style={{ flex: 1, fontSize: 13, color: '#E5E9F0' }}>{prod.nom}</span>
+                              <span style={{ flex: 1, fontSize: 13, color: '#E5E9F0' }}>{prettyName(prod.nom)}</span>
                               {prod.note_redaction && <span style={{ fontSize: 11, color: '#4A5568' }}>★ {prod.note_redaction}</span>}
                               <button onClick={() => move(idx, -1)} disabled={idx === 0} title="Monter"
                                 style={{ width: 28, height: 28, borderRadius: 6, border: '1px solid #1E2D3D', background: idx === 0 ? '#0A0E1A' : '#0D1117', color: idx === 0 ? '#2A3441' : '#8B9CB0', cursor: idx === 0 ? 'default' : 'pointer', fontSize: 14, lineHeight: 1 }}>↑</button>
@@ -1253,7 +1267,7 @@ export default function ClassementsPage() {
                           <div onClick={() => setExpandedBrands(p => ({ ...p, [prodKey]: !p[prodKey] }))}
                             style={{ padding: '10px 14px', background: '#0D1117', display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer' }}>
                             <span style={{ color: '#4A5568', fontSize: 12, transition: 'transform .2s', transform: isExpanded ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block' }}>▶</span>
-                            <span style={{ fontSize: 14, fontWeight: 600, color: '#fff', flex: 1 }}>{prod.nom}</span>
+                            <span style={{ fontSize: 14, fontWeight: 600, color: '#fff', flex: 1 }}>{prettyName(prod.nom)}</span>
                             <span style={{ fontSize: 10, color: hasContent ? '#00D4AA' : '#4A5568' }}>{hasContent ? '✓ Contenu' : '⚠ Vide'}</span>
                           </div>
                           {isExpanded && (
