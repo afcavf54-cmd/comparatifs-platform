@@ -52,6 +52,7 @@ def fetch_csv(url: str) -> list[dict]:
     try:
         r = requests.get(url, timeout=60)
         r.raise_for_status()
+        r.encoding = "utf-8"   # évite le mojibake (é→Ã©) qui crée des slugs/doublons erronés
         return list(csv.DictReader(io.StringIO(r.text)))
     except Exception as e:
         print(f"  ⚠ fetch Sheet : {e}")
