@@ -2660,6 +2660,20 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
             if categories:
                 print(f"  🎯 {len(categories)} catégories actives (filtre selected_keywords)")
 
+        # Comparateurs AUTONOMES définis uniquement en éditorial (comparateurs en
+        # masse via Sheet) : aucun produit Sheet, donc absents de `categories`.
+        # On les ajoute pour qu'ils soient rendus (le mode autonome lit le snapshot).
+        _existing_cat_slugs = {slugify_cat(_c) for _c in categories}
+        for _ek, _ev in editorials_fresh.items():
+            if not _ek.startswith("classement-") or _ek.startswith("classement-prod-"):
+                continue
+            if not isinstance(_ev, dict) or not _ev.get("autonome") or not _ev.get("products_snapshot"):
+                continue
+            _ecat = _ev.get("categorie") or _ek[len("classement-"):]
+            if slugify_cat(_ecat) not in _existing_cat_slugs:
+                categories[_ecat] = []            # produits construits depuis le snapshot
+                _existing_cat_slugs.add(slugify_cat(_ecat))
+
         if categories:
             classement_count = 0
             for cat, cat_products in categories.items():
