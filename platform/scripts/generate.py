@@ -2798,11 +2798,23 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     # (platform/sites/<site>/public/screenshots/<slug>-screenshot.*),
                     # sinon image partagée du schema, sinon default .png.
                     _resolved = False
-                    _site_shot_dir = site_dir / "public" / "screenshots"
-                    if slug and _site_shot_dir.exists():
+                    # Image PROPRE au site (uploadée via le dashboard). Servie à la
+                    # RACINE (/<slug>-screenshot.ext) comme les images du schema — car
+                    # certains hébergements ne servent pas le sous-dossier /screenshots/.
+                    # On cherche dans public/screenshots/ ET à la racine de public/.
+                    for _base in (site_dir / "public" / "screenshots", site_dir / "public"):
+                        if _resolved or not slug or not _base.exists():
+                            continue
                         for _ext in ("png", "jpg", "jpeg", "webp"):
-                            if (_site_shot_dir / f"{slug}-screenshot.{_ext}").exists():
-                                p["screenshot_file"] = f"screenshots/{slug}-screenshot.{_ext}"
+                            _srcimg = _base / f"{slug}-screenshot.{_ext}"
+                            if _srcimg.exists():
+                                try:
+                                    _dstimg = output_dir / f"{slug}-screenshot.{_ext}"
+                                    if not _dstimg.exists():
+                                        shutil.copy2(_srcimg, _dstimg)
+                                except Exception:
+                                    pass
+                                p["screenshot_file"] = f"{slug}-screenshot.{_ext}"
                                 _resolved = True
                                 break
                     if not _resolved and slug and _schema_imgs_dir:
