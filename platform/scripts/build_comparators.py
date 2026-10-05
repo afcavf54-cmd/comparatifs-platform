@@ -28,6 +28,7 @@ import re
 import random
 import unicodedata
 import argparse
+from datetime import date as _date, datetime as _dt
 from pathlib import Path
 
 import yaml
@@ -239,6 +240,15 @@ def main(site: str, force: bool = False):
                              or row.get("catégorie") or row.get("categorie") or "").strip()
         if not titre or not marques_cell.strip():
             continue
+        # Publication programmée : on ignore les lignes dont la date est dans le
+        # futur. Le cron quotidien les prendra en charge une fois la date arrivée.
+        if date:
+            try:
+                if _dt.strptime(date[:10], "%Y-%m-%d").date() > _date.today():
+                    print(f"  ⏳ {titre} — programmé pour {date}, ignoré pour l'instant")
+                    continue
+            except ValueError:
+                pass  # date non parsable → génération normale
         brands = parse_brands(marques_cell)
         for _b in brands:
             _bu = (_b.get("url") or "").strip()
