@@ -1008,13 +1008,21 @@ export default function ClassementsPage() {
                 <div onClick={() => toggleSection('seo')} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', padding: '8px 0', marginBottom: 4 }}><span style={{ color: '#4A5568', fontSize: 11, transform: expandedSections['seo'] ? 'rotate(90deg)' : 'rotate(0deg)', display: 'inline-block', transition: 'transform .2s' }}>▶</span><span style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '0.05em' }}>🔍 SEO</span><span style={{ flex: 1, height: 1, background: '#1E2D3D', marginLeft: 4 }} /></div>
                 {expandedSections['seo'] && <>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: 12 }}>
-                  {[{ label: 'H1', field: 'h1' }, { label: 'Meta title', field: 'meta_title' }, { label: 'Titre "Analyse détaillée"', field: 'titre_analyse' }].map(({ label, field }) => (
+                  {[{ label: 'H1', field: 'h1' }, { label: 'Meta title', field: 'meta_title' }, { label: 'Titre H2 (avant le classement)', field: 'titre_analyse' }].map(({ label, field }) => {
+                    // Pour le H2 : si vide, afficher la valeur effective (pattern) afin
+                    // qu'elle soit visible et éditable. On retire un "Meilleur(s)/Top N"
+                    // en tête de la catégorie pour éviter "meilleurs Meilleurs …".
+                    const _catClean = String(selectedData.categorie || '').replace(/^(?:meilleur[es]?s?|top\s*\d*)\s+/i, '').trim()
+                    const _fallback = field === 'titre_analyse' && _catClean ? `Mon classement des meilleurs ${_catClean}` : ''
+                    return (
                     <div key={field}>
                       <div style={{ fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase' as const, marginBottom: 5 }}>{label}</div>
-                      <input value={selectedData[field] || ''} onChange={e => updateField(selected, field, e.target.value)}
+                      <input value={selectedData[field] || _fallback} onChange={e => updateField(selected, field, e.target.value)}
+                        onBlur={() => { if (field === 'titre_analyse' && !selectedData[field] && _fallback) updateField(selected, field, _fallback) }}
                         style={{ width: '100%', padding: '9px 12px', borderRadius: 8, background: '#0A0E1A', border: '1px solid #1E2D3D', color: '#fff', fontSize: 13, outline: 'none', boxSizing: 'border-box' as const }} />
                     </div>
-                  ))}
+                    )
+                  })}
                 </div>
                 <div style={{ marginBottom: 12 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 5 }}>
