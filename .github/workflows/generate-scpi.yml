@@ -47,6 +47,13 @@ jobs:
           python-version: '3.12'
       - name: Install dependencies
         run: pip install pyyaml jinja2 requests ruamel.yaml pillow
+      - name: Build mass comparators (Sheet → comparateurs + screenshots)
+        if: ${{ !inputs.skip_enrich }}
+        run: python platform/scripts/build_comparators.py --site ${{ inputs.site }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SCREENSHOT_API_KEY: ${{ secrets.SCREENSHOT_API_KEY }}
+          SCREENSHOT_PROVIDER: screenshotone
       - name: Generate AI editorial content
         if: ${{ !inputs.skip_enrich }}
         run: |
