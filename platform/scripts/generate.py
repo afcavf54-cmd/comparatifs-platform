@@ -2228,6 +2228,22 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                     if img_count:
                         print(f"  ✓ {img_count} images schema copiées ({schema_name})")
 
+        # ── Images de marques UPLOADÉES (dashboard) → copiées à la RACINE ──────
+        # Même mécanisme que les images schema (qui, elles, s'affichent bien).
+        # public/screenshots/<slug>-screenshot.ext → output/<slug minuscule>-screenshot.ext
+        _shot_src_dir = site_dir / "public" / "screenshots"
+        if _shot_src_dir.exists():
+            _shot_count = 0
+            for _shot in _shot_src_dir.iterdir():
+                if _shot.is_file() and _shot.suffix.lower() in (".png", ".jpg", ".jpeg", ".webp"):
+                    try:
+                        shutil.copy2(_shot, output_dir / _shot.name.lower())
+                        _shot_count += 1
+                    except Exception as _e_shot:
+                        print(f"  ⚠ copie screenshot {_shot.name} : {_e_shot}")
+            if _shot_count:
+                print(f"  ✓ {_shot_count} image(s) de marque uploadée(s) copiée(s) à la racine")
+
         # Copie favicon si présent (site-specific ou shared, tous formats)
         import shutil as _shutil
         favicon_copied = False
