@@ -43,6 +43,7 @@ export async function GET(_: NextRequest, { params }: Params) {
     blog_sheet_edit_url: get('blog_sheet_edit_url'),
     avis_sheet_csv_url: get('avis_sheet_csv_url'),
     avis_sheet_edit_url: get('avis_sheet_edit_url'),
+    comparators_sheet_csv_url: get('comparators_sheet_csv_url'),
     domain: get('domain'),
     contact_form_key: get('contact_form_key'),
     page_types: pageTypes,
@@ -200,6 +201,7 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   if (body.blog_sheet_edit_url !== undefined) replaceKey('blog_sheet_edit_url', body.blog_sheet_edit_url || '')
   if (body.avis_sheet_csv_url !== undefined) replaceKey('avis_sheet_csv_url', body.avis_sheet_csv_url || '')
   if (body.avis_sheet_edit_url !== undefined) replaceKey('avis_sheet_edit_url', body.avis_sheet_edit_url || '')
+  if (body.comparators_sheet_csv_url !== undefined) replaceKey('comparators_sheet_csv_url', body.comparators_sheet_csv_url || '')
   if (body.seo_vs_title !== undefined) replaceKey('title_pattern', body.seo_vs_title || '')
   if (body.seo_vs_meta !== undefined) replaceKey('meta_pattern', body.seo_vs_meta || '')
   if (body.seo_avis_title !== undefined) replaceKey('avis_title_pattern', body.seo_avis_title || '')
