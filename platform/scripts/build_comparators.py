@@ -255,9 +255,28 @@ def main(site: str, force: bool = False):
             "products_snapshot": order,
             "date_publication": date or cls.get("date_publication", ""),
         })
+        # Fallbacks (si l'IA échoue)
         cls.setdefault("h1", titre)
         cls.setdefault("meta_title", f"{titre} ({YEAR})")
-        cls.setdefault("meta_description", f"{titre} : notre comparatif détaillé pour bien choisir en {YEAR}.")
+        cls.setdefault("meta_description", f"{titre} : notre comparatif pour bien choisir en {YEAR}.")
+        # SEO généré (H1 accrocheur + title + meta) — uniques par comparateur
+        if force or not str(existing.get("meta_title", "")).strip():
+            seo = gen_json(
+                f"Pour un comparatif de {len(brands)} marques intitulé « {titre} » en {YEAR}, génère le SEO. "
+                f'Réponds UNIQUEMENT en JSON : {{"h1":"…","meta_title":"…","meta_description":"…"}}\n'
+                f"- h1 : titre H1 accrocheur et UNIQUE (60-75 caractères), intègre le nombre ({len(brands)}) "
+                f"et/ou {YEAR}, style vécu à la première personne (ex. « J'ai comparé … »), ne recopie pas mot "
+                f"pour mot « {titre} ».\n"
+                f"- meta_title : balise <title> SEO cliquable, max 60 caractères, inclut {YEAR}.\n"
+                f"- meta_description : max 155 caractères, incitatif, bénéfice lecteur.",
+                build_system(global_prompt, persona, [], True))
+            if isinstance(seo, dict):
+                if seo.get("h1"):
+                    cls["h1"] = seo["h1"]
+                if seo.get("meta_title"):
+                    cls["meta_title"] = seo["meta_title"]
+                if seo.get("meta_description"):
+                    cls["meta_description"] = seo["meta_description"]
 
         # ── Contenu générique du comparateur (si absent) ──
         if force or not str(cls.get("intro", "")).strip():
