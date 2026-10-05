@@ -2286,7 +2286,7 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
             # absents du schema → on les ajoute au listing/maillage avec leur
             # catégorie parente (cat_parent de l'éditorial, sinon « Autres »).
             _listed = {(_c.get("slug")) for _lst in classements_by_category.values() for _c in _lst}
-            for _ek, _ev in editorials_fresh.items():
+            for _ek, _ev in editorials.items():
                 if not _ek.startswith("classement-") or _ek.startswith("classement-prod-"):
                     continue
                 if not isinstance(_ev, dict) or not _ev.get("autonome") or not _ev.get("products_snapshot"):
