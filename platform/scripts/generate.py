@@ -2833,7 +2833,14 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                                         shutil.copy2(_srcimg, _dstimg)
                                 except Exception:
                                     pass
-                                p["screenshot_file"] = _dstname
+                                # Anti-cache : hash du contenu en query → bypasse un
+                                # éventuel 404 mis en cache par le CDN sur l'ancienne URL.
+                                try:
+                                    import hashlib as _hb_img
+                                    _cb = _hb_img.md5(_srcimg.read_bytes()).hexdigest()[:8]
+                                    p["screenshot_file"] = f"{_dstname}?v={_cb}"
+                                except Exception:
+                                    p["screenshot_file"] = _dstname
                                 _resolved = True
                                 break
                     if not _resolved and slug and _schema_imgs_dir:
