@@ -2282,6 +2282,24 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
                             "slug": _cat_slug2, "label": _kw_name2, "count": _count2
                         })
 
+            # Comparateurs autonomes-éditoriaux (comparateurs en masse via Sheet) :
+            # absents du schema → on les ajoute au listing/maillage avec leur
+            # catégorie parente (cat_parent de l'éditorial, sinon « Autres »).
+            _listed = {(_c.get("slug")) for _lst in classements_by_category.values() for _c in _lst}
+            for _ek, _ev in editorials_fresh.items():
+                if not _ek.startswith("classement-") or _ek.startswith("classement-prod-"):
+                    continue
+                if not isinstance(_ev, dict) or not _ev.get("autonome") or not _ev.get("products_snapshot"):
+                    continue
+                _elabel = _ev.get("categorie") or _ek[len("classement-"):]
+                _eslug = slugify_cat(_elabel)
+                if _eslug in _listed:
+                    continue
+                _eparent = _ev.get("cat_parent") or "Autres"
+                classements_by_category.setdefault(_eparent, []).append({
+                    "slug": _eslug, "label": _elabel, "count": len(_ev.get("products_snapshot", []))
+                })
+
         # Home
         # ⚠⚠⚠ DEBUG MARKER v10 — si tu vois cette ligne dans le log, c'est
         # que v10 est bien déployé et que le code arrive jusqu'ici. Si tu ne
@@ -2683,7 +2701,11 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                 # le slug de la catégorie (pas du keyword), donc on accepte
                 # aussi un match direct sur slugify_cat(cat) qui correspond
                 # au slugify_cat(kw_name) lorsque kw_name == cat.
-                if _enabled_classements is not None and cat_slug not in _enabled_classements:
+                # Les comparateurs AUTONOMES (comparateurs en masse via Sheet) sont
+                # toujours activés — ils ne figurent pas dans enabled_classements.json.
+                _ce_chk = editorials_fresh.get(f"classement-{cat_slug}", {})
+                _is_autonome_comp = isinstance(_ce_chk, dict) and _ce_chk.get("autonome") and _ce_chk.get("products_snapshot")
+                if _enabled_classements is not None and cat_slug not in _enabled_classements and not _is_autonome_comp:
                     # Cleanup orphan : si le .html avait été déployé lors d'un
                     # précédent build (mode legacy ou classement décoché), on
                     # le supprime pour que Cloudflare renvoie une 404 native.
@@ -2977,7 +2999,7 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                     "author_socials": site.get("author_socials") or author_cfg.get("socials", []),
                 }
                 # Trouver les siblings (même catégorie parente, max 8, triés, fixes)
-                _cat_parent = _kw_data.get("__categorie", "Autres") or "Autres"
+                _cat_parent = cat_editorial.get("cat_parent") or _kw_data.get("__categorie", "Autres") or "Autres"
                 _siblings = []
                 for _cat_p, _cls_list in classements_by_category.items():
                     if _cat_p == _cat_parent:
