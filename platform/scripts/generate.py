@@ -3075,6 +3075,22 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                         "label": kw_name,
                         "count": count
                     })
+            # Comparateurs AUTONOMES (comparateurs en masse via Sheet) : absents du
+            # schema → on les ajoute avec leur catégorie parente.
+            _nc_listed = {_c.get("slug") for _lst in classements_by_category.values() for _c in _lst}
+            for _ek, _ev in editorials.items():
+                if not _ek.startswith("classement-") or _ek.startswith("classement-prod-"):
+                    continue
+                if not isinstance(_ev, dict) or not _ev.get("autonome") or not _ev.get("products_snapshot"):
+                    continue
+                _elabel = _ev.get("categorie") or _ek[len("classement-"):]
+                _eslug = slugify_cat(_elabel)
+                if _eslug in _nc_listed:
+                    continue
+                _eparent = _ev.get("cat_parent") or "Autres"
+                classements_by_category.setdefault(_eparent, []).append({
+                    "slug": _eslug, "label": _elabel, "count": len(_ev.get("products_snapshot", []))
+                })
             # Fallback : utiliser les catégories des produits
             if not classements_by_category:
                 for cat in categories.keys():
