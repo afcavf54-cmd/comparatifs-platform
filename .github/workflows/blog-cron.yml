@@ -53,7 +53,7 @@ jobs:
         # PNG -> JPG compressee + injection des EXIF "photo prise a Paris".
         run: |
           python -m pip install --upgrade pip
-          pip install pyyaml pillow piexif
+          pip install pyyaml pillow piexif requests
       - name: Publier les articles programmés
         id: publish
         env:
@@ -137,10 +137,35 @@ jobs:
               -f site="$site" \
               -f skip_enrich=true || echo "⚠ Échec déclenchement $site (le déploiement peut être lancé manuellement)"
           done
+      # ── Comparateurs en masse programmés ────────────────────────────────
+      # Détection des comparateurs (Sheet) dont la date de publication est
+      # arrivée et qui ne sont pas encore générés. Contrairement au blog/avis
+      # (contenu écrit directement → skip_enrich=true), les comparateurs sont
+      # produits par build_comparators pendant le build → skip_enrich=false.
+      - name: Comparateurs programmés — détection
+        id: detect_comparators
+        run: python platform/scripts/comparators_cron.py
+      - name: Comparateurs programmés — déclenchement du build
+        if: steps.detect_comparators.outputs.sites_to_deploy != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          IFS=',' read -ra SITES <<< "${{ steps.detect_comparators.outputs.sites_to_deploy }}"
+          for site in "${SITES[@]}"; do
+            [ -z "$site" ] && continue
+            echo "🚀 Comparateur dû → build $site"
+            gh workflow run generate-scpi.yml \
+              -f site="$site" \
+              -f skip_enrich=false \
+              -f skip_existing=true || echo "⚠ Échec déclenchement $site"
+            sleep 5
+          done
+
       - name: Résumé
         if: always()
         run: |
-          echo "=== Cron blog/avis terminé ==="
+          echo "=== Cron blog/avis/comparateurs terminé ==="
           echo "Blog : ${{ steps.publish.outputs.sites_to_deploy }}"
           echo "Avis : ${{ steps.publish_avis.outputs.sites_to_deploy }}"
-          echo "Tous (dédupliqués) : ${{ steps.combine.outputs.sites_to_deploy }}"
+          echo "Tous blog/avis (dédupliqués) : ${{ steps.combine.outputs.sites_to_deploy }}"
+          echo "Comparateurs : ${{ steps.detect_comparators.outputs.sites_to_deploy }}"
