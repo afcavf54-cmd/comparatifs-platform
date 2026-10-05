@@ -2808,13 +2808,16 @@ h1{{font-family:'{_theme_font_title}',Georgia,serif;font-size:clamp(28px,5vw,44p
                         for _ext in ("png", "jpg", "jpeg", "webp"):
                             _srcimg = _base / f"{slug}-screenshot.{_ext}"
                             if _srcimg.exists():
+                                # Nom de sortie en MINUSCULES (comme toutes les autres
+                                # images) → évite tout souci de casse au déploiement/CDN.
+                                _dstname = f"{slug.lower()}-screenshot.{_ext}"
                                 try:
-                                    _dstimg = output_dir / f"{slug}-screenshot.{_ext}"
+                                    _dstimg = output_dir / _dstname
                                     if not _dstimg.exists():
                                         shutil.copy2(_srcimg, _dstimg)
                                 except Exception:
                                     pass
-                                p["screenshot_file"] = f"{slug}-screenshot.{_ext}"
+                                p["screenshot_file"] = _dstname
                                 _resolved = True
                                 break
                     if not _resolved and slug and _schema_imgs_dir:
