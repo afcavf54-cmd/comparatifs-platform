@@ -486,7 +486,26 @@ export default function ClassementsPage() {
       let allEditorial: Record<string, any> = {}
       if (d.content) { try { allEditorial = JSON.parse(d.content) } catch {} }
 
-      delete allEditorial[catKey]
+      const _entry = allEditorial[catKey]
+      const _isAuto = _entry && typeof _entry === 'object' && _entry.autonome && Array.isArray(_entry.products_snapshot)
+      if (_isAuto) {
+        // Comparateur autonome (Sheet) : on VIDE le contenu (texte) mais on garde
+        // la structure — ordre figé, catégorie, screenshots. Le build régénère
+        // proprement descriptions, avantages, bloc générique, FAQ, H1/title.
+        const _keep: any = {}
+        for (const k of ['categorie', 'autonome', 'products_snapshot', 'cat_parent', 'date_publication']) if (_entry[k] !== undefined) _keep[k] = _entry[k]
+        allEditorial[catKey] = _keep
+        for (const slug of _entry.products_snapshot) {
+          const pk = `classement-prod-${slug}`
+          if (allEditorial[pk] && typeof allEditorial[pk] === 'object') {
+            const cp: any = {}
+            for (const k of ['nom', 'marque']) if (allEditorial[pk][k] !== undefined) cp[k] = allEditorial[pk][k]
+            allEditorial[pk] = cp
+          }
+        }
+      } else {
+        delete allEditorial[catKey]   // comparateur schema : réinitialisation complète
+      }
 
       const wr = await fetch('/api/github', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -495,20 +514,18 @@ export default function ClassementsPage() {
       const wd = await wr.json()
       if (!wd.ok) { setMsg('✗ Erreur sauvegarde'); return }
 
-      setClassements(prev => {
-        const next = { ...prev }
-        delete next[catKey]
-        return next
-      })
-      if (selected === catKey) setSelected(null)
+      if (!_isAuto) {
+        setClassements(prev => { const next = { ...prev }; delete next[catKey]; return next })
+        if (selected === catKey) setSelected(null)
+      }
 
       setDeploying(true)
-      const dr = await fetch(`/api/sites/${siteId}/deploy`, {
+      const dr = await fetch('/api/deploy', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ skip_enrich: false, skipExisting: true })
+        body: JSON.stringify({ siteId, skip_enrich: false, skip_existing: true })
       })
       const dd = await dr.json()
-      setMsg(dd.success ? '✓ Régénération lancée (~3 min)' : '✗ Erreur déploiement')
+      setMsg((dd.ok || dd.success) ? '✓ Régénération lancée (~3 min)' : '✗ ' + (dd.error || 'Erreur déploiement'))
     } catch (e: any) {
       setMsg('✗ ' + e.message)
     }
