@@ -203,7 +203,9 @@ def main(site: str, force: bool = False):
     if not cfg_path.exists():
         print(f"❌ site inconnu : {site}"); return
     config = yaml.safe_load(cfg_path.read_text(encoding="utf-8")) or {}
-    sheet_url = (config.get("comparators_sheet_csv_url") or "").strip()
+    # L'URL vit sous `site:` dans le config.yaml (comme blog_sheet_csv_url).
+    sheet_url = (config.get("comparators_sheet_csv_url")
+                 or (config.get("site") or {}).get("comparators_sheet_csv_url") or "").strip()
     if not sheet_url:
         print(f"  ⓘ {site} : pas de comparators_sheet_csv_url, rien à faire"); return
 
@@ -229,6 +231,8 @@ def main(site: str, force: bool = False):
         titre = (row.get("Titre") or row.get("titre") or "").strip()
         marques_cell = row.get("Marques") or row.get("marques") or ""
         date = (row.get("Date") or row.get("date") or "").strip()
+        categorie_parente = (row.get("Catégorie") or row.get("Categorie")
+                             or row.get("catégorie") or row.get("categorie") or "").strip()
         if not titre or not marques_cell.strip():
             continue
         brands = parse_brands(marques_cell)
@@ -255,6 +259,8 @@ def main(site: str, force: bool = False):
             "products_snapshot": order,
             "date_publication": date or cls.get("date_publication", ""),
         })
+        if categorie_parente:
+            cls["cat_parent"] = categorie_parente   # catégorie parente (maillage + listing)
         # Fallbacks (si l'IA échoue)
         cls.setdefault("h1", titre)
         cls.setdefault("meta_title", f"{titre} ({YEAR})")
