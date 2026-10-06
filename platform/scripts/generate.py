@@ -1697,6 +1697,20 @@ def generate_site(site_slug: str, dry_run: bool = False, filter_pair: tuple = No
     )
     env.filters["capitalize"] = lambda s: s.capitalize() if s else ""
 
+    # Nettoie les artefacts HTML (<br>/<div>) qui créent des sauts de ligne
+    # parasites dans les descriptions : <br><br> -> paragraphe, <br> isolé ->
+    # espace, <div> retiré. Les descriptions déjà propres ne changent pas.
+    def _clean_html(t):
+        if not t or not isinstance(t, str):
+            return t
+        t = _re.sub(r"</?div[^>]*>", "", t)
+        if "<p>" in t:
+            t = _re.sub(r"(?:\s*<br\s*/?>\s*){2,}", "</p><p>", t)
+        t = _re.sub(r"\s*<br\s*/?>\s*", " ", t)
+        t = _re.sub(r"<p>\s*</p>", "", t)
+        return t.strip()
+    env.filters["cleanhtml"] = _clean_html
+
     env.filters["md_to_html"] = lambda s: s
 
     MOIS_FR = ["janvier","février","mars","avril","mai","juin",
