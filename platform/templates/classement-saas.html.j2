@@ -124,6 +124,8 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap .avantages-table{flex:1;margin:0}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
@@ -173,7 +175,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -292,25 +294,20 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
       {% set pf = prod.points_forts if (prod.points_forts is defined and prod.points_forts) else [] %}
       {% set pfa = prod.points_faibles if (prod.points_faibles is defined and prod.points_faibles) else [] %}
       {% if pf or pfa %}
-      <table class="avantages-table">
-        {% if pf and pfa %}
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          {% for i in range([pf | length, pfa | length] | max) %}
-          <tr>
-            <td>{% if i < pf | length %}{{ pf[i] }}{% endif %}</td>
-            <td>{% if i < pfa | length %}{{ pfa[i] }}{% endif %}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-        {% elif pf %}
-        <thead><tr><th>✅<br>Avantages</th></tr></thead>
-        <tbody>{% for x in pf %}<tr><td>{{ x }}</td></tr>{% endfor %}</tbody>
-        {% else %}
-        <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>{% for x in pfa %}<tr><td>{{ x }}</td></tr>{% endfor %}</tbody>
+      <div class="av-inc-wrap">
+        {% if pf %}
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody>{% for x in pf %}<tr><td>{{ x }}</td></tr>{% endfor %}</tbody>
+        </table>
         {% endif %}
-      </table>
+        {% if pfa %}
+        <table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody>{% for x in pfa %}<tr><td>{{ x }}</td></tr>{% endfor %}</tbody>
+        </table>
+        {% endif %}
+      </div>
       {% else %}
       <p style="font-size:13px;color:var(--ink3);font-style:italic">Analyse en cours...</p>
       {% endif %}
