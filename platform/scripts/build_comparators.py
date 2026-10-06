@@ -43,6 +43,16 @@ except Exception:
 
 ROOT = Path(__file__).resolve().parent.parent
 YEAR = 2026
+# Suffixes variés pour le Titre SEO — unicité sur un même site via l'index de ligne
+TITLE_SUFFIXES = [
+    "mon retour d'expérience", "mon comparatif complet", "mon analyse détaillée",
+    "mon avis après tests", "mon classement personnel", "le guide pour bien choisir",
+    "ce que j'ai retenu", "mon verdict sans filtre", "mon test comparatif",
+    "mon bilan après usage", "le comparatif détaillé", "mon retour terrain",
+    "mes recommandations", "mon avis d'expert", "le match complet",
+    "mon enquête de terrain", "mon évaluation complète", "le point complet",
+    "mon analyse sans langue de bois", "mon comparatif objectif",
+]
 
 # ── Appel IA (même modèle que enrich_editorial, réécrit ici pour être
 #    self-contained — pas d'import qui sys.exit sans clé) ──────────────────────
@@ -331,7 +341,7 @@ def main(site: str, force: bool = False):
     shots_dir = site_dir / "public" / "screenshots"
     print(f"  → {len(rows)} ligne(s) · décalage screenshot site #{s_index} ({(s_index+1)*sg.OFFSET_STEP}px)")
 
-    for row in rows:
+    for _ridx, row in enumerate(rows):
         titre = _fix_mojibake(_row_get(row, "Titre")).strip()
         marques_cell = _fix_mojibake(_row_get(row, "Marques"))
         date = _row_get(row, "Date").strip()
@@ -381,34 +391,29 @@ def main(site: str, force: bool = False):
         # en tête du titre pour éviter "Mon classement des meilleurs Meilleurs …".
         _ta = re.sub(r"^(?:meilleur[es]?s?|top\s*\d*)\s+", "", titre, flags=re.I).strip()
         cls["titre_analyse"] = f"Mon classement des meilleurs {_ta}" if _ta else titre
-        # Fallbacks (si l'IA échoue)
-        cls.setdefault("h1", titre)
-        cls.setdefault("meta_title", f"{titre} ({YEAR})")
-        cls.setdefault("meta_description", f"{titre} : notre comparatif pour bien choisir en {YEAR}.")
-        # SEO généré (H1 accrocheur + title + meta) — uniques par comparateur
-        if force or not str(existing.get("meta_title", "")).strip():
-            seo = gen_json(
-                f"Pour un comparatif de {len(brands)} marques intitulé « {titre} » en {YEAR}, génère le SEO. "
-                f'Réponds UNIQUEMENT en JSON : {{"h1":"…","meta_title":"…","meta_description":"…"}}\n'
-                f"- h1 : titre H1 accrocheur et UNIQUE (60-75 caractères), intègre le nombre ({len(brands)}) "
-                f"et/ou {YEAR}, style vécu à la première personne (ex. « J'ai comparé … »), ne recopie pas mot "
-                f"pour mot « {titre} ».\n"
-                f"- meta_title : balise <title> SEO cliquable, max 60 caractères, inclut {YEAR}.\n"
-                f"- meta_description : max 155 caractères, incitatif, bénéfice lecteur.",
-                build_system(global_prompt, persona, [], True))
-            if isinstance(seo, dict):
-                if seo.get("h1"):
-                    cls["h1"] = seo["h1"]
-                if seo.get("meta_title"):
-                    cls["meta_title"] = seo["meta_title"]
-                if seo.get("meta_description"):
-                    cls["meta_description"] = seo["meta_description"]
+        # ── Titres SEO : RÈGLES DÉTERMINISTES (pas d'IA, aucune année en dur) ──
+        # Titre sans "Meilleur(s)/Top N" en tête (pour un rendu propre).
+        _ta = re.sub(r"^(?:meilleur[es]?s?|top\s*\d*)\s+", "", titre, flags=re.I).strip() or titre
+        _suffix = TITLE_SUFFIXES[_ridx % len(TITLE_SUFFIXES)]
+        cls["meta_title"] = f"{titre} : {_suffix}"                       # Titre SEO
+        cls["h1"] = f"J'ai testé les {len(brands)} {_ta}, mon analyse"   # H1
+        # Meta description : IA, incitative, SANS année en chiffres ({year} si besoin)
+        if force or not str(existing.get("meta_description", "")).strip():
+            _md = gen(
+                f"Rédige UNE meta description SEO pour le comparatif « {titre} » ({len(brands)} marques). "
+                f"Max 155 caractères, incitative, bénéfice lecteur, une seule phrase, sans guillemets. "
+                f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}.",
+                build_system(global_prompt, persona, [], False))
+            if _md:
+                cls["meta_description"] = _md.strip()
+        cls.setdefault("meta_description", f"{titre} : mon comparatif pour bien choisir.")
 
         # ── Contenu générique du comparateur (si absent) ──
         if force or not str(cls.get("intro", "")).strip():
             cls["intro"] = gen(
-                f"Rédige l'introduction HTML (2 paragraphes <p>) d'un comparatif intitulé « {titre} » en {YEAR}. "
-                f"120 MOTS MAXIMUM au total. Accroche concrète, à la première personne, sans lister les marques.",
+                f"Rédige l'introduction HTML (2 paragraphes <p>) d'un comparatif intitulé « {titre} ». "
+                f"120 MOTS MAXIMUM au total. Accroche concrète, à la première personne, sans lister les marques. "
+                f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}. ",
                 build_system(global_prompt, persona, brand_names, False))
         if force or not str(cls.get("en_bref", "")).strip():
             # "En bref" = seulement les 5 PREMIÈRES marques du classement (ordre figé)
@@ -429,11 +434,13 @@ def main(site: str, force: bool = False):
                 f"Ton vécu, première personne, exemples concrets. Ne cite aucune marque précise. "
                 f"INTERDIT : ne génère AUCUNE FAQ ni liste de questions/réponses (elle est gérée séparément ailleurs). "
                 f"Termine toujours par une phrase complète, jamais au milieu d'un mot ou d'une section. "
+                f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}. "
                 f"HTML uniquement (<h2>,<h3>,<p>,<ul>,<li>).",
                 build_system(global_prompt, persona, [], False))
         if force or not cls.get("faq"):
             faq = gen_json(
-                f"Rédige une FAQ de 6 questions/réponses utiles sur « {titre} » en {YEAR}. "
+                f"Rédige une FAQ de 6 questions/réponses utiles sur « {titre} ». "
+                f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}. "
                 f'Réponds UNIQUEMENT avec un tableau JSON : [{{"q":"…","a":"…"}}, …]. Réponses de 2-3 phrases.',
                 build_system(global_prompt, persona, brand_names, True))
             if isinstance(faq, list):
@@ -461,7 +468,8 @@ def main(site: str, force: bool = False):
                     f"Pour le comparatif « {titre} », présente la marque {b['name']}. "
                     f'Réponds UNIQUEMENT en JSON : {{"description":"<p>…</p><p>…</p>","points_forts":["…","…","…"],'
                     f'"points_faibles":["…","…"]}}. Description : 3 paragraphes <p> à la première personne, concrète, '
-                    f"sans inventer de chiffres. 3-4 avantages, 2-3 inconvénients, courts.",
+                    f"sans inventer de chiffres. 3-4 avantages, 2-3 inconvénients, courts. "
+                    f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}. ",
                     build_system(global_prompt, persona, brand_names, True))
                 if isinstance(data, dict):
                     if data.get("description"):
