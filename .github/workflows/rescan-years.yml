@@ -1,0 +1,46 @@
+name: Rescan années → {year}
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Appliquer les remplacements ? (décoché = dry-run, rapport seul)"
+        type: boolean
+        default: false
+
+jobs:
+  rescan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Rescan (dry-run ou apply)
+        run: |
+          if [ "${{ inputs.apply }}" = "true" ]; then
+            echo "=== MODE APPLY : les remplacements sont écrits ==="
+            python platform/scripts/rescan_years.py --apply
+          else
+            echo "=== MODE DRY-RUN : rien n'est modifié, rapport seul ==="
+            python platform/scripts/rescan_years.py
+          fi
+
+      - name: Commit les éditoriaux modifiés
+        if: ${{ inputs.apply }}
+        run: |
+          git config user.name "Viseoweb HUB"
+          git config user.email "hub@viseoweb.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git add platform/sites/*/editorial.json
+          if git diff --cached --quiet; then
+            echo "Aucune modification à committer."
+          else
+            git commit -m "Rescan années en dur -> {year} ($(date +%Y-%m-%d))"
+            git push
+            echo "✅ Modifications poussées."
+          fi
