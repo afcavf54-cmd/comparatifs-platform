@@ -97,6 +97,8 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap .avantages-table{flex:1;margin:0}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
@@ -146,7 +148,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -487,7 +489,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Meilleur Logiciel de gestion de trésorerie 2026 : Top 9</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-06 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Alexandre Michel" class="hero-author-avatar">
     <span>Rédigé par Alexandre Michel</span>
@@ -540,27 +542,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>C'est clairement pas fait pour une TPE qui cherche juste à voir son solde de compte. Et ce n'est pas non plus un outil de comptabilité : on reste sur la partie trésorerie pure, cash management, sans gestion des factures ou de la paie.</p></p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation bancaire automatique qui évite toute saisie manuelle des flux</td>
-            <td>Onboarding limité : si votre plan de trésorerie existant est complexe, la configuration initiale prend du temps et le support n'est pas toujours réactif</td>
-          </tr>
-          <tr>
-            <td>Scénarios de prévisions glissantes paramétrables par ligne de flux et par entité</td>
-            <td>Peu adapté aux structures multi-entités avec des flux très imbriqués, la consolidation atteint vite ses limites</td>
-          </tr>
-          <tr>
-            <td>Rapprochement prévu/réalisé clair, directement exploitable pour un reporting DAF</td>
-            <td>Pas d'intégration native avec tous les ERP du marché, les connecteurs peuvent nécessiter un développement custom</td>
-          </tr>
-          <tr>
-            <td>Prise en main assez rapide pour un profil finance habitué aux tableurs</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation bancaire automatique qui évite toute saisie manuelle des flux</td></tr><tr><td>Scénarios de prévisions glissantes paramétrables par ligne de flux et par entité</td></tr><tr><td>Rapprochement prévu/réalisé clair, directement exploitable pour un reporting DAF</td></tr><tr><td>Prise en main assez rapide pour un profil finance habitué aux tableurs</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Onboarding limité : si votre plan de trésorerie existant est complexe, la configuration initiale prend du temps et le support n'est pas toujours réactif</td></tr><tr><td>Peu adapté aux structures multi-entités avec des flux très imbriqués, la consolidation atteint vite ses limites</td></tr><tr><td>Pas d'intégration native avec tous les ERP du marché, les connecteurs peuvent nécessiter un développement custom</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -595,27 +586,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Mais pour une boîte de 2 à 30 personnes qui veut voir où elle en est à la fin du mois sans passer deux heures à consolider des tableaux, c'est adapté.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Connexion bancaire directe avec mise à jour automatique des flux, le rapprochement se fait en quelques clics</td>
-            <td>Le prévisionnel reste basique : pas de scénarios multiples ni de modélisation par hypothèse, frustrant quand on veut simuler un investissement</td>
-          </tr>
-          <tr>
-            <td>Prévisionnel de trésorerie alimenté en temps réel par les factures émises et reçues, sans ressaisie manuelle</td>
-            <td>Le support répond parfois avec 48h de délai, et certaines erreurs de synchronisation bancaire mettent du temps à être résolues</td>
-          </tr>
-          <tr>
-            <td>Interface accessible : j'ai formé une comptable débutante dessus en deux jours, sans formation externe</td>
-            <td>Tarif qui grimpe vite dès qu'on ajoute des utilisateurs ou des fonctionnalités avancées, le modèle de pricing peut surprendre à la première facture annuelle</td>
-          </tr>
-          <tr>
-            <td>Tout-en-un facturation + compta + tréso : un seul abonnement remplace plusieurs outils séparés</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Connexion bancaire directe avec mise à jour automatique des flux, le rapprochement se fait en quelques clics</td></tr><tr><td>Prévisionnel de trésorerie alimenté en temps réel par les factures émises et reçues, sans ressaisie manuelle</td></tr><tr><td>Interface accessible : j'ai formé une comptable débutante dessus en deux jours, sans formation externe</td></tr><tr><td>Tout-en-un facturation + compta + tréso : un seul abonnement remplace plusieurs outils séparés</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Le prévisionnel reste basique : pas de scénarios multiples ni de modélisation par hypothèse, frustrant quand on veut simuler un investissement</td></tr><tr><td>Le support répond parfois avec 48h de délai, et certaines erreurs de synchronisation bancaire mettent du temps à être résolues</td></tr><tr><td>Tarif qui grimpe vite dès qu'on ajoute des utilisateurs ou des fonctionnalités avancées, le modèle de pricing peut surprendre à la première facture annuelle</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -654,27 +634,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Et les grands groupes avec des besoins de cash pooling complexes trouveront vite les limites du produit.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation bancaire automatique quotidienne : zéro saisie manuelle pour les flux récurrents</td>
-            <td>Tarif élevé pour une PME qui démarre : les plans incluant la consolidation multi-entités montent vite au-delà de 500€/mois, ce qui fait réfléchir</td>
-          </tr>
-          <tr>
-            <td>Prévisions multi-scénarios glissantes avec comparaison prévu/réalisé en temps réel</td>
-            <td>L'onboarding demande un vrai investissement : paramétrer les catégories de flux et calibrer les prévisions prend plusieurs semaines avant d'être vraiment fiable</td>
-          </tr>
-          <tr>
-            <td>Consolidation de trésorerie multi-entités pour les PME avec plusieurs filiales</td>
-            <td>Le support par chat est réactif en semaine, mais j'ai trouvé la documentation en ligne trop légère pour les cas de configuration avancés</td>
-          </tr>
-          <tr>
-            <td>Connecteurs natifs avec les principaux logiciels comptables français (Sage, Cegid, Pennylane)</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation bancaire automatique quotidienne : zéro saisie manuelle pour les flux récurrents</td></tr><tr><td>Prévisions multi-scénarios glissantes avec comparaison prévu/réalisé en temps réel</td></tr><tr><td>Consolidation de trésorerie multi-entités pour les PME avec plusieurs filiales</td></tr><tr><td>Connecteurs natifs avec les principaux logiciels comptables français (Sage, Cegid, Pennylane)</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarif élevé pour une PME qui démarre : les plans incluant la consolidation multi-entités montent vite au-delà de 500€/mois, ce qui fait réfléchir</td></tr><tr><td>L'onboarding demande un vrai investissement : paramétrer les catégories de flux et calibrer les prévisions prend plusieurs semaines avant d'être vraiment fiable</td></tr><tr><td>Le support par chat est réactif en semaine, mais j'ai trouvé la documentation en ligne trop légère pour les cas de configuration avancés</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -717,27 +686,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Mais pour une structure avec des enjeux réels de visibilité sur les liquidités mondiales, c'est un outil qui tient la route.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Connectivité bancaire massive avec plus de 800 banques via SWIFT et API, ce qui réduit vraiment les saisies manuelles et les erreurs de réconciliation</td>
-            <td>L'onboarding est long et souvent coûteux : compter plusieurs mois de déploiement avec un intégrateur, ce n'est pas un outil qu'on installe soi-même un lundi matin</td>
-          </tr>
-          <tr>
-            <td>Gestion multi-entités et multidevise native : les groupes avec des filiales dans plusieurs pays peuvent consolider leur position de trésorerie en temps réel sans bidouillage</td>
-            <td>L'interface reste perfectible, certains écrans de paramétrage sont vraiment peu intuitifs et j'ai vu des utilisateurs chevronnés perdre du temps sur des configurations qui devraient être simples</td>
-          </tr>
-          <tr>
-            <td>Modules de couverture du risque de change intégrés avec des workflows de validation, utile pour les équipes qui gèrent des expositions FX importantes</td>
-            <td>Le tarif est opaque et élevé, avec une logique de licences et de modules additionnels qui peut faire grimper la facture bien au-delà du budget initial prévu</td>
-          </tr>
-          <tr>
-            <td>Interopérabilité ERP bien travaillée : les connecteurs SAP, Oracle et Microsoft Dynamics existent nativement, la remontée des prévisions depuis l'ERP est automatisable</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Connectivité bancaire massive avec plus de 800 banques via SWIFT et API, ce qui réduit vraiment les saisies manuelles et les erreurs de réconciliation</td></tr><tr><td>Gestion multi-entités et multidevise native : les groupes avec des filiales dans plusieurs pays peuvent consolider leur position de trésorerie en temps réel sans bidouillage</td></tr><tr><td>Modules de couverture du risque de change intégrés avec des workflows de validation, utile pour les équipes qui gèrent des expositions FX importantes</td></tr><tr><td>Interopérabilité ERP bien travaillée : les connecteurs SAP, Oracle et Microsoft Dynamics existent nativement, la remontée des prévisions depuis l'ERP est automatisable</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>L'onboarding est long et souvent coûteux : compter plusieurs mois de déploiement avec un intégrateur, ce n'est pas un outil qu'on installe soi-même un lundi matin</td></tr><tr><td>L'interface reste perfectible, certains écrans de paramétrage sont vraiment peu intuitifs et j'ai vu des utilisateurs chevronnés perdre du temps sur des configurations qui devraient être simples</td></tr><tr><td>Le tarif est opaque et élevé, avec une logique de licences et de modules additionnels qui peut faire grimper la facture bien au-delà du budget initial prévu</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -774,27 +732,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Je déconseille aux petites structures de moins de 10 salariés, le rapport fonctionnalités/coût n'est pas justifié.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Rapprochement bancaire automatisé avec import CFONB/SWIFT, évite les saisies manuelles chronophages</td>
-            <td>Onboarding long et complexe : sans un intégrateur Sage certifié, le paramétrage initial peut prendre plusieurs semaines</td>
-          </tr>
-          <tr>
-            <td>Prévisions de trésorerie glissantes sur 30, 60 et 90 jours avec scénarios multiples</td>
-            <td>Interface vieillissante, l'ergonomie n'a pas suivi les standards actuels et certains menus demandent une vraie courbe d'apprentissage</td>
-          </tr>
-          <tr>
-            <td>Intégration native et fluide avec Sage 100 Comptabilité, pas de double saisie ni de resynchronisation à la main</td>
-            <td>Tarification opaque et souvent élevée pour les PME, le coût des licences plus les frais de maintenance annuels peuvent surprendre</td>
-          </tr>
-          <tr>
-            <td>Gestion multi-banques et multi-devises avec consolidation des positions en temps quasi-réel</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Rapprochement bancaire automatisé avec import CFONB/SWIFT, évite les saisies manuelles chronophages</td></tr><tr><td>Prévisions de trésorerie glissantes sur 30, 60 et 90 jours avec scénarios multiples</td></tr><tr><td>Intégration native et fluide avec Sage 100 Comptabilité, pas de double saisie ni de resynchronisation à la main</td></tr><tr><td>Gestion multi-banques et multi-devises avec consolidation des positions en temps quasi-réel</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Onboarding long et complexe : sans un intégrateur Sage certifié, le paramétrage initial peut prendre plusieurs semaines</td></tr><tr><td>Interface vieillissante, l'ergonomie n'a pas suivi les standards actuels et certains menus demandent une vraie courbe d'apprentissage</td></tr><tr><td>Tarification opaque et souvent élevée pour les PME, le coût des licences plus les frais de maintenance annuels peuvent surprendre</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -833,27 +780,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Ce positionnement est assumé, mais il faut le savoir avant de s'engager.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Scénarios de trésorerie multiples et comparables en temps réel, très utile pour anticiper un besoin de financement</td>
-            <td>Pas adapté aux besoins comptables avancés : aucun rapprochement bancaire automatisé, pas de gestion des écritures</td>
-          </tr>
-          <tr>
-            <td>Synchronisation bancaire automatique via Open Banking, plus besoin d'imports CSV manuels</td>
-            <td>Le tarif peut faire hésiter pour une très petite structure qui n'a pas encore de vrai besoin de prévision multi-scénarios</td>
-          </tr>
-          <tr>
-            <td>Interface lisible et tableaux de bord clairs, même pour quelqu'un qui n'est pas contrôleur de gestion</td>
-            <td>Le support est correct mais pas immédiat, j'ai attendu plus d'une journée pour une réponse sur un bug de connexion bancaire</td>
-          </tr>
-          <tr>
-            <td>Suivi des écarts prévisionnel vs réel avec historique, ce qui aide vraiment à affiner les projections mois après mois</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Scénarios de trésorerie multiples et comparables en temps réel, très utile pour anticiper un besoin de financement</td></tr><tr><td>Synchronisation bancaire automatique via Open Banking, plus besoin d'imports CSV manuels</td></tr><tr><td>Interface lisible et tableaux de bord clairs, même pour quelqu'un qui n'est pas contrôleur de gestion</td></tr><tr><td>Suivi des écarts prévisionnel vs réel avec historique, ce qui aide vraiment à affiner les projections mois après mois</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Pas adapté aux besoins comptables avancés : aucun rapprochement bancaire automatisé, pas de gestion des écritures</td></tr><tr><td>Le tarif peut faire hésiter pour une très petite structure qui n'a pas encore de vrai besoin de prévision multi-scénarios</td></tr><tr><td>Le support est correct mais pas immédiat, j'ai attendu plus d'une journée pour une réponse sur un bug de connexion bancaire</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -894,27 +830,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p><strong>Tableau comparatif des fonctionnalités principales :</strong><br><div class="table-wrap"><table border='1' cellpadding='6' cellspacing='0' style='border-collapse:collapse;width:<strong>100%</strong>;'><thead><tr><th>Fonctionnalité</th><th>Disponible dans Fygr</th></tr></thead><tbody><tr><<strong>td</strong>>Synchronisation bancaire automatique</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>></tr><tr><<strong>td</strong>>Prévisions de trésorerie (scénarios)</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>></tr><tr><<strong>td</strong>>Relances encaissements intégrées</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>></tr><tr><<strong>td</strong>>Consolidation multi-entités</<strong>td</strong>><<strong>td</strong>>Limité</<strong>td</strong>></tr><tr><<strong>td</strong>>Reporting multi-devises</<strong>td</strong>><<strong>td</strong>>Non</<strong>td</strong>></tr><tr><<strong>td</strong>>Export comptable (FEC, CSV)</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>></tr><tr><<strong>td</strong>>API ouverte</<strong>td</strong>><<strong>td</strong>>Partielle</<strong>td</strong>></tr></tbody></table></div></p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>La synchronisation bancaire est quasi-instantanée, les flux remontent en quelques minutes sans aucune saisie manuelle, ce qui change vraiment le quotidien quand on suit sa tréso de près</td>
-            <td>La gestion multi-entités reste très basique : si on a deux sociétés à consolider, on se retrouve vite à faire des exports manuels pour avoir une vision globale, c'est franchement frustrant</td>
-          </tr>
-          <tr>
-            <td>La construction de scénarios prévisionnels est intuitive : en 10 minutes on peut simuler un retard de 30 jours sur ses principaux clients et voir l'impact sur le solde prévisionnel</td>
-            <td>Le support client répond, mais pas toujours vite. En période de clôture quand on a besoin d'une réponse rapide sur un bug d'import, l'attente peut agacer</td>
-          </tr>
-          <tr>
-            <td>L'interface est lisible, pas surchargée, et on peut former quelqu'un dessus en une journée sans support externe</td>
-            <td>Les possibilités de personnalisation des rapports sont limitées : on prend ce que l'outil propose, et si on veut un format de reporting spécifique pour ses investisseurs ou son banquier, il faut retravailler manuellement l'export</td>
-          </tr>
-          <tr>
-            <td>Les exports CSV et le rapprochement avec les données comptables sont propres, ce qui évite les doubles saisies avec le cabinet comptable</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>La synchronisation bancaire est quasi-instantanée, les flux remontent en quelques minutes sans aucune saisie manuelle, ce qui change vraiment le quotidien quand on suit sa tréso de près</td></tr><tr><td>La construction de scénarios prévisionnels est intuitive : en 10 minutes on peut simuler un retard de 30 jours sur ses principaux clients et voir l'impact sur le solde prévisionnel</td></tr><tr><td>L'interface est lisible, pas surchargée, et on peut former quelqu'un dessus en une journée sans support externe</td></tr><tr><td>Les exports CSV et le rapprochement avec les données comptables sont propres, ce qui évite les doubles saisies avec le cabinet comptable</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>La gestion multi-entités reste très basique : si on a deux sociétés à consolider, on se retrouve vite à faire des exports manuels pour avoir une vision globale, c'est franchement frustrant</td></tr><tr><td>Le support client répond, mais pas toujours vite. En période de clôture quand on a besoin d'une réponse rapide sur un bug d'import, l'attente peut agacer</td></tr><tr><td>Les possibilités de personnalisation des rapports sont limitées : on prend ce que l'outil propose, et si on veut un format de reporting spécifique pour ses investisseurs ou son banquier, il faut retravailler manuellement l'export</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -951,27 +876,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Pour qui ce n'est pas adapté : ETI, groupes multi-sociétés, structures avec des besoins de trésorerie prévisionnelle très poussés.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Compte bancaire et suivi de trésorerie dans la même interface, sans export manuel fastidieux</td>
-            <td>Pas de vrai module de prévision de trésorerie à moyen/long terme : impossible de modéliser des scénarios de cash flow sur 6 ou 12 mois</td>
-          </tr>
-          <tr>
-            <td>Catégorisation automatique des dépenses et création de budgets par équipe ou par projet</td>
-            <td>Gestion multi-entités très limitée : dès qu'on a deux sociétés à consolider, ça devient laborieux et on finit par gérer ça hors de l'outil</td>
-          </tr>
-          <tr>
-            <td>Synchronisation native avec des logiciels comptables (Pennylane, QuickBooks, FEC) pour des exports prêts à l'emploi</td>
-            <td>Le support client peut être lent en cas de blocage sérieux (carte gelée, virement bloqué), ce qui est franchement stressant quand ça touche à la liquidité</td>
-          </tr>
-          <tr>
-            <td>Relances automatiques sur factures impayées et accès multi-utilisateurs avec droits personnalisables</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Compte bancaire et suivi de trésorerie dans la même interface, sans export manuel fastidieux</td></tr><tr><td>Catégorisation automatique des dépenses et création de budgets par équipe ou par projet</td></tr><tr><td>Synchronisation native avec des logiciels comptables (Pennylane, QuickBooks, FEC) pour des exports prêts à l'emploi</td></tr><tr><td>Relances automatiques sur factures impayées et accès multi-utilisateurs avec droits personnalisables</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Pas de vrai module de prévision de trésorerie à moyen/long terme : impossible de modéliser des scénarios de cash flow sur 6 ou 12 mois</td></tr><tr><td>Gestion multi-entités très limitée : dès qu'on a deux sociétés à consolider, ça devient laborieux et on finit par gérer ça hors de l'outil</td></tr><tr><td>Le support client peut être lent en cas de blocage sérieux (carte gelée, virement bloqué), ce qui est franchement stressant quand ça touche à la liquidité</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1008,27 +922,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Le pricing est parmi les plus accessibles du marché, <strong>à partir de <strong>9,90€</strong>/mois</strong>, et l'onboarding prend moins d'une heure.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation bancaire automatique avec catégorisation progressive, ça fait gagner un temps réel sur le rapprochement manuel</td>
-            <td>La prévision de trésorerie reste très simpliste : pas de scénarios multiples, pas d'import de budget prévisionnel, difficile de faire des projections sur 6 mois avec précision</td>
-          </tr>
-          <tr>
-            <td>Facturation et suivi de trésorerie dans un seul outil, sans abonnement séparé pour chaque brique</td>
-            <td>La catégorisation automatique des transactions demande une phase d'apprentissage et plusieurs corrections manuelles au départ, ce qui peut agacer les premiers jours</td>
-          </tr>
-          <tr>
-            <td>Interface très lisible, prise en main rapide même sans formation comptable</td>
-            <td>Aucune gestion multi-devises, pas d'API ouverte documentée pour connecter des outils tiers, ce qui bloque rapidement dès qu'on veut automatiser des workflows un peu plus avancés</td>
-          </tr>
-          <tr>
-            <td>Tarif accessible dès 9,90€/mois, sans engagement et sans frais cachés sur les fonctions de base</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation bancaire automatique avec catégorisation progressive, ça fait gagner un temps réel sur le rapprochement manuel</td></tr><tr><td>Facturation et suivi de trésorerie dans un seul outil, sans abonnement séparé pour chaque brique</td></tr><tr><td>Interface très lisible, prise en main rapide même sans formation comptable</td></tr><tr><td>Tarif accessible dès 9,90€/mois, sans engagement et sans frais cachés sur les fonctions de base</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>La prévision de trésorerie reste très simpliste : pas de scénarios multiples, pas d'import de budget prévisionnel, difficile de faire des projections sur 6 mois avec précision</td></tr><tr><td>La catégorisation automatique des transactions demande une phase d'apprentissage et plusieurs corrections manuelles au départ, ce qui peut agacer les premiers jours</td></tr><tr><td>Aucune gestion multi-devises, pas d'API ouverte documentée pour connecter des outils tiers, ce qui bloque rapidement dès qu'on veut automatiser des workflows un peu plus avancés</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1294,7 +1197,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 creaone.fr — Données actualisées le 2 octobre 2026
+        © 2026 creaone.fr — Données actualisées le 6 octobre 2026
       </div>
     </div>
   </div>

@@ -97,6 +97,8 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap .avantages-table{flex:1;margin:0}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
@@ -146,7 +148,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -487,7 +489,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Meilleur Logiciel d'audit et commissariat aux comptes 2026 : Top 7</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 7 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-06 - 7 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Alexandre Michel" class="hero-author-avatar">
     <span>Rédigé par Alexandre Michel</span>
@@ -544,27 +546,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Ce n'est pas fait pour les Big Four, et ça ne cherche pas à l'être. Pour un cabinet indépendant qui veut être carré sur sa documentation NEP et gérer 40 à 200 mandats par an, c'est une base sérieuse.</p></p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Programmes de travail préconstruits et alignés sur les normes NEP, sans paramétrage long au démarrage</td>
-            <td>L'interface est datée, franchement pas moderne, et l'ergonomie sur certains écrans de saisie peut décourager les nouveaux collaborateurs habitués à des outils plus fluides</td>
-          </tr>
-          <tr>
-            <td>Traçabilité complète entre assertions, feuilles de travail et rapport final, utile en cas de contrôle qualité H3C</td>
-            <td>Les exports vers Word ou PDF manquent parfois de souplesse : la mise en page des rapports finaux demande des retouches manuelles, ce qui agace quand on est pressé en période de clôture</td>
-          </tr>
-          <tr>
-            <td>Gestion intégrée des seuils de signification, des zones de risque et de la revue analytique N/N-1</td>
-            <td>Peu adapté aux cabinets qui veulent une intégration poussée avec leur logiciel de gestion de cabinet ou leur outil comptable : l'API est limitée et les synchronisations automatiques quasi inexistantes</td>
-          </tr>
-          <tr>
-            <td>Supervision collaborateur/associé bien pensée, avec niveaux de validation distincts et historique des modifications</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Programmes de travail préconstruits et alignés sur les normes NEP, sans paramétrage long au démarrage</td></tr><tr><td>Traçabilité complète entre assertions, feuilles de travail et rapport final, utile en cas de contrôle qualité H3C</td></tr><tr><td>Gestion intégrée des seuils de signification, des zones de risque et de la revue analytique N/N-1</td></tr><tr><td>Supervision collaborateur/associé bien pensée, avec niveaux de validation distincts et historique des modifications</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>L'interface est datée, franchement pas moderne, et l'ergonomie sur certains écrans de saisie peut décourager les nouveaux collaborateurs habitués à des outils plus fluides</td></tr><tr><td>Les exports vers Word ou PDF manquent parfois de souplesse : la mise en page des rapports finaux demande des retouches manuelles, ce qui agace quand on est pressé en période de clôture</td></tr><tr><td>Peu adapté aux cabinets qui veulent une intégration poussée avec leur logiciel de gestion de cabinet ou leur outil comptable : l'API est limitée et les synchronisations automatiques quasi inexistantes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -601,27 +592,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Bon, par contre, si on cherche un outil d'audit pur, spécialisé missions légales avec gestion des risques IFAC poussée, là on touche les limites de l'outil. Ce n'est pas son coeur de métier historique.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation directe entre les données comptables du cabinet et le module révision, zéro ressaisie manuelle</td>
-            <td>Le module audit reste secondaire par rapport au coeur comptable : la gestion des risques, la documentation ISA et les programmes de travail standardisés CNCC sont peu développés nativement</td>
-          </tr>
-          <tr>
-            <td>Feuilles de travail paramétrables par cycle avec validation des soldes et traçabilité des ajustements</td>
-            <td>L'onboarding sur la partie révision est mal documenté, j'ai cherché pendant un bon moment comment configurer les seuils de signification sans trouver de guide clair</td>
-          </tr>
-          <tr>
-            <td>Contrôle de cohérence automatique sur les écritures avec remontée d'alertes sur les anomalies significatives</td>
-            <td>Peu adapté aux cabinets d'audit indépendants qui ne font pas de tenue comptable : sans les données synchronisées, l'outil perd une grosse partie de son intérêt</td>
-          </tr>
-          <tr>
-            <td>Interface unifiée pour les cabinets qui gèrent à la fois la tenue et les missions d'audit sur les mêmes dossiers clients</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation directe entre les données comptables du cabinet et le module révision, zéro ressaisie manuelle</td></tr><tr><td>Feuilles de travail paramétrables par cycle avec validation des soldes et traçabilité des ajustements</td></tr><tr><td>Contrôle de cohérence automatique sur les écritures avec remontée d'alertes sur les anomalies significatives</td></tr><tr><td>Interface unifiée pour les cabinets qui gèrent à la fois la tenue et les missions d'audit sur les mêmes dossiers clients</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Le module audit reste secondaire par rapport au coeur comptable : la gestion des risques, la documentation ISA et les programmes de travail standardisés CNCC sont peu développés nativement</td></tr><tr><td>L'onboarding sur la partie révision est mal documenté, j'ai cherché pendant un bon moment comment configurer les seuils de signification sans trouver de guide clair</td></tr><tr><td>Peu adapté aux cabinets d'audit indépendants qui ne font pas de tenue comptable : sans les données synchronisées, l'outil perd une grosse partie de son intérêt</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -656,27 +636,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Ce n'est pas fait pour un expert-comptable qui veut juste préparer une révision rapide sans obligations CAC. Le positionnement est clair et assumé.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Programmes de travail préformatés alignés sur les NEP, ce qui évite de reconstruire la méthodologie à chaque dossier</td>
-            <td>L'interface accuse son âge : l'ergonomie n'a pas été repensée depuis longtemps et certaines actions demandent trop de clics</td>
-          </tr>
-          <tr>
-            <td>Traçabilité complète entre diligences réalisées, anomalies détectées et conclusions d'audit : pratique en révision de dossier</td>
-            <td>L'onboarding est long pour les nouveaux collaborateurs, surtout les juniors qui ne connaissent pas encore bien les normes d'audit</td>
-          </tr>
-          <tr>
-            <td>Centralisation des éléments clés : points soulevés à la direction, lettres d'affirmation, seuils de signification, feuille de synthèse</td>
-            <td>Peu ou pas d'intégration native avec des outils tiers (logiciels comptables, Excel en mode dynamique, outils de data analytics) : les imports restent souvent manuels</td>
-          </tr>
-          <tr>
-            <td>Adapté aux exigences H3C et aux contrôles qualité : le dossier est constitué pour pouvoir être présenté tel quel</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Programmes de travail préformatés alignés sur les NEP, ce qui évite de reconstruire la méthodologie à chaque dossier</td></tr><tr><td>Traçabilité complète entre diligences réalisées, anomalies détectées et conclusions d'audit : pratique en révision de dossier</td></tr><tr><td>Centralisation des éléments clés : points soulevés à la direction, lettres d'affirmation, seuils de signification, feuille de synthèse</td></tr><tr><td>Adapté aux exigences H3C et aux contrôles qualité : le dossier est constitué pour pouvoir être présenté tel quel</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>L'interface accuse son âge : l'ergonomie n'a pas été repensée depuis longtemps et certaines actions demandent trop de clics</td></tr><tr><td>L'onboarding est long pour les nouveaux collaborateurs, surtout les juniors qui ne connaissent pas encore bien les normes d'audit</td></tr><tr><td>Peu ou pas d'intégration native avec des outils tiers (logiciels comptables, Excel en mode dynamique, outils de data analytics) : les imports restent souvent manuels</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -717,27 +686,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Pour un expert-comptable qui fait deux ou trois missions d'audit par an, c'est probablement surdimensionné.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Analyse de données sur 100% des transactions via Caseware IDEA : détection d'anomalies, doublons, tests de Benford sur l'ensemble du fichier journal sans échantillonnage</td>
-            <td>Onboarding long et coûteux : sans formation structurée, les collaborateurs juniors mettent plusieurs semaines à être opérationnels, ce qui peut poser problème en période haute</td>
-          </tr>
-          <tr>
-            <td>Workflow de revue intégré avec validation par niveaux (collaborateur, manager, associé) : plus besoin d'échanger des fichiers Excel par mail en fin de mission</td>
-            <td>Interface vieillissante et peu intuitive par rapport aux standards UX actuels, ce qui génère des frictions quotidiennes, notamment sur la navigation entre dossiers</td>
-          </tr>
-          <tr>
-            <td>Connecteurs natifs avec les principaux ERP (SAP, Sage, Cegid) pour importer les balances et écritures directement dans les papiers de travail</td>
-            <td>Tarification élevée et souvent opaque selon les modules activés : certains cabinets découvrent des coûts supplémentaires pour IDEA ou les modules cloud en cours de déploiement</td>
-          </tr>
-          <tr>
-            <td>Module de confirmation électronique pour les circularisations bancaires et tiers, avec suivi des relances et archivage automatique des réponses</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Analyse de données sur 100% des transactions via Caseware IDEA : détection d'anomalies, doublons, tests de Benford sur l'ensemble du fichier journal sans échantillonnage</td></tr><tr><td>Workflow de revue intégré avec validation par niveaux (collaborateur, manager, associé) : plus besoin d'échanger des fichiers Excel par mail en fin de mission</td></tr><tr><td>Connecteurs natifs avec les principaux ERP (SAP, Sage, Cegid) pour importer les balances et écritures directement dans les papiers de travail</td></tr><tr><td>Module de confirmation électronique pour les circularisations bancaires et tiers, avec suivi des relances et archivage automatique des réponses</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Onboarding long et coûteux : sans formation structurée, les collaborateurs juniors mettent plusieurs semaines à être opérationnels, ce qui peut poser problème en période haute</td></tr><tr><td>Interface vieillissante et peu intuitive par rapport aux standards UX actuels, ce qui génère des frictions quotidiennes, notamment sur la navigation entre dossiers</td></tr><tr><td>Tarification élevée et souvent opaque selon les modules activés : certains cabinets découvrent des coûts supplémentaires pour IDEA ou les modules cloud en cours de déploiement</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -778,27 +736,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>C'est un outil spécialisé sur la confirmation et la collecte de preuves d'audit. Pas un environnement de travail complet.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Confirmation bancaire directe via un réseau de banques partenaires intégrées, sans échange email manuel</td>
-            <td>Outil spécialisé uniquement sur la phase de confirmation : il ne remplace pas un logiciel d'audit complet avec gestion des risques, programmes de travail ou conclusions</td>
-          </tr>
-          <tr>
-            <td>Relances automatiques avec traçabilité complète et horodatage de chaque réponse reçue</td>
-            <td>Réseau de banques partenaires inégal selon les pays : certaines banques répondent encore hors plateforme, ce qui casse la fluidité du process</td>
-          </tr>
-          <tr>
-            <td>Exports PDF structurés directement exploitables dans un dossier de commissariat aux comptes</td>
-            <td>Le tarif devient difficile à justifier pour les petits cabinets avec un faible volume de mandats annuels</td>
-          </tr>
-          <tr>
-            <td>Tableau de bord en temps réel sur le statut de toutes les demandes de confirmation en cours</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Confirmation bancaire directe via un réseau de banques partenaires intégrées, sans échange email manuel</td></tr><tr><td>Relances automatiques avec traçabilité complète et horodatage de chaque réponse reçue</td></tr><tr><td>Exports PDF structurés directement exploitables dans un dossier de commissariat aux comptes</td></tr><tr><td>Tableau de bord en temps réel sur le statut de toutes les demandes de confirmation en cours</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Outil spécialisé uniquement sur la phase de confirmation : il ne remplace pas un logiciel d'audit complet avec gestion des risques, programmes de travail ou conclusions</td></tr><tr><td>Réseau de banques partenaires inégal selon les pays : certaines banques répondent encore hors plateforme, ce qui casse la fluidité du process</td></tr><tr><td>Le tarif devient difficile à justifier pour les petits cabinets avec un faible volume de mandats annuels</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -839,27 +786,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Là, Beeye a vraiment du sens.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Vue planning collaborative en temps réel : on voit instantanément la charge de chaque collaborateur et on réaffecte en glissant-déposant</td>
-            <td>Beeye n'est pas un logiciel de papiers de travail : il ne remplace pas un outil comme Idex ou CaseWare pour la documentation des diligences, ce qui oblige à maintenir deux outils en parallèle</td>
-          </tr>
-          <tr>
-            <td>Suivi budgétaire par mission avec alertes de dépassement d'heures, ce qui évite les dérives sur les missions CAC à honoraires fixes</td>
-            <td>L'onboarding prend du temps si les données de planification ne sont pas déjà structurées en interne, j'ai vu des cabinets bloquer plusieurs semaines sur la phase de paramétrage initial</td>
-          </tr>
-          <tr>
-            <td>Gestion multi-missions simultanées : un collaborateur peut être suivi sur 4 dossiers en parallèle sans perdre le fil du temps passé sur chacun</td>
-            <td>Le tarif devient vite significatif sur des équipes de 20+ collaborateurs, et le support peut être lent à répondre quand on a un bug en pleine période de clôture</td>
-          </tr>
-          <tr>
-            <td>Reporting de rentabilité par client et par période, exportable, sans avoir à aller chercher les données à la main</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Vue planning collaborative en temps réel : on voit instantanément la charge de chaque collaborateur et on réaffecte en glissant-déposant</td></tr><tr><td>Suivi budgétaire par mission avec alertes de dépassement d'heures, ce qui évite les dérives sur les missions CAC à honoraires fixes</td></tr><tr><td>Gestion multi-missions simultanées : un collaborateur peut être suivi sur 4 dossiers en parallèle sans perdre le fil du temps passé sur chacun</td></tr><tr><td>Reporting de rentabilité par client et par période, exportable, sans avoir à aller chercher les données à la main</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Beeye n'est pas un logiciel de papiers de travail : il ne remplace pas un outil comme Idex ou CaseWare pour la documentation des diligences, ce qui oblige à maintenir deux outils en parallèle</td></tr><tr><td>L'onboarding prend du temps si les données de planification ne sont pas déjà structurées en interne, j'ai vu des cabinets bloquer plusieurs semaines sur la phase de paramétrage initial</td></tr><tr><td>Le tarif devient vite significatif sur des équipes de 20+ collaborateurs, et le support peut être lent à répondre quand on a un bug en pleine période de clôture</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -896,27 +832,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>En revanche, dès que tu travailles sur des entités avec des millions d'écritures, des risques de fraude à monitorer, ou des cycles de clôture complexes, là ça change vraiment la façon de travailler.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Analyse de la totalité des écritures comptables sans échantillonnage, ce qui réduit drastiquement les angles morts dans la détection d'anomalies</td>
-            <td>Onboarding complexe : sans formation dédiée, les premières semaines sont frustrantes. Le paramétrage des seuils de risque demande du temps et une vraie compréhension du moteur d'analyse, sinon on génère des faux positifs en masse</td>
-          </tr>
-          <tr>
-            <td>Score de risque automatique par transaction avec visualisation des clusters d'anomalies, ce qui accélère le ciblage des zones à investiguer</td>
-            <td>Tarification opaque et clairement orientée grands comptes, difficile à justifier pour un cabinet qui n'a pas un volume de mandats suffisant pour rentabiliser l'outil</td>
-          </tr>
-          <tr>
-            <td>Connexion possible avec plusieurs sources ERP et exports comptables courants, sans avoir à reformater manuellement toute la donnée</td>
-            <td>L'interface de reporting reste rigide : exporter les résultats dans un format propre pour les dossiers de révision demande souvent des étapes manuelles supplémentaires, ce que je trouve franchement agaçant</td>
-          </tr>
-          <tr>
-            <td>Traçabilité complète du raisonnement algorithmique : on peut expliquer pourquoi une écriture a été flaggée, ce qui compte beaucoup dans un contexte de commissariat</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Analyse de la totalité des écritures comptables sans échantillonnage, ce qui réduit drastiquement les angles morts dans la détection d'anomalies</td></tr><tr><td>Score de risque automatique par transaction avec visualisation des clusters d'anomalies, ce qui accélère le ciblage des zones à investiguer</td></tr><tr><td>Connexion possible avec plusieurs sources ERP et exports comptables courants, sans avoir à reformater manuellement toute la donnée</td></tr><tr><td>Traçabilité complète du raisonnement algorithmique : on peut expliquer pourquoi une écriture a été flaggée, ce qui compte beaucoup dans un contexte de commissariat</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Onboarding complexe : sans formation dédiée, les premières semaines sont frustrantes. Le paramétrage des seuils de risque demande du temps et une vraie compréhension du moteur d'analyse, sinon on génère des faux positifs en masse</td></tr><tr><td>Tarification opaque et clairement orientée grands comptes, difficile à justifier pour un cabinet qui n'a pas un volume de mandats suffisant pour rentabiliser l'outil</td></tr><tr><td>L'interface de reporting reste rigide : exporter les résultats dans un format propre pour les dossiers de révision demande souvent des étapes manuelles supplémentaires, ce que je trouve franchement agaçant</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1248,7 +1173,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 creaone.fr — Données actualisées le 2 octobre 2026
+        © 2026 creaone.fr — Données actualisées le 6 octobre 2026
       </div>
     </div>
   </div>

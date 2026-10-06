@@ -97,6 +97,8 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap .avantages-table{flex:1;margin:0}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
@@ -146,7 +148,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -487,7 +489,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Meilleur Logiciel de paie 2026 : Top 10</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-06 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Alexandre Michel" class="hero-author-avatar">
     <span>Rédigé par Alexandre Michel</span>
@@ -542,27 +544,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Les cabinets d'expertise comptable qui gèrent la paie pour leurs clients iront plutôt vers Silae ou Cegid. Mais pour une startup en croissance ou une PME qui sort enfin d'un tableur bricolé, c'est une vraie option sérieuse.</p></p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Génération automatique de la DSN mensuelle sans intervention manuelle, ce qui réduit vraiment le risque d'erreur déclarative</td>
-            <td>Le tarif grimpe vite avec l'ajout de modules : au-delà de 30 salariés, la facture mensuelle peut surprendre, surtout si on active les options notes de frais et reporting avancé</td>
-          </tr>
-          <tr>
-            <td>Portail employé intégré : chaque salarié accède à ses bulletins, pose ses congés et suit ses soldes en autonomie totale</td>
-            <td>Les conventions collectives couvertes restent limitées, j'ai rencontré des cas avec des accords de branche un peu atypiques où PayFit ne suivait pas et nécessitait une intervention manuelle</td>
-          </tr>
-          <tr>
-            <td>Synchronisation paie et gestion des absences en temps réel, sans ressaisie ni doublon entre les modules</td>
-            <td>Le support client manque de réactivité sur les cas complexes : on passe souvent par une base de connaissances avant d'avoir un vrai humain, et en période de clôture de paie c'est franchement stressant</td>
-          </tr>
-          <tr>
-            <td>Onboarding guidé qui permet à un non-spécialiste de générer un premier bulletin correct en moins d'une heure</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Génération automatique de la DSN mensuelle sans intervention manuelle, ce qui réduit vraiment le risque d'erreur déclarative</td></tr><tr><td>Portail employé intégré : chaque salarié accède à ses bulletins, pose ses congés et suit ses soldes en autonomie totale</td></tr><tr><td>Synchronisation paie et gestion des absences en temps réel, sans ressaisie ni doublon entre les modules</td></tr><tr><td>Onboarding guidé qui permet à un non-spécialiste de générer un premier bulletin correct en moins d'une heure</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Le tarif grimpe vite avec l'ajout de modules : au-delà de 30 salariés, la facture mensuelle peut surprendre, surtout si on active les options notes de frais et reporting avancé</td></tr><tr><td>Les conventions collectives couvertes restent limitées, j'ai rencontré des cas avec des accords de branche un peu atypiques où PayFit ne suivait pas et nécessitait une intervention manuelle</td></tr><tr><td>Le support client manque de réactivité sur les cas complexes : on passe souvent par une base de connaissances avant d'avoir un vrai humain, et en période de clôture de paie c'est franchement stressant</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -605,27 +596,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>C'est exactement pour ça que cet outil a du sens : <strong>réduire la friction administrative</strong> sur des dossiers courants, pas révolutionner une DSI.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Mises à jour des conventions collectives intégrées automatiquement, sans intervention manuelle</td>
-            <td>Reporting analytique très limité : impossible de croiser masse salariale, absentéisme et données RH sans exporter vers Excel</td>
-          </tr>
-          <tr>
-            <td>Génération DSN fiable et exports comptables propres dès la configuration initiale</td>
-            <td>Personnalisation des bulletins restreinte, difficile d'ajouter des rubriques atypiques sans contacter le support</td>
-          </tr>
-          <tr>
-            <td>Portail client intégré pour la validation des variables de paie, ce qui réduit les échanges par mail</td>
-            <td>Le support client peut être lent à répondre en période de clôture de paie, exactement quand on en a le plus besoin</td>
-          </tr>
-          <tr>
-            <td>Prise en main rapide, moins d'une semaine pour un utilisateur habitué à la paie</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Mises à jour des conventions collectives intégrées automatiquement, sans intervention manuelle</td></tr><tr><td>Génération DSN fiable et exports comptables propres dès la configuration initiale</td></tr><tr><td>Portail client intégré pour la validation des variables de paie, ce qui réduit les échanges par mail</td></tr><tr><td>Prise en main rapide, moins d'une semaine pour un utilisateur habitué à la paie</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Reporting analytique très limité : impossible de croiser masse salariale, absentéisme et données RH sans exporter vers Excel</td></tr><tr><td>Personnalisation des bulletins restreinte, difficile d'ajouter des rubriques atypiques sans contacter le support</td></tr><tr><td>Le support client peut être lent à répondre en période de clôture de paie, exactement quand on en a le plus besoin</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -664,27 +644,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p><div class="table-wrap"><table border='1' cellpadding='6' cellspacing='0' style='border-collapse:collapse;width:<strong>100%</strong>;'><thead><tr><th>Fonctionnalité</th><th>Disponible</th><th>Remarque</th></tr></thead><tbody><tr><<strong>td</strong>>Bulletins de paie</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Via module intégré ou partenaire comptable</<strong>td</strong>></tr><tr><<strong>td</strong>>Gestion des absences / congés</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Synchronisation automatique avec la paie</<strong>td</strong>></tr><tr><<strong>td</strong>>DSN automatique</<strong>td</strong>><<strong>td</strong>>Partiel</<strong>td</strong>><<strong>td</strong>>Dépend du mode d'utilisation choisi</<strong>td</strong>></tr><tr><<strong>td</strong>>Notes de frais</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Intégré nativement</<strong>td</strong>></tr><tr><<strong>td</strong>>Signature électronique</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Contrats et documents RH</<strong>td</strong>></tr><tr><<strong>td</strong>>Reporting RH</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Tableaux de bord personnalisables</<strong>td</strong>></tr></tbody></table></div></p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Centralisation RH + paie dans un seul outil : absences, contrats, variables de paie et notes de frais au même endroit, ce qui évite les ressaisies manuelles entre plusieurs logiciels</td>
-            <td>Pas un logiciel de paie autonome au sens strict : pour les entreprises avec des conventions collectives complexes, des statuts multiples ou des paies très variables, Factorial montre ses limites et nécessite un partenaire externe</td>
-          </tr>
-          <tr>
-            <td>Synchronisation automatique des éléments variables (congés validés, heures supplémentaires, absences) directement dans la préparation des bulletins, ça réduit vraiment les erreurs de saisie</td>
-            <td>Le support client peut être lent à répondre sur les sujets techniques paie, j'ai vu des tickets rester ouverts plusieurs jours sur des questions bloquantes en fin de mois</td>
-          </tr>
-          <tr>
-            <td>Prise en main rapide même sans formation poussée, l'interface est suffisamment intuitive pour qu'une équipe RH non technique soit autonome en quelques jours</td>
-            <td>La tarification monte vite dès qu'on active plusieurs modules, le prix d'entrée semble attractif mais les options RH avancées font grimper la facture de façon assez significative</td>
-          </tr>
-          <tr>
-            <td>Offre partenaire avec experts-comptables intégrés à la plateforme, pratique pour les PME sans service paie interne qui veulent externaliser sans perdre la visibilité sur les données</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Centralisation RH + paie dans un seul outil : absences, contrats, variables de paie et notes de frais au même endroit, ce qui évite les ressaisies manuelles entre plusieurs logiciels</td></tr><tr><td>Synchronisation automatique des éléments variables (congés validés, heures supplémentaires, absences) directement dans la préparation des bulletins, ça réduit vraiment les erreurs de saisie</td></tr><tr><td>Prise en main rapide même sans formation poussée, l'interface est suffisamment intuitive pour qu'une équipe RH non technique soit autonome en quelques jours</td></tr><tr><td>Offre partenaire avec experts-comptables intégrés à la plateforme, pratique pour les PME sans service paie interne qui veulent externaliser sans perdre la visibilité sur les données</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Pas un logiciel de paie autonome au sens strict : pour les entreprises avec des conventions collectives complexes, des statuts multiples ou des paies très variables, Factorial montre ses limites et nécessite un partenaire externe</td></tr><tr><td>Le support client peut être lent à répondre sur les sujets techniques paie, j'ai vu des tickets rester ouverts plusieurs jours sur des questions bloquantes en fin de mois</td></tr><tr><td>La tarification monte vite dès qu'on active plusieurs modules, le prix d'entrée semble attractif mais les options RH avancées font grimper la facture de façon assez significative</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -721,27 +690,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Par contre, si vous êtes une structure avec plusieurs établissements, des conventions collectives multiples ou des contrats atypiques à gérer en masse, l'outil peut vite montrer ses limites. Ce n'est pas conçu pour ça.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>DSN intégrée avec envoi direct aux organismes, sans ressaisie manuelle</td>
-            <td>L'interface accuse son âge : on sent qu'on est sur un logiciel desktop des années 2010, pas sur un outil moderne. Certains menus sont peu intuitifs et j'ai perdu du temps à chercher des réglages pourtant basiques.</td>
-          </tr>
-          <tr>
-            <td>Mises à jour légales régulières qui couvrent les principales conventions collectives françaises</td>
-            <td>Le support client peut être lent, surtout en période de clôture de paie. Quelques tickets restés sans réponse pendant 48h à des moments où on ne peut vraiment pas se permettre d'attendre.</td>
-          </tr>
-          <tr>
-            <td>Compatibilité native avec les autres logiciels EBP (comptabilité, gestion commerciale), ce qui réduit les doubles saisies</td>
-            <td>Les fonctionnalités multisites ou multi-conventions restent limitées. Pour une structure avec des salariés sous plusieurs conventions différentes, la configuration devient vite lourde à maintenir.</td>
-          </tr>
-          <tr>
-            <td>Prise en main assez rapide pour un profil non-expert : les assistants de création de bulletins guident bien les premières utilisations</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>DSN intégrée avec envoi direct aux organismes, sans ressaisie manuelle</td></tr><tr><td>Mises à jour légales régulières qui couvrent les principales conventions collectives françaises</td></tr><tr><td>Compatibilité native avec les autres logiciels EBP (comptabilité, gestion commerciale), ce qui réduit les doubles saisies</td></tr><tr><td>Prise en main assez rapide pour un profil non-expert : les assistants de création de bulletins guident bien les premières utilisations</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>L'interface accuse son âge : on sent qu'on est sur un logiciel desktop des années 2010, pas sur un outil moderne. Certains menus sont peu intuitifs et j'ai perdu du temps à chercher des réglages pourtant basiques.</td></tr><tr><td>Le support client peut être lent, surtout en période de clôture de paie. Quelques tickets restés sans réponse pendant 48h à des moments où on ne peut vraiment pas se permettre d'attendre.</td></tr><tr><td>Les fonctionnalités multisites ou multi-conventions restent limitées. Pour une structure avec des salariés sous plusieurs conventions différentes, la configuration devient vite lourde à maintenir.</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -778,27 +736,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>La cible réelle, c'est la PME entre 5 et 100 salariés, avec un gestionnaire qui traite la paie en parallèle d'autres missions.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Mise à jour automatique des paramètres légaux et conventions collectives sans intervention manuelle</td>
-            <td>Tarification qui monte vite dès qu'on dépasse une vingtaine de salariés, avec des options facturées séparément</td>
-          </tr>
-          <tr>
-            <td>Génération et envoi de la DSN intégré avec contrôle des anomalies avant transmission</td>
-            <td>Gestion des temps et absences assez basique : pour du pointage ou des plannings complexes, il faut un outil tiers</td>
-          </tr>
-          <tr>
-            <td>Synchronisation native avec Sage Comptabilité pour les exports de journaux de paie</td>
-            <td>Support client parfois lent à répondre sur les tickets techniques, ce qui peut bloquer en période de clôture de paie</td>
-          </tr>
-          <tr>
-            <td>Interface guidée adaptée aux non-spécialistes RH qui gèrent la paie en mode polyvalent</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Mise à jour automatique des paramètres légaux et conventions collectives sans intervention manuelle</td></tr><tr><td>Génération et envoi de la DSN intégré avec contrôle des anomalies avant transmission</td></tr><tr><td>Synchronisation native avec Sage Comptabilité pour les exports de journaux de paie</td></tr><tr><td>Interface guidée adaptée aux non-spécialistes RH qui gèrent la paie en mode polyvalent</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification qui monte vite dès qu'on dépasse une vingtaine de salariés, avec des options facturées séparément</td></tr><tr><td>Gestion des temps et absences assez basique : pour du pointage ou des plannings complexes, il faut un outil tiers</td></tr><tr><td>Support client parfois lent à répondre sur les tickets techniques, ce qui peut bloquer en période de clôture de paie</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -833,27 +780,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Pour un cabinet comptable qui gère 200 dossiers, ce n'est pas le bon outil non plus.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Prise en main rapide, même sans formation paie préalable</td>
-            <td>Paramétrage des conventions collectives limité, certaines branches ne sont pas couvertes ou mal gérées</td>
-          </tr>
-          <tr>
-            <td>DSN générée et envoyée directement depuis l'interface, sans manipulation externe</td>
-            <td>Support client parfois lent à répondre, j'ai attendu deux jours pour un problème bloquant sur une DSN</td>
-          </tr>
-          <tr>
-            <td>Calcul automatique des charges sociales avec mise à jour des taux en temps réel</td>
-            <td>Pas adapté dès qu'on dépasse une vingtaine de salariés ou que la structure salariale devient un peu complexe</td>
-          </tr>
-          <tr>
-            <td>Interface épurée qui réduit vraiment le risque d'erreur pour un non-spécialiste</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Prise en main rapide, même sans formation paie préalable</td></tr><tr><td>DSN générée et envoyée directement depuis l'interface, sans manipulation externe</td></tr><tr><td>Calcul automatique des charges sociales avec mise à jour des taux en temps réel</td></tr><tr><td>Interface épurée qui réduit vraiment le risque d'erreur pour un non-spécialiste</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Paramétrage des conventions collectives limité, certaines branches ne sont pas couvertes ou mal gérées</td></tr><tr><td>Support client parfois lent à répondre, j'ai attendu deux jours pour un problème bloquant sur une DSN</td></tr><tr><td>Pas adapté dès qu'on dépasse une vingtaine de salariés ou que la structure salariale devient un peu complexe</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -890,27 +826,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>C'est un outil professionnel, ça se voit dès la première connexion.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Moteur de calcul très paramétrable, capable de gérer des conventions collectives sectorielles complexes sans développement spécifique</td>
-            <td>Prise en main longue pour les nouveaux utilisateurs : l'interface n'est pas intuitive, et l'onboarding sans accompagnement de l'intégrateur est franchement difficile</td>
-          </tr>
-          <tr>
-            <td>Automatisation complète de la DSN avec gestion des flux de correction et des signalements en temps réel</td>
-            <td>Tarification opaque et souvent élevée pour les PME en dessous de 50 salariés, le ROI se justifie vraiment à partir d'une certaine volumétrie</td>
-          </tr>
-          <tr>
-            <td>Synchronisation native avec les autres modules Cegid (SIRH, gestion des temps) pour éviter les ressaisies</td>
-            <td>Le support technique peut être lent en période de clôture de paie, exactement au moment où on en a le plus besoin</td>
-          </tr>
-          <tr>
-            <td>Reporting masse salariale détaillé par établissement, service ou population, exportable en Excel ou intégrable dans un ERP</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Moteur de calcul très paramétrable, capable de gérer des conventions collectives sectorielles complexes sans développement spécifique</td></tr><tr><td>Automatisation complète de la DSN avec gestion des flux de correction et des signalements en temps réel</td></tr><tr><td>Synchronisation native avec les autres modules Cegid (SIRH, gestion des temps) pour éviter les ressaisies</td></tr><tr><td>Reporting masse salariale détaillé par établissement, service ou population, exportable en Excel ou intégrable dans un ERP</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prise en main longue pour les nouveaux utilisateurs : l'interface n'est pas intuitive, et l'onboarding sans accompagnement de l'intégrateur est franchement difficile</td></tr><tr><td>Tarification opaque et souvent élevée pour les PME en dessous de 50 salariés, le ROI se justifie vraiment à partir d'une certaine volumétrie</td></tr><tr><td>Le support technique peut être lent en période de clôture de paie, exactement au moment où on en a le plus besoin</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -947,27 +872,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Ce n'est pas l'outil le plus intuitif du marché, mais une fois qu'on maîtrise la logique, ça tourne.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Moteur de paie robuste avec mises à jour légales et conventionnelles rapides, y compris les changements de taux en cours d'année</td>
-            <td>Prise en main longue : sans accompagnement ou formation dédiée, le paramétrage des conventions collectives et des rubriques spécifiques peut prendre plusieurs semaines</td>
-          </tr>
-          <tr>
-            <td>Gestion multi-dossiers très efficace pour les cabinets comptables : on bascule d'un client à l'autre sans perdre de contexte</td>
-            <td>Interface qui accuse son âge sur certains écrans, quelques menus restent peu intuitifs et la navigation n'est pas aussi fluide qu'on pourrait l'attendre d'un outil moderne</td>
-          </tr>
-          <tr>
-            <td>DSN et déclarations sociales générées directement depuis l'interface, sans ressaisie ni export intermédiaire</td>
-            <td>Peu adapté aux très petites structures qui gèrent la paie en interne sans compétences paie : la complexité de l'outil est pensée pour des gestionnaires expérimentés, pas pour un dirigeant qui découvre le sujet</td>
-          </tr>
-          <tr>
-            <td>Portail salarié intégré pour la distribution dématérialisée des bulletins de paie et la gestion des documents RH</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Moteur de paie robuste avec mises à jour légales et conventionnelles rapides, y compris les changements de taux en cours d'année</td></tr><tr><td>Gestion multi-dossiers très efficace pour les cabinets comptables : on bascule d'un client à l'autre sans perdre de contexte</td></tr><tr><td>DSN et déclarations sociales générées directement depuis l'interface, sans ressaisie ni export intermédiaire</td></tr><tr><td>Portail salarié intégré pour la distribution dématérialisée des bulletins de paie et la gestion des documents RH</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prise en main longue : sans accompagnement ou formation dédiée, le paramétrage des conventions collectives et des rubriques spécifiques peut prendre plusieurs semaines</td></tr><tr><td>Interface qui accuse son âge sur certains écrans, quelques menus restent peu intuitifs et la navigation n'est pas aussi fluide qu'on pourrait l'attendre d'un outil moderne</td></tr><tr><td>Peu adapté aux très petites structures qui gèrent la paie en interne sans compétences paie : la complexité de l'outil est pensée pour des gestionnaires expérimentés, pas pour un dirigeant qui découvre le sujet</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1004,27 +918,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Le vrai intérêt du logiciel, c'est sa fiabilité sur les bulletins et la <strong>conformité réglementaire</strong> mise à jour en continu. Pour une DRH qui gère 300 salariés ou plus, ça vaut vraiment quelque chose.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Moteur de paie très paramétrable, adapté aux conventions collectives complexes et aux structures multi-établissements</td>
-            <td>Interface utilisateur datée sur certains modules, la navigation peut sembler lourde pour quelqu'un habitué aux outils SaaS modernes</td>
-          </tr>
-          <tr>
-            <td>DSN et déclarations sociales automatisées, mises à jour réglementaires intégrées sans intervention manuelle</td>
-            <td>Onboarding long et coûteux : le déploiement demande souvent plusieurs semaines et l'accompagnement initial est facturé en supplément</td>
-          </tr>
-          <tr>
-            <td>Gestion avancée des compteurs d'absences, heures sup, soldes de congés avec exports RH complets</td>
-            <td>Tarifs peu transparents, le pricing est sur devis et peut grimper vite selon le nombre de bulletins et les modules activés</td>
-          </tr>
-          <tr>
-            <td>Capacité à gérer plusieurs entités juridiques depuis un seul espace, utile pour les groupes ou franchises</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Moteur de paie très paramétrable, adapté aux conventions collectives complexes et aux structures multi-établissements</td></tr><tr><td>DSN et déclarations sociales automatisées, mises à jour réglementaires intégrées sans intervention manuelle</td></tr><tr><td>Gestion avancée des compteurs d'absences, heures sup, soldes de congés avec exports RH complets</td></tr><tr><td>Capacité à gérer plusieurs entités juridiques depuis un seul espace, utile pour les groupes ou franchises</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface utilisateur datée sur certains modules, la navigation peut sembler lourde pour quelqu'un habitué aux outils SaaS modernes</td></tr><tr><td>Onboarding long et coûteux : le déploiement demande souvent plusieurs semaines et l'accompagnement initial est facturé en supplément</td></tr><tr><td>Tarifs peu transparents, le pricing est sur devis et peut grimper vite selon le nombre de bulletins et les modules activés</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1063,27 +966,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Par contre, si vous cherchez un outil ultra-paramétrable pour des conventions collectives très complexes ou des statuts atypiques, ça peut coincer.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation native avec les modules Lucca (absences, notes de frais, onboarding) : zéro ressaisie des variables de paie</td>
-            <td>Vraiment pensé pour les entreprises déjà dans l'écosystème Lucca : si vous n'utilisez pas les autres modules, vous perdez une grosse partie de la valeur</td>
-          </tr>
-          <tr>
-            <td>Calcul en temps réel des cotisations avec gestion DSN intégrée, les rejets URSSAF sont rares une fois bien paramétré</td>
-            <td>Paramétrage des conventions collectives atypiques ou des statuts complexes (intermittents, multi-établissements très hétérogènes) : le support est parfois lent à répondre et les contournements manuels s'accumulent</td>
-          </tr>
-          <tr>
-            <td>Interface claire et prise en main rapide pour des profils RH non-experts en paie technique</td>
-            <td>Le tarif grimpe vite si on additionne tous les modules Lucca nécessaires pour profiter de l'intégration complète, ce n'est pas donné pour une PME de 30 personnes</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation configurables : on peut faire valider les variables par les managers avant le lancement de paie</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation native avec les modules Lucca (absences, notes de frais, onboarding) : zéro ressaisie des variables de paie</td></tr><tr><td>Calcul en temps réel des cotisations avec gestion DSN intégrée, les rejets URSSAF sont rares une fois bien paramétré</td></tr><tr><td>Interface claire et prise en main rapide pour des profils RH non-experts en paie technique</td></tr><tr><td>Workflows de validation configurables : on peut faire valider les variables par les managers avant le lancement de paie</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Vraiment pensé pour les entreprises déjà dans l'écosystème Lucca : si vous n'utilisez pas les autres modules, vous perdez une grosse partie de la valeur</td></tr><tr><td>Paramétrage des conventions collectives atypiques ou des statuts complexes (intermittents, multi-établissements très hétérogènes) : le support est parfois lent à répondre et les contournements manuels s'accumulent</td></tr><tr><td>Le tarif grimpe vite si on additionne tous les modules Lucca nécessaires pour profiter de l'intégration complète, ce n'est pas donné pour une PME de 30 personnes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1334,7 +1226,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 creaone.fr — Données actualisées le 2 octobre 2026
+        © 2026 creaone.fr — Données actualisées le 6 octobre 2026
       </div>
     </div>
   </div>

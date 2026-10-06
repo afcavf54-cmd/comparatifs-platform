@@ -97,6 +97,8 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap .avantages-table{flex:1;margin:0}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
@@ -146,7 +148,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -487,7 +489,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Meilleur Logiciels de Recrutement 2026 : Top 9</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-06 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Alexandre Michel" class="hero-author-avatar">
     <span>Rédigé par Alexandre Michel</span>
@@ -544,27 +546,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Par contre, pour une grande entreprise avec des process de validation multi-niveaux complexes, des intégrations SIRH lourdes ou des besoins de reporting très fins, il va vite montrer ses limites. Ce n'est pas fait pour ça, et c'est ok.</p></p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Multidiffusion des offres sur plus de 100 jobboards en quelques clics, sans ressaisie</td>
-            <td>Reporting limité : impossible d'analyser finement le coût par embauche ou la performance par canal de sourcing</td>
-          </tr>
-          <tr>
-            <td>Pipeline kanban visuel très lisible, idéal pour suivre 20 à 30 candidatures simultanées sans se perdre</td>
-            <td>Les intégrations avec les SIRH type Silae ou Sage RH sont peu documentées et parfois instables selon les versions</td>
-          </tr>
-          <tr>
-            <td>Création de page carrière intégrée sans aucune compétence technique requise</td>
-            <td>L'onboarding est rapide mais le support client met parfois plusieurs jours à répondre sur les sujets techniques un peu précis</td>
-          </tr>
-          <tr>
-            <td>Relances automatiques et modèles de mails configurables qui évitent les oublis de réponse aux candidats</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Multidiffusion des offres sur plus de 100 jobboards en quelques clics, sans ressaisie</td></tr><tr><td>Pipeline kanban visuel très lisible, idéal pour suivre 20 à 30 candidatures simultanées sans se perdre</td></tr><tr><td>Création de page carrière intégrée sans aucune compétence technique requise</td></tr><tr><td>Relances automatiques et modèles de mails configurables qui évitent les oublis de réponse aux candidats</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Reporting limité : impossible d'analyser finement le coût par embauche ou la performance par canal de sourcing</td></tr><tr><td>Les intégrations avec les SIRH type Silae ou Sage RH sont peu documentées et parfois instables selon les versions</td></tr><tr><td>L'onboarding est rapide mais le support client met parfois plusieurs jours à répondre sur les sujets techniques un peu précis</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -603,27 +594,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p><strong>Tableau comparatif des usages clés :</strong></p><div class="table-wrap"><table><thead><tr><th>Fonctionnalité</th><th>Niveau de couverture</th><th>Commentaire</th></tr></thead><tbody><tr><<strong>td</strong>>Diffusion multicanal</<strong>td</strong>><<strong>td</strong>>Bon</<strong>td</strong>><<strong>td</strong>>Connexion native avec les principales jobboards</<strong>td</strong>></tr><tr><<strong>td</strong>>Suivi pipeline (kanban)</<strong>td</strong>><<strong>td</strong>>Très bon</<strong>td</strong>><<strong>td</strong>>Visuel, collaboratif, mis à jour en temps réel</<strong>td</strong>></tr><tr><<strong>td</strong>>Automatisation des relances</<strong>td</strong>><<strong>td</strong>>Moyen</<strong>td</strong>><<strong>td</strong>>Templates disponibles, personnalisation limitée</<strong>td</strong>></tr><tr><<strong>td</strong>>Reporting / analytics</<strong>td</strong>><<strong>td</strong>>Basique</<strong>td</strong>><<strong>td</strong>>Données simples, pas d'exports BI avancés</<strong>td</strong>></tr><tr><<strong>td</strong>>Intégration SIRH</<strong>td</strong>><<strong>td</strong>>Limité</<strong>td</strong>><<strong>td</strong>>Quelques connecteurs mais pas de sync profonde</<strong>td</strong>></tr><tr><<strong>td</strong>>Page carrière personnalisée</<strong>td</strong>><<strong>td</strong>>Bon</<strong>td</strong>><<strong>td</strong>>Configurable sans code, design correct</<strong>td</strong>></tr></tbody></table></div></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Pipeline visuel type kanban : je suis l'avancement de chaque candidat en un coup d'oeil, sans chercher dans des listes interminables</td>
-            <td>Le reporting reste basique. Pas d'export vers un outil BI, pas de tableaux croisés dynamiques, difficile de sortir des stats fines sur les canaux de sourcing ou les délais moyens par poste.</td>
-          </tr>
-          <tr>
-            <td>Diffusion des offres sur les principales jobboards depuis une seule interface, sans aller poster manuellement partout</td>
-            <td>L'automatisation des emails existe mais la personnalisation est limitée. Impossible de créer des workflows conditionnels avancés du type 'si le candidat n'a pas répondu en 48h, relancer automatiquement avec un autre message'.</td>
-          </tr>
-          <tr>
-            <td>Formulaires de pré-qualification qui filtrent les profils avant même qu'on lise un CV, ça fait gagner un temps fou sur les gros volumes</td>
-            <td>Le support client répond, mais pas toujours vite. Sur une urgence de diffusion d'offre, j'ai attendu presque une journée. Pour une PME sans équipe technique en backup, ça peut coincer.</td>
-          </tr>
-          <tr>
-            <td>Collaboration fluide entre recruteurs et managers : les commentaires et notations se font directement sur la fiche candidat, plus de mails en boucle</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Pipeline visuel type kanban : je suis l'avancement de chaque candidat en un coup d'oeil, sans chercher dans des listes interminables</td></tr><tr><td>Diffusion des offres sur les principales jobboards depuis une seule interface, sans aller poster manuellement partout</td></tr><tr><td>Formulaires de pré-qualification qui filtrent les profils avant même qu'on lise un CV, ça fait gagner un temps fou sur les gros volumes</td></tr><tr><td>Collaboration fluide entre recruteurs et managers : les commentaires et notations se font directement sur la fiche candidat, plus de mails en boucle</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Le reporting reste basique. Pas d'export vers un outil BI, pas de tableaux croisés dynamiques, difficile de sortir des stats fines sur les canaux de sourcing ou les délais moyens par poste.</td></tr><tr><td>L'automatisation des emails existe mais la personnalisation est limitée. Impossible de créer des workflows conditionnels avancés du type 'si le candidat n'a pas répondu en 48h, relancer automatiquement avec un autre message'.</td></tr><tr><td>Le support client répond, mais pas toujours vite. Sur une urgence de diffusion d'offre, j'ai attendu presque une journée. Pour une PME sans équipe technique en backup, ça peut coincer.</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -658,27 +638,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p><strong>À éviter</strong> si vous cherchez une solution très personnalisable façon enterprise avec des workflows complexes sur mesure, ou si vous avez moins de 5 recrutements par an, le rapport qualité/prix devient discutable.</p><div class="table-wrap"><table><thead><tr><th>Fonctionnalité</th><th>Disponible</th><th>Remarque</th></tr></thead><tbody><tr><<strong>td</strong>>Multidiffusion jobboards</<strong>td</strong>><<strong>td</strong>>✅</<strong>td</strong>><<strong>td</strong>>+200 jobboards inclus</<strong>td</strong>></tr><tr><<strong>td</strong>>Scoring IA des candidatures</<strong>td</strong>><<strong>td</strong>>✅</<strong>td</strong>><<strong>td</strong>>Pertinent sur profils tech</<strong>td</strong>></tr><tr><<strong>td</strong>>Planification entretiens</<strong>td</strong>><<strong>td</strong>>✅</<strong>td</strong>><<strong>td</strong>>Synchro Google / Outlook</<strong>td</strong>></tr><tr><<strong>td</strong>>Reporting time-to-hire</<strong>td</strong>><<strong>td</strong>>✅</<strong>td</strong>><<strong>td</strong>>Exports CSV propres</<strong>td</strong>></tr><tr><<strong>td</strong>>Workflows custom avancés</<strong>td</strong>><<strong>td</strong>>⚠️</<strong>td</strong>><<strong>td</strong>>Limité sur le plan Standard</<strong>td</strong>></tr><tr><<strong>td</strong>>Intégration SIRH</<strong>td</strong>><<strong>td</strong>>✅</<strong>td</strong>><<strong>td</strong>>BambooHR, Personio, etc.</<strong>td</strong>></tr></tbody></table></div></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Mise en route rapide : offres en ligne et pipelines configurés en moins de 48h, sans accompagnement externe</td>
-            <td>Le support client peut être lent en dehors des heures ouvertes US, j'ai attendu plus de 24h sur un bug de synchronisation calendrier un lundi matin</td>
-          </tr>
-          <tr>
-            <td>Sourcing intégré avec suggestions IA de profils, utile sur les postes tech ou spécialisés où les candidatures spontanées sont rares</td>
-            <td>Les workflows de validation sont assez rigides sur le plan Standard : impossible de créer des circuits de validation multi-niveaux sans passer à l'offre supérieure, ce qui fait grimper la facture</td>
-          </tr>
-          <tr>
-            <td>Planification d'entretiens fluide avec synchronisation calendrier bidirectionnelle, ce qui évite les allers-retours par mail avec les managers</td>
-            <td>La personnalisation des pages carrières reste basique visuellement, si la marque employeur est un vrai enjeu pour vous, il faudra passer par un développeur ou accepter un rendu assez générique</td>
-          </tr>
-          <tr>
-            <td>Reporting clair sur les indicateurs qui comptent vraiment : time-to-hire, source des candidats, taux d'avancement par étape du pipeline</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Mise en route rapide : offres en ligne et pipelines configurés en moins de 48h, sans accompagnement externe</td></tr><tr><td>Sourcing intégré avec suggestions IA de profils, utile sur les postes tech ou spécialisés où les candidatures spontanées sont rares</td></tr><tr><td>Planification d'entretiens fluide avec synchronisation calendrier bidirectionnelle, ce qui évite les allers-retours par mail avec les managers</td></tr><tr><td>Reporting clair sur les indicateurs qui comptent vraiment : time-to-hire, source des candidats, taux d'avancement par étape du pipeline</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Le support client peut être lent en dehors des heures ouvertes US, j'ai attendu plus de 24h sur un bug de synchronisation calendrier un lundi matin</td></tr><tr><td>Les workflows de validation sont assez rigides sur le plan Standard : impossible de créer des circuits de validation multi-niveaux sans passer à l'offre supérieure, ce qui fait grimper la facture</td></tr><tr><td>La personnalisation des pages carrières reste basique visuellement, si la marque employeur est un vrai enjeu pour vous, il faudra passer par un développeur ou accepter un rendu assez générique</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -713,27 +682,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Mais pour une boîte de 50 à 500 salariés qui veut structurer son recrutement sans exploser le budget, c'est honnêtement un des outils les mieux calibrés du marché français.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Multidiffusion des offres sur les principaux jobboards français en quelques clics, sans ressaisie</td>
-            <td>Les intégrations avec les SIRH tiers restent limitées : si tu utilises un outil RH pointu, prépare-toi à des exports manuels ou à passer par l'API, qui demande un minimum de ressources techniques</td>
-          </tr>
-          <tr>
-            <td>Viviers de candidats réutilisables : on retrouve facilement un profil vu six mois plus tôt sans fouiller des dizaines de mails</td>
-            <td>Le reporting est fonctionnel mais assez basique. On obtient des stats de volume de candidatures, mais les analyses croisées ou les tableaux de bord personnalisés sont peu développés par rapport à des outils comme Greenhouse ou Lever</td>
-          </tr>
-          <tr>
-            <td>Formulaires de candidature personnalisables par poste, ce qui filtre mieux les profils dès l'entrée</td>
-            <td>L'onboarding est rapide, mais certaines automatisations avancées (relances automatiques, scoring de candidats) nécessitent un temps de configuration que l'équipe support ne prend pas toujours en charge de façon proactive</td>
-          </tr>
-          <tr>
-            <td>Interface en français avec un support réactif basé en France, ce qui change vraiment quand on a un problème urgent</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Multidiffusion des offres sur les principaux jobboards français en quelques clics, sans ressaisie</td></tr><tr><td>Viviers de candidats réutilisables : on retrouve facilement un profil vu six mois plus tôt sans fouiller des dizaines de mails</td></tr><tr><td>Formulaires de candidature personnalisables par poste, ce qui filtre mieux les profils dès l'entrée</td></tr><tr><td>Interface en français avec un support réactif basé en France, ce qui change vraiment quand on a un problème urgent</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Les intégrations avec les SIRH tiers restent limitées : si tu utilises un outil RH pointu, prépare-toi à des exports manuels ou à passer par l'API, qui demande un minimum de ressources techniques</td></tr><tr><td>Le reporting est fonctionnel mais assez basique. On obtient des stats de volume de candidatures, mais les analyses croisées ou les tableaux de bord personnalisés sont peu développés par rapport à des outils comme Greenhouse ou Lever</td></tr><tr><td>L'onboarding est rapide, mais certaines automatisations avancées (relances automatiques, scoring de candidats) nécessitent un temps de configuration que l'équipe support ne prend pas toujours en charge de façon proactive</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -772,27 +730,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p><div class="table-wrap"><table border='1' cellpadding='6' cellspacing='0' style='border-collapse:collapse;width:<strong>100%</strong>'><thead><tr><th>Fonctionnalité</th><th>Disponible</th><th>Remarque</th></tr></thead><tbody><tr><<strong>td</strong>>Multidiffusion offres</<strong>td</strong>><<strong>td</strong>>✅</<strong>td</strong>><<strong>td</strong>>Nombreux jobboards intégrés</<strong>td</strong>></tr><tr><<strong>td</strong>>Pipeline candidats configurable</<strong>td</strong>><<strong>td</strong>>✅</<strong>td</strong>><<strong>td</strong>>Étapes personnalisables par poste</<strong>td</strong>></tr><tr><<strong>td</strong>>Collaboration managers</<strong>td</strong>><<strong>td</strong>>✅</<strong>td</strong>><<strong>td</strong>>Accès limité possible pour les opérationnels</<strong>td</strong>></tr><tr><<strong>td</strong>>Relances automatiques candidats</<strong>td</strong>><<strong>td</strong>>⚠️</<strong>td</strong>><<strong>td</strong>>Fonctionnalité basique</<strong>td</strong>></tr><tr><<strong>td</strong>>Intégration SIRH</<strong>td</strong>><<strong>td</strong>>⚠️</<strong>td</strong>><<strong>td</strong>>Limitée, pas adapté aux grandes structures</<strong>td</strong>></tr><tr><<strong>td</strong>>Reporting avancé</<strong>td</strong>><<strong>td</strong>>❌</<strong>td</strong>><<strong>td</strong>>Exports Excel disponibles, tableaux de bord légers</<strong>td</strong>></tr></tbody></table></div></p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Multidiffusion d'offres sur de nombreux jobboards depuis une seule interface, sans ressaisie</td>
-            <td>Les automatisations de relances et de communication candidats sont trop légères : impossible de créer des séquences vraiment personnalisées</td>
-          </tr>
-          <tr>
-            <td>Pipeline de candidatures entièrement configurable selon le type de poste ou le service</td>
-            <td>Le reporting manque de profondeur, les tableaux de bord sont basiques et les exports se limitent à de l'Excel brut, j'ai trouvé ça frustrant pour faire un bilan recrutement annuel</td>
-          </tr>
-          <tr>
-            <td>Module collaboratif : les managers peuvent commenter et évaluer les candidats sans accès complet à l'outil RH</td>
-            <td>Peu adapté aux intégrations complexes : si tu veux connecter WeRecruit à un SIRH type Workday ou SAP SuccessFactors, attends-toi à des frictions techniques</td>
-          </tr>
-          <tr>
-            <td>Onboarding rapide, interface lisible, pas besoin de formation longue pour une équipe RH de 2-3 personnes</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Multidiffusion d'offres sur de nombreux jobboards depuis une seule interface, sans ressaisie</td></tr><tr><td>Pipeline de candidatures entièrement configurable selon le type de poste ou le service</td></tr><tr><td>Module collaboratif : les managers peuvent commenter et évaluer les candidats sans accès complet à l'outil RH</td></tr><tr><td>Onboarding rapide, interface lisible, pas besoin de formation longue pour une équipe RH de 2-3 personnes</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Les automatisations de relances et de communication candidats sont trop légères : impossible de créer des séquences vraiment personnalisées</td></tr><tr><td>Le reporting manque de profondeur, les tableaux de bord sont basiques et les exports se limitent à de l'Excel brut, j'ai trouvé ça frustrant pour faire un bilan recrutement annuel</td></tr><tr><td>Peu adapté aux intégrations complexes : si tu veux connecter WeRecruit à un SIRH type Workday ou SAP SuccessFactors, attends-toi à des frictions techniques</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -829,27 +776,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Par contre, si tu es une PME de 20 personnes qui fait 5 recrutements par an, tu vas trouver ça surdimensionné et franchement trop cher pour ce que tu en feras.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Scorecards et kits d'entretien configurables par poste, ce qui homogénéise vraiment l'évaluation entre les managers</td>
-            <td>Tarification non publique et souvent élevée pour les structures en dessous de 200 salariés, difficile à justifier sans volume de recrutement conséquent</td>
-          </tr>
-          <tr>
-            <td>Reporting recrutement détaillé : suivi des sources, taux de conversion par étape, diversité des pipelines</td>
-            <td>L'onboarding est long : sans accompagnement dédié, la configuration initiale des workflows peut prendre plusieurs semaines avant d'être vraiment opérationnelle</td>
-          </tr>
-          <tr>
-            <td>Intégrations natives nombreuses (Slack, LinkedIn Recruiter, Workday, BambooHR, plus de 400 partenaires via leur marketplace)</td>
-            <td>L'interface candidat (le portail de suivi) est fonctionnelle mais franchement datée visuellement, surtout comparée à des concurrents plus récents</td>
-          </tr>
-          <tr>
-            <td>Automatisation des relances et des tâches répétitives dans le pipeline, avec assignation claire des responsabilités</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Scorecards et kits d'entretien configurables par poste, ce qui homogénéise vraiment l'évaluation entre les managers</td></tr><tr><td>Reporting recrutement détaillé : suivi des sources, taux de conversion par étape, diversité des pipelines</td></tr><tr><td>Intégrations natives nombreuses (Slack, LinkedIn Recruiter, Workday, BambooHR, plus de 400 partenaires via leur marketplace)</td></tr><tr><td>Automatisation des relances et des tâches répétitives dans le pipeline, avec assignation claire des responsabilités</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification non publique et souvent élevée pour les structures en dessous de 200 salariés, difficile à justifier sans volume de recrutement conséquent</td></tr><tr><td>L'onboarding est long : sans accompagnement dédié, la configuration initiale des workflows peut prendre plusieurs semaines avant d'être vraiment opérationnelle</td></tr><tr><td>L'interface candidat (le portail de suivi) est fonctionnelle mais franchement datée visuellement, surtout comparée à des concurrents plus récents</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -886,27 +822,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Pour une PME qui veut professionnaliser son recrutement tout en restant agile, difficile de trouver mieux dans cette gamme de prix.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Éditeur de page carrière très complet : blocs personnalisables, médias, témoignages salariés, tout sans développeur</td>
-            <td>Le reporting est limité : peu de métriques avancées sur les sources de candidatures ou le coût par embauche, frustrant pour les équipes qui veulent piloter leur recrutement par les données</td>
-          </tr>
-          <tr>
-            <td>Automatisation des relances et des étapes du pipeline avec des déclencheurs configurables par recruteur</td>
-            <td>L'onboarding peut être rapide en apparence, mais la configuration fine des workflows et des permissions prend du temps sans accompagnement, et le support n'est pas toujours réactif</td>
-          </tr>
-          <tr>
-            <td>Module de cooptation intégré qui permet aux salariés de recommander des contacts directement depuis leur espace</td>
-            <td>Pas vraiment adapté aux très gros volumes de recrutement ou aux organisations avec des processus multi-sites très complexes, la structure du pipeline devient vite difficile à gérer</td>
-          </tr>
-          <tr>
-            <td>API ouverte et connecteurs natifs avec plusieurs SIRH et outils RH courants</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Éditeur de page carrière très complet : blocs personnalisables, médias, témoignages salariés, tout sans développeur</td></tr><tr><td>Automatisation des relances et des étapes du pipeline avec des déclencheurs configurables par recruteur</td></tr><tr><td>Module de cooptation intégré qui permet aux salariés de recommander des contacts directement depuis leur espace</td></tr><tr><td>API ouverte et connecteurs natifs avec plusieurs SIRH et outils RH courants</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Le reporting est limité : peu de métriques avancées sur les sources de candidatures ou le coût par embauche, frustrant pour les équipes qui veulent piloter leur recrutement par les données</td></tr><tr><td>L'onboarding peut être rapide en apparence, mais la configuration fine des workflows et des permissions prend du temps sans accompagnement, et le support n'est pas toujours réactif</td></tr><tr><td>Pas vraiment adapté aux très gros volumes de recrutement ou aux organisations avec des processus multi-sites très complexes, la structure du pipeline devient vite difficile à gérer</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -945,27 +870,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Les grandes entreprises avec des besoins d'intégration SIRH complexes trouveront probablement les connecteurs API un peu limités.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Multidiffusion sur plus de 50 jobboards depuis une interface unique, sans multiplier les connexions</td>
-            <td>La tarification est basée sur le nombre d'offres actives en simultané, ce qui peut faire mal si tu recrutes en flux tendu toute l'année</td>
-          </tr>
-          <tr>
-            <td>Pipeline de recrutement visuel et collaboratif : les managers peuvent laisser des notes et des scores directement sur les profils sans accès admin</td>
-            <td>Le support client répond parfois avec 24 à 48h de délai, et la documentation française est incomplète sur certains modules avancés</td>
-          </tr>
-          <tr>
-            <td>Page carrières intégrée avec formulaires personnalisables, déployable sans développeur en moins d'une heure</td>
-            <td>Les intégrations avec les SIRH courants (Lucca, Silae, Sage RH) ne sont pas natives et nécessitent de passer par Zapier ou l'API, ce qui demande un minimum de ressources techniques</td>
-          </tr>
-          <tr>
-            <td>Automatisation des étapes répétitives : emails de suivi, rejets, invitations à des entretiens, tout ça se configure une fois pour toutes</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Multidiffusion sur plus de 50 jobboards depuis une interface unique, sans multiplier les connexions</td></tr><tr><td>Pipeline de recrutement visuel et collaboratif : les managers peuvent laisser des notes et des scores directement sur les profils sans accès admin</td></tr><tr><td>Page carrières intégrée avec formulaires personnalisables, déployable sans développeur en moins d'une heure</td></tr><tr><td>Automatisation des étapes répétitives : emails de suivi, rejets, invitations à des entretiens, tout ça se configure une fois pour toutes</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>La tarification est basée sur le nombre d'offres actives en simultané, ce qui peut faire mal si tu recrutes en flux tendu toute l'année</td></tr><tr><td>Le support client répond parfois avec 24 à 48h de délai, et la documentation française est incomplète sur certains modules avancés</td></tr><tr><td>Les intégrations avec les SIRH courants (Lucca, Silae, Sage RH) ne sont pas natives et nécessitent de passer par Zapier ou l'API, ce qui demande un minimum de ressources techniques</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1002,27 +916,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p><strong>Le positionnement tarifaire reste accessible</strong>, ce qui change des solutions enterprise qui démarrent à des prix prohibitifs.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Multidiffusion des offres d'emploi vers les principaux jobboards depuis une interface unique, sans ressaisie</td>
-            <td>Les intégrations natives avec des outils tiers (SIRH, outils de visio, signature électronique) restent limitées : on se retrouve vite à jongler entre plusieurs plateformes pour finaliser un recrutement</td>
-          </tr>
-          <tr>
-            <td>Parsing CV automatique et CVthèque interne : les profils sont conservés et réactivables facilement lors de futures campagnes</td>
-            <td>Le reporting et les tableaux de bord analytiques sont assez basiques, pas suffisants si on veut piloter sérieusement des indicateurs RH comme le coût par recrutement ou le taux de conversion par source</td>
-          </tr>
-          <tr>
-            <td>Formulaires de candidature entièrement personnalisables selon les critères métier du poste, ce qui réduit le tri manuel</td>
-            <td>Le support client peut être lent à répondre sur les problèmes techniques non bloquants, j'ai attendu plusieurs jours sur un bug d'affichage qui n'était pas critique mais franchement agaçant</td>
-          </tr>
-          <tr>
-            <td>Interface pipeline visuelle avec gestion par glisser-déposer, idéale pour suivre plusieurs recrutements simultanément sans perdre le fil</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Multidiffusion des offres d'emploi vers les principaux jobboards depuis une interface unique, sans ressaisie</td></tr><tr><td>Parsing CV automatique et CVthèque interne : les profils sont conservés et réactivables facilement lors de futures campagnes</td></tr><tr><td>Formulaires de candidature entièrement personnalisables selon les critères métier du poste, ce qui réduit le tri manuel</td></tr><tr><td>Interface pipeline visuelle avec gestion par glisser-déposer, idéale pour suivre plusieurs recrutements simultanément sans perdre le fil</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Les intégrations natives avec des outils tiers (SIRH, outils de visio, signature électronique) restent limitées : on se retrouve vite à jongler entre plusieurs plateformes pour finaliser un recrutement</td></tr><tr><td>Le reporting et les tableaux de bord analytiques sont assez basiques, pas suffisants si on veut piloter sérieusement des indicateurs RH comme le coût par recrutement ou le taux de conversion par source</td></tr><tr><td>Le support client peut être lent à répondre sur les problèmes techniques non bloquants, j'ai attendu plusieurs jours sur un bug d'affichage qui n'était pas critique mais franchement agaçant</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1265,7 +1168,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 creaone.fr — Données actualisées le 2 octobre 2026
+        © 2026 creaone.fr — Données actualisées le 6 octobre 2026
       </div>
     </div>
   </div>

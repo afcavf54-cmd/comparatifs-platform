@@ -97,6 +97,8 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap .avantages-table{flex:1;margin:0}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
@@ -146,7 +148,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -487,7 +489,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Meilleur Logiciel de système d'information RH (SIRH) 2026 : Top 10</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-06 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Alexandre Michel" class="hero-author-avatar">
     <span>Rédigé par Alexandre Michel</span>
@@ -542,27 +544,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>PayFit n'est pas un outil pour les grandes entreprises ou les gestionnaires de paie qui ont besoin d'un paramétrage très poussé.</p><table><thead><tr><th>Fonctionnalité</th><th>Disponible</th><th>Remarque</th></tr></thead><tbody><tr><<strong>td</strong>>Bulletins de paie automatisés</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Mise à jour légale automatique</<strong>td</strong>></tr><tr><<strong>td</strong>>DSN et déclarations sociales</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Inclus dans l'abonnement</<strong>td</strong>></tr><tr><<strong>td</strong>>Portail employé</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Congés, docs, fiches de paie</<strong>td</strong>></tr><tr><<strong>td</strong>>Notes de frais</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Module intégré</<strong>td</strong>></tr><tr><<strong>td</strong>>Onboarding RH</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Flux documentaire guidé</<strong>td</strong>></tr><tr><<strong>td</strong>>Multi-conventions collectives complexes</<strong>td</strong>><<strong>td</strong>>Partiel</<strong>td</strong>><<strong>td</strong>>Limites sur les cas atypiques</<strong>td</strong>></tr><tr><<strong>td</strong>>API / intégrations</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Comptabilité, outils tiers</<strong>td</strong>></tr></tbody></table></div></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>La paie est calculée et mise à jour automatiquement à chaque évolution légale, sans intervention manuelle, ce qui évite les erreurs de cotisations que j'ai vécues avec d'autres outils</td>
-            <td>Le support client peut être lent en période chargée (fin de mois notamment), et quand on a un bug sur un bulletin de paie un 28 du mois, attendre 48h c'est un vrai problème</td>
-          </tr>
-          <tr>
-            <td>Le portail employé est vraiment utilisé en pratique : les salariés posent leurs congés, téléchargent leurs bulletins et signent leurs docs sans jamais envoyer un email RH</td>
-            <td>Le paramétrage des cas de paie atypiques (temps partiel thérapeutique, conventions très spécifiques, salariés protégés avec historique complexe) atteint rapidement ses limites et nécessite parfois de passer par le support pour des workarounds</td>
-          </tr>
-          <tr>
-            <td>L'onboarding d'un nouveau salarié prend moins d'une heure : contrat, DPAE, fiche de paie du premier mois, tout s'enchaîne dans un flux guidé clair</td>
-            <td>Le tarif grimpe vite dès qu'on ajoute des modules ou qu'on dépasse un certain seuil de salariés, <strong>certaines PME en croissance se retrouvent à payer bien plus que prévu</strong> sans avoir anticipé la grille tarifaire</td>
-          </tr>
-          <tr>
-            <td>La synchronisation avec les outils comptables évite la double saisie et les exports Excel manuels, ce qui en PME change vraiment le quotidien de la compta</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>La paie est calculée et mise à jour automatiquement à chaque évolution légale, sans intervention manuelle, ce qui évite les erreurs de cotisations que j'ai vécues avec d'autres outils</td></tr><tr><td>Le portail employé est vraiment utilisé en pratique : les salariés posent leurs congés, téléchargent leurs bulletins et signent leurs docs sans jamais envoyer un email RH</td></tr><tr><td>L'onboarding d'un nouveau salarié prend moins d'une heure : contrat, DPAE, fiche de paie du premier mois, tout s'enchaîne dans un flux guidé clair</td></tr><tr><td>La synchronisation avec les outils comptables évite la double saisie et les exports Excel manuels, ce qui en PME change vraiment le quotidien de la compta</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Le support client peut être lent en période chargée (fin de mois notamment), et quand on a un bug sur un bulletin de paie un 28 du mois, attendre 48h c'est un vrai problème</td></tr><tr><td>Le paramétrage des cas de paie atypiques (temps partiel thérapeutique, conventions très spécifiques, salariés protégés avec historique complexe) atteint rapidement ses limites et nécessite parfois de passer par le support pour des workarounds</td></tr><tr><td>Le tarif grimpe vite dès qu'on ajoute des modules ou qu'on dépasse un certain seuil de salariés, <strong>certaines PME en croissance se retrouvent à payer bien plus que prévu</strong> sans avoir anticipé la grille tarifaire</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -599,27 +590,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Les équipes qui l'utilisent pour du RH opérationnel finissent souvent par devoir le coupler avec un vrai logiciel SIRH.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Tableaux de bord visuels configurables sans compétence technique, idéal pour suivre les pipelines de recrutement ou les processus d'onboarding</td>
-            <td>Aucune gestion native des absences, des congés payés ou des compteurs de temps : il faut tout construire manuellement ou passer par un autre outil</td>
-          </tr>
-          <tr>
-            <td>Automatisations intégrées : relances, changements de statut, notifications d'échéance configurables sans code</td>
-            <td>Les tarifs montent vite dès qu'on ajoute des membres : <strong>à partir de 9€/utilisateur/mois</strong> en formule basique, mais les automatisations avancées et les tableaux de bord poussés nécessitent les plans supérieurs, souvent au-delà de 16-20€/user/mois</td>
-          </tr>
-          <tr>
-            <td>Intégrations nombreuses avec Slack, Google Workspace, Outlook, et connecteurs Zapier/Make pour relier d'autres outils RH</td>
-            <td>Support client lent sur les plans bas de gamme, documentation parfois insuffisante pour les cas d'usage RH spécifiques, et onboarding laissé à votre charge</td>
-          </tr>
-          <tr>
-            <td>Collaboration en temps réel sur les dossiers RH, avec historique des modifications et commentaires directement dans les fiches</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Tableaux de bord visuels configurables sans compétence technique, idéal pour suivre les pipelines de recrutement ou les processus d'onboarding</td></tr><tr><td>Automatisations intégrées : relances, changements de statut, notifications d'échéance configurables sans code</td></tr><tr><td>Intégrations nombreuses avec Slack, Google Workspace, Outlook, et connecteurs Zapier/Make pour relier d'autres outils RH</td></tr><tr><td>Collaboration en temps réel sur les dossiers RH, avec historique des modifications et commentaires directement dans les fiches</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Aucune gestion native des absences, des congés payés ou des compteurs de temps : il faut tout construire manuellement ou passer par un autre outil</td></tr><tr><td>Les tarifs montent vite dès qu'on ajoute des membres : <strong>à partir de 9€/utilisateur/mois</strong> en formule basique, mais les automatisations avancées et les tableaux de bord poussés nécessitent les plans supérieurs, souvent au-delà de 16-20€/user/mois</td></tr><tr><td>Support client lent sur les plans bas de gamme, documentation parfois insuffisante pour les cas d'usage RH spécifiques, et onboarding laissé à votre charge</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -654,27 +634,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Il faudra connecter un outil de paie externe via API, ce qui ajoute une couche de complexité.</p><div class="table-wrap"><table><thead><tr><th>Fonctionnalité</th><th>Disponible</th><th>Remarque</th></tr></thead><tbody><tr><<strong>td</strong>>Gestion des congés</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Règles personnalisables par type de contrat</<strong>td</strong>></tr><tr><<strong>td</strong>>Onboarding automatisé</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Checklists, e-signature, relances auto</<strong>td</strong>></tr><tr><<strong>td</strong>>ATS intégré</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Recrutement simple, pas pour gros volumes</<strong>td</strong>></tr><tr><<strong>td</strong>>Gestion de la paie</<strong>td</strong>><<strong>td</strong>>Partielle</<strong>td</strong>><<strong>td</strong>>Natif USA seulement, API pour France</<strong>td</strong>></tr><tr><<strong>td</strong>>Reporting RH</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Tableaux de bord configurables</<strong>td</strong>></tr><tr><<strong>td</strong>>Module Performance</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Évaluations, objectifs, feedbacks 360</<strong>td</strong>></tr></tbody></table></div></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Onboarding vraiment automatisé : checklists par rôle, documents à signer envoyés automatiquement, relances sans intervention humaine</td>
-            <td>Pas de gestion de paie native pour la France : il faut passer par une intégration API avec Silae, Payfit ou autre, et ça demande un peu de travail de paramétrage au départ</td>
-          </tr>
-          <tr>
-            <td>Interface claire et prise en main rapide, j'ai formé deux RH dessus en moins de trois jours sans formation externe</td>
-            <td>Le support client répond en anglais par défaut et les délais peuvent monter à 48h sur des sujets urgents, franchement ça m'a agacé sur un bug de synchronisation des congés</td>
-          </tr>
-          <tr>
-            <td>Reporting RH solide avec des tableaux de bord configurables : turnover, ancienneté, pyramide des âges, tout est là sans exports manuels</td>
-            <td>Tarification peu transparente : le prix n'est pas affiché publiquement, il faut demander un devis, et les modules Performance ou ATS sont souvent en option payante qui alourdit la facture finale</td>
-          </tr>
-          <tr>
-            <td>ATS intégré fonctionnel pour les recrutements courants, ce qui évite d'abonner l'équipe à un outil supplémentaire</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Onboarding vraiment automatisé : checklists par rôle, documents à signer envoyés automatiquement, relances sans intervention humaine</td></tr><tr><td>Interface claire et prise en main rapide, j'ai formé deux RH dessus en moins de trois jours sans formation externe</td></tr><tr><td>Reporting RH solide avec des tableaux de bord configurables : turnover, ancienneté, pyramide des âges, tout est là sans exports manuels</td></tr><tr><td>ATS intégré fonctionnel pour les recrutements courants, ce qui évite d'abonner l'équipe à un outil supplémentaire</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Pas de gestion de paie native pour la France : il faut passer par une intégration API avec Silae, Payfit ou autre, et ça demande un peu de travail de paramétrage au départ</td></tr><tr><td>Le support client répond en anglais par défaut et les délais peuvent monter à 48h sur des sujets urgents, franchement ça m'a agacé sur un bug de synchronisation des congés</td></tr><tr><td>Tarification peu transparente : le prix n'est pas affiché publiquement, il faut demander un devis, et les modules Performance ou ATS sont souvent en option payante qui alourdit la facture finale</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -711,27 +680,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Ce n'est pas un outil pour les groupes qui veulent du paramétrage avancé ou des workflows complexes d'approbation RH.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Onboarding 100% digitalisé : le salarié remplit son dossier lui-même, les documents sont signés électroniquement et versés automatiquement dans le SIRH</td>
-            <td>Uniquement disponible pour les entreprises basées aux États-Unis : impossible de gérer des salariés au Canada, en Europe ou ailleurs</td>
-          </tr>
-          <tr>
-            <td>Paie automatisée avec dépôt direct, calcul des taxes fédérales et étatiques, et soumission des déclarations sans intervention manuelle</td>
-            <td>Le reporting RH est basique, les tableaux de bord manquent de profondeur pour analyser les tendances d'effectifs ou faire du suivi de performance sérieux</td>
-          </tr>
-          <tr>
-            <td>Synchronisation native avec QuickBooks, Xero et d'autres outils comptables, ce qui évite les doubles saisies en fin de mois</td>
-            <td>Le support client est uniquement disponible en anglais et les délais de réponse peuvent être longs en période de clôture de paie, là où on a le moins de temps à perdre</td>
-          </tr>
-          <tr>
-            <td>Gestion des avantages sociaux intégrée (mutuelle, retraite 401k) pilotable directement depuis l'interface RH sans passer par un courtier externe</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Onboarding 100% digitalisé : le salarié remplit son dossier lui-même, les documents sont signés électroniquement et versés automatiquement dans le SIRH</td></tr><tr><td>Paie automatisée avec dépôt direct, calcul des taxes fédérales et étatiques, et soumission des déclarations sans intervention manuelle</td></tr><tr><td>Synchronisation native avec QuickBooks, Xero et d'autres outils comptables, ce qui évite les doubles saisies en fin de mois</td></tr><tr><td>Gestion des avantages sociaux intégrée (mutuelle, retraite 401k) pilotable directement depuis l'interface RH sans passer par un courtier externe</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Uniquement disponible pour les entreprises basées aux États-Unis : impossible de gérer des salariés au Canada, en Europe ou ailleurs</td></tr><tr><td>Le reporting RH est basique, les tableaux de bord manquent de profondeur pour analyser les tendances d'effectifs ou faire du suivi de performance sérieux</td></tr><tr><td>Le support client est uniquement disponible en anglais et les délais de réponse peuvent être longs en période de clôture de paie, là où on a le moins de temps à perdre</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -770,27 +728,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Et si vous cherchez un SIRH avec une gestion de la formation certifiante ou un module GEPP développé, regardez ailleurs.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Prise en main rapide, même pour des managers non RH, sans formation longue</td>
-            <td>Personnalisation des règles de paie et des conventions collectives très limitée : pour des entreprises avec des accords atypiques, ça coince vite</td>
-          </tr>
-          <tr>
-            <td>Gestion des absences et congés avec workflows de validation automatisés et notifications en temps réel</td>
-            <td>Le support client peut être lent à répondre, j'ai attendu plus de 48h sur un blocage de synchronisation, ce qui est franchement agaçant en production</td>
-          </tr>
-          <tr>
-            <td>Reporting RH visuel et lisible : absentéisme, heures supp, effectifs, accessible sans paramétrage complexe</td>
-            <td>Le module de gestion de la formation reste basique : pas de suivi des certifications, pas de lien avec les OPCO, difficile de s'en contenter si la formation est un axe stratégique pour vous</td>
-          </tr>
-          <tr>
-            <td>Interface moderne et mobile, utilisable directement par les salariés pour leurs demandes et documents</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Prise en main rapide, même pour des managers non RH, sans formation longue</td></tr><tr><td>Gestion des absences et congés avec workflows de validation automatisés et notifications en temps réel</td></tr><tr><td>Reporting RH visuel et lisible : absentéisme, heures supp, effectifs, accessible sans paramétrage complexe</td></tr><tr><td>Interface moderne et mobile, utilisable directement par les salariés pour leurs demandes et documents</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Personnalisation des règles de paie et des conventions collectives très limitée : pour des entreprises avec des accords atypiques, ça coince vite</td></tr><tr><td>Le support client peut être lent à répondre, j'ai attendu plus de 48h sur un blocage de synchronisation, ce qui est franchement agaçant en production</td></tr><tr><td>Le module de gestion de la formation reste basique : pas de suivi des certifications, pas de lien avec les OPCO, difficile de s'en contenter si la formation est un axe stratégique pour vous</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -823,27 +770,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Les grandes entreprises avec des workflows RH complexes ou des besoins GPEC avancés vont vite se heurter aux limites du paramétrage. Ce n'est pas un outil pour des multinationales.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Modèle modulaire : on active uniquement les briques dont on a besoin, ce qui évite de payer pour des fonctionnalités inutiles dès le départ</td>
-            <td>Le reporting RH reste limité : les tableaux de bord natifs sont corrects mais dès qu'on veut des analyses croisées un peu fines, on exporte tout dans Excel manuellement</td>
-          </tr>
-          <tr>
-            <td>Connecteurs natifs avec les principaux logiciels de paie du marché (Silae, Sage, ADP), ce qui rend les exports de variables beaucoup moins pénibles</td>
-            <td>L'interface mobile est fonctionnelle pour les salariés (poser une absence, valider une note de frais) mais franchement inconfortable pour un manager qui veut suivre son équipe depuis son téléphone</td>
-          </tr>
-          <tr>
-            <td>Prise en main rapide pour les managers non-techniques : j'ai formé deux responsables d'équipe dessus en une demi-journée, sans documentation</td>
-            <td>Le paramétrage des règles de gestion complexes (modulation du temps de travail, accord d'entreprise spécifique) nécessite souvent de passer par le support, ce qui peut ralentir le démarrage</td>
-          </tr>
-          <tr>
-            <td>Support client réactif par chat, avec des réponses humaines et pas des redirections vers une base de connaissances inutile</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Modèle modulaire : on active uniquement les briques dont on a besoin, ce qui évite de payer pour des fonctionnalités inutiles dès le départ</td></tr><tr><td>Connecteurs natifs avec les principaux logiciels de paie du marché (Silae, Sage, ADP), ce qui rend les exports de variables beaucoup moins pénibles</td></tr><tr><td>Prise en main rapide pour les managers non-techniques : j'ai formé deux responsables d'équipe dessus en une demi-journée, sans documentation</td></tr><tr><td>Support client réactif par chat, avec des réponses humaines et pas des redirections vers une base de connaissances inutile</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Le reporting RH reste limité : les tableaux de bord natifs sont corrects mais dès qu'on veut des analyses croisées un peu fines, on exporte tout dans Excel manuellement</td></tr><tr><td>L'interface mobile est fonctionnelle pour les salariés (poser une absence, valider une note de frais) mais franchement inconfortable pour un manager qui veut suivre son équipe depuis son téléphone</td></tr><tr><td>Le paramétrage des règles de gestion complexes (modulation du temps de travail, accord d'entreprise spécifique) nécessite souvent de passer par le support, ce qui peut ralentir le démarrage</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -878,27 +814,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Si tu cherches un outil hyperpersonnalisable avec une UX ultra moderne, tu vas probablement trouver l'interface un peu datée. Mais si la priorité c'est la fiabilité sur la paie et la gestion administrative RH, c'est un choix solide.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native paie + SIRH : un seul environnement pour gérer les contrats, les absences et les bulletins sans resaisie</td>
-            <td>Interface utilisateur vieillissante : l'UX fait un peu ancien comparé aux SIRH nouvelle génération, la prise en main peut être frustrante pour des profils non habitués aux logiciels Sage</td>
-          </tr>
-          <tr>
-            <td>Conformité légale française assurée : DSN, URSSAF, mise à jour automatique des évolutions réglementaires</td>
-            <td>Personnalisation limitée au démarrage : les tableaux de bord et certains workflows nécessitent un paramétrage parfois lourd pour coller aux process internes spécifiques</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation configurables : absences, demandes RH, entretiens validés directement par les managers depuis leur espace</td>
-            <td>Support client inégal : les retours terrain montrent des délais de réponse variables selon les périodes, surtout en fin d'année lors des clôtures de paie</td>
-          </tr>
-          <tr>
-            <td>Reporting RH intégré : tableau de bord avec suivi de la masse salariale, du turnover et des effectifs en temps réel</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native paie + SIRH : un seul environnement pour gérer les contrats, les absences et les bulletins sans resaisie</td></tr><tr><td>Conformité légale française assurée : DSN, URSSAF, mise à jour automatique des évolutions réglementaires</td></tr><tr><td>Workflows de validation configurables : absences, demandes RH, entretiens validés directement par les managers depuis leur espace</td></tr><tr><td>Reporting RH intégré : tableau de bord avec suivi de la masse salariale, du turnover et des effectifs en temps réel</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface utilisateur vieillissante : l'UX fait un peu ancien comparé aux SIRH nouvelle génération, la prise en main peut être frustrante pour des profils non habitués aux logiciels Sage</td></tr><tr><td>Personnalisation limitée au démarrage : les tableaux de bord et certains workflows nécessitent un paramétrage parfois lourd pour coller aux process internes spécifiques</td></tr><tr><td>Support client inégal : les retours terrain montrent des délais de réponse variables selon les périodes, surtout en fin d'année lors des clôtures de paie</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -939,27 +864,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p><div class="table-wrap"><table border='1' cellpadding='6' cellspacing='0' style='border-collapse:collapse;width:<strong>100%</strong>'><thead><tr><th>Fonctionnalité</th><th>Disponible</th><th>Remarque</th></tr></thead><tbody><tr><<strong>td</strong>>Paie multi-pays</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Natif dans ~50 pays</<strong>td</strong>></tr><tr><<strong>td</strong>>Gestion IT (devices, apps)</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Rare dans un SIRH</<strong>td</strong>></tr><tr><<strong>td</strong>>Onboarding automatisé</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Workflows très poussés</<strong>td</strong>></tr><tr><<strong>td</strong>>Module EOR</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>><<strong>td</strong>>Intégré, pas externalisé</<strong>td</strong>></tr><tr><<strong>td</strong>>Conformité légale France</<strong>td</strong>><<strong>td</strong>>Partielle</<strong>td</strong>><<strong>td</strong>>Moins mature qu'un outil <strong>100%</strong> français</<strong>td</strong>></tr></tbody></table></div></p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Automatisation des workflows RH + IT depuis une seule plateforme : onboarding, offboarding, attributions d'accès logiciels gérés en cascade sans action manuelle</td>
-            <td>La conformité aux spécificités légales françaises (DSN, conventions collectives, tickets-restaurant) est moins mature que des outils pensés 100% pour le marché français, il faut vérifier point par point</td>
-          </tr>
-          <tr>
-            <td>Paie multi-pays native dans une cinquantaine de pays avec un module EOR intégré, idéal pour recruter à l'international sans créer d'entité locale</td>
-            <td>La tarification est modulaire et peut monter très vite : chaque brique (paie, IT, avantages) se facture séparément, le ticket d'entrée réel est souvent bien au-dessus du prix affiché</td>
-          </tr>
-          <tr>
-            <td>Connecteurs natifs avec plus de 500 outils (Slack, Google Workspace, GitHub, Salesforce...) ce qui évite les synchronisations manuelles entre systèmes</td>
-            <td>L'interface est dense. Franchement, ça m'a pris du temps pour trouver mes marques. L'onboarding interne est correct mais pour des équipes RH non techniques, la courbe d'apprentissage est réelle</td>
-          </tr>
-          <tr>
-            <td>Reporting RH centralisé et personnalisable : effectifs, coûts salariaux, turnover, répartition géographique, tout est queryable depuis l'interface</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Automatisation des workflows RH + IT depuis une seule plateforme : onboarding, offboarding, attributions d'accès logiciels gérés en cascade sans action manuelle</td></tr><tr><td>Paie multi-pays native dans une cinquantaine de pays avec un module EOR intégré, idéal pour recruter à l'international sans créer d'entité locale</td></tr><tr><td>Connecteurs natifs avec plus de 500 outils (Slack, Google Workspace, GitHub, Salesforce...) ce qui évite les synchronisations manuelles entre systèmes</td></tr><tr><td>Reporting RH centralisé et personnalisable : effectifs, coûts salariaux, turnover, répartition géographique, tout est queryable depuis l'interface</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>La conformité aux spécificités légales françaises (DSN, conventions collectives, tickets-restaurant) est moins mature que des outils pensés 100% pour le marché français, il faut vérifier point par point</td></tr><tr><td>La tarification est modulaire et peut monter très vite : chaque brique (paie, IT, avantages) se facture séparément, le ticket d'entrée réel est souvent bien au-dessus du prix affiché</td></tr><tr><td>L'interface est dense. Franchement, ça m'a pris du temps pour trouver mes marques. L'onboarding interne est correct mais pour des équipes RH non techniques, la courbe d'apprentissage est réelle</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -996,27 +910,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Bon, par contre, si tu as des besoins très pointus en gestion de paie française ou des conventions collectives complexes, ce n'est pas le bon outil.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Cycle RH complet dans un seul outil : de l'offre d'emploi jusqu'au départ du salarié, sans jongler entre plusieurs logiciels</td>
-            <td>La gestion de la paie reste limitée pour la France : Personio s'interface avec des prestataires externes mais ne gère pas nativement les spécificités des conventions collectives françaises, ce qui oblige à maintenir un outil paie séparé</td>
-          </tr>
-          <tr>
-            <td>Onboarding automatisé avec checklist configurable, signature électronique des contrats et attribution des accès en quelques clics</td>
-            <td>Le support client peut être lent en cas de problème complexe, essentiellement par ticket, avec des délais de réponse qui m'ont parfois agacé sur des blocages urgents</td>
-          </tr>
-          <tr>
-            <td>Reporting RH natif avec des indicateurs directement exploitables (taux d'absentéisme, turnover, ancienneté) sans export manuel</td>
-            <td>La personnalisation des workflows a ses limites : pour des processus RH très atypiques ou des structures multi-entités avec des règles différentes par pays, on se retrouve vite bloqué par les contraintes du paramétrage</td>
-          </tr>
-          <tr>
-            <td>Prise en main rapide pour les RH non-téchniques, interface claire et mobile-friendly pour les managers et les salariés</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Cycle RH complet dans un seul outil : de l'offre d'emploi jusqu'au départ du salarié, sans jongler entre plusieurs logiciels</td></tr><tr><td>Onboarding automatisé avec checklist configurable, signature électronique des contrats et attribution des accès en quelques clics</td></tr><tr><td>Reporting RH natif avec des indicateurs directement exploitables (taux d'absentéisme, turnover, ancienneté) sans export manuel</td></tr><tr><td>Prise en main rapide pour les RH non-téchniques, interface claire et mobile-friendly pour les managers et les salariés</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>La gestion de la paie reste limitée pour la France : Personio s'interface avec des prestataires externes mais ne gère pas nativement les spécificités des conventions collectives françaises, ce qui oblige à maintenir un outil paie séparé</td></tr><tr><td>Le support client peut être lent en cas de problème complexe, essentiellement par ticket, avec des délais de réponse qui m'ont parfois agacé sur des blocages urgents</td></tr><tr><td>La personnalisation des workflows a ses limites : pour des processus RH très atypiques ou des structures multi-entités avec des règles différentes par pays, on se retrouve vite bloqué par les contraintes du paramétrage</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1057,27 +960,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Ce n'est pas fait pour les très grandes entreprises avec des besoins de reporting RH poussés sur de gros volumes de données.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Architecture modulaire réelle : on active uniquement ce dont on a besoin, sans payer des fonctionnalités inutiles dès le départ</td>
-            <td>Le support client peut être lent en période de charge : j'ai attendu trois jours pour une réponse sur un bug de synchronisation de compteurs de congés, ce qui bloque les RH en plein cycle de clôture</td>
-          </tr>
-          <tr>
-            <td>UX soignée côté collaborateur, adoption rapide sans formation longue, ce qui réduit la résistance au changement en interne</td>
-            <td>La partie reporting analytique reste basique. Les exports sont disponibles mais si tu veux des tableaux de bord croisés sur l'absentéisme ou le turnover, tu devras sortir les données et les retravailler ailleurs, aucun outil de datavisualisation intégré vraiment exploitable</td>
-          </tr>
-          <tr>
-            <td>Connecteurs natifs avec les principaux logiciels de paie français (Silae, Sage, ADP) et API REST documentée pour des intégrations sur mesure</td>
-            <td>Le coût monte vite dès qu'on empile les modules : à partir d'un certain nombre de briques activées pour 150 salariés, la facture mensuelle dépasse largement ce qu'on imaginait au démarrage, et la grille tarifaire n'est pas toujours limpide avant signature</td>
-          </tr>
-          <tr>
-            <td>Paramétrage des workflows de validation fin et accessible sans passer par un intégrateur : on gère les circuits d'approbation directement depuis l'interface admin</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Architecture modulaire réelle : on active uniquement ce dont on a besoin, sans payer des fonctionnalités inutiles dès le départ</td></tr><tr><td>UX soignée côté collaborateur, adoption rapide sans formation longue, ce qui réduit la résistance au changement en interne</td></tr><tr><td>Connecteurs natifs avec les principaux logiciels de paie français (Silae, Sage, ADP) et API REST documentée pour des intégrations sur mesure</td></tr><tr><td>Paramétrage des workflows de validation fin et accessible sans passer par un intégrateur : on gère les circuits d'approbation directement depuis l'interface admin</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Le support client peut être lent en période de charge : j'ai attendu trois jours pour une réponse sur un bug de synchronisation de compteurs de congés, ce qui bloque les RH en plein cycle de clôture</td></tr><tr><td>La partie reporting analytique reste basique. Les exports sont disponibles mais si tu veux des tableaux de bord croisés sur l'absentéisme ou le turnover, tu devras sortir les données et les retravailler ailleurs, aucun outil de datavisualisation intégré vraiment exploitable</td></tr><tr><td>Le coût monte vite dès qu'on empile les modules : à partir d'un certain nombre de briques activées pour 150 salariés, la facture mensuelle dépasse largement ce qu'on imaginait au démarrage, et la grille tarifaire n'est pas toujours limpide avant signature</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1380,7 +1272,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 creaone.fr — Données actualisées le 2 octobre 2026
+        © 2026 creaone.fr — Données actualisées le 6 octobre 2026
       </div>
     </div>
   </div>

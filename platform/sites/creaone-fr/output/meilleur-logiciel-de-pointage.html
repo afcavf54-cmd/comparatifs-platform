@@ -97,6 +97,8 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap .avantages-table{flex:1;margin:0}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
@@ -146,7 +148,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -487,7 +489,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Meilleur Logiciel de pointage 2026 : Top 10</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-06 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Alexandre Michel" class="hero-author-avatar">
     <span>Rédigé par Alexandre Michel</span>
@@ -548,27 +550,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Par contre, une TPE de 10 personnes va payer pour des fonctionnalités qu'elle n'utilisera jamais. Et une grande entreprise avec des conventions collectives très spécifiques risque de se heurter aux limites de personnalisation.</p></p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Workflows de validation configurables sans développeur, même pour des organisations multi-sites</td>
-            <td>L'onboarding peut prendre plusieurs semaines si la structure RH est complexe, le support répond mais pas toujours vite</td>
-          </tr>
-          <tr>
-            <td>Synchronisation native avec les principaux logiciels de paie du marché français</td>
-            <td>La tarification modulaire peut vite grimper si on active plusieurs briques en même temps, difficile d'anticiper la facture finale</td>
-          </tr>
-          <tr>
-            <td>API bien documentée qui facilite les connexions avec un SIRH ou un ERP existant</td>
-            <td>La personnalisation des rapports reste limitée, certains exports nécessitent un passage par Excel pour retravailler les données</td>
-          </tr>
-          <tr>
-            <td>Interface mobile utilisable sur le terrain, avec pointage en temps réel et accès aux compteurs d'heures</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Workflows de validation configurables sans développeur, même pour des organisations multi-sites</td></tr><tr><td>Synchronisation native avec les principaux logiciels de paie du marché français</td></tr><tr><td>API bien documentée qui facilite les connexions avec un SIRH ou un ERP existant</td></tr><tr><td>Interface mobile utilisable sur le terrain, avec pointage en temps réel et accès aux compteurs d'heures</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>L'onboarding peut prendre plusieurs semaines si la structure RH est complexe, le support répond mais pas toujours vite</td></tr><tr><td>La tarification modulaire peut vite grimper si on active plusieurs briques en même temps, difficile d'anticiper la facture finale</td></tr><tr><td>La personnalisation des rapports reste limitée, certains exports nécessitent un passage par Excel pour retravailler les données</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.lucca.fr" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Lucca
@@ -610,27 +601,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Le suivi GPS en particulier, avec les zones d'entrée/sortie automatiques, m'a fait gagner du temps sur les validations de présence.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Suivi du temps ultra précis avec captures d'écran automatiques et niveaux d'activité clavier/souris</td>
-            <td>La surveillance par captures d'écran peut créer des tensions avec les équipes : certains collaborateurs le vivent mal, et ça demande un vrai travail de communication en interne avant le déploiement</td>
-          </tr>
-          <tr>
-            <td>Géolocalisation GPS intégrée avec géofencing pour les équipes terrain</td>
-            <td>L'interface de configuration des permissions et des rôles est confuse au départ, j'ai mis plusieurs jours à trouver comment bien segmenter les accès par projet</td>
-          </tr>
-          <tr>
-            <td>Rapports de productivité exportables par projet, client ou collaborateur</td>
-            <td>Le support client répond en anglais uniquement et les délais dépassent souvent 24h, ce qui peut bloquer en cas d'urgence</td>
-          </tr>
-          <tr>
-            <td>Intégrations natives avec Jira, Asana, QuickBooks et plus de 30 autres outils</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Suivi du temps ultra précis avec captures d'écran automatiques et niveaux d'activité clavier/souris</td></tr><tr><td>Géolocalisation GPS intégrée avec géofencing pour les équipes terrain</td></tr><tr><td>Rapports de productivité exportables par projet, client ou collaborateur</td></tr><tr><td>Intégrations natives avec Jira, Asana, QuickBooks et plus de 30 autres outils</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>La surveillance par captures d'écran peut créer des tensions avec les équipes : certains collaborateurs le vivent mal, et ça demande un vrai travail de communication en interne avant le déploiement</td></tr><tr><td>L'interface de configuration des permissions et des rôles est confuse au départ, j'ai mis plusieurs jours à trouver comment bien segmenter les accès par projet</td></tr><tr><td>Le support client répond en anglais uniquement et les délais dépassent souvent 24h, ce qui peut bloquer en cas d'urgence</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -667,27 +647,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Un DAF ou un RRH qui gère 200 salariés en horaires décalés va se retrouver dans cet outil. Quelqu'un qui gère 10 télétravailleurs, non.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Moteur de calcul des temps très puissant : gestion native des heures sup, repos compensateurs, modulation annuelle, arrondi configurable à la minute</td>
-            <td>L'interface reste datée sur certains modules : la navigation entre les écrans de planning et le tableau des anomalies manque de fluidité, j'ai mis du temps à m'y retrouver</td>
-          </tr>
-          <tr>
-            <td>Intégration matérielle avec les badgeuses Horoquartz pour une remontée des pointages en temps réel, sans double saisie</td>
-            <td>L'onboarding est long et nécessite souvent un accompagnement par un intégrateur partenaire, le paramétrage initial des règles de temps est franchement technique</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation des absences et des anomalies paramétrables par service ou par site, avec notifications automatiques</td>
-            <td>Le tarif n'est pas transparent : pas de grille publique, tout passe par devis, et le coût de déploiement matériel (badgeuses) s'ajoute au logiciel, ce qui peut faire grimper la facture rapidement</td>
-          </tr>
-          <tr>
-            <td>Exports paie natifs vers Sage, ADP, Cegid et d'autres, ce qui supprime les ressaisies en fin de mois</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Moteur de calcul des temps très puissant : gestion native des heures sup, repos compensateurs, modulation annuelle, arrondi configurable à la minute</td></tr><tr><td>Intégration matérielle avec les badgeuses Horoquartz pour une remontée des pointages en temps réel, sans double saisie</td></tr><tr><td>Workflows de validation des absences et des anomalies paramétrables par service ou par site, avec notifications automatiques</td></tr><tr><td>Exports paie natifs vers Sage, ADP, Cegid et d'autres, ce qui supprime les ressaisies en fin de mois</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>L'interface reste datée sur certains modules : la navigation entre les écrans de planning et le tableau des anomalies manque de fluidité, j'ai mis du temps à m'y retrouver</td></tr><tr><td>L'onboarding est long et nécessite souvent un accompagnement par un intégrateur partenaire, le paramétrage initial des règles de temps est franchement technique</td></tr><tr><td>Le tarif n'est pas transparent : pas de grille publique, tout passe par devis, et le coût de déploiement matériel (badgeuses) s'ajoute au logiciel, ce qui peut faire grimper la facture rapidement</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -720,27 +689,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Là où il faut <strong>tracer les heures sans infrastructure IT</strong>. Les grandes entreprises avec des workflows RH complexes, de la paie intégrée ou des conventions collectives spécifiques passeront leur chemin assez vite.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Version gratuite réellement fonctionnelle, sans limite de durée et utilisable jusqu'à 5 utilisateurs sans carte bancaire</td>
-            <td>Le support client est uniquement en anglais sur les plans inférieurs, et les délais de réponse peuvent dépasser 48h, ce qui est frustrant quand on bloque sur une config</td>
-          </tr>
-          <tr>
-            <td>Reconnaissance faciale et géolocalisation GPS intégrées nativement, pratique pour les équipes terrain qui ne sont pas derrière un bureau</td>
-            <td>Les intégrations natives avec les logiciels de paie français (Silae, PayFit, Sage) sont absentes ou peu documentées, il faut passer par Zapier ou exporter manuellement</td>
-          </tr>
-          <tr>
-            <td>Application mobile fluide avec pointage offline, les données se synchronisent dès que le réseau revient</td>
-            <td>L'interface d'administration peut devenir confuse quand on gère plusieurs sites ou plusieurs types de contrats en même temps, j'ai mis du temps à comprendre la logique des groupes et des politiques d'horaires</td>
-          </tr>
-          <tr>
-            <td>Exports en CSV ou PDF des feuilles de temps, directement exploitables pour la paie ou les clients</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Version gratuite réellement fonctionnelle, sans limite de durée et utilisable jusqu'à 5 utilisateurs sans carte bancaire</td></tr><tr><td>Reconnaissance faciale et géolocalisation GPS intégrées nativement, pratique pour les équipes terrain qui ne sont pas derrière un bureau</td></tr><tr><td>Application mobile fluide avec pointage offline, les données se synchronisent dès que le réseau revient</td></tr><tr><td>Exports en CSV ou PDF des feuilles de temps, directement exploitables pour la paie ou les clients</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Le support client est uniquement en anglais sur les plans inférieurs, et les délais de réponse peuvent dépasser 48h, ce qui est frustrant quand on bloque sur une config</td></tr><tr><td>Les intégrations natives avec les logiciels de paie français (Silae, PayFit, Sage) sont absentes ou peu documentées, il faut passer par Zapier ou exporter manuellement</td></tr><tr><td>L'interface d'administration peut devenir confuse quand on gère plusieurs sites ou plusieurs types de contrats en même temps, j'ai mis du temps à comprendre la logique des groupes et des politiques d'horaires</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -779,27 +737,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Bon, par contre, le module analytique reste assez basique si on veut aller loin dans le reporting RH.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Pointage mobile et kiosque tablette intégrés directement au planning, sans double saisie</td>
-            <td>Reporting analytique limité : impossible d'aller chercher des données RH fines sans exporter manuellement vers Excel</td>
-          </tr>
-          <tr>
-            <td>Alertes automatiques sur les écarts entre heures prévues et heures réelles pointées</td>
-            <td>Tarification assez élevée pour les très petites structures, le rapport qualité/prix devient discutable en dessous de 15 salariés</td>
-          </tr>
-          <tr>
-            <td>Gestion native des conventions collectives (restauration, grande distribution, médico-social)</td>
-            <td>Support client parfois lent en pic de charge, quelques tickets restent sans réponse plusieurs jours</td>
-          </tr>
-          <tr>
-            <td>Interface pensée pour les managers terrain, prise en main rapide même sans formation longue</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Pointage mobile et kiosque tablette intégrés directement au planning, sans double saisie</td></tr><tr><td>Alertes automatiques sur les écarts entre heures prévues et heures réelles pointées</td></tr><tr><td>Gestion native des conventions collectives (restauration, grande distribution, médico-social)</td></tr><tr><td>Interface pensée pour les managers terrain, prise en main rapide même sans formation longue</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Reporting analytique limité : impossible d'aller chercher des données RH fines sans exporter manuellement vers Excel</td></tr><tr><td>Tarification assez élevée pour les très petites structures, le rapport qualité/prix devient discutable en dessous de 15 salariés</td></tr><tr><td>Support client parfois lent en pic de charge, quelques tickets restent sans réponse plusieurs jours</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -840,27 +787,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Mais pour une équipe terrain qui a besoin d'un <strong>suivi des présences fiable sans usine à gaz</strong>, c'est honnêtement difficile à battre dans cette gamme de prix.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Pointage mobile par géolocalisation avec périmètre configurable, idéal pour les équipes multi-sites ou en déplacement</td>
-            <td>Les règles de calcul des heures supplémentaires restent basiques : si votre convention collective a des seuils spécifiques ou des majorations complexes, vous allez bloquer assez vite</td>
-          </tr>
-          <tr>
-            <td>Génération automatique des rapports d'heures travaillées, heures sup et absences, exportables directement pour la paie</td>
-            <td>Le support client, bien que réactif par chat, passe en mode ralenti le week-end, ce qui peut poser problème si un problème de pointage survient un samedi matin avant l'ouverture</td>
-          </tr>
-          <tr>
-            <td>Prise en main rapide même pour des non-techniciens, l'interface est claire et le déploiement prend rarement plus d'une journée</td>
-            <td>La version mobile peut ramer sur des téléphones anciens sous Android, j'ai eu des remontées là-dessus avec des équipes équipées de matériel d'entreprise vieillissant</td>
-          </tr>
-          <tr>
-            <td>Module de planification intégré avec gestion des échanges de quarts et notifications automatiques aux employés</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Pointage mobile par géolocalisation avec périmètre configurable, idéal pour les équipes multi-sites ou en déplacement</td></tr><tr><td>Génération automatique des rapports d'heures travaillées, heures sup et absences, exportables directement pour la paie</td></tr><tr><td>Prise en main rapide même pour des non-techniciens, l'interface est claire et le déploiement prend rarement plus d'une journée</td></tr><tr><td>Module de planification intégré avec gestion des échanges de quarts et notifications automatiques aux employés</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Les règles de calcul des heures supplémentaires restent basiques : si votre convention collective a des seuils spécifiques ou des majorations complexes, vous allez bloquer assez vite</td></tr><tr><td>Le support client, bien que réactif par chat, passe en mode ralenti le week-end, ce qui peut poser problème si un problème de pointage survient un samedi matin avant l'ouverture</td></tr><tr><td>La version mobile peut ramer sur des téléphones anciens sous Android, j'ai eu des remontées là-dessus avec des équipes équipées de matériel d'entreprise vieillissant</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.agendrix.com/fr" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Agendrix
@@ -900,27 +836,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Par contre, l'interface d'administration reste datée visuellement, et l'onboarding demande clairement l'intervention d'un consultant. Ce n'est pas un logiciel qu'on prend en main seul un lundi matin.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Moteur de calcul des temps très puissant : heures sup, astreintes, équipes tournantes, convention collective configurable</td>
-            <td>Onboarding long et quasi impossible sans accompagnement d'un intégrateur : prévoir plusieurs semaines de déploiement minimum</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec les badgeuses physiques Bodet et les terminaux connectés, sans export manuel</td>
-            <td>Interface back-office visuellement vieillissante, navigation parfois peu intuitive sur les menus de configuration avancée</td>
-          </tr>
-          <tr>
-            <td>Workflow de validation hiérarchique des pointages avec alertes automatiques aux managers</td>
-            <td>Tarification opaque et sur-mesure, difficile d'avoir une idée du budget sans passer par un commercial</td>
-          </tr>
-          <tr>
-            <td>Application mobile avec géolocalisation pour les équipes terrain et les salariés itinérants</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Moteur de calcul des temps très puissant : heures sup, astreintes, équipes tournantes, convention collective configurable</td></tr><tr><td>Intégration native avec les badgeuses physiques Bodet et les terminaux connectés, sans export manuel</td></tr><tr><td>Workflow de validation hiérarchique des pointages avec alertes automatiques aux managers</td></tr><tr><td>Application mobile avec géolocalisation pour les équipes terrain et les salariés itinérants</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Onboarding long et quasi impossible sans accompagnement d'un intégrateur : prévoir plusieurs semaines de déploiement minimum</td></tr><tr><td>Interface back-office visuellement vieillissante, navigation parfois peu intuitive sur les menus de configuration avancée</td></tr><tr><td>Tarification opaque et sur-mesure, difficile d'avoir une idée du budget sans passer par un commercial</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -961,27 +886,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Le tarif se situe autour de 4 à <strong>6€</strong> par utilisateur et par mois, ce qui reste raisonnable dès qu'on dépasse une vingtaine de salariés.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Pointage géolocalisé sur mobile ou tablette, impossible de contourner depuis un autre lieu</td>
-            <td>La configuration des règles de paie complexes (heures supplémentaires, majorations, pauses) est peu intuitive et prend du temps à paramétrer correctement</td>
-          </tr>
-          <tr>
-            <td>Synchronisation automatique entre heures planifiées et heures pointées, avec export direct vers la paie</td>
-            <td>Le support client est en anglais en priorité, ce qui peut ralentir la résolution de problèmes pour des équipes francophones</td>
-          </tr>
-          <tr>
-            <td>Alertes temps réel pour les managers en cas de retard, absence ou dépassement d'horaire</td>
-            <td>Peu adapté aux structures avec des horaires fixes simples : on paie des fonctionnalités dont on n'a pas besoin</td>
-          </tr>
-          <tr>
-            <td>Application mobile fluide, prise en main rapide pour les employés sans formation préalable</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Pointage géolocalisé sur mobile ou tablette, impossible de contourner depuis un autre lieu</td></tr><tr><td>Synchronisation automatique entre heures planifiées et heures pointées, avec export direct vers la paie</td></tr><tr><td>Alertes temps réel pour les managers en cas de retard, absence ou dépassement d'horaire</td></tr><tr><td>Application mobile fluide, prise en main rapide pour les employés sans formation préalable</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>La configuration des règles de paie complexes (heures supplémentaires, majorations, pauses) est peu intuitive et prend du temps à paramétrer correctement</td></tr><tr><td>Le support client est en anglais en priorité, ce qui peut ralentir la résolution de problèmes pour des équipes francophones</td></tr><tr><td>Peu adapté aux structures avec des horaires fixes simples : on paie des fonctionnalités dont on n'a pas besoin</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1020,27 +934,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>L'interface mobile est propre, les droits d'accès bien gérés, et l'onboarding se fait sans consultant externe.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Badgeage en temps réel via tablette ou smartphone, avec synchronisation instantanée pour le manager</td>
-            <td>Paramétrage des exports paie pas immédiat : il faut compter 1 à 2 heures de configuration au départ, ce n'est pas plug-and-play</td>
-          </tr>
-          <tr>
-            <td>Fusion planning + pointage dans un seul outil : on voit les écarts heures prévues / heures réelles sans jongler entre apps</td>
-            <td>Peu adapté aux structures en full télétravail ou aux équipes avec des horaires très atypiques : la logique reste ancrée sur du badgeage physique</td>
-          </tr>
-          <tr>
-            <td>Alertes automatiques en cas de retard ou de dépassement d'heures, configurables par poste ou par salarié</td>
-            <td>Le support client répond, mais parfois avec 24 à 48h de délai. Pour un bug en plein service du soir, c'est frustrant</td>
-          </tr>
-          <tr>
-            <td>Export des données vers les logiciels de paie courants une fois le paramétrage initial fait</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Badgeage en temps réel via tablette ou smartphone, avec synchronisation instantanée pour le manager</td></tr><tr><td>Fusion planning + pointage dans un seul outil : on voit les écarts heures prévues / heures réelles sans jongler entre apps</td></tr><tr><td>Alertes automatiques en cas de retard ou de dépassement d'heures, configurables par poste ou par salarié</td></tr><tr><td>Export des données vers les logiciels de paie courants une fois le paramétrage initial fait</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Paramétrage des exports paie pas immédiat : il faut compter 1 à 2 heures de configuration au départ, ce n'est pas plug-and-play</td></tr><tr><td>Peu adapté aux structures en full télétravail ou aux équipes avec des horaires très atypiques : la logique reste ancrée sur du badgeage physique</td></tr><tr><td>Le support client répond, mais parfois avec 24 à 48h de délai. Pour un bug en plein service du soir, c'est frustrant</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://combohr.com/fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Combo
@@ -1078,27 +981,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Pour les équipes sans dev, mieux vaut rester sur les exports natifs.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Plan gratuit sans limite d'utilisateurs ni de projets, rare dans cette catégorie</td>
-            <td>La gestion des congés et absences est verrouillée derrière un plan payant, ce qui oblige à jongler avec un autre outil si on veut tout centraliser</td>
-          </tr>
-          <tr>
-            <td>Saisie du temps flexible : timer en direct ou remplissage manuel de la feuille de temps après coup</td>
-            <td>L'application mobile fait le job pour pointer mais l'interface est dense, pas toujours intuitive sur téléphone pour corriger des entrées passées</td>
-          </tr>
-          <tr>
-            <td>Rapports de temps détaillés exportables en PDF et CSV, filtrables par projet, client ou collaborateur</td>
-            <td>Le suivi de la rentabilité par projet (coûts horaires, marges) reste assez basique comparé à des outils plus avancés comme Harvest ou Toggl Track</td>
-          </tr>
-          <tr>
-            <td>Extensions navigateur pour pointer directement depuis Trello, Asana, Jira ou Notion sans friction</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Plan gratuit sans limite d'utilisateurs ni de projets, rare dans cette catégorie</td></tr><tr><td>Saisie du temps flexible : timer en direct ou remplissage manuel de la feuille de temps après coup</td></tr><tr><td>Rapports de temps détaillés exportables en PDF et CSV, filtrables par projet, client ou collaborateur</td></tr><tr><td>Extensions navigateur pour pointer directement depuis Trello, Asana, Jira ou Notion sans friction</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>La gestion des congés et absences est verrouillée derrière un plan payant, ce qui oblige à jongler avec un autre outil si on veut tout centraliser</td></tr><tr><td>L'application mobile fait le job pour pointer mais l'interface est dense, pas toujours intuitive sur téléphone pour corriger des entrées passées</td></tr><tr><td>Le suivi de la rentabilité par projet (coûts horaires, marges) reste assez basique comparé à des outils plus avancés comme Harvest ou Toggl Track</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1381,7 +1273,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 creaone.fr — Données actualisées le 2 octobre 2026
+        © 2026 creaone.fr — Données actualisées le 6 octobre 2026
       </div>
     </div>
   </div>

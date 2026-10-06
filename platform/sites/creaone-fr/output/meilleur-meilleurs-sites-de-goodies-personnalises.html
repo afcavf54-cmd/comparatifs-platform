@@ -97,6 +97,8 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap .avantages-table{flex:1;margin:0}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
@@ -146,7 +148,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -539,27 +541,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Les délais de livraison annoncés ont été respectés sur ma commande, ce que je n'ai pas toujours avec d'autres fournisseurs.</p></p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Catalogue très large couvrant la plupart des catégories de goodies courants</td>
-            <td>Fiches produits parfois incomplètes sur les matériaux ou les techniques d'impression</td>
-          </tr>
-          <tr>
-            <td>Configurateur de personnalisation visuel simple à prendre en main</td>
-            <td>Moins adapté aux commandes très haut de gamme ou aux objets très spécifiques</td>
-          </tr>
-          <tr>
-            <td>Bon à tirer disponible avant lancement de la production</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Délais de livraison globalement respectés</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Catalogue très large couvrant la plupart des catégories de goodies courants</td></tr><tr><td>Configurateur de personnalisation visuel simple à prendre en main</td></tr><tr><td>Bon à tirer disponible avant lancement de la production</td></tr><tr><td>Délais de livraison globalement respectés</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fiches produits parfois incomplètes sur les matériaux ou les techniques d'impression</td></tr><tr><td>Moins adapté aux commandes très haut de gamme ou aux objets très spécifiques</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -592,27 +583,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Pour une TPE qui commande ponctuellement en très petite quantité, ce n'est pas forcément le bon endroit : les minima de commande sur certains produits peuvent bloquer.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Catalogue clair avec quantités minimales et délais affichés directement</td>
-            <td>Délais de réponse du service client parfois longs pour valider un BAT</td>
-          </tr>
-          <tr>
-            <td>Tarifs dégressifs transparents, visibles sans demander de devis</td>
-            <td>Quantités minimales élevées sur certains produits, peu adapté aux très petites commandes</td>
-          </tr>
-          <tr>
-            <td>Factures bien formatées, pratiques pour la comptabilité</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Outil de personnalisation en ligne simple à prendre en main</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Catalogue clair avec quantités minimales et délais affichés directement</td></tr><tr><td>Tarifs dégressifs transparents, visibles sans demander de devis</td></tr><tr><td>Factures bien formatées, pratiques pour la comptabilité</td></tr><tr><td>Outil de personnalisation en ligne simple à prendre en main</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Délais de réponse du service client parfois longs pour valider un BAT</td></tr><tr><td>Quantités minimales élevées sur certains produits, peu adapté aux très petites commandes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -647,27 +627,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Pour des commandes simples et non urgentes, ça reste une option honnête.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Qualité d'impression fiable sur les produits testés</td>
-            <td>Configurateur en ligne peu intuitif pour les personnalisations complexes</td>
-          </tr>
-          <tr>
-            <td>Catalogue bien fourni en objets publicitaires classiques</td>
-            <td>Suivi de commande insuffisant, le service client répond lentement</td>
-          </tr>
-          <tr>
-            <td>Tarifs compétitifs sur les commandes en volume</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Délais globalement respectés</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Qualité d'impression fiable sur les produits testés</td></tr><tr><td>Catalogue bien fourni en objets publicitaires classiques</td></tr><tr><td>Tarifs compétitifs sur les commandes en volume</td></tr><tr><td>Délais globalement respectés</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Configurateur en ligne peu intuitif pour les personnalisations complexes</td></tr><tr><td>Suivi de commande insuffisant, le service client répond lentement</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -700,27 +669,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Le rapport qualité-prix reste honnête sur les volumes moyens, et le site est franchement plus lisible que beaucoup de concurrents du secteur.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Configurateur en ligne fluide, personnalisation sans passer par un commercial</td>
-            <td>Gestion des retouches de fichiers graphiques lente, peut rallonger les délais</td>
-          </tr>
-          <tr>
-            <td>Catalogue varié incluant des options éco-responsables</td>
-            <td>Moins adapté aux équipes sans compétences print, le process technique peut bloquer</td>
-          </tr>
-          <tr>
-            <td>Suivi de production clair avec délais globalement tenus</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Bon rapport qualité-prix sur les commandes en volume moyen</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Configurateur en ligne fluide, personnalisation sans passer par un commercial</td></tr><tr><td>Catalogue varié incluant des options éco-responsables</td></tr><tr><td>Suivi de production clair avec délais globalement tenus</td></tr><tr><td>Bon rapport qualité-prix sur les commandes en volume moyen</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Gestion des retouches de fichiers graphiques lente, peut rallonger les délais</td></tr><tr><td>Moins adapté aux équipes sans compétences print, le process technique peut bloquer</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -753,27 +711,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Je recommande Gift Campaign pour des commandes planifiées à l'avance, <strong>pas pour les urgences de dernière minute</strong>.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Configurateur en ligne simple, prise en main rapide même sans compétences graphiques</td>
-            <td>Service client lent à répondre, j'ai attendu plusieurs jours sur un problème de délai</td>
-          </tr>
-          <tr>
-            <td>Tarifs affichés clairement par quantité, sans passer par une demande de devis</td>
-            <td>Les délais de livraison peuvent glisser, risqué si vous avez une deadline serrée</td>
-          </tr>
-          <tr>
-            <td>Bonne qualité d'impression constatée sur textile et papeterie</td>
-            <td>Catalogue moins étendu que certains concurrents sur les produits high-tech ou premium</td>
-          </tr>
-          <tr>
-            <td>Gamme de produits éco-responsables disponible sans chercher longtemps</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Configurateur en ligne simple, prise en main rapide même sans compétences graphiques</td></tr><tr><td>Tarifs affichés clairement par quantité, sans passer par une demande de devis</td></tr><tr><td>Bonne qualité d'impression constatée sur textile et papeterie</td></tr><tr><td>Gamme de produits éco-responsables disponible sans chercher longtemps</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Service client lent à répondre, j'ai attendu plusieurs jours sur un problème de délai</td></tr><tr><td>Les délais de livraison peuvent glisser, risqué si vous avez une deadline serrée</td></tr><tr><td>Catalogue moins étendu que certains concurrents sur les produits high-tech ou premium</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -806,27 +753,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Pas rédhibitoire, mais à anticiper si votre planning est serré.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Catalogue très large, adapté aux besoins entreprise</td>
-            <td>Minima de commande élevés, peu adapté aux petites équipes ou tests ponctuels</td>
-          </tr>
-          <tr>
-            <td>Outil de personnalisation en ligne avec aperçu BAT rapide</td>
-            <td>Support client par email lent, compter 48h de délai de réponse</td>
-          </tr>
-          <tr>
-            <td>Navigation filtrée par budget et délai, efficace au quotidien</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Qualité d'impression fiable sur les commandes testées</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Catalogue très large, adapté aux besoins entreprise</td></tr><tr><td>Outil de personnalisation en ligne avec aperçu BAT rapide</td></tr><tr><td>Navigation filtrée par budget et délai, efficace au quotidien</td></tr><tr><td>Qualité d'impression fiable sur les commandes testées</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Minima de commande élevés, peu adapté aux petites équipes ou tests ponctuels</td></tr><tr><td>Support client par email lent, compter 48h de délai de réponse</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -855,27 +791,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Et le service client par chat répond vite, mais les réponses restent parfois un peu génériques quand on a une vraie question technique sur les fichiers d'impression.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Prix dégressifs clairement affichés dès la page produit, sans inscription obligatoire</td>
-            <td>Navigation sur le site laborieuse, certaines catégories difficiles à trouver</td>
-          </tr>
-          <tr>
-            <td>Outil de personnalisation en ligne avec prévisualisation fidèle au rendu final</td>
-            <td>Support client parfois trop générique face aux questions techniques liées aux fichiers d'impression</td>
-          </tr>
-          <tr>
-            <td>Catalogue varié couvrant goodies classiques et produits plus inattendus</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Confirmation de BAT rapide, rassurante pour les commandes avec délai serré</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Prix dégressifs clairement affichés dès la page produit, sans inscription obligatoire</td></tr><tr><td>Outil de personnalisation en ligne avec prévisualisation fidèle au rendu final</td></tr><tr><td>Catalogue varié couvrant goodies classiques et produits plus inattendus</td></tr><tr><td>Confirmation de BAT rapide, rassurante pour les commandes avec délai serré</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Navigation sur le site laborieuse, certaines catégories difficiles à trouver</td></tr><tr><td>Support client parfois trop générique face aux questions techniques liées aux fichiers d'impression</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -908,27 +833,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Le service reste très en self-service.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Tarifs dégressifs très compétitifs sur les grandes quantités</td>
-            <td>Délais de livraison standard assez longs, l'option express fait grimper la facture</td>
-          </tr>
-          <tr>
-            <td>Catalogue très large, goodies et print réunis sur une seule plateforme</td>
-            <td>Support client peu réactif et difficile à joindre en cas de problème sur une commande</td>
-          </tr>
-          <tr>
-            <td>Outil de personnalisation en ligne accessible, même pour une équipe non technique</td>
-            <td>L'expérience reste très industrielle, zéro accompagnement personnalisé</td>
-          </tr>
-          <tr>
-            <td>Commande 100 % autonome, sans avoir à décrocher son téléphone</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Tarifs dégressifs très compétitifs sur les grandes quantités</td></tr><tr><td>Catalogue très large, goodies et print réunis sur une seule plateforme</td></tr><tr><td>Outil de personnalisation en ligne accessible, même pour une équipe non technique</td></tr><tr><td>Commande 100 % autonome, sans avoir à décrocher son téléphone</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Délais de livraison standard assez longs, l'option express fait grimper la facture</td></tr><tr><td>Support client peu réactif et difficile à joindre en cas de problème sur une commande</td></tr><tr><td>L'expérience reste très industrielle, zéro accompagnement personnalisé</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -963,27 +877,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Là où ça agace : le service client n'est pas toujours réactif, et pour un problème de BAT mal rendu sur un logo, j'ai attendu plusieurs jours avant une réponse exploitable.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Éditeur en ligne intuitif, rendu visuel en temps réel</td>
-            <td>Catalogue goodies limité, peu d'options originales ou éco-responsables</td>
-          </tr>
-          <tr>
-            <td>Délais de livraison fiables et bien communiqués</td>
-            <td>Support client lent en cas de problème sur les fichiers ou le BAT</td>
-          </tr>
-          <tr>
-            <td>Idéal si vous centralisez déjà vos achats print chez eux</td>
-            <td>Qualité produit correcte mais sans vraiment se démarquer sur les articles premium</td>
-          </tr>
-          <tr>
-            <td>Tarifs accessibles sur les petites quantités</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Éditeur en ligne intuitif, rendu visuel en temps réel</td></tr><tr><td>Délais de livraison fiables et bien communiqués</td></tr><tr><td>Idéal si vous centralisez déjà vos achats print chez eux</td></tr><tr><td>Tarifs accessibles sur les petites quantités</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Catalogue goodies limité, peu d'options originales ou éco-responsables</td></tr><tr><td>Support client lent en cas de problème sur les fichiers ou le BAT</td></tr><tr><td>Qualité produit correcte mais sans vraiment se démarquer sur les articles premium</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1018,27 +921,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Mais si votre direction a validé un budget RSE spécifique ou que vous avez besoin de justifier vos achats avec des certifications matériaux, <strong>Vegea est vraiment cohérent sur ce terrain-là</strong>.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Catalogue orienté matériaux durables et biosourcés, cohérent avec une politique RSE</td>
-            <td>Tarifs plus élevés que la concurrence, peu adapté aux petits budgets</td>
-          </tr>
-          <tr>
-            <td>Suivi client réactif et BAT soigné avant production</td>
-            <td>Catalogue moins large que les plateformes généralistes, choix parfois limité</td>
-          </tr>
-          <tr>
-            <td>Qualité perçue des produits supérieure à beaucoup de sites généralistes</td>
-            <td>La personnalisation en ligne reste peu intuitive, souvent besoin de passer par mail</td>
-          </tr>
-          <tr>
-            <td>Bon choix pour des événements où l'image responsable de l'entreprise est mise en avant</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Catalogue orienté matériaux durables et biosourcés, cohérent avec une politique RSE</td></tr><tr><td>Suivi client réactif et BAT soigné avant production</td></tr><tr><td>Qualité perçue des produits supérieure à beaucoup de sites généralistes</td></tr><tr><td>Bon choix pour des événements où l'image responsable de l'entreprise est mise en avant</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarifs plus élevés que la concurrence, peu adapté aux petits budgets</td></tr><tr><td>Catalogue moins large que les plateformes généralistes, choix parfois limité</td></tr><tr><td>La personnalisation en ligne reste peu intuitive, souvent besoin de passer par mail</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1073,27 +965,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Je recommande pour des commandes <strong>à partir d'une cinquantaine d'unités</strong>, idéalement planifiées au moins dix jours à l'avance.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Catalogue orienté BtoB, bien structuré par univers et usage</td>
-            <td>Délais de livraison parfois dépassés, à ne pas prendre au pied de la lettre si vous avez un événement fixe</td>
-          </tr>
-          <tr>
-            <td>Outil de personnalisation en ligne clair, avec aperçu visuel du rendu</td>
-            <td>Réactivité du support par email perfectible, les échanges peuvent traîner sur les validations de fichiers</td>
-          </tr>
-          <tr>
-            <td>Prix affichés transparents, frais de marquage visibles dès le départ</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Qualité conforme aux BAT validés, sans mauvaise surprise sur les couleurs</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Catalogue orienté BtoB, bien structuré par univers et usage</td></tr><tr><td>Outil de personnalisation en ligne clair, avec aperçu visuel du rendu</td></tr><tr><td>Prix affichés transparents, frais de marquage visibles dès le départ</td></tr><tr><td>Qualité conforme aux BAT validés, sans mauvaise surprise sur les couleurs</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Délais de livraison parfois dépassés, à ne pas prendre au pied de la lettre si vous avez un événement fixe</td></tr><tr><td>Réactivité du support par email perfectible, les échanges peuvent traîner sur les validations de fichiers</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1124,27 +1005,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Je recommande surtout pour des commandes de volume moyen avec un brief précis. Pour des petites quantités ou des projets très créatifs, ce n'est probablement pas l'adresse la plus adaptée.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Catalogue large avec de nombreuses catégories de produits</td>
-            <td>Interface du site vieillissante, navigation parfois peu intuitive</td>
-          </tr>
-          <tr>
-            <td>Gestion du marquage sérieuse avec BAT fourni avant fabrication</td>
-            <td>Moins pertinent pour les petites quantités ou les besoins très personnalisés</td>
-          </tr>
-          <tr>
-            <td>Réactivité correcte du service client sur les demandes de devis</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Adapté aux commandes en volume pour les événements d'entreprise</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Catalogue large avec de nombreuses catégories de produits</td></tr><tr><td>Gestion du marquage sérieuse avec BAT fourni avant fabrication</td></tr><tr><td>Réactivité correcte du service client sur les demandes de devis</td></tr><tr><td>Adapté aux commandes en volume pour les événements d'entreprise</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface du site vieillissante, navigation parfois peu intuitive</td></tr><tr><td>Moins pertinent pour les petites quantités ou les besoins très personnalisés</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>

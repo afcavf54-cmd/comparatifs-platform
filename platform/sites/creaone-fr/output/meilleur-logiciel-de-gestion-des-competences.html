@@ -97,6 +97,8 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap .avantages-table{flex:1;margin:0}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
@@ -146,7 +148,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -487,7 +489,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Meilleur Logiciel de gestion des compétences 2026 : Top 9</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-06 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Alexandre Michel" class="hero-author-avatar">
     <span>Rédigé par Alexandre Michel</span>
@@ -552,27 +554,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Pour une ETI industrielle avec des métiers très terrain, l'outil peut sembler un peu trop  Silicon Valley  dans sa philosophie.</p></p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Grilles de compétences personnalisables par métier avec niveaux de maîtrise, directement reliées aux cycles d'évaluation</td>
-            <td>Tarification opaque et élevée : les modules compétences et engagement sont souvent vendus séparément, la facture grimpe vite au-delà de 100 salariés</td>
-          </tr>
-          <tr>
-            <td>Module 1-on-1 structuré avec historique des échanges manager/collaborateur, utile pour les entretiens de suivi</td>
-            <td>L'onboarding est long. Sans accompagnement dédié, paramétrer les grilles de compétences et les workflows d'évaluation prend facilement 3 à 4 semaines</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec Slack, Workday et HRIS courants, ce qui évite la double saisie</td>
-            <td>L'interface reste majoritairement en anglais sur certains modules avancés, ce qui peut freiner l'adoption dans des équipes peu habituées</td>
-          </tr>
-          <tr>
-            <td>Reporting RH lisible : tableaux de bord sur l'engagement, les scores de compétences et les tendances par équipe</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Grilles de compétences personnalisables par métier avec niveaux de maîtrise, directement reliées aux cycles d'évaluation</td></tr><tr><td>Module 1-on-1 structuré avec historique des échanges manager/collaborateur, utile pour les entretiens de suivi</td></tr><tr><td>Intégration native avec Slack, Workday et HRIS courants, ce qui évite la double saisie</td></tr><tr><td>Reporting RH lisible : tableaux de bord sur l'engagement, les scores de compétences et les tendances par équipe</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification opaque et élevée : les modules compétences et engagement sont souvent vendus séparément, la facture grimpe vite au-delà de 100 salariés</td></tr><tr><td>L'onboarding est long. Sans accompagnement dédié, paramétrer les grilles de compétences et les workflows d'évaluation prend facilement 3 à 4 semaines</td></tr><tr><td>L'interface reste majoritairement en anglais sur certains modules avancés, ce qui peut freiner l'adoption dans des équipes peu habituées</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -609,27 +600,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Bon. Disons que c'est un compromis acceptable.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Référentiel de compétences personnalisable par métier, pas un modèle générique imposé</td>
-            <td>Le reporting intégré manque de profondeur analytique : pour les analyses croisées, il faut repasser sous Excel</td>
-          </tr>
-          <tr>
-            <td>Lien direct entre entretiens annuels et plan de formation : un besoin détecté en entretien remonte automatiquement</td>
-            <td>L'onboarding initial pour paramétrer les référentiels compétences demande du temps RH, ce n'est pas plug-and-play</td>
-          </tr>
-          <tr>
-            <td>Prise en main rapide pour les managers, même sans formation dédiée</td>
-            <td>Support client correct mais les délais de réponse s'allongent selon les périodes, notamment en période de lancement de campagne d'entretiens</td>
-          </tr>
-          <tr>
-            <td>Suivi de progression des collaborateurs dans le temps avec historique des évaluations</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Référentiel de compétences personnalisable par métier, pas un modèle générique imposé</td></tr><tr><td>Lien direct entre entretiens annuels et plan de formation : un besoin détecté en entretien remonte automatiquement</td></tr><tr><td>Prise en main rapide pour les managers, même sans formation dédiée</td></tr><tr><td>Suivi de progression des collaborateurs dans le temps avec historique des évaluations</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Le reporting intégré manque de profondeur analytique : pour les analyses croisées, il faut repasser sous Excel</td></tr><tr><td>L'onboarding initial pour paramétrer les référentiels compétences demande du temps RH, ce n'est pas plug-and-play</td></tr><tr><td>Support client correct mais les délais de réponse s'allongent selon les périodes, notamment en période de lancement de campagne d'entretiens</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -668,27 +648,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>J'ai mis presque trois semaines avant que les managers s'en emparent vraiment. Ce n'est pas un défaut rédhibitoire, mais à prévoir dans le planning de déploiement.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Moteur de matching compétences / postes qui génère des suggestions de mobilité interne exploitables directement</td>
-            <td>Onboarding long : compter 3 à 4 semaines minimum pour que les managers utilisent réellement l'outil de façon autonome</td>
-          </tr>
-          <tr>
-            <td>Référentiel de compétences collaboratif : les collaborateurs renseignent leurs niveaux, les managers valident, sans ressaisie manuelle</td>
-            <td>Peu adapté aux structures sous 200 salariés, le rapport fonctionnalités / complexité de déploiement devient rapidement défavorable</td>
-          </tr>
-          <tr>
-            <td>Analytics RH granulaires : identification des zones de fragilité compétences par BU, département ou famille de métiers</td>
-            <td>La qualité des résultats dépend directement de la richesse des données initiales : si le référentiel métier est vide ou mal renseigné au départ, les recommandations de mobilité manquent de précision</td>
-          </tr>
-          <tr>
-            <td>Synchronisation possible avec les principaux SIRH du marché, ce qui évite la double saisie sur les données collaborateurs</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Moteur de matching compétences / postes qui génère des suggestions de mobilité interne exploitables directement</td></tr><tr><td>Référentiel de compétences collaboratif : les collaborateurs renseignent leurs niveaux, les managers valident, sans ressaisie manuelle</td></tr><tr><td>Analytics RH granulaires : identification des zones de fragilité compétences par BU, département ou famille de métiers</td></tr><tr><td>Synchronisation possible avec les principaux SIRH du marché, ce qui évite la double saisie sur les données collaborateurs</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Onboarding long : compter 3 à 4 semaines minimum pour que les managers utilisent réellement l'outil de façon autonome</td></tr><tr><td>Peu adapté aux structures sous 200 salariés, le rapport fonctionnalités / complexité de déploiement devient rapidement défavorable</td></tr><tr><td>La qualité des résultats dépend directement de la richesse des données initiales : si le référentiel métier est vide ou mal renseigné au départ, les recommandations de mobilité manquent de précision</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -727,27 +696,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Par contre, si vous cherchez un outil de gestion administrative RH (paie, absences, planning), passez votre chemin : ce n'est pas ce qu'Elevo fait, et il n'essaie pas de le faire.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Cycle d'entretiens entièrement personnalisable : on choisit les questions, la fréquence, les validateurs, sans toucher à du code</td>
-            <td>Le reporting export reste limité : on peut sortir des données, mais les tableaux de bord personnalisés avancés manquent, et j'ai souvent dû retravailler les exports dans Excel pour avoir exactement ce que je voulais</td>
-          </tr>
-          <tr>
-            <td>Module people review visuel et opérationnel : grille 9-box, comparaison d'équipes, consolidation RH en temps réel</td>
-            <td>L'intégration avec des SIRH tiers (Lucca, Workday, SAP) existe mais demande un vrai travail de paramétrage côté IT, l'API n'est pas plug-and-play pour tout le monde</td>
-          </tr>
-          <tr>
-            <td>Cartographie des compétences exploitable pour construire des plans de formation ciblés, pas juste des jolies slides</td>
-            <td>Le tarif devient tendu pour les PME sous 50 personnes : le rapport fonctionnalités/prix est intéressant à partir d'une certaine taille, en dessous ça peut faire mal</td>
-          </tr>
-          <tr>
-            <td>Onboarding rapide pour les managers : la prise en main prend moins d'une heure, ce qui change vraiment la vie lors des déploiements</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Cycle d'entretiens entièrement personnalisable : on choisit les questions, la fréquence, les validateurs, sans toucher à du code</td></tr><tr><td>Module people review visuel et opérationnel : grille 9-box, comparaison d'équipes, consolidation RH en temps réel</td></tr><tr><td>Cartographie des compétences exploitable pour construire des plans de formation ciblés, pas juste des jolies slides</td></tr><tr><td>Onboarding rapide pour les managers : la prise en main prend moins d'une heure, ce qui change vraiment la vie lors des déploiements</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Le reporting export reste limité : on peut sortir des données, mais les tableaux de bord personnalisés avancés manquent, et j'ai souvent dû retravailler les exports dans Excel pour avoir exactement ce que je voulais</td></tr><tr><td>L'intégration avec des SIRH tiers (Lucca, Workday, SAP) existe mais demande un vrai travail de paramétrage côté IT, l'API n'est pas plug-and-play pour tout le monde</td></tr><tr><td>Le tarif devient tendu pour les PME sous 50 personnes : le rapport fonctionnalités/prix est intéressant à partir d'une certaine taille, en dessous ça peut faire mal</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -790,27 +748,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p><strong>Tableau comparatif rapide :</strong><br><div class="table-wrap"><table style='border-collapse:collapse;width:<strong>100%</strong>'><thead><tr><th style='border:1px solid #ccc;padding:6px;text-align:left'>Critère</th><th style='border:1px solid #ccc;padding:6px;text-align:left'>MuchSkills</th><th style='border:1px solid #ccc;padding:6px;text-align:left'>Outil RH classique</th></tr></thead><tbody><tr><<strong>td</strong> style='border:1px solid #ccc;padding:6px'>Saisie des compétences</<strong>td</strong>><<strong>td</strong> style='border:1px solid #ccc;padding:6px'>Auto-déclarative + envies</<strong>td</strong>><<strong>td</strong> style='border:1px solid #ccc;padding:6px'>Top-down, par le manager</<strong>td</strong>></tr><tr><<strong>td</strong> style='border:1px solid #ccc;padding:6px'>Visualisation</<strong>td</strong>><<strong>td</strong> style='border:1px solid #ccc;padding:6px'>Bulles interactives</<strong>td</strong>><<strong>td</strong> style='border:1px solid #ccc;padding:6px'>Tableaux statiques</<strong>td</strong>></tr><tr><<strong>td</strong> style='border:1px solid #ccc;padding:6px'>Dimension motivation</<strong>td</strong>><<strong>td</strong> style='border:1px solid #ccc;padding:6px'>Oui, intégrée</<strong>td</strong>><<strong>td</strong> style='border:1px solid #ccc;padding:6px'>Absente</<strong>td</strong>></tr><tr><<strong>td</strong> style='border:1px solid #ccc;padding:6px'>Reporting RH avancé</<strong>td</strong>><<strong>td</strong> style='border:1px solid #ccc;padding:6px'>Limité</<strong>td</strong>><<strong>td</strong> style='border:1px solid #ccc;padding:6px'>Souvent complet</<strong>td</strong>></tr><tr><<strong>td</strong> style='border:1px solid #ccc;padding:6px'>Courbe d'apprentissage</<strong>td</strong>><<strong>td</strong> style='border:1px solid #ccc;padding:6px'>Rapide</<strong>td</strong>><<strong>td</strong> style='border:1px solid #ccc;padding:6px'>Variable</<strong>td</strong>></tr></tbody></table></div></p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>La distinction entre compétences maîtrisées et compétences souhaitées donne une lecture RH qu'on ne trouve pas ailleurs : utile pour la mobilité interne et la rétention</td>
-            <td>Le reporting reste assez basique : pas d'exports paramétrables avancés, pas de tableaux de bord RH sur-mesure, ce qui frustre les DRH habitués à piloter par les chiffres</td>
-          </tr>
-          <tr>
-            <td>Prise en main rapide, j'ai formé deux personnes en moins d'une journée, et les collaborateurs remplissent leur profil sans relance excessive</td>
-            <td>L'outil repose énormément sur l'auto-déclaration des collaborateurs, et si l'équipe ne joue pas le jeu, les données deviennent vite peu fiables, il n'y a pas de mécanisme de validation managériale robuste</td>
-          </tr>
-          <tr>
-            <td>La vue cartographique par équipe permet d'identifier les gaps de compétences avant un projet ou un recrutement, sans sortir Excel</td>
-            <td>Peu adapté aux structures très hiérarchisées ou aux secteurs réglementés où les niveaux de compétences doivent être certifiés et tracés officiellement</td>
-          </tr>
-          <tr>
-            <td>Intégration Slack et API disponible pour synchroniser les données avec un SIRH ou un outil de gestion de projet existant</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>La distinction entre compétences maîtrisées et compétences souhaitées donne une lecture RH qu'on ne trouve pas ailleurs : utile pour la mobilité interne et la rétention</td></tr><tr><td>Prise en main rapide, j'ai formé deux personnes en moins d'une journée, et les collaborateurs remplissent leur profil sans relance excessive</td></tr><tr><td>La vue cartographique par équipe permet d'identifier les gaps de compétences avant un projet ou un recrutement, sans sortir Excel</td></tr><tr><td>Intégration Slack et API disponible pour synchroniser les données avec un SIRH ou un outil de gestion de projet existant</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Le reporting reste assez basique : pas d'exports paramétrables avancés, pas de tableaux de bord RH sur-mesure, ce qui frustre les DRH habitués à piloter par les chiffres</td></tr><tr><td>L'outil repose énormément sur l'auto-déclaration des collaborateurs, et si l'équipe ne joue pas le jeu, les données deviennent vite peu fiables, il n'y a pas de mécanisme de validation managériale robuste</td></tr><tr><td>Peu adapté aux structures très hiérarchisées ou aux secteurs réglementés où les niveaux de compétences doivent être certifiés et tracés officiellement</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -851,27 +798,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Moins adapté si on cherche un LMS ou un outil de formation intégré, Clevry reste centré sur la mesure, pas sur le développement.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Bibliothèque de tests psychométriques et cognitifs validés scientifiquement, directement utilisables sans paramétrage lourd</td>
-            <td>L'intégration API avec les SIRH du marché (SAP SuccessFactors, Lucca, etc.) n'est pas native et peut nécessiter un développement spécifique côté client</td>
-          </tr>
-          <tr>
-            <td>Matching automatique entre profil collaborateur et fiche de poste cible, utile pour la mobilité interne et les revues de talent</td>
-            <td>Aucun module de formation ou de plan de développement intégré : une fois les écarts de compétences identifiés, il faut basculer sur un autre outil pour agir dessus</td>
-          </tr>
-          <tr>
-            <td>Rapports individuels lisibles et exportables en PDF, compréhensibles même sans être psychologue du travail</td>
-            <td>L'onboarding peut être long si on veut personnaliser les référentiels de compétences maison, la configuration initiale prend facilement plusieurs semaines</td>
-          </tr>
-          <tr>
-            <td>Interface de suivi des campagnes d'évaluation claire, avec vue d'ensemble sur les scores et l'avancement des passations</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Bibliothèque de tests psychométriques et cognitifs validés scientifiquement, directement utilisables sans paramétrage lourd</td></tr><tr><td>Matching automatique entre profil collaborateur et fiche de poste cible, utile pour la mobilité interne et les revues de talent</td></tr><tr><td>Rapports individuels lisibles et exportables en PDF, compréhensibles même sans être psychologue du travail</td></tr><tr><td>Interface de suivi des campagnes d'évaluation claire, avec vue d'ensemble sur les scores et l'avancement des passations</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>L'intégration API avec les SIRH du marché (SAP SuccessFactors, Lucca, etc.) n'est pas native et peut nécessiter un développement spécifique côté client</td></tr><tr><td>Aucun module de formation ou de plan de développement intégré : une fois les écarts de compétences identifiés, il faut basculer sur un autre outil pour agir dessus</td></tr><tr><td>L'onboarding peut être long si on veut personnaliser les référentiels de compétences maison, la configuration initiale prend facilement plusieurs semaines</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -910,27 +846,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Mais si l'enjeu c'est de <strong>valoriser les savoirs internes</strong> et de former vite sur des sujets qui évoluent souvent, c'est l'un des outils les plus adaptés que j'ai croisés.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Création de contenu par les experts internes en quelques heures, sans compétences techniques requises</td>
-            <td>L'onboarding est plus long que prévu : sans accompagnement actif au démarrage, les managers rechignent à créer du contenu et la plateforme reste sous-utilisée pendant les premières semaines</td>
-          </tr>
-          <tr>
-            <td>Suivi précis des compétences par groupe métier avec relances automatiques et tableaux de bord d'avancement</td>
-            <td>Le reporting manque de profondeur pour les équipes L&D qui veulent croiser des données compétences avec des indicateurs business précis, il faut souvent exporter vers un outil tiers</td>
-          </tr>
-          <tr>
-            <td>Intégration API avec les principaux SIRH (Workday, BambooHR, Salesforce) pour synchroniser les données RH sans double saisie</td>
-            <td>Le tarif, non affiché publiquement, grimpe vite dès qu'on dépasse quelques centaines d'utilisateurs actifs, ce qui peut surprendre lors de la négociation contractuelle</td>
-          </tr>
-          <tr>
-            <td>Modèle collaboratif qui réduit la dépendance aux prestataires externes de formation et accélère la mise à jour des contenus</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Création de contenu par les experts internes en quelques heures, sans compétences techniques requises</td></tr><tr><td>Suivi précis des compétences par groupe métier avec relances automatiques et tableaux de bord d'avancement</td></tr><tr><td>Intégration API avec les principaux SIRH (Workday, BambooHR, Salesforce) pour synchroniser les données RH sans double saisie</td></tr><tr><td>Modèle collaboratif qui réduit la dépendance aux prestataires externes de formation et accélère la mise à jour des contenus</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>L'onboarding est plus long que prévu : sans accompagnement actif au démarrage, les managers rechignent à créer du contenu et la plateforme reste sous-utilisée pendant les premières semaines</td></tr><tr><td>Le reporting manque de profondeur pour les équipes L&D qui veulent croiser des données compétences avec des indicateurs business précis, il faut souvent exporter vers un outil tiers</td></tr><tr><td>Le tarif, non affiché publiquement, grimpe vite dès qu'on dépasse quelques centaines d'utilisateurs actifs, ce qui peut surprendre lors de la négociation contractuelle</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -969,27 +894,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p><div class="table-wrap"><table border='1' cellpadding='6' cellspacing='0' style='border-collapse:collapse;width:<strong>100%</strong>;'><thead><tr><th>Fonctionnalité</th><th>Disponible dans Skills Base</th></tr></thead><tbody><tr><<strong>td</strong>>Matrices de compétences personnalisées</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>></tr><tr><<strong>td</strong>>Auto-évaluation collaborateur</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>></tr><tr><<strong>td</strong>>Validation managériale</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>></tr><tr><<strong>td</strong>>Heatmaps et gaps analysis</<strong>td</strong>><<strong>td</strong>>Oui</<strong>td</strong>></tr><tr><<strong>td</strong>>Gestion de la paie</<strong>td</strong>><<strong>td</strong>>Non</<strong>td</strong>></tr><tr><<strong>td</strong>>Suivi des congés</<strong>td</strong>><<strong>td</strong>>Non</<strong>td</strong>></tr><tr><<strong>td</strong>>API et intégrations tierces</<strong>td</strong>><<strong>td</strong>>Oui (limité)</<strong>td</strong>></tr><tr><<strong>td</strong>>Export des rapports</<strong>td</strong>><<strong>td</strong>>Oui (CSV, PDF)</<strong>td</strong>></tr></tbody></table></div></p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Matrices de compétences ultra-configurables : on peut définir ses propres niveaux, ses propres critères, sans être bloqué par un référentiel générique imposé</td>
-            <td>L'intégration avec des SIRH tiers reste basique : pas de synchronisation automatique en temps réel avec des outils comme BambooHR ou Workday, ce qui oblige à des imports manuels réguliers</td>
-          </tr>
-          <tr>
-            <td>Les heatmaps de compétences sont vraiment lisibles, même pour un manager non-RH qui ne connaît pas le jargon GPEC</td>
-            <td>L'onboarding est un peu abrupt pour les RH non techniques : la logique de 'frameworks' demande un temps d'adaptation avant de produire quelque chose d'utile, j'aurais attendu plus de templates prêts à l'emploi</td>
-          </tr>
-          <tr>
-            <td>L'auto-évaluation couplée à la validation managériale crée une vraie dynamique de dialogue sur les niveaux réels, sans friction excessive</td>
-            <td>Le support client est lent selon plusieurs retours, surtout sur le plan d'entrée de gamme : les réponses arrivent parfois après 48 à 72 heures, ce qui peut bloquer sur des questions de configuration importantes</td>
-          </tr>
-          <tr>
-            <td>Export des données propre en CSV ou PDF, utile pour alimenter des comités de direction ou des plans de formation sans retravailler les données à la main</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Matrices de compétences ultra-configurables : on peut définir ses propres niveaux, ses propres critères, sans être bloqué par un référentiel générique imposé</td></tr><tr><td>Les heatmaps de compétences sont vraiment lisibles, même pour un manager non-RH qui ne connaît pas le jargon GPEC</td></tr><tr><td>L'auto-évaluation couplée à la validation managériale crée une vraie dynamique de dialogue sur les niveaux réels, sans friction excessive</td></tr><tr><td>Export des données propre en CSV ou PDF, utile pour alimenter des comités de direction ou des plans de formation sans retravailler les données à la main</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>L'intégration avec des SIRH tiers reste basique : pas de synchronisation automatique en temps réel avec des outils comme BambooHR ou Workday, ce qui oblige à des imports manuels réguliers</td></tr><tr><td>L'onboarding est un peu abrupt pour les RH non techniques : la logique de 'frameworks' demande un temps d'adaptation avant de produire quelque chose d'utile, j'aurais attendu plus de templates prêts à l'emploi</td></tr><tr><td>Le support client est lent selon plusieurs retours, surtout sur le plan d'entrée de gamme : les réponses arrivent parfois après 48 à 72 heures, ce qui peut bloquer sur des questions de configuration importantes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1024,27 +938,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Pour une PME de 50 personnes, c'est surdimensionné et franchement ça n'a pas de sens d'y aller. Mais pour une entreprise de 2 000 collaborateurs avec des enjeux de GPEC sérieux, c'est une autre histoire.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Cartographie des compétences très structurée avec possibilité de créer des référentiels métiers sur mesure et de les lier aux parcours de formation</td>
-            <td>L'onboarding est long et souvent sous-estimé : sans un accompagnement sérieux au départ, les équipes RH se perdent dans la configuration des référentiels et on perd facilement deux à trois mois</td>
-          </tr>
-          <tr>
-            <td>Reporting granulaire : écarts de compétences par équipe, taux de progression, exports configurables pour les comités RH</td>
-            <td>L'interface utilisateur est fonctionnelle mais datée sur certaines sections, notamment côté collaborateur, ce qui crée des frictions à l'adoption et force parfois à repasser par le support</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation personnalisables selon la hiérarchie interne, utiles pour les grandes organisations avec plusieurs niveaux de validation</td>
-            <td>Le coût est élevé et peu transparent : les tarifs varient beaucoup selon le périmètre activé, et plusieurs modules utiles comme le succession planning ou le skills AI sont facturés en supplément</td>
-          </tr>
-          <tr>
-            <td>Intégrations solides avec les SIRH du marché (SAP, Workday) et des API documentées pour connecter des outils tiers</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Cartographie des compétences très structurée avec possibilité de créer des référentiels métiers sur mesure et de les lier aux parcours de formation</td></tr><tr><td>Reporting granulaire : écarts de compétences par équipe, taux de progression, exports configurables pour les comités RH</td></tr><tr><td>Workflows de validation personnalisables selon la hiérarchie interne, utiles pour les grandes organisations avec plusieurs niveaux de validation</td></tr><tr><td>Intégrations solides avec les SIRH du marché (SAP, Workday) et des API documentées pour connecter des outils tiers</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>L'onboarding est long et souvent sous-estimé : sans un accompagnement sérieux au départ, les équipes RH se perdent dans la configuration des référentiels et on perd facilement deux à trois mois</td></tr><tr><td>L'interface utilisateur est fonctionnelle mais datée sur certaines sections, notamment côté collaborateur, ce qui crée des frictions à l'adoption et force parfois à repasser par le support</td></tr><tr><td>Le coût est élevé et peu transparent : les tarifs varient beaucoup selon le périmètre activé, et plusieurs modules utiles comme le succession planning ou le skills AI sont facturés en supplément</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1290,7 +1193,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 creaone.fr — Données actualisées le 2 octobre 2026
+        © 2026 creaone.fr — Données actualisées le 6 octobre 2026
       </div>
     </div>
   </div>

@@ -97,6 +97,8 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap .avantages-table{flex:1;margin:0}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
@@ -146,7 +148,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -487,7 +489,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Meilleur Logiciel ERP 2026 : Top 9</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-06 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Alexandre Michel" class="hero-author-avatar">
     <span>Rédigé par Alexandre Michel</span>
@@ -548,27 +550,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Je déconseille Sellsy aux groupes avec des entités multiples ou des besoins de consolidation financière avancée, c'est clairement pas sa cible.</p></p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Tout-en-un réel : CRM + facturation + trésorerie + achats dans une interface unique, sans exports manuels entre modules</td>
-            <td>Tarification modulaire qui peut surprendre : activer tous les modules utiles fait rapidement monter la facture au-delà du prix d'entrée affiché</td>
-          </tr>
-          <tr>
-            <td>Rapprochement bancaire automatique et prévisions de trésorerie lisibles, même sans comptable intégré au quotidien</td>
-            <td>Gestion multi-entités absente ou très limitée, ce qui le rend inadapté aux holdings ou structures avec plusieurs sociétés à piloter ensemble</td>
-          </tr>
-          <tr>
-            <td>Signature électronique des devis et transformation automatique en facture avec déclenchement de relances configurables</td>
-            <td>Onboarding assez dense : certaines parties de l'interface manquent de clarté et il faut compter une à deux semaines avant que les équipes soient vraiment autonomes</td>
-          </tr>
-          <tr>
-            <td>API REST documentée et exports comptables natifs vers Sage, Cegid, FEC pour ne pas rester en circuit fermé</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Tout-en-un réel : CRM + facturation + trésorerie + achats dans une interface unique, sans exports manuels entre modules</td></tr><tr><td>Rapprochement bancaire automatique et prévisions de trésorerie lisibles, même sans comptable intégré au quotidien</td></tr><tr><td>Signature électronique des devis et transformation automatique en facture avec déclenchement de relances configurables</td></tr><tr><td>API REST documentée et exports comptables natifs vers Sage, Cegid, FEC pour ne pas rester en circuit fermé</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification modulaire qui peut surprendre : activer tous les modules utiles fait rapidement monter la facture au-delà du prix d'entrée affiché</td></tr><tr><td>Gestion multi-entités absente ou très limitée, ce qui le rend inadapté aux holdings ou structures avec plusieurs sociétés à piloter ensemble</td></tr><tr><td>Onboarding assez dense : certaines parties de l'interface manquent de clarté et il faut compter une à deux semaines avant que les équipes soient vraiment autonomes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -607,27 +598,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Bon, l'onboarding prend du temps, je ne vais pas le cacher. Compter plusieurs semaines de paramétrage avant d'être vraiment opérationnel.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Couverture fonctionnelle complète sur un seul outil : production, achats, ventes, RH, compta, CRM</td>
-            <td>Prise en main longue : l'interface n'est pas intuitive d'entrée, il faut compter 2 à 3 semaines minimum pour former une équipe correctement</td>
-          </tr>
-          <tr>
-            <td>Architecture modulaire : on active uniquement les briques utiles, sans payer pour le reste</td>
-            <td>Le support réactif dépend beaucoup de l'intégrateur choisi, pas directement de Divalto, ce qui crée des disparités assez frustrantes</td>
-          </tr>
-          <tr>
-            <td>API REST disponible pour connecter des outils tiers ou des plateformes e-commerce</td>
-            <td>Tarification opaque : le coût réel n'est visible qu'après devis, et les modules additionnels font vite grimper la facture finale</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation configurables sur les achats et les devis, avec niveaux d'approbation</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Couverture fonctionnelle complète sur un seul outil : production, achats, ventes, RH, compta, CRM</td></tr><tr><td>Architecture modulaire : on active uniquement les briques utiles, sans payer pour le reste</td></tr><tr><td>API REST disponible pour connecter des outils tiers ou des plateformes e-commerce</td></tr><tr><td>Workflows de validation configurables sur les achats et les devis, avec niveaux d'approbation</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prise en main longue : l'interface n'est pas intuitive d'entrée, il faut compter 2 à 3 semaines minimum pour former une équipe correctement</td></tr><tr><td>Le support réactif dépend beaucoup de l'intégrateur choisi, pas directement de Divalto, ce qui crée des disparités assez frustrantes</td></tr><tr><td>Tarification opaque : le coût réel n'est visible qu'après devis, et les modules additionnels font vite grimper la facture finale</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -670,27 +650,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Et pour les TPE d'une ou deux personnes, c'est souvent surdimensionné.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Modularité réelle : on active uniquement les modules utiles (CRM, stock, compta, RH...) sans payer pour le reste</td>
-            <td>La personnalisation avancée nécessite un développeur Python : le coût d'intégration peut rapidement dépasser le budget d'une petite structure</td>
-          </tr>
-          <tr>
-            <td>Tout est centralisé dans une seule base de données, ce qui évite les doublons de saisie entre les outils</td>
-            <td>L'onboarding est long si on part de zéro sans intégrateur : l'interface est dense, certains menus sont peu intuitifs et la courbe d'apprentissage est réelle pour les équipes non techniques</td>
-          </tr>
-          <tr>
-            <td>Automatisation native des workflows : relances clients, règles de réapprovisionnement, approbations d'achats, sans développement</td>
-            <td>Le support officiel Odoo Enterprise est parfois lent à répondre sur des bugs bloquants, et la qualité des modules tiers de la communauté est très inégale</td>
-          </tr>
-          <tr>
-            <td>Version Community open source utilisable gratuitement avec une communauté active et des milliers de modules tiers disponibles</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Modularité réelle : on active uniquement les modules utiles (CRM, stock, compta, RH...) sans payer pour le reste</td></tr><tr><td>Tout est centralisé dans une seule base de données, ce qui évite les doublons de saisie entre les outils</td></tr><tr><td>Automatisation native des workflows : relances clients, règles de réapprovisionnement, approbations d'achats, sans développement</td></tr><tr><td>Version Community open source utilisable gratuitement avec une communauté active et des milliers de modules tiers disponibles</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>La personnalisation avancée nécessite un développeur Python : le coût d'intégration peut rapidement dépasser le budget d'une petite structure</td></tr><tr><td>L'onboarding est long si on part de zéro sans intégrateur : l'interface est dense, certains menus sont peu intuitifs et la courbe d'apprentissage est réelle pour les équipes non techniques</td></tr><tr><td>Le support officiel Odoo Enterprise est parfois lent à répondre sur des bugs bloquants, et la qualité des modules tiers de la communauté est très inégale</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -727,27 +696,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Par contre, si vous cherchez une interface moderne façon SaaS 2024, vous risquez d'être un peu déçu au premier démarrage.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Modules comptabilité, gestion commerciale et stocks vraiment connectés entre eux, sans ressaisie manuelle</td>
-            <td>Interface datée, l'ergonomie UX accuse son âge face aux ERP nouvelle génération, la prise en main peut décourager les nouveaux utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Rapprochement bancaire automatisé et relances clients paramétrables, ça fait gagner plusieurs heures par semaine</td>
-            <td>Le coût total grimpe vite : licences, maintenance annuelle, et prestations intégrateur peuvent dépasser le budget prévu d'une PME de taille modeste</td>
-          </tr>
-          <tr>
-            <td>Réseau dense d'intégrateurs certifiés en France, idéal pour les PME sans équipe IT dédiée</td>
-            <td>Les mises à jour majeures sont parfois source de bugs sur les paramètrages spécifiques, il faut tester les montées de version avant déploiement en production</td>
-          </tr>
-          <tr>
-            <td>Bon respect des obligations fiscales françaises : TVA sur encaissements, DEB, FEC exportable pour l'expert-comptable</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Modules comptabilité, gestion commerciale et stocks vraiment connectés entre eux, sans ressaisie manuelle</td></tr><tr><td>Rapprochement bancaire automatisé et relances clients paramétrables, ça fait gagner plusieurs heures par semaine</td></tr><tr><td>Réseau dense d'intégrateurs certifiés en France, idéal pour les PME sans équipe IT dédiée</td></tr><tr><td>Bon respect des obligations fiscales françaises : TVA sur encaissements, DEB, FEC exportable pour l'expert-comptable</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface datée, l'ergonomie UX accuse son âge face aux ERP nouvelle génération, la prise en main peut décourager les nouveaux utilisateurs</td></tr><tr><td>Le coût total grimpe vite : licences, maintenance annuelle, et prestations intégrateur peuvent dépasser le budget prévu d'une PME de taille modeste</td></tr><tr><td>Les mises à jour majeures sont parfois source de bugs sur les paramètrages spécifiques, il faut tester les montées de version avant déploiement en production</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -784,27 +742,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Bon, par contre, si tu as des besoins très spécifiques en comptabilité analytique ou en gestion d'entrepôt multi-sites, Axonaut va vite montrer ses limites. C'est un ERP de PME, pas un ERP industriel.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Tout-en-un réel : CRM, facturation, compta légère, RH et projets dans une seule interface sans jongler entre 4 outils</td>
-            <td>La comptabilité reste superficielle : pour les clôtures, les journaux comptables complexes ou la gestion analytique poussée, il faut quand même un expert-comptable avec un autre logiciel</td>
-          </tr>
-          <tr>
-            <td>Automatisation des relances clients et des workflows de facturation, avec transformation devis-facture en quelques clics</td>
-            <td>L'interface mobile est fonctionnelle mais clairement en retrait par rapport à la version desktop, quelques bugs d'affichage sur certains écrans qui m'ont agacé</td>
-          </tr>
-          <tr>
-            <td>Prise en main rapide : j'ai formé deux collaborateurs dessus en moins d'une semaine sans formation externe</td>
-            <td>Le module de reporting manque de profondeur : les tableaux de bord sont corrects pour une vue globale, mais dès qu'on veut croiser des données personnalisées, c'est vite limité</td>
-          </tr>
-          <tr>
-            <td>Outil 100% français avec support en français, conformité RGPD native et TVA française gérée correctement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Tout-en-un réel : CRM, facturation, compta légère, RH et projets dans une seule interface sans jongler entre 4 outils</td></tr><tr><td>Automatisation des relances clients et des workflows de facturation, avec transformation devis-facture en quelques clics</td></tr><tr><td>Prise en main rapide : j'ai formé deux collaborateurs dessus en moins d'une semaine sans formation externe</td></tr><tr><td>Outil 100% français avec support en français, conformité RGPD native et TVA française gérée correctement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>La comptabilité reste superficielle : pour les clôtures, les journaux comptables complexes ou la gestion analytique poussée, il faut quand même un expert-comptable avec un autre logiciel</td></tr><tr><td>L'interface mobile est fonctionnelle mais clairement en retrait par rapport à la version desktop, quelques bugs d'affichage sur certains écrans qui m'ont agacé</td></tr><tr><td>Le module de reporting manque de profondeur : les tableaux de bord sont corrects pour une vue globale, mais dès qu'on veut croiser des données personnalisées, c'est vite limité</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -847,27 +794,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>L'onboarding demande plusieurs semaines, et les utilisateurs métier ont souvent besoin de formation spécifique avant d'être autonomes. Ce n'est clairement pas un logiciel ERP qu'on ouvre et qu'on maîtrise en deux jours.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Consolidation multi-entités et multi-devises native, sans module additionnel payant</td>
-            <td>Tarification opaque et élevée : le coût grimpe vite avec les modules additionnels et le nombre d'utilisateurs nommés, difficile d'obtenir un devis clair sans passer par un commercial</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation et d'automatisation configurables sans développement custom</td>
-            <td>L'onboarding est long et presque systématiquement sous-estimé, un projet de déploiement en dessous de 4 à 6 mois c'est rare, surtout avec des personnalisations métier</td>
-          </tr>
-          <tr>
-            <td>Reporting financier en temps réel avec exports directs et tableaux de bord par profil utilisateur</td>
-            <td>L'interface utilisateur accuse son âge sur certains modules, notamment la gestion de production, et l'UX peut sembler lourde comparée à des solutions plus récentes</td>
-          </tr>
-          <tr>
-            <td>API REST robuste pour intégrations avec CRM, plateformes e-commerce et outils BI</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Consolidation multi-entités et multi-devises native, sans module additionnel payant</td></tr><tr><td>Workflows de validation et d'automatisation configurables sans développement custom</td></tr><tr><td>Reporting financier en temps réel avec exports directs et tableaux de bord par profil utilisateur</td></tr><tr><td>API REST robuste pour intégrations avec CRM, plateformes e-commerce et outils BI</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification opaque et élevée : le coût grimpe vite avec les modules additionnels et le nombre d'utilisateurs nommés, difficile d'obtenir un devis clair sans passer par un commercial</td></tr><tr><td>L'onboarding est long et presque systématiquement sous-estimé, un projet de déploiement en dessous de 4 à 6 mois c'est rare, surtout avec des personnalisations métier</td></tr><tr><td>L'interface utilisateur accuse son âge sur certains modules, notamment la gestion de production, et l'UX peut sembler lourde comparée à des solutions plus récentes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -902,27 +838,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Par contre, si tu gères une équipe de 30 personnes avec des workflows de validation complexes, des reportings financiers avancés ou une intégration EDI, Dolibarr va montrer ses limites assez vite.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>100% open source et gratuit à l'installation, avec une communauté active qui publie des modules complémentaires régulièrement</td>
-            <td>L'interface n'a pas vraiment évolué visuellement depuis des années : elle fonctionne, mais l'expérience utilisateur est datée et certains menus demandent du temps avant d'être retrouvés instinctivement</td>
-          </tr>
-          <tr>
-            <td>Architecture modulaire : on active uniquement ce dont on a besoin, ce qui garde l'interface lisible même pour un utilisateur non technique</td>
-            <td>Les modules tiers du DoliStore sont de qualité très inégale : j'en ai installé deux ou trois qui généraient des conflits ou n'étaient plus maintenus, ce qui oblige à tester avec précaution avant tout déploiement en production</td>
-          </tr>
-          <tr>
-            <td>Auto-hébergement possible sur un simple serveur mutualisé, ce qui donne un contrôle total sur les données sans abonnement mensuel</td>
-            <td>Le support officiel est quasi inexistant sans passer par un prestataire certifié payant : en cas de bug bloquant, tu t'en remets au forum communautaire, et la réponse peut prendre plusieurs jours</td>
-          </tr>
-          <tr>
-            <td>API REST documentée qui permet des connexions avec des outils tiers, des boutiques e-commerce ou des solutions de paiement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>100% open source et gratuit à l'installation, avec une communauté active qui publie des modules complémentaires régulièrement</td></tr><tr><td>Architecture modulaire : on active uniquement ce dont on a besoin, ce qui garde l'interface lisible même pour un utilisateur non technique</td></tr><tr><td>Auto-hébergement possible sur un simple serveur mutualisé, ce qui donne un contrôle total sur les données sans abonnement mensuel</td></tr><tr><td>API REST documentée qui permet des connexions avec des outils tiers, des boutiques e-commerce ou des solutions de paiement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>L'interface n'a pas vraiment évolué visuellement depuis des années : elle fonctionne, mais l'expérience utilisateur est datée et certains menus demandent du temps avant d'être retrouvés instinctivement</td></tr><tr><td>Les modules tiers du DoliStore sont de qualité très inégale : j'en ai installé deux ou trois qui généraient des conflits ou n'étaient plus maintenus, ce qui oblige à tester avec précaution avant tout déploiement en production</td></tr><tr><td>Le support officiel est quasi inexistant sans passer par un prestataire certifié payant : en cas de bug bloquant, tu t'en remets au forum communautaire, et la réponse peut prendre plusieurs jours</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -961,27 +886,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Et si tu cherches un ERP industriel ultra-spécialisé avec gestion de nomenclatures complexes, tu risques de te retrouver à multiplier les modules complémentaires ISV, ce qui fait rapidement grimper la note.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native avec Teams, Outlook et Excel : aucune configuration tierce, les équipes travaillent dans des outils qu'elles connaissent déjà</td>
-            <td>Le tarif part de 65€ par utilisateur et par mois pour la licence Essentials, et ça monte vite dès qu'on ajoute des modules ou des utilisateurs Premium. Pour une PME de 50 personnes, la facture annuelle peut surprendre.</td>
-          </tr>
-          <tr>
-            <td>Workflows d'approbation configurables sans code sur les achats, ventes et notes de frais, avec traçabilité complète des validations</td>
-            <td>L'onboarding sans partenaire certifié est vraiment risqué. La configuration initiale du plan comptable, des dimensions analytiques et des flux d'approbation demande une vraie expertise. J'ai vu des déploiements durer 6 mois pour des raisons de paramétrage mal cadré au départ.</td>
-          </tr>
-          <tr>
-            <td>Reporting Power BI embarqué directement dans l'interface, pas besoin d'exporter des CSV pour construire un tableau de bord propre</td>
-            <td>L'interface a beau être dans l'univers Microsoft, certaines parties de l'UX restent confuses, notamment la gestion des lots et des numéros de série en stock. Bon, par contre, chaque mise à jour cloud (mensuelle) peut modifier des comportements sans prévenir, ce qui oblige à surveiller les release notes en permanence.</td>
-          </tr>
-          <tr>
-            <td>Gestion multi-devises et multi-entités incluse nativement, utile pour les groupes avec des filiales à l'étranger</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native avec Teams, Outlook et Excel : aucune configuration tierce, les équipes travaillent dans des outils qu'elles connaissent déjà</td></tr><tr><td>Workflows d'approbation configurables sans code sur les achats, ventes et notes de frais, avec traçabilité complète des validations</td></tr><tr><td>Reporting Power BI embarqué directement dans l'interface, pas besoin d'exporter des CSV pour construire un tableau de bord propre</td></tr><tr><td>Gestion multi-devises et multi-entités incluse nativement, utile pour les groupes avec des filiales à l'étranger</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Le tarif part de 65€ par utilisateur et par mois pour la licence Essentials, et ça monte vite dès qu'on ajoute des modules ou des utilisateurs Premium. Pour une PME de 50 personnes, la facture annuelle peut surprendre.</td></tr><tr><td>L'onboarding sans partenaire certifié est vraiment risqué. La configuration initiale du plan comptable, des dimensions analytiques et des flux d'approbation demande une vraie expertise. J'ai vu des déploiements durer 6 mois pour des raisons de paramétrage mal cadré au départ.</td></tr><tr><td>L'interface a beau être dans l'univers Microsoft, certaines parties de l'UX restent confuses, notamment la gestion des lots et des numéros de série en stock. Bon, par contre, chaque mise à jour cloud (mensuelle) peut modifier des comportements sans prévenir, ce qui oblige à surveiller les release notes en permanence.</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1016,27 +930,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Ce n'est pas fait pour une micro-entreprise de 5 personnes. Le vrai terrain de jeu de Cegid XRP Flex, c'est la structure de 40 à 500 salariés qui veut se passer d'un ERP on-premise vieillissant sans sacrifier la profondeur fonctionnelle.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Gestion multi-sociétés et multi-sites native, avec consolidation comptable automatique sans export manuel</td>
-            <td>L'onboarding est long : j'ai compté entre 3 et 6 mois avant que les équipes soient vraiment autonomes, le paramétrage initial demande un intégrateur certifié</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation entièrement paramétrables : on définit les seuils, les valideurs, les relances automatiques</td>
-            <td>L'interface reste fonctionnelle mais datée sur certains modules RH, l'UX n'a pas le feeling d'un outil pensé en 2024</td>
-          </tr>
-          <tr>
-            <td>Conformité française solide : DSN, liasse fiscale, TVA sur encaissements, DEB, tout est maintenu à jour sans intervention manuelle</td>
-            <td>Le tarif grimpe vite dès qu'on ajoute des modules ou des utilisateurs supplémentaires, difficile d'avoir une visibilité claire sur le coût total sans passer par un commercial</td>
-          </tr>
-          <tr>
-            <td>Architecture full cloud avec mises à jour transparentes et accès multi-appareils sans VPN ni infra serveur à gérer</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Gestion multi-sociétés et multi-sites native, avec consolidation comptable automatique sans export manuel</td></tr><tr><td>Workflows de validation entièrement paramétrables : on définit les seuils, les valideurs, les relances automatiques</td></tr><tr><td>Conformité française solide : DSN, liasse fiscale, TVA sur encaissements, DEB, tout est maintenu à jour sans intervention manuelle</td></tr><tr><td>Architecture full cloud avec mises à jour transparentes et accès multi-appareils sans VPN ni infra serveur à gérer</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>L'onboarding est long : j'ai compté entre 3 et 6 mois avant que les équipes soient vraiment autonomes, le paramétrage initial demande un intégrateur certifié</td></tr><tr><td>L'interface reste fonctionnelle mais datée sur certains modules RH, l'UX n'a pas le feeling d'un outil pensé en 2024</td></tr><tr><td>Le tarif grimpe vite dès qu'on ajoute des modules ou des utilisateurs supplémentaires, difficile d'avoir une visibilité claire sur le coût total sans passer par un commercial</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1266,7 +1169,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 creaone.fr — Données actualisées le 2 octobre 2026
+        © 2026 creaone.fr — Données actualisées le 6 octobre 2026
       </div>
     </div>
   </div>

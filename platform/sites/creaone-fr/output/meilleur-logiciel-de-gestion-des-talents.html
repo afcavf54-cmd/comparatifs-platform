@@ -97,6 +97,8 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap .avantages-table{flex:1;margin:0}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
@@ -146,7 +148,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -487,7 +489,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Meilleur Logiciel de gestion des talents 2026 : Top 10</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-06 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Alexandre Michel" class="hero-author-avatar">
     <span>Rédigé par Alexandre Michel</span>
@@ -544,27 +546,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Pour une PME de 80 personnes qui veut juste automatiser ses entretiens annuels, c'est trop lourd. L'investissement en temps d'implémentation est réel, et la prise en main sans accompagnement, franchement, c'est compliqué.</p></p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Cartographie des compétences en temps réel avec identification des gaps par métier ou département</td>
-            <td>Implémentation longue et coûteuse : sans intégrateur ou consultant dédié, le paramétrage initial peut prendre plusieurs mois et vite déborder le budget prévu</td>
-          </tr>
-          <tr>
-            <td>Moteur de mobilité interne : matching automatique entre profils collaborateurs et postes ouverts avant de lancer un recrutement externe</td>
-            <td>Interface utilisateur datée sur certains modules, notamment la partie formation, qui tranche avec des outils plus récents et crée des frictions à l'adoption côté managers</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation entièrement configurables selon l'organigramme, même sur des structures multi-sites ou multi-pays</td>
-            <td>Support client parfois lent à répondre sur les tickets techniques, ce qui peut bloquer des campagnes d'entretiens si un bug survient en période de peak RH</td>
-          </tr>
-          <tr>
-            <td>Reporting RH avancé avec exports exploitables directement, sans nécessiter de traitement manuel supplémentaire</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Cartographie des compétences en temps réel avec identification des gaps par métier ou département</td></tr><tr><td>Moteur de mobilité interne : matching automatique entre profils collaborateurs et postes ouverts avant de lancer un recrutement externe</td></tr><tr><td>Workflows de validation entièrement configurables selon l'organigramme, même sur des structures multi-sites ou multi-pays</td></tr><tr><td>Reporting RH avancé avec exports exploitables directement, sans nécessiter de traitement manuel supplémentaire</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Implémentation longue et coûteuse : sans intégrateur ou consultant dédié, le paramétrage initial peut prendre plusieurs mois et vite déborder le budget prévu</td></tr><tr><td>Interface utilisateur datée sur certains modules, notamment la partie formation, qui tranche avec des outils plus récents et crée des frictions à l'adoption côté managers</td></tr><tr><td>Support client parfois lent à répondre sur les tickets techniques, ce qui peut bloquer des campagnes d'entretiens si un bug survient en période de peak RH</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -603,27 +594,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p><div class="table-wrap"><table border='1' cellpadding='6' cellspacing='0' style='border-collapse:collapse;width:<strong>100%</strong>;'><thead><tr><th>Fonctionnalité</th><th>Disponible</th><th>Remarque</th></tr></thead><tbody><tr><<strong>td</strong>>Plan de formation</<strong>td</strong>><<strong>td</strong>>✅</<strong>td</strong>><<strong>td</strong>>Construction collaborative avec les managers</<strong>td</strong>></tr><tr><<strong>td</strong>>Entretiens annuels / pro</<strong>td</strong>><<strong>td</strong>>✅</<strong>td</strong>><<strong>td</strong>>Liaison directe avec les besoins de formation</<strong>td</strong>></tr><tr><<strong>td</strong>>Gestion des compétences</<strong>td</strong>><<strong>td</strong>>✅</<strong>td</strong>><<strong>td</strong>>Référentiel personnalisable</<strong>td</strong>></tr><tr><<strong>td</strong>>Reporting RH</<strong>td</strong>><<strong>td</strong>>✅</<strong>td</strong>><<strong>td</strong>>Export possible, quelques limites de filtres</<strong>td</strong>></tr><tr><<strong>td</strong>>Intégration SIRH externe</<strong>td</strong>><<strong>td</strong>>⚠️</<strong>td</strong>><<strong>td</strong>>API disponible mais paramétrage technique requis</<strong>td</strong>></tr><tr><<strong>td</strong>>Module 360°</<strong>td</strong>><<strong>td</strong>>✅</<strong>td</strong>><<strong>td</strong>>Inclus, pas toujours simple à configurer seul</<strong>td</strong>></tr></tbody></table></div></p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Liaison automatique entre les besoins exprimés en entretien et le plan de formation : zéro ressaisie</td>
-            <td>Onboarding long et technique : sans accompagnement sérieux au démarrage, la configuration du référentiel de compétences et des workflows prend plusieurs semaines</td>
-          </tr>
-          <tr>
-            <td>Espace manager vraiment utilisable, pas juste décoratif : suivi des objectifs, compétences, formations en temps réel</td>
-            <td>Les options de filtres dans les exports de reporting restent limitées, j'ai dû retravailler certains tableaux sous Excel pour des analyses un peu fines</td>
-          </tr>
-          <tr>
-            <td>Gestion complète des sessions intra : convocations, émargements, suivi de présence sans outil tiers</td>
-            <td>L'intégration avec des SIRH externes comme Sage ou ADP nécessite une intervention technique, ce n'est pas plug-and-play pour une équipe RH sans ressource IT</td>
-          </tr>
-          <tr>
-            <td>Support client réactif et équipes françaises disponibles, ce qui change concrètement quand on bloque sur un paramétrage</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Liaison automatique entre les besoins exprimés en entretien et le plan de formation : zéro ressaisie</td></tr><tr><td>Espace manager vraiment utilisable, pas juste décoratif : suivi des objectifs, compétences, formations en temps réel</td></tr><tr><td>Gestion complète des sessions intra : convocations, émargements, suivi de présence sans outil tiers</td></tr><tr><td>Support client réactif et équipes françaises disponibles, ce qui change concrètement quand on bloque sur un paramétrage</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Onboarding long et technique : sans accompagnement sérieux au démarrage, la configuration du référentiel de compétences et des workflows prend plusieurs semaines</td></tr><tr><td>Les options de filtres dans les exports de reporting restent limitées, j'ai dû retravailler certains tableaux sous Excel pour des analyses un peu fines</td></tr><tr><td>L'intégration avec des SIRH externes comme Sage ou ADP nécessite une intervention technique, ce n'est pas plug-and-play pour une équipe RH sans ressource IT</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -658,27 +638,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Pour une PME de 80 personnes, c'est surdimensionné et franchement trop complexe à administrer. Mais pour un groupe international avec des obligations de compliance et des plans de carrière à piloter à grande échelle, ça fait le travail.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>LMS intégré avec gestion de parcours et recommandations de formations personnalisées par profil collaborateur</td>
-            <td>L'onboarding est long et souvent coûteux : sans intégrateur partenaire, la configuration initiale peut prendre plusieurs mois, ce qui est frustrant quand on veut des résultats rapides</td>
-          </tr>
-          <tr>
-            <td>Workflows de gestion de la performance et de succession hautement configurables, adaptés aux grandes organisations multi-sites</td>
-            <td>L'interface utilisateur accuse son âge sur certaines parties de la plateforme, notamment les modules de succession, et on perd du temps à chercher des réglages qui devraient être plus accessibles</td>
-          </tr>
-          <tr>
-            <td>Intégrations natives avec les principaux SIRH du marché (SAP SuccessFactors, Workday, Oracle) via API robuste</td>
-            <td>Le support réactif n'est pas garanti sur tous les niveaux de contrat : j'ai vu des tickets rester ouverts plusieurs jours pour des bugs bloquants, ce qui pose un vrai problème en période de campagne de performance</td>
-          </tr>
-          <tr>
-            <td>Reporting avancé avec tableaux de bord exportables, utile pour les comités RH et les obligations de conformité</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>LMS intégré avec gestion de parcours et recommandations de formations personnalisées par profil collaborateur</td></tr><tr><td>Workflows de gestion de la performance et de succession hautement configurables, adaptés aux grandes organisations multi-sites</td></tr><tr><td>Intégrations natives avec les principaux SIRH du marché (SAP SuccessFactors, Workday, Oracle) via API robuste</td></tr><tr><td>Reporting avancé avec tableaux de bord exportables, utile pour les comités RH et les obligations de conformité</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>L'onboarding est long et souvent coûteux : sans intégrateur partenaire, la configuration initiale peut prendre plusieurs mois, ce qui est frustrant quand on veut des résultats rapides</td></tr><tr><td>L'interface utilisateur accuse son âge sur certaines parties de la plateforme, notamment les modules de succession, et on perd du temps à chercher des réglages qui devraient être plus accessibles</td></tr><tr><td>Le support réactif n'est pas garanti sur tous les niveaux de contrat : j'ai vu des tickets rester ouverts plusieurs jours pour des bugs bloquants, ce qui pose un vrai problème en période de campagne de performance</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -717,27 +686,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>C'est clairement fait pour les grandes organisations, pas pour une PME de 80 personnes qui cherche juste à structurer ses entretiens annuels.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Modules talents très complets : évaluations, plans de succession, mobilité interne, objectifs OKR, tout dans le même environnement</td>
-            <td>Implémentation longue et coûteuse : compter facilement 6 à 12 mois avant d'avoir quelque chose de vraiment opérationnel, et les frais de consulting s'accumulent vite</td>
-          </tr>
-          <tr>
-            <td>Analytique RH avancée avec des rapports personnalisables sur la rétention, l'engagement, les écarts de compétences par équipe</td>
-            <td>La personnalisation est puissante mais complexe, certaines configurations nécessitent des profils techniques internes ou un partenaire certifié Workday, ce qui alourdit la dépendance externe</td>
-          </tr>
-          <tr>
-            <td>Intégrations robustes via API avec les outils métier courants (Teams, Slack, LMS tiers, outils de paie locaux)</td>
-            <td>Pas adapté aux structures de moins de 300-400 personnes : le rapport coût/usage devient très défavorable, et beaucoup de fonctionnalités restent inutilisées</td>
-          </tr>
-          <tr>
-            <td>Interface responsive utilisable sur mobile, ce qui change vraiment la vie pour les managers terrain qui valident des demandes en déplacement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Modules talents très complets : évaluations, plans de succession, mobilité interne, objectifs OKR, tout dans le même environnement</td></tr><tr><td>Analytique RH avancée avec des rapports personnalisables sur la rétention, l'engagement, les écarts de compétences par équipe</td></tr><tr><td>Intégrations robustes via API avec les outils métier courants (Teams, Slack, LMS tiers, outils de paie locaux)</td></tr><tr><td>Interface responsive utilisable sur mobile, ce qui change vraiment la vie pour les managers terrain qui valident des demandes en déplacement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Implémentation longue et coûteuse : compter facilement 6 à 12 mois avant d'avoir quelque chose de vraiment opérationnel, et les frais de consulting s'accumulent vite</td></tr><tr><td>La personnalisation est puissante mais complexe, certaines configurations nécessitent des profils techniques internes ou un partenaire certifié Workday, ce qui alourdit la dépendance externe</td></tr><tr><td>Pas adapté aux structures de moins de 300-400 personnes : le rapport coût/usage devient très défavorable, et beaucoup de fonctionnalités restent inutilisées</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -776,27 +734,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Si tu as moins de 30 salariés ou que tu n'as pas encore de DRH à plein temps, le rapport coût/usage va te peser.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Cycles d'évaluation 360 configurables en autonomie, sans intervention technique</td>
-            <td>Tarif élevé avec une structure modulaire qui peut faire grimper la facture rapidement dès qu'on ajoute la partie engagement ou compensation</td>
-          </tr>
-          <tr>
-            <td>Suivi des OKR individuels et collectifs avec mise à jour en temps réel et visualisation de l'alignement</td>
-            <td>L'onboarding demande du temps : sans accompagnement dédié, les managers mettent plusieurs semaines à vraiment s'approprier l'outil</td>
-          </tr>
-          <tr>
-            <td>Module 1:1 structuré avec templates, compte-rendu automatique et historique des échanges manager/collaborateur</td>
-            <td>Aucune gestion native des absences, de la paie ou du recrutement, ce qui oblige à maintenir plusieurs outils en parallèle et à gérer des intégrations</td>
-          </tr>
-          <tr>
-            <td>Reporting RH avancé : taux d'engagement, progression des objectifs, analyse des écarts de performance par équipe</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Cycles d'évaluation 360 configurables en autonomie, sans intervention technique</td></tr><tr><td>Suivi des OKR individuels et collectifs avec mise à jour en temps réel et visualisation de l'alignement</td></tr><tr><td>Module 1:1 structuré avec templates, compte-rendu automatique et historique des échanges manager/collaborateur</td></tr><tr><td>Reporting RH avancé : taux d'engagement, progression des objectifs, analyse des écarts de performance par équipe</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarif élevé avec une structure modulaire qui peut faire grimper la facture rapidement dès qu'on ajoute la partie engagement ou compensation</td></tr><tr><td>L'onboarding demande du temps : sans accompagnement dédié, les managers mettent plusieurs semaines à vraiment s'approprier l'outil</td></tr><tr><td>Aucune gestion native des absences, de la paie ou du recrutement, ce qui oblige à maintenir plusieurs outils en parallèle et à gérer des intégrations</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -833,27 +780,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Et si tu cherches un outil qui couvre aussi la paie ou le recrutement, Skeely ne fait pas ça, il reste centré sur la gestion des compétences et du développement.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Campagnes d'entretiens entièrement configurables avec relances automatiques aux managers et aux collaborateurs</td>
-            <td>L'intégration avec les SIRH tiers (Sage, ADP, Silae) demande un paramétrage technique qui peut freiner le déploiement, le support répond mais pas toujours vite</td>
-          </tr>
-          <tr>
-            <td>Cartographie des compétences par poste avec suivi des écarts entre niveau attendu et niveau réel</td>
-            <td>L'interface mobile est fonctionnelle mais clairement pas optimisée, les collaborateurs qui remplissent leurs entretiens sur téléphone trouvent ça pénible</td>
-          </tr>
-          <tr>
-            <td>Reporting par département exportable, avec taux de complétude et synthèse des besoins en formation</td>
-            <td>Peu de flexibilité sur la personnalisation des workflows d'approbation, si ton process interne est complexe avec plusieurs niveaux de validation tu vas te heurter à des limites assez vite</td>
-          </tr>
-          <tr>
-            <td>Prise en main rapide côté RH, pas besoin d'une formation longue pour paramétrer une première campagne</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Campagnes d'entretiens entièrement configurables avec relances automatiques aux managers et aux collaborateurs</td></tr><tr><td>Cartographie des compétences par poste avec suivi des écarts entre niveau attendu et niveau réel</td></tr><tr><td>Reporting par département exportable, avec taux de complétude et synthèse des besoins en formation</td></tr><tr><td>Prise en main rapide côté RH, pas besoin d'une formation longue pour paramétrer une première campagne</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>L'intégration avec les SIRH tiers (Sage, ADP, Silae) demande un paramétrage technique qui peut freiner le déploiement, le support répond mais pas toujours vite</td></tr><tr><td>L'interface mobile est fonctionnelle mais clairement pas optimisée, les collaborateurs qui remplissent leurs entretiens sur téléphone trouvent ça pénible</td></tr><tr><td>Peu de flexibilité sur la personnalisation des workflows d'approbation, si ton process interne est complexe avec plusieurs niveaux de validation tu vas te heurter à des limites assez vite</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -890,27 +826,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Pour une PME de 200 personnes qui cherche un outil de gestion des talents simple et rapide à déployer, je déconseille clairement cette solution. Le rapport coût/complexité n'a aucun sens à cette échelle.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native avec Oracle HCM Cloud : les données RH (paie, recrutement, performance, formation) sont centralisées sans ressaisie manuelle</td>
-            <td>L'onboarding est long et coûteux : sans intégrateur certifié Oracle, le déploiement peut prendre 6 à 12 mois. J'ai vu des projets déraper bien au-delà du budget initial.</td>
-          </tr>
-          <tr>
-            <td>Succession planning avancé avec cartographie des compétences et identification automatique des profils à haut potentiel</td>
-            <td>L'interface utilisateur accuse son âge sur certains modules. Quelques écrans de configuration sont franchement peu intuitifs, et les équipes RH non techniques galèrent à personnaliser les workflows sans aide IT.</td>
-          </tr>
-          <tr>
-            <td>Moteur de reporting très complet : tableaux de bord personnalisables, exports multiformats, suivi des KPIs RH en temps réel</td>
-            <td>Le support Oracle est lent sur les tickets non critiques. Pour des ajustements de paramétrage ou des bugs mineurs, les délais de réponse peuvent dépasser une semaine.</td>
-          </tr>
-          <tr>
-            <td>Gestion multilingue et multi-entités solide, idéale pour les groupes avec des filiales dans plusieurs pays</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native avec Oracle HCM Cloud : les données RH (paie, recrutement, performance, formation) sont centralisées sans ressaisie manuelle</td></tr><tr><td>Succession planning avancé avec cartographie des compétences et identification automatique des profils à haut potentiel</td></tr><tr><td>Moteur de reporting très complet : tableaux de bord personnalisables, exports multiformats, suivi des KPIs RH en temps réel</td></tr><tr><td>Gestion multilingue et multi-entités solide, idéale pour les groupes avec des filiales dans plusieurs pays</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>L'onboarding est long et coûteux : sans intégrateur certifié Oracle, le déploiement peut prendre 6 à 12 mois. J'ai vu des projets déraper bien au-delà du budget initial.</td></tr><tr><td>L'interface utilisateur accuse son âge sur certains modules. Quelques écrans de configuration sont franchement peu intuitifs, et les équipes RH non techniques galèrent à personnaliser les workflows sans aide IT.</td></tr><tr><td>Le support Oracle est lent sur les tickets non critiques. Pour des ajustements de paramétrage ou des bugs mineurs, les délais de réponse peuvent dépasser une semaine.</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -947,27 +872,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>Pour une équipe RH sans ressource dédiée à l'implémentation, ça peut être bloquant. Zola est clairement taillé pour des structures qui ont du temps à consacrer à la mise en place, ou qui peuvent s'appuyer sur un accompagnement.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Automatisation complète des cycles d'entretiens avec relances automatiques aux managers, sans intervention manuelle</td>
-            <td>Configuration initiale longue et peu intuitive : paramétrer les templates et les règles de validation prend facilement 1 à 2 jours sans accompagnement</td>
-          </tr>
-          <tr>
-            <td>Suivi des objectifs en logique OKR avec progression visible en temps réel pour les salariés et les RH</td>
-            <td>Le support répond dans un délai de 48h minimum, ce qui peut être frustrant quand on est en pleine campagne d'entretiens et qu'on tombe sur un bug</td>
-          </tr>
-          <tr>
-            <td>Tableau de bord centralisé qui donne une vision instantanée de l'avancement des campagnes RH en cours</td>
-            <td>Les exports vers Excel ou BI externe manquent de flexibilité : les formats proposés sont figés et difficiles à adapter pour des reportings personnalisés</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation personnalisables selon les niveaux hiérarchiques, utile pour les structures multi-sites</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Automatisation complète des cycles d'entretiens avec relances automatiques aux managers, sans intervention manuelle</td></tr><tr><td>Suivi des objectifs en logique OKR avec progression visible en temps réel pour les salariés et les RH</td></tr><tr><td>Tableau de bord centralisé qui donne une vision instantanée de l'avancement des campagnes RH en cours</td></tr><tr><td>Workflows de validation personnalisables selon les niveaux hiérarchiques, utile pour les structures multi-sites</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Configuration initiale longue et peu intuitive : paramétrer les templates et les règles de validation prend facilement 1 à 2 jours sans accompagnement</td></tr><tr><td>Le support répond dans un délai de 48h minimum, ce qui peut être frustrant quand on est en pleine campagne d'entretiens et qu'on tombe sur un bug</td></tr><tr><td>Les exports vers Excel ou BI externe manquent de flexibilité : les formats proposés sont figés et difficiles à adapter pour des reportings personnalisés</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1006,27 +920,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p>L'API existe et les intégrations avec des outils comme BambooHR ou Workday sont documentées, mais ça demande quand même un peu de travail côté technique. Pour une PME sans DSI interne, ça peut coincer.</p></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Campagnes d'entretiens et de feedback 360° entièrement paramétrables par type de poste ou de métier</td>
-            <td>Aucune fonctionnalité de gestion administrative (paie, absences, contrats) : il faut obligatoirement un SIRH en parallèle</td>
-          </tr>
-          <tr>
-            <td>Module people review visuel pour identifier les talents, croiser potentiel et performance en quelques clics</td>
-            <td>L'intégration avec des outils tiers peut demander un effort technique non négligeable, difficile à absorber pour une petite équipe sans support IT</td>
-          </tr>
-          <tr>
-            <td>Relances automatiques et workflows configurables qui évitent aux RH de courir après les managers</td>
-            <td>Le tarif peut devenir élevé rapidement pour les structures de moins de 100 salariés, surtout si on n'utilise pas tous les modules</td>
-          </tr>
-          <tr>
-            <td>Suivi des objectifs directement connecté aux entretiens, sans rupture dans le parcours collaborateur</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Campagnes d'entretiens et de feedback 360° entièrement paramétrables par type de poste ou de métier</td></tr><tr><td>Module people review visuel pour identifier les talents, croiser potentiel et performance en quelques clics</td></tr><tr><td>Relances automatiques et workflows configurables qui évitent aux RH de courir après les managers</td></tr><tr><td>Suivi des objectifs directement connecté aux entretiens, sans rupture dans le parcours collaborateur</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Aucune fonctionnalité de gestion administrative (paie, absences, contrats) : il faut obligatoirement un SIRH en parallèle</td></tr><tr><td>L'intégration avec des outils tiers peut demander un effort technique non négligeable, difficile à absorber pour une petite équipe sans support IT</td></tr><tr><td>Le tarif peut devenir élevé rapidement pour les structures de moins de 100 salariés, surtout si on n'utilise pas tous les modules</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1065,27 +968,16 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 <p><strong>Tableau comparatif des modules talent management :</strong></p><div class="table-wrap"><table border='1' cellpadding='6' cellspacing='0' style='border-collapse:collapse;width:<strong>100%</strong>;'><thead><tr><th>Module</th><th>Fonction principale</th><th>Niveau de complexité</th></tr></thead><tbody><tr><<strong>td</strong>>Performance & Goals</<strong>td</strong>><<strong>td</strong>>Cycles d'évaluation, OKR, calibration</<strong>td</strong>><<strong>td</strong>>Élevé</<strong>td</strong>></tr><tr><<strong>td</strong>>Learning</<strong>td</strong>><<strong>td</strong>>LMS intégré, conformité réglementaire</<strong>td</strong>><<strong>td</strong>>Moyen</<strong>td</strong>></tr><tr><<strong>td</strong>>Succession & Development</<strong>td</strong>><<strong>td</strong>>Plans de succession, potentiel, mobilité interne</<strong>td</strong>><<strong>td</strong>>Élevé</<strong>td</strong>></tr><tr><<strong>td</strong>>Recruiting</<strong>td</strong>><<strong>td</strong>>ATS, offres multicanal, scoring candidats</<strong>td</strong>><<strong>td</strong>>Moyen</<strong>td</strong>></tr><tr><<strong>td</strong>>Compensation</<strong>td</strong>><<strong>td</strong>>Enveloppes salariales, équité interne</<strong>td</strong>><<strong>td</strong>>Élevé</<strong>td</strong>></tr></tbody></table></div></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Couverture fonctionnelle très large : un seul outil pour gérer recrutement, formation, évaluation, succession et rémunération sans jongler entre plusieurs plateformes</td>
-            <td>Déploiement long et coûteux : un projet SuccessFactors prend rarement moins de 6 mois et nécessite presque toujours un intégrateur externe, ce qui alourdit significativement la facture totale au-delà des licences</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec l'écosystème SAP (HCM, S/4HANA) qui évite les doublons de données et les exports manuels entre systèmes RH et paie</td>
-            <td>UX perfectible sur certains modules anciens, notamment Compensation et les écrans d'administration back-office. Franchement, ça m'a agacé plusieurs fois de chercher un paramètre enfoui dans des menus peu intuitifs</td>
-          </tr>
-          <tr>
-            <td>Reporting RH avancé avec People Analytics : tableaux de bord configurables, KPIs de rétention, analyse des écarts de compétences et exports Excel ou PowerPoint en quelques clics</td>
-            <td>Support SAP parfois lent à répondre sur les tickets complexes, et la documentation technique est dense. Si ton équipe RH n'a pas un administrateur dédié ou un partenaire intégrateur disponible, ça peut bloquer</td>
-          </tr>
-          <tr>
-            <td>Gestion des plans de succession réellement opérationnelle : identification des potentiels, cartographie des compétences critiques, et simulation de scénarios en cas de départ clé</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Couverture fonctionnelle très large : un seul outil pour gérer recrutement, formation, évaluation, succession et rémunération sans jongler entre plusieurs plateformes</td></tr><tr><td>Intégration native avec l'écosystème SAP (HCM, S/4HANA) qui évite les doublons de données et les exports manuels entre systèmes RH et paie</td></tr><tr><td>Reporting RH avancé avec People Analytics : tableaux de bord configurables, KPIs de rétention, analyse des écarts de compétences et exports Excel ou PowerPoint en quelques clics</td></tr><tr><td>Gestion des plans de succession réellement opérationnelle : identification des potentiels, cartographie des compétences critiques, et simulation de scénarios en cas de départ clé</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Déploiement long et coûteux : un projet SuccessFactors prend rarement moins de 6 mois et nécessite presque toujours un intégrateur externe, ce qui alourdit significativement la facture totale au-delà des licences</td></tr><tr><td>UX perfectible sur certains modules anciens, notamment Compensation et les écrans d'administration back-office. Franchement, ça m'a agacé plusieurs fois de chercher un paramètre enfoui dans des menus peu intuitifs</td></tr><tr><td>Support SAP parfois lent à répondre sur les tickets complexes, et la documentation technique est dense. Si ton équipe RH n'a pas un administrateur dédié ou un partenaire intégrateur disponible, ça peut bloquer</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1401,7 +1293,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 creaone.fr — Données actualisées le 2 octobre 2026
+        © 2026 creaone.fr — Données actualisées le 6 octobre 2026
       </div>
     </div>
   </div>
