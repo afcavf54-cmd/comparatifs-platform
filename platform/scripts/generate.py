@@ -1371,10 +1371,20 @@ def _post_process_dates_tracking(output_dir: Path, site_dir: Path,
         # Donc on traite TOUS les .html.
         html = html_file.read_text(encoding="utf-8")
         processed += 1
-        # Hash stable : on neutralise les 2 formes possibles de la date du jour
-        # (ISO 2026-05-18 et FR "18 mai 2026") pour que le hash ne dépende pas
-        # de la date courante.
+        # Hash stable : on neutralise tout ce qui change SANS que le contenu
+        # éditorial ait bougé, pour que la date ne soit mise à jour que sur une
+        # vraie modif :
+        #   - la date du jour (ISO + FR),
+        #   - le bloc <style> (changement de CSS/template),
+        #   - les anti-cache ?v=… des images,
+        #   - le bloc backlink + maillage (rotation backlink, siblings qui bougent).
         cleaned = html.replace(today_iso, "<<DATE_ISO>>").replace(today_fr, "<<DATE_FR>>")
+        cleaned = _re.sub(r"<style[^>]*>.*?</style>", "<<STYLE>>", cleaned, flags=_re.S)
+        cleaned = _re.sub(r"\?v=[0-9a-fA-F]+", "?v=X", cleaned)
+        cleaned = _re.sub(
+            r'(?:<aside class="backlink-note">|<section class="maillage-section">).*?'
+            r'(?=<aside class="author-box")',
+            "<<CROSSLINKS>>", cleaned, flags=_re.S)
         h = hashlib.sha256(cleaned.encode("utf-8")).hexdigest()
         rec = dates_db.get(rel)
 
