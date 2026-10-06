@@ -186,6 +186,19 @@ def _no_long_dash(t: str) -> str:
     return t
 
 
+def _clean_html(t):
+    """Nettoie les artefacts HTML (<br>/<div>) qui créent des sauts de ligne
+    parasites : <br><br> -> nouveau paragraphe, <br> isolé -> espace, <div> retiré."""
+    if not isinstance(t, str):
+        return t
+    t = re.sub(r"</?div[^>]*>", "", t)
+    if "<p>" in t:
+        t = re.sub(r"(?:\s*<br\s*/?>\s*){2,}", "</p><p>", t)
+    t = re.sub(r"\s*<br\s*/?>\s*", " ", t)
+    t = re.sub(r"<p>\s*</p>", "", t)
+    return t.strip()
+
+
 def _fix_mojibake(s):
     """Répare un texte UTF-8 mal décodé (é→Ã©, '→â€™). On tente cp1252 puis
     latin-1 (selon l'encodage fautif). Sûr sur un texte déjà correct : le reverse
@@ -205,7 +218,7 @@ def _fix_mojibake(s):
 def _deep_fix(obj):
     """Applique _fix_mojibake + _no_long_dash récursivement à toutes les chaînes."""
     if isinstance(obj, str):
-        return _no_long_dash(_fix_mojibake(obj))
+        return _clean_html(_no_long_dash(_fix_mojibake(obj)))
     if isinstance(obj, list):
         return [_deep_fix(x) for x in obj]
     if isinstance(obj, dict):
@@ -242,7 +255,7 @@ def gen(user: str, system: str) -> str:
         raw = (call_claude_fast(user, system=system) or "").strip()
         raw = re.sub(r"^\s*```[a-zA-Z]*\s*", "", raw)   # retirer fence ```html
         raw = re.sub(r"\s*```\s*$", "", raw)
-        return _no_long_dash(raw.strip())
+        return _clean_html(_no_long_dash(raw.strip()))
     except Exception as e:
         print(f"    ⚠ génération : {e}")
         return ""
