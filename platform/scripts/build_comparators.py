@@ -44,15 +44,19 @@ except Exception:
 ROOT = Path(__file__).resolve().parent.parent
 YEAR = 2026
 # Suffixes variés pour le Titre SEO — unicité sur un même site via l'index de ligne
+# Suffixes orientés RETOUR D'EXPÉRIENCE / TEST / COMPARATIF (pas de « guide »,
+# qui ne colle pas à l'intention de recherche). Longueurs variées : les plus
+# courts servent de repli quand le titre est long (contrainte Google ≤ 60 car).
 TITLE_SUFFIXES = [
-    "mon retour d'expérience", "mon comparatif complet", "mon analyse détaillée",
-    "mon avis après tests", "mon classement personnel", "le guide pour bien choisir",
-    "ce que j'ai retenu", "mon verdict sans filtre", "mon test comparatif",
-    "mon bilan après usage", "le comparatif détaillé", "mon retour terrain",
-    "mes recommandations", "mon avis d'expert", "le match complet",
-    "mon enquête de terrain", "mon évaluation complète", "le point complet",
-    "mon analyse sans langue de bois", "mon comparatif objectif",
+    "mon retour d'expérience", "mon comparatif", "mon avis après tests",
+    "mon test comparatif", "mon analyse", "mon verdict", "mon avis",
+    "testés et comparés", "mon bilan après usage", "mon retour terrain",
+    "mon comparatif objectif", "mon classement", "après les avoir testés",
+    "mon avis d'expert", "mon analyse détaillée", "ce que j'ai retenu",
+    "mon retour sans filtre", "mon comparatif complet", "mon évaluation",
+    "mon test",
 ]
+MAX_TITLE_LEN = 60  # recommandation Google (évite la troncature en SERP)
 
 # ── Appel IA (même modèle que enrich_editorial, réécrit ici pour être
 #    self-contained — pas d'import qui sys.exit sans clé) ──────────────────────
@@ -394,8 +398,18 @@ def main(site: str, force: bool = False):
         # ── Titres SEO : RÈGLES DÉTERMINISTES (pas d'IA, aucune année en dur) ──
         # Titre sans "Meilleur(s)/Top N" en tête (pour un rendu propre).
         _ta = re.sub(r"^(?:meilleur[es]?s?|top\s*\d*)\s+", "", titre, flags=re.I).strip() or titre
+        # Titre SEO = « {titre} : {suffixe} » en respectant ≤ 60 caractères.
         _suffix = TITLE_SUFFIXES[_ridx % len(TITLE_SUFFIXES)]
-        cls["meta_title"] = f"{titre} : {_suffix}"                       # Titre SEO
+        if len(f"{titre} : {_suffix}") <= MAX_TITLE_LEN:
+            cls["meta_title"] = f"{titre} : {_suffix}"
+        else:
+            _fit = [s for s in TITLE_SUFFIXES if len(f"{titre} : {s}") <= MAX_TITLE_LEN]
+            if _fit:  # suffixe le plus adapté qui tient (variété via l'index)
+                cls["meta_title"] = f"{titre} : {_fit[_ridx % len(_fit)]}"
+            elif len(titre) <= MAX_TITLE_LEN:
+                cls["meta_title"] = titre            # titre déjà assez long → seul
+            else:
+                cls["meta_title"] = titre[:MAX_TITLE_LEN].rsplit(" ", 1)[0]
         cls["h1"] = f"J'ai testé les {len(brands)} {_ta}, mon analyse"   # H1
         # Meta description : IA, incitative, SANS année en chiffres ({year} si besoin)
         if force or not str(existing.get("meta_description", "")).strip():
