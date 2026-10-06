@@ -449,6 +449,23 @@ def generate_pairs(products: list, site_dir: Path, year: int, skip_existing: boo
     editorial_path = site_dir / "editorial.json"
     editorial = load_json(editorial_path) if skip_existing else {}  # Charge existants si skip_existing
 
+    # Les comparateurs AUTONOMES (comparateurs en masse via Sheet, gérés par
+    # build_comparators) ne sont PAS des paires du schema : un rebuild complet
+    # (skip_existing=false) repartirait de {} et les effacerait. On les préserve
+    # toujours, avec les fiches marques (classement-prod-*) qu'ils référencent.
+    if not skip_existing:
+        _prev = load_json(editorial_path)
+        _keep_prod = set()
+        for _k, _v in _prev.items():
+            if (isinstance(_v, dict) and _v.get("autonome")
+                    and _k.startswith("classement-") and not _k.startswith("classement-prod-")):
+                editorial[_k] = _v
+                for _s in _v.get("products_snapshot", []):
+                    _keep_prod.add(f"classement-prod-{_s}")
+        for _k in _keep_prod:
+            if _k in _prev:
+                editorial[_k] = _prev[_k]
+
     slugs = [p["slug"] for p in products]
     pairs = list(itertools.combinations(sorted(slugs), 2))
     prod_map = {p["slug"]: p for p in products}
