@@ -217,13 +217,13 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 <main>
 
   {% if editorial.intro is defined and editorial.intro %}
-  <div class="intro">{{ editorial.intro | safe }}</div>
+  <div class="intro">{{ editorial.intro | cleanhtml | safe }}</div>
   {% endif %}
 
   {% if editorial.en_bref is defined and editorial.en_bref %}
   <div class="en-bref">
     <div class="en-bref-title">⚡ En bref</div>
-    {{ editorial.en_bref | safe }}
+    {{ editorial.en_bref | cleanhtml | safe }}
   </div>
   {% endif %}
 
@@ -270,7 +270,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
         {% if prod.description is defined and prod.description %}
           {% set desc = prod.description %}
           {% if ('<p>' in desc or '<h' in desc or '<ul>' in desc) %}
-            {{ desc | safe }}
+            {{ desc | cleanhtml | safe }}
           {% elif '##' in desc or '**' in desc or '- ' in desc %}
             {% for line in desc.split('\n') %}
               {% if line.startswith('## ') or line.startswith('# ') %}
@@ -284,7 +284,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
               {% endif %}
             {% endfor %}
           {% else %}
-            {{ desc | safe }}
+            {{ desc | cleanhtml | safe }}
           {% endif %}
         {% else %}
           <p><strong>{{ prod.nom }}</strong> est une solution développée par <strong>{{ prod.marque | default(prod.nom) }}</strong>.</p>
@@ -322,7 +322,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
   {% endfor %}
 
   {% if editorial.contenu_custom is defined and editorial.contenu_custom %}
-  <div class="content-custom">{{ editorial.contenu_custom | safe }}</div>
+  <div class="content-custom">{{ editorial.contenu_custom | cleanhtml | safe }}</div>
   {% endif %}
 
   {% if editorial.faq is defined and editorial.faq %}
