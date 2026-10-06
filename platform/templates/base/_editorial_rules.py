@@ -49,36 +49,43 @@ def format_text(text: str, product_names: list = None) -> str:
     # 1. Nettoie tirets longs (règle globale : pas de — sur le site)
     text = text.replace("—", " ").replace("–", "-").replace(" | ", ", ")
 
-    # 2. Split en blocs existants
-    parts = re.split(r'<br\s*/?>\s*<br\s*/?>', text)
-    if len(parts) == 1:
-        parts = re.split(r'\n{2,}', text)
+    # Si le texte est DÉJÀ structuré en HTML (<p>/<h>/<ul>), il est déjà
+    # paragraphé : on NE re-découpe PAS. Sinon le re-split sur les phrases casse
+    # les <p> existants (un <p> par phrase, nesting cassé, \n\n parasites).
+    _low = text.lower()
+    already_html = ("<p" in _low or "<h" in _low or "<ul" in _low or "<ol" in _low)
 
-    # 3. Redécoupe les blocs trop longs aux phrases
-    new_parts = []
-    for part in parts:
-        part = part.strip()
-        if not part:
-            continue
-        if len(part) > MAX_CHARS_PER_PARA:
-            sentences = re.split(r'(?<=[.!?])\s+', part)
-            chunk = ""
-            for s in sentences:
-                if len(chunk) + len(s) > MAX_CHARS_PER_PARA and chunk:
+    if not already_html:
+        # 2. Split en blocs existants (texte brut uniquement)
+        parts = re.split(r'<br\s*/?>\s*<br\s*/?>', text)
+        if len(parts) == 1:
+            parts = re.split(r'\n{2,}', text)
+
+        # 3. Redécoupe les blocs trop longs aux phrases
+        new_parts = []
+        for part in parts:
+            part = part.strip()
+            if not part:
+                continue
+            if len(part) > MAX_CHARS_PER_PARA:
+                sentences = re.split(r'(?<=[.!?])\s+', part)
+                chunk = ""
+                for s in sentences:
+                    if len(chunk) + len(s) > MAX_CHARS_PER_PARA and chunk:
+                        new_parts.append(chunk.strip())
+                        chunk = s
+                    else:
+                        chunk = (chunk + " " + s).strip() if chunk else s
+                if chunk:
                     new_parts.append(chunk.strip())
-                    chunk = s
-                else:
-                    chunk = (chunk + " " + s).strip() if chunk else s
-            if chunk:
-                new_parts.append(chunk.strip())
-        else:
-            new_parts.append(part)
+            else:
+                new_parts.append(part)
 
-    # 4. Rejoint en paragraphes HTML
-    text = "\n\n".join(
-        f"<p>{p}</p>" if not p.startswith("<p") else p
-        for p in new_parts if p
-    )
+        # 4. Rejoint en paragraphes HTML
+        text = "\n\n".join(
+            f"<p>{p}</p>" if not p.startswith("<p") else p
+            for p in new_parts if p
+        )
 
     # 5. Gras automatique sur patterns clés
     def add_bold(t: str, pattern: str) -> str:
