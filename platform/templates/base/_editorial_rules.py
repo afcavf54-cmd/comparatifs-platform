@@ -102,19 +102,28 @@ def format_text(text: str, product_names: list = None) -> str:
         result.append(t[last:])
         return "".join(result)
 
-    for pattern in BOLD_PATTERNS:
-        text = add_bold(text, pattern)
+    def _bold_segment(seg: str) -> str:
+        for pattern in BOLD_PATTERNS:
+            seg = add_bold(seg, pattern)
+        if product_names:
+            for name in sorted(product_names, key=len, reverse=True):
+                if len(name) > 3:
+                    escaped = re.escape(name)
+                    seg = re.sub(
+                        rf'(?<!<strong>)\b({escaped})\b(?!</strong>)',
+                        r'<strong>\1</strong>',
+                        seg,
+                    )
+        return seg
 
-    # 6. Gras sur noms de produits
-    if product_names:
-        for name in sorted(product_names, key=len, reverse=True):
-            if len(name) > 3:
-                escaped = re.escape(name)
-                text = re.sub(
-                    rf'(?<!<strong>)\b({escaped})\b(?!</strong>)',
-                    r'<strong>\1</strong>',
-                    text
-                )
+    # 5+6. Gras UNIQUEMENT hors des balises HTML : on sépare le texte des balises
+    # <…> et on n'applique le gras qu'aux segments de texte. Sinon on casse les
+    # <td>, les attributs (style='width:100%'…), etc.
+    segments = re.split(r'(<[^>]+>)', text)
+    for i in range(0, len(segments), 2):   # indices pairs = texte hors balise
+        if segments[i]:
+            segments[i] = _bold_segment(segments[i])
+    text = "".join(segments)
 
     return text
 
