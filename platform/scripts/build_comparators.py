@@ -60,7 +60,7 @@ _API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 def call_claude_fast(prompt: str, system: str = None, max_retries: int = 3) -> str:
     if not _API_KEY:
         return ""
-    body = {"model": MODEL, "max_tokens": 4000,
+    body = {"model": MODEL, "max_tokens": 6000,
             "messages": [{"role": "user", "content": prompt}]}
     if system:
         body["system"] = system
@@ -186,6 +186,55 @@ def _no_long_dash(t: str) -> str:
     return t
 
 
+def _fix_mojibake(s):
+    """Répare un texte UTF-8 mal décodé (é→Ã©, '→â€™). On tente cp1252 puis
+    latin-1 (selon l'encodage fautif). Sûr sur un texte déjà correct : le reverse
+    échoue ou ne change rien → chaîne inchangée."""
+    if not isinstance(s, str):
+        return s
+    for enc in ("cp1252", "latin-1"):
+        try:
+            fixed = s.encode(enc).decode("utf-8")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            continue
+        if fixed != s and "\ufffd" not in fixed:
+            return fixed
+    return s
+
+
+def _deep_fix(obj):
+    """Applique _fix_mojibake + _no_long_dash récursivement à toutes les chaînes."""
+    if isinstance(obj, str):
+        return _no_long_dash(_fix_mojibake(obj))
+    if isinstance(obj, list):
+        return [_deep_fix(x) for x in obj]
+    if isinstance(obj, dict):
+        return {k: _deep_fix(v) for k, v in obj.items()}
+    return obj
+
+
+def _hdr_norm(s: str) -> str:
+    """Clé d'en-tête : mojibake réparé, sans accents, casse/espaces ignorés."""
+    s = unicodedata.normalize("NFD", _fix_mojibake(str(s or ""))).encode("ascii", "ignore").decode()
+    return s.strip().lower()
+
+
+def _row_get(row: dict, *names) -> str:
+    """Lit une colonne du Sheet par nom, insensible casse/accents/espaces et
+    robuste au mojibake d'en-tête (Catégorie → CatÃ©gorie)."""
+    nmap = {}
+    for k in row.keys():
+        if k is not None:
+            nmap.setdefault(_hdr_norm(k), k)
+    for name in names:
+        key = nmap.get(_hdr_norm(name))
+        if key is not None:
+            v = row.get(key)
+            if v not in (None, ""):
+                return str(v)
+    return ""
+
+
 def gen(user: str, system: str) -> str:
     if not call_claude_fast:
         return ""
@@ -235,6 +284,33 @@ def main(site: str, force: bool = False):
         except Exception:
             editorial = {}
 
+    # ── Réparation des entrées mojibakées (créées avant le fix d'encodage) ──
+    # 1) Supprime les comparateurs autonomes dont le TITRE est mojibaké : leur
+    #    slug est erroné → doublons/orphelins sur /nos-comparateurs. La version
+    #    correcte est (re)générée depuis le Sheet plus bas.
+    # 2) Répare mojibake + tirets longs dans les comparateurs autonomes conservés
+    #    et leurs marques (contenu déjà en base), sans tout régénérer.
+    _removed = []
+    for _k in list(editorial.keys()):
+        _v = editorial.get(_k)
+        if (_k.startswith("classement-") and not _k.startswith("classement-prod-")
+                and isinstance(_v, dict) and _v.get("autonome")):
+            _cat = _v.get("categorie", "")
+            if _fix_mojibake(_cat) != _cat:          # titre mojibaké → entrée orpheline
+                _removed.append(_k)
+                del editorial[_k]
+    if _removed:
+        print(f"  🧹 {len(_removed)} comparateur(s) mojibaké(s) supprimé(s) : {', '.join(_removed)}")
+    _auto_prod = set()
+    for _v in editorial.values():
+        if isinstance(_v, dict) and _v.get("autonome"):
+            for _s in _v.get("products_snapshot", []):
+                _auto_prod.add(f"classement-prod-{_s}")
+    for _k in list(editorial.keys()):
+        _v = editorial.get(_k)
+        if (isinstance(_v, dict) and _v.get("autonome")) or _k in _auto_prod:
+            editorial[_k] = _deep_fix(_v)
+
     repo = load_backlink_repo()
     bl_sheet_urls: dict = {}   # norm(nom) -> (nom, url) à injecter dans le référentiel backlinks
     s_index = site_index_for(site)
@@ -243,11 +319,10 @@ def main(site: str, force: bool = False):
     print(f"  → {len(rows)} ligne(s) · décalage screenshot site #{s_index} ({(s_index+1)*sg.OFFSET_STEP}px)")
 
     for row in rows:
-        titre = (row.get("Titre") or row.get("titre") or "").strip()
-        marques_cell = row.get("Marques") or row.get("marques") or ""
-        date = (row.get("Date") or row.get("date") or "").strip()
-        categorie_parente = (row.get("Catégorie") or row.get("Categorie")
-                             or row.get("catégorie") or row.get("categorie") or "").strip()
+        titre = _fix_mojibake(_row_get(row, "Titre")).strip()
+        marques_cell = _fix_mojibake(_row_get(row, "Marques"))
+        date = _row_get(row, "Date").strip()
+        categorie_parente = _fix_mojibake(_row_get(row, "Catégorie", "Categorie")).strip()
         if not titre or not marques_cell.strip():
             continue
         # Publication programmée : on ignore les lignes dont la date est dans le
@@ -320,7 +395,7 @@ def main(site: str, force: bool = False):
         if force or not str(cls.get("intro", "")).strip():
             cls["intro"] = gen(
                 f"Rédige l'introduction HTML (2 paragraphes <p>) d'un comparatif intitulé « {titre} » en {YEAR}. "
-                f"Accroche concrète, à la première personne, sans lister les marques.",
+                f"120 MOTS MAXIMUM au total. Accroche concrète, à la première personne, sans lister les marques.",
                 build_system(global_prompt, persona, brand_names, False))
         if force or not str(cls.get("en_bref", "")).strip():
             # "En bref" = seulement les 5 PREMIÈRES marques du classement (ordre figé)
@@ -328,16 +403,20 @@ def main(site: str, force: bool = False):
             _top5 = [_slug2name.get(_s, _s) for _s in order[:5]]
             cls["en_bref"] = gen(
                 f"Pour le comparatif « {titre} », rédige un bloc « En bref » : une puce <li> pour CHACUNE "
-                f"de ces 5 marques (et UNIQUEMENT celles-ci, dans cet ordre), marque en <strong>, indiquant "
-                f"pour quel profil elle est idéale. Réponds en HTML <li>…</li> uniquement, exactement 5 puces. "
+                f"de ces 5 marques (et UNIQUEMENT celles-ci, dans cet ordre), marque en <strong>, suivie de "
+                f"« : » puis, pour quel profil elle est idéale en 14 MOTS MAXIMUM. Réponds en HTML <li>…</li> "
+                f"uniquement, exactement 5 puces. "
                 f"Marques : {', '.join(_top5)}.",
                 build_system(global_prompt, persona, _top5, False))
         if force or not str(cls.get("contenu_custom", "")).strip():
             cls["contenu_custom"] = gen(
-                f"Rédige un contenu éditorial SEO complet en HTML sur le thème « {titre} », à placer APRÈS le classement. "
-                f"Structure avec des <h2> et <h3> : qu'est-ce que c'est / à qui ça s'adresse / comment bien choisir "
-                f"(critères) / erreurs fréquentes à éviter / points techniques avancés. Ton vécu, première personne, "
-                f"exemples concrets. Ne cite aucune marque précise. HTML uniquement (<h2>,<h3>,<p>,<ul>,<li>).",
+                f"Rédige un contenu éditorial SEO en HTML sur le thème « {titre} », à placer APRÈS le classement. "
+                f"700 MOTS MAXIMUM. EXACTEMENT 3 sections <h2> (pas plus), avec des <h3> si utile. "
+                f"Sujets : qu'est-ce que c'est et à qui ça s'adresse / comment bien choisir (critères) / erreurs fréquentes. "
+                f"Ton vécu, première personne, exemples concrets. Ne cite aucune marque précise. "
+                f"INTERDIT : ne génère AUCUNE FAQ ni liste de questions/réponses (elle est gérée séparément ailleurs). "
+                f"Termine toujours par une phrase complète, jamais au milieu d'un mot ou d'une section. "
+                f"HTML uniquement (<h2>,<h3>,<p>,<ul>,<li>).",
                 build_system(global_prompt, persona, [], False))
         if force or not cls.get("faq"):
             faq = gen_json(
