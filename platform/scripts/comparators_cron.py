@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
-"""Cron — publication programmée des comparateurs en masse.
+"""Cron — publication des comparateurs en masse au rythme indiqué.
 
-Pour chaque site ayant un `comparators_sheet_csv_url`, lit son Sheet et repère
-les lignes dont la date de publication est arrivée (date <= aujourd'hui) et qui
-ne sont PAS encore présentes dans editorial.json. Les sites concernés sont
-listés dans la sortie GitHub `sites_to_deploy` ; le workflow déclenche alors
-generate-scpi.yml pour chacun (build_comparators y génère les comparateurs dus,
-puis generate.py rend et déploie).
+Plus de dates : pour chaque site ayant un `comparators_sheet_csv_url`, lit TOUT
+son Sheet et repère les lignes NON encore rédigées (slug `classement-<titre>`
+absent de editorial.json). S'il en reste au moins une, le site est listé dans la
+sortie GitHub `sites_to_deploy` ; le workflow déclenche alors generate-scpi.yml
+(en mode `comparators_daily=true`) pour chacun. build_comparators en rédige
+alors N au hasard (N = `comparators_per_day`, défaut 2), puis generate.py rend
+et déploie. Les comparateurs déjà en ligne ne sont jamais réécrits.
 
 Ce script ne génère rien lui-même (pas de clé API requise) : il détecte, c'est
-tout. Déclenché quotidiennement par .github/workflows/comparators-cron.yml.
+tout. Déclenché quotidiennement par .github/workflows/blog-cron.yml.
 """
 from __future__ import annotations
 
@@ -20,7 +21,6 @@ import os
 import re
 import sys
 import unicodedata
-from datetime import date, datetime
 from pathlib import Path
 
 import yaml
@@ -66,8 +66,8 @@ def comparators_url(cfg: dict) -> str:
             or s.get("comparators_sheet_csv_url") or "").strip()
 
 
-def due_titles(site_dir: Path, url: str) -> list[str]:
-    """Titres dont la date <= aujourd'hui et absents de l'editorial."""
+def undrafted_titles(site_dir: Path, url: str) -> list[str]:
+    """Titres du Sheet pas encore rédigés (slug absent de l'editorial)."""
     rows = fetch_csv(url)
     if not rows:
         return []
@@ -78,23 +78,15 @@ def due_titles(site_dir: Path, url: str) -> list[str]:
             editorial = json.loads(ed_path.read_text(encoding="utf-8"))
         except Exception:
             editorial = {}
-    today = date.today()
-    due: list[str] = []
+    todo: list[str] = []
     for row in rows:
         titre = (row.get("Titre") or row.get("titre") or "").strip()
         marques = (row.get("Marques") or row.get("marques") or "").strip()
-        d = (row.get("Date") or row.get("date") or "").strip()
         if not titre or not marques:
             continue
-        if d:  # date future → pas encore dû
-            try:
-                if datetime.strptime(d[:10], "%Y-%m-%d").date() > today:
-                    continue
-            except ValueError:
-                pass  # date non parsable → considéré comme dû
         if f"classement-{slugify(titre)}" not in editorial:
-            due.append(titre)
-    return due
+            todo.append(titre)
+    return todo
 
 
 def main() -> None:
@@ -110,9 +102,9 @@ def main() -> None:
         url = comparators_url(cfg)
         if not url:
             continue
-        due = due_titles(site_dir, url)
-        if due:
-            print(f"  ✅ {site_dir.name} : {len(due)} à publier → {', '.join(due)}")
+        todo = undrafted_titles(site_dir, url)
+        if todo:
+            print(f"  ✅ {site_dir.name} : {len(todo)} non rédigé(s) → {', '.join(todo)}")
             to_deploy.append(site_dir.name)
         else:
             print(f"  · {site_dir.name} : rien de nouveau")
