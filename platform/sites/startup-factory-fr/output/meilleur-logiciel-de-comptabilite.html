@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -489,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Meilleur Logiciel de comptabilité 2026 : Top 18</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 18 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 18 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Léa Petit" class="hero-author-avatar">
     <span>Rédigé par Léa Petit</span>
@@ -533,42 +538,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vais être franc : Tiime m'a tapé dans l'œil dès le premier essai.
-
-<p>Ce <strong>logiciel de comptabilité français</strong> mise tout sur la simplicité d'utilisation, avec une interface vraiment soignée qui fait oublier qu'on fait de la compta.</p>
-
-<p>Pas de menus à rallonge ou de fonctionnalités cachées dans quinze sous-onglets.</p><p>Tiime cible clairement les <strong>TPE et micro-entrepreneurs</strong> qui veulent gérer leur comptabilité sans y passer leurs week-ends.</p>
-
-<p>L'outil couvre les bases : facturation, suivi des paiements, rapprochement bancaire automatique, et même la TVA.</p>
-
-<p>Je trouve leur approche intelligente : ils partent du principe qu'on n'est pas comptable, donc tout est pensé pour être accessible.</p><p>Bon, maintenant la vraie question : est-ce que ça tient la route face aux mastodontes du secteur ?</p>
-
-<p><strong>Largement</strong>, si vous restez dans leur périmètre d'action. Par contre, si vous avez des besoins spécifiques ou une activité complexe, vous risquez de vous sentir à l'étroit assez vite.</p>
-
-<p>Tiime fait bien ce qu'il fait, mais il ne fait pas tout.</p></p>
+            <p>Je vais être franc : Tiime m'a tapé dans l'œil dès le premier essai. Ce <strong>logiciel de comptabilité français</strong> mise tout sur la simplicité d'utilisation, avec une interface vraiment soignée qui fait oublier qu'on fait de la compta. Pas de menus à rallonge ou de fonctionnalités cachées dans quinze sous-onglets.</p><p>Tiime cible clairement les <strong>TPE et micro-entrepreneurs</strong> qui veulent gérer leur comptabilité sans y passer leurs week-ends. L'outil couvre les bases : facturation, suivi des paiements, rapprochement bancaire automatique, et même la TVA. Je trouve leur approche intelligente : ils partent du principe qu'on n'est pas comptable, donc tout est pensé pour être accessible.</p><p>Bon, maintenant la vraie question : est-ce que ça tient la route face aux mastodontes du secteur ? <strong>Largement</strong>, si vous restez dans leur périmètre d'action. Par contre, si vous avez des besoins spécifiques ou une activité complexe, vous risquez de vous sentir à l'étroit assez vite. Tiime fait bien ce qu'il fait, mais il ne fait pas tout.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface vraiment intuitive, même pour les débutants en comptabilité</td>
-            <td>Fonctionnalités limitées pour les entreprises en croissance</td>
-          </tr>
-          <tr>
-            <td>Rapprochement bancaire automatique qui fonctionne bien</td>
-            <td>Peu d'intégrations avec d'autres outils métier</td>
-          </tr>
-          <tr>
-            <td>Support client réactif avec des vrais humains français</td>
-            <td>Tarifs qui grimpent vite avec les options avancées</td>
-          </tr>
-          <tr>
-            <td>Gestion de la TVA simplifiée et déclarations automatisées</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface vraiment intuitive, même pour les débutants en comptabilité</td></tr><tr><td>Rapprochement bancaire automatique qui fonctionne bien</td></tr><tr><td>Support client réactif avec des vrais humains français</td></tr><tr><td>Gestion de la TVA simplifiée et déclarations automatisées</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités limitées pour les entreprises en croissance</td></tr><tr><td>Peu d'intégrations avec d'autres outils métier</td></tr><tr><td>Tarifs qui grimpent vite avec les options avancées</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -588,38 +570,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Evoliz, c'est le logiciel de comptabilité que j'ai choisi pour ma petite entreprise après avoir testé plusieurs solutions.
-
-<p><strong>Créé spécialement pour les TPE et freelances</strong>, il gère la facturation, les devis et la comptabilité de base sans se prendre la tête. L'interface reste simple, même si on n'est pas comptable.</p><p>Ce qui m'a convaincu ?</p>
-
-<p>La <strong>synchronisation automatique avec ma banque</strong> qui évite de saisir chaque opération à la main. Plus besoin de jongler entre trois logiciels différents pour faire tourner mon activité.</p>
-
-<p>Je lance un devis, je le transforme en facture d'un clic, et tout se retrouve dans ma compta.</p><p>Bon par contre, si vous avez une structure complexe avec plusieurs entités ou des besoins comptables très pointus, <strong>passez votre chemin</strong>.</p>
-
-<p>Evoliz vise vraiment les petites structures qui veulent de l'efficacité sans les complications.</p></p>
+            <p>Evoliz, c'est le logiciel de comptabilité que j'ai choisi pour ma petite entreprise après avoir testé plusieurs solutions. <strong>Créé spécialement pour les TPE et freelances</strong>, il gère la facturation, les devis et la comptabilité de base sans se prendre la tête. L'interface reste simple, même si on n'est pas comptable.</p><p>Ce qui m'a convaincu ? La <strong>synchronisation automatique avec ma banque</strong> qui évite de saisir chaque opération à la main. Plus besoin de jongler entre trois logiciels différents pour faire tourner mon activité. Je lance un devis, je le transforme en facture d'un clic, et tout se retrouve dans ma compta.</p><p>Bon par contre, si vous avez une structure complexe avec plusieurs entités ou des besoins comptables très pointus, <strong>passez votre chemin</strong>. Evoliz vise vraiment les petites structures qui veulent de l'efficacité sans les complications.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation bancaire automatique qui fait gagner un temps fou</td>
-            <td>Fonctionnalités limitées pour les entreprises avec besoins comptables complexes</td>
-          </tr>
-          <tr>
-            <td>Interface pensée pour les non-comptables, vraiment intuitive</td>
-            <td>Pas de gestion multi-entités ou consolidation</td>
-          </tr>
-          <tr>
-            <td>Transformation devis vers facture en un clic</td>
-            <td>Support client parfois lent à répondre selon mon expérience</td>
-          </tr>
-          <tr>
-            <td>Prix transparent sans frais cachés dès 9€/mois</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation bancaire automatique qui fait gagner un temps fou</td></tr><tr><td>Interface pensée pour les non-comptables, vraiment intuitive</td></tr><tr><td>Transformation devis vers facture en un clic</td></tr><tr><td>Prix transparent sans frais cachés dès 9€/mois</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités limitées pour les entreprises avec besoins comptables complexes</td></tr><tr><td>Pas de gestion multi-entités ou consolidation</td></tr><tr><td>Support client parfois lent à répondre selon mon expérience</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -639,38 +602,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je commence par Odoo parce que je l'ai vu évoluer depuis ses débuts et franchement, ça reste l'un des rares ERP qui fait vraiment de la comptabilité sans vous obliger à acheter quinze modules séparés.
-
-<p>On a ici un <strong>logiciel de comptabilité intégré</strong> dans une suite complète qui gère aussi les ventes, les achats, l'inventaire et même la paie si vous avez besoin.</p><p>Ce qui m'a marqué avec Odoo, c'est sa capacité à grandir avec vous.</p>
-
-<p>On peut démarrer juste avec la compta et ajouter petit à petit d'autres modules quand l'entreprise se développe.</p>
-
-<p>Le rapprochement bancaire automatique fonctionne bien sur les principales banques françaises, et j'ai apprécié la gestion des immobilisations qui évite de jongler avec un tableur Excel à côté.</p><p>Par contre, je vais être honnête : c'est un outil qui demande du temps pour être maîtrisé.</p>
-
-<p>L'interface n'est pas toujours intuitive au début, surtout si on vient d'un logiciel de comptabilité classique. Mais une fois qu'on a pris le pli, on gagne vraiment en efficacité sur la <strong>gestion comptable globale</strong>.</p></p>
+            <p>Je commence par Odoo parce que je l'ai vu évoluer depuis ses débuts et franchement, ça reste l'un des rares ERP qui fait vraiment de la comptabilité sans vous obliger à acheter quinze modules séparés. On a ici un <strong>logiciel de comptabilité intégré</strong> dans une suite complète qui gère aussi les ventes, les achats, l'inventaire et même la paie si vous avez besoin.</p><p>Ce qui m'a marqué avec Odoo, c'est sa capacité à grandir avec vous. On peut démarrer juste avec la compta et ajouter petit à petit d'autres modules quand l'entreprise se développe. Le rapprochement bancaire automatique fonctionne bien sur les principales banques françaises, et j'ai apprécié la gestion des immobilisations qui évite de jongler avec un tableur Excel à côté.</p><p>Par contre, je vais être honnête : c'est un outil qui demande du temps pour être maîtrisé. L'interface n'est pas toujours intuitive au début, surtout si on vient d'un logiciel de comptabilité classique. Mais une fois qu'on a pris le pli, on gagne vraiment en efficacité sur la <strong>gestion comptable globale</strong>.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Suite intégrée complète qui évite de multiplier les logiciels</td>
-            <td>Courbe d'apprentissage assez raide au début</td>
-          </tr>
-          <tr>
-            <td>Rapprochement bancaire automatique efficace</td>
-            <td>Interface parfois confuse pour les non-initiés</td>
-          </tr>
-          <tr>
-            <td>Évolutif : on peut ajouter modules ventes, achats, paie selon besoins</td>
-            <td>Support français perfectible sur la version payante</td>
-          </tr>
-          <tr>
-            <td>Prix transparent avec version Community gratuite pour tester</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Suite intégrée complète qui évite de multiplier les logiciels</td></tr><tr><td>Rapprochement bancaire automatique efficace</td></tr><tr><td>Évolutif : on peut ajouter modules ventes, achats, paie selon besoins</td></tr><tr><td>Prix transparent avec version Community gratuite pour tester</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Courbe d'apprentissage assez raide au début</td></tr><tr><td>Interface parfois confuse pour les non-initiés</td></tr><tr><td>Support français perfectible sur la version payante</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -690,40 +634,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Dolibarr se distingue par son approche modulaire qui permet de construire exactement le système dont on a besoin.
-
-<p>Au lieu d'imposer un logiciel de comptabilité figé, on active uniquement les modules nécessaires : comptabilité, facturation, CRM, gestion de stock, projets.</p>
-
-<p>J'ai apprécié cette flexibilité qui évite de payer pour des fonctions inutiles.</p><p>L'interface peut paraître <strong>un peu datée au premier regard</strong>, mais elle cache une vraie puissance.</p>
-
-<p>La comptabilité suit le plan comptable français, les exports vers les experts-comptables sont propres, et la synchronisation bancaire fonctionne correctement.</p>
-
-<p>Pour une TPE qui grandit, pouvoir ajouter progressivement la gestion commerciale puis les stocks sans changer de logiciel représente un vrai avantage.</p><p>Point important : Dolibarr reste <strong>gratuit et open source</strong>, même pour un usage professionnel.</p>
-
-<p>Pas de piège commercial, pas d'abonnement qui explose. Par contre, il faut accepter un temps d'apprentissage plus long et parfois bricoler un peu la configuration initiale.</p></p>
+            <p>Dolibarr se distingue par son approche modulaire qui permet de construire exactement le système dont on a besoin. Au lieu d'imposer un logiciel de comptabilité figé, on active uniquement les modules nécessaires : comptabilité, facturation, CRM, gestion de stock, projets. J'ai apprécié cette flexibilité qui évite de payer pour des fonctions inutiles.</p><p>L'interface peut paraître <strong>un peu datée au premier regard</strong>, mais elle cache une vraie puissance. La comptabilité suit le plan comptable français, les exports vers les experts-comptables sont propres, et la synchronisation bancaire fonctionne correctement. Pour une TPE qui grandit, pouvoir ajouter progressivement la gestion commerciale puis les stocks sans changer de logiciel représente un vrai avantage.</p><p>Point important : Dolibarr reste <strong>gratuit et open source</strong>, même pour un usage professionnel. Pas de piège commercial, pas d'abonnement qui explose. Par contre, il faut accepter un temps d'apprentissage plus long et parfois bricoler un peu la configuration initiale.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Gratuit sans limitation d'utilisation professionnelle</td>
-            <td>Interface qui peut sembler vieillotte comparée aux solutions modernes</td>
-          </tr>
-          <tr>
-            <td>Approche modulaire qui s'adapte à l'évolution de l'entreprise</td>
-            <td>Configuration initiale parfois complexe pour les non-initiés</td>
-          </tr>
-          <tr>
-            <td>Conformité totale au plan comptable français</td>
-            <td>Support communautaire uniquement, pas d'assistance commerciale directe</td>
-          </tr>
-          <tr>
-            <td>Possibilité de personnaliser profondément le système</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Gratuit sans limitation d'utilisation professionnelle</td></tr><tr><td>Approche modulaire qui s'adapte à l'évolution de l'entreprise</td></tr><tr><td>Conformité totale au plan comptable français</td></tr><tr><td>Possibilité de personnaliser profondément le système</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface qui peut sembler vieillotte comparée aux solutions modernes</td></tr><tr><td>Configuration initiale parfois complexe pour les non-initiés</td></tr><tr><td>Support communautaire uniquement, pas d'assistance commerciale directe</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -743,38 +666,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vais vous parler de <strong>Sage 100</strong>, un logiciel de comptabilité que j'ai déployé chez plusieurs PME de 20 à 200 salariés.
-
-<p>On est sur une solution qui couvre vraiment l'ensemble des besoins comptables d'une entreprise en croissance : comptabilité générale, analytique, immobilisations, et même la paie si besoin.</p><p>Ce qui m'a marqué avec Sage 100, c'est sa capacité à s'adapter aux métiers spécifiques.</p>
-
-<p>J'ai vu des cabinets d'expertise comptable l'utiliser pour gérer plusieurs dossiers clients, des entreprises industrielles pour leur comptabilité analytique poussée, et même des associations pour leurs comptes de campagne.</p>
-
-<p><strong>La personnalisation va vraiment loin</strong>, on peut créer ses propres états, modifier les workflows de validation, paramétrer finement la TVA.</p><p>Par contre, on n'est pas sur un logiciel qu'on installe en deux clics.</p>
-
-<p>Il faut prévoir <strong>plusieurs semaines de paramétrage</strong> et une formation solide pour les équipes. Mais une fois en place, je trouve qu'on gagne énormément en efficacité sur les clôtures mensuelles et le reporting.</p></p>
+            <p>Je vais vous parler de <strong>Sage 100</strong>, un logiciel de comptabilité que j'ai déployé chez plusieurs PME de 20 à 200 salariés. On est sur une solution qui couvre vraiment l'ensemble des besoins comptables d'une entreprise en croissance : comptabilité générale, analytique, immobilisations, et même la paie si besoin.</p><p>Ce qui m'a marqué avec Sage 100, c'est sa capacité à s'adapter aux métiers spécifiques. J'ai vu des cabinets d'expertise comptable l'utiliser pour gérer plusieurs dossiers clients, des entreprises industrielles pour leur comptabilité analytique poussée, et même des associations pour leurs comptes de campagne. <strong>La personnalisation va vraiment loin</strong>, on peut créer ses propres états, modifier les workflows de validation, paramétrer finement la TVA.</p><p>Par contre, on n'est pas sur un logiciel qu'on installe en deux clics. Il faut prévoir <strong>plusieurs semaines de paramétrage</strong> et une formation solide pour les équipes. Mais une fois en place, je trouve qu'on gagne énormément en efficacité sur les clôtures mensuelles et le reporting.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Comptabilité analytique très poussée avec axes d'analyse multiples</td>
-            <td>Installation et paramétrage initial très chronophages</td>
-          </tr>
-          <tr>
-            <td>Paramétrage avancé des écritures automatiques et lettrage</td>
-            <td>Interface vieillissante qui déroute les nouveaux utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Modules intégrés paie et immobilisations dans la même base</td>
-            <td>Coût de formation élevé pour maîtriser toutes les fonctionnalités</td>
-          </tr>
-          <tr>
-            <td>États personnalisables et export vers Excel fluide</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Comptabilité analytique très poussée avec axes d'analyse multiples</td></tr><tr><td>Paramétrage avancé des écritures automatiques et lettrage</td></tr><tr><td>Modules intégrés paie et immobilisations dans la même base</td></tr><tr><td>États personnalisables et export vers Excel fluide</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Installation et paramétrage initial très chronophages</td></tr><tr><td>Interface vieillissante qui déroute les nouveaux utilisateurs</td></tr><tr><td>Coût de formation élevé pour maîtriser toutes les fonctionnalités</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -794,40 +698,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Abby, c'est le logiciel de comptabilité qui mise tout sur la <strong>simplicité absolue</strong>.
-
-<p>Je l'ai testé pendant plusieurs mois et j'avoue que c'est rafraîchissant de voir un outil qui assume de ne pas vouloir faire mille choses à la fois.</p>
-
-<p>La synchronisation bancaire fonctionne bien, les factures se créent rapidement et l'interface reste épurée même après des heures d'utilisation.</p><p>Ce qui m'a marqué avec cette solution comptable, c'est sa capacité à transformer des tâches pénibles en actions quasi automatiques.</p>
-
-<p><strong>L'OCR pour scanner les reçus</strong> évite la saisie manuelle et le rapprochement bancaire se fait sans effort.</p>
-
-<p>Par contre, ne vous attendez pas à de la haute personnalisation.</p><p>Abby convient parfaitement aux entrepreneurs individuels et petites entreprises qui veulent une comptabilité fonctionnelle sans se prendre la tête.</p>
-
-<p>Si vous cherchez un ERP complet ou des analyses financières poussées, passez votre chemin. <strong>Ici, on fait de la compta efficace, point.</strong></p></p>
+            <p>Abby, c'est le logiciel de comptabilité qui mise tout sur la <strong>simplicité absolue</strong>. Je l'ai testé pendant plusieurs mois et j'avoue que c'est rafraîchissant de voir un outil qui assume de ne pas vouloir faire mille choses à la fois. La synchronisation bancaire fonctionne bien, les factures se créent rapidement et l'interface reste épurée même après des heures d'utilisation.</p><p>Ce qui m'a marqué avec cette solution comptable, c'est sa capacité à transformer des tâches pénibles en actions quasi automatiques. <strong>L'OCR pour scanner les reçus</strong> évite la saisie manuelle et le rapprochement bancaire se fait sans effort. Par contre, ne vous attendez pas à de la haute personnalisation.</p><p>Abby convient parfaitement aux entrepreneurs individuels et petites entreprises qui veulent une comptabilité fonctionnelle sans se prendre la tête. Si vous cherchez un ERP complet ou des analyses financières poussées, passez votre chemin. <strong>Ici, on fait de la compta efficace, point.</strong></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface vraiment intuitive, prise en main en quelques heures</td>
-            <td>Options de personnalisation très limitées pour les rapports</td>
-          </tr>
-          <tr>
-            <td>OCR performant pour digitaliser automatiquement les justificatifs</td>
-            <td>Pas de gestion de stock ni de module CRM intégré</td>
-          </tr>
-          <tr>
-            <td>Synchronisation bancaire fiable avec la plupart des établissements français</td>
-            <td>Support client parfois lent à répondre en période de pointe</td>
-          </tr>
-          <tr>
-            <td>Tarification claire sans frais cachés ni engagement long terme</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface vraiment intuitive, prise en main en quelques heures</td></tr><tr><td>OCR performant pour digitaliser automatiquement les justificatifs</td></tr><tr><td>Synchronisation bancaire fiable avec la plupart des établissements français</td></tr><tr><td>Tarification claire sans frais cachés ni engagement long terme</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Options de personnalisation très limitées pour les rapports</td></tr><tr><td>Pas de gestion de stock ni de module CRM intégré</td></tr><tr><td>Support client parfois lent à répondre en période de pointe</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -847,38 +730,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai découvert <strong>Swapn</strong> en cherchant une solution de comptabilité qui simplifiait vraiment les tâches. Ce logiciel de comptabilité mise sur l'automatisation intelligente et l'interface épurée.
-
-<p>Pas de fioritures inutiles, juste les fonctions qui comptent pour tenir sa compta sans y passer des heures.</p><p>Je le recommande aux <strong>TPE et freelances</strong> qui veulent une comptabilité fluide sans se prendre la tête.</p>
-
-<p>L'outil gère automatiquement la catégorisation des dépenses, synchronise les comptes bancaires et génère les déclarations TVA.</p>
-
-<p>Bref, on se concentre sur son business plutôt que sur les écritures comptables.</p><p>Par contre, si vous cherchez un logiciel ultra-personnalisable ou que vous gérez plusieurs entités complexes, passez votre chemin.</p>
-
-<p>Swapn privilégie la simplicité à la personnalisation poussée.</p></p>
+            <p>J'ai découvert <strong>Swapn</strong> en cherchant une solution de comptabilité qui simplifiait vraiment les tâches. Ce logiciel de comptabilité mise sur l'automatisation intelligente et l'interface épurée. Pas de fioritures inutiles, juste les fonctions qui comptent pour tenir sa compta sans y passer des heures.</p><p>Je le recommande aux <strong>TPE et freelances</strong> qui veulent une comptabilité fluide sans se prendre la tête. L'outil gère automatiquement la catégorisation des dépenses, synchronise les comptes bancaires et génère les déclarations TVA. Bref, on se concentre sur son business plutôt que sur les écritures comptables.</p><p>Par contre, si vous cherchez un logiciel ultra-personnalisable ou que vous gérez plusieurs entités complexes, passez votre chemin. Swapn privilégie la simplicité à la personnalisation poussée.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface vraiment intuitive, prise en main en 30 minutes</td>
-            <td>Options de personnalisation limitées pour les besoins spécifiques</td>
-          </tr>
-          <tr>
-            <td>Synchronisation bancaire temps réel avec catégorisation auto</td>
-            <td>Pas adapté aux entreprises multi-entités ou holding</td>
-          </tr>
-          <tr>
-            <td>Génération automatique des déclarations TVA et liasses fiscales</td>
-            <td>Tarification qui grimpe vite avec les options avancées</td>
-          </tr>
-          <tr>
-            <td>Support client réactif avec des vrais comptables au bout du fil</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface vraiment intuitive, prise en main en 30 minutes</td></tr><tr><td>Synchronisation bancaire temps réel avec catégorisation auto</td></tr><tr><td>Génération automatique des déclarations TVA et liasses fiscales</td></tr><tr><td>Support client réactif avec des vrais comptables au bout du fil</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Options de personnalisation limitées pour les besoins spécifiques</td></tr><tr><td>Pas adapté aux entreprises multi-entités ou holding</td></tr><tr><td>Tarification qui grimpe vite avec les options avancées</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -898,38 +762,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Oxygène de Memsoft cible les petites structures qui veulent faire leur comptabilité sans se prendre la tête. Je l'ai testé dans un cabinet d'expertise comptable et <strong>la prise en main est vraiment rapide</strong>.
-
-<p>L'interface reste sobre, pas de fioritures, juste l'essentiel pour saisir, éditer et sortir ses états.</p><p>Ce logiciel de comptabilité mise tout sur la simplicité d'usage.</p>
-
-<p>Les écritures se passent bien, le lettrage fonctionne correctement et j'ai apprécié les automatismes pour les opérations répétitives.</p>
-
-<p><strong>Le module de gestion commerciale intégré</strong> évite de jongler entre plusieurs outils.</p><p>Oxygène convient aux TPE, artisans et petits commerçants qui cherchent un outil comptable sans complexité.</p>
-
-<p>Par contre, si vous gérez plusieurs dossiers ou avez des besoins avancés de reporting, vous risquez de vous sentir limité assez vite.</p></p>
+            <p>Oxygène de Memsoft cible les petites structures qui veulent faire leur comptabilité sans se prendre la tête. Je l'ai testé dans un cabinet d'expertise comptable et <strong>la prise en main est vraiment rapide</strong>. L'interface reste sobre, pas de fioritures, juste l'essentiel pour saisir, éditer et sortir ses états.</p><p>Ce logiciel de comptabilité mise tout sur la simplicité d'usage. Les écritures se passent bien, le lettrage fonctionne correctement et j'ai apprécié les automatismes pour les opérations répétitives. <strong>Le module de gestion commerciale intégré</strong> évite de jongler entre plusieurs outils.</p><p>Oxygène convient aux TPE, artisans et petits commerçants qui cherchent un outil comptable sans complexité. Par contre, si vous gérez plusieurs dossiers ou avez des besoins avancés de reporting, vous risquez de vous sentir limité assez vite.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface épurée et apprentissage rapide</td>
-            <td>Fonctionnalités limitées pour la croissance</td>
-          </tr>
-          <tr>
-            <td>Gestion commerciale intégrée (devis, factures)</td>
-            <td>Pas de multi-dossiers natif</td>
-          </tr>
-          <tr>
-            <td>Automatisation des écritures récurrentes</td>
-            <td>Reporting basique sans personnalisation avancée</td>
-          </tr>
-          <tr>
-            <td>Prix accessible pour les petites structures</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface épurée et apprentissage rapide</td></tr><tr><td>Gestion commerciale intégrée (devis, factures)</td></tr><tr><td>Automatisation des écritures récurrentes</td></tr><tr><td>Prix accessible pour les petites structures</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités limitées pour la croissance</td></tr><tr><td>Pas de multi-dossiers natif</td></tr><tr><td>Reporting basique sans personnalisation avancée</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -949,44 +794,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>EBP Comptabilité Hubbix, je l'ai testé pendant plusieurs mois sur ma petite entreprise de conseil.
-
-<p>Ce logiciel de comptabilité fait partie de la gamme EBP historique, mais avec une approche plus moderne et <strong>une interface vraiment simplifiée</strong>.</p>
-
-<p>On reste dans du français pur, avec des menus clairs et des automatisations qui fonctionnent bien.</p><p>L'avantage principal ?</p>
-
-<p>La <strong>synchronisation bancaire automatique</strong> qui récupère vos relevés et propose directement le lettrage. Plus besoin de saisir manuellement chaque opération.</p>
-
-<p>J'ai aussi apprécié le module de facturation intégré qui génère automatiquement les écritures comptables.</p>
-
-<p>Pour une TPE ou un artisan, ça évite les doubles saisies.</p><p>Le reporting reste simple mais efficace : bilan, compte de résultat, journaux... tout y est.</p>
-
-<p>Par contre, si vous cherchez du pilotage avancé ou des tableaux de bord sophistiqués, regardez ailleurs.</p>
-
-<p>EBP Comptabilité Hubbix vise clairement les entreprises qui veulent <strong>une comptabilité propre sans se compliquer la vie</strong>.</p></p>
+            <p>EBP Comptabilité Hubbix, je l'ai testé pendant plusieurs mois sur ma petite entreprise de conseil. Ce logiciel de comptabilité fait partie de la gamme EBP historique, mais avec une approche plus moderne et <strong>une interface vraiment simplifiée</strong>. On reste dans du français pur, avec des menus clairs et des automatisations qui fonctionnent bien.</p><p>L'avantage principal ? La <strong>synchronisation bancaire automatique</strong> qui récupère vos relevés et propose directement le lettrage. Plus besoin de saisir manuellement chaque opération. J'ai aussi apprécié le module de facturation intégré qui génère automatiquement les écritures comptables. Pour une TPE ou un artisan, ça évite les doubles saisies.</p><p>Le reporting reste simple mais efficace : bilan, compte de résultat, journaux... tout y est. Par contre, si vous cherchez du pilotage avancé ou des tableaux de bord sophistiqués, regardez ailleurs. EBP Comptabilité Hubbix vise clairement les entreprises qui veulent <strong>une comptabilité propre sans se compliquer la vie</strong>.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface française intuitive, même pour les non-comptables</td>
-            <td>Reporting limité pour le pilotage d'entreprise avancé</td>
-          </tr>
-          <tr>
-            <td>Synchronisation bancaire automatique avec proposition de lettrage</td>
-            <td>Pas d'application mobile dédiée, uniquement web</td>
-          </tr>
-          <tr>
-            <td>Module facturation intégré qui génère les écritures comptables</td>
-            <td>Support technique parfois lent en période de pointe</td>
-          </tr>
-          <tr>
-            <td>Sauvegarde cloud sécurisée incluse dans l'abonnement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface française intuitive, même pour les non-comptables</td></tr><tr><td>Synchronisation bancaire automatique avec proposition de lettrage</td></tr><tr><td>Module facturation intégré qui génère les écritures comptables</td></tr><tr><td>Sauvegarde cloud sécurisée incluse dans l'abonnement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Reporting limité pour le pilotage d'entreprise avancé</td></tr><tr><td>Pas d'application mobile dédiée, uniquement web</td></tr><tr><td>Support technique parfois lent en période de pointe</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1006,38 +826,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vais être honnête : Indy m'a surpris. Ce <strong>logiciel de comptabilité</strong> ne ressemble pas aux outils classiques qu'on trouve partout.
-
-<p>L'approche est différente, plus proche des besoins réels des freelances et petites structures.</p><p>L'outil mise tout sur <strong>l'automatisation intelligente</strong>.</p>
-
-<p>Synchronisation bancaire, catégorisation automatique des transactions, génération des déclarations TVA. Le truc qui m'a marqué : la reconnaissance automatique des factures par OCR.</p>
-
-<p>Je scanne, Indy extrait les données, classe et propose le bon traitement comptable.</p><p>Franchement, c'est pensé pour ceux qui veulent <strong>passer moins de temps sur les chiffres</strong>.</p>
-
-<p>Interface claire, onboarding rapide, et surtout une logique métier qui colle aux TPE et indépendants. Par contre, si vous cherchez un ERP complet ou gérez des flux complexes, passez votre chemin.</p></p>
+            <p>Je vais être honnête : Indy m'a surpris. Ce <strong>logiciel de comptabilité</strong> ne ressemble pas aux outils classiques qu'on trouve partout. L'approche est différente, plus proche des besoins réels des freelances et petites structures.</p><p>L'outil mise tout sur <strong>l'automatisation intelligente</strong>. Synchronisation bancaire, catégorisation automatique des transactions, génération des déclarations TVA. Le truc qui m'a marqué : la reconnaissance automatique des factures par OCR. Je scanne, Indy extrait les données, classe et propose le bon traitement comptable.</p><p>Franchement, c'est pensé pour ceux qui veulent <strong>passer moins de temps sur les chiffres</strong>. Interface claire, onboarding rapide, et surtout une logique métier qui colle aux TPE et indépendants. Par contre, si vous cherchez un ERP complet ou gérez des flux complexes, passez votre chemin.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Automatisation poussée de la saisie comptable</td>
-            <td>Limité pour les structures avec plusieurs entités</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive même pour les non-comptables</td>
-            <td>Personnalisation comptable restreinte</td>
-          </tr>
-          <tr>
-            <td>OCR performant pour scanner et traiter les factures</td>
-            <td>Support parfois lent en période de déclarations</td>
-          </tr>
-          <tr>
-            <td>Synchronisation bancaire en temps réel</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Automatisation poussée de la saisie comptable</td></tr><tr><td>Interface intuitive même pour les non-comptables</td></tr><tr><td>OCR performant pour scanner et traiter les factures</td></tr><tr><td>Synchronisation bancaire en temps réel</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Limité pour les structures avec plusieurs entités</td></tr><tr><td>Personnalisation comptable restreinte</td></tr><tr><td>Support parfois lent en période de déclarations</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1057,40 +858,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise Sinao depuis maintenant un an dans mon cabinet et je trouve que ce logiciel de comptabilité fait le boulot sans fioritures.
-
-<p><strong>Interface épurée</strong>, saisie rapide des écritures, et surtout une stabilité que je n'avais pas avec mon ancien outil.</p>
-
-<p>Les automatisations de base sont là : pointage bancaire, lettrage semi-automatique, édition des déclarations fiscales courantes.</p><p>Côté collaboration, j'apprécie le module de révision des comptes qui me fait gagner du temps sur les dossiers clients.</p>
-
-<p>Le système de droits utilisateurs fonctionne bien pour déléguer certaines tâches à mes collaborateurs.</p>
-
-<p><strong>Sinao mise clairement sur l'ergonomie</strong> plutôt que sur des fonctions gadgets, ce qui me va parfaitement.</p><p>Par contre, si vous cherchez un logiciel de comptabilité ultra-spécialisé ou avec des modules métiers très poussés, passez votre chemin.</p>
-
-<p>Sinao reste un outil généraliste qui convient aux cabinets de taille moyenne et aux entreprises classiques, sans prétendre révolutionner la profession comptable.</p></p>
+            <p>J'utilise Sinao depuis maintenant un an dans mon cabinet et je trouve que ce logiciel de comptabilité fait le boulot sans fioritures. <strong>Interface épurée</strong>, saisie rapide des écritures, et surtout une stabilité que je n'avais pas avec mon ancien outil. Les automatisations de base sont là : pointage bancaire, lettrage semi-automatique, édition des déclarations fiscales courantes.</p><p>Côté collaboration, j'apprécie le module de révision des comptes qui me fait gagner du temps sur les dossiers clients. Le système de droits utilisateurs fonctionne bien pour déléguer certaines tâches à mes collaborateurs. <strong>Sinao mise clairement sur l'ergonomie</strong> plutôt que sur des fonctions gadgets, ce qui me va parfaitement.</p><p>Par contre, si vous cherchez un logiciel de comptabilité ultra-spécialisé ou avec des modules métiers très poussés, passez votre chemin. Sinao reste un outil généraliste qui convient aux cabinets de taille moyenne et aux entreprises classiques, sans prétendre révolutionner la profession comptable.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive qui limite le temps de formation</td>
-            <td>Fonctionnalités limitées pour les secteurs spécialisés</td>
-          </tr>
-          <tr>
-            <td>Rapprochement bancaire efficace avec détection automatique</td>
-            <td>Pas de module de gestion commerciale intégré</td>
-          </tr>
-          <tr>
-            <td>Module de révision comptable intégré pour les cabinets</td>
-            <td>Tarifs qui grimpent vite avec les options supplémentaires</td>
-          </tr>
-          <tr>
-            <td>Support client réactif et équipe française</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive qui limite le temps de formation</td></tr><tr><td>Rapprochement bancaire efficace avec détection automatique</td></tr><tr><td>Module de révision comptable intégré pour les cabinets</td></tr><tr><td>Support client réactif et équipe française</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités limitées pour les secteurs spécialisés</td></tr><tr><td>Pas de module de gestion commerciale intégré</td></tr><tr><td>Tarifs qui grimpent vite avec les options supplémentaires</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1110,42 +890,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>MaCompta.fr fait partie de ces logiciels de comptabilité qui misent sur la simplicité avant tout.
-
-<p>Je l'ai testé pendant plusieurs mois sur une petite SARL et <strong>l'interface reste vraiment accessible</strong> même quand on n'est pas comptable.</p>
-
-<p>Les fonctionnalités de base sont là : facturation, devis, suivi des paiements, et surtout un tableau de bord qui donne une vue d'ensemble claire.</p><p>Ce qui m'a marqué, c'est la gestion automatisée des relances clients.</p>
-
-<p>Plus besoin de penser à relancer manuellement, le système s'en charge et ça fait gagner un temps fou. L'export vers l'expert-comptable fonctionne bien aussi, même si j'ai eu quelques ajustements à faire au début.</p>
-
-<p><strong>Pour une TPE qui démarre</strong>, c'est un bon compromis entre fonctionnalités et facilité d'usage.</p><p>Bon par contre, ne vous attendez pas à un outil ultra-avancé.</p>
-
-<p>Si vous gérez plusieurs entités ou avez des besoins comptables complexes, vous allez vite vous sentir à l'étroit.</p>
-
-<p>Mais pour <strong>facturer proprement et tenir ses comptes sans prise de tête</strong>, MaCompta.fr fait le travail correctement.</p></p>
+            <p>MaCompta.fr fait partie de ces logiciels de comptabilité qui misent sur la simplicité avant tout. Je l'ai testé pendant plusieurs mois sur une petite SARL et <strong>l'interface reste vraiment accessible</strong> même quand on n'est pas comptable. Les fonctionnalités de base sont là : facturation, devis, suivi des paiements, et surtout un tableau de bord qui donne une vue d'ensemble claire.</p><p>Ce qui m'a marqué, c'est la gestion automatisée des relances clients. Plus besoin de penser à relancer manuellement, le système s'en charge et ça fait gagner un temps fou. L'export vers l'expert-comptable fonctionne bien aussi, même si j'ai eu quelques ajustements à faire au début. <strong>Pour une TPE qui démarre</strong>, c'est un bon compromis entre fonctionnalités et facilité d'usage.</p><p>Bon par contre, ne vous attendez pas à un outil ultra-avancé. Si vous gérez plusieurs entités ou avez des besoins comptables complexes, vous allez vite vous sentir à l'étroit. Mais pour <strong>facturer proprement et tenir ses comptes sans prise de tête</strong>, MaCompta.fr fait le travail correctement.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive même pour les non-comptables</td>
-            <td>Fonctionnalités avancées limitées pour les gros volumes</td>
-          </tr>
-          <tr>
-            <td>Relances automatiques des impayés très pratique</td>
-            <td>Personnalisation des rapports assez basique</td>
-          </tr>
-          <tr>
-            <td>Export expert-comptable simplifié et fiable</td>
-            <td>Support client parfois lent à répondre</td>
-          </tr>
-          <tr>
-            <td>Tarifs transparents sans frais cachés</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive même pour les non-comptables</td></tr><tr><td>Relances automatiques des impayés très pratique</td></tr><tr><td>Export expert-comptable simplifié et fiable</td></tr><tr><td>Tarifs transparents sans frais cachés</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités avancées limitées pour les gros volumes</td></tr><tr><td>Personnalisation des rapports assez basique</td></tr><tr><td>Support client parfois lent à répondre</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1165,40 +922,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>GnuCash, c'est le <strong>logiciel de comptabilité gratuit</strong> que j'utilise depuis des années. Pas d'abonnement, pas de publicité, juste un outil solide pour tenir sa compta sans se ruiner.
-
-<p>Je l'ai installé sur mon ordinateur et ça fonctionne parfaitement hors ligne.</p><p>Ce qui me plaît vraiment avec GnuCash, c'est sa <strong>gestion en partie double</strong>.</p>
-
-<p>Chaque transaction touche deux comptes minimum, ce qui évite les erreurs de saisie. J'ai créé mes plans de comptes personnalisés, et le logiciel s'adapte parfaitement aux normes françaises.</p>
-
-<p>La synchronisation avec ma banque passe par l'import de fichiers OFX ou QIF.</p><p>L'interface peut dérouter au début, surtout si on vient d'Excel.</p>
-
-<p>Mais une fois qu'on maîtrise les bases, on peut gérer plusieurs entreprises, faire des rapports détaillés et même suivre un portefeuille d'actions.</p>
-
-<p>Je recommande GnuCash pour les <strong>petites structures</strong> qui veulent une vraie comptabilité sans payer d'abonnement mensuel.</p></p>
+            <p>GnuCash, c'est le <strong>logiciel de comptabilité gratuit</strong> que j'utilise depuis des années. Pas d'abonnement, pas de publicité, juste un outil solide pour tenir sa compta sans se ruiner. Je l'ai installé sur mon ordinateur et ça fonctionne parfaitement hors ligne.</p><p>Ce qui me plaît vraiment avec GnuCash, c'est sa <strong>gestion en partie double</strong>. Chaque transaction touche deux comptes minimum, ce qui évite les erreurs de saisie. J'ai créé mes plans de comptes personnalisés, et le logiciel s'adapte parfaitement aux normes françaises. La synchronisation avec ma banque passe par l'import de fichiers OFX ou QIF.</p><p>L'interface peut dérouter au début, surtout si on vient d'Excel. Mais une fois qu'on maîtrise les bases, on peut gérer plusieurs entreprises, faire des rapports détaillés et même suivre un portefeuille d'actions. Je recommande GnuCash pour les <strong>petites structures</strong> qui veulent une vraie comptabilité sans payer d'abonnement mensuel.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Logiciel entièrement gratuit sans limitation de fonctionnalités</td>
-            <td>Interface vieillotte qui demande un temps d'adaptation</td>
-          </tr>
-          <tr>
-            <td>Comptabilité en partie double avec validation automatique des écritures</td>
-            <td>Pas de synchronisation automatique avec les banques</td>
-          </tr>
-          <tr>
-            <td>Fonctionne hors ligne avec sauvegarde locale de vos données</td>
-            <td>Documentation principalement en anglais et communauté réduite en France</td>
-          </tr>
-          <tr>
-            <td>Compatible avec les imports bancaires OFX, QIF et CSV</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Logiciel entièrement gratuit sans limitation de fonctionnalités</td></tr><tr><td>Comptabilité en partie double avec validation automatique des écritures</td></tr><tr><td>Fonctionne hors ligne avec sauvegarde locale de vos données</td></tr><tr><td>Compatible avec les imports bancaires OFX, QIF et CSV</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface vieillotte qui demande un temps d'adaptation</td></tr><tr><td>Pas de synchronisation automatique avec les banques</td></tr><tr><td>Documentation principalement en anglais et communauté réduite en France</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1218,40 +954,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Pennylane mise tout sur l'automatisation de la comptabilité pour les petites et moyennes entreprises.
-
-<p>Je l'ai testé pendant 6 mois et <strong>l'intégration bancaire fonctionne vraiment bien</strong> : les mouvements sont récupérés automatiquement et le système propose des écritures comptables pertinentes.</p>
-
-<p>L'interface reste simple même quand on gère plusieurs sociétés.</p><p>Ce qui m'a marqué c'est le module de gestion de trésorerie. On peut anticiper les flux avec des prévisions assez précises et suivre les encours clients en temps réel.</p>
-
-<p><strong>Les relances automatiques</strong> m'ont fait gagner pas mal de temps sur le recouvrement.</p>
-
-<p>Par contre l'outil reste orienté TPE/PME, j'ai vite atteint ses limites sur des structures plus complexes.</p><p>Pennylane cible clairement les dirigeants qui veulent se passer d'expert-comptable ou réduire ses honoraires.</p>
-
-<p>La facturation est intégrée et on peut générer des liasses fiscales basiques. <strong>À partir de <strong>39€</strong> par mois</strong> c'est cohérent pour une entreprise qui veut centraliser compta et facturation.</p></p>
+            <p>Pennylane mise tout sur l'automatisation de la comptabilité pour les petites et moyennes entreprises. Je l'ai testé pendant 6 mois et <strong>l'intégration bancaire fonctionne vraiment bien</strong> : les mouvements sont récupérés automatiquement et le système propose des écritures comptables pertinentes. L'interface reste simple même quand on gère plusieurs sociétés.</p><p>Ce qui m'a marqué c'est le module de gestion de trésorerie. On peut anticiper les flux avec des prévisions assez précises et suivre les encours clients en temps réel. <strong>Les relances automatiques</strong> m'ont fait gagner pas mal de temps sur le recouvrement. Par contre l'outil reste orienté TPE/PME, j'ai vite atteint ses limites sur des structures plus complexes.</p><p>Pennylane cible clairement les dirigeants qui veulent se passer d'expert-comptable ou réduire ses honoraires. La facturation est intégrée et on peut générer des liasses fiscales basiques. <strong>À partir de <strong>39€</strong> par mois</strong> c'est cohérent pour une entreprise qui veut centraliser compta et facturation.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation bancaire automatique avec reconnaissance intelligente des opérations</td>
-            <td>Limité pour les structures complexes avec plusieurs filiales</td>
-          </tr>
-          <tr>
-            <td>Module de prévision de trésorerie intégré avec alertes sur les découverts</td>
-            <td>Personnalisation des rapports comptables assez restreinte</td>
-          </tr>
-          <tr>
-            <td>Relances clients automatisées avec suivi des impayés</td>
-            <td>Support client parfois lent en période de clôture</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive même pour les non-comptables</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation bancaire automatique avec reconnaissance intelligente des opérations</td></tr><tr><td>Module de prévision de trésorerie intégré avec alertes sur les découverts</td></tr><tr><td>Relances clients automatisées avec suivi des impayés</td></tr><tr><td>Interface intuitive même pour les non-comptables</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Limité pour les structures complexes avec plusieurs filiales</td></tr><tr><td>Personnalisation des rapports comptables assez restreinte</td></tr><tr><td>Support client parfois lent en période de clôture</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1271,42 +986,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Axonaut combine gestion comptable et CRM dans un même logiciel, ce qui change pas mal de choses quand on gère une petite entreprise.
-
-<p>Je peux créer mes devis, suivre mes prospects et basculer directement sur la facturation sans jongler entre trois outils différents.</p>
-
-<p><strong>L'approche tout-en-un</strong> évite les exports fastidieux.</p><p>Le tableau de bord affiche mes indicateurs financiers en temps réel. Les relances automatiques fonctionnent bien et j'ai gagné du temps sur le suivi des impayés.</p>
-
-<p>Par contre, la comptabilité reste assez basique comparé aux logiciels spécialisés.</p>
-
-<p><strong>Parfait pour les auto-entrepreneurs</strong> et TPE qui veulent centraliser commercial et compta.</p><p>L'interface est claire mais demande un petit temps d'adaptation.</p>
-
-<p>Les exports comptables vers mon expert se font correctement, même si certaines écritures complexes nécessitent encore des ajustements manuels.</p>
-
-<p>Je recommande surtout si vous cherchez à simplifier votre gestion globale plutôt qu'une comptabilité ultra-poussée.</p></p>
+            <p>Axonaut combine gestion comptable et CRM dans un même logiciel, ce qui change pas mal de choses quand on gère une petite entreprise. Je peux créer mes devis, suivre mes prospects et basculer directement sur la facturation sans jongler entre trois outils différents. <strong>L'approche tout-en-un</strong> évite les exports fastidieux.</p><p>Le tableau de bord affiche mes indicateurs financiers en temps réel. Les relances automatiques fonctionnent bien et j'ai gagné du temps sur le suivi des impayés. Par contre, la comptabilité reste assez basique comparé aux logiciels spécialisés. <strong>Parfait pour les auto-entrepreneurs</strong> et TPE qui veulent centraliser commercial et compta.</p><p>L'interface est claire mais demande un petit temps d'adaptation. Les exports comptables vers mon expert se font correctement, même si certaines écritures complexes nécessitent encore des ajustements manuels. Je recommande surtout si vous cherchez à simplifier votre gestion globale plutôt qu'une comptabilité ultra-poussée.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>CRM et comptabilité dans la même interface</td>
-            <td>Fonctions comptables moins poussées que les logiciels spécialisés</td>
-          </tr>
-          <tr>
-            <td>Passage automatique du devis à la facture</td>
-            <td>Personnalisation limitée des états financiers</td>
-          </tr>
-          <tr>
-            <td>Relances clients automatisées efficaces</td>
-            <td>Interface parfois lente sur les gros volumes de données</td>
-          </tr>
-          <tr>
-            <td>Tableaux de bord avec indicateurs en temps réel</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>CRM et comptabilité dans la même interface</td></tr><tr><td>Passage automatique du devis à la facture</td></tr><tr><td>Relances clients automatisées efficaces</td></tr><tr><td>Tableaux de bord avec indicateurs en temps réel</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctions comptables moins poussées que les logiciels spécialisés</td></tr><tr><td>Personnalisation limitée des états financiers</td></tr><tr><td>Interface parfois lente sur les gros volumes de données</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1326,38 +1018,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Cegid Quadra</strong> (rebaptisé Loop) pendant plusieurs mois dans ma boîte. Ce logiciel de comptabilité cible clairement les moyennes entreprises qui ont besoin d'un outil robuste avec des modules métier spécialisés.
-
-<p>On n'est pas sur un simple logiciel de compta, mais sur une suite intégrée qui gère la paie, les immobilisations et même le contrôle de gestion.</p><p>Ce qui m'a marqué, c'est la profondeur des fonctionnalités.</p>
-
-<p><strong>L'automatisation des écritures</strong> fonctionne très bien une fois paramétrée. Par contre, j'ai mis du temps à comprendre toute la logique.</p>
-
-<p>Le rapprochement bancaire automatique évite pas mal de saisie manuelle, et les workflows de validation sont pratiques quand on travaille à plusieurs sur les comptes.</p><p>Franchement, si vous cherchez juste à faire vos factures et votre TVA, passez votre chemin.</p>
-
-<p>Cegid Loop s'adresse aux structures qui ont des besoins comptables complexes et <strong>au moins 50 salariés</strong>. En dessous, c'est du canon pour tuer une mouche.</p></p>
+            <p>J'ai testé <strong>Cegid Quadra</strong> (rebaptisé Loop) pendant plusieurs mois dans ma boîte. Ce logiciel de comptabilité cible clairement les moyennes entreprises qui ont besoin d'un outil robuste avec des modules métier spécialisés. On n'est pas sur un simple logiciel de compta, mais sur une suite intégrée qui gère la paie, les immobilisations et même le contrôle de gestion.</p><p>Ce qui m'a marqué, c'est la profondeur des fonctionnalités. <strong>L'automatisation des écritures</strong> fonctionne très bien une fois paramétrée. Par contre, j'ai mis du temps à comprendre toute la logique. Le rapprochement bancaire automatique évite pas mal de saisie manuelle, et les workflows de validation sont pratiques quand on travaille à plusieurs sur les comptes.</p><p>Franchement, si vous cherchez juste à faire vos factures et votre TVA, passez votre chemin. Cegid Loop s'adresse aux structures qui ont des besoins comptables complexes et <strong>au moins 50 salariés</strong>. En dessous, c'est du canon pour tuer une mouche.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native avec la paie Cegid</td>
-            <td>Courbe d'apprentissage très longue</td>
-          </tr>
-          <tr>
-            <td>Automatisation poussée des écritures comptables</td>
-            <td>Tarifs élevés pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Modules métier spécialisés (immobilisations, analytique)</td>
-            <td>Interface parfois lourde et peu intuitive</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation multi-niveaux</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native avec la paie Cegid</td></tr><tr><td>Automatisation poussée des écritures comptables</td></tr><tr><td>Modules métier spécialisés (immobilisations, analytique)</td></tr><tr><td>Workflows de validation multi-niveaux</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Courbe d'apprentissage très longue</td></tr><tr><td>Tarifs élevés pour les petites structures</td></tr><tr><td>Interface parfois lourde et peu intuitive</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1377,42 +1050,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vais être direct sur <strong>Sage 50</strong> : c'est un logiciel de comptabilité qui mise tout sur la robustesse pour les PME et artisans.
-
-<p>On parle d'une solution desktop qui tourne sur Windows et qui gère la facturation, la trésorerie, les immobilisations et bien sûr toute la comptabilité générale.</p>
-
-<p>J'ai testé la version Ciel Compta Evolution qui fait partie de cette gamme.</p><p>Le truc avec Sage 50, c'est qu'on sent vraiment l'expérience de l'éditeur français dans le métier.</p>
-
-<p>Les écritures comptables se saisissent vite, le lettrage automatique fonctionne bien et j'ai apprécié le module de rapprochement bancaire.</p>
-
-<p><strong>Par contre, l'interface date un peu</strong> et ça se voit surtout quand on vient d'utiliser des solutions cloud plus modernes.</p><p>Ce logiciel comptable convient parfaitement aux comptables, experts-comptables et dirigeants de PME qui cherchent une solution française avec un vrai SAV local.</p>
-
-<p>Si vous gérez entre 20 et 200 salariés et que vous n'avez pas peur d'une interface un peu dense, Sage 50 fait le travail sans broncher.</p>
-
-<p>L'export vers les logiciels de paie Sage est fluide, ce qui simplifie pas mal les choses pour les cabinets qui utilisent déjà l'écosystème.</p></p>
+            <p>Je vais être direct sur <strong>Sage 50</strong> : c'est un logiciel de comptabilité qui mise tout sur la robustesse pour les PME et artisans. On parle d'une solution desktop qui tourne sur Windows et qui gère la facturation, la trésorerie, les immobilisations et bien sûr toute la comptabilité générale. J'ai testé la version Ciel Compta Evolution qui fait partie de cette gamme.</p><p>Le truc avec Sage 50, c'est qu'on sent vraiment l'expérience de l'éditeur français dans le métier. Les écritures comptables se saisissent vite, le lettrage automatique fonctionne bien et j'ai apprécié le module de rapprochement bancaire. <strong>Par contre, l'interface date un peu</strong> et ça se voit surtout quand on vient d'utiliser des solutions cloud plus modernes.</p><p>Ce logiciel comptable convient parfaitement aux comptables, experts-comptables et dirigeants de PME qui cherchent une solution française avec un vrai SAV local. Si vous gérez entre 20 et 200 salariés et que vous n'avez pas peur d'une interface un peu dense, Sage 50 fait le travail sans broncher. L'export vers les logiciels de paie Sage est fluide, ce qui simplifie pas mal les choses pour les cabinets qui utilisent déjà l'écosystème.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Rapprochement bancaire automatique très efficace</td>
-            <td>Interface vieillotte qui peut rebuter les nouveaux utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Support client français réactif et compétent</td>
-            <td>Pas d'accès mobile digne de ce nom</td>
-          </tr>
-          <tr>
-            <td>Gestion des immobilisations et amortissements complète</td>
-            <td>Prix élevé avec de nombreuses options payantes</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec la paie Sage</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Rapprochement bancaire automatique très efficace</td></tr><tr><td>Support client français réactif et compétent</td></tr><tr><td>Gestion des immobilisations et amortissements complète</td></tr><tr><td>Intégration native avec la paie Sage</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface vieillotte qui peut rebuter les nouveaux utilisateurs</td></tr><tr><td>Pas d'accès mobile digne de ce nom</td></tr><tr><td>Prix élevé avec de nombreuses options payantes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1432,40 +1082,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Fizen propose une <strong>approche collaborative</strong> de la comptabilité qui sort des sentiers battus.
-
-<p>Je trouve que c'est l'un des rares logiciels à vraiment miser sur l'accompagnement humain plutôt que sur l'automatisation à outrance.</p>
-
-<p>Leur concept : vous matcher avec un expert-comptable partenaire dès le départ.</p><p>Concrètement, j'ai apprécié leur interface épurée qui ne vous noie pas sous les fonctionnalités.</p>
-
-<p><strong>Parfait pour les entrepreneurs</strong> qui veulent déléguer une partie de leur compta sans perdre le contrôle.</p>
-
-<p>Le tableau de bord reste accessible et on comprend vite où on en est financièrement.</p><p>Ce qui m'a marqué chez Fizen, c'est qu'ils assument leur positionnement hybride. Vous n'êtes pas livré à vous-même face à un logiciel.</p>
-
-<p><strong>L'accompagnement fait partie intégrante</strong> de leur offre, ce qui explique pourquoi leurs tarifs incluent cette dimension conseil dès le départ.</p></p>
+            <p>Fizen propose une <strong>approche collaborative</strong> de la comptabilité qui sort des sentiers battus. Je trouve que c'est l'un des rares logiciels à vraiment miser sur l'accompagnement humain plutôt que sur l'automatisation à outrance. Leur concept : vous matcher avec un expert-comptable partenaire dès le départ.</p><p>Concrètement, j'ai apprécié leur interface épurée qui ne vous noie pas sous les fonctionnalités. <strong>Parfait pour les entrepreneurs</strong> qui veulent déléguer une partie de leur compta sans perdre le contrôle. Le tableau de bord reste accessible et on comprend vite où on en est financièrement.</p><p>Ce qui m'a marqué chez Fizen, c'est qu'ils assument leur positionnement hybride. Vous n'êtes pas livré à vous-même face à un logiciel. <strong>L'accompagnement fait partie intégrante</strong> de leur offre, ce qui explique pourquoi leurs tarifs incluent cette dimension conseil dès le départ.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Accompagnement expert-comptable intégré dans l'offre</td>
-            <td>Tarifs plus élevés que les solutions 100% autonomes</td>
-          </tr>
-          <tr>
-            <td>Interface simple et non intimidante pour les débutants</td>
-            <td>Moins de fonctionnalités avancées que les logiciels pure players</td>
-          </tr>
-          <tr>
-            <td>Approche collaborative qui évite l'isolement face au logiciel</td>
-            <td>Dépendance à l'expert-comptable partenaire assigné</td>
-          </tr>
-          <tr>
-            <td>Tableau de bord clair pour suivre sa situation financière</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Accompagnement expert-comptable intégré dans l'offre</td></tr><tr><td>Interface simple et non intimidante pour les débutants</td></tr><tr><td>Approche collaborative qui évite l'isolement face au logiciel</td></tr><tr><td>Tableau de bord clair pour suivre sa situation financière</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarifs plus élevés que les solutions 100% autonomes</td></tr><tr><td>Moins de fonctionnalités avancées que les logiciels pure players</td></tr><tr><td>Dépendance à l'expert-comptable partenaire assigné</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1576,20 +1205,15 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 
 <h2>FAQ : les questions qu'on me pose souvent</h2>
 
-<p><strong>Est-ce qu'un logiciel de comptabilité remplace un expert-comptable ?</strong><br>
-Non. Il te rend plus autonome sur le quotidien et réduit les heures de ton comptable, mais il ne remplace pas son expertise fiscale et juridique. Les deux se complètent.</p>
+<p><strong>Est-ce qu'un logiciel de comptabilité remplace un expert-comptable ?</strong> Non. Il te rend plus autonome sur le quotidien et réduit les heures de ton comptable, mais il ne remplace pas son expertise fiscale et juridique. Les deux se complètent.</p>
 
-<p><strong>Faut-il absolument une synchronisation bancaire ?</strong><br>
-Franchement, oui. Si tu dois importer tes relevés manuellement chaque semaine, tu vas vite décrocher. La synchro automatique, c'est ce qui rend l'outil vraiment utile au quotidien.</p>
+<p><strong>Faut-il absolument une synchronisation bancaire ?</strong> Franchement, oui. Si tu dois importer tes relevés manuellement chaque semaine, tu vas vite décrocher. La synchro automatique, c'est ce qui rend l'outil vraiment utile au quotidien.</p>
 
-<p><strong>Peut-on utiliser un logiciel de compta sans formation ?</strong><br>
-Les meilleurs outils sont pensés pour des non-comptables. Mais il faut quand même compter 1 à 2h de prise en main minimum. Regarde les tutoriels disponibles et la qualité du support avant de te décider.</p>
+<p><strong>Peut-on utiliser un logiciel de compta sans formation ?</strong> Les meilleurs outils sont pensés pour des non-comptables. Mais il faut quand même compter 1 à 2h de prise en main minimum. Regarde les tutoriels disponibles et la qualité du support avant de te décider.</p>
 
-<p><strong>Mon logiciel actuel suffit, pourquoi changer ?</strong><br>
-Si tu passes plus de 3h par semaine sur des tâches comptables répétitives, c'est un signal. Un bon outil devrait ramener ça à moins d'une heure. Le temps gagné vaut souvent largement l'abonnement mensuel.</p>
+<p><strong>Mon logiciel actuel suffit, pourquoi changer ?</strong> Si tu passes plus de 3h par semaine sur des tâches comptables répétitives, c'est un signal. Un bon outil devrait ramener ça à moins d'une heure. Le temps gagné vaut souvent largement l'abonnement mensuel.</p>
 
-<p><strong>La facturation électronique obligatoire, ça change quoi ?</strong><br>
-La réforme de facturation électronique (e-invoicing) est en cours de déploiement progressif en France. Ton logiciel devra être conforme pour émettre et recevoir des factures au format structuré. Vérifie que l'outil que tu choisis prévoit cette mise à jour. <strong>C'est un point non négociable</strong> pour les prochaines années.</p></div>
+<p><strong>La facturation électronique obligatoire, ça change quoi ?</strong> La réforme de facturation électronique (e-invoicing) est en cours de déploiement progressif en France. Ton logiciel devra être conforme pour émettre et recevoir des factures au format structuré. Vérifie que l'outil que tu choisis prévoit cette mise à jour. <strong>C'est un point non négociable</strong> pour les prochaines années.</p></div>
 
   <h2 class="section-title">Questions fréquentes</h2>
   <div class="faq-item">
@@ -1737,7 +1361,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 startup-factory.fr — Données actualisées le 2 octobre 2026
+        © 2026 startup-factory.fr — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

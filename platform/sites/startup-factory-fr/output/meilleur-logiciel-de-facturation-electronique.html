@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -489,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Meilleur Logiciel de facturation électronique 2026 : Top 12</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 12 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 12 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Léa Petit" class="hero-author-avatar">
     <span>Rédigé par Léa Petit</span>
@@ -533,38 +538,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Cegid propose une solution de facturation électronique intégrée dans son ERP, particulièrement orientée pour les entreprises qui gèrent déjà leur comptabilité avec leurs outils.
-
-<p>J'ai testé leur module de dématérialisation : <strong>l'intégration avec le reste de la suite comptable</strong> fonctionne vraiment bien, même si l'interface peut dérouter au début.</p><p>Ce qui m'a marqué, c'est la <strong>gestion automatisée des flux B2B</strong>.</p>
-
-<p>Les factures sortantes passent directement par leur réseau d'échange, et côté réception, l'OCR reconnaît correctement la plupart des documents.</p>
-
-<p>Pour une PME qui traite 200-300 factures par mois, ça fait gagner un temps fou sur la saisie.</p><p>Niveau tarification, on est sur du <strong>sur-mesure selon le volume</strong>, mais comptez facilement 150-<strong>200€</strong>/mois pour une utilisation standard.</p>
-
-<p>L'onboarding prend du temps - j'ai mis 3 semaines pour paramétrer correctement tous les workflows avec mon expert-comptable. Mais une fois en place, le système tourne tout seul.</p></p>
+            <p>Cegid propose une solution de facturation électronique intégrée dans son ERP, particulièrement orientée pour les entreprises qui gèrent déjà leur comptabilité avec leurs outils. J'ai testé leur module de dématérialisation : <strong>l'intégration avec le reste de la suite comptable</strong> fonctionne vraiment bien, même si l'interface peut dérouter au début.</p><p>Ce qui m'a marqué, c'est la <strong>gestion automatisée des flux B2B</strong>. Les factures sortantes passent directement par leur réseau d'échange, et côté réception, l'OCR reconnaît correctement la plupart des documents. Pour une PME qui traite 200-300 factures par mois, ça fait gagner un temps fou sur la saisie.</p><p>Niveau tarification, on est sur du <strong>sur-mesure selon le volume</strong>, mais comptez facilement 150-<strong>200€</strong>/mois pour une utilisation standard. L'onboarding prend du temps - j'ai mis 3 semaines pour paramétrer correctement tous les workflows avec mon expert-comptable. Mais une fois en place, le système tourne tout seul.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native avec l'ERP Cegid existant</td>
-            <td>Onboarding long et complexe nécessitant un accompagnement</td>
-          </tr>
-          <tr>
-            <td>Réseau d'échange B2B performant avec de nombreux partenaires</td>
-            <td>Interface vieillissante pas très intuitive</td>
-          </tr>
-          <tr>
-            <td>OCR fiable pour la reconnaissance automatique des factures</td>
-            <td>Tarifs élevés pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Support technique réactif avec des experts métier</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native avec l'ERP Cegid existant</td></tr><tr><td>Réseau d'échange B2B performant avec de nombreux partenaires</td></tr><tr><td>OCR fiable pour la reconnaissance automatique des factures</td></tr><tr><td>Support technique réactif avec des experts métier</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Onboarding long et complexe nécessitant un accompagnement</td></tr><tr><td>Interface vieillissante pas très intuitive</td></tr><tr><td>Tarifs élevés pour les petites structures</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -584,36 +570,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Qonto n'est pas vraiment un logiciel de facturation électronique au sens classique du terme, mais plutôt une <strong>néobanque</strong> qui propose des fonctionnalités de facturation en complément de ses services bancaires.
-
-<p>J'ai testé leur module de facturation pendant six mois pour mon activité de consultant, et ça peut dépanner dans certains contextes.</p><p>L'avantage, c'est que tout est centralisé : compte bancaire, cartes de paiement, et émission de factures dans la même interface.</p>
-
-<p><strong>Pratique quand on veut éviter de jongler entre plusieurs outils.</strong> Par contre, les fonctionnalités de facturation restent basiques comparées à un vrai logiciel dédié comme Sellsy ou Pennylane.</p><p>Leur système fonctionne bien pour des <strong>facturations simples et récurrentes</strong>, avec un suivi des paiements automatisé grâce à la connexion bancaire.</p>
-
-<p>Mais dès qu'on a besoin de devis complexes, de gestion des stocks ou de facturation par projet, on touche vite les limites.</p></p>
+            <p>Qonto n'est pas vraiment un logiciel de facturation électronique au sens classique du terme, mais plutôt une <strong>néobanque</strong> qui propose des fonctionnalités de facturation en complément de ses services bancaires. J'ai testé leur module de facturation pendant six mois pour mon activité de consultant, et ça peut dépanner dans certains contextes.</p><p>L'avantage, c'est que tout est centralisé : compte bancaire, cartes de paiement, et émission de factures dans la même interface. <strong>Pratique quand on veut éviter de jongler entre plusieurs outils.</strong> Par contre, les fonctionnalités de facturation restent basiques comparées à un vrai logiciel dédié comme Sellsy ou Pennylane.</p><p>Leur système fonctionne bien pour des <strong>facturations simples et récurrentes</strong>, avec un suivi des paiements automatisé grâce à la connexion bancaire. Mais dès qu'on a besoin de devis complexes, de gestion des stocks ou de facturation par projet, on touche vite les limites.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Tout-en-un : banque pro + facturation dans une seule app</td>
-            <td>Fonctionnalités de facturation très limitées par rapport à la concurrence</td>
-          </tr>
-          <tr>
-            <td>Rapprochement automatique factures/paiements reçus</td>
-            <td>Pas de gestion des devis complexes ou des projets multi-clients</td>
-          </tr>
-          <tr>
-            <td>Interface moderne et intuitive pour les débutants</td>
-            <td>Obligation d'ouvrir un compte Qonto pour utiliser la facturation</td>
-          </tr>
-          <tr>
-            <td>Synchronisation comptable simplifiée avec les experts-comptables</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Tout-en-un : banque pro + facturation dans une seule app</td></tr><tr><td>Rapprochement automatique factures/paiements reçus</td></tr><tr><td>Interface moderne et intuitive pour les débutants</td></tr><tr><td>Synchronisation comptable simplifiée avec les experts-comptables</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités de facturation très limitées par rapport à la concurrence</td></tr><tr><td>Pas de gestion des devis complexes ou des projets multi-clients</td></tr><tr><td>Obligation d'ouvrir un compte Qonto pour utiliser la facturation</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -633,40 +602,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je connais bien <strong>Tiime</strong> pour l'avoir testé pendant plusieurs mois. Cette plateforme de facturation électronique s'attaque directement aux TPE et petites entreprises qui perdent du temps avec leur administratif.
-
-<p>L'interface reste assez simple, même si on sent parfois que certains menus auraient besoin d'être repensés.</p><p>Ce qui m'a marqué chez Tiime, c'est leur approche tout-en-un.</p>
-
-<p>On peut gérer la facturation électronique, mais aussi le rapprochement bancaire automatique et même une partie de la comptabilité. <strong>Pratique quand on débute</strong> et qu'on ne veut pas jongler entre cinq outils différents.</p>
-
-<p>Par contre, leur système de relances automatiques manque encore de finesse.</p><p>Je recommande Tiime aux entrepreneurs qui cherchent une solution française avec du support en français correct.</p>
-
-<p>Les freelances dans le digital s'y retrouvent bien, notamment grâce à l'intégration avec les banques en ligne.</p>
-
-<p><strong>Attention toutefois</strong> si vous avez des besoins très spécifiques en personnalisation de factures ou si vous gérez déjà de gros volumes.</p></p>
+            <p>Je connais bien <strong>Tiime</strong> pour l'avoir testé pendant plusieurs mois. Cette plateforme de facturation électronique s'attaque directement aux TPE et petites entreprises qui perdent du temps avec leur administratif. L'interface reste assez simple, même si on sent parfois que certains menus auraient besoin d'être repensés.</p><p>Ce qui m'a marqué chez Tiime, c'est leur approche tout-en-un. On peut gérer la facturation électronique, mais aussi le rapprochement bancaire automatique et même une partie de la comptabilité. <strong>Pratique quand on débute</strong> et qu'on ne veut pas jongler entre cinq outils différents. Par contre, leur système de relances automatiques manque encore de finesse.</p><p>Je recommande Tiime aux entrepreneurs qui cherchent une solution française avec du support en français correct. Les freelances dans le digital s'y retrouvent bien, notamment grâce à l'intégration avec les banques en ligne. <strong>Attention toutefois</strong> si vous avez des besoins très spécifiques en personnalisation de factures ou si vous gérez déjà de gros volumes.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Rapprochement bancaire automatique vraiment efficace</td>
-            <td>Personnalisation des modèles de factures limitée</td>
-          </tr>
-          <tr>
-            <td>Interface pensée pour les non-comptables</td>
-            <td>Quelques bugs sur l'app mobile</td>
-          </tr>
-          <tr>
-            <td>Support client réactif et en français</td>
-            <td>Manque de fonctionnalités avancées pour les plus grosses structures</td>
-          </tr>
-          <tr>
-            <td>Tarification transparente sans frais cachés</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Rapprochement bancaire automatique vraiment efficace</td></tr><tr><td>Interface pensée pour les non-comptables</td></tr><tr><td>Support client réactif et en français</td></tr><tr><td>Tarification transparente sans frais cachés</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Personnalisation des modèles de factures limitée</td></tr><tr><td>Quelques bugs sur l'app mobile</td></tr><tr><td>Manque de fonctionnalités avancées pour les plus grosses structures</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -686,38 +634,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Pennylane fait partie de ces <strong>solutions de facturation électronique</strong> qui veulent simplifier la compta en mode tout-en-un. Je l'ai testé pendant plusieurs mois sur une TPE et une petite PME.
-
-<p>L'interface est plutôt clean, la synchronisation bancaire fonctionne bien, et le module de facturation électronique respecte les normes B2B obligatoires depuis 2024.</p><p>Ce qui m'a marqué : <strong>l'automatisation du lettrage</strong> des paiements clients.</p>
-
-<p>Fini de perdre 20 minutes par jour à rapprocher manuellement les virements avec les factures. Par contre, je préviens : l'onboarding demande du temps.</p>
-
-<p>Il faut vraiment s'accrocher les deux premières semaines pour paramétrer correctement tous les automatismes.</p><p>Pennylane vise clairement les entreprises qui veulent <strong>centraliser facturation, compta et pilotage</strong> dans un seul outil.</p>
-
-<p>Mais attention, ça reste assez rigide sur certains workflows spécifiques. J'ai eu des galères avec la gestion des acomptes complexes et les factures de situation BTP.</p></p>
+            <p>Pennylane fait partie de ces <strong>solutions de facturation électronique</strong> qui veulent simplifier la compta en mode tout-en-un. Je l'ai testé pendant plusieurs mois sur une TPE et une petite PME. L'interface est plutôt clean, la synchronisation bancaire fonctionne bien, et le module de facturation électronique respecte les normes B2B obligatoires depuis 2024.</p><p>Ce qui m'a marqué : <strong>l'automatisation du lettrage</strong> des paiements clients. Fini de perdre 20 minutes par jour à rapprocher manuellement les virements avec les factures. Par contre, je préviens : l'onboarding demande du temps. Il faut vraiment s'accrocher les deux premières semaines pour paramétrer correctement tous les automatismes.</p><p>Pennylane vise clairement les entreprises qui veulent <strong>centraliser facturation, compta et pilotage</strong> dans un seul outil. Mais attention, ça reste assez rigide sur certains workflows spécifiques. J'ai eu des galères avec la gestion des acomptes complexes et les factures de situation BTP.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation bancaire automatique et lettrage intelligent des paiements</td>
-            <td>Courbe d'apprentissage importante, formation quasi obligatoire</td>
-          </tr>
-          <tr>
-            <td>Facturation électronique conforme aux obligations B2B 2024-2026</td>
-            <td>Rigidité sur les workflows complexes et factures de situation</td>
-          </tr>
-          <tr>
-            <td>Interface moderne avec tableau de bord financier en temps réel</td>
-            <td>Tarification qui monte vite avec les modules complémentaires</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec les principaux outils métier (CRM, e-commerce)</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation bancaire automatique et lettrage intelligent des paiements</td></tr><tr><td>Facturation électronique conforme aux obligations B2B 2024-2026</td></tr><tr><td>Interface moderne avec tableau de bord financier en temps réel</td></tr><tr><td>Intégration native avec les principaux outils métier (CRM, e-commerce)</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Courbe d'apprentissage importante, formation quasi obligatoire</td></tr><tr><td>Rigidité sur les workflows complexes et factures de situation</td></tr><tr><td>Tarification qui monte vite avec les modules complémentaires</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -737,38 +666,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Henrri mise sur une approche différente de la facturation électronique. Plutôt que de proposer un énième outil généraliste, cette solution <strong>se concentre sur l'automatisation intelligente</strong> des processus de facturation.
-
-<p>Je trouve leur approche intéressante pour les entreprises qui gèrent beaucoup de factures répétitives.</p><p>La plateforme exploite l'IA pour traiter automatiquement les factures entrantes et sortantes.</p>
-
-<p>Concrètement, Henrri peut extraire les données de vos factures PDF, les classer automatiquement et même détecter les anomalies. <strong>L'OCR fonctionne vraiment bien</strong>, même sur des documents de qualité moyenne.</p>
-
-<p>J'ai testé avec des factures scannées et le taux de reconnaissance dépasse les <strong>95%</strong>.</p><p>Ce logiciel de facturation électronique convient particulièrement aux cabinets comptables et aux entreprises du BTP qui jonglent avec des centaines de factures chaque mois.</p>
-
-<p>La synchronisation avec les principaux ERP se fait sans accroc, et les workflows de validation peuvent être entièrement personnalisés selon vos processus internes.</p></p>
+            <p>Henrri mise sur une approche différente de la facturation électronique. Plutôt que de proposer un énième outil généraliste, cette solution <strong>se concentre sur l'automatisation intelligente</strong> des processus de facturation. Je trouve leur approche intéressante pour les entreprises qui gèrent beaucoup de factures répétitives.</p><p>La plateforme exploite l'IA pour traiter automatiquement les factures entrantes et sortantes. Concrètement, Henrri peut extraire les données de vos factures PDF, les classer automatiquement et même détecter les anomalies. <strong>L'OCR fonctionne vraiment bien</strong>, même sur des documents de qualité moyenne. J'ai testé avec des factures scannées et le taux de reconnaissance dépasse les <strong>95%</strong>.</p><p>Ce logiciel de facturation électronique convient particulièrement aux cabinets comptables et aux entreprises du BTP qui jonglent avec des centaines de factures chaque mois. La synchronisation avec les principaux ERP se fait sans accroc, et les workflows de validation peuvent être entièrement personnalisés selon vos processus internes.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intelligence artificielle vraiment efficace pour l'extraction automatique des données</td>
-            <td>Tarification opaque avec des frais supplémentaires selon le volume de factures</td>
-          </tr>
-          <tr>
-            <td>Interface moderne et prise en main rapide, même pour les non-techniciens</td>
-            <td>Fonctionnalités de reporting encore limitées par rapport à la concurrence</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation entièrement configurables selon vos besoins</td>
-            <td>Intégrations disponibles principalement pour les gros ERP, peu de connecteurs pour les petits outils</td>
-          </tr>
-          <tr>
-            <td>Support client réactif avec des vrais experts métier au bout du fil</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intelligence artificielle vraiment efficace pour l'extraction automatique des données</td></tr><tr><td>Interface moderne et prise en main rapide, même pour les non-techniciens</td></tr><tr><td>Workflows de validation entièrement configurables selon vos besoins</td></tr><tr><td>Support client réactif avec des vrais experts métier au bout du fil</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification opaque avec des frais supplémentaires selon le volume de factures</td></tr><tr><td>Fonctionnalités de reporting encore limitées par rapport à la concurrence</td></tr><tr><td>Intégrations disponibles principalement pour les gros ERP, peu de connecteurs pour les petits outils</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -788,40 +698,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise <strong>Indy</strong> depuis deux ans pour ma micro-entreprise et je reconnais qu'il fait le boulot correctement.
-
-<p>Ce logiciel de facturation électronique s'adresse clairement aux freelances et petites structures qui veulent gérer leurs factures sans se prendre la tête.</p>
-
-<p>L'interface reste simple même si on n'est pas expert-comptable.</p><p>Ce qui m'a convaincu au départ, c'est la <strong>gestion automatique des relances</strong> et le rapprochement bancaire qui fonctionne bien avec la plupart des banques.</p>
-
-<p>Indy propose aussi un accompagnement fiscal intéressant avec des alertes sur les échéances TVA.</p>
-
-<p>Le système de devis transformables en factures me fait gagner du temps, surtout quand je jongle entre plusieurs projets clients.</p><p>Franchement, pour quelqu'un qui démarre en freelance ou qui gère une petite boîte, ça évite de passer par un cabinet comptable pour les tâches basiques.</p>
-
-<p>J'ai testé d'autres solutions plus chères qui ne m'apportaient pas grand-chose de plus pour mon activité. <strong>Le rapport qualité-prix reste honnête</strong> même si certains détails m'agacent encore.</p></p>
+            <p>J'utilise <strong>Indy</strong> depuis deux ans pour ma micro-entreprise et je reconnais qu'il fait le boulot correctement. Ce logiciel de facturation électronique s'adresse clairement aux freelances et petites structures qui veulent gérer leurs factures sans se prendre la tête. L'interface reste simple même si on n'est pas expert-comptable.</p><p>Ce qui m'a convaincu au départ, c'est la <strong>gestion automatique des relances</strong> et le rapprochement bancaire qui fonctionne bien avec la plupart des banques. Indy propose aussi un accompagnement fiscal intéressant avec des alertes sur les échéances TVA. Le système de devis transformables en factures me fait gagner du temps, surtout quand je jongle entre plusieurs projets clients.</p><p>Franchement, pour quelqu'un qui démarre en freelance ou qui gère une petite boîte, ça évite de passer par un cabinet comptable pour les tâches basiques. J'ai testé d'autres solutions plus chères qui ne m'apportaient pas grand-chose de plus pour mon activité. <strong>Le rapport qualité-prix reste honnête</strong> même si certains détails m'agacent encore.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Gestion automatique des relances clients avec personnalisation des messages</td>
-            <td>Customisation limitée des templates de factures</td>
-          </tr>
-          <tr>
-            <td>Rapprochement bancaire automatique avec la plupart des établissements français</td>
-            <td>Support client parfois lent en période de rush fiscal</td>
-          </tr>
-          <tr>
-            <td>Accompagnement fiscal intégré avec calculs TVA et échéanciers</td>
-            <td>Fonctionnalités avancées bridées sur les formules d'entrée</td>
-          </tr>
-          <tr>
-            <td>Interface pensée pour les non-comptables avec workflows simplifiés</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Gestion automatique des relances clients avec personnalisation des messages</td></tr><tr><td>Rapprochement bancaire automatique avec la plupart des établissements français</td></tr><tr><td>Accompagnement fiscal intégré avec calculs TVA et échéanciers</td></tr><tr><td>Interface pensée pour les non-comptables avec workflows simplifiés</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Customisation limitée des templates de factures</td></tr><tr><td>Support client parfois lent en période de rush fiscal</td></tr><tr><td>Fonctionnalités avancées bridées sur les formules d'entrée</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -841,38 +730,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Abby fait partie des solutions de facturation électronique qui misent sur la simplicité. L'interface est claire, pas de fonctionnalités inutiles qui polluent l'écran.
-
-<p>Quand on a testé la création d'une première facture, <strong>ça prend vraiment 2 minutes</strong>.</p><p>Ce logiciel convient bien aux freelances et petites structures qui veulent juste facturer proprement sans se prendre la tête.</p>
-
-<p>Les templates de factures sont corrects, la conformité légale française est respectée.</p>
-
-<p>J'ai apprécié le fait qu'on puisse <strong>envoyer directement par email</strong> depuis l'outil, avec un suivi des ouvertures.</p><p>Par contre, si vous cherchez un outil pour gérer des workflows complexes ou des devis multicritères, passez votre chemin.</p>
-
-<p>Abby reste <strong>volontairement basique</strong>. L'automatisation se limite au minimum, mais pour beaucoup c'est exactement ce qu'il faut.</p></p>
+            <p>Abby fait partie des solutions de facturation électronique qui misent sur la simplicité. L'interface est claire, pas de fonctionnalités inutiles qui polluent l'écran. Quand on a testé la création d'une première facture, <strong>ça prend vraiment 2 minutes</strong>.</p><p>Ce logiciel convient bien aux freelances et petites structures qui veulent juste facturer proprement sans se prendre la tête. Les templates de factures sont corrects, la conformité légale française est respectée. J'ai apprécié le fait qu'on puisse <strong>envoyer directement par email</strong> depuis l'outil, avec un suivi des ouvertures.</p><p>Par contre, si vous cherchez un outil pour gérer des workflows complexes ou des devis multicritères, passez votre chemin. Abby reste <strong>volontairement basique</strong>. L'automatisation se limite au minimum, mais pour beaucoup c'est exactement ce qu'il faut.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface épurée et prise en main immédiate</td>
-            <td>Fonctionnalités limitées pour les besoins avancés</td>
-          </tr>
-          <tr>
-            <td>Envoi automatique des factures par email avec accusé de réception</td>
-            <td>Pas de gestion des stocks ou de CRM intégré</td>
-          </tr>
-          <tr>
-            <td>Conformité légale française intégrée</td>
-            <td>Options de personnalisation restreintes</td>
-          </tr>
-          <tr>
-            <td>Prix attractif pour les petites structures</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface épurée et prise en main immédiate</td></tr><tr><td>Envoi automatique des factures par email avec accusé de réception</td></tr><tr><td>Conformité légale française intégrée</td></tr><tr><td>Prix attractif pour les petites structures</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités limitées pour les besoins avancés</td></tr><tr><td>Pas de gestion des stocks ou de CRM intégré</td></tr><tr><td>Options de personnalisation restreintes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -892,42 +762,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Evoliz, c'est un logiciel de facturation électronique français qui mise tout sur la simplicité. Je l'ai testé pour plusieurs TPE et franchement, <strong>l'interface est vraiment claire</strong>.
-
-<p>Pas de fioritures, on entre les données client, on crée la facture, elle part directement par email avec un PDF propre.</p>
-
-<p>La conformité e-invoicing arrive progressivement, même si on sent que l'équipe court un peu après les échéances réglementaires.</p><p>Ce qui m'a marqué, c'est leur module de relances automatiques.</p>
-
-<p>Tu programmes tes rappels à J+30, J+45, et le système envoie tout seul avec ton message personnalisé. <strong>Pratique quand on a 50 clients à suivre</strong> et qu'on n'a pas envie de passer sa journée à faire du recouvrement.</p>
-
-<p>L'export comptable vers Sage ou Cegid fonctionne bien, même si j'ai parfois eu des petits décalages sur les comptes auxiliaires.</p><p>Niveau tarifs, on démarre à <strong>9€/mois</strong> pour la formule de base, ce qui reste accessible pour une micro-entreprise.</p>
-
-<p>Par contre, attention aux limitations : seulement 300 factures par mois en entrée de gamme. Si tu dépasses, il faut basculer sur l'offre supérieure à <strong>19€</strong>.</p>
-
-<p>L'application mobile existe mais elle reste basique, juste pour consulter tes chiffres en déplacement.</p></p>
+            <p>Evoliz, c'est un logiciel de facturation électronique français qui mise tout sur la simplicité. Je l'ai testé pour plusieurs TPE et franchement, <strong>l'interface est vraiment claire</strong>. Pas de fioritures, on entre les données client, on crée la facture, elle part directement par email avec un PDF propre. La conformité e-invoicing arrive progressivement, même si on sent que l'équipe court un peu après les échéances réglementaires.</p><p>Ce qui m'a marqué, c'est leur module de relances automatiques. Tu programmes tes rappels à J+30, J+45, et le système envoie tout seul avec ton message personnalisé. <strong>Pratique quand on a 50 clients à suivre</strong> et qu'on n'a pas envie de passer sa journée à faire du recouvrement. L'export comptable vers Sage ou Cegid fonctionne bien, même si j'ai parfois eu des petits décalages sur les comptes auxiliaires.</p><p>Niveau tarifs, on démarre à <strong><strong>9€</strong>/mois</strong> pour la formule de base, ce qui reste accessible pour une micro-entreprise. Par contre, attention aux limitations : seulement 300 factures par mois en entrée de gamme. Si tu dépasses, il faut basculer sur l'offre supérieure à <strong>19€</strong>. L'application mobile existe mais elle reste basique, juste pour consulter tes chiffres en déplacement.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive, prise en main rapide même sans formation</td>
-            <td>Limitation stricte à 300 factures/mois en formule de base</td>
-          </tr>
-          <tr>
-            <td>Relances clients automatiques avec personnalisation des messages</td>
-            <td>Application mobile très basique, consultation uniquement</td>
-          </tr>
-          <tr>
-            <td>Export comptable direct vers Sage, Cegid et autres logiciels</td>
-            <td>Fonctionnalités e-invoicing encore en développement selon la réglementation</td>
-          </tr>
-          <tr>
-            <td>Prix d'entrée abordable à 9€/mois sans engagement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive, prise en main rapide même sans formation</td></tr><tr><td>Relances clients automatiques avec personnalisation des messages</td></tr><tr><td>Export comptable direct vers Sage, Cegid et autres logiciels</td></tr><tr><td>Prix d'entrée abordable à 9€/mois sans engagement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Limitation stricte à 300 factures/mois en formule de base</td></tr><tr><td>Application mobile très basique, consultation uniquement</td></tr><tr><td>Fonctionnalités e-invoicing encore en développement selon la réglementation</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -947,38 +794,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Axonaut fait partie de ces <strong>logiciels de facturation électronique</strong> qui tentent de couvrir large. Le CRM intégré, la gestion commerciale, la facturation... tout y passe dans une seule interface.
-
-<p>Je l'ai testé sur plusieurs projets et il séduit surtout les petites entreprises qui cherchent à centraliser leurs outils sans se ruiner.</p><p>L'approche tout-en-un d'Axonaut peut simplifier le quotidien.</p>
-
-<p>Plus besoin de jongler entre un CRM, un logiciel de devis et un outil de facturation séparé. Les relances automatiques fonctionnent bien, l'export comptable aussi.</p>
-
-<p>Par contre, j'ai trouvé certaines fonctions avancées un peu limitées comparé à des spécialistes purs.</p><p>Je recommande Axonaut aux <strong>TPE et petites PME</strong> qui démarrent leur digitalisation.</p>
-
-<p>Si vous avez des processus complexes ou des volumes importants, vous risquez de vous sentir à l'étroit assez vite. Le logiciel convient bien aux consultants, artisans ou petites agences qui veulent de la simplicité avant tout.</p></p>
+            <p>Axonaut fait partie de ces <strong>logiciels de facturation électronique</strong> qui tentent de couvrir large. Le CRM intégré, la gestion commerciale, la facturation... tout y passe dans une seule interface. Je l'ai testé sur plusieurs projets et il séduit surtout les petites entreprises qui cherchent à centraliser leurs outils sans se ruiner.</p><p>L'approche tout-en-un d'Axonaut peut simplifier le quotidien. Plus besoin de jongler entre un CRM, un logiciel de devis et un outil de facturation séparé. Les relances automatiques fonctionnent bien, l'export comptable aussi. Par contre, j'ai trouvé certaines fonctions avancées un peu limitées comparé à des spécialistes purs.</p><p>Je recommande Axonaut aux <strong>TPE et petites PME</strong> qui démarrent leur digitalisation. Si vous avez des processus complexes ou des volumes importants, vous risquez de vous sentir à l'étroit assez vite. Le logiciel convient bien aux consultants, artisans ou petites agences qui veulent de la simplicité avant tout.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive, prise en main rapide même sans formation</td>
-            <td>Personnalisation limitée des templates de documents</td>
-          </tr>
-          <tr>
-            <td>Tout-en-un réel : CRM, devis, factures et suivi commercial intégrés</td>
-            <td>Pas d'API robuste pour des intégrations poussées</td>
-          </tr>
-          <tr>
-            <td>Prix accessible pour les petites structures avec toutes les fonctions de base</td>
-            <td>Devient lent avec un gros volume de données clients</td>
-          </tr>
-          <tr>
-            <td>Relances clients automatiques et tableaux de bord clairs</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive, prise en main rapide même sans formation</td></tr><tr><td>Tout-en-un réel : CRM, devis, factures et suivi commercial intégrés</td></tr><tr><td>Prix accessible pour les petites structures avec toutes les fonctions de base</td></tr><tr><td>Relances clients automatiques et tableaux de bord clairs</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Personnalisation limitée des templates de documents</td></tr><tr><td>Pas d'API robuste pour des intégrations poussées</td></tr><tr><td>Devient lent avec un gros volume de données clients</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -998,38 +826,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Sellsy, c'est le logiciel de facturation électronique qui veut faire du <strong>tout-en-un</strong> : CRM, facturation, comptabilité et même gestion commerciale.
-
-<p>Je l'ai testé pendant six mois dans ma précédente boîte, et franchement, l'approche est plutôt séduisante quand on veut éviter de jongler entre quinze outils différents.</p><p>L'interface reste assez intuitive même si elle peut paraître chargée au début.</p>
-
-<p><strong>La synchronisation avec la comptabilité</strong> fonctionne bien, et j'ai apprécié le système de relances automatiques qui m'a fait gagner pas mal de temps.</p>
-
-<p>Par contre, on sent que Sellsy essaie de couvrir beaucoup de terrains à la fois.</p><p>Je le recommande surtout aux <strong>TPE et PME</strong> qui cherchent une solution globale sans se ruiner, mais attention si vous avez des besoins très spécifiques en facturation.</p>
-
-<p>L'outil reste généraliste et certaines fonctionnalités avancées manquent parfois de profondeur.</p></p>
+            <p>Sellsy, c'est le logiciel de facturation électronique qui veut faire du <strong>tout-en-un</strong> : CRM, facturation, comptabilité et même gestion commerciale. Je l'ai testé pendant six mois dans ma précédente boîte, et franchement, l'approche est plutôt séduisante quand on veut éviter de jongler entre quinze outils différents.</p><p>L'interface reste assez intuitive même si elle peut paraître chargée au début. <strong>La synchronisation avec la comptabilité</strong> fonctionne bien, et j'ai apprécié le système de relances automatiques qui m'a fait gagner pas mal de temps. Par contre, on sent que Sellsy essaie de couvrir beaucoup de terrains à la fois.</p><p>Je le recommande surtout aux <strong>TPE et PME</strong> qui cherchent une solution globale sans se ruiner, mais attention si vous avez des besoins très spécifiques en facturation. L'outil reste généraliste et certaines fonctionnalités avancées manquent parfois de profondeur.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface tout-en-un qui évite de multiplier les abonnements</td>
-            <td>Fonctionnalités de facturation moins poussées que des spécialistes purs</td>
-          </tr>
-          <tr>
-            <td>Synchronisation comptable automatique avec les principaux logiciels</td>
-            <td>Interface parfois surchargée qui peut perdre les nouveaux utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Relances clients automatisées avec personnalisation des messages</td>
-            <td>Support client français pas toujours très réactif selon mes expériences</td>
-          </tr>
-          <tr>
-            <td>Prix accessible dès 29€/mois pour les petites structures</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface tout-en-un qui évite de multiplier les abonnements</td></tr><tr><td>Synchronisation comptable automatique avec les principaux logiciels</td></tr><tr><td>Relances clients automatisées avec personnalisation des messages</td></tr><tr><td>Prix accessible dès 29€/mois pour les petites structures</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités de facturation moins poussées que des spécialistes purs</td></tr><tr><td>Interface parfois surchargée qui peut perdre les nouveaux utilisateurs</td></tr><tr><td>Support client français pas toujours très réactif selon mes expériences</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1049,40 +858,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Yooz</strong> sur plusieurs mois dans ma PME et je dois dire que cette solution française de dématérialisation comptable m'a vraiment impressionné.
-
-<p>Contrairement aux outils basiques, Yooz automatise l'ensemble du cycle purchase-to-pay avec une reconnaissance intelligente des documents qui fonctionne réellement bien.</p>
-
-<p>L'OCR capte les données des factures avec une précision étonnante, même sur des formats exotiques.</p><p>Ce qui m'a séduit ? Le workflow de validation paramétrable.</p>
-
-<p>Je peux créer des circuits d'approbation complexes selon les montants, fournisseurs ou centres de coûts. Plus besoin de relancer mes collaborateurs : les notifications automatiques font le travail.</p>
-
-<p>L'intégration avec notre ERP Sage s'est faite sans accroc, avec <strong>synchronisation temps réel</strong> des écritures comptables.</p><p>Yooz cible clairement les entreprises de 50 à 500 salariés qui traitent un volume conséquent de factures fournisseurs.</p>
-
-<p>Si vous cherchez juste un outil pour éditer quelques devis, passez votre chemin. Ici on parle d'automatisation poussée avec contrôles anti-fraude, archivage légal et reporting analytique avancé.</p></p>
+            <p>J'ai testé <strong>Yooz</strong> sur plusieurs mois dans ma PME et je dois dire que cette solution française de dématérialisation comptable m'a vraiment impressionné. Contrairement aux outils basiques, Yooz automatise l'ensemble du cycle purchase-to-pay avec une reconnaissance intelligente des documents qui fonctionne réellement bien. L'OCR capte les données des factures avec une précision étonnante, même sur des formats exotiques.</p><p>Ce qui m'a séduit ? Le workflow de validation paramétrable. Je peux créer des circuits d'approbation complexes selon les montants, fournisseurs ou centres de coûts. Plus besoin de relancer mes collaborateurs : les notifications automatiques font le travail. L'intégration avec notre ERP Sage s'est faite sans accroc, avec <strong>synchronisation temps réel</strong> des écritures comptables.</p><p>Yooz cible clairement les entreprises de 50 à 500 salariés qui traitent un volume conséquent de factures fournisseurs. Si vous cherchez juste un outil pour éditer quelques devis, passez votre chemin. Ici on parle d'automatisation poussée avec contrôles anti-fraude, archivage légal et reporting analytique avancé.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>OCR très performant même sur factures complexes</td>
-            <td>Tarification élevée pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation entièrement configurables</td>
-            <td>Paramétrage initial assez technique</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec la plupart des ERP du marché</td>
-            <td>Quelques lenteurs sur gros volumes de documents</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive malgré la richesse fonctionnelle</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>OCR très performant même sur factures complexes</td></tr><tr><td>Workflows de validation entièrement configurables</td></tr><tr><td>Intégration native avec la plupart des ERP du marché</td></tr><tr><td>Interface intuitive malgré la richesse fonctionnelle</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification élevée pour les petites structures</td></tr><tr><td>Paramétrage initial assez technique</td></tr><tr><td>Quelques lenteurs sur gros volumes de documents</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1102,42 +890,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Esker mise tout sur l'automatisation poussée de la facturation électronique, particulièrement dans les gros volumes de transactions.
-
-<p>J'ai testé leur plateforme sur des factures fournisseurs complexes : <strong>la reconnaissance automatique des données</strong> fonctionne vraiment bien, même sur des documents aux formats variés.</p>
-
-<p>Leur moteur d'IA extrait les montants, dates et références sans intervention manuelle dans <strong>95%</strong> des cas.</p><p>Ce qui m'a marqué, c'est leur <strong>workflow de validation multi-niveaux</strong>.</p>
-
-<p>On peut paramétrer des circuits d'approbation selon le montant, le fournisseur ou le centre de coûts. Les relances automatiques évitent les factures qui traînent.</p>
-
-<p>L'intégration avec les ERP se fait via des connecteurs préparés pour SAP, Oracle ou Sage. Franchement, ça simplifie le déploiement.</p><p>Par contre, on sent que c'est pensé pour des structures importantes.</p>
-
-<p><strong>L'interface demande un temps d'adaptation</strong> et le paramétrage initial nécessite souvent l'aide du support.</p>
-
-<p>Les TPE risquent de se sentir perdues, mais pour les moyennes et grandes entreprises qui croulent sous les factures papier, Esker peut faire gagner des heures chaque semaine.</p></p>
+            <p>Esker mise tout sur l'automatisation poussée de la facturation électronique, particulièrement dans les gros volumes de transactions. J'ai testé leur plateforme sur des factures fournisseurs complexes : <strong>la reconnaissance automatique des données</strong> fonctionne vraiment bien, même sur des documents aux formats variés. Leur moteur d'IA extrait les montants, dates et références sans intervention manuelle dans <strong>95%</strong> des cas.</p><p>Ce qui m'a marqué, c'est leur <strong>workflow de validation multi-niveaux</strong>. On peut paramétrer des circuits d'approbation selon le montant, le fournisseur ou le centre de coûts. Les relances automatiques évitent les factures qui traînent. L'intégration avec les ERP se fait via des connecteurs préparés pour SAP, Oracle ou Sage. Franchement, ça simplifie le déploiement.</p><p>Par contre, on sent que c'est pensé pour des structures importantes. <strong>L'interface demande un temps d'adaptation</strong> et le paramétrage initial nécessite souvent l'aide du support. Les TPE risquent de se sentir perdues, mais pour les moyennes et grandes entreprises qui croulent sous les factures papier, Esker peut faire gagner des heures chaque semaine.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Reconnaissance automatique très performante même sur documents complexes</td>
-            <td>Interface complexe nécessitant une formation des équipes</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation personnalisables selon montants et centres de coûts</td>
-            <td>Paramétrage initial lourd sans accompagnement technique</td>
-          </tr>
-          <tr>
-            <td>Connecteurs ERP prêts à l'emploi pour SAP, Oracle et Sage</td>
-            <td>Tarification élevée peu adaptée aux petites structures</td>
-          </tr>
-          <tr>
-            <td>Gestion des relances automatiques pour éviter les retards</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Reconnaissance automatique très performante même sur documents complexes</td></tr><tr><td>Workflows de validation personnalisables selon montants et centres de coûts</td></tr><tr><td>Connecteurs ERP prêts à l'emploi pour SAP, Oracle et Sage</td></tr><tr><td>Gestion des relances automatiques pour éviter les retards</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface complexe nécessitant une formation des équipes</td></tr><tr><td>Paramétrage initial lourd sans accompagnement technique</td></tr><tr><td>Tarification élevée peu adaptée aux petites structures</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1424,7 +1189,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 startup-factory.fr — Données actualisées le 2 octobre 2026
+        © 2026 startup-factory.fr — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>
