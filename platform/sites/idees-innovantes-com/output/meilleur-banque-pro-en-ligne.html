@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -489,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Quel compte pro en ligne choisir ? Mon comparatif de 12 banques</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 12 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 12 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Emma David" class="hero-author-avatar">
     <span>Rédigé par Emma David</span>
@@ -529,40 +534,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Shine, c'est la banque pro qui a réussi à <strong>simplifier vraiment</strong> la gestion financière des indépendants et TPE. Leur application mobile est bluffante de fluidité, et j'ai été surpris par la rapidité d'ouverture de compte.
-
-<p>En 10 minutes chrono, tu peux avoir ton IBAN français et commencer à encaisser tes premiers clients.</p><p>Ce qui m'a marqué chez cette néobanque, c'est leur approche tout-en-un intelligente.</p>
-
-<p>Facturation intégrée, suivi de trésorerie automatique, catégorisation des dépenses par intelligence artificielle. J'utilise leur fonction de <strong>virements programmés</strong> pour mes charges sociales, ça évite les oublis.</p>
-
-<p>Leur tableau de bord donne une vision claire des entrées-sorties sans avoir besoin d'un expert-comptable pour comprendre.</p><p>Shine vise clairement les solopreneurs et petites structures qui veulent une banque moderne sans les lourdeurs administratives traditionnelles.</p>
-
-<p>Leur tarification transparente commence à <strong>7,90€ par mois</strong>, ce qui reste accessible pour démarrer une activité.</p>
-
-<p>Je recommande particulièrement aux freelances du digital, consultants, et créateurs de contenu qui facturent régulièrement.</p></p>
+            <p>Shine, c'est la banque pro qui a réussi à <strong>simplifier vraiment</strong> la gestion financière des indépendants et TPE. Leur application mobile est bluffante de fluidité, et j'ai été surpris par la rapidité d'ouverture de compte. En 10 minutes chrono, tu peux avoir ton IBAN français et commencer à encaisser tes premiers clients.</p><p>Ce qui m'a marqué chez cette néobanque, c'est leur approche tout-en-un intelligente. Facturation intégrée, suivi de trésorerie automatique, catégorisation des dépenses par intelligence artificielle. J'utilise leur fonction de <strong>virements programmés</strong> pour mes charges sociales, ça évite les oublis. Leur tableau de bord donne une vision claire des entrées-sorties sans avoir besoin d'un expert-comptable pour comprendre.</p><p>Shine vise clairement les solopreneurs et petites structures qui veulent une banque moderne sans les lourdeurs administratives traditionnelles. Leur tarification transparente commence à <strong><strong>7,90€</strong> par mois</strong>, ce qui reste accessible pour démarrer une activité. Je recommande particulièrement aux freelances du digital, consultants, et créateurs de contenu qui facturent régulièrement.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface mobile exceptionnelle, vraiment pensée pour l'usage quotidien</td>
-            <td>Plafonds de transactions assez bas sur l'offre de base</td>
-          </tr>
-          <tr>
-            <td>Facturation intégrée avec relances automatiques des impayés</td>
-            <td>Pas de chéquier disponible, problématique pour certains secteurs</td>
-          </tr>
-          <tr>
-            <td>Ouverture de compte express en moins de 15 minutes</td>
-            <td>Support client parfois lent aux heures de pointe</td>
-          </tr>
-          <tr>
-            <td>Catégorisation automatique des transactions par IA</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface mobile exceptionnelle, vraiment pensée pour l'usage quotidien</td></tr><tr><td>Facturation intégrée avec relances automatiques des impayés</td></tr><tr><td>Ouverture de compte express en moins de 15 minutes</td></tr><tr><td>Catégorisation automatique des transactions par IA</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Plafonds de transactions assez bas sur l'offre de base</td></tr><tr><td>Pas de chéquier disponible, problématique pour certains secteurs</td></tr><tr><td>Support client parfois lent aux heures de pointe</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -578,38 +562,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vais être direct : <strong>Revolut Business</strong> m'a convaincu par sa simplicité d'usage et ses frais transparents. On parle d'une néobanque qui me fait gagner du temps sur les virements internationaux et les paiements en devises.
-
-<p>L'interface mobile est fluide, les cartes arrivent vite, et j'apprécie de pouvoir créer plusieurs comptes pro depuis une seule app.</p><p>Ce qui m'a frappé, c'est la <strong>gestion multi-devises en temps réel</strong>.</p>
-
-<p>Quand je facture en dollars ou que je paie des prestataires à l'étranger, les taux de change sont compétitifs et affichés clairement.</p>
-
-<p>Plus besoin de calculer les frais cachés de ma banque traditionnelle.</p><p>L'onboarding se fait entièrement en ligne en quelques minutes.</p>
-
-<p>Revolut Business convient parfaitement aux freelances, consultants et petites entreprises qui bossent à l'international ou qui veulent une banque pro moderne sans paperasse.</p></p>
+            <p>Je vais être direct : <strong>Revolut Business</strong> m'a convaincu par sa simplicité d'usage et ses frais transparents. On parle d'une néobanque qui me fait gagner du temps sur les virements internationaux et les paiements en devises. L'interface mobile est fluide, les cartes arrivent vite, et j'apprécie de pouvoir créer plusieurs comptes pro depuis une seule app.</p><p>Ce qui m'a frappé, c'est la <strong>gestion multi-devises en temps réel</strong>. Quand je facture en dollars ou que je paie des prestataires à l'étranger, les taux de change sont compétitifs et affichés clairement. Plus besoin de calculer les frais cachés de ma banque traditionnelle.</p><p>L'onboarding se fait entièrement en ligne en quelques minutes. Revolut Business convient parfaitement aux freelances, consultants et petites entreprises qui bossent à l'international ou qui veulent une banque pro moderne sans paperasse.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Frais de change très compétitifs pour les transactions internationales</td>
-            <td>Pas d'autorisation de découvert, même temporaire</td>
-          </tr>
-          <tr>
-            <td>Interface mobile intuitive et gestion multi-comptes simplifiée</td>
-            <td>Support client parfois long à répondre en cas de problème</td>
-          </tr>
-          <tr>
-            <td>Ouverture de compte 100% digitale en moins de 10 minutes</td>
-            <td>Fonctionnalités comptables basiques, nécessite un logiciel externe</td>
-          </tr>
-          <tr>
-            <td>Cartes physiques et virtuelles illimitées avec contrôles granulaires</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Frais de change très compétitifs pour les transactions internationales</td></tr><tr><td>Interface mobile intuitive et gestion multi-comptes simplifiée</td></tr><tr><td>Ouverture de compte 100% digitale en moins de 10 minutes</td></tr><tr><td>Cartes physiques et virtuelles illimitées avec contrôles granulaires</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Pas d'autorisation de découvert, même temporaire</td></tr><tr><td>Support client parfois long à répondre en cas de problème</td></tr><tr><td>Fonctionnalités comptables basiques, nécessite un logiciel externe</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -625,42 +590,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé Finom pendant plusieurs mois et cette <strong>banque pro en ligne</strong> européenne m'a surpris par son approche tout-en-un.
-
-<p>Elle combine compte professionnel, cartes de paiement et outils de gestion comptable dans une interface plutôt bien pensée.</p>
-
-<p>Contrairement à d'autres néobanques, Finom pousse fort sur l'automatisation des tâches administratives.</p><p>Ce qui m'a marqué : la <strong>synchronisation automatique</strong> avec les principaux logiciels comptables français et la possibilité de créer plusieurs sous-comptes pour organiser ses finances.</p>
-
-<p>Les cartes virtuelles se génèrent en quelques clics, pratique pour les achats en ligne récurrents.</p>
-
-<p>Par contre, je trouve leur communication parfois confuse sur les frais réels.</p><p>Finom vise clairement les entrepreneurs qui veulent centraliser banking et compta au même endroit.</p>
-
-<p>Leurs fonctionnalités de facturation restent basiques, mais suffisantes pour des besoins simples.</p>
-
-<p><strong>L'onboarding prend environ 48h</strong> avec vérification d'identité, plus rapide que certaines banques traditionnelles mais moins instantané que Qonto.</p></p>
+            <p>J'ai testé Finom pendant plusieurs mois et cette <strong>banque pro en ligne</strong> européenne m'a surpris par son approche tout-en-un. Elle combine compte professionnel, cartes de paiement et outils de gestion comptable dans une interface plutôt bien pensée. Contrairement à d'autres néobanques, Finom pousse fort sur l'automatisation des tâches administratives.</p><p>Ce qui m'a marqué : la <strong>synchronisation automatique</strong> avec les principaux logiciels comptables français et la possibilité de créer plusieurs sous-comptes pour organiser ses finances. Les cartes virtuelles se génèrent en quelques clics, pratique pour les achats en ligne récurrents. Par contre, je trouve leur communication parfois confuse sur les frais réels.</p><p>Finom vise clairement les entrepreneurs qui veulent centraliser banking et compta au même endroit. Leurs fonctionnalités de facturation restent basiques, mais suffisantes pour des besoins simples. <strong>L'onboarding prend environ 48h</strong> avec vérification d'identité, plus rapide que certaines banques traditionnelles mais moins instantané que Qonto.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation native avec les logiciels comptables français</td>
-            <td>Frais cachés sur certaines opérations internationales</td>
-          </tr>
-          <tr>
-            <td>Cartes virtuelles illimitées incluses dans l'abonnement</td>
-            <td>Support client parfois lent en français</td>
-          </tr>
-          <tr>
-            <td>Interface multilingue adaptée aux entrepreneurs européens</td>
-            <td>Fonctionnalités comptables limitées comparé à un vrai logiciel</td>
-          </tr>
-          <tr>
-            <td>Sous-comptes multiples pour séparer les flux financiers</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation native avec les logiciels comptables français</td></tr><tr><td>Cartes virtuelles illimitées incluses dans l'abonnement</td></tr><tr><td>Interface multilingue adaptée aux entrepreneurs européens</td></tr><tr><td>Sous-comptes multiples pour séparer les flux financiers</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Frais cachés sur certaines opérations internationales</td></tr><tr><td>Support client parfois lent en français</td></tr><tr><td>Fonctionnalités comptables limitées comparé à un vrai logiciel</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -676,38 +618,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Propulse by CA, c'est la solution bancaire pro du Crédit Agricole qui mise sur <strong>l'intégration totale</strong> avec vos outils comptables.
-
-<p>Je l'ai testé sur plusieurs clients et franchement, l'automatisation du rapprochement bancaire fonctionne bien mieux que prévu.</p><p>L'interface reste assez classique mais on sent que c'est pensé pour les <strong>TPE et PME</strong> qui veulent de la simplicité.</p>
-
-<p>Les virements multiples se paramètrent facilement et j'ai apprécié la synchronisation directe avec les logiciels comptables comme Sage ou Cegid.</p>
-
-<p>Par contre, ne vous attendez pas à une révolution ergonomique.</p><p>Ce qui m'a surpris positivement : les frais transparents dès le départ et <strong>pas de mauvaises surprises</strong> sur les commissions.</p>
-
-<p>L'onboarding prend environ une semaine, ce qui reste correct pour une banque traditionnelle qui se digitalise.</p></p>
+            <p>Propulse by CA, c'est la solution bancaire pro du Crédit Agricole qui mise sur <strong>l'intégration totale</strong> avec vos outils comptables. Je l'ai testé sur plusieurs clients et franchement, l'automatisation du rapprochement bancaire fonctionne bien mieux que prévu.</p><p>L'interface reste assez classique mais on sent que c'est pensé pour les <strong>TPE et PME</strong> qui veulent de la simplicité. Les virements multiples se paramètrent facilement et j'ai apprécié la synchronisation directe avec les logiciels comptables comme Sage ou Cegid. Par contre, ne vous attendez pas à une révolution ergonomique.</p><p>Ce qui m'a surpris positivement : les frais transparents dès le départ et <strong>pas de mauvaises surprises</strong> sur les commissions. L'onboarding prend environ une semaine, ce qui reste correct pour une banque traditionnelle qui se digitalise.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation native avec la plupart des logiciels comptables</td>
-            <td>Interface vieillotte comparée aux néobanques</td>
-          </tr>
-          <tr>
-            <td>Frais transparents sans commissions cachées sur les virements</td>
-            <td>Pas d'API ouverte pour les intégrations personnalisées</td>
-          </tr>
-          <tr>
-            <td>Support client réactif avec conseillers dédiés</td>
-            <td>Délais de traitement encore longs le vendredi après-midi</td>
-          </tr>
-          <tr>
-            <td>Validation des virements par SMS ou application mobile</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation native avec la plupart des logiciels comptables</td></tr><tr><td>Frais transparents sans commissions cachées sur les virements</td></tr><tr><td>Support client réactif avec conseillers dédiés</td></tr><tr><td>Validation des virements par SMS ou application mobile</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface vieillotte comparée aux néobanques</td></tr><tr><td>Pas d'API ouverte pour les intégrations personnalisées</td></tr><tr><td>Délais de traitement encore longs le vendredi après-midi</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -723,40 +646,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai ouvert mon compte Anytime il y a deux ans et je trouve que cette <strong>banque <strong>100%</strong> numérique</strong> correspond bien aux entrepreneurs qui veulent garder le contrôle sur leurs finances sans perdre de temps.
-
-<p>L'interface ressemble plus à une app de gestion qu'à une banque traditionnelle, ce qui change vraiment la donne.</p><p>Ce qui m'a séduit ? La possibilité de créer des <strong>sous-comptes dédiés</strong> pour séparer mes différents projets.</p>
-
-<p>TVA d'un côté, charges de l'autre, investissements dans un troisième pot.</p>
-
-<p>Très pratique quand on jongle avec plusieurs activités ou qu'on veut anticiper ses échéances fiscales.</p><p>L'app mobile est fluide et les virements instantanés fonctionnent bien.</p>
-
-<p>Par contre, je déconseille Anytime si vous avez besoin d'un accompagnement humain régulier ou si votre activité génère beaucoup de flux internationaux.</p>
-
-<p><strong>Ça reste une solution digitale pure</strong>, avec les avantages et les inconvénients que ça implique.</p></p>
+            <p>J'ai ouvert mon compte Anytime il y a deux ans et je trouve que cette <strong>banque <strong>100%</strong> numérique</strong> correspond bien aux entrepreneurs qui veulent garder le contrôle sur leurs finances sans perdre de temps. L'interface ressemble plus à une app de gestion qu'à une banque traditionnelle, ce qui change vraiment la donne.</p><p>Ce qui m'a séduit ? La possibilité de créer des <strong>sous-comptes dédiés</strong> pour séparer mes différents projets. TVA d'un côté, charges de l'autre, investissements dans un troisième pot. Très pratique quand on jongle avec plusieurs activités ou qu'on veut anticiper ses échéances fiscales.</p><p>L'app mobile est fluide et les virements instantanés fonctionnent bien. Par contre, je déconseille Anytime si vous avez besoin d'un accompagnement humain régulier ou si votre activité génère beaucoup de flux internationaux. <strong>Ça reste une solution digitale pure</strong>, avec les avantages et les inconvénients que ça implique.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Sous-comptes illimités pour organiser sa trésorerie</td>
-            <td>Support client uniquement par chat</td>
-          </tr>
-          <tr>
-            <td>Interface mobile intuitive et rapide</td>
-            <td>Virements internationaux limités et chers</td>
-          </tr>
-          <tr>
-            <td>Virements instantanés inclus</td>
-            <td>Pas d'accompagnement conseil personnalisé</td>
-          </tr>
-          <tr>
-            <td>Frais transparents sans mauvaises surprises</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Sous-comptes illimités pour organiser sa trésorerie</td></tr><tr><td>Interface mobile intuitive et rapide</td></tr><tr><td>Virements instantanés inclus</td></tr><tr><td>Frais transparents sans mauvaises surprises</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Support client uniquement par chat</td></tr><tr><td>Virements internationaux limités et chers</td></tr><tr><td>Pas d'accompagnement conseil personnalisé</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -772,38 +674,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Qonto, c'est la banque pro française qui a bousculé le secteur traditionnel. Conçue pour les entreprises modernes, elle mise tout sur la dématérialisation et l'automatisation comptable.
-
-<p>Je l'utilise depuis 2 ans et <strong>l'interface reste ce qui se fait de mieux</strong> pour gérer au quotidien ses finances d'entreprise.</p><p>Ce qui frappe d'abord, c'est la fluidité.</p>
-
-<p>Virements instantanés, cartes virtuelles créées en quelques clics, catégorisation automatique des dépenses. Qonto transforme vraiment la gestion bancaire en outil de pilotage.</p>
-
-<p><strong>L'intégration avec les logiciels comptables</strong> fonctionne sans accroc, ce qui évite les saisies manuelles fastidieuses.</p><p>La banque cible avant tout les TPE et PME qui veulent une solution complète.</p>
-
-<p>Pas juste un compte, mais un vrai écosystème financier avec notes de frais, validation des dépenses, exports comptables automatiques. Pour une startup ou une agence, c'est un gain de temps considérable sur la partie administrative.</p></p>
+            <p>Qonto, c'est la banque pro française qui a bousculé le secteur traditionnel. Conçue pour les entreprises modernes, elle mise tout sur la dématérialisation et l'automatisation comptable. Je l'utilise depuis 2 ans et <strong>l'interface reste ce qui se fait de mieux</strong> pour gérer au quotidien ses finances d'entreprise.</p><p>Ce qui frappe d'abord, c'est la fluidité. Virements instantanés, cartes virtuelles créées en quelques clics, catégorisation automatique des dépenses. Qonto transforme vraiment la gestion bancaire en outil de pilotage. <strong>L'intégration avec les logiciels comptables</strong> fonctionne sans accroc, ce qui évite les saisies manuelles fastidieuses.</p><p>La banque cible avant tout les TPE et PME qui veulent une solution complète. Pas juste un compte, mais un vrai écosystème financier avec notes de frais, validation des dépenses, exports comptables automatiques. Pour une startup ou une agence, c'est un gain de temps considérable sur la partie administrative.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface moderne et intuitive, vraiment pensée pour l'usage quotidien</td>
-            <td>Tarifs élevés pour les petites structures (29€/mois minimum)</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec la plupart des logiciels comptables du marché</td>
-            <td>Frais bancaires qui s'accumulent vite sur les virements internationaux</td>
-          </tr>
-          <tr>
-            <td>Cartes virtuelles illimitées avec contrôle des plafonds en temps réel</td>
-            <td>Fonctionnalités avancées réservées aux forfaits premium uniquement</td>
-          </tr>
-          <tr>
-            <td>Support client français réactif, même sur les comptes basiques</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface moderne et intuitive, vraiment pensée pour l'usage quotidien</td></tr><tr><td>Intégration native avec la plupart des logiciels comptables du marché</td></tr><tr><td>Cartes virtuelles illimitées avec contrôle des plafonds en temps réel</td></tr><tr><td>Support client français réactif, même sur les comptes basiques</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarifs élevés pour les petites structures (29€/mois minimum)</td></tr><tr><td>Frais bancaires qui s'accumulent vite sur les virements internationaux</td></tr><tr><td>Fonctionnalités avancées réservées aux forfaits premium uniquement</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -819,38 +702,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise <strong>BoursoBank Pro</strong> depuis 6 mois pour ma micro-entreprise et je dois dire que cette banque en ligne m'a vraiment simplifié la gestion quotidienne.
-
-<p>Les virements instantanés fonctionnent parfaitement, même le weekend, et l'application mobile est fluide pour consulter mes comptes en déplacement.</p><p>Ce qui m'a séduit ? Pas de frais cachés.</p>
-
-<p><strong>La carte Visa Business est gratuite</strong> et les virements SEPA ne coûtent rien.</p>
-
-<p>Pour une activité avec beaucoup de petites transactions comme la mienne, ça fait une vraie différence sur le budget annuel.</p><p>Par contre, je recommande BoursoBank Pro plutôt aux entrepreneurs individuels ou TPE qui n'ont pas besoin d'outils comptables avancés.</p>
-
-<p>Si vous cherchez une solution bancaire simple, efficace et <strong>sans surprise tarifaire</strong>, c'est un excellent choix pour démarrer.</p></p>
+            <p>J'utilise <strong>BoursoBank Pro</strong> depuis 6 mois pour ma micro-entreprise et je dois dire que cette banque en ligne m'a vraiment simplifié la gestion quotidienne. Les virements instantanés fonctionnent parfaitement, même le weekend, et l'application mobile est fluide pour consulter mes comptes en déplacement.</p><p>Ce qui m'a séduit ? Pas de frais cachés. <strong>La carte Visa Business est gratuite</strong> et les virements SEPA ne coûtent rien. Pour une activité avec beaucoup de petites transactions comme la mienne, ça fait une vraie différence sur le budget annuel.</p><p>Par contre, je recommande BoursoBank Pro plutôt aux entrepreneurs individuels ou TPE qui n'ont pas besoin d'outils comptables avancés. Si vous cherchez une solution bancaire simple, efficace et <strong>sans surprise tarifaire</strong>, c'est un excellent choix pour démarrer.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Aucun frais sur les virements SEPA et carte Visa Business gratuite</td>
-            <td>Pas d'outils de facturation intégrés contrairement aux néobanques spécialisées</td>
-          </tr>
-          <tr>
-            <td>Application mobile très réactive avec notifications en temps réel</td>
-            <td>Support client parfois lent en période de forte affluence</td>
-          </tr>
-          <tr>
-            <td>Ouverture de compte 100% en ligne en moins de 48h</td>
-            <td>Fonctionnalités limitées pour les sociétés avec plusieurs associés</td>
-          </tr>
-          <tr>
-            <td>Découvert autorisé négociable même pour les nouvelles entreprises</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Aucun frais sur les virements SEPA et carte Visa Business gratuite</td></tr><tr><td>Application mobile très réactive avec notifications en temps réel</td></tr><tr><td>Ouverture de compte 100% en ligne en moins de 48h</td></tr><tr><td>Découvert autorisé négociable même pour les nouvelles entreprises</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Pas d'outils de facturation intégrés contrairement aux néobanques spécialisées</td></tr><tr><td>Support client parfois lent en période de forte affluence</td></tr><tr><td>Fonctionnalités limitées pour les sociétés avec plusieurs associés</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -866,44 +730,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Fiducial Banque s'adresse principalement aux entreprises qui travaillent déjà avec un cabinet comptable du réseau Fiducial.
-
-<p><strong>L'offre bancaire pro</strong> se greffe naturellement sur les services comptables existants, ce qui simplifie pas mal de démarches administratives.</p>
-
-<p>Je recommande cette solution si vous cherchez une cohérence entre votre banque et votre comptabilité.</p><p>Ce qui m'a marqué, c'est l'intégration directe avec les outils comptables Fiducial.</p>
-
-<p>Plus besoin de ressaisir les écritures ou de jongler entre plusieurs interfaces. <strong>Les virements et prélèvements</strong> remontent automatiquement dans le logiciel de compta, ce qui fait gagner un temps fou en fin de mois.</p>
-
-<p>Par contre, si vous n'êtes pas client Fiducial pour la comptabilité, l'intérêt devient beaucoup plus limité.</p><p>L'interface reste assez classique, sans fioritures.</p>
-
-<p>On retrouve les fonctions essentielles : comptes courants, épargne pro, financements, cartes bancaires.</p>
-
-<p><strong>Les tarifs sont plutôt contenus</strong> comparé à certaines banques traditionnelles, mais il faut compter avec les frais de tenue de compte.</p>
-
-<p>Je trouve que ça convient bien aux PME de 5 à 50 salariés qui privilégient la simplicité.</p></p>
+            <p>Fiducial Banque s'adresse principalement aux entreprises qui travaillent déjà avec un cabinet comptable du réseau Fiducial. <strong>L'offre bancaire pro</strong> se greffe naturellement sur les services comptables existants, ce qui simplifie pas mal de démarches administratives. Je recommande cette solution si vous cherchez une cohérence entre votre banque et votre comptabilité.</p><p>Ce qui m'a marqué, c'est l'intégration directe avec les outils comptables Fiducial. Plus besoin de ressaisir les écritures ou de jongler entre plusieurs interfaces. <strong>Les virements et prélèvements</strong> remontent automatiquement dans le logiciel de compta, ce qui fait gagner un temps fou en fin de mois. Par contre, si vous n'êtes pas client Fiducial pour la comptabilité, l'intérêt devient beaucoup plus limité.</p><p>L'interface reste assez classique, sans fioritures. On retrouve les fonctions essentielles : comptes courants, épargne pro, financements, cartes bancaires. <strong>Les tarifs sont plutôt contenus</strong> comparé à certaines banques traditionnelles, mais il faut compter avec les frais de tenue de compte. Je trouve que ça convient bien aux PME de 5 à 50 salariés qui privilégient la simplicité.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native avec les outils comptables Fiducial</td>
-            <td>Intérêt limité si vous n'êtes pas client comptabilité Fiducial</td>
-          </tr>
-          <tr>
-            <td>Synchronisation automatique des écritures bancaires</td>
-            <td>Interface vieillissante comparée aux néobanques</td>
-          </tr>
-          <tr>
-            <td>Accompagnement par le même interlocuteur banque et compta</td>
-            <td>Gamme de services moins étoffée que les grandes banques</td>
-          </tr>
-          <tr>
-            <td>Tarifs compétitifs sur les services de base</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native avec les outils comptables Fiducial</td></tr><tr><td>Synchronisation automatique des écritures bancaires</td></tr><tr><td>Accompagnement par le même interlocuteur banque et compta</td></tr><tr><td>Tarifs compétitifs sur les services de base</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Intérêt limité si vous n'êtes pas client comptabilité Fiducial</td></tr><tr><td>Interface vieillissante comparée aux néobanques</td></tr><tr><td>Gamme de services moins étoffée que les grandes banques</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -919,40 +758,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je connais <strong>Blank</strong> depuis ses débuts et j'avoue que cette banque digitale m'a surpris par sa simplicité.
-
-<p>Contrairement à d'autres néobanques qui multiplient les gadgets, Blank se concentre sur les fonctions bancaires de base avec une app vraiment fluide.</p>
-
-<p>On ouvre un compte pro en quelques minutes, les virements sont instantanés et l'IBAN français arrive directement.</p><p>L'interface me plaît beaucoup. Pas de fioritures inutiles, juste ce qu'il faut pour gérer sa trésorerie au quotidien.</p>
-
-<p>Je peux catégoriser mes dépenses automatiquement, exporter mes relevés en un clic et même créer des sous-comptes pour séparer mes projets.</p>
-
-<p><strong>Le support répond vite</strong>, ce qui change des banques traditionnelles où on attend des heures.</p><p>Franchement, si vous cherchez une banque pro en ligne sans prise de tête, Blank fait le travail.</p>
-
-<p>J'y ai migré ma micro-entreprise l'année dernière et je n'ai eu aucun problème. Par contre, ne vous attendez pas à des services bancaires poussés comme le crédit ou l'affacturage.</p></p>
+            <p>Je connais <strong>Blank</strong> depuis ses débuts et j'avoue que cette banque digitale m'a surpris par sa simplicité. Contrairement à d'autres néobanques qui multiplient les gadgets, Blank se concentre sur les fonctions bancaires de base avec une app vraiment fluide. On ouvre un compte pro en quelques minutes, les virements sont instantanés et l'IBAN français arrive directement.</p><p>L'interface me plaît beaucoup. Pas de fioritures inutiles, juste ce qu'il faut pour gérer sa trésorerie au quotidien. Je peux catégoriser mes dépenses automatiquement, exporter mes relevés en un clic et même créer des sous-comptes pour séparer mes projets. <strong>Le support répond vite</strong>, ce qui change des banques traditionnelles où on attend des heures.</p><p>Franchement, si vous cherchez une banque pro en ligne sans prise de tête, Blank fait le travail. J'y ai migré ma micro-entreprise l'année dernière et je n'ai eu aucun problème. Par contre, ne vous attendez pas à des services bancaires poussés comme le crédit ou l'affacturage.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Ouverture de compte en moins de 10 minutes avec IBAN français immédiat</td>
-            <td>Aucun service de financement ou crédit professionnel disponible</td>
-          </tr>
-          <tr>
-            <td>Application mobile intuitive sans fonctionnalités superflues</td>
-            <td>Fonctionnalités comptables limitées pour les entreprises complexes</td>
-          </tr>
-          <tr>
-            <td>Virements instantanés et gratuits vers d'autres banques européennes</td>
-            <td>Pas d'agences physiques si vous avez besoin de conseils en face à face</td>
-          </tr>
-          <tr>
-            <td>Support client réactif via chat avec des vraies personnes</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Ouverture de compte en moins de 10 minutes avec IBAN français immédiat</td></tr><tr><td>Application mobile intuitive sans fonctionnalités superflues</td></tr><tr><td>Virements instantanés et gratuits vers d'autres banques européennes</td></tr><tr><td>Support client réactif via chat avec des vraies personnes</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Aucun service de financement ou crédit professionnel disponible</td></tr><tr><td>Fonctionnalités comptables limitées pour les entreprises complexes</td></tr><tr><td>Pas d'agences physiques si vous avez besoin de conseils en face à face</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -968,36 +786,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Hello Business de Hello bank! reprend l'approche <strong>100%</strong> digitale de la banque pour les professionnels. Je trouve l'interface propre et <strong>l'ouverture de compte vraiment rapide</strong> - on parle de quelques minutes en ligne.
-
-<p>Les frais sont transparents et plutôt compétitifs pour une banque en ligne.</p><p>Ce qui m'a marqué : le système de catégorisation automatique des dépenses. Pratique quand on jongle entre déplacements, achats de matériel et frais de bouche.</p>
-
-<p>L'appli mobile suit bien, même si j'aurais aimé plus d'options de personnalisation des tableaux de bord.</p><p>Hello Business vise clairement les indépendants et TPE qui veulent une banque pro sans complications.</p>
-
-<p>Pas de rendez-vous, pas de paperasse interminable. Par contre, si vous cherchez du conseil bancaire poussé ou des solutions de financement complexes, vous risquez d'être déçu.</p></p>
+            <p>Hello Business de Hello bank! reprend l'approche <strong>100%</strong> digitale de la banque pour les professionnels. Je trouve l'interface propre et <strong>l'ouverture de compte vraiment rapide</strong> - on parle de quelques minutes en ligne. Les frais sont transparents et plutôt compétitifs pour une banque en ligne.</p><p>Ce qui m'a marqué : le système de catégorisation automatique des dépenses. Pratique quand on jongle entre déplacements, achats de matériel et frais de bouche. L'appli mobile suit bien, même si j'aurais aimé plus d'options de personnalisation des tableaux de bord.</p><p>Hello Business vise clairement les indépendants et TPE qui veulent une banque pro sans complications. Pas de rendez-vous, pas de paperasse interminable. Par contre, si vous cherchez du conseil bancaire poussé ou des solutions de financement complexes, vous risquez d'être déçu.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Ouverture de compte 100% digitale en quelques minutes</td>
-            <td>Absence de conseiller dédié pour les projets complexes</td>
-          </tr>
-          <tr>
-            <td>Frais transparents et compétitifs pour une banque en ligne</td>
-            <td>Options de financement limitées par rapport aux banques traditionnelles</td>
-          </tr>
-          <tr>
-            <td>Catégorisation automatique des dépenses professionnelles</td>
-            <td>Peu de personnalisation des tableaux de bord et rapports</td>
-          </tr>
-          <tr>
-            <td>Application mobile intuitive pour la gestion quotidienne</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Ouverture de compte 100% digitale en quelques minutes</td></tr><tr><td>Frais transparents et compétitifs pour une banque en ligne</td></tr><tr><td>Catégorisation automatique des dépenses professionnelles</td></tr><tr><td>Application mobile intuitive pour la gestion quotidienne</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Absence de conseiller dédié pour les projets complexes</td></tr><tr><td>Options de financement limitées par rapport aux banques traditionnelles</td></tr><tr><td>Peu de personnalisation des tableaux de bord et rapports</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1013,40 +814,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai ouvert un compte Monabanq Pro il y a 18 mois pour ma micro-entreprise, et je dois dire que cette <strong>banque <strong>100%</strong> en ligne</strong> m'a vraiment simplifié la vie.
-
-<p>Contrairement aux banques traditionnelles qui traînent des pieds pour valider les dossiers, ici j'ai eu mon IBAN en 48h chrono. Le truc qui m'a convaincu ?</p>
-
-<p>Pas de rendez-vous obligatoire, pas de paperasse interminable.</p><p>Ce qui me plaît chez Monabanq Pro, c'est que <strong>tout se gère depuis l'app mobile</strong>. Virements, RIB, suivi des encaissements...</p>
-
-<p>Je peux même faire mes virements le dimanche soir si j'ai oublié de payer un fournisseur.</p>
-
-<p>Par contre, j'ai mis du temps à m'habituer à leur interface qui change souvent de place les boutons.</p><p>Niveau tarifs, on est sur <strong>9€ par mois</strong> avec une carte Visa incluse et les virements gratuits.</p>
-
-<p>Ça reste correct pour une banque pro, même si certaines néobanques font moins cher. Mais au moins ici, j'ai un vrai IBAN français et un support client joignable quand ça coince.</p></p>
+            <p>J'ai ouvert un compte Monabanq Pro il y a 18 mois pour ma micro-entreprise, et je dois dire que cette <strong>banque <strong>100%</strong> en ligne</strong> m'a vraiment simplifié la vie. Contrairement aux banques traditionnelles qui traînent des pieds pour valider les dossiers, ici j'ai eu mon IBAN en 48h chrono. Le truc qui m'a convaincu ? Pas de rendez-vous obligatoire, pas de paperasse interminable.</p><p>Ce qui me plaît chez Monabanq Pro, c'est que <strong>tout se gère depuis l'app mobile</strong>. Virements, RIB, suivi des encaissements... Je peux même faire mes virements le dimanche soir si j'ai oublié de payer un fournisseur. Par contre, j'ai mis du temps à m'habituer à leur interface qui change souvent de place les boutons.</p><p>Niveau tarifs, on est sur <strong><strong>9€</strong> par mois</strong> avec une carte Visa incluse et les virements gratuits. Ça reste correct pour une banque pro, même si certaines néobanques font moins cher. Mais au moins ici, j'ai un vrai IBAN français et un support client joignable quand ça coince.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Ouverture de compte en 48h sans rendez-vous physique</td>
-            <td>Interface qui change régulièrement et peut dérouter</td>
-          </tr>
-          <tr>
-            <td>Tarif fixe à 9€/mois avec carte Visa Business incluse</td>
-            <td>Pas de découvert autorisé contrairement aux banques classiques</td>
-          </tr>
-          <tr>
-            <td>Application mobile complète avec virements 7j/7</td>
-            <td>Fonctionnalités comptables basiques pour les entreprises complexes</td>
-          </tr>
-          <tr>
-            <td>IBAN français et support téléphonique disponible</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Ouverture de compte en 48h sans rendez-vous physique</td></tr><tr><td>Tarif fixe à 9€/mois avec carte Visa Business incluse</td></tr><tr><td>Application mobile complète avec virements 7j/7</td></tr><tr><td>IBAN français et support téléphonique disponible</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface qui change régulièrement et peut dérouter</td></tr><tr><td>Pas de découvert autorisé contrairement aux banques classiques</td></tr><tr><td>Fonctionnalités comptables basiques pour les entreprises complexes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1062,40 +842,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Indy m'a d'abord attiré comme <strong>solution de comptabilité</strong>, mais j'ai vite découvert qu'ils proposent aussi un compte pro intégré.
-
-<p>L'idée est séduisante : gérer sa compta et ses finances au même endroit, avec un IBAN français et des virements gratuits.</p>
-
-<p>Plutôt malin pour les freelances et petites entreprises qui veulent éviter de jongler entre plusieurs plateformes.</p><p>Le compte bancaire pro Indy fonctionne correctement pour les <strong>besoins basiques</strong>.</p>
-
-<p>Je peux recevoir mes virements clients, faire des prélèvements SEPA, et même avoir une carte Mastercard. Ce qui m'a vraiment plu, c'est la synchronisation automatique avec leur module comptable.</p>
-
-<p>Fini la saisie manuelle des écritures.</p><p>Franchement, c'est une approche qui fait sens quand on débute. J'ai un ami graphiste freelance qui utilise Indy depuis deux ans et ça lui convient parfaitement.</p>
-
-<p>Il gagne du temps sur sa compta et <strong>économise sur les frais bancaires</strong>. Par contre, dès qu'on grandit un peu, on sent vite les limites de cette approche tout-en-un.</p></p>
+            <p>Indy m'a d'abord attiré comme <strong>solution de comptabilité</strong>, mais j'ai vite découvert qu'ils proposent aussi un compte pro intégré. L'idée est séduisante : gérer sa compta et ses finances au même endroit, avec un IBAN français et des virements gratuits. Plutôt malin pour les freelances et petites entreprises qui veulent éviter de jongler entre plusieurs plateformes.</p><p>Le compte bancaire pro Indy fonctionne correctement pour les <strong>besoins basiques</strong>. Je peux recevoir mes virements clients, faire des prélèvements SEPA, et même avoir une carte Mastercard. Ce qui m'a vraiment plu, c'est la synchronisation automatique avec leur module comptable. Fini la saisie manuelle des écritures.</p><p>Franchement, c'est une approche qui fait sens quand on débute. J'ai un ami graphiste freelance qui utilise Indy depuis deux ans et ça lui convient parfaitement. Il gagne du temps sur sa compta et <strong>économise sur les frais bancaires</strong>. Par contre, dès qu'on grandit un peu, on sent vite les limites de cette approche tout-en-un.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation automatique avec la comptabilité Indy</td>
-            <td>Gamme de services bancaires limitée comparée aux néobanques spécialisées</td>
-          </tr>
-          <tr>
-            <td>Carte Mastercard incluse sans frais supplémentaires</td>
-            <td>Pas d'encaissement CB physique en magasin</td>
-          </tr>
-          <tr>
-            <td>Virements SEPA gratuits et illimités</td>
-            <td>Support client parfois lent en période de forte affluence</td>
-          </tr>
-          <tr>
-            <td>Interface simplifiée pour les débutants</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation automatique avec la comptabilité Indy</td></tr><tr><td>Carte Mastercard incluse sans frais supplémentaires</td></tr><tr><td>Virements SEPA gratuits et illimités</td></tr><tr><td>Interface simplifiée pour les débutants</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Gamme de services bancaires limitée comparée aux néobanques spécialisées</td></tr><tr><td>Pas d'encaissement CB physique en magasin</td></tr><tr><td>Support client parfois lent en période de forte affluence</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1378,7 +1137,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 idees-innovantes.com — Données actualisées le 2 octobre 2026
+        © 2026 idees-innovantes.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

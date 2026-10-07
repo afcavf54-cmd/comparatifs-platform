@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -489,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Mon comparateur de 10 logiciels d'onboarding pour les RH</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Emma David" class="hero-author-avatar">
     <span>Rédigé par Emma David</span>
@@ -529,40 +534,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai découvert <strong>Welcom'App</strong> en cherchant un logiciel d'onboarding qui dépasse le simple parcours d'intégration.
-
-<p>Cette solution française se concentre sur l'expérience collaborateur dès le premier jour, avec des workflows personnalisables et une approche progressive de l'intégration. Ce qui m'a marqué ?</p>
-
-<p>La possibilité de créer des parcours vraiment sur-mesure selon le poste, pas juste un questionnaire générique.</p><p>Les RH peuvent facilement paramétrer chaque étape : envoi automatique des documents pré-boarding, planning des premiers rendez-vous, attribution des équipements, présentation des collègues avec photos et rôles.</p>
-
-<p>L'interface reste intuitive même pour les moins techniques.</p>
-
-<p>Je trouve que <strong>Welcom'App</strong> brille surtout dans le suivi des tâches d'intégration et la création d'un lien social avant l'arrivée.</p><p>Par contre, on sent que c'est pensé pour des structures moyennes à grandes.</p>
-
-<p>Les très petites entreprises risquent de trouver ça un peu lourd pour leurs besoins basiques. L'outil demande aussi un vrai investissement en temps de paramétrage initial pour être vraiment efficace.</p></p>
+            <p>J'ai découvert <strong>Welcom'App</strong> en cherchant un logiciel d'onboarding qui dépasse le simple parcours d'intégration. Cette solution française se concentre sur l'expérience collaborateur dès le premier jour, avec des workflows personnalisables et une approche progressive de l'intégration. Ce qui m'a marqué ? La possibilité de créer des parcours vraiment sur-mesure selon le poste, pas juste un questionnaire générique.</p><p>Les RH peuvent facilement paramétrer chaque étape : envoi automatique des documents pré-boarding, planning des premiers rendez-vous, attribution des équipements, présentation des collègues avec photos et rôles. L'interface reste intuitive même pour les moins techniques. Je trouve que <strong>Welcom'App</strong> brille surtout dans le suivi des tâches d'intégration et la création d'un lien social avant l'arrivée.</p><p>Par contre, on sent que c'est pensé pour des structures moyennes à grandes. Les très petites entreprises risquent de trouver ça un peu lourd pour leurs besoins basiques. L'outil demande aussi un vrai investissement en temps de paramétrage initial pour être vraiment efficace.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Workflows d'onboarding entièrement personnalisables par métier</td>
-            <td>Complexité du paramétrage initial assez chronophage</td>
-          </tr>
-          <tr>
-            <td>Automatisation complète du pré-boarding avec relances</td>
-            <td>Tarification peu adaptée aux TPE de moins de 20 salariés</td>
-          </tr>
-          <tr>
-            <td>Interface collaborative avec présentation des équipes</td>
-            <td>Fonctionnalités avancées parfois redondantes pour des besoins simples</td>
-          </tr>
-          <tr>
-            <td>Tableau de bord RH pour suivre l'avancement en temps réel</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Workflows d'onboarding entièrement personnalisables par métier</td></tr><tr><td>Automatisation complète du pré-boarding avec relances</td></tr><tr><td>Interface collaborative avec présentation des équipes</td></tr><tr><td>Tableau de bord RH pour suivre l'avancement en temps réel</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Complexité du paramétrage initial assez chronophage</td></tr><tr><td>Tarification peu adaptée aux TPE de moins de 20 salariés</td></tr><tr><td>Fonctionnalités avancées parfois redondantes pour des besoins simples</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -578,40 +562,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Enboarder se concentre sur l'expérience collaborateur dès l'embauche avec une approche qui va au-delà du simple processus administratif.
-
-<p>Je l'ai testé dans une startup tech de 150 personnes et <strong>l'automatisation des workflows</strong> m'a vraiment simplifié la vie.</p>
-
-<p>La plateforme permet de créer des parcours personnalisés selon le poste, d'automatiser les tâches récurrentes et de suivre l'engagement des nouveaux arrivants en temps réel.</p><p>Ce qui m'a marqué, c'est la capacité à intégrer les équipes existantes dans le processus d'onboarding.</p>
-
-<p>Les managers reçoivent des notifications automatiques, les buddies ont accès à un tableau de bord dédié et les RH peuvent ajuster les parcours à la volée.</p>
-
-<p><strong>L'interface reste intuitive</strong> même pour les moins tech-savvy de l'équipe.</p><p>Enboarder mise beaucoup sur l'aspect humain avec des fonctionnalités de networking interne et de feedback continu.</p>
-
-<p>J'ai pu créer des questionnaires de satisfaction automatiques à 30, 60 et 90 jours. Par contre, <strong>attention au budget</strong> si vous avez moins de 50 salariés, ça peut vite devenir cher pour ce que vous utiliserez réellement.</p></p>
+            <p>Enboarder se concentre sur l'expérience collaborateur dès l'embauche avec une approche qui va au-delà du simple processus administratif. Je l'ai testé dans une startup tech de 150 personnes et <strong>l'automatisation des workflows</strong> m'a vraiment simplifié la vie. La plateforme permet de créer des parcours personnalisés selon le poste, d'automatiser les tâches récurrentes et de suivre l'engagement des nouveaux arrivants en temps réel.</p><p>Ce qui m'a marqué, c'est la capacité à intégrer les équipes existantes dans le processus d'onboarding. Les managers reçoivent des notifications automatiques, les buddies ont accès à un tableau de bord dédié et les RH peuvent ajuster les parcours à la volée. <strong>L'interface reste intuitive</strong> même pour les moins tech-savvy de l'équipe.</p><p>Enboarder mise beaucoup sur l'aspect humain avec des fonctionnalités de networking interne et de feedback continu. J'ai pu créer des questionnaires de satisfaction automatiques à 30, 60 et 90 jours. Par contre, <strong>attention au budget</strong> si vous avez moins de 50 salariés, ça peut vite devenir cher pour ce que vous utiliserez réellement.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Workflows d'onboarding entièrement personnalisables selon les métiers</td>
-            <td>Tarification élevée pour les petites structures (moins de 50 employés)</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec les principaux SIRH et outils collaboration</td>
-            <td>Interface parfois lente lors des pics d'utilisation</td>
-          </tr>
-          <tr>
-            <td>Tableau de bord analytics détaillé sur l'engagement des nouvelles recrues</td>
-            <td>Configuration initiale complexe nécessitant un accompagnement technique</td>
-          </tr>
-          <tr>
-            <td>Fonctionnalités de networking interne pour faciliter l'intégration sociale</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Workflows d'onboarding entièrement personnalisables selon les métiers</td></tr><tr><td>Intégration native avec les principaux SIRH et outils collaboration</td></tr><tr><td>Tableau de bord analytics détaillé sur l'engagement des nouvelles recrues</td></tr><tr><td>Fonctionnalités de networking interne pour faciliter l'intégration sociale</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification élevée pour les petites structures (moins de 50 employés)</td></tr><tr><td>Interface parfois lente lors des pics d'utilisation</td></tr><tr><td>Configuration initiale complexe nécessitant un accompagnement technique</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -627,44 +590,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise Sapling depuis 8 mois pour structurer l'arrivée de nouveaux commerciaux dans mon équipe.
-
-<p>Cette plateforme d'onboarding mise tout sur <strong>l'automatisation des workflows</strong> et la personnalisation poussée des parcours d'intégration.</p>
-
-<p>On peut créer des séquences complètes avec assignation automatique de mentors, suivi de progression en temps réel et déclenchement d'actions selon le profil du nouveau collaborateur.</p><p>Ce qui m'a convaincu ?</p>
-
-<p>La possibilité de <strong>segmenter finement les parcours</strong> selon le poste, l'expérience ou même la localisation géographique.</p>
-
-<p>Sapling s'intègre nativement avec les principaux SIRH (Workday, BambooHR, Greenhouse) et permet de pousser les informations RH directement dans le processus d'onboarding.</p>
-
-<p>J'ai pu réduire de moitié le temps administratif des managers grâce aux formulaires pré-remplis et aux validations automatiques.</p><p>Le tableau de bord manager reste mon point d'entrée quotidien.</p>
-
-<p>Je vois d'un coup d'œil qui a terminé quelle étape, qui prend du retard sur les formations obligatoires, et quels nouveaux arrivants nécessitent un accompagnement renforcé.</p>
-
-<p><strong>Plutôt orienté moyennes et grandes structures</strong> qui cherchent à industrialiser leur processus d'intégration sans perdre en qualité relationnelle.</p></p>
+            <p>J'utilise Sapling depuis 8 mois pour structurer l'arrivée de nouveaux commerciaux dans mon équipe. Cette plateforme d'onboarding mise tout sur <strong>l'automatisation des workflows</strong> et la personnalisation poussée des parcours d'intégration. On peut créer des séquences complètes avec assignation automatique de mentors, suivi de progression en temps réel et déclenchement d'actions selon le profil du nouveau collaborateur.</p><p>Ce qui m'a convaincu ? La possibilité de <strong>segmenter finement les parcours</strong> selon le poste, l'expérience ou même la localisation géographique. Sapling s'intègre nativement avec les principaux SIRH (Workday, BambooHR, Greenhouse) et permet de pousser les informations RH directement dans le processus d'onboarding. J'ai pu réduire de moitié le temps administratif des managers grâce aux formulaires pré-remplis et aux validations automatiques.</p><p>Le tableau de bord manager reste mon point d'entrée quotidien. Je vois d'un coup d'œil qui a terminé quelle étape, qui prend du retard sur les formations obligatoires, et quels nouveaux arrivants nécessitent un accompagnement renforcé. <strong>Plutôt orienté moyennes et grandes structures</strong> qui cherchent à industrialiser leur processus d'intégration sans perdre en qualité relationnelle.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Automatisation poussée des workflows d'intégration avec déclencheurs intelligents</td>
-            <td>Interface parfois surchargée pour les petites équipes RH</td>
-          </tr>
-          <tr>
-            <td>Segmentation fine des parcours selon profils, postes et géolocalisation</td>
-            <td>Temps de configuration initial assez long pour les workflows complexes</td>
-          </tr>
-          <tr>
-            <td>Intégrations natives avec les principaux SIRH du marché</td>
-            <td>Prix élevé qui peut freiner les PME de moins de 50 salariés</td>
-          </tr>
-          <tr>
-            <td>Tableau de bord manager avec suivi temps réel des progressions</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Automatisation poussée des workflows d'intégration avec déclencheurs intelligents</td></tr><tr><td>Segmentation fine des parcours selon profils, postes et géolocalisation</td></tr><tr><td>Intégrations natives avec les principaux SIRH du marché</td></tr><tr><td>Tableau de bord manager avec suivi temps réel des progressions</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface parfois surchargée pour les petites équipes RH</td></tr><tr><td>Temps de configuration initial assez long pour les workflows complexes</td></tr><tr><td>Prix élevé qui peut freiner les PME de moins de 50 salariés</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -680,40 +618,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé Donut pendant trois mois sur <strong>l'intégration d'une quinzaine de nouveaux employés</strong> et franchement, ça change tout.
-
-<p>Ce logiciel d'onboarding mise sur une approche gamifiée pour créer des parcours d'accueil interactifs.</p>
-
-<p>Les nouveaux arrivants progressent via des quêtes, débloquent des badges et peuvent même interagir avec leurs collègues via un chat intégré.</p><p>Ce qui m'a marqué : <strong>la facilité pour créer des parcours personnalisés</strong>.</p>
-
-<p>En deux clics, je peux adapter le contenu selon le poste, le service ou même l'expérience du candidat.</p>
-
-<p>Les templates sont vraiment bien fichues et l'interface reste intuitive même pour quelqu'un qui n'a jamais touché à un outil d'onboarding.</p><p>Le gros plus de Donut, c'est qu'il transforme ce qui est souvent vécu comme une corvée administrative en vrai moment d'engagement.</p>
-
-<p>J'ai vu des développeurs timides se mettre à échanger sur Slack grâce aux défis collaboratifs. <strong>Résultat concret</strong> : notre taux de satisfaction sur les premiers jours est passé de 6,2 à 8,4 sur 10.</p></p>
+            <p>J'ai testé Donut pendant trois mois sur <strong>l'intégration d'une quinzaine de nouveaux employés</strong> et franchement, ça change tout. Ce logiciel d'onboarding mise sur une approche gamifiée pour créer des parcours d'accueil interactifs. Les nouveaux arrivants progressent via des quêtes, débloquent des badges et peuvent même interagir avec leurs collègues via un chat intégré.</p><p>Ce qui m'a marqué : <strong>la facilité pour créer des parcours personnalisés</strong>. En deux clics, je peux adapter le contenu selon le poste, le service ou même l'expérience du candidat. Les templates sont vraiment bien fichues et l'interface reste intuitive même pour quelqu'un qui n'a jamais touché à un outil d'onboarding.</p><p>Le gros plus de Donut, c'est qu'il transforme ce qui est souvent vécu comme une corvée administrative en vrai moment d'engagement. J'ai vu des développeurs timides se mettre à échanger sur Slack grâce aux défis collaboratifs. <strong>Résultat concret</strong> : notre taux de satisfaction sur les premiers jours est passé de 6,2 à 8,4 sur 10.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface gamifiée qui engage vraiment les nouveaux employés</td>
-            <td>Tarification qui grimpe vite avec le nombre d'utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Création de parcours personnalisés en quelques minutes</td>
-            <td>Peu d'options de personnalisation visuelle avancée</td>
-          </tr>
-          <tr>
-            <td>Suivi en temps réel des progressions et points de blocage</td>
-            <td>Support client parfois lent en français</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec Slack et les principaux SIRH</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface gamifiée qui engage vraiment les nouveaux employés</td></tr><tr><td>Création de parcours personnalisés en quelques minutes</td></tr><tr><td>Suivi en temps réel des progressions et points de blocage</td></tr><tr><td>Intégration native avec Slack et les principaux SIRH</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification qui grimpe vite avec le nombre d'utilisateurs</td></tr><tr><td>Peu d'options de personnalisation visuelle avancée</td></tr><tr><td>Support client parfois lent en français</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -729,42 +646,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Talmundo</strong> l'année dernière pour automatiser l'onboarding de nos équipes commerciales.
-
-<p>Ce logiciel mise tout sur la personnalisation et l'engagement collaborateur avec un système de parcours adaptatifs assez poussé.</p>
-
-<p>On peut créer des workflows d'intégration qui s'ajustent selon le profil, le poste et même les réponses du nouveau salarié.</p><p>Concrètement, j'ai pu configurer des parcours différents pour nos commerciaux terrain versus nos account managers.</p>
-
-<p>La plateforme propose des modules interactifs, des quiz, du contenu vidéo et surtout un suivi en temps réel des managers.</p>
-
-<p>Ce qui m'a marqué : <strong>l'analytics poussé</strong> qui montre précisément où les nouveaux décrochent dans leur parcours.</p><p>Par contre, la prise en main demande du temps.</p>
-
-<p>J'ai passé trois semaines à paramétrer correctement tous nos workflows. <strong>Comptez un budget conséquent</strong> aussi, on est loin des solutions basiques à <strong>20€</strong>/mois.</p>
-
-<p>Talmundo vise clairement les entreprises de 200+ salariés qui recrutent régulièrement et veulent industrialiser leur onboarding.</p></p>
+            <p>J'ai testé <strong>Talmundo</strong> l'année dernière pour automatiser l'onboarding de nos équipes commerciales. Ce logiciel mise tout sur la personnalisation et l'engagement collaborateur avec un système de parcours adaptatifs assez poussé. On peut créer des workflows d'intégration qui s'ajustent selon le profil, le poste et même les réponses du nouveau salarié.</p><p>Concrètement, j'ai pu configurer des parcours différents pour nos commerciaux terrain versus nos account managers. La plateforme propose des modules interactifs, des quiz, du contenu vidéo et surtout un suivi en temps réel des managers. Ce qui m'a marqué : <strong>l'analytics poussé</strong> qui montre précisément où les nouveaux décrochent dans leur parcours.</p><p>Par contre, la prise en main demande du temps. J'ai passé trois semaines à paramétrer correctement tous nos workflows. <strong>Comptez un budget conséquent</strong> aussi, on est loin des solutions basiques à <strong>20€</strong>/mois. Talmundo vise clairement les entreprises de 200+ salariés qui recrutent régulièrement et veulent industrialiser leur onboarding.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Parcours adaptatifs selon le profil et les réponses du collaborateur</td>
-            <td>Configuration initiale longue et technique</td>
-          </tr>
-          <tr>
-            <td>Analytics détaillé avec identification des points de friction</td>
-            <td>Tarifs élevés peu adaptés aux PME</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec les principaux SIRH du marché</td>
-            <td>Interface parfois lourde pour les utilisateurs occasionnels</td>
-          </tr>
-          <tr>
-            <td>Suivi collaboratif entre RH, manager et nouvelle recrue</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Parcours adaptatifs selon le profil et les réponses du collaborateur</td></tr><tr><td>Analytics détaillé avec identification des points de friction</td></tr><tr><td>Intégration native avec les principaux SIRH du marché</td></tr><tr><td>Suivi collaboratif entre RH, manager et nouvelle recrue</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Configuration initiale longue et technique</td></tr><tr><td>Tarifs élevés peu adaptés aux PME</td></tr><tr><td>Interface parfois lourde pour les utilisateurs occasionnels</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -780,38 +674,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé Workelo l'année dernière pour onboarder une vingtaine de commerciaux. Cette solution française mise sur la simplicité avec des <strong>parcours clé-en-main</strong> qu'on peut adapter rapidement.
-
-<p>L'interface épurée évite la surcharge, et les collaborateurs s'y retrouvent sans formation préalable.</p><p>Ce qui m'a séduit ? Les templates prêts à l'emploi pour différents métiers.</p>
-
-<p>En trois clics, j'ai monté un parcours d'accueil complet avec quiz interactifs, documents obligatoires et suivi automatique des étapes.</p>
-
-<p>Le tableau de bord RH donne une vision claire des retardataires.</p><p>Workelo convient parfaitement aux PME de <strong>50 à 200 salariés</strong> qui veulent professionnaliser leur onboarding sans y passer des semaines.</p>
-
-<p>Les équipes RH débordées apprécient cette approche plug-and-play, même si certaines entreprises avec des processus très spécifiques pourraient se sentir limitées.</p></p>
+            <p>J'ai testé Workelo l'année dernière pour onboarder une vingtaine de commerciaux. Cette solution française mise sur la simplicité avec des <strong>parcours clé-en-main</strong> qu'on peut adapter rapidement. L'interface épurée évite la surcharge, et les collaborateurs s'y retrouvent sans formation préalable.</p><p>Ce qui m'a séduit ? Les templates prêts à l'emploi pour différents métiers. En trois clics, j'ai monté un parcours d'accueil complet avec quiz interactifs, documents obligatoires et suivi automatique des étapes. Le tableau de bord RH donne une vision claire des retardataires.</p><p>Workelo convient parfaitement aux PME de <strong>50 à 200 salariés</strong> qui veulent professionnaliser leur onboarding sans y passer des semaines. Les équipes RH débordées apprécient cette approche plug-and-play, même si certaines entreprises avec des processus très spécifiques pourraient se sentir limitées.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Templates métier prêts à l'emploi qui font gagner un temps fou</td>
-            <td>Personnalisation limitée si vous avez des processus très spécifiques</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive, même les moins tech s'y retrouvent</td>
-            <td>Intégrations encore restreintes avec certains SIRH</td>
-          </tr>
-          <tr>
-            <td>Suivi automatique des progressions avec relances par email</td>
-            <td>Support client parfois lent à répondre en période de pic</td>
-          </tr>
-          <tr>
-            <td>Prix abordable pour les PME comparé aux mastodontes du marché</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Templates métier prêts à l'emploi qui font gagner un temps fou</td></tr><tr><td>Interface intuitive, même les moins tech s'y retrouvent</td></tr><tr><td>Suivi automatique des progressions avec relances par email</td></tr><tr><td>Prix abordable pour les PME comparé aux mastodontes du marché</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Personnalisation limitée si vous avez des processus très spécifiques</td></tr><tr><td>Intégrations encore restreintes avec certains SIRH</td></tr><tr><td>Support client parfois lent à répondre en période de pic</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -827,38 +702,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je connais HeyTeam depuis qu'ils ont lancé leur plateforme d'onboarding RH. Leur approche m'a séduit : ils ont construit un logiciel d'intégration qui <strong>automatise vraiment</strong> l'accueil des nouveaux collaborateurs.
-
-<p>Fini les mails d'accueil bricolés dans Outlook ou les check-lists Excel perdues.</p><p>Leur interface centralise tout le parcours d'intégration.</p>
-
-<p>J'ai testé leurs workflows automatisés : signature électronique des contrats, envoi des documents obligatoires, planification des rendez-vous avec les équipes, création automatique des comptes utilisateurs.</p>
-
-<p>Ça marche bien pour les entreprises qui recrutent <strong>plusieurs personnes par mois</strong>.</p><p>HeyTeam cible clairement les PME et ETI qui veulent professionnaliser leur processus RH sans exploser leur budget.</p>
-
-<p>Leur système de parcours personnalisables par poste ou département évite le côté usine à gaz. Par contre, je déconseille pour les très petites structures qui n'ont pas besoin de cette sophistication.</p></p>
+            <p>Je connais HeyTeam depuis qu'ils ont lancé leur plateforme d'onboarding RH. Leur approche m'a séduit : ils ont construit un logiciel d'intégration qui <strong>automatise vraiment</strong> l'accueil des nouveaux collaborateurs. Fini les mails d'accueil bricolés dans Outlook ou les check-lists Excel perdues.</p><p>Leur interface centralise tout le parcours d'intégration. J'ai testé leurs workflows automatisés : signature électronique des contrats, envoi des documents obligatoires, planification des rendez-vous avec les équipes, création automatique des comptes utilisateurs. Ça marche bien pour les entreprises qui recrutent <strong>plusieurs personnes par mois</strong>.</p><p>HeyTeam cible clairement les PME et ETI qui veulent professionnaliser leur processus RH sans exploser leur budget. Leur système de parcours personnalisables par poste ou département évite le côté usine à gaz. Par contre, je déconseille pour les très petites structures qui n'ont pas besoin de cette sophistication.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Workflows d'onboarding entièrement automatisés avec relances intelligentes</td>
-            <td>Tarification qui monte vite avec le nombre d'utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive qui ne nécessite pas de formation poussée</td>
-            <td>Personnalisation limitée des emails automatiques</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec les principaux SIRH français</td>
-            <td>Support client parfois lent en période de forte activité</td>
-          </tr>
-          <tr>
-            <td>Templates prêts à l'emploi pour différents types de postes</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Workflows d'onboarding entièrement automatisés avec relances intelligentes</td></tr><tr><td>Interface intuitive qui ne nécessite pas de formation poussée</td></tr><tr><td>Intégration native avec les principaux SIRH français</td></tr><tr><td>Templates prêts à l'emploi pour différents types de postes</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification qui monte vite avec le nombre d'utilisateurs</td></tr><tr><td>Personnalisation limitée des emails automatiques</td></tr><tr><td>Support client parfois lent en période de forte activité</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -874,38 +730,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Appical</strong> pour l'onboarding de nos commerciaux il y a six mois. Cette plateforme se concentre sur la création de parcours d'intégration interactifs avec du contenu gamifié et des évaluations en temps réel.
-
-<p>On peut créer des modules de formation personnalisés, suivre les progrès individuels et automatiser les relances pour les nouvelles recrues qui prennent du retard.</p><p>Ce qui m'a frappé, c'est la facilité pour structurer un parcours complet : de la signature du contrat jusqu'à la première vente réussie.</p>
-
-<p>Les managers reçoivent des alertes automatiques quand quelqu'un bloque sur une étape, et les nouveaux peuvent poser des questions directement dans l'interface.</p>
-
-<p><strong>Par contre, l'outil reste assez rigide</strong> sur la personnalisation avancée.</p><p>Appical convient parfaitement aux entreprises de 50 à 500 salariés qui veulent professionnaliser leur processus d'intégration sans se compliquer la vie.</p>
-
-<p>Je le recommande surtout pour les équipes commerciales, techniques ou customer success où il faut maîtriser des processus précis rapidement.</p></p>
+            <p>J'ai testé <strong>Appical</strong> pour l'onboarding de nos commerciaux il y a six mois. Cette plateforme se concentre sur la création de parcours d'intégration interactifs avec du contenu gamifié et des évaluations en temps réel. On peut créer des modules de formation personnalisés, suivre les progrès individuels et automatiser les relances pour les nouvelles recrues qui prennent du retard.</p><p>Ce qui m'a frappé, c'est la facilité pour structurer un parcours complet : de la signature du contrat jusqu'à la première vente réussie. Les managers reçoivent des alertes automatiques quand quelqu'un bloque sur une étape, et les nouveaux peuvent poser des questions directement dans l'interface. <strong>Par contre, l'outil reste assez rigide</strong> sur la personnalisation avancée.</p><p>Appical convient parfaitement aux entreprises de 50 à 500 salariés qui veulent professionnaliser leur processus d'intégration sans se compliquer la vie. Je le recommande surtout pour les équipes commerciales, techniques ou customer success où il faut maîtriser des processus précis rapidement.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive qui ne demande aucune formation pour les RH</td>
-            <td>Templates assez limités pour les secteurs très spécialisés</td>
-          </tr>
-          <tr>
-            <td>Suivi en temps réel des progrès avec tableaux de bord clairs</td>
-            <td>Tarification qui grimpe vite avec les options avancées</td>
-          </tr>
-          <tr>
-            <td>Modules gamifiés qui maintiennent l'engagement des nouvelles recrues</td>
-            <td>Personnalisation du branding assez basique comparé à la concurrence</td>
-          </tr>
-          <tr>
-            <td>Intégration fluide avec Slack et les principaux SIRH</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive qui ne demande aucune formation pour les RH</td></tr><tr><td>Suivi en temps réel des progrès avec tableaux de bord clairs</td></tr><tr><td>Modules gamifiés qui maintiennent l'engagement des nouvelles recrues</td></tr><tr><td>Intégration fluide avec Slack et les principaux SIRH</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Templates assez limités pour les secteurs très spécialisés</td></tr><tr><td>Tarification qui grimpe vite avec les options avancées</td></tr><tr><td>Personnalisation du branding assez basique comparé à la concurrence</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -921,42 +758,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé Lucca pendant 6 mois dans une PME de 80 personnes. Cette plateforme française combine SIRH et <strong>processus d'onboarding</strong> dans un seul outil.
-
-<p>On peut créer des parcours personnalisés, automatiser les formalités administratives et suivre l'intégration des nouveaux salariés avec un tableau de bord assez complet.</p><p>La force de Lucca ? Tout est centralisé.</p>
-
-<p>Les <strong>documents de bienvenue</strong>, les formations obligatoires, les présentations d'équipe, même la réservation du matériel informatique.</p>
-
-<p>J'ai configuré un workflow qui déclenche automatiquement 5 étapes d'intégration quand un contrat est signé.</p>
-
-<p>Plus besoin de relancer les managers ou de chercher qui fait quoi.</p><p>Par contre, c'est clairement orienté entreprises françaises avec au moins 30-40 employés.</p>
-
-<p>Si vous cherchez juste un outil d'onboarding basique pour une startup de 10 personnes, vous allez payer pour des modules RH dont vous n'avez pas besoin.</p>
-
-<p>La <strong>prise en main demande 2-3 semaines</strong> et quelques formations pour être vraiment efficace.</p></p>
+            <p>J'ai testé Lucca pendant 6 mois dans une PME de 80 personnes. Cette plateforme française combine SIRH et <strong>processus d'onboarding</strong> dans un seul outil. On peut créer des parcours personnalisés, automatiser les formalités administratives et suivre l'intégration des nouveaux salariés avec un tableau de bord assez complet.</p><p>La force de Lucca ? Tout est centralisé. Les <strong>documents de bienvenue</strong>, les formations obligatoires, les présentations d'équipe, même la réservation du matériel informatique. J'ai configuré un workflow qui déclenche automatiquement 5 étapes d'intégration quand un contrat est signé. Plus besoin de relancer les managers ou de chercher qui fait quoi.</p><p>Par contre, c'est clairement orienté entreprises françaises avec au moins 30-40 employés. Si vous cherchez juste un outil d'onboarding basique pour une startup de 10 personnes, vous allez payer pour des modules RH dont vous n'avez pas besoin. La <strong>prise en main demande 2-3 semaines</strong> et quelques formations pour être vraiment efficace.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive avec vue d'ensemble claire de chaque intégration</td>
-            <td>Prix élevé pour les petites structures (minimum 6€/utilisateur/mois)</td>
-          </tr>
-          <tr>
-            <td>Automatisation complète des tâches administratives et des rappels</td>
-            <td>Configuration initiale complexe qui nécessite du temps</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec la paie et la gestion des congés</td>
-            <td>Certaines personnalisations limitées sur les workflows avancés</td>
-          </tr>
-          <tr>
-            <td>Support client français réactif et formation incluse</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive avec vue d'ensemble claire de chaque intégration</td></tr><tr><td>Automatisation complète des tâches administratives et des rappels</td></tr><tr><td>Intégration native avec la paie et la gestion des congés</td></tr><tr><td>Support client français réactif et formation incluse</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix élevé pour les petites structures (minimum 6€/utilisateur/mois)</td></tr><tr><td>Configuration initiale complexe qui nécessite du temps</td></tr><tr><td>Certaines personnalisations limitées sur les workflows avancés</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -972,44 +786,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Teelt mise sur une approche assez originale de l'onboarding avec ses <strong>parcours adaptatifs</strong> qui s'ajustent selon le profil du nouvel arrivant.
-
-<p>J'ai testé leur système de questionnaires intelligents qui orientent automatiquement vers les bonnes formations et ressources.</p>
-
-<p>Leur interface reste sobre, sans fioritures, ce qui plaît aux équipes qui n'ont pas le temps de se perdre dans des fonctionnalités gadgets.</p><p>L'outil brille surtout par sa capacité à créer des <strong>workflows conditionnels</strong>.</p>
-
-<p>Si quelqu'un a déjà une expérience en comptabilité, il zappe certaines étapes de base et accède directement aux spécificités de l'entreprise.</p>
-
-<p>J'ai pu configurer des parcours différents pour les commerciaux, les développeurs et les RH en quelques clics.</p>
-
-<p>Le suivi des progressions se fait en temps réel avec des tableaux de bord plutôt bien pensés.</p><p>Par contre, je trouve que Teelt manque encore de maturité sur certains aspects.</p>
-
-<p>L'intégration avec les SIRH externes demande souvent des bidouillages et leur bibliothèque de templates reste assez pauvre.</p>
-
-<p><strong>Ça convient bien aux structures de 50 à 200 personnes</strong> qui cherchent de la personnalisation sans la complexité des mastodontes du marché.</p></p>
+            <p>Teelt mise sur une approche assez originale de l'onboarding avec ses <strong>parcours adaptatifs</strong> qui s'ajustent selon le profil du nouvel arrivant. J'ai testé leur système de questionnaires intelligents qui orientent automatiquement vers les bonnes formations et ressources. Leur interface reste sobre, sans fioritures, ce qui plaît aux équipes qui n'ont pas le temps de se perdre dans des fonctionnalités gadgets.</p><p>L'outil brille surtout par sa capacité à créer des <strong>workflows conditionnels</strong>. Si quelqu'un a déjà une expérience en comptabilité, il zappe certaines étapes de base et accède directement aux spécificités de l'entreprise. J'ai pu configurer des parcours différents pour les commerciaux, les développeurs et les RH en quelques clics. Le suivi des progressions se fait en temps réel avec des tableaux de bord plutôt bien pensés.</p><p>Par contre, je trouve que Teelt manque encore de maturité sur certains aspects. L'intégration avec les SIRH externes demande souvent des bidouillages et leur bibliothèque de templates reste assez pauvre. <strong>Ça convient bien aux structures de 50 à 200 personnes</strong> qui cherchent de la personnalisation sans la complexité des mastodontes du marché.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Parcours adaptatifs selon le profil utilisateur</td>
-            <td>Intégrations SIRH complexes et parfois instables</td>
-          </tr>
-          <tr>
-            <td>Configuration de workflows conditionnels intuitive</td>
-            <td>Bibliothèque de templates limitée pour démarrer rapidement</td>
-          </tr>
-          <tr>
-            <td>Tableaux de bord avec suivi temps réel des progressions</td>
-            <td>Fonctionnalités avancées encore en développement</td>
-          </tr>
-          <tr>
-            <td>Interface épurée sans fonctionnalités superflues</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Parcours adaptatifs selon le profil utilisateur</td></tr><tr><td>Configuration de workflows conditionnels intuitive</td></tr><tr><td>Tableaux de bord avec suivi temps réel des progressions</td></tr><tr><td>Interface épurée sans fonctionnalités superflues</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Intégrations SIRH complexes et parfois instables</td></tr><tr><td>Bibliothèque de templates limitée pour démarrer rapidement</td></tr><tr><td>Fonctionnalités avancées encore en développement</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1274,7 +1063,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 idees-innovantes.com — Données actualisées le 2 octobre 2026
+        © 2026 idees-innovantes.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

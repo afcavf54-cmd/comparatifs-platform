@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -489,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Quel expert-comptable en ligne choisir ? Mon comparatif détaillé</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 11 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 11 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Emma David" class="hero-author-avatar">
     <span>Rédigé par Emma David</span>
@@ -529,38 +534,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Ça Compte Pour Moi propose un service d'expert-comptable en ligne qui mise sur la simplicité et la digitalisation.
-
-<p>Je trouve leur approche intéressante : ils ont développé une plateforme qui automatise pas mal de tâches comptables tout en gardant un vrai expert-comptable derrière.</p><p>Leur point fort, c'est <strong>l'interface vraiment claire</strong>.</p>
-
-<p>On peut suivre l'avancement de son dossier en temps réel, et franchement c'est appréciable quand on a l'habitude des cabinets qui ne donnent pas de nouvelles pendant des semaines.</p>
-
-<p>Ils proposent aussi <strong>la synchronisation bancaire automatique</strong> et la numérisation des factures par simple photo.</p><p>Ce qui m'a marqué, c'est leur tarification transparente : <strong>à partir de <strong>59€</strong> par mois</strong> pour les micro-entreprises, et ils affichent clairement ce qui est inclus ou pas.</p>
-
-<p>Pas de mauvaises surprises en fin d'année, ce qui arrive trop souvent ailleurs. Par contre, ils restent encore assez récents sur le marché, donc on n'a pas le recul d'un L-Expert-Comptable ou d'un Dougs.</p></p>
+            <p>Ça Compte Pour Moi propose un service d'expert-comptable en ligne qui mise sur la simplicité et la digitalisation. Je trouve leur approche intéressante : ils ont développé une plateforme qui automatise pas mal de tâches comptables tout en gardant un vrai expert-comptable derrière.</p><p>Leur point fort, c'est <strong>l'interface vraiment claire</strong>. On peut suivre l'avancement de son dossier en temps réel, et franchement c'est appréciable quand on a l'habitude des cabinets qui ne donnent pas de nouvelles pendant des semaines. Ils proposent aussi <strong>la synchronisation bancaire automatique</strong> et la numérisation des factures par simple photo.</p><p>Ce qui m'a marqué, c'est leur tarification transparente : <strong>à partir de <strong>59€</strong> par mois</strong> pour les micro-entreprises, et ils affichent clairement ce qui est inclus ou pas. Pas de mauvaises surprises en fin d'année, ce qui arrive trop souvent ailleurs. Par contre, ils restent encore assez récents sur le marché, donc on n'a pas le recul d'un L-Expert-Comptable ou d'un Dougs.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface utilisateur particulièrement soignée et intuitive</td>
-            <td>Service relativement récent avec moins de retours d'expérience</td>
-          </tr>
-          <tr>
-            <td>Synchronisation bancaire automatique et OCR pour les factures</td>
-            <td>Offre moins étoffée que les leaders du marché</td>
-          </tr>
-          <tr>
-            <td>Tarification claire sans frais cachés ni engagement</td>
-            <td>Peut manquer d'expertise sur les cas comptables très spécifiques</td>
-          </tr>
-          <tr>
-            <td>Suivi en temps réel de l'avancement du dossier comptable</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface utilisateur particulièrement soignée et intuitive</td></tr><tr><td>Synchronisation bancaire automatique et OCR pour les factures</td></tr><tr><td>Tarification claire sans frais cachés ni engagement</td></tr><tr><td>Suivi en temps réel de l'avancement du dossier comptable</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Service relativement récent avec moins de retours d'expérience</td></tr><tr><td>Offre moins étoffée que les leaders du marché</td></tr><tr><td>Peut manquer d'expertise sur les cas comptables très spécifiques</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -576,38 +562,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vais être direct : <strong>Keobiz</strong> m'a séduit par sa philosophie. Ce n'est pas juste un expert-comptable en ligne de plus, c'est une approche différente.
-
-<p>Ils misent tout sur l'accompagnement personnalisé avec des comptables dédiés qui connaissent vraiment votre secteur.</p><p>L'interface reste volontairement simple. Pas de gadgets partout.</p>
-
-<p>On se connecte, on dépose ses documents, et on a un vrai suivi. <strong>Le gros plus ?</strong> Ils prennent en charge la déclaration TVA, les bulletins de paie et même les démarches administratives.</p>
-
-<p>J'ai testé leur service client : réponse en moins de 2 heures.</p><p>Par contre, attention. Keobiz vise clairement les <strong>TPE et freelances</strong> qui veulent déléguer complètement leur compta.</p>
-
-<p>Si vous aimez garder la main ou si vous avez une structure complexe, passez votre chemin. Leur force, c'est justement de simplifier au maximum pour les profils qui n'y connaissent rien.</p></p>
+            <p>Je vais être direct : <strong>Keobiz</strong> m'a séduit par sa philosophie. Ce n'est pas juste un expert-comptable en ligne de plus, c'est une approche différente. Ils misent tout sur l'accompagnement personnalisé avec des comptables dédiés qui connaissent vraiment votre secteur.</p><p>L'interface reste volontairement simple. Pas de gadgets partout. On se connecte, on dépose ses documents, et on a un vrai suivi. <strong>Le gros plus ?</strong> Ils prennent en charge la déclaration TVA, les bulletins de paie et même les démarches administratives. J'ai testé leur service client : réponse en moins de 2 heures.</p><p>Par contre, attention. Keobiz vise clairement les <strong>TPE et freelances</strong> qui veulent déléguer complètement leur compta. Si vous aimez garder la main ou si vous avez une structure complexe, passez votre chemin. Leur force, c'est justement de simplifier au maximum pour les profils qui n'y connaissent rien.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Comptable dédié qui suit vraiment votre dossier</td>
-            <td>Pas adapté aux structures avec plusieurs entités</td>
-          </tr>
-          <tr>
-            <td>Prise en charge complète de la paie et des déclarations</td>
-            <td>Interface basique qui peut frustrer les utilisateurs avancés</td>
-          </tr>
-          <tr>
-            <td>Onboarding rapide avec formation personnalisée</td>
-            <td>Choix limité dans les options de personnalisation</td>
-          </tr>
-          <tr>
-            <td>Tarif transparent sans frais cachés</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Comptable dédié qui suit vraiment votre dossier</td></tr><tr><td>Prise en charge complète de la paie et des déclarations</td></tr><tr><td>Onboarding rapide avec formation personnalisée</td></tr><tr><td>Tarif transparent sans frais cachés</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Pas adapté aux structures avec plusieurs entités</td></tr><tr><td>Interface basique qui peut frustrer les utilisateurs avancés</td></tr><tr><td>Choix limité dans les options de personnalisation</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -623,38 +590,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>L-Expert-comptable.com</strong> pendant huit mois pour ma SAS dans le e-commerce. Ce service combine expertise comptable en ligne et accompagnement personnalisé, ce qui m'a séduit dès le départ.
-
-<p>Contrairement aux plateformes <strong>100%</strong> automatisées, on a ici un vrai expert-comptable attitré qui suit notre dossier.</p><p>L'interface reste <strong>assez basique</strong> mais fonctionnelle.</p>
-
-<p>On peut uploader ses documents, suivre l'avancement des déclarations et échanger directement avec son comptable via messagerie intégrée. Le point fort ?</p>
-
-<p>Le reporting mensuel détaillé qui m'aide vraiment à piloter mon activité.</p><p>Je recommande L-Expert-comptable.com aux entrepreneurs qui veulent garder un contact humain tout en bénéficiant des tarifs du digital.</p>
-
-<p>Par contre, si vous cherchez une solution ultra-moderne avec plein d'automatisations, passez votre chemin. Ici on privilégie <strong>l'accompagnement personnalisé</strong> à la technologie de pointe.</p></p>
+            <p>J'ai testé <strong>L-Expert-comptable.com</strong> pendant huit mois pour ma SAS dans le e-commerce. Ce service combine expertise comptable en ligne et accompagnement personnalisé, ce qui m'a séduit dès le départ. Contrairement aux plateformes <strong>100%</strong> automatisées, on a ici un vrai expert-comptable attitré qui suit notre dossier.</p><p>L'interface reste <strong>assez basique</strong> mais fonctionnelle. On peut uploader ses documents, suivre l'avancement des déclarations et échanger directement avec son comptable via messagerie intégrée. Le point fort ? Le reporting mensuel détaillé qui m'aide vraiment à piloter mon activité.</p><p>Je recommande L-Expert-comptable.com aux entrepreneurs qui veulent garder un contact humain tout en bénéficiant des tarifs du digital. Par contre, si vous cherchez une solution ultra-moderne avec plein d'automatisations, passez votre chemin. Ici on privilégie <strong>l'accompagnement personnalisé</strong> à la technologie de pointe.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Expert-comptable dédié avec échanges directs</td>
-            <td>Interface vieillotte et peu ergonomique</td>
-          </tr>
-          <tr>
-            <td>Tarifs transparents sans frais cachés</td>
-            <td>Pas d'application mobile digne de ce nom</td>
-          </tr>
-          <tr>
-            <td>Gestion complète des obligations fiscales et sociales</td>
-            <td>Délais de réponse parfois longs en période chargée</td>
-          </tr>
-          <tr>
-            <td>Reporting mensuel détaillé pour le pilotage</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Expert-comptable dédié avec échanges directs</td></tr><tr><td>Tarifs transparents sans frais cachés</td></tr><tr><td>Gestion complète des obligations fiscales et sociales</td></tr><tr><td>Reporting mensuel détaillé pour le pilotage</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface vieillotte et peu ergonomique</td></tr><tr><td>Pas d'application mobile digne de ce nom</td></tr><tr><td>Délais de réponse parfois longs en période chargée</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -670,40 +618,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Amarris Direct propose un accompagnement comptable hybride qui mélange humain et digital.
-
-<p>J'ai testé leur approche : on garde un <strong>expert-comptable dédié</strong> qu'on peut joindre par téléphone, tout en gérant la saisie via leur plateforme.</p>
-
-<p>Leur modèle cible clairement les TPE et artisans qui veulent garder un contact humain.</p><p>Concrètement, je télécharge mes factures sur l'espace client et mon comptable se charge de la saisie.</p>
-
-<p><strong>Pas de robot ni d'OCR automatique</strong> ici. L'approche reste assez traditionnelle, mais avec un espace numérique pour centraliser les documents.</p>
-
-<p>Leurs tarifs démarrent autour de <strong>69€</strong>/mois selon l'activité.</p><p>Ce qui m'a frappé : leur positionnement assume complètement le côté <strong>service personnalisé</strong>.</p>
-
-<p>Amarris Direct mise tout sur la relation humaine et l'accompagnement métier, pas sur l'automatisation à outrance. Ça peut rassurer ceux qui sortent d'un cabinet physique.</p></p>
+            <p>Amarris Direct propose un accompagnement comptable hybride qui mélange humain et digital. J'ai testé leur approche : on garde un <strong>expert-comptable dédié</strong> qu'on peut joindre par téléphone, tout en gérant la saisie via leur plateforme. Leur modèle cible clairement les TPE et artisans qui veulent garder un contact humain.</p><p>Concrètement, je télécharge mes factures sur l'espace client et mon comptable se charge de la saisie. <strong>Pas de robot ni d'OCR automatique</strong> ici. L'approche reste assez traditionnelle, mais avec un espace numérique pour centraliser les documents. Leurs tarifs démarrent autour de <strong>69€</strong>/mois selon l'activité.</p><p>Ce qui m'a frappé : leur positionnement assume complètement le côté <strong>service personnalisé</strong>. Amarris Direct mise tout sur la relation humaine et l'accompagnement métier, pas sur l'automatisation à outrance. Ça peut rassurer ceux qui sortent d'un cabinet physique.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Expert-comptable attitré joignable par téléphone</td>
-            <td>Prix plus élevé que les pure players numériques</td>
-          </tr>
-          <tr>
-            <td>Accompagnement personnalisé selon le secteur d'activité</td>
-            <td>Processus moins automatisé que la concurrence</td>
-          </tr>
-          <tr>
-            <td>Interface simple pour déposer les documents</td>
-            <td>Délais de traitement parfois plus longs</td>
-          </tr>
-          <tr>
-            <td>Approche rassurante pour les réfractaires au 100% digital</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Expert-comptable attitré joignable par téléphone</td></tr><tr><td>Accompagnement personnalisé selon le secteur d'activité</td></tr><tr><td>Interface simple pour déposer les documents</td></tr><tr><td>Approche rassurante pour les réfractaires au 100% digital</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix plus élevé que les pure players numériques</td></tr><tr><td>Processus moins automatisé que la concurrence</td></tr><tr><td>Délais de traitement parfois plus longs</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -719,38 +646,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise <strong>Acasi</strong> depuis presque deux ans et je peux dire que ce service d'expert-comptable en ligne cible clairement les <strong>TPE et freelances</strong> qui cherchent de la simplicité.
-
-<p>Pas de fioritures, pas de fonctionnalités gadget : on dépose ses documents, on pose ses questions par messagerie et ça marche.</p><p>Le truc qui m'a convaincu ?</p>
-
-<p>L'approche <strong>100% dématérialisée</strong> avec une équipe d'experts-comptables qui répond rapidement. Contrairement à d'autres plateformes où on tombe sur des juniors, ici j'ai toujours affaire à des professionnels confirmés.</p>
-
-<p>Mon comptable attitré connaît mon dossier et mes spécificités métier.</p><p>Acasi mise tout sur l'efficacité plutôt que sur l'innovation technologique. Leur plateforme n'est pas révolutionnaire mais elle fait le job sans bug.</p>
-
-<p>J'apprécie particulièrement la <strong>transparence des tarifs</strong> et le fait qu'ils gèrent vraiment la relation avec l'administration. Quand les impôts m'ont contacté l'année dernière, mon comptable s'est occupé de tout.</p></p>
+            <p>J'utilise <strong>Acasi</strong> depuis presque deux ans et je peux dire que ce service d'expert-comptable en ligne cible clairement les <strong>TPE et freelances</strong> qui cherchent de la simplicité. Pas de fioritures, pas de fonctionnalités gadget : on dépose ses documents, on pose ses questions par messagerie et ça marche.</p><p>Le truc qui m'a convaincu ? L'approche <strong><strong>100%</strong> dématérialisée</strong> avec une équipe d'experts-comptables qui répond rapidement. Contrairement à d'autres plateformes où on tombe sur des juniors, ici j'ai toujours affaire à des professionnels confirmés. Mon comptable attitré connaît mon dossier et mes spécificités métier.</p><p>Acasi mise tout sur l'efficacité plutôt que sur l'innovation technologique. Leur plateforme n'est pas révolutionnaire mais elle fait le job sans bug. J'apprécie particulièrement la <strong>transparence des tarifs</strong> et le fait qu'ils gèrent vraiment la relation avec l'administration. Quand les impôts m'ont contacté l'année dernière, mon comptable s'est occupé de tout.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Équipe d'experts-comptables confirmés avec interlocuteur dédié</td>
-            <td>Offre limitée pour les entreprises avec besoins comptables complexes</td>
-          </tr>
-          <tr>
-            <td>Gestion complète des obligations fiscales et déclarations</td>
-            <td>Pas d'outils de gestion avancés comme la facturation intégrée</td>
-          </tr>
-          <tr>
-            <td>Interface simple et fonctionnelle sans complexité inutile</td>
-            <td>Tarification qui peut monter rapidement selon les prestations additionnelles</td>
-          </tr>
-          <tr>
-            <td>Réactivité excellente pour les questions urgentes</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Équipe d'experts-comptables confirmés avec interlocuteur dédié</td></tr><tr><td>Gestion complète des obligations fiscales et déclarations</td></tr><tr><td>Interface simple et fonctionnelle sans complexité inutile</td></tr><tr><td>Réactivité excellente pour les questions urgentes</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Offre limitée pour les entreprises avec besoins comptables complexes</td></tr><tr><td>Pas d'outils de gestion avancés comme la facturation intégrée</td></tr><tr><td>Tarification qui peut monter rapidement selon les prestations additionnelles</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -766,42 +674,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai découvert Wity il y a quelques mois, et je dois dire que cette solution <strong>frappe par sa simplicité d'approche</strong>.
-
-<p>Contrairement aux gros cabinets en ligne qui standardisent tout, Wity mise sur un accompagnement plus personnalisé avec des experts-comptables dédiés.</p>
-
-<p>L'idée c'est d'avoir un vrai référent qui connaît votre dossier plutôt qu'un ticket de support anonyme.</p><p>Le tableau de bord reste accessible même pour ceux qui ne sont pas à l'aise avec les chiffres.</p>
-
-<p>On peut suivre sa trésorerie en temps réel, valider ses factures depuis son smartphone et récupérer automatiquement ses relevés bancaires.</p>
-
-<p><strong>Ce qui m'a marqué, c'est la réactivité</strong> : mon expert-comptable répond généralement dans la journée, et pas avec des réponses toutes faites.</p><p>Wity convient parfaitement aux <strong>entrepreneurs qui veulent garder un contact humain</strong> sans exploser leur budget.</p>
-
-<p>Les auto-entrepreneurs et petites entreprises y trouvent un bon équilibre entre digitalisation et accompagnement traditionnel.</p>
-
-<p>Par contre, si vous cherchez le prix le plus bas du marché ou des fonctionnalités ultra-avancées, ce n'est pas forcément le bon choix.</p></p>
+            <p>J'ai découvert Wity il y a quelques mois, et je dois dire que cette solution <strong>frappe par sa simplicité d'approche</strong>. Contrairement aux gros cabinets en ligne qui standardisent tout, Wity mise sur un accompagnement plus personnalisé avec des experts-comptables dédiés. L'idée c'est d'avoir un vrai référent qui connaît votre dossier plutôt qu'un ticket de support anonyme.</p><p>Le tableau de bord reste accessible même pour ceux qui ne sont pas à l'aise avec les chiffres. On peut suivre sa trésorerie en temps réel, valider ses factures depuis son smartphone et récupérer automatiquement ses relevés bancaires. <strong>Ce qui m'a marqué, c'est la réactivité</strong> : mon expert-comptable répond généralement dans la journée, et pas avec des réponses toutes faites.</p><p>Wity convient parfaitement aux <strong>entrepreneurs qui veulent garder un contact humain</strong> sans exploser leur budget. Les auto-entrepreneurs et petites entreprises y trouvent un bon équilibre entre digitalisation et accompagnement traditionnel. Par contre, si vous cherchez le prix le plus bas du marché ou des fonctionnalités ultra-avancées, ce n'est pas forcément le bon choix.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Expert-comptable dédié avec suivi personnalisé</td>
-            <td>Tarifs plus élevés que les plateformes low-cost</td>
-          </tr>
-          <tr>
-            <td>Interface claire pour les non-experts en comptabilité</td>
-            <td>Fonctionnalités avancées limitées pour les grandes structures</td>
-          </tr>
-          <tr>
-            <td>Réactivité du support et réponses rapides</td>
-            <td>Pas d'essai gratuit vraiment exploitable</td>
-          </tr>
-          <tr>
-            <td>Synchronisation bancaire automatique fiable</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Expert-comptable dédié avec suivi personnalisé</td></tr><tr><td>Interface claire pour les non-experts en comptabilité</td></tr><tr><td>Réactivité du support et réponses rapides</td></tr><tr><td>Synchronisation bancaire automatique fiable</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarifs plus élevés que les plateformes low-cost</td></tr><tr><td>Fonctionnalités avancées limitées pour les grandes structures</td></tr><tr><td>Pas d'essai gratuit vraiment exploitable</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -817,40 +702,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Naolink se présente comme un cabinet d'expertise-comptable <strong>100%</strong> numérique qui vise les entrepreneurs et petites entreprises.
-
-<p>Le service propose un accompagnement personnalisé avec des experts-comptables dédiés, une plateforme en ligne pour gérer ses documents et un suivi régulier de la comptabilité.</p>
-
-<p><strong>L'approche mise sur l'humain</strong> malgré la digitalisation complète.</p><p>Je trouve que Naolink cible principalement les créateurs d'entreprise et les TPE qui veulent garder un contact direct avec leur comptable tout en profitant d'outils digitaux.</p>
-
-<p>La promesse ? Avoir son expert-comptable attitré accessible par téléphone, mail ou visio, combiné à une interface simple pour déposer ses pièces justificatives.</p>
-
-<p><strong>Pas de robot, juste des vrais comptables</strong> qui connaissent votre dossier.</p><p>Niveau tarification, Naolink annonce des forfaits à partir de <strong>99€ HT par mois</strong> pour les micro-entreprises.</p>
-
-<p>Mais attention, ce prix peut vite grimper selon vos besoins réels et le volume de votre activité. J'ai remarqué que beaucoup de clients finissent sur des forfaits plus élevés que prévu.</p></p>
+            <p>Naolink se présente comme un cabinet d'expertise-comptable <strong>100%</strong> numérique qui vise les entrepreneurs et petites entreprises. Le service propose un accompagnement personnalisé avec des experts-comptables dédiés, une plateforme en ligne pour gérer ses documents et un suivi régulier de la comptabilité. <strong>L'approche mise sur l'humain</strong> malgré la digitalisation complète.</p><p>Je trouve que Naolink cible principalement les créateurs d'entreprise et les TPE qui veulent garder un contact direct avec leur comptable tout en profitant d'outils digitaux. La promesse ? Avoir son expert-comptable attitré accessible par téléphone, mail ou visio, combiné à une interface simple pour déposer ses pièces justificatives. <strong>Pas de robot, juste des vrais comptables</strong> qui connaissent votre dossier.</p><p>Niveau tarification, Naolink annonce des forfaits à partir de <strong><strong>99€</strong> HT par mois</strong> pour les micro-entreprises. Mais attention, ce prix peut vite grimper selon vos besoins réels et le volume de votre activité. J'ai remarqué que beaucoup de clients finissent sur des forfaits plus élevés que prévu.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Expert-comptable dédié et joignable facilement</td>
-            <td>Tarifs qui peuvent s'envoler selon les options choisies</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive pour déposer documents et suivre sa comptabilité</td>
-            <td>Délais parfois longs en période de rush fiscal</td>
-          </tr>
-          <tr>
-            <td>Accompagnement dans la création d'entreprise et formalités</td>
-            <td>Moins adapté aux entreprises avec une comptabilité complexe</td>
-          </tr>
-          <tr>
-            <td>Déclarations fiscales et sociales incluses dans les forfaits</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Expert-comptable dédié et joignable facilement</td></tr><tr><td>Interface intuitive pour déposer documents et suivre sa comptabilité</td></tr><tr><td>Accompagnement dans la création d'entreprise et formalités</td></tr><tr><td>Déclarations fiscales et sociales incluses dans les forfaits</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarifs qui peuvent s'envoler selon les options choisies</td></tr><tr><td>Délais parfois longs en période de rush fiscal</td></tr><tr><td>Moins adapté aux entreprises avec une comptabilité complexe</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -866,38 +730,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vais être direct : <strong>LegalPlace n'est pas un expert-comptable en ligne classique</strong>. C'est plutôt une plateforme juridique qui propose des services comptables en complément de ses prestations légales.
-
-<p>Leur approche me plaît pour les entrepreneurs qui ont besoin à la fois d'aide juridique et comptable.</p><p>L'avantage que j'y vois ? Ils combinent création d'entreprise, formalités juridiques et comptabilité sur une même interface.</p>
-
-<p>Pratique quand on lance son activité et qu'on ne veut pas jongler entre plusieurs prestataires.</p>
-
-<p><strong>Leur expertise juridique est solide</strong>, ce qui rassure sur les aspects réglementaires.</p><p>Par contre, côté comptabilité pure, je trouve leur offre moins aboutie que des spécialistes comme Dougs ou L-Expert-Comptable.</p>
-
-<p>Ils restent performants sur les bases : tenue des comptes, déclarations TVA, liasses fiscales. Mais si vous cherchez uniquement un expert-comptable digital avec des outils avancés, d'autres solutions me semblent plus adaptées.</p></p>
+            <p>Je vais être direct : <strong>LegalPlace n'est pas un expert-comptable en ligne classique</strong>. C'est plutôt une plateforme juridique qui propose des services comptables en complément de ses prestations légales. Leur approche me plaît pour les entrepreneurs qui ont besoin à la fois d'aide juridique et comptable.</p><p>L'avantage que j'y vois ? Ils combinent création d'entreprise, formalités juridiques et comptabilité sur une même interface. Pratique quand on lance son activité et qu'on ne veut pas jongler entre plusieurs prestataires. <strong>Leur expertise juridique est solide</strong>, ce qui rassure sur les aspects réglementaires.</p><p>Par contre, côté comptabilité pure, je trouve leur offre moins aboutie que des spécialistes comme Dougs ou L-Expert-Comptable. Ils restent performants sur les bases : tenue des comptes, déclarations TVA, liasses fiscales. Mais si vous cherchez uniquement un expert-comptable digital avec des outils avancés, d'autres solutions me semblent plus adaptées.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Expertise juridique et comptable combinée sur une même plateforme</td>
-            <td>Services comptables moins spécialisés que les pure players</td>
-          </tr>
-          <tr>
-            <td>Accompagnement complet pour la création d'entreprise</td>
-            <td>Tarifs élevés si vous n'avez besoin que de la comptabilité</td>
-          </tr>
-          <tr>
-            <td>Interface claire pour gérer formalités légales et comptabilité</td>
-            <td>Moins d'automatisations que chez les concurrents 100% digitaux</td>
-          </tr>
-          <tr>
-            <td>Équipe d'avocats disponible pour conseils juridiques</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Expertise juridique et comptable combinée sur une même plateforme</td></tr><tr><td>Accompagnement complet pour la création d'entreprise</td></tr><tr><td>Interface claire pour gérer formalités légales et comptabilité</td></tr><tr><td>Équipe d'avocats disponible pour conseils juridiques</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Services comptables moins spécialisés que les pure players</td></tr><tr><td>Tarifs élevés si vous n'avez besoin que de la comptabilité</td></tr><tr><td>Moins d'automatisations que chez les concurrents 100% digitaux</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -913,38 +758,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé Indy pendant plusieurs mois pour ma micro-entreprise, et je vais être honnête : <strong>c'est du solide</strong>.
-
-<p>Cette plateforme d'expertise-comptable en ligne cible clairement les freelances et micro-entrepreneurs qui veulent garder le contrôle sans se noyer dans la paperasse.</p><p>Ce qui m'a marqué ? L'automatisation intelligente.</p>
-
-<p>Indy récupère automatiquement vos relevés bancaires, catégorise vos dépenses par IA, et génère vos déclarations TVA. Plus besoin de saisir chaque facture manuellement.</p>
-
-<p><strong>Ça m'a fait gagner 3 heures par mois</strong>, facile.</p><p>Le vrai plus : vous gardez un expert-comptable dédié pour les questions complexes. Pas juste un chatbot ou une FAQ.</p>
-
-<p>Un humain qui connaît votre dossier et répond en 24h maximum. Pour une micro-entreprise qui grandit, c'est rassurant d'avoir quelqu'un qui surveille vos seuils de TVA ou optimise vos déductions.</p></p>
+            <p>J'ai testé Indy pendant plusieurs mois pour ma micro-entreprise, et je vais être honnête : <strong>c'est du solide</strong>. Cette plateforme d'expertise-comptable en ligne cible clairement les freelances et micro-entrepreneurs qui veulent garder le contrôle sans se noyer dans la paperasse.</p><p>Ce qui m'a marqué ? L'automatisation intelligente. Indy récupère automatiquement vos relevés bancaires, catégorise vos dépenses par IA, et génère vos déclarations TVA. Plus besoin de saisir chaque facture manuellement. <strong>Ça m'a fait gagner 3 heures par mois</strong>, facile.</p><p>Le vrai plus : vous gardez un expert-comptable dédié pour les questions complexes. Pas juste un chatbot ou une FAQ. Un humain qui connaît votre dossier et répond en 24h maximum. Pour une micro-entreprise qui grandit, c'est rassurant d'avoir quelqu'un qui surveille vos seuils de TVA ou optimise vos déductions.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Automatisation complète des relevés bancaires et catégorisation IA</td>
-            <td>Limité aux micro-entreprises et freelances, pas adapté aux sociétés</td>
-          </tr>
-          <tr>
-            <td>Expert-comptable humain dédié inclus dans l'abonnement</td>
-            <td>Fonctionnalités de facturation basiques comparé aux spécialistes</td>
-          </tr>
-          <tr>
-            <td>Interface ultra-simple, parfaite pour les non-comptables</td>
-            <td>Synchronisation bancaire parfois capricieuse avec certaines banques en ligne</td>
-          </tr>
-          <tr>
-            <td>Alertes automatiques pour les seuils TVA et échéances fiscales</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Automatisation complète des relevés bancaires et catégorisation IA</td></tr><tr><td>Expert-comptable humain dédié inclus dans l'abonnement</td></tr><tr><td>Interface ultra-simple, parfaite pour les non-comptables</td></tr><tr><td>Alertes automatiques pour les seuils TVA et échéances fiscales</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Limité aux micro-entreprises et freelances, pas adapté aux sociétés</td></tr><tr><td>Fonctionnalités de facturation basiques comparé aux spécialistes</td></tr><tr><td>Synchronisation bancaire parfois capricieuse avec certaines banques en ligne</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -960,40 +786,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vais être honnête : <strong>Clémentine.fr</strong> m'a d'abord attiré par son positionnement accessible. Cet expert-comptable en ligne s'adresse clairement aux entrepreneurs qui veulent déléguer leur comptabilité sans se ruiner.
-
-<p>Les tarifs démarrent à <strong>69€ par mois</strong> pour les auto-entrepreneurs, ce qui reste correct pour un service complet avec un vrai comptable attitré.</p><p>L'approche me plaît bien.</p>
-
-<p>Au lieu de vous coller devant un logiciel complexe, vous avez un interlocuteur dédié qui gère tout. Upload de documents via l'app mobile, relances automatiques pour vos factures, déclarations TVA bouclées dans les temps.</p>
-
-<p>Je trouve ça rassurant quand on débute, surtout qu'ils gèrent aussi les formalités juridiques.</p><p>Leur plateforme web reste basique mais <strong>fonctionnelle</strong>.</p>
-
-<p>Dashboard clair, suivi de trésorerie en temps réel, et surtout un chat direct avec votre comptable. Pas de fioritures, juste l'essentiel.</p>
-
-<p>Par contre, si vous cherchez des fonctionnalités avancées de pilotage ou d'analyse poussée, vous risquez d'être déçu.</p></p>
+            <p>Je vais être honnête : <strong>Clémentine.fr</strong> m'a d'abord attiré par son positionnement accessible. Cet expert-comptable en ligne s'adresse clairement aux entrepreneurs qui veulent déléguer leur comptabilité sans se ruiner. Les tarifs démarrent à <strong><strong>69€</strong> par mois</strong> pour les auto-entrepreneurs, ce qui reste correct pour un service complet avec un vrai comptable attitré.</p><p>L'approche me plaît bien. Au lieu de vous coller devant un logiciel complexe, vous avez un interlocuteur dédié qui gère tout. Upload de documents via l'app mobile, relances automatiques pour vos factures, déclarations TVA bouclées dans les temps. Je trouve ça rassurant quand on débute, surtout qu'ils gèrent aussi les formalités juridiques.</p><p>Leur plateforme web reste basique mais <strong>fonctionnelle</strong>. Dashboard clair, suivi de trésorerie en temps réel, et surtout un chat direct avec votre comptable. Pas de fioritures, juste l'essentiel. Par contre, si vous cherchez des fonctionnalités avancées de pilotage ou d'analyse poussée, vous risquez d'être déçu.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Comptable attitré personnel avec contact direct</td>
-            <td>Tableaux de bord assez limités pour le pilotage avancé</td>
-          </tr>
-          <tr>
-            <td>Tarification transparente sans frais cachés dès 69€/mois</td>
-            <td>Montée en gamme tarifaire rapide selon le chiffre d'affaires</td>
-          </tr>
-          <tr>
-            <td>Prise en charge complète des formalités juridiques</td>
-            <td>Peu d'intégrations avec les outils métier spécialisés</td>
-          </tr>
-          <tr>
-            <td>Interface mobile pratique pour scanner les justificatifs</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Comptable attitré personnel avec contact direct</td></tr><tr><td>Tarification transparente sans frais cachés dès 69€/mois</td></tr><tr><td>Prise en charge complète des formalités juridiques</td></tr><tr><td>Interface mobile pratique pour scanner les justificatifs</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tableaux de bord assez limités pour le pilotage avancé</td></tr><tr><td>Montée en gamme tarifaire rapide selon le chiffre d'affaires</td></tr><tr><td>Peu d'intégrations avec les outils métier spécialisés</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1009,36 +814,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Dougs se démarque en combinant expertise-comptable et technologie pour les <strong>TPE et micro-entrepreneurs</strong>.
-
-<p>Contrairement aux cabinets traditionnels, ils proposent un accompagnement comptable <strong>100%</strong> digital avec des experts-comptables dédiés qui gèrent votre comptabilité depuis leur plateforme.</p><p>Je trouve leur approche intéressante : ils s'occupent de tout (saisie comptable, déclarations TVA, bilan annuel) pendant que vous gardez un contact direct avec votre expert-comptable via leur application.</p>
-
-<p><strong>Pas de rendez-vous physique</strong>, tout se passe en ligne mais avec un vrai suivi humain.</p><p>Leur force réside dans l'automatisation des tâches répétitives couplée à l'expertise humaine.</p>
-
-<p>Ils récupèrent automatiquement vos données bancaires, classent vos factures et leur équipe d'experts-comptables valide et finalise tout. <strong>Parfait pour les entrepreneurs qui veulent déléguer sans perdre le contrôle</strong>.</p></p>
+            <p>Dougs se démarque en combinant expertise-comptable et technologie pour les <strong>TPE et micro-entrepreneurs</strong>. Contrairement aux cabinets traditionnels, ils proposent un accompagnement comptable <strong>100%</strong> digital avec des experts-comptables dédiés qui gèrent votre comptabilité depuis leur plateforme.</p><p>Je trouve leur approche intéressante : ils s'occupent de tout (saisie comptable, déclarations TVA, bilan annuel) pendant que vous gardez un contact direct avec votre expert-comptable via leur application. <strong>Pas de rendez-vous physique</strong>, tout se passe en ligne mais avec un vrai suivi humain.</p><p>Leur force réside dans l'automatisation des tâches répétitives couplée à l'expertise humaine. Ils récupèrent automatiquement vos données bancaires, classent vos factures et leur équipe d'experts-comptables valide et finalise tout. <strong>Parfait pour les entrepreneurs qui veulent déléguer sans perdre le contrôle</strong>.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Expert-comptable dédié avec contact direct via l'app</td>
-            <td>Service exclusivement digital, pas de bureau physique</td>
-          </tr>
-          <tr>
-            <td>Synchronisation bancaire automatique et classification intelligente</td>
-            <td>Limité aux TPE et micro-entreprises, inadapté aux PME complexes</td>
-          </tr>
-          <tr>
-            <td>Tarifs transparents dès 69€/mois tout inclus</td>
-            <td>Délais parfois longs en période de pointe fiscale</td>
-          </tr>
-          <tr>
-            <td>Accompagnement création d'entreprise et formalités juridiques</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Expert-comptable dédié avec contact direct via l'app</td></tr><tr><td>Synchronisation bancaire automatique et classification intelligente</td></tr><tr><td>Tarifs transparents dès 69€/mois tout inclus</td></tr><tr><td>Accompagnement création d'entreprise et formalités juridiques</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Service exclusivement digital, pas de bureau physique</td></tr><tr><td>Limité aux TPE et micro-entreprises, inadapté aux PME complexes</td></tr><tr><td>Délais parfois longs en période de pointe fiscale</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1298,7 +1086,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 idees-innovantes.com — Données actualisées le 2 octobre 2026
+        © 2026 idees-innovantes.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

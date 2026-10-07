@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -489,7 +494,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Comparatif des meilleurs logiciels de recrutement parmi 9 tests</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Emma David" class="hero-author-avatar">
     <span>Rédigé par Emma David</span>
@@ -527,42 +532,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise Recruitee depuis deux ans et je trouve que cette plateforme de recrutement collaboratif se démarque vraiment par sa simplicité.
-
-<p>Les équipes RH peuvent créer des <strong>parcours candidats personnalisés</strong> et impliquer facilement les managers dans le processus de sélection.</p>
-
-<p>L'interface reste claire même quand on gère plusieurs dizaines de postes en parallèle.</p><p>Ce qui m'a convaincu, c'est la partie collaboration.</p>
-
-<p>Les commentaires en temps réel sur les profils, les scorecards partagées et la possibilité de programmer des entretiens vidéo directement dans l'outil facilitent énormément le travail en équipe.</p>
-
-<p><strong>Plus besoin de jongler entre emails et tableaux Excel</strong> pour suivre l'avancement des recrutements.</p><p>Franchement, si vous cherchez un ATS qui ne vous prend pas la tête avec des fonctionnalités alambiquées, Recruitee fait le job.</p>
-
-<p>Le système de tags pour organiser les candidatures et l'automatisation des relances me font gagner pas mal de temps au quotidien.</p>
-
-<p>Par contre, <strong>attention aux limitations sur les intégrations</strong> si vous avez un écosystème RH complexe.</p></p>
+            <p>J'utilise Recruitee depuis deux ans et je trouve que cette plateforme de recrutement collaboratif se démarque vraiment par sa simplicité. Les équipes RH peuvent créer des <strong>parcours candidats personnalisés</strong> et impliquer facilement les managers dans le processus de sélection. L'interface reste claire même quand on gère plusieurs dizaines de postes en parallèle.</p><p>Ce qui m'a convaincu, c'est la partie collaboration. Les commentaires en temps réel sur les profils, les scorecards partagées et la possibilité de programmer des entretiens vidéo directement dans l'outil facilitent énormément le travail en équipe. <strong>Plus besoin de jongler entre emails et tableaux Excel</strong> pour suivre l'avancement des recrutements.</p><p>Franchement, si vous cherchez un ATS qui ne vous prend pas la tête avec des fonctionnalités alambiquées, Recruitee fait le job. Le système de tags pour organiser les candidatures et l'automatisation des relances me font gagner pas mal de temps au quotidien. Par contre, <strong>attention aux limitations sur les intégrations</strong> si vous avez un écosystème RH complexe.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive qui ne nécessite pas de formation approfondie</td>
-            <td>Intégrations limitées avec certains SIRH français</td>
-          </tr>
-          <tr>
-            <td>Collaboration fluide entre RH et managers opérationnels</td>
-            <td>Fonctionnalités de sourcing moins poussées que les spécialistes</td>
-          </tr>
-          <tr>
-            <td>Automatisation intelligente des tâches répétitives</td>
-            <td>Support client parfois lent en français</td>
-          </tr>
-          <tr>
-            <td>Reporting détaillé sur les performances de recrutement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive qui ne nécessite pas de formation approfondie</td></tr><tr><td>Collaboration fluide entre RH et managers opérationnels</td></tr><tr><td>Automatisation intelligente des tâches répétitives</td></tr><tr><td>Reporting détaillé sur les performances de recrutement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Intégrations limitées avec certains SIRH français</td></tr><tr><td>Fonctionnalités de sourcing moins poussées que les spécialistes</td></tr><tr><td>Support client parfois lent en français</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -578,38 +560,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Jobaffinity s'adresse aux cabinets de recrutement et aux services RH qui cherchent une <strong>solution tout-en-un</strong> pour leurs processus de sourcing et de gestion des candidatures.
-
-<p>Je l'ai testé pendant plusieurs mois et je peux dire qu'il brille surtout par sa base de données candidats intégrée et ses outils de recherche multicritères.</p><p>L'interface reste moderne sans être révolutionnaire.</p>
-
-<p>Ce qui m'a marqué c'est la fluidité des workflows de qualification et le système de scoring automatique des profils.</p>
-
-<p>Parfait si vous passez vos journées à trier des CV et que vous voulez automatiser une partie du travail.</p><p>Jobaffinity vise clairement les équipes qui recrutent en volume et qui ont besoin de traçabilité complète sur leurs processus.</p>
-
-<p><strong>Moins adapté aux petites structures</strong> qui cherchent juste un ATS basique pour quelques postes par mois.</p></p>
+            <p>Jobaffinity s'adresse aux cabinets de recrutement et aux services RH qui cherchent une <strong>solution tout-en-un</strong> pour leurs processus de sourcing et de gestion des candidatures. Je l'ai testé pendant plusieurs mois et je peux dire qu'il brille surtout par sa base de données candidats intégrée et ses outils de recherche multicritères.</p><p>L'interface reste moderne sans être révolutionnaire. Ce qui m'a marqué c'est la fluidité des workflows de qualification et le système de scoring automatique des profils. Parfait si vous passez vos journées à trier des CV et que vous voulez automatiser une partie du travail.</p><p>Jobaffinity vise clairement les équipes qui recrutent en volume et qui ont besoin de traçabilité complète sur leurs processus. <strong>Moins adapté aux petites structures</strong> qui cherchent juste un ATS basique pour quelques postes par mois.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Base de données candidats enrichie avec sourcing intégré</td>
-            <td>Tarification élevée pour les petites équipes RH</td>
-          </tr>
-          <tr>
-            <td>Scoring automatique et filtres de recherche très précis</td>
-            <td>Courbe d'apprentissage un peu longue au début</td>
-          </tr>
-          <tr>
-            <td>Workflows personnalisables pour chaque type de poste</td>
-            <td>Interface parfois surchargée avec toutes les fonctionnalités</td>
-          </tr>
-          <tr>
-            <td>Suivi des métriques de recrutement en temps réel</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Base de données candidats enrichie avec sourcing intégré</td></tr><tr><td>Scoring automatique et filtres de recherche très précis</td></tr><tr><td>Workflows personnalisables pour chaque type de poste</td></tr><tr><td>Suivi des métriques de recrutement en temps réel</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification élevée pour les petites équipes RH</td></tr><tr><td>Courbe d'apprentissage un peu longue au début</td></tr><tr><td>Interface parfois surchargée avec toutes les fonctionnalités</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -625,40 +588,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé Workable pendant plusieurs recrutements et je dois dire que <strong>l'interface reste intuitive</strong> même avec des volumes importants.
-
-<p>Ce logiciel de recrutement ATS couvre vraiment l'ensemble du processus : diffusion d'offres multi-sites, <strong>tri</strong> automatique des CV et collaboration équipe.</p>
-
-<p>Contrairement à d'autres plateformes, on peut facilement personnaliser les étapes de recrutement selon nos besoins.</p><p>Le système de scoring automatique des candidatures m'a fait gagner pas mal de temps.</p>
-
-<p>Workable analyse les CV et propose un classement basé sur les critères qu'on définit. <strong>Pratique quand on reçoit 200 candidatures pour un poste</strong>.</p>
-
-<p>Les templates d'emails de relance sont aussi bien pensés.</p><p>Je recommande cet ATS aux équipes RH de 10 à 200 personnes qui recrutent régulièrement.</p>
-
-<p>Par contre, si vous cherchez juste à publier une annonce de temps en temps, <strong>le tarif risque de vous freiner</strong>. L'outil vaut surtout le coup quand on structure vraiment ses process de recrutement.</p></p>
+            <p>J'ai testé Workable pendant plusieurs recrutements et je dois dire que <strong>l'interface reste intuitive</strong> même avec des volumes importants. Ce logiciel de recrutement ATS couvre vraiment l'ensemble du processus : diffusion d'offres multi-sites, <strong>tri</strong> automatique des CV et collaboration équipe. Contrairement à d'autres plateformes, on peut facilement personnaliser les étapes de recrutement selon nos besoins.</p><p>Le système de scoring automatique des candidatures m'a fait gagner pas mal de temps. Workable analyse les CV et propose un classement basé sur les critères qu'on définit. <strong>Pratique quand on reçoit 200 candidatures pour un poste</strong>. Les templates d'emails de relance sont aussi bien pensés.</p><p>Je recommande cet ATS aux équipes RH de 10 à 200 personnes qui recrutent régulièrement. Par contre, si vous cherchez juste à publier une annonce de temps en temps, <strong>le tarif risque de vous freiner</strong>. L'outil vaut surtout le coup quand on structure vraiment ses process de recrutement.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Scoring automatique des CV avec critères personnalisables</td>
-            <td>Tarifs élevés pour les petites structures (à partir de 99€/mois)</td>
-          </tr>
-          <tr>
-            <td>Interface collaborative permettant aux managers de suivre les recrutements</td>
-            <td>Paramétrage initial assez long pour bien exploiter toutes les fonctionnalités</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec LinkedIn, Indeed et principales jobboards</td>
-            <td>Support client parfois lent à répondre en français</td>
-          </tr>
-          <tr>
-            <td>Rapports détaillés sur les performances de recrutement et sources de candidats</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Scoring automatique des CV avec critères personnalisables</td></tr><tr><td>Interface collaborative permettant aux managers de suivre les recrutements</td></tr><tr><td>Intégration native avec LinkedIn, Indeed et principales jobboards</td></tr><tr><td>Rapports détaillés sur les performances de recrutement et sources de candidats</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarifs élevés pour les petites structures (à partir de 99€/mois)</td></tr><tr><td>Paramétrage initial assez long pour bien exploiter toutes les fonctionnalités</td></tr><tr><td>Support client parfois lent à répondre en français</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -674,38 +616,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Taleez</strong> pendant plusieurs mois dans notre cabinet de recrutement. Ce logiciel de recrutement mise tout sur l'automatisation du sourcing et la gestion multi-diffusion des annonces.
-
-<p>L'interface reste accessible même pour les équipes peu techniques.</p><p>Taleez excelle vraiment dans la diffusion automatique sur les job boards. <strong>Plus de 500 sites partenaires</strong> selon eux, et franchement ça se ressent.</p>
-
-<p>Je publie une annonce et elle se retrouve partout en quelques clics. Le CV parsing fonctionne bien, même si parfois il rate des infos sur les CV créatifs.</p><p>Ce qui m'a surpris, c'est leur système de scoring automatique des candidatures.</p>
-
-<p>Ça trie le flux assez efficacement. Par contre, <strong>l'onboarding est vraiment long</strong> et leur support client met parfois 48h à répondre.</p>
-
-<p>Je recommande Taleez aux cabinets de recrutement qui gèrent beaucoup de volume et veulent automatiser leur sourcing.</p></p>
+            <p>J'ai testé <strong>Taleez</strong> pendant plusieurs mois dans notre cabinet de recrutement. Ce logiciel de recrutement mise tout sur l'automatisation du sourcing et la gestion multi-diffusion des annonces. L'interface reste accessible même pour les équipes peu techniques.</p><p>Taleez excelle vraiment dans la diffusion automatique sur les job boards. <strong>Plus de 500 sites partenaires</strong> selon eux, et franchement ça se ressent. Je publie une annonce et elle se retrouve partout en quelques clics. Le CV parsing fonctionne bien, même si parfois il rate des infos sur les CV créatifs.</p><p>Ce qui m'a surpris, c'est leur système de scoring automatique des candidatures. Ça trie le flux assez efficacement. Par contre, <strong>l'onboarding est vraiment long</strong> et leur support client met parfois 48h à répondre. Je recommande Taleez aux cabinets de recrutement qui gèrent beaucoup de volume et veulent automatiser leur sourcing.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Diffusion automatique sur 500+ job boards</td>
-            <td>Onboarding très chronophage</td>
-          </tr>
-          <tr>
-            <td>Parsing CV performant et scoring automatique</td>
-            <td>Support client parfois lent</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive pour les non-techniciens</td>
-            <td>Tarification qui monte vite avec le volume</td>
-          </tr>
-          <tr>
-            <td>Gestion multi-clients pour les cabinets</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Diffusion automatique sur 500+ job boards</td></tr><tr><td>Parsing CV performant et scoring automatique</td></tr><tr><td>Interface intuitive pour les non-techniciens</td></tr><tr><td>Gestion multi-clients pour les cabinets</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Onboarding très chronophage</td></tr><tr><td>Support client parfois lent</td></tr><tr><td>Tarification qui monte vite avec le volume</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -721,40 +644,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Greenhouse fait partie des logiciels de recrutement qui misent tout sur l'automatisation des processus RH.
-
-<p>J'ai testé leur plateforme pendant plusieurs mois et je dois reconnaître que <strong>leur système de scoring des candidats</strong> est particulièrement bien pensé.</p>
-
-<p>Contrairement à beaucoup d'ATS qui se contentent de stocker des CV, Greenhouse pousse vraiment l'analyse prédictive.</p><p>Ce qui m'a frappé : leur <strong>système de workflows personnalisables</strong>.</p>
-
-<p>On peut vraiment adapter chaque étape du recrutement selon le poste. Par exemple, pour un développeur senior, j'ai configuré un parcours avec test technique automatique, puis entretien vidéo différé, puis validation managériale.</p>
-
-<p>Tout s'enchaîne sans intervention manuelle.</p><p>Greenhouse excelle surtout dans les entreprises tech ou les scale-ups qui recrutent en volume. Leur intégration avec LinkedIn, Indeed et les job boards est fluide.</p>
-
-<p><strong>Le reporting analytique</strong> permet de voir exactement où on perd des candidats dans le tunnel de recrutement. Franchement, ça change la donne quand on gère 50+ recrutements simultanés.</p></p>
+            <p>Greenhouse fait partie des logiciels de recrutement qui misent tout sur l'automatisation des processus RH. J'ai testé leur plateforme pendant plusieurs mois et je dois reconnaître que <strong>leur système de scoring des candidats</strong> est particulièrement bien pensé. Contrairement à beaucoup d'ATS qui se contentent de stocker des CV, Greenhouse pousse vraiment l'analyse prédictive.</p><p>Ce qui m'a frappé : leur <strong>système de workflows personnalisables</strong>. On peut vraiment adapter chaque étape du recrutement selon le poste. Par exemple, pour un développeur senior, j'ai configuré un parcours avec test technique automatique, puis entretien vidéo différé, puis validation managériale. Tout s'enchaîne sans intervention manuelle.</p><p>Greenhouse excelle surtout dans les entreprises tech ou les scale-ups qui recrutent en volume. Leur intégration avec LinkedIn, Indeed et les job boards est fluide. <strong>Le reporting analytique</strong> permet de voir exactement où on perd des candidats dans le tunnel de recrutement. Franchement, ça change la donne quand on gère 50+ recrutements simultanés.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive avec workflows 100% personnalisables selon les postes</td>
-            <td>Prix élevé qui peut rebuter les PME (à partir de 6000$/an)</td>
-          </tr>
-          <tr>
-            <td>Scoring automatique des candidats basé sur des critères métier précis</td>
-            <td>Courbe d'apprentissage assez raide pour les débutants en ATS</td>
-          </tr>
-          <tr>
-            <td>Intégrations natives avec tous les job boards et réseaux sociaux</td>
-            <td>Support client parfois lent à répondre sur les questions techniques</td>
-          </tr>
-          <tr>
-            <td>Analytics poussées pour optimiser chaque étape du recrutement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive avec workflows 100% personnalisables selon les postes</td></tr><tr><td>Scoring automatique des candidats basé sur des critères métier précis</td></tr><tr><td>Intégrations natives avec tous les job boards et réseaux sociaux</td></tr><tr><td>Analytics poussées pour optimiser chaque étape du recrutement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix élevé qui peut rebuter les PME (à partir de 6000$/an)</td></tr><tr><td>Courbe d'apprentissage assez raide pour les débutants en ATS</td></tr><tr><td>Support client parfois lent à répondre sur les questions techniques</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -770,42 +672,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Flatchr s'adresse clairement aux équipes RH qui veulent <strong>centraliser leur processus de recrutement</strong> sans passer par une usine à gaz.
-
-<p>J'ai apprécié sa capacité à récupérer automatiquement les CV depuis les job boards et à créer des campagnes multicanales en quelques clics.</p>
-
-<p>Le logiciel de recrutement se distingue par son interface épurée et ses fonctionnalités de sourcing assez poussées.</p><p>L'outil brille surtout sur la gestion collaborative.</p>
-
-<p>Les recruteurs peuvent noter les candidats, laisser des commentaires et suivre l'avancement des dossiers en temps réel.</p>
-
-<p><strong>Le scoring automatique des profils</strong> fait gagner du temps sur le <strong>tri</strong> initial, même si je recommande de garder un œil critique sur ses suggestions.</p><p>Côté reporting, Flatchr propose des tableaux de bord personnalisables pour suivre les KPI de recrutement.</p>
-
-<p>L'intégration avec les principaux SIRH fonctionne bien, et le module de planification des entretiens évite les allers-retours par mail.</p>
-
-<p>Pour des équipes de 5 à 50 personnes qui recrutent régulièrement, <strong>ça fait le travail proprement</strong>.</p></p>
+            <p>Flatchr s'adresse clairement aux équipes RH qui veulent <strong>centraliser leur processus de recrutement</strong> sans passer par une usine à gaz. J'ai apprécié sa capacité à récupérer automatiquement les CV depuis les job boards et à créer des campagnes multicanales en quelques clics. Le logiciel de recrutement se distingue par son interface épurée et ses fonctionnalités de sourcing assez poussées.</p><p>L'outil brille surtout sur la gestion collaborative. Les recruteurs peuvent noter les candidats, laisser des commentaires et suivre l'avancement des dossiers en temps réel. <strong>Le scoring automatique des profils</strong> fait gagner du temps sur le <strong>tri</strong> initial, même si je recommande de garder un œil critique sur ses suggestions.</p><p>Côté reporting, Flatchr propose des tableaux de bord personnalisables pour suivre les KPI de recrutement. L'intégration avec les principaux SIRH fonctionne bien, et le module de planification des entretiens évite les allers-retours par mail. Pour des équipes de 5 à 50 personnes qui recrutent régulièrement, <strong>ça fait le travail proprement</strong>.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive avec prise en main rapide</td>
-            <td>Personnalisation limitée des workflows de recrutement</td>
-          </tr>
-          <tr>
-            <td>Sourcing automatisé depuis les principales plateformes</td>
-            <td>Support client parfois lent à répondre</td>
-          </tr>
-          <tr>
-            <td>Collaboration efficace entre recruteurs avec système de notation</td>
-            <td>Tarification qui peut vite grimper avec les options avancées</td>
-          </tr>
-          <tr>
-            <td>Intégrations natives avec les SIRH populaires</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive avec prise en main rapide</td></tr><tr><td>Sourcing automatisé depuis les principales plateformes</td></tr><tr><td>Collaboration efficace entre recruteurs avec système de notation</td></tr><tr><td>Intégrations natives avec les SIRH populaires</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Personnalisation limitée des workflows de recrutement</td></tr><tr><td>Support client parfois lent à répondre</td></tr><tr><td>Tarification qui peut vite grimper avec les options avancées</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -821,40 +700,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Teamtailor cible les entreprises qui cherchent à recruter avec une approche moderne et collaborative.
-
-<p>Cette plateforme suédoise mise sur <strong>l'expérience candidat</strong> avec des pages carrières personnalisables et un processus de candidature fluide.</p>
-
-<p>Je l'ai testé pendant plusieurs mois et j'ai apprécié l'interface épurée.</p><p>L'outil brille vraiment dans la collaboration entre recruteurs.</p>
-
-<p>Les équipes peuvent <strong>noter les candidats ensemble</strong>, laisser des commentaires privés et suivre chaque étape du recrutement. Le système de scoring automatique aide à prioriser les profils les plus pertinents.</p>
-
-<p>Par contre, j'ai trouvé la personnalisation des workflows parfois rigide.</p><p>Teamtailor convient parfaitement aux scale-ups et PME qui veulent professionnaliser leur recrutement sans se compliquer la vie.</p>
-
-<p>L'intégration avec les jobboards fonctionne bien, même si <strong>certains sites français</strong> ne sont pas encore couverts. Le pricing reste accessible comparé à d'autres solutions du marché.</p></p>
+            <p>Teamtailor cible les entreprises qui cherchent à recruter avec une approche moderne et collaborative. Cette plateforme suédoise mise sur <strong>l'expérience candidat</strong> avec des pages carrières personnalisables et un processus de candidature fluide. Je l'ai testé pendant plusieurs mois et j'ai apprécié l'interface épurée.</p><p>L'outil brille vraiment dans la collaboration entre recruteurs. Les équipes peuvent <strong>noter les candidats ensemble</strong>, laisser des commentaires privés et suivre chaque étape du recrutement. Le système de scoring automatique aide à prioriser les profils les plus pertinents. Par contre, j'ai trouvé la personnalisation des workflows parfois rigide.</p><p>Teamtailor convient parfaitement aux scale-ups et PME qui veulent professionnaliser leur recrutement sans se compliquer la vie. L'intégration avec les jobboards fonctionne bien, même si <strong>certains sites français</strong> ne sont pas encore couverts. Le pricing reste accessible comparé à d'autres solutions du marché.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive et moderne, prise en main rapide</td>
-            <td>Intégrations limitées avec les jobboards français</td>
-          </tr>
-          <tr>
-            <td>Collaboration équipe très bien pensée avec scoring partagé</td>
-            <td>Reporting avancé peu développé</td>
-          </tr>
-          <tr>
-            <td>Pages carrières personnalisables sans développeur</td>
-            <td>Support client parfois lent en français</td>
-          </tr>
-          <tr>
-            <td>Automatisation des relances candidats efficace</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive et moderne, prise en main rapide</td></tr><tr><td>Collaboration équipe très bien pensée avec scoring partagé</td></tr><tr><td>Pages carrières personnalisables sans développeur</td></tr><tr><td>Automatisation des relances candidats efficace</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Intégrations limitées avec les jobboards français</td></tr><tr><td>Reporting avancé peu développé</td></tr><tr><td>Support client parfois lent en français</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -870,38 +728,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Softy est un logiciel de recrutement français qui se concentre sur les entreprises cherchant à <strong>automatiser leurs processus de sourcing</strong> sans se perdre dans une usine à gaz.
-
-<p>Je l'ai testé pendant trois mois et j'ai apprécié son approche directe : moins de fioritures, plus d'efficacité opérationnelle.</p><p>L'outil excelle vraiment sur la <strong>diffusion multi-sites</strong>.</p>
-
-<p>Une seule saisie d'offre et elle se retrouve sur Indeed, LinkedIn, Pôle emploi et une quinzaine d'autres jobboards. Gain de temps énorme.</p>
-
-<p>Le système de scoring automatique des CV fonctionne bien aussi, même si parfois il faut ajuster les critères manuellement.</p><p>Côté candidatures, Softy centralise tout dans une interface claire.</p>
-
-<p>J'ai particulièrement aimé les <strong>relances automatiques</strong> et le suivi des entretiens avec notifications. Par contre, l'onboarding prend du temps et certaines fonctionnalités avancées manquent encore de finition.</p></p>
+            <p>Softy est un logiciel de recrutement français qui se concentre sur les entreprises cherchant à <strong>automatiser leurs processus de sourcing</strong> sans se perdre dans une usine à gaz. Je l'ai testé pendant trois mois et j'ai apprécié son approche directe : moins de fioritures, plus d'efficacité opérationnelle.</p><p>L'outil excelle vraiment sur la <strong>diffusion multi-sites</strong>. Une seule saisie d'offre et elle se retrouve sur Indeed, LinkedIn, Pôle emploi et une quinzaine d'autres jobboards. Gain de temps énorme. Le système de scoring automatique des CV fonctionne bien aussi, même si parfois il faut ajuster les critères manuellement.</p><p>Côté candidatures, Softy centralise tout dans une interface claire. J'ai particulièrement aimé les <strong>relances automatiques</strong> et le suivi des entretiens avec notifications. Par contre, l'onboarding prend du temps et certaines fonctionnalités avancées manquent encore de finition.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Diffusion automatique sur 15+ jobboards en un clic</td>
-            <td>Onboarding un peu long pour maîtriser toutes les fonctions</td>
-          </tr>
-          <tr>
-            <td>Scoring intelligent des CV avec critères personnalisables</td>
-            <td>Rapports analytiques basiques comparé à la concurrence</td>
-          </tr>
-          <tr>
-            <td>Interface française intuitive et support réactif</td>
-            <td>Intégrations limitées avec certains SIRH populaires</td>
-          </tr>
-          <tr>
-            <td>Prix transparent sans frais cachés sur les publications</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Diffusion automatique sur 15+ jobboards en un clic</td></tr><tr><td>Scoring intelligent des CV avec critères personnalisables</td></tr><tr><td>Interface française intuitive et support réactif</td></tr><tr><td>Prix transparent sans frais cachés sur les publications</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Onboarding un peu long pour maîtriser toutes les fonctions</td></tr><tr><td>Rapports analytiques basiques comparé à la concurrence</td></tr><tr><td>Intégrations limitées avec certains SIRH populaires</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -917,38 +756,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé WeRecruit pendant 6 mois pour recruter dans le secteur IT. Ce logiciel de recrutement se concentre sur l'automatisation des tâches répétitives et la collaboration entre recruteurs.
-
-<p><strong>L'interface est plutôt intuitive</strong>, même si j'ai mis quelques jours à maîtriser toutes les fonctionnalités.</p><p>WeRecruit excelle dans la gestion des candidatures multiples et le suivi des entretiens.</p>
-
-<p>Le système de scoring automatique m'a fait gagner un temps fou sur le <strong>tri</strong> initial des CV.</p>
-
-<p>Par contre, <strong>attention au paramétrage initial</strong> qui demande pas mal d'investissement.</p><p>Je recommande WeRecruit aux équipes RH de 5 à 50 personnes qui gèrent plus de 100 candidatures par mois.</p>
-
-<p>Pour les petites structures ou les recrutements très spécialisés, ça peut être surdimensionné. L'outil brille vraiment quand on a du volume à traiter.</p></p>
+            <p>J'ai testé WeRecruit pendant 6 mois pour recruter dans le secteur IT. Ce logiciel de recrutement se concentre sur l'automatisation des tâches répétitives et la collaboration entre recruteurs. <strong>L'interface est plutôt intuitive</strong>, même si j'ai mis quelques jours à maîtriser toutes les fonctionnalités.</p><p>WeRecruit excelle dans la gestion des candidatures multiples et le suivi des entretiens. Le système de scoring automatique m'a fait gagner un temps fou sur le <strong>tri</strong> initial des CV. Par contre, <strong>attention au paramétrage initial</strong> qui demande pas mal d'investissement.</p><p>Je recommande WeRecruit aux équipes RH de 5 à 50 personnes qui gèrent plus de 100 candidatures par mois. Pour les petites structures ou les recrutements très spécialisés, ça peut être surdimensionné. L'outil brille vraiment quand on a du volume à traiter.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Scoring automatique des CV qui fait vraiment gagner du temps sur le tri initial</td>
-            <td>Interface parfois lente lors des pics d'activité avec beaucoup de candidatures</td>
-          </tr>
-          <tr>
-            <td>Collaboration équipe fluide avec attribution automatique des candidatures</td>
-            <td>Paramétrage initial complexe qui nécessite une formation dédiée</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec les principaux job boards français</td>
-            <td>Tarification qui grimpe vite avec les modules complémentaires</td>
-          </tr>
-          <tr>
-            <td>Tableau de bord temps réel avec métriques de performance détaillées</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Scoring automatique des CV qui fait vraiment gagner du temps sur le tri initial</td></tr><tr><td>Collaboration équipe fluide avec attribution automatique des candidatures</td></tr><tr><td>Intégration native avec les principaux job boards français</td></tr><tr><td>Tableau de bord temps réel avec métriques de performance détaillées</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface parfois lente lors des pics d'activité avec beaucoup de candidatures</td></tr><tr><td>Paramétrage initial complexe qui nécessite une formation dédiée</td></tr><tr><td>Tarification qui grimpe vite avec les modules complémentaires</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1193,7 +1013,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 idees-innovantes.com — Données actualisées le 2 octobre 2026
+        © 2026 idees-innovantes.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>
