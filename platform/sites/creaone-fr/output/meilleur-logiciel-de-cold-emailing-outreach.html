@@ -101,7 +101,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
 .av-inc-wrap .avantages-table{width:100%;margin:0}
 .av-inc-wrap .table-wrap{overflow:visible}
-.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
+.avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
@@ -542,10 +542,10 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Prise en main rapide, même sans background technique : j'ai formé un stagiaire dessus en deux jours</td></tr><tr><td>Séquences LinkedIn + email combinées depuis une seule interface, ce qui simplifie vraiment le workflow d'outreach</td></tr><tr><td>Bibliothèque de modèles de campagnes intégrée, utile pour démarrer sans repartir de zéro</td></tr><tr><td>Respect automatique des quotas LinkedIn simulant un comportement humain, ce qui réduit le risque de restriction de compte</td></tr></tbody>
         </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Le module email reste basique comparé à des outils dédiés : pas d'A/B test natif, peu de contrôle sur la délivrabilité et les warm-up d'adresses</td></tr><tr><td>Gestion multi-comptes très limitée sur les offres standard, ce qui bloque les agences ou les équipes qui gèrent plusieurs profils LinkedIn</td></tr><tr><td>L'enrichissement email intégré donne des résultats décevants sur les cibles hors grandes entreprises françaises, il faut souvent repasser par un outil tiers comme Hunter ou Dropcontact</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -570,14 +570,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Tarification à la boîte mail connectée, pas au volume de contacts : idéal pour les multi-comptes et agences</td></tr><tr><td>Warmup automatique intégré qui tourne en autonomie sans configuration répétée</td></tr><tr><td>Prise en main rapide, première campagne lancée en moins d'une heure même sans formation</td></tr><tr><td>API disponible pour connecter Emelia à des workflows externes ou des outils maison</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Reporting assez basique : pas de vue pipeline commerciale, ni d'analyse fine par segment ou par persona</td></tr><tr><td>Le support est principalement en anglais et les délais de réponse peuvent grimper à 48h sur les tickets complexes</td></tr><tr><td>Manque d'intégrations natives avec les CRM courants comme HubSpot ou Pipedrive, ce qui force à passer par Zapier ou l'API</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -602,14 +602,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Séquences vraiment multicanales : LinkedIn, email et Twitter dans un seul workflow, avec conditions qui s'adaptent en temps réel au comportement du prospect</td></tr><tr><td>Enrichissement des contacts intégré nativement via Dropcontact, ce qui supprime une étape manuelle dans le process et fait gagner un temps concret</td></tr><tr><td>Logique conditionnelle avancée : si le prospect ignore le message LinkedIn, la séquence bascule automatiquement sur email sans intervention manuelle</td></tr><tr><td>Interface de création des campagnes assez visuelle, la prise en main est rapide pour quelqu'un qui a déjà utilisé un séquenceur email classique</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Le tarif grimpe vite dès qu'on monte en volume de leads ou qu'on ajoute des membres d'équipe, ce qui le rend difficile à justifier pour les indépendants ou les très petites structures</td></tr><tr><td>La synchronisation CRM montre ses limites sur des configurations avancées : les objets personnalisés dans HubSpot ne remontent pas toujours proprement, j'ai dû faire des ajustements manuels</td></tr><tr><td>Le support peut être lent en dehors des heures de bureau européennes, et la documentation technique reste insuffisante pour les cas d'usage complexes avec l'API</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -634,14 +634,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Personnalisation dynamique des images avec le nom, logo ou screenshot du site du prospect intégré automatiquement</td></tr><tr><td>Séquences multicanales email + LinkedIn + appel avec conditions de déclenchement paramétrables</td></tr><tr><td>Lemwarm inclus nativement pour l'échauffement de boîte et la délivrabilité</td></tr><tr><td>Interface de reporting claire : taux d'ouverture, de clic, de réponse et de rebond par étape de séquence</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Le tarif grimpe vite : les fonctionnalités multicanales vraiment utiles arrivent à partir du plan Email Pro + LinkedIn, ce qui dépasse facilement 80€/mois par utilisateur</td></tr><tr><td>L'onboarding est un peu chaotique, surtout pour les paramètres techniques (SPF, DKIM, connexion boîte) : j'ai perdu une bonne heure là-dessus la première fois</td></tr><tr><td>Le CRM natif reste assez basique, et l'intégration avec HubSpot ou Salesforce demande parfois des ajustements manuels qui ne sont pas documentés clairement</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -666,14 +666,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Combinaison recherche d'emails + vérification + séquences dans un seul outil, ce qui évite d'empiler trois abonnements différents</td></tr><tr><td>L'extension Chrome pour extraire des emails depuis LinkedIn ou un site fonctionne bien et fait gagner un temps réel sur la constitution de listes</td></tr><tr><td>Le warm-up d'emails est inclus dans les plans, ce qui aide à protéger la délivrabilité sans souscrire un outil supplémentaire comme Lemwarm</td></tr><tr><td>Les séquences conditionnelles (si ouvert / si pas cliqué) permettent de personnaliser le parcours prospect sans avoir besoin d'un outil dédié plus avancé</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Le système de crédits peut devenir frustrant assez vite : chaque recherche d'email ou vérification consomme des crédits, et sur les plans d'entrée de gamme, on atteint la limite plus vite qu'on ne le pense</td></tr><tr><td>L'éditeur de séquences manque de flexibilité comparé à des outils comme Lemlist ou Instantly, notamment sur la personnalisation avancée et les variables dynamiques</td></tr><tr><td>Le support client est parfois lent à répondre, j'ai attendu plus de 48h sur un problème de synchronisation avec HubSpot, ce qui bloque quand on est en pleine campagne active</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -698,14 +698,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Warm-up automatique natif sur chaque boîte mail connectée, sans outil tiers nécessaire</td></tr><tr><td>Rotation intelligente entre des dizaines de comptes d'envoi pour préserver la délivrabilité</td></tr><tr><td>Unibox centralisée : toutes les réponses de tous les comptes en un seul fil, vraiment pratique à grande échelle</td></tr><tr><td>Tarification à plat sans limite de contacts : on paie selon le nombre de comptes actifs, pas par email envoyé</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Le CRM intégré est très basique : si tu veux des workflows avancés, un scoring ou des intégrations complexes, il faudra passer par Zapier ou une solution externe</td></tr><tr><td>L'interface a été pas mal refondue en 2024, et la courbe d'apprentissage pour configurer correctement les limites d'envoi par boîte reste irritante pour les nouveaux utilisateurs</td></tr><tr><td>Le support client peut être lent en dehors des heures US, les réponses par chat arrivent parfois le lendemain matin</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -730,14 +730,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Warm-up automatique des boîtes mail inclus nativement, sans abonnement séparé</td></tr><tr><td>Rotation intelligente entre plusieurs comptes email pour préserver la délivrabilité</td></tr><tr><td>Inbox unifiée pour gérer toutes les réponses depuis un seul endroit, même avec des dizaines de boîtes</td></tr><tr><td>API et webhooks disponibles pour connecter un CRM ou automatiser les workflows de qualification</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>L'interface peut désorienter au début : la logique de navigation entre clients, campagnes et boîtes n'est pas immédiatement évidente, j'ai passé du temps à comprendre l'arborescence</td></tr><tr><td>Le reporting est correct mais manque de profondeur analytique : pas de vue comparative entre campagnes sur une période longue, les exports CSV sont basiques</td></tr><tr><td>Le support répond, mais avec un délai parfois frustrant sur les tickets urgents, surtout quand une campagne active rencontre un problème de délivrabilité</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -762,14 +762,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Rotation automatique des boîtes d'envoi pour préserver la délivrabilité sur plusieurs domaines en parallèle</td></tr><tr><td>Warm-up d'adresse email intégré nativement, sans plugin tiers à connecter</td></tr><tr><td>Personnalisation avancée avec variables conditionnelles dans le corps du mail, pas juste prénom et société</td></tr><tr><td>Tarif parmi les plus compétitifs du marché pour le volume de prospects inclus dès le premier plan</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>L'interface de gestion des prospects manque de filtres avancés : dès qu'on dépasse 5 000 contacts dans une liste, ça devient vite pénible à trier</td></tr><tr><td>Le support client répond parfois avec 24 à 48h de délai, et les réponses restent souvent génériques, peu utiles sur des cas techniques précis</td></tr><tr><td>L'intégration CRM native est limitée à HubSpot et Pipedrive via Zapier, pas en natif direct, ce qui ajoute une couche de configuration et des risques de désynchronisation</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>

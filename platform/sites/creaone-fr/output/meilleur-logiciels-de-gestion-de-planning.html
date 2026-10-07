@@ -101,7 +101,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
 .av-inc-wrap .avantages-table{width:100%;margin:0}
 .av-inc-wrap .table-wrap{overflow:visible}
-.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
+.avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
@@ -542,10 +542,10 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Alertes de conformité légale en temps réel pendant la construction du planning (temps de repos, durée max, règles conventions collectives)</td></tr><tr><td>Envoi des plannings directement par SMS ou notification push aux équipes terrain</td></tr><tr><td>Connexion native avec les principaux logiciels de paie pour un export automatisé des heures</td></tr><tr><td>Module de remplacement rapide : identifier en quelques clics un salarié disponible et qualifié pour combler une absence</td></tr></tbody>
         </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarif élevé pour les petites structures : difficile à rentabiliser en dessous d'une dizaine de salariés, surtout avec les options avancées</td></tr><tr><td>Prise en main un peu longue pour les managers peu à l'aise avec le digital, l'onboarding manque parfois d'accompagnement humain concret</td></tr><tr><td>Personnalisation des rapports RH limitée : les exports sont standardisés et adapter les tableaux de bord à des besoins spécifiques demande du temps voire un contact avec le support</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -570,14 +570,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Timeline drag-and-drop ultra fluide : réaffecter une tâche prend 3 secondes, même sur mobile</td></tr><tr><td>Vue charge de travail par membre d'équipe en temps réel, ce qui évite les surcharges silencieuses</td></tr><tr><td>Intégration native avec Toggl Track pour corréler planning prévu et temps réellement passé</td></tr><tr><td>Prise en main rapide : j'ai formé deux collaborateurs dessus en moins d'une heure, sans documentation</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas de dépendances entre tâches : impossible de dire 'la tâche B commence quand A est finie', ce qui bloque dès que les projets se complexifient</td></tr><tr><td>Le reporting est très basique, quasiment aucune possibilité d'export structuré vers Excel ou un outil BI sans passer par l'API</td></tr><tr><td>L'interface, bien que propre, manque de densité d'information : sur des plannings très chargés, on se retrouve vite à scroller dans tous les sens</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -602,14 +602,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Système de notification automatique pour trouver un remplaçant en cas d'absence, sans passer par le téléphone</td></tr><tr><td>Application mobile vraiment utilisable : les employés posent leurs dispos, échangent des créneaux, reçoivent leur planning en temps réel</td></tr><tr><td>Export des heures vers les logiciels de paie courants (Sage, Silae...) ce qui évite les ressaisies manuelles et les erreurs</td></tr><tr><td>Gestion multi-sites native : on peut piloter plusieurs établissements depuis un seul compte sans jongler entre des fichiers Excel</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Le tarif grimpe vite dès qu'on dépasse une certaine taille d'équipe : le modèle de facturation à l'utilisateur actif peut réserver des surprises sur la facture mensuelle</td></tr><tr><td>L'onboarding est correct mais pas exceptionnel : sans accompagnement dédié, paramétrer les règles de planification avancées (contraintes légales, conventions collectives) prend du temps et quelques allers-retours avec le support</td></tr><tr><td>Le module de reporting reste basique : pour des analyses RH poussées ou du suivi de masse salariale détaillé, il faudra exporter les données et travailler sous Excel ou connecter un autre outil</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -634,14 +634,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Synchronisation native entre badgeage, planning et calcul de paie : zéro ressaisie</td></tr><tr><td>Gestion fine des modulations et compteurs d'heures selon plusieurs conventions collectives simultanées</td></tr><tr><td>Workflows de validation des absences configurables par niveau hiérarchique</td></tr><tr><td>Adapté aux environnements multi-sites avec des équipes en rotation décalée (3x8, week-ends, nuits)</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Prise en main longue : l'onboarding demande un vrai accompagnement, j'ai vu des équipes RH mettre plusieurs semaines avant d'être autonomes</td></tr><tr><td>L'interface reste dense et peu intuitive sur certains écrans de paramétrage, notamment pour configurer les règles de calcul d'heures spécifiques à une convention</td></tr><tr><td>Le tarif n'est pas public et les devis varient beaucoup selon le nombre de modules activés, ce qui rend la comparaison difficile en amont</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -666,14 +666,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Prise en main rapide : un manager terrain devient autonome en quelques jours, sans formation technique</td></tr><tr><td>Les employés déclarent leurs disponibilités eux-mêmes via l'app, ce qui réduit les allers-retours avec les responsables</td></tr><tr><td>Le système de remplacement suggère automatiquement les personnes disponibles en cas d'absence de dernière minute</td></tr><tr><td>Export des heures travaillées vers la paie, avec suivi du temps réel via pointage mobile</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Les fonctionnalités RH restent très limitées : pas de gestion de congés payés complexe, pas de suivi des compétences, pas d'intégration native avec les SIRH courants</td></tr><tr><td>Le support client répond parfois avec un délai notable, surtout en dehors des heures ouvrées canadiennes (l'outil vient du Québec)</td></tr><tr><td>La personnalisation des rapports est assez rigide : impossible d'exporter exactement ce qu'on veut sans passer par un tableur externe</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -698,14 +698,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Moteur de règles métier très avancé : gestion des amplitudes, repos obligatoires, quotas horaires par type de poste, tout est paramétrable sans coder</td></tr><tr><td>Gestion des absences intégrée directement dans le planning, avec impact visible en temps réel sur la couverture des équipes</td></tr><tr><td>Application mobile fonctionnelle pour les salariés : consultation des horaires, demandes de congés, pointage selon configuration</td></tr><tr><td>Exports paie configurables et connexion SIRH via API, ce qui évite les doubles saisies entre la GTA et la paie</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Onboarding long et technique : le paramétrage initial des règles conventionnelles nécessite souvent un accompagnement payant, ce qui alourdit le budget de démarrage</td></tr><tr><td>Interface pas toujours intuitive pour les managers de proximité qui n'ont pas l'habitude des outils GTA, la courbe d'apprentissage est réelle</td></tr><tr><td>Peu adapté aux petites structures : la richesse fonctionnelle devient une complexité inutile en dessous d'une cinquantaine de salariés</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -730,14 +730,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Vue Timeline (Gantt) avec gestion des dépendances entre tâches, directement utilisable sans configuration complexe</td></tr><tr><td>Automatisations natives : relances automatiques, changement de statut, assignation conditionnelle selon des règles personnalisées</td></tr><tr><td>Flexibilité d'affichage : liste, kanban, calendrier, Gantt, tout dans le même projet sans jongler entre outils</td></tr><tr><td>Intégrations larges avec Slack, Google Drive, Figma, Zoom, Salesforce et des centaines d'autres via des connecteurs natifs ou Zapier</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>La gestion de la charge et des capacités par ressource est très limitée : impossible de savoir facilement si un collaborateur est surchargé sur la semaine sans passer par des add-ons ou des exports manuels</td></tr><tr><td>L'onboarding peut décourager les profils non-tech : la logique de projets, sections, tâches et sous-tâches imbriquées n'est pas intuitive du premier coup, j'ai vu des équipes abandonner après deux semaines</td></tr><tr><td>Le plan gratuit est devenu très restrictif depuis 2023, certaines fonctionnalités clés comme les règles d'automatisation ou les Timelines sont réservées aux plans payants à partir de 10,99 € par utilisateur par mois</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -762,14 +762,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Planification des effectifs intégrée directement aux données RH et paie, sans double saisie</td></tr><tr><td>Workflows de validation configurables : un manager peut soumettre un planning, le RH valide, le DRH arbitre, tout est tracé</td></tr><tr><td>Gestion automatique des contraintes légales et des compteurs de temps (repos compensateurs, heures sup, etc.)</td></tr><tr><td>Reporting avancé sur la charge de travail, les écarts de planning et les coûts salariaux associés</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Déploiement très long : compte minimum 6 à 12 mois avant d'avoir une configuration réellement opérationnelle, avec un intégrateur quasi obligatoire</td></tr><tr><td>Tarification opaque et élevée, souvent négociée au cas par cas, ce qui rend la comparaison difficile pour les acheteurs non habitués aux contrats enterprise</td></tr><tr><td>L'interface, bien que rénovée, reste dense et peu intuitive pour des utilisateurs occasionnels : certains managers abandonnent et reviennent aux tableurs</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -794,14 +794,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Création et publication de plannings multi-sites en quelques minutes, avec notification push instantanée sur l'appli mobile</td></tr><tr><td>Gestion des échanges de shifts entre employés avec workflow de validation : l'employé propose, le manager accepte ou refuse, tout est tracé</td></tr><tr><td>Intégrations directes avec les principaux outils de paie (Xero, ADP, QuickBooks) pour exporter les heures travaillées sans ressaisie</td></tr><tr><td>Pointage mobile ou via tablette en mode kiosque, avec détection de géolocalisation pour éviter les pointages à distance</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface partiellement en anglais sur certains modules avancés, ce qui complique l'onboarding pour des équipes non anglophones</td></tr><tr><td>Tarification à l'utilisateur actif qui devient rapidement coûteuse au-delà de 40-50 personnes, surtout si on utilise les modules premium en parallèle</td></tr><tr><td>Le reporting reste assez basique nativement : pour des analyses RH poussées ou des exports personnalisés, il faut passer par l'API ou des intégrations tierces</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -826,14 +826,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Alertes automatiques sur les violations de règles conventionnelles (amplitude, repos légal) pendant la création du planning</td></tr><tr><td>Pointage mobile des salariés avec synchronisation directe dans les compteurs d'heures, sans ressaisie</td></tr><tr><td>Interface pensée pour le terrain : les équipes reçoivent et confirment leur planning depuis leur smartphone</td></tr><tr><td>Gestion des compteurs congés, heures supplémentaires et modulation directement dans l'outil, sans tableur externe</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarif qui monte rapidement au-delà de 20 salariés, avec un modèle à l'utilisateur qui peut surprendre sur les grosses équipes</td></tr><tr><td>Onboarding un peu long pour les managers non technophiles : la configuration des règles conventionnelles demande du temps et parfois un accompagnement</td></tr><tr><td>Peu adapté aux structures hors restauration, retail ou hôtellerie : les paramétrages sont très pensés pour ces secteurs, ce qui rend l'outil rigide pour d'autres activités</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -858,14 +858,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Vues multiples (Gantt, calendrier, kanban, charge de travail) sans reconfiguration à chaque changement</td></tr><tr><td>Automatisations no-code accessibles : relances, changements de statut, décalages de dates, notifications ciblées</td></tr><tr><td>Suivi de la charge par collaborateur avec la vue Workload, utile pour répartir sans surcharger</td></tr><tr><td>Intégrations natives solides avec Slack, Google Calendar, HubSpot, et Outlook</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>La tarification monte très vite dès qu'on dépasse une petite équipe : <strong>à partir de 9€/utilisateur/mois</strong>, mais les fonctionnalités vraiment utiles (automatisations avancées, rapports custom) sont réservées aux plans supérieurs</td></tr><tr><td>L'onboarding peut être déroutant pour des profils non-techniques : trop d'options dès le début, et la logique des 'boards' n'est pas immédiatement évidente pour tout le monde</td></tr><tr><td>Le reporting natif reste limité en profondeur : pour des tableaux de bord vraiment personnalisés, on finit souvent par exporter vers Excel ou connecter un outil tiers</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>

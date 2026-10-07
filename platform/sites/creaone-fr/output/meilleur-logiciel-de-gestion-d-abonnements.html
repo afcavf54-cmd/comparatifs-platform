@@ -101,7 +101,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
 .av-inc-wrap .avantages-table{width:100%;margin:0}
 .av-inc-wrap .table-wrap{overflow:visible}
-.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
+.avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
@@ -540,14 +540,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Gestion native des modèles tarifaires complexes (composants, paliers, usage-based) sans développement custom</td></tr><tr><td>Dunning automatisé avec logique de relance configurable qui réduit visiblement le churn involontaire</td></tr><tr><td>Reporting financier intégré : MRR, ARR, churn, LTV avec export direct vers les outils CRM et compta</td></tr><tr><td>Portail self-service client qui allège le support sans développement front-end supplémentaire</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Tarification élevée avec un pricing basé sur le volume de revenus traités : ça devient vite cher et peu transparent pour les équipes en croissance rapide</td></tr><tr><td>Onboarding long et configuration initiale dense, surtout si les plans tarifaires existants sont mal documentés en interne</td></tr><tr><td>L'interface a vieilli par endroits, certaines sections de configuration restent peu intuitives et le support met parfois plusieurs jours à répondre sur des questions techniques</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -572,14 +572,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>API ultra complète qui s'intègre dans n'importe quel stack : Next.js, Laravel, Node, Python, tout y passe sans friction</td></tr><tr><td>Smart Retries sur paiements échoués : j'ai récupéré entre 15 et 20% des transactions ratées le premier mois sans rien toucher</td></tr><tr><td>Gestion native des modèles complexes : prorata, upgrades/downgrades en cours de cycle, coupons temporaires, essais gratuits avec CB enregistrée</td></tr><tr><td>Portail client self-service activable en quelques clics, ce qui évite de gérer les demandes d'annulation manuellement</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas fait pour les non-développeurs : modifier un abonnement en dehors des flux prévus demande souvent de passer par l'API ou de bricoler dans le dashboard, ce qui agace un responsable admin</td></tr><tr><td>Les exports comptables sont basiques et ne respectent pas les formats attendus par un expert-comptable français (pas de FEC natif, TVA à vérifier manuellement sur les opérations cross-border)</td></tr><tr><td>Le support est lent et impersonnel sous les gros volumes : au-delà d'un certain MRR tu as un account manager, en dessous tu navigues seul dans la doc et sur Stack Overflow</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -604,14 +604,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Gestion native du prorata, des upgrades/downgrades et des essais gratuits sans développement spécifique</td></tr><tr><td>Reporting MRR/ARR/Churn intégré avec segmentation par cohorte, plan ou pays, fiable et exportable</td></tr><tr><td>Automatisation des relances sur paiements échoués (dunning) avec scénarios personnalisables par segment client</td></tr><tr><td>API REST bien documentée et connecteurs natifs avec Salesforce, Xero, QuickBooks, Slack et Stripe</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Onboarding long et complexe : compter plusieurs jours pour configurer correctement les workflows de facturation sans se tromper</td></tr><tr><td>Tarification basée sur le volume de revenus traités, ce qui peut devenir coûteux rapidement quand l'ARR grossit</td></tr><tr><td>Interface parfois dense et peu intuitive pour les équipes non techniques, certaines configurations demandent de fouiller la doc pendant un bon moment</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -636,14 +636,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Gestion native des mandats SEPA électroniques avec signature en ligne, zéro papier à gérer</td></tr><tr><td>Automatisation des rejets de prélèvement et des relances selon le motif exact de rejet</td></tr><tr><td>API bien documentée, intégration possible avec un CRM, un ERP ou une plateforme SaaS existante</td></tr><tr><td>Adapté aux volumes élevés : plusieurs milliers de prélèvements par mois sans dégradation des délais</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas de gestion native des niveaux d'abonnements, upgrades ou downgrades : il faut coupler SlimPay avec un autre logiciel de facturation ou de CRM</td></tr><tr><td>L'intégration technique est indispensable via API, ce qui le rend inaccessible sans développeur, l'onboarding autonome est quasi impossible pour une TPE sans équipe IT</td></tr><tr><td>Le support peut être lent à répondre sur les cas complexes, notamment les litiges de mandats, j'ai attendu plusieurs jours sur une demande qui bloquait une relance client</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -668,14 +668,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Gestion automatique de la TVA et des taxes dans plus de 200 pays, sans configuration manuelle</td></tr><tr><td>Relances automatiques sur les paiements échoués avec logique de dunning configurable</td></tr><tr><td>Portail client self-service pour gérer les abonnements, mises à jour de carte et annulations sans contact support</td></tr><tr><td>Métriques SaaS natives dans le dashboard : MRR, churn, LTV, sans plugin tiers</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Checkout peu personnalisable visuellement : difficile de coller à une charte graphique exigeante</td></tr><tr><td>Frais de transaction plus élevés que la concurrence directe (autour de 5% + 50 cents), ce qui peut piquer sur des volumes importants</td></tr><tr><td>Support client lent en dehors des heures ouvrées US/UK, et la documentation manque d'exemples concrets pour les cas limites</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -700,14 +700,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Intégration native et sans friction avec tout l'écosystème Zoho (CRM, Books, Campaigns, Desk)</td></tr><tr><td>Dunning management automatisé : relances paramétrables sur plusieurs jours après échec de paiement, avec personnalisation des emails</td></tr><tr><td>Reporting abonnement intégré (MRR, churn, ARR, LTV) sans export manuel ni outil tiers</td></tr><tr><td>Gestion fine des plans tarifaires : essais gratuits, add-ons, coupons, prix par palier, upgrades et downgrades avec prorata automatique</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>En dehors de l'écosystème Zoho, les intégrations natives sont limitées : connecter Zoho Subscriptions à Salesforce ou HubSpot demande des contournements via Zapier ou API, ce qui alourdit la maintenance</td></tr><tr><td>L'interface de configuration des plans tarifaires complexes (multiple currencies, taxes par région, règles conditionnelles) devient vite confuse, j'ai dû relire la documentation plusieurs fois</td></tr><tr><td>Le support client répond lentement hors horaires US/Inde, et les tickets complexes peuvent traîner plusieurs jours sans vraie résolution</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -732,14 +732,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Récupération automatique des paiements échoués avec logique de retry configurable selon le code d'erreur bancaire</td></tr><tr><td>Métriques SaaS intégrées nativement (MRR, churn, LTV, ARR) sans avoir besoin d'un outil analytique tiers</td></tr><tr><td>Gestion des changements de plan en cours de cycle avec calcul automatique du prorata</td></tr><tr><td>Support multi-devises et multi-passerelles (Stripe, Adyen, Braintree, PayPal) sur un même compte</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Onboarding long et technique : la configuration des règles de relance, des plans tarifaires et des intégrations demande facilement plusieurs jours de mise en place</td></tr><tr><td>Tarification progressive qui peut vite monter : les frais en pourcentage du volume traité deviennent significatifs quand le MRR dépasse quelques dizaines de milliers d'euros</td></tr><tr><td>Éditeur de templates emails et pages de paiement limité, personnalisation graphique frustrante pour les équipes qui veulent une vraie cohérence de marque</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -764,14 +764,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Gestion native de la reconnaissance de revenus (ASC 606 / IFRS 15) avec écritures automatiques, sans module tiers</td></tr><tr><td>Catalogue tarifaire très flexible : tarification à l'usage, par paliers, hybride, avec proration automatique en cours de cycle</td></tr><tr><td>Connecteurs ERP solides (Salesforce, NetSuite, SAP) et API REST bien documentée pour les intégrations sur-mesure</td></tr><tr><td>Reporting abonnement avancé : MRR, ARR, churn, expansion revenue, cohorts, directement exploitable pour les boards et investisseurs</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Déploiement long et coûteux : sans intégrateur certifié, on perd facilement plusieurs semaines sur la configuration initiale des règles de facturation et des workflows</td></tr><tr><td>Tarification opaque et élevée, souvent réservée aux entreprises avec un volume de revenus récurrents conséquent, peu adapté aux structures en dessous de 1-2M€ d'ARR</td></tr><tr><td>L'interface utilisateur accuse son âge sur certains modules : la navigation dans le catalogue ou les rapports personnalisés peut devenir frustrante pour des utilisateurs non techniques</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -796,14 +796,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Gestion automatique des relances impayées avec séquences paramétrables (J+3, J+7, J+15) sans plugin externe</td></tr><tr><td>Calcul de prorata instantané lors des changements de formule en cours de cycle, aucune correction manuelle</td></tr><tr><td>Tableau de bord MRR et churn natif, les métriques abonnements sont visibles sans export ni retraitement</td></tr><tr><td>Exports comptables compatibles avec les principaux outils de compta (format FEC disponible), ce qui simplifie la clôture mensuelle</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>L'onboarding est assez léger : pas de coach dédié, la documentation existe mais certaines configurations avancées (webhooks, API) demandent de chercher par soi-même</td></tr><tr><td>Personnalisation graphique des emails de relance assez limitée, le rendu reste générique et ça se voit quand la charte de la marque est soignée</td></tr><tr><td>Pas adapté aux abonnements avec options modulaires complexes (type configurateur SaaS avec des dizaines d'add-ons) : la gestion devient vite laborieuse au-delà d'une certaine granularité tarifaire</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>

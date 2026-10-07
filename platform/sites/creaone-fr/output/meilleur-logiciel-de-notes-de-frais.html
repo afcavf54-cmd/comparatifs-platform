@@ -101,7 +101,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
 .av-inc-wrap .avantages-table{width:100%;margin:0}
 .av-inc-wrap .table-wrap{overflow:visible}
-.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
+.avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
@@ -536,14 +536,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>OCR mobile fiable qui évite la ressaisie manuelle des montants et catégories, avec un taux de reconnaissance acceptable sur la majorité des tickets</td></tr><tr><td>Workflows de validation entièrement configurables par département ou ligne managériale, sans passer par le support</td></tr><tr><td>Contrôle automatique des politiques de frais avec plafonds paramétrables et alertes en temps réel, avant même la validation manager</td></tr><tr><td>Intégration native dans la suite Lucca (congés, paie, absences) qui évite les doubles saisies entre RH et comptabilité</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>L'onboarding est long : compter 3 à 6 semaines minimum pour un paramétrage sérieux, ce qui rend l'outil peu adapté aux structures sans admin RH ou DSI interne</td></tr><tr><td>La tarification modulaire de Lucca peut surprendre : chaque brique se facture séparément, et l'addition monte vite pour une PME qui veut plusieurs modules</td></tr><tr><td>L'OCR fait des erreurs sur les tickets froissés ou mal éclairés, ce qui force une vérification manuelle et casse un peu le gain de temps promis</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -568,14 +568,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>OCR fiable et rapide : la reconnaissance automatique des reçus fonctionne bien même avec des tickets froissés ou en langue étrangère</td></tr><tr><td>Workflows de validation multi-niveaux configurables selon l'organigramme réel de l'entreprise</td></tr><tr><td>Intégrations natives avec les principaux ERP et logiciels comptables français (Sage, Cegid, SAP) sans développement spécifique</td></tr><tr><td>Gestion multi-devises en temps réel, utile pour les équipes qui voyagent régulièrement hors zone euro</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Onboarding long : paramétrer les politiques de remboursement et les règles de validation prend plusieurs jours, le support n'est pas toujours réactif sur cette phase</td></tr><tr><td>L'interface web manque de fluidité sur certains écrans de reporting, quelques lenteurs constatées lors des exports massifs de données</td></tr><tr><td>Tarif peu adapté aux très petites structures : la facturation à l'utilisateur actif monte vite pour une PME avec peu de déplacements mensuels</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -600,14 +600,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>La carte Mooncard élimine la ressaisie manuelle : chaque paiement remonte automatiquement dans le logiciel avec montant, date et catégorie pré-remplis</td></tr><tr><td>Paramétrage des plafonds et politiques de dépenses par carte, par équipe ou par type de frais, utile quand on gère des profils très différents</td></tr><tr><td>Exports comptables natifs vers Sage, Cegid, Quadratus, EBP : pas besoin de reformater un fichier Excel avant l'intégration</td></tr><tr><td>L'application mobile pour la photo des justificatifs est réellement simple, même pour des profils peu à l'aise avec les outils numériques, j'ai formé deux commerciaux dessus en moins d'une heure</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Le modèle repose entièrement sur la carte Mooncard : si un collaborateur paie avec un autre moyen, il faut quand même saisir manuellement, ce qui casse la promesse d'automatisation totale</td></tr><tr><td>L'onboarding peut être long pour les équipes RH et comptables qui doivent paramétrer les workflows de validation, les centres de coût et les politiques de frais, sans accompagnement, on peut vite se perdre dans les réglages</td></tr><tr><td>Le tarif devient significatif dès qu'on monte en nombre de cartes actives, et certains modules avancés (reporting analytique poussé, intégrations ERP) sont réservés aux formules supérieures</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -632,14 +632,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Lecture OCR des justificatifs fiable, avec extraction automatique de la TVA récupérable par catégorie</td></tr><tr><td>Gestion fine des politiques de frais : plafonds par profil salarié, alertes de dépassement avant validation</td></tr><tr><td>Intégration native avec l'écosystème Silae et exports compatibles Sage, Cegid, Quadratus sans retraitement</td></tr><tr><td>Pilotage multi-entités avec reporting par centre de coût et gestion multi-devises pour les déplacements internationaux</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>L'onboarding est dense pour les PME sans DSI : la configuration des règles métier et des workflows demande du temps et souvent l'aide d'un intégrateur</td></tr><tr><td>L'interface web manque de fluidité sur certains écrans de paramétrage, quelques menus sont peu intuitifs et j'ai perdu du temps à chercher des réglages basiques</td></tr><tr><td>Le tarif n'est pas affiché publiquement et les retours terrain indiquent une facturation à l'utilisateur qui peut grimper vite pour les structures moyennes sans négociation contractuelle</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -664,14 +664,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>OCR efficace sur la majorité des tickets : le montant, la TVA et la catégorie sont détectés automatiquement à la photo, ce qui réduit drastiquement la saisie manuelle</td></tr><tr><td>Workflow de validation fluide : les managers approuvent directement depuis l'appli, sans se connecter à un back-office lourd</td></tr><tr><td>Exports comptables natifs vers Sage, Cegid et QuickBooks, sans ressaisie ni fichier intermédiaire</td></tr><tr><td>Gestion des indemnités kilométriques avec calcul automatique au barème fiscal en vigueur, un vrai gain de temps pour les équipes terrain</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>L'OCR décroche sur les tickets thermiques abîmés ou les reçus manuscrits : il faut alors ressaisir à la main, ce qui agace quand ça arrive trois fois dans la même semaine</td></tr><tr><td>Le support client répond, mais pas toujours vite. Sur un bug de synchronisation avec notre version de Sage, j'ai attendu quatre jours ouvrés avant d'avoir une vraie réponse technique</td></tr><tr><td>Les options de personnalisation des rapports sont limitées : on peut exporter les données, mais créer un reporting sur mesure demande de passer par un fichier Excel en dehors de l'outil</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -696,14 +696,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Cartes virtuelles à usage unique pour les achats en ligne, ce qui réduit drastiquement les fraudes et les abonnements oubliés</td></tr><tr><td>OCR fiable sur les reçus via l'app mobile, les champs sont pré-remplis et ça m'a fait gagner un temps réel sur la saisie</td></tr><tr><td>Workflows de validation configurables par montant, équipe ou type de dépense, sans avoir besoin d'un développeur</td></tr><tr><td>Exports comptables automatiques compatibles avec les principaux outils du marché, le rapprochement bancaire devient beaucoup moins douloureux</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>L'onboarding est guidé mais la configuration initiale des politiques de dépenses prend du temps, comptez une à deux semaines avant que tout soit vraiment calé</td></tr><tr><td>Le support client répond, mais pas toujours vite. Sur des blocages en période de clôture comptable, j'ai trouvé ça frustrant</td></tr><tr><td>La tarification n'est pas transparente sur le site, il faut passer par un commercial pour avoir un prix, et les coûts peuvent grimper selon le nombre d'utilisateurs et les modules activés</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -728,14 +728,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Cartes Visa physiques et virtuelles avec limites de dépenses paramétrables par employé ou par équipe</td></tr><tr><td>Rapprochement bancaire automatique et synchronisation comptable en temps réel avec les principaux ERP</td></tr><tr><td>Workflows d'approbation configurables selon des règles métier précises, sans développement technique</td></tr><tr><td>Gestion multi-devises et multi-entités intégrée, pratique pour les entreprises avec des filiales à l'étranger</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>L'onboarding est long : paramétrer correctement les règles de dépenses, les intégrations et les niveaux de validation prend facilement deux à trois semaines pour une équipe de taille moyenne</td></tr><tr><td>Le support client n'est pas toujours réactif sur les sujets techniques complexes, j'ai vu des tickets rester sans réponse utile pendant plusieurs jours</td></tr><tr><td>La tarification n'est pas transparente sur le site, tout passe par une démo commerciale, ce qui complique la comparaison rapide avec d'autres logiciels de notes de frais</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -760,14 +760,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Version gratuite fonctionnelle jusqu'à 3 utilisateurs, pas juste un essai limité</td></tr><tr><td>OCR sur les reçus photo avec extraction automatique du montant, de la date et du fournisseur</td></tr><tr><td>Workflows de validation multi-niveaux configurables selon la structure de l'entreprise</td></tr><tr><td>Intégration native avec Zoho Books, Zoho CRM et plus de 20 autres applications Zoho</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Le support client répond souvent sous 24 à 48h, ce qui peut bloquer en cas de problème urgent</td></tr><tr><td>L'interface sur certains écrans de paramétrage est peu intuitive, l'onboarding sans accompagnement peut décourager</td></tr><tr><td>Les intégrations avec des ERP non-Zoho (Sage, SAP, etc.) nécessitent souvent de passer par Zapier ou une API, ce qui demande des ressources techniques</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -792,14 +792,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>OCR efficace : scan d'un ticket en quelques secondes avec extraction automatique du montant, de la devise et de la catégorie</td></tr><tr><td>Gestion multi-pays native avec plafonds de remboursement et règles fiscales configurables par marché</td></tr><tr><td>Connexion carte bancaire professionnelle pour pré-remplir les dépenses et réduire les saisies manuelles</td></tr><tr><td>Intégrations directes avec les ERP courants (SAP, NetSuite, Exact) et exports comptables propres</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>L'interface mobile est bien, mais la version web peut sembler lourde à naviguer quand on veut accéder rapidement à un rapport spécifique</td></tr><tr><td>Le support client répond, mais pas toujours vite. Sur un problème de synchronisation avec un ERP, j'ai attendu 3 jours pour une réponse utile</td></tr><tr><td>La tarification n'est pas transparente : pas de prix affiché clairement, tout passe par une démo commerciale, ce qui rallonge la prise de décision</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>

@@ -101,7 +101,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
 .av-inc-wrap .avantages-table{width:100%;margin:0}
 .av-inc-wrap .table-wrap{overflow:visible}
-.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
+.avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
@@ -536,14 +536,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Connexion directe à plus de 40 sources de données sans configuration complexe, y compris PostgreSQL, BigQuery, MongoDB et des APIs REST</td></tr><tr><td>Éditeur SQL intégré avec autocomplétion et système de snippets réutilisables, ce qui fait gagner un temps réel sur les requêtes répétitives</td></tr><tr><td>Paramètres dynamiques dans les requêtes SQL pour créer des filtres interactifs sur les dashboards sans toucher au code frontend</td></tr><tr><td>Open source et auto-hébergeable, ce qui le rend accessible sans coût de licence et adaptable à des contraintes de sécurité strictes</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Les options de visualisation restent basiques comparées à des outils comme Metabase ou Superset : pas de cartes avancées, peu de types de graphiques exotiques, et l'interface n'a quasiment pas évolué depuis plusieurs années</td></tr><tr><td>Le projet open source a traversé des phases de maintenance ralentie après le rachat par Databricks, ce qui a créé des incertitudes sur la roadmap et laissé des bugs connus sans correction rapide</td></tr><tr><td>Aucune couche sémantique ou modélisation des données intégrée : si tu veux créer des métriques partagées ou abstraire la logique métier, tu dois tout gérer côté SQL toi-même, ce qui devient vite ingérable sur des projets qui grossissent</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -568,14 +568,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Intégration native dans Excel : pas de rupture d'environnement pour les équipes déjà en place</td></tr><tr><td>Rafraîchissement automatique des données depuis des sources multiples (ERP, SQL, CRM) sans manipulation manuelle</td></tr><tr><td>Gestion fine des droits d'accès : chaque profil reçoit uniquement les rapports et données qui le concernent</td></tr><tr><td>Déploiement rapide pour les PME : j'ai vu des équipes opérationnelles en moins de deux semaines sur des cas de reporting financier classiques</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Les visualisations restent visuellement datées comparées à Power BI ou Qlik : peu de graphiques interactifs avancés, pas de storytelling data moderne</td></tr><tr><td>L'outil est très centré sur l'écosystème Microsoft Windows et Excel, ce qui le rend inadapté aux équipes travaillant sur des environnements mixtes ou cloud-first</td></tr><tr><td>L'onboarding peut être laborieux sans accompagnement : la logique de construction des rapports n'est pas toujours intuitive, surtout pour des utilisateurs sans bagage technique</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -600,14 +600,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Personnalisation très poussée des tableaux de bord, adaptée aux structures avec des besoins métier complexes</td></tr><tr><td>Gestion des droits d'accès granulaire : chaque profil utilisateur voit uniquement ce qui le concerne</td></tr><tr><td>Moteur de calcul embarqué qui accélère l'affichage même sur de gros volumes de données</td></tr><tr><td>Éditeur français avec support en français, ce qui compte vraiment lors du déploiement et de la maintenance</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>La prise en main est longue : sans accompagnement, les premières semaines sont clairement difficiles pour les non-techniques</td></tr><tr><td>L'interface de configuration des datasources manque de fluidité, certaines manipulations nécessitent plusieurs allers-retours que j'ai trouvés franchement inutiles</td></tr><tr><td>Le positionnement tarifaire et le modèle de licence on-premise ne conviennent pas aux petites structures qui cherchent une solution légère à bas coût</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -632,14 +632,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Interface no-code accessible aux non-techniciens : on crée des graphiques sans écrire une ligne de SQL</td></tr><tr><td>Alertes configurables sur des métriques clés, avec notifications par email ou Slack quand un seuil est atteint</td></tr><tr><td>Partage de dashboards en lien public ou en embed sans compte obligatoire pour les lecteurs</td></tr><tr><td>Hébergement géré par Metabase : zéro maintenance serveur, mises à jour automatiques incluses</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Le tarif du plan Pro grimpe vite dès que l'équipe dépasse une dizaine d'utilisateurs actifs, le freemium est limité à 5 utilisateurs</td></tr><tr><td>Les options de personnalisation visuelle sont assez basiques : impossibles de vraiment sortir du style Metabase par défaut, ce que j'ai trouvé frustrant sur un projet client avec une charte graphique précise</td></tr><tr><td>Le support répond souvent via forum ou documentation, rarement en direct, ce qui peut ralentir le déblocage sur un problème urgent</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -664,14 +664,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Gratuit et auto-hébergé : zéro coût de licence, données sur votre infrastructure</td></tr><tr><td>Prise en main rapide pour les non-développeurs grâce à l'interface 'Questions' en langage naturel</td></tr><tr><td>Large choix de connecteurs natifs : PostgreSQL, MySQL, MongoDB, BigQuery, Snowflake et d'autres</td></tr><tr><td>Communauté active et code source ouvert, ce qui facilite les personnalisations maison</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Les fonctionnalités avancées (SSO, row-level security, cache, embedding sécurisé) sont réservées à l'édition payante, ce qui peut bloquer le déploiement en entreprise</td></tr><tr><td>Le support se limite à la communauté GitHub et forums : j'ai attendu plusieurs jours pour débloquer un problème de connecteur, sans réponse officielle</td></tr><tr><td>Les options de personnalisation visuelle des graphiques restent limitées par rapport à des outils comme Grafana ou Superset pour des besoins très spécifiques</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -696,14 +696,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Prise en main très rapide, même sans compétences en design ou en data</td></tr><tr><td>Synchronisation en temps réel avec Google Sheets pour des visuels toujours à jour</td></tr><tr><td>Large choix de types de graphiques incluant cartes interactives, timelines et treemaps</td></tr><tr><td>Export multi-format (PNG, PDF, HTML embed) adapté à des usages éditoriaux ou print</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation graphique bloquée sur le plan gratuit : polices, couleurs et styles avancés sont réservés aux abonnements payants</td></tr><tr><td>Pas conçu pour des analyses de données complexes ou des connexions directes à des bases de données externes type SQL ou BigQuery</td></tr><tr><td>Le support client est lent sur les plans d'entrée de gamme, j'ai attendu 3 jours pour une réponse sur un bug d'export</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -728,14 +728,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Moteur associatif unique : explorer les données dans tous les sens sans contrainte de hiérarchie, les associations grises/blanches/vertes montrent immédiatement ce qui est lié ou exclu</td></tr><tr><td>Connexion native à une cinquantaine de sources de données sans ETL intermédiaire obligatoire, y compris des connecteurs cloud prêts à l'emploi</td></tr><tr><td>Partage et collaboration fluides : les apps peuvent être publiées à des utilisateurs en lecture sans licence supplémentaire lourde, pratique pour diffuser les analyses à des équipes non techniques</td></tr><tr><td>Script de chargement QlikScript assez puissant pour transformer les données directement à l'import, ce qui évite de passer par un outil de préparation externe dans 80% des cas</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>La courbe d'apprentissage est réelle : l'interface de création est intuitive en surface, mais dès qu'on veut des calculs un peu complexes (expressions set analysis, variables dynamiques), ça demande plusieurs jours de formation sérieuse. J'ai perdu du temps là-dessus.</td></tr><tr><td>Le tarif devient vite significatif quand l'équipe grandit, surtout comparé à Power BI qui reste bien moins cher pour couvrir beaucoup d'utilisateurs en lecture. La politique de licences n'est pas la plus souple du marché.</td></tr><tr><td>Les options de personnalisation visuelle restent en retrait par rapport à Tableau : les thèmes custom sont limités, et certains types de graphiques nécessitent d'installer des extensions tierces dont la maintenance n'est pas toujours garantie.</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -760,14 +760,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Gratuit et directement connecté à Google Analytics 4, Search Console, Google Ads et BigQuery sans configuration supplémentaire</td></tr><tr><td>Partage des rapports via un simple lien, sans obliger les destinataires à créer un compte ou accéder à vos outils</td></tr><tr><td>Prise en main rapide pour des profils non-développeurs, premiers dashboards opérationnels en quelques heures</td></tr><tr><td>Large bibliothèque de connecteurs communautaires pour brancher des sources tierces comme Facebook Ads, HubSpot ou Ahrefs</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Les performances se dégradent sur des volumes de données importants : les rapports deviennent lents et parfois instables au-delà d'un certain seuil de lignes</td></tr><tr><td>Les connecteurs communautaires (hors Google) sont gérés par des tiers, leur fiabilité et leur mise à jour ne sont pas garanties, j'ai eu des pannes inexpliquées sur un connecteur Facebook Ads</td></tr><tr><td>La modélisation de données reste basique : pour des calculs complexes ou des jointures avancées, il faut préparer les données en amont dans BigQuery ou Google Sheets, ce qui ajoute une couche technique que tout le monde ne maîtrise pas</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -792,14 +792,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Capacité dédiée : pas de dégradation des performances quand 50 utilisateurs ouvrent le même rapport en simultané</td></tr><tr><td>Pipelines de déploiement intégrés (dev / recette / prod) qui évitent les erreurs de mise en production</td></tr><tr><td>Rafraîchissement des données jusqu'à 48x/jour, idéal pour les dashboards opérationnels en quasi temps réel</td></tr><tr><td>Rapports paginés inclus pour les exports réglementaires ou les états comptables très structurés</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Le tarif de départ tourne autour de 4 995 €/mois pour une capacité P1, ce qui réserve concrètement l'outil aux grandes entreprises ou ESN</td></tr><tr><td>L'onboarding est laborieux : paramétrer les workspaces Premium, gérer les droits via Azure AD et comprendre le modèle de capacité prend plusieurs jours sans accompagnement</td></tr><tr><td>Le support Microsoft peut être lent sur les incidents critiques si on n'a pas souscrit un plan de support Premier, et les forums communautaires ne remplacent pas une vraie réponse technique sous 4 heures</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -824,14 +824,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Prise en main immédiate : pas de formation nécessaire, un collègue peut être autonome en 30 minutes</td></tr><tr><td>Rendus visuels propres et responsives par défaut, optimisés pour la publication web et les articles</td></tr><tr><td>Export iframe ultra simple pour intégration dans n'importe quel CMS sans toucher au code</td></tr><tr><td>Les cartes choroplèthes sont particulièrement bien gérées, avec des fonds de carte prêts à l'emploi pour la France, l'Europe, le monde</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Les possibilités de personnalisation graphique restent limitées sur le plan gratuit : couleurs, polices, logo personnalisé sont bloqués derrière les offres payantes</td></tr><tr><td>Pas de connexion native à des sources de données dynamiques (pas d'API live, pas de connecteur SQL ou Google BigQuery) : on colle des données manuellement ou via CSV, ce qui devient vite fastidieux sur des sujets qui évoluent souvent</td></tr><tr><td>Le plan gratuit affiche le branding Datawrapper sur les visuels, ce qui pose problème pour une publication professionnelle ou une marque qui veut garder sa charte</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -856,14 +856,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Connexion native à plus de 50 sources de données dont SQL, Google Sheets, Salesforce et fichiers plats, sans configuration technique lourde</td></tr><tr><td>Rapports planifiés avec envoi automatique par email en PDF ou Excel, ce qui évite les exports manuels répétitifs</td></tr><tr><td>Fonction IA intégrée (Zia) qui répond à des questions en langage naturel directement sur les données, utile pour les non-techniciens</td></tr><tr><td>Partage de tableaux de bord en lecture seule sans licence supplémentaire pour les destinataires, ce qui réduit le coût global</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Interface parfois datée et navigation entre modules peu intuitive, surtout sur les écrans de configuration avancée</td></tr><tr><td>La création de formules complexes ou de jointures entre tables peut devenir opaque sans notions de SQL, l'aide en ligne n'est pas toujours suffisante</td></tr><tr><td>Le support client répond lentement en dehors des horaires américains, et les plans d'entrée de gamme limitent le nombre de lignes de données importées</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -888,14 +888,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>100% gratuit et open source : aucun coût de licence, hébergement maîtrisé en interne</td></tr><tr><td>SQL Lab intégré pour explorer les données brutes directement depuis l'interface</td></tr><tr><td>Compatible avec plus de 40 bases de données et entrepôts cloud (Snowflake, BigQuery, Redshift...)</td></tr><tr><td>Dashboards avec filtres croisés natifs et partage par lien, sans compte requis pour les lecteurs</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>L'installation et la maintenance demandent un profil technique : Docker, config YAML, gestion des rôles... ce n'est pas plug-and-play</td></tr><tr><td>L'interface d'administration des permissions est franchement confuse, j'ai perdu du temps à comprendre le modèle de rôles au début</td></tr><tr><td>Les mises à jour peuvent casser des configurations existantes, et le support se limite à la communauté GitHub : pas d'hotline si quelque chose plante en prod</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -920,14 +920,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Narration automatique des données : chaque indicateur peut afficher un commentaire contextuel généré ou saisi manuellement, ce qui rend les rapports compréhensibles sans formation préalable</td></tr><tr><td>Rendu mobile natif très soigné, parfait pour des comités de direction qui consultent depuis leur téléphone</td></tr><tr><td>Connexion directe aux principales sources de données cloud (BigQuery, Snowflake, Redshift) avec synchronisation automatique</td></tr><tr><td>Prise en main rapide pour les utilisateurs métier, sans avoir besoin de coder ou de connaître le SQL</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Très limité pour l'exploration analytique libre : on ne peut pas vraiment fouiller les données à la volée comme sur Tableau ou Metabase. C'est fait pour diffuser, pas pour analyser.</td></tr><tr><td>Le prix est élevé pour ce que c'est, surtout pour des PME. L'offre s'adresse clairement à des entreprises avec une équipe data structurée et un budget.</td></tr><tr><td>La personnalisation graphique avancée reste contrainte par les templates proposés. Sortir du cadre visuel par défaut demande de passer par le support ou des configurations techniques pas toujours documentées clairement.</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -952,14 +952,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Idéal pour déployer l'accès aux dashboards à grande échelle sans multiplier les licences Creator coûteuses</td></tr><tr><td>Interaction avec les filtres et les paramètres prédéfinis sans risque de modifier les visualisations sources</td></tr><tr><td>Export en PDF et image directement depuis le portail Tableau, pratique pour les reportings hebdomadaires</td></tr><tr><td>Intégration native dans l'écosystème Tableau Server / Cloud, zéro friction si l'infra est déjà en place</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Aucune possibilité de créer ou modifier une visualisation, ce qui peut frustrer des utilisateurs un peu plus avancés qui voudraient adapter un filtre ou changer une granularité</td></tr><tr><td>Le coût reste élevé rapporté à ce que Viewer propose réellement : pour des utilisateurs qui consultent trois fois par mois, la dépense est difficile à justifier face à des outils comme Metabase ou Redash</td></tr><tr><td>L'onboarding peut surprendre des profils non techniques habitués à des interfaces plus simples : la navigation dans Tableau Server n'est pas toujours intuitive au premier abord</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -984,14 +984,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Intégration native avec tout l'écosystème Microsoft 365 : Teams, SharePoint, Excel, Azure</td></tr><tr><td>Connecteurs disponibles pour plus de 100 sources de données différentes, dont les CRM et ERP courants</td></tr><tr><td>Rafraîchissement automatique des données et alertes configurables sur des seuils métier précis</td></tr><tr><td>Prix parmi les plus compétitifs du marché pour un outil avec ce niveau de profondeur analytique</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Le langage DAX indispensable pour les calculs avancés est complexe : sans formation, on reste vite bloqué à la surface</td></tr><tr><td>La gestion des licences et des workspaces devient confuse dès qu'on monte en volume d'utilisateurs ou de rapports</td></tr><tr><td>Les options de personnalisation visuelle sont limitées comparées à des outils comme Tableau ou Flourish : les dashboards se ressemblent tous</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -1016,14 +1016,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Connexion native à plus de 150 sources de données : Prometheus, Loki, Tempo, MySQL, PostgreSQL, Elasticsearch, CloudWatch...</td></tr><tr><td>Dashboards hautement personnalisables avec des panels variés (graphes, heatmaps, stat, table, flamegraph) et des variables dynamiques qui permettent de filtrer les vues en temps réel</td></tr><tr><td>Système d'alertes intégré avec routage vers Slack, PagerDuty, email ou webhook, configurable directement depuis l'interface sans passer par un outil tiers</td></tr><tr><td>Gratuit jusqu'à 10 000 métriques actives, 50 Go de logs et 50 Go de traces par mois, ce qui couvre largement un projet solo ou une petite équipe</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Courbe d'apprentissage sérieuse : sans connaître PromQL, LogQL ou les concepts de séries temporelles, les premières heures sont frustrantes et la documentation officielle suppose souvent un niveau technique élevé</td></tr><tr><td>Pas adapté aux usages business classiques : aucun connecteur natif vers des outils comme HubSpot, Salesforce ou des fichiers Excel, ce qui le rend inutilisable pour du reporting commercial sans couche intermédiaire</td></tr><tr><td>Les coûts deviennent rapidement imprévisibles à grande échelle : la tarification à la métrique active et au volume de logs ingérés peut exploser sur un environnement microservices avec beaucoup d'instances</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -1048,14 +1048,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Exploration interactive des dashboards sans configuration technique : filtres, drill-down, zoom, tout répond bien</td></tr><tr><td>Abonnements automatiques par email avec snapshots des vues à fréquence configurable</td></tr><tr><td>Accès complet depuis navigateur via Tableau Cloud ou Tableau Server, zéro installation</td></tr><tr><td>Création d'alertes sur seuils de données (ex : CA sous X€, stock sous Y unités) avec notification directe</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Impossible de créer ou modifier une source de données : si la connexion est cassée ou mal configurée, tu attends qu'un Creator intervienne</td></tr><tr><td>Le tarif unitaire reste élevé pour ce niveau de droits, surtout si ton équipe a beaucoup d'analystes occasionnels qui n'utilisent l'outil qu'une fois par semaine</td></tr><tr><td>Ask Data (requête en langage naturel) donne des résultats aléatoires dès que la question dépasse le basique, ce qui crée des faux espoirs chez les non-techniciens</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
