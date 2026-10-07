@@ -9,16 +9,15 @@ const PATH = 'platform/backlink-settings.json'
 const DISC_PATH = 'platform/backlink-discovered-brands.json'
 
 type Event = { link_brand: string; contact_brand: string; date: string; amount?: number; notes?: string }
+type KnownClient = { url: string; note?: string }
 type Settings = {
   enabled: boolean; rotation_days: number; simultaneous: number; anchor?: string;
   excluded_sites?: string[]; excluded_comparatifs?: string[];
-  brands: Record<string, string>; events?: Event[];
+  brands: Record<string, string>; events?: Event[]; known_clients?: KnownClient[];
 }
 
-const euro = (n: number) => (n || 0).toLocaleString('fr-FR') + ' €'
-
 export default function BacklinksPage() {
-  const [s, setS] = useState<Settings>({ enabled: false, rotation_days: 21, simultaneous: 1, anchor: '', brands: {}, events: [], excluded_sites: [], excluded_comparatifs: [] })
+  const [s, setS] = useState<Settings>({ enabled: false, rotation_days: 21, simultaneous: 1, anchor: '', brands: {}, events: [], known_clients: [], excluded_sites: [], excluded_comparatifs: [] })
   const [discovered, setDiscovered] = useState<Record<string, Record<string, number>>>({})
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
@@ -35,7 +34,7 @@ export default function BacklinksPage() {
           fetch(`/api/github?path=${encodeURIComponent(PATH)}&nocache=1`).then(r => r.json()).catch(() => ({})),
           fetch(`/api/github?path=${encodeURIComponent(DISC_PATH)}&nocache=1`).then(r => r.json()).catch(() => ({})),
         ])
-        if (setRes.content) { try { setS({ brands: {}, events: [], ...JSON.parse(setRes.content) }) } catch {} }
+        if (setRes.content) { try { setS({ brands: {}, events: [], known_clients: [], ...JSON.parse(setRes.content) }) } catch {} }
         if (discRes.content) { try { const d = JSON.parse(discRes.content); setDiscovered(d && typeof d === 'object' && !Array.isArray(d) ? d : {}) } catch {} }
       } catch (e: any) { flash('✗ ' + (e.message || 'Erreur chargement')) }
       setLoading(false)
@@ -89,7 +88,6 @@ export default function BacklinksPage() {
     return list
   }, [brands, q, onlyMissing])
   const withUrl = brands.filter(b => b.url).length
-  const brandDisplayNames = useMemo(() => brands.map(b => b.display), [brands])
 
   // Éditer l'URL : on écrit sous la clé propre + on retire les variantes (slug/casse)
   const setURL = (display: string, url: string) => setS(x => {
@@ -99,9 +97,11 @@ export default function BacklinksPage() {
     nb[display] = url
     return { ...x, brands: nb }
   })
-  const addEvent = () => setS(x => ({ ...x, events: [...(x.events || []), { link_brand: '', contact_brand: '', date: new Date().toISOString().slice(0, 10), amount: 0, notes: '' }] }))
-  const setEvent = (i: number, e: Partial<Event>) => setS(x => ({ ...x, events: (x.events || []).map((ev, j) => j === i ? { ...ev, ...e } : ev) }))
-  const delEvent = (i: number) => setS(x => ({ ...x, events: (x.events || []).filter((_, j) => j !== i) }))
+  // ── Clients connus (annonceurs) : simple référentiel d'URLs, SANS effet sur
+  //    la rotation pour le moment (on verra plus tard ce qu'on en fait). ──
+  const addClient = () => setS(x => ({ ...x, known_clients: [...(x.known_clients || []), { url: '', note: '' }] }))
+  const setClient = (i: number, c: Partial<KnownClient>) => setS(x => ({ ...x, known_clients: (x.known_clients || []).map((kc, j) => j === i ? { ...kc, ...c } : kc) }))
+  const delClient = (i: number) => setS(x => ({ ...x, known_clients: (x.known_clients || []).filter((_, j) => j !== i) }))
 
   async function save() {
     setSaving(true)
@@ -128,18 +128,6 @@ export default function BacklinksPage() {
     } catch (e: any) { flash('✗ ' + (e.message || 'Erreur sauvegarde')) }
     setSaving(false)
   }
-
-  const matrix = useMemo(() => {
-    const m: Record<string, Record<string, number>> = {}
-    let total = 0, revenue = 0
-    for (const ev of (s.events || [])) {
-      if (!ev.link_brand || !ev.contact_brand) continue
-      m[ev.link_brand] = m[ev.link_brand] || {}
-      m[ev.link_brand][ev.contact_brand] = (m[ev.link_brand][ev.contact_brand] || 0) + 1
-      total++; revenue += Number(ev.amount) || 0
-    }
-    return { m, total, revenue }
-  }, [s.events])
 
   const card: React.CSSProperties = { background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: 18 }
   const inp: React.CSSProperties = { padding: '8px 11px', borderRadius: 8, background: C.input, border: `1px solid ${C.border}`, color: C.text, fontSize: 13, outline: 'none', boxSizing: 'border-box' }
@@ -200,52 +188,25 @@ export default function BacklinksPage() {
         )}
       </div>
 
-      <div style={{ ...card, marginBottom: 16 }}>
-        <div style={{ fontSize: 15, color: C.text, fontWeight: 600, marginBottom: 2 }}>Matrice déclencheurs</div>
-        <div style={{ fontSize: 12, color: C.faint, marginBottom: 14 }}>Qui réagit quand un concurrent reçoit le lien. {matrix.total} contact(s) · {euro(matrix.revenue)} générés.</div>
-        {Object.keys(matrix.m).length === 0 ? (
-          <div style={{ fontSize: 12.5, color: C.faint }}>Aucun contact enregistré. Logue les demandes entrantes ci-dessous.</div>
-        ) : (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            {Object.entries(matrix.m).sort((a, b) => Object.values(b[1]).reduce((x, n) => x + n, 0) - Object.values(a[1]).reduce((x, n) => x + n, 0)).map(([trigger, reactions]) => (
-              <div key={trigger} style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap', fontSize: 13 }}>
-                <span style={{ color: C.accent, fontWeight: 700 }}>{trigger}</span><span style={{ color: C.faint }}>→</span>
-                {Object.entries(reactions).sort((a, b) => b[1] - a[1]).map(([react, n]) => (
-                  <span key={react} style={{ padding: '3px 10px', borderRadius: 14, background: C.input, border: `1px solid ${C.border}`, color: C.text }}>{react} <span style={{ color: C.faint }}>×{n}</span></span>
-                ))}
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-
       <div style={card}>
-        <div style={{ fontSize: 15, color: C.text, fontWeight: 600, marginBottom: 12 }}>Demandes entrantes</div>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 660 }}>
-            <thead><tr>{['Lien posé (déclencheur)', 'Marque qui a contacté', 'Date', 'Montant €', 'Note', ''].map((h, i) => <th key={i} style={{ ...th, textAlign: i === 3 ? 'right' : 'left' }}>{h}</th>)}</tr></thead>
-            <tbody>
-              {(s.events || []).length === 0 && <tr><td colSpan={6} style={{ ...td, color: C.faint, textAlign: 'center' }}>Aucune demande enregistrée.</td></tr>}
-              {(s.events || []).map((ev, i) => (
-                <tr key={i}>
-                  <td style={td}><input value={ev.link_brand} onChange={e => setEvent(i, { link_brand: e.target.value })} list="bl-brands" style={{ ...inp, width: '100%' }} /></td>
-                  <td style={td}><input value={ev.contact_brand} onChange={e => setEvent(i, { contact_brand: e.target.value })} list="bl-brands" style={{ ...inp, width: '100%' }} /></td>
-                  <td style={td}><input type="date" value={ev.date} onChange={e => setEvent(i, { date: e.target.value })} style={{ ...inp, width: '100%' }} /></td>
-                  <td style={td}><input type="number" value={ev.amount || ''} onChange={e => setEvent(i, { amount: parseFloat(e.target.value) || 0 })} style={{ ...inp, width: '100%', textAlign: 'right' }} /></td>
-                  <td style={td}><input value={ev.notes || ''} onChange={e => setEvent(i, { notes: e.target.value })} style={{ ...inp, width: '100%' }} /></td>
-                  <td style={{ ...td, textAlign: 'center' }}><span onClick={() => delEvent(i)} style={{ cursor: 'pointer', color: C.faint }}>🗑</span></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <datalist id="bl-brands">{brandDisplayNames.map(b => <option key={b} value={b} />)}</datalist>
+        <div style={{ fontSize: 15, color: C.text, fontWeight: 600, marginBottom: 2 }}>Clients connus (annonceurs)</div>
+        <div style={{ fontSize: 12, color: C.faint, marginBottom: 14 }}>URL d'un annonceur qui t'a déjà acheté un lien (ex. <i>nnd.fr</i>). Pour l'instant, ces URLs sont juste enregistrées — <b>aucun effet</b> sur la rotation des liens.</div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {(s.known_clients || []).length === 0 && (
+            <div style={{ fontSize: 12.5, color: C.faint }}>Aucun client enregistré pour l'instant.</div>
+          )}
+          {(s.known_clients || []).map((kc, i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+              <input value={kc.url} onChange={e => setClient(i, { url: e.target.value })} placeholder="https://nnd.fr/" style={{ ...inp, flex: 2, minWidth: 220 }} />
+              <input value={kc.note || ''} onChange={e => setClient(i, { note: e.target.value })} placeholder="Note (nom de l'annonceur, contexte…)" style={{ ...inp, flex: 1, minWidth: 160 }} />
+              <span onClick={() => delClient(i)} title="Supprimer" style={{ cursor: 'pointer', color: C.faint, padding: '0 4px' }}>🗑</span>
+            </div>
+          ))}
         </div>
-        <button onClick={addEvent} style={{ marginTop: 10, padding: '6px 12px', borderRadius: 7, border: `1px solid ${C.border}`, background: 'transparent', color: C.dim, fontSize: 12, cursor: 'pointer' }}>+ Demande entrante</button>
+        <button onClick={addClient} style={{ marginTop: 12, padding: '6px 12px', borderRadius: 7, border: `1px solid ${C.border}`, background: 'transparent', color: C.dim, fontSize: 12, cursor: 'pointer' }}>+ Client connu</button>
       </div>
     </div>
   )
 }
 
 const lbl: React.CSSProperties = { fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.04em', marginBottom: 5 }
-const th: React.CSSProperties = { padding: '8px 10px', borderBottom: '1px solid #1E2D3D', fontSize: 11, color: '#4A5568', fontWeight: 600 }
-const td: React.CSSProperties = { padding: '6px 8px', borderBottom: '1px solid #1E2D3D', fontSize: 13, color: '#fff' }
