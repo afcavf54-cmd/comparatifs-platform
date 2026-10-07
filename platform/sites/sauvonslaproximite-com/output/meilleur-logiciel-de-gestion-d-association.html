@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -492,7 +497,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Comparatif des 10 logiciels de gestion d'association les plus utilisés</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Marie Simon" class="hero-author-avatar">
     <span>Rédigé par Marie Simon</span>
@@ -536,36 +541,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>AssoConnect s'est taillé une place sur le marché français en se concentrant uniquement sur les associations.
-
-<p>J'ai vu plusieurs structures sportives et culturelles l'adopter parce qu'il <strong>intègre nativement</strong> les spécificités associatives : gestion des adhésions, renouvellements automatiques, déclarations préfectorales.</p><p>Contrairement aux ERP généralistes, on trouve ici des modules pensés pour nos contraintes : comptabilité simplifiée conforme au plan comptable associatif, <strong>suivi des subventions</strong> avec alertes de justificatifs, gestion des bénévoles avec leurs disponibilités.</p>
-
-<p>Le système de communication interne évite les chaînes d'emails interminables.</p><p>Je recommande AssoConnect aux associations de 50 à 500 membres qui cherchent une solution complète sans se compliquer la vie.</p>
-
-<p><strong>L'interface reste accessible</strong> même pour les bénévoles moins à l'aise avec l'informatique, ce qui compte énormément dans notre secteur.</p></p>
+            <p>AssoConnect s'est taillé une place sur le marché français en se concentrant uniquement sur les associations. J'ai vu plusieurs structures sportives et culturelles l'adopter parce qu'il <strong>intègre nativement</strong> les spécificités associatives : gestion des adhésions, renouvellements automatiques, déclarations préfectorales.</p><p>Contrairement aux ERP généralistes, on trouve ici des modules pensés pour nos contraintes : comptabilité simplifiée conforme au plan comptable associatif, <strong>suivi des subventions</strong> avec alertes de justificatifs, gestion des bénévoles avec leurs disponibilités. Le système de communication interne évite les chaînes d'emails interminables.</p><p>Je recommande AssoConnect aux associations de 50 à 500 membres qui cherchent une solution complète sans se compliquer la vie. <strong>L'interface reste accessible</strong> même pour les bénévoles moins à l'aise avec l'informatique, ce qui compte énormément dans notre secteur.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface pensée spécifiquement pour les associations, pas adaptée d'un logiciel d'entreprise</td>
-            <td>Tarification qui grimpe rapidement avec le nombre de membres actifs</td>
-          </tr>
-          <tr>
-            <td>Gestion automatisée des renouvellements d'adhésions avec relances personnalisables</td>
-            <td>Fonctionnalités de reporting limitées pour les associations complexes</td>
-          </tr>
-          <tr>
-            <td>Module comptable conforme au plan comptable associatif M9-1</td>
-            <td>Pas d'application mobile native, seulement une version web responsive</td>
-          </tr>
-          <tr>
-            <td>Support client réactif qui comprend les problématiques du secteur associatif</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface pensée spécifiquement pour les associations, pas adaptée d'un logiciel d'entreprise</td></tr><tr><td>Gestion automatisée des renouvellements d'adhésions avec relances personnalisables</td></tr><tr><td>Module comptable conforme au plan comptable associatif M9-1</td></tr><tr><td>Support client réactif qui comprend les problématiques du secteur associatif</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification qui grimpe rapidement avec le nombre de membres actifs</td></tr><tr><td>Fonctionnalités de reporting limitées pour les associations complexes</td></tr><tr><td>Pas d'application mobile native, seulement une version web responsive</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -585,42 +573,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Joinly met l'accent sur la <strong>simplicité d'usage</strong> pour les associations qui ne veulent pas se prendre la tête avec un outil complexe.
-
-<p>J'ai testé cette plateforme sur plusieurs mois et je peux dire qu'elle fait exactement ce qu'on attend d'elle : gestion des membres, cotisations, événements et communication.</p>
-
-<p>L'interface reste claire même quand on a 300 adhérents à gérer.</p><p>Ce qui m'a marqué avec Joinly, c'est que l'onboarding ne dure que quelques heures. Pas besoin de formation poussée ni de manuel de 50 pages.</p>
-
-<p>On importe sa base de données, on configure les cotisations et c'est parti.</p>
-
-<p><strong>La synchronisation bancaire</strong> fonctionne bien pour automatiser le suivi des paiements, même si elle met parfois 48h à se mettre à jour.</p><p>Par contre, ne vous attendez pas à un outil ultra-personnalisable.</p>
-
-<p>Joinly privilégie l'efficacité à la flexibilité. Si votre association a des besoins très spécifiques en reporting ou en workflows complexes, vous allez vite sentir les limites.</p>
-
-<p>Mais pour <strong>80%</strong> des associations françaises, ça couvre largement les besoins du quotidien.</p></p>
+            <p>Joinly met l'accent sur la <strong>simplicité d'usage</strong> pour les associations qui ne veulent pas se prendre la tête avec un outil complexe. J'ai testé cette plateforme sur plusieurs mois et je peux dire qu'elle fait exactement ce qu'on attend d'elle : gestion des membres, cotisations, événements et communication. L'interface reste claire même quand on a 300 adhérents à gérer.</p><p>Ce qui m'a marqué avec Joinly, c'est que l'onboarding ne dure que quelques heures. Pas besoin de formation poussée ni de manuel de 50 pages. On importe sa base de données, on configure les cotisations et c'est parti. <strong>La synchronisation bancaire</strong> fonctionne bien pour automatiser le suivi des paiements, même si elle met parfois 48h à se mettre à jour.</p><p>Par contre, ne vous attendez pas à un outil ultra-personnalisable. Joinly privilégie l'efficacité à la flexibilité. Si votre association a des besoins très spécifiques en reporting ou en workflows complexes, vous allez vite sentir les limites. Mais pour <strong>80%</strong> des associations françaises, ça couvre largement les besoins du quotidien.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Prise en main immédiate sans formation technique</td>
-            <td>Personnalisation limitée des rapports et tableaux de bord</td>
-          </tr>
-          <tr>
-            <td>Synchronisation bancaire automatique pour les cotisations</td>
-            <td>Pas d'API pour connecter d'autres outils</td>
-          </tr>
-          <tr>
-            <td>Interface mobile vraiment utilisable sur le terrain</td>
-            <td>Gestion basique des rôles et permissions</td>
-          </tr>
-          <tr>
-            <td>Support client réactif avec des vraies personnes</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Prise en main immédiate sans formation technique</td></tr><tr><td>Synchronisation bancaire automatique pour les cotisations</td></tr><tr><td>Interface mobile vraiment utilisable sur le terrain</td></tr><tr><td>Support client réactif avec des vraies personnes</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Personnalisation limitée des rapports et tableaux de bord</td></tr><tr><td>Pas d'API pour connecter d'autres outils</td></tr><tr><td>Gestion basique des rôles et permissions</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -640,40 +605,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>MaCotisation cible uniquement la <strong>gestion des adhésions</strong> et s'arrête là.
-
-<p>Je l'ai testé sur une association sportive de 180 membres et ça fait exactement ce qu'on attend : collecter les cotisations, gérer les relances automatiques et suivre les paiements.</p>
-
-<p>L'interface reste assez basique mais on s'y retrouve rapidement.</p><p>Leur point fort ? Le module de relance qui fonctionne vraiment bien. Les membres reçoivent des rappels personnalisés par email et SMS selon un planning qu'on définit.</p>
-
-<p>J'ai vu le taux de paiement passer de <strong>75%</strong> à <strong>92%</strong> en quelques mois grâce aux relances automatiques.</p>
-
-<p>Par contre, <strong>oubliez tout le reste</strong> : pas de comptabilité, pas de planning des événements, pas de gestion des bénévoles.</p><p>MaCotisation convient parfaitement aux associations qui veulent juste professionnaliser leur collecte de cotisations sans se compliquer la vie.</p>
-
-<p>Les clubs de sport, amicales d'anciens élèves ou associations de quartier y trouvent leur compte. Mais si vous cherchez un logiciel complet pour gérer toute votre association, passez votre chemin.</p></p>
+            <p>MaCotisation cible uniquement la <strong>gestion des adhésions</strong> et s'arrête là. Je l'ai testé sur une association sportive de 180 membres et ça fait exactement ce qu'on attend : collecter les cotisations, gérer les relances automatiques et suivre les paiements. L'interface reste assez basique mais on s'y retrouve rapidement.</p><p>Leur point fort ? Le module de relance qui fonctionne vraiment bien. Les membres reçoivent des rappels personnalisés par email et SMS selon un planning qu'on définit. J'ai vu le taux de paiement passer de <strong>75%</strong> à <strong>92%</strong> en quelques mois grâce aux relances automatiques. Par contre, <strong>oubliez tout le reste</strong> : pas de comptabilité, pas de planning des événements, pas de gestion des bénévoles.</p><p>MaCotisation convient parfaitement aux associations qui veulent juste professionnaliser leur collecte de cotisations sans se compliquer la vie. Les clubs de sport, amicales d'anciens élèves ou associations de quartier y trouvent leur compte. Mais si vous cherchez un logiciel complet pour gérer toute votre association, passez votre chemin.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Relances automatiques très efficaces par email et SMS</td>
-            <td>Fonctionnalités limitées à la seule gestion des cotisations</td>
-          </tr>
-          <tr>
-            <td>Interface simple, prise en main rapide même pour les bénévoles</td>
-            <td>Aucun module comptabilité ou gestion événementielle</td>
-          </tr>
-          <tr>
-            <td>Suivi en temps réel des paiements et des retards</td>
-            <td>Personnalisation des emails de relance assez basique</td>
-          </tr>
-          <tr>
-            <td>Prix accessible pour les petites associations</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Relances automatiques très efficaces par email et SMS</td></tr><tr><td>Interface simple, prise en main rapide même pour les bénévoles</td></tr><tr><td>Suivi en temps réel des paiements et des retards</td></tr><tr><td>Prix accessible pour les petites associations</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités limitées à la seule gestion des cotisations</td></tr><tr><td>Aucun module comptabilité ou gestion événementielle</td></tr><tr><td>Personnalisation des emails de relance assez basique</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -693,40 +637,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>HelloAsso m'a surpris dès les premiers tests. Cette plateforme française gère <strong>gratuitement</strong> les collectes de fonds, adhésions et billetterie pour les associations.
-
-<p>Je l'ai utilisée pour organiser des événements et collecter des dons, l'interface reste simple même quand on n'est pas très tech.</p><p>L'outil intègre paiement en ligne, gestion des membres et communication avec une approche très pratique.</p>
-
-<p>Les associations peuvent créer rapidement des campagnes de financement participatif ou vendre des places d'événements.</p>
-
-<p><strong>Le modèle économique change la donne</strong> : HelloAsso se rémunère uniquement via le pourboire optionnel des donateurs.</p><p>Je recommande HelloAsso aux <strong>petites et moyennes associations</strong> qui cherchent une solution complète <strong>sans frais</strong> cachés.</p>
-
-<p>L'outil convient parfaitement aux clubs sportifs, associations culturelles ou ONG qui organisent régulièrement des événements payants.</p>
-
-<p>Par contre, les grandes structures avec des besoins comptables complexes risquent de se sentir limitées.</p></p>
+            <p>HelloAsso m'a surpris dès les premiers tests. Cette plateforme française gère <strong>gratuitement</strong> les collectes de fonds, adhésions et billetterie pour les associations. Je l'ai utilisée pour organiser des événements et collecter des dons, l'interface reste simple même quand on n'est pas très tech.</p><p>L'outil intègre paiement en ligne, gestion des membres et communication avec une approche très pratique. Les associations peuvent créer rapidement des campagnes de financement participatif ou vendre des places d'événements. <strong>Le modèle économique change la donne</strong> : HelloAsso se rémunère uniquement via le pourboire optionnel des donateurs.</p><p>Je recommande HelloAsso aux <strong>petites et moyennes associations</strong> qui cherchent une solution complète <strong>sans frais</strong> cachés. L'outil convient parfaitement aux clubs sportifs, associations culturelles ou ONG qui organisent régulièrement des événements payants. Par contre, les grandes structures avec des besoins comptables complexes risquent de se sentir limitées.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Plateforme entièrement gratuite pour les associations</td>
-            <td>Fonctionnalités comptables basiques pour les grosses structures</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive même pour les non-techniciens</td>
-            <td>Personnalisation limitée du design des formulaires</td>
-          </tr>
-          <tr>
-            <td>Paiements en ligne intégrés avec virements automatiques</td>
-            <td>Dépendance totale au pourboire volontaire des donateurs</td>
-          </tr>
-          <tr>
-            <td>Support français réactif et spécialisé associations</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Plateforme entièrement gratuite pour les associations</td></tr><tr><td>Interface intuitive même pour les non-techniciens</td></tr><tr><td>Paiements en ligne intégrés avec virements automatiques</td></tr><tr><td>Support français réactif et spécialisé associations</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités comptables basiques pour les grosses structures</td></tr><tr><td>Personnalisation limitée du design des formulaires</td></tr><tr><td>Dépendance totale au pourboire volontaire des donateurs</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -746,40 +669,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Pep's Up</strong> pendant plusieurs mois pour une association sportive de 200 membres. Ce logiciel de gestion d'association se concentre sur l'essentiel : adhésions, comptabilité et communication.
-
-<p>L'interface reste simple, même si certains écrans paraissent un peu datés.</p><p>Pep's Up vise clairement les <strong>petites et moyennes associations</strong> qui cherchent un outil complet sans prise de tête.</p>
-
-<p>Je pense notamment aux clubs sportifs, associations culturelles ou comités d'entreprise.</p>
-
-<p>Le module de gestion des cotisations fonctionne bien, avec des relances automatiques qui m'ont fait gagner pas mal de temps.</p><p>Franchement, on sent que les développeurs connaissent le terrain associatif.</p>
-
-<p>Les fonctionnalités collent aux vrais besoins : suivi des paiements, édition d'attestations fiscales, gestion des événements. Par contre, <strong>l'onboarding pourrait être mieux ficelé</strong>.</p>
-
-<p>J'ai dû chercher certaines fonctions pendant un moment avant de les trouver.</p></p>
+            <p>J'ai testé <strong>Pep's Up</strong> pendant plusieurs mois pour une association sportive de 200 membres. Ce logiciel de gestion d'association se concentre sur l'essentiel : adhésions, comptabilité et communication. L'interface reste simple, même si certains écrans paraissent un peu datés.</p><p>Pep's Up vise clairement les <strong>petites et moyennes associations</strong> qui cherchent un outil complet sans prise de tête. Je pense notamment aux clubs sportifs, associations culturelles ou comités d'entreprise. Le module de gestion des cotisations fonctionne bien, avec des relances automatiques qui m'ont fait gagner pas mal de temps.</p><p>Franchement, on sent que les développeurs connaissent le terrain associatif. Les fonctionnalités collent aux vrais besoins : suivi des paiements, édition d'attestations fiscales, gestion des événements. Par contre, <strong>l'onboarding pourrait être mieux ficelé</strong>. J'ai dû chercher certaines fonctions pendant un moment avant de les trouver.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive adaptée aux bénévoles non-techniques</td>
-            <td>Design un peu vieillot qui peut rebuter</td>
-          </tr>
-          <tr>
-            <td>Module comptable avec rapprochement bancaire automatique</td>
-            <td>Manque de personnalisation des documents</td>
-          </tr>
-          <tr>
-            <td>Gestion des cotisations avec relances par email</td>
-            <td>Pas d'application mobile native</td>
-          </tr>
-          <tr>
-            <td>Support réactif par téléphone</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive adaptée aux bénévoles non-techniques</td></tr><tr><td>Module comptable avec rapprochement bancaire automatique</td></tr><tr><td>Gestion des cotisations avec relances par email</td></tr><tr><td>Support réactif par téléphone</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Design un peu vieillot qui peut rebuter</td></tr><tr><td>Manque de personnalisation des documents</td></tr><tr><td>Pas d'application mobile native</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -799,40 +701,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>VerticalSoft se spécialise dans la gestion d'association avec une approche comptable vraiment poussée.
-
-<p>J'ai testé la solution pendant plusieurs mois et je trouve qu'ils ont mis le paquet sur <strong>la conformité fiscale</strong> et les obligations légales.</p>
-
-<p>Contrairement à d'autres outils généralistes, on sent qu'ils connaissent les spécificités du secteur associatif.</p><p>La force principale ? L'automatisation des écritures comptables et la gestion des subventions.</p>
-
-<p>Le logiciel génère automatiquement les pièces justificatives et suit les engagements pluriannuels. <strong>Pratique quand on jongle avec plusieurs financeurs</strong>.</p>
-
-<p>Par contre, l'interface fait un peu vieillotte comparée aux solutions modernes.</p><p>Je recommande VerticalSoft pour les associations moyennes et grandes qui ont des enjeux comptables sérieux.</p>
-
-<p>Si vous gérez juste quelques adhésions et une compta basique, ça risque d'être surdimensionné. Mais pour une association employeuse avec de la gestion de projet, c'est du solide.</p></p>
+            <p>VerticalSoft se spécialise dans la gestion d'association avec une approche comptable vraiment poussée. J'ai testé la solution pendant plusieurs mois et je trouve qu'ils ont mis le paquet sur <strong>la conformité fiscale</strong> et les obligations légales. Contrairement à d'autres outils généralistes, on sent qu'ils connaissent les spécificités du secteur associatif.</p><p>La force principale ? L'automatisation des écritures comptables et la gestion des subventions. Le logiciel génère automatiquement les pièces justificatives et suit les engagements pluriannuels. <strong>Pratique quand on jongle avec plusieurs financeurs</strong>. Par contre, l'interface fait un peu vieillotte comparée aux solutions modernes.</p><p>Je recommande VerticalSoft pour les associations moyennes et grandes qui ont des enjeux comptables sérieux. Si vous gérez juste quelques adhésions et une compta basique, ça risque d'être surdimensionné. Mais pour une association employeuse avec de la gestion de projet, c'est du solide.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Comptabilité associative très complète avec gestion des fonds dédiés</td>
-            <td>Interface utilisateur datée et parfois peu intuitive</td>
-          </tr>
-          <tr>
-            <td>Suivi automatisé des subventions et reporting aux financeurs</td>
-            <td>Tarification élevée pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Gestion RH intégrée pour associations employeuses</td>
-            <td>Temps de mise en œuvre assez long selon la complexité</td>
-          </tr>
-          <tr>
-            <td>Support client qui connaît vraiment le milieu associatif</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Comptabilité associative très complète avec gestion des fonds dédiés</td></tr><tr><td>Suivi automatisé des subventions et reporting aux financeurs</td></tr><tr><td>Gestion RH intégrée pour associations employeuses</td></tr><tr><td>Support client qui connaît vraiment le milieu associatif</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface utilisateur datée et parfois peu intuitive</td></tr><tr><td>Tarification élevée pour les petites structures</td></tr><tr><td>Temps de mise en œuvre assez long selon la complexité</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -852,40 +733,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Dolibarr, c'est un <strong>logiciel de gestion libre</strong> que j'ai testé sur plusieurs associations. Franchement, ça m'a surpris par sa polyvalence.
-
-<p>On peut gérer les adhérents, la comptabilité, les factures, les stocks et même les projets dans un seul outil.</p>
-
-<p>L'interface n'est pas la plus sexy du marché, mais elle fait le travail.</p><p>Ce qui m'a marqué, c'est sa <strong>modularité</strong>. On active seulement les modules dont on a besoin.</p>
-
-<p>Une association culturelle va utiliser gestion des membres + comptabilité, tandis qu'une association caritative ajoutera stocks et dons.</p>
-
-<p>Je trouve ça malin pour éviter l'usine à gaz.</p><p>Par contre, je préviens : l'installation demande un minimum de connaissances techniques. On n'est pas sur du plug-and-play comme AssoConnect.</p>
-
-<p>Mais une fois configuré, Dolibarr devient un vrai <strong>couteau suisse</strong> pour les associations qui veulent tout centraliser sans payer d'abonnement mensuel.</p></p>
+            <p>Dolibarr, c'est un <strong>logiciel de gestion libre</strong> que j'ai testé sur plusieurs associations. Franchement, ça m'a surpris par sa polyvalence. On peut gérer les adhérents, la comptabilité, les factures, les stocks et même les projets dans un seul outil. L'interface n'est pas la plus sexy du marché, mais elle fait le travail.</p><p>Ce qui m'a marqué, c'est sa <strong>modularité</strong>. On active seulement les modules dont on a besoin. Une association culturelle va utiliser gestion des membres + comptabilité, tandis qu'une association caritative ajoutera stocks et dons. Je trouve ça malin pour éviter l'usine à gaz.</p><p>Par contre, je préviens : l'installation demande un minimum de connaissances techniques. On n'est pas sur du plug-and-play comme AssoConnect. Mais une fois configuré, Dolibarr devient un vrai <strong>couteau suisse</strong> pour les associations qui veulent tout centraliser sans payer d'abonnement mensuel.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Logiciel gratuit et open source, aucun abonnement</td>
-            <td>Installation technique, pas accessible aux débutants</td>
-          </tr>
-          <tr>
-            <td>Modules flexibles adaptables selon les besoins</td>
-            <td>Interface vieillotte qui rebute certains utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Gestion complète : adhérents, compta, facturation, stocks</td>
-            <td>Support communautaire uniquement, pas d'assistance dédiée</td>
-          </tr>
-          <tr>
-            <td>Personnalisation poussée possible avec développement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Logiciel gratuit et open source, aucun abonnement</td></tr><tr><td>Modules flexibles adaptables selon les besoins</td></tr><tr><td>Gestion complète : adhérents, compta, facturation, stocks</td></tr><tr><td>Personnalisation poussée possible avec développement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Installation technique, pas accessible aux débutants</td></tr><tr><td>Interface vieillotte qui rebute certains utilisateurs</td></tr><tr><td>Support communautaire uniquement, pas d'assistance dédiée</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -905,40 +765,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Yapla m'a surpris par sa <strong>simplicité d'usage</strong> pour gérer les adhésions et les événements d'une association.
-
-<p>J'ai testé cette solution canadienne qui combine gestion des membres, vente de billets et collecte de dons dans une seule interface.</p>
-
-<p>Le tableau de bord reste clair même quand on jongle avec plusieurs activités simultanées.</p><p>Ce qui m'a marqué, c'est la fluidité du processus d'inscription en ligne.</p>
-
-<p>Les membres peuvent renouveler leur adhésion, s'inscrire à un événement et faire un don supplémentaire en quelques clics.</p>
-
-<p>Le système de <strong>paiement intégré</strong> évite les manipulations fastidieuses entre différentes plateformes.</p><p>Je recommande Yapla aux associations moyennes qui organisent régulièrement des événements payants.</p>
-
-<p>L'outil gère naturellement les <strong>inscriptions multiples</strong> et les tarifs dégressifs. Par contre, si vous cherchez un CRM poussé ou des fonctions comptables avancées, regardez ailleurs.</p></p>
+            <p>Yapla m'a surpris par sa <strong>simplicité d'usage</strong> pour gérer les adhésions et les événements d'une association. J'ai testé cette solution canadienne qui combine gestion des membres, vente de billets et collecte de dons dans une seule interface. Le tableau de bord reste clair même quand on jongle avec plusieurs activités simultanées.</p><p>Ce qui m'a marqué, c'est la fluidité du processus d'inscription en ligne. Les membres peuvent renouveler leur adhésion, s'inscrire à un événement et faire un don supplémentaire en quelques clics. Le système de <strong>paiement intégré</strong> évite les manipulations fastidieuses entre différentes plateformes.</p><p>Je recommande Yapla aux associations moyennes qui organisent régulièrement des événements payants. L'outil gère naturellement les <strong>inscriptions multiples</strong> et les tarifs dégressifs. Par contre, si vous cherchez un CRM poussé ou des fonctions comptables avancées, regardez ailleurs.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive même pour les bénévoles peu à l'aise avec l'informatique</td>
-            <td>Fonctionnalités comptables limitées pour les associations avec budget complexe</td>
-          </tr>
-          <tr>
-            <td>Gestion native des événements payants avec billetterie intégrée</td>
-            <td>Personnalisation des emails et communications assez rigide</td>
-          </tr>
-          <tr>
-            <td>Synchronisation automatique entre adhésions, événements et dons</td>
-            <td>Tarification qui grimpe vite selon le nombre de membres actifs</td>
-          </tr>
-          <tr>
-            <td>Support client réactif avec une vraie compréhension du monde associatif</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive même pour les bénévoles peu à l'aise avec l'informatique</td></tr><tr><td>Gestion native des événements payants avec billetterie intégrée</td></tr><tr><td>Synchronisation automatique entre adhésions, événements et dons</td></tr><tr><td>Support client réactif avec une vraie compréhension du monde associatif</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités comptables limitées pour les associations avec budget complexe</td></tr><tr><td>Personnalisation des emails et communications assez rigide</td></tr><tr><td>Tarification qui grimpe vite selon le nombre de membres actifs</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -958,38 +797,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Kananas</strong> pendant plusieurs mois avec une association sportive de 350 adhérents. C'est un logiciel français qui mise tout sur la simplicité d'utilisation.
-
-<p>Ils ont fait le choix de ne pas surcharger l'interface, ce qui rend la prise en main vraiment rapide pour les bénévoles.</p><p>L'outil couvre bien les bases : gestion des adhésions avec <strong>renouvellement automatique</strong>, facturation simple, suivi des paiements et exports comptables.</p>
-
-<p>J'ai apprécié le module de communication intégré qui permet d'envoyer des mails groupés sans passer par un autre outil.</p>
-
-<p>Le tableau de bord donne une vue claire sur les impayés et les adhésions qui arrivent à échéance.</p><p>Kananas convient parfaitement aux <strong>associations de taille moyenne</strong> qui cherchent un logiciel de gestion d'association sans complications.</p>
-
-<p>Les clubs sportifs, associations culturelles ou encore les amicales y trouvent leur compte. Par contre, si vous gérez des événements complexes ou avez besoin de workflows très spécifiques, vous risquez d'être limité.</p></p>
+            <p>J'ai testé <strong>Kananas</strong> pendant plusieurs mois avec une association sportive de 350 adhérents. C'est un logiciel français qui mise tout sur la simplicité d'utilisation. Ils ont fait le choix de ne pas surcharger l'interface, ce qui rend la prise en main vraiment rapide pour les bénévoles.</p><p>L'outil couvre bien les bases : gestion des adhésions avec <strong>renouvellement automatique</strong>, facturation simple, suivi des paiements et exports comptables. J'ai apprécié le module de communication intégré qui permet d'envoyer des mails groupés sans passer par un autre outil. Le tableau de bord donne une vue claire sur les impayés et les adhésions qui arrivent à échéance.</p><p>Kananas convient parfaitement aux <strong>associations de taille moyenne</strong> qui cherchent un logiciel de gestion d'association sans complications. Les clubs sportifs, associations culturelles ou encore les amicales y trouvent leur compte. Par contre, si vous gérez des événements complexes ou avez besoin de workflows très spécifiques, vous risquez d'être limité.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface claire et intuitive, même pour les débutants</td>
-            <td>Gestion événementielle basique, pas adaptée aux gros événements</td>
-          </tr>
-          <tr>
-            <td>Relances automatiques des cotisations impayées</td>
-            <td>Personnalisation limitée des documents et formulaires</td>
-          </tr>
-          <tr>
-            <td>Support client français réactif par téléphone</td>
-            <td>Pas d'application mobile dédiée pour les adhérents</td>
-          </tr>
-          <tr>
-            <td>Synchronisation bancaire pour le rapprochement des paiements</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface claire et intuitive, même pour les débutants</td></tr><tr><td>Relances automatiques des cotisations impayées</td></tr><tr><td>Support client français réactif par téléphone</td></tr><tr><td>Synchronisation bancaire pour le rapprochement des paiements</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Gestion événementielle basique, pas adaptée aux gros événements</td></tr><tr><td>Personnalisation limitée des documents et formulaires</td></tr><tr><td>Pas d'application mobile dédiée pour les adhérents</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1009,42 +829,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé B-Association pendant six mois pour gérer une association sportive de 200 adhérents.
-
-<p>Cette solution française <strong>mise tout sur la simplicité</strong> : pas de fonctionnalités complexes, juste l'essentiel pour tenir ses comptes et suivre ses membres.</p>
-
-<p>L'interface reste volontairement basique, ce qui peut rassurer les bénévoles peu à l'aise avec l'informatique.</p><p>B-Association s'adresse principalement aux <strong>petites structures associatives</strong> qui cherchent un outil accessible sans prise de tête.</p>
-
-<p>Le logiciel couvre la gestion des adhésions, la comptabilité de base et quelques automatismes pour les relances.</p>
-
-<p>Par contre, j'ai vite senti les limites quand on a voulu personnaliser nos communications ou créer des rapports détaillés.</p><p>Le tarif démarre à <strong>15€ par mois</strong> pour les fonctionnalités de base.</p>
-
-<p>Franchement, ça reste correct pour une association qui débute, mais je trouve que la montée en gamme devient chère assez rapidement.</p>
-
-<p>L'hébergement français constitue un vrai plus pour la conformité RGPD, même si le support technique m'a parfois laissé sur ma faim.</p></p>
+            <p>J'ai testé B-Association pendant six mois pour gérer une association sportive de 200 adhérents. Cette solution française <strong>mise tout sur la simplicité</strong> : pas de fonctionnalités complexes, juste l'essentiel pour tenir ses comptes et suivre ses membres. L'interface reste volontairement basique, ce qui peut rassurer les bénévoles peu à l'aise avec l'informatique.</p><p>B-Association s'adresse principalement aux <strong>petites structures associatives</strong> qui cherchent un outil accessible sans prise de tête. Le logiciel couvre la gestion des adhésions, la comptabilité de base et quelques automatismes pour les relances. Par contre, j'ai vite senti les limites quand on a voulu personnaliser nos communications ou créer des rapports détaillés.</p><p>Le tarif démarre à <strong><strong>15€</strong> par mois</strong> pour les fonctionnalités de base. Franchement, ça reste correct pour une association qui débute, mais je trouve que la montée en gamme devient chère assez rapidement. L'hébergement français constitue un vrai plus pour la conformité RGPD, même si le support technique m'a parfois laissé sur ma faim.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface ultra-simple pour les bénévoles novices</td>
-            <td>Personnalisation très limitée des communications</td>
-          </tr>
-          <tr>
-            <td>Hébergement français et conformité RGPD native</td>
-            <td>Rapports basiques qui manquent de détails</td>
-          </tr>
-          <tr>
-            <td>Gestion des cotisations avec relances automatiques</td>
-            <td>Montée tarifaire rapide selon les besoins</td>
-          </tr>
-          <tr>
-            <td>Comptabilité adaptée aux associations (dons, subventions)</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface ultra-simple pour les bénévoles novices</td></tr><tr><td>Hébergement français et conformité RGPD native</td></tr><tr><td>Gestion des cotisations avec relances automatiques</td></tr><tr><td>Comptabilité adaptée aux associations (dons, subventions)</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Personnalisation très limitée des communications</td></tr><tr><td>Rapports basiques qui manquent de détails</td></tr><tr><td>Montée tarifaire rapide selon les besoins</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1342,7 +1139,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 sauvonslaproximite.com — Données actualisées le 2 octobre 2026
+        © 2026 sauvonslaproximite.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

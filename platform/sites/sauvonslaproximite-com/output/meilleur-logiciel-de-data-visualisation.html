@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -492,7 +497,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Comparatif des 17 logiciels de data visualisation les plus utilisés</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 17 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 17 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Marie Simon" class="hero-author-avatar">
     <span>Rédigé par Marie Simon</span>
@@ -536,40 +541,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Looker Studio</strong> pendant plusieurs mois pour des rapports clients, et je reconnais que c'est devenu un incontournable pour la data visualisation gratuite.
-
-<p>L'ancien Google Data Studio a évolué et permet maintenant de connecter facilement Google Analytics, Search Console, BigQuery ou même des feuilles Google Sheets pour créer des tableaux de bord automatisés.</p><p>Ce qui m'impressionne le plus ?</p>
-
-<p>La <strong>synchronisation temps réel</strong> avec l'écosystème Google. Quand mes données Analytics changent, mes graphiques se mettent à jour instantanément.</p>
-
-<p>J'ai créé un dashboard pour suivre le trafic de 8 sites web différents, avec des filtres par période et par canal d'acquisition.</p><p>Attention, Looker Studio reste orienté Google.</p>
-
-<p>Si vos données principales viennent d'autres sources (Salesforce, HubSpot, bases MySQL), vous allez galérer avec les connecteurs tiers.</p>
-
-<p>Je le recommande surtout aux équipes marketing qui vivent dans l'univers Google et veulent des rapports visuels <strong>sans budget logiciel</strong>.</p></p>
+            <p>J'ai testé <strong>Looker Studio</strong> pendant plusieurs mois pour des rapports clients, et je reconnais que c'est devenu un incontournable pour la data visualisation gratuite. L'ancien Google Data Studio a évolué et permet maintenant de connecter facilement Google Analytics, Search Console, BigQuery ou même des feuilles Google Sheets pour créer des tableaux de bord automatisés.</p><p>Ce qui m'impressionne le plus ? La <strong>synchronisation temps réel</strong> avec l'écosystème Google. Quand mes données Analytics changent, mes graphiques se mettent à jour instantanément. J'ai créé un dashboard pour suivre le trafic de 8 sites web différents, avec des filtres par période et par canal d'acquisition.</p><p>Attention, Looker Studio reste orienté Google. Si vos données principales viennent d'autres sources (Salesforce, HubSpot, bases MySQL), vous allez galérer avec les connecteurs tiers. Je le recommande surtout aux équipes marketing qui vivent dans l'univers Google et veulent des rapports visuels <strong>sans budget logiciel</strong>.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Gratuit et illimité pour la plupart des usages</td>
-            <td>Connecteurs limités en dehors de l'écosystème Google</td>
-          </tr>
-          <tr>
-            <td>Intégration native parfaite avec Google Analytics, Ads, Sheets</td>
-            <td>Personnalisation graphique assez basique comparé aux outils payants</td>
-          </tr>
-          <tr>
-            <td>Partage de rapports en temps réel avec contrôle des accès</td>
-            <td>Lenteur sur les gros volumes de données</td>
-          </tr>
-          <tr>
-            <td>Templates prêts à l'emploi pour le marketing digital</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Gratuit et illimité pour la plupart des usages</td></tr><tr><td>Intégration native parfaite avec Google Analytics, Ads, Sheets</td></tr><tr><td>Partage de rapports en temps réel avec contrôle des accès</td></tr><tr><td>Templates prêts à l'emploi pour le marketing digital</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Connecteurs limités en dehors de l'écosystème Google</td></tr><tr><td>Personnalisation graphique assez basique comparé aux outils payants</td></tr><tr><td>Lenteur sur les gros volumes de données</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -589,38 +573,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise <strong>Grafana Cloud</strong> depuis deux ans pour visualiser les données de monitoring de nos applications.
-
-<p>C'est un logiciel de data visualisation qui excelle particulièrement dans l'observabilité technique : métriques système, logs d'applications, traces de performance. Le gros plus ?</p>
-
-<p>Pas besoin de gérer l'infrastructure, tout est hébergé.</p><p>Ce qui me plaît vraiment, c'est la flexibilité des tableaux de bord. J'ai connecté nos bases Prometheus, Elasticsearch et même quelques sources custom via API.</p>
-
-<p>Les alertes se configurent finement et arrivent sur Slack en temps réel quand nos serveurs montrent des signes de fatigue.</p><p>Par contre, si vous cherchez un outil pour faire de la business intelligence classique avec vos données CRM ou comptables, <strong>passez votre chemin</strong>.</p>
-
-<p>Grafana Cloud reste orienté technique et monitoring, même si on peut bidouiller des dashboards métier. L'interface demande aussi un petit temps d'adaptation pour les non-techs.</p></p>
+            <p>J'utilise <strong>Grafana Cloud</strong> depuis deux ans pour visualiser les données de monitoring de nos applications. C'est un logiciel de data visualisation qui excelle particulièrement dans l'observabilité technique : métriques système, logs d'applications, traces de performance. Le gros plus ? Pas besoin de gérer l'infrastructure, tout est hébergé.</p><p>Ce qui me plaît vraiment, c'est la flexibilité des tableaux de bord. J'ai connecté nos bases Prometheus, Elasticsearch et même quelques sources custom via API. Les alertes se configurent finement et arrivent sur Slack en temps réel quand nos serveurs montrent des signes de fatigue.</p><p>Par contre, si vous cherchez un outil pour faire de la business intelligence classique avec vos données CRM ou comptables, <strong>passez votre chemin</strong>. Grafana Cloud reste orienté technique et monitoring, même si on peut bidouiller des dashboards métier. L'interface demande aussi un petit temps d'adaptation pour les non-techs.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Infrastructure managée, zéro maintenance serveur</td>
-            <td>Courbe d'apprentissage steep pour les profils non-techniques</td>
-          </tr>
-          <tr>
-            <td>Connexions natives avec 150+ sources de données techniques</td>
-            <td>Pricing qui peut vite grimper avec le volume de métriques</td>
-          </tr>
-          <tr>
-            <td>Alerting avancé avec règles conditionnelles complexes</td>
-            <td>Orienté monitoring, limité pour la BI métier classique</td>
-          </tr>
-          <tr>
-            <td>Dashboards collaboratifs avec gestion des droits par équipe</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Infrastructure managée, zéro maintenance serveur</td></tr><tr><td>Connexions natives avec 150+ sources de données techniques</td></tr><tr><td>Alerting avancé avec règles conditionnelles complexes</td></tr><tr><td>Dashboards collaboratifs avec gestion des droits par équipe</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Courbe d'apprentissage steep pour les profils non-techniques</td></tr><tr><td>Pricing qui peut vite grimper avec le volume de métriques</td></tr><tr><td>Orienté monitoring, limité pour la BI métier classique</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -640,38 +605,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Power BI Premium, c'est Microsoft qui pousse la data visualisation à un autre niveau. Je m'en sers depuis deux ans dans ma boîte et franchement, <strong>la différence avec la version standard se sent immédiatement</strong>.
-
-<p>On parle d'un outil qui gère des volumes de données énormes sans broncher, avec des rafraîchissements plus fréquents et une capacité de calcul qui permet de traiter des datasets complexes sans attendre.</p><p>L'interface reste celle de Power BI classique, mais sous le capot, tout change.</p>
-
-<p>Les <strong>modèles sémantiques partagés</strong> permettent enfin de standardiser les KPIs à l'échelle de l'entreprise. Plus besoin que chaque service refasse ses propres calculs de chiffre d'affaires.</p>
-
-<p>J'ai mis en place un modèle centralisé que toutes les équipes utilisent maintenant.</p><p>Le pricing par capacité plutôt que par utilisateur change la donne pour les grandes organisations.</p>
-
-<p>Quand on a 200+ utilisateurs qui consultent régulièrement des tableaux de bord, <strong>ça devient rapidement plus rentable que la licence Pro</strong>. Par contre, attention à bien dimensionner votre capacité dès le départ.</p></p>
+            <p>Power BI Premium, c'est Microsoft qui pousse la data visualisation à un autre niveau. Je m'en sers depuis deux ans dans ma boîte et franchement, <strong>la différence avec la version standard se sent immédiatement</strong>. On parle d'un outil qui gère des volumes de données énormes sans broncher, avec des rafraîchissements plus fréquents et une capacité de calcul qui permet de traiter des datasets complexes sans attendre.</p><p>L'interface reste celle de Power BI classique, mais sous le capot, tout change. Les <strong>modèles sémantiques partagés</strong> permettent enfin de standardiser les KPIs à l'échelle de l'entreprise. Plus besoin que chaque service refasse ses propres calculs de chiffre d'affaires. J'ai mis en place un modèle centralisé que toutes les équipes utilisent maintenant.</p><p>Le pricing par capacité plutôt que par utilisateur change la donne pour les grandes organisations. Quand on a 200+ utilisateurs qui consultent régulièrement des tableaux de bord, <strong>ça devient rapidement plus rentable que la licence Pro</strong>. Par contre, attention à bien dimensionner votre capacité dès le départ.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Gestion de volumes massifs de données sans ralentissement</td>
-            <td>Tarification complexe et difficile à estimer au démarrage</td>
-          </tr>
-          <tr>
-            <td>Rafraîchissements fréquents et programmables (jusqu'à 48 fois par jour)</td>
-            <td>Nécessite des compétences techniques avancées pour l'optimisation</td>
-          </tr>
-          <tr>
-            <td>Modèles sémantiques centralisés pour standardiser les KPIs</td>
-            <td>Consommation de capacité imprévisible selon les requêtes</td>
-          </tr>
-          <tr>
-            <td>Économies importantes pour les organisations avec de nombreux utilisateurs</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Gestion de volumes massifs de données sans ralentissement</td></tr><tr><td>Rafraîchissements fréquents et programmables (jusqu'à 48 fois par jour)</td></tr><tr><td>Modèles sémantiques centralisés pour standardiser les KPIs</td></tr><tr><td>Économies importantes pour les organisations avec de nombreux utilisateurs</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification complexe et difficile à estimer au démarrage</td></tr><tr><td>Nécessite des compétences techniques avancées pour l'optimisation</td></tr><tr><td>Consommation de capacité imprévisible selon les requêtes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -691,38 +637,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>MyReport s'adresse principalement aux équipes métier qui veulent créer des <strong>rapports automatisés</strong> sans passer par la DSI.
-
-<p>Je l'ai testé dans le cadre de reportings RH et commerciaux : la prise en main reste accessible même pour des profils non techniques.</p><p>L'outil mise sur la <strong>simplicité d'usage</strong> plutôt que sur les fonctionnalités avancées.</p>
-
-<p>On peut connecter ses données Excel, CSV ou bases SQL classiques, puis générer des graphiques propres en quelques clics.</p>
-
-<p>Pas de fioritures, mais ça fonctionne bien pour des besoins standards.</p><p>Je recommande MyReport aux PME qui cherchent une solution de data visualisation <strong>sans complexité</strong>.</p>
-
-<p>Par contre, si vous gérez des volumes de données importants ou avez besoin de calculs statistiques poussés, vous allez vite être limés.</p></p>
+            <p>MyReport s'adresse principalement aux équipes métier qui veulent créer des <strong>rapports automatisés</strong> sans passer par la DSI. Je l'ai testé dans le cadre de reportings RH et commerciaux : la prise en main reste accessible même pour des profils non techniques.</p><p>L'outil mise sur la <strong>simplicité d'usage</strong> plutôt que sur les fonctionnalités avancées. On peut connecter ses données Excel, CSV ou bases SQL classiques, puis générer des graphiques propres en quelques clics. Pas de fioritures, mais ça fonctionne bien pour des besoins standards.</p><p>Je recommande MyReport aux PME qui cherchent une solution de data visualisation <strong>sans complexité</strong>. Par contre, si vous gérez des volumes de données importants ou avez besoin de calculs statistiques poussés, vous allez vite être limés.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface vraiment intuitive, formation possible en 2 heures</td>
-            <td>Personnalisation graphique très limitée, templates figés</td>
-          </tr>
-          <tr>
-            <td>Planification automatique des rapports mensuels ou hebdomadaires</td>
-            <td>Performances dégradées au-delà de 50 000 lignes de données</td>
-          </tr>
-          <tr>
-            <td>Prix abordable comparé à Tableau ou Power BI</td>
-            <td>Connecteurs limités, pas d'API pour outils métier spécifiques</td>
-          </tr>
-          <tr>
-            <td>Export direct en PDF pour les présentations</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface vraiment intuitive, formation possible en 2 heures</td></tr><tr><td>Planification automatique des rapports mensuels ou hebdomadaires</td></tr><tr><td>Prix abordable comparé à Tableau ou Power BI</td></tr><tr><td>Export direct en PDF pour les présentations</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Personnalisation graphique très limitée, templates figés</td></tr><tr><td>Performances dégradées au-delà de 50 000 lignes de données</td></tr><tr><td>Connecteurs limités, pas d'API pour outils métier spécifiques</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -742,40 +669,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Tableau Explorer s'adresse aux équipes qui manquent d'expertise technique mais ont besoin de <strong>visualisations données rapides</strong>.
-
-<p>Je l'ai testé pendant trois mois et j'avoue que l'approche me séduit : on importe ses fichiers CSV ou Excel, et l'interface génère automatiquement des graphiques pertinents.</p>
-
-<p>Pas de codage, pas de formation longue.</p><p>L'outil cible clairement les PME et services métiers qui veulent analyser leurs données sans passer par la DSI. Les templates sont bien pensés : ventes, RH, marketing, finances.</p>
-
-<p>Je recommande particulièrement pour les équipes commerciales qui ont besoin de <strong>tableaux de bord simples mais efficaces</strong>.</p>
-
-<p>Par contre, on oublie les analyses complexes ou les gros volumes.</p><p>Tableau Explorer mise sur la simplicité d'usage plutôt que sur la puissance brute. Résultat : j'ai créé mon premier dashboard en 20 minutes chrono.</p>
-
-<p>L'export PDF fonctionne bien, l'intégration Google Sheets aussi. Mais attention, <strong>les limitations arrivent vite</strong> si vos besoins évoluent vers de la data science avancée.</p></p>
+            <p>Tableau Explorer s'adresse aux équipes qui manquent d'expertise technique mais ont besoin de <strong>visualisations données rapides</strong>. Je l'ai testé pendant trois mois et j'avoue que l'approche me séduit : on importe ses fichiers CSV ou Excel, et l'interface génère automatiquement des graphiques pertinents. Pas de codage, pas de formation longue.</p><p>L'outil cible clairement les PME et services métiers qui veulent analyser leurs données sans passer par la DSI. Les templates sont bien pensés : ventes, RH, marketing, finances. Je recommande particulièrement pour les équipes commerciales qui ont besoin de <strong>tableaux de bord simples mais efficaces</strong>. Par contre, on oublie les analyses complexes ou les gros volumes.</p><p>Tableau Explorer mise sur la simplicité d'usage plutôt que sur la puissance brute. Résultat : j'ai créé mon premier dashboard en 20 minutes chrono. L'export PDF fonctionne bien, l'intégration Google Sheets aussi. Mais attention, <strong>les limitations arrivent vite</strong> si vos besoins évoluent vers de la data science avancée.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Prise en main immédiate, même sans formation technique</td>
-            <td>Limité à 100 000 lignes de données maximum</td>
-          </tr>
-          <tr>
-            <td>Templates métiers prêts à l'emploi pour différents secteurs</td>
-            <td>Options de customisation graphique assez restreintes</td>
-          </tr>
-          <tr>
-            <td>Génération automatique de graphiques selon le type de données</td>
-            <td>Pas d'API pour automatiser les imports de données</td>
-          </tr>
-          <tr>
-            <td>Prix accessible pour les petites structures (à partir de 25€/mois)</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Prise en main immédiate, même sans formation technique</td></tr><tr><td>Templates métiers prêts à l'emploi pour différents secteurs</td></tr><tr><td>Génération automatique de graphiques selon le type de données</td></tr><tr><td>Prix accessible pour les petites structures (à partir de 25€/mois)</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Limité à 100 000 lignes de données maximum</td></tr><tr><td>Options de customisation graphique assez restreintes</td></tr><tr><td>Pas d'API pour automatiser les imports de données</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -795,40 +701,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Metabase Cloud</strong> pendant plusieurs mois pour créer des tableaux de bord analytiques, et je dois dire que ce logiciel de data visualisation m'a surpris par sa simplicité d'utilisation.
-
-<p>Contrairement à d'autres solutions plus lourdes, Metabase permet de connecter facilement ses bases de données et de créer des graphiques sans avoir besoin d'être un expert en SQL.</p>
-
-<p>L'interface est claire, même si parfois un peu spartiate.</p><p>Ce qui m'a séduit, c'est la rapidité avec laquelle j'ai pu mettre en place mes premiers dashboards.</p>
-
-<p>En quelques clics, je connecte ma base PostgreSQL, je pose une question en langage naturel, et Metabase génère automatiquement le graphique correspondant.</p>
-
-<p><strong>Pratique pour les équipes métier</strong> qui veulent analyser leurs données sans passer par l'IT à chaque fois.</p><p>Par contre, ne vous attendez pas à la sophistication d'un Tableau ou d'un Power BI.</p>
-
-<p>Metabase Cloud reste <strong>relativement basique</strong> en termes de personnalisation avancée. Mais pour des besoins classiques de reporting et de suivi d'indicateurs, ça fait parfaitement le travail sans se prendre la tête.</p></p>
+            <p>J'ai testé <strong>Metabase Cloud</strong> pendant plusieurs mois pour créer des tableaux de bord analytiques, et je dois dire que ce logiciel de data visualisation m'a surpris par sa simplicité d'utilisation. Contrairement à d'autres solutions plus lourdes, Metabase permet de connecter facilement ses bases de données et de créer des graphiques sans avoir besoin d'être un expert en SQL. L'interface est claire, même si parfois un peu spartiate.</p><p>Ce qui m'a séduit, c'est la rapidité avec laquelle j'ai pu mettre en place mes premiers dashboards. En quelques clics, je connecte ma base PostgreSQL, je pose une question en langage naturel, et Metabase génère automatiquement le graphique correspondant. <strong>Pratique pour les équipes métier</strong> qui veulent analyser leurs données sans passer par l'IT à chaque fois.</p><p>Par contre, ne vous attendez pas à la sophistication d'un Tableau ou d'un Power BI. Metabase Cloud reste <strong>relativement basique</strong> en termes de personnalisation avancée. Mais pour des besoins classiques de reporting et de suivi d'indicateurs, ça fait parfaitement le travail sans se prendre la tête.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Prise en main rapide même pour les non-techniques</td>
-            <td>Options de personnalisation graphique limitées</td>
-          </tr>
-          <tr>
-            <td>Questions en langage naturel transformées en graphiques</td>
-            <td>Performance parfois lente sur de gros volumes de données</td>
-          </tr>
-          <tr>
-            <td>Connexion native avec la plupart des bases de données</td>
-            <td>Fonctionnalités avancées réservées à la version payante</td>
-          </tr>
-          <tr>
-            <td>Hébergement cloud sans maintenance technique</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Prise en main rapide même pour les non-techniques</td></tr><tr><td>Questions en langage naturel transformées en graphiques</td></tr><tr><td>Connexion native avec la plupart des bases de données</td></tr><tr><td>Hébergement cloud sans maintenance technique</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Options de personnalisation graphique limitées</td></tr><tr><td>Performance parfois lente sur de gros volumes de données</td></tr><tr><td>Fonctionnalités avancées réservées à la version payante</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -848,38 +733,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise Zoho Analytics depuis deux ans dans notre PME et je dois avouer que <strong>l'intégration avec l'écosystème Zoho</strong> fait toute la différence.
-
-<p>Contrairement aux solutions autonomes, ce logiciel de data visualisation récupère automatiquement les données de Zoho CRM, Books et Creator. Fini les exports CSV manuels.</p><p>Les dashboards se construisent par glisser-déposer. Simple.</p>
-
-<p>Je crée mes graphiques en quelques clics et l'IA Zia suggère même des analyses pertinentes sur mes ventes.</p>
-
-<p><strong>Le partage en temps réel</strong> avec les équipes fonctionne bien, même si l'interface reste parfois un peu datée comparée à des outils plus modernes.</p><p>Zoho Analytics s'adresse clairement aux entreprises déjà dans l'univers Zoho qui cherchent une solution de Business Intelligence cohérente.</p>
-
-<p>Si vous utilisez déjà plusieurs applications Zoho, <strong>la logique d'unification des données</strong> devient évidente. Pour les autres, il existe probablement des alternatives plus sexy.</p></p>
+            <p>J'utilise Zoho Analytics depuis deux ans dans notre PME et je dois avouer que <strong>l'intégration avec l'écosystème Zoho</strong> fait toute la différence. Contrairement aux solutions autonomes, ce logiciel de data visualisation récupère automatiquement les données de Zoho CRM, Books et Creator. Fini les exports CSV manuels.</p><p>Les dashboards se construisent par glisser-déposer. Simple. Je crée mes graphiques en quelques clics et l'IA Zia suggère même des analyses pertinentes sur mes ventes. <strong>Le partage en temps réel</strong> avec les équipes fonctionne bien, même si l'interface reste parfois un peu datée comparée à des outils plus modernes.</p><p>Zoho Analytics s'adresse clairement aux entreprises déjà dans l'univers Zoho qui cherchent une solution de Business Intelligence cohérente. Si vous utilisez déjà plusieurs applications Zoho, <strong>la logique d'unification des données</strong> devient évidente. Pour les autres, il existe probablement des alternatives plus sexy.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native avec tout l'écosystème Zoho (CRM, Books, Creator)</td>
-            <td>Interface vieillissante qui manque de modernité</td>
-          </tr>
-          <tr>
-            <td>IA Zia qui propose des insights automatiques sur les données</td>
-            <td>Personnalisation des graphiques limitée comparée à Power BI</td>
-          </tr>
-          <tr>
-            <td>Prix attractif à partir de 20€/mois pour 2 utilisateurs</td>
-            <td>Performance dégradée avec des jeux de données très volumineux</td>
-          </tr>
-          <tr>
-            <td>Connecteurs prêts à l'emploi avec Google Analytics, Salesforce, MySQL</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native avec tout l'écosystème Zoho (CRM, Books, Creator)</td></tr><tr><td>IA Zia qui propose des insights automatiques sur les données</td></tr><tr><td>Prix attractif à partir de 20€/mois pour 2 utilisateurs</td></tr><tr><td>Connecteurs prêts à l'emploi avec Google Analytics, Salesforce, MySQL</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface vieillissante qui manque de modernité</td></tr><tr><td>Personnalisation des graphiques limitée comparée à Power BI</td></tr><tr><td>Performance dégradée avec des jeux de données très volumineux</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -899,42 +765,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je teste Apache Superset depuis six mois et je dois dire qu'en tant qu'outil de data visualisation open source, il fait le travail sans fioritures.
-
-<p><strong>Développé par Airbnb</strong> puis confié à la fondation Apache, c'est une solution robuste pour créer des tableaux de bord interactifs et explorer des données.</p>
-
-<p>Ce qui m'a séduit : la possibilité de connecter plein de sources différentes et de créer des visualisations assez poussées sans débourser un euro.</p><p>L'interface ressemble un peu à Tableau dans l'esprit, mais avec une approche plus technique.</p>
-
-<p>On peut construire des graphiques rapidement, paramétrer des filtres et partager des dashboards avec les équipes. <strong>Pas mal de types de graphiques disponibles</strong> : courbes, barres, cartes de chaleur, graphiques en aires...</p>
-
-<p>J'apprécie particulièrement le SQL Lab qui permet d'écrire des requêtes custom directement dans l'interface.</p><p>Par contre, préparez-vous à mettre les mains dans le cambouis.</p>
-
-<p>Apache Superset s'adresse clairement aux profils techniques qui maîtrisent SQL et ne rechignent pas à configurer leur environnement. Si vous cherchez du plug-and-play, passez votre chemin.</p>
-
-<p><strong>Mais pour une équipe data qui veut garder le contrôle</strong>, c'est un choix intelligent.</p></p>
+            <p>Je teste Apache Superset depuis six mois et je dois dire qu'en tant qu'outil de data visualisation open source, il fait le travail sans fioritures. <strong>Développé par Airbnb</strong> puis confié à la fondation Apache, c'est une solution robuste pour créer des tableaux de bord interactifs et explorer des données. Ce qui m'a séduit : la possibilité de connecter plein de sources différentes et de créer des visualisations assez poussées sans débourser un euro.</p><p>L'interface ressemble un peu à Tableau dans l'esprit, mais avec une approche plus technique. On peut construire des graphiques rapidement, paramétrer des filtres et partager des dashboards avec les équipes. <strong>Pas mal de types de graphiques disponibles</strong> : courbes, barres, cartes de chaleur, graphiques en aires... J'apprécie particulièrement le SQL Lab qui permet d'écrire des requêtes custom directement dans l'interface.</p><p>Par contre, préparez-vous à mettre les mains dans le cambouis. Apache Superset s'adresse clairement aux profils techniques qui maîtrisent SQL et ne rechignent pas à configurer leur environnement. Si vous cherchez du plug-and-play, passez votre chemin. <strong>Mais pour une équipe data qui veut garder le contrôle</strong>, c'est un choix intelligent.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Gratuit et open source, aucun coût de licence</td>
-            <td>Installation et configuration complexes, besoin de compétences techniques</td>
-          </tr>
-          <tr>
-            <td>Compatible avec plus de 30 bases de données différentes</td>
-            <td>Interface moins intuitive que les solutions commerciales</td>
-          </tr>
-          <tr>
-            <td>SQL Lab intégré pour des requêtes personnalisées avancées</td>
-            <td>Documentation parfois incomplète pour certaines fonctionnalités</td>
-          </tr>
-          <tr>
-            <td>Communauté active et développement continu</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Gratuit et open source, aucun coût de licence</td></tr><tr><td>Compatible avec plus de 30 bases de données différentes</td></tr><tr><td>SQL Lab intégré pour des requêtes personnalisées avancées</td></tr><tr><td>Communauté active et développement continu</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Installation et configuration complexes, besoin de compétences techniques</td></tr><tr><td>Interface moins intuitive que les solutions commerciales</td></tr><tr><td>Documentation parfois incomplète pour certaines fonctionnalités</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -954,42 +797,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai découvert <strong>Datawrapper</strong> quand j'avais besoin de créer des graphiques propres sans me prendre la tête. Franchement, ça a été une vraie révélation.
-
-<p>On upload son fichier CSV, on choisit son type de graphique, et en 10 minutes c'est bouclé.</p>
-
-<p>L'interface est <strong>terriblement simple</strong> mais c'est exactement ce qu'il faut quand on veut juste que ça marche.</p><p>L'outil cible clairement les journalistes, les associations et les équipes marketing qui ont besoin de graphiques corrects sans être des pros de la data viz.</p>
-
-<p>On peut créer des cartes interactives assez bluffantes, des tableaux qui se lisent bien, et même intégrer tout ça sur un site web.</p>
-
-<p>J'ai testé l'export en différents formats : ça marche nickel.</p><p>Ce qui m'a surpris c'est la qualité du rendu final.</p>
-
-<p>Les couleurs sont cohérentes, les polices bien choisies, et surtout les graphiques restent <strong>lisibles sur mobile</strong>. Par contre, si vous cherchez des analyses poussées ou des dashboards complexes, passez votre chemin.</p>
-
-<p>Datawrapper fait bien son job mais reste dans son créneau : la visualisation simple et efficace.</p></p>
+            <p>J'ai découvert <strong>Datawrapper</strong> quand j'avais besoin de créer des graphiques propres sans me prendre la tête. Franchement, ça a été une vraie révélation. On upload son fichier CSV, on choisit son type de graphique, et en 10 minutes c'est bouclé. L'interface est <strong>terriblement simple</strong> mais c'est exactement ce qu'il faut quand on veut juste que ça marche.</p><p>L'outil cible clairement les journalistes, les associations et les équipes marketing qui ont besoin de graphiques corrects sans être des pros de la data viz. On peut créer des cartes interactives assez bluffantes, des tableaux qui se lisent bien, et même intégrer tout ça sur un site web. J'ai testé l'export en différents formats : ça marche nickel.</p><p>Ce qui m'a surpris c'est la qualité du rendu final. Les couleurs sont cohérentes, les polices bien choisies, et surtout les graphiques restent <strong>lisibles sur mobile</strong>. Par contre, si vous cherchez des analyses poussées ou des dashboards complexes, passez votre chemin. Datawrapper fait bien son job mais reste dans son créneau : la visualisation simple et efficace.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Prise en main immédiate même pour les débutants</td>
-            <td>Fonctionnalités d'analyse très limitées</td>
-          </tr>
-          <tr>
-            <td>Templates de qualité professionnelle inclus</td>
-            <td>Impossible de connecter des bases de données en temps réel</td>
-          </tr>
-          <tr>
-            <td>Export et intégration web sans problème technique</td>
-            <td>Options de personnalisation graphique assez restreintes</td>
-          </tr>
-          <tr>
-            <td>Cartes interactives réussies avec données géographiques</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Prise en main immédiate même pour les débutants</td></tr><tr><td>Templates de qualité professionnelle inclus</td></tr><tr><td>Export et intégration web sans problème technique</td></tr><tr><td>Cartes interactives réussies avec données géographiques</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités d'analyse très limitées</td></tr><tr><td>Impossible de connecter des bases de données en temps réel</td></tr><tr><td>Options de personnalisation graphique assez restreintes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1009,38 +829,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Metabase Open Source</strong> pendant plusieurs mois sur un projet de reporting commercial. Ce logiciel de data visualisation gratuit permet de créer des tableaux de bord sans toucher une ligne de code.
-
-<p>On connecte sa base MySQL ou PostgreSQL, on glisse-dépose quelques champs et on obtient des graphiques corrects.</p><p>L'interface me rappelle un peu Tableau mais en beaucoup plus simple.</p>
-
-<p>Je peux créer un dashboard de ventes en 15 minutes chrono. Par contre, dès qu'on veut faire du calcul avancé ou de la mise en forme poussée, ça devient limité.</p>
-
-<p><strong>Metabase Open Source</strong> convient surtout aux équipes techniques qui veulent démocratiser l'accès aux données sans investir dans Power BI.</p><p>Installation sur serveur obligatoire. Pas de version SaaS dans la version gratuite.</p>
-
-<p>Je recommande si vous avez quelqu'un qui peut maintenir l'infrastructure, sinon passez votre chemin.</p></p>
+            <p>J'ai testé <strong>Metabase Open Source</strong> pendant plusieurs mois sur un projet de reporting commercial. Ce logiciel de data visualisation gratuit permet de créer des tableaux de bord sans toucher une ligne de code. On connecte sa base MySQL ou PostgreSQL, on glisse-dépose quelques champs et on obtient des graphiques corrects.</p><p>L'interface me rappelle un peu Tableau mais en beaucoup plus simple. Je peux créer un dashboard de ventes en 15 minutes chrono. Par contre, dès qu'on veut faire du calcul avancé ou de la mise en forme poussée, ça devient limité. <strong>Metabase Open Source</strong> convient surtout aux équipes techniques qui veulent démocratiser l'accès aux données sans investir dans Power BI.</p><p>Installation sur serveur obligatoire. Pas de version SaaS dans la version gratuite. Je recommande si vous avez quelqu'un qui peut maintenir l'infrastructure, sinon passez votre chemin.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Gratuit et open source sans limitation d'utilisateurs</td>
-            <td>Pas de version cloud dans l'édition gratuite</td>
-          </tr>
-          <tr>
-            <td>Installation rapide avec Docker en 10 minutes</td>
-            <td>Fonctionnalités limitées comparé à Power BI</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive même pour les non-techniques</td>
-            <td>Maintenance serveur nécessaire</td>
-          </tr>
-          <tr>
-            <td>Support natif de 20+ bases de données</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Gratuit et open source sans limitation d'utilisateurs</td></tr><tr><td>Installation rapide avec Docker en 10 minutes</td></tr><tr><td>Interface intuitive même pour les non-techniques</td></tr><tr><td>Support natif de 20+ bases de données</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Pas de version cloud dans l'édition gratuite</td></tr><tr><td>Fonctionnalités limitées comparé à Power BI</td></tr><tr><td>Maintenance serveur nécessaire</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1060,38 +861,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Toucan Toco, c'est le logiciel de data visualisation qui mise tout sur la simplicité d'usage.
-
-<p>Je l'ai testé pendant 3 mois et ce qui m'a frappé, c'est sa capacité à transformer des données complexes en <strong>storytelling visuel</strong> sans avoir besoin de compétences techniques pointues.</p><p>L'interface ressemble plus à un outil de présentation qu'à un tableau de bord classique.</p>
-
-<p>On peut créer des <strong>rapports interactifs</strong> avec une logique narrative : introduction, développement, conclusion.</p>
-
-<p>Pratique pour présenter des résultats au comité de direction ou aux équipes terrain.</p><p>Toucan Toco cible clairement les entreprises qui veulent démocratiser l'accès aux données.</p>
-
-<p>Les utilisateurs finaux peuvent naviguer dans les dashboards sans formation particulière, ce qui évite de monopoliser les équipes data pour chaque demande de rapport.</p></p>
+            <p>Toucan Toco, c'est le logiciel de data visualisation qui mise tout sur la simplicité d'usage. Je l'ai testé pendant 3 mois et ce qui m'a frappé, c'est sa capacité à transformer des données complexes en <strong>storytelling visuel</strong> sans avoir besoin de compétences techniques pointues.</p><p>L'interface ressemble plus à un outil de présentation qu'à un tableau de bord classique. On peut créer des <strong>rapports interactifs</strong> avec une logique narrative : introduction, développement, conclusion. Pratique pour présenter des résultats au comité de direction ou aux équipes terrain.</p><p>Toucan Toco cible clairement les entreprises qui veulent démocratiser l'accès aux données. Les utilisateurs finaux peuvent naviguer dans les dashboards sans formation particulière, ce qui évite de monopoliser les équipes data pour chaque demande de rapport.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive même pour les non-techniciens</td>
-            <td>Options de personnalisation limitées pour les cas avancés</td>
-          </tr>
-          <tr>
-            <td>Storytelling data avec narration guidée</td>
-            <td>Connecteurs natifs moins nombreux que la concurrence</td>
-          </tr>
-          <tr>
-            <td>Temps de mise en œuvre rapide (2-3 semaines)</td>
-            <td>Tarification qui peut vite grimper avec les utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Support réactif et accompagnement personnalisé</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive même pour les non-techniciens</td></tr><tr><td>Storytelling data avec narration guidée</td></tr><tr><td>Temps de mise en œuvre rapide (2-3 semaines)</td></tr><tr><td>Support réactif et accompagnement personnalisé</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Options de personnalisation limitées pour les cas avancés</td></tr><tr><td>Connecteurs natifs moins nombreux que la concurrence</td></tr><tr><td>Tarification qui peut vite grimper avec les utilisateurs</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1111,40 +893,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé Qlik Sense dans trois entreprises différentes et je peux dire que c'est un <strong>logiciel de data visualisation</strong> qui sort vraiment du lot.
-
-<p>Contrairement aux autres outils, il propose un moteur associatif qui permet d'explorer les données sans avoir à définir des chemins d'analyse prédéfinis.</p>
-
-<p>Concrètement, quand je clique sur une donnée, toutes les autres se reorganisent automatiquement pour montrer les corrélations.</p><p>Ce qui m'a frappé, c'est la <strong>capacité d'auto-apprentissage de l'outil</strong>.</p>
-
-<p>Qlik Sense propose des suggestions de visualisations basées sur vos données et vos habitudes d'exploration. L'interface drag-and-drop fonctionne bien, même si elle demande un petit temps d'adaptation.</p>
-
-<p>Je recommande particulièrement les fonctionnalités de storytelling pour créer des présentations interactives qui impressionnent en comité de direction.</p><p>Niveau collaboration, on peut partager facilement des dashboards et <strong>créer des espaces de travail collaboratifs</strong>.</p>
-
-<p>L'intégration avec les principales sources de données (Excel, bases SQL, APIs) se fait sans accroc. Par contre, préparez-vous à un investissement en formation, surtout si vos équipes viennent d'Excel ou de Power BI.</p></p>
+            <p>J'ai testé Qlik Sense dans trois entreprises différentes et je peux dire que c'est un <strong>logiciel de data visualisation</strong> qui sort vraiment du lot. Contrairement aux autres outils, il propose un moteur associatif qui permet d'explorer les données sans avoir à définir des chemins d'analyse prédéfinis. Concrètement, quand je clique sur une donnée, toutes les autres se reorganisent automatiquement pour montrer les corrélations.</p><p>Ce qui m'a frappé, c'est la <strong>capacité d'auto-apprentissage de l'outil</strong>. Qlik Sense propose des suggestions de visualisations basées sur vos données et vos habitudes d'exploration. L'interface drag-and-drop fonctionne bien, même si elle demande un petit temps d'adaptation. Je recommande particulièrement les fonctionnalités de storytelling pour créer des présentations interactives qui impressionnent en comité de direction.</p><p>Niveau collaboration, on peut partager facilement des dashboards et <strong>créer des espaces de travail collaboratifs</strong>. L'intégration avec les principales sources de données (Excel, bases SQL, APIs) se fait sans accroc. Par contre, préparez-vous à un investissement en formation, surtout si vos équipes viennent d'Excel ou de Power BI.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Moteur associatif unique qui révèle des corrélations cachées automatiquement</td>
-            <td>Courbe d'apprentissage assez raide, surtout pour les utilisateurs Excel</td>
-          </tr>
-          <tr>
-            <td>Suggestions intelligentes de visualisations basées sur l'analyse de vos données</td>
-            <td>Tarification complexe avec plusieurs niveaux de licences pas toujours clairs</td>
-          </tr>
-          <tr>
-            <td>Fonctionnalités de storytelling avancées pour créer des présentations interactives</td>
-            <td>Performance qui peut se dégrader sur de très gros volumes de données</td>
-          </tr>
-          <tr>
-            <td>Collaboration native avec espaces partagés et commentaires en temps réel</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Moteur associatif unique qui révèle des corrélations cachées automatiquement</td></tr><tr><td>Suggestions intelligentes de visualisations basées sur l'analyse de vos données</td></tr><tr><td>Fonctionnalités de storytelling avancées pour créer des présentations interactives</td></tr><tr><td>Collaboration native avec espaces partagés et commentaires en temps réel</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Courbe d'apprentissage assez raide, surtout pour les utilisateurs Excel</td></tr><tr><td>Tarification complexe avec plusieurs niveaux de licences pas toujours clairs</td></tr><tr><td>Performance qui peut se dégrader sur de très gros volumes de données</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1164,38 +925,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Infogram frappe fort sur un segment précis : créer des <strong>infographies et des rapports visuels</strong> sans passer par un graphiste. Je l'ai testé pour des présentations clients et la simplicité m'a convaincu.
-
-<p>On peut transformer des données Excel en graphiques interactifs en quelques clics.</p><p>L'outil vise les équipes marketing, les consultants et les journalistes qui ont besoin de <strong>visualisations impactantes rapidement</strong>.</p>
-
-<p>Les templates sont nombreux et plutôt bien pensés. J'ai particulièrement apprécié les cartes interactives et la possibilité d'intégrer des vidéos directement dans les infographies.</p><p>Côté collaboration, ça reste basique mais fonctionnel.</p>
-
-<p>On peut partager un lien ou exporter en PDF/PNG. <strong>L'interface ne demande aucune formation</strong> particulière, même pour quelqu'un qui débute complètement en data visualisation.</p>
-
-<p>Par contre, dès qu'on veut du sur-mesure ou des analyses poussées, on atteint vite les limites.</p></p>
+            <p>Infogram frappe fort sur un segment précis : créer des <strong>infographies et des rapports visuels</strong> sans passer par un graphiste. Je l'ai testé pour des présentations clients et la simplicité m'a convaincu. On peut transformer des données Excel en graphiques interactifs en quelques clics.</p><p>L'outil vise les équipes marketing, les consultants et les journalistes qui ont besoin de <strong>visualisations impactantes rapidement</strong>. Les templates sont nombreux et plutôt bien pensés. J'ai particulièrement apprécié les cartes interactives et la possibilité d'intégrer des vidéos directement dans les infographies.</p><p>Côté collaboration, ça reste basique mais fonctionnel. On peut partager un lien ou exporter en PDF/PNG. <strong>L'interface ne demande aucune formation</strong> particulière, même pour quelqu'un qui débute complètement en data visualisation. Par contre, dès qu'on veut du sur-mesure ou des analyses poussées, on atteint vite les limites.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Templates d'infographies prêts à l'emploi vraiment réussis</td>
-            <td>Options de personnalisation limitées comparé à des outils spécialisés</td>
-          </tr>
-          <tr>
-            <td>Intégration facile de données depuis Excel, Google Sheets ou CSV</td>
-            <td>Version gratuite avec watermark visible sur toutes les créations</td>
-          </tr>
-          <tr>
-            <td>Création de cartes interactives géographiques sans compétences techniques</td>
-            <td>Collaboration en temps réel inexistante, juste du partage de liens</td>
-          </tr>
-          <tr>
-            <td>Export haute qualité pour présentations et réseaux sociaux</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Templates d'infographies prêts à l'emploi vraiment réussis</td></tr><tr><td>Intégration facile de données depuis Excel, Google Sheets ou CSV</td></tr><tr><td>Création de cartes interactives géographiques sans compétences techniques</td></tr><tr><td>Export haute qualité pour présentations et réseaux sociaux</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Options de personnalisation limitées comparé à des outils spécialisés</td></tr><tr><td>Version gratuite avec watermark visible sur toutes les créations</td></tr><tr><td>Collaboration en temps réel inexistante, juste du partage de liens</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1215,38 +957,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Redash me surprend par sa simplicité brute. C'est un outil de visualisation de données open source qui fait l'impasse sur le superflu pour se concentrer sur l'essentiel : connecter vos bases de données et créer des graphiques rapidement.
-
-<p>Je l'ai testé sur plusieurs projets et <strong>la prise en main est immédiate</strong> si vous maîtrisez le SQL.</p><p>L'interface rappelle celle d'un éditeur de requêtes avec une surcouche graphique.</p>
-
-<p>Pas de fioritures, pas d'animations tape-à-l'œil. Redash excelle dans la création de dashboards fonctionnels pour équipes techniques qui ont besoin de surveiller leurs KPI sans perdre de temps en configuration.</p>
-
-<p>J'ai pu connecter PostgreSQL, MySQL et même notre entrepôt BigQuery <strong>en moins de 10 minutes</strong>.</p><p>Ce logiciel de data visualisation convient parfaitement aux startups et PME qui cherchent une alternative gratuite à Tableau ou Power BI.</p>
-
-<p>Par contre, si votre équipe marketing veut des présentations léchées pour les comités de direction, passez votre chemin. Redash assume son côté utilitaire.</p></p>
+            <p>Redash me surprend par sa simplicité brute. C'est un outil de visualisation de données open source qui fait l'impasse sur le superflu pour se concentrer sur l'essentiel : connecter vos bases de données et créer des graphiques rapidement. Je l'ai testé sur plusieurs projets et <strong>la prise en main est immédiate</strong> si vous maîtrisez le SQL.</p><p>L'interface rappelle celle d'un éditeur de requêtes avec une surcouche graphique. Pas de fioritures, pas d'animations tape-à-l'œil. Redash excelle dans la création de dashboards fonctionnels pour équipes techniques qui ont besoin de surveiller leurs KPI sans perdre de temps en configuration. J'ai pu connecter PostgreSQL, MySQL et même notre entrepôt BigQuery <strong>en moins de 10 minutes</strong>.</p><p>Ce logiciel de data visualisation convient parfaitement aux startups et PME qui cherchent une alternative gratuite à Tableau ou Power BI. Par contre, si votre équipe marketing veut des présentations léchées pour les comités de direction, passez votre chemin. Redash assume son côté utilitaire.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Installation rapide en self-hosted ou cloud</td>
-            <td>Interface austère qui peut rebuter les utilisateurs non techniques</td>
-          </tr>
-          <tr>
-            <td>Connecteurs natifs vers la plupart des bases de données</td>
-            <td>Personnalisation graphique très limitée comparé aux solutions payantes</td>
-          </tr>
-          <tr>
-            <td>Partage de dashboards avec gestion des droits granulaire</td>
-            <td>Documentation parfois incomplète sur les fonctionnalités avancées</td>
-          </tr>
-          <tr>
-            <td>Alertes automatiques quand vos métriques dépassent un seuil</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Installation rapide en self-hosted ou cloud</td></tr><tr><td>Connecteurs natifs vers la plupart des bases de données</td></tr><tr><td>Partage de dashboards avec gestion des droits granulaire</td></tr><tr><td>Alertes automatiques quand vos métriques dépassent un seuil</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface austère qui peut rebuter les utilisateurs non techniques</td></tr><tr><td>Personnalisation graphique très limitée comparé aux solutions payantes</td></tr><tr><td>Documentation parfois incomplète sur les fonctionnalités avancées</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1266,38 +989,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Digdash</strong> pendant 6 mois dans une entreprise de 200 salariés, et je dois dire que ce logiciel de data visualisation français m'a surpris par sa simplicité d'usage.
-
-<p>Contrairement aux mastodontes du secteur, Digdash mise sur une approche accessible qui permet de créer des tableaux de bord sans avoir besoin d'un doctorat en data science.</p><p>Là où j'ai vraiment apprécié, c'est sur <strong>la connectivité native avec les ERP français</strong> comme Sage ou Cegid.</p>
-
-<p>Plus besoin de passer par des APIs complexes ou des exports CSV laborieux. Les données remontent directement et se mettent à jour automatiquement.</p>
-
-<p>J'ai pu brancher notre comptabilité en 2 heures chrono.</p><p>Le logiciel vise clairement les PME françaises qui veulent du reporting sans se compliquer la vie.</p>
-
-<p>Les templates préconfigurés couvrent <strong>80%</strong> des besoins standards : suivi commercial, analyse financière, KPI RH. Par contre, si vous cherchez du machine learning ou des visualisations ultra sophistiquées, passez votre chemin.</p></p>
+            <p>J'ai testé <strong>Digdash</strong> pendant 6 mois dans une entreprise de 200 salariés, et je dois dire que ce logiciel de data visualisation français m'a surpris par sa simplicité d'usage. Contrairement aux mastodontes du secteur, Digdash mise sur une approche accessible qui permet de créer des tableaux de bord sans avoir besoin d'un doctorat en data science.</p><p>Là où j'ai vraiment apprécié, c'est sur <strong>la connectivité native avec les ERP français</strong> comme Sage ou Cegid. Plus besoin de passer par des APIs complexes ou des exports CSV laborieux. Les données remontent directement et se mettent à jour automatiquement. J'ai pu brancher notre comptabilité en 2 heures chrono.</p><p>Le logiciel vise clairement les PME françaises qui veulent du reporting sans se compliquer la vie. Les templates préconfigurés couvrent <strong>80%</strong> des besoins standards : suivi commercial, analyse financière, KPI RH. Par contre, si vous cherchez du machine learning ou des visualisations ultra sophistiquées, passez votre chemin.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface en français avec logique métier adaptée aux PME</td>
-            <td>Fonctionnalités avancées limitées comparé à Tableau ou Power BI</td>
-          </tr>
-          <tr>
-            <td>Connecteurs natifs pour les logiciels français (Sage, Cegid, Divalto)</td>
-            <td>Catalogue de connecteurs restreint pour les outils internationaux</td>
-          </tr>
-          <tr>
-            <td>Mise en place rapide grâce aux templates sectoriels</td>
-            <td>Personnalisation graphique assez basique</td>
-          </tr>
-          <tr>
-            <td>Support client réactif basé en France</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface en français avec logique métier adaptée aux PME</td></tr><tr><td>Connecteurs natifs pour les logiciels français (Sage, Cegid, Divalto)</td></tr><tr><td>Mise en place rapide grâce aux templates sectoriels</td></tr><tr><td>Support client réactif basé en France</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités avancées limitées comparé à Tableau ou Power BI</td></tr><tr><td>Catalogue de connecteurs restreint pour les outils internationaux</td></tr><tr><td>Personnalisation graphique assez basique</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1317,42 +1021,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vais être franc : <strong>Power BI Pro</strong> reste l'une des plateformes de data visualisation les plus complètes que j'aie testées.
-
-<p>Microsoft a vraiment soigné l'intégration avec son écosystème Office, et ça se ressent dès qu'on manipule des données Excel ou SharePoint.</p>
-
-<p>L'interface peut paraître intimidante au premier regard, mais on s'y habitue vite.</p><p>Ce qui m'a marqué, c'est la facilité pour créer des tableaux de bord interactifs sans avoir besoin de coder.</p>
-
-<p><strong>Le glisser-déposer fonctionne bien</strong>, même si parfois les visualisations avancées demandent un peu de bidouillage.</p>
-
-<p>J'ai pu connecter directement nos bases SQL Server et créer des rapports automatisés qui se mettent à jour tout seuls. Pratique.</p><p>Par contre, attention au coût qui grimpe vite avec les utilisateurs.</p>
-
-<p><strong>À <strong>10€</strong> par utilisateur et par mois</strong>, ça peut faire mal au budget si toute l'équipe doit accéder aux dashboards. Microsoft pousse clairement vers ses autres services cloud, ce qui peut agacer si on veut rester autonome.</p>
-
-<p>Mais pour une PME déjà dans l'univers Microsoft, c'est un choix logique.</p></p>
+            <p>Je vais être franc : <strong>Power BI Pro</strong> reste l'une des plateformes de data visualisation les plus complètes que j'aie testées. Microsoft a vraiment soigné l'intégration avec son écosystème Office, et ça se ressent dès qu'on manipule des données Excel ou SharePoint. L'interface peut paraître intimidante au premier regard, mais on s'y habitue vite.</p><p>Ce qui m'a marqué, c'est la facilité pour créer des tableaux de bord interactifs sans avoir besoin de coder. <strong>Le glisser-déposer fonctionne bien</strong>, même si parfois les visualisations avancées demandent un peu de bidouillage. J'ai pu connecter directement nos bases SQL Server et créer des rapports automatisés qui se mettent à jour tout seuls. Pratique.</p><p>Par contre, attention au coût qui grimpe vite avec les utilisateurs. <strong>À <strong>10€</strong> par utilisateur et par mois</strong>, ça peut faire mal au budget si toute l'équipe doit accéder aux dashboards. Microsoft pousse clairement vers ses autres services cloud, ce qui peut agacer si on veut rester autonome. Mais pour une PME déjà dans l'univers Microsoft, c'est un choix logique.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration parfaite avec l'écosystème Microsoft (Excel, Teams, SharePoint)</td>
-            <td>Coût qui explose rapidement avec le nombre d'utilisateurs (10€/mois/utilisateur)</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive avec glisser-déposer pour créer rapidement des visualisations</td>
-            <td>Courbe d'apprentissage raide pour les fonctionnalités avancées et DAX</td>
-          </tr>
-          <tr>
-            <td>Connecteurs nombreux vers les principales bases de données et services cloud</td>
-            <td>Dépendance forte à l'écosystème Microsoft qui peut limiter la flexibilité</td>
-          </tr>
-          <tr>
-            <td>Rapports automatisés avec actualisation programmée des données</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration parfaite avec l'écosystème Microsoft (Excel, Teams, SharePoint)</td></tr><tr><td>Interface intuitive avec glisser-déposer pour créer rapidement des visualisations</td></tr><tr><td>Connecteurs nombreux vers les principales bases de données et services cloud</td></tr><tr><td>Rapports automatisés avec actualisation programmée des données</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Coût qui explose rapidement avec le nombre d'utilisateurs (10€/mois/utilisateur)</td></tr><tr><td>Courbe d'apprentissage raide pour les fonctionnalités avancées et DAX</td></tr><tr><td>Dépendance forte à l'écosystème Microsoft qui peut limiter la flexibilité</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1372,40 +1053,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Tableau Viewer me sert à partager mes <strong>tableaux de bord Tableau</strong> avec des équipes qui n'ont pas de licence complète.
-
-<p>Cette visionneuse gratuite permet de consulter, filtrer et exporter des rapports créés sur Tableau Desktop.</p>
-
-<p>Je l'utilise surtout pour distribuer mes analyses à large échelle sans exploser le budget licences.</p><p>L'outil brille pour les entreprises qui ont déjà investi dans l'écosystème Tableau.</p>
-
-<p>Mes collègues peuvent <strong>naviguer dans les dashboards interactifs</strong> sans formation poussée. Les filtres restent fonctionnels et l'export PDF ou image fonctionne correctement.</p>
-
-<p>Par contre, impossible de modifier quoi que ce soit.</p><p>Je recommande Tableau Viewer aux organisations qui veulent <strong>démocratiser l'accès aux données</strong> préparées par des analystes certifiés.</p>
-
-<p>C'est parfait pour les comités de direction, les équipes terrain ou les partenaires externes qui ont besoin de consulter des KPIs sans créer leurs propres rapports.</p></p>
+            <p>Tableau Viewer me sert à partager mes <strong>tableaux de bord Tableau</strong> avec des équipes qui n'ont pas de licence complète. Cette visionneuse gratuite permet de consulter, filtrer et exporter des rapports créés sur Tableau Desktop. Je l'utilise surtout pour distribuer mes analyses à large échelle sans exploser le budget licences.</p><p>L'outil brille pour les entreprises qui ont déjà investi dans l'écosystème Tableau. Mes collègues peuvent <strong>naviguer dans les dashboards interactifs</strong> sans formation poussée. Les filtres restent fonctionnels et l'export PDF ou image fonctionne correctement. Par contre, impossible de modifier quoi que ce soit.</p><p>Je recommande Tableau Viewer aux organisations qui veulent <strong>démocratiser l'accès aux données</strong> préparées par des analystes certifiés. C'est parfait pour les comités de direction, les équipes terrain ou les partenaires externes qui ont besoin de consulter des KPIs sans créer leurs propres rapports.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Gratuit pour la consultation de rapports Tableau existants</td>
-            <td>Inutile sans investissement préalable dans Tableau Desktop ou Server</td>
-          </tr>
-          <tr>
-            <td>Interface identique à Tableau Desktop pour une navigation familière</td>
-            <td>Aucune possibilité de création ou modification de rapports</td>
-          </tr>
-          <tr>
-            <td>Export PDF et images de haute qualité pour les présentations</td>
-            <td>Dépendance totale aux analystes pour les mises à jour</td>
-          </tr>
-          <tr>
-            <td>Gestion des droits d'accès granulaire par rapport ou utilisateur</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Gratuit pour la consultation de rapports Tableau existants</td></tr><tr><td>Interface identique à Tableau Desktop pour une navigation familière</td></tr><tr><td>Export PDF et images de haute qualité pour les présentations</td></tr><tr><td>Gestion des droits d'accès granulaire par rapport ou utilisateur</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Inutile sans investissement préalable dans Tableau Desktop ou Server</td></tr><tr><td>Aucune possibilité de création ou modification de rapports</td></tr><tr><td>Dépendance totale aux analystes pour les mises à jour</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1651,7 +1311,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 sauvonslaproximite.com — Données actualisées le 2 octobre 2026
+        © 2026 sauvonslaproximite.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

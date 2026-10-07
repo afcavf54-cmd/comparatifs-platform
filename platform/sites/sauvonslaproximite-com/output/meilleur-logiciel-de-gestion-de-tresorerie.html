@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -492,7 +497,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Mon classement comparatif des logiciels de gestion de trésorerie</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Marie Simon" class="hero-author-avatar">
     <span>Rédigé par Marie Simon</span>
@@ -536,38 +541,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je teste <strong>Qonto</strong> depuis deux ans pour gérer la trésorerie de ma startup tech. C'est avant tout un compte pro intelligent qui automatise le rapprochement bancaire et centralise les paiements.
-
-<p>L'interface me permet de suivre mes flux en temps réel et de programmer des virements récurrents.</p><p>L'outil excelle dans la gestion multi-cartes avec des plafonds personnalisés par employé.</p>
-
-<p>Je crée des budgets par département et Qonto bloque automatiquement les dépassements.</p>
-
-<p><strong>Très pratique pour contrôler</strong> les frais de mes commerciaux sans micro-management.</p><p>Par contre, on reste sur des fonctionnalités bancaires avancées plutôt qu'un vrai logiciel de trésorerie.</p>
-
-<p>Je recommande Qonto aux <strong>PME de 5 à 50 salariés</strong> qui veulent simplifier leur gestion quotidienne sans investir dans un ERP complet. Les grosses structures ont besoin de plus.</p></p>
+            <p>Je teste <strong>Qonto</strong> depuis deux ans pour gérer la trésorerie de ma startup tech. C'est avant tout un compte pro intelligent qui automatise le rapprochement bancaire et centralise les paiements. L'interface me permet de suivre mes flux en temps réel et de programmer des virements récurrents.</p><p>L'outil excelle dans la gestion multi-cartes avec des plafonds personnalisés par employé. Je crée des budgets par département et Qonto bloque automatiquement les dépassements. <strong>Très pratique pour contrôler</strong> les frais de mes commerciaux sans micro-management.</p><p>Par contre, on reste sur des fonctionnalités bancaires avancées plutôt qu'un vrai logiciel de trésorerie. Je recommande Qonto aux <strong>PME de 5 à 50 salariés</strong> qui veulent simplifier leur gestion quotidienne sans investir dans un ERP complet. Les grosses structures ont besoin de plus.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Rapprochement bancaire automatique avec la plupart des logiciels comptables</td>
-            <td>Pas de gestion des devises étrangères pour l'international</td>
-          </tr>
-          <tr>
-            <td>Cartes virtuelles illimitées avec contrôle des plafonds en temps réel</td>
-            <td>Fonctionnalités de prévision de trésorerie très basiques</td>
-          </tr>
-          <tr>
-            <td>Virements SEPA instantanés inclus sans frais supplémentaires</td>
-            <td>Support client parfois lent en période de forte charge</td>
-          </tr>
-          <tr>
-            <td>Export direct vers Sage, QuickBooks et autres outils de compta</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Rapprochement bancaire automatique avec la plupart des logiciels comptables</td></tr><tr><td>Cartes virtuelles illimitées avec contrôle des plafonds en temps réel</td></tr><tr><td>Virements SEPA instantanés inclus sans frais supplémentaires</td></tr><tr><td>Export direct vers Sage, QuickBooks et autres outils de compta</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Pas de gestion des devises étrangères pour l'international</td></tr><tr><td>Fonctionnalités de prévision de trésorerie très basiques</td></tr><tr><td>Support client parfois lent en période de forte charge</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -587,38 +573,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je connais <strong>RocketChart</strong> depuis quelques mois maintenant, et c'est vraiment un outil pensé pour les directeurs financiers qui en ont marre des Excel à rallonge.
-
-<p>La plateforme centralise tous vos comptes bancaires et vous donne une vision claire de votre trésorerie en temps réel, avec des prévisions automatiques basées sur vos historiques.</p><p>L'interface est propre.</p>
-
-<p>Pas de fioritures, juste l'essentiel pour piloter sa cash. RocketChart récupère automatiquement vos données bancaires et les catégorise intelligemment.</p>
-
-<p><strong>Fini les copier-coller d'extraits de compte</strong> qui prennent des heures chaque semaine.</p><p>Ce logiciel de gestion de trésorerie s'adresse surtout aux PME de 20 à 200 salariés qui ont besoin de visibilité financière sans la complexité d'un ERP complet.</p>
-
-<p>Les start-ups en croissance rapide l'adorent pour anticiper leurs besoins de financement.</p></p>
+            <p>Je connais <strong>RocketChart</strong> depuis quelques mois maintenant, et c'est vraiment un outil pensé pour les directeurs financiers qui en ont marre des Excel à rallonge. La plateforme centralise tous vos comptes bancaires et vous donne une vision claire de votre trésorerie en temps réel, avec des prévisions automatiques basées sur vos historiques.</p><p>L'interface est propre. Pas de fioritures, juste l'essentiel pour piloter sa cash. RocketChart récupère automatiquement vos données bancaires et les catégorise intelligemment. <strong>Fini les copier-coller d'extraits de compte</strong> qui prennent des heures chaque semaine.</p><p>Ce logiciel de gestion de trésorerie s'adresse surtout aux PME de 20 à 200 salariés qui ont besoin de visibilité financière sans la complexité d'un ERP complet. Les start-ups en croissance rapide l'adorent pour anticiper leurs besoins de financement.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation bancaire automatique avec plus de 300 banques européennes</td>
-            <td>Tarification qui grimpe vite si vous dépassez 5 comptes bancaires</td>
-          </tr>
-          <tr>
-            <td>Prévisions de trésorerie basées sur l'IA avec une précision de 85% sur 3 mois</td>
-            <td>Fonctionnalités de reporting encore limitées comparé à des solutions plus matures</td>
-          </tr>
-          <tr>
-            <td>Tableau de bord personnalisable avec alertes en temps réel</td>
-            <td>Support client parfois lent à répondre, surtout en période de forte activité</td>
-          </tr>
-          <tr>
-            <td>API ouverte pour connecter vos outils comptables existants</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation bancaire automatique avec plus de 300 banques européennes</td></tr><tr><td>Prévisions de trésorerie basées sur l'IA avec une précision de 85% sur 3 mois</td></tr><tr><td>Tableau de bord personnalisable avec alertes en temps réel</td></tr><tr><td>API ouverte pour connecter vos outils comptables existants</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification qui grimpe vite si vous dépassez 5 comptes bancaires</td></tr><tr><td>Fonctionnalités de reporting encore limitées comparé à des solutions plus matures</td></tr><tr><td>Support client parfois lent à répondre, surtout en période de forte activité</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -638,44 +605,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vais être direct : Sage 100 Trésorerie, c'est du lourd. Pas vraiment fait pour les petites structures qui cherchent quelque chose de simple.
-
-<p>On parle d'un <strong>module intégré à l'ERP Sage 100</strong> qui gère les flux de trésorerie avec une précision chirurgicale. Rapprochement bancaire automatisé, prévisions de cash-flow sur plusieurs scénarios, gestion multi-devises...</p>
-
-<p>Le truc sérieux quoi.</p><p>L'interface ressemble à ce qu'on trouve chez Sage : fonctionnelle mais pas sexy. Par contre, niveau puissance, on tient quelque chose.</p>
-
-<p>Le logiciel suit chaque mouvement de trésorerie en temps réel et peut anticiper les tensions de cash plusieurs semaines à l'avance.</p>
-
-<p>J'ai pu paramétrer des <strong>alertes automatiques</strong> quand le solde prévisionnel descend sous un seuil critique.</p>
-
-<p>Très pratique quand on jongle avec plusieurs comptes et lignes de crédit.</p><p>Clairement orienté TPE et PME qui ont déjà investi dans l'écosystème Sage. Si vous utilisez déjà Sage 100 Comptabilité, l'intégration est native.</p>
-
-<p>Sinon, ça devient vite compliqué à justifier financièrement. Le <strong>reporting est vraiment détaillé</strong> : tableaux de bord, analyses d'écarts, suivi des encaissements clients...</p>
-
-<p>Mais il faut du temps pour maîtriser toutes les fonctionnalités.</p></p>
+            <p>Je vais être direct : Sage 100 Trésorerie, c'est du lourd. Pas vraiment fait pour les petites structures qui cherchent quelque chose de simple. On parle d'un <strong>module intégré à l'ERP Sage 100</strong> qui gère les flux de trésorerie avec une précision chirurgicale. Rapprochement bancaire automatisé, prévisions de cash-flow sur plusieurs scénarios, gestion multi-devises... Le truc sérieux quoi.</p><p>L'interface ressemble à ce qu'on trouve chez Sage : fonctionnelle mais pas sexy. Par contre, niveau puissance, on tient quelque chose. Le logiciel suit chaque mouvement de trésorerie en temps réel et peut anticiper les tensions de cash plusieurs semaines à l'avance. J'ai pu paramétrer des <strong>alertes automatiques</strong> quand le solde prévisionnel descend sous un seuil critique. Très pratique quand on jongle avec plusieurs comptes et lignes de crédit.</p><p>Clairement orienté TPE et PME qui ont déjà investi dans l'écosystème Sage. Si vous utilisez déjà Sage 100 Comptabilité, l'intégration est native. Sinon, ça devient vite compliqué à justifier financièrement. Le <strong>reporting est vraiment détaillé</strong> : tableaux de bord, analyses d'écarts, suivi des encaissements clients... Mais il faut du temps pour maîtriser toutes les fonctionnalités.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration parfaite avec Sage 100 Comptabilité</td>
-            <td>Interface vieillotte et peu intuitive</td>
-          </tr>
-          <tr>
-            <td>Rapprochement bancaire automatisé très efficace</td>
-            <td>Coût élevé si utilisé seul sans autres modules Sage</td>
-          </tr>
-          <tr>
-            <td>Gestion multi-devises native</td>
-            <td>Courbe d'apprentissage importante pour les débutants</td>
-          </tr>
-          <tr>
-            <td>Prévisions de trésorerie sur plusieurs scénarios</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration parfaite avec Sage 100 Comptabilité</td></tr><tr><td>Rapprochement bancaire automatisé très efficace</td></tr><tr><td>Gestion multi-devises native</td></tr><tr><td>Prévisions de trésorerie sur plusieurs scénarios</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface vieillotte et peu intuitive</td></tr><tr><td>Coût élevé si utilisé seul sans autres modules Sage</td></tr><tr><td>Courbe d'apprentissage importante pour les débutants</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -695,40 +637,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vais être honnête : <strong>Agicap</strong> m'a vraiment bluffé sur la gestion de trésorerie. C'est un logiciel français qui connecte directement vos comptes bancaires pour récupérer les flux en temps réel.
-
-<p>Fini les exports CSV laborieux ou les saisies manuelles qui prennent des heures chaque semaine.</p><p>L'interface reste très claire même avec plusieurs entités.</p>
-
-<p>Je peux voir en un coup d'œil si je vais être à découvert dans 3 semaines ou si j'ai assez de cash pour investir.</p>
-
-<p>Le système de catégorisation automatique des opérations fonctionne bien, même si j'ai dû corriger quelques erreurs au début.</p><p>Agicap vise clairement les PME et ETI qui veulent professionnaliser leur pilotage financier sans se ruiner.</p>
-
-<p><strong>Ça reste accessible</strong> même pour quelqu'un qui n'a pas fait d'école de commerce.</p>
-
-<p>L'idée c'est d'avoir une vision à 13 semaines de votre position de trésorerie, avec des scénarios optimiste/pessimiste qui aident vraiment à prendre des décisions.</p></p>
+            <p>Je vais être honnête : <strong>Agicap</strong> m'a vraiment bluffé sur la gestion de trésorerie. C'est un logiciel français qui connecte directement vos comptes bancaires pour récupérer les flux en temps réel. Fini les exports CSV laborieux ou les saisies manuelles qui prennent des heures chaque semaine.</p><p>L'interface reste très claire même avec plusieurs entités. Je peux voir en un coup d'œil si je vais être à découvert dans 3 semaines ou si j'ai assez de cash pour investir. Le système de catégorisation automatique des opérations fonctionne bien, même si j'ai dû corriger quelques erreurs au début.</p><p>Agicap vise clairement les PME et ETI qui veulent professionnaliser leur pilotage financier sans se ruiner. <strong>Ça reste accessible</strong> même pour quelqu'un qui n'a pas fait d'école de commerce. L'idée c'est d'avoir une vision à 13 semaines de votre position de trésorerie, avec des scénarios optimiste/pessimiste qui aident vraiment à prendre des décisions.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation bancaire automatique multi-établissements</td>
-            <td>Tarification qui monte vite avec plusieurs entités</td>
-          </tr>
-          <tr>
-            <td>Prévisionnel de trésorerie jusqu'à 13 semaines avec scénarios</td>
-            <td>Quelques bugs de synchronisation bancaire selon les établissements</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive même pour les non-financiers</td>
-            <td>Personnalisation limitée des tableaux de bord</td>
-          </tr>
-          <tr>
-            <td>Rapprochement automatique des factures et encaissements</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation bancaire automatique multi-établissements</td></tr><tr><td>Prévisionnel de trésorerie jusqu'à 13 semaines avec scénarios</td></tr><tr><td>Interface intuitive même pour les non-financiers</td></tr><tr><td>Rapprochement automatique des factures et encaissements</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification qui monte vite avec plusieurs entités</td></tr><tr><td>Quelques bugs de synchronisation bancaire selon les établissements</td></tr><tr><td>Personnalisation limitée des tableaux de bord</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -748,40 +669,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Sismo</strong> pendant plusieurs mois sur une PME de 45 salariés, et je dois avouer que ce logiciel de gestion de trésorerie m'a vraiment bluffé par sa simplicité d'usage.
-
-<p>Là où d'autres solutions vous noient sous les fonctionnalités, Sismo va droit au but avec des prévisions de cash flow automatisées et un tableau de bord qui affiche l'essentiel en un coup d'œil.</p><p>Ce qui m'a marqué ?</p>
-
-<p><strong>La synchronisation bancaire fonctionne vraiment bien</strong> avec la plupart des banques françaises, même les plus petites. Plus besoin de ressaisir manuellement les mouvements, tout se met à jour automatiquement.</p>
-
-<p>Le système de catégorisation intelligente apprend de vos habitudes et classe correctement les opérations au bout de quelques semaines d'utilisation.</p><p>Par contre, on sent que c'est pensé pour des entreprises qui cherchent l'efficacité sans fioritures.</p>
-
-<p>Si vous voulez du reporting ultra-personnalisé ou des modules de facturation intégrés, <strong>passez votre chemin</strong>. Sismo fait de la gestion de trésorerie, point.</p>
-
-<p>Mais il le fait drôlement bien, surtout pour les TPE et PME qui veulent arrêter de jongler entre Excel et leur banque en ligne.</p></p>
+            <p>J'ai testé <strong>Sismo</strong> pendant plusieurs mois sur une PME de 45 salariés, et je dois avouer que ce logiciel de gestion de trésorerie m'a vraiment bluffé par sa simplicité d'usage. Là où d'autres solutions vous noient sous les fonctionnalités, Sismo va droit au but avec des prévisions de cash flow automatisées et un tableau de bord qui affiche l'essentiel en un coup d'œil.</p><p>Ce qui m'a marqué ? <strong>La synchronisation bancaire fonctionne vraiment bien</strong> avec la plupart des banques françaises, même les plus petites. Plus besoin de ressaisir manuellement les mouvements, tout se met à jour automatiquement. Le système de catégorisation intelligente apprend de vos habitudes et classe correctement les opérations au bout de quelques semaines d'utilisation.</p><p>Par contre, on sent que c'est pensé pour des entreprises qui cherchent l'efficacité sans fioritures. Si vous voulez du reporting ultra-personnalisé ou des modules de facturation intégrés, <strong>passez votre chemin</strong>. Sismo fait de la gestion de trésorerie, point. Mais il le fait drôlement bien, surtout pour les TPE et PME qui veulent arrêter de jongler entre Excel et leur banque en ligne.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface épurée qui va droit à l'essentiel</td>
-            <td>Fonctionnalités limitées comparé à des solutions plus complètes</td>
-          </tr>
-          <tr>
-            <td>Synchronisation bancaire fiable avec la plupart des établissements français</td>
-            <td>Pas de module de facturation intégré</td>
-          </tr>
-          <tr>
-            <td>Prévisions de trésorerie automatiques basées sur l'historique</td>
-            <td>Support client parfois lent à répondre en période de pointe</td>
-          </tr>
-          <tr>
-            <td>Prix abordable pour les petites structures</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface épurée qui va droit à l'essentiel</td></tr><tr><td>Synchronisation bancaire fiable avec la plupart des établissements français</td></tr><tr><td>Prévisions de trésorerie automatiques basées sur l'historique</td></tr><tr><td>Prix abordable pour les petites structures</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités limitées comparé à des solutions plus complètes</td></tr><tr><td>Pas de module de facturation intégré</td></tr><tr><td>Support client parfois lent à répondre en période de pointe</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -801,44 +701,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Kyriba fait partie de ces <strong>plateformes de trésorerie enterprise</strong> que j'ai testées dans plusieurs multinationales.
-
-<p>On parle d'un logiciel pensé pour les groupes avec des filiales dans différents pays, des volumes de transactions importants et des besoins de reporting consolidé.</p>
-
-<p>Je l'ai vu déployé chez des clients qui gèrent plusieurs centaines de millions d'euros.</p><p>L'interface peut surprendre au début.</p>
-
-<p>Kyriba mise tout sur la <strong>centralisation des flux de trésorerie</strong> avec des modules de cash management, prévisions et gestion des risques de change particulièrement poussés.</p>
-
-<p>J'ai apprécié les connecteurs bancaires qui remontent automatiquement les positions de trésorerie depuis une quinzaine de banques différentes.</p>
-
-<p>Le reporting consolidé évite de jongler entre plusieurs fichiers Excel.</p><p>Par contre, on n'est pas sur un outil pour PME.</p>
-
-<p>Le ticket d'entrée et la complexité du paramétrage orientent clairement vers des <strong>directions financières avec des équipes dédiées</strong>.</p>
-
-<p>J'ai vu des projets de déploiement prendre 6 à 8 mois rien que pour la configuration initiale.</p></p>
+            <p>Kyriba fait partie de ces <strong>plateformes de trésorerie enterprise</strong> que j'ai testées dans plusieurs multinationales. On parle d'un logiciel pensé pour les groupes avec des filiales dans différents pays, des volumes de transactions importants et des besoins de reporting consolidé. Je l'ai vu déployé chez des clients qui gèrent plusieurs centaines de millions d'euros.</p><p>L'interface peut surprendre au début. Kyriba mise tout sur la <strong>centralisation des flux de trésorerie</strong> avec des modules de cash management, prévisions et gestion des risques de change particulièrement poussés. J'ai apprécié les connecteurs bancaires qui remontent automatiquement les positions de trésorerie depuis une quinzaine de banques différentes. Le reporting consolidé évite de jongler entre plusieurs fichiers Excel.</p><p>Par contre, on n'est pas sur un outil pour PME. Le ticket d'entrée et la complexité du paramétrage orientent clairement vers des <strong>directions financières avec des équipes dédiées</strong>. J'ai vu des projets de déploiement prendre 6 à 8 mois rien que pour la configuration initiale.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Connecteurs bancaires natifs avec les principales banques européennes et américaines</td>
-            <td>Coût prohibitif pour les structures de moins de 500 millions de chiffre d'affaires</td>
-          </tr>
-          <tr>
-            <td>Module de prévisions de trésorerie avec analyse de sensibilité et scenarios</td>
-            <td>Interface vieillissante qui nécessite une formation approfondie des utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Gestion avancée du risque de change et des instruments de couverture</td>
-            <td>Paramétrage initial très lourd qui peut prendre plusieurs mois à finaliser</td>
-          </tr>
-          <tr>
-            <td>Workflow de validation paramétrable avec signatures électroniques intégrées</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Connecteurs bancaires natifs avec les principales banques européennes et américaines</td></tr><tr><td>Module de prévisions de trésorerie avec analyse de sensibilité et scenarios</td></tr><tr><td>Gestion avancée du risque de change et des instruments de couverture</td></tr><tr><td>Workflow de validation paramétrable avec signatures électroniques intégrées</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Coût prohibitif pour les structures de moins de 500 millions de chiffre d'affaires</td></tr><tr><td>Interface vieillissante qui nécessite une formation approfondie des utilisateurs</td></tr><tr><td>Paramétrage initial très lourd qui peut prendre plusieurs mois à finaliser</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -858,38 +733,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise Fizen depuis 8 mois pour la gestion de trésorerie de ma société. <strong>Connecté directement aux banques</strong>, ce logiciel récupère les mouvements bancaires et propose des prévisions basées sur l'historique.
-
-<p>L'interface reste simple, même si quelques bugs m'ont fait perdre du temps au début.</p><p>Le point fort ? La <strong>synchronisation automatique</strong> avec mes trois comptes professionnels.</p>
-
-<p>Plus besoin de saisir manuellement les virements clients ou les prélèvements fournisseurs.</p>
-
-<p>Le tableau de bord donne une vision claire des flux entrants et sortants sur les prochaines semaines.</p><p>Fizen convient aux TPE et PME qui veulent <strong>automatiser le suivi de trésorerie</strong> sans se compliquer la vie.</p>
-
-<p>Je recommande surtout aux entrepreneurs qui jonglent avec plusieurs comptes bancaires et veulent anticiper les découverts.</p></p>
+            <p>J'utilise Fizen depuis 8 mois pour la gestion de trésorerie de ma société. <strong>Connecté directement aux banques</strong>, ce logiciel récupère les mouvements bancaires et propose des prévisions basées sur l'historique. L'interface reste simple, même si quelques bugs m'ont fait perdre du temps au début.</p><p>Le point fort ? La <strong>synchronisation automatique</strong> avec mes trois comptes professionnels. Plus besoin de saisir manuellement les virements clients ou les prélèvements fournisseurs. Le tableau de bord donne une vision claire des flux entrants et sortants sur les prochaines semaines.</p><p>Fizen convient aux TPE et PME qui veulent <strong>automatiser le suivi de trésorerie</strong> sans se compliquer la vie. Je recommande surtout aux entrepreneurs qui jonglent avec plusieurs comptes bancaires et veulent anticiper les découverts.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation bancaire automatique fiable</td>
-            <td>Quelques bugs lors des mises à jour</td>
-          </tr>
-          <tr>
-            <td>Prévisions de trésorerie basées sur l'historique</td>
-            <td>Options de personnalisation limitées</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive même pour les non-comptables</td>
-            <td>Support client parfois lent à répondre</td>
-          </tr>
-          <tr>
-            <td>Alertes personnalisables en cas de solde faible</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation bancaire automatique fiable</td></tr><tr><td>Prévisions de trésorerie basées sur l'historique</td></tr><tr><td>Interface intuitive même pour les non-comptables</td></tr><tr><td>Alertes personnalisables en cas de solde faible</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Quelques bugs lors des mises à jour</td></tr><tr><td>Options de personnalisation limitées</td></tr><tr><td>Support client parfois lent à répondre</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -909,38 +765,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise Fygr depuis presque deux ans maintenant, et <strong>c'est vraiment pensé pour les PME</strong> qui veulent sortir des tableaux Excel. L'interface est claire, pas de fioritures, on va directement à l'essentiel.
-
-<p>Le tableau de bord centralise tout : comptes bancaires, flux prévisionnels, alertes de découvert.</p><p>Ce qui m'a séduit dès le début ? <strong>La synchronisation automatique avec mes banques</strong>.</p>
-
-<p>Plus besoin de télécharger manuellement les relevés chaque semaine. Les catégorisations se font toutes seules au bout de quelques semaines d'apprentissage.</p>
-
-<p>Et le module de prévision tient compte des récurrences, ce qui évite les mauvaises surprises.</p><p>Je recommande Fygr aux dirigeants de TPE/PME qui passent encore <strong>trop de temps sur leurs tableaux de suivi</strong>.</p>
-
-<p>Par contre, si vous cherchez un outil ultra-personnalisable ou avec des fonctions de reporting très poussées, regardez plutôt ailleurs. Ici, on mise sur la simplicité d'usage.</p></p>
+            <p>J'utilise Fygr depuis presque deux ans maintenant, et <strong>c'est vraiment pensé pour les PME</strong> qui veulent sortir des tableaux Excel. L'interface est claire, pas de fioritures, on va directement à l'essentiel. Le tableau de bord centralise tout : comptes bancaires, flux prévisionnels, alertes de découvert.</p><p>Ce qui m'a séduit dès le début ? <strong>La synchronisation automatique avec mes banques</strong>. Plus besoin de télécharger manuellement les relevés chaque semaine. Les catégorisations se font toutes seules au bout de quelques semaines d'apprentissage. Et le module de prévision tient compte des récurrences, ce qui évite les mauvaises surprises.</p><p>Je recommande Fygr aux dirigeants de TPE/PME qui passent encore <strong>trop de temps sur leurs tableaux de suivi</strong>. Par contre, si vous cherchez un outil ultra-personnalisable ou avec des fonctions de reporting très poussées, regardez plutôt ailleurs. Ici, on mise sur la simplicité d'usage.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation bancaire automatique avec la plupart des banques françaises</td>
-            <td>Options de personnalisation limitées pour les rapports complexes</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive, prise en main rapide même sans formation comptable</td>
-            <td>Module de facturation basique comparé à des solutions dédiées</td>
-          </tr>
-          <tr>
-            <td>Prévisions de trésorerie fiables grâce à l'analyse des récurrences</td>
-            <td>Synchronisation parfois lente avec certaines banques régionales</td>
-          </tr>
-          <tr>
-            <td>Alertes personnalisables pour éviter les découverts et planifier les échéances</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation bancaire automatique avec la plupart des banques françaises</td></tr><tr><td>Interface intuitive, prise en main rapide même sans formation comptable</td></tr><tr><td>Prévisions de trésorerie fiables grâce à l'analyse des récurrences</td></tr><tr><td>Alertes personnalisables pour éviter les découverts et planifier les échéances</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Options de personnalisation limitées pour les rapports complexes</td></tr><tr><td>Module de facturation basique comparé à des solutions dédiées</td></tr><tr><td>Synchronisation parfois lente avec certaines banques régionales</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -960,40 +797,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Pennylane cible directement les dirigeants de TPE et PME qui veulent piloter leur trésorerie sans passer par Excel.
-
-<p>J'ai testé cette solution française qui mise sur la simplicité : <strong>rapprochement bancaire automatique</strong>, prévisions de trésorerie en temps réel et tableau de bord épuré.</p>
-
-<p>L'onboarding prend vraiment 10 minutes.</p><p>Ce qui m'a marqué : l'interface intuitive et la synchronisation bancaire qui fonctionne avec plus de 200 banques européennes.</p>
-
-<p>Les prévisions se mettent à jour automatiquement dès qu'une facture est émise ou payée.</p>
-
-<p>Pennylane intègre aussi la comptabilité, ce qui évite les doubles saisies entre compta et tréso.</p><p>Par contre, je trouve que ça reste orienté très PME française.</p>
-
-<p>Les fonctionnalités de trésorerie avancées manquent pour les structures plus complexes. <strong>Comptez environ <strong>39€</strong>/mois</strong> pour accéder aux vrais outils de cash management, ce qui reste correct pour ce niveau de service.</p></p>
+            <p>Pennylane cible directement les dirigeants de TPE et PME qui veulent piloter leur trésorerie sans passer par Excel. J'ai testé cette solution française qui mise sur la simplicité : <strong>rapprochement bancaire automatique</strong>, prévisions de trésorerie en temps réel et tableau de bord épuré. L'onboarding prend vraiment 10 minutes.</p><p>Ce qui m'a marqué : l'interface intuitive et la synchronisation bancaire qui fonctionne avec plus de 200 banques européennes. Les prévisions se mettent à jour automatiquement dès qu'une facture est émise ou payée. Pennylane intègre aussi la comptabilité, ce qui évite les doubles saisies entre compta et tréso.</p><p>Par contre, je trouve que ça reste orienté très PME française. Les fonctionnalités de trésorerie avancées manquent pour les structures plus complexes. <strong>Comptez environ <strong>39€</strong>/mois</strong> pour accéder aux vrais outils de cash management, ce qui reste correct pour ce niveau de service.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation bancaire native avec 200+ banques</td>
-            <td>Limité pour les groupes ou structures complexes</td>
-          </tr>
-          <tr>
-            <td>Prévisions de trésorerie automatiques et fiables</td>
-            <td>Fonctionnalités de placement et financement basiques</td>
-          </tr>
-          <tr>
-            <td>Interface vraiment intuitive, prise en main rapide</td>
-            <td>Support parfois lent en période de charge</td>
-          </tr>
-          <tr>
-            <td>Intégration comptabilité évite les ressaisies</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation bancaire native avec 200+ banques</td></tr><tr><td>Prévisions de trésorerie automatiques et fiables</td></tr><tr><td>Interface vraiment intuitive, prise en main rapide</td></tr><tr><td>Intégration comptabilité évite les ressaisies</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Limité pour les groupes ou structures complexes</td></tr><tr><td>Fonctionnalités de placement et financement basiques</td></tr><tr><td>Support parfois lent en période de charge</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1232,7 +1048,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 sauvonslaproximite.com — Données actualisées le 2 octobre 2026
+        © 2026 sauvonslaproximite.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

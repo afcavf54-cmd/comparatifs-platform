@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -492,7 +497,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Comparatif des 10 logiciels de création de site web les plus utilisés</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Marie Simon" class="hero-author-avatar">
     <span>Rédigé par Marie Simon</span>
@@ -536,38 +541,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je trouve <strong>Jimdo</strong> particulièrement réussi pour créer un site web quand on débute complètement.
-
-<p>Leur IA Dolphin te pose quelques questions sur ton activité, et en 3 minutes tu as un site cohérent avec tes couleurs et du contenu adapté.</p>
-
-<p>J'ai testé pour un ami coiffeur : résultat correct sans aucune compétence technique.</p><p>L'éditeur par glisser-déposer reste simple. Tu peux modifier les textes directement, changer les images, réorganiser les sections sans galérer.</p>
-
-<p><strong>Le module e-commerce inclus</strong> permet de vendre jusqu'à 15 produits dans la version gratuite, ce qui suffit pour tester une petite boutique artisanale.</p><p>Jimdo vise clairement les entrepreneurs individuels, artisans et petites activités locales qui veulent être visible rapidement.</p>
-
-<p>L'hébergement, la sécurité et les mises à jour se font automatiquement. Par contre, si tu veux vraiment personnaliser ou avoir un site avec des fonctions avancées, tu vas vite te sentir limité.</p></p>
+            <p>Je trouve <strong>Jimdo</strong> particulièrement réussi pour créer un site web quand on débute complètement. Leur IA Dolphin te pose quelques questions sur ton activité, et en 3 minutes tu as un site cohérent avec tes couleurs et du contenu adapté. J'ai testé pour un ami coiffeur : résultat correct sans aucune compétence technique.</p><p>L'éditeur par glisser-déposer reste simple. Tu peux modifier les textes directement, changer les images, réorganiser les sections sans galérer. <strong>Le module e-commerce inclus</strong> permet de vendre jusqu'à 15 produits dans la version gratuite, ce qui suffit pour tester une petite boutique artisanale.</p><p>Jimdo vise clairement les entrepreneurs individuels, artisans et petites activités locales qui veulent être visible rapidement. L'hébergement, la sécurité et les mises à jour se font automatiquement. Par contre, si tu veux vraiment personnaliser ou avoir un site avec des fonctions avancées, tu vas vite te sentir limité.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>IA Dolphin qui génère un site complet en quelques minutes</td>
-            <td>Options de personnalisation très limitées</td>
-          </tr>
-          <tr>
-            <td>Interface vraiment accessible aux débutants</td>
-            <td>Templates qui se ressemblent tous</td>
-          </tr>
-          <tr>
-            <td>E-commerce inclus même en version gratuite</td>
-            <td>Pas de marketplace d'extensions comme Wix ou WordPress</td>
-          </tr>
-          <tr>
-            <td>Hébergement et sécurité gérés automatiquement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>IA Dolphin qui génère un site complet en quelques minutes</td></tr><tr><td>Interface vraiment accessible aux débutants</td></tr><tr><td>E-commerce inclus même en version gratuite</td></tr><tr><td>Hébergement et sécurité gérés automatiquement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Options de personnalisation très limitées</td></tr><tr><td>Templates qui se ressemblent tous</td></tr><tr><td>Pas de marketplace d'extensions comme Wix ou WordPress</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -587,40 +573,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Framer, c'est le logiciel de création de site web qui a tapé dans l'œil des designers et des créatifs.
-
-<p>J'ai testé cet outil pendant plusieurs mois et je comprends pourquoi il fait parler de lui : on peut créer des sites avec des animations et des interactions vraiment bluffantes, sans coder une seule ligne.</p><p>Ce qui m'a frappé, c'est la <strong>liberté de design totale</strong>.</p>
-
-<p>Contrairement à WordPress ou Wix, Framer ne vous impose aucune contrainte. Vous partez d'une page blanche et vous construisez exactement ce que vous voulez.</p>
-
-<p>L'interface ressemble à Figma ou Sketch, donc si vous venez du design graphique, vous vous sentirez immédiatement à l'aise.</p><p>Par contre, attention : Framer demande un vrai investissement en temps.</p>
-
-<p>J'ai passé une semaine entière à maîtriser les bases des animations et des composants réutilisables. Mais une fois que vous avez le coup de main, vous pouvez créer des sites qui sortent vraiment de l'ordinaire.</p>
-
-<p><strong>Les templates sont magnifiques</strong> et servent de bonne base de départ, même si je recommande de les personnaliser à fond.</p></p>
+            <p>Framer, c'est le logiciel de création de site web qui a tapé dans l'œil des designers et des créatifs. J'ai testé cet outil pendant plusieurs mois et je comprends pourquoi il fait parler de lui : on peut créer des sites avec des animations et des interactions vraiment bluffantes, sans coder une seule ligne.</p><p>Ce qui m'a frappé, c'est la <strong>liberté de design totale</strong>. Contrairement à WordPress ou Wix, Framer ne vous impose aucune contrainte. Vous partez d'une page blanche et vous construisez exactement ce que vous voulez. L'interface ressemble à Figma ou Sketch, donc si vous venez du design graphique, vous vous sentirez immédiatement à l'aise.</p><p>Par contre, attention : Framer demande un vrai investissement en temps. J'ai passé une semaine entière à maîtriser les bases des animations et des composants réutilisables. Mais une fois que vous avez le coup de main, vous pouvez créer des sites qui sortent vraiment de l'ordinaire. <strong>Les templates sont magnifiques</strong> et servent de bonne base de départ, même si je recommande de les personnaliser à fond.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Animations et micro-interactions de niveau professionnel sans code</td>
-            <td>Courbe d'apprentissage importante pour les débutants</td>
-          </tr>
-          <tr>
-            <td>Liberté créative totale, aucune limitation de design</td>
-            <td>Tarifs élevés comparé aux builders classiques</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive pour les designers habitués à Figma</td>
-            <td>Pas d'e-commerce natif intégré</td>
-          </tr>
-          <tr>
-            <td>Templates premium de très haute qualité</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Animations et micro-interactions de niveau professionnel sans code</td></tr><tr><td>Liberté créative totale, aucune limitation de design</td></tr><tr><td>Interface intuitive pour les designers habitués à Figma</td></tr><tr><td>Templates premium de très haute qualité</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Courbe d'apprentissage importante pour les débutants</td></tr><tr><td>Tarifs élevés comparé aux builders classiques</td></tr><tr><td>Pas d'e-commerce natif intégré</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -640,38 +605,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai utilisé Wix pendant deux ans pour créer des sites vitrines. Ce que j'apprécie, c'est le <strong>drag & drop ultra intuitif</strong> qui permet de placer n'importe quel élément où on veut.
-
-<p>Fini les grilles rigides, on peut superposer du texte sur une image ou décaler un bouton comme bon nous semble.</p><p>Le plus gros atout reste l'<strong>App Market</strong>.</p>
-
-<p>J'ai ajouté un système de réservation en ligne pour un salon de coiffure en quelques clics. Plus de 300 applications disponibles : chat en direct, formulaires avancés, gestion d'événements, e-commerce...</p>
-
-<p>Même les débutants s'en sortent.</p><p>Wix convient parfaitement aux artisans, petites entreprises et créatifs qui veulent un rendu professionnel sans toucher au code. Les templates sont nombreux et vraiment jolis.</p>
-
-<p>Par contre, si vous visez un site rapide et optimisé pour le référencement, ce n'est pas le bon choix.</p></p>
+            <p>J'ai utilisé Wix pendant deux ans pour créer des sites vitrines. Ce que j'apprécie, c'est le <strong>drag & drop ultra intuitif</strong> qui permet de placer n'importe quel élément où on veut. Fini les grilles rigides, on peut superposer du texte sur une image ou décaler un bouton comme bon nous semble.</p><p>Le plus gros atout reste l'<strong>App Market</strong>. J'ai ajouté un système de réservation en ligne pour un salon de coiffure en quelques clics. Plus de 300 applications disponibles : chat en direct, formulaires avancés, gestion d'événements, e-commerce... Même les débutants s'en sortent.</p><p>Wix convient parfaitement aux artisans, petites entreprises et créatifs qui veulent un rendu professionnel sans toucher au code. Les templates sont nombreux et vraiment jolis. Par contre, si vous visez un site rapide et optimisé pour le référencement, ce n'est pas le bon choix.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Liberté totale de placement des éléments (drag & drop absolu)</td>
-            <td>Sites souvent lourds et lents à charger</td>
-          </tr>
-          <tr>
-            <td>App Market avec plus de 300 extensions intégrées</td>
-            <td>SEO limité comparé aux CMS traditionnels</td>
-          </tr>
-          <tr>
-            <td>Templates professionnels et modernes</td>
-            <td>Impossible de changer de template une fois le site créé</td>
-          </tr>
-          <tr>
-            <td>Prise en main immédiate, même pour les débutants</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Liberté totale de placement des éléments (drag & drop absolu)</td></tr><tr><td>App Market avec plus de 300 extensions intégrées</td></tr><tr><td>Templates professionnels et modernes</td></tr><tr><td>Prise en main immédiate, même pour les débutants</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Sites souvent lourds et lents à charger</td></tr><tr><td>SEO limité comparé aux CMS traditionnels</td></tr><tr><td>Impossible de changer de template une fois le site créé</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -691,42 +637,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Shopify s'est imposé comme <strong>la plateforme e-commerce</strong> de référence pour créer une boutique en ligne.
-
-<p>Je l'utilise depuis 3 ans et j'apprécie sa simplicité : on peut lancer un site marchand en quelques heures, même sans compétences techniques.</p>
-
-<p>L'interface drag-and-drop fonctionne bien, les thèmes sont propres et surtout, tout l'écosystème e-commerce est déjà intégré.</p><p>Là où Shopify cartonne vraiment, c'est sur la gestion des commandes et des paiements.</p>
-
-<p><strong>Plus de 100 passerelles de paiement</strong> sont disponibles, la synchronisation des stocks se fait automatiquement, et le tableau de bord donne une vue claire sur les ventes.</p>
-
-<p>J'ai pu configurer des promotions, gérer les frais de port et même connecter des transporteurs en quelques clics.</p><p>Par contre, on sent rapidement que c'est pensé pour du commerce pur.</p>
-
-<p>Si vous voulez juste un site vitrine avec un blog développé, Shopify va vous frustrer. <strong>Les fonctionnalités éditoriales restent basiques</strong> et vous finirez par payer cher pour des features que WordPress propose gratuitement.</p>
-
-<p>Mais pour vendre en ligne, franchement, c'est du solide.</p></p>
+            <p>Shopify s'est imposé comme <strong>la plateforme e-commerce</strong> de référence pour créer une boutique en ligne. Je l'utilise depuis 3 ans et j'apprécie sa simplicité : on peut lancer un site marchand en quelques heures, même sans compétences techniques. L'interface drag-and-drop fonctionne bien, les thèmes sont propres et surtout, tout l'écosystème e-commerce est déjà intégré.</p><p>Là où Shopify cartonne vraiment, c'est sur la gestion des commandes et des paiements. <strong>Plus de 100 passerelles de paiement</strong> sont disponibles, la synchronisation des stocks se fait automatiquement, et le tableau de bord donne une vue claire sur les ventes. J'ai pu configurer des promotions, gérer les frais de port et même connecter des transporteurs en quelques clics.</p><p>Par contre, on sent rapidement que c'est pensé pour du commerce pur. Si vous voulez juste un site vitrine avec un blog développé, Shopify va vous frustrer. <strong>Les fonctionnalités éditoriales restent basiques</strong> et vous finirez par payer cher pour des features que WordPress propose gratuitement. Mais pour vendre en ligne, franchement, c'est du solide.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Écosystème e-commerce complet intégré nativement</td>
-            <td>Frais de transaction de 2% sur chaque vente (sauf plan Shopify Payments)</td>
-          </tr>
-          <tr>
-            <td>Gestion automatisée des stocks et commandes</td>
-            <td>Fonctionnalités de blog et SEO assez limitées</td>
-          </tr>
-          <tr>
-            <td>Plus de 100 passerelles de paiement disponibles</td>
-            <td>Coût qui grimpe vite avec les applications tierces</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive même pour les débutants</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Écosystème e-commerce complet intégré nativement</td></tr><tr><td>Gestion automatisée des stocks et commandes</td></tr><tr><td>Plus de 100 passerelles de paiement disponibles</td></tr><tr><td>Interface intuitive même pour les débutants</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Frais de transaction de 2% sur chaque vente (sauf plan Shopify Payments)</td></tr><tr><td>Fonctionnalités de blog et SEO assez limitées</td></tr><tr><td>Coût qui grimpe vite avec les applications tierces</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -746,42 +669,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Webflow fait partie de ces outils qui changent vraiment la donne pour créer des sites web professionnels.
-
-<p>Je l'utilise depuis deux ans et j'avoue que le concept m'a séduit : on peut designer visuellement tout en gardant un contrôle total sur le code généré.</p>
-
-<p><strong>Contrairement à WordPress</strong> ou Wix, on n'a pas cette frustration de vouloir modifier quelque chose et de se heurter aux limites de l'outil.</p><p>L'interface ressemble à un mix entre Photoshop et un éditeur de code.</p>
-
-<p>On dessine ses blocs, on ajuste les marges au pixel près, on anime ses éléments, et derrière Webflow génère du HTML et CSS propre. J'ai migré trois sites clients dessus l'année dernière et le résultat est bluffant niveau performances.</p>
-
-<p><strong>Les temps de chargement</strong> sont excellents, le responsive fonctionne parfaitement, et on peut même gérer du contenu dynamique avec leur CMS intégré.</p><p>Par contre, attention : ce n'est pas un outil qu'on prend en main en une semaine.</p>
-
-<p>Il faut comprendre les bases du web design pour en tirer parti. Si vous cherchez du plug-and-play pour créer rapidement une vitrine basique, <strong>passez votre chemin</strong>.</p>
-
-<p>Webflow demande un investissement en temps d'apprentissage, mais le jeu en vaut la chandelle pour des projets ambitieux.</p></p>
+            <p>Webflow fait partie de ces outils qui changent vraiment la donne pour créer des sites web professionnels. Je l'utilise depuis deux ans et j'avoue que le concept m'a séduit : on peut designer visuellement tout en gardant un contrôle total sur le code généré. <strong>Contrairement à WordPress</strong> ou Wix, on n'a pas cette frustration de vouloir modifier quelque chose et de se heurter aux limites de l'outil.</p><p>L'interface ressemble à un mix entre Photoshop et un éditeur de code. On dessine ses blocs, on ajuste les marges au pixel près, on anime ses éléments, et derrière Webflow génère du HTML et CSS propre. J'ai migré trois sites clients dessus l'année dernière et le résultat est bluffant niveau performances. <strong>Les temps de chargement</strong> sont excellents, le responsive fonctionne parfaitement, et on peut même gérer du contenu dynamique avec leur CMS intégré.</p><p>Par contre, attention : ce n'est pas un outil qu'on prend en main en une semaine. Il faut comprendre les bases du web design pour en tirer parti. Si vous cherchez du plug-and-play pour créer rapidement une vitrine basique, <strong>passez votre chemin</strong>. Webflow demande un investissement en temps d'apprentissage, mais le jeu en vaut la chandelle pour des projets ambitieux.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Code propre généré automatiquement, performances excellentes</td>
-            <td>Courbe d'apprentissage très raide, intimidant au début</td>
-          </tr>
-          <tr>
-            <td>Contrôle total du design sans limitation de template</td>
-            <td>Tarifs élevés, surtout pour l'hébergement de plusieurs sites</td>
-          </tr>
-          <tr>
-            <td>CMS intégré pour gérer du contenu dynamique facilement</td>
-            <td>Nécessite des bases en web design pour éviter les erreurs</td>
-          </tr>
-          <tr>
-            <td>Animations et interactions avancées sans JavaScript</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Code propre généré automatiquement, performances excellentes</td></tr><tr><td>Contrôle total du design sans limitation de template</td></tr><tr><td>CMS intégré pour gérer du contenu dynamique facilement</td></tr><tr><td>Animations et interactions avancées sans JavaScript</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Courbe d'apprentissage très raide, intimidant au début</td></tr><tr><td>Tarifs élevés, surtout pour l'hébergement de plusieurs sites</td></tr><tr><td>Nécessite des bases en web design pour éviter les erreurs</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -801,40 +701,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>WiziShop a été pensé exclusivement pour l'e-commerce français.
-
-<p>Quand je l'ai testé, j'ai été frappé par <strong>sa spécialisation poussée</strong> : toutes les fonctionnalités sont calibrées pour vendre en ligne, depuis les options de paiement jusqu'aux modules SEO.</p>
-
-<p>On sent qu'ils ne se dispersent pas dans le site vitrine.</p><p>L'interface surprend au début. Plutôt que de proposer des templates génériques, WiziShop mise sur des thèmes sectoriels précis : mode, électronique, alimentaire.</p>
-
-<p>J'ai pu créer une boutique de produits artisanaux en partant d'un modèle déjà optimisé pour ce créneau. <strong>Gain de temps considérable</strong> sur la mise en page.</p><p>Ce qui m'a marqué : l'accompagnement business intégré.</p>
-
-<p>Au-delà de l'outil technique, ils proposent des formations sur le marketing digital, la logistique, même la comptabilité.</p>
-
-<p>Pour quelqu'un qui débute dans la vente en ligne, c'est rassurant d'avoir cette dimension conseil en plus du logiciel de création de site web.</p></p>
+            <p>WiziShop a été pensé exclusivement pour l'e-commerce français. Quand je l'ai testé, j'ai été frappé par <strong>sa spécialisation poussée</strong> : toutes les fonctionnalités sont calibrées pour vendre en ligne, depuis les options de paiement jusqu'aux modules SEO. On sent qu'ils ne se dispersent pas dans le site vitrine.</p><p>L'interface surprend au début. Plutôt que de proposer des templates génériques, WiziShop mise sur des thèmes sectoriels précis : mode, électronique, alimentaire. J'ai pu créer une boutique de produits artisanaux en partant d'un modèle déjà optimisé pour ce créneau. <strong>Gain de temps considérable</strong> sur la mise en page.</p><p>Ce qui m'a marqué : l'accompagnement business intégré. Au-delà de l'outil technique, ils proposent des formations sur le marketing digital, la logistique, même la comptabilité. Pour quelqu'un qui débute dans la vente en ligne, c'est rassurant d'avoir cette dimension conseil en plus du logiciel de création de site web.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Outils SEO avancés intégrés par défaut</td>
-            <td>Prix élevé comparé aux solutions généralistes</td>
-          </tr>
-          <tr>
-            <td>Templates e-commerce sectoriels très aboutis</td>
-            <td>Personnalisation graphique limitée sur les thèmes</td>
-          </tr>
-          <tr>
-            <td>Formation business incluse dans l'abonnement</td>
-            <td>Pas adapté aux sites vitrines ou blogs</td>
-          </tr>
-          <tr>
-            <td>Support client français réactif</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Outils SEO avancés intégrés par défaut</td></tr><tr><td>Templates e-commerce sectoriels très aboutis</td></tr><tr><td>Formation business incluse dans l'abonnement</td></tr><tr><td>Support client français réactif</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix élevé comparé aux solutions généralistes</td></tr><tr><td>Personnalisation graphique limitée sur les thèmes</td></tr><tr><td>Pas adapté aux sites vitrines ou blogs</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -854,38 +733,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>WordPress.org, c'est le <strong>CMS open source</strong> qui anime plus de <strong>40%</strong> des sites web dans le monde. Contrairement à WordPress.com, cette version auto-hébergée vous donne un contrôle total sur votre site.
-
-<p>Je l'utilise depuis des années et je peux vous dire qu'il n'y a pas plus flexible pour créer un site web professionnel.</p><p>La force de WordPress.org réside dans son écosystème gigantesque : <strong>plus de 60 000 plugins gratuits</strong> et des milliers de thèmes.</p>
-
-<p>Vous voulez un site e-commerce ? WooCommerce. Un blog ? Parfait. Un site vitrine corporate ? Aucun problème.</p>
-
-<p>J'ai même vu des plateformes d'apprentissage en ligne créées avec WordPress et LearnDash.</p><p>Par contre, on ne va pas se mentir : WordPress.org demande des <strong>compétences techniques minimales</strong>.</p>
-
-<p>Il faut gérer l'hébergement, les mises à jour de sécurité, les sauvegardes. Mais une fois qu'on maîtrise, on peut créer absolument n'importe quel type de site web. C'est ça qui m'a convaincu de rester fidèle à cette solution.</p></p>
+            <p>WordPress.org, c'est le <strong>CMS open source</strong> qui anime plus de <strong>40%</strong> des sites web dans le monde. Contrairement à WordPress.com, cette version auto-hébergée vous donne un contrôle total sur votre site. Je l'utilise depuis des années et je peux vous dire qu'il n'y a pas plus flexible pour créer un site web professionnel.</p><p>La force de WordPress.org réside dans son écosystème gigantesque : <strong>plus de 60 000 plugins gratuits</strong> et des milliers de thèmes. Vous voulez un site e-commerce ? WooCommerce. Un blog ? Parfait. Un site vitrine corporate ? Aucun problème. J'ai même vu des plateformes d'apprentissage en ligne créées avec WordPress et LearnDash.</p><p>Par contre, on ne va pas se mentir : WordPress.org demande des <strong>compétences techniques minimales</strong>. Il faut gérer l'hébergement, les mises à jour de sécurité, les sauvegardes. Mais une fois qu'on maîtrise, on peut créer absolument n'importe quel type de site web. C'est ça qui m'a convaincu de rester fidèle à cette solution.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Gratuit et open source avec contrôle total du code</td>
-            <td>Nécessite des connaissances techniques pour l'installation et la maintenance</td>
-          </tr>
-          <tr>
-            <td>Écosystème énorme de plugins et thèmes</td>
-            <td>Coûts cachés d'hébergement et de plugins premium</td>
-          </tr>
-          <tr>
-            <td>Évolutif de la landing page au site e-commerce complexe</td>
-            <td>Vulnérable aux attaques si mal sécurisé</td>
-          </tr>
-          <tr>
-            <td>Communauté mondiale active et support abondant</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Gratuit et open source avec contrôle total du code</td></tr><tr><td>Écosystème énorme de plugins et thèmes</td></tr><tr><td>Évolutif de la landing page au site e-commerce complexe</td></tr><tr><td>Communauté mondiale active et support abondant</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Nécessite des connaissances techniques pour l'installation et la maintenance</td></tr><tr><td>Coûts cachés d'hébergement et de plugins premium</td></tr><tr><td>Vulnérable aux attaques si mal sécurisé</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -905,40 +765,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Hostinger Website Builder fait partie de ces <strong>créateurs de site web tout-en-un</strong> qui misent sur la simplicité.
-
-<p>Je l'ai testé pendant plusieurs semaines et j'avoue que l'approche me plaît : interface épurée, templates modernes et surtout un prix vraiment accessible.</p>
-
-<p>On peut créer son site par glisser-déposer sans aucune connaissance technique.</p><p>Ce qui m'a marqué, c'est la <strong>qualité des modèles proposés</strong>.</p>
-
-<p>Contrairement à d'autres outils où on se retrouve avec des designs datés, ici les templates respirent vraiment. J'ai monté une boutique test en deux heures chrono.</p>
-
-<p>L'outil intègre directement la vente en ligne, les formulaires de contact et même un blog basique.</p><p>Par contre, ne vous attendez pas aux fonctionnalités avancées de WordPress ou aux possibilités infinies de Webflow.</p>
-
-<p>Hostinger Website Builder vise clairement les <strong>débutants et petites entreprises</strong> qui veulent un résultat propre sans se prendre la tête. Pour ce créneau, je trouve que ça fait le job.</p></p>
+            <p>Hostinger Website Builder fait partie de ces <strong>créateurs de site web tout-en-un</strong> qui misent sur la simplicité. Je l'ai testé pendant plusieurs semaines et j'avoue que l'approche me plaît : interface épurée, templates modernes et surtout un prix vraiment accessible. On peut créer son site par glisser-déposer sans aucune connaissance technique.</p><p>Ce qui m'a marqué, c'est la <strong>qualité des modèles proposés</strong>. Contrairement à d'autres outils où on se retrouve avec des designs datés, ici les templates respirent vraiment. J'ai monté une boutique test en deux heures chrono. L'outil intègre directement la vente en ligne, les formulaires de contact et même un blog basique.</p><p>Par contre, ne vous attendez pas aux fonctionnalités avancées de WordPress ou aux possibilités infinies de Webflow. Hostinger Website Builder vise clairement les <strong>débutants et petites entreprises</strong> qui veulent un résultat propre sans se prendre la tête. Pour ce créneau, je trouve que ça fait le job.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Prix vraiment compétitif avec hébergement inclus</td>
-            <td>Options de personnalisation limitées pour les projets complexes</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive même pour les débutants complets</td>
-            <td>Pas de marketplace d'extensions comme WordPress</td>
-          </tr>
-          <tr>
-            <td>Templates modernes et responsive automatiquement</td>
-            <td>Migration difficile si vous voulez changer d'outil plus tard</td>
-          </tr>
-          <tr>
-            <td>E-commerce intégré sans frais supplémentaires</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Prix vraiment compétitif avec hébergement inclus</td></tr><tr><td>Interface intuitive même pour les débutants complets</td></tr><tr><td>Templates modernes et responsive automatiquement</td></tr><tr><td>E-commerce intégré sans frais supplémentaires</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Options de personnalisation limitées pour les projets complexes</td></tr><tr><td>Pas de marketplace d'extensions comme WordPress</td></tr><tr><td>Migration difficile si vous voulez changer d'outil plus tard</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -958,38 +797,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé Bubble pendant plusieurs mois pour créer une application web complexe. <strong>C'est du no-code avancé</strong>, très différent des créateurs de sites classiques.
-
-<p>On assemble des éléments visuels mais on peut créer de vraies applications avec bases de données, workflows automatisés et logique métier poussée.</p><p>L'interface ressemble à un mix entre un éditeur visuel et un environnement de développement.</p>
-
-<p>Je peux créer des formulaires complexes, gérer des utilisateurs avec différents niveaux d'accès, automatiser des processus métier.</p>
-
-<p><strong>Par contre, la courbe d'apprentissage est raide.</strong> J'ai mis trois semaines avant d'être à l'aise avec les concepts de workflows et de data types.</p><p>Bubble convient parfaitement aux entrepreneurs qui veulent créer des MVP, des plateformes B2B ou des outils internes sans coder.</p>
-
-<p>Je l'ai utilisé pour développer un CRM sur mesure et une marketplace. <strong>Attention aux performances</strong> : sur mon projet avec 500 utilisateurs actifs, j'ai dû optimiser les requêtes database pour éviter les ralentissements.</p></p>
+            <p>J'ai testé Bubble pendant plusieurs mois pour créer une application web complexe. <strong>C'est du no-code avancé</strong>, très différent des créateurs de sites classiques. On assemble des éléments visuels mais on peut créer de vraies applications avec bases de données, workflows automatisés et logique métier poussée.</p><p>L'interface ressemble à un mix entre un éditeur visuel et un environnement de développement. Je peux créer des formulaires complexes, gérer des utilisateurs avec différents niveaux d'accès, automatiser des processus métier. <strong>Par contre, la courbe d'apprentissage est raide.</strong> J'ai mis trois semaines avant d'être à l'aise avec les concepts de workflows et de data types.</p><p>Bubble convient parfaitement aux entrepreneurs qui veulent créer des MVP, des plateformes B2B ou des outils internes sans coder. Je l'ai utilisé pour développer un CRM sur mesure et une marketplace. <strong>Attention aux performances</strong> : sur mon projet avec 500 utilisateurs actifs, j'ai dû optimiser les requêtes database pour éviter les ralentissements.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Création d'applications web complexes sans code</td>
-            <td>Courbe d'apprentissage très élevée</td>
-          </tr>
-          <tr>
-            <td>Gestion native des utilisateurs et permissions</td>
-            <td>Performance limitée sur gros trafic</td>
-          </tr>
-          <tr>
-            <td>Workflows automatisés très puissants</td>
-            <td>Coût qui explose rapidement avec l'usage</td>
-          </tr>
-          <tr>
-            <td>Base de données intégrée et flexible</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Création d'applications web complexes sans code</td></tr><tr><td>Gestion native des utilisateurs et permissions</td></tr><tr><td>Workflows automatisés très puissants</td></tr><tr><td>Base de données intégrée et flexible</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Courbe d'apprentissage très élevée</td></tr><tr><td>Performance limitée sur gros trafic</td></tr><tr><td>Coût qui explose rapidement avec l'usage</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1009,42 +829,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vais être franc avec Squarespace : c'est le logiciel de création de site web que je recommande quand on veut du design sans se prendre la tête.
-
-<p>Contrairement à WordPress qui demande des compétences techniques, ici tout fonctionne en glisser-déposer. Les templates sont magnifiques et <strong>vraiment responsives</strong>.</p>
-
-<p>Par contre, on paie cette simplicité assez cher.</p><p>Squarespace cible clairement les créatifs, photographes, restaurateurs et petites entreprises qui veulent un site professionnel rapidement.</p>
-
-<p>L'outil intègre directement le e-commerce, les réservations en ligne et même les outils marketing de base.</p>
-
-<p>Je l'ai testé pour un client photographe : <strong>en 3 heures</strong>, il avait un portfolio en ligne qui faisait vraiment pro.</p><p>Attention quand même aux limitations.</p>
-
-<p>Une fois qu'on a choisi un template, difficile de changer radicalement de look sans tout refaire. Et niveau SEO, on reste dépendant de ce que propose Squarespace.</p>
-
-<p>Ça convient pour <strong>80%</strong> des besoins, mais si vous visez un référencement poussé, vous allez vite être limité.</p></p>
+            <p>Je vais être franc avec Squarespace : c'est le logiciel de création de site web que je recommande quand on veut du design sans se prendre la tête. Contrairement à WordPress qui demande des compétences techniques, ici tout fonctionne en glisser-déposer. Les templates sont magnifiques et <strong>vraiment responsives</strong>. Par contre, on paie cette simplicité assez cher.</p><p>Squarespace cible clairement les créatifs, photographes, restaurateurs et petites entreprises qui veulent un site professionnel rapidement. L'outil intègre directement le e-commerce, les réservations en ligne et même les outils marketing de base. Je l'ai testé pour un client photographe : <strong>en 3 heures</strong>, il avait un portfolio en ligne qui faisait vraiment pro.</p><p>Attention quand même aux limitations. Une fois qu'on a choisi un template, difficile de changer radicalement de look sans tout refaire. Et niveau SEO, on reste dépendant de ce que propose Squarespace. Ça convient pour <strong>80%</strong> des besoins, mais si vous visez un référencement poussé, vous allez vite être limité.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Templates design vraiment beaux et modernes</td>
-            <td>Prix élevé comparé à la concurrence</td>
-          </tr>
-          <tr>
-            <td>Simplicité totale : aucune compétence technique requise</td>
-            <td>Personnalisation limitée une fois le template choisi</td>
-          </tr>
-          <tr>
-            <td>E-commerce intégré avec gestion des stocks</td>
-            <td>Options SEO restreintes pour un référencement avancé</td>
-          </tr>
-          <tr>
-            <td>Hébergement et sécurité inclus dans l'abonnement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Templates design vraiment beaux et modernes</td></tr><tr><td>Simplicité totale : aucune compétence technique requise</td></tr><tr><td>E-commerce intégré avec gestion des stocks</td></tr><tr><td>Hébergement et sécurité inclus dans l'abonnement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix élevé comparé à la concurrence</td></tr><tr><td>Personnalisation limitée une fois le template choisi</td></tr><tr><td>Options SEO restreintes pour un référencement avancé</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1254,7 +1051,7 @@ Ces logiciels conviennent parfaitement aux entreprises de notre taille. Avec le 
 
   <aside class="backlink-note">
     <p>Pour approfondir le sujet, découvrez également
-<a href="https://wordpress.org/" target="_blank" rel="noopener">Wordpress-org</a>,
+<a href="https://wordpress.org/" target="_blank" rel="noopener">WordPress.org</a>,
 un acteur reconnu de ce secteur.</p>
   </aside>
 
@@ -1356,7 +1153,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 sauvonslaproximite.com — Données actualisées le 2 octobre 2026
+        © 2026 sauvonslaproximite.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

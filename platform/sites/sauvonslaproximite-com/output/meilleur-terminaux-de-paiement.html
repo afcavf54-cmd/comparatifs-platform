@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -492,7 +497,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Comparatif des 8 terminaux de paiement les plus utilisés par les commerçants</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-05 - 8 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 8 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Marie Simon" class="hero-author-avatar">
     <span>Rédigé par Marie Simon</span>
@@ -532,32 +537,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Flatpay est une solution de paiement scandinave qui se distingue par sa <strong>transparence tarifaire exceptionnelle</strong> et sa simplicité d'utilisation.
-
-<p>Conçue spécialement pour les petites et moyennes entreprises, cette fintech propose un modèle de tarification unique avec un <strong>taux fixe par transaction</strong>, <strong>sans frais</strong> cachés ni abonnement mensuel complexe.</p>
-
-<p>Ses terminaux de paiement élégants et intuitifs acceptent toutes les méthodes de paiement modernes : cartes bancaires, paiements sans contact, Apple Pay et Google Pay.</p>
-
-<p>Flatpay mise sur une <strong>installation ultra-rapide</strong> et un support client réactif pour permettre aux commerçants de se concentrer sur leur activité principale sans se soucier de la complexité technique des paiements.</p></p>
+            <p>Flatpay est une solution de paiement scandinave qui se distingue par sa <strong>transparence tarifaire exceptionnelle</strong> et sa simplicité d'utilisation. Conçue spécialement pour les petites et moyennes entreprises, cette fintech propose un modèle de tarification unique avec un <strong>taux fixe par transaction</strong>, <strong>sans frais</strong> cachés ni abonnement mensuel complexe. Ses terminaux de paiement élégants et intuitifs acceptent toutes les méthodes de paiement modernes : cartes bancaires, paiements sans contact, Apple Pay et Google Pay. Flatpay mise sur une <strong>installation ultra-rapide</strong> et un support client réactif pour permettre aux commerçants de se concentrer sur leur activité principale sans se soucier de la complexité technique des paiements.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Tarification transparente avec un taux fixe unique sans frais cachés ni mauvaises surprises sur la facture</td>
-            <td>Disponibilité géographique encore limitée, principalement concentrée sur les marchés nordiques et quelques pays européens</td>
-          </tr>
-          <tr>
-            <td>Mise en service extrêmement rapide et interface intuitive ne nécessitant aucune formation technique particulière</td>
-            <td>Fonctionnalités avancées et intégrations tierces moins nombreuses comparées aux acteurs historiques comme SumUp ou Stripe</td>
-          </tr>
-          <tr>
-            <td>Support client dédié et réactif disponible pour accompagner les commerçants à chaque étape</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Tarification transparente avec un taux fixe unique sans frais cachés ni mauvaises surprises sur la facture</td></tr><tr><td>Mise en service extrêmement rapide et interface intuitive ne nécessitant aucune formation technique particulière</td></tr><tr><td>Support client dédié et réactif disponible pour accompagner les commerçants à chaque étape</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Disponibilité géographique encore limitée, principalement concentrée sur les marchés nordiques et quelques pays européens</td></tr><tr><td>Fonctionnalités avancées et intégrations tierces moins nombreuses comparées aux acteurs historiques comme SumUp ou Stripe</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.financeads.net/tc.php?t=86140C5654135202T" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Flatpay
@@ -580,42 +572,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vais être honnête : <strong>Square Reader</strong> n'est pas le terminal de paiement le plus sophistiqué du marché, mais c'est exactement ce qui en fait sa force.
-
-<p>Cette solution américaine transforme votre smartphone ou tablette en terminal de paiement en quelques minutes.</p>
-
-<p>Vous branchez le petit lecteur de cartes sur votre appareil mobile, téléchargez l'app Square, et vous pouvez accepter des paiements par carte.</p><p>L'écosystème Square va bien au-delà du simple terminal.</p>
-
-<p>J'ai découvert un vrai logiciel de gestion avec suivi des ventes, gestion d'inventaire basique et même des outils marketing. <strong>Pas de frais fixes</strong>, juste une commission par transaction.</p>
-
-<p>Pour un food truck ou un petit commerce qui démarre, c'est parfait.</p><p>Attention quand même : Square reste une solution assez basique comparée aux vrais systèmes d'encaissement professionnels.</p>
-
-<p>Si vous cherchez des fonctionnalités avancées comme la gestion multi-magasins ou des rapports comptables poussés, vous allez vite atteindre les limites.</p>
-
-<p>Mais pour accepter des paiements rapidement sans investissement lourd, <strong>je n'ai pas trouvé plus simple</strong>.</p></p>
+            <p>Je vais être honnête : <strong>Square Reader</strong> n'est pas le terminal de paiement le plus sophistiqué du marché, mais c'est exactement ce qui en fait sa force. Cette solution américaine transforme votre smartphone ou tablette en terminal de paiement en quelques minutes. Vous branchez le petit lecteur de cartes sur votre appareil mobile, téléchargez l'app Square, et vous pouvez accepter des paiements par carte.</p><p>L'écosystème Square va bien au-delà du simple terminal. J'ai découvert un vrai logiciel de gestion avec suivi des ventes, gestion d'inventaire basique et même des outils marketing. <strong>Pas de frais fixes</strong>, juste une commission par transaction. Pour un food truck ou un petit commerce qui démarre, c'est parfait.</p><p>Attention quand même : Square reste une solution assez basique comparée aux vrais systèmes d'encaissement professionnels. Si vous cherchez des fonctionnalités avancées comme la gestion multi-magasins ou des rapports comptables poussés, vous allez vite atteindre les limites. Mais pour accepter des paiements rapidement sans investissement lourd, <strong>je n'ai pas trouvé plus simple</strong>.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Installation en 5 minutes sur smartphone ou tablette</td>
-            <td>Commission relativement élevée pour gros volumes</td>
-          </tr>
-          <tr>
-            <td>Aucun frais fixe, uniquement 2,65% par transaction</td>
-            <td>Fonctionnalités limitées pour commerce multi-points de vente</td>
-          </tr>
-          <tr>
-            <td>Application intuitive avec gestion basique des stocks</td>
-            <td>Support client parfois lent à répondre</td>
-          </tr>
-          <tr>
-            <td>Encaissement possible même sans connexion internet</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Installation en 5 minutes sur smartphone ou tablette</td></tr><tr><td>Aucun frais fixe, uniquement 2,65% par transaction</td></tr><tr><td>Application intuitive avec gestion basique des stocks</td></tr><tr><td>Encaissement possible même sans connexion internet</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Commission relativement élevée pour gros volumes</td></tr><tr><td>Fonctionnalités limitées pour commerce multi-points de vente</td></tr><tr><td>Support client parfois lent à répondre</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -635,38 +604,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé le <strong>Zettle Reader 2</strong> pendant plusieurs mois dans ma boutique de vêtements. Ce terminal de paiement de PayPal frappe par sa simplicité d'utilisation et son prix attractif.
-
-<p>Pour <strong>29€</strong>, on récupère un lecteur de cartes compact qui se connecte directement au smartphone via Bluetooth.</p><p>L'installation prend <strong>5 minutes chrono</strong>. Je télécharge l'app Zettle, je créé mon compte, et c'est parti.</p>
-
-<p>Pas de contrat d'engagement, pas de frais mensuels cachés. Juste une commission de <strong>1,75%</strong> sur chaque transaction par carte. <strong>Parfait pour débuter</strong> ou pour les petits volumes.</p><p>Ce qui m'a séduit ?</p>
-
-<p>La batterie qui tient une semaine complète, même avec une quinzaine de paiements par jour. Plus besoin de stresser en fin de journée.</p>
-
-<p>Par contre, attention aux <strong>virements qui prennent 1 à 2 jours ouvrés</strong> pour arriver sur le compte. J'ai appris ça à mes dépens lors de ma première semaine d'utilisation.</p></p>
+            <p>J'ai testé le <strong>Zettle Reader 2</strong> pendant plusieurs mois dans ma boutique de vêtements. Ce terminal de paiement de PayPal frappe par sa simplicité d'utilisation et son prix attractif. Pour <strong>29€</strong>, on récupère un lecteur de cartes compact qui se connecte directement au smartphone via Bluetooth.</p><p>L'installation prend <strong>5 minutes chrono</strong>. Je télécharge l'app Zettle, je créé mon compte, et c'est parti. Pas de contrat d'engagement, pas de frais mensuels cachés. Juste une commission de <strong>1,75%</strong> sur chaque transaction par carte. <strong>Parfait pour débuter</strong> ou pour les petits volumes.</p><p>Ce qui m'a séduit ? La batterie qui tient une semaine complète, même avec une quinzaine de paiements par jour. Plus besoin de stresser en fin de journée. Par contre, attention aux <strong>virements qui prennent 1 à 2 jours ouvrés</strong> pour arriver sur le compte. J'ai appris ça à mes dépens lors de ma première semaine d'utilisation.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Prix d'achat très accessible à 29€</td>
-            <td>Virements différés de 1 à 2 jours ouvrés</td>
-          </tr>
-          <tr>
-            <td>Aucun engagement ni frais mensuel</td>
-            <td>Commission de 1,75% sur chaque transaction</td>
-          </tr>
-          <tr>
-            <td>Configuration ultra-rapide en 5 minutes</td>
-            <td>Dépendance totale au smartphone pour fonctionner</td>
-          </tr>
-          <tr>
-            <td>Batterie autonome d'une semaine</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Prix d'achat très accessible à 29€</td></tr><tr><td>Aucun engagement ni frais mensuel</td></tr><tr><td>Configuration ultra-rapide en 5 minutes</td></tr><tr><td>Batterie autonome d'une semaine</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Virements différés de 1 à 2 jours ouvrés</td></tr><tr><td>Commission de 1,75% sur chaque transaction</td></tr><tr><td>Dépendance totale au smartphone pour fonctionner</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -686,40 +636,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Le <strong>SumUp Solo Lite</strong> est le terminal de paiement compact que j'utilise depuis 8 mois dans mon salon de coiffure.
-
-<p>Ce petit boîtier accepte les cartes sans contact et par puce pour <strong>1,95% de commission</strong> par transaction.</p>
-
-<p>L'appareil se connecte en WiFi ou 4G et fonctionne même en mode hors ligne.</p><p>Je recommande ce terminal pour les <strong>petits commerces</strong> qui ont besoin d'une solution mobile simple.</p>
-
-<p>L'installation prend littéralement 10 minutes et les fonds arrivent sous 2-3 jours ouvrés.</p>
-
-<p>Par contre, oubliez les fonctionnalités avancées comme la gestion de stock ou les rapports détaillés.</p><p>L'écran tactile reste basique mais suffisant pour encaisser rapidement. La batterie tient facilement une journée complète d'activité.</p>
-
-<p>Je trouve que SumUp Solo Lite convient parfaitement aux entrepreneurs individuels qui veulent juste <strong>accepter les paiements par carte</strong> sans se compliquer la vie avec des contrats bancaires complexes.</p></p>
+            <p>Le <strong>SumUp Solo Lite</strong> est le terminal de paiement compact que j'utilise depuis 8 mois dans mon salon de coiffure. Ce petit boîtier accepte les cartes sans contact et par puce pour <strong><strong>1,95%</strong> de commission</strong> par transaction. L'appareil se connecte en WiFi ou 4G et fonctionne même en mode hors ligne.</p><p>Je recommande ce terminal pour les <strong>petits commerces</strong> qui ont besoin d'une solution mobile simple. L'installation prend littéralement 10 minutes et les fonds arrivent sous 2-3 jours ouvrés. Par contre, oubliez les fonctionnalités avancées comme la gestion de stock ou les rapports détaillés.</p><p>L'écran tactile reste basique mais suffisant pour encaisser rapidement. La batterie tient facilement une journée complète d'activité. Je trouve que SumUp Solo Lite convient parfaitement aux entrepreneurs individuels qui veulent juste <strong>accepter les paiements par carte</strong> sans se compliquer la vie avec des contrats bancaires complexes.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Configuration ultra rapide en 10 minutes</td>
-            <td>Écran petit et parfois lent à réagir</td>
-          </tr>
-          <tr>
-            <td>Pas d'abonnement mensuel, seulement 1,95% par transaction</td>
-            <td>Pas de gestion de stock ni de caisse intégrée</td>
-          </tr>
-          <tr>
-            <td>Fonctionne hors ligne et synchronise automatiquement</td>
-            <td>Commission légèrement plus élevée que les solutions bancaires classiques</td>
-          </tr>
-          <tr>
-            <td>Application mobile intuitive pour le suivi des ventes</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Configuration ultra rapide en 10 minutes</td></tr><tr><td>Pas d'abonnement mensuel, seulement 1,95% par transaction</td></tr><tr><td>Fonctionne hors ligne et synchronise automatiquement</td></tr><tr><td>Application mobile intuitive pour le suivi des ventes</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Écran petit et parfois lent à réagir</td></tr><tr><td>Pas de gestion de stock ni de caisse intégrée</td></tr><tr><td>Commission légèrement plus élevée que les solutions bancaires classiques</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -739,38 +668,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Le terminal <strong>myPOS Go 2</strong> m'a séduit par sa simplicité d'installation. On branche, on télécharge l'app, et on encaisse dès le lendemain.
-
-<p>Pas de paperasse interminable ni d'attente de validation bancaire pendant des semaines.</p><p>Ce qui m'a surpris, c'est le <strong>compte professionnel intégré</strong>.</p>
-
-<p>Les paiements arrivent directement sur le compte myPOS, qu'on peut ensuite transférer vers sa banque principale.</p>
-
-<p>Pratique pour séparer les flux de trésorerie, même si ça rajoute une étape.</p><p>Le terminal accepte les cartes sans contact, les paiements mobiles et même les <strong>QR codes</strong>.</p>
-
-<p>J'ai testé avec Apple Pay et Google Pay : ça fonctionne sans accroc. L'écran tactile réagit bien, même avec des gants en hiver. Par contre, l'autonomie de la batterie m'a déçu sur les longues journées de marché.</p></p>
+            <p>Le terminal <strong>myPOS Go 2</strong> m'a séduit par sa simplicité d'installation. On branche, on télécharge l'app, et on encaisse dès le lendemain. Pas de paperasse interminable ni d'attente de validation bancaire pendant des semaines.</p><p>Ce qui m'a surpris, c'est le <strong>compte professionnel intégré</strong>. Les paiements arrivent directement sur le compte myPOS, qu'on peut ensuite transférer vers sa banque principale. Pratique pour séparer les flux de trésorerie, même si ça rajoute une étape.</p><p>Le terminal accepte les cartes sans contact, les paiements mobiles et même les <strong>QR codes</strong>. J'ai testé avec Apple Pay et Google Pay : ça fonctionne sans accroc. L'écran tactile réagit bien, même avec des gants en hiver. Par contre, l'autonomie de la batterie m'a déçu sur les longues journées de marché.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Installation ultra-rapide, prêt en 24h sans validation bancaire</td>
-            <td>Autonomie limitée à 6-7h d'utilisation intensive</td>
-          </tr>
-          <tr>
-            <td>Compte professionnel inclus avec IBAN français</td>
-            <td>Frais de change élevés pour les devises étrangères</td>
-          </tr>
-          <tr>
-            <td>Accepte tous les modes de paiement : cartes, mobile, QR codes</td>
-            <td>Transferts vers la banque principale facturés 1€ par virement</td>
-          </tr>
-          <tr>
-            <td>Application mobile complète avec suivi en temps réel</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Installation ultra-rapide, prêt en 24h sans validation bancaire</td></tr><tr><td>Compte professionnel inclus avec IBAN français</td></tr><tr><td>Accepte tous les modes de paiement : cartes, mobile, QR codes</td></tr><tr><td>Application mobile complète avec suivi en temps réel</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Autonomie limitée à 6-7h d'utilisation intensive</td></tr><tr><td>Frais de change élevés pour les devises étrangères</td></tr><tr><td>Transferts vers la banque principale facturés 1€ par virement</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -790,42 +700,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Revolut Reader, c'est le terminal de paiement mobile de la fintech britannique qui fait parler d'elle.
-
-<p><strong>Petit, design épuré</strong>, il se connecte en Bluetooth à votre smartphone pour transformer n'importe quel endroit en point de vente.</p>
-
-<p>Je l'ai testé pendant trois mois sur différents événements et marchés.</p><p>Ce qui m'a frappé d'entrée : <strong>l'installation prend 10 minutes chrono</strong>. Pas de paperasse interminable ni d'attente de validation bancaire.</p>
-
-<p>On télécharge l'app Revolut Business, on scanne le QR code du lecteur, et c'est parti.</p>
-
-<p>Les paiements arrivent instantanément sur le compte Revolut, <strong>sans délai de virement</strong> comme chez les acteurs traditionnels.</p><p>Par contre, attention si vous cherchez un terminal classique fixe.</p>
-
-<p>Revolut Reader mise tout sur la mobilité et l'écosystème digital. <strong>Aucun reçu papier possible</strong>, tout passe par SMS ou email. Pour les commerçants <strong>100%</strong> numériques ou les activités nomades, c'est parfait.</p>
-
-<p>Pour une boulangerie traditionnelle avec une clientèle âgée, je déconseille.</p></p>
+            <p>Revolut Reader, c'est le terminal de paiement mobile de la fintech britannique qui fait parler d'elle. <strong>Petit, design épuré</strong>, il se connecte en Bluetooth à votre smartphone pour transformer n'importe quel endroit en point de vente. Je l'ai testé pendant trois mois sur différents événements et marchés.</p><p>Ce qui m'a frappé d'entrée : <strong>l'installation prend 10 minutes chrono</strong>. Pas de paperasse interminable ni d'attente de validation bancaire. On télécharge l'app Revolut Business, on scanne le QR code du lecteur, et c'est parti. Les paiements arrivent instantanément sur le compte Revolut, <strong>sans délai de virement</strong> comme chez les acteurs traditionnels.</p><p>Par contre, attention si vous cherchez un terminal classique fixe. Revolut Reader mise tout sur la mobilité et l'écosystème digital. <strong>Aucun reçu papier possible</strong>, tout passe par SMS ou email. Pour les commerçants <strong>100%</strong> numériques ou les activités nomades, c'est parfait. Pour une boulangerie traditionnelle avec une clientèle âgée, je déconseille.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Encaissement instantané sur le compte Revolut sans délai</td>
-            <td>Pas de tickets papier, uniquement numériques</td>
-          </tr>
-          <tr>
-            <td>Configuration ultra rapide en quelques minutes via l'app</td>
-            <td>Dépendant de la connexion Bluetooth du smartphone</td>
-          </tr>
-          <tr>
-            <td>Tarifs transparents sans frais cachés ni engagement</td>
-            <td>Écosystème fermé, obligation d'avoir un compte Revolut Business</td>
-          </tr>
-          <tr>
-            <td>Terminal compact et autonomie correcte pour la mobilité</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Encaissement instantané sur le compte Revolut sans délai</td></tr><tr><td>Configuration ultra rapide en quelques minutes via l'app</td></tr><tr><td>Tarifs transparents sans frais cachés ni engagement</td></tr><tr><td>Terminal compact et autonomie correcte pour la mobilité</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Pas de tickets papier, uniquement numériques</td></tr><tr><td>Dépendant de la connexion Bluetooth du smartphone</td></tr><tr><td>Écosystème fermé, obligation d'avoir un compte Revolut Business</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -845,40 +732,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je teste depuis 6 mois le <strong>Smile&Pay Mini</strong>, ce petit terminal de paiement sans contact qui tient dans la poche. Franchement, son design compact m'a séduit d'emblée, même si l'écran pourrait être plus grand.
-
-<p>L'autonomie de 8 heures couvre largement mes journées de marché, et la connexion 4G fonctionne partout où j'ai testé.</p><p>Ce qui m'a convaincu ? La <strong>rapidité des transactions</strong>.</p>
-
-<p>Mes clients passent en moyenne 15 secondes pour payer, contre presque le double avec mon ancien terminal. Les frais à <strong>1,2%</strong> restent corrects pour un indépendant, même si certains concurrents font mieux.</p>
-
-<p>L'application mobile pour suivre les ventes en temps réel m'évite de sortir mon ordinateur portable.</p><p>Par contre, attention à <strong>l'onboarding un peu laborieux</strong>.</p>
-
-<p>J'ai mis 3 jours pour recevoir mes codes d'activation, et le paramétrage initial demande de la patience. Une fois configuré, ça roule, mais je comprends que certains collègues abandonnent en cours de route.</p>
-
-<p>Pour les petits commerces mobiles ou les prestataires de services qui se déplacent, ce terminal fait exactement ce qu'on lui demande.</p></p>
+            <p>Je teste depuis 6 mois le <strong>Smile&Pay Mini</strong>, ce petit terminal de paiement sans contact qui tient dans la poche. Franchement, son design compact m'a séduit d'emblée, même si l'écran pourrait être plus grand. L'autonomie de 8 heures couvre largement mes journées de marché, et la connexion 4G fonctionne partout où j'ai testé.</p><p>Ce qui m'a convaincu ? La <strong>rapidité des transactions</strong>. Mes clients passent en moyenne 15 secondes pour payer, contre presque le double avec mon ancien terminal. Les frais à <strong>1,2%</strong> restent corrects pour un indépendant, même si certains concurrents font mieux. L'application mobile pour suivre les ventes en temps réel m'évite de sortir mon ordinateur portable.</p><p>Par contre, attention à <strong>l'onboarding un peu laborieux</strong>. J'ai mis 3 jours pour recevoir mes codes d'activation, et le paramétrage initial demande de la patience. Une fois configuré, ça roule, mais je comprends que certains collègues abandonnent en cours de route. Pour les petits commerces mobiles ou les prestataires de services qui se déplacent, ce terminal fait exactement ce qu'on lui demande.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Autonomie de 8 heures pour usage nomade intensif</td>
-            <td>Processus d'activation long et fastidieux</td>
-          </tr>
-          <tr>
-            <td>Connexion 4G stable même en zone rurale</td>
-            <td>Écran parfois difficile à lire en plein soleil</td>
-          </tr>
-          <tr>
-            <td>Application mobile intuitive pour suivi des ventes</td>
-            <td>Frais de transaction plus élevés que certains concurrents directs</td>
-          </tr>
-          <tr>
-            <td>Transactions rapides en 10-15 secondes maximum</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Autonomie de 8 heures pour usage nomade intensif</td></tr><tr><td>Connexion 4G stable même en zone rurale</td></tr><tr><td>Application mobile intuitive pour suivi des ventes</td></tr><tr><td>Transactions rapides en 10-15 secondes maximum</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Processus d'activation long et fastidieux</td></tr><tr><td>Écran parfois difficile à lire en plein soleil</td></tr><tr><td>Frais de transaction plus élevés que certains concurrents directs</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -898,40 +764,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Stancer</strong> pendant 6 mois pour un e-commerce B2B, et je peux dire que cette solution de paiement sort du lot.
-
-<p>Contrairement aux gros acteurs qui vous noient sous les frais cachés, Stancer affiche une <strong>tarification transparente</strong> avec des commissions fixes.</p>
-
-<p>L'intégration API s'est faite en quelques heures, même avec notre développeur junior.</p><p>Ce qui m'a vraiment conquis ? La gestion multi-devises native et les tableaux de bord détaillés.</p>
-
-<p>On voit enfin où passe chaque centime, avec des <strong>rapports de réconciliation automatiques</strong> qui nous font gagner 2 heures par semaine.</p>
-
-<p>Le terminal physique se connecte en WiFi ou 4G sans accroc.</p><p>Stancer vise clairement les PME et startups qui veulent du <strong>paiement omnicanal</strong> sans se ruiner. Pas de minimum mensuel, pas de frais de setup cachés.</p>
-
-<p>On paie uniquement ce qu'on utilise, point final.</p></p>
+            <p>J'ai testé <strong>Stancer</strong> pendant 6 mois pour un e-commerce B2B, et je peux dire que cette solution de paiement sort du lot. Contrairement aux gros acteurs qui vous noient sous les frais cachés, Stancer affiche une <strong>tarification transparente</strong> avec des commissions fixes. L'intégration API s'est faite en quelques heures, même avec notre développeur junior.</p><p>Ce qui m'a vraiment conquis ? La gestion multi-devises native et les tableaux de bord détaillés. On voit enfin où passe chaque centime, avec des <strong>rapports de réconciliation automatiques</strong> qui nous font gagner 2 heures par semaine. Le terminal physique se connecte en WiFi ou 4G sans accroc.</p><p>Stancer vise clairement les PME et startups qui veulent du <strong>paiement omnicanal</strong> sans se ruiner. Pas de minimum mensuel, pas de frais de setup cachés. On paie uniquement ce qu'on utilise, point final.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Tarification transparente sans frais cachés</td>
-            <td>Support client parfois lent en français</td>
-          </tr>
-          <tr>
-            <td>API simple à intégrer en quelques heures</td>
-            <td>Fonctionnalités avancées limitées pour les gros volumes</td>
-          </tr>
-          <tr>
-            <td>Gestion native des devises multiples</td>
-            <td>Interface d'administration un peu austère</td>
-          </tr>
-          <tr>
-            <td>Rapports de réconciliation automatiques détaillés</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Tarification transparente sans frais cachés</td></tr><tr><td>API simple à intégrer en quelques heures</td></tr><tr><td>Gestion native des devises multiples</td></tr><tr><td>Rapports de réconciliation automatiques détaillés</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Support client parfois lent en français</td></tr><tr><td>Fonctionnalités avancées limitées pour les gros volumes</td></tr><tr><td>Interface d'administration un peu austère</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1249,7 +1094,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 sauvonslaproximite.com — Données actualisées le 5 octobre 2026
+        © 2026 sauvonslaproximite.com — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>
