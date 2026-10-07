@@ -137,15 +137,16 @@ jobs:
               -f site="$site" \
               -f skip_enrich=true || echo "⚠ Échec déclenchement $site (le déploiement peut être lancé manuellement)"
           done
-      # ── Comparateurs en masse programmés ────────────────────────────────
-      # Détection des comparateurs (Sheet) dont la date de publication est
-      # arrivée et qui ne sont pas encore générés. Contrairement au blog/avis
-      # (contenu écrit directement → skip_enrich=true), les comparateurs sont
-      # produits par build_comparators pendant le build → skip_enrich=false.
-      - name: Comparateurs programmés — détection
+      # ── Comparateurs en masse (rythme de publication) ───────────────────
+      # Plus de dates : on repère les sites dont le Sheet contient au moins un
+      # comparateur non encore rédigé. Contrairement au blog/avis (contenu
+      # écrit directement → skip_enrich=true), les comparateurs sont produits
+      # par build_comparators pendant le build → skip_enrich=false. Le mode
+      # comparators_daily=true fait rédiger N au hasard (rythme du site).
+      - name: Comparateurs — détection des non rédigés
         id: detect_comparators
         run: python platform/scripts/comparators_cron.py
-      - name: Comparateurs programmés — déclenchement du build
+      - name: Comparateurs — déclenchement du build (rythme quotidien)
         if: steps.detect_comparators.outputs.sites_to_deploy != ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -153,11 +154,12 @@ jobs:
           IFS=',' read -ra SITES <<< "${{ steps.detect_comparators.outputs.sites_to_deploy }}"
           for site in "${SITES[@]}"; do
             [ -z "$site" ] && continue
-            echo "🚀 Comparateur dû → build $site"
+            echo "🚀 Comparateurs à rédiger → build $site (rythme quotidien)"
             gh workflow run generate-scpi.yml \
               -f site="$site" \
               -f skip_enrich=false \
-              -f skip_existing=true || echo "⚠ Échec déclenchement $site"
+              -f skip_existing=true \
+              -f comparators_daily=true || echo "⚠ Échec déclenchement $site"
             sleep 5
           done
 
