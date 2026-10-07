@@ -6,6 +6,7 @@ const NAV = [
   { href: '/sites/new', icon: '➕', label: 'Nouveau site' },
   { href: '/link-sales', icon: '🔗', label: 'Vente de liens' },
   { href: '/backlinks', icon: '🧲', label: 'Rotations backlinks' },
+  { href: '/journal', icon: '📅', label: 'Journal comparateurs' },
   { href: '/templates', icon: '📐', label: 'Modèles de pages' },
   { href: '/deploy', icon: '🚀', label: 'Déploiements' },
 ]
