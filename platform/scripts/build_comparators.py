@@ -2,12 +2,23 @@
 """
 Comparateurs EN MASSE depuis un Google Sheet par site.
 
-Sheet (CSV publié) — 3 colonnes : Titre, Marques, Date
+Sheet (CSV publié) — colonnes : Titre, Marques, Catégorie (PAS de date)
   Marques : "Nom | url ; Nom | url ; Nom"
     · séparateur entre marques : ;
     · lien optionnel après | (sert au screenshot + liens rotatifs, JAMAIS affiché)
 
-Pour chaque ligne :
+RYTHME DE PUBLICATION (plus de dates) :
+  Le Sheet n'a plus de colonne Date. On publie au rythme indiqué par site
+  (`comparators_per_day`, défaut 2). Le cron quotidien relit TOUT le Sheet,
+  repère les comparateurs NON encore rédigés (slug absent de l'editorial) et
+  en rédige N au HASARD (ordre indépendant du Sheet). Les comparateurs déjà
+  en ligne ne sont JAMAIS réécrits (anti-doublon par slug). Julien peut donc
+  ajouter des lignes n'importe où dans le Sheet, à tout moment.
+    · --daily        → rédige N au hasard (N = comparators_per_day du config)
+    · --limit N      → force N au hasard
+    · (sans option)  → passe TOUT le Sheet (manuel / mise à jour complète)
+
+Pour chaque ligne traitée :
   - comparateur AUTONOME dans editorial.json (ordre des marques aléatoire, FIGÉ)
   - 1 entrée par marque (nom)
   - URL de la marque : Sheet sinon référentiel backlinks (sinon pas d'image)
@@ -28,7 +39,6 @@ import re
 import random
 import unicodedata
 import argparse
-from datetime import date as _date, datetime as _dt
 from pathlib import Path
 
 import yaml
@@ -287,17 +297,32 @@ def gen_json(user: str, system: str):
 
 
 # ── Cœur ───────────────────────────────────────────────────────────────────
-def main(site: str, force: bool = False):
+def main(site: str, force: bool = False, limit: int | None = None, daily: bool = False):
     site_dir = ROOT / "sites" / site
     cfg_path = site_dir / "config.yaml"
     if not cfg_path.exists():
         print(f"❌ site inconnu : {site}"); return
     config = yaml.safe_load(cfg_path.read_text(encoding="utf-8")) or {}
+    _site_cfg = config.get("site") or {}
     # L'URL vit sous `site:` dans le config.yaml (comme blog_sheet_csv_url).
     sheet_url = (config.get("comparators_sheet_csv_url")
-                 or (config.get("site") or {}).get("comparators_sheet_csv_url") or "").strip()
+                 or _site_cfg.get("comparators_sheet_csv_url") or "").strip()
     if not sheet_url:
         print(f"  ⓘ {site} : pas de comparators_sheet_csv_url, rien à faire"); return
+
+    # ── Rythme de publication ────────────────────────────────────────────────
+    # --limit prime ; sinon --daily lit `comparators_per_day` (défaut 2) ;
+    # sinon limit=None → on passe TOUT le Sheet (mode complet / manuel).
+    if limit is None and daily:
+        _rythme = (config.get("comparators_per_day")
+                   if config.get("comparators_per_day") is not None
+                   else _site_cfg.get("comparators_per_day"))
+        try:
+            limit = int(_rythme) if _rythme is not None else 2
+        except (TypeError, ValueError):
+            limit = 2
+        if limit < 0:
+            limit = 0
 
     rows = fetch_csv(sheet_url)
     if not rows:
@@ -345,22 +370,34 @@ def main(site: str, force: bool = False):
     shots_dir = site_dir / "public" / "screenshots"
     print(f"  → {len(rows)} ligne(s) · décalage screenshot site #{s_index} ({(s_index+1)*sg.OFFSET_STEP}px)")
 
-    for _ridx, row in enumerate(rows):
+    # ── Sélection selon le rythme de publication ──────────────────────────────
+    # On garde l'INDEX D'ORIGINE (variété stable des suffixes de titre), puis,
+    # si `limit` est défini, on ne retient que N comparateurs NON encore rédigés
+    # (slug absent de l'editorial), tirés AU HASARD → ordre indépendant du Sheet.
+    # Les comparateurs déjà en ligne ne sont jamais repris (anti-doublon).
+    selected = list(enumerate(rows))
+    if limit is not None:
+        def _valid_undrafted(r):
+            t = _fix_mojibake(_row_get(r, "Titre")).strip()
+            m = _fix_mojibake(_row_get(r, "Marques")).strip()
+            if not t or not m:
+                return False
+            return f"classement-{slugify(t)}" not in editorial
+        undrafted = [(i, r) for (i, r) in selected if _valid_undrafted(r)]
+        random.shuffle(undrafted)            # vrai hasard (RNG non seedé) → ne suit pas l'ordre du Sheet
+        selected = undrafted[:limit]
+        _titres = [_fix_mojibake(_row_get(r, "Titre")).strip() for (_i, r) in selected]
+        print(f"  🎲 rythme={limit} · {len(undrafted)} non rédigé(s) · {len(selected)} tiré(s) au hasard"
+              + (f" → {', '.join(_titres)}" if _titres else ""))
+        if not selected:
+            print("  ✓ rien de nouveau à rédiger (tout le Sheet est déjà en ligne)")
+
+    for _ridx, row in selected:
         titre = _fix_mojibake(_row_get(row, "Titre")).strip()
         marques_cell = _fix_mojibake(_row_get(row, "Marques"))
-        date = _row_get(row, "Date").strip()
         categorie_parente = _fix_mojibake(_row_get(row, "Catégorie", "Categorie")).strip()
         if not titre or not marques_cell.strip():
             continue
-        # Publication programmée : on ignore les lignes dont la date est dans le
-        # futur. Le cron quotidien les prendra en charge une fois la date arrivée.
-        if date:
-            try:
-                if _dt.strptime(date[:10], "%Y-%m-%d").date() > _date.today():
-                    print(f"  ⏳ {titre} — programmé pour {date}, ignoré pour l'instant")
-                    continue
-            except ValueError:
-                pass  # date non parsable → génération normale
         brands = parse_brands(marques_cell)
         for _b in brands:
             _bu = (_b.get("url") or "").strip()
@@ -387,7 +424,6 @@ def main(site: str, force: bool = False):
             "categorie": titre,
             "autonome": True,
             "products_snapshot": order,
-            "date_publication": date or cls.get("date_publication", ""),
         })
         if categorie_parente:
             cls["cat_parent"] = categorie_parente   # catégorie parente (maillage + listing)
@@ -496,7 +532,7 @@ def main(site: str, force: bool = False):
             editorial[prod_key] = prod
 
     ed_path.write_text(json.dumps(editorial, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"  ✓ editorial.json mis à jour ({len(rows)} comparateur(s))")
+    print(f"  ✓ editorial.json mis à jour ({len(selected)} comparateur(s) traité(s))")
 
     # ── Référentiel backlinks : injecter les URLs du Sheet (sans écraser l'existant) ──
     if bl_sheet_urls:
@@ -527,5 +563,9 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--site", required=True)
     ap.add_argument("--force", action="store_true", help="régénère même les champs déjà remplis")
+    ap.add_argument("--daily", action="store_true",
+                    help="rythme quotidien : rédige `comparators_per_day` comparateurs au hasard")
+    ap.add_argument("--limit", type=int, default=None,
+                    help="force le nombre de comparateurs (non rédigés) à produire, tirés au hasard")
     a = ap.parse_args()
-    main(a.site, a.force)
+    main(a.site, a.force, limit=a.limit, daily=a.daily)
