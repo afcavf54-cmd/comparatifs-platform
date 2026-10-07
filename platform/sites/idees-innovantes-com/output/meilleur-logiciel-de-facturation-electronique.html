@@ -101,7 +101,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
 .av-inc-wrap .avantages-table{width:100%;margin:0}
 .av-inc-wrap .table-wrap{overflow:visible}
-.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
+.avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
@@ -538,10 +538,10 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Synchronisation native avec les cabinets comptables partenaires Tiime : zéro ressaisie, tout est partagé en temps réel</td></tr><tr><td>Conformité Factur-X intégrée, adapté à la réforme facturation électronique 2026 sans paramétrage complexe</td></tr><tr><td>Rapprochement bancaire fonctionnel directement depuis l'interface, utile pour les indépendants qui gèrent tout seuls</td></tr><tr><td>Prise en main rapide : j'ai créé ma première facture conforme en moins de cinq minutes, sans lire la doc</td></tr></tbody>
         </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>L'intérêt du logiciel chute fortement si votre comptable n'utilise pas Tiime : vous perdez la moitié des fonctionnalités collaboratives</td></tr><tr><td>Le support client peut être lent à répondre, surtout en période de clôture fiscale, frustrant quand on a un blocage urgent</td></tr><tr><td>Personnalisation des modèles de factures assez limitée : difficile de coller à une charte graphique un peu élaborée</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -562,14 +562,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Connexion native avec l'expert-comptable : le dossier est partagé en temps réel, sans export, sans email de fichiers Excel</td></tr><tr><td>Rapprochement bancaire automatisé avec catégorisation intelligente des transactions, ça évite des heures de travail en fin de mois</td></tr><tr><td>Relances automatiques configurables par palier (J+15, J+30, J+45) avec historique des envois visible directement sur la facture</td></tr><tr><td>Conformité Factur-X intégrée et préparation à la réforme de facturation électronique obligatoire 2026</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Le tarif grimpe vite dès qu'on ajoute un accès comptable ou des fonctionnalités avancées, les petites structures peuvent trouver ça lourd pour ce qu'elles utilisent réellement</td></tr><tr><td>La personnalisation des modèles de factures reste limitée : pas de templates libres, peu de flexibilité sur la mise en page si tu as des contraintes graphiques clients</td></tr><tr><td>L'onboarding peut dérouter au début, car l'interface mêle comptabilité et facturation dans un seul écran, ce qui n'est pas intuitif si on vient d'un outil simple type Facture.net</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -590,14 +590,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Automatisation réelle du cycle de traitement : l'OCR capture les données, le rapprochement avec les bons de commande se fait sans intervention manuelle dans la majorité des cas, ce qui réduit drastiquement le temps passé en saisie</td></tr><tr><td>Conformité réforme facture électronique 2026 déjà anticipée, avec support des formats Factur-X et UBL et connexion aux plateformes de dépôt immatriculées</td></tr><tr><td>Workflows de validation configurables directement par les équipes métier, sans dépendance à l'IT pour chaque ajustement de circuit d'approbation</td></tr><tr><td>Intégrations ERP natives (SAP, Oracle, Microsoft Dynamics) et portail fournisseur inclus pour centraliser les échanges et réduire les relances manuelles</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Déploiement long et coûteux : le setup initial prend souvent plusieurs mois, avec un onboarding qui demande une vraie implication des équipes IT et parfois un intégrateur externe, ce qui alourdit le budget de départ</td></tr><tr><td>Tarification opaque et élevée pour les petites structures, Esker ne communique pas de grille tarifaire publique et les devis sont calibrés pour des volumes importants, ce qui le rend inadapté aux TPE ou petites PME</td></tr><tr><td>L'interface utilisateur a vieilli sur certaines sections, notamment la gestion documentaire et quelques écrans de configuration qui manquent de clarté et génèrent des erreurs chez les nouveaux utilisateurs</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -618,14 +618,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Rapprochement bancaire automatique entre factures émises et paiements reçus, sans action manuelle</td></tr><tr><td>Génération de factures conformes Factur-X, prêtes pour la réforme de facturation électronique 2026</td></tr><tr><td>Interface simple, mentions légales et numérotation automatiques, très peu d'erreurs de forme</td></tr><tr><td>Relances automatiques configurables par délai, ce qui évite de courir après les clients soi-même</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Pas de gestion de catalogue produits structuré ni de tarification par client, très vite limité pour les activités avec beaucoup de références</td></tr><tr><td>La facturation reste liée à l'abonnement bancaire Qonto : si tu changes de banque, tu perds l'intégration et ça devient compliqué à migrer</td></tr><tr><td>Le support client est uniquement disponible par chat, et les temps de réponse peuvent grimper à plusieurs heures en cas de problème urgent</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -646,14 +646,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>OCR performant avec apprentissage progressif : moins d'erreurs de reconnaissance au fil du temps, même sur des formats de factures peu standards</td></tr><tr><td>Workflows de validation configurables par montant, service ou entité, sans développement spécifique</td></tr><tr><td>Conformité native à la réforme facturation électronique française (Chorus Pro, Peppol, formats UBL et Factur-X)</td></tr><tr><td>Connecteurs ERP préconstruits avec SAP, Sage, Cegid, Microsoft Dynamics et d'autres, ce qui réduit les frais d'intégration</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>L'onboarding peut être long : le paramétrage initial des workflows et des connecteurs ERP nécessite souvent un accompagnement par l'équipe Yooz, et ça peut prendre plusieurs semaines avant d'être vraiment opérationnel</td></tr><tr><td>Le tarif est positionné sur le moyen-haut de gamme, avec une structure de prix à base de volumes de factures traitées qui devient vite significative pour les grosses structures, et peu adaptée aux très petites entreprises</td></tr><tr><td>L'interface de reporting manque un peu de souplesse : on peut extraire les données, mais construire des tableaux de bord personnalisés demande de passer par des exports vers Excel ou un outil BI externe</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -674,14 +674,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Accès gratuit aux fonctions de facturation électronique de base, sans limite de durée ni frais cachés sur les usages courants</td></tr><tr><td>Émission de factures au format Factur-X, conforme à la réforme de facturation électronique obligatoire en France</td></tr><tr><td>Relances automatiques paramétrables par palier de retard, ce qui fait gagner un temps réel sur le suivi client</td></tr><tr><td>Prise en main rapide, moins d'une heure pour émettre sa première facture électronique, même sans formation comptable</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Fonctionnalités avancées limitées : pas de gestion de projets, pas de module de temps passé, pas d'API ouverte pour connecter des outils tiers</td></tr><tr><td>Le support client repose essentiellement sur des ressources en ligne et une FAQ ; en cas de bug bloquant, le temps de réponse peut être frustrant</td></tr><tr><td>Pas adapté aux structures avec plusieurs utilisateurs simultanés ou besoin de droits d'accès différenciés par rôle</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -702,14 +702,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Prise en main rapide, même sans formation : j'ai créé ma première facture électronique conforme en moins de 10 minutes</td></tr><tr><td>Relances automatiques configurables par délai et par client, ce qui évite les oublis sans effort manuel</td></tr><tr><td>Export comptable compatible avec la plupart des cabinets, format reconnu directement sans retraitement</td></tr><tr><td>Rapprochement bancaire intégré qui simplifie le suivi des encaissements sans outil tiers</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>La personnalisation graphique des factures reste limitée : difficile d'aller au-delà des templates proposés si on veut un rendu vraiment sur mesure</td></tr><tr><td>Le support client peut être lent en période chargée, j'ai attendu plus de 48h pour une réponse sur un problème de synchronisation bancaire</td></tr><tr><td>Peu adapté aux structures qui ont besoin de gérer plusieurs entités ou des flux de facturation interentreprises complexes</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -730,14 +730,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Synchronisation bancaire automatique avec catégorisation comptable : ça remplace facilement deux heures de saisie par semaine</td></tr><tr><td>Facturation électronique conforme Factur-X intégrée, prête pour la réforme de 2026 sans configuration technique</td></tr><tr><td>Déclarations de TVA générées automatiquement depuis les transactions synchronisées, sans recouper les chiffres à la main</td></tr><tr><td>Prise en main rapide, moins d'une heure pour créer sa première facture et connecter son compte bancaire</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Outil strictement mono-utilisateur : impossible d'inviter un associé ou un comptable externe avec des droits différenciés</td></tr><tr><td>Les intégrations tierces sont quasi inexistantes, pas d'API ouverte réelle si tu veux connecter un CRM ou un outil e-commerce</td></tr><tr><td>Le support client peut être lent en période chargée, et la documentation ne couvre pas tous les cas un peu atypiques comme la gestion de notes de frais complexes</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -758,14 +758,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Conformité facturation électronique 2026 gérée nativement, Factur-X et Chorus Pro inclus sans connecteur tiers</td></tr><tr><td>Relances automatiques paramétrables selon le profil client, avec historique des envois traçable</td></tr><tr><td>Rapprochement bancaire automatique qui reconnaît les virements récurrents, ça fait gagner un temps réel en compta</td></tr><tr><td>API bien documentée qui permet de connecter Sellsy à un ERP ou un outil e-commerce sans douleur excessive</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Prise en main longue : l'interface est dense, il faut compter minimum deux semaines avant d'être vraiment à l'aise, l'onboarding guidé ne suffit pas toujours</td></tr><tr><td>Tarif élevé pour les petites structures, les plans d'entrée de gamme sont vite limités et les options avancées font grimper la facture rapidement</td></tr><tr><td>Le support peut être lent en période chargée, j'ai attendu trois jours une réponse sur un bug d'export, ce n'est pas acceptable sur un outil de facturation</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -786,14 +786,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Conformité native avec la réforme de facturation électronique 2026 et le dépôt Chorus Pro, sans configuration manuelle</td></tr><tr><td>Prise en main immédiate : première facture émise en moins de 15 minutes, sans doc ni tutoriel obligatoire</td></tr><tr><td>Relances automatiques paramétrables selon les délais de paiement, ça m'a fait gagner un temps réel sur les impayés</td></tr><tr><td>Export comptable au format FEC inclus, ce qui évite les allers-retours inutiles avec l'expert-comptable en fin d'année</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Zéro rapprochement bancaire : il faut gérer ça manuellement ou via un autre outil, ce qui casse le flux pour les structures qui veulent tout centraliser</td></tr><tr><td>Les modèles de factures sont peu personnalisables, le rendu reste générique et tu ne peux pas vraiment coller à une charte graphique professionnelle</td></tr><tr><td>Pas d'API disponible, donc aucune intégration possible avec un CRM ou un outil métier existant, ce qui bloque dès que l'activité grossit un peu</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -814,14 +814,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Workflows de validation configurables par montant, entité ou direction, sans développement spécifique</td></tr><tr><td>Conformité réforme facturation électronique 2026 intégrée nativement avec connexion aux PDP référencées</td></tr><tr><td>Rapprochement automatique entre factures fournisseurs (OCR) et bons de commande, ça fait gagner des heures sur les clôtures</td></tr><tr><td>Reporting financier et tableaux de bord directement dans l'outil, pas besoin d'exporter vers Excel pour analyser les encours</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>L'onboarding est long, très long. Sans intégrateur certifié, on perd facilement 3 à 4 mois avant d'être vraiment opérationnel. J'ai vu des projets déraper côté planning.</td></tr><tr><td>Le tarif est opaque : entre les licences, les modules additionnels et les jours de paramétrage, le coût réel dépasse souvent les estimations initiales de 30 à 40%.</td></tr><tr><td>L'interface reste fonctionnelle mais datée sur certains modules, notamment la gestion des avoirs. Des actions qui devraient prendre deux clics en demandent six.</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
@@ -842,14 +842,14 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </div>
 
       <div class="av-inc-wrap">
-        <div class="table-wrap"><table class="avantages-table">
+        <table class="avantages-table">
           <thead><tr><th>✅<br>Avantages</th></tr></thead>
           <tbody><tr><td>Tout-en-un réel : facturation, CRM, dépenses et projets dans un seul outil, sans abonnement cumulé</td></tr><tr><td>Relances automatiques configurables qui évitent de courir après les clients en retard de paiement</td></tr><tr><td>Synchronisation bancaire directe pour rapprocher les paiements sans ressaisie manuelle</td></tr><tr><td>Interface claire et rapide à prendre en main, même sans formation comptable préalable</td></tr></tbody>
-        </table></div>
-        <div class="table-wrap"><table class="avantages-table">
+        </table>
+        <table class="avantages-table">
           <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
           <tbody><tr><td>Personnalisation des documents limités : les gabarits de factures restent peu flexibles si tu veux quelque chose de vraiment à ta charte</td></tr><tr><td>L'API est trop restreinte pour intégrer Axonaut dans un écosystème technique un peu complexe, ce qui bloque les boîtes qui veulent automatiser leurs flux</td></tr><tr><td>Pas adapté aux structures multi-sociétés ou aux équipes de plus d'une dizaine de personnes : l'outil montre ses limites assez vite dès que l'organisation grossit</td></tr></tbody>
-        </table></div>
+        </table>
       </div>
 
     </div>
