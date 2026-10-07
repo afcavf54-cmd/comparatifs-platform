@@ -39,6 +39,7 @@ import re
 import random
 import unicodedata
 import argparse
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 import yaml
@@ -67,6 +68,20 @@ TITLE_SUFFIXES = [
     "mon test",
 ]
 MAX_TITLE_LEN = 60  # recommandation Google (évite la troncature en SERP)
+# Nombre d'appels réseau (IA + screenshots) menés en parallèle par comparateur.
+# Plafonné pour ne pas déclencher les rate limits Anthropic / ScreenshotOne.
+try:
+    CONCURRENCY = max(1, int(os.environ.get("COMPARATORS_CONCURRENCY", "5")))
+except (TypeError, ValueError):
+    CONCURRENCY = 5
+
+
+def _safe_shot(bslug: str, url: str, s_index: int, shots_dir) -> None:
+    """Screenshot d'une marque, tolérant aux erreurs (exécuté en thread)."""
+    try:
+        sg.site_screenshot(bslug, url, s_index, shots_dir)
+    except Exception as e:
+        print(f"    ⚠ screenshot {bslug} : {e}")
 
 # ── Appel IA (même modèle que enrich_editorial, réécrit ici pour être
 #    self-contained — pas d'import qui sys.exit sans clé) ──────────────────────
@@ -450,88 +465,109 @@ def main(site: str, force: bool = False, limit: int | None = None, daily: bool =
             else:
                 cls["meta_title"] = titre[:MAX_TITLE_LEN].rsplit(" ", 1)[0]
         cls["h1"] = f"J'ai testé les {len(brands)} {_ta}, mon analyse"   # H1
-        # Meta description : IA, incitative, SANS année en chiffres ({year} si besoin)
-        if force or not str(existing.get("meta_description", "")).strip():
-            _md = gen(
-                f"Rédige UNE meta description SEO pour le comparatif « {titre} » ({len(brands)} marques). "
-                f"Max 155 caractères, incitative, bénéfice lecteur, une seule phrase, sans guillemets. "
-                f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}.",
-                build_system(global_prompt, persona, [], False))
-            if _md:
-                cls["meta_description"] = _md.strip()
-        cls.setdefault("meta_description", f"{titre} : mon comparatif pour bien choisir.")
 
-        # ── Contenu générique du comparateur (si absent) ──
-        if force or not str(cls.get("intro", "")).strip():
-            cls["intro"] = gen(
-                f"Rédige l'introduction HTML (2 paragraphes <p>) d'un comparatif intitulé « {titre} ». "
-                f"120 MOTS MAXIMUM au total. Accroche concrète, à la première personne, sans lister les marques. "
-                f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}. ",
-                build_system(global_prompt, persona, brand_names, False))
-        if force or not str(cls.get("en_bref", "")).strip():
-            # "En bref" = seulement les 5 PREMIÈRES marques du classement (ordre figé)
-            _slug2name = {slugify(b["name"]): b["name"] for b in brands}
-            _top5 = [_slug2name.get(_s, _s) for _s in order[:5]]
-            cls["en_bref"] = gen(
-                f"Pour le comparatif « {titre} », rédige un bloc « En bref » : une puce <li> pour CHACUNE "
-                f"de ces 5 marques (et UNIQUEMENT celles-ci, dans cet ordre), marque en <strong>, suivie de "
-                f"« : » puis, pour quel profil elle est idéale en 14 MOTS MAXIMUM. Réponds en HTML <li>…</li> "
-                f"uniquement, exactement 5 puces. "
-                f"Marques : {', '.join(_top5)}.",
-                build_system(global_prompt, persona, _top5, False))
-        if force or not str(cls.get("contenu_custom", "")).strip():
-            cls["contenu_custom"] = gen(
-                f"Rédige un contenu éditorial SEO en HTML sur le thème « {titre} », à placer APRÈS le classement. "
-                f"700 MOTS MAXIMUM. EXACTEMENT 3 sections <h2> (pas plus), avec des <h3> si utile. "
-                f"Sujets : qu'est-ce que c'est et à qui ça s'adresse / comment bien choisir (critères) / erreurs fréquentes. "
-                f"Ton vécu, première personne, exemples concrets. Ne cite aucune marque précise. "
-                f"INTERDIT : ne génère AUCUNE FAQ ni liste de questions/réponses (elle est gérée séparément ailleurs). "
-                f"Termine toujours par une phrase complète, jamais au milieu d'un mot ou d'une section. "
-                f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}. "
-                f"HTML uniquement (<h2>,<h3>,<p>,<ul>,<li>).",
-                build_system(global_prompt, persona, [], False))
-        if force or not cls.get("faq"):
-            faq = gen_json(
-                f"Rédige une FAQ de 6 questions/réponses utiles sur « {titre} ». "
-                f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}. "
-                f'Réponds UNIQUEMENT avec un tableau JSON : [{{"q":"…","a":"…"}}, …]. Réponses de 2-3 phrases.',
-                build_system(global_prompt, persona, brand_names, True))
-            if isinstance(faq, list):
-                cls["faq"] = faq
+        # ── Génération en PARALLÈLE (appels réseau I/O : IA + screenshots) ──
+        # Les 5 champs éditoriaux et le travail par marque sont indépendants :
+        # on les soumet ensemble à un pool borné (CONCURRENCY). Les threads ne
+        # TOUCHENT PAS à `editorial` (partagé) : ils renvoient leur résultat et
+        # l'assemblage se fait ici, dans le thread principal.
+        jobs: dict = {}            # future -> ("cls", champ) | ("faq",) | ("prod", prod_key)
 
-        editorial[cls_key] = cls
-
-        # ── Par marque : screenshot + contenu ──
-        for b in brands:
-            bslug = slugify(b["name"])
-            prod_key = f"classement-prod-{bslug}"
-            prod = dict(editorial.get(prod_key, {})) if isinstance(editorial.get(prod_key), dict) else {}
-            prod.setdefault("nom", b["name"])
-            prod.setdefault("marque", b["name"])
-
-            # Screenshot (si URL connue et pas déjà produit pour ce site)
-            url = b["url"] or repo.get(norm(b["name"]), "")
-            shot = shots_dir / f"{bslug}-screenshot.png"
-            if url and (force or not shot.exists()):
-                sg.site_screenshot(bslug, url, s_index, shots_dir)
-
-            # Contenu marque (desc + avantages/inconvénients) en 1 appel
-            if force or not str(prod.get("description", "")).strip():
-                data = gen_json(
-                    f"Pour le comparatif « {titre} », présente la marque {b['name']}. "
-                    f'Réponds UNIQUEMENT en JSON : {{"description":"<p>…</p><p>…</p>","points_forts":["…","…","…"],'
-                    f'"points_faibles":["…","…"]}}. Description : 3 paragraphes <p> à la première personne, concrète, '
-                    f"sans inventer de chiffres. 3-4 avantages, 2-3 inconvénients, courts. "
+        # Marques : on prépare les `prod` (thread-safe car assignés ici), puis on
+        # soumet screenshot + contenu de chaque marque.
+        brand_prods: dict = {}
+        with ThreadPoolExecutor(max_workers=CONCURRENCY) as ex:
+            # — Champs éditoriaux du comparateur —
+            if force or not str(existing.get("meta_description", "")).strip():
+                jobs[ex.submit(gen,
+                    f"Rédige UNE meta description SEO pour le comparatif « {titre} » ({len(brands)} marques). "
+                    f"Max 155 caractères, incitative, bénéfice lecteur, une seule phrase, sans guillemets. "
+                    f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}.",
+                    build_system(global_prompt, persona, [], False))] = ("cls", "meta_description")
+            if force or not str(cls.get("intro", "")).strip():
+                jobs[ex.submit(gen,
+                    f"Rédige l'introduction HTML (2 paragraphes <p>) d'un comparatif intitulé « {titre} ». "
+                    f"120 MOTS MAXIMUM au total. Accroche concrète, à la première personne, sans lister les marques. "
                     f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}. ",
-                    build_system(global_prompt, persona, brand_names, True))
-                if isinstance(data, dict):
-                    if data.get("description"):
-                        prod["description"] = data["description"]
-                    if isinstance(data.get("points_forts"), list):
-                        prod["points_forts"] = data["points_forts"]
-                    if isinstance(data.get("points_faibles"), list):
-                        prod["points_faibles"] = data["points_faibles"]
+                    build_system(global_prompt, persona, brand_names, False))] = ("cls", "intro")
+            if force or not str(cls.get("en_bref", "")).strip():
+                # "En bref" = seulement les 5 PREMIÈRES marques du classement (ordre figé)
+                _slug2name = {slugify(b["name"]): b["name"] for b in brands}
+                _top5 = [_slug2name.get(_s, _s) for _s in order[:5]]
+                jobs[ex.submit(gen,
+                    f"Pour le comparatif « {titre} », rédige un bloc « En bref » : une puce <li> pour CHACUNE "
+                    f"de ces 5 marques (et UNIQUEMENT celles-ci, dans cet ordre), marque en <strong>, suivie de "
+                    f"« : » puis, pour quel profil elle est idéale en 14 MOTS MAXIMUM. Réponds en HTML <li>…</li> "
+                    f"uniquement, exactement 5 puces. "
+                    f"Marques : {', '.join(_top5)}.",
+                    build_system(global_prompt, persona, _top5, False))] = ("cls", "en_bref")
+            if force or not str(cls.get("contenu_custom", "")).strip():
+                jobs[ex.submit(gen,
+                    f"Rédige un contenu éditorial SEO en HTML sur le thème « {titre} », à placer APRÈS le classement. "
+                    f"700 MOTS MAXIMUM. EXACTEMENT 3 sections <h2> (pas plus), avec des <h3> si utile. "
+                    f"Sujets : qu'est-ce que c'est et à qui ça s'adresse / comment bien choisir (critères) / erreurs fréquentes. "
+                    f"Ton vécu, première personne, exemples concrets. Ne cite aucune marque précise. "
+                    f"INTERDIT : ne génère AUCUNE FAQ ni liste de questions/réponses (elle est gérée séparément ailleurs). "
+                    f"Termine toujours par une phrase complète, jamais au milieu d'un mot ou d'une section. "
+                    f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}. "
+                    f"HTML uniquement (<h2>,<h3>,<p>,<ul>,<li>).",
+                    build_system(global_prompt, persona, [], False))] = ("cls", "contenu_custom")
+            if force or not cls.get("faq"):
+                jobs[ex.submit(gen_json,
+                    f"Rédige une FAQ de 6 questions/réponses utiles sur « {titre} ». "
+                    f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}. "
+                    f'Réponds UNIQUEMENT avec un tableau JSON : [{{"q":"…","a":"…"}}, …]. Réponses de 2-3 phrases.',
+                    build_system(global_prompt, persona, brand_names, True))] = ("faq",)
 
+            # — Par marque : screenshot + contenu —
+            for b in brands:
+                bslug = slugify(b["name"])
+                prod_key = f"classement-prod-{bslug}"
+                prod = dict(editorial.get(prod_key, {})) if isinstance(editorial.get(prod_key), dict) else {}
+                prod.setdefault("nom", b["name"])
+                prod.setdefault("marque", b["name"])
+                brand_prods[prod_key] = prod
+
+                url = b["url"] or repo.get(norm(b["name"]), "")
+                shot = shots_dir / f"{bslug}-screenshot.png"
+                if url and (force or not shot.exists()):
+                    ex.submit(_safe_shot, bslug, url, s_index, shots_dir)   # fire-and-forget
+
+                if force or not str(prod.get("description", "")).strip():
+                    jobs[ex.submit(gen_json,
+                        f"Pour le comparatif « {titre} », présente la marque {b['name']}. "
+                        f'Réponds UNIQUEMENT en JSON : {{"description":"<p>…</p><p>…</p>","points_forts":["…","…","…"],'
+                        f'"points_faibles":["…","…"]}}. Description : 3 paragraphes <p> à la première personne, concrète, '
+                        f"sans inventer de chiffres. 3-4 avantages, 2-3 inconvénients, courts. "
+                        f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}. ",
+                        build_system(global_prompt, persona, brand_names, True))] = ("prod", prod_key)
+
+            # — Collecte des résultats (threads terminés) —
+            for fut in as_completed(jobs):
+                tag = jobs[fut]
+                try:
+                    res = fut.result()
+                except Exception as e:
+                    print(f"    ⚠ génération ({tag}) : {e}"); continue
+                if tag[0] == "cls":
+                    if res:
+                        cls[tag[1]] = res.strip() if tag[1] == "meta_description" else res
+                elif tag[0] == "faq":
+                    if isinstance(res, list):
+                        cls["faq"] = res
+                elif tag[0] == "prod":
+                    prod = brand_prods.get(tag[1])
+                    if prod is not None and isinstance(res, dict):
+                        if res.get("description"):
+                            prod["description"] = res["description"]
+                        if isinstance(res.get("points_forts"), list):
+                            prod["points_forts"] = res["points_forts"]
+                        if isinstance(res.get("points_faibles"), list):
+                            prod["points_faibles"] = res["points_faibles"]
+
+        cls.setdefault("meta_description", f"{titre} : mon comparatif pour bien choisir.")
+        editorial[cls_key] = cls
+        for prod_key, prod in brand_prods.items():
             editorial[prod_key] = prod
 
     ed_path.write_text(json.dumps(editorial, ensure_ascii=False, indent=2), encoding="utf-8")
