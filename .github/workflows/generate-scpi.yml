@@ -17,6 +17,11 @@ on:
         required: false
         default: false
         type: boolean
+      comparators_daily:
+        description: 'Comparateurs : rythme quotidien (N au hasard) au lieu de tout le Sheet'
+        required: false
+        default: false
+        type: boolean
       only_category:
         description: 'Limiter à une catégorie'
         required: false
@@ -49,7 +54,15 @@ jobs:
         run: pip install pyyaml jinja2 requests ruamel.yaml pillow
       - name: Build mass comparators (Sheet → comparateurs + screenshots)
         if: ${{ !inputs.skip_enrich }}
-        run: python platform/scripts/build_comparators.py --site ${{ inputs.site }}
+        # Mode quotidien (cron) : --daily → N comparateurs au hasard (rythme du site).
+        # Sinon (manuel / dashboard) : tout le Sheet (lignes non encore rédigées).
+        run: |
+          CMD="python platform/scripts/build_comparators.py --site ${{ inputs.site }}"
+          if [ "${{ inputs.comparators_daily }}" = "true" ]; then
+            CMD="$CMD --daily"
+          fi
+          echo "CMD=$CMD"
+          eval "$CMD"
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           SCREENSHOT_API_KEY: ${{ secrets.SCREENSHOT_API_KEY }}
