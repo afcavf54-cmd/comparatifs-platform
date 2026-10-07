@@ -44,6 +44,7 @@ export async function GET(_: NextRequest, { params }: Params) {
     avis_sheet_csv_url: get('avis_sheet_csv_url'),
     avis_sheet_edit_url: get('avis_sheet_edit_url'),
     comparators_sheet_csv_url: get('comparators_sheet_csv_url'),
+    comparators_per_day: (() => { const v = get('comparators_per_day'); const n = parseInt(v, 10); return Number.isFinite(n) ? n : 2 })(),
     domain: get('domain'),
     contact_form_key: get('contact_form_key'),
     page_types: pageTypes,
@@ -202,6 +203,24 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   if (body.avis_sheet_csv_url !== undefined) replaceKey('avis_sheet_csv_url', body.avis_sheet_csv_url || '')
   if (body.avis_sheet_edit_url !== undefined) replaceKey('avis_sheet_edit_url', body.avis_sheet_edit_url || '')
   if (body.comparators_sheet_csv_url !== undefined) replaceKey('comparators_sheet_csv_url', body.comparators_sheet_csv_url || '')
+  // Rythme de publication : valeur NUMÉRIQUE non quotée (0-50, défaut 2).
+  if (body.comparators_per_day !== undefined) {
+    let n = parseInt(String(body.comparators_per_day), 10)
+    if (!Number.isFinite(n) || n < 0) n = 2
+    if (n > 50) n = 50
+    const re = /^([ ]*)comparators_per_day:(.*?)$/m
+    if (re.test(yaml)) {
+      yaml = yaml.replace(re, `$1comparators_per_day: ${n}`)
+    } else {
+      const siteMatch = yaml.match(/^site:\s*\n/m)
+      if (siteMatch) {
+        const insertIdx = siteMatch.index! + siteMatch[0].length
+        yaml = yaml.slice(0, insertIdx) + `  comparators_per_day: ${n}\n` + yaml.slice(insertIdx)
+      } else {
+        yaml = yaml.trimEnd() + `\ncomparators_per_day: ${n}\n`
+      }
+    }
+  }
   if (body.seo_vs_title !== undefined) replaceKey('title_pattern', body.seo_vs_title || '')
   if (body.seo_vs_meta !== undefined) replaceKey('meta_pattern', body.seo_vs_meta || '')
   if (body.seo_avis_title !== undefined) replaceKey('avis_title_pattern', body.seo_avis_title || '')
