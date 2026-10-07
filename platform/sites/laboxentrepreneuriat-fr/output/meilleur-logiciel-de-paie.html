@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -490,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Mon classement comparatif de 9 logiciels de paie</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 9 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 9 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Hugo Simon" class="hero-author-avatar">
     <span>Rédigé par Hugo Simon</span>
@@ -528,38 +533,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je teste Pagga by Lucca depuis quelques mois maintenant. Ce logiciel de paie se démarque vraiment par sa simplicité d'utilisation et son intégration native avec les autres modules Lucca.
-
-<p><strong>Fini les exports/imports</strong> entre la gestion des temps et la paie. Tout se synchronise automatiquement.</p><p>L'interface me plaît beaucoup.</p>
-
-<p>Elle reste épurée même quand on jongle avec plusieurs entités ou conventions collectives différentes. Le calcul des variables de paie se fait sans accroc, et j'apprécie particulièrement la validation automatique des éléments de salaire.</p>
-
-<p><strong>Gain de temps considérable</strong> sur les contrôles.</p><p>Pagga by Lucca convient parfaitement aux entreprises de 50 à 500 salariés qui cherchent un outil moderne.</p>
-
-<p>Je le recommande surtout si vous utilisez déjà l'écosystème Lucca pour les congés ou les notes de frais. <strong>L'effet de bord est redoutable</strong> : vos équipes RH travaillent sur une seule plateforme cohérente.</p></p>
+            <p>Je teste Pagga by Lucca depuis quelques mois maintenant. Ce logiciel de paie se démarque vraiment par sa simplicité d'utilisation et son intégration native avec les autres modules Lucca. <strong>Fini les exports/imports</strong> entre la gestion des temps et la paie. Tout se synchronise automatiquement.</p><p>L'interface me plaît beaucoup. Elle reste épurée même quand on jongle avec plusieurs entités ou conventions collectives différentes. Le calcul des variables de paie se fait sans accroc, et j'apprécie particulièrement la validation automatique des éléments de salaire. <strong>Gain de temps considérable</strong> sur les contrôles.</p><p>Pagga by Lucca convient parfaitement aux entreprises de 50 à 500 salariés qui cherchent un outil moderne. Je le recommande surtout si vous utilisez déjà l'écosystème Lucca pour les congés ou les notes de frais. <strong>L'effet de bord est redoutable</strong> : vos équipes RH travaillent sur une seule plateforme cohérente.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation parfaite avec l'écosystème Lucca (congés, frais, temps)</td>
-            <td>Prix élevé si vous n'utilisez que le module paie sans les autres outils Lucca</td>
-          </tr>
-          <tr>
-            <td>Interface moderne et intuitive, même pour les non-spécialistes</td>
-            <td>Paramétrage initial complexe pour les conventions collectives très spécifiques</td>
-          </tr>
-          <tr>
-            <td>Automatisation poussée des contrôles de cohérence</td>
-            <td>Quelques limitations sur les reports d'états personnalisés avancés</td>
-          </tr>
-          <tr>
-            <td>Support réactif avec des conseillers qui connaissent vraiment la paie</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation parfaite avec l'écosystème Lucca (congés, frais, temps)</td></tr><tr><td>Interface moderne et intuitive, même pour les non-spécialistes</td></tr><tr><td>Automatisation poussée des contrôles de cohérence</td></tr><tr><td>Support réactif avec des conseillers qui connaissent vraiment la paie</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix élevé si vous n'utilisez que le module paie sans les autres outils Lucca</td></tr><tr><td>Paramétrage initial complexe pour les conventions collectives très spécifiques</td></tr><tr><td>Quelques limitations sur les reports d'états personnalisés avancés</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -575,40 +561,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise <strong>PayFit</strong> depuis deux ans maintenant et ça reste l'un des logiciels de paie les plus accessible que je connaisse.
-
-<p>L'interface est pensée pour des non-comptables, avec un processus de création de fiche de paie qui prend vraiment par la main.</p>
-
-<p>Contrairement à d'autres solutions où on se retrouve noyé dans les paramètres, PayFit automatise pas mal de calculs et propose des modèles pré-configurés selon le secteur d'activité.</p><p>Ce qui m'a convaincu dès le départ ?</p>
-
-<p>La synchronisation automatique avec les comptes bancaires et la gestion des congés payés intégrée. Plus besoin de jongler entre trois outils différents pour sortir une paie propre.</p>
-
-<p>Le système de validation en plusieurs étapes évite pas mal d'erreurs, et les bulletins générés respectent automatiquement les dernières conventions collectives.</p><p>Je le recommande surtout aux <strong>PME de 10 à 150 salariés</strong> qui cherchent à se débarrasser d'Excel ou d'un logiciel trop complexe.</p>
-
-<p>L'onboarding se fait en quelques semaines, et même quelqu'un sans formation comptable peut s'en sortir après formation.</p></p>
+            <p>J'utilise <strong>PayFit</strong> depuis deux ans maintenant et ça reste l'un des logiciels de paie les plus accessible que je connaisse. L'interface est pensée pour des non-comptables, avec un processus de création de fiche de paie qui prend vraiment par la main. Contrairement à d'autres solutions où on se retrouve noyé dans les paramètres, PayFit automatise pas mal de calculs et propose des modèles pré-configurés selon le secteur d'activité.</p><p>Ce qui m'a convaincu dès le départ ? La synchronisation automatique avec les comptes bancaires et la gestion des congés payés intégrée. Plus besoin de jongler entre trois outils différents pour sortir une paie propre. Le système de validation en plusieurs étapes évite pas mal d'erreurs, et les bulletins générés respectent automatiquement les dernières conventions collectives.</p><p>Je le recommande surtout aux <strong>PME de 10 à 150 salariés</strong> qui cherchent à se débarrasser d'Excel ou d'un logiciel trop complexe. L'onboarding se fait en quelques semaines, et même quelqu'un sans formation comptable peut s'en sortir après formation.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface vraiment intuitive, même pour des débutants en paie</td>
-            <td>Tarification qui grimpe vite avec les options avancées</td>
-          </tr>
-          <tr>
-            <td>Automatisation poussée des calculs sociaux et fiscaux</td>
-            <td>Personnalisation limitée pour les entreprises aux besoins très spécifiques</td>
-          </tr>
-          <tr>
-            <td>Synchronisation bancaire native qui fait gagner du temps</td>
-            <td>Quelques bugs occasionnels lors des mises à jour réglementaires</td>
-          </tr>
-          <tr>
-            <td>Support client réactif avec des vrais experts paie français</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface vraiment intuitive, même pour des débutants en paie</td></tr><tr><td>Automatisation poussée des calculs sociaux et fiscaux</td></tr><tr><td>Synchronisation bancaire native qui fait gagner du temps</td></tr><tr><td>Support client réactif avec des vrais experts paie français</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification qui grimpe vite avec les options avancées</td></tr><tr><td>Personnalisation limitée pour les entreprises aux besoins très spécifiques</td></tr><tr><td>Quelques bugs occasionnels lors des mises à jour réglementaires</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -624,42 +589,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>ADP propose un logiciel de paie assez complet qui fonctionne bien pour les entreprises qui veulent déléguer une partie de leur gestion RH.
-
-<p>J'ai testé leur solution sur plusieurs mois et je dois dire que <strong>la prise en main est plutôt fluide</strong> comparé à d'autres outils du marché.</p>
-
-<p>L'interface reste moderne même si certains écrans paraissent encore un peu chargés.</p><p>Ce qui m'a marqué, c'est leur approche hybride : on peut gérer la paie en interne ou confier certaines tâches à leurs équipes.</p>
-
-<p>Pratique quand on manque de temps sur les déclarations sociales ou les variables de paie complexes.</p>
-
-<p>Leur module de gestion des temps fonctionne correctement, même si j'ai eu quelques bugs sur la synchronisation avec les badgeuses au début.</p><p>ADP vise clairement les PME et ETI qui cherchent un partenaire plus qu'un simple logiciel.</p>
-
-<p>Si vous êtes une startup de 10 personnes, ça va être surdimensionné. Par contre, à partir de <strong>50 salariés avec des besoins RH variés</strong>, ça commence à avoir du sens.</p>
-
-<p>Leurs consultants connaissent bien les spécificités sectorielles, ce qui aide pas mal sur les conventions collectives compliquées.</p></p>
+            <p>ADP propose un logiciel de paie assez complet qui fonctionne bien pour les entreprises qui veulent déléguer une partie de leur gestion RH. J'ai testé leur solution sur plusieurs mois et je dois dire que <strong>la prise en main est plutôt fluide</strong> comparé à d'autres outils du marché. L'interface reste moderne même si certains écrans paraissent encore un peu chargés.</p><p>Ce qui m'a marqué, c'est leur approche hybride : on peut gérer la paie en interne ou confier certaines tâches à leurs équipes. Pratique quand on manque de temps sur les déclarations sociales ou les variables de paie complexes. Leur module de gestion des temps fonctionne correctement, même si j'ai eu quelques bugs sur la synchronisation avec les badgeuses au début.</p><p>ADP vise clairement les PME et ETI qui cherchent un partenaire plus qu'un simple logiciel. Si vous êtes une startup de 10 personnes, ça va être surdimensionné. Par contre, à partir de <strong>50 salariés avec des besoins RH variés</strong>, ça commence à avoir du sens. Leurs consultants connaissent bien les spécificités sectorielles, ce qui aide pas mal sur les conventions collectives compliquées.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Support client réactif avec des conseillers dédiés</td>
-            <td>Tarifs élevés pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Possibilité de déléguer certaines tâches à ADP</td>
-            <td>Quelques bugs de synchronisation avec les systèmes tiers</td>
-          </tr>
-          <tr>
-            <td>Bonne gestion des variables de paie complexes</td>
-            <td>Paramétrage initial assez lourd à mettre en place</td>
-          </tr>
-          <tr>
-            <td>Interface moderne et ergonomique</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Support client réactif avec des conseillers dédiés</td></tr><tr><td>Possibilité de déléguer certaines tâches à ADP</td></tr><tr><td>Bonne gestion des variables de paie complexes</td></tr><tr><td>Interface moderne et ergonomique</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarifs élevés pour les petites structures</td></tr><tr><td>Quelques bugs de synchronisation avec les systèmes tiers</td></tr><tr><td>Paramétrage initial assez lourd à mettre en place</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -675,36 +617,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>My Silae fait partie des solutions françaises qui bougent sur la paie. Je l'ai testé pendant plusieurs mois et il <strong>s'adresse vraiment aux TPE/PME</strong> qui veulent une approche terrain plutôt que des usines à gaz.
-
-<p>L'interface reste sobre, on trouve rapidement ce qu'on cherche.</p><p>Ce qui m'a marqué ? <strong>La gestion des congés payés est bien fichue</strong> et le calcul des charges sociales se fait sans accroc.</p>
-
-<p>Pour les entreprises entre 5 et 50 salariés, c'est cohérent. Par contre, si tu cherches du sur-mesure ou des workflows complexes, tu risques d'être déçu.</p><p>L'éditeur mise sur la <strong>simplicité d'usage</strong> et ça se ressent.</p>
-
-<p>Pas de fioritures, juste ce qu'il faut pour faire tourner une paie correctement. Le support technique répond vite quand on a un problème, j'ai rarement attendu plus d'une journée pour avoir une réponse utile.</p></p>
+            <p>My Silae fait partie des solutions françaises qui bougent sur la paie. Je l'ai testé pendant plusieurs mois et il <strong>s'adresse vraiment aux TPE/PME</strong> qui veulent une approche terrain plutôt que des usines à gaz. L'interface reste sobre, on trouve rapidement ce qu'on cherche.</p><p>Ce qui m'a marqué ? <strong>La gestion des congés payés est bien fichue</strong> et le calcul des charges sociales se fait sans accroc. Pour les entreprises entre 5 et 50 salariés, c'est cohérent. Par contre, si tu cherches du sur-mesure ou des workflows complexes, tu risques d'être déçu.</p><p>L'éditeur mise sur la <strong>simplicité d'usage</strong> et ça se ressent. Pas de fioritures, juste ce qu'il faut pour faire tourner une paie correctement. Le support technique répond vite quand on a un problème, j'ai rarement attendu plus d'une journée pour avoir une réponse utile.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive qui ne nécessite pas de formation poussée</td>
-            <td>Fonctionnalités limitées pour les grandes entreprises multi-sites</td>
-          </tr>
-          <tr>
-            <td>Gestion automatisée des congés payés et RTT avec calculs précis</td>
-            <td>Personnalisation des bulletins de paie assez rigide</td>
-          </tr>
-          <tr>
-            <td>Support client réactif avec des conseillers spécialisés paie</td>
-            <td>Intégrations avec d'autres logiciels parfois laborieuses</td>
-          </tr>
-          <tr>
-            <td>Tarification transparente sans frais cachés sur les fonctionnalités de base</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive qui ne nécessite pas de formation poussée</td></tr><tr><td>Gestion automatisée des congés payés et RTT avec calculs précis</td></tr><tr><td>Support client réactif avec des conseillers spécialisés paie</td></tr><tr><td>Tarification transparente sans frais cachés sur les fonctionnalités de base</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités limitées pour les grandes entreprises multi-sites</td></tr><tr><td>Personnalisation des bulletins de paie assez rigide</td></tr><tr><td>Intégrations avec d'autres logiciels parfois laborieuses</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -720,38 +645,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Factorial fusionne la gestion RH et paie dans une interface assez claire. Je l'ai testé sur une équipe de 25 personnes et j'apprécie son approche tout-en-un qui évite de jongler entre plusieurs outils.
-
-<p><strong>L'automatisation de la paie</strong> fonctionne bien pour les structures simples, avec moins de manipulations manuelles qu'ailleurs.</p><p>Ce qui m'a marqué, c'est la facilité pour gérer les congés, absences et variables de paie depuis le même endroit.</p>
-
-<p>Les bulletins se génèrent correctement et l'export comptable simplifie les échanges avec l'expert-comptable.</p>
-
-<p>Par contre, on sent que c'est pensé pour des entreprises en croissance plutôt que des structures complexes avec plein de conventions collectives.</p><p>L'onboarding des nouveaux salariés via Factorial prend <strong>deux fois moins de temps</strong> qu'avant.</p>
-
-<p>Ils remplissent leurs infos directement, signent numériquement leurs contrats, et tout arrive dans le logiciel de paie automatiquement. Franchement pratique pour éviter les allers-retours administratifs.</p></p>
+            <p>Factorial fusionne la gestion RH et paie dans une interface assez claire. Je l'ai testé sur une équipe de 25 personnes et j'apprécie son approche tout-en-un qui évite de jongler entre plusieurs outils. <strong>L'automatisation de la paie</strong> fonctionne bien pour les structures simples, avec moins de manipulations manuelles qu'ailleurs.</p><p>Ce qui m'a marqué, c'est la facilité pour gérer les congés, absences et variables de paie depuis le même endroit. Les bulletins se génèrent correctement et l'export comptable simplifie les échanges avec l'expert-comptable. Par contre, on sent que c'est pensé pour des entreprises en croissance plutôt que des structures complexes avec plein de conventions collectives.</p><p>L'onboarding des nouveaux salariés via Factorial prend <strong>deux fois moins de temps</strong> qu'avant. Ils remplissent leurs infos directement, signent numériquement leurs contrats, et tout arrive dans le logiciel de paie automatiquement. Franchement pratique pour éviter les allers-retours administratifs.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface RH et paie unifiée qui évite les doubles saisies</td>
-            <td>Gestion limitée des conventions collectives complexes</td>
-          </tr>
-          <tr>
-            <td>Automatisation des bulletins pour profils standards</td>
-            <td>Paramétrage parfois rigide pour les cas de paie particuliers</td>
-          </tr>
-          <tr>
-            <td>Onboarding digital des employés avec signature électronique</td>
-            <td>Support francophone pas toujours réactif aux heures de pointe</td>
-          </tr>
-          <tr>
-            <td>Exports comptables directs vers la plupart des logiciels</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface RH et paie unifiée qui évite les doubles saisies</td></tr><tr><td>Automatisation des bulletins pour profils standards</td></tr><tr><td>Onboarding digital des employés avec signature électronique</td></tr><tr><td>Exports comptables directs vers la plupart des logiciels</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Gestion limitée des conventions collectives complexes</td></tr><tr><td>Paramétrage parfois rigide pour les cas de paie particuliers</td></tr><tr><td>Support francophone pas toujours réactif aux heures de pointe</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -767,38 +673,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>EBP Paie, je l'ai testé dans une PME de 25 salariés et franchement, <strong>ça fait le travail</strong> pour les entreprises qui cherchent du solide sans se ruiner.
-
-<p>On parle d'un logiciel de paie français qui gère les bulletins, les charges sociales et les déclarations DSN sans chichi particulier.</p><p>Ce qui m'a marqué ?</p>
-
-<p>La <strong>prise en main plutôt rapide</strong> pour quelqu'un qui connaît déjà un peu la paie. J'ai pu paramétrer les profils de paie en deux jours, synchroniser avec la comptabilité EBP et sortir mes premiers bulletins sans galère.</p>
-
-<p>Le module de gestion des congés fonctionne bien, même si l'interface fait un peu années 2010.</p><p>Par contre, je ne recommande pas EBP Paie si vous cherchez de l'innovation ou des fonctionnalités RH avancées.</p>
-
-<p>C'est du <strong>basique efficace</strong>, parfait pour les entreprises traditionnelles qui veulent juste que la paie soit correctement calculée et déclarée chaque mois.</p></p>
+            <p>EBP Paie, je l'ai testé dans une PME de 25 salariés et franchement, <strong>ça fait le travail</strong> pour les entreprises qui cherchent du solide sans se ruiner. On parle d'un logiciel de paie français qui gère les bulletins, les charges sociales et les déclarations DSN sans chichi particulier.</p><p>Ce qui m'a marqué ? La <strong>prise en main plutôt rapide</strong> pour quelqu'un qui connaît déjà un peu la paie. J'ai pu paramétrer les profils de paie en deux jours, synchroniser avec la comptabilité EBP et sortir mes premiers bulletins sans galère. Le module de gestion des congés fonctionne bien, même si l'interface fait un peu années 2010.</p><p>Par contre, je ne recommande pas EBP Paie si vous cherchez de l'innovation ou des fonctionnalités RH avancées. C'est du <strong>basique efficace</strong>, parfait pour les entreprises traditionnelles qui veulent juste que la paie soit correctement calculée et déclarée chaque mois.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface stable et fiable pour les calculs de paie standards</td>
-            <td>Interface graphique vieillissante qui manque de modernité</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec la gamme comptabilité EBP</td>
-            <td>Fonctionnalités RH limitées comparé aux solutions cloud récentes</td>
-          </tr>
-          <tr>
-            <td>Support téléphonique réactif avec des conseillers qui connaissent le métier</td>
-            <td>Gestion des variables de paie complexes parfois laborieuse</td>
-          </tr>
-          <tr>
-            <td>Tarifs accessibles aux PME avec licence perpétuelle disponible</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface stable et fiable pour les calculs de paie standards</td></tr><tr><td>Intégration native avec la gamme comptabilité EBP</td></tr><tr><td>Support téléphonique réactif avec des conseillers qui connaissent le métier</td></tr><tr><td>Tarifs accessibles aux PME avec licence perpétuelle disponible</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface graphique vieillissante qui manque de modernité</td></tr><tr><td>Fonctionnalités RH limitées comparé aux solutions cloud récentes</td></tr><tr><td>Gestion des variables de paie complexes parfois laborieuse</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -814,40 +701,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé Openpaye il y a quelques mois et je dois dire que ce <strong>logiciel de paie français</strong> m'a surpris par sa simplicité. Conçu par des experts-comptables, il se concentre sur l'essentiel sans fioritures.
-
-<p>L'interface est claire, les bulletins respectent parfaitement la réglementation française et <strong>l'automatisation des charges sociales</strong> fonctionne sans accroc.</p><p>Ce qui m'a séduit ? La prise en main rapide.</p>
-
-<p>En deux heures, j'avais paramétré une première paie pour un client de 15 salariés.</p>
-
-<p>Les modèles de contrats sont pré-remplis, les taux de cotisations se mettent à jour automatiquement et <strong>l'export vers les organismes sociaux</strong> se fait en un clic.</p>
-
-<p>Parfait pour les cabinets comptables ou les PME qui veulent du pragmatique.</p><p>Openpaye mise tout sur la conformité légale et la fiabilité. Pas de gadgets, juste un outil qui produit des bulletins de paie corrects sans stress.</p>
-
-<p>Je recommande particulièrement aux structures de <strong>5 à 50 salariés</strong> qui cherchent une solution française avec un support réactif en cas de question réglementaire.</p></p>
+            <p>J'ai testé Openpaye il y a quelques mois et je dois dire que ce <strong>logiciel de paie français</strong> m'a surpris par sa simplicité. Conçu par des experts-comptables, il se concentre sur l'essentiel sans fioritures. L'interface est claire, les bulletins respectent parfaitement la réglementation française et <strong>l'automatisation des charges sociales</strong> fonctionne sans accroc.</p><p>Ce qui m'a séduit ? La prise en main rapide. En deux heures, j'avais paramétré une première paie pour un client de 15 salariés. Les modèles de contrats sont pré-remplis, les taux de cotisations se mettent à jour automatiquement et <strong>l'export vers les organismes sociaux</strong> se fait en un clic. Parfait pour les cabinets comptables ou les PME qui veulent du pragmatique.</p><p>Openpaye mise tout sur la conformité légale et la fiabilité. Pas de gadgets, juste un outil qui produit des bulletins de paie corrects sans stress. Je recommande particulièrement aux structures de <strong>5 à 50 salariés</strong> qui cherchent une solution française avec un support réactif en cas de question réglementaire.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive sans formation longue nécessaire</td>
-            <td>Peu de personnalisation des rapports avancés</td>
-          </tr>
-          <tr>
-            <td>Mise à jour automatique des taux de charges et barèmes</td>
-            <td>Pas d'application mobile pour les salariés</td>
-          </tr>
-          <tr>
-            <td>Export DSN et déclarations sociales intégrées</td>
-            <td>Fonctionnalités RH limitées (pas de gestion congés intégrée)</td>
-          </tr>
-          <tr>
-            <td>Support client spécialisé en paie française</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive sans formation longue nécessaire</td></tr><tr><td>Mise à jour automatique des taux de charges et barèmes</td></tr><tr><td>Export DSN et déclarations sociales intégrées</td></tr><tr><td>Support client spécialisé en paie française</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Peu de personnalisation des rapports avancés</td></tr><tr><td>Pas d'application mobile pour les salariés</td></tr><tr><td>Fonctionnalités RH limitées (pas de gestion congés intégrée)</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -863,44 +729,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Sage Business Cloud Paie</strong> pendant 8 mois dans une PME de 45 salariés et je peux dire qu'on a enfin trouvé un logiciel de paie qui fait son boulot sans nous prendre la tête.
-
-<p>Contrairement aux gros ERP complexes, celui-ci reste accessible même si vous n'êtes pas expert comptable.</p>
-
-<p>La synchronisation avec les organismes sociaux fonctionne bien, les bulletins sortent proprement et j'ai gagné pas mal de temps sur les déclarations.</p><p>Ce qui m'a vraiment convaincu, c'est la fiabilité du calcul des cotisations.</p>
-
-<p><strong>Sage met à jour automatiquement les taux</strong> dès qu'ils changent, ce qui m'évite de surveiller en permanence les modifications légales.</p>
-
-<p>L'interface reste claire même quand on gère des situations complexes : temps partiel thérapeutique, congés parentaux, primes variables.</p>
-
-<p>Par contre, il faut compter quelques semaines pour bien maîtriser toutes les subtilités.</p><p>Je recommande ce logiciel de paie pour les entreprises de 20 à 200 salariés qui veulent de la sécurité juridique sans se compliquer la vie.</p>
-
-<p><strong>Les tarifs démarrent autour de <strong>15€</strong> par bulletin</strong> selon les options choisies. Si vous cherchez juste à faire vos fiches de paie sans fioriture, ça fait le travail.</p>
-
-<p>Pour les très grosses structures avec des besoins ultra spécifiques, il existe probablement plus costaud.</p></p>
+            <p>J'ai testé <strong>Sage Business Cloud Paie</strong> pendant 8 mois dans une PME de 45 salariés et je peux dire qu'on a enfin trouvé un logiciel de paie qui fait son boulot sans nous prendre la tête. Contrairement aux gros ERP complexes, celui-ci reste accessible même si vous n'êtes pas expert comptable. La synchronisation avec les organismes sociaux fonctionne bien, les bulletins sortent proprement et j'ai gagné pas mal de temps sur les déclarations.</p><p>Ce qui m'a vraiment convaincu, c'est la fiabilité du calcul des cotisations. <strong>Sage met à jour automatiquement les taux</strong> dès qu'ils changent, ce qui m'évite de surveiller en permanence les modifications légales. L'interface reste claire même quand on gère des situations complexes : temps partiel thérapeutique, congés parentaux, primes variables. Par contre, il faut compter quelques semaines pour bien maîtriser toutes les subtilités.</p><p>Je recommande ce logiciel de paie pour les entreprises de 20 à 200 salariés qui veulent de la sécurité juridique sans se compliquer la vie. <strong>Les tarifs démarrent autour de <strong>15€</strong> par bulletin</strong> selon les options choisies. Si vous cherchez juste à faire vos fiches de paie sans fioriture, ça fait le travail. Pour les très grosses structures avec des besoins ultra spécifiques, il existe probablement plus costaud.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Mise à jour automatique des taux de cotisations et conformité légale</td>
-            <td>Courbe d'apprentissage de plusieurs semaines pour exploiter toutes les fonctionnalités</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive même pour les profils non-experts en paie</td>
-            <td>Coût qui peut grimper rapidement avec les options et le nombre de salariés</td>
-          </tr>
-          <tr>
-            <td>Synchronisation directe avec les organismes sociaux (DSN, télédéclarations)</td>
-            <td>Support technique parfois lent en période de rush (fin de mois, déclarations)</td>
-          </tr>
-          <tr>
-            <td>Gestion complète des situations complexes (temps partiel, congés spéciaux)</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Mise à jour automatique des taux de cotisations et conformité légale</td></tr><tr><td>Interface intuitive même pour les profils non-experts en paie</td></tr><tr><td>Synchronisation directe avec les organismes sociaux (DSN, télédéclarations)</td></tr><tr><td>Gestion complète des situations complexes (temps partiel, congés spéciaux)</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Courbe d'apprentissage de plusieurs semaines pour exploiter toutes les fonctionnalités</td></tr><tr><td>Coût qui peut grimper rapidement avec les options et le nombre de salariés</td></tr><tr><td>Support technique parfois lent en période de rush (fin de mois, déclarations)</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -916,40 +757,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Cegid Payroll fait partie de la suite RH de Cegid et s'adresse principalement aux moyennes et grandes entreprises qui cherchent une solution de paie robuste.
-
-<p>J'ai testé ce logiciel dans une PME de 200 salariés et <strong>la prise en main demande du temps</strong>, mais une fois maîtrisé, il gère efficacement les paies complexes avec ses multiples conventions collectives et statuts particuliers.</p><p>Le point fort de Cegid Payroll, c'est sa capacité à traiter les paies compliquées.</p>
-
-<p>Les entreprises avec du personnel en multi-établissements, des cadres au forfait jour, des VRP ou des apprentis apprécient sa flexibilité. <strong>La DSN est automatisée</strong> et les contrôles de cohérence évitent pas mal d'erreurs.</p>
-
-<p>Par contre, j'ai trouvé l'interface vieillotte comparée à des solutions plus récentes.</p><p>Côté reporting, on peut créer des tableaux de bord personnalisés assez poussés.</p>
-
-<p>La synchronisation avec les autres modules Cegid (gestion des temps, talent management) fonctionne bien si vous êtes dans l'écosystème.</p>
-
-<p><strong>Attention au coût</strong> : c'est un investissement conséquent qui se justifie surtout à partir de 150-200 salariés selon mon expérience.</p></p>
+            <p>Cegid Payroll fait partie de la suite RH de Cegid et s'adresse principalement aux moyennes et grandes entreprises qui cherchent une solution de paie robuste. J'ai testé ce logiciel dans une PME de 200 salariés et <strong>la prise en main demande du temps</strong>, mais une fois maîtrisé, il gère efficacement les paies complexes avec ses multiples conventions collectives et statuts particuliers.</p><p>Le point fort de Cegid Payroll, c'est sa capacité à traiter les paies compliquées. Les entreprises avec du personnel en multi-établissements, des cadres au forfait jour, des VRP ou des apprentis apprécient sa flexibilité. <strong>La DSN est automatisée</strong> et les contrôles de cohérence évitent pas mal d'erreurs. Par contre, j'ai trouvé l'interface vieillotte comparée à des solutions plus récentes.</p><p>Côté reporting, on peut créer des tableaux de bord personnalisés assez poussés. La synchronisation avec les autres modules Cegid (gestion des temps, talent management) fonctionne bien si vous êtes dans l'écosystème. <strong>Attention au coût</strong> : c'est un investissement conséquent qui se justifie surtout à partir de 150-200 salariés selon mon expérience.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Gestion avancée des conventions collectives multiples</td>
-            <td>Interface utilisateur datée et peu intuitive</td>
-          </tr>
-          <tr>
-            <td>Automatisation complète de la DSN et déclarations sociales</td>
-            <td>Coût élevé qui ne se justifie qu'à partir de 150 salariés</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec l'écosystème Cegid RH</td>
-            <td>Formation longue nécessaire pour exploiter toutes les fonctionnalités</td>
-          </tr>
-          <tr>
-            <td>Contrôles de cohérence poussés qui limitent les erreurs de paie</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Gestion avancée des conventions collectives multiples</td></tr><tr><td>Automatisation complète de la DSN et déclarations sociales</td></tr><tr><td>Intégration native avec l'écosystème Cegid RH</td></tr><tr><td>Contrôles de cohérence poussés qui limitent les erreurs de paie</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface utilisateur datée et peu intuitive</td></tr><tr><td>Coût élevé qui ne se justifie qu'à partir de 150 salariés</td></tr><tr><td>Formation longue nécessaire pour exploiter toutes les fonctionnalités</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1241,7 +1061,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 laboxentrepreneuriat.fr — Données actualisées le 2 octobre 2026
+        © 2026 laboxentrepreneuriat.fr — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

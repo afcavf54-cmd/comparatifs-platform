@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -490,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Comparatif des meilleurs logiciels de gestion des congés et absences parmi 8 tests</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 8 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 8 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Hugo Simon" class="hero-author-avatar">
     <span>Rédigé par Hugo Simon</span>
@@ -530,38 +535,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>PayFit se présente comme un logiciel RH complet où la gestion des congés ne représente qu'une partie de l'offre globale.
-
-<p>Je l'ai testé principalement pour <strong>automatiser les demandes de vacances</strong> et gérer les soldes, mais on se retrouve avec tout un écosystème paie, contrats et administration du personnel.</p><p>L'interface reste plutôt intuitive pour les salariés qui peuvent faire leurs demandes directement depuis leur smartphone.</p>
-
-<p>Les managers reçoivent les notifications par mail et peuvent <strong>valider en deux clics</strong>.</p>
-
-<p>Le calcul automatique des soldes évite les erreurs manuelles qu'on avait avec notre ancien système Excel.</p><p>Par contre, je trouve que PayFit vise clairement les entreprises de <strong>20 à 200 salariés</strong> qui cherchent à centraliser toute leur gestion RH.</p>
-
-<p>Pour une TPE qui veut juste gérer les congés, c'est un peu comme prendre un marteau-pilon pour enfoncer un clou. Le prix reflète cette ambition : comptez minimum <strong>4€</strong> par salarié par mois.</p></p>
+            <p>PayFit se présente comme un logiciel RH complet où la gestion des congés ne représente qu'une partie de l'offre globale. Je l'ai testé principalement pour <strong>automatiser les demandes de vacances</strong> et gérer les soldes, mais on se retrouve avec tout un écosystème paie, contrats et administration du personnel.</p><p>L'interface reste plutôt intuitive pour les salariés qui peuvent faire leurs demandes directement depuis leur smartphone. Les managers reçoivent les notifications par mail et peuvent <strong>valider en deux clics</strong>. Le calcul automatique des soldes évite les erreurs manuelles qu'on avait avec notre ancien système Excel.</p><p>Par contre, je trouve que PayFit vise clairement les entreprises de <strong>20 à 200 salariés</strong> qui cherchent à centraliser toute leur gestion RH. Pour une TPE qui veut juste gérer les congés, c'est un peu comme prendre un marteau-pilon pour enfoncer un clou. Le prix reflète cette ambition : comptez minimum <strong>4€</strong> par salarié par mois.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface mobile fluide pour les demandes salariés</td>
-            <td>Prix élevé si on ne veut que gérer les congés</td>
-          </tr>
-          <tr>
-            <td>Calcul automatique des soldes et reports N+1</td>
-            <td>Fonctionnalités avancées parfois trop complexes pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Synchronisation directe avec la paie</td>
-            <td>Dépendance forte à l'écosystème PayFit pour être rentable</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation personnalisables selon les équipes</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface mobile fluide pour les demandes salariés</td></tr><tr><td>Calcul automatique des soldes et reports N+1</td></tr><tr><td>Synchronisation directe avec la paie</td></tr><tr><td>Workflows de validation personnalisables selon les équipes</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix élevé si on ne veut que gérer les congés</td></tr><tr><td>Fonctionnalités avancées parfois trop complexes pour les petites structures</td></tr><tr><td>Dépendance forte à l'écosystème PayFit pour être rentable</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -577,42 +563,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Je vais être franc : Keeple m'a d'abord paru comme un énième logiciel de congés parmi tant d'autres. Puis j'ai creusé.
-
-<p><strong>Cette solution française mise tout sur la simplicité</strong> avec une interface qui ressemble plus à une app mobile qu'à un logiciel RH traditionnel. L'idée ?</p>
-
-<p>Que vos salariés puissent poser leurs congés en 30 secondes chrono, même depuis leur téléphone.</p><p>Ce qui m'a marqué chez Keeple, c'est leur approche du planning collectif. Fini les tableaux Excel partagés qui plantent.</p>
-
-<p>Ici, <strong>tout le monde voit qui est absent quand</strong>, avec des codes couleur clairs et une vue calendrier vraiment lisible.</p>
-
-<p>J'ai testé avec une équipe de 15 personnes : même les plus réfractaires au numérique s'y sont mis rapidement.</p><p>Keeple automatise pas mal de trucs pénibles.</p>
-
-<p>Les soldes de congés se calculent automatiquement, <strong>les validations se font par notification push</strong>, et vous pouvez même programmer des rappels pour les congés non pris.</p>
-
-<p>Par contre, ne vous attendez pas à un mastodonte comme Lucca : on reste sur du basique efficace, parfait pour les PME qui veulent juste que ça marche.</p></p>
+            <p>Je vais être franc : Keeple m'a d'abord paru comme un énième logiciel de congés parmi tant d'autres. Puis j'ai creusé. <strong>Cette solution française mise tout sur la simplicité</strong> avec une interface qui ressemble plus à une app mobile qu'à un logiciel RH traditionnel. L'idée ? Que vos salariés puissent poser leurs congés en 30 secondes chrono, même depuis leur téléphone.</p><p>Ce qui m'a marqué chez Keeple, c'est leur approche du planning collectif. Fini les tableaux Excel partagés qui plantent. Ici, <strong>tout le monde voit qui est absent quand</strong>, avec des codes couleur clairs et une vue calendrier vraiment lisible. J'ai testé avec une équipe de 15 personnes : même les plus réfractaires au numérique s'y sont mis rapidement.</p><p>Keeple automatise pas mal de trucs pénibles. Les soldes de congés se calculent automatiquement, <strong>les validations se font par notification push</strong>, et vous pouvez même programmer des rappels pour les congés non pris. Par contre, ne vous attendez pas à un mastodonte comme Lucca : on reste sur du basique efficace, parfait pour les PME qui veulent juste que ça marche.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface mobile vraiment réussie, utilisable partout</td>
-            <td>Peu de possibilités de personnalisation avancée</td>
-          </tr>
-          <tr>
-            <td>Planning collectif visuel et codes couleur intuitifs</td>
-            <td>Reporting limité pour les grandes structures</td>
-          </tr>
-          <tr>
-            <td>Paramétrage rapide en moins d'une heure</td>
-            <td>Pas d'intégration native avec tous les SIRH</td>
-          </tr>
-          <tr>
-            <td>Support réactif avec des vrais humains français</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface mobile vraiment réussie, utilisable partout</td></tr><tr><td>Planning collectif visuel et codes couleur intuitifs</td></tr><tr><td>Paramétrage rapide en moins d'une heure</td></tr><tr><td>Support réactif avec des vrais humains français</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Peu de possibilités de personnalisation avancée</td></tr><tr><td>Reporting limité pour les grandes structures</td></tr><tr><td>Pas d'intégration native avec tous les SIRH</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -628,42 +591,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>AttendanceBot transforme Slack en véritable outil de gestion des congés. Je l'ai testé dans une startup tech de 35 personnes où tout passe par Slack.
-
-<p><strong>Demander ses RTT directement dans le chat d'équipe</strong>, c'est pratique mais ça demande un changement d'habitudes.</p><p>L'outil brille par sa simplicité d'intégration.</p>
-
-<p>En 20 minutes, j'avais paramétré les types de congés, défini qui valide quoi, et synchronisé avec notre calendrier Google.</p>
-
-<p>Les demandes arrivent automatiquement sur le bon canal, les managers reçoivent leurs notifications, et tout le monde voit les absences à venir.</p>
-
-<p><strong>Pas besoin de former les équipes</strong>, ils utilisent déjà Slack toute la journée.</p><p>Par contre, ne vous attendez pas aux fonctionnalités avancées d'un SIRH classique.</p>
-
-<p>Pas de gestion des heures sup, pas de calcul de provisions RTT, pas de reporting RH poussé. AttendanceBot fait une chose mais la fait bien : <strong>centraliser les demandes d'absence dans l'outil que vous utilisez déjà</strong>.</p>
-
-<p>Pour une PME qui vit dans Slack, ça change la donne.</p></p>
+            <p>AttendanceBot transforme Slack en véritable outil de gestion des congés. Je l'ai testé dans une startup tech de 35 personnes où tout passe par Slack. <strong>Demander ses RTT directement dans le chat d'équipe</strong>, c'est pratique mais ça demande un changement d'habitudes.</p><p>L'outil brille par sa simplicité d'intégration. En 20 minutes, j'avais paramétré les types de congés, défini qui valide quoi, et synchronisé avec notre calendrier Google. Les demandes arrivent automatiquement sur le bon canal, les managers reçoivent leurs notifications, et tout le monde voit les absences à venir. <strong>Pas besoin de former les équipes</strong>, ils utilisent déjà Slack toute la journée.</p><p>Par contre, ne vous attendez pas aux fonctionnalités avancées d'un SIRH classique. Pas de gestion des heures sup, pas de calcul de provisions RTT, pas de reporting RH poussé. AttendanceBot fait une chose mais la fait bien : <strong>centraliser les demandes d'absence dans l'outil que vous utilisez déjà</strong>. Pour une PME qui vit dans Slack, ça change la donne.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native Slack sans formation utilisateur</td>
-            <td>Limité aux utilisateurs Slack uniquement</td>
-          </tr>
-          <tr>
-            <td>Configuration rapide en moins de 30 minutes</td>
-            <td>Pas de gestion avancée des soldes et provisions</td>
-          </tr>
-          <tr>
-            <td>Notifications automatiques aux managers dans les bons canaux</td>
-            <td>Reporting basique comparé aux SIRH traditionnels</td>
-          </tr>
-          <tr>
-            <td>Synchronisation bidirectionnelle avec Google Calendar et Outlook</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native Slack sans formation utilisateur</td></tr><tr><td>Configuration rapide en moins de 30 minutes</td></tr><tr><td>Notifications automatiques aux managers dans les bons canaux</td></tr><tr><td>Synchronisation bidirectionnelle avec Google Calendar et Outlook</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Limité aux utilisateurs Slack uniquement</td></tr><tr><td>Pas de gestion avancée des soldes et provisions</td></tr><tr><td>Reporting basique comparé aux SIRH traditionnels</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -679,40 +619,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Eurécia</strong> pendant plusieurs mois et je peux dire que c'est un logiciel de gestion des congés qui mise tout sur la simplicité d'utilisation.
-
-<p>L'interface épurée permet aux salariés de faire leurs demandes d'absence en quelques clics, et j'ai apprécié le système de validation automatique selon les règles métier qu'on définit.</p>
-
-<p>Les managers reçoivent les notifications directement par mail et peuvent approuver ou refuser depuis leur smartphone.</p><p>Ce qui m'a marqué avec Eurécia, c'est la gestion intelligente des soldes de congés.</p>
-
-<p>Le logiciel calcule automatiquement les droits acquis, gère les reports d'une année sur l'autre et <strong>intègre même les jours fériés locaux</strong> selon la région.</p>
-
-<p>Les tableaux de bord RH donnent une vision claire des absences prévisionnelles, pratique pour anticiper la charge de travail.</p><p>Pour une PME de 50 à 300 salariés qui cherche un outil fiable sans complications techniques, Eurécia répond bien au besoin.</p>
-
-<p>Le module de planification des équipes aide à visualiser qui est présent ou absent sur une période donnée. J'ai trouvé le <strong>support client réactif</strong>, même si parfois les réponses manquent de précision technique.</p></p>
+            <p>J'ai testé <strong>Eurécia</strong> pendant plusieurs mois et je peux dire que c'est un logiciel de gestion des congés qui mise tout sur la simplicité d'utilisation. L'interface épurée permet aux salariés de faire leurs demandes d'absence en quelques clics, et j'ai apprécié le système de validation automatique selon les règles métier qu'on définit. Les managers reçoivent les notifications directement par mail et peuvent approuver ou refuser depuis leur smartphone.</p><p>Ce qui m'a marqué avec Eurécia, c'est la gestion intelligente des soldes de congés. Le logiciel calcule automatiquement les droits acquis, gère les reports d'une année sur l'autre et <strong>intègre même les jours fériés locaux</strong> selon la région. Les tableaux de bord RH donnent une vision claire des absences prévisionnelles, pratique pour anticiper la charge de travail.</p><p>Pour une PME de 50 à 300 salariés qui cherche un outil fiable sans complications techniques, Eurécia répond bien au besoin. Le module de planification des équipes aide à visualiser qui est présent ou absent sur une période donnée. J'ai trouvé le <strong>support client réactif</strong>, même si parfois les réponses manquent de précision technique.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive même pour les non-initiés</td>
-            <td>Peu de personnalisation avancée des workflows</td>
-          </tr>
-          <tr>
-            <td>Calculs automatiques des soldes et droits à congés</td>
-            <td>Rapports analytiques assez basiques</td>
-          </tr>
-          <tr>
-            <td>Application mobile fonctionnelle pour les validations</td>
-            <td>Coût qui grimpe vite avec les modules supplémentaires</td>
-          </tr>
-          <tr>
-            <td>Intégration avec les principaux logiciels de paie français</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive même pour les non-initiés</td></tr><tr><td>Calculs automatiques des soldes et droits à congés</td></tr><tr><td>Application mobile fonctionnelle pour les validations</td></tr><tr><td>Intégration avec les principaux logiciels de paie français</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Peu de personnalisation avancée des workflows</td></tr><tr><td>Rapports analytiques assez basiques</td></tr><tr><td>Coût qui grimpe vite avec les modules supplémentaires</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -728,40 +647,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Lucca s'attaque à la gestion des congés avec une approche collaborative qui plaît aux équipes RH.
-
-<p>J'apprécie particulièrement la façon dont le logiciel <strong>facilite les demandes croisées</strong> entre collègues et la validation hiérarchique.</p>
-
-<p>L'interface reste claire même quand on gère plusieurs centaines de salariés.</p><p>Le module de planification des absences me semble bien pensé.</p>
-
-<p>On peut visualiser les périodes de forte charge, anticiper les conflits de planning et même mettre en place des règles automatiques selon les services.</p>
-
-<p><strong>L'intégration avec la paie</strong> fonctionne correctement avec la plupart des solutions du marché.</p><p>Lucca convient aux entreprises qui veulent dépasser le simple suivi des congés payés.</p>
-
-<p>Le logiciel gère les RTT, récupérations, formations et même les arrêts maladie avec un niveau de détail intéressant. Par contre, je trouve l'onboarding un peu long sur les fonctionnalités avancées.</p></p>
+            <p>Lucca s'attaque à la gestion des congés avec une approche collaborative qui plaît aux équipes RH. J'apprécie particulièrement la façon dont le logiciel <strong>facilite les demandes croisées</strong> entre collègues et la validation hiérarchique. L'interface reste claire même quand on gère plusieurs centaines de salariés.</p><p>Le module de planification des absences me semble bien pensé. On peut visualiser les périodes de forte charge, anticiper les conflits de planning et même mettre en place des règles automatiques selon les services. <strong>L'intégration avec la paie</strong> fonctionne correctement avec la plupart des solutions du marché.</p><p>Lucca convient aux entreprises qui veulent dépasser le simple suivi des congés payés. Le logiciel gère les RTT, récupérations, formations et même les arrêts maladie avec un niveau de détail intéressant. Par contre, je trouve l'onboarding un peu long sur les fonctionnalités avancées.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Workflows de validation flexibles selon l'organisation</td>
-            <td>Configuration initiale chronophage pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Tableau de bord avec vue globale sur les plannings équipe</td>
-            <td>Tarification qui grimpe vite avec les modules complémentaires</td>
-          </tr>
-          <tr>
-            <td>Export automatique vers les logiciels de paie courants</td>
-            <td>Support technique parfois lent en période de congés d'été</td>
-          </tr>
-          <tr>
-            <td>Application mobile fonctionnelle pour les demandes en déplacement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Workflows de validation flexibles selon l'organisation</td></tr><tr><td>Tableau de bord avec vue globale sur les plannings équipe</td></tr><tr><td>Export automatique vers les logiciels de paie courants</td></tr><tr><td>Application mobile fonctionnelle pour les demandes en déplacement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Configuration initiale chronophage pour les petites structures</td></tr><tr><td>Tarification qui grimpe vite avec les modules complémentaires</td></tr><tr><td>Support technique parfois lent en période de congés d'été</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -777,42 +675,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Zoho People fait partie de l'écosystème Zoho, ce qui représente à la fois sa force et sa complexité.
-
-<p>J'ai testé cette <strong>solution de gestion des congés</strong> dans plusieurs contextes et je trouve qu'elle brille surtout quand on utilise déjà d'autres outils Zoho.</p>
-
-<p>L'interface demande un temps d'adaptation, mais une fois maîtrisée, elle permet de gérer efficacement les demandes d'absence.</p><p>Ce qui m'a marqué : <strong>l'automatisation des workflows</strong>.</p>
-
-<p>On peut configurer des circuits de validation complexes, avec des règles métier précises. Par exemple, j'ai paramétré un système où les congés de plus de 5 jours passent automatiquement par deux niveaux de validation.</p>
-
-<p>Le module de planification des équipes aide vraiment à anticiper les périodes critiques.</p><p>Le reporting reste correct sans être exceptionnel.</p>
-
-<p>Les tableaux de bord donnent une vue d'ensemble des soldes de congés et des tendances d'absentéisme. <strong>Point fort</strong> : la gestion multi-entités pour les groupes avec plusieurs filiales.</p>
-
-<p>Moins convaincant : l'expérience mobile pourrait être plus fluide.</p></p>
+            <p>Zoho People fait partie de l'écosystème Zoho, ce qui représente à la fois sa force et sa complexité. J'ai testé cette <strong>solution de gestion des congés</strong> dans plusieurs contextes et je trouve qu'elle brille surtout quand on utilise déjà d'autres outils Zoho. L'interface demande un temps d'adaptation, mais une fois maîtrisée, elle permet de gérer efficacement les demandes d'absence.</p><p>Ce qui m'a marqué : <strong>l'automatisation des workflows</strong>. On peut configurer des circuits de validation complexes, avec des règles métier précises. Par exemple, j'ai paramétré un système où les congés de plus de 5 jours passent automatiquement par deux niveaux de validation. Le module de planification des équipes aide vraiment à anticiper les périodes critiques.</p><p>Le reporting reste correct sans être exceptionnel. Les tableaux de bord donnent une vue d'ensemble des soldes de congés et des tendances d'absentéisme. <strong>Point fort</strong> : la gestion multi-entités pour les groupes avec plusieurs filiales. Moins convaincant : l'expérience mobile pourrait être plus fluide.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native avec l'écosystème Zoho (CRM, Books, Projects)</td>
-            <td>Interface parfois déroutante pour les nouveaux utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation personnalisables et automatisation poussée</td>
-            <td>Application mobile moins ergonomique que la version web</td>
-          </tr>
-          <tr>
-            <td>Gestion multi-entités pour les groupes avec filiales</td>
-            <td>Personnalisation limitée du design et des notifications</td>
-          </tr>
-          <tr>
-            <td>Prix attractif dans les formules groupées Zoho</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native avec l'écosystème Zoho (CRM, Books, Projects)</td></tr><tr><td>Workflows de validation personnalisables et automatisation poussée</td></tr><tr><td>Gestion multi-entités pour les groupes avec filiales</td></tr><tr><td>Prix attractif dans les formules groupées Zoho</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface parfois déroutante pour les nouveaux utilisateurs</td></tr><tr><td>Application mobile moins ergonomique que la version web</td></tr><tr><td>Personnalisation limitée du design et des notifications</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -828,38 +703,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Factorial frappe fort avec une approche tout-en-un pour les RH. Je l'ai testé sur six mois dans une startup de 40 personnes et je dois dire que <strong>l'interface est vraiment bien pensée</strong>.
-
-<p>Les demandes de congés se font en trois clics, les managers valident directement depuis leur tableau de bord, et les soldes se mettent à jour automatiquement.</p><p>Ce qui m'a marqué c'est la <strong>gestion des types d'absences personnalisables</strong>.</p>
-
-<p>On peut créer des catégories spécifiques (télétravail, formation, congés sans solde) avec des règles de validation différentes. Le planning visuel aide vraiment à éviter les doublons d'équipe.</p>
-
-<p>Par contre, j'ai galéré au début avec les notifications mail un peu trop nombreuses.</p><p>Factorial vise clairement les entreprises de 20 à 200 salariés qui veulent digitaliser leurs RH sans se ruiner.</p>
-
-<p><strong>À partir de <strong>3€</strong> par employé</strong>, c'est accessible même pour les petites structures. L'outil couvre aussi la paie, les notes de frais et le recrutement, ce qui évite de jongler entre plusieurs plateformes.</p></p>
+            <p>Factorial frappe fort avec une approche tout-en-un pour les RH. Je l'ai testé sur six mois dans une startup de 40 personnes et je dois dire que <strong>l'interface est vraiment bien pensée</strong>. Les demandes de congés se font en trois clics, les managers valident directement depuis leur tableau de bord, et les soldes se mettent à jour automatiquement.</p><p>Ce qui m'a marqué c'est la <strong>gestion des types d'absences personnalisables</strong>. On peut créer des catégories spécifiques (télétravail, formation, congés sans solde) avec des règles de validation différentes. Le planning visuel aide vraiment à éviter les doublons d'équipe. Par contre, j'ai galéré au début avec les notifications mail un peu trop nombreuses.</p><p>Factorial vise clairement les entreprises de 20 à 200 salariés qui veulent digitaliser leurs RH sans se ruiner. <strong>À partir de <strong>3€</strong> par employé</strong>, c'est accessible même pour les petites structures. L'outil couvre aussi la paie, les notes de frais et le recrutement, ce qui évite de jongler entre plusieurs plateformes.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive avec validation en un clic pour les managers</td>
-            <td>Notifications email trop fréquentes par défaut</td>
-          </tr>
-          <tr>
-            <td>Gestion multi-types d'absences avec règles personnalisées par catégorie</td>
-            <td>Personnalisation limitée des workflows de validation complexes</td>
-          </tr>
-          <tr>
-            <td>Planning visuel d'équipe pour éviter les conflits de dates</td>
-            <td>Support client parfois lent en français</td>
-          </tr>
-          <tr>
-            <td>Prix attractif dès 3€/mois par employé avec plusieurs modules inclus</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive avec validation en un clic pour les managers</td></tr><tr><td>Gestion multi-types d'absences avec règles personnalisées par catégorie</td></tr><tr><td>Planning visuel d'équipe pour éviter les conflits de dates</td></tr><tr><td>Prix attractif dès 3€/mois par employé avec plusieurs modules inclus</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Notifications email trop fréquentes par défaut</td></tr><tr><td>Personnalisation limitée des workflows de validation complexes</td></tr><tr><td>Support client parfois lent en français</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -875,42 +731,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Personio développe une <strong>suite RH complète</strong> où la gestion des congés représente juste une brique d'un ensemble plus large.
-
-<p>Je l'ai testé dans une startup de 80 personnes et franchement, leur approche intégrée change la donne quand on veut centraliser toute sa gestion du personnel.</p>
-
-<p>Les demandes de congés passent par des workflows configurables, avec validation hiérarchique et synchronisation automatique vers la paie.</p><p>Ce qui m'a marqué ? <strong>L'interconnexion native entre tous les modules</strong>.</p>
-
-<p>Quand un salarié pose ses RTT, ça impacte directement le planning, les bulletins de paie, et même les rapports de charge par équipe.</p>
-
-<p>J'ai pu créer des règles métier assez fines : congés bloqués pendant les pics d'activité, reports automatiques selon l'ancienneté, calcul des jours ouvrés par profil de poste.</p><p>Par contre, on paie le prix de cette richesse fonctionnelle.</p>
-
-<p><strong>L'onboarding prend facilement 3 à 4 semaines</strong> pour être opérationnel, et je déconseille Personio si vous cherchez juste un outil de gestion des absences.</p>
-
-<p>C'est pensé pour des entreprises qui veulent digitaliser l'ensemble de leurs processus RH, pas pour faire du ponctuel.</p></p>
+            <p>Personio développe une <strong>suite RH complète</strong> où la gestion des congés représente juste une brique d'un ensemble plus large. Je l'ai testé dans une startup de 80 personnes et franchement, leur approche intégrée change la donne quand on veut centraliser toute sa gestion du personnel. Les demandes de congés passent par des workflows configurables, avec validation hiérarchique et synchronisation automatique vers la paie.</p><p>Ce qui m'a marqué ? <strong>L'interconnexion native entre tous les modules</strong>. Quand un salarié pose ses RTT, ça impacte directement le planning, les bulletins de paie, et même les rapports de charge par équipe. J'ai pu créer des règles métier assez fines : congés bloqués pendant les pics d'activité, reports automatiques selon l'ancienneté, calcul des jours ouvrés par profil de poste.</p><p>Par contre, on paie le prix de cette richesse fonctionnelle. <strong>L'onboarding prend facilement 3 à 4 semaines</strong> pour être opérationnel, et je déconseille Personio si vous cherchez juste un outil de gestion des absences. C'est pensé pour des entreprises qui veulent digitaliser l'ensemble de leurs processus RH, pas pour faire du ponctuel.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native avec la paie et les plannings</td>
-            <td>Tarification élevée pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation très configurables selon la hiérarchie</td>
-            <td>Complexité d'implémentation nécessitant un projet dédié</td>
-          </tr>
-          <tr>
-            <td>Reporting avancé sur les tendances d'absences par équipe</td>
-            <td>Interface parfois lourde pour des besoins simples de congés</td>
-          </tr>
-          <tr>
-            <td>Gestion automatisée des soldes de congés et reports</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native avec la paie et les plannings</td></tr><tr><td>Workflows de validation très configurables selon la hiérarchie</td></tr><tr><td>Reporting avancé sur les tendances d'absences par équipe</td></tr><tr><td>Gestion automatisée des soldes de congés et reports</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification élevée pour les petites structures</td></tr><tr><td>Complexité d'implémentation nécessitant un projet dédié</td></tr><tr><td>Interface parfois lourde pour des besoins simples de congés</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1192,7 +1025,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 laboxentrepreneuriat.fr — Données actualisées le 2 octobre 2026
+        © 2026 laboxentrepreneuriat.fr — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

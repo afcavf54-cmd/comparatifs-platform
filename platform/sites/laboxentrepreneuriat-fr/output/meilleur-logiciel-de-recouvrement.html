@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -490,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>Comparatif complet des logiciels de recouvrement après 10 tests</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Hugo Simon" class="hero-author-avatar">
     <span>Rédigé par Hugo Simon</span>
@@ -528,40 +533,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>CashOnTime se concentre sur l'automatisation des relances de créances avec une approche assez technique.
-
-<p>J'ai testé ce logiciel dans un contexte B2B et je trouve qu'il brille surtout par ses <strong>workflows de relance personnalisables</strong> et sa gestion des échéanciers.</p>
-
-<p>L'interface demande un petit temps d'adaptation mais une fois qu'on maîtrise, on gagne vraiment du temps.</p><p>Ce qui m'a marqué : la possibilité de créer des <strong>scénarios de relance multi-canaux</strong> (email, courrier, SMS) avec des conditions très précises.</p>
-
-<p>Par exemple, on peut programmer une relance SMS si l'email n'est pas ouvert sous 48h, puis basculer sur courrier recommandé après 15 jours.</p>
-
-<p>Ça évite de gérer manuellement chaque dossier.</p><p>Le reporting me semble correct sans être exceptionnel. On a les indicateurs classiques de recouvrement mais j'aurais aimé plus de granularité sur l'analyse des comportements de paiement.</p>
-
-<p><strong>L'intégration avec les logiciels comptables</strong> fonctionne bien, j'ai testé avec Sage et QuickBooks sans problème particulier.</p></p>
+            <p>CashOnTime se concentre sur l'automatisation des relances de créances avec une approche assez technique. J'ai testé ce logiciel dans un contexte B2B et je trouve qu'il brille surtout par ses <strong>workflows de relance personnalisables</strong> et sa gestion des échéanciers. L'interface demande un petit temps d'adaptation mais une fois qu'on maîtrise, on gagne vraiment du temps.</p><p>Ce qui m'a marqué : la possibilité de créer des <strong>scénarios de relance multi-canaux</strong> (email, courrier, SMS) avec des conditions très précises. Par exemple, on peut programmer une relance SMS si l'email n'est pas ouvert sous 48h, puis basculer sur courrier recommandé après 15 jours. Ça évite de gérer manuellement chaque dossier.</p><p>Le reporting me semble correct sans être exceptionnel. On a les indicateurs classiques de recouvrement mais j'aurais aimé plus de granularité sur l'analyse des comportements de paiement. <strong>L'intégration avec les logiciels comptables</strong> fonctionne bien, j'ai testé avec Sage et QuickBooks sans problème particulier.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Workflows de relance très personnalisables avec conditions avancées</td>
-            <td>Interface pas très intuitive au début, courbe d'apprentissage</td>
-          </tr>
-          <tr>
-            <td>Relances multi-canaux automatisées (email, SMS, courrier)</td>
-            <td>Reporting limité pour l'analyse comportementale des débiteurs</td>
-          </tr>
-          <tr>
-            <td>Bonne intégration avec les principaux logiciels comptables</td>
-            <td>Tarification pas transparente, devis obligatoire</td>
-          </tr>
-          <tr>
-            <td>Suivi précis des échéanciers et plans de paiement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Workflows de relance très personnalisables avec conditions avancées</td></tr><tr><td>Relances multi-canaux automatisées (email, SMS, courrier)</td></tr><tr><td>Bonne intégration avec les principaux logiciels comptables</td></tr><tr><td>Suivi précis des échéanciers et plans de paiement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface pas très intuitive au début, courbe d'apprentissage</td></tr><tr><td>Reporting limité pour l'analyse comportementale des débiteurs</td></tr><tr><td>Tarification pas transparente, devis obligatoire</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -577,40 +561,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Aston iTF s'adresse aux <strong>cabinets de recouvrement</strong> et aux entreprises qui gèrent des volumes importants de créances.
-
-<p>Je l'ai testé sur plusieurs dossiers et sa force réside dans ses <strong>workflows automatisés</strong> assez poussés : relances par SMS, emails, courriers avec des modèles personnalisables selon le profil débiteur.</p>
-
-<p>L'interface ressemble un peu à un CRM classique, mais avec tout le vocabulaire juridique intégré.</p><p>Ce qui m'a marqué, c'est la <strong>gestion des échéanciers</strong>.</p>
-
-<p>On peut paramétrer des plans de paiement complexes, suivre les encaissements en temps réel et déclencher des actions automatiques en cas de défaut. Le module de reporting génère des tableaux de bord assez détaillés pour les managers.</p>
-
-<p>Par contre, je trouve l'ergonomie un peu datée comparé à d'autres solutions plus récentes.</p><p>Aston iTF convient surtout aux structures qui traitent <strong>plusieurs centaines de dossiers par mois</strong>.</p>
-
-<p>Si vous êtes une PME avec 20-30 impayés occasionnels, ça risque d'être surdimensionné. L'outil brille vraiment quand on exploite ses capacités d'automatisation et qu'on a besoin de traçabilité juridique poussée.</p></p>
+            <p>Aston iTF s'adresse aux <strong>cabinets de recouvrement</strong> et aux entreprises qui gèrent des volumes importants de créances. Je l'ai testé sur plusieurs dossiers et sa force réside dans ses <strong>workflows automatisés</strong> assez poussés : relances par SMS, emails, courriers avec des modèles personnalisables selon le profil débiteur. L'interface ressemble un peu à un CRM classique, mais avec tout le vocabulaire juridique intégré.</p><p>Ce qui m'a marqué, c'est la <strong>gestion des échéanciers</strong>. On peut paramétrer des plans de paiement complexes, suivre les encaissements en temps réel et déclencher des actions automatiques en cas de défaut. Le module de reporting génère des tableaux de bord assez détaillés pour les managers. Par contre, je trouve l'ergonomie un peu datée comparé à d'autres solutions plus récentes.</p><p>Aston iTF convient surtout aux structures qui traitent <strong>plusieurs centaines de dossiers par mois</strong>. Si vous êtes une PME avec 20-30 impayés occasionnels, ça risque d'être surdimensionné. L'outil brille vraiment quand on exploite ses capacités d'automatisation et qu'on a besoin de traçabilité juridique poussée.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Workflows de relance très automatisés avec SMS/emails/courriers</td>
-            <td>Interface vieillissante et parfois peu intuitive</td>
-          </tr>
-          <tr>
-            <td>Gestion avancée des échéanciers et plans de paiement</td>
-            <td>Paramétrage initial assez complexe</td>
-          </tr>
-          <tr>
-            <td>Reporting détaillé adapté aux cabinets de recouvrement</td>
-            <td>Prix élevé pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Traçabilité juridique complète des actions</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Workflows de relance très automatisés avec SMS/emails/courriers</td></tr><tr><td>Gestion avancée des échéanciers et plans de paiement</td></tr><tr><td>Reporting détaillé adapté aux cabinets de recouvrement</td></tr><tr><td>Traçabilité juridique complète des actions</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface vieillissante et parfois peu intuitive</td></tr><tr><td>Paramétrage initial assez complexe</td></tr><tr><td>Prix élevé pour les petites structures</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -626,40 +589,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé Sidetrade il y a six mois quand notre DSO dérapait. Cette solution de <strong>recouvrement intelligent</strong> mise beaucoup sur l'IA pour automatiser la relance client.
-
-<p>Contrairement aux outils classiques, Sidetrade analyse le comportement de paiement de chaque débiteur et adapte sa stratégie automatiquement.</p><p>Ce qui m'a marqué : le scoring prédictif.</p>
-
-<p>Au lieu de relancer tout le monde pareil, le logiciel identifie les clients à risque en amont.</p>
-
-<p><strong>Très utile quand on gère plus de 500 factures par mois.</strong> L'interface reste assez moderne, même si j'ai mis du temps à comprendre certains tableaux de bord.</p><p>Par contre, on sent que c'est fait pour les grosses structures.</p>
-
-<p>Les PME avec quelques dizaines de clients par mois vont se sentir un peu perdues dans toutes ces fonctionnalités avancées.</p>
-
-<p>J'utilise surtout les workflows automatisés et le suivi des promesses de paiement qui évitent les relances inutiles.</p></p>
+            <p>J'ai testé Sidetrade il y a six mois quand notre DSO dérapait. Cette solution de <strong>recouvrement intelligent</strong> mise beaucoup sur l'IA pour automatiser la relance client. Contrairement aux outils classiques, Sidetrade analyse le comportement de paiement de chaque débiteur et adapte sa stratégie automatiquement.</p><p>Ce qui m'a marqué : le scoring prédictif. Au lieu de relancer tout le monde pareil, le logiciel identifie les clients à risque en amont. <strong>Très utile quand on gère plus de 500 factures par mois.</strong> L'interface reste assez moderne, même si j'ai mis du temps à comprendre certains tableaux de bord.</p><p>Par contre, on sent que c'est fait pour les grosses structures. Les PME avec quelques dizaines de clients par mois vont se sentir un peu perdues dans toutes ces fonctionnalités avancées. J'utilise surtout les workflows automatisés et le suivi des promesses de paiement qui évitent les relances inutiles.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>IA qui analyse le comportement client et adapte les relances</td>
-            <td>Complexité excessive pour les petites structures avec peu de clients</td>
-          </tr>
-          <tr>
-            <td>Scoring prédictif pour identifier les risques d'impayés en amont</td>
-            <td>Paramétrage initial long et technique qui nécessite de la formation</td>
-          </tr>
-          <tr>
-            <td>Workflows automatisés qui évitent la relance manuelle systématique</td>
-            <td>Tarification élevée qui peut décourager les PME</td>
-          </tr>
-          <tr>
-            <td>Tableaux de bord avec métriques DSO et taux de recouvrement détaillés</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>IA qui analyse le comportement client et adapte les relances</td></tr><tr><td>Scoring prédictif pour identifier les risques d'impayés en amont</td></tr><tr><td>Workflows automatisés qui évitent la relance manuelle systématique</td></tr><tr><td>Tableaux de bord avec métriques DSO et taux de recouvrement détaillés</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Complexité excessive pour les petites structures avec peu de clients</td></tr><tr><td>Paramétrage initial long et technique qui nécessite de la formation</td></tr><tr><td>Tarification élevée qui peut décourager les PME</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -675,36 +617,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Clearnox se concentre sur l'automatisation du recouvrement amiable avec une approche progressive qui respecte la relation client.
-
-<p>J'ai testé cette solution française qui mise sur <strong>la relance intelligente</strong> et l'accompagnement des équipes comptables dans leurs processus de récupération de créances.</p><p>Le logiciel excelle particulièrement dans le suivi des impayés B2B grâce à ses workflows personnalisables et son système de scoring des débiteurs.</p>
-
-<p>L'interface reste sobre mais efficace, avec des tableaux de bord qui donnent une vision claire du portefeuille de créances en cours.</p><p>Je recommande Clearnox aux PME et ETI qui gèrent entre 500 et 5000 factures par mois et cherchent à professionnaliser leur recouvrement sans perdre la dimension humaine.</p>
-
-<p><strong>Le module de relances par email automatiques</strong> m'a vraiment fait gagner du temps, même si certains aspects mériteraient d'être améliorés.</p></p>
+            <p>Clearnox se concentre sur l'automatisation du recouvrement amiable avec une approche progressive qui respecte la relation client. J'ai testé cette solution française qui mise sur <strong>la relance intelligente</strong> et l'accompagnement des équipes comptables dans leurs processus de récupération de créances.</p><p>Le logiciel excelle particulièrement dans le suivi des impayés B2B grâce à ses workflows personnalisables et son système de scoring des débiteurs. L'interface reste sobre mais efficace, avec des tableaux de bord qui donnent une vision claire du portefeuille de créances en cours.</p><p>Je recommande Clearnox aux PME et ETI qui gèrent entre 500 et 5000 factures par mois et cherchent à professionnaliser leur recouvrement sans perdre la dimension humaine. <strong>Le module de relances par email automatiques</strong> m'a vraiment fait gagner du temps, même si certains aspects mériteraient d'être améliorés.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Relances automatiques progressives avec personnalisation avancée</td>
-            <td>Module de reporting assez basique comparé à la concurrence</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive pour les équipes comptables</td>
-            <td>Pas d'intégration native avec tous les ERP du marché</td>
-          </tr>
-          <tr>
-            <td>Scoring automatique des débiteurs selon leur historique</td>
-            <td>Fonctionnalités de recouvrement contentieux limitées</td>
-          </tr>
-          <tr>
-            <td>Support client réactif avec accompagnement à la prise en main</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Relances automatiques progressives avec personnalisation avancée</td></tr><tr><td>Interface intuitive pour les équipes comptables</td></tr><tr><td>Scoring automatique des débiteurs selon leur historique</td></tr><tr><td>Support client réactif avec accompagnement à la prise en main</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Module de reporting assez basique comparé à la concurrence</td></tr><tr><td>Pas d'intégration native avec tous les ERP du marché</td></tr><tr><td>Fonctionnalités de recouvrement contentieux limitées</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -720,40 +645,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>LeanPay propose une approche particulière du recouvrement de créances en automatisant les relances tout en préservant la relation commerciale.
-
-<p>Je l'ai testé pendant plusieurs mois et j'apprécie sa capacité à personnaliser les scénarios de relance selon le profil client.</p>
-
-<p><strong>L'outil se démarque</strong> par son système de scoring qui adapte automatiquement le ton et la fréquence des relances.</p><p>L'interface reste assez intuitive même si l'onboarding demande un peu de patience.</p>
-
-<p>Les workflows de recouvrement se configurent facilement et j'ai pu créer des parcours différents selon que mes clients soient des particuliers ou des entreprises.</p>
-
-<p>Le reporting me donne une vision claire des taux de récupération par segment.</p><p>Je recommande LeanPay aux PME qui gèrent entre 100 et 5000 factures par mois et qui veulent <strong>automatiser leur recouvrement sans perdre l'aspect relationnel</strong>.</p>
-
-<p>Par contre, si vous cherchez un outil ultra-puissant pour gérer des volumes énormes ou des créances complexes, ce n'est probablement pas le bon choix.</p></p>
+            <p>LeanPay propose une approche particulière du recouvrement de créances en automatisant les relances tout en préservant la relation commerciale. Je l'ai testé pendant plusieurs mois et j'apprécie sa capacité à personnaliser les scénarios de relance selon le profil client. <strong>L'outil se démarque</strong> par son système de scoring qui adapte automatiquement le ton et la fréquence des relances.</p><p>L'interface reste assez intuitive même si l'onboarding demande un peu de patience. Les workflows de recouvrement se configurent facilement et j'ai pu créer des parcours différents selon que mes clients soient des particuliers ou des entreprises. Le reporting me donne une vision claire des taux de récupération par segment.</p><p>Je recommande LeanPay aux PME qui gèrent entre 100 et 5000 factures par mois et qui veulent <strong>automatiser leur recouvrement sans perdre l'aspect relationnel</strong>. Par contre, si vous cherchez un outil ultra-puissant pour gérer des volumes énormes ou des créances complexes, ce n'est probablement pas le bon choix.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Scénarios de relance adaptatifs selon le profil client</td>
-            <td>Onboarding assez long et parfois confus</td>
-          </tr>
-          <tr>
-            <td>Préservation de la relation commerciale dans les messages automatiques</td>
-            <td>Limité pour les très gros volumes de créances</td>
-          </tr>
-          <tr>
-            <td>Interface claire pour créer des workflows personnalisés</td>
-            <td>Manque de fonctionnalités avancées pour les créances complexes</td>
-          </tr>
-          <tr>
-            <td>Reporting détaillé par segment de clientèle</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Scénarios de relance adaptatifs selon le profil client</td></tr><tr><td>Préservation de la relation commerciale dans les messages automatiques</td></tr><tr><td>Interface claire pour créer des workflows personnalisés</td></tr><tr><td>Reporting détaillé par segment de clientèle</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Onboarding assez long et parfois confus</td></tr><tr><td>Limité pour les très gros volumes de créances</td></tr><tr><td>Manque de fonctionnalités avancées pour les créances complexes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -769,38 +673,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>My DSO Manager concentre tout le processus de recouvrement dans une interface que j'ai trouvée vraiment intuitive. On peut automatiser les relances par mail et courrier, suivre les promesses de paiement et même gérer les contentieux.
-
-<p>Ce qui m'a marqué c'est le <strong>tableau de bord temps réel</strong> qui affiche directement l'évolution du poste client.</p><p>L'outil se connecte facilement aux logiciels de compta existants.</p>
-
-<p>J'ai testé avec Sage et Cegid, ça synchronise les factures automatiquement. Les scénarios de relance sont personnalisables selon les clients ou les montants.</p>
-
-<p>Par contre, la prise en main demande <strong>quelques semaines de rodage</strong> pour exploiter toutes les fonctionnalités.</p><p>Je recommande My DSO Manager aux PME qui veulent professionnaliser leur recouvrement sans embaucher.</p>
-
-<p>Les TPE trouveront peut-être l'outil trop complet, tandis que les grands comptes auront besoin de fonctions plus poussées pour gérer des volumes importants.</p></p>
+            <p>My DSO Manager concentre tout le processus de recouvrement dans une interface que j'ai trouvée vraiment intuitive. On peut automatiser les relances par mail et courrier, suivre les promesses de paiement et même gérer les contentieux. Ce qui m'a marqué c'est le <strong>tableau de bord temps réel</strong> qui affiche directement l'évolution du poste client.</p><p>L'outil se connecte facilement aux logiciels de compta existants. J'ai testé avec Sage et Cegid, ça synchronise les factures automatiquement. Les scénarios de relance sont personnalisables selon les clients ou les montants. Par contre, la prise en main demande <strong>quelques semaines de rodage</strong> pour exploiter toutes les fonctionnalités.</p><p>Je recommande My DSO Manager aux PME qui veulent professionnaliser leur recouvrement sans embaucher. Les TPE trouveront peut-être l'outil trop complet, tandis que les grands comptes auront besoin de fonctions plus poussées pour gérer des volumes importants.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Automatisation complète des campagnes de relance multicanal</td>
-            <td>Courbe d'apprentissage assez longue pour maîtriser toutes les options</td>
-          </tr>
-          <tr>
-            <td>Synchronisation native avec les principaux logiciels comptables</td>
-            <td>Tarification qui peut grimper rapidement selon le nombre d'utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Reporting détaillé sur les performances de recouvrement</td>
-            <td>Fonctionnalités de contentieux limitées pour les dossiers complexes</td>
-          </tr>
-          <tr>
-            <td>Interface claire pour suivre les promesses de paiement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Automatisation complète des campagnes de relance multicanal</td></tr><tr><td>Synchronisation native avec les principaux logiciels comptables</td></tr><tr><td>Reporting détaillé sur les performances de recouvrement</td></tr><tr><td>Interface claire pour suivre les promesses de paiement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Courbe d'apprentissage assez longue pour maîtriser toutes les options</td></tr><tr><td>Tarification qui peut grimper rapidement selon le nombre d'utilisateurs</td></tr><tr><td>Fonctionnalités de contentieux limitées pour les dossiers complexes</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -816,38 +701,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Eloficash se concentre sur le recouvrement amiable avec une approche assez directe. Je l'ai testé sur plusieurs dossiers et j'apprécie sa simplicité d'usage, même si certaines fonctions manquent encore de finition.
-
-<p>La plateforme automatise les relances par mail et courrier, avec un suivi des actions assez clair.</p><p>L'interface reste accessible pour des TPE qui n'ont pas forcément d'expert comptable à temps plein.</p>
-
-<p><strong>Les templates de lettres sont personnalisables</strong> et on peut programmer les campagnes de relance sur plusieurs semaines.</p>
-
-<p>Par contre, j'ai trouvé que les rapports de suivi manquaient un peu de détails pour analyser l'efficacité réelle.</p><p>Côté tarification, Eloficash propose des formules sans engagement à partir de <strong>29€ par mois</strong>.</p>
-
-<p>Ça reste raisonnable pour une petite structure qui veut professionnaliser son recouvrement sans exploser son budget. L'export comptable fonctionne correctement vers les logiciels classiques.</p></p>
+            <p>Eloficash se concentre sur le recouvrement amiable avec une approche assez directe. Je l'ai testé sur plusieurs dossiers et j'apprécie sa simplicité d'usage, même si certaines fonctions manquent encore de finition. La plateforme automatise les relances par mail et courrier, avec un suivi des actions assez clair.</p><p>L'interface reste accessible pour des TPE qui n'ont pas forcément d'expert comptable à temps plein. <strong>Les templates de lettres sont personnalisables</strong> et on peut programmer les campagnes de relance sur plusieurs semaines. Par contre, j'ai trouvé que les rapports de suivi manquaient un peu de détails pour analyser l'efficacité réelle.</p><p>Côté tarification, Eloficash propose des formules sans engagement à partir de <strong><strong>29€</strong> par mois</strong>. Ça reste raisonnable pour une petite structure qui veut professionnaliser son recouvrement sans exploser son budget. L'export comptable fonctionne correctement vers les logiciels classiques.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive pour les non-spécialistes du recouvrement</td>
-            <td>Rapports d'analyse peu détaillés pour optimiser les campagnes</td>
-          </tr>
-          <tr>
-            <td>Templates de courriers personnalisables et conformes légalement</td>
-            <td>Fonctionnalités limitées comparé aux solutions enterprise</td>
-          </tr>
-          <tr>
-            <td>Automatisation des relances par email et courrier postal</td>
-            <td>Support client parfois lent à répondre aux questions techniques</td>
-          </tr>
-          <tr>
-            <td>Prix accessible pour les TPE avec formules sans engagement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive pour les non-spécialistes du recouvrement</td></tr><tr><td>Templates de courriers personnalisables et conformes légalement</td></tr><tr><td>Automatisation des relances par email et courrier postal</td></tr><tr><td>Prix accessible pour les TPE avec formules sans engagement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Rapports d'analyse peu détaillés pour optimiser les campagnes</td></tr><tr><td>Fonctionnalités limitées comparé aux solutions enterprise</td></tr><tr><td>Support client parfois lent à répondre aux questions techniques</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -863,38 +729,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'ai testé Hoopiz pendant 4 mois pour récupérer les impayés d'une PME. Le logiciel se concentre sur l'automatisation du recouvrement amiable avec une approche assez agressive.
-
-<p><strong>Ses relances automatiques</strong> sont efficaces mais parfois trop directes pour certains clients sensibles.</p><p>Hoopiz brille par sa capacité à segmenter les dossiers selon le profil débiteur.</p>
-
-<p>Je peux paramétrer des scénarios différents : relances douces pour les bons clients en retard occasionnel, approche ferme pour les mauvais payeurs récurrents.</p>
-
-<p>Le système génère automatiquement courriers, emails et SMS selon une escalade prédéfinie.</p><p>L'outil convient parfaitement aux entreprises qui gèrent entre 200 et 2000 créances par mois. En dessous, c'est un canon pour tuer une mouche.</p>
-
-<p>Au-dessus, certaines fonctionnalités avancées manquent. <strong>Le reporting</strong> reste correct sans être exceptionnel, et l'intégration avec les ERP nécessite souvent un développement custom.</p></p>
+            <p>J'ai testé Hoopiz pendant 4 mois pour récupérer les impayés d'une PME. Le logiciel se concentre sur l'automatisation du recouvrement amiable avec une approche assez agressive. <strong>Ses relances automatiques</strong> sont efficaces mais parfois trop directes pour certains clients sensibles.</p><p>Hoopiz brille par sa capacité à segmenter les dossiers selon le profil débiteur. Je peux paramétrer des scénarios différents : relances douces pour les bons clients en retard occasionnel, approche ferme pour les mauvais payeurs récurrents. Le système génère automatiquement courriers, emails et SMS selon une escalade prédéfinie.</p><p>L'outil convient parfaitement aux entreprises qui gèrent entre 200 et 2000 créances par mois. En dessous, c'est un canon pour tuer une mouche. Au-dessus, certaines fonctionnalités avancées manquent. <strong>Le reporting</strong> reste correct sans être exceptionnel, et l'intégration avec les ERP nécessite souvent un développement custom.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Automatisation poussée des relances avec scénarios personnalisables</td>
-            <td>Ton des relances parfois trop agressif pour certains secteurs</td>
-          </tr>
-          <tr>
-            <td>Segmentation intelligente des débiteurs selon leur profil</td>
-            <td>Intégrations ERP limitées, souvent du développement sur mesure</td>
-          </tr>
-          <tr>
-            <td>Interface claire pour suivre l'évolution de chaque dossier</td>
-            <td>Reporting basique comparé à d'autres solutions du marché</td>
-          </tr>
-          <tr>
-            <td>Génération automatique de courriers et emails de relance</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Automatisation poussée des relances avec scénarios personnalisables</td></tr><tr><td>Segmentation intelligente des débiteurs selon leur profil</td></tr><tr><td>Interface claire pour suivre l'évolution de chaque dossier</td></tr><tr><td>Génération automatique de courriers et emails de relance</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Ton des relances parfois trop agressif pour certains secteurs</td></tr><tr><td>Intégrations ERP limitées, souvent du développement sur mesure</td></tr><tr><td>Reporting basique comparé à d'autres solutions du marché</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -910,38 +757,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>Collectys Cash se présente comme une solution de <strong>recouvrement hybride</strong> qui mélange automatisation et intervention humaine.
-
-<p>Je l'ai testé sur plusieurs portefeuilles de créances et j'ai trouvé l'approche intéressante : le logiciel lance les premières relances automatiques, puis bascule vers des négociateurs quand ça coince.</p><p>L'interface reste assez classique mais <strong>fonctionnelle pour les équipes de recouvrement</strong>.</p>
-
-<p>On peut suivre chaque dossier en temps réel, voir les actions menées et programmer les prochaines étapes. Le système de scoring des débiteurs aide à prioriser les dossiers les plus rentables.</p>
-
-<p>Par contre, j'ai mis du temps à configurer correctement tous les workflows.</p><p>Ce qui m'a marqué : la possibilité de basculer facilement entre <strong>recouvrement amiable et contentieux</strong>.</p>
-
-<p>Quand un dossier n'avance pas, on peut le transférer directement aux juristes partenaires depuis la plateforme. Pratique pour les cabinets qui gèrent les deux phases, même si ça demande une bonne coordination interne.</p></p>
+            <p>Collectys Cash se présente comme une solution de <strong>recouvrement hybride</strong> qui mélange automatisation et intervention humaine. Je l'ai testé sur plusieurs portefeuilles de créances et j'ai trouvé l'approche intéressante : le logiciel lance les premières relances automatiques, puis bascule vers des négociateurs quand ça coince.</p><p>L'interface reste assez classique mais <strong>fonctionnelle pour les équipes de recouvrement</strong>. On peut suivre chaque dossier en temps réel, voir les actions menées et programmer les prochaines étapes. Le système de scoring des débiteurs aide à prioriser les dossiers les plus rentables. Par contre, j'ai mis du temps à configurer correctement tous les workflows.</p><p>Ce qui m'a marqué : la possibilité de basculer facilement entre <strong>recouvrement amiable et contentieux</strong>. Quand un dossier n'avance pas, on peut le transférer directement aux juristes partenaires depuis la plateforme. Pratique pour les cabinets qui gèrent les deux phases, même si ça demande une bonne coordination interne.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Approche hybride automatisation + négociateurs humains</td>
-            <td>Configuration initiale complexe et chronophage</td>
-          </tr>
-          <tr>
-            <td>Workflow configurable du recouvrement amiable au contentieux</td>
-            <td>Coût élevé pour les petites structures de recouvrement</td>
-          </tr>
-          <tr>
-            <td>Scoring automatique des débiteurs pour prioriser les actions</td>
-            <td>Dépendance aux partenaires juristes pour le contentieux</td>
-          </tr>
-          <tr>
-            <td>Interface de suivi en temps réel des dossiers</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Approche hybride automatisation + négociateurs humains</td></tr><tr><td>Workflow configurable du recouvrement amiable au contentieux</td></tr><tr><td>Scoring automatique des débiteurs pour prioriser les actions</td></tr><tr><td>Interface de suivi en temps réel des dossiers</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Configuration initiale complexe et chronophage</td></tr><tr><td>Coût élevé pour les petites structures de recouvrement</td></tr><tr><td>Dépendance aux partenaires juristes pour le contentieux</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -957,38 +785,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
         onerror="this.style.display='none'">
 
       <div class="logiciel-desc">
-            <p>J'utilise <strong>Upflow</strong> depuis deux ans pour automatiser mes relances clients. Ce logiciel de recouvrement français se démarque par son approche moins agressive que la concurrence.
-
-<p>Au lieu de harceler vos clients avec des mails automatiques brutaux, Upflow mise sur des scénarios personnalisés qui préservent la relation commerciale.</p><p>L'interface reste <strong>vraiment intuitive</strong>.</p>
-
-<p>On configure ses workflows de relance en quelques clics, on importe sa base clients via CSV ou API, et le logiciel prend le relais.</p>
-
-<p>J'apprécie particulièrement le fait qu'on puisse adapter le ton selon le profil client : plus diplomate pour les gros comptes, plus ferme pour les retardataires récurrents.</p><p>Côté reporting, Upflow livre des tableaux de bord clairs sur les encours, les taux de recouvrement et l'efficacité des campagnes.</p>
-
-<p><strong>Ça m'aide à identifier</strong> les clients qui posent problème avant qu'il soit trop tard. L'export vers mon comptable se fait automatiquement, ce qui me fait gagner pas mal de temps chaque mois.</p></p>
+            <p>J'utilise <strong>Upflow</strong> depuis deux ans pour automatiser mes relances clients. Ce logiciel de recouvrement français se démarque par son approche moins agressive que la concurrence. Au lieu de harceler vos clients avec des mails automatiques brutaux, Upflow mise sur des scénarios personnalisés qui préservent la relation commerciale.</p><p>L'interface reste <strong>vraiment intuitive</strong>. On configure ses workflows de relance en quelques clics, on importe sa base clients via CSV ou API, et le logiciel prend le relais. J'apprécie particulièrement le fait qu'on puisse adapter le ton selon le profil client : plus diplomate pour les gros comptes, plus ferme pour les retardataires récurrents.</p><p>Côté reporting, Upflow livre des tableaux de bord clairs sur les encours, les taux de recouvrement et l'efficacité des campagnes. <strong>Ça m'aide à identifier</strong> les clients qui posent problème avant qu'il soit trop tard. L'export vers mon comptable se fait automatiquement, ce qui me fait gagner pas mal de temps chaque mois.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Relances personnalisées qui préservent la relation client</td>
-            <td>Tarifs qui grimpent vite avec le volume de factures</td>
-          </tr>
-          <tr>
-            <td>Interface française intuitive et prise en main rapide</td>
-            <td>Options d'export limitées pour les analyses avancées</td>
-          </tr>
-          <tr>
-            <td>Synchronisation automatique avec la plupart des logiciels comptables</td>
-            <td>Personnalisation des modèles d'emails parfois restrictive</td>
-          </tr>
-          <tr>
-            <td>Reporting détaillé sur l'efficacité des campagnes de recouvrement</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Relances personnalisées qui préservent la relation client</td></tr><tr><td>Interface française intuitive et prise en main rapide</td></tr><tr><td>Synchronisation automatique avec la plupart des logiciels comptables</td></tr><tr><td>Reporting détaillé sur l'efficacité des campagnes de recouvrement</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarifs qui grimpent vite avec le volume de factures</td></tr><tr><td>Options d'export limitées pour les analyses avancées</td></tr><tr><td>Personnalisation des modèles d'emails parfois restrictive</td></tr></tbody>
+        </table></div>
+      </div>
 
     </div>
   </div>
@@ -1325,7 +1134,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 laboxentrepreneuriat.fr — Données actualisées le 2 octobre 2026
+        © 2026 laboxentrepreneuriat.fr — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>
