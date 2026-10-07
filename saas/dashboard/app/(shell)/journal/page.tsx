@@ -8,7 +8,7 @@ const C = {
 
 type Entry = {
   site: string; site_name: string; slug: string; title: string;
-  cat_parent: string; date: string; url: string
+  cat_parent: string; date: string; time: string; url: string
 }
 
 const fmtDate = (d: string) => {
@@ -113,6 +113,7 @@ export default function JournalPage() {
               <div style={{ ...card, padding: 0, overflow: 'hidden' }}>
                 {g.items.map((e, i) => (
                   <div key={e.site + e.slug} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 16px', borderTop: i ? `1px solid ${C.border}` : 'none' }}>
+                    <span style={{ fontSize: 12, color: e.time ? C.dim : C.faint, fontVariantNumeric: 'tabular-nums', width: 42, flexShrink: 0 }}>{e.time || '—'}</span>
                     <span style={{ fontSize: 11, color: C.accent, background: 'rgba(0,212,170,0.1)', padding: '2px 8px', borderRadius: 6, whiteSpace: 'nowrap', flexShrink: 0 }}>{e.site_name}</span>
                     <span style={{ flex: 1, fontSize: 13.5, color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                       {e.title}
