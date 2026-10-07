@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -490,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai testé 10 logiciels de pointage : comparatif et classement</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Nicolas Roux" class="hero-author-avatar">
     <span>Rédigé par Nicolas Roux</span>
@@ -536,36 +541,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Je connais Agendrix depuis qu'ils ont lancé leur module de pointage intégré à leur solution RH. On est sur une approche québécoise assez pratique : <strong>pointage mobile, géolocalisation</strong> et validation automatique des heures.
-
-<p>L'idée, c'est de simplifier la vie des équipes terrain qui bougent beaucoup.</p><p>Ce qui m'a plu dès le départ, c'est la fluidité de l'app mobile. Mes équipes pointent en deux clics, même sans réseau (synchronisation différée).</p>
-
-<p>Le système reconnaît automatiquement les sites de travail et bloque les pointages suspects. <strong>Pratique pour éviter les tricheries</strong>.</p><p>Par contre, on reste sur du mid-market.</p>
-
-<p>Si vous cherchez des fonctionnalités avancées comme la reconnaissance faciale ou des intégrations ERP poussées, passez votre chemin. Agendrix mise tout sur la simplicité d'usage, parfois au détriment de la granularité.</p></p>
+            <p>Je connais Agendrix depuis qu'ils ont lancé leur module de pointage intégré à leur solution RH. On est sur une approche québécoise assez pratique : <strong>pointage mobile, géolocalisation</strong> et validation automatique des heures. L'idée, c'est de simplifier la vie des équipes terrain qui bougent beaucoup.</p><p>Ce qui m'a plu dès le départ, c'est la fluidité de l'app mobile. Mes équipes pointent en deux clics, même sans réseau (synchronisation différée). Le système reconnaît automatiquement les sites de travail et bloque les pointages suspects. <strong>Pratique pour éviter les tricheries</strong>.</p><p>Par contre, on reste sur du mid-market. Si vous cherchez des fonctionnalités avancées comme la reconnaissance faciale ou des intégrations ERP poussées, passez votre chemin. Agendrix mise tout sur la simplicité d'usage, parfois au détriment de la granularité.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface mobile vraiment intuitive, adoption rapide par les équipes terrain</td>
-            <td>Fonctionnalités limitées pour les grandes entreprises avec besoins complexes</td>
-          </tr>
-          <tr>
-            <td>Géolocalisation automatique qui évite les erreurs de saisie de chantier</td>
-            <td>Pas de reconnaissance biométrique avancée</td>
-          </tr>
-          <tr>
-            <td>Synchronisation temps réel avec la planification des équipes</td>
-            <td>Intégrations ERP encore perfectibles selon certains retours</td>
-          </tr>
-          <tr>
-            <td>Prix transparent sans frais cachés sur les modules pointage</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface mobile vraiment intuitive, adoption rapide par les équipes terrain</td></tr><tr><td>Géolocalisation automatique qui évite les erreurs de saisie de chantier</td></tr><tr><td>Synchronisation temps réel avec la planification des équipes</td></tr><tr><td>Prix transparent sans frais cachés sur les modules pointage</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités limitées pour les grandes entreprises avec besoins complexes</td></tr><tr><td>Pas de reconnaissance biométrique avancée</td></tr><tr><td>Intégrations ERP encore perfectibles selon certains retours</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.agendrix.com/fr" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Agendrix
@@ -590,40 +578,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Deputy s'attaque au casse-tête du planning avec une approche qui mise tout sur <strong>l'optimisation des coûts de main-d'œuvre</strong>.
-
-<p>J'ai trouvé intéressant leur système qui calcule automatiquement les heures optimales selon l'affluence prévue.</p>
-
-<p>Leur module de pointage mobile fonctionne même hors ligne, pratique pour les équipes terrain.</p><p>L'interface reste <strong>assez intuitive pour les managers</strong> qui jonglent entre plusieurs sites.</p>
-
-<p>Le système de validation des heures sup' évite les mauvaises surprises en fin de mois.</p>
-
-<p>Par contre, l'onboarding demande du temps si vous voulez exploiter toutes les fonctionnalités avancées.</p><p>Je recommande Deputy aux <strong>entreprises multi-sites</strong> (retail, restauration, services) qui veulent un contrôle précis sur leurs coûts salariaux.</p>
-
-<p>Les TPE risquent de payer pour des features qu'elles n'utiliseront jamais. L'investissement se justifie vraiment à partir d'une quinzaine de salariés avec des horaires variables.</p></p>
+            <p>Deputy s'attaque au casse-tête du planning avec une approche qui mise tout sur <strong>l'optimisation des coûts de main-d'œuvre</strong>. J'ai trouvé intéressant leur système qui calcule automatiquement les heures optimales selon l'affluence prévue. Leur module de pointage mobile fonctionne même hors ligne, pratique pour les équipes terrain.</p><p>L'interface reste <strong>assez intuitive pour les managers</strong> qui jonglent entre plusieurs sites. Le système de validation des heures sup' évite les mauvaises surprises en fin de mois. Par contre, l'onboarding demande du temps si vous voulez exploiter toutes les fonctionnalités avancées.</p><p>Je recommande Deputy aux <strong>entreprises multi-sites</strong> (retail, restauration, services) qui veulent un contrôle précis sur leurs coûts salariaux. Les TPE risquent de payer pour des features qu'elles n'utiliseront jamais. L'investissement se justifie vraiment à partir d'une quinzaine de salariés avec des horaires variables.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Calculs automatiques des coûts de main-d'œuvre en temps réel</td>
-            <td>Interface parfois lourde avec beaucoup d'options peu utiles pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Application mobile fonctionnant hors connexion pour le pointage terrain</td>
-            <td>Support client uniquement en anglais malgré la localisation française</td>
-          </tr>
-          <tr>
-            <td>Gestion centralisée multi-sites avec tableaux de bord consolidés</td>
-            <td>Tarifs qui grimpent vite avec les modules complémentaires obligatoires</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec les principales solutions de paie françaises</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Calculs automatiques des coûts de main-d'œuvre en temps réel</td></tr><tr><td>Application mobile fonctionnant hors connexion pour le pointage terrain</td></tr><tr><td>Gestion centralisée multi-sites avec tableaux de bord consolidés</td></tr><tr><td>Intégration native avec les principales solutions de paie françaises</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface parfois lourde avec beaucoup d'options peu utiles pour les petites structures</td></tr><tr><td>Support client uniquement en anglais malgré la localisation française</td></tr><tr><td>Tarifs qui grimpent vite avec les modules complémentaires obligatoires</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.deputy.com/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Deputy
@@ -648,40 +615,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Skello se concentre uniquement sur les métiers avec des plannings complexes : restaurants, hôtellerie, retail, services à la personne.
-
-<p>Je le trouve <strong>vraiment spécialisé</strong> sur cette niche, contrairement aux outils généralistes qui essaient de faire du tout-en-un.</p>
-
-<p>L'interface reste simple même quand on gère des équipes avec des horaires décalés, des contrats différents et des remplacements de dernière minute.</p><p>Ce qui m'a marqué : la <strong>gestion automatique des heures supplémentaires</strong> selon les conventions collectives.</p>
-
-<p>Plus besoin de tout recalculer à la main. Le système détecte automatiquement les majorations de nuit, weekend ou jours fériés.</p>
-
-<p>J'ai testé avec la convention HCR, ça marche nickel.</p><p>Le pointage se fait via smartphone avec géolocalisation, mais aussi sur tablette fixe si on préfère.</p>
-
-<p>Les équipes peuvent consulter leurs plannings, échanger des créneaux et poser leurs congés directement depuis l'app. <strong>Pratique quand on a des saisonniers</strong> qui changent souvent.</p></p>
+            <p>Skello se concentre uniquement sur les métiers avec des plannings complexes : restaurants, hôtellerie, retail, services à la personne. Je le trouve <strong>vraiment spécialisé</strong> sur cette niche, contrairement aux outils généralistes qui essaient de faire du tout-en-un. L'interface reste simple même quand on gère des équipes avec des horaires décalés, des contrats différents et des remplacements de dernière minute.</p><p>Ce qui m'a marqué : la <strong>gestion automatique des heures supplémentaires</strong> selon les conventions collectives. Plus besoin de tout recalculer à la main. Le système détecte automatiquement les majorations de nuit, weekend ou jours fériés. J'ai testé avec la convention HCR, ça marche nickel.</p><p>Le pointage se fait via smartphone avec géolocalisation, mais aussi sur tablette fixe si on préfère. Les équipes peuvent consulter leurs plannings, échanger des créneaux et poser leurs congés directement depuis l'app. <strong>Pratique quand on a des saisonniers</strong> qui changent souvent.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Calcul automatique des majorations selon conventions collectives</td>
-            <td>Plutôt cher pour les très petites structures (moins de 5 salariés)</td>
-          </tr>
-          <tr>
-            <td>Interface pensée pour les métiers à horaires variables</td>
-            <td>Fonctionnalités limitées hors secteurs ciblés</td>
-          </tr>
-          <tr>
-            <td>Échange de créneaux entre collaborateurs en autonomie</td>
-            <td>Pas de gestion avancée des projets ou missions</td>
-          </tr>
-          <tr>
-            <td>Pointage géolocalisé adapté aux équipes mobiles</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Calcul automatique des majorations selon conventions collectives</td></tr><tr><td>Interface pensée pour les métiers à horaires variables</td></tr><tr><td>Échange de créneaux entre collaborateurs en autonomie</td></tr><tr><td>Pointage géolocalisé adapté aux équipes mobiles</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Plutôt cher pour les très petites structures (moins de 5 salariés)</td></tr><tr><td>Fonctionnalités limitées hors secteurs ciblés</td></tr><tr><td>Pas de gestion avancée des projets ou missions</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.skello.io/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Skello
@@ -706,40 +652,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>J'utilise Jibble depuis deux ans pour gérer les présences de mes équipes terrain et je dois dire que la <strong>géolocalisation fonctionne vraiment bien</strong>.
-
-<p>Les salariés pointent depuis leur smartphone quand ils arrivent sur chantier et je vois leur position en temps réel. L'interface reste simple, même pour ceux qui ne sont pas à l'aise avec la technologie.</p><p>Ce qui m'a convaincu ?</p>
-
-<p>La <strong>reconnaissance faciale pour éviter les pointages à la place des collègues</strong>. Fini les arrangements entre copains.</p>
-
-<p>Le système détecte aussi automatiquement les heures supplémentaires et génère des rapports que je peux directement envoyer à la compta.</p>
-
-<p>Plutôt pratique quand on jongle avec 15 personnes.</p><p>Par contre, <strong>attention aux limitations de la version gratuite</strong> : seulement 2 utilisateurs maximum. Pour une vraie équipe, il faut passer au payant assez rapidement.</p>
-
-<p>L'application reste fluide et les notifications de retards arrivent en temps réel sur mon téléphone, ce qui évite les mauvaises surprises en fin de mois.</p></p>
+            <p>J'utilise Jibble depuis deux ans pour gérer les présences de mes équipes terrain et je dois dire que la <strong>géolocalisation fonctionne vraiment bien</strong>. Les salariés pointent depuis leur smartphone quand ils arrivent sur chantier et je vois leur position en temps réel. L'interface reste simple, même pour ceux qui ne sont pas à l'aise avec la technologie.</p><p>Ce qui m'a convaincu ? La <strong>reconnaissance faciale pour éviter les pointages à la place des collègues</strong>. Fini les arrangements entre copains. Le système détecte aussi automatiquement les heures supplémentaires et génère des rapports que je peux directement envoyer à la compta. Plutôt pratique quand on jongle avec 15 personnes.</p><p>Par contre, <strong>attention aux limitations de la version gratuite</strong> : seulement 2 utilisateurs maximum. Pour une vraie équipe, il faut passer au payant assez rapidement. L'application reste fluide et les notifications de retards arrivent en temps réel sur mon téléphone, ce qui évite les mauvaises surprises en fin de mois.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Géolocalisation précise pour les équipes mobiles</td>
-            <td>Version gratuite très limitée (2 utilisateurs seulement)</td>
-          </tr>
-          <tr>
-            <td>Reconnaissance faciale anti-triche intégrée</td>
-            <td>Pas de gestion avancée des congés et absences</td>
-          </tr>
-          <tr>
-            <td>Interface smartphone intuitive pour tous niveaux</td>
-            <td>Support client parfois lent à répondre</td>
-          </tr>
-          <tr>
-            <td>Calcul automatique des heures supplémentaires</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Géolocalisation précise pour les équipes mobiles</td></tr><tr><td>Reconnaissance faciale anti-triche intégrée</td></tr><tr><td>Interface smartphone intuitive pour tous niveaux</td></tr><tr><td>Calcul automatique des heures supplémentaires</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Version gratuite très limitée (2 utilisateurs seulement)</td></tr><tr><td>Pas de gestion avancée des congés et absences</td></tr><tr><td>Support client parfois lent à répondre</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.jibble.io/fr" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Jibble
@@ -764,38 +689,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Je vais vous dire une chose sur <strong>Lucca</strong> : c'est l'un des rares logiciels de pointage français qui arrive à faire simple.
-
-<p>Le système de badgeage fonctionne bien, les absences s'intègrent naturellement et les équipes RH s'y retrouvent rapidement. Ça change des usines à gaz qu'on voit souvent.</p><p>L'interface me plaît vraiment.</p>
-
-<p><strong>Pas de fioritures</strong>, juste l'essentiel : pointer, valider les heures, gérer les congés. Les salariés peuvent pointer depuis leur smartphone ou directement sur ordinateur.</p>
-
-<p>Le reporting RH sort proprement et les exports vers la paie se passent sans accroc.</p><p>Je recommande Lucca pour les entreprises de 20 à 500 salariés qui veulent un outil fiable sans se compliquer la vie.</p>
-
-<p>Les PME en croissance adorent, surtout celles qui ont plusieurs sites. Par contre, si vous cherchez des fonctionnalités ultra-avancées de planification ou de gestion de projet, regardez ailleurs.</p></p>
+            <p>Je vais vous dire une chose sur <strong>Lucca</strong> : c'est l'un des rares logiciels de pointage français qui arrive à faire simple. Le système de badgeage fonctionne bien, les absences s'intègrent naturellement et les équipes RH s'y retrouvent rapidement. Ça change des usines à gaz qu'on voit souvent.</p><p>L'interface me plaît vraiment. <strong>Pas de fioritures</strong>, juste l'essentiel : pointer, valider les heures, gérer les congés. Les salariés peuvent pointer depuis leur smartphone ou directement sur ordinateur. Le reporting RH sort proprement et les exports vers la paie se passent sans accroc.</p><p>Je recommande Lucca pour les entreprises de 20 à 500 salariés qui veulent un outil fiable sans se compliquer la vie. Les PME en croissance adorent, surtout celles qui ont plusieurs sites. Par contre, si vous cherchez des fonctionnalités ultra-avancées de planification ou de gestion de projet, regardez ailleurs.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface française claire et intuitive</td>
-            <td>Tarification qui grimpe vite avec les options</td>
-          </tr>
-          <tr>
-            <td>Badgeage mobile très stable</td>
-            <td>Personnalisation limitée des workflows</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec la paie</td>
-            <td>Peu d'intégrations avec les outils métier spécialisés</td>
-          </tr>
-          <tr>
-            <td>Support client réactif en français</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface française claire et intuitive</td></tr><tr><td>Badgeage mobile très stable</td></tr><tr><td>Intégration native avec la paie</td></tr><tr><td>Support client réactif en français</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification qui grimpe vite avec les options</td></tr><tr><td>Personnalisation limitée des workflows</td></tr><tr><td>Peu d'intégrations avec les outils métier spécialisés</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.lucca.fr" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Lucca
@@ -820,38 +726,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Kelio se concentre sur la gestion du temps et des activités pour les entreprises qui ont besoin de suivre précisément les heures de travail.
-
-<p>J'ai testé ce <strong>logiciel de pointage</strong> dans plusieurs contextes et je trouve qu'il répond bien aux besoins des structures avec des horaires variables ou du travail en équipes.</p><p>Le système gère les pointeuses physiques et dématérialisées.</p>
-
-<p>On peut pointer par badge, smartphone ou directement sur l'ordinateur.</p>
-
-<p><strong>L'intégration avec la paie</strong> fonctionne correctement et j'ai apprécié la possibilité de paramétrer différents types de congés ou d'absences selon les profils.</p><p>Kelio s'adresse principalement aux entreprises de 50 à 500 salariés qui cherchent une solution robuste pour leurs <strong>pointages horaires</strong>.</p>
-
-<p>Le logiciel convient particulièrement aux secteurs avec des contraintes légales strictes sur le temps de travail : industrie, services, santé ou transport.</p></p>
+            <p>Kelio se concentre sur la gestion du temps et des activités pour les entreprises qui ont besoin de suivre précisément les heures de travail. J'ai testé ce <strong>logiciel de pointage</strong> dans plusieurs contextes et je trouve qu'il répond bien aux besoins des structures avec des horaires variables ou du travail en équipes.</p><p>Le système gère les pointeuses physiques et dématérialisées. On peut pointer par badge, smartphone ou directement sur l'ordinateur. <strong>L'intégration avec la paie</strong> fonctionne correctement et j'ai apprécié la possibilité de paramétrer différents types de congés ou d'absences selon les profils.</p><p>Kelio s'adresse principalement aux entreprises de 50 à 500 salariés qui cherchent une solution robuste pour leurs <strong>pointages horaires</strong>. Le logiciel convient particulièrement aux secteurs avec des contraintes légales strictes sur le temps de travail : industrie, services, santé ou transport.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface assez intuitive pour les managers RH</td>
-            <td>Paramétrage initial assez lourd à mettre en place</td>
-          </tr>
-          <tr>
-            <td>Gestion fine des plannings et des rotations d'équipes</td>
-            <td>Application mobile perfectible sur certains smartphones</td>
-          </tr>
-          <tr>
-            <td>Exports comptables et paie bien formatés</td>
-            <td>Tarification qui monte vite avec les options</td>
-          </tr>
-          <tr>
-            <td>Support technique français réactif</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface assez intuitive pour les managers RH</td></tr><tr><td>Gestion fine des plannings et des rotations d'équipes</td></tr><tr><td>Exports comptables et paie bien formatés</td></tr><tr><td>Support technique français réactif</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Paramétrage initial assez lourd à mettre en place</td></tr><tr><td>Application mobile perfectible sur certains smartphones</td></tr><tr><td>Tarification qui monte vite avec les options</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.kelio.com/fr" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Kelio
@@ -876,38 +763,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Je teste Combo depuis quelques mois pour une équipe de 25 personnes. <strong>Interface très épurée</strong> qui simplifie vraiment le pointage quotidien.
-
-<p>Les salariés badgent sans galère et moi j'ai toutes les données en temps réel.</p><p>Ce qui m'a convaincu ? L'intégration native avec les <strong>logiciels de paie français</strong>.</p>
-
-<p>Plus besoin de ressaisir les heures dans trois outils différents. Combo synchronise automatiquement avec Silae, Sage et même des solutions plus spécialisées.</p>
-
-<p>La gestion des congés est fluide aussi.</p><p>Par contre, je recommande plutôt aux structures organisées. Si vous avez des horaires complètement anarchiques ou des équipes très nomades, ça va moins bien coller.</p>
-
-<p><strong>Combo excelle sur la simplicité</strong>, pas sur les cas tordus.</p></p>
+            <p>Je teste Combo depuis quelques mois pour une équipe de 25 personnes. <strong>Interface très épurée</strong> qui simplifie vraiment le pointage quotidien. Les salariés badgent sans galère et moi j'ai toutes les données en temps réel.</p><p>Ce qui m'a convaincu ? L'intégration native avec les <strong>logiciels de paie français</strong>. Plus besoin de ressaisir les heures dans trois outils différents. Combo synchronise automatiquement avec Silae, Sage et même des solutions plus spécialisées. La gestion des congés est fluide aussi.</p><p>Par contre, je recommande plutôt aux structures organisées. Si vous avez des horaires complètement anarchiques ou des équipes très nomades, ça va moins bien coller. <strong>Combo excelle sur la simplicité</strong>, pas sur les cas tordus.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Synchronisation automatique avec les logiciels de paie français</td>
-            <td>Peu adapté aux horaires très flexibles</td>
-          </tr>
-          <tr>
-            <td>Interface simple qui réduit les erreurs de saisie</td>
-            <td>Fonctionnalités limitées pour le télétravail</td>
-          </tr>
-          <tr>
-            <td>Gestion des congés intégrée au pointage</td>
-            <td>Prix un peu élevé pour les très petites équipes</td>
-          </tr>
-          <tr>
-            <td>Support réactif avec des vrais humains</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Synchronisation automatique avec les logiciels de paie français</td></tr><tr><td>Interface simple qui réduit les erreurs de saisie</td></tr><tr><td>Gestion des congés intégrée au pointage</td></tr><tr><td>Support réactif avec des vrais humains</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Peu adapté aux horaires très flexibles</td></tr><tr><td>Fonctionnalités limitées pour le télétravail</td></tr><tr><td>Prix un peu élevé pour les très petites équipes</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://combohr.com/fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Combo
@@ -932,38 +800,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Je connais <strong>Horoquartz</strong> depuis plusieurs années et j'ai eu l'occasion de l'implémenter dans deux PME. Ce logiciel de pointage mise tout sur la simplicité d'usage avec ses bornes de badgeage très robustes.
-
-<p>L'interface reste basique mais fonctionnelle, et franchement ça fait le travail pour gérer les heures de présence sans se prendre la tête.</p><p>Ce qui m'a marqué avec Horoquartz, c'est la <strong>fiabilité du matériel</strong>.</p>
-
-<p>Les bornes encaissent bien les environnements difficiles (ateliers, chantiers). Le logiciel gère correctement les horaires variables, les pauses et produit des exports propres pour la paie.</p>
-
-<p>Par contre, ne vous attendez pas à une révolution ergonomique.</p><p>Je recommande Horoquartz aux entreprises de 20 à 200 salariés qui cherchent avant tout une solution stable et éprouvée.</p>
-
-<p>Les fonctionnalités avancées de planification restent limitées, mais pour du pointage classique avec gestion des congés, ça remplit parfaitement son rôle.</p></p>
+            <p>Je connais <strong>Horoquartz</strong> depuis plusieurs années et j'ai eu l'occasion de l'implémenter dans deux PME. Ce logiciel de pointage mise tout sur la simplicité d'usage avec ses bornes de badgeage très robustes. L'interface reste basique mais fonctionnelle, et franchement ça fait le travail pour gérer les heures de présence sans se prendre la tête.</p><p>Ce qui m'a marqué avec Horoquartz, c'est la <strong>fiabilité du matériel</strong>. Les bornes encaissent bien les environnements difficiles (ateliers, chantiers). Le logiciel gère correctement les horaires variables, les pauses et produit des exports propres pour la paie. Par contre, ne vous attendez pas à une révolution ergonomique.</p><p>Je recommande Horoquartz aux entreprises de 20 à 200 salariés qui cherchent avant tout une solution stable et éprouvée. Les fonctionnalités avancées de planification restent limitées, mais pour du pointage classique avec gestion des congés, ça remplit parfaitement son rôle.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Bornes de badgeage très résistantes et fiables dans le temps</td>
-            <td>Interface vieillissante qui manque de modernité comparé à la concurrence</td>
-          </tr>
-          <tr>
-            <td>Interface simple qui ne nécessite pas de formation poussée</td>
-            <td>Fonctionnalités de planification avancée assez limitées</td>
-          </tr>
-          <tr>
-            <td>Exports paie bien formatés et compatibles avec la plupart des logiciels RH</td>
-            <td>Coût des bornes physiques relativement élevé à l'achat</td>
-          </tr>
-          <tr>
-            <td>Support technique réactif avec des techniciens qui connaissent le produit</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Bornes de badgeage très résistantes et fiables dans le temps</td></tr><tr><td>Interface simple qui ne nécessite pas de formation poussée</td></tr><tr><td>Exports paie bien formatés et compatibles avec la plupart des logiciels RH</td></tr><tr><td>Support technique réactif avec des techniciens qui connaissent le produit</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface vieillissante qui manque de modernité comparé à la concurrence</td></tr><tr><td>Fonctionnalités de planification avancée assez limitées</td></tr><tr><td>Coût des bornes physiques relativement élevé à l'achat</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.horoquartz.com/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Horoquartz
@@ -988,38 +837,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Je vais être franc : <strong>Clockify</strong> m'a surpris par sa gratuité sans piège apparent. Ce logiciel de pointage propose un timer manuel ou automatique, des rapports détaillés et même une gestion de projets basique.
-
-<p>Contrairement à d'autres outils gratuits bourrés de limitations, ici on peut créer des équipes illimitées et tracker le temps sans restriction.</p><p>L'interface reste assez classique mais fonctionnelle.</p>
-
-<p>J'ai pu configurer différents clients, créer des tâches spécifiques et même bloquer certains sites pendant les sessions de travail.</p>
-
-<p>Le système de validation des heures par les managers fonctionne bien, même si ce n'est pas le plus intuitif que j'aie testé.</p><p>Clockify vise clairement les <strong>freelances et petites équipes</strong> qui veulent un suivi précis sans débourser un centime.</p>
-
-<p>Les développeurs, consultants et agences créatives y trouvent généralement leur compte. Par contre, si vous cherchez quelque chose de très design ou des fonctionnalités RH poussées, passez votre chemin.</p></p>
+            <p>Je vais être franc : <strong>Clockify</strong> m'a surpris par sa gratuité sans piège apparent. Ce logiciel de pointage propose un timer manuel ou automatique, des rapports détaillés et même une gestion de projets basique. Contrairement à d'autres outils gratuits bourrés de limitations, ici on peut créer des équipes illimitées et tracker le temps sans restriction.</p><p>L'interface reste assez classique mais fonctionnelle. J'ai pu configurer différents clients, créer des tâches spécifiques et même bloquer certains sites pendant les sessions de travail. Le système de validation des heures par les managers fonctionne bien, même si ce n'est pas le plus intuitif que j'aie testé.</p><p>Clockify vise clairement les <strong>freelances et petites équipes</strong> qui veulent un suivi précis sans débourser un centime. Les développeurs, consultants et agences créatives y trouvent généralement leur compte. Par contre, si vous cherchez quelque chose de très design ou des fonctionnalités RH poussées, passez votre chemin.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Version gratuite réellement utilisable sans limitations cachées</td>
-            <td>Interface un peu datée qui manque de modernité</td>
-          </tr>
-          <tr>
-            <td>Timer automatique avec détection d'inactivité paramétrable</td>
-            <td>Fonctionnalités RH très limitées comparé aux concurrents payants</td>
-          </tr>
-          <tr>
-            <td>Rapports exportables en PDF et Excel avec ventilation par projet</td>
-            <td>Support client parfois lent sur la version gratuite</td>
-          </tr>
-          <tr>
-            <td>Application mobile qui synchronise parfaitement avec la version web</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Version gratuite réellement utilisable sans limitations cachées</td></tr><tr><td>Timer automatique avec détection d'inactivité paramétrable</td></tr><tr><td>Rapports exportables en PDF et Excel avec ventilation par projet</td></tr><tr><td>Application mobile qui synchronise parfaitement avec la version web</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface un peu datée qui manque de modernité</td></tr><tr><td>Fonctionnalités RH très limitées comparé aux concurrents payants</td></tr><tr><td>Support client parfois lent sur la version gratuite</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://clockify.me/fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Clockify
@@ -1044,38 +874,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Hubstaff, je l'ai testé pendant 6 mois pour tracker le temps de mon équipe de développeurs. Ce <strong>logiciel de pointage</strong> se concentre sur la productivité avec des captures d'écran automatiques et un suivi précis des activités.
-
-<p>Contrairement à d'autres outils, il ne se contente pas de chronométrer : il analyse vraiment ce que font vos salariés.</p><p>L'interface reste simple mais l'approche peut surprendre.</p>
-
-<p>Les <strong>screenshots toutes les 10 minutes</strong> et le tracking des sites visités donnent une vision détaillée du travail effectué. J'ai pu identifier des pertes de temps qu'on ne soupçonnait pas et optimiser nos processus.</p>
-
-<p>Le reporting automatique m'a fait gagner des heures de gestion.</p><p>Par contre, cette surveillance poussée ne convient pas à tous les types d'équipes. Les profils créatifs ou commerciaux peuvent mal vivre ce niveau de contrôle.</p>
-
-<p>Je le recommande surtout pour des activités mesurables : développement, support client, saisie de données, traduction.</p></p>
+            <p>Hubstaff, je l'ai testé pendant 6 mois pour tracker le temps de mon équipe de développeurs. Ce <strong>logiciel de pointage</strong> se concentre sur la productivité avec des captures d'écran automatiques et un suivi précis des activités. Contrairement à d'autres outils, il ne se contente pas de chronométrer : il analyse vraiment ce que font vos salariés.</p><p>L'interface reste simple mais l'approche peut surprendre. Les <strong>screenshots toutes les 10 minutes</strong> et le tracking des sites visités donnent une vision détaillée du travail effectué. J'ai pu identifier des pertes de temps qu'on ne soupçonnait pas et optimiser nos processus. Le reporting automatique m'a fait gagner des heures de gestion.</p><p>Par contre, cette surveillance poussée ne convient pas à tous les types d'équipes. Les profils créatifs ou commerciaux peuvent mal vivre ce niveau de contrôle. Je le recommande surtout pour des activités mesurables : développement, support client, saisie de données, traduction.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Captures d'écran automatiques pour vérifier l'activité réelle</td>
-            <td>Surveillance très intrusive qui peut créer des tensions</td>
-          </tr>
-          <tr>
-            <td>Tracking précis des applications et sites web utilisés</td>
-            <td>Interface parfois lente avec de gros volumes de données</td>
-          </tr>
-          <tr>
-            <td>Facturation automatique basée sur le temps tracké</td>
-            <td>Tarifs qui grimpent vite avec les fonctionnalités avancées</td>
-          </tr>
-          <tr>
-            <td>Géolocalisation pour les équipes mobiles</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Captures d'écran automatiques pour vérifier l'activité réelle</td></tr><tr><td>Tracking précis des applications et sites web utilisés</td></tr><tr><td>Facturation automatique basée sur le temps tracké</td></tr><tr><td>Géolocalisation pour les équipes mobiles</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Surveillance très intrusive qui peut créer des tensions</td></tr><tr><td>Interface parfois lente avec de gros volumes de données</td></tr><tr><td>Tarifs qui grimpent vite avec les fonctionnalités avancées</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://hubstaff.com/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Hubstaff
@@ -1413,7 +1224,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 digicube.fr — Données actualisées le 2 octobre 2026
+        © 2026 digicube.fr — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

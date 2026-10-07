@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -490,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai testé 11 logiciels de système d'information RH : mon comparatif</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-05 - 11 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 11 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Nicolas Roux" class="hero-author-avatar">
     <span>Rédigé par Nicolas Roux</span>
@@ -531,38 +536,23 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p><strong>Kelio propose un SIRH</strong> complet et centralisé qui regroupe la gestion administrative du personnel et le suivi des talents au sein d'une seule interface.
+            <p><strong>Kelio propose un SIRH</strong> complet et centralisé qui regroupe la gestion administrative du personnel et le suivi des talents au sein d'une seule interface. Du dossier salarié à la gestion des compétences, en passant par le plan de formation et les entretiens annuels, l'outil unifie toutes vos données.</p>
 
-<p>Du dossier salarié à la gestion des compétences, en passant par le plan de formation et les entretiens annuels, l'outil unifie toutes vos données.</p></p>
-
-<p>Le portail RH permet aux collaborateurs et aux managers de consulter leurs informations, d'effectuer des demandes et de valider les circuits administratifs via des workflows paramétrables.
-
-<p>Kelio s'interface nativement avec la gestion des temps, la paie et le contrôle d'accès.</p></p>
+<p>Le portail RH permet aux collaborateurs et aux managers de consulter leurs informations, d'effectuer des demandes et de valider les circuits administratifs via des workflows paramétrables. Kelio s'interface nativement avec la gestion des temps, la paie et le contrôle d'accès.</p>
 
 <p>Une solution robuste pour les <strong>entreprises et collectivités</strong> souhaitant digitaliser l'intégralité de leur gestion RH avec un outil évolutif et sécurisé.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Centralisation parfaite de l'ensemble des données collaborateur</td>
-            <td>Mise en œuvre demandant une vraie phase d'accompagnement</td>
-          </tr>
-          <tr>
-            <td>Couverture fonctionnelle très large (entretiens, formation, compétences)</td>
-            <td>Interface riche qui demande une formation préalable</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation personnalisables par service</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Haut niveau de sécurité et conformité réglementaire</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Centralisation parfaite de l'ensemble des données collaborateur</td></tr><tr><td>Couverture fonctionnelle très large (entretiens, formation, compétences)</td></tr><tr><td>Workflows de validation personnalisables par service</td></tr><tr><td>Haut niveau de sécurité et conformité réglementaire</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Mise en œuvre demandant une vraie phase d'accompagnement</td></tr><tr><td>Interface riche qui demande une formation préalable</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.kelio.com/fr/fonctionnalites/gestion-administrative-rh/portail-rh.html" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Kelio
@@ -587,38 +577,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>PayFit transforme la gestion de paie en <strong>automatisant complètement le processus</strong>. Fini les calculs manuels et les erreurs de bulletins.
-
-<p>Je charge simplement les heures supplémentaires et congés, PayFit s'occupe du reste : charges sociales, déclarations DSN, virements automatiques.</p><p>L'interface reste accessible même si on n'est pas expert-comptable.</p>
-
-<p>Les employés peuvent consulter leurs fiches de paie, poser leurs congés et modifier leurs informations personnelles depuis leur espace.</p>
-
-<p><strong>Ça décharge vraiment les RH</strong> des questions basiques.</p><p>Je recommande PayFit aux entreprises de 10 à 200 salariés qui veulent externaliser leur paie sans perdre le contrôle.</p>
-
-<p>Par contre, si vous avez des spécificités sectorielles complexes ou des conventions très particulières, ça peut coincer.</p></p>
+            <p>PayFit transforme la gestion de paie en <strong>automatisant complètement le processus</strong>. Fini les calculs manuels et les erreurs de bulletins. Je charge simplement les heures supplémentaires et congés, PayFit s'occupe du reste : charges sociales, déclarations DSN, virements automatiques.</p><p>L'interface reste accessible même si on n'est pas expert-comptable. Les employés peuvent consulter leurs fiches de paie, poser leurs congés et modifier leurs informations personnelles depuis leur espace. <strong>Ça décharge vraiment les RH</strong> des questions basiques.</p><p>Je recommande PayFit aux entreprises de 10 à 200 salariés qui veulent externaliser leur paie sans perdre le contrôle. Par contre, si vous avez des spécificités sectorielles complexes ou des conventions très particulières, ça peut coincer.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Automatisation complète de la paie avec calculs fiables</td>
-            <td>Personnalisation limitée pour les conventions collectives spécifiques</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive pour les non-spécialistes</td>
-            <td>Coût élevé pour les très petites structures</td>
-          </tr>
-          <tr>
-            <td>Espace employé autonome pour réduire les sollicitations RH</td>
-            <td>Dépendance totale au prestataire en cas de problème</td>
-          </tr>
-          <tr>
-            <td>Déclarations sociales automatisées et conformes</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Automatisation complète de la paie avec calculs fiables</td></tr><tr><td>Interface intuitive pour les non-spécialistes</td></tr><tr><td>Espace employé autonome pour réduire les sollicitations RH</td></tr><tr><td>Déclarations sociales automatisées et conformes</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Personnalisation limitée pour les conventions collectives spécifiques</td></tr><tr><td>Coût élevé pour les très petites structures</td></tr><tr><td>Dépendance totale au prestataire en cas de problème</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://payfit.com/fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer PayFit
@@ -643,38 +614,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Lucca fait partie de ces SIRH français qui misent sur l'interface utilisateur. J'ai testé leur solution avec des équipes de 50 à 300 salariés et ce qui m'a marqué, c'est <strong>l'adoption rapide par les collaborateurs</strong>.
-
-<p>Contrairement aux usines à gaz classiques, on sent qu'ils ont pensé l'ergonomie.</p><p>Leur force réside dans le mix gestion des congés, notes de frais et suivi des temps. L'app mobile fonctionne bien, même hors ligne.</p>
-
-<p>Les validations se font rapidement, <strong>sans se perdre dans des menus à rallonge</strong>.</p>
-
-<p>Par contre, si vous cherchez un module paie intégré ou de la gestion prévisionnelle poussée, il faudra regarder ailleurs.</p><p>Lucca convient parfaitement aux PME qui veulent digitaliser sans traumatiser leurs équipes.</p>
-
-<p><strong>L'onboarding prend généralement 2 semaines</strong> contre plusieurs mois sur des mastodontes. Attention au pricing qui peut grimper avec les options.</p></p>
+            <p>Lucca fait partie de ces SIRH français qui misent sur l'interface utilisateur. J'ai testé leur solution avec des équipes de 50 à 300 salariés et ce qui m'a marqué, c'est <strong>l'adoption rapide par les collaborateurs</strong>. Contrairement aux usines à gaz classiques, on sent qu'ils ont pensé l'ergonomie.</p><p>Leur force réside dans le mix gestion des congés, notes de frais et suivi des temps. L'app mobile fonctionne bien, même hors ligne. Les validations se font rapidement, <strong>sans se perdre dans des menus à rallonge</strong>. Par contre, si vous cherchez un module paie intégré ou de la gestion prévisionnelle poussée, il faudra regarder ailleurs.</p><p>Lucca convient parfaitement aux PME qui veulent digitaliser sans traumatiser leurs équipes. <strong>L'onboarding prend généralement 2 semaines</strong> contre plusieurs mois sur des mastodontes. Attention au pricing qui peut grimper avec les options.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive qui facilite l'adoption par les collaborateurs</td>
-            <td>Pas de module paie intégré, nécessite une interface</td>
-          </tr>
-          <tr>
-            <td>App mobile performante avec synchronisation offline</td>
-            <td>Options avancées de reporting limitées comparé aux gros SIRH</td>
-          </tr>
-          <tr>
-            <td>Workflow de validation des congés et notes de frais très fluide</td>
-            <td>Coût qui augmente rapidement avec les modules complémentaires</td>
-          </tr>
-          <tr>
-            <td>Support client réactif et formation incluse</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive qui facilite l'adoption par les collaborateurs</td></tr><tr><td>App mobile performante avec synchronisation offline</td></tr><tr><td>Workflow de validation des congés et notes de frais très fluide</td></tr><tr><td>Support client réactif et formation incluse</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Pas de module paie intégré, nécessite une interface</td></tr><tr><td>Options avancées de reporting limitées comparé aux gros SIRH</td></tr><tr><td>Coût qui augmente rapidement avec les modules complémentaires</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.lucca.fr" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Lucca
@@ -699,40 +651,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Eurécia est un SIRH français qui mise tout sur la simplicité d'usage. <strong>Je l'ai testé pendant 6 mois</strong> et j'ai apprécié son interface claire, sans fioritures.
-
-<p>Le logiciel couvre les fonctions RH essentielles : gestion des congés, paie, entretiens annuels et tableau de bord RH.</p>
-
-<p>Bon point : l'onboarding se fait vraiment sans prise de tête.</p><p>Ce qui m'a marqué, c'est la logique métier bien pensée. Les workflows de validation des congés sont <strong>intuitifs même pour les managers peu tech</strong>.</p>
-
-<p>La gestion des variables de paie reste accessible, ce qui n'est pas donné à tous les SIRH.</p>
-
-<p>Par contre, on sent qu'Eurécia cible avant tout les PME qui veulent du fonctionnel sans complexité.</p><p>L'éditeur français propose un support réactif, ce que j'ai pu vérifier lors de mes questions sur les paramètrages de bulletins.</p>
-
-<p>Franchement, <strong>ça change des plateformes où on attend des jours</strong> pour obtenir une réponse technique. Le logiciel évolue régulièrement avec des mises à jour qui apportent de vraies améliorations.</p></p>
+            <p>Eurécia est un SIRH français qui mise tout sur la simplicité d'usage. <strong>Je l'ai testé pendant 6 mois</strong> et j'ai apprécié son interface claire, sans fioritures. Le logiciel couvre les fonctions RH essentielles : gestion des congés, paie, entretiens annuels et tableau de bord RH. Bon point : l'onboarding se fait vraiment sans prise de tête.</p><p>Ce qui m'a marqué, c'est la logique métier bien pensée. Les workflows de validation des congés sont <strong>intuitifs même pour les managers peu tech</strong>. La gestion des variables de paie reste accessible, ce qui n'est pas donné à tous les SIRH. Par contre, on sent qu'Eurécia cible avant tout les PME qui veulent du fonctionnel sans complexité.</p><p>L'éditeur français propose un support réactif, ce que j'ai pu vérifier lors de mes questions sur les paramètrages de bulletins. Franchement, <strong>ça change des plateformes où on attend des jours</strong> pour obtenir une réponse technique. Le logiciel évolue régulièrement avec des mises à jour qui apportent de vraies améliorations.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface vraiment intuitive pour tous les profils utilisateurs</td>
-            <td>Fonctionnalités avancées limitées pour les grandes entreprises</td>
-          </tr>
-          <tr>
-            <td>Support client français réactif et compétent</td>
-            <td>Connecteurs avec d'autres logiciels parfois capricieux</td>
-          </tr>
-          <tr>
-            <td>Paramétrage des congés et RTT très flexible</td>
-            <td>Tableau de bord pas assez personnalisable selon moi</td>
-          </tr>
-          <tr>
-            <td>Gestion de la paie accessible sans formation poussée</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface vraiment intuitive pour tous les profils utilisateurs</td></tr><tr><td>Support client français réactif et compétent</td></tr><tr><td>Paramétrage des congés et RTT très flexible</td></tr><tr><td>Gestion de la paie accessible sans formation poussée</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités avancées limitées pour les grandes entreprises</td></tr><tr><td>Connecteurs avec d'autres logiciels parfois capricieux</td></tr><tr><td>Tableau de bord pas assez personnalisable selon moi</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.eurecia.com/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Eurécia
@@ -757,40 +688,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>J'utilise Sage Business Cloud depuis 2 ans et je reconnais qu'il s'agit d'un <strong>SIRH robuste</strong> qui fait le travail, surtout pour les entreprises habituées à l'écosystème Sage.
-
-<p>Le module paie gère bien les conventions collectives complexes et l'intégration avec la comptabilité Sage se fait naturellement.</p>
-
-<p>Les fonctionnalités RH couvrent l'essentiel : gestion des congés, notes de frais, suivi des formations et tableaux de bord pour le pilotage.</p><p>Par contre, l'interface fait un peu <strong>années 2010</strong> comparée aux nouveaux acteurs du marché.</p>
-
-<p>Je trouve que certaines manipulations prennent plus de clics que nécessaire, notamment pour paramétrer les workflows d'approbation.</p>
-
-<p>L'onboarding peut sembler lourd si vos équipes ne maîtrisent pas déjà les produits Sage.</p><p>Ce SIRH convient particulièrement aux entreprises de 50 à 500 salariés qui cherchent une solution <strong>stable et éprouvée</strong>, avec un support français réactif.</p>
-
-<p>Si vous utilisez déjà Sage pour votre comptabilité, l'investissement devient logique pour centraliser vos données RH et éviter les doubles saisies.</p></p>
+            <p>J'utilise Sage Business Cloud depuis 2 ans et je reconnais qu'il s'agit d'un <strong>SIRH robuste</strong> qui fait le travail, surtout pour les entreprises habituées à l'écosystème Sage. Le module paie gère bien les conventions collectives complexes et l'intégration avec la comptabilité Sage se fait naturellement. Les fonctionnalités RH couvrent l'essentiel : gestion des congés, notes de frais, suivi des formations et tableaux de bord pour le pilotage.</p><p>Par contre, l'interface fait un peu <strong>années 2010</strong> comparée aux nouveaux acteurs du marché. Je trouve que certaines manipulations prennent plus de clics que nécessaire, notamment pour paramétrer les workflows d'approbation. L'onboarding peut sembler lourd si vos équipes ne maîtrisent pas déjà les produits Sage.</p><p>Ce SIRH convient particulièrement aux entreprises de 50 à 500 salariés qui cherchent une solution <strong>stable et éprouvée</strong>, avec un support français réactif. Si vous utilisez déjà Sage pour votre comptabilité, l'investissement devient logique pour centraliser vos données RH et éviter les doubles saisies.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégration native avec l'écosystème comptable Sage</td>
-            <td>Interface utilisateur vieillissante et peu intuitive</td>
-          </tr>
-          <tr>
-            <td>Gestion précise de la paie et des conventions collectives françaises</td>
-            <td>Coût élevé pour les petites structures sans comptabilité Sage</td>
-          </tr>
-          <tr>
-            <td>Support client français réactif et compétent</td>
-            <td>Manque de flexibilité sur la personnalisation des workflows</td>
-          </tr>
-          <tr>
-            <td>Solution stable sans bugs majeurs en production</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégration native avec l'écosystème comptable Sage</td></tr><tr><td>Gestion précise de la paie et des conventions collectives françaises</td></tr><tr><td>Support client français réactif et compétent</td></tr><tr><td>Solution stable sans bugs majeurs en production</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Interface utilisateur vieillissante et peu intuitive</td></tr><tr><td>Coût élevé pour les petites structures sans comptabilité Sage</td></tr><tr><td>Manque de flexibilité sur la personnalisation des workflows</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.sage.com/fr-fr/sage-business-cloud/logiciels/gestionnaire-de-paie/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Sage Business Cloud
@@ -815,38 +725,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Factorial frappe fort avec une approche différente du SIRH traditionnel. <strong>Plutôt que de tout empiler</strong>, ils ont créé un système modulaire où chaque fonction RH est pensée pour être simple d'usage.
-
-<p>Je l'ai testé sur plusieurs entreprises entre 20 et 200 salariés, et franchement, ça change de la complexité habituelle des gros logiciels.</p><p>L'interface ressemble plus à une app mobile qu'à un vieux système administratif.</p>
-
-<p>La gestion des congés se fait en deux clics, le suivi des temps est automatisé, et les fiches de paie sont générées sans prise de tête. <strong>Leur force</strong> ?</p>
-
-<p>Ils ont gardé uniquement les fonctions qui servent vraiment au quotidien.</p><p>Par contre, ne vous attendez pas à un mastodonte capable de gérer 500 variables de paie ou des processus RH ultra-spécifiques.</p>
-
-<p>Factorial vise les PME qui veulent <strong>digitaliser leur RH sans se compliquer la vie</strong>. Pour une startup en croissance ou une PME qui sort d'Excel, c'est exactement ce qu'il faut.</p></p>
+            <p>Factorial frappe fort avec une approche différente du SIRH traditionnel. <strong>Plutôt que de tout empiler</strong>, ils ont créé un système modulaire où chaque fonction RH est pensée pour être simple d'usage. Je l'ai testé sur plusieurs entreprises entre 20 et 200 salariés, et franchement, ça change de la complexité habituelle des gros logiciels.</p><p>L'interface ressemble plus à une app mobile qu'à un vieux système administratif. La gestion des congés se fait en deux clics, le suivi des temps est automatisé, et les fiches de paie sont générées sans prise de tête. <strong>Leur force</strong> ? Ils ont gardé uniquement les fonctions qui servent vraiment au quotidien.</p><p>Par contre, ne vous attendez pas à un mastodonte capable de gérer 500 variables de paie ou des processus RH ultra-spécifiques. Factorial vise les PME qui veulent <strong>digitaliser leur RH sans se compliquer la vie</strong>. Pour une startup en croissance ou une PME qui sort d'Excel, c'est exactement ce qu'il faut.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface ultra-intuitive, formation des équipes en quelques heures</td>
-            <td>Fonctions de reporting limitées pour les analyses RH poussées</td>
-          </tr>
-          <tr>
-            <td>Automatisation complète des congés avec validation hiérarchique</td>
-            <td>Gestion de la paie française perfectible selon la complexité</td>
-          </tr>
-          <tr>
-            <td>Application mobile vraiment fonctionnelle pour les salariés nomades</td>
-            <td>Support client parfois lent en période de forte demande</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec les principales solutions comptables</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface ultra-intuitive, formation des équipes en quelques heures</td></tr><tr><td>Automatisation complète des congés avec validation hiérarchique</td></tr><tr><td>Application mobile vraiment fonctionnelle pour les salariés nomades</td></tr><tr><td>Intégration native avec les principales solutions comptables</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctions de reporting limitées pour les analyses RH poussées</td></tr><tr><td>Gestion de la paie française perfectible selon la complexité</td></tr><tr><td>Support client parfois lent en période de forte demande</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://factorial.fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Factorial
@@ -871,40 +762,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Personio couvre l'ensemble du cycle RH, de la gestion des candidatures jusqu'à la paie.
-
-<p>Je l'ai testé pour une entreprise de 80 salariés et l'outil gère vraiment tout : recrutement, contrats, absences, temps de travail, formation et reporting.</p>
-
-<p><strong>L'interface reste intuitive</strong> malgré cette richesse fonctionnelle.</p><p>Ce qui m'a marqué : la fluidité entre les modules.</p>
-
-<p>Quand je valide un congé dans la gestion des absences, ça impacte automatiquement la paie et les plannings. Le module de recrutement permet de suivre les candidatures de A à Z, avec des workflows personnalisables pour chaque poste.</p>
-
-<p>Les managers peuvent gérer les demandes d'absence de leurs équipes sans formation.</p><p>Personio vise clairement les PME et ETI de 50 à 500 salariés qui cherchent à centraliser leurs processus RH.</p>
-
-<p>Parfait si vous voulez remplacer 4-5 outils par une solution unique, <strong>même si ça demande un vrai projet de migration</strong>. L'investissement en vaut la peine pour structurer des RH qui grandissent vite.</p></p>
+            <p>Personio couvre l'ensemble du cycle RH, de la gestion des candidatures jusqu'à la paie. Je l'ai testé pour une entreprise de 80 salariés et l'outil gère vraiment tout : recrutement, contrats, absences, temps de travail, formation et reporting. <strong>L'interface reste intuitive</strong> malgré cette richesse fonctionnelle.</p><p>Ce qui m'a marqué : la fluidité entre les modules. Quand je valide un congé dans la gestion des absences, ça impacte automatiquement la paie et les plannings. Le module de recrutement permet de suivre les candidatures de A à Z, avec des workflows personnalisables pour chaque poste. Les managers peuvent gérer les demandes d'absence de leurs équipes sans formation.</p><p>Personio vise clairement les PME et ETI de 50 à 500 salariés qui cherchent à centraliser leurs processus RH. Parfait si vous voulez remplacer 4-5 outils par une solution unique, <strong>même si ça demande un vrai projet de migration</strong>. L'investissement en vaut la peine pour structurer des RH qui grandissent vite.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface unifiée qui évite de jongler entre plusieurs outils</td>
-            <td>Migration complexe depuis des outils existants</td>
-          </tr>
-          <tr>
-            <td>Automatisation complète paie-absences-plannings sans resaisie</td>
-            <td>Tarification élevée pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Workflows de recrutement personnalisables par métier</td>
-            <td>Personnalisation limitée des rapports avancés</td>
-          </tr>
-          <tr>
-            <td>Tableaux de bord RH avec KPI prêts à l'emploi</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface unifiée qui évite de jongler entre plusieurs outils</td></tr><tr><td>Automatisation complète paie-absences-plannings sans resaisie</td></tr><tr><td>Workflows de recrutement personnalisables par métier</td></tr><tr><td>Tableaux de bord RH avec KPI prêts à l'emploi</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Migration complexe depuis des outils existants</td></tr><tr><td>Tarification élevée pour les petites structures</td></tr><tr><td>Personnalisation limitée des rapports avancés</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.personio.fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Personio
@@ -929,40 +799,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>J'ai testé Rippling sur plusieurs mois et je dois avouer que c'est <strong>l'un des SIRH les plus complets</strong> que j'ai vus.
-
-<p>Cette plateforme américaine ne se contente pas de gérer les RH classiques : elle centralise paie, gestion des équipements IT, assurances et même les accès logiciels.</p>
-
-<p>Tout est interconnecté de manière assez impressionnante.</p><p>Ce qui m'a frappé, c'est la logique "one-stop-shop" poussée à l'extrême.</p>
-
-<p>Quand j'embauche quelqu'un, Rippling créé automatiquement tous ses comptes (Slack, Google Workspace, etc.), commande son laptop et configure ses accès. <strong>Ça fait gagner des heures</strong> au service IT.</p>
-
-<p>L'interface est moderne, même si parfois un peu chargée.</p><p>Par contre, on est clairement sur du haut de gamme américain. La tarification reste opaque et j'ai eu l'impression que c'est pensé pour des boîtes qui ont les moyens.</p>
-
-<p><strong>Si vous cherchez juste un SIRH basique, passez votre chemin.</strong> Mais pour une entreprise tech qui veut vraiment tout centraliser, c'est du très lourd.</p></p>
+            <p>J'ai testé Rippling sur plusieurs mois et je dois avouer que c'est <strong>l'un des SIRH les plus complets</strong> que j'ai vus. Cette plateforme américaine ne se contente pas de gérer les RH classiques : elle centralise paie, gestion des équipements IT, assurances et même les accès logiciels. Tout est interconnecté de manière assez impressionnante.</p><p>Ce qui m'a frappé, c'est la logique "one-stop-shop" poussée à l'extrême. Quand j'embauche quelqu'un, Rippling créé automatiquement tous ses comptes (Slack, Google Workspace, etc.), commande son laptop et configure ses accès. <strong>Ça fait gagner des heures</strong> au service IT. L'interface est moderne, même si parfois un peu chargée.</p><p>Par contre, on est clairement sur du haut de gamme américain. La tarification reste opaque et j'ai eu l'impression que c'est pensé pour des boîtes qui ont les moyens. <strong>Si vous cherchez juste un SIRH basique, passez votre chemin.</strong> Mais pour une entreprise tech qui veut vraiment tout centraliser, c'est du très lourd.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Automatisation complète du processus d'onboarding et offboarding</td>
-            <td>Tarification complexe et souvent élevée pour les PME</td>
-          </tr>
-          <tr>
-            <td>Gestion centralisée IT + RH + Finance dans une seule plateforme</td>
-            <td>Interface parfois surchargée qui peut dérouter les nouveaux utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Intégrations natives avec 500+ applications métier</td>
-            <td>Support principalement en anglais et fuseau horaire américain</td>
-          </tr>
-          <tr>
-            <td>Workflows personnalisables très puissants pour automatiser les tâches répétitives</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Automatisation complète du processus d'onboarding et offboarding</td></tr><tr><td>Gestion centralisée IT + RH + Finance dans une seule plateforme</td></tr><tr><td>Intégrations natives avec 500+ applications métier</td></tr><tr><td>Workflows personnalisables très puissants pour automatiser les tâches répétitives</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification complexe et souvent élevée pour les PME</td></tr><tr><td>Interface parfois surchargée qui peut dérouter les nouveaux utilisateurs</td></tr><tr><td>Support principalement en anglais et fuseau horaire américain</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.rippling.com/fr-FR/produits/mondial" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Rippling
@@ -987,40 +836,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>BambooHR cible principalement les PME américaines qui cherchent un <strong>SIRH simple à déployer</strong>.
-
-<p>Je l'ai testé dans une startup de 45 personnes : l'interface ressemble à celle d'un réseau social, avec des profils collaborateurs bien pensés et un onboarding qui ne prend que quelques clics.</p><p>Ce qui m'a marqué, c'est la <strong>gestion des congés vraiment fluide</strong>.</p>
-
-<p>Les salariés font leur demande en deux minutes, le manager valide depuis son téléphone, et tout se synchronise automatiquement avec la paie.</p>
-
-<p>L'outil excelle aussi sur le recrutement avec un ATS intégré qui permet de suivre les candidatures sans jongler entre plusieurs plateformes.</p><p>Par contre, j'ai vite buté sur les <strong>limites de personnalisation</strong>.</p>
-
-<p>Les workflows sont assez rigides, et si vous avez des processus RH spécifiques (comme des grilles salariales complexes ou des formations obligatoires par métier), vous allez être frustrés.</p>
-
-<p>BambooHR mise tout sur la simplicité, quitte à sacrifier la flexibilité.</p></p>
+            <p>BambooHR cible principalement les PME américaines qui cherchent un <strong>SIRH simple à déployer</strong>. Je l'ai testé dans une startup de 45 personnes : l'interface ressemble à celle d'un réseau social, avec des profils collaborateurs bien pensés et un onboarding qui ne prend que quelques clics.</p><p>Ce qui m'a marqué, c'est la <strong>gestion des congés vraiment fluide</strong>. Les salariés font leur demande en deux minutes, le manager valide depuis son téléphone, et tout se synchronise automatiquement avec la paie. L'outil excelle aussi sur le recrutement avec un ATS intégré qui permet de suivre les candidatures sans jongler entre plusieurs plateformes.</p><p>Par contre, j'ai vite buté sur les <strong>limites de personnalisation</strong>. Les workflows sont assez rigides, et si vous avez des processus RH spécifiques (comme des grilles salariales complexes ou des formations obligatoires par métier), vous allez être frustrés. BambooHR mise tout sur la simplicité, quitte à sacrifier la flexibilité.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive qui ne nécessite aucune formation</td>
-            <td>Workflows rigides et peu personnalisables</td>
-          </tr>
-          <tr>
-            <td>Gestion des congés et absences automatisée</td>
-            <td>Fonctionnalités limitées pour les grandes entreprises</td>
-          </tr>
-          <tr>
-            <td>ATS intégré pour centraliser le recrutement</td>
-            <td>Support client parfois lent en français</td>
-          </tr>
-          <tr>
-            <td>Onboarding collaborateur en quelques clics</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive qui ne nécessite aucune formation</td></tr><tr><td>Gestion des congés et absences automatisée</td></tr><tr><td>ATS intégré pour centraliser le recrutement</td></tr><tr><td>Onboarding collaborateur en quelques clics</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Workflows rigides et peu personnalisables</td></tr><tr><td>Fonctionnalités limitées pour les grandes entreprises</td></tr><tr><td>Support client parfois lent en français</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.bamboohr.com/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer BambooHR
@@ -1045,38 +873,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Gusto transforme la gestion RH pour les <strong>PME américaines</strong> en centralisant paie, avantages sociaux et administration du personnel.
-
-<p>Je l'ai testé pendant plusieurs mois et j'apprécie sa simplicité d'usage, même si certaines fonctions manquent encore de sophistication.</p><p>Cette plateforme SIRH mise tout sur l'automatisation des tâches répétitives.</p>
-
-<p><strong>Calcul des cotisations, dépôt des déclarations, onboarding des nouveaux salariés</strong> : tout se fait sans intervention manuelle.</p>
-
-<p>L'interface reste intuitive, ce qui évite les formations longues.</p><p>Gusto s'adresse principalement aux entreprises de 5 à 500 employés qui veulent <strong>déléguer leur administration RH</strong> sans perdre le contrôle.</p>
-
-<p>Par contre, si vous cherchez des modules de formation ou de gestion des talents avancés, regardez ailleurs.</p></p>
+            <p>Gusto transforme la gestion RH pour les <strong>PME américaines</strong> en centralisant paie, avantages sociaux et administration du personnel. Je l'ai testé pendant plusieurs mois et j'apprécie sa simplicité d'usage, même si certaines fonctions manquent encore de sophistication.</p><p>Cette plateforme SIRH mise tout sur l'automatisation des tâches répétitives. <strong>Calcul des cotisations, dépôt des déclarations, onboarding des nouveaux salariés</strong> : tout se fait sans intervention manuelle. L'interface reste intuitive, ce qui évite les formations longues.</p><p>Gusto s'adresse principalement aux entreprises de 5 à 500 employés qui veulent <strong>déléguer leur administration RH</strong> sans perdre le contrôle. Par contre, si vous cherchez des modules de formation ou de gestion des talents avancés, regardez ailleurs.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Automatisation complète de la paie et des déclarations fiscales</td>
-            <td>Disponible uniquement aux États-Unis, pas d'expansion internationale</td>
-          </tr>
-          <tr>
-            <td>Onboarding digital fluide pour les nouvelles recrues</td>
-            <td>Fonctionnalités de reporting limitées pour les analyses RH poussées</td>
-          </tr>
-          <tr>
-            <td>Support client réactif avec des vrais experts RH</td>
-            <td>Coût qui grimpe vite avec les modules complémentaires</td>
-          </tr>
-          <tr>
-            <td>Intégration native avec QuickBooks et autres outils comptables</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Automatisation complète de la paie et des déclarations fiscales</td></tr><tr><td>Onboarding digital fluide pour les nouvelles recrues</td></tr><tr><td>Support client réactif avec des vrais experts RH</td></tr><tr><td>Intégration native avec QuickBooks et autres outils comptables</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Disponible uniquement aux États-Unis, pas d'expansion internationale</td></tr><tr><td>Fonctionnalités de reporting limitées pour les analyses RH poussées</td></tr><tr><td>Coût qui grimpe vite avec les modules complémentaires</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://gusto.com/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Gusto
@@ -1101,38 +910,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Monday.com n'est pas un SIRH classique, mais plutôt une plateforme de gestion de projet qu'on peut adapter aux processus RH. Je l'ai testé pour gérer les recrutements et le suivi des congés dans une PME de 30 personnes.
-
-<p><strong>L'approche par tableaux colorés</strong> fonctionne bien quand on veut visualiser rapidement l'avancement des dossiers candidats ou planifier les formations.</p><p>Contrairement aux outils RH traditionnels, Monday mise tout sur la flexibilité.</p>
-
-<p>Vous partez d'une page blanche et vous construisez vos workflows selon vos besoins. J'ai créé un tableau pour suivre les entretiens avec des colonnes personnalisées : statut candidat, prétentions, notes des managers, prochaine étape.</p>
-
-<p><strong>L'automatisation des notifications</strong> évite les relances manuelles.</p><p>Par contre, si vous cherchez un vrai SIRH avec paie, déclarations sociales et gestion des temps, passez votre chemin.</p>
-
-<p>Monday reste avant tout un outil de <strong>gestion collaborative</strong> qu'on détourne pour les RH. Ça marche pour les PME créatives qui veulent quelque chose de visuel et moderne, mais pas pour remplacer un Lucca ou un Factorial.</p></p>
+            <p>Monday.com n'est pas un SIRH classique, mais plutôt une plateforme de gestion de projet qu'on peut adapter aux processus RH. Je l'ai testé pour gérer les recrutements et le suivi des congés dans une PME de 30 personnes. <strong>L'approche par tableaux colorés</strong> fonctionne bien quand on veut visualiser rapidement l'avancement des dossiers candidats ou planifier les formations.</p><p>Contrairement aux outils RH traditionnels, Monday mise tout sur la flexibilité. Vous partez d'une page blanche et vous construisez vos workflows selon vos besoins. J'ai créé un tableau pour suivre les entretiens avec des colonnes personnalisées : statut candidat, prétentions, notes des managers, prochaine étape. <strong>L'automatisation des notifications</strong> évite les relances manuelles.</p><p>Par contre, si vous cherchez un vrai SIRH avec paie, déclarations sociales et gestion des temps, passez votre chemin. Monday reste avant tout un outil de <strong>gestion collaborative</strong> qu'on détourne pour les RH. Ça marche pour les PME créatives qui veulent quelque chose de visuel et moderne, mais pas pour remplacer un Lucca ou un Factorial.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface visuelle et intuitive avec codes couleurs</td>
-            <td>Pas de modules paie ou gestion administrative</td>
-          </tr>
-          <tr>
-            <td>Automatisations simples pour les workflows RH</td>
-            <td>Coût qui grimpe vite avec les utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Collaboration en temps réel entre les équipes</td>
-            <td>Courbe d'apprentissage pour créer ses premiers tableaux</td>
-          </tr>
-          <tr>
-            <td>Intégrations nombreuses avec d'autres outils</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface visuelle et intuitive avec codes couleurs</td></tr><tr><td>Automatisations simples pour les workflows RH</td></tr><tr><td>Collaboration en temps réel entre les équipes</td></tr><tr><td>Intégrations nombreuses avec d'autres outils</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Pas de modules paie ou gestion administrative</td></tr><tr><td>Coût qui grimpe vite avec les utilisateurs</td></tr><tr><td>Courbe d'apprentissage pour créer ses premiers tableaux</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://monday.com/lang/fr" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Monday.com
@@ -1457,7 +1247,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 digicube.fr — Données actualisées le 5 octobre 2026
+        © 2026 digicube.fr — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>

@@ -68,16 +68,16 @@ nav{background:var(--ink);padding:0 5vw;display:flex;align-items:center;justify-
 .hero-author{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:8px;font-size:13px;color:rgba(255,255,255,.7)}
 .hero-author-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3)}
 main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
-.intro{font-size:18px;color:var(--ink2);line-height:1.75;margin:0 0 30px}
+.intro{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 30px}
 .intro p{margin-bottom:16px}
 .intro strong{color:var(--ink);font-weight:700}
-.logiciel-desc p{margin-bottom:14px}
+.logiciel-desc p{margin-bottom:16px}
 .logiciel-desc ul{margin:0 0 14px 20px}
 .en-bref{background:var(--surface);border:2px solid var(--accent);border-radius:var(--r2);padding:24px 28px;margin:0 0 30px}
 .en-bref-title{font-family:'DM Serif Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin:0 0 6px}
 .en-bref-sub{font-size:14px;color:var(--ink2);margin:0 0 16px}
 .en-bref ul{list-style:none;margin:0;padding:0}
-.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
+.en-bref li{padding:8px 0;border-bottom:1px solid var(--border);font-size:18px;line-height:1.8;color:var(--ink2);display:flex;align-items:flex-start;gap:8px}
 .en-bref li:last-child{border-bottom:none}
 .en-bref li::before{content:"→";color:var(--accent);font-weight:700;flex-shrink:0}
 /* Empêcher la coupure des noms de marques (en <strong>) sur 2 lignes.
@@ -90,20 +90,25 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .logiciel-tagline{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .logiciel-body{padding:20px 24px}
 .logiciel-placeholder{width:100%;height:140px;background:var(--surface2);border:2px dashed var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:13px;margin:0 0 16px}
-.logiciel-desc{font-size:16px;color:var(--ink2);line-height:1.75;margin:0 0 16px}
+.logiciel-desc{font-size:18px;color:var(--ink2);line-height:1.8;margin:0 0 16px}
 .logiciel-desc strong{color:var(--ink);font-weight:700}
 .logiciel-desc a{color:var(--cta,var(--accent2));font-weight:700;text-decoration:underline;text-underline-offset:2px}
 .logiciel-desc a:hover{opacity:.85}
-.avantages-table{width:100%;border-collapse:collapse;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.avantages-table{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 16px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
 .avantages-table th{padding:14px 16px;font-size:18px;font-weight:600;background:var(--ink);color:#fff;text-align:center}
 .avantages-table td{padding:10px 14px;font-size:16px;border-top:1px solid var(--border);vertical-align:top;color:var(--ink2)}
+.av-inc-wrap{display:flex;gap:16px;align-items:flex-start;margin:0 0 16px}
+.av-inc-wrap>*{flex:1 1 0;min-width:0;margin:0}
+.av-inc-wrap .avantages-table{width:100%;margin:0}
+.av-inc-wrap .table-wrap{overflow:visible}
+.av-inc-wrap .avantages-table td::before{content:"\2192";color:var(--accent);font-weight:700;margin-right:8px}
 .logiciel-prix{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .logiciel-prix strong{color:var(--accent);font-size:18px}
 .logiciel-prix .essai{color:var(--green);font-weight:600;margin-left:8px}
 .logiciel-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);background:var(--cta,var(--accent2));color:var(--cta-text,#fff);font-size:17px;font-weight:700;text-decoration:none;transition:.15s}
 .logiciel-cta:hover{opacity:.88}
 .section-title{font-family:'DM Serif Display',serif;font-size:clamp(24px,3vw,36px);font-weight:400;letter-spacing:-.02em;margin:40px 0 20px}
-.content-custom{font-size:16px;color:var(--ink2);line-height:1.8}
+.content-custom{font-size:18px;color:var(--ink2);line-height:1.8}
 .content-custom p{margin-bottom:16px}
 .content-custom h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--ink);margin:32px 0 12px}
 .content-custom h3{font-size:18px;font-weight:600;color:var(--ink);margin:24px 0 10px}
@@ -111,7 +116,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 .content-custom li{margin-bottom:6px}
 .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
 .faq-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--ink2);line-height:1.7}
+.faq-a{font-size:18px;color:var(--ink2);line-height:1.8}
 /* ── AUTHOR BOX ── */
 .author-box{display:flex;align-items:flex-start;gap:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin:25px 0 0}
 .author-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--border)}
@@ -127,7 +132,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:600px){.author-box{flex-direction:column;align-items:center;text-align:center}.author-socials{justify-content:center}}
 /* ── MAILLAGE INTERNE ── */
 .backlink-note{margin:22px 0 0;padding:16px 20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r2)}
-.backlink-note p{font-size:14px;color:var(--ink2);line-height:1.6;margin:0}
+.backlink-note p{font-size:18px;color:var(--ink2);line-height:1.8;margin:0}
 .backlink-note a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 .maillage-section{margin:25px 0 0}
 .maillage-section h3{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:400;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink)}
@@ -146,7 +151,7 @@ main{max-width:1200px;margin:0 auto;padding:25px 5vw 25px}
 @media(max-width:768px){
   .nav-links,.nav-cta{display:none}
   .nav-burger{display:flex}
-  .avantages-table{display:block;overflow-x:auto}
+  .av-inc-wrap{flex-direction:column;gap:12px}
   .logiciel-screenshot{height:auto;aspect-ratio:16/10}
 }
 </style>
@@ -490,7 +495,7 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
 </script>
 <div class="hero">
   <h1>J'ai comparé 10 logiciels de gestion des temps : mon classement</h1>
-  <div class="hero-meta">⏰ Mis à jour le 2026-10-02 - 10 logiciels analysés</div>
+  <div class="hero-meta">⏰ Mis à jour le 2026-10-07 - 10 logiciels analysés</div>
   <div class="hero-author">
     <img src="/author-photo.png" alt="Photo de Nicolas Roux" class="hero-author-avatar">
     <span>Rédigé par Nicolas Roux</span>
@@ -536,40 +541,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Clockify fait partie de ces <strong>outils de gestion des temps gratuits</strong> qui surprennent par leur complétude.
-
-<p>J'ai testé la version gratuite pendant plusieurs mois sur différents projets, et franchement, on obtient déjà énormément sans débourser un centime. Le suivi temps par projet, les rapports détaillés, même la facturation de base...</p>
-
-<p>tout y est.</p><p>Ce qui m'a frappé, c'est la <strong>facilité de prise en main</strong>. Pas besoin de formation, mes collaborateurs ont compris l'interface en 10 minutes. On lance le chrono, on assigne le projet, c'est parti.</p>
-
-<p><strong>Parfait pour les équipes qui démarrent</strong> dans le time tracking sans vouloir investir lourd dès le départ.</p><p>Clockify vise clairement les <strong>petites structures et freelances</strong> qui ont besoin de traçabilité sans complexité.</p>
-
-<p>Les agences créatives, consultants, développeurs... tous ceux qui facturent au temps et veulent des rapports clients propres.</p>
-
-<p>La synchronisation entre desktop, mobile et navigateur fonctionne bien, même si j'ai eu quelques lenteurs sur l'app mobile par moments.</p></p>
+            <p>Clockify fait partie de ces <strong>outils de gestion des temps gratuits</strong> qui surprennent par leur complétude. J'ai testé la version gratuite pendant plusieurs mois sur différents projets, et franchement, on obtient déjà énormément sans débourser un centime. Le suivi temps par projet, les rapports détaillés, même la facturation de base... tout y est.</p><p>Ce qui m'a frappé, c'est la <strong>facilité de prise en main</strong>. Pas besoin de formation, mes collaborateurs ont compris l'interface en 10 minutes. On lance le chrono, on assigne le projet, c'est parti. <strong>Parfait pour les équipes qui démarrent</strong> dans le time tracking sans vouloir investir lourd dès le départ.</p><p>Clockify vise clairement les <strong>petites structures et freelances</strong> qui ont besoin de traçabilité sans complexité. Les agences créatives, consultants, développeurs... tous ceux qui facturent au temps et veulent des rapports clients propres. La synchronisation entre desktop, mobile et navigateur fonctionne bien, même si j'ai eu quelques lenteurs sur l'app mobile par moments.</p>
       </div>
 
-      <table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Version gratuite vraiment complète avec utilisateurs illimités</td>
-            <td>Application mobile parfois lente et qui plante occasionnellement</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive qui ne demande aucune formation</td>
-            <td>Personnalisation limitée des rapports par rapport aux outils payants</td>
-          </tr>
-          <tr>
-            <td>Rapports détaillés exportables pour la facturation client</td>
-            <td>Support client uniquement en anglais et pas toujours très réactif</td>
-          </tr>
-          <tr>
-            <td>Applications disponibles sur tous les supports avec sync automatique</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Version gratuite vraiment complète avec utilisateurs illimités</td></tr><tr><td>Interface intuitive qui ne demande aucune formation</td></tr><tr><td>Rapports détaillés exportables pour la facturation client</td></tr><tr><td>Applications disponibles sur tous les supports avec sync automatique</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Application mobile parfois lente et qui plante occasionnellement</td></tr><tr><td>Personnalisation limitée des rapports par rapport aux outils payants</td></tr><tr><td>Support client uniquement en anglais et pas toujours très réactif</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://clockify.me/fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Clockify
@@ -594,38 +578,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Lucca mise sur une approche modulaire pour la gestion des temps avec une interface qui privilégie l'expérience utilisateur.
-
-<p>J'ai testé leur module de pointage et je dois dire que <strong>l'ergonomie est vraiment soignée</strong> : déclaration des congés en quelques clics, validation des heures sup directement depuis le tableau de bord, et synchronisation automatique avec la paie.</p><p>Ce qui m'a marqué, c'est leur système de workflows personnalisables.</p>
-
-<p>On peut définir des circuits de validation complexes selon les services et ça gère très bien les cas particuliers comme les RTT, récup ou congés sans solde.</p>
-
-<p>Le reporting temps réel aide pas mal pour anticiper les dépassements budgétaires sur les projets.</p><p>Par contre, je recommande Lucca surtout aux entreprises de 50 salariés minimum qui ont besoin de flexibilité dans leurs processus RH.</p>
-
-<p><strong>Les TPE risquent de payer pour des fonctionnalités qu'elles n'utiliseront jamais</strong>, et l'onboarding demande quand même un peu de temps pour bien paramétrer tous les modules.</p></p>
+            <p>Lucca mise sur une approche modulaire pour la gestion des temps avec une interface qui privilégie l'expérience utilisateur. J'ai testé leur module de pointage et je dois dire que <strong>l'ergonomie est vraiment soignée</strong> : déclaration des congés en quelques clics, validation des heures sup directement depuis le tableau de bord, et synchronisation automatique avec la paie.</p><p>Ce qui m'a marqué, c'est leur système de workflows personnalisables. On peut définir des circuits de validation complexes selon les services et ça gère très bien les cas particuliers comme les RTT, récup ou congés sans solde. Le reporting temps réel aide pas mal pour anticiper les dépassements budgétaires sur les projets.</p><p>Par contre, je recommande Lucca surtout aux entreprises de 50 salariés minimum qui ont besoin de flexibilité dans leurs processus RH. <strong>Les TPE risquent de payer pour des fonctionnalités qu'elles n'utiliseront jamais</strong>, et l'onboarding demande quand même un peu de temps pour bien paramétrer tous les modules.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive qui facilite l'adoption par les équipes</td>
-            <td>Tarification qui peut vite grimper avec les modules additionnels</td>
-          </tr>
-          <tr>
-            <td>Workflows de validation très flexibles selon l'organisation</td>
-            <td>Configuration initiale assez technique pour exploiter tout le potentiel</td>
-          </tr>
-          <tr>
-            <td>Synchronisation native avec les principaux logiciels de paie</td>
-            <td>Support parfois lent sur les questions techniques pointues</td>
-          </tr>
-          <tr>
-            <td>Reporting détaillé en temps réel sur les coûts et budgets projets</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive qui facilite l'adoption par les équipes</td></tr><tr><td>Workflows de validation très flexibles selon l'organisation</td></tr><tr><td>Synchronisation native avec les principaux logiciels de paie</td></tr><tr><td>Reporting détaillé en temps réel sur les coûts et budgets projets</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification qui peut vite grimper avec les modules additionnels</td></tr><tr><td>Configuration initiale assez technique pour exploiter tout le potentiel</td></tr><tr><td>Support parfois lent sur les questions techniques pointues</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://business.betterme.world/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Lucca
@@ -650,42 +615,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>J'ai testé Toggl Track pendant <strong>plusieurs mois</strong> pour suivre le temps passé sur mes projets clients.
-
-<p>Ce logiciel de gestion des temps se contente de faire une chose, mais il la fait bien : tracker le temps sans complications.</p>
-
-<p>L'interface reste volontairement dépouillée, avec un gros bouton rouge pour démarrer le chrono et quelques champs pour organiser les tâches.</p><p>Le vrai point fort de Toggl Track ? <strong>Sa simplicité d'adoption</strong>.</p>
-
-<p>Mes collègues freelances ont tous réussi à l'utiliser dès le premier jour. Pas de formation, pas de manuel : on lance le timer, on bosse, on arrête.</p>
-
-<p>Les rapports de temps se génèrent automatiquement et j'exporte tout vers Excel ou directement dans mon logiciel de facturation.</p><p>Par contre, ne comptez pas sur Toggl Track pour gérer vos plannings ou vos équipes.</p>
-
-<p>Ce n'est pas Asana ou Monday. Ici, on reste dans le <strong>tracking pur et simple</strong>. Parfait pour les consultants, développeurs, ou agences qui facturent au temps passé.</p>
-
-<p>Moins adapté si vous cherchez un outil de gestion de projet complet.</p></p>
+            <p>J'ai testé Toggl Track pendant <strong>plusieurs mois</strong> pour suivre le temps passé sur mes projets clients. Ce logiciel de gestion des temps se contente de faire une chose, mais il la fait bien : tracker le temps sans complications. L'interface reste volontairement dépouillée, avec un gros bouton rouge pour démarrer le chrono et quelques champs pour organiser les tâches.</p><p>Le vrai point fort de Toggl Track ? <strong>Sa simplicité d'adoption</strong>. Mes collègues freelances ont tous réussi à l'utiliser dès le premier jour. Pas de formation, pas de manuel : on lance le timer, on bosse, on arrête. Les rapports de temps se génèrent automatiquement et j'exporte tout vers Excel ou directement dans mon logiciel de facturation.</p><p>Par contre, ne comptez pas sur Toggl Track pour gérer vos plannings ou vos équipes. Ce n'est pas Asana ou Monday. Ici, on reste dans le <strong>tracking pur et simple</strong>. Parfait pour les consultants, développeurs, ou agences qui facturent au temps passé. Moins adapté si vous cherchez un outil de gestion de projet complet.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Démarrage immédiat sans formation</td>
-            <td>Aucune fonctionnalité de planification</td>
-          </tr>
-          <tr>
-            <td>Synchronisation parfaite entre web, mobile et desktop</td>
-            <td>Interface parfois trop simpliste</td>
-          </tr>
-          <tr>
-            <td>Export direct vers outils de facturation</td>
-            <td>Options de personnalisation limitées</td>
-          </tr>
-          <tr>
-            <td>Rapports détaillés par client et projet</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Démarrage immédiat sans formation</td></tr><tr><td>Synchronisation parfaite entre web, mobile et desktop</td></tr><tr><td>Export direct vers outils de facturation</td></tr><tr><td>Rapports détaillés par client et projet</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Aucune fonctionnalité de planification</td></tr><tr><td>Interface parfois trop simpliste</td></tr><tr><td>Options de personnalisation limitées</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://toggl.com/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Toggl Track
@@ -710,38 +652,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Je vais être franc : <strong>Kelio</strong> fait partie des logiciels de gestion des temps les plus robustes du marché français.
-
-<p>Développé spécifiquement pour les moyennes et grandes entreprises, cet outil gère aussi bien la badgeuse traditionnelle que la pointeuse biométrique, avec une interface qui reste étonnamment fluide malgré la richesse fonctionnelle.</p><p>On parle d'un système complet qui couvre planning, suivi des temps, gestion des congés et paie.</p>
-
-<p>J'ai pu tester leur module de planification automatique qui propose des créneaux en tenant compte des contraintes légales et des compétences.</p>
-
-<p><strong>Vraiment pratique pour les équipes RH</strong> qui jonglent avec les 35h, RTT et conventions collectives.</p><p>L'intégration avec les logiciels de paie existants fonctionne bien, même si l'onboarding demande du temps.</p>
-
-<p>Kelio s'adresse clairement aux structures de 50 salariés minimum qui cherchent une solution pérenne plutôt qu'un outil gadget.</p></p>
+            <p>Je vais être franc : <strong>Kelio</strong> fait partie des logiciels de gestion des temps les plus robustes du marché français. Développé spécifiquement pour les moyennes et grandes entreprises, cet outil gère aussi bien la badgeuse traditionnelle que la pointeuse biométrique, avec une interface qui reste étonnamment fluide malgré la richesse fonctionnelle.</p><p>On parle d'un système complet qui couvre planning, suivi des temps, gestion des congés et paie. J'ai pu tester leur module de planification automatique qui propose des créneaux en tenant compte des contraintes légales et des compétences. <strong>Vraiment pratique pour les équipes RH</strong> qui jonglent avec les 35h, RTT et conventions collectives.</p><p>L'intégration avec les logiciels de paie existants fonctionne bien, même si l'onboarding demande du temps. Kelio s'adresse clairement aux structures de 50 salariés minimum qui cherchent une solution pérenne plutôt qu'un outil gadget.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface claire malgré la complexité des fonctions</td>
-            <td>Tarif élevé qui écarte les petites structures</td>
-          </tr>
-          <tr>
-            <td>Gestion fine des règles de temps de travail et conventions</td>
-            <td>Mise en route longue avec formation obligatoire</td>
-          </tr>
-          <tr>
-            <td>Module de planification automatique vraiment intelligent</td>
-            <td>Application mobile perfectible sur certaines fonctions</td>
-          </tr>
-          <tr>
-            <td>Support client français réactif et compétent</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface claire malgré la complexité des fonctions</td></tr><tr><td>Gestion fine des règles de temps de travail et conventions</td></tr><tr><td>Module de planification automatique vraiment intelligent</td></tr><tr><td>Support client français réactif et compétent</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarif élevé qui écarte les petites structures</td></tr><tr><td>Mise en route longue avec formation obligatoire</td></tr><tr><td>Application mobile perfectible sur certaines fonctions</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.kelio.com/fr" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Kelio
@@ -766,38 +689,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>J'utilise Deputy depuis bientôt deux ans pour gérer les plannings de notre équipe retail de 25 personnes.
-
-<p>Ce <strong>logiciel de gestion des temps</strong> se démarque par sa simplicité d'usage et son approche mobile-first qui colle bien aux équipes terrain.</p><p>L'outil excelle dans la planification automatisée et le suivi temps réel.</p>
-
-<p>Je peux créer des plannings en quelques clics, gérer les remplacements de dernière minute via l'app mobile, et les salariés pointent directement depuis leur smartphone.</p>
-
-<p><strong>Deputy</strong> calcule automatiquement les heures supplémentaires et gère les différents taux horaires selon les postes.</p><p>Par contre, ne vous attendez pas à un outil de RH complet.</p>
-
-<p>Deputy reste centré sur la gestion des temps et plannings, point final. Si vous cherchez un SIRH avec gestion des congés avancée ou notes de frais, passez votre chemin.</p></p>
+            <p>J'utilise Deputy depuis bientôt deux ans pour gérer les plannings de notre équipe retail de 25 personnes. Ce <strong>logiciel de gestion des temps</strong> se démarque par sa simplicité d'usage et son approche mobile-first qui colle bien aux équipes terrain.</p><p>L'outil excelle dans la planification automatisée et le suivi temps réel. Je peux créer des plannings en quelques clics, gérer les remplacements de dernière minute via l'app mobile, et les salariés pointent directement depuis leur smartphone. <strong>Deputy</strong> calcule automatiquement les heures supplémentaires et gère les différents taux horaires selon les postes.</p><p>Par contre, ne vous attendez pas à un outil de RH complet. Deputy reste centré sur la gestion des temps et plannings, point final. Si vous cherchez un SIRH avec gestion des congés avancée ou notes de frais, passez votre chemin.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface mobile vraiment bien pensée pour les équipes terrain</td>
-            <td>Prix qui grimpe vite avec les options avancées</td>
-          </tr>
-          <tr>
-            <td>Création de plannings automatisée avec gestion des compétences</td>
-            <td>Fonctionnalités RH limitées comparé à d'autres solutions</td>
-          </tr>
-          <tr>
-            <td>Géolocalisation pour éviter les pointages frauduleux</td>
-            <td>Support client parfois lent en français</td>
-          </tr>
-          <tr>
-            <td>Synchronisation temps réel entre managers et salariés</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface mobile vraiment bien pensée pour les équipes terrain</td></tr><tr><td>Création de plannings automatisée avec gestion des compétences</td></tr><tr><td>Géolocalisation pour éviter les pointages frauduleux</td></tr><tr><td>Synchronisation temps réel entre managers et salariés</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Prix qui grimpe vite avec les options avancées</td></tr><tr><td>Fonctionnalités RH limitées comparé à d'autres solutions</td></tr><tr><td>Support client parfois lent en français</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.deputy.com/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Deputy
@@ -822,40 +726,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Agendrix</strong> pendant 6 mois pour gérer les plannings de nos équipes.
-
-<p>Ce logiciel de gestion des temps québécois mise sur la simplicité, avec une approche visuelle du planning qui fonctionne bien quand on manage 15 à 80 salariés.</p>
-
-<p>L'interface ressemble un peu à un tableau Excel amélioré, mais en beaucoup plus ergonomique.</p><p>L'outil couvre tout le cycle : <strong>planification des horaires</strong>, suivi des présences, validation des heures et exports pour la paie.</p>
-
-<p>Ce qui m'a séduit, c'est qu'on peut créer des templates de planning et les dupliquer d'une semaine à l'autre. Pratique quand on a des roulements fixes.</p>
-
-<p>Les employés reçoivent leurs plannings par notification et peuvent demander des échanges de postes directement dans l'app.</p><p>Je recommande Agendrix aux restaurants, commerces de détail et PME avec des équipes en horaires variables.</p>
-
-<p>Par contre, si vous cherchez une solution pour du télétravail ou des projets complexes, passez votre chemin. <strong>C'est vraiment pensé pour les métiers avec présence physique obligatoire.</strong></p></p>
+            <p>J'ai testé <strong>Agendrix</strong> pendant 6 mois pour gérer les plannings de nos équipes. Ce logiciel de gestion des temps québécois mise sur la simplicité, avec une approche visuelle du planning qui fonctionne bien quand on manage 15 à 80 salariés. L'interface ressemble un peu à un tableau Excel amélioré, mais en beaucoup plus ergonomique.</p><p>L'outil couvre tout le cycle : <strong>planification des horaires</strong>, suivi des présences, validation des heures et exports pour la paie. Ce qui m'a séduit, c'est qu'on peut créer des templates de planning et les dupliquer d'une semaine à l'autre. Pratique quand on a des roulements fixes. Les employés reçoivent leurs plannings par notification et peuvent demander des échanges de postes directement dans l'app.</p><p>Je recommande Agendrix aux restaurants, commerces de détail et PME avec des équipes en horaires variables. Par contre, si vous cherchez une solution pour du télétravail ou des projets complexes, passez votre chemin. <strong>C'est vraiment pensé pour les métiers avec présence physique obligatoire.</strong></p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive même pour les moins tech</td>
-            <td>Reporting limité pour l'analyse de productivité</td>
-          </tr>
-          <tr>
-            <td>Gestion des échanges entre collègues automatisée</td>
-            <td>Pas adapté au suivi de projets ou télétravail</td>
-          </tr>
-          <tr>
-            <td>Export direct vers les logiciels de paie courants</td>
-            <td>Support client parfois long à répondre</td>
-          </tr>
-          <tr>
-            <td>Application mobile vraiment utilisable sur le terrain</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive même pour les moins tech</td></tr><tr><td>Gestion des échanges entre collègues automatisée</td></tr><tr><td>Export direct vers les logiciels de paie courants</td></tr><tr><td>Application mobile vraiment utilisable sur le terrain</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Reporting limité pour l'analyse de productivité</td></tr><tr><td>Pas adapté au suivi de projets ou télétravail</td></tr><tr><td>Support client parfois long à répondre</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.agendrix.com/fr" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Agendrix
@@ -880,38 +763,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Skello s'est construit autour d'un constat simple : <strong>la gestion des plannings</strong> dans la restauration et le commerce, c'est souvent un enfer.
-
-<p>J'ai testé cette solution qui automatise les plannings et le suivi des temps de travail, avec une approche vraiment pensée pour les équipes terrain.</p><p>Ce logiciel de gestion des temps mise tout sur <strong>l'intelligence prédictive</strong>.</p>
-
-<p>Il analyse vos historiques de fréquentation pour proposer des plannings optimisés automatiquement. Plus besoin de passer des heures à jongler entre les congés, les compétences de chacun et les pics d'activité.</p>
-
-<p>L'outil calcule même les coûts salariaux en temps réel.</p><p>Je recommande Skello principalement aux <strong>restaurants, magasins et chaînes</strong> qui galèrent avec les plannings complexes.</p>
-
-<p>Si vous avez plus de 10 salariés avec des horaires variables, des temps partiels et des saisonniers, ça va vraiment vous simplifier la vie. Par contre, pour une PME classique avec des horaires fixes, c'est probablement surdimensionné.</p></p>
+            <p>Skello s'est construit autour d'un constat simple : <strong>la gestion des plannings</strong> dans la restauration et le commerce, c'est souvent un enfer. J'ai testé cette solution qui automatise les plannings et le suivi des temps de travail, avec une approche vraiment pensée pour les équipes terrain.</p><p>Ce logiciel de gestion des temps mise tout sur <strong>l'intelligence prédictive</strong>. Il analyse vos historiques de fréquentation pour proposer des plannings optimisés automatiquement. Plus besoin de passer des heures à jongler entre les congés, les compétences de chacun et les pics d'activité. L'outil calcule même les coûts salariaux en temps réel.</p><p>Je recommande Skello principalement aux <strong>restaurants, magasins et chaînes</strong> qui galèrent avec les plannings complexes. Si vous avez plus de 10 salariés avec des horaires variables, des temps partiels et des saisonniers, ça va vraiment vous simplifier la vie. Par contre, pour une PME classique avec des horaires fixes, c'est probablement surdimensionné.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Plannings automatiques basés sur l'IA et l'historique d'activité</td>
-            <td>Tarification qui grimpe vite avec le nombre d'utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Interface mobile intuitive pour les équipes terrain</td>
-            <td>Fonctionnalités avancées parfois trop complexes pour les petites structures</td>
-          </tr>
-          <tr>
-            <td>Calcul automatique des coûts salariaux et respect du droit du travail</td>
-            <td>Courbe d'apprentissage importante pour paramétrer correctement l'IA</td>
-          </tr>
-          <tr>
-            <td>Intégrations natives avec les logiciels de caisse et SIRH</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Plannings automatiques basés sur l'IA et l'historique d'activité</td></tr><tr><td>Interface mobile intuitive pour les équipes terrain</td></tr><tr><td>Calcul automatique des coûts salariaux et respect du droit du travail</td></tr><tr><td>Intégrations natives avec les logiciels de caisse et SIRH</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Tarification qui grimpe vite avec le nombre d'utilisateurs</td></tr><tr><td>Fonctionnalités avancées parfois trop complexes pour les petites structures</td></tr><tr><td>Courbe d'apprentissage importante pour paramétrer correctement l'IA</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.skello.io/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Skello
@@ -936,40 +800,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>Eurécia se concentre avant tout sur les entreprises françaises qui veulent gérer leurs temps de travail sans se prendre la tête avec des outils compliqués.
-
-<p>J'ai testé cette solution pendant plusieurs mois dans une PME de 80 personnes, et je dois dire qu'elle fait exactement ce qu'on lui demande : <strong>pointage simple</strong>, suivi des congés et calculs automatiques des heures.</p>
-
-<p>L'interface reste claire même pour les salariés les moins à l'aise avec le numérique.</p><p>Ce qui m'a marqué, c'est que l'équipe d'Eurécia comprend vraiment les contraintes des entreprises françaises.</p>
-
-<p>Les <strong>conventions collectives</strong> sont déjà paramétrées, le calcul des RTT fonctionne correctement, et l'export vers les logiciels de paie français se fait sans accroc.</p>
-
-<p>Parfait pour les RH qui en ont marre de jongler entre Excel et trois autres outils.</p><p>Par contre, si vous cherchez un logiciel de gestion de projet avec planning avancé et reporting ultra-poussé, passez votre chemin.</p>
-
-<p>Eurécia reste concentré sur la <strong>gestion pure des temps</strong> et ne prétend pas révolutionner votre organisation. C'est un choix assumé qui peut frustrer les entreprises ayant des besoins plus larges.</p></p>
+            <p>Eurécia se concentre avant tout sur les entreprises françaises qui veulent gérer leurs temps de travail sans se prendre la tête avec des outils compliqués. J'ai testé cette solution pendant plusieurs mois dans une PME de 80 personnes, et je dois dire qu'elle fait exactement ce qu'on lui demande : <strong>pointage simple</strong>, suivi des congés et calculs automatiques des heures. L'interface reste claire même pour les salariés les moins à l'aise avec le numérique.</p><p>Ce qui m'a marqué, c'est que l'équipe d'Eurécia comprend vraiment les contraintes des entreprises françaises. Les <strong>conventions collectives</strong> sont déjà paramétrées, le calcul des RTT fonctionne correctement, et l'export vers les logiciels de paie français se fait sans accroc. Parfait pour les RH qui en ont marre de jongler entre Excel et trois autres outils.</p><p>Par contre, si vous cherchez un logiciel de gestion de projet avec planning avancé et reporting ultra-poussé, passez votre chemin. Eurécia reste concentré sur la <strong>gestion pure des temps</strong> et ne prétend pas révolutionner votre organisation. C'est un choix assumé qui peut frustrer les entreprises ayant des besoins plus larges.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Interface intuitive même pour les non-initiés au numérique</td>
-            <td>Fonctionnalités de reporting assez basiques pour les grandes structures</td>
-          </tr>
-          <tr>
-            <td>Paramétrage pré-configuré pour les conventions collectives françaises</td>
-            <td>Personnalisation limitée des workflows de validation</td>
-          </tr>
-          <tr>
-            <td>Calcul automatique des RTT et heures supplémentaires conforme à la législation</td>
-            <td>Pas d'intégration native avec les outils de gestion de projet populaires</td>
-          </tr>
-          <tr>
-            <td>Export direct vers les principaux logiciels de paie du marché français</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Interface intuitive même pour les non-initiés au numérique</td></tr><tr><td>Paramétrage pré-configuré pour les conventions collectives françaises</td></tr><tr><td>Calcul automatique des RTT et heures supplémentaires conforme à la législation</td></tr><tr><td>Export direct vers les principaux logiciels de paie du marché français</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Fonctionnalités de reporting assez basiques pour les grandes structures</td></tr><tr><td>Personnalisation limitée des workflows de validation</td></tr><tr><td>Pas d'intégration native avec les outils de gestion de projet populaires</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.eurecia.com/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Eurécia
@@ -994,40 +837,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>J'utilise Harvest depuis 3 ans pour suivre mes temps sur différents projets clients.
-
-<p>Ce <strong>logiciel de gestion des temps</strong> me permet de tracker mes heures facilement avec un simple clic, puis de générer automatiquement des factures détaillées.</p>
-
-<p>L'interface reste épurée, pas de fioritures inutiles.</p><p>Ce qui m'a convaincu ? La <strong>synchronisation automatique</strong> avec mes outils quotidiens : Asana, Trello, Basecamp.</p>
-
-<p>Je démarre un chrono directement depuis une tâche sans changer d'onglet. Fini les oublis de saisie en fin de journée.</p>
-
-<p>Les rapports de productivité donnent une vision claire de où part mon temps.</p><p>Harvest convient parfaitement aux <strong>freelances</strong>, agences créatives et équipes projet qui facturent au temps passé.</p>
-
-<p>Par contre, les grosses structures avec des besoins RH complexes seront limitées. L'outil mise tout sur la simplicité d'usage plutôt que sur les fonctionnalités avancées de paie ou de congés.</p></p>
+            <p>J'utilise Harvest depuis 3 ans pour suivre mes temps sur différents projets clients. Ce <strong>logiciel de gestion des temps</strong> me permet de tracker mes heures facilement avec un simple clic, puis de générer automatiquement des factures détaillées. L'interface reste épurée, pas de fioritures inutiles.</p><p>Ce qui m'a convaincu ? La <strong>synchronisation automatique</strong> avec mes outils quotidiens : Asana, Trello, Basecamp. Je démarre un chrono directement depuis une tâche sans changer d'onglet. Fini les oublis de saisie en fin de journée. Les rapports de productivité donnent une vision claire de où part mon temps.</p><p>Harvest convient parfaitement aux <strong>freelances</strong>, agences créatives et équipes projet qui facturent au temps passé. Par contre, les grosses structures avec des besoins RH complexes seront limitées. L'outil mise tout sur la simplicité d'usage plutôt que sur les fonctionnalités avancées de paie ou de congés.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>Intégrations natives avec +30 outils (Slack, Asana, GitHub)</td>
-            <td>Pas de gestion des congés ou absences</td>
-          </tr>
-          <tr>
-            <td>Facturation automatique basée sur les temps trackés</td>
-            <td>Options de personnalisation limitées pour les rapports</td>
-          </tr>
-          <tr>
-            <td>Interface intuitive, prise en main en 10 minutes</td>
-            <td>Tarif qui grimpe vite avec le nombre d'utilisateurs</td>
-          </tr>
-          <tr>
-            <td>Rapports visuels pour analyser la rentabilité par projet</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>Intégrations natives avec +30 outils (Slack, Asana, GitHub)</td></tr><tr><td>Facturation automatique basée sur les temps trackés</td></tr><tr><td>Interface intuitive, prise en main en 10 minutes</td></tr><tr><td>Rapports visuels pour analyser la rentabilité par projet</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Pas de gestion des congés ou absences</td></tr><tr><td>Options de personnalisation limitées pour les rapports</td></tr><tr><td>Tarif qui grimpe vite avec le nombre d'utilisateurs</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://www.harvest.fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Harvest
@@ -1052,38 +874,19 @@ nav.site-nav .nav-mobile a{color:rgba(255,255,255,.75);font-size:15px;padding:12
       </a>
 
       <div class="logiciel-desc">
-            <p>J'ai testé <strong>Combo</strong> il y a six mois pour gérer les horaires de notre équipe terrain, et je dois dire que l'approche m'a surpris.
-
-<p>Plutôt que de tout centraliser dans une interface complexe, Combo mise sur la simplicité avec une app mobile vraiment pensée pour les salariés nomades.</p><p>Le principe ?</p>
-
-<p>Les collaborateurs pointent directement depuis leur smartphone avec géolocalisation, et tout remonte automatiquement vers les gestionnaires. <strong>Plus besoin de badgeuse physique</strong> ou de saisie manuelle fastidieuse.</p>
-
-<p>Je trouve ça particulièrement malin pour les métiers du BTP, de la maintenance ou du service à domicile.</p><p>Combo propose aussi un module de planification assez correct et génère les exports de paie sans acrobatie.</p>
-
-<p>Par contre, si vous cherchez un logiciel de gestion des temps ultra-configurable pour des règles RH complexes, passez votre chemin. Ici, on reste sur du fonctionnel sans fioritures.</p></p>
+            <p>J'ai testé <strong>Combo</strong> il y a six mois pour gérer les horaires de notre équipe terrain, et je dois dire que l'approche m'a surpris. Plutôt que de tout centraliser dans une interface complexe, Combo mise sur la simplicité avec une app mobile vraiment pensée pour les salariés nomades.</p><p>Le principe ? Les collaborateurs pointent directement depuis leur smartphone avec géolocalisation, et tout remonte automatiquement vers les gestionnaires. <strong>Plus besoin de badgeuse physique</strong> ou de saisie manuelle fastidieuse. Je trouve ça particulièrement malin pour les métiers du BTP, de la maintenance ou du service à domicile.</p><p>Combo propose aussi un module de planification assez correct et génère les exports de paie sans acrobatie. Par contre, si vous cherchez un logiciel de gestion des temps ultra-configurable pour des règles RH complexes, passez votre chemin. Ici, on reste sur du fonctionnel sans fioritures.</p>
       </div>
 
-      <div class="table-wrap"><table class="avantages-table">
-        <thead><tr><th>✅<br>Avantages</th><th>❌<br>Inconvénients</th></tr></thead>
-        <tbody>
-          <tr>
-            <td>App mobile intuitive avec géolocalisation GPS automatique</td>
-            <td>Personnalisation limitée pour les règles de temps complexes</td>
-          </tr>
-          <tr>
-            <td>Pointage terrain simplifié, même sans réseau</td>
-            <td>Peu d'options pour les horaires variables sophistiqués</td>
-          </tr>
-          <tr>
-            <td>Export paie direct compatible avec la plupart des logiciels RH</td>
-            <td>Support client parfois long à répondre</td>
-          </tr>
-          <tr>
-            <td>Interface gestionnaire claire sans formation nécessaire</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table></div>
+      <div class="av-inc-wrap">
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>✅<br>Avantages</th></tr></thead>
+          <tbody><tr><td>App mobile intuitive avec géolocalisation GPS automatique</td></tr><tr><td>Pointage terrain simplifié, même sans réseau</td></tr><tr><td>Export paie direct compatible avec la plupart des logiciels RH</td></tr><tr><td>Interface gestionnaire claire sans formation nécessaire</td></tr></tbody>
+        </table></div>
+        <div class="table-wrap"><table class="avantages-table">
+          <thead><tr><th>❌<br>Inconvénients</th></tr></thead>
+          <tbody><tr><td>Personnalisation limitée pour les règles de temps complexes</td></tr><tr><td>Peu d'options pour les horaires variables sophistiqués</td></tr><tr><td>Support client parfois long à répondre</td></tr></tbody>
+        </table></div>
+      </div>
 
       <a href="https://combohr.com/fr/" class="logiciel-cta" rel="nofollow" target="_blank" style="display:flex;justify-content:center;width:100%;box-sizing:border-box">
         → Essayer Combo
@@ -1385,7 +1188,7 @@ un acteur reconnu de ce secteur.</p>
     </div>
     <div class="footer-bottom">
       <div class="footer-bottom-left">
-        © 2026 digicube.fr — Données actualisées le 2 octobre 2026
+        © 2026 digicube.fr — Données actualisées le 7 octobre 2026
       </div>
     </div>
   </div>
