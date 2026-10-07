@@ -19,8 +19,16 @@ import os
 import io
 import re
 import sys
+import time
 from pathlib import Path
 from urllib.parse import quote
+
+# Nombre de tentatives de capture (ScreenshotOne renvoie parfois un HTTP 500/502
+# transitoire sur un site lourd ou lent ; un retry suffit souvent). Réglable.
+try:
+    SHOT_RETRIES = max(1, int(os.environ.get("SCREENSHOT_RETRIES", "3")))
+except (TypeError, ValueError):
+    SHOT_RETRIES = 3
 
 try:
     import requests
@@ -80,21 +88,30 @@ def get_master(brand_slug: str, url: str, provider: str, key: str) -> Path | Non
     if not api_url:
         print(f"  ⚠ provider screenshot inconnu : {provider!r}")
         return None
-    try:
-        r = requests.get(api_url, timeout=90)
-        if r.status_code != 200 or not r.content:
-            print(f"  ⚠ screenshot {brand_slug}: HTTP {r.status_code}")
-            return None
-        img = Image.open(io.BytesIO(r.content)).convert("RGB")
-        # S'assurer que le master est au moins aussi grand que le crop + marge.
-        if img.width < CROP_W or img.height < CROP_H:
-            img = img.resize((max(MASTER_W, img.width), max(MASTER_H, img.height)), Image.LANCZOS)
-        img.save(master, "PNG")
-        print(f"  ✓ master capturé : {brand_slug}")
-        return master
-    except Exception as e:
-        print(f"  ⚠ screenshot {brand_slug}: {e}")
-        return None
+    # Retry : un HTTP 500/502/503/429 ou un timeout ScreenshotOne est souvent
+    # transitoire. On réessaie SHOT_RETRIES fois avec une petite pause.
+    for attempt in range(SHOT_RETRIES):
+        _last = ""
+        try:
+            r = requests.get(api_url, timeout=90)
+            if r.status_code == 200 and r.content:
+                img = Image.open(io.BytesIO(r.content)).convert("RGB")
+                # Master au moins aussi grand que le crop + marge.
+                if img.width < CROP_W or img.height < CROP_H:
+                    img = img.resize((max(MASTER_W, img.width), max(MASTER_H, img.height)), Image.LANCZOS)
+                img.save(master, "PNG")
+                print(f"  ✓ master capturé : {brand_slug}"
+                      + (f" (tentative {attempt+1})" if attempt else ""))
+                return master
+            _last = f"HTTP {r.status_code}"
+        except Exception as e:
+            _last = str(e)
+        if attempt < SHOT_RETRIES - 1:
+            print(f"  ⚠ screenshot {brand_slug}: {_last} — nouvelle tentative {attempt+2}/{SHOT_RETRIES}")
+            time.sleep([3, 8, 15][attempt] if attempt < 3 else 15)
+        else:
+            print(f"  ⚠ screenshot {brand_slug}: {_last} — échec après {SHOT_RETRIES} tentative(s)")
+    return None
 
 
 def site_screenshot(brand_slug: str, url: str, site_index: int,
