@@ -1,571 +1,212 @@
-#!/usr/bin/env python3
-"""
-Comparateurs EN MASSE depuis un Google Sheet par site.
-
-Sheet (CSV publié) — colonnes : Titre, Marques, Catégorie (PAS de date)
-  Marques : "Nom | url ; Nom | url ; Nom"
-    · séparateur entre marques : ;
-    · lien optionnel après | (sert au screenshot + liens rotatifs, JAMAIS affiché)
-
-RYTHME DE PUBLICATION (plus de dates) :
-  Le Sheet n'a plus de colonne Date. On publie au rythme indiqué par site
-  (`comparators_per_day`, défaut 2). Le cron quotidien relit TOUT le Sheet,
-  repère les comparateurs NON encore rédigés (slug absent de l'editorial) et
-  en rédige N au HASARD (ordre indépendant du Sheet). Les comparateurs déjà
-  en ligne ne sont JAMAIS réécrits (anti-doublon par slug). Julien peut donc
-  ajouter des lignes n'importe où dans le Sheet, à tout moment.
-    · --daily        → rédige N au hasard (N = comparators_per_day du config)
-    · --limit N      → force N au hasard
-    · (sans option)  → passe TOUT le Sheet (manuel / mise à jour complète)
-
-Pour chaque ligne traitée :
-  - comparateur AUTONOME dans editorial.json (ordre des marques aléatoire, FIGÉ)
-  - 1 entrée par marque (nom)
-  - URL de la marque : Sheet sinon référentiel backlinks (sinon pas d'image)
-  - screenshot décalé PAR SITE (screenshot_gen) → public/screenshots/
-  - rédaction via le moteur IA : description + avantages/inconvénients par marque,
-    intro + en_bref + contenu générique (« Qu'est-ce que… ») + FAQ,
-    system = global_prompt (schema) + persona (config) + liste exacte des marques.
-
-Lancé AVANT generate.py et enrich_editorial.py dans le build.
-Idempotent : ne régénère pas un champ déjà rempli (--force pour tout refaire).
-"""
-import os
-import sys
-import csv
-import io
-import json
-import re
-import random
-import unicodedata
-import argparse
-from pathlib import Path
-
-import yaml
-
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-import screenshot_gen as sg
-
-try:
-    import requests
-except Exception:
-    requests = None
-
-ROOT = Path(__file__).resolve().parent.parent
-YEAR = 2026
-# Suffixes variés pour le Titre SEO — unicité sur un même site via l'index de ligne
-# Suffixes orientés RETOUR D'EXPÉRIENCE / TEST / COMPARATIF (pas de « guide »,
-# qui ne colle pas à l'intention de recherche). Longueurs variées : les plus
-# courts servent de repli quand le titre est long (contrainte Google ≤ 60 car).
-TITLE_SUFFIXES = [
-    "mon retour d'expérience", "mon comparatif", "mon avis après tests",
-    "mon test comparatif", "mon analyse", "mon verdict", "mon avis",
-    "testés et comparés", "mon bilan après usage", "mon retour terrain",
-    "mon comparatif objectif", "mon classement", "après les avoir testés",
-    "mon avis d'expert", "mon analyse détaillée", "ce que j'ai retenu",
-    "mon retour sans filtre", "mon comparatif complet", "mon évaluation",
-    "mon test",
-]
-MAX_TITLE_LEN = 60  # recommandation Google (évite la troncature en SERP)
-
-# ── Appel IA (même modèle que enrich_editorial, réécrit ici pour être
-#    self-contained — pas d'import qui sys.exit sans clé) ──────────────────────
-import json as _json
-import time as _time
-import urllib.request
-import urllib.error
-try:
-    from _ai_model import CLAUDE_MODEL as MODEL
-except Exception:
-    MODEL = "claude-sonnet-4-6"
-_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
-
-
-def call_claude_fast(prompt: str, system: str = None, max_retries: int = 3) -> str:
-    if not _API_KEY:
-        return ""
-    body = {"model": MODEL, "max_tokens": 6000,
-            "messages": [{"role": "user", "content": prompt}]}
-    if system:
-        body["system"] = system
-    payload = _json.dumps(body).encode("utf-8")
-    for attempt in range(max_retries):
-        try:
-            req = urllib.request.Request(
-                "https://api.anthropic.com/v1/messages", data=payload,
-                headers={"Content-Type": "application/json", "x-api-key": _API_KEY,
-                         "anthropic-version": "2023-06-01"})
-            with urllib.request.urlopen(req, timeout=120) as resp:
-                return _json.loads(resp.read())["content"][0]["text"]
-        except Exception as e:
-            print(f"    ⚠ IA tentative {attempt+1}/{max_retries} : {e}")
-            if attempt < max_retries - 1:
-                _time.sleep([5, 20, 40][attempt])
-    return ""
-
-
-# ── Utils ──────────────────────────────────────────────────────────────────
-def slugify(s: str) -> str:
-    # Identique à slugify_cat() de generate.py (gère apostrophes et parenthèses)
-    # pour que la clé classement-<slug> corresponde à ce que generate.py cherche.
-    s = str(s or "").replace("\u2019", " ").replace("\u2018", " ").replace("'", " ")
-    s = re.sub(r"[()\[\]]", "", s)
-    s = unicodedata.normalize("NFD", s).encode("ascii", "ignore").decode("ascii").lower()
-    return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
-
-
-def norm(s: str) -> str:
-    """Clé de matching marque↔référentiel (casse, accents, tirets, points)."""
-    s = unicodedata.normalize("NFD", str(s or "")).encode("ascii", "ignore").decode("ascii")
-    return re.sub(r"[-._/\s]+", " ", s).strip().lower()
-
-
-def fetch_csv(url: str) -> list[dict]:
-    if not requests:
-        print("⚠ requests manquant"); return []
-    if "/pubhtml" in url:
-        url = re.sub(r"/pubhtml.*$", "/pub?output=csv", url)
-    elif "output=csv" not in url:
-        url += ("&" if "?" in url else "?") + "output=csv"
-    try:
-        r = requests.get(url, timeout=60)
-        r.raise_for_status()
-        r.encoding = "utf-8"   # Google Sheets CSV = UTF-8 ; sinon mojibake (é→Ã©, '→â€™)
-        return list(csv.DictReader(io.StringIO(r.text)))
-    except Exception as e:
-        print(f"⚠ fetch Sheet comparateurs : {e}")
-        return []
-
-
-def parse_brands(cell: str) -> list[dict]:
-    out = []
-    for part in str(cell or "").split(";"):
-        part = part.strip()
-        if not part:
-            continue
-        if "|" in part:
-            name, url = part.split("|", 1)
-            out.append({"name": name.strip(), "url": url.strip()})
-        else:
-            out.append({"name": part.strip(), "url": ""})
-    return out
-
-
-def load_backlink_repo() -> dict:
-    """Référentiel marque(normalisée) → URL (fallback pour le screenshot)."""
-    p = ROOT / "backlink-settings.json"
-    repo = {}
-    if p.exists():
-        try:
-            for name, url in (json.loads(p.read_text(encoding="utf-8")).get("brands") or {}).items():
-                if name and url:
-                    repo[norm(name)] = str(url).strip()
-        except Exception:
-            pass
-    return repo
-
-
-def site_index_for(site: str) -> int:
-    """Index STABLE du site (pour le décalage screenshot), borné à la marge dispo."""
-    sites = sorted(d.name for d in (ROOT / "sites").iterdir() if d.is_dir() and d.name != "_shared")
-    try:
-        idx = sites.index(site)
-    except ValueError:
-        idx = 0
-    # marge de décalage disponible dans le master
-    max_off = min(sg.MASTER_W - sg.CROP_W, sg.MASTER_H - sg.CROP_H)
-    max_idx = max(1, max_off // sg.OFFSET_STEP - 1)
-    return idx % max_idx
-
-
-def load_schema_prompts(site_dir: Path, config: dict):
-    schema_name = (config.get("page_types", {}) or {}).get("classement", "")
-    gp = ""
-    if schema_name:
-        sp = ROOT / "schemas" / f"{schema_name}.json"
-        if sp.exists():
-            try:
-                gp = (json.loads(sp.read_text(encoding="utf-8")).get("global_prompt", "") or "").strip()
-            except Exception:
-                pass
-    persona = (config.get("persona_prompt", "") or "").strip().lstrip("|").strip()
-    return gp, persona
-
-
-def build_system(global_prompt: str, persona: str, brand_names: list[str], is_json: bool) -> str:
-    base = ("Tu es un expert rédacteur SEO. Réponds UNIQUEMENT en JSON valide sans backticks, sans preamble."
-            if is_json else
-            "Tu es un expert rédacteur SEO. Aucun tiret long (— ou –). Aucun markdown autre que le HTML demandé.")
-    products = ("MARQUES DU COMPARATIF — utilise EXCLUSIVEMENT ces noms, n'en invente AUCUN autre :\n"
-                + ", ".join(brand_names)) if brand_names else ""
-    return "\n\n".join([p for p in [global_prompt, persona, products, base] if p])
-
-
-def _no_long_dash(t: str) -> str:
-    """Le prompt interdit les tirets longs — on garantit leur absence."""
-    t = re.sub(r"\s*—\s*", ", ", t)                 # em-dash → virgule
-    t = re.sub(r"(\d)\s*–\s*(\d)", r"\1-\2", t)     # en-dash entre chiffres → trait d'union (plages)
-    t = re.sub(r"\s*–\s*", ", ", t)                 # en-dash restant → virgule
-    t = re.sub(r",\s*,", ",", t)                    # nettoie les virgules doublées
-    return t
-
-
-def _clean_html(t):
-    """Nettoie les artefacts HTML (<br>/<div>) qui créent des sauts de ligne
-    parasites : <br><br> -> nouveau paragraphe, <br> isolé -> espace, <div> retiré."""
-    if not isinstance(t, str):
-        return t
-    t = re.sub(r"</?div[^>]*>", "", t)
-    if "<p>" in t:
-        t = re.sub(r"(?:\s*<br\s*/?>\s*){2,}", "</p><p>", t)
-    t = re.sub(r"\s*<br\s*/?>\s*", " ", t)
-    t = re.sub(r"<p>\s*</p>", "", t)
-    return t.strip()
-
-
-def _fix_mojibake(s):
-    """Répare un texte UTF-8 mal décodé (é→Ã©, '→â€™). On tente cp1252 puis
-    latin-1 (selon l'encodage fautif). Sûr sur un texte déjà correct : le reverse
-    échoue ou ne change rien → chaîne inchangée."""
-    if not isinstance(s, str):
-        return s
-    for enc in ("cp1252", "latin-1"):
-        try:
-            fixed = s.encode(enc).decode("utf-8")
-        except (UnicodeEncodeError, UnicodeDecodeError):
-            continue
-        if fixed != s and "\ufffd" not in fixed:
-            return fixed
-    return s
-
-
-def _deep_fix(obj):
-    """Applique _fix_mojibake + _no_long_dash récursivement à toutes les chaînes."""
-    if isinstance(obj, str):
-        return _clean_html(_no_long_dash(_fix_mojibake(obj)))
-    if isinstance(obj, list):
-        return [_deep_fix(x) for x in obj]
-    if isinstance(obj, dict):
-        return {k: _deep_fix(v) for k, v in obj.items()}
-    return obj
-
-
-def _hdr_norm(s: str) -> str:
-    """Clé d'en-tête : mojibake réparé, sans accents, casse/espaces ignorés."""
-    s = unicodedata.normalize("NFD", _fix_mojibake(str(s or ""))).encode("ascii", "ignore").decode()
-    return s.strip().lower()
-
-
-def _row_get(row: dict, *names) -> str:
-    """Lit une colonne du Sheet par nom, insensible casse/accents/espaces et
-    robuste au mojibake d'en-tête (Catégorie → CatÃ©gorie)."""
-    nmap = {}
-    for k in row.keys():
-        if k is not None:
-            nmap.setdefault(_hdr_norm(k), k)
-    for name in names:
-        key = nmap.get(_hdr_norm(name))
-        if key is not None:
-            v = row.get(key)
-            if v not in (None, ""):
-                return str(v)
-    return ""
-
-
-def gen(user: str, system: str) -> str:
-    if not call_claude_fast:
-        return ""
-    try:
-        raw = (call_claude_fast(user, system=system) or "").strip()
-        raw = re.sub(r"^\s*```[a-zA-Z]*\s*", "", raw)   # retirer fence ```html
-        raw = re.sub(r"\s*```\s*$", "", raw)
-        return _clean_html(_no_long_dash(raw.strip()))
-    except Exception as e:
-        print(f"    ⚠ génération : {e}")
-        return ""
-
-
-def gen_json(user: str, system: str):
-    raw = gen(user, system)
-    if not raw:
-        return None
-    raw = raw.replace("```json", "").replace("```", "").strip()
-    try:
-        return json.loads(raw)
-    except Exception:
-        return None
-
-
-# ── Cœur ───────────────────────────────────────────────────────────────────
-def main(site: str, force: bool = False, limit: int | None = None, daily: bool = False):
-    site_dir = ROOT / "sites" / site
-    cfg_path = site_dir / "config.yaml"
-    if not cfg_path.exists():
-        print(f"❌ site inconnu : {site}"); return
-    config = yaml.safe_load(cfg_path.read_text(encoding="utf-8")) or {}
-    _site_cfg = config.get("site") or {}
-    # L'URL vit sous `site:` dans le config.yaml (comme blog_sheet_csv_url).
-    sheet_url = (config.get("comparators_sheet_csv_url")
-                 or _site_cfg.get("comparators_sheet_csv_url") or "").strip()
-    if not sheet_url:
-        print(f"  ⓘ {site} : pas de comparators_sheet_csv_url, rien à faire"); return
-
-    # ── Rythme de publication ────────────────────────────────────────────────
-    # --limit prime ; sinon --daily lit `comparators_per_day` (défaut 2) ;
-    # sinon limit=None → on passe TOUT le Sheet (mode complet / manuel).
-    if limit is None and daily:
-        _rythme = (config.get("comparators_per_day")
-                   if config.get("comparators_per_day") is not None
-                   else _site_cfg.get("comparators_per_day"))
-        try:
-            limit = int(_rythme) if _rythme is not None else 2
-        except (TypeError, ValueError):
-            limit = 2
-        if limit < 0:
-            limit = 0
-
-    rows = fetch_csv(sheet_url)
-    if not rows:
-        print("  ⓘ Sheet comparateurs vide"); return
-
-    ed_path = site_dir / "editorial.json"
-    editorial = {}
-    if ed_path.exists():
-        try:
-            editorial = json.loads(ed_path.read_text(encoding="utf-8"))
-        except Exception:
-            editorial = {}
-
-    # ── Réparation des entrées mojibakées (créées avant le fix d'encodage) ──
-    # 1) Supprime les comparateurs autonomes dont le TITRE est mojibaké : leur
-    #    slug est erroné → doublons/orphelins sur /nos-comparateurs. La version
-    #    correcte est (re)générée depuis le Sheet plus bas.
-    # 2) Répare mojibake + tirets longs dans les comparateurs autonomes conservés
-    #    et leurs marques (contenu déjà en base), sans tout régénérer.
-    _removed = []
-    for _k in list(editorial.keys()):
-        _v = editorial.get(_k)
-        if (_k.startswith("classement-") and not _k.startswith("classement-prod-")
-                and isinstance(_v, dict) and _v.get("autonome")):
-            _cat = _v.get("categorie", "")
-            if _fix_mojibake(_cat) != _cat:          # titre mojibaké → entrée orpheline
-                _removed.append(_k)
-                del editorial[_k]
-    if _removed:
-        print(f"  🧹 {len(_removed)} comparateur(s) mojibaké(s) supprimé(s) : {', '.join(_removed)}")
-    _auto_prod = set()
-    for _v in editorial.values():
-        if isinstance(_v, dict) and _v.get("autonome"):
-            for _s in _v.get("products_snapshot", []):
-                _auto_prod.add(f"classement-prod-{_s}")
-    for _k in list(editorial.keys()):
-        _v = editorial.get(_k)
-        if (isinstance(_v, dict) and _v.get("autonome")) or _k in _auto_prod:
-            editorial[_k] = _deep_fix(_v)
-
-    repo = load_backlink_repo()
-    bl_sheet_urls: dict = {}   # norm(nom) -> (nom, url) à injecter dans le référentiel backlinks
-    s_index = site_index_for(site)
-    global_prompt, persona = load_schema_prompts(site_dir, config)
-    shots_dir = site_dir / "public" / "screenshots"
-    print(f"  → {len(rows)} ligne(s) · décalage screenshot site #{s_index} ({(s_index+1)*sg.OFFSET_STEP}px)")
-
-    # ── Sélection selon le rythme de publication ──────────────────────────────
-    # On garde l'INDEX D'ORIGINE (variété stable des suffixes de titre), puis,
-    # si `limit` est défini, on ne retient que N comparateurs NON encore rédigés
-    # (slug absent de l'editorial), tirés AU HASARD → ordre indépendant du Sheet.
-    # Les comparateurs déjà en ligne ne sont jamais repris (anti-doublon).
-    selected = list(enumerate(rows))
-    if limit is not None:
-        def _valid_undrafted(r):
-            t = _fix_mojibake(_row_get(r, "Titre")).strip()
-            m = _fix_mojibake(_row_get(r, "Marques")).strip()
-            if not t or not m:
-                return False
-            return f"classement-{slugify(t)}" not in editorial
-        undrafted = [(i, r) for (i, r) in selected if _valid_undrafted(r)]
-        random.shuffle(undrafted)            # vrai hasard (RNG non seedé) → ne suit pas l'ordre du Sheet
-        selected = undrafted[:limit]
-        _titres = [_fix_mojibake(_row_get(r, "Titre")).strip() for (_i, r) in selected]
-        print(f"  🎲 rythme={limit} · {len(undrafted)} non rédigé(s) · {len(selected)} tiré(s) au hasard"
-              + (f" → {', '.join(_titres)}" if _titres else ""))
-        if not selected:
-            print("  ✓ rien de nouveau à rédiger (tout le Sheet est déjà en ligne)")
-
-    for _ridx, row in selected:
-        titre = _fix_mojibake(_row_get(row, "Titre")).strip()
-        marques_cell = _fix_mojibake(_row_get(row, "Marques"))
-        categorie_parente = _fix_mojibake(_row_get(row, "Catégorie", "Categorie")).strip()
-        if not titre or not marques_cell.strip():
-            continue
-        brands = parse_brands(marques_cell)
-        for _b in brands:
-            _bu = (_b.get("url") or "").strip()
-            if _bu:
-                bl_sheet_urls[norm(_b["name"])] = (_b["name"], _bu)
-        if not brands:
-            continue
-        cat_slug = slugify(titre)
-        cls_key = f"classement-{cat_slug}"
-        brand_names = [b["name"] for b in brands]
-        print(f"  ◆ {titre}  ({len(brands)} marques)")
-
-        existing = editorial.get(cls_key, {}) if isinstance(editorial.get(cls_key), dict) else {}
-
-        # ── Ordre aléatoire FIGÉ (réutilise le snapshot existant) ──
-        if existing.get("products_snapshot") and not force:
-            order = list(existing["products_snapshot"])
-        else:
-            order = [slugify(b["name"]) for b in brands]
-            random.Random(cat_slug).shuffle(order)   # aléatoire déterministe → stable
-
-        cls = dict(existing)
-        cls.update({
-            "categorie": titre,
-            "autonome": True,
-            "products_snapshot": order,
-        })
-        if categorie_parente:
-            cls["cat_parent"] = categorie_parente   # catégorie parente (maillage + listing)
-        # Titre H2 avant le classement : on retire un éventuel "Meilleur(s)/Top N"
-        # en tête du titre pour éviter "Mon classement des meilleurs Meilleurs …".
-        _ta = re.sub(r"^(?:meilleur[es]?s?|top\s*\d*)\s+", "", titre, flags=re.I).strip()
-        cls["titre_analyse"] = f"Mon classement des meilleurs {_ta}" if _ta else titre
-        # ── Titres SEO : RÈGLES DÉTERMINISTES (pas d'IA, aucune année en dur) ──
-        # Titre sans "Meilleur(s)/Top N" en tête (pour un rendu propre).
-        _ta = re.sub(r"^(?:meilleur[es]?s?|top\s*\d*)\s+", "", titre, flags=re.I).strip() or titre
-        # Titre SEO = « {titre} : {suffixe} » en respectant ≤ 60 caractères.
-        _suffix = TITLE_SUFFIXES[_ridx % len(TITLE_SUFFIXES)]
-        if len(f"{titre} : {_suffix}") <= MAX_TITLE_LEN:
-            cls["meta_title"] = f"{titre} : {_suffix}"
-        else:
-            _fit = [s for s in TITLE_SUFFIXES if len(f"{titre} : {s}") <= MAX_TITLE_LEN]
-            if _fit:  # suffixe le plus adapté qui tient (variété via l'index)
-                cls["meta_title"] = f"{titre} : {_fit[_ridx % len(_fit)]}"
-            elif len(titre) <= MAX_TITLE_LEN:
-                cls["meta_title"] = titre            # titre déjà assez long → seul
-            else:
-                cls["meta_title"] = titre[:MAX_TITLE_LEN].rsplit(" ", 1)[0]
-        cls["h1"] = f"J'ai testé les {len(brands)} {_ta}, mon analyse"   # H1
-        # Meta description : IA, incitative, SANS année en chiffres ({year} si besoin)
-        if force or not str(existing.get("meta_description", "")).strip():
-            _md = gen(
-                f"Rédige UNE meta description SEO pour le comparatif « {titre} » ({len(brands)} marques). "
-                f"Max 155 caractères, incitative, bénéfice lecteur, une seule phrase, sans guillemets. "
-                f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}.",
-                build_system(global_prompt, persona, [], False))
-            if _md:
-                cls["meta_description"] = _md.strip()
-        cls.setdefault("meta_description", f"{titre} : mon comparatif pour bien choisir.")
-
-        # ── Contenu générique du comparateur (si absent) ──
-        if force or not str(cls.get("intro", "")).strip():
-            cls["intro"] = gen(
-                f"Rédige l'introduction HTML (2 paragraphes <p>) d'un comparatif intitulé « {titre} ». "
-                f"120 MOTS MAXIMUM au total. Accroche concrète, à la première personne, sans lister les marques. "
-                f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}. ",
-                build_system(global_prompt, persona, brand_names, False))
-        if force or not str(cls.get("en_bref", "")).strip():
-            # "En bref" = seulement les 5 PREMIÈRES marques du classement (ordre figé)
-            _slug2name = {slugify(b["name"]): b["name"] for b in brands}
-            _top5 = [_slug2name.get(_s, _s) for _s in order[:5]]
-            cls["en_bref"] = gen(
-                f"Pour le comparatif « {titre} », rédige un bloc « En bref » : une puce <li> pour CHACUNE "
-                f"de ces 5 marques (et UNIQUEMENT celles-ci, dans cet ordre), marque en <strong>, suivie de "
-                f"« : » puis, pour quel profil elle est idéale en 14 MOTS MAXIMUM. Réponds en HTML <li>…</li> "
-                f"uniquement, exactement 5 puces. "
-                f"Marques : {', '.join(_top5)}.",
-                build_system(global_prompt, persona, _top5, False))
-        if force or not str(cls.get("contenu_custom", "")).strip():
-            cls["contenu_custom"] = gen(
-                f"Rédige un contenu éditorial SEO en HTML sur le thème « {titre} », à placer APRÈS le classement. "
-                f"700 MOTS MAXIMUM. EXACTEMENT 3 sections <h2> (pas plus), avec des <h3> si utile. "
-                f"Sujets : qu'est-ce que c'est et à qui ça s'adresse / comment bien choisir (critères) / erreurs fréquentes. "
-                f"Ton vécu, première personne, exemples concrets. Ne cite aucune marque précise. "
-                f"INTERDIT : ne génère AUCUNE FAQ ni liste de questions/réponses (elle est gérée séparément ailleurs). "
-                f"Termine toujours par une phrase complète, jamais au milieu d'un mot ou d'une section. "
-                f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}. "
-                f"HTML uniquement (<h2>,<h3>,<p>,<ul>,<li>).",
-                build_system(global_prompt, persona, [], False))
-        if force or not cls.get("faq"):
-            faq = gen_json(
-                f"Rédige une FAQ de 6 questions/réponses utiles sur « {titre} ». "
-                f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}. "
-                f'Réponds UNIQUEMENT avec un tableau JSON : [{{"q":"…","a":"…"}}, …]. Réponses de 2-3 phrases.',
-                build_system(global_prompt, persona, brand_names, True))
-            if isinstance(faq, list):
-                cls["faq"] = faq
-
-        editorial[cls_key] = cls
-
-        # ── Par marque : screenshot + contenu ──
-        for b in brands:
-            bslug = slugify(b["name"])
-            prod_key = f"classement-prod-{bslug}"
-            prod = dict(editorial.get(prod_key, {})) if isinstance(editorial.get(prod_key), dict) else {}
-            prod.setdefault("nom", b["name"])
-            prod.setdefault("marque", b["name"])
-
-            # Screenshot (si URL connue et pas déjà produit pour ce site)
-            url = b["url"] or repo.get(norm(b["name"]), "")
-            shot = shots_dir / f"{bslug}-screenshot.png"
-            if url and (force or not shot.exists()):
-                sg.site_screenshot(bslug, url, s_index, shots_dir)
-
-            # Contenu marque (desc + avantages/inconvénients) en 1 appel
-            if force or not str(prod.get("description", "")).strip():
-                data = gen_json(
-                    f"Pour le comparatif « {titre} », présente la marque {b['name']}. "
-                    f'Réponds UNIQUEMENT en JSON : {{"description":"<p>…</p><p>…</p>","points_forts":["…","…","…"],'
-                    f'"points_faibles":["…","…"]}}. Description : 3 paragraphes <p> à la première personne, concrète, '
-                    f"sans inventer de chiffres. 3-4 avantages, 2-3 inconvénients, courts. "
-                    f"N'indique AUCUNE année en chiffres ; si tu dois citer l'année courante, écris littéralement {{year}}. ",
-                    build_system(global_prompt, persona, brand_names, True))
-                if isinstance(data, dict):
-                    if data.get("description"):
-                        prod["description"] = data["description"]
-                    if isinstance(data.get("points_forts"), list):
-                        prod["points_forts"] = data["points_forts"]
-                    if isinstance(data.get("points_faibles"), list):
-                        prod["points_faibles"] = data["points_faibles"]
-
-            editorial[prod_key] = prod
-
-    ed_path.write_text(json.dumps(editorial, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"  ✓ editorial.json mis à jour ({len(selected)} comparateur(s) traité(s))")
-
-    # ── Référentiel backlinks : injecter les URLs du Sheet (sans écraser l'existant) ──
-    if bl_sheet_urls:
-        bl_path = ROOT / "backlink-settings.json"
-        bl = {}
-        if bl_path.exists():
-            try:
-                bl = json.loads(bl_path.read_text(encoding="utf-8"))
-            except Exception:
-                bl = {}
-        bl.setdefault("brands", {})
-        existing_norm = {norm(k): k for k in bl["brands"]}
-        changed = 0
-        for n, (name, url) in bl_sheet_urls.items():
-            k = existing_norm.get(n)
-            if k is None:
-                bl["brands"][name] = url
-                changed += 1
-            elif not str(bl["brands"].get(k) or "").strip():
-                bl["brands"][k] = url
-                changed += 1
-        if changed:
-            bl_path.write_text(json.dumps(bl, ensure_ascii=False, indent=2), encoding="utf-8")
-            print(f"  🔗 référentiel backlinks : {changed} URL(s) ajoutée(s)")
-
-
-if __name__ == "__main__":
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--site", required=True)
-    ap.add_argument("--force", action="store_true", help="régénère même les champs déjà remplis")
-    ap.add_argument("--daily", action="store_true",
-                    help="rythme quotidien : rédige `comparators_per_day` comparateurs au hasard")
-    ap.add_argument("--limit", type=int, default=None,
-                    help="force le nombre de comparateurs (non rédigés) à produire, tirés au hasard")
-    a = ap.parse_args()
-    main(a.site, a.force, limit=a.limit, daily=a.daily)
+'use client'
+import { useEffect, useMemo, useState } from 'react'
+
+const C = {
+  bg: '#0A0E1A', card: '#0D1117', border: '#1E2D3D', accent: '#00D4AA',
+  text: '#fff', dim: '#8B9CB0', faint: '#4A5568', input: '#0A0E1A',
+}
+const PATH = 'platform/backlink-settings.json'
+const DISC_PATH = 'platform/backlink-discovered-brands.json'
+
+type Event = { link_brand: string; contact_brand: string; date: string; amount?: number; notes?: string }
+type KnownClient = { url: string; note?: string }
+type Settings = {
+  enabled: boolean; rotation_days: number; simultaneous: number; anchor?: string;
+  excluded_sites?: string[]; excluded_comparatifs?: string[];
+  brands: Record<string, string>; events?: Event[]; known_clients?: KnownClient[];
+}
+
+export default function BacklinksPage() {
+  const [s, setS] = useState<Settings>({ enabled: false, rotation_days: 21, simultaneous: 1, anchor: '', brands: {}, events: [], known_clients: [], excluded_sites: [], excluded_comparatifs: [] })
+  const [discovered, setDiscovered] = useState<Record<string, Record<string, number>>>({})
+  const [loading, setLoading] = useState(true)
+  const [saving, setSaving] = useState(false)
+  const [msg, setMsg] = useState('')
+  const [q, setQ] = useState('')
+  const [onlyMissing, setOnlyMissing] = useState(false)
+  const [newBrand, setNewBrand] = useState('')
+  const flash = (m: string) => { setMsg(m); setTimeout(() => setMsg(''), 4000) }
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const [setRes, discRes] = await Promise.all([
+          fetch(`/api/github?path=${encodeURIComponent(PATH)}&nocache=1`).then(r => r.json()).catch(() => ({})),
+          fetch(`/api/github?path=${encodeURIComponent(DISC_PATH)}&nocache=1`).then(r => r.json()).catch(() => ({})),
+        ])
+        if (setRes.content) { try { setS({ brands: {}, events: [], known_clients: [], ...JSON.parse(setRes.content) }) } catch {} }
+        if (discRes.content) { try { const d = JSON.parse(discRes.content); setDiscovered(d && typeof d === 'object' && !Array.isArray(d) ? d : {}) } catch {} }
+      } catch (e: any) { flash('✗ ' + (e.message || 'Erreur chargement')) }
+      setLoading(false)
+    })()
+  }, [])
+
+  // ── Nettoyage + normalisation des noms de marques ──
+  const cleanBrand = (n: string) => String(n || '')
+    .replace(/-(?:logiciels?|outils?)\b.*$/i, '')
+    .replace(/-terminaux-de-paiement$/i, '')
+    .replace(/-expert-comptable-en-ligne$/i, '')
+    .replace(/-banque-pro-en-ligne$/i, '')
+    .replace(/^[-\s]+|[-\s]+$/g, '')
+  const normBrand = (n: string) => cleanBrand(n)
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[-._/\s]+/g, ' ').trim().toLowerCase()
+  // Préférer le display le plus propre (avec espaces, puis initiale majuscule)
+  const pickDisplay = (cur: string, cand: string) => {
+    if (cand.includes(' ') && !cur.includes(' ')) return cand
+    if (!cur.includes(' ') && cand && cand[0] === cand[0].toUpperCase() && cur[0] !== cur[0].toUpperCase()) return cand
+    return cur
+  }
+
+  // Carte unifiée : découvertes + référentiel fusionnés par clé normalisée
+  // → un nom propre, un compteur de comparateurs, une URL.
+  const brandMap = useMemo(() => {
+    const m: Record<string, { display: string; count: number; url: string }> = {}
+    for (const site of Object.values(discovered)) for (const [b, n] of Object.entries(site || {})) {
+      const cb = cleanBrand(b); if (!cb) continue
+      const k = normBrand(b)
+      if (!m[k]) m[k] = { display: cb, count: 0, url: '' }
+      m[k].count += Number(n) || 0
+      m[k].display = pickDisplay(m[k].display, cb)
+    }
+    for (const [b, url] of Object.entries(s.brands || {})) {
+      const cb = cleanBrand(b); if (!cb) continue
+      const k = normBrand(b)
+      if (!m[k]) m[k] = { display: cb, count: 0, url: '' }
+      if (url && url.trim()) m[k].url = url.trim()
+      m[k].display = pickDisplay(m[k].display, cb)
+    }
+    return m
+  }, [discovered, s.brands])
+
+  const brands = useMemo(() => Object.values(brandMap)
+    .sort((a, b) => b.count - a.count || a.display.localeCompare(b.display)), [brandMap])
+  const allBrands = useMemo(() => {
+    let list = brands
+    if (q.trim()) list = list.filter(b => b.display.toLowerCase().includes(q.toLowerCase()))
+    if (onlyMissing) list = list.filter(b => !b.url)
+    return list
+  }, [brands, q, onlyMissing])
+  const withUrl = brands.filter(b => b.url).length
+
+  // Éditer l'URL : on écrit sous la clé propre + on retire les variantes (slug/casse)
+  const setURL = (display: string, url: string) => setS(x => {
+    const k = normBrand(display)
+    const nb: Record<string, string> = {}
+    for (const [bn, bu] of Object.entries(x.brands || {})) if (normBrand(bn) !== k) nb[bn] = bu
+    nb[display] = url
+    return { ...x, brands: nb }
+  })
+  // ── Clients connus (annonceurs) : simple référentiel d'URLs, SANS effet sur
+  //    la rotation pour le moment (on verra plus tard ce qu'on en fait). ──
+  const addClient = () => setS(x => ({ ...x, known_clients: [...(x.known_clients || []), { url: '', note: '' }] }))
+  const setClient = (i: number, c: Partial<KnownClient>) => setS(x => ({ ...x, known_clients: (x.known_clients || []).map((kc, j) => j === i ? { ...kc, ...c } : kc) }))
+  const delClient = (i: number) => setS(x => ({ ...x, known_clients: (x.known_clients || []).filter((_, j) => j !== i) }))
+
+  async function save() {
+    setSaving(true)
+    try {
+      // Nettoyer + dédupliquer : une clé propre par marque, URL non vide uniquement
+      const merged: Record<string, { display: string; url: string }> = {}
+      for (const [b, url] of Object.entries(s.brands || {})) {
+        const cb = cleanBrand(b); if (!cb) continue
+        const k = normBrand(b)
+        if (!merged[k]) merged[k] = { display: cb, url: '' }
+        if (url && url.trim()) merged[k].url = url.trim()
+        merged[k].display = pickDisplay(merged[k].display, cb)
+      }
+      const brandsOut: Record<string, string> = {}
+      for (const v of Object.values(merged)) if (v.url) brandsOut[v.display] = v.url
+      const payload = { ...s, brands: brandsOut }
+      const r = await fetch('/api/github', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path: PATH, content: JSON.stringify(payload, null, 2), message: 'HUB: backlink settings' }),
+      })
+      const d = await r.json().catch(() => ({}))
+      if (!r.ok || d.error) throw new Error(d.error || 'HTTP ' + r.status)
+      flash('✓ Enregistré sur GitHub')
+    } catch (e: any) { flash('✗ ' + (e.message || 'Erreur sauvegarde')) }
+    setSaving(false)
+  }
+
+  const card: React.CSSProperties = { background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: 18 }
+  const inp: React.CSSProperties = { padding: '8px 11px', borderRadius: 8, background: C.input, border: `1px solid ${C.border}`, color: C.text, fontSize: 13, outline: 'none', boxSizing: 'border-box' }
+
+  if (loading) return <div style={{ color: C.dim, padding: 24 }}>Chargement…</div>
+
+  return (
+    <div style={{ maxWidth: 1050, margin: '0 auto', padding: '8px 4px 60px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12, marginBottom: 6 }}>
+        <h1 style={{ fontSize: 22, color: C.text, margin: 0 }}>🧲 Rotations backlinks</h1>
+        <button onClick={save} disabled={saving} style={{ padding: '9px 18px', borderRadius: 8, border: 'none', background: C.accent, color: '#04121C', fontWeight: 700, fontSize: 13, cursor: 'pointer' }}>{saving ? 'Sauvegarde…' : '💾 Enregistrer'}</button>
+      </div>
+      <div style={{ fontSize: 13, color: C.faint, marginBottom: 18 }}>Référentiel central : une URL par marque, rotation automatique du lien dofollow sur TOUS les comparatifs où la marque est présente.</div>
+      {msg && <div style={{ marginBottom: 14, fontSize: 13, color: msg.startsWith('✓') ? C.accent : '#FC8181' }}>{msg}</div>}
+
+      <div style={{ ...card, marginBottom: 16 }}>
+        <div style={{ fontSize: 15, color: C.text, fontWeight: 600, marginBottom: 14 }}>Réglages globaux</div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 12, alignItems: 'end' }}>
+          <label style={{ display: 'flex', alignItems: 'center', gap: 9, fontSize: 14, color: C.text, cursor: 'pointer' }}>
+            <input type="checkbox" checked={s.enabled} onChange={e => setS(x => ({ ...x, enabled: e.target.checked }))} style={{ width: 17, height: 17, accentColor: C.accent }} />
+            Rotation activée
+          </label>
+          <div><div style={lbl}>Rotation (jours)</div><input type="number" value={s.rotation_days} onChange={e => setS(x => ({ ...x, rotation_days: parseInt(e.target.value) || 21 }))} style={{ ...inp, width: '100%' }} /></div>
+          <div><div style={lbl}>Marques en //</div><input type="number" min={1} max={2} value={s.simultaneous} onChange={e => setS(x => ({ ...x, simultaneous: Math.max(1, parseInt(e.target.value) || 1) }))} style={{ ...inp, width: '100%' }} /></div>
+          <div><div style={lbl}>Ancre (optionnel)</div><input value={s.anchor || ''} onChange={e => setS(x => ({ ...x, anchor: e.target.value }))} placeholder="texte du lien" style={{ ...inp, width: '100%' }} /></div>
+        </div>
+      </div>
+
+      <div style={{ ...card, marginBottom: 16 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10, marginBottom: 6 }}>
+          <div style={{ fontSize: 15, color: C.text, fontWeight: 600 }}>Référentiel marques → URL</div>
+          <div style={{ fontSize: 12, color: C.faint }}>{withUrl} active(s) · {brands.length} connue(s)</div>
+        </div>
+        <div style={{ fontSize: 12, color: C.faint, marginBottom: 12 }}>Mets l'URL du <b>site officiel</b> de la marque (pas ton lien d'affiliation). Les marques sans URL sont ignorées. La liste se remplit automatiquement au fil des builds, triée par nombre de comparateurs (les plus fréquentes d'abord).</div>
+        <div style={{ display: 'flex', gap: 10, marginBottom: 12, flexWrap: 'wrap' }}>
+          <input value={q} onChange={e => setQ(e.target.value)} placeholder="🔎 Rechercher une marque…" style={{ ...inp, flex: 1, minWidth: 180 }} />
+          <label style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 12.5, color: C.dim, cursor: 'pointer' }}>
+            <input type="checkbox" checked={onlyMissing} onChange={e => setOnlyMissing(e.target.checked)} style={{ accentColor: C.accent }} /> Sans URL seulement
+          </label>
+        </div>
+        <div style={{ display: 'flex', gap: 8, marginBottom: 14 }}>
+          <input value={newBrand} onChange={e => setNewBrand(e.target.value)} onKeyDown={e => { if (e.key === 'Enter' && newBrand.trim()) { setURL(newBrand.trim(), ''); setNewBrand('') } }} placeholder="Ajouter une marque manuellement" style={{ ...inp, flex: 1 }} />
+          <button onClick={() => { if (newBrand.trim()) { setURL(newBrand.trim(), ''); setNewBrand('') } }} style={{ padding: '8px 14px', borderRadius: 8, border: `1px solid ${C.accent}`, background: 'transparent', color: C.accent, fontWeight: 600, fontSize: 12.5, cursor: 'pointer' }}>+ Ajouter</button>
+        </div>
+        {allBrands.length === 0 ? (
+          <div style={{ fontSize: 12.5, color: C.faint }}>Aucune marque {onlyMissing ? 'sans URL' : ''}. Elles apparaîtront après un build des comparatifs, ou ajoute-les à la main.</div>
+        ) : (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6, maxHeight: 420, overflowY: 'auto' }}>
+            {allBrands.map(b => (
+              <div key={b.display} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: b.url ? C.accent : C.border, flexShrink: 0 }} />
+                <span style={{ width: 150, fontSize: 13, color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{b.display}</span>
+                <span title="comparateurs où la marque apparaît" style={{ width: 42, textAlign: 'center', fontSize: 11.5, color: b.count ? C.accent : C.faint, flexShrink: 0 }}>{b.count ? `×${b.count}` : '—'}</span>
+                <input value={b.url} onChange={e => setURL(b.display, e.target.value)} placeholder="https://www.marque.com/" style={{ ...inp, flex: 1 }} />
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div style={card}>
+        <div style={{ fontSize: 15, color: C.text, fontWeight: 600, marginBottom: 2 }}>Clients connus (annonceurs)</div>
+        <div style={{ fontSize: 12, color: C.faint, marginBottom: 14 }}>URL d'un annonceur qui t'a déjà acheté un lien (ex. <i>nnd.fr</i>). Pour l'instant, ces URLs sont juste enregistrées — <b>aucun effet</b> sur la rotation des liens.</div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {(s.known_clients || []).length === 0 && (
+            <div style={{ fontSize: 12.5, color: C.faint }}>Aucun client enregistré pour l'instant.</div>
+          )}
+          {(s.known_clients || []).map((kc, i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+              <input value={kc.url} onChange={e => setClient(i, { url: e.target.value })} placeholder="https://nnd.fr/" style={{ ...inp, flex: 2, minWidth: 220 }} />
+              <input value={kc.note || ''} onChange={e => setClient(i, { note: e.target.value })} placeholder="Note (nom de l'annonceur, contexte…)" style={{ ...inp, flex: 1, minWidth: 160 }} />
+              <span onClick={() => delClient(i)} title="Supprimer" style={{ cursor: 'pointer', color: C.faint, padding: '0 4px' }}>🗑</span>
+            </div>
+          ))}
+        </div>
+        <button onClick={addClient} style={{ marginTop: 12, padding: '6px 12px', borderRadius: 7, border: `1px solid ${C.border}`, background: 'transparent', color: C.dim, fontSize: 12, cursor: 'pointer' }}>+ Client connu</button>
+      </div>
+    </div>
+  )
+}
+
+const lbl: React.CSSProperties = { fontSize: 11, color: '#8B9CB0', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.04em', marginBottom: 5 }
