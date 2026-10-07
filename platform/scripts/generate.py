@@ -1363,6 +1363,10 @@ def _post_process_dates_tracking(output_dir: Path, site_dir: Path,
     updated_pages = 0
     processed = 0
     new_db: dict = {}
+    # Horodatage de ce build (le runner tourne en TZ=Europe/Paris) : on le stocke
+    # sur les pages nouvelles/modifiées pour pouvoir afficher date + heure dans le
+    # journal. Les anciens records (date seule) sont conservés tels quels.
+    now_iso_min = datetime.now().strftime("%Y-%m-%dT%H:%M")
 
     for html_file in sorted(output_dir.rglob("*.html")):
         rel = str(html_file.relative_to(output_dir))
@@ -1401,7 +1405,7 @@ def _post_process_dates_tracking(output_dir: Path, site_dir: Path,
             new_db[rel] = rec  # on conserve le record tel quel
         else:
             # Contenu nouveau ou modifié → today devient la nouvelle dateModified.
-            new_db[rel] = {"date": today_iso, "hash": h}
+            new_db[rel] = {"date": today_iso, "datetime": now_iso_min, "hash": h}
             if rec:
                 updated_pages += 1
             else:
