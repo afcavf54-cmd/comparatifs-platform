@@ -445,7 +445,12 @@ def normalize_table_html(html: str) -> str:
         for m in _re_t.finditer(r"<table\b[^>]*>.*?</table>", html_in, flags=_re_t.IGNORECASE | _re_t.DOTALL):
             out.append(html_in[pos:m.start()])
             before_window = html_in[max(0, m.start() - 100):m.start()]
-            if 'class="table-wrap"' in before_window or "class='table-wrap'" in before_window:
+            # Les tables avantages/inconvénients du template (.avantages-table)
+            # vivent dans un flex .av-inc-wrap : NE PAS les envelopper (ça les
+            # sortait du wrap → rendu empilé + flèche perdue). On les laisse telles.
+            if "avantages-table" in m.group(0)[:80]:
+                out.append(m.group(0))
+            elif 'class="table-wrap"' in before_window or "class='table-wrap'" in before_window:
                 out.append(m.group(0))
             else:
                 out.append('<div class="table-wrap">')
